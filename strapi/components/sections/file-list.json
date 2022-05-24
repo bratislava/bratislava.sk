@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_file_lists",
+  "info": {
+    "name": "File List",
+    "icon": "layer-group",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "fileList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.file"
+    },
+    "hasBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

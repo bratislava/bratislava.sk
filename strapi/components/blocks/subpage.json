@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_subpages",
+  "info": {
+    "name": "Subpage",
+    "icon": "atlas"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

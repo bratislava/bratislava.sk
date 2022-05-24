@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blocks_in_ba_pictures",
+  "info": {
+    "name": "InBa Pictures",
+    "icon": "atom"
+  },
+  "options": {},
+  "attributes": {
+    "frontImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["images", "files", "videos"],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "rearImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["images", "files", "videos"],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

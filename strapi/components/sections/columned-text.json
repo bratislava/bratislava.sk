@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_content_columned_texts",
+  "info": {
+    "name": "Columned Text",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "hasBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

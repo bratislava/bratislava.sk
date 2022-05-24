@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_bookmark_links",
+  "info": {
+    "name": "Bookmark Link",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "name": "Page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pageColor": {
+      "type": "enumeration",
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.columned-text",
+        "sections.text-with-image",
+        "sections.narrow-text",
+        "sections.file-list",
+        "sections.divider",
+        "sections.waves",
+        "sections.links",
+        "sections.contact",
+        "sections.accordion",
+        "sections.calculator",
+        "sections.list-items",
+        "sections.newsletter",
+        "sections.videos",
+        "sections.icon-title-desc",
+        "sections.numerical-list",
+        "sections.articles-list"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pageHeaderSections": {
+      "type": "dynamiczone",
+      "components": ["sections.subpage-list", "sections.featured-blog-posts"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pageCategory": {
+      "via": "pages",
+      "model": "page-category"
+    },
+    "parentPage": {
+      "model": "page",
+      "via": "childPages"
+    },
+    "childPages": {
+      "collection": "page",
+      "via": "parentPage"
+    },
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": false
+    },
+    "pageBackgroundImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["images"],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pageButtonContent": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.page-link"
+    },
+    "relatedContents": {
+      "collection": "tag"
+    },
+    "metaDiscription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    }
+  }
+}

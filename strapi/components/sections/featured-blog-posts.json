@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_featured_blog_posts",
+  "info": {
+    "name": "Featured Blog Posts",
+    "icon": "newspaper",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "first_blog": {
+      "model": "blog-post"
+    },
+    "second_blog": {
+      "model": "blog-post"
+    },
+    "third_blog": {
+      "model": "blog-post"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_blocks_numerical_list_items",
+  "info": {
+    "name": "Numerical List Item",
+    "icon": "caret-down"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

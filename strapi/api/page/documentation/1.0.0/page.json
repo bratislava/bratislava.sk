@@ -1,0 +1,4512 @@
+{
+  "paths": {
+    "/pages": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Page"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Page"],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Page"],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPage"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Page"],
+        "parameters": []
+      }
+    },
+    "/pages/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Page"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Page"],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPage"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Page"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Page": {
+        "required": ["id"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "pageColor": {
+            "type": "string",
+            "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "imageSrc": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "imagePosition": {
+                      "type": "string",
+                      "enum": ["left", "right"]
+                    },
+                    "imageShadow": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "align": {
+                      "type": "string",
+                      "default": "center",
+                      "enum": ["left", "center", "right"]
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "default",
+                      "enum": ["narrow", "default", "wide", "full"]
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "fileList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "media": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "style": {
+                      "type": "string",
+                      "enum": [
+                        "mesto_01_full_width",
+                        "mesto_01_narrow_width",
+                        "hrad_01_full_width",
+                        "hrad_01_narrow_width",
+                        "doprava_02_full_width",
+                        "doprava_02_narrow_width",
+                        "parkovanie_02_full_width",
+                        "parkovanie_02_narrow_width",
+                        "bicykel_02_full_width",
+                        "bicykel_02_narrow_width",
+                        "lod_02_full_width",
+                        "lod_02_narrow_width",
+                        "stromy_03_full_width",
+                        "stromy_03_narrow_width",
+                        "vystavba_03_full_width",
+                        "vystavba_03_narrow_width",
+                        "park_04_full_width",
+                        "park_04_narrow_width",
+                        "byvanie_04_full_width",
+                        "byvanie_04_narrow_width",
+                        "budovy_04_full_width",
+                        "budovy_04_narrow_width",
+                        "vzdelavanie",
+                        "skola",
+                        "divadlo"
+                      ]
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "string",
+                      "default": "top",
+                      "enum": ["top", "bottom"]
+                    },
+                    "isRich": {
+                      "type": "boolean",
+                      "default": true
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "pageLinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "page": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "anchor": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "phoneLabel": {
+                      "type": "string",
+                      "default": "zavolať"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "emailLabel": {
+                      "type": "string",
+                      "default": "napísať"
+                    },
+                    "address": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "institutions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "urlLabel": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "firstColumn": {
+                            "type": "string"
+                          },
+                          "secondColumn": {
+                            "type": "string"
+                          },
+                          "thirdColumn": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "flatText": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "width": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": ["narrow", "default", "wide", "full"]
+                          },
+                          "align": {
+                            "type": "string",
+                            "default": "left",
+                            "enum": ["left", "center", "right"]
+                          },
+                          "moreLinkTitle": {
+                            "type": "string"
+                          },
+                          "moreLinkUrl": {
+                            "type": "string"
+                          },
+                          "moreLinkPage": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "institutionsNarrow": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          },
+                          "urlLabel": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "single_adult_value": {
+                      "type": "number"
+                    },
+                    "another_adult_value": {
+                      "type": "number"
+                    },
+                    "child_value": {
+                      "type": "number"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "listItems": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "moreLinkTitle": {
+                            "type": "string"
+                          },
+                          "moreLinkUrl": {
+                            "type": "string"
+                          },
+                          "moreLinkPage": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "circleOption": {
+                            "type": "string",
+                            "default": "primary",
+                            "enum": ["primary", "secondary"]
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "buttonContent": {
+                      "type": "string"
+                    },
+                    "videos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "speaker": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "desc": {
+                            "type": "string"
+                          },
+                          "icon": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "variant": {
+                      "type": "string",
+                      "enum": ["basic", "combined", "roadmap"]
+                    },
+                    "buttonText": {
+                      "type": "string"
+                    },
+                    "buttonLink": {
+                      "type": "string"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id", "text"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id", "items"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "category": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "shortTitle": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "enum": [
+                            "red",
+                            "blue",
+                            "green",
+                            "yellow",
+                            "purple",
+                            "brown"
+                          ]
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "subcategories": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "icon": {
+                          "type": "string",
+                          "enum": [
+                            "mesto_01",
+                            "doprava_mapy_02",
+                            "zp_vystavba_03",
+                            "socialna_pomoc_04",
+                            "vzdelavanie_05",
+                            "kultura_06"
+                          ]
+                        },
+                        "iconHover": {
+                          "type": "string",
+                          "enum": [
+                            "mesto_color_01",
+                            "doprava_mapy_color_02",
+                            "zp_vystavba_color_03",
+                            "socialna_pomoc_color_04",
+                            "vzdelavanie_color_05",
+                            "kultura_color_06"
+                          ]
+                        },
+                        "priority": {
+                          "type": "integer"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "filtering": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["id"]
+                }
+              ]
+            }
+          },
+          "pageHeaderSections": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.subpage-list",
+                        "sections.featured-blog-posts"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "subpageList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "page": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "anchor": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.subpage-list",
+                        "sections.featured-blog-posts"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "first_blog": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        },
+                        "coverImage": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "sections": {
+                          "type": "dynamiczone"
+                        },
+                        "author": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string"
+                        },
+                        "moreLink": {
+                          "type": "component"
+                        },
+                        "date_added": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "second_blog": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        },
+                        "coverImage": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "sections": {
+                          "type": "dynamiczone"
+                        },
+                        "author": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string"
+                        },
+                        "moreLink": {
+                          "type": "component"
+                        },
+                        "date_added": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "third_blog": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        },
+                        "coverImage": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "sections": {
+                          "type": "dynamiczone"
+                        },
+                        "author": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string"
+                        },
+                        "moreLink": {
+                          "type": "component"
+                        },
+                        "date_added": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["id"]
+                }
+              ]
+            }
+          },
+          "pageCategory": {
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "shortTitle": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string",
+                "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+              },
+              "pages": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "subcategories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "icon": {
+                "type": "string",
+                "enum": [
+                  "mesto_01",
+                  "doprava_mapy_02",
+                  "zp_vystavba_03",
+                  "socialna_pomoc_04",
+                  "vzdelavanie_05",
+                  "kultura_06"
+                ]
+              },
+              "iconHover": {
+                "type": "string",
+                "enum": [
+                  "mesto_color_01",
+                  "doprava_mapy_color_02",
+                  "zp_vystavba_color_03",
+                  "socialna_pomoc_color_04",
+                  "vzdelavanie_color_05",
+                  "kultura_color_06"
+                ]
+              },
+              "priority": {
+                "type": "integer"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "parentPage": {
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "pageColor": {
+                "type": "string",
+                "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+              },
+              "sections": {
+                "type": "dynamiczone"
+              },
+              "pageHeaderSections": {
+                "type": "dynamiczone"
+              },
+              "pageCategory": {
+                "type": "string"
+              },
+              "parentPage": {
+                "type": "string"
+              },
+              "childPages": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "title": {
+                "type": "string"
+              },
+              "pageBackgroundImage": {
+                "type": "string"
+              },
+              "pageButtonContent": {
+                "type": "component"
+              },
+              "relatedContents": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "metaDiscription": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "childPages": {
+            "type": "array",
+            "items": {
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "pageColor": {
+                  "type": "string",
+                  "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+                },
+                "sections": {
+                  "type": "dynamiczone"
+                },
+                "pageHeaderSections": {
+                  "type": "dynamiczone"
+                },
+                "pageCategory": {
+                  "type": "string"
+                },
+                "parentPage": {
+                  "type": "string"
+                },
+                "childPages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "pageBackgroundImage": {
+                  "type": "string"
+                },
+                "pageButtonContent": {
+                  "type": "component"
+                },
+                "relatedContents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "metaDiscription": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "pageBackgroundImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "pageButtonContent": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "page": {
+                "required": ["id"],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "pageColor": {
+                    "type": "string",
+                    "enum": [
+                      "red",
+                      "blue",
+                      "green",
+                      "yellow",
+                      "purple",
+                      "brown"
+                    ]
+                  },
+                  "sections": {
+                    "type": "dynamiczone"
+                  },
+                  "pageHeaderSections": {
+                    "type": "dynamiczone"
+                  },
+                  "pageCategory": {
+                    "type": "string"
+                  },
+                  "parentPage": {
+                    "type": "string"
+                  },
+                  "childPages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "pageBackgroundImage": {
+                    "type": "string"
+                  },
+                  "pageButtonContent": {
+                    "type": "component"
+                  },
+                  "relatedContents": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "metaDiscription": {
+                    "type": "string"
+                  },
+                  "localizations": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "locale": {
+                    "type": "string"
+                  },
+                  "published_at": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  }
+                }
+              },
+              "anchor": {
+                "type": "string"
+              }
+            }
+          },
+          "relatedContents": {
+            "type": "array",
+            "items": {
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "pageCategory": {
+                  "type": "string"
+                },
+                "blogPosts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "metaDiscription": {
+            "type": "string"
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "pageColor": {
+                  "type": "string",
+                  "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+                },
+                "sections": {
+                  "type": "dynamiczone"
+                },
+                "pageHeaderSections": {
+                  "type": "dynamiczone"
+                },
+                "pageCategory": {
+                  "type": "string"
+                },
+                "parentPage": {
+                  "type": "string"
+                },
+                "childPages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "pageBackgroundImage": {
+                  "type": "string"
+                },
+                "pageButtonContent": {
+                  "type": "component"
+                },
+                "relatedContents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "metaDiscription": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "locale": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "NewPage": {
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "pageColor": {
+            "type": "string",
+            "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "imageSrc": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "imagePosition": {
+                      "type": "string",
+                      "enum": ["left", "right"]
+                    },
+                    "imageShadow": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "align": {
+                      "type": "string",
+                      "default": "center",
+                      "enum": ["left", "center", "right"]
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "default",
+                      "enum": ["narrow", "default", "wide", "full"]
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "fileList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "media": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "style": {
+                      "type": "string",
+                      "enum": [
+                        "mesto_01_full_width",
+                        "mesto_01_narrow_width",
+                        "hrad_01_full_width",
+                        "hrad_01_narrow_width",
+                        "doprava_02_full_width",
+                        "doprava_02_narrow_width",
+                        "parkovanie_02_full_width",
+                        "parkovanie_02_narrow_width",
+                        "bicykel_02_full_width",
+                        "bicykel_02_narrow_width",
+                        "lod_02_full_width",
+                        "lod_02_narrow_width",
+                        "stromy_03_full_width",
+                        "stromy_03_narrow_width",
+                        "vystavba_03_full_width",
+                        "vystavba_03_narrow_width",
+                        "park_04_full_width",
+                        "park_04_narrow_width",
+                        "byvanie_04_full_width",
+                        "byvanie_04_narrow_width",
+                        "budovy_04_full_width",
+                        "budovy_04_narrow_width",
+                        "vzdelavanie",
+                        "skola",
+                        "divadlo"
+                      ]
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "string",
+                      "default": "top",
+                      "enum": ["top", "bottom"]
+                    },
+                    "isRich": {
+                      "type": "boolean",
+                      "default": true
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "pageLinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "page": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "anchor": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "phoneLabel": {
+                      "type": "string",
+                      "default": "zavolať"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "emailLabel": {
+                      "type": "string",
+                      "default": "napísať"
+                    },
+                    "address": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "institutions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "urlLabel": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "firstColumn": {
+                            "type": "string"
+                          },
+                          "secondColumn": {
+                            "type": "string"
+                          },
+                          "thirdColumn": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "flatText": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "width": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": ["narrow", "default", "wide", "full"]
+                          },
+                          "align": {
+                            "type": "string",
+                            "default": "left",
+                            "enum": ["left", "center", "right"]
+                          },
+                          "moreLinkTitle": {
+                            "type": "string"
+                          },
+                          "moreLinkUrl": {
+                            "type": "string"
+                          },
+                          "moreLinkPage": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "institutionsNarrow": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          },
+                          "urlLabel": {
+                            "type": "string"
+                          },
+                          "category": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "single_adult_value": {
+                      "type": "number"
+                    },
+                    "another_adult_value": {
+                      "type": "number"
+                    },
+                    "child_value": {
+                      "type": "number"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "listItems": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "moreLinkTitle": {
+                            "type": "string"
+                          },
+                          "moreLinkUrl": {
+                            "type": "string"
+                          },
+                          "moreLinkPage": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "circleOption": {
+                            "type": "string",
+                            "default": "primary",
+                            "enum": ["primary", "secondary"]
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "buttonContent": {
+                      "type": "string"
+                    },
+                    "videos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "speaker": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "desc": {
+                            "type": "string"
+                          },
+                          "icon": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "variant": {
+                      "type": "string",
+                      "enum": ["basic", "combined", "roadmap"]
+                    },
+                    "buttonText": {
+                      "type": "string"
+                    },
+                    "buttonLink": {
+                      "type": "string"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id", "text"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id", "items"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.columned-text",
+                        "sections.text-with-image",
+                        "sections.narrow-text",
+                        "sections.file-list",
+                        "sections.divider",
+                        "sections.waves",
+                        "sections.links",
+                        "sections.contact",
+                        "sections.accordion",
+                        "sections.calculator",
+                        "sections.list-items",
+                        "sections.newsletter",
+                        "sections.videos",
+                        "sections.icon-title-desc",
+                        "sections.numerical-list",
+                        "sections.articles-list"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "category": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "shortTitle": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "enum": [
+                            "red",
+                            "blue",
+                            "green",
+                            "yellow",
+                            "purple",
+                            "brown"
+                          ]
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "subcategories": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "icon": {
+                          "type": "string",
+                          "enum": [
+                            "mesto_01",
+                            "doprava_mapy_02",
+                            "zp_vystavba_03",
+                            "socialna_pomoc_04",
+                            "vzdelavanie_05",
+                            "kultura_06"
+                          ]
+                        },
+                        "iconHover": {
+                          "type": "string",
+                          "enum": [
+                            "mesto_color_01",
+                            "doprava_mapy_color_02",
+                            "zp_vystavba_color_03",
+                            "socialna_pomoc_color_04",
+                            "vzdelavanie_color_05",
+                            "kultura_color_06"
+                          ]
+                        },
+                        "priority": {
+                          "type": "integer"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "filtering": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["id"]
+                }
+              ]
+            }
+          },
+          "pageHeaderSections": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.subpage-list",
+                        "sections.featured-blog-posts"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "subpageList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["id"],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "page": {
+                            "required": ["id"],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              },
+                              "pageColor": {
+                                "type": "string",
+                                "enum": [
+                                  "red",
+                                  "blue",
+                                  "green",
+                                  "yellow",
+                                  "purple",
+                                  "brown"
+                                ]
+                              },
+                              "sections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageHeaderSections": {
+                                "type": "dynamiczone"
+                              },
+                              "pageCategory": {
+                                "type": "string"
+                              },
+                              "parentPage": {
+                                "type": "string"
+                              },
+                              "childPages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "pageBackgroundImage": {
+                                "type": "string"
+                              },
+                              "pageButtonContent": {
+                                "type": "component"
+                              },
+                              "relatedContents": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "metaDiscription": {
+                                "type": "string"
+                              },
+                              "localizations": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "locale": {
+                                "type": "string"
+                              },
+                              "published_at": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "anchor": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "hasBackground": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": ["id"]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "sections.subpage-list",
+                        "sections.featured-blog-posts"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "first_blog": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        },
+                        "coverImage": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "sections": {
+                          "type": "dynamiczone"
+                        },
+                        "author": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string"
+                        },
+                        "moreLink": {
+                          "type": "component"
+                        },
+                        "date_added": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "second_blog": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        },
+                        "coverImage": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "sections": {
+                          "type": "dynamiczone"
+                        },
+                        "author": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string"
+                        },
+                        "moreLink": {
+                          "type": "component"
+                        },
+                        "date_added": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "third_blog": {
+                      "required": ["id"],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        },
+                        "coverImage": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "sections": {
+                          "type": "dynamiczone"
+                        },
+                        "author": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string"
+                        },
+                        "moreLink": {
+                          "type": "component"
+                        },
+                        "date_added": {
+                          "type": "string"
+                        },
+                        "localizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["id"]
+                }
+              ]
+            }
+          },
+          "pageCategory": {
+            "type": "string"
+          },
+          "parentPage": {
+            "type": "string"
+          },
+          "childPages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "pageButtonContent": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "page": {
+                "required": ["id"],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "pageColor": {
+                    "type": "string",
+                    "enum": [
+                      "red",
+                      "blue",
+                      "green",
+                      "yellow",
+                      "purple",
+                      "brown"
+                    ]
+                  },
+                  "sections": {
+                    "type": "dynamiczone"
+                  },
+                  "pageHeaderSections": {
+                    "type": "dynamiczone"
+                  },
+                  "pageCategory": {
+                    "type": "string"
+                  },
+                  "parentPage": {
+                    "type": "string"
+                  },
+                  "childPages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "pageBackgroundImage": {
+                    "type": "string"
+                  },
+                  "pageButtonContent": {
+                    "type": "component"
+                  },
+                  "relatedContents": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "metaDiscription": {
+                    "type": "string"
+                  },
+                  "localizations": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "locale": {
+                    "type": "string"
+                  },
+                  "published_at": {
+                    "type": "string"
+                  },
+                  "created_by": {
+                    "type": "string"
+                  },
+                  "updated_by": {
+                    "type": "string"
+                  }
+                }
+              },
+              "anchor": {
+                "type": "string"
+              }
+            }
+          },
+          "relatedContents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metaDiscription": {
+            "type": "string"
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locale": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Page"
+    }
+  ]
+}

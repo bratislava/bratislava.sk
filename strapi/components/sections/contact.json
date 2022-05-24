@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_contacts",
+  "info": {
+    "name": "Contact",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phoneLabel": {
+      "type": "string",
+      "default": "zavolať"
+    },
+    "email": {
+      "type": "string"
+    },
+    "emailLabel": {
+      "type": "string",
+      "default": "napísať"
+    },
+    "address": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_subpage_lists",
+  "info": {
+    "name": "Subpage List",
+    "icon": "angle-double-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subpageList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.page-link"
+    },
+    "hasBackground": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

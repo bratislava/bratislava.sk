@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/maillist",
+      "handler": "maillist.send",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

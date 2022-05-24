@@ -1,0 +1,33 @@
+{
+  "root": "apps/strapi/homepage",
+  "projectType": "application",
+  "sourceRoot": "apps/strapi/homepage/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "echo 'skipping'"
+      }
+    },
+    "serve": {
+      "executor": "./tools/executors/strapi:serve"
+    },
+    "docker-build": {
+      "executor": "./tools/executors/docker:build",
+      "options": {
+        "technology": "strapi"
+      }
+    },
+    "docker-run": {
+      "executor": "./tools/executors/docker:run",
+      "options": {
+        "ports": ["1337:1337"]
+      }
+    },
+    "add-secret": {
+      "executor": "./tools/executors/kustomize:secrets",
+      "options": {}
+    }
+  },
+  "tags": ["strapi"]
+}

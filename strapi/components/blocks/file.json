@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blocks_files",
+  "info": {
+    "name": "file",
+    "icon": "archive",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "category": {
+      "type": "string",
+      "required": false
+    },
+    "media": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["files", "images", "videos"],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

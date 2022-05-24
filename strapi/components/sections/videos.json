@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_videos",
+  "info": {
+    "name": "Videos",
+    "icon": "file-video",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "buttonContent": {
+      "type": "string"
+    },
+    "videos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.video"
+    }
+  }
+}

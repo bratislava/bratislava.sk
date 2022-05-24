@@ -1,0 +1,2955 @@
+enum NavigationRenderType {
+  FLAT
+  TREE
+  RFR
+}
+
+type NavigationRelated {
+  id: Int
+  title: String
+  name: String
+}
+
+type NavigationItem {
+  id: Int!
+  title: String!
+  type: String!
+  path: String
+  externalPath: String
+  uiRouterKey: String!
+  menuAttached: Boolean!
+  order: Int!
+  parent: Int
+  master: Int
+  items: [NavigationItem]
+  related: NavigationRelated
+  audience: [String]
+
+  """SQL"""
+  created_at: String
+  updated_at: String
+
+  """MONGO"""
+  createdAt: String
+  updatedAt: String
+
+  """SQL"""
+  created_by: String
+  updated_by: String
+
+  """MONGO"""
+  createdBy: String
+  updatedBy: String
+}
+
+type Navigation {
+  id: String!
+  name: String!
+  slug: String!
+  visible: Boolean!
+}
+
+type NavigationDetails {
+  id: String!
+  name: String!
+  slug: String!
+  visible: Boolean!
+  items: [NavigationItem]!
+}
+
+type ContentTypesNameFields {
+  default: [String!]!
+}
+
+type ContentTypes {
+  uid: String!
+  name: String!
+  isSingle: Boolean!
+  collectionName: String!
+  contentTypeName: String!
+  label: String!
+  relatedField: String!
+  labelSingular: String!
+  endpoint: String!
+  available: Boolean!
+  visible: Boolean!
+}
+
+type NavigationConfig {
+  allowedLevels: Int
+  availableAudience: [NavigationAudience]!
+  additionalFields: [String]!
+  contentTypesNameFields: ContentTypesNameFields
+  contentTypes: [ContentTypes]
+}
+
+input CreateNavigationRelated {
+  ref: String!
+  field: String!
+  refId: String!
+}
+
+input CreateNavigationItem {
+  title: String!
+  type: String!
+  path: String
+  externalPath: String
+  uiRouterKey: String!
+  menuAttached: Boolean!
+  order: Int!
+  parent: Int
+  master: Int
+  items: [CreateNavigationItem]
+  audience: [String]
+  related: CreateNavigationRelated
+}
+
+input CreateNavigation {
+  name: String!
+  items: [CreateNavigationItem]!
+}
+
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type Author {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  picture: UploadFile
+  published_at: DateTime
+}
+
+type AuthorConnection {
+  values: [Author]
+  groupBy: AuthorGroupBy
+  aggregate: AuthorAggregator
+}
+
+type AuthorAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type AuthorGroupBy {
+  id: [AuthorConnectionId]
+  created_at: [AuthorConnectionCreated_at]
+  updated_at: [AuthorConnectionUpdated_at]
+  name: [AuthorConnectionName]
+  picture: [AuthorConnectionPicture]
+  published_at: [AuthorConnectionPublished_at]
+}
+
+type AuthorConnectionId {
+  key: ID
+  connection: AuthorConnection
+}
+
+type AuthorConnectionCreated_at {
+  key: DateTime
+  connection: AuthorConnection
+}
+
+type AuthorConnectionUpdated_at {
+  key: DateTime
+  connection: AuthorConnection
+}
+
+type AuthorConnectionName {
+  key: String
+  connection: AuthorConnection
+}
+
+type AuthorConnectionPicture {
+  key: ID
+  connection: AuthorConnection
+}
+
+type AuthorConnectionPublished_at {
+  key: DateTime
+  connection: AuthorConnection
+}
+
+input AuthorInput {
+  name: String
+  picture: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editAuthorInput {
+  name: String
+  picture: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createAuthorInput {
+  data: AuthorInput
+}
+
+type createAuthorPayload {
+  author: Author
+}
+
+input updateAuthorInput {
+  where: InputID
+  data: editAuthorInput
+}
+
+type updateAuthorPayload {
+  author: Author
+}
+
+input deleteAuthorInput {
+  where: InputID
+}
+
+type deleteAuthorPayload {
+  author: Author
+}
+
+union BlogPostSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsTextWithImage | ComponentSectionsFileList | ComponentSectionsNarrowText | ComponentSectionsDivider | ComponentSectionsWaves | ComponentSectionsLinks | ComponentSectionsContact | ComponentSectionsAccordion | ComponentSectionsCalculator | ComponentSectionsListItems | ComponentSectionsVideos | ComponentSectionsIconTitleDesc | ComponentSectionsNumericalList | ComponentSectionsArticlesList
+
+"""Input type for dynamic zone sections of BlogPost"""
+scalar BlogPostSectionsDynamicZoneInput
+
+type BlogPost {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  excerpt: String
+  coverImage: UploadFile
+  slug: String
+  sections: [BlogPostSectionsDynamicZone]
+  author: UsersPermissionsUser
+  tag: Tag
+  moreLink: ComponentBlocksBlogPostLink
+  date_added: DateTime
+  locale: String
+  published_at: DateTime
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [BlogPost]
+}
+
+type BlogPostConnection {
+  values: [BlogPost]
+  groupBy: BlogPostGroupBy
+  aggregate: BlogPostAggregator
+}
+
+type BlogPostAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BlogPostGroupBy {
+  id: [BlogPostConnectionId]
+  created_at: [BlogPostConnectionCreated_at]
+  updated_at: [BlogPostConnectionUpdated_at]
+  title: [BlogPostConnectionTitle]
+  excerpt: [BlogPostConnectionExcerpt]
+  coverImage: [BlogPostConnectionCoverImage]
+  slug: [BlogPostConnectionSlug]
+  author: [BlogPostConnectionAuthor]
+  tag: [BlogPostConnectionTag]
+  moreLink: [BlogPostConnectionMoreLink]
+  date_added: [BlogPostConnectionDate_added]
+  locale: [BlogPostConnectionLocale]
+  published_at: [BlogPostConnectionPublished_at]
+}
+
+type BlogPostConnectionId {
+  key: ID
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionCreated_at {
+  key: DateTime
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionUpdated_at {
+  key: DateTime
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionTitle {
+  key: String
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionExcerpt {
+  key: String
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionCoverImage {
+  key: ID
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionSlug {
+  key: String
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionAuthor {
+  key: ID
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionTag {
+  key: ID
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionMoreLink {
+  key: ID
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionDate_added {
+  key: DateTime
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionLocale {
+  key: String
+  connection: BlogPostConnection
+}
+
+type BlogPostConnectionPublished_at {
+  key: DateTime
+  connection: BlogPostConnection
+}
+
+input BlogPostInput {
+  title: String
+  excerpt: String
+  coverImage: ID
+  slug: String
+  sections: [BlogPostSectionsDynamicZoneInput!]
+  author: ID
+  tag: ID
+  moreLink: ComponentBlocksBlogPostLinkInput
+  date_added: DateTime
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editBlogPostInput {
+  title: String
+  excerpt: String
+  coverImage: ID
+  slug: String
+  sections: [BlogPostSectionsDynamicZoneInput!]
+  author: ID
+  tag: ID
+  moreLink: editComponentBlocksBlogPostLinkInput
+  date_added: DateTime
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createBlogPostInput {
+  data: BlogPostInput
+}
+
+type createBlogPostPayload {
+  blogPost: BlogPost
+}
+
+input updateBlogPostInput {
+  where: InputID
+  data: editBlogPostInput
+}
+
+type updateBlogPostPayload {
+  blogPost: BlogPost
+}
+
+input deleteBlogPostInput {
+  where: InputID
+}
+
+type deleteBlogPostPayload {
+  blogPost: BlogPost
+}
+
+type Footer {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  address: String
+  phone: String
+  email: String
+  copyright: String
+  youtubeUrl: String
+  facebookUrl: String
+  instagramUrl: String
+  footerSections: [ComponentBlocksFooterSection]
+  accessibilityLink: ComponentBlocksPageLink
+  locale: String
+  published_at: DateTime
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Footer]
+}
+
+input FooterInput {
+  address: String
+  phone: String
+  email: String
+  copyright: String
+  youtubeUrl: String
+  facebookUrl: String
+  instagramUrl: String
+  footerSections: [ComponentBlocksFooterSectionInput]
+  accessibilityLink: ComponentBlocksPageLinkInput
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editFooterInput {
+  address: String
+  phone: String
+  email: String
+  copyright: String
+  youtubeUrl: String
+  facebookUrl: String
+  instagramUrl: String
+  footerSections: [editComponentBlocksFooterSectionInput]
+  accessibilityLink: editComponentBlocksPageLinkInput
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input updateFooterInput {
+  data: editFooterInput
+}
+
+type updateFooterPayload {
+  footer: Footer
+}
+
+type deleteFooterPayload {
+  footer: Footer
+}
+
+type FormInputsDynamicZone {
+  _: Boolean
+}
+
+"""Input type for dynamic zone Inputs of Form"""
+scalar FormInputsDynamicZoneInput
+
+type Form {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  Title: String
+  Target: String
+  Inputs: [FormInputsDynamicZone]
+  published_at: DateTime
+}
+
+type FormConnection {
+  values: [Form]
+  groupBy: FormGroupBy
+  aggregate: FormAggregator
+}
+
+type FormAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type FormGroupBy {
+  id: [FormConnectionId]
+  created_at: [FormConnectionCreated_at]
+  updated_at: [FormConnectionUpdated_at]
+  Title: [FormConnectionTitle]
+  Target: [FormConnectionTarget]
+  published_at: [FormConnectionPublished_at]
+}
+
+type FormConnectionId {
+  key: ID
+  connection: FormConnection
+}
+
+type FormConnectionCreated_at {
+  key: DateTime
+  connection: FormConnection
+}
+
+type FormConnectionUpdated_at {
+  key: DateTime
+  connection: FormConnection
+}
+
+type FormConnectionTitle {
+  key: String
+  connection: FormConnection
+}
+
+type FormConnectionTarget {
+  key: String
+  connection: FormConnection
+}
+
+type FormConnectionPublished_at {
+  key: DateTime
+  connection: FormConnection
+}
+
+input FormInput {
+  Title: String
+  Target: String
+  Inputs: [FormInputsDynamicZoneInput!]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editFormInput {
+  Title: String
+  Target: String
+  Inputs: [FormInputsDynamicZoneInput!]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createFormInput {
+  data: FormInput
+}
+
+type createFormPayload {
+  form: Form
+}
+
+input updateFormInput {
+  where: InputID
+  data: editFormInput
+}
+
+type updateFormPayload {
+  form: Form
+}
+
+input deleteFormInput {
+  where: InputID
+}
+
+type deleteFormPayload {
+  form: Form
+}
+
+type Homepage {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  posts: [ComponentBlocksHomepagePost]
+  left_highlight: BlogPost
+  right_highlight: BlogPost
+  header: ComponentBlocksHeader
+  cards: [ComponentBlocksHomepageBookmark]
+  inba: ComponentBlocksInBa
+  locale: String
+  published_at: DateTime
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Homepage]
+}
+
+input HomepageInput {
+  posts: [ComponentBlocksHomepagePostInput]
+  left_highlight: ID
+  right_highlight: ID
+  header: ComponentBlocksHeaderInput
+  cards: [ComponentBlocksHomepageBookmarkInput]
+  inba: ComponentBlocksInBaInput
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editHomepageInput {
+  posts: [editComponentBlocksHomepagePostInput]
+  left_highlight: ID
+  right_highlight: ID
+  header: editComponentBlocksHeaderInput
+  cards: [editComponentBlocksHomepageBookmarkInput]
+  inba: editComponentBlocksInBaInput
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input updateHomepageInput {
+  data: editHomepageInput
+}
+
+type updateHomepagePayload {
+  homepage: Homepage
+}
+
+type deleteHomepagePayload {
+  homepage: Homepage
+}
+
+enum ENUM_PAGECATEGORY_COLOR {
+  red
+  blue
+  green
+  yellow
+  purple
+  brown
+}
+
+enum ENUM_PAGECATEGORY_ICON {
+  mesto_01
+  doprava_mapy_02
+  zp_vystavba_03
+  socialna_pomoc_04
+  vzdelavanie_05
+  kultura_06
+}
+
+enum ENUM_PAGECATEGORY_ICONHOVER {
+  mesto_color_01
+  doprava_mapy_color_02
+  zp_vystavba_color_03
+  socialna_pomoc_color_04
+  vzdelavanie_color_05
+  kultura_color_06
+}
+
+type PageCategory {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  shortTitle: String
+  color: ENUM_PAGECATEGORY_COLOR
+  icon: ENUM_PAGECATEGORY_ICON
+  iconHover: ENUM_PAGECATEGORY_ICONHOVER
+  priority: Int
+  locale: String
+  pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
+  subcategories(sort: String, limit: Int, start: Int, where: JSON): [PageSubcategory]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [PageCategory]
+}
+
+type PageCategoryConnection {
+  values: [PageCategory]
+  groupBy: PageCategoryGroupBy
+  aggregate: PageCategoryAggregator
+}
+
+type PageCategoryAggregator {
+  count: Int
+  totalCount: Int
+  sum: PageCategoryAggregatorSum
+  avg: PageCategoryAggregatorAvg
+  min: PageCategoryAggregatorMin
+  max: PageCategoryAggregatorMax
+}
+
+type PageCategoryAggregatorSum {
+  priority: Float
+}
+
+type PageCategoryAggregatorAvg {
+  priority: Float
+}
+
+type PageCategoryAggregatorMin {
+  priority: Float
+}
+
+type PageCategoryAggregatorMax {
+  priority: Float
+}
+
+type PageCategoryGroupBy {
+  id: [PageCategoryConnectionId]
+  created_at: [PageCategoryConnectionCreated_at]
+  updated_at: [PageCategoryConnectionUpdated_at]
+  title: [PageCategoryConnectionTitle]
+  shortTitle: [PageCategoryConnectionShortTitle]
+  color: [PageCategoryConnectionColor]
+  icon: [PageCategoryConnectionIcon]
+  iconHover: [PageCategoryConnectionIconHover]
+  priority: [PageCategoryConnectionPriority]
+  locale: [PageCategoryConnectionLocale]
+}
+
+type PageCategoryConnectionId {
+  key: ID
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionCreated_at {
+  key: DateTime
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionUpdated_at {
+  key: DateTime
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionTitle {
+  key: String
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionShortTitle {
+  key: String
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionColor {
+  key: String
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionIcon {
+  key: String
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionIconHover {
+  key: String
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionPriority {
+  key: Int
+  connection: PageCategoryConnection
+}
+
+type PageCategoryConnectionLocale {
+  key: String
+  connection: PageCategoryConnection
+}
+
+input PageCategoryInput {
+  title: String
+  shortTitle: String
+  color: ENUM_PAGECATEGORY_COLOR
+  pages: [ID]
+  subcategories: [ID]
+  icon: ENUM_PAGECATEGORY_ICON
+  iconHover: ENUM_PAGECATEGORY_ICONHOVER
+  priority: Int
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageCategoryInput {
+  title: String
+  shortTitle: String
+  color: ENUM_PAGECATEGORY_COLOR
+  pages: [ID]
+  subcategories: [ID]
+  icon: ENUM_PAGECATEGORY_ICON
+  iconHover: ENUM_PAGECATEGORY_ICONHOVER
+  priority: Int
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createPageCategoryInput {
+  data: PageCategoryInput
+}
+
+type createPageCategoryPayload {
+  pageCategory: PageCategory
+}
+
+input updatePageCategoryInput {
+  where: InputID
+  data: editPageCategoryInput
+}
+
+type updatePageCategoryPayload {
+  pageCategory: PageCategory
+}
+
+input deletePageCategoryInput {
+  where: InputID
+}
+
+type deletePageCategoryPayload {
+  pageCategory: PageCategory
+}
+
+enum ENUM_PAGESUBCATEGORY_ICON {
+  sprava_mesta_01
+  transparentne_mesto_01
+  dane_01
+  projekty_01
+  partnerstva_01
+  mhd_02
+  cyklo_02
+  mapy_02
+  sprava_a_udrzba_02
+  doprava_02
+  parkovanie_02
+  zdielana_mobilita_02
+  zivotne_prostredie_03
+  zelen_03
+  vystavba_a_nehnutelnosti_03
+  uzemny_plan_03
+  rozvoj_mesta_03
+  verejne_osvetlenie_03
+  byvanie_04
+  sluzby_04
+  zariadenia_04
+  pomoc_04
+  aktivity_04
+  skolstvo_05
+  sport_05
+  deti_a_mladez_05
+  ocenovanie_05
+  dotacie_05
+  kalendar_06
+  organizacie_06
+  dedicstvo_06
+  sluzby_06
+  koncepcia_06
+  komunity_06
+  covid_06
+}
+
+type PageSubcategory {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  moreLink: ComponentBlocksPageLink
+  pages: [ComponentBlocksPageLink]
+  priority: Int
+  icon: ENUM_PAGESUBCATEGORY_ICON
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [PageSubcategory]
+}
+
+type PageSubcategoryConnection {
+  values: [PageSubcategory]
+  groupBy: PageSubcategoryGroupBy
+  aggregate: PageSubcategoryAggregator
+}
+
+type PageSubcategoryAggregator {
+  count: Int
+  totalCount: Int
+  sum: PageSubcategoryAggregatorSum
+  avg: PageSubcategoryAggregatorAvg
+  min: PageSubcategoryAggregatorMin
+  max: PageSubcategoryAggregatorMax
+}
+
+type PageSubcategoryAggregatorSum {
+  priority: Float
+}
+
+type PageSubcategoryAggregatorAvg {
+  priority: Float
+}
+
+type PageSubcategoryAggregatorMin {
+  priority: Float
+}
+
+type PageSubcategoryAggregatorMax {
+  priority: Float
+}
+
+type PageSubcategoryGroupBy {
+  id: [PageSubcategoryConnectionId]
+  created_at: [PageSubcategoryConnectionCreated_at]
+  updated_at: [PageSubcategoryConnectionUpdated_at]
+  title: [PageSubcategoryConnectionTitle]
+  moreLink: [PageSubcategoryConnectionMoreLink]
+  priority: [PageSubcategoryConnectionPriority]
+  icon: [PageSubcategoryConnectionIcon]
+  locale: [PageSubcategoryConnectionLocale]
+}
+
+type PageSubcategoryConnectionId {
+  key: ID
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionCreated_at {
+  key: DateTime
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionUpdated_at {
+  key: DateTime
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionTitle {
+  key: String
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionMoreLink {
+  key: ID
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionPriority {
+  key: Int
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionIcon {
+  key: String
+  connection: PageSubcategoryConnection
+}
+
+type PageSubcategoryConnectionLocale {
+  key: String
+  connection: PageSubcategoryConnection
+}
+
+input PageSubcategoryInput {
+  title: String
+  moreLink: ComponentBlocksPageLinkInput
+  pages: [ComponentBlocksPageLinkInput]
+  priority: Int
+  icon: ENUM_PAGESUBCATEGORY_ICON
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageSubcategoryInput {
+  title: String
+  moreLink: editComponentBlocksPageLinkInput
+  pages: [editComponentBlocksPageLinkInput]
+  priority: Int
+  icon: ENUM_PAGESUBCATEGORY_ICON
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createPageSubcategoryInput {
+  data: PageSubcategoryInput
+}
+
+type createPageSubcategoryPayload {
+  pageSubcategory: PageSubcategory
+}
+
+input updatePageSubcategoryInput {
+  where: InputID
+  data: editPageSubcategoryInput
+}
+
+type updatePageSubcategoryPayload {
+  pageSubcategory: PageSubcategory
+}
+
+input deletePageSubcategoryInput {
+  where: InputID
+}
+
+type deletePageSubcategoryPayload {
+  pageSubcategory: PageSubcategory
+}
+
+enum ENUM_PAGE_PAGECOLOR {
+  red
+  blue
+  green
+  yellow
+  purple
+  brown
+}
+
+union PageSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsTextWithImage | ComponentSectionsNarrowText | ComponentSectionsFileList | ComponentSectionsDivider | ComponentSectionsWaves | ComponentSectionsLinks | ComponentSectionsContact | ComponentSectionsAccordion | ComponentSectionsCalculator | ComponentSectionsListItems | ComponentSectionsNewsletter | ComponentSectionsVideos | ComponentSectionsIconTitleDesc | ComponentSectionsNumericalList | ComponentSectionsArticlesList
+
+"""Input type for dynamic zone sections of Page"""
+scalar PageSectionsDynamicZoneInput
+
+union PagePageHeaderSectionsDynamicZone = ComponentSectionsSubpageList | ComponentSectionsFeaturedBlogPosts
+
+"""Input type for dynamic zone pageHeaderSections of Page"""
+scalar PagePageHeaderSectionsDynamicZoneInput
+
+type Page {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  slug: String
+  pageColor: ENUM_PAGE_PAGECOLOR
+  sections: [PageSectionsDynamicZone]
+  pageHeaderSections: [PagePageHeaderSectionsDynamicZone]
+  pageCategory: PageCategory
+  parentPage: Page
+  title: String
+  pageBackgroundImage: UploadFile
+  pageButtonContent: ComponentBlocksPageLink
+  metaDiscription: String
+  locale: String
+  published_at: DateTime
+  childPages(sort: String, limit: Int, start: Int, where: JSON): [Page]
+  relatedContents(sort: String, limit: Int, start: Int, where: JSON): [Tag]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Page]
+  relatedBlogPosts: [BlogPost!]!
+}
+
+type PageConnection {
+  values: [Page]
+  groupBy: PageGroupBy
+  aggregate: PageAggregator
+}
+
+type PageAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PageGroupBy {
+  id: [PageConnectionId]
+  created_at: [PageConnectionCreated_at]
+  updated_at: [PageConnectionUpdated_at]
+  slug: [PageConnectionSlug]
+  pageColor: [PageConnectionPageColor]
+  pageCategory: [PageConnectionPageCategory]
+  parentPage: [PageConnectionParentPage]
+  title: [PageConnectionTitle]
+  pageBackgroundImage: [PageConnectionPageBackgroundImage]
+  pageButtonContent: [PageConnectionPageButtonContent]
+  metaDiscription: [PageConnectionMetaDiscription]
+  locale: [PageConnectionLocale]
+  published_at: [PageConnectionPublished_at]
+}
+
+type PageConnectionId {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionCreated_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionUpdated_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionSlug {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionPageColor {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionPageCategory {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionParentPage {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionTitle {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionPageBackgroundImage {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionPageButtonContent {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionMetaDiscription {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionLocale {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionPublished_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+input PageInput {
+  slug: String
+  pageColor: ENUM_PAGE_PAGECOLOR
+  sections: [PageSectionsDynamicZoneInput!]
+  pageHeaderSections: [PagePageHeaderSectionsDynamicZoneInput!]
+  pageCategory: ID
+  parentPage: ID
+  childPages: [ID]
+  title: String
+  pageBackgroundImage: ID
+  pageButtonContent: ComponentBlocksPageLinkInput
+  relatedContents: [ID]
+  metaDiscription: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageInput {
+  slug: String
+  pageColor: ENUM_PAGE_PAGECOLOR
+  sections: [PageSectionsDynamicZoneInput!]
+  pageHeaderSections: [PagePageHeaderSectionsDynamicZoneInput!]
+  pageCategory: ID
+  parentPage: ID
+  childPages: [ID]
+  title: String
+  pageBackgroundImage: ID
+  pageButtonContent: editComponentBlocksPageLinkInput
+  relatedContents: [ID]
+  metaDiscription: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createPageInput {
+  data: PageInput
+}
+
+type createPagePayload {
+  page: Page
+}
+
+input updatePageInput {
+  where: InputID
+  data: editPageInput
+}
+
+type updatePagePayload {
+  page: Page
+}
+
+input deletePageInput {
+  where: InputID
+}
+
+type deletePagePayload {
+  page: Page
+}
+
+type Tag {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  pageCategory: PageCategory
+  published_at: DateTime
+  blogPosts(sort: String, limit: Int, start: Int, where: JSON): [BlogPost]
+}
+
+type TagConnection {
+  values: [Tag]
+  groupBy: TagGroupBy
+  aggregate: TagAggregator
+}
+
+type TagAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TagGroupBy {
+  id: [TagConnectionId]
+  created_at: [TagConnectionCreated_at]
+  updated_at: [TagConnectionUpdated_at]
+  title: [TagConnectionTitle]
+  pageCategory: [TagConnectionPageCategory]
+  published_at: [TagConnectionPublished_at]
+}
+
+type TagConnectionId {
+  key: ID
+  connection: TagConnection
+}
+
+type TagConnectionCreated_at {
+  key: DateTime
+  connection: TagConnection
+}
+
+type TagConnectionUpdated_at {
+  key: DateTime
+  connection: TagConnection
+}
+
+type TagConnectionTitle {
+  key: String
+  connection: TagConnection
+}
+
+type TagConnectionPageCategory {
+  key: ID
+  connection: TagConnection
+}
+
+type TagConnectionPublished_at {
+  key: DateTime
+  connection: TagConnection
+}
+
+input TagInput {
+  title: String
+  pageCategory: ID
+  blogPosts: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editTagInput {
+  title: String
+  pageCategory: ID
+  blogPosts: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createTagInput {
+  data: TagInput
+}
+
+type createTagPayload {
+  tag: Tag
+}
+
+input updateTagInput {
+  where: InputID
+  data: editTagInput
+}
+
+type updateTagPayload {
+  tag: Tag
+}
+
+input deleteTagInput {
+  where: InputID
+}
+
+type deleteTagPayload {
+  tag: Tag
+}
+
+type EmailDesignerEmailTemplate {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  sourceCodeToTemplateId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+}
+
+input EmailTemplateInput {
+  sourceCodeToTemplateId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  created_by: ID
+  updated_by: ID
+}
+
+input editEmailTemplateInput {
+  sourceCodeToTemplateId: Int
+  design: JSON
+  name: String
+  subject: String
+  bodyHtml: String
+  bodyText: String
+  enabled: Boolean
+  tags: JSON
+  created_by: ID
+  updated_by: ID
+}
+
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+type NavigationAudience {
+  id: ID!
+  name: String
+  key: String
+}
+
+input AudienceInput {
+  name: String
+  key: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editAudienceInput {
+  name: String
+  key: String
+  created_by: ID
+  updated_by: ID
+}
+
+"""Navigation container"""
+type NavigationNavigation {
+  id: ID!
+  name: String!
+  slug: String!
+  visible: Boolean
+  items(sort: String, limit: Int, start: Int, where: JSON): [NavigationNavigationitem]
+}
+
+input NavigationInput {
+  name: String!
+  slug: String!
+  visible: Boolean
+  items: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editNavigationInput {
+  name: String
+  slug: String
+  visible: Boolean
+  items: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+enum ENUM_NAVIGATIONNAVIGATIONITEM_TYPE {
+  INTERNAL
+  EXTERNAL
+}
+
+type NavigationNavigationitem {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  type: ENUM_NAVIGATIONNAVIGATIONITEM_TYPE
+  path: String
+  externalPath: String
+  uiRouterKey: String
+  menuAttached: Boolean
+  order: Int
+  parent: NavigationNavigationitem
+  master: NavigationNavigation
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+  audience(sort: String, limit: Int, start: Int, where: JSON): [NavigationAudience]
+}
+
+input NavigationitemInput {
+  title: String!
+  type: ENUM_NAVIGATIONNAVIGATIONITEM_TYPE
+  path: String
+  externalPath: String
+  uiRouterKey: String
+  menuAttached: Boolean
+  order: Int
+  related: [ID]
+  parent: ID
+  master: ID
+  audience: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editNavigationitemInput {
+  title: String
+  type: ENUM_NAVIGATIONNAVIGATIONITEM_TYPE
+  path: String
+  externalPath: String
+  uiRouterKey: String
+  menuAttached: Boolean
+  order: Int
+  related: [ID]
+  parent: ID
+  master: ID
+  audience: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  posts: BlogPost
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  posts: [UsersPermissionsUserConnectionPosts]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionPosts {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  posts: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  posts: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH {
+  narrow
+  default
+  wide
+  full
+}
+
+enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN {
+  left
+  center
+  right
+}
+
+type ComponentAccordionItemsFlatText {
+  id: ID!
+  category: String
+  content: String
+  width: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH
+  align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
+  moreLinkTitle: String
+  moreLinkUrl: String
+  moreLinkPage: Page
+}
+
+input ComponentAccordionItemsFlatTextInput {
+  category: String
+  content: String
+  width: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH
+  align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
+  moreLinkTitle: String
+  moreLinkUrl: String
+  moreLinkPage: ID
+}
+
+input editComponentAccordionItemsFlatTextInput {
+  id: ID
+  category: String
+  content: String
+  width: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH
+  align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
+  moreLinkTitle: String
+  moreLinkUrl: String
+  moreLinkPage: ID
+}
+
+type ComponentAccordionItemsInstitutionNarrow {
+  id: ID!
+  title: String
+  subtitle: String
+  urlLabel: String
+  category: String
+  url: String
+}
+
+input ComponentAccordionItemsInstitutionNarrowInput {
+  title: String
+  subtitle: String
+  urlLabel: String
+  category: String
+  url: String
+}
+
+input editComponentAccordionItemsInstitutionNarrowInput {
+  id: ID
+  title: String
+  subtitle: String
+  urlLabel: String
+  category: String
+  url: String
+}
+
+type ComponentAccordionItemsInstitution {
+  id: ID!
+  title: String
+  url: String
+  urlLabel: String
+  category: String
+  firstColumn: String
+  secondColumn: String
+  thirdColumn: String
+  subtitle: String
+}
+
+input ComponentAccordionItemsInstitutionInput {
+  title: String
+  url: String
+  urlLabel: String
+  category: String
+  firstColumn: String
+  secondColumn: String
+  thirdColumn: String
+  subtitle: String
+}
+
+input editComponentAccordionItemsInstitutionInput {
+  id: ID
+  title: String
+  url: String
+  urlLabel: String
+  category: String
+  firstColumn: String
+  secondColumn: String
+  thirdColumn: String
+  subtitle: String
+}
+
+type ComponentBlocksBlogPostLink {
+  id: ID!
+  title: String
+  url: String
+  blogPost: BlogPost
+}
+
+input ComponentBlocksBlogPostLinkInput {
+  title: String
+  url: String
+  blogPost: ID
+}
+
+input editComponentBlocksBlogPostLinkInput {
+  id: ID
+  title: String
+  url: String
+  blogPost: ID
+}
+
+type ComponentBlocksBookmarkLink {
+  id: ID!
+  title: String
+  href: String
+}
+
+input ComponentBlocksBookmarkLinkInput {
+  title: String
+  href: String
+}
+
+input editComponentBlocksBookmarkLinkInput {
+  id: ID
+  title: String
+  href: String
+}
+
+type ComponentBlocksFile {
+  id: ID!
+  title: String
+  category: String
+  media: UploadFile
+}
+
+input ComponentBlocksFileInput {
+  title: String
+  category: String
+  media: ID
+}
+
+input editComponentBlocksFileInput {
+  id: ID
+  title: String
+  category: String
+  media: ID
+}
+
+type ComponentBlocksFooterSection {
+  id: ID!
+  title: String
+  pageLinks: [ComponentBlocksPageLink]
+}
+
+input ComponentBlocksFooterSectionInput {
+  title: String
+  pageLinks: [ComponentBlocksPageLinkInput]
+}
+
+input editComponentBlocksFooterSectionInput {
+  id: ID
+  title: String
+  pageLinks: [editComponentBlocksPageLinkInput]
+}
+
+type ComponentBlocksHeader {
+  id: ID!
+  subtitle: String
+  picture: UploadFile
+}
+
+input ComponentBlocksHeaderInput {
+  subtitle: String
+  picture: ID
+}
+
+input editComponentBlocksHeaderInput {
+  id: ID
+  subtitle: String
+  picture: ID
+}
+
+type ComponentBlocksHomepageBookmark {
+  id: ID!
+  title: String
+  headline: String
+  text: String
+  link: ComponentBlocksBookmarkLink
+  picture: UploadFile
+  variant: String
+}
+
+input ComponentBlocksHomepageBookmarkInput {
+  title: String
+  headline: String
+  text: String
+  link: ComponentBlocksBookmarkLinkInput
+  picture: ID
+  variant: String
+}
+
+input editComponentBlocksHomepageBookmarkInput {
+  id: ID
+  title: String
+  headline: String
+  text: String
+  link: editComponentBlocksBookmarkLinkInput
+  picture: ID
+  variant: String
+}
+
+type ComponentBlocksHomepagePost {
+  id: ID!
+  title: String
+  slug: String
+  image: UploadFile
+}
+
+input ComponentBlocksHomepagePostInput {
+  title: String
+  slug: String
+  image: ID
+}
+
+input editComponentBlocksHomepagePostInput {
+  id: ID
+  title: String
+  slug: String
+  image: ID
+}
+
+type ComponentBlocksIconWithTitleAndDescription {
+  id: ID!
+  title: String
+  desc: String
+  icon: UploadFile
+}
+
+input ComponentBlocksIconWithTitleAndDescriptionInput {
+  title: String
+  desc: String
+  icon: ID
+}
+
+input editComponentBlocksIconWithTitleAndDescriptionInput {
+  id: ID
+  title: String
+  desc: String
+  icon: ID
+}
+
+type ComponentBlocksInBaPictures {
+  id: ID!
+  frontImage: UploadFile
+  rearImage: UploadFile
+}
+
+input ComponentBlocksInBaPictureInput {
+  frontImage: ID
+  rearImage: ID
+}
+
+input editComponentBlocksInBaPictureInput {
+  id: ID
+  frontImage: ID
+  rearImage: ID
+}
+
+type ComponentBlocksInBa {
+  id: ID!
+  title: String
+  content: String
+  images: ComponentBlocksInBaPictures
+  link: String
+}
+
+input ComponentBlocksInBaInput {
+  title: String
+  content: String
+  images: ComponentBlocksInBaPictureInput
+  link: String
+}
+
+input editComponentBlocksInBaInput {
+  id: ID
+  title: String
+  content: String
+  images: editComponentBlocksInBaPictureInput
+  link: String
+}
+
+enum ENUM_COMPONENTBLOCKSLISTITEM_CIRCLEOPTION {
+  primary
+  secondary
+}
+
+type ComponentBlocksListItem {
+  id: ID!
+  content: String
+  moreLinkTitle: String
+  moreLinkUrl: String
+  moreLinkPage: Page
+  circleOption: ENUM_COMPONENTBLOCKSLISTITEM_CIRCLEOPTION
+}
+
+input ComponentBlocksListItemInput {
+  content: String
+  moreLinkTitle: String
+  moreLinkUrl: String
+  moreLinkPage: ID
+  circleOption: ENUM_COMPONENTBLOCKSLISTITEM_CIRCLEOPTION
+}
+
+input editComponentBlocksListItemInput {
+  id: ID
+  content: String
+  moreLinkTitle: String
+  moreLinkUrl: String
+  moreLinkPage: ID
+  circleOption: ENUM_COMPONENTBLOCKSLISTITEM_CIRCLEOPTION
+}
+
+type ComponentBlocksNumericalListItem {
+  id: ID!
+  text: String!
+}
+
+input ComponentBlocksNumericalListItemInput {
+  text: String!
+}
+
+input editComponentBlocksNumericalListItemInput {
+  id: ID
+  text: String
+}
+
+type ComponentBlocksPageLink {
+  id: ID!
+  title: String
+  url: String
+  page: Page
+  anchor: String
+}
+
+input ComponentBlocksPageLinkInput {
+  title: String
+  url: String
+  page: ID
+  anchor: String
+}
+
+input editComponentBlocksPageLinkInput {
+  id: ID
+  title: String
+  url: String
+  page: ID
+  anchor: String
+}
+
+type ComponentBlocksSubpage {
+  id: ID!
+  title: String
+  link: String
+}
+
+input ComponentBlocksSubpageInput {
+  title: String
+  link: String
+}
+
+input editComponentBlocksSubpageInput {
+  id: ID
+  title: String
+  link: String
+}
+
+type ComponentBlocksVideo {
+  id: ID!
+  title: String
+  speaker: String
+  url: String
+}
+
+input ComponentBlocksVideoInput {
+  title: String
+  speaker: String
+  url: String
+}
+
+input editComponentBlocksVideoInput {
+  id: ID
+  title: String
+  speaker: String
+  url: String
+}
+
+type ComponentSectionsAccordion {
+  id: ID!
+  hasBackground: Boolean
+  institutions: [ComponentAccordionItemsInstitution]
+  flatText: [ComponentAccordionItemsFlatText]
+  institutionsNarrow: [ComponentAccordionItemsInstitutionNarrow]
+  title: String
+}
+
+input ComponentSectionsAccordionInput {
+  hasBackground: Boolean
+  institutions: [ComponentAccordionItemsInstitutionInput]
+  flatText: [ComponentAccordionItemsFlatTextInput]
+  institutionsNarrow: [ComponentAccordionItemsInstitutionNarrowInput]
+  title: String
+}
+
+input editComponentSectionsAccordionInput {
+  id: ID
+  hasBackground: Boolean
+  institutions: [editComponentAccordionItemsInstitutionInput]
+  flatText: [editComponentAccordionItemsFlatTextInput]
+  institutionsNarrow: [editComponentAccordionItemsInstitutionNarrowInput]
+  title: String
+}
+
+type ComponentSectionsArticlesList {
+  id: ID!
+  title: String
+  category: PageCategory
+  filtering: Boolean
+}
+
+input ComponentSectionsArticlesListInput {
+  title: String
+  category: ID
+  filtering: Boolean
+}
+
+input editComponentSectionsArticlesListInput {
+  id: ID
+  title: String
+  category: ID
+  filtering: Boolean
+}
+
+type ComponentSectionsCalculator {
+  id: ID!
+  single_adult_value: Float
+  another_adult_value: Float
+  child_value: Float
+  hasBackground: Boolean
+}
+
+input ComponentSectionsCalculatorInput {
+  single_adult_value: Float
+  another_adult_value: Float
+  child_value: Float
+  hasBackground: Boolean
+}
+
+input editComponentSectionsCalculatorInput {
+  id: ID
+  single_adult_value: Float
+  another_adult_value: Float
+  child_value: Float
+  hasBackground: Boolean
+}
+
+type ComponentSectionsColumnedText {
+  id: ID!
+  content: String
+  hasBackground: Boolean
+}
+
+input ComponentSectionsColumnedTextInput {
+  content: String
+  hasBackground: Boolean
+}
+
+input editComponentSectionsColumnedTextInput {
+  id: ID
+  content: String
+  hasBackground: Boolean
+}
+
+type ComponentSectionsContact {
+  id: ID!
+  title: String
+  phone: String
+  phoneLabel: String
+  email: String
+  emailLabel: String
+  address: String
+  description: String
+  hasBackground: Boolean
+}
+
+input ComponentSectionsContactInput {
+  title: String
+  phone: String
+  phoneLabel: String
+  email: String
+  emailLabel: String
+  address: String
+  description: String
+  hasBackground: Boolean
+}
+
+input editComponentSectionsContactInput {
+  id: ID
+  title: String
+  phone: String
+  phoneLabel: String
+  email: String
+  emailLabel: String
+  address: String
+  description: String
+  hasBackground: Boolean
+}
+
+enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
+  mesto_01_full_width
+  mesto_01_narrow_width
+  hrad_01_full_width
+  hrad_01_narrow_width
+  doprava_02_full_width
+  doprava_02_narrow_width
+  parkovanie_02_full_width
+  parkovanie_02_narrow_width
+  bicykel_02_full_width
+  bicykel_02_narrow_width
+  lod_02_full_width
+  lod_02_narrow_width
+  stromy_03_full_width
+  stromy_03_narrow_width
+  vystavba_03_full_width
+  vystavba_03_narrow_width
+  park_04_full_width
+  park_04_narrow_width
+  byvanie_04_full_width
+  byvanie_04_narrow_width
+  budovy_04_full_width
+  budovy_04_narrow_width
+  vzdelavanie
+  skola
+  divadlo
+}
+
+type ComponentSectionsDivider {
+  id: ID!
+  style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
+  hasBackground: Boolean
+}
+
+input ComponentSectionsDividerInput {
+  style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
+  hasBackground: Boolean
+}
+
+input editComponentSectionsDividerInput {
+  id: ID
+  style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
+  hasBackground: Boolean
+}
+
+type ComponentSectionsFeaturedBlogPosts {
+  id: ID!
+  first_blog: BlogPost
+  second_blog: BlogPost
+  third_blog: BlogPost
+}
+
+input ComponentSectionsFeaturedBlogPostInput {
+  first_blog: ID
+  second_blog: ID
+  third_blog: ID
+}
+
+input editComponentSectionsFeaturedBlogPostInput {
+  id: ID
+  first_blog: ID
+  second_blog: ID
+  third_blog: ID
+}
+
+type ComponentSectionsFileList {
+  id: ID!
+  fileList: [ComponentBlocksFile]
+  hasBackground: Boolean
+}
+
+input ComponentSectionsFileListInput {
+  fileList: [ComponentBlocksFileInput]
+  hasBackground: Boolean
+}
+
+input editComponentSectionsFileListInput {
+  id: ID
+  fileList: [editComponentBlocksFileInput]
+  hasBackground: Boolean
+}
+
+type ComponentSectionsIconTitleDesc {
+  id: ID!
+  title: String
+  list: [ComponentBlocksIconWithTitleAndDescription]
+}
+
+input ComponentSectionsIconTitleDescInput {
+  title: String
+  list: [ComponentBlocksIconWithTitleAndDescriptionInput]
+}
+
+input editComponentSectionsIconTitleDescInput {
+  id: ID
+  title: String
+  list: [editComponentBlocksIconWithTitleAndDescriptionInput]
+}
+
+type ComponentSectionsLinks {
+  id: ID!
+  title: String
+  pageLinks: [ComponentBlocksPageLink]
+  hasBackground: Boolean
+}
+
+input ComponentSectionsLinkInput {
+  title: String
+  pageLinks: [ComponentBlocksPageLinkInput]
+  hasBackground: Boolean
+}
+
+input editComponentSectionsLinkInput {
+  id: ID
+  title: String
+  pageLinks: [editComponentBlocksPageLinkInput]
+  hasBackground: Boolean
+}
+
+type ComponentSectionsListItems {
+  id: ID!
+  listItems: [ComponentBlocksListItem]
+  title: String
+  hasBackground: Boolean
+}
+
+input ComponentSectionsListItemInput {
+  listItems: [ComponentBlocksListItemInput]
+  title: String
+  hasBackground: Boolean
+}
+
+input editComponentSectionsListItemInput {
+  id: ID
+  listItems: [editComponentBlocksListItemInput]
+  title: String
+  hasBackground: Boolean
+}
+
+enum ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN {
+  left
+  center
+  right
+}
+
+enum ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH {
+  narrow
+  default
+  wide
+  full
+}
+
+type ComponentSectionsNarrowText {
+  id: ID!
+  content: String
+  align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
+  width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
+  hasBackground: Boolean
+}
+
+input ComponentSectionsNarrowTextInput {
+  content: String
+  align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
+  width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
+  hasBackground: Boolean
+}
+
+input editComponentSectionsNarrowTextInput {
+  id: ID
+  content: String
+  align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
+  width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
+  hasBackground: Boolean
+}
+
+type ComponentSectionsNewsletter {
+  id: ID!
+  title: String
+}
+
+input ComponentSectionsNewsletterInput {
+  title: String
+}
+
+input editComponentSectionsNewsletterInput {
+  id: ID
+  title: String
+}
+
+enum ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT {
+  basic
+  combined
+  roadmap
+}
+
+type ComponentSectionsNumericalList {
+  id: ID!
+  title: String
+  variant: ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT
+  buttonText: String
+  buttonLink: String
+  items: [ComponentBlocksNumericalListItem]
+  hasBackground: Boolean
+}
+
+input ComponentSectionsNumericalListInput {
+  title: String
+  variant: ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT
+  buttonText: String
+  buttonLink: String
+  items: [ComponentBlocksNumericalListItemInput!]
+  hasBackground: Boolean
+}
+
+input editComponentSectionsNumericalListInput {
+  id: ID
+  title: String
+  variant: ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT
+  buttonText: String
+  buttonLink: String
+  items: [editComponentBlocksNumericalListItemInput]
+  hasBackground: Boolean
+}
+
+type ComponentSectionsSubpageList {
+  id: ID!
+  subpageList: [ComponentBlocksPageLink]
+  hasBackground: Boolean
+}
+
+input ComponentSectionsSubpageListInput {
+  subpageList: [ComponentBlocksPageLinkInput]
+  hasBackground: Boolean
+}
+
+input editComponentSectionsSubpageListInput {
+  id: ID
+  subpageList: [editComponentBlocksPageLinkInput]
+  hasBackground: Boolean
+}
+
+enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION {
+  left
+  right
+}
+
+type ComponentSectionsTextWithImage {
+  id: ID!
+  content: String
+  imageSrc: UploadFile
+  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
+  imageShadow: Boolean
+  hasBackground: Boolean
+}
+
+input ComponentSectionsTextWithImageInput {
+  content: String
+  imageSrc: ID
+  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
+  imageShadow: Boolean
+  hasBackground: Boolean
+}
+
+input editComponentSectionsTextWithImageInput {
+  id: ID
+  content: String
+  imageSrc: ID
+  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
+  imageShadow: Boolean
+  hasBackground: Boolean
+}
+
+type ComponentSectionsVideos {
+  id: ID!
+  title: String
+  subtitle: String
+  buttonContent: String
+  videos: [ComponentBlocksVideo]
+}
+
+input ComponentSectionsVideoInput {
+  title: String
+  subtitle: String
+  buttonContent: String
+  videos: [ComponentBlocksVideoInput]
+}
+
+input editComponentSectionsVideoInput {
+  id: ID
+  title: String
+  subtitle: String
+  buttonContent: String
+  videos: [editComponentBlocksVideoInput]
+}
+
+enum ENUM_COMPONENTSECTIONSWAVES_POSITION {
+  top
+  bottom
+}
+
+type ComponentSectionsWaves {
+  id: ID!
+  position: ENUM_COMPONENTSECTIONSWAVES_POSITION
+  isRich: Boolean
+}
+
+input ComponentSectionsWaveInput {
+  position: ENUM_COMPONENTSECTIONSWAVES_POSITION
+  isRich: Boolean
+}
+
+input editComponentSectionsWaveInput {
+  id: ID
+  position: ENUM_COMPONENTSECTIONSWAVES_POSITION
+  isRich: Boolean
+}
+
+union Morph = NavigationRelated | NavigationItem | Navigation | NavigationDetails | ContentTypesNameFields | ContentTypes | NavigationConfig | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Author | AuthorConnection | AuthorAggregator | AuthorGroupBy | AuthorConnectionId | AuthorConnectionCreated_at | AuthorConnectionUpdated_at | AuthorConnectionName | AuthorConnectionPicture | AuthorConnectionPublished_at | createAuthorPayload | updateAuthorPayload | deleteAuthorPayload | BlogPost | BlogPostConnection | BlogPostAggregator | BlogPostGroupBy | BlogPostConnectionId | BlogPostConnectionCreated_at | BlogPostConnectionUpdated_at | BlogPostConnectionTitle | BlogPostConnectionExcerpt | BlogPostConnectionCoverImage | BlogPostConnectionSlug | BlogPostConnectionAuthor | BlogPostConnectionTag | BlogPostConnectionMoreLink | BlogPostConnectionDate_added | BlogPostConnectionLocale | BlogPostConnectionPublished_at | createBlogPostPayload | updateBlogPostPayload | deleteBlogPostPayload | Footer | updateFooterPayload | deleteFooterPayload | FormInputsDynamicZone | Form | FormConnection | FormAggregator | FormGroupBy | FormConnectionId | FormConnectionCreated_at | FormConnectionUpdated_at | FormConnectionTitle | FormConnectionTarget | FormConnectionPublished_at | createFormPayload | updateFormPayload | deleteFormPayload | Homepage | updateHomepagePayload | deleteHomepagePayload | PageCategory | PageCategoryConnection | PageCategoryAggregator | PageCategoryAggregatorSum | PageCategoryAggregatorAvg | PageCategoryAggregatorMin | PageCategoryAggregatorMax | PageCategoryGroupBy | PageCategoryConnectionId | PageCategoryConnectionCreated_at | PageCategoryConnectionUpdated_at | PageCategoryConnectionTitle | PageCategoryConnectionShortTitle | PageCategoryConnectionColor | PageCategoryConnectionIcon | PageCategoryConnectionIconHover | PageCategoryConnectionPriority | PageCategoryConnectionLocale | createPageCategoryPayload | updatePageCategoryPayload | deletePageCategoryPayload | PageSubcategory | PageSubcategoryConnection | PageSubcategoryAggregator | PageSubcategoryAggregatorSum | PageSubcategoryAggregatorAvg | PageSubcategoryAggregatorMin | PageSubcategoryAggregatorMax | PageSubcategoryGroupBy | PageSubcategoryConnectionId | PageSubcategoryConnectionCreated_at | PageSubcategoryConnectionUpdated_at | PageSubcategoryConnectionTitle | PageSubcategoryConnectionMoreLink | PageSubcategoryConnectionPriority | PageSubcategoryConnectionIcon | PageSubcategoryConnectionLocale | createPageSubcategoryPayload | updatePageSubcategoryPayload | deletePageSubcategoryPayload | Page | PageConnection | PageAggregator | PageGroupBy | PageConnectionId | PageConnectionCreated_at | PageConnectionUpdated_at | PageConnectionSlug | PageConnectionPageColor | PageConnectionPageCategory | PageConnectionParentPage | PageConnectionTitle | PageConnectionPageBackgroundImage | PageConnectionPageButtonContent | PageConnectionMetaDiscription | PageConnectionLocale | PageConnectionPublished_at | createPagePayload | updatePagePayload | deletePagePayload | Tag | TagConnection | TagAggregator | TagGroupBy | TagConnectionId | TagConnectionCreated_at | TagConnectionUpdated_at | TagConnectionTitle | TagConnectionPageCategory | TagConnectionPublished_at | createTagPayload | updateTagPayload | deleteTagPayload | EmailDesignerEmailTemplate | I18NLocale | NavigationAudience | NavigationNavigation | NavigationNavigationitem | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionPosts | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitutionNarrow | ComponentAccordionItemsInstitution | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksHeader | ComponentBlocksHomepageBookmark | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBaPictures | ComponentBlocksInBa | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsIconTitleDesc | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  author(id: ID!, publicationState: PublicationState): Author
+  authors(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Author]
+  authorsConnection(sort: String, limit: Int, start: Int, where: JSON): AuthorConnection
+  blogPost(id: ID!, publicationState: PublicationState): BlogPost
+  blogPosts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [BlogPost]
+  blogPostsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): BlogPostConnection
+  footer(publicationState: PublicationState, locale: String): Footer
+  form(id: ID!, publicationState: PublicationState): Form
+  forms(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Form]
+  formsConnection(sort: String, limit: Int, start: Int, where: JSON): FormConnection
+  homepage(publicationState: PublicationState, locale: String): Homepage
+  pageCategory(id: ID!, publicationState: PublicationState): PageCategory
+  pageCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [PageCategory]
+  pageCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PageCategoryConnection
+  pageSubcategory(id: ID!, publicationState: PublicationState): PageSubcategory
+  pageSubcategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [PageSubcategory]
+  pageSubcategoriesConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PageSubcategoryConnection
+  page(id: ID!, publicationState: PublicationState): Page
+  pages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Page]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PageConnection
+  tag(id: ID!, publicationState: PublicationState): Tag
+  tags(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Tag]
+  tagsConnection(sort: String, limit: Int, start: Int, where: JSON): TagConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  renderNavigation(navigationIdOrSlug: String!, type: NavigationRenderType, menuOnly: Boolean): [NavigationItem]!
+  renderNavigationChild(id: String!, childUIKey: String!, type: NavigationRenderType, menuOnly: Boolean): [NavigationItem]!
+  getNavigation: [Navigation]!
+  configNavigation: NavigationConfig
+  getByIdNavigation(id: String!): NavigationItem
+  me: UsersPermissionsMe
+  relatedPostsBySlug(slug: String!, locale: String!): [BlogPost!]!
+  blogPostBySlug(slug: String!, locale: String): BlogPost
+  latestPostsByTags(tags: [Int], limit: Int, offset: Int): [BlogPost!]!
+  pageBySlug(slug: String!, locale: String!): Page
+}
+
+type Mutation {
+  createAuthor(input: createAuthorInput): createAuthorPayload
+  updateAuthor(input: updateAuthorInput): updateAuthorPayload
+  deleteAuthor(input: deleteAuthorInput): deleteAuthorPayload
+  createBlogPost(input: createBlogPostInput): createBlogPostPayload
+  updateBlogPost(input: updateBlogPostInput): updateBlogPostPayload
+  deleteBlogPost(input: deleteBlogPostInput): deleteBlogPostPayload
+  updateFooter(input: updateFooterInput, locale: String): updateFooterPayload
+  deleteFooter(locale: String): deleteFooterPayload
+  createForm(input: createFormInput): createFormPayload
+  updateForm(input: updateFormInput): updateFormPayload
+  deleteForm(input: deleteFormInput): deleteFormPayload
+  updateHomepage(input: updateHomepageInput, locale: String): updateHomepagePayload
+  deleteHomepage(locale: String): deleteHomepagePayload
+  createPageCategory(input: createPageCategoryInput): createPageCategoryPayload
+  updatePageCategory(input: updatePageCategoryInput): updatePageCategoryPayload
+  deletePageCategory(input: deletePageCategoryInput): deletePageCategoryPayload
+  createPageSubcategory(input: createPageSubcategoryInput): createPageSubcategoryPayload
+  updatePageSubcategory(input: updatePageSubcategoryInput): updatePageSubcategoryPayload
+  deletePageSubcategory(input: deletePageSubcategoryInput): deletePageSubcategoryPayload
+  createPage(input: createPageInput): createPagePayload
+  updatePage(input: updatePageInput): updatePagePayload
+  deletePage(input: deletePageInput): deletePagePayload
+  createTag(input: createTagInput): createTagPayload
+  updateTag(input: updateTagInput): updateTagPayload
+  deleteTag(input: deleteTagInput): deleteTagPayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  createBlogPostLocalization(input: updateBlogPostInput!): BlogPost!
+  createFooterLocalization(input: updateFooterInput!): Footer!
+  createHomepageLocalization(input: updateHomepageInput!): Homepage!
+  createPageCategoryLocalization(input: updatePageCategoryInput!): PageCategory!
+  createPageSubcategoryLocalization(input: updatePageSubcategoryInput!): PageSubcategory!
+  createPageLocalization(input: updatePageInput!): Page!
+  navigationCreate(newNavigation: CreateNavigation!): Navigation!
+  navigationUpdate(id: String!, navigation: CreateNavigation!): Navigation!
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
