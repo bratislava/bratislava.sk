@@ -2,13 +2,30 @@
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
+## 🧰 Setup
+
+You need postgres running locally (with correct credentials & databse available) - the default setup is as follows, you can override any of the variables by passing them in you `.env` file:
+
+```
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_NAME=postgres4
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=password
+DATABASE_SCHEMA=public
+```
+
+Before you start, install all dependencies using by running
+
+```
+yarn
+```
+
 ### `develop`
 
 Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
 
 ```
-npm run develop
-# or
 yarn develop
 ```
 
@@ -17,8 +34,6 @@ yarn develop
 Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
 
 ```
-npm run start
-# or
 yarn start
 ```
 
@@ -27,8 +42,6 @@ yarn start
 Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
 
 ```
-npm run build
-# or
 yarn build
 ```
 
