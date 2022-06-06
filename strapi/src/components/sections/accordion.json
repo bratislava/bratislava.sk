@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_accordions",
+  "info": {
+    "displayName": "Accordion"
+  },
+  "options": {},
+  "attributes": {
+    "hasBackground": {
+      "type": "boolean"
+    },
+    "institutions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "accordion-items.institution"
+    },
+    "flatText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "accordion-items.flat-text"
+    },
+    "institutionsNarrow": {
+      "type": "component",
+      "repeatable": true,
+      "component": "accordion-items.institution-narrow"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

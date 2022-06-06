@@ -1,25 +1,57 @@
-# Strapi - homepage
+# 🚀 Getting started with Strapi
 
-## Development
+Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
-To start strapi-hompage application use:
+### `develop`
 
-```
-nx serve strapi-homepage
-```
-
-For development purposes strapi is using sqlite in a docker volume. It has total of 4 docker volumes, one for node_modules, one for build, one for cache and for db.
-
-To start with a fresh admin build (deletes build and cache volume) run
+Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
 
 ```
-nx serve strapi-homepage --clean
+npm run develop
+# or
+yarn develop
 ```
 
-To delete the database and start with fresh strapi, you have to remove the _strapi-homepage_db_ volume.
+### `start`
 
-If you want to keep the database file outside of docker (warning: will cause performance issues and is really not necessary, if you want to explore using some client, just use a dockerized version and mount the volume to it), you can specify custom sqlite file location in _.env.local_ in variable **DATABASE_FILENAME**.
+Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
 
-## Component mapping
+```
+npm run start
+# or
+yarn start
+```
 
-Find details on how Strapi components map into React components on this docs file [mapping.md](../../../docs/apps/homepage/mapping.md).
+### `build`
+
+Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+
+```
+npm run build
+# or
+yarn build
+```
+
+## ⚙️ Deployment
+
+Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+
+## 📚 Learn more
+
+- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
+- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
+- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
+- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
+- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+
+Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+
+## ✨ Community
+
+- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
+- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
+- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+
+---
+
+<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>

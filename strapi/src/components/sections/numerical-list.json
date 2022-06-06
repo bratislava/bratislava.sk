@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_numerical_lists",
+  "info": {
+    "displayName": "Numerical List"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "basic",
+        "combined",
+        "roadmap"
+      ]
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.numerical-list-item"
+    }
+  }
+}

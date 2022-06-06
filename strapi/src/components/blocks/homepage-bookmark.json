@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_blocks_homepage_bookmarks",
+  "info": {
+    "displayName": "Homepage Bookmark",
+    "icon": "angle-double-left"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "headline": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.bookmark-link"
+    },
+    "picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "variant": {
+      "type": "string"
+    }
+  }
+}

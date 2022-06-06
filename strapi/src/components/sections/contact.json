@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_contacts",
+  "info": {
+    "displayName": "Contact",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phoneLabel": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "emailLabel": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}
