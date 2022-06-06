@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Input } from './Input';
+
+<Meta title="components/atoms/Input" decorators={[withDesign]} />
+
+# Input
+
+Styled Input, that is used as a input throughout all Bratislava web apps.
+
+## Props
+
+Input accepts all default HTMLInputProps in addition to custom Props that are as follows:
+
+- <b>hasError</b>: Boolean value, that indicates, that the input should have
+  error styling (red border)
+
+<Canvas>
+  <Story
+    name="Input"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+      hasError: false,
+      disabled: false,
+      placeholder: 'Zadaj text',
+      value: '',
+    }}
+  >
+    {Input.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Input} />

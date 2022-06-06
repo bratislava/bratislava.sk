@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { SwitchToggle } from './SwitchToggle';
+
+<Meta title="components/atoms/SwitchToggle" decorators={[withDesign]} />
+
+# SwitchToggle
+
+Styled SwitchToggle, that is used as a SwitchToggle with SwitchToggleTabs as its tabs.
+
+## Props
+
+SwitchToggle accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>titleLeft</b>: clickable string, that is positioned on the left of switch
+- <b>titleRight</b>: clickable string, that is positioned on the right of switch
+- <b>value</b>: 'left' or 'right'
+- <b>onValueChange</b>: SwitchValue Change Handler Function
+
+export const Template = (args) => {
+  return <SwitchToggle className={args.className} onValueChange={() => {}} />;
+};
+
+<Canvas>
+  <Story
+    name="SwitchToggle"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/zJYXjnfW5CNoOaoJ05mWp2/PLAVARNE?node-id=2125%3A554',
+      },
+    }}
+    args={{
+      className: '',
+      titleLeft: 'Zobraziť miesta',
+      titleRight: 'Zobraziť dráhy',
+    }}
+    argTypes={{
+      value: {
+        control: {
+          type: 'radio',
+          options: ['left', 'right'],
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={SwitchToggle} />

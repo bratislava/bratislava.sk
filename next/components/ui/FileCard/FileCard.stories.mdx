@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { FileCard } from './FileCard';
+
+<Meta title="components/Molecules/FileCard" decorators={[withDesign]} />
+
+# FileCard
+
+This is our FileCard
+
+<Canvas>
+  <Story
+    name="FileCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=2791%3A8610',
+      },
+    }}
+    args={{
+      fileTitle: 'KapaCITY Bratislava',
+      uploadDate: 'utorok 19. decembra 2017',
+      fileDetail: '.PDF; 164 kB',
+      downloadLink:
+        'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=2791%3A8610',
+    }}
+  >
+    {FileCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={FileCard} />

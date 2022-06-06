@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { SectionContainer } from './SectionContainer';
+
+export const argTypes = {
+  children: {
+    control: false,
+  },
+};
+
+export const defaultArgs = {
+  className: '',
+  children: (
+    <div className="flex justify-between items-center h-40 border-2 border-solid border-black">
+      <span>Bratislava</span>
+      <span>Doprava</span>
+    </div>
+  ),
+};
+
+<Meta title="components/atoms/SectionContainer" decorators={[withDesign]} />
+
+# SectionContainer
+
+SectionContainer provides content with background color (+ waves design) and centered responsive layout
+
+## SectionContainer with secondary color
+
+<Canvas>
+  <Story
+    name="Secondary color"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      className: 'bg-secondary',
+    }}
+  >
+    {SectionContainer.bind({})}
+  </Story>
+</Canvas>
+
+## SectionContainer with background color
+
+<Canvas>
+  <Story
+    name="Background color"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      className: 'bg-background',
+    }}
+  >
+    {SectionContainer.bind({})}
+  </Story>
+</Canvas>
+
+## SectionContainer without color
+
+<Canvas>
+  <Story
+    name="No color"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      className: '',
+    }}
+  >
+    {SectionContainer.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={SectionContainer} />

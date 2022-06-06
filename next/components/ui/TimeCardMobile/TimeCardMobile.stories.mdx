@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { TimeCardMobile } from './TimeCardMobile';
+
+<Meta title="components/molecules/TimeCardMobile" decorators={[withDesign]} />
+
+# TimeCardMobile
+
+Styled TimeCard, that is used 'as' a TimeCard 'for' Mobile Devices in OrderSteps of the app Plavarne.
+
+## Props
+
+TimeCardMobile accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>primaryContent</b>: 'Left part of the TimeCard' content
+- <b>secondaryContent</b>: 'Right part of the TimeCard' content
+- <b>onClick</b>: ClickHandler function
+- <b>isActive</b>: Boolean to indicate the active state
+- <b>tabIndex</b>: tabIndex 'for' the accessibility features
+
+<Canvas>
+  <Story
+    name="TimeCardMobile"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    argTypes={{
+      primaryContent: {
+        name: 'primaryContent',
+        type: { name: 'node', required: true },
+        defaultValue: 'Lorem Ipsum',
+      },
+      secondaryContent: {
+        name: 'secondaryContent',
+        type: { name: 'node', required: true },
+        defaultValue: 'Lorem Ipsum',
+      },
+    }}
+    args={{
+      isActive: true,
+    }}
+  >
+    {TimeCardMobile.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={TimeCardMobile} />

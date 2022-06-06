@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { TabBar } from './TabBar';
+
+<Meta title="components/molecules/TabBar" decorators={[withDesign]} />
+
+# TabBar
+
+Styled TabBar, that is used as a tabbar with TabBarTabs as its tabs.
+
+## Props
+
+TabBar accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>tabs</b>: tabs, that the TabBar displays
+- <b>activeTab</b>: tab that is currently active
+- <b>onSelect</b>: function, accepts as parameter selected tab as object
+
+export const Template = (args) => {
+  const [activeTab, setActiveTab] = React.useState('Tab1');
+  return (
+    <TabBar
+      className={args.className}
+      tabs={args.tabs}
+      activeTab={activeTab}
+      onSelect={(d) => setActiveTab(d.key)}
+    />
+  );
+};
+
+<Canvas>
+  <Story
+    name="TabBar"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      clasName: '',
+      tabs: [
+        { key: 'Tab1', title: 'Tab 1' },
+        { key: 'Tab2', title: 'Tab 2' },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={TabBar} />

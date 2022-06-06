@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { FooterSection } from './FooterSection';
+
+<Meta title="components/atoms/FooterSection" decorators={[withDesign]} />
+
+# FooterSection
+
+FooterSection
+
+## Props
+
+FooterSectionr accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>id</b>: ID for unique identification
+- <b>title</b>: title of the component
+- <b>links</b>: content of the component.
+
+<Canvas>
+  <Story
+    name="FooterSection"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Lorem Ipsum',
+      links: [
+        { id: '0', title: 'Link-1' },
+        { id: '1', title: 'Link-2' },
+      ],
+    }}
+  >
+    {FooterSection.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={FooterSection} />

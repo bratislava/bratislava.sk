@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Card } from './Card';
+
+<Meta title="components/atoms/Card" decorators={[withDesign]} />
+
+# Card
+
+Card
+
+## Props
+
+Card accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>hasButton</b>: has button or not
+- <b>children</b>: content of the component
+- <b>buttonVariant</b>: variant of button, default or circle
+- <b>buttonContent</b>: text of button
+
+<Canvas>
+  <Story
+    name="Card"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: 'mt-20 border-2 border-primary w-96',
+      children: (
+        <div className="flex h-56 font-medium text-font text-left items-center ml-8">
+          Lorem Ipsum
+        </div>
+      ),
+      buttonPosition: 'left-8',
+    }}
+  >
+    {Card.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Card} />

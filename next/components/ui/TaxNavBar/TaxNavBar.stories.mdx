@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { TaxNavBar } from './TaxNavBar';
+
+<Meta title="components/molecules/TaxNavBar" decorators={[withDesign]} />
+
+# TaxNavBar
+
+TaxNavBar
+
+## Props
+
+TaxNavBar accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+
+<Canvas>
+  <Story
+    name="TaxNavBar"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+    }}
+  >
+    {TaxNavBar.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={TaxNavBar} />

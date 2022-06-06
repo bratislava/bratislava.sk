@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { BlogSearchCards } from './BlogSearchCards';
+import BlogImageA from '../../assets/images/blog-search-1.png';
+import BlogImageB from '../../assets/images/blog-search-2.png';
+import BlogImageC from '../../assets/images/blog-search-3.png';
+
+<Meta title="components/molecules/BlogSearchCard" decorators={[withDesign]} />
+
+# BlogSearchCards
+
+BlogSearchCards
+
+<Canvas>
+  <Story
+    name="BlogSearchCards"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      blogCards: [
+        {
+          imageSrc: BlogImageA,
+          headline: 'Mesto Bratislava',
+          headlineColor: '--color-red--light',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          date: '26. 8. 2021.',
+        },
+        {
+          imageSrc: BlogImageB,
+          headline: 'Životné prostredie a výstavba',
+          headlineColor: '--color-green--light',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          date: '26. 8. 2021.',
+        },
+        {
+          imageSrc: BlogImageC,
+          headline: 'Sociálne služby a bývanie',
+          headlineColor: '--color-yellow--light',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          date: '26. 8. 2021.',
+        },
+      ],
+    }}
+  >
+    {BlogSearchCards.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={BlogSearchCards} />

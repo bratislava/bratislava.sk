@@ -1,0 +1,76 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Link } from './Link';
+import {
+  ChevronRight,
+  ArrowRight,
+  ChevronLeft,
+  ArrowLeft,
+} from '../../assets/images';
+
+<Meta title="components/atoms/Link" decorators={[withDesign]} />
+
+# Link
+
+Styled Link, that is used as a default Link throughout all Bratislava web apps.
+
+## Props
+
+Link accepts custom Props that are as follows:
+
+- <b>icon</b>: ReactNode that will behave as an icon within the button
+- <b>hoverIcon</b>: ReactNode that will behave as a hoverIcon on hover effect of
+  the button
+- <b>iconPosition</b>: position of the given icon and hoverIcon
+- <b>iconClassName</b>: classname of the icons (mostly to adjust padding)
+- <b>className</b>: modifies or extends the styles for the component
+- <b>href</b>: next router path
+- <b>children</b>: ReactNode(s), that behaves as a child(ren) of thi Component
+
+<Canvas>
+  <Story
+    name="Link"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+      href: '#',
+      children: 'I am a Link',
+    }}
+    argTypes={{
+      iconPosition: {
+        control: { type: 'radio', options: ['left', 'right'] },
+      },
+      icon: {
+        options: Object.keys([<ChevronRight />, <ChevronLeft />]),
+        mapping: [<ChevronRight />, <ChevronLeft />],
+        control: {
+          type: 'radio',
+          labels: {
+            0: 'ChevronRight',
+            1: 'ChevronLeft',
+          },
+        },
+      },
+      hoverIcon: {
+        options: Object.keys([<ArrowRight />, <ArrowLeft />]),
+        mapping: [<ArrowRight />, <ArrowLeft />],
+        control: {
+          type: 'radio',
+          labels: {
+            0: 'ArrowRight',
+            1: 'ArrowLeft',
+          },
+        },
+      },
+    }}
+  >
+    {Link.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Link} />

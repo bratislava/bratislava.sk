@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Iframe } from './Iframe';
+export const argTypes = {};
+export const defaultArgs = {
+  url: 'https://google.com',
+  width: 600,
+  height: 400,
+};
+<Meta title="components/organisms/Iframe" decorators={[withDesign]} />
+# Iframe
+Iframe with (markdown formatted rich) description text and contact items (address is rich text).
+## Iframe
+<Canvas>
+  <Story
+    name="Iframe"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      url: 'https://google.com',
+      width: 600,
+      height: 400,
+    }}
+  >
+    {Iframe.bind({})}
+  </Story>
+</Canvas>
+<ArgsTable of={Iframe} /
+
+>

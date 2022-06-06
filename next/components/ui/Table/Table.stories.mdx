@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Table } from './Table';
+
+<Meta title="components/molecules/Table" decorators={[withDesign]} />
+
+# Table
+
+TableRow accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>columns</b>: array for table head
+- <b>rows</b>: array for table rows
+- <b>sortBy</b>: object, contains key and direction of column, by which is table
+  sorted
+- <b>onSort</b>: function, accepts as parameter object with key and direction
+
+export const Template = (args) => {
+  const [rows, setRows] = React.useState(args.rows);
+  const [sortBy, setSortBy] = React.useState({
+    key: 'email',
+    direction: 'desc',
+  });
+  const sortRows = (rows, sortBy) => {
+    setSortBy(sortBy);
+    const sortedRows = rows?.sort((a, b) => {
+      const sortedRow = a[sortBy.key]?.localeCompare(b[sortBy.key]);
+      return sortBy.direction === 'asc' ? sortedRow : -sortedRow;
+    });
+    return sortedRows;
+  };
+  return (
+    <Table
+      rows={args.rows}
+      columns={args.columns}
+      sortBy={sortBy}
+      onSort={(sortBy) => {
+        setRows(sortRows(rows, sortBy));
+      }}
+    />
+  );
+};
+
+<Canvas>
+  <Story
+    name="Table"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      columns: [
+        {
+          field: 'email',
+          header: 'E-mail',
+          sortable: true,
+        },
+        {
+          field: 'lastName',
+          header: 'Priezvisko',
+          sortable: true,
+        },
+        {
+          field: 'firstName',
+          header: 'Meno',
+          sortable: true,
+        },
+        {
+          field: 'orderNumber',
+          header: 'Číslo objednávky',
+          sortable: false,
+        },
+      ],
+      rows: [
+        {
+          email: 'Adam@gmail.com',
+          lastName: 'Mrkovicka',
+          firstName: 'Adam',
+          orderNumber: '#1',
+        },
+        {
+          email: 'CarolHrasko@gmail.com',
+          lastName: 'Hrasko',
+          firstName: 'Carol',
+          orderNumber: '#2',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Table} />

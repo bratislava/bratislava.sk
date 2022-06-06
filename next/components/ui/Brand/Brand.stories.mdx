@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Brand } from './Brand';
+import { BrandSVG } from '../../assets/images';
+
+<Meta title="components/atoms/Brand" decorators={[withDesign]} />
+
+# Brand
+
+Brand
+
+## Props
+
+Brand accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>title</b>: title of the component
+- <b>icon</b>: icon of the component.
+
+<Canvas>
+  <Story
+    name="Brand"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=2526%3A9139',
+      },
+    }}
+    args={{
+      className: '',
+      title: (
+        <>
+          Hlavné mesto <strong>Bratislava</strong>
+        </>
+      ),
+      icon: <BrandSVG />,
+    }}
+  >
+    {Brand.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Brand} />

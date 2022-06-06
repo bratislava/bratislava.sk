@@ -1,0 +1,76 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { WelcomeCard } from './WelcomeCard';
+import {
+  ReservationCalendar,
+  NewReservation,
+  Reservations,
+} from '../../assets/images';
+
+<Meta title="components/atoms/WelcomeCard" decorators={[withDesign]} />
+
+# WelcomeCard
+
+Styled Card Component, that is used as a welcome card in WelcomeScreens.
+
+## Props
+
+WelcomeCard accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>image</b>: ReactNode that is positioned on the top of title
+- <b>title</b>: String that is the title of the WelcomeCard
+- <b>path</b>: String that is the path for the 'href' prop of the "next/link"
+  Component
+
+<Canvas>
+  <Story
+    name="WelcomeCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    argTypes={{
+      image: {
+        options: Object.keys([
+          <ReservationCalendar />,
+          <NewReservation />,
+          <Reservations />,
+        ]),
+        mapping: [
+          <ReservationCalendar />,
+          <NewReservation />,
+          <Reservations />,
+        ],
+        control: {
+          type: 'select',
+          labels: {
+            0: 'ReservationCalendar',
+            1: 'NewReservation',
+            2: 'Reservations',
+          },
+        },
+        defaultValue: <Reservations />,
+      },
+      title: {
+        name: 'title',
+        type: { name: 'string', required: true },
+        defaultValue: 'Prehľad rezervácií',
+      },
+      path: {
+        name: 'path',
+        type: { name: 'string', required: true },
+        defaultValue: '#',
+      },
+    }}
+    args={{
+      className: 'w-72 h-56 md:w-96 md:h-64',
+    }}
+  >
+    {WelcomeCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={WelcomeCard} />

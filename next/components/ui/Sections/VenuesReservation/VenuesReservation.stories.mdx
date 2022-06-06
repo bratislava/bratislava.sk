@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import VenuesReservation from './VenuesReservation';
+
+<Meta
+  title="components/organisms/Sections/VenuesReservation"
+  decorators={[withDesign]}
+/>
+
+# VenuesReservation
+
+VenuesReservation
+
+<Canvas>
+  <Story
+    name="VenuesReservation"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{}}
+  >
+    {VenuesReservation.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={VenuesReservation} />

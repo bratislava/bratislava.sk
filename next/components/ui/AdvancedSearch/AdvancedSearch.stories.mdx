@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { AdvancedSearch } from './AdvancedSearch';
+
+<Meta title="components/molecules/AdvancedSearch" decorators={[withDesign]} />
+
+# AdvancedSearch
+
+AdvancedSearch
+
+## Props
+
+AdvancedSearch accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>title</b>: String that is the title of the newsletter
+- <b>buttonContent</b>: String that is written inside the button
+
+<Canvas>
+  <Story
+    name="AdvancedSearch"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{ className: '' }}
+  >
+    {AdvancedSearch.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={AdvancedSearch} />

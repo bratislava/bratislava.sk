@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { WeddingCard } from './WeddingCard';
+import sampleImage from '../../assets/images/WeddingImage.png';
+
+<Meta title="components/molecules/WeddingCard" decorators={[withDesign]} />
+
+# WeddingCard
+
+WeddingCard
+
+## Props
+
+WeddingCard accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>image</b>: image of the component
+- <b>title</b>: title of the component
+- <b>content</b>: content of the component
+- <b>buttonContent</b>: text in button
+
+<Canvas>
+  <Story
+    name="WeddingCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Svadby',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      buttonContent: 'Svadba v paláci',
+      imageSrc: sampleImage,
+    }}
+  >
+    {WeddingCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={WeddingCard} />

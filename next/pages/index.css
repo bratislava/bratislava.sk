@@ -1,0 +1,153 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* an example of importing shared css from ui project */
+/* @import "@bratislava/ui-bratislava/common.css"; */
+
+@import '@bratislava/common-frontend-themes/themes/bratislava.css';
+
+@layer components {
+  .base-button {
+    @apply appearance-none inline-flex items-center justify-center text-center focus:outline-none bg-primary;
+    @apply shadow-lg font-medium text-white text-lg;
+  }
+  .homepage-markdown ul {
+    @apply ml-6 -mt-4 list-outside list-none;
+  }
+  .homepage-markdown ul li::before {
+    @apply absolute left-1 top-2 w-4 h-4 bg-primary rounded-full;
+    /* use before to style it */
+    content: '';
+  }
+  .homepage-markdown ul li {
+    @apply relative list-none pl-18 -my-2;
+  }
+  .homepage-markdown ul li ul {
+    @apply ml-14 mt-1 -mb-8;
+  }
+  .homepage-markdown ul li ul li::before {
+    @apply absolute left-1 top-2 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-primary;
+    /* use before to style it */
+    content: '';
+  }
+  .homepage-markdown .no-whitespace-wrap {
+    @apply whitespace-normal;
+  }
+  .numerical-list ul {
+    @apply flex flex-col;
+  }
+  .numerical-list ul li::before {
+    @apply w-4 h-4 bg-primary rounded-full mr-6 -ml-12 lg:ml-6;
+    content: '';
+    min-width: 16px;
+  }
+  .numerical-list ul li {
+    @apply py-4 flex items-center;
+  }
+  .numerical-list-hidden ul li {
+    @apply hidden;
+  }
+  .blog-card-image {
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+  }
+  .news-small-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  .text-truncate-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  .modal-close-mobile-right {
+    right: 45%;
+  }
+  .modal-content-rent::-webkit-scrollbar {
+    display: none;
+  }
+  .modal-content-rent {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .rent-shadow {
+    boxshadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  /*.modal-content-rent-markdown ul {
+    @apply ml-6 mt-4 list-outside list-none;
+  }
+  .modal-content-rent-markdown ul li::before {
+    @apply absolute left-1 top-1 w-4 h-4 bg-primary rounded-full;
+    content: '';
+  }
+  .modal-content-rent-markdown ul li {
+    @apply relative list-none pl-18 my-2;
+  }
+  .modal-content-rent-markdown ul li ul {
+    @apply ml-14 mt-1 -mb-8;
+  }
+  .modal-content-rent-markdown ul li ul li::before {
+    @apply absolute left-1 top-1 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-primary;
+    content: '';
+  }
+  .modal-content-rent-markdown .no-whitespace-wrap {
+    @apply whitespace-normal;
+  }
+  .modal-content-rent-markdown ol {
+    @apply ml-12 mt-4 list-outside;
+  }
+  .modal-content-rent-markdown ol li {
+    @apply relative list-decimal pl-12 my-2;
+  }
+  .modal-content-rent-markdown ol li ol {
+    @apply ml-18 mt-1 -mb-8;
+  }
+  */
+
+  .modal-content-rent-markdown ul {
+    @apply my-6 pl-12 list-disc;
+  }
+  .modal-content-rent-markdown ol {
+    @apply my-6 pl-12 list-decimal;
+  }
+  .modal-content-rent-markdown p {
+    @apply mb-4;
+  }
+  .modal-content-rent-markdown h1,
+  .modal-content-rent-markdown h2,
+  .modal-content-rent-markdown h3,
+  .modal-content-rent-markdown h4,
+  .modal-content-rent-markdown h5,
+  .modal-content-rent-markdown h6 {
+    @apply my-6 font-bold;
+  }
+  .modal-content-rent-markdown h1 {
+    font-size: 2rem;
+  }
+  .modal-content-rent-markdown h2 {
+    font-size: 1.5rem;
+  }
+  .modal-content-rent-markdown h3 {
+    font-size: 1.17rem;
+  }
+  .modal-content-rent-markdown h4 {
+    font-size: 1rem;
+  }
+  .modal-content-rent-markdown h5 {
+    font-size: 0.83rem;
+  }
+  .modal-content-rent-markdown h6 {
+    font-size: 0.67rem;
+  }
+  .narrow-text-wrapper ul {
+    @apply -my-8;
+  }
+  .narrow-text-wrapper ul li ul {
+    @apply mt-0 -mb-12;
+  }
+}

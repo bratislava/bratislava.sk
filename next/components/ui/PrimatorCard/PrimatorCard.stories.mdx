@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { PrimatorCard } from './PrimatorCard';
+
+import Primator from '../../assets/images/primatorReal.png';
+import Council from '../../assets/images/BACoatOfArms.svg';
+
+export const argTypes = {
+  smImageAlign: {
+    control: {
+      type: 'radio',
+      options: ['left', 'right'],
+    },
+  },
+};
+
+export const defaultArgs = {
+  className: '',
+};
+
+<Meta title="components/molecules/PrimatorCard" decorators={[withDesign]} />
+
+# PrimatorCard
+
+PrimatorCard with image and responsive alignement
+
+## PrimatorCard with Primator
+
+<Canvas>
+  <Story
+    name="Primator"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      title: 'Primátor',
+      imageSrc: Primator,
+      smImageAlign: 'left',
+    }}
+  >
+    {PrimatorCard.bind({})}
+  </Story>
+</Canvas>
+
+## PrimatorCard with Council
+
+<Canvas>
+  <Story
+    name="Council"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      title: 'Zastupiteľstvo',
+      imageSrc: Council,
+      smImageAlign: 'right',
+    }}
+  >
+    {PrimatorCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={PrimatorCard} />

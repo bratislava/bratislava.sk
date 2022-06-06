@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { TabBarTab } from './TabBarTab';
+
+<Meta title="components/atoms/TabBarTab" decorators={[withDesign]} />
+
+# TabBarTab
+
+Styled TabBarTab, that is used as a tab of TabBar Component
+
+## Props
+
+TabBarTab accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>title</b>: String, that is the title of the Tab Component
+- <b>onClick</b>: tab ClickHandler Function
+- <b>isActive</b>: Boolean, that indicates an active state of the Tab
+
+<Canvas>
+  <Story
+    name="TabBarTab"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Lorem Ipsum',
+      isActive: true,
+    }}
+  >
+    {TabBarTab.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={TabBarTab} />

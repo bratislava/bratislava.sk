@@ -1,0 +1,76 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+
+import { HorizontalCard } from './HorizontalCard';
+import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton';
+
+import SampleImage from '../../assets/images/sample-blog-image.png';
+
+export const defaultArgs = {
+  className: 'w-64 xl:w-auto',
+  children: 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
+};
+
+<Meta title="components/molecules/HorizontalCard" decorators={[withDesign]} />
+
+# Horizontal card
+
+## Card with content
+
+<Canvas>
+  <Story
+    name="With content"
+    args={{
+      ...defaultArgs,
+    }}
+  >
+    {HorizontalCard.bind({})}
+  </Story>
+</Canvas>
+
+## Card with content and image
+
+<Canvas>
+  <Story
+    name="With image"
+    args={{
+      ...defaultArgs,
+      imageSrc: SampleImage,
+    }}
+  >
+    {HorizontalCard.bind({})}
+  </Story>
+</Canvas>
+
+## Card with content, image and accessory
+
+<Canvas>
+  <Story
+    name="With accessory"
+    args={{
+      ...defaultArgs,
+      imageSrc: SampleImage,
+      accessory: <VerticalCardButton className="xl:hidden" />,
+    }}
+  >
+    {HorizontalCard.bind({})}
+  </Story>
+</Canvas>
+
+## Card as used in designs
+
+<Canvas>
+  <Story
+    name="With specified sizes"
+    args={{
+      ...defaultArgs,
+      className: 'w-64 xl:w-auto xl:max-w-lg xl:h-52',
+      imageSrc: SampleImage,
+      accessory: <VerticalCardButton className="xl:hidden" />,
+    }}
+  >
+    {HorizontalCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={HorizontalCard} />

@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { SubHeader } from './SubHeader';
+
+<Meta title="components/molecules/SubHeader" decorators={[withDesign]} />
+
+# SubHeader
+
+This is our SubHeader
+
+## Props
+
+ContentWrapper accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>title</b>: title of the component
+- <b>children</b>: content of the component.
+- <b>description</b>: description of the component.
+- <b>topper</b>: component, that is positioned at the top of the WaveWrapper.
+
+<Canvas>
+  <Story
+    name="SubHeader"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Lorem Ipsum',
+      description: 'LoremIpsom',
+      buttonTitle: 'Rezervovať',
+      href: '/',
+      topper: 'Hlavne mesto > Bratislava > News',
+    }}
+  >
+    {SubHeader.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={SubHeader} />

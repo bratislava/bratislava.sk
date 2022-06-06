@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { InfoCard } from './InfoCard';
+import swimmingPool50m from '../../assets/images/buy-ticket-step-1.png';
+import { Button } from '../Button/Button';
+import { ChevronRight } from '../../assets/images';
+
+<Meta title="components/molecules/InfoCard" decorators={[withDesign]} />
+
+# InfoCard
+
+InfoCard
+
+## Props
+
+InfoCard accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>imageSrc</b>: image of the component
+- <b>imageWidth</b>: width of the image
+- <b>imageHeight</b>: height of the image
+- <b>primaryTitle</b>: primary title of the component
+- <b>secondaryTitle</b>: secondary title of the component
+- <b>description</b>: description of the component
+- <b>children</b>: additional component of the component
+
+<Canvas>
+  <Story
+    name="InfoCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: 'w-96',
+      primaryTitle: 'Lorem Ipsum',
+      secondaryTitle: 'Lorem Ipsum',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis turpis arcu, id ultricies sem tincidunt vitae.',
+      imageSrc: swimmingPool50m,
+      imageWidth: '179',
+      imageHeight: '200',
+      children: (
+        <div className="flex justify-between">
+          <Button className="w-32 py-2.5" />
+          <Button
+            className="w-32 py-2.5"
+            variant="secondary"
+            icon={<ChevronRight />}
+          />
+        </div>
+      ),
+    }}
+  >
+    {InfoCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={InfoCard} />

@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { ChairSpace } from './ChairSpace';
+import { ArrowDoubleShort, ArrowDoubleLong } from '../../assets/images';
+
+<Meta title="components/atoms/ChairSpace" decorators={[withDesign]} />
+
+# ChairSpace
+
+ChairSpace
+
+## Props
+
+ChairSpace accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>children</b>: content of the component
+- <b>icon</b>: ReactNode that will behave as an icon in between of chair icons
+
+<Canvas>
+  <Story
+    name="ChairSpace"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    argTypes={{
+      icon: {
+        options: Object.keys([<ArrowDoubleShort />, <ArrowDoubleLong />]),
+        mapping: [<ArrowDoubleShort />, <ArrowDoubleLong />],
+        control: {
+          type: 'radio',
+          labels: {
+            0: 'ArrowDoubleShort',
+            1: 'ArrowDoubleLong',
+          },
+        },
+      },
+    }}
+    args={{
+      className: '',
+      children: '60x',
+    }}
+  >
+    {ChairSpace.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ChairSpace} />

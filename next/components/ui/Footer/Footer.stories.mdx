@@ -1,0 +1,97 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Footer } from './Footer';
+
+<Meta title="components/molecules/Footer" decorators={[withDesign]} />
+
+# Footer
+
+Footer
+
+## Props
+
+Footer accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>FBLink</b>: link to FaceBook
+- <b>IGLink</b>: link to InstaGram
+- <b>YTLink</b>: link to YouTube
+- <b>address</b>: address as string
+- <b>email</b>: email as string
+- <b>phone</b>: phone number as string
+- <b>sections</b>: sections of footer
+- <b>accessibility</b>: accessibility as string
+- <b>copyright</b>: copyright as string
+- <b>lang</b>: language as string
+
+<Canvas>
+  <Story
+    name="Footer"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      FBLogo: 'www.facebook.com',
+      IGLogo: 'www.instagram.com',
+      YTLogo: 'www.youtube.com',
+      email: 'info@bratislava.sk',
+      phone: '+421 259 356 111',
+      address:
+        'Magistrát hlavného mesta SR Bratislavy\nPrimaciálne námestie 1\n814 99 Bratislava',
+      copyright: '© 2020 Hlavné mesto Bratislava',
+      accessibility: 'Vyhlásenie o prístupnosti',
+      sections: [
+        {
+          id: '1',
+          title: 'Projekt Zeleň',
+          links: [
+            { title: 'O projekte', id: '01' },
+            { title: 'Ako na to', id: '02' },
+            { title: 'Zelená mapa', id: '03' },
+            { title: 'Kontakt', id: '04' },
+          ],
+        },
+        {
+          id: '2',
+          title: 'Projekty mesta',
+          links: [
+            { title: 'Doprava', id: '05' },
+            { title: 'Parkovanie', id: '06' },
+            { title: 'Zeleň', id: '07' },
+            { title: 'Doprava', id: '08' },
+            { title: 'Kontakt', id: '09' },
+          ],
+        },
+        {
+          id: '3',
+          title: 'Rýchle odkazy',
+          links: [
+            { title: 'Doprava', id: '10' },
+            { title: 'Parkovanie', id: '11' },
+            { title: 'Zeleň', id: '12' },
+            { title: 'Doprava', id: '13' },
+            { title: 'Kontakt', id: '14' },
+          ],
+        },
+        {
+          id: '4',
+          title: 'Rýchle odkazy',
+          links: [
+            { title: 'Doprava', id: '10' },
+            { title: 'Parkovanie', id: '11' },
+            { title: 'Zeleň', id: '12' },
+            { title: 'Doprava', id: '13' },
+            { title: 'Kontakt', id: '14' },
+          ],
+        },
+      ],
+    }}
+  >
+    {Footer.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Footer} />

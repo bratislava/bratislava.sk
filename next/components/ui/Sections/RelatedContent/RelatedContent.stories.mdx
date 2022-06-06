@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { RelatedContent } from './RelatedContent';
+
+import SAMPLE_RELATED_CONTENT from './SampleRelatedContent';
+
+<Meta
+  title="components/organisms/Sections/RelatedContent"
+  decorators={[withDesign]}
+/>
+
+# RelatedContent
+
+RelatedContent
+
+<Canvas>
+  <Story
+    name="RelatedContent"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      cards: SAMPLE_RELATED_CONTENT,
+    }}
+  >
+    {RelatedContent.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={RelatedContent} />

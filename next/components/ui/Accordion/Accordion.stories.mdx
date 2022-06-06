@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { Accordion } from './Accordion';
+
+<Meta title="components/molecules/Accordion" decorators={[withDesign]} />
+
+# Accordion
+
+Accordion
+
+## Props
+
+Accordion accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>sections</b>: sections for the Accordion
+- <b>activeSectiont</b>: key of current expanded section
+- <b>onSelect</b>: function, accepts as parameter selected section as object
+- <b>contents</b>: array of contents (components) of individual sections.
+
+export const Template = (args) => {
+  const [activeSection, setActiveSection] = React.useState('0');
+  return (
+    <Accordion
+      className={args.className}
+      tabs={args.tabs}
+      tabVariant="justify-center"
+      contents={args.contents}
+      activeSection={activeSection}
+      onSelect={(d) => setActiveSection(d)}
+    />
+  );
+};
+
+<Canvas>
+  <Story
+    name="Accordion"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+      tabs: [
+        { key: '0', title: 'Lorem Ipsum' },
+        { key: '1', title: 'Lorem Ipsum' },
+      ],
+      contents: ['section 1', 'section 2'],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Accordion} />
