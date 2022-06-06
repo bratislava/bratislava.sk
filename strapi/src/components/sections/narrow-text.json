@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_narrow_texts",
+  "info": {
+    "displayName": "Narrow Text"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "narrow",
+        "default",
+        "wide",
+        "full"
+      ]
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

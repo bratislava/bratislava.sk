@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_homepage_posts",
+  "info": {
+    "displayName": "Homepage Post"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

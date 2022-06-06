@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_sections_dividers",
+  "info": {
+    "displayName": "Divider"
+  },
+  "options": {},
+  "attributes": {
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "mesto_01_full_width",
+        "mesto_01_narrow_width",
+        "hrad_01_full_width",
+        "hrad_01_narrow_width",
+        "doprava_02_full_width",
+        "doprava_02_narrow_width",
+        "parkovanie_02_full_width",
+        "parkovanie_02_narrow_width",
+        "bicykel_02_full_width",
+        "bicykel_02_narrow_width",
+        "lod_02_full_width",
+        "lod_02_narrow_width",
+        "stromy_03_full_width",
+        "stromy_03_narrow_width",
+        "vystavba_03_full_width",
+        "vystavba_03_narrow_width",
+        "park_04_full_width",
+        "park_04_narrow_width",
+        "byvanie_04_full_width",
+        "byvanie_04_narrow_width",
+        "budovy_04_full_width",
+        "budovy_04_narrow_width",
+        "vzdelavanie",
+        "skola",
+        "divadlo"
+      ]
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

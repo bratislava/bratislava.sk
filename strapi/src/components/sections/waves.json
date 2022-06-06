@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_waves",
+  "info": {
+    "displayName": "Waves"
+  },
+  "options": {},
+  "attributes": {
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "bottom"
+      ]
+    },
+    "isRich": {
+      "type": "boolean"
+    }
+  }
+}

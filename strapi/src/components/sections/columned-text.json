@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_columned_texts",
+  "info": {
+    "displayName": "Columned Text"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_text_with_images",
+  "info": {
+    "displayName": "Text with Image"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "imageSrc": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "imageShadow": {
+      "type": "boolean"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

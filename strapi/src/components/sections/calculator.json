@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_calculators",
+  "info": {
+    "displayName": "Calculator"
+  },
+  "options": {},
+  "attributes": {
+    "single_adult_value": {
+      "type": "decimal"
+    },
+    "another_adult_value": {
+      "type": "decimal"
+    },
+    "child_value": {
+      "type": "decimal"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

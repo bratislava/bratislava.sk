@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_homepage_headers",
+  "info": {
+    "displayName": "Homepage Header",
+    "icon": "archway"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    },
+    "picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
