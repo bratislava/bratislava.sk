@@ -96,7 +96,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   type="text"
                   className="h-12 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
                 />
-                <Link href="search">
+                <Link href={languageKey === 'sk' ? 'vyhladavanie' : 'search'}>
                   <Button
                     icon={<SmallBlackSearchIcon />}
                     hoverIcon={<SmallWhiteSearchIcon />}

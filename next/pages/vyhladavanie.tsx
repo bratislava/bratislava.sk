@@ -20,26 +20,126 @@ import { isPresent } from '../utils/utils'
 import BlogImageA from '../assets/images/blog-search-1.png'
 import BlogImageB from '../assets/images/blog-search-2.png'
 import BlogImageC from '../assets/images/blog-search-3.png'
+import { AsyncServerProps } from '@utils/types'
+import { client } from '@utils/gql'
+import { buildMockData } from '@utils/homepage-mockdata'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
   footer: FooterProps
 }
 
-const Search = ({ page, footer }: SearchPageProps) => {
+export const getServerSideProps = async (ctx: any) => {
+  const locale = ctx.locale ?? 'sk'
+  const { footer, mainMenu } = await client.PageBySlug({
+    slug: 'test',
+    locale,
+  })
+
+  const { blogPosts } = await client.LatestBlogsWithTags({
+    limit: 5,
+    sort: 'published_at:DESC',
+  })
+
+  const { homepage } = await client.Homepage({
+    locale,
+  })
+
+  const homepagePosts = homepage?.posts?.map((post) => ({
+    title: post?.title,
+    url: post?.slug,
+    imageSrc: post?.image?.url,
+  }))
+
+  const frontImage = homepage?.inba?.images?.frontImage?.url
+  const rearImage = homepage?.inba?.images?.rearImage?.url
+  const inba = {
+    title: homepage?.inba?.title,
+    content: homepage?.inba?.content,
+    link: homepage?.inba?.link,
+    images: [frontImage, rearImage],
+  }
+
+  const header = homepage?.header
+
+  const cards = homepage?.cards?.map((card) => ({
+    bookmarkTitle: card?.title,
+    title: card?.headline,
+    content: card?.text,
+    link: {
+      title: card?.link?.title,
+      href: card?.link?.href,
+    },
+    icon: card?.picture?.url,
+    variant: card?.variant,
+  }))
+
+  return {
+    props: {
+      data: buildMockData({
+        inBaImage1: '/inba1.jpeg',
+        inBaImage2: '/inba2.png',
+        postImage1: '/sample-blog-image.png',
+        postImage2: '/sample-news-image.jpeg',
+        postImage3: '/viz2-1024x690.jpeg',
+        newsImage1: '/sample-news-image.jpeg',
+        newsImage2: '/sample-news-image-2.jpeg',
+        primatorImage: '/primatorReal.png',
+        councilImage: '/BACoatOfArms.svg',
+        locale,
+      }),
+      footer: footer,
+      latestBlogposts: blogPosts,
+      homepage,
+      mainMenu,
+      page: {
+        locale: ctx.locale,
+        localizations: ['sk', 'en']
+          .filter((l) => l !== ctx.locale)
+          .map((l) => ({
+            slug: '',
+            locale: l,
+          })),
+      },
+      homepagePosts: homepagePosts,
+      inba: inba,
+      header: header,
+      cards: cards,
+      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+    },
+  }
+}
+
+const Search = ({
+  data,
+  footer,
+  mainMenu,
+  page,
+  homepage,
+  latestBlogposts,
+  homepagePosts,
+  cards,
+  header,
+  inba,
+}: AsyncServerProps<typeof getServerSideProps>) => {
   //const results = {blogPosts: [], pages: [], files: []};
   const noResultsFound = false
+  console.log('page', page)
 
   return (
     <PageWrapper
-      locale={page?.locale ?? 'sk'}
-      slug={page?.slug ?? ''}
-      localizations={page?.localizations?.filter(isPresent)}
+      locale={page.locale}
+      localizations={[
+        { locale: 'sk', slug: '/vyhladavanie' },
+        { locale: 'en', slug: '/search' },
+      ]}
+      slug={'/vyhladavanie'}
     >
       <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page ? page.pageCategory?.id : '1'}>
         <style
           dangerouslySetInnerHTML={{
-            __html: pageStyle(page ? page.pageCategory.color : 'red'),
+            __html: pageStyle('red'),
           }}
         />
         {/* Header */}

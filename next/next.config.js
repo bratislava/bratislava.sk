@@ -64,6 +64,10 @@ const nextConfig = {
           source: '/disclosure-of-information',
           destination: '/zverejnovanie-informacii',
         },
+        {
+          source: '/search',
+          destination: '/vyhladavanie',
+        },
       ],
     }
   },
