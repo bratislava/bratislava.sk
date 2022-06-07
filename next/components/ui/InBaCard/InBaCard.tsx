@@ -2,8 +2,8 @@ import cx from 'classnames'
 import { Panel } from '../Panel/Panel'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '../../../assets/images/arrow-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
 
 export interface InBaCardProps {
   className?: string

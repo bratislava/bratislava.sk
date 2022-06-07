@@ -1,7 +1,7 @@
 import * as React from 'react'
 import cx from 'classnames'
 
-import { ReactComponent as HomeIcon } from '../../assets/images/home-icon.svg'
+import HomeIcon from '../../assets/images/home-icon.svg'
 import { Button } from '@bratislava/ui-bratislava'
 
 export type TSubSectionItems = {

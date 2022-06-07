@@ -3,7 +3,7 @@ import cx from 'classnames'
 import NextLink from 'next/link'
 import Image1 from '../../assets/images/blog-image.png'
 import Image2 from '../../assets/images/blog-mobile-image.png'
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg'
+import ChevronRight from '../../assets/images/chevron-right.svg'
 import Image from 'next/image'
 
 export interface BlogCardProps {

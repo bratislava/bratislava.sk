@@ -1,9 +1,7 @@
-import { handleMethods } from '@bratislava/next-backend-api';
-import { fetchFacebookPosts } from '../../utils/facebook';
+import { fetchFacebookPosts } from '../../utils/facebook'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default handleMethods()
-  .get()<any>(async (req, res) => {
-    const posts = await fetchFacebookPosts();
-    return res.json(posts);
-  })
-  .prepare();
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const posts = await fetchFacebookPosts()
+  return res.json(posts)
+}

@@ -2,115 +2,115 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { ArrowRight } from '@assets/images'
 import cx from 'classnames'
 import { useState } from 'react'
-// import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import { Panel } from '../Panel/Panel'
-// import { ReactComponent as Activities } from './icons/icon-activities.svg'
-// import { ReactComponent as Ball } from './icons/icon-ball.svg'
-// import { ReactComponent as Bicycle } from './icons/icon-bicycle.svg'
-// import { ReactComponent as BookWithChildColored } from './icons/icon-book-with-child-colored.svg'
-// import { ReactComponent as BookWithChild } from './icons/icon-book-with-child.svg'
-// import { ReactComponent as BulbOff } from './icons/icon-bulb-off.svg'
-// import { ReactComponent as Calendar } from './icons/icon-calendar.svg'
-// import { ReactComponent as CarWithMapColored } from './icons/icon-car-with-map-colored.svg'
-// import { ReactComponent as CarWithMap } from './icons/icon-car-with-map.svg'
-// import { ReactComponent as Car } from './icons/icon-car.svg'
-// import { ReactComponent as CastleColored } from './icons/icon-castle-colored.svg'
-// import { ReactComponent as Castle } from './icons/icon-castle.svg'
-// import { ReactComponent as Chest } from './icons/icon-chest.svg'
-// import { ReactComponent as Child } from './icons/icon-child.svg'
-// import { ReactComponent as CityHall } from './icons/icon-city-hall.svg'
-// import { ReactComponent as Coin } from './icons/icon-coin.svg'
-// import { ReactComponent as Compass } from './icons/icon-compass.svg'
-// import { ReactComponent as Comunity } from './icons/icon-comunity.svg'
-// import { ReactComponent as RealState } from './icons/icon-construction-and-real-state.svg'
-// import { ReactComponent as Covid } from './icons/icon-covid.svg'
-// import { ReactComponent as Crane } from './icons/icon-crane.svg'
-// import { ReactComponent as Globe } from './icons/icon-globe.svg'
-// import { ReactComponent as HandCoins } from './icons/icon-hand-coins.svg'
-// import { ReactComponent as HandHeartColored } from './icons/icon-hand-heart-colored.svg'
-// import { ReactComponent as HandHeart } from './icons/icon-hand-heart.svg'
-// import { ReactComponent as HandPerson } from './icons/icon-hand-person.svg'
-// import { ReactComponent as HandPlant } from './icons/icon-hand-plant.svg'
-// import { ReactComponent as Heart } from './icons/icon-heart.svg'
-// import { ReactComponent as History } from './icons/icon-history.svg'
-// import { ReactComponent as HouseWithTreeColored } from './icons/icon-house-with-tree-colored.svg'
-// import { ReactComponent as HouseWithTree } from './icons/icon-house-with-tree.svg'
-// import { ReactComponent as LargeBuilding } from './icons/icon-large-building.svg'
-// import { ReactComponent as Lighting } from './icons/icon-lighting.svg'
-// import { ReactComponent as LookingGlass } from './icons/icon-looking-glass.svg'
-// import { ReactComponent as Map } from './icons/icon-map.svg'
-// import { ReactComponent as MaskWithBallColored } from './icons/icon-mask-with-ball-colored.svg'
-// import { ReactComponent as MaskWithBall } from './icons/icon-mask-with-ball.svg'
-// import { ReactComponent as Medal } from './icons/icon-medal.svg'
-// import { ReactComponent as MHD } from './icons/icon-mhd.svg'
-// import { ReactComponent as OldPerson } from './icons/icon-old-person.svg'
-// import { ReactComponent as PaperMask } from './icons/icon-paper-mask.svg'
-// import { ReactComponent as Parking } from './icons/icon-parking.svg'
-// import { ReactComponent as Partnership } from './icons/icon-partnership.svg'
-// import { ReactComponent as RealStateDocument } from './icons/icon-real-state-document.svg'
-// import { ReactComponent as Road } from './icons/icon-road.svg'
-// import { ReactComponent as School } from './icons/icon-school.svg'
-// import { ReactComponent as Share } from './icons/icon-share.svg'
-// import { ReactComponent as Stall } from './icons/icon-stall.svg'
-// import { ReactComponent as Support } from './icons/icon-support.svg'
-// import { ReactComponent as Theater } from './icons/icon-theater.svg'
-// import { ReactComponent as Tree } from './icons/icon-tree.svg'
-// import { ReactComponent as Trolleybus } from './icons/icon-trolleybus.svg'
+import Activities from './icons/icon-activities.svg'
+import Ball from './icons/icon-ball.svg'
+import Bicycle from './icons/icon-bicycle.svg'
+import BookWithChildColored from './icons/icon-book-with-child-colored.svg'
+import BookWithChild from './icons/icon-book-with-child.svg'
+import BulbOff from './icons/icon-bulb-off.svg'
+import Calendar from './icons/icon-calendar.svg'
+import CarWithMapColored from './icons/icon-car-with-map-colored.svg'
+import CarWithMap from './icons/icon-car-with-map.svg'
+import Car from './icons/icon-car.svg'
+import CastleColored from './icons/icon-castle-colored.svg'
+import Castle from './icons/icon-castle.svg'
+import Chest from './icons/icon-chest.svg'
+import Child from './icons/icon-child.svg'
+import CityHall from './icons/icon-city-hall.svg'
+import Coin from './icons/icon-coin.svg'
+import Compass from './icons/icon-compass.svg'
+import Comunity from './icons/icon-comunity.svg'
+import RealState from './icons/icon-construction-and-real-state.svg'
+import Covid from './icons/icon-covid.svg'
+import Crane from './icons/icon-crane.svg'
+import Globe from './icons/icon-globe.svg'
+import HandCoins from './icons/icon-hand-coins.svg'
+import HandHeartColored from './icons/icon-hand-heart-colored.svg'
+import HandHeart from './icons/icon-hand-heart.svg'
+import HandPerson from './icons/icon-hand-person.svg'
+import HandPlant from './icons/icon-hand-plant.svg'
+import Heart from './icons/icon-heart.svg'
+import History from './icons/icon-history.svg'
+import HouseWithTreeColored from './icons/icon-house-with-tree-colored.svg'
+import HouseWithTree from './icons/icon-house-with-tree.svg'
+import LargeBuilding from './icons/icon-large-building.svg'
+import Lighting from './icons/icon-lighting.svg'
+import LookingGlass from './icons/icon-looking-glass.svg'
+import Map from './icons/icon-map.svg'
+import MaskWithBallColored from './icons/icon-mask-with-ball-colored.svg'
+import MaskWithBall from './icons/icon-mask-with-ball.svg'
+import Medal from './icons/icon-medal.svg'
+import MHD from './icons/icon-mhd.svg'
+import OldPerson from './icons/icon-old-person.svg'
+import PaperMask from './icons/icon-paper-mask.svg'
+import Parking from './icons/icon-parking.svg'
+import Partnership from './icons/icon-partnership.svg'
+import RealStateDocument from './icons/icon-real-state-document.svg'
+import Road from './icons/icon-road.svg'
+import School from './icons/icon-school.svg'
+import Share from './icons/icon-share.svg'
+import Stall from './icons/icon-stall.svg'
+import Support from './icons/icon-support.svg'
+import Theater from './icons/icon-theater.svg'
+import Tree from './icons/icon-tree.svg'
+import Trolleybus from './icons/icon-trolleybus.svg'
 
 const ICONS = {
-  mesto_01: <div>hey</div>,
-  mesto_color_01: <div>hey</div>,
-  doprava_mapy_02: <div>hey</div>,
-  doprava_mapy_color_02: <div>hey</div>,
-  zp_vystavba_03: <div>hey</div>,
-  zp_vystavba_color_03: <div>hey</div>,
-  socialna_pomoc_04: <div>hey</div>,
-  socialna_pomoc_color_04: <div>hey</div>,
-  vzdelavanie_05: <div>hey</div>,
-  vzdelavanie_color_05: <div>hey</div>,
-  kultura_06: <div>hey</div>,
-  kultura_color_06: <div>hey</div>,
-  sprava_mesta_01: <div>hey</div>,
-  transparentne_mesto_01: <div>hey</div>,
-  dane_01: <div>hey</div>,
-  projekty_01: <div>hey</div>,
-  partnerstva_01: <div>hey</div>,
-  mhd_02: <div>hey</div>,
-  cyklo_02: <div>hey</div>,
-  mapy_02: <div>hey</div>,
-  sprava_a_udrzba_02: <div>hey</div>,
-  doprava_02: <div>hey</div>,
-  parkovanie_02: <div>hey</div>,
-  zdielana_mobilita_02: <div>hey</div>,
-  zivotne_prostredie_03: <div>hey</div>,
-  zelen_03: <div>hey</div>,
-  vystavba_a_nehnutelnosti_03: <div>hey</div>,
-  uzemny_plan_03: <div>hey</div>,
-  rozvoj_mesta_03: <div>hey</div>,
-  verejne_osvetlenie_03: <div>hey</div>,
-  byvanie_04: <div>hey</div>,
-  sluzby_04: <div>hey</div>,
-  zariadenia_04: <div>hey</div>,
-  pomoc_04: <div>hey</div>,
-  aktivity_04: <div>hey</div>,
-  skolstvo_05: <div>hey</div>,
-  sport_05: <div>hey</div>,
-  deti_a_mladez_05: <div>hey</div>,
-  ocenovanie_05: <div>hey</div>,
-  dotacie_05: <div>hey</div>,
-  kalendar_06: <div>hey</div>,
-  organizacie_06: <div>hey</div>,
-  dedicstvo_06: <div>hey</div>,
-  sluzby_06: <div>hey</div>,
-  koncepcia_06: <div>hey</div>,
-  komunity_06: <div>hey</div>,
-  covid_06: <div>hey</div>,
-  car: <div>hey</div>,
-  compass: <div>hey</div>,
-  globe: <div>hey</div>,
-  stall: <div>hey</div>,
-  theater: <div>hey</div>,
+  mesto_01: Castle,
+  mesto_color_01: CastleColored,
+  doprava_mapy_02: CarWithMap,
+  doprava_mapy_color_02: CarWithMapColored,
+  zp_vystavba_03: HouseWithTree,
+  zp_vystavba_color_03: HouseWithTreeColored,
+  socialna_pomoc_04: HandHeart,
+  socialna_pomoc_color_04: HandHeartColored,
+  vzdelavanie_05: BookWithChild,
+  vzdelavanie_color_05: BookWithChildColored,
+  kultura_06: MaskWithBall,
+  kultura_color_06: MaskWithBallColored,
+  sprava_mesta_01: CityHall,
+  transparentne_mesto_01: LookingGlass,
+  dane_01: Coin,
+  projekty_01: BulbOff,
+  partnerstva_01: Partnership,
+  mhd_02: MHD,
+  cyklo_02: Bicycle,
+  mapy_02: Map,
+  sprava_a_udrzba_02: Road,
+  doprava_02: Trolleybus,
+  parkovanie_02: Parking,
+  zdielana_mobilita_02: Share,
+  zivotne_prostredie_03: HandPlant,
+  zelen_03: Tree,
+  vystavba_a_nehnutelnosti_03: RealState,
+  uzemny_plan_03: RealStateDocument,
+  rozvoj_mesta_03: Crane,
+  verejne_osvetlenie_03: Lighting,
+  byvanie_04: LargeBuilding,
+  sluzby_04: HandPerson,
+  zariadenia_04: OldPerson,
+  pomoc_04: Heart,
+  aktivity_04: Activities,
+  skolstvo_05: School,
+  sport_05: Ball,
+  deti_a_mladez_05: Child,
+  ocenovanie_05: Medal,
+  dotacie_05: HandCoins,
+  kalendar_06: Calendar,
+  organizacie_06: History,
+  dedicstvo_06: Chest,
+  sluzby_06: Support,
+  koncepcia_06: PaperMask,
+  komunity_06: Comunity,
+  covid_06: Covid,
+  car: Car,
+  compass: Compass,
+  globe: Globe,
+  stall: Stall,
+  theater: Theater,
 }
 
 export type MenuIcon = keyof typeof ICONS | string

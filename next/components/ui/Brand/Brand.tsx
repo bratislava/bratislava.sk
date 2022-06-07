@@ -1,4 +1,4 @@
-import { ReactComponent as BALogo } from '../../../assets/images/BALogo.svg'
+import BALogo from '../../../assets/images/BALogo.svg'
 import cx from 'classnames'
 import React from 'react'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'

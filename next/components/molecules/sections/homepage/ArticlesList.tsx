@@ -1,15 +1,15 @@
-import { BlogPost } from '@bratislava/strapi-sdk-homepage';
-import { NewsCard, Pagination } from '@bratislava/ui-bratislava';
-import { client } from 'apps/next/homepage/utils/gql';
-import { useState, useEffect } from 'react';
-import { ArticlesFilter } from '../../../atoms/ArticlesFilter';
-import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg';
+import { BlogPost } from '@bratislava/strapi-sdk-homepage'
+import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
+import { client } from '@utils/gql'
+import { useState, useEffect } from 'react'
+import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
+import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
 export interface ArticlesListProps {
-  title: string;
-  itemsPerRow?: number;
-  itemsPerPage?: number;
-  category?: Object;
-  includesFiltering?: boolean;
+  title: string
+  itemsPerRow?: number
+  itemsPerPage?: number
+  category?: Object
+  includesFiltering?: boolean
 }
 
 export const ArticlesList = ({
@@ -19,23 +19,21 @@ export const ArticlesList = ({
   category,
   includesFiltering = false,
 }: ArticlesListProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [data, setData] = useState([]);
-  const [totalArticles, setTotal] = useState(0);
-  const [totalTags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(
-    category ?? 'Mesto Bratislava'
-  );
-  const [categoryExists, setIfExists] = useState(category ? true : false);
-  const [filteredTags, setFilteredTags] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [data, setData] = useState([])
+  const [totalArticles, setTotal] = useState(0)
+  const [totalTags, setTags] = useState([])
+  const [selectedTags, setSelectedTags] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto Bratislava')
+  const [categoryExists, setIfExists] = useState(category ? true : false)
+  const [filteredTags, setFilteredTags] = useState([])
 
   const handleCategory = (category: string) => {
-    setSelectedCategory(category);
-  };
+    setSelectedCategory(category)
+  }
 
   useEffect(() => {
-    let isMounted = false;
+    let isMounted = false
 
     const getData = async () => {
       const { blogPosts } = await client.LatestBlogsWithTags({
@@ -50,21 +48,21 @@ export const ArticlesList = ({
             },
           },
         },
-      });
-      if (isMounted) return;
-      setData(blogPosts);
-    };
+      })
+      if (isMounted) return
+      setData(blogPosts)
+    }
     getData()
       .then()
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
 
     return () => {
-      isMounted = true;
-    };
-  }, [currentPage, selectedTags]);
+      isMounted = true
+    }
+  }, [currentPage, selectedTags])
 
   useEffect(() => {
-    let isMounted = false;
+    let isMounted = false
     const getTotalCount = async () => {
       const { blogPostsConnection } = await client.TotalPostsCount({
         where: {
@@ -75,24 +73,24 @@ export const ArticlesList = ({
             },
           },
         },
-      });
+      })
       if (selectedTags.length < 1 && !category) {
-        if (isMounted) return;
-        else setTotal(blogPostsConnection.aggregate.totalCount);
-      } else setTotal(blogPostsConnection.aggregate.count);
-    };
+        if (isMounted) return
+        else setTotal(blogPostsConnection.aggregate.totalCount)
+      } else setTotal(blogPostsConnection.aggregate.count)
+    }
 
     getTotalCount()
       .then()
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
 
     return () => {
-      isMounted = true;
-    };
-  }, [selectedTags]);
+      isMounted = true
+    }
+  }, [selectedTags])
 
   useEffect(() => {
-    let isMounted = false;
+    let isMounted = false
     const getTags = async () => {
       const { tags } = await client.RelatedTags({
         where: {
@@ -100,37 +98,35 @@ export const ArticlesList = ({
             title: selectedCategory,
           },
         },
-      });
-      if (isMounted) return;
-      setTags(tags);
-    };
+      })
+      if (isMounted) return
+      setTags(tags)
+    }
     getTags()
       .then()
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
 
     return () => {
-      isMounted = true;
-    };
-  }, [selectedCategory]);
+      isMounted = true
+    }
+  }, [selectedCategory])
 
   useEffect(() => {
     const helperTags = totalTags.map((item) => ({
       title: item.title,
       color: item.pageCategory?.color,
       category: item.pageCategory?.title,
-    }));
+    }))
 
-    const filteringTags = [
-      ...new Map(helperTags.map((item) => [item['title'], item])).values(),
-    ];
-    setFilteredTags(filteringTags);
-  }, [totalTags]);
+    const filteringTags = [...new Map(helperTags.map((item) => [item['title'], item])).values()]
+    setFilteredTags(filteringTags)
+  }, [totalTags])
 
   const handleFiltering = (tag: string) => {
     selectedTags.includes(tag)
       ? setSelectedTags(selectedTags.filter((selected) => selected != tag))
-      : setSelectedTags([...selectedTags, tag]);
-  };
+      : setSelectedTags([...selectedTags, tag])
+  }
 
   return (
     <div>
@@ -139,9 +135,7 @@ export const ArticlesList = ({
         {data.map((article, index) => (
           <NewsCard
             key={index}
-            coverImage={
-              article.coverImage ?? { url: BratislavaPlaceholder.src }
-            }
+            coverImage={article.coverImage ?? { url: BratislavaPlaceholder.src }}
             title={article.title}
             tag={article.tag}
             created_at={article.published_at}
@@ -174,7 +168,7 @@ export const ArticlesList = ({
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default ArticlesList;
+export default ArticlesList

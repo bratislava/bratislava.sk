@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { Card } from '../Card/Card'
 
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
 
 export interface BlogCardProps {
   className?: string

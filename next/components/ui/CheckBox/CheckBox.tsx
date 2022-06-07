@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import React from 'react'
-import { ReactComponent as CheckMark } from '../../../assets/images/check-mark.svg'
+import CheckMark from '../../../assets/images/check-mark.svg'
 
 type ICheckBoxProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   id: string

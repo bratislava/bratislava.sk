@@ -2,7 +2,7 @@ import {
   FooterProps,
   SectionContainer,
   MenuMainItem,
-  // BAStickyMenu,
+  BAStickyMenu,
   BookmarksProps,
   Bookmarks,
   AdvancedSearch,
@@ -10,7 +10,7 @@ import {
 import cx from 'classnames'
 import React from 'react'
 import Footer from '../molecules/Footer'
-// import NavBar from '../molecules/NavBar'
+import NavBar from '../molecules/NavBar'
 
 interface HomepagePageLayoutProps {
   footer?: FooterProps
@@ -50,7 +50,9 @@ const HomepagePageLayout = ({
   return (
     <div className={cx('bg-background font-inter', className)}>
       <div className="bg-white w-full h-20">
-        <SectionContainer>{/* <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} /> */}</SectionContainer>
+        <SectionContainer>
+          <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />
+        </SectionContainer>
       </div>
 
       <Bookmarks bookmarks={bookmarks} className="top-56" />
@@ -61,7 +63,7 @@ const HomepagePageLayout = ({
           'drop-shadow-sm shadow-lg': stickyMenuVisible,
         })}
       >
-        {/* <BAStickyMenu menuItems={menuItems ?? []} active="1" /> */}
+        <BAStickyMenu menuItems={menuItems ?? []} active="1" />
       </div>
       <div className={cx({ 'hidden lg:block': searchOpen })}>
         <div className="-mt-18">{children}</div>

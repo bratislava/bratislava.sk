@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { Button } from '../Button/Button'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '../../../assets/images/arrow-right.svg'
 import { Field } from '../Field/Field'
 
 export interface ProfilePhotoProps {

@@ -1,8 +1,8 @@
 import { Accordion as AccordionBa } from '../../Accordion/Accordion'
 import cx from 'classnames'
 import React from 'react'
-import { ReactComponent as ChevronDown } from '../../../../assets/images/chevron-down.svg'
-import { ReactComponent as ChevronRight } from '../../../../assets/images/chevron-right.svg'
+import ChevronDown from '../../../../assets/images/chevron-down.svg'
+import ChevronRight from '../../../../assets/images/chevron-right.svg'
 
 interface IProps {
   className?: string

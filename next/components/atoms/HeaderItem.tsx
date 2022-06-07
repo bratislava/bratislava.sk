@@ -1,6 +1,6 @@
 import * as React from 'react'
 import cx from 'classnames'
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg'
+import ChevronRight from '../../assets/images/chevron-right.svg'
 import { Button } from '@bratislava/ui-bratislava'
 import HeaderSections from '../molecules/HeadSections'
 

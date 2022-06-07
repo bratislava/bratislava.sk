@@ -1,7 +1,7 @@
 import Panel from '../Panel/Panel'
 import cx from 'classnames'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
-import { ReactComponent as ArrowRightShort } from '../../../assets/images/arrow-right-short.svg'
+import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
 
 export interface BlogImage {
   url: string

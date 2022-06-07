@@ -1,12 +1,12 @@
-import { Vzn } from '@bratislava/strapi-sdk-homepage';
-import { FileCard } from '@bratislava/ui-bratislava';
-import { dateFormat } from 'apps/next/homepage/utils/constants';
-import moment from 'moment';
-import ReactMarkdown from 'react-markdown';
+import { Vzn } from '@bratislava/strapi-sdk-homepage'
+import { FileCard } from '@bratislava/ui-bratislava'
+import { dateFormat } from '@utils/constants'
+import moment from 'moment'
+import ReactMarkdown from 'react-markdown'
 
 type ModalBodyProps = {
-  data: Vzn;
-};
+  data: Vzn
+}
 
 export const DocumentListModalBody = ({ data }: ModalBodyProps) => {
   return (
@@ -17,20 +17,13 @@ export const DocumentListModalBody = ({ data }: ModalBodyProps) => {
           {data?.mainDocument && (
             <div className="flex flex-col">
               <div> Platnosť od: </div>
-              <div className="font-semibold">
-                {' '}
-                {moment(data?.validFrom).format(dateFormat)}{' '}
-              </div>
+              <div className="font-semibold"> {moment(data?.validFrom).format(dateFormat)} </div>
             </div>
           )}
           {!!data?.cancellationDocument?.length && (
             <div className="flex flex-col pl-5">
               <div> Platnosť do: </div>
-              <div className="font-semibold">
-                {moment(data?.cancellationDocument[0].validFrom).format(
-                  dateFormat
-                )}
-              </div>
+              <div className="font-semibold">{moment(data?.cancellationDocument[0].validFrom).format(dateFormat)}</div>
             </div>
           )}
         </div>
@@ -44,32 +37,22 @@ export const DocumentListModalBody = ({ data }: ModalBodyProps) => {
             <div>
               <FileCard
                 downloadLink={data.mainDocument?.url}
-                fileDetail={`${data.mainDocument?.ext?.toUpperCase()} ${
-                  data.mainDocument?.size
-                } KB`}
+                fileDetail={`${data.mainDocument?.ext?.toUpperCase()} ${data.mainDocument?.size} KB`}
                 fileTitle={data?.title}
-                uploadDate={moment(data.mainDocument?.created_at).format(
-                  dateFormat
-                )}
+                uploadDate={moment(data.mainDocument?.created_at).format(dateFormat)}
               />
             </div>
           </div>
         )}
         {data?.consolidatedText && (
           <div className="pt-5 max-w-xs">
-            <div className="pb-4 font-semibold">
-              Konsolidované znenie (zhrnutie)
-            </div>
+            <div className="pb-4 font-semibold">Konsolidované znenie (zhrnutie)</div>
             <div>
               <FileCard
                 downloadLink={data.consolidatedText?.url}
-                fileDetail={`${data.consolidatedText?.ext?.toUpperCase()} ${
-                  data.consolidatedText?.size
-                } KB`}
+                fileDetail={`${data.consolidatedText?.ext?.toUpperCase()} ${data.consolidatedText?.size} KB`}
                 fileTitle={data?.title}
-                uploadDate={moment(data.consolidatedText?.created_at).format(
-                  dateFormat
-                )}
+                uploadDate={moment(data.consolidatedText?.created_at).format(dateFormat)}
               />
             </div>
           </div>
@@ -83,13 +66,9 @@ export const DocumentListModalBody = ({ data }: ModalBodyProps) => {
                   key={doc.id}
                   className="w-80"
                   downloadLink={doc?.document.url}
-                  fileDetail={`${doc?.document.ext?.toUpperCase()} ${
-                    doc?.document.size
-                  } KB`}
+                  fileDetail={`${doc?.document.ext?.toUpperCase()} ${doc?.document.size} KB`}
                   fileTitle={doc?.title}
-                  uploadDate={moment(doc?.document.created_at).format(
-                    dateFormat
-                  )}
+                  uploadDate={moment(doc?.document.created_at).format(dateFormat)}
                 />
               ))}
             </div>
@@ -104,13 +83,9 @@ export const DocumentListModalBody = ({ data }: ModalBodyProps) => {
                   key={doc.id}
                   className="w-80"
                   downloadLink={doc?.document.url}
-                  fileDetail={`${doc?.document.ext?.toUpperCase()} ${
-                    doc?.document.size
-                  } KB`}
+                  fileDetail={`${doc?.document.ext?.toUpperCase()} ${doc?.document.size} KB`}
                   fileTitle={doc?.title}
-                  uploadDate={moment(doc?.document.created_at).format(
-                    dateFormat
-                  )}
+                  uploadDate={moment(doc?.document.created_at).format(dateFormat)}
                 />
               ))}
             </div>
@@ -118,5 +93,5 @@ export const DocumentListModalBody = ({ data }: ModalBodyProps) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,11 +1,11 @@
-// import { BANavBar, MenuMainItem } from '@bratislava/ui-bratislava'
+import { BANavBar, MenuMainItem } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 import { usePageWrapperContext } from '../layouts/PageWrapper'
 
 interface IProps {
-  menuItems: any[]
+  menuItems: MenuMainItem[]
   handleSearch?: (searchOpen: boolean) => void
 }
 
@@ -20,17 +20,16 @@ const NavBar = ({ menuItems, handleSearch }: IProps) => {
   }
 
   return (
-    <div>placeholder</div>
-    // <BANavBar
-    //   menuItems={menuItems}
-    //   onLanguageChange={handleLanguageChange}
-    //   currentLanguage={locale}
-    //   handleSearch={handleSearch}
-    //   languages={[
-    //     { key: 'sk', title: t('language_short.sk') },
-    //     { key: 'en', title: t('language_short.en') },
-    //   ]}
-    // />
+    <BANavBar
+      menuItems={menuItems}
+      onLanguageChange={handleLanguageChange}
+      currentLanguage={locale}
+      handleSearch={handleSearch}
+      languages={[
+        { key: 'sk', title: t('language_short.sk') },
+        { key: 'en', title: t('language_short.en') },
+      ]}
+    />
   )
 }
 

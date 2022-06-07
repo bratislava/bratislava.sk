@@ -7,7 +7,7 @@ import { TextArea } from '../TextArea/TextArea'
 import { InputAccessory } from '../InputAccessory/InputAccessory'
 import { CheckBox } from '../CheckBox/CheckBox'
 import { Button } from '../Button/Button'
-import { ReactComponent as Calendar } from '../../../assets/images/calendar-form.svg'
+import Calendar from '../../../assets/images/calendar-form.svg'
 
 interface IProps {
   className?: string

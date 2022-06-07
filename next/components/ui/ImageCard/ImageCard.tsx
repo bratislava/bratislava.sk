@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import { ReactComponent as ArrowDoubleLong } from '../../../assets/images/arrow-double-long.svg'
-import { ReactComponent as ArrowDoubleShort } from '../../../assets/images/arrow-double-short.svg'
+import ArrowDoubleLong from '../../../assets/images/arrow-double-long.svg'
+import ArrowDoubleShort from '../../../assets/images/arrow-double-short.svg'
 import { ChairSpace } from '../ChairSpace/ChairSpace'
 
 interface IProps {

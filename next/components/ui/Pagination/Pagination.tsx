@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import Button from '../Button/Button'
 
-import { ReactComponent as ArrowLeft } from '../../../assets/images/arrow-left.svg'
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
-import { ReactComponent as ChevronLeft } from '../../../assets/images/chevron-left.svg'
+import ArrowLeft from '../../../assets/images/arrow-left.svg'
+import ArrowRight from '../../../assets/images/arrow-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ChevronLeft from '../../../assets/images/chevron-left.svg'
 
 interface PaginationProps {
   itemsPerPage: number

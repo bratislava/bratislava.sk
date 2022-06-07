@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import { ReactComponent as ChevronDownSmall } from '../../../assets/images/chevron-down-small.svg'
-import { ReactComponent as ChevronUpSmall } from '../../../assets/images/chevron-up-small.svg'
+import ChevronDownSmall from '../../../assets/images/chevron-down-small.svg'
+import ChevronUpSmall from '../../../assets/images/chevron-up-small.svg'
 import { Button } from '../Button/Button'
 import { TOrderSortBy } from '../Table/Table'
 

@@ -3,7 +3,7 @@ import cx from 'classnames'
 import React from 'react'
 import { getIcon, MenuMainItem, Panel, Waves } from '../index'
 import { ArrowRight, ChevronDown, ChevronRight } from '../../../assets/images'
-import { ReactComponent as StickyMenuTopper } from '../../../assets/images/sticky-menu-topper.svg'
+import StickyMenuTopper from '../../../assets/images/sticky-menu-topper.svg'
 import { isItExternal } from './external-link'
 
 interface IProps {

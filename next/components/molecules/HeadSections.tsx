@@ -1,6 +1,6 @@
 import * as React from 'react'
 import cx from 'classnames'
-import { ReactComponent as HomeIcon } from '../../assets/images/home-icon.svg'
+import HomeIcon from '../../assets/images/home-icon.svg'
 import HeaderSection, { HeaderSectionProps } from '../atoms/HeadSection'
 
 interface IProps {

@@ -1,9 +1,9 @@
 import cx from 'classnames'
 import React, { useState } from 'react'
-import { ReactComponent as ChevronDown } from '../../../assets/images/chevron-down.svg'
-import { ReactComponent as ChevronLeft } from '../../../assets/images/chevron-left.svg'
-import { ReactComponent as ChevronUp } from '../../../assets/images/chevron-up-small.svg'
-import { ReactComponent as CloseFilled } from '../../../assets/images/close-filled.svg'
+import ChevronDown from '../../../assets/images/chevron-down.svg'
+import ChevronLeft from '../../../assets/images/chevron-left.svg'
+import ChevronUp from '../../../assets/images/chevron-up-small.svg'
+import CloseFilled from '../../../assets/images/close-filled.svg'
 import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
 

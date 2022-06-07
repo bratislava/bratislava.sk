@@ -1,7 +1,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { ReactComponent as Email } from '../../../assets/images/email2.svg'
-import { ReactComponent as Phone } from '../../../assets/images/phone.svg'
+import Email from '../../../assets/images/email2.svg'
+import Phone from '../../../assets/images/phone.svg'
 
 export interface ContactProps {
   className?: string

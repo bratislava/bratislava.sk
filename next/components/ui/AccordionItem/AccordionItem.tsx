@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { ReactComponent as Chevron } from '../../../assets/images/chevron.svg'
+import Chevron from '../../../assets/images/chevron.svg'
 import React from 'react'
 
 export interface AccordionItemProps {

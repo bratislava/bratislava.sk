@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { Button } from '../Button/Button'
-import { ReactComponent as ArrowRightShort } from '../../../assets/images/arrow-right-short.svg'
-import { ReactComponent as ArrowRightLong } from '../../../assets/images/arrow-right.svg'
+import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import ArrowRightLong from '../../../assets/images/arrow-right.svg'
 
 export interface VenueInfoProps {
   className?: string

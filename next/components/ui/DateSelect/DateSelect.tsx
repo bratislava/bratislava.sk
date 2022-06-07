@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import * as React from 'react'
 import { LocalDate } from '@js-joda/core'
-import { ReactComponent as Calendar } from '../../../assets/images/calendar.svg'
+import Calendar from '../../../assets/images/calendar.svg'
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
 
 export type DateSelectProps = Omit<

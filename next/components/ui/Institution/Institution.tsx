@@ -1,7 +1,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right2.svg'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right2.svg'
+import ArrowRight from '../../../assets/images/arrow-right2.svg'
+import ChevronRight from '../../../assets/images/chevron-right2.svg'
 
 export interface InstitutionProps {
   className?: string

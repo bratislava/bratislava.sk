@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
-import { ReactComponent as CloseOutline } from '../../../assets/images/close-outline.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
+import CloseOutline from '../../../assets/images/close-outline.svg'
 
 const PADDING = 20 // py-5
 

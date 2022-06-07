@@ -1,7 +1,5 @@
-import { handleMethods } from '@bratislava/next-backend-api';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default handleMethods()
-  .get()<{ status: string }>(async (req, res) => {
-    return res.json({ status: 'ok' });
-  })
-  .prepare();
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  return res.json({ status: 'ok' })
+}

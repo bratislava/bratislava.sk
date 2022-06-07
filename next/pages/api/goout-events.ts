@@ -1,9 +1,7 @@
-import { handleMethods } from '@bratislava/next-backend-api';
-import { fetchGooutEvents } from '../../utils/goout';
+import { fetchGooutEvents } from '../../utils/goout'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default handleMethods()
-  .get()<any>(async (req, res) => {
-    const events = await fetchGooutEvents();
-    return res.json(events);
-  })
-  .prepare();
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const events = await fetchGooutEvents()
+  return res.json(events)
+}

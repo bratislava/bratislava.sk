@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { ReactComponent as CheckMark } from '../../../assets/images/check-mark.svg'
+import CheckMark from '../../../assets/images/check-mark.svg'
 
 export interface IStepperStepProps {
   className?: string

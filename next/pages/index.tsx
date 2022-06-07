@@ -10,8 +10,8 @@ import {
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
-import { GetServerSidePropsContext } from 'next'
-import Image from 'next/image'
+// import { GetServerSidePropsContext } from 'next'
+// import Image from 'next/image'
 import * as React from 'react'
 import { useTranslation } from 'next-i18next'
 import BAHero from '../assets/images/ba-hero.png'
@@ -23,7 +23,7 @@ import NewsLetterSection from '../components/molecules/sections/NewsLetterSectio
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { isPresent } from '../utils/utils' // PageProps, shouldSkipStaticPaths
+import { isPresent, PageProps, shouldSkipStaticPaths } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -130,7 +130,7 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
-        {/* <div className="bg-white">
+        <div className="bg-white">
           <SectionContainer>
             <div className="pt-25 lg:pt-18 pb-10 flex flex-col sm:flex-row sm:items-center">
               <PageTitle className="flex-1" title={pageTitle} subtitle={header.subtitle} />
@@ -192,7 +192,9 @@ const Homepage = ({
           <div className="hidden md:block md:h-[78px]" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
-        </SectionContainer> */}
+          {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
+          {/* <NewsLetterSection className="mt-24" /> */}
+        </SectionContainer>
       </HomepagePageLayout>
     </PageWrapper>
   )

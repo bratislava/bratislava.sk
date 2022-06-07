@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import { Button, ButtonProps } from '../Button/Button'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
 
 type VerticalCardButtonProps = ButtonProps & {
   size?: 'default' | 'medium' | 'large' | 'custom'

@@ -1,7 +1,7 @@
 import { Button } from '../Button/Button'
 import cx from 'classnames'
-import { ReactComponent as ChevronDown } from '../../../assets/images/chevron-down.svg'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import ChevronDown from '../../../assets/images/chevron-down.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
 import React from 'react'
 
 export type TAccordionTab = { key: string; title: string | React.ReactNode }

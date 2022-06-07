@@ -1,7 +1,7 @@
 import * as React from 'react'
 import cx from 'classnames'
 import { Input } from '../Input/Input'
-import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg'
+import SearchIcon from '../../../assets/images/search-icon.svg'
 
 interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   className?: string

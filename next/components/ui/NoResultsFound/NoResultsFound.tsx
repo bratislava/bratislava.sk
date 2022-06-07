@@ -1,9 +1,9 @@
-import { ReactComponent as NoResultsIlustration } from '../../../assets/images/no-results.svg'
-import { ReactComponent as NoResultsIlustrationSmall } from '../../../assets/images/no-results-small.svg'
+import NoResultsIlustration from '../../../assets/images/no-results.svg'
+import NoResultsIlustrationSmall from '../../../assets/images/no-results-small.svg'
 import cx from 'classnames'
 
-import { ReactComponent as ArrowLeft } from '../../../assets/images/arrow-left.svg'
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import ArrowLeft from '../../../assets/images/arrow-left.svg'
+import ArrowRight from '../../../assets/images/arrow-right.svg'
 
 export interface NoResultsFoundProps {
   title: string

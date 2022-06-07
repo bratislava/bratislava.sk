@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import React from 'react'
-import { ReactComponent as Close } from '../../../assets/images/close.svg'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import Close from '../../../assets/images/close.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '../../../assets/images/arrow-right.svg'
 import { Button } from '../Button/Button'
 
 export interface ModalProps {

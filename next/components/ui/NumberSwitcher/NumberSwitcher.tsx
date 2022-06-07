@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import { ReactComponent as MinusIcon } from '../../../assets/images/minus.svg'
-import { ReactComponent as PlusIcon } from '../../../assets/images/plus.svg'
+import MinusIcon from '../../../assets/images/minus.svg'
+import PlusIcon from '../../../assets/images/plus.svg'
 
 interface IProps {
   id?: string

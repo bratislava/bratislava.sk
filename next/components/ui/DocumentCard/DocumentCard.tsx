@@ -1,8 +1,8 @@
 import Button from '../Button/Button'
 import Panel from '../Panel/Panel'
-import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right-small.svg'
-import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
-import { ReactComponent as Download } from '../../../assets/images/download-document.svg'
+import ChevronRight from '../../../assets/images/chevron-right-small.svg'
+import ArrowRight from '../../../assets/images/arrow-right.svg'
+import Download from '../../../assets/images/download-document.svg'
 
 export interface DocumentCardProps {
   title: string

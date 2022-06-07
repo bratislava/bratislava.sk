@@ -1,9 +1,7 @@
-import { handleMethods } from '@bratislava/next-backend-api';
-import OpenDataClient from '../../utils/opendata';
+import OpenDataClient from '../../utils/opendata'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default handleMethods()
-  .get()<any>(async (req, res) => {
-    const data = await OpenDataClient.getCyclingData();
-    return res.json(data);
-  })
-  .prepare();
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const data = await OpenDataClient.getCyclingData()
+  return res.json(data)
+}
