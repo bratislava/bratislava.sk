@@ -1,7 +1,9 @@
 # bratislava.sk
 
-TODO
+What's here
 
-Let's start with strapi migration v3 -> v4.
+🏡 `/next` bratislava.sk Nextjs web app
+🗄️ `/strapi` Strapi CMS server for bratislava.sk
+📝 `/docs` documentation files (and perhaps a doc page later on)
 
-Please use yarn (Strapi v4 has issues with npm).
+🐳 docker-compose.yml - if you need to quickly setup postgres instance, run `docker compose up` in this directory (you need docker installed)
