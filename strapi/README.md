@@ -4,7 +4,7 @@ Strapi comes with a full featured [Command Line Interface](https://docs.strapi.i
 
 ## 🧰 Setup
 
-You need postgres running locally (with correct credentials & databse available) - the default setup is as follows, you can override any of the variables by passing them in you `.env` file:
+You need postgres running locally (with correct credentials & databse available). The default setup is below, you can override any of the variables by passing them in you `.env` file. The easiest way to get a postgres db with the right credentials up&running is via `docker-compose.yml` file in the root fo this repo (check the root README).
 
 ```
 DATABASE_HOST=localhost
