@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Institution } from './Institution'
+
+export const argTypes = {}
+
+export const defaultArgs = {
+  className: '',
+  title: 'Nocľaháreň sv. Vincenta Depaul',
+  subtitle: 'Poskytovateľ: Depaul Slovensko, n.o.',
+  content: [
+    'Prenocovanie a sociálne poradenstvo\nNízkoprahová služba',
+    'Vstup 19:00 – 22:00\nUkončenie služby 7:00\n\nPoplatok 1,00 EUR',
+    'Ivánska cesta 32,\nBratislava-Ružinov',
+  ],
+}
+
+<Meta title="components/molecules/Institution" decorators={[withDesign]} />
+
+# Institution
+
+Institution item is generally used in accordion. Content is array of rich texts of max length 3.
+
+## Basic Institution
+
+<Canvas>
+  <Story
+    name="Basic Institution"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+    }}
+  >
+    {Institution.bind({})}
+  </Story>
+</Canvas>
+
+## Institution with Link
+
+<Canvas>
+  <Story
+    name="Institution with Link"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      url: '#',
+      urlLabel: 'Zistiť viac',
+    }}
+  >
+    {Institution.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Institution} />

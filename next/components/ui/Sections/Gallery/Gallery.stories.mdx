@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Gallery } from './Gallery'
+import sampleImage from '../../../../assets/images/sample-news-image.jpeg'
+
+<Meta title="components/organisms/Sections/Gallery" decorators={[withDesign]} />
+
+# Gallery
+
+Gallery
+
+<Canvas>
+  <Story
+    name="Gallery"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3294%3A29355',
+      },
+    }}
+    args={{
+      title: 'Galéria',
+      images: [sampleImage, sampleImage, sampleImage, sampleImage],
+    }}
+  >
+    {Gallery.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Gallery} />

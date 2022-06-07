@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { ContentWrapper } from './ContentWrapper'
+
+<Meta title="components/atoms/ContentWrapper" decorators={[withDesign]} />
+
+# ContentWrapper
+
+ContentWrapper
+
+## Props
+
+ContentWrapper accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>title</b>: title of the component
+- <b>children</b>: content of the component.
+
+<Canvas>
+  <Story
+    name="ContentWrapper"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+      title: 'Lorem Ipsum',
+      children: ' Lorem Ipsum ',
+    }}
+  >
+    {ContentWrapper.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ContentWrapper} />

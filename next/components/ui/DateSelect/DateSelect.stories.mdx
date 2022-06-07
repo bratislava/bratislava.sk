@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { DateSelect } from './DateSelect'
+import { LocalDate } from '@js-joda/core'
+
+<Meta title="components/molecules/DateSelect" decorators={[withDesign]} />
+
+# DateSelect
+
+DateSelect
+
+## Props
+
+DateSelect accepts all default HTMLInputProps in addition to custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>value</b>: string of the current local time evaluated using ISO chronology
+- <b>onChange</b>: function, accepts as parameter selected date in string format
+- <b>showShorcuts</b>: If true, display days of the weekends, otherwise hide.
+
+export const Template = (args) => {
+  const [value, setValue] = React.useState(LocalDate.now().toJSON())
+  return (
+    <DateSelect
+      className={args.className}
+      showShorcuts={args.showShorcuts}
+      value={value}
+      onChange={(d) => setValue(d)}
+    />
+  )
+}
+
+<Canvas>
+  <Story
+    name="DateSelect"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+      showShorcuts: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={DateSelect} />

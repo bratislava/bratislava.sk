@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { NewsCard } from './NewsCard'
+import sampleImage from '../../../assets/images/sample-blog-image.png'
+
+<Meta title="components/molecules/NewsCard" decorators={[withDesign]} />
+
+# NewsCard
+
+NewsCard
+
+## Props
+
+NewsCard accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>image</b>: image of the component
+- <b>tag</b>: tag of the component
+- <b>content</b>: content of the component
+- <b>buttonVariant</b>: variant of button, default or circle
+- <b>buttonContent</b>: text of button
+
+<Canvas>
+  <Story
+    name="NewsCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      tag: 'Lorem ipsum',
+      title: 'Nadpis lorem ipsum dolor sit',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
+      imageSrc: sampleImage,
+    }}
+  >
+    {NewsCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={NewsCard} />

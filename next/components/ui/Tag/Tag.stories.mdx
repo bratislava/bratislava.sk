@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import Tag from './Tag'
+
+<Meta title="components/atoms/Tag" decorators={[withDesign]} />
+
+# Tag
+
+Tag
+
+## Props
+
+Tag accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>text</b>: text of the component
+
+<Canvas>
+  <Story
+    name="Tag"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: '',
+      text: 'Lorem Ipsum',
+    }}
+  >
+    {Tag.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Tag} />

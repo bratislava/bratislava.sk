@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: strapi
+      PGPORT: 54320
+    expose:
+      - "54320"
+    ports:
+      - "127.0.0.1:54320:54320"
+
+volumes:
+  postgres:

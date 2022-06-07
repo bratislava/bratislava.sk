@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { NumericalListItem } from './NumericalListItem'
+
+<Meta title="components/molecules/NumericalListItem" decorators={[withDesign]} />
+
+# NumericalListItem
+
+NumericalListItem
+
+## Props
+
+NumericalListItem accepts custom Props that are as follows:
+
+- <b>index</b>: By one number smaller than the number displayed left to text
+- <b>item</b>: Object of which content is displayed
+- <b>variant</b>: String that controls the numerical list item design. Can be one of "basic", "combined" or "roadmap".
+
+<Canvas>
+  <Story
+    name="NumericalListItem"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      index: 0,
+      item: {
+        text: 'Právoplatné rozhodnutie o stupni odkázanosti fyzickej osobyna pomoc inej fyzickej osoby',
+      },
+      variant: 'basic',
+    }}
+  >
+    {NumericalListItem.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={NumericalListItem} />

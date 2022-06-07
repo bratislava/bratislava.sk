@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { ContactCard } from './ContactCard'
+
+<Meta title="components/molecules/ContactCard" decorators={[withDesign]} />
+
+# ContactCard
+
+ContactCard
+
+## Props
+
+ContentWrapper accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>image</b>: image of the component
+- <b>name</b>: contact name of the component
+- <b>tel</b>: contact telephone number of the component
+
+<Canvas>
+  <Story
+    name="ContactCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      name: 'Igor Cehlárik',
+      telephoneNumber: '0902 985 844',
+    }}
+  >
+    {ContactCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={ContactCard} />

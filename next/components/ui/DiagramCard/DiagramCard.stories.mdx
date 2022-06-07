@@ -1,0 +1,66 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { DiagramCard } from './DiagramCard'
+import step1 from '../../../assets/images/buy-ticket-step-1.png'
+
+<Meta title="components/molecules/DiagramCard" decorators={[withDesign]} />
+
+# DiagramCard
+
+Styled Card, that consists of Image and description.
+
+## Props
+
+- <b>className</b>: modifieds or extends the styles for the component
+- <b>imgSrc</b>: StaticImageData, that serves as a source of the next/image
+- <b>imgWidth</b>: Width of StaticImageData, that serves as a source of the next/image
+- <b>imgHeight</b>: Height of StaticImageData, that serves as a source of the next/image
+- <b>text</b>: String, that is positioned under the image
+- <b>index</b>: Number, that is positioned on the top of the Component
+
+<Canvas>
+  <Story
+    name="DiagramCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    argTypes={{
+      index: {
+        name: 'index',
+        type: { name: 'number', required: true },
+        defaultValue: 1,
+      },
+      imgSrc: {
+        name: 'imgSrc',
+        type: { name: 'img', required: true },
+        defaultValue: step1,
+      },
+      imgWidth: {
+        name: 'imgWidth',
+        type: { name: 'imgWidth', required: true },
+        defaultValue: 179,
+      },
+      imgHeight: {
+        name: 'imgHeight',
+        type: { name: 'imgHeight', required: true },
+        defaultValue: 200,
+      },
+    }}
+    args={{
+      text: (
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+          <strong>veniam ipsa porro modi iste repellendus fugit error iure nesciunt</strong>
+        </p>
+      ),
+      className: 'w-64',
+    }}
+  >
+    {DiagramCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={DiagramCard} />

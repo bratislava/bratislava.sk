@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { LoadingSpinner } from './LoadingSpinner'
+
+<Meta title="components/atoms/LoadingSpinner" decorators={[withDesign]} />
+
+# LoadingSpinner
+
+Styled LoadingSpinner, that is used as a primary LoadingIndicator throughout all Bratislava web apps.
+
+## Props
+
+LoadingSpinner accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>size</b>: determines the size of the LoadingSpinner
+- <b>text</b>: text, that is attached to the LoadingSpinner
+
+<Canvas>
+  <Story
+    name="LoadingSpinner"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      className: 'text-primary',
+      text: 'Načítava sa...',
+    }}
+    argTypes={{
+      size: {
+        control: { type: 'radio', options: ['small', 'default'] },
+      },
+    }}
+  >
+    {LoadingSpinner.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={LoadingSpinner} />

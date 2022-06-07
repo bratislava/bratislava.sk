@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { PageTitle } from './PageTitle'
+
+export const argTypes = {}
+
+export const defaultArgs = {
+  className: '',
+  title: 'Bratislava',
+  subtitle: 'za kolektívnu imunitu',
+}
+
+<Meta title="components/atoms/PageTitle" decorators={[withDesign]} />
+
+# PageTitle
+
+Styled page title
+
+## PageTitle with subtitle
+
+<Canvas>
+  <Story
+    name="With subtitle"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+    }}
+  >
+    {PageTitle.bind({})}
+  </Story>
+</Canvas>
+
+## PageTitle without subtitle
+
+<Canvas>
+  <Story
+    name="Empty subtitle"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      subtitle: '',
+    }}
+  >
+    {PageTitle.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={PageTitle} />

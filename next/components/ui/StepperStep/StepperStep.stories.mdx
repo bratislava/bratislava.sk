@@ -1,0 +1,49 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { StepperStep } from './StepperStep'
+
+<Meta title="components/atoms/StepperStep" decorators={[withDesign]} />
+
+# StepperStep
+
+Styled Circle Button, that is used 'as' a Step 'for' our Stepper Component in OrderSteps.
+
+## Props
+
+StepperStep accepts custom Props that are as follows:
+
+- <b>className</b>: className for the StepperStep
+- <b>title</b>: String, that is the title of the StepperStep (positioned under the CircleButton)
+- <b>number</b>: Number, that is shown inside the Component when not checked
+- <b>onClick</b>: StepperStep ClickHandler Function
+- <b>active</b> Boolean, that indicates the active state of the Component
+- <b>checked</b>: Boolean, that indicates the checked state of the Component
+
+<Canvas>
+  <Story
+    name="StepperStep"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    argTypes={{
+      number: {
+        name: 'number',
+        type: { name: 'number', required: true },
+        defaultValue: 1,
+      },
+    }}
+    args={{
+      className: 'flex-0',
+      title: 'Step1',
+      active: false,
+      checked: false,
+    }}
+  >
+    {StepperStep.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={StepperStep} />

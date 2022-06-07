@@ -1,0 +1,117 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { PageHeader } from './PageHeader'
+
+import GreatHall from '../../../assets/images/great-hall.png'
+
+export const OPTIONS = [
+  'rgb(var(--color-red))',
+  'rgba(var(--color-red), 0)',
+  'rgb(var(--color-red--light))',
+  'rgba(var(--color-red--light), 0)',
+  'rgb(var(--color-blue))',
+  'rgba(var(--color-blue), 0)',
+  'rgb(var(--color-blue--light))',
+  'rgba(var(--color-blue--light), 0)',
+  'rgb(var(--color-green))',
+  'rgba(var(--color-green), 0)',
+  'rgb(var(--color-green--light))',
+  'rgba(var(--color-green--light), 0)',
+  'rgb(var(--color-yellow))',
+  'rgba(var(--color-yellow), 0)',
+  'rgb(var(--color-yellow--light))',
+  'rgba(var(--color-yellow--light), 0)',
+  'rgb(var(--color-purple))',
+  'rgba(var(--color-purple), 0)',
+  'rgb(var(--color-purple--light))',
+  'rgba(var(--color-purple--light), 0)',
+  'rgb(var(--color-brown))',
+  'rgba(var(--color-brown), 0)',
+  'rgb(var(--color-brown--light))',
+  'rgba(var(--color-brown--light), 0)',
+]
+
+export const argTypes = {
+  children: {
+    control: false,
+  },
+  color: {
+    options: OPTIONS,
+    control: { type: 'select' },
+    defaultValue: 'rgb(var(--color-red--light))',
+  },
+  transparentColor: {
+    options: OPTIONS,
+    control: { type: 'select' },
+    defaultValue: 'rgba(var(--color-red--light), 0)',
+  },
+}
+
+export const defaultArgs = {
+  className: '',
+  children: (
+    <div className="flex flex-col h-40 max-w-2xl mx-auto">
+      <span>Transparantne mesto > majetok mesta > prenajom</span>
+      <h1 className="mt-12 text-lg">Zrkadlova sien</h1>
+    </div>
+  ),
+  imageSrc: GreatHall,
+  waves: {
+    isRich: true,
+    waveColor: 'var(--background-color)',
+    backgroundColor: 'transparent',
+    outerLinesColor: 'white',
+    innerLinesColor: 'var(--secondary-color)',
+  },
+}
+
+<Meta title="components/molecules/PageHeader" decorators={[withDesign]} />
+
+# PageHeader
+
+Pageheader with image and gradient.
+
+- Image is always bottom right and height of container is set automaticaly from children content.
+
+## PageHeader with little children
+
+<Canvas>
+  <Story
+    name="Small Page Header"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+    }}
+  >
+    {PageHeader.bind({})}
+  </Story>
+</Canvas>
+
+## PageHeader with many children
+
+<Canvas>
+  <Story
+    name="Tall Page Header"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      children: (
+        <div className="flex flex-col items-start bg-green-300">
+          <span>Transparantne mesto > majetok mesta > prenajom</span>
+          <h1 className="mt-12 mb-10 text-lg">Zrkadlova sien</h1>
+          <div className="flex w-full justify-center mb-6">
+            <button className="border-2">Rezervovat</button>
+          </div>
+          <p>Lorem ipsum dipsum</p>
+          <p>Lorem ipsum dipsum</p>
+          <p>Lorem ipsum dipsum</p>
+          <p>Lorem ipsum dipsum</p>
+        </div>
+      ),
+    }}
+  >
+    {PageHeader.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={PageHeader} />

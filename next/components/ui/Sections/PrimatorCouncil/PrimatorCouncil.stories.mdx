@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { PrimatorCouncil } from './PrimatorCouncil'
+
+import Council from '../../../../assets/images/BACoatOfArms.svg'
+import Primator from '../../../../assets/images/primatorReal.png'
+
+export const argTypes = {}
+
+export const defaultArgs = {
+  className: '',
+  primatorCards: [
+    {
+      title: 'Primátor',
+      imageSrc: Primator,
+    },
+    {
+      title: 'Zastupiteľstvo',
+      imageSrc: Council,
+      smImageAlign: 'right',
+    },
+  ],
+}
+
+<Meta title="components/organisms/Sections/PrimatorCouncil" decorators={[withDesign]} />
+
+# PrimatorCouncil
+
+PrimatorCouncil
+
+<Canvas>
+  <Story name="PrimatorCouncil" argTypes={argTypes} args={{ ...defaultArgs }}>
+    {PrimatorCouncil.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={PrimatorCouncil} />

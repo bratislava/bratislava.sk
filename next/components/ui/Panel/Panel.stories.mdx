@@ -1,0 +1,68 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Panel } from './Panel'
+
+import SampleImage from '../../../assets/images/sample-blog-image.png'
+
+export const argTypes = {
+  children: {
+    control: false,
+  },
+}
+
+export const defaultArgs = {
+  hoverable: false,
+  className: 'p-10 w-64',
+  children: 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
+}
+
+<Meta title="components/atoms/Panel" decorators={[withDesign]} />
+
+# Panel
+
+This is our Panel
+
+## Static panel
+
+Basic box with rounded corners and shadow. By default, overflow is hidden so rounded corners also apply to content. This can be disabled with prop.
+
+<Canvas>
+  <Story name="Static" argTypes={argTypes} args={defaultArgs}>
+    {Panel.bind({})}
+  </Story>
+</Canvas>
+
+## Panel with image
+
+<Canvas>
+  <Story
+    name="With image"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      className: 'w-64',
+      children: <img src={SampleImage} alt="sample" />,
+    }}
+  >
+    {Panel.bind({})}
+  </Story>
+</Canvas>
+
+## Hoverable panel
+
+When panel is hoverable, simple transform is applied on hover. Cursor is also changed to pointer.
+
+<Canvas>
+  <Story
+    name="Hoverable"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      hoverable: true,
+    }}
+  >
+    {Panel.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Panel} />

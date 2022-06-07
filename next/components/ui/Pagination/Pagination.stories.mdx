@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Pagination } from './Pagination'
+
+<Meta title="components/molecules/Pagination" decorators={[withDesign]} />
+
+# Pagination
+
+Pagination
+
+## Props
+
+Pagination accepts custom Props that are as follows:
+
+- <b>currentPage</b>: currentPage
+- <b>itemsPerPage</b>: number of items par page
+- <b>pageHandler</b>: function which explains the behaviour per page change
+- <b>totalCount</b>: number of items
+
+export const Template = (args) => {
+  return <Pagination itemsPerPage={args.itemsPerPage} totalCount={args.totalCount} />
+}
+
+<Canvas>
+  <Story
+    name="Pagination"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      itemsPerPage: 5,
+      totalCount: 21,
+      currentPage: 1,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Pagination} />

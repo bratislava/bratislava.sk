@@ -1,0 +1,76 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { FileList } from './FileList'
+
+<Meta title="components/organisms/sections/FileList" decorators={[withDesign]} />
+
+# FileList
+
+FileList
+
+<Canvas>
+  <Story
+    name="FileList"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      dividerStyle: 'hrad_01_full_width',
+      fileSections: [
+        {
+          category: 'Category 1',
+          files: [
+            {
+              title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+              uploadDate: 'máj 2021',
+              downloadDetail: '.PDF; 1,6 MB',
+              downloadLink: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+            },
+            {
+              title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+              uploadDate: 'máj 2021',
+              downloadDetail: '.PDF; 1,6 MB',
+              downloadLink: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+            },
+            {
+              title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+              uploadDate: 'máj 2021',
+              downloadDetail: '.PDF; 1,6 MB',
+              downloadLink: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+            },
+            {
+              title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+              uploadDate: 'máj 2021',
+              downloadDetail: '.PDF; 1,6 MB',
+              downloadLink: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+            },
+          ],
+        },
+        {
+          category: 'Category 2',
+          files: [
+            {
+              title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+              uploadDate: 'máj 2021',
+              downloadDetail: '.PDF; 1,6 MB',
+              downloadLink: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+            },
+            {
+              title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+              uploadDate: 'máj 2021',
+              downloadDetail: '.PDF; 1,6 MB',
+              downloadLink: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+            },
+          ],
+        },
+      ],
+    }}
+  >
+    {FileList.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={FileList} />

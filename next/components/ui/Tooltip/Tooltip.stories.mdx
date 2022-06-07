@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Tooltip } from './Tooltip'
+
+<Meta title="components/atoms/Tooltip" decorators={[withDesign]} />
+
+# Tooltip
+
+Styled Tooltip, that is used as a tooltip throughout all Bratislava web apps.
+
+## Props
+
+Tooltip accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>content</b>: String, that is the content of the tooltip's help message
+- <b>target</b>: ReactNode, that can be used as the replacement for the default '?' target
+
+<Canvas>
+  <Story
+    name="Tooltip"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    argTypes={{
+      content: {
+        name: 'content',
+        type: { name: 'string', required: true },
+        defaultValue: 'Zadajte vaše meno',
+      },
+    }}
+    args={{
+      target: '',
+      className: 'mt-20 ml-40',
+    }}
+  >
+    {Tooltip.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Tooltip} />

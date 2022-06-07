@@ -1,0 +1,63 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { BlogCards } from './BlogCards'
+
+import NewsImage from '../../../../assets/images/sample-news-image.jpeg'
+import NewsImage2 from '../../../../assets/images/sample-news-image-2.jpeg'
+
+export const samplePosts = [
+  {
+    imageSrc: NewsImage,
+    title: 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
+    url: '/',
+  },
+  {
+    imageSrc: NewsImage2,
+    title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
+    url: '/',
+  },
+  {
+    imageSrc: NewsImage,
+    title: 'Nový3 bytový súbor s nájomnými bytmi na Terchovskej ulici',
+    url: '/',
+  },
+  {
+    imageSrc: NewsImage2,
+    title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
+    url: '/',
+  },
+  {
+    imageSrc: NewsImage,
+    title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
+    url: '/',
+  },
+  {
+    imageSrc: NewsImage2,
+    title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
+    url: '/',
+  },
+  {
+    imageSrc: NewsImage,
+    title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
+    url: '/',
+  },
+]
+
+<Meta title="components/organisms/Sections/BlogCards" decorators={[withDesign]} />
+
+# BlogCards
+
+BlogCards
+
+<Canvas>
+  <Story
+    name="BlogCards"
+    args={{
+      posts: samplePosts,
+    }}
+  >
+    {BlogCards.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={BlogCards} />

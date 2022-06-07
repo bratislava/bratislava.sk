@@ -1,0 +1,62 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Bookmark } from './Bookmark'
+
+export const argTypes = {
+  variant: {
+    control: {
+      type: 'radio',
+      options: ['blue', 'red'],
+    },
+  },
+}
+
+export const defaultArgs = {
+  className: 'absolute right-0',
+  title: 'Lorem ipsum',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis nibh malesuada',
+  link: {
+    title: 'Dozvedieť sa viac',
+    href: 'https://www.visitbratislava.com/',
+  },
+}
+
+<Meta title="components/molecules/Bookmark" decorators={[withDesign]} />
+
+# Bookmark
+
+Styled Bookmark, that is used as a primary and secondary Bookmark throughout all Bratislava web apps.
+
+## Blue Bookmark
+
+<Canvas>
+  <Story
+    name="Blue Bookmark"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      bookmarkTitle: 'I am a newcommer',
+      variant: 'blue',
+    }}
+  >
+    {Bookmark.bind({})}
+  </Story>
+</Canvas>
+
+## Red Bookmark
+
+<Canvas>
+  <Story
+    name="Red Bookmark"
+    argTypes={argTypes}
+    args={{
+      ...defaultArgs,
+      bookmarkTitle: 'Som turista',
+      variant: 'red',
+    }}
+  >
+    {Bookmark.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Bookmark} />

@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { SubpageList } from './SubpageList'
+
+<Meta title="components/organisms/sections/SubpageList" decorators={[withDesign]} />
+
+# SubpageList
+
+SubpageList
+
+<Canvas>
+  <Story
+    name="SubpageList"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      subpageList: [
+        { title: 'Subapge 1', url: '#' },
+        { title: 'Subapge 2', url: '#' },
+        { title: 'Subapge 3', url: '#' },
+      ],
+    }}
+  >
+    {SubpageList.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={SubpageList} />

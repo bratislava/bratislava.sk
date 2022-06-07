@@ -1,0 +1,105 @@
+query BlogPostBySlug($slug: String!, $locale: String) {
+  blogPostBySlug(slug: $slug, locale: $locale) {
+    ...BlogPost
+  }
+
+  footer(locale: $locale) {
+    ...Footer
+  }
+
+  mainMenu: pageCategories(locale: $locale) {
+    ...MainMenuItem
+  }
+}
+
+query RelatedPostsBySlug($slug: String!, $locale: String!) {
+  relatedPostsBySlug(slug: $slug, locale: $locale) {
+    ...BlogPost
+  }
+}
+
+query LatestPostsByTags($tags: [Int], $limit: Int, $offset: Int) {
+  latestPostsByTags(tags: $tags, limit: $limit, offset: $offset) {
+    ...BlogPost
+  }
+}
+
+query BlogPostsStaticPaths($locale: String) {
+  blogPosts(locale: $locale) {
+    id
+    slug
+  }
+}
+
+query LatestBlogsWithTags($sort: String, $limit: Int, $offset: Int, $where: JSON) {
+  blogPosts(sort: $sort, limit: $limit, start: $offset, where: $where) {
+    slug
+    title
+    excerpt
+    coverImage {
+      url
+    }
+    tag {
+      title
+      pageCategory {
+        title
+        color
+      }
+    }
+    published_at
+  }
+}
+
+query TotalPostsCount($where: JSON) {
+  blogPostsConnection(where: $where) {
+    aggregate {
+      count
+      totalCount
+    }
+  }
+}
+
+query RelatedTags($where: JSON) {
+  tags(where: $where) {
+    title
+    pageCategory {
+      title
+      color
+    }
+  }
+}
+
+fragment BlogPost on BlogPost {
+  id
+  slug
+  title
+  excerpt
+  tag {
+    id
+    title
+    pageCategory {
+      id
+      title
+      color
+    }
+  }
+  sections {
+    ...Sections
+  }
+  coverImage {
+    url
+  }
+  moreLink {
+    ...BlogPostLink
+  }
+  created_at
+}
+
+fragment BlogPostLink on ComponentBlocksBlogPostLink {
+  title
+  url
+  blogPost {
+    title
+    slug
+  }
+}
