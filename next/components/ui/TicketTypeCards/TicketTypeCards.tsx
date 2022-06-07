@@ -1,24 +1,20 @@
-import cx from 'classnames';
-import { Tooltip } from '../Tooltip/Tooltip';
+import cx from 'classnames'
+import { Tooltip } from '../Tooltip/Tooltip'
 
 export type TTicketType = {
-  type: string;
-  title: string;
-  price: number;
-  tooltip?: string;
-};
-
-export interface TicketTypeCardsProps {
-  className?: string;
-  title?: string;
-  ticketTypes?: TTicketType[];
+  type: string
+  title: string
+  price: number
+  tooltip?: string
 }
 
-export const TicketTypeCards = ({
-  className,
-  title,
-  ticketTypes,
-}: TicketTypeCardsProps) => (
+export interface TicketTypeCardsProps {
+  className?: string
+  title?: string
+  ticketTypes?: TTicketType[]
+}
+
+export const TicketTypeCards = ({ className, title, ticketTypes }: TicketTypeCardsProps) => (
   <div className={cx(className, 'flex flex-col space-y-4')}>
     <span className="w-full font-bold text-md">{title}</span>
     {ticketTypes?.map((ticketType) => (
@@ -39,6 +35,6 @@ export const TicketTypeCards = ({
       </div>
     ))}
   </div>
-);
+)
 
-export default TicketTypeCards;
+export default TicketTypeCards

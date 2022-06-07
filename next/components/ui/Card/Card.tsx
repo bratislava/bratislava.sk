@@ -1,16 +1,16 @@
-import cx from 'classnames';
-import { Button } from '../Button/Button';
+import cx from 'classnames'
+import { Button } from '../Button/Button'
 
 export interface CardProps {
-  className?: string;
-  buttonPosition?: string;
-  hasButton?: boolean;
-  buttonContent?: string | React.ReactNode;
-  topImage?: React.ReactNode;
-  topImagePosition?: string;
-  children?: React.ReactNode;
-  buttonVariant?: 'default' | 'circle';
-  onButtonClick?: () => void;
+  className?: string
+  buttonPosition?: string
+  hasButton?: boolean
+  buttonContent?: string | React.ReactNode
+  topImage?: React.ReactNode
+  topImagePosition?: string
+  children?: React.ReactNode
+  buttonVariant?: 'default' | 'circle'
+  onButtonClick?: () => void
 }
 
 export const Card = ({
@@ -24,15 +24,8 @@ export const Card = ({
   buttonVariant,
   onButtonClick,
 }: CardProps) => (
-  <div
-    className={cx(
-      className,
-      'relative max-w-full bg-white shadow-lg rounded-lg'
-    )}
-  >
-    {topImage && (
-      <div className={cx(topImagePosition, 'absolute z-10')}>{topImage}</div>
-    )}
+  <div className={cx(className, 'relative max-w-full bg-white shadow-lg rounded-lg')}>
+    {topImage && <div className={cx(topImagePosition, 'absolute z-10')}>{topImage}</div>}
     {children}
     {hasButton && (
       <Button
@@ -51,6 +44,6 @@ export const Card = ({
       </Button>
     )}
   </div>
-);
+)
 
-export default Card;
+export default Card

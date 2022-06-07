@@ -1,36 +1,26 @@
-import cx from 'classnames';
-import { StepperStep } from '../StepperStep/StepperStep';
+import cx from 'classnames'
+import { StepperStep } from '../StepperStep/StepperStep'
 
 export interface StaticImageData {
-  src: string;
-  height: number;
-  width: number;
-  blurDataURL?: string;
+  src: string
+  height: number
+  width: number
+  blurDataURL?: string
 }
 
 export interface TicketBuyDiagramCardProps {
-  imgSrc: string;
-  imgWidth: string;
-  imgHeight: string;
-  text?: React.ReactNode;
-  index: number;
-  className?: string;
+  imgSrc: string
+  imgWidth: string
+  imgHeight: string
+  text?: React.ReactNode
+  index: number
+  className?: string
 }
 
-export const DiagramCard = ({
-  imgSrc,
-  imgWidth,
-  imgHeight,
-  text,
-  index,
-  className,
-}: TicketBuyDiagramCardProps) => {
+export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, className }: TicketBuyDiagramCardProps) => {
   return (
     <div
-      className={cx(
-        className,
-        'relative rounded-lg border-secondary border-3 flex flex-col items-center shadow mb-2'
-      )}
+      className={cx(className, 'relative rounded-lg border-secondary border-3 flex flex-col items-center shadow mb-2')}
     >
       <StepperStep
         active={false}
@@ -39,14 +29,7 @@ export const DiagramCard = ({
       />
 
       <div className="px-12">
-        {imgSrc && (
-          <img
-            alt="diagramcard"
-            src={imgSrc}
-            width={imgWidth}
-            height={imgHeight}
-          />
-        )}
+        {imgSrc && <img alt="diagramcard" src={imgSrc} width={imgWidth} height={imgHeight} />}
       </div>
 
       {text && (
@@ -55,7 +38,7 @@ export const DiagramCard = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default DiagramCard;
+export default DiagramCard

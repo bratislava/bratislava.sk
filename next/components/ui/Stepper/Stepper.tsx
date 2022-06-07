@@ -1,21 +1,16 @@
-import * as React from 'react';
-import cx from 'classnames';
-import { StepperSpacer } from '../StepperSpacer/StepperSpacer';
-import { StepperStep, IStepperStepProps } from '../StepperStep/StepperStep';
+import * as React from 'react'
+import cx from 'classnames'
+import { StepperSpacer } from '../StepperSpacer/StepperSpacer'
+import { StepperStep, IStepperStepProps } from '../StepperStep/StepperStep'
 
 interface IProps {
-  steps: IStepperStepProps[];
-  currentStep: number;
-  className?: string;
+  steps: IStepperStepProps[]
+  currentStep: number
+  className?: string
 }
 
 export const Stepper = ({ steps, className, currentStep }: IProps) => (
-  <div
-    className={cx(
-      'flex items-center overflow-hidden pb-16 bg-transparent',
-      className
-    )}
-  >
+  <div className={cx('flex items-center overflow-hidden pb-16 bg-transparent', className)}>
     {steps.map((step, i) => (
       <React.Fragment key={i}>
         <StepperStep
@@ -24,12 +19,10 @@ export const Stepper = ({ steps, className, currentStep }: IProps) => (
           checked={i < currentStep - 1}
           {...step}
         />
-        {i < steps.length - 1 && (
-          <StepperSpacer active={i <= currentStep - 1} />
-        )}
+        {i < steps.length - 1 && <StepperSpacer active={i <= currentStep - 1} />}
       </React.Fragment>
     ))}
   </div>
-);
+)
 
-export default Stepper;
+export default Stepper

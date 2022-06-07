@@ -1,19 +1,15 @@
-import cx from 'classnames';
-import React, { useState } from 'react';
-import { Brand } from '../Brand/Brand';
-import { MenuMainItem } from '../HomepageMenu/HomepageMenu';
+import cx from 'classnames'
+import React, { useState } from 'react'
+import { Brand } from '../Brand/Brand'
+import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 
 interface IProps extends LanguageSelectProps {
-  className?: string;
-  menuItems?: MenuMainItem[];
+  className?: string
+  menuItems?: MenuMainItem[]
 }
 
-export const TaxNavBar = ({
-  className,
-  menuItems,
-  ...languageSelectProps
-}: IProps) => {
-  const [burgerOpen, setBurgerOpen] = useState(false);
+export const TaxNavBar = ({ className, menuItems, ...languageSelectProps }: IProps) => {
+  const [burgerOpen, setBurgerOpen] = useState(false)
 
   return (
     <>
@@ -31,8 +27,7 @@ export const TaxNavBar = ({
             url="/"
             title={
               <p>
-                Hlavné mesto SR{' '}
-                <span className="font-semibold">Bratislava</span>
+                Hlavné mesto SR <span className="font-semibold">Bratislava</span>
               </p>
             }
           />
@@ -78,19 +73,19 @@ export const TaxNavBar = ({
         {burgerOpen && <HamburgerMenu hamburgerMenuItems={menuItems} />} */}
       </div>
     </>
-  );
-};
+  )
+}
 
 interface LanguageSelectProps {
-  className?: string;
-  languages?: LanguageOption[];
-  currentLanguage?: string;
-  onLanguageChange?: (language: LanguageOption) => void;
+  className?: string
+  languages?: LanguageOption[]
+  currentLanguage?: string
+  onLanguageChange?: (language: LanguageOption) => void
 }
 
 interface LanguageOption {
-  key: string;
-  title: string;
+  key: string
+  title: string
 }
 
 const LanguageSelect = ({
@@ -100,14 +95,14 @@ const LanguageSelect = ({
   onLanguageChange: onChange,
 }: LanguageSelectProps) => {
   const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
-    if (!onChange) return;
+    if (!onChange) return
 
-    const selectedKey = e.target.value;
-    const selectedOption = options?.find((opt) => opt.key === selectedKey);
-    if (selectedOption) onChange(selectedOption);
-  };
+    const selectedKey = e.target.value
+    const selectedOption = options?.find((opt) => opt.key === selectedKey)
+    if (selectedOption) onChange(selectedOption)
+  }
 
-  if (!options) return null;
+  if (!options) return null
 
   return (
     <select className={className} value={current} onChange={handleChange}>
@@ -117,7 +112,7 @@ const LanguageSelect = ({
         </option>
       ))}
     </select>
-  );
-};
+  )
+}
 
-export default TaxNavBar;
+export default TaxNavBar

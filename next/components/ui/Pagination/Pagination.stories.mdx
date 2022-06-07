@@ -1,6 +1,6 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { Pagination } from './Pagination';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Pagination } from './Pagination'
 
 <Meta title="components/molecules/Pagination" decorators={[withDesign]} />
 
@@ -18,10 +18,8 @@ Pagination accepts custom Props that are as follows:
 - <b>totalCount</b>: number of items
 
 export const Template = (args) => {
-  return (
-    <Pagination itemsPerPage={args.itemsPerPage} totalCount={args.totalCount} />
-  );
-};
+  return <Pagination itemsPerPage={args.itemsPerPage} totalCount={args.totalCount} />
+}
 
 <Canvas>
   <Story

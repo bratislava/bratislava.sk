@@ -31,12 +31,7 @@ query BlogPostsStaticPaths($locale: String) {
   }
 }
 
-query LatestBlogsWithTags(
-  $sort: String
-  $limit: Int
-  $offset: Int
-  $where: JSON
-) {
+query LatestBlogsWithTags($sort: String, $limit: Int, $offset: Int, $where: JSON) {
   blogPosts(sort: $sort, limit: $limit, start: $offset, where: $where) {
     slug
     title

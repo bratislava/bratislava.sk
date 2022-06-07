@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import ChairSpace from './ChairSpace';
+import ChairSpace from './ChairSpace'
 
 describe('ChairSpace', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ChairSpace />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<ChairSpace />)
+    expect(baseElement).toBeTruthy()
+  })
+})

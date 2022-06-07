@@ -1,19 +1,13 @@
-import {
-  AdvancedSearch,
-  BAStickyMenu,
-  FooterProps,
-  MenuMainItem,
-  SectionContainer,
-} from '@bratislava/ui-bratislava';
-import cx from 'classnames';
-import { useState } from 'react';
-import Footer from '../molecules/Footer';
-import NavBar from '../molecules/NavBar';
+import { AdvancedSearch, BAStickyMenu, FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import cx from 'classnames'
+import { useState } from 'react'
+import Footer from '../molecules/Footer'
+import NavBar from '../molecules/NavBar'
 
 interface BasePageLayoutProps {
-  footer?: FooterProps;
-  menuItems?: MenuMainItem[];
-  activeMenuItem?: string;
+  footer?: FooterProps
+  menuItems?: MenuMainItem[]
+  activeMenuItem?: string
 }
 
 const BasePageLayout = ({
@@ -23,7 +17,7 @@ const BasePageLayout = ({
   menuItems,
   activeMenuItem,
 }: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false)
   return (
     <div className={cx('bg-background font-inter', className)}>
       <div className="bg-white h-20">
@@ -44,16 +38,11 @@ const BasePageLayout = ({
         {footer && <Footer {...footer} />}
       </div>
 
-      <div
-        className={cx(
-          'block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden',
-          { hidden: !searchOpen }
-        )}
-      >
+      <div className={cx('block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden', { hidden: !searchOpen })}>
         <AdvancedSearch className="text-white" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BasePageLayout;
+export default BasePageLayout

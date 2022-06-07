@@ -1,6 +1,6 @@
 export interface TestCardProps {
-  title: string;
-  text: string;
+  title: string
+  text: string
 }
 
 export const TestCard = (props: TestCardProps) => {
@@ -9,7 +9,7 @@ export const TestCard = (props: TestCardProps) => {
       <h3 className="font-bold">{props.title}</h3>
       <p className="text-sm">{props.text}</p>
     </div>
-  );
-};
+  )
+}
 
-export default TestCard;
+export default TestCard

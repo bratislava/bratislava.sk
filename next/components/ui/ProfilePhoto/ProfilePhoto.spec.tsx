@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import ProfilePhoto from './ProfilePhoto';
+import ProfilePhoto from './ProfilePhoto'
 
 describe('ProfilePhoto', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ProfilePhoto />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<ProfilePhoto />)
+    expect(baseElement).toBeTruthy()
+  })
+})

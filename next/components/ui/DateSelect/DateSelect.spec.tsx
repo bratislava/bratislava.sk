@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import DateSelect from './DateSelect';
+import DateSelect from './DateSelect'
 
 describe('DateSelect', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<DateSelect />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<DateSelect />)
+    expect(baseElement).toBeTruthy()
+  })
+})

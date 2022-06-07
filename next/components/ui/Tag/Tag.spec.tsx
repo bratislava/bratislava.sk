@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import Tag from './Tag';
+import Tag from './Tag'
 
 describe('Tag', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Tag />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<Tag />)
+    expect(baseElement).toBeTruthy()
+  })
+})

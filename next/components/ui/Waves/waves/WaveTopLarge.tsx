@@ -1,12 +1,6 @@
-import { WaveProps } from '../Waves';
-import cx from 'classnames';
-const WaveTop = ({
-  isRich = false,
-  waveColor,
-  innerLinesColor,
-  outerLinesColor,
-  className,
-}: WaveProps) => {
+import { WaveProps } from '../Waves'
+import cx from 'classnames'
+const WaveTop = ({ isRich = false, waveColor, innerLinesColor, outerLinesColor, className }: WaveProps) => {
   return (
     <svg
       className={cx(className, 'bg-transparent')}
@@ -205,19 +199,14 @@ const WaveTop = ({
       )}
       <defs>
         <clipPath id="clip0_4191:47311">
-          <rect
-            width="5120"
-            height="60"
-            fill="white"
-            transform="translate(0 40)"
-          />
+          <rect width="5120" height="60" fill="white" transform="translate(0 40)" />
         </clipPath>
         <clipPath id="clip1_4191:47311">
           <rect width="5120" height="100" fill="white" />
         </clipPath>
       </defs>
     </svg>
-  );
-};
+  )
+}
 
-export default WaveTop;
+export default WaveTop

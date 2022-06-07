@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import TopNineSection from './TopNineSection';
+import TopNineSection from './TopNineSection'
 
 describe('TopNineSection', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<TopNineSection />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<TopNineSection />)
+    expect(baseElement).toBeTruthy()
+  })
+})

@@ -1,16 +1,16 @@
-import cx from 'classnames';
-import { ImageCard } from '../ImageCard/ImageCard';
-import { VenueInfo } from '../VenueInfo/VenueInfo';
+import cx from 'classnames'
+import { ImageCard } from '../ImageCard/ImageCard'
+import { VenueInfo } from '../VenueInfo/VenueInfo'
 
 export interface VenueProps {
-  id?: string;
-  imageSrc?: string;
-  description?: string;
-  title?: string;
-  buttonTitle?: string;
-  linkTitle?: string;
-  imageCardPosition?: 'left' | 'right';
-  className?: string;
+  id?: string
+  imageSrc?: string
+  description?: string
+  title?: string
+  buttonTitle?: string
+  linkTitle?: string
+  imageCardPosition?: 'left' | 'right'
+  className?: string
 }
 
 export const Venue = ({
@@ -60,7 +60,7 @@ export const Venue = ({
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Venue;
+export default Venue

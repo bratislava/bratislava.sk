@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import { PageTitle } from './PageTitle';
+import { PageTitle } from './PageTitle'
 
 describe('PageTitle', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<PageTitle />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<PageTitle />)
+    expect(baseElement).toBeTruthy()
+  })
+})

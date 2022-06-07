@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import { Venue } from './Venue';
+import { Venue } from './Venue'
 
 describe('Space', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Venue />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<Venue />)
+    expect(baseElement).toBeTruthy()
+  })
+})

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import WeddingCard from './WeddingCard';
+import WeddingCard from './WeddingCard'
 
 describe('WeddingCard', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<WeddingCard />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<WeddingCard />)
+    expect(baseElement).toBeTruthy()
+  })
+})

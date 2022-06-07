@@ -1,8 +1,8 @@
-import cx from 'classnames';
-import React from 'react';
+import cx from 'classnames'
+import React from 'react'
 
 interface SectionContainerProps {
-  hasBackground?: boolean;
+  hasBackground?: boolean
 }
 
 export const SectionContainer = ({
@@ -19,6 +19,6 @@ export const SectionContainer = ({
   >
     <div className="max-w-screen-1.5lg mx-auto">{children}</div>
   </div>
-);
+)
 
-export default SectionContainer;
+export default SectionContainer

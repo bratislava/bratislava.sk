@@ -1,35 +1,23 @@
-import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection';
-import cx from 'classnames';
-import { DashedLine } from '../DashedLine/DashedLine';
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
+import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
+import cx from 'classnames'
+import { DashedLine } from '../DashedLine/DashedLine'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
 export interface NumericalListItemProps {
-  index: number;
-  item: NumericalListItemObject;
-  variant: 'basic' | 'combined' | 'roadmap';
-  hasBackground: boolean;
+  index: number
+  item: NumericalListItemObject
+  variant: 'basic' | 'combined' | 'roadmap'
+  hasBackground: boolean
 }
 
-export const NumericalListItem = ({
-  index,
-  item,
-  variant,
-  hasBackground,
-}: NumericalListItemProps) => {
-  const position = index % 2 == 0 ? 'left' : 'right';
-  const { Markdown: UIMarkdown } = useUIContext();
+export const NumericalListItem = ({ index, item, variant, hasBackground }: NumericalListItemProps) => {
+  const position = index % 2 == 0 ? 'left' : 'right'
+  const { Markdown: UIMarkdown } = useUIContext()
 
   return (
-    <div
-      key={index}
-      className={cx('flex flex-col', { 'mb-8 lg:mb-10': variant != 'roadmap' })}
-    >
+    <div key={index} className={cx('flex flex-col', { 'mb-8 lg:mb-10': variant != 'roadmap' })}>
       {variant === 'roadmap' && index > 0 && (
-        <DashedLine
-          className="-my-8 top-0 pl-6"
-          position={position}
-          color="rgb(var(--color-primary))"
-        />
+        <DashedLine className="-my-8 top-0 pl-6" position={position} color="rgb(var(--color-primary))" />
       )}
       <div
         className={cx(
@@ -49,10 +37,7 @@ export const NumericalListItem = ({
           {index + 1}
         </div>
         <div
-          className={cx(
-            'max-w-screen-sm text-base lg:text-default pl-5 lg:pl-11',
-            { 'pt-2': variant === 'combined' }
-          )}
+          className={cx('max-w-screen-sm text-base lg:text-default pl-5 lg:pl-11', { 'pt-2': variant === 'combined' })}
         >
           <UIMarkdown
             numericalList={true}
@@ -68,5 +53,5 @@ export const NumericalListItem = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

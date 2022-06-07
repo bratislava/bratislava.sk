@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import RelatedContent from './RelatedContent';
+import RelatedContent from './RelatedContent'
 
 describe('RelatedContent', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<RelatedContent />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<RelatedContent />)
+    expect(baseElement).toBeTruthy()
+  })
+})

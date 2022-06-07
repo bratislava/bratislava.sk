@@ -1,11 +1,11 @@
-import cx from 'classnames';
+import cx from 'classnames'
 export interface TimeCardMobileProps {
-  className?: string;
-  primaryContent: React.ReactNode;
-  secondaryContent: React.ReactNode;
-  onClick?: () => void;
-  isActive?: boolean;
-  tabIndex: number;
+  className?: string
+  primaryContent: React.ReactNode
+  secondaryContent: React.ReactNode
+  onClick?: () => void
+  isActive?: boolean
+  tabIndex: number
 }
 
 export const TimeCardMobile = ({
@@ -18,11 +18,9 @@ export const TimeCardMobile = ({
 }: TimeCardMobileProps) => {
   return (
     <div
-      className={cx(
-        'w-full text-center rounded-lg text-font font-medium relative bg-input-nav-bg mb-3',
-        className,
-        { 'cursor-pointer': !!onClick }
-      )}
+      className={cx('w-full text-center rounded-lg text-font font-medium relative bg-input-nav-bg mb-3', className, {
+        'cursor-pointer': !!onClick,
+      })}
       onClick={onClick}
       onKeyPress={onClick}
       role="checkbox"
@@ -43,12 +41,10 @@ export const TimeCardMobile = ({
       {/* Mobile Design */}
       <div className="flex sm:hidden w-full items-center shadow-md rounded-lg text-center text-sm">
         <p className="w-3/5 pl-9 py-3">{primaryContent}</p>
-        <p className="w-2/5 py-3 bg-secondary rounded-r-lg">
-          {secondaryContent}
-        </p>
+        <p className="w-2/5 py-3 bg-secondary rounded-r-lg">{secondaryContent}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TimeCardMobile;
+export default TimeCardMobile

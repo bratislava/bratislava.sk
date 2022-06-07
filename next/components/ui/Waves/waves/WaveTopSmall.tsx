@@ -1,12 +1,6 @@
-import { WaveProps } from '../Waves';
+import { WaveProps } from '../Waves'
 
-const WaveTop = ({
-  isRich = false,
-  waveColor,
-  outerLinesColor,
-  innerLinesColor,
-  className,
-}: WaveProps) => (
+const WaveTop = ({ isRich = false, waveColor, outerLinesColor, innerLinesColor, className }: WaveProps) => (
   <svg
     className={className}
     style={{ backgroundColor: 'transparent' }}
@@ -17,11 +11,7 @@ const WaveTop = ({
     xmlns="http://www.w3.org/2000/svg"
   >
     <svg>
-      <g
-        style={{ color: outerLinesColor }}
-        clipPath="url(#clip0_4200:47049)"
-        transform="translate(-92, 0)"
-      >
+      <g style={{ color: outerLinesColor }} clipPath="url(#clip0_4200:47049)" transform="translate(-92, 0)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -49,11 +39,7 @@ const WaveTop = ({
       </g>
     </svg>
     <svg>
-      <g
-        style={{ color: outerLinesColor }}
-        clipPath="url(#clip0_4200:47049)"
-        transform="translate(92, 0)"
-      >
+      <g style={{ color: outerLinesColor }} clipPath="url(#clip0_4200:47049)" transform="translate(92, 0)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -81,10 +67,7 @@ const WaveTop = ({
       </g>
     </svg>
     {isRich && (
-      <g
-        clipPath="url(#clip1_4200:47049)"
-        transform="translate(750,42) matrix(-1, 0, 0, -1, 0, 0)"
-      >
+      <g clipPath="url(#clip1_4200:47049)" transform="translate(750,42) matrix(-1, 0, 0, -1, 0, 0)">
         <g style={{ color: innerLinesColor }}>
           {/* Wavelines - Inside (WaveColor) */}
           <path
@@ -119,18 +102,13 @@ const WaveTop = ({
     )}
     <defs>
       <clipPath id="clip0_4200:47049">
-        <rect
-          width="750"
-          height="29"
-          fill="white"
-          transform="translate(0 13)"
-        />
+        <rect width="750" height="29" fill="white" transform="translate(0 13)" />
       </clipPath>
       <clipPath id="clip1_4200:47049">
         <rect width="750" height="42" fill="white" />
       </clipPath>
     </defs>
   </svg>
-);
+)
 
-export default WaveTop;
+export default WaveTop

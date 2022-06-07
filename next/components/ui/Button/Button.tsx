@@ -1,18 +1,15 @@
-import cx from 'classnames';
-import * as React from 'react';
+import cx from 'classnames'
+import * as React from 'react'
 
-export type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
-  children?: React.ReactNode;
-  className?: string;
-  hoverIcon?: React.ReactNode;
-  icon?: React.ReactNode;
-  iconClassName?: string;
-  iconPosition?: 'right' | 'left' | 'center';
-  shape?: 'default' | 'circle' | 'none';
-  spacing?: 'small' | 'default';
+export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+  children?: React.ReactNode
+  className?: string
+  hoverIcon?: React.ReactNode
+  icon?: React.ReactNode
+  iconClassName?: string
+  iconPosition?: 'right' | 'left' | 'center'
+  shape?: 'default' | 'circle' | 'none'
+  spacing?: 'small' | 'default'
   variant?:
     | 'primary'
     | 'secondary'
@@ -20,8 +17,8 @@ export type ButtonProps = React.DetailedHTMLProps<
     | 'transparent'
     | 'full-transparent'
     | 'transparent-black'
-    | 'muted';
-};
+    | 'muted'
+}
 
 export const Button = ({
   children,
@@ -40,7 +37,7 @@ export const Button = ({
       <span className="group-hover:hidden ml-5">{icon}</span>
       <span className="hidden group-hover:block ml-5">{hoverIcon || icon}</span>
     </>
-  ) : null;
+  ) : null
 
   return (
     <button
@@ -53,26 +50,18 @@ export const Button = ({
 
         // styles for buttons
         'bg-primary text-white': shape !== 'none' && variant === 'primary',
-        'bg-secondary text-primary':
-          shape !== 'none' && variant === 'secondary',
-        'bg-secondary text-font':
-          shape !== 'none' && variant === 'secondaryDarkText',
-        'bg-transparent text-primary border-primary border-2':
-          shape !== 'none' && variant === 'transparent',
+        'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
+        'bg-secondary text-font': shape !== 'none' && variant === 'secondaryDarkText',
+        'bg-transparent text-primary border-primary border-2': shape !== 'none' && variant === 'transparent',
         //transparent should be replaced with transparent-black
-        'bg-transparent text-font border-primary border-2':
-          shape !== 'none' && variant === 'transparent-black',
-        'bg-primary-muted text-white hover:bg-primary':
-          shape !== 'none' && variant === 'muted',
-        'bg-transparent text-font underline underline-offset-2':
-          shape !== 'none' && variant === 'full-transparent',
+        'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',
+        'bg-primary-muted text-white hover:bg-primary': shape !== 'none' && variant === 'muted',
+        'bg-transparent text-font underline underline-offset-2': shape !== 'none' && variant === 'full-transparent',
         'rounded-lg': shape === 'default',
         'rounded-full': shape === 'circle',
 
         // styles for links
-        'text-primary':
-          shape === 'none' &&
-          (variant === 'primary' || variant === 'transparent'),
+        'text-primary': shape === 'none' && (variant === 'primary' || variant === 'transparent'),
         'text-secondary': shape === 'none' && variant === 'secondary',
       })}
       {...props}
@@ -84,7 +73,7 @@ export const Button = ({
       </span>
       {iconPosition === 'right' && iconContent}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import SubHeader from './SubHeader';
+import SubHeader from './SubHeader'
 
 describe('SubHeader', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SubHeader />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<SubHeader />)
+    expect(baseElement).toBeTruthy()
+  })
+})

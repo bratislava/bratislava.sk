@@ -1,4 +1,4 @@
-import { MenuMainItem } from '@bratislava/ui-bratislava';
+import { MenuMainItem } from '@bratislava/ui-bratislava'
 
 export const buildMockData = ({
   postImage1,
@@ -12,16 +12,16 @@ export const buildMockData = ({
   councilImage,
   locale = 'sk',
 }: {
-  primatorImage: string;
-  councilImage: string;
-  postImage1: string;
-  postImage2: string;
-  postImage3: string;
-  newsImage1: string;
-  newsImage2: string;
-  inBaImage1: string;
-  inBaImage2: string;
-  locale?: string;
+  primatorImage: string
+  councilImage: string
+  postImage1: string
+  postImage2: string
+  postImage3: string
+  newsImage1: string
+  newsImage2: string
+  inBaImage1: string
+  inBaImage2: string
+  locale?: string
 }) => {
   const sk = {
     pageTitle: 'Bratislava',
@@ -156,8 +156,7 @@ export const buildMockData = ({
     ],
     inba: {
       title: 'in.ba',
-      content:
-        'V bratislavskom informačnom magazíne in.ba vždy nájdete to, čo o dianí v meste potrebuje vedieť.',
+      content: 'V bratislavskom informačnom magazíne in.ba vždy nájdete to, čo o dianí v meste potrebuje vedieť.',
       images: [inBaImage1, inBaImage2],
       readMoreTitle: 'Čítať viac',
     },
@@ -174,7 +173,7 @@ export const buildMockData = ({
         variant: 'red' as const,
       },
     ],
-  };
+  }
 
   // ENGLISH VERSION
 
@@ -184,8 +183,7 @@ export const buildMockData = ({
     blogCardPosts: [
       {
         imageSrc: postImage1,
-        title:
-          'The public space on Kazanska Street in Vrakuňa will be renovated',
+        title: 'The public space on Kazanska Street in Vrakuňa will be renovated',
         url: '/',
       },
       {
@@ -195,8 +193,7 @@ export const buildMockData = ({
       },
       {
         imageSrc: postImage1,
-        title:
-          'The public space on Kazanska Street in Vrakuňa will be renovated',
+        title: 'The public space on Kazanska Street in Vrakuňa will be renovated',
         url: '/',
       },
       {
@@ -206,8 +203,7 @@ export const buildMockData = ({
       },
       {
         imageSrc: postImage1,
-        title:
-          'The public space on Kazanska Street in Vrakuňa will be renovated',
+        title: 'The public space on Kazanska Street in Vrakuňa will be renovated',
         url: '/',
       },
       {
@@ -217,8 +213,7 @@ export const buildMockData = ({
       },
       {
         imageSrc: postImage1,
-        title:
-          'The public space on Kazanska Street in Vrakuňa will be renovated',
+        title: 'The public space on Kazanska Street in Vrakuňa will be renovated',
         url: '/',
       },
       {
@@ -333,11 +328,11 @@ export const buildMockData = ({
         variant: 'red' as const,
       },
     ],
-  };
+  }
 
-  if (locale !== 'sk') return en;
-  return sk;
-};
+  if (locale !== 'sk') return en
+  return sk
+}
 
 // This represents menu as present in figma
 
@@ -731,29 +726,27 @@ const MAIN_MENU: MenuMainItem[] = [
       },
     ],
   },
-];
+]
 
 const BOOKMARK = {
   title: 'Spoznajte Bratislavu',
   icon: 'signpost',
-  content:
-    'Aktuálne novinky, podujatia a atrakcie v Bratislave na jednom mieste.',
+  content: 'Aktuálne novinky, podujatia a atrakcie v Bratislave na jednom mieste.',
   link: {
     title: 'Prejsť na stránku',
     href: 'https://www.visitbratislava.com/sk/',
   },
-};
+}
 
 const NEWCOMMER_BOOKMARK = {
   title: 'Братислава для України',
   icon: 'ua',
-  content:
-    'Вся необхідна інформація про допомогу та послуги для народу України.',
+  content: 'Вся необхідна інформація про допомогу та послуги для народу України.',
   link: {
     title: 'Дізнатися більше',
     href: '/kultura-a-komunity/komunity/братислава-для-украіни',
   },
-};
+}
 
 // This represents menu as present in figma
 
@@ -1147,26 +1140,24 @@ const MAIN_MENU_EN: MenuMainItem[] = [
       },
     ],
   },
-];
+]
 
 const BOOKMARK_EN = {
   title: 'Get to know Bratislava',
   icon: 'signpost',
-  content:
-    'Your ultimate guide - all the things you should know before travelling to Bratislava.',
+  content: 'Your ultimate guide - all the things you should know before travelling to Bratislava.',
   link: {
     title: 'Prejsť na stránku',
     href: 'https://www.visitbratislava.com/',
   },
-};
+}
 
 const NEWCOMMER_BOOKMARK_EN = {
   title: 'Bratislava for Ukraine',
   icon: 'ua',
-  content:
-    'All information about help and services for Ukrainians provided by Bratislava',
+  content: 'All information about help and services for Ukrainians provided by Bratislava',
   link: {
     title: 'Find out more',
     href: '/en/bratislava-for-ukraine',
   },
-};
+}

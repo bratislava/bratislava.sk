@@ -1,23 +1,19 @@
-import {
-  HorizontalScrollWrapper,
-  TabBarTab,
-  Tag,
-} from '@bratislava/ui-bratislava';
-import { useEffect, useState } from 'react';
+import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratislava'
+import { useEffect, useState } from 'react'
 
 export interface Card {
-  title: string;
-  color: string;
-  category: string;
+  title: string
+  color: string
+  category: string
 }
 
 export interface ArticlesFilter {
-  data?: Array<Card>;
-  filterHandler?: (arg0: string) => void;
-  categoryHandler?: (arg0: string) => void;
-  categoryExists?: boolean;
-  category?: Object;
-  selectedTags?: string[];
+  data?: Array<Card>
+  filterHandler?: (arg0: string) => void
+  categoryHandler?: (arg0: string) => void
+  categoryExists?: boolean
+  category?: Object
+  selectedTags?: string[]
 }
 
 export const ArticlesFilter = ({
@@ -35,13 +31,11 @@ export const ArticlesFilter = ({
     'Sociálne služby a bývanie',
     'Vzdelávanie a voľný čas',
     'Kultúra a komunity',
-  ];
+  ]
 
   return (
     <div>
-      <div className="text-lg text-center font-semibold">
-        Rozdelenie obsahu článkov
-      </div>
+      <div className="text-lg text-center font-semibold">Rozdelenie obsahu článkov</div>
       <HorizontalScrollWrapper className="mt-10">
         <div className="flex">
           {!categoryExists
@@ -76,5 +70,5 @@ export const ArticlesFilter = ({
           ))}
       </div>
     </div>
-  );
-};
+  )
+}

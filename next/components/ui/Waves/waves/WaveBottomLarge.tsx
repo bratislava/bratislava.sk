@@ -1,12 +1,6 @@
-import { WaveProps } from '../Waves';
+import { WaveProps } from '../Waves'
 
-const WaveBottom = ({
-  isRich = false,
-  waveColor,
-  outerLinesColor,
-  innerLinesColor,
-  className,
-}: WaveProps) => (
+const WaveBottom = ({ isRich = false, waveColor, outerLinesColor, innerLinesColor, className }: WaveProps) => (
   <svg
     className={className}
     transform="matrix(1, 0, 0, -1, 0, 0)"
@@ -199,18 +193,13 @@ const WaveBottom = ({
     )}
     <defs>
       <clipPath id="clip0_4191:47311">
-        <rect
-          width="5120"
-          height="60"
-          fill="white"
-          transform="translate(0 40)"
-        />
+        <rect width="5120" height="60" fill="white" transform="translate(0 40)" />
       </clipPath>
       <clipPath id="clip1_4191:47311">
         <rect width="5120" height="100" fill="white" />
       </clipPath>
     </defs>
   </svg>
-);
+)
 
-export default WaveBottom;
+export default WaveBottom

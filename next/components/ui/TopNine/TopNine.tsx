@@ -1,10 +1,10 @@
-import cx from 'classnames';
-import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper';
-import { TopNineItem, TopNineItemProps } from '../TopNineItem/TopNineItem';
+import cx from 'classnames'
+import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { TopNineItem, TopNineItemProps } from '../TopNineItem/TopNineItem'
 
 interface IProps {
-  className?: string;
-  items?: TopNineItemProps[];
+  className?: string
+  items?: TopNineItemProps[]
 }
 
 export const TopNine = ({ className, items }: IProps) => (
@@ -18,6 +18,6 @@ export const TopNine = ({ className, items }: IProps) => (
       <TopNineItem key={index} {...item} />
     ))}
   </HorizontalScrollWrapper>
-);
+)
 
-export default TopNine;
+export default TopNine

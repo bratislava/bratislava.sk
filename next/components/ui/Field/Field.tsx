@@ -1,23 +1,16 @@
-import cx from 'classnames';
-import * as React from 'react';
+import cx from 'classnames'
+import * as React from 'react'
 
 export interface FieldProps {
-  children?: React.ReactNode;
-  tooltip?: React.ReactNode;
-  className?: string;
-  id?: string;
-  title?: string;
-  error?: string;
+  children?: React.ReactNode
+  tooltip?: React.ReactNode
+  className?: string
+  id?: string
+  title?: string
+  error?: string
 }
 
-export const Field = ({
-  children,
-  tooltip,
-  className,
-  id,
-  title,
-  error,
-}: FieldProps) => {
+export const Field = ({ children, tooltip, className, id, title, error }: FieldProps) => {
   return (
     <div className={cx(className, 'mt-8')}>
       {(title || tooltip) && (
@@ -30,13 +23,9 @@ export const Field = ({
       )}
       {children}
 
-      {error && (
-        <p className="text-center sm:text-left text-error text-sm mt-2">
-          {error}
-        </p>
-      )}
+      {error && <p className="text-center sm:text-left text-error text-sm mt-2">{error}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default Field;
+export default Field

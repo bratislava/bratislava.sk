@@ -1,15 +1,15 @@
-import cx from 'classnames';
-import { ContentWrapper } from '../ContentWrapper/ContentWrapper';
+import cx from 'classnames'
+import { ContentWrapper } from '../ContentWrapper/ContentWrapper'
 
 export interface InfoCardProps {
-  className?: string;
-  imageSrc?: string;
-  imageWidth: string;
-  imageHeight: string;
-  primaryTitle: string;
-  secondaryTitle: string;
-  description?: string;
-  children: React.ReactNode;
+  className?: string
+  imageSrc?: string
+  imageWidth: string
+  imageHeight: string
+  primaryTitle: string
+  secondaryTitle: string
+  description?: string
+  children: React.ReactNode
 }
 
 export const InfoCard = ({
@@ -23,20 +23,8 @@ export const InfoCard = ({
   children,
 }: InfoCardProps) => {
   return (
-    <div
-      className={cx(
-        className,
-        'flex flex-col items-start w-72 max-w-sm lg:w-full'
-      )}
-    >
-      {imageSrc && (
-        <img
-          alt={secondaryTitle}
-          src={imageSrc}
-          width={imageWidth}
-          height={imageHeight}
-        />
-      )}
+    <div className={cx(className, 'flex flex-col items-start w-72 max-w-sm lg:w-full')}>
+      {imageSrc && <img alt={secondaryTitle} src={imageSrc} width={imageWidth} height={imageHeight} />}
       <ContentWrapper
         className="mt-8 lg:pl-6"
         title={
@@ -51,7 +39,7 @@ export const InfoCard = ({
         {children}
       </ContentWrapper>
     </div>
-  );
-};
+  )
+}
 
-export default InfoCard;
+export default InfoCard

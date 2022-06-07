@@ -1,14 +1,14 @@
-import cx from 'classnames';
-import { Carousel } from '../../Carousel/Carousel';
-import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper';
-import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard';
+import cx from 'classnames'
+import { Carousel } from '../../Carousel/Carousel'
+import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 
 export interface RelatedContentProps {
-  className?: string;
-  cards?: NewsCardProps[];
-  fetchMoreItems?: () => void;
-  shiftIndex?: number;
-  visibleItems?: number;
+  className?: string
+  cards?: NewsCardProps[]
+  fetchMoreItems?: () => void
+  shiftIndex?: number
+  visibleItems?: number
 }
 
 export const RelatedContent = ({
@@ -32,14 +32,12 @@ export const RelatedContent = ({
       />
     </div>
 
-    <HorizontalScrollWrapper
-      className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4')}
-    >
+    <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4')}>
       {cards.map((card, index) => (
         <NewsCard className="flex-shrink-0 w-10/12" key={index} {...card} />
       ))}
     </HorizontalScrollWrapper>
   </div>
-);
+)
 
-export default RelatedContent;
+export default RelatedContent

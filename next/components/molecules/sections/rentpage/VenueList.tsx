@@ -1,24 +1,22 @@
-import { Venue, VenueProps, TabBarTab } from '@bratislava/ui-bratislava';
-import cx from 'classnames';
-import React from 'react';
+import { Venue, VenueProps, TabBarTab } from '@bratislava/ui-bratislava'
+import cx from 'classnames'
+import React from 'react'
 
-export type TVenuesTab = { key: string; title: string; venues?: VenueProps[] };
+export type TVenuesTab = { key: string; title: string; venues?: VenueProps[] }
 
 export interface IProps {
-  className?: string;
-  title?: string;
-  tabs?: TVenuesTab[];
+  className?: string
+  title?: string
+  tabs?: TVenuesTab[]
 }
 
 const VenueList = ({ className, title, tabs }: IProps) => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const activeTab = tabs?.[activeIndex];
+  const [activeIndex, setActiveIndex] = React.useState(0)
+  const activeTab = tabs?.[activeIndex]
 
   return (
     <div className={cx(className, 'flex items-center flex-col py-56')}>
-      <span className="font-semibold text-4xl w-96 px-5 text-center">
-        {title}
-      </span>
+      <span className="font-semibold text-4xl w-96 px-5 text-center">{title}</span>
 
       <div className="flex space-x-5 my-20">
         {tabs?.map((tab, index) => (
@@ -34,15 +32,11 @@ const VenueList = ({ className, title, tabs }: IProps) => {
 
       <div className="flex flex-col space-y-40">
         {activeTab?.venues?.map((venue, index) => (
-          <Venue
-            imageCardPosition={index % 2 === 0 ? 'left' : 'right'}
-            key={index}
-            {...venue}
-          />
+          <Venue imageCardPosition={index % 2 === 0 ? 'left' : 'right'} key={index} {...venue} />
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VenueList;
+export default VenueList

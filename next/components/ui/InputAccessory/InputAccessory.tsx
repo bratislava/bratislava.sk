@@ -1,21 +1,16 @@
-import cx from 'classnames';
+import cx from 'classnames'
 
 export interface InputAccessoryProps {
-  className?: string;
-  children?: React.ReactNode;
-  icon: React.ReactNode;
-  iconPosition?: 'left' | 'right';
+  className?: string
+  children?: React.ReactNode
+  icon: React.ReactNode
+  iconPosition?: 'left' | 'right'
 }
 
-export const InputAccessory = ({
-  className,
-  children,
-  icon,
-  iconPosition = 'right',
-}: InputAccessoryProps) => {
-  const hasIcon = !!icon;
-  const hasIconLeft = hasIcon && iconPosition === 'left';
-  const hasIconRight = hasIcon && iconPosition === 'right';
+export const InputAccessory = ({ className, children, icon, iconPosition = 'right' }: InputAccessoryProps) => {
+  const hasIcon = !!icon
+  const hasIconLeft = hasIcon && iconPosition === 'left'
+  const hasIconRight = hasIcon && iconPosition === 'right'
 
   return (
     <div className={cx('relative group', className)}>
@@ -31,7 +26,7 @@ export const InputAccessory = ({
         </span>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default InputAccessory;
+export default InputAccessory

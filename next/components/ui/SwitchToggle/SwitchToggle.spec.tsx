@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import { SwitchToggle } from './SwitchToggle';
+import { SwitchToggle } from './SwitchToggle'
 
 describe('SwitchToggle', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SwitchToggle />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<SwitchToggle />)
+    expect(baseElement).toBeTruthy()
+  })
+})

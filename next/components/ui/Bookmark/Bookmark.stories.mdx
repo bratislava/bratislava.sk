@@ -1,6 +1,6 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { Bookmark } from './Bookmark';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Bookmark } from './Bookmark'
 
 export const argTypes = {
   variant: {
@@ -9,18 +9,17 @@ export const argTypes = {
       options: ['blue', 'red'],
     },
   },
-};
+}
 
 export const defaultArgs = {
   className: 'absolute right-0',
   title: 'Lorem ipsum',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis nibh malesuada',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis nibh malesuada',
   link: {
     title: 'Dozvedieť sa viac',
     href: 'https://www.visitbratislava.com/',
   },
-};
+}
 
 <Meta title="components/molecules/Bookmark" decorators={[withDesign]} />
 

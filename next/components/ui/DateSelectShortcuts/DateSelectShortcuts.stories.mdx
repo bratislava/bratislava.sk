@@ -1,12 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { DateSelectShortcuts } from './DateSelectShortcuts';
-import { LocalDate } from '@js-joda/core';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { DateSelectShortcuts } from './DateSelectShortcuts'
+import { LocalDate } from '@js-joda/core'
 
-<Meta
-  title="components/molecules/DateSelectShortcuts"
-  decorators={[withDesign]}
-/>
+<Meta title="components/molecules/DateSelectShortcuts" decorators={[withDesign]} />
 
 # DateSelectShortcuts
 
@@ -17,19 +14,12 @@ DateSelectShortcuts
 DateSelectShortcuts accepts custom Props that are as follows:
 
 - <b>value</b>: string of the current local time evaluated using ISO chronology
-- <b>onClick</b>: function, accepts as parameter selected day as date in string
-  format
+- <b>onClick</b>: function, accepts as parameter selected day as date in string format
 
 export const Template = (args) => {
-  const [value, setValue] = React.useState(LocalDate.now().toJSON());
-  return (
-    <DateSelectShortcuts
-      className={args.className}
-      value={value}
-      onClick={(d) => setValue(d)}
-    />
-  );
-};
+  const [value, setValue] = React.useState(LocalDate.now().toJSON())
+  return <DateSelectShortcuts className={args.className} value={value} onClick={(d) => setValue(d)} />
+}
 
 <Canvas>
   <Story

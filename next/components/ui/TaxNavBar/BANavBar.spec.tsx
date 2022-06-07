@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
-import { TaxNavBar } from './TaxNavBar';
+import { render } from '@testing-library/react'
+import { TaxNavBar } from './TaxNavBar'
 
 describe('TaxNavBar', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<TaxNavBar />);
+    const { baseElement } = render(<TaxNavBar />)
 
-    expect(baseElement).toBeTruthy();
-  });
-});
+    expect(baseElement).toBeTruthy()
+  })
+})

@@ -1,21 +1,12 @@
-import cx from 'classnames';
+import cx from 'classnames'
 
 interface IProps {
-  className?: string;
-  children?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
 }
 
 export const HorizontalScrollWrapper = ({ className, children }: IProps) => {
-  return (
-    <div
-      className={cx(
-        'flex overflow-x-auto overflow-y-hidden scrollbar-hide',
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-};
+  return <div className={cx('flex overflow-x-auto overflow-y-hidden scrollbar-hide', className)}>{children}</div>
+}
 
-export default HorizontalScrollWrapper;
+export default HorizontalScrollWrapper

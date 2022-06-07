@@ -1,12 +1,9 @@
-import cx from 'classnames';
+import cx from 'classnames'
 export interface CompleteDashedLineProps {
-  className?: string;
-  color: string;
+  className?: string
+  color: string
 }
-export const CompleteDashedLine = ({
-  className,
-  color,
-}: CompleteDashedLineProps) => {
+export const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps) => {
   return (
     <svg
       className={cx('absolute', className)}
@@ -24,5 +21,5 @@ export const CompleteDashedLine = ({
         strokeDasharray="8 8"
       />
     </svg>
-  );
-};
+  )
+}

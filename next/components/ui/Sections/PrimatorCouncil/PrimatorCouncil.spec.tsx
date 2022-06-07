@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import PrimatorCouncil from './PrimatorCouncil';
+import PrimatorCouncil from './PrimatorCouncil'
 
 describe('PrimatorCouncil', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<PrimatorCouncil />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<PrimatorCouncil />)
+    expect(baseElement).toBeTruthy()
+  })
+})

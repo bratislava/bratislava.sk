@@ -1,21 +1,15 @@
-import cx from 'classnames';
-import React from 'react';
+import cx from 'classnames'
+import React from 'react'
 
 interface TooltipProps {
-  className?: string;
-  content: React.ReactNode;
-  target?: React.ReactNode;
-  size?: 'large' | 'small';
-  variant?: 'default' | 'primary';
+  className?: string
+  content: React.ReactNode
+  target?: React.ReactNode
+  size?: 'large' | 'small'
+  variant?: 'default' | 'primary'
 }
 
-export const Tooltip = ({
-  className,
-  content,
-  target,
-  size = 'small',
-  variant = 'default',
-}: TooltipProps) => (
+export const Tooltip = ({ className, content, target, size = 'small', variant = 'default' }: TooltipProps) => (
   <div className={cx(className, 'flex flex-col w-6')}>
     <div className="relative flex items-center justify-center text-center group cursor-help">
       {target || <TooltipTarget variant={variant} />}
@@ -41,13 +35,7 @@ export const Tooltip = ({
         </p>
         {/* desktop arrow */}
         <div className="hidden md:flex absolute w-full left-0 top-full h-1 items-center justify-center">
-          <svg
-            className="h-1"
-            x="0"
-            y="0"
-            viewBox="0 0 20 10"
-            xmlSpace="preserve"
-          >
+          <svg className="h-1" x="0" y="0" viewBox="0 0 20 10" xmlSpace="preserve">
             <polygon className="fill-current" points="0,0 10,10 20,0" />
           </svg>
         </div>
@@ -60,10 +48,10 @@ export const Tooltip = ({
       </div>
     </div>
   </div>
-);
+)
 
 interface IProps {
-  variant: 'primary' | 'default';
+  variant: 'primary' | 'default'
 }
 
 export const TooltipTarget = ({ variant }: IProps) => (
@@ -75,6 +63,6 @@ export const TooltipTarget = ({ variant }: IProps) => (
   >
     ?
   </div>
-);
+)
 
-export default Tooltip;
+export default Tooltip

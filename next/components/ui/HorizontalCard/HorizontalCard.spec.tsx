@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import HorizontalCard from './HorizontalCard';
+import HorizontalCard from './HorizontalCard'
 
 describe('HorizontalCard', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<HorizontalCard />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<HorizontalCard />)
+    expect(baseElement).toBeTruthy()
+  })
+})

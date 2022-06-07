@@ -1,19 +1,14 @@
-import cx from 'classnames';
-import { ITabBarTab, TabBarTab } from '../TabBarTab/TabBarTab';
+import cx from 'classnames'
+import { ITabBarTab, TabBarTab } from '../TabBarTab/TabBarTab'
 
 export interface TabBarProps {
-  className?: string;
-  tabs: ITabBarTab[];
-  activeTab?: string;
-  onSelect?: (tab: string) => void;
+  className?: string
+  tabs: ITabBarTab[]
+  activeTab?: string
+  onSelect?: (tab: string) => void
 }
 
-export const TabBar = ({
-  className,
-  tabs,
-  activeTab,
-  onSelect,
-}: TabBarProps) => (
+export const TabBar = ({ className, tabs, activeTab, onSelect }: TabBarProps) => (
   <div className={cx('flex space-x-10', className)}>
     {tabs?.map((tab, i) => (
       <TabBarTab
@@ -24,6 +19,6 @@ export const TabBar = ({
       />
     ))}
   </div>
-);
+)
 
-export default TabBar;
+export default TabBar

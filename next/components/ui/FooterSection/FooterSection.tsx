@@ -1,19 +1,12 @@
-import cx from 'classnames';
+import cx from 'classnames'
 export interface FooterSectionProps {
-  className?: string;
-  title: string;
-  pageLinks?: { title: string; url: string }[];
+  className?: string
+  title: string
+  pageLinks?: { title: string; url: string }[]
 }
 
-export const FooterSection = ({
-  className,
-  title,
-  pageLinks,
-}: FooterSectionProps) => (
-  <div
-    className={cx(className, 'flex flex-col gap-y-6 lg:gap-y-11')}
-    aria-label="Footer Section"
-  >
+export const FooterSection = ({ className, title, pageLinks }: FooterSectionProps) => (
+  <div className={cx(className, 'flex flex-col gap-y-6 lg:gap-y-11')} aria-label="Footer Section">
     <p className="font-semibold">{title}</p>
     <ul className="flex flex-col gap-y-3 lg:gap-y-5">
       {pageLinks?.map((link, i) => (
@@ -23,6 +16,6 @@ export const FooterSection = ({
       ))}
     </ul>
   </div>
-);
+)
 
-export default FooterSection;
+export default FooterSection

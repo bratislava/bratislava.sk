@@ -1,12 +1,12 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
 
 export interface TextWithImageProps {
-  className?: string;
-  content?: string;
-  imageSrc?: string;
-  imagePosition?: 'left' | 'right';
-  imageShadow: boolean;
+  className?: string
+  content?: string
+  imageSrc?: string
+  imagePosition?: 'left' | 'right'
+  imageShadow: boolean
 }
 
 export const TextWithImage = ({
@@ -16,17 +16,12 @@ export const TextWithImage = ({
   imagePosition = 'left',
   imageShadow = false,
 }: TextWithImageProps) => {
-  const { Markdown: UIMarkdown, Image: UIImage } = useUIContext();
+  const { Markdown: UIMarkdown, Image: UIImage } = useUIContext()
 
-  if (!content && !imageSrc) return null;
+  if (!content && !imageSrc) return null
 
   return (
-    <div
-      className={cx(
-        className,
-        'items-center grid grid-cols-1 md:grid-cols-2 gap-7.5'
-      )}
-    >
+    <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-7.5')}>
       {imagePosition === 'left' && imageSrc && (
         <div>
           <UIImage src={imageSrc} shadow={imageShadow} />
@@ -35,10 +30,7 @@ export const TextWithImage = ({
 
       {content && (
         <div>
-          <UIMarkdown
-            content={content}
-            className="text-sm md:text-default leading-[24px] md:leading-[30px]"
-          />
+          <UIMarkdown content={content} className="text-sm md:text-default leading-[24px] md:leading-[30px]" />
         </div>
       )}
 
@@ -48,6 +40,6 @@ export const TextWithImage = ({
         </div>
       )}
     </div>
-  );
-};
-export default TextWithImage;
+  )
+}
+export default TextWithImage

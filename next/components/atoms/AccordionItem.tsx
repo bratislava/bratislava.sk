@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 interface IProps {
-  className?: string;
-  leftColumn: React.ReactNode;
-  rightColumn: React.ReactNode;
+  className?: string
+  leftColumn: React.ReactNode
+  rightColumn: React.ReactNode
 }
 
 const AccordionItem = ({ leftColumn, rightColumn }: IProps) => {
@@ -12,7 +12,7 @@ const AccordionItem = ({ leftColumn, rightColumn }: IProps) => {
       <div>{leftColumn}</div>
       <div>{rightColumn}</div>
     </div>
-  );
-};
+  )
+}
 
-export default AccordionItem;
+export default AccordionItem

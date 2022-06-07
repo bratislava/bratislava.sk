@@ -1,10 +1,10 @@
-import * as React from 'react';
-import cx from 'classnames';
+import * as React from 'react'
+import cx from 'classnames'
 
 interface IProps {
-  src: string;
-  alt?: string;
-  shadow?: boolean;
+  src: string
+  alt?: string
+  shadow?: boolean
 }
 
 const ContentImage = ({ src, alt, shadow }: IProps) => (
@@ -15,6 +15,6 @@ const ContentImage = ({ src, alt, shadow }: IProps) => (
   >
     <img src={src} alt={alt} />
   </span>
-);
+)
 
-export default ContentImage;
+export default ContentImage

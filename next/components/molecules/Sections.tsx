@@ -1,4 +1,4 @@
-import { SectionsFragment } from '@bratislava/strapi-sdk-homepage';
+import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AccordionItem,
   ColumnedText,
@@ -17,30 +17,25 @@ import {
   RentBenefits,
   NumericalListSection,
   Iframe,
-} from '@bratislava/ui-bratislava';
-import cx from 'classnames';
-import * as React from 'react';
-import {
-  groupByCategory,
-  groupByCategoryFileList,
-  parseCategory,
-  parsePageLink,
-} from '../../utils/page';
-import { isPresent } from '../../utils/utils';
-import MinimumCalculator from './sections/MinimumCalculator';
-import NewsLetterSection from './sections/NewsLetterSection';
-import { useTranslation } from 'next-i18next';
-import ArticlesList from './sections/homepage/ArticlesList';
-import { DocumentList } from './sections/documentList';
+} from '@bratislava/ui-bratislava'
+import cx from 'classnames'
+import * as React from 'react'
+import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
+import { isPresent } from '../../utils/utils'
+import MinimumCalculator from './sections/MinimumCalculator'
+import NewsLetterSection from './sections/NewsLetterSection'
+import { useTranslation } from 'next-i18next'
+import ArticlesList from './sections/homepage/ArticlesList'
+import { DocumentList } from './sections/documentList'
 
 const Sections = ({
   sections,
   slug,
   locale,
 }: {
-  sections: (SectionsFragment | null)[];
-  slug?: string;
-  locale?: string;
+  sections: (SectionsFragment | null)[]
+  slug?: string
+  locale?: string
 }) => {
   return (
     <>
@@ -48,19 +43,11 @@ const Sections = ({
         <Section key={index} section={section} slug={slug} locale={locale} />
       ))}
     </>
-  );
-};
+  )
+}
 
-const Section = ({
-  section,
-  slug,
-  locale,
-}: {
-  section: SectionsFragment | null;
-  slug?: string;
-  locale?: string;
-}) => {
-  if (!section) return null;
+const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
+  if (!section) return null
 
   if (section.__typename === 'ComponentSectionsWaves')
     return (
@@ -74,11 +61,10 @@ const Section = ({
         waveColor="var(--secondary-color)"
         wavePosition={section.position ?? 'top'}
       />
-    );
+    )
 
   if (section.__typename === 'ComponentSectionsNumericalList') {
-    const { title, items, buttonText, buttonLink, variant, hasBackground } =
-      section;
+    const { title, items, buttonText, buttonLink, variant, hasBackground } = section
     return (
       <NumericalListSection
         title={title}
@@ -88,11 +74,11 @@ const Section = ({
         variant={variant}
         hasBackground={hasBackground}
       />
-    );
+    )
   }
 
   // Not All sections has property hasBackground
-  const hasBackground = (section as any).hasBackground ?? false;
+  const hasBackground = (section as any).hasBackground ?? false
 
   return (
     <SectionContainer
@@ -103,15 +89,11 @@ const Section = ({
     >
       {sectionContent(section, slug, locale)}
     </SectionContainer>
-  );
-};
+  )
+}
 
-const sectionContent = (
-  section: SectionsFragment,
-  slug?: string,
-  locale?: string
-) => {
-  const { t } = useTranslation('common');
+const sectionContent = (section: SectionsFragment, slug?: string, locale?: string) => {
+  const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
       return (
@@ -121,21 +103,16 @@ const sectionContent = (
           width={section.width ?? undefined}
           hasBackground={section.hasBackground ?? false}
         />
-      );
+      )
 
     case 'ComponentSectionsIconTitleDesc':
-      return <RentBenefits {...section} linkLabel={t('readMore')} />;
+      return <RentBenefits {...section} linkLabel={t('readMore')} />
 
     case 'ComponentSectionsDocumentList':
-      return <DocumentList {...section} />;
+      return <DocumentList {...section} />
 
     case 'ComponentSectionsColumnedText':
-      return (
-        <ColumnedText
-          content={section.content ?? ''}
-          hasBackground={section.hasBackground ?? false}
-        />
-      );
+      return <ColumnedText content={section.content ?? ''} hasBackground={section.hasBackground ?? false} />
 
     case 'ComponentSectionsTextWithImage':
       return (
@@ -145,31 +122,21 @@ const sectionContent = (
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
         />
-      );
+      )
 
     case 'ComponentSectionsFileList':
-      return (
-        <FileList
-          fileSections={groupByCategoryFileList(
-            section.fileList?.filter(isPresent) ?? []
-          )}
-        />
-      );
+      return <FileList fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])} />
 
     case 'ComponentSectionsDivider':
-      return <Divider dividerStyle={section.style ?? undefined} />;
+      return <Divider dividerStyle={section.style ?? undefined} />
 
     case 'ComponentSectionsLinks':
       return (
         <Links
           title={section.title ?? ''}
-          pageLinks={
-            section.pageLinks
-              ?.map((pageLink) => parsePageLink(pageLink))
-              .filter(isPresent) ?? []
-          }
+          pageLinks={section.pageLinks?.map((pageLink) => parsePageLink(pageLink)).filter(isPresent) ?? []}
         />
-      );
+      )
 
     case 'ComponentSectionsContact':
       return (
@@ -182,24 +149,18 @@ const sectionContent = (
           emailLabel={section.emailLabel ?? undefined}
           address={section.address ?? undefined}
         />
-      );
+      )
 
     case 'ComponentSectionsAccordion':
       return (
         <>
-          {section.title && (
-            <h1 className="flex justify-center font-semibold text-lg pb-14">
-              {section.title}
-            </h1>
-          )}
+          {section.title && <h1 className="flex justify-center font-semibold text-lg pb-14">{section.title}</h1>}
           <div className="flex flex-col space-y-4">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem
                 key={institution.category}
                 title={parseCategory(institution.category).title}
-                secondaryTitle={
-                  parseCategory(institution.category).secondaryTitle
-                }
+                secondaryTitle={parseCategory(institution.category).secondaryTitle}
               >
                 <div className="flex flex-col space-y-4">
                   {institution.items.filter(isPresent).map((file, i) => (
@@ -207,11 +168,7 @@ const sectionContent = (
                       key={i}
                       title={file.title ?? undefined}
                       subtitle={file.subtitle ?? undefined}
-                      content={[
-                        file.firstColumn ?? '',
-                        file.secondColumn ?? '',
-                        file.thirdColumn ?? '',
-                      ]}
+                      content={[file.firstColumn ?? '', file.secondColumn ?? '', file.thirdColumn ?? '']}
                       url={file.url ?? undefined}
                       urlLabel={file.urlLabel ?? undefined}
                     />
@@ -231,7 +188,7 @@ const sectionContent = (
                     title: item.moreLinkTitle,
                     url: item.moreLinkUrl,
                     page: item.moreLinkPage,
-                  });
+                  })
 
                   return (
                     <div className="flex flex-col space-y-4 pl-10">
@@ -241,11 +198,9 @@ const sectionContent = (
                         width={item.width ?? undefined}
                         content={item.content ?? undefined}
                       />
-                      {link?.url && link.title && (
-                        <PageLinkButton className="pl-6" pageLink={link} />
-                      )}
+                      {link?.url && link.title && <PageLinkButton className="pl-6" pageLink={link} />}
                     </div>
-                  );
+                  )
                 })}
               </AccordionItem>
             ))}
@@ -271,7 +226,7 @@ const sectionContent = (
             ))}
           </div>
         </>
-      );
+      )
 
     case 'ComponentSectionsCalculator':
       return (
@@ -280,7 +235,7 @@ const sectionContent = (
           anotherAdultValue={section.another_adult_value ?? 0}
           childValue={section.child_value ?? 0}
         />
-      );
+      )
 
     case 'ComponentSectionsListItems':
       return (
@@ -299,29 +254,23 @@ const sectionContent = (
             })) ?? undefined
           }
         />
-      );
+      )
     case 'ComponentSectionsNewsletter':
-      return <NewsLetterSection />;
+      return <NewsLetterSection />
 
     case 'ComponentSectionsVideos':
-      return <Videos {...section} />;
+      return <Videos {...section} />
 
     case 'ComponentSectionsArticlesList':
-      const { title, category, filtering } = section;
-      return (
-        <ArticlesList
-          title={title}
-          includesFiltering={filtering}
-          category={category?.title}
-        />
-      );
+      const { title, category, filtering } = section
+      return <ArticlesList title={title} includesFiltering={filtering} category={category?.title} />
 
     case 'ComponentSectionsIframe':
-      return <Iframe {...section} />;
+      return <Iframe {...section} />
 
     default:
-      return null;
+      return null
   }
-};
+}
 
-export default Sections;
+export default Sections

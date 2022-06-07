@@ -1,31 +1,22 @@
-import cx from 'classnames';
-import { TableHeader } from '../TableHeader/TableHeader';
-import { TableRow } from '../TableRow/TableRow';
+import cx from 'classnames'
+import { TableHeader } from '../TableHeader/TableHeader'
+import { TableRow } from '../TableRow/TableRow'
 
-export type TOrderSortBy<T = string> = { key: T; direction: 'asc' | 'desc' };
+export type TOrderSortBy<T = string> = { key: T; direction: 'asc' | 'desc' }
 export interface TableProps {
-  className?: string;
-  columns: { field: string; header: string; sortable: boolean }[];
-  rows?: any[];
-  onSort?: (sortBy: TOrderSortBy) => void;
-  sortBy?: TOrderSortBy;
+  className?: string
+  columns: { field: string; header: string; sortable: boolean }[]
+  rows?: any[]
+  onSort?: (sortBy: TOrderSortBy) => void
+  sortBy?: TOrderSortBy
 }
 
-export const Table = ({
-  className,
-  rows,
-  columns,
-  onSort,
-  sortBy,
-}: TableProps) => {
-  const toggleDirection = sortBy?.direction === 'asc' ? 'desc' : 'asc';
+export const Table = ({ className, rows, columns, onSort, sortBy }: TableProps) => {
+  const toggleDirection = sortBy?.direction === 'asc' ? 'desc' : 'asc'
 
   return (
     <div className={cx(className, 'pt-5')}>
-      <table
-        className="w-full border-separate"
-        style={{ borderSpacing: '0 16px' }}
-      >
+      <table className="w-full border-separate" style={{ borderSpacing: '0 16px' }}>
         <thead>
           <tr>
             {columns.map((col, index) => (
@@ -37,9 +28,8 @@ export const Table = ({
                 onSort={() => {
                   onSort?.({
                     key: col.field,
-                    direction:
-                      sortBy?.key === col.field ? toggleDirection : 'asc',
-                  });
+                    direction: sortBy?.key === col.field ? toggleDirection : 'asc',
+                  })
                 }}
                 sortBy={sortBy}
               />
@@ -60,7 +50,7 @@ export const Table = ({
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

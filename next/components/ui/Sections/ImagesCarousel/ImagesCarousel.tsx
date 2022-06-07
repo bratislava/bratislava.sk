@@ -1,22 +1,22 @@
-import cx from 'classnames';
-import { Carousel } from '../../Carousel/Carousel';
-import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper';
+import cx from 'classnames'
+import { Carousel } from '../../Carousel/Carousel'
+import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface ImagesCarouselProps {
-  className?: string;
-  title?: string;
-  shiftIndex?: number;
-  visibleItems?: number;
-  items: TImageCarouselItem[];
-  fetchMoreItems?: () => void;
+  className?: string
+  title?: string
+  shiftIndex?: number
+  visibleItems?: number
+  items: TImageCarouselItem[]
+  fetchMoreItems?: () => void
 }
 
 export type TImageCarouselItem = {
-  id: string;
-  url?: string;
-  mainImage: { id: string; src: string };
-  title?: string;
-};
+  id: string
+  url?: string
+  mainImage: { id: string; src: string }
+  title?: string
+}
 
 export const ImagesCarousel = ({
   className,
@@ -27,11 +27,7 @@ export const ImagesCarousel = ({
   fetchMoreItems,
 }: ImagesCarouselProps) => (
   <div className={cx(className, 'flex flex-col')}>
-    {title && (
-      <div className="font-semibold text-default sm:text-lg md:text-2xl pb-10 text-center">
-        {title}
-      </div>
-    )}
+    {title && <div className="font-semibold text-default sm:text-lg md:text-2xl pb-10 text-center">{title}</div>}
     <div className="hidden xl:block">
       <Carousel
         scrollerClassName="py-6"
@@ -43,16 +39,8 @@ export const ImagesCarousel = ({
             target="_blank"
             rel="noreferrer"
           >
-            <img
-              className="w-full h-full object-cover rounded-lg"
-              src={item.mainImage.src}
-              alt={item.title}
-            />
-            {item.title && (
-              <p className="absolute bottom-0 text-white p-6 text-default font-semibold">
-                {item.title}
-              </p>
-            )}
+            <img className="w-full h-full object-cover rounded-lg" src={item.mainImage.src} alt={item.title} />
+            {item.title && <p className="absolute bottom-0 text-white p-6 text-default font-semibold">{item.title}</p>}
           </a>
         ))}
         visibleItems={visibleItems}
@@ -72,21 +60,15 @@ export const ImagesCarousel = ({
             target="_blank"
             rel="noreferrer"
           >
-            <img
-              className="w-full h-full rounded-lg object-cover"
-              src={item.mainImage.src}
-              alt={item.title}
-            />
+            <img className="w-full h-full rounded-lg object-cover" src={item.mainImage.src} alt={item.title} />
             {item.title && (
-              <p className="absolute bottom-0 text-white px-6 py-5 text-default font-semibold">
-                {item.title}
-              </p>
+              <p className="absolute bottom-0 text-white px-6 py-5 text-default font-semibold">{item.title}</p>
             )}
           </a>
         ))}
       </div>
     </HorizontalScrollWrapper>
   </div>
-);
+)
 
-export default ImagesCarousel;
+export default ImagesCarousel

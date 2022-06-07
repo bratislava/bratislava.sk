@@ -1,22 +1,18 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
 
 export interface ColumnedTextProps {
-  className?: string;
-  content: string;
-  hasBackground?: boolean;
+  className?: string
+  content: string
+  hasBackground?: boolean
 }
 
-export const ColumnedText = ({
-  className,
-  content,
-  hasBackground,
-}: ColumnedTextProps) => {
-  const breakWord = '<break>';
-  const columns = content.split(breakWord);
-  const { Markdown: UIMarkdown } = useUIContext();
-  if (!content) return null;
-  const columnLength = columns.length >= 12 ? 12 : columns.length;
+export const ColumnedText = ({ className, content, hasBackground }: ColumnedTextProps) => {
+  const breakWord = '<break>'
+  const columns = content.split(breakWord)
+  const { Markdown: UIMarkdown } = useUIContext()
+  if (!content) return null
+  const columnLength = columns.length >= 12 ? 12 : columns.length
   return (
     <div
       // className={cx(className, 'columns-1 md:flex md:gap-7', {
@@ -44,7 +40,7 @@ export const ColumnedText = ({
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ColumnedText;
+export default ColumnedText

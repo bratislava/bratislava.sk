@@ -1,25 +1,25 @@
-import cx from 'classnames';
-import WaveBottomLarge from './waves/WaveBottomLarge';
-import WaveTopLarge from './waves/WaveTopLarge';
-import WaveBottomSmall from './waves/WaveBottomSmall';
-import WaveTopSmall from './waves/WaveTopSmall';
+import cx from 'classnames'
+import WaveBottomLarge from './waves/WaveBottomLarge'
+import WaveTopLarge from './waves/WaveTopLarge'
+import WaveBottomSmall from './waves/WaveBottomSmall'
+import WaveTopSmall from './waves/WaveTopSmall'
 
 export interface WavesProps {
-  className?: string;
-  waveColor: string;
-  outerLinesColor?: string;
-  innerLinesColor?: string;
-  backgroundColor?: string;
-  wavePosition: 'top' | 'bottom';
-  isRich?: boolean;
+  className?: string
+  waveColor: string
+  outerLinesColor?: string
+  innerLinesColor?: string
+  backgroundColor?: string
+  wavePosition: 'top' | 'bottom'
+  isRich?: boolean
 }
 
 export interface WaveProps {
-  isRich?: boolean;
-  waveColor: string;
-  outerLinesColor?: string;
-  innerLinesColor?: string;
-  className?: string;
+  isRich?: boolean
+  waveColor: string
+  outerLinesColor?: string
+  innerLinesColor?: string
+  className?: string
 }
 
 export const Waves = ({
@@ -36,13 +36,10 @@ export const Waves = ({
     waveColor,
     outerLinesColor: outerLinesColor || waveColor,
     innerLinesColor: innerLinesColor || backgroundColor || 'white',
-  };
+  }
 
   return (
-    <div
-      style={{ backgroundColor: backgroundColor }}
-      className={cx('overflow-hidden', className)}
-    >
+    <div style={{ backgroundColor: backgroundColor }} className={cx('overflow-hidden', className)}>
       {wavePosition === 'top' && (
         <>
           <WaveTopLarge className="hidden md:block -mb-0.5" {...waveProps} />
@@ -56,7 +53,7 @@ export const Waves = ({
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Waves;
+export default Waves

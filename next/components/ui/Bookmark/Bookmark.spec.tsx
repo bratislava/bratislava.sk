@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import { Bookmark } from './Bookmark';
+import { Bookmark } from './Bookmark'
 
 describe('Bookmark', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Bookmark />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<Bookmark />)
+    expect(baseElement).toBeTruthy()
+  })
+})

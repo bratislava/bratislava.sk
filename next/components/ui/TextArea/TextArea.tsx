@@ -1,19 +1,15 @@
-import cx from 'classnames';
-import * as React from 'react';
+import cx from 'classnames'
+import * as React from 'react'
 
 interface IProps {
-  hasError?: boolean;
+  hasError?: boolean
 }
 
 export const TextArea = ({
   className,
   hasError,
   ...props
-}: React.DetailedHTMLProps<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> &
-  IProps) => {
+}: React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & IProps) => {
   return (
     <textarea
       className={cx('base-input resize-none h-auto w-full', className, {
@@ -22,7 +18,7 @@ export const TextArea = ({
       })}
       {...props}
     />
-  );
-};
+  )
+}
 
-export default TextArea;
+export default TextArea

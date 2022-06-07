@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import FooterSection from './FooterSection';
+import FooterSection from './FooterSection'
 
 describe('FooterSection', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<FooterSection />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+    const { baseElement } = render(<FooterSection />)
+    expect(baseElement).toBeTruthy()
+  })
+})

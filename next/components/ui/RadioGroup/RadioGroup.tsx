@@ -1,11 +1,11 @@
-import { Radio, RadioProps } from '../Radio/Radio';
+import { Radio, RadioProps } from '../Radio/Radio'
 
 export interface RadioGroupProps<T> {
-  className?: string;
-  radioClassName?: string;
-  options: T[];
-  onChange?: (option: T, checked: boolean) => void;
-  value?: string | T;
+  className?: string
+  radioClassName?: string
+  options: T[]
+  onChange?: (option: T, checked: boolean) => void
+  value?: string | T
 }
 
 export const RadioGroup = <T extends RadioProps>({
@@ -23,15 +23,13 @@ export const RadioGroup = <T extends RadioProps>({
             className="w-full"
             id={opt.key}
             onChange={(e) => onChange?.(opt, e.target.checked)}
-            checked={
-              typeof value === 'string' ? opt.key === value : opt === value
-            }
+            checked={typeof value === 'string' ? opt.key === value : opt === value}
             {...opt}
           />
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default RadioGroup;
+export default RadioGroup

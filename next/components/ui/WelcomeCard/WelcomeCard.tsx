@@ -1,21 +1,15 @@
-import React from 'react';
-import cx from 'classnames';
+import React from 'react'
+import cx from 'classnames'
 
 export interface WelcomeCardProps {
-  className?: string;
-  image: React.ReactNode;
-  imageClassName?: string;
-  title: string;
-  path: string;
+  className?: string
+  image: React.ReactNode
+  imageClassName?: string
+  title: string
+  path: string
 }
 
-export const WelcomeCard = ({
-  className,
-  image,
-  imageClassName,
-  title,
-  path,
-}: WelcomeCardProps) => {
+export const WelcomeCard = ({ className, image, imageClassName, title, path }: WelcomeCardProps) => {
   return (
     <a href={path}>
       <div
@@ -35,7 +29,7 @@ export const WelcomeCard = ({
         <p className="text-primary text-2xl group-hover:font-medium">{title}</p>
       </div>
     </a>
-  );
-};
+  )
+}
 
-export default WelcomeCard;
+export default WelcomeCard

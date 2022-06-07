@@ -1,8 +1,8 @@
-import cx from 'classnames';
+import cx from 'classnames'
 
 export interface TableRowProps {
-  className?: string;
-  tableCells: { content: React.ReactNode; className?: string }[];
+  className?: string
+  tableCells: { content: React.ReactNode; className?: string }[]
 }
 
 export const TableRow = ({ className, tableCells }: TableRowProps) => {
@@ -20,7 +20,7 @@ export const TableRow = ({ className, tableCells }: TableRowProps) => {
         </td>
       ))}
     </tr>
-  );
-};
+  )
+}
 
-export default TableRow;
+export default TableRow

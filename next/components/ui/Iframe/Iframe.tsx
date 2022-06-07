@@ -1,13 +1,13 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
 export interface IframeProps {
-  iframe_url?: string;
-  iframe_width?: number;
-  iframe_height?: number;
-  iframe_frameBorder?: string;
-  iframe_scrolling?: string;
-  iframe_allowfullscreen?: boolean;
-  iframe_style?: string;
+  iframe_url?: string
+  iframe_width?: number
+  iframe_height?: number
+  iframe_frameBorder?: string
+  iframe_scrolling?: string
+  iframe_allowfullscreen?: boolean
+  iframe_style?: string
 }
 export const Iframe = ({
   iframe_url,
@@ -29,6 +29,6 @@ export const Iframe = ({
       allowFullScreen={iframe_allowfullscreen}
       style={JSON.parse(`{${iframe_style}}`)}
     ></iframe>
-  );
-};
-export default Iframe;
+  )
+}
+export default Iframe

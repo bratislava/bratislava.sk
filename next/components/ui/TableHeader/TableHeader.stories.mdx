@@ -1,6 +1,6 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { TableHeader } from './TableHeader';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { TableHeader } from './TableHeader'
 
 <Meta title="components/molecules/TableHeader" decorators={[withDesign]} />
 
@@ -16,15 +16,14 @@ TableHeader accepts custom Props that are as follows:
 - <b>header</b>: content of the component
 - <b>field</b>: identificator of the column
 - <b>sortable</b>: if true, column is sortable, otherwise not sortable
-- <b>sortBy</b>: object, contains key and direction of column, by which is table
-  sorted
+- <b>sortBy</b>: object, contains key and direction of column, by which is table sorted
 - <b>onSort</b>: function, triggers sort function defined in table
 
 export const Template = (args) => {
   const [sortBy, setSortBy] = React.useState({
     key: 'email',
     direction: 'desc',
-  });
+  })
   return (
     <TableHeader
       header={args.header}
@@ -35,11 +34,11 @@ export const Template = (args) => {
         setSortBy({
           key: sortBy.key,
           direction: sortBy.direction === 'desc' ? 'asc' : 'desc',
-        });
+        })
       }}
     />
-  );
-};
+  )
+}
 
 <Canvas>
   <Story

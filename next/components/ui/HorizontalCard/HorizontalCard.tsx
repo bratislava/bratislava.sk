@@ -1,19 +1,12 @@
-import cx from 'classnames';
-import { Panel } from '../Panel/Panel';
+import cx from 'classnames'
+import { Panel } from '../Panel/Panel'
 
-export interface HorizontalCardProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  accessory?: React.ReactNode;
-  imageSrc?: string;
+export interface HorizontalCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  accessory?: React.ReactNode
+  imageSrc?: string
 }
 
-export const HorizontalCard = ({
-  accessory,
-  className,
-  children,
-  imageSrc,
-  ...rest
-}: HorizontalCardProps) => (
+export const HorizontalCard = ({ accessory, className, children, imageSrc, ...rest }: HorizontalCardProps) => (
   <div className={cx(className, 'relative')} {...rest}>
     <Panel className="flex flex-col xl:flex-row h-full w-full" hoverable>
       {imageSrc && (
@@ -40,15 +33,9 @@ export const HorizontalCard = ({
       </div>
     </Panel>
     {accessory && (
-      <div
-        className={cx(
-          'absolute bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2'
-        )}
-      >
-        {accessory}
-      </div>
+      <div className={cx('absolute bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2')}>{accessory}</div>
     )}
   </div>
-);
+)
 
-export default HorizontalCard;
+export default HorizontalCard

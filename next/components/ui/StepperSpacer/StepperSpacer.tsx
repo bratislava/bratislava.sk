@@ -1,7 +1,7 @@
-import cx from 'classnames';
+import cx from 'classnames'
 
 interface IProps {
-  active?: boolean;
+  active?: boolean
 }
 
 export const StepperSpacer = ({ active }: IProps) => (
@@ -13,6 +13,6 @@ export const StepperSpacer = ({ active }: IProps) => (
       })}
     />
   </div>
-);
+)
 
-export default StepperSpacer;
+export default StepperSpacer
