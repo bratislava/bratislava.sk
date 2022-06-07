@@ -13,5 +13,15 @@
   "goOutNewsLink": "mesto-bratislava/transparentne-mesto/aktuality",
   "seeAllNews": "Prejsť na všetky aktuality",
   "allNewsLink": "/mesto-bratislava/transparentne-mesto/aktuality",
-  "upComingEvents": "Najbližšie podujatia"
+  "upComingEvents": "Najbližšie podujatia",
+  "searchTheSite": "Vyhľadávanie na stránke",
+  "search": "Hľadať",
+  "searching": "Vyhľadávanie",
+  "articles": "Články",
+  "pages": "Stránky",
+  "documents": "Dokumenty",
+  "enterKeyword": "Zadajte kľúčové slovo",
+  "weDidntFindAnything": "Nič sme nenašli",
+  "tryEnteringSomethingElse": "Skúste zadať niečo iné",
+  "websites": "Webové podstránky"
 }

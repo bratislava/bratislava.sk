@@ -125,18 +125,18 @@ const Search = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   //const results = {blogPosts: [], pages: [], files: []};
   const noResultsFound = false
-  console.log('page', page)
+  const { t } = useTranslation('common')
 
   return (
     <PageWrapper
       locale={page.locale}
       localizations={[
-        { locale: 'sk', slug: '/vyhladavanie' },
-        { locale: 'en', slug: '/search' },
+        { locale: 'sk', slug: 'vyhladavanie' },
+        { locale: 'en', slug: 'search' },
       ]}
       slug={'/vyhladavanie'}
     >
-      <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page ? page.pageCategory?.id : '1'}>
+      <BasePageLayout {...footer} menuItems={menuItems} activeMenuItem={/* page ? page?.pageCategory?.id : */ '1'}>
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle('red'),
@@ -146,20 +146,25 @@ const Search = ({
         <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''}>
           {/* Header - Breadcrumbs */}
           <h1 className="flex justify-center lg:justify-start pl-0 lg:pl-8 xl:pl-41 py-18 text-md md:text-2xl font-bold whitespace-pre-wrap max-w-screen-1.5lg">
-            Vyhľadávanie na stránke
+            {t('searchTheSite')}
           </h1>
         </PageHeader>
 
         <div className="flex flex-col px-8 xl:px-41 py-14 xl:py-24 gap-y-14 xl:gap-y-24">
-          <AdvancedSearch />
+          <AdvancedSearch
+            placeholder={t('enterKeyword')}
+            title={t('searching')}
+            buttonText={t('search')}
+            options={[t('articles'), t('pages'), t('documents')]}
+          />
           {noResultsFound ? (
-            <NoResultsFound title="Nič sme nenašli" message="Skúste zadať niečo iné" />
+            <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <>
-              <BlogSearchCards blogs={blogs} />
-              <PageCards pages={pages} />
+              <BlogSearchCards title={t('articles')} blogs={blogs} />
+              <PageCards title={t('websites')} pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
-                <div className="text-default lg:text-md font-semibold">Dokumenty</div>
+                <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
                 <FileList fileSections={fileSections} hideCategory />
               </div>
             </>
