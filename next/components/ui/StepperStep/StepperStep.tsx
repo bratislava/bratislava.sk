@@ -1,23 +1,16 @@
-import cx from 'classnames';
-import { ReactComponent as CheckMark } from '../../assets/images/check-mark.svg';
+import cx from 'classnames'
+import { ReactComponent as CheckMark } from '../../../assets/images/check-mark.svg'
 
 export interface IStepperStepProps {
-  className?: string;
-  title?: string;
-  number: number;
-  onClick?: () => void;
-  active?: boolean;
-  checked?: boolean;
+  className?: string
+  title?: string
+  number: number
+  onClick?: () => void
+  active?: boolean
+  checked?: boolean
 }
 
-export const StepperStep = ({
-  title,
-  number,
-  onClick,
-  active,
-  checked,
-  className,
-}: IStepperStepProps) => (
+export const StepperStep = ({ title, number, onClick, active, checked, className }: IStepperStepProps) => (
   <button
     className={cx(
       'relative rounded-full text-lg flex items-center justify-center font-semibold',
@@ -43,6 +36,6 @@ export const StepperStep = ({
       </p>
     )}
   </button>
-);
+)
 
-export default StepperStep;
+export default StepperStep

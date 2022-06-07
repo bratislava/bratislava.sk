@@ -1,16 +1,16 @@
-import cx from 'classnames';
-import { ReactComponent as Chevron } from '../../assets/images/chevron.svg';
-import React from 'react';
+import cx from 'classnames'
+import { ReactComponent as Chevron } from '../../../assets/images/chevron.svg'
+import React from 'react'
 
 export interface AccordionItemProps {
-  className?: string;
-  title: string;
-  secondaryTitle?: string;
-  initialState?: boolean;
-  isOpen?: boolean;
-  onOpen?: () => void;
-  children?: React.ReactNode;
-  paddingVariant?: 'normal' | 'narrow';
+  className?: string
+  title: string
+  secondaryTitle?: string
+  initialState?: boolean
+  isOpen?: boolean
+  onOpen?: () => void
+  children?: React.ReactNode
+  paddingVariant?: 'normal' | 'narrow'
 }
 
 export const AccordionItem = ({
@@ -23,15 +23,15 @@ export const AccordionItem = ({
   secondaryTitle,
   paddingVariant = 'normal',
 }: AccordionItemProps) => {
-  const [active, setActive] = React.useState<boolean>(initialState);
+  const [active, setActive] = React.useState<boolean>(initialState)
 
   React.useEffect(() => {
-    if (isOpen !== undefined) setActive(isOpen);
-  }, [isOpen]);
+    if (isOpen !== undefined) setActive(isOpen)
+  }, [isOpen])
 
   const handleClick = () => {
-    return onOpen ? onOpen() : setActive(!active);
-  };
+    return onOpen ? onOpen() : setActive(!active)
+  }
 
   return (
     <>
@@ -39,27 +39,19 @@ export const AccordionItem = ({
         className={cx(
           'rounded-lg drop-shadow-[0 8 24 black] py-4 px-10',
           {
-            'border-transparent border-2 border-solid shadow-lg bg-secondary':
-              active,
-            'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary  bg-transparent':
-              !active,
+            'border-transparent border-2 border-solid shadow-lg bg-secondary': active,
+            'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary  bg-transparent': !active,
           },
           className
         )}
       >
         <button
-          className={cx(
-            'flex items-center cursor-pointer justify-between w-full font-medium'
-          )}
+          className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
           onClick={handleClick}
         >
           <div className="flex flex-row font-medium">
             <p className="text-font text-md text-left">{title}</p>
-            {secondaryTitle && (
-              <p className="text-md text-left text-gray-universal-500 ">
-                &nbsp;{secondaryTitle}
-              </p>
-            )}
+            {secondaryTitle && <p className="text-md text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
           </div>
           <div className="ml-5 flex-grow-0">
             <Chevron className={cx('w-6 h-3', { 'rotate-180': active })} />
@@ -77,7 +69,7 @@ export const AccordionItem = ({
         {children}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default AccordionItem;
+export default AccordionItem

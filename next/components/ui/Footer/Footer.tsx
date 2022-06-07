@@ -1,31 +1,28 @@
-import cx from 'classnames';
-import { ReactComponent as FBLogo } from '../../assets/images/FB.svg';
-import { ReactComponent as IGLogo } from '../../assets/images/IG.svg';
-import { ReactComponent as YTLogo } from '../../assets/images/YT.svg';
-import { ReactComponent as BABrand } from '../../assets/images/BABrand.svg';
-import { ReactComponent as EULogo } from '../../assets/images/EULogo.svg';
-import {
-  FooterSection,
-  FooterSectionProps,
-} from '../FooterSection/FooterSection';
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import React from 'react';
+import cx from 'classnames'
+import { ReactComponent as FBLogo } from '../../../assets/images/FB.svg'
+import { ReactComponent as IGLogo } from '../../../assets/images/IG.svg'
+import { ReactComponent as YTLogo } from '../../../assets/images/YT.svg'
+import { ReactComponent as BABrand } from '../../../assets/images/BABrand.svg'
+import { ReactComponent as EULogo } from '../../../assets/images/EULogo.svg'
+import { FooterSection, FooterSectionProps } from '../FooterSection/FooterSection'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import React from 'react'
 
 export interface FooterProps {
-  className?: string;
-  facebookLink?: string;
-  instagramLink?: string;
-  youtubeLink?: string;
-  address?: string;
-  email?: string;
-  phone?: string;
-  sections?: FooterSectionProps[];
-  accessibilityLink?: { title: string; url: string };
-  copyright?: string;
+  className?: string
+  facebookLink?: string
+  instagramLink?: string
+  youtubeLink?: string
+  address?: string
+  email?: string
+  phone?: string
+  sections?: FooterSectionProps[]
+  accessibilityLink?: { title: string; url: string }
+  copyright?: string
   /**
    * Active link should not have url
    */
-  languageLinks?: { title: string; url?: string; locale: string }[];
+  languageLinks?: { title: string; url?: string; locale: string }[]
 }
 
 export const Footer = ({
@@ -41,22 +38,14 @@ export const Footer = ({
   copyright,
   languageLinks,
 }: FooterProps) => {
-  const { Link: UILink } = useUIContext();
+  const { Link: UILink } = useUIContext()
 
   return (
-    <footer
-      className={cx(className, 'text-base text-gray-universal-800 pt-14')}
-    >
-      <section
-        className="flex justify-between items-center"
-        aria-label="Logo and Social Media Links"
-      >
+    <footer className={cx(className, 'text-base text-gray-universal-800 pt-14')}>
+      <section className="flex justify-between items-center" aria-label="Logo and Social Media Links">
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">
-          <nav
-            className="hidden lg:flex gap-4 text-gray-universal-500 cursor-pointer"
-            aria-label="Social Media Links"
-          >
+          <nav className="hidden lg:flex gap-4 text-gray-universal-500 cursor-pointer" aria-label="Social Media Links">
             {facebookLink && (
               <a href={facebookLink} target="_blank" rel="noreferrer">
                 <FBLogo />
@@ -79,14 +68,8 @@ export const Footer = ({
         </div>
       </section>
 
-      <section
-        aria-label="Contact Info and Sections"
-        className="flex flex-col xl:flex-row gap-x-28 py-14"
-      >
-        <div
-          className="flex flex-col gap-y-6 xl:gap-y-16"
-          aria-label="Contact Info"
-        >
+      <section aria-label="Contact Info and Sections" className="flex flex-col xl:flex-row gap-x-28 py-14">
+        <div className="flex flex-col gap-y-6 xl:gap-y-16" aria-label="Contact Info">
           <p className="whitespace-pre-wrap leading-6">{address}</p>
           <div className="flex flex-col gap-y-1 xl:gap-y-5 underline">
             <a className="block" href={`mailto:${email}`}>
@@ -102,11 +85,7 @@ export const Footer = ({
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
-            <FooterSection
-              key={i}
-              title={section.title}
-              pageLinks={section.pageLinks}
-            />
+            <FooterSection key={i} title={section.title} pageLinks={section.pageLinks} />
           ))}
         </div>
       </section>
@@ -117,15 +96,8 @@ export const Footer = ({
         aria-label="Accessibility and Copyright"
         className="flex flex-col text-center gap-y-6 lg:gap-y-0 lg:flex-row lg:justify-between pt-14"
       >
-        {accessibilityLink && (
-          <UILink href={accessibilityLink.url}>
-            {accessibilityLink.title}
-          </UILink>
-        )}
-        <div
-          className="flex justify-center gap-x-10 lg:hidden"
-          aria-label="lang"
-        >
+        {accessibilityLink && <UILink href={accessibilityLink.url}>{accessibilityLink.title}</UILink>}
+        <div className="flex justify-center gap-x-10 lg:hidden" aria-label="lang">
           {languageLinks?.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
               {url === undefined ? (
@@ -178,7 +150,7 @@ export const Footer = ({
         </div>
       </section>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

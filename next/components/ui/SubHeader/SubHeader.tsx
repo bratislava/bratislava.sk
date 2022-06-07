@@ -1,22 +1,19 @@
-import cx from 'classnames';
-import { useState } from 'react';
-import { Button } from '../Button/Button';
-import { Link } from '../Link/Link';
-import {
-  ArrowRight,
-  ChevronRight,
-} from '@bratislava/ui-bratislava/assets/images';
-import 'react-sweet-progress/lib/style.css';
+import cx from 'classnames'
+import { useState } from 'react'
+import { Button } from '../Button/Button'
+import { Link } from '../Link/Link'
+import { ArrowRight, ChevronRight } from '@assets/images'
+import 'react-sweet-progress/lib/style.css'
 
 export interface SubHeaderProps {
-  className?: string;
-  buttonTitle?: string;
-  subButtonTitle?: string;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  topper?: string;
-  href?: string;
-  subHref?: string;
+  className?: string
+  buttonTitle?: string
+  subButtonTitle?: string
+  title?: React.ReactNode
+  description?: React.ReactNode
+  topper?: string
+  href?: string
+  subHref?: string
 }
 
 export function SubHeader({
@@ -29,7 +26,7 @@ export function SubHeader({
   href,
   subHref,
 }: SubHeaderProps) {
-  const [signInHover, setSignInHover] = useState(false);
+  const [signInHover, setSignInHover] = useState(false)
 
   return (
     <div className={cx('z-10 flex flex-col', className)}>
@@ -41,11 +38,7 @@ export function SubHeader({
       >
         {title}
       </span>
-      {description && (
-        <span className="mt-3 mb-5 md:mb-10 w-76 md:max-w-md md:w-full">
-          {description}
-        </span>
-      )}
+      {description && <span className="mt-3 mb-5 md:mb-10 w-76 md:max-w-md md:w-full">{description}</span>}
       {href && buttonTitle && (
         <Link href={href}>
           <Button className="h-12 text-default p-2">{buttonTitle}</Button>
@@ -64,7 +57,7 @@ export function SubHeader({
         </Link>
       )}
     </div>
-  );
+  )
 }
 
-export default SubHeader;
+export default SubHeader

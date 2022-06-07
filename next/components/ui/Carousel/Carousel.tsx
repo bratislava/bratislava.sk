@@ -1,17 +1,17 @@
-import cx from 'classnames';
-import React, { useRef } from 'react';
-import { ReactComponent as ChevronLeft } from '../../assets/images/arrow-long-left.svg';
-import { ReactComponent as ChevronRight } from '../../assets/images/arrow-long-right.svg';
-import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton';
+import cx from 'classnames'
+import React, { useRef } from 'react'
+import { ReactComponent as ChevronLeft } from '../../../assets/images/arrow-long-left.svg'
+import { ReactComponent as ChevronRight } from '../../../assets/images/arrow-long-right.svg'
+import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
 export interface CarouselProps {
-  className?: string;
-  scrollerClassName?: string;
-  shiftIndex?: number;
-  items?: React.ReactNode[];
-  visibleItems?: number;
-  spacing?: 'default';
-  fetchMoreItems?: () => void;
+  className?: string
+  scrollerClassName?: string
+  shiftIndex?: number
+  items?: React.ReactNode[]
+  visibleItems?: number
+  spacing?: 'default'
+  fetchMoreItems?: () => void
 }
 
 export const Carousel = ({
@@ -23,44 +23,44 @@ export const Carousel = ({
   spacing = 'default',
   fetchMoreItems,
 }: CarouselProps) => {
-  const [currentItem, setCurrentItem] = React.useState(0);
-  const totalItems = items.length;
+  const [currentItem, setCurrentItem] = React.useState(0)
+  const totalItems = items.length
 
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null)
 
   const scrollToImage = (i: number, instant = false) => {
-    setCurrentItem(i);
-    if (!scrollerRef.current) return;
-    const offset = (scrollerRef.current.scrollWidth / items.length) * i;
+    setCurrentItem(i)
+    if (!scrollerRef.current) return
+    const offset = (scrollerRef.current.scrollWidth / items.length) * i
 
     scrollerRef.current?.scroll({
       left: offset,
       behavior: instant ? 'auto' : 'smooth',
-    });
-  };
+    })
+  }
 
   const nextImage = () => {
-    const nextIdx = currentItem + shiftIndex;
-    const maxIdx = totalItems - visibleItems;
+    const nextIdx = currentItem + shiftIndex
+    const maxIdx = totalItems - visibleItems
     if (nextIdx >= maxIdx + shiftIndex) {
       // If on last page, go to 0
-      scrollToImage(0, true);
-      return;
+      scrollToImage(0, true)
+      return
     }
 
     if (nextIdx > Math.min(maxIdx - shiftIndex, maxIdx - visibleItems)) {
       // handle fetching next posts
-      fetchMoreItems?.();
-      scrollToImage(nextIdx);
-      return;
+      fetchMoreItems?.()
+      scrollToImage(nextIdx)
+      return
     }
 
-    scrollToImage(nextIdx);
-  };
+    scrollToImage(nextIdx)
+  }
 
   const previousImage = () => {
-    scrollToImage(currentItem - shiftIndex);
-  };
+    scrollToImage(currentItem - shiftIndex)
+  }
 
   const sliderControl = (isLeft: boolean) => (
     <VerticalCardButton
@@ -69,16 +69,14 @@ export const Carousel = ({
       className={cx('absolute z-10 my-auto top-0 bottom-0', {
         'left-0 transform -translate-x-1/2': isLeft,
         'right-0 transform translate-x-1/2': !isLeft,
-        hidden:
-          (isLeft && currentItem === 0) ||
-          (!isLeft && currentItem === visibleItems),
+        hidden: (isLeft && currentItem === 0) || (!isLeft && currentItem === visibleItems),
         'ml-4': isLeft && spacing === 'default',
         'mr-4': !isLeft && spacing === 'default',
       })}
     >
       {isLeft ? <ChevronLeft /> : <ChevronRight />}
     </VerticalCardButton>
-  );
+  )
 
   return (
     <div
@@ -88,38 +86,32 @@ export const Carousel = ({
     >
       {sliderControl(true)}
 
-      <div
-        className={cx(scrollerClassName, 'flex overflow-x-hidden')}
-        ref={scrollerRef}
-      >
+      <div className={cx(scrollerClassName, 'flex overflow-x-hidden')} ref={scrollerRef}>
         {items?.map((carouselItem: React.ReactNode, i: number) => {
-          const isVisible = i >= currentItem && i < currentItem + visibleItems;
+          const isVisible = i >= currentItem && i < currentItem + visibleItems
           return (
             <div
               key={i}
-              className={cx(
-                'flex-shrink-0 transition-all duration-200 transform',
-                {
-                  'px-4': spacing === 'default',
-                  'w-1/2': visibleItems === 2,
-                  'w-1/3': visibleItems === 3,
-                  'w-1/4': visibleItems === 4,
-                  'w-1/5': visibleItems === 5,
-                  'w-1/6': visibleItems === 6,
-                  'opacity-100 scale-100': isVisible,
-                  'opacity-0 scale-50': !isVisible,
-                }
-              )}
+              className={cx('flex-shrink-0 transition-all duration-200 transform', {
+                'px-4': spacing === 'default',
+                'w-1/2': visibleItems === 2,
+                'w-1/3': visibleItems === 3,
+                'w-1/4': visibleItems === 4,
+                'w-1/5': visibleItems === 5,
+                'w-1/6': visibleItems === 6,
+                'opacity-100 scale-100': isVisible,
+                'opacity-0 scale-50': !isVisible,
+              })}
             >
               {carouselItem}
             </div>
-          );
+          )
         })}
       </div>
 
       {sliderControl(false)}
     </div>
-  );
-};
+  )
+}
 
-export default Carousel;
+export default Carousel

@@ -1,12 +1,7 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { Button } from './Button';
-import {
-  ChevronRight,
-  ArrowRight,
-  ChevronLeft,
-  ArrowLeft,
-} from '../../assets/images';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Button } from './Button'
+import { ChevronRight, ArrowRight, ChevronLeft, ArrowLeft } from '../../../assets/images'
 
 <Meta title="components/atoms/Button" decorators={[withDesign]} />
 
@@ -20,8 +15,8 @@ Button accepts all default HTMLButtonProps in addition to custom Props that are 
 
 - <b>variant</b>: changes the background and text color of the button
 - <b>icon</b>: ReactNode that will behave as an icon within the button
-- <b>hoverIcon</b>: ReactNode that will behave as a hoverIcon on hover effect of
-  the button if omitted, icon will be used when present
+- <b>hoverIcon</b>: ReactNode that will behave as a hoverIcon on hover effect of the button if omitted, icon will be
+  used when present
 - <b>iconPosition</b>: position of the given icon and hoverIcon
 - <b>iconClassName</b>: classname of the icons (mostly to adjust padding)
 
@@ -57,18 +52,8 @@ Button accepts all default HTMLButtonProps in addition to custom Props that are 
         control: { type: 'radio', options: ['left', 'right', 'center'] },
       },
       icon: {
-        options: Object.keys([
-          <ChevronRight />,
-          <ChevronLeft />,
-          <ArrowRight />,
-          <ArrowLeft />,
-        ]),
-        mapping: [
-          <ChevronRight />,
-          <ChevronLeft />,
-          <ArrowRight />,
-          <ArrowLeft />,
-        ],
+        options: Object.keys([<ChevronRight />, <ChevronLeft />, <ArrowRight />, <ArrowLeft />]),
+        mapping: [<ChevronRight />, <ChevronLeft />, <ArrowRight />, <ArrowLeft />],
         control: {
           type: 'radio',
           labels: {

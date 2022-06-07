@@ -1,15 +1,15 @@
-import cx from 'classnames';
-import { Panel } from '../Panel/Panel';
-import { Download } from '../../assets/images';
+import cx from 'classnames'
+import { Panel } from '../Panel/Panel'
+import { Download } from '../../../assets/images'
 
 export interface DownloadCardProps {
-  className?: string;
-  containerClassName?: string;
+  className?: string
+  containerClassName?: string
   // icon?: 'download';
-  title?: string;
-  uploadDate?: string;
-  downloadDetail?: string;
-  downloadLink?: string;
+  title?: string
+  uploadDate?: string
+  downloadDetail?: string
+  downloadLink?: string
 }
 
 export const DownloadCard = ({
@@ -22,12 +22,7 @@ export const DownloadCard = ({
   downloadLink,
 }: DownloadCardProps) => {
   return (
-    <a
-      href={downloadLink}
-      className={containerClassName}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a href={downloadLink} className={containerClassName} target="_blank" rel="noreferrer">
       <Panel
         hoverable
         className={cx(
@@ -36,9 +31,7 @@ export const DownloadCard = ({
         )}
       >
         <div className=" flex space-x-5 lg:space-x-8 items-end">
-          <span className="text-sm font-normal max-h-[96px] w-[250px] overflow-hidden">
-            {title}
-          </span>
+          <span className="text-sm font-normal max-h-[96px] w-[250px] overflow-hidden">{title}</span>
           <span className="flex text-primary justify-end items-end h-[88px]">
             <Download />
           </span>
@@ -50,7 +43,7 @@ export const DownloadCard = ({
         </div>
       </Panel>
     </a>
-  );
-};
+  )
+}
 
-export default DownloadCard;
+export default DownloadCard

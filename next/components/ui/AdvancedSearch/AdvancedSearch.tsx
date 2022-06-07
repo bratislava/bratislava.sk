@@ -1,26 +1,26 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import Button from '../Button/Button';
-import { ReactComponent as SearchIcon } from '../../assets/images/search-icon.svg';
-import { ReactComponent as Checkbox } from '../../assets/images/checkbox.svg';
-import { useState } from 'react';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import Button from '../Button/Button'
+import SearchIcon from '../../../assets/images/search-icon.svg'
+import Checkbox from '../../../assets/images/checkbox.svg'
+import { useState } from 'react'
+import cx from 'classnames'
 
 export interface AdvancedSearchProps {
-  className?: string;
+  className?: string
 }
 
 export const AdvancedSearch = ({ className }: AdvancedSearchProps) => {
-  const { Link: UILink } = useUIContext();
-  const options = ['Články', 'Stránky', 'Dokumenty'];
-  const [checked, setChecked] = useState(options);
+  const { Link: UILink } = useUIContext()
+  const options = ['Články', 'Stránky', 'Dokumenty']
+  const [checked, setChecked] = useState(options)
 
   const handleClick = (option) => {
     if (checked.includes(option)) {
-      setChecked(checked.filter((o) => o != option));
+      setChecked(checked.filter((o) => o != option))
     } else {
-      setChecked([...checked, option]);
+      setChecked([...checked, option])
     }
-  };
+  }
   return (
     <div className={cx('flex flex-col w-full', className)}>
       <div className="text-sm lg:text-md font-medium pb-3">Vyhľadávanie</div>
@@ -73,5 +73,5 @@ export const AdvancedSearch = ({ className }: AdvancedSearchProps) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}

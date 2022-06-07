@@ -1,17 +1,14 @@
-import cx from 'classnames';
-import { PrimatorCard, PrimatorCardProps } from '@bratislava/ui-bratislava';
-import Primator from '../../../assets/images/primator.svg';
-import Council from '../../../assets/images/council.svg';
+import cx from 'classnames'
+import { PrimatorCard, PrimatorCardProps } from '@bratislava/ui-bratislava'
+import Primator from '../../../../assets/images/primator.svg'
+import Council from '../../../../assets/images/council.svg'
 
 interface IProps {
-  className?: string;
-  primatorCards?: PrimatorCardProps[];
+  className?: string
+  primatorCards?: PrimatorCardProps[]
 }
 
-const PrimatorCouncil = ({
-  className,
-  primatorCards = [Primator, Council],
-}: IProps) => (
+const PrimatorCouncil = ({ className, primatorCards = [Primator, Council] }: IProps) => (
   <div className="flex justify-center">
     <div
       className={cx(
@@ -24,6 +21,6 @@ const PrimatorCouncil = ({
       ))}
     </div>
   </div>
-);
+)
 
-export default PrimatorCouncil;
+export default PrimatorCouncil

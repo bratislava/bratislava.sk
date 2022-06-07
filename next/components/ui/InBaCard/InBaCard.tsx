@@ -1,30 +1,23 @@
-import cx from 'classnames';
-import { Panel } from '../Panel/Panel';
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
+import cx from 'classnames'
+import { Panel } from '../Panel/Panel'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
-import { ReactComponent as ArrowRight } from '../../assets/images/arrow-right.svg';
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg';
+import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
 
 export interface InBaCardProps {
-  className?: string;
-  images?: string[];
-  title?: string;
-  content?: string;
-  link?: string;
-  readMoreTitle?: string;
+  className?: string
+  images?: string[]
+  title?: string
+  content?: string
+  link?: string
+  readMoreTitle?: string
 }
 
-export const InBaCard = ({
-  className,
-  images,
-  title,
-  content,
-  link,
-  readMoreTitle = 'Čítať viac',
-}: InBaCardProps) => {
-  const [frontImage, rearImage] = images || [];
+export const InBaCard = ({ className, images, title, content, link, readMoreTitle = 'Čítať viac' }: InBaCardProps) => {
+  const [frontImage, rearImage] = images || []
 
-  const { Link: UILink } = useUIContext();
+  const { Link: UILink } = useUIContext()
 
   return (
     <Panel
@@ -67,10 +60,7 @@ export const InBaCard = ({
       >
         <h1 className="text-md font-semibold">{title}</h1>
         <span className="text-sm">{content}</span>
-        <UILink
-          className="flex text-font underline space-x-5 items-center group cursor-pointer h-6"
-          href={link}
-        >
+        <UILink className="flex text-font underline space-x-5 items-center group cursor-pointer h-6" href={link}>
           <span className="font-semibold text-sm">{readMoreTitle}</span>
           <span className="group-hover:hidden">
             <ChevronRight />
@@ -81,7 +71,7 @@ export const InBaCard = ({
         </UILink>
       </div>
     </Panel>
-  );
-};
+  )
+}
 
-export default InBaCard;
+export default InBaCard

@@ -1,33 +1,31 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import { Carousel, Link } from '@bratislava/ui-bratislava';
-import { ChevronRight } from '@bratislava/ui-bratislava/assets/images';
-import React from 'react';
-import { FetchGooutEventsResult, GooutEvent } from '../../../../utils/goout';
-import CardGradient from '../../../atoms/CardGradient';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { Carousel, Link } from '@bratislava/ui-bratislava'
+import { ChevronRight } from '@assets/images'
+import React from 'react'
+import { FetchGooutEventsResult, GooutEvent } from '../../../../utils/goout'
+import CardGradient from '../../../atoms/CardGradient'
 
 interface IProps {
-  title: string;
-  linkTitle: string;
-  linkUrl: string;
-  className?: string;
+  title: string
+  linkTitle: string
+  linkUrl: string
+  className?: string
 }
 
 const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
-  const [gooutEvents, setGooutEvents] = React.useState<GooutEvent[]>([]);
+  const [gooutEvents, setGooutEvents] = React.useState<GooutEvent[]>([])
 
-  const { Link: UILink } = useUIContext();
+  const { Link: UILink } = useUIContext()
 
   React.useEffect(() => {
-    fetchGooutEvents().then(setGooutEvents);
-  }, []);
+    fetchGooutEvents().then(setGooutEvents)
+  }, [])
 
-  if (gooutEvents.length === 0) return null;
+  if (gooutEvents.length === 0) return null
 
   return (
     <div className={className}>
-      <h2 className="font-semibold text-default text-center lg:text-2xl">
-        {title}
-      </h2>
+      <h2 className="font-semibold text-default text-center lg:text-2xl">{title}</h2>
 
       <div className="gap-x-5 lg:gap-x-6 mt-3 lg:mt-10 py-6">
         <Carousel
@@ -69,13 +67,13 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const fetchGooutEvents = async () => {
-  const res = await fetch('/api/goout-events');
-  const data: FetchGooutEventsResult = await res.json();
-  return data.events;
-};
+  const res = await fetch('/api/goout-events')
+  const data: FetchGooutEventsResult = await res.json()
+  return data.events
+}
 
-export default GooutEvents;
+export default GooutEvents

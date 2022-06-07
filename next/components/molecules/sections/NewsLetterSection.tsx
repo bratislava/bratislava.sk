@@ -1,14 +1,14 @@
-import { NewsLetter } from '@bratislava/ui-bratislava';
-import NewsLetterImage from '../../assets/images/newsletter-image.png';
-import { useTranslation } from 'react-i18next';
-import cx from 'classnames';
+import { NewsLetter } from '@bratislava/ui-bratislava'
+import NewsLetterImage from '../../../assets/images/newsletter-image.png'
+import { useTranslation } from 'react-i18next'
+import cx from 'classnames'
 
 interface IProps {
-  className?: string;
+  className?: string
 }
 
 const NewsLetterSection = ({ className }: IProps) => {
-  const { t } = useTranslation('newsletter');
+  const { t } = useTranslation('newsletter')
 
   return (
     <div className={cx('flex w-full justify-center', className)}>
@@ -19,7 +19,7 @@ const NewsLetterSection = ({ className }: IProps) => {
         buttonLabel={t('newsletterButtonContent')}
       />
     </div>
-  );
-};
+  )
+}
 
-export default NewsLetterSection;
+export default NewsLetterSection

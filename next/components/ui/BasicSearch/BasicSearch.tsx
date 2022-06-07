@@ -1,16 +1,16 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import Button from '../Button/Button';
-import { ReactComponent as SearchIcon } from '../../assets/images/search-icon.svg';
-import { ReactComponent as SearchIconSmallBlack } from '../../assets/images/search-icon-small-black.svg';
-import { ReactComponent as SearchIconSmallWhite } from '../../assets/images/search-icon-small-white.svg';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import Button from '../Button/Button'
+import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg'
+import { ReactComponent as SearchIconSmallBlack } from '../../../assets/images/search-icon-small-black.svg'
+import { ReactComponent as SearchIconSmallWhite } from '../../../assets/images/search-icon-small-white.svg'
+import cx from 'classnames'
 
 export interface BasicSearchProps {
-  className?: string;
+  className?: string
 }
 
 export const BasicSearch = ({ className }: BasicSearchProps) => {
-  const { Link: UILink } = useUIContext();
+  const { Link: UILink } = useUIContext()
   return (
     <div className={cx('flex flex-col w-full', className)}>
       <div className="text-sm lg:text-md font-medium pb-3">Vyhľadávanie</div>
@@ -51,5 +51,5 @@ export const BasicSearch = ({ className }: BasicSearchProps) => {
         </UILink>
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,17 +1,17 @@
-import { Card } from '@bratislava/ui-bratislava';
-import cx from 'classnames';
-import NextLink from 'next/link';
-import Image1 from '../assets/images/blog-image.png';
-import Image2 from '../assets/images/blog-mobile-image.png';
-import { ReactComponent as ChevronRight } from '../assets/images/chevron-right.svg';
-import Image from 'next/image';
+import { Card } from '@bratislava/ui-bratislava'
+import cx from 'classnames'
+import NextLink from 'next/link'
+import Image1 from '../../assets/images/blog-image.png'
+import Image2 from '../../assets/images/blog-mobile-image.png'
+import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg'
+import Image from 'next/image'
 
 export interface BlogCardProps {
-  className?: string;
-  image?: string | StaticImageData;
-  mobileImage?: string | StaticImageData;
-  content?: React.ReactNode;
-  href?: string;
+  className?: string
+  image?: string | StaticImageData
+  mobileImage?: string | StaticImageData
+  content?: React.ReactNode
+  href?: string
 }
 
 export const BlogCard = ({
@@ -22,12 +22,7 @@ export const BlogCard = ({
   href = '/',
 }: BlogCardProps) => (
   <NextLink href={href} passHref>
-    <div
-      className={cx(
-        className,
-        'inline-flex flex-col 2xl:pr-8 xl:pr-5 cursor-pointer bg-white py-5'
-      )}
-    >
+    <div className={cx(className, 'inline-flex flex-col 2xl:pr-8 xl:pr-5 cursor-pointer bg-white py-5')}>
       <Card
         className={cx(
           className,
@@ -38,9 +33,7 @@ export const BlogCard = ({
         buttonVariant="circle"
       >
         <div className="inline-flex xl:hidden">
-          {image && (
-            <Image src={mobileImage} alt="blog" width="280" height="190" />
-          )}
+          {image && <Image src={mobileImage} alt="blog" width="280" height="190" />}
         </div>
         <div className="hidden xl:inline-flex">
           {image && <Image src={image} alt="blog" width="225" height="200" />}
@@ -52,6 +45,6 @@ export const BlogCard = ({
       </Card>
     </div>
   </NextLink>
-);
+)
 
-export default BlogCard;
+export default BlogCard

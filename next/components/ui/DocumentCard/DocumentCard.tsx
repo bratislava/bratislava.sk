@@ -1,26 +1,19 @@
-import Button from '../Button/Button';
-import Panel from '../Panel/Panel';
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right-small.svg';
-import { ReactComponent as ArrowRight } from '../../assets/images/arrow-right.svg';
-import { ReactComponent as Download } from '../../assets/images/download-document.svg';
+import Button from '../Button/Button'
+import Panel from '../Panel/Panel'
+import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right-small.svg'
+import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import { ReactComponent as Download } from '../../../assets/images/download-document.svg'
 
 export interface DocumentCardProps {
-  title: string;
-  createdAt: string;
-  fileExtension: string;
-  fileSize: string;
-  content: string;
-  className?: string;
+  title: string
+  createdAt: string
+  fileExtension: string
+  fileSize: string
+  content: string
+  className?: string
 }
 
-export const DocumentCard = ({
-  title,
-  createdAt,
-  fileExtension,
-  fileSize,
-  content,
-  className,
-}: DocumentCardProps) => {
+export const DocumentCard = ({ title, createdAt, fileExtension, fileSize, content, className }: DocumentCardProps) => {
   return (
     <Panel className={className}>
       <div className="w-full flex flex-col pt-6 lg:pt-8 lg:pb-6 px-4 lg:px-10 gap-y-5">
@@ -39,16 +32,12 @@ export const DocumentCard = ({
           >
             Pozrieť dokument
           </Button>
-          <Button
-            variant="full-transparent"
-            className="px-6 py-4 text-sm font-medium shadow-none"
-            icon={<Download />}
-          >
+          <Button variant="full-transparent" className="px-6 py-4 text-sm font-medium shadow-none" icon={<Download />}>
             Stiahnuť
           </Button>
         </div>
       </div>
       <div className="flex lg:hidden bg-red-superlight h-[86px] -mt-[86px]" />
     </Panel>
-  );
-};
+  )
+}

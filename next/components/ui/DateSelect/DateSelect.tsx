@@ -1,59 +1,28 @@
-import cx from 'classnames';
-import * as React from 'react';
-import { LocalDate } from '@js-joda/core';
-import { ReactComponent as Calendar } from '../../assets/images/calendar.svg';
-import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts';
+import cx from 'classnames'
+import * as React from 'react'
+import { LocalDate } from '@js-joda/core'
+import { ReactComponent as Calendar } from '../../../assets/images/calendar.svg'
+import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
 
 export type DateSelectProps = Omit<
-  React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  >,
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
   'onChange'
 > & {
-  className?: string;
-  value: string;
-  onChange?: (value: string) => void;
-  showShorcuts?: boolean;
-};
+  className?: string
+  value: string
+  onChange?: (value: string) => void
+  showShorcuts?: boolean
+}
 
-export const DateSelect = ({
-  className,
-  value,
-  onChange,
-  showShorcuts,
-  ...rest
-}: DateSelectProps) => {
-  const selectedDate = LocalDate.parse(value);
-  const MONTHS = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'Máj',
-    'Jún',
-    'Júl',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
+export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }: DateSelectProps) => {
+  const selectedDate = LocalDate.parse(value)
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'Máj', 'Jún', 'Júl', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-  const showDate =
-    selectedDate >= LocalDate.now().plusDays(5) ||
-    selectedDate < LocalDate.now();
+  const showDate = selectedDate >= LocalDate.now().plusDays(5) || selectedDate < LocalDate.now()
 
-  const showMobileDate =
-    selectedDate >= LocalDate.now().plusDays(3) ||
-    selectedDate < LocalDate.now();
+  const showMobileDate = selectedDate >= LocalDate.now().plusDays(3) || selectedDate < LocalDate.now()
   return (
-    <div
-      className={cx(
-        'flex md:inline-flex rounded-lg overflow-hidden h-16',
-        className
-      )}
-    >
+    <div className={cx('flex md:inline-flex rounded-lg overflow-hidden h-16', className)}>
       {showShorcuts && <DateSelectShortcuts value={value} onClick={onChange} />}
       <label className="relative text-primary flex-1 flex items-center text-right">
         <div
@@ -72,8 +41,7 @@ export const DateSelect = ({
         {/* Mobile */}
         {showMobileDate && (
           <div className="absolute w-full text-center sm:hidden pointer-events-none text-default">
-            {`${selectedDate.dayOfMonth()}.`}{' '}
-            {MONTHS[selectedDate.monthValue() - 1]}
+            {`${selectedDate.dayOfMonth()}.`} {MONTHS[selectedDate.monthValue() - 1]}
           </div>
         )}
 
@@ -93,7 +61,7 @@ export const DateSelect = ({
         />
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default DateSelect;
+export default DateSelect

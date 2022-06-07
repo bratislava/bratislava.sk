@@ -1,22 +1,16 @@
-import cx from 'classnames';
-import { ReactComponent as MinusIcon } from '../../assets/images/minus.svg';
-import { ReactComponent as PlusIcon } from '../../assets/images/plus.svg';
+import cx from 'classnames'
+import { ReactComponent as MinusIcon } from '../../../assets/images/minus.svg'
+import { ReactComponent as PlusIcon } from '../../../assets/images/plus.svg'
 
 interface IProps {
-  id?: string;
-  value: number;
-  onChange?: (num: number) => void;
-  className?: string;
-  hasError?: boolean;
+  id?: string
+  value: number
+  onChange?: (num: number) => void
+  className?: string
+  hasError?: boolean
 }
 
-export const NumberSwitcher = ({
-  className,
-  value,
-  hasError,
-  id,
-  onChange,
-}: IProps) => {
+export const NumberSwitcher = ({ className, value, hasError, id, onChange }: IProps) => {
   return (
     <div
       id={id}
@@ -26,7 +20,7 @@ export const NumberSwitcher = ({
     >
       <button
         onClick={() => {
-          onChange(value - 1);
+          onChange(value - 1)
         }}
         className="cursor-pointer py-2 text-primary"
       >
@@ -35,14 +29,14 @@ export const NumberSwitcher = ({
       <span className="text-default font-medium">{value}</span>
       <button
         onClick={() => {
-          onChange(value + 1);
+          onChange(value + 1)
         }}
         className="cursor-pointer py-2 text-primary"
       >
         <PlusIcon />
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default NumberSwitcher;
+export default NumberSwitcher

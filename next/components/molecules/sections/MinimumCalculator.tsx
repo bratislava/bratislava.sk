@@ -1,14 +1,14 @@
-import { Button, Input } from '@bratislava/ui-bratislava';
-import { ChevronRight } from '@bratislava/ui-bratislava/assets/images';
-import React, { FormEvent } from 'react';
-import cx from 'classnames';
-import { useTranslation } from 'next-i18next';
+import { Button, Input } from '@bratislava/ui-bratislava'
+import { ChevronRight } from '@assets/images'
+import React, { FormEvent } from 'react'
+import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 interface IProps {
-  className?: string;
-  singleAdultValue: number;
-  anotherAdultValue: number;
-  childValue: number;
+  className?: string
+  singleAdultValue: number
+  anotherAdultValue: number
+  childValue: number
 }
 
 const calculateLivingSituation = (
@@ -19,25 +19,19 @@ const calculateLivingSituation = (
   children: number,
   income: number
 ): [number, boolean] => {
-  const minimumWage =
-    singleAdultValue + (adults - 1) * anotherAdultValue + children * childValue;
-  const canAccomodate = income >= minimumWage;
-  return [minimumWage, canAccomodate];
-};
+  const minimumWage = singleAdultValue + (adults - 1) * anotherAdultValue + children * childValue
+  const canAccomodate = income >= minimumWage
+  return [minimumWage, canAccomodate]
+}
 
-const MinimumCalculator = ({
-  className,
-  singleAdultValue,
-  anotherAdultValue,
-  childValue,
-}: IProps) => {
-  const { t } = useTranslation('minimum-calculator');
+const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, childValue }: IProps) => {
+  const { t } = useTranslation('minimum-calculator')
 
-  const [adults, setAdults] = React.useState('1');
-  const [children, setChildren] = React.useState('0');
-  const [income, setIncome] = React.useState('0');
+  const [adults, setAdults] = React.useState('1')
+  const [children, setChildren] = React.useState('0')
+  const [income, setIncome] = React.useState('0')
 
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false)
 
   const [livingWage, canAcommodate] = calculateLivingSituation(
     singleAdultValue,
@@ -46,29 +40,24 @@ const MinimumCalculator = ({
     Number(adults),
     Number(children),
     Number(income)
-  );
+  )
   const handleSubmit = (ev: FormEvent) => {
-    ev.preventDefault();
-    setSubmitted(true);
-  };
+    ev.preventDefault()
+    setSubmitted(true)
+  }
 
   return (
     <div className={cx('text-center bg-secondary text-font', className)}>
       <p className="font-semibold text-lg">{t('title')}</p>
-      <p className="mt-6 pt-0.5 font-medium text-default w-10/12 m-auto">
-        {t('description')}
-      </p>
-      <form
-        className="mt-10 font-medium flex flex-col items-center gap-y-8 text-default"
-        onSubmit={handleSubmit}
-      >
+      <p className="mt-6 pt-0.5 font-medium text-default w-10/12 m-auto">{t('description')}</p>
+      <form className="mt-10 font-medium flex flex-col items-center gap-y-8 text-default" onSubmit={handleSubmit}>
         <InputField
           id="adults"
           label={t('adultsText')}
           value={adults}
           onChange={(v) => {
-            setAdults(v);
-            setSubmitted(false);
+            setAdults(v)
+            setSubmitted(false)
           }}
           placeholder={t('placeholder')}
           min={1}
@@ -79,8 +68,8 @@ const MinimumCalculator = ({
           label={t('childrenText')}
           value={children}
           onChange={(v) => {
-            setChildren(v);
-            setSubmitted(false);
+            setChildren(v)
+            setSubmitted(false)
           }}
           placeholder={t('placeholder')}
         />
@@ -90,8 +79,8 @@ const MinimumCalculator = ({
           label={t('incomeText')}
           value={income}
           onChange={(v) => {
-            setIncome(v);
-            setSubmitted(false);
+            setIncome(v)
+            setSubmitted(false)
           }}
           placeholder={t('placeholder')}
           step="0.01"
@@ -108,28 +97,23 @@ const MinimumCalculator = ({
 
       {submitted && (
         <div className="mt-14">
-          <p className="font-semibold text-md">
-            {canAcommodate ? t('answerYes') : t('answerNo')}
-          </p>
+          <p className="font-semibold text-md">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
           <p className="text-default mt-5 w-9/12 m-auto">
             {canAcommodate
               ? t('answerDescriptionYes')
-              : t('answerDescriptionNo').replace(
-                  'XY',
-                  livingWage.toFixed(2).toString()
-                )}
+              : t('answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
           </p>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 interface IInputFieldProps {
-  id: string;
-  label: string;
-  value: string;
-  onChange: (newValue: string) => void;
+  id: string
+  label: string
+  value: string
+  onChange: (newValue: string) => void
 }
 
 const InputField = ({
@@ -139,13 +123,7 @@ const InputField = ({
   onChange,
   ...rest
 }: IInputFieldProps &
-  Omit<
-    React.DetailedHTMLProps<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    >,
-    'onChange'
-  >) => (
+  Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>) => (
   <label className="flex flex-col items-center text-center" htmlFor={id}>
     {label}
     <Input
@@ -159,6 +137,6 @@ const InputField = ({
       {...rest}
     />
   </label>
-);
+)
 
-export default MinimumCalculator;
+export default MinimumCalculator

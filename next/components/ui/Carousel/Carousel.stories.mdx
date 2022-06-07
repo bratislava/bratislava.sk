@@ -1,16 +1,16 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
 
-import { Carousel } from './Carousel';
-import { HorizontalCard } from '../HorizontalCard/HorizontalCard';
+import { Carousel } from './Carousel'
+import { HorizontalCard } from '../HorizontalCard/HorizontalCard'
 
-import NewsImage from '../../assets/images/sample-news-image.jpeg';
+import NewsImage from '../../../assets/images/sample-news-image.jpeg'
 
 export const Template = (props) => (
   <div className="m-20">
     <Carousel {...props} />
   </div>
-);
+)
 
 <Meta title="components/molecules/Carousel" decorators={[withDesign]} />
 

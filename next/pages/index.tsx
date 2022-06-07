@@ -7,58 +7,58 @@ import {
   SectionContainer,
   TopNine,
   Waves,
-} from '@bratislava/ui-bratislava';
-import HomepageMenu from '@bratislava/ui-bratislava/components/HomepageMenu/HomepageMenu';
-import { TopNineItemProps } from '@bratislava/ui-bratislava/components/TopNineItem/TopNineItem';
-import { GetServerSidePropsContext } from 'next';
-import Image from 'next/image';
-import * as React from 'react';
-import { useTranslation } from 'next-i18next';
-import BAHero from '../components/assets/images/ba-hero.png';
-import HomepagePageLayout from '../components/layouts/HomepagePageLayout';
-import PageWrapper from '../components/layouts/PageWrapper';
-import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts';
-import GooutEvents from '../components/molecules/sections/homepage/GooutEvents';
-import NewsLetterSection from '../components/molecules/sections/NewsLetterSection';
-import { client } from '../utils/gql';
-import { buildMockData } from '../utils/homepage-mockdata';
-import { parseFooter, parseMainMenu } from '../utils/page';
-import { ssrTranslations } from '../utils/translations';
-import { isPresent, PageProps, shouldSkipStaticPaths } from '../utils/utils';
-import { AsyncServerProps } from '../utils/types';
+} from '@bratislava/ui-bratislava'
+import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
+import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
+import { GetServerSidePropsContext } from 'next'
+import Image from 'next/image'
+import * as React from 'react'
+import { useTranslation } from 'next-i18next'
+import BAHero from '../assets/images/ba-hero.png'
+import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
+import PageWrapper from '../components/layouts/PageWrapper'
+import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
+import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
+import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
+import { client } from '../utils/gql'
+import { buildMockData } from '../utils/homepage-mockdata'
+import { parseFooter, parseMainMenu } from '../utils/page'
+import { isPresent } from '../utils/utils' // PageProps, shouldSkipStaticPaths
+import { AsyncServerProps } from '../utils/types'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export const getServerSideProps = async (ctx) => {
-  const locale = ctx.locale ?? 'sk';
+  const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
     slug: 'test',
     locale,
-  });
+  })
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
     sort: 'published_at:DESC',
-  });
+  })
 
   const { homepage } = await client.Homepage({
     locale,
-  });
+  })
 
   const homepagePosts = homepage.posts.map((post) => ({
     title: post.title,
     url: post.slug,
     imageSrc: post.image.url,
-  }));
+  }))
 
-  const frontImage = homepage.inba.images.frontImage.url;
-  const rearImage = homepage.inba.images.rearImage.url;
+  const frontImage = homepage.inba.images.frontImage.url
+  const rearImage = homepage.inba.images.rearImage.url
   const inba = {
     title: homepage.inba.title,
     content: homepage.inba.content,
     link: homepage.inba.link,
     images: [frontImage, rearImage],
-  };
+  }
 
-  const header = homepage.header;
+  const header = homepage.header
 
   const cards = homepage.cards.map((card) => ({
     bookmarkTitle: card.title,
@@ -70,7 +70,7 @@ export const getServerSideProps = async (ctx) => {
     },
     icon: card.picture.url,
     variant: card.variant,
-  }));
+  }))
 
   return {
     props: {
@@ -103,10 +103,10 @@ export const getServerSideProps = async (ctx) => {
       inba: inba,
       header: header,
       cards: cards,
-      ...(await ssrTranslations(ctx, ['common', 'homepage', 'newsletter'])),
+      ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
-  };
-};
+  }
+}
 
 const Homepage = ({
   data,
@@ -120,38 +120,21 @@ const Homepage = ({
   header,
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data;
+  const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? []);
+  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
 
   return (
-    <PageWrapper
-      locale={page.locale}
-      localizations={page.localizations}
-      slug=""
-    >
-      <HomepagePageLayout
-        menuItems={menuItems}
-        footer={(footer && parseFooter(footer)) ?? undefined}
-        bookmarks={cards}
-      >
-        <div className="bg-white">
+    <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
+      <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
+        {/* <div className="bg-white">
           <SectionContainer>
             <div className="pt-25 lg:pt-18 pb-10 flex flex-col sm:flex-row sm:items-center">
-              <PageTitle
-                className="flex-1"
-                title={pageTitle}
-                subtitle={header.subtitle}
-              />
-              <img
-                width={721}
-                height={364}
-                src={header.picture.url}
-                alt="Bratislava Hero"
-              />
+              <PageTitle className="flex-1" title={pageTitle} subtitle={header.subtitle} />
+              <img width={721} height={364} src={header.picture.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
@@ -175,10 +158,7 @@ const Homepage = ({
             posts={posts}
             latestPost={latestBlogposts}
           />
-          <PrimatorCouncil
-            className="mt-24"
-            primatorCards={data.council.cards}
-          />
+          <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
 
           <GooutEvents
             linkTitle={t('allEvents')}
@@ -197,9 +177,7 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-secondary py-16">
-          <h2 className="font-semibold text-default text-center lg:text-2xl lg:pb-20 pb-10">
-            {data.topNineTitle}
-          </h2>
+          <h2 className="font-semibold text-default text-center lg:text-2xl lg:pb-20 pb-10">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
@@ -210,19 +188,14 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard
-            className="max-w-3xl mx-auto min-h-[200px] mt-36"
-            {...inba}
-          />
+          <InBaCard className="max-w-3xl mx-auto min-h-[200px] mt-36" {...inba} />
           <div className="hidden md:block md:h-[78px]" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
-          {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
-          {/* <NewsLetterSection className="mt-24" /> */}
-        </SectionContainer>
+        </SectionContainer> */}
       </HomepagePageLayout>
     </PageWrapper>
-  );
-};
+  )
+}
 
-export default Homepage;
+export default Homepage

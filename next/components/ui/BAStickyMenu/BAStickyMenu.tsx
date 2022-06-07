@@ -1,60 +1,45 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import cx from 'classnames';
-import React from 'react';
-import { getIcon, MenuMainItem, Panel, Waves } from '../..';
-import { ArrowRight, ChevronDown, ChevronRight } from '../../assets/images';
-import { ReactComponent as StickyMenuTopper } from '../../assets/images/sticky-menu-topper.svg';
-import { isItExternal } from './external-link';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
+import React from 'react'
+import { getIcon, MenuMainItem, Panel, Waves } from '../index'
+import { ArrowRight, ChevronDown, ChevronRight } from '../../../assets/images'
+import { ReactComponent as StickyMenuTopper } from '../../../assets/images/sticky-menu-topper.svg'
+import { isItExternal } from './external-link'
 
 interface IProps {
-  className?: string;
-  menuItems: MenuMainItem[];
-  active?: string;
+  className?: string
+  menuItems: MenuMainItem[]
+  active?: string
 }
 
 export const BAStickyMenu = ({ className, menuItems, active }: IProps) => (
-  <div
-    className={cx(
-      'flex max-w-screen-1.5lg m-auto w-full justify-between',
-      className
-    )}
-  >
+  <div className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>
     {menuItems.map((item, i) => (
       <div key={i} className="group cursor-pointer flex-1">
         <MenuCell item={item} isActive={item.id === active} />
-        <MenuPanel
-          item={item}
-          isFirst={i === 0}
-          isLast={i === menuItems.length - 1}
-        />
+        <MenuPanel item={item} isFirst={i === 0} isLast={i === menuItems.length - 1} />
       </div>
     ))}
   </div>
-);
+)
 
 interface MenuCellProps {
-  item: MenuMainItem;
-  isActive: boolean;
+  item: MenuMainItem
+  isActive: boolean
 }
 
 const MenuCell = ({ item, isActive }: MenuCellProps) => (
   <div className="flex flex-col items-center w-40 h-[106px]">
     <StickyMenuTopper
       style={{ color: item.colorDark }}
-      className={cx(
-        'absolute top-0 transition opacity-0 group-hover:opacity-100 w-30',
-        {
-          'opacity-100': isActive,
-        }
-      )}
+      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-30', {
+        'opacity-100': isActive,
+      })}
     />
     <p
-      className={cx(
-        'font-medium text-base mt-5 transition group-hover:font-bold text-center whitespace-pre',
-        {
-          'font-bold': isActive,
-        }
-      )}
+      className={cx('font-medium text-base mt-5 transition group-hover:font-bold text-center whitespace-pre', {
+        'font-bold': isActive,
+      })}
     >
       {item.title}
     </p>
@@ -71,22 +56,22 @@ const MenuCell = ({ item, isActive }: MenuCellProps) => (
       })}
     />
   </div>
-);
+)
 
 interface MenuPanelProps {
-  item: MenuMainItem;
-  isFirst?: boolean;
-  isLast?: boolean;
+  item: MenuMainItem
+  isFirst?: boolean
+  isLast?: boolean
 }
 
 const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
-  const [panelHidden, setPanelHidden] = React.useState(false);
-  const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1);
-  const { Link: UILink } = useUIContext();
+  const [panelHidden, setPanelHidden] = React.useState(false)
+  const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
+  const { Link: UILink } = useUIContext()
 
   React.useEffect(() => {
-    if (panelHidden) setPanelHidden(false);
-  }, [panelHidden]);
+    if (panelHidden) setPanelHidden(false)
+  }, [panelHidden])
 
   return (
     <div
@@ -105,7 +90,7 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
         <div className="max-w-screen-1.5lg w-full m-auto grid grid-cols-3 gap-10">
           {/* SUB-ITEMS */}
           {item.subItems?.map((subItem, j) => {
-            const IconComponent = getIcon(subItem.icon);
+            const IconComponent = getIcon(subItem.icon)
             return (
               <div key={j}>
                 <button className="flex" onClick={() => setPanelHidden(true)}>
@@ -116,22 +101,14 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
                     <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
                       <IconComponent className="w-10 h-10" />
                     </div>
-                    <div className="flex-1 ml-4 font-semibold">
-                      {subItem.title}
-                    </div>
+                    <div className="flex-1 ml-4 font-semibold">{subItem.title}</div>
                   </UILink>
                 </button>
                 <ul className="mt-8 space-y-3">
                   {subItem.subItems?.map((subSubItem, k) => (
                     <li key={k}>
-                      <button
-                        className="flex"
-                        onClick={() => setPanelHidden(true)}
-                      >
-                        <UILink
-                          href={isItExternal(subSubItem.url)}
-                          className="hover:underline text-left"
-                        >
+                      <button className="flex" onClick={() => setPanelHidden(true)}>
+                        <UILink href={isItExternal(subSubItem.url)} className="hover:underline text-left">
                           {subSubItem.title}
                         </UILink>
                       </button>
@@ -147,14 +124,8 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
                       >
                         <UILink href={isItExternal(subItem.url)}>
                           <div className="flex gap-x-6 items-center">
-                            <span className="underline py-0.5">
-                              {subItem.moreLinkTitle}
-                            </span>
-                            {moreLinkHoverIdx === j ? (
-                              <ArrowRight />
-                            ) : (
-                              <ChevronRight />
-                            )}
+                            <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
+                            {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
                           </div>
                         </UILink>
                       </button>
@@ -162,7 +133,7 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
                   ) : null}
                 </ul>
               </div>
-            );
+            )
           })}
         </div>
       </Panel>
@@ -174,7 +145,7 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
         isRich
       />
     </div>
-  );
-};
+  )
+}
 
-export default BAStickyMenu;
+export default BAStickyMenu

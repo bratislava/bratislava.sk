@@ -1,0 +1,430 @@
+query Pages {
+  pages {
+    id
+    slug
+    sections {
+      ...Sections
+    }
+  }
+}
+
+query PagesStaticPaths {
+  pages {
+    id
+    slug
+  }
+}
+
+query PageBySlug($slug: String!, $locale: String!) {
+  pageBySlug(slug: $slug, locale: $locale) {
+    ...GeneralPage
+  }
+
+  footer(locale: $locale) {
+    ...Footer
+  }
+
+  mainMenu: pageCategories(locale: $locale) {
+    ...MainMenuItem
+  }
+}
+
+fragment GeneralPage on Page {
+  slug
+  title
+  pageColor
+  metaDiscription
+  pageBackgroundImage {
+    url
+  }
+  pageButtonContent {
+    ...PageLink
+  }
+  locale
+  localizations {
+    ...Localization
+  }
+
+  sections {
+    ...Sections
+  }
+
+  pageHeaderSections {
+    __typename
+    ... on ComponentSectionsSubpageList {
+      subpageList {
+        ...PageLink
+      }
+    }
+
+    ... on ComponentSectionsFeaturedBlogPosts {
+      first_blog {
+        title
+        published_at
+        coverImage {
+          url
+        }
+        tag {
+          pageCategory {
+            color
+            shortTitle
+          }
+        }
+      }
+      second_blog {
+        title
+        published_at
+        coverImage {
+          url
+        }
+        tag {
+          pageCategory {
+            color
+            shortTitle
+          }
+        }
+      }
+      third_blog {
+        title
+        published_at
+        coverImage {
+          url
+        }
+        tag {
+          pageCategory {
+            color
+            shortTitle
+          }
+        }
+      }
+    }
+  }
+
+  pageCategory {
+    id
+    title
+    color
+  }
+
+  parentPage {
+    ...ParentPage
+    parentPage {
+      ...ParentPage
+      parentPage {
+        ...ParentPage
+        parentPage {
+          ...ParentPage
+        }
+      }
+    }
+  }
+
+  relatedBlogPosts {
+    ...BlogPost
+  }
+}
+
+fragment ParentPage on Page {
+  slug
+  locale
+  title
+}
+
+fragment Footer on Footer {
+  address
+  phone
+  email
+  copyright
+  accessibilityLink {
+    ...PageLink
+  }
+  youtubeUrl
+  facebookUrl
+  instagramUrl
+  footerSections {
+    title
+    pageLinks {
+      ...PageLink
+    }
+  }
+}
+
+fragment PageLink on ComponentBlocksPageLink {
+  title
+  url
+  anchor
+  page {
+    locale
+    slug
+    title
+  }
+}
+
+fragment DocumentList on ComponentSectionsDocumentList {
+  vzns {
+    id
+    category
+    details
+    amedmentDocument {
+      id
+      title
+      validFrom
+      document {
+        url
+        size
+        ext
+        created_at
+      }
+    }
+    cancellationDocument {
+      id
+      title
+      validFrom
+      document {
+        url
+        size
+        ext
+        created_at
+      }
+    }
+    title
+    validFrom
+    mainDocument {
+      url
+      size
+      ext
+      created_at
+    }
+    consolidatedText {
+      id
+      url
+      size
+      ext
+      created_at
+    }
+  }
+}
+
+fragment Sections on PageSectionsDynamicZone {
+  __typename
+
+  ... on ComponentSectionsIconTitleDesc {
+    title
+    list {
+      ...IconTitleDesc
+    }
+  }
+
+  ... on ComponentSectionsDocumentList {
+    ...DocumentList
+  }
+
+  ... on ComponentSectionsDivider {
+    hasBackground
+    style
+  }
+
+  ... on ComponentSectionsTextWithImage {
+    hasBackground
+    content
+    imagePosition
+    imageShadow
+    imageSrc {
+      url
+    }
+  }
+
+  ... on ComponentSectionsFileList {
+    hasBackground
+    fileList {
+      ...File
+    }
+  }
+
+  ... on ComponentSectionsColumnedText {
+    hasBackground
+    content
+  }
+
+  ... on ComponentSectionsNarrowText {
+    hasBackground
+    content
+    width
+    align
+  }
+
+  ... on ComponentSectionsWaves {
+    position
+    isRich
+  }
+
+  ... on ComponentSectionsLinks {
+    title
+    hasBackground
+    pageLinks {
+      ...PageLink
+    }
+  }
+  ... on ComponentSectionsContact {
+    title
+    hasBackground
+    description
+    phone
+    phoneLabel
+    email
+    emailLabel
+    address
+  }
+
+  ... on ComponentSectionsAccordion {
+    title
+    hasBackground
+    institutions {
+      ...Institution
+    }
+    flatText {
+      ...FlatText
+    }
+    institutionsNarrow {
+      ...institutionsNarrow
+    }
+  }
+
+  ... on ComponentSectionsCalculator {
+    hasBackground
+    single_adult_value
+    another_adult_value
+    child_value
+  }
+
+  ... on ComponentSectionsListItems {
+    title
+    hasBackground
+    listItems {
+      content
+      moreLinkTitle
+      moreLinkUrl
+      moreLinkPage {
+        locale
+        slug
+        title
+      }
+      circleOption
+    }
+  }
+
+  ... on ComponentSectionsVideos {
+    id
+    title
+    subtitle
+    videos {
+      id
+      title
+      speaker
+      url
+    }
+  }
+
+  ... on ComponentSectionsNumericalList {
+    id
+    items {
+      ...NumericalListItem
+    }
+    title
+    variant
+    buttonText
+    buttonLink
+    hasBackground
+  }
+
+  ... on ComponentSectionsArticlesList {
+    title
+    category {
+      title
+    }
+    filtering
+  }
+}
+
+fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
+  title
+  subtitle
+  category
+  url
+  urlLabel
+}
+
+fragment FlatText on ComponentAccordionItemsFlatText {
+  category
+  content
+  width
+  align
+  moreLinkTitle
+  moreLinkUrl
+  moreLinkPage {
+    locale
+    slug
+    title
+  }
+}
+
+fragment Institution on ComponentAccordionItemsInstitution {
+  title
+  subtitle
+  category
+  firstColumn
+  secondColumn
+  thirdColumn
+  url
+  urlLabel
+}
+
+fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
+  title
+  desc
+  icon {
+    id
+    url
+  }
+}
+
+fragment File on ComponentBlocksFile {
+  title
+  category
+  media {
+    url
+    created_at
+    size
+    ext
+  }
+}
+
+fragment NumericalListItem on ComponentBlocksNumericalListItem {
+  text
+}
+
+fragment Localization on Page {
+  slug
+  locale
+}
+
+fragment MainMenuItem on PageCategory {
+  id
+  title
+  color
+  icon
+  iconHover
+  priority
+  subcategories {
+    id
+    title
+    priority
+    icon
+    moreLink {
+      ...PageLink
+    }
+    pages {
+      ...PageLink
+    }
+  }
+}

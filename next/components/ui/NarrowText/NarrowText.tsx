@@ -1,12 +1,12 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context/ui-context';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
 
 export interface NarrowTextProps {
-  className?: string;
-  content?: string;
-  width?: 'narrow' | 'default' | 'wide' | 'full';
-  align?: 'left' | 'center' | 'right';
-  hasBackground?: boolean;
+  className?: string
+  content?: string
+  width?: 'narrow' | 'default' | 'wide' | 'full'
+  align?: 'left' | 'center' | 'right'
+  hasBackground?: boolean
 }
 
 export const NarrowText = ({
@@ -16,9 +16,9 @@ export const NarrowText = ({
   width = 'default',
   align = 'center',
 }: NarrowTextProps) => {
-  const { Markdown: UIMarkdown } = useUIContext();
+  const { Markdown: UIMarkdown } = useUIContext()
 
-  if (!content) return null;
+  if (!content) return null
 
   return (
     <div
@@ -47,7 +47,7 @@ export const NarrowText = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NarrowText;
+export default NarrowText

@@ -1,7 +1,7 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { NewsCard } from './NewsCard';
-import sampleImage from '../../assets/images/sample-blog-image.png';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { NewsCard } from './NewsCard'
+import sampleImage from '../../../assets/images/sample-blog-image.png'
 
 <Meta title="components/molecules/NewsCard" decorators={[withDesign]} />
 
@@ -32,8 +32,7 @@ NewsCard accepts custom Props that are as follows:
     args={{
       tag: 'Lorem ipsum',
       title: 'Nadpis lorem ipsum dolor sit',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
       imageSrc: sampleImage,
     }}
   >

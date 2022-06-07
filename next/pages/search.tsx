@@ -1,5 +1,5 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AdvancedSearch,
   BlogSearchCards,
@@ -10,25 +10,25 @@ import {
   NoResultsFound,
   PageCards,
   PageHeader,
-} from '@bratislava/ui-bratislava';
-import { useTranslation } from 'next-i18next';
-import BasePageLayout from '../components/layouts/BasePageLayout';
-import PageWrapper from '../components/layouts/PageWrapper';
-import NewsLetterSection from '../components/molecules/sections/NewsLetterSection';
-import { pageStyle } from '../utils/page';
-import { isPresent } from '../utils/utils';
-import BlogImageA from '../components/assets/images/blog-search-1.png';
-import BlogImageB from '../components/assets/images/blog-search-2.png';
-import BlogImageC from '../components/assets/images/blog-search-3.png';
+} from '@bratislava/ui-bratislava'
+import { useTranslation } from 'next-i18next'
+import BasePageLayout from '../components/layouts/BasePageLayout'
+import PageWrapper from '../components/layouts/PageWrapper'
+import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
+import { pageStyle } from '../utils/page'
+import { isPresent } from '../utils/utils'
+import BlogImageA from '../assets/images/blog-search-1.png'
+import BlogImageB from '../assets/images/blog-search-2.png'
+import BlogImageC from '../assets/images/blog-search-3.png'
 
 export interface SearchPageProps {
-  page?: GeneralPageFragment;
-  footer: FooterProps;
+  page?: GeneralPageFragment
+  footer: FooterProps
 }
 
 const Search = ({ page, footer }: SearchPageProps) => {
   //const results = {blogPosts: [], pages: [], files: []};
-  const noResultsFound = false;
+  const noResultsFound = false
 
   return (
     <PageWrapper
@@ -36,22 +36,14 @@ const Search = ({ page, footer }: SearchPageProps) => {
       slug={page?.slug ?? ''}
       localizations={page?.localizations?.filter(isPresent)}
     >
-      <BasePageLayout
-        footer={footer}
-        menuItems={menuItems}
-        activeMenuItem={page ? page.pageCategory?.id : '1'}
-      >
+      <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page ? page.pageCategory?.id : '1'}>
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle(page ? page.pageCategory.color : 'red'),
           }}
         />
         {/* Header */}
-        <PageHeader
-          color="var(--secondary-color)"
-          transparentColor="var(--secondary-color--transparent)"
-          imageSrc={''}
-        >
+        <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''}>
           {/* Header - Breadcrumbs */}
           <h1 className="flex justify-center lg:justify-start pl-0 lg:pl-8 xl:pl-41 py-18 text-md md:text-2xl font-bold whitespace-pre-wrap max-w-screen-1.5lg">
             Vyhľadávanie na stránke
@@ -61,18 +53,13 @@ const Search = ({ page, footer }: SearchPageProps) => {
         <div className="flex flex-col px-8 xl:px-41 py-14 xl:py-24 gap-y-14 xl:gap-y-24">
           <AdvancedSearch />
           {noResultsFound ? (
-            <NoResultsFound
-              title="Nič sme nenašli"
-              message="Skúste zadať niečo iné"
-            />
+            <NoResultsFound title="Nič sme nenašli" message="Skúste zadať niečo iné" />
           ) : (
             <>
               <BlogSearchCards blogs={blogs} />
               <PageCards pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
-                <div className="text-default lg:text-md font-semibold">
-                  Dokumenty
-                </div>
+                <div className="text-default lg:text-md font-semibold">Dokumenty</div>
                 <FileList fileSections={fileSections} hideCategory />
               </div>
             </>
@@ -83,8 +70,8 @@ const Search = ({ page, footer }: SearchPageProps) => {
         </div>
       </BasePageLayout>
     </PageWrapper>
-  );
-};
+  )
+}
 
 //hardcoded until we find a way to pass them
 const menuItems = [
@@ -783,12 +770,11 @@ const menuItems = [
       },
     ],
   },
-];
+]
 
 const posts = [
   {
-    imageSrc:
-      '../../../../libs/ui/bratislava/src/assets/images/sample-news-image.b6fc762.jpeg',
+    imageSrc: '../../../../libs/ui/bratislava/src/assets/images/sample-news-image.b6fc762.jpeg',
     title: 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
     url: '/',
   },
@@ -798,8 +784,7 @@ const posts = [
     url: '/',
   },
   {
-    imageSrc:
-      '../../../../libs/ui/bratislava/assets/images/sample-news-image.b6fc762.jpeg',
+    imageSrc: '../../../../libs/ui/bratislava/assets/images/sample-news-image.b6fc762.jpeg',
     title: 'Nový3 bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
@@ -823,15 +808,14 @@ const posts = [
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
-];
+]
 
 const fileSections = [
   {
     category: 'Category 1',
     files: [
       {
-        title:
-          'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
         media: {
           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
           created_at: 'máj 2021',
@@ -840,8 +824,7 @@ const fileSections = [
         },
       },
       {
-        title:
-          'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
         media: {
           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
           created_at: 'máj 2021',
@@ -850,8 +833,7 @@ const fileSections = [
         },
       },
       {
-        title:
-          'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
         media: {
           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
           created_at: 'máj 2021',
@@ -860,8 +842,7 @@ const fileSections = [
         },
       },
       {
-        title:
-          'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
         media: {
           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
           created_at: 'máj 2021',
@@ -870,8 +851,7 @@ const fileSections = [
         },
       },
       {
-        title:
-          'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
         media: {
           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
           created_at: 'máj 2021',
@@ -881,7 +861,7 @@ const fileSections = [
       },
     ],
   },
-];
+]
 
 const blogs = [
   {
@@ -920,7 +900,7 @@ const blogs = [
       pageCategory: null,
     },
   },
-];
+]
 
 const pages = [
   {
@@ -947,6 +927,6 @@ const pages = [
     pageColor: 'brown',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
-];
+]
 
-export default Search;
+export default Search

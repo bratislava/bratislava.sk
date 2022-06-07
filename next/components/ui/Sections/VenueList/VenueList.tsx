@@ -1,15 +1,15 @@
-import cx from 'classnames';
-import React from 'react';
-import { TabBarTab } from '../../TabBarTab/TabBarTab';
-import { Venue, VenueProps } from '../../Venue/Venue';
-import VenueImg from '../../../assets/images/news.svg';
+import cx from 'classnames'
+import React from 'react'
+import { TabBarTab } from '../../TabBarTab/TabBarTab'
+import { Venue, VenueProps } from '../../Venue/Venue'
+import VenueImg from '../../../../assets/images/news.svg'
 
-export type TVenuesTab = { key: string; title: string; venues?: VenueProps[] };
+export type TVenuesTab = { key: string; title: string; venues?: VenueProps[] }
 
 export interface VenueListProps {
-  className?: string;
-  title?: string;
-  tabs?: TVenuesTab[];
+  className?: string
+  title?: string
+  tabs?: TVenuesTab[]
 }
 
 export const VenueList = ({
@@ -22,16 +22,14 @@ export const VenueList = ({
       venues: [
         {
           title: 'Zrkadlová sieň',
-          description:
-            'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
+          description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
           imageSrc: VenueImg,
           linkTitle: 'Rezervovať',
         },
         {
           title: 'Zrkadlová sieň',
-          description:
-            'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
+          description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
           imageSrc: VenueImg,
           linkTitle: 'Rezervovať',
@@ -44,8 +42,7 @@ export const VenueList = ({
       venues: [
         {
           title: 'Zrkadlová sieň',
-          description:
-            'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
+          description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
           imageSrc: VenueImg,
           linkTitle: 'Rezervovať',
@@ -54,14 +51,12 @@ export const VenueList = ({
     },
   ],
 }: VenueListProps) => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const venues = tabs[activeIndex]?.venues ?? tabs[0]?.venues ?? [];
+  const [activeIndex, setActiveIndex] = React.useState(0)
+  const venues = tabs[activeIndex]?.venues ?? tabs[0]?.venues ?? []
 
   return (
     <div className={cx(className, 'flex items-center flex-col py-56')}>
-      <span className="font-semibold text-4xl w-96 px-5 text-center">
-        {title}
-      </span>
+      <span className="font-semibold text-4xl w-96 px-5 text-center">{title}</span>
 
       <div className="flex space-x-5 my-20">
         {tabs?.map((tab, index) => (
@@ -88,7 +83,7 @@ export const VenueList = ({
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default VenueList;
+export default VenueList

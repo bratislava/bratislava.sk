@@ -1,18 +1,18 @@
-import cx from 'classnames';
-import React from 'react';
-import { ReactComponent as Close } from '../../assets/images/close.svg';
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg';
-import { ReactComponent as ArrowRight } from '../../assets/images/arrow-right.svg';
-import { Button } from '../Button/Button';
+import cx from 'classnames'
+import React from 'react'
+import { ReactComponent as Close } from '../../../assets/images/close.svg'
+import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import { Button } from '../Button/Button'
 
 export interface ModalProps {
-  className?: string;
-  isOpen: boolean;
-  children?: React.ReactNode;
-  onClose?: () => void;
-  actionButtonTitle?: string;
-  closeButtonColor?: string;
-  onActionButtonClick?: () => void;
+  className?: string
+  isOpen: boolean
+  children?: React.ReactNode
+  onClose?: () => void
+  actionButtonTitle?: string
+  closeButtonColor?: string
+  onActionButtonClick?: () => void
 }
 
 export const Modal = ({
@@ -47,11 +47,7 @@ export const Modal = ({
           {children}
           {actionButtonTitle && onActionButtonClick && (
             <div className="flex justify-center absolute inset-x-0 mx-auto bottom-0 transofrm translate-y-1/2">
-              <Button
-                icon={<ChevronRight />}
-                hoverIcon={<ArrowRight />}
-                onClick={onActionButtonClick}
-              >
+              <Button icon={<ChevronRight />} hoverIcon={<ArrowRight />} onClick={onActionButtonClick}>
                 {actionButtonTitle}
               </Button>
             </div>
@@ -59,7 +55,7 @@ export const Modal = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

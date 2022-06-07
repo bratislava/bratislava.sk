@@ -1,27 +1,27 @@
-import { LocalDate } from '@js-joda/core';
-import React from 'react';
-import { Field } from '../Field/Field';
-import { Input } from '../Input/Input';
-import { Select } from '../Select/Select';
-import { TextArea } from '../TextArea/TextArea';
-import { InputAccessory } from '../InputAccessory/InputAccessory';
-import { CheckBox } from '../CheckBox/CheckBox';
-import { Button } from '../Button/Button';
-import { ReactComponent as Calendar } from '../../assets/images/calendar-form.svg';
+import { LocalDate } from '@js-joda/core'
+import React from 'react'
+import { Field } from '../Field/Field'
+import { Input } from '../Input/Input'
+import { Select } from '../Select/Select'
+import { TextArea } from '../TextArea/TextArea'
+import { InputAccessory } from '../InputAccessory/InputAccessory'
+import { CheckBox } from '../CheckBox/CheckBox'
+import { Button } from '../Button/Button'
+import { ReactComponent as Calendar } from '../../../assets/images/calendar-form.svg'
 
 interface IProps {
-  className?: string;
+  className?: string
 }
 
 export interface ReservationFormValues {
-  name: string;
-  email: string;
-  phone: string;
-  spaceId: string; //TODO: From DB
-  spacePossibilities: string; //TODO: From DB
-  notes: string;
-  date: string;
-  acceptTerms: boolean;
+  name: string
+  email: string
+  phone: string
+  spaceId: string //TODO: From DB
+  spacePossibilities: string //TODO: From DB
+  notes: string
+  date: string
+  acceptTerms: boolean
 }
 
 export const RentReservationForm = ({ className }: IProps) => {
@@ -29,24 +29,23 @@ export const RentReservationForm = ({ className }: IProps) => {
   //   useValidation<ReservationFormValues>(validateReservationForm);
 
   //TODO: From DB
-  const [reservationFormValues, setReservationFormValues] =
-    React.useState<ReservationFormValues>({
-      name: '',
-      email: '@',
-      phone: '',
-      spaceId: '',
-      spacePossibilities: '',
-      notes: '',
-      date: LocalDate.now().toJSON(),
-      acceptTerms: false,
-    });
+  const [reservationFormValues, setReservationFormValues] = React.useState<ReservationFormValues>({
+    name: '',
+    email: '@',
+    phone: '',
+    spaceId: '',
+    spacePossibilities: '',
+    notes: '',
+    date: LocalDate.now().toJSON(),
+    acceptTerms: false,
+  })
 
   const handleChange = (change: Partial<ReservationFormValues>) => {
     // Object.keys(change).forEach((key) =>
     //   clearErrors(key as keyof ReservationFormValues)
     // );
-    setReservationFormValues((o) => ({ ...o, ...change }));
-  };
+    setReservationFormValues((o) => ({ ...o, ...change }))
+  }
 
   const handleSpaceChange = (option: typeof SPACEOPTIONS[0]) => {
     // const selectedVenue = venues?.find((v) => v.id === option.key);
@@ -56,34 +55,31 @@ export const RentReservationForm = ({ className }: IProps) => {
     //     poolId: selectedVenue.pools[0]?.id,
     //   });
     // }
-  };
+  }
 
   const SPACEOPTIONS = [
     { key: '1', title: 'Space 1' },
     { key: '2', title: 'Space 2' },
     { key: '3', title: 'Space 3' },
     { key: '4', title: 'Space 4' },
-  ];
+  ]
 
   const SPACEPOSSIBILITIES = [
     { key: '1', title: 'Possibility 1' },
     { key: '2', title: 'Possibility 2' },
     { key: '3', title: 'Possibility 3' },
     { key: '4', title: 'Possibility 4' },
-  ];
+  ]
 
   // TODO: update plugin to grid columns
 
   return (
     <div className="z-10 md:w-10/12 mx-auto">
-      <h1 className="font-semibold text-2xl text-center">
-        Nezáväzná rezervácia
-      </h1>
+      <h1 className="font-semibold text-2xl text-center">Nezáväzná rezervácia</h1>
 
       <div className="flex mb-14 mt-7 text-center">
         <p className="font-medium text-default text-center px-2 lg:px-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non
-          vitae ultrices sit lobortis arcu.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
         </p>
       </div>
 
@@ -191,10 +187,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                 id="spacePoss"
                 // hasError={!!errors?.venueId}
                 options={SPACEPOSSIBILITIES}
-                value={
-                  reservationFormValues?.spacePossibilities ||
-                  SPACEPOSSIBILITIES[0]
-                }
+                value={reservationFormValues?.spacePossibilities || SPACEPOSSIBILITIES[0]}
                 onChange={(s) => handleChange?.({ spacePossibilities: s.key })}
               />
             </Field>
@@ -225,21 +218,17 @@ export const RentReservationForm = ({ className }: IProps) => {
               id="terms"
               content="Oboznámil/a som sa so všeobecnými obchodnými podmienkami."
               checked={reservationFormValues?.acceptTerms}
-              onChange={(e) =>
-                handleChange?.({ acceptTerms: e.target.checked })
-              }
+              onChange={(e) => handleChange?.({ acceptTerms: e.target.checked })}
             />
           </Field>
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 lg:mt-9 px-6 h-12 text-default font-medium">
-            Nezáväzne rezervovať
-          </Button>
+          <Button className="mt-8 lg:mt-9 px-6 h-12 text-default font-medium">Nezáväzne rezervovať</Button>
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default RentReservationForm;
+export default RentReservationForm

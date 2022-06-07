@@ -1,11 +1,11 @@
-import * as React from 'react';
-import cx from 'classnames';
-import { ReactComponent as HomeIcon } from '../assets/images/home-icon.svg';
-import HeaderSection, { HeaderSectionProps } from '../atoms/HeadSection';
+import * as React from 'react'
+import cx from 'classnames'
+import { ReactComponent as HomeIcon } from '../../assets/images/home-icon.svg'
+import HeaderSection, { HeaderSectionProps } from '../atoms/HeadSection'
 
 interface IProps {
-  className?: string;
-  subSections?: Array<HeaderSectionProps>;
+  className?: string
+  subSections?: Array<HeaderSectionProps>
 }
 
 const HeaderSections = ({
@@ -58,6 +58,6 @@ const HeaderSections = ({
       ))}
     </div>
   </div>
-);
+)
 
-export default HeaderSections;
+export default HeaderSections

@@ -1,29 +1,20 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import {
-  ArrowRight,
-  ChevronRight,
-} from '@bratislava/ui-bratislava/assets/images';
-import cx from 'classnames';
-import Link from 'next/dist/client/link';
-import { Panel } from '../Panel/Panel';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { ArrowRight, ChevronRight } from '@assets/images'
+import cx from 'classnames'
+import Link from 'next/dist/client/link'
+import { Panel } from '../Panel/Panel'
 
 export interface PrimatorCardProps {
-  className?: string;
-  title: string;
-  imageSrc: string;
-  href: string;
-  smImageAlign?: 'left' | 'right';
+  className?: string
+  title: string
+  imageSrc: string
+  href: string
+  smImageAlign?: 'left' | 'right'
 }
 
-export const PrimatorCard = ({
-  className,
-  title,
-  imageSrc,
-  href,
-  smImageAlign = 'left',
-}: PrimatorCardProps) => {
-  const { Link: UILink } = useUIContext();
-  const smRight = smImageAlign === 'right';
+export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 'left' }: PrimatorCardProps) => {
+  const { Link: UILink } = useUIContext()
+  const smRight = smImageAlign === 'right'
   return (
     <Link href={href}>
       <div className={cx('mt-24 lg:mt-28 w-full cursor-pointer', className)}>
@@ -51,9 +42,7 @@ export const PrimatorCard = ({
               className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
               href={href}
             >
-              <span className="hover:text-default font-semibold text-sm">
-                Čítať viac
-              </span>
+              <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>
@@ -65,7 +54,7 @@ export const PrimatorCard = ({
         </Panel>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default PrimatorCard;
+export default PrimatorCard

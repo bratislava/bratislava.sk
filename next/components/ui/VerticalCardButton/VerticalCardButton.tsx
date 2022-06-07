@@ -1,17 +1,12 @@
-import cx from 'classnames';
-import { Button, ButtonProps } from '../Button/Button';
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg';
+import cx from 'classnames'
+import { Button, ButtonProps } from '../Button/Button'
+import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
 
 type VerticalCardButtonProps = ButtonProps & {
-  size?: 'default' | 'medium' | 'large' | 'custom';
-};
+  size?: 'default' | 'medium' | 'large' | 'custom'
+}
 
-export const VerticalCardButton = ({
-  className,
-  children,
-  size = 'default',
-  ...rest
-}: VerticalCardButtonProps) => (
+export const VerticalCardButton = ({ className, children, size = 'default', ...rest }: VerticalCardButtonProps) => (
   <Button
     className={cx(
       'transition-transform transform hover:scale-110',
@@ -28,4 +23,4 @@ export const VerticalCardButton = ({
   >
     {children ?? <ChevronRight />}
   </Button>
-);
+)

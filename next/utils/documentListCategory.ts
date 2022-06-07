@@ -1,16 +1,16 @@
-import DaneAPoplatky from '../components/assets/images/daneAPoplatky.svg';
-import PomenovanieUlic from '../components/assets/images/pomenovanieUlic.svg';
-import Hospodarenie from '../components/assets/images/hospodarenie.svg';
-import UzemnePlanovanie from '../components/assets/images/uzemnePlanovanie.svg';
-import PoriadokACistota from '../components/assets/images/poriadokACistota.svg';
-import SocialnaPomocASkolstvo from '../components/assets/images/socialnaPomocASkolstvo.svg';
-import Ostatne from '../components/assets/images/ostatne.svg';
-import Archiv from '../components/assets/images/archiv.svg';
+import DaneAPoplatky from '../assets/images/daneAPoplatky.svg'
+import PomenovanieUlic from '../assets/images/pomenovanieUlic.svg'
+import Hospodarenie from '../assets/images/hospodarenie.svg'
+import UzemnePlanovanie from '../assets/images/uzemnePlanovanie.svg'
+import PoriadokACistota from '../assets/images/poriadokACistota.svg'
+import SocialnaPomocASkolstvo from '../assets/images/socialnaPomocASkolstvo.svg'
+import Ostatne from '../assets/images/ostatne.svg'
+import Archiv from '../assets/images/archiv.svg'
 
 interface DocumentListCategorysType {
-  key: string;
-  value: string;
-  icon: string;
+  key: string
+  value: string
+  icon: string
 }
 
 const DocumentListCategorys: DocumentListCategorysType[] = [
@@ -54,12 +54,12 @@ const DocumentListCategorys: DocumentListCategorysType[] = [
     value: 'Archív',
     icon: Archiv,
   },
-];
+]
 
-const DocumentListCategorysMap = new Map();
+const DocumentListCategorysMap = new Map()
 
 DocumentListCategorys.map((doc) => {
-  DocumentListCategorysMap.set(doc.key, doc);
-});
+  DocumentListCategorysMap.set(doc.key, doc)
+})
 
-export default DocumentListCategorysMap;
+export default DocumentListCategorysMap

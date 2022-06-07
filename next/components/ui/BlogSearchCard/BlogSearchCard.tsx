@@ -1,24 +1,24 @@
-import Panel from '../Panel/Panel';
-import cx from 'classnames';
-import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton';
-import { ReactComponent as ArrowRightShort } from '../../assets/images/arrow-right-short.svg';
+import Panel from '../Panel/Panel'
+import cx from 'classnames'
+import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
+import { ReactComponent as ArrowRightShort } from '../../../assets/images/arrow-right-short.svg'
 
 export interface BlogImage {
-  url: string;
+  url: string
 }
 
 export interface BlogTag {
-  pageCategory: { color: string; shortTitle: string };
+  pageCategory: { color: string; shortTitle: string }
 }
 
 export interface BlogSearchCardProps {
-  className?: string;
-  imageClassName?: string;
-  fullCardSizeImage?: boolean;
-  title?: string;
-  published_at?: string;
-  coverImage?: BlogImage;
-  tag?: BlogTag;
+  className?: string
+  imageClassName?: string
+  fullCardSizeImage?: boolean
+  title?: string
+  published_at?: string
+  coverImage?: BlogImage
+  tag?: BlogTag
 }
 
 export const BlogSearchCard = ({
@@ -30,16 +30,11 @@ export const BlogSearchCard = ({
   imageClassName,
   fullCardSizeImage,
 }: BlogSearchCardProps) => {
-  const publishedAt = new Date(published_at);
-  const date =
-    publishedAt.getDay() +
-    '. ' +
-    publishedAt.getMonth() +
-    '. ' +
-    publishedAt.getFullYear();
-  const headline = tag?.pageCategory?.shortTitle ?? 'No Title Found';
-  const color = tag?.pageCategory?.color;
-  const headlineColor = color ? `--color-${color}--light` : '--color-red';
+  const publishedAt = new Date(published_at)
+  const date = publishedAt.getDay() + '. ' + publishedAt.getMonth() + '. ' + publishedAt.getFullYear()
+  const headline = tag?.pageCategory?.shortTitle ?? 'No Title Found'
+  const color = tag?.pageCategory?.color
+  const headlineColor = color ? `--color-${color}--light` : '--color-red'
   return (
     <>
       <Panel
@@ -68,19 +63,12 @@ export const BlogSearchCard = ({
           >
             {headline}
           </div>
-          <div className="text-ellipsis overflow-hidden text-default font-semibold">
-            {title}
-          </div>
+          <div className="text-ellipsis overflow-hidden text-default font-semibold">{title}</div>
           <div>{date}</div>
         </div>
       </Panel>
       <Panel
-        className={cx(
-          'group',
-          className,
-          { 'flex lg:hidden': !fullCardSizeImage },
-          { flex: fullCardSizeImage }
-        )}
+        className={cx('group', className, { 'flex lg:hidden': !fullCardSizeImage }, { flex: fullCardSizeImage })}
         hoverable
       >
         <div
@@ -100,13 +88,8 @@ export const BlogSearchCard = ({
               {headline}
             </div>
             <div className="flex">
-              <div className="text-default font-semibold text-white">
-                {title}
-              </div>
-              <VerticalCardButton
-                className="invisible group-hover:lg:visible flex-shrink-0"
-                size="medium"
-              >
+              <div className="text-default font-semibold text-white">{title}</div>
+              <VerticalCardButton className="invisible group-hover:lg:visible flex-shrink-0" size="medium">
                 <ArrowRightShort className="scale-125" />
               </VerticalCardButton>
             </div>
@@ -115,5 +98,5 @@ export const BlogSearchCard = ({
         </div>
       </Panel>
     </>
-  );
-};
+  )
+}

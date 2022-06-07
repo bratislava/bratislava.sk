@@ -1,42 +1,42 @@
-import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava';
-import { ChevronRight } from '@bratislava/ui-bratislava/assets/images';
-import React from 'react';
-import cx from 'classnames';
+import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
+import { ChevronRight } from '@assets/images'
+import React from 'react'
+import cx from 'classnames'
 
 interface IVideo {
-  title?: string;
-  speaker?: string;
-  url?: string;
-  size?: 'default' | 'small';
+  title?: string
+  speaker?: string
+  url?: string
+  size?: 'default' | 'small'
 }
 
 export interface VideosProps {
-  id?: string;
-  className?: string;
-  title?: string;
-  subtitle?: string;
-  videos?: IVideo[];
+  id?: string
+  className?: string
+  title?: string
+  subtitle?: string
+  videos?: IVideo[]
 }
 
 const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
-  const [embedUrl, setEmbedUrl] = React.useState('');
-  const [isLoaded, setLoaded] = React.useState(false);
+  const [embedUrl, setEmbedUrl] = React.useState('')
+  const [isLoaded, setLoaded] = React.useState(false)
 
   React.useEffect(() => {
     const parseYoutubeUrl = async () => {
-      const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`;
-      const res = await fetch(oembedUrl);
-      const { html }: { html: string } = await res.json();
+      const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`
+      const res = await fetch(oembedUrl)
+      const { html }: { html: string } = await res.json()
 
-      const substrStart = html.indexOf('src="') + 5;
-      const substrEnd = html.indexOf('oembed') + 6;
-      const embedUrl = html.substring(substrStart, substrEnd);
+      const substrStart = html.indexOf('src="') + 5
+      const substrEnd = html.indexOf('oembed') + 6
+      const embedUrl = html.substring(substrStart, substrEnd)
 
-      setEmbedUrl(embedUrl);
-    };
+      setEmbedUrl(embedUrl)
+    }
 
-    parseYoutubeUrl();
-  }, [url]);
+    parseYoutubeUrl()
+  }, [url])
 
   return (
     <div className="w-70 xl:w-87">
@@ -52,23 +52,15 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
         onLoad={() => setLoaded(true)}
       />
       <a href={url} target="_blank" rel="noreferrer">
-        <h5 className="font-semibold md:text-default mt-8 cursor-pointer hover:underline">
-          {title}
-        </h5>
+        <h5 className="font-semibold md:text-default mt-8 cursor-pointer hover:underline">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
     </div>
-  );
-};
+  )
+}
 
-export const Videos = ({
-  id,
-  className,
-  title,
-  subtitle,
-  videos,
-}: VideosProps) => {
-  const [videosCount, setVideosCount] = React.useState(3);
+export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) => {
+  const [videosCount, setVideosCount] = React.useState(3)
 
   return (
     <div key={id} className={className}>
@@ -100,5 +92,5 @@ export const Videos = ({
         </div>
       )} */}
     </div>
-  );
-};
+  )
+}

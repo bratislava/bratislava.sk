@@ -1,15 +1,15 @@
-import cx from 'classnames';
-import { ReactComponent as ArrowDoubleLong } from '../../assets/images/arrow-double-long.svg';
-import { ReactComponent as ArrowDoubleShort } from '../../assets/images/arrow-double-short.svg';
-import { ChairSpace } from '../ChairSpace/ChairSpace';
+import cx from 'classnames'
+import { ReactComponent as ArrowDoubleLong } from '../../../assets/images/arrow-double-long.svg'
+import { ReactComponent as ArrowDoubleShort } from '../../../assets/images/arrow-double-short.svg'
+import { ChairSpace } from '../ChairSpace/ChairSpace'
 
 interface IProps {
-  imageSrc?: string;
-  footerText?: string;
-  smallGapCapacity?: number;
-  bigGapCapacity?: number;
-  className?: string;
-  imagePosition?: 'left' | 'right';
+  imageSrc?: string
+  footerText?: string
+  smallGapCapacity?: number
+  bigGapCapacity?: number
+  className?: string
+  imagePosition?: 'left' | 'right'
 }
 
 /* <Image
@@ -28,12 +28,8 @@ export const ImageCard = ({
   bigGapCapacity,
   footerText,
 }: IProps) => {
-  const imageLarge = imageSrc && (
-    <img alt="venue" src={imageSrc} height="381" width="445" />
-  );
-  const imageSmall = imageSrc && (
-    <img alt="venue" src={imageSrc} height="293" width="350" />
-  );
+  const imageLarge = imageSrc && <img alt="venue" src={imageSrc} height="381" width="445" />
+  const imageSmall = imageSrc && <img alt="venue" src={imageSrc} height="293" width="350" />
 
   return (
     <div className={cx(className, 'relative rounded-lg')}>
@@ -55,23 +51,17 @@ export const ImageCard = ({
       >
         {/* Bottom Component */}
         <p
-          className={cx(
-            'absolute bottom-3 lg:bottom-6 w-56 md:w-64 text-base md:text-default text-center',
-            {
-              'right-0': imagePosition === 'right',
-            }
-          )}
+          className={cx('absolute bottom-3 lg:bottom-6 w-56 md:w-64 text-base md:text-default text-center', {
+            'right-0': imagePosition === 'right',
+          })}
         >
           {footerText}
         </p>
         {/* Side Component */}
         <div
-          className={cx(
-            'absolute top-6 flex text-base md:text-default flex-col gap-y-5 w-20 lg:w-24 text-center',
-            {
-              'right-0': imagePosition === 'left',
-            }
-          )}
+          className={cx('absolute top-6 flex text-base md:text-default flex-col gap-y-5 w-20 lg:w-24 text-center', {
+            'right-0': imagePosition === 'left',
+          })}
         >
           <ChairSpace
             icon={<ArrowDoubleShort />}
@@ -90,7 +80,7 @@ export const ImageCard = ({
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ImageCard;
+export default ImageCard

@@ -1,14 +1,14 @@
-import * as React from 'react';
-import cx from 'classnames';
-import { ReactComponent as ChevronRight } from '../assets/images/chevron-right.svg';
-import { Button } from '@bratislava/ui-bratislava';
-import HeaderSections from '../molecules/HeadSections';
+import * as React from 'react'
+import cx from 'classnames'
+import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg'
+import { Button } from '@bratislava/ui-bratislava'
+import HeaderSections from '../molecules/HeadSections'
 
 interface IProps {
-  className?: string;
-  icon: React.ReactNode;
-  title?: React.ReactNode;
-  index?: number;
+  className?: string
+  icon: React.ReactNode
+  title?: React.ReactNode
+  index?: number
 }
 
 const HeaderItem = ({
@@ -24,20 +24,15 @@ const HeaderItem = ({
 }: IProps) => (
   <div className="group">
     <Button
-      className={cx(
-        className,
-        'hover:bg-secondary w-full border-primary border-2 hover:text-font'
-      )}
+      className={cx(className, 'hover:bg-secondary w-full border-primary border-2 hover:text-font')}
       icon={icon}
       iconPosition="left"
       shape="none"
     >
       <p className="text-font font-medium">{title}</p>
     </Button>
-    <HeaderSections
-      className={cx('absolute left-0 right-0 hidden group-hover:block z-10')}
-    />
+    <HeaderSections className={cx('absolute left-0 right-0 hidden group-hover:block z-10')} />
   </div>
-);
+)
 
-export default HeaderItem;
+export default HeaderItem

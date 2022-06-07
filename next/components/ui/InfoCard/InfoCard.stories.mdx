@@ -1,9 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { InfoCard } from './InfoCard';
-import swimmingPool50m from '../../assets/images/buy-ticket-step-1.png';
-import { Button } from '../Button/Button';
-import { ChevronRight } from '../../assets/images';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { InfoCard } from './InfoCard'
+import swimmingPool50m from '../../../assets/images/buy-ticket-step-1.png'
+import { Button } from '../Button/Button'
+import { ChevronRight } from '../../../assets/images'
 
 <Meta title="components/molecules/InfoCard" decorators={[withDesign]} />
 
@@ -45,11 +45,7 @@ InfoCard accepts custom Props that are as follows:
       children: (
         <div className="flex justify-between">
           <Button className="w-32 py-2.5" />
-          <Button
-            className="w-32 py-2.5"
-            variant="secondary"
-            icon={<ChevronRight />}
-          />
+          <Button className="w-32 py-2.5" variant="secondary" icon={<ChevronRight />} />
         </div>
       ),
     }}

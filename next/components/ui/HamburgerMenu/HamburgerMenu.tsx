@@ -1,25 +1,25 @@
-import { getIcon, Link, MenuMainItem } from '../..';
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg';
-import { ReactComponent as EServices } from '../../assets/images/e-services.svg';
-import { ReactComponent as LightBulb } from '../../assets/images/light-bulb.svg';
-import { ReactComponent as Tourist } from '../../assets/images/tourist.svg';
-import { ReactComponent as SpeakerSmall } from '../../assets/images/speaker-small.svg';
-import { ReactComponent as TextSize } from '../../assets/images/text-size.svg';
-import cx from 'classnames';
-import React, { useState } from 'react';
-import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu';
+import { getIcon, Link, MenuMainItem } from '../index'
+import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import { ReactComponent as EServices } from '../../../assets/images/e-services.svg'
+import { ReactComponent as LightBulb } from '../../../assets/images/light-bulb.svg'
+import { ReactComponent as Tourist } from '../../../assets/images/tourist.svg'
+import { ReactComponent as SpeakerSmall } from '../../../assets/images/speaker-small.svg'
+import { ReactComponent as TextSize } from '../../../assets/images/text-size.svg'
+import cx from 'classnames'
+import React, { useState } from 'react'
+import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 
 interface IProps {
-  hamburgerMenuItems?: MenuMainItem[];
-  className?: string;
-  isHamburgerMenu?: boolean;
-  setHamburgerMenu?: React.Dispatch<React.SetStateAction<boolean>>;
+  hamburgerMenuItems?: MenuMainItem[]
+  className?: string
+  isHamburgerMenu?: boolean
+  setHamburgerMenu?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface HamburgerSubLoginItem {
-  icon?: React.ReactNode;
-  title: string;
-  url: string;
+  icon?: React.ReactNode
+  title: string
+  url: string
 }
 
 // TODO: add urls and all items
@@ -53,37 +53,25 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
     title: 'Veľkosť písma',
     url: '#',
   },
-];
+]
 
-export const HamburgerMenu = ({
-  hamburgerMenuItems = [],
-  className,
-}: IProps) => {
-  const [subMenu, setSubMenu] = useState<MenuMainItem>();
+export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) => {
+  const [subMenu, setSubMenu] = useState<MenuMainItem>()
 
   if (subMenu) {
-    return (
-      <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(undefined)} />
-    );
+    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(undefined)} />
   }
 
   return (
     <div
-      className={cx(
-        'fixed top-20 left-0 w-screen overflow-y-scroll md:hidden flex flex-col'
-      )}
+      className={cx('fixed top-20 left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
       style={{ height: 'calc(100vh - 80px)' }}
     >
-      <div
-        className={cx(
-          'flex-1 flex flex-col bg-secondary px-7.5 pb-11',
-          className
-        )}
-      >
+      <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
         <div className="flex flex-col gap-y-8 py-8 border-b-2 border-red-universal-300">
           {hamburgerMenuItems.map((item) => {
-            const IconComponent = getIcon(item.icon);
+            const IconComponent = getIcon(item.icon)
             return (
               <button
                 onClick={() => setSubMenu(item)}
@@ -94,7 +82,7 @@ export const HamburgerMenu = ({
                 <p className="text-base font-medium w-36">{item.title}</p>
                 <ChevronRight />
               </button>
-            );
+            )
           })}
         </div>
         <div className="flex justify-between items-center py-8">
@@ -130,7 +118,7 @@ export const HamburgerMenu = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HamburgerMenu;
+export default HamburgerMenu

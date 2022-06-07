@@ -1,12 +1,7 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { Link } from './Link';
-import {
-  ChevronRight,
-  ArrowRight,
-  ChevronLeft,
-  ArrowLeft,
-} from '../../assets/images';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { Link } from './Link'
+import { ChevronRight, ArrowRight, ChevronLeft, ArrowLeft } from '../../../assets/images'
 
 <Meta title="components/atoms/Link" decorators={[withDesign]} />
 
@@ -19,8 +14,7 @@ Styled Link, that is used as a default Link throughout all Bratislava web apps.
 Link accepts custom Props that are as follows:
 
 - <b>icon</b>: ReactNode that will behave as an icon within the button
-- <b>hoverIcon</b>: ReactNode that will behave as a hoverIcon on hover effect of
-  the button
+- <b>hoverIcon</b>: ReactNode that will behave as a hoverIcon on hover effect of the button
 - <b>iconPosition</b>: position of the given icon and hoverIcon
 - <b>iconClassName</b>: classname of the icons (mostly to adjust padding)
 - <b>className</b>: modifies or extends the styles for the component

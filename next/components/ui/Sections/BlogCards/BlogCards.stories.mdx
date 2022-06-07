@@ -1,9 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { BlogCards } from './BlogCards';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { BlogCards } from './BlogCards'
 
-import NewsImage from '../../../assets/images/sample-news-image.jpeg';
-import NewsImage2 from '../../../assets/images/sample-news-image-2.jpeg';
+import NewsImage from '../../../../assets/images/sample-news-image.jpeg'
+import NewsImage2 from '../../../../assets/images/sample-news-image-2.jpeg'
 
 export const samplePosts = [
   {
@@ -41,12 +41,9 @@ export const samplePosts = [
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
-];
+]
 
-<Meta
-  title="components/organisms/Sections/BlogCards"
-  decorators={[withDesign]}
-/>
+<Meta title="components/organisms/Sections/BlogCards" decorators={[withDesign]} />
 
 # BlogCards
 

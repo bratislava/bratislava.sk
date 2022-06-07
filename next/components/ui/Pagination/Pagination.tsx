@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import Button from '../Button/Button';
+import { useState } from 'react'
+import Button from '../Button/Button'
 
-import { ReactComponent as ArrowLeft } from '../../assets/images/arrow-left.svg';
-import { ReactComponent as ArrowRight } from '../../assets/images/arrow-right.svg';
-import { ReactComponent as ChevronRight } from '../../assets/images/chevron-right.svg';
-import { ReactComponent as ChevronLeft } from '../../assets/images/chevron-left.svg';
+import { ReactComponent as ArrowLeft } from '../../../assets/images/arrow-left.svg'
+import { ReactComponent as ArrowRight } from '../../../assets/images/arrow-right.svg'
+import { ReactComponent as ChevronRight } from '../../../assets/images/chevron-right.svg'
+import { ReactComponent as ChevronLeft } from '../../../assets/images/chevron-left.svg'
 
 interface PaginationProps {
-  itemsPerPage: number;
-  totalCount: number;
-  currentPage: number;
-  pageHandler?: (pageNumber: number) => void;
+  itemsPerPage: number
+  totalCount: number
+  currentPage: number
+  pageHandler?: (pageNumber: number) => void
 }
 
 export const ThreeDots = () => {
@@ -18,15 +18,10 @@ export const ThreeDots = () => {
     <div className="ml-6 w-12">
       <span className="text-default font-semibold">&hellip;</span>
     </div>
-  );
-};
+  )
+}
 
-export const Pagination = ({
-  itemsPerPage,
-  totalCount,
-  currentPage = 1,
-  pageHandler,
-}: PaginationProps) => {
+export const Pagination = ({ itemsPerPage, totalCount, currentPage = 1, pageHandler }: PaginationProps) => {
   const [items, setItems] = useState([
     {
       page: currentPage == 1 ? currentPage : currentPage - 1,
@@ -37,57 +32,42 @@ export const Pagination = ({
     {
       page: currentPage == 1 ? currentPage + 2 : currentPage + 1,
     },
-  ]);
-  const numberOfPages = Math.ceil(totalCount / itemsPerPage);
+  ])
+  const numberOfPages = Math.ceil(totalCount / itemsPerPage)
 
   const handleCurrentPageChange = (currentPage) => {
     setItems([
       {
-        page:
-          currentPage == 1
-            ? currentPage
-            : currentPage == numberOfPages
-            ? currentPage - 2
-            : currentPage - 1,
+        page: currentPage == 1 ? currentPage : currentPage == numberOfPages ? currentPage - 2 : currentPage - 1,
       },
       {
-        page:
-          currentPage == 1
-            ? currentPage + 1
-            : currentPage == numberOfPages
-            ? currentPage - 1
-            : currentPage,
+        page: currentPage == 1 ? currentPage + 1 : currentPage == numberOfPages ? currentPage - 1 : currentPage,
       },
       {
-        page:
-          currentPage == 1
-            ? currentPage + 2
-            : currentPage == numberOfPages
-            ? currentPage
-            : currentPage + 1,
+        page: currentPage == 1 ? currentPage + 2 : currentPage == numberOfPages ? currentPage : currentPage + 1,
       },
-    ]);
-  };
+    ])
+  }
 
   const handleNextPageChange = () => {
     if (currentPage != numberOfPages) {
-      pageHandler(currentPage + 1);
-      handleCurrentPageChange(currentPage + 1);
+      pageHandler(currentPage + 1)
+      handleCurrentPageChange(currentPage + 1)
     }
-  };
+  }
 
   const handlePreviousPageChange = () => {
-    if (currentPage == 1) return;
-    pageHandler(currentPage - 1);
-    handleCurrentPageChange(currentPage - 1);
-  };
+    if (currentPage == 1) return
+    pageHandler(currentPage - 1)
+    handleCurrentPageChange(currentPage - 1)
+  }
 
   const handleSelectPage = (e: number) => {
     if (e != currentPage) {
-      pageHandler(e);
-      handleCurrentPageChange(e);
+      pageHandler(e)
+      handleCurrentPageChange(e)
     }
-  };
+  }
 
   return (
     <div className="flex relative w-full h-12">
@@ -109,9 +89,7 @@ export const Pagination = ({
           className="h-12 w-12 rounded-full mx-6  hover:border-2 hover:border-primary"
           onClick={() => handleSelectPage(1)}
         >
-          <div className="text-default font-semibold block m-auto leading-5">
-            {1}
-          </div>
+          <div className="text-default font-semibold block m-auto leading-5">{1}</div>
         </Button>
         {items[0].page - 1 >= 2 ? <ThreeDots /> : null}
         {items.map((item, index) =>
@@ -119,15 +97,11 @@ export const Pagination = ({
             <Button
               key={index}
               value={item.page.valueOf()}
-              variant={
-                item.page == currentPage ? 'primary' : 'secondaryDarkText'
-              }
+              variant={item.page == currentPage ? 'primary' : 'secondaryDarkText'}
               className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
               onClick={() => handleSelectPage(item.page)}
             >
-              <div className="text-default font-semibold block m-auto leading-5">
-                {item.page}
-              </div>
+              <div className="text-default font-semibold block m-auto leading-5">{item.page}</div>
             </Button>
           ) : null
         )}
@@ -135,15 +109,11 @@ export const Pagination = ({
         {numberOfPages > 1 ? (
           <Button
             value={numberOfPages}
-            variant={
-              numberOfPages == currentPage ? 'primary' : 'secondaryDarkText'
-            }
+            variant={numberOfPages == currentPage ? 'primary' : 'secondaryDarkText'}
             className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
             onClick={() => handleSelectPage(numberOfPages)}
           >
-            <div className="text-default font-semibold block m-auto leading-5">
-              {numberOfPages}
-            </div>
+            <div className="text-default font-semibold block m-auto leading-5">{numberOfPages}</div>
           </Button>
         ) : null}
         {currentPage != numberOfPages ? (
@@ -158,7 +128,7 @@ export const Pagination = ({
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

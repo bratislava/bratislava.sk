@@ -1,31 +1,25 @@
-import cx from 'classnames';
-import { ChevronRight, ArrowRight } from '../../assets/images';
-import { Button } from '../Button/Button';
-import Modal from '../Modal/Modal';
-import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import cx from 'classnames'
+import { ChevronRight, ArrowRight } from '../../../assets/images'
+import { Button } from '../Button/Button'
+import Modal from '../Modal/Modal'
+import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 export interface RentProps {
-  className?: string;
+  className?: string
   icon?: {
-    url?: string;
-    name?: string;
-  };
-  title?: string;
-  desc?: string;
-  linkLabel?: string;
+    url?: string
+    name?: string
+  }
+  title?: string
+  desc?: string
+  linkLabel?: string
 }
 
-export const Rent = ({
-  className,
-  icon,
-  title,
-  desc,
-  linkLabel,
-}: RentProps) => {
-  const isMore = desc.length > 100;
-  const [isOpen, setOpen] = useState(false);
+export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => {
+  const isMore = desc.length > 100
+  const [isOpen, setOpen] = useState(false)
   return (
     <div
       className={cx(
@@ -39,13 +33,7 @@ export const Rent = ({
           backgroundColor: 'var(--secondary-color)',
         }}
       >
-        {icon?.url && (
-          <img
-            className="p-5 md:w-30 md:h-30 w-28 h-28"
-            src={icon.url}
-            alt={icon.name}
-          />
-        )}
+        {icon?.url && <img className="p-5 md:w-30 md:h-30 w-28 h-28" src={icon.url} alt={icon.name} />}
       </div>
       <div className="flex flex-col text-center items-center w-60 md:w-auto xl:w-73 ">
         <h1 className="text-md mt-5 mb-7 h-16">{title}</h1>
@@ -68,11 +56,7 @@ export const Rent = ({
           </Button>
         )}
       </div>
-      <Modal
-        closeButtonColor="#E46054"
-        isOpen={isOpen}
-        onClose={() => setOpen(false)}
-      >
+      <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setOpen(false)}>
         <div
           className="modal-content-rent rounded-2xl md:py-10 md:px-12 py-7 px-8 overflow-y-auto"
           style={{
@@ -82,15 +66,7 @@ export const Rent = ({
           }}
         >
           <div className="rounded-full bg-white w-max mb-8">
-            {icon?.url && (
-              <img
-                className="p-5"
-                src={icon.url}
-                alt={icon.name}
-                width="160"
-                height="160"
-              />
-            )}
+            {icon?.url && <img className="p-5" src={icon.url} alt={icon.name} width="160" height="160" />}
           </div>
           <h1 className="text-md mb-8 text-left">{title}</h1>
           <ReactMarkdown
@@ -102,7 +78,7 @@ export const Rent = ({
         </div>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default Rent;
+export default Rent

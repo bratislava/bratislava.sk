@@ -1,8 +1,8 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { PageHeader } from './PageHeader';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { PageHeader } from './PageHeader'
 
-import GreatHall from '../../assets/images/great-hall.png';
+import GreatHall from '../../../assets/images/great-hall.png'
 
 export const OPTIONS = [
   'rgb(var(--color-red))',
@@ -29,7 +29,7 @@ export const OPTIONS = [
   'rgba(var(--color-brown), 0)',
   'rgb(var(--color-brown--light))',
   'rgba(var(--color-brown--light), 0)',
-];
+]
 
 export const argTypes = {
   children: {
@@ -45,7 +45,7 @@ export const argTypes = {
     control: { type: 'select' },
     defaultValue: 'rgba(var(--color-red--light), 0)',
   },
-};
+}
 
 export const defaultArgs = {
   className: '',
@@ -63,7 +63,7 @@ export const defaultArgs = {
     outerLinesColor: 'white',
     innerLinesColor: 'var(--secondary-color)',
   },
-};
+}
 
 <Meta title="components/molecules/PageHeader" decorators={[withDesign]} />
 

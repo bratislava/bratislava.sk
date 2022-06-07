@@ -1,11 +1,7 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { WelcomeCard } from './WelcomeCard';
-import {
-  ReservationCalendar,
-  NewReservation,
-  Reservations,
-} from '../../assets/images';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { WelcomeCard } from './WelcomeCard'
+import { ReservationCalendar, NewReservation, Reservations } from '../../../assets/images'
 
 <Meta title="components/atoms/WelcomeCard" decorators={[withDesign]} />
 
@@ -20,8 +16,7 @@ WelcomeCard accepts custom Props that are as follows:
 - <b>className</b>: modifies or extends the styles for the component
 - <b>image</b>: ReactNode that is positioned on the top of title
 - <b>title</b>: String that is the title of the WelcomeCard
-- <b>path</b>: String that is the path for the 'href' prop of the "next/link"
-  Component
+- <b>path</b>: String that is the path for the 'href' prop of the "next/link" Component
 
 <Canvas>
   <Story
@@ -34,16 +29,8 @@ WelcomeCard accepts custom Props that are as follows:
     }}
     argTypes={{
       image: {
-        options: Object.keys([
-          <ReservationCalendar />,
-          <NewReservation />,
-          <Reservations />,
-        ]),
-        mapping: [
-          <ReservationCalendar />,
-          <NewReservation />,
-          <Reservations />,
-        ],
+        options: Object.keys([<ReservationCalendar />, <NewReservation />, <Reservations />]),
+        mapping: [<ReservationCalendar />, <NewReservation />, <Reservations />],
         control: {
           type: 'select',
           labels: {

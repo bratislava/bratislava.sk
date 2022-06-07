@@ -1,30 +1,18 @@
-import cx from 'classnames';
-import { Download } from '../../assets/images';
-import { Panel } from '../Panel/Panel';
+import cx from 'classnames'
+import { Download } from '../../../assets/images'
+import { Panel } from '../Panel/Panel'
 export interface FileCardProps {
-  className?: string;
-  fileTitle?: string;
-  fileDetail?: string;
-  uploadDate: string;
-  downloadLink?: string;
+  className?: string
+  fileTitle?: string
+  fileDetail?: string
+  uploadDate: string
+  downloadLink?: string
 }
 
-export const FileCard = ({
-  className,
-  fileTitle,
-  uploadDate,
-  fileDetail,
-  downloadLink,
-}: FileCardProps) => {
+export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloadLink }: FileCardProps) => {
   return (
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
-      <Panel
-        className={cx(
-          className,
-          'flex flex-row md:flex-col px-5 justify-between'
-        )}
-        hoverable
-      >
+      <Panel className={cx(className, 'flex flex-row md:flex-col px-5 justify-between')} hoverable>
         <div className="hidden md:flex justify-end mt-5 text-primary">
           <Download className="text-red-brick" />
         </div>
@@ -47,7 +35,7 @@ export const FileCard = ({
         </div>
       </Panel>
     </a>
-  );
-};
+  )
+}
 
-export default FileCard;
+export default FileCard

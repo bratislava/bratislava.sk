@@ -1,4 +1,4 @@
-import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage';
+import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   BasicSearch,
   DocumentCards,
@@ -7,32 +7,28 @@ import {
   NoResultsFound,
   PageHeader,
   SectionContainer,
-} from '@bratislava/ui-bratislava';
-import BasePageLayout from '../components/layouts/BasePageLayout';
-import PageWrapper from '../components/layouts/PageWrapper';
-import { pageStyle } from '../utils/page';
-import { isPresent } from '../utils/utils';
-import PageBreadcrumbs from '../components/molecules/PageBreadcrumbs';
-import OfficialBoardBackgroundImage from '../components/assets/images/official-board.png';
+} from '@bratislava/ui-bratislava'
+import BasePageLayout from '../components/layouts/BasePageLayout'
+import PageWrapper from '../components/layouts/PageWrapper'
+import { pageStyle } from '../utils/page'
+import { isPresent } from '../utils/utils'
+import PageBreadcrumbs from '../components/molecules/PageBreadcrumbs'
+import OfficialBoardBackgroundImage from '../assets/images/official-board.png'
 
 export interface SearchPageProps {
-  page?: GeneralPageFragment;
-  footer: FooterProps;
+  page?: GeneralPageFragment
+  footer: FooterProps
 }
 
 const OfficialBoard = ({ page, footer }: SearchPageProps) => {
-  const noResultsFound = true;
+  const noResultsFound = true
   return (
     <PageWrapper
       locale={page?.locale ?? 'sk'}
       slug={page?.slug ?? ''}
       localizations={page?.localizations?.filter(isPresent)}
     >
-      <BasePageLayout
-        footer={footer}
-        menuItems={menuItems}
-        activeMenuItem={page ? page.pageCategory?.id : '1'}
-      >
+      <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page ? page.pageCategory?.id : '1'}>
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle(page ? page.pageCategory.color : 'red'),
@@ -50,9 +46,7 @@ const OfficialBoard = ({ page, footer }: SearchPageProps) => {
               <div className="absolute top-6">
                 <PageBreadcrumbs page={boardPage} />
               </div>
-              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">
-                {boardPage?.title}
-              </h1>
+              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{boardPage?.title}</h1>
             </div>
           </SectionContainer>
         </PageHeader>
@@ -72,8 +66,8 @@ const OfficialBoard = ({ page, footer }: SearchPageProps) => {
         </SectionContainer>
       </BasePageLayout>
     </PageWrapper>
-  );
-};
+  )
+}
 
 //hardcoded until we find a way to pass them
 const menuItems = [
@@ -772,7 +766,7 @@ const menuItems = [
       },
     ],
   },
-];
+]
 const boardPage = {
   slug: 'mesto-bratislava/transparentne-mesto/official-board',
   title: 'Úradná tabuľa',
@@ -790,7 +784,7 @@ const boardPage = {
     },
   },
   relatedBlogPosts: [],
-};
+}
 
 const documents = [
   {
@@ -798,121 +792,106 @@ const documents = [
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
   {
     title: 'Kúpna zmluva technológie garáže M. Benku',
     createdAt: 'utorok 19. decembra 2017',
     fileExtension: '.pdf',
     fileSize: '164 kB',
-    content:
-      'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
   },
-];
+]
 
-export default OfficialBoard;
+export default OfficialBoard

@@ -1,21 +1,18 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { ImagesCarousel } from './ImagesCarousel';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { ImagesCarousel } from './ImagesCarousel'
 
-import NewsImage from '../../../assets/images/sample-news-image.jpeg';
+import NewsImage from '../../../../assets/images/sample-news-image.jpeg'
 
-export const sampleImages = Array(25).fill(NewsImage);
+export const sampleImages = Array(25).fill(NewsImage)
 export const baseArgs = {
   images: sampleImages,
   title: 'Bratislava na sociálnych sieťach',
   shiftIndex: 3,
   visibleItems: 3,
-};
+}
 
-<Meta
-  title="components/organisms/Sections/ImagesCarousel"
-  decorators={[withDesign]}
-/>
+<Meta title="components/organisms/Sections/ImagesCarousel" decorators={[withDesign]} />
 
 # ImagesCarousel
 

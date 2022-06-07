@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { ReactComponent as Chair } from '../../assets/images/chair.svg';
+import { ReactComponent as Chair } from '../../../assets/images/chair.svg'
 
 interface IProps {
-  className?: string;
-  children?: React.ReactNode;
-  icon?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
+  icon?: React.ReactNode
 }
 
 export const ChairSpace = ({ className, children, icon }: IProps) => {
@@ -18,7 +18,7 @@ export const ChairSpace = ({ className, children, icon }: IProps) => {
         <Chair />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChairSpace;
+export default ChairSpace

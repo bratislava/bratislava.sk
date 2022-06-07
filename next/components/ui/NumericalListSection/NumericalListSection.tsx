@@ -1,25 +1,22 @@
-import {
-  ArrowRight,
-  ChevronRight,
-} from '@bratislava/ui-bratislava/assets/images';
-import Button from '../Button/Button';
-import { NumericalListItem } from '../NumericalListItem/NumericalListItem';
-import Waves from '../Waves/Waves';
-import cx from 'classnames';
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import { NumericalList } from '../NumericalList/NumericalList';
+import { ArrowRight, ChevronRight } from '@assets/images'
+import Button from '../Button/Button'
+import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
+import Waves from '../Waves/Waves'
+import cx from 'classnames'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { NumericalList } from '../NumericalList/NumericalList'
 
 export interface NumericalListItemObject {
-  text: string;
+  text: string
 }
 
 export interface NumericalListSectionProps {
-  title: string;
-  items: NumericalListItemObject[];
-  hasBackground: boolean;
-  buttonText?: string;
-  buttonLink?: string;
-  variant?: 'basic' | 'combined' | 'roadmap';
+  title: string
+  items: NumericalListItemObject[]
+  hasBackground: boolean
+  buttonText?: string
+  buttonLink?: string
+  variant?: 'basic' | 'combined' | 'roadmap'
 }
 
 export const NumericalListSection = ({
@@ -30,15 +27,12 @@ export const NumericalListSection = ({
   buttonLink,
   variant = 'basic',
 }: NumericalListSectionProps) => {
-  const { Link: UILink } = useUIContext();
-  const href = buttonLink?.length ? buttonLink : '#';
+  const { Link: UILink } = useUIContext()
+  const href = buttonLink?.length ? buttonLink : '#'
   return (
     <div className="pt-14">
       <Waves
-        waveColor={cx(
-          { 'var(--secondary-color)': hasBackground },
-          { 'var(--background-color)': !hasBackground }
-        )}
+        waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
         wavePosition={'top'}
         isRich
         backgroundColor="var(--background-color)"
@@ -60,11 +54,7 @@ export const NumericalListSection = ({
           >
             {title}
           </div>
-          <NumericalList
-            items={items}
-            hasBackground={hasBackground}
-            variant={variant}
-          />
+          <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant != 'roadmap' && buttonText && (
           <UILink href={href}>
@@ -80,14 +70,11 @@ export const NumericalListSection = ({
         )}
       </div>
       <Waves
-        waveColor={cx(
-          { 'var(--secondary-color)': hasBackground },
-          { 'var(--background-color)': !hasBackground }
-        )}
+        waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
         wavePosition={'bottom'}
         isRich
         backgroundColor="var(--background-color)"
       />
     </div>
-  );
-};
+  )
+}

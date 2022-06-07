@@ -3,15 +3,13 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
 const fs = require('fs')
+const { i18n } = require('./next-i18next.config')
+
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  i18n: {
-    defaultLocale: 'sk',
-    locales: ['en', 'sk'],
-    serializeConfig: false,
-  },
+  i18n,
   reloadOnPrerender: process.env.NODE_ENV === 'development',
   images: {
     domains: ['localhost'], // TODO will need fixing before deployment

@@ -1,9 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
-import { withDesign } from 'storybook-addon-designs';
-import { PrimatorCard } from './PrimatorCard';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { withDesign } from 'storybook-addon-designs'
+import { PrimatorCard } from './PrimatorCard'
 
-import Primator from '../../assets/images/primatorReal.png';
-import Council from '../../assets/images/BACoatOfArms.svg';
+import Primator from '../../../assets/images/primatorReal.png'
+import Council from '../../../assets/images/BACoatOfArms.svg'
 
 export const argTypes = {
   smImageAlign: {
@@ -12,11 +12,11 @@ export const argTypes = {
       options: ['left', 'right'],
     },
   },
-};
+}
 
 export const defaultArgs = {
   className: '',
-};
+}
 
 <Meta title="components/molecules/PrimatorCard" decorators={[withDesign]} />
 

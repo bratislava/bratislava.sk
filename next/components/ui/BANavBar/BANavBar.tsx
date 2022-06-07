@@ -1,22 +1,22 @@
-import cx from 'classnames';
-import React, { useCallback, useState } from 'react';
-import { ReactComponent as Hamburger } from '../../assets/images/ba-hamburger.svg';
-import { ReactComponent as ChevronDownSmall } from '../../assets/images/chevron-down-small.svg';
-import { ReactComponent as HamburgerClose } from '../../assets/images/hamburger-close.svg';
-import { ReactComponent as SearchIcon } from '../../assets/images/search-icon.svg';
-import { Brand } from '../Brand/Brand';
-import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu';
-import { MenuMainItem } from '../HomepageMenu/HomepageMenu';
-import { Link } from '../Link/Link';
-import { ReactComponent as CloseIcon } from '../../assets/images/close.svg';
-import { ReactComponent as SmallBlackSearchIcon } from '../../assets/images/search-icon-small-black.svg';
-import { ReactComponent as SmallWhiteSearchIcon } from '../../assets/images/search-icon-small-white.svg';
-import Button from '../Button/Button';
+import cx from 'classnames'
+import React, { useCallback, useState } from 'react'
+import { ReactComponent as Hamburger } from '../../../assets/images/ba-hamburger.svg'
+import { ReactComponent as ChevronDownSmall } from '../../../assets/images/chevron-down-small.svg'
+import { ReactComponent as HamburgerClose } from '../../../assets/images/hamburger-close.svg'
+import { ReactComponent as SearchIcon } from '../../../assets/images/search-icon.svg'
+import { Brand } from '../Brand/Brand'
+import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
+import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
+import { Link } from '../Link/Link'
+import { ReactComponent as CloseIcon } from '../../../assets/images/close.svg'
+import { ReactComponent as SmallBlackSearchIcon } from '../../../assets/images/search-icon-small-black.svg'
+import { ReactComponent as SmallWhiteSearchIcon } from '../../../assets/images/search-icon-small-white.svg'
+import Button from '../Button/Button'
 
 interface IProps extends LanguageSelectProps {
-  className?: string;
-  menuItems?: MenuMainItem[];
-  handleSearch?: (searchOpen: boolean) => void;
+  className?: string
+  menuItems?: MenuMainItem[]
+  handleSearch?: (searchOpen: boolean) => void
 }
 
 const navBarTexts = {
@@ -34,7 +34,7 @@ const navBarTexts = {
     login: 'Prihlásenie',
     register: 'Registrácia',
   },
-};
+}
 
 const navBarUrls = {
   en: {
@@ -43,24 +43,18 @@ const navBarUrls = {
   sk: {
     eservices: '/elektronicke-sluzby',
   },
-};
+}
 
-export const BANavBar = ({
-  className,
-  menuItems,
-  handleSearch,
-  ...languageSelectProps
-}: IProps) => {
-  const [burgerOpen, setBurgerOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
+  const [burgerOpen, setBurgerOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
-  const languageKey =
-    languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en';
+  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
   const handleMobileSearchClick = () => {
-    handleSearch && handleSearch(!searchOpen);
-    setSearchOpen(!searchOpen);
-  };
+    handleSearch && handleSearch(!searchOpen)
+    setSearchOpen(!searchOpen)
+  }
 
   return (
     <>
@@ -78,13 +72,9 @@ export const BANavBar = ({
             url="/"
             title={
               <p className="text-red-universal-300">
-                {languageKey === 'en' && (
-                  <span className="font-semibold">Bratislava </span>
-                )}
+                {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {navBarTexts[languageKey].capitalCity}
-                {languageKey !== 'en' && (
-                  <span className="font-semibold"> Bratislava</span>
-                )}
+                {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
               </p>
             }
           />
@@ -96,15 +86,8 @@ export const BANavBar = ({
               { 'gap-x-4': searchOpen }
             )}
           >
-            <div
-              className="hover:cursor-pointer"
-              onClick={() => setSearchOpen(!searchOpen)}
-            >
-              {searchOpen ? (
-                <CloseIcon className="-ml-px mr-px" />
-              ) : (
-                <SearchIcon />
-              )}
+            <div className="hover:cursor-pointer" onClick={() => setSearchOpen(!searchOpen)}>
+              {searchOpen ? <CloseIcon className="-ml-px mr-px" /> : <SearchIcon />}
             </div>
             {searchOpen ? (
               <div className="flex">
@@ -133,11 +116,7 @@ export const BANavBar = ({
                 >
                   {navBarTexts[languageKey].covid}
                 </Link>
-                <Link
-                  href={navBarUrls[languageKey].eservices}
-                  variant="plain"
-                  className="whitespace-nowrap"
-                >
+                <Link href={navBarUrls[languageKey].eservices} variant="plain" className="whitespace-nowrap">
                   {navBarTexts[languageKey].eservices}
                 </Link>
                 <div className="relative flex items-center text-gray-dark bg-transparent cursor-pointer">
@@ -178,18 +157,9 @@ export const BANavBar = ({
         )}
       >
         <Brand />
-        <div
-          className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}
-        >
-          <div
-            className="hover:cursor-pointer"
-            onClick={handleMobileSearchClick}
-          >
-            {searchOpen ? (
-              <CloseIcon className="-ml-3 mr-px" />
-            ) : (
-              <SearchIcon />
-            )}
+        <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
+          <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
+            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon />}
           </div>
           <div className="relative flex items-center text-md text-gray-light bg-transparent cursor-pointer">
             <LanguageSelect
@@ -199,57 +169,53 @@ export const BANavBar = ({
           </div>
         </div>
 
-        <button
-          onClick={() => setBurgerOpen(!burgerOpen)}
-          className="cursor-pointer w-4"
-        >
+        <button onClick={() => setBurgerOpen(!burgerOpen)} className="cursor-pointer w-4">
           {burgerOpen ? <HamburgerClose /> : <Hamburger />}
         </button>
 
         {burgerOpen && <HamburgerMenu hamburgerMenuItems={menuItems} />}
       </div>
     </>
-  );
-};
+  )
+}
 
 interface LanguageSelectProps {
-  className?: string;
-  languages?: LanguageOption[];
-  currentLanguage?: string;
-  onLanguageChange?: (language: LanguageOption) => void;
+  className?: string
+  languages?: LanguageOption[]
+  currentLanguage?: string
+  onLanguageChange?: (language: LanguageOption) => void
 }
 
 interface LanguageOption {
-  key: string;
-  title: string;
+  key: string
+  title: string
 }
 
 const useComponentVisible = (initialIsVisible, setIsSelectClicked) => {
-  const [isComponentVisible, setIsComponentVisible] =
-    useState(initialIsVisible);
-  const ref = React.useRef(null);
+  const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible)
+  const ref = React.useRef(null)
 
   const handleClickOutside = useCallback(
     (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        setIsComponentVisible(false);
-        setIsSelectClicked(false);
+        setIsComponentVisible(false)
+        setIsSelectClicked(false)
       } else {
-        setIsComponentVisible(true);
+        setIsComponentVisible(true)
       }
     },
     [setIsSelectClicked]
-  );
+  )
 
   React.useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside, true)
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  }, [handleClickOutside]);
+      document.removeEventListener('click', handleClickOutside, true)
+    }
+  }, [handleClickOutside])
 
-  return { ref, isComponentVisible, setIsComponentVisible };
-};
+  return { ref, isComponentVisible, setIsComponentVisible }
+}
 
 const LanguageSelect = ({
   className,
@@ -257,39 +223,30 @@ const LanguageSelect = ({
   currentLanguage: current,
   onLanguageChange: onChange,
 }: LanguageSelectProps) => {
-  const [isSelectClicked, setIsSelectClicked] = React.useState(false);
-  const { ref, isComponentVisible } = useComponentVisible(
-    false,
-    setIsSelectClicked
-  );
-  const dropDownOptions = options.filter((option) => option.key != current);
+  const [isSelectClicked, setIsSelectClicked] = React.useState(false)
+  const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
+  const dropDownOptions = options.filter((option) => option.key != current)
   const handleChange: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (!onChange) return;
+    if (!onChange) return
 
-    const selectedKey = e.currentTarget.innerText.toLowerCase();
-    const selectedOption = options?.find((opt) => opt.key === selectedKey);
+    const selectedKey = e.currentTarget.innerText.toLowerCase()
+    const selectedOption = options?.find((opt) => opt.key === selectedKey)
 
     if (selectedOption) {
-      onChange(selectedOption);
-      setIsSelectClicked(false);
+      onChange(selectedOption)
+      setIsSelectClicked(false)
     }
-  };
+  }
 
-  if (!options) return null;
+  if (!options) return null
 
   const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setIsSelectClicked(!isSelectClicked);
-  };
+    setIsSelectClicked(!isSelectClicked)
+  }
 
   return (
-    <div
-      className="relative flex items-center w-[46px]"
-      ref={ref}
-      onClick={handleClick}
-    >
-      <div className="font-light lg:font-semibold">
-        {current.toUpperCase()}{' '}
-      </div>
+    <div className="relative flex items-center w-[46px]" ref={ref} onClick={handleClick}>
+      <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden lg:flex mix-blend-normal ${
           isSelectClicked && isComponentVisible && '-rotate-180 mb-1'
@@ -312,7 +269,7 @@ const LanguageSelect = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default BANavBar;
+export default BANavBar

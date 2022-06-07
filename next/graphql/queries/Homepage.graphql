@@ -1,0 +1,69 @@
+query Homepage($locale: String) {
+  homepage(locale: $locale) {
+    id
+    updated_at
+    created_at
+    posts {
+      title
+      slug
+      image {
+        url
+      }
+    }
+    left_highlight {
+      ...NewsCardBlog
+    }
+    right_highlight {
+      ...NewsCardBlog
+    }
+    header {
+      picture {
+        url
+      }
+      subtitle
+    }
+    cards {
+      title
+      headline
+      text
+      link {
+        title
+        href
+      }
+      picture {
+        url
+      }
+      variant
+    }
+    inba {
+      title
+      content
+      images {
+        frontImage {
+          url
+        }
+        rearImage {
+          url
+        }
+      }
+      link
+    }
+  }
+}
+
+fragment NewsCardBlog on BlogPost {
+  title
+  excerpt
+  slug
+  updated_at
+  date_added
+  coverImage {
+    url
+  }
+  tag {
+    title
+    pageCategory {
+      color
+    }
+  }
+}
