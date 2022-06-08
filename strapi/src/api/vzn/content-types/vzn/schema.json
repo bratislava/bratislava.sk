@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vzns",
+  "info": {
+    "singularName": "vzn",
+    "pluralName": "vzns",
+    "displayName": "VZN",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "details": {
+      "type": "richtext"
+    },
+    "mainDocument": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "validFrom": {
+      "type": "date"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "daneAPoplatky",
+        "pomenovanieUlic",
+        "hospodarenie",
+        "uzemnePlanovanie",
+        "poriadokACistota",
+        "socialnaPomocASkolstvo",
+        "ostatne",
+        "archiv"
+      ]
+    },
+    "consolidatedText": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "cancellationDocument": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.doc-list-extensions"
+    },
+    "amedmentDocument": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.doc-list-extensions"
+    }
+  }
+}

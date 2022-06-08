@@ -2,12 +2,13 @@ import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScroll
 import { PageCard, PageCardProps } from '../PageCard/PageCard'
 
 export interface PageCardsProps {
+  title: string
   pages: PageCardProps[]
 }
 
-export const PageCards = ({ pages }: PageCardsProps) => (
+export const PageCards = ({ title, pages }: PageCardsProps) => (
   <div className="flex flex-col gap-y-3 lg:gap-y-6">
-    <span className="text-default lg:text-md font-semibold">Webové podstránky</span>
+    <span className="text-default lg:text-md font-semibold">{title}</span>
     <div className="hidden lg:flex flex-col gap-y-6">
       {pages.map((page, index) => (
         <PageCard {...page} key={index} />
