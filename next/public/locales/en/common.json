@@ -13,5 +13,16 @@
   "goOutNewsLink": "city-administration/transparent-city/news",
   "seeAllNews": "See all news",
   "allNewsLink": "/city-of-bratislava/transparent-city/news",
-  "upComingEvents": "Upcoming events"
+  "upComingEvents": "Upcoming events",
+  "searchTheSite": "Search the site",
+  "search": "Search",
+  "searching": "Search",
+  "articles": "Articles",
+  "pages": "Pages",
+  "documents": "Documents",
+  "enterKeyword": "Enter a keyword",
+  "weDidntFindAnything": "We didn't find anything",
+  "tryEnteringSomethingElse": "Try entering something else",
+  "websites": "Websites",
+  "searchLink": "search"
 }

@@ -7,14 +7,16 @@ import cx from 'classnames'
 
 export interface AdvancedSearchProps {
   className?: string
+  placeholder: string
+  title: string
+  buttonText: string
+  options: string[]
 }
 
-export const AdvancedSearch = ({ className }: AdvancedSearchProps) => {
+export const AdvancedSearch = ({ className, placeholder, title, buttonText, options }: AdvancedSearchProps) => {
   const { Link: UILink } = useUIContext()
-  const options = ['Články', 'Stránky', 'Dokumenty']
-  const [checked, setChecked] = useState(options)
-
-  const handleClick = (option) => {
+  const [checked, setChecked] = useState(options ?? [])
+  const handleClick = (option: string) => {
     if (checked.includes(option)) {
       setChecked(checked.filter((o) => o != option))
     } else {
@@ -23,13 +25,13 @@ export const AdvancedSearch = ({ className }: AdvancedSearchProps) => {
   }
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-sm lg:text-md font-medium pb-3">Vyhľadávanie</div>
+      <div className="text-sm lg:text-md font-medium pb-3">{title}</div>
       <div className="hidden lg:flex pb-6">
         <input
           id="name"
           type="text"
           className="h-14 pl-6 w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
-          placeholder="Zadajte kľúčové slovo"
+          placeholder={placeholder}
         />
         <UILink href="search">
           <Button
@@ -38,7 +40,7 @@ export const AdvancedSearch = ({ className }: AdvancedSearchProps) => {
             className="h-14 rounded-l-none text-default px-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
             variant="secondaryDarkText"
           >
-            Hľadať
+            {buttonText}
           </Button>
         </UILink>
       </div>
@@ -59,7 +61,7 @@ export const AdvancedSearch = ({ className }: AdvancedSearchProps) => {
         </UILink>
       </div>
       <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
-        {options.map((option, index) => (
+        {options?.map((option, index) => (
           <div key={index} className="flex items-center gap-x-4">
             <div onClick={() => handleClick(option)}>
               {checked.includes(option) ? (
