@@ -8,12 +8,12 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import BasePageLayout from '../components/layouts/BasePageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
-import { pageStyle } from '../utils/page'
-import { isPresent } from '../utils/utils'
-import PageBreadcrumbs from '../components/molecules/PageBreadcrumbs'
-import OfficialBoardBackgroundImage from '../assets/images/official-board.png'
+import BasePageLayout from '../../../components/layouts/BasePageLayout'
+import PageWrapper from '../../../components/layouts/PageWrapper'
+import { pageStyle } from '../../../utils/page'
+import { isPresent } from '../../../utils/utils'
+import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
+import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
