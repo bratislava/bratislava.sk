@@ -8,6 +8,7 @@ import {
   NoResultsFound,
   PageCards,
   PageHeader,
+  SectionContainer,
 } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import BasePageLayout from '../components/layouts/BasePageLayout'
@@ -139,13 +140,13 @@ const Search = ({
         />
         {/* Header */}
         <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''}>
-          {/* Header - Breadcrumbs */}
-          <h1 className="flex justify-center lg:justify-start pl-0 lg:pl-8 xl:pl-41 py-18 text-md md:text-2xl font-bold whitespace-pre-wrap max-w-screen-1.5lg">
-            {t('searchTheSite')}
-          </h1>
+          <SectionContainer>
+            <div className="min-h-[220px] relative">
+              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('searchTheSite')}</h1>
+            </div>
+          </SectionContainer>
         </PageHeader>
-
-        <div className="flex flex-col px-8 xl:px-41 py-14 xl:py-24 gap-y-14 xl:gap-y-24">
+        <SectionContainer className="flex gap-y-14 lg:gap-y-24 pt-14 md:pt-18">
           <AdvancedSearch
             placeholder={t('enterKeyword')}
             title={t('searching')}
@@ -155,19 +156,18 @@ const Search = ({
           {noResultsFound ? (
             <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
-            <>
+            <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
               <BlogSearchCards title={t('articles')} blogs={blogs} />
               <PageCards title={t('websites')} pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
                 <FileList fileSections={fileSections} hideCategory />
               </div>
-            </>
+            </div>
           )}
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
           {/* <NewsLetterSection /> */}
-          <Footer />
-        </div>
+        </SectionContainer>
       </BasePageLayout>
     </PageWrapper>
   )
