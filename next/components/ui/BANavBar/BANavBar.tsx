@@ -12,6 +12,7 @@ import CloseIcon from '../../../assets/images/close.svg'
 import SmallBlackSearchIcon from '../../../assets/images/search-icon-small-black.svg'
 import SmallWhiteSearchIcon from '../../../assets/images/search-icon-small-white.svg'
 import Button from '../Button/Button'
+import { useTranslation } from 'next-i18next'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -55,6 +56,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     handleSearch && handleSearch(!searchOpen)
     setSearchOpen(!searchOpen)
   }
+  const { t } = useTranslation('common')
 
   return (
     <>
@@ -96,7 +98,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   type="text"
                   className="h-12 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
                 />
-                <Link href={languageKey === 'sk' ? 'vyhladavanie' : 'search'}>
+                <Link href={t('searchLink')}>
                   <Button
                     icon={<SmallBlackSearchIcon />}
                     hoverIcon={<SmallWhiteSearchIcon />}
