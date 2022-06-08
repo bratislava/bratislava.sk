@@ -18,7 +18,7 @@ import { AsyncServerProps } from '@utils/types'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { parseMainMenu } from '../../../utils/page'
+import { parseFooter, parseMainMenu } from '../../../utils/page'
 
 export const getServerSideProps = async (ctx: any) => {
   const locale = ctx.locale ?? 'sk'
@@ -123,7 +123,7 @@ const OfficialBoard = ({
         { locale: 'en', slug: 'city-of-bratislava/transparent-city/official-noticeboard' },
       ]}
     >
-      <BasePageLayout {...footer} menuItems={menuItems}>
+      <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle('red'),

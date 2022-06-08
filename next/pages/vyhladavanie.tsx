@@ -18,7 +18,7 @@ import { AsyncServerProps } from '@utils/types'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { parseMainMenu } from '../utils/page'
+import { parseFooter, parseMainMenu } from '../utils/page'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -131,7 +131,7 @@ const Search = ({
       ]}
       slug={'/vyhladavanie'}
     >
-      <BasePageLayout {...footer} menuItems={menuItems}>
+      <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle('red'),
