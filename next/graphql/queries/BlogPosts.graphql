@@ -46,7 +46,7 @@ query LatestBlogsWithTags($sort: String, $limit: Int, $offset: Int, $where: JSON
         color
       }
     }
-    published_at
+    publishedAt
   }
 }
 
@@ -92,7 +92,7 @@ fragment BlogPost on BlogPost {
   moreLink {
     ...BlogPostLink
   }
-  created_at
+  createdAt
 }
 
 fragment BlogPostLink on ComponentBlocksBlogPostLink {

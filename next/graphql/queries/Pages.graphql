@@ -11,12 +11,14 @@ query Pages {
 query PagesStaticPaths {
   pages {
     id
-    slug
+    attributes {
+      slug
+    }
   }
 }
 
-query PageBySlug($slug: String!, $locale: String!) {
-  pageBySlug(slug: $slug, locale: $locale) {
+query PageBySlug($filters: {slug: {eq: String!}}, $locale: String!) {
+  pageBySlug(filters: $filters, locale: $locale) {
     ...GeneralPage
   }
 
@@ -30,97 +32,100 @@ query PageBySlug($slug: String!, $locale: String!) {
 }
 
 fragment GeneralPage on Page {
-  slug
-  title
-  pageColor
-  metaDiscription
-  pageBackgroundImage {
-    url
-  }
-  pageButtonContent {
-    ...PageLink
-  }
-  locale
-  localizations {
-    ...Localization
-  }
-
-  sections {
-    ...Sections
-  }
-
-  pageHeaderSections {
-    __typename
-    ... on ComponentSectionsSubpageList {
-      subpageList {
-        ...PageLink
-      }
-    }
-
-    ... on ComponentSectionsFeaturedBlogPosts {
-      first_blog {
-        title
-        published_at
-        coverImage {
-          url
-        }
-        tag {
-          pageCategory {
-            color
-            shortTitle
-          }
-        }
-      }
-      second_blog {
-        title
-        published_at
-        coverImage {
-          url
-        }
-        tag {
-          pageCategory {
-            color
-            shortTitle
-          }
-        }
-      }
-      third_blog {
-        title
-        published_at
-        coverImage {
-          url
-        }
-        tag {
-          pageCategory {
-            color
-            shortTitle
-          }
-        }
-      }
-    }
-  }
-
-  pageCategory {
-    id
+  id
+  attributes {
+    slug
     title
-    color
-  }
+    pageColor
+    metaDiscription
+    pageBackgroundImage {
+      url
+    }
+    pageButtonContent {
+      ...PageLink
+    }
+    locale
+    localizations {
+      ...Localization
+    }
 
-  parentPage {
-    ...ParentPage
+    sections {
+      ...Sections
+    }
+
+    pageHeaderSections {
+      __typename
+      ... on ComponentSectionsSubpageList {
+        subpageList {
+          ...PageLink
+        }
+      }
+
+      ... on ComponentSectionsFeaturedBlogPosts {
+        first_blog {
+          title
+          publishedAt
+          coverImage {
+            url
+          }
+          tag {
+            pageCategory {
+              color
+              shortTitle
+            }
+          }
+        }
+        second_blog {
+          title
+          publishedAt
+          coverImage {
+            url
+          }
+          tag {
+            pageCategory {
+              color
+              shortTitle
+            }
+          }
+        }
+        third_blog {
+          title
+          publishedAt
+          coverImage {
+            url
+          }
+          tag {
+            pageCategory {
+              color
+              shortTitle
+            }
+          }
+        }
+      }
+    }
+
+    pageCategory {
+      id
+      title
+      color
+    }
+
     parentPage {
       ...ParentPage
       parentPage {
         ...ParentPage
         parentPage {
           ...ParentPage
+          parentPage {
+            ...ParentPage
+          }
         }
       }
     }
-  }
 
-  relatedBlogPosts {
-    ...BlogPost
+    relatedBlogPosts {
+      ...BlogPost
+    }
   }
 }
 
@@ -173,7 +178,7 @@ fragment DocumentList on ComponentSectionsDocumentList {
         url
         size
         ext
-        created_at
+        createdAt
       }
     }
     cancellationDocument {
@@ -184,7 +189,7 @@ fragment DocumentList on ComponentSectionsDocumentList {
         url
         size
         ext
-        created_at
+        createdAt
       }
     }
     title
@@ -193,14 +198,14 @@ fragment DocumentList on ComponentSectionsDocumentList {
       url
       size
       ext
-      created_at
+      createdAt
     }
     consolidatedText {
       id
       url
       size
       ext
-      created_at
+      createdAt
     }
   }
 }
@@ -393,7 +398,7 @@ fragment File on ComponentBlocksFile {
   category
   media {
     url
-    created_at
+    createdAt
     size
     ext
   }

@@ -1,8 +1,8 @@
 query Homepage($locale: String) {
   homepage(locale: $locale) {
     id
-    updated_at
-    created_at
+    updatedAt
+    createdAt
     posts {
       title
       slug
@@ -55,7 +55,7 @@ fragment NewsCardBlog on BlogPost {
   title
   excerpt
   slug
-  updated_at
+  updatedAt
   date_added
   coverImage {
     url
