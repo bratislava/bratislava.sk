@@ -64,22 +64,22 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.columned-text",
-        "sections.narrow-text",
-        "sections.text-with-image",
-        "sections.file-list",
-        "sections.divider",
-        "sections.waves",
-        "sections.links",
         "sections.accordion",
+        "sections.articles-list",
         "sections.calculator",
+        "sections.columned-text",
         "sections.contact",
-        "sections.list-items",
-        "sections.newsletter",
-        "sections.videos",
+        "sections.divider",
+        "sections.file-list",
         "sections.icon-title-desc",
+        "sections.links",
+        "sections.list-items",
+        "sections.narrow-text",
+        "sections.newsletter",
         "sections.numerical-list",
-        "sections.articles-list"
+        "sections.text-with-image",
+        "sections.videos",
+        "sections.waves"
       ]
     },
     "pageHeaderSections": {
@@ -110,6 +110,31 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
+    },
+    "pageBackgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pageButtonContent": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.blog-post-link"
     }
   }
 }

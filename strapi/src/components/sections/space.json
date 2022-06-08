@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_spaces",
+  "info": {
+    "displayName": "Space"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string"
+    },
+    "spaceInfo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.space-info"
+    }
+  }
+}
