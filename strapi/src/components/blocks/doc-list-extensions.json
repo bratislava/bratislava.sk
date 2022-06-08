@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blocks_doc_list_extensions",
+  "info": {
+    "displayName": "DocListExtensions",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "document": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "validFrom": {
+      "type": "date"
+    }
+  }
+}
