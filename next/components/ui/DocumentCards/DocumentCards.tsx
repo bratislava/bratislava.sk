@@ -15,6 +15,7 @@ export const DocumentCards = ({ documents, dividerStyle }: DocumentCardsProps) =
   const currentItemsCountMobile = documents.length - (currentPage - 1) * itemsPerPageMobile
   const dividerBreakpointDesktop = itemsPerPageDesktop / 2
   const dividerBreakpointMobile = itemsPerPageMobile / 2
+  const dividerBugSolved = false
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
       <div className="text-default lg:text-md font-medium">Posledné pridané dokumenty</div>
@@ -25,9 +26,11 @@ export const DocumentCards = ({ documents, dividerStyle }: DocumentCardsProps) =
             .map((doc, index) => (
               <div key={index}>
                 <DocumentCard {...doc} />
-                {index == dividerBreakpointDesktop - 1 && currentItemsCountDesktop > dividerBreakpointDesktop && (
-                  <Divider className="py-24" dividerStyle={dividerStyle} />
-                )}
+                {dividerBugSolved &&
+                  index == dividerBreakpointDesktop - 1 &&
+                  currentItemsCountDesktop > dividerBreakpointDesktop && (
+                    <Divider className="py-24" dividerStyle={dividerStyle} />
+                  )}
               </div>
             ))}
         </div>
@@ -45,9 +48,11 @@ export const DocumentCards = ({ documents, dividerStyle }: DocumentCardsProps) =
             .map((doc, index) => (
               <div key={index}>
                 <DocumentCard {...doc} />
-                {index == dividerBreakpointMobile - 1 && currentItemsCountMobile > dividerBreakpointMobile && (
-                  <Divider className="py-10" dividerStyle={dividerStyle} />
-                )}
+                {dividerBugSolved &&
+                  index == dividerBreakpointMobile - 1 &&
+                  currentItemsCountMobile > dividerBreakpointMobile && (
+                    <Divider className="py-10" dividerStyle={dividerStyle} />
+                  )}
               </div>
             ))}
         </div>

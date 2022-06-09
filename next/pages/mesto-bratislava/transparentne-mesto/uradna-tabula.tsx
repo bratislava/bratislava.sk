@@ -113,7 +113,7 @@ const OfficialBoard = ({
   header,
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
-  const noResultsFound = true
+  const noResultsFound = false
   const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
   return (
     <PageWrapper
@@ -155,9 +155,8 @@ const OfficialBoard = ({
               messageClassName="max-w-sm text-center -mt-16 leading-normal"
             />
           ) : (
-            <DocumentCards documents={documents} dividerStyle="mesto_01" />
+            <DocumentCards documents={documents} />
           )}
-          <Footer />
         </SectionContainer>
       </BasePageLayout>
     </PageWrapper>
