@@ -31,14 +31,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
     },
     "slug": {
       "pluginOptions": {
@@ -90,10 +83,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "sections.featured-blog-posts",
-        "sections.subpage-list"
-      ]
+      "components": ["sections.featured-blog-posts", "sections.subpage-list"]
     },
     "parentPage": {
       "type": "relation",

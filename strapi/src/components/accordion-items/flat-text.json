@@ -14,20 +14,11 @@
     },
     "width": {
       "type": "enumeration",
-      "enum": [
-        "narrow",
-        "default",
-        "wide",
-        "full"
-      ]
+      "enum": ["narrow", "default", "wide", "full"]
     },
     "align": {
       "type": "enumeration",
-      "enum": [
-        "left",
-        "center",
-        "right"
-      ]
+      "enum": ["left", "center", "right"]
     },
     "moreLinkTitle": {
       "type": "string"

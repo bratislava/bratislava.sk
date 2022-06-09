@@ -7,10 +7,7 @@
   "attributes": {
     "position": {
       "type": "enumeration",
-      "enum": [
-        "top",
-        "bottom"
-      ]
+      "enum": ["top", "bottom"]
     },
     "isRich": {
       "type": "boolean"
