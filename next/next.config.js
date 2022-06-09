@@ -68,6 +68,10 @@ const nextConfig = {
           source: '/search',
           destination: '/vyhladavanie',
         },
+        {
+          source: '/city-of-bratislava/transparent-city/official-noticeboard',
+          destination: '/mesto-bratislava/transparentne-mesto/uradna-tabula',
+        },
       ],
     }
   },
