@@ -11,9 +11,20 @@ export interface DocumentCardProps {
   fileSize: string
   content: string
   className?: string
+  viewButtonText: string
+  downloadButtonText: string
 }
 
-export const DocumentCard = ({ title, createdAt, fileExtension, fileSize, content, className }: DocumentCardProps) => {
+export const DocumentCard = ({
+  title,
+  createdAt,
+  fileExtension,
+  fileSize,
+  content,
+  className,
+  viewButtonText,
+  downloadButtonText,
+}: DocumentCardProps) => {
   return (
     <Panel className={className}>
       <div className="w-full flex flex-col pt-6 lg:pt-8 lg:pb-6 px-4 lg:px-10 gap-y-5">
@@ -30,10 +41,10 @@ export const DocumentCard = ({ title, createdAt, fileExtension, fileSize, conten
             icon={<ChevronRight />}
             hoverIcon={<ArrowRight />}
           >
-            Pozrieť dokument
+            {viewButtonText}
           </Button>
           <Button variant="full-transparent" className="px-6 py-4 text-sm font-medium shadow-none" icon={<Download />}>
-            Stiahnuť
+            {downloadButtonText}
           </Button>
         </div>
       </div>

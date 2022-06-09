@@ -19,6 +19,7 @@ import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../../../utils/page'
+import { useTranslation } from 'next-i18next'
 
 export const getServerSideProps = async (ctx: any) => {
   const locale = ctx.locale ?? 'sk'
@@ -115,6 +116,27 @@ const OfficialBoard = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const noResultsFound = false
   const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const { t } = useTranslation('common')
+
+  const boardPage = {
+    slug: 'mesto-bratislava/transparentne-mesto/official-board',
+    title: t('officialBoard'),
+    pageBackgroundImage: null,
+    pageButtonContent: null,
+    locale: 'sk',
+    parentPage: {
+      slug: 'mesto-bratislava/transparentne-mesto',
+      locale: 'sk',
+      title: t('transparentCity'),
+      parentPage: {
+        slug: 'mesto-bratislava',
+        locale: 'sk',
+        title: 'Mesto Bratislava',
+      },
+    },
+    relatedBlogPosts: [],
+  }
+
   return (
     <PageWrapper
       locale={page.locale}
@@ -141,12 +163,17 @@ const OfficialBoard = ({
               <div className="absolute top-6">
                 <PageBreadcrumbs page={boardPage} />
               </div>
-              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{boardPage?.title}</h1>
+              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('officialBoard')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          <BasicSearch className="pb-14 lg:pb-24" />
+          <BasicSearch
+            className="pb-14 lg:pb-24"
+            placeholder={t('enterKeyword')}
+            title={t('searching')}
+            buttonText={t('search')}
+          />
           {noResultsFound ? (
             <NoResultsFound
               title=""
@@ -155,31 +182,17 @@ const OfficialBoard = ({
               messageClassName="max-w-sm text-center -mt-16 leading-normal"
             />
           ) : (
-            <DocumentCards documents={documents} />
+            <DocumentCards
+              title={t('recentlyAddedDocuments')}
+              viewButtonText={t('viewTheDocument')}
+              downloadButtonText={t('download')}
+              documents={documents}
+            />
           )}
         </SectionContainer>
       </BasePageLayout>
     </PageWrapper>
   )
-}
-
-const boardPage = {
-  slug: 'mesto-bratislava/transparentne-mesto/official-board',
-  title: 'Úradná tabuľa',
-  pageBackgroundImage: null,
-  pageButtonContent: null,
-  locale: 'sk',
-  parentPage: {
-    slug: 'mesto-bratislava/transparentne-mesto',
-    locale: 'sk',
-    title: 'Transparentné mesto',
-    parentPage: {
-      slug: 'mesto-bratislava',
-      locale: 'sk',
-      title: 'Mesto Bratislava',
-    },
-  },
-  relatedBlogPosts: [],
 }
 
 const documents = [
