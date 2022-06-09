@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_iframes",
+  "info": {
+    "displayName": "Iframe"
+  },
+  "options": {},
+  "attributes": {
+    "iframe_url": {
+      "type": "string"
+    },
+    "iframe_width": {
+      "type": "decimal"
+    },
+    "iframe_height": {
+      "type": "decimal"
+    },
+    "iframe_allowfullscreen": {
+      "type": "boolean"
+    },
+    "iframe_style": {
+      "type": "string"
+    },
+    "iframe_frameBorder": {
+      "type": "string"
+    },
+    "iframe_scrolling": {
+      "type": "string"
+    }
+  }
+}
