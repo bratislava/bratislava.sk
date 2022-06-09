@@ -31,14 +31,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
     },
     "slug": {
       "pluginOptions": {
@@ -89,10 +82,7 @@
         }
       },
       "type": "dynamiczone",
-      "components": [
-        "sections.featured-blog-posts",
-        "sections.subpage-list"
-      ]
+      "components": ["sections.featured-blog-posts", "sections.subpage-list"]
     },
     "parentPage": {
       "type": "relation",
@@ -112,12 +102,7 @@
       "target": "api::tag.tag"
     },
     "pageBackgroundImage": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": false,
       "pluginOptions": {

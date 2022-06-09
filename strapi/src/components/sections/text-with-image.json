@@ -9,21 +9,13 @@
       "type": "richtext"
     },
     "imageSrc": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": false
     },
     "imagePosition": {
       "type": "enumeration",
-      "enum": [
-        "left",
-        "right"
-      ]
+      "enum": ["left", "right"]
     },
     "imageShadow": {
       "type": "boolean"

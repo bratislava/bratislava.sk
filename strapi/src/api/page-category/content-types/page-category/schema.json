@@ -38,14 +38,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
     },
     "icon": {
       "pluginOptions": {
@@ -54,14 +47,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "mesto_01",
-        "doprava_mapy_02",
-        "zp_vystavba_03",
-        "socialna_pomoc_04",
-        "vzdelavanie_05",
-        "kultura_06"
-      ]
+      "enum": ["mesto_01", "doprava_mapy_02", "zp_vystavba_03", "socialna_pomoc_04", "vzdelavanie_05", "kultura_06"]
     },
     "iconHover": {
       "pluginOptions": {
