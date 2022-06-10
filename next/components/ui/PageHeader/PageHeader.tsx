@@ -1,7 +1,7 @@
 import { Waves, WavesProps } from '../Waves/Waves'
 import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'rooks'
-
+import cx from 'classnames'
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   color: string
   transparentColor: string
@@ -51,7 +51,7 @@ export const PageHeader = ({
         )
       if (imageSrc)
         newBackgroundStyle.push(
-          `url(${imageSrc}) right ${innerWidth >= smallScreenBreakPoint ? 'bottom' : 'top/160%'} no-repeat`
+          `url(${imageSrc}) right ${innerWidth >= smallScreenBreakPoint ? 'center' : 'top/160%'} no-repeat`
         )
       if (color) newBackgroundStyle.push(color)
 
@@ -60,9 +60,14 @@ export const PageHeader = ({
   }, [imageSrc, color, innerWidth, transparentColor, smallScreenBreakPoint])
   return (
     <div
-      className={className}
+      // className={className}
+      className={cx(className, 'header-main-bg bg-cover')}
+  
       style={{
         background: backgroundStyle.join(', '),
+        
+        boxSizing: 'border-box',
+        backgroundSize: '100%',
       }}
       {...rest}
     >
