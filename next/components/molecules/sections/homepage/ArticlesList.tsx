@@ -24,7 +24,7 @@ export const ArticlesList = ({
   const [totalArticles, setTotal] = useState(0)
   const [totalTags, setTags] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto Bratislava')
+  const [selectedCategory, setSelectedCategory] = useState(category ?? '')
   const [categoryExists, setIfExists] = useState(category ? true : false)
   const [filteredTags, setFilteredTags] = useState([])
 
