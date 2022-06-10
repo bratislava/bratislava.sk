@@ -1,6 +1,4 @@
-const {
-  dbV4,
-} = require("../config/database");
+const { dbV4 } = require('../config/database')
 
 const queries = [
   `
@@ -38,8 +36,7 @@ const queries = [
   `
   ALTER TABLE IF EXISTS public.page_categories
     ADD COLUMN tag integer;
-`
-
+`,
 ]
 
 async function addAdditionalColumns() {
@@ -47,8 +44,8 @@ async function addAdditionalColumns() {
     try {
       await dbV4.raw(queries[i])
     } catch (error) {
-      if(!(error.message.includes("already exists"))) {
-      console.log(error.message)
+      if (!error.message.includes('already exists')) {
+        console.log(error.message)
       }
     }
   }
@@ -56,4 +53,4 @@ async function addAdditionalColumns() {
 
 module.exports = {
   addAdditionalColumns,
-};
+}
