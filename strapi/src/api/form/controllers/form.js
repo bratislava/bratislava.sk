@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  *  form controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories
 
-module.exports = createCoreController('api::form.form');
+module.exports = createCoreController('api::form.form')

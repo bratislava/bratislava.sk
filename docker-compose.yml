@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   next:
     depends_on:
@@ -43,5 +43,6 @@ services:
       - '54320'
     ports:
       - '127.0.0.1:54320:54320'
-    volumes:
-      - ./data:/var/lib/postgresql/data/
+
+volumes:
+  postgres:

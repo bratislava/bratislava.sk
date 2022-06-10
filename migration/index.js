@@ -1,11 +1,11 @@
-require("dotenv").config();
+require('dotenv').config()
 
-const { migrate } = require("./migrate");
+const { migrate } = require('./migrate')
 
 async function f() {
-  await migrate();
+  await migrate()
 
-  process.exit();
+  process.exit()
 }
 
-f();
+f()
