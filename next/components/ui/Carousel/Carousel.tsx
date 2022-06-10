@@ -86,7 +86,7 @@ export const Carousel = ({
     >
       {sliderControl(true)}
 
-      <div className={cx(scrollerClassName, 'flex overflow-x-hidden')} ref={scrollerRef}>
+      <div className={cx(scrollerClassName, 'flex overflow-x-auto lg:overflow-x-hidden overflow-y-hidden scrollbar-hide pb-4 lg:pb-0')} ref={scrollerRef}>
         {items?.map((carouselItem: React.ReactNode, i: number) => {
           const isVisible = i >= currentItem && i < currentItem + visibleItems
           return (
@@ -95,12 +95,12 @@ export const Carousel = ({
               className={cx('flex-shrink-0 transition-all duration-200 transform', {
                 'px-4': spacing === 'default',
                 'w-1/2': visibleItems === 2,
-                'w-1/3': visibleItems === 3,
+                'lg:w-1/3': visibleItems === 3,
                 'w-1/4': visibleItems === 4,
                 'w-1/5': visibleItems === 5,
                 'w-1/6': visibleItems === 6,
                 'opacity-100 scale-100': isVisible,
-                'opacity-0 scale-50': !isVisible,
+                // 'opacity-0 scale-50': !isVisible,
               })}
             >
               {carouselItem}
