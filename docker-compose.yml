@@ -1,16 +1,47 @@
-version: "3.8"
+version: '3.8'
 services:
+  next:
+    depends_on:
+      - strapi
+      - postgres
+    build:
+      context: ./next/
+      target: dev
+    environment:
+      STRAPI_URL: strapi:1337
+      TAILWIND_MODE: watch
+    command: yarn develop
+    ports:
+      - "3000:3000"
+
+  strapi:
+    depends_on:
+      - postgres
+    build:
+      context: ./strapi/
+      target: dev
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: postgres
+      DATABASE_PORT: 54320
+      DATABASE_PASSWORD: postgres
+      NODE_ENV: development
+    command: yarn develop
+    ports:
+      - "1337:1337"
+
   postgres:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: postgres4
-      PGPORT: 5432
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: strapi
+      PGPORT: 54320
     expose:
-      - "5432"
+      - '54320'
     ports:
-      - "127.0.0.1:5432:5432"
-
-volumes:
-  postgres:
+      - '127.0.0.1:54320:54320'
+    volumes:
+      - ./data:/var/lib/postgresql/data/
