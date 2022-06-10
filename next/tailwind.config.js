@@ -91,7 +91,7 @@ module.exports = {
         md2: ['28px', '33.6px'],
         lg: ['32px', '44.8px'],
         xl: ['36px', '42.3px'],
-        '2xl': ['40px', '60px'],
+        xxxl: ['40px', '60px'],
         xxl: ['42px', '50.8px'],
       },
       colors: {
