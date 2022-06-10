@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_document_lists",
+  "info": {
+    "displayName": "DocumentList"
+  },
+  "options": {},
+  "attributes": {
+    "vzns": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vzn.vzn"
+    }
+  }
+}

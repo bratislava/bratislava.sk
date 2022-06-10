@@ -79,7 +79,8 @@
         "sections.numerical-list",
         "sections.text-with-image",
         "sections.videos",
-        "sections.waves"
+        "sections.waves",
+        "sections.iframe"
       ]
     },
     "pageHeaderSections": {
@@ -112,14 +113,15 @@
       "target": "api::tag.tag"
     },
     "pageBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true

@@ -4,22 +4,26 @@ import SearchIcon from '../../../assets/images/search-icon.svg'
 import SearchIconSmallBlack from '../../../assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '../../../assets/images/search-icon-small-white.svg'
 import cx from 'classnames'
+import { title } from 'process'
 
 export interface BasicSearchProps {
   className?: string
+  placeholder: string
+  title: string
+  buttonText: string
 }
 
-export const BasicSearch = ({ className }: BasicSearchProps) => {
+export const BasicSearch = ({ className, placeholder, title, buttonText }: BasicSearchProps) => {
   const { Link: UILink } = useUIContext()
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-sm lg:text-md font-medium pb-3">Vyhľadávanie</div>
+      <div className="text-sm lg:text-md font-medium pb-3">{title}</div>
       <div className="hidden lg:flex">
         <input
           id="name"
           type="text"
           className="h-14 pl-6 w-full outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
-          placeholder="Zadajte kľúčové slovo"
+          placeholder={placeholder}
         />
         <UILink href="search">
           <Button
@@ -28,7 +32,7 @@ export const BasicSearch = ({ className }: BasicSearchProps) => {
             className="h-14 rounded-l-none text-default px-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
             variant="secondaryDarkText"
           >
-            Hľadať
+            {buttonText}
           </Button>
         </UILink>
       </div>
@@ -37,7 +41,7 @@ export const BasicSearch = ({ className }: BasicSearchProps) => {
           id="name"
           type="text"
           className="h-14 pl-6 w-full outline-none border-2 rounded-lg text-sm text-font font-medium"
-          placeholder="Zadajte kľúčové slovo"
+          placeholder={placeholder}
         />
         <UILink href="search">
           <Button
@@ -46,7 +50,7 @@ export const BasicSearch = ({ className }: BasicSearchProps) => {
             className="h-12 text-base px-14 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
             variant="secondaryDarkText"
           >
-            Hľadať
+            {buttonText}
           </Button>
         </UILink>
       </div>

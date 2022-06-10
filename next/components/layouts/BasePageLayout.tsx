@@ -20,7 +20,7 @@ const BasePageLayout = ({
   const [searchOpen, setSearchOpen] = useState(false)
   return (
     <div className={cx('bg-background font-inter', className)}>
-      <div className="bg-white h-20">
+      <div className="bg-white h-14">
         <SectionContainer>
           <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />
         </SectionContainer>

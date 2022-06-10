@@ -24,5 +24,10 @@
   "weDidntFindAnything": "We didn't find anything",
   "tryEnteringSomethingElse": "Try entering something else",
   "websites": "Websites",
-  "searchLink": "search"
+  "searchLink": "/search",
+  "officialBoard": "Official board",
+  "recentlyAddedDocuments": "Recently added documents",
+  "viewTheDocument": "View the document",
+  "download": "Download",
+  "transparentCity": "Transparent city"
 }

@@ -81,7 +81,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:flex 2xl:flex-wrap gap-y-10 gap-x-44 mt-10 xl:mt-0"
+          className="w-2/3 flex flex-col lg:flex-row w-full justify-around 2xl:flex 2xl:flex-wrap gap-y-10 mt-10 xl:mt-0"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
