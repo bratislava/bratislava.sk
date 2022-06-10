@@ -30,6 +30,6 @@ export default {
     ],
   },
   bootstrap(app) {
-    console.log(app);
+    console.log(app)
   },
-};
+}
