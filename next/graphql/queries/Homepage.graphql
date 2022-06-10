@@ -1,69 +1,109 @@
-query Homepage($locale: String) {
+query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
-    id
-    updatedAt
-    createdAt
-    posts {
-      title
-      slug
-      image {
-        url
-      }
-    }
-    left_highlight {
-      ...NewsCardBlog
-    }
-    right_highlight {
-      ...NewsCardBlog
-    }
-    header {
-      picture {
-        url
-      }
-      subtitle
-    }
-    cards {
-      title
-      headline
-      text
-      link {
-        title
-        href
-      }
-      picture {
-        url
-      }
-      variant
-    }
-    inba {
-      title
-      content
-      images {
-        frontImage {
-          url
+    data {
+      attributes {
+        updatedAt
+        createdAt
+        posts {
+          title
+          slug
+          image {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
-        rearImage {
-          url
+        right_highlight {
+          ...NewsCardBlog
+        }
+        left_highlight {
+          ...NewsCardBlog
+        }
+        header {
+          picture {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          subtitle
+        }
+        cards {
+          title
+          headline
+          text
+          link {
+            title
+            href
+          }
+          picture {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          variant
+        }
+        inba {
+          title
+          content
+          images {
+            frontImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            rearImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          link
         }
       }
-      link
+      id
     }
   }
 }
 
-fragment NewsCardBlog on BlogPost {
-  title
-  excerpt
-  slug
-  updatedAt
-  date_added
-  coverImage {
-    url
-  }
-  tag {
-    title
-    pageCategory {
-      color
+fragment NewsCardBlog on BlogPostEntityResponse {
+  data {
+    attributes {
+      title
+      excerpt
+      slug
+      updatedAt
+      date_added
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      tag {
+        data {
+          attributes {
+            title
+            pageCategory {
+              data {
+                attributes {
+                  color
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

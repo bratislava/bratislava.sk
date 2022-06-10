@@ -1,105 +1,164 @@
-query BlogPostBySlug($slug: String!, $locale: String) {
-  blogPostBySlug(slug: $slug, locale: $locale) {
+query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
+  blogPosts(filters: { slug: { eq: $slug } }, locale: $locale) {
     ...BlogPost
   }
 
-  footer(locale: $locale) {
-    ...Footer
-  }
+  # TODO: make it seprate query for both
+  # footer(locale: $locale) {
+  #   ...Footer
+  # }
 
-  mainMenu: pageCategories(locale: $locale) {
-    ...MainMenuItem
-  }
+  # mainMenu: pageCategories(locale: $locale) {
+  #   ...MainMenuItem
+  # }
 }
 
-query RelatedPostsBySlug($slug: String!, $locale: String!) {
-  relatedPostsBySlug(slug: $slug, locale: $locale) {
+# TODO: still unclear the logic
+# query RelatedPostsBySlug($slug: String!, $locale: String!) {
+#   relatedPostsBySlug(slug: $slug, locale: $locale) {
+#     ...BlogPost
+#   }
+# }
+
+query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
+  blogPosts(
+    filters: { tag: { title: { in: $tags } } }
+    pagination: { limit: $limit, start: $start }
+    sort: "published_at:desc"
+  ) {
     ...BlogPost
   }
 }
 
-query LatestPostsByTags($tags: [Int], $limit: Int, $offset: Int) {
-  latestPostsByTags(tags: $tags, limit: $limit, offset: $offset) {
-    ...BlogPost
-  }
-}
-
-query BlogPostsStaticPaths($locale: String) {
+query BlogPostsStaticPaths($locale: I18NLocaleCode) {
   blogPosts(locale: $locale) {
-    id
-    slug
-  }
-}
-
-query LatestBlogsWithTags($sort: String, $limit: Int, $offset: Int, $where: JSON) {
-  blogPosts(sort: $sort, limit: $limit, start: $offset, where: $where) {
-    slug
-    title
-    excerpt
-    coverImage {
-      url
-    }
-    tag {
-      title
-      pageCategory {
-        title
-        color
+    data {
+      id
+      attributes {
+        slug
       }
     }
-    publishedAt
   }
 }
 
-query TotalPostsCount($where: JSON) {
-  blogPostsConnection(where: $where) {
-    aggregate {
-      count
-      totalCount
-    }
-  }
-}
-
-query RelatedTags($where: JSON) {
-  tags(where: $where) {
-    title
-    pageCategory {
-      title
-      color
-    }
-  }
-}
-
-fragment BlogPost on BlogPost {
-  id
-  slug
-  title
-  excerpt
-  tag {
-    id
-    title
-    pageCategory {
+query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput) {
+  blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters) {
+    data {
       id
-      title
-      color
+      attributes {
+        slug
+        title
+        excerpt
+        coverImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        tag {
+          data {
+            attributes {
+              title
+              publishedAt
+              pageCategory {
+                data {
+                  attributes {
+                    title
+                    color
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
-  sections {
-    ...Sections
+}
+
+query TotalPostsCount($where: BlogPostFiltersInput) {
+  blogPosts(filters: $where) {
+    meta {
+      pagination {
+        total
+      }
+    }
   }
-  coverImage {
-    url
+}
+
+query RelatedTags($where: TagFiltersInput) {
+  tags(filters: $where) {
+    data {
+      attributes {
+        title
+        pageCategory {
+          data {
+            attributes {
+              title
+              color
+            }
+          }
+        }
+      }
+    }
   }
-  moreLink {
-    ...BlogPostLink
+}
+
+fragment BlogPost on BlogPostEntityResponseCollection {
+  data {
+    id
+    attributes {
+      excerpt
+      title
+      updatedAt
+      date_added
+      tag {
+        data {
+          attributes {
+            title
+            pageCategory {
+              data {
+                attributes {
+                  title
+                  color
+                }
+                id
+              }
+            }
+          }
+          id
+        }
+      }
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      moreLink {
+        ...BlogPostLink
+      }
+      createdAt
+      sections {
+        ...PageSections
+      }
+    }
   }
-  createdAt
 }
 
 fragment BlogPostLink on ComponentBlocksBlogPostLink {
+  blogPost {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
   title
   url
-  blogPost {
-    title
-    slug
-  }
 }
+
