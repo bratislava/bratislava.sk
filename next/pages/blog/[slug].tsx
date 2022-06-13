@@ -16,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { blogPosts: blogPostEn } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[1],
   })
-  const blogPosts = blogPostEn.data.concat(blogPostSk.data)
+  const blogPosts = blogPostEn?.data.concat(blogPostSk?.data ?? [])
   if (blogPosts) {
     paths = blogPosts.map((blogPost) => ({
       params: {
@@ -67,12 +67,12 @@ interface BlogPostPageProps {
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer ?? {})
-  const menuItems = parseMainMenu(mainMenu.data?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu?.data?.filter(isPresent) ?? [])
 
   // TODO change if multilingual blogs
   return (
-    <PageWrapper locale={locale} slug={post.data[0].attributes.slug ?? ''}>
-      <BlogPostPage blogPost={post?.data[0].attributes} footer={parsedFooter} menuItems={menuItems} />
+    <PageWrapper locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
+      <BlogPostPage post={post} footer={parsedFooter} menuItems={menuItems} />
     </PageWrapper>
   )
 }
