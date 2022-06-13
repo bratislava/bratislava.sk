@@ -16,11 +16,11 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { blogPosts: blogPostEn } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[1],
   })
-  const blogPosts = blogPostEn?.concat(blogPostSk)
+  const blogPosts = blogPostEn.data.concat(blogPostSk.data)
   if (blogPosts) {
-    paths = blogPosts.map(({ slug }: { slug: string }) => ({
+    paths = blogPosts.map((blogPost) => ({
       params: {
-        slug,
+        slug: blogPost.attributes.slug,
       },
     }))
   }
