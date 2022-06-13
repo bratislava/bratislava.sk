@@ -37,8 +37,18 @@ const queries = [
   ALTER TABLE IF EXISTS public.page_categories
     ADD COLUMN tag integer;
 `,
-
-
+  `
+  ALTER TABLE IF EXISTS public.components_sections_featured_blog_posts_first_blog_links
+    ADD COLUMN featured_blog_post_id integer;
+`,
+  `
+  ALTER TABLE IF EXISTS public.components_sections_featured_blog_posts_second_blog_links
+    ADD COLUMN featured_blog_post_id integer;
+`,
+  `
+  ALTER TABLE IF EXISTS public.components_sections_featured_blog_posts_third_blog_links
+    ADD COLUMN featured_blog_post_id integer;
+`,
 ]
 
 async function addAdditionalColumns() {
