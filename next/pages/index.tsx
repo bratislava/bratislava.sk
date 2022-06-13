@@ -36,7 +36,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
-    sort: 'published_at:DESC',
+    sort: 'publishedAt:desc',
   })
 
   const { homepage } = await client.Homepage({
@@ -156,7 +156,7 @@ const Homepage = ({
             leftHighLight={homepage.left_highlight}
             rightHighLight={homepage.right_highlight}
             posts={posts}
-            latestPost={latestBlogposts}
+            latestPost={latestBlogposts.data}
           />
           <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
 

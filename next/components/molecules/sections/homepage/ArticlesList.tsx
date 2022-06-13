@@ -8,7 +8,8 @@ export interface ArticlesListProps {
   title: string
   itemsPerRow?: number
   itemsPerPage?: number
-  category?: Object
+  // category?: Object
+  category?: string
   includesFiltering?: boolean
 }
 
@@ -37,20 +38,29 @@ export const ArticlesList = ({
 
     const getData = async () => {
       const { blogPosts } = await client.LatestBlogsWithTags({
-        sort: 'published_at:DESC',
+        sort: 'publishedAt:desc',
         limit: itemsPerPage,
-        offset: (currentPage - 1) * itemsPerPage,
-        where: {
+        start: (currentPage - 1) * itemsPerPage,
+        // TODO double check this filter after everything is connected
+        filters: {
           tag: {
-            title: selectedTags,
-            pageCategory: {
+            //title: selectedTags,
+            title: {
+              in: selectedTags,
+            },
+            /* pageCategory: {
               title: category,
+            }, */
+            pageCategory: {
+              title: {
+                eq: category,
+              },
             },
           },
         },
       })
       if (isMounted) return
-      setData(blogPosts)
+      setData(blogPosts?.data ?? [])
     }
     getData()
       .then()
