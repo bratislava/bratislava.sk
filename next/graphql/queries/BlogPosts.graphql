@@ -77,7 +77,7 @@ query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
   blogPosts(
     filters: { tag: { title: { in: $tags } } }
     pagination: { limit: $limit, start: $start }
-    sort: "published_at:desc"
+    sort: "publishedAt:desc"
   ) {
     ...BlogPost
   }
@@ -230,3 +230,72 @@ fragment PageLink on ComponentBlocksPageLink {
     }
   }
 }
+
+# query MyQuery {
+#   blogPosts(filters: {tag: {title: {in: "Covid"}}}, pagination: {limit: 10, start: 10}, sort: "publishedAt:desc") {
+#     data {
+#       attributes {
+#         slug
+#         excerpt
+#         title
+#         date_added
+#         updatedAt
+#         tag {
+#           data {
+#             attributes {
+#               title
+#               pageCategory {
+#                 data {
+#                   attributes {
+#                     title
+#                     color
+#                   }
+#                   id
+#                 }
+#               }
+#             }
+#           }
+#         }
+#         coverImage {
+#           data {
+#             attributes {
+#               url
+#             }
+#           }
+#         }
+#         moreLink {
+#           blogPost {
+#             data {
+#               id
+#               attributes {
+#                 title
+#                 slug
+#               }
+#             }
+#           }
+#           title
+#           url
+#         }
+#         createdAt
+#         sections {
+#           __typename
+#           ... on ComponentSectionsIconTitleDesc {
+#           	title
+#             list {
+#               title
+#   						desc
+#   						icon {
+#     						data {
+#       						attributes {
+#         						url
+#       						}
+#       						id
+#     						}
+#   						}
+#             }
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
