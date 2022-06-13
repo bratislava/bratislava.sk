@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
   if (!blogPostBySlug) return { notFound: true }
 
   return {
-    props: { slug, post: blogPostBySlug, footer, mainMenu, locale },
+    props: { slug, post: blogPosts, footer, mainMenu, locale },
     revalidate: 120, // every two minutes TODO change
   }
 }
@@ -60,22 +60,19 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 interface BlogPostPageProps {
   slug: string
   locale: string
-  // post: NonNullable<BlogPostBySlugQuery['blogPostBySlug']>
-  // footer: BlogPostBySlugQuery['footer']
-  //mainMenu: BlogPostBySlugQuery['mainMenu']
-  post: NonNullable<BlogPostBySlugQuery>
-  footer: FooterQuery
-  mainMenu: MainMenuQuery
+  post: NonNullable<BlogPostBySlugQuery['blogPosts']>
+  footer: FooterQuery['footer']
+  mainMenu: MainMenuQuery['pageCategories']
 }
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer ?? {})
-  const menuItems = parseMainMenu((mainMenu as any)?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu.data?.filter(isPresent) ?? [])
 
   // TODO change if multilingual blogs
   return (
-    <PageWrapper locale={locale} slug={post.blogPosts?.data[0].attributes?.slug ?? ''}>
-      <BlogPostPage blogPost={post?.blogPosts?.data[0].attributes} footer={parsedFooter} menuItems={menuItems} />
+    <PageWrapper locale={locale} slug={post.data[0].attributes.slug ?? ''}>
+      <BlogPostPage blogPost={post?.data[0].attributes} footer={parsedFooter} menuItems={menuItems} />
     </PageWrapper>
   )
 }
