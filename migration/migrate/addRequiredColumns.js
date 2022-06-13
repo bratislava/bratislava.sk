@@ -37,6 +37,8 @@ const queries = [
   ALTER TABLE IF EXISTS public.page_categories
     ADD COLUMN tag integer;
 `,
+
+
 ]
 
 async function addAdditionalColumns() {
