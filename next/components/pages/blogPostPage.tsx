@@ -8,8 +8,11 @@ import BasePageLayout from '../layouts/BasePageLayout'
 import Sections from '../molecules/Sections'
 import Head from 'next/head'
 
+interface BlogPost {}
+
 export interface GeneralPageProps {
-  blogPost: BlogPostFragment
+  // blogPost: BlogPostFragment
+  blogPost: any
   footer: FooterProps
   children?: React.ReactNode
   menuItems?: MenuMainItem[]

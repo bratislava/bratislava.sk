@@ -2,15 +2,6 @@ query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
   blogPosts(filters: { slug: { eq: $slug } }, locale: $locale) {
     ...BlogPost
   }
-
-  # TODO: make it seprate query for both
-  # footer(locale: $locale) {
-  #   ...Footer
-  # }
-
-  # mainMenu: pageCategories(locale: $locale) {
-  #   ...MainMenuItem
-  # }
 }
 
 # TODO: still unclear the logic
@@ -19,6 +10,68 @@ query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
 #     ...BlogPost
 #   }
 # }
+
+query Footer($locale: I18NLocaleCode!) {
+  footer(locale: $locale) {
+    data {
+      attributes {
+        address
+        copyright
+        email
+        facebookUrl
+        instagramUrl
+        phone
+        youtubeUrl
+        accessibilityLink {
+          anchor
+          title
+          url
+          page {
+            data {
+              attributes {
+                title
+                slug
+                locale
+              }
+            }
+          }
+        }
+        footerSections {
+          title
+          pageLinks {
+            anchor
+            title
+            url
+            page {
+              data {
+                attributes {
+                  title
+                  slug
+                  locale
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query MainMenu($locale: I18NLocaleCode!) {
+  pageCategories(locale: $locale) {
+    data {
+      attributes {
+        color
+        icon
+        title
+        iconHover
+        priority
+      }
+      id
+    }
+  }
+}
 
 query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
   blogPosts(
@@ -109,6 +162,7 @@ fragment BlogPost on BlogPostEntityResponseCollection {
   data {
     id
     attributes {
+      slug
       excerpt
       title
       updatedAt
@@ -162,3 +216,17 @@ fragment BlogPostLink on ComponentBlocksBlogPostLink {
   url
 }
 
+fragment PageLink on ComponentBlocksPageLink {
+  title
+  url
+  anchor
+  page {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
+    }
+  }
+}
