@@ -25,7 +25,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           shiftIndex={shiftIndex}
           items={posts.map((blogCard, i) => (
             <div key={i} className="box-content flex py-16">
-              <HorizontalCard style={{ minHeight: 200, width: 540 }} key={i} imageSrc={blogCard.imageSrc}>
+              <HorizontalCard style={{ minHeight: 220, width: 540 }} key={i} imageSrc={blogCard.imageSrc}>
                 {blogCard.title}
                 <UILink
                   className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"

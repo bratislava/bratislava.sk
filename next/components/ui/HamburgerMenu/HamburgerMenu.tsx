@@ -8,6 +8,7 @@ import TextSize from '../../../assets/images/text-size.svg'
 import cx from 'classnames'
 import React, { useState } from 'react'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
+import { ArrowRight } from '@assets/images'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
@@ -94,6 +95,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
             className="bg-red-universal-300 px-6 w-40 h-10 inline-flex text-white text-base font-medium rounded shadow-md"
             href="#"
             icon={<ChevronRight />}
+            hoverIcon={<ArrowRight />}
             iconPosition="right"
           >
             Registrácia
@@ -104,6 +106,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
             <Link
               variant="plain"
               icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
               iconPosition="right"
               href={item.url}
               key={item.title}

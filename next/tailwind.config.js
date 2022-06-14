@@ -86,13 +86,14 @@ module.exports = {
       fontSize: {
         xs: ['14px', '22.4px'],
         sm: ['16px', '24px'],
-        default: ['20px', '24.2px'],
+        default: ['20px', '30px'],
         md: ['24px', '140%'],
         md2: ['28px', '33.6px'],
         lg: ['32px', '44.8px'],
         xl: ['36px', '42.3px'],
         '2xl': ['40px', '60px'],
         xxl: ['42px', '50.8px'],
+        xxxl: ['48px', '62px'],
       },
       colors: {
         primary: 'var(--primary-color)',
