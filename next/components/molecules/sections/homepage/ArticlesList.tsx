@@ -44,13 +44,9 @@ export const ArticlesList = ({
         // TODO double check this filter after everything is connected
         filters: {
           tag: {
-            //title: selectedTags,
             title: {
               in: selectedTags,
             },
-            /* pageCategory: {
-              title: category,
-            }, */
             pageCategory: {
               title: {
                 eq: category,
@@ -74,7 +70,7 @@ export const ArticlesList = ({
   useEffect(() => {
     let isMounted = false
     const getTotalCount = async () => {
-      const { /* blogPostsConnection */ blogPosts } = await client.TotalPostsCount({
+      const { blogPosts } = await client.TotalPostsCount({
         // TODO double check this filter after everything is connected
         where: {
           tag: {
@@ -108,14 +104,17 @@ export const ArticlesList = ({
     let isMounted = false
     const getTags = async () => {
       const { tags } = await client.RelatedTags({
+        // TODO double check this filter after everything is connected
         where: {
           pageCategory: {
-            title: selectedCategory,
+            title: {
+              eq: selectedCategory,
+            },
           },
         },
       })
       if (isMounted) return
-      setTags(tags)
+      setTags(tags.data)
     }
     getTags()
       .then()
@@ -128,13 +127,16 @@ export const ArticlesList = ({
 
   useEffect(() => {
     const helperTags = totalTags.map((item) => ({
-      title: item.title,
-      color: item.pageCategory?.color,
-      category: item.pageCategory?.title,
+      title: item.attributes.title,
+      color: item.attributes.pageCategory?.data.attributes.color,
+      category: item.attributes.pageCategory?.data.attributes.title,
     }))
 
-    const filteringTags = [...new Map(helperTags.map((item) => [item['title'], item])).values()]
-    setFilteredTags(filteringTags)
+    // TODO double check this filter after everything is connected
+
+    // const filteringTags = [...new Map(helperTags.map((item) => [item['title'], item])).values()]
+    // setFilteredTags(filteringTags)
+    setFilteredTags(helperTags)
   }, [totalTags])
 
   const handleFiltering = (tag: string) => {
