@@ -6,11 +6,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres4
-      PGPORT: 5432
+      PGPORT: 5434
     expose:
-      - '5432'
+      - '5434'
     ports:
-      - '127.0.0.1:5432:5432'
+      - '127.0.0.1:5434:5434'
 
 volumes:
   postgres:
