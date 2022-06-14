@@ -28,13 +28,13 @@ query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
     ...GeneralPage
   }
 
-  # footer(locale: $locale) {
-  #   ...Footer
-  # }
+  footer(locale: $locale) {
+    ...Footer
+  }
 
-  # mainMenu: pageCategories(locale: $locale) {
-  #   ...MainMenuItem
-  # }
+  mainMenu: pageCategories(locale: $locale) {
+    ...MainMenuItem
+  }
 }
 
 fragment GeneralPage on PageEntityResponseCollection {
@@ -136,24 +136,28 @@ fragment ParentPage on Page {
   title
 }
 
-# fragment Footer on Footer {
-#   address
-#   phone
-#   email
-#   copyright
-#   accessibilityLink {
-#     ...PageLink
-#   }
-#   youtubeUrl
-#   facebookUrl
-#   instagramUrl
-#   footerSections {
-#     title
-#     pageLinks {
-#       ...PageLink
-#     }
-#   }
-# }
+fragment Footer on FooterEntityResponse {
+  data {
+    attributes {
+      address
+      copyright
+      email
+      facebookUrl
+      instagramUrl
+      phone
+      youtubeUrl
+      accessibilityLink {
+        ...PageLink
+      }
+      footerSections {
+        title
+        pageLinks {
+          ...PageLink
+        }
+      }
+    }
+  }
+}
 
 fragment PageLink on ComponentBlocksPageLink {
   title
@@ -442,17 +446,18 @@ fragment Localization on Page {
   locale
 }
 
-# fragment MainMenuItem on PageCategory {
-#   data {
-#     id
-#     attributes {
-#       title
-#       color
-#       icon
-#       iconHover
-#       priority
-#     }
-#   }
+fragment MainMenuItem on PageCategory {
+  data {
+    id
+    attributes {
+      title
+      color
+      icon
+      iconHover
+      priority
+    }
+  }
+}
 #   subcategories {
 #     id
 #     title

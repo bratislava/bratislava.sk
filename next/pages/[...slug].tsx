@@ -13,9 +13,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const { pages } = await client.PagesStaticPaths()
   if (pages) {
-    paths = pages.map(({ slug }) => ({
+    paths = pages.data.map(({ attributes }) => ({
       params: {
-        slug: slug.split('/'),
+        slug: attributes.slug.split('/'),
       },
     }))
   }
@@ -28,19 +28,19 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
   const slug = arrayify(ctx.params.slug).join('/')
 
-  const { pageBySlug, footer, mainMenu } = await client.PageBySlug({
+  const { pages, footer, mainMenu } = await client.PageBySlug({
     slug,
     locale,
   })
 
-  if (!pageBySlug) return { notFound: true } as { notFound: true }
+  if (!pages) return { notFound: true } as { notFound: true }
 
   const pageTranslations = ['common']
 
-  if (pageBySlug.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsCalculator')) {
+  if (pages.data.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsCalculator')) {
     pageTranslations.push('minimum-calculator')
   }
-  if (pageBySlug.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsNewsletter')) {
+  if (pages.data.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsNewsletter')) {
     pageTranslations.push('newsletter')
   }
 
