@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-category",
     "pluralName": "page-categories",
-    "displayName": "Page Category"
+    "displayName": "Page Category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -38,7 +39,14 @@
         }
       },
       "type": "enumeration",
-      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+      "enum": [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "brown"
+      ]
     },
     "icon": {
       "pluginOptions": {
@@ -47,7 +55,14 @@
         }
       },
       "type": "enumeration",
-      "enum": ["mesto_01", "doprava_mapy_02", "zp_vystavba_03", "socialna_pomoc_04", "vzdelavanie_05", "kultura_06"]
+      "enum": [
+        "mesto_01",
+        "doprava_mapy_02",
+        "zp_vystavba_03",
+        "socialna_pomoc_04",
+        "vzdelavanie_05",
+        "kultura_06"
+      ]
     },
     "iconHover": {
       "pluginOptions": {
@@ -72,6 +87,17 @@
         }
       },
       "type": "integer"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "pageCategory"
+    },
+    "subcategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page-subcategory.page-subcategory"
     }
   }
 }
