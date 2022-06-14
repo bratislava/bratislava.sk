@@ -74,20 +74,25 @@ export const ArticlesList = ({
   useEffect(() => {
     let isMounted = false
     const getTotalCount = async () => {
-      const { blogPostsConnection } = await client.TotalPostsCount({
+      const { /* blogPostsConnection */ blogPosts } = await client.TotalPostsCount({
+        // TODO double check this filter after everything is connected
         where: {
           tag: {
-            title: selectedTags,
+            title: {
+              in: selectedTags,
+            },
             pageCategory: {
-              title: category,
+              title: {
+                eq: category,
+              },
             },
           },
         },
       })
       if (selectedTags.length < 1 && !category) {
         if (isMounted) return
-        else setTotal(blogPostsConnection.aggregate.totalCount)
-      } else setTotal(blogPostsConnection.aggregate.count)
+        else setTotal(blogPosts.meta.pagination.total)
+      } else setTotal(blogPosts.meta.pagination.pageCount)
     }
 
     getTotalCount()

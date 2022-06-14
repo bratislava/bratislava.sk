@@ -2890,7 +2890,7 @@ export type TotalPostsCountQueryVariables = Exact<{
 }>;
 
 
-export type TotalPostsCountQuery = { __typename?: 'Query', blogPosts?: { __typename?: 'BlogPostEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+export type TotalPostsCountQuery = { __typename?: 'Query', blogPosts?: { __typename?: 'BlogPostEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, pageCount: number } } } | null };
 
 export type RelatedTagsQueryVariables = Exact<{
   where?: InputMaybe<TagFiltersInput>;
@@ -3499,7 +3499,7 @@ export const LatestPostsByTagsDocument = gql`
   blogPosts(
     filters: {tag: {title: {in: $tags}}}
     pagination: {limit: $limit, start: $start}
-    sort: "published_at:desc"
+    sort: "publishedAt:desc"
   ) {
     ...BlogPost
   }
@@ -3564,6 +3564,7 @@ export const TotalPostsCountDocument = gql`
     meta {
       pagination {
         total
+        pageCount
       }
     }
   }

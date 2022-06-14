@@ -135,6 +135,7 @@ query TotalPostsCount($where: BlogPostFiltersInput) {
     meta {
       pagination {
         total
+        pageCount
       }
     }
   }
