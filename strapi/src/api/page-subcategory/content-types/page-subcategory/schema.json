@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-subcategory",
     "pluralName": "page-subcategories",
-    "displayName": "Page Subcategory"
+    "displayName": "Page Subcategory",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -75,6 +76,26 @@
         "komunity_06",
         "covid_06"
       ]
+    },
+    "moreLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.page-link"
+    },
+    "pages": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.page-link"
     }
   }
 }
