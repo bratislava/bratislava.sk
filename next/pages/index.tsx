@@ -29,10 +29,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export const getServerSideProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
-  const { footer, mainMenu } = await client.PageBySlug({
-    slug: 'test',
-    locale,
-  })
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
@@ -40,6 +36,14 @@ export const getServerSideProps = async (ctx) => {
   })
 
   let { homepage } = await client.Homepage({
+    locale,
+  })
+
+  const { pageCategories: mainMenu } = await client.MainMenu({
+    locale,
+  })
+
+  const { footer } = await client.Footer({
     locale,
   })
 
@@ -122,7 +126,7 @@ const Homepage = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu?.data?.filter(isPresent) ?? [])
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed

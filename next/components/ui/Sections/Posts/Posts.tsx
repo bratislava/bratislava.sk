@@ -75,8 +75,8 @@ export const Posts = ({
                   <NewsCard {...newsCard} />
                 </div>
               ))}
-            {leftHighLight && <NewsCard {...leftHighLight} readMoreText={readMoreText} />}
-            {rightHighLight && <NewsCard {...rightHighLight} readMoreText={readMoreText} />}
+            {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
+            {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
 
             {latestPost.length > 0 && (
               <div>
