@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+
+configMapGenerator:
+- name: ${BUILD_REPOSITORY_NAME}-env
+  namespace: ${NAMESPACE}
+  behavior: merge
+  envs:
+  - .env

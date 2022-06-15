@@ -1,0 +1,7 @@
+namePrefix:
+  - path: metadata/name
+  - kind: Ingress
+    path: spec/tls/secretName
+  - path: spec/template/spec/containers/envFrom/secretRef/name
+  - kind: SealedSecret
+    path: spec/template/metadata/name
