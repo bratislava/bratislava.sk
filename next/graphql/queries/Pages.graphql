@@ -5,7 +5,7 @@ query Pages {
       attributes {
         slug
         sections {
-          ...PageSections
+          ...Sections
         }
       }
     }
@@ -51,7 +51,17 @@ fragment GeneralPage on PageEntityResponseCollection {
           }
         }
       }
+      pageButtonContent {
+        title
+        url
+      }
+      sections {
+        ...Sections
+      }
       locale
+      localizations {
+        ...Localization
+      }
       pageHeaderSections {
         ... on ComponentSectionsSubpageList {
           id
@@ -99,6 +109,67 @@ fragment GeneralPage on PageEntityResponseCollection {
                     }
                   }
                 }
+                slug
+              }
+            }
+          }
+          second_blog {
+            data {
+              attributes {
+                title
+                publishedAt
+                coverImage {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+                tag {
+                  data {
+                    attributes {
+                      pageCategory {
+                        data {
+                          attributes {
+                            color
+                            shortTitle
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                slug
+              }
+            }
+          }
+          third_blog {
+            data {
+              attributes {
+                title
+                publishedAt
+                coverImage {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+                tag {
+                  data {
+                    attributes {
+                      pageCategory {
+                        data {
+                          attributes {
+                            color
+                            shortTitle
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                slug
               }
             }
           }
@@ -125,6 +196,15 @@ fragment GeneralPage on PageEntityResponseCollection {
           }
         }
       }
+      pageCategory {
+        data {
+          id
+          attributes {
+            title
+            color
+          }
+        }
+      }
     }
     id
   }
@@ -134,6 +214,15 @@ fragment ParentPage on Page {
   slug
   locale
   title
+}
+
+fragment Localization on PageRelationResponseCollection {
+  data {
+    attributes {
+      slug
+      locale
+    }
+  }
 }
 
 fragment Footer on FooterEntityResponse {
@@ -159,6 +248,35 @@ fragment Footer on FooterEntityResponse {
   }
 }
 
+fragment MainMenuItem on PageCategoryEntityResponseCollection {
+  data {
+    id
+    attributes {
+      title
+      color
+      icon
+      iconHover
+      priority
+      subcategories {
+        data {
+          id
+          attributes {
+            title
+            priority
+            icon
+            moreLink {
+              ...PageLink
+            }
+            pages {
+              ...PageLink
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 fragment PageLink on ComponentBlocksPageLink {
   title
   url
@@ -169,6 +287,19 @@ fragment PageLink on ComponentBlocksPageLink {
         title
         slug
         locale
+      }
+    }
+  }
+}
+
+fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
+  title
+  desc
+  icon {
+    data {
+      id
+      attributes {
+        url
       }
     }
   }
@@ -239,7 +370,63 @@ fragment DocumentList on ComponentSectionsDocumentList {
   }
 }
 
-fragment PageSections on PageSectionsDynamicZone {
+fragment File on ComponentBlocksFile {
+  title
+  category
+  media {
+    data {
+      attributes {
+        url
+        createdAt
+        size
+        ext
+      }
+    }
+  }
+}
+
+fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
+  title
+  subtitle
+  category
+  url
+  urlLabel
+}
+
+fragment FlatText on ComponentAccordionItemsFlatText {
+  category
+  content
+  width
+  align
+  moreLinkTitle
+  moreLinkUrl
+  moreLinkPage {
+    data {
+      attributes {
+        slug
+        title
+        locale
+      }
+    }
+  }
+}
+
+fragment Institution on ComponentAccordionItemsInstitution {
+  title
+  subtitle
+  category
+  firstColumn
+  secondColumn
+  thirdColumn
+  url
+  urlLabel
+}
+
+fragment NumericalListItem on ComponentBlocksNumericalListItem {
+  text
+}
+
+fragment Sections on PageSectionsDynamicZone {
   __typename
 
   ... on ComponentSectionsIconTitleDesc {
@@ -389,108 +576,5 @@ fragment PageSections on PageSectionsDynamicZone {
       }
     }
     filtering
-  }
-}
-
-fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
-  title
-  subtitle
-  category
-  url
-  urlLabel
-}
-
-fragment FlatText on ComponentAccordionItemsFlatText {
-  category
-  content
-  width
-  align
-  moreLinkTitle
-  moreLinkUrl
-  moreLinkPage {
-    data {
-      attributes {
-        slug
-        title
-        locale
-      }
-    }
-  }
-}
-
-fragment Institution on ComponentAccordionItemsInstitution {
-  title
-  subtitle
-  category
-  firstColumn
-  secondColumn
-  thirdColumn
-  url
-  urlLabel
-}
-
-fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
-  title
-  desc
-  icon {
-    data {
-      attributes {
-        url
-      }
-      id
-    }
-  }
-}
-
-fragment File on ComponentBlocksFile {
-  title
-  category
-  media {
-    data {
-      attributes {
-        url
-        createdAt
-        size
-        ext
-      }
-    }
-  }
-}
-
-fragment NumericalListItem on ComponentBlocksNumericalListItem {
-  text
-}
-
-fragment Localization on Page {
-  slug
-  locale
-}
-
-fragment MainMenuItem on PageCategoryEntityResponseCollection {
-  data {
-    id
-    attributes {
-      title
-      color
-      icon
-      iconHover
-      priority
-      subcategories {
-        data {
-          id
-          attributes {
-            title
-            priority
-            icon
-            moreLink {
-              ...PageLink
-            }
-            pages {
-              ...PageLink
-            }
-          }
-        }
-      }
-    }
   }
 }

@@ -197,7 +197,7 @@ fragment BlogPost on BlogPostEntityResponseCollection {
       }
       createdAt
       sections {
-        ...PageSections
+        ...Sections
       }
     }
   }
