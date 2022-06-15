@@ -198,6 +198,12 @@ module.exports = {
       letterSpacing: {
         wider: '.08em',
       },
+      minHeight: {
+        220: '220px',
+      },
+      width: {
+        540: '540px',
+      },
       minWidth: {
         39: '156px',
       },
