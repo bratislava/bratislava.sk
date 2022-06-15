@@ -38,5 +38,16 @@ spec:
               port: http
             periodSeconds: 60
             initialDelaySeconds: 60
-          resources:
-            { }
+          volumeMounts:
+            - name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
+              mountPath: /data.ms
+  volumeClaimTemplates:
+    - metadata:
+        name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
+        labels:
+          service: meilisearch
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 10Gi
