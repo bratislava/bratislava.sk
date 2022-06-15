@@ -8,7 +8,7 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Homepage, BlogPost, BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntity, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { useTranslation } from 'react-i18next'
@@ -20,8 +20,8 @@ export interface PostsProps {
   posts?: TPostsTab[]
   // latestPost?: BlogPost[]
   latestPost?: BlogPostEntity[]
-  leftHighLight?: Pick<Homepage, 'left_highlight'>
-  rightHighLight?: Pick<Homepage, 'right_highlight'>
+  leftHighLight?: NewsCardBlogFragment | null
+  rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
   readMoreNewsText?: string
 }
@@ -75,8 +75,8 @@ export const Posts = ({
                   <NewsCard {...newsCard} />
                 </div>
               ))}
-            {leftHighLight && <NewsCard {...leftHighLight} readMoreText={readMoreText} />}
-            {rightHighLight && <NewsCard {...rightHighLight} readMoreText={readMoreText} />}
+            {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
+            {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
 
             {latestPost.length > 0 && (
               <div>

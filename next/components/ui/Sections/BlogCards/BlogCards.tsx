@@ -10,10 +10,10 @@ export interface BlogCardsProps {
   className?: string
   shiftIndex?: number
   posts: {
-    imageSrc: string
-    title: string
-    url: string
-  }[]
+    imageSrc?: string | null | undefined
+    title?: string | null | undefined
+    url?: string | null | undefined
+  }[] | undefined
 }
 
 export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps) => {
@@ -25,11 +25,11 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           shiftIndex={shiftIndex}
           items={posts.map((blogCard, i) => (
             <div key={i} className="box-content flex py-16">
-              <HorizontalCard style={{ minHeight: 200, width: 540 }} key={i} imageSrc={blogCard.imageSrc}>
+              <HorizontalCard style={{ minHeight: 200, width: 540 }} key={i} imageSrc={blogCard?.imageSrc || ""}>
                 {blogCard.title}
                 <UILink
                   className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
-                  href={blogCard.url}
+                  href={blogCard?.url || ""}
                 >
                   <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
                   <span className="group-hover:hidden">
