@@ -466,7 +466,7 @@ fragment Localization on Page {
   locale
 }
 
-fragment MainMenuItem on PageCategory {
+fragment MainMenuItem on PageCategoryEntityResponseCollection {
   data {
     id
     attributes {
@@ -475,19 +475,22 @@ fragment MainMenuItem on PageCategory {
       icon
       iconHover
       priority
+      subcategories {
+        data {
+          id
+          attributes {
+            title
+            priority
+            icon
+            moreLink {
+              ...PageLink
+            }
+            pages {
+              ...PageLink
+            }
+          }
+        }
+      }
     }
   }
 }
-#   subcategories {
-#     id
-#     title
-#     priority
-#     icon
-#     moreLink {
-#       ...PageLink
-#     }
-#     pages {
-#       ...PageLink
-#     }
-#   }
-# }

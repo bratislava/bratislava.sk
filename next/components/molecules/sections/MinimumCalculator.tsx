@@ -1,5 +1,5 @@
 import { Button, Input } from '@bratislava/ui-bratislava'
-import { ChevronRight } from '@assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import React, { FormEvent } from 'react'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -89,6 +89,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
         <Button
           className="mt-6 py-4 px-6 bg-primary text-font text-default font-semibold"
           icon={<ChevronRight />}
+          hoverIcon={<ArrowRight />}
           type="submit"
         >
           {t('buttonText')}

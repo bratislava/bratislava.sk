@@ -6,7 +6,7 @@ import { TabBarTab } from '../../TabBarTab/TabBarTab'
 import { Tag } from '../../Tag/Tag'
 import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { ChevronRight } from '@assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { BlogPostEntity, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
@@ -51,7 +51,7 @@ export const Posts = ({
 
   return (
     <div className={cx(className)}>
-      <HorizontalScrollWrapper className="justify-center">
+      <HorizontalScrollWrapper className="justify-start lg:justify-center">
         <div className="flex space-x-8 lg:space-x-32 ml-8 lg:ml-0">
           {posts.map((post, index) => (
             <TabBarTab
@@ -106,6 +106,7 @@ export const Posts = ({
                     variant="transparent"
                     className="px-6 py-3 text-default font-medium shadow-none text-font"
                     icon={<ChevronRight />}
+                    hoverIcon={<ArrowRight />}
                   >
                     {readMoreNewsText}
                   </Button>
@@ -123,7 +124,7 @@ export const Posts = ({
             ))}
           </div>
           <UILink href="/official-board" className="flex justify-center">
-            <Button className="px-6 py-3 text-default font-medium" variant="transparent-black" icon={<ChevronRight />}>
+            <Button className="px-6 py-3 text-default font-medium" variant="transparent-black" icon={<ChevronRight />} hoverIcon={<ArrowRight />}>
               Prejsť na úradnú tabuľu
             </Button>
           </UILink>

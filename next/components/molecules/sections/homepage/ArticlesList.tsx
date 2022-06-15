@@ -114,7 +114,14 @@ export const ArticlesList = ({
         },
       })
       if (isMounted) return
-      setTags(tags.data)
+      const helperTags = tags?.map((item) => ({
+        title: item?.title,
+        color: item?.pageCategory?.color,
+        category: item?.pageCategory?.title,
+      }))
+
+      const filteringTags = [...new Map(helperTags.map((item) => [item['title'], item])).values()]
+      setFilteredTags(filteringTags)
     }
     getTags()
       .then()
@@ -124,20 +131,6 @@ export const ArticlesList = ({
       isMounted = true
     }
   }, [selectedCategory])
-
-  useEffect(() => {
-    const helperTags = totalTags.map((item) => ({
-      title: item.attributes.title,
-      color: item.attributes.pageCategory?.data.attributes.color,
-      category: item.attributes.pageCategory?.data.attributes.title,
-    }))
-
-    // TODO double check this filter after everything is connected
-
-    // const filteringTags = [...new Map(helperTags.map((item) => [item['title'], item])).values()]
-    // setFilteredTags(filteringTags)
-    setFilteredTags(helperTags)
-  }, [totalTags])
 
   const handleFiltering = (tag: string) => {
     selectedTags.includes(tag)
