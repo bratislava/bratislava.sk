@@ -66,19 +66,7 @@ fragment GeneralPage on PageEntityResponseCollection {
         ... on ComponentSectionsSubpageList {
           id
           subpageList {
-            id
-            anchor
-            title
-            url
-            page {
-              data {
-                attributes {
-                  title
-                  slug
-                  locale
-                }
-              }
-            }
+            ...PageLink
           }
         }
         ... on ComponentSectionsFeaturedBlogPosts {
