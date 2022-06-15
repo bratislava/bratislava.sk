@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 /**
  *  audience controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories
+const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::audience.audience')
+module.exports = createCoreController('api::audience.audience');

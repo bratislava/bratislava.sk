@@ -16,7 +16,10 @@
     },
     "circleOption": {
       "type": "enumeration",
-      "enum": ["primary", "secondary"]
+      "enum": [
+        "primary",
+        "secondary"
+      ]
     },
     "moreLinkPage": {
       "type": "relation",

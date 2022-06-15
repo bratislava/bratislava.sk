@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 /**
  * author router.
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories
+const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::author.author')
+module.exports = createCoreRouter('api::author.author');

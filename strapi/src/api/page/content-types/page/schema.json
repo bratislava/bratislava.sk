@@ -64,25 +64,22 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.accordion",
-        "sections.articles-list",
-        "sections.calculator",
         "sections.columned-text",
-        "sections.contact",
-        "sections.divider",
-        "sections.file-list",
-        "sections.icon-title-desc",
-        "sections.iframe",
-        "sections.links",
-        "sections.list-items",
         "sections.narrow-text",
-        "sections.newsletter",
-        "sections.numerical-list",
         "sections.text-with-image",
-        "sections.videos",
+        "sections.file-list",
+        "sections.divider",
         "sections.waves",
-        "sections.document-list",
-        "sections.space"
+        "sections.links",
+        "sections.accordion",
+        "sections.calculator",
+        "sections.contact",
+        "sections.list-items",
+        "sections.newsletter",
+        "sections.videos",
+        "sections.icon-title-desc",
+        "sections.numerical-list",
+        "sections.articles-list"
       ]
     },
     "pageHeaderSections": {
@@ -108,38 +105,6 @@
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "parentPage"
-    },
-    "pageBackgroundImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "pageButtonContent": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.blog-post-link"
-    },
-    "pageCategory": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::page-category.page-category",
-      "inversedBy": "pages"
     },
     "relatedContents": {
       "type": "relation",

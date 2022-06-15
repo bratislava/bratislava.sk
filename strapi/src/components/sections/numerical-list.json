@@ -10,7 +10,11 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["basic", "combined", "roadmap"]
+      "enum": [
+        "basic",
+        "combined",
+        "roadmap"
+      ]
     },
     "buttonText": {
       "type": "string"

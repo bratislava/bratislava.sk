@@ -1,5 +1,5 @@
 {
-  "name": "bratislava-strapi",
+  "name": "v-4",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -9,13 +9,7 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {
-    "@babel/core": "^7.18.2",
-    "@babel/eslint-parser": "^7.18.2",
-    "eslint": "^8.17.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-scope": "^7.1.1"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-graphql": "^4.1.12",
     "@strapi/plugin-i18n": "4.1.12",
@@ -23,8 +17,7 @@
     "@strapi/strapi": "4.1.12",
     "better-sqlite3": "7.4.6",
     "pg": "^8.7.3",
-    "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-provider-upload-ts-minio": "^3.1.0"
+    "strapi-plugin-email-designer": "^2.1.1"
   },
   "author": {
     "name": "A Strapi developer"

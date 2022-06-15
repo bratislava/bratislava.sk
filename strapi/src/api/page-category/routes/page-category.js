@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 /**
  * page-category router.
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories
+const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::page-category.page-category')
+module.exports = createCoreRouter('api::page-category.page-category');
