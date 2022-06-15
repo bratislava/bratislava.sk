@@ -3,27 +3,16 @@ import NoResultsIlustration from '../assets/images/no-results-small.svg'
 import ChevronRight from '../assets/images/chevron-right.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
+import { GetStaticProps } from 'next'
 
-// export const getServerSideProps = async (ctx: any) => {
-//   const locale = ctx.locale ?? 'sk'
-//   return {
-//     props: {
-//       page: {
-//         locale: ctx.locale,
-//         localizations: ['sk', 'en']
-//           .filter((l) => l !== ctx.locale)
-//           .map((l) => ({
-//             slug: '',
-//             locale: l,
-//           })),
-//       },
-
-//       ...(await serverSideTranslations(locale, ['common', 'footer'])),
-//     },
-//   }
-//}
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+    },
+  }
+}
 
 const NotFoundPage = () => {
   const { Link } = useUIContext()
@@ -43,7 +32,7 @@ const NotFoundPage = () => {
               className="text-default px-6 py-3"
               icon={<ChevronRight className="scale-75" />}
             >
-              Na hlavnú stránku
+              {t('toTheMainPage')}
             </Button>
           </Link>
         </div>
