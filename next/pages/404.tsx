@@ -22,14 +22,14 @@ const NotFoundPage = () => {
     <div className="w-screen h-screen flex px-7 py-10 md:pl-36 md:pr-32 xl:pl-80 xl:pr-70">
       <div className="flex flex-col md:flex-row-reverse items-center md:justify-between w-full">
         <NoResultsIlustration />
-        {/* text-5xl font-extrabold does not work */}
         <div className="flex flex-col items-center lg:items-start">
+          {/* text-5xl font-extrabold does not work */}
           <div className="text-[48px] lg:text-[64px] font-[800] pb-4">404</div>
           <div className="text-center lg:text-left lg:text-default max-w-xs pb-10">{t('sorryNoResultsFound')}</div>
           <Link href="/">
             <Button
               variant="transparent-black"
-              className="text-default px-6 py-3"
+              className="text-sm md:text-default px-6 py-3"
               icon={<ChevronRight className="scale-75" />}
             >
               {t('toTheMainPage')}
