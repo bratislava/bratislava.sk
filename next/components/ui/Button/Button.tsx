@@ -41,7 +41,7 @@ export const Button = ({
 
   return (
     <button
-      className={cx('group hidden lg:flex items-center', className, {
+      className={cx('group flex items-center', className, {
         // common styles
         'base-button': shape !== 'none',
         'base-link': shape === 'none',
