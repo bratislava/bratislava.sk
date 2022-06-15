@@ -201,7 +201,7 @@ const HomepageMenu = ({ items }: IProps) => {
                 {ColoredIconComponent && (
                   <ColoredIconComponent className="hidden group-hover:block w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12" />
                 )}
-                <p className="text-sm whitespace-pre text-gray-dark">{item.title}</p>
+                <p className="text-sm md:text-default whitespace-pre text-gray-dark">{item.title}</p>
                 <div
                   style={{ backgroundColor: item.color }}
                   className="absolute hidden group-hover:block h-8 bottom-0 transform translate-y-1/2 w-full"
