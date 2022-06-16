@@ -1,4 +1,4 @@
-import { PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralPageFragment, MainMenuItemFragment, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -32,22 +32,21 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     slug,
     locale,
   })
-
-  if (!pages) return { notFound: true } as { notFound: true }
+  if (!pages?.data?.[0]) return { notFound: true } as { notFound: true }
 
   const pageTranslations = ['common']
 
-  if (pages.data.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsCalculator')) {
+  if (pages?.data[0]?.attributes?.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsCalculator')) {
     pageTranslations.push('minimum-calculator')
   }
-  if (pages.data.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsNewsletter')) {
+  if (pages?.data[0]?.attributes?.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsNewsletter')) {
     pageTranslations.push('newsletter')
   }
 
   return {
     props: {
       slug,
-      page: pageBySlug,
+      page: pages,
       footer,
       mainMenu,
       ...(await serverSideTranslations(locale, pageTranslations)),
@@ -58,22 +57,22 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 interface GenericPageProps {
   slug: string
-  page: NonNullable<PageBySlugQuery['pageBySlug']>
+  page: GeneralPageFragment
   footer: PageBySlugQuery['footer']
-  mainMenu: PageBySlugQuery['mainMenu']
+  mainMenu: MainMenuItemFragment
 }
 
 const Page = ({ page, footer, mainMenu }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer)
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu)
 
   return (
     <PageWrapper
-      locale={page.locale ?? 'sk'}
-      slug={page.slug ?? ''}
-      localizations={page.localizations?.filter(isPresent)}
+      locale={page?.data?.[0].attributes?.locale ?? 'sk'}
+      slug={page?.data?.[0]?.attributes.slug ?? ''}
+      localizations={page?.data?.[0]?.attributes?.localizations}
     >
-      <GeneralPage page={page} footer={parsedFooter} menuItems={menuItems} />
+      <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
     </PageWrapper>
   )
 }
