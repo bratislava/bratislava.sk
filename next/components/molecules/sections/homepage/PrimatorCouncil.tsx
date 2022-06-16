@@ -8,7 +8,8 @@ interface IProps {
   primatorCards?: PrimatorCardProps[]
 }
 
-const PrimatorCouncil = ({ className, primatorCards = [Primator, Council] }: IProps) => (
+// TODO fix types
+const PrimatorCouncil = ({ className, primatorCards = [Primator as any, Council as any] }: IProps) => (
   <div className="flex justify-center">
     <div
       className={cx(

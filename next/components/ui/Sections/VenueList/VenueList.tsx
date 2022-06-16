@@ -24,14 +24,16 @@ export const VenueList = ({
           title: 'Zrkadlová sieň',
           description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
-          imageSrc: VenueImg,
+          // TODO fix types
+          imageSrc: VenueImg as any,
           linkTitle: 'Rezervovať',
         },
         {
           title: 'Zrkadlová sieň',
           description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
-          imageSrc: VenueImg,
+          // TODO fix types
+          imageSrc: VenueImg as any,
           linkTitle: 'Rezervovať',
         },
       ],
@@ -44,7 +46,8 @@ export const VenueList = ({
           title: 'Zrkadlová sieň',
           description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
-          imageSrc: VenueImg,
+          // TODO fix types
+          imageSrc: VenueImg as any,
           linkTitle: 'Rezervovať',
         },
       ],

@@ -1,5 +1,5 @@
 import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
-import { BasicSearch, DocumentListItem, Modal } from '@bratislava/ui-bratislava'
+import { DocumentListItem, Modal } from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import { fileCountVzns } from '@utils/utils'
 import { useState } from 'react'
@@ -21,9 +21,9 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <BasicSearch />
-      </div>
+      </div> */}
       <div className="pt-10 pb-5 text-md font-semibold">Zoznam dokumentov</div>
       <div className="flex flex-row md:flex-col md:w-auto overflow-x-auto gap-4 modal-content-rent">
         {vzns?.map((vzn) => {

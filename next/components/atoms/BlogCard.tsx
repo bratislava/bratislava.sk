@@ -1,4 +1,4 @@
-import { Card } from '@bratislava/ui-bratislava'
+import { Card, StaticImageData } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import NextLink from 'next/link'
 import Image1 from '../../assets/images/blog-image.png'
