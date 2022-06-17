@@ -84,6 +84,7 @@ module.exports = {
     },
     extend: {
       fontSize: {
+        xxs: ['12px', '18px'],
         xs: ['14px', '22.4px'],
         sm: ['16px', '24px'],
         default: ['20px', '30px'],
@@ -97,6 +98,7 @@ module.exports = {
       },
       colors: {
         primary: 'var(--primary-color)',
+        primaryDark: '#933D35',
         secondary: 'var(--secondary-color)',
         background: 'var(--background-color)',
         font: 'var(--font-color)',
@@ -160,6 +162,7 @@ module.exports = {
         4.25: '17px',
         4.5: '18px',
         5.5: '22px',
+        6: '24px',
         7.5: '30px',
         12.5: '50px',
         17.5: '70px',
@@ -210,6 +213,7 @@ module.exports = {
       maxWidth: {
         61: '244px',
         87: '350px',
+        100: "1110px"
       },
     },
   },

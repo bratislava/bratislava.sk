@@ -49,6 +49,8 @@ const navBarUrls = {
 export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [cookies, setCookies] = useState(true)
+  // const [rejectCookies, setRejectCookies] = useState(true)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
@@ -57,6 +59,14 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     setSearchOpen(!searchOpen)
   }
   const { t } = useTranslation('common')
+
+  const acceptCookies = () => {
+    setCookies(false);
+  }
+
+  const rejectCookies = () => {
+    setCookies(false);
+  }
 
   return (
     <>
@@ -177,6 +187,21 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
 
         {burgerOpen && <HamburgerMenu hamburgerMenuItems={menuItems} />}
       </div>
+
+      { cookies ?
+        <div className='fixed bottom-6 z-50 px-6 left-0 right-0'>
+              <div className='bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-100 mx-auto'>
+                <h6 className='text-default mb-4 font-semibold'>Používanie cookies</h6>
+                <p className='text-xxs sm:text-sm mb-8'>Táto webstránka používa základné cookies na zabezpečenie správneho fungovania a sledovanie cookies, ktoré nám pomáha porozumieť, ako stránku využívate. Budú zaznamenávané len po tom, ako vyjadríte svoj súhlas. Nastavenia cookies.</p>
+                <div className='block sm:flex'>
+                <Button className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium" variant='primaryDark' onClick={() => acceptCookies()}>Prijať všetky</Button>
+                <Button className="mt-0 px-6 h-12 text-sm font-medium" variant='secondaryDarkText' onClick={() => rejectCookies()}>Odmietnuť všetky</Button>
+                </div>
+              </div>
+            </div>
+          : ""
+      }
+      
     </>
   )
 }
