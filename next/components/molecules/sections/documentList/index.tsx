@@ -7,7 +7,7 @@ import { DocumentListModalBody } from './modalBody'
 
 export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
   const [isOpen, setOpen] = useState(false)
-  const [activeData, setActiveData] = useState(null)
+  const [activeData, setActiveData] = useState(null);
 
   const setOpenModal = (id) => {
     const data = vzns?.data?.find((vzn) => vzn.id === id)
@@ -34,7 +34,7 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
               discription={vzn.attributes.details}
               key={vzn.id}
               id={vzn.id}
-              icon={category.icon}
+              Icon={category.icon}
               count={fileCountVzns(vzn)}
               onClick={setOpenModal}
             />
@@ -42,7 +42,7 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
         })}
       </div>
       <Modal isOpen={isOpen} onClose={setCloseModal} className="z-50">
-        <DocumentListModalBody data={activeData} />
+        <DocumentListModalBody {...activeData} />
       </Modal>
     </div>
   )

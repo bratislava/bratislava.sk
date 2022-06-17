@@ -1,10 +1,10 @@
-import { DocumentListFragment, Vzn, VznEntity } from '@bratislava/strapi-sdk-homepage'
+import { VznEntity } from '@bratislava/strapi-sdk-homepage'
 import { FileCard } from '@bratislava/ui-bratislava'
 import { dateFormat } from '@utils/constants'
 import moment from 'moment'
 import ReactMarkdown from 'react-markdown'
 
-export const DocumentListModalBody = ({ attributes }: VznEntity |) => {
+export const DocumentListModalBody = ({ attributes }: VznEntity) => {
   return (
     <div className="bg-background max-w-3xl max-h-[75vh] overflow-y-auto modal-content-rent">
       <div className="py-8 px-12">
