@@ -13,6 +13,7 @@ spec:
   tls:
     - hosts:
         - ${HOSTNAME}
+        - ${BUILD_REPOSITORY_NAME}-meilisearch.${DEPLOYMENT_ENV}bratislava.sk
       secretName: ${BUILD_REPOSITORY_NAME}-tls
   rules:
     - host: ${HOSTNAME}
@@ -23,5 +24,15 @@ spec:
             backend:
               service:
                 name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: ${BUILD_REPOSITORY_NAME}-meilisearch.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-meilisearch
                 port:
                   number: 80
