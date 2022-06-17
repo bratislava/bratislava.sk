@@ -177,7 +177,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
               </AccordionItem>
             ))}
 
-            {groupByCategory(section.flatText ?? []).map((text) => (
+            {groupByCategory(section.flatText ?? []).reverse().map((text) => (
               <AccordionItem
                 key={text.category}
                 title={parseCategory(text.category).title}
