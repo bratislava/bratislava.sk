@@ -151,3 +151,9 @@
     @apply mt-0 -mb-12;
   }
 }
+
+@media only screen and (max-width: 767px) {
+  .box-none {
+    box-shadow:  none !important;
+  }
+}
