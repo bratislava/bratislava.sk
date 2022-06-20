@@ -7,13 +7,13 @@ export interface TokenResponse {
 
 export const getToken = async (): Promise<TokenResponse> => {
   const formData = new URLSearchParams()
-  formData.append('grant_type', 'client_credentials')
-  formData.append('client_id', 'a6f86f77-53f7-4a8c-a1e8-06671a2395b8')
-  formData.append('client_secret', 'yIR8Q~AUoke372.TfYXGxiZgfW0tWx_D4mH7qdfQ')
-  formData.append('scope', 'https://graph.microsoft.com/.default')
+  formData.append('grant_type', process.env.NEXT_PUBLIC_MSAL_GRANT_TYPE)
+  formData.append('client_id', process.env.NEXT_PUBLIC_MSAL_CLIENT_ID)
+  formData.append('client_secret', process.env.NEXT_PUBLIC_MSAL_CLIENT_SECRET)
+  formData.append('scope', process.env.NEXT_PUBLIC_MSAL_SCOPE)
 
   const result = await fetch(
-    `https://login.microsoftonline.com/fe69e74e-1e66-4fcb-99c5-58e4a2d2a063/oauth2/v2.0/token`,
+    `https://login.microsoftonline.com/${process.env.NEXT_PUBLIC_MSAL_TENANT_ID}/oauth2/v2.0/token`,
     {
       body: formData,
       method: 'post',
