@@ -36,3 +36,49 @@ export const getToken = async (): Promise<TokenResponse> => {
 
   return resultData
 }
+
+export interface UsersRequest {
+  token: string
+}
+
+export interface UserResponse {
+  businessPhones: string[]
+  displayName: string
+  givenName?: string
+  jobTitle?: string
+  mail: string
+  mobilePhone?: string
+  officeLocation?: string
+  preferredLanguage?: string
+  surname?: string
+  userPrincipalName: string
+  id: string
+}
+
+export interface UsersResponse {
+  '@odata.context'?: string
+  '@odata.nextLink'?: string
+  value: UserResponse[]
+}
+
+export const getUsers = async ({ token }: UsersRequest): Promise<any> => {
+  const result = await fetch(`https://graph.microsoft.com/v1.0/users`, {
+    method: 'get',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const resultData = await result.json()
+
+  if (resultData.error) {
+    const error = new Error(resultData.error.message)
+    console.error(error)
+
+    return {
+      value: [],
+    }
+  }
+
+  return resultData
+}

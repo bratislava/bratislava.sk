@@ -1,8 +1,21 @@
-import { getToken } from '@utils/ms-graph'
+import { getToken, getUsers } from '@utils/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { access_token } = await getToken()
+let token: string = null
 
-  return res.json(access_token)
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  let users = []
+  try {
+    if (!token) {
+      const { access_token } = await getToken()
+      token = access_token
+    }
+
+    const { value } = await getUsers({ token })
+    users = value
+  } catch (e) {
+    console.log(e)
+  }
+
+  return res.json(users)
 }
