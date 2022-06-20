@@ -48,7 +48,6 @@ COPY --chown=node:node yarn.lock ./
 RUN yarn install --production
 
 COPY . ./
-COPY .env .
 COPY --chown=node:node --from=build /root/app/.next ./.next
 
 EXPOSE 3000
