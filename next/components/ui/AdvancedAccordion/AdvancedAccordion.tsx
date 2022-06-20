@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
 import { AdvancedAccordionItem, AdvancedAccordionItemProps } from '../AdvancedAccordionItem/AdvancedAccordionItem'
 import { BasicSearch } from '../BasicSearch/BasicSearch'
 import Divider from '../Divider/Divider'
+import useSWR from 'swr'
 
 export interface AdvancedAccordionProps {
   title?: string
@@ -9,18 +9,11 @@ export interface AdvancedAccordionProps {
 }
 
 export const AdvancedAccordion = ({ title, dividerStyle }: AdvancedAccordionProps) => {
-  const [users, setUsers] = useState([])
-  const fetchUsers = async () => {
-    const res = await fetch('/api/users')
-    const data = await res.json()
-    setUsers(data)
-  }
+  const fetcher = (url) => fetch(url).then((r) => r.json())
+  const { data, error } = useSWR('/api/user', fetcher)
 
-  useEffect(() => {
-    fetchUsers()
-  }, [])
-
-  //console.log(users)
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   return (
     <div className="flex flex-col">

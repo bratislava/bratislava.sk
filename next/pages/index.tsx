@@ -53,8 +53,8 @@ export const getServerSideProps = async (ctx) => {
     imageSrc: post?.image?.data?.attributes?.url,
   }))
 
-  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url;
-  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url;
+  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
+  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
   const inba = {
     title: homepage?.data?.attributes?.inba?.title,
     content: homepage?.data?.attributes?.inba?.content,
