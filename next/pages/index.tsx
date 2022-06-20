@@ -149,7 +149,6 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <AdvancedAccordion />
           <BlogCards posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
