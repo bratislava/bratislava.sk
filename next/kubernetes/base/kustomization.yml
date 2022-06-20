@@ -1,0 +1,24 @@
+resources:
+  - deployment.yml
+  - service-app.yml
+  - ingress.yml
+configurations:
+  - configuration.yml
+
+# Keep as is
+#namePrefix: ${BUILD_REPOSITORY_NAME}-
+commonLabels:
+  app: ${BUILD_REPOSITORY_NAME}
+  source: ${BUILD_REPOSITORY_NAME}
+
+commonAnnotations:
+  repositoryUrl: ${BUILD_REPOSITORY_URI}
+  commit: ${COMMIT}
+  tag: ${TAG}
+  image: ${IMAGE}
+
+configMapGenerator:
+- name: ${BUILD_REPOSITORY_NAME}-env
+  namespace: ${NAMESPACE}
+  envs:
+  - .env

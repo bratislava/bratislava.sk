@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${BUILD_REPOSITORY_NAME}-app
+  namespace: ${NAMESPACE}
+  labels:
+    service: app
+spec:
+  selector:
+    matchLabels:
+      service: app
+  template:
+    metadata:
+      labels:
+        service: app
+    spec:
+      containers:
+        - image: ${IMAGE_TAG}
+          name: app
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          envFrom:
+            - configMapRef:
+                name: ${BUILD_REPOSITORY_NAME}-env
+          readinessProbe:
+            httpGet:
+              path: /
+              port: ${INTERNAL_APP_PORT}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      imagePullSecrets:
+        - name: ${IMAGE_PULL_SECRET}
