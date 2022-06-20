@@ -21,9 +21,6 @@ ENV PORT 3000
 
 WORKDIR /root/app
 
-ARG STRAPI_URL=strapi-homepage.staging.bratislava.sk
-ENV STRAPI_URL=${STRAPI_URL}
-
 COPY package*.json /root/app
 COPY yarn.lock /root/app
 
@@ -45,16 +42,13 @@ RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
 
-ARG STRAPI_URL=strapi-homepage.staging.bratislava.sk
-ENV STRAPI_URL=${STRAPI_URL}
-
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node yarn.lock ./
 
 RUN yarn install --production
 
 COPY . ./
-
+COPY .env .
 COPY --chown=node:node --from=build /root/app/.next ./.next
 
 EXPOSE 3000
