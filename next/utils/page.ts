@@ -153,22 +153,22 @@ export const parseFooter = (footer?: FooterFragment | null): FooterProps => ({
 })
 
 // Main Menu
-export const parseMainMenu = (menu: MainMenuItemFragment[]): MenuMainItem[] =>
-  orderBy(menu, ['priority'], ['asc']).map((item) => ({
+export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
+  orderBy(menu.data, ['priority'], ['asc']).map((item) => ({
     id: item.id ?? '',
-    color: `rgb(var(${getColorVariables(item.color ?? '').light}))`,
-    colorDark: `rgb(var(${getColorVariables(item.color ?? '').dark}))`,
-    icon: item.icon ?? '',
-    coloredIcon: item?.iconHover ?? item.icon ?? '',
-    title: item.title ?? '',
-    subItems: orderBy(item.subcategories ?? [], ['priority'], ['asc'])
+    color: `rgb(var(${getColorVariables(item.attributes.color ?? '').light}))`,
+    colorDark: `rgb(var(${getColorVariables(item.attributes.color ?? '').dark}))`,
+    icon: item.attributes.icon ?? '',
+    coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
+    title: item.attributes.title ?? '',
+    subItems: orderBy(item.attributes.subcategories.data ?? [], ['priority'], ['asc'])
       .filter(isPresent)
       .map((subCategory) => ({
-        icon: subCategory.icon ?? '',
-        title: (subCategory.title || subCategory.moreLink?.title) ?? '',
-        moreLinkTitle: (subCategory.moreLink?.title || subCategory.title) ?? '',
-        url: parsePageLink(subCategory.moreLink)?.url ?? '',
-        subItems: subCategory.pages?.map(parsePageLink).filter(isPresent) ?? [],
+        icon: subCategory.attributes.icon ?? '',
+        title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
+        moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
+        url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
+        subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
       })),
   }))
 

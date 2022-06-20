@@ -6,25 +6,38 @@ import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
 import moment from 'moment'
-import { UploadFile, Tag as TypeTag, PageCategory } from '@bratislava/strapi-sdk-homepage'
 
 export interface NewsCardProps {
   className?: string
   readMoreText?: string
-  coverImage?: Pick<UploadFile, 'url'>
-  tag?: {
-    title: string
-    pageCategory: {
-      color: string
+  coverImage?: {
+    data? : {
+      attributes? : {
+        url?: string | null
+      }
     }
   }
-  title?: string
-  excerpt?: string
-  date_added?: string
-  created_at?: string
-  updated_at?: string
-  slug?: string
-  link?: string
+  tag?: {
+    data?: {
+      attributes?: {
+        title?: string | null
+        pageCategory?: {
+          data?: {
+            attributes?: {
+              color?: string | null
+            }
+          }
+        }
+      }
+    }
+  }
+  title?: string | null
+  excerpt?: string | null
+  date_added?: string | null
+  createdAt?: string | null
+  updatedAt?: string | null
+  slug?: string | null
+  link?: string | null
 }
 
 export const NewsCard = ({
@@ -33,7 +46,7 @@ export const NewsCard = ({
   tag,
   title,
   excerpt,
-  updated_at,
+  updatedAt,
   date_added,
   readMoreText,
   slug,
@@ -71,12 +84,12 @@ export const NewsCard = ({
   }, [])
 
   return (
-    <VerticalCard className={cx(className, 'min-w-[348px]')} imageSrc={coverImage?.url}>
+    <VerticalCard className={cx(className, 'min-w-[348px]')} imageSrc={coverImage?.data?.attributes?.url}>
       <UILink href={`/blog/${slug}`}>
         <div ref={cardRef} className="space-y-5">
-          {tag?.title && <Tag title={tag.title} color={tag.pageCategory?.color} />}
+          {tag?.data?.attributes?.title && <Tag title={tag?.data?.attributes?.title} color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />}
           <h3 className="text-md font-semibold news-small-content">{title}</h3>
-          <span className="text-xs font-medium">{moment(date_added || updated_at).format('DD.MM.YYYY')}</span>
+          <span className="text-xs font-medium">{moment(date_added || updatedAt).format('DD.MM.YYYY')}</span>
           <p className="text-sm news-small-content">{excerpt}</p>
 
           {slug && (
@@ -84,12 +97,12 @@ export const NewsCard = ({
               className="h-6 mt-5"
               shape="none"
               variant="muted"
-              icon={isHover ? <ArrowRight color={tag?.pageCategory?.color} /> : <ChevronRight />}
+              icon={isHover ? <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} /> : <ChevronRight />}
             >
               <div
                 className="relative font-semibold"
                 style={{
-                  color: isHover ? tag?.pageCategory?.color : 'black',
+                  color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
                 }}
               >
                 {readMoreText}

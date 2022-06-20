@@ -8,7 +8,8 @@ export interface ArticlesListProps {
   title: string
   itemsPerRow?: number
   itemsPerPage?: number
-  category?: Object
+  // category?: Object
+  category?: string
   includesFiltering?: boolean
 }
 
@@ -37,20 +38,25 @@ export const ArticlesList = ({
 
     const getData = async () => {
       const { blogPosts } = await client.LatestBlogsWithTags({
-        sort: 'published_at:DESC',
+        sort: 'publishedAt:desc',
         limit: itemsPerPage,
-        offset: (currentPage - 1) * itemsPerPage,
-        where: {
+        start: (currentPage - 1) * itemsPerPage,
+        // TODO double check this filter after everything is connected
+        filters: {
           tag: {
-            title: selectedTags,
+            title: {
+              in: selectedTags,
+            },
             pageCategory: {
-              title: category,
+              title: {
+                eq: category,
+              },
             },
           },
         },
       })
       if (isMounted) return
-      setData(blogPosts)
+      setData(blogPosts?.data ?? [])
     }
     getData()
       .then()
@@ -64,20 +70,25 @@ export const ArticlesList = ({
   useEffect(() => {
     let isMounted = false
     const getTotalCount = async () => {
-      const { blogPostsConnection } = await client.TotalPostsCount({
+      const { blogPosts } = await client.TotalPostsCount({
+        // TODO double check this filter after everything is connected
         where: {
           tag: {
-            title: selectedTags,
+            title: {
+              in: selectedTags,
+            },
             pageCategory: {
-              title: category,
+              title: {
+                eq: category,
+              },
             },
           },
         },
       })
       if (selectedTags.length < 1 && !category) {
         if (isMounted) return
-        else setTotal(blogPostsConnection.aggregate.totalCount)
-      } else setTotal(blogPostsConnection.aggregate.count)
+        else setTotal(blogPosts.meta.pagination.total)
+      } else setTotal(blogPosts.meta.pagination.pageCount)
     }
 
     getTotalCount()
@@ -93,9 +104,12 @@ export const ArticlesList = ({
     let isMounted = false
     const getTags = async () => {
       const { tags } = await client.RelatedTags({
+        // TODO double check this filter after everything is connected
         where: {
           pageCategory: {
-            title: selectedCategory,
+            title: {
+              eq: selectedCategory,
+            },
           },
         },
       })

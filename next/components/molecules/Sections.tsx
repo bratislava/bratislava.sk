@@ -117,7 +117,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsTextWithImage':
       return (
         <TextWithImage
-          imageSrc={section.imageSrc?.url ?? ''}
+          imageSrc={section.imageSrc?.data.attributes.url ?? ''}
           imagePosition={section.imagePosition ?? 'left'}
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
@@ -263,10 +263,12 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.title} />
+      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data.attributes.title} />
 
+    /*
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
+    */
 
     default:
       return null
