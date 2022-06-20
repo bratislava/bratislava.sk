@@ -1,5 +1,5 @@
 import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
-import { DocumentListItem, Modal } from '@bratislava/ui-bratislava'
+import { BasicSearch, DocumentListItem, Modal } from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import { fileCountVzns } from '@utils/utils'
 import { useState } from 'react'
@@ -10,7 +10,7 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
   const [activeData, setActiveData] = useState(null)
 
   const setOpenModal = (id) => {
-    const data = vzns.find((vzn) => vzn.id === id)
+    const data = vzns?.data?.find((vzn) => vzn.id === id)
     setActiveData(data)
     setOpen(true)
   }
@@ -21,20 +21,20 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
 
   return (
     <div>
-      {/* <div>
-        <BasicSearch />
-      </div> */}
+      <div>
+        <BasicSearch placeholder="nana" title="cool" buttonText="click" />
+      </div>
       <div className="pt-10 pb-5 text-md font-semibold">Zoznam dokumentov</div>
       <div className="flex flex-row md:flex-col md:w-auto overflow-x-auto gap-4 modal-content-rent">
-        {vzns?.map((vzn) => {
-          const category = DocumentListCategorysMap.get(vzn.category)
+        {vzns?.data.map((vzn) => {
+          const category = DocumentListCategorysMap.get(vzn.attributes.category)
           return (
             <DocumentListItem
               categoryName={category.value}
-              discription={vzn.details}
+              discription={vzn.attributes.details}
               key={vzn.id}
               id={vzn.id}
-              icon={category.icon}
+              Icon={category.icon}
               count={fileCountVzns(vzn)}
               onClick={setOpenModal}
             />
@@ -42,7 +42,7 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
         })}
       </div>
       <Modal isOpen={isOpen} onClose={setCloseModal} className="z-50">
-        <DocumentListModalBody data={activeData} />
+        <DocumentListModalBody {...activeData} />
       </Modal>
     </div>
   )
