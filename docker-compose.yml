@@ -36,13 +36,13 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: strapi
-      PGPORT: 54320
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres4
+      PGPORT: 5434
     expose:
-      - '54320'
+      - '5434'
     ports:
-      - '127.0.0.1:54320:54320'
+      - '127.0.0.1:5434:5434'
 
 volumes:
   postgres:
