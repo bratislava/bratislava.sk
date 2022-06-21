@@ -52,8 +52,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
   if (!blogPostBySlug) return { notFound: true }
 
   return {
-    props: { slug, post: blogPosts, footer, mainMenu, locale },
-    revalidate: 120, // every two minutes TODO change
+    props: { slug, post: blogPosts, footer, mainMenu, locale }
   }
 }
 

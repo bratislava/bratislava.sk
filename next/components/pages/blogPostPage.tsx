@@ -49,7 +49,7 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
           <div className="min-h-[220px]">
             {blogPost?.tag && <div className="pt-30 font-semibold text-default text-red-brick">{tag?.title}</div>}
             <h1 className="pt-4 text-md md:text-2xl font-bold whitespace-pre-wrap">{blogPost?.title}</h1>
-            <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div>
+            {/* <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div> */}
           </div>
         </SectionContainer>
       </PageHeader>

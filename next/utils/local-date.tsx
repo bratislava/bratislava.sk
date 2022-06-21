@@ -12,13 +12,15 @@ export const getLocalDate = (dateString: string) =>
   )
 
 // "1.3.2021"
-export const getNumericLocalDate = (dateString: string) =>
-  convert(ZonedDateTime.parse(dateString))
-    .toDate()
-    .toLocaleDateString('sk', {
-      dateStyle: 'short',
-    })
-    .replace(/ /g, '')
+export const getNumericLocalDate = (dateString: string) => {
+    console.log(dateString)
+    convert(ZonedDateTime.parse(dateString))
+      .toDate()
+      .toLocaleDateString('sk', {
+        dateStyle: 'short',
+      })
+      .replace(/ /g, '')
+}
 
 // "Február"
 export const getLocalMonthName = (month: number | string) => {
