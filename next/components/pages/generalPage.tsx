@@ -79,8 +79,11 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
         <SectionContainer>
           <div className="min-h-[220px] relative">
             <div className="absolute top-6">
-              {/* TODO: enable after type corrected */}
-              {/* <PageBreadcrumbs page={page} /> */}
+              <PageBreadcrumbs
+                parentPage={page?.parentPage}
+                pageCategory={page?.pageCategory}
+                title={page.title}
+              />
             </div>
             <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10">{page?.title}</h1>
 
