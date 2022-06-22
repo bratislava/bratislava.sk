@@ -95,16 +95,15 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
       <Icon className="w-24 h-24" />
       {value.split(',').map((item, key) => {
         return (
-          <>
+          <div key={key}>
             <span
               className={cx('font-semibold w-full break-all text-center', {
                 'mt-9': key === 0,
               })}
-              key={key}
             >
               {item}
             </span>
-          </>
+          </div>
         )
       })}
       {label && href && (
