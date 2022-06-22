@@ -18,8 +18,14 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
         <h1 className="font-semibold text-md">{title}</h1>
         <div className="flex flex-col space-y-4 pt-6">
           {pageLinks?.map((pageLink, index) => (
-            <Button variant="full-transparent" icon={<ChevronRight />} hoverIcon={<ArrowRight />} shape="none">
-              <UILink key={index} href={pageLink.url ? isItExternal(pageLink.url) : `#${pageLink.anchor}`}>
+            <Button
+              key={index}
+              variant="full-transparent"
+              icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
+              shape="none"
+            >
+              <UILink href={pageLink.url ? isItExternal(pageLink.url) : `#${pageLink.anchor}`}>
                 <div className="relative text-sm font-semibold text-left underline decoration-2 underline-offset-4">
                   {pageLink?.title}
                 </div>

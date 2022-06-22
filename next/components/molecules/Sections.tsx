@@ -127,8 +127,8 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsFileList':
       return <FileList fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])} />
 
-    case 'ComponentSectionsDivider':
-      return <Divider dividerStyle={section.style ?? undefined} />
+    //TO DO : Fix divider in new task case 'ComponentSectionsDivider':
+    //  return <Divider dividerStyle={section.style ?? undefined} />
 
     case 'ComponentSectionsLinks':
       return (
@@ -177,33 +177,34 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
               </AccordionItem>
             ))}
 
-            {groupByCategory(section.flatText ?? []).reverse().map((text) => (
-              <AccordionItem
-                key={text.category}
-                title={parseCategory(text.category).title}
-                secondaryTitle={parseCategory(text.category).secondaryTitle}
-              >
-                {text.items.filter(isPresent).map((item, i) => {
-                  const link = parsePageLink({
-                    title: item.moreLinkTitle,
-                    url: item.moreLinkUrl,
-                    page: item.moreLinkPage,
-                  })
+            {groupByCategory(section.flatText ?? [])
+              .reverse()
+              .map((text) => (
+                <AccordionItem
+                  key={text.category}
+                  title={parseCategory(text.category).title}
+                  secondaryTitle={parseCategory(text.category).secondaryTitle}
+                >
+                  {text.items.filter(isPresent).map((item, i) => {
+                    const link = parsePageLink({
+                      title: item.moreLinkTitle,
+                      url: item.moreLinkUrl,
+                      page: item.moreLinkPage,
+                    })
 
-                  return (
-                    <div className="flex flex-col space-y-4 pl-10">
-                      <NarrowText
-                        key={i}
-                        align={item.align ?? undefined}
-                        width={item.width ?? undefined}
-                        content={item.content ?? undefined}
-                      />
-                      {link?.url && link.title && <PageLinkButton className="pl-6" pageLink={link} />}
-                    </div>
-                  )
-                })}
-              </AccordionItem>
-            ))}
+                    return (
+                      <div className="flex flex-col space-y-4 pl-10" key={i}>
+                        <NarrowText
+                          align={item.align ?? undefined}
+                          width={item.width ?? undefined}
+                          content={item.content ?? undefined}
+                        />
+                        {link?.url && link.title && <PageLinkButton className="pl-6" pageLink={link} />}
+                      </div>
+                    )
+                  })}
+                </AccordionItem>
+              ))}
 
             {groupByCategory(section.institutionsNarrow ?? []).map((text) => (
               <AccordionItem
