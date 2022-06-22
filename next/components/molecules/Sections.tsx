@@ -264,7 +264,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data.attributes.title} />
+      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} />
 
     /*
     case 'ComponentSectionsIframe':
