@@ -186,26 +186,39 @@ export const groupByCategory = <T>(items: T[]) => {
 }
 //Page Related Content
 export const parseRelatedBlogPosts = (RelatedContentBlogPosts: BlogPostFragment[]): NewsCardProps[] => {
-  RelatedContentBlogPosts.map((relatedBlogPost) => {
+  const array: NewsCardProps[] = RelatedContentBlogPosts.map((relatedBlogPost) => {
     const blogpost = relatedBlogPost.data[0]
     return {
       id: blogpost.id,
       title: blogpost.attributes?.title ?? undefined,
       coverImage: {
-        url: blogpost.attributes?.coverImage?.data?.attributes?.url,
+        data: {
+          attributes: {
+            url: blogpost.attributes?.coverImage?.data?.attributes?.url,
+          },
+        },
       },
       tag: {
-        pageCategory: {
-          color: blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
+        data: {
+          attributes: {
+            title: blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
+            pageCategory: {
+              data: {
+                attributes: {
+                  color: blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
+                },
+              },
+            },
+          },
         },
-        title: blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.title ?? undefined,
       },
       excerpt: blogpost.attributes?.excerpt ?? undefined,
-      updated_at: getNumericLocalDate(blogpost.attributes?.updatedAt).split('.').join('.  '),
-      created_at: getNumericLocalDate(blogpost.attributes?.date_added).split('.').join('.  '),
+      updatedAt: getNumericLocalDate(blogpost.attributes?.updatedAt).split('.').join('.  '),
+      createdAt: getNumericLocalDate(blogpost.attributes?.date_added).split('.').join('.  '),
       moreLink: parseBlogPostLink(blogpost.attributes?.moreLink, blogpost.attributes?.slug),
     }
   })
+  return array
 }
 
 // Page Accordion Item - regex for secondary text
