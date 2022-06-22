@@ -7,11 +7,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    await res.unstable_revalidate('/en/blog/test-12')
+    // Check model
+    const payload = req.body;
+    if (payload?.model === 'blog-post') {
+      const blogPostUrl = `/blog/${payload?.entry?.slug}`;
+      await res.unstable_revalidate(blogPostUrl);
+    }
     return res.json({ revalidated: true })
   } catch (err) {
-    // If there was an error, Next.js will continue
-    // to show the last successfully generated page
+    console.log("Error while revalidating ==>", err)
     return res.status(500).send('Error revalidating')
   }
 }
