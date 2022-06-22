@@ -87,8 +87,8 @@ export const parsePageLink = (
   if (!pageLink) return null
 
   return {
-    title: pageLink.title || pageLink.page?.title || '',
-    url: pageLink.url ?? pagePath(pageLink.page) ?? '',
+    title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
+    url: pageLink.url ?? pagePath(pageLink) ?? '',
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -137,20 +137,23 @@ export const groupByCategoryFileList = (fileList: FileFragment[]) => {
 }
 
 // Page Footer
-export const parseFooter = (footer?: FooterFragment | null): FooterProps => ({
-  accessibilityLink: parsePageLink(footer?.accessibilityLink) ?? undefined,
-  address: footer?.address ?? undefined,
-  copyright: footer?.copyright ?? undefined,
-  email: footer?.email ?? undefined,
-  facebookLink: footer?.facebookUrl ?? undefined,
-  instagramLink: footer?.instagramUrl ?? undefined,
-  phone: footer?.phone ?? undefined,
-  youtubeLink: footer?.youtubeUrl ?? undefined,
-  sections: footer?.footerSections?.filter(isPresent).map((s) => ({
-    title: s.title ?? '',
-    pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
-  })),
-})
+export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
+  const data = footer?.data?.attributes
+  return {
+    accessibilityLink: parsePageLink(data?.accessibilityLink) ?? undefined,
+    address: data?.address ?? undefined,
+    copyright: data?.copyright ?? undefined,
+    email: data?.email ?? undefined,
+    facebookLink: data?.facebookUrl ?? undefined,
+    instagramLink: data?.instagramUrl ?? undefined,
+    phone: data?.phone ?? undefined,
+    youtubeLink: data?.youtubeUrl ?? undefined,
+    sections: data?.footerSections?.filter(isPresent).map((s) => ({
+      title: s.title ?? '',
+      pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
+    })),
+  }
+}
 
 // Main Menu
 export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>

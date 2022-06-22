@@ -53,8 +53,8 @@ export const getServerSideProps = async (ctx) => {
     imageSrc: post?.image?.data?.attributes?.url,
   }))
 
-  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url;
-  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url;
+  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
+  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
   const inba = {
     title: homepage?.data?.attributes?.inba?.title,
     content: homepage?.data?.attributes?.inba?.content,
@@ -90,7 +90,7 @@ export const getServerSideProps = async (ctx) => {
         councilImage: '/BACoatOfArms.svg',
         locale,
       }),
-      footer: footer,
+      footer,
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
@@ -126,7 +126,7 @@ const Homepage = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
-  const menuItems = parseMainMenu(mainMenu?.data?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu);
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed

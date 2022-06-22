@@ -63,6 +63,7 @@ fragment GeneralPage on PageEntityResponseCollection {
         ...Localization
       }
       pageHeaderSections {
+        __typename
         ... on ComponentSectionsSubpageList {
           id
           subpageList {
