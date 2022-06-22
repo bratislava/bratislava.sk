@@ -3,7 +3,7 @@ import React from 'react'
 
 export interface PageTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   title: string
-  subtitle?: string
+  subtitle?: string | null
 }
 
 export const PageTitle = ({ className, title, subtitle, ...rest }: PageTitleProps) => (

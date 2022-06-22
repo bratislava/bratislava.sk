@@ -1,14 +1,14 @@
 import { Card, StaticImageData } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import NextLink from 'next/link'
-import Image1 from '../../assets/images/blog-image.png'
-import Image2 from '../../assets/images/blog-mobile-image.png'
+import image1 from '../../assets/images/blog-image.png'
+import image2 from '../../assets/images/blog-mobile-image.png'
 import ChevronRight from '../../assets/images/chevron-right.svg'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 export interface BlogCardProps {
   className?: string
-  image?: string | StaticImageData
+  image?: string | StaticImageData;
   mobileImage?: string | StaticImageData
   content?: React.ReactNode
   href?: string
@@ -16,8 +16,8 @@ export interface BlogCardProps {
 
 export const BlogCard = ({
   className,
-  image = Image1,
-  mobileImage = Image2,
+  image = image1,
+  mobileImage = image2,
   content = 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
   href = '/',
 }: BlogCardProps) => (

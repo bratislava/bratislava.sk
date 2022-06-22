@@ -1,11 +1,11 @@
 import { client } from './gql'
 
-export const fetchBlogPosts = async (tags: number[], limit: number, offset: number) => {
-  const { latestPostsByTags } = await client.LatestPostsByTags({
+export const fetchBlogPosts = async (tags: string[], limit: number, start: number) => {
+  const { blogPosts } = await client.LatestPostsByTags({
     tags,
     limit,
-    offset,
+    start,
   })
 
-  return latestPostsByTags
+  return blogPosts
 }

@@ -70,13 +70,10 @@ export const localePath = (locale: string, slug: string) => {
 }
 
 export const pagePath = (
-  page?: {
-    locale?: string | null
-    slug?: string | null
-  } | null
+  page?: PageLinkFragment | null
 ): string | null => {
   if (!page) return null
-  const { locale, slug } = page
+  const { page: {data: { attributes: { locale, slug } }} } = page
   if (!locale || !slug) return slug ?? null
   return localePath(locale, slug)
 }
@@ -87,8 +84,8 @@ export const parsePageLink = (
   if (!pageLink) return null
 
   return {
-    title: pageLink.title || pageLink.page?.title || '',
-    url: pageLink.url ?? pagePath(pageLink.page) ?? '',
+    title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
+    url: pageLink.url ?? pagePath(pageLink) ?? '',
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -137,38 +134,40 @@ export const groupByCategoryFileList = (fileList: FileFragment[]) => {
 }
 
 // Page Footer
-export const parseFooter = (footer?: FooterFragment | null): FooterProps => ({
-  accessibilityLink: parsePageLink(footer?.accessibilityLink) ?? undefined,
-  address: footer?.address ?? undefined,
-  copyright: footer?.copyright ?? undefined,
-  email: footer?.email ?? undefined,
-  facebookLink: footer?.facebookUrl ?? undefined,
-  instagramLink: footer?.instagramUrl ?? undefined,
-  phone: footer?.phone ?? undefined,
-  youtubeLink: footer?.youtubeUrl ?? undefined,
-  sections: footer?.footerSections?.filter(isPresent).map((s) => ({
+export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
+  const data = footer?.data?.attributes
+  return {
+  accessibilityLink: parsePageLink(data?.accessibilityLink) ?? undefined,
+  address: data?.address ?? undefined,
+  copyright: data?.copyright ?? undefined,
+  email: data?.email ?? undefined,
+  facebookLink: data?.facebookUrl ?? undefined,
+  instagramLink: data?.instagramUrl ?? undefined,
+  phone: data?.phone ?? undefined,
+  youtubeLink: data?.youtubeUrl ?? undefined,
+  sections: data?.footerSections?.filter(isPresent).map((s) => ({
     title: s.title ?? '',
     pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
   })),
-})
+}}
 
 // Main Menu
-export const parseMainMenu = (menu: MainMenuItemFragment[]): MenuMainItem[] =>
-  orderBy(menu, ['priority'], ['asc']).map((item) => ({
+export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
+  orderBy(menu.data, ['priority'], ['asc']).map((item) => ({
     id: item.id ?? '',
-    color: `rgb(var(${getColorVariables(item.color ?? '').light}))`,
-    colorDark: `rgb(var(${getColorVariables(item.color ?? '').dark}))`,
-    icon: item.icon ?? '',
-    coloredIcon: item?.iconHover ?? item.icon ?? '',
-    title: item.title ?? '',
-    subItems: orderBy(item.subcategories ?? [], ['priority'], ['asc'])
+    color: `rgb(var(${getColorVariables(item.attributes.color ?? '').light}))`,
+    colorDark: `rgb(var(${getColorVariables(item.attributes.color ?? '').dark}))`,
+    icon: item.attributes.icon ?? '',
+    coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
+    title: item.attributes.title ?? '',
+    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
       .filter(isPresent)
       .map((subCategory) => ({
-        icon: subCategory.icon ?? '',
-        title: (subCategory.title || subCategory.moreLink?.title) ?? '',
-        moreLinkTitle: (subCategory.moreLink?.title || subCategory.title) ?? '',
-        url: parsePageLink(subCategory.moreLink)?.url ?? '',
-        subItems: subCategory.pages?.map(parsePageLink).filter(isPresent) ?? [],
+        icon: subCategory.attributes.icon ?? '',
+        title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
+        moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
+        url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
+        subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
       })),
   }))
 

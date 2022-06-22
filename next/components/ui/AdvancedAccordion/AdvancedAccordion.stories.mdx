@@ -1,0 +1,475 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { AdvancedAccordion } from './AdvancedAccordion';
+
+<Meta
+  title="components/molecules/AdvancedAccordion"
+  decorators={[withDesign]}
+/>
+
+# AdvancedAccordion
+
+AdvancedAccordion
+
+<Canvas>
+  <Story
+    name="Single AdvancedAccordion"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Kontakty',
+      dividerStyle: 'mesto_01_full_width',
+      firstItem: {
+        title: 'Primátor hlavného mesta SR Bratislavy',
+        headingCard: {
+          title: 'Vallo Matúš, Ing. arch.',
+          subtitle: 'Primátor',
+          phone: '+421-2-59356535',
+          email: 'primator@bratislava.sk',
+        },
+        departments: [
+          {
+            title: 'Kancelária primátora',
+            subdepartments: [
+              {
+                departments: [
+                  { title: 'Oddelenie zahraničných vzťahov a protokolu' },
+                  { title: 'Oddelenie komunikácie a marketingu' },
+                  {
+                    title: 'Oddelenie vzťahov s verejnosťou',
+                    departmentCards: [
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                    ],
+                  },
+                  {
+                    title:
+                      'Sprostredkovateľský orgán - Integrovaný regionálny operačný program',
+                  },
+                  { title: 'Útvar správy mestských podnikov' },
+                  { title: 'Útvar hlavného architekta' },
+                ],
+              },
+            ],
+            departmentCards: [
+              {
+                title: 'Kmeť J.',
+                subtitle: 'Riaditeľ kancelárie primátora',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+            ],
+          },
+          {
+            title: 'Sekretariát primátora',
+            subdepartments: [
+              { departments: [{ title: 'Poradcovia primátora' }] },
+            ],
+            departmentPhone: '+421 *** *** ***',
+            departmentCards: [
+              {
+                title: 'Marušicová A.',
+                subtitle: 'Vedúca sekretariátu primátora',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+            ],
+          },
+          {
+            title: 'Námestníci primátora',
+            subdepartments: [
+              {
+                departments: [
+                  { title: 'Kancelária námestníčky Kratochvílovej' },
+                  { title: 'Kancelária námestníčky Zaťovičovej' },
+                  { title: 'Kancelária námestníčky Antalovej Plavúchovej' },
+                ],
+              },
+            ],
+            departmentCards: [
+              {
+                title: 'Kratochvílová T.',
+                subtitle: '1. námestníčka primátora',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Zaťovičová Z.',
+                subtitle: 'Námestníčka primátora',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Plavúchová A. L.',
+                subtitle: 'Námestníčka primátora',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+            ],
+          },
+        ],
+      },
+      secondItem: {
+        title: 'Magistrát hlavného mesta SR Bratislavy',
+        headingCard: {
+          title: 'Košťál Ctibor, Mgr.',
+          subtitle: 'Riaditeľ magistrátu',
+          phone: '+421-2-59356663',
+          email: 'riaditel@bratislava.sk',
+        },
+        departments: [
+          {
+            title: 'Kancelária riaditeľa magistrátu',
+            departmentPhone: '+421 *** *** ***',
+            departmentCards: [
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+              {
+                title: 'Priezvisko Meno, Titul',
+                subtitle: 'Pozícia',
+                phone: '+421 *** *** ***',
+                email: 'meno.priezvisko@bratislava.sk',
+              },
+            ],
+          },
+          {
+            title: 'Zástupcovia riaditeľa magistrátu',
+            departmentCards: [
+              {
+                title: 'Radosa M.',
+                subtitle: 'Zástupca riaditeľa magistrátu',
+                phone: '+421 *** *** ***',
+                email: 'lukas.dinda@bratislava.sk',
+              },
+            ],
+            subdepartments: [
+              {
+                groupHeading:
+                  'Priamo riadené oddelenia zástupcom riaditeľa magistrátu',
+                departments: [
+                  {
+                    title: 'Oddelenie komunálneho podniku',
+                  },
+                  {
+                    title: 'Oddelenie správy komunikácií',
+                  },
+                ],
+              },
+              {
+                groupHeading: 'Podriadené sekcie',
+                departments: [
+                  {
+                    title: 'Sekcia právnych služieb',
+                  },
+                  {
+                    title: 'Sekcia životného prostredia',
+                  },
+                  {
+                    title: 'Sekcia nájomného bývania',
+                  },
+                ],
+              },
+              {
+                groupHeading:
+                  'Priamo riadené oddelenia zástupkyňou riaditeľa magistrátu',
+                departments: [
+                  {
+                    title: 'Oddelenie školstva, športu a mládeže',
+                  },
+                  {
+                    title: 'Oddelenie kultúry',
+                  },
+                  {
+                    title: 'Oddelenie vnútornej správy',
+                  },
+                ],
+                departmentCards: [
+                  {
+                    title: 'Bargerová J.',
+                    subtitle: 'Zástupca riaditeľa magistrátu',
+                    phone: '+421 *** *** ***',
+                    email: 'lukas.dinda@bratislava.sk',
+                  },
+                ],
+              },
+              {
+                groupHeading: 'Podriadené sekcie',
+                departments: [
+                  {
+                    title: 'Sekcia sociálnych vecí',
+                  },
+                  {
+                    title: 'Sekcia územného rozvoja',
+                  },
+                ],
+              },
+              {
+                groupHeading:
+                  'Priamo riadené oddelenia zástupcom riaditeľa magistrátu',
+                departments: [
+                  {
+                    title: 'Oddelenie implementácie externého fiancovania',
+                  },
+                  {
+                    title: 'Oddelenie interného auditu',
+                  },
+                  {
+                    title: 'Oddelenie rozvoja magistrátu',
+                  },
+                ],
+                departmentCards: [
+                  {
+                    title: 'Dinda Lukáš, Ing.',
+                    subtitle: 'Zástupca riaditeľa magistrátu',
+                    phone: '+421 *** *** ***',
+                    email: 'lukas.dinda@bratislava.sk',
+                  },
+                ],
+              },
+              {
+                groupHeading: 'Podriadené sekcie',
+                departments: [
+                  {
+                    title: 'Sekcia výstavby',
+                  },
+                  {
+                    title: 'Sekcia informatiky, dát a inovácií',
+                    departmentCards: [
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                      {
+                        title: 'Priezvisko Meno, Titul',
+                        subtitle: 'Pozícia',
+                        phone: '+421 *** *** ***',
+                        email: 'meno.priezvisko@bratislava.sk',
+                      },
+                    ],
+                    subdepartments: [
+                      {
+                        title: 'Projektová kancelária - SIDal',
+                      },
+                      {
+                        title: 'Oddelenie dátových a priestorových analýz',
+                      },
+                      {
+                        title: 'Oddelenie informatiky',
+                      },
+                      {
+                        title: 'Oddelenie inovácií a digitálnych služieb',
+                        departmentCards: [
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                          {
+                            title: 'Priezvisko Meno, Titul',
+                            subtitle: 'Pozícia',
+                            phone: '+421 *** *** ***',
+                            email: 'meno.priezvisko@bratislava.sk',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Projektová kancelária - magistrát',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        headingSubdepartments: [
+          {
+            groupHeading: 'Priamo riadené oddelenia riaditeľom magistrátu',
+            departments: [
+              {
+                title: 'Oddelenie ľudských zdrojov',
+              },
+              {
+                title: 'Odd. verejného obstarávania',
+              },
+              {
+                title: 'Oddelenie správy komunikácií',
+              },
+              {
+                title: 'Odd. programovania a spolupráce',
+              },
+              {
+                title: 'Útvar hlavného ekonóma',
+              },
+            ],
+          },
+          {
+            groupHeading: 'Podriadené sekcie',
+            departments: [
+              {
+                title: 'Sekcia financií',
+              },
+              {
+                title: 'Sekcia dopravy',
+              },
+              {
+                title: 'Sekcia správy nehnuteľností',
+              },
+            ],
+          },
+        ],
+      },
+    }}
+  >
+    {AdvancedAccordion.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={AdvancedAccordion} />

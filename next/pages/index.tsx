@@ -23,53 +23,57 @@ import NewsLetterSection from '../components/molecules/sections/NewsLetterSectio
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { isPresent, PageProps, shouldSkipStaticPaths } from '../utils/utils'
+import { isPresent } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export const getServerSideProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
-  const { footer, mainMenu } = await client.PageBySlug({
-    slug: 'test',
-    locale,
-  })
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
-    sort: 'published_at:DESC',
+    sort: 'publishedAt:desc',
   })
 
-  const { homepage } = await client.Homepage({
+  let { homepage } = await client.Homepage({
     locale,
   })
 
-  const homepagePosts = homepage.posts.map((post) => ({
-    title: post.title,
-    url: post.slug,
-    imageSrc: post.image.url,
+  const { pageCategories: mainMenu } = await client.MainMenu({
+    locale,
+  })
+
+  const { footer } = await client.Footer({
+    locale,
+  })
+
+  const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
+    title: post?.title,
+    url: post?.slug,
+    imageSrc: post?.image?.data?.attributes?.url,
   }))
 
-  const frontImage = homepage.inba.images.frontImage.url
-  const rearImage = homepage.inba.images.rearImage.url
+  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
+  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
   const inba = {
-    title: homepage.inba.title,
-    content: homepage.inba.content,
-    link: homepage.inba.link,
+    title: homepage?.data?.attributes?.inba?.title,
+    content: homepage?.data?.attributes?.inba?.content,
+    link: homepage?.data?.attributes?.inba?.link,
     images: [frontImage, rearImage],
   }
 
-  const header = homepage.header
+  const header = homepage?.data?.attributes?.header
 
-  const cards = homepage.cards.map((card) => ({
-    bookmarkTitle: card.title,
-    title: card.headline,
-    content: card.text,
+  const cards = homepage?.data?.attributes?.cards?.map((card) => ({
+    bookmarkTitle: card?.title,
+    title: card?.headline,
+    content: card?.text,
     link: {
-      title: card.link.title,
-      href: card.link.href,
+      title: card?.link?.title,
+      href: card?.link?.href,
     },
-    icon: card.picture.url,
-    variant: card.variant,
+    icon: card?.picture?.data?.attributes?.url,
+    variant: card?.variant,
   }))
 
   return {
@@ -86,7 +90,7 @@ export const getServerSideProps = async (ctx) => {
         councilImage: '/BACoatOfArms.svg',
         locale,
       }),
-      footer: footer,
+      footer,
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
@@ -122,7 +126,7 @@ const Homepage = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu);
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
@@ -133,8 +137,8 @@ const Homepage = ({
         <div className="bg-white">
           <SectionContainer>
             <div className="pt-25 lg:pt-18 pb-10 flex flex-col sm:flex-row sm:items-center">
-              <PageTitle className="flex-1" title={pageTitle} subtitle={header.subtitle} />
-              <img width={721} height={364} src={header.picture.url} alt="Bratislava Hero" />
+              <PageTitle className="flex-1" title={pageTitle} subtitle={header?.subtitle} />
+              <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
@@ -153,10 +157,10 @@ const Homepage = ({
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
             className="mt-10"
-            leftHighLight={homepage.left_highlight}
-            rightHighLight={homepage.right_highlight}
+            leftHighLight={homepage?.data?.attributes?.left_highlight}
+            rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
-            latestPost={latestBlogposts}
+            latestPost={latestBlogposts.data}
           />
           <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
 

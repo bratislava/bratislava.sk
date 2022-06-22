@@ -7,7 +7,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { NumericalList } from '../NumericalList/NumericalList'
 
 export interface NumericalListItemObject {
-  text: string
+  text?: string
 }
 
 export interface NumericalListSectionProps {

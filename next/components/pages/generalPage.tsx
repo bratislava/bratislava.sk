@@ -22,7 +22,7 @@ import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 import cx from 'classnames'
 
 export interface GeneralPageProps {
-  page: GeneralPageFragment
+  pages: GeneralPageFragment
   footer: FooterProps
   children?: React.ReactNode
   menuItems?: MenuMainItem[]
@@ -45,18 +45,19 @@ const renderColor = (color: any) => {
     return Enum_Pagecategory_Color.Yellow
   }
 }
-const GeneralPage = ({ page, footer, children, menuItems }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) => {
+  const page = pages?.data?.[0]?.attributes
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
   )
   return (
-    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page.pageCategory?.id}>
-      {page.pageCategory?.color && (
+    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page?.pageCategory?.id}>
+      {page?.pageCategory?.color && (
         <style
           dangerouslySetInnerHTML={{
-            __html: pageStyle(page.pageCategory.color),
+            __html: pageStyle(page?.pageCategory.color),
           }}
         />
       )}
@@ -78,7 +79,8 @@ const GeneralPage = ({ page, footer, children, menuItems }: GeneralPageProps) =>
         <SectionContainer>
           <div className="min-h-[220px] relative">
             <div className="absolute top-6">
-              <PageBreadcrumbs page={page} />
+              {/* TODO: enable after type corrected */}
+              {/* <PageBreadcrumbs page={page} /> */}
             </div>
             <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10">{page?.title}</h1>
 
@@ -89,8 +91,8 @@ const GeneralPage = ({ page, footer, children, menuItems }: GeneralPageProps) =>
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
-                <UILink href={parsePageLink(page.pageButtonContent)?.url ?? ''}>
-                  <span>{parsePageLink(page.pageButtonContent)?.title ?? ''}</span>
+                <UILink href={parsePageLink(page?.pageButtonContent)?.url ?? ''}>
+                  <span>{parsePageLink(page?.pageButtonContent)?.title ?? ''}</span>
                 </UILink>
               </Button>
             )}

@@ -1,4 +1,4 @@
-import { BlogPostBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
@@ -7,7 +7,7 @@ import { parseFooter, parseMainMenu } from '../../utils/page'
 import { arrayify, isPresent, shouldSkipStaticPaths } from '../../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  let paths = []
+  let paths: { params: { slug: string } }[] = []
   if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   const { blogPosts: blogPostSk } = await client.BlogPostsStaticPaths({
@@ -16,11 +16,11 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { blogPosts: blogPostEn } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[1],
   })
-  const blogPosts = blogPostEn.concat(blogPostSk)
+  const blogPosts = blogPostEn?.data.concat(blogPostSk?.data ?? [])
   if (blogPosts) {
-    paths = blogPosts.map(({ slug }) => ({
+    paths = blogPosts.map((blogPost) => ({
       params: {
-        slug,
+        slug: blogPost.attributes.slug,
       },
     }))
   }
@@ -30,19 +30,29 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => {
   const locale = ctx.locale
-  const slug = arrayify(ctx.params.slug)[0]
+  const slug = arrayify(ctx.params?.slug)[0]
 
   if (!slug) return { notFound: true }
 
-  const { blogPostBySlug, footer, mainMenu } = await client.BlogPostBySlug({
+  const { blogPosts } = await client.BlogPostBySlug({
     slug,
     locale,
   })
 
+  const { pageCategories: mainMenu } = await client.MainMenu({
+    locale,
+  })
+
+  const { footer } = await client.Footer({
+    locale,
+  })
+
+  const blogPostBySlug = blogPosts?.data[0]
+
   if (!blogPostBySlug) return { notFound: true }
 
   return {
-    props: { slug, post: blogPostBySlug, footer, mainMenu, locale },
+    props: { slug, post: blogPosts, footer, mainMenu, locale },
     revalidate: 120, // every two minutes TODO change
   }
 }
@@ -50,19 +60,19 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 interface BlogPostPageProps {
   slug: string
   locale: string
-  post: NonNullable<BlogPostBySlugQuery['blogPostBySlug']>
-  footer: BlogPostBySlugQuery['footer']
-  mainMenu: BlogPostBySlugQuery['mainMenu']
+  post: NonNullable<BlogPostBySlugQuery['blogPosts']>
+  footer: FooterQuery['footer']
+  mainMenu: MainMenuQuery['pageCategories']
 }
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer ?? {})
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu);
 
   // TODO change if multilingual blogs
   return (
-    <PageWrapper locale={locale} slug={post.slug ?? ''}>
-      <BlogPostPage blogPost={post} footer={parsedFooter} menuItems={menuItems} />
+    <PageWrapper locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
+      <BlogPostPage post={post} footer={parsedFooter} menuItems={menuItems} />
     </PageWrapper>
   )
 }

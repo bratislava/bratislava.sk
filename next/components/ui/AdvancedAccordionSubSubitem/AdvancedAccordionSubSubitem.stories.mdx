@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { AdvancedAccordionSubSubitem } from './AdvancedAccordionSubSubitem';
+
+<Meta
+  title="components/molecules/AdvancedAccordionSubSubitem"
+  decorators={[withDesign]}
+/>
+
+# AdvancedAccordionSubSubitem
+
+AdvancedAccordionSubSubitem
+
+<Canvas>
+  <Story
+    name="Single AdvancedAccordionSubSubitem"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Lorem Ipsum',
+    }}
+  >
+    {AdvancedAccordionSubSubitem.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={AdvancedAccordionSubSubitem} />

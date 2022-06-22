@@ -1,0 +1,83 @@
+import Phone from '../../../assets/images/phone-medium.svg'
+import { AccordionCardProps } from '../AccordionCard/AccordionCard'
+import { AccordionCards } from '../AccordionCards/AccordionCards'
+import {
+  AdvancedAccordionSubitem,
+  AdvancedAccordionSubitemProps,
+} from '../AdvancedAccordionSubitem/AdvancedAccordionSubitem'
+
+/* export interface AdvancedAccordionSubSubdepartment {
+  title: string;
+  departmentCards?: AccordionCardProps[];
+  subdepartments?: AdvancedAccordionSubitemProps[];
+}
+
+export interface AdvancedAccordionSubdepartment {
+  groupHeading?: string;
+  departments: AdvancedAccordionSubSubdepartment[];
+  //departmentCards?: AccordionCardProps[];
+} */
+
+export interface AdvancedAccordionDepartmentProps {
+  title?: string
+  //subdepartments?: AdvancedAccordionSubdepartment[];
+  subitems?: AdvancedAccordionSubitemProps[]
+  departmentCards?: AccordionCardProps[]
+  departmentPhone?: string
+}
+
+export const AdvancedAccordionDepartment = ({
+  title,
+  subitems,
+  departmentCards,
+  departmentPhone,
+}: AdvancedAccordionDepartmentProps) => {
+  return (
+    <div className="flex flex-col pt-1 pb-14 lg:pb-18">
+      {title && <AccordionItemHeading title={title} />}
+      {departmentPhone && (
+        <div className="flex items-center pl-9 pb-5 lg:pb-8 lg:pl-16 gap-x-8">
+          <Phone />
+          <div className="font-semibold text-red-brick text-default">{departmentPhone}</div>
+        </div>
+      )}
+      {departmentCards && <AccordionCards items={departmentCards} />}
+      {/* {subitems?.map((subitem, subIndex) => ( */}
+      <div /* key={subIndex} */ className="flex flex-col">
+        {/*           {subitem.departmentCards && (
+            <div className="pt-14">
+              <AccordionCards items={subitem.departmentCards} />
+            </div>
+          )} */}
+        {/* {subitem.groupHeading && (
+            <div className="text-default lg:text-md pt-8 lg:pt-10 font-semibold">
+              {subitem.groupHeading}
+            </div>
+          )} */}
+        {subitems?.map((item, index) => (
+          <AdvancedAccordionSubitem
+            className="pt-8"
+            key={index}
+            /* title={item.title}
+              departmentCards={department.departmentCards}
+              subdepartments={department.subdepartments} */
+            {...item}
+          />
+        ))}
+      </div>
+      {/* ))} */}
+    </div>
+  )
+}
+
+interface AccordionItemHeadingProps {
+  title: string
+}
+const AccordionItemHeading = ({ title }: AccordionItemHeadingProps) => {
+  return (
+    <div className="flex lg:px-5 pb-8 gap-x-3 lg:gap-x-6 items-center">
+      <div className="h-6 w-6 rounded-full border-4 border-primary" />
+      <div className="text-default lg:text-md">{title}</div>
+    </div>
+  )
+}
