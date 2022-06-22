@@ -8,7 +8,7 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Homepage, BlogPost } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntity, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { useTranslation } from 'react-i18next'
@@ -18,9 +18,10 @@ export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
-  latestPost?: BlogPost[]
-  leftHighLight?: Pick<Homepage, 'left_highlight'>
-  rightHighLight?: Pick<Homepage, 'right_highlight'>
+  // latestPost?: BlogPost[]
+  latestPost?: BlogPostEntity[]
+  leftHighLight?: NewsCardBlogFragment | null
+  rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
   readMoreNewsText?: string
 }
@@ -74,23 +75,27 @@ export const Posts = ({
                   <NewsCard {...newsCard} />
                 </div>
               ))}
-            {leftHighLight && <NewsCard {...leftHighLight} readMoreText={readMoreText} />}
-            {rightHighLight && <NewsCard {...rightHighLight} readMoreText={readMoreText} />}
+            {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
+            {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
 
             {latestPost.length > 0 && (
               <div>
-                {latestPost.map((newsCard, i) => (
-                  <div key={i}>
-                    {newsCard.tag && (
-                      <div className="mb-3">
-                        <Tag title={newsCard?.tag?.title} color={newsCard?.tag?.pageCategory?.color} />
-                      </div>
-                    )}
-                    <UILink href={`blog/${newsCard.slug}`}>
-                      <div className="mb-3 underline font-semibold">{newsCard.title}</div>
-                    </UILink>
-                  </div>
-                ))}
+                {latestPost.map((newsCard, i) => {
+                  const card = newsCard.attributes
+                  const tag = card.tag.data.attributes
+                  return (
+                    <div key={i}>
+                      {card.tag && (
+                        <div className="mb-3">
+                          <Tag title={tag.title} color={tag.pageCategory.data.attributes.color} />
+                        </div>
+                      )}
+                      <UILink href={`blog/${card.slug}`}>
+                        <div className="mb-3 underline font-semibold">{card.title}</div>
+                      </UILink>
+                    </div>
+                  )
+                })}
               </div>
             )}
             <div className="mt-14 flex justify-center col-span-3">

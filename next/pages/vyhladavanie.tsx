@@ -35,7 +35,7 @@ export const getServerSideProps = async (ctx: any) => {
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
-    sort: 'published_at:DESC',
+    sort: 'publishedAt:desc',
   })
 
   const { homepage } = await client.Homepage({
