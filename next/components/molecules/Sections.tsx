@@ -127,8 +127,8 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsFileList':
       return <FileList fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])} />
 
-    case 'ComponentSectionsDivider':
-      return <Divider dividerStyle={section.style ?? undefined} />
+    //TO DO : Fix divider in new task case 'ComponentSectionsDivider':
+    //  return <Divider dividerStyle={section.style ?? undefined} />
 
     case 'ComponentSectionsLinks':
       return (
@@ -193,9 +193,8 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
                     })
 
                     return (
-                      <div className="flex flex-col space-y-4 pl-10">
+                      <div className="flex flex-col space-y-4 pl-10" key={i}>
                         <NarrowText
-                          key={i}
                           align={item.align ?? undefined}
                           width={item.width ?? undefined}
                           content={item.content ?? undefined}
