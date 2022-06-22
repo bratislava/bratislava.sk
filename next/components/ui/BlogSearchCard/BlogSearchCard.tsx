@@ -74,7 +74,7 @@ export const BlogSearchCard = ({
         <div
           className="flex flex-col justify-end w-full h-full rounded"
           style={{
-            backgroundImage: `url(${coverImage.url})`,
+            backgroundImage: `url(${coverImage?.url})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}
