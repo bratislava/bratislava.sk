@@ -70,10 +70,13 @@ export const localePath = (locale: string, slug: string) => {
 }
 
 export const pagePath = (
-  page?: PageLinkFragment | null
+  page?: {
+    locale?: string | null
+    slug?: string | null
+  } | null
 ): string | null => {
   if (!page) return null
-  const { page: {data: { attributes: { locale, slug } }} } = page
+  const { locale, slug } = page
   if (!locale || !slug) return slug ?? null
   return localePath(locale, slug)
 }
@@ -137,19 +140,20 @@ export const groupByCategoryFileList = (fileList: FileFragment[]) => {
 export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
   const data = footer?.data?.attributes
   return {
-  accessibilityLink: parsePageLink(data?.accessibilityLink) ?? undefined,
-  address: data?.address ?? undefined,
-  copyright: data?.copyright ?? undefined,
-  email: data?.email ?? undefined,
-  facebookLink: data?.facebookUrl ?? undefined,
-  instagramLink: data?.instagramUrl ?? undefined,
-  phone: data?.phone ?? undefined,
-  youtubeLink: data?.youtubeUrl ?? undefined,
-  sections: data?.footerSections?.filter(isPresent).map((s) => ({
-    title: s.title ?? '',
-    pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
-  })),
-}}
+    accessibilityLink: parsePageLink(data?.accessibilityLink) ?? undefined,
+    address: data?.address ?? undefined,
+    copyright: data?.copyright ?? undefined,
+    email: data?.email ?? undefined,
+    facebookLink: data?.facebookUrl ?? undefined,
+    instagramLink: data?.instagramUrl ?? undefined,
+    phone: data?.phone ?? undefined,
+    youtubeLink: data?.youtubeUrl ?? undefined,
+    sections: data?.footerSections?.filter(isPresent).map((s) => ({
+      title: s.title ?? '',
+      pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
+    })),
+  }
+}
 
 // Main Menu
 export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
