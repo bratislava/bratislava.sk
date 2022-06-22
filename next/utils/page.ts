@@ -161,7 +161,7 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
     icon: item.attributes.icon ?? '',
     coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
     title: item.attributes.title ?? '',
-    subItems: orderBy(item.attributes.subcategories.data ?? [], ['priority'], ['asc'])
+    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
       .filter(isPresent)
       .map((subCategory) => ({
         icon: subCategory.attributes.icon ?? '',
