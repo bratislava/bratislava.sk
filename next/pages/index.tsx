@@ -90,7 +90,7 @@ export const getServerSideProps = async (ctx) => {
         councilImage: '/BACoatOfArms.svg',
         locale,
       }),
-      footer: footer,
+      footer,
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
@@ -126,7 +126,7 @@ const Homepage = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
-  const menuItems = parseMainMenu(mainMenu?.data?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu);
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
