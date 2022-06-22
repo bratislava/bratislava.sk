@@ -126,7 +126,7 @@ const Homepage = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
-  const menuItems = parseMainMenu(mainMenu);
+  const menuItems = parseMainMenu(mainMenu)
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed

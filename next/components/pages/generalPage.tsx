@@ -53,11 +53,11 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
   )
   return (
-    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page?.pageCategory?.id}>
-      {page?.pageCategory?.color && (
+    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page?.pageCategory?.data?.id}>
+      {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{
-            __html: pageStyle(page?.pageCategory.color),
+            __html: pageStyle(page?.pageCategory.data.attributes.color),
           }}
         />
       )}
@@ -66,7 +66,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
         className={cx({ 'mb-30 md:mb-16  lg:mb-64': hasFeaturedBlogs })}
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
-        imageSrc={page?.pageBackgroundImage?.url || ''}
+        imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
       >
         {/* meta discription */}
         {page?.metaDiscription && page?.title && (
@@ -85,7 +85,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
             <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10">{page?.title}</h1>
 
             {/* Header - PageLink as Button */}
-            {page?.pageButtonContent && (page?.pageButtonContent.title || page?.pageButtonContent.page) && (
+            {page?.pageButtonContent && (page?.pageButtonContent.title || page?.pageButtonContent?.page) && (
               <Button
                 className="base-button rounded-lg space-x-6 text-default py-3 px-6 mt-10 mb-10"
                 icon={<ChevronRight />}

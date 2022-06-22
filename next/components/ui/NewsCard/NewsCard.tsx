@@ -8,11 +8,12 @@ import { VerticalCard } from '../VerticalCard/VerticalCard'
 import moment from 'moment'
 
 export interface NewsCardProps {
+  id?: string
   className?: string
   readMoreText?: string
   coverImage?: {
-    data? : {
-      attributes? : {
+    data?: {
+      attributes?: {
         url?: string | null
       }
     }
@@ -87,7 +88,12 @@ export const NewsCard = ({
     <VerticalCard className={cx(className, 'min-w-[348px]')} imageSrc={coverImage?.data?.attributes?.url}>
       <UILink href={`/blog/${slug}`}>
         <div ref={cardRef} className="space-y-5">
-          {tag?.data?.attributes?.title && <Tag title={tag?.data?.attributes?.title} color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />}
+          {tag?.data?.attributes?.title && (
+            <Tag
+              title={tag?.data?.attributes?.title}
+              color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
+            />
+          )}
           <h3 className="text-md font-semibold news-small-content">{title}</h3>
           <span className="text-xs font-medium">{moment(date_added || updatedAt).format('DD.MM.YYYY')}</span>
           <p className="text-sm news-small-content">{excerpt}</p>
@@ -97,7 +103,13 @@ export const NewsCard = ({
               className="h-6 mt-5"
               shape="none"
               variant="muted"
-              icon={isHover ? <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} /> : <ChevronRight />}
+              icon={
+                isHover ? (
+                  <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />
+                ) : (
+                  <ChevronRight />
+                )
+              }
             >
               <div
                 className="relative font-semibold"
