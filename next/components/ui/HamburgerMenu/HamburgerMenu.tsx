@@ -36,8 +36,8 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   },
   {
     icon: <LightBulb />,
-    title: 'Newcommer',
-    url: '/newcommer',
+    title: 'Я з України',
+    url: '/kultura-a-komunity/komunity/братислава-для-украіни',
   },
   {
     icon: <Tourist />,
