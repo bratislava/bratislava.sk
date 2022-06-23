@@ -1,0 +1,17 @@
+.gitignore
+.dockerignore
+Dockerfile
+dist
+.env.local
+.env.example
+.env.development
+node_modules
+misc
+.idea
+.nvmrc
+.tmp/
+.cache/
+.git/
+build/
+data/
+.next

@@ -1,5 +1,5 @@
 # development
-FROM node:16.10.0 AS dev
+FROM node:16.0.0 AS dev
 
 RUN apt-get update && apt-get install -y git \
     vim \

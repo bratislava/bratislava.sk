@@ -4,6 +4,7 @@ import { client } from '@utils/gql'
 import { useState, useEffect } from 'react'
 import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
 import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
+import _ from 'lodash'
 export interface ArticlesListProps {
   title: string
   itemsPerRow?: number
@@ -120,7 +121,7 @@ export const ArticlesList = ({
         category: item?.pageCategory?.title,
       }))
 
-      const filteringTags = [...new Map(helperTags.map((item) => [item['title'], item])).values()]
+      const filteringTags = _.uniqBy(helperTags, 'title')
       setFilteredTags(filteringTags)
     }
     getTags()

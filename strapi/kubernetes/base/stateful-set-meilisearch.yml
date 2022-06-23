@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ${BUILD_REPOSITORY_NAME}-meilisearch
+  namespace: ${NAMESPACE}
+  labels:
+    service: meilisearch
+spec:
+  replicas: 1
+  serviceName: ${BUILD_REPOSITORY_NAME}-meilisearch
+  template:
+    metadata:
+      labels:
+        service: meilisearch
+    spec:
+      containers:
+        - name: meilisearch
+          image: "getmeili/meilisearch:v0.27.1"
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: ${BUILD_REPOSITORY_NAME}-meilisearch
+            - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-meilisearch-secret
+          ports:
+            - name: http
+              containerPort: 7700
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            initialDelaySeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            initialDelaySeconds: 60
+          volumeMounts:
+            - name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
+              mountPath: /data.ms
+  volumeClaimTemplates:
+    - metadata:
+        name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
+        labels:
+          service: meilisearch
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 10Gi
