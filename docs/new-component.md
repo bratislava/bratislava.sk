@@ -23,3 +23,5 @@ This document is when you want to add a new component to the application and if 
 - when you finish adding the query to your project then hit this command to generate types dynamiclly that will be helpfull for further development (run it from `next` directory)
   > `yarn gen`;
 - after successfully running above command you are all set to add this query into the page you want and bind the data.
+
+ATTENTION If you are experiencing `Cannot read properties of undefined (reading 'type')`:  If you are adding new component to `Page` or `Blog Post` you NEED to add it also to other one, keep `components` in `Blog Post` and `Page` in sync otherwise step 2 `yarn gen` will not work
