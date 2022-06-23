@@ -5,7 +5,7 @@ import { ChevronRight, ArrowRight } from '../../../assets/images'
 import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
-import moment from 'moment'
+import { getNumericLocalDate } from '@utils/local-date'
 
 export interface NewsCardProps {
   id?: string
@@ -95,7 +95,7 @@ export const NewsCard = ({
             />
           )}
           <h3 className="text-md font-semibold news-small-content">{title}</h3>
-          <span className="text-xs font-medium">{moment(date_added || updatedAt).format('DD.MM.YYYY')}</span>
+          <span className="text-xs font-medium">{getNumericLocalDate(date_added || updatedAt)}</span>
           <p className="text-sm news-small-content">{excerpt}</p>
 
           {slug && (
