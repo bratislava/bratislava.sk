@@ -14,12 +14,13 @@ const InBa = ({
   className,
   inBaCards = [
     {
-      images: [Image1, Image2],
+      // TODO fix types
+      images: [Image1 as any, Image2 as any],
       title: 'in.ba',
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
-      images: [Image1, Image2],
+      images: [Image1 as any, Image2 as any],
       title: 'in.ba',
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },

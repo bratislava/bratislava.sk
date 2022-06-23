@@ -39,7 +39,7 @@ const BasePageLayout = ({
       </div>
 
       <div className={cx('block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden', { hidden: !searchOpen })}>
-        <AdvancedSearch className="text-white" />
+        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" options={[]} />
       </div>
     </div>
   )

@@ -91,26 +91,25 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="flex flex-col items-center justify-center h-full text-default leading-[30px]">
+    <div className="flex flex-col items-center justify-start text-default leading-[30px] pb-20 relative" style={{minHeight: 275}}>
       <Icon className="w-24 h-24" />
       {value.split(',').map((item, key) => {
         return (
-          <>
+          <div key={key}>
             <span
               className={cx('font-semibold w-full break-all text-center', {
                 'mt-9': key === 0,
               })}
-              key={key}
             >
               {item}
             </span>
-          </>
+          </div>
         )
       })}
       {label && href && (
         <a
           href={href}
-          className={cx('mt-8 px-6 py-3 font-medium border-2 rounded-lg shadow-sm whitespace-nowrap', {
+          className={cx('mt-8 px-6 py-3 font-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0', {
             'bg-primary border-primary': linkVariant === 'primary',
             'bg-secondary border-secondary': linkVariant === 'secondary',
             'text-white': linkVariant === 'primary',

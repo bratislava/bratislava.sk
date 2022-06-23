@@ -5,17 +5,17 @@ import truncate from 'lodash/truncate'
 interface DocumentListItemProps {
   categoryName: string
   discription: string
-  icon: string
+  Icon: string
   count: number
   onClick: Function
   id: string
 }
 
-export const DocumentListItem = ({ categoryName, discription, icon, count, onClick, id }: DocumentListItemProps) => {
+export const DocumentListItem = ({ categoryName, discription, Icon, count, onClick, id }: DocumentListItemProps) => {
   return (
     <div className="flex md:w-full min-w-[280px] md:items-center flex-col md:flex-row shadow-md bg-white mb-1">
       <div className="flex-1 md:justify-center flex py-5 pl-6">
-        <img src={icon} alt="icons" />
+        <Icon />
       </div>
       <div className="flex justify-start flex-col px-5 pb-3 flex-[4]">
         <div className="text-xs">{categoryName}</div>

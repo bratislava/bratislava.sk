@@ -4,21 +4,25 @@ import padStart from 'lodash/padStart'
 
 // "Marec 2021"
 export const getLocalDate = (dateString: string) =>
-  capitalize(
-    convert(ZonedDateTime.parse(dateString)).toDate().toLocaleDateString('sk', {
-      month: 'long',
-      year: 'numeric',
-    })
-  )
+  !dateString
+    ? ''
+    : capitalize(
+        convert(ZonedDateTime.parse(dateString)).toDate().toLocaleDateString('sk', {
+          month: 'long',
+          year: 'numeric',
+        })
+      )
 
 // "1.3.2021"
 export const getNumericLocalDate = (dateString: string) =>
-  convert(ZonedDateTime.parse(dateString))
-    .toDate()
-    .toLocaleDateString('sk', {
-      dateStyle: 'short',
-    })
-    .replace(/ /g, '')
+  !dateString
+    ? ''
+    : convert(ZonedDateTime.parse(dateString))
+        .toDate()
+        .toLocaleDateString('sk', {
+          dateStyle: 'short',
+        })
+        .replace(/ /g, '')
 
 // "Február"
 export const getLocalMonthName = (month: number | string) => {
