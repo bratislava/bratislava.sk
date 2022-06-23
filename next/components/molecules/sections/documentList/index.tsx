@@ -7,7 +7,7 @@ import { DocumentListModalBody } from './modalBody'
 
 export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
   const [isOpen, setOpen] = useState(false)
-  const [activeData, setActiveData] = useState(null);
+  const [activeData, setActiveData] = useState(null)
 
   const setOpenModal = (id) => {
     const data = vzns?.data?.find((vzn) => vzn.id === id)
@@ -22,7 +22,7 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
   return (
     <div>
       <div>
-        <BasicSearch placeholder='nana' title='cool' buttonText='click' />
+        <BasicSearch placeholder="nana" title="cool" buttonText="click" />
       </div>
       <div className="pt-10 pb-5 text-md font-semibold">Zoznam dokumentov</div>
       <div className="flex flex-row md:flex-col md:w-auto overflow-x-auto gap-4 modal-content-rent">

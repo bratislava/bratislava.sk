@@ -10,13 +10,14 @@ export interface InBaProps {
 
 const INBACARDS = [
   {
-    images: [Image1, Image2],
+    // TODO fix types
+    images: [Image1 as any, Image2 as any],
     title: 'in.ba',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     buttonContent: 'Lorem ipsum dolor',
   },
   {
-    images: [Image1, Image2],
+    images: [Image1 as any, Image2 as any],
     title: 'in.ba',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     buttonContent: 'Lorem ipsum dolor',

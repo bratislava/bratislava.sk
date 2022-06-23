@@ -18,7 +18,7 @@ export interface BookmarkProps {
   title: string
   content: string
   link: BookmarkLink
-  variant: 'blue' | 'red'
+  variant: 'blue' | 'red' | string
   icon?: string
   IconComponent?: React.FunctionComponent<React.SVGAttributes<any>>
 }
@@ -39,6 +39,9 @@ export const Bookmark = ({
   const [width, setWidth] = React.useState<number>()
   const [height, setHeight] = React.useState<number>()
 
+  // fallback to red if incorrect variant
+  const variantWithFallback = variant === 'blue' || variant === 'red' ? variant : 'red'
+
   React.useEffect(() => {
     if (!ref.current) return
 
@@ -51,8 +54,8 @@ export const Bookmark = ({
   return (
     <div
       className={cx(className, 'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out', {
-        'bg-blue-sea text-font': variant === 'blue',
-        'bg-red-brick text-white': variant === 'red',
+        'bg-blue-sea text-font': variantWithFallback === 'blue',
+        'bg-red-brick text-white': variantWithFallback === 'red',
         'w-175': isOpen,
         'w-17.5 ml-157.5': !isOpen,
       })}
@@ -62,8 +65,8 @@ export const Bookmark = ({
     >
       <button
         className={cx('w-17.5 font-semibold text-default', {
-          'bg-blue-sea-dark': variant === 'blue',
-          'bg-red-brick-dark': variant === 'red',
+          'bg-blue-sea-dark': variantWithFallback === 'blue',
+          'bg-red-brick-dark': variantWithFallback === 'red',
         })}
         onClick={() => setIsOpen((prev) => !prev)}
       >
@@ -86,8 +89,8 @@ export const Bookmark = ({
           ) : (
             <div
               className={cx('w-24 h-24 rounded-full', {
-                'bg-font': variant === 'blue',
-                'bg-white': variant === 'red',
+                'bg-font': variantWithFallback === 'blue',
+                'bg-white': variantWithFallback === 'red',
               })}
             ></div>
           )}

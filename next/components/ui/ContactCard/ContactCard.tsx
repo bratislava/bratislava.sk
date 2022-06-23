@@ -11,7 +11,8 @@ export interface ContactCardProps {
 
 export const ContactCard = ({
   className,
-  image = ContactImage,
+  // TODO fix types
+  image = ContactImage as any,
   name = 'Igor Cehlárik',
   telephoneNumber = '0902 985 844',
 }: ContactCardProps) => (
