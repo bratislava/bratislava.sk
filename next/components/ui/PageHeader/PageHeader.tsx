@@ -62,7 +62,7 @@ export const PageHeader = ({
     <div
       className={className}
       style={{
-        background: backgroundStyle.join(', '),
+        background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--secondary-color)',
       }}
       {...rest}
     >

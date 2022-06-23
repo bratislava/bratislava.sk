@@ -8,6 +8,7 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { Homepage, BlogPost, HomepageQuery, LatestBlogsWithTagsQuery } from '@bratislava/strapi-sdk-homepage'
 import { BlogPostEntity, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
@@ -120,11 +121,22 @@ export const Posts = ({
         <div className="mt-14 flex flex-col gap-y-10">
           <div className="flex flex-col items-center gap-y-5">
             {documents.map((document, index) => (
-              <DocumentCard key={index} {...document} className="max-w-4xl" />
+              <DocumentCard
+                key={index}
+                {...document}
+                className="max-w-4xl"
+                viewButtonText="TODO-fix"
+                downloadButtonText="TODO-fix"
+              />
             ))}
           </div>
           <UILink href="/official-board" className="flex justify-center">
-            <Button className="px-6 py-3 text-default font-medium" variant="transparent-black" icon={<ChevronRight />} hoverIcon={<ArrowRight />}>
+            <Button
+              className="px-6 py-3 text-default font-medium"
+              variant="transparent-black"
+              icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
+            >
               Prejsť na úradnú tabuľu
             </Button>
           </UILink>

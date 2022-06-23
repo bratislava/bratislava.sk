@@ -4,7 +4,6 @@ import SearchIcon from '../../../assets/images/search-icon.svg'
 import SearchIconSmallBlack from '../../../assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '../../../assets/images/search-icon-small-white.svg'
 import cx from 'classnames'
-import { title } from 'process'
 
 export interface BasicSearchProps {
   className?: string

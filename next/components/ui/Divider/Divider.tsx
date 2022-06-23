@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import CarsFullWidth from './dividers/cars-full-width.svg'
 import CarsNarrowWidth from './dividers/cars-narrow-width.svg'
@@ -47,76 +47,76 @@ import FooterWidth from './dividers/footer-city.svg'
 
 const DIVIDER = {
   mesto: {
-    display: FamousAttractionsFullWidth,
-    tablet: FamousAttractionsNarrowWidth,
-    mobile: FamousAttractionsMobileWidth,
+    display: <FamousAttractionsFullWidth />,
+    tablet: <FamousAttractionsNarrowWidth />,
+    mobile: <FamousAttractionsMobileWidth />,
   },
   hrad: {
-    display: CastleFullWidth,
-    tablet: CastleNarrowWidth,
-    mobile: CastleMobileWidth,
+    display: <CastleFullWidth />,
+    tablet: <CastleNarrowWidth />,
+    mobile: <CastleMobileWidth />,
   },
   doprava: {
-    display: CarsFullWidth,
-    tablet: CarsNarrowWidth,
-    mobile: CarsMobileWidth,
+    display: <CarsFullWidth />,
+    tablet: <CarsNarrowWidth />,
+    mobile: <CarsMobileWidth />,
   },
   parkovanie: {
-    display: ParkingSpaceFullWidth,
-    tablet: ParkingSpaceNarrowWidth,
-    mobile: ParkingSpaceMobileWidth,
+    display: <ParkingSpaceFullWidth />,
+    tablet: <ParkingSpaceNarrowWidth />,
+    mobile: <ParkingSpaceMobileWidth />,
   },
   bicykel: {
-    display: CyclistsFullWidth,
-    tablet: CyclistsNarrowWidth,
-    mobile: CyclistsMobileWidth,
+    display: <CyclistsFullWidth />,
+    tablet: <CyclistsNarrowWidth />,
+    mobile: <CyclistsMobileWidth />,
   },
   lod: {
-    display: ShipFullWidth,
-    tablet: ShipNarrowWidth,
-    mobile: ShipMobileWidth,
+    display: <ShipFullWidth />,
+    tablet: <ShipNarrowWidth />,
+    mobile: <ShipMobileWidth />,
   },
   stromy: {
-    display: TreesFullWidth,
-    tablet: TreesNarrowWidth,
-    mobile: TreesMobileWidth,
+    display: <TreesFullWidth />,
+    tablet: <TreesNarrowWidth />,
+    mobile: <TreesMobileWidth />,
   },
   vystavba: {
-    display: ConstructionSiteFullWidth,
-    tablet: ConstructionSiteNarrowWidth,
-    mobile: ConstructionSiteMobileWidth,
+    display: <ConstructionSiteFullWidth />,
+    tablet: <ConstructionSiteNarrowWidth />,
+    mobile: <ConstructionSiteMobileWidth />,
   },
   park: {
-    display: ParkWithFountainFullWidth,
-    tablet: ParkWithFountainNarrowWidth,
-    mobile: ParkWithFountainMobileWidth,
+    display: <ParkWithFountainFullWidth />,
+    tablet: <ParkWithFountainNarrowWidth />,
+    mobile: <ParkWithFountainMobileWidth />,
   },
   byvanie: {
-    display: LowRiseBuildingsFullWidth,
-    tablet: LowRiseBuildingsNarrowWidth,
-    mobile: LowRiseBuildingsMobileWidth,
+    display: <LowRiseBuildingsFullWidth />,
+    tablet: <LowRiseBuildingsNarrowWidth />,
+    mobile: <LowRiseBuildingsMobileWidth />,
   },
   budovy: {
-    display: HighRiseBuildingsFullWidth,
-    tablet: HighRiseNarrowWidth,
-    mobile: HighRiseBuildingsMobileWidth,
+    display: <HighRiseBuildingsFullWidth />,
+    tablet: <HighRiseNarrowWidth />,
+    mobile: <HighRiseBuildingsMobileWidth />,
   },
   vzdelavanie: {
-    display: BookFullWidth,
-    tablet: BookNarrowWidth,
-    mobile: BookMobileWidth,
+    display: <BookFullWidth />,
+    tablet: <BookNarrowWidth />,
+    mobile: <BookMobileWidth />,
   },
   skola: {
-    display: SchoolFullWidth,
-    tablet: SchoolNarrowWidth,
-    mobile: SchoolMobileWidth,
+    display: <SchoolFullWidth />,
+    tablet: <SchoolNarrowWidth />,
+    mobile: <SchoolMobileWidth />,
   },
   divadlo: {
-    display: TheaterFullWidth,
-    tablet: TheaterNarrowWidth,
-    mobile: TheaterMobileWidth,
+    display: <TheaterFullWidth />,
+    tablet: <TheaterNarrowWidth />,
+    mobile: <TheaterMobileWidth />,
   },
-  footer: FooterWidth,
+  footer: <FooterWidth />,
 }
 
 interface DividerProps {
@@ -156,7 +156,7 @@ export const Divider = ({ className, dividerStyle }: DividerProps) => {
     setComponent(DividerComponent)
   }, [])
 
-  return <div className={cx('flex justify-center', className)}>{Component && <Component />}</div>
+  return <div className={cx('flex justify-center', className)}>{Component}</div>
 }
 
 export default Divider

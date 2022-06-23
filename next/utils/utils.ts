@@ -39,5 +39,4 @@ export type PageProps<T extends GetServerSideProps> = Extract<
 >['props']
 
 // TEMP fix for build step where tokenized var isn't replaced until we figure out a better way
-export const shouldSkipStaticPaths = () =>
-  process.env.NODE_ENV === 'development' || process.env.STRAPI_URL === '%{STRAPI_URL}%'
+export const shouldSkipStaticPaths = () => true
