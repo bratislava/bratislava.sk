@@ -85,10 +85,13 @@ export const parsePageLink = (
   pageLink?: PageLinkFragment | null
 ): { title: string; url: string; anchor?: string } | null => {
   if (!pageLink) return null
-
+  const param = {
+    locale: pageLink?.page?.data?.attributes?.locale,
+    slug: pageLink?.page?.data?.attributes?.slug
+  }
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(pageLink) ?? '',
+    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -165,7 +168,6 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
     coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
     title: item.attributes.title ?? '',
     subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
-      .filter(isPresent)
       .map((subCategory) => ({
         icon: subCategory.attributes.icon ?? '',
         title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',

@@ -2893,7 +2893,7 @@ export type MainMenuQueryVariables = Exact<{
 }>;
 
 
-export type MainMenuQuery = { __typename?: 'Query', pageCategories?: { __typename?: 'PageCategoryEntityResponseCollection', data: Array<{ __typename?: 'PageCategoryEntity', id?: string | null, attributes?: { __typename?: 'PageCategory', color?: Enum_Pagecategory_Color | null, icon?: Enum_Pagecategory_Icon | null, title?: string | null, iconHover?: Enum_Pagecategory_Iconhover | null, priority?: number | null } | null }> } | null };
+export type MainMenuQuery = { __typename?: 'Query', pageCategories?: { __typename?: 'PageCategoryEntityResponseCollection', data: Array<{ __typename?: 'PageCategoryEntity', id?: string | null, attributes?: { __typename?: 'PageCategory', title?: string | null, color?: Enum_Pagecategory_Color | null, icon?: Enum_Pagecategory_Icon | null, iconHover?: Enum_Pagecategory_Iconhover | null, priority?: number | null, subcategories?: { __typename?: 'PageSubcategoryRelationResponseCollection', data: Array<{ __typename?: 'PageSubcategoryEntity', id?: string | null, attributes?: { __typename?: 'PageSubcategory', title?: string | null, priority?: number | null, icon?: Enum_Pagesubcategory_Icon | null, moreLink?: { __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null, pages?: Array<{ __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null> | null } | null }> } | null } | null }> } | null };
 
 export type LatestPostsByTagsQueryVariables = Exact<{
   tags?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
@@ -3727,19 +3727,10 @@ export const FooterDocument = gql`
 export const MainMenuDocument = gql`
     query MainMenu($locale: I18NLocaleCode!) {
   pageCategories(locale: $locale) {
-    data {
-      attributes {
-        color
-        icon
-        title
-        iconHover
-        priority
-      }
-      id
-    }
+    ...MainMenuItem
   }
 }
-    `;
+    ${MainMenuItemFragmentDoc}`;
 export const LatestPostsByTagsDocument = gql`
     query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
   blogPosts(
