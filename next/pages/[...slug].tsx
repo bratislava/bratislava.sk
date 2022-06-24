@@ -5,11 +5,11 @@ import PageWrapper from '../components/layouts/PageWrapper'
 import GeneralPage from '../components/pages/generalPage'
 import { client } from '../utils/gql'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { arrayify, isPresent, shouldSkipStaticPaths } from '../utils/utils'
+import { arrayify, isPresent } from '../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths = []
-  if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
+  // if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   const { pages } = await client.PagesStaticPaths()
   if (pages) {
@@ -36,10 +36,18 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const pageTranslations = ['common']
 
-  if (pages?.data[0]?.attributes?.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsCalculator')) {
+  if (
+    pages?.data[0]?.attributes?.sections
+      ?.filter(isPresent)
+      .find((section) => section.__typename === 'ComponentSectionsCalculator')
+  ) {
     pageTranslations.push('minimum-calculator')
   }
-  if (pages?.data[0]?.attributes?.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsNewsletter')) {
+  if (
+    pages?.data[0]?.attributes?.sections
+      ?.filter(isPresent)
+      .find((section) => section.__typename === 'ComponentSectionsNewsletter')
+  ) {
     pageTranslations.push('newsletter')
   }
 

@@ -4,11 +4,11 @@ import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
 import { client } from '../../utils/gql'
 import { parseFooter, parseMainMenu } from '../../utils/page'
-import { arrayify, isPresent, shouldSkipStaticPaths } from '../../utils/utils'
+import { arrayify, isPresent } from '../../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   let paths: { params: { slug: string } }[] = []
-  if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
+  // if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   const { blogPosts: blogPostSk } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[0],
@@ -67,7 +67,7 @@ interface BlogPostPageProps {
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer ?? {})
-  const menuItems = parseMainMenu(mainMenu);
+  const menuItems = parseMainMenu(mainMenu)
 
   // TODO change if multilingual blogs
   return (
