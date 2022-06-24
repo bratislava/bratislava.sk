@@ -60,16 +60,7 @@ query Footer($locale: I18NLocaleCode!) {
 
 query MainMenu($locale: I18NLocaleCode!) {
   pageCategories(locale: $locale) {
-    data {
-      attributes {
-        color
-        icon
-        title
-        iconHover
-        priority
-      }
-      id
-    }
+    ...MainMenuItem
   }
 }
 

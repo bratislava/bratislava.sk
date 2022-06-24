@@ -15,10 +15,13 @@ const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
   const crumbs: { title: string; url: string | null }[] = []
 
 
-  if (parent) {
+  if (parentPage) {
     crumbs.push({
       title: parentPage.data?.attributes?.title ?? '',
-      url: pagePath(parentPage),
+      url: pagePath({
+        locale: parentPage?.data?.attributes?.locale ,
+        slug: parentPage?.data?.attributes?.slug
+      }),
     })
   } else if (pageCategory) {
     crumbs.push({ title: pageCategory.data.attributes.title ?? '', url: null })
