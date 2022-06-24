@@ -85,14 +85,14 @@ query BlogPostsStaticPaths($locale: I18NLocaleCode) {
   }
 }
 
-query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput || TagFiltersInput) {
+query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput) {
   blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters) {
     ...BlogPost
   }
 }
 
-query TotalPostsCount($where: BlogPostFiltersInput) {
-  blogPosts(filters: $where) {
+query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int) {
+  blogPosts(filters: $where, pagination: { limit: $limit }) {
     meta {
       pagination {
         total
@@ -103,7 +103,7 @@ query TotalPostsCount($where: BlogPostFiltersInput) {
 }
 
 query RelatedTags($where: TagFiltersInput) {
-  tags(filters: $where) {
+  tags(pagination: { limit: 100 }, filters: $where) {
     data {
       attributes {
         title

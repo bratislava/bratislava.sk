@@ -2917,6 +2917,7 @@ export type LatestBlogsWithTagsQuery = { __typename?: 'Query', blogPosts?: { __t
 
 export type TotalPostsCountQueryVariables = Exact<{
   where?: InputMaybe<BlogPostFiltersInput>;
+  limit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -3760,8 +3761,8 @@ export const LatestBlogsWithTagsDocument = gql`
 }
     ${BlogPostFragmentDoc}`;
 export const TotalPostsCountDocument = gql`
-    query TotalPostsCount($where: BlogPostFiltersInput) {
-  blogPosts(filters: $where) {
+    query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int) {
+  blogPosts(filters: $where, pagination: {limit: $limit}) {
     meta {
       pagination {
         total
@@ -3773,7 +3774,7 @@ export const TotalPostsCountDocument = gql`
     `;
 export const RelatedTagsDocument = gql`
     query RelatedTags($where: TagFiltersInput) {
-  tags(filters: $where) {
+  tags(pagination: {limit: 100}, filters: $where) {
     data {
       attributes {
         title

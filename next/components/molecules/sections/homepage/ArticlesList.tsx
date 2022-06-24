@@ -24,9 +24,9 @@ export const ArticlesList = ({
   const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState([])
   const [totalArticles, setTotal] = useState(0)
-  const [totalTags, setTags] = useState([])
+  const [numberOfPages, setNumberOfPages] = useState(0)
   const [selectedTags, setSelectedTags] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto Bratislava')
+  const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto\nBratislava')
   const [categoryExists, setIfExists] = useState(category ? true : false)
   const [filteredTags, setFilteredTags] = useState([])
 
@@ -37,22 +37,25 @@ export const ArticlesList = ({
     let isMounted = false
 
     const getData = async () => {
-      console.log(category)
-
       const { blogPosts } = await client.LatestBlogsWithTags({
         limit: itemsPerPage,
         start: (currentPage - 1) * itemsPerPage,
         // TODO double check this filter after everything is connected
         filters: {
           tag: {
-            title: {
-              in: selectedTags,
-            },
-            pageCategory: {
-              title: {
-                eq: category,
-              },
-            },
+            title:
+              selectedTags.length > 0
+                ? {
+                    in: selectedTags,
+                  }
+                : {},
+            pageCategory: category
+              ? {
+                  title: {
+                    eq: selectedCategory,
+                  },
+                }
+              : {},
           },
         },
       })
@@ -75,23 +78,27 @@ export const ArticlesList = ({
         // TODO double check this filter after everything is connected
         where: {
           tag: {
-            title: {
-              in: selectedTags,
-            },
-            pageCategory: {
-              title: {
-                eq: category,
-              },
-            },
+            title:
+              selectedTags.length > 0
+                ? {
+                    in: selectedTags,
+                  }
+                : {},
+            pageCategory: category
+              ? {
+                  title: {
+                    eq: selectedCategory,
+                  },
+                }
+              : {},
           },
         },
+        limit: itemsPerPage,
       })
-      if (selectedTags.length < 1 && !category) {
-        if (isMounted) return
-        else {
-          setTotal(blogPosts.meta.pagination.total)
-        }
-      } else setTotal(blogPosts.meta.pagination.pageCount)
+
+      if (isMounted) return
+      setTotal(blogPosts.meta.pagination.total)
+      setNumberOfPages(blogPosts.meta.pagination.pageCount)
     }
 
     getTotalCount()
@@ -107,24 +114,25 @@ export const ArticlesList = ({
     let isMounted = false
     const getTags = async () => {
       const { tags } = await client.RelatedTags({
-        // TODO double check this filter after everything is connected
-        where: {
-          pageCategory: {
-            title: {
-              eq: selectedCategory,
-            },
-          },
-        },
+        where: category
+          ? {
+              pageCategory: {
+                title: {
+                  eq: selectedCategory,
+                },
+              },
+            }
+          : {},
       })
       if (isMounted) return
+
       const helperTags = tags?.data.map((item) => ({
         title: item?.attributes?.title,
         color: item?.attributes?.pageCategory?.data?.attributes?.color,
         category: item?.attributes?.pageCategory?.data?.attributes.title,
       }))
 
-      const filteringTags = _.uniqBy(helperTags, 'title')
-      setFilteredTags(filteringTags)
+      setFilteredTags(helperTags)
     }
     getTags()
       .then()
@@ -161,7 +169,7 @@ export const ArticlesList = ({
       {totalArticles > itemsPerPage ? (
         <div className="mt-14">
           <Pagination
-            itemsPerPage={itemsPerPage}
+            totalPages={numberOfPages}
             totalCount={totalArticles}
             currentPage={currentPage}
             pageHandler={setCurrentPage}
