@@ -63,7 +63,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
       )}
       {/* Header */}
       <PageHeader
-        className={cx({ 'mb-30 md:mb-16  lg:mb-64': hasFeaturedBlogs })}
+        className={cx('bg-cover',{ 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
