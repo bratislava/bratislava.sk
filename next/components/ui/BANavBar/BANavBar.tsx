@@ -262,7 +262,7 @@ const LanguageSelect = ({
           <div className="w-full min-h-[60px] h-auto bg-[#F8D7D4] rounded-lg flex flex-col items-center pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="w-[22px] h-6 mt-3 typography-paragraph text-[#333333] hover:typography-highlight-sm"
+                className="w-[22px] h-6 mt-3 typography-sm text-[#333333] hover:typography-highlight-sm"
                 key={option.key}
                 onClick={handleChange}
               >

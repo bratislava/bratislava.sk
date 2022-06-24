@@ -58,7 +58,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-paragraph" {...props} />,
+        p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
         a: ({ href, children }) => (
           <UILink href={href ?? '#'} className="underline text-font font-semibold hover:text-primary">
             {children[0]}

@@ -68,7 +68,7 @@
     @apply text-sm font-medium
   }
 
-  .typography-paragraph {
+  .typography-sm {
     @apply text-sm font-normal
   }
 
