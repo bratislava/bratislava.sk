@@ -3,6 +3,7 @@ import cx from 'classnames'
 
 import HomeIcon from '../../assets/images/home-icon.svg'
 import { Button } from '@bratislava/ui-bratislava'
+import { ArrowRight } from '@assets/images'
 
 export type TSubSectionItems = {
   url: string
@@ -28,7 +29,7 @@ const HeaderSection = ({ className, title, icon, items, dispayedItems }: HeaderS
         <div key={item.title}>{item.title}</div>
       ))}
       {dispayedItems && (
-        <Button icon={<HomeIcon />} shape="none">
+        <Button icon={<HomeIcon />} hoverIcon={<ArrowRight />} shape="none">
           <a href={dispayedItems.additionalUrl}> Ďalšie</a>
         </Button>
       )}

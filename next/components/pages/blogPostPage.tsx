@@ -9,22 +9,26 @@ import Sections from '../molecules/Sections'
 import Head from 'next/head'
 
 export interface GeneralPageProps {
-  blogPost: BlogPostFragment
+  post: BlogPostFragment
   footer: FooterProps
   children?: React.ReactNode
   menuItems?: MenuMainItem[]
 }
 
-const BlogPostPage = ({ blogPost, footer, children, menuItems }: GeneralPageProps) => {
+const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) => {
   const [socialLink, setSocialLink] = React.useState('')
   React.useEffect(() => setSocialLink(window.location.href), [])
+  const blogPost = post.data[0].attributes
+  const tag = blogPost?.tag?.data?.attributes
+  const pageCategory = tag?.pageCategory?.data?.attributes
+  
 
   return (
-    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={blogPost.tag?.pageCategory?.id}>
-      {blogPost.tag?.pageCategory?.color && (
+    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}>
+      {pageCategory?.color && (
         <style
           dangerouslySetInnerHTML={{
-            __html: pageStyle(blogPost.tag.pageCategory.color),
+            __html: pageStyle(pageCategory.color),
           }}
         />
       )}
@@ -32,7 +36,7 @@ const BlogPostPage = ({ blogPost, footer, children, menuItems }: GeneralPageProp
       <PageHeader className="header-main-bg bg-cover"
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
-        imageSrc={blogPost.coverImage?.url || ''}
+        imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}
       >
         {/* meta description (Excerpt) */}
         {blogPost?.excerpt && blogPost?.title && (
@@ -44,11 +48,9 @@ const BlogPostPage = ({ blogPost, footer, children, menuItems }: GeneralPageProp
         {/* Header - Breadcrumbs */}
         <SectionContainer>
           <div className="min-h-[220px]">
-            {blogPost.tag && (
-              <div className="pt-30 font-semibold text-default text-red-brick">{blogPost.tag.title}</div>
-            )}
-            <h1 className="pt-4 text-md md:text-2xl font-bold whitespace-pre-wrap">{blogPost.title}</h1>
-            <div className="pt-2 pb-14">{getNumericLocalDate(blogPost.created_at)}</div>
+            {blogPost?.tag && <div className="pt-30 font-semibold text-default text-red-brick">{tag?.title}</div>}
+            <h1 className="pt-4 text-md md:text-2xl font-bold whitespace-pre-wrap">{blogPost?.title}</h1>
+            {blogPost?.createdAt && <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div>}
           </div>
         </SectionContainer>
       </PageHeader>
@@ -74,7 +76,7 @@ const BlogPostPage = ({ blogPost, footer, children, menuItems }: GeneralPageProp
               <InstagramIcon />
             </SocialMediaButton>
 
-            <SocialMediaButton href={`https://twitter.com/intent/tweet?url=${socialLink}&text=${blogPost.title}`}>
+            <SocialMediaButton href={`https://twitter.com/intent/tweet?url=${socialLink}&text=${blogPost?.title}`}>
               <TwitterIcon />
             </SocialMediaButton>
           </div>

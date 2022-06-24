@@ -1,6 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Carousel, Link } from '@bratislava/ui-bratislava'
-import { ChevronRight } from '@assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import React from 'react'
 import { FetchGooutEventsResult, GooutEvent } from '../../../../utils/goout'
 import CardGradient from '../../../atoms/CardGradient'
@@ -60,6 +60,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         <Link
           href={linkUrl}
           icon={<ChevronRight />}
+          hoverIcon={<ArrowRight />}
           iconPosition="right"
           className="border-2 border-primary text-default py-3.5 px-6 box-border rounded-lg"
         >

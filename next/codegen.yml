@@ -1,4 +1,4 @@
-schema: http://localhost:1339/graphql
+schema: http://localhost:1337/graphql
 documents: './graphql/queries/**/*.{gql,graphql}'
 generates:
   graphql/index.ts:

@@ -1,29 +1,33 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+import { PageCategoryEntityResponse, PageEntityResponse, ParentPageFragment } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import * as React from 'react'
 import { pagePath } from '../../utils/page'
 
 interface Props {
-  page: GeneralPageFragment
+  parentPage: PageEntityResponse;
+  pageCategory: PageCategoryEntityResponse;
+  title: string;
 }
 
-const PageBreadcrumbs = ({ page }: Props) => {
+const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
   const { Link: UILink } = useUIContext()
   const crumbs: { title: string; url: string | null }[] = []
 
-  const parent = page.parentPage
 
-  if (parent) {
+  if (parentPage) {
     crumbs.push({
-      title: parent.title ?? '',
-      url: pagePath(parent),
+      title: parentPage.data?.attributes?.title ?? '',
+      url: pagePath({
+        locale: parentPage?.data?.attributes?.locale ,
+        slug: parentPage?.data?.attributes?.slug
+      }),
     })
-  } else if (page.pageCategory) {
-    crumbs.push({ title: page.pageCategory.title ?? '', url: null })
+  } else if (pageCategory) {
+    crumbs.push({ title: pageCategory.data.attributes.title ?? '', url: null })
   }
 
-  crumbs.push({ title: page.title ?? '', url: null })
+  crumbs.push({ title: title ?? '', url: null })
   return (
     <React.Fragment>
       {crumbs.map((crumb, i) => {

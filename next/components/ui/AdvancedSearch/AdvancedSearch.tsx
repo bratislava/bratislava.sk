@@ -7,10 +7,10 @@ import cx from 'classnames'
 
 export interface AdvancedSearchProps {
   className?: string
-  placeholder: string
-  title: string
-  buttonText: string
-  options: string[]
+  placeholder?: string
+  title?: string
+  buttonText?: string
+  options?: string[]
 }
 
 export const AdvancedSearch = ({ className, placeholder, title, buttonText, options }: AdvancedSearchProps) => {

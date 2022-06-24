@@ -10,20 +10,11 @@
     },
     "align": {
       "type": "enumeration",
-      "enum": [
-        "left",
-        "center",
-        "right"
-      ]
+      "enum": ["left", "center", "right"]
     },
     "width": {
       "type": "enumeration",
-      "enum": [
-        "narrow",
-        "default",
-        "wide",
-        "full"
-      ]
+      "enum": ["narrow", "default", "wide", "full"]
     },
     "hasBackground": {
       "type": "boolean"

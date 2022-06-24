@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   /**
@@ -44,8 +44,6 @@ module.exports = {
 
   register(/*{ strapi }*/) {},
 
-
-
   /**
    * An asynchronous bootstrap function that runs before
    * your application gets started.
@@ -54,4 +52,4 @@ module.exports = {
    * run jobs, or perform some special logic.
    */
   bootstrap(/*{ strapi }*/) {},
-};
+}

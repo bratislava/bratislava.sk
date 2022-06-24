@@ -85,10 +85,13 @@ export const parsePageLink = (
   pageLink?: PageLinkFragment | null
 ): { title: string; url: string; anchor?: string } | null => {
   if (!pageLink) return null
-
+  const param = {
+    locale: pageLink?.page?.data?.attributes?.locale,
+    slug: pageLink?.page?.data?.attributes?.slug
+  }
   return {
-    title: pageLink.title || pageLink.page?.title || '',
-    url: pageLink.url ?? pagePath(pageLink.page) ?? '',
+    title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
+    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -137,38 +140,40 @@ export const groupByCategoryFileList = (fileList: FileFragment[]) => {
 }
 
 // Page Footer
-export const parseFooter = (footer?: FooterFragment | null): FooterProps => ({
-  accessibilityLink: parsePageLink(footer?.accessibilityLink) ?? undefined,
-  address: footer?.address ?? undefined,
-  copyright: footer?.copyright ?? undefined,
-  email: footer?.email ?? undefined,
-  facebookLink: footer?.facebookUrl ?? undefined,
-  instagramLink: footer?.instagramUrl ?? undefined,
-  phone: footer?.phone ?? undefined,
-  youtubeLink: footer?.youtubeUrl ?? undefined,
-  sections: footer?.footerSections?.filter(isPresent).map((s) => ({
-    title: s.title ?? '',
-    pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
-  })),
-})
+export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
+  const data = footer?.data?.attributes
+  return {
+    accessibilityLink: parsePageLink(data?.accessibilityLink) ?? undefined,
+    address: data?.address ?? undefined,
+    copyright: data?.copyright ?? undefined,
+    email: data?.email ?? undefined,
+    facebookLink: data?.facebookUrl ?? undefined,
+    instagramLink: data?.instagramUrl ?? undefined,
+    phone: data?.phone ?? undefined,
+    youtubeLink: data?.youtubeUrl ?? undefined,
+    sections: data?.footerSections?.filter(isPresent).map((s) => ({
+      title: s.title ?? '',
+      pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
+    })),
+  }
+}
 
 // Main Menu
-export const parseMainMenu = (menu: MainMenuItemFragment[]): MenuMainItem[] =>
-  orderBy(menu, ['priority'], ['asc']).map((item) => ({
+export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
+  orderBy(menu.data, ['priority'], ['asc']).map((item) => ({
     id: item.id ?? '',
-    color: `rgb(var(${getColorVariables(item.color ?? '').light}))`,
-    colorDark: `rgb(var(${getColorVariables(item.color ?? '').dark}))`,
-    icon: item.icon ?? '',
-    coloredIcon: item?.iconHover ?? item.icon ?? '',
-    title: item.title ?? '',
-    subItems: orderBy(item.subcategories ?? [], ['priority'], ['asc'])
-      .filter(isPresent)
+    color: `rgb(var(${getColorVariables(item.attributes.color ?? '').light}))`,
+    colorDark: `rgb(var(${getColorVariables(item.attributes.color ?? '').dark}))`,
+    icon: item.attributes.icon ?? '',
+    coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
+    title: item.attributes.title ?? '',
+    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
       .map((subCategory) => ({
-        icon: subCategory.icon ?? '',
-        title: (subCategory.title || subCategory.moreLink?.title) ?? '',
-        moreLinkTitle: (subCategory.moreLink?.title || subCategory.title) ?? '',
-        url: parsePageLink(subCategory.moreLink)?.url ?? '',
-        subItems: subCategory.pages?.map(parsePageLink).filter(isPresent) ?? [],
+        icon: subCategory.attributes.icon ?? '',
+        title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
+        moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
+        url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
+        subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
       })),
   }))
 
@@ -182,24 +187,41 @@ export const groupByCategory = <T>(items: T[]) => {
   return groupedItems
 }
 //Page Related Content
-export const parseRelatedBlogPosts = (RelatedContentBlogPosts: BlogPostFragment[]): NewsCardProps[] =>
-  RelatedContentBlogPosts.map((relatedBlogPost) => ({
-    id: relatedBlogPost.id,
-    title: relatedBlogPost.title ?? undefined,
-    coverImage: {
-      url: relatedBlogPost.coverImage.url,
-    },
-    tag: {
-      pageCategory: {
-        color: relatedBlogPost.tag?.pageCategory?.color,
+export const parseRelatedBlogPosts = (RelatedContentBlogPosts: BlogPostFragment[]): NewsCardProps[] => {
+  const array: NewsCardProps[] = RelatedContentBlogPosts.map((relatedBlogPost) => {
+    const blogpost = relatedBlogPost.data[0]
+    return {
+      id: blogpost.id,
+      title: blogpost.attributes?.title ?? undefined,
+      coverImage: {
+        data: {
+          attributes: {
+            url: blogpost.attributes?.coverImage?.data?.attributes?.url,
+          },
+        },
       },
-      title: relatedBlogPost.tag?.pageCategory?.title ?? undefined,
-    },
-    excerpt: relatedBlogPost.excerpt ?? undefined,
-    updated_at: getNumericLocalDate(relatedBlogPost.created_at).split('.').join('.  '),
-    created_at: getNumericLocalDate(relatedBlogPost.created_at).split('.').join('.  '),
-    moreLink: parseBlogPostLink(relatedBlogPost.moreLink, relatedBlogPost.slug),
-  }))
+      tag: {
+        data: {
+          attributes: {
+            title: blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
+            pageCategory: {
+              data: {
+                attributes: {
+                  color: blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
+                },
+              },
+            },
+          },
+        },
+      },
+      excerpt: blogpost.attributes?.excerpt ?? undefined,
+      updatedAt: getNumericLocalDate(blogpost.attributes?.updatedAt).split('.').join('.  '),
+      createdAt: getNumericLocalDate(blogpost.attributes?.date_added).split('.').join('.  '),
+      moreLink: parseBlogPostLink(blogpost.attributes?.moreLink, blogpost.attributes?.slug),
+    }
+  })
+  return array
+}
 
 // Page Accordion Item - regex for secondary text
 export const parseCategory = (category: string) => {

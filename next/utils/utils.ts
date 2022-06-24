@@ -11,16 +11,16 @@ export const arrayify = (input: string | string[] | undefined | null) => {
 
 export const fileCountVzns = (data: any) => {
   let count = 0
-  if (data?.mainDocument?.url) {
+  if (data?.attributes?.mainDocument?.url) {
     count += 1
   }
-  if (data?.amedmentDocument) {
-    count += data?.amedmentDocument.length
+  if (data?.attributes?.amedmentDocument) {
+    count += data?.attributes?.amedmentDocument.length
   }
-  if (data?.cancellationDocument) {
-    count += data?.cancellationDocument.length
+  if (data?.attributes?.cancellationDocument) {
+    count += data?.attributes?.cancellationDocument.length
   }
-  if (data?.consolidatedText) {
+  if (data?.attributes?.consolidatedText) {
     count += 1
   }
   return count
@@ -39,5 +39,4 @@ export type PageProps<T extends GetServerSideProps> = Extract<
 >['props']
 
 // TEMP fix for build step where tokenized var isn't replaced until we figure out a better way
-export const shouldSkipStaticPaths = () =>
-  process.env.NODE_ENV === 'development' || process.env.STRAPI_URL === '%{STRAPI_URL}%'
+export const shouldSkipStaticPaths = () => true

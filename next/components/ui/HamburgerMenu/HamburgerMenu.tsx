@@ -8,6 +8,7 @@ import TextSize from '../../../assets/images/text-size.svg'
 import cx from 'classnames'
 import React, { useState } from 'react'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
+import { ArrowRight } from '@assets/images'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
@@ -35,8 +36,8 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   },
   {
     icon: <LightBulb />,
-    title: 'Newcommer',
-    url: '/newcommer',
+    title: 'Я з України',
+    url: '/kultura-a-komunity/komunity/братислава-для-украіни',
   },
   {
     icon: <Tourist />,
@@ -89,21 +90,13 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
           <Link className="text-base font-medium" variant="plain" href="#">
             Prihlásenie
           </Link>
-          <Link
-            variant="plain"
-            className="bg-red-universal-300 px-6 w-40 h-10 inline-flex text-white text-base font-medium rounded shadow-md"
-            href="#"
-            icon={<ChevronRight />}
-            iconPosition="right"
-          >
-            Registrácia
-          </Link>
         </div>
         <div className="flex flex-col gap-y-3.5">
           {MOCK_HAMBURGER_MENU_ITEMS.map((item, index) => (
             <Link
               variant="plain"
               icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
               iconPosition="right"
               href={item.url}
               key={item.title}

@@ -1,0 +1,19 @@
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: ${BUILD_REPOSITORY_NAME}-env
+    namespace: ${NAMESPACE}
+    behavior: merge
+    envs:
+      - .env
+  - name: ${BUILD_REPOSITORY_NAME}-database
+    namespace: ${NAMESPACE}
+    behavior: merge
+    envs:
+      - .database.env
+  - name: ${BUILD_REPOSITORY_NAME}-meilisearch
+    namespace: ${NAMESPACE}
+    behavior: merge
+    envs:
+      - .meilisearch.env

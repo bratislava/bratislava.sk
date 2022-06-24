@@ -1,6 +1,7 @@
 {
-  "parser": "babel-eslint",
-  "extends": "eslint:recommended",
+  "parser": "@babel/eslint-parser",
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
   "env": {
     "commonjs": true,
     "es6": true,
@@ -12,16 +13,16 @@
       "experimentalObjectRestSpread": true,
       "jsx": false
     },
-    "sourceType": "module"
+    "sourceType": "module",
+    "requireConfigFile": false
   },
   "globals": {
     "strapi": true
   },
   "rules": {
+    "prettier/prettier": ["error"],
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": ["error", "unix"],
-    "no-console": 0,
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "no-console": 0
   }
 }

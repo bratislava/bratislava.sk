@@ -9,8 +9,11 @@ import remarkGfm from 'remark-gfm'
 export interface RentProps {
   className?: string
   icon?: {
-    url?: string
-    name?: string
+    data?: {
+      attributes?: {
+        url?: string
+      }
+    }
   }
   title?: string
   desc?: string
@@ -33,7 +36,9 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
           backgroundColor: 'var(--secondary-color)',
         }}
       >
-        {icon?.url && <img className="p-5 md:w-30 md:h-30 w-28 h-28" src={icon.url} alt={icon.name} />}
+        {icon?.data?.attributes?.url && (
+          <img className="p-5 md:w-30 md:h-30 w-28 h-28" src={icon.data.attributes.url} alt={title} />
+        )}
       </div>
       <div className="flex flex-col text-center items-center w-60 md:w-auto xl:w-73 ">
         <h1 className="text-md mt-5 mb-7 h-16">{title}</h1>
@@ -66,7 +71,9 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
           }}
         >
           <div className="rounded-full bg-white w-max mb-8">
-            {icon?.url && <img className="p-5" src={icon.url} alt={icon.name} width="160" height="160" />}
+            {icon?.data?.attributes?.url && (
+              <img className="p-5" src={icon.data.attributes.url} alt={title} width="160" height="160" />
+            )}
           </div>
           <h1 className="text-md mb-8 text-left">{title}</h1>
           <ReactMarkdown

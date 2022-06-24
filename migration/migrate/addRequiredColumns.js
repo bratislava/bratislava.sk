@@ -1,6 +1,4 @@
-const {
-  dbV4,
-} = require("../config/database");
+const { dbV4 } = require('../config/database')
 
 const queries = [
   `
@@ -38,8 +36,19 @@ const queries = [
   `
   ALTER TABLE IF EXISTS public.page_categories
     ADD COLUMN tag integer;
-`
-
+`,
+  `
+  ALTER TABLE IF EXISTS public.components_sections_featured_blog_posts_first_blog_links
+    ADD COLUMN featured_blog_post_id integer;
+`,
+  `
+  ALTER TABLE IF EXISTS public.components_sections_featured_blog_posts_second_blog_links
+    ADD COLUMN featured_blog_post_id integer;
+`,
+  `
+  ALTER TABLE IF EXISTS public.components_sections_featured_blog_posts_third_blog_links
+    ADD COLUMN featured_blog_post_id integer;
+`,
 ]
 
 async function addAdditionalColumns() {
@@ -47,8 +56,8 @@ async function addAdditionalColumns() {
     try {
       await dbV4.raw(queries[i])
     } catch (error) {
-      if(!(error.message.includes("already exists"))) {
-      console.log(error.message)
+      if (!error.message.includes('already exists')) {
+        console.log(error.message)
       }
     }
   }
@@ -56,4 +65,4 @@ async function addAdditionalColumns() {
 
 module.exports = {
   addAdditionalColumns,
-};
+}

@@ -106,7 +106,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
       )
 
     case 'ComponentSectionsIconTitleDesc':
-      return <RentBenefits {...section} linkLabel={t('readMore')} />
+      return <RentBenefits title={section.title} list={section.list} linkLabel={t('readMore')} />
 
     case 'ComponentSectionsDocumentList':
       return <DocumentList {...section} />
@@ -117,7 +117,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsTextWithImage':
       return (
         <TextWithImage
-          imageSrc={section.imageSrc?.url ?? ''}
+          imageSrc={section.imageSrc?.data.attributes.url ?? ''}
           imagePosition={section.imagePosition ?? 'left'}
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
@@ -177,33 +177,34 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
               </AccordionItem>
             ))}
 
-            {groupByCategory(section.flatText ?? []).map((text) => (
-              <AccordionItem
-                key={text.category}
-                title={parseCategory(text.category).title}
-                secondaryTitle={parseCategory(text.category).secondaryTitle}
-              >
-                {text.items.filter(isPresent).map((item, i) => {
-                  const link = parsePageLink({
-                    title: item.moreLinkTitle,
-                    url: item.moreLinkUrl,
-                    page: item.moreLinkPage,
-                  })
+            {groupByCategory(section.flatText ?? [])
+              .reverse()
+              .map((text) => (
+                <AccordionItem
+                  key={text.category}
+                  title={parseCategory(text.category).title}
+                  secondaryTitle={parseCategory(text.category).secondaryTitle}
+                >
+                  {text.items.filter(isPresent).map((item, i) => {
+                    const link = parsePageLink({
+                      title: item.moreLinkTitle,
+                      url: item.moreLinkUrl,
+                      page: item.moreLinkPage,
+                    })
 
-                  return (
-                    <div className="flex flex-col space-y-4 pl-10">
-                      <NarrowText
-                        key={i}
-                        align={item.align ?? undefined}
-                        width={item.width ?? undefined}
-                        content={item.content ?? undefined}
-                      />
-                      {link?.url && link.title && <PageLinkButton className="pl-6" pageLink={link} />}
-                    </div>
-                  )
-                })}
-              </AccordionItem>
-            ))}
+                    return (
+                      <div className="flex flex-col space-y-4 pl-10" key={i}>
+                        <NarrowText
+                          align={item.align ?? undefined}
+                          width={item.width ?? undefined}
+                          content={item.content ?? undefined}
+                        />
+                        {link?.url && link.title && <PageLinkButton className="pl-6" pageLink={link} />}
+                      </div>
+                    )
+                  })}
+                </AccordionItem>
+              ))}
 
             {groupByCategory(section.institutionsNarrow ?? []).map((text) => (
               <AccordionItem
@@ -263,10 +264,12 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.title} />
+      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} />
 
+    /*
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
+    */
 
     default:
       return null

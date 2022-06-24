@@ -7,10 +7,10 @@ import ChevronRight from '../../../assets/images/chevron-right.svg'
 
 export interface InBaCardProps {
   className?: string
-  images?: string[]
-  title?: string
-  content?: string
-  link?: string
+  images?: (string|undefined)[]
+  title?: string | null
+  content?: string | null
+  link?: string | null
   readMoreTitle?: string
 }
 

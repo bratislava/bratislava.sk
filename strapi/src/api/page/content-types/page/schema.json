@@ -72,6 +72,7 @@
         "sections.divider",
         "sections.file-list",
         "sections.icon-title-desc",
+        "sections.iframe",
         "sections.links",
         "sections.list-items",
         "sections.narrow-text",
@@ -80,7 +81,8 @@
         "sections.text-with-image",
         "sections.videos",
         "sections.waves",
-        "sections.iframe"
+        "sections.document-list",
+        "sections.space"
       ]
     },
     "pageHeaderSections": {
@@ -107,11 +109,6 @@
       "target": "api::page.page",
       "mappedBy": "parentPage"
     },
-    "relatedContents": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "pageBackgroundImage": {
       "type": "media",
       "multiple": false,
@@ -137,6 +134,17 @@
         }
       },
       "component": "blocks.blog-post-link"
+    },
+    "pageCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page-category.page-category",
+      "inversedBy": "pages"
+    },
+    "relatedContents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     }
   }
 }

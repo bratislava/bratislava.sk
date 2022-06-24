@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-category",
     "pluralName": "page-categories",
-    "displayName": "Page Category"
+    "displayName": "Page Category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -86,6 +87,17 @@
         }
       },
       "type": "integer"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "pageCategory"
+    },
+    "subcategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page-subcategory.page-subcategory"
     }
   }
 }

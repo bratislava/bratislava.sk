@@ -1,23 +1,47 @@
-export ArrowDoubleLong from './arrow-double-long.svg';
-export ArrowDoubleShort from './arrow-double-short.svg';
-export SearchIcon from './search-icon.svg';
-export NewReservation from './new-reservation.svg';
-export Reservations from './reservation.svg';
-export CheckMark from './check-mark.svg';
-export ChevronDown from './chevron-down.svg';
-export ReservationCalendar from './reservation-calendar.svg';
-export ChevronRight from './chevron-right.svg';
-export NextStepChevronRight from './chevron-right-circle.svg';
-export ArrowRight from './arrow-right.svg';
-export ChevronLeft from './chevron-left.svg';
-export ArrowLeft from './arrow-left.svg';
-export EmailInput from './email.svg';
-export BrandSVG from './brand.svg';
-export Circle from './circle.svg';
-export ListCircle from './list-circle.svg';
-export Download from './download.svg';
-export FacebookIcon from './facebook.svg';
-export LinkedinIcon from './linkedin.svg';
-export InstagramIcon from './instagram.svg';
-export TwitterIcon from './twitter.svg';
-export ListCircleFull from './ListCircleFull.svg';
+import iArrowDoubleLong from './arrow-double-long.svg'
+import iArrowDoubleShort from './arrow-double-short.svg'
+import iSearchIcon from './search-icon.svg'
+import iNewReservation from './new-reservation.svg'
+import iReservations from './reservation.svg'
+import iCheckMark from './check-mark.svg'
+import iChevronDown from './chevron-down.svg'
+import iReservationCalendar from './reservation-calendar.svg'
+import iChevronRight from './chevron-right.svg'
+import iNextStepChevronRight from './chevron-right-circle.svg'
+import iArrowRight from './arrow-right.svg'
+import iChevronLeft from './chevron-left.svg'
+import iArrowLeft from './arrow-left.svg'
+import iEmailInput from './email.svg'
+import iBrandSVG from './brand.svg'
+import iCircle from './circle.svg'
+import iListCircle from './list-circle.svg'
+import iDownload from './download.svg'
+import iFacebookIcon from './facebook.svg'
+import iLinkedinIcon from './linkedin.svg'
+import iInstagramIcon from './instagram.svg'
+import iTwitterIcon from './twitter.svg'
+import iListCircleFull from './ListCircleFull.svg'
+
+export const ArrowDoubleLong = iArrowDoubleLong
+export const ArrowDoubleShort = iArrowDoubleShort
+export const SearchIcon = iSearchIcon
+export const NewReservation = iNewReservation
+export const Reservations = iReservations
+export const CheckMark = iCheckMark
+export const ChevronDown = iChevronDown
+export const ReservationCalendar = iReservationCalendar
+export const ChevronRight = iChevronRight
+export const NextStepChevronRight = iNextStepChevronRight
+export const ArrowRight = iArrowRight
+export const ChevronLeft = iChevronLeft
+export const ArrowLeft = iArrowLeft
+export const EmailInput = iEmailInput
+export const BrandSVG = iBrandSVG
+export const Circle = iCircle
+export const ListCircle = iListCircle
+export const Download = iDownload
+export const FacebookIcon = iFacebookIcon
+export const LinkedinIcon = iLinkedinIcon
+export const InstagramIcon = iInstagramIcon
+export const TwitterIcon = iTwitterIcon
+export const ListCircleFull = iListCircleFull
