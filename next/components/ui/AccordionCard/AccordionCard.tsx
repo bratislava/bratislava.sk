@@ -7,28 +7,47 @@ import cx from 'classnames'
 
 export interface AccordionCardProps {
   id: string
-  title: string
-  subtitle: string
-  phone: string
-  email: string
+  displayName: string
+  jobTitle: string
+  businessPhones?: string[]
+  mobilePhone?: string
+  mail: string
   heading?: boolean
   className?: string
 }
 
-export const AccordionCard = ({ id, title, subtitle, phone, email, heading, className }: AccordionCardProps) => {
+export const AccordionCard = ({
+  id,
+  displayName,
+  jobTitle,
+  businessPhones,
+  mobilePhone,
+  mail,
+  heading,
+  className,
+}: AccordionCardProps) => {
   return (
-    <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-70 max-w-87')}>
-      <div className="text-sm lg:text-md font-semibold pb-2">{title}</div>
-      <div className="text-gray-dark text-xs lg:text-sm pb-6">{subtitle}</div>
+    /* min-w-70 does not work anymore (worked fine on monorepo) */
+    <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
+      <div className="text-sm lg:text-md font-semibold pb-2">{displayName}</div>
+      <div className="text-gray-dark text-xs lg:text-sm pb-6">{jobTitle}</div>
       <div className="flex justify-between">
         <div>
           <div className="flex gap-x-4 pb-3">
             {!heading && <Phone className="hidden xl:flex" />}
-            <div className="font-semibold text-red-brick text-sm flex items-center">{phone}</div>
+            {businessPhones?.length > 0
+              ? businessPhones.map((phone) => (
+                  <div key={phone} className="font-semibold text-red-brick text-sm flex items-center">
+                    {phone}
+                  </div>
+                ))
+              : mobilePhone && (
+                  <div className="font-semibold text-red-brick text-sm flex items-center">{mobilePhone}</div>
+                )}
           </div>
           <div className="flex gap-x-4">
             {!heading && <Mail className="hidden xl:flex" />}
-            <div className="font-semibold text-red-brick text-xs lg:text-sm underline underline-offset-2">{email}</div>
+            <div className="font-semibold text-red-brick text-xs lg:text-sm underline underline-offset-2">{mail}</div>
           </div>
         </div>
 

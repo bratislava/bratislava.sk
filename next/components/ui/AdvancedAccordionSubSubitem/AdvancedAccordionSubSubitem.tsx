@@ -4,21 +4,29 @@ import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg
 import cx from 'classnames'
 import { AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
+import useSWR from 'swr'
+import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionSubSubitemProps {
   title: string
   className?: string
   cardClassName?: string
-  departmentCards?: AccordionCardProps[]
+  // departmentCards?: AccordionCardProps[]
 }
 
 export const AdvancedAccordionSubSubitem = ({
   title,
   className,
   cardClassName,
-  departmentCards,
-}: AdvancedAccordionSubSubitemProps) => {
+}: // departmentCards,
+AdvancedAccordionSubSubitemProps) => {
   const [open, setOpen] = useState(false)
+  const [cards, setCards] = useState([])
+  const { data, error } = useSWR(title, usersFromDepartmentFetcher)
+  if (!cards.length && data && data.length > 0) {
+    setCards(data)
+    console.log(data)
+  }
   return (
     <div className="flex flex-col">
       <div
@@ -32,9 +40,9 @@ export const AdvancedAccordionSubSubitem = ({
         </div>
       </div>
 
-      {open && departmentCards && departmentCards.length > 0 && (
+      {open && cards && cards.length > 0 && (
         <div className={cx(cardClassName, 'lg:pt-8')}>
-          <AccordionCards items={departmentCards} />
+          <AccordionCards items={cards} />
         </div>
       )}
     </div>

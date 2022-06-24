@@ -1,8 +1,6 @@
 import { AdvancedAccordionItem, AdvancedAccordionItemProps } from '../AdvancedAccordionItem/AdvancedAccordionItem'
 import { BasicSearch } from '../BasicSearch/BasicSearch'
 import Divider from '../Divider/Divider'
-import useSWR from 'swr'
-import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionProps {
   title?: string
@@ -10,29 +8,23 @@ export interface AdvancedAccordionProps {
 }
 
 export const AdvancedAccordion = ({ title, dividerStyle }: AdvancedAccordionProps) => {
-  const { data, error } = useSWR(`Primátor hlavného mesta SR Bratislavy`, usersFromDepartmentFetcher)
-
-  data && console.log(data)
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-
   return (
     <div className="flex flex-col">
       <div className="text-default lg:text-lg font-semibold pb-4">{title}</div>
       <BasicSearch collapse className="flex lg:hidden pb-6" placeholder={''} title={''} buttonText={''} />
-      <AdvancedAccordionItem {...firstItem} />
+      <AdvancedAccordionItem {...accordionItems[0]} />
       <Divider
         className="py-6 lg:py-10"
         dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
       />
-      <AdvancedAccordionItem {...secondItem} />
+      <AdvancedAccordionItem {...accordionItems[1]} />
     </div>
   )
 }
 
 export const accordionItems = [
   {
+    title: 'Primátor hlavného mesta SR Bratislavy',
     departments: [
       {
         title: 'Kancelária primátora',
@@ -81,8 +73,109 @@ export const accordionItems = [
       },
     ],
   },
+
+  {
+    title: 'Magistrát hlavného mesta SR Bratislavy',
+    departments: [
+      {
+        title: 'Kancelária riaditeľa magistrátu',
+      },
+      {
+        title: 'Zástupcovia riaditeľa magistrátu',
+        items: [
+          {
+            title: 'Priamo riadené oddelenia zástupcom riaditeľa magistrátu',
+            isGroupTitle: true,
+          },
+          {
+            title: 'Oddelenie komunálneho podniku',
+          },
+          {
+            title: 'Oddelenie správy komunikácií',
+          },
+          {
+            title: 'Podriadené sekcie',
+            isGroupTitle: true,
+          },
+          {
+            title: 'Sekcia právnych služieb',
+          },
+          {
+            title: 'Sekcia životného prostredia',
+          },
+          {
+            title: 'Sekcia nájomného bývania',
+          },
+          {
+            title: 'Priamo riadené oddelenia zástupkyňou riaditeľa magistrátu',
+            isGroupTitle: true,
+          },
+          {
+            title: 'Oddelenie školstva, športu a mládeže',
+          },
+          {
+            title: 'Oddelenie kultúry',
+          },
+          {
+            title: 'Oddelenie vnútornej správy',
+          },
+          {
+            title: 'Podriadené sekcie',
+            isGroupTitle: true,
+          },
+          {
+            title: 'Sekcia sociálnych vecí',
+          },
+          {
+            title: 'Sekcia územného rozvoja',
+          },
+          {
+            title: 'Priamo riadené oddelenia zástupcom riaditeľa magistrátu',
+            isGroupTitle: true,
+          },
+          {
+            title: 'Oddelenie implementácie externého fiancovania',
+          },
+          {
+            title: 'Oddelenie interného auditu',
+          },
+          {
+            title: 'Oddelenie rozvoja magistrátu',
+          },
+          {
+            title: 'Podriadené sekcie',
+            isGroupTitle: true,
+          },
+          {
+            title: 'Sekcia výstavby',
+          },
+          {
+            title: 'Sekcia informatiky, dát a inovácií',
+            items: [
+              {
+                title: 'Projektová kancelária - SIDal',
+              },
+              {
+                title: 'Oddelenie dátových a priestorových analýz',
+              },
+              {
+                title: 'Oddelenie informatiky',
+              },
+              {
+                title: 'Oddelenie inovácií a digitálnych služieb',
+              },
+            ],
+          },
+          {
+            title: 'Projektová kancelária - magistrát',
+          },
+        ],
+      },
+    ],
+  },
 ]
 
+/* 
 export const firstItem: AdvancedAccordionItemProps = {
   title: 'Primátor hlavného mesta SR Bratislavy',
   departments: [
@@ -617,3 +710,4 @@ export const secondItem: AdvancedAccordionItemProps = {
     },
   ],
 }
+ */
