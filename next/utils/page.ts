@@ -88,7 +88,7 @@ export const parsePageLink = (
 
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(pageLink) ?? '',
+    url: pageLink.url ?? pagePath(pageLink) ?? pageLink.page?.data?.attributes?.slug,
     anchor: pageLink.anchor ?? '',
   }
 }
