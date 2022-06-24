@@ -57,7 +57,6 @@ export const ArticlesList = ({
         },
       })
       if (isMounted) return
-      console.log(blogPosts)
       setData(blogPosts?.data ?? [])
     }
     getData()
