@@ -12,3 +12,8 @@ configMapGenerator:
     behavior: merge
     envs:
       - .database.env
+  - name: ${BUILD_REPOSITORY_NAME}-meilisearch
+    namespace: ${NAMESPACE}
+    behavior: merge
+    envs:
+      - .meilisearch.env

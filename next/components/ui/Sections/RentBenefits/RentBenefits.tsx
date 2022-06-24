@@ -34,7 +34,8 @@ const LIST = [
   },
 ]
 
-export const RentBenefits = ({ className, title, linkLabel, list = LIST }: RentBenefitsProps) => (
+// TODO fix types
+export const RentBenefits = ({ className, title, linkLabel, list = LIST as any }: RentBenefitsProps) => (
   <div className="md:flex md:items-center md:flex-col mt-20">
     <h1 className="flex text-center text-2xl md:text-4xl font-semibold">{title}</h1>
     <HorizontalScrollWrapper className="flex md:items-baseline xs:items-center xs:gap-5 flex-row md:gap-x-12 lg:gap-x-24 my-14">

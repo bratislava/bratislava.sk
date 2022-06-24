@@ -21,7 +21,7 @@ import iLinkedinIcon from './linkedin.svg'
 import iInstagramIcon from './instagram.svg'
 import iTwitterIcon from './twitter.svg'
 import iListCircleFull from './ListCircleFull.svg'
-import iDaneAPoplatky from './DaneAPoplatky.svg'
+import iDaneAPoplatky from './daneAPoplatky.svg'
 
 export const ArrowDoubleLong = iArrowDoubleLong
 export const ArrowDoubleShort = iArrowDoubleShort
