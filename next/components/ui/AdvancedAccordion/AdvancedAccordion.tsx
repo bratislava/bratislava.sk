@@ -2,6 +2,7 @@ import { AdvancedAccordionItem, AdvancedAccordionItemProps } from '../AdvancedAc
 import { BasicSearch } from '../BasicSearch/BasicSearch'
 import Divider from '../Divider/Divider'
 import useSWR from 'swr'
+import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionProps {
   title?: string
@@ -9,8 +10,9 @@ export interface AdvancedAccordionProps {
 }
 
 export const AdvancedAccordion = ({ title, dividerStyle }: AdvancedAccordionProps) => {
-  const fetcher = (url) => fetch(url).then((r) => r.json())
-  const { data, error } = useSWR('/api/user', fetcher)
+  const { data, error } = useSWR(`Primátor hlavného mesta SR Bratislavy`, usersFromDepartmentFetcher)
+
+  data && console.log(data)
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
@@ -20,14 +22,66 @@ export const AdvancedAccordion = ({ title, dividerStyle }: AdvancedAccordionProp
       <div className="text-default lg:text-lg font-semibold pb-4">{title}</div>
       <BasicSearch collapse className="flex lg:hidden pb-6" placeholder={''} title={''} buttonText={''} />
       <AdvancedAccordionItem {...firstItem} />
-      {/* <Divider
+      <Divider
         className="py-6 lg:py-10"
         dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
-      /> */}
+      />
       <AdvancedAccordionItem {...secondItem} />
     </div>
   )
 }
+
+export const accordionItems = [
+  {
+    departments: [
+      {
+        title: 'Kancelária primátora',
+        items: [
+          {
+            title: 'Oddelenie zahraničných vzťahov a protokolu',
+          },
+          {
+            title: 'Oddelenie komunikácie a marketingu',
+          },
+          {
+            title: 'Oddelenie vzťahov s verejnosťou',
+          },
+          {
+            title: 'Sprostredkovateľský orgán - Integrovaný regionálny operačný program',
+          },
+          {
+            title: 'Útvar správy mestských podnikov',
+          },
+          {
+            title: 'Útvar hlavného architekta',
+          },
+        ],
+      },
+      {
+        title: 'Sekretariát primátora',
+        items: [
+          {
+            title: 'Oddelenie zahraničných vzťahov a protokolu',
+          },
+        ],
+      },
+      {
+        title: 'Námestníci primátora',
+        items: [
+          {
+            title: 'Kancelária námestníčky Kratochvílovej',
+          },
+          {
+            title: 'Kancelária námestníčky Zaťovičovej',
+          },
+          {
+            title: 'Kancelária námestníčky Antalovej Plavúchovej',
+          },
+        ],
+      },
+    ],
+  },
+]
 
 export const firstItem: AdvancedAccordionItemProps = {
   title: 'Primátor hlavného mesta SR Bratislavy',
