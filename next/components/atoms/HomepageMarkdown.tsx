@@ -29,48 +29,36 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
       })}
       components={{
         h1: ({ children }) => (
-          <h2
-            id={getHeadingTag(children)}
-            className="scroll-mt-24 lg:scroll-mt-48 font-bold text-[48px] leading-[62.4px]"
-          >
+          <h2 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 .typography-h1">
             {children}
           </h2>
         ),
         h2: ({ children }) => (
-          <h2
-            id={getHeadingTag(children)}
-            className="scroll-mt-24 lg:scroll-mt-48 font-semibold text-2xl leading-[52px]"
-          >
+          <h2 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h2">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3
-            id={getHeadingTag(children)}
-            className="scroll-mt-24 lg:scroll-mt-48 font-semibold text-lg leading-[41.6px]"
-          >
+          <h3 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h3">
             {children}
           </h3>
         ),
         h4: ({ children }) => (
-          <h4 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 font-medium text-md leading-[36px]">
+          <h4 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
             {children}
           </h4>
         ),
         h5: ({ children }) => (
-          <h5
-            id={getHeadingTag(children)}
-            className="scroll-mt-24 lg:scroll-mt-48 font-medium text-default leading-[30px]"
-          >
+          <h5 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
             {children}
           </h5>
         ),
         h6: ({ children }) => (
-          <h6 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 font-normal text-sm leading-[24px]">
+          <h6 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div {...props} />,
+        p: ({ node, ...props }) => <div className="typography-paragraph" {...props} />,
         a: ({ href, children }) => (
           <UILink href={href ?? '#'} className="underline text-font font-semibold hover:text-primary">
             {children[0]}

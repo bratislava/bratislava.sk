@@ -165,7 +165,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           </div>
           <div className="relative flex items-center text-md text-gray-light bg-transparent cursor-pointer">
             <LanguageSelect
-              className="appearance-none font-light text-md cursor-pointer bg-transparent active:outline-none focus:outline-none"
+              className="appearance-none typography-highlight-sm cursor-pointer bg-transparent active:outline-none focus:outline-none"
               {...languageSelectProps}
             />
           </div>
@@ -248,19 +248,21 @@ const LanguageSelect = ({
 
   return (
     <div className="relative flex items-center w-[46px]" ref={ref} onClick={handleClick}>
-      <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
-      <ChevronDownSmall
+      <div className="typography-highlight-sm lg:font-semibold">{current.toUpperCase()} </div>
+      <div
         className={`ml-3 hidden lg:flex mix-blend-normal ${
           isSelectClicked && isComponentVisible && '-rotate-180 mb-1'
         }`}
-      />
+      >
+        <ChevronDownSmall />
+      </div>
       {isSelectClicked && isComponentVisible && (
         <div className="absolute top-6 -left-3 lg:left-0 z-20 mt-1 flex flex-col items-center justify-center w-[46px] h-auto">
           <div className="z-10 w-4 h-0 border-x-8 border-solid border-transparent border-b-4 border-b-[#F8D7D4]"></div>
           <div className="w-full min-h-[60px] h-auto bg-[#F8D7D4] rounded-lg flex flex-col items-center pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="w-[22px] h-6 mt-3 font-normal text-[#333333] hover:font-semibold"
+                className="w-[22px] h-6 mt-3 typography-paragraph text-[#333333] hover:typography-highlight-sm"
                 key={option.key}
                 onClick={handleChange}
               >

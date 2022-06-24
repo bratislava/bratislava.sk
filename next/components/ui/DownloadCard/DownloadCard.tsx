@@ -31,7 +31,7 @@ export const DownloadCard = ({
         )}
       >
         <div className=" flex space-x-5 lg:space-x-8 items-end">
-          <span className="text-sm font-normal max-h-[96px] w-[250px] overflow-hidden">{title}</span>
+          <span className="typography-paragraph max-h-[96px] w-[250px] overflow-hidden">{title}</span>
           <span className="flex text-primary justify-end items-end h-[88px]">
             <Download />
           </span>
