@@ -33,13 +33,13 @@ export const ArticlesList = ({
   const handleCategory = (category: string) => {
     setSelectedCategory(category)
   }
-
   useEffect(() => {
     let isMounted = false
 
     const getData = async () => {
+      console.log(category)
+
       const { blogPosts } = await client.LatestBlogsWithTags({
-        sort: 'publishedAt:desc',
         limit: itemsPerPage,
         start: (currentPage - 1) * itemsPerPage,
         // TODO double check this filter after everything is connected
@@ -57,6 +57,7 @@ export const ArticlesList = ({
         },
       })
       if (isMounted) return
+      console.log(blogPosts)
       setData(blogPosts?.data ?? [])
     }
     getData()
@@ -88,7 +89,9 @@ export const ArticlesList = ({
       })
       if (selectedTags.length < 1 && !category) {
         if (isMounted) return
-        else setTotal(blogPosts.meta.pagination.total)
+        else {
+          setTotal(blogPosts.meta.pagination.total)
+        }
       } else setTotal(blogPosts.meta.pagination.pageCount)
     }
 
@@ -115,10 +118,10 @@ export const ArticlesList = ({
         },
       })
       if (isMounted) return
-      const helperTags = tags?.map((item) => ({
-        title: item?.title,
-        color: item?.pageCategory?.color,
-        category: item?.pageCategory?.title,
+      const helperTags = tags?.data.map((item) => ({
+        title: item?.attributes?.title,
+        color: item?.attributes?.pageCategory?.data?.attributes?.color,
+        category: item?.attributes?.pageCategory?.data?.attributes.title,
       }))
 
       const filteringTags = _.uniqBy(helperTags, 'title')
@@ -146,13 +149,13 @@ export const ArticlesList = ({
         {data.map((article, index) => (
           <NewsCard
             key={index}
-            coverImage={article.coverImage ?? { url: BratislavaPlaceholder.src }}
-            title={article.title}
-            tag={article.tag}
-            created_at={article.published_at}
-            excerpt={article.excerpt}
+            coverImage={article.attributes.coverImage ?? { url: BratislavaPlaceholder }}
+            title={article.attributes?.title}
+            tag={article.attributes.tag}
+            createdAt={article.published_at}
+            excerpt={article.attributes?.excerpt}
             readMoreText={'Čítať viac'}
-            slug={article.slug}
+            slug={article.attributes.slug}
           />
         ))}
       </div>

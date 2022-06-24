@@ -85,39 +85,9 @@ query BlogPostsStaticPaths($locale: I18NLocaleCode) {
   }
 }
 
-query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput) {
+query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput || TagFiltersInput) {
   blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters) {
-    data {
-      id
-      attributes {
-        slug
-        title
-        excerpt
-        coverImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        tag {
-          data {
-            attributes {
-              title
-              publishedAt
-              pageCategory {
-                data {
-                  attributes {
-                    title
-                    color
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    ...BlogPost
   }
 }
 
