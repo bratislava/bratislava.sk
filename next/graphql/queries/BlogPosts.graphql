@@ -87,6 +87,11 @@ query BlogPostsStaticPaths($locale: I18NLocaleCode) {
 
 query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput) {
   blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters) {
+    ...LatestBlogs
+  }
+}
+
+fragment LatestBlogs on BlogPostEntityResponseCollection {
     data {
       id
       attributes {
@@ -118,7 +123,6 @@ query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: B
         }
       }
     }
-  }
 }
 
 query TotalPostsCount($where: BlogPostFiltersInput) {

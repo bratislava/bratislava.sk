@@ -1,5 +1,7 @@
 import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'
 import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { BlogSectionFragment } from '@bratislava/strapi-sdk-homepage'
+
 
 export interface BlogItem {
   title?: string
@@ -9,7 +11,7 @@ export interface BlogItem {
 }
 
 export interface FeaturedBlogsProps {
-  blogs?: BlogItem[]
+  blogs?: BlogSectionFragment[]
 }
 
 export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
@@ -17,7 +19,7 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
     <>
       <div className="hidden lg:flex gap-x-8">
         <div className="w-1/2">
-          <BlogSearchCard fullCardSizeImage className="h-full w-full" {...blogs[0]} />
+          <BlogSearchCard fullCardSizeImage className="h-full w-full" {...blogs} />
         </div>
         <div className="flex flex-col gap-y-8 w-1/2">
           {blogs.slice(1, 3).map((blog, index) => (

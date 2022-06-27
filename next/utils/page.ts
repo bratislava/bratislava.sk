@@ -107,8 +107,8 @@ export const parseBlogPostLink = (
     }
 
   return {
-    title: blogPostLink.title || blogPostLink.blogPost?.title || '',
-    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.slug}` ?? '',
+    title: blogPostLink.title || blogPostLink.blogPost?.data?.attributes?.title || '',
+    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.data?.attributes?.slug}` ?? '',
   }
 }
 
@@ -118,10 +118,10 @@ export const formatFiles = (files: FileFragment[]): TFile[] =>
     title: file.title ?? undefined,
     category: file.category ?? undefined,
     media: {
-      url: file.media?.url ?? '',
-      size: file.media?.size ?? 0,
-      created_at: file.media?.created_at ? getLocalDate(file.media?.created_at) : '',
-      ext: file.media?.ext ?? undefined,
+      url: file.media?.data?.attributes?.url ?? '',
+      size: file.media?.data?.attributes?.size ?? 0,
+      created_at: file.media?.data?.attributes?.createdAt ? getLocalDate(file.media?.data?.attributes?.createdAt) : '',
+      ext: file.media?.data?.attributes?.ext ?? undefined,
     },
   }))
 

@@ -115,10 +115,10 @@ export const ArticlesList = ({
         },
       })
       if (isMounted) return
-      const helperTags = tags?.map((item) => ({
-        title: item?.title,
-        color: item?.pageCategory?.color,
-        category: item?.pageCategory?.title,
+      const helperTags = tags?.data.map((item) => ({
+        title: item?.attributes?.title,
+        color: item?.attributes?.pageCategory?.data?.attributes?.color,
+        category: item?.attributes?.pageCategory?.data?.attributes?.title,
       }))
 
       const filteringTags = _.uniqBy(helperTags, 'title')
@@ -146,10 +146,10 @@ export const ArticlesList = ({
         {data.map((article, index) => (
           <NewsCard
             key={index}
-            coverImage={article.coverImage ?? { url: BratislavaPlaceholder.src }}
+            coverImage={article.coverImage ?? { url: BratislavaPlaceholder }}
             title={article.title}
             tag={article.tag}
-            created_at={article.published_at}
+            updatedAt={article.updatedAt}
             excerpt={article.excerpt}
             readMoreText={'Čítať viac'}
             slug={article.slug}
