@@ -162,10 +162,3 @@
 .closebutton .ml-5 {
   margin-left: 0 !important;
 }
-@media only screen and (max-width: 600px) {
-
-  .modal-content-rent {
-    max-height: 412px !important;
-  }
-
-}
