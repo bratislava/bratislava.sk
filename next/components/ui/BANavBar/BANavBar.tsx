@@ -247,7 +247,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex items-center w-[46px]" ref={ref} onClick={handleClick}>
+    <div className="relative flex items-center w-[50px]" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden lg:flex mix-blend-normal ${
