@@ -88,14 +88,14 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
             <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10">{page?.title}</h1>
 
             {/* Header - PageLink as Button */}
-            {page?.pageButtonContent && (page?.pageButtonContent.title || page?.pageButtonContent?.page) && (
+            {(page?.pageButtonContent && page?.pageButtonContent.title) && (
               <Button
                 className="base-button rounded-lg space-x-6 text-default py-3 px-6 mt-10 mb-10"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
-                <UILink href={parsePageLink(page?.pageButtonContent)?.url ?? ''}>
-                  <span>{parsePageLink(page?.pageButtonContent)?.title ?? ''}</span>
+                <UILink href={page?.pageButtonContent?.url ?? ''}>
+                  <span>{page?.pageButtonContent?.title ?? ''}</span>
                 </UILink>
               </Button>
             )}
@@ -136,12 +136,13 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
       {page?.sections && <Sections sections={page.sections} slug={page.slug} locale={page.locale} />}
 
       {/* Page - Related Content */}
-      {page?.relatedBlogPosts?.length > 0 && (
+      {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}
+      {/* {page?.relatedBlogPosts?.length > 0 && (
         <SectionContainer className="pt-14 md:pt-18">
           <h2 className="flex justify-center font-semibold text-lg">{t('relatedContentTitle')}</h2>
           <RelatedBlogPosts page={page} />
         </SectionContainer>
-      )}
+      )} */}
     </BasePageLayout>
   )
 }

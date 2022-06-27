@@ -125,13 +125,11 @@ export const ArticlesList = ({
           : {},
       })
       if (isMounted) return
-
       const helperTags = tags?.data.map((item) => ({
         title: item?.attributes?.title,
         color: item?.attributes?.pageCategory?.data?.attributes?.color,
         category: item?.attributes?.pageCategory?.data?.attributes.title,
       }))
-
       setFilteredTags(helperTags)
     }
     getTags()

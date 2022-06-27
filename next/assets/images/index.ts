@@ -22,6 +22,7 @@ import iInstagramIcon from './instagram.svg'
 import iTwitterIcon from './twitter.svg'
 import iListCircleFull from './ListCircleFull.svg'
 import iDaneAPoplatky from './daneAPoplatky.svg'
+import iPhoneSmall from './phone-small.svg';
 
 export const ArrowDoubleLong = iArrowDoubleLong
 export const ArrowDoubleShort = iArrowDoubleShort
@@ -47,3 +48,4 @@ export const InstagramIcon = iInstagramIcon
 export const TwitterIcon = iTwitterIcon
 export const ListCircleFull = iListCircleFull
 export const DaneAPoplatky = iDaneAPoplatky
+export const PhoneSmall = iPhoneSmall

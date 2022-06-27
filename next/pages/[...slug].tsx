@@ -36,10 +36,18 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const pageTranslations = ['common']
 
-  if (pages?.data[0]?.attributes?.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsCalculator')) {
+  if (
+    pages?.data[0]?.attributes?.sections
+      ?.filter(isPresent)
+      .find((section) => section.__typename === 'ComponentSectionsCalculator')
+  ) {
     pageTranslations.push('minimum-calculator')
   }
-  if (pages?.data[0]?.attributes?.sections?.filter(isPresent).find((section) => section.__typename === 'ComponentSectionsNewsletter')) {
+  if (
+    pages?.data[0]?.attributes?.sections
+      ?.filter(isPresent)
+      .find((section) => section.__typename === 'ComponentSectionsNewsletter')
+  ) {
     pageTranslations.push('newsletter')
   }
 
@@ -65,12 +73,18 @@ interface GenericPageProps {
 const Page = ({ page, footer, mainMenu }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer)
   const menuItems = parseMainMenu(mainMenu)
+  const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
+    return {
+      locale: locale.attributes.locale,
+      slug: locale.attributes.slug,
+    }
+  })
 
   return (
     <PageWrapper
       locale={page?.data?.[0].attributes?.locale ?? 'sk'}
       slug={page?.data?.[0]?.attributes.slug ?? ''}
-      localizations={page?.data?.[0]?.attributes?.localizations}
+      localizations={localizations}
     >
       <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
     </PageWrapper>

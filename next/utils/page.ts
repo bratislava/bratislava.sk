@@ -107,8 +107,8 @@ export const parseBlogPostLink = (
     }
 
   return {
-    title: blogPostLink.title || blogPostLink.blogPost?.title || '',
-    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.slug}` ?? '',
+    title: blogPostLink.title || blogPostLink.blogPost?.data?.attributes?.title || '',
+    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.data?.attributes?.slug}` ?? '',
   }
 }
 

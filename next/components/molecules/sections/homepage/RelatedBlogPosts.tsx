@@ -10,15 +10,15 @@ interface IProps {
 }
 
 const RelatedBlogPosts = ({ className, page }: IProps) => {
-  const [relatedBlogPosts, setRelatedBlogPosts] = React.useState(parseRelatedBlogPosts(page?.relatedBlogPosts ?? []))
+  // const [relatedBlogPosts, setRelatedBlogPosts] = React.useState(parseRelatedBlogPosts(page?.relatedBlogPosts ?? []))
 
   if (!page) return null
 
   const fetchRelateBlogPosts = async () => {
-    const tags = page.relatedBlogPosts.map((post) => post.tag?.id).filter(Boolean)
-    const res = await fetch(`/api/latest-blogposts?tags=${tags.join(',')}&offset=${relatedBlogPosts.length}`)
-    const data = await res.json()
-    setRelatedBlogPosts((relatedBlogPosts) => relatedBlogPosts.concat(parseRelatedBlogPosts(data)))
+    // const tags = page.relatedBlogPosts.map((post) => post.tag?.id).filter(Boolean)
+    // const res = await fetch(`/api/latest-blogposts?tags=${tags.join(',')}&offset=${relatedBlogPosts.length}`)
+    // const data = await res.json()
+    // setRelatedBlogPosts((relatedBlogPosts) => relatedBlogPosts.concat(parseRelatedBlogPosts(data)))
   }
 
   return (
@@ -27,7 +27,7 @@ const RelatedBlogPosts = ({ className, page }: IProps) => {
       shiftIndex={1}
       visibleItems={3}
       fetchMoreItems={fetchRelateBlogPosts}
-      cards={relatedBlogPosts}
+      // cards={relatedBlogPosts}
     />
   )
 }
