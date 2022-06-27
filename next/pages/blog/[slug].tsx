@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 }
 
 export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => {
-  console.log("Revalidating is going on in [slug].tsx file ...");
+  console.log(`Revalidating ${ctx.params?.slug}`);
   const locale = ctx.locale
   const slug = arrayify(ctx.params?.slug)[0]
 
