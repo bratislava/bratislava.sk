@@ -32,11 +32,11 @@ export const Modal = ({
       })}
     >
       <div className="flex justify-center items-center fixed inset-0 bg-[#02020280] mt-25">
-        <div className="relative bg-white rounded-2xl">
+        <div className="relative bg-white rounded-2xl m-6 md:m-0">
           {onClose && (
             <Button
               style={{ backgroundColor: closeButtonColor }}
-              className="z-10 absolute -bottom-16 modal-close-mobile-right md:inset-y-0 md:-right-9 transofrm -translate-y-1/2 w-16 h-16"
+              className="z-10 absolute -bottom-16 modal-close-mobile-right md:inset-y-0 md:-right-9 transofrm -translate-y-1/2 w-16 h-16 closebutton"
               shape="circle"
               iconPosition="center"
               icon={<Close />}

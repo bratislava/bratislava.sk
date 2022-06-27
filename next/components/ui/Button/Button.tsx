@@ -34,7 +34,7 @@ export const Button = ({
 }: ButtonProps) => {
   const iconContent = icon ? (
     <>
-      <span className="group-hover:hidden ml-5">{icon}</span>
+      <span className="group-hover:hidden">{icon}</span>
       <span className="hidden group-hover:block ml-5">{hoverIcon || icon}</span>
     </>
   ) : null
