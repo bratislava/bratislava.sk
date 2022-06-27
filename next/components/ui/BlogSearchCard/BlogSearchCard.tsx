@@ -8,7 +8,18 @@ export interface BlogImage {
 }
 
 export interface BlogTag {
-  pageCategory: { color: string; shortTitle: string }
+  data?: {
+    attributes?: {
+      pageCategory?: {
+        data?: {
+          attributes?: {
+            color?: string
+            shortTitle?: string
+          }
+        }
+      }
+    }
+  }
 }
 
 export interface BlogSearchCardProps {
@@ -17,7 +28,7 @@ export interface BlogSearchCardProps {
   fullCardSizeImage?: boolean
   title?: string
   published_at?: string
-  coverImage?: BlogImage
+  coverImage?: string
   tag?: BlogTag
 }
 
@@ -32,8 +43,8 @@ export const BlogSearchCard = ({
 }: BlogSearchCardProps) => {
   const publishedAt = new Date(published_at)
   const date = publishedAt.getDay() + '. ' + publishedAt.getMonth() + '. ' + publishedAt.getFullYear()
-  const headline = tag?.pageCategory?.shortTitle ?? 'No Title Found'
-  const color = tag?.pageCategory?.color
+  const headline = tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
+  const color = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
   const headlineColor = color ? `--color-${color}--light` : '--color-red'
   return (
     <>
@@ -50,7 +61,7 @@ export const BlogSearchCard = ({
           <div
             className={cx('flex flex-shrink-0 blog-card-image', imageClassName)}
             style={{
-              backgroundImage: `url(${coverImage.url})`,
+              backgroundImage: `url(${coverImage})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
@@ -74,7 +85,7 @@ export const BlogSearchCard = ({
         <div
           className="flex flex-col justify-end w-full h-full rounded"
           style={{
-            backgroundImage: `url(${coverImage.url})`,
+            backgroundImage: `url(${coverImage})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}

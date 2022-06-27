@@ -21,6 +21,7 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
   const blogPost = post.data[0].attributes
   const tag = blogPost?.tag?.data?.attributes
   const pageCategory = tag?.pageCategory?.data?.attributes
+  
 
   return (
     <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}>
@@ -32,7 +33,7 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         />
       )}
       {/* Header */}
-      <PageHeader
+      <PageHeader className="header-main-bg bg-cover"
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}
@@ -49,7 +50,7 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
           <div className="min-h-[220px]">
             {blogPost?.tag && <div className="pt-30 font-semibold text-default text-red-brick">{tag?.title}</div>}
             <h1 className="pt-4 text-md md:text-2xl font-bold whitespace-pre-wrap">{blogPost?.title}</h1>
-            {/* <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div> */}
+            {blogPost?.createdAt && <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div>}
           </div>
         </SectionContainer>
       </PageHeader>

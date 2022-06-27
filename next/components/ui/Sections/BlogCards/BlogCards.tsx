@@ -31,7 +31,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                 {blogCard.title}
                 <UILink
                   className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
-                  href={blogCard?.url || ''}
+                  href={`blog${blogCard?.url}` || ''}
                 >
                   <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
                   <span className="group-hover:hidden">

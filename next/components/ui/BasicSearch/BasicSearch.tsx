@@ -4,21 +4,21 @@ import SearchIcon from '../../../assets/images/search-icon.svg'
 import SearchIconSmallBlack from '../../../assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '../../../assets/images/search-icon-small-white.svg'
 import cx from 'classnames'
-import { title } from 'process'
 
 export interface BasicSearchProps {
   className?: string
   placeholder: string
   title: string
   buttonText: string
+  collapse?: boolean
 }
 
-export const BasicSearch = ({ className, placeholder, title, buttonText }: BasicSearchProps) => {
+export const BasicSearch = ({ className, placeholder, title, buttonText, collapse }: BasicSearchProps) => {
   const { Link: UILink } = useUIContext()
   return (
     <div className={cx('flex flex-col w-full', className)}>
       <div className="text-sm lg:text-md font-medium pb-3">{title}</div>
-      <div className="hidden lg:flex">
+      <div className={cx('lg:flex', { hidden: !collapse }, { flex: collapse })}>
         <input
           id="name"
           type="text"
@@ -36,7 +36,7 @@ export const BasicSearch = ({ className, placeholder, title, buttonText }: Basic
           </Button>
         </UILink>
       </div>
-      <div className="flex flex-col lg:hidden gap-y-6">
+      <div className={cx('lg:hidden gap-y-6', { 'flex flex-col': !collapse }, { hidden: collapse })}>
         <input
           id="name"
           type="text"

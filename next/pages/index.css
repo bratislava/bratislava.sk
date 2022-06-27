@@ -150,4 +150,11 @@
   .narrow-text-wrapper ul li ul {
     @apply mt-0 -mb-12;
   }
+  .bg-cover {
+    background-size: cover !important;
+  }
+  .header-main-bg {
+    background-size: cover !important;
+    background-position-y: center !important;
+  }
 }

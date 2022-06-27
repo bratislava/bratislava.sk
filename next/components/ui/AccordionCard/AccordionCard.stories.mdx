@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs';
+import { AccordionCard } from './AccordionCard';
+
+<Meta title="components/atoms/AccordionCard" decorators={[withDesign]} />
+
+# AccordionCard
+
+AccordionCard
+
+## Props
+
+AccordionCard accepts custom Props that are as follows:
+
+- <b>className</b>: modifies or extends the styles for the component
+- <b>hasButton</b>: has button or not
+- <b>children</b>: content of the component
+- <b>buttonVariant</b>: variant of button, default or circle
+- <b>buttonContent</b>: text of button
+
+<Canvas>
+  <Story
+    name="AccordionCard"
+    parameters={{
+      design: {
+        type: 'figma',
+        url: '',
+      },
+    }}
+    args={{
+      title: 'Priezvisko Meno, Titul',
+      subtitle: 'Pozícia',
+      phone: '+421 *** *** ***',
+      email: 'meno.priezvisko@bratislava.sk',
+    }}
+  >
+    {AccordionCard.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={AccordionCard} />

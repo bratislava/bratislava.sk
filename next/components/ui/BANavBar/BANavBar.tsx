@@ -96,13 +96,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 <input
                   id="name"
                   type="text"
-                  className="h-12 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
+                  className="h-7 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-sm text-font"
                 />
                 <Link href={t('searchLink')}>
                   <Button
                     icon={<SmallBlackSearchIcon />}
                     hoverIcon={<SmallWhiteSearchIcon />}
-                    className="h-12 rounded-l-none text-base px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium"
+                    className="h-7 rounded-l-none text-sm px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium"
                     variant="secondaryDarkText"
                   >
                     Hľadať
