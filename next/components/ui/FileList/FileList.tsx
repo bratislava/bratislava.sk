@@ -28,7 +28,7 @@ export interface FileListProps {
   hideCategory?: boolean
 }
 
-export const FileList = ({ className, fileSections, dividerStyle, hideCategory }: FileListProps) => {
+export const FileList = ({ className, fileSections, dividerStyle = 'mesto', hideCategory }: FileListProps) => {
   const [clicked, setClicked] = React.useState(false)
   const [buttonText, setButtonText] = React.useState('Načítať ďalšie')
   const numberOfItemsPerRow = 9
@@ -52,7 +52,7 @@ export const FileList = ({ className, fileSections, dividerStyle, hideCategory }
         return (
           <div key={index} className={cx({ 'mt-5': index > 0 })}>
             <div className="hidden lg:flex flex-col space-y-8" key={fileSection.category ?? ''}>
-              {Array.from(Array(rows).keys()).map((row) => {
+              {Array.from(Array(rows).keys()).map((row, index) => {
                 const start = row * numberOfItemsPerRow
                 const end = !clicked ? 6 : (row + 1) * numberOfItemsPerRow
                 return (
@@ -77,7 +77,9 @@ export const FileList = ({ className, fileSections, dividerStyle, hideCategory }
                         </div>
                       ))}
                     </div>
-                    {row != rows - 1 && dividerStyle && <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />}
+                    {index != index - 1 && dividerStyle && (
+                      <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
+                    )}
                   </div>
                 )
               })}
