@@ -32,7 +32,6 @@ spec:
             httpGet:
               path: /api/healthcheck
               port: ${INTERNAL_APP_PORT}
-              scheme: HTTP
             timeoutSeconds: 5
             periodSeconds: 20
             successThreshold: 1
