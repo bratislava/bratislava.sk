@@ -25,6 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
+  console.log(`Revalidating ${ctx.params?.slug}`);
   const locale = ctx.locale ?? 'sk'
   const slug = arrayify(ctx.params.slug).join('/')
 
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       mainMenu,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
-    revalidate: 120, // every two minutes TODO change
+    revalidate : 7200 // revalidate after 2 hours
   }
 }
 
