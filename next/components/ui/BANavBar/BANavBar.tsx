@@ -247,15 +247,13 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex items-center w-[46px]" ref={ref} onClick={handleClick}>
-      <div className="typography-highlight-sm lg:font-semibold">{current.toUpperCase()} </div>
-      <div
+    <div className="relative flex items-center w-[50px]" ref={ref} onClick={handleClick}>
+      <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
+      <ChevronDownSmall
         className={`ml-3 hidden lg:flex mix-blend-normal ${
           isSelectClicked && isComponentVisible && '-rotate-180 mb-1'
         }`}
-      >
-        <ChevronDownSmall />
-      </div>
+      />
       {isSelectClicked && isComponentVisible && (
         <div className="absolute top-6 -left-3 lg:left-0 z-20 mt-1 flex flex-col items-center justify-center w-[46px] h-auto">
           <div className="z-10 w-4 h-0 border-x-8 border-solid border-transparent border-b-4 border-b-[#F8D7D4]"></div>
