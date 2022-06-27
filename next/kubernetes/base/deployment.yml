@@ -31,7 +31,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /api/healthcheck
-              port: 3000
+              port: ${INTERNAL_APP_PORT}
               scheme: HTTP
             timeoutSeconds: 5
             periodSeconds: 20
