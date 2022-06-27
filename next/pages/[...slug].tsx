@@ -51,7 +51,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       footer,
       mainMenu,
       ...(await serverSideTranslations(locale, pageTranslations)),
-    }
+    },
+    revalidate : 7200 // revalidate after 2 hours
   }
 }
 
