@@ -13,6 +13,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const blogPostUrl = `/blog/${payload?.entry?.slug}`;
       await res.unstable_revalidate(blogPostUrl);
     }
+
+    if (payload?.model === 'page') {
+      const pageUrl = `/${payload?.entry?.slug}`;
+      await res.unstable_revalidate(pageUrl);
+    }
+
     return res.json({ revalidated: true })
   } catch (err) {
     console.log("Error while revalidating ==>", err)
