@@ -77,7 +77,7 @@ export const FileList = ({ className, fileSections, dividerStyle = 'mesto', hide
                         </div>
                       ))}
                     </div>
-                    {index != index - 1 && dividerStyle && (
+                    {index != index - 1 && index != rows - 1 && dividerStyle && (
                       <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
                     )}
                   </div>
