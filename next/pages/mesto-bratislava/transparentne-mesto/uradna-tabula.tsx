@@ -156,7 +156,7 @@ const OfficialBoard = ({
           color="var(--secondary-color)"
           transparentColor="var(--secondary-color--transparent)"
           transparentColorMobile="var(--secondary-color--semi-transparent)"
-          imageSrc={OfficialBoardBackgroundImage}
+          imageSrc={OfficialBoardBackgroundImage}  className="header-main-bg bg-cover"
         >
           <SectionContainer>
             <div className="min-h-[220px] relative">

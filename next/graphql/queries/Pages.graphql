@@ -400,7 +400,7 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFileList {
     hasBackground
-    fileList {
+    fileList(pagination: { limit: 500 }) {
       ...File
     }
   }

@@ -87,11 +87,11 @@ export const parsePageLink = (
   if (!pageLink) return null
   const param = {
     locale: pageLink?.page?.data?.attributes?.locale,
-    slug: pageLink?.page?.data?.attributes?.slug
+    slug: pageLink?.page?.data?.attributes?.slug,
   }
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(param) ?? '',
+    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -167,14 +167,13 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
     icon: item.attributes.icon ?? '',
     coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
     title: item.attributes.title ?? '',
-    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
-      .map((subCategory) => ({
-        icon: subCategory.attributes.icon ?? '',
-        title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
-        moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
-        url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
-        subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
-      })),
+    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc']).map((subCategory) => ({
+      icon: subCategory.attributes.icon ?? '',
+      title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
+      moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
+      url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
+      subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
+    })),
   }))
 
 // Page Accordion Items
