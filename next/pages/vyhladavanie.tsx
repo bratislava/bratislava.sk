@@ -157,7 +157,7 @@ const Search = ({
             <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-              <BlogSearchCards title={t('articles')} blogs={blogs} />
+              {/* <BlogSearchCards title={t('articles')} blogs={blogs} /> */}
               <PageCards title={t('websites')} pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <div className="text-default lg:text-md font-semibold">{t('documents')}</div>

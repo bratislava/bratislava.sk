@@ -7,9 +7,10 @@ import ChevronRight from '../../../assets/images/chevron-right.svg'
 import ChevronLeft from '../../../assets/images/chevron-left.svg'
 
 interface PaginationProps {
-  totalPages: number
+  totalPages?: number
   totalCount: number
   currentPage: number
+  itemsPerPage?: number
   pageHandler?: (pageNumber: number) => void
 }
 
