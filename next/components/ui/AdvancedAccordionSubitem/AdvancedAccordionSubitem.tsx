@@ -15,7 +15,7 @@ export interface AdvancedAccordionSubitemProps {
   // groupHeading?: string
   title: string
   isGroupTitle?: boolean
-  items?: { title: string }[]
+  items?: AdvancedAccordionSubSubitemProps[]
   className?: string
   cardClassName?: string
   // groupCard?: AccordionCardProps

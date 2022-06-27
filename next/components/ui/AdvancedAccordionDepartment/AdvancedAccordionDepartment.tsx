@@ -23,7 +23,8 @@ export interface AdvancedAccordionSubdepartment {
 
 export interface AdvancedAccordionDepartmentProps {
   title: string
-  items?: { title: string; isGroupTitle?: boolean }[]
+  // items?: { title: string; isGroupTitle?: boolean }[]
+  items?: AdvancedAccordionSubitemProps[]
   //subdepartments?: AdvancedAccordionSubdepartment[];
   // subitems?: AdvancedAccordionSubitemProps[]
   // departmentCards?: AccordionCardProps[]
