@@ -16,7 +16,7 @@ interface TabBarTabProps {
 export const TabBarTab = ({ className, tab, onClick, isActive, handleSelect }: TabBarTabProps) => {
   return (
     <button
-      className={cx(className, 'relative py-2 whitespace-nowrap', {
+      className={cx(className, 'relative py-2 lg:text-md whitespace-nowrap', {
         'text-font': !isActive,
         'font-semibold': isActive,
       })}
