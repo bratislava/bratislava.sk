@@ -64,11 +64,11 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       <div
         className={cx(
           className,
-          'items-center text-base py-4 border-b border-gray-universal-200',
+          'items-center text-base ',
           'fixed top-0 left-0 w-full bg-white z-50'
         )}
       >
-        <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg">
+        <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg py-4 border-b border-gray-universal-200">
           <Brand
             className="flex-1"
             url="/"
