@@ -3232,7 +3232,7 @@ export const SectionsFragmentDoc = gql`
   }
   ... on ComponentSectionsFileList {
     hasBackground
-    fileList {
+    fileList(pagination: {limit: 500}) {
       ...File
     }
   }
