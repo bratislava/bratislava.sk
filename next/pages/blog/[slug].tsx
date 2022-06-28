@@ -8,7 +8,7 @@ import { arrayify, isPresent, shouldSkipStaticPaths } from '../../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   let paths: { params: { slug: string } }[] = []
-  if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
+  // if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   const { blogPosts: blogPostSk } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[0],
@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 }
 
 export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => {
-  console.log(`Revalidating ${ctx.params?.slug}`);
+  console.log(`Revalidating ${ctx.params?.slug}`)
   const locale = ctx.locale
   const slug = arrayify(ctx.params?.slug)[0]
 
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 
   return {
     props: { slug, post: blogPosts, footer, mainMenu, locale },
-    revalidate : 7200 // revalidate after 2 hours
+    revalidate: 7200, // revalidate after 2 hours
   }
 }
 
@@ -68,7 +68,7 @@ interface BlogPostPageProps {
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer ?? {})
-  const menuItems = parseMainMenu(mainMenu);
+  const menuItems = parseMainMenu(mainMenu)
 
   // TODO change if multilingual blogs
   return (

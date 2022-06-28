@@ -27,7 +27,7 @@ import { isPresent } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export const getServerSideProps = async (ctx) => {
+export const getStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -109,6 +109,7 @@ export const getServerSideProps = async (ctx) => {
       cards: cards,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
+    revalidate: 30,
   }
 }
 
@@ -123,7 +124,7 @@ const Homepage = ({
   cards,
   header,
   inba,
-}: AsyncServerProps<typeof getServerSideProps>) => {
+}: AsyncServerProps<typeof getStaticProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
   const menuItems = parseMainMenu(mainMenu)
