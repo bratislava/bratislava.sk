@@ -17,14 +17,9 @@ export interface AdvancedAccordionItemProps {
 
 export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionItemProps) => {
   const [open, setOpen] = useState(false)
-  const { data, error } = useSWR(title, usersFromDepartmentFetcher)
-
-  data && console.log(data[0])
+  const { data } = useSWR(title, usersFromDepartmentFetcher)
 
   const cardInfo = data && data[0]
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-y-8 cursor-pointer pt-8" onClick={() => setOpen(!open)}>

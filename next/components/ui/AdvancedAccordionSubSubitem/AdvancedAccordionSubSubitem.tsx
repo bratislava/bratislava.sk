@@ -2,7 +2,6 @@ import { useState } from 'react'
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
 import cx from 'classnames'
-import { AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
 import useSWR from 'swr'
 import { usersFromDepartmentFetcher } from '@utils/ms-graph'
@@ -11,15 +10,9 @@ export interface AdvancedAccordionSubSubitemProps {
   title: string
   className?: string
   cardClassName?: string
-  // departmentCards?: AccordionCardProps[]
 }
 
-export const AdvancedAccordionSubSubitem = ({
-  title,
-  className,
-  cardClassName,
-}: // departmentCards,
-AdvancedAccordionSubSubitemProps) => {
+export const AdvancedAccordionSubSubitem = ({ title, className, cardClassName }: AdvancedAccordionSubSubitemProps) => {
   const [open, setOpen] = useState(false)
   const [cards, setCards] = useState([])
   const { data, error } = useSWR(title, usersFromDepartmentFetcher)

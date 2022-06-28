@@ -12,28 +12,20 @@ import useSWR from 'swr'
 import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionSubitemProps {
-  // groupHeading?: string
   title: string
   isGroupTitle?: boolean
   items?: AdvancedAccordionSubSubitemProps[]
   className?: string
   cardClassName?: string
-  // groupCard?: AccordionCardProps
-  // departmentCards?: AccordionCardProps[]
-  // subdepartments?: AdvancedAccordionSubSubitemProps[]
 }
 
 export const AdvancedAccordionSubitem = ({
-  // groupHeading,
   title,
   isGroupTitle,
   items,
   className,
   cardClassName,
-}: // groupCard,
-// departmentCards,
-// subdepartments,
-AdvancedAccordionSubitemProps) => {
+}: AdvancedAccordionSubitemProps) => {
   const [open, setOpen] = useState(false)
   const [cards, setCards] = useState([])
   const { data, error } = useSWR(title, usersFromDepartmentFetcher)
@@ -43,8 +35,6 @@ AdvancedAccordionSubitemProps) => {
   }
   return (
     <div className="flex flex-col">
-      {/* {groupCard && <AccordionCard {...groupCard} className="mt-14" />}
-      {groupHeading && <div className="pt-10 text-default lg:text-md font font-semibold">{groupHeading}</div>} */}
       <div
         className={cx(className, 'flex items-start lg:items-center cursor-pointer lg:px-5')}
         onClick={() => setOpen(!open)}
