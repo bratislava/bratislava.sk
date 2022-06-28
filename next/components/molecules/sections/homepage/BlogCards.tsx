@@ -6,37 +6,37 @@ import NewsImage2 from '@assets/images/sample-news-image-2.jpeg'
 
 const sample = [
   {
-    imageSrc: NewsImage.src,
+    imageSrc: NewsImage,
     title: 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
     url: '/',
   },
   {
-    imageSrc: NewsImage2.src,
+    imageSrc: NewsImage2,
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
   {
-    imageSrc: NewsImage.src,
+    imageSrc: NewsImage,
     title: 'Nový3 bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
   {
-    imageSrc: NewsImage.src,
+    imageSrc: NewsImage,
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
   {
-    imageSrc: NewsImage.src,
+    imageSrc: NewsImage,
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
   {
-    imageSrc: NewsImage2.src,
+    imageSrc: NewsImage2,
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },
   {
-    imageSrc: NewsImage.src,
+    imageSrc: NewsImage,
     title: 'Nový bytový súbor s nájomnými bytmi na Terchovskej ulici',
     url: '/',
   },

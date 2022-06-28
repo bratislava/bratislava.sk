@@ -2,7 +2,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import React from 'react'
 import { getIcon, MenuMainItem, Panel, Waves } from '../index'
-import { ArrowRight, ChevronDown, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronDown, ChevronRight, ChevronDownSmall } from '../../../assets/images'
 import StickyMenuTopper from '../../../assets/images/sticky-menu-topper.svg'
 import { isItExternal } from './external-link'
 
@@ -43,14 +43,14 @@ const MenuCell = ({ item, isActive }: MenuCellProps) => (
     >
       {item.title}
     </p>
-    <ChevronDown
-      className={cx('mt-3 pb-0.5 group-hover:hidden', {
+    <ChevronDownSmall
+      className={cx('mt-3 group-hover:hidden', {
         hidden: isActive,
       })}
     />
-    <ChevronDown
+    <ChevronDownSmall
       style={{ color: item.colorDark }}
-      className={cx('mt-3 pb-0.5 group-hover:block', {
+      className={cx('mt-3 group-hover:block', {
         hidden: !isActive,
         block: isActive,
       })}

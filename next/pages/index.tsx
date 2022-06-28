@@ -160,7 +160,7 @@ const Homepage = ({
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
-            latestPost={latestBlogposts.data}
+            latestPost={latestBlogposts}
           />
           <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
 

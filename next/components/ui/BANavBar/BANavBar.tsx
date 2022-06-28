@@ -64,16 +64,16 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       <div
         className={cx(
           className,
-          'items-center text-base py-4 border-b border-gray-universal-200',
+          'items-center text-base ',
           'fixed top-0 left-0 w-full bg-white z-50'
         )}
       >
-        <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg">
+        <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg py-4 border-b border-gray-universal-200">
           <Brand
             className="flex-1"
             url="/"
             title={
-              <p className="text-red-universal-300">
+              <p className="text-sm text-font">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {navBarTexts[languageKey].capitalCity}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -165,7 +165,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           </div>
           <div className="relative flex items-center text-md text-gray-light bg-transparent cursor-pointer">
             <LanguageSelect
-              className="appearance-none font-light text-md cursor-pointer bg-transparent active:outline-none focus:outline-none"
+              className="appearance-none typography-highlight-sm cursor-pointer bg-transparent active:outline-none focus:outline-none"
               {...languageSelectProps}
             />
           </div>
@@ -247,7 +247,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex items-center w-[46px]" ref={ref} onClick={handleClick}>
+    <div className="relative flex items-center w-[50px]" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden lg:flex mix-blend-normal ${
@@ -260,7 +260,7 @@ const LanguageSelect = ({
           <div className="w-full min-h-[60px] h-auto bg-[#F8D7D4] rounded-lg flex flex-col items-center pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="w-[22px] h-6 mt-3 font-normal text-[#333333] hover:font-semibold"
+                className="w-[22px] h-6 mt-3 typography-sm text-[#333333] hover:typography-highlight-sm"
                 key={option.key}
                 onClick={handleChange}
               >
