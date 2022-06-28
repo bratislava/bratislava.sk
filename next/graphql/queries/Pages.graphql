@@ -573,10 +573,10 @@ fragment Sections on PageSectionsDynamicZone {
       title
       departments {
         title
-        itemsFirstLevel {
+        items(pagination: { limit: 50 }) {
           isGroupTitle
           title
-          itemsInside {
+          items(pagination: { limit: 50 }) {
             title
           }
         }

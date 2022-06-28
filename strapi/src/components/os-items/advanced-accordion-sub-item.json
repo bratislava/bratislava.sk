@@ -13,7 +13,7 @@
     "isGroupTitle": {
       "type": "boolean"
     },
-    "itemsInside": {
+    "items": {
       "type": "component",
       "repeatable": true,
       "component": "os-items.advanced-accordion-sub-sub-item"
