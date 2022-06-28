@@ -11,6 +11,7 @@ import groupBy from 'lodash/groupBy'
 import { getLocalDate, getNumericLocalDate } from './local-date'
 import orderBy from 'lodash/orderBy'
 import { isPresent } from './utils'
+import _ from 'lodash'
 
 // Use explocitly named color variables so their usage can be easily found in project
 const COLOR_VARIABLES: {
@@ -178,9 +179,15 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
 
 // Page Accordion Items
 export const groupByCategory = <T>(items: T[]) => {
-  const grouped = groupBy(items, 'category')
+  // const grouped = groupBy(items, 'category')
+  // const groupedItems = Object.keys(grouped).map((key) => ({
+  //   category: key,
+  //   items: grouped[key],
+  // }));
+
+  const grouped = _(items).groupBy(item => item['category']).sortBy(group => items.indexOf(group[0])).value();
   const groupedItems = Object.keys(grouped).map((key) => ({
-    category: key,
+    category: grouped[key].length > 0 ? grouped[key][0]?.category : key,
     items: grouped[key],
   }))
   return groupedItems
