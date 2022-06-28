@@ -106,7 +106,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
       )
 
     case 'ComponentSectionsIconTitleDesc':
-      return <RentBenefits {...section} linkLabel={t('readMore')} />
+      return <RentBenefits title={section.title} list={section.list} linkLabel={t('readMore')} />
 
     case 'ComponentSectionsDocumentList':
       return <DocumentList {...section} />

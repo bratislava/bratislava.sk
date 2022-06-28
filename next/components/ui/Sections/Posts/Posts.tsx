@@ -8,8 +8,8 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Homepage, BlogPost, HomepageQuery, LatestBlogsWithTagsQuery } from '@bratislava/strapi-sdk-homepage'
-import { BlogPostEntity, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import { Homepage, BlogPost, HomepageQuery, LatestBlogsWithTagsQuery, BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
+import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { useTranslation } from 'react-i18next'
@@ -20,7 +20,7 @@ export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
   // latestPost?: BlogPost[]
-  latestPost?: BlogPostEntity[]
+  latestPost?: LatestBlogsFragment
   leftHighLight?: NewsCardBlogFragment | null
   rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
@@ -79,9 +79,9 @@ export const Posts = ({
             {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
             {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
 
-            {latestPost.length > 0 && (
+            {latestPost?.data?.length > 0 && (
               <div>
-                {latestPost.map((newsCard, i) => {
+                {latestPost.data.map((newsCard, i) => {
                   const card = newsCard.attributes
                   const tag = card.tag.data.attributes
                   return (
@@ -101,7 +101,7 @@ export const Posts = ({
             )}
             <div className="mt-14 flex justify-center col-span-3">
               {/* TODO: change this button to custom button */}
-              {latestPost.length > 0 && (
+              {latestPost?.data?.length > 0 && (
                 <UILink href={t('allNewsLink')}>
                   <Button
                     variant="transparent"
