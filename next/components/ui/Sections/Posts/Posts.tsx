@@ -8,7 +8,13 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Homepage, BlogPost, HomepageQuery, LatestBlogsWithTagsQuery, BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  Homepage,
+  BlogPost,
+  HomepageQuery,
+  LatestBlogsWithTagsQuery,
+  BlogPostFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
@@ -87,12 +93,16 @@ export const Posts = ({
                   return (
                     <div key={i}>
                       {card.tag && (
-                        <div className="mb-3">
+                        <div className="mb-5">
                           <Tag title={tag.title} color={tag.pageCategory.data.attributes.color} />
                         </div>
                       )}
                       <UILink href={`blog/${card.slug}`}>
-                        <div className="mb-3 underline font-semibold">{card.title}</div>
+                        <div
+                          className={`mb-5 underline font-semibold hover:text-[color:rgb(var(--color-${tag.pageCategory.data.attributes.color}))]`}
+                        >
+                          {card.title}
+                        </div>
                       </UILink>
                     </div>
                   )
