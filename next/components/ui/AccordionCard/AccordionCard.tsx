@@ -29,7 +29,7 @@ export const AccordionCard = ({
   return (
     /* min-w-70 does not work anymore (worked fine on monorepo) */
     <>
-      {displayName && (
+      {displayName && jobTitle && (
         <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
           <div className="text-sm lg:text-md font-semibold pb-2">{displayName}</div>
           <div className="text-gray-dark text-xs lg:text-sm pb-6">{jobTitle}</div>
