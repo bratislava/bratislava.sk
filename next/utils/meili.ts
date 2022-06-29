@@ -11,6 +11,7 @@ export const search = async ({ index, keyword }: SearchRequest): Promise<any> =>
     method: 'post',
     headers: {
       Authorization: `Bearer ${process.env.MEILI_API_KEY}`,
+      'Content-Type': 'application/json',
     },
     body: raw,
   })
