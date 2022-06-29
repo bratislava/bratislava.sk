@@ -74,18 +74,18 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
   }, [panelHidden])
 
   return (
+    <div className={cx(
+      'cursor-default h-screen opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
+      { hidden: panelHidden }
+    )}>
     <div
       className={cx(
-        'cursor-default grid opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto absolute top-[106px] left-0 right-0 z-30 w-full pb-20 bg-transparent',
-        { hidden: panelHidden }
-      )}
+        'cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent',
+       )}
     >
       <Panel
         style={{ backgroundColor: item.color }}
-        className={cx('px-6 pt-10 pb-10', {
-          'rounded-tl-none': isFirst,
-          'rounded-tr-none': isLast,
-        })}
+        className={cx('px-6 pt-10 pb-10 rounded-none')}
       >
         <div className="max-w-screen-1.5lg w-full m-auto grid grid-cols-3 gap-10">
           {/* SUB-ITEMS */}
@@ -144,6 +144,7 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
         waveColor={item.color}
         isRich
       />
+    </div>
     </div>
   )
 }
