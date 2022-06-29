@@ -9,10 +9,15 @@ interface IProps {
   titleLeft: string
   titleRight: string
   value: TValue
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'gray'
+    | 'transparent'
   onValueChange: (value: TValue) => void
 }
 
-export const SwitchToggle = ({ className, titleLeft, titleRight, value = 'left', onValueChange }: IProps) => {
+export const SwitchToggle = ({ className, titleLeft, titleRight, value = 'left', variant = "transparent", onValueChange }: IProps) => {
   return (
     <div className={cx(className, 'w-full h-full flex flex-col justify-center items-center')}>
       <div className="flex justify-center items-center">
@@ -25,14 +30,22 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = 'left',
           {titleLeft}
         </span>
         <button
-          className={cx('w-10 bg-white h-5 flex items-center border border-primary rounded-full mx-3 px-0.5', {
+          className={cx('w-10 h-5 flex items-center  rounded-full mx-3 px-0.5', {
             'justify-end': value === 'right',
+            'border border-primary bg-white': variant === 'transparent',
+            'bg-gray': variant === 'gray',
+            'bg-secondary': variant === 'secondary',
+            'bg-primaryDark': variant === 'primary' && value === 'right',
+            'bg-transprentGray': variant === 'primary' && value === 'left',
           })}
           onClick={() => {
             onValueChange(value === 'left' ? 'right' : 'left')
           }}
         >
-          <div className={cx('w-3.5 h-3.5 bg-primary rounded-full shadow-md')} />
+          <div className={cx('w-3.5 h-3.5 rounded-full shadow-md',{
+            'bg-primary': variant === 'transparent',
+            'bg-white': variant === 'primary' ||  variant === 'secondary' || variant === 'gray',
+          })} />
         </button>
         <span
           onClick={() => {

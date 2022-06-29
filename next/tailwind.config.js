@@ -73,6 +73,7 @@ module.exports = {
     },
     extend: {
       fontSize: {
+        xxs: ['12px', '18px'],
         xs: ['12px', '18px'],
         sm: ['16px', '24px'],
         default: ['20px', '30px'],
@@ -83,7 +84,9 @@ module.exports = {
         xxxl: ['48px', '62.4px'],
       },
       colors: {
+        transperentBG: "rgba(0, 0, 0, 0.5)",
         primary: 'var(--primary-color)',
+        primaryDark: '#933D35',
         secondary: 'var(--secondary-color)',
         background: 'var(--background-color)',
         font: 'var(--font-color)',
@@ -130,6 +133,7 @@ module.exports = {
         warning: 'var(--warning-color)',
         success: 'var(--success-color)',
         error: 'var(--error-color)',
+        transprentGray: "rgba(51, 51, 51, 0.25)"
       },
       borderWidth: {
         3: '3px',
@@ -147,6 +151,7 @@ module.exports = {
         4.25: '17px',
         4.5: '18px',
         5.5: '22px',
+        6: '24px',
         7.5: '30px',
         12.5: '50px',
         17.5: '70px',
@@ -188,15 +193,22 @@ module.exports = {
       minHeight: {
         220: '220px',
       },
+      maxHeight: {
+        "90Vh": '90vh',
+      },
+      height: {
+        72: "72px"
+      },
       width: {
         540: '540px',
+        72: "72px"
       },
       minWidth: {
         39: '156px',
       },
       maxWidth: {
         61: '244px',
-        87: '350px',
+        87: '350px'
       },
       lineHeight: {
         'extra-tight': '1.3',

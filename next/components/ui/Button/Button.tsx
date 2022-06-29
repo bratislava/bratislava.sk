@@ -18,6 +18,8 @@ export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTM
     | 'full-transparent'
     | 'transparent-black'
     | 'muted'
+    | 'primaryDark'
+    | 'secondaryDarkText-transparent'
 }
 
 export const Button = ({
@@ -52,6 +54,8 @@ export const Button = ({
         'bg-primary text-white': shape !== 'none' && variant === 'primary',
         'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
         'bg-secondary text-font': shape !== 'none' && variant === 'secondaryDarkText',
+        'bg-transparent text-sm text-font base-link underline md:no-underline md:bg-secondary md:text-font': shape !== 'none' && variant === 'secondaryDarkText-transparent',
+        'bg-primaryDark text-white': shape !== 'none' && variant === 'primaryDark',
         'bg-transparent text-default border-primary border-2': shape !== 'none' && variant === 'transparent',
         //transparent should be replaced with transparent-black
         'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',

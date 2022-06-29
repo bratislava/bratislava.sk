@@ -218,6 +218,10 @@
   .narrow-text-wrapper ul li ul {
     @apply mt-0 -mb-12;
   }
+  .box-none {
+    @apply shadow-none md:shadow-lg ;
+  }
+
   .listitem .typography-regular {
     @apply text-sm md:text-base leading-6 md:leading-7;
   }
