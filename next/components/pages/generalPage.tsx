@@ -85,7 +85,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
                 title={page.title}
               />
             </div>
-            <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10">{page?.title}</h1>
+            <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10 max-w-[730px]">{page?.title}</h1>
 
             {/* Header - PageLink as Button */}
             {(page?.pageButtonContent && page?.pageButtonContent.title) && (
