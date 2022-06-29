@@ -16,7 +16,7 @@ export const getLocalDate = (dateString: string) =>
 // "1.3.2021"
 export const getNumericLocalDate = (dateString: string) =>
   !dateString
-    ? ''
+    ? 'Invalid date'
     : convert(ZonedDateTime.parse(dateString))
         .toDate()
         .toLocaleDateString('sk', {

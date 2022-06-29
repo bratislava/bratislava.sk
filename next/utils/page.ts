@@ -85,10 +85,13 @@ export const parsePageLink = (
   pageLink?: PageLinkFragment | null
 ): { title: string; url: string; anchor?: string } | null => {
   if (!pageLink) return null
-
+  const param = {
+    locale: pageLink?.page?.data?.attributes?.locale,
+    slug: pageLink?.page?.data?.attributes?.slug,
+  }
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(pageLink) ?? '',
+    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -104,8 +107,8 @@ export const parseBlogPostLink = (
     }
 
   return {
-    title: blogPostLink.title || blogPostLink.blogPost?.title || '',
-    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.slug}` ?? '',
+    title: blogPostLink.title || blogPostLink.blogPost?.data?.attributes?.title || '',
+    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.data?.attributes?.slug}` ?? '',
   }
 }
 
@@ -115,10 +118,10 @@ export const formatFiles = (files: FileFragment[]): TFile[] =>
     title: file.title ?? undefined,
     category: file.category ?? undefined,
     media: {
-      url: file.media?.url ?? '',
-      size: file.media?.size ?? 0,
-      created_at: file.media?.created_at ? getLocalDate(file.media?.created_at) : '',
-      ext: file.media?.ext ?? undefined,
+      url: file.media?.data?.attributes?.url ?? '',
+      size: file.media?.data?.attributes?.size ?? 0,
+      created_at: file.media?.data?.attributes?.createdAt ? getLocalDate(file.media?.data?.attributes?.createdAt) : '',
+      ext: file.media?.data?.attributes?.ext ?? undefined,
     },
   }))
 
@@ -164,15 +167,13 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
     icon: item.attributes.icon ?? '',
     coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
     title: item.attributes.title ?? '',
-    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
-      .filter(isPresent)
-      .map((subCategory) => ({
-        icon: subCategory.attributes.icon ?? '',
-        title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
-        moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
-        url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
-        subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
-      })),
+    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc']).map((subCategory) => ({
+      icon: subCategory.attributes.icon ?? '',
+      title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
+      moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
+      url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
+      subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
+    })),
   }))
 
 // Page Accordion Items

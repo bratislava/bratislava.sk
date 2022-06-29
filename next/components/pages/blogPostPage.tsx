@@ -33,7 +33,7 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         />
       )}
       {/* Header */}
-      <PageHeader
+      <PageHeader className="header-main-bg bg-cover"
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}
