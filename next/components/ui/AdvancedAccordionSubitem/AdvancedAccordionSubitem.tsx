@@ -12,7 +12,7 @@ import useSWR from 'swr'
 import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionSubitemProps {
-  title: string
+  title?: string
   isGroupTitle?: boolean
   items?: AdvancedAccordionSubSubitemProps[]
   className?: string
