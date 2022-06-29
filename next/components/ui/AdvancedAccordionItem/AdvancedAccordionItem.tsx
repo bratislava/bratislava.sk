@@ -6,6 +6,9 @@ import {
   AdvancedAccordionDepartment,
   AdvancedAccordionDepartmentProps,
 } from '../AdvancedAccordionDepartment/AdvancedAccordionDepartment'
+import useSWR from 'swr'
+import { usersFromDepartmentFetcher } from '@utils/ms-graph'
+import { AccordionCard } from '../AccordionCard/AccordionCard'
 
 export interface AdvancedAccordionItemProps {
   title: string
@@ -14,6 +17,9 @@ export interface AdvancedAccordionItemProps {
 
 export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionItemProps) => {
   const [open, setOpen] = useState(false)
+  const { data } = useSWR(title, usersFromDepartmentFetcher)
+
+  const cardInfo = data && data[0]
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-y-8 cursor-pointer pt-8" onClick={() => setOpen(!open)}>
@@ -29,6 +35,7 @@ export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionI
       </div>
       {open && (
         <div className="pt-8">
+          <AccordionCard {...cardInfo} heading />
           {departments.map((department, index) => (
             <AdvancedAccordionDepartment {...department} key={index} />
           ))}
