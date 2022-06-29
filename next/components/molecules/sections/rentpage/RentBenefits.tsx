@@ -9,17 +9,17 @@ export interface IProps {
 
 const RENTS = [
   {
-    image: PrenajomImage.src,
+    image: PrenajomImage,
     title: 'Lorem ipsum',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },
   {
-    image: PrenajomImage.src,
+    image: PrenajomImage,
     title: 'Lorem ipsum',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },
   {
-    image: PrenajomImage.src,
+    image: PrenajomImage,
     title: 'Lorem ipsum',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },

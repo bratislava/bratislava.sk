@@ -7,9 +7,10 @@ import ChevronRight from '../../../assets/images/chevron-right.svg'
 import ChevronLeft from '../../../assets/images/chevron-left.svg'
 
 interface PaginationProps {
-  itemsPerPage: number
+  totalPages?: number
   totalCount: number
   currentPage: number
+  itemsPerPage?: number
   pageHandler?: (pageNumber: number) => void
 }
 
@@ -21,7 +22,7 @@ export const ThreeDots = () => {
   )
 }
 
-export const Pagination = ({ itemsPerPage, totalCount, currentPage = 1, pageHandler }: PaginationProps) => {
+export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandler }: PaginationProps) => {
   const [items, setItems] = useState([
     {
       page: currentPage == 1 ? currentPage : currentPage - 1,
@@ -33,7 +34,7 @@ export const Pagination = ({ itemsPerPage, totalCount, currentPage = 1, pageHand
       page: currentPage == 1 ? currentPage + 2 : currentPage + 1,
     },
   ])
-  const numberOfPages = Math.ceil(totalCount / itemsPerPage)
+  const numberOfPages = totalPages
 
   const handleCurrentPageChange = (currentPage) => {
     setItems([

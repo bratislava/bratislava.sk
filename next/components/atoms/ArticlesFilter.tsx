@@ -25,12 +25,12 @@ export const ArticlesFilter = ({
   selectedTags,
 }: ArticlesFilter) => {
   const BratislavaCategories = [
-    'Mesto Bratislava',
-    'Doprava a mapy',
-    'Životné prostredie a výstavba',
-    'Sociálne služby a bývanie',
-    'Vzdelávanie a voľný čas',
-    'Kultúra a komunity',
+    'Mesto\nBratislava',
+    'Doprava\na mapy',
+    'Životné prostredie \na výstavba',
+    'Sociálne služby \na bývanie',
+    'Vzdelávanie \na voľný čas',
+    'Kultúra \na komunity',
   ]
 
   return (
@@ -56,7 +56,9 @@ export const ArticlesFilter = ({
       </HorizontalScrollWrapper>
       <div className="mt-11">
         {data
-          .filter((tag) => tag.category == category)
+          .filter((tag) => {
+            return tag.category == category
+          })
           .map((item, index) => (
             <Tag
               interactable={true}

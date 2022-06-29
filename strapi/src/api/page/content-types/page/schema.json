@@ -84,7 +84,8 @@
         "sections.videos",
         "sections.waves",
         "sections.document-list",
-        "sections.space"
+        "sections.space",
+        "sections.organizational-structure"
       ]
     },
     "pageHeaderSections": {
