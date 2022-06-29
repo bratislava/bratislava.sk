@@ -11,18 +11,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths = []
   if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
-  let page = paginationObj.defaultPage;
+  let defaultStart = paginationObj.defaultPage;
   // Fetch all pages to prerender
   let allPages = []
-  
-  while (page !== 0) {
-    let { pages } = await client.PagesStaticPaths({ page, pageSize: paginationObj.maxLimit });
+
+  while (defaultStart !== 0) {
+    let { pages } = await client.PagesStaticPaths({ start: defaultStart, limit: paginationObj.maxLimit });
     allPages.push(...pages.data);
     if (pages.data.length === 0) {
-      page = 0;
+      defaultStart = 0;
       break;
     }
-    page += 1;
+    defaultStart += paginationObj.maxLimit;
   }
 
   if (allPages) {

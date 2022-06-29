@@ -12,8 +12,8 @@ query Pages {
   }
 }
 
-query PagesStaticPaths($page: Int, $pageSize: Int) {
-  pages(pagination: { page: $page, pageSize: $pageSize }) {
+query PagesStaticPaths($start: Int, $limit: Int) {
+  pages(pagination: { start: $start, limit: $limit }) {
     data {
       id
       attributes {
