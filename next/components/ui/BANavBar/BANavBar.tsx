@@ -14,12 +14,7 @@ import SmallBlackSearchIcon from '../../../assets/images/search-icon-small-black
 import SmallWhiteSearchIcon from '../../../assets/images/search-icon-small-white.svg'
 import Button from '../Button/Button'
 import { useTranslation } from 'next-i18next'
-import { Accordion as AccordionBa } from '@bratislava/ui-bratislava'
-import AccordionItem from '../AccordionItem/AccordionItem'
-import ChevronDown from '../../../assets/images/chevron-down.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
 import NarrowText from '../NarrowText/NarrowText'
-import PageLinkButton from '../PageLinkButton/PageLinkButton'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 interface IProps extends LanguageSelectProps {
   className?: string
