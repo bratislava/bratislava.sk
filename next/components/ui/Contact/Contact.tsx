@@ -55,13 +55,14 @@ export const Contact = ({
           )}
         </div>
       </div>
-
-      {items.map((item) => (
+      <div className="w-full md:w-1/2 mb-6 md:mb-0">
+        <div className='flex flex-col md:flex-row text-font gap-3'>
+        {items.map((item) => (
         <div
           key={item.variant}
           className={cx('w-full mb-6 last:mb-0 md:mb-0', {
             'md:w-1/2': items.length === 1 && !address,
-            'md:w-1/4': items.length === 2,
+            // 'md:w-1/2': items.length === 2,
             'md:w-1/6': items.length === 3,
             'md:w-5/12': items.length === 1 && address,
           })}
@@ -69,6 +70,9 @@ export const Contact = ({
           <ContactItem {...item} linkVariant={itemLinkVariant} />
         </div>
       ))}
+        </div>
+      
+      </div>
     </div>
   )
 }
@@ -91,7 +95,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="flex flex-col items-center justify-start text-default leading-[30px] pb-20 relative" style={{minHeight: 275}}>
+    <div className="flex flex-col items-center justify-start text-default leading-[30px] pb-20 relative h-full">
       <Icon className="w-24 h-24" />
       {value.split(',').map((item, key) => {
         return (

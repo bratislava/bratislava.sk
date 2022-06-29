@@ -8,7 +8,13 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Homepage, BlogPost, HomepageQuery, LatestBlogsWithTagsQuery, BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  Homepage,
+  BlogPost,
+  HomepageQuery,
+  LatestBlogsWithTagsQuery,
+  BlogPostFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
@@ -105,7 +111,7 @@ export const Posts = ({
                 <UILink href={t('allNewsLink')}>
                   <Button
                     variant="transparent"
-                    className="px-6 py-3 text-default font-medium shadow-none text-font"
+                    className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font"
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
@@ -143,9 +149,9 @@ export const Posts = ({
         </div>
       )}
       {activeTab > 1 && (
-        <div className="mt-23 px-8 font-sans font-normal lg:text-md text-default text-center items-end">
+        <div className="mt-14 px-8 font-sans font-normal lg:text-md text-default text-center items-end">
           Všetky informácie nájdete na stránke
-          <UILink className="underline" href="https://zverejnovanie.bratislava.sk">
+          <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             {
               <div className="lg:hidden">
                 <br></br>

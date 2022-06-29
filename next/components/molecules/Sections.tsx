@@ -17,6 +17,7 @@ import {
   RentBenefits,
   NumericalListSection,
   Iframe,
+  AdvancedAccordion,
 } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import * as React from 'react'
@@ -264,6 +265,9 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
       return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} />
+
+    case 'ComponentSectionsOrganizationalStructure':
+      return <AdvancedAccordion {...section} />
 
     /*
     case 'ComponentSectionsIframe':
