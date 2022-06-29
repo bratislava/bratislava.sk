@@ -40,27 +40,29 @@ async function migrateModels(tables) {
         omitAttributes.push(key);
       }
     }
-    await migrate(modelDef.collectionName, modelDef.collectionName, (item) => {
-      if (modelDef.options.timestamps === false) {
-        return migrateItem(item);
-      } else {
-        const timestamps =
-          modelDef.options.timestamps === true
-            ? ["created_at", "updated_at"]
-            : modelDef.options.timestamps;
-        const [createdAt, updatedAt] = timestamps;
+    await migrate(modelDef.collectionName, modelDef.collectionName
+    //   , (item) => {
+    //   if (modelDef.options.timestamps === false) {
+    //     return migrateItem(item);
+    //   } else {
+    //     const timestamps =
+    //       modelDef.options.timestamps === true
+    //         ? ["created_at", "updated_at"]
+    //         : modelDef.options.timestamps;
+    //     const [createdAt, updatedAt] = timestamps;
 
-        const newItem = {
-          ...item,
-          created_at: item[createdAt],
-          updated_at: item[updatedAt],
-        };
+    //     const newItem = {
+    //       ...item,
+    //       created_at: item[createdAt],
+    //       updated_at: item[updatedAt],
+    //     };
 
-        return migrateItem(
-          omit(newItem, [...omitAttributes, createdAt, updatedAt])
-        );
-      }
-    });
+    //     return migrateItem(
+    //       omit(newItem, [...omitAttributes, createdAt, updatedAt])
+    //     );
+    //   }
+    // }
+    );
   }
   await migrateRelations(tables, relations);
 }
