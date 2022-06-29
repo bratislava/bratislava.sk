@@ -6,14 +6,27 @@ import GeneralPage from '../components/pages/generalPage'
 import { client } from '../utils/gql'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { arrayify, isPresent, shouldSkipStaticPaths } from '../utils/utils'
-
+import { paginationObj } from '../utils/constants';
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths = []
   if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
-  const { pages } = await client.PagesStaticPaths()
-  if (pages) {
-    paths = pages.data.map(({ attributes }) => ({
+  let page = paginationObj.defaultPage;
+  // Fetch all pages to prerender
+  let allPages = []
+  
+  while (page !== 0) {
+    let { pages } = await client.PagesStaticPaths({ page, pageSize: paginationObj.maxLimit });
+    allPages.push(...pages.data);
+    if (pages.data.length === 0) {
+      page = 0;
+      break;
+    }
+    page += 1;
+  }
+
+  if (allPages) {
+    paths = allPages.map(({ attributes }) => ({
       params: {
         slug: attributes.slug.split('/'),
       },

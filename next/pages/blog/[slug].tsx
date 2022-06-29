@@ -10,12 +10,14 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   let paths: { params: { slug: string } }[] = []
   // if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
+  console.log("Inside staticPath [slug].tsx", ctx.locales[0]);
   const { blogPosts: blogPostSk } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[0],
   })
   const { blogPosts: blogPostEn } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[1],
   })
+
   const blogPosts = blogPostEn?.data.concat(blogPostSk?.data ?? [])
   if (blogPosts) {
     paths = blogPosts.map((blogPost) => ({
