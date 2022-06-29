@@ -2,6 +2,7 @@ import Panel from '../Panel/Panel'
 import cx from 'classnames'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import { BlogItem } from '../FeaturedBlogs/FeaturedBlogs'
 
 export interface BlogImage {
   url: string
@@ -26,25 +27,28 @@ export interface BlogSearchCardProps {
   className?: string
   imageClassName?: string
   fullCardSizeImage?: boolean
-  title?: string
-  published_at?: string
-  coverImage?: string
-  tag?: BlogTag
+  // title?: string
+  // published_at?: string
+  // coverImage?: string
+  // tag?: BlogTag
+  item: BlogItem
 }
 
 export const BlogSearchCard = ({
-  coverImage,
-  tag,
-  title,
-  published_at,
+  // coverImage,
+  // tag,
+  // title,
+  // published_at,
   className,
   imageClassName,
   fullCardSizeImage,
+  item,
 }: BlogSearchCardProps) => {
-  const publishedAt = new Date(published_at)
+  const publishedAt = new Date(item.data.attributes.publishedAt)
   const date = publishedAt.getDay() + '. ' + publishedAt.getMonth() + '. ' + publishedAt.getFullYear()
-  const headline = tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
-  const color = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
+  const headline =
+    item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
+  const color = item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color
   const headlineColor = color ? `--color-${color}--light` : '--color-red'
   return (
     <>
@@ -57,11 +61,11 @@ export const BlogSearchCard = ({
         )}
         hoverable
       >
-        {coverImage && (
+        {item?.data?.attributes?.coverImage && (
           <div
             className={cx('flex flex-shrink-0 blog-card-image', imageClassName)}
             style={{
-              backgroundImage: `url(${coverImage})`,
+              backgroundImage: `url(${item?.data?.attributes?.coverImage?.data?.attributes?.url})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
@@ -74,7 +78,9 @@ export const BlogSearchCard = ({
           >
             {headline}
           </div>
-          <div className="text-ellipsis overflow-hidden text-default font-semibold">{title}</div>
+          <div className="text-ellipsis overflow-hidden text-default font-semibold">
+            {item?.data?.attributes?.title}
+          </div>
           <div>{date}</div>
         </div>
       </Panel>
@@ -85,7 +91,7 @@ export const BlogSearchCard = ({
         <div
           className="flex flex-col justify-end w-full h-full rounded"
           style={{
-            backgroundImage: `url(${coverImage})`,
+            backgroundImage: `url(${item?.data?.attributes?.coverImage?.data?.attributes?.url})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}
@@ -99,7 +105,7 @@ export const BlogSearchCard = ({
               {headline}
             </div>
             <div className="flex">
-              <div className="text-default font-semibold text-white">{title}</div>
+              <div className="text-default font-semibold text-white">{item?.data?.attributes?.title}</div>
               <VerticalCardButton className="invisible group-hover:lg:visible flex-shrink-0" size="medium">
                 <ArrowRightShort className="scale-125" />
               </VerticalCardButton>

@@ -139,7 +139,12 @@ const Search = ({
           }}
         />
         {/* Header */}
-        <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''} className="header-main-bg bg-cover">
+        <PageHeader
+          color="var(--secondary-color)"
+          transparentColor="var(--secondary-color--transparent)"
+          imageSrc={''}
+          className="header-main-bg bg-cover"
+        >
           <SectionContainer>
             <div className="min-h-[220px] relative">
               <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('searchTheSite')}</h1>
@@ -157,7 +162,7 @@ const Search = ({
             <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-              {/* <BlogSearchCards title={t('articles')} blogs={blogs} /> */}
+              <BlogSearchCards title={t('articles')} blogs={blogs} />
               <PageCards title={t('websites')} pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
@@ -228,39 +233,32 @@ const fileSections = [
 
 const blogs = [
   {
-    title: 'Výsledky výberového konania na pozíciu náčelníka Mestskej polície',
-    published_at: '2022-04-05T14:12:11.528Z',
-    coverImage: {
-      url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/44654929_1094813014012650_2908887100818456576_n_2f821d87a4.png',
-    },
-    tag: {
-      pageCategory: {
-        color: 'red',
-        shortTitle: 'Mesto Bratislava',
+    data: {
+      attributes: {
+        coverImage: {
+          data: {
+            attributes: {
+              url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/44654929_1094813014012650_2908887100818456576_n_2f821d87a4.png',
+            },
+          },
+        },
+        publishedAt: '2022-04-05T14:12:11.528Z',
+        tag: {
+          data: {
+            attributes: {
+              pageCategory: {
+                data: {
+                  attributes: {
+                    color: 'red',
+                    shortTitle: 'Mesto Bratislava',
+                  },
+                },
+              },
+            },
+          },
+        },
+        title: 'Výsledky výberového konania na pozíciu náčelníka Mestskej polície',
       },
-    },
-  },
-  {
-    title: 'Z decembrového zasadnutia mestského zastupiteľstva',
-    published_at: '2022-04-01T13:45:34.674Z',
-    coverImage: {
-      url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/byvanie_byty_mesto_1_ce32380a06.jpg',
-    },
-    tag: {
-      pageCategory: {
-        color: 'red',
-        shortTitle: 'Mesto Bratislava',
-      },
-    },
-  },
-  {
-    title: 'Mesto spustilo výstavbu predĺženia električkovej trate v Petržalke',
-    published_at: '2022-03-31T14:04:00.362Z',
-    coverImage: {
-      url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/zrkadlovy_haj_1_89323aa8f8.jpg',
-    },
-    tag: {
-      pageCategory: null,
     },
   },
 ]
