@@ -11,8 +11,8 @@ import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 import { AccordionCard } from '../AccordionCard/AccordionCard'
 
 export interface AdvancedAccordionItemProps {
-  title: string
-  departments: AdvancedAccordionDepartmentProps[]
+  title?: string
+  departments?: AdvancedAccordionDepartmentProps[]
 }
 
 export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionItemProps) => {

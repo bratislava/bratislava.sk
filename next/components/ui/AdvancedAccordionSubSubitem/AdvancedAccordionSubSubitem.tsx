@@ -7,7 +7,7 @@ import useSWR from 'swr'
 import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionSubSubitemProps {
-  title: string
+  title?: string
   className?: string
   cardClassName?: string
 }
