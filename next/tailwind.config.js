@@ -19,23 +19,12 @@ module.exports = {
   content: [join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'), join(__dirname, 'components/**/*.{js,jsx,ts,tsx}')],
   darkMode: 'media', // or 'class'
   theme: {
-    fontSize: {
-      xxl: ['var(--font-size-xxl)', 'var(--line-height-xxl)'],
-      xl: ['var(--font-size-xl)', 'var(--line-height-xl)'],
-      lg: ['var(--font-size-lg)', 'var(--line-height-lg)'],
-      md: ['var(--font-size-md)', 'var(--line-height-mg)'],
-      sm: ['var(--font-size-sm)', 'var(--line-height-sm)'],
-      xs: ['var(--font-size-xs)', 'var(--line-height-xs)'],
-      nav: ['var(--font-size-nav)', 'var(--line-height-nav)'],
-      btn: ['var(--font-size-btn)', 'var(--line-height-btn)'],
-    },
     fontWeight: {
       light: '300',
-      regular: '400',
+      normal: '400',
       medium: '500',
       semibold: '600',
       bold: '700',
-      heavy: '900',
     },
     screens: {
       xs: '360px',
@@ -85,16 +74,14 @@ module.exports = {
     extend: {
       fontSize: {
         xxs: ['12px', '18px'],
-        xs: ['14px', '22.4px'],
+        xs: ['12px', '18px'],
         sm: ['16px', '24px'],
         default: ['20px', '30px'],
-        md: ['24px', '140%'],
-        md2: ['28px', '33.6px'],
-        lg: ['32px', '44.8px'],
+        md: ['24px', '36px'],
+        lg: ['32px', '41.6px'],
         xl: ['36px', '42.3px'],
-        '2xl': ['40px', '60px'],
-        xxl: ['42px', '50.8px'],
-        xxxl: ['48px', '62px'],
+        '2xl': ['40px', '52px'],
+        xxxl: ['48px', '62.4px'],
       },
       colors: {
         transperentBG: "rgba(0, 0, 0, 0.5)",
@@ -222,6 +209,9 @@ module.exports = {
       maxWidth: {
         61: '244px',
         87: '350px'
+      },
+      lineHeight: {
+        'extra-tight': '1.3',
       },
     },
   },

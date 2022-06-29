@@ -9,8 +9,8 @@ import {
 import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
 import groupBy from 'lodash/groupBy'
 import { getLocalDate, getNumericLocalDate } from './local-date'
-import orderBy from 'lodash/orderBy'
 import { isPresent } from './utils'
+import { sortBy } from 'lodash'
 
 // Use explocitly named color variables so their usage can be easily found in project
 const COLOR_VARIABLES: {
@@ -87,7 +87,7 @@ export const parsePageLink = (
   if (!pageLink) return null
   const param = {
     locale: pageLink?.page?.data?.attributes?.locale,
-    slug: pageLink?.page?.data?.attributes?.slug
+    slug: pageLink?.page?.data?.attributes?.slug,
   }
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
@@ -107,8 +107,8 @@ export const parseBlogPostLink = (
     }
 
   return {
-    title: blogPostLink.title || blogPostLink.blogPost?.title || '',
-    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.slug}` ?? '',
+    title: blogPostLink.title || blogPostLink.blogPost?.data?.attributes?.title || '',
+    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.data?.attributes?.slug}` ?? '',
   }
 }
 
@@ -118,10 +118,10 @@ export const formatFiles = (files: FileFragment[]): TFile[] =>
     title: file.title ?? undefined,
     category: file.category ?? undefined,
     media: {
-      url: file.media?.url ?? '',
-      size: file.media?.size ?? 0,
-      created_at: file.media?.created_at ? getLocalDate(file.media?.created_at) : '',
-      ext: file.media?.ext ?? undefined,
+      url: file.media?.data?.attributes?.url ?? '',
+      size: file.media?.data?.attributes?.size ?? 0,
+      created_at: file.media?.data?.attributes?.createdAt ? getLocalDate(file.media?.data?.attributes?.createdAt) : '',
+      ext: file.media?.data?.attributes?.ext ?? undefined,
     },
   }))
 
@@ -132,11 +132,10 @@ export const groupByCategoryFileList = (fileList: FileFragment[]) => {
     title: file.title,
   }))
   const grouped = groupBy(files, 'category')
-  const groupedFileList = Object.keys(grouped).map((key) => ({
+  return Object.keys(grouped).map((key) => ({
     category: key === 'null' ? '' : key,
     files: formatFiles(grouped[key]),
   }))
-  return groupedFileList
 }
 
 // Page Footer
@@ -160,31 +159,37 @@ export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
 
 // Main Menu
 export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
-  orderBy(menu.data, ['priority'], ['asc']).map((item) => ({
-    id: item.id ?? '',
-    color: `rgb(var(${getColorVariables(item.attributes.color ?? '').light}))`,
-    colorDark: `rgb(var(${getColorVariables(item.attributes.color ?? '').dark}))`,
-    icon: item.attributes.icon ?? '',
-    coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
-    title: item.attributes.title ?? '',
-    subItems: orderBy(item?.attributes?.subcategories?.data ?? [], ['priority'], ['asc'])
-      .map((subCategory) => ({
-        icon: subCategory.attributes.icon ?? '',
-        title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
-        moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
-        url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
-        subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
-      })),
-  }))
+  sortBy(
+    menu.data.map((item) => ({
+      id: item.id ?? '',
+      color: `rgb(var(${getColorVariables(item.attributes.color ?? '').light}))`,
+      colorDark: `rgb(var(${getColorVariables(item.attributes.color ?? '').dark}))`,
+      icon: item.attributes.icon ?? '',
+      coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
+      priority: item.attributes.priority ?? 0,
+      title: item.attributes.title ?? '',
+      subItems: sortBy(
+        item?.attributes?.subcategories?.data.map((subCategory) => ({
+          icon: subCategory.attributes.icon ?? '',
+          title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
+          moreLinkTitle: (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
+          url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
+          subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
+          priority: subCategory.attributes.priority ?? 0,
+        })) ?? [],
+        ['priority']
+      ),
+    })),
+    ['priority']
+  )
 
 // Page Accordion Items
 export const groupByCategory = <T>(items: T[]) => {
   const grouped = groupBy(items, 'category')
-  const groupedItems = Object.keys(grouped).map((key) => ({
+  return Object.keys(grouped).map((key) => ({
     category: key,
     items: grouped[key],
   }))
-  return groupedItems
 }
 //Page Related Content
 export const parseRelatedBlogPosts = (RelatedContentBlogPosts: BlogPostFragment[]): NewsCardProps[] => {

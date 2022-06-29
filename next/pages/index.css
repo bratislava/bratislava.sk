@@ -8,6 +8,74 @@
 @import './bratislava.css';
 
 @layer components {
+
+  /* THESE SHOULD COVER ALL FONT VARIANTS ON PAGE */
+  /* if you feel a different variant is needed, please contact desing/product beforehand */
+
+  .typography-h1-extra-large {
+    @apply text-xxxl font-bold
+  }
+
+  .typography-h1 {
+    @apply text-2xl font-bold
+  }
+
+  .typography-h2 {
+    @apply text-lg font-semibold
+  }
+
+  .typography-h3 {
+    @apply text-md font-medium
+  }
+
+  .typography-h4 {
+    @apply text-default font-medium
+  } 
+
+  .typography-tab {
+    @apply text-md font-normal
+  }
+
+  .typography-dense {
+    @apply text-default font-medium
+  }
+
+  .typography-highlight {
+    @apply text-default font-semibold
+  }
+
+  .typography-link {
+    @apply text-default font-semibold underline
+  }
+
+  .typography-subheadline {
+    @apply text-default font-medium
+  }
+
+  .typography-regular {
+    @apply text-default font-normal
+  }
+
+  .typography-highlight-sm {
+    @apply text-sm font-semibold
+  }
+
+  .typography-link-sm {
+    @apply text-sm font-semibold underline
+  }
+
+  .typography-tag-label {
+    @apply text-sm font-medium
+  }
+
+  .typography-sm {
+    @apply text-sm font-normal
+  }
+
+  .typography-xs {
+    @apply text-xs font-normal
+  }
+
   .base-button {
     @apply appearance-none inline-flex items-center justify-center text-center focus:outline-none bg-primary;
     @apply shadow-lg font-medium text-white text-lg;
@@ -153,4 +221,9 @@
   .box-none {
     @apply shadow-none md:shadow-lg ;
   }
+
+  .listitem .typography-regular {
+    @apply text-sm md:text-base leading-6 md:leading-7;
+  }
+  
 }

@@ -104,3 +104,7 @@ If you want to check if your secret is there, you can run this command:
 ```bash
 kubectl get secret --namespace=standalone nest-prisma-template-database-secret
 ```
+To implement on-demand revalidation, we need to add webhook url from strapi admin panel. The route of the url should be like below:
+```
+https://<host>/api/revalidate?secret=<SECRET_TOKEN>
+```

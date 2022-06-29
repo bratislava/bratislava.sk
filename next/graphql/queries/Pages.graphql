@@ -73,94 +73,13 @@ fragment GeneralPage on PageEntityResponseCollection {
         ... on ComponentSectionsFeaturedBlogPosts {
           id
           first_blog {
-            data {
-              attributes {
-                title
-                publishedAt
-                coverImage {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-                tag {
-                  data {
-                    attributes {
-                      pageCategory {
-                        data {
-                          attributes {
-                            color
-                            shortTitle
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                slug
-              }
-            }
+            ...BlogSection
           }
           second_blog {
-            data {
-              attributes {
-                title
-                publishedAt
-                coverImage {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-                tag {
-                  data {
-                    attributes {
-                      pageCategory {
-                        data {
-                          attributes {
-                            color
-                            shortTitle
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                slug
-              }
-            }
+            ...BlogSection
           }
           third_blog {
-            data {
-              attributes {
-                title
-                publishedAt
-                coverImage {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-                tag {
-                  data {
-                    attributes {
-                      pageCategory {
-                        data {
-                          attributes {
-                            color
-                            shortTitle
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                slug
-              }
-            }
+            ...BlogSection
           }
         }
       }
@@ -197,6 +116,37 @@ fragment GeneralPage on PageEntityResponseCollection {
     }
     id
   }
+}
+
+fragment BlogSection on BlogPostEntityResponse {
+    data {
+              attributes {
+                title
+                publishedAt
+                coverImage {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+                tag {
+                  data {
+                    attributes {
+                      pageCategory {
+                        data {
+                          attributes {
+                            color
+                            shortTitle
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                slug
+              }
+            }
 }
 
 fragment ParentPage on Page {
@@ -450,7 +400,7 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFileList {
     hasBackground
-    fileList {
+    fileList(pagination: { limit: 500 }) {
       ...File
     }
   }
@@ -565,5 +515,23 @@ fragment Sections on PageSectionsDynamicZone {
       }
     }
     filtering
+  }
+
+  ... on ComponentSectionsOrganizationalStructure {
+    id
+    items {
+      title
+      departments {
+        title
+        items(pagination: { limit: 50 }) {
+          isGroupTitle
+          title
+          items(pagination: { limit: 50 }) {
+            title
+          }
+        }
+      }
+    }
+    title
   }
 }

@@ -36,8 +36,8 @@ export const Button = ({
 }: ButtonProps) => {
   const iconContent = icon ? (
     <>
-      <span className="group-hover:hidden ml-5">{icon}</span>
-      <span className="hidden group-hover:block ml-5">{hoverIcon || icon}</span>
+      <span className="group-hover:hidden">{icon}</span>
+      <span className="hidden group-hover:block">{hoverIcon || icon}</span>
     </>
   ) : null
 
@@ -56,7 +56,7 @@ export const Button = ({
         'bg-secondary text-font': shape !== 'none' && variant === 'secondaryDarkText',
         'bg-transparent text-sm text-font base-link underline md:no-underline md:bg-secondary md:text-font': shape !== 'none' && variant === 'secondaryDarkText-transparent',
         'bg-primaryDark text-white': shape !== 'none' && variant === 'primaryDark',
-        'bg-transparent text-primary border-primary border-2': shape !== 'none' && variant === 'transparent',
+        'bg-transparent text-default border-primary border-2': shape !== 'none' && variant === 'transparent',
         //transparent should be replaced with transparent-black
         'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',
         'bg-primary-muted text-white hover:bg-primary': shape !== 'none' && variant === 'muted',

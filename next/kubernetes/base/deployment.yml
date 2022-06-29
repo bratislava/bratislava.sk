@@ -30,8 +30,12 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-env
           readinessProbe:
             httpGet:
-              path: /
+              path: /api/healthcheck
               port: ${INTERNAL_APP_PORT}
+            timeoutSeconds: 5
+            periodSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
