@@ -42,7 +42,6 @@ AdvancedAccordionDepartmentProps) => {
   const { data, error } = useSWR(title, usersFromDepartmentFetcher)
   if (!cards.length && data && data.length > 0) {
     setCards(data)
-    console.log(data)
   }
   return (
     <div className="flex flex-col pt-1 pb-14 lg:pb-18">

@@ -26,10 +26,13 @@ export const AccordionCard = ({
   heading,
   className,
 }: AccordionCardProps) => {
+  const mailUserName = mail?.split('@').at(0)
+  const mailOrganization = mail && '@' + mail?.split('@').at(1)
+  const mailBreakpoint = 16
   return (
     /* min-w-70 does not work anymore (worked fine on monorepo) */
     <>
-      {displayName && (
+      {displayName && jobTitle && (
         <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
           <div className="text-sm lg:text-md font-semibold pb-2">{displayName}</div>
           <div className="text-gray-dark text-xs lg:text-sm pb-6">{jobTitle}</div>
@@ -47,11 +50,21 @@ export const AccordionCard = ({
                       <div className="font-semibold text-red-brick text-sm flex items-center">{mobilePhone}</div>
                     )}
               </div>
-              <div className="flex gap-x-4">
-                {!heading && <Mail className="hidden xl:flex" />}
-                <div className="font-semibold text-red-brick text-xs lg:text-sm underline underline-offset-2">
-                  {mail}
+              <div className="flex flex-col">
+                <div className="flex gap-x-4">
+                  {!heading && <Mail className="hidden xl:flex" />}
+                  <div className="font-semibold text-red-brick text-xs lg:text-sm underline underline-offset-2">
+                    <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
+                    <div className="hidden lg:flex">
+                      {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
+                    </div>
+                  </div>
                 </div>
+                {mailUserName?.length > mailBreakpoint && (
+                  <div className=" hidden lg:flex xl:pl-12 font-semibold text-red-brick text-xs lg:text-sm underline underline-offset-2">
+                    {mailOrganization}
+                  </div>
+                )}
               </div>
             </div>
 
