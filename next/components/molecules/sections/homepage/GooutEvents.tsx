@@ -27,7 +27,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
     <div className={className}>
       <h2 className="font-semibold text-default text-center lg:text-2xl">{title}</h2>
 
-      <div className="gap-x-5 lg:gap-x-6 mt-3 lg:mt-10 py-6">
+      <div className="gap-x-5 lg:gap-x-6 mt-3 lg:mt-14 py-6">
         <Carousel
           shiftIndex={3}
           visibleItems={3}
@@ -56,7 +56,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         />
       </div>
 
-      <div className="hidden lg:flex w-full justify-center mt-4">
+      <div className="hidden lg:flex w-full justify-center mt-10">
         <Link
           href={linkUrl}
           icon={<ChevronRight />}
