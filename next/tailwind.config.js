@@ -198,6 +198,9 @@ module.exports = {
         61: '244px',
         87: '350px',
       },
+      lineHeight: {
+        'extra-tight': '1.3',
+      },
     },
   },
   corePlugins: {
