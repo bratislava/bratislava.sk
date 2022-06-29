@@ -9,7 +9,7 @@ const {
 } = require("./helpers/relationHelpers");
 
 var relations = [];
-const skipAttributes = ["created_by", "updated_by"];
+const skipAttributes = [];
 
 async function migrateModels(tables) {
   console.log("Migrating Models");
@@ -40,6 +40,7 @@ async function migrateModels(tables) {
         omitAttributes.push(key);
       }
     }
+
     await migrate(modelDef.collectionName, modelDef.collectionName
     //   , (item) => {
     //   if (modelDef.options.timestamps === false) {
@@ -50,7 +51,6 @@ async function migrateModels(tables) {
     //         ? ["created_at", "updated_at"]
     //         : modelDef.options.timestamps;
     //     const [createdAt, updatedAt] = timestamps;
-
     //     const newItem = {
     //       ...item,
     //       created_at: item[createdAt],
