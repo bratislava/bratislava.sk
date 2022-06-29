@@ -115,7 +115,7 @@ export const Posts = ({
                 <UILink href={t('allNewsLink')}>
                   <Button
                     variant="transparent"
-                    className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font"
+                    className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font hover:text-primary"
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
@@ -142,7 +142,7 @@ export const Posts = ({
           </div>
           <UILink href="/official-board" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-default font-medium"
+              className="px-6 py-3 text-default font-medium shadow-none hover:text-primary"
               variant="transparent-black"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
