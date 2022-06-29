@@ -2,8 +2,8 @@ import { Footer as UIFooter, FooterProps, SectionContainer } from '@bratislava/u
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 import { usePageWrapperContext } from '../layouts/PageWrapper'
-import FooterWidth from '../ui/Divider/dividers/footer-city.svg'
-import FooterWidthMobile from '../ui/Divider/dividers/footer-city-mobile.svg'
+import FooterWidth from '../../assets/images/footer-city.svg'
+import FooterWidthMobile from '../../assets/images/footer-city-mobile.svg'
 
 
 const Footer = (props: FooterProps) => {
