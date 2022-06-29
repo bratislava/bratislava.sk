@@ -150,10 +150,7 @@
   .narrow-text-wrapper ul li ul {
     @apply mt-0 -mb-12;
   }
-}
-
-@media only screen and (max-width: 767px) {
   .box-none {
-    box-shadow:  none !important;
+    @apply shadow-none md:shadow-lg ;
   }
 }

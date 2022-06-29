@@ -210,7 +210,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
 
       { cookies ?
         <div className='fixed bottom-6 z-50 px-6 left-0 right-0'>
-          <div className='bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-100 mx-auto'>
+          <div className='bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-[1110px] mx-auto'>
             <h6 className='text-default mb-4 font-semibold'>Používanie cookies</h6>
             <p className='text-xxs sm:text-sm mb-8'>Táto webstránka používa základné cookies na zabezpečenie správneho fungovania a sledovanie cookies, ktoré nám pomáha porozumieť, ako stránku využívate. Budú zaznamenávané len po tom, ako vyjadríte svoj súhlas. <a className='font-semibold underline'>Nastavenia cookies.</a></p>
             <div className='block sm:flex'>
@@ -224,7 +224,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       {
         rejectCookieBox ? 
         <div className='fixed z-50 px-6 left-0 right-0 top-0 bottom-0 bg-transperentBG'>
-          <div className='bg-white rounded-lg shadow max-w-100 mx-auto relative top-1/2 -translate-y-1/2'>
+          <div className='bg-white rounded-lg shadow max-w-[1110px] mx-auto relative top-1/2 -translate-y-1/2'>
             <div className='cursor-pointer h-16 w-16 md:h-72 md:w-72 rounded-full bg-primary flex justify-center items-center text-white absolute mx-auto md:mx-0 -bottom-6 left-0 right-0 md:bottom-auto md:left-auto md:-top-6 md:-right-6' onClick={()=> closeRejectCookies()}><HamburgerCloseWhite /></div>
             <div className='py-8 md:py-12 px-5 md:px-16 rounded-lg max-h-90Vh overflow-y-scroll overscroll-y-auto'>
               <div className='mb-6 md:mb-10'>
