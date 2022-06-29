@@ -516,4 +516,22 @@ fragment Sections on PageSectionsDynamicZone {
     }
     filtering
   }
+
+  ... on ComponentSectionsOrganizationalStructure {
+    id
+    items {
+      title
+      departments {
+        title
+        items(pagination: { limit: 50 }) {
+          isGroupTitle
+          title
+          items(pagination: { limit: 50 }) {
+            title
+          }
+        }
+      }
+    }
+    title
+  }
 }

@@ -1,3 +1,6 @@
+import { usersFromDepartmentFetcher } from '@utils/ms-graph'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 import Phone from '../../../assets/images/phone-medium.svg'
 import { AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
@@ -19,29 +22,38 @@ export interface AdvancedAccordionSubdepartment {
 } */
 
 export interface AdvancedAccordionDepartmentProps {
-  title?: string
+  title: string
+  // items?: { title: string; isGroupTitle?: boolean }[]
+  items?: AdvancedAccordionSubitemProps[]
   //subdepartments?: AdvancedAccordionSubdepartment[];
-  subitems?: AdvancedAccordionSubitemProps[]
-  departmentCards?: AccordionCardProps[]
-  departmentPhone?: string
+  // subitems?: AdvancedAccordionSubitemProps[]
+  // departmentCards?: AccordionCardProps[]
+  // departmentPhone?: string
 }
 
 export const AdvancedAccordionDepartment = ({
   title,
-  subitems,
-  departmentCards,
-  departmentPhone,
-}: AdvancedAccordionDepartmentProps) => {
+  items,
+}: // subitems,
+// departmentCards,
+// departmentPhone,
+AdvancedAccordionDepartmentProps) => {
+  const [cards, setCards] = useState([])
+  const { data, error } = useSWR(title, usersFromDepartmentFetcher)
+  if (!cards.length && data && data.length > 0) {
+    setCards(data)
+    console.log(data)
+  }
   return (
     <div className="flex flex-col pt-1 pb-14 lg:pb-18">
       {title && <AccordionItemHeading title={title} />}
-      {departmentPhone && (
+      {/*       {departmentPhone && (
         <div className="flex items-center pl-9 pb-5 lg:pb-8 lg:pl-16 gap-x-8">
           <Phone />
           <div className="font-semibold text-red-brick text-default">{departmentPhone}</div>
         </div>
-      )}
-      {departmentCards && <AccordionCards items={departmentCards} />}
+      )} */}
+      {cards.length > 0 && <AccordionCards items={cards} />}
       {/* {subitems?.map((subitem, subIndex) => ( */}
       <div /* key={subIndex} */ className="flex flex-col">
         {/*           {subitem.departmentCards && (
@@ -54,7 +66,7 @@ export const AdvancedAccordionDepartment = ({
               {subitem.groupHeading}
             </div>
           )} */}
-        {subitems?.map((item, index) => (
+        {items?.map((item, index) => (
           <AdvancedAccordionSubitem
             className="pt-8"
             key={index}
