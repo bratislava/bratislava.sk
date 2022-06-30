@@ -20,6 +20,8 @@ import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../utils/page'
+import useSWR from 'swr'
+import { searchFetcher } from '@utils/meili'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -108,7 +110,7 @@ export const getServerSideProps = async (ctx: any) => {
 }
 
 const Search = ({
-  data,
+  //data,
   footer,
   mainMenu,
   page,
@@ -122,6 +124,8 @@ const Search = ({
   const noResultsFound = false
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
+  const { data, error } = useSWR({ index: 'page', keyword: 'ko' }, searchFetcher)
+  console.log(data)
 
   return (
     <PageWrapper

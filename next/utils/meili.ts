@@ -30,4 +30,14 @@ export const search = async ({ index, keyword }: SearchRequest): Promise<any> =>
   return resultData
 }
 
-export const pagesFetcher = (keyword: string) => fetch(`/api/search`).then((r) => r.json())
+export interface SearchFetcherProps {
+  index: string
+  keyword: string
+}
+
+export const searchFetcher = (props: SearchFetcherProps) => {
+  const { index, keyword } = props
+  console.log('index je ', index)
+  console.log('key je ', keyword)
+  return fetch(`/api/search?index=${index}&q=${keyword}`).then((r) => r.json())
+}
