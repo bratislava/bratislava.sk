@@ -105,7 +105,7 @@ export const Posts = ({
                 <UILink href={t('allNewsLink')}>
                   <Button
                     variant="transparent"
-                    className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font"
+                    className="px-6 py-3 text-default font-medium shadow-none text-font"
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
