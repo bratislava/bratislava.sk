@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type strapiWebhookPayload = {
-  model: string;
+  model: string
   entry: {
-    slug: string;
-    locale: string;
+    slug: string
+    locale: string
   }
 }
 
@@ -17,35 +17,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     // Check model
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const payload: strapiWebhookPayload = req.body;
+    const payload: strapiWebhookPayload = req.body
 
     console.log(payload.model)
-    switch(payload?.model) {
+    switch (payload?.model) {
       case 'blog-post': {
-        let blogPostUrl = ``;
+        let blogPostUrl = ``
         if (payload?.entry?.locale === 'en') {
           blogPostUrl += `/en`
-        };
-        blogPostUrl += `/blog/${payload?.entry?.slug}`;
-        await res.unstable_revalidate(blogPostUrl);
+        }
+        blogPostUrl += `/blog/${payload?.entry?.slug}`
+        await res.unstable_revalidate(blogPostUrl)
       }
-
       case 'page': {
-        let pageUrl = ``;
+        let pageUrl = ``
         if (payload?.entry?.locale === 'en') {
           pageUrl += `/en`
-        };
-        pageUrl = `/${payload?.entry?.slug}`;
-        await res.unstable_revalidate(pageUrl);
+        }
+        pageUrl = `/${payload?.entry?.slug}`
+        await res.unstable_revalidate(pageUrl)
       }
-
       default:
-        break;
+        break
     }
 
     return res.json({ revalidated: true })
   } catch (error) {
-    console.log("Error while revalidating ==>", error)
+    console.log('Error while revalidating ==>', error)
     return res.status(500).send('Error revalidating')
   }
 }
