@@ -136,14 +136,14 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <div className="bg-white">
           <SectionContainer>
-            <div className="pt-25 lg:pt-18 pb-10 flex flex-col sm:flex-row sm:items-center">
+            <div className="pt-25 lg:pt-18 pb-6 flex flex-col sm:flex-row sm:items-center">
               <PageTitle className="flex-1" title={pageTitle} subtitle={header?.subtitle} />
               <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
           <Waves
-            className="mt-6 md:mt-18"
+            className="mt-6 md:mt-18 home-hero-wave"
             waveColor="white"
             wavePosition="bottom"
             isRich
