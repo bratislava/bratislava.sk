@@ -22,6 +22,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import useSWR from 'swr'
 import { searchFetcher } from '@utils/meili'
+import { useState } from 'react'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -124,8 +125,17 @@ const Search = ({
   const noResultsFound = false
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
-  const { data, error } = useSWR({ index: 'page', keyword: 'ko' }, searchFetcher)
+  const [shouldFetch, setShouldFetch] = useState(false)
+  const { data, error } = useSWR(shouldFetch ? null : { index: 'page', keyword: 'ko' }, searchFetcher)
   console.log(data)
+  const [articles, setArticles] = useState([])
+  const [pages, setPages] = useState([])
+  const [documents, setDocuments] = useState([])
+
+  const handleClick = () => {
+    setShouldFetch(true)
+    setShouldFetch(false)
+  }
 
   return (
     <PageWrapper
@@ -161,16 +171,17 @@ const Search = ({
             title={t('searching')}
             buttonText={t('search')}
             options={[t('articles'), t('pages'), t('documents')]}
+            handleClick={handleClick}
           />
           {noResultsFound ? (
             <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-              <BlogSearchCards title={t('articles')} blogs={blogs} />
+              <BlogSearchCards title={t('articles')} blogs={articles} />
               <PageCards title={t('websites')} pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
-                <FileList fileSections={fileSections} hideCategory />
+                <FileList fileSections={documents} hideCategory />
               </div>
             </div>
           )}
@@ -182,116 +193,116 @@ const Search = ({
   )
 }
 
-const fileSections = [
-  {
-    category: 'Category 1',
-    files: [
-      {
-        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
-        media: {
-          url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
-          created_at: 'máj 2021',
-          ext: '.pdf',
-          size: 1.6,
-        },
-      },
-      {
-        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
-        media: {
-          url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
-          created_at: 'máj 2021',
-          ext: '.pdf',
-          size: 1.6,
-        },
-      },
-      {
-        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
-        media: {
-          url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
-          created_at: 'máj 2021',
-          ext: '.pdf',
-          size: 1.6,
-        },
-      },
-      {
-        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
-        media: {
-          url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
-          created_at: 'máj 2021',
-          ext: '.pdf',
-          size: 1.6,
-        },
-      },
-      {
-        title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
-        media: {
-          url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
-          created_at: 'máj 2021',
-          ext: '.pdf',
-          size: 1.6,
-        },
-      },
-    ],
-  },
-]
+// const fileSections = [
+//   {
+//     category: 'Category 1',
+//     files: [
+//       {
+//         title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+//         media: {
+//           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+//           created_at: 'máj 2021',
+//           ext: '.pdf',
+//           size: 1.6,
+//         },
+//       },
+//       {
+//         title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+//         media: {
+//           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+//           created_at: 'máj 2021',
+//           ext: '.pdf',
+//           size: 1.6,
+//         },
+//       },
+//       {
+//         title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+//         media: {
+//           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+//           created_at: 'máj 2021',
+//           ext: '.pdf',
+//           size: 1.6,
+//         },
+//       },
+//       {
+//         title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+//         media: {
+//           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+//           created_at: 'máj 2021',
+//           ext: '.pdf',
+//           size: 1.6,
+//         },
+//       },
+//       {
+//         title: 'ZaD 01 5. Ochrana prírody, tvorba krajiny a územný systém ekologickej stability',
+//         media: {
+//           url: 'https://www.figma.com/file/HCVqucaNmSiPW1ECKC5q6H/bratislava.sk?node-id=3528%3A45237',
+//           created_at: 'máj 2021',
+//           ext: '.pdf',
+//           size: 1.6,
+//         },
+//       },
+//     ],
+//   },
+// ]
 
-const blogs = [
-  {
-    data: {
-      attributes: {
-        coverImage: {
-          data: {
-            attributes: {
-              url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/44654929_1094813014012650_2908887100818456576_n_2f821d87a4.png',
-            },
-          },
-        },
-        publishedAt: '2022-04-05T14:12:11.528Z',
-        tag: {
-          data: {
-            attributes: {
-              pageCategory: {
-                data: {
-                  attributes: {
-                    color: 'red',
-                    shortTitle: 'Mesto Bratislava',
-                  },
-                },
-              },
-            },
-          },
-        },
-        title: 'Výsledky výberového konania na pozíciu náčelníka Mestskej polície',
-      },
-    },
-  },
-]
+// const blogs = [
+//   {
+//     data: {
+//       attributes: {
+//         coverImage: {
+//           data: {
+//             attributes: {
+//               url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/44654929_1094813014012650_2908887100818456576_n_2f821d87a4.png',
+//             },
+//           },
+//         },
+//         publishedAt: '2022-04-05T14:12:11.528Z',
+//         tag: {
+//           data: {
+//             attributes: {
+//               pageCategory: {
+//                 data: {
+//                   attributes: {
+//                     color: 'red',
+//                     shortTitle: 'Mesto Bratislava',
+//                   },
+//                 },
+//               },
+//             },
+//           },
+//         },
+//         title: 'Výsledky výberového konania na pozíciu náčelníka Mestskej polície',
+//       },
+//     },
+//   },
+// ]
 
-const pages = [
-  {
-    pageColor: 'red',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    pageColor: 'blue',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    pageColor: 'green',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    pageColor: 'yellow',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    pageColor: 'purple',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    pageColor: 'brown',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-]
+// const pages = [
+//   {
+//     pageColor: 'red',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//   },
+//   {
+//     pageColor: 'blue',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//   },
+//   {
+//     pageColor: 'green',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//   },
+//   {
+//     pageColor: 'yellow',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//   },
+//   {
+//     pageColor: 'purple',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//   },
+//   {
+//     pageColor: 'brown',
+//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+//   },
+// ]
 
 export default Search

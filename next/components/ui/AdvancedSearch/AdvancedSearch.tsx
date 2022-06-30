@@ -11,12 +11,20 @@ export interface AdvancedSearchProps {
   title?: string
   buttonText?: string
   options?: string[]
+  handleClick?: () => void
 }
 
-export const AdvancedSearch = ({ className, placeholder, title, buttonText, options }: AdvancedSearchProps) => {
+export const AdvancedSearch = ({
+  className,
+  placeholder,
+  title,
+  buttonText,
+  options,
+  handleClick,
+}: AdvancedSearchProps) => {
   const { Link: UILink } = useUIContext()
   const [checked, setChecked] = useState(options ?? [])
-  const handleClick = (option: string) => {
+  const handleAction = (option: string) => {
     if (checked.includes(option)) {
       setChecked(checked.filter((o) => o != option))
     } else {
@@ -25,7 +33,9 @@ export const AdvancedSearch = ({ className, placeholder, title, buttonText, opti
   }
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-sm lg:text-md font-medium pb-3">{title}</div>
+      <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48" id="search">
+        {title}
+      </div>
       <div className="hidden lg:flex pb-6">
         <input
           id="name"
@@ -33,7 +43,7 @@ export const AdvancedSearch = ({ className, placeholder, title, buttonText, opti
           className="h-14 pl-6 w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
           placeholder={placeholder}
         />
-        <UILink href="search">
+        <UILink href="#search">
           <Button
             icon={<SearchIcon />}
             hoverIcon={<SearchIcon />}
@@ -51,19 +61,20 @@ export const AdvancedSearch = ({ className, placeholder, title, buttonText, opti
           className="h-14 pl-6 w-full max-w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-sm text-font font-medium"
           placeholder="Zadajte kľúčové slovo"
         />
-        <UILink href="search">
+        <UILink href="#search">
           <Button
             icon={<SearchIcon />}
             hoverIcon={<SearchIcon />}
             className="h-14 rounded-l-none text-default pr-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
             variant="secondaryDarkText"
-          ></Button>
+            onClick={handleClick}
+          />
         </UILink>
       </div>
       <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
         {options?.map((option, index) => (
           <div key={index} className="flex items-center gap-x-4">
-            <div onClick={() => handleClick(option)}>
+            <div onClick={() => handleAction(option)}>
               {checked.includes(option) ? (
                 <Checkbox />
               ) : (
