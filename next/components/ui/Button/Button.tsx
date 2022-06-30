@@ -37,7 +37,9 @@ export const Button = ({
   const iconContent = icon ? (
     <>
       <span className="group-hover:hidden">{icon}</span>
-      <span className="hidden group-hover:block">{hoverIcon || icon}</span>
+
+      <span className="hidden group-hover:block ml-5">{hoverIcon || icon}</span>
+
     </>
   ) : null
 
