@@ -42,24 +42,24 @@ export const getServerSideProps = async (ctx: any) => {
     locale,
   })
 
-  const homepagePosts = homepage?.posts?.map((post) => ({
+  const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
     title: post?.title,
     url: post?.slug,
-    imageSrc: post?.image?.url,
+    imageSrc: post?.image?.data?.attributes?.url,
   }))
 
-  const frontImage = homepage?.inba?.images?.frontImage?.url
-  const rearImage = homepage?.inba?.images?.rearImage?.url
+  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
+  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
   const inba = {
-    title: homepage?.inba?.title,
-    content: homepage?.inba?.content,
-    link: homepage?.inba?.link,
+    title: homepage?.data?.attributes?.inba?.title,
+    content: homepage?.data?.attributes?.inba?.content,
+    link: homepage?.data?.attributes?.inba?.link,
     images: [frontImage, rearImage],
   }
 
-  const header = homepage?.header
+  const header = homepage?.data?.attributes?.header
 
-  const cards = homepage?.cards?.map((card) => ({
+  const cards = homepage?.data?.attributes?.cards?.map((card) => ({
     bookmarkTitle: card?.title,
     title: card?.headline,
     content: card?.text,
@@ -67,7 +67,7 @@ export const getServerSideProps = async (ctx: any) => {
       title: card?.link?.title,
       href: card?.link?.href,
     },
-    icon: card?.picture?.url,
+    icon: card?.picture?.data?.attributes?.url,
     variant: card?.variant,
   }))
 
@@ -121,7 +121,7 @@ const Search = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const noResultsFound = false
   const { t } = useTranslation('common')
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu)
 
   return (
     <PageWrapper
@@ -139,7 +139,7 @@ const Search = ({
           }}
         />
         {/* Header */}
-        <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''}>
+        <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''} className="header-main-bg bg-cover">
           <SectionContainer>
             <div className="min-h-[220px] relative">
               <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('searchTheSite')}</h1>
@@ -157,7 +157,7 @@ const Search = ({
             <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-              <BlogSearchCards title={t('articles')} blogs={blogs} />
+              {/* <BlogSearchCards title={t('articles')} blogs={blogs} /> */}
               <PageCards title={t('websites')} pages={pages} />
               <div className="flex flex-col gap-y-3 lg:gap-y-6">
                 <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
