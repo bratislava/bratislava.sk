@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_os_items_advanced_accordion_items",
+  "info": {
+    "displayName": "Advanced Accordion Item",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "departments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "os-items.advanced-accordion-department"
+    }
+  }
+}

@@ -13,7 +13,7 @@ const NewsLetterSection = ({ className }: IProps) => {
   return (
     <div className={cx('flex w-full justify-center', className)}>
       <NewsLetter
-        imageSrc={NewsLetterImage.src}
+        imageSrc={NewsLetterImage}
         checkBoxContent={t('newsletterCheckboxContent')}
         newsLetterContent={t('newsletterContent')}
         buttonLabel={t('newsletterButtonContent')}

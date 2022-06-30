@@ -37,24 +37,24 @@ export const getServerSideProps = async (ctx: any) => {
     locale,
   })
 
-  const homepagePosts = homepage?.posts?.map((post) => ({
+  const homepagePosts = homepage?.data?.attributes.posts?.map((post) => ({
     title: post?.title,
     url: post?.slug,
-    imageSrc: post?.image?.url,
+    imageSrc: post?.image?.data?.attributes?.url,
   }))
 
-  const frontImage = homepage?.inba?.images?.frontImage?.url
-  const rearImage = homepage?.inba?.images?.rearImage?.url
+  const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
+  const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
   const inba = {
-    title: homepage?.inba?.title,
-    content: homepage?.inba?.content,
-    link: homepage?.inba?.link,
+    title: homepage?.data?.attributes?.inba?.title,
+    content: homepage?.data?.attributes?.inba?.content,
+    link: homepage?.data?.attributes?.inba?.link,
     images: [frontImage, rearImage],
   }
 
-  const header = homepage?.header
+  const header = homepage?.data?.attributes?.header
 
-  const cards = homepage?.cards?.map((card) => ({
+  const cards = homepage?.data?.attributes?.cards?.map((card) => ({
     bookmarkTitle: card?.title,
     title: card?.headline,
     content: card?.text,
@@ -62,7 +62,7 @@ export const getServerSideProps = async (ctx: any) => {
       title: card?.link?.title,
       href: card?.link?.href,
     },
-    icon: card?.picture?.url,
+    icon: card?.picture?.data?.attributes?.url,
     variant: card?.variant,
   }))
 
@@ -115,7 +115,7 @@ const OfficialBoard = ({
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const noResultsFound = false
-  const menuItems = parseMainMenu(mainMenu?.filter(isPresent) ?? [])
+  const menuItems = parseMainMenu(mainMenu);
   const { t } = useTranslation('common')
 
   const boardPage = {
@@ -156,12 +156,16 @@ const OfficialBoard = ({
           color="var(--secondary-color)"
           transparentColor="var(--secondary-color--transparent)"
           transparentColorMobile="var(--secondary-color--semi-transparent)"
-          imageSrc={OfficialBoardBackgroundImage.src}  className="header-main-bg bg-cover"
+          imageSrc={OfficialBoardBackgroundImage}  className="header-main-bg bg-cover"
         >
           <SectionContainer>
             <div className="min-h-[220px] relative">
               <div className="absolute top-6">
-                <PageBreadcrumbs page={boardPage} />
+                {/* <PageBreadcrumbs
+                  parentPage={boardPage?.parentPage}
+                  pageCategory={boardPage?.pageCategory}
+                  title={boardPage.title}
+                /> */}
               </div>
               <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('officialBoard')}</h1>
             </div>
