@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 services:
   next:
     depends_on:
@@ -12,7 +12,7 @@ services:
       TAILWIND_MODE: watch
     command: yarn develop
     ports:
-      - "3000:3000"
+      - '3000:3000'
 
   strapi:
     depends_on:
@@ -23,26 +23,26 @@ services:
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: postgres
-      DATABASE_NAME: strapi
+      DATABASE_NAME: bratislava-sk
       DATABASE_USERNAME: postgres
-      DATABASE_PORT: 54320
+      DATABASE_PORT: 5432
       DATABASE_PASSWORD: postgres
       NODE_ENV: development
     command: yarn develop
     ports:
-      - "1337:1337"
+      - '1337:1337'
 
   postgres:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: postgres4
-      PGPORT: 5434
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bratislava-sk
+      PGPORT: 5432
     expose:
-      - '5434'
+      - '5432'
     ports:
-      - '127.0.0.1:5434:5434'
+      - '5432:5432'
 
 volumes:
   postgres:
