@@ -1,34 +1,56 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import { useEffect, useRef, useState } from 'react'
 export interface IframeProps {
-  iframe_url?: string
-  iframe_width?: number
-  iframe_height?: number
-  iframe_frameBorder?: string
-  iframe_scrolling?: string
-  iframe_allowfullscreen?: boolean
-  iframe_style?: string
+  url?: string
+  iframeWidth: 'container' | 'full'
+  iframeHeight: string
+  fullHeight: boolean
+  allowFullscreen: boolean
+  css?: string
 }
-export const Iframe = ({
-  iframe_url,
-  iframe_width,
-  iframe_height,
-  iframe_frameBorder,
-  iframe_scrolling,
-  iframe_allowfullscreen,
-  iframe_style,
-}: IframeProps) => {
-  // console.log("test12",JSON.parse(`{${iframe_style}}`));
+export const Iframe = ({ url, iframeWidth, iframeHeight, fullHeight, allowFullscreen, css }: IframeProps) => {
+  const ref = useRef<HTMLIFrameElement>()
+
+  const [height, setHeight] = useState('0')
+
+  useEffect(() => {
+    ref.current?.setAttribute('style', css)
+  }, [ref, css])
+
+  useEffect(() => {
+    if (fullHeight) {
+      const navbarHeight =
+        document.getElementById('desktop-navbar')?.getBoundingClientRect().height ||
+        document.getElementById('mobile-navbar')?.getBoundingClientRect().height
+      setHeight(`${window.innerHeight - navbarHeight}px`)
+    } else {
+      setHeight(iframeHeight)
+    }
+  }, [fullHeight, iframeHeight])
+
   return (
-    <iframe
-      src={iframe_url}
-      width={iframe_width}
-      height={iframe_height}
-      frameBorder={iframe_frameBorder}
-      scrolling={iframe_scrolling}
-      allowFullScreen={iframe_allowfullscreen}
-      style={JSON.parse(`{${iframe_style}}`)}
-    ></iframe>
+    <div
+      style={{
+        height: height,
+      }}
+    >
+      <div
+        style={{
+          height: height,
+        }}
+        className={iframeWidth === 'container' ? 'w-full' : 'absolute left-0 right-0'}
+      >
+        <iframe
+          ref={ref}
+          src={url}
+          className="w-full"
+          height={height}
+          allowFullScreen={allowFullscreen}
+          scrolling="no"
+        ></iframe>
+      </div>
+    </div>
   )
 }
 export default Iframe

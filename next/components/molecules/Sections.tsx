@@ -82,7 +82,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-14 md:pt-18', {
+      className={cx('pt-14 md:pt-18 overflow-hidden w-full', {
         'pb-14 md:pb-18 bg-secondary': hasBackground === true,
       })}
       hasBackground={hasBackground}
@@ -266,10 +266,8 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
       const { title, category, filtering } = section
       return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} />
 
-    /*
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
-    */
 
     default:
       return null

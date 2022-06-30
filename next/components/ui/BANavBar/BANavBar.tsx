@@ -62,6 +62,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     <>
       {/* Desktop */}
       <div
+        id="desktop-navbar"
         className={cx(
           className,
           'items-center text-base py-4 border-b border-gray-universal-200',
@@ -152,6 +153,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       </div>
       {/* Mobile */}
       <div
+        id="mobile-navbar"
         className={cx(
           className,
           'h-20 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
