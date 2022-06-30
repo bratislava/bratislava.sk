@@ -10,12 +10,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Check model
     const payload = req.body;
     if (payload?.model === 'blog-post') {
-      const blogPostUrl = `/blog/${payload?.entry?.slug}`;
+      let blogPostUrl = ``;
+      if (payload?.entry?.locale === 'en') {
+        blogPostUrl += `/en`
+      };
+
+      blogPostUrl += `/blog/${payload?.entry?.slug}`;
+      console.log(blogPostUrl);
       await res.unstable_revalidate(blogPostUrl);
     }
 
     if (payload?.model === 'page') {
-      const pageUrl = `/${payload?.entry?.slug}`;
+      let pageUrl = ``;
+      if (payload?.entry?.locale === 'en') {
+        pageUrl += `/en`
+      };
+
+      pageUrl = `/${payload?.entry?.slug}`;
       await res.unstable_revalidate(pageUrl);
     }
 
