@@ -23,10 +23,10 @@ services:
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: postgres
-      DATABASE_NAME: bratislava-sk
+      DATABASE_NAME: homepage_v4
       DATABASE_USERNAME: postgres
       DATABASE_PORT: 5432
-      DATABASE_PASSWORD: postgres
+      DATABASE_PASSWORD: password
       NODE_ENV: development
     command: yarn develop
     ports:
@@ -36,8 +36,8 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: bratislava-sk
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: homepage_v4
       PGPORT: 5432
     expose:
       - '5432'
