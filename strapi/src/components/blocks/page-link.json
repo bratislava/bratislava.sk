@@ -1,15 +1,16 @@
 {
   "collectionName": "components_blocks_page_links",
   "info": {
-    "displayName": "page Link"
+    "displayName": "page Link",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "text"
     },
     "url": {
-      "type": "string"
+      "type": "text"
     },
     "anchor": {
       "type": "string"
