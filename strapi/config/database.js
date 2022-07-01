@@ -9,6 +9,10 @@ module.exports = ({ env }) => ({
       password: env('DATABASE_PASSWORD', 'password'),
       schema: env('DATABASE_SCHEMA', 'public'), // Not required
     },
+    pool: {
+      min: 0, // default 2
+      max: 6, // default 10
+    },
     debug: false,
   },
 })
