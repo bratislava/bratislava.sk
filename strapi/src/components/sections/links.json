@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_links",
   "info": {
-    "displayName": "Links"
+    "displayName": "Links",
+    "description": ""
   },
   "options": {},
   "attributes": {
