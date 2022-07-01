@@ -8,6 +8,7 @@ import {
   NoResultsFound,
   PageCards,
   PageHeader,
+  SearchResults,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
@@ -122,20 +123,8 @@ const Search = ({
   header,
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
-  const noResultsFound = false
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
-  const [shouldFetch, setShouldFetch] = useState(false)
-  const { data, error } = useSWR(shouldFetch ? null : { index: 'page', keyword: 'ko' }, searchFetcher)
-  console.log(data)
-  const [articles, setArticles] = useState([])
-  const [pages, setPages] = useState([])
-  const [documents, setDocuments] = useState([])
-
-  const handleClick = () => {
-    setShouldFetch(true)
-    setShouldFetch(false)
-  }
 
   return (
     <PageWrapper
@@ -171,20 +160,9 @@ const Search = ({
             title={t('searching')}
             buttonText={t('search')}
             options={[t('articles'), t('pages'), t('documents')]}
-            handleClick={handleClick}
+            //handleClick={handleClick}
           />
-          {noResultsFound ? (
-            <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
-          ) : (
-            <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-              <BlogSearchCards title={t('articles')} blogs={articles} />
-              <PageCards title={t('websites')} pages={pages} />
-              <div className="flex flex-col gap-y-3 lg:gap-y-6">
-                <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
-                <FileList fileSections={documents} hideCategory />
-              </div>
-            </div>
-          )}
+          <SearchResults />
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
           {/* <NewsLetterSection /> */}
         </SectionContainer>
