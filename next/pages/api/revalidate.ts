@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (payload?.entry?.locale === 'en') {
           pageUrl += `/en`
         };
-        pageUrl = `/${payload?.entry?.slug}`;
+        pageUrl += `/${payload?.entry?.slug}`;
         await res.unstable_revalidate(pageUrl);
       }
 
