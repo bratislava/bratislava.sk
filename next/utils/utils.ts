@@ -1,5 +1,8 @@
-import { GetServerSideProps } from 'next'
 import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
+import { GetServerSideProps } from 'next'
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig } = getConfig();
 
 export const arrayify = (input: string | string[] | undefined | null) => {
   if (input === undefined || input === null) {
@@ -39,4 +42,6 @@ export type PageProps<T extends GetServerSideProps> = Extract<
 >['props']
 
 // TODO kept in case we need to turn this off easily (in dev or elsewhere)
-export const shouldSkipStaticPaths = () => false
+export const shouldSkipStaticPaths = () => {
+  return serverRuntimeConfig?.phase === 'phase-development-server';
+}

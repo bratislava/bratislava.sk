@@ -1,14 +1,15 @@
 import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
+
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
 import { client } from '../../utils/gql'
 import { parseFooter, parseMainMenu } from '../../utils/page'
-import { arrayify, isPresent, shouldSkipStaticPaths } from '../../utils/utils'
+import { arrayify, shouldSkipStaticPaths } from '../../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   let paths: { params: { slug: string } }[] = []
-  // if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
+  if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   const { blogPosts: blogPostSk } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[0],
@@ -16,6 +17,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { blogPosts: blogPostEn } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[1],
   })
+
   const blogPosts = blogPostEn?.data.concat(blogPostSk?.data ?? [])
   if (blogPosts) {
     paths = blogPosts.map((blogPost) => ({
@@ -25,12 +27,13 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
     }))
   }
 
+  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - BLOGS`)
   return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => {
   console.log(`Revalidating ${ctx.params?.slug}`)
-  const locale = ctx.locale
+  const {locale} = ctx;
   const slug = arrayify(ctx.params?.slug)[0]
 
   if (!slug) return { notFound: true }

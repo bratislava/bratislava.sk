@@ -1,19 +1,34 @@
 import { GeneralPageFragment, MainMenuItemFragment, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 import PageWrapper from '../components/layouts/PageWrapper'
 import GeneralPage from '../components/pages/generalPage'
+import { paginationObj } from '../utils/constants';
 import { client } from '../utils/gql'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { arrayify, isPresent, shouldSkipStaticPaths } from '../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let paths = []
+  let paths = [];
   if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
-  const { pages } = await client.PagesStaticPaths()
-  if (pages) {
-    paths = pages.data.map(({ attributes }) => ({
+  let defaultStart: number = paginationObj.defaultPage;
+  // Fetch all pages to prerender
+  const allPages = []
+
+  while (defaultStart !== 0) {
+    const { pages } = await client.PagesStaticPaths({ page: defaultStart, limit: paginationObj.maxLimit });
+    allPages.push(...pages.data);
+    if (pages.data.length === 0) {
+      defaultStart = 0;
+      break;
+    }
+    defaultStart += 1;
+  }
+
+  if (allPages) {
+    paths = allPages.map(({ attributes }) => ({
       params: {
         slug: attributes.slug.split('/'),
       },
