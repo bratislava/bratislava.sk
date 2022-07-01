@@ -9,6 +9,12 @@ export const arrayify = (input: string | string[] | undefined | null) => {
   return input
 }
 
+// turn unknown values into (empty) strings, return string if it's a string
+export const forceString = (input: unknown) => {
+  if (typeof input === 'string') return input
+  return ''
+}
+
 export const fileCountVzns = (data: any) => {
   let count = 0
   if (data?.attributes?.mainDocument?.url) {
@@ -29,6 +35,10 @@ export const fileCountVzns = (data: any) => {
 export const isPresent = <U>(a: U | null | undefined | void): a is U => {
   if (a === null || a === undefined) return false
   return true
+}
+
+export const isRecord = (obj: unknown): obj is Record<PropertyKey, unknown> => {
+  return typeof obj === 'object' && obj !== null
 }
 
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T

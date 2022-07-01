@@ -19,12 +19,14 @@ import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sd
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { useTranslation } from 'react-i18next'
+import { ParsedOfficialBoardDocument } from 'services/ginis'
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
 export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
+  documents?: ParsedOfficialBoardDocument[]
   // latestPost?: BlogPost[]
   latestPost?: LatestBlogsFragment
   leftHighLight?: NewsCardBlogFragment | null
@@ -36,6 +38,7 @@ export interface PostsProps {
 export const Posts = ({
   className,
   posts = [],
+  documents = [],
   leftHighLight,
   rightHighLight,
   readMoreText,
@@ -134,7 +137,7 @@ export const Posts = ({
               <DocumentCard
                 key={index}
                 {...document}
-                className="max-w-4xl"
+                className="max-w-4xl min-w-full"
                 viewButtonText="TODO-fix"
                 downloadButtonText="TODO-fix"
               />
@@ -186,26 +189,26 @@ export const Posts = ({
 
 export default Posts
 
-const documents = [
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-]
+// const documents = [
+//   {
+//     title: 'Kúpna zmluva technológie garáže M. Benku',
+//     createdAt: 'utorok 19. decembra 2017',
+//     fileExtension: '.pdf',
+//     fileSize: '164 kB',
+//     content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+//   },
+//   {
+//     title: 'Kúpna zmluva technológie garáže M. Benku',
+//     createdAt: 'utorok 19. decembra 2017',
+//     fileExtension: '.pdf',
+//     fileSize: '164 kB',
+//     content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+//   },
+//   {
+//     title: 'Kúpna zmluva technológie garáže M. Benku',
+//     createdAt: 'utorok 19. decembra 2017',
+//     fileExtension: '.pdf',
+//     fileSize: '164 kB',
+//     content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
+//   },
+// ]
