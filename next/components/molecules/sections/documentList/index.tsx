@@ -24,8 +24,8 @@ export const DocumentList = ({ vzns }: Pick<DocumentListFragment, 'vzns'>) => {
       <div>
         <BasicSearch placeholder="nana" title="cool" buttonText="click" />
       </div>
-      <div className="pt-10 pb-5 text-md font-semibold">Zoznam dokumentov</div>
-      <div className="flex flex-row md:flex-col md:w-auto overflow-x-auto gap-4 modal-content-rent">
+      <div className="pt-14 pb-5 lg:pb-6 text-default lg:text-md font-medium">Zoznam dokumentov</div>
+      <div className="flex flex-col md:w-auto gap-4 lg:gap-6 modal-content-rent">
         {vzns?.data.map((vzn) => {
           const category = DocumentListCategorysMap.get(vzn.attributes.category)
           return (
