@@ -152,7 +152,7 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
