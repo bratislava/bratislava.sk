@@ -227,3 +227,8 @@
   }
   
 }
+
+
+.closebutton .ml-5 {
+  margin-left: 0 !important;
+}

@@ -10,6 +10,7 @@ import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-
 import groupBy from 'lodash/groupBy'
 import { getLocalDate, getNumericLocalDate } from './local-date'
 import { isPresent } from './utils'
+import _ from 'lodash'
 import { sortBy } from 'lodash'
 
 // Use explocitly named color variables so their usage can be easily found in project
@@ -185,12 +186,13 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
 
 // Page Accordion Items
 export const groupByCategory = <T>(items: T[]) => {
-  const grouped = groupBy(items, 'category')
+  const grouped = _(items).groupBy(item => item['category']).sortBy(group => items.indexOf(group[0])).value();
   return Object.keys(grouped).map((key) => ({
-    category: key,
+    category: grouped[key].length > 0 ? grouped[key][0]?.category : key,
     items: grouped[key],
   }))
 }
+
 //Page Related Content
 export const parseRelatedBlogPosts = (RelatedContentBlogPosts: BlogPostFragment[]): NewsCardProps[] => {
   const array: NewsCardProps[] = RelatedContentBlogPosts.map((relatedBlogPost) => {
