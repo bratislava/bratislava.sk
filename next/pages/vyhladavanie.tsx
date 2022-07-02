@@ -125,6 +125,12 @@ const Search = ({
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
+  const [checkedOptions, setCheckedOptions] = useState([])
+  const [input, setInput] = useState('')
+  const handleClick = (checkedOptions: string[], keyword: string) => {
+    setCheckedOptions(checkedOptions)
+    setInput(keyword)
+  }
 
   return (
     <PageWrapper
@@ -160,9 +166,9 @@ const Search = ({
             title={t('searching')}
             buttonText={t('search')}
             options={[t('articles'), t('pages'), t('documents')]}
-            //handleClick={handleClick}
+            handleClick={handleClick}
           />
-          <SearchResults />
+          <SearchResults checkedOptions={checkedOptions} keyword={input} />
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
           {/* <NewsLetterSection /> */}
         </SectionContainer>

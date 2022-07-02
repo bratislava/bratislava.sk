@@ -7,11 +7,17 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import { searchFetcher } from '@utils/meili'
 
-export const SearchResults = () => {
+export interface SearchResultsProps {
+  checkedOptions: string[]
+  keyword: string
+}
+
+export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) => {
+  console.log(checkedOptions)
   const { t } = useTranslation('common')
   const documents = []
-  const { data: pages } = useSWR({ index: 'page', keyword: 'ko' }, searchFetcher)
-  const { data: articles } = useSWR({ index: 'blog-post', keyword: 'ko' }, searchFetcher)
+  const { data: pages } = useSWR({ index: 'page', keyword }, searchFetcher)
+  const { data: articles } = useSWR({ index: 'blog-post', keyword }, searchFetcher)
   const noResultsFound = articles?.length == 0 && pages?.length == 0 && documents?.length == 0
   articles && console.log(articles)
   const mappedArticles = articles
@@ -22,7 +28,7 @@ export const SearchResults = () => {
               coverImage: {
                 data: {
                   attributes: {
-                    url: article.coverImage.url,
+                    url: article?.coverImage?.url,
                   },
                 },
               },

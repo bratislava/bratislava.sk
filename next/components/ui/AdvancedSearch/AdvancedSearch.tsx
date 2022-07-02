@@ -11,7 +11,7 @@ export interface AdvancedSearchProps {
   title?: string
   buttonText?: string
   options?: string[]
-  handleClick?: () => void
+  handleClick?: (checkedOptions: string[], keyword: string) => void
 }
 
 export const AdvancedSearch = ({
@@ -31,6 +31,11 @@ export const AdvancedSearch = ({
       setChecked([...checked, option])
     }
   }
+
+  const [input, setInput] = useState('')
+  const handleChange = (event) => {
+    setInput(event.target.value)
+  }
   return (
     <div className={cx('flex flex-col w-full', className)}>
       <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48" /* id="search" */>{title}</div>
@@ -40,6 +45,8 @@ export const AdvancedSearch = ({
           type="text"
           className="h-14 pl-6 w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
           placeholder={placeholder}
+          value={input}
+          onChange={handleChange}
         />
         {/* <UILink href="#search"> */}
         <Button
@@ -47,7 +54,7 @@ export const AdvancedSearch = ({
           hoverIcon={<SearchIcon />}
           className="h-14 rounded-l-none text-default px-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
           variant="secondaryDarkText"
-          onClick={handleClick}
+          onClick={() => handleClick(checked, input)}
         >
           {buttonText}
         </Button>
@@ -66,7 +73,7 @@ export const AdvancedSearch = ({
           hoverIcon={<SearchIcon />}
           className="h-14 rounded-l-none text-default pr-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
           variant="secondaryDarkText"
-          onClick={handleClick}
+          onClick={() => handleClick(checked, input)}
         />
         {/* </UILink> */}
       </div>
