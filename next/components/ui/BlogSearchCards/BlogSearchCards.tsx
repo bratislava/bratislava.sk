@@ -13,7 +13,7 @@ export const BlogSearchCards = ({ title, blogs }: BlogSearchCardsProps) => {
       <div className="text-default lg:text-md font-semibold">{title}</div>
       <div className="hidden lg:flex flex-col gap-y-6">
         {blogs.map((blog, index) => {
-          return <BlogSearchCard key={index} item={blog} imageClassName="w-56 h-[186px]" />
+          return <BlogSearchCard key={index} item={blog} className="h-48" imageClassName="w-56 h-48" />
         })}
       </div>
       <HorizontalScrollWrapper className="lg:hidden gap-x-4">
