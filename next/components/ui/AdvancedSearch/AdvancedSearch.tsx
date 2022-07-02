@@ -4,14 +4,20 @@ import SearchIcon from '../../../assets/images/search-icon.svg'
 import Checkbox from '../../../assets/images/checkbox.svg'
 import { useState } from 'react'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 export interface AdvancedSearchProps {
   className?: string
   placeholder?: string
   title?: string
   buttonText?: string
-  options?: string[]
-  handleClick?: (checkedOptions: string[], keyword: string) => void
+
+  handleClick?: (checkedOptions: SearchOptionProps[], keyword: string) => void
+}
+
+export interface SearchOptionProps {
+  key: string
+  value: string
 }
 
 export const AdvancedSearch = ({
@@ -19,14 +25,28 @@ export const AdvancedSearch = ({
   placeholder,
   title,
   buttonText,
-  options,
+
   handleClick,
 }: AdvancedSearchProps) => {
   const { Link: UILink } = useUIContext()
-  const [checked, setChecked] = useState(options ?? [])
-  const handleAction = (option: string) => {
-    if (checked.includes(option)) {
-      setChecked(checked.filter((o) => o != option))
+  const { t } = useTranslation('common')
+
+  const options = [
+    {
+      key: 'articles',
+      value: t('articles'),
+    },
+    { key: 'pages', value: t('pages') },
+    {
+      key: 'documents',
+      value: t('documents'),
+    },
+  ]
+  const [checked, setChecked] = useState(options)
+
+  const handleAction = (option: SearchOptionProps) => {
+    if (checked.some(({ key }) => key == option.key)) {
+      setChecked(checked.filter((o) => o.key != option.key))
     } else {
       setChecked([...checked, option])
     }
@@ -78,16 +98,16 @@ export const AdvancedSearch = ({
         {/* </UILink> */}
       </div>
       <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
-        {options?.map((option, index) => (
+        {options.map((option, index) => (
           <div key={index} className="flex items-center gap-x-4">
             <div onClick={() => handleAction(option)}>
-              {checked.includes(option) ? (
+              {checked.some(({ key }) => key == option.key) ? (
                 <Checkbox />
               ) : (
                 <div className="h-6 w-6 rounded border-2 border-solid border-slate-300 mr-px"></div>
               )}
             </div>
-            <label>{option}</label>
+            <label>{option.value}</label>
           </div>
         ))}
       </div>

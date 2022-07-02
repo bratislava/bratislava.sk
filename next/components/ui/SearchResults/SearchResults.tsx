@@ -6,9 +6,10 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import useSWR from 'swr'
 import { searchFetcher } from '@utils/meili'
+import { SearchOptionProps } from '../AdvancedSearch/AdvancedSearch'
 
 export interface SearchResultsProps {
-  checkedOptions: string[]
+  checkedOptions: SearchOptionProps[]
   keyword: string
 }
 
@@ -53,13 +54,18 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
         }
       })
     : []
+  const [options, setOptions] = useState(checkedOptions)
+  const articlesSelected = options.some(({ key }) => key === 'articles')
+  console.log(options)
   return (
     <>
       {false ? (
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
         <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-          {mappedArticles?.length > 0 && <BlogSearchCards title={t('articles')} blogs={mappedArticles} />}
+          {mappedArticles?.length > 0 && articlesSelected && (
+            <BlogSearchCards title={t('articles')} blogs={mappedArticles} />
+          )}
           {pages?.length > 0 && <PageCards title={t('websites')} pages={pages} />}
           {documents?.length > 0 && (
             <div className="flex flex-col gap-y-3 lg:gap-y-6">

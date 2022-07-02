@@ -8,6 +8,7 @@ import {
   NoResultsFound,
   PageCards,
   PageHeader,
+  SearchOptionProps,
   SearchResults,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
@@ -127,7 +128,7 @@ const Search = ({
   const menuItems = parseMainMenu(mainMenu)
   const [checkedOptions, setCheckedOptions] = useState([])
   const [input, setInput] = useState('')
-  const handleClick = (checkedOptions: string[], keyword: string) => {
+  const handleClick = (checkedOptions: SearchOptionProps[], keyword: string) => {
     setCheckedOptions(checkedOptions)
     setInput(keyword)
   }
@@ -165,7 +166,6 @@ const Search = ({
             placeholder={t('enterKeyword')}
             title={t('searching')}
             buttonText={t('search')}
-            options={[t('articles'), t('pages'), t('documents')]}
             handleClick={handleClick}
           />
           <SearchResults checkedOptions={checkedOptions} keyword={input} />
