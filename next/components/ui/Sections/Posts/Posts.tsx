@@ -143,14 +143,14 @@ export const Posts = ({
               />
             ))}
           </div>
-          <UILink href="/official-board" className="flex justify-center">
+          <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
               className="px-6 py-3 text-default font-medium"
               variant="transparent-black"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
-              Prejsť na úradnú tabuľu
+              {t('toOfficialBoard')}
             </Button>
           </UILink>
         </div>
