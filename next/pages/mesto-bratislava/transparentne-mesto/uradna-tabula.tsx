@@ -11,7 +11,7 @@ import {
 import BasePageLayout from '../../../components/layouts/BasePageLayout'
 import PageWrapper from '../../../components/layouts/PageWrapper'
 import { pageStyle } from '../../../utils/page'
-import { isPresent } from '../../../utils/utils'
+import { forceString, isPresent } from '../../../utils/utils'
 import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
 import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
 import { AsyncServerProps } from '@utils/types'
@@ -20,9 +20,11 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../../../utils/page'
 import { useTranslation } from 'next-i18next'
-import { getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
+import { getALotOfMockedDocs, getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
+import { useRouter } from 'next/router'
+import { GetServerSidePropsContext } from 'next'
 
-export const getServerSideProps = async (ctx: any) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
     slug: 'test',
@@ -68,11 +70,14 @@ export const getServerSideProps = async (ctx: any) => {
   }))
 
   let documents: ParsedOfficialBoardDocument[] = []
-  try {
-    documents = await getParsedUDEDocumentsList(ctx?.req?.query?.search)
-  } catch (e) {
-    console.log(e)
-  }
+  // try {
+  //   documents = await getParsedUDEDocumentsList(ctx?.query?.search)
+  // } catch (e) {
+  //   console.log(e)
+  // }
+  // TODO remove mocks
+  documents = await getALotOfMockedDocs()
+  documents = ctx?.query?.search === 'hey' ? [] : documents
 
   return {
     props: {
@@ -124,10 +129,10 @@ const OfficialBoard = ({
   header,
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
-  const noResultsFound = false
+  const noResultsFound = documents.length === 0
   const menuItems = parseMainMenu(mainMenu)
   const { t } = useTranslation('common')
-
+  const { push, query } = useRouter()
   const boardPage = {
     slug: 'mesto-bratislava/transparentne-mesto/official-board',
     title: t('officialBoard'),
@@ -188,6 +193,9 @@ const OfficialBoard = ({
             placeholder={t('enterKeyword')}
             title={t('searching')}
             buttonText={t('search')}
+            /* TODO handle the fact push can error out */
+            onSubmit={(search) => push(`?search=${search}`)}
+            initialValue={forceString(query?.search)}
           />
           {noResultsFound ? (
             <NoResultsFound

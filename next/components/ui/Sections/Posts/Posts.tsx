@@ -138,7 +138,7 @@ export const Posts = ({
                 key={index}
                 {...document}
                 className="max-w-4xl min-w-full"
-                viewButtonText="TODO-fix"
+                viewButtonText={t('files')}
                 downloadButtonText="TODO-fix"
               />
             ))}

@@ -88,3 +88,71 @@ export const getParsedUDEDocumentsList = async (limit?: number) => {
     .filter(identity)
   return limit ? parsedDocuments.slice(0, limit) : parsedDocuments
 }
+
+// TODO fix btoa linter error
+export const getDocumentDetailURL = (documentId) => `/api/ginis/document-detail/${btoa(documentId)}`
+export const getDocumentFileURL = (fileId) => `/api/ginis/document-load-file/${btoa(fileId)}`
+
+export const mockedParsedDocuments = [
+  {
+    id: '1',
+    title: 'Title',
+    createdAt: '2022-01-01',
+    content: 'hello world',
+  },
+  {
+    id: '2',
+    title: 'Title2',
+    createdAt: '2022-01-01',
+    content: 'hello world',
+  },
+  {
+    id: '3',
+    title: 'Title3',
+    createdAt: '2022-01-01',
+    content: 'hello world',
+  },
+]
+
+export const getALotOfMockedDocs = async () => {
+  return mockedParsedDocuments.concat(
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments,
+    mockedParsedDocuments
+  )
+}
+
+export const mockedDetail = {
+  'Detail-dokumentu': {
+    Nazev: 'string',
+    'Vyveseno-dne': '2020-01-01',
+  },
+  'Soubory-dokumentu': [
+    {
+      'Id-souboru': 'string',
+      Nazev: 'string.pdf',
+      Velikost: '168kb',
+    },
+    {
+      'Id-souboru': 'string2',
+      Nazev: 'string2.pdf',
+      Velikost: '1kb',
+    },
+  ],
+}
+
+export const getMockedDetail = async () => {
+  return mockedDetail
+}

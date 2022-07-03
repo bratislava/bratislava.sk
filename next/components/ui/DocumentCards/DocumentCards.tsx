@@ -46,7 +46,7 @@ export const DocumentCards = ({
         </div>
         <Pagination
           itemsPerPage={itemsPerPageDesktop}
-          totalCount={documents.length}
+          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
           currentPage={currentPage}
           pageHandler={setCurrentPage}
         />
