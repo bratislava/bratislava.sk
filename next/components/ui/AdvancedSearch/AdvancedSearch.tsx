@@ -11,8 +11,8 @@ export interface AdvancedSearchProps {
   placeholder?: string
   title?: string
   buttonText?: string
-
   handleClick?: (checkedOptions: SearchOptionProps[], keyword: string) => void
+  handleSelect?: (checkedOptions: SearchOptionProps[]) => void
 }
 
 export interface SearchOptionProps {
@@ -25,8 +25,8 @@ export const AdvancedSearch = ({
   placeholder,
   title,
   buttonText,
-
   handleClick,
+  handleSelect,
 }: AdvancedSearchProps) => {
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
@@ -48,11 +48,11 @@ export const AdvancedSearch = ({
     if (checked.some(({ key }) => key == option.key)) {
       const options = checked.filter((o) => o.key != option.key)
       setChecked(options)
-      handleClick(options, input)
+      handleSelect(options)
     } else {
       const options = [...checked, option]
       setChecked(options)
-      handleClick(options, input)
+      handleSelect(options)
     }
     console.log('u advanced searchu ', checked)
   }
@@ -61,6 +61,8 @@ export const AdvancedSearch = ({
   const handleChange = (event) => {
     setInput(event.target.value)
   }
+  console.log('advanced search')
+
   return (
     <div className={cx('flex flex-col w-full', className)}>
       <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48" /* id="search" */>{title}</div>

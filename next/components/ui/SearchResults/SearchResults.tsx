@@ -24,18 +24,21 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
   })
   const [articles, setArticles] = useState([])
   const [pages, setPages] = useState([])
-  data?.articles?.then((a) => setArticles(a)).catch((e) => console.log(e))
+
+  data?.articles
+    ?.then((a) => {
+      setArticles(a)
+    })
+    .catch((e) => console.log(e))
   data?.pages?.then((p) => setPages(p)).catch((e) => console.log(e))
 
   const noResultsFound = articles?.length == 0 && pages?.length == 0 && documents?.length == 0
 
   const articlesSelected = checkedOptions.some(({ key }) => key == 'articles')
   const pagesSelected = checkedOptions.some(({ key }) => key == 'pages')
-
-  articles && console.log('articles', articles)
-  pages && console.log('pages', pages)
+  console.log('searchresults')
   return (
-    <>
+    <div className="w-full bg-red-300">
       {noResultsFound ? (
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
@@ -50,65 +53,6 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
           )}
         </div>
       )}
-    </>
+    </div>
   )
 }
-
-const blogs = [
-  {
-    data: {
-      attributes: {
-        coverImage: {
-          data: {
-            attributes: {
-              url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/44654929_1094813014012650_2908887100818456576_n_2f821d87a4.png',
-            },
-          },
-        },
-        publishedAt: '2022-04-05T14:12:11.528Z',
-        tag: {
-          data: {
-            attributes: {
-              pageCategory: {
-                data: {
-                  attributes: {
-                    color: 'red',
-                    shortTitle: 'Mesto Bratislava',
-                  },
-                },
-              },
-            },
-          },
-        },
-        title: 'Výsledky výberového konania na pozíciu náčelníka Mestskej polície',
-      },
-    },
-  },
-]
-
-// const pages = [
-//   {
-//     pageColor: 'red',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-//   {
-//     pageColor: 'blue',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-//   {
-//     pageColor: 'green',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-//   {
-//     pageColor: 'yellow',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-//   {
-//     pageColor: 'purple',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-//   {
-//     pageColor: 'brown',
-//     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-// ]
