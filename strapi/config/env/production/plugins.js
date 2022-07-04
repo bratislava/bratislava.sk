@@ -15,4 +15,10 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  graphql: {
+    playgroundAlways: true,
+    apolloServer: {
+      introspection: true,
+    },
+  },
 })
