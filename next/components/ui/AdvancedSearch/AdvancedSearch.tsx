@@ -46,10 +46,15 @@ export const AdvancedSearch = ({
 
   const handleAction = (option: SearchOptionProps) => {
     if (checked.some(({ key }) => key == option.key)) {
-      setChecked(checked.filter((o) => o.key != option.key))
+      const options = checked.filter((o) => o.key != option.key)
+      setChecked(options)
+      handleClick(options, input)
     } else {
-      setChecked([...checked, option])
+      const options = [...checked, option]
+      setChecked(options)
+      handleClick(options, input)
     }
+    console.log('u advanced searchu ', checked)
   }
 
   const [input, setInput] = useState('')
@@ -100,7 +105,11 @@ export const AdvancedSearch = ({
       <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
         {options.map((option, index) => (
           <div key={index} className="flex items-center gap-x-4">
-            <div onClick={() => handleAction(option)}>
+            <div
+              onClick={() => {
+                handleAction(option)
+              }}
+            >
               {checked.some(({ key }) => key == option.key) ? (
                 <Checkbox />
               ) : (

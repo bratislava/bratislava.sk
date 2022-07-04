@@ -14,13 +14,11 @@ export interface SearchResultsProps {
 }
 
 export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) => {
-  console.log(checkedOptions)
   const { t } = useTranslation('common')
   const documents = []
   const { data: pages } = useSWR({ index: 'page', keyword }, searchFetcher)
   const { data: articles } = useSWR({ index: 'blog-post', keyword }, searchFetcher)
   const noResultsFound = articles?.length == 0 && pages?.length == 0 && documents?.length == 0
-  articles && console.log(articles)
   const mappedArticles = articles
     ? articles.map((article) => {
         return {
@@ -54,9 +52,14 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
         }
       })
     : []
-  const [options, setOptions] = useState(checkedOptions)
-  const articlesSelected = options.some(({ key }) => key === 'articles')
-  console.log(options)
+  //   const [options, setOptions] = useState(checkedOptions)
+  const articlesSelected = checkedOptions.some(({ key }) => key == 'articles')
+  const pagesSelected = checkedOptions.some(({ key }) => key == 'pages')
+  console.log('checked options u searchresults', checkedOptions)
+  //console.log('opcije', options)
+  console.log('uslov 1', mappedArticles?.length > 0)
+  console.log('uslov 2', articlesSelected)
+
   return (
     <>
       {false ? (
@@ -66,7 +69,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
           {mappedArticles?.length > 0 && articlesSelected && (
             <BlogSearchCards title={t('articles')} blogs={mappedArticles} />
           )}
-          {pages?.length > 0 && <PageCards title={t('websites')} pages={pages} />}
+          {pages?.length > 0 && pagesSelected && <PageCards title={t('websites')} pages={pages} />}
           {documents?.length > 0 && (
             <div className="flex flex-col gap-y-3 lg:gap-y-6">
               <div className="text-default lg:text-md font-semibold">{t('documents')}</div>

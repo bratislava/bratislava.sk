@@ -125,12 +125,24 @@ const Search = ({
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('common')
+  const mockoptions = [
+    {
+      key: 'articles',
+      value: t('articles'),
+    },
+    { key: 'pages', value: t('pages') },
+    {
+      key: 'documents',
+      value: t('documents'),
+    },
+  ]
   const menuItems = parseMainMenu(mainMenu)
-  const [checkedOptions, setCheckedOptions] = useState([])
+  const [checkedOptions, setCheckedOptions] = useState([] as SearchOptionProps[])
   const [input, setInput] = useState('')
-  const handleClick = (checkedOptions: SearchOptionProps[], keyword: string) => {
-    setCheckedOptions(checkedOptions)
+  const handleClick = (options: SearchOptionProps[], keyword: string) => {
+    setCheckedOptions(options)
     setInput(keyword)
+    console.log('u search stranici ', options)
   }
 
   return (
