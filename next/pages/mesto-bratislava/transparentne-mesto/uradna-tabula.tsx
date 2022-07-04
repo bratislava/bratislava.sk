@@ -20,7 +20,7 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../../../utils/page'
 import { useTranslation } from 'next-i18next'
-import { getALotOfMockedDocs, getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
+import { getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
 import { useRouter } from 'next/router'
 import { GetServerSidePropsContext } from 'next'
 
@@ -70,14 +70,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }))
 
   let documents: ParsedOfficialBoardDocument[] = []
-  // try {
-  //   documents = await getParsedUDEDocumentsList(ctx?.query?.search)
-  // } catch (e) {
-  //   console.log(e)
-  // }
-  // TODO remove mocks
-  documents = await getALotOfMockedDocs()
-  documents = ctx?.query?.search === 'hey' ? [] : documents
+  try {
+    documents = await getParsedUDEDocumentsList(forceString(ctx?.query?.search))
+  } catch (e) {
+    console.log(e)
+  }
 
   return {
     props: {

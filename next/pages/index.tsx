@@ -27,7 +27,7 @@ import { forceString, isPresent, isRecord } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { identity } from 'lodash'
-import { getParsedUDEDocumentsList, mockedParsedDocuments, ParsedOfficialBoardDocument } from 'services/ginis'
+import { getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
 
 export const getServerSideProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
@@ -55,12 +55,12 @@ export const getServerSideProps = async (ctx) => {
     imageSrc: post?.image?.data?.attributes?.url,
   }))
 
-  // let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
-  // try {
-  //   latestOfficialBoard = await getParsedUDEDocumentsList(3)
-  // } catch (e) {
-  //   console.log(e)
-  // }
+  let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
+  try {
+    latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
+  } catch (e) {
+    console.log(e)
+  }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
   const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
@@ -113,7 +113,7 @@ export const getServerSideProps = async (ctx) => {
           })),
       },
       // TODO remove mocks
-      latestOfficialBoard: mockedParsedDocuments,
+      latestOfficialBoard,
       homepagePosts: homepagePosts,
       inba: inba,
       header: header,
