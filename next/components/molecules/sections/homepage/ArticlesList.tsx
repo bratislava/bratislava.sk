@@ -1,5 +1,7 @@
 import { BlogPost } from '@bratislava/strapi-sdk-homepage'
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
+import { Carousel, Link } from '@bratislava/ui-bratislava'
+
 import { client } from '@utils/gql'
 import { useState, useEffect } from 'react'
 import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
@@ -149,8 +151,28 @@ export const ArticlesList = ({
 
   return (
     <div>
-      <div className="text-lg font-semibold">{title}</div>
-      <div className={`mt-8 grid grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
+      <div className="flex justify-center font-semibold text-lg">{title}</div>
+
+      <div className="gap-x-5 lg:gap-x-6 mt-3 lg:mt-14 py-6">
+        <Carousel
+          shiftIndex={3}
+          visibleItems={3}
+          items={data.map((article, index) => (
+            <NewsCard
+            key={index}
+            coverImage={article.attributes.coverImage ?? { url: BratislavaPlaceholder }}
+            title={article.attributes?.title}
+            tag={article.attributes.tag}
+            createdAt={article.published_at}
+            excerpt={article.attributes?.excerpt}
+            readMoreText={'Čítať viac'}
+            slug={article.attributes.slug}
+          />
+          ))}
+        />
+      </div>
+
+      {/* <div className={`mt-8 grid grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
         {data.map((article, index) => (
           <NewsCard
             key={index}
@@ -163,8 +185,8 @@ export const ArticlesList = ({
             slug={article.attributes.slug}
           />
         ))}
-      </div>
-      {totalArticles > itemsPerPage ? (
+      </div> */}
+      {/* {totalArticles > itemsPerPage ? (
         <div className="mt-14">
           <Pagination
             totalPages={numberOfPages}
@@ -173,7 +195,7 @@ export const ArticlesList = ({
             pageHandler={setCurrentPage}
           />
         </div>
-      ) : null}
+      ) : null} */}
       {includesFiltering ? (
         <div className="mt-24">
           <ArticlesFilter
