@@ -84,7 +84,7 @@ export const FileList = ({ className, fileSections, dividerStyle = 'mesto', hide
                 )
               })}
               {length > 6 && (
-                <Button className="self-center text-default px-6 py-2.5" variant="transparent" onClick={handleClick}>
+                <Button className="self-center text-default px-6 py-2.5" variant="secondaryDarkText" onClick={handleClick}>
                   {buttonText}
                 </Button>
               )}
