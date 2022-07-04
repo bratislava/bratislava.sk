@@ -26,6 +26,8 @@ spec:
               cpu: 50m
               memory: 64Mi
           envFrom:
+            - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-ginis-secret
             - configMapRef:
                 name: ${BUILD_REPOSITORY_NAME}-env
           readinessProbe:
