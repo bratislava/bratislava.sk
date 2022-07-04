@@ -84,9 +84,9 @@ export const DocumentCard = ({
         {/* <div className="flex lg:hidden bg-red-superlight h-[86px] -mt-[86px]" /> */}
       </Panel>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="p-6">
+        <div className="rounded-2xl bg-background px-5 py-8">
           {/* TODO handle loading/error */}
-          <FileList fileSections={fileSections} />
+          <FileList fileSections={fileSections} noScroll />
         </div>
       </Modal>
     </>

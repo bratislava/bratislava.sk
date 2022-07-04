@@ -87,7 +87,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
         <Button
           value={1}
           variant={1 == currentPage ? 'primary' : 'secondaryDarkText'}
-          className="h-12 w-12 rounded-full mx-6  hover:border-2 hover:border-primary"
+          className="h-12 w-12 rounded-full mx-3  hover:border-2 hover:border-primary"
           onClick={() => handleSelectPage(1)}
         >
           <div className="text-default font-semibold block m-auto leading-5">{1}</div>
@@ -99,7 +99,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
               key={index}
               value={item.page.valueOf()}
               variant={item.page == currentPage ? 'primary' : 'secondaryDarkText'}
-              className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
+              className="h-12 w-12 rounded-full mx-3 hover:border-2 hover:border-primary"
               onClick={() => handleSelectPage(item.page)}
             >
               <div className="text-default font-semibold block m-auto leading-5">{item.page}</div>
@@ -111,7 +111,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
           <Button
             value={numberOfPages}
             variant={numberOfPages == currentPage ? 'primary' : 'secondaryDarkText'}
-            className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
+            className="h-12 w-12 rounded-full mx-3 hover:border-2 hover:border-primary"
             onClick={() => handleSelectPage(numberOfPages)}
           >
             <div className="text-default font-semibold block m-auto leading-5">{numberOfPages}</div>
