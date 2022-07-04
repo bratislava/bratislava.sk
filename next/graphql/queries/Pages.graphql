@@ -66,7 +66,7 @@ fragment GeneralPage on PageEntityResponseCollection {
         __typename
         ... on ComponentSectionsSubpageList {
           id
-          subpageList {
+          subpageList(pagination: { limit: 50 }) {
             ...PageLink
           }
         }
@@ -119,34 +119,34 @@ fragment GeneralPage on PageEntityResponseCollection {
 }
 
 fragment BlogSection on BlogPostEntityResponse {
-    data {
-              attributes {
-                title
-                publishedAt
-                coverImage {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
+  data {
+    attributes {
+      title
+      publishedAt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      tag {
+        data {
+          attributes {
+            pageCategory {
+              data {
+                attributes {
+                  color
+                  shortTitle
                 }
-                tag {
-                  data {
-                    attributes {
-                      pageCategory {
-                        data {
-                          attributes {
-                            color
-                            shortTitle
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                slug
               }
             }
+          }
+        }
+      }
+      slug
+    }
+  }
 }
 
 fragment ParentPage on Page {
