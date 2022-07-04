@@ -44,7 +44,7 @@ export const BlogSearchCard = ({
   fullCardSizeImage,
   item,
 }: BlogSearchCardProps) => {
-  const publishedAt = new Date(item.data.attributes.publishedAt)
+  const publishedAt = new Date(item.data?.attributes?.publishedAt)
   const date = publishedAt.getDay() + '. ' + publishedAt.getMonth() + '. ' + publishedAt.getFullYear()
   const headline =
     item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'

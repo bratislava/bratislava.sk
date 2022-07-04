@@ -16,61 +16,32 @@ export interface SearchResultsProps {
 export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) => {
   const { t } = useTranslation('common')
   const documents = []
-  //const { data: pages } = useSWR({ index: 'page', keyword }, searchFetcher)
-  const { data: pages } = useSWR([keyword], () => searchPages(keyword))
-  const { data: articles } = useSWR([keyword], () => searchArticles(keyword))
-  const noResultsFound = articles?.hits.length == 0 && pages?.hits.length == 0 && documents?.length == 0
-  const mappedArticles = articles
-    ? articles.hits.map((article) => {
-        return {
-          data: {
-            attributes: {
-              coverImage: {
-                data: {
-                  attributes: {
-                    url: article?.coverImage?.url,
-                  },
-                },
-              },
-              publishedAt: article.publishedAt,
-              tag: {
-                data: {
-                  attributes: {
-                    pageCategory: {
-                      data: {
-                        attributes: {
-                          color: 'red', //hardcoded, api does not return this attribute
-                          shortTitle: article?.tag?.title,
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-              title: article.title,
-            },
-          },
-        }
-      })
-    : []
-  //   const [options, setOptions] = useState(checkedOptions)
+  const { data } = useSWR([keyword], () => {
+    return {
+      articles: searchArticles(keyword),
+      pages: searchPages(keyword),
+    }
+  })
+  const [articles, setArticles] = useState([])
+  const [pages, setPages] = useState([])
+  data?.articles?.then((a) => setArticles(a)).catch((e) => console.log(e))
+  data?.pages?.then((p) => setPages(p)).catch((e) => console.log(e))
+
+  const noResultsFound = articles?.length == 0 && pages?.length == 0 && documents?.length == 0
+
   const articlesSelected = checkedOptions.some(({ key }) => key == 'articles')
   const pagesSelected = checkedOptions.some(({ key }) => key == 'pages')
-  console.log('checked options u searchresults', checkedOptions)
-  //console.log('opcije', options)
-  console.log('uslov 1', mappedArticles?.length > 0)
-  console.log('uslov 2', articlesSelected)
 
+  articles && console.log('articles', articles)
+  pages && console.log('pages', pages)
   return (
     <>
-      {false ? (
+      {noResultsFound ? (
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
         <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
-          {mappedArticles?.length > 0 && articlesSelected && (
-            <BlogSearchCards title={t('articles')} blogs={mappedArticles} />
-          )}
-          {pages?.hits.length > 0 && pagesSelected && <PageCards title={t('websites')} pages={[]} />}
+          {articles?.length > 0 && articlesSelected && <BlogSearchCards title={t('articles')} blogs={articles} />}
+          {pages?.length > 0 && pagesSelected && <PageCards title={t('websites')} pages={pages} />}
           {documents?.length > 0 && (
             <div className="flex flex-col gap-y-3 lg:gap-y-6">
               <div className="text-default lg:text-md font-semibold">{t('documents')}</div>

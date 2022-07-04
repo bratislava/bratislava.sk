@@ -63,16 +63,58 @@ export const searchVZN = async (search: string, offset: number) => {
 }
 
 export const searchArticles = async (search: string, offset = 0) => {
-  return await meiliClient.index('blog-post').search(search || '*', {
+  const data = await meiliClient.index('blog-post').search(search || '*', {
     // TODO fix sortable attributes
     // sort: ['publishedAt:desc'],
     // offset,
   })
+
+  const mappedArticles = data.hits.map((article) => {
+    return {
+      data: {
+        attributes: {
+          coverImage: {
+            data: {
+              attributes: {
+                url: article?.coverImage?.url,
+              },
+            },
+          },
+          publishedAt: article.publishedAt,
+          tag: {
+            data: {
+              attributes: {
+                pageCategory: {
+                  data: {
+                    attributes: {
+                      color: 'red', //hardcoded, api does not return this attribute
+                      shortTitle: article?.tag?.title,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          title: article.title,
+        },
+      },
+    }
+  })
+  return mappedArticles
 }
+
 export const searchPages = async (search: string, offset = 0) => {
-  return await meiliClient.index('page').search(search || '*', {
+  const data = await meiliClient.index('page').search(search || '*', {
     // TODO fix sortable attributes
     // sort: ['publishedAt:desc'],
     // offset,
   })
+
+  const mappedPages = data.hits.map((page) => {
+    return {
+      pageColor: page.pageColor,
+      title: page.title,
+    }
+  })
+  return mappedPages
 }
