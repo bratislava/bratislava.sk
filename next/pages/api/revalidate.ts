@@ -27,15 +27,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           blogPostUrl += `/en`
         }
         blogPostUrl += `/blog/${payload?.entry?.slug}`
-        await res.unstable_revalidate(blogPostUrl)
+        await res.revalidate(blogPostUrl)
       }
       case 'page': {
         let pageUrl = ``
         if (payload?.entry?.locale === 'en') {
           pageUrl += `/en`
         }
-        pageUrl = `/${payload?.entry?.slug}`
-        await res.unstable_revalidate(pageUrl)
+        pageUrl += `/${payload?.entry?.slug}`
+        await res.revalidate(pageUrl)
       }
       default:
         break
