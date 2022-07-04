@@ -28,7 +28,7 @@ export const NarrowText = ({
         'flex',
         {
           'justify-start': align === 'left',
-          'justify-center': align === 'center',
+          'justify-center text-title-center': align === 'center',
           'justify-end': align === 'right',
         },
         className

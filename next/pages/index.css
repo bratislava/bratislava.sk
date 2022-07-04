@@ -225,6 +225,10 @@
   .listitem .typography-regular {
     @apply text-sm md:text-base leading-6 md:leading-7;
   }
+
+  .text-title-center h1,.text-title-center h2,.text-title-center h3,.text-title-center h4{
+    @apply text-center mb-6;
+  }
   
 }
 
