@@ -225,6 +225,13 @@
   .listitem .typography-regular {
     @apply text-sm md:text-base leading-6 md:leading-7;
   }
+
+  .line-clamp-4 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  }
   
 }
 
