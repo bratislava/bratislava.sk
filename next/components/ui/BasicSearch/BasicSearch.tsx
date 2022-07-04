@@ -16,7 +16,6 @@ export interface BasicSearchProps {
   initialValue?: string
 }
 
-// TODO submit through enter key
 export const BasicSearch = ({
   className,
   placeholder,

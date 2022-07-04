@@ -112,7 +112,6 @@ export const getServerSideProps = async (ctx) => {
             locale: l,
           })),
       },
-      // TODO remove mocks
       latestOfficialBoard,
       homepagePosts: homepagePosts,
       inba: inba,

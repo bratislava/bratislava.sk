@@ -188,27 +188,3 @@ export const Posts = ({
 }
 
 export default Posts
-
-// const documents = [
-//   {
-//     title: 'Kúpna zmluva technológie garáže M. Benku',
-//     createdAt: 'utorok 19. decembra 2017',
-//     fileExtension: '.pdf',
-//     fileSize: '164 kB',
-//     content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-//   },
-//   {
-//     title: 'Kúpna zmluva technológie garáže M. Benku',
-//     createdAt: 'utorok 19. decembra 2017',
-//     fileExtension: '.pdf',
-//     fileSize: '164 kB',
-//     content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-//   },
-//   {
-//     title: 'Kúpna zmluva technológie garáže M. Benku',
-//     createdAt: 'utorok 19. decembra 2017',
-//     fileExtension: '.pdf',
-//     fileSize: '164 kB',
-//     content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-//   },
-// ]

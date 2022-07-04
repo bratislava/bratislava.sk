@@ -10,7 +10,6 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     parsedSearch = search
   }
   try {
-    // TODO continue here search
     result = await getUDEDocumentsList(parsedSearch)
   } catch (e) {
     console.log(e)
