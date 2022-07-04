@@ -23,7 +23,6 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import useSWR from 'swr'
-import { searchFetcher } from '@utils/meili'
 import { useState } from 'react'
 
 export interface SearchPageProps {

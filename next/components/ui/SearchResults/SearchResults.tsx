@@ -5,8 +5,8 @@ import { FileList } from '../FileList/FileList'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import useSWR from 'swr'
-import { searchFetcher } from '@utils/meili'
 import { SearchOptionProps } from '../AdvancedSearch/AdvancedSearch'
+import { searchArticles, searchPages } from '@utils/meili'
 
 export interface SearchResultsProps {
   checkedOptions: SearchOptionProps[]
@@ -16,11 +16,12 @@ export interface SearchResultsProps {
 export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) => {
   const { t } = useTranslation('common')
   const documents = []
-  const { data: pages } = useSWR({ index: 'page', keyword }, searchFetcher)
-  const { data: articles } = useSWR({ index: 'blog-post', keyword }, searchFetcher)
-  const noResultsFound = articles?.length == 0 && pages?.length == 0 && documents?.length == 0
+  //const { data: pages } = useSWR({ index: 'page', keyword }, searchFetcher)
+  const { data: pages } = useSWR([keyword], () => searchPages(keyword))
+  const { data: articles } = useSWR([keyword], () => searchArticles(keyword))
+  const noResultsFound = articles?.hits.length == 0 && pages?.hits.length == 0 && documents?.length == 0
   const mappedArticles = articles
-    ? articles.map((article) => {
+    ? articles.hits.map((article) => {
         return {
           data: {
             attributes: {
@@ -69,7 +70,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
           {mappedArticles?.length > 0 && articlesSelected && (
             <BlogSearchCards title={t('articles')} blogs={mappedArticles} />
           )}
-          {pages?.length > 0 && pagesSelected && <PageCards title={t('websites')} pages={pages} />}
+          {pages?.hits.length > 0 && pagesSelected && <PageCards title={t('websites')} pages={[]} />}
           {documents?.length > 0 && (
             <div className="flex flex-col gap-y-3 lg:gap-y-6">
               <div className="text-default lg:text-md font-semibold">{t('documents')}</div>
