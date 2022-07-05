@@ -154,7 +154,7 @@ const Homepage = ({
             <HomepageMenu items={menuItems} />
           </SectionContainer>
           <Waves
-            className="mt-6 md:mt-18"
+            className="mt-6 md:mt-18 home-hero-wave"
             waveColor="white"
             wavePosition="bottom"
             isRich
