@@ -113,6 +113,7 @@ module.exports = {
         black: {
           universal: 'var(--universal-black)',
         },
+        blackTransparent : "rgba(51, 51, 51, 0.5);",
         yellow: {
           promo: '#FFEF4E',
         },

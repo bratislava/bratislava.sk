@@ -20,6 +20,7 @@
   "articles": "Články",
   "pages": "Stránky",
   "documents": "Dokumenty",
+  "files": "Súbory",
   "enterKeyword": "Zadajte kľúčové slovo",
   "weDidntFindAnything": "Nič sme nenašli",
   "tryEnteringSomethingElse": "Skúste zadať niečo iné",
@@ -31,5 +32,6 @@
   "download": "Stiahnuť",
   "transparentCity": "Transparentné mesto",
   "sorryNoResultsFound": "Ľutujeme, pre dané vyhľadávanie sa nenašli žiadne výsledky.",
-  "toTheMainPage": "Na hlavnú stránku"
+  "toTheMainPage": "Na hlavnú stránku",
+  "toOfficialBoard": "Prejsť na úradnú tabuľu"
 }

@@ -17,6 +17,8 @@ module.exports = {
     'no-underscore-dangle': [2, { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] }],
     /** Links get confused for secrets */
     'no-secrets/no-secrets': ['error', { ignoreContent: '^http' }],
+    /** Presently at too many places & becomes just an ignored clutter, consider turning on later */
+    '@typescript-eslint/no-unsafe-assignment': 'off',
     /** Use official sorting */
     'tailwindcss/classnames-order': [
       'warn',
