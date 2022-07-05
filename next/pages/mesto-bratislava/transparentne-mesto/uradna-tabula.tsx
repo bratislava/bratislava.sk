@@ -78,7 +78,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       console.log(e)
     }
   } else {
-    documents = await getALotOfsMockedDocs()
+    documents = await getALotOfMockedDocs()
   }
 
   return {
