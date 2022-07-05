@@ -35,6 +35,7 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
       '3xl': '1920px',
+      maxMd: {'max': '768px'}
     },
     container: {
       xs: '360px',

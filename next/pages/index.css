@@ -252,6 +252,30 @@
   }
 }
 
+/* width */
+
+
+@screen maxMd {
+  ::-webkit-scrollbar {
+    @apply h-1.5
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-transparent
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-transparent rounded-2xl
+  }
+}
+
 @supports  (selector(:nth-child(1 of x))) or (-webkit-touch-callout: none) {
   .home-hero-wave {
     transform: scaleY(-1);
