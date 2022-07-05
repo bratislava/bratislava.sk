@@ -27,8 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           blogPostUrl += `/en`
         }
         blogPostUrl += `/blog/${payload?.entry?.slug}`
-        // TODO fix this, commented because test fails
-        // await res.revalidate(blogPostUrl)
+        await res.revalidate(blogPostUrl)
       }
       case 'page': {
         let pageUrl = ``
@@ -36,8 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           pageUrl += `/en`
         }
         pageUrl += `/${payload?.entry?.slug}`
-        // TODO fix this, commented because test fails
-        // await res.revalidate(pageUrl)
+        await res.revalidate(pageUrl)
       }
       default:
         break
