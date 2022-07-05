@@ -1032,29 +1032,18 @@ export enum Enum_Componentblocksspaceinfo_Imageposition {
 
 export enum Enum_Componentsectionsdivider_Style {
   Bicykel_02FullWidth = 'bicykel_02_full_width',
-  Bicykel_02NarrowWidth = 'bicykel_02_narrow_width',
   Budovy_04FullWidth = 'budovy_04_full_width',
-  Budovy_04NarrowWidth = 'budovy_04_narrow_width',
   Byvanie_04FullWidth = 'byvanie_04_full_width',
-  Byvanie_04NarrowWidth = 'byvanie_04_narrow_width',
   Divadlo = 'divadlo',
   Doprava_02FullWidth = 'doprava_02_full_width',
-  Doprava_02NarrowWidth = 'doprava_02_narrow_width',
   Hrad_01FullWidth = 'hrad_01_full_width',
-  Hrad_01NarrowWidth = 'hrad_01_narrow_width',
   Lod_02FullWidth = 'lod_02_full_width',
-  Lod_02NarrowWidth = 'lod_02_narrow_width',
   Mesto_01FullWidth = 'mesto_01_full_width',
-  Mesto_01NarrowWidth = 'mesto_01_narrow_width',
   Park_04FullWidth = 'park_04_full_width',
-  Park_04NarrowWidth = 'park_04_narrow_width',
   Parkovanie_02FullWidth = 'parkovanie_02_full_width',
-  Parkovanie_02NarrowWidth = 'parkovanie_02_narrow_width',
   Skola = 'skola',
   Stromy_03FullWidth = 'stromy_03_full_width',
-  Stromy_03NarrowWidth = 'stromy_03_narrow_width',
   Vystavba_03FullWidth = 'vystavba_03_full_width',
-  Vystavba_03NarrowWidth = 'vystavba_03_narrow_width',
   Vzdelavanie = 'vzdelavanie'
 }
 
