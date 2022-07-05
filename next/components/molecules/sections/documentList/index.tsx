@@ -58,6 +58,7 @@ export const DocumentList = () => {
               Icon={category.icon}
               count={fileCountVzns(vzn)}
               onClick={setOpenModal}
+              mainDocumentHref={vzn.mainDocument?.url}
             />
           )
         })}

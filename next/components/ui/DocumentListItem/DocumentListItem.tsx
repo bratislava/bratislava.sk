@@ -8,10 +8,19 @@ interface DocumentListItemProps {
   Icon: string
   count: number
   onClick: Function
+  mainDocumentHref?: string
   id: string
 }
 
-export const DocumentListItem = ({ categoryName, title, Icon, count, onClick, id }: DocumentListItemProps) => {
+export const DocumentListItem = ({
+  categoryName,
+  title,
+  Icon,
+  count,
+  onClick,
+  id,
+  mainDocumentHref,
+}: DocumentListItemProps) => {
   return (
     <div className="flex md:w-full min-w-[280px] md:items-center flex-col md:flex-row shadow-md bg-white mb-1">
       <div className="flex-1 md:justify-center flex py-5 pl-6">
@@ -35,9 +44,13 @@ export const DocumentListItem = ({ categoryName, title, Icon, count, onClick, id
             Zobraziť
           </Button>
         </div>
-        <div className="pr-6 md:pr-0">
-          <Download />
-        </div>
+        {mainDocumentHref && (
+          <div className="pr-6 md:pr-0">
+            <a href={mainDocumentHref} download>
+              <Download />
+            </a>
+          </div>
+        )}
       </div>
     </div>
   )
