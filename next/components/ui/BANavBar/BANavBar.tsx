@@ -16,6 +16,7 @@ import Button from '../Button/Button'
 import { useTranslation } from 'next-i18next'
 import NarrowText from '../NarrowText/NarrowText'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
+import { minKeywordLength } from '@utils/constants'
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
@@ -84,7 +85,6 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
   const handleChange = (event) => {
     setInput(event.target.value)
   }
-  const minKeywordLength = 2
   return (
     <>
       {/* Desktop */}

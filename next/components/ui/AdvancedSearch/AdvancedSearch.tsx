@@ -4,6 +4,7 @@ import Checkbox from '../../../assets/images/checkbox.svg'
 import { useEffect, useState } from 'react'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
+import { minKeywordLength } from '@utils/constants'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -30,7 +31,6 @@ export const AdvancedSearch = ({
   keyword,
 }: AdvancedSearchProps) => {
   const { t } = useTranslation('common')
-
   const options = [
     {
       key: 'articles',
@@ -42,7 +42,6 @@ export const AdvancedSearch = ({
       value: t('documents'),
     },
   ]
-  const minKeywordLength = 2
   const [checked, setChecked] = useState(options)
 
   const handleAction = (option: SearchOptionProps) => {
