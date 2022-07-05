@@ -223,7 +223,14 @@
   }
 
   .listitem .typography-regular {
-    @apply text-sm md:text-base leading-6 md:leading-7;
+    @apply text-sm lg:text-default;
+  }
+
+  .line-clamp-4 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
   }
 
   .text-title-center h1,.text-title-center h2,.text-title-center h3,.text-title-center h4{
@@ -232,6 +239,25 @@
   
 }
 
+
 .closebutton .ml-5 {
   margin-left: 0 !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  /* Safari and Chrome */
+  .home-hero-wave {
+    transform: scaleY(1);
+  } 
+
+  /* Safari only override */
+  ::i-block-chrome,.home-hero-wave {
+    transform: scaleY(-1);
+  }
+}
+
+@supports  (selector(:nth-child(1 of x))) or (-webkit-touch-callout: none) {
+  .home-hero-wave {
+    transform: scaleY(-1);
+  }
 }
