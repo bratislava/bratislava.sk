@@ -76,74 +76,70 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
   return (
     <div
       className={cx(
-        'cursor-default grid opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto absolute top-[106px] left-0 right-0 z-30 w-full pb-20 bg-transparent',
+        'cursor-default h-screen opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
         { hidden: panelHidden }
       )}
     >
-      <Panel
-        style={{ backgroundColor: item.color }}
-        className={cx('px-6 pt-10 pb-10', {
-          'rounded-tl-none': isFirst,
-          'rounded-tr-none': isLast,
-        })}
-      >
-        <div className="max-w-screen-1.5lg w-full m-auto grid grid-cols-3 gap-10">
-          {/* SUB-ITEMS */}
-          {item.subItems?.map((subItem, j) => {
-            const IconComponent = getIcon(subItem.icon)
-            return (
-              <div key={j}>
-                <button className="flex" onClick={() => setPanelHidden(true)}>
-                  <UILink
-                    href={isItExternal(subItem.url)}
-                    className="flex items-center text-[20px] text-left hover:underline"
-                  >
-                    <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
-                      <IconComponent className="w-10 h-10" />
-                    </div>
-                    <div className="flex-1 ml-4 font-semibold">{subItem.title}</div>
-                  </UILink>
-                </button>
-                <ul className="mt-8 space-y-3">
-                  {subItem.subItems?.map((subSubItem, k) => (
-                    <li key={k}>
-                      <button className="flex" onClick={() => setPanelHidden(true)}>
-                        <UILink href={isItExternal(subSubItem.url)} className="hover:underline text-left">
-                          {subSubItem.title}
-                        </UILink>
-                      </button>
-                    </li>
-                  ))}
-                  {subItem.url && subItem.subItems.length > 2 ? (
-                    <li className="font-semibold">
-                      <button
-                        onMouseEnter={() => setMoreLinkHoverIdx(j)}
-                        onMouseLeave={() => setMoreLinkHoverIdx(-1)}
-                        onClick={() => setPanelHidden(true)}
-                        className="font-semibold"
-                      >
-                        <UILink href={isItExternal(subItem.url)}>
-                          <div className="flex gap-x-6 items-center">
-                            <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
-                            {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
-                          </div>
-                        </UILink>
-                      </button>
-                    </li>
-                  ) : null}
-                </ul>
-              </div>
-            )
-          })}
-        </div>
-      </Panel>
-      <Waves
-        className="z-30 bg-transparent overflow-hidden absolute bottom-0"
-        wavePosition="bottom"
-        backgroundColor={'transparent'}
-        waveColor={item.color}
-        isRich
-      />
+      <div className={cx('cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent')}>
+        <Panel style={{ backgroundColor: item.color }} className={cx('px-6 pt-10 pb-10 rounded-none')}>
+          <div className="max-w-screen-1.5lg w-full m-auto grid grid-cols-3 gap-10">
+            {/* SUB-ITEMS */}
+            {item.subItems?.map((subItem, j) => {
+              const IconComponent = getIcon(subItem.icon)
+              return (
+                <div key={j}>
+                  <button className="flex" onClick={() => setPanelHidden(true)}>
+                    <UILink
+                      href={isItExternal(subItem.url)}
+                      className="flex items-center text-[20px] text-left hover:underline"
+                    >
+                      <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
+                        <IconComponent className="w-10 h-10" />
+                      </div>
+                      <div className="flex-1 ml-4 font-semibold">{subItem.title}</div>
+                    </UILink>
+                  </button>
+                  <ul className="mt-8 space-y-3">
+                    {subItem.subItems?.map((subSubItem, k) => (
+                      <li key={k}>
+                        <button className="flex" onClick={() => setPanelHidden(true)}>
+                          <UILink href={isItExternal(subSubItem.url)} className="hover:underline text-left">
+                            {subSubItem.title}
+                          </UILink>
+                        </button>
+                      </li>
+                    ))}
+                    {subItem.url && subItem.subItems.length > 2 ? (
+                      <li className="font-semibold">
+                        <button
+                          onMouseEnter={() => setMoreLinkHoverIdx(j)}
+                          onMouseLeave={() => setMoreLinkHoverIdx(-1)}
+                          onClick={() => setPanelHidden(true)}
+                          className="font-semibold"
+                        >
+                          <UILink href={isItExternal(subItem.url)}>
+                            <div className="flex gap-x-6 items-center">
+                              <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
+                              {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
+                            </div>
+                          </UILink>
+                        </button>
+                      </li>
+                    ) : null}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+        </Panel>
+        <Waves
+          className="z-30 bg-transparent overflow-hidden absolute bottom-0"
+          wavePosition="bottom"
+          backgroundColor={'transparent'}
+          waveColor={item.color}
+          isRich
+        />
+      </div>
     </div>
   )
 }
