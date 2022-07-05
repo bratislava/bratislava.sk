@@ -3,6 +3,8 @@ import React from 'react'
 import ChevronRight from '../../../assets/images/chevron-right.svg'
 import CloseOutline from '../../../assets/images/close-outline.svg'
 import { ArrowRight } from '../images'
+import { useOutsideClick } from 'rooks'
+import { useRef } from 'react'
 
 const PADDING = 20 // py-5
 
@@ -40,6 +42,12 @@ export const Bookmark = ({
   const [width, setWidth] = React.useState<number>()
   const [height, setHeight] = React.useState<number>()
 
+  const modelref = useRef()
+  function myComponent() {
+    setIsOpen(false)
+  }
+  useOutsideClick(ref, myComponent)
+
   // fallback to red if incorrect variant
   const variantWithFallback = variant === 'blue' || variant === 'red' ? variant : 'red'
 
@@ -63,13 +71,10 @@ export const Bookmark = ({
       style={{
         minHeight: contentLoaded ? width + 2 * PADDING : undefined,
       }}
+      ref={modelref}
     >
-      <div className={cx(className, 'fixed top-0 bottom-0 left-0 right-0 w-screen h-screen z-40', {
-        'block': isOpen,
-        'hidden': !isOpen,
-      })} onClick={() => setIsOpen(false)}></div>
       <button
-        className={cx('w-17.5 font-semibold text-default z-40', {
+        className={cx('w-17.5 font-semibold text-default', {
           'bg-blue-sea-dark': variantWithFallback === 'blue',
           'bg-red-brick-dark': variantWithFallback === 'red',
         })}
@@ -105,15 +110,15 @@ export const Bookmark = ({
           <h3 className="font-semibold text-md leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
           <a href={link.href} className="flex items-center underline group font-semibold">
-          <span className="font-semibold text-sm">{link.title}</span>
-            
+            <span className="font-semibold text-sm">{link.title}</span>
+
             {/* <ChevronRight className="ml-6" /> */}
             <span className="group-hover:hidden ml-4">
-                <ChevronRight />
-              </span>
-              <span className="hidden group-hover:block ml-4 h-6">
-                <ArrowRight />
-                </span>
+              <ChevronRight />
+            </span>
+            <span className="hidden group-hover:block ml-4 h-6">
+              <ArrowRight />
+            </span>
           </a>
         </div>
 
