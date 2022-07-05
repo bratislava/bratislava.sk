@@ -1,18 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios, { AxiosRequestConfig } from 'axios'
-import { parseString } from "xml2js"
+import { parseString } from 'xml2js'
 import { RequestGinisBodyDocumentDetail, ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'
 
-
-
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void >  => {
+// params: id - base64 encoded "id zaznamu"
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   let result: ResponseGinisBodyDocumentDetail
-  const body: RequestGinisBodyDocumentDetail = req.body
+  const { id } = req.query
+  if (!id || Array.isArray(id)) {
+    return res.status(400).json({ message: 'missing id' })
+  }
+  const parsedId = Buffer.from(id, 'base64').toString('utf8')
   try {
-    const axiosConfig: AxiosRequestConfig = {headers: {
-      "Content-Type": "text/xml; charset=utf-8",
-      SOAPAction: 'http://www.gordic.cz/svc/xrg-ude/v_1.0.0.0/Detail-dokumentu',
-    }}
+    const axiosConfig: AxiosRequestConfig = {
+      headers: {
+        'Content-Type': 'text/xml; charset=utf-8',
+        SOAPAction: 'http://www.gordic.cz/svc/xrg-ude/v_1.0.0.0/Detail-dokumentu',
+      },
+    }
     const xml = `
       <s:Envelope
       xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
@@ -33,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void >
             <Xrg
               xmlns="http://www.gordic.cz/xrg/ude/detail-dokumentu/request/v_1.0.0.0">
               <Detail-dokumentu>
-                <Id-zaznamu>${body.documentId}</Id-zaznamu>
+                <Id-zaznamu>${parsedId}</Id-zaznamu>
               </Detail-dokumentu>
             </Xrg>
           </requestXml>
@@ -42,31 +47,36 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void >
     </s:Envelope>
     `
     let response = {}
-    const responseAxios = await axios.post(process.env.GINIS_URL, xml, axiosConfig).then(res=>{
-      return res
-    }).catch(err=> {return err})
-    if(!responseAxios || responseAxios.status != 200) {
+    const responseAxios = await axios
+      .post(process.env.GINIS_URL, xml, axiosConfig)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        return err
+      })
+    if (!responseAxios || responseAxios.status != 200) {
       console.log(responseAxios)
-      return res.status(400).json({message: 'bad soap request to Ginis'})
+      return res.status(400).json({ message: 'bad soap request to Ginis' })
     }
     parseString(responseAxios.data, { explicitArray: false }, function (error, r) {
       if (error) {
-        return res.status(400).json({message: 'bad xml to json'})
+        return res.status(400).json({ message: 'bad xml to json' })
       } else {
         response = r
       }
-      
     })
-    const documentDetail = response["s:Envelope"]["s:Body"]["Detail-dokumentuResponse"]["Detail-dokumentuResult"]["Xrg"]["Detail-dokumentu"]
-    const documentFiles = response["s:Envelope"]["s:Body"]["Detail-dokumentuResponse"]["Detail-dokumentuResult"]["Xrg"]["Soubory-dokumentu"]
+    const documentDetail =
+      response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult']['Xrg']['Detail-dokumentu']
+    const documentFiles =
+      response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult']['Xrg']['Soubory-dokumentu']
     if (Array.isArray(documentFiles)) {
-      result = {"Detail-dokumentu": documentDetail, 'Soubory-dokumentu': documentFiles}
+      result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': documentFiles }
     } else if (typeof documentFiles === 'object') {
-      result = {"Detail-dokumentu": documentDetail, 'Soubory-dokumentu': [documentFiles]}
+      result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': [documentFiles] }
     } else {
-      result = {"Detail-dokumentu": documentDetail, 'Soubory-dokumentu': []}
+      result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': [] }
     }
-
   } catch (e) {
     console.log(e)
   }
