@@ -1,5 +1,6 @@
 import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'
 import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { BlogSectionFragment } from '@bratislava/strapi-sdk-homepage'
 
 export interface BlogItem {
   data?: {
@@ -33,7 +34,7 @@ export interface BlogItem {
 }
 
 export interface FeaturedBlogsProps {
-  blogs?: BlogItem[]
+  blogs?: BlogSectionFragment[]
 }
 
 export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {

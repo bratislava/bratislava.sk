@@ -19,7 +19,7 @@ const nextConfig = {
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors.
     // !! WARN !!
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   reactStrictMode: true,
   async rewrites() {
@@ -28,12 +28,12 @@ const nextConfig = {
         // Graphql Proxy
         {
           source: '/graphql',
-          destination: `http://${process.env.STRAPI_URL}/graphql`,
+          destination: `${process.env.STRAPI_URL}/graphql`,
         },
         // Media proxy for getting media from Strapi
         {
           source: '/uploads/:file',
-          destination: `http://${process.env.STRAPI_URL}/uploads/:file`,
+          destination: `${process.env.STRAPI_URL}/uploads/:file`,
         },
         /**
          * Rewrites to make the the translation of URL work. Based on an approached outlined here:

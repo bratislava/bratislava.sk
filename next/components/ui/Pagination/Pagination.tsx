@@ -7,9 +7,10 @@ import ChevronRight from '../../../assets/images/chevron-right.svg'
 import ChevronLeft from '../../../assets/images/chevron-left.svg'
 
 interface PaginationProps {
-  totalPages: number
-  totalCount: number
+  totalPages?: number
+  totalCount?: number
   currentPage: number
+  itemsPerPage?: number
   pageHandler?: (pageNumber: number) => void
 }
 
@@ -73,7 +74,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
     <div className="flex relative w-full h-12">
       <div className="m-auto flex items-center w-auto justify-between">
         {currentPage != 1 ? (
-          <div className="group mr-6 text-primary">
+          <div className="group mr-6 cursor-pointer text-primary">
             <span className="group-hover:hidden">
               <ChevronLeft />
             </span>
@@ -86,7 +87,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
         <Button
           value={1}
           variant={1 == currentPage ? 'primary' : 'secondaryDarkText'}
-          className="h-12 w-12 rounded-full mx-6  hover:border-2 hover:border-primary"
+          className="h-12 w-12 rounded-full mx-3  hover:border-2 hover:border-primary"
           onClick={() => handleSelectPage(1)}
         >
           <div className="text-default font-semibold block m-auto leading-5">{1}</div>
@@ -98,7 +99,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
               key={index}
               value={item.page.valueOf()}
               variant={item.page == currentPage ? 'primary' : 'secondaryDarkText'}
-              className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
+              className="h-12 w-12 rounded-full mx-3 hover:border-2 hover:border-primary"
               onClick={() => handleSelectPage(item.page)}
             >
               <div className="text-default font-semibold block m-auto leading-5">{item.page}</div>
@@ -110,14 +111,14 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
           <Button
             value={numberOfPages}
             variant={numberOfPages == currentPage ? 'primary' : 'secondaryDarkText'}
-            className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
+            className="h-12 w-12 rounded-full mx-3 hover:border-2 hover:border-primary"
             onClick={() => handleSelectPage(numberOfPages)}
           >
             <div className="text-default font-semibold block m-auto leading-5">{numberOfPages}</div>
           </Button>
         ) : null}
         {currentPage != numberOfPages ? (
-          <div className="group ml-6 text-primary">
+          <div className="group ml-6 cursor-pointer text-primary">
             <span className="group-hover:hidden">
               <ChevronRight />
             </span>

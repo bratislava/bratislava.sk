@@ -38,7 +38,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                     <ChevronRight />
                   </span>
                   <span className="hidden group-hover:block">
-                    <ArrowRight />
+                    <ChevronRight />
                   </span>
                 </UILink>
               </HorizontalCard>

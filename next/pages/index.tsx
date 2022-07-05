@@ -23,9 +23,11 @@ import NewsLetterSection from '../components/molecules/sections/NewsLetterSectio
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { isPresent } from '../utils/utils'
+import { forceString, isPresent, isRecord } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { identity } from 'lodash'
+import { getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
 
 export const getServerSideProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
@@ -52,6 +54,13 @@ export const getServerSideProps = async (ctx) => {
     url: post?.slug,
     imageSrc: post?.image?.data?.attributes?.url,
   }))
+
+  let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
+  try {
+    latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
+  } catch (e) {
+    console.log(e)
+  }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
   const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
@@ -103,6 +112,7 @@ export const getServerSideProps = async (ctx) => {
             locale: l,
           })),
       },
+      latestOfficialBoard,
       homepagePosts: homepagePosts,
       inba: inba,
       header: header,
@@ -118,6 +128,7 @@ const Homepage = ({
   mainMenu,
   page,
   homepage,
+  latestOfficialBoard,
   latestBlogposts,
   homepagePosts,
   cards,
@@ -152,7 +163,7 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
@@ -160,7 +171,8 @@ const Homepage = ({
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
-            latestPost={latestBlogposts.data}
+            documents={latestOfficialBoard}
+            latestPost={latestBlogposts}
           />
           <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
 

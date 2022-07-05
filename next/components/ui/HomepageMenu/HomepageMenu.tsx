@@ -1,9 +1,10 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { ArrowRight } from '@assets/images'
 import cx from 'classnames'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import ChevronRight from '../../../assets/images/chevron-right.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
+import CloseFilled from '@assets/images/close-filled.svg'
 import { Panel } from '../Panel/Panel'
 import Activities from './icons/icon-activities.svg'
 import Ball from './icons/icon-ball.svg'
@@ -57,6 +58,8 @@ import Support from './icons/icon-support.svg'
 import Theater from './icons/icon-theater.svg'
 import Tree from './icons/icon-tree.svg'
 import Trolleybus from './icons/icon-trolleybus.svg'
+import { useOutsideClick } from 'rooks';
+
 
 const ICONS = {
   mesto_01: Castle,
@@ -159,7 +162,10 @@ export const getIcon = (icon?: MenuIcon) => {
 const HomepageMenu = ({ items }: IProps) => {
   const { Link: UILink } = useUIContext()
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = useState(-1)
-  const [selectedMenu, setSelectedMenu] = useState<MenuMainItem>()
+  const [activeId, setActive] = useState(null)
+  const [selectedMenu, setSelectedMenu] = useState<MenuMainItem>();
+  const ref = useRef();
+  useOutsideClick(ref, () => setActive(null));
 
   return (
     <>
@@ -186,9 +192,17 @@ const HomepageMenu = ({ items }: IProps) => {
           const ColoredIconComponent = getIcon(item.coloredIcon)
           return (
             <div data-hover-id={i} key={i} className="group">
-              <div className="relative lg:w-40 lg:h-36 cursor-default flex lg:flex-col text-left lg:text-center items-center md:py-5 lg:py-0 lg:justify-center gap-x-7 lg:gap-x-0 lg:gap-y-4 z-10 lg:z-30 text-default">
+              <div
+                className="cursor-pointer relative lg:w-40 lg:h-36 flex lg:flex-col text-left lg:text-center items-center md:py-5 lg:py-0 lg:justify-center gap-x-7 lg:gap-x-0 lg:gap-y-4 z-10 lg:z-30 text-default"
+                onClick={() => {
+                  setActive(item.id)
+                }}
+              >
                 <Panel
-                  className={cx('absolute hidden group-hover:block w-full h-full rounded-b-none')}
+                  className={cx('absolute w-full h-full rounded-b-none', {
+                    block: activeId == item.id,
+                    hidden: activeId != item.id,
+                  })}
                   style={{
                     backgroundColor: item.color,
                     zIndex: -1,
@@ -196,27 +210,41 @@ const HomepageMenu = ({ items }: IProps) => {
                   }}
                 />
                 {IconComponent && (
-                  <IconComponent className="group-hover:hidden w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12 text-gray-dark" />
+                  <IconComponent
+                    className={cx('group-hover:hidden block w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12 text-gray-dark', {
+                      hidden: activeId == item.id,
+                    })}
+                  />
                 )}
                 {ColoredIconComponent && (
-                  <ColoredIconComponent className="hidden group-hover:block w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12" />
+                  <ColoredIconComponent
+                    className={cx('w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12',
+                      {
+                        'block': activeId == item.id,
+                        'group-hover:block hidden': activeId != item.id,
+                      }
+                    )}
+                  />
                 )}
                 <p className="typography-tag-label whitespace-pre text-gray-dark">{item.title}</p>
-                <div
-                  style={{ backgroundColor: item.color }}
-                  className="absolute hidden group-hover:block h-8 bottom-0 transform translate-y-1/2 w-full"
-                />
+                {activeId == item.id && (
+                  <div
+                    style={{ backgroundColor: item.color }}
+                    className="absolute h-8 bottom-0 transform translate-y-1/2 w-full"
+                  />
+                )}
               </div>
+              <div ref={ref}>
               <Panel
+                overflowVisible
                 data-hover-id={i}
                 style={{ backgroundColor: item.color }}
-                className={cx(
-                  'hidden group-hover:grid absolute left-0 right-0 z-20 w-full px-6 py-10 grid-cols-3 gap-10',
-                  {
-                    'rounded-tl-none': i === 0,
-                    'rounded-tr-none': i === items.length - 1,
-                  }
-                )}
+                className={cx('absolute left-0 right-0 z-20 w-full px-6 py-10 grid-cols-3 gap-10', {
+                  grid: activeId == item.id,
+                  hidden: activeId != item.id,
+                  'rounded-tl-none': i === 0,
+                  'rounded-tr-none': i === items.length - 1,
+                })}
               >
                 {/* SUB-ITEMS */}
                 {item.subItems?.map((subItem, j) => {
@@ -257,7 +285,13 @@ const HomepageMenu = ({ items }: IProps) => {
                     </div>
                   )
                 })}
+                <div
+                  className="absolute bottom-[-24px] left-1/2 cursor-pointer"
+                >
+                  <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
+                </div>
               </Panel>
+              </div>
             </div>
           )
         })}

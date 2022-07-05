@@ -5,6 +5,7 @@ import iNewReservation from './new-reservation.svg'
 import iReservations from './reservation.svg'
 import iCheckMark from './check-mark.svg'
 import iChevronDown from './chevron-down.svg'
+import iChevronDownSmall from './chevron-down-small.svg'
 import iReservationCalendar from './reservation-calendar.svg'
 import iChevronRight from './chevron-right.svg'
 import iNextStepChevronRight from './chevron-right-circle.svg'
@@ -22,6 +23,7 @@ import iInstagramIcon from './instagram.svg'
 import iTwitterIcon from './twitter.svg'
 import iListCircleFull from './ListCircleFull.svg'
 import iDaneAPoplatky from './daneAPoplatky.svg'
+import iPhoneSmall from './phone-small.svg';
 
 export const ArrowDoubleLong = iArrowDoubleLong
 export const ArrowDoubleShort = iArrowDoubleShort
@@ -30,6 +32,7 @@ export const NewReservation = iNewReservation
 export const Reservations = iReservations
 export const CheckMark = iCheckMark
 export const ChevronDown = iChevronDown
+export const ChevronDownSmall = iChevronDownSmall
 export const ReservationCalendar = iReservationCalendar
 export const ChevronRight = iChevronRight
 export const NextStepChevronRight = iNextStepChevronRight
@@ -47,3 +50,4 @@ export const InstagramIcon = iInstagramIcon
 export const TwitterIcon = iTwitterIcon
 export const ListCircleFull = iListCircleFull
 export const DaneAPoplatky = iDaneAPoplatky
+export const PhoneSmall = iPhoneSmall
