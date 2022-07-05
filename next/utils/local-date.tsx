@@ -2,6 +2,7 @@ import { convert, LocalDate, ZonedDateTime } from '@js-joda/core'
 import lCapitalize from 'lodash/capitalize'
 import padStart from 'lodash/padStart'
 
+const capitalize = (text: string) => text[0].toUpperCase() + text.slice(1)
 // "Marec 2021"
 export const getLocalDate = (dateString: string) =>
   !dateString
@@ -28,6 +29,7 @@ export const getNumericLocalDate = (dateString: string) =>
 export const getLocalMonthName = (month: number | string) => {
   // TODO !!! get name directly as Month[ix - 1]
   const validMonth = Math.max(0, Math.round(Number(month))) || 1
+  // eslint-disable-next-line lodash-fp/no-extraneous-args
   const m = padStart(`${validMonth}`, 2, '0')
 
   return lCapitalize(
@@ -37,4 +39,3 @@ export const getLocalMonthName = (month: number | string) => {
   )
 }
 
-const capitalize = (text: string) => text[0].toUpperCase() + text.slice(1)
