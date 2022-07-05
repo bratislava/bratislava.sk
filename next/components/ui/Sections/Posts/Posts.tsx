@@ -19,12 +19,14 @@ import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sd
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { useTranslation } from 'react-i18next'
+import { ParsedOfficialBoardDocument } from 'services/ginis'
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
 export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
+  documents?: ParsedOfficialBoardDocument[]
   // latestPost?: BlogPost[]
   latestPost?: LatestBlogsFragment
   leftHighLight?: NewsCardBlogFragment | null
@@ -36,6 +38,7 @@ export interface PostsProps {
 export const Posts = ({
   className,
   posts = [],
+  documents = [],
   leftHighLight,
   rightHighLight,
   readMoreText,
@@ -115,7 +118,7 @@ export const Posts = ({
                 <UILink href={t('allNewsLink')}>
                   <Button
                     variant="transparent"
-                    className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font"
+                    className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font hover:text-primary"
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
@@ -134,20 +137,20 @@ export const Posts = ({
               <DocumentCard
                 key={index}
                 {...document}
-                className="max-w-4xl"
-                viewButtonText="TODO-fix"
+                className="max-w-4xl min-w-full"
+                viewButtonText={t('files')}
                 downloadButtonText="TODO-fix"
               />
             ))}
           </div>
-          <UILink href="/official-board" className="flex justify-center">
+          <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-default font-medium"
+              className="px-6 py-3 text-default font-medium shadow-none hover:text-primary"
               variant="transparent-black"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
-              Prejsť na úradnú tabuľu
+              {t('toOfficialBoard')}
             </Button>
           </UILink>
         </div>
@@ -185,27 +188,3 @@ export const Posts = ({
 }
 
 export default Posts
-
-const documents = [
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-]

@@ -62,21 +62,22 @@ export const Carousel = ({
     scrollToImage(currentItem - shiftIndex)
   }
 
-  const sliderControl = (isLeft: boolean) => (
-    <VerticalCardButton
-      onClick={isLeft ? previousImage : nextImage}
-      size="large"
-      className={cx('absolute z-10 my-auto top-0 bottom-0', {
-        'left-0 transform -translate-x-1/2': isLeft,
-        'right-0 transform translate-x-1/2': !isLeft,
-        hidden: (isLeft && currentItem === 0) || (!isLeft && currentItem === visibleItems),
-        'ml-4': isLeft && spacing === 'default',
-        'mr-4': !isLeft && spacing === 'default',
-      })}
-    >
-      {isLeft ? <ChevronLeft /> : <ChevronRight />}
-    </VerticalCardButton>
-  )
+  const sliderControl = (isLeft: boolean) =>
+    totalItems > visibleItems ? (
+      <VerticalCardButton
+        onClick={isLeft ? previousImage : nextImage}
+        size="large"
+        className={cx('absolute z-10 my-auto top-0 bottom-0', {
+          'left-0 transform -translate-x-1/2': isLeft,
+          'right-0 transform translate-x-1/2': !isLeft,
+          hidden: (isLeft && currentItem === 0) || (!isLeft && currentItem === visibleItems),
+          'ml-4': isLeft && spacing === 'default',
+          'mr-4': !isLeft && spacing === 'default',
+        })}
+      >
+        {isLeft ? <ChevronLeft /> : <ChevronRight />}
+      </VerticalCardButton>
+    ) : null
 
   return (
     <div
@@ -86,7 +87,13 @@ export const Carousel = ({
     >
       {sliderControl(true)}
 
-      <div className={cx(scrollerClassName, 'flex overflow-x-auto lg:overflow-x-hidden overflow-y-hidden scrollbar-hide pb-4 lg:pb-0')} ref={scrollerRef}>
+      <div
+        className={cx(
+          scrollerClassName,
+          'flex overflow-x-auto lg:overflow-x-hidden overflow-y-hidden scrollbar-hide pb-4 lg:pb-0'
+        )}
+        ref={scrollerRef}
+      >
         {items?.map((carouselItem: React.ReactNode, i: number) => {
           const isVisible = i >= currentItem && i < currentItem + visibleItems
           return (
