@@ -31,12 +31,15 @@ export const NumericalListSection = ({
   const href = buttonLink?.length ? buttonLink : '#'
   return (
     <div className="pt-14">
-      <Waves
+      {hasBackground ? 
+        <Waves
         waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
         wavePosition={'top'}
         isRich
         backgroundColor="var(--background-color)"
       />
+      : ""}
+      
       <div
         className={cx(
           'flex justify-center flex-col items-center py-12',
@@ -45,7 +48,7 @@ export const NumericalListSection = ({
         )}
       >
         <div className="flex flex-col max-w-3xl">
-          <div
+          { title? <div
             className={cx(
               'text-center pb-14 font-semibold',
               { 'text-default lg:text-lg': variant != 'roadmap' },
@@ -53,7 +56,8 @@ export const NumericalListSection = ({
             )}
           >
             {title}
-          </div>
+          </div>: ""}
+          
           <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant != 'roadmap' && buttonText && (
@@ -69,12 +73,15 @@ export const NumericalListSection = ({
           </UILink>
         )}
       </div>
-      <Waves
+      {hasBackground ? 
+        <Waves
         waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
         wavePosition={'bottom'}
         isRich
         backgroundColor="var(--background-color)"
       />
+      : ""}
+      
     </div>
   )
 }

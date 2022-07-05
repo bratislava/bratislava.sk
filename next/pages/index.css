@@ -223,7 +223,7 @@
   }
 
   .listitem .typography-regular {
-    @apply text-sm md:text-base leading-6 md:leading-7;
+    @apply text-sm lg:text-default;
   }
 
   .line-clamp-4 {
