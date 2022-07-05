@@ -51,7 +51,6 @@ export const getServerSideProps = async (ctx: any) => {
 }
 
 const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof getServerSideProps>) => {
-  keyword && console.log(keyword)
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
   const options = [
@@ -78,7 +77,6 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
   const handleSelect = (options: SearchOptionProps[]) => {
     setCheckedOptions(options)
   }
-  console.log('key u page', keyword)
   return (
     <PageWrapper
       locale={page.locale}
