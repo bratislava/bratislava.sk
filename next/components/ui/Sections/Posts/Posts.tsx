@@ -132,7 +132,7 @@ export const Posts = ({
           </HorizontalScrollWrapper>
           <div className="flex justify-center lg:hidden">
           {/* TODO: change this button to custom button */}
-          <Button variant="transparent" className="px-6 py-2 mt-2 text-default font-medium shadow-none" icon={<ChevronRight />}
+          <Button variant="transparent" className="px-6 py-2 mt-0 text-default font-medium shadow-none" icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}>
             Všetky aktuality
           </Button>
