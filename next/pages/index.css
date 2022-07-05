@@ -242,18 +242,18 @@
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   /* Safari and Chrome */
-  .home-hero-wave {
+  .wave-pattern {
     transform: scaleY(1);
-  } 
+  }
 
   /* Safari only override */
-  ::i-block-chrome,.home-hero-wave {
+  ::i-block-chrome,.wave-pattern {
     transform: scaleY(-1);
   }
 }
 
 @supports  (selector(:nth-child(1 of x))) or (-webkit-touch-callout: none) {
-  .home-hero-wave {
+  .wave-pattern {
     transform: scaleY(-1);
   }
 }
