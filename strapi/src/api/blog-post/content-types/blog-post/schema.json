@@ -8,6 +8,8 @@
     "description": ""
   },
   "options": {
+    "increments": true,
+    "timestamps": true,
     "draftAndPublish": true
   },
   "pluginOptions": {
@@ -36,7 +38,12 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"],
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -98,7 +105,8 @@
         "sections.numerical-list",
         "sections.icon-title-desc",
         "sections.list-items",
-        "sections.articles-list"
+        "sections.articles-list",
+        "sections.organizational-structure"
       ]
     }
   }

@@ -6,6 +6,7 @@ export interface NarrowTextProps {
   content?: string
   width?: 'narrow' | 'default' | 'wide' | 'full'
   align?: 'left' | 'center' | 'right'
+  size?: 'small' | 'normal'
   hasBackground?: boolean
 }
 
@@ -15,6 +16,7 @@ export const NarrowText = ({
   hasBackground,
   width = 'default',
   align = 'center',
+  size = 'normal',
 }: NarrowTextProps) => {
   const { Markdown: UIMarkdown } = useUIContext()
 
@@ -43,7 +45,15 @@ export const NarrowText = ({
         <UIMarkdown
           content={content}
           hasBackground={hasBackground}
-          className="text-sm md:text-default leading-[24px] md:leading-[30px] narrow-text-wrapper"
+          className={cx(
+            'text-sm md:text-default narrow-text-wrapper',
+            {
+              'text-xxs md:text-sm leading-[20px] md:leading-[24px]': size === 'small',
+              'text-sm md:text-default leading-[24px] md:leading-[30px]': size === 'normal',
+            },
+            className
+          )}
+          // className="text-sm md:text-default leading-[24px] md:leading-[30px] narrow-text-wrapper"
         />
       </div>
     </div>
