@@ -42,8 +42,9 @@ export const Footer = ({
 
   return (
     <footer className={cx(className, 'text-base text-gray-universal-800 pt-14')}>
-      <section className="flex justify-between items-center" aria-label="Logo and Social Media Links">
-        <BABrand />
+    <hr/>
+    <section className="flex justify-between items-center pt-14" aria-label="Logo and Social Media Links">
+      <BABrand />
         <div className="flex items-center justify-between lg:w-52">
           <nav className="hidden lg:flex gap-4 text-gray-universal-500 cursor-pointer" aria-label="Social Media Links">
             {facebookLink && (
@@ -136,7 +137,7 @@ export const Footer = ({
         <p className="mt-2 lg:mt-0">{copyright}</p>
         <div className="hidden lg:block text-right" aria-label="lang">
           
-          {languageLinks?.map(({ url, title, locale }, i) => (
+          {languageLinks.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
               {url === undefined ? (
                 <span className="font-semibold">{title}</span>
