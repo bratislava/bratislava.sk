@@ -39,6 +39,7 @@ export const getToken = async (): Promise<TokenResponse> => {
 
 export interface UsersRequest {
   token: string
+  url: string
 }
 
 export interface UserResponse {
@@ -61,8 +62,9 @@ export interface UsersResponse {
   value: UserResponse[]
 }
 
-export const getUsers = async ({ token }: UsersRequest): Promise<any> => {
-  const result = await fetch(`https://graph.microsoft.com/v1.0/users`, {
+export const getUsers = async ({ token, url }: UsersRequest): Promise<any> => {
+  const shortUrl = url.substring(4)
+  const result = await fetch(`https://graph.microsoft.com/v1.0${shortUrl}`, {
     method: 'get',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -82,3 +84,6 @@ export const getUsers = async ({ token }: UsersRequest): Promise<any> => {
 
   return resultData
 }
+
+export const usersFromDepartmentFetcher = (department) =>
+  fetch(`/api/users?$filter=Department eq '${department}'`).then((r) => r.json())

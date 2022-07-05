@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_os_items_advanced_accordion_sub_sub_items",
+  "info": {
+    "displayName": "Advanced Accordion SubSubItem",
+    "icon": "angle-double-down"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
