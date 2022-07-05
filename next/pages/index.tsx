@@ -147,8 +147,8 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <div className="bg-white">
           <SectionContainer>
-            <div className="pt-25 lg:pt-18 pb-6 flex flex-col sm:flex-row sm:items-center">
-              <PageTitle className="flex-1" title={pageTitle} subtitle={header?.subtitle} />
+            <div className="pt-28 lg:pt-18 pb-8 lg:pb-10 flex flex-col sm:flex-row sm:items-center">
+              <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
               <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />

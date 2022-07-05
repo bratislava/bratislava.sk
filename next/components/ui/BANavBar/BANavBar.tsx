@@ -179,7 +179,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       <div
         className={cx(
           className,
-          'h-20 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
