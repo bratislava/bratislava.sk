@@ -1,8 +1,7 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import Button from '../Button/Button'
 import SearchIcon from '../../../assets/images/search-icon.svg'
 import Checkbox from '../../../assets/images/checkbox.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
@@ -13,6 +12,7 @@ export interface AdvancedSearchProps {
   buttonText?: string
   handleClick?: (checkedOptions: SearchOptionProps[], keyword: string) => void
   handleSelect?: (checkedOptions: SearchOptionProps[]) => void
+  keyword?: string
 }
 
 export interface SearchOptionProps {
@@ -27,8 +27,8 @@ export const AdvancedSearch = ({
   buttonText,
   handleClick,
   handleSelect,
+  keyword,
 }: AdvancedSearchProps) => {
-  const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
 
   const options = [
@@ -58,13 +58,16 @@ export const AdvancedSearch = ({
   }
 
   const [input, setInput] = useState('')
+  useEffect(() => {
+    keyword && setInput(keyword)
+  }, [keyword])
   const handleChange = (event) => {
     setInput(event.target.value)
   }
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48" /* id="search" */>{title}</div>
+      <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48">{title}</div>
       <div className="hidden lg:flex pb-6">
         <input
           id="name"
@@ -74,7 +77,6 @@ export const AdvancedSearch = ({
           value={input}
           onChange={handleChange}
         />
-        {/* <UILink href="#search"> */}
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
@@ -86,7 +88,6 @@ export const AdvancedSearch = ({
         >
           {buttonText}
         </Button>
-        {/*  </UILink> */}
       </div>
       <div className="flex lg:hidden pb-6">
         <input
@@ -95,7 +96,6 @@ export const AdvancedSearch = ({
           className="h-14 pl-6 w-full max-w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-sm text-font font-medium"
           placeholder="Zadajte kľúčové slovo"
         />
-        {/* <UILink href="#search"> */}
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
@@ -105,7 +105,6 @@ export const AdvancedSearch = ({
             input.length > minKeywordLength && handleClick(checked, input)
           }}
         />
-        {/* </UILink> */}
       </div>
       <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
         {options.map((option, index) => (

@@ -80,7 +80,11 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     setCookies(false)
     setRejectCookieBox(false)
   }
-
+  const [input, setInput] = useState('')
+  const handleChange = (event) => {
+    setInput(event.target.value)
+  }
+  const minKeywordLength = 2
   return (
     <>
       {/* Desktop */}
@@ -114,15 +118,17 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   id="name"
                   type="text"
                   className="h-6 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-sm text-font"
+                  value={input}
+                  onChange={handleChange}
                 />
-                <Link href={t('searchLink')}>
+                <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : ''}>
                   <Button
                     icon={<SmallBlackSearchIcon />}
                     hoverIcon={<SmallWhiteSearchIcon />}
                     className="h-6 rounded-l-none text-sm px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium"
                     variant="secondaryDarkText"
                   >
-                    Hľadať
+                    {t('search')}
                   </Button>
                 </Link>
               </div>

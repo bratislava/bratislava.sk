@@ -23,7 +23,7 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import useSWR from 'swr'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -31,6 +31,7 @@ export interface SearchPageProps {
 }
 
 export const getServerSideProps = async (ctx: any) => {
+  const keyword = ctx?.query?.keyword
   const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
     slug: 'test',
@@ -106,6 +107,7 @@ export const getServerSideProps = async (ctx: any) => {
       inba: inba,
       header: header,
       cards: cards,
+      keyword: keyword ?? null,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
   }
@@ -122,11 +124,27 @@ const Search = ({
   cards,
   header,
   inba,
+  keyword,
 }: AsyncServerProps<typeof getServerSideProps>) => {
+  keyword && console.log(keyword)
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
-  const [checkedOptions, setCheckedOptions] = useState([] as SearchOptionProps[])
+  const options = [
+    {
+      key: 'articles',
+      value: t('articles'),
+    },
+    { key: 'pages', value: t('pages') },
+    {
+      key: 'documents',
+      value: t('documents'),
+    },
+  ]
+  const [checkedOptions, setCheckedOptions] = useState(options)
   const [input, setInput] = useState('')
+  useEffect(() => {
+    setInput(keyword)
+  }, [keyword])
   const handleClick = (options: SearchOptionProps[], keyword: string) => {
     setCheckedOptions(options)
     setInput(keyword)
@@ -135,8 +153,7 @@ const Search = ({
   const handleSelect = (options: SearchOptionProps[]) => {
     setCheckedOptions(options)
   }
-  console.log('search page')
-
+  console.log('key u page', keyword)
   return (
     <PageWrapper
       locale={page.locale}
@@ -172,6 +189,7 @@ const Search = ({
             buttonText={t('search')}
             handleClick={handleClick}
             handleSelect={handleSelect}
+            keyword={input}
           />
           <SearchResults checkedOptions={checkedOptions} keyword={input} />
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
