@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown'
 // TODO fix typing - we're taking the entity from meilisearch which unfortunately types differently
 // TODO fix dates
 export const DocumentListModalBody = (vzn: any) => {
+  console.log(vzn)
   return (
     <div className="bg-background max-w-3xl max-h-[75vh] overflow-y-auto modal-content-rent">
       <div className="py-8 px-12">
@@ -34,10 +35,10 @@ export const DocumentListModalBody = (vzn: any) => {
             <div className="pb-4 font-semibold"> Hlavný dokument </div>
             <div>
               <FileCard
-                downloadLink={vzn.mainDocument?.data?.url}
-                fileDetail={`${vzn.mainDocument?.data?.ext?.toUpperCase()} ${vzn.mainDocument?.data?.size} KB`}
+                downloadLink={vzn.mainDocument?.url}
+                fileDetail={`${vzn.mainDocument?.ext?.toUpperCase()} ${vzn.mainDocument?.size} KB`}
                 fileTitle={vzn?.title}
-                uploadDate={vzn.mainDocument?.data?.createdAt}
+                uploadDate={vzn.mainDocument?.createdAt}
               />
             </div>
           </div>
@@ -47,10 +48,10 @@ export const DocumentListModalBody = (vzn: any) => {
             <div className="pb-4 font-semibold">Konsolidované znenie (zhrnutie)</div>
             <div>
               <FileCard
-                downloadLink={vzn.consolidatedText?.data?.url}
-                fileDetail={`${vzn.consolidatedText?.data?.ext?.toUpperCase()} ${vzn.consolidatedText?.data?.size} KB`}
+                downloadLink={vzn.consolidatedText?.url}
+                fileDetail={`${vzn.consolidatedText?.ext?.toUpperCase()} ${vzn.consolidatedText?.size} KB`}
                 fileTitle={vzn?.title}
-                uploadDate={vzn.consolidatedText?.data?.createdAt}
+                uploadDate={vzn.consolidatedText?.createdAt}
               />
             </div>
           </div>
@@ -63,10 +64,10 @@ export const DocumentListModalBody = (vzn: any) => {
                 <FileCard
                   key={doc.id}
                   className="w-80"
-                  downloadLink={doc?.document?.data?.url}
-                  fileDetail={`${doc?.document?.data?.ext?.toUpperCase()} ${doc?.document?.data?.size} KB`}
+                  downloadLink={doc?.document?.url}
+                  fileDetail={`${doc?.document?.ext?.toUpperCase()} ${doc?.document?.size} KB`}
                   fileTitle={doc?.title}
-                  uploadDate={doc?.document?.data?.createdAt}
+                  uploadDate={doc?.document?.createdAt}
                 />
               ))}
             </div>
@@ -80,10 +81,10 @@ export const DocumentListModalBody = (vzn: any) => {
                 <FileCard
                   key={doc.id}
                   className="w-80"
-                  downloadLink={doc?.document?.data?.url}
-                  fileDetail={`${doc?.document?.data?.ext?.toUpperCase()} ${doc?.document?.data?.size} KB`}
+                  downloadLink={doc?.document?.url}
+                  fileDetail={`${doc?.document?.ext?.toUpperCase()} ${doc?.document?.size} KB`}
                   fileTitle={doc?.title}
-                  uploadDate={doc?.document?.data?.createdAt}
+                  uploadDate={doc?.document?.createdAt}
                 />
               ))}
             </div>
