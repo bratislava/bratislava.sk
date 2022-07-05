@@ -31,7 +31,10 @@ export const DocumentCard = ({
 }: DocumentCardProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const { data } = useSWR(isOpen ? getDocumentDetailURL(id) : null, getMockedDetail)
+  // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
+  const { data } = useSWR(isOpen ? getDocumentDetailURL(id) : null, () =>
+    fetch(getDocumentDetailURL(id)).then((res) => res.json())
+  )
 
   const files: TFile[] =
     data?.['Soubory-dokumentu']?.map((file) => ({
@@ -84,9 +87,9 @@ export const DocumentCard = ({
         {/* <div className="flex lg:hidden bg-red-superlight h-[86px] -mt-[86px]" /> */}
       </Panel>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="p-6">
+        <div className="rounded-2xl bg-background px-5 py-8">
           {/* TODO handle loading/error */}
-          <FileList fileSections={fileSections} />
+          <FileList fileSections={fileSections} noScroll />
         </div>
       </Modal>
     </>

@@ -67,10 +67,10 @@ export type ParsedOfficialBoardDocument = {
   content: string
 }
 
-export const getParsedUDEDocumentsList = async (limit?: number) => {
+export const getParsedUDEDocumentsList = async (search?: string, limit?: number) => {
   let documents = []
   try {
-    documents = await getUDEDocumentsList()
+    documents = await getUDEDocumentsList(search)
   } catch (e) {
     console.log(e)
   }
@@ -92,6 +92,13 @@ export const getParsedUDEDocumentsList = async (limit?: number) => {
 // TODO fix btoa linter error
 export const getDocumentDetailURL = (documentId) => `/api/ginis/document-detail/${btoa(documentId)}`
 export const getDocumentFileURL = (fileId) => `/api/ginis/document-load-file/${btoa(fileId)}`
+
+// ################
+// #### MOCKS #####
+// ################
+
+// because the GINIS backend is accessible only from internal Bratislava network,
+// if you need placeholder data, you can use the following mocks:
 
 export const mockedParsedDocuments = [
   {

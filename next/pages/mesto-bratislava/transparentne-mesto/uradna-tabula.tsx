@@ -70,14 +70,16 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }))
 
   let documents: ParsedOfficialBoardDocument[] = []
-  // try {
-  //   documents = await getParsedUDEDocumentsList(ctx?.query?.search)
-  // } catch (e) {
-  //   console.log(e)
-  // }
-  // TODO remove mocks
-  documents = await getALotOfMockedDocs()
-  documents = ctx?.query?.search === 'hey' ? [] : documents
+  // change this if you need to develop on top of ginis data - this can only be done on bratislava VPN
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      documents = await getParsedUDEDocumentsList(forceString(ctx?.query?.search))
+    } catch (e) {
+      console.log(e)
+    }
+  } else {
+    documents = await getALotOfMockedDocs()
+  }
 
   return {
     props: {
