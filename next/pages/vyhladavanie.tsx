@@ -165,7 +165,7 @@ const Search = ({
             </div>
           </SectionContainer>
         </PageHeader>
-        <SectionContainer className="flex gap-y-14 lg:gap-y-24 pt-14 md:pt-18">
+        <SectionContainer className="flex gap-y-14 lg:gap-y-24 pt-14 md:pt-18 w-full">
           <AdvancedSearch
             placeholder={t('enterKeyword')}
             title={t('searching')}

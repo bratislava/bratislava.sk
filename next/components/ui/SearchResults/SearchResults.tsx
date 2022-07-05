@@ -40,7 +40,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
   const pagesSelected = checkedOptions.some(({ key }) => key == 'pages')
   console.log('searchresults')
   return (
-    <div className="w-full bg-red-300">
+    <div className="w-full">
       {noResultsFound ? (
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
