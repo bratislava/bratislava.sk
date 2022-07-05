@@ -14,7 +14,7 @@ interface DocumentListItemProps {
 export const DocumentListItem = ({ categoryName, discription, Icon, count, onClick, id }: DocumentListItemProps) => {
   return (
     <div className="flex w-full min-w-[280px] flex-col md:flex-row shadow-md bg-white mb-1 rounded-lg overflow-hidden">
-      <div className="flex flex-col md:flex-row md:items-center">
+      <div className="flex flex-col md:flex-row md:items-center w-full">
         <div className="md:justify-center flex py-4 pb-0 lg:py-10 lg:pb-10 px-4 lg:px-12">
           <Icon />
         </div>
@@ -24,7 +24,7 @@ export const DocumentListItem = ({ categoryName, discription, Icon, count, onCli
           <div className="text-xs lg:text-sm pt-4"> Počet dokumentov: {count}</div>
         </div>
       </div>
-      <div className="flex items-center md:justify-evenly justify-between md:py-11 pl-5 md:px-2 py-4 flex-[2] bg-zinc-50">
+      <div className="flex items-center md:justify-evenly justify-between md:py-11 pl-5 md:px-2 py-4 md:basis-[300px] md:grow-0 shrink-0 bg-zinc-50">
         <div>
           <Button
             className="underline text-font text-sm lg:text-default font-semibold"
