@@ -42,6 +42,7 @@ export const AdvancedSearch = ({
       value: t('documents'),
     },
   ]
+  const minKeywordLength = 2
   const [checked, setChecked] = useState(options)
 
   const handleAction = (option: SearchOptionProps) => {
@@ -54,14 +55,12 @@ export const AdvancedSearch = ({
       setChecked(options)
       handleSelect(options)
     }
-    console.log('u advanced searchu ', checked)
   }
 
   const [input, setInput] = useState('')
   const handleChange = (event) => {
     setInput(event.target.value)
   }
-  console.log('advanced search')
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
@@ -81,7 +80,9 @@ export const AdvancedSearch = ({
           hoverIcon={<SearchIcon />}
           className="h-14 rounded-l-none text-default px-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
           variant="secondaryDarkText"
-          onClick={() => handleClick(checked, input)}
+          onClick={() => {
+            input.length > minKeywordLength && handleClick(checked, input)
+          }}
         >
           {buttonText}
         </Button>
@@ -100,7 +101,9 @@ export const AdvancedSearch = ({
           hoverIcon={<SearchIcon />}
           className="h-14 rounded-l-none text-default pr-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
           variant="secondaryDarkText"
-          onClick={() => handleClick(checked, input)}
+          onClick={() => {
+            input.length > minKeywordLength && handleClick(checked, input)
+          }}
         />
         {/* </UILink> */}
       </div>
