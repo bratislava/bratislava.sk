@@ -15,13 +15,13 @@ export interface RentProps {
       }
     }
   }
-  title?: string
-  desc?: string
+  title?: string | null | undefined
+  desc?: string | null | undefined
   linkLabel?: string
 }
 
 export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => {
-  const isMore = desc.length > 100
+  const isMore = desc?.length > 100
   const [isOpen, setOpen] = useState(false)
   return (
     <div
@@ -51,7 +51,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
             shape="none"
             variant="muted"
             icon={<ChevronRight />}
-            hoverIcon={<ArrowRight/>}
+            hoverIcon={<ArrowRight />}
             onClick={() => setOpen(true)}
           >
             <div className="relative">

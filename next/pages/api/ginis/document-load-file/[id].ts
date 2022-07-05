@@ -1,22 +1,27 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios, { AxiosRequestConfig } from 'axios'
-import { parseString } from "xml2js"
+import { parseString } from 'xml2js'
 import { RequestGinisBodyLoadFile, ResponseGinisBodyLoadFile } from 'dtos/ginis/api-data.dto'
 import stream from 'stream'
 import { promisify } from 'util'
 
-const pipeline = promisify(stream.pipeline);
+const pipeline = promisify(stream.pipeline)
 
-
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void>  => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   let result: ResponseGinisBodyLoadFile
   let buffer: Buffer
-  const body: RequestGinisBodyLoadFile = req.body
+  const { id } = req.query
+  if (!id || Array.isArray(id)) {
+    return res.status(400).json({ message: 'missing id' })
+  }
+  const parsedId = Buffer.from(id, 'base64').toString('utf8')
   try {
-    const axiosConfig: AxiosRequestConfig = {headers: {
-      "Content-Type": "text/xml; charset=utf-8",
-      SOAPAction: 'http://www.gordic.cz/svc/xrg-ude/v_1.0.0.0/Nacist-soubor',
-    }}
+    const axiosConfig: AxiosRequestConfig = {
+      headers: {
+        'Content-Type': 'text/xml; charset=utf-8',
+        SOAPAction: 'http://www.gordic.cz/svc/xrg-ude/v_1.0.0.0/Nacist-soubor',
+      },
+    }
     const xml = `
       <s:Envelope
         xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
@@ -37,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
               <Xrg
                 xmlns="http://www.gordic.cz/xrg/ude/nacist-soubor/request/v_1.0.0.0">
                 <Nacist-soubor>
-                  <Id-souboru>${body.fileId}</Id-souboru>
+                  <Id-souboru>${parsedId}</Id-souboru>
                 </Nacist-soubor>
               </Xrg>
             </requestXml>
@@ -46,28 +51,32 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       </s:Envelope>
     `
     let response = {}
-    const responseAxios = await axios.post(process.env.GINIS_URL, xml, axiosConfig).then(res=>{
-      return res
-    }).catch(err=> {return err})
-    
-    if(!responseAxios || responseAxios.status != 200) {
-      return res.status(400).json({message: 'bad soap request to Ginis'})
+    const responseAxios = await axios
+      .post(process.env.GINIS_URL, xml, axiosConfig)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        return err
+      })
+
+    if (!responseAxios || responseAxios.status != 200) {
+      return res.status(400).json({ message: 'bad soap request to Ginis' })
     }
     parseString(responseAxios.data, { explicitArray: false }, function (error, r) {
       if (error) {
-        return res.status(400).json({message: 'bad xml to json'})
+        return res.status(400).json({ message: 'bad xml to json' })
       } else {
         response = r
       }
-      
     })
-    result = response["s:Envelope"]["s:Body"]["Nacist-souborResponse"]["Nacist-souborResult"]["Xrg"]["Nacist-soubor"]
+    result = response['s:Envelope']['s:Body']['Nacist-souborResponse']['Nacist-souborResult']['Xrg']['Nacist-soubor']
     buffer = Buffer.from(result.Data, 'base64')
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', 'attachment; filename=' + result["Jmeno-souboru"])
+    res.setHeader('Content-Disposition', 'attachment; filename=' + result['Jmeno-souboru'])
   } catch (e) {
     console.log(e)
   }
-  
+
   res.send(buffer)
 }
