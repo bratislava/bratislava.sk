@@ -91,10 +91,10 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       <div className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}>
         <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg py-4 border-b border-gray-universal-200">
           <Brand
-            className="flex-1"
+            className="flex-1 group"
             url="/"
             title={
-              <p className="text-sm text-font">
+              <p className="text-sm text-font group-hover:text-red-universal-300">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {navBarTexts[languageKey].capitalCity}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -177,7 +177,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       <div
         className={cx(
           className,
-          'h-20 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
@@ -201,30 +201,15 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         {burgerOpen && <HamburgerMenu hamburgerMenuItems={menuItems} />}
       </div>
 
-      {cookies ? (
-        <div className="fixed bottom-6 z-50 px-6 left-0 right-0">
-          <div className="bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-[1110px] mx-auto">
-            <h6 className="text-default mb-4 font-semibold">Používanie cookies</h6>
-            <p className="text-xxs sm:text-sm mb-8">
-              Táto webstránka používa základné cookies na zabezpečenie správneho fungovania a sledovanie cookies, ktoré
-              nám pomáha porozumieť, ako stránku využívate. Budú zaznamenávané len po tom, ako vyjadríte svoj súhlas.{' '}
-              <a className="font-semibold underline">Nastavenia cookies.</a>
-            </p>
-            <div className="block sm:flex">
-              <Button
-                className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
-                variant="primaryDark"
-                onClick={() => acceptCookies()}
-              >
-                Prijať všetky
-              </Button>
-              <Button
-                className="mt-0 px-6 h-12 text-sm font-medium"
-                variant="secondaryDarkText"
-                onClick={() => rejectCookies()}
-              >
-                Odmietnuť všetky
-              </Button>
+      { cookies ?
+        <div className='fixed bottom-6 z-50 px-6 left-0 right-0'>
+          <div className='bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-[1110px] mx-auto'>
+            <h6 className='text-default mb-4 font-semibold'>Používanie cookies</h6>
+            <p className='text-xxs sm:text-sm mb-8'>Táto webstránka používa základné cookies na zabezpečenie správneho fungovania a sledovanie cookies, ktoré nám pomáha porozumieť, ako stránku využívate. Budú zaznamenávané len po tom, ako vyjadríte svoj súhlas. <a className='font-semibold underline cursor-pointer' onClick={() => rejectCookies()}>Nastavenia cookies.</a></p>
+
+            <div className='block sm:flex'>
+            <Button className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium" variant='primaryDark' onClick={() => acceptCookies()}>Prijať všetky</Button>
+            <Button className="mt-0 px-6 h-12 text-sm font-medium" variant='secondaryDarkText' onClick={() => rejectCookies()}>Odmietnuť všetky</Button>
             </div>
           </div>
         </div>

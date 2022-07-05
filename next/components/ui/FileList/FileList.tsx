@@ -26,9 +26,16 @@ export interface FileListProps {
   fileSections?: TFileSection[]
   dividerStyle?: string
   hideCategory?: boolean
+  noScroll?: boolean
 }
 
-export const FileList = ({ className, fileSections, dividerStyle = 'mesto', hideCategory }: FileListProps) => {
+export const FileList = ({
+  className,
+  fileSections,
+  dividerStyle = 'mesto',
+  hideCategory,
+  noScroll,
+}: FileListProps) => {
   const [clicked, setClicked] = React.useState(false)
   const [buttonText, setButtonText] = React.useState('Načítať ďalšie')
   const numberOfItemsPerRow = 9
@@ -51,7 +58,7 @@ export const FileList = ({ className, fileSections, dividerStyle = 'mesto', hide
         const rows = !clicked ? 1 : rem > maxRemainder ? quo + 1 : quo
         return (
           <div key={index} className={cx({ 'mt-5': index > 0 })}>
-            <div className="hidden lg:flex flex-col space-y-8" key={fileSection.category ?? ''}>
+            <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
               {Array.from(Array(rows).keys()).map((row, index) => {
                 const start = row * numberOfItemsPerRow
                 const end = !clicked ? 6 : (row + 1) * numberOfItemsPerRow
@@ -84,30 +91,32 @@ export const FileList = ({ className, fileSections, dividerStyle = 'mesto', hide
                 )
               })}
               {length > 6 && (
-                <Button className="self-center text-default px-6 py-2.5" variant="transparent" onClick={handleClick}>
+                <Button className="self-center text-default px-6 py-2.5" variant="secondaryDarkText" onClick={handleClick}>
                   {buttonText}
                 </Button>
               )}
             </div>
-            <div className="flex lg:hidden">
-              <HorizontalScrollWrapper className="gap-x-5">
-                {fileSection?.files.map((file, index) => (
-                  <div key={index}>
-                    <DownloadCard
-                      className="min-w-[280px]"
-                      title={file.title ? file.title : ''}
-                      downloadLink={file.media?.url ? file.media?.url : ''}
-                      uploadDate={file.media?.created_at ? file.media?.created_at : ''}
-                      downloadDetail={
-                        file.media?.ext && file.media.size
-                          ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                          : ''
-                      }
-                    />
-                  </div>
-                ))}
-              </HorizontalScrollWrapper>
-            </div>
+            {!noScroll && (
+              <div className="flex lg:hidden">
+                <HorizontalScrollWrapper className="gap-x-5">
+                  {fileSection?.files.map((file, index) => (
+                    <div key={index}>
+                      <DownloadCard
+                        className="min-w-[280px]"
+                        title={file.title ? file.title : ''}
+                        downloadLink={file.media?.url ? file.media?.url : ''}
+                        uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                        downloadDetail={
+                          file.media?.ext && file.media.size
+                            ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
+                            : ''
+                        }
+                      />
+                    </div>
+                  ))}
+                </HorizontalScrollWrapper>
+              </div>
+            )}
           </div>
         )
       })}

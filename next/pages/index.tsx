@@ -23,9 +23,11 @@ import NewsLetterSection from '../components/molecules/sections/NewsLetterSectio
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { isPresent } from '../utils/utils'
+import { forceString, isPresent, isRecord } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { identity } from 'lodash'
+import { getParsedUDEDocumentsList, mockedParsedDocuments, ParsedOfficialBoardDocument } from 'services/ginis'
 
 export const getServerSideProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
@@ -52,6 +54,18 @@ export const getServerSideProps = async (ctx) => {
     url: post?.slug,
     imageSrc: post?.image?.data?.attributes?.url,
   }))
+
+  let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
+  // change this if you need to develop on top of ginis data - this can only be done on bratislava VPN
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
+    } catch (e) {
+      console.log(e)
+    }
+  } else {
+    latestOfficialBoard = mockedParsedDocuments
+  }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
   const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
@@ -103,6 +117,7 @@ export const getServerSideProps = async (ctx) => {
             locale: l,
           })),
       },
+      latestOfficialBoard,
       homepagePosts: homepagePosts,
       inba: inba,
       header: header,
@@ -118,6 +133,7 @@ const Homepage = ({
   mainMenu,
   page,
   homepage,
+  latestOfficialBoard,
   latestBlogposts,
   homepagePosts,
   cards,
@@ -136,14 +152,14 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <div className="bg-white">
           <SectionContainer>
-            <div className="pt-25 lg:pt-18 pb-10 flex flex-col sm:flex-row sm:items-center">
-              <PageTitle className="flex-1" title={pageTitle} subtitle={header?.subtitle} />
+            <div className="pt-28 lg:pt-18 pb-8 lg:pb-10 flex flex-col sm:flex-row sm:items-center">
+              <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
               <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
           <Waves
-            className="mt-6 md:mt-18"
+            className="mt-6 md:mt-18 home-hero-wave"
             waveColor="white"
             wavePosition="bottom"
             isRich
@@ -152,7 +168,7 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-14 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
@@ -160,9 +176,10 @@ const Homepage = ({
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
+            documents={latestOfficialBoard}
             latestPost={latestBlogposts}
           />
-          <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
+          <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
           <GooutEvents
             linkTitle={t('allEvents')}

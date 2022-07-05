@@ -61,8 +61,8 @@ export const Contact = ({
         <div
           key={item.variant}
           className={cx('w-full mb-6 last:mb-0 md:mb-0', {
-            'md:w-1/2': items.length === 1 && !address,
-            // 'md:w-1/2': items.length === 2,
+            'md:w-1/1': items.length === 1 && !address,
+            'md:w-1/2': items.length === 2,
             'md:w-1/6': items.length === 3,
             'md:w-5/12': items.length === 1 && address,
           })}
@@ -99,7 +99,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
       <Icon className="w-24 h-24" />
       {value.split(',').map((item, key) => {
         return (
-          <div key={key}>
+          <div key={key} className="text-center">
             <span
               className={cx('font-semibold w-full break-all text-center', {
                 'mt-9': key === 0,

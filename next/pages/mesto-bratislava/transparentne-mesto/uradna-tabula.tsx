@@ -11,7 +11,7 @@ import {
 import BasePageLayout from '../../../components/layouts/BasePageLayout'
 import PageWrapper from '../../../components/layouts/PageWrapper'
 import { pageStyle } from '../../../utils/page'
-import { isPresent } from '../../../utils/utils'
+import { forceString, isPresent } from '../../../utils/utils'
 import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
 import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
 import { AsyncServerProps } from '@utils/types'
@@ -20,8 +20,11 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../../../utils/page'
 import { useTranslation } from 'next-i18next'
+import { getALotOfMockedDocs, getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
+import { useRouter } from 'next/router'
+import { GetServerSidePropsContext } from 'next'
 
-export const getServerSideProps = async (ctx: any) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
     slug: 'test',
@@ -66,6 +69,18 @@ export const getServerSideProps = async (ctx: any) => {
     variant: card?.variant,
   }))
 
+  let documents: ParsedOfficialBoardDocument[] = []
+  // change this if you need to develop on top of ginis data - this can only be done on bratislava VPN
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      documents = await getParsedUDEDocumentsList(forceString(ctx?.query?.search))
+    } catch (e) {
+      console.log(e)
+    }
+  } else {
+    documents = await getALotOfMockedDocs()
+  }
+
   return {
     props: {
       data: buildMockData({
@@ -94,6 +109,7 @@ export const getServerSideProps = async (ctx: any) => {
           })),
       },
       homepagePosts: homepagePosts,
+      documents,
       inba: inba,
       header: header,
       cards: cards,
@@ -107,6 +123,7 @@ const OfficialBoard = ({
   footer,
   mainMenu,
   page,
+  documents,
   homepage,
   latestBlogposts,
   homepagePosts,
@@ -114,10 +131,10 @@ const OfficialBoard = ({
   header,
   inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
-  const noResultsFound = false
-  const menuItems = parseMainMenu(mainMenu);
+  const noResultsFound = documents.length === 0
+  const menuItems = parseMainMenu(mainMenu)
   const { t } = useTranslation('common')
-
+  const { push, query } = useRouter()
   const boardPage = {
     slug: 'mesto-bratislava/transparentne-mesto/official-board',
     title: t('officialBoard'),
@@ -156,7 +173,8 @@ const OfficialBoard = ({
           color="var(--secondary-color)"
           transparentColor="var(--secondary-color--transparent)"
           transparentColorMobile="var(--secondary-color--semi-transparent)"
-          imageSrc={OfficialBoardBackgroundImage}  className="header-main-bg bg-cover"
+          imageSrc={OfficialBoardBackgroundImage}
+          className="header-main-bg bg-cover"
         >
           <SectionContainer>
             <div className="min-h-[220px] relative">
@@ -177,6 +195,9 @@ const OfficialBoard = ({
             placeholder={t('enterKeyword')}
             title={t('searching')}
             buttonText={t('search')}
+            /* TODO handle the fact push can error out */
+            onSubmit={(search) => push(`?search=${search}`)}
+            initialValue={forceString(query?.search)}
           />
           {noResultsFound ? (
             <NoResultsFound
@@ -198,113 +219,5 @@ const OfficialBoard = ({
     </PageWrapper>
   )
 }
-
-const documents = [
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-]
 
 export default OfficialBoard

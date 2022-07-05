@@ -20,6 +20,7 @@
   "articles": "Articles",
   "pages": "Pages",
   "documents": "Documents",
+  "files": "Files",
   "enterKeyword": "Enter a keyword",
   "weDidntFindAnything": "We didn't find anything",
   "tryEnteringSomethingElse": "Try entering something else",
@@ -31,5 +32,6 @@
   "download": "Download",
   "transparentCity": "Transparent city",
   "sorryNoResultsFound": "Sorry for the given search no results found.",
-  "toTheMainPage": "To the main page"
+  "toTheMainPage": "To the main page",
+  "toOfficialBoard": "To the official board"
 }

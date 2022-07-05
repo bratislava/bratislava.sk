@@ -37,7 +37,8 @@ export const Button = ({
   const iconContent = icon ? (
     <>
       <span className="group-hover:hidden">{icon}</span>
-      <span className="hidden group-hover:block">{hoverIcon || icon}</span>
+
+      <span className="hidden group-hover:block ml-5">{hoverIcon || icon}</span>
     </>
   ) : null
 
@@ -49,21 +50,21 @@ export const Button = ({
         'base-link': shape === 'none',
         'space-x-6': !!icon && spacing === 'default',
         'space-x-2': !!icon && spacing === 'small',
-
         // styles for buttons
         'bg-primary text-white': shape !== 'none' && variant === 'primary',
         'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
         'bg-secondary text-font': shape !== 'none' && variant === 'secondaryDarkText',
-        'bg-transparent text-sm text-font base-link underline md:no-underline md:bg-secondary md:text-font': shape !== 'none' && variant === 'secondaryDarkText-transparent',
+        'bg-transparent text-sm text-font base-link underline md:no-underline md:bg-secondary md:text-font':
+          shape !== 'none' && variant === 'secondaryDarkText-transparent',
         'bg-primaryDark text-white': shape !== 'none' && variant === 'primaryDark',
-        'bg-transparent text-default border-primary border-2': shape !== 'none' && variant === 'transparent',
+        'bg-transparent text-default text-font hover:text-primary border-primary border-2':
+          shape !== 'none' && variant === 'transparent',
         //transparent should be replaced with transparent-black
         'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',
         'bg-primary-muted text-white hover:bg-primary': shape !== 'none' && variant === 'muted',
         'bg-transparent text-font underline underline-offset-2': shape !== 'none' && variant === 'full-transparent',
         'rounded-lg': shape === 'default',
         'rounded-full': shape === 'circle',
-
         // styles for links
         'text-primary': shape === 'none' && (variant === 'primary' || variant === 'transparent'),
         'text-secondary': shape === 'none' && variant === 'secondary',
