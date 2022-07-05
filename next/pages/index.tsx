@@ -163,7 +163,7 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards className="mb-24" posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-14 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
@@ -174,7 +174,7 @@ const Homepage = ({
             documents={latestOfficialBoard}
             latestPost={latestBlogposts}
           />
-          <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
+          <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
           <GooutEvents
             linkTitle={t('allEvents')}
