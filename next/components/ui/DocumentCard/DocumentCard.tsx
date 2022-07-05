@@ -31,6 +31,7 @@ export const DocumentCard = ({
 }: DocumentCardProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
+  // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
   const { data } = useSWR(isOpen ? getDocumentDetailURL(id) : null, () =>
     fetch(getDocumentDetailURL(id)).then((res) => res.json())
   )
