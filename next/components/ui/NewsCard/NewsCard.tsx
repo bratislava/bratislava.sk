@@ -85,7 +85,10 @@ export const NewsCard = ({
   }, [])
 
   return (
-    <VerticalCard className={cx(className, 'min-w-[348px]')} imageSrc={coverImage?.data?.attributes?.url}>
+    <VerticalCard
+      className={cx(className, 'min-w-[280px]  leading-extra-tight')}
+      imageSrc={coverImage?.data?.attributes?.url}
+    >
       <UILink href={`/blog/${slug}`}>
         <div ref={cardRef} className="space-y-5">
           {tag?.data?.attributes?.title && (
@@ -94,7 +97,7 @@ export const NewsCard = ({
               color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
             />
           )}
-          <h3 className="text-md font-semibold news-small-content">{title}</h3>
+          <h3 className="text-default lg:text-md font-semibold news-small-content">{title}</h3>
           <span className="text-xs font-medium">{getNumericLocalDate(date_added || updatedAt)}</span>
           <p className="text-sm news-small-content">{excerpt}</p>
 

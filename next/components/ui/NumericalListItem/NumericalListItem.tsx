@@ -21,7 +21,7 @@ export const NumericalListItem = ({ index, item, variant, hasBackground }: Numer
       )}
       <div
         className={cx(
-          'group flex cursor-pointer px-8',
+          'group flex px-8',
           { 'h-16': variant === 'roadmap' },
           { 'h-auto': variant != 'roadmap' },
           { 'items-center': variant != 'combined' }
@@ -29,7 +29,7 @@ export const NumericalListItem = ({ index, item, variant, hasBackground }: Numer
       >
         <div
           className={cx(
-            'z-10 pt-0.5 shrink-0 min-w-16 rounded-full text-md flex items-center justify-center font-semibold w-10 h-10',
+            'z-10 shrink-0 min-w-16 rounded-full text-md flex items-center justify-center font-semibold w-10 h-10',
             { 'bg-white text-font': variant != 'roadmap' && hasBackground },
             { 'bg-primary text-white': variant === 'roadmap' || !hasBackground }
           )}
@@ -37,7 +37,7 @@ export const NumericalListItem = ({ index, item, variant, hasBackground }: Numer
           {index + 1}
         </div>
         <div
-          className={cx('max-w-screen-sm text-base lg:text-default pl-5 lg:pl-11', { 'pt-2': variant === 'combined' })}
+          className={cx('max-w-screen-sm text-base lg:text-default pl-5 lg:pl-11 listitem', { 'pt-2': variant === 'combined' })}
         >
           <UIMarkdown
             numericalList={true}

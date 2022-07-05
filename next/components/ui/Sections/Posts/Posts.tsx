@@ -8,17 +8,25 @@ import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Homepage, BlogPost, HomepageQuery, LatestBlogsWithTagsQuery, BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  Homepage,
+  BlogPost,
+  HomepageQuery,
+  LatestBlogsWithTagsQuery,
+  BlogPostFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { useTranslation } from 'react-i18next'
+import { ParsedOfficialBoardDocument } from 'services/ginis'
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
 export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
+  documents?: ParsedOfficialBoardDocument[]
   // latestPost?: BlogPost[]
   latestPost?: LatestBlogsFragment
   leftHighLight?: NewsCardBlogFragment | null
@@ -30,6 +38,7 @@ export interface PostsProps {
 export const Posts = ({
   className,
   posts = [],
+  documents = [],
   leftHighLight,
   rightHighLight,
   readMoreText,
@@ -52,8 +61,8 @@ export const Posts = ({
 
   return (
     <div className={cx(className)}>
-      <HorizontalScrollWrapper className="justify-start lg:justify-center">
-        <div className="flex space-x-8 lg:space-x-32 ml-8 lg:ml-0">
+      <HorizontalScrollWrapper className="justify-start lg:justify-center space-x-4 -mx-8 px-8">
+        <div className="flex space-x-8 lg:space-x-32">
           {posts.map((post, index) => (
             <TabBarTab
               key={index}
@@ -68,52 +77,69 @@ export const Posts = ({
       </HorizontalScrollWrapper>
 
       {activeTab == 0 && (
-        <div className="hidden lg:flex mt-14">
-          <div className="grid grid-cols-3 gap-x-7.5">
-            {!leftHighLight &&
-              largeNews.map((newsCard, i) => (
-                <div key={i}>
-                  <NewsCard {...newsCard} />
-                </div>
-              ))}
-            {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
-            {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
+        <div className="block mt-14">
+          <HorizontalScrollWrapper className="space-x-4 pb-12 -mx-8 px-8">
+            <div className="flex lg:grid grid-cols-3 gap-x-5 lg:gap-x-7.5">
+              {!leftHighLight &&
+                largeNews.map((newsCard, i) => (
+                  <div key={i}>
+                    <NewsCard {...newsCard} />
+                  </div>
+                ))}
+              {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
+              {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
 
-            {latestPost?.data?.length > 0 && (
-              <div>
-                {latestPost.data.map((newsCard, i) => {
-                  const card = newsCard.attributes
-                  const tag = card.tag.data?.attributes
-                  return (
-                    <div key={i}>
-                      {card.tag && (
-                        <div className="mb-3">
-                          <Tag title={tag?.title} color={tag?.pageCategory.data.attributes.color} />
-                        </div>
-                      )}
-                      <UILink href={`blog/${card.slug}`}>
-                        <div className="mb-3 underline font-semibold">{card.title}</div>
-                      </UILink>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-            <div className="mt-14 flex justify-center col-span-3">
-              {/* TODO: change this button to custom button */}
               {latestPost?.data?.length > 0 && (
-                <UILink href={t('allNewsLink')}>
-                  <Button
-                    variant="transparent"
-                    className="px-6 py-3 text-default font-medium shadow-none text-font"
-                    icon={<ChevronRight />}
-                    hoverIcon={<ArrowRight />}
-                  >
-                    {readMoreNewsText}
-                  </Button>
-                </UILink>
+                <div className="hidden lg:block">
+                  {latestPost.data.map((newsCard, i) => {
+                    const card = newsCard.attributes
+                    const tag = card.tag.data?.attributes
+                    return (
+                      <div key={i}>
+                        {card.tag && (
+                          <div className="mb-5">
+                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                          </div>
+                        )}
+                        <UILink href={`blog/${card.slug}`}>
+                          <div
+                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag.pageCategory.data.attributes.color}))]`}
+                          >
+                            {card.title}
+                          </div>
+                        </UILink>
+                      </div>
+                    )
+                  })}
+                </div>
               )}
+              <div className="mt-14 hidden lg:flex justify-center col-span-3">
+                {/* TODO: change this button to custom button */}
+                {latestPost?.data?.length > 0 && (
+                  <UILink href={t('allNewsLink')}>
+                    <Button
+                      variant="transparent"
+                      className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font hover:text-primary"
+                      icon={<ChevronRight />}
+                      hoverIcon={<ArrowRight />}
+                    >
+                      {readMoreNewsText}
+                    </Button>
+                  </UILink>
+                )}
+              </div>
             </div>
+          </HorizontalScrollWrapper>
+          <div className="flex justify-center lg:hidden">
+            {/* TODO: change this button to custom button */}
+            <Button
+              variant="transparent"
+              className="px-6 py-2 mt-0 text-default font-medium shadow-none"
+              icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
+            >
+              Všetky aktuality
+            </Button>
           </div>
         </div>
       )}
@@ -124,28 +150,28 @@ export const Posts = ({
               <DocumentCard
                 key={index}
                 {...document}
-                className="max-w-4xl"
-                viewButtonText="TODO-fix"
+                className="max-w-4xl min-w-full"
+                viewButtonText={t('files')}
                 downloadButtonText="TODO-fix"
               />
             ))}
           </div>
-          <UILink href="/official-board" className="flex justify-center">
+          <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-default font-medium"
-              variant="transparent-black"
+              className="px-6 py-3 text-default font-medium shadow-none hover:text-primary"
+              variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
-              Prejsť na úradnú tabuľu
+              {t('toOfficialBoard')}
             </Button>
           </UILink>
         </div>
       )}
       {activeTab > 1 && (
-        <div className="mt-23 px-8 font-sans font-normal lg:text-md text-default text-center items-end">
+        <div className="mt-14 px-8 font-sans font-normal lg:text-md text-default text-center items-end">
           Všetky informácie nájdete na stránke
-          <UILink className="underline" href="https://zverejnovanie.bratislava.sk">
+          <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             {
               <div className="lg:hidden">
                 <br></br>
@@ -157,7 +183,7 @@ export const Posts = ({
       )}
 
       {/* Mobile */}
-      <div className="lg:hidden mt-9">
+      <div className="hidden mt-9">
         <HorizontalScrollWrapper className="space-x-4 pb-12 -mx-8 px-8">
           {activeNewsCards.map((newsItem, index) => (
             <NewsCard key={index} readMoreText={readMoreText} className="flex-shrink-0 w-11/12" {...newsItem} />
@@ -165,7 +191,12 @@ export const Posts = ({
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
           {/* TODO: change this button to custom button */}
-          <Button variant="transparent" className="px-6 py-2 mt-9 text-default font-medium">
+          <Button
+            variant="transparent"
+            className="px-6 py-2 mt-9 text-default font-medium shadow-none"
+            icon={<ChevronRight />}
+            hoverIcon={<ArrowRight />}
+          >
             Všetky aktuality
           </Button>
         </div>
@@ -175,27 +206,3 @@ export const Posts = ({
 }
 
 export default Posts
-
-const documents = [
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-  {
-    title: 'Kúpna zmluva technológie garáže M. Benku',
-    createdAt: 'utorok 19. decembra 2017',
-    fileExtension: '.pdf',
-    fileSize: '164 kB',
-    content: 'Kúpna zmluva na technológie inštalované v podzemnej garáži na Nám. M. Benku od odovzdávajúceho nájomcu',
-  },
-]
