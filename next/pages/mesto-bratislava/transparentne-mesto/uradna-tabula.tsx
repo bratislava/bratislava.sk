@@ -204,12 +204,7 @@ const OfficialBoard = ({
             initialValue={forceString(query?.search)}
           />
           {noResultsFound ? (
-            <NoResultsFound
-              title=""
-              message="Ľutujeme, pre dané vyhľadávanie
-            sa nenašli žiadne výsledky."
-              messageClassName="max-w-sm text-center -mt-16 leading-normal"
-            />
+            <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <DocumentCards
               title={t('recentlyAddedDocuments')}
