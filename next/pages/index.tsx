@@ -27,7 +27,7 @@ import { forceString, isPresent, isRecord } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { identity } from 'lodash'
-import { getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
+import { getParsedUDEDocumentsList, mockedParsedDocuments, ParsedOfficialBoardDocument } from 'services/ginis'
 
 export const getStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
@@ -56,10 +56,15 @@ export const getStaticProps = async (ctx) => {
   }))
 
   let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
-  try {
-    latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
-  } catch (e) {
-    console.log(e)
+  // change this if you need to develop on top of ginis data - this can only be done on bratislava VPN
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
+    } catch (e) {
+      console.log(e)
+    }
+  } else {
+    latestOfficialBoard = mockedParsedDocuments
   }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url

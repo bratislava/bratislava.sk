@@ -22,16 +22,16 @@ export const forceString = (input: unknown) => {
 
 export const fileCountVzns = (data: any) => {
   let count = 0
-  if (data?.attributes?.mainDocument?.url) {
+  if (data?.mainDocument?.url) {
     count += 1
   }
-  if (data?.attributes?.amedmentDocument) {
-    count += data?.attributes?.amedmentDocument.length
+  if (data?.amedmentDocument) {
+    count += data?.amedmentDocument.length
   }
-  if (data?.attributes?.cancellationDocument) {
-    count += data?.attributes?.cancellationDocument.length
+  if (data?.cancellationDocument) {
+    count += data?.cancellationDocument.length
   }
-  if (data?.attributes?.consolidatedText) {
+  if (data?.consolidatedText) {
     count += 1
   }
   return count
