@@ -13,9 +13,23 @@ jobs:
         with:
           node-version: '16'
       - run: yarn --frozen-lockfile
-      - uses: sibiraj-s/action-eslint@v2
+      - name: Typescript check
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          # Change reviewdog reporter if you need
+          # [github-pr-check,github-check,github-pr-review].
+          # More about reviewdog reporters at
+          # https://github.com/reviewdog/reviewdog#reporters
+          reporter: github-check
+          # Change reporter level if you need
+          # [info,warning,error].
+          # More about reviewdog reporter level at
+          # https://github.com/reviewdog/reviewdog#reporters
+          level: warning
+      - name: ESlint check
+        uses: sibiraj-s/action-eslint@v2
         with:
           eslint-args: '--ignore-path=.gitignore --quiet'
           extensions: 'js,jsx,ts,tsx'
-          annotations: true
+          annotations: tru
 
