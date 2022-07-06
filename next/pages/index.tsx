@@ -74,7 +74,12 @@ export const getStaticProps = async (ctx) => {
     return blogPosts
   }
 
-  const rozkoPosts = await getRozkoPosts()
+  let rozkoPosts
+  try {
+    rozkoPosts = await getRozkoPosts()
+  } catch (e) {
+    console.log(e)
+  }
 
   let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
   if (shouldMockGinis()) {
