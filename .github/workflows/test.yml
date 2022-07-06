@@ -13,7 +13,6 @@ jobs:
         with:
           node-version: '16'
       - run: yarn --frozen-lockfile
-      - run: yarn install
       - uses: sibiraj-s/action-eslint@v2
         with:
           eslint-args: '--ignore-path=.gitignore --quiet'
