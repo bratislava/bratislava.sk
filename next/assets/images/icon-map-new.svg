@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+	<title>icon-map-new-svg</title>
+	<style>
+		.s0 { fill: none;stroke: #333333;stroke-width: 1.9 } 
+	</style>
+	<path id="Layer" class="s0" d="m13.6 5.3v33"/>
+	<path id="Layer" class="s0" d="m25.9 34.7v-33"/>
+	<path id="Layer" class="s0" d="m1.3 34.7l-0.1-33 12.3 3.6 12.4-3.6 12.2 3.6v33l-12.2-3.6-12.3 3.6z"/>
+</svg>

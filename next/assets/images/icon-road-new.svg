@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+	<title>icon-road-new-svg</title>
+	<style>
+		.s0 { fill: none;stroke: #333333;stroke-width: 1.8 } 
+	</style>
+	<path id="Layer" class="s0" d="m1.5 31h36.9"/>
+	<path id="Layer" class="s0" d="m1.5 9h36.9"/>
+	<path id="Layer" class="s0" d="m1.5 20h7.2"/>
+	<path id="Layer" class="s0" d="m31.2 20h7.2"/>
+	<path id="Layer" class="s0" d="m16.5 20h7.2"/>
+	<path id="Layer" class="s0" d="m1.5 0.9h36.9v38.1h-36.9z"/>
+</svg>

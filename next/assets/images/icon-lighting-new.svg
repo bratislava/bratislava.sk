@@ -1,0 +1,16 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" width="44" height="48">
+	<title>icon-lighting-svg</title>
+	<style>
+		.s0 { fill: none;stroke: #333333;stroke-width: 1.5 } 
+	</style>
+	<path id="Layer" class="s0" d="m26 31.9h-8c-0.8 0-1.7-0.3-2.3-0.8-0.7-0.5-1.1-1.3-1.2-2.1l-2.7-21.1h20.4l-2.7 21.1c-0.1 0.8-0.6 1.6-1.2 2.1-0.7 0.5-1.5 0.8-2.3 0.8z"/>
+	<path id="Layer" class="s0" d="m6 7.9h32z"/>
+	<path id="Layer" class="s0" d="m18.5 1.1h6.9q1.3 0 2.6 0.5 1.2 0.5 2.2 1.5 0.9 0.9 1.5 2.2 0.5 1.2 0.5 2.6h-20.4c0-1.8 0.7-3.6 1.9-4.8 1.3-1.3 3-2 4.8-2z"/>
+	<path id="Layer" class="s0" d="m19.2 47.7v-15.8h5.5v15.8"/>
+	<path id="Layer" class="s0" d="m0.1 25.6l6.7-1.3"/>
+	<path id="Layer" class="s0" d="m9.6 31.3l-5.7 3.8"/>
+	<path id="Layer" class="s0" d="m0.2 15.3l6.7 1.5"/>
+	<path id="Layer" class="s0" d="m43.9 25.6l-6.8-1.3"/>
+	<path id="Layer" class="s0" d="m34.3 31.3l5.7 3.8"/>
+	<path id="Layer" class="s0" d="m43.7 15.3l-6.7 1.5"/>
+</svg>
