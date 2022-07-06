@@ -81,7 +81,13 @@ export const AdvancedSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="h-14 rounded-l-none text-default px-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
+          className={cx(
+            'h-14 rounded-l-none text-default px-6 shadow-none font-medium',
+            {
+              'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength,
+            },
+            { 'cursor-default': input.length <= minKeywordLength }
+          )}
           variant="secondaryDarkText"
           onClick={() => {
             input.length > minKeywordLength && handleClick(checked, input)

@@ -10,8 +10,6 @@ import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
 import CloseIcon from '../../../assets/images/close.svg'
-import SmallBlackSearchIcon from '../../../assets/images/search-icon-small-black.svg'
-import SmallWhiteSearchIcon from '../../../assets/images/search-icon-small-white.svg'
 import Button from '../Button/Button'
 import { useTranslation } from 'next-i18next'
 import NarrowText from '../NarrowText/NarrowText'
@@ -132,9 +130,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 />
                 <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : ''}>
                   <Button
-                    icon={<SmallBlackSearchIcon />}
-                    hoverIcon={<SmallWhiteSearchIcon />}
-                    className="h-6 rounded-l-none text-sm px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium"
+                    icon={<SearchIcon className="scale-75" />}
+                    hoverIcon={<SearchIcon className="scale-75" />}
+                    className={cx(
+                      'h-6 rounded-l-none text-sm px-6 shadow-none font-medium',
+                      { 'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength },
+                      { 'cursor-default': input.length <= minKeywordLength }
+                    )}
                     variant="secondaryDarkText"
                   >
                     {t('search')}
