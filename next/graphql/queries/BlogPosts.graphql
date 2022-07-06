@@ -75,7 +75,7 @@ query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
 }
 
 query BlogPostsStaticPaths($locale: I18NLocaleCode) {
-  blogPosts(locale: $locale) {
+  blogPosts(locale: $locale, sort: "publishedAt:desc") {
     data {
       id
       attributes {
