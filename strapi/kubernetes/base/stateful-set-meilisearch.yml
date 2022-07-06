@@ -8,9 +8,6 @@ metadata:
 spec:
   replicas: 1
   serviceName: ${BUILD_REPOSITORY_NAME}-meilisearch
-  selector:
-    matchLabels:
-      service: meilisearch
   template:
     metadata:
       labels:
