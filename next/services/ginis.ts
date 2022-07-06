@@ -1,6 +1,6 @@
 import { forceString, isRecord } from '@utils/utils'
 import axios, { AxiosRequestConfig } from 'axios'
-import { ResponseGinisBodyDocumentDetail, ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
+import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
 import { identity } from 'lodash'
 import { parseStringPromise } from 'xml2js'
 
