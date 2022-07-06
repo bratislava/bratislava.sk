@@ -88,6 +88,9 @@ const nextConfig = {
 }
 
 module.exports = (phase, { defaultConfig }) => {
+  // Assign phase to modify on-demand revalidation part
+  nextConfig.serverRuntimeConfig['phase'] = phase;
+
   return {
     ...defaultConfig,
     ...nextConfig,

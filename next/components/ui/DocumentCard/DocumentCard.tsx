@@ -6,7 +6,7 @@ import Download from '../../../assets/images/download-document.svg'
 import { getNumericLocalDate } from '@utils/local-date'
 import Modal from '../Modal/Modal'
 import useSWR from 'swr'
-import { getDocumentDetailURL, getDocumentFileURL } from 'services/ginis'
+import { getDocumentDetailURL, getDocumentFileURL, getMockedDetail } from 'services/ginis'
 import { useState } from 'react'
 import { TFile, FileList, TFileSection } from '../FileList/FileList'
 

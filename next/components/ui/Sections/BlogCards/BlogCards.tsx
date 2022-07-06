@@ -47,7 +47,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
         />
       </div>
 
-      <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4')}>
+      <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4 -mx-8 px-8')}>
         {posts.map((blogCard, i) => (
           <HorizontalCard
             key={i}

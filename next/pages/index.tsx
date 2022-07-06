@@ -23,13 +23,17 @@ import NewsLetterSection from '../components/molecules/sections/NewsLetterSectio
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { forceString, isPresent, isRecord } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { identity } from 'lodash'
-import { getParsedUDEDocumentsList, mockedParsedDocuments, ParsedOfficialBoardDocument } from 'services/ginis'
+import {
+  getParsedUDEDocumentsList,
+  mockedParsedDocuments,
+  ParsedOfficialBoardDocument,
+  shouldMockGinis,
+} from 'services/ginis'
 
-export const getServerSideProps = async (ctx) => {
+export const getStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -55,16 +59,37 @@ export const getServerSideProps = async (ctx) => {
     imageSrc: post?.image?.data?.attributes?.url,
   }))
 
+  const getRozkoPosts = async () => {
+    const { blogPosts } = await client.LatestBlogsWithTags({
+      limit: 7,
+      sort: 'publishedAt:desc',
+      filters: {
+        tag: {
+          title: {
+            eq: 'Rozkopávky a uzávierky',
+          },
+        },
+      },
+    })
+    return blogPosts
+  }
+
+  let rozkoPosts
+  try {
+    rozkoPosts = await getRozkoPosts()
+  } catch (e) {
+    console.log(e)
+  }
+
   let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
-  // change this if you need to develop on top of ginis data - this can only be done on bratislava VPN
-  if (process.env.NODE_ENV === 'production') {
+  if (shouldMockGinis()) {
+    latestOfficialBoard = mockedParsedDocuments
+  } else {
     try {
       latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
     } catch (e) {
       console.log(e)
     }
-  } else {
-    latestOfficialBoard = mockedParsedDocuments
   }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
@@ -122,8 +147,10 @@ export const getServerSideProps = async (ctx) => {
       inba: inba,
       header: header,
       cards: cards,
+      rozkoPosts: rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
+    revalidate: 30,
   }
 }
 
@@ -139,7 +166,8 @@ const Homepage = ({
   cards,
   header,
   inba,
-}: AsyncServerProps<typeof getServerSideProps>) => {
+  rozkoPosts,
+}: AsyncServerProps<typeof getStaticProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
   const menuItems = parseMainMenu(mainMenu)
@@ -178,6 +206,7 @@ const Homepage = ({
             posts={posts}
             documents={latestOfficialBoard}
             latestPost={latestBlogposts}
+            rozkoPosts={rozkoPosts}
           />
           <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
