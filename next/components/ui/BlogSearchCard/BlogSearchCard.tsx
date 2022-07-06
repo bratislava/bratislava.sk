@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
 import { BlogItem } from '../FeaturedBlogs/FeaturedBlogs'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
 export interface BlogImage {
   url: string
@@ -27,31 +28,20 @@ export interface BlogSearchCardProps {
   className?: string
   imageClassName?: string
   fullCardSizeImage?: boolean
-  // title?: string
-  // published_at?: string
-  // coverImage?: string
-  // tag?: BlogTag
   item: BlogItem
 }
 
-export const BlogSearchCard = ({
-  // coverImage,
-  // tag,
-  // title,
-  // published_at,
-  className,
-  imageClassName,
-  fullCardSizeImage,
-  item,
-}: BlogSearchCardProps) => {
+export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, item }: BlogSearchCardProps) => {
+  const { Link: UILink } = useUIContext()
   const publishedAt = new Date(item.data?.attributes?.publishedAt)
   const date = publishedAt.getDay() + '. ' + publishedAt.getMonth() + '. ' + publishedAt.getFullYear()
   const headline =
     item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
   const color = item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color
   const headlineColor = color ? `--color-${color}--light` : '--color-red'
+  const slug = item.data?.attributes?.slug
   return (
-    <>
+    <UILink href={slug ? `/blog/${slug}` : ''}>
       <Panel
         className={cx(
           className,
@@ -114,6 +104,6 @@ export const BlogSearchCard = ({
           </div>
         </div>
       </Panel>
-    </>
+    </UILink>
   )
 }

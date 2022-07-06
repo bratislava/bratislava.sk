@@ -25,6 +25,8 @@ export const searchArticles = async (search: string, offset = 0) => {
     // offset,
   })
 
+  console.log('art data', data)
+
   const mappedArticles = data.hits.map((article) => {
     return {
       data: {
@@ -52,6 +54,7 @@ export const searchArticles = async (search: string, offset = 0) => {
             },
           },
           title: article.title,
+          slug: article.slug,
         },
       },
     }
