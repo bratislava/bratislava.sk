@@ -93,12 +93,12 @@ export const Posts = ({
                 <div className="hidden lg:block">
                   {latestPost.data.map((newsCard, i) => {
                     const card = newsCard.attributes
-                    const tag = card.tag.data.attributes
+                    const tag = card.tag.data?.attributes
                     return (
                       <div key={i}>
                         {card.tag && (
                           <div className="mb-5">
-                            <Tag title={tag.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>

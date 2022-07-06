@@ -1,8 +1,8 @@
-name: Test yarn build
-on: [push]
+name: Test on pull request yarn build
+on: [pull_request]
 jobs:
   build:
-    name: Test
+    name: Test yarn build
     runs-on: ubuntu-latest
     defaults:
       run:
