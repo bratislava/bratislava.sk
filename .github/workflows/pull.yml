@@ -1,4 +1,4 @@
-name: Test on pull request yarn build
+name: Test on pull request
 on: [pull_request]
 jobs:
   build:
