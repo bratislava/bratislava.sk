@@ -25,7 +25,7 @@ jobs:
           echo 'Files modified: ${{steps.files.outputs.files_updated}}'
           echo 'Files added: ${{steps.files.outputs.files_created}}'
           echo 'Files removed: ${{steps.files.outputs.files_deleted}}'
-      - uses: Arhia/action-check-typescript@v2.0
+      - uses: Arhia/action-check-typescript@v0.11
         with:
           use-check: true
           check-fail-mode: added
