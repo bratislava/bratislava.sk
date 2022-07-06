@@ -232,6 +232,10 @@
     -webkit-box-orient: vertical;
     display: -webkit-box;
   }
+
+  .text-title-center h1,.text-title-center h2,.text-title-center h3,.text-title-center h4{
+    @apply text-center mb-6;
+  }
   
 }
 
