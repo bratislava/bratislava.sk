@@ -66,7 +66,7 @@ export const getStaticProps = async (ctx) => {
       filters: {
         tag: {
           title: {
-            eq: 'Rozvoj mesta',
+            eq: 'Rozkopávky a uzávierky',
           },
         },
       },
