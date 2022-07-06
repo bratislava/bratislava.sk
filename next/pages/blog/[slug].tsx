@@ -33,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => {
   console.log(`Revalidating ${ctx.params?.slug}`)
-  const {locale} = ctx;
+  const { locale } = ctx
   const slug = arrayify(ctx.params?.slug)[0]
 
   if (!slug) return { notFound: true }
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 
   return {
     props: { slug, post: blogPosts, footer, mainMenu, locale },
-    revalidate: 7200, // revalidate after 2 hours
+    revalidate: 14400, // revalidate after 4 hours
   }
 }
 
