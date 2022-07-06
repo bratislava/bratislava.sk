@@ -29,16 +29,11 @@ const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
   const [_, { language }] = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
-    // if (locale && slug) {
-    //   base.push({ locale, slug: localePath(locale, slug) })
-    // }
-
     if (locale) {
       base.push({ locale, slug: localePath(locale, slug) })
     }
 
     localizations?.forEach((l) => {
-      // if (!l.locale || !l.slug) return
       base.push({
         locale: l.locale,
         slug: localePath(l.locale, l.slug),
@@ -56,5 +51,4 @@ const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
 }
 
 export const usePageWrapperContext = () => useContext(PageWrapperContext)
-
 export default PageWrapper
