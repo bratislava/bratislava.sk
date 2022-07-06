@@ -8,31 +8,30 @@ jobs:
       run:
         working-directory: ./next
     steps:
-      - uses: actions/checkout@v2
-      - name: Get diff lines
-        id: diff
-        uses: Equip-Collaboration/diff-line-numbers@v1.0.0
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          include: '["\\.ts$"]'
-      - name: Detecting files changed
-        id: files
-        uses: futuratrepadeira/changed-files@v3.2.1
+          node-version: '16'
+      - run: yarn --frozen-lockfile
+      - name: Typescript check
+        uses: EPMatt/reviewdog-action-tsc@v1
         with:
-          repo-token: ${{ github.token }}
-          pattern: '^.*\.ts$'
-      - name: List files changed
-        run: |
-          echo 'Files modified: ${{steps.files.outputs.files_updated}}'
-          echo 'Files added: ${{steps.files.outputs.files_created}}'
-          echo 'Files removed: ${{steps.files.outputs.files_deleted}}'
-      - uses: Arhia/action-check-typescript@v0.11
+          # Change reviewdog reporter if you need
+          # [github-pr-check,github-check,github-pr-review].
+          # More about reviewdog reporters at
+          # https://github.com/reviewdog/reviewdog#reporters
+          reporter: github-check
+          # Change reporter level if you need
+          # [info,warning,error].
+          # More about reviewdog reporter level at
+          # https://github.com/reviewdog/reviewdog#reporters
+          level: warning
+          workdir: ./next
+      - name: ESlint check
+        uses: sibiraj-s/action-eslint@v2
         with:
-          use-check: true
-          check-fail-mode: added
-          files-changed: ${{steps.files.outputs.files_updated}}
-          files-added: ${{steps.files.outputs.files_created}}
-          files-deleted: ${{steps.files.outputs.files_deleted}}
-          line-numbers: ${{steps.diff.outputs.lineNumbers}}
-      - name: ESLint check
-        uses: bradennapier/eslint-plus-action@v3
+          eslint-args: '--ignore-path=.gitignore --quiet'
+          extensions: 'js,jsx,ts,tsx'
+          annotations: true
+          
 
