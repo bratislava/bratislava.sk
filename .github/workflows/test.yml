@@ -1,4 +1,4 @@
-name: Test yarn build
+name: Tests on commit
 on: [push]
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
         with:
           repo-token: ${{ github.token }}
           pattern: '^.*\.ts$'
-      - name: List files changed (you can remove this step, for monitoring only)
+      - name: List files changed
         run: |
           echo 'Files modified: ${{steps.files.outputs.files_updated}}'
           echo 'Files added: ${{steps.files.outputs.files_created}}'
