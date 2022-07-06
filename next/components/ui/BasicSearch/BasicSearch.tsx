@@ -1,8 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import Button from '../Button/Button'
-import SearchIcon from '../../../assets/images/search-icon.svg'
-import SearchIconSmallBlack from '../../../assets/images/search-icon-small-black.svg'
-import SearchIconSmallWhite from '../../../assets/images/search-icon-small-white.svg'
+import SearchIcon from '@assets/images/search-icon.svg'
+import SearchIconSmallBlack from '@assets/images/search-icon-small-black.svg'
+import SearchIconSmallWhite from '@assets/images/search-icon-small-white.svg'
 import cx from 'classnames'
 import { useState } from 'react'
 
