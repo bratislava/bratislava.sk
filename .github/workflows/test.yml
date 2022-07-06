@@ -33,3 +33,6 @@ jobs:
           files-added: ${{steps.files.outputs.files_created}}
           files-deleted: ${{steps.files.outputs.files_deleted}}
           line-numbers: ${{steps.diff.outputs.lineNumbers}}
+      - name: ESLint check
+        uses: bradennapier/eslint-plus-action@v3
+
