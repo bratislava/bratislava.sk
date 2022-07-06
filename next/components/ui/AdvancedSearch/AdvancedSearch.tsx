@@ -63,6 +63,11 @@ export const AdvancedSearch = ({
   const handleChange = (event) => {
     setInput(event.target.value)
   }
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && input.length > minKeywordLength) {
+      handleClick(checked, input)
+    }
+  }
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
@@ -75,6 +80,7 @@ export const AdvancedSearch = ({
           placeholder={placeholder}
           value={input}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}

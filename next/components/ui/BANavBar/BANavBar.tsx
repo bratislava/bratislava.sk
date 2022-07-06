@@ -17,6 +17,8 @@ import { useTranslation } from 'next-i18next'
 import NarrowText from '../NarrowText/NarrowText'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { minKeywordLength } from '@utils/constants'
+import { useRouter } from 'next/router'
+
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
@@ -50,6 +52,7 @@ const navBarUrls = {
 }
 
 export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
+  const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [cookies, setCookies] = useState(true)
@@ -84,6 +87,11 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
   const [input, setInput] = useState('')
   const handleChange = (event) => {
     setInput(event.target.value)
+  }
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && input.length > minKeywordLength) {
+      router.push(`${t('searchLink')}?keyword=${input}`)
+    }
   }
   return (
     <>
@@ -120,6 +128,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   className="h-6 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-sm text-font"
                   value={input}
                   onChange={handleChange}
+                  onKeyDown={handleKeyDown}
                 />
                 <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : ''}>
                   <Button
