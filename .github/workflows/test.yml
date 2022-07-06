@@ -14,6 +14,9 @@ jobs:
           node-version: '16'
       - run: yarn --frozen-lockfile
       - run: yarn install
-      - name: Run ESLint
-        run: eslint . --ext .js,.jsx,.ts,.tsx
+      - uses: sibiraj-s/action-eslint@v2
+        with:
+          eslint-args: '--ignore-path=.gitignore --quiet'
+          extensions: 'js,jsx,ts,tsx'
+          annotations: true
 
