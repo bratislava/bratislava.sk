@@ -1,5 +1,5 @@
 import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
-import { BasicSearch, DocumentListItem, Modal, Pagination } from '@bratislava/ui-bratislava'
+import { BasicSearch, DocumentListItem, Modal, NoResultsFound, Pagination } from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import { MEILI_PAGE_SIZE, searchVZN } from '@utils/meilisearch'
 import { fileCountVzns } from '@utils/utils'
@@ -45,32 +45,38 @@ export const DocumentList = () => {
           onSubmit={setSearch}
         />
       </div>
-      <div className="pt-14 pb-5 lg:pb-6 text-default lg:text-md font-medium">Zoznam dokumentov</div>
-      <div className="flex flex-col md:w-auto gap-4 lg:gap-6 modal-content-rent">
-        {vzns.map((vzn) => {
-          const category = DocumentListCategorysMap.get(vzn.category)
-          return (
-            <DocumentListItem
-              categoryName={category.value}
-              title={vzn.title}
-              key={vzn.id}
-              id={vzn.id}
-              Icon={category.icon}
-              count={fileCountVzns(vzn)}
-              onClick={setOpenModal}
-              mainDocumentHref={vzn.mainDocument?.url}
-            />
-          )
-        })}
-      </div>
-      <Pagination
-        key={search}
-        itemsPerPage={MEILI_PAGE_SIZE}
-        totalPages={totalPages}
-        totalCount={total}
-        currentPage={currentPage}
-        pageHandler={setCurrentPage}
-      />
+      {total === 0 ? (
+        <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
+      ) : (
+        <>
+          <div className="pt-14 pb-5 lg:pb-6 text-default lg:text-md font-medium">{t('listOfDocuments')}</div>
+          <div className="flex flex-col md:w-auto gap-4 lg:gap-6 modal-content-rent">
+            {vzns.map((vzn) => {
+              const category = DocumentListCategorysMap.get(vzn.category)
+              return (
+                <DocumentListItem
+                  categoryName={category.value}
+                  title={vzn.title}
+                  key={vzn.id}
+                  id={vzn.id}
+                  Icon={category.icon}
+                  count={fileCountVzns(vzn)}
+                  onClick={setOpenModal}
+                  mainDocumentHref={vzn.mainDocument?.url}
+                />
+              )
+            })}
+          </div>
+          <Pagination
+            key={search}
+            itemsPerPage={MEILI_PAGE_SIZE}
+            totalPages={totalPages}
+            totalCount={total}
+            currentPage={currentPage}
+            pageHandler={setCurrentPage}
+          />
+        </>
+      )}
       <Modal isOpen={isOpen} onClose={setCloseModal} className="z-50">
         <DocumentListModalBody {...activeData} />
       </Modal>
