@@ -69,10 +69,13 @@ export const searchPages = async (search: string, offset = 0) => {
     // offset,
   })
 
+  console.log('page data', data)
+
   const mappedPages = data.hits.map((page) => {
     return {
       pageColor: page.pageColor,
       title: page.title,
+      slug: page.slug,
     }
   })
   return mappedPages
