@@ -1,8 +1,8 @@
-name: Tests on commit
+name: Tests on push
 on: [push]
 jobs:
   build:
-    name: Test
+    name: Tests on push
     runs-on: ubuntu-latest
     defaults:
       run:
