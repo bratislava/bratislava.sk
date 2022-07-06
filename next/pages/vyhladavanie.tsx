@@ -59,10 +59,6 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
       value: t('articles'),
     },
     { key: 'pages', value: t('pages') },
-    {
-      key: 'documents',
-      value: t('documents'),
-    },
   ]
   const [checkedOptions, setCheckedOptions] = useState(options)
   const [input, setInput] = useState('')

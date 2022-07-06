@@ -37,10 +37,6 @@ export const AdvancedSearch = ({
       value: t('articles'),
     },
     { key: 'pages', value: t('pages') },
-    {
-      key: 'documents',
-      value: t('documents'),
-    },
   ]
   const [checked, setChecked] = useState(options)
 
