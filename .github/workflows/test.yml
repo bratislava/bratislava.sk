@@ -14,6 +14,6 @@ jobs:
           node-version: '16'
       - run: yarn --frozen-lockfile
       - run: yarn install
-      - name: ESLint check
-        uses: bradennapier/eslint-plus-action@v3
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
 
