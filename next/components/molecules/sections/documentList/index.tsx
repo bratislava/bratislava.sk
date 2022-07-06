@@ -45,11 +45,11 @@ export const DocumentList = () => {
           onSubmit={setSearch}
         />
       </div>
-      <div className="pt-10 pb-5 text-md font-semibold">Zoznam dokumentov</div>
       {total === 0 ? (
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
         <>
+          <div className="pt-10 pb-5 text-md font-semibold">{t('listOfDocuments')}</div>
           <div className="flex flex-row md:flex-col md:w-auto overflow-x-auto gap-4 modal-content-rent">
             {vzns.map((vzn) => {
               const category = DocumentListCategorysMap.get(vzn.category)
