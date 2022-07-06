@@ -49,8 +49,8 @@ export const DocumentList = () => {
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
         <>
-          <div className="pt-10 pb-5 text-md font-semibold">{t('listOfDocuments')}</div>
-          <div className="flex flex-row md:flex-col md:w-auto overflow-x-auto gap-4 modal-content-rent">
+          <div className="pt-14 pb-5 lg:pb-6 text-default lg:text-md font-medium">{t('listOfDocuments')}</div>
+          <div className="flex flex-col md:w-auto gap-4 lg:gap-6 modal-content-rent">
             {vzns.map((vzn) => {
               const category = DocumentListCategorysMap.get(vzn.category)
               return (
