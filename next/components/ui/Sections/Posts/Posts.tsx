@@ -174,16 +174,10 @@ export const Posts = ({
         <div className="block mt-14">
           <HorizontalScrollWrapper className="space-x-4 pb-12 -mx-8 px-8">
             <div className="flex lg:grid grid-cols-3 gap-x-5 lg:gap-x-7.5">
-              {!leftHighLight &&
-                largeNews.map((newsCard, i) => (
-                  <div key={i}>
-                    <NewsCard {...newsCard} />
-                  </div>
-                ))}
-              {leftHighLight && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
-              {rightHighLight && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
+              {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
+              {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
 
-              {rozkoPosts?.data?.length > 0 && (
+              {rozkoPosts?.data?.length > 2 && (
                 <div className="hidden lg:block">
                   {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
                     const card = newsCard.attributes
