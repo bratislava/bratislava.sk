@@ -26,10 +26,12 @@ jobs:
           # More about reviewdog reporter level at
           # https://github.com/reviewdog/reviewdog#reporters
           level: warning
+          workdir: ./next
       - name: ESlint check
         uses: sibiraj-s/action-eslint@v2
         with:
           eslint-args: '--ignore-path=.gitignore --quiet'
           extensions: 'js,jsx,ts,tsx'
           annotations: tru
+          
 
