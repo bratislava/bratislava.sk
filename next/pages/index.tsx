@@ -59,6 +59,23 @@ export const getStaticProps = async (ctx) => {
     imageSrc: post?.image?.data?.attributes?.url,
   }))
 
+  const getRozkoPosts = async () => {
+    const { blogPosts } = await client.LatestBlogsWithTags({
+      limit: 7,
+      sort: 'publishedAt:desc',
+      filters: {
+        tag: {
+          title: {
+            eq: 'Rozvoj mesta',
+          },
+        },
+      },
+    })
+    return blogPosts
+  }
+
+  const rozkoPosts = await getRozkoPosts()
+
   let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
   if (shouldMockGinis()) {
     latestOfficialBoard = mockedParsedDocuments
@@ -125,6 +142,7 @@ export const getStaticProps = async (ctx) => {
       inba: inba,
       header: header,
       cards: cards,
+      rozkoPosts: rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
     revalidate: 30,
@@ -143,6 +161,7 @@ const Homepage = ({
   cards,
   header,
   inba,
+  rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
   const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
 
@@ -182,6 +201,7 @@ const Homepage = ({
             posts={posts}
             documents={latestOfficialBoard}
             latestPost={latestBlogposts}
+            rozkoPosts={rozkoPosts}
           />
           <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
