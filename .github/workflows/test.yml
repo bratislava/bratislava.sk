@@ -1,5 +1,5 @@
 name: Tests on push
-on: [push]
+on: [push, pull_request]
 jobs:
   build:
     name: Tests on push
@@ -32,6 +32,6 @@ jobs:
         with:
           eslint-args: '--ignore-path=.gitignore --quiet'
           extensions: 'js,jsx,ts,tsx'
-          annotations: tru
+          annotations: true
           
 
