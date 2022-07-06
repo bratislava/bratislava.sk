@@ -25,9 +25,7 @@ export const searchArticles = async (search: string, offset = 0) => {
     // offset,
   })
 
-  console.log('art data', data)
-
-  const mappedArticles = data.hits.map((article) => {
+  data.hits = data.hits.map((article) => {
     return {
       data: {
         attributes: {
@@ -59,7 +57,7 @@ export const searchArticles = async (search: string, offset = 0) => {
       },
     }
   })
-  return mappedArticles
+  return data
 }
 
 export const searchPages = async (search: string, offset = 0) => {
@@ -69,14 +67,12 @@ export const searchPages = async (search: string, offset = 0) => {
     // offset,
   })
 
-  console.log('page data', data)
-
-  const mappedPages = data.hits.map((page) => {
+  data.hits = data.hits.map((page) => {
     return {
       pageColor: page.pageColor,
       title: page.title,
       slug: page.slug,
     }
   })
-  return mappedPages
+  return data
 }

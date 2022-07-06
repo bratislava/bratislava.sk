@@ -28,10 +28,10 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
   useEffect(() => {
     data?.articles
       ?.then((a) => {
-        setArticles(a)
+        setArticles(a.hits)
       })
       .catch((e) => console.log(e))
-    data?.pages?.then((p) => setPages(p)).catch((e) => console.log(e))
+    data?.pages?.then((p) => setPages(p.hits)).catch((e) => console.log(e))
   }, [data])
 
   const noResultsFound = articles?.length == 0 && pages?.length == 0 && documents?.length == 0
