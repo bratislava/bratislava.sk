@@ -1,17 +1,35 @@
-name: Test on pull request
+name: Typescript/eslint check
 on: [pull_request]
 jobs:
   build:
-    name: Test yarn build
+    name: Typescript/eslint
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./next
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-    - run: yarn --frozen-lockfile
-    - run: yarn build
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: yarn --frozen-lockfile
+      - name: Typescript check
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          # Change reviewdog reporter if you need
+          # [github-pr-check,github-check,github-pr-review].
+          # More about reviewdog reporters at
+          # https://github.com/reviewdog/reviewdog#reporters
+          reporter: github-check
+          # Change reporter level if you need
+          # [info,warning,error].
+          # More about reviewdog reporter level at
+          # https://github.com/reviewdog/reviewdog#reporters
+          level: warning
+          workdir: ./next
+      - name: ESlint check
+        uses: sibiraj-s/action-eslint@v2
+        with:
+          eslint-args: '--ignore-path=.gitignore --quiet'
+          extensions: 'js,jsx,ts,tsx'
+          annotations: true
