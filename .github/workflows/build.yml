@@ -1,8 +1,8 @@
-name: Build [TODO deploy]
+name: Build
 on: [pull_request]
 jobs:
   build:
-    name: Test yarn build
+    name: yarn build
     runs-on: ubuntu-latest
     defaults:
       run:

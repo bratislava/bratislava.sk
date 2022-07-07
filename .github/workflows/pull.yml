@@ -1,8 +1,8 @@
-name: Typescript/eslint check
+name: Validate code
 on: [pull_request]
 jobs:
   build:
-    name: Typescript/eslint
+    name: eslint/typescript check
     runs-on: ubuntu-latest
     defaults:
       run:
