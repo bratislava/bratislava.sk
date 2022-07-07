@@ -1,6 +1,7 @@
 import { ImagesCarousel, TImageCarouselItem } from '@bratislava/ui-bratislava'
-import { FetchFacebookPostsResult } from '../../../../utils/facebook'
 import React from 'react'
+
+import { FetchFacebookPostsResult } from '../../../../utils/facebook'
 
 interface IProps {
   title: string

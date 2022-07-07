@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { ImageCard } from '../ImageCard/ImageCard'
 import { VenueInfo } from '../VenueInfo/VenueInfo'
 
@@ -26,7 +27,7 @@ export const Venue = ({
     <div className={cx('flex flex-col lg:flex-row lg:items-center', className)}>
       {imageCardPosition === 'left' && imageSrc && (
         <ImageCard
-          className="lg:w-100 lg:h-96"
+          className="lg:h-96 lg:w-100"
           imageSrc={imageSrc}
           smallGapCapacity={120}
           bigGapCapacity={60}
@@ -51,7 +52,7 @@ export const Venue = ({
       </div>
       {imageCardPosition === 'right' && imageSrc && (
         <ImageCard
-          className="relative lg:w-100 lg:h-96"
+          className="relative lg:h-96 lg:w-100"
           imageSrc={imageSrc}
           smallGapCapacity={120}
           bigGapCapacity={60}

@@ -93,7 +93,7 @@ const OpenDataChart = ({
 
   return (
     <div className={cx(className, 'text-font')}>
-      <h2 className="mt-8 mb-3 text-md leading-[40px] font-bold text-center">{title}</h2>
+      <h2 className="mt-8 mb-3 text-center text-md font-bold leading-[40px]">{title}</h2>
 
       <ErrorBox error={error} />
 
@@ -107,7 +107,7 @@ const OpenDataChart = ({
         >
           {children}
 
-          <h3 className="py-4 text-md leading-[40px] font-bold text-center">{label}</h3>
+          <h3 className="py-4 text-center text-md font-bold leading-[40px]">{label}</h3>
 
           {isNotSSR && <Chart options={options} series={series} type="line" height={HEIGHT} />}
         </div>

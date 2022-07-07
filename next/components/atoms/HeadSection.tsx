@@ -1,9 +1,9 @@
-import * as React from 'react'
+import { ArrowRight } from '@assets/images'
+import { Button } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
+import * as React from 'react'
 
 import HomeIcon from '../../assets/images/home-icon.svg'
-import { Button } from '@bratislava/ui-bratislava'
-import { ArrowRight } from '@assets/images'
 
 export type TSubSectionItems = {
   url: string
@@ -22,9 +22,9 @@ const HeaderSection = ({ className, title, icon, items, dispayedItems }: HeaderS
   <div className={cx(className, 'flex flex-col')}>
     <div className="flex items-center gap-x-4">
       {icon && icon}
-      <div className="font-semibold text-xl">{title}</div>
+      <div className="text-xl font-semibold">{title}</div>
     </div>
-    <div className="flex flex-col mt-8 gap-y-3">
+    <div className="mt-8 flex flex-col gap-y-3">
       {items?.slice(0, dispayedItems ? dispayedItems.number : items.length)?.map((item) => (
         <div key={item.title}>{item.title}</div>
       ))}

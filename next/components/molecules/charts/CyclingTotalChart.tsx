@@ -1,6 +1,7 @@
+import * as React from 'react'
+
 import { getLocalMonthName } from '../../../utils/local-date'
 import { FetchOpenDataResult } from '../../../utils/opendata'
-import * as React from 'react'
 import OpenDataChart, { ISeries } from './OpenDataChart'
 
 const MONTHS = 12
@@ -33,8 +34,8 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
       .then(setCyclingData)
 
       .then(() => setLoading(false))
-      .catch((err) => {
-        setError(err)
+      .catch((error_) => {
+        setError(error_)
         setLoading(false)
       })
   }, [])
@@ -42,11 +43,11 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
   const filteredData = cyclingData?.filter((d) => d.name.startsWith(`${location}-${direction}`)) ?? []
 
   const totalSeries: ISeries[] = filteredData.map((dataByYear) => {
-    const year = dataByYear.name.substring(dataByYear.name.lastIndexOf('-') + 1)
+    const year = dataByYear.name.slice(Math.max(0, dataByYear.name.lastIndexOf('-') + 1))
 
     return {
       name: year,
-      data: Array.from(Array(MONTHS)).map((_, ix) => [ix + 1, dataByYear.jsonData[ix + 1]?.total ?? 0]),
+      data: [...Array.from({ length: MONTHS })].map((_, ix) => [ix + 1, dataByYear.jsonData[ix + 1]?.total ?? 0]),
     }
   })
   const sortedTotalSeries = totalSeries.reverse()

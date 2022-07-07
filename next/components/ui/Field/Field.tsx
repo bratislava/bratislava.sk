@@ -14,7 +14,7 @@ export const Field = ({ children, tooltip, className, id, title, error }: FieldP
   return (
     <div className={cx(className, 'mt-8')}>
       {(title || tooltip) && (
-        <div className="flex justify-between md:justify-start space-x-2 items-center mb-3">
+        <div className="mb-3 flex items-center justify-between space-x-2 md:justify-start">
           <label className="text-base md:text-default" htmlFor={id}>
             {title}
           </label>
@@ -23,7 +23,7 @@ export const Field = ({ children, tooltip, className, id, title, error }: FieldP
       )}
       {children}
 
-      {error && <p className="text-center sm:text-left text-error text-sm mt-2">{error}</p>}
+      {error && <p className="mt-2 text-center text-sm text-error sm:text-left">{error}</p>}
     </div>
   )
 }

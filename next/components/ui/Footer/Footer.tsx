@@ -1,12 +1,13 @@
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import React from 'react'
+
+import BABrand from '../../../assets/images/BABrand.svg'
+import EULogo from '../../../assets/images/EULogo.svg'
 import FBLogo from '../../../assets/images/FB.svg'
 import IGLogo from '../../../assets/images/IG.svg'
 import YTLogo from '../../../assets/images/YT.svg'
-import BABrand from '../../../assets/images/BABrand.svg'
-import EULogo from '../../../assets/images/EULogo.svg'
 import { FooterSection, FooterSectionProps } from '../FooterSection/FooterSection'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import React from 'react'
 
 export interface FooterProps {
   className?: string
@@ -43,10 +44,10 @@ export const Footer = ({
   return (
     <footer className={cx(className, 'text-base text-gray-universal-800 pt-14')}>
       <hr />
-      <section className="flex justify-between items-center pt-14" aria-label="Logo and Social Media Links">
+      <section className="flex items-center justify-between pt-14" aria-label="Logo and Social Media Links">
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">
-          <nav className="hidden lg:flex gap-4 text-gray-universal-500 cursor-pointer" aria-label="Social Media Links">
+          <nav className="hidden cursor-pointer gap-4 text-gray-universal-500 lg:flex" aria-label="Social Media Links">
             {facebookLink && (
               <a href={facebookLink} target="_blank" rel="noreferrer">
                 <FBLogo />
@@ -69,10 +70,10 @@ export const Footer = ({
         </div>
       </section>
 
-      <section aria-label="Contact Info and Sections" className="flex flex-col xl:flex-row gap-x-28 py-14">
+      <section aria-label="Contact Info and Sections" className="flex flex-col gap-x-28 py-14 xl:flex-row">
         <div className="flex flex-col gap-y-6 xl:gap-y-16" aria-label="Contact Info">
           <p className="whitespace-pre-wrap leading-6">{address}</p>
-          <div className="flex flex-col gap-y-1 xl:gap-y-5 underline">
+          <div className="flex flex-col gap-y-1 underline xl:gap-y-5">
             <a className="block" href={`mailto:${email}`}>
               {email}
             </a>
@@ -82,7 +83,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="w-2/3 flex flex-col lg:flex-row w-full justify-around 2xl:flex 2xl:flex-wrap gap-y-10 mt-10 xl:mt-0"
+          className="mt-10 flex w-2/3 w-full flex-col justify-around gap-y-10 lg:flex-row xl:mt-0 2xl:flex 2xl:flex-wrap"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
@@ -95,10 +96,10 @@ export const Footer = ({
 
       <section
         aria-label="Accessibility and Copyright"
-        className="flex lg:grid grid-cols-3 flex-col text-center gap-y-6 lg:gap-y-0 lg:flex-row lg:justify-between pt-14"
+        className="flex grid-cols-3 flex-col gap-y-6 pt-14 text-center lg:grid lg:flex-row lg:justify-between lg:gap-y-0"
       >
         {accessibilityLink && (
-          <UILink href={accessibilityLink.url} className="lg:text-left hover:underline">
+          <UILink href={accessibilityLink.url} className="hover:underline lg:text-left">
             {accessibilityLink.title}
           </UILink>
         )}
@@ -116,7 +117,7 @@ export const Footer = ({
           ))}
         </div>
         <nav
-          className="flex mt-5 justify-center text-gray-universal-500 lg:hidden gap-5"
+          className="mt-5 flex justify-center gap-5 text-gray-universal-500 lg:hidden"
           aria-label="Social Media Links"
         >
           {facebookLink && (
@@ -139,7 +140,7 @@ export const Footer = ({
           <EULogo />
         </span>
         <p className="mt-2 lg:mt-0">{copyright}</p>
-        <div className="hidden lg:block text-right" aria-label="lang">
+        <div className="hidden text-right lg:block" aria-label="lang">
           {languageLinks.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
               {url === undefined ? (

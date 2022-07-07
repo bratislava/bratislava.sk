@@ -1,5 +1,6 @@
-import { StepperStep } from '../StepperStep/StepperStep'
 import cx from 'classnames'
+
+import { StepperStep } from '../StepperStep/StepperStep'
 
 export interface StepTitleProps {
   className?: string

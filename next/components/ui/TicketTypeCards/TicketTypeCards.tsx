@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { Tooltip } from '../Tooltip/Tooltip'
 
 export type TTicketType = {
@@ -16,19 +17,19 @@ export interface TicketTypeCardsProps {
 
 export const TicketTypeCards = ({ className, title, ticketTypes }: TicketTypeCardsProps) => (
   <div className={cx(className, 'flex flex-col space-y-4')}>
-    <span className="w-full font-bold text-md">{title}</span>
+    <span className="w-full text-md font-bold">{title}</span>
     {ticketTypes?.map((ticketType) => (
-      <div key={ticketType.type} className="w-full flex flex-row">
-        <div className="w-11/12 md:w-1/2 max-w-lg flex flex-row">
-          <div className="w-full md:w-4/6 h-full bg-white py-4 pl-6 flex-row border-2 border-primary text-base sm:text-default rounded-l-lg ">
+      <div key={ticketType.type} className="flex w-full flex-row">
+        <div className="flex w-11/12 max-w-lg flex-row md:w-1/2">
+          <div className="h-full w-full flex-row rounded-l-lg border-2 border-primary bg-white py-4 pl-6 text-base sm:text-default md:w-4/6 ">
             {ticketType.title}
           </div>
-          <div className="w-2/6 h-full flex bg-primary py-4 text-white justify-center items-center rounded-r-md">
+          <div className="flex h-full w-2/6 items-center justify-center rounded-r-md bg-primary py-4 text-white">
             {ticketType.price} €
           </div>
         </div>
         {ticketType.tooltip && (
-          <div className="w-1/12 md:w-1/2 flex items-center pl-6">
+          <div className="flex w-1/12 items-center pl-6 md:w-1/2">
             <Tooltip content={ticketType.tooltip} />
           </div>
         )}

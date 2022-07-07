@@ -1,7 +1,8 @@
 import { NewsLetter } from '@bratislava/ui-bratislava'
-import NewsLetterImage from '../../../assets/images/newsletter-image.png'
-import { useTranslation } from 'react-i18next'
 import cx from 'classnames'
+import { useTranslation } from 'react-i18next'
+
+import NewsLetterImage from '../../../assets/images/newsletter-image.png'
 
 interface IProps {
   className?: string

@@ -1,14 +1,15 @@
-import Button from '../Button/Button'
-import Panel from '../Panel/Panel'
-import ChevronRight from '../../../assets/images/chevron-right-small.svg'
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import Download from '../../../assets/images/download-document.svg'
 import { getNumericLocalDate } from '@utils/local-date'
-import Modal from '../Modal/Modal'
-import useSWR from 'swr'
-import { getDocumentDetailURL, getDocumentFileURL, getMockedDetail } from 'services/ginis'
 import { useState } from 'react'
-import { TFile, FileList, TFileSection } from '../FileList/FileList'
+import { getDocumentDetailURL, getDocumentFileURL, getMockedDetail } from 'services/ginis'
+import useSWR from 'swr'
+
+import ArrowRight from '../../../assets/images/arrow-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right-small.svg'
+import Download from '../../../assets/images/download-document.svg'
+import Button from '../Button/Button'
+import { FileList, TFile, TFileSection } from '../FileList/FileList'
+import Modal from '../Modal/Modal'
+import Panel from '../Panel/Panel'
 
 export interface DocumentCardProps {
   title: string
@@ -58,17 +59,18 @@ export const DocumentCard = ({
   return (
     <>
       <Panel className={className}>
-        <div className="w-full flex flex-col pt-6 lg:pt-8 lg:pb-6 px-4 lg:px-10 gap-y-5">
+        <div className="flex w-full flex-col gap-y-5 px-4 pt-6 lg:px-10 lg:pt-8 lg:pb-6">
           <div className="-mb-3 text-default font-semibold">{title}</div>
-          <div className="flex flex-col lg:flex-row text-xs gap-x-6 text-gray-dark">
+          <div className="flex flex-col gap-x-6 text-xs text-gray-dark lg:flex-row">
             <div>{new Date(createdAt).toLocaleDateString()}</div>
+
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
           </div>
           <div>{content}</div>
-          <div className="flex flex-col flex-row items-start gap-x-6 mb-2">
+          <div className="mb-2 flex flex-row flex-col items-start gap-x-6">
             <Button
               variant="secondaryDarkText"
-              className="px-6 py-4 text-sm font-medium shadow-none w-fit hover:bg-primary hover:text-white hover:color-white"
+              className="hover:color-white w-fit px-6 py-4 text-sm font-medium shadow-none hover:bg-primary hover:text-white"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
               onClick={() => setIsOpen(true)}

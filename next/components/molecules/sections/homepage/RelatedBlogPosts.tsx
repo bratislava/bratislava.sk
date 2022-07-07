@@ -1,7 +1,8 @@
+import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+import { RelatedContent } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
-import { RelatedContent } from '@bratislava/ui-bratislava'
-import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+
 import { parseRelatedBlogPosts } from '../../../../utils/page'
 
 interface IProps {

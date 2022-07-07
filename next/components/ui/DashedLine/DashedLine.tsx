@@ -1,5 +1,6 @@
-import { CompleteDashedLine } from './dashedLines/CompleteDashedLine'
 import cx from 'classnames'
+
+import { CompleteDashedLine } from './dashedLines/CompleteDashedLine'
 
 export interface DashedLineProps {
   position: string
@@ -13,7 +14,7 @@ export const DashedLine = ({ position, className, color }: DashedLineProps) => {
       {position === 'right' ? (
         <CompleteDashedLine color={color} />
       ) : (
-        <CompleteDashedLine className={'bottom-0'} color={color} />
+        <CompleteDashedLine className="bottom-0" color={color} />
       )}
     </div>
   )

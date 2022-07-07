@@ -1,7 +1,8 @@
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Carousel, Link } from '@bratislava/ui-bratislava'
-import { ArrowRight, ChevronRight } from '@assets/images'
 import React from 'react'
+
 import { FetchGooutEventsResult, GooutEvent } from '../../../../utils/goout'
 import CardGradient from '../../../atoms/CardGradient'
 
@@ -25,9 +26,9 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
 
   return (
     <div className={className}>
-      <h2 className="font-semibold text-default text-center lg:text-2xl">{title}</h2>
+      <h2 className="text-center text-default font-semibold lg:text-2xl">{title}</h2>
 
-      <div className="gap-x-5 lg:gap-x-6 mt-3 lg:mt-14 py-6">
+      <div className="mt-3 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
           shiftIndex={3}
           visibleItems={3}
@@ -42,7 +43,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
               title={ev.title}
               description={
                 <UILink
-                  className="flex flex-col text-primary p-6 font-semibold text-default"
+                  className="flex flex-col p-6 text-default font-semibold text-primary"
                   href={ev.url}
                   target="_blank"
                   rel="noreferrer"
@@ -56,13 +57,13 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         />
       </div>
 
-      <div className="hidden lg:flex w-full justify-center mt-10">
+      <div className="mt-10 hidden w-full justify-center lg:flex">
         <Link
           href={linkUrl}
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className="border-2 border-primary text-default py-3.5 px-6 box-border rounded-lg"
+          className="box-border rounded-lg border-2 border-primary py-3.5 px-6 text-default"
         >
           {linkTitle}
         </Link>
