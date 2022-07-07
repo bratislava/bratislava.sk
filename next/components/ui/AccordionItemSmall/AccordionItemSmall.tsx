@@ -13,6 +13,8 @@ export interface AccordionItemSmallProps {
   onOpen?: () => void
   children?: React.ReactNode
   paddingVariant?: 'normal' | 'narrow'
+  value?: boolean
+  onValueChange?: (boolean) => void
 }
 
 export const AccordionItemSmall = ({
@@ -24,6 +26,8 @@ export const AccordionItemSmall = ({
   className,
   secondaryTitle,
   paddingVariant = 'normal',
+  value,
+  onValueChange,
 }: AccordionItemSmallProps) => {
   const [active, setActive] = React.useState<boolean>(initialState)
 
@@ -34,10 +38,6 @@ export const AccordionItemSmall = ({
   const handleClick = () => {
     return onOpen ? onOpen() : setActive(!active)
   }
-
-  const [switchValue, setSwitchValue] = React.useState<'left' | 'right'>(
-    'left'
-  );
 
   return (
     <>
@@ -51,30 +51,21 @@ export const AccordionItemSmall = ({
           className
         )}
       >
-        <button
-          className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
-          onClick={handleClick}
-        >
-          <div className='flex items-center'>
+        <button className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}>
+          <div className="flex items-center">
             <div className="mr-4 md:mr-5 flex-grow-0">
-              <Chevron className={cx('', { 'rotate-180': active })} />
+              <Chevron className={cx('', { 'rotate-180': active })} onClick={handleClick} />
             </div>
-            <div className="flex flex-row font-medium">
+            <div className="flex flex-row font-medium"  onClick={handleClick}>
               <p className="text-font text-xxs md:text-sm text-left font-medium">{title}</p>
-              {secondaryTitle && <p className="text-xxs md:text-sm text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
+              {secondaryTitle && (
+                <p className="text-xxs md:text-sm text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>
+              )}
             </div>
           </div>
           <div>
-            <SwitchToggle
-                  titleLeft=""
-                  titleRight=""
-                  variant='primary'
-                  value={switchValue}
-                  onValueChange={(val) => setSwitchValue(val)}
-                />
+            <SwitchToggle titleLeft="" titleRight="" variant="primary" value={value} onValueChange={onValueChange} />
           </div>
-          
-          
         </button>
       </div>
       <div

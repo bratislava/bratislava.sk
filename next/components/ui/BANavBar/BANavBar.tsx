@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Hamburger from '../../../assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-small.svg'
 import HamburgerClose from '../../../assets/images/hamburger-close.svg'
@@ -16,6 +16,8 @@ import Button from '../Button/Button'
 import { useTranslation } from 'next-i18next'
 import NarrowText from '../NarrowText/NarrowText'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
+import { Cookies } from 'react-cookie-consent'
+import * as ReactGA from 'react-ga'
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
@@ -51,8 +53,12 @@ const navBarUrls = {
 export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const [cookies, setCookies] = useState(true)
-  const [rejectCookieBox, setRejectCookieBox] = useState(false)
+  const [showModal, setShowModal] = React.useState(false)
+  const [isConsentSubmitted, setConsent] = React.useState(true)
+  const [securityCookies] = React.useState<boolean>(true)
+  const [performanceCookies, setPerformanceCookies] = React.useState<boolean>(false)
+  const [advertisingCookies, setAdvertisingCookies] = React.useState<boolean>(false)
+  ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '')
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
@@ -60,39 +66,82 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     handleSearch && handleSearch(!searchOpen)
     setSearchOpen(!searchOpen)
   }
-  const { t } = useTranslation('common')
+  const { t } = useTranslation(['common'])
 
-  const acceptCookies = () => {
-    setCookies(false);
+  const setConsentActually = (value) => {
+    localStorage.setItem('isConsentSubmitted', value)
+    setConsent(value)
   }
 
-  const rejectCookies = () => {
-    setCookies(false);
-    setRejectCookieBox(true)
+  const saveSettings = () => {
+    Cookies.set(
+      'bratislava-homepage-gdpr',
+      {
+        security_cookies: securityCookies,
+        performance_cookies: performanceCookies,
+        advertising_and_targeting_cookies: advertisingCookies,
+      },
+      { path: '/', expires: 365 }
+    )
+    ReactGA.set({
+      security_cookies: securityCookies,
+      performance_cookies: performanceCookies,
+      advertising_and_targeting_cookies: advertisingCookies,
+    })
+    setShowModal(false)
+    setConsentActually(true)
   }
-
-  const closeRejectCookies = () => {
-    setCookies(true);
-    setRejectCookieBox(false)
-  }
-
   const acceptAllCookies = () => {
-    setCookies(false);
-    setRejectCookieBox(false)
+    Cookies.set(
+      'bratislava-homepage-gdpr',
+      {
+        security_cookies: true,
+        performance_cookies: true,
+        advertising_and_targeting_cookies: true,
+      },
+      { path: '/', expires: 365 }
+    )
+    ReactGA.set({
+      security_cookies: true,
+      performance_cookies: true,
+      advertising_and_targeting_cookies: true,
+    })
+    setShowModal(false)
+    setConsentActually(true)
   }
 
-  
+  const declineCookies = () => {
+    setPerformanceCookies(false)
+    setAdvertisingCookies(false)
+    Cookies.set(
+      'bratislava-homepage-gdpr',
+      {
+        security_cookies: true,
+        performance_cookies: false,
+        advertising_and_targeting_cookies: false,
+      },
+      { path: '/', expires: 365 }
+    )
+    ReactGA.set({
+      security_cookies: true,
+      performance_cookies: false,
+      advertising_and_targeting_cookies: false,
+    })
+    setTimeout(() => {
+      setShowModal(false)
+      setConsentActually(true)
+    }, 300)
+  }
+
+  useEffect(() => {
+    const isConsentSubmittedLocal = localStorage.getItem('isConsentSubmitted')
+    setConsent(JSON.parse(isConsentSubmittedLocal))
+  }, [])
 
   return (
     <>
       {/* Desktop */}
-      <div
-        className={cx(
-          className,
-          'items-center text-base ',
-          'fixed top-0 left-0 w-full bg-white z-50'
-        )}
-      >
+      <div className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}>
         <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg py-4 border-b border-gray-universal-200">
           <Brand
             className="flex-1"
@@ -127,8 +176,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   <Button
                     icon={<SmallBlackSearchIcon />}
                     hoverIcon={<SmallWhiteSearchIcon />}
-                    className="h-7 rounded-l-none text-sm px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium"
-                    variant="secondaryDarkText"
+                    className="h-7 rounded-l-none text-sm px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium bg-secondary"
                   >
                     Hľadať
                   </Button>
@@ -203,99 +251,153 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         {burgerOpen && <HamburgerMenu hamburgerMenuItems={menuItems} />}
       </div>
 
-      { cookies ?
-        <div className='fixed bottom-6 z-50 px-6 left-0 right-0'>
-          <div className='bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-[1110px] mx-auto'>
-            <h6 className='text-default mb-4 font-semibold'>Používanie cookies</h6>
-            <p className='text-xxs sm:text-sm mb-8'>Táto webstránka používa základné cookies na zabezpečenie správneho fungovania a sledovanie cookies, ktoré nám pomáha porozumieť, ako stránku využívate. Budú zaznamenávané len po tom, ako vyjadríte svoj súhlas. <a className='font-semibold underline'>Nastavenia cookies.</a></p>
-            <div className='block sm:flex'>
-            <Button className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium" variant='primaryDark' onClick={() => acceptCookies()}>Prijať všetky</Button>
-            <Button className="mt-0 px-6 h-12 text-sm font-medium" variant='secondaryDarkText' onClick={() => rejectCookies()}>Odmietnuť všetky</Button>
+      {!isConsentSubmitted ? (
+        <div className="fixed bottom-6 z-50 px-6 left-0 right-0">
+          <div className="bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-[1110px] mx-auto">
+            <h6 className="text-default mb-4 font-semibold"> {t('cookie_consent_modal_content_title')} </h6>
+            <p className="text-xxs sm:text-sm mb-8">
+              {' '}
+              {t('cookie_consent_body')}{' '}
+              <span className="font-semibold underline cursor-pointer" onClick={() => setShowModal(true)}>
+                {' '}
+                {t('cookie_consent_setting')}{' '}
+              </span>
+            </p>
+            <div className="block sm:flex">
+              <Button
+                className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
+                variant="primary"
+                onClick={acceptAllCookies}
+              >
+                {' '}
+                {t('acceptAll')}{' '}
+              </Button>
+              <Button className="mt-0 px-6 h-12 text-sm font-medium" variant="secondary" onClick={declineCookies}>
+                {' '}
+                {t('denyAll')}{' '}
+              </Button>
             </div>
           </div>
         </div>
-      : ""
-      }
-      {
-        rejectCookieBox ? 
-        <div className='fixed z-50 px-6 left-0 right-0 top-0 bottom-0 bg-transperentBG'>
-          <div className='bg-white rounded-lg shadow max-w-[1110px] mx-auto relative top-1/2 -translate-y-1/2'>
-            <div className='cursor-pointer h-16 w-16 md:h-72 md:w-72 rounded-full bg-primary flex justify-center items-center text-white absolute mx-auto md:mx-0 -bottom-6 left-0 right-0 md:bottom-auto md:left-auto md:-top-6 md:-right-6' onClick={()=> closeRejectCookies()}><HamburgerCloseWhite /></div>
-            <div className='py-8 md:py-12 px-5 md:px-16 rounded-lg max-h-90Vh overflow-y-scroll overscroll-y-auto'>
-              <div className='mb-6 md:mb-10'>
-                <h5 className='text-default md:text-md font-semibold'>Podrobné nastavenia cookies</h5>
+      ) : (
+        ''
+      )}
+      {showModal ? (
+        <div className="fixed z-50 px-6 left-0 right-0 top-0 bottom-0 bg-transperentBG">
+          <div className="bg-white rounded-lg shadow max-w-[1110px] mx-auto relative top-1/2 -translate-y-1/2">
+            <div
+              className="cursor-pointer h-16 w-16 md:h-72 md:w-72 rounded-full bg-primary flex justify-center items-center text-white absolute mx-auto md:mx-0 -bottom-6 left-0 right-0 md:bottom-auto md:left-auto md:-top-6 md:-right-6"
+              onClick={() => setShowModal(false)}
+            >
+              <HamburgerCloseWhite />
+            </div>
+            <div className="py-8 md:py-12 px-5 md:px-16 rounded-lg max-h-90Vh overflow-y-scroll overscroll-y-auto">
+              <div className="mb-6 md:mb-10">
+                <h5 className="text-default md:text-md font-semibold cursor-pointer">
+                  {' '}
+                  {t('cookie_consent_modal_title')}{' '}
+                </h5>
               </div>
-              <div className='mb-10'>
-                <h6 className='text-xxs md:text-default mb-4 font-semibold'>Používanie cookies</h6>
-                <p className='text-xxs md:text-sm mb-8'>Používame cookies na zabezpečenie základných funkcionalít webovej stránky a na zlepšenie vášho online zážitku. Pre každú kategóriu si môžete vybrať,či sa chcete prihlásiť / odhlásiť. Ďalšie podrobnosti týkajúce sa súborov cookies a iných citlivých údajov nájdete v úplnom znení v zásadách <a className='font-semibold underline'>ochrany osobných údajov.</a></p>
-              <AccordionItemSmall
-               className='py-4 px-6 mb-3'
-                key="0"
-                title="Bezpodmienečne nevyhnutné cookies"
-                secondaryTitle=""
-              >
-                <div className="flex flex-col space-y-4">
-                  <NarrowText
-                  className='text-sm'
-                    key="0"
-                    align="left"
-                    width="full"
-                    size='small'
-                    content=" Tieto cookies sú nevyhnutné pre správne fungovanie webovej stránky. Bez nich by webstránka nefungovala správne."
-                  />
-                </div>
-              </AccordionItemSmall>
-              <AccordionItemSmall
-               className='py-4 px-6 mb-3'
-                key="0"
-                title="Bezpodmienečne nevyhnutné cookies"
-                secondaryTitle=""
-              >
-                <div className="flex flex-col space-y-4">
-                  <NarrowText
-                  className='text-sm'
-                    key="0"
-                    align="left"
-                    width="full"
-                    size='small'
-                    content=" Tieto cookies sú nevyhnutné pre správne fungovanie webovej stránky. Bez nich by webstránka nefungovala správne."
-                  />
-                </div>
-              </AccordionItemSmall>
-              <AccordionItemSmall
-               className='py-4 px-6 mb-3'
-                key="0"
-                title="Bezpodmienečne nevyhnutné cookies"
-                secondaryTitle=""
-              >
-                <div className="flex flex-col space-y-4">
-                  <NarrowText
-                  className='text-sm'
-                    key="0"
-                    align="left"
-                    width="full"
-                    size='small'
-                    content=" Tieto cookies sú nevyhnutné pre správne fungovanie webovej stránky. Bez nich by webstránka nefungovala správne."
-                  />
-                </div>
-              </AccordionItemSmall>
-              
-
+              <div className="mb-10">
+                <h6 className="text-xxs md:text-default mb-4 font-semibold">
+                  {' '}
+                  {t('cookie_consent_modal_content_title')}{' '}
+                </h6>
+                <p
+                  className="text-xxs md:text-sm mb-8"
+                  dangerouslySetInnerHTML={{ __html: t('cookie_consent_modal_conent_body') }}
+                />
+                <AccordionItemSmall
+                  className="py-4 px-6 mb-3"
+                  key="0"
+                  title={t('cookie_consent_security_essential_titile')}
+                  secondaryTitle=""
+                  value={securityCookies}
+                  onValueChange={() => null}
+                >
+                  <div className="flex flex-col space-y-4">
+                    <NarrowText
+                      className="text-sm"
+                      key="0"
+                      align="left"
+                      width="full"
+                      size="small"
+                      content={t('cookie_consent_security_essential_content')}
+                    />
+                  </div>
+                </AccordionItemSmall>
+                <AccordionItemSmall
+                  className="py-4 px-6 mb-3"
+                  key="0"
+                  title={t('cookie_consent_performance_title')}
+                  secondaryTitle=""
+                  value={performanceCookies}
+                  onValueChange={setPerformanceCookies}
+                >
+                  <div className="flex flex-col space-y-4">
+                    <NarrowText
+                      className="text-sm"
+                      key="0"
+                      align="left"
+                      width="full"
+                      size="small"
+                      content={t('cookie_consent_performance_content')}
+                    />
+                  </div>
+                </AccordionItemSmall>
+                <AccordionItemSmall
+                  className="py-4 px-6 mb-3"
+                  key="0"
+                  title={t('cookie_consent_advertising_targeting_title')}
+                  secondaryTitle=""
+                  value={advertisingCookies}
+                  onValueChange={setAdvertisingCookies}
+                >
+                  <div className="flex flex-col space-y-4">
+                    <NarrowText
+                      className="text-sm"
+                      key="0"
+                      align="left"
+                      width="full"
+                      size="small"
+                      content={t('cookie_consent_advertising_targeting_content')}
+                    />
+                  </div>
+                </AccordionItemSmall>
               </div>
-              <div className='block md:flex justify-between items-center'>
-                <Button className="mx-auto mb-3 md:mb-0 md:mt-0 md:mr-6 md:ml-0 px-6 h-12 text-sm font-medium" variant='primaryDark' onClick={() => acceptAllCookies()}>Uložiť nastavenia</Button>
-                <div className='block md:flex'>
-                  <Button className=" mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none" variant='secondaryDarkText-transparent'>Prijať všetky</Button>
-                  <Button className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-0 md:ml-0 box-none" variant='secondaryDarkText-transparent'>Odmietnuť všetky</Button>
+              <div className="block md:flex justify-between items-center">
+                <Button
+                  className="mx-auto mb-3 md:mb-0 md:mt-0 md:mr-6 md:ml-0 px-6 h-12 text-sm font-medium bg-primary"
+                  onClick={saveSettings}
+                >
+                  {' '}
+                  {t('saveChanges')}{' '}
+                </Button>
+                <div className="block md:flex">
+                  <Button
+                    className=" mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
+                    variant="secondary"
+                    onClick={acceptAllCookies}
+                  >
+                    {' '}
+                    {t('acceptAll')}{' '}
+                  </Button>
+                  <Button
+                    className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-0 md:ml-0 box-none"
+                    variant="secondary"
+                    onClick={declineCookies}
+                  >
+                    {' '}
+                    {t('denyAll')}{' '}
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        : ""
-      }
-      
-      
+      ) : (
+        ''
+      )}
     </>
   )
 }
@@ -366,7 +468,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex items-center w-[50px]" ref={ref} onClick={handleClick}>
+    <div className="relative flex w-[50px] items-center" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden lg:flex mix-blend-normal ${
@@ -374,7 +476,7 @@ const LanguageSelect = ({
         }`}
       />
       {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-6 -left-3 lg:left-0 z-20 mt-1 flex flex-col items-center justify-center w-[46px] h-auto">
+        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-[46px] flex-col items-center justify-center lg:left-0">
           <div className="z-10 w-4 h-0 border-x-8 border-solid border-transparent border-b-4 border-b-[#F8D7D4]"></div>
           <div className="w-full min-h-[60px] h-auto bg-[#F8D7D4] rounded-lg flex flex-col items-center pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
