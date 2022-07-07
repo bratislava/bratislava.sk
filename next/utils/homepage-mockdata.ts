@@ -150,7 +150,7 @@ export const buildMockData = ({
       {
         title: 'Pracovné\npríležitosti',
         icon: 'icon9',
-        href: '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti',
+        href: 'https://ats.nalgoo.com/sk/gate/bratislava/positions',
         linkTitle: 'Zistiť viac',
       },
     ],

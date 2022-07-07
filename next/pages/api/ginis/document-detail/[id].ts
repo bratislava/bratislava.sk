@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios, { AxiosRequestConfig } from 'axios'
 import { parseString } from 'xml2js'
-import { RequestGinisBodyDocumentDetail, ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'
+import { ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'
+import { withSentry } from '@sentry/nextjs'
 
 // params: id - base64 encoded "id zaznamu"
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   let result: ResponseGinisBodyDocumentDetail
   const { id } = req.query
   if (!id || Array.isArray(id)) {
@@ -83,3 +84,5 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
 
   return res.json(result)
 }
+
+export default withSentry(handler)

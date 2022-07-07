@@ -6,7 +6,7 @@ import Download from '../../../assets/images/download-document.svg'
 import { getNumericLocalDate } from '@utils/local-date'
 import Modal from '../Modal/Modal'
 import useSWR from 'swr'
-import { getDocumentDetailURL, getDocumentFileURL } from 'services/ginis'
+import { getDocumentDetailURL, getDocumentFileURL, getMockedDetail } from 'services/ginis'
 import { useState } from 'react'
 import { TFile, FileList, TFileSection } from '../FileList/FileList'
 
@@ -31,6 +31,7 @@ export const DocumentCard = ({
 }: DocumentCardProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
+  // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
   const { data } = useSWR(isOpen ? getDocumentDetailURL(id) : null, () =>
     fetch(getDocumentDetailURL(id)).then((res) => res.json())
   )

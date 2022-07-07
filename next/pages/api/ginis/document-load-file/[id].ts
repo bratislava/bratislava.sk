@@ -1,13 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios, { AxiosRequestConfig } from 'axios'
 import { parseString } from 'xml2js'
-import { RequestGinisBodyLoadFile, ResponseGinisBodyLoadFile } from 'dtos/ginis/api-data.dto'
-import stream from 'stream'
-import { promisify } from 'util'
+import { ResponseGinisBodyLoadFile } from 'dtos/ginis/api-data.dto'
+import { withSentry } from '@sentry/nextjs'
 
-const pipeline = promisify(stream.pipeline)
-
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   let result: ResponseGinisBodyLoadFile
   let buffer: Buffer
   const { id } = req.query
@@ -80,3 +77,5 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
 
   res.send(buffer)
 }
+
+export default withSentry(handler)

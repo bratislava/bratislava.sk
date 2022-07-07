@@ -35,6 +35,7 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
       '3xl': '1920px',
+      maxMd: {'max': '768px'}
     },
     container: {
       xs: '360px',
@@ -113,6 +114,7 @@ module.exports = {
         black: {
           universal: 'var(--universal-black)',
         },
+        blackTransparent : "rgba(51, 51, 51, 0.5);",
         yellow: {
           promo: '#FFEF4E',
         },

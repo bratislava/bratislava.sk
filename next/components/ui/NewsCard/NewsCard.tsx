@@ -37,6 +37,7 @@ export interface NewsCardProps {
   date_added?: string | null
   createdAt?: string | null
   updatedAt?: string | null
+  publishedAt?: string | null
   slug?: string | null
   link?: string | null
 }
@@ -49,6 +50,7 @@ export const NewsCard = ({
   excerpt,
   updatedAt,
   date_added,
+  publishedAt,
   readMoreText,
   slug,
 }: NewsCardProps) => {
@@ -86,7 +88,7 @@ export const NewsCard = ({
 
   return (
     <VerticalCard
-      className={cx(className, 'min-w-[348px] leading-extra-tight')}
+      className={cx(className, 'min-w-[280px]  leading-extra-tight')}
       imageSrc={coverImage?.data?.attributes?.url}
     >
       <UILink href={`/blog/${slug}`}>
@@ -97,8 +99,8 @@ export const NewsCard = ({
               color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
             />
           )}
-          <h3 className="text-md font-semibold news-small-content">{title}</h3>
-          <span className="text-xs font-medium">{getNumericLocalDate(date_added || updatedAt)}</span>
+          <h3 className="text-default lg:text-md font-semibold news-small-content">{title}</h3>
+          <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
           <p className="text-sm news-small-content">{excerpt}</p>
 
           {slug && (

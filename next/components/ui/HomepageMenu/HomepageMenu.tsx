@@ -169,12 +169,12 @@ const HomepageMenu = ({ items }: IProps) => {
   return (
     <>
       {/* Mobile Design */}
-      <div className="flex flex-col md:hidden gap-y-4">
+      <div className="flex flex-col md:hidden gap-y-1">
         {items?.map((item, i) => {
           const IconComponent = getIcon(item.icon)
           return (
-            <button onClick={() => setSelectedMenu(item)} className="flex gap-x-7 items-center" key={i}>
-              {IconComponent && <IconComponent className="w-10 h-10 text-font" />}
+            <button onClick={() => setSelectedMenu(item)} className="flex gap-x-7 p-2 items-center" key={i}>
+              {IconComponent && <IconComponent className="w-12 h-12 text-font" />}
               <p className="font-medium text-sm text-font">{item.title}</p>
             </button>
           )
