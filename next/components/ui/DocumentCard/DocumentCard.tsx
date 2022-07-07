@@ -61,7 +61,7 @@ export const DocumentCard = ({
         <div className="w-full flex flex-col pt-6 lg:pt-8 lg:pb-6 px-4 lg:px-10 gap-y-5">
           <div className="-mb-3 text-default font-semibold">{title}</div>
           <div className="flex flex-col lg:flex-row text-xs gap-x-6 text-gray-dark">
-            <div>{createdAt}</div>
+            <div>{new Date(createdAt).toLocaleDateString()}</div>
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
           </div>
           <div>{content}</div>
