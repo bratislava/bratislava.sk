@@ -54,7 +54,7 @@ export const AccordionItem = ({
             {secondaryTitle && <p className="text-md text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
           </div>
           <div className="ml-5 flex-grow-0">
-            <Chevron className={cx('w-6 h-3', { 'rotate-180': active })} />
+            <Chevron className={cx('w-7 h-4', { 'rotate-180': active })} />
           </div>
         </button>
       </div>
