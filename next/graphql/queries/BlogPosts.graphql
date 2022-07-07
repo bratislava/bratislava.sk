@@ -92,30 +92,30 @@ query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: B
 }
 
 fragment LatestBlogs on BlogPostEntityResponseCollection {
-    data {
-      id
-      attributes {
-        slug
-        title
-        excerpt
-        coverImage {
-          data {
-            attributes {
-              url
-            }
+  data {
+    id
+    attributes {
+      slug
+      title
+      excerpt
+      coverImage {
+        data {
+          attributes {
+            url
           }
         }
-        tag {
-          data {
-            attributes {
-              title
-              publishedAt
-              pageCategory {
-                data {
-                  attributes {
-                    title
-                    color
-                  }
+      }
+      date_added
+      tag {
+        data {
+          attributes {
+            title
+            publishedAt
+            pageCategory {
+              data {
+                attributes {
+                  title
+                  color
                 }
               }
             }
@@ -123,6 +123,7 @@ fragment LatestBlogs on BlogPostEntityResponseCollection {
         }
       }
     }
+  }
 }
 
 query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int) {
