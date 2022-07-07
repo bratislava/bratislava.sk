@@ -84,7 +84,7 @@ export const Bookmark = ({
         </span>
       </button>
 
-      <div className="flex py-5 z-50">
+      <div className="flex py-5">
         <div className="flex justify-center items-center w-44.5">
           {icon ? (
             <div
