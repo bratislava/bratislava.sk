@@ -49,6 +49,7 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
             coverImage={blogs[0].data?.attributes?.coverImage?.data?.attributes?.url}
             published_at={blogs[0].data?.attributes?.publishedAt}
             tag={blogs[0].data?.attributes?.tag}
+            slug={blogs[0].data?.attributes?.slug}
           />
         </div>
         <div className="flex flex-col gap-y-8 w-1/2">
@@ -61,6 +62,7 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
               coverImage={blog.data?.attributes?.coverImage?.data?.attributes?.url}
               published_at={blog.data?.attributes?.publishedAt}
               tag={blog.data?.attributes?.tag}
+              slug={blog.data?.attributes?.slug}
             />
           ))}
         </div>
@@ -75,6 +77,7 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
               coverImage={blogCard.data?.attributes?.coverImage?.data?.attributes?.url}
               published_at={blogCard.data?.attributes?.publishedAt}
               tag={blogCard.data?.attributes?.tag}
+              slug={blogCard.data?.attributes?.slug}
               className="w-74 h-60 flex-shrink-0"
             />
           )

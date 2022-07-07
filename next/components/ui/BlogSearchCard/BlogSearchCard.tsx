@@ -1,7 +1,10 @@
+import { useState, useEffect, useRef, RefObject } from 'react'
 import Panel from '../Panel/Panel'
 import cx from 'classnames'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+
 
 export interface BlogImage {
   url: string
@@ -30,6 +33,7 @@ export interface BlogSearchCardProps {
   published_at?: string
   coverImage?: string
   tag?: BlogTag
+  slug?: string
 }
 
 export const BlogSearchCard = ({
@@ -40,7 +44,9 @@ export const BlogSearchCard = ({
   className,
   imageClassName,
   fullCardSizeImage,
+  slug
 }: BlogSearchCardProps) => {
+  const { Link: UILink } = useUIContext()
   const publishedAt = new Date(published_at)
   const date = publishedAt.getDay() + '. ' + publishedAt.getMonth() + '. ' + publishedAt.getFullYear()
   const headline = tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
@@ -48,6 +54,7 @@ export const BlogSearchCard = ({
   const headlineColor = color ? `--color-${color}--light` : '--color-red'
   return (
     <>
+    <UILink href={`/blog/${slug}`}>
       <Panel
         className={cx(
           className,
@@ -57,6 +64,7 @@ export const BlogSearchCard = ({
         )}
         hoverable
       >
+        
         {coverImage && (
           <div
             className={cx('flex flex-shrink-0 blog-card-image', imageClassName)}
@@ -67,21 +75,25 @@ export const BlogSearchCard = ({
             }}
           />
         )}
-        <div className="p-8 flex flex-col gap-y-5">
+        
+        <div className="p-8 flex flex-col gap-y-4">
           <div
             className="px-3 py-1 rounded-lg w-fit font-medium"
             style={{ backgroundColor: `rgb(var(${headlineColor}))` }}
           >
             {headline}
           </div>
-          <div className="text-ellipsis overflow-hidden text-default font-semibold">{title}</div>
+          <div className="text-ellipsis overflow-hidden text-default font-semibold line-clamp-2">{title}</div>
           <div>{date}</div>
         </div>
+        
       </Panel>
+      </UILink>
       <Panel
         className={cx('group', className, { 'flex lg:hidden': !fullCardSizeImage }, { flex: fullCardSizeImage })}
         hoverable
       >
+        <UILink href={`/blog/${slug}`}>
         <div
           className="flex flex-col justify-end w-full h-full rounded"
           style={{
@@ -107,6 +119,7 @@ export const BlogSearchCard = ({
             <div className="text-white">{date}</div>
           </div>
         </div>
+        </UILink>
       </Panel>
     </>
   )

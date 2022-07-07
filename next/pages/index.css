@@ -233,6 +233,13 @@
     display: -webkit-box;
   }
 
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  }
+
   .text-title-center h1,.text-title-center h2,.text-title-center h3,.text-title-center h4{
     @apply text-center mb-6;
   }
