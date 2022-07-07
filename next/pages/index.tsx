@@ -173,6 +173,7 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
+
   // Commented below line for reference.
   // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
   const { pageTitle, posts } = data

@@ -2,6 +2,7 @@ import { LocalizationFragment } from '@bratislava/strapi-sdk-homepage'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
 import { createContext, useContext, useMemo } from 'react'
+
 import { localePath } from '../../utils/page'
 
 interface PageLocalization {

@@ -6,6 +6,7 @@ import {
   Contact,
   Divider,
   FileList,
+  Iframe,
   Institution,
   Links,
   ListItems,

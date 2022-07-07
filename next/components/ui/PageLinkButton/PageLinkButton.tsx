@@ -1,7 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
+
 import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { Button } from '../Button/Button'
-import cx from 'classnames'
 
 export interface PageLinkButtonProps {
   className?: string
@@ -15,7 +16,7 @@ export const PageLinkButton = ({ className, pageLink }: PageLinkButtonProps) => 
       <Button className="h-6 text-font" shape="none" variant="muted" icon={<ChevronRight />} hoverIcon={<ArrowRight />}>
         <div
           style={{ textDecorationThickness: 2, textUnderlineOffset: 3 }}
-          className="text-font text-sm md:text-default font-semibold text-left underline"
+          className="text-left text-sm font-semibold text-font underline md:text-default"
         >
           {pageLink?.title}
         </div>

@@ -1,5 +1,5 @@
-import * as React from 'react'
 import cx from 'classnames'
+import * as React from 'react'
 
 import HomeIcon from '../../assets/images/home-icon.svg'
 import HeaderItem from '../atoms/HeaderItem'

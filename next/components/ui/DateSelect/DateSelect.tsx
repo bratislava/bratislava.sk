@@ -1,6 +1,7 @@
+import { LocalDate } from '@js-joda/core'
 import cx from 'classnames'
 import * as React from 'react'
-import { LocalDate } from '@js-joda/core'
+
 import Calendar from '../../../assets/images/calendar.svg'
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
 
@@ -24,7 +25,7 @@ export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }
   return (
     <div className={cx('flex md:inline-flex rounded-lg overflow-hidden h-16', className)}>
       {showShorcuts && <DateSelectShortcuts value={value} onClick={onChange} />}
-      <label className="relative text-primary flex-1 flex items-center text-right">
+      <label className="relative flex flex-1 items-center text-right text-primary">
         <div
           className={cx(
             'absolute md:bg-secondary right-0 sm:right-5 w-full pointer-events-none z-10 flex items-center justify-center md:right-auto md:w-auto',
@@ -40,20 +41,20 @@ export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }
 
         {/* Mobile */}
         {showMobileDate && (
-          <div className="absolute w-full text-center sm:hidden pointer-events-none text-default">
+          <div className="pointer-events-none absolute w-full text-center text-default sm:hidden">
             {`${selectedDate.dayOfMonth()}.`} {MONTHS[selectedDate.monthValue() - 1]}
           </div>
         )}
 
         {/* Desktop */}
         {!showDate && (
-          <div className="absolute hidden sm:block bg-secondary left-3 md:left-20 pl-7 w-56 md:w-60 text-left">
+          <div className="absolute left-3 hidden w-56 bg-secondary pl-7 text-left sm:block md:left-20 md:w-60">
             Kalendár
           </div>
         )}
 
         <input
-          className="appearance-none bg-secondary text-center md:pr-6 md:pl-16 focus:outline-none cursor-pointer h-full w-0 sm:w-60"
+          className="h-full w-0 cursor-pointer appearance-none bg-secondary text-center focus:outline-none sm:w-60 md:pr-6 md:pl-16"
           type="date"
           onChange={(e) => onChange?.(e.target.value)}
           value={value}

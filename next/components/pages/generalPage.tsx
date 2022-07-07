@@ -1,6 +1,6 @@
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import Head from 'next/head'
 import {
   Button,
   FeaturedBlogs,
@@ -10,16 +10,17 @@ import {
   SectionContainer,
   SubpageList,
 } from '@bratislava/ui-bratislava'
-import { ArrowRight, ChevronRight } from '@assets/images'
+import cx from 'classnames'
+import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
+
 import { pageStyle, parsePageLink } from '../../utils/page'
 import { isPresent } from '../../utils/utils'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
 import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
-import cx from 'classnames'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
@@ -63,7 +64,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
       )}
       {/* Header */}
       <PageHeader
-        className={cx('bg-cover',{ 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
+        className={cx('bg-cover', { 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
@@ -77,20 +78,18 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="min-h-[220px] relative">
+          <div className="relative min-h-[220px]">
             <div className="absolute top-6">
-              <PageBreadcrumbs
-                parentPage={page?.parentPage}
-                pageCategory={page?.pageCategory}
-                title={page.title}
-              />
+              <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap mb-10 max-w-[730px]">{page?.title}</h1>
+            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">
+              {page?.title}
+            </h1>
 
             {/* Header - PageLink as Button */}
-            {(page?.pageButtonContent && page?.pageButtonContent.title) && (
+            {page?.pageButtonContent && page?.pageButtonContent.title && (
               <Button
-                className="base-button rounded-lg space-x-6 text-default py-3 px-6 mt-10 mb-10"
+                className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-default"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -112,11 +111,12 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
                       subpageList={section.subpageList?.map(parsePageLink).filter(isPresent)}
                     />
                   )
+
                 case 'ComponentSectionsFeaturedBlogPosts':
                   const { first_blog, second_blog, third_blog } = section
                   const blogs = [first_blog, second_blog, third_blog]
                   return (
-                    <div key={index} className="z-10 w-full absolute -bottom-40 lg:-bottom-87 overflow-hidden">
+                    <div key={index} className="absolute -bottom-40 z-10 w-full overflow-hidden lg:-bottom-87">
                       <FeaturedBlogs blogs={blogs} />
                     </div>
                   )

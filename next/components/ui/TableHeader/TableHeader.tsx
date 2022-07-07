@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import ChevronDownSmall from '../../../assets/images/chevron-down-small.svg'
 import ChevronUpSmall from '../../../assets/images/chevron-up-small.svg'
 import { Button } from '../Button/Button'

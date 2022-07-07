@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 export interface TimeCardMobileProps {
   className?: string
   primaryContent: React.ReactNode
@@ -24,7 +25,7 @@ export const TimeCardMobile = ({
       onClick={onClick}
       onKeyPress={onClick}
       role="checkbox"
-      aria-checked={isActive} //TODO: accessibility
+      aria-checked={isActive} // TODO: accessibility
       tabIndex={tabIndex}
     >
       <div className="w-full">
@@ -35,13 +36,13 @@ export const TimeCardMobile = ({
           )}
         />
         {isActive && (
-          <div className="absolute sm:hidden w-3 h-3 left-7 top-4.5 rounded-full bg-primary transform -translate-x-1/2" />
+          <div className="absolute left-7 top-4.5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary sm:hidden" />
         )}
       </div>
       {/* Mobile Design */}
-      <div className="flex sm:hidden w-full items-center shadow-md rounded-lg text-center text-sm">
-        <p className="w-3/5 pl-9 py-3">{primaryContent}</p>
-        <p className="w-2/5 py-3 bg-secondary rounded-r-lg">{secondaryContent}</p>
+      <div className="flex w-full items-center rounded-lg text-center text-sm shadow-md sm:hidden">
+        <p className="w-3/5 py-3 pl-9">{primaryContent}</p>
+        <p className="w-2/5 rounded-r-lg bg-secondary py-3">{secondaryContent}</p>
       </div>
     </div>
   )

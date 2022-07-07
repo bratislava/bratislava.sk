@@ -1,10 +1,11 @@
+import { usersFromDepartmentFetcher } from '@utils/ms-graph'
+import cx from 'classnames'
 import { useState } from 'react'
+import useSWR from 'swr'
+
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-import cx from 'classnames'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
-import useSWR from 'swr'
-import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionSubSubitemProps {
   title?: string
@@ -16,7 +17,7 @@ export const AdvancedAccordionSubSubitem = ({ title, className, cardClassName }:
   const [open, setOpen] = useState(false)
   const [cards, setCards] = useState([])
   const { data, error } = useSWR(title, usersFromDepartmentFetcher)
-  if (!cards.length && data && data.length > 0) {
+  if (cards.length === 0 && data && data.length > 0) {
     setCards(data)
   }
   return (
@@ -25,7 +26,7 @@ export const AdvancedAccordionSubSubitem = ({ title, className, cardClassName }:
         className={cx(className, 'flex items-start lg:items-center cursor-pointer lg:px-5 ml-12')}
         onClick={() => setOpen(!open)}
       >
-        <div className="text-default lg:text-md pr-6">{title}</div>
+        <div className="pr-6 text-default lg:text-md">{title}</div>
         <div className={cx('ml-auto pt-2.5', { 'rotate-180': open })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />

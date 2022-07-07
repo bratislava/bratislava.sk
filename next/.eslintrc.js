@@ -19,6 +19,8 @@ module.exports = {
     'no-secrets/no-secrets': ['error', { ignoreContent: '^http' }],
     /** Presently at too many places & becomes just an ignored clutter, consider turning on later */
     '@typescript-eslint/no-unsafe-assignment': 'off',
+    /** Doesn't work without changing our ts config */
+    'unicorn/prefer-spread': 'off',
     /** Use official sorting */
     'tailwindcss/classnames-order': [
       'warn',

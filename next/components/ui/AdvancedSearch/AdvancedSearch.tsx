@@ -1,10 +1,11 @@
-import Button from '../Button/Button'
-import SearchIcon from '../../../assets/images/search-icon.svg'
-import Checkbox from '../../../assets/images/checkbox.svg'
-import { useEffect, useState } from 'react'
+import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
-import { minKeywordLength } from '@utils/constants'
+import { useEffect, useState } from 'react'
+
+import Checkbox from '../../../assets/images/checkbox.svg'
+import SearchIcon from '../../../assets/images/search-icon.svg'
+import Button from '../Button/Button'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -67,12 +68,12 @@ export const AdvancedSearch = ({
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48">{title}</div>
-      <div className="hidden lg:flex pb-6">
+      <div className="scroll-mt-24 pb-3 text-sm font-medium lg:scroll-mt-48 lg:text-md">{title}</div>
+      <div className="hidden pb-6 lg:flex">
         <input
           id="name"
           type="text"
-          className="h-14 pl-6 w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
+          className="h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-base text-font outline-none"
           placeholder={placeholder}
           value={input}
           onChange={handleChange}
@@ -96,24 +97,24 @@ export const AdvancedSearch = ({
           {buttonText}
         </Button>
       </div>
-      <div className="flex lg:hidden pb-6">
+      <div className="flex pb-6 lg:hidden">
         <input
           id="name"
           type="text"
-          className="h-14 pl-6 w-full max-w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-sm text-font font-medium"
+          className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
           placeholder="Zadajte kľúčové slovo"
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="h-14 rounded-l-none text-default pr-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
+          className="hover:color-white h-14 rounded-l-none pr-6 text-default font-medium shadow-none hover:bg-primary hover:text-white"
           variant="secondaryDarkText"
           onClick={() => {
             input.length > minKeywordLength && handleClick(checked, input)
           }}
         />
       </div>
-      <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
+      <div className="flex flex-col gap-x-14 gap-y-6 lg:flex-row">
         {options.map((option, index) => (
           <div key={index} className="flex items-center gap-x-4">
             <div
@@ -124,7 +125,7 @@ export const AdvancedSearch = ({
               {checked.some(({ key }) => key == option.key) ? (
                 <Checkbox />
               ) : (
-                <div className="h-6 w-6 rounded border-2 border-solid border-slate-300 mr-px"></div>
+                <div className="mr-px h-6 w-6 rounded border-2 border-solid border-slate-300" />
               )}
             </div>
             <label>{option.value}</label>

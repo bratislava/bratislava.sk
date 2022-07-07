@@ -1,5 +1,6 @@
 import cx from 'classnames'
 import React, { useRef } from 'react'
+
 import ChevronLeft from '../../../assets/images/arrow-long-left.svg'
 import ChevronRight from '../../../assets/images/arrow-long-right.svg'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
