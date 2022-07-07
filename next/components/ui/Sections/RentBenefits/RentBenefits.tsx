@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import RentImage from '../../../../assets/images/rent.svg'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { Rent, RentProps } from '../../Rent/Rent'
@@ -36,9 +37,9 @@ const LIST = [
 
 // TODO fix types
 export const RentBenefits = ({ className, title, linkLabel, list = LIST as any }: RentBenefitsProps) => (
-  <div className="md:flex md:items-center md:flex-col mt-20">
-    <h1 className="flex text-center text-2xl md:text-4xl font-semibold">{title}</h1>
-    <HorizontalScrollWrapper className="flex md:items-baseline xs:items-center xs:gap-5 flex-row md:gap-x-12 lg:gap-x-24 my-14">
+  <div className="mt-20 md:flex md:flex-col md:items-center">
+    <h1 className="flex text-center text-2xl font-semibold md:text-4xl">{title}</h1>
+    <HorizontalScrollWrapper className="my-14 flex flex-row xs:items-center xs:gap-5 md:items-baseline md:gap-x-12 lg:gap-x-24">
       {list.map((item, index) => (
         <Rent key={index} {...item} linkLabel={linkLabel} />
       ))}

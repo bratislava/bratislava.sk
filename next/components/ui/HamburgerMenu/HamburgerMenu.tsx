@@ -1,14 +1,15 @@
-import { getIcon, Link, MenuMainItem } from '../index'
+import { ArrowRight } from '@assets/images'
+import cx from 'classnames'
+import React, { useState } from 'react'
+
 import ChevronRight from '../../../assets/images/chevron-right.svg'
 import EServices from '../../../assets/images/e-services.svg'
 import LightBulb from '../../../assets/images/light-bulb.svg'
-import Tourist from '../../../assets/images/tourist.svg'
 import SpeakerSmall from '../../../assets/images/speaker-small.svg'
 import TextSize from '../../../assets/images/text-size.svg'
-import cx from 'classnames'
-import React, { useState } from 'react'
+import Tourist from '../../../assets/images/tourist.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
-import { ArrowRight } from '@assets/images'
+import { getIcon, Link, MenuMainItem } from '../index'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
@@ -60,7 +61,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
 
   if (subMenu) {
-    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(undefined)} />
+    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} />
   }
 
   return (
@@ -70,23 +71,23 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
-        <div className="flex flex-col gap-y-8 py-8 border-b-2 border-red-universal-300">
+        <div className="flex flex-col gap-y-8 border-b-2 border-red-universal-300 py-8">
           {hamburgerMenuItems.map((item) => {
             const IconComponent = getIcon(item.icon)
             return (
               <button
                 onClick={() => setSubMenu(item)}
-                className="appearance-none text-left flex gap-x-7 items-center"
+                className="flex appearance-none items-center gap-x-7 text-left"
                 key={item.title}
               >
-                <IconComponent className="w-10 h-10" />
-                <p className="text-base font-medium w-36">{item.title}</p>
+                <IconComponent className="h-10 w-10" />
+                <p className="w-36 text-base font-medium">{item.title}</p>
                 <ChevronRight />
               </button>
             )
           })}
         </div>
-        <div className="flex justify-between items-center py-8">
+        <div className="flex items-center justify-between py-8">
           <Link className="text-base font-medium" variant="plain" href="#">
             Prihlásenie
           </Link>
@@ -104,7 +105,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
             >
               <div className="flex items-center gap-x-3">
                 {item.icon && item.icon}
-                <span className="font-medium text-base">{item.title}</span>
+                <span className="text-base font-medium">{item.title}</span>
               </div>
             </Link>
           ))}

@@ -1,9 +1,10 @@
 import { InBaCard, InBaCardProps } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
-import Container from '../../../atoms/Container'
+
 import Image1 from '../../../../assets/images/inBa1.svg'
 import Image2 from '../../../../assets/images/inBa2.svg'
+import Container from '../../../atoms/Container'
 
 export interface PostsProps {
   className?: string

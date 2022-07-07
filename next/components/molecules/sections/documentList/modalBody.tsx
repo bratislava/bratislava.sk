@@ -2,13 +2,14 @@ import { FileCard } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import ReactMarkdown from 'react-markdown'
 import useSWR from 'swr'
+
 import { LinkedVznMainDocument } from './LinkedVznMainDocument'
 
 // we're taking the entity from meilisearch which unfortunately types differently
 // TODO fix dates
 export const DocumentListModalBody = (vzn: any) => {
   return (
-    <div className="bg-background max-w-3xl max-h-[75vh] overflow-y-auto modal-content-rent">
+    <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background">
       <div className="py-8 px-12">
         <div className="text-md font-semibold"> {vzn?.title} </div>
         <div className="flex pt-3">
@@ -30,7 +31,7 @@ export const DocumentListModalBody = (vzn: any) => {
         </div>
         {/*  Main Document  */}
         {vzn?.mainDocument && (
-          <div className="pt-5 max-w-xs">
+          <div className="max-w-xs pt-5">
             <div className="pb-4 font-semibold"> Hlavný dokument </div>
             <div>
               <FileCard
@@ -43,7 +44,7 @@ export const DocumentListModalBody = (vzn: any) => {
           </div>
         )}
         {vzn?.consolidatedText && (
-          <div className="pt-5 max-w-xs">
+          <div className="max-w-xs pt-5">
             <div className="pb-4 font-semibold">Konsolidované znenie (zhrnutie)</div>
             <div>
               <FileCard
@@ -58,7 +59,7 @@ export const DocumentListModalBody = (vzn: any) => {
         {!!vzn?.amedmentDocument?.length && (
           <div className="pt-5">
             <div className="pb-4 font-semibold"> Dodatky </div>
-            <div className="flex flex-wrap flex-row gap-5">
+            <div className="flex flex-row flex-wrap gap-5">
               {vzn.amedmentDocument.map((doc) => (doc?.id ? <LinkedVznMainDocument key={doc.id} id={doc.id} /> : null))}
             </div>
           </div>
@@ -66,7 +67,7 @@ export const DocumentListModalBody = (vzn: any) => {
         {!!vzn?.cancellationDocument?.length && (
           <div className="pt-5">
             <div className="pb-4 font-semibold"> Zrušujúce VZN </div>
-            <div className="flex flex-wrap flex-row gap-5">
+            <div className="flex flex-row flex-wrap gap-5">
               {vzn.cancellationDocument.map((doc) =>
                 doc?.id ? <LinkedVznMainDocument key={doc.id} id={doc.id} /> : null
               )}

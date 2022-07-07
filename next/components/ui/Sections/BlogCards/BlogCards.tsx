@@ -1,6 +1,7 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { ChevronRight } from '@assets/images'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+
 import { Carousel } from '../../Carousel/Carousel'
 import { HorizontalCard } from '../../HorizontalCard/HorizontalCard'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
@@ -27,13 +28,13 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           shiftIndex={shiftIndex}
           items={posts.map((blogCard, i) => (
             <div key={i} className="box-content flex py-16">
-              <HorizontalCard className="w-540 min-h-220" key={i} imageSrc={blogCard.imageSrc}>
-                <p className="overflow-ellipsis overflow-hidden line-clamp-4">{blogCard.title}</p>
+              <HorizontalCard className="min-h-220 w-540" key={i} imageSrc={blogCard.imageSrc}>
+                <p className="line-clamp-4 overflow-hidden text-ellipsis">{blogCard.title}</p>
                 <UILink
-                  className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
+                  className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
                   href={`${blogCard?.url}` || ''}
                 >
-                  <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
+                  <span className="text-sm font-semibold hover:text-default">Čítať viac</span>
                   <span className="group-hover:hidden">
                     <ChevronRight />
                   </span>
@@ -52,7 +53,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           <HorizontalCard
             key={i}
             imageSrc={blogCard.imageSrc}
-            className="flex-shrink-0 w-11/12"
+            className="w-11/12 shrink-0"
             accessory={<VerticalCardButton />}
           >
             {blogCard.title}

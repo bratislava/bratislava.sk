@@ -1,6 +1,7 @@
-import { GraphQLClient } from 'graphql-request'
 import { getSdk } from '@bratislava/strapi-sdk-homepage'
+import { GraphQLClient } from 'graphql-request'
 import getConfig from 'next/config'
+
 const { serverRuntimeConfig } = getConfig()
 
 // URL becomes full url to strapi on server, but just /graphql (for proxy) on client

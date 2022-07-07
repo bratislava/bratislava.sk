@@ -1,10 +1,10 @@
 import cx from 'classnames'
-import React from 'react'
+import React, { useRef } from 'react'
+import { useOutsideClick } from 'rooks'
+
 import ChevronRight from '../../../assets/images/chevron-right.svg'
 import CloseOutline from '../../../assets/images/close-outline.svg'
 import { ArrowRight } from '../images'
-import { useOutsideClick } from 'rooks'
-import { useRef } from 'react'
 
 const PADDING = 20 // py-5
 
@@ -77,48 +77,48 @@ export const Bookmark = ({
         })}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className="w-17.5 block origin-top-left transform translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
-          <span className="block overflow-visible transform -translate-x-1/2 -translate-y-1/2 w-max" ref={ref}>
+        <span className="block w-17.5 origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
+          <span className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible" ref={ref}>
             {bookmarkTitle}
           </span>
         </span>
       </button>
 
       <div className="flex py-5">
-        <div className="flex justify-center items-center w-44.5">
+        <div className="flex w-44.5 items-center justify-center">
           {icon ? (
             <div
               style={{
                 backgroundImage: `url("${icon}")`,
               }}
-              className="w-24 h-24 rounded-full"
-            ></div>
+              className="h-24 w-24 rounded-full"
+            />
           ) : (
             <div
               className={cx('w-24 h-24 rounded-full', {
                 'bg-font': variantWithFallback === 'blue',
                 'bg-white': variantWithFallback === 'red',
               })}
-            ></div>
+            />
           )}
         </div>
 
-        <div className="flex flex-col justify-center w-80">
-          <h3 className="font-semibold text-md leading-[36px]">{title}</h3>
+        <div className="flex w-80 flex-col justify-center">
+          <h3 className="text-md font-semibold leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
-          <a href={link.href} className="flex items-center underline group font-semibold">
-            <span className="font-semibold text-sm">{link.title}</span>
+          <a href={link.href} className="group flex items-center font-semibold underline">
+            <span className="text-sm font-semibold">{link.title}</span>
             {/* <ChevronRight className="ml-6" /> */}
-            <span className="group-hover:hidden ml-4">
+            <span className="ml-4 group-hover:hidden">
               <ChevronRight />
             </span>
-            <span className="hidden group-hover:block ml-4 h-6">
+            <span className="ml-4 hidden h-6 group-hover:block">
               <ArrowRight />
             </span>
           </a>
         </div>
 
-        <div className="flex justify-end items-start w-33 pr-5">
+        <div className="flex w-33 items-start justify-end pr-5">
           <button onClick={() => setIsOpen(false)}>
             <CloseOutline />
           </button>

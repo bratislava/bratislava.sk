@@ -54,16 +54,14 @@ export const getUDEDocumentsList = async (search?: string): Promise<Array<Respon
     .then((res) => {
       return res
     })
-    .catch((err) => {
-      return err
+    .catch((error) => {
+      return error
     })
   if (!responseAxios || responseAxios.status != 200) {
     throw new Error('bad soap request to Ginis')
   }
   const response = await parseStringPromise(responseAxios.data, { explicitArray: false })
-  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult']['Xrg'][
-    'Seznam-dokumentu'
-  ]
+  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg['Seznam-dokumentu']
 }
 
 export type ParsedOfficialBoardDocument = {
@@ -77,8 +75,8 @@ export const getParsedUDEDocumentsList = async (search?: string, limit?: number)
   let documents = []
   try {
     documents = await getUDEDocumentsList(search)
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log(error)
   }
   const parsedDocuments = documents
     .map((doc: unknown) => {
@@ -128,23 +126,24 @@ export const mockedParsedDocuments = [
 ]
 
 export const getALotOfMockedDocs = async () => {
-  return mockedParsedDocuments.concat(
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments,
-    mockedParsedDocuments
-  )
+  return [
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+  ]
 }
 
 export const mockedDetail = {

@@ -19,12 +19,12 @@ interface IProps {
 export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, variant = "transparent", onValueChange }: IProps) => {
   return (
     <div className={cx(className, 'w-full h-full flex flex-col justify-center items-center')}>
-      <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <span
           onClick={() => {
             onValueChange(false)
           }}
-          className="text-base font-medium text-font cursor-pointer"
+          className="cursor-pointer text-base font-medium text-font"
         >
           {titleLeft}
         </span>
@@ -40,16 +40,18 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
             onValueChange(!value);
           }}
         >
-          <div className={cx('w-3.5 h-3.5 rounded-full shadow-md',{
-            'bg-primary': variant === 'transparent',
-            'bg-white': variant === 'primary' ||  variant === 'secondary' || variant === 'gray',
-          })} />
+          <div
+            className={cx('w-3.5 h-3.5 rounded-full shadow-md', {
+              'bg-primary': variant === 'transparent',
+              'bg-white': variant === 'primary' || variant === 'secondary' || variant === 'gray',
+            })}
+          />
         </button>
         <span
           onClick={() => {
             onValueChange(true)
           }}
-          className="text-base font-medium text-font cursor-pointer"
+          className="cursor-pointer text-base font-medium text-font"
         >
           {titleRight}
         </span>

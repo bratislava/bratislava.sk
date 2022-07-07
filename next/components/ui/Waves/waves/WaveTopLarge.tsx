@@ -1,5 +1,7 @@
-import { WaveProps } from '../Waves'
 import cx from 'classnames'
+
+import { WaveProps } from '../Waves'
+
 const WaveTop = ({ isRich = false, waveColor, innerLinesColor, outerLinesColor, className }: WaveProps) => {
   return (
     <svg

@@ -1,22 +1,22 @@
+import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import React, { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'next-i18next'
 import Hamburger from '../../../assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-small.svg'
+import CloseIcon from '../../../assets/images/close.svg'
 import HamburgerClose from '../../../assets/images/hamburger-close.svg'
 import HamburgerCloseWhite from '../../../assets/images/hamburger-close-white.svg'
 import SearchIcon from '../../../assets/images/search-icon.svg'
 import { Brand } from '../Brand/Brand'
+import Button from '../Button/Button'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
-import CloseIcon from '../../../assets/images/close.svg'
-import Button from '../Button/Button'
-import { useTranslation } from 'next-i18next'
 import NarrowText from '../NarrowText/NarrowText'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Cookies } from 'react-cookie-consent'
 import * as ReactGA from 'react-ga'
-import { minKeywordLength } from '@utils/constants'
 import { useRouter } from 'next/router'
 
 interface IProps extends LanguageSelectProps {
@@ -154,13 +154,12 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     <>
       {/* Desktop */}
       <div className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}>
-        <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg py-4 border-b border-gray-universal-200">
+        <div className="m-auto hidden w-full max-w-screen-1.5lg justify-between border-b border-gray-universal-200 py-4 lg:flex">
           <Brand
-            className="flex-1 group"
+            className="group flex-1"
             url="/"
             title={
-                 <p className="text-sm text-font group-hover:text-red-universal-300">
-
+              <p className="text-sm text-font group-hover:text-red-universal-300">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {navBarTexts[languageKey].capitalCity}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -183,7 +182,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 <input
                   id="name"
                   type="text"
-                  className="h-6 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-sm text-font"
+                  className="h-6 w-96 rounded-l-lg border-2 border-r-0 pl-6 text-sm text-font outline-none"
                   value={input}
                   onChange={handleChange}
                   onKeyDown={handleKeyDown}
@@ -204,7 +203,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 </Link>
               </div>
             ) : (
-              <div className="flex gap-x-8 text-gray-dark font-semibold">
+              <div className="flex gap-x-8 font-semibold text-gray-dark">
                 <Link
                   href="informacie-a-odporucania-k-ochoreniu-covid-19"
                   variant="plain"
@@ -215,9 +214,9 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 <Link href={navBarUrls[languageKey].eservices} variant="plain" className="whitespace-nowrap">
                   {navBarTexts[languageKey].eservices}
                 </Link>
-                <div className="relative flex items-center text-gray-dark bg-transparent cursor-pointer">
+                <div className="relative flex cursor-pointer items-center bg-transparent text-gray-dark">
                   <LanguageSelect
-                    className="appearance-none font-semibold pr-6 cursor-pointer bg-transparent active:outline-none focus:outline-none"
+                    className="cursor-pointer appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
                     {...languageSelectProps}
                   />
                 </div>
@@ -257,15 +256,15 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
             {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon />}
           </div>
-          <div className="relative flex items-center text-md text-gray-light bg-transparent cursor-pointer">
+          <div className="relative flex cursor-pointer items-center bg-transparent text-md text-gray-light">
             <LanguageSelect
-              className="appearance-none typography-highlight-sm cursor-pointer bg-transparent active:outline-none focus:outline-none"
+              className="typography-highlight-sm cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
               {...languageSelectProps}
             />
           </div>
         </div>
 
-        <button onClick={() => setBurgerOpen(!burgerOpen)} className="cursor-pointer w-4">
+        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-4 cursor-pointer">
           {burgerOpen ? <HamburgerClose /> : <Hamburger />}
         </button>
 
@@ -312,7 +311,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
             >
               <HamburgerCloseWhite />
             </div>
-            <div className="py-8 md:py-12 px-5 md:px-16 rounded-lg max-h-90Vh overflow-y-scroll overscroll-y-auto">
+            <div className="max-h-90Vh overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
                 <h5 className="text-default md:text-md font-semibold cursor-pointer">
                   {' '}
@@ -329,7 +328,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   dangerouslySetInnerHTML={{ __html: t('cookie_consent_modal_conent_body') }}
                 />
                 <AccordionItemSmall
-                  className="py-4 px-6 mb-3"
+                  className="mb-3 py-4 px-6"
                   key="0"
                   title={t('cookie_consent_security_essential_titile')}
                   secondaryTitle=""
@@ -348,7 +347,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   </div>
                 </AccordionItemSmall>
                 <AccordionItemSmall
-                  className="py-4 px-6 mb-3"
+                  className="mb-3 py-4 px-6"
                   key="0"
                   title={t('cookie_consent_performance_title')}
                   secondaryTitle=""
@@ -367,7 +366,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   </div>
                 </AccordionItemSmall>
                 <AccordionItemSmall
-                  className="py-4 px-6 mb-3"
+                  className="mb-3 py-4 px-6"
                   key="0"
                   title={t('cookie_consent_advertising_targeting_title')}
                   secondaryTitle=""
@@ -386,7 +385,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   </div>
                 </AccordionItemSmall>
               </div>
-              <div className="block md:flex justify-between items-center">
+              <div className="block items-center justify-between md:flex">
                 <Button
                   className="mx-auto mb-3 md:mb-0 md:mt-0 md:mr-6 md:ml-0 px-6 h-12 text-sm font-medium bg-primary"
                   onClick={saveSettings}
@@ -502,7 +501,7 @@ const LanguageSelect = ({
           <div className="w-full min-h-[60px] h-auto bg-[#F8D7D4] rounded-lg flex flex-col items-center pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="w-[22px] h-6 mt-3 typography-sm text-[#333333] hover:typography-highlight-sm"
+                className="typography-sm hover:typography-highlight-sm mt-3 h-6 w-[22px] text-[#333333]"
                 key={option.key}
                 onClick={handleChange}
               >

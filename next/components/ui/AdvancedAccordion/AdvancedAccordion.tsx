@@ -11,8 +11,8 @@ export interface AdvancedAccordionProps {
 export const AdvancedAccordion = ({ title, dividerStyle, items }: AdvancedAccordionProps) => {
   return (
     <div className="flex flex-col">
-      <div className="text-default lg:text-lg font-semibold pb-4">{title}</div>
-      <BasicSearch collapse className="flex lg:hidden pb-6" placeholder={''} title={''} buttonText={''} />
+      <div className="pb-4 text-default font-semibold lg:text-lg">{title}</div>
+      <BasicSearch collapse className="flex pb-6 lg:hidden" placeholder="" title="" buttonText="" />
       <AdvancedAccordionItem {...items[0]} />
       <Divider
         className="py-6 lg:py-10"
