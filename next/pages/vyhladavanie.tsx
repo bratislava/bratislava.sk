@@ -139,7 +139,12 @@ const Search = ({
           }}
         />
         {/* Header */}
-        <PageHeader color="var(--secondary-color)" transparentColor="var(--secondary-color--transparent)" imageSrc={''} className="header-main-bg bg-cover">
+        <PageHeader
+          color="var(--secondary-color)"
+          transparentColor="var(--secondary-color--transparent)"
+          imageSrc={''}
+          className="header-main-bg bg-cover"
+        >
           <SectionContainer>
             <div className="min-h-[220px] relative">
               <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('searchTheSite')}</h1>
