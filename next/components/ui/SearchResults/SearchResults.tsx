@@ -8,6 +8,7 @@ import { BlogSearchCards } from '../BlogSearchCards/BlogSearchCards'
 import { FileList } from '../FileList/FileList'
 import { NoResultsFound } from '../NoResultsFound/NoResultsFound'
 import { PageCards } from '../PageCards/PageCards'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 
 export interface SearchResultsProps {
   checkedOptions: SearchOptionProps[]
@@ -21,7 +22,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
   const [pages, setPages] = useState([])
   const [articleLimit, setArticleLimit] = useState(articleLimits.minLimit)
 
-  const { data } = useSWR([keyword, articleLimit], () => {
+  const { data, error } = useSWR([keyword, articleLimit], () => {
     return {
       articles: searchArticles(keyword, articleLimit),
       pages: searchPages(keyword),
@@ -45,6 +46,8 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
   const handlePagination = (isOpen: boolean) => {
     isOpen ? setArticleLimit(articleLimits.maxLimit) : setArticleLimit(articleLimits.minLimit)
   }
+  if (error) return <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
+  if (!data) return <LoadingSpinner size="small" className="pt-10" />
   return (
     <div className="w-full">
       {noResultsFound ? (
