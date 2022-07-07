@@ -6,7 +6,7 @@ import { fileCountVzns } from '@utils/utils'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import useSWR from 'swr'
-
+import DocumentDevider from '@assets/images/documentDevider.svg'
 import { DocumentListModalBody } from './modalBody'
 
 export const DocumentList = () => {
@@ -52,7 +52,48 @@ export const DocumentList = () => {
         <>
           <div className="pt-14 pb-5 text-default font-medium lg:pb-6 lg:text-md">{t('listOfDocuments')}</div>
           <div className="modal-content-rent flex flex-col gap-4 md:w-auto lg:gap-6">
-            {vzns.map((vzn) => {
+            {vzns.map.length > 10 ? (
+              <>
+                {vzns.map((vzn) => {
+                  const category = DocumentListCategorysMap.get(vzn.category)
+                  return (
+                    <DocumentListItem
+                      categoryName={category.value}
+                      title={vzn.title}
+                      key={vzn.id}
+                      id={vzn.id}
+                      Icon={category.icon}
+                      count={fileCountVzns(vzn)}
+                      onClick={setOpenModal}
+                      mainDocumentHref={vzn.mainDocument?.url}
+                    />
+                  )
+                })}
+              </>
+            ) : (
+              <>
+                {vzns.map((vzn, index) => {
+                  const category = DocumentListCategorysMap.get(vzn.category)
+                  return (
+                    <>
+                      <DocumentListItem
+                        categoryName={category.value}
+                        title={vzn.title}
+                        key={vzn.id}
+                        id={vzn.id}
+                        Icon={category.icon}
+                        count={fileCountVzns(vzn)}
+                        onClick={setOpenModal}
+                        mainDocumentHref={vzn.mainDocument?.url}
+                      />
+                      <>{index === 7 ? <DocumentDevider className="my-14 lg:my-24" /> : ''}</>
+                    </>
+                  )
+                })}
+              </>
+            )}
+
+            {/* {vzns.map((vzn) => {
               const category = DocumentListCategorysMap.get(vzn.category)
               return (
                 <DocumentListItem
@@ -66,7 +107,7 @@ export const DocumentList = () => {
                   mainDocumentHref={vzn.mainDocument?.url}
                 />
               )
-            })}
+            })} */}
           </div>
           <Pagination
             key={search}
