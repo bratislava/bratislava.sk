@@ -6,9 +6,9 @@ import ChevronRight from '../../../assets/images/chevron-right.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import CloseFilled from '@assets/images/close-filled.svg'
 import { Panel } from '../Panel/Panel'
-import Activities from './icons/icon-activities.svg'
+import Activities from '@assets/images/activities-new.svg'
 import Ball from './icons/icon-ball.svg'
-import Bicycle from './icons/icon-bicycle.svg'
+import Bicycle from '@assets/images/icon-bicycle-new.svg'
 import BookWithChildColored from './icons/icon-book-with-child-colored.svg'
 import BookWithChild from './icons/icon-book-with-child.svg'
 import BulbOff from './icons/icon-bulb-off.svg'
@@ -23,7 +23,7 @@ import Child from './icons/icon-child.svg'
 import CityHall from './icons/icon-city-hall.svg'
 import Coin from './icons/icon-coin.svg'
 import Compass from './icons/icon-compass.svg'
-import Comunity from './icons/icon-comunity.svg'
+import Comunity from '@assets/images/icon-comunity-new.svg'
 import RealState from './icons/icon-construction-and-real-state.svg'
 import Covid from './icons/icon-covid.svg'
 import Crane from './icons/icon-crane.svg'
@@ -38,28 +38,27 @@ import History from './icons/icon-history.svg'
 import HouseWithTreeColored from './icons/icon-house-with-tree-colored.svg'
 import HouseWithTree from './icons/icon-house-with-tree.svg'
 import LargeBuilding from './icons/icon-large-building.svg'
-import Lighting from './icons/icon-lighting.svg'
+import Lighting from '@assets/images/icon-lighting-new.svg'
 import LookingGlass from './icons/icon-looking-glass.svg'
-import Map from './icons/icon-map.svg'
+import Map from '@assets/images/icon-map-new.svg'
 import MaskWithBallColored from './icons/icon-mask-with-ball-colored.svg'
 import MaskWithBall from './icons/icon-mask-with-ball.svg'
 import Medal from './icons/icon-medal.svg'
-import MHD from './icons/icon-mhd.svg'
+import MHD from '@assets/images/icon-mhd-new.svg'
 import OldPerson from './icons/icon-old-person.svg'
 import PaperMask from './icons/icon-paper-mask.svg'
-import Parking from './icons/icon-parking.svg'
-import Partnership from './icons/icon-partnership.svg'
+import Parking from '@assets/images/icon-parking-new.svg'
+import Partnership from '@assets/images/partnership-new.svg'
 import RealStateDocument from './icons/icon-real-state-document.svg'
-import Road from './icons/icon-road.svg'
+import Road from '@assets/images/icon-road-new.svg'
 import School from './icons/icon-school.svg'
-import Share from './icons/icon-share.svg'
+import Share from '@assets/images/icon-share-new.svg'
 import Stall from './icons/icon-stall.svg'
-import Support from './icons/icon-support.svg'
+import Support from '@assets/images/icon-support-new.svg'
 import Theater from './icons/icon-theater.svg'
 import Tree from './icons/icon-tree.svg'
-import Trolleybus from './icons/icon-trolleybus.svg'
-import { useOutsideClick } from 'rooks';
-
+import Trolleybus from '@assets/images/icon-trolleybus-new.svg'
+import { useOutsideClick } from 'rooks'
 
 const ICONS = {
   mesto_01: Castle,
@@ -163,9 +162,9 @@ const HomepageMenu = ({ items }: IProps) => {
   const { Link: UILink } = useUIContext()
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = useState(-1)
   const [activeId, setActive] = useState(null)
-  const [selectedMenu, setSelectedMenu] = useState<MenuMainItem>();
-  const ref = useRef();
-  useOutsideClick(ref, () => setActive(null));
+  const [selectedMenu, setSelectedMenu] = useState<MenuMainItem>()
+  const ref = useRef()
+  useOutsideClick(ref, () => setActive(null))
 
   return (
     <>
@@ -218,12 +217,10 @@ const HomepageMenu = ({ items }: IProps) => {
                 )}
                 {ColoredIconComponent && (
                   <ColoredIconComponent
-                    className={cx('w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12',
-                      {
-                        'block': activeId == item.id,
-                        'group-hover:block hidden': activeId != item.id,
-                      }
-                    )}
+                    className={cx('w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12', {
+                      block: activeId == item.id,
+                      'group-hover:block hidden': activeId != item.id,
+                    })}
                   />
                 )}
                 <p className="typography-tag-label whitespace-pre text-gray-dark">{item.title}</p>
@@ -235,62 +232,60 @@ const HomepageMenu = ({ items }: IProps) => {
                 )}
               </div>
               <div ref={ref}>
-              <Panel
-                overflowVisible
-                data-hover-id={i}
-                style={{ backgroundColor: item.color }}
-                className={cx('absolute left-0 right-0 z-20 w-full px-6 py-10 grid-cols-3 gap-10', {
-                  grid: activeId == item.id,
-                  hidden: activeId != item.id,
-                  'rounded-tl-none': i === 0,
-                  'rounded-tr-none': i === items.length - 1,
-                })}
-              >
-                {/* SUB-ITEMS */}
-                {item.subItems?.map((subItem, j) => {
-                  const IconComponent = getIcon(subItem.icon)
-                  return (
-                    <div key={j}>
-                      <div className="flex items-center text-[20px]">
-                        <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
-                          <IconComponent className="w-10 h-10" />
-                        </div>
-                        <UILink href={subItem.url} className="flex items-center text-[20px] hover:underline">
-                          <div className="flex-1 ml-4 font-semibold cursor-pointer">{subItem.title}</div>
-                        </UILink>
-                      </div>
-                      <ul className="mt-8 space-y-3">
-                        {subItem.subItems?.map((subSubItem, k) => (
-                          <li key={k}>
-                            <UILink href={subSubItem.url} className="hover:underline">
-                              {subSubItem.title}
-                            </UILink>
-                          </li>
-                        ))}
-                        {subItem.url && subItem.subItems.length > 2 ? (
-                          <li
-                            onMouseEnter={() => setMoreLinkHoverIdx(j)}
-                            onMouseLeave={() => setMoreLinkHoverIdx(-1)}
-                            className="font-semibold"
-                          >
-                            <UILink href={subItem.url}>
-                              <div className="flex gap-x-6 items-center">
-                                <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
-                                {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
-                              </div>
-                            </UILink>
-                          </li>
-                        ) : null}
-                      </ul>
-                    </div>
-                  )
-                })}
-                <div
-                  className="absolute bottom-[-24px] left-1/2 cursor-pointer"
+                <Panel
+                  overflowVisible
+                  data-hover-id={i}
+                  style={{ backgroundColor: item.color }}
+                  className={cx('absolute left-0 right-0 z-20 w-full px-6 py-10 grid-cols-3 gap-10', {
+                    grid: activeId == item.id,
+                    hidden: activeId != item.id,
+                    'rounded-tl-none': i === 0,
+                    'rounded-tr-none': i === items.length - 1,
+                  })}
                 >
-                  <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
-                </div>
-              </Panel>
+                  {/* SUB-ITEMS */}
+                  {item.subItems?.map((subItem, j) => {
+                    const IconComponent = getIcon(subItem.icon)
+                    return (
+                      <div key={j}>
+                        <div className="flex items-center text-[20px]">
+                          <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
+                            <IconComponent className="w-10 h-10" />
+                          </div>
+                          <UILink href={subItem.url} className="flex items-center text-[20px] hover:underline">
+                            <div className="flex-1 ml-4 font-semibold cursor-pointer">{subItem.title}</div>
+                          </UILink>
+                        </div>
+                        <ul className="mt-8 space-y-3">
+                          {subItem.subItems?.map((subSubItem, k) => (
+                            <li key={k}>
+                              <UILink href={subSubItem.url} className="hover:underline">
+                                {subSubItem.title}
+                              </UILink>
+                            </li>
+                          ))}
+                          {subItem.url && subItem.subItems.length > 2 ? (
+                            <li
+                              onMouseEnter={() => setMoreLinkHoverIdx(j)}
+                              onMouseLeave={() => setMoreLinkHoverIdx(-1)}
+                              className="font-semibold"
+                            >
+                              <UILink href={subItem.url}>
+                                <div className="flex gap-x-6 items-center">
+                                  <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
+                                  {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
+                                </div>
+                              </UILink>
+                            </li>
+                          ) : null}
+                        </ul>
+                      </div>
+                    )
+                  })}
+                  <div className="absolute bottom-[-24px] left-1/2 cursor-pointer">
+                    <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
+                  </div>
+                </Panel>
               </div>
             </div>
           )
