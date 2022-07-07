@@ -16,13 +16,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { value } = await getUsers({ token, url })
     users = value
 
-    //if token expired
+    // if token expired
     if (!users || users?.length === 0) {
       const { value } = await getUsers({ token, url })
       users = value
     }
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log(error)
   }
 
   return res.json(users)

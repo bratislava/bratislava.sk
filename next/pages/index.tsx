@@ -10,10 +10,18 @@ import {
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 // import { GetServerSidePropsContext } from 'next'
 // import Image from 'next/image'
 import * as React from 'react'
-import { useTranslation } from 'next-i18next'
+import {
+  getParsedUDEDocumentsList,
+  mockedParsedDocuments,
+  ParsedOfficialBoardDocument,
+  shouldMockGinis,
+} from 'services/ginis'
+
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
@@ -22,13 +30,6 @@ import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import {
-  getParsedUDEDocumentsList,
-  mockedParsedDocuments,
-  ParsedOfficialBoardDocument,
-  shouldMockGinis,
-} from 'services/ginis'
 
 export const getStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
@@ -38,7 +39,7 @@ export const getStaticProps = async (ctx) => {
     sort: 'publishedAt:desc',
   })
 
-  let { homepage } = await client.Homepage({
+  const { homepage } = await client.Homepage({
     locale,
   })
 
@@ -74,8 +75,8 @@ export const getStaticProps = async (ctx) => {
   let rozkoPosts
   try {
     rozkoPosts = await getRozkoPosts()
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log(error)
   }
 
   let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
@@ -84,8 +85,8 @@ export const getStaticProps = async (ctx) => {
   } else {
     try {
       latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
-    } catch (e) {
-      console.log(e)
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -140,11 +141,11 @@ export const getStaticProps = async (ctx) => {
           })),
       },
       latestOfficialBoard,
-      homepagePosts: homepagePosts,
-      inba: inba,
-      header: header,
-      cards: cards,
-      rozkoPosts: rozkoPosts,
+      homepagePosts,
+      inba,
+      header,
+      cards,
+      rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
     revalidate: 30,
@@ -165,7 +166,7 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
-  const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
+  const { pageTitle, posts } = data
 
   const menuItems = parseMainMenu(mainMenu)
 
@@ -177,14 +178,14 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <div className="bg-white">
           <SectionContainer>
-            <div className="pt-28 lg:pt-18 pb-8 lg:pb-10 flex flex-col sm:flex-row sm:items-center">
+            <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
               <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
               <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
           <Waves
-            className="mt-6 md:mt-18 home-hero-wave"
+            className="home-hero-wave mt-6 md:mt-18"
             waveColor="white"
             wavePosition="bottom"
             isRich
@@ -224,7 +225,7 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-secondary py-16">
-          <h2 className="font-semibold text-default text-center lg:text-2xl lg:pb-20 pb-10">{data.topNineTitle}</h2>
+          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
@@ -235,7 +236,7 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard className="max-w-3xl mx-auto min-h-[200px] mt-36" {...inba} />
+          <InBaCard className="mx-auto mt-36 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-[78px]" />
 
           <FacebookPosts title="Bratislava na Facebooku" />

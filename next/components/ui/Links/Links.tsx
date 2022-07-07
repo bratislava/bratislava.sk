@@ -1,8 +1,9 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { ArrowRight, ChevronRight } from '../../../assets/images'
 import cx from 'classnames'
-import Button from '../Button/Button'
+
+import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { isItExternal } from '../BAStickyMenu/external-link'
+import Button from '../Button/Button'
 
 export interface LinksProps {
   className?: string
@@ -15,7 +16,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div>
       <div className={cx(className, 'flex flex-col w-full md:w-10/12')}>
-        <h1 className="font-semibold text-md">{title}</h1>
+        <h1 className="text-md font-semibold">{title}</h1>
         <div className="flex flex-col space-y-4 pt-6">
           {pageLinks?.map((pageLink, index) => (
             <Button
@@ -26,7 +27,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
               shape="none"
             >
               <UILink href={pageLink.url ? isItExternal(pageLink.url) : `#${pageLink.anchor}`}>
-                <div className="relative text-sm font-semibold text-left underline decoration-2 underline-offset-4">
+                <div className="relative text-left text-sm font-semibold underline decoration-2 underline-offset-4">
                   {pageLink?.title}
                 </div>
               </UILink>

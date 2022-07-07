@@ -1,7 +1,8 @@
 import cx from 'classnames'
+import React from 'react'
+
 // import Chevron from '../../../assets/images/chevron.svg'
 import Chevron from '../../../assets/images/chevron-down-small.svg'
-import React from 'react'
 import SwitchToggle from '../SwitchToggle/SwitchToggle'
 
 export interface AccordionItemSmallProps {
@@ -35,9 +36,7 @@ export const AccordionItemSmall = ({
     return onOpen ? onOpen() : setActive(!active)
   }
 
-  const [switchValue, setSwitchValue] = React.useState<'left' | 'right'>(
-    'left'
-  );
+  const [switchValue, setSwitchValue] = React.useState<'left' | 'right'>('left')
 
   return (
     <>
@@ -55,26 +54,26 @@ export const AccordionItemSmall = ({
           className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
           onClick={handleClick}
         >
-          <div className='flex items-center'>
-            <div className="mr-4 md:mr-5 flex-grow-0">
+          <div className="flex items-center">
+            <div className="mr-4 grow-0 md:mr-5">
               <Chevron className={cx('', { 'rotate-180': active })} />
             </div>
             <div className="flex flex-row font-medium">
-              <p className="text-font text-xxs md:text-sm text-left font-medium">{title}</p>
-              {secondaryTitle && <p className="text-xxs md:text-sm text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
+              <p className="text-left text-xxs font-medium text-font md:text-sm">{title}</p>
+              {secondaryTitle && (
+                <p className="text-left text-xxs text-gray-universal-500 md:text-sm ">&nbsp;{secondaryTitle}</p>
+              )}
             </div>
           </div>
           <div>
             <SwitchToggle
-                  titleLeft=""
-                  titleRight=""
-                  variant='primary'
-                  value={switchValue}
-                  onValueChange={(val) => setSwitchValue(val)}
-                />
+              titleLeft=""
+              titleRight=""
+              variant="primary"
+              value={switchValue}
+              onValueChange={(val) => setSwitchValue(val)}
+            />
           </div>
-          
-          
         </button>
       </div>
       <div

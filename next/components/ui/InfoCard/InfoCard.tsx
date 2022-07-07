@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { ContentWrapper } from '../ContentWrapper/ContentWrapper'
 
 export interface InfoCardProps {
@@ -28,14 +29,14 @@ export const InfoCard = ({
       <ContentWrapper
         className="mt-8 lg:pl-6"
         title={
-          <h1 className="text-primary font-bold text-md">
+          <h1 className="text-md font-bold text-primary">
             {primaryTitle}
             <br />
             {secondaryTitle}
           </h1>
         }
       >
-        <span className="text-font mt-3 mb-8 text-default">{description}</span>
+        <span className="mt-3 mb-8 text-default text-font">{description}</span>
         {children}
       </ContentWrapper>
     </div>

@@ -1,7 +1,8 @@
 import { BANavBar, MenuMainItem } from '@bratislava/ui-bratislava'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import * as React from 'react'
+
 import { usePageWrapperContext } from '../layouts/PageWrapper'
 
 interface IProps {

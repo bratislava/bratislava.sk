@@ -1,14 +1,15 @@
 import { DateTimeFormatter, LocalDate } from '@js-joda/core'
-import React from 'react'
 import cx from 'classnames'
+import React from 'react'
+
+import Calendar from '../../../assets/images/calendar-form.svg'
+import { Button } from '../Button/Button'
+import { CheckBox } from '../CheckBox/CheckBox'
 import { Field } from '../Field/Field'
 import { Input } from '../Input/Input'
+import { InputAccessory } from '../InputAccessory/InputAccessory'
 import { Select } from '../Select/Select'
 import { TextArea } from '../TextArea/TextArea'
-import { InputAccessory } from '../InputAccessory/InputAccessory'
-import { CheckBox } from '../CheckBox/CheckBox'
-import { Button } from '../Button/Button'
-import Calendar from '../../../assets/images/calendar-form.svg'
 import { Tooltip } from '../Tooltip/Tooltip'
 
 interface IProps {
@@ -28,7 +29,7 @@ export const WeddingForm = ({ className }: IProps) => {
   // const [validate, { errors, clearErrors }] =
   //   useValidation<ReservationFormValues>(validateReservationForm);
 
-  //TODO: From DB
+  // TODO: From DB
   const [reservationFormValues, setReservationFormValues] = React.useState<WeddingFormValues>({
     name: '',
     email: '@',
@@ -62,16 +63,16 @@ export const WeddingForm = ({ className }: IProps) => {
   // TODO: update plugin to grid columns
 
   return (
-    <div className="z-10 w-10/12 mx-auto">
-      <h1 className="font-semibold text-2xl text-center">Nezáväzná rezervácia</h1>
+    <div className="z-10 mx-auto w-10/12">
+      <h1 className="text-center text-2xl font-semibold">Nezáväzná rezervácia</h1>
 
-      <p className="font-medium text-default text-center">
+      <p className="text-center text-default font-medium">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
       </p>
 
       <form>
-        <div className="flex flex-col md:flex-row gap-x-7.5">
-          <div className="flex-grow">
+        <div className="flex flex-col gap-x-7.5 md:flex-row">
+          <div className="grow">
             <Field
               id="firstname"
               title="Meno"
@@ -140,7 +141,7 @@ export const WeddingForm = ({ className }: IProps) => {
             </Field>
           </div>
 
-          <div className="flex-grow">
+          <div className="grow">
             <Field
               id="date"
               title="Termín"
@@ -148,7 +149,7 @@ export const WeddingForm = ({ className }: IProps) => {
               // error={errors?.email}
             >
               <InputAccessory
-                className="text-primary w-full flex justify-between"
+                className="flex w-full justify-between text-primary"
                 iconPosition="right"
                 icon={<Calendar />}
               >
@@ -157,7 +158,7 @@ export const WeddingForm = ({ className }: IProps) => {
                   name="date"
                   type="date"
                   min={LocalDate.now().toJSON()}
-                  className="text-default text-font w-full h-12.5 focus:outline-none"
+                  className="h-12.5 w-full text-default text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.date}
                   onChange={(e) =>
@@ -178,7 +179,7 @@ export const WeddingForm = ({ className }: IProps) => {
               <TextArea
                 id="notes"
                 name="notes"
-                className="text-default pt-5 pb-3.5"
+                className="pt-5 pb-3.5 text-default"
                 rows={11}
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.notes}
@@ -191,7 +192,7 @@ export const WeddingForm = ({ className }: IProps) => {
         <div className="flex justify-center">
           <Field id="terms" className="w-full text-center">
             <CheckBox
-              className="md:gap-x-6 py-3"
+              className="py-3 md:gap-x-6"
               id="terms"
               content="Oboznámil/a som sa so všeobecnými obchodnými podmienkami."
               checked={reservationFormValues?.acceptTerms}
@@ -201,7 +202,7 @@ export const WeddingForm = ({ className }: IProps) => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 lg:mt-10 w-3/12 h-12 text-default font-medium">Nezáväzne rezervovať</Button>
+          <Button className="mt-8 h-12 w-3/12 text-default font-medium lg:mt-10">Nezáväzne rezervovať</Button>
         </div>
       </form>
     </div>

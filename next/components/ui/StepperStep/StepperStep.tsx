@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import CheckMark from '../../../assets/images/check-mark.svg'
 
 export interface IStepperStepProps {

@@ -15,13 +15,13 @@ export const InputAccessory = ({ className, children, icon, iconPosition = 'righ
   return (
     <div className={cx('relative group', className)}>
       {hasIconLeft && (
-        <span className="absolute pointer-events-none left-4 top-3 opacity-50 group-focus-within:opacity-100 group-focus-within:text-primary">
+        <span className="pointer-events-none absolute left-4 top-3 opacity-50 group-focus-within:text-primary group-focus-within:opacity-100">
           {icon}
         </span>
       )}
       {children}
       {hasIconRight && (
-        <span className="absolute pointer-events-none right-4 top-3 opacity-50 group-focus-within:opacity-100 group-focus-within:text-primary">
+        <span className="pointer-events-none absolute right-4 top-3 opacity-50 group-focus-within:text-primary group-focus-within:opacity-100">
           {icon}
         </span>
       )}

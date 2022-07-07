@@ -8,7 +8,7 @@ const meiliClient = new MeiliSearch({
 })
 
 export const searchVZN = async (search: string, offset: number) => {
-  return await meiliClient.index('vzn').search(search || '*', {
+  return meiliClient.index('vzn').search(search || '*', {
     sort: ['validFrom:desc'],
     offset,
   })

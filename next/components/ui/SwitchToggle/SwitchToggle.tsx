@@ -9,23 +9,26 @@ interface IProps {
   titleLeft: string
   titleRight: string
   value: TValue
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'gray'
-    | 'transparent'
+  variant?: 'primary' | 'secondary' | 'gray' | 'transparent'
   onValueChange: (value: TValue) => void
 }
 
-export const SwitchToggle = ({ className, titleLeft, titleRight, value = 'left', variant = "transparent", onValueChange }: IProps) => {
+export const SwitchToggle = ({
+  className,
+  titleLeft,
+  titleRight,
+  value = 'left',
+  variant = 'transparent',
+  onValueChange,
+}: IProps) => {
   return (
     <div className={cx(className, 'w-full h-full flex flex-col justify-center items-center')}>
-      <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <span
           onClick={() => {
             onValueChange('left')
           }}
-          className="text-base font-medium text-font cursor-pointer"
+          className="cursor-pointer text-base font-medium text-font"
         >
           {titleLeft}
         </span>
@@ -42,16 +45,18 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = 'left',
             onValueChange(value === 'left' ? 'right' : 'left')
           }}
         >
-          <div className={cx('w-3.5 h-3.5 rounded-full shadow-md',{
-            'bg-primary': variant === 'transparent',
-            'bg-white': variant === 'primary' ||  variant === 'secondary' || variant === 'gray',
-          })} />
+          <div
+            className={cx('w-3.5 h-3.5 rounded-full shadow-md', {
+              'bg-primary': variant === 'transparent',
+              'bg-white': variant === 'primary' || variant === 'secondary' || variant === 'gray',
+            })}
+          />
         </button>
         <span
           onClick={() => {
             onValueChange('right')
           }}
-          className="text-base font-medium text-font cursor-pointer"
+          className="cursor-pointer text-base font-medium text-font"
         >
           {titleRight}
         </span>

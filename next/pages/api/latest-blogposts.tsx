@@ -1,5 +1,6 @@
 import { withSentry } from '@sentry/nextjs'
 import { NextApiRequest, NextApiResponse } from 'next'
+
 import { fetchBlogPosts } from '../../utils/blogpost'
 import { arrayify } from '../../utils/utils'
 
