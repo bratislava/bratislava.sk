@@ -91,7 +91,7 @@ const nextConfig = {
       {
         source: '/sprava/:path*',
         destination: '/blog/:path*',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/dan-z-nehnutelnosti',
@@ -484,7 +484,6 @@ const nextConfig = {
         source: '/rozpocet',
         destination: '/mesto-bratislava/transparentne-mesto/rozpocet-a-hospodarenie',
         permanent: true,
-      },
       },
       {
         source: '/kultura',
@@ -1276,7 +1275,6 @@ const nextConfig = {
           '/blog/mesto-bratislava-otvara-grantovu-vyzvu-na-podporu-pohybovych-aktivit-a-neformalneho-vzdelavania-deti-mladeze-a-pracovnikov-v-oblasti-prace-s-detmi-a-mladezou',
         permanent: true,
       },
-      },
       {
         source: '/organizacia-alebo-institucia/zakladna-umelecka-skola-exnarova-6',
         destination: '/vzdelavanie-a-volny-cas/skolstvo/zakladne-umelecke-skoly',
@@ -1735,7 +1733,6 @@ const nextConfig = {
         destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/halbart',
         permanent: true,
       },
-      },
       {
         source: '/vyberove-konanie-clen-predstavenstva-cso-bvs',
         destination: '/mesto-bratislava/transparentne-mesto/vyberove-konania',
@@ -1882,7 +1879,6 @@ const nextConfig = {
           '/blog/cakanie-na-spoj-bude-vyrazne-komfortnejsie-cestujuci-dostanu-vyse-dvesto-zastavkovych-pristreskov',
         permanent: true,
       },
-      },
       {
         source:
           '/sprava/bratislava-podpisala-memorandum-chce-ziskat-dalsi-objekt-na-vybudovanie-mestskych-najomnych-bytov',
@@ -2020,7 +2016,6 @@ const nextConfig = {
         destination: '/kultura-a-komunity/kulturne-dedicstvo-a-pamiatkova-starostlivost',
         permanent: true,
       },
-      },
       {
         source:
           '/sprava/hlavne-mesto-je-zapojene-do-medzinarodneho-projektu-arch-v-oblasti-klimatickej-adaptacie-miest',
@@ -2134,7 +2129,6 @@ const nextConfig = {
           '/blog/bratislava-zintenzivnuje-monitoring-liahnisk-komarov-a-zavadza-vzdusnu-aplikaciu-biologickeho-prostriedku-dronmi',
         permanent: true,
       },
-      },
       {
         source: '/iframe/rozkopavky-a-uzavierky',
         destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
@@ -2161,7 +2155,6 @@ const nextConfig = {
         source: '/rozvoj-najomneho-byvania',
         destination: '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/rozvoj-najomneho-byvania',
         permanent: true,
-      },
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-4',
@@ -2307,7 +2300,6 @@ const nextConfig = {
         destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
         permanent: true,
       },
-      },
       {
         source:
           '/sprava/vysledky-junovych-vyberovych-konani-na-riaditela-ku-pamiatkoveho-ustavu-nacelnika-mestskej-policie-a-riaditela-ku-zoo',
@@ -2395,7 +2387,6 @@ const nextConfig = {
         destination:
           '/blog/hlavne-mesto-vyhlasilo-vyzvu-na-podporu-narodnych-a-medzinarodnych-sportovych-a-vzdelavacich-podujati',
         permanent: true,
-      },
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-6',
@@ -2593,7 +2584,6 @@ const nextConfig = {
           '/zivotne-prostredie-a-vystavba/rozvoj-mesta/uzemnoplanovacie-dokumenty/platna-uzemnoplanovacia-dokumentacia/uzemne-plany-zon',
         permanent: true,
       },
-      },
       {
         source:
           '/sprava/olo-zacina-s-rozvozom-vriec-a-informacnych-letakov-pre-zvoz-triedeneho-odpadu-z-rodinnych-domov-v-ruzinove-novom-meste-a-raci',
@@ -2696,7 +2686,6 @@ const nextConfig = {
         destination:
           '/blog/druhy-hokejovy-sampionat-v-historii-slovenska-zacina-o-16-dni-organizatori-i-samospravy-finisuju-s-pripravami',
         permanent: true,
-      },
       },
       {
         source: '/dan-z-nehnutelnosti',
