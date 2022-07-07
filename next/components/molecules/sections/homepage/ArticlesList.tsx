@@ -40,6 +40,7 @@ export const ArticlesList = ({
       const { blogPosts } = await client.LatestBlogsWithTags({
         limit: itemsPerPage,
         start: (currentPage - 1) * itemsPerPage,
+        sort: 'publishedAt:desc',
         // TODO double check this filter after everything is connected
         filters: {
           tag: {
@@ -157,7 +158,7 @@ export const ArticlesList = ({
             coverImage={article.attributes.coverImage ?? { url: BratislavaPlaceholder }}
             title={article.attributes?.title}
             tag={article.attributes.tag}
-            createdAt={article.published_at}
+            updatedAt={article.attributes?.updatedAt}
             excerpt={article.attributes?.excerpt}
             readMoreText={'Čítať viac'}
             slug={article.attributes.slug}
