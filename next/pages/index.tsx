@@ -14,18 +14,15 @@ import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineI
 // import Image from 'next/image'
 import * as React from 'react'
 import { useTranslation } from 'next-i18next'
-import BAHero from '../assets/images/ba-hero.png'
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
-import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { identity } from 'lodash'
 import {
   getParsedUDEDocumentsList,
   mockedParsedDocuments,
