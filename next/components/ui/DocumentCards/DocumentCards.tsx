@@ -2,16 +2,10 @@ import { DocumentCard, DocumentCardProps } from '../DocumentCard/DocumentCard'
 import Divider from '../Divider/Divider'
 import Pagination from '../Pagination/Pagination'
 import { useState } from 'react'
+import { ParsedOfficialBoardDocument } from 'services/ginis'
 
-interface DocumentProps {
-  title: string
-  createdAt: string
-  fileExtension: string
-  fileSize: string
-  content: string
-}
 export interface DocumentCardsProps {
-  documents: DocumentProps[]
+  documents: ParsedOfficialBoardDocument[]
   dividerStyle?: string
   title: string
   viewButtonText: string
@@ -52,6 +46,7 @@ export const DocumentCards = ({
         </div>
         <Pagination
           itemsPerPage={itemsPerPageDesktop}
+          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
           totalCount={documents.length}
           currentPage={currentPage}
           pageHandler={setCurrentPage}
@@ -74,6 +69,7 @@ export const DocumentCards = ({
         </div>
         <Pagination
           itemsPerPage={itemsPerPageMobile}
+          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
           totalCount={documents.length}
           currentPage={currentPage}
           pageHandler={setCurrentPage}

@@ -94,9 +94,9 @@ export const Footer = ({
 
       <section
         aria-label="Accessibility and Copyright"
-        className="flex flex-col text-center gap-y-6 lg:gap-y-0 lg:flex-row lg:justify-between pt-14"
+        className="flex lg:grid grid-cols-3 flex-col text-center gap-y-6 lg:gap-y-0 lg:flex-row lg:justify-between pt-14"
       >
-        {accessibilityLink && <UILink href={accessibilityLink.url}>{accessibilityLink.title}</UILink>}
+        {accessibilityLink && <UILink href={accessibilityLink.url} className="lg:text-left hover:underline">{accessibilityLink.title}</UILink>}
         <div className="flex justify-center gap-x-10 lg:hidden" aria-label="lang">
           {languageLinks?.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
@@ -134,7 +134,8 @@ export const Footer = ({
           <EULogo />
         </span>
         <p className="mt-2 lg:mt-0">{copyright}</p>
-        <div className="hidden lg:block" aria-label="lang">
+        <div className="hidden lg:block text-right" aria-label="lang">
+          
           {languageLinks?.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
               {url === undefined ? (

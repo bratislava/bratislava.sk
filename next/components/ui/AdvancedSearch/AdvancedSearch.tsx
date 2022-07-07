@@ -1,48 +1,100 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import Button from '../Button/Button'
 import SearchIcon from '../../../assets/images/search-icon.svg'
 import Checkbox from '../../../assets/images/checkbox.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
+import { minKeywordLength } from '@utils/constants'
 
 export interface AdvancedSearchProps {
   className?: string
   placeholder?: string
   title?: string
   buttonText?: string
-  options?: string[]
+  handleClick?: (checkedOptions: SearchOptionProps[], keyword: string) => void
+  handleSelect?: (checkedOptions: SearchOptionProps[]) => void
+  keyword?: string
 }
 
-export const AdvancedSearch = ({ className, placeholder, title, buttonText, options }: AdvancedSearchProps) => {
-  const { Link: UILink } = useUIContext()
-  const [checked, setChecked] = useState(options ?? [])
-  const handleClick = (option: string) => {
-    if (checked.includes(option)) {
-      setChecked(checked.filter((o) => o != option))
+export interface SearchOptionProps {
+  key: string
+  value: string
+}
+
+export const AdvancedSearch = ({
+  className,
+  placeholder,
+  title,
+  buttonText,
+  handleClick,
+  handleSelect,
+  keyword,
+}: AdvancedSearchProps) => {
+  const { t } = useTranslation('common')
+  const options = [
+    {
+      key: 'articles',
+      value: t('articles'),
+    },
+    { key: 'pages', value: t('pages') },
+  ]
+  const [checked, setChecked] = useState(options)
+
+  const handleAction = (option: SearchOptionProps) => {
+    if (checked.some(({ key }) => key == option.key)) {
+      const options = checked.filter((o) => o.key != option.key)
+      setChecked(options)
+      handleSelect(options)
     } else {
-      setChecked([...checked, option])
+      const options = [...checked, option]
+      setChecked(options)
+      handleSelect(options)
     }
   }
+
+  const [input, setInput] = useState('')
+  useEffect(() => {
+    keyword && setInput(keyword)
+  }, [keyword])
+  const handleChange = (event) => {
+    setInput(event.target.value)
+  }
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && input.length > minKeywordLength) {
+      handleClick(checked, input)
+    }
+  }
+
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-sm lg:text-md font-medium pb-3">{title}</div>
+      <div className="text-sm lg:text-md font-medium pb-3 scroll-mt-24 lg:scroll-mt-48">{title}</div>
       <div className="hidden lg:flex pb-6">
         <input
           id="name"
           type="text"
           className="h-14 pl-6 w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-base text-font"
           placeholder={placeholder}
+          value={input}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
-        <UILink href="search">
-          <Button
-            icon={<SearchIcon />}
-            hoverIcon={<SearchIcon />}
-            className="h-14 rounded-l-none text-default px-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
-            variant="secondaryDarkText"
-          >
-            {buttonText}
-          </Button>
-        </UILink>
+        <Button
+          icon={<SearchIcon />}
+          hoverIcon={<SearchIcon />}
+          className={cx(
+            'h-14 rounded-l-none text-default px-6 shadow-none font-medium',
+            {
+              'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength,
+            },
+            { 'cursor-default': input.length <= minKeywordLength }
+          )}
+          variant="secondaryDarkText"
+          onClick={() => {
+            input.length > minKeywordLength && handleClick(checked, input)
+          }}
+        >
+          {buttonText}
+        </Button>
       </div>
       <div className="flex lg:hidden pb-6">
         <input
@@ -51,26 +103,31 @@ export const AdvancedSearch = ({ className, placeholder, title, buttonText, opti
           className="h-14 pl-6 w-full max-w-[574px] outline-none border-2 border-r-0 rounded-l-lg text-sm text-font font-medium"
           placeholder="Zadajte kľúčové slovo"
         />
-        <UILink href="search">
-          <Button
-            icon={<SearchIcon />}
-            hoverIcon={<SearchIcon />}
-            className="h-14 rounded-l-none text-default pr-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
-            variant="secondaryDarkText"
-          ></Button>
-        </UILink>
+        <Button
+          icon={<SearchIcon />}
+          hoverIcon={<SearchIcon />}
+          className="h-14 rounded-l-none text-default pr-6 shadow-none hover:bg-primary hover:text-white hover:color-white font-medium"
+          variant="secondaryDarkText"
+          onClick={() => {
+            input.length > minKeywordLength && handleClick(checked, input)
+          }}
+        />
       </div>
       <div className="flex flex-col lg:flex-row gap-x-14 gap-y-6">
-        {options?.map((option, index) => (
+        {options.map((option, index) => (
           <div key={index} className="flex items-center gap-x-4">
-            <div onClick={() => handleClick(option)}>
-              {checked.includes(option) ? (
+            <div
+              onClick={() => {
+                handleAction(option)
+              }}
+            >
+              {checked.some(({ key }) => key == option.key) ? (
                 <Checkbox />
               ) : (
                 <div className="h-6 w-6 rounded border-2 border-solid border-slate-300 mr-px"></div>
               )}
             </div>
-            <label>{option}</label>
+            <label>{option.value}</label>
           </div>
         ))}
       </div>

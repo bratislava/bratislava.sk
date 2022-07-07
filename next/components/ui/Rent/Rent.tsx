@@ -15,13 +15,13 @@ export interface RentProps {
       }
     }
   }
-  title?: string
-  desc?: string
+  title?: string | null | undefined
+  desc?: string | null | undefined
   linkLabel?: string
 }
 
 export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => {
-  const isMore = desc.length > 100
+  const isMore = desc?.length > 100
   const [isOpen, setOpen] = useState(false)
   return (
     <div
@@ -63,14 +63,14 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       </div>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setOpen(false)}>
         <div
-          className="modal-content-rent rounded-2xl md:py-10 md:px-12 py-7 px-8 overflow-y-auto"
+          className="modal-content-rent rounded-2xl py-7 px-6 md:py-10 md:px-12 overflow-y-auto max-h-[412px] md:max-h-[600px]"
           style={{
             maxWidth: '650px',
-            maxHeight: '600px',
+            // maxHeight: '600px',
             backgroundColor: 'var(--secondary-color)',
           }}
         >
-          <div className="rounded-full bg-white w-max mb-8">
+          <div className="rounded-full bg-white w-max mx-auto md:mx-0 mb-8 h-24 w-24 md:h-40 md:w-40">
             {icon?.data?.attributes?.url && (
               <img className="p-5" src={icon.data.attributes.url} alt={title} width="160" height="160" />
             )}

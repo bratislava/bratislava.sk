@@ -28,7 +28,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           items={posts.map((blogCard, i) => (
             <div key={i} className="box-content flex py-16">
               <HorizontalCard className="w-540 min-h-220" key={i} imageSrc={blogCard.imageSrc}>
-                {blogCard.title}
+                <p className='overflow-ellipsis overflow-hidden line-clamp-4'>{blogCard.title}</p>
                 <UILink
                   className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
                   href={`blog${blogCard?.url}` || ''}
@@ -38,7 +38,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                     <ChevronRight />
                   </span>
                   <span className="hidden group-hover:block">
-                    <ArrowRight />
+                    <ChevronRight />
                   </span>
                 </UILink>
               </HorizontalCard>
@@ -47,7 +47,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
         />
       </div>
 
-      <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4')}>
+      <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4 -mx-8 px-8')}>
         {posts.map((blogCard, i) => (
           <HorizontalCard
             key={i}

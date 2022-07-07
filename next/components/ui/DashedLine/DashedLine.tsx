@@ -9,7 +9,7 @@ export interface DashedLineProps {
 
 export const DashedLine = ({ position, className, color }: DashedLineProps) => {
   return (
-    <div className={cx('h-[82px] overflow-hidden relative', className)}>
+    <div className={cx('h-[170px] md:h-[100px] overflow-hidden relative', className)}>
       {position === 'right' ? (
         <CompleteDashedLine color={color} />
       ) : (
