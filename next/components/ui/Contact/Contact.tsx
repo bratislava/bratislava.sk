@@ -1,5 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+
 import Email from '../../../assets/images/email2.svg'
 import Phone from '../../../assets/images/phone.svg'
 
@@ -47,16 +48,16 @@ export const Contact = ({
 
   return (
     <div className={cx(className, 'flex flex-col md:flex-row text-font gap-3')}>
-      <div className="w-full md:w-1/2 mb-6 md:mb-0">
+      <div className="mb-6 w-full md:mb-0 md:w-1/2">
         <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
-          {title && <h4 className="mb-6 font-semibold text-md leading-[36px]">{title}</h4>}
+          {title && <h4 className="mb-6 text-md font-semibold leading-[36px]">{title}</h4>}
           {description && (
-            <UIMarkdown className="text-sm md:text-default leading-[24px] md:leading-[30px]" content={description} />
+            <UIMarkdown className="text-sm leading-[24px] md:text-default md:leading-[30px]" content={description} />
           )}
         </div>
       </div>
-      <div className="w-full md:w-1/2 mb-6 md:mb-0">
-        <div className='flex flex-col md:flex-row text-font gap-3'>
+      <div className="mb-6 w-full md:mb-0 md:w-1/2">
+        <div className='flex flex-col gap-3 text-font md:flex-row'>
         {items.map((item) => (
         <div
           key={item.variant}
@@ -89,14 +90,14 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
   const { Markdown: UIMarkdown } = useUIContext()
 
   if (variant === 'address') {
-    return <UIMarkdown className="text-sm md:text-default leading-[24px] md:leading-[30px]" content={value} />
+    return <UIMarkdown className="text-sm leading-[24px] md:text-default md:leading-[30px]" content={value} />
   }
 
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="flex flex-col items-center justify-start text-default leading-[30px] pb-20 relative h-full">
-      <Icon className="w-24 h-24" />
+    <div className="relative flex h-full flex-col items-center justify-start pb-20 text-default leading-[30px]">
+      <Icon className="h-24 w-24" />
       {value.split(',').map((item, key) => {
         return (
           <div key={key} className="text-center">

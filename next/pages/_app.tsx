@@ -1,14 +1,16 @@
+import './index.css'
+
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
-import { appWithTranslation } from 'next-i18next'
 import { AppProps } from 'next/app'
 import Link from 'next/link'
 import Script from 'next/script'
+import { appWithTranslation } from 'next-i18next'
 import React from 'react'
+
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
-import './index.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />

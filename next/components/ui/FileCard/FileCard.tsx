@@ -1,6 +1,8 @@
 import cx from 'classnames'
+
 import { Download } from '../../../assets/images'
 import { Panel } from '../Panel/Panel'
+
 export interface FileCardProps {
   className?: string
   fileTitle?: string
@@ -13,11 +15,11 @@ export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloa
   return (
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
       <Panel className={cx(className, 'flex flex-row md:flex-col px-5 justify-between')} hoverable>
-        <div className="hidden md:flex justify-end mt-5 text-primary">
+        <div className="mt-5 hidden justify-end text-primary md:flex">
           <Download className="text-red-brick" />
         </div>
 
-        <div className="font-normal text-sm my-5 md:mt-0 md:mb-5">
+        <div className="my-5 text-sm font-normal md:mt-0 md:mb-5">
           {fileTitle}
           <div
             className={cx(
@@ -30,7 +32,7 @@ export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloa
           </div>
         </div>
 
-        <div className="flex md:hidden items-end mb-5 text-primary">
+        <div className="mb-5 flex items-end text-primary md:hidden">
           <Download className="text-red-brick" />
         </div>
       </Panel>

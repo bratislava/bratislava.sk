@@ -8,26 +8,26 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import BasePageLayout from '../../../components/layouts/BasePageLayout'
-import PageWrapper from '../../../components/layouts/PageWrapper'
-import { pageStyle } from '../../../utils/page'
-import { forceString, isPresent } from '../../../utils/utils'
-import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
-import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
-import { AsyncServerProps } from '@utils/types'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { parseFooter, parseMainMenu } from '../../../utils/page'
+import { AsyncServerProps } from '@utils/types'
+import { GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {
   getALotOfMockedDocs,
   getParsedUDEDocumentsList,
   ParsedOfficialBoardDocument,
   shouldMockGinis,
 } from 'services/ginis'
-import { useRouter } from 'next/router'
-import { GetServerSidePropsContext } from 'next'
+
+import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
+import BasePageLayout from '../../../components/layouts/BasePageLayout'
+import PageWrapper from '../../../components/layouts/PageWrapper'
+import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
+import { pageStyle , parseFooter, parseMainMenu } from '../../../utils/page'
+import { forceString, isPresent } from '../../../utils/utils'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const locale = ctx.locale ?? 'sk'
@@ -80,8 +80,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   } else {
     try {
       documents = await getParsedUDEDocumentsList(forceString(ctx?.query?.search))
-    } catch (e) {
-      console.log(e)
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -99,7 +99,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
         councilImage: '/BACoatOfArms.svg',
         locale,
       }),
-      footer: footer,
+      footer,
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
@@ -112,11 +112,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
             locale: l,
           })),
       },
-      homepagePosts: homepagePosts,
+      homepagePosts,
       documents,
-      inba: inba,
-      header: header,
-      cards: cards,
+      inba,
+      header,
+      cards,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
   }
@@ -181,7 +181,7 @@ const OfficialBoard = ({
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
-            <div className="min-h-[220px] relative">
+            <div className="relative min-h-[220px]">
               <div className="absolute top-6">
                 {/* <PageBreadcrumbs
                   parentPage={boardPage?.parentPage}
@@ -189,7 +189,7 @@ const OfficialBoard = ({
                   title={boardPage.title}
                 /> */}
               </div>
-              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('officialBoard')}</h1>
+              <h1 className="whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">{t('officialBoard')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>

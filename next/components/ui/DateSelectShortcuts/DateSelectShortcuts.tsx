@@ -20,15 +20,17 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
   const today = LocalDate.now()
   return (
     <>
-      {new Array(5).fill(1).map((_, i) => {
+      {Array.from({length: 5}).fill(1).map((_, i) => {
         const date = today.plusDays(i)
 
         const title = (() => {
           switch (i) {
             case 0:
               return 'Dnes'
+
             case 1:
               return 'Zajtra'
+
             default:
               return DOW[date.dayOfWeek().value()]
           }
@@ -48,7 +50,7 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
             onClick={() => onClick?.(dateValue)}
           >
             {title}
-            {isActive && <div className="absolute top-1/2 left-1/2 bg-current w-1 h-1 rounded-full mt-4" />}
+            {isActive && <div className="absolute top-1/2 left-1/2 mt-4 h-1 w-1 rounded-full bg-current" />}
           </button>
         )
       })}

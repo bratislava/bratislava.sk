@@ -1,8 +1,8 @@
-import { Button, Input } from '@bratislava/ui-bratislava'
 import { ArrowRight, ChevronRight } from '@assets/images'
-import React, { FormEvent } from 'react'
+import { Button, Input } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
+import React, { FormEvent } from 'react'
 
 interface IProps {
   className?: string
@@ -48,9 +48,9 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
 
   return (
     <div className={cx('text-center bg-secondary text-font', className)}>
-      <p className="font-semibold text-lg">{t('title')}</p>
-      <p className="mt-6 pt-0.5 font-medium text-default w-10/12 m-auto">{t('description')}</p>
-      <form className="mt-10 font-medium flex flex-col items-center gap-y-8 text-default" onSubmit={handleSubmit}>
+      <p className="text-lg font-semibold">{t('title')}</p>
+      <p className="m-auto mt-6 w-10/12 pt-0.5 text-default font-medium">{t('description')}</p>
+      <form className="mt-10 flex flex-col items-center gap-y-8 text-default font-medium" onSubmit={handleSubmit}>
         <InputField
           id="adults"
           label={t('adultsText')}
@@ -87,7 +87,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
         />
 
         <Button
-          className="mt-6 py-4 px-6 bg-primary text-font text-default font-semibold"
+          className="mt-6 bg-primary py-4 px-6 text-default font-semibold text-font"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"
@@ -98,8 +98,8 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
 
       {submitted && (
         <div className="mt-14">
-          <p className="font-semibold text-md">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
-          <p className="text-default mt-5 w-9/12 m-auto">
+          <p className="text-md font-semibold">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
+          <p className="m-auto mt-5 w-9/12 text-default">
             {canAcommodate
               ? t('answerDescriptionYes')
               : t('answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
@@ -131,7 +131,7 @@ const InputField = ({
       id={id}
       value={value}
       onChange={(ev) => onChange(ev.target.value ?? '')}
-      className="w-64 mt-3 py-4 px-10 text-center box-border rounded-lg"
+      className="mt-3 box-border w-64 rounded-lg py-4 px-10 text-center"
       required
       type="number"
       min={0}

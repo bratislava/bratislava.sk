@@ -1,8 +1,9 @@
-import { Accordion as AccordionBa } from '../../Accordion/Accordion'
 import cx from 'classnames'
 import React from 'react'
+
 import ChevronDown from '../../../../assets/images/chevron-down.svg'
 import ChevronRight from '../../../../assets/images/chevron-right.svg'
+import { Accordion as AccordionBa } from '../../Accordion/Accordion'
 
 interface IProps {
   className?: string
@@ -66,11 +67,11 @@ export const RentAccordion = (props: IProps) => {
       }))}
       tabsVariant="custom"
       contents={[
-        <div className="grid grid-cols-2 gap-x-8 mb-2">
+        <div className="mb-2 grid grid-cols-2 gap-x-8">
           <div>{CONTENT[0]}</div>
           <div>{CONTENT[1]}</div>
         </div>,
-        <div className="grid grid-cols-2 gap-x-8 mb-2">
+        <div className="mb-2 grid grid-cols-2 gap-x-8">
           <div>{CONTENT[0]}</div>
           <div>{CONTENT[1]}</div>
         </div>,

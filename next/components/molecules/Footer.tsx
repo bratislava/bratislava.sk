@@ -1,9 +1,10 @@
 import { Footer as UIFooter, FooterProps, SectionContainer } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
-import { usePageWrapperContext } from '../layouts/PageWrapper'
+
 import FooterWidth from '../../assets/images/footer-city.svg'
 import FooterWidthMobile from '../../assets/images/footer-city-mobile.svg'
+import { usePageWrapperContext } from '../layouts/PageWrapper'
 
 
 const Footer = (props: FooterProps) => {
@@ -20,8 +21,8 @@ const Footer = (props: FooterProps) => {
     // <SectionContainer>
     <div className='mt-24 '>
       <FooterWidth className='w-full'/>
-      <div className='px-7.5 bg-white'>
-      <div className="max-w-screen-1.5lg mx-auto">
+      <div className='bg-white px-7.5'>
+      <div className="mx-auto max-w-screen-1.5lg">
         <UIFooter className="pb-14" {...props} languageLinks={languageLinks} />
       </div>
       </div>

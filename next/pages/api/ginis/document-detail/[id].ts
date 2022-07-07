@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import axios, { AxiosRequestConfig } from 'axios'
-import { parseString } from 'xml2js'
-import { ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'
 import { withSentry } from '@sentry/nextjs'
+import axios, { AxiosRequestConfig } from 'axios'
+import { ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { parseString } from 'xml2js'
 
 // params: id - base64 encoded "id zaznamu"
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -53,24 +53,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
       .then((res) => {
         return res
       })
-      .catch((err) => {
-        return err
+      .catch((error) => {
+        return error
       })
     if (!responseAxios || responseAxios.status != 200) {
       console.log(responseAxios)
       return res.status(400).json({ message: 'bad soap request to Ginis' })
     }
-    parseString(responseAxios.data, { explicitArray: false }, function (error, r) {
+    parseString(responseAxios.data, { explicitArray: false }, (error, r) => {
       if (error) {
         return res.status(400).json({ message: 'bad xml to json' })
-      } else {
+      } 
         response = r
-      }
+      
     })
     const documentDetail =
-      response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult']['Xrg']['Detail-dokumentu']
+      response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg['Detail-dokumentu']
     const documentFiles =
-      response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult']['Xrg']['Soubory-dokumentu']
+      response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg['Soubory-dokumentu']
     if (Array.isArray(documentFiles)) {
       result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': documentFiles }
     } else if (typeof documentFiles === 'object') {
@@ -78,8 +78,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     } else {
       result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': [] }
     }
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log(error)
   }
 
   return res.json(result)

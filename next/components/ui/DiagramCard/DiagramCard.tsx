@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { StepperStep } from '../StepperStep/StepperStep'
 
 export interface StaticImageData {
@@ -24,7 +25,7 @@ export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, classNam
     >
       <StepperStep
         active={false}
-        className="absolute transform -translate-y-1/2 h-20 w-20 text-5xl py-5"
+        className="absolute h-20 w-20 -translate-y-1/2 py-5 text-5xl"
         number={index}
       />
 
@@ -33,7 +34,7 @@ export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, classNam
       </div>
 
       {text && (
-        <div className="mt-8 text-base text-center px-5 text-font pb-10">
+        <div className="mt-8 px-5 pb-10 text-center text-base text-font">
           {typeof text === 'string' ? <p>{text}</p> : text}
         </div>
       )}

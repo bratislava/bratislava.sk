@@ -2,6 +2,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { PageCategoryEntityResponse, PageEntityResponse, ParentPageFragment } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import * as React from 'react'
+
 import { pagePath } from '../../utils/page'
 
 interface Props {
@@ -29,7 +30,7 @@ const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
 
   crumbs.push({ title: title ?? '', url: null })
   return (
-    <React.Fragment>
+    <>
       {crumbs.map((crumb, i) => {
         const last = i === crumbs.length - 1
 
@@ -46,7 +47,7 @@ const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
           </React.Fragment>
         )
       })}
-    </React.Fragment>
+    </>
   )
 }
 

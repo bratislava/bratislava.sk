@@ -1,5 +1,6 @@
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
+
 import { Card } from '../Card/Card';
 import { CheckBox } from '../CheckBox/CheckBox';
 
@@ -23,7 +24,7 @@ export const NewsLetter = ({
   const [isSubscribed, setSubscribed] = React.useState(false);
 
   const handleClick = () => {
-    if (isChecked && email.length !== 0) {
+    if (isChecked && email.length > 0) {
       console.log('Subscribed');
       setSubscribed(true);
     }
@@ -45,18 +46,18 @@ export const NewsLetter = ({
           ) : undefined
         }
         topImagePosition="left-[-10px] lg:left-[492px] h-[180px] lg:h-[214px] w-[320px] lg:w-[382px] top-[-78px] lg:top-[59px] "
-        className="flex flex-col h-auto"
+        className="flex h-auto flex-col"
         onButtonClick={handleClick}
         buttonContent={buttonLabel}
       >
         {/* Content */}
-        <div className="mt-30 mb-8 lg:mb-0 lg:mt-0 p-6 lg:p-12">
-          <h2 className="font-semibold text-md">Newsletter</h2>
-          <div className="text-base mt-5">{newsLetterContent}</div>
-          <div className="w-full pr-1 lg:w-80 lg:pr-3 mt-8">
+        <div className="mt-30 mb-8 p-6 lg:my-0 lg:p-12">
+          <h2 className="text-md font-semibold">Newsletter</h2>
+          <div className="mt-5 text-base">{newsLetterContent}</div>
+          <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
             <input
               type="email"
-              className="border-b-2 border-font focus:outline-none w-full"
+              className="w-full border-b-2 border-font focus:outline-none"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
             />

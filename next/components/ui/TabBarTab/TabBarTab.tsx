@@ -24,7 +24,7 @@ export const TabBarTab = ({ className, tab, onClick, isActive, handleSelect }: T
     >
       {tab.title}
       {isActive && (
-        <div className="absolute w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 border-primary border-b-2"></div>
+        <div className="absolute bottom-0 left-1/2 w-10/12 -translate-x-1/2 border-b-2 border-primary" />
       )}
     </button>
   )

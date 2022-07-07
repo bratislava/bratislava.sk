@@ -1,5 +1,5 @@
 export interface RequestGinisBodyDocumentsList {
-    state: RequestGinisBodyDocumentsListStates //Stav
+    state: RequestGinisBodyDocumentsListStates // Stav
     tableId: string // Id-uredni-desky
     // It is possible to have more parameters, for check them go to https://robot.gordic.cz/xrg/Default.html#
 }
@@ -10,21 +10,21 @@ export enum RequestGinisBodyDocumentsListStates {
 }
 
 export interface ResponseGinisDocumentsList {
-    "Id-zaznamu": string //id of post of document - use for ID
+    "Id-zaznamu": string // id of post of document - use for ID
     Stav: RequestGinisBodyDocumentsListStates 
-    Kategorie: string //category
-    Nazev: string //name
-    Popis: string //description
-    "Vyveseno-dne": string //Posted in date (date string YYYY-MM-DD)
-    "Sejmuto-dne": string //Deleted in date (date string YYYY-MM-DD) can be in the future
-    Zdroj: string //Source or department of document
-    Navrhl: string //Person, who propose the document (name and ID)
-    Schvalil: string //person who admint the document (name and ID)
-    Cj: string //some other ID
-    "Pocet-souboru": string //number of posted files
-    "Id-dokumentu": string //Id of document
-    "Pocet-vyveseno": string //number of posted events
-    "Pocet-archiv": string //number of deleted documents
+    Kategorie: string // category
+    Nazev: string // name
+    Popis: string // description
+    "Vyveseno-dne": string // Posted in date (date string YYYY-MM-DD)
+    "Sejmuto-dne": string // Deleted in date (date string YYYY-MM-DD) can be in the future
+    Zdroj: string // Source or department of document
+    Navrhl: string // Person, who propose the document (name and ID)
+    Schvalil: string // person who admint the document (name and ID)
+    Cj: string // some other ID
+    "Pocet-souboru": string // number of posted files
+    "Id-dokumentu": string // Id of document
+    "Pocet-vyveseno": string // number of posted events
+    "Pocet-archiv": string // number of deleted documents
     "Datum-zmeny": string
     "Puvod-dokumentu": string
     "Odesilatel-dokumentu": string
@@ -85,7 +85,7 @@ export interface ResponseGinisBodyDocumentDetailDetail {
 }
 
 export interface ResponseGinisBodyDocumentDetailFile {
-    "Id-souboru": string //file id - use for download file - fileId param
+    "Id-souboru": string // file id - use for download file - fileId param
     Nazev: string
     Velikost: string
     "Priznak-el-obr": string
@@ -98,6 +98,6 @@ export interface RequestGinisBodyLoadFile {
 }
 
 export interface ResponseGinisBodyLoadFile {
-    "Jmeno-souboru": string //file name
-    Data: string //base64 string
+    "Jmeno-souboru": string // file name
+    Data: string // base64 string
 }

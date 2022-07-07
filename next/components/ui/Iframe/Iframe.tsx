@@ -1,5 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+
 export interface IframeProps {
   iframe_url?: string
   iframe_width?: number
@@ -28,7 +29,7 @@ export const Iframe = ({
       scrolling={iframe_scrolling}
       allowFullScreen={iframe_allowfullscreen}
       style={JSON.parse(`{${iframe_style}}`)}
-    ></iframe>
+     />
   )
 }
 export default Iframe

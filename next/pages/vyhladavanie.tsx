@@ -7,16 +7,16 @@ import {
   SearchResults,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { useTranslation } from 'next-i18next'
-import BasePageLayout from '../components/layouts/BasePageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
-import { pageStyle } from '../utils/page'
-import { AsyncServerProps } from '@utils/types'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
+import { AsyncServerProps } from '@utils/types'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { parseFooter, parseMainMenu } from '../utils/page'
 import { useEffect, useState } from 'react'
+
+import BasePageLayout from '../components/layouts/BasePageLayout'
+import PageWrapper from '../components/layouts/PageWrapper'
+import { pageStyle , parseFooter, parseMainMenu } from '../utils/page'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -33,7 +33,7 @@ export const getServerSideProps = async (ctx: any) => {
 
   return {
     props: {
-      footer: footer,
+      footer,
       mainMenu,
       page: {
         locale: ctx.locale,
@@ -80,7 +80,7 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
         { locale: 'sk', slug: 'vyhladavanie' },
         { locale: 'en', slug: 'search' },
       ]}
-      slug={'/vyhladavanie'}
+      slug="/vyhladavanie"
     >
       <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
         <style
@@ -92,16 +92,16 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
         <PageHeader
           color="var(--secondary-color)"
           transparentColor="var(--secondary-color--transparent)"
-          imageSrc={''}
+          imageSrc=""
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
-            <div className="min-h-[220px] relative">
-              <h1 className="pt-30 text-md md:text-2xl font-bold whitespace-pre-wrap">{t('searchTheSite')}</h1>
+            <div className="relative min-h-[220px]">
+              <h1 className="whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">{t('searchTheSite')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>
-        <SectionContainer className="flex gap-y-14 lg:gap-y-24 pt-14 md:pt-18 w-full">
+        <SectionContainer className="flex w-full gap-y-14 pt-14 md:pt-18 lg:gap-y-24">
           <AdvancedSearch
             placeholder={t('enterKeyword')}
             title={t('searching')}

@@ -1,25 +1,25 @@
-import cx from 'classnames'
-import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
-import React from 'react'
-import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
-import { TabBarTab } from '../../TabBarTab/TabBarTab'
-import { Tag } from '../../Tag/Tag'
-import { Button } from '../../Button/Button'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import {
-  Homepage,
   BlogPost,
-  HomepageQuery,
-  LatestBlogsWithTagsQuery,
   BlogPostFragment,
-} from '@bratislava/strapi-sdk-homepage'
-import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
-import { DocumentCards } from '../../DocumentCards/DocumentCards'
-import { DocumentCard } from '../../DocumentCard/DocumentCard'
+  Homepage,
+  HomepageQuery,
+ LatestBlogsFragment,   LatestBlogsWithTagsQuery,
+NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import cx from 'classnames'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { ParsedOfficialBoardDocument } from 'services/ginis'
+
+import { Button } from '../../Button/Button'
+import { DocumentCard } from '../../DocumentCard/DocumentCard'
+import { DocumentCards } from '../../DocumentCards/DocumentCards'
+import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
+import { TabBarTab } from '../../TabBarTab/TabBarTab'
+import { Tag } from '../../Tag/Tag'
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
@@ -63,7 +63,7 @@ export const Posts = ({
 
   return (
     <div className={cx(className)}>
-      <HorizontalScrollWrapper className="justify-start lg:justify-center space-x-4 -mx-8 px-8">
+      <HorizontalScrollWrapper className="-mx-8 justify-start space-x-4 px-8 lg:justify-center">
         <div className="flex space-x-8 lg:space-x-32">
           {posts.map((post, index) => (
             <TabBarTab
@@ -79,9 +79,9 @@ export const Posts = ({
       </HorizontalScrollWrapper>
 
       {activeTab == 0 && (
-        <div className="block mt-14">
-          <HorizontalScrollWrapper className="space-x-4 pb-12 -mx-8 px-8">
-            <div className="flex lg:grid grid-cols-3 gap-x-5 lg:gap-x-7.5">
+        <div className="mt-14 block">
+          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
+            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
                   <div key={i}>
@@ -115,13 +115,13 @@ export const Posts = ({
                   })}
                 </div>
               )}
-              <div className="mt-14 hidden lg:flex justify-center col-span-3">
+              <div className="col-span-3 mt-14 hidden justify-center lg:flex">
                 {/* TODO: change this button to custom button */}
                 {latestPost?.data?.length > 0 && (
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font hover:text-primary"
+                      className="px-6 py-3 text-default font-medium text-font shadow-none hover:text-primary lg:text-md"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -136,7 +136,7 @@ export const Posts = ({
             {/* TODO: change this button to custom button */}
             <Button
               variant="transparent"
-              className="px-6 py-2 mt-0 text-default font-medium shadow-none"
+              className="mt-0 px-6 py-2 text-default font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
@@ -152,7 +152,7 @@ export const Posts = ({
               <DocumentCard
                 key={index}
                 {...document}
-                className="max-w-4xl min-w-full"
+                className="min-w-full max-w-4xl"
                 viewButtonText={t('files')}
                 downloadButtonText="TODO-fix"
               />
@@ -171,9 +171,9 @@ export const Posts = ({
         </div>
       )}
       {activeTab == 2 && (
-        <div className="block mt-14">
-          <HorizontalScrollWrapper className="space-x-4 pb-12 -mx-8 px-8">
-            <div className="flex lg:grid grid-cols-3 gap-x-5 lg:gap-x-7.5">
+        <div className="mt-14 block">
+          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
+            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
               {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
 
@@ -201,13 +201,13 @@ export const Posts = ({
                   })}
                 </div>
               )}
-              <div className="mt-14 hidden lg:flex justify-center col-span-3">
+              <div className="col-span-3 mt-14 hidden justify-center lg:flex">
                 {/* TODO: change this button to custom button */}
                 {rozkoPosts?.data?.length > 0 && (
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="px-6 py-3 text-default lg:text-md font-medium shadow-none text-font hover:text-primary"
+                      className="px-6 py-3 text-default font-medium text-font shadow-none hover:text-primary lg:text-md"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -222,7 +222,7 @@ export const Posts = ({
             {/* TODO: change this button to custom button */}
             <Button
               variant="transparent"
-              className="px-6 py-2 mt-0 text-default font-medium shadow-none"
+              className="mt-0 px-6 py-2 text-default font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
@@ -232,31 +232,29 @@ export const Posts = ({
         </div>
       )}
       {activeTab > 2 && (
-        <div className="mt-14 px-8 font-sans font-normal lg:text-md text-default text-center items-end">
+        <div className="mt-14 items-end px-8 text-center font-sans text-default font-normal lg:text-md">
           Všetky informácie nájdete na stránke
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
-            {
-              <div className="lg:hidden">
-                <br></br>
+            <div className="lg:hidden">
+                <br />
               </div>
-            }
             <b> zverejnovanie.bratislava.sk</b>
           </UILink>
         </div>
       )}
 
       {/* Mobile */}
-      <div className="hidden mt-9">
-        <HorizontalScrollWrapper className="space-x-4 pb-12 -mx-8 px-8">
+      <div className="mt-9 hidden">
+        <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
           {activeNewsCards.map((newsItem, index) => (
-            <NewsCard key={index} readMoreText={readMoreText} className="flex-shrink-0 w-11/12" {...newsItem} />
+            <NewsCard key={index} readMoreText={readMoreText} className="w-11/12 shrink-0" {...newsItem} />
           ))}
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
           {/* TODO: change this button to custom button */}
           <Button
             variant="transparent"
-            className="px-6 py-2 mt-9 text-default font-medium shadow-none"
+            className="mt-9 px-6 py-2 text-default font-medium shadow-none"
             icon={<ChevronRight />}
             hoverIcon={<ArrowRight />}
           >

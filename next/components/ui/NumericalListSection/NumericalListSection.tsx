@@ -1,10 +1,11 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
+
 import Button from '../Button/Button'
+import { NumericalList } from '../NumericalList/NumericalList'
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
 import Waves from '../Waves/Waves'
-import cx from 'classnames'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { NumericalList } from '../NumericalList/NumericalList'
 
 export interface NumericalListItemObject {
   text?: string
@@ -34,7 +35,7 @@ export const NumericalListSection = ({
       {hasBackground ? 
         <Waves
         waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
-        wavePosition={'top'}
+        wavePosition="top"
         isRich
         backgroundColor="var(--background-color)"
       />
@@ -47,7 +48,7 @@ export const NumericalListSection = ({
           { 'bg-background': !hasBackground }
         )}
       >
-        <div className="flex flex-col max-w-3xl">
+        <div className="flex max-w-3xl flex-col">
           { title? <div
             className={cx(
               'text-center pb-14 font-semibold',
@@ -63,7 +64,7 @@ export const NumericalListSection = ({
         {variant != 'roadmap' && buttonText && (
           <UILink href={href}>
             <Button
-              className="bg-primary border-primary text-base h-12 lg:text-default lg:h-14 px-6 z-10"
+              className="z-10 h-12 border-primary bg-primary px-6 text-base lg:h-14 lg:text-default"
               variant="secondaryDarkText"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -76,7 +77,7 @@ export const NumericalListSection = ({
       {hasBackground ? 
         <Waves
         waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
-        wavePosition={'bottom'}
+        wavePosition="bottom"
         isRich
         backgroundColor="var(--background-color)"
       />

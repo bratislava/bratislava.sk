@@ -1,7 +1,9 @@
-import { Waves, WavesProps } from '../Waves/Waves'
+import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'rooks'
-import cx from 'classnames'
+
+import { Waves, WavesProps } from '../Waves/Waves'
+
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   color: string
   transparentColor: string

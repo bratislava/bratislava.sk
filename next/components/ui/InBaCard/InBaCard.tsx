@@ -1,9 +1,9 @@
-import cx from 'classnames'
-import { Panel } from '../Panel/Panel'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
 
 import ArrowRight from '../../../assets/images/arrow-right.svg'
 import ChevronRight from '../../../assets/images/chevron-right.svg'
+import { Panel } from '../Panel/Panel'
 
 export interface InBaCardProps {
   className?: string
@@ -60,8 +60,8 @@ export const InBaCard = ({ className, images, title, content, link, readMoreTitl
       >
         <h1 className="text-md font-semibold">{title}</h1>
         <span className="text-sm">{content}</span>
-        <UILink className="flex text-font underline space-x-5 items-center group cursor-pointer h-6" href={link}>
-          <span className="font-semibold text-sm">{readMoreTitle}</span>
+        <UILink className="group flex h-6 cursor-pointer items-center space-x-5 text-font underline" href={link}>
+          <span className="text-sm font-semibold">{readMoreTitle}</span>
           <span className="group-hover:hidden">
             <ChevronRight />
           </span>

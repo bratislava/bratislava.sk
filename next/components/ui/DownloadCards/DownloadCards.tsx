@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { DownloadCard, DownloadCardProps } from '../DownloadCard/DownloadCard'
 import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 

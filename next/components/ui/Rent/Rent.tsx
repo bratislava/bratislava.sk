@@ -1,10 +1,11 @@
 import cx from 'classnames'
-import { ChevronRight, ArrowRight } from '../../../assets/images'
-import { Button } from '../Button/Button'
-import Modal from '../Modal/Modal'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+import { ArrowRight,ChevronRight } from '../../../assets/images'
+import { Button } from '../Button/Button'
+import Modal from '../Modal/Modal'
 
 export interface RentProps {
   className?: string
@@ -37,17 +38,17 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         }}
       >
         {icon?.data?.attributes?.url && (
-          <img className="p-5 md:w-30 md:h-30 w-28 h-28" src={icon.data.attributes.url} alt={title} />
+          <img className="h-28 w-28 p-5 md:h-30 md:w-30" src={icon.data.attributes.url} alt={title} />
         )}
       </div>
-      <div className="flex flex-col text-center items-center w-60 md:w-auto xl:w-73 ">
-        <h1 className="text-md mt-5 mb-7 h-16">{title}</h1>
+      <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-73 ">
+        <h1 className="mt-5 mb-7 h-16 text-md">{title}</h1>
         <div className="news-small-content w-full break-all text-center">
-          <ReactMarkdown skipHtml={true} children={desc} />
+          <ReactMarkdown skipHtml children={desc} />
         </div>
         {isMore && (
           <Button
-            className="h-6 mt-5 z-0 font-semibold text-sm leading-6 md:leading-8 md:text-default"
+            className="z-0 mt-5 h-6 text-sm font-semibold leading-6 md:text-default md:leading-8"
             shape="none"
             variant="muted"
             icon={<ChevronRight />}
@@ -56,31 +57,31 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
           >
             <div className="relative">
               {linkLabel}
-              <div className="absolute w-full bottom-0 left-1/2 transform -translate-x-1/2 border-current border-b-2" />
+              <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
             </div>
           </Button>
         )}
       </div>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setOpen(false)}>
         <div
-          className="modal-content-rent rounded-2xl py-7 px-6 md:py-10 md:px-12 overflow-y-auto max-h-[412px] md:max-h-[600px]"
+          className="modal-content-rent max-h-[412px] overflow-y-auto rounded-2xl py-7 px-6 md:max-h-[600px] md:py-10 md:px-12"
           style={{
             maxWidth: '650px',
             // maxHeight: '600px',
             backgroundColor: 'var(--secondary-color)',
           }}
         >
-          <div className="rounded-full bg-white w-max mx-auto md:mx-0 mb-8 h-24 w-24 md:h-40 md:w-40">
+          <div className="mx-auto mb-8 h-24 w-max w-24 rounded-full bg-white md:mx-0 md:h-40 md:w-40">
             {icon?.data?.attributes?.url && (
               <img className="p-5" src={icon.data.attributes.url} alt={title} width="160" height="160" />
             )}
           </div>
-          <h1 className="text-md mb-8 text-left">{title}</h1>
+          <h1 className="mb-8 text-left text-md">{title}</h1>
           <ReactMarkdown
             remarkPlugins={[[remarkGfm]]}
-            skipHtml={true}
+            skipHtml
             children={desc}
-            className="text-left modal-content-rent-markdown"
+            className="modal-content-rent-markdown text-left"
           />
         </div>
       </Modal>
