@@ -1,13 +1,12 @@
-import { VznEntity } from '@bratislava/strapi-sdk-homepage'
 import { FileCard } from '@bratislava/ui-bratislava'
-import { dateFormat } from '@utils/constants'
-import { getNumericLocalDate } from '@utils/local-date'
+import { client } from '@utils/gql'
 import ReactMarkdown from 'react-markdown'
+import useSWR from 'swr'
+import { LinkedVznMainDocument } from './LinkedVznMainDocument'
 
-// TODO fix typing - we're taking the entity from meilisearch which unfortunately types differently
+// we're taking the entity from meilisearch which unfortunately types differently
 // TODO fix dates
 export const DocumentListModalBody = (vzn: any) => {
-  console.log(vzn)
   return (
     <div className="bg-background max-w-3xl max-h-[75vh] overflow-y-auto modal-content-rent">
       <div className="py-8 px-12">
@@ -38,7 +37,7 @@ export const DocumentListModalBody = (vzn: any) => {
                 downloadLink={vzn.mainDocument?.url}
                 fileDetail={`${vzn.mainDocument?.ext?.toUpperCase()} ${vzn.mainDocument?.size} KB`}
                 fileTitle={vzn?.title}
-                uploadDate={vzn.mainDocument?.createdAt}
+                uploadDate={new Date(vzn.mainDocument?.createdAt).toLocaleDateString()}
               />
             </div>
           </div>
@@ -51,7 +50,7 @@ export const DocumentListModalBody = (vzn: any) => {
                 downloadLink={vzn.consolidatedText?.url}
                 fileDetail={`${vzn.consolidatedText?.ext?.toUpperCase()} ${vzn.consolidatedText?.size} KB`}
                 fileTitle={vzn?.title}
-                uploadDate={vzn.consolidatedText?.createdAt}
+                uploadDate={new Date(vzn.consolidatedText?.createdAt).toLocaleDateString()}
               />
             </div>
           </div>
@@ -60,16 +59,7 @@ export const DocumentListModalBody = (vzn: any) => {
           <div className="pt-5">
             <div className="pb-4 font-semibold"> Dodatky </div>
             <div className="flex flex-wrap flex-row gap-5">
-              {vzn.amedmentDocument.map((doc) => (
-                <FileCard
-                  key={doc.id}
-                  className="w-80"
-                  downloadLink={doc?.document?.url}
-                  fileDetail={`${doc?.document?.ext?.toUpperCase()} ${doc?.document?.size} KB`}
-                  fileTitle={doc?.title}
-                  uploadDate={doc?.document?.createdAt}
-                />
-              ))}
+              {vzn.amedmentDocument.map((doc) => (doc?.id ? <LinkedVznMainDocument key={doc.id} id={doc.id} /> : null))}
             </div>
           </div>
         )}
@@ -77,16 +67,9 @@ export const DocumentListModalBody = (vzn: any) => {
           <div className="pt-5">
             <div className="pb-4 font-semibold"> Zrušujúce VZN </div>
             <div className="flex flex-wrap flex-row gap-5">
-              {vzn.cancellationDocument.map((doc) => (
-                <FileCard
-                  key={doc.id}
-                  className="w-80"
-                  downloadLink={doc?.document?.url}
-                  fileDetail={`${doc?.document?.ext?.toUpperCase()} ${doc?.document?.size} KB`}
-                  fileTitle={doc?.title}
-                  uploadDate={doc?.document?.createdAt}
-                />
-              ))}
+              {vzn.cancellationDocument.map((doc) =>
+                doc?.id ? <LinkedVznMainDocument key={doc.id} id={doc.id} /> : null
+              )}
             </div>
           </div>
         )}

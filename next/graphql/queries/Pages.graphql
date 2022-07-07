@@ -37,6 +37,28 @@ query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
+query VznDetail($id: ID!) {
+  vzn(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        validFrom
+        mainDocument {
+          data {
+            attributes {
+              url
+              size
+              ext
+              createdAt
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 fragment GeneralPage on PageEntityResponseCollection {
   data {
     attributes {
