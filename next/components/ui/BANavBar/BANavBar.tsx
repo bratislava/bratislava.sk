@@ -100,7 +100,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
             className="flex-1 group"
             url="/"
             title={
-              <p className="text-sm text-font group-hover:text-red-universal-300">
+                 <p className="text-sm text-font group-hover:text-red-universal-300">
+
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {navBarTexts[languageKey].capitalCity}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
