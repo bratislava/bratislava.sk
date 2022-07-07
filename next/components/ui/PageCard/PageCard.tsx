@@ -12,6 +12,7 @@ import PagePurpleIconSmall from '../../../assets/images/page-purple-icon-small.s
 import PageBrownIcon from '../../../assets/images/page-brown-icon.svg'
 import PageBrownIconSmall from '../../../assets/images/page-brown-icon-small.svg'
 import ChevronRight from '../../../assets/images/chevron-right-large.svg'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
 const findIconByColor = (pageColor: string) => {
   switch (pageColor) {
@@ -35,9 +36,12 @@ const findIconByColor = (pageColor: string) => {
 export interface PageCardProps {
   pageColor: string
   title: string
+  slug: string
 }
 
-export const PageCard = ({ pageColor, title }: PageCardProps) => {
+export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
+  const { Link: UILink } = useUIContext()
+
   const backgroundColor =
     colors.find((c) => {
       return c.pageColor === pageColor
@@ -45,7 +49,7 @@ export const PageCard = ({ pageColor, title }: PageCardProps) => {
   const { default: PageIcon, small: SmallPageIcon } = findIconByColor(pageColor)
 
   return (
-    <>
+    <UILink href={slug ? `/${slug}` : ''}>
       <Panel className="hidden lg:flex w-full" hoverable>
         <div className="px-12 py-4" style={{ backgroundColor }}>
           <PageIcon />
@@ -70,7 +74,7 @@ export const PageCard = ({ pageColor, title }: PageCardProps) => {
 
         <span className="text-base font-medium">{title}</span>
       </Panel>
-    </>
+    </UILink>
   )
 }
 
