@@ -1,8 +1,14 @@
 import { forceString, isRecord } from '@utils/utils'
 import axios, { AxiosRequestConfig } from 'axios'
-import { ResponseGinisBodyDocumentDetail, ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
+import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
 import { identity } from 'lodash'
 import { parseStringPromise } from 'xml2js'
+
+// ginis accessible only from internal network
+// if developing from internal network, change here
+export const shouldMockGinis = () => {
+  return process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' || process.env.CI === 'true'
+}
 
 export const getUDEDocumentsList = async (search?: string): Promise<Array<ResponseGinisDocumentsList>> => {
   const axiosConfig: AxiosRequestConfig = {

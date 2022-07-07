@@ -1,7 +1,10 @@
 import OpenDataClient from '../../utils/opendata'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { withSentry } from '@sentry/nextjs'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const data = await OpenDataClient.getCyclingData()
   return res.json(data)
 }
+
+export default withSentry(handler)

@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
 import { getUDEDocumentsList } from 'services/ginis'
+import { withSentry } from '@sentry/nextjs'
 
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { search } = req.query
   let parsedSearch: string | undefined
   let result: ResponseGinisDocumentsList[] = []
@@ -17,3 +18,5 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
 
   return res.json(result)
 }
+
+export default withSentry(handler)

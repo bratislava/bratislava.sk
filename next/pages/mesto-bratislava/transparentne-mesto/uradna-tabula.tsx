@@ -20,7 +20,12 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { parseFooter, parseMainMenu } from '../../../utils/page'
 import { useTranslation } from 'next-i18next'
-import { getParsedUDEDocumentsList, ParsedOfficialBoardDocument } from 'services/ginis'
+import {
+  getALotOfMockedDocs,
+  getParsedUDEDocumentsList,
+  ParsedOfficialBoardDocument,
+  shouldMockGinis,
+} from 'services/ginis'
 import { useRouter } from 'next/router'
 import { GetServerSidePropsContext } from 'next'
 
@@ -70,10 +75,14 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }))
 
   let documents: ParsedOfficialBoardDocument[] = []
-  try {
-    documents = await getParsedUDEDocumentsList(forceString(ctx?.query?.search))
-  } catch (e) {
-    console.log(e)
+  if (shouldMockGinis()) {
+    documents = await getALotOfMockedDocs()
+  } else {
+    try {
+      documents = await getParsedUDEDocumentsList(forceString(ctx?.query?.search))
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return {
@@ -195,12 +204,7 @@ const OfficialBoard = ({
             initialValue={forceString(query?.search)}
           />
           {noResultsFound ? (
-            <NoResultsFound
-              title=""
-              message="Ľutujeme, pre dané vyhľadávanie
-            sa nenašli žiadne výsledky."
-              messageClassName="max-w-sm text-center -mt-16 leading-normal"
-            />
+            <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <DocumentCards
               title={t('recentlyAddedDocuments')}
