@@ -63,7 +63,7 @@ export interface UsersResponse {
 }
 
 export const getUsers = async ({ token, url }: UsersRequest): Promise<any> => {
-  const shortUrl = url.substring(4)
+  const shortUrl = url.slice(4)
   const result = await fetch(`https://graph.microsoft.com/v1.0${shortUrl}`, {
     method: 'get',
     headers: {

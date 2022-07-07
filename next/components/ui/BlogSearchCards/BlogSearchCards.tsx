@@ -37,9 +37,9 @@ export const BlogSearchCards = ({ title, blogs, handleButtonClick }: BlogSearchC
           {buttonText}
         </Button>
       </div>
-      <HorizontalScrollWrapper className="lg:hidden gap-x-4">
+      <HorizontalScrollWrapper className="gap-x-4 lg:hidden">
         {blogs.map((blog, index) => {
-          return <BlogSearchCard key={index} item={blog} className="w-74 h-60 flex-shrink-0" />
+          return <BlogSearchCard key={index} item={blog} className="h-60 w-74 shrink-0" />
         })}
       </HorizontalScrollWrapper>
     </div>

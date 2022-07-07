@@ -8,13 +8,13 @@ export interface PageCardsProps {
 
 export const PageCards = ({ title, pages }: PageCardsProps) => (
   <div className="flex flex-col gap-y-3 lg:gap-y-6">
-    <span className="text-default lg:text-md font-semibold">{title}</span>
-    <div className="hidden lg:flex flex-col gap-y-6">
+    <span className="text-default font-semibold lg:text-md">{title}</span>
+    <div className="hidden flex-col gap-y-6 lg:flex">
       {pages.map((page, index) => (
         <PageCard {...page} key={index} />
       ))}
     </div>
-    <HorizontalScrollWrapper className="flex lg:hidden gap-x-4">
+    <HorizontalScrollWrapper className="flex gap-x-4 lg:hidden">
       {pages.map((page, index) => (
         <PageCard {...page} key={index} />
       ))}

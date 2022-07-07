@@ -1,5 +1,6 @@
-import cx from 'classnames'
 import { HorizontalScrollWrapper, NewsCard, NewsCardProps } from '@bratislava/ui-bratislava'
+import cx from 'classnames'
+
 interface IProps {
   className?: string
   newsCards?: Array<NewsCardProps>

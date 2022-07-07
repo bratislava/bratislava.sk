@@ -1,7 +1,8 @@
 import cx from 'classnames'
-import { Button } from '../Button/Button'
-import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+
 import ArrowRightLong from '../../../assets/images/arrow-right.svg'
+import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import { Button } from '../Button/Button'
 
 export interface VenueInfoProps {
   className?: string
@@ -13,13 +14,13 @@ export interface VenueInfoProps {
 
 export const VenueInfo = ({ className, title, description, buttonTitle, linkTitle }: VenueInfoProps) => (
   <div className={cx(className, 'flex flex-col gap-y-3 md:gap-y-4 w-full max-w-87')}>
-    <h1 className="font-medium text-md md:text-lg">{title}</h1>
-    <p className="font-normal text-base">{description}</p>
-    <Button className="md:mt-4 w-40 h-10 md:h-12">
-      <span className="font-medium text-base md:text-default">{buttonTitle}</span>
+    <h1 className="text-md font-medium md:text-lg">{title}</h1>
+    <p className="text-base font-normal">{description}</p>
+    <Button className="h-10 w-40 md:mt-4 md:h-12">
+      <span className="text-base font-medium md:text-default">{buttonTitle}</span>
     </Button>
     <Button
-      className="w-36 font-medium text-primary text-base md:text-default"
+      className="w-36 text-base font-medium text-primary md:text-default"
       icon={<ArrowRightShort />}
       hoverIcon={<ArrowRightLong />}
       shape="none"

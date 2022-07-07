@@ -1,7 +1,7 @@
 import cx from 'classnames'
-import { Card } from '../Card/Card'
 
 import ChevronRight from '../../../assets/images/chevron-right.svg'
+import { Card } from '../Card/Card'
 
 export interface BlogCardProps {
   className?: string
@@ -28,7 +28,7 @@ export const BlogCard = ({ className, image, mobileImage, content, href }: BlogC
         </div>
         <div className="hidden xl:inline-flex">{image && <img src={image} alt="blog" width="225" height="200" />}</div>
 
-        <div className="flex mx-6 items-center w-52 xl:w-65 xl:px-12 text-center xl:text-left justify-center h-48">
+        <div className="mx-6 flex h-48 w-52 items-center justify-center text-center xl:w-65 xl:px-12 xl:text-left">
           <span className="text-default font-medium">{content}</span>
         </div>
       </Card>

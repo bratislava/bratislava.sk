@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef, RefObject } from 'react'
-import cx from 'classnames'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { ChevronRight, ArrowRight } from '../../../assets/images'
+import { getNumericLocalDate } from '@utils/local-date'
+import cx from 'classnames'
+import { RefObject, useEffect, useRef, useState } from 'react'
+
+import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
-import { getNumericLocalDate } from '@utils/local-date'
 
 export interface NewsCardProps {
   id?: string
@@ -37,6 +38,7 @@ export interface NewsCardProps {
   date_added?: string | null
   createdAt?: string | null
   updatedAt?: string | null
+  publishedAt?: string | null
   slug?: string | null
   link?: string | null
 }
@@ -49,6 +51,7 @@ export const NewsCard = ({
   excerpt,
   updatedAt,
   date_added,
+  publishedAt,
   readMoreText,
   slug,
 }: NewsCardProps) => {
@@ -97,13 +100,13 @@ export const NewsCard = ({
               color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
             />
           )}
-          <h3 className="text-default lg:text-md font-semibold news-small-content">{title}</h3>
-          <span className="text-xs font-medium">{getNumericLocalDate(date_added || updatedAt)}</span>
-          <p className="text-sm news-small-content">{excerpt}</p>
+          <h3 className="news-small-content text-default font-semibold lg:text-md">{title}</h3>
+          <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
+          <p className="news-small-content text-sm">{excerpt}</p>
 
           {slug && (
             <Button
-              className="h-6 mt-5"
+              className="mt-5 h-6"
               shape="none"
               variant="muted"
               icon={
@@ -121,7 +124,7 @@ export const NewsCard = ({
                 }}
               >
                 {readMoreText}
-                <div className="absolute w-full bottom-0 left-1/2 transform -translate-x-1/2 border-current border-b-2" />
+                <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
               </div>
             </Button>
           )}

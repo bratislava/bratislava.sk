@@ -1,5 +1,6 @@
 import cx from 'classnames'
 import React, { useState } from 'react'
+
 import ChevronDown from '../../../assets/images/chevron-down.svg'
 import ChevronLeft from '../../../assets/images/chevron-left.svg'
 import ChevronUp from '../../../assets/images/chevron-up-small.svg'
@@ -27,10 +28,10 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         className
       )}
     >
-      <div className="flex flex-col h-full">
+      <div className="flex h-full flex-col">
         {/* SubItems Menu Topper */}
         <div
-          className="flex-0 flex gap-x-6 mx-6 py-6"
+          className="flex-0 mx-6 flex gap-x-6 py-6"
           style={{
             background: item.color,
             borderBottomColor: item.colorDark,
@@ -39,14 +40,14 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         >
           {variant === 'homepage' ? (
             <div className="flex items-center">
-              {ColoredIconComponent && <ColoredIconComponent className="mr-6 w-12 h-12" />}
-              <span className="text-base font-semibold text-left">{item.title}</span>
+              {ColoredIconComponent && <ColoredIconComponent className="mr-6 h-12 w-12" />}
+              <span className="text-left text-base font-semibold">{item.title}</span>
             </div>
           ) : (
             <button className="flex items-center" onClick={onClose}>
               <ChevronLeft className="mr-8" />
-              {ColoredIconComponent && <ColoredIconComponent className="mr-6 w-12 h-12" />}
-              <span className="text-base font-semibold text-left">{item.title}</span>
+              {ColoredIconComponent && <ColoredIconComponent className="mr-6 h-12 w-12" />}
+              <span className="text-left text-base font-semibold">{item.title}</span>
             </button>
           )}
         </div>
@@ -62,8 +63,8 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
             return (
               <React.Fragment key={subItem.title}>
                 <div className="flex items-center gap-x-5">
-                  <IconComponent className="w-10 h-10" />
-                  <p className="font-semibold text-default">{subItem.title}</p>
+                  <IconComponent className="h-10 w-10" />
+                  <p className="text-default font-semibold">{subItem.title}</p>
                 </div>
                 <div className="flex flex-col gap-y-2">
                   <div className="flex flex-col gap-y-2">
@@ -79,7 +80,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                   {subItem.subItems.length > 3 && (
                     <button
                       onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
-                      className="flex gap-x-4 items-center"
+                      className="flex items-center gap-x-4"
                     >
                       {isExpanded ? (
                         <>
@@ -106,7 +107,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
           style={{
             background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
           }}
-          className="absolute bottom-0 flex flex-col items-center w-screen h-32"
+          className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
         >
           <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
           <div className="mt-4 text-center text-base font-semibold text-font">Zavrieť menu</div>

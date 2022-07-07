@@ -12,7 +12,7 @@ export const ContentWrapper = ({ className, title, children }: ContentWrapperPro
   return (
     <div className={cx(className, 'max-w-full flex flex-col gap-3 mt-8')}>
       {hasTitle && title}
-      <div className="flex flex-col gap-y-2 text-gray-600 text-sm">{children}</div>
+      <div className="flex flex-col gap-y-2 text-sm text-gray-600">{children}</div>
     </div>
   )
 }

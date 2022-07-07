@@ -30,7 +30,7 @@ export const TextWithImage = ({
 
       {content && (
         <div>
-          <UIMarkdown content={content} className="text-sm md:text-default leading-[24px] md:leading-[30px]" />
+          <UIMarkdown content={content} className="text-sm leading-[24px] md:text-default md:leading-[30px]" />
         </div>
       )}
 

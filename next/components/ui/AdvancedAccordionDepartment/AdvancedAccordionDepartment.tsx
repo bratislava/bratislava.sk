@@ -1,6 +1,7 @@
 import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
+
 import Phone from '../../../assets/images/phone-medium.svg'
 import { AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
@@ -25,7 +26,7 @@ export interface AdvancedAccordionDepartmentProps {
   title?: string
   // items?: { title: string; isGroupTitle?: boolean }[]
   items?: AdvancedAccordionSubitemProps[]
-  //subdepartments?: AdvancedAccordionSubdepartment[];
+  // subdepartments?: AdvancedAccordionSubdepartment[];
   // subitems?: AdvancedAccordionSubitemProps[]
   // departmentCards?: AccordionCardProps[]
   // departmentPhone?: string
@@ -40,7 +41,7 @@ export const AdvancedAccordionDepartment = ({
 AdvancedAccordionDepartmentProps) => {
   const [cards, setCards] = useState([])
   const { data, error } = useSWR(title, usersFromDepartmentFetcher)
-  if (!cards.length && data && data.length > 0) {
+  if (cards.length === 0 && data && data.length > 0) {
     setCards(data)
   }
   return (
@@ -86,7 +87,7 @@ interface AccordionItemHeadingProps {
 }
 const AccordionItemHeading = ({ title }: AccordionItemHeadingProps) => {
   return (
-    <div className="flex lg:px-5 pb-8 gap-x-3 lg:gap-x-6 items-center">
+    <div className="flex items-center gap-x-3 pb-8 lg:gap-x-6 lg:px-5">
       <div className="h-6 w-6 rounded-full border-4 border-primary" />
       <div className="text-default lg:text-md">{title}</div>
     </div>
