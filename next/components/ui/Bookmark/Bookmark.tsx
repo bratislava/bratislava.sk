@@ -43,10 +43,7 @@ export const Bookmark = ({
   const [height, setHeight] = React.useState<number>()
 
   const modelref = useRef()
-  function myComponent() {
-    setIsOpen(false)
-  }
-  useOutsideClick(ref, myComponent)
+  useOutsideClick(ref, () => setIsOpen(false))
 
   // fallback to red if incorrect variant
   const variantWithFallback = variant === 'blue' || variant === 'red' ? variant : 'red'
