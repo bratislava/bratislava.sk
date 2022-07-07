@@ -1,5 +1,5 @@
-import React from 'react'
 import cx from 'classnames'
+import React from 'react'
 
 export interface WelcomeCardProps {
   className?: string
@@ -26,7 +26,7 @@ export const WelcomeCard = ({ className, image, imageClassName, title, path }: W
         >
           {image}
         </div>
-        <p className="text-primary text-2xl group-hover:font-medium">{title}</p>
+        <p className="text-2xl text-primary group-hover:font-medium">{title}</p>
       </div>
     </a>
   )

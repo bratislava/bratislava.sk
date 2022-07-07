@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import ArrowDoubleLong from '../../../assets/images/arrow-double-long.svg'
 import ArrowDoubleShort from '../../../assets/images/arrow-double-short.svg'
 import { ChairSpace } from '../ChairSpace/ChairSpace'
@@ -35,8 +36,8 @@ export const ImageCard = ({
     <div className={cx(className, 'relative rounded-lg')}>
       {imagePosition === 'left' && (
         <>
-          <span className="hidden md:block z-20">{imageLarge}</span>
-          <span className="md:hidden z-20">{imageSmall}</span>
+          <span className="z-20 hidden md:block">{imageLarge}</span>
+          <span className="z-20 md:hidden">{imageSmall}</span>
         </>
       )}
       <div
@@ -75,8 +76,8 @@ export const ImageCard = ({
       </div>
       {imagePosition === 'right' && (
         <>
-          <span className="hidden md:block z-20">{imageLarge}</span>
-          <span className="md:hidden z-20">{imageSmall}</span>
+          <span className="z-20 hidden md:block">{imageLarge}</span>
+          <span className="z-20 md:hidden">{imageSmall}</span>
         </>
       )}
     </div>

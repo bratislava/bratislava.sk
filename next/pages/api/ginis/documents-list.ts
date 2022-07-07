@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
-import { getUDEDocumentsList } from 'services/ginis'
 import { withSentry } from '@sentry/nextjs'
+import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { getUDEDocumentsList } from 'services/ginis'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { search } = req.query
@@ -12,8 +12,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
   try {
     result = await getUDEDocumentsList(parsedSearch)
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log(error)
   }
 
   return res.json(result)

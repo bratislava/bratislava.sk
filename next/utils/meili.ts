@@ -11,7 +11,7 @@ const meiliClient = new MeiliSearch({
 })
 
 export const searchVZN = async (search: string, offset: number) => {
-  return await meiliClient.index('vzn').search(search || '*', {
+  return meiliClient.index('vzn').search(search || '*', {
     // TODO fix sortable attributes
     // sort: ['publishedAt:desc'],
     // offset,
@@ -43,7 +43,7 @@ export const searchArticles = async (search: string, offset = 0) => {
                 pageCategory: {
                   data: {
                     attributes: {
-                      color: 'red', //hardcoded, api does not return this attribute
+                      color: 'red', // hardcoded, api does not return this attribute
                       shortTitle: article?.tag?.title,
                     },
                   },

@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { Carousel } from '../../Carousel/Carousel'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
@@ -34,7 +35,7 @@ export const RelatedContent = ({
 
     <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4')}>
       {cards.map((card, index) => (
-        <NewsCard className="flex-shrink-0 w-10/12" key={index} {...card} />
+        <NewsCard className="w-10/12 shrink-0" key={index} {...card} />
       ))}
     </HorizontalScrollWrapper>
   </div>

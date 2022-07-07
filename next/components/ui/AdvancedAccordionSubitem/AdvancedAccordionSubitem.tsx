@@ -1,15 +1,16 @@
+import { usersFromDepartmentFetcher } from '@utils/ms-graph'
+import cx from 'classnames'
 import { useState } from 'react'
+import useSWR from 'swr'
+
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-import cx from 'classnames'
 import { AccordionCard, AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
 import {
   AdvancedAccordionSubSubitem,
   AdvancedAccordionSubSubitemProps,
 } from '../AdvancedAccordionSubSubitem/AdvancedAccordionSubSubitem'
-import useSWR from 'swr'
-import { usersFromDepartmentFetcher } from '@utils/ms-graph'
 
 export interface AdvancedAccordionSubitemProps {
   title?: string
@@ -29,7 +30,7 @@ export const AdvancedAccordionSubitem = ({
   const [open, setOpen] = useState(false)
   const [cards, setCards] = useState([])
   const { data, error } = useSWR(title, usersFromDepartmentFetcher)
-  if (!cards.length && data && data.length > 0) {
+  if (cards.length === 0 && data && data.length > 0) {
     setCards(data)
   }
   return (
@@ -38,12 +39,12 @@ export const AdvancedAccordionSubitem = ({
         className={cx(className, 'flex items-start lg:items-center cursor-pointer lg:px-5')}
         onClick={() => setOpen(!open)}
       >
-        {isGroupTitle ?? <div className="bg-secondary h-6 w-6 rounded-full mr-3 lg:mr-6 shrink-0 mt-1 lg:mt-0" />}
+        {isGroupTitle ?? <div className="mr-3 mt-1 h-6 w-6 shrink-0 rounded-full bg-secondary lg:mr-6 lg:mt-0" />}
         {/* TODO optimize this  */}
         {isGroupTitle ? (
-          <div className="text-default lg:text-md pt-8 lg:pt-10 font-semibold">{title}</div>
+          <div className="pt-8 text-default font-semibold lg:pt-10 lg:text-md">{title}</div>
         ) : (
-          <div className="text-default lg:text-md pr-6">{title}</div>
+          <div className="pr-6 text-default lg:text-md">{title}</div>
         )}
         {isGroupTitle ?? (
           <div className={cx('ml-auto pt-2.5', { 'rotate-180': open })}>

@@ -1,7 +1,8 @@
-import * as React from 'react'
 import cx from 'classnames'
+import * as React from 'react'
+
 import { StepperSpacer } from '../StepperSpacer/StepperSpacer'
-import { StepperStep, IStepperStepProps } from '../StepperStep/StepperStep'
+import { IStepperStepProps, StepperStep } from '../StepperStep/StepperStep'
 
 interface IProps {
   steps: IStepperStepProps[]

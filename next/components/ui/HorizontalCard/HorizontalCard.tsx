@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { Panel } from '../Panel/Panel'
 
 export interface HorizontalCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -8,7 +9,7 @@ export interface HorizontalCardProps extends React.HTMLAttributes<HTMLDivElement
 
 export const HorizontalCard = ({ accessory, className, children, imageSrc, ...rest }: HorizontalCardProps) => (
   <div className={cx(className, 'relative')} {...rest}>
-    <Panel className="flex flex-col xl:flex-row h-full w-full" hoverable>
+    <Panel className="flex h-full w-full flex-col xl:flex-row" hoverable>
       {imageSrc && (
         <>
           <div
@@ -20,7 +21,7 @@ export const HorizontalCard = ({ accessory, className, children, imageSrc, ...re
             }}
           />
           <div
-            className="bg-cover hidden xl:block flex-0 w-56 max-w"
+            className="flex-0 max-w hidden w-56 bg-cover xl:block"
             style={{
               backgroundImage: `url(${imageSrc})`,
               clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)',
@@ -28,7 +29,7 @@ export const HorizontalCard = ({ accessory, className, children, imageSrc, ...re
           />
         </>
       )}
-      <div className="p-6 lg:px-12 lg:pt-8 lg:pb-11 text-sm lg:text-default text-center xl:text-left xl:self-center xl:pb-8 flex-1">
+      <div className="flex-1 p-6 text-center text-sm lg:px-12 lg:pt-8 lg:pb-11 lg:text-default xl:self-center xl:pb-8 xl:text-left">
         {children}
       </div>
     </Panel>

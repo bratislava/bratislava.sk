@@ -1,8 +1,9 @@
-import { DocumentCard, DocumentCardProps } from '../DocumentCard/DocumentCard'
-import Divider from '../Divider/Divider'
-import Pagination from '../Pagination/Pagination'
 import { useState } from 'react'
 import { ParsedOfficialBoardDocument } from 'services/ginis'
+
+import Divider from '../Divider/Divider'
+import { DocumentCard, DocumentCardProps } from '../DocumentCard/DocumentCard'
+import Pagination from '../Pagination/Pagination'
 
 export interface DocumentCardsProps {
   documents: ParsedOfficialBoardDocument[]
@@ -28,8 +29,8 @@ export const DocumentCards = ({
   const dividerBugSolved = false
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
-      <div className="text-default lg:text-md font-medium">{title}</div>
-      <div className="hidden lg:flex flex-col">
+      <div className="text-default font-medium lg:text-md">{title}</div>
+      <div className="hidden flex-col lg:flex">
         <div className="flex flex-col gap-y-5 pb-14">
           {documents
             .slice((currentPage - 1) * itemsPerPageDesktop, currentPage * itemsPerPageDesktop)

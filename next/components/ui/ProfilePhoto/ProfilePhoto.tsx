@@ -1,7 +1,8 @@
 import cx from 'classnames'
-import { Button } from '../Button/Button'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+
 import ArrowRight from '../../../assets/images/arrow-right.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
+import { Button } from '../Button/Button'
 import { Field } from '../Field/Field'
 
 export interface ProfilePhotoProps {
@@ -13,14 +14,14 @@ export interface ProfilePhotoProps {
 export const ProfilePhoto = ({ className, profileImage, setProfileImage }: ProfilePhotoProps) => {
   return (
     <div className={cx(className, 'flex flex-col md:flex-row md:gap-x-8')}>
-      <Field id="photo" title="Fotografia" className="text-default max-w-md">
+      <Field id="photo" title="Fotografia" className="max-w-md text-default">
         {profileImage ? (
-          <img className="w-40 h-48" alt="Not found" src={URL.createObjectURL(profileImage)} />
+          <img className="h-48 w-40" alt="Not found" src={URL.createObjectURL(profileImage)} />
         ) : (
-          <div id="photo" className="relative base-input w-40 h-48">
+          <div id="photo" className="base-input relative h-48 w-40">
             <input
               type="file"
-              className="appearance-none absolute left-0 top-0 opacity-0 cursor-pointer w-40 h-48"
+              className="absolute left-0 top-0 h-48 w-40 cursor-pointer appearance-none opacity-0"
               onChange={(event) => {
                 if (event.target.files) setProfileImage?.(event.target.files[0])
               }}
@@ -28,7 +29,7 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
           </div>
         )}
       </Field>
-      <Field className="max-w-xs flex flex-col gap-4 md:mt-16 md:pt-1">
+      <Field className="flex max-w-xs flex-col gap-4 md:mt-16 md:pt-1">
         <p className="text-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis viverra quis dui nisl.
         </p>
@@ -42,7 +43,7 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
         >
           <input
             type="file"
-            className="absolute left-0 top-0 opacity-0 cursor-pointer w-56 h-14"
+            className="absolute left-0 top-0 h-14 w-56 cursor-pointer opacity-0"
             onChange={(event) => {
               if (event.target.files) setProfileImage?.(event.target.files[0])
             }}

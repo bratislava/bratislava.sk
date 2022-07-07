@@ -1,5 +1,5 @@
-import { TImageCarouselItem } from '@bratislava/ui-bratislava'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { TImageCarouselItem } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
@@ -19,12 +19,12 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
           className
         )}
       >
-        <img src={mainImage.src} className="w-full h-full rounded-lg object-cover" alt={title} />
+        <img src={mainImage.src} className="h-full w-full rounded-lg object-cover" alt={title} />
         {title && (
           // Gradient
-          <div className="absolute bottom-0 w-full h-44 bg-gradient-to-t from-[#000] flex items-end rounded-b-lg">
+          <div className="absolute bottom-0 flex h-44 w-full items-end rounded-b-lg bg-gradient-to-t from-[#000]">
             <div className="flex flex-col">
-              <p className="text-white p-6 group-hover:pb-3 text-default font-semibold">{title}</p>
+              <p className="p-6 text-default font-semibold text-white group-hover:pb-3">{title}</p>
               <p className="hidden group-hover:block">{description}</p>
             </div>
           </div>

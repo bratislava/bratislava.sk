@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { Panel } from '../Panel/Panel'
 
 export interface VerticalCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -8,7 +9,7 @@ export interface VerticalCardProps extends React.HTMLAttributes<HTMLDivElement> 
 
 export const VerticalCard = ({ accessory, className, children, imageSrc, ...rest }: VerticalCardProps) => (
   <div className={cx(className, 'relative flex flex-col')} {...rest}>
-    <Panel className="flex-1 flex flex-col">
+    <Panel className="flex flex-1 flex-col">
       {imageSrc && (
         <div
           className="bg-cover"
