@@ -111,7 +111,6 @@ export const Bookmark = ({
           <p className="my-3">{content}</p>
           <a href={link.href} className="flex items-center underline group font-semibold">
             <span className="font-semibold text-sm">{link.title}</span>
-
             {/* <ChevronRight className="ml-6" /> */}
             <span className="group-hover:hidden ml-4">
               <ChevronRight />
