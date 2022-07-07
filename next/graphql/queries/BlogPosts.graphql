@@ -105,6 +105,8 @@ fragment LatestBlogs on BlogPostEntityResponseCollection {
           }
         }
       }
+      date_added
+      publishedAt
       updatedAt
       tag {
         data {
