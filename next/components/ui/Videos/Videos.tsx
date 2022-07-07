@@ -24,15 +24,20 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
 
   React.useEffect(() => {
     const parseYoutubeUrl = async () => {
-      const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`
-      const res = await fetch(oembedUrl)
-      const { html }: { html: string } = await res.json()
+      if (url.includes('fb.watch')) {
+        const fembedUrl = `https://www.facebook.com/plugins/video.php?href=${url}`
+        setEmbedUrl(fembedUrl)
+      } else {
+        const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`
+        const res = await fetch(oembedUrl)
+        const { html }: { html: string } = await res.json()
 
-      const substrStart = html.indexOf('src="') + 5
-      const substrEnd = html.indexOf('oembed') + 6
-      const embedUrl = html.substring(substrStart, substrEnd)
+        const substrStart = html.indexOf('src="') + 5
+        const substrEnd = html.indexOf('oembed') + 6
+        const embedUrl = html.substring(substrStart, substrEnd)
 
-      setEmbedUrl(embedUrl)
+        setEmbedUrl(embedUrl)
+      }
     }
 
     parseYoutubeUrl()

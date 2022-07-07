@@ -12,8 +12,8 @@ query Pages {
   }
 }
 
-query PagesStaticPaths {
-  pages {
+query PagesStaticPaths($page: Int, $limit: Int) {
+  pages(pagination: { page: $page, pageSize: $limit }) {
     data {
       id
       attributes {
@@ -34,6 +34,28 @@ query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
 
   mainMenu: pageCategories(locale: $locale) {
     ...MainMenuItem
+  }
+}
+
+query VznDetail($id: ID!) {
+  vzn(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        validFrom
+        mainDocument {
+          data {
+            attributes {
+              url
+              size
+              ext
+              createdAt
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -425,7 +447,7 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsLinks {
     title
     hasBackground
-    pageLinks {
+    pageLinks(pagination: { limit: 100 }) {
       ...PageLink
     }
   }

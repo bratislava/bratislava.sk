@@ -1,5 +1,5 @@
 import { Button } from '@bratislava/ui-bratislava/Button/Button'
-import NoResultsIlustration from '../assets/images/no-results-small.svg'
+import NoResultsFound from '@assets/images/ERROR404.svg'
 import ChevronRight from '../assets/images/chevron-right.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -21,7 +21,7 @@ const NotFoundPage = () => {
   return (
     <div className="w-screen h-screen flex px-7 py-10 md:pl-36 md:pr-32 xl:pl-80 xl:pr-70">
       <div className="flex flex-col md:flex-row-reverse items-center md:justify-between w-full">
-        <NoResultsIlustration />
+        <NoResultsFound />
         <div className="flex flex-col items-center lg:items-start">
           {/* text-5xl font-extrabold does not work */}
           <div className="text-[48px] lg:text-[64px] font-[800] pb-4">404</div>
