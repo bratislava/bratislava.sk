@@ -18,11 +18,9 @@ export const searchVZN = async (search: string, offset: number) => {
   })
 }
 
-export const searchArticles = async (search: string, offset = 0) => {
+export const searchArticles = async (search: string, limit: number) => {
   const data = await meiliClient.index('blog-post').search(search || '*', {
-    // TODO fix sortable attributes
-    // sort: ['publishedAt:desc'],
-    // offset,
+    limit,
   })
 
   data.hits = data.hits.map((article) => {
