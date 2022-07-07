@@ -57,22 +57,21 @@ export const Contact = ({
         </div>
       </div>
       <div className="mb-6 w-full md:mb-0 md:w-1/2">
-        <div className='flex flex-col gap-3 text-font md:flex-row'>
-        {items.map((item) => (
-        <div
-          key={item.variant}
-          className={cx('w-full mb-6 last:mb-0 md:mb-0', {
-            'md:w-1/1': items.length === 1 && !address,
-            'md:w-1/2': items.length === 2,
-            'md:w-1/6': items.length === 3,
-            'md:w-5/12': items.length === 1 && address,
-          })}
-        >
-          <ContactItem {...item} linkVariant={itemLinkVariant} />
+        <div className="flex flex-col gap-3 text-font md:flex-row">
+          {items.map((item) => (
+            <div
+              key={item.variant}
+              className={cx('w-full mb-6 last:mb-0 md:mb-0', {
+                'md:w-1/1': items.length === 1 && !address,
+                'md:w-1/2': items.length === 2,
+                'md:w-1/6': items.length === 3,
+                'md:w-5/12': items.length === 1 && address,
+              })}
+            >
+              <ContactItem {...item} linkVariant={itemLinkVariant} />
+            </div>
+          ))}
         </div>
-      ))}
-        </div>
-      
       </div>
     </div>
   )
@@ -114,11 +113,14 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
       {label && href && (
         <a
           href={href}
-          className={cx('mt-8 px-6 py-3 font-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0', {
-            'bg-primary border-primary': linkVariant === 'primary',
-            'bg-secondary border-secondary': linkVariant === 'secondary',
-            'text-white': linkVariant === 'primary',
-          })}
+          className={cx(
+            'mt-8 px-6 py-3 font-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
+            {
+              'bg-primary border-primary': linkVariant === 'primary',
+              'bg-secondary border-secondary': linkVariant === 'secondary',
+              'text-white': linkVariant === 'primary',
+            }
+          )}
         >
           {label}
         </a>

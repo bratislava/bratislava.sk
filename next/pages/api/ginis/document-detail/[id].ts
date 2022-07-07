@@ -63,9 +63,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     parseString(responseAxios.data, { explicitArray: false }, (error, r) => {
       if (error) {
         return res.status(400).json({ message: 'bad xml to json' })
-      } 
-        response = r
-      
+      }
+      response = r
     })
     const documentDetail =
       response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg['Detail-dokumentu']

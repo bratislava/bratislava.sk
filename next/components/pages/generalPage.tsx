@@ -64,7 +64,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
       )}
       {/* Header */}
       <PageHeader
-        className={cx('bg-cover',{ 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
+        className={cx('bg-cover', { 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
@@ -80,16 +80,14 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
         <SectionContainer>
           <div className="relative min-h-[220px]">
             <div className="absolute top-6">
-              <PageBreadcrumbs
-                parentPage={page?.parentPage}
-                pageCategory={page?.pageCategory}
-                title={page.title}
-              />
+              <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">{page?.title}</h1>
+            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">
+              {page?.title}
+            </h1>
 
             {/* Header - PageLink as Button */}
-            {(page?.pageButtonContent && page?.pageButtonContent.title) && (
+            {page?.pageButtonContent && page?.pageButtonContent.title && (
               <Button
                 className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-default"
                 icon={<ChevronRight />}

@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import iChevronRight from './chevron-right.svg'
 import iNextStepChevronRight from './chevron-right-circle.svg'
 import iCircle from './circle.svg'
@@ -19,25 +10,19 @@ import iLinkedinIcon from './linkedin.svg'
 import iListCircle from './list-circle.svg'
 import iListCircleFull from './ListCircleFull.svg'
 import iNewReservation from './new-reservation.svg'
-import iPhoneSmall from './phone-small.svg';
+import iPhoneSmall from './phone-small.svg'
 import iReservations from './reservation.svg'
 import iReservationCalendar from './reservation-calendar.svg'
 import iSearchIcon from './search-icon.svg'
 import iTwitterIcon from './twitter.svg'
 
-
-
 export const SearchIcon = iSearchIcon
 export const NewReservation = iNewReservation
 export const Reservations = iReservations
 
-
-
 export const ReservationCalendar = iReservationCalendar
 export const ChevronRight = iChevronRight
 export const NextStepChevronRight = iNextStepChevronRight
-
-
 
 export const EmailInput = iEmailInput
 
@@ -52,12 +37,12 @@ export const ListCircleFull = iListCircleFull
 export const DaneAPoplatky = iDaneAPoplatky
 export const PhoneSmall = iPhoneSmall
 
-export {default as ArrowDoubleLong} from './arrow-double-long.svg'
-export {default as ArrowDoubleShort} from './arrow-double-short.svg'
-export {default as ArrowLeft} from './arrow-left.svg'
-export {default as ArrowRight} from './arrow-right.svg'
-export {default as BrandSVG} from './brand.svg'
-export {default as CheckMark} from './check-mark.svg'
-export {default as ChevronDown} from './chevron-down.svg'
-export {default as ChevronDownSmall} from './chevron-down-small.svg'
-export {default as ChevronLeft} from './chevron-left.svg'
+export { default as ArrowDoubleLong } from './arrow-double-long.svg'
+export { default as ArrowDoubleShort } from './arrow-double-short.svg'
+export { default as ArrowLeft } from './arrow-left.svg'
+export { default as ArrowRight } from './arrow-right.svg'
+export { default as BrandSVG } from './brand.svg'
+export { default as CheckMark } from './check-mark.svg'
+export { default as ChevronDown } from './chevron-down.svg'
+export { default as ChevronDownSmall } from './chevron-down-small.svg'
+export { default as ChevronLeft } from './chevron-left.svg'

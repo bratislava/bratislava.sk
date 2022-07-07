@@ -2,7 +2,7 @@ import { BlogPost } from '@bratislava/strapi-sdk-homepage'
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import _ from 'lodash'
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
 import { ArticlesFilter } from '../../../atoms/ArticlesFilter'

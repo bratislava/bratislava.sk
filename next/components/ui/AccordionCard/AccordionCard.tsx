@@ -28,7 +28,7 @@ export const AccordionCard = ({
   className,
 }: AccordionCardProps) => {
   const mailUserName = mail?.split('@').at(0)
-  const mailOrganization = mail && `@${  mail?.split('@').at(1)}`
+  const mailOrganization = mail && `@${mail?.split('@').at(1)}`
   const mailBreakpoint = 16
   return (
     /* min-w-70 does not work anymore (worked fine on monorepo) */

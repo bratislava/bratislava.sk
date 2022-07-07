@@ -1,11 +1,8 @@
-import {
-  AccordionCard,
-  AccordionCardProps,
-} from '../AccordionCard/AccordionCard';
-import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper';
+import { AccordionCard, AccordionCardProps } from '../AccordionCard/AccordionCard'
+import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface AccordionCardsProps {
-  items: AccordionCardProps[];
+  items: AccordionCardProps[]
 }
 
 export const AccordionCards = ({ items }: AccordionCardsProps) => {
@@ -22,5 +19,5 @@ export const AccordionCards = ({ items }: AccordionCardsProps) => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}

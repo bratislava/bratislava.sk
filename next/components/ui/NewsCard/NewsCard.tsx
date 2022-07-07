@@ -1,9 +1,9 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { getNumericLocalDate } from '@utils/local-date'
 import cx from 'classnames'
-import { RefObject,useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 
-import { ArrowRight,ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'

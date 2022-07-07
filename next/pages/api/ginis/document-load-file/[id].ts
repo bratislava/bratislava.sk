@@ -63,14 +63,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     parseString(responseAxios.data, { explicitArray: false }, (error, r) => {
       if (error) {
         return res.status(400).json({ message: 'bad xml to json' })
-      } 
-        response = r
-      
+      }
+      response = r
     })
     result = response['s:Envelope']['s:Body']['Nacist-souborResponse']['Nacist-souborResult'].Xrg['Nacist-soubor']
     buffer = Buffer.from(result.Data, 'base64')
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', `attachment; filename=${  result['Jmeno-souboru']}`)
+    res.setHeader('Content-Disposition', `attachment; filename=${result['Jmeno-souboru']}`)
   } catch (error) {
     console.log(error)
   }

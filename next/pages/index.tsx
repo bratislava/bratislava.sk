@@ -166,7 +166,7 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
-  const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
+  const { pageTitle, posts } = data
 
   const menuItems = parseMainMenu(mainMenu)
 

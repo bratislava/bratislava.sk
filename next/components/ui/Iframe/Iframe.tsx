@@ -29,7 +29,7 @@ export const Iframe = ({
       scrolling={iframe_scrolling}
       allowFullScreen={iframe_allowfullscreen}
       style={JSON.parse(`{${iframe_style}}`)}
-     />
+    />
   )
 }
 export default Iframe

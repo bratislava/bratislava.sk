@@ -61,9 +61,7 @@ export const getUDEDocumentsList = async (search?: string): Promise<Array<Respon
     throw new Error('bad soap request to Ginis')
   }
   const response = await parseStringPromise(responseAxios.data, { explicitArray: false })
-  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg[
-    'Seznam-dokumentu'
-  ]
+  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg['Seznam-dokumentu']
 }
 
 export type ParsedOfficialBoardDocument = {
@@ -128,7 +126,24 @@ export const mockedParsedDocuments = [
 ]
 
 export const getALotOfMockedDocs = async () => {
-  return [...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments, ...mockedParsedDocuments]
+  return [
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+    ...mockedParsedDocuments,
+  ]
 }
 
 export const mockedDetail = {

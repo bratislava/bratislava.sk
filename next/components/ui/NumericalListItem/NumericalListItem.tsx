@@ -38,7 +38,9 @@ export const NumericalListItem = ({ index, item, variant, hasBackground }: Numer
           {index + 1}
         </div>
         <div
-          className={cx('max-w-screen-sm text-base lg:text-default pl-5 lg:pl-11 listitem', { 'pt-2': variant === 'combined' })}
+          className={cx('max-w-screen-sm text-base lg:text-default pl-5 lg:pl-11 listitem', {
+            'pt-2': variant === 'combined',
+          })}
         >
           <UIMarkdown
             numericalList

@@ -6,22 +6,21 @@ import * as React from 'react'
 import { pagePath } from '../../utils/page'
 
 interface Props {
-  parentPage: PageEntityResponse;
-  pageCategory: PageCategoryEntityResponse;
-  title: string;
+  parentPage: PageEntityResponse
+  pageCategory: PageCategoryEntityResponse
+  title: string
 }
 
 const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
   const { Link: UILink } = useUIContext()
   const crumbs: { title: string; url: string | null }[] = []
 
-
   if (parentPage) {
     crumbs.push({
       title: parentPage.data?.attributes?.title ?? '',
       url: pagePath({
-        locale: parentPage?.data?.attributes?.locale ,
-        slug: parentPage?.data?.attributes?.slug
+        locale: parentPage?.data?.attributes?.locale,
+        slug: parentPage?.data?.attributes?.slug,
       }),
     })
   } else if (pageCategory) {

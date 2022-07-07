@@ -51,7 +51,7 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
         {subtitle && <UIMarkdown className="mt-6 opacity-75" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
-            {[...Array.from({length: 3})].map((_, ix) => (
+            {[...Array.from({ length: 3 })].map((_, ix) => (
               <div key={ix} className="col-12 md:col-4 mb-2 basis-4/12 last:mb-0 md:mb-0">
                 {content[ix] && <UIMarkdown content={content[ix]} />}
               </div>

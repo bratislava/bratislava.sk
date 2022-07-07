@@ -26,7 +26,7 @@ import OfficialBoardBackgroundImage from '../../../assets/images/official-board.
 import BasePageLayout from '../../../components/layouts/BasePageLayout'
 import PageWrapper from '../../../components/layouts/PageWrapper'
 import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
-import { pageStyle , parseFooter, parseMainMenu } from '../../../utils/page'
+import { pageStyle, parseFooter, parseMainMenu } from '../../../utils/page'
 import { forceString, isPresent } from '../../../utils/utils'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

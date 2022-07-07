@@ -6,8 +6,10 @@ import {
   BlogPostFragment,
   Homepage,
   HomepageQuery,
- LatestBlogsFragment,   LatestBlogsWithTagsQuery,
-NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+  LatestBlogsFragment,
+  LatestBlogsWithTagsQuery,
+  NewsCardBlogFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -236,8 +238,8 @@ export const Posts = ({
           Všetky informácie nájdete na stránke
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">
-                <br />
-              </div>
+              <br />
+            </div>
             <b> zverejnovanie.bratislava.sk</b>
           </UILink>
         </div>

@@ -47,7 +47,7 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
 
     return {
       name: year,
-      data: [...Array.from({length: MONTHS})].map((_, ix) => [ix + 1, dataByYear.jsonData[ix + 1]?.total ?? 0]),
+      data: [...Array.from({ length: MONTHS })].map((_, ix) => [ix + 1, dataByYear.jsonData[ix + 1]?.total ?? 0]),
     }
   })
   const sortedTotalSeries = totalSeries.reverse()

@@ -7,7 +7,7 @@ import { Panel } from '../Panel/Panel'
 
 export interface InBaCardProps {
   className?: string
-  images?: (string|undefined)[]
+  images?: (string | undefined)[]
   title?: string | null
   content?: string | null
   link?: string | null

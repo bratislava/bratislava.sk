@@ -1,15 +1,15 @@
-import cx from 'classnames';
-import React from 'react';
+import cx from 'classnames'
+import React from 'react'
 
-import { Card } from '../Card/Card';
-import { CheckBox } from '../CheckBox/CheckBox';
+import { Card } from '../Card/Card'
+import { CheckBox } from '../CheckBox/CheckBox'
 
 export interface NewsletterProps {
-  className?: string;
-  imageSrc?: string;
-  checkBoxContent?: string;
-  newsLetterContent?: string;
-  buttonLabel?: string;
+  className?: string
+  imageSrc?: string
+  checkBoxContent?: string
+  newsLetterContent?: string
+  buttonLabel?: string
 }
 
 export const NewsLetter = ({
@@ -19,32 +19,23 @@ export const NewsLetter = ({
   newsLetterContent,
   buttonLabel,
 }: NewsletterProps) => {
-  const [isChecked, setChecked] = React.useState(false);
-  const [email, setEmail] = React.useState('@');
-  const [isSubscribed, setSubscribed] = React.useState(false);
+  const [isChecked, setChecked] = React.useState(false)
+  const [email, setEmail] = React.useState('@')
+  const [isSubscribed, setSubscribed] = React.useState(false)
 
   const handleClick = () => {
     if (isChecked && email.length > 0) {
-      console.log('Subscribed');
-      setSubscribed(true);
+      console.log('Subscribed')
+      setSubscribed(true)
     }
-  };
+  }
 
   return (
-    <div
-      className={cx(
-        className,
-        'max-w-xs w-full px-2.5 lg:px-0 my-10 lg:my-12 pt-1 lg:max-w-3xl lg:pr-9'
-      )}
-    >
+    <div className={cx(className, 'max-w-xs w-full px-2.5 lg:px-0 my-10 lg:my-12 pt-1 lg:max-w-3xl lg:pr-9')}>
       <Card
         hasButton
         buttonPosition="left-1/2 -translate-x-1/2 w-56 h-14 lg:translate-x-0 lg:left-10"
-        topImage={
-          imageSrc ? (
-            <img src={imageSrc} alt="Newsletter decoration" />
-          ) : undefined
-        }
+        topImage={imageSrc ? <img src={imageSrc} alt="Newsletter decoration" /> : undefined}
         topImagePosition="left-[-10px] lg:left-[492px] h-[180px] lg:h-[214px] w-[320px] lg:w-[382px] top-[-78px] lg:top-[59px] "
         className="flex h-auto flex-col"
         onButtonClick={handleClick}
@@ -68,13 +59,7 @@ export const NewsLetter = ({
               className="border-gray-light border-opacity-50"
               variant="circle"
               content={
-                <p
-                  className={cx(
-                    'text-base -mt-1',
-                    { 'text-font': isChecked },
-                    { 'text-gray-light': !isChecked }
-                  )}
-                >
+                <p className={cx('text-base -mt-1', { 'text-font': isChecked }, { 'text-gray-light': !isChecked })}>
                   {checkBoxContent}
                 </p>
               }
@@ -85,7 +70,7 @@ export const NewsLetter = ({
         </div>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default NewsLetter;
+export default NewsLetter

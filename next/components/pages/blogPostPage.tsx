@@ -22,7 +22,6 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
   const blogPost = post.data[0].attributes
   const tag = blogPost?.tag?.data?.attributes
   const pageCategory = tag?.pageCategory?.data?.attributes
-  
 
   return (
     <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}>
@@ -34,7 +33,8 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         />
       )}
       {/* Header */}
-      <PageHeader className="header-main-bg bg-cover"
+      <PageHeader
+        className="header-main-bg bg-cover"
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}

@@ -1,5 +1,5 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context';
-import cx from 'classnames';
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
 
 enum Enum_Pagecategory_Color {
   Blue = 'blue',
@@ -11,24 +11,15 @@ enum Enum_Pagecategory_Color {
 }
 
 export interface SubpageListProps {
-  className?: string;
-  subpageList?: { title?: string; url?: string; anchor?: string }[];
-  pageColor?: Enum_Pagecategory_Color;
+  className?: string
+  subpageList?: { title?: string; url?: string; anchor?: string }[]
+  pageColor?: Enum_Pagecategory_Color
 }
 
-export const SubpageList = ({
-  className,
-  subpageList,
-  pageColor,
-}: SubpageListProps) => {
-  const { Link: UILink } = useUIContext();
+export const SubpageList = ({ className, subpageList, pageColor }: SubpageListProps) => {
+  const { Link: UILink } = useUIContext()
   return (
-    <div
-      className={cx(
-        'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-32 mb-16 mt-10',
-        className
-      )}
-    >
+    <div className={cx('grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-32 mb-16 mt-10', className)}>
       {subpageList?.map((subpage, index) => (
         <div key={index}>
           <UILink href={subpage.url ? `/${subpage.url}` : `#${subpage.anchor}`}>
@@ -44,7 +35,7 @@ export const SubpageList = ({
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default SubpageList;
+export default SubpageList

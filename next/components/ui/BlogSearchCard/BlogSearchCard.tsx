@@ -1,6 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { RefObject,useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
 import { BlogItem } from '../FeaturedBlogs/FeaturedBlogs'
@@ -36,7 +36,7 @@ export interface BlogSearchCardProps {
 export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, item }: BlogSearchCardProps) => {
   const { Link: UILink } = useUIContext()
   const publishedAt = new Date(item.data?.attributes?.publishedAt)
-  const date = `${publishedAt.getDay()  }. ${  publishedAt.getMonth()  }. ${  publishedAt.getFullYear()}`
+  const date = `${publishedAt.getDay()}. ${publishedAt.getMonth()}. ${publishedAt.getFullYear()}`
   const headline =
     item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
   const color = item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color

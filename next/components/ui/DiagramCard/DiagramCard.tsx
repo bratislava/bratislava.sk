@@ -23,11 +23,7 @@ export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, classNam
     <div
       className={cx(className, 'relative rounded-lg border-secondary border-3 flex flex-col items-center shadow mb-2')}
     >
-      <StepperStep
-        active={false}
-        className="absolute h-20 w-20 -translate-y-1/2 py-5 text-5xl"
-        number={index}
-      />
+      <StepperStep active={false} className="absolute h-20 w-20 -translate-y-1/2 py-5 text-5xl" number={index} />
 
       <div className="px-12">
         {imgSrc && <img alt="diagramcard" src={imgSrc} width={imgWidth} height={imgHeight} />}

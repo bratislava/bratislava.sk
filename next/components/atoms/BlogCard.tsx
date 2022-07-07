@@ -9,7 +9,7 @@ import ChevronRight from '../../assets/images/chevron-right.svg'
 
 export interface BlogCardProps {
   className?: string
-  image?: string | StaticImageData;
+  image?: string | StaticImageData
   mobileImage?: string | StaticImageData
   content?: React.ReactNode
   href?: string

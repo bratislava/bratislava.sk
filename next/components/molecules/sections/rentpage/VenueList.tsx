@@ -1,4 +1,4 @@
-import { TabBarTab,Venue, VenueProps } from '@bratislava/ui-bratislava'
+import { TabBarTab, Venue, VenueProps } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 

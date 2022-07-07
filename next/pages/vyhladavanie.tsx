@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 
 import BasePageLayout from '../components/layouts/BasePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
-import { pageStyle , parseFooter, parseMainMenu } from '../utils/page'
+import { pageStyle, parseFooter, parseMainMenu } from '../utils/page'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment

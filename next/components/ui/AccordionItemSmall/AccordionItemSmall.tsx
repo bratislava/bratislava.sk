@@ -36,9 +36,7 @@ export const AccordionItemSmall = ({
     return onOpen ? onOpen() : setActive(!active)
   }
 
-  const [switchValue, setSwitchValue] = React.useState<'left' | 'right'>(
-    'left'
-  );
+  const [switchValue, setSwitchValue] = React.useState<'left' | 'right'>('left')
 
   return (
     <>
@@ -56,26 +54,26 @@ export const AccordionItemSmall = ({
           className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
           onClick={handleClick}
         >
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <div className="mr-4 grow-0 md:mr-5">
               <Chevron className={cx('', { 'rotate-180': active })} />
             </div>
             <div className="flex flex-row font-medium">
               <p className="text-left text-xxs font-medium text-font md:text-sm">{title}</p>
-              {secondaryTitle && <p className="text-left text-xxs text-gray-universal-500 md:text-sm ">&nbsp;{secondaryTitle}</p>}
+              {secondaryTitle && (
+                <p className="text-left text-xxs text-gray-universal-500 md:text-sm ">&nbsp;{secondaryTitle}</p>
+              )}
             </div>
           </div>
           <div>
             <SwitchToggle
-                  titleLeft=""
-                  titleRight=""
-                  variant='primary'
-                  value={switchValue}
-                  onValueChange={(val) => setSwitchValue(val)}
-                />
+              titleLeft=""
+              titleRight=""
+              variant="primary"
+              value={switchValue}
+              onValueChange={(val) => setSwitchValue(val)}
+            />
           </div>
-          
-          
         </button>
       </div>
       <div

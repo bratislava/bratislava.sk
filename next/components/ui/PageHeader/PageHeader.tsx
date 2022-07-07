@@ -64,8 +64,7 @@ export const PageHeader = ({
     <div
       // className={className}
       className={cx(className, 'header-main-bg bg-cover')}
-  
-      style={{      
+      style={{
         boxSizing: 'border-box',
         backgroundSize: '100%',
         background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--secondary-color)',

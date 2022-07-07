@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import BookFullWidth from './dividers/book-full-width.svg'
 import BookMobileWidth from './dividers/book-mobile-width.svg'
@@ -125,9 +125,10 @@ interface DividerProps {
 }
 
 export const getDivider = (dividerStyle?: string) => {
-  if (!dividerStyle) return function() {
-  return null
-}
+  if (!dividerStyle)
+    return function () {
+      return null
+    }
   let key = 'display'
   if (typeof window !== 'undefined') {
     // Client-side-only code

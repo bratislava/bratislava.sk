@@ -92,14 +92,14 @@ export const Bookmark = ({
                 backgroundImage: `url("${icon}")`,
               }}
               className="h-24 w-24 rounded-full"
-             />
+            />
           ) : (
             <div
               className={cx('w-24 h-24 rounded-full', {
                 'bg-font': variantWithFallback === 'blue',
                 'bg-white': variantWithFallback === 'red',
               })}
-             />
+            />
           )}
         </div>
 

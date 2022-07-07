@@ -53,9 +53,7 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
       </div>
       <HorizontalScrollWrapper className="gap-x-4 lg:hidden">
         {blogs.map((blog, index) => {
-          return (
-            <BlogSearchCard key={index} className="h-60 w-74 shrink-0" imageClassName="w-[206px]" item={blog} />
-          )
+          return <BlogSearchCard key={index} className="h-60 w-74 shrink-0" imageClassName="w-[206px]" item={blog} />
         })}
       </HorizontalScrollWrapper>
     </>
