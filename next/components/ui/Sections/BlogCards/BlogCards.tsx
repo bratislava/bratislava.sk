@@ -1,5 +1,5 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { ArrowRight, ChevronRight } from '@assets/images'
+import { ChevronRight } from '@assets/images'
 import cx from 'classnames'
 import { Carousel } from '../../Carousel/Carousel'
 import { HorizontalCard } from '../../HorizontalCard/HorizontalCard'
@@ -28,10 +28,10 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           items={posts.map((blogCard, i) => (
             <div key={i} className="box-content flex py-16">
               <HorizontalCard className="w-540 min-h-220" key={i} imageSrc={blogCard.imageSrc}>
-                <p className='overflow-ellipsis overflow-hidden line-clamp-4'>{blogCard.title}</p>
+                <p className="overflow-ellipsis overflow-hidden line-clamp-4">{blogCard.title}</p>
                 <UILink
                   className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
-                  href={`blog${blogCard?.url}` || ''}
+                  href={`${blogCard?.url}` || ''}
                 >
                   <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
                   <span className="group-hover:hidden">

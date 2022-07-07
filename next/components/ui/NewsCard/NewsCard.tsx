@@ -37,6 +37,7 @@ export interface NewsCardProps {
   date_added?: string | null
   createdAt?: string | null
   updatedAt?: string | null
+  publishedAt?: string | null
   slug?: string | null
   link?: string | null
 }
@@ -49,6 +50,7 @@ export const NewsCard = ({
   excerpt,
   updatedAt,
   date_added,
+  publishedAt,
   readMoreText,
   slug,
 }: NewsCardProps) => {
@@ -98,7 +100,7 @@ export const NewsCard = ({
             />
           )}
           <h3 className="text-default lg:text-md font-semibold news-small-content">{title}</h3>
-          <span className="text-xs font-medium">{getNumericLocalDate(date_added || updatedAt)}</span>
+          <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
           <p className="text-sm news-small-content">{excerpt}</p>
 
           {slug && (

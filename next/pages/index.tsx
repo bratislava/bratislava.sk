@@ -35,6 +35,7 @@ import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 
+
 export const getStaticProps = async (ctx) => {
   const locale: string = ctx.locale ?? 'sk'
 

@@ -42,7 +42,7 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
               className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
               href={href}
             >
-              <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
+              <span className="font-semibold text-sm">Čítať viac</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>
