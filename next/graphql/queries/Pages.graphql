@@ -447,7 +447,7 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsLinks {
     title
     hasBackground
-    pageLinks {
+    pageLinks(pagination: { limit: 100 }) {
       ...PageLink
     }
   }

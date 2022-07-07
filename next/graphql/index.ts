@@ -3386,7 +3386,7 @@ export const SectionsFragmentDoc = gql`
   ... on ComponentSectionsLinks {
     title
     hasBackground
-    pageLinks {
+    pageLinks(pagination: {limit: 100}) {
       ...PageLink
     }
   }
