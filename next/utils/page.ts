@@ -67,7 +67,7 @@ export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
   if (locale === 'sk' && slug === '') return '/'
   const localePrefix = locale === 'sk' ? '' : `${locale}/`
-  return `${localePrefix}${slug}`
+  return `${localePrefix}${slug || ''}`
 }
 
 export const pagePath = (
@@ -186,7 +186,10 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
 
 // Page Accordion Items
 export const groupByCategory = <T>(items: T[]) => {
-  const grouped = _(items).groupBy(item => item['category']).sortBy(group => items.indexOf(group[0])).value();
+  const grouped = _(items)
+    .groupBy((item) => item['category'])
+    .sortBy((group) => items.indexOf(group[0]))
+    .value()
   return Object.keys(grouped).map((key) => ({
     category: grouped[key].length > 0 ? grouped[key][0]?.category : key,
     items: grouped[key],

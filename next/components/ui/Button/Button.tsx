@@ -53,6 +53,7 @@ export const Button = ({
         'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
         'bg-transparent text-default text-font hover:text-primary border-primary border-2':
           shape !== 'none' && variant === 'transparent',
+
         //transparent should be replaced with transparent-black
         'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',
         'bg-primary-muted text-white hover:bg-primary': shape !== 'none' && variant === 'muted',

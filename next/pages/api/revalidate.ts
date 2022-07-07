@@ -1,3 +1,4 @@
+import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type strapiWebhookPayload = {
@@ -8,7 +9,7 @@ type strapiWebhookPayload = {
   }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+const handler = async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.SECRET_TOKEN) {
     return res.status(401).json({ message: 'Invalid tokenn' })
@@ -47,3 +48,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).send('Error revalidating')
   }
 }
+
+export default withSentry(handler)

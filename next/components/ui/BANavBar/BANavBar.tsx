@@ -10,14 +10,15 @@ import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
 import CloseIcon from '../../../assets/images/close.svg'
-import SmallBlackSearchIcon from '../../../assets/images/search-icon-small-black.svg'
-import SmallWhiteSearchIcon from '../../../assets/images/search-icon-small-white.svg'
 import Button from '../Button/Button'
 import { useTranslation } from 'next-i18next'
 import NarrowText from '../NarrowText/NarrowText'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Cookies } from 'react-cookie-consent'
 import * as ReactGA from 'react-ga'
+import { minKeywordLength } from '@utils/constants'
+import { useRouter } from 'next/router'
+
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
@@ -51,6 +52,7 @@ const navBarUrls = {
 }
 
 export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
+  const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [showModal, setShowModal] = React.useState(false)
@@ -138,16 +140,27 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     setConsent(JSON.parse(isConsentSubmittedLocal))
   }, [])
 
+  const [input, setInput] = useState('')
+  const handleChange = (event) => {
+    setInput(event.target.value)
+  }
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && input.length > minKeywordLength) {
+      router.push(`${t('searchLink')}?keyword=${input}`)
+    }
+  }
+
   return (
     <>
       {/* Desktop */}
       <div className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}>
         <div className="hidden lg:flex m-auto justify-between w-full max-w-screen-1.5lg py-4 border-b border-gray-universal-200">
           <Brand
-            className="flex-1"
+            className="flex-1 group"
             url="/"
             title={
-              <p className="text-sm text-font">
+                 <p className="text-sm text-font group-hover:text-red-universal-300">
+
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {navBarTexts[languageKey].capitalCity}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -170,15 +183,23 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 <input
                   id="name"
                   type="text"
-                  className="h-7 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-sm text-font"
+                  className="h-6 pl-6 w-96 outline-none border-2 border-r-0 rounded-l-lg text-sm text-font"
+                  value={input}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
                 />
-                <Link href={t('searchLink')}>
+                <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : ''}>
                   <Button
-                    icon={<SmallBlackSearchIcon />}
-                    hoverIcon={<SmallWhiteSearchIcon />}
-                    className="h-7 rounded-l-none text-sm px-6 shadow-none bg-[#F8D7D4] hover:bg-[#E46054] hover:text-white hover:color-white font-medium bg-secondary"
+                    icon={<SearchIcon className="scale-75" />}
+                    hoverIcon={<SearchIcon className="scale-75" />}
+                    className={cx(
+                      'h-6 rounded-l-none text-sm px-6 shadow-none font-medium',
+                      { 'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength },
+                      { 'cursor-default': input.length <= minKeywordLength }
+                    )}
+                    variant="secondaryDarkText"
                   >
-                    Hľadať
+                    {t('search')}
                   </Button>
                 </Link>
               </div>
@@ -227,7 +248,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
       <div
         className={cx(
           className,
-          'h-20 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
