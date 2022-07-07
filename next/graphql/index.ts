@@ -2991,6 +2991,7 @@ export type LatestBlogsWithTagsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   start?: InputMaybe<Scalars['Int']>;
   filters?: InputMaybe<BlogPostFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 
@@ -3001,6 +3002,7 @@ export type LatestBlogsFragment = { __typename?: 'BlogPostEntityResponseCollecti
 export type TotalPostsCountQueryVariables = Exact<{
   where?: InputMaybe<BlogPostFiltersInput>;
   limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 }>;
 
 
@@ -3852,19 +3854,20 @@ export const BlogPostsStaticPathsDocument = gql`
 }
     `;
 export const LatestBlogsWithTagsDocument = gql`
-    query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput) {
+    query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput, $locale: I18NLocaleCode) {
   blogPosts(
     sort: $sort
     pagination: {limit: $limit, start: $start}
     filters: $filters
+    locale: $locale
   ) {
     ...LatestBlogs
   }
 }
     ${LatestBlogsFragmentDoc}`;
 export const TotalPostsCountDocument = gql`
-    query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int) {
-  blogPosts(filters: $where, pagination: {limit: $limit}) {
+    query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLocaleCode) {
+  blogPosts(filters: $where, pagination: {limit: $limit}, locale: $locale) {
     meta {
       pagination {
         total

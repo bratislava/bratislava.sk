@@ -26,6 +26,12 @@ module.exports = {
         officialSorting: true,
       },
     ],
+    /** To remove optinal parameter warning e.g. { page?: number } */
+    "react/require-default-props" : 'off',
+    /** To Remove  */
+    "react/no-array-index-key": 'off',
+    /** Remove console.log() warnings */
+    "no-console": 'off'
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

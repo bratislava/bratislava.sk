@@ -1,6 +1,7 @@
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AccordionItem,
+  AdvancedAccordion,
   ColumnedText,
   Contact,
   Divider,
@@ -9,89 +10,24 @@ import {
   Links,
   ListItems,
   NarrowText,
+  NumericalListSection,
   PageLinkButton,
+  RentBenefits,
   SectionContainer,
   TextWithImage,
   Videos,
   Waves,
-  RentBenefits,
-  NumericalListSection,
-  Iframe,
-  AdvancedAccordion,
 } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import * as React from 'react'
+
 import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
 import { isPresent } from '../../utils/utils'
+import { DocumentList } from './sections/documentList'
+import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
-import { useTranslation } from 'next-i18next'
-import ArticlesList from './sections/homepage/ArticlesList'
-import { DocumentList } from './sections/documentList'
-
-const Sections = ({
-  sections,
-  slug,
-  locale,
-}: {
-  sections: (SectionsFragment | null)[]
-  slug?: string
-  locale?: string
-}) => {
-  return (
-    <>
-      {sections.map((section, index) => (
-        <Section key={index} section={section} slug={slug} locale={locale} />
-      ))}
-    </>
-  )
-}
-
-const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
-  if (!section) return null
-
-  if (section.__typename === 'ComponentSectionsWaves')
-    return (
-      <Waves
-        className={cx({
-          'mt-14 md:mt-18': section.position === 'top',
-        })}
-        key={section.position}
-        isRich={section.isRich ?? undefined}
-        backgroundColor="var(--background-color)"
-        waveColor="var(--secondary-color)"
-        wavePosition={section.position ?? 'top'}
-      />
-    )
-
-  if (section.__typename === 'ComponentSectionsNumericalList') {
-    const { title, items, buttonText, buttonLink, variant, hasBackground } = section
-    return (
-      <NumericalListSection
-        title={title}
-        items={items}
-        buttonText={buttonText}
-        buttonLink={buttonLink}
-        variant={variant}
-        hasBackground={hasBackground}
-      />
-    )
-  }
-
-  // Not All sections has property hasBackground
-  const hasBackground = (section as any).hasBackground ?? false
-
-  return (
-    <SectionContainer
-      className={cx('pt-14 md:pt-18', {
-        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
-      })}
-      hasBackground={hasBackground}
-    >
-      {sectionContent(section, slug, locale)}
-    </SectionContainer>
-  )
-}
 
 const sectionContent = (section: SectionsFragment, slug?: string, locale?: string) => {
   const { t } = useTranslation('common')
@@ -155,7 +91,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsAccordion':
       return (
         <>
-          {section.title && <h1 className="flex justify-center font-semibold text-lg pb-14">{section.title}</h1>}
+          {section.title && <h1 className="flex justify-center pb-14 text-lg font-semibold">{section.title}</h1>}
           <div className="flex flex-col space-y-4">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem
@@ -211,7 +147,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
                 title={parseCategory(text.category).title}
                 secondaryTitle={parseCategory(text.category).secondaryTitle}
               >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-y-8 gap-x-7">
+                <div className="grid grid-cols-1 gap-y-8 gap-x-7 md:grid-cols-3">
                   {text.items.filter(isPresent).map((file) => (
                     <Institution
                       key={file.title}
@@ -255,6 +191,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
           }
         />
       )
+
     case 'ComponentSectionsNewsletter':
       return <NewsLetterSection />
 
@@ -263,7 +200,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} />
+      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} locale={locale} />
 
     case 'ComponentSectionsOrganizationalStructure':
       return <AdvancedAccordion {...section} />
@@ -276,6 +213,71 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     default:
       return null
   }
+}
+
+const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
+  if (!section) return null
+
+  if (section.__typename === 'ComponentSectionsWaves')
+    return (
+      <Waves
+        className={cx({
+          'mt-14 md:mt-18': section.position === 'top',
+        })}
+        key={section.position}
+        isRich={section.isRich ?? undefined}
+        backgroundColor="var(--background-color)"
+        waveColor="var(--secondary-color)"
+        wavePosition={section.position ?? 'top'}
+      />
+    )
+
+  if (section.__typename === 'ComponentSectionsNumericalList') {
+    const { title, items, buttonText, buttonLink, variant, hasBackground } = section
+    return (
+      <NumericalListSection
+        title={title}
+        items={items}
+        buttonText={buttonText}
+        buttonLink={buttonLink}
+        variant={variant}
+        hasBackground={hasBackground}
+      />
+    )
+  }
+
+  // Not All sections has property hasBackground
+  const hasBackground = (section as any).hasBackground ?? false
+
+  return (
+    <SectionContainer
+      className={cx('pt-14 md:pt-18', {
+        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
+      })}
+      hasBackground={hasBackground}
+    >
+      {sectionContent(section, slug, locale)}
+    </SectionContainer>
+  )
+}
+
+const Sections = ({
+  sections,
+  slug,
+  locale,
+}: {
+  sections: (SectionsFragment | null)[]
+  slug?: string
+  locale?: string
+}) => {
+  return (
+    <>
+      {sections.map((section, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Section key={index} section={section} slug={slug} locale={locale} />
+      ))}
+    </>
+  )
 }
 
 export default Sections
