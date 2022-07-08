@@ -4,7 +4,6 @@ import cx from 'classnames'
 
 import Button from '../Button/Button'
 import { NumericalList } from '../NumericalList/NumericalList'
-import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
 import Waves from '../Waves/Waves'
 
 export interface NumericalListItemObject {
