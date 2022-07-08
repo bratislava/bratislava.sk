@@ -6,12 +6,13 @@ import { NumericalListItemObject } from '../NumericalListSection/NumericalListSe
 
 export interface NumericalListItemProps {
   index: number
-  item: NumericalListItemObject
+  item?: NumericalListItemObject
   variant: 'basic' | 'combined' | 'roadmap'
   hasBackground: boolean
+  children?: React.ReactNode
 }
 
-export const NumericalListItem = ({ index, item, variant, hasBackground }: NumericalListItemProps) => {
+export const NumericalListItem = ({ index, item, variant, hasBackground, children }: NumericalListItemProps) => {
   const position = index % 2 == 0 ? 'left' : 'right'
   const { Markdown: UIMarkdown } = useUIContext()
 
@@ -42,17 +43,29 @@ export const NumericalListItem = ({ index, item, variant, hasBackground }: Numer
             'pt-2': variant === 'combined',
           })}
         >
-          <UIMarkdown
-            numericalList
-            className={cx(
-              'flex',
-              { 'flex-col items-start gap-y-10': variant === 'combined' },
-              {
-                'items-center numerical-list-hidden': variant != 'combined',
-              }
-            )}
-            content={item.text}
-          />
+          {item && (
+            <UIMarkdown
+              numericalList
+              className={cx(
+                'flex',
+                { 'flex-col items-start gap-y-10': variant === 'combined' },
+                {
+                  'items-center numerical-list-hidden': variant != 'combined',
+                }
+              )}
+              content={item.text}
+            />
+          )}
+          {/* {item.items &&
+            item.items.map((e) => {
+              return (
+                <div className="flex gap-x-8 lg:gap-x-6 items-center">
+                  <div className="h-4 w-4 bg-primary rounded-full" />
+                  <UIMarkdown content={e} />
+                </div>
+              )
+            })} */}
+          {children}
         </div>
       </div>
     </div>

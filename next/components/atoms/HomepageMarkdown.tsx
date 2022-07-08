@@ -1,12 +1,9 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { NumericalList } from '@bratislava/ui-bratislava/NumericalList/NumericalList'
+import { NumericalListItem } from '@bratislava/ui-bratislava/NumericalListItem/NumericalListItem'
 import cx from 'classnames'
-import ReactDOMServer from 'react-dom/server'
 import ReactMarkdown from 'react-markdown'
-import { OrderedListProps } from 'react-markdown/lib/ast-to-react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import TurndownService from 'turndown'
 
 import ContentImage from './ContentImage'
 
@@ -75,17 +72,44 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             <div className="flex min-h-[92px] items-center px-4 text-left text-default">{children}</div>
           </td>
         ),
-        ol: ({ children }: any) => {
-          const turndownService = new TurndownService({ emDelimiter: '*' })
-          const jsxStringItems = children
-            .filter((e) => e?.type === 'li')
-            .map((e) => ReactDOMServer.renderToStaticMarkup(e))
-          const markdownItems = jsxStringItems.map((e) => turndownService.turndown(e).slice(4))
-          const items = markdownItems.map((e) => {
-            return { text: e }
-          })
-          return <NumericalList items={items} hasBackground={hasBackground} />
+        li: ({ ordered, children, index }) => {
+          console.log('children', children)
+          if (ordered) {
+            return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
+          } else {
+            return (
+              <div className="flex gap-x-8 lg:gap-x-6 items-center">
+                <div className="h-4 w-4 shrink-0 bg-primary rounded-full" />
+                <div>{children}</div>
+              </div>
+            )
+          }
         },
+        // ol: (props: any) => {
+        //   const { children } = props
+        //   console.log('props', props)
+        //   console.log('children', children)
+        //   const turndownService = new TurndownService({ emDelimiter: '*' })
+
+        //   const jsxStringItems = children
+        //     .filter((e) => e?.type === 'li')
+        //     .map((e) => ReactDOMServer.renderToStaticMarkup(e))
+        //   console.log('jsxStringItems', jsxStringItems)
+        //   const markdownItems = jsxStringItems.map((e) => turndownService.turndown(e).slice(4))
+        //   const items = markdownItems.map((e) => {
+        //     return { text: e }
+        //   })
+        //   console.log('items', items)
+        //   const custom = markdownItems.map((e) => {
+        //     const subs = e.split('*')
+        //     return {
+        //       text: subs[0],
+        //       items: subs.slice(1),
+        //     }
+        //   })
+        //   console.log('custom', custom)
+        //   return <NumericalList items={items} hasBackground={hasBackground} />
+        // },
       }}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
