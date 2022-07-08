@@ -72,18 +72,20 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             <div className="flex min-h-[92px] items-center px-4 text-left text-default">{children}</div>
           </td>
         ),
+        ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
         li: ({ ordered, children, index }) => {
-          console.log('children', children)
           if (ordered) {
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
-          } else {
-            return (
-              <div className="flex gap-x-8 lg:gap-x-6 items-center">
-                <div className="h-4 w-4 shrink-0 bg-primary rounded-full" />
-                <div>{children}</div>
-              </div>
-            )
           }
+          return (
+            <div className="flex gap-x-8 lg:gap-x-6 items-center">
+              <div className="h-4 w-4 shrink-0 bg-primary rounded-full" />
+              <div>{children}</div>
+            </div>
+          )
+        },
+        ul: ({ children }) => {
+          return <div className="flex flex-col gap-y-11 pl-6 pt-11">{children}</div>
         },
         // ol: (props: any) => {
         //   const { children } = props
