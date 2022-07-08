@@ -1,3 +1,10 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AccordionItem,
@@ -6,7 +13,7 @@ import {
   Contact,
   Divider,
   FileList,
-  Iframe,
+  // Iframe,
   Institution,
   Links,
   ListItems,

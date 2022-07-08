@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable sonarjs/no-identical-expressions */
 import { ArrowRight } from '@assets/images'
 import { Button } from '@bratislava/ui-bratislava'
 import cx from 'classnames'

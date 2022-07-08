@@ -13,13 +13,19 @@ interface IProps {
   className?: string
 }
 
+const fetchGooutEvents = async () => {
+  const res = await fetch('/api/goout-events')
+  const data: FetchGooutEventsResult = await res.json()
+  return data.events
+}
+
 const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
   const [gooutEvents, setGooutEvents] = React.useState<GooutEvent[]>([])
 
   const { Link: UILink } = useUIContext()
 
   React.useEffect(() => {
-    fetchGooutEvents().then(setGooutEvents)
+    fetchGooutEvents().then(setGooutEvents).catch(error => console.log(error))
   }, [])
 
   if (gooutEvents.length === 0) return null
@@ -71,12 +77,6 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
       </div>
     </div>
   )
-}
-
-const fetchGooutEvents = async () => {
-  const res = await fetch('/api/goout-events')
-  const data: FetchGooutEventsResult = await res.json()
-  return data.events
 }
 
 export default GooutEvents

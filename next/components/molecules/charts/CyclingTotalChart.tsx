@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import * as React from 'react'
 
 import { getLocalMonthName } from '../../../utils/local-date'

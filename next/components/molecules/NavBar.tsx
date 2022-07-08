@@ -18,6 +18,7 @@ const NavBar = ({ menuItems, handleSearch, pageColor }: IProps) => {
 
   const handleLanguageChange = ({ key }: { key: string }) => {
     const path = localizations.find((l) => l.locale === key)?.slug || ''
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     router.push(`/${path}`, undefined, { locale: key })
   }
 

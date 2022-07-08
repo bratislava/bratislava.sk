@@ -1,5 +1,4 @@
 import { HorizontalScrollWrapper, Rent, RentProps } from '@bratislava/ui-bratislava'
-import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import PrenajomImage from '../../../../assets/images/PrenajomImage.png'
@@ -27,7 +26,7 @@ const RENTS = [
   },
 ]
 
-const RentBenefits = ({ className, rents = RENTS }: IProps) => {
+const RentBenefits = ({ rents = RENTS }: IProps) => {
   const { t } = useTranslation()
   return (
     <div className="mt-20 md:flex md:flex-col md:items-center">

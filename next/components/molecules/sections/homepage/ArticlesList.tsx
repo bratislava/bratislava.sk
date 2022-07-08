@@ -1,3 +1,11 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable tailwindcss/classnames-order */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable promise/valid-params */
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'

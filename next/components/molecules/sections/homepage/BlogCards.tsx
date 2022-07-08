@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import NewsImage from '@assets/images/sample-news-image.jpeg'
 import NewsImage2 from '@assets/images/sample-news-image-2.jpeg'
 import { BlogCards as UIBlogCards } from '@bratislava/ui-bratislava'

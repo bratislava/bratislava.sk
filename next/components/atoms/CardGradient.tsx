@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @next/next/no-img-element */
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { TImageCarouselItem } from '@bratislava/ui-bratislava'
 import cx from 'classnames'

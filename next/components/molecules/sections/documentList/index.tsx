@@ -20,7 +20,7 @@ export const DocumentList = () => {
   const offset = (currentPage - 1) * MEILI_PAGE_SIZE
 
   // TODO show loading / error state
-  const { data } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16))
+  const { data, error } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16))
 
   const vzns = data?.hits || []
   const total = data?.estimatedTotalHits || 0
@@ -28,8 +28,8 @@ export const DocumentList = () => {
   const totalPages = Math.ceil(total / MEILI_PAGE_SIZE)
 
   const setOpenModal = (id) => {
-    const vzn = vzns.find((vzn) => vzn.id === id)
-    setActiveData(vzn)
+    const vznClicked = vzns.find((vzn) => vzn.id === id)
+    setActiveData(vznClicked)
     setOpen(true)
   }
 
@@ -87,14 +87,16 @@ export const DocumentList = () => {
                         onClick={setOpenModal}
                         mainDocumentHref={vzn.mainDocument?.url}
                       />
-                      {index === 7 ? (
-                        <div className="flex items-center justify-center">
-                          <DocumentDevider className="my-14 hidden xs:block lg:my-24" />
-                          <DocumentDeviderSmall className="my-14 block xs:hidden lg:my-24" />{' '}
-                        </div>
-                      ) : (
-                        ''
-                      )}
+                      <>
+                        {index === 7 ? (
+                          <div className="flex items-center justify-center">
+                            <DocumentDevider className="my-14 lg:my-24 hidden xs:block" />
+                            <DocumentDeviderSmall className="my-14 lg:my-24 block xs:hidden" />{' '}
+                          </div>
+                        ) : (
+                          ''
+                        )}
+                      </>
                     </>
                   )
                 })}

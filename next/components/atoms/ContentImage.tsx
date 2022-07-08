@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @next/next/no-img-element */
 import cx from 'classnames'
 import * as React from 'react'
 

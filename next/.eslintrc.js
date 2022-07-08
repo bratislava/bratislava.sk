@@ -32,6 +32,7 @@ module.exports = {
     "react/require-default-props" : 'off',
     /** To Remove  */
     "react/no-array-index-key": 'off',
+    "react/no-unused-prop-types": 'off',
     /** Remove console.log() warnings */
     "no-console": 'off'
   },

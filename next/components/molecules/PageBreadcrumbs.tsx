@@ -1,5 +1,5 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { PageCategoryEntityResponse, PageEntityResponse, ParentPageFragment } from '@bratislava/strapi-sdk-homepage'
+import { PageCategoryEntityResponse, PageEntityResponse } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import * as React from 'react'
 import LeftIcon from '@assets/images/chevron-left.svg'

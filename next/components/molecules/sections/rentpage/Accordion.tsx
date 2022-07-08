@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable react/button-has-type */
 import { Accordion as AccordionBa } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
@@ -6,9 +8,9 @@ import ChevronDown from '../../../../assets/images/chevron-down.svg'
 import ChevronRight from '../../../../assets/images/chevron-right.svg'
 import AccordionItem from '../../../atoms/AccordionItem'
 
-interface IProps {
-  className?: string
-}
+// interface IProps {
+//   className?: string
+// }
 
 const TABS = [
   { key: '0', title: 'Zmeny a doplnky 01' },
@@ -45,7 +47,7 @@ const CONTENT = [
   </div>,
 ]
 
-const Accordion = (props: IProps) => {
+const Accordion = () => {
   const [activeSection, setActiveSection] = React.useState('0')
   return (
     <AccordionBa

@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @next/next/inline-script-id */
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'

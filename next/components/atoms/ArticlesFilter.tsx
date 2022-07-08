@@ -12,6 +12,7 @@ export interface ArticlesFilterProps {
   filterHandler?: (arg0: string) => void
   categoryHandler?: (arg0: string) => void
   categoryExists?: boolean
+  // eslint-disable-next-line @typescript-eslint/ban-types
   category?: Object
   selectedTags?: string[]
 }
@@ -37,7 +38,7 @@ export const ArticlesFilter = ({
 
   return (
     <div>
-      <div className="text-center text-default lg:text-lg font-semibold">{t('articleCategories')}</div>
+      <div className="text-center text-default font-semibold lg:text-lg">{t('articleCategories')}</div>
       <HorizontalScrollWrapper className="mt-8 lg:mt-10 -mx-7.5 px-7.5">
         <div className="flex">
           {!categoryExists
@@ -60,6 +61,7 @@ export const ArticlesFilter = ({
       <div className="mt-6 lg:mt-11">
         {data
           .filter((tag) => {
+            // eslint-disable-next-line eqeqeq
             return tag.category == category
           })
           .map((item) => (
@@ -70,7 +72,7 @@ export const ArticlesFilter = ({
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="mr-3 mb-3 min-h-8 text-sm font-medium"
+              className="min-h-8 mr-3 mb-3 text-sm font-medium"
             />
           ))}
       </div>

@@ -54,7 +54,7 @@ const HeaderSections = ({
 }: IProps) => (
   <div className={cx(className, 'bg-secondary px-20')}>
     <div className="grid grid-cols-3 gap-x-24 gap-y-10">
-      {subSections.map((subSection, index) => (
+      {subSections.map((subSection) => (
         <HeaderSection {...subSection} />
       ))}
     </div>

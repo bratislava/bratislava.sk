@@ -1,4 +1,4 @@
-import { Footer as UIFooter, FooterProps, Waves } from '@bratislava/ui-bratislava'
+import { Footer as UIFooter, FooterProps, SectionContainer } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 

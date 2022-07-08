@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { FileCard } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import useSWR from 'swr'

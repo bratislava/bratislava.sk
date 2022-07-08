@@ -12,11 +12,10 @@ export interface HomepageMarkdownProps {
   className?: string
   content?: string
   numericalList?: boolean
-  hasBackground?: boolean
 }
 export type AdvancedListItemProps = LiProps & { depth?: number }
 
-export const HomepageMarkdown = ({ className, content, numericalList, hasBackground }: HomepageMarkdownProps) => {
+export const HomepageMarkdown = ({ className, content, numericalList }: HomepageMarkdownProps) => {
   const { Link: UILink } = useUIContext()
   const getHeadingTag = (children) => {
     return typeof children[0] === 'string' ? children[0].split(' ').join('-') : ''
@@ -29,10 +28,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
       })}
       components={{
         h1: ({ children }) => (
-          <h2
-            id={getHeadingTag(children)}
-            className="typography-h1 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
-          >
+          <h2 id={getHeadingTag(children)} className=".typography-h1 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
@@ -87,7 +83,9 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           </UILink>
         ),
         img: ({ src, alt }) => <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>,
-        blockquote: ({ children }) => <div className="border-l-4 border-primary pl-10 mb-5 lg:mb-10  last:mb-0">{children}</div>,
+        blockquote: ({ children }) => (
+          <div className="border-l-4 border-primary pl-10 mb-5 lg:mb-10  last:mb-0">{children}</div>
+        ),
         table: ({ children }) => <table className="w-full table-block">{children}</table>,
         tr: ({ children }) => (
           <tr className="py-8 px-1 md:p-0 w-[280px] md:w-full flex flex-col md:table-row rounded-lg bg-white md:odd:bg-white md:even:bg-transparent">

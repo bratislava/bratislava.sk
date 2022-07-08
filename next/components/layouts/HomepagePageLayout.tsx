@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import {
   AdvancedSearch,
   BAStickyMenu,
@@ -26,7 +28,7 @@ const HomepagePageLayout = ({
   menuItems,
   bookmarks,
 }: React.HTMLAttributes<HTMLDivElement> & HomepagePageLayoutProps) => {
-  const isEN = true // TODO: use localization // TODO get bookmarks determined by localization
+  // const isEN = true // TODO: use localization // TODO get bookmarks determined by localization
 
   const [stickyMenuVisible, setStickyMenuVisible] = React.useState(false)
   const [searchOpen, setSearchOpen] = React.useState(false)

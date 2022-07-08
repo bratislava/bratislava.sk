@@ -2,7 +2,7 @@ import { HorizontalScrollWrapper, StaticImageData } from '@bratislava/ui-bratisl
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import Rectangle from '../../../assets/images/news.svg'
+// import Rectangle from '../../../assets/images/news.svg'
 
 export interface GalleryProps {
   className?: string

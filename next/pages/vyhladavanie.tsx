@@ -1,3 +1,7 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AdvancedSearch,
@@ -8,7 +12,7 @@ import {
   SectionContainer,
 } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
-import { buildMockData } from '@utils/homepage-mockdata'
+// import { buildMockData } from '@utils/homepage-mockdata'
 import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -66,8 +70,8 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
     setInput(keyword)
   }, [keyword])
 
-  const handleSelect = (options: SearchOptionProps[]) => {
-    setCheckedOptions(options)
+  const handleSelect = (innerOptions: SearchOptionProps[]) => {
+    setCheckedOptions(innerOptions)
   }
   return (
     <PageWrapper
@@ -80,6 +84,7 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
     >
       <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
         <style
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: pageStyle('red'),
           }}
@@ -89,6 +94,7 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
           color="var(--secondary-color)"
           transparentColor="var(--secondary-color--transparent)"
           imageSrc=""
+          // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
