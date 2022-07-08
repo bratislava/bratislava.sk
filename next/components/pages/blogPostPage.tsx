@@ -1,6 +1,7 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { useTranslation } from 'next-i18next'
 import Head from 'next/head'
 import * as React from 'react'
 
@@ -22,6 +23,8 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
   const blogPost = post.data[0].attributes
   const tag = blogPost?.tag?.data?.attributes
   const pageCategory = tag?.pageCategory?.data?.attributes
+
+  const { t } = useTranslation()
 
   return (
     <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}>
@@ -63,7 +66,7 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
       {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
       <SectionContainer>
         <div className="mt-14 flex flex-col">
-          <span className="text-default font-semibold">Zdieľať</span>
+          <span className="text-default font-semibold">{t('share')}</span>
           <div className="flex space-x-10 pt-5">
             <SocialMediaButton href={`https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}>
               <FacebookIcon />
