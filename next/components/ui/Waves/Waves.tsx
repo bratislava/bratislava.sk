@@ -42,7 +42,9 @@ export const Waves = ({
     <div style={{ backgroundColor: backgroundColor }} className={cx('overflow-hidden wave-pattern', className)}>
       {wavePosition === 'top' && (
         <>
-          <WaveTopLarge className="hidden md:block -mb-0.5" {...waveProps} />
+          {/* <WaveTopLarge className="hidden md:block -mb-0.5" {...waveProps} />
+           */}
+          <WaveBottomLarge className="hidden md:block wave-pattern-top" {...waveProps} />
           <WaveTopSmall className="md:hidden " {...waveProps} />
         </>
       )}

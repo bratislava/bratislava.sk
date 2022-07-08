@@ -251,6 +251,10 @@
   margin-left: 0 !important;
 }
 
+.wave-pattern-top {
+  transform: scaleY(-1);
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   /* Safari and Chrome */
   .wave-pattern {
