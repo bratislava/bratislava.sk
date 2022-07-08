@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   BlogCards,
   InBaCard,
@@ -26,17 +29,20 @@ import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
+// import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 
+
 export const getStaticProps = async (ctx) => {
-  const locale = ctx.locale ?? 'sk'
+  const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
     sort: 'publishedAt:desc',
+    locale
   })
 
   const { homepage } = await client.Homepage({
@@ -68,6 +74,7 @@ export const getStaticProps = async (ctx) => {
           },
         },
       },
+      locale
     })
     return blogPosts
   }
@@ -166,6 +173,9 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
+
+  // Commented below line for reference.
+  // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
   const { pageTitle, posts } = data
 
   const menuItems = parseMainMenu(mainMenu)

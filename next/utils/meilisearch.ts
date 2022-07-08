@@ -7,9 +7,10 @@ const meiliClient = new MeiliSearch({
   apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
 })
 
-export const searchVZN = async (search: string, offset: number) => {
+export const searchVZN = async (search: string, offset: number,limit?:number) => {
   return meiliClient.index('vzn').search(search || '*', {
     sort: ['validFrom:desc'],
     offset,
+    limit
   })
 }
