@@ -57,7 +57,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
   const [searchOpen, setSearchOpen] = useState(false)
   const [showModal, setShowModal] = React.useState(false)
   const [isConsentSubmitted, setConsent] = React.useState(true)
-  const [securityCookies] = React.useState<boolean>(true)
+  const [securityCookies] = React.useState<boolean>(false)
   const [performanceCookies, setPerformanceCookies] = React.useState<boolean>(false)
   const [advertisingCookies, setAdvertisingCookies] = React.useState<boolean>(false)
   ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '')
@@ -79,14 +79,14 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     Cookies.set(
       'bratislava-homepage-gdpr',
       {
-        security_cookies: securityCookies,
+        security_cookies: true,
         performance_cookies: performanceCookies,
         advertising_and_targeting_cookies: advertisingCookies,
       },
       { path: '/', expires: 365 }
     )
     ReactGA.set({
-      security_cookies: securityCookies,
+      security_cookies: true,
       performance_cookies: performanceCookies,
       advertising_and_targeting_cookies: advertisingCookies,
     })
@@ -334,6 +334,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   secondaryTitle=""
                   value={securityCookies}
                   onValueChange={() => null}
+                  isDisabled
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
