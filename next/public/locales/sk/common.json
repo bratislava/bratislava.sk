@@ -66,9 +66,9 @@
   "vzn.validFrom": "Platnosť od",
   "vzn.validUntil": "Platnosť do",
   "vzn.mainDocument": "Main document",
+  "vzn.consolidatedText": "Konsolidované znenie (zhrnutie)",
   "vzn.amendments": "Dodatky",
   "vzn.cancellationDocument": "Zrušujúce VZN",
-  "vzn.consolidatedDocument": "Konsolidované znenie (zhrnutie)",
   "share": "Zdieľať",
   "closeMenu": "Zavrieť menu"
 }
