@@ -223,6 +223,7 @@
 
   .listitem .typography-regular {
     @apply text-sm lg:text-default;
+
   }
 
   .line-clamp-4 {
