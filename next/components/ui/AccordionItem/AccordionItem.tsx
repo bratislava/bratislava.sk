@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
 
-import Chevron from '../../../assets/images/chevron-small.svg'
+import Chevron from '@assets/images/chevron-small.svg'
 
 export interface AccordionItemProps {
   className?: string
