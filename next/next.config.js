@@ -2730,10 +2730,10 @@ const moduleExports = (phase, { defaultConfig }) => {
     ...defaultConfig,
     ...nextConfig,
     // TODO enable sentry sourcemap uploading below once pipelines are used not just for testing, but also for deployment
-    // sentry: {
-    //   disableServerWebpackPlugin: process.env.CI === 'true',
-    //   disableClientWebpackPlugin: process.env.CI === 'true',
-    // },
+    sentry: {
+      disableServerWebpackPlugin: process.env.CI === 'true',
+      disableClientWebpackPlugin: process.env.CI === 'true',
+    },
     webpack(config) {
       config.module.rules.push({
         test: /\.svg$/,
