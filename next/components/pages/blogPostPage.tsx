@@ -1,3 +1,10 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable react/button-has-type */
+/* eslint-disable security/detect-non-literal-fs-filename */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable react/no-danger */
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
@@ -17,7 +24,20 @@ export interface GeneralPageProps {
   menuItems?: MenuMainItem[]
 }
 
-const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) => {
+const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const openSharePage = () => {
+    const w = 600
+    const h = 400
+    const l = screen.width / 2 - w / 2
+    const t = screen.height / 2 - h / 2
+
+    window.open(href, 'pop', `width=${w},height=${h},top=${t},left=${l},scrollbars=0`)
+  }
+
+  return <button onClick={openSharePage}>{children}</button>
+}
+
+const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
   const [socialLink, setSocialLink] = React.useState('')
   React.useEffect(() => setSocialLink(window.location.href), [])
   const blogPost = post.data[0].attributes
@@ -96,19 +116,6 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
       </SectionContainer>
     </BasePageLayout>
   )
-}
-
-const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const openSharePage = () => {
-    const w = 600
-    const h = 400
-    const l = screen.width / 2 - w / 2
-    const t = screen.height / 2 - h / 2
-
-    window.open(href, 'pop', `width=${w},height=${h},top=${t},left=${l},scrollbars=0`)
-  }
-
-  return <button onClick={openSharePage}>{children}</button>
 }
 
 export default BlogPostPage

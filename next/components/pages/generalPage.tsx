@@ -1,3 +1,11 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-case-declarations */
+/* eslint-disable default-case */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-danger */
+/* eslint-disable consistent-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
@@ -20,7 +28,7 @@ import { isPresent } from '../../utils/utils'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
-import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
+// import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
@@ -46,7 +54,7 @@ const renderColor = (color: any) => {
     return Enum_Pagecategory_Color.Yellow
   }
 }
-const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
