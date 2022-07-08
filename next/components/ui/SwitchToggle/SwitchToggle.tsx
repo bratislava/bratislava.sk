@@ -2,31 +2,27 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import cx from 'classnames'
 
-type TValue = 'left' | 'right'
 
 interface IProps {
   className?: string
   titleLeft: string
   titleRight: string
-  value: TValue
-  variant?: 'primary' | 'secondary' | 'gray' | 'transparent'
-  onValueChange: (value: TValue) => void
+  value: boolean
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'gray'
+    | 'transparent'
+  onValueChange: (boolean) => void;
 }
 
-export const SwitchToggle = ({
-  className,
-  titleLeft,
-  titleRight,
-  value = 'left',
-  variant = 'transparent',
-  onValueChange,
-}: IProps) => {
+export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, variant = "transparent", onValueChange }: IProps) => {
   return (
     <div className={cx(className, 'w-full h-full flex flex-col justify-center items-center')}>
       <div className="flex items-center justify-center">
         <span
           onClick={() => {
-            onValueChange('left')
+            onValueChange(false)
           }}
           className="cursor-pointer text-base font-medium text-font"
         >
@@ -34,15 +30,14 @@ export const SwitchToggle = ({
         </span>
         <button
           className={cx('w-10 h-5 flex items-center  rounded-full mx-3 px-0.5', {
-            'justify-end': value === 'right',
+            'justify-end': value,
             'border border-primary bg-white': variant === 'transparent',
-            'bg-gray': variant === 'gray',
-            'bg-secondary': variant === 'secondary',
-            'bg-primaryDark': variant === 'primary' && value === 'right',
-            'bg-transprentGray': variant === 'primary' && value === 'left',
+            'bg-gray-dark': variant === 'gray' || variant === 'primary' && !value,
+            'bg-secondary': variant === 'secondary' && value,
+            'bg-primary': variant === 'primary' && value,
           })}
           onClick={() => {
-            onValueChange(value === 'left' ? 'right' : 'left')
+            onValueChange(!value);
           }}
         >
           <div
@@ -54,7 +49,7 @@ export const SwitchToggle = ({
         </button>
         <span
           onClick={() => {
-            onValueChange('right')
+            onValueChange(true)
           }}
           className="cursor-pointer text-base font-medium text-font"
         >
