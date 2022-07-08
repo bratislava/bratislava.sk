@@ -1,22 +1,29 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-
 import { DashedLine } from '../DashedLine/DashedLine'
 import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 
 export interface NumericalListItemProps {
   index: number
-  item: NumericalListItemObject
+  item?: NumericalListItemObject
   variant: 'basic' | 'combined' | 'roadmap'
   hasBackground: boolean
+  children?: React.ReactNode
+  className?: string
 }
 
-export const NumericalListItem = ({ index, item, variant, hasBackground }: NumericalListItemProps) => {
+export const NumericalListItem = ({
+  index,
+  item,
+  variant,
+  hasBackground,
+  children,
+  className,
+}: NumericalListItemProps) => {
   const position = index % 2 == 0 ? 'left' : 'right'
   const { Markdown: UIMarkdown } = useUIContext()
-
   return (
-    <div key={index} className={cx('flex flex-col', { 'mb-8 lg:mb-10': variant != 'roadmap' })}>
+    <div key={index} className={cx(className, 'flex flex-col', { 'mb-8 lg:mb-10': variant != 'roadmap' })}>
       {variant === 'roadmap' && index > 0 && (
         <DashedLine className="top-0 -my-8 pl-6" position={position} color="rgb(var(--color-primary))" />
       )}
@@ -42,17 +49,20 @@ export const NumericalListItem = ({ index, item, variant, hasBackground }: Numer
             'pt-2': variant === 'combined',
           })}
         >
-          <UIMarkdown
-            numericalList
-            className={cx(
-              'flex',
-              { 'flex-col items-start gap-y-10': variant === 'combined' },
-              {
-                'items-center numerical-list-hidden': variant != 'combined',
-              }
-            )}
-            content={item.text}
-          />
+          {item && (
+            <UIMarkdown
+              numericalList
+              className={cx(
+                'flex',
+                { 'flex-col items-start gap-y-10': variant === 'combined' },
+                {
+                  'items-center numerical-list-hidden': variant != 'combined',
+                }
+              )}
+              content={item.text}
+            />
+          )}
+          {children}
         </div>
       </div>
     </div>
