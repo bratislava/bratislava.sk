@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 jobs:
   build:
     name: yarn build
