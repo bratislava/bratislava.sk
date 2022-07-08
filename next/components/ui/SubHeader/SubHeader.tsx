@@ -1,9 +1,11 @@
+import 'react-sweet-progress/lib/style.css'
+
+import { ArrowRight, ChevronRight } from '@assets/images'
 import cx from 'classnames'
 import { useState } from 'react'
+
 import { Button } from '../Button/Button'
 import { Link } from '../Link/Link'
-import { ArrowRight, ChevronRight } from '@assets/images'
-import 'react-sweet-progress/lib/style.css'
 
 export interface SubHeaderProps {
   className?: string
@@ -16,7 +18,7 @@ export interface SubHeaderProps {
   subHref?: string
 }
 
-export function SubHeader({
+export const SubHeader = ({
   title,
   description,
   topper,
@@ -25,12 +27,12 @@ export function SubHeader({
   subButtonTitle,
   href,
   subHref,
-}: SubHeaderProps) {
+}: SubHeaderProps) => {
   const [signInHover, setSignInHover] = useState(false)
 
   return (
     <div className={cx('z-10 flex flex-col', className)}>
-      <p className="mt-4 pt-0.5 md:mt-6 md:pt-0 mb-8 md:mb-16 pb-2">{topper}</p>
+      <p className="mt-4 mb-8 pt-0.5 pb-2 md:mt-6 md:mb-16 md:pt-0">{topper}</p>
       <span
         className={cx('font-bold text-2xl w-41 md:max-w-lg md:w-full', {
           'mb-8': !description,
@@ -38,20 +40,20 @@ export function SubHeader({
       >
         {title}
       </span>
-      {description && <span className="mt-3 mb-5 md:mb-10 w-76 md:max-w-md md:w-full">{description}</span>}
+      {description && <span className="mt-3 mb-5 w-76 md:mb-10 md:w-full md:max-w-md">{description}</span>}
       {href && buttonTitle && (
         <Link href={href}>
-          <Button className="h-12 text-default p-2">{buttonTitle}</Button>
+          <Button className="h-12 p-2 text-default">{buttonTitle}</Button>
         </Link>
       )}
       {subHref && subButtonTitle && (
-        <Link href={subHref} className="h-12 text-default p-2" variant="plain">
+        <Link href={subHref} className="h-12 p-2 text-default" variant="plain">
           <div
-            className="flex gap-x-6 items-center font-semibold"
+            className="flex items-center gap-x-6 font-semibold"
             onMouseEnter={() => setSignInHover(true)}
             onMouseLeave={() => setSignInHover(false)}
           >
-            <span className="underline py-0.5">{subButtonTitle}</span>
+            <span className="py-0.5 underline">{subButtonTitle}</span>
             {signInHover ? <ArrowRight /> : <ChevronRight />}
           </div>
         </Link>

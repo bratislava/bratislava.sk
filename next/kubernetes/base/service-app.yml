@@ -12,4 +12,3 @@ spec:
       targetPort: ${INTERNAL_APP_PORT}
   selector:
     service: app
-

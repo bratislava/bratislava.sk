@@ -1,13 +1,14 @@
-import cx from 'classnames'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import ContentImage from './ContentImage'
-import remarkGfm from 'remark-gfm'
 import { NumericalList } from '@bratislava/ui-bratislava/NumericalList/NumericalList'
-import TurndownService from 'turndown'
+import cx from 'classnames'
 import ReactDOMServer from 'react-dom/server'
+import ReactMarkdown from 'react-markdown'
 import { OrderedListProps } from 'react-markdown/lib/ast-to-react'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
+import TurndownService from 'turndown'
+
+import ContentImage from './ContentImage'
 
 export interface HomepageMarkdownProps {
   className?: string
@@ -29,38 +30,38 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
       })}
       components={{
         h1: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 .typography-h1">
+          <h2 id={getHeadingTag(children)} className=".typography-h1 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
         h2: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h2">
+          <h2 id={getHeadingTag(children)} className="typography-h2 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h3">
+          <h3 id={getHeadingTag(children)} className="typography-h3 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h3>
         ),
         h4: ({ children }) => (
-          <h4 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
+          <h4 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h4>
         ),
         h5: ({ children }) => (
-          <h5 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
+          <h5 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h5>
         ),
         h6: ({ children }) => (
-          <h6 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
+          <h6 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h6>
         ),
         p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
         a: ({ href, children }) => (
-          <UILink href={href ?? '#'} className="underline text-font font-semibold hover:text-primary">
+          <UILink href={href ?? '#'} className="font-semibold text-font underline hover:text-primary">
             {children[0]}
           </UILink>
         ),
@@ -71,7 +72,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         thead: ({ children }) => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="flex items-center text-default px-4 text-left min-h-[92px]">{children}</div>
+            <div className="flex min-h-[92px] items-center px-4 text-left text-default">{children}</div>
           </td>
         ),
         ol: ({ children }: any) => {

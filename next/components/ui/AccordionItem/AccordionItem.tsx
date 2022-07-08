@@ -1,6 +1,7 @@
 import cx from 'classnames'
-import Chevron from '../../../assets/images/chevron.svg'
 import React from 'react'
+
+import Chevron from '../../../assets/images/chevron.svg'
 
 export interface AccordionItemProps {
   className?: string
@@ -50,11 +51,11 @@ export const AccordionItem = ({
           onClick={handleClick}
         >
           <div className="flex flex-row font-medium">
-            <p className="text-font text-md text-left">{title}</p>
-            {secondaryTitle && <p className="text-md text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
+            <p className="text-left text-md text-font">{title}</p>
+            {secondaryTitle && <p className="text-left text-md text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
           </div>
-          <div className="ml-5 flex-grow-0">
-            <Chevron className={cx('w-6 h-3', { 'rotate-180': active })} />
+          <div className="ml-5 grow-0">
+            <Chevron className={cx('w-7 h-4', { 'rotate-180': active })} />
           </div>
         </button>
       </div>

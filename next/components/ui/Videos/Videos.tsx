@@ -1,7 +1,7 @@
-import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import { ChevronRight } from '@assets/images'
-import React from 'react'
+import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
+import React from 'react'
 
 interface IVideo {
   title?: string
@@ -24,15 +24,20 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
 
   React.useEffect(() => {
     const parseYoutubeUrl = async () => {
-      const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`
-      const res = await fetch(oembedUrl)
-      const { html }: { html: string } = await res.json()
+      if (url.includes('fb.watch')) {
+        const fembedUrl = `https://www.facebook.com/plugins/video.php?href=${url}`
+        setEmbedUrl(fembedUrl)
+      } else {
+        const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`
+        const res = await fetch(oembedUrl)
+        const { html }: { html: string } = await res.json()
 
-      const substrStart = html.indexOf('src="') + 5
-      const substrEnd = html.indexOf('oembed') + 6
-      const embedUrl = html.substring(substrStart, substrEnd)
+        const substrStart = html.indexOf('src="') + 5
+        const substrEnd = html.indexOf('oembed') + 6
+        const embedUrl = html.substring(substrStart, substrEnd)
 
-      setEmbedUrl(embedUrl)
+        setEmbedUrl(embedUrl)
+      }
     }
 
     parseYoutubeUrl()
@@ -52,7 +57,7 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
         onLoad={() => setLoaded(true)}
       />
       <a href={url} target="_blank" rel="noreferrer">
-        <h5 className="font-semibold md:text-default mt-8 cursor-pointer hover:underline">{title}</h5>
+        <h5 className="mt-8 cursor-pointer font-semibold hover:underline md:text-default">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
     </div>
@@ -64,18 +69,18 @@ export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) 
 
   return (
     <div key={id} className={className}>
-      <h4 className="font-semibold text-default md:text-md">{title}</h4>
+      <h4 className="text-default font-semibold md:text-md">{title}</h4>
       <p className="mt-5 mb-10 md:text-default">{subtitle}</p>
 
       {/* Mobile */}
-      <HorizontalScrollWrapper className="lg:hidden flex gap-x-5">
+      <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
         {videos.map((video) => (
           <Video key={video.url} size="small" {...video} />
         ))}
       </HorizontalScrollWrapper>
 
       {/* Desktop */}
-      <div className="hidden lg:grid lg:grid-cols-3 gap-7.5">
+      <div className="hidden gap-7.5 lg:grid lg:grid-cols-3">
         {videos.slice(0, videosCount).map((video) => (
           <Video key={video.url} {...video} />
         ))}

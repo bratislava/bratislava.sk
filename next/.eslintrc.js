@@ -17,6 +17,10 @@ module.exports = {
     'no-underscore-dangle': [2, { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] }],
     /** Links get confused for secrets */
     'no-secrets/no-secrets': ['error', { ignoreContent: '^http' }],
+    /** Presently at too many places & becomes just an ignored clutter, consider turning on later */
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    /** Doesn't work without changing our ts config */
+    'unicorn/prefer-spread': 'off',
     /** Use official sorting */
     'tailwindcss/classnames-order': [
       'warn',
@@ -24,6 +28,12 @@ module.exports = {
         officialSorting: true,
       },
     ],
+    /** To remove optinal parameter warning e.g. { page?: number } */
+    "react/require-default-props" : 'off',
+    /** To Remove  */
+    "react/no-array-index-key": 'off',
+    /** Remove console.log() warnings */
+    "no-console": 'off'
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

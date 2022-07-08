@@ -1,63 +1,65 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { ArrowRight } from '@assets/images'
+import Activities from '@assets/images/activities-new.svg'
+import CloseFilled from '@assets/images/close-filled.svg'
+import Bicycle from '@assets/images/icon-bicycle-new.svg'
+import Comunity from '@assets/images/icon-comunity-new.svg'
+import Lighting from '@assets/images/icon-lighting-new.svg'
+import Map from '@assets/images/icon-map-new.svg'
+import MHD from '@assets/images/icon-mhd-new.svg'
+import Parking from '@assets/images/icon-parking-new.svg'
+import Road from '@assets/images/icon-road-new.svg'
+import Share from '@assets/images/icon-share-new.svg'
+import Support from '@assets/images/icon-support-new.svg'
+import Trolleybus from '@assets/images/icon-trolleybus-new.svg'
+import Partnership from '@assets/images/partnership-new.svg'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { useOutsideClick } from 'rooks'
+
 import ChevronRight from '../../../assets/images/chevron-right.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
-import CloseFilled from '@assets/images/close-filled.svg'
 import { Panel } from '../Panel/Panel'
-import Activities from './icons/icon-activities.svg'
 import Ball from './icons/icon-ball.svg'
-import Bicycle from './icons/icon-bicycle.svg'
-import BookWithChildColored from './icons/icon-book-with-child-colored.svg'
 import BookWithChild from './icons/icon-book-with-child.svg'
+import BookWithChildColored from './icons/icon-book-with-child-colored.svg'
 import BulbOff from './icons/icon-bulb-off.svg'
 import Calendar from './icons/icon-calendar.svg'
-import CarWithMapColored from './icons/icon-car-with-map-colored.svg'
-import CarWithMap from './icons/icon-car-with-map.svg'
 import Car from './icons/icon-car.svg'
-import CastleColored from './icons/icon-castle-colored.svg'
+import CarWithMap from './icons/icon-car-with-map.svg'
+import CarWithMapColored from './icons/icon-car-with-map-colored.svg'
 import Castle from './icons/icon-castle.svg'
+import CastleColored from './icons/icon-castle-colored.svg'
 import Chest from './icons/icon-chest.svg'
 import Child from './icons/icon-child.svg'
 import CityHall from './icons/icon-city-hall.svg'
 import Coin from './icons/icon-coin.svg'
 import Compass from './icons/icon-compass.svg'
-import Comunity from './icons/icon-comunity.svg'
 import RealState from './icons/icon-construction-and-real-state.svg'
 import Covid from './icons/icon-covid.svg'
 import Crane from './icons/icon-crane.svg'
 import Globe from './icons/icon-globe.svg'
 import HandCoins from './icons/icon-hand-coins.svg'
-import HandHeartColored from './icons/icon-hand-heart-colored.svg'
 import HandHeart from './icons/icon-hand-heart.svg'
+import HandHeartColored from './icons/icon-hand-heart-colored.svg'
 import HandPerson from './icons/icon-hand-person.svg'
 import HandPlant from './icons/icon-hand-plant.svg'
 import Heart from './icons/icon-heart.svg'
 import History from './icons/icon-history.svg'
-import HouseWithTreeColored from './icons/icon-house-with-tree-colored.svg'
 import HouseWithTree from './icons/icon-house-with-tree.svg'
+import HouseWithTreeColored from './icons/icon-house-with-tree-colored.svg'
 import LargeBuilding from './icons/icon-large-building.svg'
-import Lighting from './icons/icon-lighting.svg'
 import LookingGlass from './icons/icon-looking-glass.svg'
-import Map from './icons/icon-map.svg'
-import MaskWithBallColored from './icons/icon-mask-with-ball-colored.svg'
 import MaskWithBall from './icons/icon-mask-with-ball.svg'
+import MaskWithBallColored from './icons/icon-mask-with-ball-colored.svg'
 import Medal from './icons/icon-medal.svg'
-import MHD from './icons/icon-mhd.svg'
 import OldPerson from './icons/icon-old-person.svg'
 import PaperMask from './icons/icon-paper-mask.svg'
-import Parking from './icons/icon-parking.svg'
-import Partnership from './icons/icon-partnership.svg'
 import RealStateDocument from './icons/icon-real-state-document.svg'
-import Road from './icons/icon-road.svg'
 import School from './icons/icon-school.svg'
-import Share from './icons/icon-share.svg'
 import Stall from './icons/icon-stall.svg'
-import Support from './icons/icon-support.svg'
 import Theater from './icons/icon-theater.svg'
 import Tree from './icons/icon-tree.svg'
-import Trolleybus from './icons/icon-trolleybus.svg'
 
 const ICONS = {
   mesto_01: Castle,
@@ -146,12 +148,15 @@ interface IProps {
 // TODO: Named Group for Link Dalsie (change icon)
 
 export const getIcon = (icon?: MenuIcon) => {
-  if (!icon) return () => null
+  if (!icon)
+    return function () {
+      return null
+    }
 
   let Comp = ICONS[icon as keyof typeof ICONS]
 
   if (!Comp) {
-    Comp = ICONS['castle']
+    Comp = ICONS.mesto_01
   }
 
   return Comp
@@ -162,34 +167,36 @@ const HomepageMenu = ({ items }: IProps) => {
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = useState(-1)
   const [activeId, setActive] = useState(null)
   const [selectedMenu, setSelectedMenu] = useState<MenuMainItem>()
+  const ref = useRef()
+  useOutsideClick(ref, () => setActive(null))
 
   return (
     <>
       {/* Mobile Design */}
-      <div className="flex flex-col md:hidden gap-y-4">
+      <div className="flex flex-col gap-y-1 md:hidden">
         {items?.map((item, i) => {
           const IconComponent = getIcon(item.icon)
           return (
-            <button onClick={() => setSelectedMenu(item)} className="flex gap-x-7 items-center" key={i}>
-              {IconComponent && <IconComponent className="w-10 h-10 text-font" />}
-              <p className="font-medium text-sm text-font">{item.title}</p>
+            <button onClick={() => setSelectedMenu(item)} className="flex items-center gap-x-7 p-2" key={i}>
+              {IconComponent && <IconComponent className="h-12 w-12 text-font" />}
+              <p className="text-sm font-medium text-font">{item.title}</p>
             </button>
           )
         })}
       </div>
 
       {selectedMenu && (
-        <HamburgerSubMenu item={selectedMenu} variant="homepage" onClose={() => setSelectedMenu(undefined)} />
+        <HamburgerSubMenu item={selectedMenu} variant="homepage" onClose={() => setSelectedMenu(null)} />
       )}
       {/* Desktop Design */}
-      <div className="relative hidden md:grid md:grid-cols-3 lg:flex gap-y-4 lg:gap-y-0 lg:flex-row justify-between">
+      <div className="relative hidden justify-between gap-y-4 md:grid md:grid-cols-3 lg:flex lg:flex-row lg:gap-y-0">
         {items?.map((item, i) => {
           const IconComponent = getIcon(item.icon)
           const ColoredIconComponent = getIcon(item.coloredIcon)
           return (
             <div data-hover-id={i} key={i} className="group">
               <div
-                className="relative lg:w-40 lg:h-36 cursor-default flex lg:flex-col text-left lg:text-center items-center md:py-5 lg:py-0 lg:justify-center gap-x-7 lg:gap-x-0 lg:gap-y-4 z-10 lg:z-30 text-default"
+                className="relative z-10 flex cursor-pointer items-center gap-x-7 text-left text-default md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
                 onClick={() => {
                   setActive(item.id)
                 }}
@@ -214,78 +221,76 @@ const HomepageMenu = ({ items }: IProps) => {
                 )}
                 {ColoredIconComponent && (
                   <ColoredIconComponent
-                    className={cx('w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12',
-                      {
-                        'block': activeId == item.id,
-                        'group-hover:block hidden': activeId != item.id,
-                      }
-                    )}
+                    className={cx('w-10 h-10 ml-7 lg:ml-0 lg:w-12 lg:h-12', {
+                      block: activeId == item.id,
+                      'group-hover:block hidden': activeId != item.id,
+                    })}
                   />
                 )}
                 <p className="typography-tag-label whitespace-pre text-gray-dark">{item.title}</p>
                 {activeId == item.id && (
                   <div
                     style={{ backgroundColor: item.color }}
-                    className="absolute h-8 bottom-0 transform translate-y-1/2 w-full"
+                    className="absolute bottom-0 h-8 w-full translate-y-1/2"
                   />
                 )}
               </div>
-              <Panel
-                overflowVisible
-                data-hover-id={i}
-                style={{ backgroundColor: item.color }}
-                className={cx('absolute left-0 right-0 z-20 w-full px-6 py-10 grid-cols-3 gap-10', {
-                  grid: activeId == item.id,
-                  hidden: activeId != item.id,
-                  'rounded-tl-none': i === 0,
-                  'rounded-tr-none': i === items.length - 1,
-                })}
-              >
-                {/* SUB-ITEMS */}
-                {item.subItems?.map((subItem, j) => {
-                  const IconComponent = getIcon(subItem.icon)
-                  return (
-                    <div key={j}>
-                      <div className="flex items-center text-[20px]">
-                        <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
-                          <IconComponent className="w-10 h-10" />
-                        </div>
-                        <UILink href={subItem.url} className="flex items-center text-[20px] hover:underline">
-                          <div className="flex-1 ml-4 font-semibold cursor-pointer">{subItem.title}</div>
-                        </UILink>
-                      </div>
-                      <ul className="mt-8 space-y-3">
-                        {subItem.subItems?.map((subSubItem, k) => (
-                          <li key={k}>
-                            <UILink href={subSubItem.url} className="hover:underline">
-                              {subSubItem.title}
-                            </UILink>
-                          </li>
-                        ))}
-                        {subItem.url && subItem.subItems.length > 2 ? (
-                          <li
-                            onMouseEnter={() => setMoreLinkHoverIdx(j)}
-                            onMouseLeave={() => setMoreLinkHoverIdx(-1)}
-                            className="font-semibold"
-                          >
-                            <UILink href={subItem.url}>
-                              <div className="flex gap-x-6 items-center">
-                                <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
-                                {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
-                              </div>
-                            </UILink>
-                          </li>
-                        ) : null}
-                      </ul>
-                    </div>
-                  )
-                })}
-                <div
-                  className="absolute bottom-[-24px] left-1/2"
+              <div ref={ref}>
+                <Panel
+                  overflowVisible
+                  data-hover-id={i}
+                  style={{ backgroundColor: item.color }}
+                  className={cx('absolute left-0 right-0 z-20 w-full px-6 py-10 grid-cols-3 gap-10', {
+                    grid: activeId == item.id,
+                    hidden: activeId != item.id,
+                    'rounded-tl-none': i === 0,
+                    'rounded-tr-none': i === items.length - 1,
+                  })}
                 >
-                  <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
-                </div>
-              </Panel>
+                  {/* SUB-ITEMS */}
+                  {item.subItems?.map((subItem, j) => {
+                    const IconComponent = getIcon(subItem.icon)
+                    return (
+                      <div key={j}>
+                        <div className="flex items-center text-[20px]">
+                          <div className="flex shrink-0 grow-0 items-center justify-center">
+                            <IconComponent className="h-10 w-10" />
+                          </div>
+                          <UILink href={subItem.url} className="flex items-center text-[20px] hover:underline">
+                            <div className="ml-4 flex-1 cursor-pointer font-semibold">{subItem.title}</div>
+                          </UILink>
+                        </div>
+                        <ul className="mt-8 space-y-3">
+                          {subItem.subItems?.map((subSubItem, k) => (
+                            <li key={k}>
+                              <UILink href={subSubItem.url} className="hover:underline">
+                                {subSubItem.title}
+                              </UILink>
+                            </li>
+                          ))}
+                          {subItem.url && subItem.subItems.length > 2 ? (
+                            <li
+                              onMouseEnter={() => setMoreLinkHoverIdx(j)}
+                              onMouseLeave={() => setMoreLinkHoverIdx(-1)}
+                              className="font-semibold"
+                            >
+                              <UILink href={subItem.url}>
+                                <div className="flex items-center gap-x-6">
+                                  <span className="py-0.5 underline">{subItem.moreLinkTitle}</span>
+                                  {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
+                                </div>
+                              </UILink>
+                            </li>
+                          ) : null}
+                        </ul>
+                      </div>
+                    )
+                  })}
+                  <div className="absolute bottom-[-24px] left-1/2 cursor-pointer">
+                    <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
+                  </div>
+                </Panel>
+              </div>
             </div>
           )
         })}

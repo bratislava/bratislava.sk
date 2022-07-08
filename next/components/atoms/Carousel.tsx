@@ -1,8 +1,9 @@
-import cx from 'classnames'
 import { Button } from '@bratislava/ui-bratislava'
-import ChevronRight from '../../assets/images/arrow-long-right.svg'
-import ChevronLeft from '../../assets/images/arrow-long-left.svg'
+import cx from 'classnames'
 import React from 'react'
+
+import ChevronLeft from '../../assets/images/arrow-long-left.svg'
+import ChevronRight from '../../assets/images/arrow-long-right.svg'
 import Container from './Container'
 
 interface IProps {
@@ -56,7 +57,7 @@ const Carousel = ({ className, carouselItems }: IProps) => {
   )
 
   return (
-    <Container className="py-20 hidden md:flex">
+    <Container className="hidden py-20 md:flex">
       <div className="relative w-full py-4">
         {sliderControl(true)}
 

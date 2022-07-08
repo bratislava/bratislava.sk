@@ -75,7 +75,7 @@ query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
 }
 
 query BlogPostsStaticPaths($locale: I18NLocaleCode) {
-  blogPosts(locale: $locale) {
+  blogPosts(locale: $locale, sort: "publishedAt:desc") {
     data {
       id
       attributes {
@@ -85,37 +85,39 @@ query BlogPostsStaticPaths($locale: I18NLocaleCode) {
   }
 }
 
-query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput) {
-  blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters) {
+query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput, $locale: I18NLocaleCode) {
+  blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters, locale: $locale) {
     ...LatestBlogs
   }
 }
 
 fragment LatestBlogs on BlogPostEntityResponseCollection {
-    data {
-      id
-      attributes {
-        slug
-        title
-        excerpt
-        coverImage {
-          data {
-            attributes {
-              url
-            }
+  data {
+    id
+    attributes {
+      slug
+      title
+      excerpt
+      coverImage {
+        data {
+          attributes {
+            url
           }
         }
-        tag {
-          data {
-            attributes {
-              title
-              publishedAt
-              pageCategory {
-                data {
-                  attributes {
-                    title
-                    color
-                  }
+      }
+      date_added
+      publishedAt
+      updatedAt
+      tag {
+        data {
+          attributes {
+            title
+            publishedAt
+            pageCategory {
+              data {
+                attributes {
+                  title
+                  color
                 }
               }
             }
@@ -123,10 +125,11 @@ fragment LatestBlogs on BlogPostEntityResponseCollection {
         }
       }
     }
+  }
 }
 
-query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int) {
-  blogPosts(filters: $where, pagination: { limit: $limit }) {
+query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLocaleCode) {
+  blogPosts(filters: $where, pagination: { limit: $limit }, locale: $locale) {
     meta {
       pagination {
         total

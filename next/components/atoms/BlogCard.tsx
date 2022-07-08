@@ -1,14 +1,15 @@
 import { Card } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
+import Image, { StaticImageData } from 'next/image'
 import NextLink from 'next/link'
+
 import image1 from '../../assets/images/blog-image.png'
 import image2 from '../../assets/images/blog-mobile-image.png'
 import ChevronRight from '../../assets/images/chevron-right.svg'
-import Image, { StaticImageData } from 'next/image'
 
 export interface BlogCardProps {
   className?: string
-  image?: string | StaticImageData;
+  image?: string | StaticImageData
   mobileImage?: string | StaticImageData
   content?: React.ReactNode
   href?: string
@@ -39,7 +40,7 @@ export const BlogCard = ({
           {image && <Image src={image} alt="blog" width="225" height="200" />}
         </div>
 
-        <div className="flex mx-6 items-center w-52 xl:w-66 xl:px-12 text-center xl:text-left justify-center h-48">
+        <div className="mx-6 flex h-48 w-52 items-center justify-center text-center xl:w-66 xl:px-12 xl:text-left">
           <span className="text-default font-medium">{content}</span>
         </div>
       </Card>

@@ -1,10 +1,11 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
+
 import Button from '../Button/Button'
+import { NumericalList } from '../NumericalList/NumericalList'
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
 import Waves from '../Waves/Waves'
-import cx from 'classnames'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { NumericalList } from '../NumericalList/NumericalList'
 
 export interface NumericalListItemObject {
   text?: string
@@ -30,18 +31,21 @@ export const NumericalListSection = ({
   const { Link: UILink } = useUIContext()
   const href = buttonLink?.length ? buttonLink : '#'
   return (
+
     <div className={cx({ 'pt-14': hasBackground },
     { 'pt-0': !hasBackground }
   )}>
-      {hasBackground ? 
+      {hasBackground ? (
         <Waves
-        waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
-        wavePosition={'top'}
-        isRich
-        backgroundColor="var(--background-color)"
-      />
-      : ""}
-      
+          waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
+          wavePosition="top"
+          isRich
+          backgroundColor="var(--background-color)"
+        />
+      ) : (
+        ''
+      )}
+
       <div
         className={cx(
           'flex justify-center flex-col items-center py-12',
@@ -49,23 +53,27 @@ export const NumericalListSection = ({
           { 'bg-background': !hasBackground }
         )}
       >
-        <div className="flex flex-col max-w-3xl">
-          { title? <div
-            className={cx(
-              'text-center pb-14 font-semibold',
-              { 'text-default lg:text-lg': variant != 'roadmap' },
-              { 'text-md': variant === 'roadmap' }
-            )}
-          >
-            {title}
-          </div>: ""}
-          
+        <div className="flex max-w-3xl flex-col">
+          {title ? (
+            <div
+              className={cx(
+                'text-center pb-14 font-semibold',
+                { 'text-default lg:text-lg': variant != 'roadmap' },
+                { 'text-md': variant === 'roadmap' }
+              )}
+            >
+              {title}
+            </div>
+          ) : (
+            ''
+          )}
+
           <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant != 'roadmap' && buttonText && (
           <UILink href={href}>
             <Button
-              className="bg-primary border-primary text-base h-12 lg:text-default lg:h-14 px-6 z-10"
+              className="z-10 h-12 border-primary bg-primary px-6 text-base lg:h-14 lg:text-default"
               variant="secondaryDarkText"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -75,15 +83,17 @@ export const NumericalListSection = ({
           </UILink>
         )}
       </div>
-      {hasBackground ? 
+
+      {hasBackground ? (
         <Waves
-        waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
-        wavePosition={'bottom'}
-        isRich
-        backgroundColor="var(--background-color)"
-      />
-      : ""}
-      
+          waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
+          wavePosition="bottom"
+          isRich
+          backgroundColor="var(--background-color)"
+        />
+      ) : (
+        ''
+      )}
     </div>
   )
 }

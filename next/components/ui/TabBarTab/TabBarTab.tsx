@@ -16,16 +16,14 @@ interface TabBarTabProps {
 export const TabBarTab = ({ className, tab, onClick, isActive, handleSelect }: TabBarTabProps) => {
   return (
     <button
-      className={cx(className, 'relative py-2 whitespace-nowrap', {
+      className={cx(className, 'relative text-default lg:text-md py-2 whitespace-nowrap', {
         'text-font': !isActive,
         'font-semibold': isActive,
       })}
       onClick={handleSelect ? () => handleSelect(tab.title) : onClick}
     >
       {tab.title}
-      {isActive && (
-        <div className="absolute w-10/12 bottom-0 left-1/2 transform -translate-x-1/2 border-primary border-b-2"></div>
-      )}
+      {isActive && <div className="absolute bottom-0 left-1/2 w-10/12 -translate-x-1/2 border-b-2 border-primary" />}
     </button>
   )
 }

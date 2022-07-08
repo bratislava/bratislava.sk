@@ -1,10 +1,10 @@
-import { BlogPost } from '@bratislava/strapi-sdk-homepage'
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
-import { useState, useEffect } from 'react'
-import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
+import { useEffect,useState } from 'react'
+
 import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
-import _ from 'lodash'
+import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
+
 export interface ArticlesListProps {
   title: string
   itemsPerRow?: number
@@ -12,6 +12,7 @@ export interface ArticlesListProps {
   // category?: Object
   category?: string
   includesFiltering?: boolean
+  locale?: string
 }
 
 export const ArticlesList = ({
@@ -20,6 +21,7 @@ export const ArticlesList = ({
   itemsPerPage = 6,
   category,
   includesFiltering = false,
+  locale
 }: ArticlesListProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState([])
@@ -27,11 +29,11 @@ export const ArticlesList = ({
   const [numberOfPages, setNumberOfPages] = useState(0)
   const [selectedTags, setSelectedTags] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto\nBratislava')
-  const [categoryExists, setIfExists] = useState(category ? true : false)
+  const [categoryExists] = useState(!!category)
   const [filteredTags, setFilteredTags] = useState([])
 
-  const handleCategory = (category: string) => {
-    setSelectedCategory(category)
+  const handleCategory = (innerCategory: string) => {
+    setSelectedCategory(innerCategory)
   }
   useEffect(() => {
     let isMounted = false
@@ -40,6 +42,7 @@ export const ArticlesList = ({
       const { blogPosts } = await client.LatestBlogsWithTags({
         limit: itemsPerPage,
         start: (currentPage - 1) * itemsPerPage,
+        sort: 'publishedAt:desc',
         // TODO double check this filter after everything is connected
         filters: {
           tag: {
@@ -58,13 +61,14 @@ export const ArticlesList = ({
               : {},
           },
         },
+        locale
       })
       if (isMounted) return
       setData(blogPosts?.data ?? [])
     }
     getData()
       .then()
-      .catch((err) => console.log(err))
+      .catch((error) => console.log(error))
 
     return () => {
       isMounted = true
@@ -94,6 +98,7 @@ export const ArticlesList = ({
           },
         },
         limit: itemsPerPage,
+        locale
       })
 
       if (isMounted) return
@@ -103,7 +108,7 @@ export const ArticlesList = ({
 
     getTotalCount()
       .then()
-      .catch((err) => console.log(err))
+      .catch((error) => console.log(error))
 
     return () => {
       isMounted = true
@@ -134,7 +139,7 @@ export const ArticlesList = ({
     }
     getTags()
       .then()
-      .catch((err) => console.log(err))
+      .catch((error) => console.log(error))
 
     return () => {
       isMounted = true
@@ -157,9 +162,11 @@ export const ArticlesList = ({
             coverImage={article.attributes.coverImage ?? { url: BratislavaPlaceholder }}
             title={article.attributes?.title}
             tag={article.attributes.tag}
-            createdAt={article.published_at}
+            date_added={article.attributes?.date_added}
+            publishedAt={article.attributes?.publishedAt}
+            updatedAt={article.attributes?.updatedAt}
             excerpt={article.attributes?.excerpt}
-            readMoreText={'Čítať viac'}
+            readMoreText="Čítať viac"
             slug={article.attributes.slug}
           />
         ))}

@@ -1,6 +1,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { ListCircle, ListCircleFull } from '../../../assets/images'
 import cx from 'classnames'
+
+import { ListCircle, ListCircleFull } from '../../../assets/images'
 import PageLinkButton from '../PageLinkButton/PageLinkButton'
 
 export interface ListItemProps {
@@ -19,9 +20,9 @@ export const ListItem = ({ className, content, circleOption = 'primary', moreLin
         <Circle />
       </div>
 
-      <div className="flex flex-col ml-14">
+      <div className="ml-14 flex flex-col">
         {content && (
-          <UIMarkdown content={content} className="text-sm md:text-default leading-[24px] md:leading-[30px]" />
+          <UIMarkdown content={content} className="text-sm leading-[24px] md:text-default md:leading-[30px]" />
         )}
         {(moreLink?.url || moreLink?.title) && <PageLinkButton pageLink={moreLink} />}
       </div>

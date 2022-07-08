@@ -1,5 +1,5 @@
-import React from 'react'
 import cx from 'classnames'
+import React from 'react'
 
 interface IProps {
   icon?: React.ReactNode
@@ -19,7 +19,7 @@ export const PlainInput = ({
   return (
     <div className={cx('flex w-full border-b-4 border-primary items-center', className)}>
       {hasIconLeft && <div>{icon}</div>}
-      <input className="focus:outline-none bg-transparent py-2 w-full" {...props} />
+      <input className="w-full bg-transparent py-2 focus:outline-none" {...props} />
       {hasIconRight && <div>{icon}</div>}
     </div>
   )

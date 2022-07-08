@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { PrimatorCard, PrimatorCardProps } from '../../PrimatorCard/PrimatorCard'
 
 interface IProps {

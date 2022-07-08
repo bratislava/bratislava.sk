@@ -31,6 +31,7 @@ type JSONData = Record<string, any>
 
 class OpenDataClient {
   private _apiKey?: string
+
   private _cache: { [key: string]: any }
 
   constructor(apiKey: string | undefined) {
@@ -39,13 +40,11 @@ class OpenDataClient {
   }
 
   getCyclingData = async (resultFileType: IResultFileType = 'json') => {
-    const data = await this._getData({
+    return this._getData({
       categorySlug: 'doprava',
       datasetSlug: 'cykloscitace-bratislava',
       resultFileType,
     })
-
-    return data
   }
 
   private _getData = async ({
@@ -126,9 +125,7 @@ class OpenDataClient {
       type: 'category',
     })
 
-    const category = data.categories.find((category) => category.slug === slug)
-
-    return category
+    return data.categories.find((category) => category.slug === slug)
   }
 
   private _fetchDataset = async (slug: string, categoryId: string) => {
@@ -138,9 +135,7 @@ class OpenDataClient {
       action: 'datasets',
     })
 
-    const dataset = data.datasets.find((dataset) => dataset.slug === slug)
-
-    return dataset
+    return data.datasets.find((dataset) => dataset.slug === slug)
   }
 
   private _fetchDatasetFiles = async (datasetId: string) => {

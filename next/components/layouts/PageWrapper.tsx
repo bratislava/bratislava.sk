@@ -2,6 +2,7 @@ import { LocalizationFragment } from '@bratislava/strapi-sdk-homepage'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
 import { createContext, useContext, useMemo } from 'react'
+
 import { localePath } from '../../utils/page'
 
 interface PageLocalization {
@@ -27,16 +28,13 @@ interface IProps {
 
 const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
   const [_, { language }] = useTranslation()
-
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
-
-    if (locale && slug) {
+    if (locale) {
       base.push({ locale, slug: localePath(locale, slug) })
     }
 
     localizations?.forEach((l) => {
-      if (!l.locale || !l.slug) return
       base.push({
         locale: l.locale,
         slug: localePath(l.locale, l.slug),
@@ -54,5 +52,4 @@ const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
 }
 
 export const usePageWrapperContext = () => useContext(PageWrapperContext)
-
 export default PageWrapper

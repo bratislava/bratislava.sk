@@ -1,7 +1,8 @@
 import cx from 'classnames'
+import React from 'react'
+
 // import Chevron from '../../../assets/images/chevron.svg'
 import Chevron from '../../../assets/images/chevron-down-small.svg'
-import React from 'react'
 import SwitchToggle from '../SwitchToggle/SwitchToggle'
 
 export interface AccordionItemSmallProps {
@@ -13,6 +14,9 @@ export interface AccordionItemSmallProps {
   onOpen?: () => void
   children?: React.ReactNode
   paddingVariant?: 'normal' | 'narrow'
+  value?: boolean
+  onValueChange?: (boolean) => void,
+  isDisabled?: boolean
 }
 
 export const AccordionItemSmall = ({
@@ -24,6 +28,9 @@ export const AccordionItemSmall = ({
   className,
   secondaryTitle,
   paddingVariant = 'normal',
+  value,
+  onValueChange,
+  isDisabled
 }: AccordionItemSmallProps) => {
   const [active, setActive] = React.useState<boolean>(initialState)
 
@@ -32,12 +39,9 @@ export const AccordionItemSmall = ({
   }, [isOpen])
 
   const handleClick = () => {
-    return onOpen ? onOpen() : setActive(!active)
+    if(isDisabled) return null;
+    return onOpen ? onOpen() : setActive(!active);
   }
-
-  const [switchValue, setSwitchValue] = React.useState<'left' | 'right'>(
-    'left'
-  );
 
   return (
     <>
@@ -46,36 +50,28 @@ export const AccordionItemSmall = ({
           'rounded-lg drop-shadow-[0 8 24 black] py-3 px-4 md:py-4 md:px-6',
           {
             'border-primary border-2 border-solid shadow-lg bg-secondary': active,
-            'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary bg-transparent': !active,
+            'border-2 border-primary bg-transparent': !active,
+            'md:hover:bg-secondary md:hover:stroke-current': !isDisabled && !active
           },
           className
         )}
       >
-        <button
-          className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
-          onClick={handleClick}
-        >
-          <div className='flex items-center'>
-            <div className="mr-4 md:mr-5 flex-grow-0">
-              <Chevron className={cx('', { 'rotate-180': active })} />
+        <div className={cx('flex items-center justify-between w-full font-medium')}>
+          <span className={cx("flex items-center", { 'cursor-pointer': !isDisabled })} aria-hidden="true" onClick={handleClick}>
+            <div className="mr-4 grow-0 md:mr-5 ">
+              <Chevron className={cx('', { 'rotate-180': active })}  />
             </div>
             <div className="flex flex-row font-medium">
-              <p className="text-font text-xxs md:text-sm text-left font-medium">{title}</p>
-              {secondaryTitle && <p className="text-xxs md:text-sm text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
+              <p className="text-left text-xxs font-medium text-font md:text-sm">{title}</p>
+              {secondaryTitle && (
+                <p className="text-left text-xxs text-gray-universal-500 md:text-sm">&nbsp;{secondaryTitle}</p>
+              )}
             </div>
-          </div>
+          </span>
           <div>
-            <SwitchToggle
-                  titleLeft=""
-                  titleRight=""
-                  variant='primary'
-                  value={switchValue}
-                  onValueChange={(val) => setSwitchValue(val)}
-                />
+            <SwitchToggle titleLeft="" titleRight="" variant="primary" value={value} onValueChange={onValueChange} />
           </div>
-          
-          
-        </button>
+        </div>
       </div>
       <div
         className={cx('overflow-hidden text-fontBlack text-sm', {

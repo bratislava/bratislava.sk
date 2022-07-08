@@ -1,10 +1,10 @@
 import { Accordion as AccordionBa } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
-import AccordionItem from '../../../atoms/AccordionItem'
 
 import ChevronDown from '../../../../assets/images/chevron-down.svg'
 import ChevronRight from '../../../../assets/images/chevron-right.svg'
+import AccordionItem from '../../../atoms/AccordionItem'
 
 interface IProps {
   className?: string

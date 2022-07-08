@@ -1,17 +1,12 @@
-import { DocumentCard, DocumentCardProps } from '../DocumentCard/DocumentCard'
-import Divider from '../Divider/Divider'
-import Pagination from '../Pagination/Pagination'
 import { useState } from 'react'
+import { ParsedOfficialBoardDocument } from 'services/ginis'
 
-interface DocumentProps {
-  title: string
-  createdAt: string
-  fileExtension: string
-  fileSize: string
-  content: string
-}
+import Divider from '../Divider/Divider'
+import { DocumentCard, DocumentCardProps } from '../DocumentCard/DocumentCard'
+import Pagination from '../Pagination/Pagination'
+
 export interface DocumentCardsProps {
-  documents: DocumentProps[]
+  documents: ParsedOfficialBoardDocument[]
   dividerStyle?: string
   title: string
   viewButtonText: string
@@ -34,8 +29,8 @@ export const DocumentCards = ({
   const dividerBugSolved = false
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
-      <div className="text-default lg:text-md font-medium">{title}</div>
-      <div className="hidden lg:flex flex-col">
+      <div className="text-default font-medium lg:text-md">{title}</div>
+      <div className="hidden flex-col lg:flex">
         <div className="flex flex-col gap-y-5 pb-14">
           {documents
             .slice((currentPage - 1) * itemsPerPageDesktop, currentPage * itemsPerPageDesktop)
@@ -52,6 +47,7 @@ export const DocumentCards = ({
         </div>
         <Pagination
           itemsPerPage={itemsPerPageDesktop}
+          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
           totalCount={documents.length}
           currentPage={currentPage}
           pageHandler={setCurrentPage}
@@ -74,6 +70,7 @@ export const DocumentCards = ({
         </div>
         <Pagination
           itemsPerPage={itemsPerPageMobile}
+          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
           totalCount={documents.length}
           currentPage={currentPage}
           pageHandler={setCurrentPage}
