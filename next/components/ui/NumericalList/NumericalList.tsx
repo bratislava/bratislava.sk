@@ -1,5 +1,3 @@
-import cx from 'classnames'
-
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
 import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 

@@ -4,7 +4,6 @@ import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-
 import ContentImage from './ContentImage'
 
 export interface HomepageMarkdownProps {
@@ -87,31 +86,6 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         ul: ({ children }) => {
           return <div className="flex flex-col gap-y-11 pl-6 pt-11">{children}</div>
         },
-        // ol: (props: any) => {
-        //   const { children } = props
-        //   console.log('props', props)
-        //   console.log('children', children)
-        //   const turndownService = new TurndownService({ emDelimiter: '*' })
-
-        //   const jsxStringItems = children
-        //     .filter((e) => e?.type === 'li')
-        //     .map((e) => ReactDOMServer.renderToStaticMarkup(e))
-        //   console.log('jsxStringItems', jsxStringItems)
-        //   const markdownItems = jsxStringItems.map((e) => turndownService.turndown(e).slice(4))
-        //   const items = markdownItems.map((e) => {
-        //     return { text: e }
-        //   })
-        //   console.log('items', items)
-        //   const custom = markdownItems.map((e) => {
-        //     const subs = e.split('*')
-        //     return {
-        //       text: subs[0],
-        //       items: subs.slice(1),
-        //     }
-        //   })
-        //   console.log('custom', custom)
-        //   return <NumericalList items={items} hasBackground={hasBackground} />
-        // },
       }}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}

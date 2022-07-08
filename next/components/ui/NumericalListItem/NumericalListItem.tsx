@@ -1,6 +1,5 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-
 import { DashedLine } from '../DashedLine/DashedLine'
 import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 
@@ -63,16 +62,6 @@ export const NumericalListItem = ({
               content={item.text}
             />
           )}
-          {/* {item.items &&
-            item.items.map((e) => {
-              return (
-                <div className="flex gap-x-8 lg:gap-x-6 items-center">
-                  <div className="h-4 w-4 bg-primary rounded-full" />
-                  <UIMarkdown content={e} />
-                </div>
-              )
-            })} */}
-
           {children}
         </div>
       </div>
