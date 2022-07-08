@@ -30,7 +30,9 @@ export const NumericalListSection = ({
   const { Link: UILink } = useUIContext()
   const href = buttonLink?.length ? buttonLink : '#'
   return (
-    <div className="pt-14">
+    <div className={cx({ 'pt-14': hasBackground },
+    { 'pt-0': !hasBackground }
+  )}>
       {hasBackground ? 
         <Waves
         waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
