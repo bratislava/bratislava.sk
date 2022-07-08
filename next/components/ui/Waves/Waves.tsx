@@ -1,7 +1,8 @@
 import cx from 'classnames'
+
 import WaveBottomLarge from './waves/WaveBottomLarge'
-import WaveTopLarge from './waves/WaveTopLarge'
 import WaveBottomSmall from './waves/WaveBottomSmall'
+import WaveTopLarge from './waves/WaveTopLarge'
 import WaveTopSmall from './waves/WaveTopSmall'
 
 export interface WavesProps {
@@ -38,12 +39,11 @@ export const Waves = ({
     innerLinesColor: innerLinesColor || backgroundColor || 'white',
   }
 
-  return (
-    <div style={{ backgroundColor: backgroundColor }} className={cx('overflow-hidden wave-pattern', className)}>
+  return (          
+    <div style={{ backgroundColor }} className={cx('overflow-hidden wave-pattern', className)}>
       {wavePosition === 'top' && (
         <>
-          {/* <WaveTopLarge className="hidden md:block -mb-0.5" {...waveProps} />
-           */}
+          {/* <WaveTopLarge className="-mb-0.5 hidden md:block" {...waveProps} />*/}
           <WaveBottomLarge className="hidden md:block wave-pattern-top" {...waveProps} />
           <WaveTopSmall className="md:hidden " {...waveProps} />
         </>

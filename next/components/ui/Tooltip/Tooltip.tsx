@@ -11,7 +11,7 @@ interface TooltipProps {
 
 export const Tooltip = ({ className, content, target, size = 'small', variant = 'default' }: TooltipProps) => (
   <div className={cx(className, 'flex flex-col w-6')}>
-    <div className="relative flex items-center justify-center text-center group cursor-help">
+    <div className="group relative flex cursor-help items-center justify-center text-center">
       {target || <TooltipTarget variant={variant} />}
       <div
         className={cx(
@@ -34,13 +34,13 @@ export const Tooltip = ({ className, content, target, size = 'small', variant = 
           {content}
         </p>
         {/* desktop arrow */}
-        <div className="hidden md:flex absolute w-full left-0 top-full h-1 items-center justify-center">
+        <div className="absolute left-0 top-full hidden h-1 w-full items-center justify-center md:flex">
           <svg className="h-1" x="0" y="0" viewBox="0 0 20 10" xmlSpace="preserve">
             <polygon className="fill-current" points="0,0 10,10 20,0" />
           </svg>
         </div>
         {/* mobile arrow */}
-        <div className="flex md:hidden absolute left-full h-full top-0 w-1 items-center justify-center">
+        <div className="absolute left-full top-0 flex h-full w-1 items-center justify-center md:hidden">
           <svg x="0" y="0" viewBox="0 0 10 20" xmlSpace="preserve">
             <polygon className="fill-current" points="0,0 10,10 0,20" />
           </svg>

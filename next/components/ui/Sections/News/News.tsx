@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 
@@ -12,7 +13,7 @@ export const News = ({ className, news }: NewsProps) => (
     className={cx(className, 'space-x-4 max-w-6xl pb-14 lg:grid lg:grid-cols-3 lg:gap-8 lg:mx-auto')}
   >
     {news?.map((newsItem, index) => (
-      <NewsCard className="flex-shrink-0 w-11/12" key={index} {...newsItem} />
+      <NewsCard className="w-11/12 shrink-0" key={index} {...newsItem} />
     ))}
   </HorizontalScrollWrapper>
 )

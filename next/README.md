@@ -54,8 +54,10 @@ VSCode supports this plugin out of the box. However, sometimes it can use its ow
 
 <img width="729" alt="image" src="https://user-images.githubusercontent.com/35625949/153884371-e0f488d4-05b8-4b88-93d2-1caa7e6081f7.png">
 
-To use on-demand revalidation, we need to add one key in .env file i.e. 
+To use on-demand revalidation, we need to add one key in .env file i.e.
+
 ```
 SECRET_TOKEN = <value>
 ```
+
 This token should be the same as we pass in webhook url as query param.

@@ -1,7 +1,9 @@
-import { Waves, WavesProps } from '../Waves/Waves'
+import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'rooks'
-import cx from 'classnames'
+
+import { Waves, WavesProps } from '../Waves/Waves'
+
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   color: string
   transparentColor: string
@@ -62,8 +64,7 @@ export const PageHeader = ({
     <div
       // className={className}
       className={cx(className, 'header-main-bg bg-cover')}
-  
-      style={{      
+      style={{
         boxSizing: 'border-box',
         backgroundSize: '100%',
         background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--secondary-color)',

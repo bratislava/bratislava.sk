@@ -1,14 +1,15 @@
 import {
-  FooterProps,
-  SectionContainer,
-  MenuMainItem,
-  BAStickyMenu,
-  BookmarksProps,
-  Bookmarks,
   AdvancedSearch,
+  BAStickyMenu,
+  Bookmarks,
+  BookmarksProps,
+  FooterProps,
+  MenuMainItem,
+  SectionContainer,
 } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
+
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
 
@@ -49,7 +50,7 @@ const HomepagePageLayout = ({
 
   return (
     <div className={cx('bg-background font-inter', className)}>
-      <div className="bg-white w-full h-14">
+      <div className="h-14 w-full bg-white">
         <SectionContainer>
           <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />
         </SectionContainer>
@@ -72,7 +73,7 @@ const HomepagePageLayout = ({
       </div>
 
       <div className={cx('block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden', { hidden: !searchOpen })}>
-        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" options={[]} />
+        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" /* options={[]} */ />
       </div>
     </div>
   )

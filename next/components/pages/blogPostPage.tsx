@@ -1,12 +1,13 @@
+import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
+import Head from 'next/head'
 import * as React from 'react'
+
 import { getNumericLocalDate } from '../../utils/local-date'
 import { pageStyle } from '../../utils/page'
 import BasePageLayout from '../layouts/BasePageLayout'
 import Sections from '../molecules/Sections'
-import Head from 'next/head'
 
 export interface GeneralPageProps {
   post: BlogPostFragment
@@ -21,7 +22,6 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
   const blogPost = post.data[0].attributes
   const tag = blogPost?.tag?.data?.attributes
   const pageCategory = tag?.pageCategory?.data?.attributes
-  
 
   return (
     <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}>
@@ -33,7 +33,8 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         />
       )}
       {/* Header */}
-      <PageHeader className="header-main-bg bg-cover"
+      <PageHeader
+        className="header-main-bg bg-cover"
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}
@@ -48,22 +49,22 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         {/* Header - Breadcrumbs */}
         <SectionContainer>
           <div className="min-h-[220px]">
-            {blogPost?.tag && <div className="pt-30 font-semibold text-default text-red-brick">{tag?.title}</div>}
-            <h1 className="pt-4 text-md md:text-2xl font-bold whitespace-pre-wrap">{blogPost?.title}</h1>
+            {blogPost?.tag && <div className="pt-30 text-default font-semibold text-red-brick">{tag?.title}</div>}
+            <h1 className="whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl">{blogPost?.title}</h1>
             {blogPost?.createdAt && <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div>}
           </div>
         </SectionContainer>
       </PageHeader>
 
-      {/* Page - Common Sections*/}
+      {/* Page - Common Sections */}
       {blogPost?.sections && <Sections sections={blogPost.sections} />}
 
-      {/* Page - Social media buttons for sharing*/}
+      {/* Page - Social media buttons for sharing */}
       {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
       <SectionContainer>
-        <div className="flex flex-col mt-14">
-          <span className="font-semibold text-default">Zdieľať</span>
-          <div className="flex pt-5 space-x-10">
+        <div className="mt-14 flex flex-col">
+          <span className="text-default font-semibold">Zdieľať</span>
+          <div className="flex space-x-10 pt-5">
             <SocialMediaButton href={`https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}>
               <FacebookIcon />
             </SocialMediaButton>

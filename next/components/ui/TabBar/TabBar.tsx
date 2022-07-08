@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { ITabBarTab, TabBarTab } from '../TabBarTab/TabBarTab'
 
 export interface TabBarProps {

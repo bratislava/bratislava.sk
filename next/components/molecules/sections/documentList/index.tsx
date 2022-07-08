@@ -6,6 +6,7 @@ import { fileCountVzns } from '@utils/utils'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import useSWR from 'swr'
+
 import { DocumentListModalBody } from './modalBody'
 
 export const DocumentList = () => {
@@ -49,8 +50,8 @@ export const DocumentList = () => {
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
         <>
-          <div className="pt-14 pb-5 lg:pb-6 text-default lg:text-md font-medium">{t('listOfDocuments')}</div>
-          <div className="flex flex-col md:w-auto gap-4 lg:gap-6 modal-content-rent">
+          <div className="pt-14 pb-5 text-default font-medium lg:pb-6 lg:text-md">{t('listOfDocuments')}</div>
+          <div className="modal-content-rent flex flex-col gap-4 md:w-auto lg:gap-6">
             {vzns.map((vzn) => {
               const category = DocumentListCategorysMap.get(vzn.category)
               return (

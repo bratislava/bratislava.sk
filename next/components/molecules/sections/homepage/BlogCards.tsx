@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { BlogCards as UIBlogCards } from '@bratislava/ui-bratislava'
-
 import NewsImage from '@assets/images/sample-news-image.jpeg'
 import NewsImage2 from '@assets/images/sample-news-image-2.jpeg'
+import { BlogCards as UIBlogCards } from '@bratislava/ui-bratislava'
+import * as React from 'react'
 
 const sample = [
   {

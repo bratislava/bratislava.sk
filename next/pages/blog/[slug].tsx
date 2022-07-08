@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 
   return {
     props: { slug, post: blogPosts, footer, mainMenu, locale },
-    revalidate: 14400, // revalidate after 4 hours
+    revalidate: 14_400, // revalidate after 4 hours
   }
 }
 

@@ -1,13 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { withSentry } from '@sentry/nextjs'
 import axios, { AxiosRequestConfig } from 'axios'
+import { ResponseGinisBodyLoadFile } from 'dtos/ginis/api-data.dto'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { parseString } from 'xml2js'
-import { RequestGinisBodyLoadFile, ResponseGinisBodyLoadFile } from 'dtos/ginis/api-data.dto'
-import stream from 'stream'
-import { promisify } from 'util'
 
-const pipeline = promisify(stream.pipeline)
-
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   let result: ResponseGinisBodyLoadFile
   let buffer: Buffer
   const { id } = req.query
@@ -56,27 +53,28 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       .then((res) => {
         return res
       })
-      .catch((err) => {
-        return err
+      .catch((error) => {
+        return error
       })
 
     if (!responseAxios || responseAxios.status != 200) {
       return res.status(400).json({ message: 'bad soap request to Ginis' })
     }
-    parseString(responseAxios.data, { explicitArray: false }, function (error, r) {
+    parseString(responseAxios.data, { explicitArray: false }, (error, r) => {
       if (error) {
         return res.status(400).json({ message: 'bad xml to json' })
-      } else {
-        response = r
       }
+      response = r
     })
-    result = response['s:Envelope']['s:Body']['Nacist-souborResponse']['Nacist-souborResult']['Xrg']['Nacist-soubor']
+    result = response['s:Envelope']['s:Body']['Nacist-souborResponse']['Nacist-souborResult'].Xrg['Nacist-soubor']
     buffer = Buffer.from(result.Data, 'base64')
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', 'attachment; filename=' + result['Jmeno-souboru'])
-  } catch (e) {
-    console.log(e)
+    res.setHeader('Content-Disposition', `attachment; filename=${result['Jmeno-souboru']}`)
+  } catch (error) {
+    console.log(error)
   }
 
   res.send(buffer)
 }
+
+export default withSentry(handler)
