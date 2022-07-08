@@ -1,5 +1,6 @@
 import { HorizontalScrollWrapper, StaticImageData } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 import Rectangle from '../../../assets/images/news.svg'
 
@@ -12,6 +13,7 @@ const Gallery = ({
   className,
 }: // images = [Rectangle, Rectangle, Rectangle, Rectangle, Rectangle, Rectangle],
 GalleryProps) => {
+  const { t } = useTranslation()
   return (
     <div className={cx(className, 'flex md:items-center flex-col mt-20')}>
       <h1 className="ml-8 text-2xl font-semibold md:ml-0 md:text-5xl">{t('gallery')}</h1>
