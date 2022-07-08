@@ -57,7 +57,7 @@ VSCode supports this plugin out of the box. However, sometimes it can use its ow
 To use on-demand revalidation, we need to add one key in .env file i.e.
 
 ```
-SECRET_TOKEN = <value>
+STRAPI_REVALIDATE_SECRET_TOKEN = <value>
 ```
 
 This token should be the same as we pass in webhook url as query param.

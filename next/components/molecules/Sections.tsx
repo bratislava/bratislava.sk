@@ -26,73 +26,9 @@ import * as React from 'react'
 import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
 import { isPresent } from '../../utils/utils'
 import { DocumentList } from './sections/documentList'
-import ArticlesList from './sections/homepage/ArticlesList'
+import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
-
-const Sections = ({
-  sections,
-  slug,
-  locale,
-}: {
-  sections: (SectionsFragment | null)[]
-  slug?: string
-  locale?: string
-}) => {
-  return (
-    <>
-      {sections.map((section, index) => (
-        <Section key={index} section={section} slug={slug} locale={locale} />
-      ))}
-    </>
-  )
-}
-
-const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
-  if (!section) return null
-
-  if (section.__typename === 'ComponentSectionsWaves')
-    return (
-      <Waves
-        className={cx({
-          'mt-14 md:mt-18': section.position === 'top',
-        })}
-        key={section.position}
-        isRich={section.isRich ?? undefined}
-        backgroundColor="var(--background-color)"
-        waveColor="var(--secondary-color)"
-        wavePosition={section.position ?? 'top'}
-      />
-    )
-
-  if (section.__typename === 'ComponentSectionsNumericalList') {
-    const { title, items, buttonText, buttonLink, variant, hasBackground } = section
-    return (
-      <NumericalListSection
-        title={title}
-        items={items}
-        buttonText={buttonText}
-        buttonLink={buttonLink}
-        variant={variant}
-        hasBackground={hasBackground}
-      />
-    )
-  }
-
-  // Not All sections has property hasBackground
-  const hasBackground = (section as any).hasBackground ?? false
-
-  return (
-    <SectionContainer
-      className={cx('pt-14 md:pt-18', {
-        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
-      })}
-      hasBackground={hasBackground}
-    >
-      {sectionContent(section, slug, locale)}
-    </SectionContainer>
-  )
-}
 
 const sectionContent = (section: SectionsFragment, slug?: string, locale?: string) => {
   const { t } = useTranslation('common')
@@ -265,7 +201,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} />
+      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} locale={locale} />
 
     case 'ComponentSectionsOrganizationalStructure':
       return <AdvancedAccordion {...section} />
@@ -278,6 +214,71 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     default:
       return null
   }
+}
+
+const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
+  if (!section) return null
+
+  if (section.__typename === 'ComponentSectionsWaves')
+    return (
+      <Waves
+        className={cx({
+          'mt-14 md:mt-18': section.position === 'top',
+        })}
+        key={section.position}
+        isRich={section.isRich ?? undefined}
+        backgroundColor="var(--background-color)"
+        waveColor="var(--secondary-color)"
+        wavePosition={section.position ?? 'top'}
+      />
+    )
+
+  if (section.__typename === 'ComponentSectionsNumericalList') {
+    const { title, items, buttonText, buttonLink, variant, hasBackground } = section
+    return (
+      <NumericalListSection
+        title={title}
+        items={items}
+        buttonText={buttonText}
+        buttonLink={buttonLink}
+        variant={variant}
+        hasBackground={hasBackground}
+      />
+    )
+  }
+
+  // Not All sections has property hasBackground
+  const hasBackground = (section as any).hasBackground ?? false
+
+  return (
+    <SectionContainer
+      className={cx('pt-14 md:pt-18', {
+        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
+      })}
+      hasBackground={hasBackground}
+    >
+      {sectionContent(section, slug, locale)}
+    </SectionContainer>
+  )
+}
+
+const Sections = ({
+  sections,
+  slug,
+  locale,
+}: {
+  sections: (SectionsFragment | null)[]
+  slug?: string
+  locale?: string
+}) => {
+  return (
+    <>
+      {sections.map((section, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Section key={index} section={section} slug={slug} locale={locale} />
+      ))}
+    </>
+  )
 }
 
 export default Sections

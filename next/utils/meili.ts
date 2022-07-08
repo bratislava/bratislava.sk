@@ -2,27 +2,22 @@ import { MeiliSearch } from 'meilisearch'
 
 export const MEILI_PAGE_SIZE = 10
 
-console.log(process.env.NEXT_PUBLIC_MEILI_HOST)
-console.log(process.env.NEXT_PUBLIC_MEILI_API_KEY)
-
 const meiliClient = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILI_HOST,
   apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
 })
 
-export const searchVZN = async (search: string, offset: number) => {
+export const searchVZN = async (search: string, offset: number, limit?: number) => {
   return meiliClient.index('vzn').search(search || '*', {
-    // TODO fix sortable attributes
-    // sort: ['publishedAt:desc'],
-    // offset,
+    sort: ['validFrom:desc'],
+    offset,
+    limit,
   })
 }
 
-export const searchArticles = async (search: string, offset = 0) => {
+export const searchArticles = async (search: string, limit: number) => {
   const data = await meiliClient.index('blog-post').search(search || '*', {
-    // TODO fix sortable attributes
-    // sort: ['publishedAt:desc'],
-    // offset,
+    limit,
   })
 
   data.hits = data.hits.map((article) => {

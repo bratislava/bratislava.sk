@@ -1,7 +1,8 @@
-import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
+import DocumentDevider from '@assets/images/documentDevider.svg'
+import DocumentDeviderSmall from '@assets/images/documentDevider-small.svg'
 import { BasicSearch, DocumentListItem, Modal, NoResultsFound, Pagination } from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
-import { MEILI_PAGE_SIZE, searchVZN } from '@utils/meilisearch'
+import { MEILI_PAGE_SIZE, searchVZN } from '@utils/meili'
 import { fileCountVzns } from '@utils/utils'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
@@ -19,7 +20,7 @@ export const DocumentList = () => {
   const offset = (currentPage - 1) * MEILI_PAGE_SIZE
 
   // TODO show loading / error state
-  const { data, error } = useSWR(['vzn', search, offset], () => searchVZN(search, offset))
+  const { data } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16))
 
   const vzns = data?.hits || []
   const total = data?.nbHits || 0
@@ -51,8 +52,56 @@ export const DocumentList = () => {
       ) : (
         <>
           <div className="pt-14 pb-5 text-default font-medium lg:pb-6 lg:text-md">{t('listOfDocuments')}</div>
-          <div className="modal-content-rent flex flex-col gap-4 md:w-auto lg:gap-6">
-            {vzns.map((vzn) => {
+          <div className="modal-content-rent mb-6 flex flex-col gap-4 md:w-auto lg:gap-6">
+            {vzns.map.length > 10 ? (
+              <>
+                {vzns.map((vzn) => {
+                  const category = DocumentListCategorysMap.get(vzn.category)
+                  return (
+                    <DocumentListItem
+                      categoryName={category.value}
+                      title={vzn.title}
+                      key={vzn.id}
+                      id={vzn.id}
+                      Icon={category.icon}
+                      count={fileCountVzns(vzn)}
+                      onClick={setOpenModal}
+                      mainDocumentHref={vzn.mainDocument?.url}
+                    />
+                  )
+                })}
+              </>
+            ) : (
+              <>
+                {vzns.map((vzn, index) => {
+                  const category = DocumentListCategorysMap.get(vzn.category)
+                  return (
+                    <>
+                      <DocumentListItem
+                        categoryName={category.value}
+                        title={vzn.title}
+                        key={vzn.id}
+                        id={vzn.id}
+                        Icon={category.icon}
+                        count={fileCountVzns(vzn)}
+                        onClick={setOpenModal}
+                        mainDocumentHref={vzn.mainDocument?.url}
+                      />
+                      {index === 7 ? (
+                        <div className="flex items-center justify-center">
+                          <DocumentDevider className="my-14 hidden xs:block lg:my-24" />
+                          <DocumentDeviderSmall className="my-14 block xs:hidden lg:my-24" />{' '}
+                        </div>
+                      ) : (
+                        ''
+                      )}
+                    </>
+                  )
+                })}
+              </>
+            )}
+
+            {/* {vzns.map((vzn) => {
               const category = DocumentListCategorysMap.get(vzn.category)
               return (
                 <DocumentListItem
@@ -66,7 +115,7 @@ export const DocumentList = () => {
                   mainDocumentHref={vzn.mainDocument?.url}
                 />
               )
-            })}
+            })} */}
           </div>
           <Pagination
             key={search}
