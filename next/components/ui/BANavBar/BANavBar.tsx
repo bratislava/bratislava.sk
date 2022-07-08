@@ -187,7 +187,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                   onChange={handleChange}
                   onKeyDown={handleKeyDown}
                 />
-                <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : ''}>
+                <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : '#'}>
                   <Button
                     icon={<SearchIcon className="scale-75" />}
                     hoverIcon={<SearchIcon className="scale-75" />}
