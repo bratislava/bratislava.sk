@@ -17,7 +17,7 @@ spec:
       containers:
         - image: ${IMAGE_TAG}
           name: app
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 500m
