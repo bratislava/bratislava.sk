@@ -7,6 +7,7 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import useSWR from 'swr'
 import DocumentDevider from '@assets/images/documentDevider.svg'
+import DocumentDeviderSmall from '@assets/images/documentDevider-small.svg'
 import { DocumentListModalBody } from './modalBody'
 
 export const DocumentList = () => {
@@ -19,7 +20,8 @@ export const DocumentList = () => {
   const offset = (currentPage - 1) * MEILI_PAGE_SIZE
 
   // TODO show loading / error state
-  const { data, error } = useSWR(['vzn', search, offset], () => searchVZN(search, offset))
+  const { data, error } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16
+    ))
 
   const vzns = data?.hits || []
   const total = data?.nbHits || 0
@@ -51,7 +53,7 @@ export const DocumentList = () => {
       ) : (
         <>
           <div className="pt-14 pb-5 text-default font-medium lg:pb-6 lg:text-md">{t('listOfDocuments')}</div>
-          <div className="modal-content-rent flex flex-col gap-4 md:w-auto lg:gap-6">
+          <div className="modal-content-rent mb-6 flex flex-col gap-4 md:w-auto lg:gap-6">
             {vzns.map.length > 10 ? (
               <>
                 {vzns.map((vzn) => {
@@ -86,7 +88,8 @@ export const DocumentList = () => {
                         onClick={setOpenModal}
                         mainDocumentHref={vzn.mainDocument?.url}
                       />
-                      <>{index === 7 ? <DocumentDevider className="my-14 lg:my-24" /> : ''}</>
+                      <>{index === 7 ? <div className='flex items-center justify-center'><DocumentDevider className="my-14 lg:my-24 hidden xs:block" />
+                      <DocumentDeviderSmall className="my-14 lg:my-24 block xs:hidden" /> </div>: ''}</>
                     </>
                   )
                 })}
