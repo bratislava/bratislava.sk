@@ -63,9 +63,9 @@ export const Contact = ({
               key={item.variant}
               className={cx('w-full mb-6 last:mb-0 md:mb-0', {
                 'md:w-1/1': items.length === 1 && !address,
-                'md:w-1/2': items.length === 2,
-                'md:w-1/6': items.length === 3,
-                'md:w-5/12': items.length === 1 && address,
+                'md:w-1/2': items.length === 2 && 3,
+                // 'md:w-1/6': items.length === 3,
+                // 'md:w-1/2': items.length === 1 && address,
               })}
             >
               <ContactItem {...item} linkVariant={itemLinkVariant} />
