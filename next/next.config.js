@@ -41,38 +41,6 @@ const nextConfig = {
          * https://stackoverflow.com/questions/68723485/how-to-setup-i18n-translated-url-routes-in-next-js/68731057#68731057
          */
         {
-          source: '/visit-us',
-          destination: '/navstivte',
-        },
-        {
-          source: '/exhibitions',
-          destination: '/vystavy',
-        },
-        {
-          source: '/about-gallery',
-          destination: '/o-galerii',
-        },
-        {
-          source: '/explore',
-          destination: '/objavujte',
-        },
-        {
-          source: '/get-involved',
-          destination: '/zapoj-sa',
-        },
-        {
-          source: '/collections',
-          destination: '/zbierky',
-        },
-        {
-          source: '/tickets/:event',
-          destination: '/vstupenky/:event',
-        },
-        {
-          source: '/disclosure-of-information',
-          destination: '/zverejnovanie-informacii',
-        },
-        {
           source: '/search',
           destination: '/vyhladavanie',
         },
@@ -190,11 +158,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/uradne-a-navstevne-hodiny',
-        destination: '/uradne-a-navstevne-hodiny',
-        permanent: true,
-      },
-      {
         source: '/primator',
         destination: '/mesto-bratislava/sprava-mesta/volene-organy/primator',
         permanent: true,
@@ -268,11 +231,6 @@ const nextConfig = {
       {
         source: '/samosprava',
         destination: '/mesto-bratislava/sprava-mesta',
-        permanent: true,
-      },
-      {
-        source: '/rychle-zasahy',
-        destination: '/rychle-zasahy',
         permanent: true,
       },
       {
@@ -1513,11 +1471,6 @@ const nextConfig = {
       {
         source: '/specifikum-horskeho-parku',
         destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
-        permanent: true,
-      },
-      {
-        source: '/en',
-        destination: '/en',
         permanent: true,
       },
       {
