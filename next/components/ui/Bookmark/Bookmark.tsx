@@ -33,7 +33,7 @@ export const Bookmark = ({
   content,
   link,
   variant,
-  IconComponent,
+  // IconComponent,
   icon,
 }: BookmarkProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
