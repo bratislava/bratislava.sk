@@ -12,10 +12,10 @@
     "eslint": "eslint --color --ext .html,.js,.json,.jsx,.md,.ts,.tsx .",
     "eslint:fix": "npm run eslint -- --fix",
     "gen": "graphql-codegen",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 1"
+    "precommitmsg": "echo 'Pre-commit checks...' && exit 1"
   },
   "pre-commit": [
-    "precommit-msg"
+    "precommitmsg"
   ],
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
