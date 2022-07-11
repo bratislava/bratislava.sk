@@ -23,8 +23,8 @@ export const SubpageList = ({ className, subpageList, pageColor }: SubpageListPr
       {subpageList?.map((subpage, index) => (
         <div key={index}>
           <UILink href={subpage.url ? `/${subpage.url}` : `#${subpage.anchor}`}>
-            <div className="group inline-flex cursor-pointer flex-row items-center sm:flex-col sm:items-start sm:space-y-5">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-white sm:h-16 sm:w-16">
+            <div className="group inline-flex cursor-pointer flex-row items-start sm:flex-col sm:items-start sm:space-y-5">
+              <div className="flex basis-12 sm:basis-16 grow-0 shrink-0 h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-semibold text-white sm:h-16 sm:w-16">
                 {index + 1}
               </div>
               <span className="ml-8 text-default font-medium not-italic leading-6 tracking-wide group-hover:underline sm:ml-0">
