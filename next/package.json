@@ -15,7 +15,8 @@
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
   "pre-commit": [
-    "precommit-msg"
+    "precommit-msg",
+    "lint"
   ],
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
