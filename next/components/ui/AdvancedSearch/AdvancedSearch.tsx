@@ -102,7 +102,7 @@ export const AdvancedSearch = ({
           id="name"
           type="text"
           className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
-          placeholder="Zadajte kľúčové slovo"
+          placeholder={t('search')}
         />
         <Button
           icon={<SearchIcon />}

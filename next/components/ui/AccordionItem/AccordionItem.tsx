@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
 
-import Chevron from '../../../assets/images/chevron.svg'
+import Chevron from '@assets/images/chevron-small.svg'
 
 export interface AccordionItemProps {
   className?: string
@@ -55,7 +55,7 @@ export const AccordionItem = ({
             {secondaryTitle && <p className="text-left text-md text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
           </div>
           <div className="ml-5 grow-0">
-            <Chevron className={cx('w-7 h-4', { 'rotate-180': active })} />
+            <Chevron className={cx('w-[24px] h-[12px]', { 'rotate-180': active })} />
           </div>
         </button>
       </div>

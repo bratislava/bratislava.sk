@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
 import ChevronDown from '../../../assets/images/chevron-down.svg'
@@ -18,6 +19,8 @@ interface IProps {
 const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
   const [expanded, setExpanded] = useState<number[]>([])
   const ColoredIconComponent = getIcon(item.coloredIcon)
+
+  const { t } = useTranslation()
 
   return (
     <div
@@ -84,12 +87,12 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                     >
                       {isExpanded ? (
                         <>
-                          <p className="text-base font-semibold underline">Zobraziť menej</p>
+                          <p className="text-base font-semibold underline">{t('menu.showLess')}</p>
                           <ChevronUp />
                         </>
                       ) : (
                         <>
-                          <p className="text-base font-semibold underline">Zobraziť ďalšie</p>
+                          <p className="text-base font-semibold underline">{t('menu.loadMore')}</p>
                           <ChevronDown className="w-4" />
                         </>
                       )}
@@ -110,7 +113,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
           className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
         >
           <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
-          <div className="mt-4 text-center text-base font-semibold text-font">Zavrieť menu</div>
+          <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
         </div>
       )}
     </div>

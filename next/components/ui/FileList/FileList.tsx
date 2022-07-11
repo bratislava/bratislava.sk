@@ -1,10 +1,11 @@
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import Button from '../Button/Button'
-import Divider from '../Divider/Divider'
+import { Button } from '../Button/Button'
+import { Divider } from '../Divider/Divider'
 import { DownloadCard } from '../DownloadCard/DownloadCard'
-import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export type TFile = {
   title?: string
@@ -42,11 +43,13 @@ export const FileList = ({
   const numberOfItemsPerRow = 9
   const maxRemainder = 3
 
+  const { t } = useTranslation()
+
   const handleClick = () => {
     if (clicked) {
-      setButtonText('Načítať ďalšie')
+      setButtonText(t('loadMore'))
     } else {
-      setButtonText('Zobraziť menej')
+      setButtonText(t('showLess'))
     }
     setClicked(!clicked)
   }

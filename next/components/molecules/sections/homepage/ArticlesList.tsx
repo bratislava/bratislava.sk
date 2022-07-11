@@ -1,6 +1,7 @@
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
-import { useEffect,useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import { useEffect, useState } from 'react'
 
 import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
 import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
@@ -21,7 +22,7 @@ export const ArticlesList = ({
   itemsPerPage = 6,
   category,
   includesFiltering = false,
-  locale
+  locale,
 }: ArticlesListProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState([])
@@ -31,6 +32,8 @@ export const ArticlesList = ({
   const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto\nBratislava')
   const [categoryExists] = useState(!!category)
   const [filteredTags, setFilteredTags] = useState([])
+
+  const { t } = useTranslation()
 
   const handleCategory = (innerCategory: string) => {
     setSelectedCategory(innerCategory)
@@ -61,7 +64,7 @@ export const ArticlesList = ({
               : {},
           },
         },
-        locale
+        locale,
       })
       if (isMounted) return
       setData(blogPosts?.data ?? [])
@@ -98,7 +101,7 @@ export const ArticlesList = ({
           },
         },
         limit: itemsPerPage,
-        locale
+        locale,
       })
 
       if (isMounted) return
@@ -166,7 +169,7 @@ export const ArticlesList = ({
             publishedAt={article.attributes?.publishedAt}
             updatedAt={article.attributes?.updatedAt}
             excerpt={article.attributes?.excerpt}
-            readMoreText="Čítať viac"
+            readMoreText={t('readMore')}
             slug={article.attributes.slug}
           />
         ))}

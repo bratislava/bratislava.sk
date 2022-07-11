@@ -60,5 +60,15 @@
   "listOfDocuments": "Zoznam dokumentov",
   "rozkopavkyNews": "doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery",
   "loadMore": "Načítať ďalšie",
-  "showLess": "Zobraziť menej"
+  "showLess": "Zobraziť menej",
+  "articleCategories": "Rozdelenie obsahu článkov",
+  "gallery": "Galéria",
+  "vzn.validFrom": "Platnosť od",
+  "vzn.validUntil": "Platnosť do",
+  "vzn.mainDocument": "Main document",
+  "vzn.consolidatedText": "Konsolidované znenie (zhrnutie)",
+  "vzn.amendments": "Dodatky",
+  "vzn.cancellationDocument": "Zrušujúce VZN",
+  "share": "Zdieľať",
+  "closeMenu": "Zavrieť menu"
 }

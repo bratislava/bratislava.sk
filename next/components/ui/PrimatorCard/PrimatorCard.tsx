@@ -1,6 +1,7 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/dist/client/link'
 
 import { Panel } from '../Panel/Panel'
@@ -15,6 +16,7 @@ export interface PrimatorCardProps {
 
 export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 'left' }: PrimatorCardProps) => {
   const { Link: UILink } = useUIContext()
+  const { t } = useTranslation()
   const smRight = smImageAlign === 'right'
   return (
     <Link href={href}>
@@ -43,7 +45,7 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
               className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
               href={href}
             >
-              <span className="text-sm font-semibold">Čítať viac</span>
+              <span className="text-sm font-semibold">{t('readMore')}</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>

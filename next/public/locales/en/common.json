@@ -60,5 +60,17 @@
   "listOfDocuments": "List of documents",
   "rozkopavkyNews": "doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery",
   "loadMore": "Load more",
-  "showLess": "Show less"
+  "showLess": "Show less",
+  "articleCategories": "Article categories",
+  "gallery": "Gallery",
+  "vzn.validFrom": "Valid from",
+  "vzn.validUntil": "Valid until",
+  "vzn.mainDocument": "Main document",
+  "vzn.consolidatedText": "Consolidated text",
+  "vzn.amendments": "Amendments",
+  "vzn.cancellationDocument": "Cancellation document",
+  "share": "Share",
+  "menu.show_less": "Show less",
+  "menu.show_more": "Show more",
+  "closeMenu": "Close the menu"
 }
