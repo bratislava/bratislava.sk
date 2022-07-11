@@ -1,3 +1,12 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable eqeqeq */
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -6,7 +15,7 @@ import { useEffect, useState } from 'react'
 
 import Checkbox from '../../../assets/images/checkbox.svg'
 import SearchIcon from '../../../assets/images/search-icon.svg'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 
 export interface AdvancedSearchProps {
   className?: string

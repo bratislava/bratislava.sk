@@ -1,5 +1,5 @@
 import { AccordionCard } from '../AccordionCard/AccordionCard'
-import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface AccordionCardsProps {
   // TODO fix typing

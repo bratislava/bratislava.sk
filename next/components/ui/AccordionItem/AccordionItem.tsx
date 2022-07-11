@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable react/button-has-type */
 import cx from 'classnames'
 import React from 'react'
 

@@ -1,11 +1,11 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import SearchIconSmallBlack from '@assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '@assets/images/search-icon-small-white.svg'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+// import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import { useState } from 'react'
 
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 
 export interface BasicSearchProps {
   className?: string
@@ -26,7 +26,7 @@ export const BasicSearch = ({
   onSubmit,
   initialValue,
 }: BasicSearchProps) => {
-  const { Link: UILink } = useUIContext()
+  // const { Link: UILink } = useUIContext()
   const [input, setInput] = useState(initialValue || '')
   return (
     <div className={cx('flex flex-col w-full max-w-[730px]', className)}>

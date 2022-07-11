@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @next/next/no-img-element */
 import cx from 'classnames'
 
 import ChevronRight from '../../../assets/images/chevron-right.svg'
