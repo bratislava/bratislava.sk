@@ -35,14 +35,13 @@ import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 
-
 export const getStaticProps = async (ctx) => {
   const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
     sort: 'publishedAt:desc',
-    locale
+    locale,
   })
 
   const { homepage } = await client.Homepage({
@@ -74,7 +73,7 @@ export const getStaticProps = async (ctx) => {
           },
         },
       },
-      locale
+      locale,
     })
     return blogPosts
   }
@@ -173,7 +172,6 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
-
   // Commented below line for reference.
   // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
   const { pageTitle, posts } = data
@@ -195,7 +193,7 @@ const Homepage = ({
             <HomepageMenu items={menuItems} />
           </SectionContainer>
           <Waves
-            className="home-hero-wave mt-6 md:mt-18"
+            className="mt-6 md:mt-18"
             waveColor="white"
             wavePosition="bottom"
             isRich
