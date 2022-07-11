@@ -12,7 +12,7 @@
     "eslint": "eslint --color --ext .html,.js,.json,.jsx,.md,.ts,.tsx .",
     "eslint:fix": "npm run eslint -- --fix",
     "gen": "graphql-codegen",
-    "precommitmsg": "echo 'Pre-commit checks...' && exit 1"
+    "precommitmsg": "next build"
   },
   "pre-commit": [
     "precommitmsg"
