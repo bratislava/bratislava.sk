@@ -100,7 +100,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
                 title={parseCategory(institution.category).title}
                 secondaryTitle={parseCategory(institution.category).secondaryTitle}
               >
-                <div className="flex flex-col space-y-4">
+                <div className="grid grid-cols-3 gap-4 ">
                   {institution.items.filter(isPresent).map((file, i) => (
                     <Institution
                       key={i}
@@ -201,7 +201,14 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} locale={locale} />
+      return (
+        <ArticlesList
+          title={title}
+          includesFiltering={filtering}
+          category={category?.data?.attributes?.title}
+          locale={locale}
+        />
+      )
 
     case 'ComponentSectionsOrganizationalStructure':
       return <AdvancedAccordion {...section} />

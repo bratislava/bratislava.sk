@@ -246,6 +246,9 @@
   .text-title-center h4 {
     @apply text-center mb-6;
   }
+  .fontSize-base .typography-regular {
+    @apply text-base leading-7;
+  }
 }
 
 .closebutton .ml-5 {
