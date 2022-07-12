@@ -84,7 +84,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           )
         },
         ul: ({ children }) => {
-          return <div className="flex flex-col gap-y-11 pl-6 pt-11">{children}</div>
+          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{children}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}

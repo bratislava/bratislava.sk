@@ -428,6 +428,7 @@ fragment Sections on PageSectionsDynamicZone {
       data {
         attributes {
           url
+          alternativeText
         }
       }
     }
