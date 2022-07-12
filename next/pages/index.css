@@ -20,39 +20,39 @@
   }
 
   .typography-h2 {
-    @apply text-lg font-semibold;
+    @apply text-md lg:text-lg font-semibold;
   }
 
   .typography-h3 {
-    @apply text-md font-medium;
+    @apply text-default lg:text-md font-medium;
   }
 
   .typography-h4 {
-    @apply text-default font-medium;
+    @apply text-sm lg:text-default font-medium;
   }
 
   .typography-tab {
-    @apply text-md font-normal;
+    @apply text-default lg:text-md font-normal;
   }
 
   .typography-dense {
-    @apply text-default font-medium;
+    @apply text-sm lg:text-default font-medium;
   }
 
   .typography-highlight {
-    @apply text-default font-semibold;
+    @apply text-sm lg:text-default font-semibold;
   }
 
   .typography-link {
-    @apply text-default font-semibold underline;
+    @apply text-sm lg:text-default font-semibold underline;
   }
 
   .typography-subheadline {
-    @apply text-default font-medium;
+    @apply text-sm lg:text-default font-medium;
   }
 
   .typography-regular {
-    @apply text-default font-normal;
+    @apply text-sm lg:text-default font-normal;
   }
 
   .typography-highlight-sm {
