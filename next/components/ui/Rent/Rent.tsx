@@ -26,6 +26,9 @@ export interface RentProps {
   linkLabel?: string
   buttonTitle?: string
   page?: IconTitleDescFragment['page']
+  image?: string | null | undefined
+  title?: string | null | undefined
+  content?: string | null | undefined
 }
 
 export const Rent = ({ className, icon, subTitle, modalContent, subText, url, linkLabel, page, buttonTitle, anchor }: RentProps) => {

@@ -24,7 +24,7 @@ const RENTS = [
     title: 'Lorem ipsum',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },
-]
+] as Array<RentProps>;
 
 const RentBenefits = ({ className, rents = RENTS }: IProps) => (
   <div className="mt-20 md:flex md:flex-col md:items-center">
