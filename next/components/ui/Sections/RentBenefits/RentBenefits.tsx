@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import { useState } from 'react'
 
 import RentImage from '../../../../assets/images/rent.svg'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
@@ -8,6 +9,7 @@ export interface RentBenefitsProps {
   className?: string
   title?: string
   linkLabel?: string
+  hasBackground?: boolean
   list?: Array<RentProps>
 }
 
@@ -36,15 +38,29 @@ const LIST = [
 ]
 
 // TODO fix types
-export const RentBenefits = ({ className, title, linkLabel, list = LIST as any }: RentBenefitsProps) => (
-  <div className="mt-20 md:flex md:flex-col md:items-center">
+export const RentBenefits = ({ className, title, linkLabel, hasBackground = false, list = LIST as any }: RentBenefitsProps) => {
+  const[iconBg,setIconBg] = useState(hasBackground === true)
+  return (
+<div 
+className='mt-4 md:flex md:flex-col md:items-center'>
     <h1 className="flex text-center text-2xl font-semibold md:text-4xl">{title}</h1>
-    <HorizontalScrollWrapper className="my-14 flex flex-row xs:items-center xs:gap-5 md:items-baseline md:gap-x-12 lg:gap-x-24">
+    <HorizontalScrollWrapper
+    className={cx( 'justify-between my-14 w-full flex flex-row xs:items-center md:items-baseline',
+      {
+        'mb-0': iconBg,
+      },
+    )}>
       {list.map((item, index) => (
-        <Rent key={index} {...item} linkLabel={linkLabel} />
+        <Rent key={index} {...item} linkLabel={linkLabel} className={cx(
+          {
+            'iconBackground': iconBg,
+          },
+        )}/>
       ))}
     </HorizontalScrollWrapper>
   </div>
-)
+  )
+  
+      }
 
 export default RentBenefits
