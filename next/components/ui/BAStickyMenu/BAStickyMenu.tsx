@@ -1,11 +1,13 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import React from 'react'
+import { useRef } from 'react'
 
 import { ArrowRight, ChevronDown, ChevronDownSmall, ChevronRight } from '../../../assets/images'
 import StickyMenuTopper from '../../../assets/images/sticky-menu-topper.svg'
 import { getIcon, MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
+import { useOutsideClick } from 'rooks'
 
 interface IProps {
   className?: string
@@ -69,6 +71,8 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
   const [panelHidden, setPanelHidden] = React.useState(false)
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
   const { Link: UILink } = useUIContext()
+  const ref = useRef()
+  useOutsideClick(ref, () => setPanelHidden(true))
 
   React.useEffect(() => {
     if (panelHidden) setPanelHidden(false)
@@ -77,11 +81,13 @@ const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
   return (
     <div
       className={cx(
-        'cursor-default h-screen opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
-        { hidden: panelHidden }
+        'cursor-default h-screen opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto fixed z-20 top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
+        { hidden: panelHidden },
+        {'opacity-0' :  panelHidden === true}
       )}
+      
     >
-      <div className={cx('cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent')}>
+      <div className={cx('cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent')} ref={ref}>
         <Panel style={{ backgroundColor: item.color }} className={cx('px-6 pt-10 pb-10 rounded-none')}>
           <div className="m-auto grid w-full max-w-screen-1.5lg grid-cols-3 gap-10">
             {/* SUB-ITEMS */}

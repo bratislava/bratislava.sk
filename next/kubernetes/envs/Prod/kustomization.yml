@@ -7,3 +7,13 @@ configMapGenerator:
     behavior: merge
     envs:
       - .env
+
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom/0
+        value:
+          secretRef:
+            name: ${BUILD_REPOSITORY_NAME}-revalidate-secret

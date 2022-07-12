@@ -49,7 +49,7 @@ export const Waves = ({
       )}
       {wavePosition === 'bottom' && (
         <>
-          <WaveBottomLarge className="hidden md:block" {...waveProps} />
+          <WaveBottomLarge className="-mt-0.5 hidden md:block" {...waveProps} />
           <WaveBottomSmall className="md:hidden" {...waveProps} />
         </>
       )}
