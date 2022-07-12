@@ -59,6 +59,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
           imagePosition={section.imagePosition ?? 'left'}
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
+          imageAlternativeText={section.imageSrc?.data?.attributes?.alternativeText}
         />
       )
 
@@ -201,7 +202,14 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
-      return <ArticlesList title={title} includesFiltering={filtering} category={category?.data?.attributes?.title} locale={locale} />
+      return (
+        <ArticlesList
+          title={title}
+          includesFiltering={filtering}
+          category={category?.data?.attributes?.title}
+          locale={locale}
+        />
+      )
 
     case 'ComponentSectionsOrganizationalStructure':
       return <AdvancedAccordion {...section} />
