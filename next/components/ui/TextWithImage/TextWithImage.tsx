@@ -7,6 +7,7 @@ export interface TextWithImageProps {
   imageSrc?: string
   imagePosition?: 'left' | 'right'
   imageShadow: boolean
+  imageAlternativeText?: string
 }
 
 export const TextWithImage = ({
@@ -15,6 +16,7 @@ export const TextWithImage = ({
   imageSrc,
   imagePosition = 'left',
   imageShadow = false,
+  imageAlternativeText,
 }: TextWithImageProps) => {
   const { Markdown: UIMarkdown, Image: UIImage } = useUIContext()
 
@@ -24,7 +26,7 @@ export const TextWithImage = ({
     <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-7.5')}>
       {imagePosition === 'left' && imageSrc && (
         <div>
-          <UIImage src={imageSrc} shadow={imageShadow} />
+          <UIImage alt={imageAlternativeText} src={imageSrc} shadow={imageShadow} />
         </div>
       )}
 
@@ -36,7 +38,7 @@ export const TextWithImage = ({
 
       {imagePosition === 'right' && imageSrc && (
         <div>
-          <UIImage src={imageSrc} shadow={imageShadow} />
+          <UIImage alt={imageAlternativeText} src={imageSrc} shadow={imageShadow} />
         </div>
       )}
     </div>
