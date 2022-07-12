@@ -93,7 +93,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
       return (
         <>
           {section.title && <h1 className="flex justify-center pb-14 text-lg font-semibold">{section.title}</h1>}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-3 lg:space-y-4">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem
                 key={institution.category}
@@ -129,7 +129,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
                   })
 
                   return (
-                    <div className="flex flex-col space-y-4 pl-10" key={i}>
+                    <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
                       <NarrowText
                         align={item.align ?? undefined}
                         width={item.width ?? undefined}
