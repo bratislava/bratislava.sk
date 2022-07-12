@@ -1,4 +1,4 @@
-import { ChevronRight } from '@assets/images'
+import { ChevronRight, ArrowRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -36,12 +36,12 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                   className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
                   href={`${blogCard?.url}` || ''}
                 >
-                  <span className="text-sm font-semibold hover:text-default">{t('readMore')}</span>
+                  <span className="text-sm font-semibold ">{t('readMore')}</span>
                   <span className="group-hover:hidden">
                     <ChevronRight />
                   </span>
                   <span className="hidden group-hover:block">
-                    <ChevronRight />
+                    <ArrowRight />
                   </span>
                 </UILink>
               </HorizontalCard>
