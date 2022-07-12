@@ -254,8 +254,21 @@ fragment PageLink on ComponentBlocksPageLink {
 }
 
 fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
-  title
-  desc
+  subTitle
+  modalContent
+  subText
+  url
+  buttonTitle
+  anchor
+  page {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
+    }
+  }
   icon {
     data {
       id
