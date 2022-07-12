@@ -252,6 +252,10 @@
   margin-left: 0 !important;
 }
 
+.iconBackground .rounded-full {
+  @apply bg-white !important;
+}
+
 /* width */
 
 @screen maxMd {

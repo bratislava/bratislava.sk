@@ -392,6 +392,7 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsIconTitleDesc {
     title
+    hasBackground
     list {
       ...IconTitleDesc
     }

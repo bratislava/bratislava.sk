@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_icon_title_descs",
   "info": {
-    "displayName": "Icon Title Desc"
+    "displayName": "Icon Title Desc",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -12,6 +13,9 @@
       "type": "component",
       "repeatable": true,
       "component": "blocks.icon-with-title-and-description"
+    },
+    "hasBackground": {
+      "type": "boolean"
     }
   }
 }
