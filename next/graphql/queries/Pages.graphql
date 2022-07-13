@@ -254,21 +254,8 @@ fragment PageLink on ComponentBlocksPageLink {
 }
 
 fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
-  subTitle
-  modalContent
-  subText
-  url
-  buttonTitle
-  anchor
-  page {
-    data {
-      attributes {
-        title
-        slug
-        locale
-      }
-    }
-  }
+  title
+  desc
   icon {
     data {
       id
@@ -480,13 +467,13 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsAccordion {
     title
     hasBackground
-    institutions {
+    institutions(pagination: { limit: 100 }) {
       ...Institution
     }
-    flatText {
+    flatText(pagination: { limit: 100 }) {
       ...FlatText
     }
-    institutionsNarrow {
+    institutionsNarrow(pagination: { limit: 100 }) {
       ...institutionsNarrow
     }
   }
