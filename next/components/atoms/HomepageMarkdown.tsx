@@ -75,8 +75,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           </td>
         ),
         ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
-        li: (props: AdvancedListItemProps) => {
-          const { ordered, children, index, depth } = props
+        li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
           if (ordered) {
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
