@@ -1,6 +1,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { NumericalListItem } from '@bratislava/ui-bratislava/NumericalListItem/NumericalListItem'
 import cx from 'classnames'
+import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -18,6 +19,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
   const getHeadingTag = (children) => {
     return typeof children[0] === 'string' ? children[0].split(' ').join('-') : ''
   }
+  const [listItemLevel, setListItemLevel] = useState(0)
   return (
     <ReactMarkdown
       className={cx(className, 'whitespace-pre-wrap text-font', {
@@ -74,22 +76,27 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
         li: (props: any) => {
           const { ordered, children, index, depth } = props
-          console.log(props)
-          console.log('depth je ', depth ?? 9)
+          console.log('props', props)
           if (ordered) {
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
           }
           return (
             <div className="flex gap-x-8 lg:gap-x-6">
-              <div className="h-4 w-4 shrink-0 mt-1.5 bg-primary rounded-full" />
+              {depth == 0 ? (
+                <div className="h-4 w-4 shrink-0 mt-1.5 bg-primary rounded-full" />
+              ) : (
+                <div className="h-4 w-4 shrink-0 mt-1.5 border-primary border-solid border-4 rounded-full" />
+              )}
               <div>{children}</div>
             </div>
           )
         },
         ul: ({ children, depth }: any) => {
+          // setListItemLevel(depth)
           const elements = children.map((e) => {
-            return e.props ? { props: { depth: 0, ...e.props }, ...e } : e
+            return e.props ? { ...e, props: { ...e.props, depth } } : e
           })
+          console.log('children', children)
           console.log('elements', elements)
           return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
         },
