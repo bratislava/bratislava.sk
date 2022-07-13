@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable react/button-has-type */
 import { Accordion as AccordionBa } from '@bratislava/ui-bratislava'
 import cx from 'classnames'

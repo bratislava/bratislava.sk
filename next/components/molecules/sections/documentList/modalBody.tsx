@@ -10,7 +10,6 @@ import { FileCard } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import ReactMarkdown from 'react-markdown'
 
-// import useSWR from 'swr'
 import { LinkedVznMainDocument } from './LinkedVznMainDocument'
 
 // we're taking the entity from meilisearch which unfortunately types differently

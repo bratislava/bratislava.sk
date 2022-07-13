@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { NumericalListItem } from '@bratislava/ui-bratislava/NumericalListItem/NumericalListItem'
 import cx from 'classnames'
@@ -6,6 +8,7 @@ import ReactMarkdown from 'react-markdown'
 import { LiProps } from 'react-markdown/lib/ast-to-react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+
 import ContentImage from './ContentImage'
 
 export interface HomepageMarkdownProps {
@@ -13,13 +16,15 @@ export interface HomepageMarkdownProps {
   content?: string
   numericalList?: boolean
 }
+
 export type AdvancedListItemProps = LiProps & { depth?: number }
+
+const getHeadingTag = (children) => {
+  return typeof children[0] === 'string' ? children[0].split(' ').join('-') : ''
+}
 
 export const HomepageMarkdown = ({ className, content, numericalList }: HomepageMarkdownProps) => {
   const { Link: UILink } = useUIContext()
-  const getHeadingTag = (children) => {
-    return typeof children[0] === 'string' ? children[0].split(' ').join('-') : ''
-  }
   return (
     <ReactMarkdown
       className={cx(className, 'text-font', {
@@ -35,7 +40,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h2: ({ children }) => (
           <h2
             id={getHeadingTag(children)}
-            className="typography-h2 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+            className="typography-h2 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h2>
@@ -43,7 +48,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h3: ({ children }) => (
           <h3
             id={getHeadingTag(children)}
-            className="typography-h3 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+            className="typography-h3 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h3>
@@ -51,7 +56,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h4: ({ children }) => (
           <h4
             id={getHeadingTag(children)}
-            className="typography-h4 scroll-mt-24 lg:scroll-mt-48 my-6 lg:mt-10 lg:mb-6 first:mt-0 last:mb-0"
+            className="typography-h4 my-6 scroll-mt-24 first:mt-0 last:mb-0 lg:mt-10 lg:mb-6 lg:scroll-mt-48"
           >
             {children}
           </h4>
@@ -59,7 +64,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h5: ({ children }) => (
           <h5
             id={getHeadingTag(children)}
-            className="typography-h4 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+            className="typography-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h5>
@@ -67,16 +72,16 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h6: ({ children }) => (
           <h6
             id={getHeadingTag(children)}
-            className="typography-h4 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+            className="typography-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular whitespace-pre-wrap mb-4 last:mb-0" {...props} />,
+        p: ({ node, ...props }) => <div className="typography-regular mb-4 whitespace-pre-wrap last:mb-0" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
-            className="font-semibold text-font underline hover:text-primary break-all"
+            className="break-all font-semibold text-font underline hover:text-primary"
             target={href?.startsWith('http') ? '_blank' : null}
           >
             {children[0]}
@@ -84,51 +89,55 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         ),
         img: ({ src, alt }) => <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>,
         blockquote: ({ children }) => (
-          <div className="border-l-4 border-primary pl-10 mb-5 lg:mb-10  last:mb-0">{children}</div>
+          <div className="mb-5 border-l-4 border-primary pl-10 last:mb-0  lg:mb-10">{children}</div>
         ),
-        table: ({ children }) => <table className="w-full table-block">{children}</table>,
+        table: ({ children }) => <table className="table-block w-full">{children}</table>,
         tr: ({ children }) => (
-          <tr className="py-8 px-1 md:p-0 w-[280px] md:w-full flex flex-col md:table-row rounded-lg bg-white md:odd:bg-white md:even:bg-transparent">
+          <tr className="flex w-[280px] flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
             {children}
           </tr>
         ),
-        tbody: ({ children }) => <tbody className="flex gap-5 md:gap-0 md:table-row-group">{children}</tbody>,
-        thead: ({ children }) => <thead className="bg-transparent" />,
+        tbody: ({ children }) => <tbody className="flex gap-5 md:table-row-group md:gap-0">{children}</tbody>,
+        thead: () => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="flex md:min-h-[92px] items-center px-4 text-left text-sm md:text-default mb-1 lg:mb-0">
+            <div className="mb-1 flex items-center px-4 text-left text-sm md:min-h-[92px] md:text-default lg:mb-0">
               {children}
             </div>
           </td>
         ),
         ol: ({ children }) => {
           const elements = children
-            .filter((e) => e != '\n')
+            .filter((e) => e !== '\n')
             .map((e) => {
               return (
                 isValidElement(e) && {
                   ...e,
-                  props: { ...e.props, children: e.props.children.filter((c) => c != '\n') },
+                  props: { ...e.props, children: e.props.children.filter((c: string) => c !== '\n') },
                 }
               )
             })
-          return <div className="flex flex-col my-6 lg:my-10 first:mt-0 last:mb-0">{elements}</div>
+          return <div className="my-6 flex flex-col first:mt-0 last:mb-0 lg:my-10">{elements}</div>
         },
         li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
           if (ordered) {
-            return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
+            return (
+              <NumericalListItem index={index} variant="combined" hasBackground={false}>
+                {children}
+              </NumericalListItem>
+            )
           }
           return (
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
                   'h-4 w-4 shrink-0 bg-primary rounded-full mt-1.5 border-4 border-solid border-primary',
-                  { 'bg-primary': level == 0 },
-                  { 'border-primary border-solid border-4': level != 0 }
+                  { 'bg-primary': level === 0 },
+                  { 'border-primary border-solid border-4': level !== 0 }
                 )}
               />
-              <div className="text-base lg:text-default whitespace-pre-wrap">{children}</div>
+              <div className="whitespace-pre-wrap text-base lg:text-default">{children}</div>
             </div>
           )
         },
@@ -138,7 +147,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
           return (
-            <ul className="flex flex-col gap-y-5 lg:gap-y-8 lg:ml-6 my-6 lg:my-10 first:mt-0 last:mb-0 inner-list">
+            <ul className="inner-list my-6 flex flex-col gap-y-5 first:mt-0 last:mb-0 lg:my-10 lg:ml-6 lg:gap-y-8">
               {elements}
             </ul>
           )
@@ -146,8 +155,9 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
       }}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
-      children={content ?? ''}
-    />
+    >
+      {content ?? ''}
+    </ReactMarkdown>
   )
 }
 

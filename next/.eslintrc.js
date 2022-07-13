@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['auto', 'plugin:tailwindcss/recommended', 'plugin:@next/next/recommended'],
-  plugins: ['only-warn'],
+  plugins: [],
   rules: {
     'react/react-in-jsx-scope': 'off',
     /** We use this a lot with isDefined and hasAttributes */
@@ -35,7 +35,15 @@ module.exports = {
     "react/no-unused-prop-types": 'off',
     "tailwindcss/no-custom-classname": 'off',
     /** Remove console.log() warnings */
-    "no-console": 'off'
+    "no-console": 'off',
+    "@next/next/no-img-element": "off",
+    "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

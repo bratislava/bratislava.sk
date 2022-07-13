@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable react/button-has-type */
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable no-restricted-globals */
@@ -8,8 +7,8 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { useTranslation } from 'next-i18next'
 import Head from 'next/head'
+import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import { getNumericLocalDate } from '../../utils/local-date'

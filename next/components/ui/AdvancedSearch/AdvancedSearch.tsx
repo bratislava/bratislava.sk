@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -6,7 +5,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable eqeqeq */
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -53,8 +51,8 @@ export const AdvancedSearch = ({
   const [checked, setChecked] = useState(options)
 
   const handleAction = (option: SearchOptionProps) => {
-    if (checked.some(({ key }) => key == option.key)) {
-      const options = checked.filter((o) => o.key != option.key)
+    if (checked.some(({ key }) => key === option.key)) {
+      const options = checked.filter((o) => o.key !== option.key)
       setChecked(options)
       handleSelect(options)
     } else {
@@ -139,7 +137,7 @@ export const AdvancedSearch = ({
                 handleAction(option)
               }}
             >
-              {checked.some(({ key }) => key == option.key) ? (
+              {checked.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
                 <div className="mr-px h-6 w-6 rounded border-2 border-solid border-slate-300" />

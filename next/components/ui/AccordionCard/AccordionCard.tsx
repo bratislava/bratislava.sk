@@ -1,4 +1,4 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
+// Have to use below rule because after removing <></> is showing warning
 /* eslint-disable react/jsx-no-useless-fragment */
 import cx from 'classnames'
 

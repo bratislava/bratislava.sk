@@ -1,9 +1,5 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable tailwindcss/classnames-order */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable promise/valid-params */
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
@@ -159,15 +155,15 @@ export const ArticlesList = ({
 
   const handleFiltering = (tag: string) => {
     selectedTags.includes(tag)
-      ? setSelectedTags(selectedTags.filter((selected) => selected != tag))
+      ? setSelectedTags(selectedTags.filter((selected) => selected !== tag))
       : setSelectedTags([...selectedTags, tag])
-    setCurrentPage(1);
+    setCurrentPage(1)
   }
 
   return (
     <div>
-      <div className="text-default lg:text-lg font-semibold">{title}</div>
-      <div className={`mt-6 lg:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
+      <div className="text-default font-semibold lg:text-lg">{title}</div>
+      <div className={`lg:grid-cols- mt-6 grid grid-cols-1 sm:grid-cols-2 lg:mt-8${itemsPerRow} gap-x-7.5 gap-y-8`}>
         {data.map((article, index) => (
           <NewsCard
             key={index}

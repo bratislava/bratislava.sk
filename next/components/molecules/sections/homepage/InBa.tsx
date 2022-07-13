@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InBaCard, InBaCardProps } from '@bratislava/ui-bratislava'
 import cx from 'classnames'

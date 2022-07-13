@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+// import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
 import DocumentDevider from '@assets/images/documentDevider.svg'
 import DocumentDeviderSmall from '@assets/images/documentDevider-small.svg'
 import { BasicSearch, DocumentListItem, Modal, NoResultsFound, Pagination } from '@bratislava/ui-bratislava'
@@ -20,7 +23,7 @@ export const DocumentList = () => {
   const offset = (currentPage - 1) * MEILI_PAGE_SIZE
 
   // TODO show loading / error state
-  const { data, error } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16))
+  const { data } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16))
 
   const vzns = data?.hits || []
   const total = data?.estimatedTotalHits || 0
@@ -87,16 +90,15 @@ export const DocumentList = () => {
                         onClick={setOpenModal}
                         mainDocumentHref={vzn.mainDocument?.url}
                       />
-                      <>
-                        {index === 7 ? (
-                          <div className="flex items-center justify-center">
-                            <DocumentDevider className="my-14 lg:my-24 hidden xs:block" />
-                            <DocumentDeviderSmall className="my-14 lg:my-24 block xs:hidden" />{' '}
-                          </div>
-                        ) : (
-                          ''
-                        )}
-                      </>
+
+                      {index === 7 ? (
+                        <div className="flex items-center justify-center">
+                          <DocumentDevider className="my-14 lg:my-24 hidden xs:block" />
+                          <DocumentDeviderSmall className="my-14 lg:my-24 block xs:hidden" />{' '}
+                        </div>
+                      ) : (
+                        ''
+                      )}
                     </>
                   )
                 })}

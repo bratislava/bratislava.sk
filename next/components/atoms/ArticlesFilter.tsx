@@ -61,8 +61,7 @@ export const ArticlesFilter = ({
       <div className="mt-6 lg:mt-11">
         {data
           .filter((tag) => {
-            // eslint-disable-next-line eqeqeq
-            return tag.category == category
+            return tag.category === category
           })
           .map((item) => (
             <Tag
