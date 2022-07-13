@@ -77,14 +77,14 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
           }
           return (
-            <div className="flex gap-x-8 lg:gap-x-6 items-center">
-              <div className="h-4 w-4 shrink-0 bg-primary rounded-full" />
+            <div className="flex gap-x-8 lg:gap-x-6">
+              <div className="h-4 w-4 shrink-0 bg-primary rounded-full mt-1.5 border-4 border-solid border-primary" />
               <div>{children}</div>
             </div>
           )
         },
         ul: ({ children }) => {
-          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{children}</div>
+          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11 inner-list">{children}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}
