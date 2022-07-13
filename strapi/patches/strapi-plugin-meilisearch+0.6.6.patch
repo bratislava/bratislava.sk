@@ -1,0 +1,36 @@
+diff --git a/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js b/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js
+index 59ea9b0..e477000 100644
+--- a/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js
++++ b/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js
+@@ -177,7 +177,7 @@ module.exports = ({ strapi }) => ({
+     const contentTypeUid = this.getContentTypeUid({ contentType })
+     if (contentTypeUid === undefined) return []
+ 
+-    const entries = await strapi.entityService.findMany(contentTypeUid, {
++    const entriesSkResult = await strapi.entityService.findMany(contentTypeUid, {
+       fields: fields || '*',
+       start,
+       limit,
+@@ -185,7 +185,22 @@ module.exports = ({ strapi }) => ({
+       sort,
+       populate,
+       publicationState: publicationState,
++      locale: 'sk'
+     })
++    const entriesSk = Array.isArray(entriesSkResult) ? entriesSk : [entriesSK] 
++
++    const entriesEnResult = await strapi.entityService.findMany(contentTypeUid, {
++      fields: fields || '*',
++      start,
++      limit,
++      filters,
++      sort,
++      populate,
++      publicationState: publicationState,
++      locale: 'en'
++    })
++    const entriesEn = Array.isArray(entriesEnResult) ? entriesEn : [entriesEn]
++    const entries = entriesSk.concat(entriesEn).filter(entry => entry)
+     // Safe guard in case the content-type is a single type.
+     // In which case it is wrapped in an array for consistency.
+     if (entries && !Array.isArray(entries)) return [entries]
