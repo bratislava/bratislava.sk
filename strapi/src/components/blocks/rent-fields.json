@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_blocks_rent_fields",
+  "info": {
+    "displayName": "RentFields",
+    "icon": "ankh",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "modalContent": {
+      "type": "richtext"
+    },
+    "buttonTitle": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "subText": {
+      "type": "richtext"
+    }
+  }
+}

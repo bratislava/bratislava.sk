@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_rents",
+  "info": {
+    "displayName": "Rent",
+    "icon": "align-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "rents": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.rent-fields"
+    },
+    "title": {
+      "type": "string"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    }
+  }
+}

@@ -253,9 +253,22 @@ fragment PageLink on ComponentBlocksPageLink {
   }
 }
 
-fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
-  title
-  desc
+fragment RentFields on ComponentBlocksRentFields {
+  subTitle
+  modalContent
+  subText
+  url
+  buttonTitle
+  anchor
+  page {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
+    }
+  }
   icon {
     data {
       id
@@ -390,11 +403,11 @@ fragment NumericalListItem on ComponentBlocksNumericalListItem {
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
-  ... on ComponentSectionsIconTitleDesc {
+  ... on ComponentSectionsRent {
     title
     hasBackground
-    list {
-      ...IconTitleDesc
+    rents {
+      ...RentFields
     }
   }
 

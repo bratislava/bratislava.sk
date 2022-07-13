@@ -72,20 +72,21 @@
         "sections.columned-text",
         "sections.contact",
         "sections.divider",
+        "sections.document-list",
         "sections.file-list",
-        "sections.icon-title-desc",
         "sections.iframe",
         "sections.links",
         "sections.list-items",
         "sections.narrow-text",
         "sections.newsletter",
         "sections.numerical-list",
+        "sections.organizational-structure",
+        "sections.rent",
+        "sections.space",
         "sections.text-with-image",
         "sections.videos",
         "sections.waves",
-        "sections.document-list",
-        "sections.space",
-        "sections.organizational-structure"
+        "sections.icon-title-desc"
       ]
     },
     "pageHeaderSections": {
