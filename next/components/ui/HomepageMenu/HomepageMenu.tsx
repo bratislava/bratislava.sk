@@ -286,7 +286,7 @@ const HomepageMenu = ({ items }: IProps) => {
                       </div>
                     )
                   })}
-                  <div className="absolute bottom-[-24px] left-1/2 cursor-pointer">
+                  <div className="absolute bottom-[-24px] left-1/2 cursor-pointer -translate-x-1/2">
                     <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
                   </div>
                 </Panel>
