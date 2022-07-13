@@ -72,19 +72,26 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           </td>
         ),
         ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
-        li: ({ ordered, children, index }) => {
+        li: (props: any) => {
+          const { ordered, children, index, depth } = props
+          console.log(props)
+          console.log('depth je ', depth ?? 9)
           if (ordered) {
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
           }
           return (
-            <div className="flex gap-x-8 lg:gap-x-6 items-center">
-              <div className="h-4 w-4 shrink-0 bg-primary rounded-full" />
+            <div className="flex gap-x-8 lg:gap-x-6">
+              <div className="h-4 w-4 shrink-0 mt-1.5 bg-primary rounded-full" />
               <div>{children}</div>
             </div>
           )
         },
-        ul: ({ children }) => {
-          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{children}</div>
+        ul: ({ children, depth }: any) => {
+          const elements = children.map((e) => {
+            return e.props ? { props: { depth: 0, ...e.props }, ...e } : e
+          })
+          console.log('elements', elements)
+          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}
