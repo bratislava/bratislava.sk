@@ -1,8 +1,9 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { NumericalListItem } from '@bratislava/ui-bratislava/NumericalListItem/NumericalListItem'
 import cx from 'classnames'
-import { useState } from 'react'
+import { isValidElement } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { LiProps } from 'react-markdown/lib/ast-to-react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import ContentImage from './ContentImage'
@@ -13,13 +14,13 @@ export interface HomepageMarkdownProps {
   numericalList?: boolean
   hasBackground?: boolean
 }
+export type AdvancedListItemProps = LiProps & { depth?: number }
 
 export const HomepageMarkdown = ({ className, content, numericalList, hasBackground }: HomepageMarkdownProps) => {
   const { Link: UILink } = useUIContext()
   const getHeadingTag = (children) => {
     return typeof children[0] === 'string' ? children[0].split(' ').join('-') : ''
   }
-  const [listItemLevel, setListItemLevel] = useState(0)
   return (
     <ReactMarkdown
       className={cx(className, 'whitespace-pre-wrap text-font', {
@@ -74,7 +75,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           </td>
         ),
         ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
-        li: (props: any) => {
+        li: (props: AdvancedListItemProps) => {
           const { ordered, children, index, depth } = props
           const level = depth ?? 0
           if (ordered) {
@@ -93,9 +94,9 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             </div>
           )
         },
-        ul: ({ children, depth }: any) => {
+        ul: ({ children, depth }) => {
           const elements = children.map((e) => {
-            return e.props ? { ...e, props: { ...e.props, depth } } : e
+            return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
           return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
         },
