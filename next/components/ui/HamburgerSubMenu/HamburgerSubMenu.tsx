@@ -2,7 +2,7 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
-import ChevronDown from '../../../assets/images/chevron-down.svg'
+import ChevronDown from '../../../assets/images/chevron-down-small.svg'
 import ChevronLeft from '../../../assets/images/chevron-left.svg'
 import ChevronUp from '../../../assets/images/chevron-up-small.svg'
 import CloseFilled from '../../../assets/images/close-filled.svg'
@@ -56,7 +56,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         </div>
         {/* Item's SubMenu */}
         <div
-          className={cx('flex-1 min-h-0 overflow-scroll flex flex-col space-y-10 p-6', {
+          className={cx('flex-1 min-h-0 overflow-scroll flex flex-col space-y-5 lg:space-y-10 p-6', {
             'pb-36': variant === 'homepage',
           })}
         >
@@ -69,7 +69,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                   <IconComponent className="h-10 w-10" />
                   <p className="text-default font-semibold">{subItem.title}</p>
                 </div>
-                <div className="flex flex-col gap-y-2">
+                <div className="flex flex-col gap-y-2 pb-4">
                   <div className="flex flex-col gap-y-2">
                     {subItem.subItems
                       .map((subSubItem) => (
@@ -79,8 +79,8 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                       ))
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
-
-                  {subItem.subItems.length > 3 && (
+                  {/* subItem.url && subItem.subItems.length > 2 ?  */}
+                  {subItem.subItems.length > 2 && (
                     <button
                       onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
                       className="flex items-center gap-x-4"
@@ -92,8 +92,8 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                         </>
                       ) : (
                         <>
-                          <p className="text-base font-semibold underline">{t('menu.loadMore')}</p>
-                          <ChevronDown className="w-4" />
+                          <p className="text-base font-semibold underline">{t('Zobraziť ďalšie')}</p>
+                          <ChevronDown />
                         </>
                       )}
                     </button>
