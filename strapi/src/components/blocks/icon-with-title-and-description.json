@@ -1,42 +1,20 @@
 {
   "collectionName": "components_blocks_icon_with_title_and_descriptions",
   "info": {
-    "displayName": "Icon With Title And Description",
-    "description": ""
+    "displayName": "Icon With Title And Description"
   },
   "options": {},
   "attributes": {
-    "subTitle": {
-      "type": "string",
-      "required": true
+    "title": {
+      "type": "string"
     },
-    "modalContent": {
+    "desc": {
       "type": "richtext"
     },
     "icon": {
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "subText": {
-      "type": "richtext"
-    },
-    "buttonTitle": {
-      "type": "string"
-    },
-    "page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
-    },
-    "url": {
-      "type": "string"
-    },
-    "anchor": {
-      "type": "string"
+      "multiple": false
     }
   }
 }
