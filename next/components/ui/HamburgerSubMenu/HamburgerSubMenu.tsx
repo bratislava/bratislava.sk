@@ -24,9 +24,9 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
 
   return (
     <div
-      style={{ backgroundColor: item.color, height: 'calc(100vh - 80px)' }}
+      style={{ backgroundColor: item.color, height: 'calc(100vh - 55px)' }}
       className={cx(
-        'fixed top-20 left-0 w-screen md:hidden flex flex-col z-40',
+        'fixed top-[64px] left-0 w-screen md:hidden flex flex-col z-40',
         // 'absolute top-0 h-full w-screen flex-1',
         className
       )}
@@ -105,17 +105,15 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         </div>
       </div>
       {/* Bottom's Sticky */}
-      {variant === 'homepage' && (
-        <div
-          style={{
-            background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
-          }}
-          className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
-        >
-          <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
-          <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
-        </div>
-      )}
+      <div
+        style={{
+          background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
+        }}
+        className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
+      >
+        <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
+        <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
+      </div>
     </div>
   )
 }
