@@ -76,28 +76,27 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
         li: (props: any) => {
           const { ordered, children, index, depth } = props
-          console.log('props', props)
+          const level = depth ?? 0
           if (ordered) {
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
           }
           return (
             <div className="flex gap-x-8 lg:gap-x-6">
-              {depth == 0 ? (
-                <div className="h-4 w-4 shrink-0 mt-1.5 bg-primary rounded-full" />
-              ) : (
-                <div className="h-4 w-4 shrink-0 mt-1.5 border-primary border-solid border-4 rounded-full" />
-              )}
+              <div
+                className={cx(
+                  'h-4 w-4 shrink-0 mt-1.5 rounded-full',
+                  { 'bg-primary': level == 0 },
+                  { 'border-primary border-solid border-4': level != 0 }
+                )}
+              />
               <div>{children}</div>
             </div>
           )
         },
         ul: ({ children, depth }: any) => {
-          // setListItemLevel(depth)
           const elements = children.map((e) => {
             return e.props ? { ...e, props: { ...e.props, depth } } : e
           })
-          console.log('children', children)
-          console.log('elements', elements)
           return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
         },
       }}
