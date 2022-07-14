@@ -247,6 +247,10 @@
     @apply text-center mb-6;
   }
 
+  .fontSize-base .typography-regular {
+    @apply text-base leading-7;
+  }
+
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
   }
