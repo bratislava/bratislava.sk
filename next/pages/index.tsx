@@ -233,7 +233,9 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-secondary py-16">
-          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl">{data.topNineTitle}</h2>
+          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl xs:mt-8">
+            {data.topNineTitle}
+          </h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
@@ -244,7 +246,7 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard className="mx-auto mt-36 min-h-[200px] max-w-3xl" {...inba} />
+          <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-[78px]" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
