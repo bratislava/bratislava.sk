@@ -136,7 +136,7 @@ export const Footer = ({
           )}
         </nav>
         <span className="mt-5 lg:hidden">
-          <EULogo />
+          <EULogo className='mx-auto'/>
         </span>
         <p className="mt-2 lg:mt-0">{copyright}</p>
         <div className="hidden text-right lg:block" aria-label="lang">
