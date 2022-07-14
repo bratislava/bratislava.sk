@@ -1,6 +1,7 @@
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import Checkbox from '../../../assets/images/checkbox.svg'
@@ -12,7 +13,6 @@ export interface AdvancedSearchProps {
   placeholder?: string
   title?: string
   buttonText?: string
-  handleClick?: (checkedOptions: SearchOptionProps[], keyword: string) => void
   handleSelect?: (checkedOptions: SearchOptionProps[]) => void
   keyword?: string
 }
@@ -27,11 +27,12 @@ export const AdvancedSearch = ({
   placeholder,
   title,
   buttonText,
-  handleClick,
   handleSelect,
   keyword,
 }: AdvancedSearchProps) => {
   const { t } = useTranslation('common')
+  const router = useRouter()
+
   const options = [
     {
       key: 'articles',
@@ -60,9 +61,16 @@ export const AdvancedSearch = ({
   const handleChange = (event) => {
     setInput(event.target.value)
   }
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && input.length > minKeywordLength) {
-      handleClick(checked, input)
+      router.push(`${t('searchLink')}?keyword=${input}`)
+    }
+  }
+
+  const handleClick = (event) => {
+    if (input.length > minKeywordLength) {
+      router.push(`${t('searchLink')}?keyword=${input}`)
     }
   }
 
@@ -90,9 +98,7 @@ export const AdvancedSearch = ({
             { 'cursor-default': input.length <= minKeywordLength }
           )}
           variant="secondaryDarkText"
-          onClick={() => {
-            input.length > minKeywordLength && handleClick(checked, input)
-          }}
+          onClick={handleClick}
         >
           {buttonText}
         </Button>
@@ -109,9 +115,7 @@ export const AdvancedSearch = ({
           hoverIcon={<SearchIcon />}
           className="hover:color-white h-14 rounded-l-none pr-6 text-default font-medium shadow-none hover:bg-primary hover:text-white"
           variant="secondaryDarkText"
-          onClick={() => {
-            input.length > minKeywordLength && handleClick(checked, input)
-          }}
+          onClick={handleClick}
         />
       </div>
       <div className="flex flex-col gap-x-14 gap-y-6 lg:flex-row">
