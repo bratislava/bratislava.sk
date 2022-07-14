@@ -18,6 +18,7 @@ import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Cookies } from 'react-cookie-consent'
 import * as ReactGA from 'react-ga'
 import { useRouter } from 'next/router'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -44,10 +45,10 @@ const navBarTexts = {
 
 const navBarUrls = {
   en: {
-    eservices: '/eservices',
+    eservices: 'https://esluzby.bratislava.sk/',
   },
   sk: {
-    eservices: '/elektronicke-sluzby',
+    eservices: 'https://esluzby.bratislava.sk/',
   },
 }
 
@@ -150,6 +151,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
     }
   }
 
+  const { Link: UILink } = useUIContext()
+
   return (
     <>
       {/* Desktop */}
@@ -211,6 +214,12 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 >
                   {navBarTexts[languageKey].covid}
                 </Link>
+                {
+                  /* This UILink set here just to prefetch EN version of page, this link is hidden */
+                  <UILink href="/en" className="hidden">
+                    hidden
+                  </UILink>
+                }
                 <Link href={navBarUrls[languageKey].eservices} variant="plain" className="whitespace-nowrap">
                   {navBarTexts[languageKey].eservices}
                 </Link>
