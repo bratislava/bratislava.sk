@@ -3410,13 +3410,13 @@ export const SectionsFragmentDoc = gql`
   ... on ComponentSectionsAccordion {
     title
     hasBackground
-    institutions {
+    institutions(pagination: {limit: 100}) {
       ...Institution
     }
-    flatText {
+    flatText(pagination: {limit: 100}) {
       ...FlatText
     }
-    institutionsNarrow {
+    institutionsNarrow(pagination: {limit: 100}) {
       ...institutionsNarrow
     }
   }
