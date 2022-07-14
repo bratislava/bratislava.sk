@@ -21,7 +21,7 @@
     "@strapi/plugin-graphql": "^4.2.0",
     "@strapi/plugin-i18n": "4.2.0",
     "@strapi/plugin-users-permissions": "4.2.0",
-    "@strapi/strapi": "4.2.0",
+    "@strapi/strapi": "4.2.3",
     "better-sqlite3": "7.4.6",
     "patch-package": "^6.4.7",
     "pg": "^8.7.3",
