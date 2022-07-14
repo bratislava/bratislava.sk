@@ -112,9 +112,9 @@ export const buildMockData = ({
         linkTitle: 'Zistiť viac',
       },
       {
-        title: 'Prenájom priestorov\nPrimaciálneho paláca',
+        title: 'Verejné \npriestory',
         icon: 'icon3',
-        href: '/mesto-bratislava/transparentne-mesto/majetok-mesta/prenajom-priestorov',
+        href: '/mesto-bratislava/projekty/zive-miesta',
         linkTitle: 'Zistiť viac',
       },
       {
@@ -266,9 +266,9 @@ export const buildMockData = ({
         linkTitle: 'Read more',
       },
       {
-        title: 'Rental\npremises',
+        title: 'Public \nspaces',
         icon: 'icon3',
-        href: '/mesto-bratislava/transparentne-mesto/majetok-mesta/prenajom-priestorov',
+        href: '/mesto-bratislava/projekty/zive-miesta',
         linkTitle: 'Read more',
       },
       {

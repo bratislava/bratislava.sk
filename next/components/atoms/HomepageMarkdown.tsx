@@ -84,7 +84,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
-                  'h-4 w-4 shrink-0 mt-1.5 rounded-full',
+                  'h-4 w-4 shrink-0 bg-primary rounded-full mt-1.5 border-4 border-solid border-primary',
                   { 'bg-primary': level == 0 },
                   { 'border-primary border-solid border-4': level != 0 }
                 )}
@@ -93,11 +93,12 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             </div>
           )
         },
+
         ul: ({ children, depth }) => {
           const elements = children.map((e) => {
             return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
-          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
+          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11 inner-list">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}
