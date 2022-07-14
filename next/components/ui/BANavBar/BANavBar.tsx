@@ -45,10 +45,10 @@ const navBarTexts = {
 
 const navBarUrls = {
   en: {
-    eservices: '/eservices',
+    eservices: 'https://esluzby.bratislava.sk/',
   },
   sk: {
-    eservices: '/elektronicke-sluzby',
+    eservices: 'https://esluzby.bratislava.sk/',
   },
 }
 
