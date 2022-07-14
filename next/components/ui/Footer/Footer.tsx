@@ -43,7 +43,6 @@ export const Footer = ({
 
   return (
     <footer className={cx(className, 'text-base text-gray-universal-800 pt-14')}>
-      {/* <hr /> */}
       <section className="flex items-center justify-between " aria-label="Logo and Social Media Links">
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">
