@@ -136,7 +136,7 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
                         width={item.width ?? undefined}
                         content={item.content ?? undefined}
                       />
-                      {link?.url && link.title && <PageLinkButton className="pl-6" pageLink={link} />}
+                      {link?.url && link.title && <PageLinkButton pageLink={link} />}
                     </div>
                   )
                 })}
