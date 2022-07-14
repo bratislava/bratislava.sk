@@ -1,8 +1,6 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Carousel, Link } from '@bratislava/ui-bratislava'
-import cx from 'classnames'
-
 import React from 'react'
 
 import { FetchGooutEventsResult, GooutEvent } from '../../../../utils/goout'
