@@ -90,6 +90,7 @@ export const parsePageLink = (
     locale: pageLink?.page?.data?.attributes?.locale,
     slug: pageLink?.page?.data?.attributes?.slug,
   }
+  if (pageLink.url === '') pageLink.url = null
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
     url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
