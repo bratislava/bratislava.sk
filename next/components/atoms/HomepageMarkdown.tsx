@@ -60,7 +60,11 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         ),
         p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
         a: ({ href, children }) => (
-          <UILink href={href ?? '#'} className="font-semibold text-font underline hover:text-primary">
+          <UILink
+            href={href ?? '#'}
+            className="font-semibold text-font underline hover:text-primary"
+            target={href.startsWith('http') ? '_blank' : null}
+          >
             {children[0]}
           </UILink>
         ),
