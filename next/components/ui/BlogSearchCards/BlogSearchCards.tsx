@@ -30,7 +30,7 @@ export const BlogSearchCards = ({ title, blogs, handleButtonClick }: BlogSearchC
       <div className="hidden lg:flex flex-col gap-y-6">
         <div className="flex flex-col gap-y-6">
           {blogs.map((blog, index) => {
-            return <BlogSearchCard key={index} item={blog} className="h-48" imageClassName="w-56 h-48" />
+            return <BlogSearchCard key={index} item={blog} className="h-50" imageClassName="w-56 h-50" />
           })}
         </div>
         <Button variant="transparent" className="w-fit px-6 py-2.5 text-default self-center" onClick={handleClick}>
