@@ -1,7 +1,9 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { NumericalListItem } from '@bratislava/ui-bratislava/NumericalListItem/NumericalListItem'
 import cx from 'classnames'
+import { isValidElement } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { LiProps } from 'react-markdown/lib/ast-to-react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import ContentImage from './ContentImage'
@@ -12,6 +14,7 @@ export interface HomepageMarkdownProps {
   numericalList?: boolean
   hasBackground?: boolean
 }
+export type AdvancedListItemProps = LiProps & { depth?: number }
 
 export const HomepageMarkdown = ({ className, content, numericalList, hasBackground }: HomepageMarkdownProps) => {
   const { Link: UILink } = useUIContext()
@@ -73,19 +76,29 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           </td>
         ),
         ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
-        li: ({ ordered, children, index }) => {
+        li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
+          const level = depth ?? 0
           if (ordered) {
             return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
           }
           return (
-            <div className="flex gap-x-8 lg:gap-x-6 items-center">
-              <div className="h-4 w-4 shrink-0 bg-primary rounded-full" />
+            <div className="flex gap-x-8 lg:gap-x-6">
+              <div
+                className={cx(
+                  'h-4 w-4 shrink-0 mt-1.5 rounded-full',
+                  { 'bg-primary': level == 0 },
+                  { 'border-primary border-solid border-4': level != 0 }
+                )}
+              />
               <div>{children}</div>
             </div>
           )
         },
-        ul: ({ children }) => {
-          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{children}</div>
+        ul: ({ children, depth }) => {
+          const elements = children.map((e) => {
+            return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
+          })
+          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}
