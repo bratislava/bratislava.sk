@@ -82,7 +82,7 @@ export const Posts = ({
 
       {activeTab == 0 && (
         <div className="mt-14 block">
-          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8">
+          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
