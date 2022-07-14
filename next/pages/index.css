@@ -20,39 +20,39 @@
   }
 
   .typography-h2 {
-    @apply text-lg font-semibold;
+    @apply text-md lg:text-lg font-semibold;
   }
 
   .typography-h3 {
-    @apply text-md font-medium;
+    @apply text-default lg:text-md font-medium;
   }
 
   .typography-h4 {
-    @apply text-default font-medium;
+    @apply text-sm lg:text-default font-medium;
   }
 
   .typography-tab {
-    @apply text-md font-normal;
+    @apply text-default lg:text-md font-normal;
   }
 
   .typography-dense {
-    @apply text-default font-medium;
+    @apply text-sm lg:text-default font-medium;
   }
 
   .typography-highlight {
-    @apply text-default font-semibold;
+    @apply text-sm lg:text-default font-semibold;
   }
 
   .typography-link {
-    @apply text-default font-semibold underline;
+    @apply text-sm lg:text-default font-semibold underline;
   }
 
   .typography-subheadline {
-    @apply text-default font-medium;
+    @apply text-sm lg:text-default font-medium;
   }
 
   .typography-regular {
-    @apply text-default font-normal;
+    @apply text-sm lg:text-default font-normal;
   }
 
   .typography-highlight-sm {
@@ -246,8 +246,13 @@
   .text-title-center h4 {
     @apply text-center mb-6;
   }
+
   .fontSize-base .typography-regular {
     @apply text-base leading-7;
+  }
+
+  .inner-list .inner-list .rounded-full {
+    @apply bg-transparent;
   }
 }
 
@@ -255,17 +260,8 @@
   margin-left: 0 !important;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  /* Safari and Chrome */
-  .home-hero-wave {
-    transform: scaleY(1);
-  }
-
-  /* Safari only override */
-  ::i-block-chrome,
-  .home-hero-wave {
-    transform: scaleY(-1);
-  }
+.iconBackground .rounded-full {
+  @apply bg-white !important;
 }
 
 /* width */
@@ -291,8 +287,3 @@
   }
 }
 
-@supports (selector(:nth-child(1 of x))) or (-webkit-touch-callout: none) {
-  .home-hero-wave {
-    transform: scaleY(-1);
-  }
-}

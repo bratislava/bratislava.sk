@@ -392,6 +392,7 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsIconTitleDesc {
     title
+    hasBackground
     list {
       ...IconTitleDesc
     }
@@ -415,6 +416,7 @@ fragment Sections on PageSectionsDynamicZone {
       data {
         attributes {
           url
+          alternativeText
         }
       }
     }
@@ -465,13 +467,13 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsAccordion {
     title
     hasBackground
-    institutions {
+    institutions(pagination: { limit: 100 }) {
       ...Institution
     }
-    flatText {
+    flatText(pagination: { limit: 100 }) {
       ...FlatText
     }
-    institutionsNarrow {
+    institutionsNarrow(pagination: { limit: 100 }) {
       ...institutionsNarrow
     }
   }
