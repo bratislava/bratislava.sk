@@ -260,7 +260,7 @@
 
 @screen maxMd {
   ::-webkit-scrollbar {
-    @apply h-1.5;
+    @apply h-1.5 w-0;
   }
 
   /* Track */

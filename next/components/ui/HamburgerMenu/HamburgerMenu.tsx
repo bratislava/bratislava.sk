@@ -66,8 +66,8 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
 
   return (
     <div
-      className={cx('fixed top-20 left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
-      style={{ height: 'calc(100vh - 80px)' }}
+      className={cx('fixed top-[64px] left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
+      style={{ height: 'calc(100vh - 60px)' }}
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
@@ -87,12 +87,12 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
             )
           })}
         </div>
-        <div className="flex items-center justify-between py-8">
+        <div className="items-center justify-between py-8 hidden lg:flex">
           <Link className="text-base font-medium" variant="plain" href="#">
             Prihlásenie
           </Link>
         </div>
-        <div className="flex flex-col gap-y-3.5">
+        <div className="flex flex-col gap-y-3.5 pt-8">
           {MOCK_HAMBURGER_MENU_ITEMS.map((item, index) => (
             <Link
               variant="plain"
