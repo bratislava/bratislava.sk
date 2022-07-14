@@ -65,10 +65,6 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
   useEffect(() => {
     setInput(keyword)
   }, [keyword])
-  const handleClick = (options: SearchOptionProps[], keyword: string) => {
-    setCheckedOptions(options)
-    setInput(keyword)
-  }
 
   const handleSelect = (options: SearchOptionProps[]) => {
     setCheckedOptions(options)
@@ -106,7 +102,6 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
             placeholder={t('enterKeyword')}
             title={t('searching')}
             buttonText={t('search')}
-            handleClick={handleClick}
             handleSelect={handleSelect}
             keyword={input}
           />
