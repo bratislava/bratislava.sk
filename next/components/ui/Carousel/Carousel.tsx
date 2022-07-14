@@ -86,7 +86,7 @@ export const Carousel = ({
         '-mx-4': spacing === 'default',
       })}
     >
-      {sliderControl(true)}
+      <div className="hidden md:block">{sliderControl(true)}</div>
 
       <div
         className={cx(
@@ -117,7 +117,7 @@ export const Carousel = ({
         })}
       </div>
 
-      {sliderControl(false)}
+      <div className="hidden md:block">{sliderControl(false)} </div>
     </div>
   )
 }
