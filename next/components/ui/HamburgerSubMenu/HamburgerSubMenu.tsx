@@ -2,10 +2,10 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
-import ChevronDown from '../../../assets/images/chevron-down-small.svg'
-import ChevronLeft from '../../../assets/images/chevron-left.svg'
-import ChevronUp from '../../../assets/images/chevron-up-small.svg'
-import CloseFilled from '../../../assets/images/close-filled.svg'
+import ChevronDown from '@assets/images/chevron-down-small.svg'
+import ChevronLeft from '@assets/images/chevron-left.svg'
+import ChevronUp from '@assets/images/chevron-up-small.svg'
+import CloseFilled from '@assets/images/close-filled.svg'
 import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
 
@@ -27,7 +27,6 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
       style={{ backgroundColor: item.color, height: 'calc(100vh - 80px)' }}
       className={cx(
         'fixed top-20 left-0 w-screen md:hidden flex flex-col z-40',
-        // 'absolute top-0 h-full w-screen flex-1',
         className
       )}
     >
@@ -79,7 +78,6 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                       ))
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
-                  {/* subItem.url && subItem.subItems.length > 2 ?  */}
                   {subItem.subItems.length > 2 && (
                     <button
                       onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
@@ -87,12 +85,12 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                     >
                       {isExpanded ? (
                         <>
-                          <p className="text-base font-semibold underline">{t('menu.showLess')}</p>
+                          <p className="text-base font-semibold underline">{t('showLess')}</p>
                           <ChevronUp />
                         </>
                       ) : (
                         <>
-                          <p className="text-base font-semibold underline">{t('Zobraziť ďalšie')}</p>
+                          <p className="text-base font-semibold underline">{t('showMore')}</p>
                           <ChevronDown />
                         </>
                       )}
