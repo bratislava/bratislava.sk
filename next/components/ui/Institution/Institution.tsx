@@ -45,14 +45,14 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
   const { Markdown: UIMarkdown } = useUIContext()
 
   return (
-    <div className={cx(className, 'px-10 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg')}>
+    <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
       <div className="flex flex-col">
         <h4 className="text-default font-semibold leading-[26px]">{title}</h4>
-        {subtitle && <UIMarkdown className="mt-6 opacity-75" content={subtitle} />}
+        {subtitle && <UIMarkdown className="mt-6 text-base fontSize-base" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
             {[...Array.from({ length: 3 })].map((_, ix) => (
-              <div key={ix} className="col-12 md:col-4 mb-2 basis-4/12 last:mb-0 md:mb-0">
+              <div key={ix} className="col-12 md:col-4 mb-2 last:mb-0 md:mb-0 break-all fontSize-base">
                 {content[ix] && <UIMarkdown content={content[ix]} />}
               </div>
             ))}

@@ -60,21 +60,38 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         ),
         p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
         a: ({ href, children }) => (
-          <UILink href={href ?? '#'} className="font-semibold text-font underline hover:text-primary">
+          <UILink
+            href={href ?? '#'}
+            className="font-semibold text-font underline hover:text-primary"
+            target={href?.startsWith('http') ? '_blank' : null}
+          >
             {children[0]}
           </UILink>
         ),
         img: ({ src, alt }) => <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>,
         blockquote: ({ children }) => <div className="border-l-4 border-primary pl-10">{children}</div>,
-        table: ({ children }) => <table className="w-full">{children}</table>,
-        tr: ({ children }) => <tr className="rounded-lg odd:bg-white even:bg-transparent">{children}</tr>,
+        table: ({ children }) => <table className="w-full table-block">{children}</table>,
+        tr: ({ children }) => <tr className="py-8 px-1 md:p-0 w-[280px] md:w-full flex flex-col md:table-row rounded-lg bg-white md:odd:bg-white md:even:bg-transparent">{children}</tr>,
+        tbody: ({ children }) => <tbody className="flex gap-5 md:gap-0 md:table-row-group" >{children}</tbody>,
         thead: ({ children }) => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="flex min-h-[92px] items-center px-4 text-left text-default">{children}</div>
+            <div className="flex md:min-h-[92px] items-center px-4 text-left text-sm md:text-default mb-1 lg:mb-0">{children}</div>
           </td>
         ),
-        ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
+        ol: ({ children }) => {
+          const elements = children
+            .filter((e) => e != '\n')
+            .map((e) => {
+              return (
+                isValidElement(e) && {
+                  ...e,
+                  props: { ...e.props, children: e.props.children.filter((c) => c != '\n') },
+                }
+              )
+            })
+          return <div className="flex flex-col gap-y-0">{elements}</div>
+        },
         li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
           if (ordered) {
@@ -84,7 +101,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
-                  'h-4 w-4 shrink-0 mt-1.5 rounded-full',
+                  'h-4 w-4 shrink-0 bg-primary rounded-full mt-1.5 border-4 border-solid border-primary',
                   { 'bg-primary': level == 0 },
                   { 'border-primary border-solid border-4': level != 0 }
                 )}
@@ -93,11 +110,12 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             </div>
           )
         },
+
         ul: ({ children, depth }) => {
           const elements = children.map((e) => {
             return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
-          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11">{elements}</div>
+          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11 inner-list">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}

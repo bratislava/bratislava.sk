@@ -43,7 +43,7 @@ export const ArticlesFilter = ({
           {!categoryExists
             ? BratislavaCategories.map((tab) => (
                 <TabBarTab
-                  className="mr-8 h-14 text-sm"
+                  className="mr-8 maxMd:h-14 text-sm"
                   key={tab}
                   tab={{
                     title: tab,
