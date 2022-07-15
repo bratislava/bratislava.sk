@@ -186,8 +186,6 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
-        {/* meta discription */}
-
         <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
           {/* meta description */}
             <Head>
