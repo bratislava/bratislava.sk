@@ -1,8 +1,21 @@
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import robots from '../../../strapi/public/robots.txt'
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  return res.send(robots)
+  if (process.env.IS_STAGING === 'true') {
+    return res.send(
+      `
+      User-Agent: *
+      Disallow: /
+      `
+    )
+  } else {
+    return res.send(
+      `
+      User-Agent: *
+      Disallow: /
+      `
+    )
+  }
 }
 
 export default withSentry(handler)
