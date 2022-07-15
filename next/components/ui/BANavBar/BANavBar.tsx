@@ -263,7 +263,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         <Brand />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
-            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className='text-lightGray'/>}
+            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className='text-gray-universal-500'/>}
           </div>
           <div className="relative flex cursor-pointer items-center bg-transparent text-md text-gray-light">
             <LanguageSelect

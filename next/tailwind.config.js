@@ -111,7 +111,6 @@ module.exports = {
           semilight: 'var(--semilight-gray-color)',
           light: 'var(--light-gray-color)',
         },
-        lightGray: '#9F9F9F',
         black: {
           universal: 'var(--universal-black)',
         },
