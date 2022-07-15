@@ -8,7 +8,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "strapi:local": "env-cmd -f ./.env.local strapi develop"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -23,6 +24,7 @@
     "@strapi/plugin-users-permissions": "4.2.3",
     "@strapi/strapi": "4.2.3",
     "better-sqlite3": "7.4.6",
+    "env-cmd": "^10.1.0",
     "patch-package": "^6.4.7",
     "pg": "^8.7.3",
     "postinstall-postinstall": "^2.1.0",
