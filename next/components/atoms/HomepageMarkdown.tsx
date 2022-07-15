@@ -74,7 +74,16 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             <div className="flex min-h-[92px] items-center px-4 text-left text-default">{children}</div>
           </td>
         ),
-        ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
+        ol: ({ children }: any) => {
+          console.log(children)
+          const elements = children.filter((e) => e != '\n')
+          const test = elements.map((e) => {
+            return { ...e, props: { ...e.props, children: e.props.children.filter((c) => c != '\n') } }
+          })
+          console.log('elements', elements)
+          console.log('test', test)
+          return <div className="flex flex-col gap-y-0 bg-green-300">{test}</div>
+        },
         li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
           if (ordered) {
