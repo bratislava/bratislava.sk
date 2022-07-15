@@ -9,6 +9,7 @@ import {
   PrimatorCouncil,
   SectionContainer,
   TopNine,
+  PageHeader,
   Waves,
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
@@ -17,6 +18,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 // import { GetServerSidePropsContext } from 'next'
 // import Image from 'next/image'
+import Head from 'next/head'
 import * as React from 'react'
 import {
   getParsedUDEDocumentsList,
@@ -184,6 +186,14 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
+        <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
+          {/* meta description */}
+            <Head>
+              <title>{homepage?.data?.attributes?.title}</title>
+              <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
+            </Head>
+        </PageHeader>
+
         <div className="bg-white">
           <SectionContainer>
             <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
