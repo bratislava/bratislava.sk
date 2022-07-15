@@ -247,6 +247,10 @@
     @apply text-center mb-6;
   }
 
+  .fontSize-base .typography-regular {
+    @apply text-base leading-7;
+  }
+
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
   }
@@ -266,9 +270,30 @@
 
 /* width */
 
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  ::-webkit-scrollbar {
+    @apply h-1.5 w-0;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-transparent rounded-2xl;
+  }
+}
+
 @screen maxMd {
   ::-webkit-scrollbar {
-    @apply h-1.5;
+    @apply h-1.5 w-0;
   }
 
   /* Track */
