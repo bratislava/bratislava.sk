@@ -2,13 +2,16 @@ import { ArrowRight } from '@assets/images'
 import cx from 'classnames'
 import React, { useState } from 'react'
 
-import ChevronRight from '../../../assets/images/chevron-right.svg'
-import EServices from '../../../assets/images/e-services.svg'
-import LightBulb from '../../../assets/images/light-bulb.svg'
-import SpeakerSmall from '../../../assets/images/speaker-small.svg'
-import TextSize from '../../../assets/images/text-size.svg'
-import Tourist from '../../../assets/images/tourist.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
+import EServices from '@assets/images/EServices.svg'
+import LightBulb from '@assets/images/bulb.svg'
+import SpeakerSmall from '@assets/images/speaker-small.svg'
+import TextSize from '@assets/images/text-size.svg'
+import Tourist from '@assets/images/Tourist-icon.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
+import Covid from '@assets/images/covid.svg'
+
+
 import { getIcon, Link, MenuMainItem } from '../index'
 
 interface IProps {
@@ -32,6 +35,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
     url: '#',
   },
   {
+    icon: <Covid />,
     title: 'Covid-19',
     url: '#',
   },
@@ -45,16 +49,16 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
     title: 'Som turista',
     url: '#',
   },
-  {
-    icon: <SpeakerSmall />,
-    title: 'Čítačka',
-    url: '#',
-  },
-  {
-    icon: <TextSize />,
-    title: 'Veľkosť písma',
-    url: '#',
-  },
+  // {
+  //   icon: <SpeakerSmall />,
+  //   title: 'Čítačka',
+  //   url: '#',
+  // },
+  // {
+  //   icon: <TextSize />,
+  //   title: 'Veľkosť písma',
+  //   url: '#',
+  // },
 ]
 
 export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) => {
@@ -66,8 +70,8 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
 
   return (
     <div
-      className={cx('fixed top-20 left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
-      style={{ height: 'calc(100vh - 80px)' }}
+      className={cx('fixed top-[64px] left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
+      style={{ height: 'calc(100vh - 60px)' }}
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
@@ -87,12 +91,12 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
             )
           })}
         </div>
-        <div className="flex items-center justify-between py-8">
+        <div className="items-center justify-between py-8 hidden lg:flex">
           <Link className="text-base font-medium" variant="plain" href="#">
             Prihlásenie
           </Link>
         </div>
-        <div className="flex flex-col gap-y-3.5">
+        <div className="flex flex-col gap-y-3.5 pt-8 ">
           {MOCK_HAMBURGER_MENU_ITEMS.map((item, index) => (
             <Link
               variant="plain"

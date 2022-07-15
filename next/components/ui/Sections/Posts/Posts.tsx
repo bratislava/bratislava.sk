@@ -81,8 +81,8 @@ export const Posts = ({
       </HorizontalScrollWrapper>
 
       {activeTab == 0 && (
-        <div className="mt-14 block">
-          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8">
+        <div className="mt-8 lg:mt-14 block">
+          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
@@ -100,14 +100,14 @@ export const Posts = ({
                     const tag = card.tag.data?.attributes
                     return (
                       <div key={i}>
-                        {card.tag && (
+                        {tag && (
                           <div className="mb-5">
                             <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag.pageCategory.data.attributes.color}))]`}
+                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag?.pageCategory.data.attributes.color}))]`}
                           >
                             {card.title}
                           </div>

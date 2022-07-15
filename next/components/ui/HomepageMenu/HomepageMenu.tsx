@@ -178,8 +178,8 @@ const HomepageMenu = ({ items }: IProps) => {
           const IconComponent = getIcon(item.icon)
           return (
             <button onClick={() => setSelectedMenu(item)} className="flex items-center gap-x-7 p-2" key={i}>
-              {IconComponent && <IconComponent className="h-12 w-12 text-font" />}
-              <p className="text-sm font-medium text-font">{item.title}</p>
+              {IconComponent && <IconComponent className="h-12 w-12 basis-12 grow-0 shrink-0 text-font" />}
+              <p className="text-sm font-medium text-font text-left">{item.title}</p>
             </button>
           )
         })}
@@ -286,7 +286,7 @@ const HomepageMenu = ({ items }: IProps) => {
                       </div>
                     )
                   })}
-                  <div className="absolute bottom-[-24px] left-1/2 cursor-pointer">
+                  <div className="absolute bottom-[-24px] left-1/2 cursor-pointer -translate-x-1/2">
                     <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
                   </div>
                 </Panel>

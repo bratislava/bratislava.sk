@@ -11,7 +11,7 @@ interface IProps {
 export const TopNine = ({ className, items }: IProps) => (
   <HorizontalScrollWrapper
     className={cx(
-      'lg:grid lg:grid-cols-3 gap-x-14 lg:gap-x-44 lg:gap-y-16 xs:gap-x-56 xs:grid xs:grid-cols-9 xs:overflow',
+      'lg:grid lg:grid-cols-3 gap-x-14 lg:gap-x-44 lg:gap-y-16 xs:gap-x-56 xs:grid xs:grid-cols-9 xs:overflow xs:mb-8',
       className
     )}
   >
