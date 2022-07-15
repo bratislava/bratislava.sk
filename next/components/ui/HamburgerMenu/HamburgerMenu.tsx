@@ -70,8 +70,8 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
 
   return (
     <div
-      className={cx('fixed top-20 left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
-      style={{ height: 'calc(100vh - 80px)' }}
+      className={cx('fixed top-[64px] left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
+      style={{ height: 'calc(100vh - 60px)' }}
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
