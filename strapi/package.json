@@ -4,12 +4,11 @@
   "version": "1.0.5",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "env-cmd -f ./.env.local strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "postinstall": "patch-package",
-    "strapi:local": "env-cmd -f ./.env.local strapi develop"
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
