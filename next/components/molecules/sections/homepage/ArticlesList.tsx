@@ -158,7 +158,7 @@ export const ArticlesList = ({
   return (
     <div>
       <div className="text-lg font-semibold">{title}</div>
-      <div className={`mt-8 grid grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
+      <div className={`mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
         {data.map((article, index) => (
           <NewsCard
             key={index}
