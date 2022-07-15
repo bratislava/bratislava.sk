@@ -63,7 +63,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           <UILink
             href={href ?? '#'}
             className="font-semibold text-font underline hover:text-primary"
-            target={href.startsWith('http') ? '_blank' : null}
+            target={href?.startsWith('http') ? '_blank' : null}
           >
             {children[0]}
           </UILink>
