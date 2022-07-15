@@ -264,6 +264,10 @@
   @apply bg-white !important;
 }
 
+.table-block tbody tr td:first-child div {
+  @apply text-default font-semibold;
+}
+
 /* width */
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
@@ -305,6 +309,14 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-transparent rounded-2xl;
+  }
+
+  .homepage-markdown .no-whitespace-wrap {
+    @apply overflow-x-scroll -mx-7.5 lg:mx-0 px-7.5 lg:px-0;
+  }
+
+  .table-block tbody tr td:first-child div {
+    @apply mb-6;
   }
 }
 

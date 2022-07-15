@@ -1,12 +1,14 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import React from 'react'
-
 import BABrand from '../../../assets/images/BABrand.svg'
 import EULogo from '../../../assets/images/EULogo.svg'
 import FBLogo from '../../../assets/images/FB.svg'
 import IGLogo from '../../../assets/images/IG.svg'
 import YTLogo from '../../../assets/images/YT.svg'
+import EULogoPng from '../../ui/images/EULogo.png'
+import Image from 'next/image'
+
 import { FooterSection, FooterSectionProps } from '../FooterSection/FooterSection'
 
 export interface FooterProps {
@@ -135,8 +137,8 @@ export const Footer = ({
             </a>
           )}
         </nav>
-        <span className="mt-5 lg:hidden">
-          <EULogo className='mx-auto'/>
+        <span className="lg:hidden mt-5">
+          <Image src={EULogoPng} />
         </span>
         <p className="mt-2 lg:mt-0">{copyright}</p>
         <div className="hidden text-right lg:block" aria-label="lang">
