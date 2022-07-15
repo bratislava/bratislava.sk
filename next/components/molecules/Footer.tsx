@@ -4,6 +4,7 @@ import * as React from 'react'
 
 import FooterWidth from '../../assets/images/footer-city.svg'
 import FooterWidthMobile from '../../assets/images/footer-city-mobile.svg'
+import FooterWidthTablet from '../../components/ui/Divider/dividers/footer-city-tablet.svg'
 import { usePageWrapperContext } from '../layouts/PageWrapper'
 
 const Footer = (props: FooterProps) => {
@@ -19,7 +20,10 @@ const Footer = (props: FooterProps) => {
   return (
     // <SectionContainer>
     <div className="mt-24 ">
-      <FooterWidth className="w-full" />
+      <FooterWidth className="hidden w-full md:block" />
+      <FooterWidthTablet className="hidden w-full md:hidden" />
+      <FooterWidthMobile className="w-full block sm:hidden" />
+
       <div className="bg-white px-7.5">
         <div className="mx-auto max-w-screen-1.5lg">
           <UIFooter className="pb-14" {...props} languageLinks={languageLinks} />
