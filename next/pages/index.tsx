@@ -189,13 +189,11 @@ const Homepage = ({
         {/* meta discription */}
 
         <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
-          {/* meta discription */}
-          {homepage?.data?.attributes?.metaDiscription && homepage?.data?.attributes?.title && (
+          {/* meta description */}
             <Head>
               <title>{homepage?.data?.attributes?.title}</title>
-              <meta name="description" content={homepage?.data?.attributes?.metaDiscription} />
+              <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
             </Head>
-          )}
         </PageHeader>
 
         <div className="bg-white">
