@@ -60,7 +60,11 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         ),
         p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
         a: ({ href, children }) => (
-          <UILink href={href ?? '#'} className="font-semibold text-font underline hover:text-primary">
+          <UILink
+            href={href ?? '#'}
+            className="font-semibold text-font underline hover:text-primary"
+            target={href?.startsWith('http') ? '_blank' : null}
+          >
             {children[0]}
           </UILink>
         ),
@@ -75,7 +79,19 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             <div className="flex md:min-h-[92px] items-center px-4 text-left text-sm md:text-default mb-1 lg:mb-0">{children}</div>
           </td>
         ),
-        ol: ({ children }) => <div className="flex flex-col gap-y-0">{children}</div>,
+        ol: ({ children }) => {
+          const elements = children
+            .filter((e) => e != '\n')
+            .map((e) => {
+              return (
+                isValidElement(e) && {
+                  ...e,
+                  props: { ...e.props, children: e.props.children.filter((c) => c != '\n') },
+                }
+              )
+            })
+          return <div className="flex flex-col gap-y-0">{elements}</div>
+        },
         li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
           if (ordered) {
