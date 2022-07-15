@@ -58,7 +58,6 @@ export const NewsCard = ({
   const { Link: UILink } = useUIContext()
   const [isHover, setHover] = useState(false)
   const cardRef: RefObject<HTMLInputElement> = useRef()
-
   const enterListner = () => setHover(true)
   const exitListner = () => setHover(false)
 
@@ -89,7 +88,7 @@ export const NewsCard = ({
 
   return (
     <VerticalCard
-      className={cx(className, 'min-w-[280px]  leading-extra-tight')}
+      className={cx(className, 'min-w-[280px] leading-extra-tight')}
       imageSrc={coverImage?.data?.attributes?.url}
     >
       <UILink href={`/blog/${slug}`}>
@@ -103,31 +102,34 @@ export const NewsCard = ({
           <h3 className="news-small-content text-default font-semibold lg:text-md">{title}</h3>
           <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
           <p className="news-small-content text-sm">{excerpt}</p>
-
-          {slug && (
-            <Button
-              className="mt-5 h-6"
-              shape="none"
-              variant="muted"
-              icon={
-                isHover ? (
-                  <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />
-                ) : (
-                  <ChevronRight />
-                )
-              }
-            >
-              <div
-                className="relative font-semibold"
-                style={{
-                  color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
-                }}
+          <div>
+            {slug && (
+              <Button
+                className="mt-5 h-6"
+                shape="none"
+                variant="muted"
+                onMouseEnter={enterListner}
+                onMouseLeave={exitListner}
+                icon={
+                  isHover ? (
+                    <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />
+                  ) : (
+                    <ChevronRight color="black" />
+                  )
+                }
               >
-                {readMoreText}
-                <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
-              </div>
-            </Button>
-          )}
+                <div
+                  className="relative font-semibold"
+                  style={{
+                    color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
+                  }}
+                >
+                  {readMoreText} 
+                  <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
+                </div>
+              </Button>
+            )}
+          </div>
         </div>
       </UILink>
     </VerticalCard>

@@ -99,7 +99,9 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
                 {headline}
               </div>
               <div className="flex">
-                <div className="text-default font-semibold text-white">{item?.data?.attributes?.title}</div>
+                <div className="text-default line-clamp-2 font-semibold text-white overflow-hidden">
+                  {item?.data?.attributes?.title}
+                </div>
                 <VerticalCardButton className="invisible shrink-0 group-hover:lg:visible" size="medium">
                   <ArrowRightShort className="scale-125" />
                 </VerticalCardButton>

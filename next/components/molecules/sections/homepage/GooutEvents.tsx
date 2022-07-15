@@ -28,8 +28,9 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
     <div className={className}>
       <h2 className="text-center text-default font-semibold lg:text-2xl">{title}</h2>
 
-      <div className="mt-3 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
+      <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
+          className="-ml-7.5 -mr-7.5"
           shiftIndex={3}
           visibleItems={3}
           items={gooutEvents.map((ev, i) => (
@@ -57,13 +58,13 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         />
       </div>
 
-      <div className="mt-10 hidden w-full justify-center lg:flex">
+      <div className="mt-10 justify-center flex w-full text-center mb-10">
         <Link
           href={linkUrl}
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className="box-border rounded-lg border-2 border-primary py-3.5 px-6 text-default"
+          className=" box-border rounded-lg border-2 border-primary py-3.5 px-6 text-sm lg:text-default"
         >
           {linkTitle}
         </Link>
