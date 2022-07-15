@@ -202,11 +202,11 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards className="mb-14 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
-            className="mt-10"
+            className="lg:mt-10"
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
