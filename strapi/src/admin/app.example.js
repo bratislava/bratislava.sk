@@ -1,3 +1,5 @@
+import {} from "strapi-plugin-meilisearch"
+
 export default {
   config: {
     locales: [
