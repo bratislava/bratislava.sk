@@ -273,7 +273,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           </div>
         </div>
 
-        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-5 cursor-pointer">
+        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-6 cursor-pointer">
           {burgerOpen ? <HamburgerClose /> : <Hamburger />}
         </button>
 
