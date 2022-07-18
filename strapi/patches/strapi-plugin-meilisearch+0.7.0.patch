@@ -1,0 +1,12 @@
+diff --git a/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js b/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js
+index 59ea9b0..731f5bc 100644
+--- a/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js
++++ b/node_modules/strapi-plugin-meilisearch/server/services/content-types/content-types.js
+@@ -185,6 +185,7 @@ module.exports = ({ strapi }) => ({
+       sort,
+       populate,
+       publicationState: publicationState,
++      locale:"all"
+     })
+     // Safe guard in case the content-type is a single type.
+     // In which case it is wrapped in an array for consistency.
