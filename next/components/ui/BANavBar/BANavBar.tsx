@@ -24,6 +24,7 @@ interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
   handleSearch?: (searchOpen: boolean) => void
+  pageColor?: string
 }
 
 const navBarTexts = {
@@ -52,7 +53,7 @@ const navBarUrls = {
   },
 }
 
-export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
+export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
   const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -152,6 +153,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
   }
 
   const { Link: UILink } = useUIContext()
+
+  console.log(pageColor)
 
   return (
     <>
@@ -295,7 +298,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
             <div className="block sm:flex">
               <Button
                 className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
-                variant="tertiary"
+                variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                 onClick={acceptAllCookies}
               >
                 {t('acceptAll')}
@@ -408,7 +411,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 <div className="block md:flex">
                   <Button
                     className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
-                    variant="tertiary"
+                    variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
                     {t('acceptAll')}

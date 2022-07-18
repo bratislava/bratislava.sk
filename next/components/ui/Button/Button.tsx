@@ -15,6 +15,7 @@ export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTM
     | 'secondary'
     | 'tertiary'
     | 'secondary-dark-text'
+    | 'tertiary-dark-text'
     | 'transparent'
     | 'full-transparent'
     | 'transparent-black'
@@ -40,7 +41,6 @@ export const Button = ({
       <span className="ml-5 hidden group-hover:block">{hoverIcon || icon}</span>
     </>
   ) : null
-
   return (
     <button
       className={cx('group flex items-center', className, {
@@ -54,6 +54,7 @@ export const Button = ({
         'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
         'bg-tertiary text-white': shape !== 'none' && variant === 'tertiary',
         'bg-secondary text-font': shape !== 'none' && variant === 'secondary-dark-text',
+        'bg-tertiary text-font': shape !== 'none' && variant === 'tertiary-dark-text',
         'bg-transparent text-default text-font hover:text-primary border-primary border-2':
           shape !== 'none' && variant === 'transparent',
 
