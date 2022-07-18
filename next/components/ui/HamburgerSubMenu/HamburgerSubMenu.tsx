@@ -24,9 +24,9 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
 
   return (
     <div
-      style={{ backgroundColor: item.color, height: 'calc(100vh - 80px)' }}
+      style={{ backgroundColor: item.color, height: 'calc(100vh - 60px)' }}
       className={cx(
-        'fixed top-20 left-0 w-screen md:hidden flex flex-col z-40',
+        'fixed top-[64px] left-0 w-screen md:hidden flex flex-col z-40',
         className
       )}
     >
