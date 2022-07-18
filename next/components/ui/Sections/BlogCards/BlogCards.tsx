@@ -28,25 +28,29 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
       <div className="hidden xl:block">
         <Carousel
           shiftIndex={shiftIndex}
-          items={posts.map((blogCard, i) => (
-            <div key={i} className="box-content flex py-16">
-              <HorizontalCard className="min-h-220 w-540" key={i} imageSrc={blogCard.imageSrc}>
-                <p className="line-clamp-4 overflow-hidden text-ellipsis">{blogCard.title}</p>
-                <UILink
-                  className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
-                  href={`${blogCard?.url}` || ''}
-                >
-                  <span className="text-sm font-semibold">{t('readMore')}</span>
-                  <span className="group-hover:hidden">
-                    <ChevronRight />
-                  </span>
-                  <span className="hidden group-hover:block">
-                    <ArrowRight />
-                  </span>
-                </UILink>
-              </HorizontalCard>
-            </div>
-          ))}
+          items={
+            posts.length > 0
+              ? posts.map((blogCard, i) => (
+                  <div key={i} className="box-content flex py-16">
+                    <HorizontalCard className="min-h-220 w-540" key={i} imageSrc={blogCard.imageSrc}>
+                      <p className="line-clamp-4 overflow-hidden text-ellipsis">{blogCard.title}</p>
+                      <UILink
+                        className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
+                        href={`${blogCard?.url}` || ''}
+                      >
+                        <span className="text-sm font-semibold">{t('readMore')}</span>
+                        <span className="group-hover:hidden">
+                          <ChevronRight />
+                        </span>
+                        <span className="hidden group-hover:block">
+                          <ArrowRight />
+                        </span>
+                      </UILink>
+                    </HorizontalCard>
+                  </div>
+                ))
+              : []
+          }
         />
       </div>
 
