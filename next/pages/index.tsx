@@ -9,6 +9,7 @@ import {
   PrimatorCouncil,
   SectionContainer,
   TopNine,
+  PageHeader,
   Waves,
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
@@ -17,6 +18,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 // import { GetServerSidePropsContext } from 'next'
 // import Image from 'next/image'
+import Head from 'next/head'
 import * as React from 'react'
 import {
   getParsedUDEDocumentsList,
@@ -184,6 +186,14 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
+        <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
+          {/* meta description */}
+            <Head>
+              <title>{homepage?.data?.attributes?.title}</title>
+              <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
+            </Head>
+        </PageHeader>
+
         <div className="bg-white">
           <SectionContainer>
             <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
@@ -202,11 +212,11 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards className="mb-14 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
-            className="mt-10"
+            className="lg:mt-10"
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
@@ -233,7 +243,9 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-secondary py-16">
-          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl">{data.topNineTitle}</h2>
+          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl xs:mt-8">
+            {data.topNineTitle}
+          </h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
@@ -244,7 +256,7 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard className="mx-auto mt-36 min-h-[200px] max-w-3xl" {...inba} />
+          <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-[78px]" />
 
           <FacebookPosts title="Bratislava na Facebooku" />

@@ -1,4 +1,4 @@
-import { ChevronRight } from '@assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -36,12 +36,12 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                   className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
                   href={`${blogCard?.url}` || ''}
                 >
-                  <span className="text-sm font-semibold hover:text-default">{t('readMore')}</span>
+                  <span className="text-sm font-semibold">{t('readMore')}</span>
                   <span className="group-hover:hidden">
                     <ChevronRight />
                   </span>
                   <span className="hidden group-hover:block">
-                    <ChevronRight />
+                    <ArrowRight />
                   </span>
                 </UILink>
               </HorizontalCard>
@@ -50,15 +50,27 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
         />
       </div>
 
-      <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4 -mx-8 px-8')}>
+      <HorizontalScrollWrapper className={cx(className, 'xl:hidden pt-10 pb-14 lg:pb-5 pl-8 gap-x-4 -mx-8 px-8 mb-0')}>
         {posts.map((blogCard, i) => (
           <HorizontalCard
             key={i}
             imageSrc={blogCard.imageSrc}
             className="w-11/12 shrink-0"
-            accessory={<VerticalCardButton />}
+            // accessory={<VerticalCardButton />}
           >
-            {blogCard.title}
+            <p className="line-clamp-4 text-left overflow-hidden text-ellipsis">{blogCard.title}</p>
+            <UILink
+              className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
+              href={`${blogCard?.url}` || ''}
+            >
+              <span className="text-sm font-semibold">{t('readMore')}</span>
+              <span className="group-hover:hidden">
+                <ChevronRight />
+              </span>
+              <span className="hidden group-hover:block">
+                <ArrowRight />
+              </span>
+            </UILink>
           </HorizontalCard>
         ))}
       </HorizontalScrollWrapper>
