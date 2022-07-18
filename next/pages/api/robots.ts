@@ -9,12 +9,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
       `
     )
   } else {
-    return res.send(
-      `
-      User-Agent: *
-      Disallow: /
-      `
-    )
+    return res.send('')
   }
 }
 
