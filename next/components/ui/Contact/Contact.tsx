@@ -103,6 +103,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
             <span
               className={cx('font-semibold w-full break-all text-center', {
                 'mt-9': key === 0,
+                "whitespace-nowrap" : variant === "phone",
               })}
             >
               {item}
