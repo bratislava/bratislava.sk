@@ -1,3 +1,9 @@
+import Hamburger from '@assets/images/ba-hamburger.svg'
+import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
+import CloseIcon from '@assets/images/close.svg'
+import HamburgerClose from '@assets/images/hamburger-close.svg'
+import HamburgerCloseWhite from '@assets/images/hamburger-close-white.svg'
+import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
@@ -7,12 +13,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Cookies } from 'react-cookie-consent'
 import * as ReactGA from 'react-ga'
 
-import Hamburger from '../../../assets/images/ba-hamburger.svg'
-import ChevronDownSmall from '../../../assets/images/chevron-down-small.svg'
-import CloseIcon from '../../../assets/images/close.svg'
-import HamburgerClose from '../../../assets/images/hamburger-close.svg'
-import HamburgerCloseWhite from '../../../assets/images/hamburger-close-white.svg'
-import SearchIcon from '../../../assets/images/search-icon.svg'
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Brand } from '../Brand/Brand'
 import Button from '../Button/Button'
@@ -264,7 +264,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         <Brand />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
-            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon />}
+            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className='text-gray-universal-500'/>}
           </div>
           <div className="relative flex cursor-pointer items-center bg-transparent text-md text-gray-light">
             <LanguageSelect
@@ -274,7 +274,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           </div>
         </div>
 
-        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-4 cursor-pointer">
+        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-6 cursor-pointer">
           {(burgerOpen && !searchOpen ) ? <HamburgerClose /> : <Hamburger />}
         </button>
 

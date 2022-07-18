@@ -1,11 +1,11 @@
 import { getNumericLocalDate } from '@utils/local-date'
 import { useState } from 'react'
-import { getDocumentDetailURL, getDocumentFileURL, getMockedDetail } from 'services/ginis'
+import { getDocumentDetailURL, getDocumentFileURL } from 'services/ginis'
 import useSWR from 'swr'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right-small.svg'
-import Download from '../../../assets/images/download-document.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right-small.svg'
+import Download from '@assets/images/download-document.svg'
 import Button from '../Button/Button'
 import { FileList, TFile, TFileSection } from '../FileList/FileList'
 import Modal from '../Modal/Modal'
@@ -59,7 +59,7 @@ export const DocumentCard = ({
   return (
     <>
       <Panel className={className}>
-        <div className="flex w-full flex-col gap-y-5 px-4 pt-6 lg:px-10 lg:pt-8 lg:pb-6">
+        <div className="flex w-full flex-col gap-y-5 px-5 py-6 lg:px-10 lg:py-8">
           <div className="-mb-3 text-default font-semibold">{title}</div>
           <div className="flex flex-col gap-x-6 text-xs text-gray-dark lg:flex-row">
             <div>{new Date(createdAt).toLocaleDateString()}</div>
@@ -67,7 +67,7 @@ export const DocumentCard = ({
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
           </div>
           <div>{content}</div>
-          <div className="mb-2 flex flex-row flex-col items-start gap-x-6">
+          <div className=" flex flex-row flex-col items-start gap-x-6">
             <Button
               variant="secondaryDarkText"
               className="hover:color-white w-fit px-6 py-4 text-sm font-medium shadow-none hover:bg-primary hover:text-white"

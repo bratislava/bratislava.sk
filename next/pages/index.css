@@ -247,6 +247,10 @@
     @apply text-center mb-6;
   }
 
+  .fontSize-base .typography-regular {
+    @apply text-base leading-7;
+  }
+
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
   }
@@ -260,11 +264,15 @@
   @apply bg-white !important;
 }
 
+.table-block tbody tr td:first-child div {
+  @apply text-default font-semibold;
+}
+
 /* width */
 
-@screen maxMd {
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
   ::-webkit-scrollbar {
-    @apply h-1.5;
+    @apply h-1.5 w-0;
   }
 
   /* Track */
@@ -280,6 +288,35 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-transparent rounded-2xl;
+  }
+}
+
+@screen maxMd {
+  ::-webkit-scrollbar {
+    @apply h-1.5 w-0;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-transparent rounded-2xl;
+  }
+
+  .homepage-markdown .no-whitespace-wrap {
+    @apply overflow-x-scroll -mx-7.5 lg:mx-0 px-7.5 lg:px-0;
+  }
+
+  .table-block tbody tr td:first-child div {
+    @apply mb-6;
   }
 }
 
