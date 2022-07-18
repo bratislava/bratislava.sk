@@ -17,7 +17,7 @@ export const HorizontalCard = ({ accessory, className, children, imageSrc, ...re
             style={{
               backgroundImage: `url(${imageSrc})`,
               paddingTop: '71.4%',
-              clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0% 100%)',
+              clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0% 100%)',
             }}
           />
           <div
