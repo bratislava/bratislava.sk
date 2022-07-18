@@ -199,7 +199,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                       { 'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength },
                       { 'cursor-default': input.length <= minKeywordLength }
                     )}
-                    variant="secondaryDarkText"
+                    variant="secondary-dark-text"
                   >
                     {t('search')}
                   </Button>
@@ -263,7 +263,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         <Brand />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
-            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className='text-gray-universal-500'/>}
+            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
           </div>
           <div className="relative flex cursor-pointer items-center bg-transparent text-md text-gray-light">
             <LanguageSelect
@@ -295,15 +295,17 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
             <div className="block sm:flex">
               <Button
                 className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
-                variant="primary"
+                variant="tertiary"
                 onClick={acceptAllCookies}
               >
-                {' '}
-                {t('acceptAll')}{' '}
+                {t('acceptAll')}
               </Button>
-              <Button className="mt-0 px-6 h-12 text-sm font-medium" variant="secondary" onClick={declineCookies}>
-                {' '}
-                {t('denyAll')}{' '}
+              <Button
+                className="mt-0 px-6 h-12 text-sm font-medium"
+                variant="secondary-dark-text"
+                onClick={declineCookies}
+              >
+                {t('denyAll')}
               </Button>
             </div>
           </div>
@@ -405,20 +407,18 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className=" mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
-                    variant="secondary"
+                    className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
+                    variant="tertiary"
                     onClick={acceptAllCookies}
                   >
-                    {' '}
-                    {t('acceptAll')}{' '}
+                    {t('acceptAll')}
                   </Button>
                   <Button
                     className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-0 md:ml-0 box-none"
                     variant="secondary"
                     onClick={declineCookies}
                   >
-                    {' '}
-                    {t('denyAll')}{' '}
+                    {t('denyAll')}
                   </Button>
                 </div>
               </div>
