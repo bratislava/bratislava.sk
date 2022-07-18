@@ -115,7 +115,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           const elements = children.map((e) => {
             return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
-          return <div className="flex flex-col gap-y-6 lg:gap-y-11 lg:pl-6 pt-6 lg:pt-11 inner-list">{elements}</div>
+          return <div className="flex flex-col gap-y-6 lg:gap-y-8 lg:pl-6 pt-6 lg:pt-8 pb-6 lg:pb-14 inner-list">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}
