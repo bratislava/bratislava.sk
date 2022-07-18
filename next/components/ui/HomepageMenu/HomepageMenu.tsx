@@ -17,7 +17,7 @@ import cx from 'classnames'
 import { useRef, useState } from 'react'
 import { useOutsideClick } from 'rooks'
 
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import { Panel } from '../Panel/Panel'
 import Ball from './icons/icon-ball.svg'
