@@ -4,7 +4,7 @@
   "version": "1.0.5",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "env-cmd -f ./.env.local strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
@@ -23,6 +23,7 @@
     "@strapi/plugin-users-permissions": "4.2.3",
     "@strapi/strapi": "4.2.3",
     "better-sqlite3": "7.4.6",
+    "env-cmd": "^10.1.0",
     "patch-package": "^6.4.7",
     "pg": "^8.7.3",
     "postinstall-postinstall": "^2.1.0",
