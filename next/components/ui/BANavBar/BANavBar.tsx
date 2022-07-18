@@ -1,24 +1,25 @@
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Cookies } from 'react-cookie-consent'
+import * as ReactGA from 'react-ga'
+
 import Hamburger from '../../../assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-small.svg'
 import CloseIcon from '../../../assets/images/close.svg'
 import HamburgerClose from '../../../assets/images/hamburger-close.svg'
 import HamburgerCloseWhite from '../../../assets/images/hamburger-close-white.svg'
 import SearchIcon from '../../../assets/images/search-icon.svg'
+import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Brand } from '../Brand/Brand'
 import Button from '../Button/Button'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
 import NarrowText from '../NarrowText/NarrowText'
-import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
-import { Cookies } from 'react-cookie-consent'
-import * as ReactGA from 'react-ga'
-import { useRouter } from 'next/router'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -274,34 +275,34 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         </div>
 
         <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-4 cursor-pointer">
-          {burgerOpen ? <HamburgerClose /> : <Hamburger />}
+          {(burgerOpen && !searchOpen ) ? <HamburgerClose /> : <Hamburger />}
         </button>
 
-        {burgerOpen && <HamburgerMenu hamburgerMenuItems={menuItems} />}
+        {(burgerOpen && !searchOpen) && <HamburgerMenu hamburgerMenuItems={menuItems} />}
       </div>
 
       {!isConsentSubmitted ? (
-        <div className="fixed bottom-6 z-50 px-6 left-0 right-0">
-          <div className="bg-white rounded-lg py-8 px-6 md:px-10 shadow max-w-[1110px] mx-auto">
-            <h6 className="text-default mb-4 font-semibold"> {t('cookie_consent_modal_content_title')} </h6>
-            <p className="text-xxs sm:text-sm mb-8">
+        <div className="fixed inset-x-0 bottom-6 z-50 px-6">
+          <div className="mx-auto max-w-[1110px] rounded-lg bg-white py-8 px-6 shadow md:px-10">
+            <h6 className="mb-4 text-default font-semibold"> {t('cookie_consent_modal_content_title')} </h6>
+            <p className="mb-8 text-xxs sm:text-sm">
               {' '}
               {t('cookie_consent_body')}{' '}
-              <span className="font-semibold underline cursor-pointer" onClick={() => setShowModal(true)}>
+              <span className="cursor-pointer font-semibold underline" onClick={() => setShowModal(true)}>
                 {' '}
                 {t('cookie_consent_setting')}{' '}
               </span>
             </p>
             <div className="block sm:flex">
               <Button
-                className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
+                className="mb-3 h-12 px-6 text-sm font-medium sm:my-0 sm:mr-6"
                 variant="primary"
                 onClick={acceptAllCookies}
               >
                 {' '}
                 {t('acceptAll')}{' '}
               </Button>
-              <Button className="mt-0 px-6 h-12 text-sm font-medium" variant="secondary" onClick={declineCookies}>
+              <Button className="mt-0 h-12 px-6 text-sm font-medium" variant="secondary" onClick={declineCookies}>
                 {' '}
                 {t('denyAll')}{' '}
               </Button>
@@ -312,28 +313,28 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         ''
       )}
       {showModal ? (
-        <div className="fixed z-50 px-6 left-0 right-0 top-0 bottom-0 bg-transperentBG">
-          <div className="bg-white rounded-lg shadow max-w-[1110px] mx-auto relative top-1/2 -translate-y-1/2">
+        <div className="fixed inset-0 z-50 bg-transperentBG px-6">
+          <div className="relative top-1/2 mx-auto max-w-[1110px] -translate-y-1/2 rounded-lg bg-white shadow">
             <div
-              className="cursor-pointer h-16 w-16 md:h-72 md:w-72 rounded-full bg-primary flex justify-center items-center text-white absolute mx-auto md:mx-0 -bottom-6 left-0 right-0 md:bottom-auto md:left-auto md:-top-6 md:-right-6"
+              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-primary text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-72 md:w-72"
               onClick={() => setShowModal(false)}
             >
               <HamburgerCloseWhite />
             </div>
             <div className="max-h-90Vh overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
-                <h5 className="text-default md:text-md font-semibold cursor-pointer">
+                <h5 className="cursor-pointer text-default font-semibold md:text-md">
                   {' '}
                   {t('cookie_consent_modal_title')}{' '}
                 </h5>
               </div>
               <div className="mb-10">
-                <h6 className="text-xxs md:text-default mb-4 font-semibold">
+                <h6 className="mb-4 text-xxs font-semibold md:text-default">
                   {' '}
                   {t('cookie_consent_modal_content_title')}{' '}
                 </h6>
                 <p
-                  className="text-xxs md:text-sm mb-8"
+                  className="mb-8 text-xxs md:text-sm"
                   dangerouslySetInnerHTML={{ __html: t('cookie_consent_modal_conent_body') }}
                 />
                 <AccordionItemSmall
@@ -397,7 +398,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
               </div>
               <div className="block items-center justify-between md:flex">
                 <Button
-                  className="mx-auto mb-3 md:mb-0 md:mt-0 md:mr-6 md:ml-0 px-6 h-12 text-sm font-medium bg-primary"
+                  className="mx-auto mb-3 h-12 bg-primary px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
                   onClick={saveSettings}
                 >
                   {' '}
@@ -405,7 +406,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className=" mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
+                    className=" box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mr-6 md:ml-0"
                     variant="secondary"
                     onClick={acceptAllCookies}
                   >
@@ -413,7 +414,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                     {t('acceptAll')}{' '}
                   </Button>
                   <Button
-                    className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-0 md:ml-0 box-none"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mx-0"
                     variant="secondary"
                     onClick={declineCookies}
                   >
@@ -501,14 +502,14 @@ const LanguageSelect = ({
     <div className="relative flex w-[50px] items-center" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
-        className={`ml-3 hidden lg:flex mix-blend-normal ${
-          isSelectClicked && isComponentVisible && '-rotate-180 mb-1'
+        className={`ml-3 hidden mix-blend-normal lg:flex ${
+          isSelectClicked && isComponentVisible && 'mb-1 -rotate-180'
         }`}
       />
       {isSelectClicked && isComponentVisible && (
         <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-[46px] flex-col items-center justify-center lg:left-0">
-          <div className="z-10 w-4 h-0 border-x-8 border-solid border-transparent border-b-4 border-b-[#F8D7D4]"></div>
-          <div className="w-full min-h-[60px] h-auto bg-[#F8D7D4] rounded-lg flex flex-col items-center pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
+          <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-[#F8D7D4]" />
+          <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
                 className="typography-sm hover:typography-highlight-sm mt-3 h-6 w-[22px] text-[#333333]"

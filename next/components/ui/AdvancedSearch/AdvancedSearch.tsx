@@ -68,7 +68,7 @@ export const AdvancedSearch = ({
     }
   }
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     if (input.length > minKeywordLength) {
       router.push(`${t('searchLink')}?keyword=${input}`)
     }
@@ -107,6 +107,8 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
+          value={input}
+          onChange={handleChange}
           className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
           placeholder={t('search')}
         />
