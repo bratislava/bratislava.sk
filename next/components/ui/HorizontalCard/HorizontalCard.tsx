@@ -24,7 +24,6 @@ export const HorizontalCard = ({ accessory, className, children, imageSrc, ...re
             className="flex-0 max-w hidden w-56 bg-cover xl:block"
             style={{
               backgroundImage: `url(${imageSrc})`,
-              clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)',
             }}
           />
         </>
