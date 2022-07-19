@@ -47,12 +47,13 @@ export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
       {menuItems.map((item, i) => (
         <div key={i} className="group flex-1 cursor-pointer transition delay-500 duration-300 ease-in-out">
           <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
-          <MenuPanel
+            <MenuPanel
             item={item}
-            panelHidden={panelHidden}
+            panelHidden={panelHidden} 
+            setDisableHover={setDisableHover}
             setPanelHidden={setPanelHidden}
             disableHover={disableHover}
-          />
+          />       
         </div>
       ))}
     </div>
@@ -104,15 +105,23 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
 interface MenuPanelProps {
   item: MenuMainItem
   panelHidden: boolean
+  setDisableHover: (value: boolean) => void
   setPanelHidden: (value: boolean) => void
   disableHover: boolean
 }
 
-const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover }: MenuPanelProps) => {
+const MenuPanel = ({ item, panelHidden, setPanelHidden, setDisableHover, disableHover }: MenuPanelProps) => {
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
   const { Link: UILink } = useUIContext()
   const ref = useRef()
-  useOutsideClick(ref, () => setPanelHidden(true))
+  const closeMenu = () => {
+    setPanelHidden(true)
+    setDisableHover(!disableHover)
+  }
+  useOutsideClick(ref, () => {
+    setPanelHidden(true)
+    setDisableHover(!disableHover)
+  });
 
   return (
     <div
@@ -187,7 +196,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover }: MenuPane
           waveColor={item.color}
           isRich
         />
-      </div>
+      </div> 
     </div>
   )
 }
