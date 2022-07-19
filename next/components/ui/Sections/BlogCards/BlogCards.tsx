@@ -29,7 +29,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
         <Carousel
           shiftIndex={shiftIndex}
           items={
-            posts.length > 0
+            posts != null
               ? posts.map((blogCard, i) => (
                   <div key={i} className="box-content flex py-16">
                     <HorizontalCard className="min-h-220 w-540" key={i} imageSrc={blogCard.imageSrc}>
