@@ -10,4 +10,4 @@ What's here
 
 ---
 
-🐳 `docker-compose.yml` - if you need to quickly setup postgres instance, run `docker-compose up` in this directory (you need docker installed)
+🐳 `docker-compose.yml` - if you need to quickly setup postgres instance, run `docker compose up` in this directory (you need docker installed)
