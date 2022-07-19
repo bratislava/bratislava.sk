@@ -221,10 +221,8 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsOrganizationalStructure':
       return <AdvancedAccordion {...section} />
 
-    /*
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
-    */
 
     default:
       return null
