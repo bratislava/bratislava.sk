@@ -61,7 +61,7 @@ export const FileList = ({
         const quo = (length - rem) / numberOfItemsPerRow
         const rows = !clicked ? 1 : rem > maxRemainder ? quo + 1 : quo
         return (
-          <div key={index} className={cx({ 'mt-5': index > 0 })}>
+          <div key={index} className={cx({ 'mt-2': index > 0 })}>
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
               {Array.from(Array.from({ length: rows }).keys(), (row, index) => {
                 const start = row * numberOfItemsPerRow
@@ -106,11 +106,11 @@ export const FileList = ({
             </div>
             {!noScroll && (
               <div className="flex lg:hidden">
-                <HorizontalScrollWrapper className="gap-x-5">
+                <HorizontalScrollWrapper className="gap-x-5 py-6 px-7.5 -mx-7.5">
                   {fileSection?.files.map((file, index) => (
                     <div key={index}>
                       <DownloadCard
-                        className="min-w-[280px]"
+                        className="min-w-[280px] max-w-[290px]"
                         title={file.title ? file.title : ''}
                         downloadLink={file.media?.url ? file.media?.url : ''}
                         uploadDate={file.media?.created_at ? file.media?.created_at : ''}
