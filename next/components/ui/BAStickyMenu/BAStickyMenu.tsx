@@ -3,8 +3,8 @@ import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 
-import { ArrowRight, ChevronDownSmall, ChevronRight } from '../../../assets/images'
-import StickyMenuTopper from '../../../assets/images/sticky-menu-topper.svg'
+import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
+import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
 import { getIcon, MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
 import { useOutsideClick } from 'rooks'
@@ -36,12 +36,13 @@ export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
       {menuItems.map((item, i) => (
         <div key={i} className="group flex-1 cursor-pointer">
           <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
-          <MenuPanel
+            <MenuPanel
             item={item}
-            panelHidden={panelHidden}
+            panelHidden={panelHidden} 
+            setDisableHover={setDisableHover}
             setPanelHidden={setPanelHidden}
             disableHover={disableHover}
-          />
+          />       
         </div>
       ))}
     </div>
@@ -87,21 +88,29 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
 interface MenuPanelProps {
   item: MenuMainItem
   panelHidden: boolean
+  setDisableHover: (value: boolean) => void
   setPanelHidden: (value: boolean) => void
   disableHover: boolean
 }
 
-const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover }: MenuPanelProps) => {
+const MenuPanel = ({ item, panelHidden, setPanelHidden, setDisableHover, disableHover }: MenuPanelProps) => {
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
   const { Link: UILink } = useUIContext()
   const ref = useRef()
-  useOutsideClick(ref, () => setPanelHidden(true))
+  const closeMenu = () => {
+    setPanelHidden(true)
+    setDisableHover(!disableHover)
+  }
+  useOutsideClick(ref, () => {
+    setPanelHidden(true)
+    setDisableHover(!disableHover)
+  });
 
   return (
     <div
       className={cx(
         'cursor-default h-screen hidden pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
-        { hidden: panelHidden },
+        // { hidden: panelHidden },
         { 'opacity-0': panelHidden === true },
         { 'group-hover:flex': !disableHover }
       )}
@@ -168,7 +177,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover }: MenuPane
           waveColor={item.color}
           isRich
         />
-      </div>
+      </div> 
     </div>
   )
 }
