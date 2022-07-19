@@ -8,9 +8,10 @@ import { usePageWrapperContext } from '../layouts/PageWrapper'
 interface IProps {
   menuItems: MenuMainItem[]
   handleSearch?: (searchOpen: boolean) => void
+  pageColor?: string
 }
 
-const NavBar = ({ menuItems, handleSearch }: IProps) => {
+const NavBar = ({ menuItems, handleSearch, pageColor }: IProps) => {
   const router = useRouter()
   const { locale, localizations = [] } = usePageWrapperContext()
   const [t] = useTranslation('common')
@@ -30,6 +31,7 @@ const NavBar = ({ menuItems, handleSearch }: IProps) => {
         { key: 'sk', title: t('language_short.sk') },
         { key: 'en', title: t('language_short.en') },
       ]}
+      pageColor={pageColor}
     />
   )
 }
