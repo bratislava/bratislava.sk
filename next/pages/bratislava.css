@@ -7,26 +7,27 @@
   */
   --color-red: 228, 96, 84; /* #E46054 */
   --color-red--light: 248, 215, 212; /* #F8D7D4 */
-  --color-red--dark: var(--color-red);
+  --color-red--dark: 147, 61, 53;
   --color-blue: 15, 109, 149; /* #0F6D95 */
   --color-blue--light: 208, 236, 248; /* #D0ECF8 */
-  --color-blue--dark: var(--color-blue);
+  --color-blue--dark: 0, 95, 136;
   --color-green: 35, 124, 54; /* #237C36 */
   --color-green--light: 196, 239, 206; /* #C4EFCE */
-  --color-green--dark: var(--color-green);
+  --color-green--dark: 0, 104, 23;
   --color-yellow: 241, 184, 48; /* #F1B830 */
   --color-yellow--light: 255, 231, 129; /* #FFE781 */
-  --color-yellow--dark: 227, 166, 18; /* #E3A612 */
+  --color-yellow--dark: 241, 184, 48; /* #E3A612 */
   --color-purple: 81, 88, 216; /* #5158D8 */
   --color-purple--light: 199, 202, 255; /* #C7CAFF */
-  --color-purple--dark: var(--color-purple);
+  --color-purple--dark: 67, 73, 170;
   --color-brown: 224, 125, 33; /* #E07D21 */
   --color-brown--light: 255, 203, 155; /* #FFCB9B */
-  --color-brown--dark: var(--color-brown);
+  --color-brown--dark: 255, 176, 103;
 
   /* These variables are overidden in pages to get custom colors for each category */
   --color-primary: var(--color-red);
   --color-secondary: var(--color-red--light);
+  --color-tertiary: var(--color-red--dark);
 
   /* default tailwind colors */
   --primary-color: rgb(var(--color-primary));
@@ -34,6 +35,7 @@
   --secondary-color: rgb(var(--color-secondary));
   --secondary-color--transparent: rgba(var(--color-secondary), 0);
   --secondary-color--semi-transparent: rgba(var(--color-secondary), 0.6);
+  --tertiary-color: rgb(var(--color-tertiary));
   --dark-gray-color: #333333bf;
   --universal-gray-200: #c4c4c4;
   --universal-gray-500: #9f9f9f;

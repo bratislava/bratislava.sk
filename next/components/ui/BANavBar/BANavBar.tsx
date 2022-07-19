@@ -24,6 +24,7 @@ interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
   handleSearch?: (searchOpen: boolean) => void
+  pageColor?: string
 }
 
 const navBarTexts = {
@@ -52,7 +53,7 @@ const navBarUrls = {
   },
 }
 
-export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
+export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
   const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -153,6 +154,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
 
   const { Link: UILink } = useUIContext()
 
+ 
+
   return (
     <>
       {/* Desktop */}
@@ -202,7 +205,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                       { 'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength },
                       { 'cursor-default': input.length <= minKeywordLength }
                     )}
-                    variant="secondaryDarkText"
+                    variant="secondary-dark-text"
                   >
                     {t('search')}
                   </Button>
@@ -299,15 +302,17 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
             <div className="block sm:flex">
               <Button
                 className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
-                variant="primary"
+                variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                 onClick={acceptAllCookies}
               >
-                {' '}
-                {t('acceptAll')}{' '}
+                {t('acceptAll')}
               </Button>
-              <Button className="mt-0 px-6 h-12 text-sm font-medium" variant="secondary" onClick={declineCookies}>
-                {' '}
-                {t('denyAll')}{' '}
+              <Button
+                className="mt-0 px-6 h-12 text-sm font-medium"
+                variant="secondary-dark-text"
+                onClick={declineCookies}
+              >
+                {t('denyAll')}
               </Button>
             </div>
           </div>
@@ -409,20 +414,18 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className=" mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
-                    variant="secondary"
+                    className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
+                    variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
-                    {' '}
-                    {t('acceptAll')}{' '}
+                    {t('acceptAll')}
                   </Button>
                   <Button
                     className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-0 md:ml-0 box-none"
                     variant="secondary"
                     onClick={declineCookies}
                   >
-                    {' '}
-                    {t('denyAll')}{' '}
+                    {t('denyAll')}
                   </Button>
                 </div>
               </div>
