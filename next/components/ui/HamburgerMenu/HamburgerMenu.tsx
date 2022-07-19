@@ -27,17 +27,16 @@ interface HamburgerSubLoginItem {
   url: string
 }
 
-// TODO: add urls and all items
 const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   {
     icon: <EServices />,
     title: 'E-služby',
-    url: '#',
+    url: 'https://esluzby.bratislava.sk',
   },
   {
     icon: <Covid />,
     title: 'Covid-19',
-    url: '#',
+    url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
   },
   {
     icon: <LightBulb />,
@@ -47,7 +46,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   {
     icon: <Tourist />,
     title: 'Som turista',
-    url: '#',
+    url: 'https://www.visitbratislava.com',
   },
   // {
   //   icon: <SpeakerSmall />,

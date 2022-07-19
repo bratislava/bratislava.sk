@@ -80,22 +80,26 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
                   {subItem.subItems.length > 2 && (
-                    <button
-                      onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
-                      className="flex items-center gap-x-4"
-                    >
-                      {isExpanded ? (
-                        <>
-                          <p className="text-base font-semibold underline">{t('showLess')}</p>
-                          <ChevronUp />
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-base font-semibold underline">{t('showMore')}</p>
-                          <ChevronDown />
-                        </>
-                      )}
-                    </button>
+                    <>
+                      <button
+                        onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
+                        className="flex items-center gap-x-4"
+                        type="button"
+                      >
+                        {isExpanded ? (
+                          <>
+                            <p className="text-base font-semibold underline">{t('showLess')}</p>
+                            <ChevronUp />
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-base font-semibold underline">{t('showMore')}</p>
+                            <ChevronDown />
+                          </>
+                        )}
+                      </button>
+                      {i === item.subItems.length - 1 ? <div className="h-20" /> : null}
+                    </>
                   )}
                 </div>
               </React.Fragment>
@@ -110,7 +114,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         }}
         className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
       >
-        <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
+        <CloseFilled className="cursor-pointer" onClick={onClose} style={{ color: item.colorDark }} />
         <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
       </div>
     </div>
