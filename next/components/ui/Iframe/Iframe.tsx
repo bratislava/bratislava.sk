@@ -20,8 +20,9 @@ export const Iframe = ({ url, iframeWidth, iframeHeight, fullHeight, allowFullsc
   useEffect(() => {
     if (fullHeight) {
       const navbarHeight =
-        document.getElementById('desktop-navbar')?.getBoundingClientRect().height ||
-        document.getElementById('mobile-navbar')?.getBoundingClientRect().height
+        (document.querySelector('#desktop-navbar')?.getBoundingClientRect().height ?? 0) +
+        (document.querySelector('#mobile-navbar')?.getBoundingClientRect().height ?? 0) +
+        (document.querySelector('#sticky-menu')?.getBoundingClientRect().height ?? 0)
       setHeight(`${window.innerHeight - navbarHeight}px`)
     } else {
       setHeight(iframeHeight)
@@ -31,23 +32,24 @@ export const Iframe = ({ url, iframeWidth, iframeHeight, fullHeight, allowFullsc
   return (
     <div
       style={{
-        height: height,
+        height,
       }}
     >
       <div
         style={{
-          height: height,
+          height,
         }}
-        className={iframeWidth === 'container' ? 'w-full' : 'absolute left-0 right-0'}
+        className={iframeWidth === 'container' ? 'w-full' : 'absolute inset-x-0'}
       >
         <iframe
+          title={url}
           ref={ref}
           src={url}
           className="w-full"
           height={height}
           allowFullScreen={allowFullscreen}
           scrolling="no"
-        ></iframe>
+        />
       </div>
     </div>
   )
