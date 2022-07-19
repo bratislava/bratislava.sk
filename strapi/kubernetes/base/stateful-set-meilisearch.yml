@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: meilisearch
-          image: "getmeili/meilisearch:v0.27.1"
+          image: "getmeili/meilisearch:v0.28.0"
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
