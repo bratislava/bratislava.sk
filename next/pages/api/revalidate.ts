@@ -38,11 +38,12 @@ const handler = async function handler(req: NextApiRequest, res: NextApiResponse
       case 'blog-post':
         const blogPostUrl = generateUrl(payload, payload?.model)
         await res.revalidate(blogPostUrl)
+        break
 
       case 'page':
         const pageUrl = generateUrl(payload, payload?.model)
         await res.revalidate(pageUrl)
-
+        break
       default:
         break
     }

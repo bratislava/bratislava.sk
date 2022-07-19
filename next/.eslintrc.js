@@ -38,12 +38,9 @@ module.exports = {
     "no-console": 'off',
     "@next/next/no-img-element": "off",
     "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        "checksVoidReturn": false
-      }
-    ]
+    "switch-case/newline-between-switch-case": "off",
+    // This rule disallows lexical declarations (let, const, function and class) in case/default clauses. 
+    "no-case-declarations": "off"
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }
