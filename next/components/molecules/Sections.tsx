@@ -30,7 +30,7 @@ import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
 
-const sectionContent = (section: SectionsFragment, slug?: string, locale?: string) => {
+const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?: string; locale?: string }) => {
   const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -265,12 +265,12 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-14 md:pt-18 overflow-hidden w-full', {
+      className={cx('pt-14 md:pt-18', {
         'pb-14 md:pb-18 bg-secondary': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >
-      {sectionContent(section, slug, locale)}
+      <SectionContent section={section} slug={slug} locale={locale} />
     </SectionContainer>
   )
 }
