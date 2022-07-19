@@ -34,7 +34,7 @@ export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
       onMouseEnter={() => setDisableHover(false)}
     >
       {menuItems.map((item, i) => (
-        <div key={i} className="group flex-1 cursor-pointer transition delay-500 duration-300 ease-in-out">
+        <div key={i} className="group flex-1 cursor-pointer">
           <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
             <MenuPanel
             item={item}
@@ -59,7 +59,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
   <div className="flex h-[106px] w-40 flex-col items-center " onClick={handleClick}>
     <StickyMenuTopper
       style={{ color: item.colorDark }}
-      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-30 transition delay-500 duration-300 ease-in-out', {
+      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-30', {
         'opacity-100': isActive,
       })}
     />
@@ -105,18 +105,16 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, setDisableHover, disable
     setPanelHidden(true)
     setDisableHover(!disableHover)
   });
-  // useOutsideClick(menuref, () => closeMenu())
 
   return (
     <div
       className={cx(
-        'cursor-default h-screen hidden pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent transition delay-500 duration-300 ease-in-out',
+        'cursor-default h-screen hidden pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
         // { hidden: panelHidden },
         { 'opacity-0': panelHidden === true },
         { 'group-hover:flex': !disableHover }
       )}
     >
-      {/* <div className='absolute left-0 right-0 top-0 bottom-0' onClick={() => closeMenu()}></div> */}
       <div
         className={cx('cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent')}
         ref={ref}
