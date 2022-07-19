@@ -154,7 +154,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
 
   const { Link: UILink } = useUIContext()
 
-  console.log(pageColor)
+ 
 
   return (
     <>
