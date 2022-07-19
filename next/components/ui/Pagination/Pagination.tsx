@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import Button from '../Button/Button'
 
 import ArrowLeft from '../../../assets/images/arrow-left.svg'
 import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
 import ChevronLeft from '../../../assets/images/chevron-left.svg'
+import ChevronRight from '../../../assets/images/chevron-right.svg'
+import Button from '../Button/Button'
 
 interface PaginationProps {
   totalPages?: number
-  totalCount: number
+  totalCount?: number
   currentPage: number
   itemsPerPage?: number
   pageHandler?: (pageNumber: number) => void
@@ -16,7 +16,7 @@ interface PaginationProps {
 
 export const ThreeDots = () => {
   return (
-    <div className="ml-6 w-12">
+    <div className="ml-2 sm:ml-3 lg:ml-6 w-7 sm:w-8 lg:w-12">
       <span className="text-default font-semibold">&hellip;</span>
     </div>
   )
@@ -71,10 +71,10 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
   }
 
   return (
-    <div className="flex relative w-full h-12">
-      <div className="m-auto flex items-center w-auto justify-between">
+    <div className="relative flex h-12 w-full">
+      <div className="m-auto flex w-auto items-center justify-between">
         {currentPage != 1 ? (
-          <div className="group mr-6 text-primary">
+          <div className="group mr-4 lg:mr-6 cursor-pointer text-primary">
             <span className="group-hover:hidden">
               <ChevronLeft />
             </span>
@@ -86,11 +86,11 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
 
         <Button
           value={1}
-          variant={1 == currentPage ? 'primary' : 'secondaryDarkText'}
-          className="h-12 w-12 rounded-full mx-6  hover:border-2 hover:border-primary"
+          variant={currentPage == 1 ? 'primary' : 'secondaryDarkText'}
+          className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full  hover:border-2 hover:border-primary"
           onClick={() => handleSelectPage(1)}
         >
-          <div className="text-default font-semibold block m-auto leading-5">{1}</div>
+          <div className="m-auto block text-sm sm:text-default font-semibold leading-5">{1}</div>
         </Button>
         {items[0].page - 1 >= 2 ? <ThreeDots /> : null}
         {items.map((item, index) =>
@@ -99,10 +99,10 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
               key={index}
               value={item.page.valueOf()}
               variant={item.page == currentPage ? 'primary' : 'secondaryDarkText'}
-              className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
+              className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full hover:border-2 hover:border-primary"
               onClick={() => handleSelectPage(item.page)}
             >
-              <div className="text-default font-semibold block m-auto leading-5">{item.page}</div>
+              <div className="m-auto block text-sm sm:text-default font-semibold leading-5">{item.page}</div>
             </Button>
           ) : null
         )}
@@ -111,14 +111,14 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
           <Button
             value={numberOfPages}
             variant={numberOfPages == currentPage ? 'primary' : 'secondaryDarkText'}
-            className="h-12 w-12 rounded-full mx-6 hover:border-2 hover:border-primary"
+            className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full hover:border-2 hover:border-primary"
             onClick={() => handleSelectPage(numberOfPages)}
           >
-            <div className="text-default font-semibold block m-auto leading-5">{numberOfPages}</div>
+            <div className="m-auto block text-sm sm:text-default font-semibold leading-5">{numberOfPages}</div>
           </Button>
         ) : null}
         {currentPage != numberOfPages ? (
-          <div className="group ml-6 text-primary">
+          <div className="group ml-3 lg:ml-6 cursor-pointer text-primary">
             <span className="group-hover:hidden">
               <ChevronRight />
             </span>

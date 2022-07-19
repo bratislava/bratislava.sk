@@ -1,5 +1,6 @@
 import cx from 'classnames'
 import * as React from 'react'
+
 import ChevronDown from '../../../assets/images/chevron-down.svg'
 
 export interface ISelectOption {
@@ -54,7 +55,7 @@ export const Select = <T extends ISelectOption>({
           </option>
         ))}
       </select>
-      {hasIcon && <ChevronDown className="absolute right-0 mr-7 mt-1 pointer-events-none text-primary" />}
+      {hasIcon && <ChevronDown className="pointer-events-none absolute right-0 mr-7 mt-1 text-primary" />}
     </div>
   )
 }

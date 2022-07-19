@@ -1,8 +1,9 @@
 import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import isEmpty from 'lodash/isEmpty'
-import UaIcon from '../../../assets/images/ua-flag-round.svg'
+
 import SignpostIcon from '../../../assets/images/signpost-round.svg'
+import UaIcon from '../../../assets/images/ua-flag-round.svg'
 
 export interface BookmarksProps {
   className?: string
@@ -17,7 +18,7 @@ export const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
         <Bookmark
           key={ix}
           {...b}
-          className="mb-2 pointer-events-auto"
+          className="pointer-events-auto mb-2"
           IconComponent={b.icon === 'ua' ? UaIcon : b.icon === 'signpost' ? SignpostIcon : undefined}
         />
       ))}

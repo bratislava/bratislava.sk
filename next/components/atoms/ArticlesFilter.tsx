@@ -1,5 +1,5 @@
 import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratislava'
-import { useEffect, useState } from 'react'
+import { useTranslation } from 'next-i18next'
 
 export interface Card {
   title: string
@@ -7,7 +7,7 @@ export interface Card {
   category: string
 }
 
-export interface ArticlesFilter {
+export interface ArticlesFilterProps {
   data?: Array<Card>
   filterHandler?: (arg0: string) => void
   categoryHandler?: (arg0: string) => void
@@ -23,7 +23,7 @@ export const ArticlesFilter = ({
   categoryExists,
   category,
   selectedTags,
-}: ArticlesFilter) => {
+}: ArticlesFilterProps) => {
   const BratislavaCategories = [
     'Mesto\nBratislava',
     'Doprava\na mapy',
@@ -33,15 +33,17 @@ export const ArticlesFilter = ({
     'Kultúra \na komunity',
   ]
 
+  const { t } = useTranslation()
+
   return (
     <div>
-      <div className="text-lg text-center font-semibold">Rozdelenie obsahu článkov</div>
+      <div className="text-center text-lg font-semibold">{t('articleCategories')}</div>
       <HorizontalScrollWrapper className="mt-10">
         <div className="flex">
           {!categoryExists
-            ? BratislavaCategories.map((tab, index) => (
+            ? BratislavaCategories.map((tab) => (
                 <TabBarTab
-                  className="h-14 mr-8 text-sm"
+                  className="mr-8 maxMd:h-14 text-sm"
                   key={tab}
                   tab={{
                     title: tab,
@@ -59,15 +61,15 @@ export const ArticlesFilter = ({
           .filter((tag) => {
             return tag.category == category
           })
-          .map((item, index) => (
+          .map((item) => (
             <Tag
-              interactable={true}
+              interactable
               key={item.title}
               title={item.title}
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="text-sm mr-3 mb-3 h-8 font-medium"
+              className="mr-3 mb-3 h-8 text-sm font-medium"
             />
           ))}
       </div>

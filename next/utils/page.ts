@@ -7,11 +7,11 @@ import {
   PageLinkFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
+import _, { sortBy } from 'lodash'
 import groupBy from 'lodash/groupBy'
+
 import { getLocalDate, getNumericLocalDate } from './local-date'
 import { isPresent } from './utils'
-import _ from 'lodash'
-import { sortBy } from 'lodash'
 
 // Use explocitly named color variables so their usage can be easily found in project
 const COLOR_VARIABLES: {
@@ -67,7 +67,7 @@ export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
   if (locale === 'sk' && slug === '') return '/'
   const localePrefix = locale === 'sk' ? '' : `${locale}/`
-  return `${localePrefix}${slug}`
+  return `${localePrefix}${slug || ''}`
 }
 
 export const pagePath = (
@@ -90,6 +90,7 @@ export const parsePageLink = (
     locale: pageLink?.page?.data?.attributes?.locale,
     slug: pageLink?.page?.data?.attributes?.slug,
   }
+  if (pageLink.url === '') pageLink.url = null
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
     url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
@@ -185,15 +186,18 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
   )
 
 // Page Accordion Items
-export const groupByCategory = <T>(items: T[]) => {
-  const grouped = _(items).groupBy(item => item['category']).sortBy(group => items.indexOf(group[0])).value();
+export const groupByCategory = <T extends { category?: string }>(items: T[]) => {
+  const grouped = _(items)
+    .groupBy((item) => item?.category)
+    .sortBy((group) => items.indexOf(group[0]))
+    .value()
   return Object.keys(grouped).map((key) => ({
     category: grouped[key].length > 0 ? grouped[key][0]?.category : key,
     items: grouped[key],
   }))
 }
 
-//Page Related Content
+// Page Related Content
 export const parseRelatedBlogPosts = (RelatedContentBlogPosts: BlogPostFragment[]): NewsCardProps[] => {
   const array: NewsCardProps[] = RelatedContentBlogPosts.map((relatedBlogPost) => {
     const blogpost = relatedBlogPost.data[0]
@@ -235,7 +239,6 @@ export const parseCategory = (category: string) => {
   const match = /(.*)(\(.*\))/.exec(category)
   if (match) {
     return { title: match[1], secondaryTitle: match[2] }
-  } else {
-    return { title: category, secondaryTitle: '' }
   }
+  return { title: category, secondaryTitle: '' }
 }

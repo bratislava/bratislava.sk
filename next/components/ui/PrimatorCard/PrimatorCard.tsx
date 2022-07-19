@@ -1,7 +1,9 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { ArrowRight, ChevronRight } from '@assets/images'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/dist/client/link'
+
 import { Panel } from '../Panel/Panel'
 
 export interface PrimatorCardProps {
@@ -14,13 +16,16 @@ export interface PrimatorCardProps {
 
 export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 'left' }: PrimatorCardProps) => {
   const { Link: UILink } = useUIContext()
+  const { t } = useTranslation()
   const smRight = smImageAlign === 'right'
   return (
     <Link href={href}>
-      <div className={cx('mt-24 lg:mt-28 w-full cursor-pointer', className)}>
+      <div className={cx('mt-24 lg:mt-28 w-full cursor-pointer',{
+                'mt-12 lg:mt-28': smRight,
+              }, className)}>
         <Panel
           className={cx(
-            'flex items-center justify-between lg:justify-start px-11 h-20 lg:h-32 relative overflow-visible'
+            'flex items-center justify-between lg:justify-start px-6 lg:px-11 h-24 lg:h-32 relative overflow-visible'
           )}
         >
           <div>
@@ -28,21 +33,21 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
               src={imageSrc}
               alt={title}
               className={cx('absolute bottom-0 h-41.5 lg:h-57', {
-                'right-11 lg:left-11': smRight,
+                'right-5 lg:right-auto lg:left-11': smRight,
               })}
             />
           </div>
           <div
             className={cx('ml-0 lg:ml-56', {
-              'absolute lg:relative left-11 lg:left-0': smRight,
+              'absolute lg:relative left-6 lg:left-0': smRight,
             })}
           >
             <span className={cx(' text-default lg:text-md')}>{title}</span>
             <UILink
-              className="mt-3 text-primary flex underline space-x-5 items-center group cursor-pointer h-6"
+              className="group mt-1.5 lg:mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
               href={href}
             >
-              <span className="hover:text-default font-semibold text-sm">Čítať viac</span>
+              <span className="text-sm font-semibold">{t('readMore')}</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>

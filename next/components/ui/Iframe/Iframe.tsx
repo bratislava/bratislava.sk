@@ -1,4 +1,3 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import { useEffect, useRef, useState } from 'react'
 export interface IframeProps {

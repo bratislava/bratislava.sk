@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   BlogCards,
   InBaCard,
@@ -6,36 +9,44 @@ import {
   PrimatorCouncil,
   SectionContainer,
   TopNine,
+  PageHeader,
   Waves,
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 // import { GetServerSidePropsContext } from 'next'
 // import Image from 'next/image'
+import Head from 'next/head'
 import * as React from 'react'
-import { useTranslation } from 'next-i18next'
-import BAHero from '../assets/images/ba-hero.png'
+import {
+  getParsedUDEDocumentsList,
+  mockedParsedDocuments,
+  ParsedOfficialBoardDocument,
+  shouldMockGinis,
+} from 'services/ginis'
+
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
-import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
+// import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
 import { client } from '../utils/gql'
 import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
-import { isPresent } from '../utils/utils'
 import { AsyncServerProps } from '../utils/types'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export const getServerSideProps = async (ctx) => {
-  const locale = ctx.locale ?? 'sk'
+export const getStaticProps = async (ctx) => {
+  const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
     limit: 5,
     sort: 'publishedAt:desc',
+    locale,
   })
 
-  let { homepage } = await client.Homepage({
+  const { homepage } = await client.Homepage({
     locale,
   })
 
@@ -52,6 +63,40 @@ export const getServerSideProps = async (ctx) => {
     url: post?.slug,
     imageSrc: post?.image?.data?.attributes?.url,
   }))
+
+  const getRozkoPosts = async () => {
+    const { blogPosts } = await client.LatestBlogsWithTags({
+      limit: 7,
+      sort: 'publishedAt:desc',
+      filters: {
+        tag: {
+          title: {
+            eq: 'Rozkopávky a uzávierky',
+          },
+        },
+      },
+      locale,
+    })
+    return blogPosts
+  }
+
+  let rozkoPosts
+  try {
+    rozkoPosts = await getRozkoPosts()
+  } catch (error) {
+    console.log(error)
+  }
+
+  let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
+  if (shouldMockGinis()) {
+    latestOfficialBoard = mockedParsedDocuments
+  } else {
+    try {
+      latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
   const rearImage = homepage?.data?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
@@ -103,12 +148,15 @@ export const getServerSideProps = async (ctx) => {
             locale: l,
           })),
       },
-      homepagePosts: homepagePosts ?? null,
-      inba: inba ?? null,
-      header: header,
-      cards: cards,
+      latestOfficialBoard,
+      homepagePosts,
+      inba,
+      header,
+      cards,
+      rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
+    revalidate: 30,
   }
 }
 
@@ -118,13 +166,17 @@ const Homepage = ({
   mainMenu,
   page,
   homepage,
+  latestOfficialBoard,
   latestBlogposts,
   homepagePosts,
   cards,
   header,
   inba,
-}: AsyncServerProps<typeof getServerSideProps>) => {
-  const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
+  rozkoPosts,
+}: AsyncServerProps<typeof getStaticProps>) => {
+  // Commented below line for reference.
+  // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
+  const { pageTitle, posts } = data
 
   const menuItems = parseMainMenu(mainMenu)
 
@@ -134,10 +186,18 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
+        <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
+          {/* meta description */}
+          <Head>
+            <title>{homepage?.data?.attributes?.title}</title>
+            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
+          </Head>
+        </PageHeader>
+
         <div className="bg-white">
           <SectionContainer>
-            <div className="pt-25 lg:pt-18 pb-10 flex flex-col sm:flex-row sm:items-center">
-              <PageTitle className="flex-1" title={pageTitle} subtitle={header?.subtitle} />
+            <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
+              <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
               <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
             </div>
             <HomepageMenu items={menuItems} />
@@ -152,17 +212,19 @@ const Homepage = ({
         </div>
 
         <SectionContainer>
-          <BlogCards posts={homepagePosts} shiftIndex={1} />
+          <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
-            className="mt-10"
+            className="lg:mt-10"
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
+            documents={latestOfficialBoard}
             latestPost={latestBlogposts}
+            rozkoPosts={rozkoPosts}
           />
-          <PrimatorCouncil className="mt-24" primatorCards={data.council.cards} />
+          <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
           <GooutEvents
             linkTitle={t('allEvents')}
@@ -181,7 +243,9 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-secondary py-16">
-          <h2 className="font-semibold text-default text-center lg:text-2xl lg:pb-20 pb-10">{data.topNineTitle}</h2>
+          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl xs:mt-8">
+            {data.topNineTitle}
+          </h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
@@ -192,7 +256,7 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard className="max-w-3xl mx-auto min-h-[200px] mt-36" {...inba} />
+          <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-[78px]" />
 
           <FacebookPosts title="Bratislava na Facebooku" />

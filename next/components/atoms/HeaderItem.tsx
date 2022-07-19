@@ -1,7 +1,8 @@
-import * as React from 'react'
-import cx from 'classnames'
-import ChevronRight from '../../assets/images/chevron-right.svg'
 import { Button } from '@bratislava/ui-bratislava'
+import cx from 'classnames'
+import * as React from 'react'
+
+import ChevronRight from '../../assets/images/chevron-right.svg'
 import HeaderSections from '../molecules/HeadSections'
 
 interface IProps {

@@ -1,14 +1,21 @@
-<svg width="42" height="47" viewBox="0 0 42 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M40.2145 41.7805H6.64453V45.7305H40.2145V41.7805Z" fill="white" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M26.5352 22.2202H40.6252V19.2702L27.0352 14.7002" fill="white"/>
-<path d="M26.5352 22.2202H40.6252V19.2702L27.0352 14.7002" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M36.2542 32.1605V22.2205H31.8542V30.8405V37.9805L30.3242 41.7805H37.7842L36.2542 37.9805V32.1605Z" fill="white" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M21.2253 30.1902V30.8402V37.9802L19.6953 41.7802H27.1553L25.6253 37.9802V32.1602V24.7402" fill="white"/>
-<path d="M21.2253 30.1902V30.8402V37.9802L19.6953 41.7802H27.1553L25.6253 37.9802V32.1602V24.7402" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M10.5925 32.5405V37.9805L9.0625 41.7805H16.5225L14.9925 37.9805V33.7305" fill="white"/>
-<path d="M10.5925 32.5405V37.9805L9.0625 41.7805H16.5225L14.9925 37.9805V33.7305" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M14.0341 1.00041C18.4147 0.981135 22.7723 1.63544 26.9541 2.94041L27.0341 18.3604C27.0445 20.8521 26.427 23.3062 25.2385 25.4961C24.05 27.6861 22.3289 29.5413 20.2341 30.8904L17.0041 32.9604C16.1545 33.5085 15.1651 33.8001 14.1541 33.8004C13.1425 33.8024 12.1509 33.5182 11.2941 32.9804L8.05407 30.9804C5.94128 29.6433 4.20142 27.793 2.99665 25.6021C1.79188 23.4111 1.16143 20.9508 1.16407 18.4504V3.03041C5.32519 1.70029 9.66556 1.01568 14.0341 1.00041Z" fill="#E07D21" stroke="#E07D21" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M9.46484 22.9104C10.7716 23.9952 12.4165 24.589 14.1148 24.589C15.8132 24.589 17.4581 23.9952 18.7648 22.9104V22.9104" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M12.0228 13.9905C10.3128 11.7505 7.84281 11.7505 6.13281 13.9905" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M22.0953 13.9905C20.3853 11.7505 17.9053 11.7505 16.1953 13.9905" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10"/>
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+	<title>icon-mask-with-ball-colored-svg</title>
+	<style>
+		.s0 { fill: #ffffff;stroke: #333333;stroke-width: 1.5 } 
+		.s1 { fill: #ffffff } 
+		.s2 { fill: none;stroke: #333333;stroke-width: 1.5 } 
+		.s3 { fill: #e07d21;stroke: #e07d21;stroke-width: 1.5 } 
+	</style>
+	<path id="Layer" class="s0" d="m43.2 45.7h-33.6v-3.9h33.6z"/>
+	<path id="Layer" class="s1" d="m30 14.7l13.6 4.6v2.9h-14.1"/>
+	<path id="Layer" class="s2" d="m30 14.7l13.6 4.6v2.9h-14.1"/>
+	<path id="Layer" class="s0" d="m39.3 38l1.5 3.8h-7.5l1.6-3.8v-7.2-8.6h4.4v10z"/>
+	<path id="Layer" class="s1" d="m28.6 24.7v7.5 5.8l1.6 3.8h-7.5l1.5-3.8v-7.2-0.6"/>
+	<path id="Layer" class="s2" d="m28.6 24.7v7.5 5.8l1.6 3.8h-7.5l1.5-3.8v-7.2-0.6"/>
+	<path id="Layer" class="s1" d="m18 33.7v4.3l1.5 3.8h-7.4l1.5-3.8v-5.5"/>
+	<path id="Layer" class="s2" d="m18 33.7v4.3l1.5 3.8h-7.4l1.5-3.8v-5.5"/>
+	<path id="Layer" class="s3" d="m17 1c4.4 0 8.8 0.6 13 1.9v15.5c0 2.5-0.6 4.9-1.8 7.1-1.1 2.2-2.9 4-5 5.4l-3.2 2.1c-0.8 0.5-1.8 0.8-2.8 0.8-1.1 0-2-0.3-2.9-0.8l-3.2-2c-2.2-1.4-3.9-3.2-5.1-5.4-1.2-2.2-1.8-4.6-1.8-7.1v-15.5c4.1-1.3 8.5-2 12.8-2z"/>
+	<path id="Layer" class="s2" d="m21.8 22.9c-1.3 1.1-3 1.7-4.7 1.7-1.7 0-3.3-0.6-4.6-1.7"/>
+	<path id="Layer" class="s2" d="m15 14c-1.7-2.2-4.2-2.2-5.9 0"/>
+	<path id="Layer" class="s2" d="m25.1 14c-1.7-2.2-4.2-2.2-5.9 0"/>
 </svg>

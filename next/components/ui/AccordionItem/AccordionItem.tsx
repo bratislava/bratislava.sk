@@ -1,6 +1,8 @@
 import cx from 'classnames'
-import Chevron from '../../../assets/images/chevron.svg'
 import React from 'react'
+
+import Chevron from '@assets/images/chevron-small.svg'
+import ChevronSmall from '@assets/images/chevron-down-thin-small.svg'
 
 export interface AccordionItemProps {
   className?: string
@@ -37,7 +39,7 @@ export const AccordionItem = ({
     <>
       <div
         className={cx(
-          'rounded-lg drop-shadow-[0 8 24 black] py-4 px-10',
+          'rounded-lg drop-shadow-[0 8 24 black] py-3 px-6 lg:py-4 lg:px-10',
           {
             'border-transparent border-2 border-solid shadow-lg bg-secondary': active,
             'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary  bg-transparent': !active,
@@ -50,11 +52,12 @@ export const AccordionItem = ({
           onClick={handleClick}
         >
           <div className="flex flex-row font-medium">
-            <p className="text-font text-md text-left">{title}</p>
-            {secondaryTitle && <p className="text-md text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
+            <p className="text-left text-sm lg:text-md text-font">{title}</p>
+            {secondaryTitle && <p className="text-left text-md text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
           </div>
-          <div className="ml-5 flex-grow-0">
-            <Chevron className={cx('w-6 h-3', { 'rotate-180': active })} />
+          <div className="ml-5 grow-0">
+            <Chevron className={cx('w-[24px] h-[12px] hidden lg:block', { 'rotate-180': active })} />
+            <ChevronSmall className={cx('w-[18px] h-[10px] lg:hidden', { 'rotate-180': active })} />
           </div>
         </button>
       </div>
@@ -63,7 +66,7 @@ export const AccordionItem = ({
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',
-          'py-14': active && paddingVariant === 'normal',
+          'py-5 lg:py-14': active && paddingVariant === 'normal',
         })}
       >
         {children}

@@ -1,13 +1,14 @@
 import { LocalDate } from '@js-joda/core'
 import React from 'react'
+
+import Calendar from '../../../assets/images/calendar-form.svg'
+import { Button } from '../Button/Button'
+import { CheckBox } from '../CheckBox/CheckBox'
 import { Field } from '../Field/Field'
 import { Input } from '../Input/Input'
+import { InputAccessory } from '../InputAccessory/InputAccessory'
 import { Select } from '../Select/Select'
 import { TextArea } from '../TextArea/TextArea'
-import { InputAccessory } from '../InputAccessory/InputAccessory'
-import { CheckBox } from '../CheckBox/CheckBox'
-import { Button } from '../Button/Button'
-import Calendar from '../../../assets/images/calendar-form.svg'
 
 interface IProps {
   className?: string
@@ -17,8 +18,8 @@ export interface ReservationFormValues {
   name: string
   email: string
   phone: string
-  spaceId: string //TODO: From DB
-  spacePossibilities: string //TODO: From DB
+  spaceId: string // TODO: From DB
+  spacePossibilities: string // TODO: From DB
   notes: string
   date: string
   acceptTerms: boolean
@@ -28,7 +29,7 @@ export const RentReservationForm = ({ className }: IProps) => {
   // const [validate, { errors, clearErrors }] =
   //   useValidation<ReservationFormValues>(validateReservationForm);
 
-  //TODO: From DB
+  // TODO: From DB
   const [reservationFormValues, setReservationFormValues] = React.useState<ReservationFormValues>({
     name: '',
     email: '@',
@@ -74,18 +75,18 @@ export const RentReservationForm = ({ className }: IProps) => {
   // TODO: update plugin to grid columns
 
   return (
-    <div className="z-10 md:w-10/12 mx-auto">
-      <h1 className="font-semibold text-2xl text-center">Nezáväzná rezervácia</h1>
+    <div className="z-10 mx-auto md:w-10/12">
+      <h1 className="text-center text-2xl font-semibold">Nezáväzná rezervácia</h1>
 
-      <div className="flex mb-14 mt-7 text-center">
-        <p className="font-medium text-default text-center px-2 lg:px-0">
+      <div className="mb-14 mt-7 flex text-center">
+        <p className="px-2 text-center text-default font-medium lg:px-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
         </p>
       </div>
 
       <form className="flex flex-col items-stretch gap-y-5">
-        <div className="w-full md:flex gap-x-5">
-          <div className="flex-grow">
+        <div className="w-full gap-x-5 md:flex">
+          <div className="grow">
             <Field
               id="name"
               title="Meno a Priezvisko"
@@ -106,7 +107,7 @@ export const RentReservationForm = ({ className }: IProps) => {
             <Field
               id="email"
               title="E-mail"
-              className="w-full col-span-5"
+              className="col-span-5 w-full"
               // error={errors?.email}
             >
               <Input
@@ -143,7 +144,7 @@ export const RentReservationForm = ({ className }: IProps) => {
               // error={errors?.email}
             >
               <InputAccessory
-                className="text-primary w-full flex justify-between"
+                className="flex w-full justify-between text-primary"
                 iconPosition="right"
                 icon={<Calendar />}
               >
@@ -151,7 +152,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                   id="date"
                   name="date"
                   type="date"
-                  className="text-default text-font h-14 focus:outline-none"
+                  className="h-14 text-default text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.phone}
                   onChange={(e) => handleChange?.({ phone: e.target.value })}
@@ -159,11 +160,11 @@ export const RentReservationForm = ({ className }: IProps) => {
               </InputAccessory>
             </Field>
           </div>
-          <div className="flex-grow">
+          <div className="grow">
             <Field
               id="spaceId"
               title="Priestor"
-              className="w-full col-start-7 col-span-4"
+              className="col-span-4 col-start-7 w-full"
               // error={errors?.email}
             >
               <Select
@@ -179,7 +180,7 @@ export const RentReservationForm = ({ className }: IProps) => {
             <Field
               id="spacePoss"
               title="Ďalšie možnosti priestoru"
-              className="w-full col-start-7 col-span-4"
+              className="col-span-4 col-start-7 w-full"
               // error={errors?.email}
             >
               <Select
@@ -201,7 +202,7 @@ export const RentReservationForm = ({ className }: IProps) => {
               <TextArea
                 id="notes"
                 name="notes"
-                className="text-default pt-5"
+                className="pt-5 text-default"
                 rows={11}
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.notes}
@@ -214,7 +215,7 @@ export const RentReservationForm = ({ className }: IProps) => {
         <div className="flex justify-center">
           <Field id="terms" className="text-center">
             <CheckBox
-              className="md:gap-x-6 py-3"
+              className="py-3 md:gap-x-6"
               id="terms"
               content="Oboznámil/a som sa so všeobecnými obchodnými podmienkami."
               checked={reservationFormValues?.acceptTerms}
@@ -224,7 +225,7 @@ export const RentReservationForm = ({ className }: IProps) => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 lg:mt-9 px-6 h-12 text-default font-medium">Nezáväzne rezervovať</Button>
+          <Button className="mt-8 h-12 px-6 text-default font-medium lg:mt-9">Nezáväzne rezervovať</Button>
         </div>
       </form>
     </div>

@@ -1,4 +1,5 @@
 import cx from 'classnames'
+
 import { Button } from '../Button/Button'
 
 export interface CardProps {
@@ -37,7 +38,7 @@ export const Card = ({
           { 'py-2.5 px-6': buttonVariant === 'default' }
         )}
         shape={buttonVariant}
-        variant={'secondaryDarkText'}
+        variant="secondaryDarkText"
         onClick={onButtonClick}
       >
         <div className="text-default font-normal"> {buttonContent}</div>

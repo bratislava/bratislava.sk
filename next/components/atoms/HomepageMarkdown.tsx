@@ -1,13 +1,12 @@
-import cx from 'classnames'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import ContentImage from './ContentImage'
+import { NumericalListItem } from '@bratislava/ui-bratislava/NumericalListItem/NumericalListItem'
+import cx from 'classnames'
+import { isValidElement } from 'react'
+import ReactMarkdown from 'react-markdown'
+import { LiProps } from 'react-markdown/lib/ast-to-react'
+import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import { NumericalList } from '@bratislava/ui-bratislava/NumericalList/NumericalList'
-import TurndownService from 'turndown'
-import ReactDOMServer from 'react-dom/server'
-import { OrderedListProps } from 'react-markdown/lib/ast-to-react'
+import ContentImage from './ContentImage'
 
 export interface HomepageMarkdownProps {
   className?: string
@@ -15,6 +14,7 @@ export interface HomepageMarkdownProps {
   numericalList?: boolean
   hasBackground?: boolean
 }
+export type AdvancedListItemProps = LiProps & { depth?: number }
 
 export const HomepageMarkdown = ({ className, content, numericalList, hasBackground }: HomepageMarkdownProps) => {
   const { Link: UILink } = useUIContext()
@@ -29,61 +29,93 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
       })}
       components={{
         h1: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 .typography-h1">
+          <h2 id={getHeadingTag(children)} className=".typography-h1 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
         h2: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h2">
+          <h2 id={getHeadingTag(children)} className="typography-h2 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h3">
+          <h3 id={getHeadingTag(children)} className="typography-h3 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h3>
         ),
         h4: ({ children }) => (
-          <h4 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
+          <h4 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h4>
         ),
         h5: ({ children }) => (
-          <h5 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
+          <h5 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h5>
         ),
         h6: ({ children }) => (
-          <h6 id={getHeadingTag(children)} className="scroll-mt-24 lg:scroll-mt-48 typography-h4">
+          <h6 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h6>
         ),
         p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
         a: ({ href, children }) => (
-          <UILink href={href ?? '#'} className="underline text-font font-semibold hover:text-primary">
+          <UILink
+            href={href ?? '#'}
+            className="font-semibold text-font underline hover:text-primary"
+            target={href?.startsWith('http') ? '_blank' : null}
+          >
             {children[0]}
           </UILink>
         ),
         img: ({ src, alt }) => <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>,
         blockquote: ({ children }) => <div className="border-l-4 border-primary pl-10">{children}</div>,
-        table: ({ children }) => <table className="w-full">{children}</table>,
-        tr: ({ children }) => <tr className="rounded-lg odd:bg-white even:bg-transparent">{children}</tr>,
+        table: ({ children }) => <table className="w-full table-block">{children}</table>,
+        tr: ({ children }) => <tr className="py-8 px-1 md:p-0 w-[280px] md:w-full flex flex-col md:table-row rounded-lg bg-white md:odd:bg-white md:even:bg-transparent">{children}</tr>,
+        tbody: ({ children }) => <tbody className="flex gap-5 md:gap-0 md:table-row-group" >{children}</tbody>,
         thead: ({ children }) => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="flex items-center text-default px-4 text-left min-h-[92px]">{children}</div>
+            <div className="flex md:min-h-[92px] items-center px-4 text-left text-sm md:text-default mb-1 lg:mb-0">{children}</div>
           </td>
         ),
-        ol: ({ children }: any) => {
-          const turndownService = new TurndownService({ emDelimiter: '*' })
-          const jsxStringItems = children
-            .filter((e) => e?.type === 'li')
-            .map((e) => ReactDOMServer.renderToStaticMarkup(e))
-          const markdownItems = jsxStringItems.map((e) => turndownService.turndown(e).slice(4))
-          const items = markdownItems.map((e) => {
-            return { text: e }
+        ol: ({ children }) => {
+          const elements = children
+            .filter((e) => e != '\n')
+            .map((e) => {
+              return (
+                isValidElement(e) && {
+                  ...e,
+                  props: { ...e.props, children: e.props.children.filter((c) => c != '\n') },
+                }
+              )
+            })
+          return <div className="flex flex-col gap-y-0">{elements}</div>
+        },
+        li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
+          const level = depth ?? 0
+          if (ordered) {
+            return <NumericalListItem index={index} variant="combined" hasBackground={false} children={children} />
+          }
+          return (
+            <div className="flex gap-x-8 lg:gap-x-6">
+              <div
+                className={cx(
+                  'h-4 w-4 shrink-0 bg-primary rounded-full mt-1.5 border-4 border-solid border-primary',
+                  { 'bg-primary': level == 0 },
+                  { 'border-primary border-solid border-4': level != 0 }
+                )}
+              />
+              <div>{children}</div>
+            </div>
+          )
+        },
+
+        ul: ({ children, depth }) => {
+          const elements = children.map((e) => {
+            return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
-          return <NumericalList items={items} hasBackground={hasBackground} />
+          return <div className="flex flex-col gap-y-6 lg:gap-y-8 lg:pl-6 pt-6 lg:pt-8 pb-6 lg:pb-14 inner-list">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}

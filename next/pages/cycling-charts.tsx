@@ -1,5 +1,6 @@
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import * as React from 'react'
+
 import CyclingTotalChart from '../components/molecules/charts/CyclingTotalChart'
 
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T

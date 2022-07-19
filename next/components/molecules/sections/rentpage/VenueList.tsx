@@ -1,4 +1,4 @@
-import { Venue, VenueProps, TabBarTab } from '@bratislava/ui-bratislava'
+import { TabBarTab, Venue, VenueProps } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
@@ -16,9 +16,9 @@ const VenueList = ({ className, title, tabs }: IProps) => {
 
   return (
     <div className={cx(className, 'flex items-center flex-col py-56')}>
-      <span className="font-semibold text-4xl w-96 px-5 text-center">{title}</span>
+      <span className="w-96 px-5 text-center text-4xl font-semibold">{title}</span>
 
-      <div className="flex space-x-5 my-20">
+      <div className="my-20 flex space-x-5">
         {tabs?.map((tab, index) => (
           <TabBarTab
             className="w-20 "

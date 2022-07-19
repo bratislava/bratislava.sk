@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef, RefObject } from 'react'
-import cx from 'classnames'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { ChevronRight, ArrowRight } from '../../../assets/images'
+import { getNumericLocalDate } from '@utils/local-date'
+import cx from 'classnames'
+import { RefObject, useEffect, useRef, useState } from 'react'
+
+import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
-import { getNumericLocalDate } from '@utils/local-date'
 
 export interface NewsCardProps {
   id?: string
@@ -37,6 +38,7 @@ export interface NewsCardProps {
   date_added?: string | null
   createdAt?: string | null
   updatedAt?: string | null
+  publishedAt?: string | null
   slug?: string | null
   link?: string | null
 }
@@ -49,13 +51,13 @@ export const NewsCard = ({
   excerpt,
   updatedAt,
   date_added,
+  publishedAt,
   readMoreText,
   slug,
 }: NewsCardProps) => {
   const { Link: UILink } = useUIContext()
   const [isHover, setHover] = useState(false)
   const cardRef: RefObject<HTMLInputElement> = useRef()
-
   const enterListner = () => setHover(true)
   const exitListner = () => setHover(false)
 
@@ -86,7 +88,7 @@ export const NewsCard = ({
 
   return (
     <VerticalCard
-      className={cx(className, 'min-w-[348px] leading-extra-tight')}
+      className={cx(className, 'min-w-[280px] leading-extra-tight')}
       imageSrc={coverImage?.data?.attributes?.url}
     >
       <UILink href={`/blog/${slug}`}>
@@ -97,34 +99,37 @@ export const NewsCard = ({
               color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
             />
           )}
-          <h3 className="text-md font-semibold news-small-content">{title}</h3>
-          <span className="text-xs font-medium">{getNumericLocalDate(date_added || updatedAt)}</span>
-          <p className="text-sm news-small-content">{excerpt}</p>
-
-          {slug && (
-            <Button
-              className="h-6 mt-5"
-              shape="none"
-              variant="muted"
-              icon={
-                isHover ? (
-                  <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />
-                ) : (
-                  <ChevronRight />
-                )
-              }
-            >
-              <div
-                className="relative font-semibold"
-                style={{
-                  color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
-                }}
+          <h3 className="news-small-content text-default font-semibold lg:text-md">{title}</h3>
+          <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
+          <p className="news-small-content text-sm">{excerpt}</p>
+          <div>
+            {slug && (
+              <Button
+                className="mt-5 h-6"
+                shape="none"
+                variant="muted"
+                onMouseEnter={enterListner}
+                onMouseLeave={exitListner}
+                icon={
+                  isHover ? (
+                    <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />
+                  ) : (
+                    <ChevronRight color="black" />
+                  )
+                }
               >
-                {readMoreText}
-                <div className="absolute w-full bottom-0 left-1/2 transform -translate-x-1/2 border-current border-b-2" />
-              </div>
-            </Button>
-          )}
+                <div
+                  className="relative font-semibold"
+                  style={{
+                    color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
+                  }}
+                >
+                  {readMoreText} 
+                  <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
+                </div>
+              </Button>
+            )}
+          </div>
         </div>
       </UILink>
     </VerticalCard>

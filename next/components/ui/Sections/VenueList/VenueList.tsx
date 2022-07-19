@@ -1,8 +1,9 @@
 import cx from 'classnames'
 import React from 'react'
+
+import VenueImg from '../../../../assets/images/news.svg'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
 import { Venue, VenueProps } from '../../Venue/Venue'
-import VenueImg from '../../../../assets/images/news.svg'
 
 export type TVenuesTab = { key: string; title: string; venues?: VenueProps[] }
 
@@ -59,9 +60,9 @@ export const VenueList = ({
 
   return (
     <div className={cx(className, 'flex items-center flex-col py-56')}>
-      <span className="font-semibold text-4xl w-96 px-5 text-center">{title}</span>
+      <span className="w-96 px-5 text-center text-4xl font-semibold">{title}</span>
 
-      <div className="flex space-x-5 my-20">
+      <div className="my-20 flex space-x-5">
         {tabs?.map((tab, index) => (
           <TabBarTab
             className="w-20"

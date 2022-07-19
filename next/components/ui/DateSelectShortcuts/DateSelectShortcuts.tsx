@@ -20,38 +20,42 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
   const today = LocalDate.now()
   return (
     <>
-      {new Array(5).fill(1).map((_, i) => {
-        const date = today.plusDays(i)
+      {Array.from({ length: 5 })
+        .fill(1)
+        .map((_, i) => {
+          const date = today.plusDays(i)
 
-        const title = (() => {
-          switch (i) {
-            case 0:
-              return 'Dnes'
-            case 1:
-              return 'Zajtra'
-            default:
-              return DOW[date.dayOfWeek().value()]
-          }
-        })()
+          const title = (() => {
+            switch (i) {
+              case 0:
+                return 'Dnes'
 
-        const dateValue = date.toJSON()
-        const isActive = dateValue === value
+              case 1:
+                return 'Zajtra'
 
-        return (
-          <button
-            className={cx('bg-input-nav-bg px-2 sm:px-4 relative cursor-pointer', {
-              'text-font hover:text-primary': !isActive,
-              'text-primary hover:text-font font-bold': isActive,
-              'hidden md:block': i > 2,
-            })}
-            key={i}
-            onClick={() => onClick?.(dateValue)}
-          >
-            {title}
-            {isActive && <div className="absolute top-1/2 left-1/2 bg-current w-1 h-1 rounded-full mt-4" />}
-          </button>
-        )
-      })}
+              default:
+                return DOW[date.dayOfWeek().value()]
+            }
+          })()
+
+          const dateValue = date.toJSON()
+          const isActive = dateValue === value
+
+          return (
+            <button
+              className={cx('bg-input-nav-bg px-2 sm:px-4 relative cursor-pointer', {
+                'text-font hover:text-primary': !isActive,
+                'text-primary hover:text-font font-bold': isActive,
+                'hidden md:block': i > 2,
+              })}
+              key={i}
+              onClick={() => onClick?.(dateValue)}
+            >
+              {title}
+              {isActive && <div className="absolute top-1/2 left-1/2 mt-4 h-1 w-1 rounded-full bg-current" />}
+            </button>
+          )
+        })}
     </>
   )
 }

@@ -6,6 +6,9 @@ metadata:
   labels:
     service: meilisearch
 spec:
+  selector:
+    matchLabels:
+      app: meilisearch
   replicas: 1
   serviceName: ${BUILD_REPOSITORY_NAME}-meilisearch
   template:
@@ -40,7 +43,9 @@ spec:
             initialDelaySeconds: 60
           volumeMounts:
             - name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
-              mountPath: /data.ms
+              mountPath: /meili_data
+          resources:
+            {}
   volumeClaimTemplates:
     - metadata:
         name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
@@ -51,3 +56,4 @@ spec:
         resources:
           requests:
             storage: 10Gi
+

@@ -1,6 +1,7 @@
 import { AdvancedSearch, BAStickyMenu, FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { useState } from 'react'
+
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
 
@@ -20,14 +21,14 @@ const BasePageLayout = ({
   const [searchOpen, setSearchOpen] = useState(false)
   return (
     <div className={cx('bg-background font-inter', className)}>
-      <div className="bg-white h-14">
+      <div className="h-14 bg-white">
         <SectionContainer>
           <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />
         </SectionContainer>
       </div>
 
       <div className="lg:h-[106px]">
-        <div className="fixed hidden lg:block bg-white w-full shadow-lg drop-shadow-sm z-40 ">
+        <div className="fixed z-40 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
           <BAStickyMenu menuItems={menuItems ?? []} active={activeMenuItem} />
         </div>
       </div>
@@ -39,7 +40,7 @@ const BasePageLayout = ({
       </div>
 
       <div className={cx('block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden', { hidden: !searchOpen })}>
-        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" options={[]} />
+        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" /* options={[]} */ />
       </div>
     </div>
   )

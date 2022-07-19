@@ -1,7 +1,7 @@
-import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'
-import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { BlogSectionFragment } from '@bratislava/strapi-sdk-homepage'
 
+import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'
+import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface BlogItem {
   data?: {
@@ -41,37 +41,19 @@ export interface FeaturedBlogsProps {
 export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
   return (
     <>
-      <div className="hidden lg:flex gap-x-8">
+      <div className="hidden gap-x-8 lg:flex">
         <div className="w-1/2">
-          <BlogSearchCard fullCardSizeImage className="h-full w-full" {...blogs} />
+          <BlogSearchCard fullCardSizeImage className="h-full w-full" item={blogs[0]} />
         </div>
-        <div className="flex flex-col gap-y-8 w-1/2">
+        <div className="flex w-1/2 flex-col gap-y-8">
           {blogs.slice(1, 3).map((blog, index) => (
-            <BlogSearchCard
-              key={index}
-              className="h-52"
-              imageClassName="w-[206px]"
-              title={blog.data?.attributes?.title}
-              coverImage={blog.data?.attributes?.coverImage?.data?.attributes?.url}
-              published_at={blog.data?.attributes?.publishedAt}
-              tag={blog.data?.attributes?.tag}
-            />
+            <BlogSearchCard key={index} className="h-52" imageClassName="w-[206px]" item={blog} />
           ))}
         </div>
       </div>
-      <HorizontalScrollWrapper className="lg:hidden gap-x-4">
-        {blogs.map((blogCard, index) => {
-          return (
-            <BlogSearchCard
-              key={index}
-              imageClassName="w-[206px]"
-              title={blogCard.data?.attributes?.title}
-              coverImage={blogCard.data?.attributes?.coverImage?.data?.attributes?.url}
-              published_at={blogCard.data?.attributes?.publishedAt}
-              tag={blogCard.data?.attributes?.tag}
-              className="w-74 h-60 flex-shrink-0"
-            />
-          )
+      <HorizontalScrollWrapper className="gap-x-4 lg:hidden">
+        {blogs.map((blog, index) => {
+          return <BlogSearchCard key={index} className="h-60 w-74 shrink-0" imageClassName="w-[206px]" item={blog} />
         })}
       </HorizontalScrollWrapper>
     </>

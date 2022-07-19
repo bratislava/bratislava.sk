@@ -1,5 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+
 import ArrowRight from '../../../assets/images/arrow-right2.svg'
 import ChevronRight from '../../../assets/images/chevron-right2.svg'
 
@@ -19,12 +20,12 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
     <div className={cx(className, 'text-font')}>
       {url ? (
         <UILink href={url}>
-          <InstitutionCard {...rest} className="hover:border-primary hover:border-opacity-100 group">
+          <InstitutionCard {...rest} className="group hover:border-primary hover:border-opacity-100">
             {urlLabel && (
               <div className="mt-6 flex items-center font-semibold underline">
                 <span className="mr-5">{urlLabel}</span>
-                <ChevronRight className="h-3 block group-hover:hidden" />
-                <ArrowRight className="h-3 hidden group-hover:block" />
+                <ChevronRight className="block h-3 group-hover:hidden" />
+                <ArrowRight className="hidden h-3 group-hover:block" />
               </div>
             )}
           </InstitutionCard>
@@ -44,14 +45,14 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
   const { Markdown: UIMarkdown } = useUIContext()
 
   return (
-    <div className={cx(className, 'px-10 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg')}>
+    <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
       <div className="flex flex-col">
-        <h4 className="font-semibold text-default leading-[26px]">{title}</h4>
-        {subtitle && <UIMarkdown className="mt-6 opacity-75" content={subtitle} />}
+        <h4 className="text-default font-semibold leading-[26px]">{title}</h4>
+        {subtitle && <UIMarkdown className="mt-6 text-base fontSize-base" content={subtitle} />}
         {content && (
-          <div className="flex flex-row flex-wrap w-full mt-6 row">
-            {Array.from(Array(3)).map((_, ix) => (
-              <div key={ix} className="basis-4/12 col-12 md:col-4 mb-2 last:mb-0 md:mb-0">
+          <div className="row mt-6 flex w-full flex-row flex-wrap">
+            {[...Array.from({ length: 3 })].map((_, ix) => (
+              <div key={ix} className="col-12 md:col-4 mb-2 last:mb-0 md:mb-0 break-all fontSize-base">
                 {content[ix] && <UIMarkdown content={content[ix]} />}
               </div>
             ))}

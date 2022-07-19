@@ -1,10 +1,13 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import React from 'react'
-import { getIcon, MenuMainItem, Panel, Waves } from '../index'
-import { ArrowRight, ChevronDown, ChevronRight, ChevronDownSmall } from '../../../assets/images'
+import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
+
+import { ArrowRight, ChevronDownSmall, ChevronRight } from '../../../assets/images'
 import StickyMenuTopper from '../../../assets/images/sticky-menu-topper.svg'
+import { getIcon, MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
+import { useOutsideClick } from 'rooks'
 
 interface IProps {
   className?: string
@@ -12,24 +15,47 @@ interface IProps {
   active?: string
 }
 
-export const BAStickyMenu = ({ className, menuItems, active }: IProps) => (
-  <div className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>
-    {menuItems.map((item, i) => (
-      <div key={i} className="group cursor-pointer flex-1">
-        <MenuCell item={item} isActive={item.id === active} />
-        <MenuPanel item={item} isFirst={i === 0} isLast={i === menuItems.length - 1} />
-      </div>
-    ))}
-  </div>
-)
+export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
+  const [panelHidden, setPanelHidden] = useState(true)
+  const [disableHover, setDisableHover] = useState(false)
+
+  useEffect(() => {
+    if (panelHidden) setPanelHidden(false)
+  }, [panelHidden])
+
+  const handleMenuCellClick = () => {
+    setPanelHidden(!panelHidden)
+    setDisableHover(!disableHover)
+  }
+
+  return (
+    <div
+      className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}
+      onMouseEnter={() => setDisableHover(false)}
+    >
+      {menuItems.map((item, i) => (
+        <div key={i} className="group flex-1 cursor-pointer">
+          <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
+          <MenuPanel
+            item={item}
+            panelHidden={panelHidden}
+            setPanelHidden={setPanelHidden}
+            disableHover={disableHover}
+          />
+        </div>
+      ))}
+    </div>
+  )
+}
 
 interface MenuCellProps {
   item: MenuMainItem
   isActive: boolean
+  handleClick: () => void
 }
 
-const MenuCell = ({ item, isActive }: MenuCellProps) => (
-  <div className="flex flex-col items-center w-40 h-[106px]">
+const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
+  <div className="flex h-[106px] w-40 flex-col items-center " onClick={handleClick}>
     <StickyMenuTopper
       style={{ color: item.colorDark }}
       className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-30', {
@@ -60,90 +86,89 @@ const MenuCell = ({ item, isActive }: MenuCellProps) => (
 
 interface MenuPanelProps {
   item: MenuMainItem
-  isFirst?: boolean
-  isLast?: boolean
+  panelHidden: boolean
+  setPanelHidden: (value: boolean) => void
+  disableHover: boolean
 }
 
-const MenuPanel = ({ item, isFirst, isLast }: MenuPanelProps) => {
-  const [panelHidden, setPanelHidden] = React.useState(false)
+const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover }: MenuPanelProps) => {
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
   const { Link: UILink } = useUIContext()
-
-  React.useEffect(() => {
-    if (panelHidden) setPanelHidden(false)
-  }, [panelHidden])
+  const ref = useRef()
+  useOutsideClick(ref, () => setPanelHidden(true))
 
   return (
     <div
       className={cx(
-        'cursor-default grid opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto absolute top-[106px] left-0 right-0 z-30 w-full pb-20 bg-transparent',
-        { hidden: panelHidden }
+        'cursor-default h-screen hidden pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
+        { hidden: panelHidden },
+        { 'opacity-0': panelHidden === true },
+        { 'group-hover:flex': !disableHover }
       )}
     >
-      <Panel
-        style={{ backgroundColor: item.color }}
-        className={cx('px-6 pt-10 pb-10', {
-          'rounded-tl-none': isFirst,
-          'rounded-tr-none': isLast,
-        })}
+      <div
+        className={cx('cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent')}
+        ref={ref}
       >
-        <div className="max-w-screen-1.5lg w-full m-auto grid grid-cols-3 gap-10">
-          {/* SUB-ITEMS */}
-          {item.subItems?.map((subItem, j) => {
-            const IconComponent = getIcon(subItem.icon)
-            return (
-              <div key={j}>
-                <button className="flex" onClick={() => setPanelHidden(true)}>
-                  <UILink
-                    href={isItExternal(subItem.url)}
-                    className="flex items-center text-[20px] text-left hover:underline"
-                  >
-                    <div className="flex-grow-0 flex-shrink-0 flex items-center justify-center">
-                      <IconComponent className="w-10 h-10" />
-                    </div>
-                    <div className="flex-1 ml-4 font-semibold">{subItem.title}</div>
-                  </UILink>
-                </button>
-                <ul className="mt-8 space-y-3">
-                  {subItem.subItems?.map((subSubItem, k) => (
-                    <li key={k}>
-                      <button className="flex" onClick={() => setPanelHidden(true)}>
-                        <UILink href={isItExternal(subSubItem.url)} className="hover:underline text-left">
-                          {subSubItem.title}
-                        </UILink>
-                      </button>
-                    </li>
-                  ))}
-                  {subItem.url && subItem.subItems.length > 2 ? (
-                    <li className="font-semibold">
-                      <button
-                        onMouseEnter={() => setMoreLinkHoverIdx(j)}
-                        onMouseLeave={() => setMoreLinkHoverIdx(-1)}
-                        onClick={() => setPanelHidden(true)}
-                        className="font-semibold"
-                      >
-                        <UILink href={isItExternal(subItem.url)}>
-                          <div className="flex gap-x-6 items-center">
-                            <span className="underline py-0.5">{subItem.moreLinkTitle}</span>
-                            {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
-                          </div>
-                        </UILink>
-                      </button>
-                    </li>
-                  ) : null}
-                </ul>
-              </div>
-            )
-          })}
-        </div>
-      </Panel>
-      <Waves
-        className="z-30 bg-transparent overflow-hidden absolute bottom-0"
-        wavePosition="bottom"
-        backgroundColor={'transparent'}
-        waveColor={item.color}
-        isRich
-      />
+        <Panel style={{ backgroundColor: item.color }} className={cx('px-6 pt-10 pb-10 rounded-none')}>
+          <div className="m-auto grid w-full max-w-screen-1.5lg grid-cols-3 gap-10">
+            {/* SUB-ITEMS */}
+            {item.subItems?.map((subItem, j) => {
+              const IconComponent = getIcon(subItem.icon)
+              return (
+                <div key={j}>
+                  <button className="flex" onClick={() => setPanelHidden(true)}>
+                    <UILink
+                      href={isItExternal(subItem.url)}
+                      className="flex items-center text-left text-[20px] hover:underline"
+                    >
+                      <div className="flex shrink-0 grow-0 items-center justify-center">
+                        <IconComponent className="h-10 w-10" />
+                      </div>
+                      <div className="ml-4 flex-1 font-semibold">{subItem.title}</div>
+                    </UILink>
+                  </button>
+                  <ul className="mt-8 space-y-3">
+                    {subItem.subItems?.map((subSubItem, k) => (
+                      <li key={k}>
+                        <button className="flex" onClick={() => setPanelHidden(true)}>
+                          <UILink href={isItExternal(subSubItem.url)} className="text-left hover:underline">
+                            {subSubItem.title}
+                          </UILink>
+                        </button>
+                      </li>
+                    ))}
+                    {subItem.url && subItem.subItems.length > 2 ? (
+                      <li className="font-semibold">
+                        <button
+                          onMouseEnter={() => setMoreLinkHoverIdx(j)}
+                          onMouseLeave={() => setMoreLinkHoverIdx(-1)}
+                          onClick={() => setPanelHidden(true)}
+                          className="font-semibold"
+                        >
+                          <UILink href={isItExternal(subItem.url)}>
+                            <div className="flex items-center gap-x-6">
+                              <span className="py-0.5 underline">{subItem.moreLinkTitle}</span>
+                              {moreLinkHoverIdx === j ? <ArrowRight /> : <ChevronRight />}
+                            </div>
+                          </UILink>
+                        </button>
+                      </li>
+                    ) : null}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+        </Panel>
+        <Waves
+          className="absolute bottom-0 z-30 overflow-hidden bg-transparent"
+          wavePosition="bottom"
+          backgroundColor="transparent"
+          waveColor={item.color}
+          isRich
+        />
+      </div>
     </div>
   )
 }
