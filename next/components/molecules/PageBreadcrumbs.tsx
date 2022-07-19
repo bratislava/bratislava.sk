@@ -23,7 +23,7 @@ const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
       }),
     })
   } else if (pageCategory) {
-    crumbs.push({ title: pageCategory.data.attributes.title ?? '', url: null })
+    crumbs.push({ title: pageCategory?.data?.attributes?.title ?? '', url: null })
   }
 
   crumbs.push({ title: title ?? '', url: null })
