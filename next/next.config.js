@@ -57,6 +57,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/robots.txt',
+        destination: '/api/robots',
+        permanent: true,
+      },
+      {
         source: '/sprava/:path*',
         destination: '/blog/:path*',
         permanent: true,
