@@ -154,8 +154,6 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
 
   const { Link: UILink } = useUIContext()
 
- 
-
   return (
     <>
       {/* Desktop */}
@@ -246,7 +244,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 </Link>
                  <Button
                   className="text-base px-6 py-4 shadow-none font-medium"
-                  variant="secondaryDarkText"
+                  variant="secondary-dark-text"
                 >
                   {navBarTexts[languageKey].register}
                 </Button> */}

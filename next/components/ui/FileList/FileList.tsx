@@ -97,7 +97,7 @@ export const FileList = ({
               {length > 6 && (
                 <Button
                   className="self-center px-6 py-2.5 text-default"
-                  variant="secondaryDarkText"
+                  variant="secondary-dark-text"
                   onClick={handleClick}
                 >
                   {buttonText}

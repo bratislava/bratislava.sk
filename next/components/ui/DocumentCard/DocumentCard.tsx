@@ -69,7 +69,7 @@ export const DocumentCard = ({
           <div>{content}</div>
           <div className=" flex flex-row flex-col items-start gap-x-6">
             <Button
-              variant="secondaryDarkText"
+              variant="secondary-dark-text"
               className="hover:color-white w-fit px-6 py-4 text-sm font-medium shadow-none hover:bg-primary hover:text-white"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
