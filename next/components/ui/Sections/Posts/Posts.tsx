@@ -100,14 +100,14 @@ export const Posts = ({
                     const tag = card.tag.data?.attributes
                     return (
                       <div key={i}>
-                        {card.tag && (
+                        {tag && (
                           <div className="mb-5">
                             <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag.pageCategory.data.attributes.color}))]`}
+                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag?.pageCategory.data.attributes.color}))]`}
                           >
                             {card.title}
                           </div>

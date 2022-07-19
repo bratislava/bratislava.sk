@@ -14,8 +14,7 @@ interface Props {
 const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
   const { Link: UILink } = useUIContext()
   const crumbs: { title: string; url: string | null }[] = []
-
-  if (parentPage) {
+  if (parentPage.data) {
     crumbs.push({
       title: parentPage.data?.attributes?.title ?? '',
       url: pagePath({
@@ -24,7 +23,7 @@ const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
       }),
     })
   } else if (pageCategory) {
-    crumbs.push({ title: pageCategory.data.attributes.title ?? '', url: null })
+    crumbs.push({ title: pageCategory?.data?.attributes?.title ?? '', url: null })
   }
 
   crumbs.push({ title: title ?? '', url: null })

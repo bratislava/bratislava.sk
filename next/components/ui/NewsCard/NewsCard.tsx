@@ -88,7 +88,7 @@ export const NewsCard = ({
 
   return (
     <VerticalCard
-      className={cx(className, 'min-w-[280px]  leading-extra-tight')}
+      className={cx(className, 'min-w-[280px] leading-extra-tight')}
       imageSrc={coverImage?.data?.attributes?.url}
     >
       <UILink href={`/blog/${slug}`}>
