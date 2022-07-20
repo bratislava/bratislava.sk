@@ -1,13 +1,13 @@
-import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
-import React, { useState } from 'react'
-
 import ChevronDown from '@assets/images/chevron-down-small.svg'
 import ChevronLeft from '@assets/images/chevron-left.svg'
 import ChevronUp from '@assets/images/chevron-up-small.svg'
 import CloseFilled from '@assets/images/close-filled.svg'
-import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
-import { Link } from '../Link/Link'
+import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
+import React, { useState } from 'react'
+
+import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu';
+import { Link } from '../Link/Link';
 
 interface IProps {
   className?: string
@@ -80,7 +80,6 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
                   {subItem.subItems.length > 2 && (
-                    <>
                       <button
                         onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
                         className="flex items-center gap-x-4"
@@ -98,9 +97,8 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                           </>
                         )}
                       </button>
-                      {i === item.subItems.length - 1 ? <div className="h-20" /> : null}
-                    </>
                   )}
+                  {i === item.subItems.length - 1 ? <div className="h-20" /> : null}
                 </div>
               </React.Fragment>
             )

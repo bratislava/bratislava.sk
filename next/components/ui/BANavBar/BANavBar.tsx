@@ -261,7 +261,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
-        <Brand />
+        <Brand url='/' />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
             {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className='text-gray-universal-500'/>}
@@ -278,7 +278,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
           {(burgerOpen && !searchOpen ) ? <HamburgerClose /> : <Hamburger />}
         </button>
 
-        {(burgerOpen && !searchOpen) && <HamburgerMenu hamburgerMenuItems={menuItems} />}
+        {(burgerOpen && !searchOpen) && <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} />}
       </div>
 
       {!isConsentSubmitted ? (
