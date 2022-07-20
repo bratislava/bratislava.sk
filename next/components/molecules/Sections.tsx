@@ -260,7 +260,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-14 md:pt-18', {
+      className={cx('pt-6 md:pt-14', {
         'pb-14 md:pb-18 bg-secondary': hasBackground === true,
       })}
       hasBackground={hasBackground}
