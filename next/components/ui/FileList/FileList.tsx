@@ -61,7 +61,7 @@ export const FileList = ({
         const quo = (length - rem) / numberOfItemsPerRow
         const rows = !clicked ? 1 : rem > maxRemainder ? quo + 1 : quo
         return (
-          <div key={index} className={cx({ 'mt-2': index > 0 })}>
+          <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
               {Array.from(Array.from({ length: rows }).keys(), (row, index) => {
                 const start = row * numberOfItemsPerRow
@@ -105,7 +105,8 @@ export const FileList = ({
               )}
             </div>
             {!noScroll && (
-              <div className="flex lg:hidden">
+              <div className="block lg:hidden">
+                <span className="text-default font-medium md:text-md">{fileSection.category}</span>
                 <HorizontalScrollWrapper className="gap-x-5 py-6 px-7.5 -mx-7.5">
                   {fileSection?.files.map((file, index) => (
                     <div key={index}>
