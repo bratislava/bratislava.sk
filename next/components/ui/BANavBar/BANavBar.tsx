@@ -25,6 +25,7 @@ interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
   handleSearch?: (searchOpen: boolean) => void
+  pageColor?: string
 }
 
 const navBarTexts = {
@@ -53,7 +54,7 @@ const navBarUrls = {
   },
 }
 
-export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelectProps }: IProps) => {
+export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
   const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -200,7 +201,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                       { 'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength },
                       { 'cursor-default': input.length <= minKeywordLength }
                     )}
-                    variant="secondaryDarkText"
+                    variant="secondary-dark-text"
                   >
                     {t('search')}
                   </Button>
@@ -244,7 +245,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 </Link>
                  <Button
                   className="text-base px-6 py-4 shadow-none font-medium"
-                  variant="secondaryDarkText"
+                  variant="secondary-dark-text"
                 >
                   {navBarTexts[languageKey].register}
                 </Button> */}
@@ -264,7 +265,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
         <Brand url='/' />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
-            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className='text-gray-universal-500'/>}
+            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
           </div>
           <div className="relative flex cursor-pointer items-center bg-transparent text-md text-gray-light">
             <LanguageSelect
@@ -295,16 +296,18 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
             </p>
             <div className="block sm:flex">
               <Button
-                className="mb-3 h-12 px-6 text-sm font-medium sm:my-0 sm:mr-6"
-                variant="primary"
+                className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
+                variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                 onClick={acceptAllCookies}
               >
-                {' '}
-                {t('acceptAll')}{' '}
+                {t('acceptAll')}
               </Button>
-              <Button className="mt-0 h-12 px-6 text-sm font-medium" variant="secondary" onClick={declineCookies}>
-                {' '}
-                {t('denyAll')}{' '}
+              <Button
+                className="mt-0 px-6 h-12 text-sm font-medium"
+                variant="secondary-dark-text"
+                onClick={declineCookies}
+              >
+                {t('denyAll')}
               </Button>
             </div>
           </div>
@@ -406,20 +409,18 @@ export const BANavBar = ({ className, menuItems, handleSearch, ...languageSelect
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className=" box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mr-6 md:ml-0"
-                    variant="secondary"
+                    className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
+                    variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
-                    {' '}
-                    {t('acceptAll')}{' '}
+                    {t('acceptAll')}
                   </Button>
                   <Button
                     className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mx-0"
                     variant="secondary"
                     onClick={declineCookies}
                   >
-                    {' '}
-                    {t('denyAll')}{' '}
+                    {t('denyAll')}
                   </Button>
                 </div>
               </div>

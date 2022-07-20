@@ -110,7 +110,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, setDisableHover, disable
     <div
       className={cx(
         'cursor-default h-screen hidden pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
-        // { hidden: panelHidden },
+        { hidden: panelHidden },
         { 'opacity-0': panelHidden === true },
         { 'group-hover:flex': !disableHover }
       )}

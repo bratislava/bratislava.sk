@@ -38,7 +38,7 @@ export const Card = ({
           { 'py-2.5 px-6': buttonVariant === 'default' }
         )}
         shape={buttonVariant}
-        variant="secondaryDarkText"
+        variant="secondary-dark-text"
         onClick={onButtonClick}
       >
         <div className="text-default font-normal"> {buttonContent}</div>

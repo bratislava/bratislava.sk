@@ -55,7 +55,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
       >
         {item?.data?.attributes?.coverImage && (
           <div
-            className={cx('flex flex-shrink-0 blog-card-image', imageClassName)}
+            className={cx('flex flex-shrink-0', imageClassName)}
             style={{
               backgroundImage: `url(${item?.data?.attributes?.coverImage?.data?.attributes?.url})`,
               backgroundRepeat: 'no-repeat',
