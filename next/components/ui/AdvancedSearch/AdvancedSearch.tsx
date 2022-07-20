@@ -97,7 +97,7 @@ export const AdvancedSearch = ({
             },
             { 'cursor-default': input.length <= minKeywordLength }
           )}
-          variant="secondaryDarkText"
+          variant="secondary-dark-text"
           onClick={handleClick}
         >
           {buttonText}
@@ -114,7 +114,7 @@ export const AdvancedSearch = ({
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className="hover:color-white h-14 rounded-l-none pr-6 text-default font-medium shadow-none hover:bg-primary hover:text-white"
-          variant="secondaryDarkText"
+          variant="secondary-dark-text"
           onClick={handleClick}
         />
       </div>

@@ -59,6 +59,7 @@ export const pageStyle = (pageColor: string) => {
 :root {
   --color-primary: var(${color.default}) !important;
   --color-secondary: var(${color.light}) !important;
+  --color-tertiary: var(${color.dark}) !important;
 }
   `
 }

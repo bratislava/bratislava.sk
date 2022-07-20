@@ -87,8 +87,8 @@ module.exports = {
       colors: {
         transperentBG: 'rgba(0, 0, 0, 0.5)',
         primary: 'var(--primary-color)',
-        primaryDark: '#933D35',
         secondary: 'var(--secondary-color)',
+        tertiary: 'var(--tertiary-color)',
         background: 'var(--background-color)',
         font: 'var(--font-color)',
         input: {
