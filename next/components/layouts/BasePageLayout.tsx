@@ -29,7 +29,7 @@ const BasePageLayout = ({
         </SectionContainer>
       </div>
 
-      <div className="lg:h-[106px]">
+      <div id="sticky-menu" className="lg:h-[106px]">
         <div className="fixed z-40 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
           <BAStickyMenu menuItems={menuItems ?? []} active={activeMenuItem} />
         </div>
