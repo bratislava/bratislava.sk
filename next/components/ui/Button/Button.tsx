@@ -19,6 +19,8 @@ export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTM
     | 'transparent'
     | 'full-transparent'
     | 'transparent-black'
+    | 'transparent-gray'
+    | 'primary-border'
     | 'muted'
 }
 
@@ -51,9 +53,11 @@ export const Button = ({
         'space-x-2': !!icon && spacing === 'small',
         // styles for buttons
         'bg-primary text-white': shape !== 'none' && variant === 'primary',
+        'bg-primary text-white border-primary': shape !== 'none' && variant === 'primary-border',
         'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
         'bg-tertiary text-white': shape !== 'none' && variant === 'tertiary',
         'bg-secondary text-font': shape !== 'none' && variant === 'secondary-dark-text',
+        'bg-transparent text-gray-universal-200 border-gray-universal-200': shape !== 'none' && variant === 'transparent-gray',
         'bg-tertiary text-font': shape !== 'none' && variant === 'tertiary-dark-text',
         'bg-transparent text-default text-font hover:text-primary border-primary border-2':
           shape !== 'none' && variant === 'transparent',

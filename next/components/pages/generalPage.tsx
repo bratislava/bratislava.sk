@@ -87,7 +87,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
             <div className="absolute top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">
+            <h1 className="mb-6 lg:mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-30 text-md font-bold md:text-2xl">
               {page?.title}
             </h1>
 
@@ -121,7 +121,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
                   const { first_blog, second_blog, third_blog } = section
                   const blogs = [first_blog, second_blog, third_blog]
                   return (
-                    <div key={index} className="absolute -bottom-45 z-10 w-full overflow-hidden lg:-bottom-87">
+                    <div key={index} className="absolute -bottom-45 z-10 w-full overflow-hidden lg:-bottom-87 -left-[30px] -right-[30px] lg:px-7.5" style={{ width: 'calc(100% + 60px)' }}>
                       <FeaturedBlogs blogs={blogs} />
                     </div>
                   )
