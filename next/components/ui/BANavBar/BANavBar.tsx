@@ -157,7 +157,10 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
   return (
     <>
       {/* Desktop */}
-      <div className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}>
+      <div
+        id="desktop-navbar"
+        className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}
+      >
         <div className="m-auto hidden w-full max-w-screen-1.5lg justify-between border-b border-gray-universal-200 py-4 lg:flex">
           <Brand
             className="group flex-1"
@@ -255,6 +258,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
       </div>
       {/* Mobile */}
       <div
+        id="mobile-navbar"
         className={cx(
           className,
           'h-16 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
