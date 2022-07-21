@@ -1,13 +1,13 @@
-import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
-import React, { useState } from 'react'
-
 import ChevronDown from '@assets/images/chevron-down-small.svg'
 import ChevronLeft from '@assets/images/chevron-left.svg'
 import ChevronUp from '@assets/images/chevron-up-small.svg'
 import CloseFilled from '@assets/images/close-filled.svg'
-import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
-import { Link } from '../Link/Link'
+import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
+import React, { useState } from 'react'
+
+import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu';
+import { Link } from '../Link/Link';
 
 interface IProps {
   className?: string
@@ -24,9 +24,10 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
 
   return (
     <div
-      style={{ backgroundColor: item.color, height: 'calc(100vh - 60px)' }}
+      style={{ backgroundColor: item.color, height: 'calc(100vh - 55px)' }}
       className={cx(
         'fixed top-[64px] left-0 w-screen md:hidden flex flex-col z-40',
+        // 'absolute top-0 h-full w-screen flex-1',
         className
       )}
     >
@@ -79,23 +80,25 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
                   {subItem.subItems.length > 2 && (
-                    <button
-                      onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
-                      className="flex items-center gap-x-4"
-                    >
-                      {isExpanded ? (
-                        <>
-                          <p className="text-base font-semibold underline">{t('showLess')}</p>
-                          <ChevronUp />
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-base font-semibold underline">{t('showMore')}</p>
-                          <ChevronDown />
-                        </>
-                      )}
-                    </button>
+                      <button
+                        onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
+                        className="flex items-center gap-x-4"
+                        type="button"
+                      >
+                        {isExpanded ? (
+                          <>
+                            <p className="text-base font-semibold underline">{t('showLess')}</p>
+                            <ChevronUp />
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-base font-semibold underline">{t('showMore')}</p>
+                            <ChevronDown />
+                          </>
+                        )}
+                      </button>
                   )}
+                  {i === item.subItems.length - 1 ? <div className="h-20" /> : null}
                 </div>
               </React.Fragment>
             )
@@ -103,17 +106,15 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         </div>
       </div>
       {/* Bottom's Sticky */}
-      {variant === 'homepage' && (
-        <div
-          style={{
-            background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
-          }}
-          className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
-        >
-          <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
-          <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
-        </div>
-      )}
+      <div
+        style={{
+          background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
+        }}
+        className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
+      >
+        <CloseFilled className="cursor-pointer" onClick={onClose} style={{ color: item.colorDark }} />
+        <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
+      </div>
     </div>
   )
 }
