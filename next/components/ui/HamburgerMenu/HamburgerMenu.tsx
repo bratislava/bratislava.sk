@@ -11,14 +11,12 @@ import Tourist from '@assets/images/Tourist-icon.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import Covid from '@assets/images/covid.svg'
 
-
 import { getIcon, Link, MenuMainItem } from '../index'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
   className?: string
-  isHamburgerMenu?: boolean
-  setHamburgerMenu?: React.Dispatch<React.SetStateAction<boolean>>
+  lang?: 'en' | 'sk'
 }
 
 interface HamburgerSubLoginItem {
@@ -27,17 +25,22 @@ interface HamburgerSubLoginItem {
   url: string
 }
 
-// TODO: add urls and all items
+const covidData = {
+  icon: <Covid />,
+  title: 'Covid-19',
+  en: {
+    url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
+  },
+  sk: {
+    url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
+  },
+}
+
 const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   {
     icon: <EServices />,
     title: 'E-služby',
-    url: '#',
-  },
-  {
-    icon: <Covid />,
-    title: 'Covid-19',
-    url: '#',
+    url: 'https://esluzby.bratislava.sk',
   },
   {
     icon: <LightBulb />,
@@ -47,7 +50,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   {
     icon: <Tourist />,
     title: 'Som turista',
-    url: '#',
+    url: 'https://www.visitbratislava.com',
   },
   // {
   //   icon: <SpeakerSmall />,
@@ -61,7 +64,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   // },
 ]
 
-export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) => {
+export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IProps) => {
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
 
   if (subMenu) {
@@ -75,7 +78,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
-        <div className="flex flex-col gap-y-8 border-b-2 border-red-universal-300 py-8">
+        <div className="flex flex-col gap-y-8 border-b-2 border-primary py-8">
           {hamburgerMenuItems.map((item) => {
             const IconComponent = getIcon(item.icon)
             return (
@@ -97,6 +100,20 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
           </Link>
         </div>
         <div className="flex flex-col gap-y-3.5 pt-8 ">
+          <Link
+            variant="plain"
+            icon={<ChevronRight />}
+            hoverIcon={<ArrowRight />}
+            iconPosition="right"
+            href={covidData[lang].url}
+            key={covidData.title}
+            className="mt-3"
+          >
+            <div className="flex items-center gap-x-3">
+              {covidData.icon}
+              <span className="text-base font-medium">{covidData.title}</span>
+            </div>
+          </Link>
           {MOCK_HAMBURGER_MENU_ITEMS.map((item, index) => (
             <Link
               variant="plain"
