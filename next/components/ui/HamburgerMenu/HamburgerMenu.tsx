@@ -29,7 +29,7 @@ const covidData = {
   icon: <Covid />,
   title: 'Covid-19',
   en: {
-    url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
+    url: '',
   },
   sk: {
     url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
@@ -100,20 +100,22 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IPro
           </Link>
         </div>
         <div className="flex flex-col gap-y-3.5 pt-8 ">
-          <Link
-            variant="plain"
-            icon={<ChevronRight />}
-            hoverIcon={<ArrowRight />}
-            iconPosition="right"
-            href={covidData[lang].url}
-            key={covidData.title}
-            className="mt-3"
-          >
-            <div className="flex items-center gap-x-3">
-              {covidData.icon}
-              <span className="text-base font-medium">{covidData.title}</span>
-            </div>
-          </Link>
+          {covidData[lang].url && (
+            <Link
+              variant="plain"
+              icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
+              iconPosition="right"
+              href={covidData[lang].url}
+              key={covidData.title}
+              className="mt-3"
+            >
+              <div className="flex items-center gap-x-3">
+                {covidData.icon}
+                <span className="text-base font-medium">{covidData.title}</span>
+              </div>
+            </Link>
+          )}
           {MOCK_HAMBURGER_MENU_ITEMS.map((item, index) => (
             <Link
               variant="plain"
