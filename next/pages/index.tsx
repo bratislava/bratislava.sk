@@ -188,10 +188,10 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
           {/* meta description */}
-            <Head>
-              <title>{homepage?.data?.attributes?.title}</title>
-              <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
-            </Head>
+          <Head>
+            <title>{homepage?.data?.attributes?.title}</title>
+            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
+          </Head>
         </PageHeader>
 
         <div className="bg-white">
