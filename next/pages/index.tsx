@@ -188,10 +188,10 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
           {/* meta description */}
-            <Head>
-              <title>{homepage?.data?.attributes?.title}</title>
-              <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
-            </Head>
+          <Head>
+            <title>{homepage?.data?.attributes?.title}</title>
+            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
+          </Head>
         </PageHeader>
 
         <div className="bg-white">
@@ -235,7 +235,7 @@ const Homepage = ({
         </SectionContainer>
 
         <Waves
-          className="mt-20"
+          className="mt-20 -mb-[1px] lg:mb-0"
           backgroundColor="var(--background-color)"
           waveColor="var(--secondary-color)"
           wavePosition="top"
@@ -253,6 +253,7 @@ const Homepage = ({
           backgroundColor="var(--background-color)"
           wavePosition="bottom"
           isRich
+          className="-mt-[1px] lg:mt-0"
         />
 
         <SectionContainer>

@@ -1,30 +1,39 @@
 {
   "collectionName": "components_sections_iframes",
   "info": {
-    "displayName": "Iframe"
+    "displayName": "Iframe",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "iframe_url": {
+    "url": {
+      "type": "string",
+      "required": true,
+      "default": "https://www.google.com"
+    },
+    "allowFullscreen": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "css": {
       "type": "string"
     },
-    "iframe_width": {
-      "type": "decimal"
+    "iframeWidth": {
+      "type": "enumeration",
+      "enum": ["full", "container"],
+      "default": "container",
+      "required": true
     },
-    "iframe_height": {
-      "type": "decimal"
+    "iframeHeight": {
+      "type": "string",
+      "required": true,
+      "default": "400"
     },
-    "iframe_allowfullscreen": {
-      "type": "boolean"
-    },
-    "iframe_style": {
-      "type": "string"
-    },
-    "iframe_frameBorder": {
-      "type": "string"
-    },
-    "iframe_scrolling": {
-      "type": "string"
+    "fullHeight": {
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   }
 }
