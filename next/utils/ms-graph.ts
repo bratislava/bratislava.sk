@@ -7,18 +7,15 @@ export interface TokenResponse {
 
 export const getToken = async (): Promise<TokenResponse> => {
   const formData = new URLSearchParams()
-  formData.append('grant_type', process.env.NEXT_PUBLIC_MSAL_GRANT_TYPE)
-  formData.append('client_id', process.env.NEXT_PUBLIC_MSAL_CLIENT_ID)
-  formData.append('client_secret', process.env.NEXT_PUBLIC_MSAL_CLIENT_SECRET)
-  formData.append('scope', process.env.NEXT_PUBLIC_MSAL_SCOPE)
+  formData.append('grant_type', process.env.MSAL_GRANT_TYPE)
+  formData.append('client_id', process.env.MSAL_CLIENT_ID)
+  formData.append('client_secret', process.env.MSAL_CLIENT_SECRET)
+  formData.append('scope', process.env.MSAL_SCOPE)
 
-  const result = await fetch(
-    `https://login.microsoftonline.com/${process.env.NEXT_PUBLIC_MSAL_TENANT_ID}/oauth2/v2.0/token`,
-    {
-      body: formData,
-      method: 'post',
-    }
-  )
+  const result = await fetch(`https://login.microsoftonline.com/${process.env.MSAL_TENANT_ID}/oauth2/v2.0/token`, {
+    body: formData,
+    method: 'post',
+  })
 
   const resultData = await result.json()
 
