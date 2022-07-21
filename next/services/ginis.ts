@@ -55,6 +55,7 @@ export const getUDEDocumentsList = async (search?: string): Promise<Array<Respon
       return res
     })
     .catch((error) => {
+      console.error(error)
       return error
     })
   if (!responseAxios || responseAxios.status != 200) {
