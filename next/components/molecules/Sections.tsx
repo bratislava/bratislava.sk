@@ -30,7 +30,7 @@ import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
 
-const sectionContent = (section: SectionsFragment, slug?: string, locale?: string) => {
+const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?: string; locale?: string }) => {
   const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -44,7 +44,14 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
       )
 
     case 'ComponentSectionsIconTitleDesc':
-      return <RentBenefits title={section.title} list={section.list} linkLabel={t('readMore')} hasBackground={section.hasBackground ?? false}/>
+      return (
+        <RentBenefits
+          title={section.title}
+          list={section.list}
+          linkLabel={t('readMore')}
+          hasBackground={section.hasBackground ?? false}
+        />
+      )
 
     case 'ComponentSectionsDocumentList':
       return <DocumentList />
@@ -214,10 +221,8 @@ const sectionContent = (section: SectionsFragment, slug?: string, locale?: strin
     case 'ComponentSectionsOrganizationalStructure':
       return <AdvancedAccordion {...section} />
 
-    /*
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
-    */
 
     default:
       return null
@@ -260,12 +265,12 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-14 md:pt-18', {
+      className={cx('pt-[42px] md:pt-18', {
         'pb-14 md:pb-18 bg-secondary': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >
-      {sectionContent(section, slug, locale)}
+      <SectionContent section={section} slug={slug} locale={locale} />
     </SectionContainer>
   )
 }

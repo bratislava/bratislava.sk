@@ -4,6 +4,8 @@ query Homepage($locale: I18NLocaleCode!) {
       attributes {
         updatedAt
         createdAt
+        title
+        metaDescription
         posts {
           title
           slug
