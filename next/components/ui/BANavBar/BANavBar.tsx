@@ -28,23 +28,6 @@ interface IProps extends LanguageSelectProps {
   pageColor?: string
 }
 
-const navBarTexts = {
-  en: {
-    capitalCity: 'the Capital City of Slovakia',
-    covid: 'Covid-19',
-    eservices: 'eServices',
-    login: 'Login',
-    register: 'Register',
-  },
-  sk: {
-    capitalCity: 'Hlavné mesto SR',
-    covid: 'Covid-19',
-    eservices: 'E-služby',
-    login: 'Prihlásenie',
-    register: 'Registrácia',
-  },
-}
-
 const navBarUrls = {
   en: {
     eservices: 'https://esluzby.bratislava.sk/',
@@ -169,7 +152,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             title={
               <p className="text-sm text-font group-hover:text-red-universal-300">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
-                {navBarTexts[languageKey].capitalCity}
+                {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
               </p>
             }
@@ -218,7 +201,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                     variant="plain"
                     className="whitespace-nowrap"
                   >
-                    {navBarTexts[languageKey].covid}
+                    {t('covid')}
                   </Link>
                 )}
 
@@ -229,7 +212,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                   </UILink>
                 }
                 <Link href={navBarUrls[languageKey].eservices} variant="plain" className="whitespace-nowrap">
-                  {navBarTexts[languageKey].eservices}
+                  {t('eservices')}
                 </Link>
                 <div className="relative flex cursor-pointer items-center bg-transparent text-gray-dark">
                   <LanguageSelect
@@ -239,7 +222,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 </div>
                 {/*
                 <Link href="#" variant="plain">
-                  {navBarTexts[languageKey].login}
+                  {t('login')}
                 </Link>
                 <Link
                   href="#"
@@ -247,13 +230,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                   // need to set bgcolor to bg-red-light or bg-light-red perhaps
                   className="text-font px-6 h-12 inline-flex font-medium rounded shadow-md bg-[#F8D7D4]"
                 >
-                  {navBarTexts[languageKey].register}
+                  {t('register')}
                 </Link>
                  <Button
                   className="text-base px-6 py-4 shadow-none font-medium"
                   variant="secondary-dark-text"
                 >
-                  {navBarTexts[languageKey].register}
+                  {t('register')}
                 </Button> */}
               </div>
             )}
