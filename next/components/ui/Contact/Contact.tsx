@@ -118,8 +118,8 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
             'mt-8 px-6 py-3 font-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
             {
               'bg-primary border-primary': linkVariant === 'primary',
-              'bg-secondary border-secondary': linkVariant === 'secondary',
-              'text-white': linkVariant === 'primary',
+              'bg-secondary border-secondary text-white': linkVariant === 'secondary',
+              'text-black': linkVariant === 'primary',
             }
           )}
         >
