@@ -2,7 +2,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { PageCategoryEntityResponse, PageEntityResponse, ParentPageFragment } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import * as React from 'react'
-
+import LeftIcon from '@assets/images/chevron-left.svg'
 import { pagePath } from '../../utils/page'
 
 interface Props {
@@ -35,13 +35,15 @@ const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
         return (
           <React.Fragment key={i}>
             {crumb.url ? (
-              <UILink href={crumb.url} className="hover:underline">
-                {crumb.title}
-              </UILink>
+              <>
+                <UILink href={crumb.url} className="hover:underline">
+                  <LeftIcon className="inline-block lg:hidden h-4 w-5 -mt-[3px]" /> {crumb.title}
+                </UILink>
+              </>
             ) : (
-              <span className={cx({ 'font-bold': last })}>{crumb.title}</span>
+              <span className={cx('hidden lg:inline-block', { 'font-bold': last })}>{crumb.title}</span>
             )}
-            {!last && <span className="px-2">&gt;</span>}
+            {!last && <span className="hidden lg:inline-block px-2">&gt;</span>}
           </React.Fragment>
         )
       })}
