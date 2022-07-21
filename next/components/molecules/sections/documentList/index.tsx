@@ -23,7 +23,7 @@ export const DocumentList = () => {
   const { data } = useSWR(['vzn', search, offset], () => searchVZN(search, offset, 16))
 
   const vzns = data?.hits || []
-  const total = data?.nbHits || 0
+  const total = data?.estimatedTotalHits || 0
 
   const totalPages = Math.ceil(total / MEILI_PAGE_SIZE)
 

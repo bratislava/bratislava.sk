@@ -212,13 +212,16 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               </div>
             ) : (
               <div className="flex gap-x-8 font-semibold text-gray-dark">
-                <Link
-                  href="informacie-a-odporucania-k-ochoreniu-covid-19"
-                  variant="plain"
-                  className="whitespace-nowrap"
-                >
-                  {navBarTexts[languageKey].covid}
-                </Link>
+                {languageKey === 'sk' && (
+                  <Link
+                    href="informacie-a-odporucania-k-ochoreniu-covid-19"
+                    variant="plain"
+                    className="whitespace-nowrap"
+                  >
+                    {navBarTexts[languageKey].covid}
+                  </Link>
+                )}
+
                 {
                   /* This UILink set here just to prefetch EN version of page, this link is hidden */
                   <UILink href="/en" className="hidden">
@@ -266,7 +269,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
-        <Brand url='/' />
+        <Brand url="/" />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
             {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
@@ -280,10 +283,10 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         </div>
 
         <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-6 cursor-pointer">
-          {(burgerOpen && !searchOpen ) ? <HamburgerClose /> : <Hamburger />}
+          {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
         </button>
 
-        {(burgerOpen && !searchOpen) && <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} />}
+        {burgerOpen && !searchOpen && <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} />}
       </div>
 
       {!isConsentSubmitted ? (
