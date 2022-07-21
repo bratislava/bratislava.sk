@@ -653,11 +653,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/ochrana-osobnych-udajov',
-        destination: '/ochrana-osobnych-udajov',
-        permanent: true,
-      },
-      {
         source:
           '/grantovy-podprogram-4-na-podporu-investicii-do-sportovej-infrastruktury-v-hlavnom-meste-sr-bratislave',
         destination: '/vzdelavanie-a-volny-cas/dotacie/podprogram-4',
