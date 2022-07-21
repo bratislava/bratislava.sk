@@ -54,6 +54,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
         return res
       })
       .catch((error) => {
+        console.error(error)
         return error
       })
     if (!responseAxios || responseAxios.status != 200) {
