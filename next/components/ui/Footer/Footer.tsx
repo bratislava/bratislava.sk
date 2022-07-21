@@ -45,7 +45,8 @@ export const Footer = ({
 
   return (
     <footer className={cx(className, 'text-base text-gray-universal-800 pt-14')}>
-      <section className="flex items-center justify-between " aria-label="Logo and Social Media Links">
+      <hr />
+      <section className="flex items-center justify-between pt-14" aria-label="Logo and Social Media Links">
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">
           <nav className="hidden cursor-pointer gap-4 text-gray-universal-500 lg:flex" aria-label="Social Media Links">
