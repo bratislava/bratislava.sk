@@ -45,7 +45,7 @@ export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
       onMouseLeave={handlOnMouseLeave}
     >
       {menuItems.map((item, i) => (
-        <div key={i} className="group flex-1 cursor-pointer transition delay-500 duration-300 ease-in-out">
+        <div key={i} className="group flex-1 cursor-pointer">
           <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
             <MenuPanel
             item={item}
@@ -71,7 +71,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
     <StickyMenuTopper
       style={{ color: item.colorDark }}
       className={cx(
-        'absolute top-0 transition opacity-0 group-hover:opacity-100 w-30 transition delay-500 duration-300 ease-in-out',
+        'absolute top-0 transition opacity-0 group-hover:opacity-100 w-30',
         {
           'opacity-100': isActive,
         }
@@ -79,7 +79,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
     />
     <p
       className={cx(
-        'font-medium text-base mt-5 transition group-hover:font-bold text-center whitespace-pre transition delay-500 duration-300 ease-in-out',
+        'font-medium text-base mt-5 transition group-hover:font-bold text-center whitespace-pre',
         {
           'font-bold': isActive,
         }
@@ -88,13 +88,13 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
       {item.title}
     </p>
     <ChevronDownSmall
-      className={cx('mt-3 group-hover:hidden transition delay-500 duration-300 ease-in-out', {
+      className={cx('mt-3 group-hover:hidden', {
         hidden: isActive,
       })}
     />
     <ChevronDownSmall
       style={{ color: item.colorDark }}
-      className={cx('mt-3 group-hover:block transition delay-500 duration-300 ease-in-out', {
+      className={cx('mt-3 group-hover:block', {
         hidden: !isActive,
         block: isActive,
       })}
