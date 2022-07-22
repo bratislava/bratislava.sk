@@ -1,5 +1,6 @@
 import { LocalDate } from '@js-joda/core'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import Calendar from '../../../assets/images/calendar.svg'
@@ -16,8 +17,10 @@ export type DateSelectProps = Omit<
 }
 
 export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }: DateSelectProps) => {
+  const { t } = useTranslation()
+
   const selectedDate = LocalDate.parse(value)
-  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'Máj', 'Jún', 'Júl', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 
   const showDate = selectedDate >= LocalDate.now().plusDays(5) || selectedDate < LocalDate.now()
 
@@ -42,14 +45,14 @@ export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }
         {/* Mobile */}
         {showMobileDate && (
           <div className="pointer-events-none absolute w-full text-center text-default sm:hidden">
-            {`${selectedDate.dayOfMonth()}.`} {MONTHS[selectedDate.monthValue() - 1]}
+            {`${selectedDate.dayOfMonth()}.`} {t(MONTHS[selectedDate.monthValue() - 1])}
           </div>
         )}
 
         {/* Desktop */}
         {!showDate && (
           <div className="absolute left-3 hidden w-56 bg-secondary pl-7 text-left sm:block md:left-20 md:w-60">
-            Kalendár
+            {t('calendar')}
           </div>
         )}
 

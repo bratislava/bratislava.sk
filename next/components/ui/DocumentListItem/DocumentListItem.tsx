@@ -1,4 +1,5 @@
 import truncate from 'lodash/truncate'
+import { useTranslation } from 'next-i18next'
 
 import { ArrowRight, ChevronRight, Download } from '../../../assets/images'
 import Button from '../Button/Button'
@@ -22,6 +23,8 @@ export const DocumentListItem = ({
   id,
   mainDocumentHref,
 }: DocumentListItemProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className="mb-1 flex w-full min-w-[280px] flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">
       <div className="flex w-full flex-col md:flex-row md:items-center">
@@ -33,7 +36,10 @@ export const DocumentListItem = ({
           <div className="text-truncate-2 text-sm font-semibold lg:text-default">
             {truncate(title, { length: 150 })}
           </div>
-          <div className="pt-4 text-xs lg:text-sm"> Počet dokumentov: {count}</div>
+          <div className="pt-4 text-xs lg:text-sm">
+            {' '}
+            {t('documentCount')} {count}
+          </div>
         </div>
       </div>
       <div className="flex shrink-0 items-center justify-between bg-zinc-50 py-4 pl-5 md:grow-0 md:basis-[300px] md:justify-evenly md:py-11 md:px-2">
@@ -46,7 +52,7 @@ export const DocumentListItem = ({
             hoverIcon={<ArrowRight />}
             onClick={() => onClick(id)}
           >
-            Zobraziť
+            {t('show')}
           </Button>
         </div>
 
