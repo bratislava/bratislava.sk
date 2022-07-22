@@ -24,7 +24,7 @@ const Footer = (props: FooterProps) => {
       {/* <FooterWidth className="hidden w-full md:block" />
       <FooterWidthTablet className="hidden w-full md:hidden" />
       <FooterWidthMobile className="w-full block sm:hidden" /> */}
-      <Waves className="-mb-1" waveColor="white" wavePosition="top" s />
+      <Waves className="-mb-1" waveColor="white" wavePosition="top" />
 
       <div className="bg-white px-7.5">
         <div className="mx-auto max-w-screen-1.5lg">
