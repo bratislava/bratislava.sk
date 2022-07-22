@@ -52,8 +52,9 @@ export const AccordionItem = ({
           onClick={handleClick}
         >
           <div className="flex flex-row font-medium">
-            <p className="text-left text-sm lg:text-md text-font">{title}</p>
-            {secondaryTitle && <p className="text-left text-md text-gray-universal-500 ">&nbsp;{secondaryTitle}</p>}
+            <p className="text-left text-sm lg:text-md text-font">{title}
+            {secondaryTitle && <span className="text-left text-md text-gray-universal-500 ">&nbsp;{secondaryTitle}</span>}</p>
+            
           </div>
           <div className="ml-5 grow-0">
             <Chevron className={cx('w-[24px] h-[12px] hidden lg:block', { 'rotate-180': active })} />
