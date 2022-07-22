@@ -12,6 +12,7 @@ import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import Covid from '@assets/images/covid.svg'
 
 import { getIcon, Link, MenuMainItem } from '../index'
+import { useTranslation } from 'next-i18next'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
@@ -66,6 +67,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
 
 export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IProps) => {
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
+  const { t } = useTranslation()
 
   if (subMenu) {
     return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} />
@@ -96,7 +98,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IPro
         </div>
         <div className="items-center justify-between py-8 hidden lg:flex">
           <Link className="text-base font-medium" variant="plain" href="#">
-            Prihlásenie
+            {t('login')}
           </Link>
         </div>
         <div className="flex flex-col gap-y-3.5 pt-8 ">
