@@ -94,7 +94,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
             {/* Header - PageLink as Button */}
             {page?.pageButtonContent && page?.pageButtonContent.title && (
               <Button
-                className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-default"
+                className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-sm lg:text-default"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
