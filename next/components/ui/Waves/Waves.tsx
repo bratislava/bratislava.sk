@@ -33,7 +33,8 @@ export const Waves = ({
   isRich,
 }: WavesProps) => {
   const waveProps: WaveProps = {
-    isRich,
+    // BA-552: Rich variant disabled everywhere, no matter the value of isRich prop
+    isRich: false,
     waveColor,
     outerLinesColor: outerLinesColor || waveColor,
     innerLinesColor: innerLinesColor || backgroundColor || 'white',
