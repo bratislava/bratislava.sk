@@ -5,18 +5,21 @@ import CloseFilled from '@assets/images/close-filled.svg'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
+import UnstyledLink from 'next/link'
 
-import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu';
-import { Link } from '../Link/Link';
+import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
+import { Link } from '../Link/Link'
+import { ChevronRight } from '@assets/images'
 
 interface IProps {
   className?: string
   item: MenuMainItem
   onClose?: () => void
+  closeParentMenu: () => void
   variant?: 'default' | 'homepage'
 }
 
-const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
+const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }: IProps) => {
   const [expanded, setExpanded] = useState<number[]>([])
   const ColoredIconComponent = getIcon(item.coloredIcon)
 
@@ -74,14 +77,21 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                     {subItem.subItems
                       .map((subSubItem) => (
                         <Link key={subSubItem.title} href={subSubItem.url} variant="plain">
-                          {subSubItem.title}
+                          <button onClick={() => closeParentMenu()} type="button">
+                            {subSubItem.title}
+                          </button>
                         </Link>
                       ))
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
+                  {/* TODO change approach to where we store all subItems in strapi & can therefore show them right away,
+                   /* today, the state is that strapi hosts just the first 3 items and the rest are on the subpage
+                   /* therefore, expanding the list is disabled, and the button behaves as a link to root page instead */}
                   {subItem.subItems.length > 2 && (
+                    <UnstyledLink href={subItem.url}>
                       <button
-                        onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
+                        // onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
+                        onClick={() => closeParentMenu()}
                         className="flex items-center gap-x-4"
                         type="button"
                       >
@@ -93,10 +103,12 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                         ) : (
                           <>
                             <p className="text-base font-semibold underline">{t('showMore')}</p>
-                            <ChevronDown />
+                            {/* <ChevronDown /> */}
+                            <ChevronRight />
                           </>
                         )}
                       </button>
+                    </UnstyledLink>
                   )}
                   {i === item.subItems.length - 1 ? <div className="h-20" /> : null}
                 </div>

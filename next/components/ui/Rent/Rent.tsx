@@ -28,7 +28,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
     <div
       className={cx(
         className,
-        'flex flex-col text-center flex-1 items-center px-2 md:bg-transparent rent-shadow rounded-xl p-5 max-h-sm max-w-xs min-w-[280px] lg:min-w-0'
+        'flex flex-col text-center flex-1 items-center px-2 md:bg-transparent rent-shadow rounded-xl p-2 max-h-sm max-w-xs min-w-[280px] lg:min-w-0'
       )}
     >
       <div
@@ -42,7 +42,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         )}
       </div>
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-73 ">
-        <h1 className="mt-5 mb-7 h-16 text-md">{title}</h1>
+        <h1 className="mt-5 mb-6 lg:mb-7 lg:h-16 text-md">{title}</h1>
         <div className="news-small-content w-full break-all text-center">
           <ReactMarkdown skipHtml children={desc} />
         </div>
