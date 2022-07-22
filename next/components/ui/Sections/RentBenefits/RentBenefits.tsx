@@ -43,9 +43,9 @@ export const RentBenefits = ({ className, title, linkLabel, hasBackground = fals
   return (
 <div 
 className='mt-4 md:flex md:flex-col md:items-center'>
-    <h1 className="flex text-center text-2xl font-semibold md:text-4xl">{title}</h1>
+    <h1 className="flex text-center text-md font-semibold md:text-4xl">{title}</h1>
     <HorizontalScrollWrapper
-    className={cx( 'justify-between my-14 w-full flex flex-row xs:items-center md:items-baseline',
+    className={cx( 'my-14 flex lg:flex-wrap flex-row xs:items-center md:items-baseline -mx-7.5 px-7.5 lg: px-0 lg:mx-0 ',
       {
         'mb-0': iconBg,
       },
@@ -55,6 +55,9 @@ className='mt-4 md:flex md:flex-col md:items-center'>
           {
             'iconBackground': iconBg,
           },
+          {
+            'w-[25%] shrink-0 grow-0 basis-1/4' : list.length > 3
+          }
         )}/>
       ))}
     </HorizontalScrollWrapper>
