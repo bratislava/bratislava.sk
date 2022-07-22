@@ -268,6 +268,10 @@
   @apply text-default font-semibold;
 }
 
+.modal-content-rent-markdown a{
+  @apply underline font-bold;
+}
+
 /* width */
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
