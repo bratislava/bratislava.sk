@@ -38,34 +38,30 @@ export const FileList = ({
   hideCategory,
   noScroll,
 }: FileListProps) => {
-  const [clicked, setClicked] = React.useState(false)
-  const [buttonText, setButtonText] = React.useState('Načítať ďalšie')
+  const [fileSectionsList, setFileSectionsList] = React.useState(fileSections.map((item) => { return { ...item, isShowMore: false } }));
   const numberOfItemsPerRow = 9
   const maxRemainder = 3
-
   const { t } = useTranslation()
 
-  const handleClick = () => {
-    if (clicked) {
-      setButtonText(t('loadMore'))
-    } else {
-      setButtonText(t('showLess'))
-    }
-    setClicked(!clicked)
+  const handleClick = (index: number) => {
+    const items = [...fileSectionsList];
+    items[index].isShowMore = !items[index].isShowMore;
+    setFileSectionsList(JSON.parse(JSON.stringify(items)));
   }
+
   return (
     <div className={className}>
-      {fileSections?.map((fileSection, index) => {
+      {fileSectionsList?.map((fileSection, index1) => {
         const { length } = fileSection.files
         const rem = length % numberOfItemsPerRow
         const quo = (length - rem) / numberOfItemsPerRow
-        const rows = !clicked ? 1 : rem > maxRemainder ? quo + 1 : quo
+        const rows = !fileSectionsList[index1]?.isShowMore ? 1 : rem > maxRemainder ? quo + 1 : quo
         return (
-          <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
+          <div key={index1} className={cx({ 'mt-8 lg:mt-14': index1 > 0 })}>
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
-              {Array.from(Array.from({ length: rows }).keys(), (row, index) => {
+              {Array.from(Array.from({ length: rows }).keys(), (row, index2) => {
                 const start = row * numberOfItemsPerRow
-                const end = !clicked ? 6 : (row + 1) * numberOfItemsPerRow
+                const end = !fileSectionsList[index1]?.isShowMore ? 6 : (row + 1) * numberOfItemsPerRow
                 return (
                   <div className="space-y-6" key={row}>
                     {row == 0 && fileSection.category && !hideCategory && (
@@ -73,8 +69,8 @@ export const FileList = ({
                     )}
 
                     <div className={cx('grid grid-cols-1 w-full gap-y-6', 'md:grid-cols-3 md:gap-x-7 md:gap-y-8')}>
-                      {fileSection?.files.slice(start, end).map((file, index) => (
-                        <div key={index} className="w-full">
+                      {fileSection?.files.slice(start, end).map((file, index3) => (
+                        <div key={index3} className="w-full">
                           <DownloadCard
                             title={file.title ? file.title : ''}
                             downloadLink={file.media?.url ? file.media?.url : ''}
@@ -88,7 +84,7 @@ export const FileList = ({
                         </div>
                       ))}
                     </div>
-                    {index != index - 1 && index != rows - 1 && dividerStyle && (
+                    {index2 != index2 - 1 && index2 != rows - 1 && dividerStyle && (
                       <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
                     )}
                   </div>
@@ -98,9 +94,9 @@ export const FileList = ({
                 <Button
                   className="self-center px-6 py-2.5 text-default"
                   variant="secondary-dark-text"
-                  onClick={handleClick}
+                  onClick={() => handleClick(index1)}
                 >
-                  {buttonText}
+                  {fileSectionsList[index1].isShowMore ? t('showLess') : t('loadMore')}
                 </Button>
               )}
             </div>
