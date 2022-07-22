@@ -141,12 +141,13 @@ const InputField = ({
   <label className="flex flex-col items-center text-center text-sm lg:text-default" htmlFor={id}>
     {label}
     <div className="flex items-center mt-3 relative">
-      <span
-        className="h-8 w-8 inline-block absolute left-4 flex items-center justify-center cursor-pointer"
+      <Button
+        className="h-8 w-8 inline-block absolute left-4 flex items-center justify-center cursor-pointer shadow-none"
         onClick={() => onAddSub(value - 1)}
+        variant="full-transparent"
       >
         <MinusIcon />
-      </span>
+      </Button>
       <Input
         id={id}
         value={value}
@@ -161,12 +162,13 @@ const InputField = ({
         min={0}
         {...rest}
       />
-      <span
-        className="h-8 w-8 inline-block absolute right-4 flex items-center justify-center cursor-pointer"
+      <Button
+        className="h-8 w-8 inline-block absolute right-4 flex items-center justify-center cursor-pointer shadow-none"
         onClick={() => onAddSub(value + 1)}
+        variant="full-transparent"
       >
         <PlusIcon />
-      </span>
+      </Button>
     </div>
   </label>
 )
