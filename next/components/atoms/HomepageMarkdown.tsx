@@ -23,7 +23,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
   }
   return (
     <ReactMarkdown
-      className={cx(className, 'whitespace-pre-wrap text-font', {
+      className={cx(className, 'text-font', {
         'homepage-markdown': !numericalList,
         'numerical-list': numericalList,
       })}
@@ -44,7 +44,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           </h3>
         ),
         h4: ({ children }) => (
-          <h4 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
+          <h4 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48 mb-6 mt-6 lg:mt-10 lg:mb-6 first:mt-0 last:mb-0">
             {children}
           </h4>
         ),
@@ -58,7 +58,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
+        p: ({ node, ...props }) => <div className="typography-regular mb-2" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
@@ -90,7 +90,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
                 }
               )
             })
-          return <div className="flex flex-col gap-y-0">{elements}</div>
+          return <div className="flex flex-col gap-y-0 mb-6 lg:mb-10">{elements}</div>
         },
         li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
@@ -115,7 +115,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           const elements = children.map((e) => {
             return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
-          return <div className="flex flex-col gap-y-6 lg:gap-y-8 lg:pl-6 pt-6 lg:pt-8 pb-6 lg:pb-14 inner-list">{elements}</div>
+          return <div className="flex flex-col gap-y-4 lg:gap-y-8 lg:pl-6 pt-6 lg:pt-10 pb-6 lg:pb-10 inner-list">{elements}</div>
         },
       }}
       remarkPlugins={[remarkGfm]}
