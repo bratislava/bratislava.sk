@@ -142,7 +142,7 @@ export const Posts = ({
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
-              Všetky aktuality
+              {t('allNews')}
             </Button>
           </div>
         </div>
@@ -228,14 +228,14 @@ export const Posts = ({
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
-              Všetky aktuality
+              {t('allNews')}
             </Button>
           </div>
         </div>
       )}
       {activeTab > 2 && (
         <div className="mt-14 items-end px-8 text-center font-sans text-default font-normal lg:text-md">
-          Všetky informácie nájdete na stránke
+          {t('allInformationOnSite')}
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">
               <br />
@@ -260,7 +260,7 @@ export const Posts = ({
             icon={<ChevronRight />}
             hoverIcon={<ArrowRight />}
           >
-            Všetky aktuality
+            {t('allNews')}
           </Button>
         </div>
       </div>
