@@ -43,6 +43,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       </div>
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-73 ">
         <h1 className="mt-5 mb-7 h-16 text-default lg:text-md">{title}</h1>
+
         <div className="news-small-content w-full break-all text-center">
           <ReactMarkdown skipHtml children={desc} />
         </div>

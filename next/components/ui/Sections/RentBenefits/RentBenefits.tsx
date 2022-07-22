@@ -49,6 +49,9 @@ className='mt-4 md:flex md:flex-col md:items-center'>
       {
         'mb-0': iconBg,
       },
+      {
+        'mt-14' : title
+      }
     )}>
       {list.map((item, index) => (
         <Rent key={index} {...item} linkLabel={linkLabel} className={cx(
