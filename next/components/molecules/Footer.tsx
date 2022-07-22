@@ -24,9 +24,12 @@ const Footer = (props: FooterProps) => {
       {/* <FooterWidth className="hidden w-full md:block" />
       <FooterWidthTablet className="hidden w-full md:hidden" />
       <FooterWidthMobile className="w-full block sm:hidden" /> */}
-      <Waves className="-mb-1" waveColor="white" wavePosition="top" s />
 
-      <div className="bg-white px-7.5">
+      {/* Uncomment for waves divider */}
+      {/* <Waves className="-mb-1" waveColor="white" wavePosition="top" /> */}
+
+      <div className="px-7.5">
+        <hr />
         <div className="mx-auto max-w-screen-1.5lg">
           <UIFooter className="pb-14" {...props} languageLinks={languageLinks} />
         </div>

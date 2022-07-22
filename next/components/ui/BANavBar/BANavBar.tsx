@@ -269,7 +269,9 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
         </button>
 
-        {burgerOpen && !searchOpen && <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} />}
+        {burgerOpen && !searchOpen && (
+          <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} closeMenu={() => setBurgerOpen(false)} />
+        )}
       </div>
 
       {!isConsentSubmitted ? (
