@@ -1,4 +1,5 @@
 import { LocalDate } from '@js-joda/core'
+import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import Calendar from '../../../assets/images/calendar-form.svg'
@@ -40,6 +41,7 @@ export const RentReservationForm = ({ className }: IProps) => {
     date: LocalDate.now().toJSON(),
     acceptTerms: false,
   })
+  const { t } = useTranslation()
 
   const handleChange = (change: Partial<ReservationFormValues>) => {
     // Object.keys(change).forEach((key) =>
@@ -76,7 +78,7 @@ export const RentReservationForm = ({ className }: IProps) => {
 
   return (
     <div className="z-10 mx-auto md:w-10/12">
-      <h1 className="text-center text-2xl font-semibold">Nezáväzná rezervácia</h1>
+      <h1 className="text-center text-2xl font-semibold">{t('nonbinding')}</h1>
 
       <div className="mb-14 mt-7 flex text-center">
         <p className="px-2 text-center text-default font-medium lg:px-0">
@@ -225,7 +227,7 @@ export const RentReservationForm = ({ className }: IProps) => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 h-12 px-6 text-default font-medium lg:mt-9">Nezáväzne rezervovať</Button>
+          <Button className="mt-8 h-12 px-6 text-default font-medium lg:mt-9">{t('nonbindingConfirm')}</Button>
         </div>
       </form>
     </div>

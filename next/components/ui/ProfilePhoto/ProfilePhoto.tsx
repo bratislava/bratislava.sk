@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 import ArrowRight from '../../../assets/images/arrow-right.svg'
 import ChevronRight from '../../../assets/images/chevron-right.svg'
@@ -12,6 +13,8 @@ export interface ProfilePhotoProps {
 }
 // TODO Image Upload to DB
 export const ProfilePhoto = ({ className, profileImage, setProfileImage }: ProfilePhotoProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={cx(className, 'flex flex-col md:flex-row md:gap-x-8')}>
       <Field id="photo" title="Fotografia" className="max-w-md text-default">
@@ -33,7 +36,7 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
         <p className="text-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis viverra quis dui nisl.
         </p>
-        <p className="text-sm">Maximálna veľkosť 2MB</p>
+        <p className="text-sm">{t('photoMaxSize')}</p>
         <Button
           type="button"
           className="relative w-44 lg:w-56"
@@ -48,7 +51,7 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
               if (event.target.files) setProfileImage?.(event.target.files[0])
             }}
           />
-          Nahrať foto
+          {t('uploadPhoto')}
         </Button>
       </Field>
     </div>
