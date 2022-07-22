@@ -8,8 +8,8 @@ export interface PageTitleProps extends React.HTMLAttributes<HTMLHeadingElement>
 
 export const PageTitle = ({ className, title, subtitle, ...rest }: PageTitleProps) => (
   <h1 className={cx(className, 'flex flex-col w-64')} {...rest}>
-    <span className="text-md font-bold text-red-universal-300 sm:text-xxxl">{title}</span>
-    <span className="mt-1 whitespace-pre text-default font-medium text-font opacity-50 sm:mt-2 sm:text-lg">
+    <span className="text-md font-bold text-primary sm:text-xxxl">{title}</span>
+    <span className="mt-1 text-md font-bold text-primary sm:text-xxxl sm:mt-2">
       {subtitle}
     </span>
   </h1>

@@ -12,11 +12,13 @@ import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import Covid from '@assets/images/covid.svg'
 
 import { getIcon, Link, MenuMainItem } from '../index'
+import { useTranslation } from 'next-i18next'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
   className?: string
   lang?: 'en' | 'sk'
+  closeMenu: () => void
 }
 
 interface HamburgerSubLoginItem {
@@ -64,11 +66,12 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   // },
 ]
 
-export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IProps) => {
+export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeMenu }: IProps) => {
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
+  const { t } = useTranslation()
 
   if (subMenu) {
-    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} />
+    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} closeParentMenu={closeMenu} />
   }
 
   return (
@@ -96,7 +99,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IPro
         </div>
         <div className="items-center justify-between py-8 hidden lg:flex">
           <Link className="text-base font-medium" variant="plain" href="#">
-            Prihlásenie
+            {t('login')}
           </Link>
         </div>
         <div className="flex flex-col gap-y-3.5 pt-8 ">
@@ -126,10 +129,10 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IPro
               key={item.title}
               className={cx({ 'mt-3': index % 2 === 0 })}
             >
-              <div className="flex items-center gap-x-3">
+              <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
                 {item.icon && item.icon}
                 <span className="text-base font-medium">{item.title}</span>
-              </div>
+              </button>
             </Link>
           ))}
         </div>

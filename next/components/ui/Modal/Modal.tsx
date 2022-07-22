@@ -27,22 +27,22 @@ export const Modal = ({
 }: ModalProps) => {
   return (
     <div
-      className={cx(className, 'absolute w-full z-40', {
+      className={cx(className, 'absolute w-full z-[55]', {
         flex: isOpen === true,
         hidden: isOpen === false,
       })}
     >
-      <div className="fixed inset-0 mt-25 flex items-center justify-center bg-[#02020280]">
+      <div className="fixed inset-0 flex items-center justify-center bg-[#02020280]">
         <div className="relative m-6 rounded-2xl bg-white md:m-0">
           <div className="absolute inset-0" onClick={onClose} />
           <div className="relative rounded-2xl bg-white">
             {onClose && (
               <Button
                 style={{ backgroundColor: closeButtonColor }}
-                className="modal-close-mobile-right transofrm closebutton absolute -bottom-16 z-10 h-16 w-16 -translate-y-1/2 md:inset-y-0 md:-right-9"
+                className="modal-close-mobile-right transofrm closebutton absolute -bottom-9 z-10 h-16 w-16 lg:-top-8 left-[50%] md:left-auto -translate-x-1/2 md:translate-x-0 md:inset-y-0 md:-right-8"
                 shape="circle"
                 iconPosition="center"
-                icon={<Close />}
+                icon={<Close className='h-10 w-10'/>} 
                 onClick={onClose}
               />
             )}
