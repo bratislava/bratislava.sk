@@ -18,6 +18,7 @@ interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
   className?: string
   lang?: 'en' | 'sk'
+  closeMenu: () => void
 }
 
 interface HamburgerSubLoginItem {
@@ -65,12 +66,12 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   // },
 ]
 
-export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IProps) => {
+export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeMenu }: IProps) => {
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
   const { t } = useTranslation()
 
   if (subMenu) {
-    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} />
+    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} closeParentMenu={closeMenu} />
   }
 
   return (
@@ -128,10 +129,10 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang }: IPro
               key={item.title}
               className={cx({ 'mt-3': index % 2 === 0 })}
             >
-              <div className="flex items-center gap-x-3">
+              <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
                 {item.icon && item.icon}
                 <span className="text-base font-medium">{item.title}</span>
-              </div>
+              </button>
             </Link>
           ))}
         </div>
