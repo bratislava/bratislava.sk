@@ -9,14 +9,14 @@ import { LinkedVznMainDocument } from './LinkedVznMainDocument'
 export const DocumentListModalBody = (vzn: any) => {
   const { t } = useTranslation()
   return (
-    <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background">
-      <div className="py-8 px-12">
-        <div className="text-md font-semibold"> {vzn?.title} </div>
-        <div className="flex pt-3">
+    <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background rounded-3xl">
+      <div className="px-6 px-8 lg:py-12 lg:px-16">
+        <div className="text-default lg:text-md font-semibold"> {vzn?.title} </div>
+        <div className="flex pt-6">
           {vzn?.mainDocument && (
             <div className="flex flex-col">
-              <div> {t('vzn.validFrom')}: </div>
-              <div className="font-semibold"> {vzn?.validFrom} </div>
+              <div className='text-sm mb-2'> {t('vzn.validFrom')}: </div>
+              <div className="text-default font-semibold"> {vzn?.validFrom} </div>
             </div>
           )}
           {!!vzn?.cancellationDocument?.length && (
