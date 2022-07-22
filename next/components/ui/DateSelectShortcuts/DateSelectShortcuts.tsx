@@ -1,14 +1,15 @@
 import { DayOfWeek, LocalDate } from '@js-joda/core'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 const DOW = {
-  [DayOfWeek.MONDAY.value()]: 'Pondelok',
-  [DayOfWeek.TUESDAY.value()]: 'Utorok',
-  [DayOfWeek.WEDNESDAY.value()]: 'Streda',
-  [DayOfWeek.THURSDAY.value()]: 'Štvrtok',
-  [DayOfWeek.FRIDAY.value()]: 'Piatok',
-  [DayOfWeek.SATURDAY.value()]: 'Sobota',
-  [DayOfWeek.SUNDAY.value()]: 'Nedeľa',
+  [DayOfWeek.MONDAY.value()]: 'monday',
+  [DayOfWeek.TUESDAY.value()]: 'tuesday',
+  [DayOfWeek.WEDNESDAY.value()]: 'wednesday',
+  [DayOfWeek.THURSDAY.value()]: 'thursday',
+  [DayOfWeek.FRIDAY.value()]: 'friday',
+  [DayOfWeek.SATURDAY.value()]: 'saturday',
+  [DayOfWeek.SUNDAY.value()]: 'sunday',
 }
 
 export interface DateSelectShortcutsProps {
@@ -18,6 +19,8 @@ export interface DateSelectShortcutsProps {
 
 export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps) => {
   const today = LocalDate.now()
+  const { t } = useTranslation()
+
   return (
     <>
       {Array.from({ length: 5 })
@@ -28,13 +31,13 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
           const title = (() => {
             switch (i) {
               case 0:
-                return 'Dnes'
+                return t('today')
 
               case 1:
-                return 'Zajtra'
+                return t('tomorrow')
 
               default:
-                return DOW[date.dayOfWeek().value()]
+                return t(DOW[date.dayOfWeek().value()])
             }
           })()
 

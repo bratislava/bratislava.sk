@@ -1,5 +1,6 @@
 import { DateTimeFormatter, LocalDate } from '@js-joda/core'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import Calendar from '../../../assets/images/calendar-form.svg'
@@ -39,6 +40,8 @@ export const WeddingForm = ({ className }: IProps) => {
     acceptTerms: false,
   })
 
+  const { t } = useTranslation()
+
   const handleChange = (change: Partial<WeddingFormValues>) => {
     // Object.keys(change).forEach((key) =>
     //   clearErrors(key as keyof ReservationFormValues)
@@ -64,7 +67,7 @@ export const WeddingForm = ({ className }: IProps) => {
 
   return (
     <div className="z-10 mx-auto w-10/12">
-      <h1 className="text-center text-2xl font-semibold">Nezáväzná rezervácia</h1>
+      <h1 className="text-center text-2xl font-semibold">{t('nonbindingWedding')}</h1>
 
       <p className="text-center text-default font-medium">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
@@ -202,7 +205,9 @@ export const WeddingForm = ({ className }: IProps) => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 h-12 w-3/12 text-default font-medium lg:mt-10">Nezáväzne rezervovať</Button>
+          <Button className="mt-8 h-12 w-3/12 text-default font-medium lg:mt-10">
+            {t('nonbindingWeddingConfirm')}
+          </Button>
         </div>
       </form>
     </div>
