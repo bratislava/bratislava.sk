@@ -198,7 +198,20 @@ const Homepage = ({
           <SectionContainer>
             <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
               <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
-              <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
+              <img
+                className="hidden sm:block"
+                width={721}
+                height={364}
+                src={header?.picture?.data?.attributes?.url}
+                alt="Bratislava Hero"
+              />
+              <img
+                className="sm:hidden"
+                width={721}
+                height={364}
+                src={header?.mobilePicture?.data?.attributes?.url}
+                alt="Bratislava Hero"
+              />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
