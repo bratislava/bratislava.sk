@@ -186,7 +186,12 @@ const HomepageMenu = ({ items }: IProps) => {
       </div>
 
       {selectedMenu && (
-        <HamburgerSubMenu item={selectedMenu} variant="homepage" onClose={() => setSelectedMenu(null)} />
+        <HamburgerSubMenu
+          item={selectedMenu}
+          variant="homepage"
+          onClose={() => setSelectedMenu(null)}
+          closeParentMenu={() => setSelectedMenu(null)}
+        />
       )}
       {/* Desktop Design */}
       <div className="relative hidden justify-between gap-y-4 md:grid md:grid-cols-3 lg:flex lg:flex-row lg:gap-y-0">
