@@ -39,7 +39,7 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
   const IconComponent = ICONS[icon]
   const { Link: UILink } = useUIContext()
   return (
-    <div className={cx('w-full flex-shrink-0 flex flex-col font-medium text-font xs:w-100 xs:mt-8', className)}>
+    <div className={cx('w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font xs:mt-8', className)}>
       <div className="mb-6 lg:mb-3.5">
         <IconComponent className="h-20" />
       </div>
