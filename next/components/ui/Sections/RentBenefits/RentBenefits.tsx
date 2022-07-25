@@ -45,7 +45,7 @@ export const RentBenefits = ({ className, title, linkLabel, hasBackground = fals
 className='mt-4 md:flex md:flex-col md:items-center'>
     <h1 className="flex text-center text-md font-semibold md:text-4xl">{title}</h1>
     <HorizontalScrollWrapper
-    className={cx( 'my-14 flex lg:flex-wrap flex-row xs:items-center md:items-baseline -mx-7.5 px-7.5 lg: px-0 lg:mx-0 ',
+    className={cx( 'md:w-full flex lg:flex-wrap flex-row xs:items-center md:items-baseline -mx-7.5 px-7.5 md:px-0 md:mx-0 ',
       {
         'mb-0': iconBg,
       },
