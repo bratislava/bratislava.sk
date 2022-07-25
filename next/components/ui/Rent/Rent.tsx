@@ -57,7 +57,7 @@ export const Rent = ({ className, icon, subTitle, modalContent, subText, url, li
     <div
       className={cx(
         className,
-        'flex flex-col text-center items-center px-2 flex-1 md:bg-transparent bg-white rent-shadow rounded-xl p-5 max-h-sm max-w-xs'
+        'flex flex-col text-center flex-1 items-center px-3 md:bg-transparent rent-shadow rounded-xl p-5 max-h-sm min-w-[240px] mr-4 md:mr-0 lg:min-w-0'
       )}
     >
       <div
@@ -67,11 +67,12 @@ export const Rent = ({ className, icon, subTitle, modalContent, subText, url, li
         }}
       >
         {icon?.data?.attributes?.url && (
-          <img className="h-28 w-28 p-5 md:h-30 md:w-30" src={icon.data.attributes.url} alt={subTitle} />
+          <img className="p-5 h-30 w-30" src={icon.data.attributes.url} alt={subTitle} />
         )}
       </div>
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-73 ">
-        <h1 className="mt-4 mb-5 h-16 text-md">{subTitle}</h1>
+        <h1 className="mt-5 mb-7 h-16 text-default lg:text-md">{subTitle}</h1>
+
         <div className="news-small-content w-full break-all text-center">
           <ReactMarkdown skipHtml children={subText} />
         </div>

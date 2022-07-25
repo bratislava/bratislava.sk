@@ -9,6 +9,7 @@ interface BasePageLayoutProps {
   footer?: FooterProps
   menuItems?: MenuMainItem[]
   activeMenuItem?: string
+  pageColor?: string
 }
 
 const BasePageLayout = ({
@@ -17,17 +18,18 @@ const BasePageLayout = ({
   footer,
   menuItems,
   activeMenuItem,
+  pageColor,
 }: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
   const [searchOpen, setSearchOpen] = useState(false)
   return (
     <div className={cx('bg-background font-inter', className)}>
       <div className="h-14 bg-white">
         <SectionContainer>
-          <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />
+          <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} pageColor={pageColor} />
         </SectionContainer>
       </div>
 
-      <div className="lg:h-[106px]">
+      <div id="sticky-menu" className="lg:h-[106px]">
         <div className="fixed z-40 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
           <BAStickyMenu menuItems={menuItems ?? []} active={activeMenuItem} />
         </div>

@@ -54,7 +54,12 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
   )
   return (
-    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={page?.pageCategory?.data?.id}>
+    <BasePageLayout
+      footer={footer}
+      menuItems={menuItems}
+      activeMenuItem={page?.pageCategory?.data?.id}
+      pageColor={page?.pageColor}
+    >
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{
@@ -78,18 +83,18 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="relative min-h-[280px] lg:min-h-[220px]">
-            <div className="absolute top-6">
+          <div className="relative min-h-[230px] lg:min-h-[220px]">
+            <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">
+            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-30 text-md font-bold md:text-2xl">
               {page?.title}
             </h1>
 
             {/* Header - PageLink as Button */}
             {page?.pageButtonContent && page?.pageButtonContent.title && (
               <Button
-                className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-default"
+                className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-sm lg:text-default"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >

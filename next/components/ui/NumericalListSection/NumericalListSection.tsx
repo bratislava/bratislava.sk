@@ -30,10 +30,7 @@ export const NumericalListSection = ({
   const { Link: UILink } = useUIContext()
   const href = buttonLink?.length ? buttonLink : '#'
   return (
-
-    <div className={cx({ 'pt-14': hasBackground },
-    { 'pt-0': !hasBackground }
-  )}>
+    <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
       {hasBackground ? (
         <Waves
           waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
@@ -70,10 +67,10 @@ export const NumericalListSection = ({
           <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant != 'roadmap' && buttonText && (
-          <UILink href={href}>
+          <UILink href={href} className="pt-10">
             <Button
               className="z-10 h-12 border-primary bg-primary px-6 text-base lg:h-14 lg:text-default"
-              variant="secondaryDarkText"
+              variant="secondary-dark-text"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >

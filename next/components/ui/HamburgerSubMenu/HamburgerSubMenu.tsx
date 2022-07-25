@@ -1,22 +1,25 @@
-import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
-import React, { useState } from 'react'
-
 import ChevronDown from '@assets/images/chevron-down-small.svg'
 import ChevronLeft from '@assets/images/chevron-left.svg'
 import ChevronUp from '@assets/images/chevron-up-small.svg'
 import CloseFilled from '@assets/images/close-filled.svg'
+import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
+import React, { useState } from 'react'
+import UnstyledLink from 'next/link'
+
 import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
+import { ChevronRight } from '@assets/images'
 
 interface IProps {
   className?: string
   item: MenuMainItem
   onClose?: () => void
+  closeParentMenu: () => void
   variant?: 'default' | 'homepage'
 }
 
-const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
+const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }: IProps) => {
   const [expanded, setExpanded] = useState<number[]>([])
   const ColoredIconComponent = getIcon(item.coloredIcon)
 
@@ -24,9 +27,10 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
 
   return (
     <div
-      style={{ backgroundColor: item.color, height: 'calc(100vh - 60px)' }}
+      style={{ backgroundColor: item.color, height: 'calc(100vh - 55px)' }}
       className={cx(
         'fixed top-[64px] left-0 w-screen md:hidden flex flex-col z-40',
+        // 'absolute top-0 h-full w-screen flex-1',
         className
       )}
     >
@@ -73,29 +77,40 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
                     {subItem.subItems
                       .map((subSubItem) => (
                         <Link key={subSubItem.title} href={subSubItem.url} variant="plain">
-                          {subSubItem.title}
+                          <button onClick={() => closeParentMenu()} type="button">
+                            {subSubItem.title}
+                          </button>
                         </Link>
                       ))
                       .slice(0, isExpanded ? subItem.subItems.length : 3)}
                   </div>
+                  {/* TODO change approach to where we store all subItems in strapi & can therefore show them right away,
+                   /* today, the state is that strapi hosts just the first 3 items and the rest are on the subpage
+                   /* therefore, expanding the list is disabled, and the button behaves as a link to root page instead */}
                   {subItem.subItems.length > 2 && (
-                    <button
-                      onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
-                      className="flex items-center gap-x-4"
-                    >
-                      {isExpanded ? (
-                        <>
-                          <p className="text-base font-semibold underline">{t('showLess')}</p>
-                          <ChevronUp />
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-base font-semibold underline">{t('showMore')}</p>
-                          <ChevronDown />
-                        </>
-                      )}
-                    </button>
+                    <UnstyledLink href={subItem.url}>
+                      <button
+                        // onClick={() => setExpanded((v) => (isExpanded ? v.filter((n) => n !== i) : [...v, i]))}
+                        onClick={() => closeParentMenu()}
+                        className="flex items-center gap-x-4"
+                        type="button"
+                      >
+                        {isExpanded ? (
+                          <>
+                            <p className="text-base font-semibold underline">{t('showLess')}</p>
+                            <ChevronUp />
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-base font-semibold underline">{t('showMore')}</p>
+                            {/* <ChevronDown /> */}
+                            <ChevronRight />
+                          </>
+                        )}
+                      </button>
+                    </UnstyledLink>
                   )}
+                  {i === item.subItems.length - 1 ? <div className="h-20" /> : null}
                 </div>
               </React.Fragment>
             )
@@ -103,17 +118,15 @@ const HamburgerSubMenu = ({ className, item, onClose, variant }: IProps) => {
         </div>
       </div>
       {/* Bottom's Sticky */}
-      {variant === 'homepage' && (
-        <div
-          style={{
-            background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
-          }}
-          className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
-        >
-          <CloseFilled onClick={onClose} style={{ color: item.colorDark }} />
-          <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
-        </div>
-      )}
+      <div
+        style={{
+          background: `linear-gradient(transparent -100%, ${item.color} 80%)`,
+        }}
+        className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
+      >
+        <CloseFilled className="cursor-pointer" onClick={onClose} style={{ color: item.colorDark }} />
+        <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
+      </div>
     </div>
   )
 }

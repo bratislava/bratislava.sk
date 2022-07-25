@@ -188,17 +188,30 @@ const Homepage = ({
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
         <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
           {/* meta description */}
-            <Head>
-              <title>{homepage?.data?.attributes?.title}</title>
-              <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
-            </Head>
+          <Head>
+            <title>{homepage?.data?.attributes?.title}</title>
+            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
+          </Head>
         </PageHeader>
 
         <div className="bg-white">
           <SectionContainer>
             <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
               <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
-              <img width={721} height={364} src={header?.picture?.data?.attributes?.url} alt="Bratislava Hero" />
+              <img
+                className="hidden sm:block"
+                width={721}
+                height={364}
+                src={header?.picture?.data?.attributes?.url}
+                alt="Bratislava Hero"
+              />
+              <img
+                className="sm:hidden"
+                width={721}
+                height={364}
+                src={header?.mobilePicture?.data?.attributes?.url}
+                alt="Bratislava Hero"
+              />
             </div>
             <HomepageMenu items={menuItems} />
           </SectionContainer>
@@ -235,7 +248,7 @@ const Homepage = ({
         </SectionContainer>
 
         <Waves
-          className="mt-20"
+          className="mt-20 -mb-[1px] lg:mb-0"
           backgroundColor="var(--background-color)"
           waveColor="var(--secondary-color)"
           wavePosition="top"
@@ -253,6 +266,7 @@ const Homepage = ({
           backgroundColor="var(--background-color)"
           wavePosition="bottom"
           isRich
+          className="-mt-[1px] lg:mt-0"
         />
 
         <SectionContainer>

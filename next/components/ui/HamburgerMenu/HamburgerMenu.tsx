@@ -11,14 +11,14 @@ import Tourist from '@assets/images/Tourist-icon.svg'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import Covid from '@assets/images/covid.svg'
 
-
 import { getIcon, Link, MenuMainItem } from '../index'
+import { useTranslation } from 'next-i18next'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
   className?: string
-  isHamburgerMenu?: boolean
-  setHamburgerMenu?: React.Dispatch<React.SetStateAction<boolean>>
+  lang?: 'en' | 'sk'
+  closeMenu: () => void
 }
 
 interface HamburgerSubLoginItem {
@@ -27,17 +27,22 @@ interface HamburgerSubLoginItem {
   url: string
 }
 
-// TODO: add urls and all items
+const covidData = {
+  icon: <Covid />,
+  title: 'Covid-19',
+  en: {
+    url: '',
+  },
+  sk: {
+    url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
+  },
+}
+
 const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   {
     icon: <EServices />,
     title: 'E-služby',
-    url: '#',
-  },
-  {
-    icon: <Covid />,
-    title: 'Covid-19',
-    url: '#',
+    url: 'https://esluzby.bratislava.sk',
   },
   {
     icon: <LightBulb />,
@@ -47,7 +52,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   {
     icon: <Tourist />,
     title: 'Som turista',
-    url: '#',
+    url: 'https://www.visitbratislava.com',
   },
   // {
   //   icon: <SpeakerSmall />,
@@ -61,21 +66,22 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
   // },
 ]
 
-export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) => {
+export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeMenu }: IProps) => {
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
+  const { t } = useTranslation()
 
   if (subMenu) {
-    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} />
+    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} closeParentMenu={closeMenu} />
   }
 
   return (
     <div
-      className={cx('fixed top-[64px] left-0 w-screen overflow-y-scroll md:hidden flex flex-col')}
+      className={cx('fixed top-[64px] left-0 w-screen overflow-y-scroll lg:hidden flex flex-col')}
       style={{ height: 'calc(100vh - 60px)' }}
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-7.5 pb-11', className)}>
         {/* Main Hamburger Menu */}
-        <div className="flex flex-col gap-y-8 border-b-2 border-red-universal-300 py-8">
+        <div className="flex flex-col gap-y-8 border-b-2 border-primary py-8">
           {hamburgerMenuItems.map((item) => {
             const IconComponent = getIcon(item.icon)
             return (
@@ -93,10 +99,26 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
         </div>
         <div className="items-center justify-between py-8 hidden lg:flex">
           <Link className="text-base font-medium" variant="plain" href="#">
-            Prihlásenie
+            {t('login')}
           </Link>
         </div>
         <div className="flex flex-col gap-y-3.5 pt-8 ">
+          {covidData[lang].url && (
+            <Link
+              variant="plain"
+              icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
+              iconPosition="right"
+              href={covidData[lang].url}
+              key={covidData.title}
+              className="mt-3"
+            >
+              <div className="flex items-center gap-x-3">
+                {covidData.icon}
+                <span className="text-base font-medium">{covidData.title}</span>
+              </div>
+            </Link>
+          )}
           {MOCK_HAMBURGER_MENU_ITEMS.map((item, index) => (
             <Link
               variant="plain"
@@ -107,10 +129,10 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className }: IProps) =>
               key={item.title}
               className={cx({ 'mt-3': index % 2 === 0 })}
             >
-              <div className="flex items-center gap-x-3">
+              <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
                 {item.icon && item.icon}
                 <span className="text-base font-medium">{item.title}</span>
-              </div>
+              </button>
             </Link>
           ))}
         </div>

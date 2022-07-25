@@ -435,6 +435,15 @@ fragment Sections on PageSectionsDynamicZone {
     }
   }
 
+  ... on ComponentSectionsIframe {
+    url
+    iframeWidth
+    iframeHeight
+    fullHeight
+    allowFullscreen
+    css
+  }
+
   ... on ComponentSectionsFileList {
     hasBackground
     fileList(pagination: { limit: 500 }) {

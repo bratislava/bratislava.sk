@@ -57,6 +57,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/robots.txt',
+        destination: '/api/robots',
+        permanent: true,
+      },
+      {
         source: '/sprava/:path*',
         destination: '/blog/:path*',
         permanent: true,
@@ -645,11 +650,6 @@ const nextConfig = {
       {
         source: '/organizacia-alebo-institucia/odvoz-a-likvidacia-odpadu-a-s',
         destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
-        permanent: true,
-      },
-      {
-        source: '/ochrana-osobnych-udajov',
-        destination: '/ochrana-osobnych-udajov',
         permanent: true,
       },
       {

@@ -136,14 +136,16 @@ export const Posts = ({
           </HorizontalScrollWrapper>
           <div className="flex justify-center lg:hidden">
             {/* TODO: change this button to custom button */}
-            <Button
-              variant="transparent"
-              className="mt-0 px-6 py-2 text-default font-medium shadow-none"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-            >
-              Všetky aktuality
-            </Button>
+            <UILink href={t('allNewsLink')}>
+              <Button
+                variant="transparent"
+                className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+                icon={<ChevronRight />}
+                hoverIcon={<ArrowRight />}
+              >
+                {t('allNews')}
+              </Button>
+            </UILink>
           </div>
         </div>
       )}
@@ -173,8 +175,8 @@ export const Posts = ({
         </div>
       )}
       {activeTab == 2 && (
-        <div className="mt-14 block">
-          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8">
+        <div className="mt-8 lg:mt-14 block">
+          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
               {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
@@ -228,14 +230,14 @@ export const Posts = ({
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
-              Všetky aktuality
+              {t('allNews')}
             </Button>
           </div>
         </div>
       )}
       {activeTab > 2 && (
         <div className="mt-14 items-end px-8 text-center font-sans text-default font-normal lg:text-md">
-          Všetky informácie nájdete na stránke
+          {t('allInformationOnSite')}
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">
               <br />
@@ -254,14 +256,16 @@ export const Posts = ({
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
           {/* TODO: change this button to custom button */}
-          <Button
-            variant="transparent"
-            className="mt-9 px-6 py-2 text-default font-medium shadow-none"
-            icon={<ChevronRight />}
-            hoverIcon={<ArrowRight />}
-          >
-            Všetky aktuality
-          </Button>
+          <UILink href={t('allNewsLink')}>
+            <Button
+              variant="transparent"
+              className="mt-9 px-6 py-2 text-default font-medium shadow-none"
+              icon={<ChevronRight />}
+              hoverIcon={<ArrowRight />}
+            >
+              {t('allNews')}
+            </Button>
+          </UILink>
         </div>
       </div>
     </div>

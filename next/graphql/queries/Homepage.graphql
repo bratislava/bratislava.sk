@@ -4,6 +4,8 @@ query Homepage($locale: I18NLocaleCode!) {
       attributes {
         updatedAt
         createdAt
+        title
+        metaDescription
         posts {
           title
           slug
@@ -23,6 +25,13 @@ query Homepage($locale: I18NLocaleCode!) {
         }
         header {
           picture {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          mobilePicture {
             data {
               attributes {
                 url

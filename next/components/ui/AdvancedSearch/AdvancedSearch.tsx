@@ -68,7 +68,7 @@ export const AdvancedSearch = ({
     }
   }
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     if (input.length > minKeywordLength) {
       router.push(`${t('searchLink')}?keyword=${input}`)
     }
@@ -97,7 +97,7 @@ export const AdvancedSearch = ({
             },
             { 'cursor-default': input.length <= minKeywordLength }
           )}
-          variant="secondaryDarkText"
+          variant="secondary-dark-text"
           onClick={handleClick}
         >
           {buttonText}
@@ -107,14 +107,17 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
+          value={input}
+          onChange={handleChange}
           className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
           placeholder={t('search')}
+          onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className="hover:color-white h-14 rounded-l-none pr-6 text-default font-medium shadow-none hover:bg-primary hover:text-white"
-          variant="secondaryDarkText"
+          variant="secondary-dark-text"
           onClick={handleClick}
         />
       </div>

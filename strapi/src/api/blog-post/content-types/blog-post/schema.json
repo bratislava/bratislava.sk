@@ -106,7 +106,8 @@
         "sections.list-items",
         "sections.articles-list",
         "sections.organizational-structure",
-        "sections.rent"
+        "sections.rent",
+        "sections.iframe"
       ]
     }
   }

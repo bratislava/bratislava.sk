@@ -86,7 +86,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
 
         <Button
           value={1}
-          variant={currentPage == 1 ? 'primary' : 'secondaryDarkText'}
+          variant={currentPage == 1 ? 'primary' : 'secondary-dark-text'}
           className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full  hover:border-2 hover:border-primary"
           onClick={() => handleSelectPage(1)}
         >
@@ -98,7 +98,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
             <Button
               key={index}
               value={item.page.valueOf()}
-              variant={item.page == currentPage ? 'primary' : 'secondaryDarkText'}
+              variant={item.page == currentPage ? 'primary' : 'secondary-dark-text'}
               className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full hover:border-2 hover:border-primary"
               onClick={() => handleSelectPage(item.page)}
             >
@@ -110,7 +110,7 @@ export const Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandle
         {numberOfPages > 1 ? (
           <Button
             value={numberOfPages}
-            variant={numberOfPages == currentPage ? 'primary' : 'secondaryDarkText'}
+            variant={numberOfPages == currentPage ? 'primary' : 'secondary-dark-text'}
             className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full hover:border-2 hover:border-primary"
             onClick={() => handleSelectPage(numberOfPages)}
           >

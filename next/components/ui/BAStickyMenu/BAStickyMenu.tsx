@@ -1,13 +1,13 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useRef } from 'react'
 
-import { ArrowRight, ChevronDownSmall, ChevronRight } from '../../../assets/images'
-import StickyMenuTopper from '../../../assets/images/sticky-menu-topper.svg'
+import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
+import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
 import { getIcon, MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
-import { useOutsideClick } from 'rooks'
+import { useDebounce, useOutsideClick } from 'rooks'
 
 interface IProps {
   className?: string
@@ -16,22 +16,36 @@ interface IProps {
 }
 
 export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
-  const [panelHidden, setPanelHidden] = useState(true)
+  // TODO this whole logic is a tangled mess - it's fix to work to a degree, but needs refactor
+  // TODO consider state machine for this
+  const [panelHidden, setPanelHidden] = useState(false)
   const [disableHover, setDisableHover] = useState(false)
 
-  useEffect(() => {
-    if (panelHidden) setPanelHidden(false)
+  const debouncedHandleMouseEnter = useDebounce(() => {
+    setDisableHover(false)
+    setPanelHidden(false)
+  }, 500)
+
+  const handleMenuCellClick = useCallback(() => {
+    if (panelHidden) {
+      setPanelHidden(false)
+      setDisableHover(false)
+    } else {
+      setPanelHidden(true)
+      setDisableHover(false)
+    }
   }, [panelHidden])
 
-  const handleMenuCellClick = () => {
-    setPanelHidden(!panelHidden)
-    setDisableHover(!disableHover)
+  const handleOnMouseLeave = () => {
+    setDisableHover(true)
+    debouncedHandleMouseEnter.cancel()
   }
 
   return (
     <div
       className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}
-      onMouseEnter={() => setDisableHover(false)}
+      onMouseEnter={debouncedHandleMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
     >
       {menuItems.map((item, i) => (
         <div key={i} className="group flex-1 cursor-pointer">
@@ -41,6 +55,7 @@ export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
             panelHidden={panelHidden}
             setPanelHidden={setPanelHidden}
             disableHover={disableHover}
+            setDisableHover={setDisableHover}
           />
         </div>
       ))}
@@ -89,25 +104,32 @@ interface MenuPanelProps {
   panelHidden: boolean
   setPanelHidden: (value: boolean) => void
   disableHover: boolean
+  setDisableHover: (value: boolean) => void
 }
 
-const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover }: MenuPanelProps) => {
+const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisableHover }: MenuPanelProps) => {
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
   const { Link: UILink } = useUIContext()
   const ref = useRef()
-  useOutsideClick(ref, () => setPanelHidden(true))
+
+  useOutsideClick(ref, () => {
+    setPanelHidden(true)
+    setDisableHover(true)
+  })
 
   return (
     <div
       className={cx(
-        'cursor-default h-screen hidden pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent',
-        { hidden: panelHidden },
-        { 'opacity-0': panelHidden === true },
-        { 'group-hover:flex': !disableHover }
+        'cursor-default h-screen hidden opacity-0 pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent transition delay-500 duration-300 ease-in-out',
+        { hidden: panelHidden && disableHover },
+        { 'opacity-100': panelHidden === false },
+        { 'group-hover:flex': disableHover === false }
       )}
     >
       <div
-        className={cx('cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent')}
+        className={cx(
+          'cursor-default grid absolute top-0 left-0 right-0 z-30 w-full pb-20 bg-transparent opacity-0 group-hover:opacity-100'
+        )}
         ref={ref}
       >
         <Panel style={{ backgroundColor: item.color }} className={cx('px-6 pt-10 pb-10 rounded-none')}>
