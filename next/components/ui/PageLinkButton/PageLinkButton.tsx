@@ -13,7 +13,7 @@ export const PageLinkButton = ({ className, pageLink }: PageLinkButtonProps) => 
   const { Link: UILink } = useUIContext()
   return (
     <UILink className={cx(className)} href={pageLink?.url ?? '#'}>
-      <Button className="h-6 text-font" shape="none" variant="muted" icon={<ChevronRight />} hoverIcon={<ArrowRight />}>
+      <Button className="min-h-6 text-font" shape="none" variant="muted" icon={<ChevronRight />} hoverIcon={<ArrowRight />}>
         <div
           style={{ textDecorationThickness: 2, textUnderlineOffset: 3 }}
           className="text-left text-sm font-semibold text-font underline md:text-default"
