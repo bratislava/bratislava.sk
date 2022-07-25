@@ -28,7 +28,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
     <div
       className={cx(
         className,
-        'flex flex-col text-center flex-1 items-center px-2 md:bg-transparent rent-shadow rounded-xl p-5 max-h-sm min-w-[240px] lg:min-w-0'
+        'flex flex-col text-center flex-1 items-center px-3 md:bg-transparent rent-shadow rounded-xl p-5 max-h-sm min-w-[240px] mr-4 md:mr-0 lg:min-w-0'
       )}
     >
       <div
