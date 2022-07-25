@@ -83,7 +83,7 @@ export const Posts = ({
       {activeTab == 0 && (
         <div className="mt-8 lg:mt-14 block">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
+            <div className="flex grid-cols-2 lg:grid-cols-3 gap-x-5 md:grid lg:gap-x-7.5">
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
                   <div key={i}>
@@ -177,7 +177,7 @@ export const Posts = ({
       {activeTab == 2 && (
         <div className="mt-8 lg:mt-14 block">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
+            <div className="flex grid-cols-2 lg:grid-cols-3 gap-x-5 md:grid lg:gap-x-7.5">
               {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
               {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
 

@@ -30,7 +30,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
-          className="-ml-7.5 -mr-7.5"
+          className="-ml-7.5 lg:px-3.5 -mr-7.5"
           shiftIndex={3}
           visibleItems={3}
           items={gooutEvents.map((ev, i) => (

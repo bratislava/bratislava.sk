@@ -8,7 +8,7 @@ interface IProps {
 }
 
 export const PrimatorCouncil = ({ className, primatorCards }: IProps) => (
-  <div className={cx(className, 'flex flex-col lg:flex-row lg:gap-x-8 gap-y-12 w-full')}>
+  <div className={cx(className, 'flex flex-col md:flex-row md:gap-x-8 gap-y-12 w-full')}>
     {primatorCards?.map((primatorCard, index) => (
       <PrimatorCard key={index} {...primatorCard} />
     ))}

@@ -15,7 +15,7 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
     <UILink href={url}>
       <div
         className={cx(
-          'relative group inline-block h-60 w-70 lg:h-74 lg:w-87 pt-2 cursor-pointer transition-all transform lg:hover:-translate-y-2 lg:hover:drop-shadow-lg rounded-lg',
+          'relative group inline-block h-60 w-70 lg:h-74 lg:w-full pt-2 cursor-pointer transition-all transform lg:hover:-translate-y-2 lg:hover:drop-shadow-lg rounded-lg',
           className
         )}
       >

@@ -117,7 +117,7 @@ export const Carousel = ({
         })}
       </div>
 
-      <div className="hidden md:block">{sliderControl(false)} </div>
+      <div className="hidden lg:block">{sliderControl(false)} </div>
     </div>
   )
 }

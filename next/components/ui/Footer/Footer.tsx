@@ -71,7 +71,7 @@ export const Footer = ({
         </div>
       </section>
 
-      <section aria-label="Contact Info and Sections" className="flex flex-col gap-x-28 py-14 xl:flex-row">
+      <section aria-label="Contact Info and Sections" className="flex flex-col gap-x-28 py-14 lg:flex-row">
         <div className="flex flex-col gap-y-6 xl:gap-y-16" aria-label="Contact Info">
           <p className="whitespace-pre-wrap leading-6">{address}</p>
           <div className="flex flex-col gap-y-1 underline xl:gap-y-5">

@@ -201,7 +201,13 @@ const HomepageMenu = ({ items }: IProps) => {
           return (
             <div data-hover-id={i} key={i} className="group">
               <div
-                className="relative z-10 flex cursor-pointer items-center gap-x-7 text-left text-default md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
+                className={cx(
+                  'relative flex cursor-pointer items-center gap-x-7 text-left text-default md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center',
+                  {
+                    'z-30': activeId == item.id,
+                    'z-10': activeId != item.id,
+                  }
+                )}
                 onClick={() => {
                   setActive(item.id)
                 }}

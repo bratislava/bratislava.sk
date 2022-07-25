@@ -20,8 +20,8 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
   const smRight = smImageAlign === 'right'
   return (
     <Link href={href}>
-      <div className={cx('mt-24 lg:mt-28 w-full cursor-pointer',{
-                'mt-12 lg:mt-28': smRight,
+      <div className={cx('mt-24 md:mt-28 w-full cursor-pointer',{
+                'mt-12 md:mt-28': smRight,
               }, className)}>
         <Panel
           className={cx(
@@ -33,13 +33,13 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
               src={imageSrc}
               alt={title}
               className={cx('absolute bottom-0 h-41.5 lg:h-57', {
-                'right-5 lg:right-auto lg:left-11': smRight,
+                'right-5 md:right-auto md:left-4 lg:left-11': smRight,
               })}
             />
           </div>
           <div
-            className={cx('ml-0 lg:ml-56', {
-              'absolute lg:relative left-6 lg:left-0': smRight,
+            className={cx('ml-0 md:ml-24 lg:ml-56', {
+              'absolute md:relative left-6 md:left-0': smRight,
             })}
           >
             <span className={cx(' text-default lg:text-md')}>{title}</span>

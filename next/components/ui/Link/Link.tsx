@@ -34,7 +34,7 @@ export const Link = ({
     <UILink className={className} href={href}>
       <div
         className={cx('flex items-center cursor-pointer group', {
-          'text-primary font-medium': variant === 'primary',
+          'text-font hover:text-primary font-medium': variant === 'primary',
         })}
       >
         <span className="group-hover:hidden">{hasIconLeft && icon}</span>
