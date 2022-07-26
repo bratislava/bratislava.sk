@@ -46,47 +46,44 @@ export const FileList = ({
   const handleClick = (index: number) => {
     const items = [...fileSectionsList];
     items[index].isShowMore = !items[index].isShowMore;
-    setFileSectionsList(JSON.parse(JSON.stringify(items)));
+    setFileSectionsList(items);
   }
 
   return (
     <div className={className}>
-      {fileSectionsList?.map((fileSection, index1) => {
+      {fileSectionsList.map((fileSection, fileSectionIndex) => {
         const { length } = fileSection.files
         const rem = length % numberOfItemsPerRow
         const quo = (length - rem) / numberOfItemsPerRow
-        const rows = !fileSectionsList[index1]?.isShowMore ? 1 : rem > maxRemainder ? quo + 1 : quo
+        const rows = !fileSectionsList[fileSectionIndex]?.isShowMore ? 1 : rem > maxRemainder ? quo + 1 : quo
         return (
-          <div key={index1} className={cx({ 'mt-8 lg:mt-14': index1 > 0 })}>
+          <div key={fileSectionIndex} className={cx({ 'mt-8 lg:mt-14': fileSectionIndex > 0 })}>
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
-              {Array.from(Array.from({ length: rows }).keys(), (row, index2) => {
+              {Array.from(Array.from({ length: rows }).keys(), (row, rowIndex) => {
                 const start = row * numberOfItemsPerRow
-                const end = !fileSectionsList[index1]?.isShowMore ? 6 : (row + 1) * numberOfItemsPerRow
+                const end = !fileSectionsList[fileSectionIndex].isShowMore ? 6 : (row + 1) * numberOfItemsPerRow
                 return (
                   <div className="space-y-6" key={row}>
-                    {row == 0 && fileSection.category && !hideCategory && (
+                    {row === 0 && fileSection.category && !hideCategory && (
                       <span className="text-default font-medium md:text-md">{fileSection.category}</span>
                     )}
 
                     <div className={cx('grid grid-cols-1 w-full gap-y-6', 'md:grid-cols-3 md:gap-x-7 md:gap-y-8')}>
-                      {fileSection?.files.slice(start, end).map((file, index3) => (
-                        <div key={index3} className="w-full">
-                          <DownloadCard
-                            title={file.title ? file.title : ''}
-                            downloadLink={file.media?.url ? file.media?.url : ''}
-                            uploadDate={file.media?.created_at ? file.media?.created_at : ''}
-                            downloadDetail={
-                              file.media?.ext && file.media.size > 0
-                                ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                                : ''
-                            }
-                          />
-                        </div>
+                      {fileSection?.files.slice(start, end).map((file, fileIndex) => (
+                        <DownloadCard
+                          key={fileIndex}
+                          title={file.title ? file.title : ''}
+                          downloadLink={file.media?.url ? file.media?.url : ''}
+                          uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                          downloadDetail={
+                            file.media?.ext && file.media.size > 0
+                              ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
+                              : ''
+                          }
+                        />
                       ))}
                     </div>
-                    {index2 != index2 - 1 && index2 != rows - 1 && dividerStyle && (
-                      <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
-                    )}
+                    {rowIndex !== rows - 1 && dividerStyle && (<Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />)}
                   </div>
                 )
               })}
@@ -94,30 +91,29 @@ export const FileList = ({
                 <Button
                   className="self-center px-6 py-2.5 text-default"
                   variant="secondary-dark-text"
-                  onClick={() => handleClick(index1)}
+                  onClick={() => handleClick(fileSectionIndex)}
                 >
-                  {fileSectionsList[index1].isShowMore ? t('showLess') : t('loadMore')}
+                  {fileSectionsList[fileSectionIndex].isShowMore ? t('showLess') : t('loadMore')}
                 </Button>
               )}
             </div>
             {!noScroll && (
               <div className="block lg:hidden">
                 <span className="text-default font-medium md:text-md">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="gap-x-5 py-6 px-7.5 -mx-7.5">
-                  {fileSection?.files.map((file, index) => (
-                    <div key={index}>
-                      <DownloadCard
-                        className="min-w-[280px] max-w-[290px]"
-                        title={file.title ? file.title : ''}
-                        downloadLink={file.media?.url ? file.media?.url : ''}
-                        uploadDate={file.media?.created_at ? file.media?.created_at : ''}
-                        downloadDetail={
-                          file.media?.ext && file.media.size > 0
-                            ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                            : ''
-                        }
-                      />
-                    </div>
+                <HorizontalScrollWrapper className="-mx-7.5 gap-x-5 py-6 px-7.5">
+                  {fileSection?.files.map((file, fileIndex) => (
+                    <DownloadCard
+                      className="min-w-[280px] max-w-[290px]"
+                      title={file.title ? file.title : ''}
+                      downloadLink={file.media?.url ? file.media?.url : ''}
+                      uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                      downloadDetail={
+                        file.media?.ext && file.media.size > 0
+                          ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
+                          : ''
+                      }
+                      key={fileIndex}
+                    />
                   ))}
                 </HorizontalScrollWrapper>
               </div>
