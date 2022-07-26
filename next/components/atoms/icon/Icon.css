@@ -1,0 +1,9 @@
+.is64pxVisible {
+    display: block;
+}
+
+@screen lg {
+    .is64pxVisible {
+        display: none
+    }
+}
