@@ -17,10 +17,10 @@ export const Icon: FC<Props> = ({ iconName }) => {
   return (
     <>
       <div className="hidden lg:block">
-        <Image src={iconCollection.size_48} width={48} height={48} />
+        <Image src={iconCollection.size_64} width={64} height={64} />
       </div>
       <div className="block lg:hidden">
-        <Image src={iconCollection.size_64} width={64} height={64} />
+        <Image src={iconCollection.size_48} width={48} height={48} />
       </div>
     </>
   )
