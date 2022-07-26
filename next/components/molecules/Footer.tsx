@@ -29,8 +29,8 @@ const Footer = (props: FooterProps) => {
       {/* <Waves className="-mb-1" waveColor="white" wavePosition="top" /> */}
 
       <div className="px-7.5">
-        <hr />
         <div className="mx-auto max-w-screen-1.5lg">
+          <hr />
           <UIFooter className="pb-14" {...props} languageLinks={languageLinks} />
         </div>
       </div>
