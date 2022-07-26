@@ -1,37 +1,20 @@
-export interface TokenResponse {
-  token_type: string
-  expires_in: number
-  ext_expires_in: number
-  access_token: string
+import { AuthenticationResult, ConfidentialClientApplication } from '@azure/msal-node'
+
+const config = {
+  auth: {
+    clientId: process.env.MSAL_CLIENT_ID,
+    authority: `https://login.microsoftonline.com/${process.env.MSAL_TENANT_ID}`,
+    clientSecret: process.env.MSAL_CLIENT_SECRET,
+  },
 }
 
-export const getToken = async (): Promise<TokenResponse> => {
-  const formData = new URLSearchParams()
-  formData.append('grant_type', process.env.MSAL_GRANT_TYPE)
-  formData.append('client_id', process.env.MSAL_CLIENT_ID)
-  formData.append('client_secret', process.env.MSAL_CLIENT_SECRET)
-  formData.append('scope', process.env.MSAL_SCOPE)
+const cca = new ConfidentialClientApplication(config)
 
-  const result = await fetch(`https://login.microsoftonline.com/${process.env.MSAL_TENANT_ID}/oauth2/v2.0/token`, {
-    body: formData,
-    method: 'post',
+// caching of token should be taken care of by the msal library
+export const getToken = async (): Promise<AuthenticationResult> => {
+  return cca.acquireTokenByClientCredential({
+    scopes: [process.env.MSAL_SCOPE],
   })
-
-  const resultData = await result.json()
-
-  if (resultData.error) {
-    const error = new Error(resultData.error.message)
-    console.error(error)
-
-    return {
-      token_type: null,
-      expires_in: null,
-      ext_expires_in: null,
-      access_token: null,
-    }
-  }
-
-  return resultData
 }
 
 export interface UsersRequest {
