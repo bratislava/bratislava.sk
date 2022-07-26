@@ -24,7 +24,12 @@ export const MenuMobileLayout: FC<Props> = ({ items }) => {
       </div>
 
       {selectedMenu && (
-        <HamburgerSubMenu item={selectedMenu} variant="homepage" onClose={() => setSelectedMenu(null)} />
+        <HamburgerSubMenu
+          item={selectedMenu}
+          variant="homepage"
+          onClose={() => setSelectedMenu(null)}
+          closeParentMenu={() => setSelectedMenu(null)}
+        />
       )}
     </>
   )
