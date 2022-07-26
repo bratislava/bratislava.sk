@@ -53,7 +53,7 @@ export const AccordionItem = ({
         >
           <div className="flex flex-row font-medium">
             <p className="text-left text-sm lg:text-md text-font">{title}
-            {secondaryTitle && <span className="text-left text-md text-gray-universal-500 ">&nbsp;{secondaryTitle}</span>}</p>
+            {secondaryTitle && <span className="text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</span>}</p>
             
           </div>
           <div className="ml-5 grow-0">
