@@ -58,19 +58,19 @@ export const Contact = ({
       </div>
       <div className="mb-6 w-full md:mb-0 md:w-1/2">
         <div className="flex flex-col gap-3 text-font md:flex-row">
-          {items.map((item) => (
-            <div
-              key={item.variant}
-              className={cx('w-full mb-6 last:mb-0 md:mb-0', {
-                'md:w-1/1': items.length === 1 && !address,
-                'md:w-1/2': items.length === 2 && 3,
-                // 'md:w-1/6': items.length === 3,
-                // 'md:w-1/2': items.length === 1 && address,
-              })}
-            >
-              <ContactItem {...item} linkVariant={itemLinkVariant} />
-            </div>
-          ))}
+          {items.map((item) =>
+              (item.variant !== 'address' || (item.variant === 'address' && address.trim().length > 0)) && (
+                <div
+                  key={item.variant}
+                  className={cx('w-full mb-6 last:mb-0 md:mb-0', {
+                    'md:w-1/1': items.length === 1,
+                    'md:w-1/2': items.length === 2 && 3,
+                  })}
+                >
+                  <ContactItem {...item} linkVariant={itemLinkVariant} />
+                </div>
+              )
+          )}
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
             <span
               className={cx('font-semibold w-full break-all text-center', {
                 'mt-9': key === 0,
-                "whitespace-nowrap" : variant === "phone",
+                'whitespace-nowrap': variant === 'phone',
               })}
             >
               {item}
