@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import cx from 'classnames'
-import ArrowLeft from '@assets/images/arrow-left.svg'
 import ArrowRight from '@assets/images/arrow-right.svg'
 import ChevronLeft from '@assets/images/chevron-left.svg'
 import ChevronRight from '@assets/images/chevron-right.svg'
@@ -80,7 +79,7 @@ Pagination = ({ totalPages, totalCount, currentPage = 1, pageHandler }: Paginati
               <ChevronLeft />
             </span>
             <span className="hidden group-hover:block">
-              <ArrowLeft onClick={handlePreviousPageChange} />
+              <ArrowRight onClick={handlePreviousPageChange} className="rotate-180"/>
             </span>
           </div>
         ) : null}
