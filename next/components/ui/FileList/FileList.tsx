@@ -55,7 +55,7 @@ export const FileList = ({
         const { length } = fileSection.files
         const rem = length % numberOfItemsPerRow
         const quo = (length - rem) / numberOfItemsPerRow
-        const rows = !fileSectionsList[fileSectionIndex]?.isShowMore ? 1 : rem > maxRemainder ? quo + 1 : quo
+        const rows = !fileSectionsList[fileSectionIndex].isShowMore ? 1 : rem > maxRemainder ? quo + 1 : quo
         return (
           <div key={fileSectionIndex} className={cx({ 'mt-8 lg:mt-14': fileSectionIndex > 0 })}>
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
