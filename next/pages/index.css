@@ -293,6 +293,16 @@
   }
 }
 
+/* input type number control remove */
+.number-control-none::-webkit-outer-spin-button,
+.number-control-none::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.number-control-none {
+  -moz-appearance: textfield;
+}
+
 @screen maxMd {
   ::-webkit-scrollbar {
     @apply h-1.5 w-0;
