@@ -2,30 +2,12 @@ import { withSentry } from '@sentry/nextjs'
 import { getToken, getUsers } from '@utils/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-let token: string = null
-
+// TODO consider nicer params instead of forwarding exact query to Azure in getUsers ?
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { url } = req
-  let users = []
-  try {
-    if (!token) {
-      const { access_token } = await getToken()
-      token = access_token
-    }
-
-    const { value } = await getUsers({ token, url })
-    users = value
-
-    // if token expired
-    if (!users || users?.length === 0) {
-      const { value } = await getUsers({ token, url })
-      users = value
-    }
-  } catch (error) {
-    console.log(error)
-  }
-
-  return res.json(users)
+  const { accessToken } = await getToken()
+  const { value } = await getUsers({ token: accessToken, url })
+  return res.json(value)
 }
 
 export default withSentry(handler)
