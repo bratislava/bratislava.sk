@@ -1,4 +1,4 @@
-import { usersFromDepartmentFetcher } from '@utils/ms-graph'
+import { usersFromDepartmentFetcher } from '@utils/organisationalStructure'
 import cx from 'classnames'
 import { useState } from 'react'
 import useSWR from 'swr'
