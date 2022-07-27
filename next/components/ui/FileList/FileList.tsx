@@ -31,6 +31,15 @@ export interface FileListProps {
   noScroll?: boolean
 }
 
+// Behaviour of the component as follows:
+// - display first NUM_PREVIEW_ITEMS on initial load
+// - display all files on click of "loadMore" button
+// - when showing all files, if there are at least MIN_ITEMS_TO_DISPLAY_DIVIDERS files, display dividers between groups of NUM_ITEMS_PER_GROUP files)
+
+const NUM_ITEMS_PER_GROUP = 9
+const NUM_PREVIEW_ITEMS = 6
+const MIN_ITEMS_TO_DISPLAY_DIVIDERS = 13
+
 export const FileList = ({
   className,
   fileSections,
@@ -38,63 +47,65 @@ export const FileList = ({
   hideCategory,
   noScroll,
 }: FileListProps) => {
-  const [clicked, setClicked] = React.useState(false)
-  const [buttonText, setButtonText] = React.useState('Načítať ďalšie')
-  const numberOfItemsPerRow = 9
-  const maxRemainder = 3
-
   const { t } = useTranslation()
 
+  const [showMore, setShowMore] = React.useState(false)
+  // done like this because of typescript inference for useState
+  const loadMoreInitialText = t('loadMore')
+  const [buttonText, setButtonText] = React.useState(loadMoreInitialText)
+
   const handleClick = () => {
-    if (clicked) {
+    if (showMore) {
       setButtonText(t('loadMore'))
     } else {
       setButtonText(t('showLess'))
     }
-    setClicked(!clicked)
+    setShowMore(!showMore)
   }
   return (
     <div className={className}>
+      {/* TODO suggested sonarjs cognitive complexity refactor below */}
       {fileSections?.map((fileSection, index) => {
         const { length } = fileSection.files
-        const rem = length % numberOfItemsPerRow
-        const quo = (length - rem) / numberOfItemsPerRow
-        const rows = !clicked ? 1 : rem > maxRemainder ? quo + 1 : quo
+        const numberOfGroupsSeparatedByDividers = Math.ceil(length / NUM_ITEMS_PER_GROUP)
+        const shouldDisplayDividers = showMore && length >= MIN_ITEMS_TO_DISPLAY_DIVIDERS
         return (
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
-              {Array.from(Array.from({ length: rows }).keys(), (row, index) => {
-                const start = row * numberOfItemsPerRow
-                const end = !clicked ? 6 : (row + 1) * numberOfItemsPerRow
-                return (
-                  <div className="space-y-6" key={row}>
-                    {row == 0 && fileSection.category && !hideCategory && (
-                      <span className="text-default font-medium md:text-md">{fileSection.category}</span>
-                    )}
-
-                    <div className={cx('grid grid-cols-1 w-full gap-y-6', 'md:grid-cols-3 md:gap-x-7 md:gap-y-8')}>
-                      {fileSection?.files.slice(start, end).map((file, index) => (
-                        <div key={index} className="w-full">
-                          <DownloadCard
-                            title={file.title ? file.title : ''}
-                            downloadLink={file.media?.url ? file.media?.url : ''}
-                            uploadDate={file.media?.created_at ? file.media?.created_at : ''}
-                            downloadDetail={
-                              file.media?.ext && file.media.size > 0
-                                ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                                : ''
-                            }
-                          />
-                        </div>
-                      ))}
+              <div className="space-y-6">
+                {fileSection.category && !hideCategory && (
+                  <span className="text-default font-medium md:text-md">{fileSection.category}</span>
+                )}
+                {Array.from({ length: numberOfGroupsSeparatedByDividers }, (_, i) => {
+                  const start = i * NUM_ITEMS_PER_GROUP
+                  const end = showMore ? start + NUM_ITEMS_PER_GROUP : NUM_PREVIEW_ITEMS
+                  const isLastGroup = i === numberOfGroupsSeparatedByDividers - 1
+                  return (
+                    <div>
+                      <div className={cx('grid grid-cols-3 gap-x-7 gap-y-8')}>
+                        {fileSection?.files.slice(start, end).map((file, sectionIndex) => (
+                          <div key={sectionIndex} className="w-full">
+                            <DownloadCard
+                              title={file.title ? file.title : ''}
+                              downloadLink={file.media?.url ? file.media?.url : ''}
+                              uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                              downloadDetail={
+                                file.media?.ext && file.media.size > 0
+                                  ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
+                                  : ''
+                              }
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      {shouldDisplayDividers && !isLastGroup && dividerStyle && (
+                        <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
+                      )}
                     </div>
-                    {index != index - 1 && index != rows - 1 && dividerStyle && (
-                      <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
-                    )}
-                  </div>
-                )
-              })}
-              {length > 6 && (
+                  )
+                })}
+              </div>
+              {length > NUM_PREVIEW_ITEMS && (
                 <Button
                   className="self-center px-6 py-2.5 text-default"
                   variant="secondary-dark-text"
@@ -107,14 +118,14 @@ export const FileList = ({
             {!noScroll && (
               <div className="block lg:hidden">
                 <span className="text-default font-medium md:text-md">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="gap-x-5 py-6 px-7.5 -mx-7.5">
-                  {fileSection?.files.map((file, index) => (
-                    <div key={index}>
+                <HorizontalScrollWrapper className="-mx-7.5 gap-x-5 py-6 px-7.5">
+                  {fileSection?.files.map((file, sectionIndex) => (
+                    <div key={sectionIndex}>
                       <DownloadCard
                         className="min-w-[280px] max-w-[290px]"
-                        title={file.title ? file.title : ''}
-                        downloadLink={file.media?.url ? file.media?.url : ''}
-                        uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                        title={file.title ?? ''}
+                        downloadLink={file.media?.url ?? ''}
+                        uploadDate={file.media?.created_at ?? ''}
                         downloadDetail={
                           file.media?.ext && file.media.size > 0
                             ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
