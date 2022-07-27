@@ -1,5 +1,5 @@
 import { withSentry } from '@sentry/nextjs'
-import { getToken, getUsers } from '@utils/ms-graph'
+import { getToken, getUsers } from 'services/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // TODO consider nicer params instead of forwarding exact query to Azure in getUsers ?
