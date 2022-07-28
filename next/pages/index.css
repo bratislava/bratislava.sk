@@ -261,7 +261,7 @@
 }
 
 .table-block tbody tr td:first-child div {
-  @apply text-default font-semibold;
+  @apply text-sm lg:text-default font-semibold;
 }
 
 .modal-content-rent-markdown a {

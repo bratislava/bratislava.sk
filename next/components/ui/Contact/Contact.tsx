@@ -47,7 +47,7 @@ export const Contact = ({
     })
 
   return (
-    <div className={cx(className, 'flex flex-col md:flex-row text-font gap-3')}>
+    <div className={cx(className, 'flex flex-col md:flex-row text-font items-center gap-3')}>
       <div className="mb-6 w-full md:mb-0 md:w-1/2">
         <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
           {title && <h4 className="mb-6 text-md font-semibold leading-[36px]">{title}</h4>}
