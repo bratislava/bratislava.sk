@@ -241,8 +241,10 @@
   }
 
   .text-title-center h1,
-  .text-title-center h2{
-    @apply text-center;
+  .text-title-center h2,
+  .text-title-center h3,
+  .text-title-center h4 {
+    @apply text-center mb-6;
   }
 
   .fontSize-base .typography-regular {
