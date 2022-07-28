@@ -4,21 +4,21 @@
 import {
   BlogCards,
   InBaCard,
+  PageHeader,
   PageTitle,
   Posts,
   PrimatorCouncil,
   SectionContainer,
   TopNine,
-  PageHeader,
   Waves,
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 // import { GetServerSidePropsContext } from 'next'
 // import Image from 'next/image'
 import Head from 'next/head'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 import {
   getParsedUDEDocumentsList,
@@ -37,7 +37,7 @@ import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -156,7 +156,7 @@ export const getStaticProps = async (ctx) => {
       rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
-    revalidate: 30,
+    // revalidate: 30,
   }
 }
 
@@ -173,7 +173,7 @@ const Homepage = ({
   header,
   inba,
   rozkoPosts,
-}: AsyncServerProps<typeof getStaticProps>) => {
+}: AsyncServerProps<typeof getServerSideProps>) => {
   // Commented below line for reference.
   // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
   const { pageTitle, posts } = data
@@ -186,7 +186,7 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
-        <PageHeader color={''} transparentColor={''} imageSrc={''} className={'h-14 overflow-hidden'}>
+        <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
           {/* meta description */}
           <Head>
             <title>{homepage?.data?.attributes?.title}</title>
@@ -256,7 +256,7 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-secondary py-16">
-          <h2 className="pb-10 text-center text-default font-semibold lg:pb-20 lg:text-2xl xs:mt-8">
+          <h2 className="pb-10 text-center text-default font-semibold xs:mt-8 lg:pb-20 lg:text-2xl">
             {data.topNineTitle}
           </h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
