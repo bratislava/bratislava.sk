@@ -1,7 +1,7 @@
 {
   "name": "bratislava-strapi",
   "private": true,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A Strapi application",
   "scripts": {
     "develop": "env-cmd -f ./.env.local strapi develop",
