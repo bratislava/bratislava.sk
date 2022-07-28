@@ -305,6 +305,10 @@
   -moz-appearance: textfield;
 }
 
+.header-main-bg {
+  @apply bg-right bg-cover  !important;
+}
+
 @screen maxMd {
   ::-webkit-scrollbar {
     @apply h-1.5 w-0;
