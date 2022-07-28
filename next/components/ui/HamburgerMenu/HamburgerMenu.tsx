@@ -1,18 +1,16 @@
 import { ArrowRight } from '@assets/images'
-import cx from 'classnames'
-import React, { useState } from 'react'
-
+import LightBulb from '@assets/images/bulb.svg'
 import ChevronRight from '@assets/images/chevron-right.svg'
 import EServices from '@assets/images/EServices.svg'
-import LightBulb from '@assets/images/bulb.svg'
-import SpeakerSmall from '@assets/images/speaker-small.svg'
-import TextSize from '@assets/images/text-size.svg'
 import Tourist from '@assets/images/Tourist-icon.svg'
-import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
-import Covid from '@assets/images/covid.svg'
-
-import { getIcon, Link, MenuMainItem } from '../index'
+import { covidData } from '@utils/constants'
+import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
+import React, { useState } from 'react'
+
+import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
+import {getIcon, MenuMainItem} from '../HomepageMenu/HomepageMenu';
+import {Link} from '../Link/Link'
 
 interface IProps {
   hamburgerMenuItems?: MenuMainItem[]
@@ -25,17 +23,6 @@ interface HamburgerSubLoginItem {
   icon?: React.ReactNode
   title: string
   url: string
-}
-
-const covidData = {
-  icon: <Covid />,
-  title: 'Covid-19',
-  en: {
-    url: '',
-  },
-  sk: {
-    url: '/informacie-a-odporucania-k-ochoreniu-covid-19',
-  },
 }
 
 const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
@@ -69,6 +56,7 @@ const MOCK_HAMBURGER_MENU_ITEMS: HamburgerSubLoginItem[] = [
 export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeMenu }: IProps) => {
   const [subMenu, setSubMenu] = useState<MenuMainItem>()
   const { t } = useTranslation()
+  console.log(lang)
 
   if (subMenu) {
     return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} closeParentMenu={closeMenu} />
@@ -89,6 +77,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
                 onClick={() => setSubMenu(item)}
                 className="flex appearance-none items-center gap-x-7 text-left"
                 key={item.title}
+                type='button'
               >
                 <IconComponent className="h-10 w-10" />
                 <p className="w-36 text-base font-medium">{item.title}</p>
@@ -97,7 +86,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
             )
           })}
         </div>
-        <div className="items-center justify-between py-8 hidden lg:flex">
+        <div className="hidden items-center justify-between py-8 lg:flex">
           <Link className="text-base font-medium" variant="plain" href="#">
             {t('login')}
           </Link>
@@ -114,7 +103,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
               className="mt-3"
             >
               <div className="flex items-center gap-x-3">
-                {covidData.icon}
+                <covidData.Icon />
                 <span className="text-base font-medium">{covidData.title}</span>
               </div>
             </Link>
@@ -130,7 +119,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
               className={cx({ 'mt-3': index % 2 === 0 })}
             >
               <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
-                {item.icon && item.icon}
+                {item?.icon}
                 <span className="text-base font-medium">{item.title}</span>
               </button>
             </Link>

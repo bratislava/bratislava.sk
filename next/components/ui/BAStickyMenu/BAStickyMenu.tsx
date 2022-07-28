@@ -1,13 +1,12 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import cx from 'classnames'
-import React, { useCallback, useEffect, useState } from 'react'
-import { useRef } from 'react'
-
 import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
 import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
+import React, { useCallback, useEffect, useRef,useState  } from 'react'
+import { useDebounce, useOutsideClick } from 'rooks'
+
 import { getIcon, MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
-import { useDebounce, useOutsideClick } from 'rooks'
 
 interface IProps {
   className?: string
