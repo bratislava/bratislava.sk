@@ -57,7 +57,7 @@ export const Button = ({
         'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
         'bg-tertiary text-white': shape !== 'none' && variant === 'tertiary',
         'bg-secondary text-font': shape !== 'none' && variant === 'secondary-dark-text',
-        'bg-transparent text-gray-universal-200 border-gray-universal-200': shape !== 'none' && variant === 'transparent-gray',
+        'bg-transparent text-lightGray border-lightGray': shape !== 'none' && variant === 'transparent-gray',
         'bg-tertiary text-font': shape !== 'none' && variant === 'tertiary-dark-text',
         'bg-transparent text-default text-font hover:text-primary border-primary border-2':
           shape !== 'none' && variant === 'transparent',

@@ -16,7 +16,7 @@ interface PaginationProps {
 export const ThreeDots = () => {
   return (
     <div className="ml-2 sm:ml-3 w-7 sm:w-8">
-      <span className="text-default font-semibold text-gray-universal-200">&hellip;</span>
+      <span className="text-default font-semibold text-offWhite">&hellip;</span>
     </div>
   )
 }
