@@ -80,7 +80,7 @@
     @apply shadow-lg font-medium text-white text-lg;
   }
   .homepage-markdown ul {
-    @apply ml-6 -mt-4 list-outside list-none;
+    @apply ml-6 list-outside list-none;
   }
   .homepage-markdown ul li::before {
     @apply absolute left-1 top-2 w-4 h-4 bg-primary rounded-full;
@@ -211,9 +211,6 @@
   .modal-content-rent-markdown h6 {
     font-size: 0.67rem;
   }
-  .narrow-text-wrapper ul {
-    @apply -my-8;
-  }
   .narrow-text-wrapper ul li ul {
     @apply mt-0 -mb-12;
   }
@@ -223,7 +220,6 @@
 
   .listitem .typography-regular {
     @apply text-sm lg:text-default;
-
   }
 
   .line-clamp-4 {
@@ -268,13 +264,13 @@
   @apply text-default font-semibold;
 }
 
-.modal-content-rent-markdown a{
+.modal-content-rent-markdown a {
   @apply underline font-bold;
 }
 
 /* width */
 
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
   ::-webkit-scrollbar {
     @apply h-1.5 w-0;
   }
@@ -333,4 +329,3 @@
     @apply mb-6;
   }
 }
-
