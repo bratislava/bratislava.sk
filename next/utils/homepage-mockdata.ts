@@ -268,7 +268,7 @@ export const buildMockData = ({
       {
         title: 'Public \nspaces',
         icon: 'icon3',
-        href: '/mesto-bratislava/projekty/zive-miesta',
+        href: '/en/city-of-bratislava/projects/living-spaces',
         linkTitle: 'Read more',
       },
       {
@@ -278,7 +278,7 @@ export const buildMockData = ({
         linkTitle: 'Read more',
       },
       {
-        title: 'Campaigns\nand projects',
+        title: 'Projects',
         icon: 'icon5',
         href: '/en/city-of-bratislava/projects',
         linkTitle: 'Read more',
@@ -292,19 +292,19 @@ export const buildMockData = ({
       {
         title: 'Organisational\nstructure',
         icon: 'icon7',
-        href: '/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura-a-kontakty',
+        href: '/en/city-of-bratislava/city-administration/city-hall/organisational-structure-and-contact-details',
         linkTitle: 'Read more',
       },
       {
         title: 'Contact details\nand office hours',
         icon: 'icon8',
-        href: '/en/office-hours',
+        href: '/en/contact-details-and-office-hours',
         linkTitle: 'Read more',
       },
       {
         title: 'Job\nopportunities',
         icon: 'icon9',
-        href: '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti',
+        href: 'https://ats.nalgoo.com/sk/gate/bratislava/positions',
         linkTitle: 'Read more',
       },
     ],
