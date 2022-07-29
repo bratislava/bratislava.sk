@@ -20,7 +20,7 @@ export const ListItem = ({ className, content, circleOption = 'primary', moreLin
         <Circle />
       </div>
 
-      <div className="ml-14 flex flex-col">
+      <div className="ml-6 lg:ml-14 flex flex-col">
         {content && (
           <UIMarkdown content={content} className="text-sm leading-[24px] md:text-default md:leading-[30px]" />
         )}
