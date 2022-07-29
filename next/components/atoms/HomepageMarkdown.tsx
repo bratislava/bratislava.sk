@@ -23,42 +23,60 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
   }
   return (
     <ReactMarkdown
-      className={cx(className, 'whitespace-pre-wrap text-font', {
+      className={cx(className, 'text-font', {
         'homepage-markdown': !numericalList,
         'numerical-list': numericalList,
       })}
       components={{
         h1: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className=".typography-h1 scroll-mt-24 lg:scroll-mt-48">
+          <h2
+            id={getHeadingTag(children)}
+            className="typography-h1 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+          >
             {children}
           </h2>
         ),
         h2: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className="typography-h2 scroll-mt-24 lg:scroll-mt-48">
+          <h2
+            id={getHeadingTag(children)}
+            className="typography-h2 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+          >
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 id={getHeadingTag(children)} className="typography-h3 scroll-mt-24 lg:scroll-mt-48">
+          <h3
+            id={getHeadingTag(children)}
+            className="typography-h3 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+          >
             {children}
           </h3>
         ),
         h4: ({ children }) => (
-          <h4 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
+          <h4
+            id={getHeadingTag(children)}
+            className="typography-h4 scroll-mt-24 lg:scroll-mt-48 my-6 lg:mt-10 lg:mb-6 first:mt-0 last:mb-0"
+          >
             {children}
           </h4>
         ),
         h5: ({ children }) => (
-          <h5 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
+          <h5
+            id={getHeadingTag(children)}
+            className="typography-h4 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+          >
             {children}
           </h5>
         ),
         h6: ({ children }) => (
-          <h6 id={getHeadingTag(children)} className="typography-h4 scroll-mt-24 lg:scroll-mt-48">
+          <h6
+            id={getHeadingTag(children)}
+            className="typography-h4 scroll-mt-24 lg:scroll-mt-48 mt-10 mb-6 first:mt-0 last:mb-0"
+          >
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular" {...props} />,
+        p: ({ node, ...props }) => <div className="typography-regular whitespace-pre-wrap" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
@@ -71,12 +89,18 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
         img: ({ src, alt }) => <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>,
         blockquote: ({ children }) => <div className="border-l-4 border-primary pl-10">{children}</div>,
         table: ({ children }) => <table className="w-full table-block">{children}</table>,
-        tr: ({ children }) => <tr className="py-8 px-1 md:p-0 w-[280px] md:w-full flex flex-col md:table-row rounded-lg bg-white md:odd:bg-white md:even:bg-transparent">{children}</tr>,
-        tbody: ({ children }) => <tbody className="flex gap-5 md:gap-0 md:table-row-group" >{children}</tbody>,
+        tr: ({ children }) => (
+          <tr className="py-8 px-1 md:p-0 w-[280px] md:w-full flex flex-col md:table-row rounded-lg bg-white md:odd:bg-white md:even:bg-transparent">
+            {children}
+          </tr>
+        ),
+        tbody: ({ children }) => <tbody className="flex gap-5 md:gap-0 md:table-row-group">{children}</tbody>,
         thead: ({ children }) => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="flex md:min-h-[92px] items-center px-4 text-left text-sm md:text-default mb-1 lg:mb-0">{children}</div>
+            <div className="flex md:min-h-[92px] items-center px-4 text-left text-sm md:text-default mb-1 lg:mb-0">
+              {children}
+            </div>
           </td>
         ),
         ol: ({ children }) => {
@@ -90,7 +114,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
                 }
               )
             })
-          return <div className="flex flex-col gap-y-0">{elements}</div>
+          return <div className="flex flex-col my-6 lg:my-10 first:mt-0 last:mb-0">{elements}</div>
         },
         li: ({ ordered, children, index, depth }: AdvancedListItemProps) => {
           const level = depth ?? 0
@@ -106,7 +130,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
                   { 'border-primary border-solid border-4': level != 0 }
                 )}
               />
-              <div>{children}</div>
+              <div className="text-base lg:text-default">{children}</div>
             </div>
           )
         },
@@ -115,7 +139,11 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
           const elements = children.map((e) => {
             return isValidElement(e) ? { ...e, props: { ...e.props, depth } } : e
           })
-          return <div className="flex flex-col gap-y-6 lg:gap-y-8 lg:pl-6 pt-6 lg:pt-8 pb-6 lg:pb-14 inner-list">{elements}</div>
+          return (
+            <ul className="flex flex-col gap-y-5 lg:gap-y-8 lg:ml-6 my-6 lg:my-10 first:mt-0 last:mb-0 inner-list">
+              {elements}
+            </ul>
+          )
         },
       }}
       remarkPlugins={[remarkGfm]}
