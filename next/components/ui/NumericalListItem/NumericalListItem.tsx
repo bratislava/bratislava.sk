@@ -23,7 +23,7 @@ export const NumericalListItem = ({
   const position = index % 2 == 0 ? 'left' : 'right'
   const { Markdown: UIMarkdown } = useUIContext()
   return (
-    <div key={index} className={cx(className, 'flex flex-col', { 'mb-8 lg:mb-10': variant != 'roadmap' }, 'last:mb-0')}>
+    <div key={index} className={cx(className, 'flex flex-col', { 'mb-5 lg:mb-8': variant != 'roadmap' }, 'last:mb-0')}>
       {variant === 'roadmap' && index > 0 && (
         <DashedLine className="top-0 -my-8 pl-6" position={position} color="rgb(var(--color-primary))" />
       )}
@@ -48,7 +48,7 @@ export const NumericalListItem = ({
           className={cx(
             'text-base lg:text-default pl-5 lg:pl-11 listitem',
             {
-              'pt-2': variant === 'combined',
+              'pt-0': variant === 'combined',
             },
             {
               'w-full': !item,
