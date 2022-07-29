@@ -45,7 +45,7 @@ export const Carousel = ({
     const maxIdx = totalItems - visibleItems
     if (nextIdx >= maxIdx + shiftIndex) {
       // If on last page, go to 0
-      scrollToImage(0, true)
+      // scrollToImage(0, true)
       return
     }
 
@@ -64,14 +64,17 @@ export const Carousel = ({
   }
 
   const sliderControl = (isLeft: boolean) =>
-    totalItems > visibleItems ? (
+    totalItems >= visibleItems ? (
       <VerticalCardButton
         onClick={isLeft ? previousImage : nextImage}
         size="large"
         className={cx('absolute z-10 my-auto top-0 bottom-0', {
           'left-0 transform -translate-x-1/2': isLeft,
           'right-0 transform translate-x-1/2': !isLeft,
-          hidden: (isLeft && currentItem === 0) || (!isLeft && currentItem === visibleItems),
+          hidden:
+            (isLeft && currentItem === 0) ||
+            (!isLeft && currentItem === visibleItems) ||
+            (!isLeft && currentItem + shiftIndex >= totalItems - visibleItems + shiftIndex),
           'ml-4': isLeft && spacing === 'default',
           'mr-4': !isLeft && spacing === 'default',
         })}
