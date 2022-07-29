@@ -42,7 +42,7 @@ export const AccordionItem = ({
           'rounded-lg drop-shadow-[0 8 24 black] py-3 px-6 lg:py-4 lg:px-10',
           {
             'border-transparent border-2 border-solid shadow-lg bg-secondary': active,
-            'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary  bg-transparent': !active,
+            'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary bg-transparent mb-6 last:mb-0': !active,
           },
           className
         )}
@@ -67,7 +67,7 @@ export const AccordionItem = ({
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',
-          'py-5 lg:py-14': active && paddingVariant === 'normal',
+          'py-8 lg:py-14 last:pb-0': active && paddingVariant === 'normal',
         })}
       >
         {children}
