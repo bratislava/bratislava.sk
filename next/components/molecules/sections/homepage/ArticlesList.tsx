@@ -157,8 +157,8 @@ export const ArticlesList = ({
 
   return (
     <div>
-      <div className="text-lg font-semibold">{title}</div>
-      <div className={`mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
+      <div className="text-default lg:text-lg font-semibold">{title}</div>
+      <div className={`mt-6 lg:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${itemsPerRow} gap-x-7.5 gap-y-8`}>
         {data.map((article, index) => (
           <NewsCard
             key={index}
@@ -175,7 +175,7 @@ export const ArticlesList = ({
         ))}
       </div>
       {totalArticles > itemsPerPage ? (
-        <div className="mt-14">
+        <div className="mt-10 lg:mt-14">
           <Pagination
             totalPages={numberOfPages}
             totalCount={totalArticles}
@@ -185,7 +185,7 @@ export const ArticlesList = ({
         </div>
       ) : null}
       {includesFiltering ? (
-        <div className="mt-24">
+        <div className="mt-14 lg:mt-24">
           <ArticlesFilter
             category={selectedCategory}
             filterHandler={handleFiltering}
