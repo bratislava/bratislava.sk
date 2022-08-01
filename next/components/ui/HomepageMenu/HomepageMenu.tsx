@@ -14,7 +14,7 @@ import Trolleybus from '@assets/images/icon-trolleybus-new.svg'
 import Partnership from '@assets/images/partnership-new.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useOutsideClick } from 'rooks'
 
 import ChevronRight from '@assets/images/chevron-right.svg'
@@ -170,6 +170,26 @@ const HomepageMenu = ({ items }: IProps) => {
   const ref = useRef()
   useOutsideClick(ref, () => setActive(null))
 
+  const [stickyMenuVisible, setStickyMenuVisible] = useState(false)
+
+  const handleScroll = () => {
+    const heightToShowFrom = 400
+    const topOffset = document.body.scrollTop || document.documentElement.scrollTop
+
+    if (topOffset > heightToShowFrom) {
+      !stickyMenuVisible && // to limit setting state only the first time
+        setStickyMenuVisible(true)
+      setActive(null)
+    } else {
+      setStickyMenuVisible(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <>
       {/* Mobile Design */}
@@ -257,7 +277,7 @@ const HomepageMenu = ({ items }: IProps) => {
                     const IconComponent = getIcon(subItem.icon)
                     return (
                       <div key={j}>
-                        <div className="flex items-center text-[20px]">
+                        <div className="flex items-center text-[20px] 12">
                           <div className="flex shrink-0 grow-0 items-center justify-center">
                             <IconComponent className="h-10 w-10" />
                           </div>
