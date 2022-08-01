@@ -19,7 +19,7 @@ export const getToken = async (): Promise<AuthenticationResult> => {
 
 export interface UsersRequest {
   token: string
-  url: string
+  department: string
 }
 
 export interface UserResponse {
@@ -35,16 +35,29 @@ export interface UserResponse {
   userPrincipalName: string
   id: string
 }
-
 export interface UsersResponse {
   '@odata.context'?: string
   '@odata.nextLink'?: string
   value: UserResponse[]
 }
 
-export const getUsers = async ({ token, url }: UsersRequest): Promise<any> => {
-  const shortUrl = url.slice(4)
-  const result = await fetch(`https://graph.microsoft.com/v1.0${shortUrl}`, {
+interface GetUserByEmailParams {
+  token: string
+  email: string
+}
+
+// TODO consider rewriting these to fetch their own tokens instead of them being provided
+export const getUserByEmail = async ({ token, email }: GetUserByEmailParams) => {
+  const url = `https://graph.microsoft.com/v1.0/users/${email}`
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  return response.json()
+}
+export const getUsersByDepartment = async ({ token, department }: UsersRequest): Promise<any> => {
+  const result = await fetch(`https://graph.microsoft.com/v1.0/users?$filter=Department eq '${department}'`, {
     method: 'get',
     headers: {
       Authorization: `Bearer ${token}`,

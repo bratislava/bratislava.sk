@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_os_items_advanced_accordion_person",
+  "info": {
+    "displayName": "Advanced Accordion Person",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "string"
+    }
+  }
+}

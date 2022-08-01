@@ -1,12 +1,12 @@
 import { withSentry } from '@sentry/nextjs'
-import { getToken, getUsers } from 'services/ms-graph'
+import { getToken, getUsersByDepartment } from 'services/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { forceString } from '@utils/utils'
 
-// TODO consider nicer params instead of forwarding exact query to Azure in getUsers ?
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { url } = req
+  const { department } = req.query
   const { accessToken } = await getToken()
-  const { value } = await getUsers({ token: accessToken, url })
+  const { value } = await getUsersByDepartment({ token: accessToken, department: forceString(department) })
   return res.json(value)
 }
 

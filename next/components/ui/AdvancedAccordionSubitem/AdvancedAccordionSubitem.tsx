@@ -11,19 +11,26 @@ import {
   AdvancedAccordionSubSubitem,
   AdvancedAccordionSubSubitemProps,
 } from '../AdvancedAccordionSubSubitem/AdvancedAccordionSubSubitem'
+import { OrgStructureAccordionCards } from 'components/molecules/OrgStructureAccordionCards'
 
 export interface AdvancedAccordionSubitemProps {
   title?: string
+  titleOverride?: string
   isGroupTitle?: boolean
   items?: AdvancedAccordionSubSubitemProps[]
+  extraPeople?: { email: string }[]
+  namesToOmit?: { name: string }[]
   className?: string
   cardClassName?: string
 }
 
 export const AdvancedAccordionSubitem = ({
   title,
+  titleOverride,
   isGroupTitle,
   items,
+  extraPeople,
+  namesToOmit,
   className,
   cardClassName,
 }: AdvancedAccordionSubitemProps) => {
@@ -33,6 +40,9 @@ export const AdvancedAccordionSubitem = ({
   if (cards.length === 0 && data && data.length > 0) {
     setCards(data)
   }
+  const displayTitle = titleOverride || title
+  const subDataExists = cards?.length > 0 || extraPeople?.length > 0
+  const subSubDataExists = items?.length > 0
   return (
     <div className="flex flex-col">
       <div
@@ -42,9 +52,9 @@ export const AdvancedAccordionSubitem = ({
         {isGroupTitle ?? <div className="mr-3 mt-1 h-6 w-6 shrink-0 rounded-full bg-secondary lg:mr-6 lg:mt-0" />}
         {/* TODO optimize this  */}
         {isGroupTitle ? (
-          <div className="pt-8 text-default font-semibold lg:pt-10 lg:text-md">{title}</div>
+          <div className="pt-8 text-default font-semibold lg:pt-10 lg:text-md">{displayTitle}</div>
         ) : (
-          <div className="pr-6 text-default lg:text-md">{title}</div>
+          <div className="pr-6 text-default lg:text-md">{displayTitle}</div>
         )}
         {isGroupTitle ?? (
           <div className={cx('ml-auto pt-2.5', { 'rotate-180': open })}>
@@ -54,15 +64,21 @@ export const AdvancedAccordionSubitem = ({
         )}
       </div>
 
-      {open && cards && cards.length > 0 && (
+      {open && subDataExists && (
         <div className={cx(cardClassName, 'lg:pt-8')}>
-          <AccordionCards items={cards} />
+          <OrgStructureAccordionCards items={cards} emails={extraPeople} namesToOmit={namesToOmit} />
         </div>
       )}
-      {open && items && items?.length > 0 && (
+      {open && subSubDataExists && (
         <div className="flex flex-col gap-y-6 pt-10">
           {items.map((sub, index) => (
-            <AdvancedAccordionSubSubitem key={index} title={sub.title} />
+            <AdvancedAccordionSubSubitem
+              key={index}
+              title={sub.title}
+              titleOverride={sub.titleOverride}
+              extraPeople={sub.extraPeople}
+              namesToOmit={sub.namesToOmit}
+            />
           ))}
         </div>
       )}
