@@ -59,7 +59,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           <HorizontalCard
             key={i}
             imageSrc={blogCard.imageSrc}
-            className="w-11/12 max-w-xs shrink-0"
+            className="w-full max-w-xs shrink-0"
             // accessory={<VerticalCardButton />}
           >
             <p className="line-clamp-4 text-left overflow-hidden text-ellipsis">{blogCard.title}</p>
