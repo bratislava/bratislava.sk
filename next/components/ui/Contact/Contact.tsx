@@ -47,33 +47,48 @@ export const Contact = ({
     })
 
   return (
-    <div className={cx(className, 'flex flex-col md:flex-row text-font items-center gap-3')}>
-      <div className="mb-6 w-full md:mb-0 md:w-1/2">
-        <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
-          {title && <h4 className="mb-6 text-md font-semibold leading-[36px]">{title}</h4>}
-          {description && (
-            <UIMarkdown className="text-sm leading-[24px] md:text-default md:leading-[30px]" content={description} />
-          )}
-        </div>
-      </div>
-      <div className="mb-6 w-full md:mb-0 md:w-1/2">
-        <div className="flex flex-col gap-3 text-font md:flex-row">
-          {items.map((item) =>
-              (item.variant !== 'address' || (item.variant === 'address' && address.trim().length > 0)) && (
+    <>
+      {title && <h4 className="mb-6 text-md font-semibold leading-[36px]">{title}</h4>}
+      <div className={cx(className, 'flex flex-col md:flex-row text-font items-center gap-3')}>
+        {description && (
+          <div
+            className={cx('mb-6 md:mb-0', {
+              'md:w-1/2': items,
+            })}
+          >
+            <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
+              {description && (
+                <UIMarkdown
+                  className="text-sm leading-[24px] md:text-default md:leading-[30px]"
+                  content={description}
+                />
+              )}
+            </div>
+          </div>
+        )}
+        {items && (
+          <div className={cx('mb-6 w-full md:mb-0', { 'md:w-1/2': description })}>
+            <div
+              className={cx('flex flex-col gap-3 text-font md:flex-row ', {
+                'justify-start': items.length === 1,
+                'justify-between': items.length === 2 || items.length === 3,
+              })}
+            >
+              {items.map((item) => (
                 <div
                   key={item.variant}
-                  className={cx('w-full mb-6 last:mb-0 md:mb-0', {
-                    'md:w-1/1': items.length === 1,
-                    'md:w-1/2': items.length === 2 && 3,
+                  className={cx('mb-6 last:mb-0 md:mb-0', {
+                    'md:w-1/2': items.length === 2,
                   })}
                 >
                   <ContactItem {...item} linkVariant={itemLinkVariant} />
                 </div>
-              )
-          )}
-        </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   )
 }
 
