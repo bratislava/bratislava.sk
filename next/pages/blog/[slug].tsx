@@ -1,6 +1,6 @@
 import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
 import { GetStaticPaths, GetStaticProps } from 'next'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
 import { client } from '../../utils/gql'
@@ -55,8 +55,10 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 
   if (!blogPostBySlug) return { notFound: true }
 
+  const pageTranslations = ['common']
+  
   return {
-    props: { slug, post: blogPosts, footer, mainMenu, locale },
+    props: { slug, post: blogPosts, footer, mainMenu, locale, ...(await serverSideTranslations(locale, pageTranslations)), },
     revalidate: 14_400, // revalidate after 4 hours
   }
 }
