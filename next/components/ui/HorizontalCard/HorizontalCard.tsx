@@ -9,25 +9,25 @@ export interface HorizontalCardProps extends React.HTMLAttributes<HTMLDivElement
 
 export const HorizontalCard = ({ accessory, className, children, imageSrc, ...rest }: HorizontalCardProps) => (
   <div className={cx(className, 'relative')} {...rest}>
-    <Panel className="flex h-full w-full flex-col xl:flex-row" hoverable>
+    <Panel className="flex h-full w-full flex-col lg:flex-row" hoverable>
       {imageSrc && (
         <>
           <div
-            className="bg-cover xl:hidden"
+            className="bg-cover lg:hidden"
             style={{
               backgroundImage: `url(${imageSrc})`,
               paddingTop: '71.4%',
             }}
           />
           <div
-            className="flex-0 max-w hidden w-56 bg-cover xl:block"
+            className="flex-0 max-w hidden w-56 bg-cover lg:block"
             style={{
               backgroundImage: `url(${imageSrc})`,
             }}
           />
         </>
       )}
-      <div className="flex-1 p-6 text-center text-sm lg:px-12 lg:pt-8 lg:pb-11 lg:text-default xl:self-center xl:pb-8 xl:text-left">
+      <div className="flex-1 p-6 text-center text-sm lg:px-12 lg:pt-8 lg:pb-8 lg:text-default lg:self-center lg:text-left">
         {children}
       </div>
     </Panel>
