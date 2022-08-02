@@ -301,8 +301,12 @@
   -moz-appearance: textfield;
 }
 
+
 .header-main-bg {
   @apply bg-right bg-cover  !important;
+
+div:empty {
+  @apply hidden;
 }
 
 @screen maxMd {
