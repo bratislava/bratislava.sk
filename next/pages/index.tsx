@@ -196,17 +196,17 @@ const Homepage = ({
 
         <div className="bg-white">
           <SectionContainer>
-            <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
+            <div className="flex flex-col pt-28 pb-8 md:flex-row md:items-center lg:pt-18 lg:pb-10">
               <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
               <img
-                className="hidden sm:block"
+                className="hidden md:block"
                 width={721}
                 height={364}
                 src={header?.picture?.data?.attributes?.url}
                 alt="Bratislava Hero"
               />
               <img
-                className="sm:hidden"
+                className="md:hidden"
                 width={721}
                 height={364}
                 src={header?.mobilePicture?.data?.attributes?.url}
