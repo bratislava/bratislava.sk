@@ -12,6 +12,7 @@ import { useTranslation } from 'next-i18next'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Cookies } from 'react-cookie-consent'
 import * as ReactGA from 'react-ga'
+import { hotjar } from 'react-hotjar';
 
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Brand } from '../Brand/Brand'
@@ -46,7 +47,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
   const [securityCookies] = React.useState<boolean>(false)
   const [performanceCookies, setPerformanceCookies] = React.useState<boolean>(false)
   const [advertisingCookies, setAdvertisingCookies] = React.useState<boolean>(false)
-  ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '')
+  ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '');
+  hotjar.initialize(Number(process.env.NEXT_PUBLIC_HOTJAR_ID) ?? null, 6);
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
@@ -60,6 +62,23 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
     localStorage.setItem('isConsentSubmitted', value)
     setConsent(value)
   }
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      console.log(
+        `App is changing to ${url}`
+      )
+      hotjar.stateChange(url);
+    }
+
+    router.events.on('routeChangeStart', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
+    }
+  }, [])
 
   const saveSettings = () => {
     Cookies.set(
@@ -76,6 +95,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
       performance_cookies: performanceCookies,
       advertising_and_targeting_cookies: advertisingCookies,
     })
+
     setShowModal(false)
     setConsentActually(true)
   }

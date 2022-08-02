@@ -11606,6 +11606,11 @@ react-ga@3.3.1:
   resolved "https://registry.npmjs.org/react-ga/-/react-ga-3.3.1.tgz"
   integrity sha512-4Vc0W5EvXAXUN/wWyxvsAKDLLgtJ3oLmhYYssx+YzphJpejtOst6cbIHCIyF50Fdxuf5DDKqRYny24yJ2y7GFQ==
 
+react-hotjar@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-hotjar/-/react-hotjar-5.0.0.tgz#72beaa2e0067b407c4183dc3ace5020f68959cab"
+  integrity sha512-nEKDm+O5a77C9DlheuA9tz5rwhRjeIFPLhdvynGFxEYTT1qrYC3NU12Z9/tgvN2l9Tzyn7erUQ0C8fZHZBceTw==
+
 react-i18next@^11.18.0:
   version "11.18.1"
   resolved "https://registry.npmjs.org/react-i18next/-/react-i18next-11.18.1.tgz"
