@@ -1,7 +1,5 @@
-import { roleOrderingScore, usersFromDepartmentFetcher } from '@utils/organisationalStructure'
+import { roleOrderingScore } from '@utils/organisationalStructure'
 import cx from 'classnames'
-import { useState } from 'react'
-import useSWR from 'swr'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
@@ -14,6 +12,7 @@ export interface OrganizationalStructureAccordionProps {
   level: number
 }
 
+// TODO replace custom accordion for unstyled lib (radix?) accordion to fix accessibility
 // level 1 - always open, empty circle
 // level 2 - toggleable, filled secondary circle
 // level >2 - toggleable, no circle
@@ -46,6 +45,8 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
           })}
         />
         <div className="pr-6 text-default lg:text-md">{group.displayName}</div>
+        {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
+        different up-down asset */}
         <div className={cx('ml-auto pt-2.5', { 'rotate-180 pt-5': open, hidden: alwaysOpen })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />

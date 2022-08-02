@@ -1,7 +1,8 @@
 import { AccordionCard } from '@bratislava/ui-bratislava/AccordionCard/AccordionCard'
-import { userDetailsFetcher, usersFromDepartmentFetcher } from '@utils/organisationalStructure'
+import { userDetailsFetcher } from '@utils/organisationalStructure'
 import useSWR from 'swr'
 
+// TODO not used right now, but might be useful - keeping as an example
 // loads data for a single person, and displays it as a accordion card
 // TODO nicer loading & error handling
 export const OrgStructurePersonCard = ({ email }) => {

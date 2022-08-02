@@ -556,23 +556,11 @@ fragment Sections on PageSectionsDynamicZone {
       title
       departments {
         title
-        titleOverride
-        extraPeople(pagination: { limit: 50 }) {
-          email
-        }
         items(pagination: { limit: 50 }) {
           isGroupTitle
           title
-          titleOverride
-          extraPeople(pagination: { limit: 50 }) {
-            email
-          }
           items(pagination: { limit: 50 }) {
             title
-            titleOverride
-            extraPeople(pagination: { limit: 50 }) {
-              email
-            }
           }
         }
       }

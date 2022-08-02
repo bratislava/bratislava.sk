@@ -13,19 +13,6 @@
     "isGroupTitle": {
       "type": "boolean"
     },
-    "titleOverride": {
-      "type": "string"
-    },
-    "extraPeople": {
-      "type": "component",
-      "repeatable": true,
-      "component": "os-items.advanced-accordion-person"
-    },
-    "namesToOmit": {
-      "type": "component",
-      "repeatable": true,
-      "component": "os-items.advanced-accordion-name"
-    },
     "items": {
       "type": "component",
       "repeatable": true,

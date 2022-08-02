@@ -1,8 +1,10 @@
 import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
 
+// not used, kept in case needed
 export const usersFromDepartmentFetcher = (department) =>
   fetch(`/api/ms-graph/users/department/${department}`).then((r) => r.json())
 
+// not used, kept in case needed
 export const userDetailsFetcher = (email: string) => fetch(`/api/ms-graph/users/${email}`).then((r) => r.json())
 
 export const structureFetcher = (): Promise<GetGroupMembersRecursiveResult> =>

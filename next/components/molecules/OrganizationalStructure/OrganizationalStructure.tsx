@@ -10,22 +10,24 @@ export interface AdvancedAccordionProps {
   dividerStyle?: string
 }
 
-// ordering manually on top level, but this is not guaranteed to stay
-// this will break if the top level structure is ever changed in Microsoft AD
-// TODO consider controlling from CMS ? though it will always be tightly coupled with the AD structure
+// TODO add search
 export const OrganizationalStructure = ({ title, dividerStyle }: AdvancedAccordionProps) => {
   const { data } = useSWR('organizationalStructure', structureFetcher)
   const { t } = useTranslation('common')
   return data ? (
     <div className="flex flex-col">
       <div className="pb-4 text-default font-semibold lg:text-lg">{title}</div>
-      {/* TODO add search */}
-      <OrganizationalStructureTopLevelAccordion group={data.groups[0]} />
-      <Divider
-        className="py-6 lg:py-10"
-        dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
-      />
-      <OrganizationalStructureTopLevelAccordion group={data.groups[1]} />
+      {data.groups.map((group, index) => (
+        <div key={group.id}>
+          {index > 0 && (
+            <Divider
+              className="py-6 lg:py-10"
+              dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
+            />
+          )}
+          <OrganizationalStructureTopLevelAccordion group={group} />
+        </div>
+      ))}
     </div>
   ) : (
     t('loading')

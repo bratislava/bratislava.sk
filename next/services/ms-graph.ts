@@ -98,7 +98,13 @@ export type MSGraphGroup = {
   onPremisesProvisioningErrors: any[]
 }
 
-export type MSGraphGroupResponse = Array<MSGraphGroupUser | MSGraphGroup>
+// we display only selected properties on frontend - don't leak anything unwanted
+export type MSGraphFilteredGroup = Pick<MSGraphGroup, '@odata.type' | 'id' | 'displayName'>
+export type MSGraphFilteredGroupUser = Pick<
+  MSGraphGroupUser,
+  '@odata.type' | 'id' | 'displayName' | 'mail' | 'businessPhones' | 'jobTitle'
+>
+export type MSGraphGroupResponse = Array<MSGraphFilteredGroupUser | MSGraphFilteredGroup>
 
 type GetGroupMembersByGroupIdParams = {
   token: string
@@ -120,18 +126,20 @@ export const getGroupMembersByGroupId = async ({
 export type GetGroupMembersRecursiveResult = {
   id: string
   displayName?: string
-  users: MSGraphGroupUser[]
+  users: MSGraphFilteredGroupUser[]
   groups: GetGroupMembersRecursiveResult[]
 }
 
 export const getGroupMembersRecursive = async (accessToken: string, groupId: string, groupDisplayName: string) => {
   const { value } = await getGroupMembersByGroupId({ token: accessToken, id: groupId })
-  console.log(value)
   const groupedResult = _.groupBy(value, '@odata.type')
   return {
     id: groupId,
     displayName: groupDisplayName,
-    users: groupedResult['#microsoft.graph.user'] || [],
+    users:
+      groupedResult['#microsoft.graph.user']?.map((user) =>
+        _.pick(user, ['@odata.type', 'id', 'displayName', 'mail', 'businessPhones', 'jobTitle'])
+      ) || [],
     groups: groupedResult['#microsoft.graph.group']
       ? await Promise.all(
           groupedResult['#microsoft.graph.group'].map((group) =>

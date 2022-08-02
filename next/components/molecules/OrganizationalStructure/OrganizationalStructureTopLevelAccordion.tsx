@@ -1,11 +1,11 @@
 import cx from 'classnames'
+import { useToggle } from 'rooks'
+import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
-import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
 import { OrganizationalStructureAccordion } from './OrganizationalStructureAccordion'
-import { useToggle } from 'rooks'
+import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
 
 export interface OrganizationalStructureTopLevelAccordionProps {
   group: GetGroupMembersRecursiveResult
@@ -28,7 +28,7 @@ export const OrganizationalStructureTopLevelAccordion = ({ group }: Organization
         <div className="h-1 w-full rounded-sm border border-transparent bg-secondary" />
       </div>
       {open && (
-        <div className="pt-8x">
+        <div className="pt-8">
           {group.users?.length && <OrganizationalStructureAccordionCards users={group.users} />}
           {group.groups.map((group) => (
             <OrganizationalStructureAccordion key={group.id} group={group} level={1} />
