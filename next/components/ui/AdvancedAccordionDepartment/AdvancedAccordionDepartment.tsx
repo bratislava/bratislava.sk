@@ -1,5 +1,4 @@
 import { usersFromDepartmentFetcher } from '@utils/organisationalStructure'
-import { OrgStructureAccordionCards } from 'components/molecules/OrgStructureAccordionCards'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
@@ -56,39 +55,14 @@ AdvancedAccordionDepartmentProps) => {
   return (
     <div className="flex flex-col pt-1 pb-14 lg:pb-18">
       {displayTitle && <AccordionItemHeading title={displayTitle} />}
-      {/*       {departmentPhone && (
-        <div className="flex items-center pl-9 pb-5 lg:pb-8 lg:pl-16 gap-x-8">
-          <Phone />
-          <div className="font-semibold text-red-brick text-default">{departmentPhone}</div>
-        </div>
-      )} */}
-      {(cards?.length > 0 || extraPeople?.length > 0) && (
+      {/* {(cards?.length > 0 || extraPeople?.length > 0) && (
         <OrgStructureAccordionCards items={cards} emails={extraPeople} namesToOmit={namesToOmit} />
-      )}
-      {/* {subitems?.map((subitem, subIndex) => ( */}
-      <div /* key={subIndex} */ className="flex flex-col">
-        {/*           {subitem.departmentCards && (
-            <div className="pt-14">
-              <AccordionCards items={subitem.departmentCards} />
-            </div>
-          )} */}
-        {/* {subitem.groupHeading && (
-            <div className="text-default lg:text-md pt-8 lg:pt-10 font-semibold">
-              {subitem.groupHeading}
-            </div>
-          )} */}
+      )} */}
+      <div className="flex flex-col">
         {items?.map((item, index) => (
-          <AdvancedAccordionSubitem
-            className="pt-8"
-            key={index}
-            /* title={item.title}
-              departmentCards={department.departmentCards}
-              subdepartments={department.subdepartments} */
-            {...item}
-          />
+          <AdvancedAccordionSubitem className="pt-8" key={index} {...item} />
         ))}
       </div>
-      {/* ))} */}
     </div>
   )
 }

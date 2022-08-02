@@ -11,7 +11,6 @@ import {
   AdvancedAccordionSubSubitem,
   AdvancedAccordionSubSubitemProps,
 } from '../AdvancedAccordionSubSubitem/AdvancedAccordionSubSubitem'
-import { OrgStructureAccordionCards } from 'components/molecules/OrgStructureAccordionCards'
 
 export interface AdvancedAccordionSubitemProps {
   title?: string
@@ -64,11 +63,11 @@ export const AdvancedAccordionSubitem = ({
         )}
       </div>
 
-      {open && subDataExists && (
+      {/* {open && subDataExists && (
         <div className={cx(cardClassName, 'lg:pt-8')}>
           <OrgStructureAccordionCards items={cards} emails={extraPeople} namesToOmit={namesToOmit} />
         </div>
-      )}
+      )} */}
       {open && subSubDataExists && (
         <div className="flex flex-col gap-y-6 pt-10">
           {items.map((sub, index) => (

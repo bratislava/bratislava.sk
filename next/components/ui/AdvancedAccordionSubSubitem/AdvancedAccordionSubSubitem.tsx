@@ -5,7 +5,6 @@ import useSWR from 'swr'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-import { OrgStructureAccordionCards } from 'components/molecules/OrgStructureAccordionCards'
 
 export interface AdvancedAccordionSubSubitemProps {
   title?: string
@@ -43,11 +42,11 @@ export const AdvancedAccordionSubSubitem = ({
         </div>
       </div>
 
-      {open && cards && cards.length > 0 && (
+      {/* {open && cards && cards.length > 0 && (
         <div className={cx(cardClassName, 'lg:pt-8')}>
           <OrgStructureAccordionCards items={cards} emails={extraPeople} />
         </div>
-      )}
+      )} */}
     </div>
   )
 }
