@@ -255,7 +255,7 @@ const Homepage = ({
           isRich
         />
 
-        <SectionContainer className="bg-secondary py-16">
+        <SectionContainer className="bg-secondary py-16 relative">
           <h2 className="pb-10 text-center text-default font-semibold xs:mt-8 lg:pb-20 lg:text-2xl">
             {data.topNineTitle}
           </h2>

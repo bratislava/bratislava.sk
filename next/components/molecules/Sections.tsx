@@ -63,7 +63,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsTextWithImage':
       return (
         <TextWithImage
-          imageSrc={section.imageSrc?.data.attributes.url ?? ''}
+          imageSrc={section.imageSrc?.data?.attributes.url ?? ''}
           imagePosition={section.imagePosition ?? 'left'}
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
