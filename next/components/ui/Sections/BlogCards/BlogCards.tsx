@@ -25,7 +25,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
   const { t } = useTranslation()
   return (
     <div className={cx(className)}>
-      <div className="hidden xl:block">
+      <div className="hidden lg:block">
         <Carousel
           shiftIndex={shiftIndex}
           items={
@@ -54,12 +54,12 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
         />
       </div>
 
-      <HorizontalScrollWrapper className={cx(className, 'xl:hidden pt-10 pb-14 lg:pb-5 pl-8 gap-x-4 -mx-8 px-8 mb-0')}>
+      <HorizontalScrollWrapper className={cx(className, 'lg:hidden pt-10 pb-14 lg:pb-5 pl-8 gap-x-4 -mx-8 px-8 mb-0')}>
         {posts.map((blogCard, i) => (
           <HorizontalCard
             key={i}
             imageSrc={blogCard.imageSrc}
-            className="w-11/12 shrink-0"
+            className="w-full max-w-xs shrink-0"
             // accessory={<VerticalCardButton />}
           >
             <p className="line-clamp-4 text-left overflow-hidden text-ellipsis">{blogCard.title}</p>

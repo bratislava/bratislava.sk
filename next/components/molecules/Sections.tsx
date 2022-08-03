@@ -25,6 +25,7 @@ import * as React from 'react'
 
 import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
 import { isPresent } from '../../utils/utils'
+import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
 import { DocumentList } from './sections/documentList'
 import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
@@ -62,7 +63,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsTextWithImage':
       return (
         <TextWithImage
-          imageSrc={section.imageSrc?.data.attributes.url ?? ''}
+          imageSrc={section.imageSrc?.data?.attributes.url ?? ''}
           imagePosition={section.imagePosition ?? 'left'}
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
@@ -101,7 +102,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       return (
         <>
           {section.title && <h1 className="flex justify-center pb-14 text-lg font-semibold">{section.title}</h1>}
-          <div className="flex flex-col space-y-3 lg:space-y-4">
+          <div className="flex flex-col">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem
                 key={institution.category}
@@ -218,8 +219,9 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
         />
       )
 
+    // TODO clear up component in Strapi
     case 'ComponentSectionsOrganizationalStructure':
-      return <AdvancedAccordion {...section} />
+      return <OrganizationalStructure {...section} />
 
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />

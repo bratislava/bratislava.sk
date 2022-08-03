@@ -112,5 +112,6 @@
   "covid": "Covid-19",
   "eservices": "eServices",
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "loading": "Loading..."
 }

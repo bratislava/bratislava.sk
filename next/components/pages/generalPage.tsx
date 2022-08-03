@@ -83,7 +83,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="relative min-h-[230px] lg:min-h-[220px]">
+          <div className="relative lg:min-h-[220px]">
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
@@ -121,7 +121,10 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
                   const { first_blog, second_blog, third_blog } = section
                   const blogs = [first_blog, second_blog, third_blog]
                   return (
-                    <div key={index} className="absolute -bottom-45 z-10 w-full overflow-hidden lg:-bottom-87">
+                    <div
+                      key={index}
+                      className="absolute -bottom-45 z-10 overflow-hidden lg:-bottom-87 -inset-x-7.5 lg:inset-x-0 w-screen lg:w-full"
+                    >
                       <FeaturedBlogs blogs={blogs} />
                     </div>
                   )
