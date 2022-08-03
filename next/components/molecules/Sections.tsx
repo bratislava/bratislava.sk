@@ -25,6 +25,7 @@ import * as React from 'react'
 
 import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
 import { isPresent } from '../../utils/utils'
+import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
 import { DocumentList } from './sections/documentList'
 import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
@@ -218,8 +219,9 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
         />
       )
 
+    // TODO clear up component in Strapi
     case 'ComponentSectionsOrganizationalStructure':
-      return <AdvancedAccordion {...section} />
+      return <OrganizationalStructure {...section} />
 
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
