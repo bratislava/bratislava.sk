@@ -30,6 +30,6 @@ export const OrganizationalStructure = ({ title, dividerStyle }: AdvancedAccordi
       ))}
     </div>
   ) : (
-    t('loading')
+    <div>{t('loading')}</div>
   )
 }
