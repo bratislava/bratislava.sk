@@ -1,8 +1,9 @@
-import { AccordionCard, AccordionCardProps } from '../AccordionCard/AccordionCard'
+import { AccordionCard } from '../AccordionCard/AccordionCard'
 import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface AccordionCardsProps {
-  items: AccordionCardProps[]
+  // TODO fix typing
+  items: any[]
 }
 
 export const AccordionCards = ({ items }: AccordionCardsProps) => {
