@@ -55,7 +55,7 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
       </div>
 
       {(open || alwaysOpen) && (
-        <div className={cx({ 'mb-8': !orderedUsers?.length })}>
+        <div className={cx({ 'pt-8': !orderedUsers?.length })}>
           {!!orderedUsers?.length && <OrganizationalStructureAccordionCards users={orderedUsers} />}
           {!!orderedGroups?.length && (
             <div className="lg:ml-7.5">
