@@ -27,7 +27,8 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
     return difference === 0 ? a.displayName.localeCompare(b.displayName) : difference
   })
   // first level order given manually and (for now) comes correctly from AD, from second onwards it makes sense to order by name (TODO verify)
-  const orderedGroups = true ? group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName)) : group.groups
+  const orderedGroups =
+    level > 1 ? group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName)) : group.groups
   return (
     <div className="flex flex-col">
       <div
