@@ -7,7 +7,6 @@ import TownHallSmall from '../../../assets/images/town-hall-small.svg'
 import Panel from '../Panel/Panel'
 
 export interface AccordionCardProps {
-  id: string
   displayName: string
   jobTitle: string
   businessPhones?: string[]
@@ -18,7 +17,6 @@ export interface AccordionCardProps {
 }
 
 export const AccordionCard = ({
-  id,
   displayName,
   jobTitle,
   businessPhones,
@@ -31,53 +29,51 @@ export const AccordionCard = ({
   const mailOrganization = mail && `@${mail?.split('@').at(1)}`
   const mailBreakpoint = 16
   return (
-    /* min-w-70 does not work anymore (worked fine on monorepo) */
-    <>
-      {displayName && jobTitle && (
-        <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
-          <div className="pb-2 text-sm font-semibold lg:text-md">{displayName}</div>
-          <div className="pb-6 text-xs text-gray-dark lg:text-sm">{jobTitle}</div>
-          <div className="flex justify-between">
-            <div>
-              <div className="flex gap-x-4 pb-3">
-                {!heading && <Phone className="hidden xl:flex" />}
-                {businessPhones?.length > 0
-                  ? businessPhones.map((phone) => (
-                      <div key={phone} className="flex items-center text-sm font-semibold text-red-brick">
-                        {phone}
-                      </div>
-                    ))
-                  : mobilePhone && (
-                      <div className="flex items-center text-sm font-semibold text-red-brick">{mobilePhone}</div>
-                    )}
-              </div>
-              <div className="flex flex-col">
-                <div className="flex gap-x-4">
-                  {!heading && <Mail className="hidden xl:flex" />}
-                  <div className="text-xs font-semibold text-red-brick underline underline-offset-2 lg:text-sm">
-                    <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
-                    <div className="hidden lg:flex">
-                      {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
+    /* TODO min-w-70 does not work anymore (worked fine on monorepo) */
+    displayName && jobTitle ? (
+      <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
+        <div className="pb-2 text-sm font-semibold lg:text-md">{displayName}</div>
+        <div className="pb-6 text-xs text-gray-dark lg:text-sm">{jobTitle}</div>
+        <div className="flex justify-between">
+          <div>
+            <div className="flex gap-x-4 pb-3">
+              {!heading && <Phone className="hidden xl:flex" />}
+              {businessPhones?.length > 0
+                ? businessPhones.map((phone) => (
+                    <div key={phone} className="flex items-center text-sm font-semibold text-red-brick">
+                      {phone}
                     </div>
+                  ))
+                : mobilePhone && (
+                    <div className="flex items-center text-sm font-semibold text-red-brick">{mobilePhone}</div>
+                  )}
+            </div>
+            <div className="flex flex-col">
+              <div className="flex gap-x-4">
+                {!heading && <Mail className="hidden xl:flex" />}
+                <div className="text-xs font-semibold text-red-brick underline underline-offset-2 lg:text-sm">
+                  <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
+                  <div className="hidden lg:flex">
+                    {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
                   </div>
                 </div>
-                {mailUserName?.length > mailBreakpoint && (
-                  <div className=" hidden text-xs font-semibold text-red-brick underline underline-offset-2 lg:flex lg:text-sm xl:pl-12">
-                    {mailOrganization}
-                  </div>
-                )}
               </div>
+              {mailUserName?.length > mailBreakpoint && (
+                <div className=" hidden text-xs font-semibold text-red-brick underline underline-offset-2 lg:flex lg:text-sm xl:pl-12">
+                  {mailOrganization}
+                </div>
+              )}
             </div>
-
-            {heading && (
-              <>
-                <TownHall className="hidden lg:flex" />
-                <TownHallSmall className="-mr-2 flex lg:hidden" />
-              </>
-            )}
           </div>
-        </Panel>
-      )}
-    </>
+
+          {heading && (
+            <>
+              <TownHall className="hidden lg:flex" />
+              <TownHallSmall className="-mr-2 flex lg:hidden" />
+            </>
+          )}
+        </div>
+      </Panel>
+    ) : null
   )
 }
