@@ -13,6 +13,11 @@ const cca = new ConfidentialClientApplication(config)
 
 // caching of token should be taken care of by the msal library
 export const getToken = async (): Promise<AuthenticationResult> => {
+  console.log('----debug get token----')
+  console.log(process.env.MSAL_CLIENT_ID)
+  console.log(process.env.MSAL_CLIENT_SECRET)
+  console.log(process.env.MSAL_SCOPE)
+  console.log(process.env.MSAL_TENANT_ID)
   return cca.acquireTokenByClientCredential({
     scopes: [process.env.MSAL_SCOPE],
   })
