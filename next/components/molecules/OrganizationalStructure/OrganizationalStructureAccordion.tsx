@@ -39,13 +39,13 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
         onClick={alwaysOpen ? null : setOpen}
       >
         <div
-          className={cx('h-6 w-6 rounded-full', {
+          className={cx('org-structure-list-circle', {
             'border-4 border-primary': level === 1,
             'bg-secondary': level === 2,
             hidden: level > 2,
           })}
         />
-        <div className="pr-6 text-default lg:text-md">{group.displayName}</div>
+        <div className="text-default lg:text-md">{group.displayName}</div>
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
         <div className={cx('ml-auto pt-2.5', { 'rotate-180 pt-5': open, hidden: alwaysOpen })}>
@@ -55,7 +55,7 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
       </div>
 
       {(open || alwaysOpen) && (
-        <div className="">
+        <div className={cx({ 'mb-8': !orderedUsers?.length })}>
           {!!orderedUsers?.length && <OrganizationalStructureAccordionCards users={orderedUsers} />}
           {!!orderedGroups?.length && (
             <div className="lg:ml-7.5">
