@@ -76,7 +76,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular whitespace-pre-wrap" {...props} />,
+        p: ({ node, ...props }) => <div className="typography-regular whitespace-pre-wrap mb-4 last:mb-0" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
