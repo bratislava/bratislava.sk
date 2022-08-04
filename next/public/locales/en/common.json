@@ -113,5 +113,6 @@
   "eservices": "eServices",
   "login": "Login",
   "register": "Register",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "organisationalStructure": "Organisational structure"
 }

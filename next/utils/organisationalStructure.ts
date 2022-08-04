@@ -7,6 +7,8 @@ export const usersFromDepartmentFetcher = (department) =>
 // not used, kept in case needed
 export const userDetailsFetcher = (email: string) => fetch(`/api/ms-graph/users/${email}`).then((r) => r.json())
 
+export const userSearchFetcher = (search: string) => fetch(`/api/ms-graph/users/search/${search}`).then((r) => r.json())
+
 export const structureFetcher = (): Promise<GetGroupMembersRecursiveResult> =>
   fetch('/api/ms-graph/structure').then((r) => r.json())
 
