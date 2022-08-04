@@ -142,7 +142,7 @@ export const buildMockData = ({
         linkTitle: 'Zistiť viac',
       },
       {
-        title: 'Kontakty\na úradné hodiny',
+        title: 'Návštevné\na úradné hodiny',
         icon: 'icon8',
         href: '/uradne-a-navstevne-hodiny',
         linkTitle: 'Zistiť viac',
