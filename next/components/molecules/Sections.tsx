@@ -32,6 +32,7 @@ import * as React from 'react'
 
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
 import DocumentList from './sections/documentList/DocumentList'
+import Gallery from './sections/Gallery'
 import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
@@ -251,6 +252,15 @@ const SectionContent = ({
     case 'ComponentSectionsOrganizationalStructure':
       return <OrganizationalStructure {...section} />
 
+    case 'ComponentSectionsGallery':
+      return (
+        <Gallery
+          title={section.title ?? ''}
+          subTitle={section.subTitle ?? ''}
+          galleryItems={section.galleryItems ?? null}
+        />
+      )
+
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
 
@@ -274,7 +284,7 @@ const Section = ({
     return (
       <Waves
         className={cx({
-          'mt-10 md:mt-18': section.position === 'top',
+          'md:mt-18 mt-10': section.position === 'top',
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}
@@ -302,8 +312,8 @@ const Section = ({
 
   return (
     <SectionContainer
-      className={cx('pt-10 md:pt-18', {
-        'pb-14 md:pb-18 bg-category-200': hasBackground === true,
+      className={cx('md:pt-18 pt-10', {
+        'md:pb-18 bg-category-200 pb-14': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

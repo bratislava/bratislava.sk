@@ -460,6 +460,27 @@ fragment Sections on PageSectionsDynamicZone {
     allowGeolocation
   }
 
+  ... on ComponentSectionsGallery {
+    title
+    subTitle
+    galleryItems {
+      imgTitle
+      imgSubTitle
+      imgSubText
+			media {
+        data {
+          attributes {
+            url
+            width
+            height
+            caption
+            alternativeText
+          }
+        }
+      }
+    }
+  }
+
   ... on ComponentSectionsFileList {
     hasBackground
     fileList(pagination: { limit: 500 }) {
