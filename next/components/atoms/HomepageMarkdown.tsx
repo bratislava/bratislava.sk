@@ -130,7 +130,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
                   { 'border-primary border-solid border-4': level != 0 }
                 )}
               />
-              <div className="text-base lg:text-default">{children}</div>
+              <div className="text-base lg:text-default whitespace-pre-wrap">{children}</div>
             </div>
           )
         },
