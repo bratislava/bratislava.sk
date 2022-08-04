@@ -14,6 +14,7 @@ import cx from 'classnames'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { ParsedOfficialBoardDocument } from 'services/ginis'
+import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
@@ -28,7 +29,6 @@ export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
-  documents?: ParsedOfficialBoardDocument[]
   // latestPost?: BlogPost[]
   latestPost?: LatestBlogsFragment
   leftHighLight?: NewsCardBlogFragment | null
@@ -41,7 +41,6 @@ export interface PostsProps {
 export const Posts = ({
   className,
   posts = [],
-  documents = [],
   leftHighLight,
   rightHighLight,
   readMoreText,
@@ -54,6 +53,12 @@ export const Posts = ({
   const [activeNewsCards, setActiveNewsCards] = React.useState<NewsCardProps[]>(
     activePosts?.newsCards ? activePosts?.newsCards : []
   )
+
+  // TODO handle loading and errors
+  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>('/api/ginis/newest', () =>
+    fetch('/api/ginis/newest').then((res) => res.json())
+  )
+  const documents = officialBoardData || []
 
   const largeCount = 2
 

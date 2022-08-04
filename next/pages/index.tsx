@@ -37,7 +37,7 @@ import { buildMockData } from '../utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 
-export const getServerSideProps = async (ctx) => {
+export const getStaticProps = async (ctx) => {
   const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -85,17 +85,6 @@ export const getServerSideProps = async (ctx) => {
     rozkoPosts = await getRozkoPosts()
   } catch (error) {
     console.log(error)
-  }
-
-  let latestOfficialBoard: ParsedOfficialBoardDocument[] = []
-  if (shouldMockGinis()) {
-    latestOfficialBoard = mockedParsedDocuments
-  } else {
-    try {
-      latestOfficialBoard = await getParsedUDEDocumentsList(undefined, 3)
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   const frontImage = homepage?.data?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
@@ -148,7 +137,6 @@ export const getServerSideProps = async (ctx) => {
             locale: l,
           })),
       },
-      latestOfficialBoard,
       homepagePosts,
       inba,
       header,
@@ -156,7 +144,7 @@ export const getServerSideProps = async (ctx) => {
       rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
-    // revalidate: 30,
+    revalidate: 30,
   }
 }
 
@@ -166,14 +154,13 @@ const Homepage = ({
   mainMenu,
   page,
   homepage,
-  latestOfficialBoard,
   latestBlogposts,
   homepagePosts,
   cards,
   header,
   inba,
   rozkoPosts,
-}: AsyncServerProps<typeof getServerSideProps>) => {
+}: AsyncServerProps<typeof getStaticProps>) => {
   // Commented below line for reference.
   // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
   const { pageTitle, posts } = data
@@ -233,7 +220,6 @@ const Homepage = ({
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
-            documents={latestOfficialBoard}
             latestPost={latestBlogposts}
             rozkoPosts={rozkoPosts}
           />
