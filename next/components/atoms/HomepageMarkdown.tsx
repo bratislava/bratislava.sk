@@ -76,7 +76,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular whitespace-pre-wrap" {...props} />,
+        p: ({ node, ...props }) => <div className="typography-regular whitespace-pre-wrap mb-4 last:mb-0" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
@@ -130,7 +130,7 @@ export const HomepageMarkdown = ({ className, content, numericalList, hasBackgro
                   { 'border-primary border-solid border-4': level != 0 }
                 )}
               />
-              <div className="text-base lg:text-default">{children}</div>
+              <div className="text-base lg:text-default whitespace-pre-wrap">{children}</div>
             </div>
           )
         },
