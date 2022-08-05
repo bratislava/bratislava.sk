@@ -160,6 +160,7 @@ export const getUserByEmail = async ({ token, email }: GetUserByEmailParams) => 
   })
   return response.json()
 }
+
 export const getUsersByDepartment = async ({ token, department }: UsersRequest): Promise<any> => {
   const result = await fetch(`https://graph.microsoft.com/v1.0/users?$filter=Department eq '${department}'`, {
     method: 'get',
@@ -180,4 +181,37 @@ export const getUsersByDepartment = async ({ token, department }: UsersRequest):
   }
 
   return resultData
+}
+
+interface GetUsersByDisplayNameParams {
+  token: string
+  query: string
+}
+
+export const getUsersByDisplayName = async ({
+  token,
+  query,
+}: GetUsersByDisplayNameParams): Promise<MSGraphFilteredGroupUser> => {
+  const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${query}"`
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      ConsistencyLevel: 'eventual',
+    },
+  })
+
+  const resultData = await response.json()
+
+  if (resultData.error) {
+    const error = new Error(resultData.error.message)
+    console.error(error)
+
+    return []
+  }
+
+  return (
+    resultData?.value?.map((user) =>
+      _.pick(user, ['@odata.type', 'id', 'displayName', 'mail', 'businessPhones', 'jobTitle'])
+    ) || []
+  )
 }
