@@ -191,7 +191,7 @@ interface GetUsersByDisplayNameParams {
 export const getUsersByDisplayName = async ({
   token,
   query,
-}: GetUsersByDisplayNameParams): Promise<MSGraphFilteredGroupUser> => {
+}: GetUsersByDisplayNameParams): Promise<MSGraphFilteredGroupUser[]> => {
   const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${query}"`
   const response = await fetch(url, {
     headers: {
