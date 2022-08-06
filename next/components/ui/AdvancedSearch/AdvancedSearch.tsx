@@ -39,6 +39,7 @@ export const AdvancedSearch = ({
       value: t('articles'),
     },
     { key: 'pages', value: t('pages') },
+    { key: 'users', value: t('organisationalStructure') },
   ]
   const [checked, setChecked] = useState(options)
 

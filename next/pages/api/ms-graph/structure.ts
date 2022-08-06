@@ -1,13 +1,11 @@
 import { withSentry } from '@sentry/nextjs'
-import { getToken, getUsers } from 'services/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { getGroupMembersRecursive, getToken } from 'services/ms-graph'
 
-// TODO consider nicer params instead of forwarding exact query to Azure in getUsers ?
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { url } = req
   const { accessToken } = await getToken()
-  const { value } = await getUsers({ token: accessToken, url })
-  return res.json(value)
+  // e2a318ff-fadb-4950-8ff0-a69660788e9d is id of 'Struktura pre web' group
+  return res.json(await getGroupMembersRecursive(accessToken, 'e2a318ff-fadb-4950-8ff0-a69660788e9d', null))
 }
 
 export default withSentry(handler)

@@ -12,7 +12,7 @@ To install dependencies run:
 yarn
 ```
 
-For CMS setup see `strapi` directory. Presently you can run this against v3 strapi, either local one or the on running at `https://strapi-homepage.bratislava.sk`
+For CMS setup see `strapi` directory. You can also run the project against production strapi (useful when debugging) `` - provided that you're not working on Strapi model changes or tth
 
 ## Run project locally
 
@@ -32,7 +32,7 @@ yarn gen
 
 ## Typescript Strict Mode
 
-**TODO this section is not valid _yet_, keeping it in as we'll want to do this in coming days**
+**TODO this section is not valid _yet_, keeping it in as we'll want to do this ~in coming days~ soon™**
 
 We're working on gradually enabling TS strict mode. To achieve this, we're using [typescript-strict-plugin](https://github.com/allegro/typescript-strict-plugin).
 
@@ -42,11 +42,6 @@ It is recommended to:
 
 1. If you work on a file, remove `// @ts-strict-ignore` and fix the TS errors
 2. If you create a new file, don't add `// @ts-strict-ignore`
-
-Available commands:
-
-- `nx run next-city-gallery:typecheck` will check whole project for strict errors
-- `nx run next-city-gallery:update-strict-comments` will check all files for existing errors and it will add `// @ts-strict-ignore` to suppress the strict errors. Should be used only as a last resort.
 
 ### VSCode support
 

@@ -218,6 +218,11 @@
     @apply shadow-none md:shadow-lg;
   }
 
+  .org-structure-list-circle {
+    @apply h-6 w-6 rounded-full;
+    min-width: 24px;
+  }
+
   .listitem .typography-regular {
     @apply text-sm lg:text-default;
   }
@@ -299,10 +304,6 @@
 }
 .number-control-none {
   -moz-appearance: textfield;
-}
-
-div:empty {
-  @apply hidden;
 }
 
 @screen maxMd {
