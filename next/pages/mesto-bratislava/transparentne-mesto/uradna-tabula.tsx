@@ -207,6 +207,7 @@ const OfficialBoard = ({
             <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
           ) : (
             <DocumentCards
+              query={query?.search}
               title={t('recentlyAddedDocuments')}
               viewButtonText={t('viewTheDocument')}
               downloadButtonText={t('download')}

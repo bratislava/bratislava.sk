@@ -153,6 +153,7 @@ export const ArticlesList = ({
     selectedTags.includes(tag)
       ? setSelectedTags(selectedTags.filter((selected) => selected != tag))
       : setSelectedTags([...selectedTags, tag])
+    setCurrentPage(1);
   }
 
   return (
