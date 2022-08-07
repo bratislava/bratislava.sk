@@ -5,7 +5,7 @@ import HamburgerClose from '@assets/images/hamburger-close.svg'
 import HamburgerCloseWhite from '@assets/images/hamburger-close-white.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { covidData, minKeywordLength } from '@utils/constants'
+import { covidUrls, eServicesData, minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -26,15 +26,6 @@ interface IProps extends LanguageSelectProps {
   menuItems?: MenuMainItem[]
   handleSearch?: (searchOpen: boolean) => void
   pageColor?: string
-}
-
-const navBarUrls = {
-  en: {
-    eservices: 'https://esluzby.bratislava.sk/',
-  },
-  sk: {
-    eservices: 'https://esluzby.bratislava.sk/',
-  },
 }
 
 export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
@@ -195,7 +186,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               </div>
             ) : (
               <div className="flex gap-x-8 font-semibold text-gray-dark">
-                <Link href={covidData[languageKey].url} variant="plain" className="whitespace-nowrap">
+                <Link href={covidUrls[languageKey]} variant="plain" className="whitespace-nowrap">
                   {t('covid')}
                 </Link>
 
@@ -205,7 +196,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                     hidden
                   </UILink>
                 }
-                <Link href={navBarUrls[languageKey].eservices} variant="plain" className="whitespace-nowrap">
+                <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap">
                   {t('eservices')}
                 </Link>
                 <div className="relative flex cursor-pointer items-center bg-transparent text-gray-dark">

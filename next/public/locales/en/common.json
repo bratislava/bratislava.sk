@@ -114,5 +114,7 @@
   "login": "Login",
   "register": "Register",
   "loading": "Loading...",
-  "organisationalStructure": "Organisational structure"
+  "organisationalStructure": "Organisational structure",
+  "fromUkraine": "Я з України",
+  "tourist": "I am tourist"
 }
