@@ -18,7 +18,7 @@ export interface SearchResultsProps {
 }
 
 export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) => {
-  const { t } = useTranslation('common')
+  const { t, i18n } = useTranslation('common')
   const documents = []
   const [articles, setArticles] = useState([])
   const [pages, setPages] = useState([])
@@ -28,8 +28,8 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
   // TODO rewrite without using useState
   const { data, error } = useSWR([keyword, articleLimit], () => {
     return {
-      articles: searchArticles(keyword, articleLimit),
-      pages: searchPages(keyword),
+      articles: searchArticles(keyword, i18n.languages[0] || 'sk', articleLimit),
+      pages: searchPages(keyword, i18n.languages[0] || 'sk'),
       users: userSearchFetcher(keyword),
     }
   })
