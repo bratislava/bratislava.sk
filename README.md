@@ -12,7 +12,7 @@ We intend to make many more of our projects open-source by the end of 2022 - sta
 
 ## What's here
 
-Each sub-project contains README which should get you up and running. Documentation site in progress.
+Each sub-project contains README which should get you up and running. More documentation can be (eventually) found [here](https://bratislava.github.io).
 
 🏡 `/next` bratislava.sk Nextjs web app
 
