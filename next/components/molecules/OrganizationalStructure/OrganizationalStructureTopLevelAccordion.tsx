@@ -14,6 +14,7 @@ export interface OrganizationalStructureTopLevelAccordionProps {
 export const OrganizationalStructureTopLevelAccordion = ({ group }: OrganizationalStructureTopLevelAccordionProps) => {
   const [open, setOpen] = useToggle()
 
+  const orderedGroups = group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName))
   return (
     <div className="flex flex-col">
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>
@@ -30,7 +31,7 @@ export const OrganizationalStructureTopLevelAccordion = ({ group }: Organization
       {open && (
         <div className="pt-8">
           {group.users?.length && <OrganizationalStructureAccordionCards users={group.users} />}
-          {group.groups.map((group) => (
+          {orderedGroups.map((group) => (
             <OrganizationalStructureAccordion key={group.id} group={group} level={1} />
           ))}
         </div>
