@@ -273,14 +273,14 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             </p>
             <div className="block sm:flex">
               <Button
-                className="mb-3 sm:mb-0 sm:mt-0 sm:mr-6 px-6 h-12 text-sm font-medium"
+                className="mb-3 h-12 px-6 text-sm font-medium sm:my-0 sm:mr-6"
                 variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                 onClick={acceptAllCookies}
               >
                 {t('acceptAll')}
               </Button>
               <Button
-                className="mt-0 px-6 h-12 text-sm font-medium"
+                className="mt-0 h-12 px-6 text-sm font-medium"
                 variant="secondary-dark-text"
                 onClick={declineCookies}
               >
@@ -386,7 +386,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className="mt-0 px-6 h-12 text-sm font-medium mx-auto md:mr-6 md:ml-0 box-none"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mr-6 md:ml-0"
                     variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
@@ -450,7 +450,6 @@ const useComponentVisible = (initialIsVisible, setIsSelectClicked) => {
 }
 
 const LanguageSelect = ({
-  className,
   languages: options,
   currentLanguage: current,
   onLanguageChange: onChange,

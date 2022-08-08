@@ -8,8 +8,8 @@ export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Panel = ({ className, hoverable = false, overflowVisible = false, ...rest }: PanelProps) => (
   <div
-    className={cx(className, 'rounded-lg bg-white shadow', {
-      'cursor-pointer transition-all transform hover:-translate-y-2 hover:shadow-lg': hoverable,
+    className={cx(className, 'rounded-lg', {
+      'cursor-pointer transition-all transform hover:-translate-y-2': hoverable,
       'overflow-hidden': !overflowVisible,
     })}
     {...rest}

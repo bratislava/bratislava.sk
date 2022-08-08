@@ -1,12 +1,14 @@
-import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
-import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import React, { useCallback, useEffect, useRef,useState  } from 'react'
+import React, { useCallback, useState } from 'react'
+import { useRef } from 'react'
+import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
+import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
 import { useDebounce, useOutsideClick } from 'rooks'
 
-import { getIcon, MenuMainItem, Panel, Waves } from '../index'
+import { MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
+import { Icon } from '../../atoms/icon/Icon'
 
 interface IProps {
   className?: string
@@ -135,7 +137,6 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
           <div className="m-auto grid w-full max-w-screen-1.5lg grid-cols-3 gap-10">
             {/* SUB-ITEMS */}
             {item.subItems?.map((subItem, j) => {
-              const IconComponent = getIcon(subItem.icon)
               return (
                 <div key={j}>
                   <button className="flex" onClick={() => setPanelHidden(true)}>
@@ -144,7 +145,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
                       className="flex items-center text-left text-[20px] hover:underline"
                     >
                       <div className="flex shrink-0 grow-0 items-center justify-center">
-                        <IconComponent className="h-10 w-10" />
+                        <Icon iconName={subItem.icon} />
                       </div>
                       <div className="ml-4 flex-1 font-semibold">{subItem.title}</div>
                     </UILink>

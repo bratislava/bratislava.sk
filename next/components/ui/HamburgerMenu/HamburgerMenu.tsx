@@ -6,7 +6,8 @@ import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
-import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
+import { Icon } from '../../atoms/icon/Icon'
+import { MenuMainItem } from '../index'
 import { Link } from '../Link/Link'
 
 interface IProps {
@@ -34,7 +35,6 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
         {/* Main Hamburger Menu */}
         <div className="flex flex-col gap-y-8 border-b-2 border-tertiary py-8">
           {hamburgerMenuItems.map((item) => {
-            const IconComponent = getIcon(item.icon)
             return (
               <button
                 onClick={() => setSubMenu(item)}
@@ -42,7 +42,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
                 key={item.title}
                 type="button"
               >
-                <IconComponent className="h-10 w-10" />
+                <Icon iconName={item.icon} />
                 <p className="w-36 text-base font-medium">{item.title}</p>
                 <ChevronRight />
               </button>

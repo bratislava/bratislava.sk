@@ -7,9 +7,11 @@ import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 import UnstyledLink from 'next/link'
 
-import { getIcon, MenuMainItem } from '../HomepageMenu/HomepageMenu'
-import { Link } from '../Link/Link'
+import { Icon } from '../../atoms/icon/Icon'
+import { MenuMainItem } from '../HomepageMenu/HomepageMenu';
+import { Link } from '../Link/Link';
 import { ChevronRight } from '@assets/images'
+
 
 interface IProps {
   className?: string
@@ -21,7 +23,6 @@ interface IProps {
 
 const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }: IProps) => {
   const [expanded, setExpanded] = useState<number[]>([])
-  const ColoredIconComponent = getIcon(item.coloredIcon)
 
   const { t } = useTranslation()
 
@@ -46,13 +47,13 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
         >
           {variant === 'homepage' ? (
             <div className="flex items-center">
-              {ColoredIconComponent && <ColoredIconComponent className="mr-6 h-12 w-12" />}
+              <Icon iconName={item.coloredIcon} />
               <span className="text-left text-base font-semibold">{item.title}</span>
             </div>
           ) : (
             <button className="flex items-center" onClick={onClose}>
               <ChevronLeft className="mr-8" />
-              {ColoredIconComponent && <ColoredIconComponent className="mr-6 h-12 w-12" />}
+              <Icon iconName={item.coloredIcon} />
               <span className="text-left text-base font-semibold">{item.title}</span>
             </button>
           )}
@@ -65,11 +66,10 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
         >
           {item.subItems?.map((subItem, i) => {
             const isExpanded = expanded.includes(i)
-            const IconComponent = getIcon(subItem.icon)
             return (
               <React.Fragment key={subItem.title}>
                 <div className="flex items-center gap-x-5">
-                  <IconComponent className="h-10 w-10" />
+                  <Icon iconName={subItem.icon} />
                   <p className="text-default font-semibold">{subItem.title}</p>
                 </div>
                 <div className="flex flex-col gap-y-2 pb-4">
