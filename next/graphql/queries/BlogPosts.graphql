@@ -85,7 +85,13 @@ query BlogPostsStaticPaths($locale: I18NLocaleCode) {
   }
 }
 
-query LatestBlogsWithTags($sort: [String], $limit: Int, $start: Int, $filters: BlogPostFiltersInput, $locale: I18NLocaleCode) {
+query LatestBlogsWithTags(
+  $sort: [String]
+  $limit: Int
+  $start: Int
+  $filters: BlogPostFiltersInput
+  $locale: I18NLocaleCode
+) {
   blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters, locale: $locale) {
     ...LatestBlogs
   }
@@ -165,6 +171,7 @@ fragment BlogPost on BlogPostEntityResponseCollection {
       excerpt
       title
       updatedAt
+      publishedAt
       date_added
       tag {
         data {

@@ -110,5 +110,9 @@
   "covid": "Covid-19",
   "eservices": "E-služby",
   "login": "Prihlásenie",
-  "register": "Registrácia"
+  "register": "Registrácia",
+  "loading": "Načítavam...",
+  "organisationalStructure": "Organizačná štruktúra",
+  "fromUkraine": "Я з України",
+  "tourist": "Som turista"
 }

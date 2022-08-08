@@ -15,9 +15,11 @@ export const searchVZN = async (search: string, offset: number, limit?: number) 
   })
 }
 
-export const searchArticles = async (search: string, limit: number) => {
+export const searchArticles = async (search: string, locale: string, limit: number) => {
   const data = await meiliClient.index('blog-post').search(search || '*', {
     limit,
+    sort: ['publishedAt:desc'],
+    filter: [`locale = ${locale}`],
   })
 
   data.hits = data.hits.map((article) => {
@@ -55,10 +57,9 @@ export const searchArticles = async (search: string, limit: number) => {
   return data
 }
 
-export const searchPages = async (search: string, offset = 0) => {
+export const searchPages = async (search: string, locale: string, offset = 0) => {
   const data = await meiliClient.index('page').search(search || '*', {
-    // TODO fix sortable attributes
-    // sort: ['publishedAt:desc'],
+    filter: [`locale = ${locale}`],
     // offset,
   })
 

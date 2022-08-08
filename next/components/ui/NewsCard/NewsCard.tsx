@@ -100,6 +100,7 @@ export const NewsCard = ({
             />
           )}
           <h3 className="news-small-content text-default font-semibold lg:text-md">{title}</h3>
+          {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
           <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
           <p className="news-small-content text-sm">{excerpt}</p>
           <div>
@@ -124,7 +125,7 @@ export const NewsCard = ({
                     color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
                   }}
                 >
-                  {readMoreText} 
+                  {readMoreText}
                   <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
                 </div>
               </Button>

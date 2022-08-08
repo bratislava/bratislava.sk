@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: strapi
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: postgres4
+      POSTGRES_DB: strapi
       PGPORT: 5432
     expose:
       - '5432'

@@ -52,9 +52,17 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         {/* Header - Breadcrumbs */}
         <SectionContainer>
           <div className="min-h-[220px] pt-30">
-            {blogPost?.tag && <span className="px-3 py-1 text-sm font-medium text-white bg-primary rounded inline-block">{tag?.title}</span>}
+            {blogPost?.tag && (
+              <span className="px-3 py-1 text-sm font-medium text-white bg-primary rounded inline-block">
+                {tag?.title}
+              </span>
+            )}
             <h1 className="whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl max-w-[900px]">{blogPost?.title}</h1>
-            {blogPost?.createdAt && <div className="pt-2 pb-14">{getNumericLocalDate(blogPost?.createdAt)}</div>}
+            {blogPost && (
+              <div className="pt-2 pb-14">
+                {getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)}
+              </div>
+            )}
           </div>
         </SectionContainer>
       </PageHeader>

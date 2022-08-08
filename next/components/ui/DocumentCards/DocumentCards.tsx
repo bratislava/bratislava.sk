@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ParsedOfficialBoardDocument } from 'services/ginis'
 
 import Divider from '../Divider/Divider'
-import { DocumentCard, DocumentCardProps } from '../DocumentCard/DocumentCard'
+import { DocumentCard } from '../DocumentCard/DocumentCard'
 import Pagination from '../Pagination/Pagination'
 
 export interface DocumentCardsProps {
@@ -11,6 +11,7 @@ export interface DocumentCardsProps {
   title: string
   viewButtonText: string
   downloadButtonText: string
+  query: string | string[]
 }
 export const DocumentCards = ({
   documents,
@@ -18,6 +19,7 @@ export const DocumentCards = ({
   title,
   viewButtonText,
   downloadButtonText,
+  query
 }: DocumentCardsProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPageDesktop = 14
@@ -27,6 +29,13 @@ export const DocumentCards = ({
   const dividerBreakpointDesktop = itemsPerPageDesktop / 2
   const dividerBreakpointMobile = itemsPerPageMobile / 2
   const dividerBugSolved = false
+
+  useEffect(() => {
+    if(query){
+      setCurrentPage(1)
+    }
+  },[query]);
+
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
       <div className="text-default font-medium lg:text-md">{title}</div>

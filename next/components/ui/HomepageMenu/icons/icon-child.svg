@@ -1,8 +1,0 @@
-<svg viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M17.71 21.3301H17.88C18.8994 21.3288 19.9091 21.5286 20.8512 21.9181C21.7933 22.3076 22.6492 22.8792 23.3701 23.6C24.0909 24.3208 24.6625 25.1768 25.052 26.1189C25.4415 27.061 25.6413 28.0707 25.64 29.0901H1C1 27.032 1.81757 25.0582 3.27285 23.6029C4.72813 22.1477 6.70192 21.3301 8.76 21.3301H8.93" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
-  <path d="M20.68 9.30005V15.42C20.68 17.372 19.9046 19.2441 18.5243 20.6244C17.144 22.0046 15.272 22.78 13.32 22.78C11.3688 22.7774 9.4983 22.0011 8.11861 20.6214C6.73891 19.2417 5.96264 17.3712 5.95999 15.42V9.30005" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
-  <path d="M5.95999 9.3V5.69C5.95999 4.44613 6.45411 3.25321 7.33366 2.37367C8.21321 1.49412 9.40613 1 10.65 1H15.99C17.2339 1 18.4268 1.49412 19.3063 2.37367C20.1859 3.25321 20.68 4.44613 20.68 5.69V9.3H5.95999Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
-  <path d="M16.42 9.30005H27.3" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
-  <path d="M11 16.6399V12.4099" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
-  <path d="M15.64 16.6399V12.4099" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
-</svg>
