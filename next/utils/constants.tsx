@@ -47,7 +47,7 @@ export const MOCK_HAMBURGER_MENU_ITEMS: { sk: HamburgerSubLoginItem[]; en: Hambu
     {
       icon: <LightBulb />,
       title: 'fromUkraine',
-      url: '/kultura-a-komunity/komunity/братислава-для-украіни',
+      url: '/братислава-для-украiни',
     },
     {
       icon: <Tourist />,
@@ -76,7 +76,7 @@ export const MOCK_HAMBURGER_MENU_ITEMS: { sk: HamburgerSubLoginItem[]; en: Hambu
     {
       icon: <LightBulb />,
       title: 'fromUkraine',
-      url: '/kultura-a-komunity/komunity/братислава-для-украіни',
+      url: '/братислава-для-украiни',
     },
     {
       icon: <Tourist />,
