@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Cookies } from 'react-cookie-consent'
 import * as ReactGA from 'react-ga'
-import { hotjar } from 'react-hotjar';
+import { hotjar } from 'react-hotjar'
 
 import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Brand } from '../Brand/Brand'
@@ -38,8 +38,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
   const [securityCookies] = React.useState<boolean>(false)
   const [performanceCookies, setPerformanceCookies] = React.useState<boolean>(false)
   const [advertisingCookies, setAdvertisingCookies] = React.useState<boolean>(false)
-  ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '');
-  hotjar.initialize(Number(process.env.NEXT_PUBLIC_HOTJAR_ID) ?? null, 6);
+  ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '')
+  hotjar.initialize(Number(process.env.NEXT_PUBLIC_HOTJAR_ID) ?? null, 6)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
@@ -56,10 +56,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      console.log(
-        `App is changing to ${url}`
-      )
-      hotjar.stateChange(url);
+      console.log(`App is changing to ${url}`)
+      hotjar.stateChange(url)
     }
 
     router.events.on('routeChangeStart', handleRouteChange)
