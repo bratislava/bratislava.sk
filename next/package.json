@@ -2,6 +2,7 @@
   "name": "bratislava-next",
   "version": "1.1.12",
   "private": true,
+  "license": "EUPL-1.2",
   "scripts": {
     "dev": "next dev",
     "develop": "next dev",
