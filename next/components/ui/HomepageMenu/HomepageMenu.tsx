@@ -44,10 +44,10 @@ interface IProps {
 const HomepageMenu = ({ items }: IProps) => {
   const { Link: UILink } = useUIContext()
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = useState(-1)
-  const [activeId, setActive] = useState<string | null>(null)
+  const [activeId, setActiveId] = useState<string | null>(null)
 
   const ref = useRef()
-  useOutsideClick(ref, () => setActive(null))
+  useOutsideClick(ref, () => setActiveId(null))
 
   return (
     <>
@@ -59,18 +59,17 @@ const HomepageMenu = ({ items }: IProps) => {
               type="button"
               className="relative z-10 flex cursor-pointer items-center gap-x-7 text-left text-default md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
               onClick={() => {
-                setActive(item.id)
+                setActiveId(item.id)
               }}
             >
               <Panel
-                className={cx('absolute w-full h-full rounded-b-none', {
+                className={cx('absolute w-full h-full rounded-b-none z-50', {
                   block: activeId === item.id,
                   hidden: activeId !== item.id,
                 })}
                 style={{
                   backgroundColor: item.color,
                   zIndex: -1,
-                  boxShadow: '0 4px 2px -2px gray',
                 }}
               />
               <MenuButton
@@ -134,7 +133,7 @@ const HomepageMenu = ({ items }: IProps) => {
                   )
                 })}
                 <div className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 cursor-pointer">
-                  <CloseFilled onClick={() => setActive(null)} style={{ color: item.colorDark }} />
+                  <CloseFilled onClick={() => setActiveId(null)} style={{ color: item.colorDark }} />
                 </div>
               </Panel>
             </div>
