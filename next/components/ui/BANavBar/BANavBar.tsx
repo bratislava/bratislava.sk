@@ -35,7 +35,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
   const [searchOpen, setSearchOpen] = useState(false)
   const [showModal, setShowModal] = React.useState(false)
   const [isConsentSubmitted, setConsent] = React.useState(true)
-  const [securityCookies] = React.useState<boolean>(false)
+  const [securityCookies] = React.useState<boolean>(true)
   const [performanceCookies, setPerformanceCookies] = React.useState<boolean>(false)
   const [advertisingCookies, setAdvertisingCookies] = React.useState<boolean>(false)
   ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '')
