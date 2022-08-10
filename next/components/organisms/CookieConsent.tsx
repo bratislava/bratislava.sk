@@ -15,8 +15,6 @@ export const CookieConsent = ({ pageColor }: IProps) => {
   const { shouldShowBanner, setConsents, consents } = useCookieConsent()
   const { t } = useTranslation(['common'])
 
-  console.log(consents)
-
   return (
     <>
       {/* all 3rd party scrips loading here */}

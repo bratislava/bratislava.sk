@@ -62,5 +62,4 @@ export const isServer = () => typeof window === 'undefined'
 
 export const isBrowser = () => !isServer()
 
-export const isProductionDeployment = () =>
-  process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
+export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
