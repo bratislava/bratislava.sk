@@ -38,6 +38,7 @@ query Homepage($locale: I18NLocaleCode!) {
               }
             }
           }
+          title
           subtitle
         }
         cards {

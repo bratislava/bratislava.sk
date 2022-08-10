@@ -184,7 +184,7 @@ const Homepage = ({
         <div className="bg-white">
           <SectionContainer>
             <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
-              <PageTitle className="flex-1 pb-4" title={pageTitle} subtitle={header?.subtitle} />
+              <PageTitle className="flex-1 pb-4" title={header?.title} subtitle={header?.subtitle} />
               <img
                 className="hidden sm:block"
                 width={721}
