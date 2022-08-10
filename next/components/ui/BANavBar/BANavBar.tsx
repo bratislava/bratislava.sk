@@ -2,24 +2,20 @@ import Hamburger from '@assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
 import CloseIcon from '@assets/images/close.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
-import HamburgerCloseWhite from '@assets/images/hamburger-close-white.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { covidUrls, eServicesData, minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
+import CookieConsent from 'components/organisms/CookieConsent'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React, { useCallback, useEffect, useState } from 'react'
-import { Cookies } from 'react-cookie-consent'
-import * as ReactGA from 'react-ga'
+import React, { useCallback, useState } from 'react'
 
-import AccordionItemSmall from '../AccordionItemSmall/AccordionItemSmall'
 import { Brand } from '../Brand/Brand'
 import Button from '../Button/Button'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
-import NarrowText from '../NarrowText/NarrowText'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -32,12 +28,6 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
   const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const [showModal, setShowModal] = React.useState(false)
-  const [isConsentSubmitted, setConsent] = React.useState(true)
-  const [securityCookies] = React.useState<boolean>(false)
-  const [performanceCookies, setPerformanceCookies] = React.useState<boolean>(false)
-  const [advertisingCookies, setAdvertisingCookies] = React.useState<boolean>(false)
-  ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? '')
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
@@ -46,76 +36,6 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
     setSearchOpen(!searchOpen)
   }
   const { t } = useTranslation(['common'])
-
-  const setConsentActually = (value) => {
-    localStorage.setItem('isConsentSubmitted', value)
-    setConsent(value)
-  }
-
-  const saveSettings = () => {
-    Cookies.set(
-      'bratislava-homepage-gdpr',
-      {
-        security_cookies: true,
-        performance_cookies: performanceCookies,
-        advertising_and_targeting_cookies: advertisingCookies,
-      },
-      { path: '/', expires: 365 }
-    )
-    ReactGA.set({
-      security_cookies: true,
-      performance_cookies: performanceCookies,
-      advertising_and_targeting_cookies: advertisingCookies,
-    })
-    setShowModal(false)
-    setConsentActually(true)
-  }
-  const acceptAllCookies = () => {
-    Cookies.set(
-      'bratislava-homepage-gdpr',
-      {
-        security_cookies: true,
-        performance_cookies: true,
-        advertising_and_targeting_cookies: true,
-      },
-      { path: '/', expires: 365 }
-    )
-    ReactGA.set({
-      security_cookies: true,
-      performance_cookies: true,
-      advertising_and_targeting_cookies: true,
-    })
-    setShowModal(false)
-    setConsentActually(true)
-  }
-
-  const declineCookies = () => {
-    setPerformanceCookies(false)
-    setAdvertisingCookies(false)
-    Cookies.set(
-      'bratislava-homepage-gdpr',
-      {
-        security_cookies: true,
-        performance_cookies: false,
-        advertising_and_targeting_cookies: false,
-      },
-      { path: '/', expires: 365 }
-    )
-    ReactGA.set({
-      security_cookies: true,
-      performance_cookies: false,
-      advertising_and_targeting_cookies: false,
-    })
-    setTimeout(() => {
-      setShowModal(false)
-      setConsentActually(true)
-    }, 300)
-  }
-
-  useEffect(() => {
-    const isConsentSubmittedLocal = localStorage.getItem('isConsentSubmitted')
-    setConsent(JSON.parse(isConsentSubmittedLocal))
-  }, [])
 
   const [input, setInput] = useState('')
   const handleChange = (event) => {
@@ -259,40 +179,9 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         )}
       </div>
 
-      {!isConsentSubmitted ? (
-        <div className="fixed inset-x-0 bottom-6 z-50 px-6">
-          <div className="mx-auto max-w-[1110px] rounded-lg bg-white py-8 px-6 shadow md:px-10">
-            <h6 className="mb-4 text-default font-semibold"> {t('cookie_consent_modal_content_title')} </h6>
-            <p className="mb-8 text-xxs sm:text-sm">
-              {' '}
-              {t('cookie_consent_body')}{' '}
-              <span className="cursor-pointer font-semibold underline" onClick={() => setShowModal(true)}>
-                {' '}
-                {t('cookie_consent_setting')}{' '}
-              </span>
-            </p>
-            <div className="block sm:flex">
-              <Button
-                className="mb-3 h-12 px-6 text-sm font-medium sm:my-0 sm:mr-6"
-                variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
-                onClick={acceptAllCookies}
-              >
-                {t('acceptAll')}
-              </Button>
-              <Button
-                className="mt-0 h-12 px-6 text-sm font-medium"
-                variant="secondary-dark-text"
-                onClick={declineCookies}
-              >
-                {t('denyAll')}
-              </Button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        ''
-      )}
-      {showModal ? (
+      <CookieConsent />
+      {/* Cookie advanced options, kept in case they need resurrecting */}
+      {/* {showModal ? (
         <div className="fixed inset-0 z-50 bg-transperentBG px-6">
           <div className="relative top-1/2 mx-auto max-w-[1110px] -translate-y-1/2 rounded-lg bg-white shadow">
             <div
@@ -406,7 +295,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         </div>
       ) : (
         ''
-      )}
+      )} */}
     </>
   )
 }

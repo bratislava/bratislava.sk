@@ -57,3 +57,10 @@ export type PageProps<T extends GetServerSideProps> = Extract<
 export const shouldSkipStaticPaths = () => {
   return serverRuntimeConfig?.phase === 'phase-development-server'
 }
+
+export const isServer = () => typeof window === 'undefined'
+
+export const isBrowser = () => !isServer()
+
+export const isProductionDeployment = () =>
+  process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_IS_STAGING !== 'true'

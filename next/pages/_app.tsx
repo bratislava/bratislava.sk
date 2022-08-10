@@ -22,22 +22,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e46054" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        {/* look for CookieConsent component for 3rd party scripts you'd expect to find here */}
       </Head>
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-      />
-
-      <Script strategy="lazyOnload">
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-        page_path: window.location.pathname,
-        });
-    `}
-      </Script>
       <UIContextProvider
         components={{
           Link: ({ href, className, children, locale, target, rel }) => {
