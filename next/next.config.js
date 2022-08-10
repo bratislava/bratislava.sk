@@ -143,11 +143,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/bratislava-pre-ukrajinu',
-        destination: '/kultura-a-komunity/komunity/bratislava-pre-ukrajinu',
-        permanent: true,
-      },
-      {
         source: '/nadacia-mesta-bratislavy',
         destination: '/kultura-a-komunity/kulturne-sluzby/nadacia-mesta-bratislavy',
         permanent: true,
@@ -488,11 +483,6 @@ const nextConfig = {
       {
         source: '/strategicke-dokumenty',
         destination: '/mesto-bratislava/sprava-mesta/legislativa-mesta/strategicke-dokumenty',
-        permanent: true,
-      },
-      {
-        source: '/zimna-udrzba',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/zimna-udrzba',
         permanent: true,
       },
       {
@@ -2185,11 +2175,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/bratislava-pre-ukrajinu',
-        destination: '/kultura-a-komunity/komunity/bratislava-pre-ukrajinu',
-        permanent: true,
-      },
-      {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka',
         destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
         permanent: true,
@@ -2236,11 +2221,6 @@ const nextConfig = {
       {
         source: '/sucasny-stav-horskeho-parku-a-dalsie-vizie',
         destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
-        permanent: true,
-      },
-      {
-        source: '/bratislava-pre-ukrajinu',
-        destination: '/kultura-a-komunity/komunity/bratislava-pre-ukrajinu',
         permanent: true,
       },
       {
@@ -2421,11 +2401,6 @@ const nextConfig = {
       {
         source: '/rozkopavka-alebo-uzavierka/docasne-dopravne-obmedzenia-hranicna-gagarinova',
         destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
-        permanent: true,
-      },
-      {
-        source: '/bratislava-pre-ukrajinu',
-        destination: '/kultura-a-komunity/komunity/bratislava-pre-ukrajinu',
         permanent: true,
       },
       {

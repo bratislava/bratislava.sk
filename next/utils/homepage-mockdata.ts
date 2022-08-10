@@ -296,9 +296,9 @@ export const buildMockData = ({
         linkTitle: 'Read more',
       },
       {
-        title: 'Contact details\nand office hours',
+        title: 'Visiting\nand office hours',
         icon: 'icon8',
-        href: '/en/contact-details-and-office-hours',
+        href: '/en/visiting-and-office-hours',
         linkTitle: 'Read more',
       },
       {
