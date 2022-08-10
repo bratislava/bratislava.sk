@@ -11601,11 +11601,6 @@ react-element-to-jsx-string@^14.3.4:
     is-plain-object "5.0.0"
     react-is "17.0.2"
 
-react-hotjar@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-hotjar/-/react-hotjar-5.0.0.tgz#72beaa2e0067b407c4183dc3ace5020f68959cab"
-  integrity sha512-nEKDm+O5a77C9DlheuA9tz5rwhRjeIFPLhdvynGFxEYTT1qrYC3NU12Z9/tgvN2l9Tzyn7erUQ0C8fZHZBceTw==
-
 react-i18next@^11.18.0:
   version "11.18.1"
   resolved "https://registry.npmjs.org/react-i18next/-/react-i18next-11.18.1.tgz"
