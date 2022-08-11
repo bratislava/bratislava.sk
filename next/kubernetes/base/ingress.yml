@@ -13,9 +13,20 @@ spec:
   tls:
     - hosts:
         - ${HOSTNAME}
+        - www.${HOSTNAME}
       secretName: ${BUILD_REPOSITORY_NAME}-tls
   rules:
     - host: ${HOSTNAME}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.${HOSTNAME}
       http:
         paths:
           - path: /
