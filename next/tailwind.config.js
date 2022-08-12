@@ -17,7 +17,7 @@ const scrollBarHide = plugin(function ({ addUtilities }) {
 
 module.exports = {
   content: [join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'), join(__dirname, 'components/**/*.{js,jsx,ts,tsx}')],
-  darkMode: 'media', // or 'class',
+  darkMode: 'media', // or 'class'
   theme: {
     fontWeight: {
       light: '300',
