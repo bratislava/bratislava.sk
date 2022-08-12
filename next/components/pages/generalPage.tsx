@@ -61,12 +61,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
   )
   return (
-    <BasePageLayout
-      footer={footer}
-      menuItems={menuItems}
-      activeMenuItem={page?.pageCategory?.data?.id}
-      pageColor={page?.pageColor}
-    >
+    <BasePageLayout footer={footer} menuItems={menuItems} pageColor={page?.pageColor}>
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{

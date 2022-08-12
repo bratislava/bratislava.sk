@@ -3,22 +3,12 @@ import cx from 'classnames'
 
 import { isItExternal } from '../HomepageMenu/external-link'
 
-enum Enum_Pagecategory_Color {
-  Blue = 'blue',
-  Brown = 'brown',
-  Green = 'green',
-  Purple = 'purple',
-  Red = 'red',
-  Yellow = 'yellow',
-}
-
 export interface SubpageListProps {
   className?: string
   subpageList?: { title?: string; url?: string; anchor?: string }[]
-  pageColor?: Enum_Pagecategory_Color
 }
 
-export const SubpageList = ({ className, subpageList, pageColor }: SubpageListProps) => {
+export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
   const { Link: UILink } = useUIContext()
   return (
     <div className={cx('grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-32 mb-16 mt-10', className)}>

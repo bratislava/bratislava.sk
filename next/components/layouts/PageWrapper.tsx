@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable lodash/collection-ordering */
 import cx from 'classnames'
 import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
@@ -19,7 +21,6 @@ const PageWrapperContext = createContext<IPageWrapperContext>({
 })
 
 interface IProps {
-  className?: string
   children?: React.ReactNode
   locale?: string
   localizations?: PageLocalization[]
@@ -27,7 +28,7 @@ interface IProps {
 }
 
 const PageWrapper = ({ children, locale, localizations, slug, className }: IProps) => {
-  const [_, { language }] = useTranslation()
+  const [, { language }] = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
     if (locale) {

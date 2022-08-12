@@ -2,8 +2,8 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
 import { ArrowRight, ChevronRight } from '../../../assets/images'
-import Button from '../Button/Button'
 import { isItExternal } from '../HomepageMenu/external-link'
+import Button from '../Button/Button'
 
 export interface LinksProps {
   className?: string

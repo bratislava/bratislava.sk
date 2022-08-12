@@ -46,7 +46,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
   const { t } = useTranslation()
 
   return (
-    <BasePageLayout footer={footer} menuItems={menuItems} activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}>
+    <BasePageLayout footer={footer} menuItems={menuItems}>
       {pageCategory?.color && (
         <style
           dangerouslySetInnerHTML={{

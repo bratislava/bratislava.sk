@@ -5,7 +5,7 @@ import { MenuPanelSubItem } from '@bratislava/ui-bratislava/HomepageMenu/Panel/M
 import { useUIContext } from '@utils/ui-context'
 import React, { FC } from 'react'
 
-import { Icon } from '../../../atoms/icon/Icon'
+import { getIcon } from '../IconButtonService'
 
 interface Props {
   subItems: MenuSubItem[]
@@ -17,6 +17,7 @@ export const MenuPanelItems: FC<Props> = ({ subItems }) => {
   return (
     <>
       {subItems?.map((subItem, j) => {
+        const IconComponent = getIcon(subItem.icon)
         return (
           <div key={j} className="mb-10">
             <button type="button" className="flex" onClick={() => {}}>
@@ -25,9 +26,9 @@ export const MenuPanelItems: FC<Props> = ({ subItems }) => {
                 className="flex items-center text-left text-[20px] hover:underline"
               >
                 <div className="flex shrink-0 grow-0 items-center justify-center">
-                  <Icon iconName={subItem.icon} />
+                  <IconComponent className="h-10 w-10" />
                 </div>
-                <div className="font-semibold">{subItem.title}</div>
+                <div className="ml-4 flex-1 font-semibold">{subItem.title}</div>
               </UILink>
             </button>
             <ul className="text mt-8 space-y-3 text-left">

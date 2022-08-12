@@ -22,7 +22,6 @@ interface HomepagePageLayoutProps {
   posts?: TPostsTab[]
   rozkoPosts?: unknown
   latestBlogposts?: LatestBlogsFragment
-  latestOfficialBoard?: ParsedOfficialBoardDocument[]
   inBaProps: InBaProps
   data: DataProps
 }
@@ -40,7 +39,6 @@ const HomepagePage: FC<HomepagePageLayoutProps> = ({
   posts,
   rozkoPosts,
   latestBlogposts,
-  latestOfficialBoard,
 }) => {
   const isEN = true // TODO: use localization // TODO get bookmarks determined by localization
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
@@ -66,7 +64,6 @@ const HomepagePage: FC<HomepagePageLayoutProps> = ({
             posts={posts}
             rozkoPosts={rozkoPosts}
             latestBlogposts={latestBlogposts}
-            latestOfficialBoard={latestOfficialBoard}
           />
           {footer && <Footer {...parseFooter(footer)} />}
         </>

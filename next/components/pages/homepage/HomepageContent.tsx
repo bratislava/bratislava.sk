@@ -25,7 +25,6 @@ interface Props {
   posts?: TPostsTab[]
   rozkoPosts?: unknown
   latestBlogposts?: LatestBlogsFragment
-  latestOfficialBoard?: ParsedOfficialBoardDocument[]
   inBaProps: InBaProps
   homepage?: Homepage
   data: DataProps
@@ -42,7 +41,7 @@ export const HomepageContent: FC<Props> = ({
 }) => {
   const { t } = useTranslation('common')
   return (
-    <div className="md:mt-35 lg:mt-70">
+    <div className="mt-73">
       <SectionContainer>
         <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
         <Posts
@@ -65,7 +64,7 @@ export const HomepageContent: FC<Props> = ({
         />
       </SectionContainer>
       <Waves
-        className="mt-20 -mb-[1px] lg:mb-0"
+        className="mt-20 mb-[-1px] lg:mb-0"
         backgroundColor="var(--background-color)"
         waveColor="var(--secondary-color)"
         wavePosition="top"
@@ -77,7 +76,7 @@ export const HomepageContent: FC<Props> = ({
         backgroundColor="var(--background-color)"
         wavePosition="bottom"
         isRich
-        className="-mt-[1px] lg:mt-0"
+        className="mt-[-1px] lg:mt-0"
       />
 
       <SectionContainer>
