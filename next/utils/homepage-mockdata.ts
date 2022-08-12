@@ -124,7 +124,7 @@ export const buildMockData = ({
         linkTitle: 'Zistiť viac',
       },
       {
-        title: 'Kampane\na projekty',
+        title: 'Projekty',
         icon: 'icon5',
         href: '/mesto-bratislava/projekty',
         linkTitle: 'Zistiť viac',
