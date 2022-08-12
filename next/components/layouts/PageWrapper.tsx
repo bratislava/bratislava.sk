@@ -1,6 +1,4 @@
-// @ts-strict-ignore
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable lodash/collection-ordering */
+import cx from 'classnames'
 import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
@@ -21,14 +19,15 @@ const PageWrapperContext = createContext<IPageWrapperContext>({
 })
 
 interface IProps {
+  className?: string
   children?: React.ReactNode
   locale?: string
   localizations?: PageLocalization[]
   slug?: string
 }
 
-const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
-  const [, { language }] = useTranslation()
+const PageWrapper = ({ children, locale, localizations, slug, className }: IProps) => {
+  const [_, { language }] = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
     if (locale) {
@@ -47,7 +46,7 @@ const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
 
   return (
     <PageWrapperContext.Provider value={{ locale: locale ?? language, localizations: pageLocalizations }}>
-      {children}
+      <div className={cx('bg-background font-inter', className)}>{children}</div>
     </PageWrapperContext.Provider>
   )
 }

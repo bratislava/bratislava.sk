@@ -5,10 +5,10 @@ import { useWindowSize } from 'rooks'
 import { Waves, WavesProps } from '../Waves/Waves'
 
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  color: string
-  transparentColor: string
+  color?: string
+  transparentColor?: string
   transparentColorMobile?: string
-  imageSrc: string
+  imageSrc?: string
   waves?: Omit<WavesProps, 'wavePosition'>
   smallScreenBreakPoint?: number
 }

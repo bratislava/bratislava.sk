@@ -1,36 +1,21 @@
-// @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable unicorn/consistent-destructuring */
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import {
-  BlogCards,
-  InBaCard,
-  PageHeader,
-  PageTitle,
-  Posts,
-  PrimatorCouncil,
-  SectionContainer,
-  TopNine,
-  Waves,
-} from '@bratislava/ui-bratislava'
-import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
-import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
-// import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
-import { client } from '@utils/gql'
-import { buildMockData } from '@utils/homepage-mockdata'
-import { parseFooter, parseMainMenu } from '@utils/page'
-import { AsyncServerProps } from '@utils/types'
-// import { GetServerSidePropsContext } from 'next'
-// import Image from 'next/image'
-import Head from 'next/head'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import * as React from 'react'
+import React from 'react'
+import {
+  getParsedUDEDocumentsList,
+  mockedParsedDocuments,
+  ParsedOfficialBoardDocument,
+  shouldMockGinis,
+} from 'backend/services/ginis'
 
-import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
+import HomepagePage from '../components/layouts/HomepagePage'
 import PageWrapper from '../components/layouts/PageWrapper'
-import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
-import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
+import { client } from '../utils/gql'
+import { buildMockData } from '../utils/homepage-mockdata'
+import { parseMainMenu } from '../utils/page'
+import { AsyncServerProps } from '../utils/types'
 
 export const getStaticProps = async (ctx) => {
   const locale: string = ctx.locale ?? 'sk'
@@ -162,103 +147,22 @@ const Homepage = ({
 
   const menuItems = parseMainMenu(mainMenu)
 
-  const { t } = useTranslation('common')
-  // TODO: Change Image to img when Image handling changed
-
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
-      <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
-        <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
-          {/* meta description */}
-          <Head>
-            <title>{homepage?.data?.attributes?.title}</title>
-            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
-          </Head>
-        </PageHeader>
-
-        <div className="bg-white">
-          <SectionContainer>
-            <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
-              <PageTitle className="flex-1 pb-4" title={header?.title} subtitle={header?.subtitle} />
-              <img
-                className="hidden sm:block"
-                width={721}
-                height={364}
-                src={header?.picture?.data?.attributes?.url}
-                alt="Bratislava Hero"
-              />
-              <img
-                className="sm:hidden"
-                width={721}
-                height={364}
-                src={header?.mobilePicture?.data?.attributes?.url}
-                alt="Bratislava Hero"
-              />
-            </div>
-            <HomepageMenu items={menuItems} />
-          </SectionContainer>
-          <Waves
-            className="mt-6 md:mt-18"
-            waveColor="white"
-            wavePosition="bottom"
-            isRich
-            backgroundColor="var(--background-color)"
-          />
-        </div>
-
-        <SectionContainer>
-          <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
-          <Posts
-            readMoreText={t('readMore')}
-            readMoreNewsText={t('seeAllNews')}
-            className="lg:mt-10"
-            leftHighLight={homepage?.data?.attributes?.left_highlight}
-            rightHighLight={homepage?.data?.attributes?.right_highlight}
-            posts={posts}
-            latestPost={latestBlogposts}
-            rozkoPosts={rozkoPosts}
-          />
-          <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
-
-          <GooutEvents
-            linkTitle={t('allEvents')}
-            linkUrl="https://www.bkis.sk/podujatia/"
-            title={t('upComingEvents')}
-            className="mt-14 lg:mt-24"
-          />
-        </SectionContainer>
-
-        <Waves
-          className="mt-20 mb-[-1px] lg:mb-0"
-          backgroundColor="var(--background-color)"
-          waveColor="var(--secondary-color)"
-          wavePosition="top"
-          isRich
-        />
-
-        <SectionContainer className="relative bg-secondary py-16">
-          <h2 className="pb-10 text-center text-h1 xs:mt-8 lg:pb-20">
-            {data.topNineTitle}
-          </h2>
-          <TopNine items={data.topNine as TopNineItemProps[]} />
-        </SectionContainer>
-        <Waves
-          waveColor="var(--secondary-color)"
-          backgroundColor="var(--background-color)"
-          wavePosition="bottom"
-          isRich
-          className="mt-[-1px] lg:mt-0"
-        />
-
-        <SectionContainer>
-          <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
-          <div className="hidden md:block md:h-[78px]" />
-
-          <FacebookPosts title="Bratislava na Facebooku" />
-          {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
-          {/* <NewsLetterSection className="mt-24" /> */}
-        </SectionContainer>
-      </HomepagePageLayout>
+      <HomepagePage
+        menuItems={menuItems}
+        bookmarks={cards}
+        homepagePosts={homepagePosts}
+        homepage={homepage}
+        data={data}
+        inBaProps={inba}
+        posts={posts}
+        rozkoPosts={rozkoPosts}
+        pageTitle={pageTitle}
+        latestBlogposts={latestBlogposts}
+        header={header}
+        footer={footer}
+      />
     </PageWrapper>
   )
 }

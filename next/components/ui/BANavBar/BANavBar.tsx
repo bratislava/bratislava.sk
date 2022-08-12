@@ -35,21 +35,16 @@ import { Link } from '../Link/Link'
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
-  handleSearch?: (searchOpen: boolean) => void
+  onSearchClick?(isSearchOpen: boolean): void
   pageColor?: string
+  isSearchOpen?: boolean
 }
 
-export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
+export const BANavBar = ({ className, menuItems, pageColor, isSearchOpen, onSearchClick, ...languageSelectProps }: IProps) => {
   const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
-  const handleMobileSearchClick = () => {
-    handleSearch && handleSearch(!searchOpen)
-    setSearchOpen(!searchOpen)
-  }
   const { t } = useTranslation(['common'])
 
   const [input, setInput] = useState('')
@@ -87,14 +82,18 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           <nav
             className={cx(
               'flex items-end text-gray-dark font-semibold',
-              { 'gap-x-8': !searchOpen },
-              { 'gap-x-4': searchOpen }
+              { 'gap-x-8': !isSearchOpen },
+              { 'gap-x-4': isSearchOpen }
             )}
           >
-            <div className="hover:cursor-pointer" onClick={() => setSearchOpen(!searchOpen)}>
-              {searchOpen ? <CloseIcon className="-ml-px mr-px" /> : <SearchIcon />}
+            <div className="hover:cursor-pointer">
+              {isSearchOpen ? (
+                <CloseIcon className="-ml-px mr-px" onClick={() => onSearchClick(false)} />
+              ) : (
+                <SearchIcon onClick={() => onSearchClick(true)} />
+              )}
             </div>
-            {searchOpen ? (
+            {isSearchOpen && (
               <div className="flex">
                 <input
                   id="name"
@@ -119,7 +118,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                   </Button>
                 </Link>
               </div>
-            ) : (
+            )}
+            {!isSearchOpen && (
               <div className="flex gap-x-8 font-semibold text-gray-dark">
                 <Link href={covidUrls[languageKey]} variant="plain" className="whitespace-nowrap">
                   {t('covid')}
@@ -168,14 +168,15 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between py-5 px-7.5 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
         <Brand url="/" />
-        <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
-          <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
-            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
+        <div className={cx('flex items-center gap-x-5', { 'gap-x-2': isSearchOpen })}>
+          <div className="hover:cursor-pointer">
+            {isSearchOpen && <CloseIcon className="-ml-3 mr-px" onClick={() => onSearchClick(false)} />}
+            {!isSearchOpen && <SearchIcon className="text-gray-universal-500" onClick={() => onSearchClick(true)} />}
           </div>
           <div className="text-h4 relative flex cursor-pointer items-center bg-transparent text-gray-light">
             <LanguageSelect
@@ -185,11 +186,11 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           </div>
         </div>
 
-        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-6 cursor-pointer">
-          {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
+        <button onClick={() => setBurgerOpen(!burgerOpen)} className="cursor-pointer">
+          {burgerOpen && !isSearchOpen ? <HamburgerClose /> : <Hamburger />}
         </button>
 
-        {burgerOpen && !searchOpen && (
+        {burgerOpen && !isSearchOpen && (
           <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} closeMenu={() => setBurgerOpen(false)} />
         )}
       </div>

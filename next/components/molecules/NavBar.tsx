@@ -3,16 +3,20 @@ import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
+import { ReactNode } from 'react'
 
 import { usePageWrapperContext } from '../layouts/PageWrapper'
 
-interface IProps {
-  menuItems: MenuMainItem[]
-  handleSearch?: (searchOpen: boolean) => void
+interface Props {
+  menuItems?: MenuMainItem[]
+  onSearchClick?(isSarchOpen: boolean): void
+  isSearchOpen?: boolean
   pageColor?: string
+  children?: ReactNode
+  isHamburgerMenuVisible?: boolean
 }
 
-const NavBar = ({ menuItems, handleSearch, pageColor }: IProps) => {
+const NavBar = ({ menuItems = [], onSearchClick, pageColor, children, isSearchOpen = false }: Props) => {
   const router = useRouter()
   const { locale, localizations = [] } = usePageWrapperContext()
   const [t] = useTranslation('common')
@@ -28,17 +32,21 @@ const NavBar = ({ menuItems, handleSearch, pageColor }: IProps) => {
   }
 
   return (
-    <BANavBar
-      menuItems={menuItems}
-      onLanguageChange={handleLanguageChange}
-      currentLanguage={locale}
-      handleSearch={handleSearch}
-      languages={[
-        { key: 'sk', title: t('language_short.sk') },
-        { key: 'en', title: t('language_short.en') },
-      ]}
-      pageColor={pageColor}
-    />
+    <div className="z-[9999] h-14 w-full bg-white">
+      <BANavBar
+        menuItems={menuItems}
+        onLanguageChange={handleLanguageChange}
+        currentLanguage={locale}
+        onSearchClick={onSearchClick}
+        isSearchOpen={isSearchOpen}
+        languages={[
+          { key: 'sk', title: t('language_short.sk') },
+          { key: 'en', title: t('language_short.en') },
+        ]}
+        pageColor={pageColor}
+      />
+      {children}
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import { AdvancedSearch, BAStickyMenu, FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import { AdvancedSearch, FooterProps, MenuMainItem, StickyNavigationMenu } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { useState } from 'react'
 
@@ -23,15 +23,13 @@ const BasePageLayout = ({
   const [searchOpen, setSearchOpen] = useState(false)
   return (
     <div className={cx('bg-background font-inter', className)}>
-      <div className="h-16 bg-white lg:h-14">
-        <SectionContainer>
-          <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} pageColor={pageColor} />
-        </SectionContainer>
+      <div className="h-16 lg:h-14 bg-white">
+        <NavBar menuItems={menuItems} onSearchClick={setSearchOpen} pageColor={pageColor} isSearchOpen={searchOpen} />
       </div>
 
       <div id="sticky-menu" className="lg:h-[106px]">
         <div className="fixed z-40 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
-          <BAStickyMenu menuItems={menuItems ?? []} active={activeMenuItem} />
+          <StickyNavigationMenu menuItems={menuItems ?? []} />
         </div>
       </div>
 

@@ -1,15 +1,24 @@
-// @ts-strict-ignore
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  BlogPost,
+  BlogPostFragment,
+  Homepage,
+  HomepageQuery,
+  LatestBlogsFragment,
+  LatestBlogsWithTagsQuery,
+  NewsCardBlogFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
+import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
@@ -40,9 +49,10 @@ export const Posts = ({
   rozkoPosts,
 }: PostsProps) => {
   const [activeTab, setActiveTab] = React.useState(0)
-  // TODO refactor this
-  const [activePosts] = React.useState(posts[activeTab])
-  const [activeNewsCards] = React.useState<NewsCardProps[]>(activePosts?.newsCards ?? [])
+  const [activePosts, setActivePost] = React.useState(posts[activeTab])
+  const [activeNewsCards, setActiveNewsCards] = React.useState<NewsCardProps[]>(
+    activePosts?.newsCards ? activePosts?.newsCards : []
+  )
 
   // TODO handle loading and errors
   const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>('/api/ginis/newest', () =>
@@ -75,7 +85,7 @@ export const Posts = ({
         </div>
       </HorizontalScrollWrapper>
 
-      {activeTab === 0 && (
+      {activeTab == 0 && (
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">

@@ -77,5 +77,3 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
     </div>
   )
 }
-
-export default HamburgerMenu

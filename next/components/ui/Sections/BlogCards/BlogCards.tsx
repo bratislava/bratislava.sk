@@ -4,6 +4,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
+import { BlogPost } from '../../../pages/homepage/types'
 import { Carousel } from '../../Carousel/Carousel'
 import { HorizontalCard } from '../../HorizontalCard/HorizontalCard'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
@@ -11,13 +12,7 @@ import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/Horizonta
 export interface BlogCardsProps {
   className?: string
   shiftIndex?: number
-  posts:
-    | {
-        imageSrc?: string | null | undefined
-        title?: string | null | undefined
-        url?: string | null | undefined
-      }[]
-    | undefined
+  posts?: BlogPost[]
 }
 
 export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps) => {

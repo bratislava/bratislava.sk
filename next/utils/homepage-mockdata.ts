@@ -1,4 +1,35 @@
 import { MenuMainItem } from '@bratislava/ui-bratislava'
+import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
+
+export interface DataProps {
+  pageTitle: string
+  pageSubtitle: string
+  blogCardPosts: { imageSrc?: string; title: string; url: string }[]
+  posts: { category: string }[]
+  council: {
+    cards: { title: string; imageSrc: string; href: string }[]
+  }
+  topNineTitle: string
+  topNine: TopNineItemProps[]
+  inba: {
+    title: string
+    content: string
+    images: string[]
+    readMoreTitle: string
+  }
+  homepageMenu: MenuMainItem[]
+  bookmarks: {
+    bookmarkTitle: string
+    variant: string
+    title: string
+    icon: string
+    content: string
+    link: {
+      title: string
+      href: string
+    }
+  }[]
+}
 
 export const buildMockData = ({
   postImage1,
@@ -22,7 +53,7 @@ export const buildMockData = ({
   inBaImage1: string
   inBaImage2: string
   locale?: string
-}) => {
+}): DataProps => {
   const sk = {
     pageTitle: 'Bratislava',
     pageSubtitle: 'odolné a starostlivé mesto',
@@ -153,7 +184,7 @@ export const buildMockData = ({
         href: 'https://ats.nalgoo.com/sk/gate/bratislava/positions',
         linkTitle: 'Zistiť viac',
       },
-    ],
+    ] as TopNineItemProps[],
     inba: {
       title: 'in.ba',
       content: 'V bratislavskom informačnom magazíne in.ba vždy nájdete to, čo o dianí v meste potrebuje vedieť.',
@@ -307,7 +338,7 @@ export const buildMockData = ({
         href: 'https://ats.nalgoo.com/sk/gate/bratislava/positions',
         linkTitle: 'Read more',
       },
-    ],
+    ] as TopNineItemProps[],
     inba: {
       title: 'in.ba',
       content:
