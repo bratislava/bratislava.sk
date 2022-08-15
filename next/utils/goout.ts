@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { getNumericLocalDate } from './local-date'
 
 export interface GooutEvent {

@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc && tsc-strict",
     "eslint": "eslint --color --ext .html,.js,.json,.jsx,.md,.ts,.tsx .",
     "eslint:fix": "npm run eslint -- --fix",
     "gen": "graphql-codegen",
@@ -116,7 +117,8 @@
     "postcss": "8.4.14",
     "pre-commit": "^1.2.2",
     "tailwindcss": "3.1.0",
-    "typescript": "4.7.2"
+    "typescript": "4.7.2",
+    "typescript-strict-plugin": "^2.0.1"
   },
   "engines": {
     "node": "16.x.x",

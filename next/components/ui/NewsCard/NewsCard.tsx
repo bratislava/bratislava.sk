@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { getNumericLocalDate } from '@utils/local-date'
 import cx from 'classnames'

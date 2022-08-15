@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { useEffect, useRef, useState } from 'react'
 
 export interface IframeProps {

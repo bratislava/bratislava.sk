@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
 import DocumentDevider from '@assets/images/documentDevider.svg'

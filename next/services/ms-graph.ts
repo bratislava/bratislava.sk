@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { AuthenticationResult, ConfidentialClientApplication } from '@azure/msal-node'
 import _ from 'lodash'
 
