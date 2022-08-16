@@ -1,8 +1,8 @@
 import { BookmarkProps, Bookmarks, MenuMainItem, SectionContainer, Waves } from '@bratislava/ui-bratislava'
-import { HomepageMenu } from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
+import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { STICKY_MENU_VISIBILITY } from '@bratislava/ui-bratislava/HomepageMenu/HomePageService'
 import StickyNavigationMenu from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/StickyNavigationMenu'
-import { useHomePageMenu } from '@bratislava/ui-bratislava/HomepageMenu/useHomePageMenu'
+import { useHomepageHeader } from '@bratislava/ui-bratislava/HomepageMenu/useHomepageHeader'
 import cx from 'classnames'
 import React, { FC } from 'react'
 

@@ -41,7 +41,7 @@ export const HomepageContent: FC<Props> = ({
 }) => {
   const { t } = useTranslation('common')
   return (
-    <div className="mt-73">
+    <div className="md:mt-35 lg:mt-70">
       <SectionContainer>
         <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
         <Posts
