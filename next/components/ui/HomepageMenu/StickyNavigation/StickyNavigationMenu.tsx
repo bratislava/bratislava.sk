@@ -27,7 +27,7 @@ export const StickyNavigationMenu = ({ menuItems = [], className }: IProps) => {
             onClick={handleClick}
             isPanelVisible={visiblePanelId === item.id}
           >
-            <MenuPanel item={item} className="w-[95%]" isStickyMenu />
+            <MenuPanel item={item} className="w-full" isStickyMenu />
           </MenuItem>
         </li>
       ))}
