@@ -14,21 +14,10 @@ export enum PANEL_STATE {
 }
 
 export function isObserverIntersectingBottom(observerBottomBorder: number): boolean {
-  return observerBottomBorder < window.innerHeight
+  return observerBottomBorder !== 0
 }
 
-function isSmallScreen({ width, height }: { width: number; height: number }, isIntersecting: boolean): boolean {
-  return width === 0 && height === 0 && !isIntersecting
-}
-
-export function getStickyMenuState({
-  boundingClientRect,
-  isIntersecting,
-}: IntersectionObserverEntry): STICKY_MENU_VISIBILITY {
-  if (isSmallScreen(boundingClientRect, isIntersecting)) {
-    return STICKY_MENU_VISIBILITY.INVISIBLE
-  }
-
+export function getStickyMenuState({ isIntersecting }: IntersectionObserverEntry): STICKY_MENU_VISIBILITY {
   if (!isIntersecting) {
     return STICKY_MENU_VISIBILITY.VISIBLE
   }

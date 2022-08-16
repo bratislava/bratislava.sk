@@ -13,7 +13,7 @@ export const MenuButton: FC<Props> = ({ isActive = false, iconItems = [], childr
   const [firstBtn, secondBtn, __rest] = iconItems
 
   return (
-    <>
+    <div className="flex flex-row items-center justify-between gap-x-2 lg:flex-col">
       {!isActive && (
         <div key={firstBtn.iconName}>
           <Icon iconName={firstBtn.iconName} />
@@ -29,6 +29,6 @@ export const MenuButton: FC<Props> = ({ isActive = false, iconItems = [], childr
           {children}
         </p>
       </div>
-    </>
+    </div>
   )
 }

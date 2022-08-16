@@ -1,48 +1,44 @@
-import { MenuIcon } from '../../atoms/icon/IconService'
 import { MenuItem } from '@bratislava/ui-bratislava/HomepageMenu/MenuItem'
 import { MenuPanel } from '@bratislava/ui-bratislava/HomepageMenu/Panel/MenuPanel'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import React from 'react'
 
-interface MenuSubSubItem {
-  title: string
-  url: string
-}
-
-export interface MenuSubItem {
-  icon?: MenuIcon
-  title: string
-  moreLinkTitle?: string
-  url: string
-  subItems: MenuSubSubItem[]
-}
-
-export interface MenuMainItem {
-  id: string
-  icon: MenuIcon
-  coloredIcon: MenuIcon
-  title: string
-  color: string
-  colorDark?: string
-  subItems?: MenuSubItem[]
-}
+import { MenuButton } from '../../atoms/button/MenuButton'
 
 interface IProps {
   items?: MenuMainItem[]
 }
 
-// TODO: Named Group for Link Dalsie (change icon)
-const HomepageMenu = ({ items }: IProps) => (
-  <div className="hidden md:mb-10 md:block">
-    <menu className="flex w-full flex-col justify-items-center gap-y-8 md:grid md:grid-cols-3 md:gap-y-8 lg:flex lg:flex-row lg:justify-evenly">
-      {items?.map((item, index) => (
-        <li key={index} className="group cursor-pointer">
-          <MenuItem item={item} showColoredButton>
-            <MenuPanel item={item} />
-          </MenuItem>
-        </li>
-      ))}
-    </menu>
-  </div>
-)
+const HomepageMenu = ({ items }: IProps) => {
+  const { handleMouseLeave, handleMouseEnter, handleClick, visiblePanelId } = useHomepageMenu()
+  return (
+    <nav className="ml-10 hidden md:mx-auto md:block md:w-[80%]" aria-labelledby="menu">
+      <menu className="flex flex-col justify-items-center gap-y-10 md:grid md:grid-cols-3 md:gap-x-1 lg:flex lg:flex-row lg:justify-center lg:gap-y-0">
+        {items?.map((item) => (
+          <li key={item.id} className="w-[90%]">
+            <MenuItem
+              className="transition"
+              buttons={
+                <MenuButton
+                  isActive={visiblePanelId === item.id}
+                  iconItems={[{ iconName: item.icon }, { iconName: item.coloredIcon, customHoverColor: item.color }]}
+                >
+                  {item.title}
+                </MenuButton>
+              }
+              item={item}
+              onMouseLeave={handleMouseLeave}
+              onMouseEnter={handleMouseEnter}
+              onClick={handleClick}
+              isPanelVisible={visiblePanelId === item.id}
+            >
+              <MenuPanel item={item} className="w-full transition-opacity delay-500 md:min-w-[75%] md:max-w-[95%]" />
+            </MenuItem>
+          </li>
+        ))}
+      </menu>
+    </nav>
+  )
+}
 
 export default HomepageMenu

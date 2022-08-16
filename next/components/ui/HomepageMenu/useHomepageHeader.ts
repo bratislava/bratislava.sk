@@ -22,7 +22,7 @@ export const useHomepageHeader = (): HookResult => {
 
   const { rootNodeRef, observableNodeRef } = useIntersectionObserver({
     onCrossingThreshold: handleIntersection,
-    threshold: 1,
+    threshold: 0.8,
   })
 
   return {

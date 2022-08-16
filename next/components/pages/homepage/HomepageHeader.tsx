@@ -31,15 +31,15 @@ export const HomepageHeader: FC<Props> = ({
   onSearchOpen,
   isSearchOpen,
 }) => {
-  const { rootNodeRef, observableNodeRef, stickyMenuState, observableNodeHeight } = useHomePageMenu()
-  const { title, metaDescription } = homepage.data.attributes
+  const { observableNodeRef, stickyMenuState } = useHomepageHeader()
+  const { title, metaDescription } = homepage?.data?.attributes ?? {}
 
   return (
     <div className="flex flex-col lg:block lg:w-screen">
-      <HomePageMetaHeader metaContent={metaDescription} headTitle={title} />
+      {metaDescription && title && <HomePageMetaHeader metaContent={metaDescription} headTitle={title} />}
       <NavBar menuItems={menuItems} onSearchClick={onSearchOpen} isSearchOpen={isSearchOpen}>
         {stickyMenuState === STICKY_MENU_VISIBILITY.VISIBLE && (
-          <StickyNavigationMenu menuItems={menuItems} className="hidden md:left-[-1px] lg:flex" />
+          <StickyNavigationMenu menuItems={menuItems} className="hidden lg:flex" />
         )}
       </NavBar>
       {isSearchOpen && <HomepageSearch />}
@@ -47,20 +47,15 @@ export const HomepageHeader: FC<Props> = ({
         <Bookmarks bookmarks={bookmarks} className="top-56" />
         <SectionContainer>
           <PageCoverImage
-            coverImageUrl={header?.picture?.data?.attributes?.url}
+            coverImageUrl={header?.picture?.data?.attributes?.url ?? ''}
             coverTitle={pageTitle}
-            coverSubTitle={header?.subtitle}
+            coverSubTitle={header?.subtitle ?? ''}
           />
         </SectionContainer>
-        <div className={cx('text-center w-full lg:absolute')} ref={rootNodeRef}>
-          <div
-            ref={observableNodeRef}
-            className={cx({ [`h-[${observableNodeHeight}px]`]: true }, 'hidden lg:block lg:absolute w-full')}
-          />
-          {stickyMenuState === STICKY_MENU_VISIBILITY.INVISIBLE && <HomepageMenu items={menuItems} />}
-        </div>
+        <div ref={observableNodeRef} className="hidden h-3 w-full lg:block" />
+        {stickyMenuState === STICKY_MENU_VISIBILITY.INVISIBLE && <HomepageMenu items={menuItems} />}
         <Waves
-          className={cx('w-screen lg:absolute lg:-bottom-36 lg:mb-36')}
+          className={cx('w-screen mt-36 lg:mt-20')}
           waveColor="white"
           wavePosition="bottom"
           isRich

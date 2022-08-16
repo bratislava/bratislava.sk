@@ -1,9 +1,11 @@
-import { MenuMainItem } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
+import { StickyMenuButton } from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/StickyMenuButton'
+import { useStickyNavigationMenu } from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/useStickyNavigationMenu'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 
-import { MenuItem } from '../MenuItem'
-import { MenuPanel } from '../Panel/MenuPanel'
+import { MenuItem } from '@bratislava/ui-bratislava/HomepageMenu/MenuItem'
+import { MenuPanel } from '@bratislava/ui-bratislava/HomepageMenu/Panel/MenuPanel'
 
 interface IProps {
   className?: string
@@ -11,12 +13,27 @@ interface IProps {
 }
 
 export const StickyNavigationMenu = ({ menuItems = [], className }: IProps) => {
+  const { handleClick, visiblePanelId, handleMouseLeave, handleMouseEnter, highlightedMenuItemId, navBarRef } =
+    useStickyNavigationMenu()
+
   return (
-    <menu className={cx('fixed z-40 flex m-auto w-full justify-evenly bg-white pb-4 drop-shadow-lg', className)}>
-      {menuItems.map((item, index) => (
-        <li key={index} className="group cursor-pointer">
-          <MenuItem item={item}>
-            <MenuPanel item={item} className="top-[105px]" />
+    <menu
+      className={cx(
+        'fixed z-40 flex w-full gap-2 bg-white pb-4 drop-shadow-lg lg:flex lg:flex-row lg:justify-center lg:gap-x-1 lg:gap-y-0',
+        className
+      )}
+    >
+      {menuItems.map((item) => (
+        <li key={item.id} className="lg:min-w-[13%] lg:shrink" ref={navBarRef}>
+          <MenuItem
+            buttons={<StickyMenuButton item={item} isVisible={highlightedMenuItemId === item.id} />}
+            item={item}
+            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnter}
+            onClick={handleClick}
+            isPanelVisible={visiblePanelId === item.id}
+          >
+            <MenuPanel item={item} className="w-full" isStickyMenu />
           </MenuItem>
         </li>
       ))}
