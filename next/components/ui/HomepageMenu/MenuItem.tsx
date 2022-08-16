@@ -1,4 +1,5 @@
 import { MenuMainItem } from '@bratislava/ui-bratislava'
+import cx from 'classnames'
 import { FC, ReactNode } from 'react'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
   onMouseLeave?(): void
   onClick(itemId: string): void
   children: ReactNode
+  className?: string
 }
 
 export const MenuItem: FC<Props> = ({
@@ -19,6 +21,7 @@ export const MenuItem: FC<Props> = ({
   onMouseEnter,
   onClick,
   buttons,
+  className,
 }) => {
   const highlightColor = isPanelVisible ? item.color : undefined
 
@@ -26,7 +29,7 @@ export const MenuItem: FC<Props> = ({
     <button
       style={{ backgroundColor: highlightColor }}
       type="button"
-      className="flex w-full flex-row items-center rounded-t-md lg:flex-col"
+      className={cx('flex w-full flex-row items-center rounded-t-md lg:flex-col', className)}
       onClick={() => onClick(item.id)}
       onMouseLeave={onMouseLeave}
       onMouseEnter={() => onMouseEnter?.(item.id)}

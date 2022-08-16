@@ -13,7 +13,7 @@ export const StickyMenuButton: FC<Props> = ({ item, isVisible }) => (
   <>
     <StickyMenuTopper
       style={{ color: item.colorDark }}
-      className={cx('absolute top-0 w-30', {
+      className={cx('absolute top-0 w-30 transition', {
         'opacity-100': isVisible,
         'opacity-0': !isVisible,
       })}
