@@ -36,11 +36,12 @@ interface IProps {
 const HomepageMenu = ({ items }: IProps) => {
   const { handleMouseLeave, handleMouseEnter, handleClick, visiblePanelId } = useHomepageMenu()
   return (
-    <div className="mx-auto hidden w-[90%] md:mb-10 md:block">
+    <nav className="mx-auto hidden w-[90%] md:mb-10 md:block" aria-labelledby="menu">
       <menu className="flex w-full flex-col justify-items-center gap-y-8 md:grid md:grid-cols-3 md:gap-y-10 md:gap-x-5 lg:flex lg:flex-row lg:justify-evenly">
         {items?.map((item) => (
           <li key={item.id} className="w-[80%] lg:w-[13%]">
             <MenuItem
+              className="transition"
               buttons={
                 <MenuButton
                   isActive={visiblePanelId === item.id}
@@ -55,12 +56,12 @@ const HomepageMenu = ({ items }: IProps) => {
               onClick={handleClick}
               isPanelVisible={visiblePanelId === item.id}
             >
-              <MenuPanel item={item} className="w-[95%]" isStickyMenu />
+              <MenuPanel item={item} className="delay-400 w-[95%] transition-opacity" isStickyMenu />
             </MenuItem>
           </li>
         ))}
       </menu>
-    </div>
+    </nav>
   )
 }
 
