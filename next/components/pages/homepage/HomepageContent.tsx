@@ -36,14 +36,13 @@ export const HomepageContent: FC<Props> = ({
   posts,
   rozkoPosts,
   latestBlogposts,
-  latestOfficialBoard,
   inBaProps,
   homepage,
   data,
 }) => {
   const { t } = useTranslation('common')
   return (
-    <div className="mt-73">
+    <div className="md:mt-35 lg:mt-70">
       <SectionContainer>
         <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
         <Posts
@@ -53,7 +52,6 @@ export const HomepageContent: FC<Props> = ({
           leftHighLight={homepage?.data?.attributes?.left_highlight}
           rightHighLight={homepage?.data?.attributes?.right_highlight}
           posts={posts}
-          documents={latestOfficialBoard}
           latestPost={latestBlogposts}
           rozkoPosts={rozkoPosts}
         />

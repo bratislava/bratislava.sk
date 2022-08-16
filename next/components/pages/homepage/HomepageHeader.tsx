@@ -1,8 +1,8 @@
 import { BookmarkProps, Bookmarks, MenuMainItem, SectionContainer, Waves } from '@bratislava/ui-bratislava'
-import { HomepageMenu } from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
+import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { STICKY_MENU_VISIBILITY } from '@bratislava/ui-bratislava/HomepageMenu/HomePageService'
 import StickyNavigationMenu from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/StickyNavigationMenu'
-import { useHomePageMenu } from '@bratislava/ui-bratislava/HomepageMenu/useHomePageMenu'
+import { useHomepageHeader } from '@bratislava/ui-bratislava/HomepageMenu/useHomepageHeader'
 import cx from 'classnames'
 import React, { FC } from 'react'
 
@@ -31,7 +31,7 @@ export const HomepageHeader: FC<Props> = ({
   onSearchOpen,
   isSearchOpen,
 }) => {
-  const { rootNodeRef, observableNodeRef, stickyMenuState, observableNodeHeight } = useHomePageMenu()
+  const { rootNodeRef, observableNodeRef, stickyMenuState, observableNodeHeight } = useHomepageHeader()
   const { title, metaDescription } = homepage.data.attributes
 
   return (
@@ -39,7 +39,7 @@ export const HomepageHeader: FC<Props> = ({
       <HomePageMetaHeader metaContent={metaDescription} headTitle={title} />
       <NavBar menuItems={menuItems} onSearchClick={onSearchOpen} isSearchOpen={isSearchOpen}>
         {stickyMenuState === STICKY_MENU_VISIBILITY.VISIBLE && (
-          <StickyNavigationMenu menuItems={menuItems} className="hidden md:left-[-1px] lg:flex" />
+          <StickyNavigationMenu menuItems={menuItems} className="hidden lg:flex" />
         )}
       </NavBar>
       {isSearchOpen && <HomepageSearch />}

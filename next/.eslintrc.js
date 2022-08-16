@@ -2,6 +2,7 @@ module.exports = {
   extends: ['auto', 'plugin:tailwindcss/recommended', 'plugin:@next/next/recommended'],
   plugins: ['only-warn'],
   rules: {
+    'unicorn/no-useless-undefined': 'off',
     'react/react-in-jsx-scope': 'off',
     /** We use this a lot with isDefined and hasAttributes */
     'unicorn/no-array-callback-reference': 'off',

@@ -1,39 +1,34 @@
-// @ts-strict-ignore
-import cx from 'classnames'
 import { FC, ReactNode } from 'react'
 
 import { Icon } from '../icon/Icon'
-import { MenuIcon } from '../icon/IconService'
-
-interface ButtonItemProps {
-  title?: string
-  icon: MenuIcon
-  customHoverColor?: string
-}
+import { ButtonItemProps } from './types'
 
 interface Props {
   isActive: boolean
   iconItems?: ButtonItemProps[]
-  title: ReactNode
+  children: ReactNode
 }
 
-export const MenuButton: FC<Props> = ({ isActive = false, iconItems, title }) => {
+export const MenuButton: FC<Props> = ({ isActive = false, iconItems = [], children }) => {
   const [firstBtn, secondBtn, __rest] = iconItems
+
   return (
     <>
-      <div className={cx('group-hover:hidden', { hidden: isActive })} key={firstBtn.icon}>
-        <Icon iconName={firstBtn.icon} />
+      {!isActive && (
+        <div key={firstBtn.iconName}>
+          <Icon iconName={firstBtn.iconName} />
+        </div>
+      )}
+      {isActive && (
+        <div key={secondBtn.iconName}>
+          <Icon iconName={secondBtn.iconName} />
+        </div>
+      )}
+      <div>
+        <p className="typography-tag-label text-p2 whitespace-pre text-left text-gray-dark lg:text-center">
+          {children}
+        </p>
       </div>
-      <div
-        className={cx({
-          block: isActive,
-          'group-hover:block hidden': !isActive,
-        })}
-        key={secondBtn.icon}
-      >
-        <Icon iconName={secondBtn.icon} />
-      </div>
-      <p className="text-p2 whitespace-pre font-medium text-gray-dark">{title}</p>
     </>
   )
 }

@@ -1,31 +1,38 @@
 import { MenuMainItem } from '@bratislava/ui-bratislava'
-import { MENU_STATE, PANEL_STATE } from '@bratislava/ui-bratislava/HomepageMenu/HomePageService'
-import { SimpleNavButton } from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/SimpleNavButton'
-import { useMenuItem } from '@bratislava/ui-bratislava/HomepageMenu/useMenuItem'
-import React, { FC, ReactNode } from 'react'
-
-import { IconButton } from './IconButton'
+import { FC, ReactNode } from 'react'
 
 interface Props {
-  showColoredButton?: boolean
+  isPanelVisible: boolean
   item: MenuMainItem
+  buttons: ReactNode
+  onMouseEnter?(itemId: string): void
+  onMouseLeave?(): void
+  onClick(itemId: string): void
   children: ReactNode
 }
 
-export const MenuItem: FC<Props> = ({ item, children, showColoredButton = false }) => {
-  const { handleMouseLeave, handleMouseEnter, panelVisibilityState, navMenuState, handleClick } = useMenuItem()
+export const MenuItem: FC<Props> = ({
+  item,
+  children,
+  isPanelVisible,
+  onMouseLeave,
+  onMouseEnter,
+  onClick,
+  buttons,
+}) => {
+  const highlightColor = isPanelVisible ? item.color : undefined
 
   return (
     <button
+      style={{ backgroundColor: highlightColor }}
       type="button"
-      className="flex w-40 flex-col items-center"
-      onClick={handleClick}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
+      className="flex w-full flex-row items-center rounded-t-md lg:flex-col"
+      onClick={() => onClick(item.id)}
+      onMouseLeave={onMouseLeave}
+      onMouseEnter={() => onMouseEnter?.(item.id)}
     >
-      {showColoredButton && <IconButton item={item} isVisible={navMenuState === MENU_STATE.ON} />}
-      {!showColoredButton && <SimpleNavButton item={item} isVisible={navMenuState === MENU_STATE.ON} />}
-      {panelVisibilityState === PANEL_STATE.VISIBLE && children}
+      {buttons}
+      {isPanelVisible && <div className="mt-[70px] lg:mt-[10px]">{children}</div>}
     </button>
   )
 }

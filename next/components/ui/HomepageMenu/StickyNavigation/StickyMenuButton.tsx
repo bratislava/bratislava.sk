@@ -9,7 +9,7 @@ interface Props {
   isVisible: boolean
 }
 
-export const SimpleNavButton: FC<Props> = ({ item, isVisible }) => (
+export const StickyMenuButton: FC<Props> = ({ item, isVisible }) => (
   <>
     <StickyMenuTopper
       style={{ color: item.colorDark }}

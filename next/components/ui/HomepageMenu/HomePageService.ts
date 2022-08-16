@@ -3,16 +3,6 @@ export enum STICKY_MENU_VISIBILITY {
   VISIBLE,
 }
 
-export enum MENU_STATE {
-  OUT,
-  ON,
-}
-
-export enum PANEL_STATE {
-  VISIBLE,
-  HIDDEN,
-}
-
 export function isObserverIntersectingBottom(observerBottomBorder: number): boolean {
   return observerBottomBorder < window.innerHeight
 }

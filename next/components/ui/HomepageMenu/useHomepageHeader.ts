@@ -10,7 +10,7 @@ interface HookResult {
   observableNodeHeight: number
 }
 
-export const useHomePageMenu = (): HookResult => {
+export const useHomepageHeader = (): HookResult => {
   const [stickyMenuState, setStickyMenuState] = useState(STICKY_MENU_VISIBILITY.INVISIBLE)
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
     const { boundingClientRect } = entries[0]
@@ -22,7 +22,7 @@ export const useHomePageMenu = (): HookResult => {
 
   const { rootNodeRef, observableNodeRef } = useIntersectionObserver({
     onCrossingThreshold: handleIntersection,
-    threshold: 0.9,
+    threshold: 1,
   })
 
   return {
