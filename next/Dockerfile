@@ -15,25 +15,25 @@ COPY . ./
 RUN yarn build
 
 
-FROM node:16 as dev
+# FROM node:16 as dev
 
-RUN mkdir -p /root/app
-ENV PORT 3000
+# RUN mkdir -p /root/app
+# ENV PORT 3000
 
-WORKDIR /root/app
+# WORKDIR /root/app
 
-COPY package*.json /root/app
-COPY yarn.lock /root/app
+# COPY package*.json /root/app
+# COPY yarn.lock /root/app
 
-RUN yarn config set network-timeout 600000 -g
-RUN yarn install
+# RUN yarn config set network-timeout 600000 -g
+# RUN yarn install
 
-COPY . ./
+# COPY . ./
 
-RUN yarn build
+# RUN yarn build
 
-EXPOSE 3000
-CMD [ "yarn", "develop" ]
+# EXPOSE 3000
+# CMD [ "yarn", "develop" ]
 
 FROM node:16-alpine as prod
 
