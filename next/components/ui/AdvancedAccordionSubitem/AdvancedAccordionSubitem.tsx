@@ -9,7 +9,6 @@ import useSWR from 'swr'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-// import { AccordionCard, AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
 import {
   AdvancedAccordionSubSubitem,

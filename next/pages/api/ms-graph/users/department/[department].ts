@@ -1,7 +1,7 @@
 import { withSentry } from '@sentry/nextjs'
 import { forceString } from '@utils/utils'
+import { getToken, getUsersByDepartment } from 'backend/services/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getToken, getUsersByDepartment } from 'services/ms-graph'
 
 // not used, kept in case needed
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { forceString, isRecord } from '@utils/utils'
 import axios, { AxiosRequestConfig } from 'axios'
-import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
+import { ResponseGinisDocumentsList } from 'backend/dtos/ginis/api-data.dto'
 import { identity } from 'lodash'
 import { parseStringPromise } from 'xml2js'
 

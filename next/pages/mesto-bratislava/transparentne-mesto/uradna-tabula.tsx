@@ -8,26 +8,27 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { client } from '@utils/gql'
+import { client } from 'backend/utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { AsyncServerProps } from '@utils/types'
-import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {
   getALotOfMockedDocs,
   getParsedUDEDocumentsList,
   ParsedOfficialBoardDocument,
   shouldMockGinis,
-} from 'services/ginis'
+} from 'backend/services/ginis'
+import { GetServerSidePropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { client } from 'backend/utils/gql'
+import { forceString } from '@utils/utils'
 
 import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
 import BasePageLayout from '../../../components/layouts/BasePageLayout'
 import PageWrapper from '../../../components/layouts/PageWrapper'
 // import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
 import { pageStyle, parseFooter, parseMainMenu } from '../../../utils/page'
-import { forceString } from '../../../utils/utils'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const locale = ctx.locale ?? 'sk'

@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { withSentry } from '@sentry/nextjs'
+import { getGroupMembersRecursive, getToken } from 'backend/services/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getGroupMembersRecursive, getToken } from 'services/ms-graph'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { accessToken } = await getToken()

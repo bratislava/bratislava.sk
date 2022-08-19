@@ -4,10 +4,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable promise/valid-params */
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
-import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
+import { client } from '../../../../backend/utils/gql'
 import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
 import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
 

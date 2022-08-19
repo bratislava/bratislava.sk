@@ -5,7 +5,7 @@ import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sd
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-import { ParsedOfficialBoardDocument } from 'services/ginis'
+import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'

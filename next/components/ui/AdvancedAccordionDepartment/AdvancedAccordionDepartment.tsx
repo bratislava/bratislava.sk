@@ -1,11 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { usersFromDepartmentFetcher } from '@utils/organisationalStructure'
 import { useState } from 'react'
+import { usersFromDepartmentFetcher } from '@utils/organisationalStructure'
 import useSWR from 'swr'
 
-// import Phone from '../../../assets/images/phone-medium.svg'
-// import { AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
 import {
   AdvancedAccordionSubitem,

@@ -1,5 +1,3 @@
-import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
-import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 
 const { serverRuntimeConfig } = getConfig()
@@ -42,23 +40,14 @@ export const isPresent = <U>(a: U | null | undefined | void): a is U => {
   return true
 }
 
-export const isRecord = (obj: unknown): obj is Record<PropertyKey, unknown> => {
-  return typeof obj === 'object' && obj !== null
-}
-
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
-
-export type PageProps<T extends GetServerSideProps> = Extract<
-  Awaited<ReturnType<T>>,
-  { props: Record<string, unknown> }
->['props']
 
 // TODO kept in case we need to turn this off easily (in dev or elsewhere)
 export const shouldSkipStaticPaths = () => {
   return serverRuntimeConfig?.phase === 'phase-development-server'
 }
 
-export const isServer = () => typeof window === 'undefined'
+const isServer = () => typeof window === 'undefined'
 
 export const isBrowser = () => !isServer()
 

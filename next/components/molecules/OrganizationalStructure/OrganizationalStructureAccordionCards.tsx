@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { AccordionCard, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
+import { MSGraphFilteredGroupUser } from 'backend/services/ms-graph'
 import { useMemo } from 'react'
-import { MSGraphFilteredGroupUser } from 'services/ms-graph'
 
 export interface OrganizationalStructureAccordionCardsProps {
   users: MSGraphFilteredGroupUser[]

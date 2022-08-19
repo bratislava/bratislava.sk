@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import * as React from 'react'
 
+import { FetchOpenDataResult } from '../../../backend/utils/opendata'
 import { getLocalMonthName } from '../../../utils/local-date'
-import { FetchOpenDataResult } from '../../../utils/opendata'
 import OpenDataChart, { ISeries } from './OpenDataChart'
 
 const MONTHS = 12

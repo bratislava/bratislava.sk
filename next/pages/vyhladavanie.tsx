@@ -11,7 +11,7 @@ import {
   SearchResults,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { client } from '@utils/gql'
+import { client } from 'backend/utils/gql'
 // import { buildMockData } from '@utils/homepage-mockdata'
 import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
