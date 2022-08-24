@@ -3,10 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { GeneralPageFragment, MainMenuItemFragment, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import { client } from '@utils/gql'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { client } from '@utils/gql'
 import PageWrapper from '../components/layouts/PageWrapper'
 import GeneralPage from '../components/pages/generalPage'
 import { paginationObj } from '../utils/constants'
