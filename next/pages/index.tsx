@@ -23,7 +23,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 // import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
-import { client } from '../backend/utils/gql'
+import { client } from '@utils/gql'
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'

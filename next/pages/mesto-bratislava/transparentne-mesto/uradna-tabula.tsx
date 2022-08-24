@@ -8,7 +8,7 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { client } from 'backend/utils/gql'
+import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { AsyncServerProps } from '@utils/types'
 import {
@@ -21,7 +21,6 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { client } from 'backend/utils/gql'
 import { forceString } from '@utils/utils'
 
 import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'

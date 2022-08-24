@@ -7,7 +7,7 @@ import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
-import { client } from '../../../../backend/utils/gql'
+import { client } from '@utils/gql'
 import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
 import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
 

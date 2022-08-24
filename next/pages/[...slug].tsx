@@ -6,7 +6,7 @@ import { GeneralPageFragment, MainMenuItemFragment, PageBySlugQuery } from '@bra
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { client } from '../backend/utils/gql'
+import { client } from '@utils/gql'
 import PageWrapper from '../components/layouts/PageWrapper'
 import GeneralPage from '../components/pages/generalPage'
 import { paginationObj } from '../utils/constants'

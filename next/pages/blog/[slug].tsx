@@ -5,7 +5,7 @@ import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/str
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { client } from '../../backend/utils/gql'
+import { client } from '@utils/gql'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
 import { parseFooter, parseMainMenu } from '../../utils/page'
