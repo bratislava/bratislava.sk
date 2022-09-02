@@ -1,5 +1,7 @@
 import { MenuMainItem } from '@bratislava/ui-bratislava'
 
+import { POSTS_TABS } from '../components/organisms/posts/types'
+
 export const buildMockData = ({
   postImage1,
   postImage2,
@@ -68,20 +70,7 @@ export const buildMockData = ({
         url: '/',
       },
     ],
-    posts: [
-      {
-        category: 'Aktuality',
-      },
-      {
-        category: 'Úradná tabuľa',
-      },
-      {
-        category: 'Rozkopávky',
-      },
-      {
-        category: 'Zverejňovanie',
-      },
-    ],
+    posts: POSTS_TABS,
     council: {
       cards: [
         {

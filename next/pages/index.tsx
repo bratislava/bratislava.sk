@@ -223,14 +223,16 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-category-200 relative py-8">
-          <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
+          <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">
+            {data.topNineTitle}
+          </h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
           waveColor="var(--category-color-200)"
           wavePosition="bottom"
           isRich
-          className="mt-[-1px] lg:mt-0"
+          className="-mt-[1px] lg:mt-0"
         />
 
         <SectionContainer>

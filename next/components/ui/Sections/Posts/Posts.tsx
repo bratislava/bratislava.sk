@@ -7,29 +7,27 @@ import {
   LatestBlogsWithTagsQuery,
   NewsCardBlogFragment,
 } from '@bratislava/strapi-sdk-homepage'
-import { transformColorToCategory } from '@utils/page'
-import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
-import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import HorizontalScrollWrapper from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { PostButton } from '@bratislava/ui-bratislava/Sections/Posts/PostButton'
+import { getRoadClosuresUrl } from '@bratislava/ui-bratislava/Sections/Posts/PostsService'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
+import { PostCard } from '../../../organisms/posts/PostCard'
+import { PostsTabs } from '../../../organisms/posts/PostsTabs'
+import { SidePosts } from '../../../organisms/posts/SidePosts'
+import { Post, TAB_CATEGORY } from '../../../organisms/posts/types'
 import { Button } from '../../Button/Button'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
-import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
-import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
-import { TabBarTab } from '../../TabBarTab/TabBarTab'
-import { Tag } from '../../Tag/Tag'
-
-export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
+import { NewsCard } from '../../NewsCard/NewsCard'
 
 export interface PostsProps {
-  className?: string
-  posts: TPostsTab[] | undefined
-  // latestPost?: BlogPost[]
-  latestPost: LatestBlogsFragment | null | undefined
-  leftHighLight: NewsCardBlogFragment | null | undefined
-  rightHighLight: NewsCardBlogFragment | null | undefined
+  posts?: Post[]
+  latestPost?: LatestBlogsFragment
+  leftHighLight?: NewsCardBlogFragment | null
+  rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
   readMoreNewsText?: string
   rozkoPosts: LatestBlogsWithTagsQuery['blogPosts']
@@ -56,19 +54,15 @@ export const getHoverColor = (color: Enum_Pagecategory_Color): string => {
 }
 
 export const Posts = ({
-  className,
   posts = [],
   leftHighLight,
   rightHighLight,
   readMoreText,
-  readMoreNewsText,
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const [activeTab, setActiveTab] = React.useState(0)
-  // TODO refactor this
-  const [activePosts] = React.useState(posts[activeTab])
-  const [activeNewsCards] = React.useState<NewsCardProps[]>(activePosts?.newsCards ?? [])
+  const [activeTab, setActiveTab] = React.useState<TAB_CATEGORY>(TAB_CATEGORY.NEWS)
+  const activeNewsCards = posts[activeTab]?.newsCards ?? []
 
   // TODO handle loading and errors
   const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>(
@@ -76,112 +70,57 @@ export const Posts = ({
     () => fetch('/api/ginis/newest').then((res) => res.json()),
   )
   const documents = officialBoardData || []
-
-  const largeCount = 2
-
-  const largeNews = activeNewsCards.slice(0, largeCount) // first and second
-
   const { Link: UILink } = useUIContext()
-
   const { t } = useTranslation('common')
+  const [firstPost, secondPost] = activeNewsCards
+  const [firstRozkoPost, secondRozkoPost, ...restRozkoPosts] = rozkoPosts.data
+  const roadClosuresUrl = getRoadClosuresUrl(posts)
 
   return (
-    <div className={cx(className)}>
-      <HorizontalScrollWrapper className="-mx-8 justify-start space-x-4 px-8 lg:justify-center">
-        <div className="flex space-x-8 lg:space-x-32">
-          {posts.map((post, index) => (
-            <TabBarTab
-              key={index}
-              tab={{ key: index.toString(), title: post.category ?? '' }}
-              onClick={() => {
-                setActiveTab(index)
-              }}
-              isActive={activeTab === index}
-            />
-          ))}
-        </div>
-      </HorizontalScrollWrapper>
-
-      {activeTab === 0 && (
-        <div className="mt-8 block lg:mt-14">
-          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
-              {!leftHighLight &&
-                largeNews.map((newsCard, i) => (
-                  <div key={i}>
-                    <NewsCard {...newsCard} />
+    <div className="lg:mt-10">
+      <PostsTabs posts={posts} onClick={setActiveTab} activeTab={activeTab} />
+      {activeTab === TAB_CATEGORY.NEWS && (
+        <PostCard
+          highlightedPosts={
+            <>
+              {!leftHighLight && (
+                <>
+                  <div>
+                    <NewsCard {...firstPost} />
                   </div>
-                ))}
-              {leftHighLight && (
-                <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />
+                  <div>
+                    <NewsCard {...secondPost} />
+                  </div>
+                </>
               )}
-              {rightHighLight && (
-                <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />
-              )}
-
-              {latestPost?.data?.length > 0 && (
-                <div className="hidden lg:block">
-                  {latestPost.data.map((newsCard, i) => {
-                    const card = newsCard.attributes
-                    const tag = card.tag.data?.attributes
-                    return (
-                      <div key={i} className="relative">
-                        {tag && (
-                          <div className="mb-5">
-                            <Tag
-                              title={tag?.title}
-                              color={transformColorToCategory(
-                                tag.pageCategory.data.attributes.color,
-                              )}
-                            />
-                          </div>
-                        )}
-                        <UILink href={`/blog/${card.slug}`}>
-                          <div
-                            className={cx(
-                              `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
-                              getHoverColor(tag?.pageCategory.data.attributes.color),
-                            )}
-                          >
-                            {card.title}
-                          </div>
-                        </UILink>
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
-              <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                {latestPost?.data?.length > 0 && (
-                  <UILink href={t('allNewsLink')}>
-                    <Button
-                      variant="transparent"
-                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
-                      icon={<ChevronRight />}
-                      hoverIcon={<ArrowRight />}
-                    >
-                      {readMoreNewsText}
-                    </Button>
-                  </UILink>
-                )}
-              </div>
-            </div>
-          </HorizontalScrollWrapper>
-          <div className="flex justify-center lg:hidden">
+              {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
+              {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
+            </>
+          }
+          sidePosts={
+            <>
+              {latestPost.data.map(({ attributes }, i) => {
+                const { tag, title, slug } = attributes
+                return (
+                  <SidePosts
+                    title={title}
+                    tagTitle={tag.data.attributes.title}
+                    linkHref={`blog/${slug}`}
+                    tagColor={tag.data.attributes.pageCategory.data.attributes.color}
+                    key={i}
+                  />
+                )
+              })}
+            </>
+          }
+          button={
             <UILink href={t('allNewsLink')}>
-              <Button
-                variant="transparent"
-                className="text-20-medium mt-0 px-6 py-2 shadow-none"
-                icon={<ChevronRight />}
-                hoverIcon={<ArrowRight />}
-              >
-                {t('allNews')}
-              </Button>
+              <PostButton buttonTitle={t('allNews')} />
             </UILink>
-          </div>
-        </div>
+          }
+        />
       )}
-      {activeTab === 1 && (
+      {activeTab === TAB_CATEGORY.OFFICIAL_BOARD && (
         <div className="mt-14 flex flex-col gap-y-10">
           <div className="flex flex-col items-center gap-y-5">
             {documents.map((document, index) => (
@@ -209,82 +148,44 @@ export const Posts = ({
           </UILink>
         </div>
       )}
-      {activeTab === 2 && (
-        <div className="mt-8 block lg:mt-14">
-          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
-              {rozkoPosts?.data[0] && (
-                <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />
-              )}
-              {rozkoPosts?.data[1] && (
-                <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />
-              )}
-
-              {rozkoPosts?.data?.length > 2 && (
-                <div className="hidden lg:block">
-                  {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
-                    const card = newsCard.attributes
-                    const tag = card.tag.data?.attributes
-                    return (
-                      <div key={i} className="relative">
-                        {card.tag && (
-                          <div className="mb-5">
-                            <Tag
-                              title={tag?.title}
-                              color={transformColorToCategory(
-                                tag.pageCategory.data.attributes.color,
-                              )}
-                            />
-                          </div>
-                        )}
-                        <UILink href={`/blog/${card.slug}`}>
-                          <div
-                            className={cx(
-                              `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
-                              getHoverColor(tag?.pageCategory.data.attributes.color),
-                            )}
-                          >
-                            {card.title}
-                          </div>
-                        </UILink>
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
-              <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                {/* TODO: change this button to custom button */}
+      {activeTab === TAB_CATEGORY.ROAD_CLOSURES && (
+        <PostCard
+          highlightedPosts={
+            <>
+              {firstRozkoPost && <NewsCard {...firstRozkoPost.attributes} readMoreText={readMoreText} />}
+              {secondRozkoPost && <NewsCard {...secondRozkoPost.attributes} readMoreText={readMoreText} />}
+            </>
+          }
+          sidePosts={
+            <>
+              {restRozkoPosts.map(({ attributes }, i) => {
+                const { tag, title, slug } = attributes
+                return (
+                  <SidePosts
+                    title={title}
+                    tagTitle={tag.data.attributes.title}
+                    linkHref={`blog/${slug}`}
+                    tagColor={tag.data.attributes.pageCategory.data.attributes.color}
+                    key={i}
+                  />
+                )
+              })}
+            </>
+          }
+          button={
+            roadClosuresUrl && (
+              <>
                 {rozkoPosts?.data?.length > 0 && (
-                  <UILink href={t('rozkopavkyNews')}>
-                    <Button
-                      variant="transparent"
-                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
-                      icon={<ChevronRight />}
-                      hoverIcon={<ArrowRight />}
-                    >
-                      {readMoreNewsText}
-                    </Button>
+                  <UILink href={roadClosuresUrl}>
+                    <PostButton buttonTitle={t('toAllRoadClosures')} />
                   </UILink>
                 )}
-              </div>
-            </div>
-          </HorizontalScrollWrapper>
-          <div className="flex justify-center lg:hidden">
-            <UILink href={t('rozkopavkyNews')}>
-              {/* TODO: change this button to custom button */}
-              <Button
-                variant="transparent"
-                className="text-20-medium mt-0 px-6 py-2 shadow-none"
-                icon={<ChevronRight />}
-                hoverIcon={<ArrowRight />}
-              >
-                {t('allNews')}
-              </Button>
-            </UILink>
-          </div>
-        </div>
+              </>
+            )
+          }
+        />
       )}
-      {activeTab > 2 && (
+      {activeTab === TAB_CATEGORY.PUBLICATION && (
         <div className="text-h4-normal mt-14 items-end px-8 text-center">
           {t('allInformationOnSite')}{' '}
           <UILink
