@@ -1,5 +1,4 @@
 // Have to use below rule because after removing <></> is showing warning
-/* eslint-disable react/jsx-no-useless-fragment */
 import cx from 'classnames'
 
 import Mail from '../../../assets/images/mail.svg'

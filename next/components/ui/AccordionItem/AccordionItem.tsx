@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable react/button-has-type */
 import ChevronSmall from '@assets/images/chevron-down-thin-small.svg'
 import Chevron from '@assets/images/chevron-small.svg'

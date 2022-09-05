@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
 import DocumentDevider from '@assets/images/documentDevider.svg'
@@ -93,8 +92,8 @@ export const DocumentList = () => {
 
                       {index === 7 ? (
                         <div className="flex items-center justify-center">
-                          <DocumentDevider className="my-14 lg:my-24 hidden xs:block" />
-                          <DocumentDeviderSmall className="my-14 lg:my-24 block xs:hidden" />{' '}
+                          <DocumentDevider className="my-14 hidden xs:block lg:my-24" />
+                          <DocumentDeviderSmall className="my-14 block xs:hidden lg:my-24" />{' '}
                         </div>
                       ) : (
                         ''
