@@ -20,12 +20,6 @@ import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
-import {
-  getParsedUDEDocumentsList,
-  mockedParsedDocuments,
-  ParsedOfficialBoardDocument,
-  shouldMockGinis,
-} from 'services/ginis'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -234,14 +228,14 @@ const Homepage = ({
         </SectionContainer>
 
         <Waves
-          className="mt-20 -mb-[1px] lg:mb-0"
+          className="mt-20 mb-[-1px] lg:mb-0"
           backgroundColor="var(--background-color)"
           waveColor="var(--secondary-color)"
           wavePosition="top"
           isRich
         />
 
-        <SectionContainer className="bg-secondary py-16 relative">
+        <SectionContainer className="relative bg-secondary py-16">
           <h2 className="pb-10 text-center text-default font-semibold xs:mt-8 lg:pb-20 lg:text-2xl">
             {data.topNineTitle}
           </h2>
@@ -252,7 +246,7 @@ const Homepage = ({
           backgroundColor="var(--background-color)"
           wavePosition="bottom"
           isRich
-          className="-mt-[1px] lg:mt-0"
+          className="mt-[-1px] lg:mt-0"
         />
 
         <SectionContainer>

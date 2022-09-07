@@ -1,8 +1,7 @@
-////https://graph.microsoft.com/v1.0/users?$search="displayName:Kmet"
+//  https://graph.microsoft.com/v1.0/users?$search="displayName:Kmet"
 
 import { withSentry } from '@sentry/nextjs'
 import { forceString } from '@utils/utils'
-import _ from 'lodash'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getToken, getUsersByDisplayName } from 'services/ms-graph'
 import { sanitize } from 'string-sanitizer'

@@ -39,7 +39,7 @@ export const ArticlesFilter = ({
   return (
     <div>
       <div className="text-center text-default font-semibold lg:text-lg">{t('articleCategories')}</div>
-      <HorizontalScrollWrapper className="mt-8 lg:mt-10 -mx-7.5 px-7.5">
+      <HorizontalScrollWrapper className="-mx-7.5 mt-8 px-7.5 lg:mt-10">
         <div className="flex">
           {!categoryExists
             ? BratislavaCategories.map((tab) => (

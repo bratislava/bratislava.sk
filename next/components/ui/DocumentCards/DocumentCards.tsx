@@ -19,7 +19,7 @@ export const DocumentCards = ({
   title,
   viewButtonText,
   downloadButtonText,
-  query
+  query,
 }: DocumentCardsProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPageDesktop = 14
@@ -31,10 +31,10 @@ export const DocumentCards = ({
   const dividerBugSolved = false
 
   useEffect(() => {
-    if(query){
+    if (query) {
       setCurrentPage(1)
     }
-  },[query]);
+  }, [query])
 
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
@@ -70,7 +70,7 @@ export const DocumentCards = ({
               <div key={index}>
                 <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
                 {dividerBugSolved &&
-                  index == dividerBreakpointMobile - 1 &&
+                  index === dividerBreakpointMobile - 1 &&
                   currentItemsCountMobile > dividerBreakpointMobile && (
                     <Divider className="py-10" dividerStyle={dividerStyle} />
                   )}

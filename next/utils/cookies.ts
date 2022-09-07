@@ -1,5 +1,4 @@
 import { captureException } from '@sentry/nextjs'
-import _ from 'lodash'
 import { useCallback, useEffect, useState } from 'react'
 // todo swap for js-cookie
 import { Cookies } from 'react-cookie-consent'
@@ -27,9 +26,9 @@ export const useCookieConsent = () => {
       if (typeof parsedConsent === 'object') {
         setConsentsState(pickConsents(parsedConsent))
       }
-    } catch (e) {
-      console.error(e)
-      captureException(e)
+    } catch (error) {
+      console.error(error)
+      captureException(error)
     }
     setBannerDismissed(false)
   }, [])

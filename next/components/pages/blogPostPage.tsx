@@ -72,11 +72,11 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="min-h-[220px] pt-30">
             {blogPost?.tag && (
-              <span className="px-3 py-1 text-sm font-medium text-white bg-primary rounded inline-block">
+              <span className="inline-block rounded bg-primary px-3 py-1 text-sm font-medium text-white">
                 {tag?.title}
               </span>
             )}
-            <h1 className="whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl max-w-[900px]">{blogPost?.title}</h1>
+            <h1 className="max-w-[900px] whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl">{blogPost?.title}</h1>
             {blogPost && (
               <div className="pt-2 pb-14">
                 {getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)}

@@ -1,11 +1,11 @@
 import { roleOrderingScore } from '@utils/organisationalStructure'
 import cx from 'classnames'
+import { useToggle } from 'rooks'
+import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
 import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
-import { useToggle } from 'rooks'
 
 export interface OrganizationalStructureAccordionProps {
   group: GetGroupMembersRecursiveResult
@@ -35,6 +35,7 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
           'pb-8': !alwaysOpen && !open,
         })}
         onClick={alwaysOpen ? null : setOpen}
+        onKeyDown={alwaysOpen ? null : setOpen}
       >
         <div
           className={cx('org-structure-list-circle', {
@@ -57,8 +58,8 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
           {!!orderedUsers?.length && <OrganizationalStructureAccordionCards users={orderedUsers} />}
           {!!orderedGroups?.length && (
             <div className="lg:ml-7.5">
-              {orderedGroups.map((group) => (
-                <OrganizationalStructureAccordion key={group.id} group={group} level={level + 1} />
+              {orderedGroups.map((groupTmp) => (
+                <OrganizationalStructureAccordion key={groupTmp.id} group={groupTmp} level={level + 1} />
               ))}
             </div>
           )}

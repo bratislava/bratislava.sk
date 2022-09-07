@@ -1,5 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+
 import { DashedLine } from '../DashedLine/DashedLine'
 import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 

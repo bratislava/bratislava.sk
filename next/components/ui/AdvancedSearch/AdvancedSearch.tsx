@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -7,8 +8,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
 import Checkbox from '../../../assets/images/checkbox.svg'

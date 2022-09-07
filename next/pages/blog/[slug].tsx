@@ -3,6 +3,7 @@
 import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
 import { client } from '../../utils/gql'

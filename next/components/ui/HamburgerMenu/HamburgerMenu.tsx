@@ -5,8 +5,8 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
-import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import { Icon } from '../../atoms/icon/Icon'
+import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
 import { MenuMainItem } from '../index'
 import { Link } from '../Link/Link'
 

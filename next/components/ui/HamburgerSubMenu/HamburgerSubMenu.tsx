@@ -1,17 +1,15 @@
-import ChevronDown from '@assets/images/chevron-down-small.svg'
+import { ChevronRight } from '@assets/images'
 import ChevronLeft from '@assets/images/chevron-left.svg'
 import ChevronUp from '@assets/images/chevron-up-small.svg'
 import CloseFilled from '@assets/images/close-filled.svg'
 import cx from 'classnames'
+import UnstyledLink from 'next/link'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
-import UnstyledLink from 'next/link'
 
 import { Icon } from '../../atoms/icon/Icon'
-import { MenuMainItem } from '../HomepageMenu/HomepageMenu';
-import { Link } from '../Link/Link';
-import { ChevronRight } from '@assets/images'
-
+import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
+import { Link } from '../Link/Link'
 
 interface IProps {
   className?: string
@@ -22,7 +20,7 @@ interface IProps {
 }
 
 const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }: IProps) => {
-  const [expanded, setExpanded] = useState<number[]>([])
+  const [expanded] = useState<number[]>([])
 
   const { t } = useTranslation()
 
@@ -51,7 +49,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
               <span className="text-left text-base font-semibold">{item.title}</span>
             </div>
           ) : (
-            <button className="flex items-center" onClick={onClose}>
+            <button type="button" className="flex items-center" onClick={onClose}>
               <ChevronLeft className="mr-8" />
               <Icon iconName={item.coloredIcon} />
               <span className="text-left text-base font-semibold">{item.title}</span>
