@@ -1,4 +1,6 @@
 import { captureException } from '@sentry/nextjs'
+import mapValues from 'lodash/mapValues'
+import pick from 'lodash/pick'
 import { useCallback, useEffect, useState } from 'react'
 // todo swap for js-cookie
 import { Cookies } from 'react-cookie-consent'
@@ -6,7 +8,7 @@ import { Cookies } from 'react-cookie-consent'
 import { isBrowser } from './utils'
 
 const availableConsents = ['statistics']
-const pickConsents = (consents: any) => _.mapValues(_.pick(consents, availableConsents), Boolean)
+const pickConsents = (consents: any) => mapValues(pick(consents, availableConsents), Boolean)
 
 // returns all 'consents' given (currently only 'statistics', can be easily expanded)
 // along with a refresh function and whether the banner was ever dismissed
