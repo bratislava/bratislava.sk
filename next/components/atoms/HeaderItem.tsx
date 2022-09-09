@@ -21,7 +21,7 @@ const HeaderItem = ({
       Bratislava
     </div>
   ),
-  index,
+  // index,
 }: IProps) => (
   <div className="group">
     <Button

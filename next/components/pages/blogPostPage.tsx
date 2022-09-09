@@ -1,8 +1,14 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable security/detect-non-literal-fs-filename */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable react/no-danger */
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { useTranslation } from 'next-i18next'
 import Head from 'next/head'
+import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import { getNumericLocalDate } from '../../utils/local-date'
@@ -17,7 +23,20 @@ export interface GeneralPageProps {
   menuItems?: MenuMainItem[]
 }
 
-const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) => {
+const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const openSharePage = () => {
+    const w = 600
+    const h = 400
+    const l = screen.width / 2 - w / 2
+    const t = screen.height / 2 - h / 2
+
+    window.open(href, 'pop', `width=${w},height=${h},top=${t},left=${l},scrollbars=0`)
+  }
+
+  return <button onClick={openSharePage}>{children}</button>
+}
+
+const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
   const [socialLink, setSocialLink] = React.useState('')
   React.useEffect(() => setSocialLink(window.location.href), [])
   const blogPost = post.data[0].attributes
@@ -53,11 +72,11 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
         <SectionContainer>
           <div className="min-h-[220px] pt-30">
             {blogPost?.tag && (
-              <span className="px-3 py-1 text-sm font-medium text-white bg-primary rounded inline-block">
+              <span className="inline-block rounded bg-primary px-3 py-1 text-sm font-medium text-white">
                 {tag?.title}
               </span>
             )}
-            <h1 className="whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl max-w-[900px]">{blogPost?.title}</h1>
+            <h1 className="max-w-[900px] whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl">{blogPost?.title}</h1>
             {blogPost && (
               <div className="pt-2 pb-14">
                 {getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)}
@@ -96,19 +115,6 @@ const BlogPostPage = ({ post, footer, children, menuItems }: GeneralPageProps) =
       </SectionContainer>
     </BasePageLayout>
   )
-}
-
-const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const openSharePage = () => {
-    const w = 600
-    const h = 400
-    const l = screen.width / 2 - w / 2
-    const t = screen.height / 2 - h / 2
-
-    window.open(href, 'pop', `width=${w},height=${h},top=${t},left=${l},scrollbars=0`)
-  }
-
-  return <button onClick={openSharePage}>{children}</button>
 }
 
 export default BlogPostPage

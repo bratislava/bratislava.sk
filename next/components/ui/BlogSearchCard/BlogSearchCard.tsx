@@ -1,10 +1,9 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { RefObject, useEffect, useRef, useState } from 'react'
 
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
 import { BlogItem } from '../FeaturedBlogs/FeaturedBlogs'
-import Panel from '../Panel/Panel'
+import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
 export interface BlogImage {
@@ -99,7 +98,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
                 {headline}
               </div>
               <div className="flex">
-                <div className="text-default line-clamp-2 font-semibold text-white overflow-hidden">
+                <div className="line-clamp-2 overflow-hidden text-default font-semibold text-white">
                   {item?.data?.attributes?.title}
                 </div>
                 <VerticalCardButton className="invisible shrink-0 group-hover:lg:visible" size="medium">

@@ -1,67 +1,20 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import cx from 'classnames'
-import React, { useCallback, useState } from 'react'
-import { useRef } from 'react'
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
 import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import cx from 'classnames'
+import React, { useCallback, useRef, useState } from 'react'
 import { useDebounce, useOutsideClick } from 'rooks'
 
+import { Icon } from '../../atoms/icon/Icon'
 import { MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
-import { Icon } from '../../atoms/icon/Icon'
 
 interface IProps {
   className?: string
   menuItems: MenuMainItem[]
   active?: string
-}
-
-export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
-  // TODO this whole logic is a tangled mess - it's fix to work to a degree, but needs refactor
-  // TODO consider state machine for this
-  const [panelHidden, setPanelHidden] = useState(false)
-  const [disableHover, setDisableHover] = useState(false)
-
-  const debouncedHandleMouseEnter = useDebounce(() => {
-    setDisableHover(false)
-    setPanelHidden(false)
-  }, 500)
-
-  const handleMenuCellClick = useCallback(() => {
-    if (panelHidden) {
-      setPanelHidden(false)
-      setDisableHover(false)
-    } else {
-      setPanelHidden(true)
-      setDisableHover(false)
-    }
-  }, [panelHidden])
-
-  const handleOnMouseLeave = () => {
-    setDisableHover(true)
-    debouncedHandleMouseEnter.cancel()
-  }
-
-  return (
-    <div
-      className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}
-      onMouseEnter={debouncedHandleMouseEnter}
-      onMouseLeave={handleOnMouseLeave}
-    >
-      {menuItems.map((item, i) => (
-        <div key={i} className="group flex-1 cursor-pointer">
-          <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
-          <MenuPanel
-            item={item}
-            panelHidden={panelHidden}
-            setPanelHidden={setPanelHidden}
-            disableHover={disableHover}
-            setDisableHover={setDisableHover}
-          />
-        </div>
-      ))}
-    </div>
-  )
 }
 
 interface MenuCellProps {
@@ -139,7 +92,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
             {item.subItems?.map((subItem, j) => {
               return (
                 <div key={j}>
-                  <button className="flex" onClick={() => setPanelHidden(true)}>
+                  <button type="button" className="flex" onClick={() => setPanelHidden(true)}>
                     <UILink
                       href={isItExternal(subItem.url)}
                       className="flex items-center text-left text-[20px] hover:underline"
@@ -153,7 +106,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
                   <ul className="mt-8 space-y-3">
                     {subItem.subItems?.map((subSubItem, k) => (
                       <li key={k}>
-                        <button className="flex" onClick={() => setPanelHidden(true)}>
+                        <button type="button" className="flex" onClick={() => setPanelHidden(true)}>
                           <UILink href={isItExternal(subSubItem.url)} className="text-left hover:underline">
                             {subSubItem.title}
                           </UILink>
@@ -163,6 +116,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
                     {subItem.url && subItem.subItems.length > 2 ? (
                       <li className="font-semibold">
                         <button
+                          type="button"
                           onMouseEnter={() => setMoreLinkHoverIdx(j)}
                           onMouseLeave={() => setMoreLinkHoverIdx(-1)}
                           onClick={() => setPanelHidden(true)}
@@ -191,6 +145,54 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
           isRich
         />
       </div>
+    </div>
+  )
+}
+
+export const BAStickyMenu = ({ className, menuItems, active }: IProps) => {
+  // TODO this whole logic is a tangled mess - it's fix to work to a degree, but needs refactor
+  // TODO consider state machine for this
+  const [panelHidden, setPanelHidden] = useState(false)
+  const [disableHover, setDisableHover] = useState(false)
+
+  const debouncedHandleMouseEnter = useDebounce(() => {
+    setDisableHover(false)
+    setPanelHidden(false)
+  }, 500)
+
+  const handleMenuCellClick = useCallback(() => {
+    if (panelHidden) {
+      setPanelHidden(false)
+      setDisableHover(false)
+    } else {
+      setPanelHidden(true)
+      setDisableHover(false)
+    }
+  }, [panelHidden])
+
+  const handleOnMouseLeave = () => {
+    setDisableHover(true)
+    debouncedHandleMouseEnter.cancel()
+  }
+
+  return (
+    <div
+      className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}
+      onMouseEnter={debouncedHandleMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
+    >
+      {menuItems.map((item, i) => (
+        <div key={i} className="group flex-1 cursor-pointer">
+          <MenuCell item={item} isActive={item.id === active} handleClick={handleMenuCellClick} />
+          <MenuPanel
+            item={item}
+            panelHidden={panelHidden}
+            setPanelHidden={setPanelHidden}
+            disableHover={disableHover}
+            setDisableHover={setDisableHover}
+          />
+        </div>
+      ))}
     </div>
   )
 }

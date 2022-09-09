@@ -1,10 +1,11 @@
+// Have to use below rule because after removing <></> is showing warning
 import cx from 'classnames'
 
 import Mail from '../../../assets/images/mail.svg'
 import Phone from '../../../assets/images/phone-small.svg'
 import TownHall from '../../../assets/images/town-hall.svg'
 import TownHallSmall from '../../../assets/images/town-hall-small.svg'
-import Panel from '../Panel/Panel'
+import { Panel } from '../Panel/Panel'
 
 export interface AccordionCardProps {
   displayName: string

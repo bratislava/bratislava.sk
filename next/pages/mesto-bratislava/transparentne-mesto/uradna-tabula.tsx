@@ -1,9 +1,9 @@
-import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+// import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   BasicSearch,
   DocumentCards,
-  Footer,
-  FooterProps,
+  // Footer,
+  // FooterProps,
   NoResultsFound,
   PageHeader,
   SectionContainer,
@@ -25,9 +25,9 @@ import {
 import OfficialBoardBackgroundImage from '../../../assets/images/official-board.png'
 import BasePageLayout from '../../../components/layouts/BasePageLayout'
 import PageWrapper from '../../../components/layouts/PageWrapper'
-import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
+// import PageBreadcrumbs from '../../../components/molecules/PageBreadcrumbs'
 import { pageStyle, parseFooter, parseMainMenu } from '../../../utils/page'
-import { forceString, isPresent } from '../../../utils/utils'
+import { forceString } from '../../../utils/utils'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const locale = ctx.locale ?? 'sk'
@@ -123,40 +123,40 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const OfficialBoard = ({
-  data,
+  // data,
   footer,
   mainMenu,
   page,
   documents,
-  homepage,
-  latestBlogposts,
-  homepagePosts,
-  cards,
-  header,
-  inba,
+  // homepage,
+  // latestBlogposts,
+  // homepagePosts,
+  // cards,
+  // header,
+  // inba,
 }: AsyncServerProps<typeof getServerSideProps>) => {
   const noResultsFound = documents.length === 0
   const menuItems = parseMainMenu(mainMenu)
   const { t } = useTranslation('common')
   const { push, query } = useRouter()
-  const boardPage = {
-    slug: 'mesto-bratislava/transparentne-mesto/official-board',
-    title: t('officialBoard'),
-    pageBackgroundImage: null,
-    pageButtonContent: null,
-    locale: 'sk',
-    parentPage: {
-      slug: 'mesto-bratislava/transparentne-mesto',
-      locale: 'sk',
-      title: t('transparentCity'),
-      parentPage: {
-        slug: 'mesto-bratislava',
-        locale: 'sk',
-        title: 'Mesto Bratislava',
-      },
-    },
-    relatedBlogPosts: [],
-  }
+  // const boardPage = {
+  //   slug: 'mesto-bratislava/transparentne-mesto/official-board',
+  //   title: t('officialBoard'),
+  //   pageBackgroundImage: null,
+  //   pageButtonContent: null,
+  //   locale: 'sk',
+  //   parentPage: {
+  //     slug: 'mesto-bratislava/transparentne-mesto',
+  //     locale: 'sk',
+  //     title: t('transparentCity'),
+  //     parentPage: {
+  //       slug: 'mesto-bratislava',
+  //       locale: 'sk',
+  //       title: 'Mesto Bratislava',
+  //     },
+  //   },
+  //   relatedBlogPosts: [],
+  // }
 
   return (
     <PageWrapper
@@ -168,6 +168,7 @@ const OfficialBoard = ({
     >
       <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
         <style
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: pageStyle('red'),
           }}
@@ -178,6 +179,7 @@ const OfficialBoard = ({
           transparentColor="var(--secondary-color--transparent)"
           transparentColorMobile="var(--secondary-color--semi-transparent)"
           imageSrc={OfficialBoardBackgroundImage}
+          // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
@@ -200,6 +202,7 @@ const OfficialBoard = ({
             title={t('searching')}
             buttonText={t('search')}
             /* TODO handle the fact push can error out */
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onSubmit={(search) => push(`?search=${search}`)}
             initialValue={forceString(query?.search)}
           />

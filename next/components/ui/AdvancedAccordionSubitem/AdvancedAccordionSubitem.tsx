@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { usersFromDepartmentFetcher } from '@utils/organisationalStructure'
 import cx from 'classnames'
 import { useState } from 'react'
@@ -5,7 +9,7 @@ import useSWR from 'swr'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
-import { AccordionCard, AccordionCardProps } from '../AccordionCard/AccordionCard'
+// import { AccordionCard, AccordionCardProps } from '../AccordionCard/AccordionCard'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
 import {
   AdvancedAccordionSubSubitem,
@@ -29,7 +33,7 @@ export const AdvancedAccordionSubitem = ({
 }: AdvancedAccordionSubitemProps) => {
   const [open, setOpen] = useState(false)
   const [cards, setCards] = useState([])
-  const { data, error } = useSWR(title, usersFromDepartmentFetcher)
+  const { data } = useSWR(title, usersFromDepartmentFetcher)
   if (cards.length === 0 && data && data.length > 0) {
     setCards(data)
   }

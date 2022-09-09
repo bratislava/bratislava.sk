@@ -27,7 +27,7 @@ export const HorizontalCard = ({ accessory, className, children, imageSrc, ...re
           />
         </>
       )}
-      <div className="flex-1 p-6 text-center text-sm lg:px-12 lg:pt-8 lg:pb-8 lg:text-default lg:self-center lg:text-left">
+      <div className="flex-1 p-6 text-center text-sm lg:self-center lg:px-12 lg:py-8 lg:text-left lg:text-default">
         {children}
       </div>
     </Panel>

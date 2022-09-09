@@ -6,7 +6,6 @@ import { useTranslation } from 'next-i18next'
 import { Carousel } from '../../Carousel/Carousel'
 import { HorizontalCard } from '../../HorizontalCard/HorizontalCard'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
-import { VerticalCardButton } from '../../VerticalCardButton/VerticalCardButton'
 
 export interface BlogCardsProps {
   className?: string
@@ -62,7 +61,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
             className="w-full max-w-xs shrink-0"
             // accessory={<VerticalCardButton />}
           >
-            <p className="line-clamp-4 text-left overflow-hidden text-ellipsis">{blogCard.title}</p>
+            <p className="line-clamp-4 overflow-hidden text-ellipsis text-left">{blogCard.title}</p>
             <UILink
               className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
               href={`${blogCard?.url}` || ''}

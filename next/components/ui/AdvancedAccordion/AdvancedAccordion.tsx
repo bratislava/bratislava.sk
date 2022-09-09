@@ -1,6 +1,6 @@
 import { AdvancedAccordionItem, AdvancedAccordionItemProps } from '../AdvancedAccordionItem/AdvancedAccordionItem'
 import { BasicSearch } from '../BasicSearch/BasicSearch'
-import Divider from '../Divider/Divider'
+import { Divider } from '../Divider/Divider'
 
 export interface AdvancedAccordionProps {
   title?: string

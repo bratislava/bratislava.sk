@@ -1,8 +1,8 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
 import Link from 'next/dist/client/link'
+import { useTranslation } from 'next-i18next'
 
 import { Panel } from '../Panel/Panel'
 
@@ -44,7 +44,7 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
           >
             <span className={cx(' text-default lg:text-md')}>{title}</span>
             <UILink
-              className="group mt-1.5 lg:mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
+              className="group mt-1.5 flex h-6 cursor-pointer items-center space-x-5 text-primary underline lg:mt-3"
               href={href}
             >
               <span className="text-sm font-semibold">{t('readMore')}</span>

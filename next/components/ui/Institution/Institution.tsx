@@ -13,6 +13,30 @@ export interface InstitutionProps {
   urlLabel?: string
 }
 
+const InstitutionCard = ({ className, title, subtitle, content, children }: InstitutionCardProps) => {
+  const { Markdown: UIMarkdown } = useUIContext()
+
+  return (
+    <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
+      <div className="flex flex-col">
+        <h4 className="text-default font-semibold leading-[26px]">{title}</h4>
+        {subtitle && <UIMarkdown className="fontSize-base mt-6 text-base" content={subtitle} />}
+        {content && (
+          <div className="row mt-6 flex w-full flex-row flex-wrap">
+            {[...Array.from({ length: 3 })].map((_, ix) => (
+              <div key={ix} className="col-12 md:col-4 fontSize-base mb-2 break-all last:mb-0 md:mb-0">
+                {content[ix] && <UIMarkdown content={content[ix]} />}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {children}
+      </div>
+    </div>
+  )
+}
+
 export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionProps) => {
   const { Link: UILink } = useUIContext()
 
@@ -20,7 +44,7 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
     <div className={cx(className, 'text-font')}>
       {url ? (
         <UILink href={url}>
-          <InstitutionCard {...rest} className="group hover:border-primary hover:border-opacity-100">
+          <InstitutionCard {...rest} className="group hover:border-primary">
             {urlLabel && (
               <div className="mt-6 flex items-center font-semibold underline">
                 <span className="mr-5">{urlLabel}</span>
@@ -39,30 +63,6 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
 
 interface InstitutionCardProps extends Pick<InstitutionProps, 'className' | 'title' | 'subtitle' | 'content'> {
   children?: React.ReactNode
-}
-
-const InstitutionCard = ({ className, title, subtitle, content, children }: InstitutionCardProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
-
-  return (
-    <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
-      <div className="flex flex-col">
-        <h4 className="text-default font-semibold leading-[26px]">{title}</h4>
-        {subtitle && <UIMarkdown className="mt-6 text-base fontSize-base" content={subtitle} />}
-        {content && (
-          <div className="row mt-6 flex w-full flex-row flex-wrap">
-            {[...Array.from({ length: 3 })].map((_, ix) => (
-              <div key={ix} className="col-12 md:col-4 mb-2 last:mb-0 md:mb-0 break-all fontSize-base">
-                {content[ix] && <UIMarkdown content={content[ix]} />}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {children}
-      </div>
-    </div>
-  )
 }
 
 export default Institution

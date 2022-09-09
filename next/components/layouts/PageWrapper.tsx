@@ -1,4 +1,5 @@
-import { LocalizationFragment } from '@bratislava/strapi-sdk-homepage'
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable lodash/collection-ordering */
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
 import { createContext, useContext, useMemo } from 'react'
@@ -27,7 +28,7 @@ interface IProps {
 }
 
 const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
-  const [_, { language }] = useTranslation()
+  const [, { language }] = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
     if (locale) {

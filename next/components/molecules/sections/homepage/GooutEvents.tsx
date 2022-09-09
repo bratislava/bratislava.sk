@@ -13,13 +13,19 @@ interface IProps {
   className?: string
 }
 
+const fetchGooutEvents = async () => {
+  const res = await fetch('/api/goout-events')
+  const data: FetchGooutEventsResult = await res.json()
+  return data.events
+}
+
 const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
   const [gooutEvents, setGooutEvents] = React.useState<GooutEvent[]>([])
 
   const { Link: UILink } = useUIContext()
 
   React.useEffect(() => {
-    fetchGooutEvents().then(setGooutEvents)
+    fetchGooutEvents().then(setGooutEvents).catch(error => console.log(error))
   }, [])
 
   if (gooutEvents.length === 0) return null
@@ -30,7 +36,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
-          className="-ml-7.5 -mr-7.5"
+          className="-mx-7.5"
           shiftIndex={3}
           visibleItems={3}
           items={gooutEvents.map((ev, i) => (
@@ -58,7 +64,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         />
       </div>
 
-      <div className="mt-10 justify-center flex w-full text-center mb-10">
+      <div className="my-10 flex w-full justify-center text-center">
         <Link
           href={linkUrl}
           icon={<ChevronRight />}
@@ -71,12 +77,6 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
       </div>
     </div>
   )
-}
-
-const fetchGooutEvents = async () => {
-  const res = await fetch('/api/goout-events')
-  const data: FetchGooutEventsResult = await res.json()
-  return data.events
 }
 
 export default GooutEvents

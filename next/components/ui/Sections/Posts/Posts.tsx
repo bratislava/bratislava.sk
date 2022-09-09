@@ -1,24 +1,14 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import {
-  BlogPost,
-  BlogPostFragment,
-  Homepage,
-  HomepageQuery,
-  LatestBlogsFragment,
-  LatestBlogsWithTagsQuery,
-  NewsCardBlogFragment,
-} from '@bratislava/strapi-sdk-homepage'
+import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { ParsedOfficialBoardDocument } from 'services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
-import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
@@ -49,10 +39,9 @@ export const Posts = ({
   rozkoPosts,
 }: PostsProps) => {
   const [activeTab, setActiveTab] = React.useState(0)
-  const [activePosts, setActivePost] = React.useState(posts[activeTab])
-  const [activeNewsCards, setActiveNewsCards] = React.useState<NewsCardProps[]>(
-    activePosts?.newsCards ? activePosts?.newsCards : []
-  )
+  // TODO refactor this
+  const [activePosts] = React.useState(posts[activeTab])
+  const [activeNewsCards] = React.useState<NewsCardProps[]>(activePosts?.newsCards ?? [])
 
   // TODO handle loading and errors
   const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>('/api/ginis/newest', () =>
@@ -85,8 +74,8 @@ export const Posts = ({
         </div>
       </HorizontalScrollWrapper>
 
-      {activeTab == 0 && (
-        <div className="mt-8 lg:mt-14 block">
+      {activeTab === 0 && (
+        <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {!leftHighLight &&
@@ -112,7 +101,7 @@ export const Posts = ({
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag?.pageCategory.data.attributes.color}))]`}
+                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory.data.attributes.color}))]`}
                           >
                             {card.title}
                           </div>
@@ -123,7 +112,6 @@ export const Posts = ({
                 </div>
               )}
               <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                {/* TODO: change this button to custom button */}
                 {latestPost?.data?.length > 0 && (
                   <UILink href={t('allNewsLink')}>
                     <Button
@@ -140,7 +128,6 @@ export const Posts = ({
             </div>
           </HorizontalScrollWrapper>
           <div className="flex justify-center lg:hidden">
-            {/* TODO: change this button to custom button */}
             <UILink href={t('allNewsLink')}>
               <Button
                 variant="transparent"
@@ -154,7 +141,7 @@ export const Posts = ({
           </div>
         </div>
       )}
-      {activeTab == 1 && (
+      {activeTab === 1 && (
         <div className="mt-14 flex flex-col gap-y-10">
           <div className="flex flex-col items-center gap-y-5">
             {documents.map((document, index) => (
@@ -179,8 +166,8 @@ export const Posts = ({
           </UILink>
         </div>
       )}
-      {activeTab == 2 && (
-        <div className="mt-8 lg:mt-14 block">
+      {activeTab === 2 && (
+        <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
               {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
@@ -200,7 +187,7 @@ export const Posts = ({
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`mb-8 underline font-semibold hover:text-[color:rgb(var(--color-${tag.pageCategory.data.attributes.color}))]`}
+                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag.pageCategory.data.attributes.color}))]`}
                           >
                             {card.title}
                           </div>

@@ -1,15 +1,15 @@
+/* eslint-disable @next/next/inline-script-id */
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import Link from 'next/link'
-import Script from 'next/script'
 import { appWithTranslation } from 'next-i18next'
 import React from 'react'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
-import Head from 'next/head'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -37,13 +37,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             )
           },
           Image: ({ alt, src, shadow }) => <ContentImage alt={alt} src={src} shadow={shadow} />,
-          Markdown: ({ className, content, numericalList, hasBackground }) => (
-            <HomepageMarkdown
-              className={className}
-              content={content}
-              numericalList={numericalList}
-              hasBackground={hasBackground}
-            />
+          Markdown: ({ className, content, numericalList }) => (
+            <HomepageMarkdown className={className} content={content} numericalList={numericalList} />
           ),
         }}
       >

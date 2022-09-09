@@ -1,15 +1,13 @@
-import { getNumericLocalDate } from '@utils/local-date'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right-small.svg'
 import { useState } from 'react'
 import { getDocumentDetailURL, getDocumentFileURL } from 'services/ginis'
 import useSWR from 'swr'
 
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronRight from '@assets/images/chevron-right-small.svg'
-import Download from '@assets/images/download-document.svg'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 import { FileList, TFile, TFileSection } from '../FileList/FileList'
-import Modal from '../Modal/Modal'
-import Panel from '../Panel/Panel'
+import { Modal } from '../Modal/Modal'
+import { Panel } from '../Panel/Panel'
 
 export interface DocumentCardProps {
   title: string
@@ -21,15 +19,7 @@ export interface DocumentCardProps {
   downloadButtonText: string
 }
 
-export const DocumentCard = ({
-  title,
-  createdAt,
-  id,
-  content,
-  className,
-  viewButtonText,
-  downloadButtonText,
-}: DocumentCardProps) => {
+export const DocumentCard = ({ title, createdAt, id, content, className, viewButtonText }: DocumentCardProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
@@ -67,7 +57,7 @@ export const DocumentCard = ({
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
           </div>
           <div>{content}</div>
-          <div className=" flex flex-row flex-col items-start gap-x-6">
+          <div className="flex flex-col items-start gap-x-6">
             <Button
               variant="secondary-dark-text"
               className="hover:color-white w-fit px-6 py-4 text-sm font-medium shadow-none hover:bg-primary hover:text-white"

@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['auto', 'plugin:tailwindcss/recommended', 'plugin:@next/next/recommended'],
-  plugins: ['only-warn'],
+  plugins: [],
   rules: {
     'react/react-in-jsx-scope': 'off',
     /** We use this a lot with isDefined and hasAttributes */
@@ -32,8 +32,15 @@ module.exports = {
     "react/require-default-props" : 'off',
     /** To Remove  */
     "react/no-array-index-key": 'off',
+    "react/no-unused-prop-types": 'off',
+    "tailwindcss/no-custom-classname": 'off',
     /** Remove console.log() warnings */
-    "no-console": 'off'
+    "no-console": 'off',
+    "@next/next/no-img-element": "off",
+    "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
+    "switch-case/newline-between-switch-case": "off",
+    // This rule disallows lexical declarations (let, const, function and class) in case/default clauses. 
+    "no-case-declarations": "off"
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

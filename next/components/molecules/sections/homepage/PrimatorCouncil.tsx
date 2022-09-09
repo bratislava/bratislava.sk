@@ -18,7 +18,7 @@ const PrimatorCouncil = ({ className, primatorCards = [Primator as any, Council 
         'flex flex-col px-8 md:px-41 max-w-screen-1.5xl gap-y-28 xl:flex-row my-44 xl:gap-8 w-full '
       )}
     >
-      {primatorCards.map((primatorCard, index) => (
+      {primatorCards.map((primatorCard) => (
         <PrimatorCard {...primatorCard} />
       ))}
     </div>

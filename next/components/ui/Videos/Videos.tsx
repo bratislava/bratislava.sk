@@ -1,5 +1,4 @@
-import { ChevronRight } from '@assets/images'
-import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
+import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
@@ -34,13 +33,13 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
 
         const substrStart = html.indexOf('src="') + 5
         const substrEnd = html.indexOf('oembed') + 6
-        const embedUrl = html.substring(substrStart, substrEnd)
+        const embededUrl = html.slice(substrStart, substrEnd)
 
-        setEmbedUrl(embedUrl)
+        setEmbedUrl(embededUrl)
       }
     }
 
-    parseYoutubeUrl()
+    parseYoutubeUrl().then(data => console.log(data)).catch(error => console.log(error))
   }, [url])
 
   return (
@@ -65,8 +64,7 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
 }
 
 export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) => {
-  const [videosCount, setVideosCount] = React.useState(3)
-
+  const videosCount = 3;
   return (
     <div key={id} className={className}>
       <h4 className="text-default font-semibold md:text-md">{title}</h4>
