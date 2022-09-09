@@ -6,12 +6,11 @@
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AccordionItem,
-  AdvancedAccordion,
   ColumnedText,
   Contact,
   Divider,
   FileList,
-  // Iframe,
+  Iframe,
   Institution,
   Links,
   ListItems,

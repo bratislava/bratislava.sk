@@ -117,7 +117,6 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
                 case 'ComponentSectionsSubpageList':
                   return (
                     <SubpageList
-                      pageColor={renderColor(page.pageColor)}
                       className="mt-10"
                       key={index}
                       subpageList={section.subpageList?.map(parsePageLink).filter(isPresent)}
