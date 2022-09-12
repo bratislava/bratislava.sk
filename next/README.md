@@ -20,6 +20,10 @@ For CMS setup see `strapi` directory. You can also run the project against produ
 yarn dev
 ```
 
+## Meilisearch
+
+We're using [Meilisearch](https://www.meilisearch.com/) as our search engine - for search to work, Next & Strapi needs to connect to a running meilisearch instance. You can develop most of the page without this, but if you need to work with search follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/setup-dev-deploy).
+
 ## Generate GraphQL
 
 Strapi V4 does not export schema.graphql by default - instead, you'll need a running server to generate types from graphql endpoint. Otherwise the process is the same
