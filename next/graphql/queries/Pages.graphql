@@ -54,6 +54,34 @@ query VznDetail($id: ID!) {
             }
           }
         }
+        cancellationDocument {
+          id
+          title
+          document {
+            data {
+              attributes {
+                url
+                size
+                ext
+                createdAt
+              }
+            }
+          }
+        }
+        amedmentDocument {
+          id
+          title
+          document {
+            data {
+              attributes {
+                url
+                size
+                ext
+                createdAt
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -67,7 +67,11 @@ export const DocumentListModalBody = (vzn: any) => {
           <div className="pt-5">
             <div className="pb-4 font-semibold"> {t('vzn.amendments')} </div>
             <div className="flex flex-row flex-wrap gap-5">
-              {vzn.amedmentDocument.map((doc) => (doc?.id ? <LinkedVznMainDocument key={doc.id} id={doc.id} /> : null))}
+              {vzn.amedmentDocument.map((doc) =>
+                doc?.id ? (
+                  <LinkedVznMainDocument key={doc.id} vznId={vzn?.id?.slice(4, vzn?.id?.length)} id={doc.id} filePath="amedmentDocument" />
+                ) : null
+              )}
             </div>
           </div>
         )}
@@ -76,7 +80,14 @@ export const DocumentListModalBody = (vzn: any) => {
             <div className="pb-4 font-semibold"> {t('vzn.cancellationDocument')} </div>
             <div className="flex flex-row flex-wrap gap-5">
               {vzn.cancellationDocument.map((doc) =>
-                doc?.id ? <LinkedVznMainDocument key={doc.id} id={doc.id} /> : null
+                doc?.id ? (
+                  <LinkedVznMainDocument
+                    key={doc.id}
+                    vznId={vzn?.id?.slice(4, vzn?.id?.length)}
+                    id={doc.id}
+                    filePath="cancellationDocument"
+                  />
+                ) : null
               )}
             </div>
           </div>

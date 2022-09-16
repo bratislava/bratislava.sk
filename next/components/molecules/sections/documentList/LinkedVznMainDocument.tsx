@@ -5,10 +5,11 @@ import useSWR from 'swr'
 
 // TODO fix dates
 // TODO loading
-export const LinkedVznMainDocument = ({ id }: { id: string }) => {
-  const { data } = useSWR(['VznDetail', id], () => client.VznDetail({ id }))
-  const title = data?.vzn?.data?.attributes?.title
-  const file = data?.vzn?.data?.attributes?.mainDocument?.data?.attributes
+export const LinkedVznMainDocument = ({ id, vznId, filePath }: { vznId: string; id: string; filePath: string }) => {
+  const { data } = useSWR(['VznDetail', id], () => client.VznDetail({ id: vznId }))
+  const getDocument = data?.vzn?.data?.attributes?.[filePath]?.find((doc) => doc.id === `${id}`)
+  const title = getDocument?.title
+  const file = getDocument?.document?.data?.attributes
   return file ? (
     <FileCard
       key={id}
