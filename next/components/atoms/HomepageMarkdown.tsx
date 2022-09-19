@@ -124,7 +124,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
           const level = depth ?? 0
           if (ordered) {
             return (
-              <NumericalListItem index={index} variant="combined" hasBackground={false}>
+              <NumericalListItem index={index} variant="combined" hasBackground={false} className="items-start">
                 {children}
               </NumericalListItem>
             )
@@ -133,7 +133,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
-                  'h-4 w-4 shrink-0 bg-primary rounded-full mt-1.5 border-4 border-solid border-primary',
+                  'h-4 w-4 shrink-0 bg-primary rounded-full mt-1 border-4 border-solid border-primary',
                   { 'bg-primary': level === 0 },
                   { 'border-primary border-solid border-4': level !== 0 }
                 )}

@@ -144,11 +144,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
 
                   return (
                     <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
-                      <NarrowText
-                        align={item.align ?? undefined}
-                        width={item.width ?? undefined}
-                        content={item.content ?? undefined}
-                      />
+                      <NarrowText contentStyle="my-8" align={item.align} width={item.width} content={item.content} />
                       {link?.url && link.title && <PageLinkButton pageLink={link} />}
                     </div>
                   )
@@ -243,7 +239,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
     return (
       <Waves
         className={cx({
-          'mt-14 md:mt-18': section.position === 'top',
+          'mt-10 md:mt-18': section.position === 'top',
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}
