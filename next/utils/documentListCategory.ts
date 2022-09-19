@@ -60,7 +60,7 @@ const DocumentListCategorys: DocumentListCategorysType[] = [
 
 const DocumentListCategorysMap = new Map()
 
-DocumentListCategorys.map((doc) => {
+DocumentListCategorys.forEach((doc) => {
   DocumentListCategorysMap.set(doc.key, doc)
 })
 

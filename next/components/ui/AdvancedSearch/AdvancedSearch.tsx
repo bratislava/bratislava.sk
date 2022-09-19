@@ -1,12 +1,20 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-shadow */
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
 import Checkbox from '../../../assets/images/checkbox.svg'
 import SearchIcon from '../../../assets/images/search-icon.svg'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -44,8 +52,8 @@ export const AdvancedSearch = ({
   const [checked, setChecked] = useState(options)
 
   const handleAction = (option: SearchOptionProps) => {
-    if (checked.some(({ key }) => key == option.key)) {
-      const options = checked.filter((o) => o.key != option.key)
+    if (checked.some(({ key }) => key === option.key)) {
+      const options = checked.filter((o) => o.key !== option.key)
       setChecked(options)
       handleSelect(options)
     } else {
@@ -130,7 +138,7 @@ export const AdvancedSearch = ({
                 handleAction(option)
               }}
             >
-              {checked.some(({ key }) => key == option.key) ? (
+              {checked.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
                 <div className="mr-px h-6 w-6 rounded border-2 border-solid border-slate-300" />

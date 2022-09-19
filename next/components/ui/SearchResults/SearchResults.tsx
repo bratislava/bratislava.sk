@@ -1,16 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable promise/always-return */
+import { articleLimits } from '@utils/constants'
 import { searchArticles, searchPages } from '@utils/meili'
+import { userSearchFetcher } from '@utils/organisationalStructure'
+import { OrganizationalStructureAccordionCards } from 'components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCards'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
+
 import { SearchOptionProps } from '../AdvancedSearch/AdvancedSearch'
-import { articleLimits } from '@utils/constants'
 import { BlogSearchCards } from '../BlogSearchCards/BlogSearchCards'
 import { FileList } from '../FileList/FileList'
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner'
 import { NoResultsFound } from '../NoResultsFound/NoResultsFound'
 import { PageCards } from '../PageCards/PageCards'
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-import { userSearchFetcher } from '@utils/organisationalStructure'
-import { OrganizationalStructureAccordionCards } from 'components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCards'
 
 export interface SearchResultsProps {
   checkedOptions: SearchOptionProps[]
@@ -39,19 +42,21 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
       ?.then((a) => {
         setArticles(a.hits)
       })
-      .catch((e) => console.log(e))
-    data?.pages?.then((p) => setPages(p.hits)).catch((e) => console.log(e))
-    data?.users?.then((u) => setUsers(u)).catch((e) => console.log(e))
+      .catch((error_) => console.log(error_))
+    data?.pages?.then((p) => setPages(p.hits)).catch((error_) => console.log(error_))
+    data?.users?.then((u) => setUsers(u)).catch((error_) => console.log(error_))
   }, [data, articleLimit])
 
   const noResultsFound = articles?.length === 0 && pages?.length === 0 && documents?.length === 0 && users.length === 0
 
-  const articlesSelected = checkedOptions.some(({ key }) => key == 'articles')
-  const pagesSelected = checkedOptions.some(({ key }) => key == 'pages')
-  const usersSelected = checkedOptions.some(({ key }) => key == 'pages')
+  const articlesSelected = checkedOptions.some(({ key }) => key === 'articles')
+  const pagesSelected = checkedOptions.some(({ key }) => key === 'pages')
+  const usersSelected = checkedOptions.some(({ key }) => key === 'pages')
 
   const handlePagination = (isOpen: boolean) => {
-    isOpen ? setArticleLimit(articleLimits.maxLimit) : setArticleLimit(articleLimits.minLimit)
+    if (isOpen) {
+      setArticleLimit(articleLimits.maxLimit)
+    } else setArticleLimit(articleLimits.minLimit)
   }
   if (error) return <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
   if (!data) return <LoadingSpinner size="small" className="pt-10" />
@@ -60,7 +65,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
       {noResultsFound ? (
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
-        <div className="flex flex-col gap-y-14 lg:gap-y-24 py-14 lg:py-24">
+        <div className="flex flex-col gap-y-14 py-14 lg:gap-y-24 lg:py-24">
           {usersSelected && users.length > 0 && (
             <div>
               <div className="text-default font-semibold lg:text-md">{t('organisationalStructure')}</div>

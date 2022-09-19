@@ -9,6 +9,20 @@ type strapiWebhookPayload = {
   }
 }
 
+function generateUrl(payload: strapiWebhookPayload, slug: string) {
+  let url = ``
+  if (payload?.entry?.locale === 'en') {
+    url += `/en`
+  }
+  if (slug === 'blog-post') {
+    url += `/blog/${payload?.entry?.slug}`
+  }
+  if (slug === 'page') {
+    url += `/${payload?.entry?.slug}`
+  }
+  return url
+}
+
 const handler = async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.STRAPI_REVALIDATE_SECRET_TOKEN) {
@@ -20,24 +34,16 @@ const handler = async function handler(req: NextApiRequest, res: NextApiResponse
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const payload: strapiWebhookPayload = req.body
 
-    console.log(payload.model)
     switch (payload?.model) {
-      case 'blog-post': {
-        let blogPostUrl = ``
-        if (payload?.entry?.locale === 'en') {
-          blogPostUrl += `/en`
-        }
-        blogPostUrl += `/blog/${payload?.entry?.slug}`
+      case 'blog-post':
+        const blogPostUrl = generateUrl(payload, payload?.model)
         await res.revalidate(blogPostUrl)
-      }
-      case 'page': {
-        let pageUrl = ``
-        if (payload?.entry?.locale === 'en') {
-          pageUrl += `/en`
-        }
-        pageUrl += `/${payload?.entry?.slug}`
+        break
+
+      case 'page':
+        const pageUrl = generateUrl(payload, payload?.model)
         await res.revalidate(pageUrl)
-      }
+        break
       default:
         break
     }

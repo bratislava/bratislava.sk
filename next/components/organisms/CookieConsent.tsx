@@ -1,10 +1,10 @@
 import Button from '@bratislava/ui-bratislava/Button/Button'
 import { useCookieConsent } from '@utils/cookies'
+import { isProductionDeployment } from '@utils/utils'
 import NextLink from 'next/link'
 import Script from 'next/script'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-import { isProductionDeployment } from '@utils/utils'
 
 interface IProps {
   pageColor?: string

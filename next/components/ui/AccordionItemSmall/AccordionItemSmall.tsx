@@ -3,7 +3,7 @@ import React from 'react'
 
 // import Chevron from '../../../assets/images/chevron.svg'
 import Chevron from '../../../assets/images/chevron-down-small.svg'
-import SwitchToggle from '../SwitchToggle/SwitchToggle'
+import { SwitchToggle } from '../SwitchToggle/SwitchToggle'
 
 export interface AccordionItemSmallProps {
   className?: string

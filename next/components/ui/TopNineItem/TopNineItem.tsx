@@ -9,8 +9,8 @@ import icon8 from './icons/kontakty-a-uradne-hodiny.svg'
 import icon2 from './icons/miestne-dane-a-poplatky.svg'
 import icon4 from './icons/nahlasenie-podnetov.svg'
 import icon7 from './icons/organizacna-struktura.svg'
-import icon9 from './icons/pracovne-prilezitosti.svg'
 import icon3 from './icons/parky-a-zahrady.svg'
+import icon9 from './icons/pracovne-prilezitosti.svg'
 import icon6 from './icons/turistom-v-hlavnom-meste.svg'
 
 const ICONS = {

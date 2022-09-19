@@ -3,6 +3,7 @@ import { Button, Input } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { FormEvent } from 'react'
+
 import MinusIcon from '../../../assets/images/minus.svg'
 import PlusIcon from '../../../assets/images/plus.svg'
 
@@ -25,6 +26,58 @@ const calculateLivingSituation = (
   const canAccomodate = income >= minimumWage
   return [minimumWage, canAccomodate]
 }
+
+interface IInputFieldProps {
+  id: string
+  label: string
+  value: number
+  onChange: (newValue: number) => void
+  onAddSub: (newValue: number) => void
+}
+
+const InputField = ({
+  id,
+  label,
+  value,
+  onChange,
+  onAddSub,
+  ...rest
+}: IInputFieldProps &
+  Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>) => (
+  <label className="flex flex-col items-center text-center text-sm lg:text-default" htmlFor={id}>
+    {label}
+    <div className="relative mt-3 flex items-center">
+      <Button
+        className="absolute left-4 flex h-8 w-8 cursor-pointer items-center justify-center shadow-none"
+        onClick={() => onAddSub(value - 1)}
+        variant="full-transparent"
+      >
+        <MinusIcon />
+      </Button>
+      <Input
+        id={id}
+        value={value}
+        onChange={(e) => {
+          if (e.target.value === '' || /^[\d\b]+$/.test(e.target.value)) {
+            onChange(parseInt(e.target.value, 10))
+          }
+        }}
+        className="number-control-none box-border w-64 rounded-lg py-4 px-10 text-center text-default"
+        required
+        type="number"
+        min={0}
+        {...rest}
+      />
+      <Button
+        className="absolute right-4 flex h-8 w-8 cursor-pointer items-center justify-center shadow-none"
+        onClick={() => onAddSub(value + 1)}
+        variant="full-transparent"
+      >
+        <PlusIcon />
+      </Button>
+    </div>
+  </label>
+)
 
 const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, childValue }: IProps) => {
   const { t } = useTranslation('minimum-calculator')
@@ -50,8 +103,8 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
 
   return (
     <div className={cx('text-center bg-secondary text-font', className)}>
-      <p className="text-default lg:text-lg font-semibold">{t('title')}</p>
-      <p className="m-auto mt-6 w-10/12 pt-0.5 text-sm lg:text-default font-medium">{t('description')}</p>
+      <p className="text-default font-semibold lg:text-lg">{t('title')}</p>
+      <p className="m-auto mt-6 w-10/12 pt-0.5 text-sm font-medium lg:text-default">{t('description')}</p>
       <form className="mt-10 flex flex-col items-center gap-y-8 text-default font-medium" onSubmit={handleSubmit}>
         <InputField
           id="adults"
@@ -98,7 +151,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
         />
 
         <Button
-          className="mt-6 bg-primary py-3 px-5 lg:py-4 lg:px-6 text-sm lg:text-default font-semibold text-font"
+          className="mt-6 bg-primary py-3 px-5 text-sm font-semibold text-font lg:py-4 lg:px-6 lg:text-default"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"
@@ -120,57 +173,5 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
     </div>
   )
 }
-
-interface IInputFieldProps {
-  id: string
-  label: string
-  value: number
-  onChange: (newValue: number) => void
-  onAddSub: (newValue: number) => void
-}
-
-const InputField = ({
-  id,
-  label,
-  value,
-  onChange,
-  onAddSub,
-  ...rest
-}: IInputFieldProps &
-  Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>) => (
-  <label className="flex flex-col items-center text-center text-sm lg:text-default" htmlFor={id}>
-    {label}
-    <div className="flex items-center mt-3 relative">
-      <Button
-        className="h-8 w-8 inline-block absolute left-4 flex items-center justify-center cursor-pointer shadow-none"
-        onClick={() => onAddSub(value - 1)}
-        variant="full-transparent"
-      >
-        <MinusIcon />
-      </Button>
-      <Input
-        id={id}
-        value={value}
-        onChange={(e) => {
-          if (e.target.value === '' || /^[0-9\b]+$/.test(e.target.value)) {
-            onChange(parseInt(e.target.value))
-          }
-        }}
-        className="box-border w-64 rounded-lg py-4 px-10 text-center text-default number-control-none"
-        required
-        type="number"
-        min={0}
-        {...rest}
-      />
-      <Button
-        className="h-8 w-8 inline-block absolute right-4 flex items-center justify-center cursor-pointer shadow-none"
-        onClick={() => onAddSub(value + 1)}
-        variant="full-transparent"
-      >
-        <PlusIcon />
-      </Button>
-    </div>
-  </label>
-)
 
 export default MinimumCalculator

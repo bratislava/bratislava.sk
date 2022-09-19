@@ -3,11 +3,11 @@ export interface TestCardProps {
   text: string
 }
 
-export const TestCard = (props: TestCardProps) => {
+export const TestCard = ({ title, text }: TestCardProps) => {
   return (
     <div className="max-w-sm space-y-4 rounded border-2 border-primary p-4">
-      <h3 className="font-bold">{props.title}</h3>
-      <p className="text-sm">{props.text}</p>
+      <h3 className="font-bold">{title}</h3>
+      <p className="text-sm">{text}</p>
     </div>
   )
 }

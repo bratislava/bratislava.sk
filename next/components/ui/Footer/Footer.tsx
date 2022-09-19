@@ -1,15 +1,15 @@
+import FBLogo from '@assets/images/FB.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import Image from 'next/image'
 import React from 'react'
+
 import BABrand from '../../../assets/images/BABrand.svg'
 import EULogo from '../../../assets/images/EULogo.svg'
-import FBLogo from '../../../assets/images/FB.svg'
 import IGLogo from '../../../assets/images/IG.svg'
 import YTLogo from '../../../assets/images/YT.svg'
-import EULogoPng from '../../ui/images/EULogo.png'
-import Image from 'next/image'
-
 import { FooterSection, FooterSectionProps } from '../FooterSection/FooterSection'
+import EULogoPng from '../images/EULogo.png'
 
 export interface FooterProps {
   className?: string
@@ -84,7 +84,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="mt-10 flex w-2/3 w-full flex-col justify-around gap-y-10 lg:flex-row xl:mt-0 2xl:flex 2xl:flex-wrap"
+          className="mt-10 flex w-full flex-col justify-around gap-y-10 lg:w-2/3 lg:flex-row xl:mt-0 2xl:flex 2xl:flex-wrap"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
@@ -137,7 +137,7 @@ export const Footer = ({
             </a>
           )}
         </nav>
-        <span className="lg:hidden mt-5">
+        <span className="mt-5 lg:hidden">
           <Image src={EULogoPng} />
         </span>
         <p className="mt-2 lg:mt-0">{copyright}</p>

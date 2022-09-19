@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 
 import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { Button } from '../Button/Button'
-import Modal from '../Modal/Modal'
+import { Modal } from '../Modal/Modal'
 
 export interface RentProps {
   className?: string
@@ -37,15 +37,13 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
           backgroundColor: 'var(--secondary-color)',
         }}
       >
-        {icon?.data?.attributes?.url && (
-          <img className="p-5 h-30 w-30" src={icon.data.attributes.url} alt={title} />
-        )}
+        {icon?.data?.attributes?.url && <img className="h-30 w-30 p-5" src={icon.data.attributes.url} alt={title} />}
       </div>
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-73 ">
         <h1 className="mt-5 mb-7 h-16 text-default lg:text-md">{title}</h1>
 
         <div className="news-small-content w-full break-all text-center">
-          <ReactMarkdown skipHtml children={desc} />
+          <ReactMarkdown skipHtml>{desc}</ReactMarkdown>
         </div>
         {isMore && (
           <Button
@@ -72,18 +70,15 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
             backgroundColor: 'var(--secondary-color)',
           }}
         >
-          <div className="mx-auto mb-8 h-24 w-max w-24 rounded-full bg-white md:mx-0 md:h-40 md:w-40">
+          <div className="mx-auto mb-8 h-24 w-24 rounded-full bg-white md:mx-0 md:h-40 md:w-40">
             {icon?.data?.attributes?.url && (
               <img className="p-5" src={icon.data.attributes.url} alt={title} width="160" height="160" />
             )}
           </div>
           <h1 className="mb-8 text-left text-md">{title}</h1>
-          <ReactMarkdown
-            remarkPlugins={[[remarkGfm]]}
-            skipHtml
-            children={desc}
-            className="modal-content-rent-markdown text-left"
-          />
+          <ReactMarkdown remarkPlugins={[[remarkGfm]]} skipHtml className="modal-content-rent-markdown text-left">
+            {desc}
+          </ReactMarkdown>
         </div>
       </Modal>
     </div>

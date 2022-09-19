@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { FileCard } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import useSWR from 'swr'

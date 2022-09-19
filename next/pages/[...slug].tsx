@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { GeneralPageFragment, MainMenuItemFragment, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -18,6 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allPages = []
 
   while (defaultStart !== 0) {
+    // eslint-disable-next-line no-await-in-loop
     const { pages } = await client.PagesStaticPaths({ page: defaultStart, limit: paginationObj.maxLimit })
     allPages.push(...pages.data)
     if (pages.data.length === 0) {

@@ -1,5 +1,6 @@
 import { NewsLetter } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useTranslation } from 'react-i18next'
 
 import NewsLetterImage from '../../../assets/images/newsletter-image.png'

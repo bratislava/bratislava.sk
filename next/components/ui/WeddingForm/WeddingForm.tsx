@@ -1,5 +1,4 @@
-import { DateTimeFormatter, LocalDate } from '@js-joda/core'
-import cx from 'classnames'
+import { LocalDate } from '@js-joda/core'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
@@ -9,13 +8,8 @@ import { CheckBox } from '../CheckBox/CheckBox'
 import { Field } from '../Field/Field'
 import { Input } from '../Input/Input'
 import { InputAccessory } from '../InputAccessory/InputAccessory'
-import { Select } from '../Select/Select'
 import { TextArea } from '../TextArea/TextArea'
 import { Tooltip } from '../Tooltip/Tooltip'
-
-interface IProps {
-  className?: string
-}
 
 export interface WeddingFormValues {
   name: string
@@ -26,7 +20,7 @@ export interface WeddingFormValues {
   acceptTerms: boolean
 }
 
-export const WeddingForm = ({ className }: IProps) => {
+export const WeddingForm = () => {
   // const [validate, { errors, clearErrors }] =
   //   useValidation<ReservationFormValues>(validateReservationForm);
 
@@ -48,20 +42,6 @@ export const WeddingForm = ({ className }: IProps) => {
     // );
     setReservationFormValues((o) => ({ ...o, ...change }))
   }
-
-  const SPACEOPTIONS = [
-    { key: '1', title: 'Space 1' },
-    { key: '2', title: 'Space 2' },
-    { key: '3', title: 'Space 3' },
-    { key: '4', title: 'Space 4' },
-  ]
-
-  const SPACEPOSSIBILITIES = [
-    { key: '1', title: 'Possibility 1' },
-    { key: '2', title: 'Possibility 2' },
-    { key: '3', title: 'Possibility 3' },
-    { key: '4', title: 'Possibility 4' },
-  ]
 
   // TODO: update plugin to grid columns
 
@@ -89,7 +69,7 @@ export const WeddingForm = ({ className }: IProps) => {
                 className="text-default"
                 // hasError={!!errors?.name}
                 value={reservationFormValues?.name}
-                onChange={(e) => handleChange?.({ name: e.target.value })}
+                onChange={(e) => handleChange({ name: e.target.value })}
               />
             </Field>
             <Field
@@ -105,7 +85,7 @@ export const WeddingForm = ({ className }: IProps) => {
                 className="text-default"
                 // hasError={!!errors?.name}
                 value={reservationFormValues?.name}
-                onChange={(e) => handleChange?.({ name: e.target.value })}
+                onChange={(e) => handleChange({ name: e.target.value })}
               />
             </Field>
             <Field
@@ -121,7 +101,7 @@ export const WeddingForm = ({ className }: IProps) => {
                 className="text-default"
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.email}
-                onChange={(e) => handleChange?.({ email: e.target.value })}
+                onChange={(e) => handleChange({ email: e.target.value })}
               />
             </Field>
 
@@ -139,7 +119,7 @@ export const WeddingForm = ({ className }: IProps) => {
                 placeholder="+421 111 222 333"
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.phone}
-                onChange={(e) => handleChange?.({ phone: e.target.value })}
+                onChange={(e) => handleChange({ phone: e.target.value })}
               />
             </Field>
           </div>
@@ -164,11 +144,7 @@ export const WeddingForm = ({ className }: IProps) => {
                   className="h-12.5 w-full text-default text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.date}
-                  onChange={(e) =>
-                    handleChange?.({
-                      date: e.target.value,
-                    })
-                  }
+                  onChange={(e) => handleChange({ date: e.target.value })}
                 />
               </InputAccessory>
             </Field>
@@ -186,7 +162,7 @@ export const WeddingForm = ({ className }: IProps) => {
                 rows={11}
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.notes}
-                onChange={(e) => handleChange?.({ notes: e.target.value })}
+                onChange={(e) => handleChange({ notes: e.target.value })}
               />
             </Field>
           </div>
@@ -199,7 +175,7 @@ export const WeddingForm = ({ className }: IProps) => {
               id="terms"
               content="Oboznámil/a som sa so všeobecnými obchodnými podmienkami."
               checked={reservationFormValues?.acceptTerms}
-              onChange={(e) => handleChange?.({ acceptTerms: e.target.checked })}
+              onChange={(e) => handleChange({ acceptTerms: e.target.checked })}
             />
           </Field>
         </div>

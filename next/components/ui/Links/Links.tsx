@@ -3,7 +3,7 @@ import cx from 'classnames'
 
 import { ArrowRight, ChevronRight } from '../../../assets/images'
 import { isItExternal } from '../BAStickyMenu/external-link'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 
 export interface LinksProps {
   className?: string
@@ -16,7 +16,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div>
       <div className={cx(className, 'flex flex-col w-full md:w-10/12')}>
-        <h1 className="text-default lg:text-md font-semibold">{title}</h1>
+        <h1 className="text-default font-semibold lg:text-md">{title}</h1>
         <div className="flex flex-col space-y-4 pt-6">
           {pageLinks?.map((pageLink, index) => (
             <Button

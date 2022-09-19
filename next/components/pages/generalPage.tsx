@@ -1,3 +1,10 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-case-declarations */
+/* eslint-disable default-case */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-danger */
+/* eslint-disable consistent-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
@@ -20,7 +27,7 @@ import { isPresent } from '../../utils/utils'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
-import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
+// import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
@@ -46,7 +53,7 @@ const renderColor = (color: any) => {
     return Enum_Pagecategory_Color.Yellow
   }
 }
-const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
@@ -87,7 +94,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-30 text-md font-bold md:text-2xl">
+            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-20 text-md font-bold md:text-2xl lg:pt-30">
               {page?.title}
             </h1>
 
@@ -110,7 +117,6 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
                 case 'ComponentSectionsSubpageList':
                   return (
                     <SubpageList
-                      pageColor={renderColor(page.pageColor)}
                       className="mt-10"
                       key={index}
                       subpageList={section.subpageList?.map(parsePageLink).filter(isPresent)}
@@ -123,7 +129,7 @@ const GeneralPage = ({ pages, footer, children, menuItems }: GeneralPageProps) =
                   return (
                     <div
                       key={index}
-                      className="absolute -bottom-45 z-10 overflow-hidden lg:-bottom-87 -inset-x-7.5 lg:inset-x-0 w-screen lg:w-full"
+                      className="-bottom-45 absolute -inset-x-7.5 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-87 lg:w-full"
                     >
                       <FeaturedBlogs blogs={blogs} />
                     </div>

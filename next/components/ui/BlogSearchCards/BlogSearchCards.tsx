@@ -1,9 +1,10 @@
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
+
 import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 import { BlogItem } from '../FeaturedBlogs/FeaturedBlogs'
-import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface BlogSearchCardsProps {
   title: string
@@ -26,14 +27,14 @@ export const BlogSearchCards = ({ title, blogs, handleButtonClick }: BlogSearchC
   }
   return (
     <div className="flex flex-col gap-y-3 lg:gap-y-6">
-      <div className="text-default lg:text-md font-semibold">{title}</div>
-      <div className="hidden lg:flex flex-col gap-y-6">
+      <div className="text-default font-semibold lg:text-md">{title}</div>
+      <div className="hidden flex-col gap-y-6 lg:flex">
         <div className="flex flex-col gap-y-6">
           {blogs.map((blog, index) => {
             return <BlogSearchCard key={index} item={blog} className="h-50" imageClassName="w-56 h-50" />
           })}
         </div>
-        <Button variant="transparent" className="w-fit px-6 py-2.5 text-default self-center" onClick={handleClick}>
+        <Button variant="transparent" className="w-fit self-center px-6 py-2.5 text-default" onClick={handleClick}>
           {buttonText}
         </Button>
       </div>

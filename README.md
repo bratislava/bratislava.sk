@@ -22,3 +22,4 @@ Each sub-project contains README which should get you up and running. More docum
 
 🐳 `docker-compose.yml` - if you need to quickly setup postgres instance, run `docker compose up postgres` in this directory (you need docker installed)
 
+- in case of using `podman` use command `docker-compose up postgres`

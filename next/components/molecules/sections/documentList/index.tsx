@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+// import { DocumentListFragment } from '@bratislava/strapi-sdk-homepage'
 import DocumentDevider from '@assets/images/documentDevider.svg'
 import DocumentDeviderSmall from '@assets/images/documentDevider-small.svg'
 import { BasicSearch, DocumentListItem, Modal, NoResultsFound, Pagination } from '@bratislava/ui-bratislava'
@@ -28,8 +30,8 @@ export const DocumentList = () => {
   const totalPages = Math.ceil(total / MEILI_PAGE_SIZE)
 
   const setOpenModal = (id) => {
-    const vzn = vzns.find((vzn) => vzn.id === id)
-    setActiveData(vzn)
+    const vznClicked = vzns.find((vzn) => vzn.id === id)
+    setActiveData(vznClicked)
     setOpen(true)
   }
 
@@ -87,6 +89,7 @@ export const DocumentList = () => {
                         onClick={setOpenModal}
                         mainDocumentHref={vzn.mainDocument?.url}
                       />
+
                       {index === 7 ? (
                         <div className="flex items-center justify-center">
                           <DocumentDevider className="my-14 hidden xs:block lg:my-24" />

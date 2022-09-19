@@ -1,5 +1,4 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import cx from 'classnames'
 
 export interface ColumnedTextProps {
   className?: string
@@ -7,7 +6,7 @@ export interface ColumnedTextProps {
   hasBackground?: boolean
 }
 
-export const ColumnedText = ({ className, content, hasBackground }: ColumnedTextProps) => {
+export const ColumnedText = ({ content, hasBackground }: ColumnedTextProps) => {
   const breakWord = '<break>'
   const columns = content.split(breakWord)
   const { Markdown: UIMarkdown } = useUIContext()
@@ -28,7 +27,7 @@ export const ColumnedText = ({ className, content, hasBackground }: ColumnedText
       //   'md:columns-11': columns.length === 11,
       //   'md:columns-12': columns.length >= 12,
       // })}
-      className={`grid grid-cols-1 md:grid-cols-${columnLength} md:gap-7`}
+      className={`md:grid-cols-${columnLength} grid grid-cols-1 md:gap-7`}
     >
       {columns.map((column, i) => (
         <div key={i}>

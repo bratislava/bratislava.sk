@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AccordionItem,
-  AdvancedAccordion,
   ColumnedText,
   Contact,
   Divider,
