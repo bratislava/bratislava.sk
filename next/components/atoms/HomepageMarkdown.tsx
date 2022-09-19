@@ -124,7 +124,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
           const level = depth ?? 0
           if (ordered) {
             return (
-              <NumericalListItem index={index} variant="combined" hasBackground={false} className="items-start">
+              <NumericalListItem index={index} variant="combined" hasBackground={false}>
                 {children}
               </NumericalListItem>
             )
