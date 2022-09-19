@@ -21,7 +21,7 @@ We're indexing some of our content in [Meilisearch](https://www.meilisearch.com/
 error: meilisearch: The provided host is not valid.
 ```
 
-If you're not developing any new search functionality, you likely don't need this and can safely ignore the error. If you think you need this integration, follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/setup-dev-deploy).
+If you're not developing any new search functionality, you likely don't need this and can safely ignore the error. If you think you need this integration, follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/meilisearch-setup).
 
 ### `develop`
 
