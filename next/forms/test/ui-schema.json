@@ -1,0 +1,15 @@
+{
+  "name": {
+    "ui:autofocus": true,
+    "ui:emptyValue": "",
+    "ui:autocomplete": "name"
+  },
+  "birthDate": {
+    "ui:widget": "alt-datetime"
+  },
+  "phone": {
+    "ui:options": {
+      "inputType": "tel"
+    }
+  }
+}
