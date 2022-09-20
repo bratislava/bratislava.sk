@@ -38,6 +38,7 @@ jobs:
       directory: strapi/
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
+      debug: --debug
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
@@ -52,6 +53,7 @@ jobs:
       directory: next/
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
+      debug: --debug
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
