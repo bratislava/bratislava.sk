@@ -24,4 +24,4 @@ This document is when you want to add a new component to the application and if 
   > `yarn gen`;
 - after successfully running above command you are all set to add this query into the page you want and bind the data.
 
-ATTENTION If you are experiencing `Cannot read properties of undefined (reading 'type')`:  If you are adding new component to `Page` or `Blog Post` you NEED to add it also to other one, keep `components` in `Blog Post` and `Page` in sync otherwise step 2 `yarn gen` will not work
+ATTENTION If you are experiencing `Cannot read properties of undefined (reading 'type')`: If you are adding new component to `Page` or `Blog Post` you NEED to add it also to other one, keep `components` in `Blog Post` and `Page` in sync otherwise step 2 `yarn gen` will not work
