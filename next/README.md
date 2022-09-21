@@ -60,3 +60,36 @@ STRAPI_REVALIDATE_SECRET_TOKEN = <value>
 ```
 
 This token should be the same as we pass in webhook url as query param.
+
+## Temp forms libraries
+
+The following libraries have been added as part of forms experiments and should be reviewed & cleared up as needed before merging to master:
+
+```
+    "@cloudflare/json-schema-walker": "^0.1.1",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@jsonforms/core": "^3.0.0-rc.1",
+    "@jsonforms/material-renderers": "^3.0.0-rc.1",
+    "@jsonforms/react": "^3.0.0-rc.1",
+    "@jsonforms/vanilla-renderers": "^3.0.0-rc.1",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/lab": "^5.0.0-alpha.97",
+    "@mui/material": "^5.10.3",
+    "@mui/styles": "^5.10.3",
+    "@mui/x-date-pickers": "^5.0.0-beta.7",
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
+    "cheerio": "^1.0.0-rc.12",
+    "json-schema": "^0.4.0",
+    "libxmljs2": "^0.30.1",
+    "typescript-json": "^3.2.1",
+    "@types/json-schema": "^7.0.11",
+    "json-schema-to-typescript": "^11.0.2",
+```
+
+Bootstrap styles are also added to `app.tsx` becasue of `@rjsf/core`
+
+```html
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+```
