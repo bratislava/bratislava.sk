@@ -24,7 +24,10 @@ jobs:
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
       debug: --debug
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-dev-strapi:
     name: dev Strapi
@@ -36,7 +39,10 @@ jobs:
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
       debug: --debug
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-dev-next:
     name: dev Next
@@ -48,7 +54,10 @@ jobs:
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
       debug: --debug
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-staging:
     name: after staging Strapi deploy Next
@@ -60,7 +69,10 @@ jobs:
       cluster: tkg-innov-staging
       url: https://tkg.staging.bratislava.sk
       flag: --staging
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-staging-strapi:
     name: staging Strapi
@@ -72,7 +84,10 @@ jobs:
       cluster: tkg-innov-staging
       url: https://tkg.staging.bratislava.sk
       flag: --staging
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-staging-next:
     name: staging Next
@@ -84,7 +99,10 @@ jobs:
       cluster: tkg-innov-staging
       url: https://tkg.staging.bratislava.sk
       flag: --staging
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-prod:
     name: after prod Strapi deploy Next
@@ -96,7 +114,10 @@ jobs:
       cluster: tkg-innov-prod
       url: https://tkg.bratislava.sk
       flag: --production
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.PROD_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-prod-strapi:
     name: prod Strapi
@@ -108,7 +129,10 @@ jobs:
       cluster: tkg-innov-prod
       url: https://tkg.bratislava.sk
       flag: --production
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.PROD_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-prod-next:
     name: prod Next
@@ -120,4 +144,7 @@ jobs:
       cluster: tkg-innov-prod
       url: https://tkg.bratislava.sk
       flag: --production
-    secrets: inherit
+    secrets:
+      service-account: ${{ secrets.PROD_STANDALONE_TOKEN }}
+      registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
