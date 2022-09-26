@@ -5,9 +5,8 @@ on:
       - 'dev**'
       - 'staging**'
       - 'prod**'
-  pull_request:
-    types:
-      - closed
+    branches:
+      - master
 
 jobs:
   conditions:
