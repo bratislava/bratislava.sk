@@ -5,6 +5,7 @@ on:
       - master
 env:
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  STRAPI_URL: https://bratislava-strapi.staging.bratislava.sk
 jobs:
   build:
     name: yarn build
