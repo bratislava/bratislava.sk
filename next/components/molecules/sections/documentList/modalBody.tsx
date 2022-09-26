@@ -6,14 +6,18 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable react/destructuring-assignment */
 import { FileCard } from '@bratislava/ui-bratislava'
+import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
 import ReactMarkdown from 'react-markdown'
-
-import { LinkedVznMainDocument } from './LinkedVznMainDocument'
+import useSWR from 'swr'
 
 // we're taking the entity from meilisearch which unfortunately types differently
 // TODO fix typing
+
 export const DocumentListModalBody = (vzn: any) => {
+  const vznId = vzn?.id?.slice(4, vzn?.id?.length)
+  const { data } = useSWR(['VznDetail', vznId], () => client.VznDetail({ id: vznId }))
+
   const { t } = useTranslation()
   return (
     <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background">
@@ -67,11 +71,23 @@ export const DocumentListModalBody = (vzn: any) => {
           <div className="pt-5">
             <div className="pb-4 font-semibold"> {t('vzn.amendments')} </div>
             <div className="flex flex-row flex-wrap gap-5">
-              {vzn.amedmentDocument.map((doc) =>
-                doc?.id ? (
-                  <LinkedVznMainDocument key={doc.id} vznId={vzn?.id?.slice(4, vzn?.id?.length)} id={doc.id} filePath="amedmentDocument" />
+              {vzn.amedmentDocument.map((amedmentDocument) => {
+                const getDocument = data?.vzn?.data?.attributes?.amedmentDocument?.find(
+                  (doc) => doc.id === `${amedmentDocument.id}`
+                )
+                const title = getDocument?.title
+                const file = getDocument?.document?.data?.attributes
+                return file ? (
+                  <FileCard
+                    key={amedmentDocument.id}
+                    className="w-80"
+                    downloadLink={file?.url}
+                    fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
+                    fileTitle={title}
+                    uploadDate={new Date(file?.createdAt).toLocaleDateString()}
+                  />
                 ) : null
-              )}
+              })}
             </div>
           </div>
         )}
@@ -79,16 +95,23 @@ export const DocumentListModalBody = (vzn: any) => {
           <div className="pt-5">
             <div className="pb-4 font-semibold"> {t('vzn.cancellationDocument')} </div>
             <div className="flex flex-row flex-wrap gap-5">
-              {vzn.cancellationDocument.map((doc) =>
-                doc?.id ? (
-                  <LinkedVznMainDocument
-                    key={doc.id}
-                    vznId={vzn?.id?.slice(4, vzn?.id?.length)}
-                    id={doc.id}
-                    filePath="cancellationDocument"
+              {vzn.cancellationDocument.map((cancellationDocument) => {
+                const getDocument = data?.vzn?.data?.attributes?.cancellationDocument?.find(
+                  (doc) => doc.id === `${cancellationDocument.id}`
+                )
+                const title = getDocument?.title
+                const file = getDocument?.document?.data?.attributes
+                return file ? (
+                  <FileCard
+                    key={cancellationDocument.id}
+                    className="w-80"
+                    downloadLink={file?.url}
+                    fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
+                    fileTitle={title}
+                    uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />
                 ) : null
-              )}
+              })}
             </div>
           </div>
         )}
