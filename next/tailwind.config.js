@@ -85,6 +85,38 @@ module.exports = {
         xxxl: ['48px', '62.4px'],
       },
       colors: {
+        form: {
+          brand: {
+            default: '#E46054',
+            hover: '#E98076',
+            pressed: '#B64D43',
+          },
+          black: {
+            default: '#333333',
+            hover: '#5C5C5C',
+            pressed: '#292929',
+          },
+          negative: {
+            default: '#EF1919',
+            hover: '#F24747',
+            pressed: '#BF1414',
+          },
+          'plain-brand': {
+            default: 'transparent',
+            hover: '#FCEFEE',
+            pressed: '#FADFDD',
+          },
+          'plain-black': {
+            default: 'transparent',
+            hover: '#EBEBEB',
+            pressed: '#D6D6D6',
+          },
+          'plain-negative': {
+            default: 'transparent',
+            hover: '#FDE8E8',
+            pressed: '#FCD1D1',
+          },
+        },
         transperentBG: 'rgba(0, 0, 0, 0.5)',
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
@@ -111,8 +143,8 @@ module.exports = {
           semilight: 'var(--semilight-gray-color)',
           light: 'var(--light-gray-color)',
         },
-        offWhite : '#ccc',
-        lightGray : '#9A9A9A',
+        offWhite: '#ccc',
+        lightGray: '#9A9A9A',
         black: {
           universal: 'var(--universal-black)',
         },
