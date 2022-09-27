@@ -3,7 +3,7 @@ import { LinkButtonProps } from '@react-types/button'
 import React, { forwardRef, ReactNode, RefObject } from 'react'
 import cx from 'classnames'
 
-import SearchIcon from '../../assets/images/arrow-right.svg'
+import ArrowRightIcon from '../../assets/images/arrow-right.svg'
 import MLink from './MLink'
 
 type ButtonBase = {
@@ -23,6 +23,8 @@ type ButtonBase = {
   disabled?: boolean
   icon?: ReactNode
   text?: string
+  startIcon?: ReactNode
+  endIcon?: ReactNode
 }
 
 const LINK_ICON_LG = '16'
@@ -47,7 +49,7 @@ type PolymorphicButton = {
 }
 
 const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProps>(
-  ({ className, disabled = false, variant = 'brand', size = 'lg', icon, text, ...rest }, ref) => {
+  ({ className, disabled = false, variant = 'brand', size = 'lg', icon, text, startIcon, endIcon, ...rest }, ref) => {
     const { buttonProps } = useButton(
       {
         ...rest,
@@ -160,7 +162,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           {...buttonPropsFixed}
         >
           <i className={size === 'sm' ? 'ml-2' : 'ml-3'}>
-            <SearchIcon
+            <ArrowRightIcon
               width={size === 'sm' ? LINK_ICON_SM : LINK_ICON_LG}
               height={size === 'sm' ? LINK_ICON_SM : LINK_ICON_LG}
             />
@@ -171,8 +173,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
     return (
       <button type="button" ref={ref as RefObject<HTMLButtonElement>} className={style} {...buttonProps}>
-        {text && !icon && text}
-        {!text && icon && <i className={`${size === 'lg' && 'w-5 h-5'} ${size === 'sm' && 'w-4 h-4'}`}>{icon}</i>}
+        <div className="flex items-center">
+          {startIcon && <i className={`${size === 'lg' && 'w-5 h-5 mr-3'} ${size === 'sm' && 'w-4 h-4 mr-2.5'}`}>{startIcon}</i>}
+          {text && !icon && text}
+          {!text && icon && <i className={`${size === 'lg' && 'w-5 h-5'} ${size === 'sm' && 'w-4 h-4'}`}>{icon}</i>}
+          {endIcon && <i className={`${size === 'lg' && 'w-4 h-4 ml-3'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>}
+        </div>
       </button>
     )
   }
