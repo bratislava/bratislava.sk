@@ -5,59 +5,64 @@ on:
       - 'dev**'
       - 'staging**'
       - 'prod**'
-  pull_request:
-    types:
-      - closed
+    branches:
+      - master
 
 jobs:
   conditions:
     name: Check for cluster conditions
-    uses: bratislava/github-actions/.github/workflows/cluster-deploy-conditions.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/cluster-deploy-conditions.yml@stable
 
   deploy-dev:
     name: after dev Strapi deploy Next
     if: needs.conditions.outputs.dev == 'true'
     needs: [conditions, deploy-dev-strapi]
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: next/
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
+      debug: --debug
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-dev-strapi:
     name: dev Strapi
     needs: conditions
     if: needs.conditions.outputs.dev-strapi == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: strapi/
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
+      debug: --debug
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-dev-next:
     name: dev Next
     needs: conditions
     if: needs.conditions.outputs.dev-next == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: next/
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
+      debug: --debug
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-staging:
     name: after staging Strapi deploy Next
     if: needs.conditions.outputs.staging == 'true'
     needs: [conditions, deploy-staging-strapi]
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: next/
       cluster: tkg-innov-staging
@@ -66,12 +71,13 @@ jobs:
     secrets:
       service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-staging-strapi:
     name: staging Strapi
     needs: conditions
     if: needs.conditions.outputs.staging-strapi == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: strapi/
       cluster: tkg-innov-staging
@@ -80,12 +86,13 @@ jobs:
     secrets:
       service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-staging-next:
     name: staging Next
     needs: conditions
     if: needs.conditions.outputs.staging-next == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: next/
       cluster: tkg-innov-staging
@@ -94,45 +101,49 @@ jobs:
     secrets:
       service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-prod:
     name: after prod Strapi deploy Next
     if: needs.conditions.outputs.prod == 'true'
     needs: [conditions, deploy-prod-strapi]
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: next/
       cluster: tkg-innov-prod
-      url: https://tkg.prod.bratislava.sk
+      url: https://tkg.bratislava.sk
       flag: --production
     secrets:
-      service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
+      service-account: ${{ secrets.PROD_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-prod-strapi:
     name: prod Strapi
     needs: conditions
     if: needs.conditions.outputs.prod-strapi == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: strapi/
       cluster: tkg-innov-prod
-      url: https://tkg.prod.bratislava.sk
+      url: https://tkg.bratislava.sk
       flag: --production
     secrets:
       service-account: ${{ secrets.PROD_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy-prod-next:
     name: prod Next
     needs: conditions
     if: needs.conditions.outputs.prod-next == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@v1.1
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
     with:
       directory: next/
       cluster: tkg-innov-prod
-      url: https://tkg.prod.bratislava.sk
+      url: https://tkg.bratislava.sk
       flag: --production
     secrets:
       service-account: ${{ secrets.PROD_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+      sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}

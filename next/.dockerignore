@@ -3,6 +3,8 @@
 Dockerfile
 dist
 .env
+.env.example
+.env.test
 .env.local
 .env.development
 .env.production
