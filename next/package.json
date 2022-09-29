@@ -60,7 +60,7 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "2.9.0",
+    "@graphql-codegen/cli": "2.13.1",
     "@graphql-codegen/typescript": "2.7.2",
     "@graphql-codegen/typescript-graphql-request": "4.5.2",
     "@graphql-codegen/typescript-operations": "2.5.2",
