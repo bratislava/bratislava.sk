@@ -2,5 +2,6 @@
   "eslint.workingDirectories": [
     "./next",
     "./strapi"
-  ]
+  ],
+  "typescript.tsdk": "./next/node_modules/typescript/lib"
 }
