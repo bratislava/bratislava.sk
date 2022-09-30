@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
 
 // not used, kept in case needed

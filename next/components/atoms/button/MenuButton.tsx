@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import cx from 'classnames'
 import { FC, ReactNode } from 'react'
 

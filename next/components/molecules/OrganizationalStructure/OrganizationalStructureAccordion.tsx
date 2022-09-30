@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { roleOrderingScore } from '@utils/organisationalStructure'
 import cx from 'classnames'
 import { useToggle } from 'rooks'

@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { HorizontalScrollWrapper, NewsCard, NewsCardProps } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 

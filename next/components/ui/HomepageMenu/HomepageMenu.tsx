@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { ArrowRight } from '@assets/images'
 import ChevronRight from '@assets/images/chevron-right.svg'
 import CloseFilled from '@assets/images/close-filled.svg'

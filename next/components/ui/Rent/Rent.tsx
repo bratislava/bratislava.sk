@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import cx from 'classnames'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'

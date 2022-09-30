@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable unicorn/consistent-destructuring */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
