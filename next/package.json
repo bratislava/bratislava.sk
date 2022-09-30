@@ -78,6 +78,7 @@
     "@types/react-dom": "18.0.6",
     "@types/react-mailchimp-subscribe": "2.1.1",
     "@types/react-modal": "3.13.1",
+    "@types/xml2js": "^0.4.11",
     "@typescript-eslint/eslint-plugin": "5.30.0",
     "@typescript-eslint/parser": "5.30.0",
     "autoprefixer": "^10.4.7",
