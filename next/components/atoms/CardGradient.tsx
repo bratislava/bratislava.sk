@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { TImageCarouselItem } from '@bratislava/ui-bratislava'
 import cx from 'classnames'

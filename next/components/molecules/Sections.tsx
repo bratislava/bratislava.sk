@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 /* eslint-disable @typescript-eslint/no-unsafe-call */

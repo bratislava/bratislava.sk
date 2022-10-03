@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 import { GetGroupMembersRecursiveResult } from 'services/ms-graph'

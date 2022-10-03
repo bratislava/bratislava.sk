@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { AccordionCard, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import { useMemo } from 'react'
 import { MSGraphFilteredGroupUser } from 'services/ms-graph'

@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { MeiliSearch } from 'meilisearch'
 
 export const MEILI_PAGE_SIZE = 10

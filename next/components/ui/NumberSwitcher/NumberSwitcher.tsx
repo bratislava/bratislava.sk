@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import cx from 'classnames'
 
 import MinusIcon from '../../../assets/images/minus.svg'

@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
 import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 

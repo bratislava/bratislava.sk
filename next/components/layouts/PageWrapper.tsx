@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable lodash/collection-ordering */
 import orderBy from 'lodash/orderBy'
