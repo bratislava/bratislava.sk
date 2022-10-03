@@ -5,6 +5,7 @@ import { useTextField } from 'react-aria'
 import ChevronDown from '../../assets/images/chevron-down-small.svg'
 import ChevronUp from '../../assets/images/chevron-up-small.svg'
 import FieldHeader from './FieldHeader'
+import FieldErrorMessage from './FieldErrorMessage'
 
 interface SelectProps {
   label: string
@@ -72,10 +73,6 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     'w-full max-w-xs  text-default rounded-lg px-4 py-3 focus:outline-none'
   )
 
-  const errorStyle = cx(
-      'mt-1 text-sm text-error'
-  )
-
   const dropdownStyle = cx(
     'flex-column flex cursor-pointer items-center p-2'
   )
@@ -97,13 +94,8 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
           </div>
         </div>
       </div>
-      {/* ERROR MESSAGE */
-        props.errorMessage && (
-          <div className={errorStyle} {...errorMessageProps}>
-            {props.errorMessage}
-          </div>
-        )
-      }
+      {/* ERROR MESSAGE */ }
+      <FieldErrorMessage errorMessage={props.errorMessage} errorMessageProps={errorMessageProps} />
     </section>
   )
 })
