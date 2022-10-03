@@ -1,8 +1,7 @@
 // @ts-strict-ignore
 import { AccordionCard } from '@bratislava/ui-bratislava/AccordionCard/AccordionCard'
+import { userDetailsFetcher } from 'backend/utils/organisationalStructure'
 import useSWR from 'swr'
-
-import { userDetailsFetcher } from '../../backend/utils/organisationalStructure'
 
 // TODO not used right now, but might be useful - keeping as an example
 // loads data for a single person, and displays it as a accordion card

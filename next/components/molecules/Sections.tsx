@@ -24,12 +24,12 @@ import {
   Videos,
   Waves,
 } from '@bratislava/ui-bratislava'
+import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '@utils/page'
+import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
-import { isPresent } from '../../utils/utils'
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
 import { DocumentList } from './sections/documentList'
 import { ArticlesList } from './sections/homepage/ArticlesList'

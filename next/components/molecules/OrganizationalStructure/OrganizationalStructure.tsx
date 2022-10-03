@@ -1,8 +1,8 @@
 import { Divider } from '@bratislava/ui-bratislava/Divider/Divider'
+import { structureFetcher } from 'backend/utils/organisationalStructure'
 import { useTranslation } from 'next-i18next'
 import useSWR from 'swr'
 
-import { structureFetcher } from '../../../backend/utils/organisationalStructure'
 import { OrganizationalStructureTopLevelAccordion } from './OrganizationalStructureTopLevelAccordion'
 
 export interface AdvancedAccordionProps {

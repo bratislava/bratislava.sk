@@ -3,13 +3,13 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
 import { client } from '@utils/gql'
+import { parseFooter, parseMainMenu } from '@utils/page'
+import { arrayify, shouldSkipStaticPaths } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
-import { parseFooter, parseMainMenu } from '../../utils/page'
-import { arrayify, shouldSkipStaticPaths } from '../../utils/utils'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   let paths: { params: { slug: string } }[] = []

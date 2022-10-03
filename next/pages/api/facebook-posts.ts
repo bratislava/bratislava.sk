@@ -1,7 +1,6 @@
 import { withSentry } from '@sentry/nextjs'
+import { fetchFacebookPosts } from '@utils/facebook'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-import { fetchFacebookPosts } from '../../utils/facebook'
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const posts = await fetchFacebookPosts()

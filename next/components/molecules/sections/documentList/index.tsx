@@ -6,11 +6,11 @@ import DocumentDeviderSmall from '@assets/images/documentDevider-small.svg'
 import { BasicSearch, DocumentListItem, Modal, NoResultsFound, Pagination } from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import { fileCountVzns } from '@utils/utils'
+import { MEILI_PAGE_SIZE, searchVZN } from 'backend/utils/meili'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import useSWR from 'swr'
 
-import { MEILI_PAGE_SIZE, searchVZN } from '../../../../backend/utils/meili'
 import { DocumentListModalBody } from './modalBody'
 
 export const DocumentList = () => {

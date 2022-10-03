@@ -1,8 +1,8 @@
 // @ts-strict-ignore
-import { roleOrderingScore } from '@utils/organisationalStructure'
+import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
+import { roleOrderingScore } from 'backend/utils/organisationalStructure'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
-import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
 
 import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'

@@ -1,6 +1,7 @@
 import Button from '@bratislava/ui-bratislava/Button/Button'
 import { useCookieConsent } from '@utils/cookies'
 import { isProductionDeployment } from '@utils/utils'
+import { useCookieConsent } from 'backend/utils/cookies'
 import NextLink from 'next/link'
 import Script from 'next/script'
 import { useTranslation } from 'next-i18next'

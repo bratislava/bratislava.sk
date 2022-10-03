@@ -1,3 +1,4 @@
+import { usersFromDepartmentFetcher } from 'backend/utils/organisationalStructure'
 import { useState } from 'react'
 import { usersFromDepartmentFetcher } from '@utils/organisationalStructure'
 import useSWR from 'swr'

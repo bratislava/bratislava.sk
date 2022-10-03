@@ -12,6 +12,7 @@ import {
   SectionContainer,
 } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
+import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 // import { buildMockData } from '@utils/homepage-mockdata'
 import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
@@ -20,7 +21,6 @@ import { useEffect, useState } from 'react'
 
 import BasePageLayout from '../components/layouts/BasePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
-import { pageStyle, parseFooter, parseMainMenu } from '../utils/page'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
