@@ -10,6 +10,7 @@ import Button from 'components/forms/Button'
 
 import SearchIcon from '../assets/images/search-icon.svg'
 import ArrowRightIcon from '../assets/images/arrow-right.svg'
+import Select from 'components/forms/Select'
 
 type WrapperProps = {
   title?: string
@@ -60,10 +61,20 @@ export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
+  const options = [
+    { value: 'stuFei', text: 'STU FEI'}, { value: 'ukFmfi', text: 'UK FMFI'}, { value: 'stuFiit', text: 'STU FIIT'}
+  ]
+
   return (
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
+          <Wrapper direction="column" title="Select">
+            <Stack>
+              <Select label="TEST" options={options}/>
+            </Stack>
+          </Wrapper>
+
           <Wrapper direction="column" title="Button">
             <Stack>
               <Button text="Button" />
