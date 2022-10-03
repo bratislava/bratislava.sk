@@ -136,7 +136,10 @@ module.exports = {
           universal: {
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
+            300: '#C2C2C2',
             500: 'var(--universal-gray-500)',
+            600: '#5C5C5C',
+            700: '#333333',
             800: 'var(--universal-gray-800)',
           },
           dark: 'var(--dark-gray-color)',
@@ -156,6 +159,7 @@ module.exports = {
           'universal-800': 'var(--universal-red-800)',
           'universal-500': 'var(--universal-red-500)',
           'universal-300': 'var(--universal-red-300)',
+          'negative-700': '#EF1919',
           brick: '#E46054',
           'brick-dark': '#D05145',
           superlight: 'var(--superlight-red-color)',
