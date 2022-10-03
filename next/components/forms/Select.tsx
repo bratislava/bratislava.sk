@@ -1,5 +1,6 @@
 import cx from 'classnames'
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, RefObject, useState } from 'react'
+import { useTextField } from 'react-aria'
 
 
 interface SelectProps {
@@ -18,6 +19,20 @@ interface SelectProps {
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   const [ valueState, setValueState ] = useState<string>(props.value || '')
+  const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
+    {
+      name: props.name,
+      placeholder: props.placeholder,
+      value: props.value,
+      isRequired: props.required,
+      onChange(value) {
+        setValueState(value)
+      },
+      isReadOnly: props.disabled,
+    },
+    ref as RefObject<HTMLInputElement>
+  )
+
 
   const labelStyle = cx(
     'relative mb-1 text-default font-semibold text-universal-black',
@@ -25,7 +40,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   const selectStyle = cx(
-    'w-full max-w-xs px-4 py-3 border-2 border-universal-gray-200 text-default rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
+    'w-full max-w-xs mx-4 my-3 border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
     {
       // hover
       'hover:border-universal-gray-500': !props.disabled,
@@ -36,6 +51,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     }
   )
 
+  const inputStyle = cx(
+    ' text-default rounded-lg px-4 py-3'
+  )
+
   const errorStyle = cx(
       'mt-1 text-sm text-error'
   )
@@ -43,20 +62,18 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   return (
     <div className="flex w-max flex-col">
       <div>
-        <label htmlFor={props.name} className={labelStyle}>{props.label}</label>
+        <label className={labelStyle} {...labelProps}>{props.label}</label>
       </div>
       <div className="relative w-max">
-        <input name={props.name} list={`${props.name}-list`}
-               type="text" className={selectStyle}
-               placeholder={props.placeholder} value={valueState}
-               onChange={(event) => setValueState(event.target.value)}
-               multiple={props.multiple} readOnly={props.disabled}/>
-        <datalist id={`${props.name}-list`} >
-          { props.options.map((option, key) => <option key={key} value={option} />) }
-        </datalist>
+        <div className={selectStyle}>
+          <input className={inputStyle} {...inputProps} />
+        </div>
+        <div>
+
+        </div>
         {
           props.errorMessage && (
-            <div className={errorStyle}>
+            <div className={errorStyle} {...errorMessageProps}>
               {props.errorMessage}
             </div>
           )
