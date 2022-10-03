@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { withSentry } from '@sentry/nextjs'
 import axios, { AxiosRequestConfig } from 'axios'
 import { ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'

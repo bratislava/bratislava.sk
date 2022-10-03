@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import FBLogo from '@assets/images/FB.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'

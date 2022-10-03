@@ -3,7 +3,7 @@ import { LinkButtonProps } from '@react-types/button'
 import React, { forwardRef, ReactNode, RefObject } from 'react'
 import cx from 'classnames'
 
-import ArrowRightIcon from '../../assets/images/arrow-right.svg'
+import ArrowRightIcon from '../../assets/images/forms/arrow-right.svg'
 import MLink from './MLink'
 
 type ButtonBase = {
@@ -39,6 +39,7 @@ export type AnchorProps = AriaButtonProps<'a'> &
   ButtonBase & {
     href: string
     label: string
+    disabled?: false
   }
 
 export type PolymorphicProps = ButtonProps | AnchorProps
@@ -62,7 +63,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const style = cx(
       rest.href
         ? 'font-medium underline underline-offset-4 inline-flex items-center focus-visible: outline-none'
-        : 'space-x-2 text-white font-semibold inline-flex items-center justify-center text-center align-middle focus:outline-none rounded-lg',
+        : 'w-fit h-fit space-x-2 text-white font-semibold inline-flex items-center justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
         'px-6 py-4 text-default':
@@ -113,14 +114,23 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           size === 'lg' && (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
         'px-2 py-1 text-sm':
           size === 'sm' && (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
-        // bg and border color
-        'bg-form-brand-default focus:bg-form-brand-pressed': variant === 'brand',
-        'border-2 border-form-brand-default bg-transparent text-form-brand-default focus:border-form-brand-pressed focus:text-form-brand-pressed':
-          variant === 'brand-outline',
-        'bg-form-black-default focus:bg-form-black-pressed': variant === 'black',
-        'border-2 border-form-black-default bg-transparent text-form-black-default focus:border-form-black-pressed focus:text-form-black-pressed':
+        'border-2':
+          variant === 'brand' ||
+          variant === 'black' ||
+          variant === 'negative' ||
+          variant === 'brand-outline' ||
           variant === 'black-outline',
-        'bg-form-negative-default focus:bg-form-negative-pressed': variant === 'negative',
+        // bg and border color
+        'border-form-brand-default bg-form-brand-default focus:bg-form-brand-pressed focus:border-form-brand-pressed':
+          variant === 'brand',
+        'border-form-brand-default bg-transparent text-form-brand-default focus:border-form-brand-pressed focus:text-form-brand-pressed':
+          variant === 'brand-outline',
+        'border-form-black-default bg-form-black-default focus:bg-form-black-pressed focus:border-form-black-pressed':
+          variant === 'black',
+        'border-form-black-default bg-transparent text-form-black-default focus:border-form-black-pressed focus:text-form-black-pressed':
+          variant === 'black-outline',
+        'border-form-negative-default bg-form-negative-default focus:bg-form-negative-pressed focus:border-form-negative-pressed':
+          variant === 'negative',
 
         'text-form-brand-default focus:bg-form-plain-brand-pressed focus:text-form-brand-pressed':
           variant === 'plain-brand',
@@ -133,11 +143,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'text-form-black-default focus:text-form-black-pressed': variant === 'link-black',
 
         // hover
-        'hover:bg-form-brand-hover': variant === 'brand' && !disabled,
+        'hover:bg-form-brand-hover hover:border-form-brand-hover': variant === 'brand' && !disabled,
         'hover:border-form-brand-hover hover:text-form-brand-hover': variant === 'brand-outline' && !disabled,
-        'hover:bg-form-black-hover': variant === 'black' && !disabled,
+        'hover:bg-form-black-hover hover:border-form-black-hover': variant === 'black' && !disabled,
         'hover:border-form-black-hover hover:text-form-black-hover': variant === 'black-outline' && !disabled,
-        'hover:bg-form-negative-hover': variant === 'negative' && !disabled,
+        'hover:bg-form-negative-hover hover:border-form-negative-hover': variant === 'negative' && !disabled,
 
         'hover:bg-form-plain-brand-hover hover:text-form-brand-hover': variant === 'plain-brand' && !disabled,
         'hover:bg-form-plain-black-hover hover:text-form-black-hover': variant === 'plain-black' && !disabled,
@@ -174,10 +184,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     return (
       <button type="button" ref={ref as RefObject<HTMLButtonElement>} className={style} {...buttonProps}>
         <div className="flex items-center">
-          {startIcon && <i className={`${size === 'lg' && 'w-5 h-5 mr-3'} ${size === 'sm' && 'w-4 h-4 mr-2.5'}`}>{startIcon}</i>}
+          {startIcon && (
+            <i className={`${size === 'lg' && 'w-5 h-5 mr-3'} ${size === 'sm' && 'w-4 h-4 mr-2.5'}`}>{startIcon}</i>
+          )}
           {text && !icon && text}
           {!text && icon && <i className={`${size === 'lg' && 'w-5 h-5'} ${size === 'sm' && 'w-4 h-4'}`}>{icon}</i>}
-          {endIcon && <i className={`${size === 'lg' && 'w-4 h-4 ml-3'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>}
+          {endIcon && (
+            <i className={`${size === 'lg' && 'w-4 h-4 ml-3'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>
+          )}
         </div>
       </button>
     )

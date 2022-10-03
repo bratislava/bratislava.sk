@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { BlogSectionFragment } from '@bratislava/strapi-sdk-homepage'
 
 import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'

@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { AdvancedAccordionItem, AdvancedAccordionItemProps } from '../AdvancedAccordionItem/AdvancedAccordionItem'
 import { BasicSearch } from '../BasicSearch/BasicSearch'
 import { Divider } from '../Divider/Divider'

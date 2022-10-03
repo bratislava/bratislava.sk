@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 

@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { forceString, isRecord } from '@utils/utils'
 import axios, { AxiosRequestConfig } from 'axios'
 import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'

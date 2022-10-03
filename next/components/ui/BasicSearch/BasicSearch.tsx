@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import SearchIcon from '@assets/images/search-icon.svg'
 import SearchIconSmallBlack from '@assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '@assets/images/search-icon-small-white.svg'

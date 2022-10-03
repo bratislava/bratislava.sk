@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { AccordionCard } from '@bratislava/ui-bratislava/AccordionCard/AccordionCard'
 import { userDetailsFetcher } from '@utils/organisationalStructure'
 import useSWR from 'swr'

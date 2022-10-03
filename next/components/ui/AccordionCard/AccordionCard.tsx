@@ -1,4 +1,4 @@
-// Have to use below rule because after removing <></> is showing warning
+// @ts-strict-ignore
 import cx from 'classnames'
 
 import Mail from '../../../assets/images/mail.svg'

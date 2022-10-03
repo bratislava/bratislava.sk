@@ -1,4 +1,4 @@
-// import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+// @ts-strict-ignore
 import {
   BasicSearch,
   DocumentCards,
@@ -128,13 +128,13 @@ const OfficialBoard = ({
   mainMenu,
   page,
   documents,
-  // homepage,
-  // latestBlogposts,
-  // homepagePosts,
-  // cards,
-  // header,
-  // inba,
-}: AsyncServerProps<typeof getServerSideProps>) => {
+}: // homepage,
+// latestBlogposts,
+// homepagePosts,
+// cards,
+// header,
+// inba,
+AsyncServerProps<typeof getServerSideProps>) => {
   const noResultsFound = documents.length === 0
   const menuItems = parseMainMenu(mainMenu)
   const { t } = useTranslation('common')

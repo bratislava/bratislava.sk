@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable scanjs-rules/identifier_localStorage */
 /* eslint-disable import/no-cycle */
 /* eslint-disable @typescript-eslint/no-use-before-define */

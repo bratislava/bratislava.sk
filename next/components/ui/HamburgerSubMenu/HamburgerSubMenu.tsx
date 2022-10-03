@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { ChevronRight } from '@assets/images'
 import ChevronLeft from '@assets/images/chevron-left.svg'
 import ChevronUp from '@assets/images/chevron-up-small.svg'
