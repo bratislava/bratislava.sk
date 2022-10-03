@@ -1,15 +1,15 @@
-import { ReactNode } from 'react'
-import cx from 'classnames'
-
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
+import cx from 'classnames'
+import Button from 'components/forms/Button'
+import InputField from 'components/forms/InputField'
 import PageWrapper from 'components/layouts/PageWrapper'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Button from 'components/forms/Button'
+import { ReactNode } from 'react'
 
-import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
+import SearchIcon from '../assets/images/forms/search-icon.svg'
 
 type WrapperProps = {
   title?: string
@@ -19,7 +19,7 @@ type WrapperProps = {
 
 export const Wrapper = ({ title, children, direction = 'row' }: WrapperProps) => {
   return (
-    <div className={'mb-10 flex flex-col'}>
+    <div className="mb-10 flex flex-col">
       {title && <h2 className="pb-2 text-lg font-semibold">{title}</h2>}
       <div
         className={cx('flex', {
@@ -53,17 +53,11 @@ export const Stack = ({ direction = 'row', children }: StackProps) => {
   )
 }
 
-type ButtonShowCaseProps = {}
-
-export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
-  return <div></div>
-}
-
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
     <PageWrapper locale={page.locale}>
-      <div className="bg-[#E5E5E5] min-h-screen">
-        <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
+      <div className="min-h-screen bg-[#E5E5E5]">
+        <div className="mx-auto max-w-screen-xl px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Button">
             <Stack>
               <Button text="Button" />
@@ -222,6 +216,136 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
             <Stack>
               <Button variant="link-black" href="#" label="Label value" />
               <Button variant="link-black" href="#" label="Label value" size="sm" />
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Input Field">
+            <Stack>
+              <InputField label="Label" placeholder="Placeholder" />
+              <InputField leftIcon={<SearchIcon />} label="Label" placeholder="Placeholder" />
+              <InputField label="Label" placeholder="Placeholder" value="Value" resetIcon />
+              <InputField leftIcon={<SearchIcon />} label="Label" placeholder="Placeholder" value="Value" resetIcon />
+            </Stack>
+            <Stack>
+              <InputField label="Label" placeholder="Placeholder" required />
+              <InputField leftIcon={<SearchIcon />} label="Label" placeholder="Placeholder" required />
+              <InputField label="Label" placeholder="Placeholder" value="Value" resetIcon required />
+              <InputField
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                required
+              />
+            </Stack>
+            <Stack>
+              <InputField errorMessage="Error message" label="Label" placeholder="Placeholder" />
+              <InputField
+                errorMessage="Error message"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+              />
+              <InputField
+                errorMessage="Error message"
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+              />
+              <InputField
+                errorMessage="Error message"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+              />
+            </Stack>
+            <Stack>
+              <InputField description="Help text" label="Label" placeholder="Placeholder" />
+              <InputField description="Help text" leftIcon={<SearchIcon />} label="Label" placeholder="Placeholder" />
+              <InputField description="Help text" label="Label" placeholder="Placeholder" value="Value" resetIcon />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+              />
+            </Stack>
+            <Stack>
+              <InputField
+                errorMessage="Error message"
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+              />
+              <InputField
+                errorMessage="Error message"
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+              />
+              <InputField
+                errorMessage="Error message"
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+              />
+              <InputField
+                errorMessage="Error message"
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+              />
+            </Stack>
+            <Stack>
+              <InputField label="Label" placeholder="Placeholder" tooltip />
+              <InputField leftIcon={<SearchIcon />} label="Label" placeholder="Placeholder" tooltip />
+              <InputField label="Label" placeholder="Placeholder" value="Value" resetIcon tooltip />
+              <InputField
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+              />
+            </Stack>
+            <Stack>
+              <InputField description="Help text" label="Label" placeholder="Placeholder" tooltip />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                tooltip
+              />
+              <InputField
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+              />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+              />
             </Stack>
           </Wrapper>
         </div>

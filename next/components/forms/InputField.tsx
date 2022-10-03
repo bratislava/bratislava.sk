@@ -56,7 +56,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       'w-full max-w-xs px-4 py-3 border-2 border-universal-gray-200 text-default rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
       className,
       {
-        //conditions
+        // conditions
         'pl-12.5': leftIcon,
         // hover
         'hover:border-universal-gray-500': !disabled,
@@ -70,9 +70,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     )
 
     return (
-      <div className="flex flex-col w-max">
+      <div className="flex w-max flex-col">
         <div className="flex justify-between">
-          <label
+          <p
             className={cx('relative mb-1 text-default font-semibold text-universal-black', {
               'after:content-["✱"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs':
                 required,
@@ -80,11 +80,11 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             {...labelProps}
           >
             {label}
-          </label>
+          </p>
           {tooltip && (
             <div className="flex">
-              <p className="text-default mr-4.5">Optional</p>
-              <i className="w-5 h-5">
+              <p className="mr-4.5 text-default">Optional</p>
+              <i className="h-5 w-5">
                 <HelpIcon />
               </i>
             </div>
@@ -96,14 +96,17 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           </div>
         )}
         <div className="relative w-max">
-          {leftIcon && <i className="w-4 h-4 absolute inset-y-1/2 -translate-y-2/4 left-5">{leftIcon}</i>}
+          {leftIcon && <i className="absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4">{leftIcon}</i>}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
           {resetIcon && valueState && (
             <i
+              role="button"
+              tabIndex={0}
+              onKeyDown={() => setValueState('')}
               onClick={() => setValueState('')}
-              className="w-5 h-5 absolute inset-y-1/2 -translate-y-2/4 right-5 cursor-pointer"
+              className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
             >
-              {<ResetIcon />}
+              <ResetIcon />
             </i>
           )}
         </div>
