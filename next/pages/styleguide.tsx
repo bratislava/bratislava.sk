@@ -61,7 +61,7 @@ export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const options = [ 'STU FEI', 'UK FMFI', 'STU FIIT']
+  const selectOptions = [ 'STU FEI', 'UK FMFI', 'STU FIIT']
 
   return (
     <PageWrapper locale={page.locale}>
@@ -69,10 +69,12 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Select">
             <Stack>
-              <Select name="select-test" label="Select multiple" options={options} multiple/>
-              <Select name="select-test" label="Select placeholder" options={options} placeholder="Test placeholder"/>
-              <Select name="select-test" label="Select disabled" options={options} disabled/>
-              <Select name="select-test" label="Select error" options={options} errorMessage="Test error message"/>
+              <Select name="select-test" label="Select simple" options={selectOptions}/>
+              <Select name="select-test" label="Select placeholder" options={selectOptions} placeholder="Test placeholder"/>
+              <Select name="select-test" label="Select description" options={selectOptions} description="This is simple description"/>
+              <Select name="select-test" label="Select error" options={selectOptions} errorMessage="Test error message"/>
+              <Select name="select-test" label="Select required" options={selectOptions} required/>
+              <Select name="select-test" label="Select disabled" options={selectOptions} disabled/>
             </Stack>
           </Wrapper>
 

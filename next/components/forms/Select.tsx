@@ -14,15 +14,33 @@ interface SelectProps {
   description?: string
   required?: boolean
   disabled?: boolean
-  multiple?: boolean
-  size?: number
+  tooltip?: boolean
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
+  // STATE
   const [ valueState, setValueState ] = useState<string>(props.value || '')
   const [ placeholderState, setPlaceholderState ] = useState<string>(props.placeholder || '')
   const [ isDropdownOpened, setIsDropdownOpened ] = useState<boolean>(false)
 
+
+  // EVENT HANDLERS
+  const onInputChange = (value: string) => {
+    setValueState(value)
+    if (!value) {
+      setPlaceholderState(props.placeholder || '')
+    } else {
+      setPlaceholderState('')
+    }
+  }
+
+  const handleOnClickChevron = () => {
+    if (!props.disabled) {
+      setIsDropdownOpened(!isDropdownOpened)
+    }
+  }
+
+  // REACT-ARIA
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       name: props.name,
@@ -30,22 +48,19 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       value: valueState,
       isRequired: props.required,
       isReadOnly: props.disabled,
-      onChange: (value) => {
-        setValueState(value)
-        if (!value) {
-          setPlaceholderState(props.placeholder || '')
-        } else {
-          setPlaceholderState('')
-        }
-      },
+      onChange: onInputChange,
     },
     ref as RefObject<HTMLInputElement>
   )
 
-
+  // STYLES
   const labelStyle = cx(
     'relative mb-1 text-default font-semibold text-universal-black',
     {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs': props.required}
+  )
+
+  const descriptionStyle = cx(
+    'mb-1 text-sm text-universal-black'
   )
 
   const selectStyle = cx(
@@ -68,17 +83,26 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       'mt-1 text-sm text-error'
   )
 
+  const dropdownStyle = cx(
+    'flex-column flex cursor-pointer items-center p-2'
+  )
+
+  // RENDER
   return (
     <section className="flex w-max flex-col">
       <div>
         <label htmlFor={props.name} className={labelStyle} {...labelProps}>{props.label}</label>
       </div>
+      {props.description && (
+        <div {...descriptionProps} className={descriptionStyle}>
+          {props.description}
+        </div>
+      )}
       <div className="relative w-max">
         <div className={selectStyle}>
-          {/* preparing to create select input where we can see chosen possibilities and style it hoe we want */}
+          {/* preparing to create select input where we can see chosen possibilities and style it how we want */}
           <input className={inputStyle} {...inputProps} />
-          <div className="flex-column flex cursor-pointer items-center p-2"
-               onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
+          <div className={dropdownStyle} onClick={handleOnClickChevron}>
             { isDropdownOpened ? <ChevronUp/> : <ChevronDown/> }
           </div>
         </div>
