@@ -50,7 +50,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
                type="text" className={selectStyle}
                placeholder={props.placeholder} value={valueState}
                onChange={(event) => setValueState(event.target.value)}
-               multiple={props.multiple}/>
+               multiple={props.multiple} readOnly={props.disabled}/>
         <datalist id={`${props.name}-list`} >
           { props.options.map((option, key) => <option key={key} value={option} />) }
         </datalist>
