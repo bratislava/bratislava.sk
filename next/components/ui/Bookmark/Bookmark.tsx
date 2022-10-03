@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import cx from 'classnames'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'

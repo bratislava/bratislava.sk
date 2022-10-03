@@ -76,7 +76,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const MyCustomWidget = (props) => {
+const MyCustomWidget = (props: any) => {
   console.log(props)
   return (
     <div>
@@ -96,7 +96,7 @@ const widgets = {
   myCustomWidget: MyCustomWidget,
 }
 
-const ui = (toggle) => ({
+const ui = (toggle: any) => ({
   name: {
     'ui:autofocus': true,
     'ui:emptyValue': '',
@@ -169,7 +169,8 @@ const schema2 = {
 }
 
 const FormTestPage = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const menuItems = parseMainMenu(mainMenu)
+  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
+
   const { t } = useTranslation('common')
   const { query } = useRouter()
   const [state, toggle] = useToggle()

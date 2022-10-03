@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { captureException } from '@sentry/nextjs'
 import mapValues from 'lodash/mapValues'
 import pick from 'lodash/pick'

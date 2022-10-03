@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
@@ -39,7 +40,9 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
       }
     }
 
-    parseYoutubeUrl().then(data => console.log(data)).catch(error => console.log(error))
+    parseYoutubeUrl()
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
   }, [url])
 
   return (
@@ -64,7 +67,7 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
 }
 
 export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) => {
-  const videosCount = 3;
+  const videosCount = 3
   return (
     <div key={id} className={className}>
       <h4 className="text-default font-semibold md:text-md">{title}</h4>

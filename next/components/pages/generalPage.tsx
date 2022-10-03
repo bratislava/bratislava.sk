@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable array-callback-return */
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-case */

@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { MenuMainItem } from '@bratislava/ui-bratislava'
 import HamburgerSubMenu from '@bratislava/ui-bratislava/HamburgerSubMenu/HamburgerSubMenu'
 import { FC, useState } from 'react'

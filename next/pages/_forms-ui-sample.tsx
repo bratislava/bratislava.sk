@@ -102,7 +102,7 @@ const schema: JSONSchema7Type = {
 }
 
 const FormTestPage = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const menuItems = parseMainMenu(mainMenu)
+  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   return (
     <PageWrapper
       locale={page.locale}

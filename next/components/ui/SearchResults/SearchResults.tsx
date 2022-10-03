@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable promise/always-return */
 import { articleLimits } from '@utils/constants'
