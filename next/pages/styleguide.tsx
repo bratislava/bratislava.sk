@@ -10,7 +10,7 @@ import Button from 'components/forms/Button'
 
 import SearchIcon from '../assets/images/search-icon.svg'
 import ArrowRightIcon from '../assets/images/arrow-right.svg'
-import Select from 'components/forms/Select'
+import SelectField from 'components/forms/SelectField'
 
 type WrapperProps = {
   title?: string
@@ -67,14 +67,16 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
-          <Wrapper direction="column" title="Select">
+          <Wrapper direction="column" title="SelectField">
             <Stack>
-              <Select name="select-test" label="Select simple" options={selectOptions}/>
-              <Select name="select-test" label="Select placeholder" options={selectOptions} placeholder="Test placeholder"/>
-              <Select name="select-test" label="Select description" options={selectOptions} description="This is simple description"/>
-              <Select name="select-test" label="Select error" options={selectOptions} errorMessage="Test error message"/>
-              <Select name="select-test" label="Select required" options={selectOptions} required/>
-              <Select name="select-test" label="Select disabled" options={selectOptions} disabled/>
+              <SelectField name="select-test" label="simple" options={selectOptions}/>
+              <SelectField name="select-test" label="placeholder" options={selectOptions} placeholder="Test placeholder"/>
+              <SelectField name="select-test" label="description" options={selectOptions} description="This is simple description"/>
+              <SelectField name="select-test" label="error" options={selectOptions} errorMessage="Test error message"/>
+              <SelectField name="select-test" label="required" options={selectOptions} required/>
+              <SelectField name="select-test" label="disabled" options={selectOptions} disabled/>
+              <SelectField name="select-test" label="tooltip" options={selectOptions} tooltip/>
+              <SelectField name="select-test" label="full header" options={selectOptions} tooltip required description="simple description"/>
             </Stack>
           </Wrapper>
 

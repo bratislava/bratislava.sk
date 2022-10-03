@@ -1,8 +1,10 @@
 import cx from 'classnames'
 import React, { forwardRef, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
+
 import ChevronDown from '../../assets/images/chevron-down-small.svg'
 import ChevronUp from '../../assets/images/chevron-up-small.svg'
+import FieldHeader from './FieldHeader'
 
 interface SelectProps {
   label: string
@@ -17,7 +19,7 @@ interface SelectProps {
   tooltip?: boolean
 }
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
+const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   // STATE
   const [ valueState, setValueState ] = useState<string>(props.value || '')
   const [ placeholderState, setPlaceholderState ] = useState<string>(props.placeholder || '')
@@ -54,17 +56,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   // STYLES
-  const labelStyle = cx(
-    'relative mb-1 text-default font-semibold text-universal-black',
-    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs': props.required}
-  )
-
-  const descriptionStyle = cx(
-    'mb-1 text-sm text-universal-black'
-  )
-
   const selectStyle = cx(
-    'flex flex-row bg-white w-full max-w-xs border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:border-universal-gray-800',
+    'flex flex-row bg-white w-full max-w-m border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:border-universal-gray-800',
     {
       // hover
       'hover:border-universal-gray-500': !props.disabled,
@@ -90,17 +83,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   // RENDER
   return (
     <section className="flex w-max flex-col">
-      {/* LABEL */}
-      <div>
-        <label htmlFor={props.name} className={labelStyle} {...labelProps}>{props.label}</label>
-      </div>
-      { /* DESCRIPTION */
-        props.description && (
-          <div {...descriptionProps} className={descriptionStyle}>
-            {props.description}
-          </div>
-        )
-      }
+      {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
+      <FieldHeader label={props.label} htmlFor={props.name}
+                   description={props.description} required={props.required} tooltip={props.tooltip}
+                   descriptionProps={descriptionProps} labelProps={labelProps}/>
       {/* MAIN SELECT PART */}
       <div className="relative w-max">
         {/* INPUT PART */}
@@ -124,4 +110,4 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
 
 
 
-export default Select;
+export default SelectField;
