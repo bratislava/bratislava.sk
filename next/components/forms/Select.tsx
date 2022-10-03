@@ -90,24 +90,28 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   // RENDER
   return (
     <section className="flex w-max flex-col">
+      {/* LABEL */}
       <div>
         <label htmlFor={props.name} className={labelStyle} {...labelProps}>{props.label}</label>
       </div>
-      {props.description && (
-        <div {...descriptionProps} className={descriptionStyle}>
-          {props.description}
-        </div>
-      )}
+      { /* DESCRIPTION */
+        props.description && (
+          <div {...descriptionProps} className={descriptionStyle}>
+            {props.description}
+          </div>
+        )
+      }
+      {/* MAIN SELECT PART */}
       <div className="relative w-max">
+        {/* INPUT PART */}
         <div className={selectStyle}>
-          {/* preparing to create select input where we can see chosen possibilities and style it how we want */}
           <input className={inputStyle} {...inputProps} />
           <div className={dropdownStyle} onClick={handleOnClickChevron}>
             { isDropdownOpened ? <ChevronUp/> : <ChevronDown/> }
           </div>
         </div>
       </div>
-      {
+      {/* ERROR MESSAGE */
         props.errorMessage && (
           <div className={errorStyle} {...errorMessageProps}>
             {props.errorMessage}
