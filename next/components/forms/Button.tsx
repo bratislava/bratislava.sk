@@ -3,7 +3,7 @@ import { LinkButtonProps } from '@react-types/button'
 import React, { forwardRef, ReactNode, RefObject } from 'react'
 import cx from 'classnames'
 
-import ArrowRightIcon from '../../assets/images/arrow-right.svg'
+import ArrowRightIcon from '../../assets/images/forms/arrow-right.svg'
 import MLink from './MLink'
 
 type ButtonBase = {
@@ -39,6 +39,7 @@ export type AnchorProps = AriaButtonProps<'a'> &
   ButtonBase & {
     href: string
     label: string
+    disabled?: false
   }
 
 export type PolymorphicProps = ButtonProps | AnchorProps
