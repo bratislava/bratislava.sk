@@ -11,6 +11,7 @@ interface InputBase {
   errorMessage?: string
   description?: string
   required?: boolean
+  requiredOptional?: string
   disabled?: boolean
   className?: string
   value?: string
@@ -28,6 +29,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       description,
       tooltip,
       required,
+      requiredOptional,
       value,
       disabled,
       leftIcon,
@@ -43,7 +45,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         ...rest,
         placeholder,
         value,
-        isRequired: required,
+        isRequired: required || !!requiredOptional,
         onChange(value) {
           setValueState(value)
         },
@@ -75,18 +77,20 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           <p
             className={cx('relative mb-1 text-default font-semibold text-universal-black', {
               'after:content-["✱"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs':
-                required,
+                required && !requiredOptional,
             })}
             {...labelProps}
           >
             {label}
           </p>
-          {tooltip && (
+          {(tooltip || requiredOptional) && (
             <div className="flex">
-              <p className="mr-4.5 text-default">Optional</p>
-              <i className="h-5 w-5">
-                <HelpIcon />
-              </i>
+              {requiredOptional && <p className="mr-4.5 text-default">{requiredOptional}</p>}
+              {tooltip && (
+                <i className="h-5 w-5 cursor-pointer">
+                  <HelpIcon />
+                </i>
+              )}
             </div>
           )}
         </div>

@@ -239,6 +239,24 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               />
             </Stack>
             <Stack>
+              <InputField label="Label" placeholder="Placeholder" requiredOptional="Optional" />
+              <InputField
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                requiredOptional="Optional"
+              />
+              <InputField label="Label" placeholder="Placeholder" value="Value" resetIcon requiredOptional="Optional" />
+              <InputField
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                requiredOptional="Optional"
+              />
+            </Stack>
+            <Stack>
               <InputField errorMessage="Error message" label="Label" placeholder="Placeholder" />
               <InputField
                 errorMessage="Error message"
@@ -345,6 +363,82 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
                 value="Value"
                 resetIcon
                 tooltip
+              />
+            </Stack>
+            <Stack>
+              <InputField
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+                tooltip
+                requiredOptional="Optional"
+              />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                tooltip
+                requiredOptional="Optional"
+              />
+              <InputField
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+                requiredOptional="Optional"
+              />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+                requiredOptional="Optional"
+              />
+            </Stack>
+            <Stack>
+              <InputField
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+                tooltip
+                requiredOptional="Optional"
+                errorMessage="Error message"
+              />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                tooltip
+                requiredOptional="Optional"
+                errorMessage="Error message"
+              />
+              <InputField
+                description="Help text"
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+                requiredOptional="Optional"
+                errorMessage="Error message"
+              />
+              <InputField
+                description="Help text"
+                leftIcon={<SearchIcon />}
+                label="Label"
+                placeholder="Placeholder"
+                value="Value"
+                resetIcon
+                tooltip
+                requiredOptional="Optional"
+                errorMessage="Error message"
               />
             </Stack>
           </Wrapper>
