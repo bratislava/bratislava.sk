@@ -23,7 +23,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     {
       name: props.name,
       placeholder: props.placeholder,
-      value: props.value,
+      value: valueState,
       isRequired: props.required,
       onChange(value) {
         setValueState(value)
@@ -40,7 +40,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   const selectStyle = cx(
-    'w-full max-w-xs mx-4 my-3 border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
+    'w-full max-w-xs border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
     {
       // hover
       'hover:border-universal-gray-500': !props.disabled,
@@ -52,7 +52,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   const inputStyle = cx(
-    ' text-default rounded-lg px-4 py-3'
+    'w-full max-w-xs  text-default rounded-lg px-4 py-3'
   )
 
   const errorStyle = cx(
@@ -62,7 +62,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   return (
     <div className="flex w-max flex-col">
       <div>
-        <label className={labelStyle} {...labelProps}>{props.label}</label>
+        <label htmlFor={props.name} className={labelStyle} {...labelProps}>{props.label}</label>
       </div>
       <div className="relative w-max">
         <div className={selectStyle}>
