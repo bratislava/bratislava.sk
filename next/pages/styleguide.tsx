@@ -69,8 +69,10 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Select">
             <Stack>
-              <Select name="select-test" label="TEST" options={options} multiple/>
-              <Select name="select-test" label="TEST" options={options}/>
+              <Select name="select-test" label="Select multiple" options={options} multiple/>
+              <Select name="select-test" label="Select placeholder" options={options} placeholder="Test placeholder"/>
+              <Select name="select-test" label="Select disabled" options={options} disabled/>
+              <Select name="select-test" label="Select error" options={options} errorMessage="Test error message"/>
             </Stack>
           </Wrapper>
 

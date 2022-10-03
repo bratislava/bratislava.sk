@@ -36,6 +36,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     }
   )
 
+  const errorStyle = cx(
+      'mt-1 text-sm text-error'
+  )
+
   return (
     <div className="flex w-max flex-col">
       <div>
@@ -47,9 +51,16 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
                placeholder={props.placeholder} value={valueState}
                onChange={(event) => setValueState(event.target.value)}
                multiple={props.multiple}/>
-        <datalist id={`${props.name}-list`}>
+        <datalist id={`${props.name}-list`} >
           { props.options.map((option, key) => <option key={key} value={option} />) }
         </datalist>
+        {
+          props.errorMessage && (
+            <div className={errorStyle}>
+              {props.errorMessage}
+            </div>
+          )
+        }
       </div>
     </div>
   )
