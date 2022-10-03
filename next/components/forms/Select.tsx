@@ -1,7 +1,8 @@
 import cx from 'classnames'
 import React, { forwardRef, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
-
+import ChevronDown from '../../assets/images/chevron-down-small.svg'
+import ChevronUp from '../../assets/images/chevron-up-small.svg'
 
 interface SelectProps {
   label: string
@@ -19,16 +20,24 @@ interface SelectProps {
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   const [ valueState, setValueState ] = useState<string>(props.value || '')
+  const [ placeholderState, setPlaceholderState ] = useState<string>(props.placeholder || '')
+  const [ isDropdownOpened, setIsDropdownOpened ] = useState<boolean>(false)
+
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       name: props.name,
-      placeholder: props.placeholder,
+      placeholder: placeholderState,
       value: valueState,
       isRequired: props.required,
-      onChange(value) {
-        setValueState(value)
-      },
       isReadOnly: props.disabled,
+      onChange: (value) => {
+        setValueState(value)
+        if (!value) {
+          setPlaceholderState(props.placeholder || '')
+        } else {
+          setPlaceholderState('')
+        }
+      },
     },
     ref as RefObject<HTMLInputElement>
   )
@@ -40,7 +49,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   const selectStyle = cx(
-    'w-full max-w-xs border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
+    'flex flex-row bg-white w-full max-w-xs border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:border-universal-gray-800',
     {
       // hover
       'hover:border-universal-gray-500': !props.disabled,
@@ -52,7 +61,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   const inputStyle = cx(
-    'w-full max-w-xs  text-default rounded-lg px-4 py-3'
+    'w-full max-w-xs  text-default rounded-lg px-4 py-3 focus:outline-none'
   )
 
   const errorStyle = cx(
@@ -60,26 +69,28 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   return (
-    <div className="flex w-max flex-col">
+    <section className="flex w-max flex-col">
       <div>
         <label htmlFor={props.name} className={labelStyle} {...labelProps}>{props.label}</label>
       </div>
       <div className="relative w-max">
         <div className={selectStyle}>
+          {/* preparing to create select input where we can see chosen possibilities and style it hoe we want */}
           <input className={inputStyle} {...inputProps} />
+          <div className="flex-column flex cursor-pointer items-center p-2"
+               onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
+            { isDropdownOpened ? <ChevronUp/> : <ChevronDown/> }
+          </div>
         </div>
-        <div>
-
-        </div>
-        {
-          props.errorMessage && (
-            <div className={errorStyle} {...errorMessageProps}>
-              {props.errorMessage}
-            </div>
-          )
-        }
       </div>
-    </div>
+      {
+        props.errorMessage && (
+          <div className={errorStyle} {...errorMessageProps}>
+            {props.errorMessage}
+          </div>
+        )
+      }
+    </section>
   )
 })
 
