@@ -61,9 +61,7 @@ export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const options = [
-    { value: 'stuFei', text: 'STU FEI'}, { value: 'ukFmfi', text: 'UK FMFI'}, { value: 'stuFiit', text: 'STU FIIT'}
-  ]
+  const options = [ 'STU FEI', 'UK FMFI', 'STU FIIT']
 
   return (
     <PageWrapper locale={page.locale}>
@@ -71,7 +69,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Select">
             <Stack>
-              <Select label="TEST" options={options}/>
+              <Select name="select-test" label="TEST" options={options} multiple/>
+              <Select name="select-test" label="TEST" options={options}/>
             </Stack>
           </Wrapper>
 
