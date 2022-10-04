@@ -1,16 +1,15 @@
-import React, { ReactNode } from 'react'
-import cx from 'classnames'
-
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
+import cx from 'classnames'
+import Button from 'components/forms/Button'
+import SelectField from 'components/forms/SelectField'
 import PageWrapper from 'components/layouts/PageWrapper'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Button from 'components/forms/Button'
+import React, { ReactNode } from 'react'
 
-import SearchIcon from '../assets/images/search-icon.svg'
 import ArrowRightIcon from '../assets/images/arrow-right.svg'
-import SelectField from 'components/forms/SelectField'
+import SearchIcon from '../assets/images/search-icon.svg'
 
 type WrapperProps = {
   title?: string
@@ -85,7 +84,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               <SelectField name="select-test" label="full header + event"
                            options={selectOptions} description="simple description"
                            errorMessage="Test error message" tooltip required
-                           onChangeSelected={values => console.log(values)}/>
+                           onChange={values => console.log(values)}/>
             </Stack>
           </Wrapper>
 

@@ -22,7 +22,7 @@ interface SelectProps {
   required?: boolean
   disabled?: boolean
   tooltip?: boolean
-  onChangeSelected?: (values: MultiValue<unknown>) => void;
+  onChange?: (values: MultiValue<unknown>) => void;
 }
 
 const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
@@ -39,8 +39,8 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
 
   // EVENT HANDLERS
   const handleOnChangeSelect = (selectedOptions: MultiValue<unknown>) => {
-    if (props.onChangeSelected) {
-      props.onChangeSelected(selectedOptions)
+    if (props.onChange) {
+      props.onChange(selectedOptions)
     }
   }
 
