@@ -1,16 +1,20 @@
 import cx from 'classnames'
 import React, { forwardRef, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
+import Select from 'react-select'
 
-import ChevronDown from '../../assets/images/chevron-down-small.svg'
-import ChevronUp from '../../assets/images/chevron-up-small.svg'
-import FieldHeader from './FieldHeader'
 import FieldErrorMessage from './FieldErrorMessage'
+import FieldHeader from './FieldHeader'
+
+interface Option {
+  value: string
+  label: string
+}
 
 interface SelectProps {
   label: string
   name: string
-  options: string[]
+  options: Option[]
   value?: string
   placeholder?: string
   errorMessage?: string
@@ -23,31 +27,17 @@ interface SelectProps {
 const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   // STATE
   const [ valueState, setValueState ] = useState<string>(props.value || '')
-  const [ placeholderState, setPlaceholderState ] = useState<string>(props.placeholder || '')
-  const [ isDropdownOpened, setIsDropdownOpened ] = useState<boolean>(false)
-
 
   // EVENT HANDLERS
   const onInputChange = (value: string) => {
     setValueState(value)
-    if (!value) {
-      setPlaceholderState(props.placeholder || '')
-    } else {
-      setPlaceholderState('')
-    }
-  }
-
-  const handleOnClickChevron = () => {
-    if (!props.disabled) {
-      setIsDropdownOpened(!isDropdownOpened)
-    }
   }
 
   // REACT-ARIA
-  const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
+  const { labelProps, descriptionProps, errorMessageProps } = useTextField(
     {
       name: props.name,
-      placeholder: placeholderState,
+      placeholder: props.placeholder,
       value: valueState,
       isRequired: props.required,
       isReadOnly: props.disabled,
@@ -57,8 +47,8 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   )
 
   // STYLES
-  const selectStyle = cx(
-    'flex flex-row bg-white w-full max-w-m border-2 border-universal-gray-200 rounded-lg caret-universal-gray-800 focus:border-universal-gray-800',
+  const tailwindSelectStyle = cx(
+    'w-full text-default rounded-lg focus:outline-none bg-white border-2 border-universal-gray-200 caret-universal-gray-800 focus:border-universal-gray-800',
     {
       // hover
       'hover:border-universal-gray-500': !props.disabled,
@@ -69,14 +59,6 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     }
   )
 
-  const inputStyle = cx(
-    'w-full max-w-xs  text-default rounded-lg px-4 py-3 focus:outline-none'
-  )
-
-  const dropdownStyle = cx(
-    'flex-column flex cursor-pointer items-center p-2'
-  )
-
   // RENDER
   return (
     <section className="flex w-max flex-col">
@@ -84,15 +66,12 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       <FieldHeader label={props.label} htmlFor={props.name}
                    description={props.description} required={props.required} tooltip={props.tooltip}
                    descriptionProps={descriptionProps} labelProps={labelProps}/>
-      {/* MAIN SELECT PART */}
-      <div className="relative w-max">
-        {/* INPUT PART */}
-        <div className={selectStyle}>
-          <input className={inputStyle} {...inputProps} />
-          <div className={dropdownStyle} onClick={handleOnClickChevron}>
-            { isDropdownOpened ? <ChevronUp/> : <ChevronDown/> }
-          </div>
-        </div>
+
+      {/* SELECT PART */}
+      <div className="w-80">
+        <Select options={props.options} placeholder={props.placeholder}
+                menuPlacement="auto" menuPosition="fixed" isMulti
+                className={tailwindSelectStyle} isDisabled={props.disabled}/>
       </div>
       {/* ERROR MESSAGE */ }
       <FieldErrorMessage errorMessage={props.errorMessage} errorMessageProps={errorMessageProps} />

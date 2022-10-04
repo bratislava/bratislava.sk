@@ -61,7 +61,11 @@ export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const selectOptions = [ 'STU FEI', 'UK FMFI', 'STU FIIT']
+  const selectOptions = [
+    { value: 'stuFei', label: 'STU FEI'},
+    { value: 'stuFiit', label: 'STU FIIT'},
+    { value: 'ukFmfi', label: 'UK FMFI'},
+  ]
 
   return (
     <PageWrapper locale={page.locale}>
