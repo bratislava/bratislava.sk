@@ -13,9 +13,15 @@ cp .env.example .env.local
 
 You need postgres running locally (with correct credentials & databse available). The default setup is below, you can override any of the variables by passing them in you `.env.local` file. The easiest way to get a postgres db with the right credentials up&running is via `docker-compose.yml` file in the root fo this repo (check the root README).
 
+### Starting from empty database
+
+While not recommended in this project, if you want to start from a clean slate, read (TODO - writing in progress on the doc site).
+
 ### Seeding the database
 
 It's recommended that you don't start from an empty database, but instead seed with staging or production data. Ask in the internal Bratislava team or [follow the docs](https://bratislava.github.io/docs/recipes/load-strapi-db-in-local-dev). If you are an open-source contributor, note you do not need this setup for many of frontend-related changes. See the next.js project README.
+
+We may provide a db dump as part of the project in the future - for now please contact the BA Innovations Team if you need it.
 
 ### Meilisearch
 
