@@ -69,9 +69,10 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
 
       {/* SELECT PART */}
       <div className="w-80">
-        <Select options={props.options} placeholder={props.placeholder}
-                menuPlacement="auto" menuPosition="fixed" isMulti
-                className={tailwindSelectStyle} isDisabled={props.disabled}/>
+        <Select className={tailwindSelectStyle}
+                options={props.options} placeholder={props.placeholder}
+                menuPlacement="auto" menuPosition="fixed"
+                isDisabled={props.disabled} isMulti />
       </div>
       {/* ERROR MESSAGE */ }
       <FieldErrorMessage errorMessage={props.errorMessage} errorMessageProps={errorMessageProps} />
