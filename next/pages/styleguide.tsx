@@ -1,17 +1,15 @@
-import { ReactNode } from 'react'
-import cx from 'classnames'
-
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
+import cx from 'classnames'
 import Button from 'components/forms/Button'
 import SelectField from 'components/forms/SelectField'
 import PageWrapper from 'components/layouts/PageWrapper'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { ReactNode } from 'react'
 
-
-import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
+import SearchIcon from '../assets/images/forms/search-icon.svg'
 
 type WrapperProps = {
   title?: string
@@ -21,7 +19,7 @@ type WrapperProps = {
 
 export const Wrapper = ({ title, children, direction = 'row' }: WrapperProps) => {
   return (
-    <div className={'mb-10 flex flex-col'}>
+    <div className="mb-10 flex flex-col">
       {title && <h2 className="pb-2 text-lg font-semibold">{title}</h2>}
       <div
         className={cx('flex', {
@@ -58,7 +56,7 @@ export const Stack = ({ direction = 'row', children }: StackProps) => {
 type ButtonShowCaseProps = {}
 
 export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
-  return <div></div>
+  return <div />
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -72,8 +70,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
 
   return (
     <PageWrapper locale={page.locale}>
-      <div className="bg-[#E5E5E5] min-h-screen">
-        <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
+      <div className="min-h-screen bg-[#E5E5E5]">
+        <div className="mx-auto max-w-screen-lg px-12 pt-12 pb-64">
           <Wrapper direction="column" title="SelectField">
             <Stack>
               <SelectField name="select-test" label="default values" options={selectOptions} value={selectOptions.slice(0, 2)}/>
