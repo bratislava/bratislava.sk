@@ -2,8 +2,9 @@ import cx from 'classnames'
 import React, { forwardRef, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
 import Select, {
+  ActionMeta,
   ControlProps,
-  CSSObjectWithLabel, DropdownIndicatorProps,
+  CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
   OptionProps,
   StylesConfig,
 } from 'react-select'
@@ -11,45 +12,42 @@ import Select, {
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
 
-interface Option {
-  value: string
-  label: string
-}
-
 interface SelectProps {
   label: string
   name: string
-  options: Option[]
-  value?: string
+  options: MultiValue<unknown>
+  defaultValues?: MultiValue<unknown>
   placeholder?: string
   errorMessage?: string
   description?: string
   required?: boolean
   disabled?: boolean
   tooltip?: boolean
+  onChangeSelected?: (values: MultiValue<unknown>) => void;
 }
 
 const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   // STATE
-  const [ valueState, setValueState ] = useState<string>(props.value || '')
-
-  // EVENT HANDLERS
-  const onInputChange = (value: string) => {
-    setValueState(value)
-  }
+  const [ valueState, setValueState ] = useState<MultiValue<unknown>>( props.defaultValues || [])
 
   // REACT-ARIA
   const { labelProps, descriptionProps, errorMessageProps } = useTextField(
     {
       name: props.name,
       placeholder: props.placeholder,
-      value: valueState,
       isRequired: props.required,
       isReadOnly: props.disabled,
-      onChange: onInputChange,
     },
     ref as RefObject<HTMLInputElement>
   )
+
+  // EVENT HANDLERS
+  const handleOnChangeSelect = (selectedOptions: MultiValue<unknown>) => {
+    if (props.onChangeSelected) {
+      props.onChangeSelected(selectedOptions)
+    }
+    setValueState(selectedOptions)
+  }
 
   // STYLES
   const tailwindSelectStyle = cx(
@@ -102,8 +100,8 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       <div className="w-80">
         <Select className={tailwindSelectStyle} styles={selectStyle}
                 options={props.options} noOptionsMessage={() => "No Options"}
-                placeholder={props.placeholder}
-                isDisabled={props.disabled} isMulti />
+                defaultValue={props.defaultValues} placeholder={props.placeholder}
+                isDisabled={props.disabled} isMulti onChange={handleOnChangeSelect}/>
       </div>
       {/* ERROR MESSAGE */ }
       <FieldErrorMessage errorMessage={props.errorMessage} errorMessageProps={errorMessageProps} />

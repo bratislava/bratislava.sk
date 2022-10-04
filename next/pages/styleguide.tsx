@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import cx from 'classnames'
 
 import { AsyncServerProps } from '@utils/types'
@@ -65,7 +65,11 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     { value: 'stuFei', label: 'STU FEI'},
     { value: 'stuFiit', label: 'STU FIIT'},
     { value: 'ukFmfi', label: 'UK FMFI'},
+    { value: 'tukeFei', label: 'TUKE FEI' },
+    { value: 'unizaFeit', label: 'UNIZA FEIT' }
   ]
+
+  const ref = React.createRef<HTMLSelectElement>()
 
   return (
     <PageWrapper locale={page.locale}>
@@ -73,14 +77,17 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="SelectField">
             <Stack>
-              <SelectField name="select-test" label="simple" options={selectOptions}/>
+              <SelectField name="select-test" label="default values" options={selectOptions} defaultValues={selectOptions.slice(0, 2)}/>
               <SelectField name="select-test" label="placeholder" options={selectOptions} placeholder="Test placeholder"/>
               <SelectField name="select-test" label="disabled" options={selectOptions} disabled/>
               <SelectField name="select-test" label="required" options={selectOptions} required/>
               <SelectField name="select-test" label="description" options={selectOptions} description="This is simple description"/>
               <SelectField name="select-test" label="tooltip" options={selectOptions} tooltip/>
               <SelectField name="select-test" label="error" options={selectOptions} errorMessage="Test error message"/>
-              <SelectField name="select-test" label="full header" options={selectOptions} tooltip required description="simple description" errorMessage="Test error message"/>
+              <SelectField name="select-test" label="full header + event"
+                           options={selectOptions} description="simple description"
+                           errorMessage="Test error message" tooltip required
+                           onChangeSelected={values => console.log(values, '\n', ref)} ref={ref}/>
             </Stack>
           </Wrapper>
 
