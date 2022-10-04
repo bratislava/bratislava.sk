@@ -1,7 +1,12 @@
 import cx from 'classnames'
-import React, { CSSProperties, forwardRef, RefObject, useState } from 'react'
+import React, { forwardRef, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
-import Select, { ControlProps, CSSObjectWithLabel, GroupBase, OptionProps, StylesConfig } from 'react-select'
+import Select, {
+  ControlProps,
+  CSSObjectWithLabel, DropdownIndicatorProps,
+  OptionProps,
+  StylesConfig,
+} from 'react-select'
 
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
@@ -69,6 +74,19 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
       ...provided,
       backgroundColor: state.isFocused ? 'lightgray' : undefined,
+    }),
+    multiValue: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      borderRadius: 8
+    }),
+    placeholder: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      color: props.placeholder ? provided.color : "transparent"
+    }),
+    dropdownIndicator: (provided: CSSObjectWithLabel, state:DropdownIndicatorProps) => ({
+      ...provided,
+      transition: 'all .2s linear',
+      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : undefined
     })
   }
 
@@ -83,8 +101,8 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       {/* SELECT PART */}
       <div className="w-80">
         <Select className={tailwindSelectStyle} styles={selectStyle}
-                options={props.options} placeholder={props.placeholder}
-                menuPlacement="auto" menuPosition="fixed"
+                options={props.options} noOptionsMessage={() => "No Options"}
+                placeholder={props.placeholder}
                 isDisabled={props.disabled} isMulti />
       </div>
       {/* ERROR MESSAGE */ }
