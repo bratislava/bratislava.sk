@@ -1,7 +1,7 @@
 import cx from 'classnames'
-import React, { forwardRef, RefObject, useState } from 'react'
+import React, { CSSProperties, forwardRef, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
-import Select from 'react-select'
+import Select, { ControlProps, CSSObjectWithLabel, GroupBase, OptionProps, StylesConfig } from 'react-select'
 
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
@@ -48,16 +48,29 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
 
   // STYLES
   const tailwindSelectStyle = cx(
-    'w-full text-default rounded-lg focus:outline-none bg-white border-2 border-universal-gray-200 caret-universal-gray-800 focus:border-universal-gray-800',
+    'w-full text-default rounded-lg focus:outline-none bg-white border-2 ',
     {
-      // hover
-      'hover:border-universal-gray-500': !props.disabled,
-      // error
-      'border-red-brick hover:border-red-brick focus:border-error': props.errorMessage,
       // disabled
       'opacity-50': props.disabled,
     }
   )
+
+  const selectStyle: StylesConfig = {
+    control: (provided: CSSObjectWithLabel, state: ControlProps) => ({
+      ...provided,
+      borderRadius: 6,
+      boxShadow: 'none',
+      borderWidth: '2px',
+      borderColor: props.errorMessage ? 'red' : state.isFocused ? 'black' : 'lightgray',
+      '&:hover': {
+        borderColor: props.errorMessage ? 'red' : 'black',
+      },
+    }),
+    option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? 'lightgray' : undefined,
+    })
+  }
 
   // RENDER
   return (
@@ -69,7 +82,7 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
 
       {/* SELECT PART */}
       <div className="w-80">
-        <Select className={tailwindSelectStyle}
+        <Select className={tailwindSelectStyle} styles={selectStyle}
                 options={props.options} placeholder={props.placeholder}
                 menuPlacement="auto" menuPosition="fixed"
                 isDisabled={props.disabled} isMulti />
