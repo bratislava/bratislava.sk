@@ -69,15 +69,13 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     { value: 'unizaFeit', label: 'UNIZA FEIT' }
   ]
 
-  const ref = React.createRef<HTMLSelectElement>()
-
   return (
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="SelectField">
             <Stack>
-              <SelectField name="select-test" label="default values" options={selectOptions} defaultValues={selectOptions.slice(0, 2)}/>
+              <SelectField name="select-test" label="default values" options={selectOptions} value={selectOptions.slice(0, 2)}/>
               <SelectField name="select-test" label="placeholder" options={selectOptions} placeholder="Test placeholder"/>
               <SelectField name="select-test" label="disabled" options={selectOptions} disabled/>
               <SelectField name="select-test" label="required" options={selectOptions} required/>
@@ -87,7 +85,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               <SelectField name="select-test" label="full header + event"
                            options={selectOptions} description="simple description"
                            errorMessage="Test error message" tooltip required
-                           onChangeSelected={values => console.log(values, '\n', ref)} ref={ref}/>
+                           onChangeSelected={values => console.log(values)}/>
             </Stack>
           </Wrapper>
 

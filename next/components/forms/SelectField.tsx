@@ -16,7 +16,7 @@ interface SelectProps {
   label: string
   name: string
   options: MultiValue<unknown>
-  defaultValues?: MultiValue<unknown>
+  value?: MultiValue<unknown>
   placeholder?: string
   errorMessage?: string
   description?: string
@@ -27,9 +27,6 @@ interface SelectProps {
 }
 
 const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
-  // STATE
-  const [ valueState, setValueState ] = useState<MultiValue<unknown>>( props.defaultValues || [])
-
   // REACT-ARIA
   const { labelProps, descriptionProps, errorMessageProps } = useTextField(
     {
@@ -46,7 +43,6 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     if (props.onChangeSelected) {
       props.onChangeSelected(selectedOptions)
     }
-    setValueState(selectedOptions)
   }
 
   // STYLES
@@ -100,7 +96,7 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       <div className="w-80">
         <Select className={tailwindSelectStyle} styles={selectStyle}
                 options={props.options} noOptionsMessage={() => "No Options"}
-                defaultValue={props.defaultValues} placeholder={props.placeholder}
+                placeholder={props.placeholder} value={props.value}
                 isDisabled={props.disabled} isMulti onChange={handleOnChangeSelect}/>
       </div>
       {/* ERROR MESSAGE */ }
