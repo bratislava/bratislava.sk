@@ -1,8 +1,7 @@
 import cx from 'classnames'
-import React, { forwardRef, RefObject, useState } from 'react'
+import React, { forwardRef, RefObject } from 'react'
 import { useTextField } from 'react-aria'
 import Select, {
-  ActionMeta,
   ControlProps,
   CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
   OptionProps,
@@ -64,6 +63,7 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       '&:hover': {
         borderColor: props.errorMessage ? 'red' : 'black',
       },
+      padding: '5px 0'
     }),
     option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
       ...provided,
@@ -80,7 +80,18 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     dropdownIndicator: (provided: CSSObjectWithLabel, state:DropdownIndicatorProps) => ({
       ...provided,
       transition: 'all .2s linear',
-      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : undefined
+      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : undefined,
+      cursor: 'pointer',
+      color: '#333333'
+    }),
+    multiValueRemove: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      borderBottomRightRadius: 8,
+      borderTopRightRadius: 8
+    }),
+    clearIndicator: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      cursor: 'pointer'
     })
   }
 
