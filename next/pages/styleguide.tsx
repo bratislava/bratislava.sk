@@ -1,15 +1,17 @@
+import { ReactNode } from 'react'
+import cx from 'classnames'
+
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
-import cx from 'classnames'
 import Button from 'components/forms/Button'
 import SelectField from 'components/forms/SelectField'
 import PageWrapper from 'components/layouts/PageWrapper'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { ReactNode } from 'react'
 
-import ArrowRightIcon from '../assets/images/arrow-right.svg'
-import SearchIcon from '../assets/images/search-icon.svg'
+
+import SearchIcon from '../assets/images/forms/search-icon.svg'
+import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
 
 type WrapperProps = {
   title?: string
@@ -43,7 +45,7 @@ type StackProps = {
 export const Stack = ({ direction = 'row', children }: StackProps) => {
   return (
     <div
-      className={cx('flex flex-wrap', {
+      className={cx('flex', {
         'flex-col space-y-2': direction === 'column',
         'space-x-2 items-end': direction === 'row',
       })}
@@ -237,6 +239,15 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               <Button variant="plain-negative" text="Button" size="sm" />
               <Button variant="plain-negative" text="Button disabled" disabled />
               <Button variant="plain-negative" text="Button disabled" size="sm" disabled />
+            </Stack>
+
+            <Stack>
+              <Button variant="link-brand" href="#" label="Label value" />
+              <Button variant="link-brand" href="#" label="Label value" size="sm" />
+            </Stack>
+            <Stack>
+              <Button variant="link-black" href="#" label="Label value" />
+              <Button variant="link-black" href="#" label="Label value" size="sm" />
             </Stack>
           </Wrapper>
         </div>
