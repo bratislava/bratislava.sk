@@ -22,14 +22,11 @@ const FieldHeader: FC<FieldHeaderProps> = (
     descriptionProps,
     tooltip }
 ) => {
+
   // STYLES
   const labelStyle = cx(
     'relative mb-1 text-default font-semibold text-universal-black',
     {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs': required}
-  )
-
-  const descriptionStyle = cx(
-    'mb-1 text-sm text-universal-black'
   )
 
   return (
@@ -48,7 +45,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
       </div>
       { /* DESCRIPTION */
         description && (
-          <div {...descriptionProps} className={descriptionStyle}>
+          <div {...descriptionProps} className="mb-1 text-sm text-universal-black">
             {description}
           </div>
         )
