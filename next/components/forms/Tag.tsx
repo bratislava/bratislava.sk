@@ -3,7 +3,7 @@ import cx from 'classnames'
 
 interface TagProps {
   text: string
-  colorVariant?: string
+  colorVariant?: 'black' | 'red' | 'blue' | 'green' | 'purple' | 'yellow' | 'orange'
   removable?: boolean
   size?: string
   disabled?: boolean
@@ -20,10 +20,16 @@ const Tag: FC<TagProps> = (
     underlined
   }
 ) => {
-  const styles = cx(
 
+  // STYLES
+  const styles = cx(
+    'rounded min-w-14 min-h-6 text-center p-1',
+    {
+      'bg-gray-200' : colorVariant === 'black'
+    }
   )
 
+  // RENDER
   return (
     <div className={styles}>
       {text}

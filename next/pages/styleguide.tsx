@@ -10,6 +10,7 @@ import Button from 'components/forms/Button'
 
 import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
+import Tag from '../components/forms/Tag'
 
 type WrapperProps = {
   title?: string
@@ -66,7 +67,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Tag">
             <Stack>
-
+              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee" colorVariant='black' />
             </Stack>
           </Wrapper>
 
