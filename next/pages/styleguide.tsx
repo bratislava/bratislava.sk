@@ -11,6 +11,7 @@ import Button from 'components/forms/Button'
 import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
 import FieldHeader from '../components/forms/FieldHeader'
+import FieldErrorMessage from '../components/forms/FieldErrorMessage'
 
 type WrapperProps = {
   title?: string
@@ -80,6 +81,12 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
             </Stack>
             <Stack>
               <FieldHeader label="Everything" htmlFor="input-name" description="This is is simple description" tooltip required/>
+            </Stack>
+          </Wrapper>
+
+          <Wrapper direction="column" title="Field error message" >
+            <Stack>
+              <FieldErrorMessage errorMessage="This is error message for fields"/>
             </Stack>
           </Wrapper>
 
