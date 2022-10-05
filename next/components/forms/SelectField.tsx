@@ -2,7 +2,7 @@ import cx from 'classnames'
 import React, { FC } from 'react'
 import Select, {
   ControlProps,
-  CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
+  CSSObjectWithLabel, DropdownIndicatorProps, MultiValue, MultiValueRemoveProps,
   OptionProps,
   StylesConfig,
 } from 'react-select'
@@ -72,6 +72,7 @@ const SelectField: FC<SelectFieldProps> = (
     option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
       ...provided,
       backgroundColor: state.isFocused ? 'lightgray' : undefined,
+      cursor: 'pointer'
     }),
     multiValue: (provided: CSSObjectWithLabel) => ({
       ...provided,
@@ -91,7 +92,11 @@ const SelectField: FC<SelectFieldProps> = (
     multiValueRemove: (provided: CSSObjectWithLabel) => ({
       ...provided,
       borderBottomRightRadius: 8,
-      borderTopRightRadius: 8
+      borderTopRightRadius: 8,
+      '&:hover': {
+        backgroundColor: 'inherit',
+        color: '#333333'
+      },
     }),
     clearIndicator: (provided: CSSObjectWithLabel) => ({
       ...provided,
