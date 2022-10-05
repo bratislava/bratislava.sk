@@ -116,18 +116,21 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
             </Stack>
             <Stack>
               <SelectField name="select-test" label="required" options={selectOptions} required/>
-              <SelectField name="select-test" label="required" options={selectOptions} optional/>
+              <SelectField name="select-test" label="error" options={selectOptions} errorMessage="Test error message"/>
             </Stack>
             <Stack>
               <SelectField name="select-test" label="description" options={selectOptions} description="This is simple description"/>
               <SelectField name="select-test" label="tooltip" options={selectOptions} tooltip="This is example of tooltip text"/>
             </Stack>
             <Stack>
-              <SelectField name="select-test" label="error" options={selectOptions} errorMessage="Test error message"/>
-              <SelectField name="select-test" label="full header + event"
+              <SelectField name="select-test" label="full header"
                            options={selectOptions} description="simple description"
                            errorMessage="Test error message" tooltip="This is another example of tooltip"
-                           required optional
+                           onChange={values => console.log(values)}/>
+              <SelectField name="select-test" label="full header"
+                           options={selectOptions} description="simple description"
+                           errorMessage="Test error message" tooltip="This is another example of tooltip"
+                           required
                            onChange={values => console.log(values)}/>
             </Stack>
           </Wrapper>
