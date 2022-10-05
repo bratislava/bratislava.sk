@@ -6,12 +6,13 @@ import SelectField from 'components/forms/SelectField'
 import PageWrapper from 'components/layouts/PageWrapper'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
 import SearchIcon from '../assets/images/forms/search-icon.svg'
 import FieldHeader from '../components/forms/FieldHeader'
 import FieldErrorMessage from '../components/forms/FieldErrorMessage'
+import { MultiValue } from 'react-select'
 
 type WrapperProps = {
   title?: string
@@ -62,13 +63,14 @@ export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const selectOptions = [
+  const selectOptions: MultiValue<unknown> = [
     { value: 'stuFei', label: 'STU FEI'},
     { value: 'stuFiit', label: 'STU FIIT'},
     { value: 'ukFmfi', label: 'UK FMFI'},
     { value: 'tukeFei', label: 'TUKE FEI' },
     { value: 'unizaFeit', label: 'UNIZA FEIT' }
   ]
+  const [selectValueFirst, setSelectValueFirst] = useState<MultiValue<unknown>>(selectOptions.slice(0, 2))
 
   return (
     <PageWrapper locale={page.locale}>
@@ -101,7 +103,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
 
           <Wrapper direction="column" title="SelectField">
             <Stack>
-              <SelectField name="select-test" label="default values" options={selectOptions} value={selectOptions.slice(0, 2)}/>
+              <SelectField name="select-test" label="values + event" options={selectOptions}
+                           value={selectValueFirst} onChange={value => setSelectValueFirst(value)}/>
               <SelectField name="select-test" label="placeholder" options={selectOptions} placeholder="Test placeholder"/>
               <SelectField name="select-test" label="disabled" options={selectOptions} disabled/>
               <SelectField name="select-test" label="required" options={selectOptions} required/>

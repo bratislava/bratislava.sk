@@ -1,6 +1,5 @@
 import cx from 'classnames'
-import React, { forwardRef, RefObject } from 'react'
-import { useTextField } from 'react-aria'
+import React, { FC } from 'react'
 import Select, {
   ControlProps,
   CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
@@ -11,7 +10,7 @@ import Select, {
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
 
-interface SelectProps {
+interface SelectFieldProps {
   label: string
   name: string
   options: MultiValue<unknown>
@@ -25,22 +24,25 @@ interface SelectProps {
   onChange?: (values: MultiValue<unknown>) => void;
 }
 
-const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
-  // REACT-ARIA
-  const { labelProps, descriptionProps, errorMessageProps } = useTextField(
-    {
-      name: props.name,
-      placeholder: props.placeholder,
-      isRequired: props.required,
-      isReadOnly: props.disabled,
-    },
-    ref as RefObject<HTMLInputElement>
-  )
-
+const SelectField: FC<SelectFieldProps> = (
+  {
+    label,
+    name,
+    options,
+    value,
+    placeholder,
+    errorMessage,
+    description,
+    required,
+    disabled,
+    tooltip,
+    onChange
+  }
+) => {
   // EVENT HANDLERS
   const handleOnChangeSelect = (selectedOptions: MultiValue<unknown>) => {
-    if (props.onChange) {
-      props.onChange(selectedOptions)
+    if (onChange) {
+      onChange(selectedOptions)
     }
   }
 
@@ -49,7 +51,7 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     'w-full text-default rounded-lg focus:outline-none bg-white border-2 ',
     {
       // disabled
-      'opacity-50': props.disabled,
+      'opacity-50': disabled,
     }
   )
 
@@ -59,9 +61,9 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
       borderRadius: 6,
       boxShadow: 'none',
       borderWidth: '2px',
-      borderColor: props.errorMessage ? 'red' : state.isFocused ? 'black' : 'lightgray',
+      borderColor: errorMessage ? 'red' : state.isFocused ? 'black' : 'lightgray',
       '&:hover': {
-        borderColor: props.errorMessage ? 'red' : 'black',
+        borderColor: errorMessage ? 'red' : 'black',
       },
       padding: '5px 0'
     }),
@@ -75,7 +77,7 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
     }),
     placeholder: (provided: CSSObjectWithLabel) => ({
       ...provided,
-      color: props.placeholder ? provided.color : "transparent"
+      color: placeholder ? provided.color : "transparent"
     }),
     dropdownIndicator: (provided: CSSObjectWithLabel, state:DropdownIndicatorProps) => ({
       ...provided,
@@ -99,22 +101,21 @@ const SelectField = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   return (
     <section className="flex w-max flex-col">
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
-      <FieldHeader label={props.label} htmlFor={props.name}
-                   description={props.description} required={props.required} tooltip={props.tooltip}
-                   descriptionProps={descriptionProps} labelProps={labelProps}/>
+      <FieldHeader label={label} htmlFor={name}
+                   description={description} required={required} tooltip={tooltip} />
 
       {/* SELECT PART */}
       <div className="w-80">
         <Select className={tailwindSelectStyle} styles={selectStyle}
-                options={props.options} noOptionsMessage={() => "No Options"}
-                placeholder={props.placeholder} value={props.value}
-                isDisabled={props.disabled} isMulti onChange={handleOnChangeSelect}/>
+                options={options} noOptionsMessage={() => "No Options"}
+                placeholder={placeholder} value={value}
+                isDisabled={disabled} isMulti onChange={handleOnChangeSelect}/>
       </div>
       {/* ERROR MESSAGE */ }
-      <FieldErrorMessage errorMessage={props.errorMessage} errorMessageProps={errorMessageProps} />
+      <FieldErrorMessage errorMessage={errorMessage}/>
     </section>
   )
-})
+}
 
 
 
