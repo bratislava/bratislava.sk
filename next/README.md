@@ -12,7 +12,7 @@ To install dependencies run:
 yarn
 ```
 
-For CMS setup see `strapi` directory. You can also run the project against production strapi (TODO).
+For CMS setup see `strapi` directory. You can also run the project against production strapi - this is the default setup. If you want to run against local strapi, you need to set `NEXT_PUBLIC_STRAPI_URL` in `.env.development.local` file.
 
 ## Typescript Strict Mode
 
