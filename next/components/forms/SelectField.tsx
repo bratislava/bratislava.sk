@@ -20,7 +20,8 @@ interface SelectFieldProps {
   description?: string
   required?: boolean
   disabled?: boolean
-  tooltip?: boolean
+  tooltip?: string
+  optional?: boolean
   onChange?: (values: MultiValue<unknown>) => void;
 }
 
@@ -36,6 +37,7 @@ const SelectField: FC<SelectFieldProps> = (
     required,
     disabled,
     tooltip,
+    optional,
     onChange
   }
 ) => {
@@ -102,7 +104,8 @@ const SelectField: FC<SelectFieldProps> = (
     <section className="flex w-max flex-col">
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader label={label} htmlFor={name}
-                   description={description} required={required} tooltip={tooltip} />
+                   description={description} optional={optional}
+                   required={required} tooltip={tooltip} />
 
       {/* SELECT PART */}
       <div className="w-80">
