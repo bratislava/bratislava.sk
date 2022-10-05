@@ -64,6 +64,12 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
+          <Wrapper direction="column" title="Tag">
+            <Stack>
+
+            </Stack>
+          </Wrapper>
+
           <Wrapper direction="column" title="Button">
             <Stack>
               <Button text="Button" />
