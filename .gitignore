@@ -68,6 +68,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# Meilisearch
+meilisearch
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 

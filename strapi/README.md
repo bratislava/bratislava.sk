@@ -33,6 +33,8 @@ error: meilisearch: The provided host is not valid.
 
 If you're not developing any new search functionality, you likely don't need this and can safely ignore the error. If you think you need this integration, follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/meilisearch-setup).
 
+You can also setup local meilisearch instance using `docker compose` - see `docker-compose.yml` in the root of the repo and set your `.env.local` vars accordingly.
+
 ### `develop`
 
 Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
