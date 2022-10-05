@@ -16,7 +16,7 @@ Each sub-project contains README which should get you up and running. More docum
 
 🗄️ `/strapi` Strapi CMS server for bratislava.sk
 
-📝 `/docs` (some) documentation files (in the process of being migrated to a separate docs site)
+📝 `/docs` contain the mapping between React and Strapi components - to be replaced by a styleguide in the future
 
 ---
 

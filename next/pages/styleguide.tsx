@@ -10,6 +10,8 @@ import { ReactNode } from 'react'
 
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
 import SearchIcon from '../assets/images/forms/search-icon.svg'
+import FieldHeader from '../components/forms/FieldHeader'
+import FieldErrorMessage from '../components/forms/FieldErrorMessage'
 
 type WrapperProps = {
   title?: string
@@ -43,8 +45,8 @@ type StackProps = {
 export const Stack = ({ direction = 'row', children }: StackProps) => {
   return (
     <div
-      className={cx('flex', {
-        'flex-col space-y-2': direction === 'column',
+      className={cx('flex flex-wrap gap-1', {
+        'flex-col space-y-2 items-center': direction === 'column',
         'space-x-2 items-end': direction === 'row',
       })}
     >
@@ -72,6 +74,31 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <div className="min-h-screen bg-[#E5E5E5]">
         <div className="mx-auto max-w-screen-lg px-12 pt-12 pb-64">
+          <Wrapper direction="column" title="Field header" >
+            <Stack>
+              <FieldHeader label="Simple" htmlFor="input-name"/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Required" htmlFor="input-name" required/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Tooltip" htmlFor="input-name" tooltip/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Description" htmlFor="input-name" description="This is simple description"/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Everything" htmlFor="input-name" description="This is is simple description" tooltip required/>
+            </Stack>
+          </Wrapper>
+
+          <Wrapper direction="column" title="Field error message" >
+            <Stack>
+              <FieldErrorMessage errorMessage="This is error message for fields"/>
+            </Stack>
+          </Wrapper>
+
+
           <Wrapper direction="column" title="SelectField">
             <Stack>
               <SelectField name="select-test" label="default values" options={selectOptions} value={selectOptions.slice(0, 2)}/>
