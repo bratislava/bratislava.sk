@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React, { DOMAttributes, FC, useState } from 'react'
 
-import HelpIcon from '../../assets/images/icon-help.svg'
+import HelpIcon from '@assets/images/forms/icon-help.svg'
 
 interface FieldHeaderProps {
   label: string
