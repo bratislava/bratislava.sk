@@ -11,7 +11,6 @@ interface FieldHeaderProps {
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
   tooltip?: string
-  optional?: boolean
 }
 
 const FieldHeader: FC<FieldHeaderProps> = (
@@ -21,8 +20,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
     description,
     labelProps,
     descriptionProps,
-    tooltip ,
-    optional
+    tooltip
   }
 ) => {
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
@@ -35,19 +33,23 @@ const FieldHeader: FC<FieldHeaderProps> = (
 
   return (
     <div className="w-full">
-      <div className="relative">
-        {
-          isTooltipOpened && <div className="absolute bottom-0 right-0 h-16 w-96 rounded-lg bg-white p-2 drop-shadow-lg">{tooltip}</div>
-        }
-      </div>
+      {/* TOOLTIP */
+       tooltip && (
+         <div className="relative">
+          {
+            isTooltipOpened && <div className="absolute bottom-0 right-0 h-16 w-96 rounded-lg bg-white p-2 drop-shadow-lg">{tooltip}</div>
+          }
+        </div>
+       )
+      }
       <div className="flex justify-between">
         {/* LABEL */}
         <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>{label}</label>
         <div className="flex-column flex items-center">
           {/* OPTIONAL */
-            optional && <p className="mr-4.5 text-default">Optional</p>
+            !required && <p className="mr-4.5 text-default">Optional</p>
           }
-          {/* TOOLTIP */
+          {/* TOOLTIP ICON */
             tooltip && (
               <div className="flex-column flex items-center">
                 <HelpIcon className="cursor-pointer"
