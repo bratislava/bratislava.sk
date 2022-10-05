@@ -44,8 +44,8 @@ type StackProps = {
 export const Stack = ({ direction = 'row', children }: StackProps) => {
   return (
     <div
-      className={cx('flex', {
-        'flex-col space-y-2': direction === 'column',
+      className={cx('flex flex-wrap gap-1', {
+        'flex-col space-y-2 items-center': direction === 'column',
         'space-x-2 items-end': direction === 'row',
       })}
     >
@@ -65,12 +65,20 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
-          <Wrapper direction="column" title="Field header">
+          <Wrapper direction="column" title="Field header" >
             <Stack>
               <FieldHeader label="Simple" htmlFor="input-name"/>
+            </Stack>
+            <Stack>
               <FieldHeader label="Required" htmlFor="input-name" required/>
-              <FieldHeader label="Description" htmlFor="input-name" description="This is simple description"/>
+            </Stack>
+            <Stack>
               <FieldHeader label="Tooltip" htmlFor="input-name" tooltip/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Description" htmlFor="input-name" description="This is simple description"/>
+            </Stack>
+            <Stack>
               <FieldHeader label="Everything" htmlFor="input-name" description="This is is simple description" tooltip required/>
             </Stack>
           </Wrapper>
