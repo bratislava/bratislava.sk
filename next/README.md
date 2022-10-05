@@ -41,6 +41,8 @@ By default this connects you to the production Strapi instance - this is all you
 
 We're using [Meilisearch](https://www.meilisearch.com/) as our search engine - for search to work, Next & Strapi needs to connect to a running meilisearch instance. You can develop most of the page without this, but if you need to work with search follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/meilisearch-setup).
 
+You can also setup local meilisearch instance using `docker compose` - see `docker-compose.yml` in the root of the repo and set your `.env.development.local` vars accordingly.
+
 ## Generate GraphQL
 
 Strapi V4 does not export schema.graphql by default - instead, you'll need a running server to generate types from graphql endpoint. Otherwise the process is the same
