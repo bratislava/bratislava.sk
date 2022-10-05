@@ -74,17 +74,19 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               <FieldHeader label="Required" htmlFor="input-name" required/>
             </Stack>
             <Stack>
-              <FieldHeader label="Tooltip" htmlFor="input-name" optional/>
-            </Stack>
-            <Stack>
               <FieldHeader label="Tooltip" htmlFor="input-name" tooltip="This is random tooltip"/>
             </Stack>
             <Stack>
               <FieldHeader label="Description" htmlFor="input-name" description="This is simple description"/>
             </Stack>
             <Stack>
-              <FieldHeader label="Everything" htmlFor="input-name" description="This is is simple description"
-                           tooltip="This is some tooltip" optional required/>
+              <FieldHeader label="Everything" htmlFor="input-name"
+                           description="This is is simple description" tooltip="This is some tooltip"
+                           required/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Everything but optional" htmlFor="input-name"
+                           description="This is is simple description" tooltip="This is some tooltip" />
             </Stack>
           </Wrapper>
 
