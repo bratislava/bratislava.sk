@@ -10,6 +10,8 @@ import Button from 'components/forms/Button'
 
 import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
+import FieldHeader from '../components/forms/FieldHeader'
+import FieldErrorMessage from '../components/forms/FieldErrorMessage'
 
 type WrapperProps = {
   title?: string
@@ -43,8 +45,8 @@ type StackProps = {
 export const Stack = ({ direction = 'row', children }: StackProps) => {
   return (
     <div
-      className={cx('flex', {
-        'flex-col space-y-2': direction === 'column',
+      className={cx('flex flex-wrap gap-1 p-3 border border-dashed border-gray-800 rounded-lg', {
+        'flex-col space-y-2 items-center': direction === 'column',
         'space-x-2 items-end': direction === 'row',
       })}
     >
@@ -64,6 +66,36 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
+          <Wrapper direction="column" title="Field header" >
+            <Stack>
+              <FieldHeader label="Simple" htmlFor="input-name"/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Required" htmlFor="input-name" required/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Tooltip" htmlFor="input-name" tooltip="This is random tooltip"/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Description" htmlFor="input-name" description="This is simple description"/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Everything" htmlFor="input-name"
+                           description="This is is simple description" tooltip="This is some tooltip"
+                           required/>
+            </Stack>
+            <Stack>
+              <FieldHeader label="Everything but optional" htmlFor="input-name"
+                           description="This is is simple description" tooltip="This is some tooltip" />
+            </Stack>
+          </Wrapper>
+
+          <Wrapper direction="column" title="Field error message" >
+            <Stack>
+              <FieldErrorMessage errorMessage="This is error message for fields"/>
+            </Stack>
+          </Wrapper>
+
           <Wrapper direction="column" title="Button">
             <Stack>
               <Button text="Button" />
