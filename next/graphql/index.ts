@@ -3293,6 +3293,8 @@ export type InstitutionFragment = { __typename?: 'ComponentAccordionItemsInstitu
 
 export type NumericalListItemFragment = { __typename?: 'ComponentBlocksNumericalListItem', text?: string | null };
 
+export type GalleryItemFragment = { __typename?: 'ComponentBlocksGalleryItem', imgTitle?: string | null, imgSubTitle?: string | null, imgSubText?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, caption?: string | null, alternativeText?: string | null } } | null } | null };
+
 type Sections_ComponentSectionsAccordion_Fragment = { __typename: 'ComponentSectionsAccordion', title?: string | null, hasBackground?: boolean | null, institutions?: Array<{ __typename?: 'ComponentAccordionItemsInstitution', title?: string | null, subtitle?: string | null, category?: string | null, firstColumn?: string | null, secondColumn?: string | null, thirdColumn?: string | null, url?: string | null, urlLabel?: string | null } | null> | null, flatText?: Array<{ __typename?: 'ComponentAccordionItemsFlatText', category?: string | null, content?: string | null, width?: Enum_Componentaccordionitemsflattext_Width | null, align?: Enum_Componentaccordionitemsflattext_Align | null, moreLinkTitle?: string | null, moreLinkUrl?: string | null, moreLinkPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', slug?: string | null, title?: string | null, locale?: string | null } | null } | null } | null } | null> | null, institutionsNarrow?: Array<{ __typename?: 'ComponentAccordionItemsInstitutionNarrow', title?: string | null, subtitle?: string | null, category?: string | null, url?: string | null, urlLabel?: string | null } | null> | null };
 
 type Sections_ComponentSectionsArticlesList_Fragment = { __typename: 'ComponentSectionsArticlesList', title?: string | null, filtering?: boolean | null, category?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', title?: string | null } | null } | null } | null };
@@ -4032,6 +4034,24 @@ export const MainMenuItemFragmentDoc = gql`
   }
 }
     ${PageLinkFragmentDoc}`;
+export const GalleryItemFragmentDoc = gql`
+    fragment GalleryItem on ComponentBlocksGalleryItem {
+  imgTitle
+  imgSubTitle
+  imgSubText
+  media {
+    data {
+      attributes {
+        url
+        width
+        height
+        caption
+        alternativeText
+      }
+    }
+  }
+}
+    `;
 export const BlogPostBySlugDocument = gql`
     query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
   blogPosts(filters: {slug: {eq: $slug}}, locale: $locale) {

@@ -1,30 +1,17 @@
 import { ChevronDown } from '@assets/images'
 import IconEye from '@assets/images/icon-eye-white.svg'
+import { GalleryItemFragment } from '@bratislava/strapi-sdk-homepage'
 import { HorizontalScrollWrapper, Modal } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
-export interface GalleryItem {
-  imgTitle?: string
-  imgSubTitle?: string
-  imgSubText?: string
-  media?: {
-    data: {
-      attributes: {
-        url: string
-        alternativeText?: string
-      }
-    }
-  }
-}
-
 export interface GalleryProps {
   className?: string
   title?: string
   subTitle?: string
-  galleryItems?: GalleryItem[]
+  galleryItems?: GalleryItemFragment[]
 }
 
 const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps) => {
@@ -81,30 +68,39 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
                     <div className="from-galleryFrom pointer-events-none invisible absolute z-10 flex h-full w-full bg-gradient-to-t to-transparent group-hover:visible">
                       <IconEye className="relative m-auto" />
                       <div className="absolute bottom-0 left-0 mx-8 mb-6 ">
-                        {image.imgTitle && (
-                          <div className="text-default font-semibold text-white">
-                            {image.imgTitle}
-                          </div>
-                        )}
-                        {image.imgSubTitle && (
-                          <div className="text-sm italic text-white opacity-75">
-                            {image.imgSubTitle}
-                          </div>
-                        )}
+                        {
+                          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                          image.imgTitle && (
+                            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                            <div className="text-p1-semibold text-white">{image.imgTitle}</div>
+                          )
+                        }
+                        {
+                          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                          image.imgSubTitle && (
+                            <div className="text-sm italic text-white opacity-75">
+                              {image.imgSubTitle}
+                            </div>
+                          )
+                        }
                       </div>
                     </div>
-
-                    {image.media?.data?.attributes?.url && (
-                      <Image
-                        src={image.media.data.attributes.url}
-                        alt={image.media.data.attributes.alternativeText}
-                        width="350"
-                        height="300"
-                        layout="responsive"
-                        objectFit="cover"
-                        objectPosition="center"
-                      />
-                    )}
+                    {
+                      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                      image?.media?.data?.attributes?.url && (
+                        <Image
+                          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                          src={image.media.data.attributes.url}
+                          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                          alt={image.media.data.attributes.alternativeText ?? undefined}
+                          width="350"
+                          height="300"
+                          layout="responsive"
+                          objectFit="cover"
+                          objectPosition="center"
+                        />
+                      )
+                    }
                   </div>
                 </button>
               )
@@ -137,7 +133,7 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
               {image.media?.data?.attributes?.url && (
                 <Image
                   src={image.media.data.attributes.url}
-                  alt={image.media.data.attributes.alternativeText}
+                  alt={image.media.data.attributes.alternativeText ?? undefined}
                   width="350"
                   height="300"
                   layout="responsive"
@@ -164,28 +160,39 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
             <div className="modal-content-rent xs:h-[calc(100vh-120px)] xs:w-[calc(100vw-100px)] overflow-y-auto  md:max-h-[951px] lg:w-[1000px] xl:w-[1110px]">
               <div className="from-galleryFrom absolute z-[9] flex h-full w-full overflow-hidden rounded-2xl bg-gradient-to-t via-transparent to-white">
                 <div className="absolute inset-x-0 bottom-0 mx-8 mb-10 text-center md:mx-24 md:text-left">
-                  {currentItem.imgTitle && (
-                    <div className="text-default font-semibold text-white">
-                      {currentItem.imgTitle}
-                    </div>
-                  )}
-                  {currentItem.imgSubTitle && (
-                    <div className="text-sm italic text-white opacity-75">
-                      {currentItem.imgSubTitle}
-                    </div>
-                  )}
-                  {currentItem.imgSubText && (
-                    <div className="text-default mt-6 hidden font-normal text-white md:block">
-                      {currentItem.imgSubText}
-                    </div>
-                  )}
+                  {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    currentItem.imgTitle && (
+                      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                      <div className="text-p1-semibold text-white">{currentItem.imgTitle}</div>
+                    )
+                  }
+                  {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    currentItem.imgSubTitle && (
+                      <div className="text-p3-bold italic text-white opacity-75">
+                        {
+                          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                          currentItem.imgSubTitle
+                        }
+                      </div>
+                    )
+                  }
+                  {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    currentItem.imgSubText && (
+                      <div className="text-p2 mt-6 hidden text-white md:block">
+                        {currentItem.imgSubText}
+                      </div>
+                    )
+                  }
                   {currentItem.imgSubText && showModalDetails && (
-                    <div className="text-default mt-6 block font-normal text-white md:hidden">
+                    <div className="text-p2 mt-6 block text-white md:hidden">
                       {currentItem.imgSubText}
                     </div>
                   )}
                   {currentItem.imgSubText && (
-                    <div className="m-auto mb-4 mt-5 block text-sm font-semibold text-white md:hidden">
+                    <div className="text-p3-semibold m-auto mb-4 mt-5 block text-white md:hidden">
                       <button
                         type="button"
                         className="underline underline-offset-2 "
@@ -207,7 +214,7 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
                 <Image
                   className="rounded-2xl "
                   src={currentItem.media.data.attributes.url}
-                  alt={currentItem.media.data.attributes.alternativeText}
+                  alt={currentItem.media.data.attributes.alternativeText ?? undefined}
                   width="1110"
                   height="951"
                   layout="fill"

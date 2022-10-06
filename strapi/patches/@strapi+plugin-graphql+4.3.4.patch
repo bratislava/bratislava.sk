@@ -1,0 +1,50 @@
+diff --git a/node_modules/@strapi/plugin-graphql/server/services/builders/entity.js b/node_modules/@strapi/plugin-graphql/server/services/builders/entity.js
+index aadd553..574e10d 100644
+--- a/node_modules/@strapi/plugin-graphql/server/services/builders/entity.js
++++ b/node_modules/@strapi/plugin-graphql/server/services/builders/entity.js
+@@ -23,12 +23,12 @@ module.exports = ({ strapi }) => {
+ 
+         definition(t) {
+           // Keep the ID attribute at the top level
+-          t.id('id', { resolve: prop('id') });
++          t.nonNull.id('id', { resolve: prop('id') });
+           
+           if (!isEmpty(attributes)) {
+             // Keep the fetched object into a dedicated `attributes` field
+             // TODO: [v4] precise why we keep the ID
+-            t.field('attributes', {
++            t.nonNull.field('attributes', {
+               type: typeName,
+               resolve: identity,
+             });
+diff --git a/node_modules/@strapi/plugin-graphql/server/services/builders/type.js b/node_modules/@strapi/plugin-graphql/server/services/builders/type.js
+index 24202ae..d3a11a2 100644
+--- a/node_modules/@strapi/plugin-graphql/server/services/builders/type.js
++++ b/node_modules/@strapi/plugin-graphql/server/services/builders/type.js
+@@ -55,7 +55,7 @@ module.exports = context => {
+     const type = naming.getComponentNameFromAttribute(attribute);
+ 
+     if (attribute.repeatable) {
+-      builder = builder.list;
++      builder = builder.nonNull.list.nonNull;
+     }
+ 
+     const targetComponent = strapi.getModel(attribute.component);
+@@ -101,7 +101,7 @@ module.exports = context => {
+           attributeName,
+         });
+ 
+-    builder.list.field(attributeName, { type, resolve });
++    builder.nonNull.list.nonNull.field(attributeName, { type, resolve });
+   };
+ 
+   /**
+@@ -235,7 +235,7 @@ module.exports = context => {
+ 
+     extension.use({ resolversConfig: { [resolverPath]: { auth: { scope: [resolverScope] } } } });
+ 
+-    builder.field(attributeName, { type, resolve, args });
++    builder.nonNull.field(attributeName, { type, resolve, args });
+   };
+ 
+   const isNotPrivate = contentType => attributeName => {

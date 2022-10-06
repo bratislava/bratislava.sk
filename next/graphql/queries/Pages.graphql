@@ -415,6 +415,23 @@ fragment NumericalListItem on ComponentBlocksNumericalListItem {
   text
 }
 
+fragment GalleryItem on ComponentBlocksGalleryItem {
+  imgTitle
+  imgSubTitle
+  imgSubText
+  media {
+    data {
+      attributes {
+        url
+        width
+        height
+        caption
+        alternativeText
+      }
+    }
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -467,7 +484,7 @@ fragment Sections on PageSectionsDynamicZone {
       imgTitle
       imgSubTitle
       imgSubText
-			media {
+      media {
         data {
           attributes {
             url

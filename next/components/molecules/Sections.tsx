@@ -257,7 +257,8 @@ const SectionContent = ({
         <Gallery
           title={section.title ?? ''}
           subTitle={section.subTitle ?? ''}
-          galleryItems={section.galleryItems ?? null}
+          // because of this https://github.com/strapi/strapi/issues/4548#issuecomment-615618608 we are using
+          galleryItems={section.galleryItems ?? undefined}
         />
       )
 
