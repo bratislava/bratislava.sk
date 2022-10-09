@@ -12,6 +12,8 @@ import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
 import FieldHeader from '../components/forms/FieldHeader'
 import FieldErrorMessage from '../components/forms/FieldErrorMessage'
+import Radio from '../components/forms/Radio'
+import RadioGroup from 'components/forms/RadioGroup'
 
 type WrapperProps = {
   title?: string
@@ -254,6 +256,25 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
             <Stack>
               <Button variant="link-black" href="#" label="Label value" />
               <Button variant="link-black" href="#" label="Label value" size="sm" />
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Radio">
+            <Stack>
+              <RadioGroup label='Basic'>
+                <Radio value='one' tooltip="This is some tooltip1">One</Radio>
+                <Radio value='two' isDisabled>Two</Radio>
+                <Radio value='three' error tooltip="This is some tooltip3">Three</Radio>
+              </RadioGroup>
+              <RadioGroup label='Boxed' >
+                <Radio value='one' variant='boxed' tooltip="This is some tooltip1">One</Radio>
+                <Radio value='two' variant='boxed' isDisabled>Huge text</Radio>
+                <Radio value='three' variant='boxed' error>Three</Radio>
+              </RadioGroup>
+              <RadioGroup label='Card' defaultValue='two'>
+                <Radio value='one' variant='card' tooltip="This is some tooltip1">One</Radio>
+                <Radio value='two' variant='card' isDisabled>Two</Radio>
+                <Radio value='three' variant='card' error>Three</Radio>
+              </RadioGroup>
             </Stack>
           </Wrapper>
         </div>

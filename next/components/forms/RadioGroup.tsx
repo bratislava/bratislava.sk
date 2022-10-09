@@ -4,7 +4,16 @@ import { useRadioGroupState } from '@react-stately/radio'
 
 export let RadioContext = React.createContext(null)
 
-export default function RadioGroup(props) {
+type RadioGroupBase = {
+  children: React.ReactNode
+  value?: string
+  label: string
+  defaultValue?: string
+  isDisabled?: boolean
+  isReadOnly?: boolean
+}
+
+const RadioGroup = (props: RadioGroupBase) => {
   let { children, label } = props
   let state = useRadioGroupState(props)
   let { radioGroupProps, labelProps } = useRadioGroup(props, state)
@@ -16,3 +25,5 @@ export default function RadioGroup(props) {
     </div>
   )
 }
+
+export default RadioGroup

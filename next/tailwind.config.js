@@ -138,7 +138,7 @@ module.exports = {
             200: 'var(--universal-gray-200)',
             300: '#C2C2C2',
             500: 'var(--universal-gray-500)',
-            600: '#5C5C5C',
+            600: 'var(--universal-gray-600)',
             700: '#333333',
             800: 'var(--universal-gray-800)',
           },
@@ -180,6 +180,7 @@ module.exports = {
       },
       borderRadius: {
         10: '10px',
+        8: '8px',
         5: '5px',
       },
       gridTemplateRows: {
@@ -241,6 +242,7 @@ module.exports = {
       },
       width: {
         540: '540px',
+        336: '336px',
         72: '72px',
       },
       minWidth: {
