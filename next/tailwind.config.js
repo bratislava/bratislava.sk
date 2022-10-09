@@ -137,6 +137,7 @@ module.exports = {
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
             300: '#C2C2C2',
+            400: 'var(--universal-gray-400)',
             500: 'var(--universal-gray-500)',
             600: 'var(--universal-gray-600)',
             700: '#333333',
@@ -171,7 +172,10 @@ module.exports = {
         },
         purple: '#704B9D', // TODO var
         warning: 'var(--warning-color)',
-        success: 'var(--success-color)',
+        success: {
+          700: 'var(--success-700)'
+        },
+        // success: 'var(--success-color)',
         error: 'var(--error-color)',
         transprentGray: 'rgba(51, 51, 51, 0.25)',
       },

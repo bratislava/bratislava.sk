@@ -22,14 +22,14 @@ const Switch = ({ error = false, children, isDisabled = false, variant = 'defaul
   let { focusProps } = useFocusRing()
 
   let isSelected = state.isSelected
-  const toggleContainer = cx('group flex flex-row absolute items-center p-0 gap-4', {
+  const toggleContainer = cx('group flex flex-row items-center p-0 gap-4', {
     'opacity-50 cursor-not-allowed': isDisabled,
   })
   const labelStyle = cx('select-none not-italic font-normal text-default leading-8 text-gray-universal-700 ml-16', {})
 
   const togglerContainer = cx('absolute w-12 h-6 rounded-full items-center justify-center', {
-    'bg-[#23D675]': isSelected,
-    'bg-[#ADADAD]': !isSelected,
+    'bg-success-700': isSelected,
+    'bg-gray-universal-400': !isSelected,
   })
 
   const toggleBall = cx('absolute w-5 h-5 rounded-full bg-white top-[2px]', {

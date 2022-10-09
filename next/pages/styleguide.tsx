@@ -14,6 +14,7 @@ import FieldHeader from '../components/forms/FieldHeader'
 import FieldErrorMessage from '../components/forms/FieldErrorMessage'
 import Radio from '../components/forms/Radio'
 import RadioGroup from 'components/forms/RadioGroup'
+import Switch from 'components/forms/ToggleButton'
 
 type WrapperProps = {
   title?: string
@@ -275,6 +276,14 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
                 <Radio value='two' variant='card' isDisabled>Two</Radio>
                 <Radio value='three' variant='card' error>Three</Radio>
               </RadioGroup>
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Toggle">
+            <Stack>
+              <Switch value='one'>Value</Switch>
+              <Switch value='two' defaultSelected>Value</Switch>
+              <Switch value='two' isDisabled>Value</Switch>
+              <Switch value='two' isDisabled defaultSelected>Value</Switch>
             </Stack>
           </Wrapper>
         </div>
