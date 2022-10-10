@@ -5,9 +5,9 @@ import Select, {
   CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
   OptionProps,
   StylesConfig,
-  components
+  components, MultiValueRemoveProps,
 } from 'react-select'
-
+import CloseIcon from '@assets/images/close.svg'
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
 
@@ -41,9 +41,9 @@ const SelectField: FC<SelectFieldProps> = (
   }
 ) => {
   // EVENT HANDLERS
-  const handleOnChangeSelect = (selectedOptions: MultiValue<unknown>) => {
+  const handleOnChangeSelect = (selectedOptions: unknown) => {
     if (onChange) {
-      onChange(selectedOptions)
+      onChange(selectedOptions as MultiValue<unknown>)
     }
   }
 
@@ -112,6 +112,14 @@ const SelectField: FC<SelectFieldProps> = (
     })
   }
 
+  const customMultiValueRemove = (props: MultiValueRemoveProps) => {
+    return (
+      <components.MultiValueRemove {...props}>
+        <CloseIcon/>
+      </components.MultiValueRemove>
+    )
+  }
+
   // RENDER
   return (
     <section className="flex w-max flex-col">
@@ -125,7 +133,9 @@ const SelectField: FC<SelectFieldProps> = (
         <Select className={tailwindSelectStyle} styles={selectStyle}
                 options={options} noOptionsMessage={() => "No Options"}
                 placeholder={placeholder} value={value}
-                isDisabled={disabled} isMulti onChange={handleOnChangeSelect}/>
+                isDisabled={disabled} isMulti
+                onChange={handleOnChangeSelect}
+                components={{MultiValueRemove: customMultiValueRemove}}/>
       </div>
       {/* ERROR MESSAGE */ }
       <FieldErrorMessage errorMessage={errorMessage}/>
