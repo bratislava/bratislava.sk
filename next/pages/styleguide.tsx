@@ -12,6 +12,13 @@ import SearchIcon from '../assets/images/forms/search-icon.svg'
 import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
 import FieldHeader from '../components/forms/FieldHeader'
 import FieldErrorMessage from '../components/forms/FieldErrorMessage'
+import RadioGroup from '../components/forms/RadioGroup'
+import Radio from '../components/forms/Radio'
+import Toggle from '../components/forms/Toggle'
+import SingleCheckBox from '../components/forms/SingleCheckBox'
+import CheckboxGroup from '../components/forms/CheckboxGroup'
+import CheckboxGroupItem from '../components/forms/CheckBoxGroupItem'
+import Alert from '../components/forms/Alert'
 
 type WrapperProps = {
   title?: string
@@ -254,6 +261,81 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
             <Stack>
               <Button variant="link-black" href="#" label="Label value" />
               <Button variant="link-black" href="#" label="Label value" size="sm" />
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Radio">
+            <Stack>
+              <RadioGroup label='Basic'>
+                <Radio value='one' tooltip="This is some tooltip1">One</Radio>
+                <Radio value='two' isDisabled>Two</Radio>
+                <Radio value='three' error tooltip="This is some tooltip3">Three</Radio>
+              </RadioGroup>
+              <RadioGroup label='Boxed' >
+                <Radio value='one' variant='boxed' tooltip="This is some tooltip1">One</Radio>
+                <Radio value='two' variant='boxed' isDisabled>Huge text</Radio>
+                <Radio value='three' variant='boxed' error>Three</Radio>
+              </RadioGroup>
+              <RadioGroup label='Card' defaultValue='two'>
+                <Radio value='one' variant='card' tooltip="This is some tooltip1">One</Radio>
+                <Radio value='two' variant='card' isDisabled>Two</Radio>
+                <Radio value='three' variant='card' error>Three</Radio>
+              </RadioGroup>
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Toggle">
+            <Stack>
+              <Toggle value='one'>Value</Toggle>
+              <Toggle value='two' defaultSelected>Value</Toggle>
+              <Toggle value='two' isDisabled>Value</Toggle>
+              <Toggle value='two' isDisabled defaultSelected>Value</Toggle>
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Checkbox">
+            <Stack>
+              <SingleCheckBox value='value' isIndeterminate tooltip="This is some tooltip">Value</SingleCheckBox>
+              <SingleCheckBox value='value' isDisabled>Value</SingleCheckBox>
+              <SingleCheckBox value='value' isSelected error>Value</SingleCheckBox>
+              <SingleCheckBox value='value' variant='boxed' tooltip="This is some tooltip">Value</SingleCheckBox>
+              <SingleCheckBox value='value' isIndeterminate variant='boxed' isDisabled >Value</SingleCheckBox>
+              <SingleCheckBox value='value' variant='boxed' error>Value</SingleCheckBox>
+            </Stack>
+            <Stack>
+              <CheckboxGroup>
+                <CheckboxGroupItem value='value1' isIndeterminate tooltip="This is some tooltip">Value</CheckboxGroupItem>
+                <CheckboxGroupItem value='value2' isDisabled>Value</CheckboxGroupItem>
+                <CheckboxGroupItem value='value3' error>Value</CheckboxGroupItem>
+              </CheckboxGroup>
+              <CheckboxGroup>
+                  <CheckboxGroupItem value='value1' variant='boxed' tooltip="This is some tooltip">Value</CheckboxGroupItem>
+                  <CheckboxGroupItem value='value2' variant='boxed' isDisabled>Value</CheckboxGroupItem>
+                  <CheckboxGroupItem value='value3' variant='boxed' error>Value</CheckboxGroupItem>
+              </CheckboxGroup>
+            </Stack>
+          </Wrapper>
+          <Wrapper direction="column" title="Alert">
+            <Stack>
+              <Alert message='Alert text' type='error'/>
+              <Alert message='Alert text' type='success'/>
+              <Alert message='Alert text' type='info'/>
+              <Alert message='Alert text' type='warning'/>
+            </Stack>
+            <Stack>
+              <Alert message='Alert text' type='error' solid/>
+              <Alert message='Alert text' type='success' solid/>
+              <Alert message='Alert text' type='info' solid/>
+              <Alert message='Alert text' type='warning' solid/>
+            </Stack>
+            <Stack direction='row'>
+              <Alert message='Alert text' type='error' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+              <Alert message='Alert text' type='success' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+              <Alert message='Alert text' type='info' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+              <Alert message='Alert text' type='warning' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+            </Stack>
+            <Stack>
+              <Alert message='Alert text' solid type='error' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+              <Alert message='Alert text' solid type='success' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+              <Alert message='Alert text' solid type='info' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
+              <Alert message='Alert text' solid type='warning' variant='message' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'/>
             </Stack>
           </Wrapper>
         </div>

@@ -116,6 +116,28 @@ module.exports = {
             hover: '#FDE8E8',
             pressed: '#FCD1D1',
           },
+          alert: {
+            error: {
+              default: '#D00000',
+              'default-bg': '#FDF2F2',
+              solid: ''
+            },
+            success: {
+              default: '#01843D',
+              'default-bg': '#F2F9F5',
+              solid: ''
+            },
+            info: {
+              default: '#333333',
+              'default-bg': '#EBEBEB',
+              solid: ''
+            },
+            warning: {
+              default: '#E07B04',
+              'default-bg': '#FDF8F2',
+              solid: ''
+            }
+          }
         },
         transperentBG: 'rgba(0, 0, 0, 0.5)',
         primary: 'var(--primary-color)',
@@ -136,7 +158,11 @@ module.exports = {
           universal: {
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
+            300: '#C2C2C2',
+            400: 'var(--universal-gray-400)',
             500: 'var(--universal-gray-500)',
+            600: 'var(--universal-gray-600)',
+            700: '#333333',
             800: 'var(--universal-gray-800)',
           },
           dark: 'var(--dark-gray-color)',
@@ -156,6 +182,7 @@ module.exports = {
           'universal-800': 'var(--universal-red-800)',
           'universal-500': 'var(--universal-red-500)',
           'universal-300': 'var(--universal-red-300)',
+          'negative-700': '#EF1919',
           brick: '#E46054',
           'brick-dark': '#D05145',
           superlight: 'var(--superlight-red-color)',
@@ -167,7 +194,9 @@ module.exports = {
         },
         purple: '#704B9D', // TODO var
         warning: 'var(--warning-color)',
-        success: 'var(--success-color)',
+        success: {
+          700: 'var(--success-700)'
+        },
         error: 'var(--error-color)',
         transprentGray: 'rgba(51, 51, 51, 0.25)',
       },
@@ -176,6 +205,7 @@ module.exports = {
       },
       borderRadius: {
         10: '10px',
+        8: '8px',
         5: '5px',
       },
       gridTemplateRows: {
@@ -237,6 +267,7 @@ module.exports = {
       },
       width: {
         540: '540px',
+        336: '336px',
         72: '72px',
       },
       minWidth: {

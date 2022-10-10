@@ -38,7 +38,11 @@
   --tertiary-color: rgb(var(--color-tertiary));
   --dark-gray-color: #333333bf;
   --universal-gray-200: #c4c4c4;
+  --universal-gray-300: #C2C2C2;
+  --universal-gray-400: #ADADAD;
   --universal-gray-500: #9f9f9f;
+  --universal-gray-600: #5C5C5C;
+  --universal-gray-700: #333333;
   --universal-gray-800: #585757;
   --universal-black: #2f2f2f;
   --input-nav-background-color: #fff;
@@ -52,6 +56,7 @@
   --light-gray-color: rgba(51, 51, 51, 0.5);
   --superlight-red-color: rgba(var(--color-red--light), 0.35);
   --error-color: #dc2626;
+  --success-700: #01843D;
   --purple-color: #704b9d; /* TODO var */
 }
 
