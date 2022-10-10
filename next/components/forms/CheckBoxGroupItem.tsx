@@ -24,37 +24,6 @@ const CheckboxGroupItem = ({ error = false, isIndeterminate = false, tooltip, va
   let isDisabled = state.isDisabled || rest.isDisabled
   let isSelected = state.isSelected(rest.value)
 
-  //   const checkboxStyle = cx(
-  //     'focus-visible: outline-none focus:outline-none appearance-none items-center justify-center w-6 h-6 rounded-[4px] border-2 border-solid border-gray-universal-700 left-0 right-0 top-0 bottom-0',
-  //     {
-  //       'bg-gray-universal-700': isSelected,
-  //       'group-hover:border-gray-universal-600':
-  //         (variant === 'basic' || variant === 'boxed') && !isSelected && !isDisabled && !error,
-  //       'group-hover:border-gray-universal-600 group-hover:bg-gray-universal-600':
-  //         (variant === 'basic' || variant === 'boxed') && isSelected && !isDisabled && !error,
-  //       'opacity-50 cursor-not-allowed text-red-negative-700': isDisabled,
-
-  //       // error
-  //       'border-red-negative-700': error && !isSelected && !isDisabled,
-  //       'bg-red-negative-700 border-red-negative-700': error && isSelected && !isDisabled,
-  //     }
-  //   )
-
-  //   const containerStyle = cx('group flex flex-row relative items-center justify-center p-0', rest.className, {
-  //     'h-12 py-3 px-4 bg-white border-2 border-solid rounded-[8px]': variant === 'boxed',
-  //     'border-gray-universal-300 hover:border-[#858585]': variant === 'boxed' && !isSelected && !isDisabled && !error,
-  //     'border-gray-universal-700 hover:border-[#858585]': variant === 'boxed' && isSelected && !isDisabled && !error,
-
-  //     //error
-  //     'border-[red]': variant === 'boxed' && error,
-  //     // disabled
-  //     'opacity-50 cursor-not-allowed': isDisabled,
-  //   })
-  //   const labelStyle = cx(
-  //     'flex select-none not-italic font-normal text-default leading-8 text-gray-universal-700 flex-none order-1 grow gap-4 ml-4',
-  //     {}
-  //   )
-
   const checkboxStyle = cx(
     'focus-visible: outline-none focus:outline-none appearance-none items-center justify-center w-6 h-6 rounded border-2 border-solid border-gray-universal-700 left-0 right-0 top-0 bottom-0',
     {
