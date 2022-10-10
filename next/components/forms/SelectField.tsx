@@ -2,9 +2,10 @@ import cx from 'classnames'
 import React, { FC } from 'react'
 import Select, {
   ControlProps,
-  CSSObjectWithLabel, DropdownIndicatorProps, MultiValue, MultiValueRemoveProps,
+  CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
   OptionProps,
   StylesConfig,
+  components
 } from 'react-select'
 
 import FieldErrorMessage from './FieldErrorMessage'
@@ -65,20 +66,28 @@ const SelectField: FC<SelectFieldProps> = (
       '&:hover': {
         borderColor: errorMessage ? 'red' : 'black',
       },
-      padding: '5px 0'
+      padding: '5px 0',
+      fontSize: '20px',
+      lineHeight: '32px'
     }),
     option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
       ...provided,
       backgroundColor: state.isFocused ? 'lightgray' : undefined,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      fontSize: '20px',
+      lineHeight: '32px'
     }),
     multiValue: (provided: CSSObjectWithLabel) => ({
       ...provided,
-      borderRadius: 8
+      borderRadius: 8,
+      fontSize: '20px',
+      lineHeight: '32px'
     }),
     placeholder: (provided: CSSObjectWithLabel) => ({
       ...provided,
-      color: placeholder ? provided.color : "transparent"
+      color: placeholder ? provided.color : "transparent",
+      fontSize: '20px',
+      lineHeight: '32px'
     }),
     dropdownIndicator: (provided: CSSObjectWithLabel, state:DropdownIndicatorProps) => ({
       ...provided,
@@ -89,8 +98,6 @@ const SelectField: FC<SelectFieldProps> = (
     }),
     multiValueRemove: (provided: CSSObjectWithLabel) => ({
       ...provided,
-      borderBottomRightRadius: 8,
-      borderTopRightRadius: 8,
       '&:hover': {
         backgroundColor: 'inherit',
         color: '#333333'
@@ -98,7 +105,10 @@ const SelectField: FC<SelectFieldProps> = (
     }),
     clearIndicator: (provided: CSSObjectWithLabel) => ({
       ...provided,
-      cursor: 'pointer'
+      display: 'none'
+    }),
+    indicatorSeparator: () => ({
+      display: 'none'
     })
   }
 
