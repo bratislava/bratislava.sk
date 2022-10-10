@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+
 import cx from 'classnames'
 
 import { AsyncServerProps } from '@utils/types'
@@ -8,58 +8,11 @@ import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Button from 'components/forms/Button'
 
-import SearchIcon from '../assets/images/forms/search-icon.svg'
-import ArrowRightIcon from '../assets/images/forms/arrow-right.svg'
+import SearchIcon from '@assets/images/forms/search-icon.svg'
+import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import FieldHeader from '../components/forms/FieldHeader'
 import FieldErrorMessage from '../components/forms/FieldErrorMessage'
 
-type WrapperProps = {
-  title?: string
-  children: ReactNode
-  direction?: 'column' | 'row'
-}
-
-export const Wrapper = ({ title, children, direction = 'row' }: WrapperProps) => {
-  return (
-    <div className={'mb-10 flex flex-col'}>
-      {title && <h2 className="pb-2 text-lg font-semibold">{title}</h2>}
-      <div
-        className={cx('flex', {
-          'flex-col space-y-2': direction === 'column',
-          'space-x-2': direction === 'row',
-        })}
-      >
-        {children}
-      </div>
-    </div>
-  )
-}
-
-type StackProps = {
-  bg?: 'white' | 'dark'
-  width?: 'desktop' | 'mobile' | 'full' | null
-  direction?: 'column' | 'row'
-  children: React.ReactNode
-}
-
-export const Stack = ({ direction = 'row', children }: StackProps) => {
-  return (
-    <div
-      className={cx('flex flex-wrap gap-1 p-3 border border-dashed border-gray-800 rounded-lg', {
-        'flex-col space-y-2 items-center': direction === 'column',
-        'space-x-2 items-end': direction === 'row',
-      })}
-    >
-      {children}
-    </div>
-  )
-}
-
-type ButtonShowCaseProps = {}
-
-export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
-  return <div></div>
-}
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
