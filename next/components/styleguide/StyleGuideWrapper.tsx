@@ -55,10 +55,10 @@ const StyleGuideWrapper = ({children}: StyleGuideWrapperProps) => {
         <div className="mx-auto max-w-screen-lg px-12 pt-12 pb-64">
           <h1 className="mb-10 text-center text-xl font-bold underline">Style Guide</h1>
           <div className="mb-10">
-            <h1 className="ml-2 text-lg">Change brand of style guide:</h1>
-            <p className="ml-2"><b>WARNING:</b> Every component should change automatically brand color scheme after we change colors in :root based on chosen brand. Click on button for change in styleguide</p>
-            <div className="flex-row flex-wrap gap-2">
-            { allColors.map(mapBrandColor) }
+            <h1 className="ml-2 text-lg">Change brand of Style Guide</h1>
+            <p className="ml-2"><b>WARNING:</b> Components should change automatically brand color scheme after we change colors in :root based on chosen brand. Click on button for change in styleguide</p>
+            <div className="mt-3 flex-row flex-wrap gap-2">
+              { allColors.map(mapBrandColor) }
             </div>
           </div>
           {children}
