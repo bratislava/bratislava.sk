@@ -1,6 +1,6 @@
-import { FC } from 'react'
-import cx from 'classnames'
 import CloseIcon from '@assets/images/close.svg'
+import cx from 'classnames'
+import { FC, useState } from 'react'
 
 interface TagProps {
   text: string
@@ -19,9 +19,10 @@ const Tag: FC<TagProps> = (
     onRemove
   }
 ) => {
+  // STATE
+  const [isHovered, setIsHovered] = useState<boolean>(false)
 
   // STYLES
-
   const classStyles = cx(
     "flex flex-row align-items-start min-w-14 min-h-6 px-2 gap-2.5 text-center",
     {
@@ -31,10 +32,12 @@ const Tag: FC<TagProps> = (
       'py-0.5': size === 'large',
       'rounded-lg': size === 'large',
       'rounded': size === 'small' || !size,
-      'text-primary': branded,
-      'bg-secondary': branded,
-      'text-universal-gray-700': !branded,
-      'bg-universal-gray-100': !branded
+      'bg-universal-gray-100': removable || !branded,
+      'text-universal-gray-700': (removable || !branded) && !isHovered,
+      'text-universal-gray-600': removable && isHovered,
+      'bg-secondary': !removable && branded,
+      'text-primary': !removable && branded,
+      'underline': !removable && branded && isHovered
     }
   )
 
@@ -49,7 +52,10 @@ const Tag: FC<TagProps> = (
 
   // RENDER
   return (
-    <div className={classStyles}>
+    <div className={classStyles}
+         onMouseOver={() => setIsHovered(true)}
+         onFocus={() => setIsHovered(true)}
+         onMouseLeave={() => setIsHovered(false)}>
       <p>{text}</p>
       { removable && <CloseIcon className={iconClassStyles} onClick={onRemove}/> }
     </div>
