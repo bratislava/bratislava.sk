@@ -1,38 +1,56 @@
 import { FC } from 'react'
 import cx from 'classnames'
+import CloseIcon from '@assets/images/close.svg'
 
 interface TagProps {
   text: string
-  colorVariant?: 'black' | 'red' | 'blue' | 'green' | 'purple' | 'yellow' | 'orange'
   removable?: boolean
   size?: string
-  disabled?: boolean
-  underlined?: boolean
+  branded?: boolean
+  onRemove?: () => void
 }
 
 const Tag: FC<TagProps> = (
   {
     text,
-    colorVariant,
     removable,
     size,
-    disabled,
-    underlined
+    branded,
+    onRemove
   }
 ) => {
 
   // STYLES
-  const styles = cx(
-    'rounded min-w-14 min-h-6 text-center p-1',
+
+  const classStyles = cx(
+    "flex flex-row align-items-start min-w-14 min-h-6 px-2 gap-2.5 text-center",
     {
-      'bg-gray-200' : colorVariant === 'black'
+      'text-xl': size === 'large',
+      'text-base': size === 'small' || !size,
+      'py-0.5': size === 'large',
+      'rounded-lg': size === 'large',
+      'rounded': size === 'small' || !size,
+      'text-primary': branded,
+      'bg-secondary': branded,
+      'text-universal-gray-700': !branded,
+      'bg-universal-gray-100': !branded
+    }
+  )
+
+
+  const iconClassStyles = cx(
+    "cursor-pointer self-center",
+    {
+      'text-xl': size === 'large',
+      'text-base': size === 'small' || !size,
     }
   )
 
   // RENDER
   return (
-    <div className={styles}>
-      {text}
+    <div className={classStyles}>
+      <p>{text}</p>
+      { removable && <CloseIcon className={iconClassStyles} onClick={onRemove}/> }
     </div>
   )
 }

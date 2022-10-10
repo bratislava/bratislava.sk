@@ -37,8 +37,10 @@
   --secondary-color--semi-transparent: rgba(var(--color-secondary), 0.6);
   --tertiary-color: rgb(var(--color-tertiary));
   --dark-gray-color: #333333bf;
+  --universal-gray-100: #EBEBEB;
   --universal-gray-200: #c4c4c4;
   --universal-gray-500: #9f9f9f;
+  --universal-red-700: #333333;
   --universal-gray-800: #585757;
   --universal-black: #2f2f2f;
   --input-nav-background-color: #fff;

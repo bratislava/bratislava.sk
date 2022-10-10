@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import cx from 'classnames'
 
 import { AsyncServerProps } from '@utils/types'
@@ -63,13 +63,50 @@ export const ButtonShowCase = ({}: ButtonShowCaseProps) => {
 }
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
+  const [removableTag, setRemovableTag] = useState<string | null>('Removable')
+
   return (
     <PageWrapper locale={page.locale}>
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Tag">
             <Stack>
-              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee" colorVariant='black' />
+              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  />
+              <Tag text="B"  />
+              <Tag text="Badge"  />
+            </Stack>
+            <Stack>
+              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  size="large"/>
+              <Tag text="B"  size="large"/>
+              <Tag text="Badge"  size="large"/>
+            </Stack>
+            <Stack>
+              <Tag text='Console.log onRemove' size="small"
+                   onRemove={() => console.log('\nTAG REMOVED\n')} removable/>
+              {
+                removableTag &&
+                <Tag text='Real onRemove' size="large"
+                     onRemove={() => setRemovableTag(null)} removable/>
+              }
+            </Stack>
+            <Stack>
+              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  branded/>
+              <Tag text="B"  branded/>
+              <Tag text="Badge"  branded/>
+            </Stack>
+            <Stack>
+              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  size="large" branded/>
+              <Tag text="B"  size="large" branded/>
+              <Tag text="Badge"  size="large" branded/>
+            </Stack>
+            <Stack>
+              <Tag text='Console.log onRemove' size="small"
+                   onRemove={() => console.log('\nTAG REMOVED\n')} removable branded/>
+              {
+                removableTag &&
+                <Tag text='Real onRemove' size="large"
+                     onRemove={() => setRemovableTag(null)} removable branded/>
+              }
             </Stack>
           </Wrapper>
 
