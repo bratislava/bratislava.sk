@@ -70,15 +70,16 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
       <div className="bg-[#E5E5E5] min-h-screen">
         <div className="max-w-screen-lg mx-auto px-12 pt-12 pb-64">
           <Wrapper direction="column" title="Tag">
+            <p>WARNING: branded colors are automatically set from primary and secondary colors from tailwind config as its set brand </p>
             <Stack>
-              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  />
-              <Tag text="B"  />
-              <Tag text="Badge"  />
+              <Tag text="Defaulttttttttttttttttttt"  />
+              <Tag text="D"  />
+              <Tag text="Default"  />
             </Stack>
             <Stack>
-              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  size="large"/>
-              <Tag text="B"  size="large"/>
-              <Tag text="Badge"  size="large"/>
+              <Tag text="Defaulttttttttttttttttttt"  size="large"/>
+              <Tag text="D"  size="large"/>
+              <Tag text="Default"  size="large"/>
             </Stack>
             <Stack>
               <Tag text='Console.log onRemove' size="small"
@@ -90,14 +91,14 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               }
             </Stack>
             <Stack>
-              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  branded/>
+              <Tag text="Brandeeeeeeeeeeeeeeeed"  branded/>
               <Tag text="B"  branded/>
-              <Tag text="Badge"  branded/>
+              <Tag text="Branded"  branded/>
             </Stack>
             <Stack>
-              <Tag text="Badgeeeeeeeeeeeeeeeeeeeeeeeee"  size="large" branded/>
+              <Tag text="Brandeeeeeeeeeeeeeeeed"  size="large" branded/>
               <Tag text="B"  size="large" branded/>
-              <Tag text="Badge"  size="large" branded/>
+              <Tag text="Branded"  size="large" branded/>
             </Stack>
             <Stack>
               <Tag text='Console.log onRemove' size="small"
