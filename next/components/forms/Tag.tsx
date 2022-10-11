@@ -36,8 +36,8 @@ const Tag: FC<TagProps> = (
       'text-universal-gray-700': (removable || !branded) && !isHovered,
       'text-universal-gray-600': removable && isHovered,
       'bg-secondary': !removable && branded,
-      'text-primary': !removable && branded,
-      'underline': !removable && branded && isHovered
+      'text-tertiary': !removable && branded,
+      'underline': !removable && isHovered
     }
   )
 
@@ -56,7 +56,7 @@ const Tag: FC<TagProps> = (
          onMouseOver={() => setIsHovered(true)}
          onFocus={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}>
-      <p>{text}</p>
+      <p className="cursor-default select-none">{text}</p>
       { removable && <CloseIcon className={iconClassStyles} onClick={onRemove}/> }
     </div>
   )
