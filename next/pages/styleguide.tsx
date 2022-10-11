@@ -15,14 +15,6 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   * Always create new component for adding showcase in StyleGuide
    * Path to StyleGuide showcase components should be ./next/components/styleguide/showcases
   * */
-  const selectOptions: MultiValue<unknown> = [
-    { value: 'stuFei', label: 'STU FEI'},
-    { value: 'stuFiit', label: 'STU FIIT'},
-    { value: 'ukFmfi', label: 'UK FMFI'},
-    { value: 'tukeFei', label: 'TUKE FEI' },
-    { value: 'unizaFeit', label: 'UNIZA FEIT' }
-  ]
-  const [selectValueFirst, setSelectValueFirst] = useState<MultiValue<unknown>>(selectOptions.slice(0, 2))
   return (
     <PageWrapper locale={page.locale}>
       <StyleGuideWrapper>
