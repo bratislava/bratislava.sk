@@ -6,6 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
+import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 
@@ -17,9 +18,10 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
     <PageWrapper locale={page.locale}>
       <StyleGuideWrapper>
-          {/* HERE ADD SHOWCASES */}
-          <FieldHeaderShowCase/>
-          <ButtonShowCase/>
+        {/* HERE ADD SHOWCASES */}
+        <TagShowCase/>
+        <FieldHeaderShowCase/>
+        <ButtonShowCase/>
       </StyleGuideWrapper>
     </PageWrapper>
   )
