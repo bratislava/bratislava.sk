@@ -8,6 +8,7 @@ import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
+import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -20,6 +21,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
         <TagShowCase/>
+        <SelectFieldShowCase/>
         <FieldHeaderShowCase/>
         <ButtonShowCase/>
       </StyleGuideWrapper>
