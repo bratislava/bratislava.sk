@@ -49,7 +49,7 @@ const SelectField: FC<SelectFieldProps> = (
 
   // STYLES
   const tailwindSelectStyle = cx(
-    'w-full text-default rounded-lg focus:outline-none bg-white border-2 ',
+    'w-full rounded-lg focus:outline-none bg-white border-2 ',
     {
       // disabled
       'opacity-50': disabled,
@@ -80,8 +80,12 @@ const SelectField: FC<SelectFieldProps> = (
     multiValue: (provided: CSSObjectWithLabel) => ({
       ...provided,
       borderRadius: 8,
-      fontSize: '20px',
-      lineHeight: '32px'
+      fontSize: '20px !important',
+      lineHeight: '32px',
+      '& div': {
+        ...provided,
+        fontSize: '20px'
+      }
     }),
     placeholder: (provided: CSSObjectWithLabel) => ({
       ...provided,
@@ -98,10 +102,12 @@ const SelectField: FC<SelectFieldProps> = (
     }),
     multiValueRemove: (provided: CSSObjectWithLabel) => ({
       ...provided,
+      borderRadius: '8px',
       '&:hover': {
         backgroundColor: 'inherit',
-        color: '#333333'
-      },
+        color: '#333333',
+        borderRadius: '8px',
+      }
     }),
     clearIndicator: (provided: CSSObjectWithLabel) => ({
       ...provided,
