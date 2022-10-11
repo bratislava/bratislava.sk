@@ -22,7 +22,7 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: false,
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   async rewrites() {
     return {
       beforeFiles: [
