@@ -1,4 +1,4 @@
-import { Tag } from '@bratislava/ui-bratislava'
+import Tag from 'components/forms/Tag'
 import { useState } from 'react'
 
 import { Stack } from '../Stack'
@@ -9,7 +9,7 @@ interface TagShowCaseProps {
 }
 
 const TagShowCase = ({}: TagShowCaseProps) => {
-  const [removableTag, setRemovableTag] = useState<string>("removable tag")
+  const [removableTag, setRemovableTag] = useState<string | null>("Real onRemove")
 
   return (
     <Wrapper direction="column" title="Tag">
@@ -25,13 +25,13 @@ const TagShowCase = ({}: TagShowCaseProps) => {
         <Tag text="Default"  size="large"/>
       </Stack>
       <Stack>
-        <Tag text='Console.log onRemove' size="small"
-             onRemove={() => console.log('\nTAG REMOVED\n')} removable/>
         {
           removableTag &&
           <Tag text='Real onRemove' size="large"
                onRemove={() => setRemovableTag(null)} removable/>
         }
+        <Tag text='Console.log onRemove' size="small"
+             onRemove={() => console.log('\nTAG REMOVED\n')} removable/>
       </Stack>
       <Stack>
         <Tag text="Brandeeeeeeeeeeeeeeeed"  branded/>
@@ -44,13 +44,10 @@ const TagShowCase = ({}: TagShowCaseProps) => {
         <Tag text="Branded"  size="large" branded/>
       </Stack>
       <Stack>
+        <Tag text='Console.log onRemove' size="large"
+               onRemove={() => console.log('\nTAG REMOVED\n')} removable branded/>
         <Tag text='Console.log onRemove' size="small"
              onRemove={() => console.log('\nTAG REMOVED\n')} removable branded/>
-        {
-          removableTag &&
-          <Tag text='Real onRemove' size="large"
-               onRemove={() => setRemovableTag(null)} removable branded/>
-        }
       </Stack>
     </Wrapper>
   )
