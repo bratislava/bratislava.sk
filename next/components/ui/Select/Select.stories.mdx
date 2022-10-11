@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { withDesign } from 'storybook-addon-designs'
-import { SelectField } from './SelectField'
+import { Select } from './Select'
 
-<Meta title="components/atoms/SelectField" decorators={[withDesign]} />
+<Meta title="components/atoms/Select" decorators={[withDesign]} />
 
-# SelectField
+# Select
 
 Styled select, that is used as a default select throughout all Bratislava web apps.
 
@@ -13,19 +13,19 @@ Styled select, that is used as a default select throughout all Bratislava web ap
 CheckBox accepts custom Props that are as follows:
 
 - <b>className</b>: modifies or extends the styles for the component
-- <b>selectClassName</b>: className for the SelectField Component
+- <b>selectClassName</b>: className for the Select Component
 - <b>options</b>: options for the select of generic type T
 - <b>onChange</b>: function, accepts as parameter selected option as object
 - <b>value</b>: selected option's value
-- <b>id</b>: identifier of the SelectField Component
-- <b>hasError</b>: Boolean value, that indicates, that the SelectField should have error styling (red border)
-- <b>hasIcon</b>: Boolean value, that indicates, that the SelectField has an icon (icon is hardcoded ChevronDown positioned
+- <b>id</b>: identifier of the Select Component
+- <b>hasError</b>: Boolean value, that indicates, that the Select should have error styling (red border)
+- <b>hasIcon</b>: Boolean value, that indicates, that the Select has an icon (icon is hardcoded ChevronDown positioned
   right of the value)
 
 export const Template = (args) => {
   const [value, setValue] = React.useState('0')
   return (
-    <SelectField
+    <Select
       className={args.className}
       options={args.options}
       hasError={args.hasError}
@@ -38,7 +38,7 @@ export const Template = (args) => {
 
 <Canvas>
   <Story
-    name="SelectField"
+    name="Select"
     parameters={{
       design: {
         type: 'figma',
@@ -60,4 +60,4 @@ export const Template = (args) => {
   </Story>
 </Canvas>
 
-<ArgsTable of={SelectField} />
+<ArgsTable of={Select} />
