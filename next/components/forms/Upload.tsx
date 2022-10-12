@@ -31,6 +31,8 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
 
   // EVENT HANDLERS
   const handleUpload = () => {
+    if (disabled) return
+
     const uploadInput = document.createElement('input')
     uploadInput.type = 'file'
     uploadInput.accept = supportedFormats?.toString() || ""
