@@ -8,6 +8,7 @@ import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
+import UploadShowCase from '../components/styleguide/showcases/UploadShowCase'
 
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -19,6 +20,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
+        <UploadShowCase/>
         <TagShowCase/>
         <FieldHeaderShowCase/>
         <ButtonShowCase/>
