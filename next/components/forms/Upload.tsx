@@ -7,15 +7,22 @@ interface UploadProps {
   disabled?: boolean
 }
 
-const Upload: FC<UploadProps> = ({ type }: UploadProps) => {
+const Upload: FC<UploadProps> = ({ type, disabled }: UploadProps) => {
   // STATES
 
   // STYLES
+  const buttonClassNames = cx(
+    "flex-column align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
+    {
+      "hover:border-gray-400 focus:border-gray-600 active:border-gray-600 cursor-pointer ": !disabled,
+      "opacity-50 cursor-not-allowed": disabled
+    }
+  )
 
   // CONTENTS
   const getButtonContent = () => {
     return (
-      <div className="flex-column align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 bg-white py-3 px-6 hover:border-gray-400 focus:border-gray-600 active:border-gray-600">
+      <div className={buttonClassNames}>
         <div className="flex flex-row">
           <UploadIcon className="mr-2 h-6 w-6 self-center text-default"/>
           <p className="text-default">Upload</p>
@@ -32,7 +39,7 @@ const Upload: FC<UploadProps> = ({ type }: UploadProps) => {
 
   // RENDER
   return (
-    <section className="cursor-pointer select-none" style={{transition: "0.2 all linear"}}>
+    <section className="select-none" style={{transition: "0.2 all linear"}}>
       { /* CONTENT */
         type === 'button'
           ? getButtonContent()
