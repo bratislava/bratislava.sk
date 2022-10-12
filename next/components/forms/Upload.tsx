@@ -7,19 +7,14 @@ interface UploadProps {
 }
 
 const Upload: FC<UploadProps> = ({ type }: UploadProps) => {
-  const inputClassStyles = cx(
-    "",
-    {
-      "flex w-36 h-14 rounded-lg bg-white py-3 px-6": type === 'button',
-      "flex-column align-items-center": ['button', 'dragAndDrop'].includes(type)
-    }
-  )
 
   const getButtonContent = () => {
     return (
-      <div className="flex flex-row">
-        <UploadIcon/>
-        <p className="text-default">Upload</p>
+      <div className="flex-column align-items-center flex h-14 w-36 rounded-lg bg-white py-3 px-6">
+        <div className="flex flex-row">
+          <UploadIcon className="mr-2 h-6 w-6 self-center text-default"/>
+          <p className="text-default">Upload</p>
+        </div>
       </div>
     )
   }
@@ -37,7 +32,7 @@ const Upload: FC<UploadProps> = ({ type }: UploadProps) => {
   }
 
   return (
-    <section className={inputClassStyles}>
+    <section className="cursor-pointer select-none">
       { /* CONTENT */
         type === 'button'
           ? getButtonContent()
