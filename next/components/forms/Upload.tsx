@@ -11,6 +11,7 @@ interface UploadProps {
 
 const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
   // STATES
+  const [filePath, setFilePath] = useState<string>('')
 
   // STYLES
   const buttonClassNames = cx(
@@ -28,11 +29,25 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     }
   )
 
+  // EVENT HANDLERS
+  const handleUpload = () => {
+    const uploadInput = document.createElement('input')
+    uploadInput.type = 'file'
+    uploadInput.accept = supportedFormats?.toString() || ""
+
+    uploadInput.addEventListener('change', () => {
+      setFilePath(uploadInput.value)
+    })
+
+    uploadInput.click()
+  }
+
   // CONTENTS
   const getButtonContent = () => {
     return (
       <div className="flex flex-row gap-4">
-        <div className={buttonClassNames}>
+        <div className={buttonClassNames}
+             onClick={handleUpload}>
           <div className="flex flex-row">
             <UploadIcon className="mr-2 h-6 w-6 self-center text-default"/>
             <p className="text-default">Upload</p>
