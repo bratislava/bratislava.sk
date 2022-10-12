@@ -222,7 +222,7 @@ const Homepage = ({
 
           <GooutEvents
             linkTitle={t('allEvents')}
-            linkUrl={t('goOutEventsLink')}
+            linkUrl="https://www.bkis.sk/podujatia/"
             title={t('upComingEvents')}
             className="mt-14 lg:mt-24"
           />

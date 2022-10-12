@@ -11,6 +11,23 @@ services:
       - '5432'
     ports:
       - '127.0.0.1:5432:5432'
+  meilisearch:
+    image: getmeili/meilisearch:v0.28
+    environment:
+      - http_proxy
+      - https_proxy
+      - MEILI_MASTER_KEY=masterKey
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_ENV=development
+      - MEILI_LOG_LEVEL
+      - MEILI_DB_PATH=/data.ms
+    ports:
+      - 7700:7700
+    expose:
+      - '7700'
+    volumes:
+      - ./meilisearch/data.ms:/data.ms
+    restart: unless-stopped
 
 volumes:
   postgres:

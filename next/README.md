@@ -12,7 +12,7 @@ To install dependencies run:
 yarn
 ```
 
-For CMS setup see `strapi` directory. You can also run the project against production strapi (TODO).
+For CMS setup see `strapi` directory. You can also run the project against production strapi - this is the default setup. If you want to run against local strapi, you need to set `NEXT_PUBLIC_STRAPI_URL` in `.env.development.local` file.
 
 ## Typescript Strict Mode
 
@@ -40,6 +40,8 @@ By default this connects you to the production Strapi instance - this is all you
 ## Meilisearch
 
 We're using [Meilisearch](https://www.meilisearch.com/) as our search engine - for search to work, Next & Strapi needs to connect to a running meilisearch instance. You can develop most of the page without this, but if you need to work with search follow [the guide on our docs page](https://bratislava.github.io/docs/bratislava.sk/meilisearch-setup).
+
+You can also setup local meilisearch instance using `docker compose` - see `docker-compose.yml` in the root of the repo and set your `.env.development.local` vars accordingly.
 
 ## Generate GraphQL
 

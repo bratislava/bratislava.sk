@@ -16,10 +16,10 @@ Each sub-project contains README which should get you up and running. More docum
 
 🗄️ `/strapi` Strapi CMS server for bratislava.sk
 
-📝 `/docs` (some) documentation files (in the process of being migrated to a separate docs site)
+📝 `/docs` contain the mapping between React and Strapi components - to be replaced by a styleguide in the future
 
 ---
 
-🐳 `docker-compose.yml` - if you need to quickly setup postgres instance, run `docker compose up postgres` in this directory (you need docker installed)
+🐳 `docker-compose.yml` - if you need to quickly setup postgres or meilisearch instance, run `docker compose up` (or `docker compose up postgres`, `docker compose up meilisearch`) in this directory (you need docker installed)
 
 - in case of using `podman` use command `docker-compose up postgres`
