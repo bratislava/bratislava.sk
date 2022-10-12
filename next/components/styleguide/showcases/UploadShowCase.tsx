@@ -10,10 +10,14 @@ interface UploadShowCaseProps {
 
 const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
   return (
-    <Wrapper title="Upload">
+    <Wrapper title="Upload" direction="column">
       <Stack>
         <Upload type="button"/>
         <Upload type="button" disabled/>
+      </Stack>
+      <Stack>
+        <Upload type="button" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']}/>
+        <Upload type="button" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']} disabled/>
       </Stack>
     </Wrapper>
   )
