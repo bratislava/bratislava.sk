@@ -13,6 +13,7 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
     <Wrapper title="Upload">
       <Stack>
         <Upload type="button"/>
+        <Upload type="button" disabled/>
       </Stack>
     </Wrapper>
   )
