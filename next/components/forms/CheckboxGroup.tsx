@@ -1,13 +1,19 @@
 import * as React from 'react'
-import { useCheckboxGroupState } from '@react-stately/checkbox'
 import { useCheckboxGroup } from 'react-aria'
+import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately'
 
-export let CheckboxGroupContext = React.createContext(null)
+const radioGroupState = {}
+export const CheckboxGroupContext = React.createContext(radioGroupState as CheckboxGroupState)
 
-const CheckboxGroup = (props: any) => {
-  let { children, label } = props
-  let state = useCheckboxGroupState(props)
-  let { groupProps, labelProps } = useCheckboxGroup(props, state)
+type CheckBoxGroupBase = {
+  children: React.ReactNode
+  label?: string
+}
+
+const CheckboxGroup = (props: CheckBoxGroupBase) => {
+  const { children, label } = props
+  const state: CheckboxGroupState = useCheckboxGroupState(props)
+  const { groupProps, labelProps } = useCheckboxGroup(props, state)
 
   return (
     <div {...groupProps} style={{ display: 'inline-block' }}>

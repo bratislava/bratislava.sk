@@ -1,5 +1,11 @@
-import * as React from 'react'
 import cx from 'classnames'
+import { MouseEventHandler } from 'react'
+
+import CloseIcon from './icon-components/CloseIcon'
+import ErrorIcon from './icon-components/ErrorIcon'
+import InfoIcon from './icon-components/InfoIcon'
+import SuccessIcon from './icon-components/SuccessIcon'
+import WarningIcon from './icon-components/WarningIcon'
 
 type AlertBase = {
   type: 'error' | 'success' | 'info' | 'warning'
@@ -7,54 +13,43 @@ type AlertBase = {
   solid?: boolean
   content?: string
   className?: string
-  children?: React.ReactElement
-  message?: string
+  close?: boolean
+  message: string
+  onClick?: MouseEventHandler<SVGSVGElement> | undefined
 }
 
-const Alert = ({ solid = false, type, variant = 'basic', content, children, message, className }: AlertBase) => {
-
+const Alert = ({
+  solid = false,
+  close = false,
+  onClick,
+  type,
+  variant = 'basic',
+  content,
+  message,
+  className,
+}: AlertBase) => {
   const icons = {
-    error: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M10 0C4.48 0 0 4.475 0 10C0 15.525 4.48 20 10 20C15.52 20 20 15.525 20 10C20 4.475 15.52 0 10 0ZM11 15H9V13H11V15ZM11 11H9V5H11V11Z"
-          fill={solid ? 'white' : '#D00000'}
-        />
-      </svg>
-    ),
-    success: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M10 0C4.475 0 0 4.475 0 10C0 15.52 4.475 20 10 20C15.52 20 20 15.52 20 10C20 4.475 15.52 0 10 0ZM8 15L3 10L4.415 8.585L8 12.17L15.585 4.585L17 6L8 15Z"
-          fill={solid ? 'white' : '#01843D'}
-        />
-      </svg>
-    ),
-    info: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M10 0C4.475 0 0 4.475 0 10C0 15.525 4.475 20 10 20C15.525 20 20 15.525 20 10C20 4.475 15.525 0 10 0ZM11 15H9V9H11V15ZM11 7H9V5H11V7Z"
-          fill={solid ? 'white' : '#333333'}
-        />
-      </svg>
-    ),
-    warning: (
-      <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 19H22L11 0L0 19ZM12 16H10V14H12V16ZM12 12H10V8H12V12Z" fill={solid ? 'white' : '#E07B04'} />
-      </svg>
-    ),
+    error: <ErrorIcon solid={solid} />,
+    success: <SuccessIcon solid={solid} />,
+    info: <InfoIcon solid={solid} />,
+    warning: <WarningIcon solid={solid} />,
   }
 
-  const alertContainer = cx('flex flex-row w-[440px] items-start gap-3 rounded-8 py-4 px-5', className, {
-    'text-[#1F1F1F] flex-col': variant === 'message',
-    'bg-form-alert-error-default-bg text-form-alert-error-default': type === 'error' && !solid,
-    'bg-form-alert-success-default-bg text-form-alert-success-default': type === 'success' && !solid,
-    'bg-form-alert-info-default-bg text-form-alert-info-default': type === 'info' && !solid,
-    'bg-form-alert-warning-default-bg text-form-alert-warning-default': type === 'warning' && !solid,
+  const alertContainer = cx('flex flex-row w-480 gap-3 rounded-8 py-4 px-5', className, {
+    'justify-between': close,
+    'place-items-center': variant !== 'message',
+    'text-form-alert-textColor-default flex-col': variant === 'message',
+    'bg-form-alert-error-default-bg': type === 'error' && !solid,
+    'bg-form-alert-success-default-bg': type === 'success' && !solid,
+    'bg-form-alert-info-default-bg': type === 'info' && !solid,
+    'bg-form-alert-warning-default-bg': type === 'warning' && !solid,
+
+    'text-form-alert-error-default': type === 'error' && !solid && variant !== 'message',
+    'text-form-alert-success-default': type === 'success' && !solid && variant !== 'message',
+    'text-form-alert-info-default': type === 'info' && !solid && variant !== 'message',
+    'text-form-alert-warning-default': type === 'warning' && !solid && variant !== 'message',
 
     'flex-row': variant === 'basic',
-
-    'text-[black]': !solid && variant==='message',
     'text-[white]': solid,
     'bg-form-alert-error-default': type === 'error' && solid,
     'bg-form-alert-success-default': type === 'success' && solid,
@@ -62,31 +57,25 @@ const Alert = ({ solid = false, type, variant = 'basic', content, children, mess
     'bg-form-alert-warning-default': type === 'warning' && solid,
   })
 
-  const renderElAlert = () => {
-    return React.cloneElement(children)
-  }
-
-  const contentStyle = cx('flex flex-row leading-6 font-normal text-sm', {
-    'text-sm': variant === 'basic',
-    'text-default': variant === 'message',
+  const contentStyle = cx('flex flex-row leading-6', {
+    'text-sm font-normal': variant === 'basic',
+    'text-default font-semibold': variant === 'message',
+    'w-368': close,
   })
-  return (
-    <>
-      {variant === 'basic' ? (
-        <div className={alertContainer}>
-          <span>{icons[type]}</span>
-          <div className={contentStyle}>{children ? renderElAlert() : message}</div>
-        </div>
-      ) : (
-        <div className={alertContainer}>
-          <div className="flex flex-row gap-3 items-center">
-            <span>{icons[type]}</span>
-            <div className={contentStyle}>{children ? renderElAlert() : message}</div>
-          </div>
-          <div className="flex w-[calc(100%-30px)] font-normal text-sm leading-6 ml-7 text-justify">{content}</div>
-        </div>
-      )}
-    </>
+  return variant === 'basic' ? (
+    <div className={alertContainer}>
+      <span>{icons[type]}</span>
+      <div className={contentStyle}>{message}</div>
+      {close && <CloseIcon onClick={onClick} solid={solid} type={type} />}
+    </div>
+  ) : (
+    <div className={alertContainer}>
+      <div className="flex flex-row items-center gap-3">
+        <span>{icons[type]}</span>
+        <div className={contentStyle}>{message}</div>
+      </div>
+      <div className="ml-8 flex w-[calc(100%-45px)] text-justify text-sm font-normal leading-6">{content}</div>
+    </div>
   )
 }
 

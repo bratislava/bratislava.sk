@@ -136,6 +136,9 @@ module.exports = {
               default: '#E07B04',
               'default-bg': '#FDF8F2',
               solid: ''
+            },
+            textColor: {
+              default: '#1F1F1F'
             }
           }
         },
@@ -165,6 +168,7 @@ module.exports = {
             700: '#333333',
             800: 'var(--universal-gray-800)',
           },
+          500: '#858585',
           dark: 'var(--dark-gray-color)',
           semilight: 'var(--semilight-gray-color)',
           light: 'var(--light-gray-color)',
@@ -267,6 +271,8 @@ module.exports = {
       },
       width: {
         540: '540px',
+        480: '480px',
+        368: '368px',
         336: '336px',
         72: '72px',
       },

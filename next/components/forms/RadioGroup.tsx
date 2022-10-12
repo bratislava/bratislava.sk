@@ -1,8 +1,9 @@
 import React from 'react'
 import { useRadioGroup } from 'react-aria'
-import { useRadioGroupState } from '@react-stately/radio'
+import { RadioGroupState, useRadioGroupState } from 'react-stately'
 
-export let RadioContext = React.createContext(null)
+const radioGroupState = {}
+export const RadioContext = React.createContext(radioGroupState as RadioGroupState)
 
 type RadioGroupBase = {
   children: React.ReactNode
@@ -15,9 +16,9 @@ type RadioGroupBase = {
 
 const RadioGroup = (props: RadioGroupBase) => {
 
-  let { children, label } = props
-  let state = useRadioGroupState(props)
-  let { radioGroupProps, labelProps } = useRadioGroup(props, state)
+  const { children, label } = props
+  const state = useRadioGroupState(props)
+  const { radioGroupProps, labelProps } = useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps}>

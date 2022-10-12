@@ -1,8 +1,11 @@
+import CheckboxChecked from '@assets/images/forms/checkbox-checked.svg'
+import CheckboxIntermediated from '@assets/images/forms/checkbox-intermediated.svg'
+import HelpIcon from '@assets/images/forms/icon-help.svg'
+import cx from 'classnames'
 import React from 'react'
 import { useCheckbox, useFocusRing } from 'react-aria'
-import { useToggleState } from '@react-stately/toggle'
-import cx from 'classnames'
-import HelpIcon from '@assets/images/forms/icon-help.svg'
+import { useToggleState } from 'react-stately'
+
 type CheckBoxBase = {
   variant?: 'basic' | 'boxed'
   className?: string
@@ -24,12 +27,12 @@ const SingleCheckBox = ({
   ...rest
 }: CheckBoxBase) => {
   const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
-  let state = useToggleState(rest)
-  let ref = React.useRef()
-  let { inputProps } = useCheckbox({ ...rest, isDisabled, children }, state, ref)
-  
-  let { focusProps } = useFocusRing()
-  let isSelected = state.isSelected && !rest.isIndeterminate
+  const state = useToggleState(rest)
+  const ref = React.useRef(null)
+  const { inputProps } = useCheckbox({ ...rest, isDisabled, children }, state, ref as React.MutableRefObject<null>)
+
+  const { focusProps } = useFocusRing()
+  const isSelected = state.isSelected && !rest.isIndeterminate
 
   const checkboxStyle = cx(
     'focus-visible: outline-none focus:outline-none appearance-none items-center justify-center w-6 h-6 rounded border-2 border-solid border-gray-universal-700 left-0 right-0 top-0 bottom-0',
@@ -42,19 +45,18 @@ const SingleCheckBox = ({
       'opacity-50 cursor-not-allowed': isDisabled,
 
       // error
-      'border-red-negative-700': error && !isSelected && !isDisabled,
-      'bg-red-negative-700 border-red-negative-700': error && isSelected && !isDisabled,
+      'bg-red-negative-700': error && isSelected,
+      'border-red-negative-700': error,
     }
   )
 
   const containerStyle = cx('group flex flex-row relative items-center justify-center p-0 ', rest.className, {
     'h-12 py-3 px-4 bg-white border-2 border-solid rounded-[8px]': variant === 'boxed',
-    'border-gray-universal-300 group-hover:border-[#858585]':
+    'border-gray-universal-300 group-hover:border-gray-500':
       variant === 'boxed' && !isSelected && rest.isIndeterminate && !isDisabled && !error,
-    'border-gray-universal-700 group-hover:border-[#858585]':
-      variant === 'boxed' && isSelected && !isDisabled && !error,
+    'border-gray-universal-700 hover:border-gray-500': variant === 'boxed' && isSelected && !isDisabled && !error,
 
-    //error
+    // error
     'border-red-negative-700': variant === 'boxed' && error,
     // disabled
     'opacity-50 cursor-not-allowed': isDisabled,
@@ -66,69 +68,52 @@ const SingleCheckBox = ({
   )
 
   return (
-    <label className={containerStyle}>
+    <label htmlFor={rest.value} className={containerStyle}>
       {
         /* TOOLTIP */
         tooltip && (
           <div className="relative">
             {isTooltipOpened && (
-              <div className="z-50 absolute bottom-5 h-16 w-56 rounded-lg bg-white p-2 drop-shadow-lg">{tooltip}</div>
+              <div className="absolute bottom-5 z-50 h-16 w-56 rounded-lg bg-white p-2 drop-shadow-lg">{tooltip}</div>
             )}
           </div>
         )
       }
-      <input className={checkboxStyle} {...inputProps} {...focusProps} ref={ref} />
+      <input id={rest.value} className={checkboxStyle} {...inputProps} {...focusProps} ref={ref} />
 
       {isSelected && (
-        <svg
+        <CheckboxChecked
           className={cx('absolute', {
             hidden: !isSelected,
             'left-[4px]': variant === 'basic',
             'left-[20px]': variant === 'boxed',
           })}
-          width="16"
-          height="12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M5.49999 9.47504L2.02499 6.00004L0.845825 7.17921L5.49999 11.8334L15.5 1.83337L14.3208 0.654205L5.49999 9.47504Z"
-            fill="white"
-          />
-        </svg>
+        />
       )}
       {rest.isIndeterminate && (
-        <svg
+        <CheckboxIntermediated
           className={cx('absolute', {
             hidden: !rest.isIndeterminate,
             'left-[6px]': variant === 'basic',
             'left-[23px]': variant === 'boxed',
           })}
-          width="12"
-          height="2"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M11.8333 1.83333H0.166656V0.166668H11.8333V1.83333Z" fill="white" />
-        </svg>
+        />
       )}
-
       <div className={labelStyle}>
         {children}
         {
-        /* TOOLTIP ICON */
-        tooltip && (
-          <div className="flex-column flex items-center">
-            <HelpIcon
-              className="cursor-pointer"
-              onMouseOver={() => setIsTooltipOpened(true)}
-              onMouseLeave={() => setIsTooltipOpened(false)}
-            />
-          </div>
-        )
-      }
+          /* TOOLTIP ICON */
+          tooltip && (
+            <div className="flex-column flex items-center">
+              <HelpIcon
+                className="cursor-pointer"
+                onMouseOver={() => setIsTooltipOpened(true)}
+                onMouseLeave={() => setIsTooltipOpened(false)}
+              />
+            </div>
+          )
+        }
       </div>
-
     </label>
   )
 }
