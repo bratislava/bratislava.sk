@@ -13,8 +13,8 @@ type ButtonBase = {
 }
 
 const Button = ({ children, ...rest }: ButtonBase) => {
-  const ref = useRef()
-  const { buttonProps } = useButton({ children, ...rest }, ref as RefObject<HTMLButtonElement>)
+  const ref = useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton({ children, ...rest }, ref)
   return (
     <button className="focus:outline-none" type="button" {...buttonProps} ref={ref}>
       {children}
@@ -49,8 +49,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     )
 
     const closeHandler = () => {
-      state.close()
-      state.setValue(null)
+      state?.close()
+      state?.setDateValue(null)
     }
 
     return (
@@ -71,10 +71,10 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
               </Button>
             </DateField>
           </div>
-          {state.isOpen && (
+          {state?.isOpen && (
             <OverlayProvider>
-              <Popover {...dialogProps} isOpen={state.isOpen} onClose={closeHandler}>
-                <Calendar {...calendarProps} onClose={closeHandler} onSubmit={() => state.close()} />
+              <Popover {...dialogProps} isOpen={state?.isOpen} onClose={closeHandler}>
+                <Calendar {...calendarProps} onClose={closeHandler} onSubmit={() => state?.close()} />
               </Popover>
             </OverlayProvider>
           )}

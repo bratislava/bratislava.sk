@@ -20,10 +20,9 @@ const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
     locale,
     createCalendar,
   })
-
-  const ref = useRef()
-  const prevTriggerRef = useRef()
-  const nextTriggerRef = useRef()
+  const ref = useRef<HTMLDivElement>(null)
+  const prevTriggerRef = useRef<HTMLButtonElement>(null)
+  const nextTriggerRef = useRef<HTMLButtonElement>(null)
   const { calendarProps, prevButtonProps, nextButtonProps, title } = useCalendar({ ...rest }, state)
 
   const { buttonProps: prevButtonPropsBtn } = useButton({ ...prevButtonProps }, prevTriggerRef)

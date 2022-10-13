@@ -9,7 +9,7 @@ type PopoverBase = {
 }
 
 const Popover = (props: PopoverBase) => {
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
   const { popoverRef = ref, isOpen, onClose, children, ...otherProps } = props
 
   const { overlayProps } = useOverlay(

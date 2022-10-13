@@ -1,6 +1,6 @@
 import { createCalendar } from '@internationalized/date'
 import cx from 'classnames'
-import React, { ReactNode, RefObject } from 'react'
+import React, { ReactNode } from 'react'
 import { useDateField, useDateSegment, useLocale } from 'react-aria'
 import { DateFieldState, DateSegment, useDateFieldState } from 'react-stately'
 
@@ -13,8 +13,8 @@ type DateSegmentBase = {
 }
 
 const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
-  const ref = React.useRef()
-  const { segmentProps } = useDateSegment(segment, state, ref as RefObject<HTMLDivElement>)
+  const ref = React.useRef<HTMLDivElement>(null)
+  const { segmentProps } = useDateSegment(segment, state, ref)
   return (
     <div {...segmentProps} ref={ref} className="text-default hover:bg-[#f1f1f1] focus:bg-[#f1f1f1] focus:outline-none">
       <span
@@ -22,7 +22,7 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
           'text-[#858585]': segment?.isPlaceholder,
         })}
         style={{
-          opacity: segment.isPlaceholder ? '1' : '0',
+          opacity: segment?.isPlaceholder ? '1' : '0',
         }}
       >
         {segment?.isPlaceholder ? segment?.placeholder : ''}
@@ -51,7 +51,7 @@ const DateField = ({
   required,
   ...rest
 }: DateFieldBase) => {
-  const ref = React.useRef()
+  const ref = React.useRef<HTMLDivElement>(null)
   const { locale } = useLocale()
   const state = useDateFieldState({
     label,
@@ -67,7 +67,7 @@ const DateField = ({
   const { fieldProps, labelProps, errorMessageProps, descriptionProps } = useDateField(
     { errorMessage, isDisabled: disabled, label, ...rest },
     state,
-    ref as RefObject<HTMLDivElement>
+    ref
   )
   const dateFieldStyle = cx(
     'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-[#D6D6D6] focus:border-[#333]',
@@ -80,8 +80,8 @@ const DateField = ({
   return (
     <>
       <FieldHeader
-        label={label}
-        htmlFor={fieldProps.id}
+        label={label || ''}
+        htmlFor={fieldProps?.id || ''}
         labelProps={labelProps}
         tooltip={tooltip}
         description={description}

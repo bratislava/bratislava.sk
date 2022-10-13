@@ -10,7 +10,7 @@ type CalendarCellBase = {
 }
 
 const CalendarCell = ({ state, date }: CalendarCellBase) => {
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
   const { cellProps, buttonProps, isSelected, isOutsideVisibleRange, formattedDate } = useCalendarCell(
     { date },
     state,

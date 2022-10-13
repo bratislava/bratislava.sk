@@ -11,7 +11,7 @@ type CalendarGridBase = {
 
 const CalendarGrid = ({ state, offset = {}, ...rest }: CalendarGridBase) => {
   const { locale } = useLocale()
-  const startDate: CalendarDate = state.visibleRange.start.add(offset)
+  const startDate: CalendarDate = state?.visibleRange.start.add(offset)
   const endDate = endOfMonth(startDate)
   const { gridProps, headerProps } = useCalendarGrid(
     {
@@ -44,8 +44,8 @@ const CalendarGrid = ({ state, offset = {}, ...rest }: CalendarGridBase) => {
         {weeksInMonthArr.map((weekIndex: number) => (
           <div className="flex justify-between" key={weekIndex}>
             {state
-              .getDatesInWeek(weekIndex, startDate)
-              .map((date, i) => (date ? <CalendarCell key={i} state={state} date={date} /> : <div key={i} />))}
+              ?.getDatesInWeek(weekIndex, startDate)
+              ?.map((date, i) => (date ? <CalendarCell key={i} state={state} date={date} /> : <div key={i} />))}
           </div>
         ))}
       </div>
