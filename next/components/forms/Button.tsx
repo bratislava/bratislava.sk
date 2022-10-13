@@ -1,7 +1,7 @@
-import { AriaButtonProps, useButton } from 'react-aria'
 import { LinkButtonProps } from '@react-types/button'
-import React, { forwardRef, ReactNode, RefObject } from 'react'
 import cx from 'classnames'
+import React, { forwardRef, ReactNode, RefObject } from 'react'
+import { AriaButtonProps, useButton } from 'react-aria'
 
 import ArrowRightIcon from '../../assets/images/forms/arrow-right.svg'
 import MLink from './MLink'
@@ -61,12 +61,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     )
 
     const style = cx(
+      ' font-inter inline-flex items-center',
       rest.href
-        ? 'font-medium underline underline-offset-4 inline-flex items-center focus-visible: outline-none'
-        : 'w-fit h-fit space-x-2 text-white font-semibold inline-flex items-center justify-center text-center align-middle focus:outline-none rounded-lg',
+        ? 'font-medium underline underline-offset-4 focus-visible:outline-none'
+        : 'w-fit h-fit space-x-2 text-white font-semibold justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
-        'px-6 py-4 text-default':
+        // text for lg button
+        'px-6 py-4 text-default leading-5':
           size === 'lg' &&
           !icon &&
           text &&
@@ -75,7 +77,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'negative' ||
             variant === 'brand-outline' ||
             variant === 'black-outline'),
-        'px-5 py-3 text-sm':
+        // text for sm button
+        'px-5 py-3 text-sm leading-5':
           size === 'sm' &&
           !icon &&
           text &&
@@ -84,18 +87,18 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'negative' ||
             variant === 'brand-outline' ||
             variant === 'black-outline'),
-        'px-5 py-5':
-          size === 'lg' &&
-          icon &&
-          !text &&
-          (variant === 'brand' ||
-            variant === 'black' ||
-            variant === 'negative' ||
-            variant === 'brand-outline' ||
-            variant === 'black-outline' ||
-            variant === 'plain-brand' ||
-            variant === 'plain-black'),
+        // icon for lg button
         'px-4 py-4':
+          size === 'lg' &&
+          icon &&
+          !text &&
+          (variant === 'brand' ||
+            variant === 'black' ||
+            variant === 'negative' ||
+            variant === 'brand-outline' ||
+            variant === 'black-outline'),
+        // icon for sm button
+        'px-2.5 py-2.5':
           size === 'sm' &&
           icon &&
           !text &&
@@ -103,17 +106,31 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'black' ||
             variant === 'negative' ||
             variant === 'brand-outline' ||
-            variant === 'black-outline' ||
-            variant === 'plain-brand' ||
-            variant === 'plain-black'),
+            variant === 'black-outline'),
+        // icon for lg button
+        'px-2.5 py-2.5 text-default leading-6':
+          size === 'lg' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
+        // icon for sm button
+        'px-2 py-2': size === 'sm' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
 
-        'text-default': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
-        'text-sm': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
+        // text for lg button
+        'px-3 py-2 text-default leading-6':
+          size === 'lg' &&
+          !icon &&
+          text &&
+          (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
+        // text for sm button
+        'px-2 py-1 text-sm leading-6':
+          size === 'sm' &&
+          !icon &&
+          text &&
+          (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
 
-        'px-3 py-2 text-default':
-          size === 'lg' && (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
-        'px-2 py-1 text-sm':
-          size === 'sm' && (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
+        // text for lg link button
+        'text-default leading-8': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
+        // text for sm link button
+        'text-sm leading-6': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
+
         'border-2':
           variant === 'brand' ||
           variant === 'black' ||
