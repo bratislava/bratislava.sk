@@ -5,8 +5,8 @@ import { useCalendarCell } from 'react-aria'
 import { CalendarState } from 'react-stately'
 
 type CalendarCellBase = {
-  state?: CalendarState
-  date?: CalendarDate
+  state: CalendarState
+  date: CalendarDate
 }
 
 const CalendarCell = ({ state, date }: CalendarCellBase) => {
@@ -23,10 +23,10 @@ const CalendarCell = ({ state, date }: CalendarCellBase) => {
         {...buttonProps}
         ref={ref}
         className={cx(
-          'flex h-10 w-10 items-center justify-center text-sm font-medium focus:rounded-lg focus:bg-[#333] focus:text-white',
+          'flex h-10 w-10 items-center justify-center text-sm font-medium focus:rounded-lg focus:bg-form-input-pressed focus:text-white',
           {
-            'rounded-lg bg-[#333] text-white': isSelected,
-            'hover:rounded-lg hover:bg-[#f1f1f1]': !isOutsideVisibleRange && !isSelected,
+            'rounded-lg bg-form-input-pressed text-white': isSelected,
+            'hover:rounded-lg hover:bg-form-calendar-hover': !isOutsideVisibleRange && !isSelected,
             'opacity-50': isOutsideVisibleRange,
           }
         )}

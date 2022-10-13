@@ -5,13 +5,13 @@ import { CalendarState } from 'react-stately'
 import CalendarCell from './CalendarCell'
 
 type CalendarGridBase = {
-  state?: CalendarState
+  state: CalendarState
   offset?: DateDuration
 }
 
 const CalendarGrid = ({ state, offset = {}, ...rest }: CalendarGridBase) => {
   const { locale } = useLocale()
-  const startDate: CalendarDate = state?.visibleRange.start.add(offset)
+  const startDate: CalendarDate = state?.visibleRange?.start.add(offset)
   const endDate = endOfMonth(startDate)
   const { gridProps, headerProps } = useCalendarGrid(
     {
@@ -32,7 +32,7 @@ const CalendarGrid = ({ state, offset = {}, ...rest }: CalendarGridBase) => {
     <div {...gridProps} className="flex flex-col items-center">
       <div
         {...headerProps}
-        className="flex w-full justify-between border-y-2 border-[#333] bg-[#F5F5F5] px-3 py-1 text-sm font-medium"
+        className="flex w-full justify-between border-y-2 border-[#333] bg-form-calendar-header px-3 py-1 text-sm font-medium"
       >
         {weekDays.map((day, index) => (
           <span className="flex h-10 w-10 items-center justify-center" key={index}>

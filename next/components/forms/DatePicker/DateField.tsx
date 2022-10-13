@@ -8,8 +8,8 @@ import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 
 type DateSegmentBase = {
-  segment?: DateSegment
-  state?: DateFieldState
+  segment: DateSegment 
+  state: DateFieldState
 }
 
 const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
@@ -70,11 +70,11 @@ const DateField = ({
     ref
   )
   const dateFieldStyle = cx(
-    'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-[#D6D6D6] focus:border-[#333]',
+    'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-form-input-default focus:border-form-input-pressed',
     {
-      'hover:border-[#ADADAD]': !disabled,
+      'hover:border-form-input-hover': !disabled,
       'border-error focus:border-error hover:border-error': errorMessage,
-      'opacity-50 pointer-events-none border-[#ADADAD]': disabled,
+      'opacity-50 pointer-events-none border-form-input-hover': disabled,
     }
   )
   return (
@@ -89,7 +89,7 @@ const DateField = ({
         required={required}
       />
       <div {...fieldProps} ref={ref} className={dateFieldStyle}>
-        {state.segments.map((segment, i) => (
+        {state?.segments?.map((segment, i) => (
           <DateSegmentComponent key={i} segment={segment} state={state} />
         ))}
         <div className="ml-auto flex items-center">{children}</div>

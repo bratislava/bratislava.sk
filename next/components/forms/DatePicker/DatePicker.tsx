@@ -50,6 +50,9 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
 
     const closeHandler = () => {
       state?.close()
+      // https://github.com/adobe/react-spectrum/discussions/3318
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       state?.setDateValue(null)
     }
 

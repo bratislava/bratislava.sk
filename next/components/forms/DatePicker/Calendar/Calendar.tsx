@@ -29,7 +29,7 @@ const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
   const { buttonProps: nextButtonPropsBtn } = useButton({ ...nextButtonProps }, nextTriggerRef)
 
   return (
-    <div {...calendarProps} ref={ref} className="w-80 rounded-lg border-2 border-[#333] bg-white">
+    <div {...calendarProps} ref={ref} className="w-80 rounded-lg border-2 border-form-input-pressed bg-white">
       <div className="flex justify-between px-4 py-3">
         <button
           className="flex h-6 w-6 items-center justify-center focus:outline-none"
@@ -50,7 +50,7 @@ const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
         </button>
       </div>
       <CalendarGrid state={state} />
-      <div className="flex items-center justify-between border-t-2 border-[#333] py-3 px-4">
+      <div className="flex items-center justify-between border-t-2 border-form-input-pressed py-3 px-4">
         <Button onPress={onClose} text="Zrušiť" variant="plain-black" size="sm" />
         <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>
