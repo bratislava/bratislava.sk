@@ -15,7 +15,7 @@ import { getLocalDate, getNumericLocalDate } from './local-date'
 import { isPresent } from './utils'
 
 // Use explocitly named color variables so their usage can be easily found in project
-const COLOR_VARIABLES: {
+export const COLOR_VARIABLES: {
   [key: string]: { default: string; light: string; dark: string }
 } = {
   red: {
