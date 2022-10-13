@@ -276,10 +276,6 @@
 /* width */
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  ::-webkit-scrollbar {
-    @apply h-1.5 w-0;
-  }
-
   /* Track */
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
