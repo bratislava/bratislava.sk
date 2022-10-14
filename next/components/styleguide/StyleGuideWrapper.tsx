@@ -51,7 +51,7 @@ const StyleGuideWrapper = ({children}: StyleGuideWrapperProps) => {
           __html: pageStyle(activeBrandColor),
         }}
       />
-      <div className="min-h-screen bg-[#E5E5E5]">
+      <div className="font-inter min-h-screen bg-[#E5E5E5]">
         <div className="mx-auto max-w-screen-lg px-12 pt-12 pb-64">
           <h1 className="mb-10 text-center text-xl font-bold underline">Style Guide</h1>
           <div className="mb-10">
