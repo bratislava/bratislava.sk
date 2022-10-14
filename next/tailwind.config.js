@@ -90,6 +90,7 @@ module.exports = {
             default: '#D6D6D6',
             hover: '#ADADAD',
             pressed: '#333333',
+            disabled: '#C2C2C2'
           },
           calendar: {
             hover: '#f1f1f1',
