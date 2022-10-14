@@ -86,6 +86,15 @@ module.exports = {
       },
       colors: {
         form: {
+          input: {
+            default: '#D6D6D6',
+            hover: '#ADADAD',
+            pressed: '#333333',
+          },
+          calendar: {
+            hover: '#f1f1f1',
+            header: '#F5F5F5',
+          },
           brand: {
             default: '#E46054',
             hover: '#E98076',
