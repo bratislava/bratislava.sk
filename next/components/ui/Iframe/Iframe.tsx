@@ -7,9 +7,18 @@ export interface IframeProps {
   iframeHeight: string
   fullHeight: boolean
   allowFullscreen: boolean
+  allowGeolocation: boolean
   css?: string
 }
-export const Iframe = ({ url, iframeWidth, iframeHeight, fullHeight, allowFullscreen, css }: IframeProps) => {
+export const Iframe = ({
+  url,
+  iframeWidth,
+  iframeHeight,
+  fullHeight,
+  allowFullscreen,
+  allowGeolocation,
+  css,
+}: IframeProps) => {
   const ref = useRef<HTMLIFrameElement>()
 
   const [height, setHeight] = useState('0')
@@ -49,6 +58,7 @@ export const Iframe = ({ url, iframeWidth, iframeHeight, fullHeight, allowFullsc
           className="w-full"
           height={height}
           allowFullScreen={allowFullscreen}
+          allow={allowGeolocation ? 'geolocation *' : undefined}
           scrolling="no"
         />
       </div>
