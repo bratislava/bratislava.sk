@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const MostSearchedServices: FC<Props> = ({ topNine, topNineTitle }) => (
-  <SectionContainer className="bg-secondary py-16">
+  <SectionContainer className="py-16" color={SectionContainer.COLOR.LIGHT_RED}>
     <h2 className="pb-10 text-center text-default font-semibold xs:mt-8 lg:pb-20 lg:text-2xl">{topNineTitle}</h2>
     <TopNine items={topNine} />
   </SectionContainer>

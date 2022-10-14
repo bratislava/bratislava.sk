@@ -3,9 +3,8 @@ import { BookmarkProps, MenuMainItem, TPostsTab } from '@bratislava/ui-bratislav
 import { InBaProps } from '@bratislava/ui-bratislava/InBaCard/types'
 import { DataProps } from '@utils/homepage-mockdata'
 import { parseFooter } from '@utils/page'
-import React, { FC } from 'react'
+import React, { FC, Ref } from 'react'
 
-import { ParsedOfficialBoardDocument } from '../../services/ginis'
 import Footer from '../molecules/Footer'
 import { HomepageContent } from '../pages/homepage/HomepageContent'
 import { HomepageHeader } from '../pages/homepage/HomepageHeader'
@@ -24,6 +23,7 @@ interface HomepagePageLayoutProps {
   latestBlogposts?: LatestBlogsFragment
   inBaProps: InBaProps
   data: DataProps
+  homepageRef: Ref<HTMLDivElement>
 }
 
 const HomepagePage: FC<HomepagePageLayoutProps> = ({
@@ -54,20 +54,16 @@ const HomepagePage: FC<HomepagePageLayoutProps> = ({
         onSearchOpen={setIsSearchOpen}
         isSearchOpen={isSearchOpen}
       />
-      {!isSearchOpen && (
-        <>
-          <HomepageContent
-            data={data}
-            homepagePosts={homepagePosts}
-            homepage={homepage}
-            inBaProps={inBaProps}
-            posts={posts}
-            rozkoPosts={rozkoPosts}
-            latestBlogposts={latestBlogposts}
-          />
-          {footer && <Footer {...parseFooter(footer)} />}
-        </>
-      )}
+      <HomepageContent
+        data={data}
+        homepagePosts={homepagePosts}
+        homepage={homepage}
+        inBaProps={inBaProps}
+        posts={posts}
+        rozkoPosts={rozkoPosts}
+        latestBlogposts={latestBlogposts}
+      />
+      {footer && <Footer {...parseFooter(footer)} />}
     </div>
   )
 }

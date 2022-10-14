@@ -41,8 +41,8 @@ export const HomepageContent: FC<Props> = ({
 }) => {
   const { t } = useTranslation('common')
   return (
-    <div className="md:mt-35 lg:mt-70">
-      <SectionContainer>
+    <div className="md:pt-35 lg:pt-55">
+      <SectionContainer color={SectionContainer.COLOR.LIGHT_GRAY}>
         <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
         <Posts
           readMoreText={t('readMore')}
@@ -64,7 +64,7 @@ export const HomepageContent: FC<Props> = ({
         />
       </SectionContainer>
       <Waves
-        className="mt-20 mb-[-1px] lg:mb-0"
+        className="lg:mb-0"
         backgroundColor="var(--background-color)"
         waveColor="var(--secondary-color)"
         wavePosition="top"
@@ -79,13 +79,14 @@ export const HomepageContent: FC<Props> = ({
         className="mt-[-1px] lg:mt-0"
       />
 
-      <SectionContainer>
-        <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inBaProps} />
-        <div className="hidden md:block md:h-[78px]" />
-
-        <FacebookPosts title="Bratislava na Facebooku" />
-        {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
-        {/* <NewsLetterSection className="mt-24" /> */}
+      <SectionContainer color={SectionContainer.COLOR.LIGHT_GRAY}>
+        <div className="inline-flex justify-center">
+          <InBaCard className="mt-56 min-h-[200px] w-2/3 rounded-md" {...inBaProps} />
+          <div className="hidden md:block md:h-[78px]" />
+          <FacebookPosts title="Bratislava na Facebooku" />
+          {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
+          {/* <NewsLetterSection className="mt-24" /> */}
+        </div>
       </SectionContainer>
     </div>
   )

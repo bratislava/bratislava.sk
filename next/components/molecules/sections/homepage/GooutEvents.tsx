@@ -25,7 +25,9 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
   const { Link: UILink } = useUIContext()
 
   React.useEffect(() => {
-    fetchGooutEvents().then(setGooutEvents).catch(error => console.log(error))
+    fetchGooutEvents()
+      .then(setGooutEvents)
+      .catch((error) => console.log(error))
   }, [])
 
   if (gooutEvents.length === 0) return null
@@ -64,7 +66,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
         />
       </div>
 
-      <div className="my-10 flex w-full justify-center text-center">
+      <div className="mt-10 flex w-full justify-center pb-[5rem] text-center">
         <Link
           href={linkUrl}
           icon={<ChevronRight />}

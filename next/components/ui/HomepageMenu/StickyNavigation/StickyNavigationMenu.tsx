@@ -12,13 +12,13 @@ interface IProps {
 }
 
 export const StickyNavigationMenu = ({ menuItems = [], className }: IProps) => {
-  const { handleClick, visiblePanelId, handleMouseLeave, handleMouseEnter, highlightedMenuItemId } =
+  const { handleClick, visiblePanelId, handleMouseLeave, handleMouseEnter, highlightedMenuItemId, navBarRef } =
     useStickyNavigationMenu()
 
   return (
-    <menu className={cx('fixed z-40 flex w-full justify-evenly bg-white pb-4 drop-shadow-lg', className)}>
+    <menu className={cx('fixed z-40 flex w-full gap-2 bg-white pb-4 drop-shadow-lg justify-center', className)}>
       {menuItems.map((item) => (
-        <li key={item.id} className="lg:w-[13%]">
+        <li key={item.id} className="lg:w-[13%]" ref={navBarRef}>
           <MenuItem
             buttons={<StickyMenuButton item={item} isVisible={highlightedMenuItemId === item.id} />}
             item={item}

@@ -1,14 +1,8 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable unicorn/consistent-destructuring */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React from 'react'
-import {
-  getParsedUDEDocumentsList,
-  mockedParsedDocuments,
-  ParsedOfficialBoardDocument,
-  shouldMockGinis,
-} from 'backend/services/ginis'
+import React, { useRef } from 'backend/react'
 
 import HomepagePage from '../components/layouts/HomepagePage'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -17,7 +11,7 @@ import { buildMockData } from '../utils/homepage-mockdata'
 import { parseMainMenu } from '../utils/page'
 import { AsyncServerProps } from '../utils/types'
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -146,23 +140,27 @@ const Homepage = ({
   const { pageTitle, posts } = data
 
   const menuItems = parseMainMenu(mainMenu)
+  const homepageRef = useRef(null)
 
   return (
-    <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
-      <HomepagePage
-        menuItems={menuItems}
-        bookmarks={cards}
-        homepagePosts={homepagePosts}
-        homepage={homepage}
-        data={data}
-        inBaProps={inba}
-        posts={posts}
-        rozkoPosts={rozkoPosts}
-        pageTitle={pageTitle}
-        latestBlogposts={latestBlogposts}
-        header={header}
-        footer={footer}
-      />
+    <PageWrapper locale={page.locale} localizations={page.localizations} slug="" ref={homepageRef}>
+      <div ref={homepageRef}>
+        <HomepagePage
+          homepageRef={homepageRef}
+          menuItems={menuItems}
+          bookmarks={cards}
+          homepagePosts={homepagePosts}
+          homepage={homepage}
+          data={data}
+          inBaProps={inba}
+          posts={posts}
+          rozkoPosts={rozkoPosts}
+          pageTitle={pageTitle}
+          latestBlogposts={latestBlogposts}
+          header={header}
+          footer={footer}
+        />
+      </div>
     </PageWrapper>
   )
 }

@@ -32,7 +32,7 @@ const NavBar = ({ menuItems = [], onSearchClick, pageColor, children, isSearchOp
   }
 
   return (
-    <div className="z-[9999] h-14 w-full bg-white">
+    <div className="z-[9999] h-auto w-full bg-white">
       <BANavBar
         menuItems={menuItems}
         onLanguageChange={handleLanguageChange}

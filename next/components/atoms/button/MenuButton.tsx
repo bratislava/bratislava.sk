@@ -9,7 +9,11 @@ interface Props {
   children: ReactNode
 }
 
-export const MenuButton: FC<Props> = ({ isActive = false, iconItems = [], children }) => {
+export const MenuButton: FC<Props> = ({ isActive = false, iconItems, children }) => {
+  if (!iconItems) {
+    return null
+  }
+
   const [firstBtn, secondBtn, __rest] = iconItems
 
   return (
@@ -25,7 +29,7 @@ export const MenuButton: FC<Props> = ({ isActive = false, iconItems = [], childr
         </div>
       )}
       <div>
-        <p className="typography-tag-label text-p2 whitespace-pre text-left text-gray-dark lg:text-center">
+        <p className="typography-tag-label whitespace-pre text-p2 text-gray-dark lg:mt-3 lg:text-center">
           {children}
         </p>
       </div>

@@ -8,7 +8,7 @@ interface Props {
   buttons: ReactNode
   onMouseEnter?(itemId: string): void
   onMouseLeave?(): void
-  onClick(itemId: string): void
+  onClick(itemId?: string): void
   children: ReactNode
   className?: string
 }

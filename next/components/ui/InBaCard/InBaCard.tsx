@@ -11,7 +11,7 @@ export interface InBaCardProps {
   images?: (string | undefined)[]
   title?: string | null
   content?: string | null
-  link?: string | null
+  link: string | null
   readMoreTitle?: string
 }
 
@@ -26,7 +26,7 @@ export const InBaCard = ({ className, images, title, content, link, readMoreTitl
       className={cx(
         'relative flex flex-col md:flex-row items-center',
         {
-          'pt-24 md:pt-0': !!frontImage,
+          'md:pt-0': !!frontImage,
         },
         className
       )}
@@ -59,17 +59,19 @@ export const InBaCard = ({ className, images, title, content, link, readMoreTitl
           'md:items-start md:text-left md:pr-96 md:pl-12 md:py-8'
         )}
       >
-        <h1 className="text-h4">{title}</h1>
+        <h1 className="text-h4 font-semibold">{title}</h1>
         <span className="text-p2">{content}</span>
-        <UILink className="group flex h-6 cursor-pointer items-center space-x-5 text-font underline" href={link}>
-          <span className="text-p2 font-semibold">{readMoreTitle}</span>
-          <span className="group-hover:hidden">
-            <ChevronRight />
-          </span>
-          <span className="hidden group-hover:block">
-            <ArrowRight />
-          </span>
-        </UILink>
+        {link && (
+          <UILink className="group flex h-6 cursor-pointer items-center space-x-5 text-font underline" href={link}>
+            <span className="text-p2 font-semibold">{readMoreTitle}</span>
+            <span className="group-hover:hidden">
+              <ChevronRight />
+            </span>
+            <span className="hidden group-hover:block">
+              <ArrowRight />
+            </span>
+          </UILink>
+        )}
       </div>
     </Panel>
   )

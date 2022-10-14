@@ -3,11 +3,11 @@ import Head from 'next/head'
 import React, { FC } from 'react'
 
 interface Props {
-  headTitle?: string
-  metaContent?: string
+  headTitle: string
+  metaContent: string
 }
 
-export const HomePageMetaHeader: FC<Props> = ({ headTitle, metaContent }) => {
+export const HomePageMetaHeader: FC<Props> = ({ headTitle = '', metaContent = '' }) => {
   if (!headTitle && !metaContent) {
     return null
   }

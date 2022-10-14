@@ -1,4 +1,4 @@
-import { Footer as UIFooter, FooterProps, SectionContainer } from '@bratislava/ui-bratislava'
+import { Footer as UIFooter, FooterProps } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
@@ -19,7 +19,7 @@ const Footer = (props: FooterProps) => {
   }))
 
   return (
-    <div className="mt-24 ">
+    <div>
       {/* Uncomment for panorama divider */}
       {/* <FooterWidth className="hidden w-full md:block" />
       <FooterWidthTablet className="hidden w-full md:hidden" />
@@ -28,8 +28,8 @@ const Footer = (props: FooterProps) => {
       {/* Uncomment for waves divider */}
       {/* <Waves className="-mb-1" waveColor="white" wavePosition="top" /> */}
 
-      <div className="px-7.5">
-        <div className="mx-auto max-w-screen-1.5lg">
+      <div className="bg-gray-100 px-7.5">
+        <div className="mx-auto max-w-screen-1.5lg pt-24">
           <hr />
           <UIFooter className="pb-14" {...props} languageLinks={languageLinks} />
         </div>

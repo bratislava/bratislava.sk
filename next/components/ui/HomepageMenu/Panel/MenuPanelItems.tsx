@@ -8,17 +8,21 @@ import React, { FC } from 'react'
 import { Icon } from '../../../atoms/icon/Icon'
 
 interface Props {
-  subItems: MenuSubItem[]
+  subItems?: MenuSubItem[]
 }
 
 export const MenuPanelItems: FC<Props> = ({ subItems }) => {
   const { Link: UILink } = useUIContext()
 
+  if (!subItems) {
+    return null
+  }
+
   return (
     <>
       {subItems?.map((subItem, j) => {
         return (
-          <div key={j} className="mb-10">
+          <div key={j} className="mb-4">
             <button type="button" className="flex" onClick={() => {}}>
               <UILink
                 href={isItExternal(subItem.url)}
@@ -30,7 +34,7 @@ export const MenuPanelItems: FC<Props> = ({ subItems }) => {
                 <div className="font-semibold">{subItem.title}</div>
               </UILink>
             </button>
-            <ul className="text mt-8 space-y-3 text-left">
+            <ul className="text mt-6 space-y-2 text-left">
               {subItem.subItems?.map((subSubItem, k) => (
                 <li key={k}>
                   <button className="flex" onClick={() => {}}>

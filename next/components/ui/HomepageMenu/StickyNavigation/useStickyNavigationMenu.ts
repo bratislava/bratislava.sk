@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { MutableRefObject, useRef, useState } from 'react'
+import { useOutsideClick } from 'rooks'
 
 interface HookResult {
   highlightedMenuItemId?: string
   visiblePanelId?: string
-  handleClick(itemId: string): void
+  navBarRef: MutableRefObject<HTMLLIElement | null>
+  handleClick(itemId?: string): void
   handleMouseEnter(itemId: string): void
   handleMouseLeave(): void
 }
@@ -11,6 +13,9 @@ interface HookResult {
 export const useStickyNavigationMenu = (): HookResult => {
   const [visiblePanelId, setVisiblePanelId] = useState<undefined | string>(undefined)
   const [highlightedMenuItemId, setHighlightedMenuItemId] = useState<undefined | string>(undefined)
+  const navBarRef = useRef<HTMLLIElement>(null)
+
+  useOutsideClick(navBarRef, setVisiblePanelId)
 
   const handleClick = (itemId: string) => {
     if (visiblePanelId === itemId) {
@@ -29,6 +34,7 @@ export const useStickyNavigationMenu = (): HookResult => {
   }
 
   return {
+    navBarRef,
     highlightedMenuItemId,
     visiblePanelId,
     handleClick,

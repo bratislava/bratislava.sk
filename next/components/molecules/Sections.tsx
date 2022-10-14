@@ -265,13 +265,14 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   // Not All sections has property hasBackground
   const hasBackground = (section as any).hasBackground ?? false
+  const sectionColor = hasBackground ? SectionContainer.COLOR.LIGHT_RED : SectionContainer.COLOR.WHITE
 
   return (
     <SectionContainer
       className={cx('pt-[42px] md:pt-18', {
-        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
+        'pb-14 md:pb-18': hasBackground === true,
       })}
-      hasBackground={hasBackground}
+      color={sectionColor}
     >
       <SectionContent section={section} slug={slug} locale={locale} />
     </SectionContainer>

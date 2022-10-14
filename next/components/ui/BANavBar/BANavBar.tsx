@@ -24,7 +24,7 @@ import cx from 'classnames'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React, { useCallback, useState } from 'react'
+import React, { ChangeEvent, useCallback, useState } from 'react'
 
 import { Brand } from '../Brand/Brand'
 import Button from '../Button/Button'
@@ -40,7 +40,16 @@ interface IProps extends LanguageSelectProps {
   isSearchOpen?: boolean
 }
 
-export const BANavBar = ({ className, menuItems, pageColor, isSearchOpen, onSearchClick, ...languageSelectProps }: IProps) => {
+const NOOP = () => {}
+
+export const BANavBar = ({
+  className,
+  menuItems,
+  pageColor,
+  isSearchOpen,
+  onSearchClick = NOOP,
+  ...languageSelectProps
+}: IProps) => {
   const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
@@ -48,11 +57,11 @@ export const BANavBar = ({ className, menuItems, pageColor, isSearchOpen, onSear
   const { t } = useTranslation(['common'])
 
   const [input, setInput] = useState('')
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value)
   }
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' && input.length > minKeywordLength) {
+  const handleKeyDown = (event?: { key: string }) => {
+    if (event?.key === 'Enter' && input.length > minKeywordLength) {
       router.push(`${t('searchLink')}?keyword=${input}`)
     }
   }
