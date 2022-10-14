@@ -1,15 +1,6 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import {
-  BlogPost,
-  BlogPostFragment,
-  Homepage,
-  HomepageQuery,
-  LatestBlogsFragment,
-  LatestBlogsWithTagsQuery,
-  NewsCardBlogFragment,
-} from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntity, LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +9,6 @@ import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
-import { DocumentCards } from '../../DocumentCards/DocumentCards'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
@@ -29,8 +19,7 @@ export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
-  // latestPost?: BlogPost[]
-  latestPost?: LatestBlogsFragment
+  latestPost?: LatestBlogsFragment | null
   leftHighLight?: NewsCardBlogFragment | null
   rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
@@ -49,10 +38,9 @@ export const Posts = ({
   rozkoPosts,
 }: PostsProps) => {
   const [activeTab, setActiveTab] = React.useState(0)
-  const [activePosts, setActivePost] = React.useState(posts[activeTab])
-  const [activeNewsCards, setActiveNewsCards] = React.useState<NewsCardProps[]>(
-    activePosts?.newsCards ? activePosts?.newsCards : []
-  )
+  const activePosts = posts[activeTab]
+  const activeNewsCards = activePosts?.newsCards ?? []
+  const hasLatestPosts = (latestPost?.data?.length ?? 0) > 0
 
   // TODO handle loading and errors
   const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>('/api/ginis/newest', () =>
@@ -85,7 +73,7 @@ export const Posts = ({
         </div>
       </HorizontalScrollWrapper>
 
-      {activeTab == 0 && (
+      {activeTab === 0 && (
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
@@ -95,35 +83,41 @@ export const Posts = ({
                     <NewsCard {...newsCard} />
                   </div>
                 ))}
-              {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
-              {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
+              {leftHighLight?.data?.attributes && (
+                <NewsCard {...leftHighLight.data.attributes} readMoreText={readMoreText} />
+              )}
+              {rightHighLight?.data?.attributes && (
+                <NewsCard {...rightHighLight.data.attributes} readMoreText={readMoreText} />
+              )}
 
-              {latestPost?.data?.length > 0 && (
+              {hasLatestPosts && (
                 <div className="hidden lg:block">
-                  {latestPost.data.map((newsCard, i) => {
+                  {latestPost?.data?.map((newsCard, i) => {
                     const card = newsCard.attributes
-                    const tag = card.tag.data?.attributes
+                    const tag = card?.tag?.data?.attributes
                     return (
                       <div key={i}>
                         {tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title ?? ''} color={tag?.pageCategory?.data?.attributes?.color ?? ''} />
                           </div>
                         )}
-                        <UILink href={`blog/${card.slug}`}>
-                          <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory.data.attributes.color}))]`}
-                          >
-                            {card.title}
-                          </div>
-                        </UILink>
+                        {card?.slug && (
+                          <UILink href={`blog/${card.slug}`}>
+                            <div
+                              className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory?.data?.attributes?.color}))]`}
+                            >
+                              {card.title}
+                            </div>
+                          </UILink>
+                        )}
                       </div>
                     )
                   })}
                 </div>
               )}
               <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                {latestPost?.data?.length > 0 && (
+                {hasLatestPosts && (
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
@@ -186,23 +180,25 @@ export const Posts = ({
 
               {rozkoPosts?.data?.length > 2 && (
                 <div className="hidden lg:block">
-                  {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
+                  {rozkoPosts.data.slice(2, 7).map((newsCard: BlogPostEntity, i: number) => {
                     const card = newsCard.attributes
-                    const tag = card.tag.data?.attributes
+                    const tag = card?.tag?.data?.attributes
                     return (
                       <div key={i}>
-                        {card.tag && (
+                        {card?.tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title ?? ''} color={tag?.pageCategory?.data?.attributes?.color ?? ''} />
                           </div>
                         )}
-                        <UILink href={`blog/${card.slug}`}>
-                          <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag.pageCategory.data.attributes.color}))]`}
-                          >
-                            {card.title}
-                          </div>
-                        </UILink>
+                        {card?.slug && (
+                          <UILink href={`blog/${card.slug}`}>
+                            <div
+                              className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory?.data?.attributes?.color}))]`}
+                            >
+                              {card.title}
+                            </div>
+                          </UILink>
+                        )}
                       </div>
                     )
                   })}

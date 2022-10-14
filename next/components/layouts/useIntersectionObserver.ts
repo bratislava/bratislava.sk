@@ -1,4 +1,4 @@
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { MutableRefObject, useCallback, useEffect, useRef } from 'react'
 
 interface HookParam {
   threshold: number
@@ -7,14 +7,11 @@ interface HookParam {
 }
 
 interface HookResult {
-  observableNodeRef: MutableRefObject<HTMLDivElement>
-  rootNodeRef: MutableRefObject<HTMLDivElement>
+  observableNodeRef: MutableRefObject<HTMLDivElement | null>
 }
 
 export const useIntersectionObserver = ({ onCrossingThreshold, threshold, rootMargin }: HookParam): HookResult => {
-  const [node, setNode] = useState<undefined | HTMLDivElement>()
   const observableNodeRef = useRef<null | HTMLDivElement>(null)
-  const rootNodeRef = useRef<null | HTMLDivElement>(null)
   const intersectionObserverRef = useRef<undefined | IntersectionObserver>()
   const handleChange = useCallback(onCrossingThreshold, [onCrossingThreshold])
 
@@ -25,25 +22,17 @@ export const useIntersectionObserver = ({ onCrossingThreshold, threshold, rootMa
     intersectionObserverRef.current = new IntersectionObserver(handleChange, {
       threshold,
       rootMargin,
-      root: node,
     })
-  }, [handleChange, node, rootMargin, threshold])
-
-  useEffect(() => {
-    if (rootNodeRef.current) {
-      setNode(rootNodeRef.current)
-    }
-  }, [setNode])
+  }, [handleChange, rootMargin, threshold])
 
   useEffect(() => {
     if (observableNodeRef?.current) {
-      intersectionObserverRef.current.observe(observableNodeRef.current)
+      intersectionObserverRef.current?.observe(observableNodeRef.current)
     }
     return () => intersectionObserverRef?.current?.disconnect()
   }, [observableNodeRef])
 
   return {
     observableNodeRef,
-    rootNodeRef,
   }
 }

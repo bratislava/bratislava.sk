@@ -1,5 +1,6 @@
 import { FooterFragment, LatestBlogsFragment } from '@bratislava/strapi-sdk-homepage'
-import { BookmarkProps, MenuMainItem, TPostsTab } from '@bratislava/ui-bratislava'
+import { BookmarkProps, TPostsTab } from '@bratislava/ui-bratislava'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import { InBaProps } from '@bratislava/ui-bratislava/InBaCard/types'
 import { DataProps } from '@utils/homepage-mockdata'
 import { parseFooter } from '@utils/page'
@@ -12,15 +13,15 @@ import { BlogPost, Header, Homepage } from '../pages/homepage/types'
 
 interface HomepagePageLayoutProps {
   menuItems?: MenuMainItem[]
-  footer?: FooterFragment
+  footer?: FooterFragment | null
   header?: Header
   homepage?: Homepage
   bookmarks?: BookmarkProps[]
   pageTitle?: string
-  homepagePosts: BlogPost[]
+  homepagePosts?: BlogPost[]
   posts?: TPostsTab[]
   rozkoPosts?: unknown
-  latestBlogposts?: LatestBlogsFragment
+  latestBlogposts?: LatestBlogsFragment | null
   inBaProps: InBaProps
   data: DataProps
   homepageRef: Ref<HTMLDivElement>
@@ -40,7 +41,6 @@ const HomepagePage: FC<HomepagePageLayoutProps> = ({
   rozkoPosts,
   latestBlogposts,
 }) => {
-  const isEN = true // TODO: use localization // TODO get bookmarks determined by localization
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
 
   return (

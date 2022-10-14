@@ -1,6 +1,6 @@
 import { ChevronDownSmall } from '@assets/images'
 import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
-import { MenuMainItem } from '@bratislava/ui-bratislava'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import cx from 'classnames'
 import React, { FC } from 'react'
 

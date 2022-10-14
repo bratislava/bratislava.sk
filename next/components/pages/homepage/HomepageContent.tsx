@@ -15,16 +15,15 @@ import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 import { FC } from 'react'
 
-import { ParsedOfficialBoardDocument } from '../../../services/ginis'
 import FacebookPosts from '../../molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../../molecules/sections/homepage/GooutEvents'
 import { BlogPost, Homepage } from './types'
 
 interface Props {
-  homepagePosts: BlogPost[]
+  homepagePosts?: BlogPost[]
   posts?: TPostsTab[]
   rozkoPosts?: unknown
-  latestBlogposts?: LatestBlogsFragment
+  latestBlogposts?: LatestBlogsFragment | null
   inBaProps: InBaProps
   homepage?: Homepage
   data: DataProps

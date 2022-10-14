@@ -1,6 +1,6 @@
-// @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import Image from 'next/image'
 
 import ArrowRight from '../../../assets/images/arrow-right.svg'
 import ChevronRight from '../../../assets/images/chevron-right.svg'
@@ -11,7 +11,7 @@ export interface InBaCardProps {
   images?: (string | undefined)[]
   title?: string | null
   content?: string | null
-  link: string | null
+  link?: string | null
   readMoreTitle?: string
 }
 
@@ -49,7 +49,7 @@ export const InBaCard = ({ className, images, title, content, link, readMoreTitl
             'md:w-52 md:top-auto md:right-0 md:translate-x-[-45%] md:translate-y-0'
           )}
         >
-          <img src={frontImage} alt="inba" width="211" height="329" />
+          <Image src={frontImage} alt="inba" width="211" height="329" />
         </Panel>
       )}
 

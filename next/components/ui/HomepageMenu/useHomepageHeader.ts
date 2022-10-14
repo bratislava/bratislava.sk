@@ -4,10 +4,8 @@ import { useIntersectionObserver } from '../../layouts/useIntersectionObserver'
 import { getStickyMenuState, isObserverIntersectingBottom, STICKY_MENU_VISIBILITY } from './HomePageService'
 
 interface HookResult {
-  rootNodeRef: MutableRefObject<HTMLDivElement>
-  observableNodeRef: MutableRefObject<HTMLDivElement>
+  observableNodeRef: MutableRefObject<HTMLDivElement | null>
   stickyMenuState: STICKY_MENU_VISIBILITY
-  observableNodeHeight: number
 }
 
 export const useHomepageHeader = (): HookResult => {
@@ -20,15 +18,13 @@ export const useHomepageHeader = (): HookResult => {
     setStickyMenuState(getStickyMenuState(entries[0]))
   }, [])
 
-  const { rootNodeRef, observableNodeRef } = useIntersectionObserver({
+  const { observableNodeRef } = useIntersectionObserver({
     onCrossingThreshold: handleIntersection,
     threshold: 0.8,
   })
 
   return {
-    rootNodeRef,
     observableNodeRef,
     stickyMenuState,
-    observableNodeHeight: rootNodeRef.current?.clientHeight,
   }
 }

@@ -1,4 +1,4 @@
-export const isItExternal = (link: string) => {
+export const isLinkExternal = (link: string) => {
   if (!link) {
     return link
   }

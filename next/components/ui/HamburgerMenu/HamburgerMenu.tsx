@@ -1,6 +1,6 @@
-// @ts-strict-ignore
 import { ArrowRight } from '@assets/images'
 import ChevronRight from '@assets/images/chevron-right.svg'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import { MOCK_HAMBURGER_MENU_ITEMS } from '@utils/constants'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -8,7 +8,6 @@ import React, { useState } from 'react'
 
 import { Icon } from '../../atoms/icon/Icon'
 import HamburgerSubMenu from '../HamburgerSubMenu/HamburgerSubMenu'
-import { MenuMainItem } from '../index'
 import { Link } from '../Link/Link'
 
 interface IProps {
@@ -19,12 +18,12 @@ interface IProps {
 }
 
 export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeMenu }: IProps) => {
-  const [subMenu, setSubMenu] = useState<MenuMainItem>()
+  const [subMenu, setSubMenu] = useState<MenuMainItem | undefined>()
   const { t } = useTranslation()
   console.log(lang)
 
   if (subMenu) {
-    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} closeParentMenu={closeMenu} />
+    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(undefined)} closeParentMenu={closeMenu} />
   }
 
   return (
@@ -56,22 +55,23 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
           </Link>
         </div>
         <div className="flex flex-col gap-y-3.5 pt-8 ">
-          {MOCK_HAMBURGER_MENU_ITEMS[lang].map((item, index) => (
-            <Link
-              variant="plain"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-              iconPosition="right"
-              href={item.url}
-              key={t(item.title)}
-              className={cx({ 'mt-3': index % 3 === 0 })}
-            >
-              <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
-                {item?.icon}
-                <span className="text-base font-medium">{t(item.title)}</span>
-              </button>
-            </Link>
-          ))}
+          {lang &&
+            MOCK_HAMBURGER_MENU_ITEMS[lang]?.map((item, index) => (
+              <Link
+                variant="plain"
+                icon={<ChevronRight />}
+                hoverIcon={<ArrowRight />}
+                iconPosition="right"
+                href={item.url}
+                key={t(item.title)}
+                className={cx({ 'mt-3': index % 3 === 0 })}
+              >
+                <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
+                  {item?.icon}
+                  <span className="text-base font-medium">{t(item.title)}</span>
+                </button>
+              </Link>
+            ))}
         </div>
       </div>
     </div>

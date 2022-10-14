@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 /* eslint-disable scanjs-rules/identifier_localStorage */
 /* eslint-disable import/no-cycle */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -24,7 +23,8 @@ import cx from 'classnames'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React, { ChangeEvent, useCallback, useState } from 'react'
+import React, { ChangeEvent, MouseEventHandler, useRef, useState } from 'react'
+import { useOutsideClick } from 'rooks'
 
 import { Brand } from '../Brand/Brand'
 import Button from '../Button/Button'
@@ -36,7 +36,7 @@ interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
   onSearchClick?(isSearchOpen: boolean): void
-  pageColor?: string
+  pageColor?: string | null
   isSearchOpen?: boolean
 }
 
@@ -337,41 +337,29 @@ interface LanguageOption {
   title: string
 }
 
-const useComponentVisible = (initialIsVisible, setIsSelectClicked) => {
+const useComponentVisible = (initialIsVisible: boolean, setIsSelectClicked: (isClicked: boolean) => void) => {
   const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible)
-  const ref = React.useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null)
 
-  const handleClickOutside = useCallback(
-    (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setIsComponentVisible(false)
-        setIsSelectClicked(false)
-      } else {
-        setIsComponentVisible(true)
-      }
-    },
-    [setIsSelectClicked]
-  )
+  const handleOutsideClick = () => {
+    setIsComponentVisible(false)
+    setIsSelectClicked(false)
+  }
 
-  React.useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true)
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true)
-    }
-  }, [handleClickOutside])
+  useOutsideClick(ref, handleOutsideClick)
 
   return { ref, isComponentVisible, setIsComponentVisible }
 }
 
 const LanguageSelect = ({
-  languages: options,
+  languages: options = [],
   currentLanguage: current,
   onLanguageChange: onChange,
 }: LanguageSelectProps) => {
-  const [isSelectClicked, setIsSelectClicked] = React.useState(false)
+  const [isSelectClicked, setIsSelectClicked] = useState(false)
   const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
-  const dropDownOptions = options.filter((option) => option.key != current)
-  const handleChange: React.MouseEventHandler<HTMLDivElement> = (e) => {
+  const dropDownOptions = options.filter((option) => option.key !== current)
+  const handleChange: MouseEventHandler<HTMLDivElement> = (e) => {
     if (!onChange) return
 
     const selectedKey = e.currentTarget.innerText.toLowerCase()
@@ -385,13 +373,13 @@ const LanguageSelect = ({
 
   if (!options) return null
 
-  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
+  const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
     setIsSelectClicked(!isSelectClicked)
   }
 
   return (
     <div className="relative flex w-[50px] items-center" ref={ref} onClick={handleClick}>
-      <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
+      <div className="font-light lg:font-semibold">{current?.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden mix-blend-normal lg:flex ${
           isSelectClicked && isComponentVisible && 'mb-1 -rotate-180'

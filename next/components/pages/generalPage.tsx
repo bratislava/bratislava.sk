@@ -1,14 +1,12 @@
 // @ts-strict-ignore
-/* eslint-disable array-callback-return */
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-case */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-danger */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Enum_Pagecategory_Color, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   Button,
   FeaturedBlogs,
@@ -22,7 +20,6 @@ import { pageStyle, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Head from 'next/head'
-import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import BasePageLayout from '../layouts/BasePageLayout'
@@ -32,33 +29,14 @@ import Sections from '../molecules/Sections'
 export interface GeneralPageProps {
   pages: GeneralPageFragment
   footer: FooterProps
-  children?: React.ReactNode
   menuItems?: MenuMainItem[]
 }
 
-const renderColor = (color: any) => {
-  if (color === 'blue') {
-    return Enum_Pagecategory_Color.Blue
-  }
-  if (color === 'brown') {
-    return Enum_Pagecategory_Color.Brown
-  }
-  if (color === 'green') {
-    return Enum_Pagecategory_Color.Green
-  }
-  if (color === 'purple') {
-    return Enum_Pagecategory_Color.Purple
-  }
-  if (color === 'yellow') {
-    return Enum_Pagecategory_Color.Yellow
-  }
-}
 const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const { Link: UILink } = useUIContext()
-  const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
-    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
+    (section) => section?.__typename === 'ComponentSectionsFeaturedBlogPosts'
   )
   return (
     <BasePageLayout footer={footer} menuItems={menuItems} pageColor={page?.pageColor}>
@@ -87,7 +65,11 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="relative lg:min-h-[220px]">
             <div className="absolute top-4 lg:top-6">
-              <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
+              <PageBreadcrumbs
+                parentPage={page?.parentPage}
+                pageCategory={page?.pageCategory}
+                title={page?.title ?? ''}
+              />
             </div>
             <h1 className="text-h1 mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-30">
               {page?.title}
@@ -107,28 +89,28 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
             )}
 
             {/* Header Sections - Subpages */}
-            {page?.pageHeaderSections?.filter(isPresent).map((section, index) => {
-              switch (section.__typename) {
-                case 'ComponentSectionsSubpageList':
-                  return (
-                    <SubpageList
-                      className="mt-10"
-                      key={index}
-                      subpageList={section.subpageList?.map(parsePageLink).filter(isPresent)}
-                    />
-                  )
+            {page?.pageHeaderSections?.filter(isPresent).map((section, index): JSX.Element | undefined => {
+              if (section.__typename === 'ComponentSectionsSubpageList') {
+                return (
+                  <SubpageList
+                    className="mt-10"
+                    key={index}
+                    subpageList={section.subpageList?.map(parsePageLink).filter(isPresent)}
+                  />
+                )
+              }
 
-                case 'ComponentSectionsFeaturedBlogPosts':
-                  const { first_blog, second_blog, third_blog } = section
-                  const blogs = [first_blog, second_blog, third_blog]
-                  return (
-                    <div
-                      key={index}
-                      className="-bottom-45 absolute -inset-x-7.5 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-87 lg:w-full"
-                    >
-                      <FeaturedBlogs blogs={blogs} />
-                    </div>
-                  )
+              if (section.__typename === 'ComponentSectionsFeaturedBlogPosts') {
+                const { first_blog, second_blog, third_blog } = section
+                const blogs = [first_blog, second_blog, third_blog]
+                return (
+                  <div
+                    key={index}
+                    className="-bottom-45 absolute -inset-x-7.5 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-87 lg:w-full"
+                  >
+                    <FeaturedBlogs blogs={blogs} />
+                  </div>
+                )
               }
             })}
 
@@ -142,7 +124,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      {page?.sections && <Sections sections={page.sections} slug={page.slug} locale={page.locale} />}
+      {page?.sections && <Sections sections={page.sections} slug={page.slug ?? ''} locale={page.locale ?? ''} />}
 
       {/* Page - Related Content */}
       {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}

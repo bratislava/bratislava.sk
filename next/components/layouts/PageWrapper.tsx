@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable lodash/collection-ordering */
+import { localePath } from '@utils/page'
 import cx from 'classnames'
 import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
@@ -47,7 +46,7 @@ const PageWrapper = ({ children, locale, localizations, slug, className, ref }: 
     })
 
     return orderBy(base, 'locale')
-  }, [localizations])
+  }, [locale, localizations, slug])
 
   return (
     <PageWrapperContext.Provider

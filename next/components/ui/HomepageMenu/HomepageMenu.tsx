@@ -1,33 +1,10 @@
 import { MenuItem } from '@bratislava/ui-bratislava/HomepageMenu/MenuItem'
 import { MenuPanel } from '@bratislava/ui-bratislava/HomepageMenu/Panel/MenuPanel'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import { useHomepageMenu } from '@bratislava/ui-bratislava/HomepageMenu/useHomepageMenu'
 import React from 'react'
 
 import { MenuButton } from '../../atoms/button/MenuButton'
-import { MenuIcon } from '../../atoms/icon/IconService'
-
-interface MenuSubSubItem {
-  title: string
-  url: string
-}
-
-export interface MenuSubItem {
-  icon?: MenuIcon
-  title: string
-  moreLinkTitle?: string
-  url: string
-  subItems: MenuSubSubItem[]
-}
-
-export interface MenuMainItem {
-  id: string
-  icon: MenuIcon
-  coloredIcon: MenuIcon
-  title: string
-  color: string
-  colorDark?: string
-  subItems?: MenuSubItem[]
-}
 
 interface IProps {
   items?: MenuMainItem[]

@@ -1,6 +1,6 @@
 export interface InBaProps {
-  title: string
-  content: string
-  link: string
-  images: string[]
+  title?: string | null
+  content?: string | null
+  link?: string | null
+  images: (string | undefined)[]
 }

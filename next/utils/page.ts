@@ -7,7 +7,8 @@ import {
   MainMenuItemFragment,
   PageLinkFragment,
 } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
+import { FooterProps, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import _, { groupBy, sortBy } from 'lodash'
 
 import { getLocalDate, getNumericLocalDate } from './local-date'
@@ -161,7 +162,7 @@ export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
 }
 
 // Main Menu
-export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
+export const parseMainMenu = (menu?: MainMenuItemFragment | null): MenuMainItem[] =>
   sortBy(
     menu.data.map((item) => ({
       id: item.id ?? '',

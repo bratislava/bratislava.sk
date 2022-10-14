@@ -1,8 +1,8 @@
-import { MenuMainItem } from '@bratislava/ui-bratislava'
 import { MenuItem } from '@bratislava/ui-bratislava/HomepageMenu/MenuItem'
 import { MenuPanel } from '@bratislava/ui-bratislava/HomepageMenu/Panel/MenuPanel'
 import { StickyMenuButton } from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/StickyMenuButton'
 import { useStickyNavigationMenu } from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/useStickyNavigationMenu'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import cx from 'classnames'
 import React from 'react'
 
@@ -16,7 +16,9 @@ export const StickyNavigationMenu = ({ menuItems = [], className }: IProps) => {
     useStickyNavigationMenu()
 
   return (
-    <menu className={cx('fixed z-40 flex w-full gap-2 bg-white pb-4 drop-shadow-lg justify-center', className)}>
+    <menu
+      className={cx('fixed z-40 flex w-full gap-2 bg-white pb-4 drop-shadow-lg justify-center px-[10%]', className)}
+    >
       {menuItems.map((item) => (
         <li key={item.id} className="lg:w-[13%]" ref={navBarRef}>
           <MenuItem

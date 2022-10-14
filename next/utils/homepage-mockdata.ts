@@ -1,4 +1,4 @@
-import { MenuMainItem } from '@bratislava/ui-bratislava'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
 
 export interface DataProps {

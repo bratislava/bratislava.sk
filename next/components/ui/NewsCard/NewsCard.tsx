@@ -10,7 +10,6 @@ import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
 
 export interface NewsCardProps {
-  id?: string
   className?: string
   readMoreText?: string
   coverImage?: {
@@ -19,7 +18,7 @@ export interface NewsCardProps {
         url?: string | null
       }
     }
-  }
+  } | null
   tag?: {
     data?: {
       attributes?: {

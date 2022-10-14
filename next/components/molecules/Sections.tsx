@@ -1,9 +1,4 @@
 // @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-case-declarations */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AccordionItem,
@@ -28,7 +23,7 @@ import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink 
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
-import * as React from 'react'
+import { FC } from 'react'
 
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
 import { DocumentList } from './sections/documentList'
@@ -36,7 +31,7 @@ import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
 
-const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?: string; locale?: string }) => {
+const SectionContent: FC<{ section: SectionsFragment; slug?: string; locale?: string }> = ({ section, locale }) => {
   const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -68,11 +63,11 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsTextWithImage':
       return (
         <TextWithImage
-          imageSrc={section.imageSrc?.data?.attributes.url ?? ''}
+          imageSrc={section.imageSrc?.data?.attributes?.url ?? ''}
           imagePosition={section.imagePosition ?? 'left'}
           content={section.content ?? ''}
           imageShadow={section.imageShadow ?? false}
-          imageAlternativeText={section.imageSrc?.data?.attributes?.alternativeText}
+          imageAlternativeText={section.imageSrc?.data?.attributes?.alternativeText ?? ''}
         />
       )
 
@@ -211,6 +206,9 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
 
     case 'ComponentSectionsArticlesList':
       const { title, category, filtering } = section
+      if (!title || !filtering || !category?.data?.attributes?.title) {
+        return null
+      }
       return (
         <ArticlesList
           title={title}
@@ -251,6 +249,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   if (section.__typename === 'ComponentSectionsNumericalList') {
     const { title, items, buttonText, buttonLink, variant, hasBackground } = section
+
     return (
       <NumericalListSection
         title={title}

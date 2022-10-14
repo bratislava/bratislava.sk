@@ -11,9 +11,8 @@ interface Props {
   menuItems?: MenuMainItem[]
   onSearchClick?(isSarchOpen: boolean): void
   isSearchOpen?: boolean
-  pageColor?: string
+  pageColor?: string | null
   children?: ReactNode
-  isHamburgerMenuVisible?: boolean
 }
 
 const NavBar = ({ menuItems = [], onSearchClick, pageColor, children, isSearchOpen = false }: Props) => {
@@ -21,9 +20,8 @@ const NavBar = ({ menuItems = [], onSearchClick, pageColor, children, isSearchOp
   const { locale, localizations = [] } = usePageWrapperContext()
   const [t] = useTranslation('common')
 
-  const handleLanguageChange = async ({ key }: { key: string }) => {
+  const handleLanguageChange = async ({ key }: { key: string }): Promise<void> => {
     const path = localizations.find((l) => l.locale === key)?.slug || ''
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     try {
       await router.push(`/${path}`, undefined, { locale: key })
     } catch (error) {

@@ -7,18 +7,12 @@ interface Props {
   metaContent: string
 }
 
-export const HomePageMetaHeader: FC<Props> = ({ headTitle = '', metaContent = '' }) => {
-  if (!headTitle && !metaContent) {
-    return null
-  }
-
-  return (
-    <PageHeader className="h-14 overflow-hidden">
-      {/* meta description */}
-      <Head>
-        <title>{headTitle}</title>
-        <meta name="description" content={metaContent} />
-      </Head>
-    </PageHeader>
-  )
-}
+export const HomePageMetaHeader: FC<Props> = ({ headTitle, metaContent }) => (
+  <PageHeader className="h-14 overflow-hidden">
+    {/* meta description */}
+    <Head>
+      <title>{headTitle}</title>
+      <meta name="description" content={metaContent} />
+    </Head>
+  </PageHeader>
+)

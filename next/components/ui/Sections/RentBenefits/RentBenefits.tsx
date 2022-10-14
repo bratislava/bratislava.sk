@@ -1,72 +1,50 @@
 import cx from 'classnames'
-import { useState } from 'react'
 
-import RentImage from '../../../../assets/images/rent.svg'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { Rent, RentProps } from '../../Rent/Rent'
 
 export interface RentBenefitsProps {
   className?: string
-  title?: string
+  title?: string | null
   linkLabel?: string
   hasBackground?: boolean
-  list?: Array<RentProps>
+  list?: RentProps[] | null
 }
 
-const LIST = [
-  {
-    icon: {
-      url: RentImage,
-    },
-    title: 'Lorem ipsum',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
-  },
-  {
-    icon: {
-      url: RentImage,
-    },
-    title: 'Lorem ipsum',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
-  },
-  {
-    icon: {
-      url: RentImage,
-    },
-    title: 'Lorem ipsum',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
-  },
-]
-
-// TODO fix types
-export const RentBenefits = ({ className, title, linkLabel, hasBackground = false, list = LIST as any }: RentBenefitsProps) => {
-  const[iconBg,setIconBg] = useState(hasBackground === true)
+export const RentBenefits = ({ title, linkLabel, hasBackground = false, list = [] }: RentBenefitsProps) => {
+  const iconBg = hasBackground === true
   return (
-<div 
-className='mt-4 md:flex md:flex-col md:items-center'>
-    <h1 className="text-h4 flex text-center">{title}</h1>
-    <HorizontalScrollWrapper
-    className={cx( 'md:w-full flex lg:flex-wrap flex-row xs:items-center md:items-baseline -mx-7.5 px-7.5 md:px-0 md:mx-0 ',
-      {
-        'mb-0': iconBg,
-      },
-      {
-        'mt-14' : title
-      }
-    )}>
-      {list.map((item, index) => (
-        <Rent key={index} {...item} linkLabel={linkLabel} className={cx(
+    <div className="mt-4 md:flex md:flex-col md:items-center">
+      <h1 className="flex text-center text-h4 font-semibold md:text-4xl">{title}</h1>
+      <HorizontalScrollWrapper
+        className={cx(
+          'md:w-full flex lg:flex-wrap flex-row xs:items-center md:items-baseline -mx-7.5 px-7.5 md:px-0 md:mx-0 ',
           {
-            'iconBackground': iconBg,
+            'mb-0': iconBg,
           },
           {
-            'w-[25%] shrink-0 grow-0 basis-1/4' : list.length > 3
+            'mt-14': title,
           }
-        )}/>
-      ))}
-    </HorizontalScrollWrapper>
-  </div>
+        )}
+      >
+        {list?.map((item, index) => (
+          <Rent
+            key={index}
+            {...item}
+            linkLabel={linkLabel}
+            className={cx(
+              {
+                'iconBackground': iconBg,
+              },
+              {
+                'w-[25%] shrink-0 grow-0 basis-1/4': list.length > 3,
+              }
+            )}
+          />
+        ))}
+      </HorizontalScrollWrapper>
+    </div>
   )
-  
-      }
+}
 
 export default RentBenefits

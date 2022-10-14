@@ -15,7 +15,7 @@ export const useStickyNavigationMenu = (): HookResult => {
   const [highlightedMenuItemId, setHighlightedMenuItemId] = useState<undefined | string>(undefined)
   const navBarRef = useRef<HTMLLIElement>(null)
 
-  useOutsideClick(navBarRef, setVisiblePanelId)
+  useOutsideClick(navBarRef, () => setVisiblePanelId(undefined))
 
   const handleClick = (itemId: string) => {
     if (visiblePanelId === itemId) {

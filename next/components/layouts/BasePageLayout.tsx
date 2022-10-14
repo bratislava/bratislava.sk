@@ -1,11 +1,6 @@
-import {
-  AdvancedSearch,
-  FooterProps,
-  MenuMainItem,
-  StickyNavigationMenu,
-} from '@bratislava/ui-bratislava'
+import { AdvancedSearch, FooterProps, MenuMainItem, StickyNavigationMenu } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
-import { useState } from 'react'
+import { HTMLAttributes, useState } from 'react'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
@@ -13,7 +8,7 @@ import NavBar from '../molecules/NavBar'
 interface BasePageLayoutProps {
   footer?: FooterProps
   menuItems?: MenuMainItem[]
-  pageColor?: string
+  pageColor?: string | null
 }
 
 const BasePageLayout = ({
@@ -22,7 +17,7 @@ const BasePageLayout = ({
   footer,
   menuItems,
   pageColor,
-}: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
+}: HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
   const [searchOpen, setSearchOpen] = useState(false)
   return (
     <div className={cx('bg-background font-inter', className)}>

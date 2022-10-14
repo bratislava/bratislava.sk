@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable security/detect-non-literal-fs-filename */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
@@ -11,7 +10,7 @@ import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
-import * as React from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 import BasePageLayout from '../layouts/BasePageLayout'
 import Sections from '../molecules/Sections'
@@ -19,11 +18,10 @@ import Sections from '../molecules/Sections'
 export interface GeneralPageProps {
   post: BlogPostFragment
   footer: FooterProps
-  children?: React.ReactNode
   menuItems?: MenuMainItem[]
 }
 
-const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const SocialMediaButton = ({ href, children }: { href: string; children: ReactNode }) => {
   const openSharePage = () => {
     const w = 600
     const h = 400
@@ -33,12 +31,16 @@ const SocialMediaButton = ({ href, children }: { href: string; children: React.R
     window.open(href, 'pop', `width=${w},height=${h},top=${t},left=${l},scrollbars=0`)
   }
 
-  return <button onClick={openSharePage}>{children}</button>
+  return (
+    <button onClick={openSharePage} type="button">
+      {children}
+    </button>
+  )
 }
 
 const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
-  const [socialLink, setSocialLink] = React.useState('')
-  React.useEffect(() => setSocialLink(window.location.href), [])
+  const [socialLink, setSocialLink] = useState('')
+  useEffect(() => setSocialLink(window.location.href), [])
   const blogPost = post.data[0].attributes
   const tag = blogPost?.tag?.data?.attributes
   const pageCategory = tag?.pageCategory?.data?.attributes
