@@ -29,7 +29,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       description,
       tooltip,
       required,
-      value,
+      value = '',
       disabled,
       leftIcon,
       resetIcon,
@@ -38,16 +38,19 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     },
     ref
   ) => {
-    const [valueState, setValueState] = useState(value)
+    const [valueState, setValueState] = useState<string>(value)
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
       {
         ...rest,
         placeholder,
         value,
-        isRequired: required,
+        label,
+        errorMessage,
+        description,
         onChange(value) {
           setValueState(value)
         },
+        isRequired: required,
         isDisabled: disabled,
       },
       ref as RefObject<HTMLInputElement>
@@ -75,7 +78,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         <FieldHeader
           label={label}
           labelProps={labelProps}
-          htmlFor={inputProps?.id}
+          htmlFor={inputProps?.id || ''}
           description={description}
           descriptionProps={descriptionProps}
           required={required}
