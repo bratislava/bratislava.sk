@@ -7,7 +7,7 @@ export interface IframeProps {
   iframeHeight: string
   fullHeight: boolean
   allowFullscreen: boolean
-  allowGeolocation: boolean
+  allowGeolocation?: boolean
   css?: string
 }
 export const Iframe = ({
