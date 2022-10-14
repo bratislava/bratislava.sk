@@ -3,21 +3,21 @@ import { forwardRef, ReactNode, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import ResetIcon from '../../assets/images/forms/circle-filled-reset.svg'
-import HelpIcon from '../../assets/images/forms/icon-help.svg'
+import FieldErrorMessage from './FieldErrorMessage'
+import FieldHeader from './FieldHeader'
 
 interface InputBase {
   label: string
   placeholder: string
   errorMessage?: string
   description?: string
-  required?: boolean
-  requiredOptional?: string
-  disabled?: boolean
   className?: string
   value?: string
   leftIcon?: ReactNode
+  required?: boolean
   resetIcon?: boolean
-  tooltip?: boolean
+  disabled?: boolean
+  tooltip?: string
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
@@ -29,7 +29,6 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       description,
       tooltip,
       required,
-      requiredOptional,
       value,
       disabled,
       leftIcon,
@@ -45,7 +44,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         ...rest,
         placeholder,
         value,
-        isRequired: required || !!requiredOptional,
+        isRequired: required,
         onChange(value) {
           setValueState(value)
         },
@@ -55,51 +54,34 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     )
 
     const style = cx(
-      'w-full max-w-xs px-4 py-3 border-2 border-universal-gray-200 text-default rounded-lg caret-universal-gray-800 focus:outline-none focus:border-universal-gray-800',
+      'w-full px-4 py-2.5 border-2 border-form-input-default text-default leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed',
       className,
       {
         // conditions
         'pl-12.5': leftIcon,
         // hover
-        'hover:border-universal-gray-500': !disabled,
+        'hover:border-form-input-hover': !disabled,
 
         // error
-        'border-red-brick hover:border-red-brick focus:border-error': errorMessage,
+        'border-error hover:border-error focus:border-error': errorMessage && !disabled,
 
         // disabled
-        'opacity-50': disabled,
+        'opacity-50 border-form-input-disabled': disabled,
       }
     )
 
     return (
-      <div className="flex w-max flex-col">
-        <div className="flex justify-between">
-          <p
-            className={cx('relative mb-1 text-default font-semibold text-universal-black', {
-              'after:content-["✱"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs':
-                required && !requiredOptional,
-            })}
-            {...labelProps}
-          >
-            {label}
-          </p>
-          {(tooltip || requiredOptional) && (
-            <div className="flex">
-              {requiredOptional && <p className="mr-4.5 text-default">{requiredOptional}</p>}
-              {tooltip && (
-                <i className="h-5 w-5 cursor-pointer">
-                  <HelpIcon />
-                </i>
-              )}
-            </div>
-          )}
-        </div>
-        {description && (
-          <div {...descriptionProps} className="mb-1 text-sm text-universal-black">
-            {description}
-          </div>
-        )}
-        <div className="relative w-max">
+      <div className="flex w-full max-w-xs flex-col">
+        <FieldHeader
+          label={label}
+          labelProps={labelProps}
+          htmlFor={inputProps?.id}
+          description={description}
+          descriptionProps={descriptionProps}
+          required={required}
+          tooltip={tooltip}
+        />
+        <div className="relative">
           {leftIcon && <i className="absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4">{leftIcon}</i>}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
           {resetIcon && valueState && (
@@ -114,11 +96,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             </i>
           )}
         </div>
-        {errorMessage && (
-          <div {...errorMessageProps} className="mt-1 text-sm text-error">
-            {errorMessage}
-          </div>
-        )}
+        {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
       </div>
     )
   }
