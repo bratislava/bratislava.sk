@@ -4,6 +4,7 @@ import cx from 'classnames'
 export interface NarrowTextProps {
   className?: string
   content?: string
+  contentStyle?: string
   width?: 'narrow' | 'default' | 'wide' | 'full'
   align?: 'left' | 'center' | 'right'
   size?: 'small' | 'normal'
@@ -17,6 +18,7 @@ export const NarrowText = ({
   width = 'default',
   align = 'center',
   size = 'normal',
+  contentStyle,
 }: NarrowTextProps) => {
   const { Markdown: UIMarkdown } = useUIContext()
 
@@ -51,9 +53,8 @@ export const NarrowText = ({
               'text-xxs md:text-sm leading-[20px] md:leading-[24px]': size === 'small',
               'text-sm md:text-default leading-[24px] md:leading-[30px]': size === 'normal',
             },
-            className
+            contentStyle
           )}
-          // className="text-sm md:text-default leading-[24px] md:leading-[30px] narrow-text-wrapper"
         />
       </div>
     </div>

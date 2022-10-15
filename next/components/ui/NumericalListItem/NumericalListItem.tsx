@@ -22,7 +22,7 @@ export const NumericalListItem = ({
   children,
   className,
 }: NumericalListItemProps) => {
-  const position = index % 2 == 0 ? 'left' : 'right'
+  const position = index % 2 === 0 ? 'left' : 'right'
   const { Markdown: UIMarkdown } = useUIContext()
   return (
     <div key={index} className={cx(className, 'flex flex-col', { 'mb-5 lg:mb-8': variant != 'roadmap' }, 'last:mb-0')}>
@@ -31,7 +31,7 @@ export const NumericalListItem = ({
       )}
       <div
         className={cx(
-          'group flex px-8',
+          'group flex pr-8 items-baseline',
           { 'h-16': variant === 'roadmap' },
           { 'h-auto': variant != 'roadmap' },
           { 'items-center': variant != 'combined' }
