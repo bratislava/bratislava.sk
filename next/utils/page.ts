@@ -8,8 +8,7 @@ import {
   PageLinkFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
-import _, { sortBy } from 'lodash'
-import groupBy from 'lodash/groupBy'
+import _, { groupBy, sortBy } from 'lodash'
 
 import { getLocalDate, getNumericLocalDate } from './local-date'
 import { isPresent } from './utils'

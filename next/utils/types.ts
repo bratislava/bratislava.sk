@@ -1,8 +1,8 @@
-export type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
+type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
 
 // with these props. the page component is never rendered so they can be excluded from expected FE props
 // void included for 401 basicAuth response
-export type NextRedirectServerSideProps =
+type NextRedirectServerSideProps =
   | {
       redirect: {
         destination: string

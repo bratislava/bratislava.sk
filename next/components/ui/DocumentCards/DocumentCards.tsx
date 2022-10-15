@@ -1,5 +1,5 @@
+import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import { useEffect, useState } from 'react'
-import { ParsedOfficialBoardDocument } from 'services/ginis'
 
 import Divider from '../Divider/Divider'
 import { DocumentCard } from '../DocumentCard/DocumentCard'
