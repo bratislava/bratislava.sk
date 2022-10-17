@@ -29,6 +29,14 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     }
   )
 
+  const dragAndDropClassNames = cx(
+    "flex flex-col justify-center h-40 w-480 p-6 bg-white border-2 border-dashed border-gray-300 rounded-lg text-center",
+    {
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700 cursor-pointer ": !disabled,
+      "opacity-50 cursor-not-allowed": disabled
+    }
+  )
+
   // EVENT HANDLERS
   const handleUpload = () => {
     if (disabled) return
@@ -65,7 +73,11 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
 
   const getDragAndDropContent = () => {
     return (
-      <div/>
+      <div className={dragAndDropClassNames}
+           onClick={handleUpload}>
+        <div><UploadIcon className="m-auto h-6 w-6 self-center text-default"/></div>
+        <p>Drag & drop upload</p>
+      </div>
     )
   }
 

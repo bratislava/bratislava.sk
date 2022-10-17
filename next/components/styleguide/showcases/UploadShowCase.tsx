@@ -21,6 +21,12 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
         <Upload type="button" supportedFormats={['.jpg', '.png', '.pdf']}/>
         <Upload type="button" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']} disabled/>
       </Stack>
+      <Stack>
+        <Upload type="dragAndDrop"/>
+      </Stack>
+      <Stack>
+        <Upload type="dragAndDrop" disabled/>
+      </Stack>
     </Wrapper>
   )
 }
