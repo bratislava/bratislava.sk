@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
   /*
     These variables are used in different pages and component to override
@@ -39,6 +41,7 @@
   --dark-gray-color: #333333bf;
   --universal-gray-100: #EBEBEB;
   --universal-gray-200: #c4c4c4;
+  --universal-gray-400: #ADADAD;
   --universal-gray-500: #9f9f9f;
   --universal-gray-600: #5C5C5C;
   --universal-red-700: #333333;
@@ -57,8 +60,6 @@
   --error-color: #dc2626;
   --purple-color: #704b9d; /* TODO var */
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
   -webkit-font-smoothing: antialiased;
