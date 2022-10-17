@@ -95,6 +95,7 @@ module.exports = {
           calendar: {
             hover: '#f1f1f1',
             header: '#F5F5F5',
+            placeholder: '#858585',
           },
           brand: {
             default: '#E46054',
