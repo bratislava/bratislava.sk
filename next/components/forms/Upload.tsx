@@ -12,7 +12,6 @@ interface UploadProps {
 
 const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
   // STATES
-  const [filePath, setFilePath] = useState<string>('')
   const [files, setFiles] = useState<File[]>([])
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
 
@@ -54,10 +53,13 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
 
     const uploadInput = document.createElement('input')
     uploadInput.type = 'file'
+    uploadInput.multiple = true
     uploadInput.accept = supportedFormats?.toString() || ""
 
     uploadInput.addEventListener('change', () => {
-      setFilePath(uploadInput.value)
+      if (!uploadInput.files) return
+      const newFiles = Array.from(uploadInput.files)
+      setFiles([...files, ...newFiles])
     })
 
     uploadInput.click()
@@ -77,9 +79,9 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     if (disabled) return
 
     const droppedItems: DataTransferItem[] = [...event.dataTransfer.items]
-    const files = droppedItems.reduce(reduceItemsToFiles, [])
+    const newFiles = droppedItems.reduce(reduceItemsToFiles, files)
 
-    setFiles(files)
+    setFiles(newFiles)
     setIsDraggedOver(false)
   }
 
