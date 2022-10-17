@@ -10,6 +10,7 @@ interface SelectFieldShowCaseProps {
 
 const SelectFieldShowCase = () => {
   const selectOptions: MultiValue<unknown> = [
+    { value: 'example', label: 'skola'},
     { value: 'stuFei', label: 'STU FEI'},
     { value: 'stuFiit', label: 'STU FIIT'},
     { value: 'ukFmfi', label: 'UK FMFI'},
