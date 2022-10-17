@@ -6,5 +6,6 @@ export interface BlogPost {
   url?: string | null
 }
 
-export type Header = HomepageQuery['homepage']['data']['attributes']['header']
 export type Homepage = HomepageQuery['homepage']
+// @ts-ignore
+export type Header = Homepage['data']['attributes']['header'] | null | undefined
