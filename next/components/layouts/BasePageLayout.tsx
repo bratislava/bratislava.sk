@@ -1,9 +1,10 @@
-import { AdvancedSearch, FooterProps, MenuMainItem, StickyNavigationMenu } from '@bratislava/ui-bratislava'
+import { AdvancedSearch, FooterProps, StickyNavigationMenu } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { HTMLAttributes, useState } from 'react'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 
 interface BasePageLayoutProps {
   footer?: FooterProps

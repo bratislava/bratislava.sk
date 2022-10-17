@@ -4,7 +4,7 @@ import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import { InBaProps } from '@bratislava/ui-bratislava/InBaCard/types'
 import { DataProps } from '@utils/homepage-mockdata'
 import { parseFooter } from '@utils/page'
-import React, { FC, Ref } from 'react'
+import React, { FC } from 'react'
 
 import Footer from '../molecules/Footer'
 import { HomepageContent } from '../pages/homepage/HomepageContent'
@@ -24,7 +24,6 @@ interface HomepagePageLayoutProps {
   latestBlogposts?: LatestBlogsFragment | null
   inBaProps: InBaProps
   data: DataProps
-  homepageRef: Ref<HTMLDivElement>
 }
 
 const HomepagePage: FC<HomepagePageLayoutProps> = ({

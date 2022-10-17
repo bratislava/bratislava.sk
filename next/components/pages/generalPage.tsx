@@ -11,7 +11,6 @@ import {
   Button,
   FeaturedBlogs,
   FooterProps,
-  MenuMainItem,
   PageHeader,
   SectionContainer,
   SubpageList,
@@ -25,6 +24,7 @@ import * as React from 'react'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment

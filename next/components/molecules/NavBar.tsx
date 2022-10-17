@@ -1,4 +1,4 @@
-import { BANavBar, MenuMainItem } from '@bratislava/ui-bratislava'
+import { BANavBar } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -6,6 +6,7 @@ import * as React from 'react'
 import { ReactNode } from 'react'
 
 import { usePageWrapperContext } from '../layouts/PageWrapper'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 
 interface Props {
   menuItems?: MenuMainItem[]

@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -13,7 +12,6 @@ import {
 } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
-// import { buildMockData } from '@utils/homepage-mockdata'
 import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

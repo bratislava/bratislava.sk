@@ -1,4 +1,5 @@
-import { MenuMainItem, Panel, Waves } from '@bratislava/ui-bratislava'
+import { Panel, Waves } from '@bratislava/ui-bratislava'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import cx from 'classnames'
 import React, { FC } from 'react'
 

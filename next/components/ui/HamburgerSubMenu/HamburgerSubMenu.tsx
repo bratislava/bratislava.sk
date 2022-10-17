@@ -9,7 +9,7 @@ import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
 import { Icon } from '../../atoms/icon/Icon'
-import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
+import { MenuMainItem } from '../HomepageMenu/types'
 import { Link } from '../Link/Link'
 
 interface IProps {

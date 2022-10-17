@@ -6,13 +6,14 @@ import { DocumentCard } from '../DocumentCard/DocumentCard'
 import Pagination from '../Pagination/Pagination'
 
 export interface DocumentCardsProps {
-  documents: ParsedOfficialBoardDocument[]
+  documents: (ParsedOfficialBoardDocument | null)[]
   dividerStyle?: string
   title: string
   viewButtonText: string
   downloadButtonText: string
-  query: string | string[]
+  query?: string | string[]
 }
+
 export const DocumentCards = ({
   documents,
   dividerStyle,
@@ -44,14 +45,18 @@ export const DocumentCards = ({
           {documents
             .slice((currentPage - 1) * itemsPerPageDesktop, currentPage * itemsPerPageDesktop)
             .map((doc, index) => (
-              <div key={index}>
-                <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
-                {dividerBugSolved &&
-                  index == dividerBreakpointDesktop - 1 &&
-                  currentItemsCountDesktop > dividerBreakpointDesktop && (
-                    <Divider className="py-24" dividerStyle={dividerStyle} />
-                  )}
-              </div>
+              <>
+                {doc && (
+                  <div key={index}>
+                    <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
+                    {dividerBugSolved &&
+                      index === dividerBreakpointDesktop - 1 &&
+                      currentItemsCountDesktop > dividerBreakpointDesktop && (
+                        <Divider className="py-24" dividerStyle={dividerStyle} />
+                      )}
+                  </div>
+                )}
+              </>
             ))}
         </div>
         <Pagination
@@ -67,14 +72,18 @@ export const DocumentCards = ({
           {documents
             .slice((currentPage - 1) * itemsPerPageMobile, currentPage * itemsPerPageMobile)
             .map((doc, index) => (
-              <div key={index}>
-                <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
-                {dividerBugSolved &&
-                  index === dividerBreakpointMobile - 1 &&
-                  currentItemsCountMobile > dividerBreakpointMobile && (
-                    <Divider className="py-10" dividerStyle={dividerStyle} />
-                  )}
-              </div>
+              <>
+                {doc && (
+                  <div key={index}>
+                    <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
+                    {dividerBugSolved &&
+                      index === dividerBreakpointMobile - 1 &&
+                      currentItemsCountMobile > dividerBreakpointMobile && (
+                        <Divider className="py-10" dividerStyle={dividerStyle} />
+                      )}
+                  </div>
+                )}
+              </>
             ))}
         </div>
         <Pagination

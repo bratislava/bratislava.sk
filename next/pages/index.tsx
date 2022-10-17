@@ -6,7 +6,6 @@ import { buildMockData } from '@utils/homepage-mockdata'
 import { parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { useRef } from 'backend/react'
 
 import HomepagePage from '../components/layouts/HomepagePage'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -138,29 +137,24 @@ const Homepage = ({
   // Commented below line for reference.
   // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
   const { pageTitle, posts } = data
-
   const menuItems = parseMainMenu(mainMenu)
-  const homepageRef = useRef(null)
 
   return (
-    <PageWrapper locale={page.locale} localizations={page.localizations} slug="" ref={homepageRef}>
-      <div ref={homepageRef}>
-        <HomepagePage
-          homepageRef={homepageRef}
-          menuItems={menuItems}
-          bookmarks={cards}
-          homepagePosts={homepagePosts}
-          homepage={homepage}
-          data={data}
-          inBaProps={inba}
-          posts={posts}
-          rozkoPosts={rozkoPosts}
-          pageTitle={pageTitle}
-          latestBlogposts={latestBlogposts}
-          header={header}
-          footer={footer}
-        />
-      </div>
+    <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
+      <HomepagePage
+        menuItems={menuItems}
+        bookmarks={cards}
+        homepagePosts={homepagePosts}
+        homepage={homepage}
+        data={data}
+        inBaProps={inba}
+        posts={posts}
+        rozkoPosts={rozkoPosts}
+        pageTitle={pageTitle}
+        latestBlogposts={latestBlogposts}
+        header={header}
+        footer={footer}
+      />
     </PageWrapper>
   )
 }

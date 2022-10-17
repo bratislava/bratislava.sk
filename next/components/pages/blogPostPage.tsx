@@ -5,7 +5,7 @@
 /* eslint-disable react/no-danger */
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { FooterProps, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'
@@ -14,6 +14,7 @@ import { ReactNode, useEffect, useState } from 'react'
 
 import BasePageLayout from '../layouts/BasePageLayout'
 import Sections from '../molecules/Sections'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 
 export interface GeneralPageProps {
   post: BlogPostFragment

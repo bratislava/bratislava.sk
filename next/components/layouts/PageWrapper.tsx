@@ -1,9 +1,8 @@
 import { localePath } from '@utils/page'
 import cx from 'classnames'
-import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
-import { createContext, MutableRefObject, ReactNode, useContext, useMemo } from 'react'
+import { createContext, ReactNode, useContext, useMemo } from 'react'
 
 interface PageLocalization {
   locale: string
@@ -13,12 +12,10 @@ interface PageLocalization {
 interface IPageWrapperContext {
   locale?: string
   localizations: PageLocalization[]
-  homepageRef: MutableRefObject<HTMLDivElement | null>
 }
 
 const PageWrapperContext = createContext<IPageWrapperContext>({
   localizations: [],
-  homepageRef: {} as MutableRefObject<HTMLDivElement>,
 })
 
 interface IProps {
@@ -27,10 +24,9 @@ interface IProps {
   locale?: string
   localizations?: PageLocalization[]
   slug?: string
-  ref: MutableRefObject<HTMLDivElement | null>
 }
 
-const PageWrapper = ({ children, locale, localizations, slug, className, ref }: IProps) => {
+const PageWrapper = ({ children, locale, localizations, slug, className }: IProps) => {
   const [_, { language }] = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
@@ -49,9 +45,7 @@ const PageWrapper = ({ children, locale, localizations, slug, className, ref }: 
   }, [locale, localizations, slug])
 
   return (
-    <PageWrapperContext.Provider
-      value={{ locale: locale ?? language, localizations: pageLocalizations, homepageRef: ref }}
-    >
+    <PageWrapperContext.Provider value={{ locale: locale ?? language, localizations: pageLocalizations }}>
       <div className={cx('bg-background font-inter', className)}>{children}</div>
     </PageWrapperContext.Provider>
   )

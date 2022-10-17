@@ -1,13 +1,4 @@
-// @ts-strict-ignore
-import {
-  BasicSearch,
-  DocumentCards,
-  // Footer,
-  // FooterProps,
-  NoResultsFound,
-  PageHeader,
-  SectionContainer,
-} from '@bratislava/ui-bratislava'
+import { BasicSearch, DocumentCards, NoResultsFound, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
@@ -44,7 +35,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     locale,
   })
 
-  const homepagePosts = homepage?.data?.attributes.posts?.map((post) => ({
+  const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
     title: post?.title,
     url: post?.slug,
     imageSrc: post?.image?.data?.attributes?.url,
@@ -73,7 +64,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     variant: card?.variant,
   }))
 
-  let documents: ParsedOfficialBoardDocument[] = []
+  let documents: (ParsedOfficialBoardDocument | null)[] = []
   if (shouldMockGinis()) {
     documents = await getALotOfMockedDocs()
   } else {

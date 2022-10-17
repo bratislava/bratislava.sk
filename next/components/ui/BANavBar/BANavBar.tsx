@@ -29,13 +29,15 @@ import { useOutsideClick } from 'rooks'
 import { Brand } from '../Brand/Brand'
 import Button from '../Button/Button'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
-import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
+import { MenuMainItem } from '../HomepageMenu/types'
 import { Link } from '../Link/Link'
 
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
+
   onSearchClick?(isSearchOpen: boolean): void
+
   pageColor?: string | null
   isSearchOpen?: boolean
 }

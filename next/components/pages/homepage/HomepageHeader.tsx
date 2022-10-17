@@ -1,7 +1,8 @@
-import { BookmarkProps, Bookmarks, MenuMainItem, SectionContainer, Waves } from '@bratislava/ui-bratislava'
+import { BookmarkProps, Bookmarks, SectionContainer, Waves } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { STICKY_MENU_VISIBILITY } from '@bratislava/ui-bratislava/HomepageMenu/HomePageService'
 import StickyNavigationMenu from '@bratislava/ui-bratislava/HomepageMenu/StickyNavigation/StickyNavigationMenu'
+import { MenuMainItem } from '@bratislava/ui-bratislava/HomepageMenu/types'
 import { useHomepageHeader } from '@bratislava/ui-bratislava/HomepageMenu/useHomepageHeader'
 import cx from 'classnames'
 import React, { FC } from 'react'
@@ -19,6 +20,7 @@ interface Props {
   bookmarks?: BookmarkProps[]
   pageTitle?: string
   isSearchOpen?: boolean
+
   onSearchOpen?(isSearchOpen: boolean): void
 }
 
