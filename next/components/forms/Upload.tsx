@@ -32,10 +32,17 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
   )
 
   const dragAndDropClassNames = cx(
-    "flex flex-col justify-evenly h-full w-full p-6 bg-white border-2 border-dashed border-gray-300 rounded-lg text-center",
+    "flex flex-col justify-evenly h-full w-full p-6 bg-white rounded-lg text-center",
+    {
+      "opacity-50 bg-gray-200": disabled,
+    }
+  )
+
+  const dragAndDropOverlayClassNames = cx(
+    "absolute inset-0 z-50 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
     {
       "hover:border-gray-400 drag:border-gray-400 focus:border-gray-700 active:border-gray-700 cursor-pointer ": !disabled,
-      "opacity-50 cursor-not-allowed bg-gray-200": disabled,
+      "cursor-not-allowed": disabled,
       "border-gray-400": !disabled && isDraggedOver
     }
   )
@@ -87,7 +94,7 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
   const getDragAndDropContent = () => {
     return (
       <div className="relative h-40 w-480">
-        <div className="absolute inset-0 z-50 rounded-lg bg-transparent"
+        <div className={dragAndDropOverlayClassNames}
              onClick={handleUpload}
              onDragEnter={() => setIsDraggedOver(true)}
              onDragOver={event => event.preventDefault()}
