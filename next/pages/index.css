@@ -80,7 +80,7 @@
     @apply shadow-lg font-medium text-white text-lg;
   }
   .homepage-markdown ul {
-    @apply ml-6 list-outside list-none;
+    @apply list-outside list-none;
   }
   .homepage-markdown ul li::before {
     @apply absolute left-1 top-2 w-4 h-4 bg-primary rounded-full;
@@ -276,10 +276,6 @@
 /* width */
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  ::-webkit-scrollbar {
-    @apply h-1.5 w-0;
-  }
-
   /* Track */
   ::-webkit-scrollbar-track {
     @apply bg-transparent;

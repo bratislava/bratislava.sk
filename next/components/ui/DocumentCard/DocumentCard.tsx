@@ -2,7 +2,7 @@
 import ArrowRight from '@assets/images/arrow-right.svg'
 import ChevronRight from '@assets/images/chevron-right-small.svg'
 import { useState } from 'react'
-import { getDocumentDetailURL, getDocumentFileURL } from 'services/ginis'
+import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../Button/Button'

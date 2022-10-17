@@ -1,7 +1,7 @@
 import { withSentry } from '@sentry/nextjs'
-import { ResponseGinisDocumentsList } from 'dtos/ginis/api-data.dto'
+import { ResponseGinisDocumentsList } from 'backend/dtos/ginis/api-data.dto'
+import { getUDEDocumentsList } from 'backend/services/ginis'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getUDEDocumentsList } from 'services/ginis'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { search } = req.query

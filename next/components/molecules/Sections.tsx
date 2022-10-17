@@ -24,12 +24,12 @@ import {
   Videos,
   Waves,
 } from '@bratislava/ui-bratislava'
+import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '@utils/page'
+import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '../../utils/page'
-import { isPresent } from '../../utils/utils'
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
 import { DocumentList } from './sections/documentList'
 import { ArticlesList } from './sections/homepage/ArticlesList'
@@ -144,11 +144,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
 
                   return (
                     <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
-                      <NarrowText
-                        align={item.align ?? undefined}
-                        width={item.width ?? undefined}
-                        content={item.content ?? undefined}
-                      />
+                      <NarrowText contentStyle="my-8" align={item.align} width={item.width} content={item.content} />
                       {link?.url && link.title && <PageLinkButton pageLink={link} />}
                     </div>
                   )
@@ -243,7 +239,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
     return (
       <Waves
         className={cx({
-          'mt-14 md:mt-18': section.position === 'top',
+          'mt-10 md:mt-18': section.position === 'top',
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}

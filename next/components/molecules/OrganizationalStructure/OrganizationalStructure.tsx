@@ -1,5 +1,5 @@
 import { Divider } from '@bratislava/ui-bratislava/Divider/Divider'
-import { structureFetcher } from '@utils/organisationalStructure'
+import { structureFetcher } from 'backend/utils/organisationalStructure'
 import { useTranslation } from 'next-i18next'
 import useSWR from 'swr'
 

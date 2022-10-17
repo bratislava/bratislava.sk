@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { withSentry } from '@sentry/nextjs'
 import axios, { AxiosRequestConfig } from 'axios'
-import { ResponseGinisBodyDocumentDetail } from 'dtos/ginis/api-data.dto'
+import { ResponseGinisBodyDocumentDetail } from 'backend/dtos/ginis/api-data.dto'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { parseString } from 'xml2js'
 

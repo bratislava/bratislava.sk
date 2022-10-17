@@ -1,12 +1,12 @@
 // @ts-strict-ignore
 import { withSentry } from '@sentry/nextjs'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import {
   getParsedUDEDocumentsList,
   mockedParsedDocuments,
   ParsedOfficialBoardDocument,
   shouldMockGinis,
-} from 'services/ginis'
+} from 'backend/services/ginis'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 // returns the 3 newest documents - used for front page
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

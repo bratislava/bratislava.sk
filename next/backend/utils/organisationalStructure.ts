@@ -1,5 +1,5 @@
 // @ts-strict-ignore
-import { GetGroupMembersRecursiveResult } from 'services/ms-graph'
+import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
 
 // not used, kept in case needed
 export const usersFromDepartmentFetcher = (department) =>

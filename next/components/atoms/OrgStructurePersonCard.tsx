@@ -1,6 +1,6 @@
 // @ts-strict-ignore
 import { AccordionCard } from '@bratislava/ui-bratislava/AccordionCard/AccordionCard'
-import { userDetailsFetcher } from '@utils/organisationalStructure'
+import { userDetailsFetcher } from 'backend/utils/organisationalStructure'
 import useSWR from 'swr'
 
 // TODO not used right now, but might be useful - keeping as an example

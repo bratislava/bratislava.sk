@@ -1,11 +1,10 @@
 // @ts-strict-ignore
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable lodash/collection-ordering */
+import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
 import { createContext, useContext, useMemo } from 'react'
-
-import { localePath } from '../../utils/page'
 
 interface PageLocalization {
   locale: string
