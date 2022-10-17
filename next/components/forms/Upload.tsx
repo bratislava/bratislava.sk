@@ -13,6 +13,7 @@ interface UploadProps {
 const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
   // STATES
   const [filePath, setFilePath] = useState<string>('')
+  const [files, setFiles] = useState<File[]>([])
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
 
   // STYLES
@@ -63,14 +64,25 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
   }
 
 
+  const reduceItemsToFiles = (filtered: File[], item: DataTransferItem): File[] => {
+    if (item.kind !== 'file') return filtered
+    const file = item.getAsFile()
+    if (!file) return filtered
+    filtered.push(file)
+    return filtered
+  }
+
   const handleDrop = (event: React.DragEvent) => {
-    console.log("DROP")
     event.preventDefault()
     if (disabled) return
-    const files = event.dataTransfer.items
-    console.log(files)
+
+    const droppedItems: DataTransferItem[] = [...event.dataTransfer.items]
+    const files = droppedItems.reduce(reduceItemsToFiles, [])
+
+    setFiles(files)
     setIsDraggedOver(false)
   }
+
 
   // CONTENTS
   const getButtonContent = () => {
