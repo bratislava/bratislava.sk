@@ -14,7 +14,7 @@ import { HomepageSearch } from './HomepageSearch'
 import { Header, Homepage } from './types'
 
 interface Props {
-  header?: Header
+  header: Header
   homepage?: Homepage
   menuItems?: MenuMainItem[]
   bookmarks?: BookmarkProps[]

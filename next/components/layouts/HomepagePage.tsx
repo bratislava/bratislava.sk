@@ -14,7 +14,7 @@ import { BlogPost, Header, Homepage } from '../pages/homepage/types'
 interface HomepagePageLayoutProps {
   menuItems?: MenuMainItem[]
   footer?: FooterFragment | null
-  header?: Header
+  header: Header
   homepage?: Homepage
   bookmarks?: BookmarkProps[]
   pageTitle?: string

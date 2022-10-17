@@ -16,8 +16,8 @@ export interface NewsCardProps {
     data?: {
       attributes?: {
         url?: string | null
-      }
-    }
+      } | null
+    } | null
   } | null
   tag?: {
     data?: {
@@ -27,12 +27,12 @@ export interface NewsCardProps {
           data?: {
             attributes?: {
               color?: string | null
-            }
-          }
-        }
-      }
-    }
-  }
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
   title?: string | null
   excerpt?: string | null
   date_added?: string | null

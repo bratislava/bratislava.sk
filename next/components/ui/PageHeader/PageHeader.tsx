@@ -13,7 +13,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   smallScreenBreakPoint?: number
 }
 
-const defaultWaveProps = (color: string): WavesProps => ({
+const defaultWaveProps = (color?: string): WavesProps => ({
   wavePosition: 'top',
   waveColor: 'var(--background-color)',
   backgroundColor: 'transparent',
