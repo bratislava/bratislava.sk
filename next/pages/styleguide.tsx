@@ -6,6 +6,7 @@ import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCa
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
@@ -27,6 +28,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <DatePickerShowCase />
         <InputFieldShowCase />
         <SelectFieldShowCase/>
+        <AlertShowCase/>
       </StyleGuideWrapper>
     </PageWrapper>
   )
