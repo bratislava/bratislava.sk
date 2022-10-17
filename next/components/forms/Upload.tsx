@@ -1,4 +1,5 @@
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
+import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
 import cx from 'classnames'
 import { FC, useState } from 'react'
 
@@ -18,7 +19,7 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     "flex-col align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
     {
       "hover:border-gray-400 focus:border-gray-700 active:border-gray-700 cursor-pointer ": !disabled,
-      "opacity-50 cursor-not-allowed": disabled
+      "opacity-50 cursor-not-allowed bg-gray-200": disabled
     }
   )
 
@@ -30,10 +31,10 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
   )
 
   const dragAndDropClassNames = cx(
-    "flex flex-col justify-center h-40 w-480 p-6 bg-white border-2 border-dashed border-gray-300 rounded-lg text-center",
+    "flex flex-col justify-evenly h-40 w-480 p-6 bg-white border-2 border-dashed border-gray-300 rounded-lg text-center",
     {
       "hover:border-gray-400 focus:border-gray-700 active:border-gray-700 cursor-pointer ": !disabled,
-      "opacity-50 cursor-not-allowed": disabled
+      "opacity-50 cursor-not-allowed bg-gray-200": disabled
     }
   )
 
@@ -75,8 +76,23 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     return (
       <div className={dragAndDropClassNames}
            onClick={handleUpload}>
-        <div><UploadIcon className="m-auto h-6 w-6 self-center text-default"/></div>
-        <p>Drag & drop upload</p>
+        <div className="flex flex-row justify-center">
+          <div className="flex h-12 w-12 flex-row justify-center rounded-full bg-gray-200">
+            <UploadIcon className="m-auto text-default"/>
+          </div>
+        </div>
+        <h5 className="text-default font-semibold">Drag & drop upload</h5>
+        <div className="flex flex-row justify-center gap-1 text-xs">
+          <p>{sizeLimit} {sizeLimit && "MB"}</p>
+          {
+            sizeLimit && supportedFormats && supportedFormats.length > 0 && (
+              <div className="grid grid-cols-1 content-center">
+                <BallDelimiterIcon/>
+              </div>
+            )
+          }
+          <p>{supportedFormats?.join(' ')}</p>
+        </div>
       </div>
     )
   }
