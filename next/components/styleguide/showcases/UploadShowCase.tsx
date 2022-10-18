@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import Upload from '../../forms/Upload'
+import Upload from '../../forms/Upload/Upload'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
