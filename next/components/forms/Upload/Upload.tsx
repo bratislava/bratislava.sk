@@ -14,7 +14,6 @@ interface UploadProps {
 const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
   // STATES
   const [componentFiles, setComponentFiles] = useState<File[]>([])
-  console.log("FILES:", componentFiles)
 
   // EVENT HANDLERS
   const handleOnClickUpload = () => {
@@ -38,6 +37,20 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     setComponentFiles([...componentFiles, ...newFiles])
   }
 
+  const handleOnRemoveFile = (id: number) => {
+    const updatedFiles = [...componentFiles]
+    updatedFiles.splice(id,1)
+    setComponentFiles(updatedFiles)
+  }
+
+  // HELP FUNCTIONS
+  const transformFileToComponent = (file: File, key: number) => {
+    return (
+      <UploadedFile key={key}
+                    fileName={file.name}
+                    onRemove={() => handleOnRemoveFile(key)}/>
+    )
+  }
 
   // RENDER
   return (
@@ -58,7 +71,7 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
       }
       <div className="mt-2">
         { /* FILES AREA */
-          componentFiles.map(file => <UploadedFile fileName={file.name}/>)
+          componentFiles.map(transformFileToComponent)
         }
       </div>
     </section>
