@@ -7,11 +7,12 @@ interface UploadDropAreaProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
+  isFileBroken?: boolean
   onClick?: () => void
   onDrop?: (newFiles: File[]) => void
 }
 
-const UploadDropArea = ({ disabled, sizeLimit, supportedFormats, onClick, onDrop }: UploadDropAreaProps) => {
+const UploadDropArea = ({ disabled, sizeLimit, supportedFormats, isFileBroken, onClick, onDrop }: UploadDropAreaProps) => {
   // STATE
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
 
@@ -26,9 +27,12 @@ const UploadDropArea = ({ disabled, sizeLimit, supportedFormats, onClick, onDrop
   const dragAndDropOverlayClassNames = cx(
     "absolute inset-0 z-50 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
     {
-      "hover:border-gray-400 drag:border-gray-400 focus:border-gray-700 active:border-gray-700 cursor-pointer ": !disabled,
       "cursor-not-allowed": disabled,
-      "border-gray-400": !disabled && isDraggedOver
+      "cursor-pointer": !disabled,
+      "border-red-500 hover:border-red-300": !disabled && isFileBroken && !isDraggedOver,
+      "border-red-300": !disabled && isFileBroken && isDraggedOver,
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !isFileBroken && !isDraggedOver,
+      "border-gray-400": !disabled && !isFileBroken && isDraggedOver
     }
   )
 

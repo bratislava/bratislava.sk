@@ -28,20 +28,20 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
         <Upload type="button" disabled/>
       </Stack>
       <Stack direction="column">
-        <Upload type="button" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']}/>
-        <Upload type="button" sizeLimit={40}/>
+        <Upload type="button" sizeLimit={5} supportedFormats={['.jpg', '.png', '.pdf']}/>
+        <Upload type="button" sizeLimit={5}/>
         <Upload type="button" supportedFormats={['.jpg', '.png', '.pdf']}/>
-        <Upload type="button" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']} disabled/>
+        <Upload type="button" sizeLimit={5} supportedFormats={['.jpg', '.png', '.pdf']} disabled/>
       </Stack>
       <Stack direction="column">
         <Upload type="dragAndDrop"/>
         <Upload type="dragAndDrop" disabled/>
       </Stack>
       <Stack direction="column">
-        <Upload type="dragAndDrop" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']}/>
-        <Upload type="dragAndDrop" sizeLimit={40}/>
+        <Upload type="dragAndDrop" sizeLimit={5} supportedFormats={['.jpg', '.png', '.pdf']}/>
+        <Upload type="dragAndDrop" sizeLimit={5}/>
         <Upload type="dragAndDrop" supportedFormats={['.jpg', '.png', '.pdf']}/>
-        <Upload type="dragAndDrop" sizeLimit={40} supportedFormats={['.jpg', '.png', '.pdf']} disabled/>
+        <Upload type="dragAndDrop" sizeLimit={5} supportedFormats={['.jpg', '.png', '.pdf']} disabled/>
       </Stack>
     </Wrapper>
   )

@@ -14,6 +14,35 @@ interface UploadProps {
 const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
   // STATES
   const [componentFiles, setComponentFiles] = useState<File[]>([])
+  const [isFileBroken, setIsFileBroken] = useState<boolean>(false)
+
+  // HELPER FUNCTIONS
+  const isFileInSizeLimit = (file: File) => {
+    const mbSize = file.size / (1024 * 1024)
+    return !(sizeLimit && mbSize > sizeLimit);
+  }
+
+  const isFileInSupportedFormats = (file: File) => {
+    if (!supportedFormats) return true
+
+    const lastIndex = file.name.lastIndexOf(".")
+    if (!lastIndex) return false
+
+    const fileExtension = file.name.slice(lastIndex)
+    return supportedFormats.includes(fileExtension);
+  }
+
+  const addNewFiles = (newFiles: File[]) => {
+    for (const file of newFiles) {
+      if (!isFileInSizeLimit(file) || !isFileInSupportedFormats(file)) {
+        setIsFileBroken(true)
+        return
+      }
+    }
+
+    setComponentFiles([...componentFiles, ...newFiles])
+    setIsFileBroken(false)
+  }
 
   // EVENT HANDLERS
   const handleOnClickUpload = () => {
@@ -27,14 +56,14 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     uploadInput.addEventListener('change', () => {
       if (!uploadInput.files) return
       const newFiles = Array.from(uploadInput.files)
-      setComponentFiles([...componentFiles, ...newFiles])
+      addNewFiles(newFiles)
     })
 
     uploadInput.click()
   }
 
   const handleOnDrop = (newFiles: File[]) => {
-    setComponentFiles([...componentFiles, ...newFiles])
+    addNewFiles(newFiles)
   }
 
   const handleOnRemoveFile = (id: number) => {
@@ -43,14 +72,6 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     setComponentFiles(updatedFiles)
   }
 
-  // HELP FUNCTIONS
-  const transformFileToComponent = (file: File, key: number) => {
-    return (
-      <UploadedFile key={key}
-                    fileName={file.name}
-                    onRemove={() => handleOnRemoveFile(key)}/>
-    )
-  }
 
   // RENDER
   return (
@@ -60,18 +81,22 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
           ? <UploadButton sizeLimit={sizeLimit}
                           supportedFormats={supportedFormats}
                           disabled={disabled}
+                          isFileBroken={isFileBroken}
                           onClick={handleOnClickUpload} />
           : type === 'dragAndDrop'
             ? <UploadDropArea sizeLimit={sizeLimit}
                               supportedFormats={supportedFormats}
                               disabled={disabled}
+                              isFileBroken={isFileBroken}
                               onClick={handleOnClickUpload}
                               onDrop={handleOnDrop}/>
             : null
       }
       <div className="mt-2">
         { /* FILES AREA */
-          componentFiles.map(transformFileToComponent)
+          componentFiles.map((file: File, key: number) => {
+            return <UploadedFile key={key} fileName={file.name} onRemove={() => handleOnRemoveFile(key)}/>
+          })
         }
       </div>
     </section>

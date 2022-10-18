@@ -6,15 +6,18 @@ interface UploadButtonProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
+  isFileBroken?: boolean
   onClick?: () => void
 }
 
-const UploadButton: FC<UploadButtonProps> = ({ disabled, sizeLimit, supportedFormats, onClick }: UploadButtonProps) => {
+const UploadButton: FC<UploadButtonProps> = ({ disabled, sizeLimit, supportedFormats, isFileBroken, onClick }: UploadButtonProps) => {
   // STYLES
   const buttonClassNames = cx(
     "flex-col align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
     {
-      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700 cursor-pointer ": !disabled,
+      "cursor-pointer": !disabled,
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !isFileBroken,
+      "border-red-500 hover:border-red-300": !disabled && isFileBroken,
       "opacity-50 cursor-not-allowed bg-gray-200": disabled
     }
   )
