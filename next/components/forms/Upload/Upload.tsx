@@ -1,9 +1,8 @@
-import UploadIcon from '@assets/images/forms/upload-icon.svg'
-import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
-import cx from 'classnames'
-import React, { FC, SyntheticEvent, useMemo, useState } from 'react'
+import React, { FC, useState } from 'react'
+
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
+import UploadedFile from './UploadedFile'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
@@ -14,8 +13,8 @@ interface UploadProps {
 
 const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
   // STATES
-  const [files, setFiles] = useState<File[]>([])
-  console.log("FILES:", files)
+  const [componentFiles, setComponentFiles] = useState<File[]>([])
+  console.log("FILES:", componentFiles)
 
   // EVENT HANDLERS
   const handleOnClickUpload = () => {
@@ -29,21 +28,21 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
     uploadInput.addEventListener('change', () => {
       if (!uploadInput.files) return
       const newFiles = Array.from(uploadInput.files)
-      setFiles([...files, ...newFiles])
+      setComponentFiles([...componentFiles, ...newFiles])
     })
 
     uploadInput.click()
   }
 
   const handleOnDrop = (newFiles: File[]) => {
-    setFiles([...files, ...newFiles])
+    setComponentFiles([...componentFiles, ...newFiles])
   }
 
 
   // RENDER
   return (
     <section className="select-none" style={{transition: "0.2 all linear"}}>
-      { /* CONTENT */
+      { /* UPLOAD AREA */
         type === 'button'
           ? <UploadButton sizeLimit={sizeLimit}
                           supportedFormats={supportedFormats}
@@ -55,8 +54,13 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
                               disabled={disabled}
                               onClick={handleOnClickUpload}
                               onDrop={handleOnDrop}/>
-            : <div/>
+            : null
       }
+      <div className="mt-2">
+        { /* FILES AREA */
+          componentFiles.map(file => <UploadedFile fileName={file.name}/>)
+        }
+      </div>
     </section>
   )
 }
