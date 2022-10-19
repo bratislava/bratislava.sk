@@ -1,8 +1,7 @@
 import { withSentry } from '@sentry/nextjs'
+import { fetchBlogPosts } from '@utils/blogpost'
+import { arrayify } from '@utils/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
-
-import { fetchBlogPosts } from '../../utils/blogpost'
-import { arrayify } from '../../utils/utils'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const LIMIT = 6

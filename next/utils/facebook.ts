@@ -17,6 +17,10 @@ export interface FetchFacebookPostsResult {
   nextPage?: string
 }
 
+const hasFullPicture = (post: FacebookPost): post is { [K in keyof FacebookPost]-?: FacebookPost[K] } => {
+  return post.full_picture !== undefined
+}
+
 export const fetchFacebookPosts = async (opts?: FetchFacebookPostsOptions): Promise<FetchFacebookPostsResult> => {
   const page = process.env.FB_PAGE
   const access_token = process.env.FB_ACCESS_TOKEN
@@ -54,8 +58,4 @@ export const fetchFacebookPosts = async (opts?: FetchFacebookPostsOptions): Prom
     posts: resultPosts.filter(hasFullPicture),
     nextPage: resultData.paging.cursors.after,
   }
-}
-
-export const hasFullPicture = (post: FacebookPost): post is { [K in keyof FacebookPost]-?: FacebookPost[K] } => {
-  return post.full_picture !== undefined
 }

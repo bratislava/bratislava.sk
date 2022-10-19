@@ -10,6 +10,7 @@ import React from 'react'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
+import { SSRProvider } from 'react-aria'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -42,7 +43,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           ),
         }}
       >
-        <Component {...pageProps} />
+        <SSRProvider>
+          <Component {...pageProps} />
+        </SSRProvider>
       </UIContextProvider>
     </>
   )

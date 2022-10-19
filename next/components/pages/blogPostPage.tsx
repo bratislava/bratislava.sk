@@ -7,12 +7,12 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { getNumericLocalDate } from '@utils/local-date'
+import { pageStyle } from '@utils/page'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import { getNumericLocalDate } from '../../utils/local-date'
-import { pageStyle } from '../../utils/page'
 import BasePageLayout from '../layouts/BasePageLayout'
 import Sections from '../molecules/Sections'
 

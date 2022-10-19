@@ -1,7 +1,6 @@
 import { withSentry } from '@sentry/nextjs'
+import { fetchGooutEvents } from '@utils/goout'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-import { fetchGooutEvents } from '../../utils/goout'
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const events = await fetchGooutEvents()

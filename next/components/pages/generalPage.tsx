@@ -18,17 +18,16 @@ import {
   SectionContainer,
   SubpageList,
 } from '@bratislava/ui-bratislava'
+import { pageStyle, parsePageLink } from '@utils/page'
+import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import { pageStyle, parsePageLink } from '../../utils/page'
-import { isPresent } from '../../utils/utils'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
-// import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment

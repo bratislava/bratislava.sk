@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable promise/always-return */
 import { articleLimits } from '@utils/constants'
-import { searchArticles, searchPages } from '@utils/meili'
-import { userSearchFetcher } from '@utils/organisationalStructure'
+import { searchArticles, searchPages } from 'backend/utils/meili'
+import { userSearchFetcher } from 'backend/utils/organisationalStructure'
 import { OrganizationalStructureAccordionCards } from 'components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCards'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'

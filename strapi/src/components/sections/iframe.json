@@ -21,18 +21,25 @@
     },
     "iframeWidth": {
       "type": "enumeration",
-      "enum": ["full", "container"],
+      "enum": [
+        "full",
+        "container"
+      ],
       "default": "container",
       "required": true
     },
     "iframeHeight": {
       "type": "string",
       "required": true,
-      "default": "400"
+      "default": "600px"
     },
     "fullHeight": {
       "type": "boolean",
       "required": true,
+      "default": false
+    },
+    "allowGeolocation": {
+      "type": "boolean",
       "default": false
     }
   }

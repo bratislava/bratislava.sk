@@ -1,10 +1,9 @@
 import LeftIcon from '@assets/images/chevron-left.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { PageCategoryEntityResponse, PageEntityResponse } from '@bratislava/strapi-sdk-homepage'
+import { pagePath } from '@utils/page'
 import cx from 'classnames'
 import * as React from 'react'
-
-import { pagePath } from '../../utils/page'
 
 interface Props {
   parentPage: PageEntityResponse
