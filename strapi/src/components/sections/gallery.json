@@ -1,20 +1,22 @@
 {
-    "collectionName": "components_sections_gallery",
-    "info": {
-      "displayName": "Gallery"
+  "collectionName": "components_sections_galleries",
+  "info": {
+    "displayName": "Gallery",
+    "icon": "camera",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
     },
-    "options": {},
-    "attributes": {
-      "title": {
-        "type": "string"
-      },
-      "subTitle": {
-        "type": "string"
-      },
-      "galleryItems": {
-        "type": "component",
-        "repeatable": true,
-        "component": "blocks.gallery-item"
-      }
+    "subtitle": {
+      "type": "string"
+    },
+    "galleryItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.gallery-item"
     }
+  }
 }

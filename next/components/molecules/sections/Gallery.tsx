@@ -77,9 +77,9 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
                         }
                         {
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                          image.imgSubTitle && (
-                            <div className="text-sm italic text-white opacity-75">
-                              {image.imgSubTitle}
+                          image.imgSubtitle && (
+                            <div className="text-p2 italic text-white opacity-75">
+                              {image.imgSubtitle}
                             </div>
                           )
                         }
@@ -124,8 +124,8 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
                   {image.imgTitle && (
                     <div className="text-default font-semibold text-white">{image.imgTitle}</div>
                   )}
-                  {image.imgSubTitle && (
-                    <div className="text-sm italic text-white opacity-75">{image.imgSubTitle}</div>
+                  {image.imgSubtitle && (
+                    <div className="text-sm italic text-white opacity-75">{image.imgSubtitle}</div>
                   )}
                 </div>
               </div>
@@ -169,29 +169,29 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
                   }
                   {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                    currentItem.imgSubTitle && (
+                    currentItem.imgSubtitle && (
                       <div className="text-p3-bold italic text-white opacity-75">
                         {
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                          currentItem.imgSubTitle
+                          currentItem.imgSubtitle
                         }
                       </div>
                     )
                   }
                   {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                    currentItem.imgSubText && (
+                    currentItem.imgSubtext && (
                       <div className="text-p2 mt-6 hidden text-white md:block">
-                        {currentItem.imgSubText}
+                        {currentItem.imgSubtext}
                       </div>
                     )
                   }
-                  {currentItem.imgSubText && showModalDetails && (
+                  {currentItem.imgSubtext && showModalDetails && (
                     <div className="text-p2 mt-6 block text-white md:hidden">
-                      {currentItem.imgSubText}
+                      {currentItem.imgSubtext}
                     </div>
                   )}
-                  {currentItem.imgSubText && (
+                  {currentItem.imgSubtext && (
                     <div className="text-p3-semibold m-auto mb-4 mt-5 block text-white md:hidden">
                       <button
                         type="button"

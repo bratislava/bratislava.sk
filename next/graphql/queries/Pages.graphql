@@ -417,8 +417,8 @@ fragment NumericalListItem on ComponentBlocksNumericalListItem {
 
 fragment GalleryItem on ComponentBlocksGalleryItem {
   imgTitle
-  imgSubTitle
-  imgSubText
+  imgSubtitle
+  imgSubtext
   media {
     data {
       attributes {
@@ -479,11 +479,11 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsGallery {
     title
-    subTitle
+    subtitle
     galleryItems {
       imgTitle
-      imgSubTitle
-      imgSubText
+      imgSubtitle
+      imgSubtext
       media {
         data {
           attributes {

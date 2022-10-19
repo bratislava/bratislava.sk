@@ -1,25 +1,27 @@
 {
-    "collectionName": "components_blocks_gallery_item",
-    "info": {
-      "displayName": "Gallery item",
-      "icon": "archive"
+  "collectionName": "components_blocks_gallery_items",
+  "info": {
+    "displayName": "Gallery item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "imgTitle": {
+      "type": "text"
     },
-    "options": {},
-    "attributes": {
-      "imgTitle": {
-        "type": "text"
-      },
-      "imgSubTitle": {
-        "type": "text"
-      },
-      "imgSubText": {
-        "type": "string"
-      },
-      "media": {
-        "allowedTypes": ["images"],
-        "type": "media",
-        "multiple": false
-      }
+    "imgSubtitle": {
+      "type": "text"
+    },
+    "imgSubtext": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
-  
+}
