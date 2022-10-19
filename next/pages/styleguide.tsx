@@ -10,6 +10,7 @@ import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
+import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -27,6 +28,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <DatePickerShowCase />
         <InputFieldShowCase />
         <SelectFieldShowCase/>
+        <ToggleShowCase/>
       </StyleGuideWrapper>
     </PageWrapper>
   )
