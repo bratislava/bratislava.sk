@@ -6,17 +6,25 @@ import UploadedFile from './UploadedFile'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
+  value?: File[]
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
+  onChange?: (value: File[]) => void
 }
 
-const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }: UploadProps) => {
+const Upload: FC<UploadProps> = ({ type, value, disabled, sizeLimit, supportedFormats, onChange }: UploadProps) => {
   // STATES
-  const [componentFiles, setComponentFiles] = useState<File[]>([])
   const [isFileBroken, setIsFileBroken] = useState<boolean>(false)
 
   // HELPER FUNCTIONS
+  const emitOnChange = (newFiles: File[], oldFiles?: File[]) => {
+    if (onChange) {
+      const changedValue = oldFiles ? [...oldFiles, ...newFiles] : newFiles
+      onChange(changedValue)
+    }
+  }
+
   const isFileInSizeLimit = (file: File) => {
     const mbSize = file.size / (1024 * 1024)
     return !(sizeLimit && mbSize > sizeLimit);
@@ -40,7 +48,7 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
       }
     }
 
-    setComponentFiles([...componentFiles, ...newFiles])
+    emitOnChange(newFiles, value)
     setIsFileBroken(false)
   }
 
@@ -67,9 +75,9 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
   }
 
   const handleOnRemoveFile = (id: number) => {
-    const updatedFiles = [...componentFiles]
+    const updatedFiles: File[] = value ? [...value] : []
     updatedFiles.splice(id,1)
-    setComponentFiles(updatedFiles)
+    emitOnChange(updatedFiles)
   }
 
 
@@ -94,7 +102,7 @@ const Upload: FC<UploadProps> = ({ type, disabled, sizeLimit, supportedFormats }
       }
       <div className="mt-2">
         { /* FILES AREA */
-          componentFiles.map((file: File, key: number) => {
+          value?.map((file: File, key: number) => {
             return <UploadedFile key={key} fileName={file.name} onRemove={() => handleOnRemoveFile(key)}/>
           })
         }
