@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
@@ -13,7 +13,9 @@ interface UploadProps {
   onChange?: (value: File[]) => void
 }
 
-const Upload: FC<UploadProps> = ({ type, value, disabled, sizeLimit, supportedFormats, onChange }: UploadProps) => {
+const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (props:UploadProps, ref: ForwardedRef<HTMLDivElement>) => {
+  const { type, value, disabled, sizeLimit, supportedFormats, onChange }: UploadProps = props
+
   // STATES
   const [isFileBroken, setIsFileBroken] = useState<boolean>(false)
 
@@ -86,18 +88,22 @@ const Upload: FC<UploadProps> = ({ type, value, disabled, sizeLimit, supportedFo
     <section className="select-none" style={{transition: "0.2 all linear"}}>
       { /* UPLOAD AREA */
         type === 'button'
-          ? <UploadButton sizeLimit={sizeLimit}
+          ? <UploadButton ref={ref}
+                          value={value}
+                          sizeLimit={sizeLimit}
                           supportedFormats={supportedFormats}
                           disabled={disabled}
                           isFileBroken={isFileBroken}
                           onClick={handleOnClickUpload} />
           : type === 'dragAndDrop'
-            ? <UploadDropArea sizeLimit={sizeLimit}
+            ? <UploadDropArea ref={ref}
+                              value={value}
+                              sizeLimit={sizeLimit}
                               supportedFormats={supportedFormats}
                               disabled={disabled}
                               isFileBroken={isFileBroken}
                               onClick={handleOnClickUpload}
-                              onDrop={handleOnDrop}/>
+                              onDrop={handleOnDrop} />
             : null
       }
       <div className="mt-2">
@@ -110,5 +116,7 @@ const Upload: FC<UploadProps> = ({ type, value, disabled, sizeLimit, supportedFo
     </section>
   )
 }
+
+const Upload = forwardRef<HTMLDivElement, UploadProps>(UploadComponent)
 
 export default Upload

@@ -1,9 +1,10 @@
 import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
 interface UploadDropAreaProps {
+  value?: File[]
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
@@ -12,7 +13,10 @@ interface UploadDropAreaProps {
   onDrop?: (newFiles: File[]) => void
 }
 
-const UploadDropArea = ({ disabled, sizeLimit, supportedFormats, isFileBroken, onClick, onDrop }: UploadDropAreaProps) => {
+const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (props: UploadDropAreaProps, ref: ForwardedRef<HTMLDivElement>) => {
+  // PROPS
+  const { value, disabled, sizeLimit, supportedFormats, isFileBroken, onClick, onDrop }: UploadDropAreaProps = props
+
   // STATE
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
 
@@ -66,7 +70,7 @@ const UploadDropArea = ({ disabled, sizeLimit, supportedFormats, isFileBroken, o
 
   // RENDER
   return (
-    <div className="relative h-40 w-480">
+    <div className="relative h-40 w-480" ref={ref} data-value={value}>
       <div className={dragAndDropOverlayClassNames}
            onClick={handleOnClick}
            onDragEnter={() => setIsDraggedOver(true)}
@@ -96,4 +100,5 @@ const UploadDropArea = ({ disabled, sizeLimit, supportedFormats, isFileBroken, o
   )
 }
 
+const UploadDropArea = forwardRef<HTMLDivElement, UploadDropAreaProps>(UploadDropAreaComponent)
 export default UploadDropArea

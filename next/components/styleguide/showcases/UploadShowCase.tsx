@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import Upload from '../../forms/Upload/Upload'
 import { Stack } from '../Stack'
@@ -19,6 +19,8 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
   const [files7, setFiles7] = useState<File[]>([])
   const [files8, setFiles8] = useState<File[]>([])
 
+  const ref = React.createRef<HTMLDivElement>()
+
   return (
     <Wrapper title="Upload" direction="column">
       <Stack direction="column">
@@ -34,10 +36,14 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
       </Stack>
       <Stack>
         <Upload type="button"
+                ref={ref}
                 value={files1}
-                onChange={(newValue) => setFiles1(newValue)}/>
+                onChange={(newValue) => {
+                  setFiles1(newValue)
+                  console.log("REF RESULT:", ref.current?.getAttribute("data-value"))
+                }} />
         <Upload type="button"
-                disabled/>
+              disabled/>
       </Stack>
       <Stack direction="column">
         <Upload type="button"
