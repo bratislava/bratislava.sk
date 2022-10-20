@@ -11,37 +11,45 @@ interface TextAreaBase {
   errorMessage?: string
   description?: string
   className?: string
+  defaultValue?: string
   value?: string
   required?: boolean
   disabled?: boolean
   tooltip?: string
+  onChange?: (e: string) => void
 }
 
-const TextAreaField = ({
-                         label,
-                         placeholder,
-                         errorMessage,
-                         description,
-                         tooltip,
-                         required,
-                         value = '',
-                         disabled,
-                         className,
-                         ...rest
-                       }: TextAreaBase) => {
-  const [valueState, setValueState] = useState<string>(value)
+const TextAreaField = (
+  {
+    label,
+    placeholder,
+    errorMessage,
+    description,
+    tooltip,
+    required,
+    value = '',
+    disabled,
+    className,
+    ...rest
+  }: TextAreaBase,
+) => {
+  const [, setValueState] = useState<string>(value)
   const ref = React.useRef<HTMLTextAreaElement>(null)
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       ...rest,
       placeholder,
-      value,
+      value: value || ref.current?.value,
       label,
       errorMessage,
       description,
       inputElementType: 'textarea',
-      onChange(value) {
-        setValueState(value)
+      onChange(inputValue) {
+        if(rest.onChange) {
+          rest.onChange(inputValue)
+        } else {
+          setValueState(inputValue)
+        }
       },
       isRequired: required,
       isDisabled: disabled,
@@ -73,7 +81,7 @@ const TextAreaField = ({
         required={required}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} value={valueState} className={style} />
+      <textarea {...inputProps} ref={ref} className={style} />
       {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
     </div>
   )

@@ -9,7 +9,7 @@ const TextAreaFieldShowCase = () => {
     <Wrapper direction="row" title="Text Area Field">
       <Stack>
         <TextAreaField label="Label" placeholder="Placeholder" />
-        <TextAreaField label="Label" placeholder="Placeholder" value="Value" />
+        <TextAreaField label="Label" placeholder="Placeholder" defaultValue="Default message" />
         <TextAreaField label="Label" placeholder="Placeholder" errorMessage="Error message" />
         <TextAreaField label="Label" placeholder="Placeholder" errorMessage="Error message" description="Help text" disabled />
       </Stack>
