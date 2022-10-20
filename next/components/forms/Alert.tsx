@@ -22,20 +22,22 @@ type AlertBase = {
   buttonHandler2?: () => void
 }
 
-const Alert = ({
-                 solid = false,
-                 close = false,
-                 onClick,
-                 type,
-                 variant = 'basic',
-                 content,
-                 message,
-                 className,
-                 buttonLabel1 = '',
-                 buttonLabel2 = '',
-                 ...rest
-                 // eslint-disable-next-line sonarjs/cognitive-complexity
-               }: AlertBase) => {
+const Alert = (
+  {
+    solid = false,
+    close = false,
+    onClick,
+    type,
+    variant = 'basic',
+    content,
+    message,
+    className,
+    buttonLabel1 = '',
+    buttonLabel2 = '',
+    ...rest
+  }: AlertBase,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+) => {
   const icons = {
     error: <ErrorIcon solid={solid} />,
     success: <SuccessIcon solid={solid} />,
@@ -43,10 +45,10 @@ const Alert = ({
     warning: <WarningIcon solid={solid} />,
   }
 
-  const alertContainer = cx('flex flex-row w-480 gap-3 rounded-8 py-4 px-5', className, {
+  const alertContainer = cx('flex flex-row w-480 gap-3 rounded-8 px-5', className, {
     'justify-between': close,
     'place-items-center': variant !== 'message',
-    'text-form-alert-textColor-default flex-col': variant === 'message',
+    'text-form-alert-textColor-default flex-col pt-4 px-5': variant === 'message',
     'bg-form-alert-error-default-bg': type === 'error' && !solid,
     'bg-form-alert-success-default-bg': type === 'success' && !solid,
     'bg-form-alert-info-default-bg': type === 'info' && !solid,
@@ -57,7 +59,7 @@ const Alert = ({
     'text-form-alert-info-default': type === 'info' && !solid && variant !== 'message',
     'text-form-alert-warning-default': type === 'warning' && !solid && variant !== 'message',
 
-    'flex-row': variant === 'basic',
+    'flex-row py-4': variant === 'basic',
     'text-[white]': solid,
     'bg-form-alert-error-default': type === 'error' && solid,
     'bg-form-alert-success-default': type === 'success' && solid,
@@ -65,17 +67,20 @@ const Alert = ({
     'bg-form-alert-warning-default': type === 'warning' && solid,
   })
 
-  const contentStyle = cx('flex flex-row leading-6', {
+  const contentStyle = cx('flex flex-row leading-6 ml-1', {
     'text-sm font-normal': variant === 'basic',
     'text-default': variant === 'message',
     'w-368': close,
   })
 
-  const extraButtonStyle = cx('underline',{
+  const extraButtonStyle = cx('underline', {
     'text-form-alert-error-default': type === 'error' && !solid,
     'text-form-alert-success-default': type === 'success' && !solid,
     'text-form-alert-info-default': type === 'info' && !solid,
     'text-form-alert-warning-default': type === 'warning' && !solid,
+  })
+  const extraButtonStyleContainer = cx('', {
+    'ml-9 w-32 flex h-6 gap-5 mb-4 mt-3': (rest?.buttonHandler1 && buttonLabel1) || (rest?.buttonHandler2 && buttonLabel2),
   })
 
   return variant === 'basic' ? (
@@ -90,8 +95,9 @@ const Alert = ({
         <span>{icons[type]}</span>
         <div className={contentStyle}>{message}</div>
       </div>
-      <div className='ml-8 flex w-[calc(100%-45px)] text-justify text-sm font-normal leading-6'>{content}</div>
-      <div className='ml-7 flex h-6 w-32 flex-row items-center gap-5'>
+      <div
+        className='ml-9 flex text-sm font-normal leading-6'>{content}</div>
+      <div className={extraButtonStyleContainer}>
         {
           rest.buttonHandler1 && buttonLabel1 &&
           <button type='button' className={extraButtonStyle} onClick={rest.buttonHandler1}>{buttonLabel1}</button>
