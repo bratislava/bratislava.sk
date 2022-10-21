@@ -150,6 +150,7 @@ module.exports = {
           universal: {
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
+            400: 'var(--universal-gray-400)',
             500: 'var(--universal-gray-500)',
             600: 'var(--universal-gray-600)',
             700: 'var(--universal-gray-700)',
@@ -184,6 +185,7 @@ module.exports = {
         purple: '#704B9D', // TODO var
         warning: 'var(--warning-color)',
         success: 'var(--success-color)',
+        'success-700': '#01843D',
         error: 'var(--error-color)',
         transprentGray: 'rgba(51, 51, 51, 0.25)',
       },
@@ -250,9 +252,11 @@ module.exports = {
       },
       height: {
         72: '72px',
+        196: '196px'
       },
       width: {
         540: '540px',
+        320: '320px',
         72: '72px',
       },
       minWidth: {
