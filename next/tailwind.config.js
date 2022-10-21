@@ -96,6 +96,7 @@ module.exports = {
             hover: '#f1f1f1',
             header: '#F5F5F5',
             pressed: '#EBEBEB',
+            placeholder: '#858585',
           },
           brand: {
             default: '#E46054',

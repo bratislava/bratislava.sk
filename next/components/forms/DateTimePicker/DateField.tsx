@@ -16,10 +16,14 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
   const ref = React.useRef<HTMLDivElement>(null)
   const { segmentProps } = useDateSegment(segment, state, ref)
   return (
-    <div {...segmentProps} ref={ref} className="text-default hover:bg-[#f1f1f1] focus:bg-[#f1f1f1] focus:outline-none">
+    <div
+      {...segmentProps}
+      ref={ref}
+      className="text-default hover:bg-form-calendar-hover focus:bg-form-calendar-hover focus:outline-none"
+    >
       <span
         className={cx('w-full text-center uppercase group-focus:text-white', {
-          'text-[#858585]': segment?.isPlaceholder,
+          'text-form-calendar-placeholder': segment?.isPlaceholder,
         })}
         style={{
           opacity: segment?.isPlaceholder ? '1' : '0',
@@ -74,7 +78,7 @@ const DateField = ({
     {
       'hover:border-form-input-hover': !disabled,
       'border-error focus:border-error hover:border-error': errorMessage,
-      'opacity-50 pointer-events-none border-form-input-hover': disabled,
+      'opacity-50 pointer-events-none border-form-input-disabled': disabled,
     }
   )
   return (
@@ -94,7 +98,7 @@ const DateField = ({
         ))}
         <div className="ml-auto flex items-center">{children}</div>
       </div>
-      <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
     </>
   )
 }
