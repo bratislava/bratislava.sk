@@ -1,0 +1,84 @@
+Umiestnenie dopravného značenia
+Zoznam príloh
+	Projekt organizácie dopravy: POD.pdf
+	Záväzné stanovisko KDI: KDI.pdf
+	Stanoviská správcov ciest: Ruzinov.pdf
+	Stanoviská správcov ciest: NoveMesto.pdf
+	Vzťah k prevádzke: NajomnaZmluva.pdf
+	Splnomocnenie na zastupovanie: splnomocnenie.pdf
+Dopravné značenie
+	Názvy ulíc: Hlboká cesta
+	Dôvod zmeny: Vyhradené parkovanie
+	Počet parkovacích miest: 2
+	Užívaná plocha jedného miesta - dĺžka: 6.0
+	Užívaná plocha jedného miesta - šírka: 2.8
+	Termín vyhradenia miesta od: 01.01.2022
+	Termín vyhradenia miesta do: 01.01.2023
+	Typ dopravného značenia: dočasné
+	Dátum umiestnenia: 01.01.2022
+	Dátum odstránenia: 01.01.2023
+Uzávierka
+	Typ uzávierky: Čiastočná
+	Šírka voľného jazdného pruhu: 5
+	Ulice od: Robotnicka ulica
+	Ulice do: Kvetinova ulica
+	Dĺžka v metroch: 50
+	Šírka v metroch: 10
+	Dátum začiatku uzávierky: 01.01.2022 05:00
+	Dátum ukončenia uzávierky: 01.05.2022 17:00
+	Presný popis: Bude uzatvorena cesta
+Žiadateľ
+	Žiada vo svojom mene: Áno
+	Typ osoby: Fyzická osoba
+Kontaktné údaje
+	Meno: Janko
+	Priezvisko: Hruška
+	E-mail: hruska@example.com
+	Telefónne číslo: +421 904 123456
+Adresa trvalého bydliska
+	Meno: Janko
+	Priezvisko: Hruška
+	Ulica: Hlboká cesta
+	Číslo: 970/5
+	Obec: Bratislava - mestská časť Staré Mesto
+	PSČ: 81104
+	Štát: Slovenská republika
+Kontaktná osoba
+	Rovnaká ako žiadateľ: Nie
+	Meno: Jozefina
+	Priezvisko: Hrušková
+	E-mail: jozefina.hruskova@example.com
+	Telefónne číslo: +421 905 987654
+Zodpovedný projektant
+	Obchodné meno: Kutyil, s.r.o.
+	IČO: 12345678
+	Meno: László
+	Priezvisko: Komárom
+	E-mail: lazslo@example.com
+	Telefónne číslo: +421 905 246135
+Doručenie
+Adresát podania
+	Adresát podania: Mesto
+	Mestská časť
+	Žiadam o zasielanie notifikácii zo spracovania podania: Áno
+Doručenie odpovede
+	Forma doručenia odpovede: Pošta
+	Meno: Janko
+	Priezvisko: Hruška
+	Ulica: Hlboká cesta
+	Číslo: 970/
+	Obec: Bratislava - mestská časť Staré Mesto
+	PSČ: 81104
+	Štát: Slovenská republika
+Vyhlásenie
+	Všeobecné informácie o poskytnutí, spracovaní a ochrane osobných údajov nájdete na
+        https://esluzby.bratislava.sk/page/ochrana-osobnych-udajov
+      : Týmto dávam na základe slobodnej vôle súhlas na spracovanie mojich osobných údajov
+        uvedených vo formulári tohto podania a získaných z môjho osobného dokladu za v zmysle Nariadenia európskeho
+        parlamentu a rady EÚ 2016/679 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto
+        údajov a zákona č. 18/2018 Z.z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov. Zároveň
+        potvrdzujem dovŕšenie veku 16 rokov pre potreby spracovania osobných údajov. Osobné údaje poskytujem za účelom
+        spracovania mojej žiadosti.
+      
+	Poskytujem súhlas na spracovanie osobných údajov: Áno
+	Neposkytujem súhlas na spracovanie osobných údajov: Nie
