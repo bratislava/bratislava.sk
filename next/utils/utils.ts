@@ -52,3 +52,5 @@ const isServer = () => typeof window === 'undefined'
 export const isBrowser = () => !isServer()
 
 export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
+
+export const addZeroToNumber = (num: string): string => (!num?.charAt(1) ? `0${num}` : `${num}`)
