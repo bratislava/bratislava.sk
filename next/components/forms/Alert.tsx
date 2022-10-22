@@ -45,10 +45,8 @@ const Alert = (
     warning: <WarningIcon solid={solid} />,
   }
 
-  const alertContainer = cx('flex flex-row w-480 gap-3 rounded-8 px-5', className, {
-    'justify-between': close,
-    'place-items-center': variant !== 'message',
-    'text-form-alert-textColor-default flex-col pt-4 px-5': variant === 'message',
+  const alertContainer = cx('flex flex-row w-480 rounded-8 px-5', className, {
+    'text-form-alert-textColor-default flex-col pt-4 px-5 gap-4': variant === 'message',
     'bg-form-alert-error-default-bg': type === 'error' && !solid,
     'bg-form-alert-success-default-bg': type === 'success' && !solid,
     'bg-form-alert-info-default-bg': type === 'info' && !solid,
@@ -59,7 +57,7 @@ const Alert = (
     'text-form-alert-info-default': type === 'info' && !solid && variant !== 'message',
     'text-form-alert-warning-default': type === 'warning' && !solid && variant !== 'message',
 
-    'flex-row py-4': variant === 'basic',
+    'flex-row py-4 gap-3 place-items-center': variant === 'basic',
     'text-[white]': solid,
     'bg-form-alert-error-default': type === 'error' && solid,
     'bg-form-alert-success-default': type === 'success' && solid,
@@ -67,20 +65,20 @@ const Alert = (
     'bg-form-alert-warning-default': type === 'warning' && solid,
   })
 
-  const contentStyle = cx('flex flex-row leading-6 ml-1', {
+  const contentStyle = cx('flex flex-row leading-6 w-404', {
     'text-sm font-normal': variant === 'basic',
     'text-default': variant === 'message',
     'w-368': close,
   })
 
-  const extraButtonStyle = cx('underline', {
+  const extraButtonStyle = cx('underline font-medium flex items-center font-medium h-6 text-base leading-6 not-italic underline', {
     'text-form-alert-error-default': type === 'error' && !solid,
     'text-form-alert-success-default': type === 'success' && !solid,
     'text-form-alert-info-default': type === 'info' && !solid,
     'text-form-alert-warning-default': type === 'warning' && !solid,
   })
   const extraButtonStyleContainer = cx('', {
-    'ml-9 w-32 flex h-6 gap-5 mb-4 mt-3': (rest?.buttonHandler1 && buttonLabel1) || (rest?.buttonHandler2 && buttonLabel2),
+    'ml-8 w-32 flex h-6 gap-5 mb-4 mt-3': (rest?.buttonHandler1 && buttonLabel1) || (rest?.buttonHandler2 && buttonLabel2),
   })
 
   return variant === 'basic' ? (
@@ -96,7 +94,7 @@ const Alert = (
         <div className={contentStyle}>{message}</div>
       </div>
       <div
-        className='ml-9 flex text-sm font-normal leading-6'>{content}</div>
+        className='ml-8 w-404 text-base font-normal not-italic leading-6'>{content}</div>
       <div className={extraButtonStyleContainer}>
         {
           rest.buttonHandler1 && buttonLabel1 &&
