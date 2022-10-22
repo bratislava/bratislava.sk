@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
+import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
@@ -30,6 +31,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <DatePickerShowCase />
         <InputFieldShowCase />
         <SelectFieldShowCase/>
+        <SpinnerShowCase />
         <TextAreaFieldShowCase/>
         <ToggleShowCase/>
       </StyleGuideWrapper>
