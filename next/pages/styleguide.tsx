@@ -11,6 +11,9 @@ import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderS
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
+import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
+import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
+
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -29,6 +32,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <InputFieldShowCase />
         <SelectFieldShowCase/>
         <SpinnerShowCase />
+        <TextAreaFieldShowCase/>
+        <ToggleShowCase/>
       </StyleGuideWrapper>
     </PageWrapper>
   )
