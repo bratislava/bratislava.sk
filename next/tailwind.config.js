@@ -95,6 +95,7 @@ module.exports = {
           calendar: {
             hover: '#f1f1f1',
             header: '#F5F5F5',
+            placeholder: '#858585',
           },
           brand: {
             default: '#E46054',
@@ -251,9 +252,11 @@ module.exports = {
       },
       height: {
         72: '72px',
+        196: '196px'
       },
       width: {
         540: '540px',
+        320: '320px',
         72: '72px',
       },
       minWidth: {
