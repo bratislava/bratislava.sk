@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-export const uploadFile = async () => {
-  const response = await axios.post('/api/forms/upload-file').then(res => res).catch(error => error)
-  console.log(response)
+export const uploadFiles = async (newFiles: File[]) => {
+  const response = await axios.post('/api/forms/upload-files').then(res => res).catch(error => error)
+
+  return response
 }

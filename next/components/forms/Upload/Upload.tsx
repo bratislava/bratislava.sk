@@ -3,7 +3,8 @@ import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } f
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
-import { uploadFile } from '../../../backend/services/minio'
+import { uploadFiles } from '../../../backend/services/minio'
+import { NextApiResponse } from 'next'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
@@ -58,10 +59,14 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     return true
   }
 
-  const addNewFiles = (newFiles: File[]) => {
+  const addNewFiles = async (newFiles: File[]) => {
     if (areFilesValid(newFiles)) {
-      emitOnChange(newFiles, value)
-      setFileBrokenMessage(null)
+      await uploadFiles(newFiles)
+        .then((res: NextApiResponse) => {
+          console.log(res)
+          emitOnChange(newFiles, value)
+          setFileBrokenMessage(null)
+        })
     }
   }
 
@@ -74,17 +79,17 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     uploadInput.multiple = true
     uploadInput.accept = supportedFormats?.toString() || ""
 
-    uploadInput.addEventListener('change', () => {
+    uploadInput.addEventListener('change', async () => {
       if (!uploadInput.files) return
       const newFiles = Array.from(uploadInput.files)
-      addNewFiles(newFiles)
+      await addNewFiles(newFiles)
     })
 
     uploadInput.click()
   }
 
-  const handleOnDrop = (newFiles: File[]) => {
-    addNewFiles(newFiles)
+  const handleOnDrop = async (newFiles: File[]) => {
+    await addNewFiles(newFiles)
   }
 
   const handleOnRemoveFile = (id: number) => {
