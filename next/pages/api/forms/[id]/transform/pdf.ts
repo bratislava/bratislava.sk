@@ -3,7 +3,7 @@ import { validateFormName } from '@utils/forms'
 import { forceString } from '@utils/utils'
 import { execFile } from 'child_process'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { readFile, writeFile } from 'node:fs/promises'
+import { readFile, unlink, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { v4 as uuid } from 'uuid'
@@ -30,8 +30,8 @@ const fop = async (xsltPath: string, xml: string) => {
       try {
         const data = await readFile(pdfPath)
         resolve(data)
-        // await unlink(xmlPath);
-        // await unlink(pdfPath);
+        await unlink(xmlPath);
+        await unlink(pdfPath);
       } catch (error) {
         reject(error)
       }
