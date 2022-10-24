@@ -29,9 +29,9 @@ const Tooltip: FC<TooltipProps> = ({ text, visible, arrow, alignArrow }: Tooltip
       "flex-row": arrow && ['top', 'bottom'].includes(arrow),
       "flex-col": arrow && ['left', 'right'].includes(arrow),
       "[&>svg]:rotate-180": arrow && ['bottom', 'right'].includes(arrow),
-      "justify-start": arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'left',
+      "justify-start pl-4": arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'left',
       "justify-center": arrow && (['left', 'right'].includes(arrow) || !alignArrow || alignArrow === 'center'),
-      "justify-end": arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'right',
+      "justify-end pr-4": arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'right',
     }
   )
 
