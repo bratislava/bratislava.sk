@@ -11,6 +11,7 @@ interface TooltipShowCaseProps {
 const TooltipShowCase: FC<TooltipShowCaseProps> = ({}: TooltipShowCaseProps) => {
   return (
     <Wrapper title="Tooltip" direction="column">
+      <p>WARNING: props absolute, top, bottom, left and right are not showed here but in field header - they are same as setting classNames to absolute, bottom-0, top-0, left-0 and right-0 </p>
       <Stack direction="row">
         <Tooltip text="t" visible/>
         <Tooltip text="tooltip" visible/>

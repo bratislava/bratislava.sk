@@ -8,9 +8,17 @@ interface TooltipProps {
   visible: boolean
   arrow?: 'top' | 'right' | 'bottom' | 'left'
   alignArrow?: 'left' | 'center' | 'right'
+  absolute?: boolean
+  top?: boolean
+  bottom?: boolean
+  left?: boolean
+  right?: boolean
+  className?: string
 }
 
-const Tooltip: FC<TooltipProps> = ({ text, visible, arrow, alignArrow }: TooltipProps) => {
+const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
+  const { text, visible, arrow, alignArrow, absolute, top, bottom, left, right, className } = props
+
   const tooltipClassNames = cx(
     "flex",
     {
@@ -18,8 +26,14 @@ const Tooltip: FC<TooltipProps> = ({ text, visible, arrow, alignArrow }: Tooltip
       "flex-col": arrow === 'top',
       "flex-col-reverse": arrow === 'bottom',
       "flex-row": arrow === 'left',
-      "flex-row-reverse": arrow === 'right'
-    }
+      "flex-row-reverse": arrow === 'right',
+      "absolute": absolute,
+      "top-0": top,
+      "bottom-0": bottom,
+      "left-0": left,
+      "right-0": right
+    },
+    className
   )
 
   const arrowClassNames = cx(
