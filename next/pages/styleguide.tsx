@@ -3,6 +3,7 @@ import { isProductionDeployment } from '@utils/utils'
 import PageWrapper from 'components/layouts/PageWrapper'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
+import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -25,6 +26,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
+        <TooltipShowCase/>
         <TagShowCase />
         <FieldHeaderShowCase />
         <ButtonShowCase />
