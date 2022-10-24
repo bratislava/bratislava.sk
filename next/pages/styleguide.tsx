@@ -22,13 +22,13 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
+        <UploadShowCase/>
         <TagShowCase />
         <FieldHeaderShowCase />
         <ButtonShowCase />
         <DatePickerShowCase />
         <InputFieldShowCase />
         <SelectFieldShowCase/>
-        <UploadShowCase/>
       </StyleGuideWrapper>
     </PageWrapper>
   )

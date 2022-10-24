@@ -3,6 +3,7 @@ import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } f
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
+import { uploadFile } from '../../../backend/services/minio'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
@@ -18,6 +19,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
   // STATES
   const [fileBrokenMessage, setFileBrokenMessage] = useState<string|null>()
+
 
   // HELPER FUNCTIONS
   const emitOnChange = (newFiles: File[], oldFiles?: File[]) => {
