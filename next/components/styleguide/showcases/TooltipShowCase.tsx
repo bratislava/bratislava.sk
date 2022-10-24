@@ -12,8 +12,10 @@ const TooltipShowCase: FC<TooltipShowCaseProps> = ({}: TooltipShowCaseProps) => 
   return (
     <Wrapper title="Tooltip" direction="column">
       <Stack direction="row">
-        <Tooltip text="t"/>
-        <Tooltip text="This is loooooooooggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg gggggggggong tooltip for multiple lines"/>
+        <Tooltip text="t" visible/>
+        <Tooltip text="tooltip" visible/>
+        <Tooltip text="This is looooooooonggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg gggggggggong tooltip for multiple lines" visible/>
+        <Tooltip text="tooltip" visible={false}/>
       </Stack>
     </Wrapper>
   )
