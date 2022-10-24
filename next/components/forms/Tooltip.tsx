@@ -1,5 +1,5 @@
-import TopArrowIcon from '@assets/images/forms/tooltip_top_arrow_icon.svg'
 import LeftArrowIcon from '@assets/images/forms/tooltip_left_arrow_icon.svg'
+import TopArrowIcon from '@assets/images/forms/tooltip_top_arrow_icon.svg'
 import cx from 'classnames'
 import { FC } from 'react'
 
@@ -7,9 +7,10 @@ interface TooltipProps {
   text: string
   visible: boolean
   arrow?: 'top' | 'right' | 'bottom' | 'left'
+  alignArrow?: 'left' | 'center' | 'right'
 }
 
-const Tooltip: FC<TooltipProps> = ({ text, visible, arrow }: TooltipProps) => {
+const Tooltip: FC<TooltipProps> = ({ text, visible, arrow, alignArrow }: TooltipProps) => {
   const tooltipClassNames = cx(
     "flex",
     {
@@ -22,12 +23,15 @@ const Tooltip: FC<TooltipProps> = ({ text, visible, arrow }: TooltipProps) => {
   )
 
   const arrowClassNames = cx(
-    "flex justify-center",
+    "flex",
     {
       "hidden": !arrow,
       "flex-row": arrow && ['top', 'bottom'].includes(arrow),
       "flex-col": arrow && ['left', 'right'].includes(arrow),
       "[&>svg]:rotate-180": arrow && ['bottom', 'right'].includes(arrow),
+      "justify-start": arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'left',
+      "justify-center": arrow && (['left', 'right'].includes(arrow) || !alignArrow || alignArrow === 'center'),
+      "justify-end": arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'right',
     }
   )
 

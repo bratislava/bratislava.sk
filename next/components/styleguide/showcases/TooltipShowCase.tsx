@@ -17,12 +17,28 @@ const TooltipShowCase: FC<TooltipShowCaseProps> = ({}: TooltipShowCaseProps) => 
         <Tooltip text="This is looooooooonggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg gggggggggong tooltip for multiple lines" visible/>
         <Tooltip text="tooltip" visible={false}/>
       </Stack>
-      <Stack direction="row">
-        <Tooltip text="Tooltip" visible arrow="top"/>
-        <Tooltip text="Tooltip" visible arrow="right"/>
-        <Tooltip text="Tooltip" visible arrow="bottom"/>
-        <Tooltip text="Tooltip" visible arrow="left"/>
-      </Stack>
+      <Wrapper direction="row" noBorder>
+        <Stack direction="column">
+          <Tooltip text="Tooltip" arrow="top" alignArrow="left" visible/>
+          <Tooltip text="Tooltip" arrow="top" alignArrow="center" visible/>
+          <Tooltip text="Tooltip" arrow="top" alignArrow="right" visible/>
+        </Stack>
+        <Stack direction="column">
+          <Tooltip text="Tooltip" arrow="bottom" alignArrow="left" visible/>
+          <Tooltip text="Tooltip" arrow="bottom" alignArrow="center" visible/>
+          <Tooltip text="Tooltip" arrow="bottom" alignArrow="right" visible/>
+        </Stack>
+        <Stack direction="column">
+          <Tooltip text="Tooltip" arrow="right" alignArrow="left" visible/>
+          <Tooltip text="Tooltip" arrow="right" alignArrow="center" visible/>
+          <Tooltip text="Tooltip" arrow="right" alignArrow="right" visible/>
+        </Stack>
+        <Stack direction="column">
+          <Tooltip text="Tooltip" arrow="left" alignArrow="left" visible/>
+          <Tooltip text="Tooltip" arrow="left" alignArrow="center" visible/>
+          <Tooltip text="Tooltip" arrow="left" alignArrow="right" visible/>
+        </Stack>
+      </Wrapper>
     </Wrapper>
   )
 }
