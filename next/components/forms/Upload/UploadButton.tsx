@@ -7,21 +7,21 @@ interface UploadButtonProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
-  isFileBroken?: boolean
+  fileBrokenMessage?: string | null
   onClick?: () => void
 }
 
 const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButtonProps> = (props: UploadButtonProps, ref: ForwardedRef<HTMLDivElement>) => {
   // STATE
-  const { value, disabled, sizeLimit, supportedFormats, isFileBroken, onClick }: UploadButtonProps = props
+  const { value, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick }: UploadButtonProps = props
 
   // STYLES
   const buttonClassNames = cx(
     "flex-col align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
     {
       "cursor-pointer": !disabled,
-      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !isFileBroken,
-      "border-red-500 hover:border-red-300": !disabled && isFileBroken,
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !fileBrokenMessage,
+      "border-red-500 hover:border-red-300": !disabled && fileBrokenMessage,
       "opacity-50 cursor-not-allowed bg-gray-200": disabled
     }
   )

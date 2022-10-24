@@ -8,14 +8,14 @@ interface UploadDropAreaProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
-  isFileBroken?: boolean
+  fileBrokenMessage?: string | null
   onClick?: () => void
   onDrop?: (newFiles: File[]) => void
 }
 
 const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (props: UploadDropAreaProps, ref: ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, disabled, sizeLimit, supportedFormats, isFileBroken, onClick, onDrop }: UploadDropAreaProps = props
+  const { value, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick, onDrop }: UploadDropAreaProps = props
 
   // STATE
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
@@ -33,10 +33,10 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
     {
       "cursor-not-allowed": disabled,
       "cursor-pointer": !disabled,
-      "border-red-500 hover:border-red-300": !disabled && isFileBroken && !isDraggedOver,
-      "border-red-300": !disabled && isFileBroken && isDraggedOver,
-      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !isFileBroken && !isDraggedOver,
-      "border-gray-400": !disabled && !isFileBroken && isDraggedOver
+      "border-red-500 hover:border-red-300": !disabled && fileBrokenMessage && !isDraggedOver,
+      "border-red-300": !disabled && fileBrokenMessage && isDraggedOver,
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !fileBrokenMessage && !isDraggedOver,
+      "border-gray-400": !disabled && !fileBrokenMessage && isDraggedOver
     }
   )
 
