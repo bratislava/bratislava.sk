@@ -31,6 +31,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <DatePickerShowCase />
         <InputFieldShowCase />
         <SelectFieldShowCase />
+        <SpinnerShowCase />
         <TextAreaFieldShowCase />
         <ToggleShowCase />
         <TimePickerShowCase />

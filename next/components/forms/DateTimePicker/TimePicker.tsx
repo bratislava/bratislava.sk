@@ -52,10 +52,23 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       state,
       ref as RefObject<HTMLDivElement>
     )
-    const closeHandler = () => {
+
+    const addZeroOnSuccess = (): void => {
+      if (!hour || !minute) {
+        if (hour) setMinute('00')
+        if (minute) setHour('00')
+      }
+    }
+
+    const closeFailedHandler = () => {
       state?.close()
       setHour('')
       setMinute('')
+    }
+
+    const closeSuccessHandler = () => {
+      state?.close()
+      addZeroOnSuccess()
     }
     return (
       <I18nProvider locale={locale}>
@@ -79,14 +92,14 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
           </div>
           {state?.isOpen && (
             <OverlayProvider>
-              <Popover {...dialogProps} shouldCloseOnBlur={false} isOpen={state?.isOpen} onClose={closeHandler}>
+              <Popover {...dialogProps} shouldCloseOnBlur={false} isOpen={state?.isOpen} onClose={closeFailedHandler}>
                 <TimeSelector
                   setHour={setHour}
                   hour={hour}
                   setMinute={setMinute}
                   minute={minute}
-                  onClose={closeHandler}
-                  onSubmit={() => state?.close()}
+                  onClose={closeFailedHandler}
+                  onSubmit={closeSuccessHandler}
                 />
               </Popover>
             </OverlayProvider>

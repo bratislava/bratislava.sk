@@ -32,6 +32,11 @@ const TimeField = ({
   ...rest
 }: TimeFieldBase) => {
   const { locale } = useLocale()
+  const [inputValue, setInputValue] = useState<string>('')
+  const [errorMessageState, setErrorMessageState] = useState<string>(errorMessage || '')
+  const ref = useRef<HTMLDivElement>(null)
+  const INVALID_ERROR_MESSAGE = 'Invalid date format'
+
   const state = useTimeFieldState({
     label,
     description,
@@ -42,10 +47,15 @@ const TimeField = ({
     locale,
   })
 
-  const ref = useRef<HTMLDivElement>(null)
-  const [inputValue, setInputValue] = useState<string>('')
   const { labelProps, fieldProps, descriptionProps, errorMessageProps } = useTimeField(
-    { label, description, isRequired: required, isDisabled: disabled, errorMessage, ...rest },
+    {
+      label,
+      description,
+      isRequired: required,
+      isDisabled: disabled,
+      errorMessage,
+      ...rest,
+    },
     state,
     ref
   )
@@ -53,7 +63,7 @@ const TimeField = ({
     'w-80 flex rounded-lg bg-white border-2 pl-4 py-[10px] pr-12 text-default leading-8 border-form-input-default focus:border-form-input-pressed',
     {
       'hover:border-form-input-hover': !disabled,
-      'border-error focus:border-error hover:border-error': errorMessage,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessageState,
       'opacity-50 pointer-events-none border-form-input-disabled': disabled,
     }
   )
@@ -63,6 +73,12 @@ const TimeField = ({
       `${hour ? addZeroToNumber(hour) : ''}${hour || minute ? ':' : ''}${minute ? addZeroToNumber(minute) : ''}`
     )
   }, [hour, minute])
+
+  // Validation
+  useEffect(() => {
+    const isValideFormate = (): boolean => !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
+    setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
+  }, [errorMessage, inputValue])
 
   return (
     <>
@@ -85,7 +101,7 @@ const TimeField = ({
         />
         <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">{children}</div>
       </div>
-      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+      {!disabled && <FieldErrorMessage errorMessage={errorMessageState} errorMessageProps={errorMessageProps} />}
     </>
   )
 }
