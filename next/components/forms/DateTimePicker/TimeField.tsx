@@ -26,7 +26,7 @@ const TimeField = ({
   required,
   children,
   disabled,
-  errorMessage,
+  errorMessage = '',
   hour,
   minute,
   ...rest
