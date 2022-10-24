@@ -9,15 +9,22 @@ interface TooltipProps {
   arrow?: 'top' | 'right' | 'bottom' | 'left'
   alignArrow?: 'left' | 'center' | 'right'
   absolute?: boolean
-  top?: boolean
-  bottom?: boolean
-  left?: boolean
-  right?: boolean
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
   className?: string
 }
 
 const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
   const { text, visible, arrow, alignArrow, absolute, top, bottom, left, right, className } = props
+
+  const positionStyle = {
+    top: top !== undefined ? `${top}px` : 'auto',
+    bottom: bottom !== undefined ? `${bottom}px` : 'auto',
+    left: left !== undefined ? `${left}px` : 'auto',
+    right: right !== undefined ? `${right}px` : 'auto'
+  }
 
   const tooltipClassNames = cx(
     "flex",
@@ -28,10 +35,6 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
       "flex-row": arrow === 'left',
       "flex-row-reverse": arrow === 'right',
       "absolute": absolute,
-      "top-0": top,
-      "bottom-0": bottom,
-      "left-0": left,
-      "right-0": right
     },
     className
   )
@@ -50,7 +53,7 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
   )
 
   return (
-    <div className={tooltipClassNames}>
+    <div className={tooltipClassNames} style={positionStyle}>
       <div className={arrowClassNames}>
         {
           arrow && ['top', 'bottom'].includes(arrow) && <TopArrowIcon />

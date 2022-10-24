@@ -37,7 +37,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
       {/* TOOLTIP */
        tooltip && (
          <div className="relative">
-          <Tooltip text={tooltip} visible={isTooltipOpened} arrow="bottom" alignArrow="right" absolute bottom right/>
+          <Tooltip text={tooltip} visible={isTooltipOpened} arrow="bottom" alignArrow="right" bottom={0} right={-13} absolute/>
         </div>
        )
       }
