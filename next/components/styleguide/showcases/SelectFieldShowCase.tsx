@@ -2,7 +2,8 @@ import { Wrapper } from '../Wrapper'
 import { Stack } from '../Stack'
 import SelectField from '../../forms/SelectField'
 import { MultiValue } from 'react-select'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import Select from 'react-select/base'
 
 interface SelectFieldShowCaseProps {
 
@@ -17,7 +18,11 @@ const SelectFieldShowCase = () => {
     { value: 'tukeFei', label: 'TUKE FEI' },
     { value: 'unizaFeit', label: 'UNIZA FEIT' }
   ]
+
   const [selectValueFirst, setSelectValueFirst] = useState<MultiValue<unknown>>(selectOptions.slice(0, 2))
+  const [selectValueSecond, setSelectValueSecond] = useState<MultiValue<unknown>>(selectOptions.slice(0, 1))
+
+  const ref = React.createRef<Select>()
 
   return (
     <Wrapper direction="column" title="SelectField">
@@ -28,7 +33,12 @@ const SelectFieldShowCase = () => {
         <SelectField name="select-test" label="Select Field" options={selectOptions} disabled/>
       </Stack>
       <Stack>
-        <SelectField name="select-test" label="Select Field" options={selectOptions} required/>
+        <SelectField name="select-test" label="Select Field" options={selectOptions} required ref={ref}
+                     value={selectValueSecond}
+                     onChange={value => {
+                       setSelectValueSecond(value)
+                       console.log(ref.current?.getValue())
+                     }}/>
         <SelectField name="select-test" label="Select Field" options={selectOptions} errorMessage="Test error message"/>
       </Stack>
       <Stack>
