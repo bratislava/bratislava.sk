@@ -5,11 +5,12 @@ import { FC } from 'react'
 interface TooltipProps {
   text: string
   visible: boolean
-  arrowDirection?: 'top' | 'right' | 'bottom' | 'left'
+  arrow?: 'top' | 'right' | 'bottom' | 'left'
 }
 
 const Tooltip: FC<TooltipProps> = ({ text, visible }: TooltipProps) => {
   const tooltipClassNames = cx(
+
     {
       "hidden": !visible
     }
