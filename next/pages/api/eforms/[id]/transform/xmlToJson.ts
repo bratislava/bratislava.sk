@@ -7,6 +7,10 @@ import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { parseStringPromise } from 'xml2js'
 
+// takes slovensko.sk-ready xml (perhaps serialized from previously filled in eFrom and loaded into browser by user) and converts back to json which we can work with
+// TODO figure out if usable or if it should be rewritten
+
+// TODO needs verification & tests
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST' || typeof req.body?.data !== 'string')
     return res.status(400).json({ message: 'Invalid method or missing "data" field on body' })
@@ -17,8 +21,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const filePath = resolve(cwd(), 'forms', forceString(req.query.id), 'schema.json')
     jsonSchema = JSON.parse(await readFile(filePath, 'utf8'))
     // TODO validate shcema is valid ?
-  } catch (e) {
-    console.error(e)
+  } catch (error) {
+    console.error(error)
     return res.status(400).json({ message: 'Invalid form name or url' })
   }
   // xml2js has issues when top level element isn't a single node

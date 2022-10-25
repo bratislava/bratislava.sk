@@ -1,17 +1,14 @@
-import util from 'util'
-import { exec } from 'child_process'
 import Ajv from 'ajv'
+import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
 import { dropRight, find, last, some } from 'lodash'
-import addFormats from 'ajv-formats'
-
-import { cwd } from 'node:process'
+import { exec } from 'node:child_process'
+import { access, readdir, readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import { readFile, access } from 'node:fs/promises'
-import { promisify } from 'util'
+import { cwd } from 'node:process'
+import util from 'node:util'
+
 import { forceString } from './utils'
-import TSON from 'typescript-json'
-import { readdir } from 'fs/promises'
 
 export type Json = string | number | boolean | null | { [property: string]: Json } | Json[]
 
@@ -41,7 +38,7 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
   } else if (node == null) {
     // noop
   } else {
-    console.log('Erroneous node: ', node)
+    console.log('Erroneous node:', node)
     throw new Error(`Unexpeted node type/value at path ${currentPath.join(' ')}, see the node in logs above.`)
   }
 }
@@ -74,7 +71,7 @@ export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string
     if (!schemaType) {
       // TODO here we're forgiving and just do nothing if we do not match type in schema - but we may want to error in these cases
       console.warn('Did not match schema! Details below')
-      console.log('Path: ', path)
+      console.log('Path:', path)
       console.dir(schema, { depth: 10 })
     }
     // because you can repeat each node any number of times in xml, everything is nested in arrays
@@ -108,7 +105,8 @@ export const validateAndBuildXmlData = async (data: any, formName: unknown) => {
   const validFormName = forceString(formName)
   // test if directory existts
   await access(resolve(cwd(), 'forms', validFormName))
-  const validData = TSON.assertType<Json>(data)
+  // TODO validate
+  const validData = data
   const filePath = resolve(cwd(), 'forms', validFormName, 'template.xml')
   const fileBuffer = await readFile(filePath)
   const $ = cheerio.load(fileBuffer, { xmlMode: true })
@@ -129,29 +127,12 @@ export const validateFormName = async (name: any) => {
   return formsList.find((formName) => formName === nameString)
 }
 
+// TODO create ajv instance once for BE, add async validations
 export const validateDataWithJsonSchema = (data: any, schema: any) => {
+  console.log(schema)
   const ajv = new Ajv()
   addFormats(ajv)
   const validate = ajv.compile(schema)
   validate(data)
   return validate.errors
-}
-
-// TODO below validations and transforms which interact with the command line
-
-const execPromise = util.promisify(exec)
-
-export const validateXmlWithXsdSchema = async (xml: string, schemaFilePath: string) => {
-  // TODO implement
-  return null
-}
-
-const xsltTextTransform = async () => {
-  try {
-    const res = await exec('ls')
-    console.log('stdout:', res.stdout)
-    console.log('stderr:', res.stderr)
-  } catch (e) {
-    console.error(e) // should contain code (exit code) and signal (that caused the termination).
-  }
 }
