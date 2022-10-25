@@ -5,6 +5,7 @@ import TrashBinErrorIcon from '@assets/images/forms/trash_bin_error_icon.svg'
 import TrashBinIcon from '@assets/images/forms/trash_bin_icon.svg'
 import cx from 'classnames'
 import { useState } from 'react'
+import Spinner from '../Spinner'
 
 interface UploadedFileProps {
   fileName: string
@@ -17,7 +18,7 @@ const UploadedFile = ({fileName, errorMessage, isUploading, onRemove}: UploadedF
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   const classNames = cx(
-    "cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear",
+    "cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear text-default",
     {
       "text-form-negative-default": errorMessage,
       "hover:bg-gray-100 hover:text-gray-500": !errorMessage && !isUploading
@@ -37,12 +38,12 @@ const UploadedFile = ({fileName, errorMessage, isUploading, onRemove}: UploadedF
       <div className="mr-2 flex w-full flex-row gap-2">
         {
           isUploading
-            ? <div/> /* tu bude spinner ked sa mergne */
+            ? <Spinner size='sm' className="self-center"/>
             : errorMessage
-              ? <PinFileErrorIcon />
+              ? <PinFileErrorIcon/>
               : isHovered
                 ? <PinFileHoverIcon/>
-                : <PinFileIcon />
+                : <PinFileIcon/>
         }
         <p>{fileName}</p>
       </div>
