@@ -52,12 +52,12 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     const chosenFiles: UploadMinioFile[] = []
 
     for (const file of uploadFiles) {
-
       if (!isFileInSupportedFormats(file)) {
         messages.push(`${file.file.name} has wrong extension.`)
       } else if (!isFileInSizeLimit(file)) {
         messages.push(`${file.file.name} is too large.`)
       } else {
+        file.isUploading = true
         chosenFiles.push(file)
       }
     }
@@ -147,8 +147,9 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       }
       <div className="mt-2">
         { /* FILES AREA */
-          value?.map(({ file, errorMessage}: UploadMinioFile, key: number) => {
-            return <UploadedFile key={key} fileName={file.name} errorMessage={errorMessage}
+          value?.map(({ file, errorMessage, isUploading }: UploadMinioFile, key: number) => {
+            return <UploadedFile key={key} fileName={file.name}
+                                 errorMessage={errorMessage} isUploading={isUploading}
                                  onRemove={() => handleOnRemoveFile(key)}/>
           })
         }

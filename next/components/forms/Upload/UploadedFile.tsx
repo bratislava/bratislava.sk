@@ -9,17 +9,18 @@ import { useState } from 'react'
 interface UploadedFileProps {
   fileName: string
   errorMessage?: string
+  isUploading?: boolean
   onRemove?: () => void
 }
 
-const UploadedFile = ({fileName, errorMessage, onRemove}: UploadedFileProps) => {
+const UploadedFile = ({fileName, errorMessage, isUploading, onRemove}: UploadedFileProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   const classNames = cx(
     "cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear",
     {
       "text-form-negative-default": errorMessage,
-      "hover:bg-gray-100 hover:text-gray-500": !errorMessage
+      "hover:bg-gray-100 hover:text-gray-500": !errorMessage && !isUploading
     }
   )
 
@@ -35,11 +36,13 @@ const UploadedFile = ({fileName, errorMessage, onRemove}: UploadedFileProps) => 
          onMouseLeave={() => setIsHovered(false)}>
       <div className="mr-2 flex w-full flex-row gap-2">
         {
-          errorMessage
-            ? <PinFileErrorIcon />
-            : isHovered
-              ? <PinFileHoverIcon/>
-              : <PinFileIcon />
+          isUploading
+            ? <div/> /* tu bude spinner ked sa mergne */
+            : errorMessage
+              ? <PinFileErrorIcon />
+              : isHovered
+                ? <PinFileHoverIcon/>
+                : <PinFileIcon />
         }
         <p>{fileName}</p>
       </div>
