@@ -72,21 +72,19 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     validatedFiles.forEach((file, id) => {
       uploadFile(file)
         .then((res) => {
-          if (!value) return
+          if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
+          if (!value) throw new Error("Value not defined in component")
+          return res
+        })
+        .finally(() => {
           validatedFiles[id].isUploading = false
           emitOnChange(validatedFiles, value)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error)
+          validatedFiles[id].errorMessage = "File not uploaded"
+        })
     })
-
-    // if (areFilesValid(newFiles)) {
-    //   await uploadFiles(newFiles)
-    //     .then((res: NextApiResponse) => {
-    //       console.log(res)
-    //       emitOnChange(newFiles, value)
-    //       setFileBrokenMessages(null)
-    //     })
-    // }
   }
 
   // EVENT HANDLERS
