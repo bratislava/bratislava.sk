@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as SaxonJS from 'saxon-js'
 
 /**
@@ -6,7 +7,7 @@ import * as SaxonJS from 'saxon-js'
  * @remarks
  * To compile a stylesheet held in xslt to a SEF file, use the command line
  * `xslt3 -xsl:schema.xslt -export:schema.sef.json -t`
- * 
+ *
  * @param xsltPath - Path to Stylesheet in SEF format
  * @param data - Data in XML format
  * @returns transformed data
