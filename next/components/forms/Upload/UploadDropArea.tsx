@@ -3,14 +3,16 @@ import UploadIcon from '@assets/images/forms/upload-icon.svg'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
+import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
+
 interface UploadDropAreaProps {
-  value?: File[]
+  value?: UploadMinioFile[]
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
   fileBrokenMessage?: string | null
   onClick?: () => void
-  onDrop?: (newFiles: File[]) => void
+  onDrop?: (newFiles: UploadMinioFile[]) => void
 }
 
 const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (props: UploadDropAreaProps, ref: ForwardedRef<HTMLDivElement>) => {
@@ -41,11 +43,12 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
   )
 
   // EVENT HANDLERS
-  const reduceItemsToFiles = (filtered: File[], item: DataTransferItem): File[] => {
+  const reduceItemsToFiles = (filtered: UploadMinioFile[], item: DataTransferItem): UploadMinioFile[] => {
     if (item.kind !== 'file') return filtered
     const file = item.getAsFile()
     if (!file) return filtered
-    filtered.push(file)
+    const minioFile: UploadMinioFile = { file }
+    filtered.push(minioFile)
     return filtered
   }
 

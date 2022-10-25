@@ -1,9 +1,10 @@
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
+import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
 
 interface UploadButtonProps {
-  value?: File[]
+  value?: UploadMinioFile[]
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]

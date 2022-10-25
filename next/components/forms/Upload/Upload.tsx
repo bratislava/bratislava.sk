@@ -5,14 +5,16 @@ import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
 import { uploadFiles } from '../../../backend/services/minio'
 import { NextApiResponse } from 'next'
+import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
+
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
-  value?: File[]
+  value?: UploadMinioFile[]
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
-  onChange?: (value: File[]) => void
+  onChange?: (value: UploadMinioFile[]) => void
 }
 
 const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (props:UploadProps, ref: ForwardedRef<HTMLDivElement>) => {
@@ -23,7 +25,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
 
   // HELPER FUNCTIONS
-  const emitOnChange = (newFiles: File[], oldFiles?: File[]) => {
+  const emitOnChange = (newFiles: UploadMinioFile[], oldFiles?: UploadMinioFile[]) => {
     if (onChange) {
       const changedValue = oldFiles ? [...oldFiles, ...newFiles] : newFiles
       onChange(changedValue)
@@ -45,8 +47,8 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     return supportedFormats.includes(fileExtension);
   }
 
-  const areFilesValid = (files: File[]) => {
-    for (const file of files) {
+  const areFilesValid = (files: UploadMinioFile[]) => {
+    for (const { file } of files) {
       if (!isFileInSizeLimit(file)) {
         setFileBrokenMessage(`File ${file.name} is too large.`)
         return false
@@ -59,7 +61,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     return true
   }
 
-  const addNewFiles = async (newFiles: File[]) => {
+  const addNewFiles = async (newFiles: UploadMinioFile[]) => {
     if (areFilesValid(newFiles)) {
       await uploadFiles(newFiles)
         .then((res: NextApiResponse) => {
@@ -81,19 +83,19 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
     uploadInput.addEventListener('change', async () => {
       if (!uploadInput.files) return
-      const newFiles = Array.from(uploadInput.files)
+      const newFiles = Array.from(uploadInput.files, file => { return { file }})
       await addNewFiles(newFiles)
     })
 
     uploadInput.click()
   }
 
-  const handleOnDrop = async (newFiles: File[]) => {
+  const handleOnDrop = async (newFiles: UploadMinioFile[]) => {
     await addNewFiles(newFiles)
   }
 
   const handleOnRemoveFile = (id: number) => {
-    const updatedFiles: File[] = value ? [...value] : []
+    const updatedFiles: UploadMinioFile[] = value ? [...value] : []
     updatedFiles.splice(id,1)
     emitOnChange(updatedFiles)
   }
@@ -127,8 +129,9 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       }
       <div className="mt-2">
         { /* FILES AREA */
-          value?.map((file: File, key: number) => {
-            return <UploadedFile key={key} fileName={file.name} onRemove={() => handleOnRemoveFile(key)}/>
+          value?.map(({ file, errorMessage}: UploadMinioFile, key: number) => {
+            return <UploadedFile key={key} fileName={file.name} errorMessage={errorMessage}
+                                 onRemove={() => handleOnRemoveFile(key)}/>
           })
         }
       </div>

@@ -1,23 +1,24 @@
 import React, { FC, useState } from 'react'
 
+import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
 import Upload from '../../forms/Upload/Upload'
+import UploadedFile from '../../forms/Upload/UploadedFile'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
-import UploadedFile from '../../forms/Upload/UploadedFile'
 
 interface UploadShowCaseProps {
 
 }
 
 const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
-  const [files1, setFiles1] = useState<File[]>([])
-  const [files2, setFiles2] = useState<File[]>([])
-  const [files3, setFiles3] = useState<File[]>([])
-  const [files4, setFiles4] = useState<File[]>([])
-  const [files5, setFiles5] = useState<File[]>([])
-  const [files6, setFiles6] = useState<File[]>([])
-  const [files7, setFiles7] = useState<File[]>([])
-  const [files8, setFiles8] = useState<File[]>([])
+  const [files1, setFiles1] = useState<UploadMinioFile[]>([])
+  const [files2, setFiles2] = useState<UploadMinioFile[]>([])
+  const [files3, setFiles3] = useState<UploadMinioFile[]>([])
+  const [files4, setFiles4] = useState<UploadMinioFile[]>([])
+  const [files5, setFiles5] = useState<UploadMinioFile[]>([])
+  const [files6, setFiles6] = useState<UploadMinioFile[]>([])
+  const [files7, setFiles7] = useState<UploadMinioFile[]>([])
+  const [files8, setFiles8] = useState<UploadMinioFile[]>([])
 
   const ref = React.createRef<HTMLDivElement>()
 
