@@ -1,5 +1,5 @@
-import { addZeroToNumber } from '@utils/utils'
 import cx from 'classnames'
+import padStart from 'lodash/padStart'
 import { ReactNode, useEffect, useRef, useState } from 'react'
 import { useLocale, useTimeField } from 'react-aria'
 import { useTimeFieldState } from 'react-stately'
@@ -17,6 +17,7 @@ type TimeFieldBase = {
   errorMessage?: string
   hour: string
   minute: string
+  isOpen: boolean
 }
 
 const TimeField = ({
@@ -29,6 +30,7 @@ const TimeField = ({
   errorMessage = '',
   hour,
   minute,
+  isOpen,
   ...rest
 }: TimeFieldBase) => {
   const { locale } = useLocale()
@@ -60,7 +62,7 @@ const TimeField = ({
     ref
   )
   const timeFieldStyle = cx(
-    'w-80 flex rounded-lg bg-white border-2 pl-4 py-[10px] pr-12 text-default leading-8 border-form-input-default focus:border-form-input-pressed',
+    'w-80 flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 text-default leading-8 border-form-input-default focus:border-form-input-pressed',
     {
       'hover:border-form-input-hover': !disabled,
       'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessageState,
@@ -70,15 +72,15 @@ const TimeField = ({
 
   useEffect(() => {
     setInputValue(
-      `${hour ? addZeroToNumber(hour) : ''}${hour || minute ? ':' : ''}${minute ? addZeroToNumber(minute) : ''}`
+      `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${minute ? padStart(minute, 2, '0') : ''}`
     )
   }, [hour, minute])
 
   // Validation
   useEffect(() => {
     const isValideFormate = (): boolean => !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
-    setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
-  }, [errorMessage, inputValue])
+    if (!isOpen) setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
+  }, [errorMessage, inputValue, isOpen])
 
   return (
     <>

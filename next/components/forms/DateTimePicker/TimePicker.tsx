@@ -84,6 +84,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               errorMessage={errorMessage}
               hour={hour}
               minute={minute}
+              isOpen={state?.isOpen}
             >
               <Button {...buttonProps} disabled={disabled}>
                 <TimeIcon />

@@ -1,6 +1,6 @@
-import { addZeroToNumber } from '@utils/utils'
 import cx from 'classnames'
 import Button from 'components/forms/Button'
+import padStart from 'lodash/padStart'
 import { ReactNode, useRef } from 'react'
 import { useButton } from 'react-aria'
 
@@ -69,7 +69,7 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
                 (hour === `${item}` && type === 'hour') || (minute === `${item}` && type === 'minute'),
             })}
           >
-            <span className="flex h-6 w-12 items-center justify-center">{addZeroToNumber(`${item}`)}</span>
+            <span className="flex h-6 w-12 items-center justify-center">{padStart(`${item}`, 2, '0')}</span>
           </ButtonSelector>
         ))}
       </div>
