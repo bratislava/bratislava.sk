@@ -21,7 +21,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
   const { type, value, disabled, sizeLimit, supportedFormats, onChange }: UploadProps = props
 
   // STATES
-  const [fileBrokenMessage, setFileBrokenMessage] = useState<string|null>()
+  const [fileBrokenMessages, setFileBrokenMessages] = useState<string[]>([])
 
 
   // HELPER FUNCTIONS
@@ -32,12 +32,12 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     }
   }
 
-  const isFileInSizeLimit = (file: File) => {
+  const isFileInSizeLimit = ({ file }: UploadMinioFile) => {
     const mbSize = file.size / (1024 * 1024)
     return !(sizeLimit && mbSize > sizeLimit);
   }
 
-  const isFileInSupportedFormats = (file: File) => {
+  const isFileInSupportedFormats = ({ file }: UploadMinioFile) => {
     if (!supportedFormats) return true
 
     const lastIndex = file.name.lastIndexOf(".")
@@ -47,29 +47,47 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     return supportedFormats.includes(fileExtension);
   }
 
-  const areFilesValid = (files: UploadMinioFile[]) => {
-    for (const { file } of files) {
-      if (!isFileInSizeLimit(file)) {
-        setFileBrokenMessage(`File ${file.name} is too large.`)
-        return false
-      }
+  const validClientFiles = (uploadFiles: UploadMinioFile[]) => {
+    const messages: string[] = []
+    const chosenFiles: UploadMinioFile[] = []
+
+    for (const file of uploadFiles) {
+
       if (!isFileInSupportedFormats(file)) {
-        setFileBrokenMessage(`File ${file.name} has wrong extension.`)
-        return false
+        messages.push(`${file.file.name} has wrong extension.`)
+      } else if (!isFileInSizeLimit(file)) {
+        messages.push(`${file.file.name} is too large.`)
+      } else {
+        chosenFiles.push(file)
       }
     }
-    return true
+
+    setFileBrokenMessages(messages)
+    return chosenFiles
+  }
+
+  const addFile = async (uploadFile: UploadMinioFile) => {
+    console.log("ELSE")
+    return uploadFile
   }
 
   const addNewFiles = async (newFiles: UploadMinioFile[]) => {
-    if (areFilesValid(newFiles)) {
-      await uploadFiles(newFiles)
-        .then((res: NextApiResponse) => {
-          console.log(res)
-          emitOnChange(newFiles, value)
-          setFileBrokenMessage(null)
-        })
-    }
+    const validatedFiles = validClientFiles(newFiles)
+
+    const uploadedFiles = await Promise.all(
+      validatedFiles.map(file => addFile(file))
+    )
+
+    emitOnChange(uploadedFiles, value)
+
+    // if (areFilesValid(newFiles)) {
+    //   await uploadFiles(newFiles)
+    //     .then((res: NextApiResponse) => {
+    //       console.log(res)
+    //       emitOnChange(newFiles, value)
+    //       setFileBrokenMessages(null)
+    //     })
+    // }
   }
 
   // EVENT HANDLERS
@@ -111,7 +129,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
                           sizeLimit={sizeLimit}
                           supportedFormats={supportedFormats}
                           disabled={disabled}
-                          fileBrokenMessage={fileBrokenMessage}
+                          fileBrokenMessage={fileBrokenMessages}
                           onClick={handleOnClickUpload} />
           : type === 'dragAndDrop'
             ? <UploadDropArea ref={ref}
@@ -119,13 +137,13 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
                               sizeLimit={sizeLimit}
                               supportedFormats={supportedFormats}
                               disabled={disabled}
-                              fileBrokenMessage={fileBrokenMessage}
+                              fileBrokenMessage={fileBrokenMessages}
                               onClick={handleOnClickUpload}
                               onDrop={handleOnDrop} />
             : null
       }
-      {
-        fileBrokenMessage && <p className="w-full p-1 text-red-500">{fileBrokenMessage}</p>
+      { /* messages when file is is broken/invalid before sending to bucket */
+        fileBrokenMessages.map(message =>  <p className="w-full p-1 text-red-500">{message}</p>)
       }
       <div className="mt-2">
         { /* FILES AREA */

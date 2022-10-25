@@ -8,7 +8,7 @@ interface UploadButtonProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
-  fileBrokenMessage?: string | null
+  fileBrokenMessage?: string[]
   onClick?: () => void
 }
 
@@ -21,8 +21,8 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
     "flex-col align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
     {
       "cursor-pointer": !disabled,
-      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !fileBrokenMessage,
-      "border-red-500 hover:border-red-300": !disabled && fileBrokenMessage,
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0),
+      "border-red-500 hover:border-red-300": !disabled && (fileBrokenMessage && fileBrokenMessage.length > 0),
       "opacity-50 cursor-not-allowed bg-gray-200": disabled
     }
   )

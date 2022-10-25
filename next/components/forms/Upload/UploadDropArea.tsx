@@ -10,7 +10,7 @@ interface UploadDropAreaProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
-  fileBrokenMessage?: string | null
+  fileBrokenMessage?: string[]
   onClick?: () => void
   onDrop?: (newFiles: UploadMinioFile[]) => void
 }
@@ -35,10 +35,10 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
     {
       "cursor-not-allowed": disabled,
       "cursor-pointer": !disabled,
-      "border-red-500 hover:border-red-300": !disabled && fileBrokenMessage && !isDraggedOver,
-      "border-red-300": !disabled && fileBrokenMessage && isDraggedOver,
-      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && !fileBrokenMessage && !isDraggedOver,
-      "border-gray-400": !disabled && !fileBrokenMessage && isDraggedOver
+      "border-red-500 hover:border-red-300": !disabled && (fileBrokenMessage && fileBrokenMessage.length > 0) && !isDraggedOver,
+      "border-red-300": !disabled && (fileBrokenMessage && fileBrokenMessage.length > 0) && isDraggedOver,
+      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0) && !isDraggedOver,
+      "border-gray-400": !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0) && isDraggedOver
     }
   )
 
