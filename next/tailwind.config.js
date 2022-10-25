@@ -172,6 +172,7 @@ module.exports = {
         },
         gray: {
           universal: {
+            0:  'var(--input-nav-background-color)',
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
             400: 'var(--universal-gray-400)',
@@ -291,6 +292,16 @@ module.exports = {
       maxWidth: {
         61: '244px',
         87: '350px',
+      },
+      gap: {
+        3: '13px'
+      },
+      margin:{
+        '1px': '3px',
+        '5px': '5px',
+        '8px': '8px',
+        '20px': '20px',
+        '38px': '38px'
       },
       lineHeight: {
         'extra-tight': '1.3',
