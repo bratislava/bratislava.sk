@@ -34,14 +34,14 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
       })}
       components={{
         h1: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className=".typography-h1 scroll-mt-24 lg:scroll-mt-48">
+          <h2 id={getHeadingTag(children)} className=".text-h1 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
         h2: ({ children }) => (
           <h2
             id={getHeadingTag(children)}
-            className="typography-h2 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h2 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h2>
@@ -49,7 +49,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h3: ({ children }) => (
           <h3
             id={getHeadingTag(children)}
-            className="typography-h3 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h3 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h3>
@@ -57,7 +57,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h4: ({ children }) => (
           <h4
             id={getHeadingTag(children)}
-            className="typography-h4 my-6 scroll-mt-24 first:mt-0 last:mb-0 lg:mt-10 lg:mb-6 lg:scroll-mt-48"
+            className="text-h4 my-6 scroll-mt-24 first:mt-0 last:mb-0 lg:mt-10 lg:mb-6 lg:scroll-mt-48"
           >
             {children}
           </h4>
@@ -65,7 +65,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h5: ({ children }) => (
           <h5
             id={getHeadingTag(children)}
-            className="typography-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h5>
@@ -73,12 +73,12 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h6: ({ children }) => (
           <h6
             id={getHeadingTag(children)}
-            className="typography-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular mb-4 whitespace-pre-wrap last:mb-0" {...props} />,
+        p: ({ node, ...props }) => <div className="mb-4 whitespace-pre-wrap text-p-default last:mb-0" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}

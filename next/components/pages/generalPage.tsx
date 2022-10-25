@@ -94,7 +94,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-20 text-md font-bold md:text-2xl lg:pt-30">
+            <h1 className="text-h1 mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-30">
               {page?.title}
             </h1>
 
@@ -153,7 +153,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}
       {/* {page?.relatedBlogPosts?.length > 0 && (
         <SectionContainer className="pt-14 md:pt-18">
-          <h2 className="flex justify-center font-semibold text-lg">{t('relatedContentTitle')}</h2>
+          <h2 className="flex justify-center text-h3">{t('relatedContentTitle')}</h2>
           <RelatedBlogPosts page={page} />
         </SectionContainer>
       )} */}

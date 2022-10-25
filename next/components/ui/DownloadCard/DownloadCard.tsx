@@ -32,7 +32,7 @@ export const DownloadCard = ({
         )}
       >
         <div className=" flex items-end space-x-5 lg:space-x-8">
-          <span className="typography-sm max-h-[96px] w-[250px] overflow-hidden">{title}</span>
+          <span className="text-p3 max-h-[96px] w-[250px] overflow-hidden">{title}</span>
           <span className="flex h-[88px] items-end justify-end text-primary">
             <Download />
           </span>

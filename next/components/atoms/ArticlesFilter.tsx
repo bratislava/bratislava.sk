@@ -39,7 +39,7 @@ export const ArticlesFilter = ({
 
   return (
     <div>
-      <div className="text-center text-default font-semibold lg:text-lg">{t('articleCategories')}</div>
+      <div className="text-h3 text-center">{t('articleCategories')}</div>
       <HorizontalScrollWrapper className="-mx-7.5 mt-8 px-7.5 lg:mt-10">
         <div className="flex">
           {!categoryExists

@@ -206,7 +206,7 @@ const FormTestPage = ({ footer, mainMenu, page }: AsyncServerProps<typeof getSer
                   title={boardPage.title}
                 /> */}
               </div>
-              <h1 className="whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">FORM TEST</h1>
+              <h1 className="whitespace-pre-wrap pt-30 text-h1">FORM TEST</h1>
             </div>
           </SectionContainer>
         </PageHeader>

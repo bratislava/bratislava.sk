@@ -74,23 +74,37 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        xxs: ['12px', '18px'],
-        xs: ['12px', '18px'],
-        sm: ['16px', '24px'],
-        default: ['20px', '30px'],
-        md: ['24px', '36px'],
-        lg: ['32px', '41.6px'],
-        xl: ['36px', '42.3px'],
-        '2xl': ['40px', '52px'],
-        xxxl: ['48px', '62.4px'],
+        'p-xs': ['12px', '18px'],
+        'p-sm': ['14px', '24px'],
+        'p-default': ['16px', '24px'],
+        'p-md': ['20px', '32px'],
+        
+        'h-sm': ['16px', '24px'],
+        'h-default': ['20px', '28px'],
+        'h-md': ['24px', '32px'],
+        'h-lg': ['28px', '36px'],
+        'h-xl': ['32px', '40px'],
+        'h-2xl': ['40px', '48px'],
+        'h-xxxl': ['56px', '64px'],
       },
+      // fontSize: {
+      //   xxs: ['12px', '18px'],
+      //   xs: ['12px', '18px'],
+      //   sm: ['16px', '24px'],
+      //   default: ['20px', '30px'],
+      //   md: ['24px', '36px'],
+      //   lg: ['32px', '41.6px'],
+      //   xl: ['36px', '42.3px'],
+      //   '2xl': ['40px', '52px'],
+      //   xxxl: ['48px', '62.4px'],
+      // },
       colors: {
         form: {
           input: {
             default: '#D6D6D6',
             hover: '#ADADAD',
             pressed: '#333333',
-            disabled: '#C2C2C2'
+            disabled: '#C2C2C2',
           },
           calendar: {
             hover: '#f1f1f1',
@@ -252,7 +266,7 @@ module.exports = {
       },
       height: {
         72: '72px',
-        196: '196px'
+        196: '196px',
       },
       width: {
         540: '540px',

@@ -32,7 +32,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
 
   return (
     <div className={className}>
-      <h2 className="text-center text-default font-semibold lg:text-2xl">{title}</h2>
+      <h2 className="text-h1 text-center">{title}</h2>
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel

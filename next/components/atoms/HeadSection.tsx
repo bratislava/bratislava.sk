@@ -23,7 +23,7 @@ const HeaderSection = ({ className, title, icon, items, dispayedItems }: HeaderS
   <div className={cx(className, 'flex flex-col')}>
     <div className="flex items-center gap-x-4">
       {icon && icon}
-      <div className="text-xl font-semibold">{title}</div>
+      <div className="text-h2">{title}</div>
     </div>
     <div className="mt-8 flex flex-col gap-y-3">
       {items?.slice(0, dispayedItems ? dispayedItems.number : items.length)?.map((item) => (
