@@ -1,9 +1,15 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
-import { UploadMinioFile } from '../dtos/minio/upload-minio-file.dto'
-
-export const uploadFile = async (newFile: UploadMinioFile) => {
-  const response = await axios.post('/api/forms/upload-file').then(res => res)
-  console.log(response)
+export const uploadFile = async (file: File) => {
+  const formData = new FormData()
+  formData.append('file', file)
+  const config: AxiosRequestConfig = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Accept': 'application/json'
+    }
+  }
+  const response = await axios.post('/api/forms/upload-file', formData, config)
+  console.log('RESPONSE:', response)
   return response
 }

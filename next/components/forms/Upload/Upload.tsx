@@ -46,11 +46,11 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     return supportedFormats.includes(fileExtension);
   }
 
-  const validClientFiles = (uploadFiles: UploadMinioFile[]) => {
+  const validClientFiles = (minioFiles: UploadMinioFile[]) => {
     const messages: string[] = []
     const chosenFiles: UploadMinioFile[] = []
 
-    for (const file of uploadFiles) {
+    for (const file of minioFiles) {
       if (!isFileInSupportedFormats(file)) {
         messages.push(`${file.file.name} has wrong extension.`)
       } else if (!isFileInSizeLimit(file)) {
@@ -69,8 +69,8 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     const validatedFiles = validClientFiles(newFiles)
     emitOnChange(validatedFiles, value)
 
-    validatedFiles.forEach((file, id) => {
-      uploadFile(file)
+    validatedFiles.forEach((minioFile, id) => {
+      uploadFile(minioFile.file)
         .then((res) => {
           if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
           if (!value) throw new Error("Value not defined in component")
