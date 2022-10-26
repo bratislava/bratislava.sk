@@ -35,11 +35,7 @@ const parseFormidableFile = async (req: NextApiRequest): Promise<UploadedFileInf
   })
 
   const data = rawData as ParsedFormidableFileData
-  const uploadedFileInfo = JSON.parse(JSON.stringify(data.files.file)) as UploadedFileInfo
-
-  uploadedFileInfo.originalFilename = `${Date.now()}_${uploadedFileInfo.originalFilename}`
-
-  return uploadedFileInfo
+  return  JSON.parse(JSON.stringify(data.files.file)) as UploadedFileInfo
 }
 
 const handleBucketCreation = async () => {
@@ -53,6 +49,7 @@ const handleBucketCreation = async () => {
 
 const handlePostRequest = async (req: NextApiRequest) => {
   const file = await parseFormidableFile(req)
+  console.log("DATA:", file)
   await handleBucketCreation()
   await minioClient.fPutObject(bucketName, file.originalFilename, file.filepath)
 }

@@ -47,7 +47,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
     if (item.kind !== 'file') return filtered
     const file = item.getAsFile()
     if (!file) return filtered
-    const minioFile: UploadMinioFile = { file }
+    const minioFile: UploadMinioFile = { file, originalName: file.name }
     filtered.push(minioFile)
     return filtered
   }

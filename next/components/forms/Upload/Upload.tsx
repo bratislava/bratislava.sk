@@ -31,12 +31,12 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     }
   }
 
-  const isFileInSizeLimit = ({ file }: UploadMinioFile) => {
+  const isFileInSizeLimit = (file : File) => {
     const mbSize = file.size / (1024 * 1024)
     return !(sizeLimit && mbSize > sizeLimit);
   }
 
-  const isFileInSupportedFormats = ({ file }: UploadMinioFile) => {
+  const isFileInSupportedFormats = (file : File) => {
     if (!supportedFormats) return true
 
     const lastIndex = file.name.lastIndexOf(".")
@@ -46,18 +46,27 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     return supportedFormats.includes(fileExtension);
   }
 
-  const validClientFiles = (minioFiles: UploadMinioFile[]) => {
+  const addTimeStampToFileName = (file: File) => {
+    const newName = `${Date.now()}_${file.name}`
+    return new File([file], newName, {
+      type: file.type,
+      lastModified: file.lastModified
+    })
+  }
+
+  const sanitizeClientFiles = (minioFiles: UploadMinioFile[]) => {
     const messages: string[] = []
     const chosenFiles: UploadMinioFile[] = []
 
-    for (const file of minioFiles) {
-      if (!isFileInSupportedFormats(file)) {
-        messages.push(`${file.file.name} has wrong extension.`)
-      } else if (!isFileInSizeLimit(file)) {
-        messages.push(`${file.file.name} is too large.`)
+    for (const minioFile of minioFiles) {
+      if (!isFileInSupportedFormats(minioFile.file)) {
+        messages.push(`${minioFile.file.name} has wrong extension.`)
+      } else if (!isFileInSizeLimit(minioFile.file)) {
+        messages.push(`${minioFile.file.name} is too large.`)
       } else {
-        file.isUploading = true
-        chosenFiles.push(file)
+        minioFile.file = addTimeStampToFileName(minioFile.file)
+        minioFile.isUploading = true
+        chosenFiles.push(minioFile)
       }
     }
 
@@ -66,10 +75,10 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
   }
 
   const addNewFiles = (newFiles: UploadMinioFile[]) => {
-    const validatedFiles = validClientFiles(newFiles)
-    emitOnChange(validatedFiles, value)
+    const sanitizedFiles = sanitizeClientFiles(newFiles)
+    emitOnChange(sanitizedFiles, value)
 
-    validatedFiles.forEach((minioFile, id) => {
+    sanitizedFiles.forEach((minioFile, id) => {
       uploadFile(minioFile.file)
         .then((res) => {
           if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
@@ -77,12 +86,12 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
           return res
         })
         .finally(() => {
-          validatedFiles[id].isUploading = false
-          emitOnChange(validatedFiles, value)
+          sanitizedFiles[id].isUploading = false
+          emitOnChange(sanitizedFiles, value)
         })
         .catch(error => {
           console.log(error)
-          validatedFiles[id].errorMessage = "File not uploaded"
+          sanitizedFiles[id].errorMessage = "File not uploaded"
         })
     })
   }
@@ -98,7 +107,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
     uploadInput.addEventListener('change', () => {
       if (!uploadInput.files) return
-      const newFiles = Array.from(uploadInput.files, file => { return { file }})
+      const newFiles = Array.from(uploadInput.files, file => { return { file, originalName: file.name }})
       addNewFiles(newFiles)
     })
 
@@ -144,9 +153,9 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       }
       <div className="mt-2">
         { /* FILES AREA */
-          value?.map(({ file, errorMessage, isUploading }: UploadMinioFile, key: number) => {
-            return <UploadedFile key={key} fileName={file.name}
-                                 errorMessage={errorMessage} isUploading={isUploading}
+          value?.map((minioFile: UploadMinioFile, key: number) => {
+            return <UploadedFile key={key} fileName={minioFile.originalName}
+                                 errorMessage={minioFile.errorMessage} isUploading={minioFile.isUploading}
                                  onRemove={() => handleOnRemoveFile(key)}/>
           })
         }
