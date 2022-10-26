@@ -1,5 +1,13 @@
 import { Client } from 'minio'
 
+export const region = "us-east-1"
+export const bucketName = "tkznmjmkzjbvwlmcogc3"
+
+/*
+https://www.npmjs.com/package/minio
+Check files on testing site: https://play.min.io
+Credentials are mapped as login=accessKey and password=secretKey
+ */
 const minioClient = new Client({
   endPoint: 'play.min.io',
   port: 9000,

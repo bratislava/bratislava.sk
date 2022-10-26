@@ -2,7 +2,13 @@ import { withSentry } from '@sentry/nextjs'
 import formidable, { PersistentFile } from 'formidable'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import minioClient from '../../../backend/utils/minio-client'
+import minioClient, { bucketName, region } from '../../../backend/utils/minio-client'
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+}
 
 interface ParsedFormidableFileData {
   files: {
@@ -29,27 +35,26 @@ const parseFormidableFile = async (req: NextApiRequest): Promise<UploadedFileInf
   })
 
   const data = rawData as ParsedFormidableFileData
-  return JSON.parse(JSON.stringify(data.files.file)) as UploadedFileInfo
+  const uploadedFileInfo = JSON.parse(JSON.stringify(data.files.file)) as UploadedFileInfo
+
+  uploadedFileInfo.originalFilename = `${Date.now()}_${uploadedFileInfo.originalFilename}`
+
+  return uploadedFileInfo
 }
 
-const handleBucketCreation = async (bucketName: string) => {
+const handleBucketCreation = async () => {
   const isBucketExisting = await minioClient.bucketExists(bucketName)
   if (!isBucketExisting) {
-    await minioClient.makeBucket(bucketName, 'us-east-1')
+    await minioClient.makeBucket(bucketName, region)
+      .then(() => console.log(`Bucket ${bucketName} created successfully in ${region}`))
   }
 }
 
 
 const handlePostRequest = async (req: NextApiRequest) => {
   const file = await parseFormidableFile(req)
-  console.log('DATA:', file)
-  await handleBucketCreation("tkznmjmkzjbvwlmcogc3")
-}
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
+  await handleBucketCreation()
+  await minioClient.fPutObject(bucketName, file.originalFilename, file.filepath)
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
