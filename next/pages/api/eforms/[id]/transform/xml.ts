@@ -1,5 +1,5 @@
+import { buildXmlRecursive } from '@backend/utils/forms'
 import { withSentry } from '@sentry/nextjs'
-import { buildXmlRecursive, validateFormName } from '@utils/forms'
 import { forceString } from '@utils/utils'
 import * as cheerio from 'cheerio'
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -16,7 +16,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ message: 'Invalid method or missing "data" field on body' })
   let fileBuffer: Buffer
   try {
-    const formName = await validateFormName(req.query.id)
+    // TODO change how to look up for the schema
+    const formName = req.query.id
     if (!formName) throw new Error(`Invalid form name - validateFormName returned: ${formName}`)
     const filePath = resolve(cwd(), 'forms', forceString(req.query.id), 'template.xml')
     // TODO consider changing to streamed buffer

@@ -1,13 +1,12 @@
+import forms, { EFormKey, EFormValue } from '@backend/forms'
+import { validateDataWithJsonSchema } from '@backend/utils/forms'
 import { withSentry } from '@sentry/nextjs'
-import { buildXmlRecursive, validateDataWithJsonSchema, validateFormName, validateXmlWithXsdSchema } from '@utils/forms'
 import { forceString } from '@utils/utils'
-import * as cheerio from 'cheerio'
-import forms, { EFormKey, EFormValue } from 'forms'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log('-------------------')
-  console.log('Validating form: ', req.query.id)
+  console.log('Validating form:', req.query.id)
   console.log(req.body)
   if (req.method !== 'POST') return res.status(400).json({ message: 'Invalid method or missing "data" field on body' })
 
@@ -17,8 +16,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     formSlug = forceString(req.query.id) as EFormKey
     eform = forms[formSlug]
     if (!eform) return { notFound: true }
-  } catch (e) {
-    console.error(e)
+  } catch (error) {
+    console.error(error)
     return { notFound: true }
   }
 

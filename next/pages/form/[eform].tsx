@@ -2,16 +2,16 @@
 // be aware it may break styling of the rest of the app, including custom components!
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
+import forms, { EFormKey, EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import validator from '@rjsf/validator-ajv8'
-import { useFormStepper } from '@utils/frontendForms'
+import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
 import { forceString } from '@utils/utils'
 import Button from 'components/forms/Button'
 import FinalStep from 'components/forms/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
-import forms, { EFormKey, EFormValue } from 'forms'
 import _ from 'lodash'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -25,10 +25,10 @@ import { isProductionDeployment } from '../../utils/utils'
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   if (isProductionDeployment()) return { notFound: true }
 
-  let formSlug: EFormKey | undefined
-  let eform: EFormValue | undefined
+  let formSlug: EFormKey
+  let eform: EFormValue
   try {
-    formSlug = forceString(ctx.query.eform)
+    formSlug = forceString(ctx.query.eform) as any
     eform = forms[formSlug]
     // sanity check
     if (!eform) return { notFound: true }
