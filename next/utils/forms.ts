@@ -1,5 +1,5 @@
 import Form from '@rjsf/core'
-import { useEffect, useRef, useState } from 'react'
+import { Ref, useEffect, useRef, useState } from 'react'
 
 // TODO prevent unmounting
 // TODO persist state for session
@@ -7,7 +7,9 @@ import { useEffect, useRef, useState } from 'react'
 export const useFormStepper = (eformSlug: string, schema: any) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
-  const formRef = useRef<Form>()
+  // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
+  // this is probably a bug in their typing therefore the cast
+  const formRef = useRef<Form>() as Ref<Form>
 
   // TODO validate
   const steps = schema?.allOf
