@@ -10,7 +10,16 @@ interface ParsedFormidableFileData {
   }
 }
 
-const parseFormidableFile = async (req: NextApiRequest) => {
+interface UploadedFileInfo {
+  size: number
+  filepath: string
+  newFilename: string
+  mimetype: string
+  mtime: string
+  originalFilename: string
+}
+
+const parseFormidableFile = async (req: NextApiRequest): Promise<UploadedFileInfo> => {
   const rawData = await new Promise((resolve, reject) => {
     const form = new formidable.IncomingForm({ keepExtensions: true })
     form.parse(req, (err, _, files) => {
@@ -20,14 +29,21 @@ const parseFormidableFile = async (req: NextApiRequest) => {
   })
 
   const data = rawData as ParsedFormidableFileData
-  return JSON.parse(JSON.stringify(data.files.file))
+  return JSON.parse(JSON.stringify(data.files.file)) as UploadedFileInfo
 }
 
-const handlePostRequest = async (req: NextApiRequest, res: NextApiResponse) => {
+const handleBucketCreation = async (bucketName: string) => {
+  const isBucketExisting = await minioClient.bucketExists(bucketName)
+  if (!isBucketExisting) {
+    await minioClient.makeBucket(bucketName, 'us-east-1')
+  }
+}
+
+
+const handlePostRequest = async (req: NextApiRequest) => {
   const file = await parseFormidableFile(req)
   console.log('DATA:', file)
-  const isBucketExisting = await minioClient.bucketExists("1st").catch(error => console.log(error))
-  console.log('IS BUCKET EXISTING:', isBucketExisting)
+  await handleBucketCreation("tkznmjmkzjbvwlmcogc3")
 }
 
 export const config = {
@@ -38,10 +54,15 @@ export const config = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    await handlePostRequest(req, res)
-    return res.status(200).json({ data: 'success' });
+    await handlePostRequest(req)
+      .then(response => res.status(200).json({ data: 'success', response }))
+      .catch(error => {
+        console.log(error)
+        res.status(500).json({ error })
+      })
+    return res
   }
-  return res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+  return res.status(405).json({ error: `Method '${req.method}' Not Allowed` })
 }
 
 
