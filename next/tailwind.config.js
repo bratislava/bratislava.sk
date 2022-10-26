@@ -73,6 +73,9 @@ module.exports = {
       ],
     },
     extend: {
+      rotate: {
+        "270": "270deg"
+      },
       fontSize: {
         xxs: ['12px', '18px'],
         xs: ['12px', '18px'],
