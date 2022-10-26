@@ -1,7 +1,7 @@
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
 import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
-import { uploadFile } from '../../../backend/services/minio'
+import { deleteFile, uploadFile } from '../../../backend/services/minio'
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
@@ -118,10 +118,25 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     addNewFiles(newFiles)
   }
 
-  const handleOnRemoveFile = (id: number) => {
-    const updatedFiles: UploadMinioFile[] = value ? [...value] : []
-    updatedFiles.splice(id,1)
+  const removeFile = (fileName: string) => {
+    const updatedFiles = value
+      ? value.filter(minioFile => minioFile.file.name !== fileName)
+      : []
     emitOnChange(updatedFiles)
+  }
+
+  const handleOnRemoveFile = (id: number) => {
+    if (!value) return
+    const fileName = value[id].file.name
+
+    deleteFile(fileName)
+      .then((res) => {
+        if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
+        if (!value) throw new Error("Value not defined in component")
+        removeFile(fileName)
+        return res
+      })
+      .catch(error => console.log(error))
   }
 
 
