@@ -3,6 +3,8 @@ import { isProductionDeployment } from '@utils/utils'
 import PageWrapper from 'components/layouts/PageWrapper'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
+import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCase'
+import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -15,7 +17,6 @@ import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
-
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -28,16 +29,18 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
         <TagShowCase />
+        <TooltipShowCase/>
         <FieldHeaderShowCase />
         <ButtonShowCase />
         <DatePickerShowCase />
         <InputFieldShowCase />
-        <SelectFieldShowCase/>
+        <SelectFieldShowCase />
         <SpinnerShowCase />
         <TextAreaFieldShowCase/>
         <AlertShowCase/>
         <SearchFieldShowCase/>
         <ToggleShowCase/>
+        <TimePickerShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )

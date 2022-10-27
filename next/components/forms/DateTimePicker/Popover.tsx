@@ -6,31 +6,31 @@ type PopoverBase = {
   onClose?: () => void
   children?: ReactNode
   popoverRef?: RefObject<HTMLDivElement>
+  shouldCloseOnBlur?: boolean
 }
 
 const Popover = (props: PopoverBase) => {
   const ref = useRef<HTMLDivElement>(null)
-  const { popoverRef = ref, isOpen, onClose, children, ...otherProps } = props
+  const { popoverRef = ref, isOpen, onClose, children, shouldCloseOnBlur = true, ...rest } = props
 
   const { overlayProps } = useOverlay(
     {
       isOpen,
       onClose,
-      shouldCloseOnBlur: true,
+      shouldCloseOnBlur,
       isDismissable: true,
     },
     popoverRef
   )
 
   const { modalProps } = useModal()
-  const { dialogProps } = useDialog(otherProps, popoverRef)
-
+  const { dialogProps } = useDialog(rest, popoverRef)
   return (
     <FocusScope contain restoreFocus>
       <div
         {...mergeProps(overlayProps, modalProps, dialogProps)}
         ref={popoverRef}
-        className="focus: absolute z-50 mt-2 outline-none"
+        className="absolute z-50 mt-2 focus:outline-none"
       >
         {children}
         <DismissButton onDismiss={onClose} />
