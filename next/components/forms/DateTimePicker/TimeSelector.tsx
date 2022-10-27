@@ -1,3 +1,4 @@
+/* eslint-disable lodash-fp/no-extraneous-args */
 import cx from 'classnames'
 import Button from 'components/forms/Button'
 import padStart from 'lodash/padStart'

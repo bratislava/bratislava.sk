@@ -72,6 +72,7 @@ const TimeField = ({
 
   useEffect(() => {
     setInputValue(
+      // eslint-disable-next-line lodash-fp/no-extraneous-args
       `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${minute ? padStart(minute, 2, '0') : ''}`
     )
   }, [hour, minute])
