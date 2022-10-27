@@ -70,7 +70,7 @@ const Alert = (
 
   const contentStyle = cx('w-404', {
     'text-sm font-normal leading-6': variant === 'basic',
-    'text-default leading-7 ml-5px font-semibold': variant === 'message',
+    'text-default leading-7 ml-1 font-semibold': variant === 'message',
     'w-368': close,
   })
 
@@ -85,7 +85,7 @@ const Alert = (
     <div className={alertContainer}>
       <span>{icons[type]}</span>
       <div className={contentStyle}>{message}</div>
-      {close && <CloseIcon className='ml-1px' onClick={close} solid={solid} type={type} />}
+      {close && <CloseIcon className='ml-1' onClick={close} solid={solid} type={type} />}
     </div>
   ) : (
     <div className={alertContainer}>
@@ -93,9 +93,9 @@ const Alert = (
         <span>{icons[type]}</span>
         <div className={contentStyle}>{message}</div>
       </div>
-      <div className='ml-38px mt-8px w-404 text-base font-normal not-italic leading-6'>{content}</div>
+      <div className='ml-10 mt-2 w-404 text-base font-normal not-italic leading-6'>{content}</div>
       {rest.buttons ?
-        <div className='ml-38px mt-20px flex w-32 gap-5'>
+        <div className='ml-10 mt-5 flex w-32 gap-5'>
           <button type='button' className={extraButtonStyle} onClick={rest.buttons[0].handler}>{rest.buttons[0].title}</button>
           <button type='button' className={extraButtonStyle} onClick={rest.buttons[1].handler}>{rest.buttons[1].title}</button>
         </div> : null}

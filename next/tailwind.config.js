@@ -303,13 +303,6 @@ module.exports = {
       gap: {
         3: '13px'
       },
-      margin:{
-        '1px': '3px',
-        '5px': '5px',
-        '8px': '8px',
-        '20px': '20px',
-        '38px': '38px'
-      },
       lineHeight: {
         'extra-tight': '1.3',
       },
