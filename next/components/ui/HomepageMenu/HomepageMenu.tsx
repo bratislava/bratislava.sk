@@ -16,7 +16,7 @@ const HomepageMenu = ({ items }: IProps) => {
     <nav className="ml-10 hidden md:mx-auto md:block md:w-[80%]" aria-labelledby="menu">
       <menu className="flex flex-col justify-items-center gap-y-10 md:grid md:grid-cols-3 md:gap-x-1 lg:flex lg:flex-row lg:justify-center lg:gap-y-0">
         {items?.map((item) => (
-          <li key={item.id} className="w-[90%]">
+          <li key={item.id} className="mx-2 w-full">
             <MenuItem
               className="transition"
               buttons={
@@ -33,7 +33,10 @@ const HomepageMenu = ({ items }: IProps) => {
               onClick={handleClick}
               isPanelVisible={visiblePanelId === item.id}
             >
-              <MenuPanel item={item} className="w-full transition-opacity delay-500 md:min-w-[75%] md:max-w-[95%]" />
+              <MenuPanel
+                item={item}
+                className="w-full transition-opacity delay-500 md:w-[90%] lg:min-w-[75%] lg:max-w-[90%]"
+              />
             </MenuItem>
           </li>
         ))}
