@@ -35,6 +35,7 @@ export const HomepageHeader: FC<Props> = ({
 }) => {
   const { observableNodeRef, stickyMenuState } = useHomepageHeader()
   const { title, metaDescription } = homepage?.data?.attributes ?? {}
+  console.log('stickyMenuState', stickyMenuState)
 
   return (
     <div className="flex flex-col lg:block lg:w-screen">

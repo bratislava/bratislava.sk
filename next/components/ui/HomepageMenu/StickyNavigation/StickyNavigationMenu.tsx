@@ -17,7 +17,10 @@ export const StickyNavigationMenu = ({ menuItems = [], className }: IProps) => {
 
   return (
     <menu
-      className={cx('fixed z-40 flex w-full gap-2 bg-white pb-4 drop-shadow-lg lg:flex lg:flex-row lg:justify-center lg:gap-x-1 lg:gap-y-0', className)}
+      className={cx(
+        'fixed z-40 flex w-full gap-2 bg-white pb-4 drop-shadow-lg lg:flex lg:flex-row lg:justify-center lg:gap-x-1 lg:gap-y-0',
+        className
+      )}
     >
       {menuItems.map((item) => (
         <li key={item.id} className="lg:min-w-[13%] lg:shrink" ref={navBarRef}>
