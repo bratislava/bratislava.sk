@@ -73,6 +73,9 @@ module.exports = {
       ],
     },
     extend: {
+      rotate: {
+        "270": "270deg"
+      },
       fontSize: {
         'p-xs': ['12px', '18px'],
         'p-sm': ['14px', '24px'],
@@ -109,6 +112,7 @@ module.exports = {
           calendar: {
             hover: '#f1f1f1',
             header: '#F5F5F5',
+            pressed: '#EBEBEB',
             placeholder: '#858585',
           },
           brand: {
@@ -285,6 +289,7 @@ module.exports = {
       },
     },
   },
+  plugins: [require('tailwind-scrollbar-hide')],
   corePlugins: {
     container: false,
   },
