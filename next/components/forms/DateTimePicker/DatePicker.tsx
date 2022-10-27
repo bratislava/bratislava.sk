@@ -55,7 +55,6 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       // @ts-ignore
       state?.setDateValue(null)
     }
-
     return (
       <I18nProvider locale={locale}>
         <div className="relative">
