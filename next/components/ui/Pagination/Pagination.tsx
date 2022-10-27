@@ -126,9 +126,7 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
               className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-primary md:mx-3 md:h-12 md:w-12"
               onClick={() => handleSelectPage(item.page)}
             >
-              <div className="text--gray-universal-200 m-auto block text-sm font-semibold leading-5 sm:text-default">
-                {item.page}
-              </div>
+              <div className="text--gray-universal-200 text-p1 m-auto block font-semibold leading-5">{item.page}</div>
             </Button>
           ) : null
         )}
@@ -140,7 +138,7 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
             className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-primary md:mx-3 md:h-12 md:w-12"
             onClick={() => handleSelectPage(numberOfPages)}
           >
-            <div className="m-auto block text-sm font-semibold leading-5 sm:text-default">{numberOfPages}</div>
+            <div className="m-auto block text-p2 font-semibold leading-5">{numberOfPages}</div>
           </Button>
         ) : null}
         {currentPage !== numberOfPages ? (

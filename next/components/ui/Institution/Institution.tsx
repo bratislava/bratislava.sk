@@ -19,7 +19,7 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
   return (
     <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
       <div className="flex flex-col">
-        <h4 className="text-default font-semibold leading-[26px]">{title}</h4>
+        <h4 className="text-lbl-1 font-semibold leading-[26px]">{title}</h4>
         {subtitle && <UIMarkdown className="fontSize-base mt-6 text-base" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
@@ -46,7 +46,7 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
         <UILink href={url}>
           <InstitutionCard {...rest} className="group hover:border-primary">
             {urlLabel && (
-              <div className="mt-6 flex items-center font-semibold underline">
+              <div className="mt-6 flex items-center text-p2 font-semibold underline">
                 <span className="mr-5">{urlLabel}</span>
                 <ChevronRight className="block h-3 group-hover:hidden" />
                 <ArrowRight className="hidden h-3 group-hover:block" />

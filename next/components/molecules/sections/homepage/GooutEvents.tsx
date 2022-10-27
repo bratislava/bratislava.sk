@@ -50,7 +50,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
               title={ev.title}
               description={
                 <UILink
-                  className="flex flex-col p-6 text-default font-semibold text-primary"
+                  className="text-p1 flex flex-col p-6 font-semibold text-primary"
                   href={ev.url}
                   target="_blank"
                   rel="noreferrer"
@@ -70,7 +70,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className=" box-border rounded-lg border-2 border-primary py-3.5 px-6 text-sm lg:text-default"
+          className=" text-p1 box-border rounded-lg border-2 border-primary py-3.5 px-6"
         >
           {linkTitle}
         </Link>

@@ -46,4 +46,12 @@
   .text-p4 {
     @apply text-p-xs;
   }
+
+  .text-lbl-1 {
+    @apply text-p-md;
+  }
+
+  .text-lbl2 {
+    @apply text-p-default;
+  }
 }

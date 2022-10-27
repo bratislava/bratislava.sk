@@ -177,7 +177,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
             {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
           </div>
-          <div className="text-md relative flex cursor-pointer items-center bg-transparent text-gray-light">
+          <div className="text-h4 relative flex cursor-pointer items-center bg-transparent text-gray-light">
             <LanguageSelect
               className="text-p3 cursor-pointer appearance-none bg-transparent font-semibold focus:outline-none active:outline-none"
               {...languageSelectProps}

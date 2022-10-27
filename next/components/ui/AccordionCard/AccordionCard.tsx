@@ -33,7 +33,7 @@ export const AccordionCard = ({
     /* TODO min-w-70 does not work anymore (worked fine on monorepo) */
     displayName && jobTitle ? (
       <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
-        <div className="pb-2 text-sm font-semibold lg:text-md">{displayName}</div>
+        <div className="text-h4 pb-2">{displayName}</div>
         <div className="pb-6 text-xs text-gray-dark lg:text-sm">{jobTitle}</div>
         <div className="flex justify-between">
           <div>

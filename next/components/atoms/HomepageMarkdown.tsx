@@ -49,7 +49,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h3: ({ children }) => (
           <h3
             id={getHeadingTag(children)}
-            className="text-h3 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4 font-medium mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h3>
@@ -78,7 +78,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="mb-4 whitespace-pre-wrap text-p-default last:mb-0" {...props} />,
+        p: ({ node, ...props }) => <div className="text-p1 mb-4 whitespace-pre-wrap last:mb-0" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
@@ -102,7 +102,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         thead: () => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="mb-1 flex items-center px-4 text-left text-sm md:min-h-[92px] md:text-default lg:mb-0">
+            <div className="text-p1 mb-1 flex items-center px-4 text-left md:min-h-[92px] lg:mb-0">
               {children}
             </div>
           </td>
@@ -138,7 +138,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
                   { 'border-primary border-solid border-4': level !== 0 }
                 )}
               />
-              <div className="whitespace-pre-wrap text-base lg:text-default">{children}</div>
+              <div className="text-p1 whitespace-pre-wrap">{children}</div>
             </div>
           )
         },

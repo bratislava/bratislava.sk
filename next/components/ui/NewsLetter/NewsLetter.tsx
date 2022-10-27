@@ -43,7 +43,7 @@ export const NewsLetter = ({
       >
         {/* Content */}
         <div className="mt-30 mb-8 p-6 lg:my-0 lg:p-12">
-          <h2 className="text-md font-semibold">Newsletter</h2>
+          <h2 className="text-h4">Newsletter</h2>
           <div className="mt-5 text-base">{newsLetterContent}</div>
           <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
             <input

@@ -49,8 +49,8 @@ export const CookieConsent = ({ pageColor }: IProps) => {
       {shouldShowBanner ? (
         <div className="fixed inset-x-0 bottom-6 z-50 px-6">
           <div className="mx-auto max-w-[1110px] rounded-lg bg-white py-8 px-6 shadow md:px-10">
-            <h6 className="mb-4 text-default font-semibold"> {t('cookie_consent_modal_content_title')} </h6>
-            <p className="mb-8 text-xxs sm:text-sm">
+            <h6 className="text-h5 mb-4"> {t('cookie_consent_modal_content_title')} </h6>
+            <p className="text-p3 mb-8">
               {' '}
               {t('cookie_consent_body')}{' '}
               <NextLink href={t('cookie_consent_privacy_policy_link')} passHref>
@@ -62,14 +62,14 @@ export const CookieConsent = ({ pageColor }: IProps) => {
             </p>
             <div className="block sm:flex">
               <Button
-                className="mb-3 h-12 px-6 text-sm font-medium sm:my-0 sm:mr-6"
+                className="text-lbl-2 mb-3 h-12 px-6 font-medium sm:my-0 sm:mr-6"
                 variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                 onClick={() => setConsents({ statistics: true })}
               >
                 {t('cookie_consent_accept')}
               </Button>
               <Button
-                className="mt-0 h-12 px-6 text-sm font-medium"
+                className="text-lbl-2 mt-0 h-12 px-6 font-medium"
                 variant="secondary-dark-text"
                 onClick={() => setConsents({ statistics: false })}
               >

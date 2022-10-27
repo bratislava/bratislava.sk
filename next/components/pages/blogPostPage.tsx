@@ -72,7 +72,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="min-h-[220px] pt-30">
             {blogPost?.tag && (
-              <span className="inline-block rounded bg-primary px-3 py-1 text-sm font-medium text-white">
+              <span className="text-p2 inline-block rounded bg-primary px-3 py-1 font-medium text-white">
                 {tag?.title}
               </span>
             )}
@@ -93,7 +93,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
       {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
       <SectionContainer>
         <div className="mt-14 flex flex-col">
-          <span className="text-default font-semibold">{t('share')}</span>
+          <span className="text-h5">{t('share')}</span>
           <div className="flex space-x-10 pt-5">
             <SocialMediaButton href={`https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}>
               <FacebookIcon />
