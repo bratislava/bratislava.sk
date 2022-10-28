@@ -8,14 +8,14 @@ import * as SaxonJS from 'saxon-js'
  * To compile a stylesheet held in xslt to a SEF file, use the command line
  * `xslt3 -xsl:schema.xslt -export:schema.sef.json -t`
  *
- * @param xsltPath - Path to Stylesheet in SEF format
+ * @param stylesheet - Stylesheet in SEF format
  * @param data - Data in XML format
  * @returns transformed data
  */
-export const transform = async (xsltPath: string, data: string): Promise<string> => {
+export const transform = async (stylesheet: any, data: string): Promise<string> => {
   const output = await SaxonJS.transform(
     {
-      stylesheetLocation: xsltPath,
+      stylesheetInternal: stylesheet,
       sourceText: data,
       destination: 'serialized',
     },
