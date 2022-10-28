@@ -1,5 +1,6 @@
 // @ts-strict-ignore
 import { ArrowRight, ChevronRight } from '@assets/images'
+import { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import {
   Enum_Pagecategory_Color,
@@ -12,7 +13,6 @@ import { PostButton } from '@bratislava/ui-bratislava/Sections/Posts/PostButton'
 import { getRoadClosuresUrl } from '@bratislava/ui-bratislava/Sections/Posts/PostsService'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { PostCard } from '../../../organisms/posts/PostCard'
@@ -25,7 +25,7 @@ import { NewsCard } from '../../NewsCard/NewsCard'
 
 export interface PostsProps {
   posts?: Post[]
-  latestPost?: LatestBlogsFragment
+  latestPost?: LatestBlogsFragment | null
   leftHighLight?: NewsCardBlogFragment | null
   rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
@@ -61,25 +61,23 @@ export const Posts = ({
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const [activeTab, setActiveTab] = React.useState<TAB_CATEGORY>(TAB_CATEGORY.NEWS)
-  const activeNewsCards = posts[activeTab]?.newsCards ?? []
+  const [{ tab, newsCards }, setActiveTab] = React.useState<Post>(posts[0])
 
   // TODO handle loading and errors
-  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>(
+  const { data: officialBoardData = [] } = useSWR<ParsedOfficialBoardDocument[]>(
     '/api/ginis/newest',
     () => fetch('/api/ginis/newest').then((res) => res.json()),
   )
-  const documents = officialBoardData || []
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
-  const [firstPost, secondPost] = activeNewsCards
+  const [firstPost, secondPost] = newsCards
   const [firstRozkoPost, secondRozkoPost, ...restRozkoPosts] = rozkoPosts.data
   const roadClosuresUrl = getRoadClosuresUrl(posts)
 
   return (
     <div className="lg:mt-10">
-      <PostsTabs posts={posts} onClick={setActiveTab} activeTab={activeTab} />
-      {activeTab === TAB_CATEGORY.NEWS && (
+      <PostsTabs posts={posts} onTabClick={setActiveTab} activeTab={tab} />
+      {tab === TAB_CATEGORY.NEWS && (
         <PostCard
           highlightedPosts={
             <>
@@ -120,10 +118,10 @@ export const Posts = ({
           }
         />
       )}
-      {activeTab === TAB_CATEGORY.OFFICIAL_BOARD && (
+      {tab === TAB_CATEGORY.OFFICIAL_BOARD && (
         <div className="mt-14 flex flex-col gap-y-10">
           <div className="flex flex-col items-center gap-y-5">
-            {documents.map((document, index) => (
+            {officialBoardData.map((document, index) => (
               <DocumentCard
                 key={index}
                 {...document}
@@ -148,7 +146,7 @@ export const Posts = ({
           </UILink>
         </div>
       )}
-      {activeTab === TAB_CATEGORY.ROAD_CLOSURES && (
+      {tab === TAB_CATEGORY.ROAD_CLOSURES && (
         <PostCard
           highlightedPosts={
             <>
@@ -185,7 +183,7 @@ export const Posts = ({
           }
         />
       )}
-      {activeTab === TAB_CATEGORY.PUBLICATION && (
+      {tab === TAB_CATEGORY.PUBLICATION && (
         <div className="text-h4-normal mt-14 items-end px-8 text-center">
           {t('allInformationOnSite')}{' '}
           <UILink
@@ -203,13 +201,8 @@ export const Posts = ({
       {/* Mobile */}
       <div className="mt-9 hidden">
         <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
-          {activeNewsCards.map((newsItem, index) => (
-            <NewsCard
-              key={index}
-              readMoreText={readMoreText}
-              className="w-11/12 shrink-0"
-              {...newsItem}
-            />
+          {newsCards.map((newsItem, index) => (
+            <NewsCard key={index} readMoreText={readMoreText} className="w-11/12 shrink-0" {...newsItem} />
           ))}
         </HorizontalScrollWrapper>
         <div className="flex justify-center">

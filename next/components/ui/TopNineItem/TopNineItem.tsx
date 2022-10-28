@@ -12,6 +12,7 @@ import icon7 from './icons/organizacna-struktura.svg'
 import icon3 from './icons/parky-a-zahrady.svg'
 import icon9 from './icons/pracovne-prilezitosti.svg'
 import icon6 from './icons/turistom-v-hlavnom-meste.svg'
+import { TopNine } from './TopNineService'
 
 const ICONS = {
   icon1,
@@ -27,12 +28,8 @@ const ICONS = {
 
 export type TopNineItemIcon = keyof typeof ICONS
 
-export interface TopNineItemProps {
+export interface TopNineItemProps extends TopNine {
   className?: string
-  icon: TopNineItemIcon
-  title: string
-  href: string
-  linkTitle: string
 }
 
 export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNineItemProps) => {

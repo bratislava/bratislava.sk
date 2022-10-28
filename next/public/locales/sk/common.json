@@ -117,10 +117,14 @@
   "organisationalStructure": "Organizačná štruktúra",
   "fromUkraine": "Я з України",
   "tourist": "Som turista",
+  "toAllRoadClosures": "Prejsť na všetky uzávierky",
+  "news": "Aktuality",
+  "officialNoticeBoard": "Úradná tabuľa",
+  "roadClosures": "Uzávierky",
+  "publicationInformation": "Zverejňovanie",
   "noBlogPostsToShow": "Žiadne články na zobrazenie.",
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
-  "noUsersToShow": "Žiadne kontakty na zobrazenie.",
   "menu.show_less": "Zobraziť menej",
-  "menu.show_more": "Zobraziť viac"
-  "toAllRoadClosures": "Prejsť na všetky uzávierky"
+  "menu.show_more": "Zobraziť viac",
+  "noUsersToShow": "Žiadne kontakty na zobrazenie."
 }

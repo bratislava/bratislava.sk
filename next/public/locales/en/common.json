@@ -119,8 +119,12 @@
   "organisationalStructure": "Organisational structure",
   "fromUkraine": "Я з України",
   "tourist": "I am tourist",
+  "toAllRoadClosures": "To all road closures",
+  "news": "Latest News",
+  "officialNoticeBoard": "Official noticeboard",
+  "roadClosures": "Road closures",
+  "publicationInformation": "Public information",
   "noBlogPostsToShow": "No articles to show",
   "noPagesToShow": "No pages to show",
-  "noUsersToShow": "No contacts to show",
-  "toAllRoadClosures": "To all road closures"
+  "noUsersToShow": "No contacts to show"
 }
