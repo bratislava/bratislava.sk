@@ -16,7 +16,6 @@ const CalendarCell = ({ state, date }: CalendarCellBase) => {
     state,
     ref
   )
-
   return (
     <div {...cellProps}>
       <div
