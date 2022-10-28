@@ -14,11 +14,6 @@ export const uploadFile = async (file: File) => {
 
 
 export const deleteFile = async (fileName: string) => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      'Accept': 'application/json'
-    }
-  }
-  return axios.delete('/api/forms/delete-file', config)
+  const params = { params: { fileName } }
+  return axios.delete('/api/forms/delete-file', params)
 }
