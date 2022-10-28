@@ -17,7 +17,7 @@ jobs:
     name: after dev Strapi deploy Next
     if: needs.conditions.outputs.dev == 'true'
     needs: [conditions, deploy-dev-strapi]
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@beta
     with:
       directory: next/
       cluster: tkg-innov-dev
@@ -32,7 +32,7 @@ jobs:
     name: dev Strapi
     needs: conditions
     if: needs.conditions.outputs.dev-strapi == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@beta
     with:
       directory: strapi/
       cluster: tkg-innov-dev
@@ -47,7 +47,7 @@ jobs:
     name: dev Next
     needs: conditions
     if: needs.conditions.outputs.dev-next == 'true'
-    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@stable
+    uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli.yml@beta
     with:
       directory: next/
       cluster: tkg-innov-dev
@@ -67,6 +67,7 @@ jobs:
       directory: next/
       cluster: tkg-innov-staging
       url: https://tkg.staging.bratislava.sk
+      debug: --debug
       flag: --staging
     secrets:
       service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
@@ -82,6 +83,7 @@ jobs:
       directory: strapi/
       cluster: tkg-innov-staging
       url: https://tkg.staging.bratislava.sk
+      debug: --debug
       flag: --staging
     secrets:
       service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}
@@ -97,6 +99,7 @@ jobs:
       directory: next/
       cluster: tkg-innov-staging
       url: https://tkg.staging.bratislava.sk
+      debug: --debug
       flag: --staging
     secrets:
       service-account: ${{ secrets.STAGING_STANDALONE_TOKEN }}

@@ -190,7 +190,7 @@ AsyncServerProps<typeof getServerSideProps>) => {
                   title={boardPage.title}
                 /> */}
               </div>
-              <h1 className="whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">{t('officialBoard')}</h1>
+              <h1 className="text-h1 whitespace-pre-wrap pt-30">{t('officialBoard')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>

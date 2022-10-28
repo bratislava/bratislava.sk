@@ -69,7 +69,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
         <div className="flex flex-col gap-y-14 py-14 lg:gap-y-24 lg:py-24">
           {usersSelected && users.length > 0 && (
             <div>
-              <div className="text-default font-semibold lg:text-md">{t('organisationalStructure')}</div>
+              <div className="text-h4">{t('organisationalStructure')}</div>
               <OrganizationalStructureAccordionCards users={users} />
             </div>
           )}
@@ -79,7 +79,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
           )}
           {documents?.length > 0 && (
             <div className="flex flex-col gap-y-3 lg:gap-y-6">
-              <div className="text-default font-semibold lg:text-md">{t('documents')}</div>
+              <div className="text-h4">{t('documents')}</div>
               <FileList fileSections={documents} hideCategory />
             </div>
           )}

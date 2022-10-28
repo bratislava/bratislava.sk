@@ -53,9 +53,9 @@ export const NumericalListSection = ({
           {title ? (
             <div
               className={cx(
-                'text-center pb-14 font-semibold',
-                { 'text-default lg:text-lg': variant != 'roadmap' },
-                { 'text-md': variant === 'roadmap' }
+                'text-center pb-14',
+                { 'text-h3': variant != 'roadmap' },
+                { 'text-h4': variant === 'roadmap' }
               )}
             >
               {title}
