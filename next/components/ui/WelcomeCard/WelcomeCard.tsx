@@ -26,7 +26,7 @@ export const WelcomeCard = ({ className, image, imageClassName, title, path }: W
         >
           {image}
         </div>
-        <p className="text-2xl text-primary group-hover:font-medium">{title}</p>
+        <p className="text-h1 text-primary group-hover:font-medium">{title}</p>
       </div>
     </a>
   )

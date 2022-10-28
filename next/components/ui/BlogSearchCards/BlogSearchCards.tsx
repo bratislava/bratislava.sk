@@ -28,7 +28,7 @@ export const BlogSearchCards = ({ title, blogs, handleButtonClick }: BlogSearchC
   }
   return (
     <div className="flex flex-col gap-y-3 lg:gap-y-6">
-      <div className="text-default font-semibold lg:text-md">{title}</div>
+      <div className="text-h4">{title}</div>
       <div className="hidden flex-col gap-y-6 lg:flex">
         <div className="flex flex-col gap-y-6">
           {blogs.map((blog, index) => {

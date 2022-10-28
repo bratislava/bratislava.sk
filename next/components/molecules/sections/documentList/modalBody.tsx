@@ -23,7 +23,7 @@ export const DocumentListModalBody = (vzn: any) => {
   return (
     <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background">
       <div className="py-8 px-12">
-        <div className="text-md font-semibold"> {vzn?.title} </div>
+        <div className="text-h4"> {vzn?.title} </div>
         <div className="flex pt-3">
           {vzn?.mainDocument && (
             <div className="flex flex-col">

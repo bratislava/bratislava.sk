@@ -16,7 +16,7 @@ export const NoResultsFound = ({ title, message, messageClassName }: NoResultsFo
   <div className="mt-6 flex flex-col items-center">
     {/* TODO: troubleshoot different size icons issue */}
     <NoDataResultsFound />
-    <span className="pb-4 text-default font-semibold lg:pb-4 lg:text-lg">{title}</span>
+    <span className="text-h3 pb-4">{title}</span>
     <span className={cx(messageClassName, 'text-base lg:text-default')}>{message}</span>
   </div>
 )

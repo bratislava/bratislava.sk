@@ -12,7 +12,7 @@ export interface AdvancedAccordionProps {
 export const AdvancedAccordion = ({ title, dividerStyle, items }: AdvancedAccordionProps) => {
   return (
     <div className="flex flex-col">
-      <div className="pb-4 text-default font-semibold lg:text-lg">{title}</div>
+      <div className="text-h3 pb-4">{title}</div>
       {/* Does not work at the moment, comented out, kept as a TODO reminder in case this component is resurrected */}
       {/* <BasicSearch collapse className="flex pb-6 lg:hidden" placeholder="" title="" buttonText="" /> */}
       <AdvancedAccordionItem {...items[0]} />
