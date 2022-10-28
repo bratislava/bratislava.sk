@@ -44,7 +44,7 @@ const InputField = ({
   ...rest
 }: IInputFieldProps &
   Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>) => (
-  <label className="text-lbl-1 flex flex-col items-center text-center" htmlFor={id}>
+  <label className="text-button-1 flex flex-col items-center text-center" htmlFor={id}>
     {label}
     <div className="relative mt-3 flex items-center">
       <Button
@@ -62,7 +62,7 @@ const InputField = ({
             onChange(parseInt(e.target.value, 10))
           }
         }}
-        className="number-control-none box-border w-64 rounded-lg py-4 px-10 text-center text-lbl-1"
+        className="number-control-none box-border w-64 rounded-lg py-4 px-10 text-center text-button-1"
         required
         type="number"
         min={0}
@@ -105,7 +105,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
     <div className={cx('text-center bg-secondary text-font', className)}>
       <p className="text-h3">{t('title')}</p>
       <p className="text-p1 m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
-      <form className="text-lbl-1 mt-10 flex flex-col items-center gap-y-8 font-medium" onSubmit={handleSubmit}>
+      <form className="text-button-1 mt-10 flex flex-col items-center gap-y-8 font-medium" onSubmit={handleSubmit}>
         <InputField
           id="adults"
           label={t('adultsText')}
@@ -151,7 +151,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
         />
 
         <Button
-          className="text-lbl-1 mt-6 bg-primary py-3 px-5 font-semibold text-font lg:py-4 lg:px-6"
+          className="text-button-1 mt-6 bg-primary py-3 px-5 font-semibold text-font lg:py-4 lg:px-6"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"

@@ -19,7 +19,7 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
     <div
       {...segmentProps}
       ref={ref}
-      className="text-lbl-1 hover:bg-form-calendar-hover focus:bg-form-calendar-hover focus:outline-none"
+      className="text-button-1 hover:bg-form-calendar-hover focus:bg-form-calendar-hover focus:outline-none"
     >
       <span
         className={cx('w-full text-center uppercase group-focus:text-white', {

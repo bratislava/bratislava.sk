@@ -116,7 +116,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
         return (
           <div key={key} className="text-center">
             <span
-              className={cx('font-semibold text-lbl-1 w-full break-all text-center', {
+              className={cx('font-semibold text-button-1 w-full break-all text-center', {
                 'mt-9': key === 0,
                 'whitespace-nowrap': variant === 'phone',
               })}
@@ -130,7 +130,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
         <a
           href={href}
           className={cx(
-            'mt-8 px-6 py-3 font-medium text-lbl-1 border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
+            'mt-8 px-6 py-3 font-medium text-button-1 border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
             {
               'bg-primary border-primary': linkVariant === 'primary',
               'bg-secondary border-secondary text-white': linkVariant === 'secondary',

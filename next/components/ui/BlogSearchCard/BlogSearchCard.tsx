@@ -71,7 +71,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           >
             {headline}
           </div>
-          <div className="line-clamp-2 text-lbl-1 overflow-hidden text-ellipsis font-semibold">
+          <div className="line-clamp-2 text-button-1 overflow-hidden text-ellipsis font-semibold">
             {item.data?.attributes?.title}
           </div>
           <div>{date}</div>
@@ -99,7 +99,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
                 {headline}
               </div>
               <div className="flex">
-                <div className="line-clamp-2 text-lbl-1 overflow-hidden font-semibold text-white">
+                <div className="line-clamp-2 text-button-1 overflow-hidden font-semibold text-white">
                   {item?.data?.attributes?.title}
                 </div>
                 <VerticalCardButton className="invisible shrink-0 group-hover:lg:visible" size="medium">

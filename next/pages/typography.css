@@ -4,7 +4,7 @@
 
 @layer components {
   .text-h1-lg {
-    @apply text-h-2xl lg:text-h-xxxl font-semibold;
+    @apply text-h-2xl lg:text-h-3xl font-semibold;
   }
 
   .text-h1 {
@@ -20,11 +20,11 @@
   }
 
   .text-h4 {
-    @apply text-h-default lg:text-h-md font-semibold;
+    @apply text-h-base lg:text-h-md font-semibold;
   }
 
   .text-h5 {
-    @apply text-sm lg:text-h-default font-semibold;
+    @apply text-h-sm lg:text-h-base font-semibold;
   }
 
   .text-h6 {
@@ -32,11 +32,11 @@
   }
 
   .text-p1 {
-    @apply text-p-default lg:text-p-md;
+    @apply text-p-base lg:text-p-md;
   }
 
   .text-p2 {
-    @apply text-p-default;
+    @apply text-p-base;
   }
 
   .text-p3 {
@@ -47,11 +47,11 @@
     @apply text-p-xs;
   }
 
-  .text-lbl-1 {
+  .text-button-1 {
     @apply text-p-md;
   }
 
-  .text-lbl2 {
-    @apply text-p-default;
+  .text-lbl-2 {
+    @apply text-p-base;
   }
 }

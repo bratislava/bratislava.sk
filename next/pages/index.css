@@ -160,9 +160,8 @@
     min-width: 24px;
   }
 
-  /* todo */
   .listitem .typography-regular {
-    @apply text-p-sm lg:text-p-default;
+    @apply text-p-sm lg:text-p-base;
   }
 
   .line-clamp-4 {
@@ -186,10 +185,6 @@
     @apply text-center mb-6;
   }
 
-  .fontSize-base .typography-regular {
-    @apply text-base leading-7;
-  }
-
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
   }
@@ -204,7 +199,7 @@
 }
 
 .table-block tbody tr td:first-child div {
-  @apply text-sm lg:text-h-default font-semibold;
+  @apply text-h-sm lg:text-h-base font-semibold;
 }
 
 .modal-content-rent-markdown a {

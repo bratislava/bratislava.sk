@@ -28,7 +28,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
 
   // STYLES
   const labelStyle = cx(
-    'relative mb-1 text-lbl-1 font-semibold text-universal-black',
+    'relative mb-1 text-button-1 font-semibold text-universal-black',
     {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-p3': required}
   )
 
@@ -46,7 +46,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
         <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>{label}</label>
         <div className="flex-column flex items-center">
           {/* OPTIONAL */
-            !required && <p className="text-lbl-1 mr-4.5">Optional</p>
+            !required && <p className="text-button-1 mr-4.5">Optional</p>
           }
           {/* TOOLTIP ICON */
             tooltip && (

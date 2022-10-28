@@ -27,7 +27,7 @@ const Tag: FC<TagProps> = (
     "flex flex-row align-items-start min-w-14 min-h-6 px-2 gap-2.5 text-center",
     {
       /* FONTS in TAILWIND have different line height in compare to FIGMA */
-      'text-lbl-1': size === 'large',
+      'text-button-1': size === 'large',
       'text-p3': size === 'small' || !size,
       'py-0.5': size === 'large',
       'rounded-lg': size === 'large',
@@ -45,7 +45,7 @@ const Tag: FC<TagProps> = (
   const iconClassStyles = cx(
     "cursor-pointer self-center",
     {
-      'text-lbl-1 w-3 h-3': size === 'large',
+      'text-button-1 w-3 h-3': size === 'large',
       'text-p3 w-2.5 h-2.5': size === 'small' || !size,
     }
   )

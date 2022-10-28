@@ -19,7 +19,7 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
   return (
     <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
       <div className="flex flex-col">
-        <h4 className="text-lbl-1 font-semibold leading-[26px]">{title}</h4>
+        <h4 className="text-button-1 font-semibold leading-[26px]">{title}</h4>
         {subtitle && <UIMarkdown className="fontSize-base mt-6 text-base" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">

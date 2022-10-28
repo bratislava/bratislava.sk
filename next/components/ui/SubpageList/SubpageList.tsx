@@ -19,7 +19,7 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
               <div className="text-h3 flex h-12 w-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-primary text-white sm:h-16 sm:w-16 sm:basis-16">
                 {index + 1}
               </div>
-              <span className="text-lbl-1 ml-8 font-medium not-italic leading-6 tracking-wide group-hover:underline sm:ml-0">
+              <span className="text-button-1 ml-8 font-medium not-italic leading-6 tracking-wide group-hover:underline sm:ml-0">
                 {subpage.title}
               </span>
             </div>
