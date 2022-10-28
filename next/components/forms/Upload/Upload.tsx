@@ -1,11 +1,11 @@
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
+import { v4 as createUuid } from 'uuid'
 
 import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
 import { deleteFile, uploadFile } from '../../../backend/services/minio'
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
-
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
@@ -47,7 +47,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
   }
 
   const addTimeStampToFileName = (file: File) => {
-    const newName = `${Date.now()}_${file.name}`
+    const newName = `${Date.now()}_${createUuid()}_${file.name}`
     return new File([file], newName, {
       type: file.type,
       lastModified: file.lastModified
