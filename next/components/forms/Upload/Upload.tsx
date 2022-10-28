@@ -118,7 +118,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     addNewFiles(newFiles)
   }
 
-  const removeFile = (fileName: string) => {
+  const removeFileOnClient = (fileName: string) => {
     const updatedFiles = value
       ? value.filter(minioFile => minioFile.file.name !== fileName)
       : []
@@ -129,11 +129,11 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     if (!value) return
     const fileName = value[id].file.name
 
+    removeFileOnClient(fileName)
     deleteFile(fileName)
       .then((res) => {
         if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
         if (!value) throw new Error("Value not defined in component")
-        removeFile(fileName)
         return res
       })
       .catch(error => console.log(error))
