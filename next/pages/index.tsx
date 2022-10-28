@@ -237,7 +237,7 @@ const Homepage = ({
         />
 
         <SectionContainer className="relative bg-secondary py-16">
-          <h2 className="pb-10 text-center text-default font-semibold xs:mt-8 lg:pb-20 lg:text-2xl">
+          <h2 className="pb-10 text-center text-h1 xs:mt-8 lg:pb-20">
             {data.topNineTitle}
           </h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />

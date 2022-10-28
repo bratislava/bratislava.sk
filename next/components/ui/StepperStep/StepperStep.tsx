@@ -14,7 +14,7 @@ export interface IStepperStepProps {
 export const StepperStep = ({ title, number, onClick, active, checked, className }: IStepperStepProps) => (
   <button
     className={cx(
-      'relative rounded-full text-lg flex items-center justify-center font-semibold',
+      'relative rounded-full text-h3 flex items-center justify-center',
       {
         'bg-primary text-white': active,
         'bg-secondary text-primary': !active,

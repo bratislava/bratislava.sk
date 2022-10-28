@@ -77,7 +77,7 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
       xAxisFormatter={getLocalMonthName}
     >
       <div className="flex justify-end">
-        <span className="py-2 px-3 text-xs font-bold">{direction}</span>
+        <span className="text-p3 py-2 px-3 font-bold">{direction}</span>
       </div>
     </OpenDataChart>
   )

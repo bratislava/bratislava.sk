@@ -29,7 +29,7 @@ export const InfoCard = ({
       <ContentWrapper
         className="mt-8 lg:pl-6"
         title={
-          <h1 className="text-md font-bold text-primary">
+          <h1 className="text-h4 text-primary">
             {primaryTitle}
             <br />
             {secondaryTitle}

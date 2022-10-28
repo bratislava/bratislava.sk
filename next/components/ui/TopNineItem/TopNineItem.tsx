@@ -43,11 +43,11 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
       <div className="mb-6 lg:mb-3.5">
         <IconComponent className="h-20" />
       </div>
-      <div className="w-full whitespace-pre-wrap text-sm font-semibold leading-normal lg:text-md lg:font-medium">
+      <div className="text-h4 w-full whitespace-pre-wrap leading-normal lg:font-medium">
         {title}
       </div>
       <UILink className="group mt-6 flex h-6 cursor-pointer items-center space-x-5 text-font underline" href={href}>
-        <span className="text-sm font-semibold">{linkTitle}</span>
+        <span className="text-p2 font-semibold">{linkTitle}</span>
         <span className="group-hover:hidden">
           <ChevronRight />
         </span>

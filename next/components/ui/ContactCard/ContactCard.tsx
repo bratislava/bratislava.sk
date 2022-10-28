@@ -25,7 +25,7 @@ export const ContactCard = ({
       <div className="flex items-center">{image && <img src={image} alt="Kontakt" width="120" height="120" />}</div>
 
       <div className="flex flex-col items-center  justify-center md:items-start">
-        <h1 className="mb-4 mt-2 text-md">{name}</h1>
+        <h1 className="text-h4 mb-4 mt-2">{name}</h1>
         <span className="text-sm">{telephoneNumber}</span>
         <Button className="mt-5 h-11 py-2 px-6 text-default font-medium">{t('writeEmail')}</Button>
       </div>

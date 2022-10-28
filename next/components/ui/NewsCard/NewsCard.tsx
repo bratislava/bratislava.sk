@@ -100,10 +100,10 @@ export const NewsCard = ({
               color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
             />
           )}
-          <h3 className="news-small-content text-default font-semibold lg:text-md">{title}</h3>
+          <h3 className="news-small-content text-h4">{title}</h3>
           {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
           <span className="text-xs font-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
-          <p className="news-small-content text-sm">{excerpt}</p>
+          <p className="news-small-content text-p2">{excerpt}</p>
           <div>
             {slug && (
               <Button

@@ -68,7 +68,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       className,
       {
         // text for lg button
-        'px-6 py-4 text-default leading-5':
+        'px-6 py-4 text-button-1 leading-5':
           size === 'lg' &&
           !icon &&
           text &&
@@ -78,7 +78,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // text for sm button
-        'px-5 py-3 text-sm leading-5':
+        'px-5 py-3 text-button-base leading-5':
           size === 'sm' &&
           !icon &&
           text &&
@@ -108,28 +108,28 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // icon for lg button
-        'px-2.5 py-2.5 text-default leading-6':
+        'px-2.5 py-2.5 text-button-1 leading-6':
           size === 'lg' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
         // icon for sm button
-        'px-2 py-2': size === 'sm' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
+        'px-2 py-2 text-button-base': size === 'sm' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
 
         // text for lg button
-        'px-3 py-2 text-default leading-6':
+        'px-3 py-2 text-button-1 leading-6':
           size === 'lg' &&
           !icon &&
           text &&
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
         // text for sm button
-        'px-2 py-1 text-sm leading-6':
+        'px-2 py-1 text-button-base leading-6':
           size === 'sm' &&
           !icon &&
           text &&
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
 
         // text for lg link button
-        'text-default leading-8': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
+        'text-button-1 leading-8': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
         // text for sm link button
-        'text-sm leading-6': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
+        'text-button-base leading-6': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
 
         'border-2':
           variant === 'brand' ||
