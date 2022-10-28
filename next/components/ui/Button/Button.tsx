@@ -47,7 +47,7 @@ export const Button = ({
     <button
       className={cx('group flex items-center', className, {
         // common styles
-        'base-button': shape !== 'none',
+        // 'base-button': shape !== 'none',
         'base-link': shape === 'none',
         'space-x-6': !!icon && spacing === 'default',
         'space-x-2': !!icon && spacing === 'small',
@@ -66,7 +66,7 @@ export const Button = ({
         'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',
         'bg-primary-muted text-white hover:bg-primary': shape !== 'none' && variant === 'muted',
         'bg-transparent text-font underline underline-offset-2': shape !== 'none' && variant === 'full-transparent',
-        'rounded-lg': shape === 'default',
+        'rounded-lg justify-center': shape === 'default',
         'rounded-full': shape === 'circle',
         // styles for links
         'text-primary': shape === 'none' && (variant === 'primary' || variant === 'transparent'),

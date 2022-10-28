@@ -30,7 +30,7 @@ export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionI
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={() => setOpen(!open)}>
         <div className="flex items-center lg:px-5">
           <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-primary lg:h-8 lg:w-8" />
-          <div className="pr-6 text-default font-semibold lg:text-lg">{title}</div>
+          <div className="text-h3 pr-6">{title}</div>
           <div className={cx('ml-auto', { 'rotate-180': open })}>
             <ChevronDown className="hidden lg:flex" />
             <ChevronDownSmall className="flex lg:hidden" />

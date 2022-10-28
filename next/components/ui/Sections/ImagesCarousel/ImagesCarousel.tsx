@@ -28,7 +28,7 @@ export const ImagesCarousel = ({
   fetchMoreItems,
 }: ImagesCarouselProps) => (
   <div className={cx(className, 'flex flex-col')}>
-    {title && <div className="pb-10 text-center text-default font-semibold sm:text-lg md:text-2xl">{title}</div>}
+    {title && <div className="text-h1 pb-10 text-center">{title}</div>}
     <div className="hidden xl:block">
       <Carousel
         scrollerClassName="py-6"

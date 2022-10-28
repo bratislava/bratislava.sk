@@ -31,7 +31,8 @@
       "@utils/*": ["./utils/*"],
       "@assets/images": ["./assets/images/index.ts"],
       "@assets/images/*": ["./assets/images/*"],
-      "@bratislava/strapi-sdk-homepage": ["./graphql/index.ts"]
+      "@bratislava/strapi-sdk-homepage": ["./graphql/index.ts"],
+      "@backend/*": ["./backend/*"],
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],

@@ -12,7 +12,7 @@ export const ListItems = ({ className, title, listItems }: ListItemsProps) => {
   return (
     <div className={cx(className)}>
       <div className="w-full md:w-10/12">
-        {title && <div className="pb-10 text-sm font-semibold text-font md:text-md">{title}</div>}
+        {title && <div className="text-h4 pb-10 text-font">{title}</div>}
 
         {listItems && (
           <div className="space-y-8">

@@ -1,4 +1,4 @@
-import DatePicker from '../../forms/DatePicker/DatePicker'
+import DatePicker from '../../forms/DateTimePicker/DatePicker'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 

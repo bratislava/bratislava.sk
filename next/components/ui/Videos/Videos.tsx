@@ -70,7 +70,7 @@ export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) 
   const videosCount = 3
   return (
     <div key={id} className={className}>
-      <h4 className="text-default font-semibold md:text-md">{title}</h4>
+      <h4 className="text-h4">{title}</h4>
       <p className="mt-5 mb-10 md:text-default">{subtitle}</p>
 
       {/* Mobile */}

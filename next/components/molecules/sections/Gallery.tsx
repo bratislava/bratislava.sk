@@ -16,7 +16,7 @@ GalleryProps) => {
   const { t } = useTranslation()
   return (
     <div className={cx(className, 'flex md:items-center flex-col mt-20')}>
-      <h1 className="ml-8 text-2xl font-semibold md:ml-0 md:text-5xl">{t('gallery')}</h1>
+      <h1 className="text-h1 ml-8 md:ml-0 md:text-5xl">{t('gallery')}</h1>
       <HorizontalScrollWrapper
         className={cx(className, 'md:grid md:grid-cols-3 px-7 gap-x-5 md:gap-8 max-w-6xl my-14')}
       >
