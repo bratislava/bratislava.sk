@@ -2,6 +2,7 @@ import cx from 'classnames'
 import React, { DOMAttributes, FC, useState } from 'react'
 
 import HelpIcon from '@assets/images/forms/icon-help.svg'
+import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
   label: string
@@ -36,9 +37,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
       {/* TOOLTIP */
        tooltip && (
          <div className="relative">
-          {
-            isTooltipOpened && <div className="absolute bottom-0 right-0 h-16 w-96 rounded-lg bg-white p-2 drop-shadow-lg">{tooltip}</div>
-          }
+          <Tooltip text={tooltip} visible={isTooltipOpened} arrow="bottom" alignArrow="right" bottom={0} right={-13} absolute/>
         </div>
        )
       }

@@ -1,6 +1,6 @@
 import CloseIcon from '@assets/images/close.svg'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useId } from 'react'
 import StateManagedSelect, {
   components,
   ControlProps,
@@ -143,7 +143,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
 
       {/* SELECT PART */}
       <div className="w-80">
-        <StateManagedSelect className={tailwindSelectStyle} styles={selectStyle} ref={ref}
+        <StateManagedSelect instanceId={useId()} ref={ref} className={tailwindSelectStyle} styles={selectStyle}
                 options={options} noOptionsMessage={() => "No Options"}
                 placeholder={placeholder} value={value}
                 isDisabled={disabled} isMulti
