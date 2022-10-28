@@ -10,7 +10,6 @@ import {
 } from '@bratislava/strapi-sdk-homepage'
 import HorizontalScrollWrapper from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { PostButton } from '@bratislava/ui-bratislava/Sections/Posts/PostButton'
-import { getRoadClosuresUrl } from '@bratislava/ui-bratislava/Sections/Posts/PostsService'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import useSWR from 'swr'
@@ -61,7 +60,7 @@ export const Posts = ({
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const [{ tab, newsCards }, setActiveTab] = React.useState<Post>(posts[0])
+  const [{ tab, newsCards, url }, setActiveTab] = React.useState<Post>(posts[0])
 
   // TODO handle loading and errors
   const { data: officialBoardData = [] } = useSWR<ParsedOfficialBoardDocument[]>(
@@ -72,7 +71,6 @@ export const Posts = ({
   const { t } = useTranslation('common')
   const [firstPost, secondPost] = newsCards
   const [firstRozkoPost, secondRozkoPost, ...restRozkoPosts] = rozkoPosts.data
-  const roadClosuresUrl = getRoadClosuresUrl(posts)
 
   return (
     <div className="lg:mt-10">
@@ -171,10 +169,10 @@ export const Posts = ({
             </>
           }
           button={
-            roadClosuresUrl && (
+            url && (
               <>
                 {rozkoPosts?.data?.length > 0 && (
-                  <UILink href={roadClosuresUrl}>
+                  <UILink href={url}>
                     <PostButton buttonTitle={t('toAllRoadClosures')} />
                   </UILink>
                 )}
@@ -222,5 +220,3 @@ export const Posts = ({
     </div>
   )
 }
-
-export default Posts

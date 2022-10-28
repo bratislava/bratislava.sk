@@ -23,7 +23,7 @@ const VenueList = ({ className, title, tabs }: IProps) => {
           <TabBarTab
             className="w-20 "
             key={index}
-            tab={tab}
+            tabTitle={tab.title}
             onClick={() => setActiveIndex(index)}
             isActive={activeIndex === index}
           />

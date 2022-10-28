@@ -47,10 +47,7 @@ export const ArticlesFilter = ({
                 <TabBarTab
                   className="text-p1 mr-8"
                   key={tab}
-                  tab={{
-                    title: tab,
-                    key: tab,
-                  }}
+                  tabTitle={tab}
                   size="small"
                   handleSelect={categoryHandler}
                   isActive={tab === category}

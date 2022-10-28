@@ -71,7 +71,7 @@ export const buildMockData = ({
         url: '/',
       },
     ],
-    posts: getPosts('SK'),
+    posts: getPosts(),
     council: {
       cards: [
         {
@@ -156,7 +156,7 @@ export const buildMockData = ({
         url: '/',
       },
     ],
-    posts: getPosts('EN'),
+    posts: getPosts(),
     council: {
       cards: [
         {

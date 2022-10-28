@@ -1,5 +1,7 @@
 import { Post, TAB_CATEGORY } from './types'
 
+const ROAD_CLOSURES_URL = '/doprava-a-mapy/sprava-a-udrzba-komunikacii/aktualne-uzavierky'
+
 export function getPosts(): Post[] {
   return [
     {
@@ -15,7 +17,7 @@ export function getPosts(): Post[] {
     {
       category: 'roadClosures',
       tab: TAB_CATEGORY.ROAD_CLOSURES,
-      url: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/aktualne-uzavierky',
+      url: ROAD_CLOSURES_URL,
       newsCards: [],
     },
     {

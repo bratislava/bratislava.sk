@@ -63,5 +63,3 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
     </div>
   )
 }
-
-export default TopNineItem

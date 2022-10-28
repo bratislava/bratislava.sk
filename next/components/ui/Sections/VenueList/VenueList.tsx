@@ -67,7 +67,7 @@ export const VenueList = ({
           <TabBarTab
             className="w-20"
             key={index}
-            tab={tab}
+            tabTitle={tab.title}
             onClick={() => setActiveIndex(index)}
             isActive={index === activeIndex}
           />
