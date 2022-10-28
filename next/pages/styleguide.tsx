@@ -8,6 +8,7 @@ import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
@@ -36,6 +37,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <SelectFieldShowCase />
         <SpinnerShowCase />
         <TextAreaFieldShowCase/>
+        <AlertShowCase/>
         <SearchFieldShowCase/>
         <ToggleShowCase/>
         <TimePickerShowCase />

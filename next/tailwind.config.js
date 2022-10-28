@@ -134,6 +134,31 @@ module.exports = {
             hover: '#FDE8E8',
             pressed: '#FCD1D1',
           },
+          alert: {
+            error: {
+              default: '#D00000',
+              'default-bg': '#FDF2F2',
+              solid: ''
+            },
+            success: {
+              default: '#01843D',
+              'default-bg': '#F2F9F5',
+              solid: ''
+            },
+            info: {
+              default: '#333333',
+              'default-bg': '#EBEBEB',
+              solid: ''
+            },
+            warning: {
+              default: '#E07B04',
+              'default-bg': '#FDF8F2',
+              solid: ''
+            },
+            textColor: {
+              default: '#1F1F1F'
+            }
+          }
         },
         transperentBG: 'rgba(0, 0, 0, 0.5)',
         primary: 'var(--primary-color)',
@@ -155,6 +180,7 @@ module.exports = {
         },
         gray: {
           universal: {
+            0:  'var(--input-nav-background-color)',
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
             400: 'var(--universal-gray-400)',
@@ -201,6 +227,7 @@ module.exports = {
       },
       borderRadius: {
         10: '10px',
+        8: '8px',
         5: '5px',
       },
       gridTemplateRows: {
@@ -263,6 +290,9 @@ module.exports = {
       },
       width: {
         540: '540px',
+        480: '480px',
+        404: '404px',
+        368: '368px',
         320: '320px',
         72: '72px',
       },
@@ -272,6 +302,9 @@ module.exports = {
       maxWidth: {
         61: '244px',
         87: '350px',
+      },
+      gap: {
+        3: '13px'
       },
       lineHeight: {
         'extra-tight': '1.3',
