@@ -5,7 +5,7 @@ type CloseIconProps = {
   type: 'error' | 'success' | 'info' | 'warning'
   className?: string
   solid?: boolean
-  onClick: MouseEventHandler<SVGSVGElement> | undefined
+  onClick?: MouseEventHandler<SVGSVGElement> | undefined
 }
 
 const CloseIcon = ({ className, solid = false,onClick, type = 'error' }: CloseIconProps) => {
