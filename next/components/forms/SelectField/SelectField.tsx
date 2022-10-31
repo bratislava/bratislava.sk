@@ -63,13 +63,13 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className="flex flex-row w-80 h-14 bg-gray-100 rounded-lg">
+      <div className="flex flex-row w-80 min-h-min bg-gray-100 rounded-lg">
 
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox value={value} multiple={multiple} onRemove={handleOnRemove}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="flex flex-col h-full rounded-lg justify-center cursor-pointer px-6 select-none">
+        <div className="flex flex-col min-h-[56px] rounded-lg justify-center cursor-pointer px-6 select-none">
           <div onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
             { isDropdownOpened ? <ArrowUp/> : <ArrowDown/> }
           </div>

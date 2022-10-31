@@ -12,7 +12,7 @@ interface SelectFieldBoxProps {
 const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, onRemove}: SelectFieldBoxProps) => {
 
   return (
-    <div className="w-full">
+    <div className="flex flex-row flex-wrap gap-2 w-full py-2.5 px-4">
       { /* TAGS */
         value && value.length > 0
           ? (multiple ? value : value.slice(0,1)).map((option, key) =>

@@ -23,7 +23,7 @@ const SelectFieldShowCase = () => {
 
   const [selectValueFirst, setSelectValueFirst] = useState<SelectOption[]>(selectOptions.slice(0, 2))
   const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>(selectOptions.slice(0, 1))
-  const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 2))
+  const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 4))
 
   const ref = React.createRef<Select>()
 
