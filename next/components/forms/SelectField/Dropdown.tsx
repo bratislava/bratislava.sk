@@ -5,12 +5,13 @@ import DropdownRow from './DropdownRow'
 
 interface DropdownProps {
   options: SelectOption[]
+  value?: SelectOption[]
   absolute?: boolean
   multiple?: boolean
   divider?: boolean
 }
 
-const Dropdown = ({options, absolute, multiple, divider}: DropdownProps) => {
+const Dropdown = ({options, value, absolute, multiple, divider}: DropdownProps) => {
   // STYLES
   const dropdownClassName = cx(
     "rounded-lg border-2 border-form-input-pressed bg-gray-100 z-50 py-2",
@@ -19,11 +20,20 @@ const Dropdown = ({options, absolute, multiple, divider}: DropdownProps) => {
     }
   )
 
+  // HELP FUNCTIONS
+  const isSelected = (option: SelectOption): boolean => {
+    return !!value?.find((valueOption) => {
+      return valueOption.value === option.value
+        && valueOption.label === option.label
+        && valueOption.description === option.description
+    })
+  }
+
   // RENDER
   return (
     <div className={dropdownClassName}>
       {
-        options.map(option => <DropdownRow option={option} divider={divider}/>)
+        options.map(option => <DropdownRow option={option} divider={divider} selected={isSelected(option)}/>)
       }
     </div>
   )

@@ -1,14 +1,14 @@
-import ArrowDown from '@assets/images/forms/chevron-down.svg'
-import ArrowUp from '@assets/images/forms/chevron-up.svg'
+import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
+import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useId, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 import Select from 'react-select/base'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
+import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 import SelectOption from './SelectOption'
-import Dropdown from './Dropdown'
 
 interface SelectFieldProps {
   label: string
@@ -84,7 +84,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
         {/* DROPDOWN ARROW */}
         <div className="flex flex-col min-h-[56px] rounded-lg justify-center px-5 select-none">
           <div onClick={() => setIsDropdownOpened(!isDropdownOpened)} className="cursor-pointer [&>svg]:m-1">
-            { isDropdownOpened ? <ArrowUp/> : <ArrowDown/> }
+            { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
           </div>
         </div>
 
@@ -93,7 +93,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       {/* DROPDOWN */}
       <div className="relative">
         {
-          isDropdownOpened && <Dropdown options={options} multiple={multiple} divider={dropdownDivider} absolute/>
+          isDropdownOpened && <Dropdown options={options} value={value} multiple={multiple} divider={dropdownDivider} absolute/>
         }
       </div>
 
