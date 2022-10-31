@@ -13,8 +13,8 @@ interface SelectFieldShowCaseProps {
 
 const SelectFieldShowCase = () => {
   const selectOptions: SelectOption[] = [
-    { value: 'example', label: 'skola'},
-    { value: 'stuFei', label: 'STU FEI'},
+    { value: 'example', label: 'skola', description: 'this is testing'},
+    { value: 'stuFei', label: 'STU FEI', description: 'good choice'},
     { value: 'stuFiit', label: 'STU FIIT'},
     { value: 'ukFmfi', label: 'UK FMFI'},
     { value: 'tukeFei', label: 'TUKE FEI' },
