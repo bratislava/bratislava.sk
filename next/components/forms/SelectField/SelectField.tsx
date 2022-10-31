@@ -13,6 +13,7 @@ interface SelectFieldProps {
   label: string
   options: SelectOption[]
   value?: SelectOption[]
+  multiple?: boolean
   placeholder?: string
   errorMessage?: string
   description?: string
@@ -29,6 +30,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
     label,
     options,
     value,
+    multiple,
     placeholder,
     errorMessage,
     description,
@@ -50,16 +52,23 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
 
   // RENDER
   return (
-    <section className="flex w-max flex-col">
+    <section className="flex w-max flex-col transition-all">
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
       <div className="flex flex-row w-80 h-14 bg-gray-100 rounded-lg">
-        <SelectFieldBox value={value}/>
-        <div className="flex flex-col h-full rounded-lg justify-center cursor-pointer px-6">
-          { isDropdownOpened ? <ArrowUp/> : <ArrowDown/> }
+
+        {/* MAIN BODY OF SELECT */}
+        <SelectFieldBox value={value} multiple={multiple}/>
+
+        {/* DROPDOWN ARROW */}
+        <div className="flex flex-col h-full rounded-lg justify-center cursor-pointer px-6 select-none">
+          <div onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
+            { isDropdownOpened ? <ArrowUp/> : <ArrowDown/> }
+          </div>
         </div>
+
       </div>
 
       {/* ERROR MESSAGE */ }

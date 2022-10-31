@@ -35,6 +35,12 @@ const SelectFieldShowCase = () => {
         <SelectField label="Select Field" options={selectOptions} disabled/>
       </Stack>
       <Stack>
+        <SelectField label="Select Field" options={selectOptions}
+                     value={selectValueFirst} onChange={value => setSelectValueFirst(value)} multiple/>
+        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" multiple/>
+        <SelectField label="Select Field" options={selectOptions} disabled multiple/>
+      </Stack>
+      <Stack>
         <SelectField label="Select Field" options={selectOptions} required ref={ref}
                      value={selectValueSecond}
                      onChange={value => {
