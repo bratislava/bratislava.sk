@@ -8,6 +8,7 @@ import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 import SelectFieldBox from './SelectFieldBox'
 import SelectOption from './SelectOption'
+import Dropdown from './Dropdown'
 
 interface SelectFieldProps {
   label: string
@@ -43,6 +44,16 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
 
+  // STYLES
+  const selectClassName = cx (
+    "flex flex-row w-80 min-h-min bg-gray-100 rounded-lg border-2 border-form-input-default focus:border-form-input-pressed",
+    {
+      'hover:border-form-input-hover': !disabled,
+      'border-error hover:border-error focus:border-error': errorMessage && !disabled,
+      'opacity-50 border-form-input-disabled': disabled,
+    }
+  )
+
   // EVENT HANDLERS
   const handleOnChangeSelect = (selectedOptions: SelectOption[]) => {
     if (onChange) {
@@ -63,18 +74,25 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className="flex flex-row w-80 min-h-min bg-gray-100 rounded-lg">
+      <div className={selectClassName}>
 
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox value={value} multiple={multiple} onRemove={handleOnRemove}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="flex flex-col min-h-[56px] rounded-lg justify-center cursor-pointer px-6 select-none">
-          <div onClick={() => setIsDropdownOpened(!isDropdownOpened)}>
+        <div className="flex flex-col min-h-[56px] rounded-lg justify-center px-5 select-none">
+          <div onClick={() => setIsDropdownOpened(!isDropdownOpened)} className="cursor-pointer [&>svg]:m-1">
             { isDropdownOpened ? <ArrowUp/> : <ArrowDown/> }
           </div>
         </div>
 
+      </div>
+
+      {/* DROPDOWN */}
+      <div className="relative">
+        {
+          isDropdownOpened && <Dropdown options={options}/>
+        }
       </div>
 
       {/* ERROR MESSAGE */ }

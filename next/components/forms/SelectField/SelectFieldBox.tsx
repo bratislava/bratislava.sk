@@ -10,7 +10,7 @@ interface SelectFieldBoxProps {
 }
 
 const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, onRemove}: SelectFieldBoxProps) => {
-
+  // RENDER
   return (
     <div className="flex flex-row flex-wrap gap-2 w-full py-2.5 px-4">
       { /* TAGS */
