@@ -34,7 +34,7 @@ export const SubHeader = ({
     <div className={cx('z-10 flex flex-col', className)}>
       <p className="mt-4 mb-8 pt-0.5 pb-2 md:mt-6 md:mb-16 md:pt-0">{topper}</p>
       <span
-        className={cx('font-bold text-2xl w-41 md:max-w-lg md:w-full', {
+        className={cx('text-h1 w-41 md:max-w-lg md:w-full', {
           'mb-8': !description,
         })}
       >

@@ -17,7 +17,7 @@ export interface TicketTypeCardsProps {
 
 export const TicketTypeCards = ({ className, title, ticketTypes }: TicketTypeCardsProps) => (
   <div className={cx(className, 'flex flex-col space-y-4')}>
-    <span className="w-full text-md font-bold">{title}</span>
+    <span className="text-h4 w-full">{title}</span>
     {ticketTypes?.map((ticketType) => (
       <div key={ticketType.type} className="flex w-full flex-row">
         <div className="flex w-11/12 max-w-lg flex-row md:w-1/2">

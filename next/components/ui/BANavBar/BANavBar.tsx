@@ -177,9 +177,9 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
             {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
           </div>
-          <div className="relative flex cursor-pointer items-center bg-transparent text-md text-gray-light">
+          <div className="text-h4 relative flex cursor-pointer items-center bg-transparent text-gray-light">
             <LanguageSelect
-              className="typography-highlight-sm cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
+              className="text-p3 cursor-pointer appearance-none bg-transparent font-semibold focus:outline-none active:outline-none"
               {...languageSelectProps}
             />
           </div>
@@ -393,7 +393,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="typography-sm hover:typography-highlight-sm mt-3 h-6 w-[22px] text-[#333333]"
+                className="text-p3 hover:text-p3 mt-3 h-6 w-[22px] text-[#333333] hover:font-semibold"
                 key={option.key}
                 onClick={handleChange}
               >

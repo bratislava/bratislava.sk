@@ -47,7 +47,7 @@ export const WeddingForm = () => {
 
   return (
     <div className="z-10 mx-auto w-10/12">
-      <h1 className="text-center text-2xl font-semibold">{t('nonbindingWedding')}</h1>
+      <h1 className="text-center text-h1">{t('nonbindingWedding')}</h1>
 
       <p className="text-center text-default font-medium">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.

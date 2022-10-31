@@ -38,7 +38,7 @@ export const DocumentCards = ({
 
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
-      <div className="text-default font-medium lg:text-md">{title}</div>
+      <div className="text-h4 font-medium">{title}</div>
       <div className="hidden flex-col lg:flex">
         <div className="flex flex-col gap-y-5 pb-14">
           {documents

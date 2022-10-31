@@ -105,7 +105,7 @@ export const Bookmark = ({
         </div>
 
         <div className="flex w-80 flex-col justify-center">
-          <h3 className="text-md font-semibold leading-[36px]">{title}</h3>
+          <h3 className="text-h4 leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
           <a href={link.href} className="group flex items-center font-semibold underline">
             <span className="text-sm font-semibold">{link.title}</span>

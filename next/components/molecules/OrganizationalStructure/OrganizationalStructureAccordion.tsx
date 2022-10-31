@@ -45,7 +45,7 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
             hidden: level > 2,
           })}
         />
-        <div className="text-default lg:text-md">{group.displayName}</div>
+        <div className="text-h4">{group.displayName}</div>
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
         <div className={cx('ml-auto pt-2.5', { 'rotate-180 pt-5': open, hidden: alwaysOpen })}>

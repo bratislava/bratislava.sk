@@ -21,7 +21,7 @@ export const OrganizationalStructureTopLevelAccordion = ({ group }: Organization
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>
         <div className="flex items-center lg:px-5">
           <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-primary lg:h-8 lg:w-8" />
-          <div className="text-default font-semibold lg:text-lg">{group.displayName}</div>
+          <div className="text-h3">{group.displayName}</div>
           <div className={cx('ml-auto', { 'rotate-180': open })}>
             <ChevronDown className="hidden lg:flex" />
             <ChevronDownSmall className="flex lg:hidden" />
