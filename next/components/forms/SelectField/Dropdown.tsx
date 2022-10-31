@@ -1,7 +1,7 @@
 import cx from 'classnames'
 
-import SelectOption from './SelectOption'
 import DropdownRow from './DropdownRow'
+import SelectOption from './SelectOption'
 
 interface DropdownProps {
   options: SelectOption[]
@@ -9,9 +9,13 @@ interface DropdownProps {
   absolute?: boolean
   multiple?: boolean
   divider?: boolean
+  onChooseOne: (option: SelectOption, close?: boolean) => void
+  onUnChooseOne: (option: SelectOption, close?: boolean) => void
+  onChooseMulti: (option: SelectOption) => void
+  onUnChooseMulti: (option: SelectOption) => void
 }
 
-const Dropdown = ({options, value, absolute, multiple, divider}: DropdownProps) => {
+const Dropdown = ({options, value, absolute, multiple, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownProps) => {
   // STYLES
   const dropdownClassName = cx(
     "rounded-lg border-2 border-form-input-pressed bg-gray-100 z-50 py-2",
@@ -33,7 +37,11 @@ const Dropdown = ({options, value, absolute, multiple, divider}: DropdownProps) 
   return (
     <div className={dropdownClassName}>
       {
-        options.map(option => <DropdownRow option={option} divider={divider} selected={isSelected(option)} multiple={multiple}/>)
+        options.map(
+          (option, key) =>
+            <DropdownRow key={key} option={option} divider={divider} selected={isSelected(option)} multiple={multiple}
+                         onChooseOne={onChooseOne} onUnChooseOne={onUnChooseOne} onChooseMulti={onChooseMulti} onUnChooseMulti={onUnChooseMulti} />
+        )
       }
     </div>
   )

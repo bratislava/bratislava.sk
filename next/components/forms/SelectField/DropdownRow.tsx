@@ -1,16 +1,21 @@
-import cx from 'classnames'
 import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
-import SelectOption from './SelectOption'
+import cx from 'classnames'
+
 import CheckboxIcon from '../icon-components/CheckboxIcon'
+import SelectOption from './SelectOption'
 
 interface DropdownRowProps {
   option: SelectOption
   selected?: boolean
   multiple?: boolean
   divider?: boolean
+  onChooseOne: (option: SelectOption, close?: boolean) => void
+  onUnChooseOne: (option: SelectOption, close?: boolean) => void
+  onChooseMulti: (option: SelectOption) => void
+  onUnChooseMulti: (option: SelectOption) => void
 }
 
-const DropdownRow = ({option, selected, multiple, divider}: DropdownRowProps) => {
+const DropdownRow = ({option, selected, multiple, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
     "flex flex-col w-full px-5 bg-gray-100 [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
@@ -27,9 +32,17 @@ const DropdownRow = ({option, selected, multiple, divider}: DropdownRowProps) =>
     }
   )
 
+  // EVENT HANDLERS
+  const handleOnClick = () => {
+    if (selected && multiple) onUnChooseMulti(option)
+    else if (!selected && multiple) onChooseMulti(option)
+    else if (selected && !multiple) onUnChooseOne(option, true)
+    else if (!selected && !multiple) onChooseOne(option, true)
+  }
+
   // RENDER
   return (
-    <div className={rowClassName}>
+    <div className={rowClassName} onClick={handleOnClick}>
       <div className="flex flex-col justify-center h-full">
         <div className="flex flex-row justify-center">
           <p className={optionClassName}>{option.label}</p>

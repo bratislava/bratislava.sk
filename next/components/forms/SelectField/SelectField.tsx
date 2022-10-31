@@ -69,6 +69,35 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
     handleOnChangeSelect(newValue)
   }
 
+  const handleOnChooseOne = (option: SelectOption, close?: boolean) => {
+    if (close) setIsDropdownOpened(false)
+    handleOnChangeSelect([option])
+  }
+
+  const handleOnUnChooseOne = (option: SelectOption, close?: boolean) => {
+    if (close) setIsDropdownOpened(false)
+    handleOnChangeSelect([])
+  }
+
+  const handleOnChooseMulti = (option: SelectOption) => {
+    const newValue = value ? [...value] : []
+    if (newValue.length > 0) newValue.push(option)
+    handleOnChangeSelect(newValue)
+  }
+
+  const handleOnUnChooseMulti = (option: SelectOption) => {
+    const newValue = value
+      ? [...value].filter(valueOption => {
+        return valueOption.value !== option.value
+          || valueOption.label !== option.label
+          || valueOption.description !== option.description
+      })
+      : []
+    handleOnChangeSelect(newValue)
+  }
+
+
+  // HELPER FUNCTIONS
   const getDropdownValues = () => {
     return !multiple && value && value.length > 0
       ? [value[0]]
@@ -99,7 +128,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       {/* DROPDOWN */}
       <div className="relative">
         {
-          isDropdownOpened && <Dropdown options={options} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider} absolute/>
+          isDropdownOpened &&
+          <Dropdown options={options} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider}
+                    onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne}
+                    onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti}  absolute/>
         }
       </div>
 
