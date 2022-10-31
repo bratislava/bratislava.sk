@@ -36,10 +36,10 @@ const SelectFieldShowCase = () => {
         <SelectField label="Select Field" options={selectOptions} disabled/>
       </Stack>
       <Stack>
-        <SelectField label="Select Field" options={selectOptions}
+        <SelectField label="Select Field" options={selectOptions} dropdownDivider
                      value={selectValueThird} onChange={value => setSelectValueThird(value)} multiple/>
-        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" multiple/>
-        <SelectField label="Select Field" options={selectOptions} disabled multiple/>
+        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" dropdownDivider multiple/>
+        <SelectField label="Select Field" options={selectOptions} dropdownDivider disabled multiple/>
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} required ref={ref}

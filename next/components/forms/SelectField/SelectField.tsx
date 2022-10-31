@@ -21,6 +21,7 @@ interface SelectFieldProps {
   required?: boolean
   disabled?: boolean
   tooltip?: string
+  dropdownDivider?: boolean
   onChange?: (values: SelectOption[]) => void;
 }
 
@@ -38,6 +39,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
     required,
     disabled,
     tooltip,
+    dropdownDivider,
     onChange
   } = props
 
@@ -91,7 +93,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       {/* DROPDOWN */}
       <div className="relative">
         {
-          isDropdownOpened && <Dropdown options={options}/>
+          isDropdownOpened && <Dropdown options={options} multiple={multiple} divider={dropdownDivider} absolute/>
         }
       </div>
 
