@@ -50,6 +50,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
     }
   }
 
+  const handleOnRemove = (optionId: number) => {
+    const newValue =  value ? [...value] : []
+    newValue.splice(optionId, 1)
+    handleOnChangeSelect(newValue)
+  }
+
   // RENDER
   return (
     <section className="flex w-max flex-col transition-all">
@@ -60,7 +66,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       <div className="flex flex-row w-80 h-14 bg-gray-100 rounded-lg">
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox value={value} multiple={multiple}/>
+        <SelectFieldBox value={value} multiple={multiple} onRemove={handleOnRemove}/>
 
         {/* DROPDOWN ARROW */}
         <div className="flex flex-col h-full rounded-lg justify-center cursor-pointer px-6 select-none">

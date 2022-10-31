@@ -1,21 +1,23 @@
 import { FC } from 'react'
 
-import SelectOption from './SelectOption'
 import Tag from '../Tag'
+import SelectOption from './SelectOption'
 
 interface SelectFieldBoxProps {
   value?: SelectOption[]
   multiple?: boolean
+  onRemove: (optionId: number) => void
 }
 
-const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple}: SelectFieldBoxProps) => {
+const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, onRemove}: SelectFieldBoxProps) => {
+
   return (
     <div className="w-full">
-      {
-        value
-          ? multiple
-            ? value.map((option, key) => <Tag key={key} text={option.label} size="large" removable/>)
-            : <Tag text={value[0].label} size="large" removable/>
+      { /* TAGS */
+        value && value.length > 0
+          ? (multiple ? value : value.slice(0,1)).map((option, key) =>
+              <Tag key={key} text={option.label} size="large" onRemove={() => onRemove(key)} removable/>
+            )
           : null
       }
     </div>
