@@ -46,11 +46,10 @@ module.exports = {
       '2xl': '1470px',
     },
     boxShadow: {
-      sm: '0px 4px 20px rgba(0, 0, 0, 0.08)',
-      md: '0px 8px 24px rgba(0, 0, 0, 0.08)',
-      lg: '0px 8px 24px rgba(0, 0, 0, 0.16)',
-      DEFAULT: '0px 8px 24px rgba(0, 0, 0, 0.08)',
-      xs: '0px 8px 24px rgba(0, 0, 0, 0.04)',
+      lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
+      md: '0px 8px 16px rgba(0, 0, 0, 0.12)',
+      DEFAULT: '0px 4px 12px rgba(0, 0, 0, 0.12)',
+      sm: '0px 2px 8px rgba(0, 0, 0, 0.12)',
       none: 'none',
     },
     fontFamily: {
