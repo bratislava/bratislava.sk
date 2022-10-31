@@ -1,13 +1,14 @@
 import { FC } from 'react'
-import { MultiValue } from 'react-select'
+
+import SelectOption from './SelectOption'
 
 interface SelectFieldBoxProps {
-  value?: MultiValue<unknown>
+  value?: SelectOption[]
 }
 
 const SelectFieldBox: FC<SelectFieldBoxProps> = (props: SelectFieldBoxProps) => {
   return (
-    <div></div>
+    <div className="w-full"></div>
   )
 }
 
