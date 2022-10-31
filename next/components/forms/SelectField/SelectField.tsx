@@ -1,33 +1,26 @@
 import CloseIcon from '@assets/images/close.svg'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useId } from 'react'
-import StateManagedSelect, {
-  components,
-  ControlProps,
-  CSSObjectWithLabel,
-  DropdownIndicatorProps,
-  MultiValue,
-  MultiValueRemoveProps,
-  OptionProps,
-  StylesConfig,
-} from 'react-select'
+import { MultiValue, } from 'react-select'
 
-import FieldErrorMessage from './FieldErrorMessage'
-import FieldHeader from './FieldHeader'
+import FieldErrorMessage from '../FieldErrorMessage'
+import FieldHeader from '../FieldHeader'
 import Select from 'react-select/base'
+import SelectFieldBox from './SelectFieldBox'
+import SelectOption from './SelectOption'
 
 interface SelectFieldProps {
   label: string
   name: string
-  options: MultiValue<unknown>
-  value?: MultiValue<unknown>
+  options: SelectOption[]
+  value?: SelectOption[]
   placeholder?: string
   errorMessage?: string
   description?: string
   required?: boolean
   disabled?: boolean
   tooltip?: string
-  onChange?: (values: MultiValue<unknown>) => void;
+  onChange?: (values: SelectOption[]) => void;
 }
 
 const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
@@ -48,9 +41,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
   } = props
 
   // EVENT HANDLERS
-  const handleOnChangeSelect = (selectedOptions: unknown) => {
+  const handleOnChangeSelect = (selectedOptions: SelectOption[]) => {
     if (onChange) {
-      onChange(selectedOptions as MultiValue<unknown>)
+      onChange(selectedOptions)
     }
   }
 
@@ -64,8 +57,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
                    required={required}  />
 
       {/* SELECT PART */}
-      <div className="w-80 h-14 bg-gray-100 rounded-lg">
+      <div className="flex flex-row w-80 h-14 bg-gray-100 rounded-lg">
+        <SelectFieldBox/>
+        <div>
 
+        </div>
       </div>
       {/* ERROR MESSAGE */ }
       <FieldErrorMessage errorMessage={errorMessage}/>

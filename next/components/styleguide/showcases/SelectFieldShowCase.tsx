@@ -1,16 +1,18 @@
-import { Wrapper } from '../Wrapper'
-import { Stack } from '../Stack'
-import SelectField from '../../forms/SelectField'
-import { MultiValue } from 'react-select'
 import React, { useState } from 'react'
+import { MultiValue } from 'react-select'
 import Select from 'react-select/base'
+
+import SelectField from '../../forms/SelectField/SelectField'
+import SelectOption from '../../forms/SelectField/SelectOption'
+import { Stack } from '../Stack'
+import { Wrapper } from '../Wrapper'
 
 interface SelectFieldShowCaseProps {
 
 }
 
 const SelectFieldShowCase = () => {
-  const selectOptions: MultiValue<unknown> = [
+  const selectOptions: SelectOption[] = [
     { value: 'example', label: 'skola'},
     { value: 'stuFei', label: 'STU FEI'},
     { value: 'stuFiit', label: 'STU FIIT'},
@@ -19,8 +21,8 @@ const SelectFieldShowCase = () => {
     { value: 'unizaFeit', label: 'UNIZA FEIT' }
   ]
 
-  const [selectValueFirst, setSelectValueFirst] = useState<MultiValue<unknown>>(selectOptions.slice(0, 2))
-  const [selectValueSecond, setSelectValueSecond] = useState<MultiValue<unknown>>(selectOptions.slice(0, 1))
+  const [selectValueFirst, setSelectValueFirst] = useState<SelectOption[]>(selectOptions.slice(0, 2))
+  const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>(selectOptions.slice(0, 1))
 
   const ref = React.createRef<Select>()
 
