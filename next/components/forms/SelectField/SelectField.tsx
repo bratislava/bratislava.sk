@@ -69,6 +69,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
     handleOnChangeSelect(newValue)
   }
 
+  const getDropdownValues = () => {
+    return !multiple && value && value.length > 0
+      ? [value[0]]
+      : value
+  }
+
   // RENDER
   return (
     <section className="flex w-max flex-col transition-all">
@@ -93,7 +99,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
       {/* DROPDOWN */}
       <div className="relative">
         {
-          isDropdownOpened && <Dropdown options={options} value={value} multiple={multiple} divider={dropdownDivider} absolute/>
+          isDropdownOpened && <Dropdown options={options} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider} absolute/>
         }
       </div>
 

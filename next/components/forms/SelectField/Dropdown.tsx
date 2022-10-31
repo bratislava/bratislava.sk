@@ -33,7 +33,7 @@ const Dropdown = ({options, value, absolute, multiple, divider}: DropdownProps) 
   return (
     <div className={dropdownClassName}>
       {
-        options.map(option => <DropdownRow option={option} divider={divider} selected={isSelected(option)}/>)
+        options.map(option => <DropdownRow option={option} divider={divider} selected={isSelected(option)} multiple={multiple}/>)
       }
     </div>
   )
