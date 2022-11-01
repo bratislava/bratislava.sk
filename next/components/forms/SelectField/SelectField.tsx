@@ -44,10 +44,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
+  const [filter, setFilter] = useState<string>("")
 
   // STYLES
   const selectClassName = cx (
-    "flex flex-row w-80 min-h-min bg-gray-100 rounded-lg border-2 border-form-input-default focus:border-form-input-pressed",
+    "flex flex-row w-80 min-h-min bg-gray-100 rounded-lg border-2 border-form-input-default focus:border-form-input-pressed active:border-form-input-pressed",
     {
       'hover:border-form-input-hover': !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
@@ -113,7 +114,8 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className={selectClassName}>
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox value={value} multiple={multiple} onRemove={handleOnRemove}/>
+        <SelectFieldBox value={value} multiple={multiple} filter={filter} disabled={disabled}
+                        onRemove={handleOnRemove} onFilterChange={setFilter}/>
 
         {/* DROPDOWN ARROW */}
         <div className="flex flex-col min-h-[56px] rounded-lg justify-center px-5 select-none">

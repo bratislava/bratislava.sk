@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 
 import Tag from '../Tag'
 import SelectOption from './SelectOption'
@@ -6,10 +6,13 @@ import SelectOption from './SelectOption'
 interface SelectFieldBoxProps {
   value?: SelectOption[]
   multiple?: boolean
+  filter: string
+  disabled?: boolean
   onRemove: (optionId: number) => void
+  onFilterChange: (value: string) => void
 }
 
-const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, onRemove}: SelectFieldBoxProps) => {
+const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRemove, onFilterChange}: SelectFieldBoxProps) => {
   // RENDER
   return (
     <div className="flex flex-row flex-wrap gap-2 w-full py-2.5 px-4">
@@ -20,6 +23,7 @@ const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, onRemove}: Se
             )
           : null
       }
+      <input type="text" value={filter} onChange={event => onFilterChange(event.target.value)}/>
     </div>
   )
 }
