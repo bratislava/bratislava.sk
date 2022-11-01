@@ -86,6 +86,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const handleOnChooseOne = (option: SelectOption, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([option])
+    setFilter("")
   }
 
   const handleOnUnChooseOne = (option: SelectOption, close?: boolean) => {
@@ -97,6 +98,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     const newValue = value ? [...value] : []
     if (value) newValue.push(option)
     handleOnChangeSelect(newValue)
+    setFilter("")
   }
 
   const handleOnUnChooseMulti = (option: SelectOption) => {
@@ -119,6 +121,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     return !multiple && value && value.length > 0
       ? [value[0]]
       : value
+  }
+
+  const getFilteredOptions = () => {
+    return options.filter(option => option.label.toLowerCase().includes(filter.toLowerCase()))
   }
 
   // RENDER
@@ -148,7 +154,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className="relative" ref={dropdownRef}>
         {
           isDropdownOpened &&
-          <Dropdown options={options} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider}
+          <Dropdown options={getFilteredOptions()} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider}
                     onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne}
                     onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti}  absolute/>
         }
