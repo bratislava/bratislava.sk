@@ -22,7 +22,7 @@ const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRem
             )
           : null
       }
-      {/*<input className="border-0 text-p-md outline-none" type="text" value={filter} onChange={event => onFilterChange(event.target.value)}/>*/}
+      <input className="border-0 w-[99%] text-p-md outline-none" type="text" value={filter} onChange={event => onFilterChange(event.target.value)}/>
     </div>
   )
 }
