@@ -47,11 +47,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const [filter, setFilter] = useState<string>("")
   const dropdownRef = React.createRef<HTMLDivElement>()
 
+  console.log("RENDER")
+
   // EFFECT
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log('CLICK')
-      if(!dropdownRef.current?.contains(event.target as Node)) {
+      if(!(dropdownRef.current?.contains(event.target as Node) || event.target instanceof HTMLInputElement)) {
         setIsDropdownOpened(false)
       }
     }
@@ -135,10 +136,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
                         onFilterFocus={() => setIsDropdownOpened(true)}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="flex min-h-[56px] select-none flex-col justify-center rounded-lg pr-5">
-          <div onClick={handleOnDropdownArrowClick} className="cursor-pointer [&>svg]:m-1">
-            { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
-          </div>
+        <div className="flex min-h-[56px] cursor-pointer select-none flex-col justify-center rounded-lg pr-5 [&>svg]:m-1"
+             onClick={handleOnDropdownArrowClick}>
+          { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
         </div>
 
         { disabled && <div className="absolute inset-0 rounded-lg"/> }
