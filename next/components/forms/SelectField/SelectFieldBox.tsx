@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../Tag'
 import SelectOption from './SelectOption'
-import AutoGrowInput from './AutoGrowInput'
 
 interface SelectFieldBoxProps {
   value?: SelectOption[]
@@ -12,12 +11,16 @@ interface SelectFieldBoxProps {
   onFilterChange: (value: string) => void
 }
 
-const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRemove, onFilterChange}: SelectFieldBoxProps) => {
+const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLInputElement, SelectFieldBoxProps>
+  = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLInputElement>) => {
+  // PROPS
+  const { value, multiple, filter, onRemove, onFilterChange } = props
+
   // HELPER FUNCTIONS
   const getInputSize = () => {
-    return filter.length === 0
+    return filter.length <= 1
       ? 1
-      : filter.length > 13
+      : filter.length >= 9
         ? 13
         : filter.length
   }
@@ -32,10 +35,11 @@ const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRem
             )
           : null
       }
-      <input className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
+      <input ref={ref} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
              value={filter} onChange={event => onFilterChange(event.target.value)}/>
     </div>
   )
 }
 
+const SelectFieldBox = forwardRef<HTMLInputElement, SelectFieldBoxProps>(SelectFieldBoxComponent)
 export default SelectFieldBox

@@ -25,7 +25,7 @@ const SelectFieldShowCase = () => {
   const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>(selectOptions.slice(0, 1))
   const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 4))
 
-  const ref = React.createRef<Select>()
+  const ref = React.createRef<HTMLDivElement>()
 
   return (
     <Wrapper direction="column" title="SelectField">
@@ -46,7 +46,7 @@ const SelectFieldShowCase = () => {
                      value={selectValueSecond}
                      onChange={value => {
                        setSelectValueSecond(value)
-                       console.log(ref.current?.getValue())
+                       console.log(ref.current?.getAttribute('data-value'))
                      }}/>
         <SelectField label="Select Field" options={selectOptions} errorMessage="Test error message"/>
       </Stack>

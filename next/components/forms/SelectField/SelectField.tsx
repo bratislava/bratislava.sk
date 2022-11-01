@@ -1,7 +1,7 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useEffect, useRef, useState } from 'react'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
@@ -45,6 +45,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
+  const filterRef = React.createRef<HTMLInputElement>()
 
   // STYLES
   const selectClassName = cx (
@@ -111,14 +112,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className={selectClassName}>
+      <div className={selectClassName} ref={ref} data-value={value}>
 
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox value={value} multiple={multiple} filter={filter}
                         onRemove={handleOnRemove} onFilterChange={setFilter}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="flex min-h-[56px] select-none flex-col justify-center rounded-lg px-5">
+        <div className="flex min-h-[56px] select-none flex-col justify-center rounded-lg pr-5">
           <div onClick={() => setIsDropdownOpened(!isDropdownOpened)} className="cursor-pointer [&>svg]:m-1">
             { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
           </div>
