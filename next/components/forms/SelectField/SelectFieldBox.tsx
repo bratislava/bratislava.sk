@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 
 import Tag from '../Tag'
 import SelectOption from './SelectOption'
+import AutoGrowInput from './AutoGrowInput'
 
 interface SelectFieldBoxProps {
   value?: SelectOption[]
@@ -12,6 +13,15 @@ interface SelectFieldBoxProps {
 }
 
 const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRemove, onFilterChange}: SelectFieldBoxProps) => {
+  // HELPER FUNCTIONS
+  const getInputSize = () => {
+    return filter.length === 0
+      ? 1
+      : filter.length > 13
+        ? 13
+        : filter.length
+  }
+
   // RENDER
   return (
     <div className="flex w-full flex-row flex-wrap gap-2 py-2.5 px-4">
@@ -22,7 +32,8 @@ const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRem
             )
           : null
       }
-      <input className="border-0 w-[99%] text-p-md outline-none" type="text" value={filter} onChange={event => onFilterChange(event.target.value)}/>
+      <input className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
+             value={filter} onChange={event => onFilterChange(event.target.value)}/>
     </div>
   )
 }
