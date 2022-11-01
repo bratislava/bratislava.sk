@@ -14,7 +14,7 @@ interface SelectFieldBoxProps {
 const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRemove, onFilterChange}: SelectFieldBoxProps) => {
   // RENDER
   return (
-    <div className="flex flex-row flex-wrap gap-2 w-full py-2.5 px-4">
+    <div className="flex w-full flex-row flex-wrap gap-2 py-2.5 px-4">
       { /* TAGS */
         value && value.length > 0
           ? (multiple ? value : value.slice(0,1)).map((option, key) =>
@@ -22,7 +22,7 @@ const SelectFieldBox: FC<SelectFieldBoxProps> = ({value, multiple, filter, onRem
             )
           : null
       }
-      <input type="text" value={filter} onChange={event => onFilterChange(event.target.value)}/>
+      {/*<input className="border-0 text-p-md outline-none" type="text" value={filter} onChange={event => onFilterChange(event.target.value)}/>*/}
     </div>
   )
 }
