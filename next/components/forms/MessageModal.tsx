@@ -10,7 +10,7 @@ type MessageModalBase = {
   type: 'warning' | 'info' | 'error'
   message: string
   submitHandler: () => void
-  cancelHandler: () => void
+  cancelHandler?: () => void
   buttonText: string
   className?: string
 }
@@ -53,10 +53,7 @@ const MessageModal = ({type, message, submitHandler, cancelHandler, buttonText}:
               <div className='text-base w-15 flex h-8 cursor-pointer flex-row items-center justify-center gap-2 py-1 px-2 font-semibold not-italic leading-6' onClick={cancelHandler}>
                 Zrušiť
               </div>
-              <Button onPress={submitHandler} variant="black" className={cx('',{
-                // unknown problem (color will be default) if you want to set color for background not in [] brackets but using it from tailwind.config.js
-                'bg-[#D00000] border-form-alert-error-default': type === 'error'
-              })} text={buttonText} size="sm"/>
+              <Button onPress={submitHandler} variant={type === 'error' ? 'negative' : 'black'} text={buttonText} size="sm"/>
             </div>
           </div>
         </div>
