@@ -81,7 +81,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   const handleOnChooseMulti = (option: SelectOption) => {
     const newValue = value ? [...value] : []
-    if (newValue.length > 0) newValue.push(option)
+    if (value) newValue.push(option)
     handleOnChangeSelect(newValue)
   }
 
