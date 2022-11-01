@@ -48,9 +48,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STYLES
   const selectClassName = cx (
-    "flex flex-row w-80 min-h-min bg-gray-100 rounded-lg border-2 border-form-input-default focus:border-form-input-pressed active:border-form-input-pressed",
+    "flex flex-row w-80 min-h-min bg-gray-100 rounded-lg border-2 border-form-input-default",
     {
-      'hover:border-form-input-hover': !disabled,
+      'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed': !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
       'opacity-50 border-form-input-disabled': disabled,
     }
@@ -106,7 +106,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // RENDER
   return (
-    <section className="flex w-max flex-col transition-all">
+    <section className="relative flex w-max flex-col transition-all">
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
@@ -114,16 +114,17 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className={selectClassName}>
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox value={value} multiple={multiple} filter={filter} disabled={disabled}
+        <SelectFieldBox value={value} multiple={multiple} filter={filter}
                         onRemove={handleOnRemove} onFilterChange={setFilter}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="flex flex-col min-h-[56px] rounded-lg justify-center px-5 select-none">
+        <div className="flex min-h-[56px] select-none flex-col justify-center rounded-lg px-5">
           <div onClick={() => setIsDropdownOpened(!isDropdownOpened)} className="cursor-pointer [&>svg]:m-1">
             { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
           </div>
         </div>
 
+        { disabled && <div className="absolute inset-0 rounded-lg"/> }
       </div>
 
       {/* DROPDOWN */}

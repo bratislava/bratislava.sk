@@ -7,7 +7,6 @@ interface SelectFieldBoxProps {
   value?: SelectOption[]
   multiple?: boolean
   filter: string
-  disabled?: boolean
   onRemove: (optionId: number) => void
   onFilterChange: (value: string) => void
 }
