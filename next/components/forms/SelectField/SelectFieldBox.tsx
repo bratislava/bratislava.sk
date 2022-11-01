@@ -10,12 +10,13 @@ interface SelectFieldBoxProps {
   onRemove: (optionId: number) => void
   onFilterChange: (value: string) => void
   onFilterFocus: () => void
+  onDeleteLastValue: () => void
 }
 
 const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps>
   = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, multiple, filter, onRemove, onFilterChange, onFilterFocus } = props
+  const { value, multiple, filter, onRemove, onFilterChange, onFilterFocus, onDeleteLastValue } = props
   const filterRef = React.createRef<HTMLInputElement>()
 
   // HELPER FUNCTIONS
@@ -36,6 +37,12 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     }
   }
 
+  const handleOnKeyDown = ({ key }: React.KeyboardEvent) => {
+    if (["Backspace", "Delete"].includes(key)) {
+      onDeleteLastValue()
+    }
+  }
+
   // RENDER
   return (
     <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 px-4" data-value={value}
@@ -48,7 +55,8 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
           : null
       }
       <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
-             value={filter} onChange={event => onFilterChange(event.target.value)} onFocus={onFilterFocus}/>
+             value={filter} onChange={event => onFilterChange(event.target.value)} onKeyDown={handleOnKeyDown}
+             onFocus={onFilterFocus}/>
     </section>
   )
 }

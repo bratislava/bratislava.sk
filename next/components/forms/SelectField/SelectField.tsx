@@ -1,7 +1,7 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, RefObject, useEffect, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useEffect, useState } from 'react'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
@@ -116,6 +116,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     setIsDropdownOpened(!isDropdownOpened)
   }
 
+  const handleOnDeleteLastValue = () => {
+    const newValue = value ? [...value] : []
+    newValue.pop()
+    handleOnChangeSelect(newValue)
+  }
+
   // HELPER FUNCTIONS
   const getDropdownValues = () => {
     return !multiple && value && value.length > 0
@@ -139,7 +145,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox ref={ref} value={value} multiple={multiple} filter={filter}
                         onRemove={handleOnRemove} onFilterChange={setFilter}
-                        onFilterFocus={() => setIsDropdownOpened(true)}/>
+                        onFilterFocus={() => setIsDropdownOpened(true)} onDeleteLastValue={handleOnDeleteLastValue}/>
 
         {/* DROPDOWN ARROW */}
         <div className="flex min-h-[56px] cursor-pointer select-none flex-col justify-center rounded-lg pr-5 [&>svg]:m-1"
