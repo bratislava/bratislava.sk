@@ -18,7 +18,7 @@ interface DropdownRowProps {
 const DropdownRow = ({option, selected, multiple, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
-    "flex flex-col w-full px-5 bg-gray-100 [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
+    "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
     {
       "h-14": !option.description,
       "h-[84px]": option.description

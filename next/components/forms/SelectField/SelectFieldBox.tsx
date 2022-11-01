@@ -1,4 +1,4 @@
-import React, { FC, ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../Tag'
 import SelectOption from './SelectOption'
@@ -9,25 +9,37 @@ interface SelectFieldBoxProps {
   filter: string
   onRemove: (optionId: number) => void
   onFilterChange: (value: string) => void
+  onFilterFocus: () => void
 }
 
-const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLInputElement, SelectFieldBoxProps>
-  = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLInputElement>) => {
+const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps>
+  = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, multiple, filter, onRemove, onFilterChange } = props
+  const { value, multiple, filter, onRemove, onFilterChange, onFilterFocus } = props
+  const filterRef = React.createRef<HTMLInputElement>()
 
   // HELPER FUNCTIONS
   const getInputSize = () => {
-    return filter.length <= 1
-      ? 1
-      : filter.length >= 9
-        ? 13
-        : filter.length
+    return !value || value.length === 0
+      ? 13
+      : filter.length <= 1
+        ? 1
+        : filter.length >= 9
+          ? 13
+          : filter.length
+  }
+
+  // EVENT HANDLERS
+  const handleOnInputFocus = (event: React.FormEvent) => {
+    if (!(event.target instanceof HTMLParagraphElement || event.target instanceof SVGElement || event.target instanceof HTMLDivElement)) {
+      filterRef.current?.focus()
+    }
   }
 
   // RENDER
   return (
-    <div className="flex w-full flex-row flex-wrap gap-2 py-2.5 px-4">
+    <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 px-4" data-value={value}
+         onClick={handleOnInputFocus} onFocus={handleOnInputFocus}>
       { /* TAGS */
         value && value.length > 0
           ? (multiple ? value : value.slice(0,1)).map((option, key) =>
@@ -35,11 +47,11 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLInputElement, Select
             )
           : null
       }
-      <input ref={ref} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
-             value={filter} onChange={event => onFilterChange(event.target.value)}/>
-    </div>
+      <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
+             value={filter} onChange={event => onFilterChange(event.target.value)} onFocus={onFilterFocus}/>
+    </section>
   )
 }
 
-const SelectFieldBox = forwardRef<HTMLInputElement, SelectFieldBoxProps>(SelectFieldBoxComponent)
+const SelectFieldBox = forwardRef<HTMLDivElement, SelectFieldBoxProps>(SelectFieldBoxComponent)
 export default SelectFieldBox

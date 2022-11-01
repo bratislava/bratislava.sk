@@ -1,7 +1,7 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useEffect, useRef, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, RefObject, useEffect, useState } from 'react'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
@@ -45,7 +45,19 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
-  const filterRef = React.createRef<HTMLInputElement>()
+  const dropdownRef = React.createRef<HTMLDivElement>()
+
+  // EFFECT
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      console.log('CLICK')
+      if(!dropdownRef.current?.contains(event.target as Node)) {
+        setIsDropdownOpened(false)
+      }
+    }
+    document.addEventListener('click', handleClickOutside, true)
+    return () => document.removeEventListener('click', handleClickOutside, true)
+  }, [dropdownRef])
 
   // STYLES
   const selectClassName = cx (
@@ -97,6 +109,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
+  const handleOnDropdownArrowClick = () => {
+    setIsDropdownOpened(!isDropdownOpened)
+  }
 
   // HELPER FUNCTIONS
   const getDropdownValues = () => {
@@ -112,15 +127,16 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className={selectClassName} ref={ref} data-value={value}>
+      <div className={selectClassName} ref={ref}>
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox value={value} multiple={multiple} filter={filter}
-                        onRemove={handleOnRemove} onFilterChange={setFilter}/>
+        <SelectFieldBox ref={ref} value={value} multiple={multiple} filter={filter}
+                        onRemove={handleOnRemove} onFilterChange={setFilter}
+                        onFilterFocus={() => setIsDropdownOpened(true)}/>
 
         {/* DROPDOWN ARROW */}
         <div className="flex min-h-[56px] select-none flex-col justify-center rounded-lg pr-5">
-          <div onClick={() => setIsDropdownOpened(!isDropdownOpened)} className="cursor-pointer [&>svg]:m-1">
+          <div onClick={handleOnDropdownArrowClick} className="cursor-pointer [&>svg]:m-1">
             { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
           </div>
         </div>
@@ -129,7 +145,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       </div>
 
       {/* DROPDOWN */}
-      <div className="relative">
+      <div className="relative" ref={dropdownRef}>
         {
           isDropdownOpened &&
           <Dropdown options={options} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider}
