@@ -2,7 +2,6 @@ import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
-import Select from 'react-select/base'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
@@ -25,8 +24,8 @@ interface SelectFieldProps {
   onChange?: (values: SelectOption[]) => void;
 }
 
-const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
-  = (props: SelectFieldProps, ref: ForwardedRef<Select>) => {
+const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps>
+  = (props: SelectFieldProps, ref: ForwardedRef<HTMLDivElement>) => {
   // PROPS
   const {
     label,
@@ -142,5 +141,5 @@ const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
 }
 
 
-const SelectField = forwardRef<Select, SelectFieldProps>(SelectFieldComponent)
+const SelectField = forwardRef<HTMLDivElement, SelectFieldProps>(SelectFieldComponent)
 export default SelectField;
