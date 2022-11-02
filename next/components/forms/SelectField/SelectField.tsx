@@ -48,17 +48,8 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
   const dropdownRef = React.createRef<HTMLDivElement>()
+  const filterRef = React.createRef<HTMLInputElement>()
 
-  // EFFECT
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if(!(dropdownRef.current?.contains(event.target as Node) || event.target instanceof HTMLInputElement)) {
-        setIsDropdownOpened(false)
-      }
-    }
-    document.addEventListener('click', handleClickOutside, true)
-    return () => document.removeEventListener('click', handleClickOutside, true)
-  }, [dropdownRef])
 
   // STYLES
   const selectClassName = cx (
@@ -113,7 +104,17 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnDropdownArrowClick = () => {
-    setIsDropdownOpened(!isDropdownOpened)
+    if (!isDropdownOpened) {
+      filterRef.current?.focus()
+    } else {
+      setIsDropdownOpened(false)
+    }
+  }
+
+  const handleOnInputFocusChange = (isFocused: boolean) => {
+    setTimeout(() => {
+      setIsDropdownOpened(isFocused)
+    }, 50)
   }
 
   const handleOnDeleteLastValue = () => {
@@ -148,14 +149,15 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className={selectClassName} ref={ref}>
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox ref={ref} value={value} multiple={multiple} filter={filter}
+        <SelectFieldBox ref={ref} value={value} multiple={multiple} filter={filter} filterRef={filterRef}
                         onRemove={handleOnRemove} onFilterChange={setFilter}
-                        onFilterFocus={() => setIsDropdownOpened(true)} onDeleteLastValue={handleOnDeleteLastValue}/>
+                        onFilterFocusChange={handleOnInputFocusChange} onDeleteLastValue={handleOnDeleteLastValue}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="flex min-h-[56px] cursor-pointer select-none flex-col justify-center rounded-lg pr-5 [&>svg]:m-1"
-             onClick={handleOnDropdownArrowClick}>
-          { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
+        <div className="min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1" onClick={handleOnDropdownArrowClick}>
+          <div className="flex h-full flex-col justify-center" >
+            { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
+          </div>
         </div>
 
         { disabled && <div className="absolute inset-0 rounded-lg"/> }

@@ -6,18 +6,19 @@ import SelectOption from './SelectOption'
 interface SelectFieldBoxProps {
   value?: SelectOption[]
   multiple?: boolean
+
   filter: string
+  filterRef?: React.RefObject<HTMLInputElement>
   onRemove: (optionId: number) => void
   onFilterChange: (value: string) => void
-  onFilterFocus: () => void
+  onFilterFocusChange: (isFocused: boolean) => void
   onDeleteLastValue: () => void
 }
 
 const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps>
   = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, multiple, filter, onRemove, onFilterChange, onFilterFocus, onDeleteLastValue } = props
-  const filterRef = React.createRef<HTMLInputElement>()
+  const { value, multiple, filter, filterRef, onRemove, onFilterChange, onFilterFocusChange, onDeleteLastValue } = props
 
   // HELPER FUNCTIONS
   const getInputSize = () => {
@@ -33,7 +34,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   // EVENT HANDLERS
   const handleOnInputFocus = (event: React.FormEvent) => {
     if (!(event.target instanceof HTMLParagraphElement || event.target instanceof SVGElement || event.target instanceof HTMLDivElement)) {
-      filterRef.current?.focus()
+      filterRef?.current?.focus()
     }
   }
 
@@ -45,7 +46,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
 
   // RENDER
   return (
-    <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 px-4" data-value={value}
+    <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4" data-value={value}
          onClick={handleOnInputFocus} onFocus={handleOnInputFocus}>
       { /* TAGS */
         value && value.length > 0
@@ -56,7 +57,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
              value={filter} onChange={event => onFilterChange(event.target.value)} onKeyDown={handleOnKeyDown}
-             onFocus={onFilterFocus}/>
+             onFocus={() => onFilterFocusChange(true)}/>
     </section>
   )
 }
