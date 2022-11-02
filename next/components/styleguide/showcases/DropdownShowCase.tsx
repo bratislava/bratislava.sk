@@ -35,6 +35,14 @@ const DropdownShowCase = () => {
         <Dropdown options={options} value={selectedMulti} type='multiple' selectAllOption className="w-64"/>
         <Dropdown options={options} value={selectedMulti} type='multiple' selectAllOption divider className="w-64"/>
       </Stack>
+      <Stack>
+        <Dropdown options={options} value={selectedOne} type='arrow' className="w-64"/>
+        <Dropdown options={options} value={selectedOne} type='arrow' divider className="w-64"/>
+      </Stack>
+      <Stack>
+        <Dropdown options={options} value={selectedOne} type='radio' className="w-64"/>
+        <Dropdown options={options} value={selectedOne} type='radio' divider className="w-64"/>
+      </Stack>
     </Wrapper>
   )
 }

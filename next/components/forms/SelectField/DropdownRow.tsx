@@ -3,6 +3,7 @@ import cx from 'classnames'
 import ChevronRightIcon from '../../../assets/images/forms/chevron-right.svg'
 import CheckboxIcon from '../icon-components/CheckboxIcon'
 import SelectOption from './SelectOption'
+import RadioButtonIcon from '../icon-components/RadioButtonIcon'
 
 interface DropdownRowProps {
   option: SelectOption
@@ -39,6 +40,8 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
     else if (!selected && type === 'multiple') onChooseMulti(option)
     else if (selected && ['one', 'arrow'].includes(type)) onUnChooseOne(option, true)
     else if (!selected && ['one', 'arrow'].includes(type)) onChooseOne(option, true)
+    else if (selected && type === 'radio') onUnChooseOne(option, false)
+    else if (!selected && type === 'radio') onChooseOne(option, false)
   }
 
   // HELPER FUNCTIONS
@@ -49,7 +52,9 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
         ? <FilledSelectedIcon/>
         : type === 'arrow'
           ? <ChevronRightIcon/>
-          : null
+          : type === 'radio'
+            ? <RadioButtonIcon selected={selected}/>
+            : null
   }
 
   // RENDER

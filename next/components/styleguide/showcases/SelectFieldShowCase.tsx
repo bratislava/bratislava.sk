@@ -25,6 +25,8 @@ const SelectFieldShowCase = () => {
   const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>([])
   const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 3))
   const [selectValue4, setSelectValue4] = useState<SelectOption[]>([])
+  const [selectValue5, setSelectValue5] = useState<SelectOption[]>(selectOptions.slice(2, 3))
+  const [selectValue6, setSelectValue6] = useState<SelectOption[]>([])
 
   return (
     <Wrapper direction="column" title="SelectField">
@@ -40,6 +42,12 @@ const SelectFieldShowCase = () => {
                      value={selectValueThird} onChange={value => setSelectValueThird(value)} type="multiple"/>
         <SelectField label="Select Field" options={selectOptions} selectAllOption placeholder="Multi-choice"
                      value={selectValue4} onChange={value => setSelectValue4(value)} type="multiple"/>
+      </Stack>
+      <Stack>
+        <SelectField label="Select Field" options={selectOptions} dropdownDivider
+                     value={selectValue5} onChange={value => setSelectValue5(value)} type="radio"/>
+        <SelectField label="Select Field" options={selectOptions} placeholder="Radio"
+                     value={selectValue6} onChange={value => setSelectValue6(value)} type="radio"/>
       </Stack>
       <Stack direction="column">
         <SelectField label="Select Field" options={[]} errorMessage="Test error message" type="one"/>
