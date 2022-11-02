@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
@@ -12,6 +12,7 @@ interface DropdownProps {
   absolute?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
+  className?: string
   onChooseOne?: (option: SelectOption, close?: boolean) => void
   onUnChooseOne?: (option: SelectOption, close?: boolean) => void
   onChooseMulti?: (option: SelectOption) => void
@@ -27,6 +28,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     absolute,
     type,
     divider,
+    className,
     onChooseOne,
     onUnChooseOne,
     onChooseMulti,
@@ -34,17 +36,21 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     onSelectAll
   } = props
 
+  // STATE
+  const [isOneSelected, setIsOneSelected] = useState<boolean>(false)
+
   // STYLES
   const dropdownClassName = cx(
     "rounded-lg border-2 border-form-input-pressed bg-white z-50 py-2",
     {
       "absolute top-2 left-0 right-0": absolute
-    }
+    },
+    className
   )
 
   // HELP FUNCTIONS
   const isSelected = (option: SelectOption): boolean => {
-    return !!value?.find((valueOption) => {
+   return !!value?.find((valueOption) => {
       return valueOption.value === option.value
         && valueOption.label === option.label
         && valueOption.description === option.description
