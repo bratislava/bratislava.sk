@@ -22,48 +22,32 @@ const SelectFieldShowCase = () => {
   ]
 
   const [selectValueFirst, setSelectValueFirst] = useState<SelectOption[]>(selectOptions.slice(0, 2))
-  const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>(selectOptions.slice(0, 1))
-  const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 4))
-
-  const ref = React.createRef<HTMLDivElement>()
+  const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>([])
+  const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 3))
+  const [selectValue4, setSelectValue4] = useState<SelectOption[]>([])
 
   return (
     <Wrapper direction="column" title="SelectField">
       <Stack>
         <SelectField label="Select Field" options={selectOptions} type="one"
                      value={selectValueFirst} onChange={value => setSelectValueFirst(value)}/>
-        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" type="one"/>
+        <SelectField label="Select Field" options={selectOptions} dropdownDivider placeholder="Test placeholder" type="one"
+                     value={selectValueSecond} onChange={value => setSelectValueSecond(value)}/>
         <SelectField label="Select Field" options={selectOptions} disabled type="one"/>
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider
                      value={selectValueThird} onChange={value => setSelectValueThird(value)} type="multiple"/>
-        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" dropdownDivider type="multiple"/>
-        <SelectField label="Select Field" options={selectOptions} dropdownDivider disabled type="multiple"/>
+        <SelectField label="Select Field" options={selectOptions} selectAllOption
+                     value={selectValue4} onChange={value => setSelectValue4(value)} type="multiple"/>
+      </Stack>
+      <Stack direction="column">
+        <SelectField label="Select Field" options={[]} errorMessage="Test error message" type="one"/>
+        <SelectField label="Select Field" options={[]} description="This is simple description" type="one"/>
       </Stack>
       <Stack>
-        <SelectField label="Select Field" options={selectOptions} required ref={ref}
-                     value={selectValueSecond} type="one"
-                     onChange={value => {
-                       setSelectValueSecond(value)
-                       console.log(ref.current?.getAttribute('data-value'))
-                     }}/>
-        <SelectField label="Select Field" options={selectOptions} errorMessage="Test error message" type="one"/>
-      </Stack>
-      <Stack>
-        <SelectField label="Select Field" options={selectOptions} description="This is simple description" type="one"/>
-        <SelectField label="Select Field" options={selectOptions} tooltip="This is example of tooltip text" type="one"/>
-      </Stack>
-      <Stack>
-        <SelectField label="Select Field"
-                     options={selectOptions} description="simple description"
-                     errorMessage="Test error message" tooltip="This is another example of tooltip"
-                     onChange={values => console.log(values)} type="one"/>
-        <SelectField label="Select Field"
-                     options={selectOptions} description="simple description"
-                     errorMessage="Test error message" tooltip="This is another example of tooltip"
-                     required
-                     onChange={values => console.log(values)} type="one"/>
+        <SelectField label="Select Field" options={[]} tooltip="This is example of tooltip" type="one"/>
+        <SelectField label="Select Field" options={[]} tooltip="This is another example of tooltip" type="one" required/>
       </Stack>
     </Wrapper>
   )
