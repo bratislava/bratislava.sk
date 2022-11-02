@@ -15,12 +15,14 @@ const eforms = {
     uiSchema: dopravneZnacenieUiSchema,
     textStylesheet: dopravneZnacenieTextStylesheet,
     htmlStylesheet: dopravneZnacenieHtmlStylesheet,
+    pdfStylesheetPath: '00603481.dopravneZnacenie.sk/form.fo.xslt',
   },
   test: {
     schema: testSchema,
     uiSchema: testUiSchema,
     textStylesheet: undefined,
     htmlStylesheet: undefined,
+    pdfStylesheetPath: undefined,
   },
 }
 
