@@ -1,7 +1,7 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useEffect, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
@@ -13,7 +13,7 @@ interface SelectFieldProps {
   label: string
   options: SelectOption[]
   value?: SelectOption[]
-  multiple?: boolean
+  type: 'one' | 'multiple' | 'arrow' | 'radio'
   selectAllOption?: boolean
   placeholder?: string
   errorMessage?: string
@@ -32,7 +32,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     label,
     options,
     value,
-    multiple,
+    type,
     selectAllOption,
     placeholder,
     errorMessage,
@@ -130,7 +130,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // HELPER FUNCTIONS
   const getDropdownValues = () => {
-    return !multiple && value && value.length > 0
+    return type !== 'multiple' && value && value.length > 0
       ? [value[0]]
       : value
   }
@@ -149,7 +149,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className={selectClassName} ref={ref}>
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox ref={ref} value={value} multiple={multiple} filter={filter} filterRef={filterRef}
+        <SelectFieldBox ref={ref} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}
                         onRemove={handleOnRemove} onFilterChange={setFilter}
                         onFilterFocusChange={handleOnInputFocusChange} onDeleteLastValue={handleOnDeleteLastValue}/>
 
@@ -167,7 +167,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className="relative" ref={dropdownRef}>
         {
           isDropdownOpened &&
-          <Dropdown options={getFilteredOptions()} value={getDropdownValues()} multiple={multiple}
+          <Dropdown options={getFilteredOptions()} value={getDropdownValues()} type={type}
                     divider={dropdownDivider} selectAllOption={selectAllOption} absolute
                     onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne} onSelectAll={handleOnSelectAll}
                     onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti} />

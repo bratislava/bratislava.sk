@@ -8,7 +8,7 @@ interface DropdownRowProps {
   option: SelectOption
   selectAllRow?: boolean
   selected?: boolean
-  multiple?: boolean
+  type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
   onChooseOne: (option: SelectOption, close?: boolean) => void
   onUnChooseOne: (option: SelectOption, close?: boolean) => void
@@ -16,7 +16,7 @@ interface DropdownRowProps {
   onUnChooseMulti: (option: SelectOption) => void
 }
 
-const DropdownRow = ({option, selected, multiple, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
+const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
     "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
@@ -35,21 +35,21 @@ const DropdownRow = ({option, selected, multiple, divider, onChooseOne, onUnChoo
 
   // EVENT HANDLERS
   const handleOnClick = () => {
-    if (selected && multiple) onUnChooseMulti(option)
-    else if (!selected && multiple) onChooseMulti(option)
-    else if (selected && !multiple) onUnChooseOne(option, true)
-    else if (!selected && !multiple) onChooseOne(option, true)
+    if (selected && type === 'multiple') onUnChooseMulti(option)
+    else if (!selected && type === 'multiple') onChooseMulti(option)
+    else if (selected && type === 'one') onUnChooseOne(option, true)
+    else if (!selected && type === 'one') onChooseOne(option, true)
   }
 
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
-      <div className="flex flex-col justify-center h-full">
+      <div className="flex h-full flex-col justify-center">
         <div className="flex flex-row justify-center">
           <p className={optionClassName}>{option.label}</p>
           <div className="flex flex-col justify-center">
               {
-                multiple
+                type === 'multiple'
                   ? <CheckboxIcon checked={selected}/>
                   : selected
                     ? <FilledSelectedIcon/>

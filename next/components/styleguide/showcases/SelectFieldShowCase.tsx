@@ -30,40 +30,40 @@ const SelectFieldShowCase = () => {
   return (
     <Wrapper direction="column" title="SelectField">
       <Stack>
-        <SelectField label="Select Field" options={selectOptions}
+        <SelectField label="Select Field" options={selectOptions} type="one"
                      value={selectValueFirst} onChange={value => setSelectValueFirst(value)}/>
-        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder"/>
-        <SelectField label="Select Field" options={selectOptions} disabled/>
+        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" type="one"/>
+        <SelectField label="Select Field" options={selectOptions} disabled type="one"/>
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider
-                     value={selectValueThird} onChange={value => setSelectValueThird(value)} multiple/>
-        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" dropdownDivider multiple/>
-        <SelectField label="Select Field" options={selectOptions} dropdownDivider disabled multiple/>
+                     value={selectValueThird} onChange={value => setSelectValueThird(value)} type="multiple"/>
+        <SelectField label="Select Field" options={selectOptions} placeholder="Test placeholder" dropdownDivider type="multiple"/>
+        <SelectField label="Select Field" options={selectOptions} dropdownDivider disabled type="multiple"/>
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} required ref={ref}
-                     value={selectValueSecond}
+                     value={selectValueSecond} type="one"
                      onChange={value => {
                        setSelectValueSecond(value)
                        console.log(ref.current?.getAttribute('data-value'))
                      }}/>
-        <SelectField label="Select Field" options={selectOptions} errorMessage="Test error message"/>
+        <SelectField label="Select Field" options={selectOptions} errorMessage="Test error message" type="one"/>
       </Stack>
       <Stack>
-        <SelectField label="Select Field" options={selectOptions} description="This is simple description"/>
-        <SelectField label="Select Field" options={selectOptions} tooltip="This is example of tooltip text"/>
+        <SelectField label="Select Field" options={selectOptions} description="This is simple description" type="one"/>
+        <SelectField label="Select Field" options={selectOptions} tooltip="This is example of tooltip text" type="one"/>
       </Stack>
       <Stack>
         <SelectField label="Select Field"
                      options={selectOptions} description="simple description"
                      errorMessage="Test error message" tooltip="This is another example of tooltip"
-                     onChange={values => console.log(values)}/>
+                     onChange={values => console.log(values)} type="one"/>
         <SelectField label="Select Field"
                      options={selectOptions} description="simple description"
                      errorMessage="Test error message" tooltip="This is another example of tooltip"
                      required
-                     onChange={values => console.log(values)}/>
+                     onChange={values => console.log(values)} type="one"/>
       </Stack>
     </Wrapper>
   )
