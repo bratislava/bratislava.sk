@@ -1,6 +1,6 @@
 import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
 import cx from 'classnames'
-
+import ChevronRightIcon from '../../../assets/images/forms/chevron-right.svg'
 import CheckboxIcon from '../icon-components/CheckboxIcon'
 import SelectOption from './SelectOption'
 
@@ -37,8 +37,19 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
   const handleOnClick = () => {
     if (selected && type === 'multiple') onUnChooseMulti(option)
     else if (!selected && type === 'multiple') onChooseMulti(option)
-    else if (selected && type === 'one') onUnChooseOne(option, true)
-    else if (!selected && type === 'one') onChooseOne(option, true)
+    else if (selected && ['one', 'arrow'].includes(type)) onUnChooseOne(option, true)
+    else if (!selected && ['one', 'arrow'].includes(type)) onChooseOne(option, true)
+  }
+
+  // HELPER FUNCTIONS
+  const getRowIcon = () => {
+    return type === 'multiple'
+      ? <CheckboxIcon checked={selected}/>
+      : type === 'one' && selected
+        ? <FilledSelectedIcon/>
+        : type === 'arrow'
+          ? <ChevronRightIcon/>
+          : null
   }
 
   // RENDER
@@ -48,13 +59,7 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
         <div className="flex flex-row justify-center">
           <p className={optionClassName}>{option.label}</p>
           <div className="flex flex-col justify-center">
-              {
-                type === 'multiple'
-                  ? <CheckboxIcon checked={selected}/>
-                  : selected
-                    ? <FilledSelectedIcon/>
-                    : null
-              }
+              { getRowIcon() }
           </div>
         </div>
         { option.description && <p className="text-p-sm">{option.description}</p> }

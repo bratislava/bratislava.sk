@@ -14,7 +14,7 @@ const DropdownShowCase = () => {
   ]
 
   const selectedOne: SelectOption[] = [
-    { value: 'example', label: 'skola', description: 'this is testing'},
+    { value: 'tukeFei', label: 'TUKE FEI'},
   ]
 
   const selectedMulti: SelectOption[] = [
