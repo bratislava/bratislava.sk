@@ -12,11 +12,11 @@ interface DropdownProps {
   absolute?: boolean
   multiple?: boolean
   divider?: boolean
-  onChooseOne: (option: SelectOption, close?: boolean) => void
-  onUnChooseOne: (option: SelectOption, close?: boolean) => void
-  onChooseMulti: (option: SelectOption) => void
-  onUnChooseMulti: (option: SelectOption) => void
-  onSelectAll: () => void
+  onChooseOne?: (option: SelectOption, close?: boolean) => void
+  onUnChooseOne?: (option: SelectOption, close?: boolean) => void
+  onChooseMulti?: (option: SelectOption) => void
+  onUnChooseMulti?: (option: SelectOption) => void
+  onSelectAll?: () => void
 }
 
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
@@ -55,13 +55,16 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   return (
     <div className={dropdownClassName}>
       {
-        selectAllOption && multiple && <SelectAllDropdownRow onSelectAll={onSelectAll} divider={divider}/>
+        selectAllOption && multiple && <SelectAllDropdownRow onSelectAll={() => onSelectAll ? onSelectAll() : null} divider={divider}/>
       }
       {
         options.map(
           (option, key) =>
             <DropdownRow key={key} option={option} divider={divider} selected={isSelected(option)} multiple={multiple}
-                         onChooseOne={onChooseOne} onUnChooseOne={onUnChooseOne} onChooseMulti={onChooseMulti} onUnChooseMulti={onUnChooseMulti} />
+                         onChooseOne={(opt: SelectOption, close?: boolean) => onChooseOne ? onChooseOne(opt, close) : null}
+                         onUnChooseOne={(opt: SelectOption, close?: boolean) => onUnChooseOne ? onUnChooseOne(opt, close) : null}
+                         onChooseMulti={(opt: SelectOption) => onChooseMulti ? onChooseMulti(opt) : null}
+                         onUnChooseMulti={(opt: SelectOption) => onUnChooseMulti ? onUnChooseMulti(opt) : null} />
         )
       }
     </div>
