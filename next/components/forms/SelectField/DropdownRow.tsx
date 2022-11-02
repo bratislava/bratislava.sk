@@ -6,6 +6,7 @@ import SelectOption from './SelectOption'
 
 interface DropdownRowProps {
   option: SelectOption
+  selectAllRow?: boolean
   selected?: boolean
   multiple?: boolean
   divider?: boolean

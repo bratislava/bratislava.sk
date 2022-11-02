@@ -14,6 +14,7 @@ interface SelectFieldProps {
   options: SelectOption[]
   value?: SelectOption[]
   multiple?: boolean
+  selectAllOption?: boolean
   placeholder?: string
   errorMessage?: string
   description?: string
@@ -32,6 +33,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     options,
     value,
     multiple,
+    selectAllOption,
     placeholder,
     errorMessage,
     description,
@@ -46,8 +48,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
   const dropdownRef = React.createRef<HTMLDivElement>()
-
-  console.log("RENDER")
 
   // EFFECT
   useEffect(() => {
@@ -122,6 +122,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
+  const handleOnSelectAll = () => {
+    const newValue = [...options]
+    handleOnChangeSelect(newValue)
+  }
+
   // HELPER FUNCTIONS
   const getDropdownValues = () => {
     return !multiple && value && value.length > 0
@@ -160,9 +165,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className="relative" ref={dropdownRef}>
         {
           isDropdownOpened &&
-          <Dropdown options={getFilteredOptions()} value={getDropdownValues()} multiple={multiple} divider={dropdownDivider}
-                    onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne}
-                    onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti}  absolute/>
+          <Dropdown options={getFilteredOptions()} value={getDropdownValues()} multiple={multiple}
+                    divider={dropdownDivider} selectAllOption={selectAllOption} absolute
+                    onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne} onSelectAll={handleOnSelectAll}
+                    onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti} />
         }
       </div>
 

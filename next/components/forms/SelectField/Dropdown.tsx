@@ -1,11 +1,14 @@
 import cx from 'classnames'
+import { FC } from 'react'
 
 import DropdownRow from './DropdownRow'
+import SelectAllDropdownRow from './SelectAllDropdownRow'
 import SelectOption from './SelectOption'
 
 interface DropdownProps {
   options: SelectOption[]
   value?: SelectOption[]
+  selectAllOption?: boolean
   absolute?: boolean
   multiple?: boolean
   divider?: boolean
@@ -13,9 +16,24 @@ interface DropdownProps {
   onUnChooseOne: (option: SelectOption, close?: boolean) => void
   onChooseMulti: (option: SelectOption) => void
   onUnChooseMulti: (option: SelectOption) => void
+  onSelectAll: () => void
 }
 
-const Dropdown = ({options, value, absolute, multiple, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownProps) => {
+const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
+  const {
+    options,
+    value,
+    selectAllOption,
+    absolute,
+    multiple,
+    divider,
+    onChooseOne,
+    onUnChooseOne,
+    onChooseMulti,
+    onUnChooseMulti,
+    onSelectAll
+  } = props
+
   // STYLES
   const dropdownClassName = cx(
     "rounded-lg border-2 border-form-input-pressed bg-white z-50 py-2",
@@ -36,6 +54,9 @@ const Dropdown = ({options, value, absolute, multiple, divider, onChooseOne, onU
   // RENDER
   return (
     <div className={dropdownClassName}>
+      {
+        selectAllOption && multiple && <SelectAllDropdownRow onSelectAll={onSelectAll} divider={divider}/>
+      }
       {
         options.map(
           (option, key) =>
