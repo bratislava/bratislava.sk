@@ -38,7 +38,7 @@ const SelectFieldShowCase = () => {
       <Stack>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider
                      value={selectValueThird} onChange={value => setSelectValueThird(value)} type="multiple"/>
-        <SelectField label="Select Field" options={selectOptions} selectAllOption
+        <SelectField label="Select Field" options={selectOptions} selectAllOption placeholder="Multi-choice"
                      value={selectValue4} onChange={value => setSelectValue4(value)} type="multiple"/>
       </Stack>
       <Stack direction="column">

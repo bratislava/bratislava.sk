@@ -150,7 +150,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox ref={ref} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}
-                        onRemove={handleOnRemove} onFilterChange={setFilter}
+                        placeholder={placeholder} onRemove={handleOnRemove} onFilterChange={setFilter}
                         onFilterFocusChange={handleOnInputFocusChange} onDeleteLastValue={handleOnDeleteLastValue}/>
 
         {/* DROPDOWN ARROW */}

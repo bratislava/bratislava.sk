@@ -6,7 +6,7 @@ import SelectOption from './SelectOption'
 interface SelectFieldBoxProps {
   value?: SelectOption[]
   multiple?: boolean
-
+  placeholder?: string
   filter: string
   filterRef?: React.RefObject<HTMLInputElement>
   onRemove: (optionId: number) => void
@@ -18,7 +18,7 @@ interface SelectFieldBoxProps {
 const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps>
   = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, multiple, filter, filterRef, onRemove, onFilterChange, onFilterFocusChange, onDeleteLastValue } = props
+  const { value, multiple, placeholder, filter, filterRef, onRemove, onFilterChange, onFilterFocusChange, onDeleteLastValue } = props
 
   // HELPER FUNCTIONS
   const getInputSize = () => {
@@ -29,6 +29,10 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
         : filter.length >= 9
           ? 13
           : filter.length
+  }
+
+  const getPlaceholder = () => {
+    return value && value.length > 0 ? "" : placeholder
   }
 
   // EVENT HANDLERS
@@ -56,8 +60,8 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
           : null
       }
       <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
-             value={filter} onChange={event => onFilterChange(event.target.value)} onKeyDown={handleOnKeyDown}
-             onFocus={() => onFilterFocusChange(true)}/>
+             value={filter} placeholder={getPlaceholder()} onKeyDown={handleOnKeyDown}
+             onChange={event => onFilterChange(event.target.value)} onFocus={() => onFilterFocusChange(true)}/>
     </section>
   )
 }
