@@ -46,11 +46,10 @@ module.exports = {
       '2xl': '1470px',
     },
     boxShadow: {
-      sm: '0px 4px 20px rgba(0, 0, 0, 0.08)',
-      md: '0px 8px 24px rgba(0, 0, 0, 0.08)',
-      lg: '0px 8px 24px rgba(0, 0, 0, 0.16)',
-      DEFAULT: '0px 8px 24px rgba(0, 0, 0, 0.08)',
-      xs: '0px 8px 24px rgba(0, 0, 0, 0.04)',
+      lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
+      md: '0px 8px 16px rgba(0, 0, 0, 0.12)',
+      DEFAULT: '0px 4px 12px rgba(0, 0, 0, 0.12)',
+      sm: '0px 2px 8px rgba(0, 0, 0, 0.12)',
       none: 'none',
     },
     fontFamily: {
@@ -72,17 +71,23 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
     },
+    fontSize: {
+      'p-xs': ['12px', '18px'],
+      'p-sm': ['14px', '24px'],
+      'p-base': ['16px', '24px'],
+      'p-md': ['20px', '32px'],
+      
+      'h-sm': ['16px', '24px'],
+      'h-base': ['20px', '28px'],
+      'h-md': ['24px', '32px'],
+      'h-lg': ['28px', '36px'],
+      'h-xl': ['32px', '40px'],
+      'h-2xl': ['40px', '48px'],
+      'h-3xl': ['56px', '64px'],
+    },
     extend: {
-      fontSize: {
-        xxs: ['12px', '18px'],
-        xs: ['12px', '18px'],
-        sm: ['16px', '24px'],
-        default: ['20px', '30px'],
-        md: ['24px', '36px'],
-        lg: ['32px', '41.6px'],
-        xl: ['36px', '42.3px'],
-        '2xl': ['40px', '52px'],
-        xxxl: ['48px', '62.4px'],
+      rotate: {
+        "270": "270deg"
       },
       colors: {
         form: {
@@ -90,11 +95,13 @@ module.exports = {
             default: '#D6D6D6',
             hover: '#ADADAD',
             pressed: '#333333',
-            disabled: '#C2C2C2'
+            disabled: '#C2C2C2',
           },
           calendar: {
             hover: '#f1f1f1',
             header: '#F5F5F5',
+            pressed: '#EBEBEB',
+            placeholder: '#858585',
           },
           brand: {
             default: '#E46054',
@@ -126,6 +133,31 @@ module.exports = {
             hover: '#FDE8E8',
             pressed: '#FCD1D1',
           },
+          alert: {
+            error: {
+              default: '#D00000',
+              'default-bg': '#FDF2F2',
+              solid: ''
+            },
+            success: {
+              default: '#01843D',
+              'default-bg': '#F2F9F5',
+              solid: ''
+            },
+            info: {
+              default: '#333333',
+              'default-bg': '#EBEBEB',
+              solid: ''
+            },
+            warning: {
+              default: '#E07B04',
+              'default-bg': '#FDF8F2',
+              solid: ''
+            },
+            textColor: {
+              default: '#1F1F1F'
+            }
+          }
         },
         transperentBG: 'rgba(0, 0, 0, 0.5)',
         primary: 'var(--primary-color)',
@@ -147,6 +179,7 @@ module.exports = {
         },
         gray: {
           universal: {
+            0:  'var(--input-nav-background-color)',
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
             400: 'var(--universal-gray-400)',
@@ -193,6 +226,7 @@ module.exports = {
       },
       borderRadius: {
         10: '10px',
+        8: '8px',
         5: '5px',
       },
       gridTemplateRows: {
@@ -251,9 +285,14 @@ module.exports = {
       },
       height: {
         72: '72px',
+        196: '196px',
       },
       width: {
         540: '540px',
+        480: '480px',
+        404: '404px',
+        368: '368px',
+        320: '320px',
         72: '72px',
       },
       minWidth: {
@@ -263,11 +302,15 @@ module.exports = {
         61: '244px',
         87: '350px',
       },
+      gap: {
+        3: '13px'
+      },
       lineHeight: {
         'extra-tight': '1.3',
       },
     },
   },
+  plugins: [require('tailwind-scrollbar-hide')],
   corePlugins: {
     container: false,
   },

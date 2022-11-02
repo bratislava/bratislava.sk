@@ -51,8 +51,8 @@ export const AccordionItem = ({
           className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
           onClick={handleClick}
         >
-          <div className="flex flex-row font-medium">
-            <p className="text-left text-sm text-font lg:text-md">
+          <div className="flex flex-row">
+            <p className="text-h4 font-medium text-left text-font">
               {title}
               {secondaryTitle && <span className="text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</span>}
             </p>

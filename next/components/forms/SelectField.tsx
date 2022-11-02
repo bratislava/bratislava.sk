@@ -1,15 +1,20 @@
+import CloseIcon from '@assets/images/close.svg'
 import cx from 'classnames'
-import React, { FC } from 'react'
-import Select, {
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useId } from 'react'
+import StateManagedSelect, {
+  components,
   ControlProps,
-  CSSObjectWithLabel, DropdownIndicatorProps, MultiValue,
+  CSSObjectWithLabel,
+  DropdownIndicatorProps,
+  MultiValue,
+  MultiValueRemoveProps,
   OptionProps,
   StylesConfig,
-  components, MultiValueRemoveProps,
 } from 'react-select'
-import CloseIcon from '@assets/images/close.svg'
+
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
+import Select from 'react-select/base'
 
 interface SelectFieldProps {
   label: string
@@ -25,8 +30,10 @@ interface SelectFieldProps {
   onChange?: (values: MultiValue<unknown>) => void;
 }
 
-const SelectField: FC<SelectFieldProps> = (
-  {
+const SelectFieldComponent: ForwardRefRenderFunction<Select, SelectFieldProps>
+  = (props: SelectFieldProps, ref: ForwardedRef<Select>) => {
+  // PROPS
+  const {
     label,
     name,
     options,
@@ -38,8 +45,8 @@ const SelectField: FC<SelectFieldProps> = (
     disabled,
     tooltip,
     onChange
-  }
-) => {
+  } = props
+
   // EVENT HANDLERS
   const handleOnChangeSelect = (selectedOptions: unknown) => {
     if (onChange) {
@@ -136,7 +143,7 @@ const SelectField: FC<SelectFieldProps> = (
 
       {/* SELECT PART */}
       <div className="w-80">
-        <Select className={tailwindSelectStyle} styles={selectStyle}
+        <StateManagedSelect instanceId={useId()} ref={ref} className={tailwindSelectStyle} styles={selectStyle}
                 options={options} noOptionsMessage={() => "No Options"}
                 placeholder={placeholder} value={value}
                 isDisabled={disabled} isMulti
@@ -150,5 +157,5 @@ const SelectField: FC<SelectFieldProps> = (
 }
 
 
-
+const SelectField = forwardRef<Select, SelectFieldProps>(SelectFieldComponent)
 export default SelectField;

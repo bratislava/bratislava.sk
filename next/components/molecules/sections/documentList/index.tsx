@@ -54,7 +54,7 @@ export const DocumentList = () => {
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       ) : (
         <>
-          <div className="pt-14 pb-5 text-default font-medium lg:pb-6 lg:text-md">{t('listOfDocuments')}</div>
+          <div className="text-h4 pt-14 pb-5 font-medium lg:pb-6">{t('listOfDocuments')}</div>
           <div className="modal-content-rent mb-6 flex flex-col gap-4 md:w-auto lg:gap-6">
             {vzns.map.length > 10 ? (
               <>

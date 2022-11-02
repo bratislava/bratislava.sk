@@ -7,7 +7,7 @@ interface FieldErrorMessageProps {
 
 const FieldErrorMessage: FC<FieldErrorMessageProps> = ({errorMessage, errorMessageProps}) => {
   return errorMessage ? (
-    <div className="mt-1 text-sm text-error" {...errorMessageProps}>
+    <div className="text-p2 mt-1 text-error" {...errorMessageProps}>
       {errorMessage}
     </div>
   ): null;

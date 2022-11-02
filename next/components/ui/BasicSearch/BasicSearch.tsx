@@ -37,7 +37,7 @@ export const BasicSearch = ({
           onSubmit?.(input)
         }}
       >
-        <div className="pb-2 text-sm font-medium lg:pb-3 lg:text-default">{title}</div>
+        <div className="text-p1 pb-2 font-medium lg:pb-3">{title}</div>
         <div className={cx('lg:flex', { hidden: !collapse }, { flex: collapse })}>
           <input
             id="name"
@@ -50,7 +50,7 @@ export const BasicSearch = ({
           <Button
             icon={<SearchIcon className="scale-75" />}
             hoverIcon={<SearchIcon className="scale-75" />}
-            className="hover:color-white h-14 rounded-l-none px-6 text-default font-medium capitalize shadow-none hover:bg-primary hover:text-white"
+            className="hover:color-white h-14 rounded-l-none px-6 text-p1 font-medium capitalize shadow-none hover:bg-primary hover:text-white"
             variant="secondary-dark-text"
             onClick={() => onSubmit(input)}
           >

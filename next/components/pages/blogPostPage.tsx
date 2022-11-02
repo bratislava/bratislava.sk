@@ -72,11 +72,11 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="min-h-[220px] pt-30">
             {blogPost?.tag && (
-              <span className="inline-block rounded bg-primary px-3 py-1 text-sm font-medium text-white">
+              <span className="text-p2 inline-block rounded bg-primary px-3 py-1 font-medium text-white">
                 {tag?.title}
               </span>
             )}
-            <h1 className="max-w-[900px] whitespace-pre-wrap pt-4 text-md font-bold md:text-2xl">{blogPost?.title}</h1>
+            <h1 className="text-h1 max-w-[900px] whitespace-pre-wrap pt-4">{blogPost?.title}</h1>
             {blogPost && (
               <div className="pt-2 pb-14">
                 {getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)}
@@ -93,7 +93,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
       {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
       <SectionContainer>
         <div className="mt-14 flex flex-col">
-          <span className="text-default font-semibold">{t('share')}</span>
+          <span className="text-h5">{t('share')}</span>
           <div className="flex space-x-10 pt-5">
             <SocialMediaButton href={`https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}>
               <FacebookIcon />

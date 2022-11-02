@@ -39,7 +39,7 @@ export const NumericalListItem = ({
       >
         <div
           className={cx(
-            'z-10 shrink-0 min-w-16 rounded-full text-md flex items-center justify-center font-semibold w-10 h-10',
+            'z-10 shrink-0 min-w-16 rounded-full text-h4 flex items-center justify-center w-10 h-10',
             { 'bg-white text-font': variant != 'roadmap' && hasBackground },
             { 'bg-primary text-white': variant === 'roadmap' || !hasBackground }
           )}
@@ -48,7 +48,7 @@ export const NumericalListItem = ({
         </div>
         <div
           className={cx(
-            'text-base lg:text-default pl-5 lg:pl-11 listitem',
+            'text-p1 pl-5 lg:pl-11 listitem',
             {
               'pt-0': variant === 'combined',
             },

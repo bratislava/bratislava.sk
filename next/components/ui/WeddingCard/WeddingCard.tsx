@@ -17,7 +17,7 @@ export const WeddingCard = ({ className, imageSrc, title, content, buttonContent
         <div className="flex">
           {imageSrc && <img src={imageSrc} alt="Svadba" width="455" height="225" />}
           <div className="mr-24 ml-28 mt-12 mb-16 w-64 ">
-            <h1 className="text-md font-semibold ">{title}</h1>
+            <h1 className="text-h4">{title}</h1>
             <span className="text-sm">{content}</span>
           </div>
         </div>
