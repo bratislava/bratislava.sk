@@ -35,7 +35,14 @@ RUN yarn build
 # EXPOSE 3000
 # CMD [ "yarn", "develop" ]
 
-FROM node:16-alpine as prod
+FROM node:16 as prod
+
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jdk ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
+RUN export JAVA_HOME
 
 USER node
 ENV PORT 3000
