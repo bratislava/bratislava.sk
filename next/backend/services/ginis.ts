@@ -4,7 +4,7 @@ import { ResponseGinisDocumentsList } from 'backend/dtos/ginis/api-data.dto'
 import { forceString, isRecord } from 'backend/utils/ginis-service'
 import { identity } from 'lodash'
 import { parseStringPromise } from 'xml2js'
-
+//
 // ginis accessible only from internal network
 // if developing from internal network, change here
 export const shouldMockGinis = () => {
