@@ -3,7 +3,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
-import { BlogItem } from '../FeaturedBlogs/FeaturedBlogs'
+import { BlogPostMeili } from '../../../utils/meiliTypes'
 import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
@@ -30,18 +30,17 @@ export interface BlogSearchCardProps {
   className?: string
   imageClassName?: string
   fullCardSizeImage?: boolean
-  item: BlogItem
+  item: BlogPostMeili
 }
 
 export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, item }: BlogSearchCardProps) => {
   const { Link: UILink } = useUIContext()
-  const publishedAt = new Date(item.data?.attributes?.publishedAt)
+  const publishedAt = new Date(item.publishedAt)
   const date = `${publishedAt.getDay()}. ${publishedAt.getMonth()}. ${publishedAt.getFullYear()}`
-  const headline =
-    item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.shortTitle ?? 'No Title Found'
-  const color = item?.data?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color
+  const headline = item.tag.pageCategory?.shortTitle ?? 'No Title Found'
+  const color = item.tag.pageCategory?.color
   const headlineColor = color ? `--color-${color}--light` : '--color-red'
-  const slug = item.data?.attributes?.slug
+  const { slug, coverImage, title } = item
   return (
     <UILink href={slug ? `/blog/${slug}` : ''}>
       <Panel
@@ -53,11 +52,11 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
         )}
         hoverable
       >
-        {item?.data?.attributes?.coverImage && (
+        {coverImage && (
           <div
             className={cx('flex flex-shrink-0', imageClassName)}
             style={{
-              backgroundImage: `url(${item?.data?.attributes?.coverImage?.data?.attributes?.url})`,
+              backgroundImage: `url(${coverImage?.url})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
@@ -71,9 +70,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           >
             {headline}
           </div>
-          <div className="line-clamp-2 text-button-1 overflow-hidden text-ellipsis font-semibold">
-            {item.data?.attributes?.title}
-          </div>
+          <div className="line-clamp-2 text-button-1 overflow-hidden text-ellipsis font-semibold">{title} </div>
           <div>{date}</div>
         </div>
       </Panel>
@@ -85,7 +82,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           <div
             className="flex h-full w-full flex-col justify-end rounded"
             style={{
-              backgroundImage: `url(${item?.data?.attributes?.coverImage?.data?.attributes?.url})`,
+              backgroundImage: `url(${coverImage?.url})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
             }}
@@ -99,9 +96,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
                 {headline}
               </div>
               <div className="flex">
-                <div className="line-clamp-2 text-button-1 overflow-hidden font-semibold text-white">
-                  {item?.data?.attributes?.title}
-                </div>
+                <div className="line-clamp-2 text-button-1 overflow-hidden font-semibold text-white">{title}</div>
                 <VerticalCardButton className="invisible shrink-0 group-hover:lg:visible" size="medium">
                   <ArrowRightShort className="scale-125" />
                 </VerticalCardButton>

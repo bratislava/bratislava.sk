@@ -1,66 +1,35 @@
-// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable promise/always-return */
-import { articleLimits } from '@utils/constants'
-import { searchArticles, searchPages } from 'backend/utils/meili'
-import { userSearchFetcher } from 'backend/utils/organisationalStructure'
+
 import { OrganizationalStructureAccordionCards } from 'components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCards'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
-import useSWR from 'swr'
 
+import { MSGraphFilteredGroupUser } from '../../../backend/services/ms-graph'
+import { BlogPostMeili } from '../../../utils/meiliTypes'
 import { SearchOptionProps } from '../AdvancedSearch/AdvancedSearch'
 import { BlogSearchCards } from '../BlogSearchCards/BlogSearchCards'
-import { FileList } from '../FileList/FileList'
-import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner'
 import { NoResultsFound } from '../NoResultsFound/NoResultsFound'
+import { PageCardProps } from '../PageCard/PageCard'
 import { PageCards } from '../PageCards/PageCards'
 
 export interface SearchResultsProps {
   checkedOptions: SearchOptionProps[]
-  keyword: string
+  pagesResult: PageCardProps[]
+  blogPostsResult: BlogPostMeili[]
+  usersResult: MSGraphFilteredGroupUser[]
 }
 
-export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) => {
-  const { t, i18n } = useTranslation('common')
-  const documents = []
-  const [articles, setArticles] = useState([])
-  const [pages, setPages] = useState([])
-  const [users, setUsers] = useState([])
-  const [articleLimit, setArticleLimit] = useState(articleLimits.minLimit)
+export const SearchResults = ({ checkedOptions, pagesResult, blogPostsResult, usersResult }: SearchResultsProps) => {
+  const { t } = useTranslation('common')
+  // const documents = []
 
-  // TODO rewrite without using useState
-  const { data, error } = useSWR([keyword, articleLimit], () => {
-    return {
-      articles: searchArticles(keyword, i18n.languages[0] || 'sk', articleLimit),
-      pages: searchPages(keyword, i18n.languages[0] || 'sk'),
-      users: userSearchFetcher(keyword),
-    }
-  })
-
-  useEffect(() => {
-    data?.articles
-      ?.then((a) => {
-        setArticles(a.hits)
-      })
-      .catch((error_) => console.log(error_))
-    data?.pages?.then((p) => setPages(p.hits)).catch((error_) => console.log(error_))
-    data?.users?.then((u) => setUsers(u)).catch((error_) => console.log(error_))
-  }, [data, articleLimit])
-
-  const noResultsFound = articles?.length === 0 && pages?.length === 0 && documents?.length === 0 && users.length === 0
-
-  const articlesSelected = checkedOptions.some(({ key }) => key === 'articles')
+  const blogPostsSelected = checkedOptions.some(({ key }) => key === 'articles')
   const pagesSelected = checkedOptions.some(({ key }) => key === 'pages')
-  const usersSelected = checkedOptions.some(({ key }) => key === 'pages')
+  const usersSelected = checkedOptions.some(({ key }) => key === 'users')
 
-  const handlePagination = (isOpen: boolean) => {
-    if (isOpen) {
-      setArticleLimit(articleLimits.maxLimit)
-    } else setArticleLimit(articleLimits.minLimit)
-  }
-  if (error) return <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
-  if (!data) return <LoadingSpinner size="small" className="pt-10" />
+  //   <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
+
+  // console.log(blogPostsResult.map((blog) => blog.title))
   return (
     <div className="w-full">
       {noResultsFound ? (
@@ -69,7 +38,7 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
         <div className="flex flex-col gap-y-14 py-14 lg:gap-y-24 lg:py-24">
           {usersSelected && users.length > 0 && (
             <div>
-              <div className="text-h4">{t('organisationalStructure')}</div>
+              <div className="text-default font-semibold lg:text-md">{t('organisationalStructure')}</div>
               <OrganizationalStructureAccordionCards users={users} />
             </div>
           )}
@@ -79,12 +48,11 @@ export const SearchResults = ({ checkedOptions, keyword }: SearchResultsProps) =
           )}
           {documents?.length > 0 && (
             <div className="flex flex-col gap-y-3 lg:gap-y-6">
-              <div className="text-h4">{t('documents')}</div>
+              <div className="text-default font-semibold lg:text-md">{t('documents')}</div>
               <FileList fileSections={documents} hideCategory />
             </div>
-          )}
-        </div>
-      )}
+          )} */}
+      </div>
     </div>
   )
 }

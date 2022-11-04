@@ -5,6 +5,7 @@
 import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   AdvancedSearch,
+  BlogItem,
   FooterProps,
   PageHeader,
   SearchOptionProps,
@@ -18,9 +19,15 @@ import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 
+import { blogPostsFetcher, getBlogPostsSwrKey } from '../backend/utils/fetchers/blogPostsFetcher'
+import { getPagesSwrKey, pagesFetcher } from '../backend/utils/fetchers/pagesFetcher'
+import { userSearchFetcher } from '../backend/utils/organisationalStructure'
 import BasePageLayout from '../components/layouts/BasePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
+import { PageCardProps } from '../components/ui/PageCard/PageCard'
+import useGetSwrExtras from '../utils/useGetSwrExtras'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -55,7 +62,7 @@ export const getServerSideProps = async (ctx: any) => {
 }
 
 const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { t } = useTranslation('common')
+  const { t, i18n } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
   const options = [
     {
@@ -73,6 +80,36 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
   const handleSelect = (innerOptions: SearchOptionProps[]) => {
     setCheckedOptions(innerOptions)
   }
+
+  const pagesFilters = { search: keyword }
+  const { data: dataPages, error: errorPages } = useSWR(
+    getPagesSwrKey(pagesFilters, i18n.language),
+    pagesFetcher(pagesFilters, i18n.language)
+  )
+  const { dataToDisplay: pagesToDisplay, loadingAndNoDataToDisplay: loadingAndNoPagesToDisplay } = useGetSwrExtras({
+    data: dataPages,
+    error: errorPages,
+  })
+
+  const blogPostsFilters = { search: keyword, page: 1, pageSize: 10 }
+  const { data: dataBlogPosts, error: errorBlogPosts } = useSWR(
+    getBlogPostsSwrKey(blogPostsFilters, i18n.language),
+    blogPostsFetcher(blogPostsFilters, i18n.language)
+  )
+  const { dataToDisplay: blogPostsToDisplay, loadingAndNoDataToDisplay: loadingAndNoBlogPostsToDisplay } =
+    useGetSwrExtras({
+      data: dataBlogPosts,
+      error: errorBlogPosts,
+    })
+
+  const { data: dataUsers, error: errorUsers } = useSWR(['Users', keyword], () => userSearchFetcher(keyword))
+  const { dataToDisplay: usersToDisplay, loadingAndNoDataToDisplay: loadingAndNoUsersToDisplay } = useGetSwrExtras({
+    data: dataUsers,
+    error: errorUsers,
+  })
+
+  console.log(dataPages?.hits)
+
   return (
     <PageWrapper
       locale={page.locale}
@@ -99,11 +136,11 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
         >
           <SectionContainer>
             <div className="relative min-h-[220px]">
-              <h1 className="text-h1 whitespace-pre-wrap pt-30">{t('searchTheSite')}</h1>
+              <h1 className="text-h1 pt-30 whitespace-pre-wrap">{t('searchTheSite')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>
-        <SectionContainer className="flex w-full gap-y-14 pt-14 md:pt-18 lg:gap-y-24">
+        <SectionContainer className="md:pt-18 flex w-full gap-y-14 pt-14 lg:gap-y-24">
           <AdvancedSearch
             placeholder={t('enterKeyword')}
             title={t('searching')}
@@ -111,8 +148,13 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
             handleSelect={handleSelect}
             keyword={input}
           />
-          <SearchResults checkedOptions={checkedOptions} keyword={input} />
-          {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
+          <SearchResults
+            checkedOptions={checkedOptions}
+            pagesResult={loadingAndNoPagesToDisplay ? [] : (pagesToDisplay.hits as PageCardProps[])}
+            blogPostsResult={loadingAndNoBlogPostsToDisplay ? [] : blogPostsToDisplay.hits}
+            usersResult={loadingAndNoUsersToDisplay ? [] : usersToDisplay}
+          />
+          {/* TODO : commented newsletter for this release probably on future release we will uncomment */}
           {/* <NewsLetterSection /> */}
         </SectionContainer>
       </BasePageLayout>
