@@ -6,11 +6,13 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
+import { NextAdapter } from 'next-query-params'
 import React from 'react'
+import { SSRProvider } from 'react-aria'
+import { QueryParamProvider } from 'use-query-params'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
-import { SSRProvider } from 'react-aria'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -43,9 +45,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           ),
         }}
       >
-        <SSRProvider>
-          <Component {...pageProps} />
-        </SSRProvider>
+        <QueryParamProvider adapter={NextAdapter}>
+          <SSRProvider>
+            <Component {...pageProps} />
+          </SSRProvider>
+        </QueryParamProvider>{' '}
       </UIContextProvider>
     </>
   )
