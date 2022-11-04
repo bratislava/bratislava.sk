@@ -98,8 +98,8 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
-            <div className="relative min-h-[220px]">
-              <h1 className="text-h1 whitespace-pre-wrap pt-30">{t('searchTheSite')}</h1>
+            <div className="min-h-56 relative">
+              <h1 className="text-h1 whitespace-pre-wrap pt-32">{t('searchTheSite')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>

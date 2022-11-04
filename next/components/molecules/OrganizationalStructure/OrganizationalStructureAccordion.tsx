@@ -58,7 +58,7 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
         <div className={cx({ 'pt-8': !orderedUsers?.length })}>
           {!!orderedUsers?.length && <OrganizationalStructureAccordionCards users={orderedUsers} />}
           {!!orderedGroups?.length && (
-            <div className="lg:ml-7.5">
+            <div className="lg:ml-8">
               {orderedGroups.map((groupTmp) => (
                 <OrganizationalStructureAccordion key={groupTmp.id} group={groupTmp} level={level + 1} />
               ))}

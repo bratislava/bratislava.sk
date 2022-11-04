@@ -46,7 +46,7 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
   }, [url])
 
   return (
-    <div className="w-70 xl:w-87">
+    <div className="w-66 xl:w-88">
       <iframe
         className={cx('rounded-5 shadow-sm', {
           'animate-pulse bg-gray-300': !isLoaded,
@@ -81,7 +81,7 @@ export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) 
       </HorizontalScrollWrapper>
 
       {/* Desktop */}
-      <div className="hidden gap-7.5 lg:grid lg:grid-cols-3">
+      <div className="hidden gap-8 lg:grid lg:grid-cols-3">
         {videos.slice(0, videosCount).map((video) => (
           <Video key={video.url} {...video} />
         ))}

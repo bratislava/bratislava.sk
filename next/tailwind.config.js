@@ -76,7 +76,7 @@ module.exports = {
       'p-sm': ['14px', '24px'],
       'p-base': ['16px', '24px'],
       'p-md': ['20px', '32px'],
-      
+
       'h-sm': ['16px', '24px'],
       'h-base': ['20px', '28px'],
       'h-md': ['24px', '32px'],
@@ -87,7 +87,7 @@ module.exports = {
     },
     extend: {
       rotate: {
-        "270": "270deg"
+        270: '270deg',
       },
       colors: {
         form: {
@@ -137,27 +137,27 @@ module.exports = {
             error: {
               default: '#D00000',
               'default-bg': '#FDF2F2',
-              solid: ''
+              solid: '',
             },
             success: {
               default: '#01843D',
               'default-bg': '#F2F9F5',
-              solid: ''
+              solid: '',
             },
             info: {
               default: '#333333',
               'default-bg': '#EBEBEB',
-              solid: ''
+              solid: '',
             },
             warning: {
               default: '#E07B04',
               'default-bg': '#FDF8F2',
-              solid: ''
+              solid: '',
             },
             textColor: {
-              default: '#1F1F1F'
-            }
-          }
+              default: '#1F1F1F',
+            },
+          },
         },
         transperentBG: 'rgba(0, 0, 0, 0.5)',
         primary: 'var(--primary-color)',
@@ -179,7 +179,7 @@ module.exports = {
         },
         gray: {
           universal: {
-            0:  'var(--input-nav-background-color)',
+            0: 'var(--input-nav-background-color)',
             100: 'var(--universal-gray-100)',
             200: 'var(--universal-gray-200)',
             400: 'var(--universal-gray-400)',
@@ -226,7 +226,6 @@ module.exports = {
       },
       borderRadius: {
         10: '10px',
-        8: '8px',
         5: '5px',
       },
       gridTemplateRows: {
@@ -235,78 +234,40 @@ module.exports = {
         9: 'repeat(9, minmax(0, 1fr))',
       },
       spacing: {
-        4.25: '17px',
-        4.5: '18px',
-        5.5: '22px',
-        6: '24px',
-        7.5: '30px',
-        12.5: '50px',
-        17.5: '70px',
-        18: '72px',
-        23: '92px',
-        25: '100px',
-        30: '120px',
-        33: '132px',
-        39: '156px',
-        41: '165px',
-        41.5: '166px',
-        44.5: '178px',
-        57: '228px',
-        61: '244px',
-        65: '260px',
-        66: '264px',
-        70: '280px',
-        73: '294px',
-        74: '300px',
-        76: '293px',
-        82: '330px',
-        87: '350px',
-        90: '350px',
-        100: '450px',
-        112: '450px',
-        157.5: '630px',
-        175: '700px',
-        xStandard: 'var(--padding-x)',
-        yStandard: 'var(--padding-y)',
-        yHigh: 'var(--padding-y-high)',
-        nav: 'var(--height-nav)',
-        sidepanel: 'var(--sidepanel-width)',
-        logoHeight: 'var(--logo-height)',
-        logoWidth: 'var(--logo-width)',
-      },
-      letterSpacing: {
-        wider: '.08em',
-      },
-      minHeight: {
-        220: '220px',
-      },
-      maxHeight: {
-        '90Vh': '90vh',
-      },
-      height: {
-        72: '72px',
-        196: '196px',
-      },
-      width: {
-        540: '540px',
-        480: '480px',
-        404: '404px',
-        368: '368px',
-        320: '320px',
-        72: '72px',
-      },
-      minWidth: {
-        39: '156px',
-      },
-      maxWidth: {
-        61: '244px',
-        87: '350px',
-      },
-      gap: {
-        3: '13px'
-      },
-      lineHeight: {
-        'extra-tight': '1.3',
+        18: '4.5rem',
+        66: '17.5rem', // 280px
+        76: '19rem',
+        88: '22rem',
+        104: '26rem',
+        112: '28rem',
+        120: '30rem', // 480px
+        128: '32rem',
+        136: '34rem',
+        144: '36rem',
+        152: '38rem',
+        156: '39rem',
+        160: '40rem', // 640px
+        164: '41rem',
+        168: '42rem',
+        176: '44rem',
+        184: '46rem',
+        192: '48rem',
+        200: '50rem', // 800px
+        208: '52rem',
+        216: '54rem',
+        224: '56rem',
+        232: '58rem',
+        240: '60rem', // 960px
+        248: '62rem',
+        256: '64rem',
+        264: '66rem',
+        272: '68rem',
+        280: '70rem', // 1120px
+        288: '72rem',
+        296: '74rem',
+        304: '76rem',
+        312: '78rem',
+        320: '80rem', // 1280px
       },
     },
   },

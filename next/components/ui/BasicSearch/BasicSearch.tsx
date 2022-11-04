@@ -30,7 +30,7 @@ export const BasicSearch = ({
   // const { Link: UILink } = useUIContext()
   const [input, setInput] = useState(initialValue || '')
   return (
-    <div className={cx('flex flex-col w-full max-w-[730px]', className)}>
+    <div className={cx('flex flex-col w-full max-w-184', className)}>
       <form
         onSubmit={(e) => {
           e.preventDefault()

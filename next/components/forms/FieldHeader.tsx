@@ -46,7 +46,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
         <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>{label}</label>
         <div className="flex-column flex items-center">
           {/* OPTIONAL */
-            !required && <p className="text-button-1 mr-4.5">Optional</p>
+            !required && <p className="text-button-1 mr-4">Optional</p>
           }
           {/* TOOLTIP ICON */
             tooltip && (

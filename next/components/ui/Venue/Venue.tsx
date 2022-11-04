@@ -27,7 +27,7 @@ export const Venue = ({
     <div className={cx('flex flex-col lg:flex-row lg:items-center', className)}>
       {imageCardPosition === 'left' && imageSrc && (
         <ImageCard
-          className="lg:h-96 lg:w-100"
+          className="lg:h-96 lg:w-112"
           imageSrc={imageSrc}
           smallGapCapacity={120}
           bigGapCapacity={60}
@@ -42,7 +42,7 @@ export const Venue = ({
       >
         {buttonTitle && linkTitle && (
           <VenueInfo
-            className="w-66 lg:w-87"
+            className="w-[264px] lg:w-88"
             title={title}
             description={description}
             buttonTitle={buttonTitle}
@@ -52,7 +52,7 @@ export const Venue = ({
       </div>
       {imageCardPosition === 'right' && imageSrc && (
         <ImageCard
-          className="relative lg:h-96 lg:w-100"
+          className="relative lg:h-96 lg:w-112"
           imageSrc={imageSrc}
           smallGapCapacity={120}
           bigGapCapacity={60}

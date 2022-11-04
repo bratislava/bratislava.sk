@@ -91,7 +91,7 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
-          className="h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-base text-font outline-none"
+          className="text-base h-14 w-144 rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
           placeholder={placeholder}
           value={input}
           onChange={handleChange}
@@ -119,7 +119,7 @@ export const AdvancedSearch = ({
           type="text"
           value={input}
           onChange={handleChange}
-          className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
+          className="max-w-144 text-sm h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />

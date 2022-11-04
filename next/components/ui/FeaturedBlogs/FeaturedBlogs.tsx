@@ -48,13 +48,13 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
         </div>
         <div className="flex w-1/2 flex-col gap-y-8">
           {blogs.slice(1, 3).map((blog, index) => (
-            <BlogSearchCard key={index} className="h-52" imageClassName="w-[206px]" item={blog} />
+            <BlogSearchCard key={index} className="h-52" imageClassName="w-52" item={blog} />
           ))}
         </div>
       </div>
-      <HorizontalScrollWrapper className="gap-x-4 px-7.5 lg:hidden">
+      <HorizontalScrollWrapper className="gap-x-4 px-8 lg:hidden">
         {blogs.map((blog, index) => {
-          return <BlogSearchCard key={index} className="h-60 w-74 shrink-0" imageClassName="w-[206px]" item={blog} />
+          return <BlogSearchCard key={index} className="h-60 w-76 shrink-0" imageClassName="w-52" item={blog} />
         })}
       </HorizontalScrollWrapper>
     </>

@@ -76,7 +76,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       )}
       {/* Header */}
       <PageHeader
-        className={cx('bg-cover', { 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
+        className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
         color="var(--secondary-color)"
         transparentColor="var(--secondary-color--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
@@ -90,11 +90,11 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="relative lg:min-h-[220px]">
+          <div className="lg:min-h-56 relative">
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="text-h1 mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-30">
+            <h1 className="text-h1 max-w-184 mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
             </h1>
 
@@ -129,7 +129,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
                   return (
                     <div
                       key={index}
-                      className="-bottom-45 absolute -inset-x-7.5 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-87 lg:w-full"
+                      className="-bottom-45 absolute -inset-x-8 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-88 lg:w-full"
                     >
                       <FeaturedBlogs blogs={blogs} />
                     </div>
@@ -138,7 +138,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
             })}
 
             {/* Padding bottom from waves for header sections and button */}
-            {hasFeaturedBlogs && <div className="pb-10 lg:pb-25" />}
+            {hasFeaturedBlogs && <div className="pb-10 lg:pb-24" />}
             {/* {(page?.pageButtonContent?.title ||
               page?.pageButtonContent?.url ||
               page?.pageHeaderSections) && <div className="pb-14" />} */}

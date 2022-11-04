@@ -36,7 +36,7 @@ export const TimeCardMobile = ({
           )}
         />
         {isActive && (
-          <div className="absolute left-7 top-4.5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary sm:hidden" />
+          <div className="absolute left-7 top-5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary sm:hidden" />
         )}
       </div>
       {/* Mobile Design */}
