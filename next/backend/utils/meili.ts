@@ -1,11 +1,21 @@
 // @ts-strict-ignore
 import { MeiliSearch } from 'meilisearch'
 
+import { PageMeili } from '../../utils/meiliTypes'
+import { SearchIndexWrapped } from '../../utils/searchIndexWrapped'
+
 export const MEILI_PAGE_SIZE = 10
 
-const meiliClient = new MeiliSearch({
-  host: process.env.NEXT_PUBLIC_MEILI_HOST,
-  apiKey: process.env.NEXT_PUBLIC_MEILI_API_KEY,
+// eslint-disable-next-line no-console
+console.log(
+  'NEXT_PUBLIC_MEILISEARCH_HOST:',
+  process.env.NEXT_PUBLIC_MEILISEARCH_HOST,
+  process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY
+)
+
+export const meiliClient = new MeiliSearch({
+  host: process.env.NEXT_PUBLIC_MEILISEARCH_HOST ?? '',
+  apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY,
 })
 
 export const searchVZN = async (search: string, offset: number, limit?: number) => {
