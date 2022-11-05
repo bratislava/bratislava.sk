@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { blogPostsFetcher, BlogPostsFilters, getBlogPostsSwrKey } from '@backend/utils/fetchers/blogPostsFetcher'
 import { BlogItem, BlogSearchCards, LoadingSpinner } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'

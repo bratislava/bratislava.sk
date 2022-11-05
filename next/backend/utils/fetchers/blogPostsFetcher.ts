@@ -1,3 +1,4 @@
+// @ts-strict-ignore
 import { getMeilisearchPageOptions } from '@utils/getMeilisearchPageOptions'
 import { BlogPostMeili } from '@utils/meiliTypes'
 import { SearchIndexWrapped, unwrapFromSearchIndex } from '@utils/searchIndexWrapped'
