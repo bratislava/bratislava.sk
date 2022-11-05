@@ -118,5 +118,8 @@
   "loading": "Loading...",
   "organisationalStructure": "Organisational structure",
   "fromUkraine": "Я з України",
-  "tourist": "I am tourist"
+  "tourist": "I am tourist",
+  "noBlogPostsToShow": "No articles to show",
+  "noPagesToShow": "No pages to show",
+  "noUsersToShow": "No contacts to show"
 }

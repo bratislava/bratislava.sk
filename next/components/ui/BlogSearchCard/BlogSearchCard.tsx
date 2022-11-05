@@ -3,7 +3,6 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
-import { BlogPostMeili } from '../../../utils/meiliTypes'
 import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
@@ -26,21 +25,52 @@ export interface BlogTag {
   }
 }
 
+export interface BlogItem {
+  attributes?: {
+    coverImage?: {
+      data?: {
+        attributes?: {
+          url?: string
+        }
+      }
+    }
+    publishedAt?: string
+    slug?: string
+    tag?: {
+      data?: {
+        attributes?: {
+          pageCategory?: {
+            data?: {
+              attributes?: {
+                color?: string
+                shortTitle?: string
+              }
+            }
+          }
+        }
+      }
+    }
+    title?: string
+  }
+}
+
 export interface BlogSearchCardProps {
   className?: string
   imageClassName?: string
   fullCardSizeImage?: boolean
-  item: BlogPostMeili
+  item: BlogItem
 }
 
 export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, item }: BlogSearchCardProps) => {
   const { Link: UILink } = useUIContext()
-  const publishedAt = new Date(item.publishedAt)
+
+  const { slug, tag, coverImage, title } = item.attributes
+  const { shortTitle, color } = tag.data.attributes.pageCategory.data.attributes
+
+  const publishedAt = new Date(item.attributes.publishedAt)
   const date = `${publishedAt.getDay()}. ${publishedAt.getMonth()}. ${publishedAt.getFullYear()}`
-  const headline = item.tag.pageCategory?.shortTitle ?? 'No Title Found'
-  const color = item.tag.pageCategory?.color
+  const headline = shortTitle ?? 'No Title Found'
   const headlineColor = color ? `--color-${color}--light` : '--color-red'
-  const { slug, coverImage, title } = item
   return (
     <UILink href={slug ? `/blog/${slug}` : ''}>
       <Panel
@@ -52,11 +82,11 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
         )}
         hoverable
       >
-        {coverImage && (
+        {coverImage.data.attributes && (
           <div
             className={cx('flex flex-shrink-0', imageClassName)}
             style={{
-              backgroundImage: `url(${coverImage?.url})`,
+              backgroundImage: `url(${coverImage.data.attributes.url})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
@@ -82,7 +112,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           <div
             className="flex h-full w-full flex-col justify-end rounded"
             style={{
-              backgroundImage: `url(${coverImage?.url})`,
+              backgroundImage: `url(${coverImage.data.attributes.url})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
             }}

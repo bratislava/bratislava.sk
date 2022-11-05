@@ -12,6 +12,7 @@ import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import { useDebounce } from 'usehooks-ts'
 
 import Checkbox from '../../../assets/images/checkbox.svg'
 import SearchIcon from '../../../assets/images/search-icon.svg'
@@ -43,10 +44,7 @@ export const AdvancedSearch = ({
   const router = useRouter()
 
   const options = [
-    {
-      key: 'articles',
-      value: t('articles'),
-    },
+    { key: 'articles', value: t('articles') },
     { key: 'pages', value: t('pages') },
     { key: 'users', value: t('organisationalStructure') },
   ]
@@ -65,24 +63,45 @@ export const AdvancedSearch = ({
   }
 
   const [input, setInput] = useState('')
+  const debouncedSearchInputValue = useDebounce<string>(input, 300)
+
+  const replaceSearchQuery = async (newKeyword: string) => {
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, keyword: newKeyword },
+      },
+      undefined,
+      { scroll: false }
+    )
+  }
+
   useEffect(() => {
     keyword && setInput(keyword)
   }, [keyword])
+
   const handleChange = (event) => {
     setInput(event.target.value)
   }
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && input.length > minKeywordLength) {
-      router.push(`${t('searchLink')}?keyword=${input}`)
+      replaceSearchQuery(input)
     }
   }
 
   const handleClick = () => {
     if (input.length > minKeywordLength) {
-      router.push(`${t('searchLink')}?keyword=${input}`)
+      replaceSearchQuery(input)
     }
   }
+
+  useEffect(() => {
+    if (debouncedSearchInputValue.length > minKeywordLength) {
+      replaceSearchQuery(input)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearchInputValue])
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
@@ -91,7 +110,7 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
-          className="h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-base text-font outline-none"
+          className="text-font h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-base outline-none"
           placeholder={placeholder}
           value={input}
           onChange={handleChange}
@@ -119,14 +138,14 @@ export const AdvancedSearch = ({
           type="text"
           value={input}
           onChange={handleChange}
-          className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
+          className="text-font h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="hover:color-white h-14 rounded-l-none pr-6 text-default font-medium shadow-none hover:bg-primary hover:text-white"
+          className="hover:color-white text-default hover:bg-primary h-14 rounded-l-none pr-6 font-medium shadow-none hover:text-white"
           variant="secondary-dark-text"
           onClick={handleClick}
         />
@@ -138,14 +157,16 @@ export const AdvancedSearch = ({
               onClick={() => {
                 handleAction(option)
               }}
+              className="flex gap-4"
             >
               {checked.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
                 <div className="mr-px h-6 w-6 rounded border-2 border-solid border-slate-300" />
               )}
+
+              <label>{option.value}</label>
             </div>
-            <label>{option.value}</label>
           </div>
         ))}
       </div>

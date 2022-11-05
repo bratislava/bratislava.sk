@@ -116,5 +116,8 @@
   "loading": "Načítavam...",
   "organisationalStructure": "Organizačná štruktúra",
   "fromUkraine": "Я з України",
-  "tourist": "Som turista"
+  "tourist": "Som turista",
+  "noBlogPostsToShow": "Žiadne články na zobrazenie.",
+  "noPagesToShow": "Žiadne stránky na zobrazenie.",
+  "noUsersToShow": "Žiadne kontakty na zobrazenie."
 }
