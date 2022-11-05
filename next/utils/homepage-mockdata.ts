@@ -158,7 +158,6 @@ export const buildMockData = ({
       title: 'in.ba',
       content: 'V bratislavskom informačnom magazíne in.ba vždy nájdete to, čo o dianí v meste potrebuje vedieť.',
       images: [inBaImage1, inBaImage2],
-      readMoreTitle: 'Čítať viac',
     },
     homepageMenu: MAIN_MENU,
     bookmarks: [
@@ -313,7 +312,6 @@ export const buildMockData = ({
       content:
         'Your information magazine in.ba where you can always find what you need to know about what is going on in the city.',
       images: [inBaImage1, inBaImage2],
-      readMoreTitle: 'Read more',
     },
     homepageMenu: MAIN_MENU_EN,
     bookmarks: [
