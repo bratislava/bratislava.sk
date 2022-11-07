@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Select from 'react-select/base'
 
 import SelectField from '../../forms/SelectField/SelectField'
 import SelectOption from '../../forms/SelectField/SelectOption'
