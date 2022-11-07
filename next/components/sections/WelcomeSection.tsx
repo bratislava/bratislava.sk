@@ -1,63 +1,45 @@
-import { ComponentBlocksHomepageHeader, Homepage } from '@bratislava/strapi-sdk-homepage'
-import {
-  MenuMainItem,
-  PageHeader,
-  PageTitle,
-  SectionContainer,
-  Waves,
-} from '@bratislava/ui-bratislava'
+import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
+import { MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
-import Head from 'next/head'
+import React from 'react'
+
+import HomePageSearch from '../molecules/HomePageSearch'
 
 interface Props {
-  homepageData: Pick<Homepage, 'metaDescription' | 'title'>
-  headerAttribute: Pick<
-    ComponentBlocksHomepageHeader,
-    'title' | 'subtitle' | 'picture' | 'mobilePicture'
-  >
+  homepageHeader: HomepageHeaderFragment | null | undefined
   mainMenuItems: MenuMainItem[]
 }
 
-export const WelcomeSection = ({ homepageData, mainMenuItems, headerAttribute = {} }: Props) => {
-  const { metaDescription, title } = homepageData ?? {}
+export const WelcomeSection = ({ mainMenuItems, homepageHeader }: Props) => {
   return (
-    <>
-      <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
-        {/* meta description */}
-        {title && metaDescription && (
-          <Head>
-            <title>{title}</title>
-            <meta name="description" content={metaDescription} />
-          </Head>
-        )}
-      </PageHeader>
+    <SectionContainer>
+      <div className="relative flex flex-col pt-28 pb-8 lg:flex-row lg:items-center lg:pb-10 lg:pt-18">
+        <div className="lg:absolute flex grow flex-col gap-8">
+          {/* TODO change to font size from config */}
+          <h1 className="text-h3 flex flex-col sm:text-[40px] font-bold text-category-600 sm:leading-[52px] whitespace-pre-wrap">
+            {homepageHeader?.headline}
+          </h1>
+          <HomePageSearch />
+        </div>
 
-      <SectionContainer>
-        <div className="lg:pt-18 flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pb-10">
-          {headerAttribute?.title && (
-            <PageTitle
-              className="flex-1 pb-4"
-              title={headerAttribute.title}
-              subtitle={headerAttribute?.subtitle}
-            />
-          )}
+        <div className="mx-auto lg:ml-auto lg:mr-0 lg:w-[50%] xl:w-auto">
           <img
             className="hidden sm:block"
-            width={721}
-            height={364}
-            src={headerAttribute?.picture?.data?.attributes?.url}
+            width={647}
+            height={326}
+            src={homepageHeader?.picture?.data?.attributes?.url}
             alt="Bratislava Hero"
           />
           <img
             className="sm:hidden"
             width={721}
             height={364}
-            src={headerAttribute?.mobilePicture?.data?.attributes?.url}
+            src={homepageHeader?.mobilePicture?.data?.attributes?.url}
             alt="Bratislava Hero"
           />
         </div>
-        <HomepageMenu items={mainMenuItems} />
-      </SectionContainer>
-    </>
+      </div>
+      <HomepageMenu items={mainMenuItems} />
+    </SectionContainer>
   )
 }

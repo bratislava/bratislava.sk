@@ -17,6 +17,8 @@ export type SearchIndexWrapped<T extends string, K extends object> = {
 // Meilisearch doesn't nest entities in `data.attributes`, therefore in order to use Strapi types we need to `Omit` those
 // attributes that are nested and replace them with their direct representations.
 
+export type MixedResults = SearchIndexWrapped<'page', PageMeili> | SearchIndexWrapped<'blog-post', BlogPostMeili>
+
 export type PageMeili = Omit<
   Page,
   '__typename' | 'pageCategory' | 'pageBackgroundImage' | 'parentPage' | 'childPages'
