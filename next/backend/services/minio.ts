@@ -9,11 +9,11 @@ export const uploadFile = async (file: File) => {
       'Accept': 'application/json'
     }
   }
-  return axios.post('/api/forms/upload-file', formData, config)
+  return axios.post('/api/eforms/upload-file', formData, config)
 }
 
 
 export const deleteFile = async (fileName: string) => {
   const params = { params: { fileName } }
-  return axios.delete('/api/forms/delete-file', params)
+  return axios.delete('/api/eforms/delete-file', params)
 }
