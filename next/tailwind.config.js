@@ -171,6 +171,7 @@ module.exports = {
         },
         universal: {
           'gray-100': 'var(--universal-gray-100)',
+          'gray-200': 'var(--universal-gray-200)',
           'gray-500': 'var(--universal-gray-500)',
           'gray-600': 'var(--universal-gray-600)',
           'gray-700': 'var(--universal-gray-700)',
@@ -293,6 +294,7 @@ module.exports = {
         404: '404px',
         368: '368px',
         320: '320px',
+        480: '480px',
         72: '72px',
       },
       minWidth: {
