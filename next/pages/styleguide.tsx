@@ -11,6 +11,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
+import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
@@ -41,6 +42,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <SearchFieldShowCase/>
         <ToggleShowCase/>
         <TimePickerShowCase />
+        <ProgressBarShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )
