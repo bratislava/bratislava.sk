@@ -29,7 +29,7 @@ export const AccordionCard = ({
   const mailUserName = mail?.split('@').at(0)
   const mailOrganization = mail && `@${mail?.split('@').at(1)}`
   const mailBreakpoint = 16
-  console.log('contact', displayName, jobTitle)
+
   return (
     // TODO min-w-70 does not work anymore (worked fine on monorepo)
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties

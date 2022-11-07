@@ -22,8 +22,6 @@ const Users = ({ data }: { data: MSGraphFilteredGroupUser[]; filters: UsersFilte
   // TODO: Tmp fix - MSGraphFilteredGroupUser ignores '| null' in properties
   const filteredUsers = data.filter((user) => user.displayName && user.jobTitle)
 
-  console.log('users', filteredUsers)
-
   if (filteredUsers.length > 0) {
     return <OrganizationalStructureAccordionCards users={filteredUsers} />
   }
