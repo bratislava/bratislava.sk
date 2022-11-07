@@ -6,7 +6,7 @@ import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
   label: string
-  htmlFor: string
+  htmlFor?: string
   required?: boolean
   description?: string
   labelProps?: DOMAttributes<never>
@@ -28,8 +28,8 @@ const FieldHeader: FC<FieldHeaderProps> = (
 
   // STYLES
   const labelStyle = cx(
-    'relative mb-1 text-default font-semibold text-universal-black',
-    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-xs': required}
+    'relative mb-1 text-button-1 font-semibold text-universal-black',
+    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-p3': required}
   )
 
   return (
@@ -46,7 +46,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
         <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>{label}</label>
         <div className="flex-column flex items-center">
           {/* OPTIONAL */
-            !required && <p className="mr-4.5 text-default">Optional</p>
+            !required && <p className="text-button-1 mr-4.5">Optional</p>
           }
           {/* TOOLTIP ICON */
             tooltip && (
@@ -61,7 +61,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
       </div>
       { /* DESCRIPTION */
         description && (
-          <div {...descriptionProps} className="mb-1 text-sm text-universal-black">
+          <div {...descriptionProps} className="mb-1 text-p2 text-universal-black">
             {description}
           </div>
         )

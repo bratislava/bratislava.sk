@@ -8,6 +8,7 @@ import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
@@ -17,6 +18,7 @@ import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
+import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   /**
@@ -33,12 +35,14 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <ButtonShowCase />
         <DatePickerShowCase />
         <InputFieldShowCase />
-        <SelectFieldShowCase />
         <SpinnerShowCase />
         <TextAreaFieldShowCase/>
+        <AlertShowCase/>
         <SearchFieldShowCase/>
         <ToggleShowCase/>
         <TimePickerShowCase />
+        <DropdownShowCase />
+        <SelectFieldShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )

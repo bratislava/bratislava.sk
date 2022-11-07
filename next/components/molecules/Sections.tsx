@@ -106,7 +106,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsAccordion':
       return (
         <>
-          {section.title && <h1 className="flex justify-center pb-14 text-lg font-semibold">{section.title}</h1>}
+          {section.title && <h1 className="text-h2 flex justify-center pb-14">{section.title}</h1>}
           <div className="flex flex-col">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem

@@ -1,0 +1,57 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .text-h1-lg {
+    @apply text-h-2xl lg:text-h-3xl font-semibold;
+  }
+
+  .text-h1 {
+    @apply text-h-xl lg:text-h-2xl font-semibold;
+  }
+
+  .text-h2 {
+    @apply text-h-lg lg:text-h-xl font-semibold;
+  }
+
+  .text-h3 {
+    @apply text-h-md lg:text-h-lg font-semibold;
+  }
+
+  .text-h4 {
+    @apply text-h-base lg:text-h-md font-semibold;
+  }
+
+  .text-h5 {
+    @apply text-h-sm lg:text-h-base font-semibold;
+  }
+
+  .text-h6 {
+    @apply text-h-sm font-semibold;
+  }
+
+  .text-p1 {
+    @apply text-p-base lg:text-p-md;
+  }
+
+  .text-p2 {
+    @apply text-p-base;
+  }
+
+  .text-p3 {
+    @apply text-p-sm;
+  }
+
+  .text-p4 {
+    @apply text-p-xs;
+  }
+
+  .text-button-1 {
+    @apply text-p-md;
+  }
+
+  .text-lbl-2 {
+    @apply text-p-base;
+  }
+}

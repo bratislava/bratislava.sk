@@ -78,7 +78,7 @@ export const RentReservationForm = ({ className }: IProps) => {
 
   return (
     <div className="z-10 mx-auto md:w-10/12">
-      <h1 className="text-center text-2xl font-semibold">{t('nonbinding')}</h1>
+      <h1 className="text-h1 text-center">{t('nonbinding')}</h1>
 
       <div className="mb-14 mt-7 flex text-center">
         <p className="px-2 text-center text-default font-medium lg:px-0">

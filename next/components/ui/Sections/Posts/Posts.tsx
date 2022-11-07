@@ -117,7 +117,7 @@ export const Posts = ({
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="px-6 py-3 text-default font-medium text-font shadow-none hover:text-primary lg:text-md"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -204,7 +204,7 @@ export const Posts = ({
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="px-6 py-3 text-default font-medium text-font shadow-none hover:text-primary lg:text-md"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -229,7 +229,7 @@ export const Posts = ({
         </div>
       )}
       {activeTab > 2 && (
-        <div className="mt-14 items-end px-8 text-center text-default lg:text-md">
+        <div className="text-h4 mt-14 items-end px-8 text-center font-normal">
           {t('allInformationOnSite')}
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">

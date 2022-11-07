@@ -86,7 +86,7 @@ export const AdvancedSearch = ({
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="scroll-mt-24 pb-3 text-sm font-medium lg:scroll-mt-48 lg:text-md">{title}</div>
+      <div className="text-h4 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</div>
       <div className="hidden pb-6 lg:flex">
         <input
           id="name"

@@ -8,7 +8,7 @@ export interface PageCardsProps {
 
 export const PageCards = ({ title, pages }: PageCardsProps) => (
   <div className="flex flex-col gap-y-3 lg:gap-y-6">
-    <span className="text-default font-semibold lg:text-md">{title}</span>
+    <span className="text-h4">{title}</span>
     <div className="hidden flex-col gap-y-6 lg:flex">
       {pages.map((page, index) => (
         <PageCard {...page} key={index} />
