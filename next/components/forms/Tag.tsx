@@ -5,7 +5,7 @@ import { FC, useState } from 'react'
 interface TagProps {
   text: string
   removable?: boolean
-  size?: string
+  size?: 'large' | 'small'
   branded?: boolean
   onRemove?: () => void
 }
@@ -24,7 +24,7 @@ const Tag: FC<TagProps> = (
 
   // STYLES
   const classStyles = cx(
-    "flex flex-row align-items-start min-w-14 min-h-6 px-2 gap-2.5 text-center",
+    "align-items-start min-w-14 inline-block min-h-6 px-2 gap-2.5 text-center",
     {
       /* FONTS in TAILWIND have different line height in compare to FIGMA */
       'text-button-1': size === 'large',
@@ -43,7 +43,7 @@ const Tag: FC<TagProps> = (
 
 
   const iconClassStyles = cx(
-    "cursor-pointer self-center",
+    "cursor-pointer self-center inline-block mx-1",
     {
       'text-button-1 w-3 h-3': size === 'large',
       'text-p3 w-2.5 h-2.5': size === 'small' || !size,
@@ -56,7 +56,7 @@ const Tag: FC<TagProps> = (
          onMouseOver={() => setIsHovered(true)}
          onFocus={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}>
-      <p className="cursor-default select-none">{text}</p>
+      <p className="cursor-default select-none inline-block">{text}</p>
       { removable && <CloseIcon className={iconClassStyles} onClick={onRemove}/> }
     </div>
   )
