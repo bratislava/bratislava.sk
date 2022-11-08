@@ -7,12 +7,14 @@ import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
-import SelectOption from './SelectOption'
+import SelectOptions from './SelectOption'
+
+
 
 interface SelectFieldProps {
   label: string
-  options: SelectOption[]
-  value?: SelectOption[]
+  options: any
+  value?: any
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   selectAllOption?: boolean
   placeholder?: string
@@ -22,7 +24,7 @@ interface SelectFieldProps {
   disabled?: boolean
   tooltip?: string
   dropdownDivider?: boolean
-  onChange?: (values: SelectOption[]) => void;
+  onChange: (values: any) => void;
 }
 
 const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps>
@@ -62,7 +64,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   )
 
   // EVENT HANDLERS
-  const handleOnChangeSelect = (selectedOptions: SelectOption[]) => {
+  const handleOnChangeSelect = (selectedOptions: any) => {
     if (onChange) {
       onChange(selectedOptions)
     }
@@ -74,30 +76,29 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
-  const handleOnChooseOne = (option: SelectOption, close?: boolean) => {
+  const handleOnChooseOne = (option: any, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([option])
     setFilter("")
   }
 
-  const handleOnUnChooseOne = (option: SelectOption, close?: boolean) => {
+  const handleOnUnChooseOne = (option: any, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([])
   }
 
-  const handleOnChooseMulti = (option: SelectOption) => {
+  const handleOnChooseMulti = (option: any) => {
     const newValue = value ? [...value] : []
     if (value) newValue.push(option)
     handleOnChangeSelect(newValue)
     setFilter("")
   }
 
-  const handleOnUnChooseMulti = (option: SelectOption) => {
+  const handleOnUnChooseMulti = (option: any) => {
     const newValue = value
       ? [...value].filter(valueOption => {
         return valueOption.value !== option.value
           || valueOption.label !== option.label
-          || valueOption.description !== option.description
       })
       : []
     handleOnChangeSelect(newValue)
@@ -136,7 +137,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const getFilteredOptions = () => {
-    return options.filter(option => option.label.toLowerCase().includes(filter.toLowerCase()))
+    return options.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
   }
 
   // RENDER

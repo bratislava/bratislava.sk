@@ -4,13 +4,14 @@ import SelectField from '../../forms/SelectField/SelectField'
 import SelectOption from '../../forms/SelectField/SelectOption'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
+import SelectOptions from '../../forms/SelectField/SelectOption'
 
 interface SelectFieldShowCaseProps {
 
 }
 
 const SelectFieldShowCase = () => {
-  const selectOptions: SelectOption[] = [
+  const selectOptions: any[] = [
     { value: 'example', label: 'skola', description: 'this is testing'},
     { value: 'stuFei', label: 'STU FEI', description: 'good choice'},
     { value: 'stuFiit', label: 'STU FIIT'},
@@ -33,13 +34,13 @@ const SelectFieldShowCase = () => {
                      value={selectValueFirst} onChange={value => setSelectValueFirst(value)}/>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider placeholder="Test placeholder" type="one"
                      value={selectValueSecond} onChange={value => setSelectValueSecond(value)}/>
-        <SelectField label="Select Field" options={selectOptions} disabled type="one"/>
+        <SelectField label="Select Field" options={selectOptions} disabled type="one" onChange={value => console.log(value)}/>
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider
                      value={selectValueThird} onChange={value => setSelectValueThird(value)} type="multiple"/>
         <SelectField label="Select Field" options={selectOptions} selectAllOption placeholder="Multi-choice"
-                     value={selectValue4} onChange={value => setSelectValue4(value)} type="multiple"/>
+                     value={selectValue4} onChange={value => setSelectValue4(value)} type="multiple" />
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider
@@ -48,12 +49,12 @@ const SelectFieldShowCase = () => {
                      value={selectValue6} onChange={value => setSelectValue6(value)} type="radio"/>
       </Stack>
       <Stack direction="column">
-        <SelectField label="Select Field" options={[]} errorMessage="Test error message" type="one"/>
-        <SelectField label="Select Field" options={[]} description="This is simple description" type="one"/>
+        <SelectField label="Select Field" options={[]} errorMessage="Test error message" type="one" onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={[]} description="This is simple description" type="one" onChange={value => console.log(value)}/>
       </Stack>
       <Stack>
-        <SelectField label="Select Field" options={[]} tooltip="This is example of tooltip" type="one"/>
-        <SelectField label="Select Field" options={[]} tooltip="This is another example of tooltip" type="one" required/>
+        <SelectField label="Select Field" options={[]} tooltip="This is example of tooltip" type="one" onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={[]} tooltip="This is another example of tooltip" type="one" required onChange={value => console.log(value)}/>
       </Stack>
     </Wrapper>
   )

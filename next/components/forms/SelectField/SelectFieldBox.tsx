@@ -4,7 +4,7 @@ import Tag from '../Tag'
 import SelectOption from './SelectOption'
 
 interface SelectFieldBoxProps {
-  value?: SelectOption[]
+  value?: any
   multiple?: boolean
   placeholder?: string
   filter: string
@@ -54,8 +54,8 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
          onClick={handleOnInputFocus} onFocus={handleOnInputFocus}>
       { /* TAGS */
         value && value.length > 0
-          ? (multiple ? value : value.slice(0,1)).map((option, key) =>
-              <Tag key={key} text={option.label} size="large" onRemove={() => onRemove(key)} removable/>
+          ? (multiple ? value : value.slice(0,1)).map((option: { value: string }, key: number) =>
+              <Tag key={key} text={option.value} size="large" onRemove={() => onRemove(key)} removable/>
             )
           : null
       }
