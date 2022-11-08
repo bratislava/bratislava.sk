@@ -4,17 +4,18 @@ import ChevronRightIcon from '../../../assets/images/forms/chevron-right.svg'
 import CheckboxIcon from '../icon-components/CheckboxIcon'
 import SelectOption from './SelectOption'
 import RadioButtonIcon from '../icon-components/RadioButtonIcon'
+import { EnumOptionsType } from '@rjsf/utils'
 
 interface DropdownRowProps {
-  option: any
+  option: EnumOptionsType
   selectAllRow?: boolean
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
-  onChooseOne: (option: any, close?: boolean) => void
-  onUnChooseOne: (option: any, close?: boolean) => void
-  onChooseMulti: (option: any) => void
-  onUnChooseMulti: (option: any) => void
+  onChooseOne: (option: EnumOptionsType, close?: boolean) => void
+  onUnChooseOne: (option: EnumOptionsType, close?: boolean) => void
+  onChooseMulti: (option: EnumOptionsType) => void
+  onUnChooseMulti: (option: EnumOptionsType) => void
 }
 
 const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {

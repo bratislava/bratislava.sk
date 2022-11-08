@@ -8,13 +8,13 @@ import FieldHeader from '../FieldHeader'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 import SelectOptions from './SelectOption'
-
+import { EnumOptionsType } from '@rjsf/utils'
 
 
 interface SelectFieldProps {
   label: string
-  options: any
-  value?: any
+  options: SelectOptions
+  value: SelectOptions
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
   selectAllOption?: boolean
   placeholder?: string
@@ -24,7 +24,7 @@ interface SelectFieldProps {
   disabled?: boolean
   tooltip?: string
   dropdownDivider?: boolean
-  onChange: (values: any) => void;
+  onChange: (values: SelectOptions) => void;
 }
 
 const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps>
@@ -45,13 +45,13 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     dropdownDivider,
     onChange
   } = props
+  const { enumOptions } = options
 
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
   const dropdownRef = React.createRef<HTMLDivElement>()
   const filterRef = React.createRef<HTMLInputElement>()
-
 
   // STYLES
   const selectClassName = cx (
@@ -64,44 +64,44 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   )
 
   // EVENT HANDLERS
-  const handleOnChangeSelect = (selectedOptions: any) => {
+  const handleOnChangeSelect = (selectedOptions: SelectOptions) => {
     if (onChange) {
       onChange(selectedOptions)
     }
   }
 
   const handleOnRemove = (optionId: number) => {
-    const newValue =  value ? [...value] : []
+    const newValue =  value.enumOptions ? [...value.enumOptions] : []
     newValue.splice(optionId, 1)
-    handleOnChangeSelect(newValue)
+    handleOnChangeSelect({ enumOptions: newValue })
   }
 
-  const handleOnChooseOne = (option: any, close?: boolean) => {
+  const handleOnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([option])
+    handleOnChangeSelect({ enumOptions: [option] })
     setFilter("")
   }
 
-  const handleOnUnChooseOne = (option: any, close?: boolean) => {
+  const handleOnUnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([])
+    handleOnChangeSelect({ enumOptions: [] })
   }
 
-  const handleOnChooseMulti = (option: any) => {
-    const newValue = value ? [...value] : []
+  const handleOnChooseMulti = (option: EnumOptionsType) => {
+    const newValue = value.enumOptions ? [...value.enumOptions] : []
     if (value) newValue.push(option)
-    handleOnChangeSelect(newValue)
+    handleOnChangeSelect({ enumOptions: newValue })
     setFilter("")
   }
 
-  const handleOnUnChooseMulti = (option: any) => {
-    const newValue = value
-      ? [...value].filter(valueOption => {
+  const handleOnUnChooseMulti = (option: EnumOptionsType) => {
+    const newValue = value.enumOptions
+      ? [...value.enumOptions].filter(valueOption => {
         return valueOption.value !== option.value
           || valueOption.label !== option.label
       })
       : []
-    handleOnChangeSelect(newValue)
+    handleOnChangeSelect({ enumOptions: newValue })
   }
 
   const handleOnDropdownArrowClick = () => {
@@ -119,25 +119,31 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnDeleteLastValue = () => {
-    const newValue = value ? [...value] : []
+    const newValue = value.enumOptions ? [...value.enumOptions] : []
     newValue.pop()
-    handleOnChangeSelect(newValue)
+    handleOnChangeSelect({ enumOptions: newValue })
   }
 
   const handleOnSelectAll = () => {
-    const newValue = [...options]
-    handleOnChangeSelect(newValue)
+    const newValue = options.enumOptions ? [...options.enumOptions] : []
+    handleOnChangeSelect({ enumOptions: newValue })
   }
 
   // HELPER FUNCTIONS
   const getDropdownValues = () => {
-    return type !== 'multiple' && value && value.length > 0
-      ? [value[0]]
-      : value
+    const dropdownValues = type !== 'multiple' && value.enumOptions && value.enumOptions.length > 0
+      ? [value.enumOptions[0]]
+      : value.enumOptions
+
+    return { enumOptions: dropdownValues }
   }
 
   const getFilteredOptions = () => {
-    return options.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
+    const filteredOptions = options.enumOptions
+      ? options.enumOptions.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
+      : []
+
+    return { enumOptions: filteredOptions }
   }
 
   // RENDER

@@ -5,27 +5,29 @@ import SelectOption from '../../forms/SelectField/SelectOption'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 import SelectOptions from '../../forms/SelectField/SelectOption'
+import { EnumOptionsType } from '@rjsf/utils'
 
 interface SelectFieldShowCaseProps {
 
 }
 
 const SelectFieldShowCase = () => {
-  const selectOptions: any[] = [
-    { value: 'example', label: 'skola', description: 'this is testing'},
-    { value: 'stuFei', label: 'STU FEI', description: 'good choice'},
-    { value: 'stuFiit', label: 'STU FIIT'},
-    { value: 'ukFmfi', label: 'UK FMFI'},
-    { value: 'tukeFei', label: 'TUKE FEI' },
-    { value: 'unizaFeit', label: 'UNIZA FEIT' }
-  ]
+  const enumOptions: EnumOptionsType[] = [
+      { value: 'example', label: 'skola'},
+      { value: 'stuFei', label: 'STU FEI' },
+      { value: 'stuFiit', label: 'STU FIIT' },
+      { value: 'ukFmfi', label: 'UK FMFI' },
+      { value: 'tukeFei', label: 'TUKE FEI' },
+      { value: 'unizaFeit', label: 'UNIZA FEIT' }
+    ]
+  const selectOptions: SelectOptions = { enumOptions }
 
-  const [selectValueFirst, setSelectValueFirst] = useState<SelectOption[]>(selectOptions.slice(0, 2))
-  const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>([])
-  const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(selectOptions.slice(0, 3))
-  const [selectValue4, setSelectValue4] = useState<SelectOption[]>([])
-  const [selectValue5, setSelectValue5] = useState<SelectOption[]>(selectOptions.slice(2, 3))
-  const [selectValue6, setSelectValue6] = useState<SelectOption[]>([])
+  const [selectValueFirst, setSelectValueFirst] = useState<SelectOptions>({ enumOptions: enumOptions.slice(0, 2) })
+  const [selectValueSecond, setSelectValueSecond] = useState<SelectOptions>({ enumOptions: [] })
+  const [selectValueThird, setSelectValueThird] = useState<SelectOptions>({ enumOptions: enumOptions.slice(0, 3) })
+  const [selectValue4, setSelectValue4] = useState<SelectOptions>({ enumOptions: [] })
+  const [selectValue5, setSelectValue5] = useState<SelectOptions>({ enumOptions: enumOptions.slice(2, 3) })
+  const [selectValue6, setSelectValue6] = useState<SelectOptions>({ enumOptions: [] })
 
   return (
     <Wrapper direction="column" title="SelectField">
@@ -34,7 +36,7 @@ const SelectFieldShowCase = () => {
                      value={selectValueFirst} onChange={value => setSelectValueFirst(value)}/>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider placeholder="Test placeholder" type="one"
                      value={selectValueSecond} onChange={value => setSelectValueSecond(value)}/>
-        <SelectField label="Select Field" options={selectOptions} disabled type="one" onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={selectOptions} value={{}} disabled type="one" onChange={value => console.log(value)}/>
       </Stack>
       <Stack>
         <SelectField label="Select Field" options={selectOptions} dropdownDivider
@@ -49,12 +51,12 @@ const SelectFieldShowCase = () => {
                      value={selectValue6} onChange={value => setSelectValue6(value)} type="radio"/>
       </Stack>
       <Stack direction="column">
-        <SelectField label="Select Field" options={[]} errorMessage="Test error message" type="one" onChange={value => console.log(value)}/>
-        <SelectField label="Select Field" options={[]} description="This is simple description" type="one" onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={{ }} value={{}} errorMessage="Test error message" type="one" onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={{ }} value={{}} description="This is simple description" type="one" onChange={value => console.log(value)}/>
       </Stack>
       <Stack>
-        <SelectField label="Select Field" options={[]} tooltip="This is example of tooltip" type="one" onChange={value => console.log(value)}/>
-        <SelectField label="Select Field" options={[]} tooltip="This is another example of tooltip" type="one" required onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={{}} value={{}} tooltip="This is example of tooltip" type="one" onChange={value => console.log(value)}/>
+        <SelectField label="Select Field" options={{}} value={{}} tooltip="This is another example of tooltip" type="one" required onChange={value => console.log(value)}/>
       </Stack>
     </Wrapper>
   )

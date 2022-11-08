@@ -2,9 +2,10 @@ import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react
 
 import Tag from '../Tag'
 import SelectOption from './SelectOption'
+import SelectOptions from './SelectOption'
 
 interface SelectFieldBoxProps {
-  value?: any
+  value: SelectOptions
   multiple?: boolean
   placeholder?: string
   filter: string
@@ -22,7 +23,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
 
   // HELPER FUNCTIONS
   const getInputSize = () => {
-    return !value || value.length === 0
+    return !value?.enumOptions || value?.enumOptions.length === 0
       ? 13
       : filter.length <= 1
         ? 1
@@ -32,7 +33,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   }
 
   const getPlaceholder = () => {
-    return value && value.length > 0 ? "" : placeholder
+    return value?.enumOptions && value?.enumOptions.length > 0 ? "" : placeholder
   }
 
   // EVENT HANDLERS
@@ -53,8 +54,9 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4" data-value={value}
          onClick={handleOnInputFocus} onFocus={handleOnInputFocus}>
       { /* TAGS */
-        value && value.length > 0
-          ? (multiple ? value : value.slice(0,1)).map((option: { value: string }, key: number) =>
+        value?.enumOptions && value.enumOptions.length > 0
+          ? (multiple ? value.enumOptions : value.enumOptions.slice(0,1))
+            .map((option, key) =>
               <Tag key={key} text={option.value} size="large" onRemove={() => onRemove(key)} removable/>
             )
           : null
