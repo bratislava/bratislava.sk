@@ -14,16 +14,8 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
   const { t } = useTranslation('common')
   const [isOpen, setIsOpen] = useState(false)
   const SHOW_LESS_COUNT = 3
-  const [blogsToShow, setBlogsToShow] = useState<BlogItem[]>(blogs.slice(0, SHOW_LESS_COUNT))
 
-  const handleClick = () => {
-    if (isOpen) {
-      setBlogsToShow(blogs.slice(0, SHOW_LESS_COUNT))
-    } else {
-      setBlogsToShow(blogs)
-    }
-    setIsOpen(!isOpen)
-  }
+  const blogsToShow = isOpen ? blogs : blogs.slice(0, SHOW_LESS_COUNT)
 
   return (
     <div className="flex flex-col gap-y-3 lg:gap-y-6">
@@ -34,7 +26,11 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
           })}
         </div>
         {blogs.length > SHOW_LESS_COUNT && (
-          <Button variant="transparent" className="text-default w-fit self-center px-6 py-2.5" onClick={handleClick}>
+          <Button
+            variant="transparent"
+            className="text-default w-fit self-center px-6 py-2.5"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? t('showLess') : t('showMore')}
           </Button>
         )}

@@ -3,19 +3,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import { AdvancedSearch, FooterProps, PageHeader, SearchOptionProps, SectionContainer } from '@bratislava/ui-bratislava'
+import { AdvancedSearch, FooterProps, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect, useState } from 'react'
+import { StringParam, useQueryParam, withDefault } from 'use-query-params'
+import { useDebounce } from 'usehooks-ts'
 
 import BasePageLayout from '../components/layouts/BasePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import BlogPostsResults from '../components/molecules/SearchPage/BlogPostsResults'
 import PagesResults from '../components/molecules/SearchPage/PagesResults'
 import UsersResults from '../components/molecules/SearchPage/UsersResults'
+import { minKeywordLength } from '../utils/constants'
 
 export interface SearchPageProps {
   page?: GeneralPageFragment
@@ -23,7 +26,6 @@ export interface SearchPageProps {
 }
 
 export const getServerSideProps = async (ctx: any) => {
-  const keyword = ctx?.query?.keyword
   const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
     slug: 'test',
@@ -43,17 +45,28 @@ export const getServerSideProps = async (ctx: any) => {
             locale: l,
           })),
       },
-      keyword: keyword ?? null,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
   }
 }
 
-const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof getServerSideProps>) => {
+const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('common')
   const menuItems = parseMainMenu(mainMenu)
 
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState<string>('')
+  const [routerSearchQuery] = useQueryParam('keyword', withDefault(StringParam, ''))
+
+  const debouncedSearchInputValue = useDebounce<string>(input, 300)
+
+  const [searchQuery, setSearchQuery] = useState<string>(debouncedSearchInputValue)
+
+  useEffect(() => {
+    if (debouncedSearchInputValue.length > minKeywordLength) {
+      console.log('setting search query')
+      setSearchQuery(debouncedSearchInputValue)
+    }
+  }, [debouncedSearchInputValue])
 
   const defaultOptions = [
     { key: 'articles', value: t('articles') },
@@ -66,17 +79,15 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
   const usersSelected = checkedOptions.some(({ key }) => key === 'users')
 
   useEffect(() => {
-    setInput(keyword)
-  }, [keyword])
+    setInput(routerSearchQuery)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const handleSelect = (innerOptions: SearchOptionProps[]) => {
-    setCheckedOptions(innerOptions)
-  }
+  const pagesFilters = { search: searchQuery }
+  const blogPostsFilters = { search: searchQuery, page: 1, pageSize: 6 }
+  const usersFilters = { search: searchQuery }
 
-  const pagesFilters = { search: keyword }
-  const blogPostsFilters = { search: keyword, page: 1, pageSize: 6 }
-  const usersFilters = { search: keyword }
-
+  console.log(input, debouncedSearchInputValue, searchQuery)
   return (
     <PageWrapper
       locale={page.locale}
@@ -113,8 +124,11 @@ const Search = ({ footer, mainMenu, page, keyword }: AsyncServerProps<typeof get
               placeholder={t('enterKeyword')}
               title={t('searching')}
               buttonText={t('search')}
-              handleSelect={handleSelect}
-              keyword={input}
+              checkedOptions={checkedOptions}
+              handleSelect={setCheckedOptions}
+              input={input}
+              setInput={setInput}
+              setSearchQuery={setSearchQuery}
             />
 
             {blogPostsSelected && <BlogPostsResults filters={blogPostsFilters} />}

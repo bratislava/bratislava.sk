@@ -4,6 +4,7 @@ import { BlogPostMeili } from '@utils/meiliTypes'
 import { SearchIndexWrapped, unwrapFromSearchIndex } from '@utils/searchIndexWrapped'
 import { Key } from 'swr'
 
+import { BlogItem } from '../../../components/ui'
 import { meiliClient } from '../meili'
 
 export type BlogPostsFilters = {
@@ -58,7 +59,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
         title: article.title,
         slug: article.slug,
       },
-    }
+    } as BlogItem
   })
 
   return { ...data, hits }
