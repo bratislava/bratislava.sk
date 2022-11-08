@@ -15,7 +15,7 @@ interface SelectFieldProps {
   label: string
   options: any
   value?: any
-  type: 'one' | 'multiple' | 'arrow' | 'radio'
+  type?: 'one' | 'multiple' | 'arrow' | 'radio'
   selectAllOption?: boolean
   placeholder?: string
   errorMessage?: string
@@ -34,7 +34,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     label,
     options,
     value,
-    type,
+    type = 'one',
     selectAllOption,
     placeholder,
     errorMessage,

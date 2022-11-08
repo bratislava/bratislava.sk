@@ -1,5 +1,10 @@
 {
   "ui:submitButtonOptions": {
     "norender": true
+  },
+  "ziadatel": {
+    "school": {
+      "ui:widget": "CustomSelect"
+    }
   }
 }

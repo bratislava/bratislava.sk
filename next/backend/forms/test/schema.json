@@ -9,6 +9,11 @@
           "title": "Žiadateľ",
           "required": ["address"],
           "properties": {
+            "school": {
+              "type": "string",
+              "title": "University",
+              "enum": ["English", "Japanese", "Chinese"]
+            },
             "firstName": {
               "type": "string"
             },
