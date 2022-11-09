@@ -71,7 +71,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnRemove = (optionId: number) => {
-    const newValue =  value.enumOptions ? [...value.enumOptions] : []
+    const newValue =  value?.enumOptions ? [...value.enumOptions] : []
     newValue.splice(optionId, 1)
     handleOnChangeSelect({ enumOptions: newValue })
   }
@@ -88,14 +88,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnChooseMulti = (option: EnumOptionsType) => {
-    const newValue = value.enumOptions ? [...value.enumOptions] : []
+    const newValue = value?.enumOptions ? [...value.enumOptions] : []
     if (value) newValue.push(option)
     handleOnChangeSelect({ enumOptions: newValue })
     setFilter("")
   }
 
   const handleOnUnChooseMulti = (option: EnumOptionsType) => {
-    const newValue = value.enumOptions
+    const newValue = value?.enumOptions
       ? [...value.enumOptions].filter(valueOption => {
         return valueOption.value !== option.value
           || valueOption.label !== option.label
@@ -119,28 +119,30 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnDeleteLastValue = () => {
-    const newValue = value.enumOptions ? [...value.enumOptions] : []
+    const newValue = value?.enumOptions ? [...value.enumOptions] : []
     newValue.pop()
     handleOnChangeSelect({ enumOptions: newValue })
   }
 
   const handleOnSelectAll = () => {
-    const newValue = options.enumOptions ? [...options.enumOptions] : []
+    const newValue = enumOptions ? [...enumOptions] : []
     handleOnChangeSelect({ enumOptions: newValue })
   }
 
   // HELPER FUNCTIONS
   const getDropdownValues = () => {
-    const dropdownValues = type !== 'multiple' && value.enumOptions && value.enumOptions.length > 0
-      ? [value.enumOptions[0]]
-      : value.enumOptions
+    const dropdownValues = value
+      ? type !== 'multiple' && value.enumOptions && value.enumOptions.length > 0
+        ? [value.enumOptions[0]]
+        : value.enumOptions
+      : []
 
     return { enumOptions: dropdownValues }
   }
 
   const getFilteredOptions = () => {
-    const filteredOptions = options.enumOptions
-      ? options.enumOptions.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
+    const filteredOptions = enumOptions
+      ? enumOptions.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
       : []
 
     return { enumOptions: filteredOptions }
