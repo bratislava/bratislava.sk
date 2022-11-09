@@ -44,7 +44,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   }
 
   const handleOnKeyDown = ({ key }: React.KeyboardEvent) => {
-    if (["Backspace", "Delete"].includes(key)) {
+    if (["Backspace", "Delete"].includes(key) && !filter) {
       onDeleteLastValue()
     }
   }
