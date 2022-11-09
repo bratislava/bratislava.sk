@@ -1,11 +1,10 @@
 // @ts-strict-ignore
-import { getMeilisearchPageOptions } from '@utils/getMeilisearchPageOptions'
-import { BlogPostMeili } from '@utils/meiliTypes'
-import { SearchIndexWrapped, unwrapFromSearchIndex } from '@utils/searchIndexWrapped'
 import { Key } from 'swr'
 
 import { BlogItem } from '../../../components/ui'
-import { meiliClient } from '../meili'
+import { meiliClient } from '../meiliClient'
+import { BlogPostMeili, SearchIndexWrapped } from '../types'
+import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
 
 export type BlogPostsFilters = {
   search: string

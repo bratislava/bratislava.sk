@@ -1,8 +1,8 @@
-import { PageMeili } from '@utils/meiliTypes'
-import { SearchIndexWrapped, unwrapFromSearchIndex } from '@utils/searchIndexWrapped'
 import { Key } from 'swr'
 
-import { meiliClient } from '../meili'
+import { meiliClient } from '../meiliClient'
+import { PageMeili, SearchIndexWrapped } from '../types'
+import { unwrapFromSearchIndex } from '../utils'
 
 export type PagesFilters = {
   search: string
