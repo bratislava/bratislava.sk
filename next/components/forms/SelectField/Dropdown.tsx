@@ -1,15 +1,13 @@
+import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import { FC, Key, useState } from 'react'
+import { FC } from 'react'
 
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
-import SelectOption from './SelectOption'
-import SelectOptions from './SelectOption'
-import { EnumOptionsType } from '@rjsf/utils'
 
 interface DropdownProps {
-  options: SelectOptions
-  value: SelectOptions
+  enumOptions: EnumOptionsType[]
+  value: EnumOptionsType[]
   selectAllOption?: boolean
   absolute?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
@@ -24,7 +22,7 @@ interface DropdownProps {
 
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   const {
-    options,
+    enumOptions,
     value,
     selectAllOption,
     absolute,
@@ -49,7 +47,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
 
   // HELP FUNCTIONS
   const isSelected = (option: EnumOptionsType): boolean => {
-    return !!(value.enumOptions?.find((valueOption) => {
+    return !!(value?.find((valueOption) => {
       return valueOption.value === option.value
         && valueOption.label === option.label
     }))
@@ -63,7 +61,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
         <SelectAllDropdownRow onSelectAll={() => onSelectAll ? onSelectAll() : null} divider={divider} />
       }
       {
-        options.enumOptions?.map(
+        enumOptions?.map(
           (option, key) =>
             <DropdownRow key={key} option={option} divider={divider} selected={isSelected(option)} type={type}
                          onChooseOne={(opt: EnumOptionsType, close?: boolean) => onChooseOne ? onChooseOne(opt, close) : null}

@@ -4,7 +4,28 @@
   },
   "ziadatel": {
     "school": {
-      "ui:widget": "CustomSelect"
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:placeholder": "tu skus pisat",
+      "ui:options": {
+        "type": "one",
+        "dropdownDivider": true,
+        "description": "Here choose your last school",
+        "tooltip": "This tooltip will tell you what to do better when you choose this."
+      }
+    },
+    "diplomas": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:options": {
+        "type": "multiple",
+        "selectAllOption": true
+      }
+    },
+    "job": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:disabled": true
     }
   }
 }

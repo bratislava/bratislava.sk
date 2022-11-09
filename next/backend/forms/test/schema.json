@@ -7,27 +7,41 @@
       "properties": {
         "ziadatel": {
           "title": "Žiadateľ",
-          "required": ["address"],
+          "required": ["address", "school"],
           "properties": {
             "school": {
               "type": "string",
               "title": "University",
-              "anyOf": [
+              "placeholder": "Tu pis",
+              "oneOf": [
                 {
-                  "type": "string",
                   "title": "fakulta elektrotechniky a informatiky",
-                  "enum": ["STU FEI"]
+                  "const": "STU FEI"
                 },
                 {
-                  "type": "string",
                   "title": "fakulta informatiky a informacnych technologii",
-                  "enum": ["STU FIIT"]
+                  "const": "STU FIIT"
                 },
                 {
-                  "type": "string",
                   "enum": ["STU FCHPT"]
                 }
               ]
+            },
+            "diplomas": {
+              "type": "string",
+              "title": "Reached diplomas",
+              "enum": [
+                "ing.",
+                "mgr.",
+                "bc.",
+                "phd.",
+                "doc.",
+                "prof."
+              ]
+            },
+            "job": {
+              "type": "string",
+              "enum": []
             },
             "firstName": {
               "type": "string"

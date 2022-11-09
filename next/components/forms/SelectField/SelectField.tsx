@@ -7,24 +7,23 @@ import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
-import SelectOptions from './SelectOption'
 import { EnumOptionsType } from '@rjsf/utils'
 
 
 interface SelectFieldProps {
   label: string
-  options: SelectOptions
-  value: SelectOptions
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
-  selectAllOption?: boolean
-  placeholder?: string
-  errorMessage?: string
-  description?: string
-  required?: boolean
-  disabled?: boolean
+  value?: EnumOptionsType[]
+  enumOptions?: EnumOptionsType[]
   tooltip?: string
   dropdownDivider?: boolean
-  onChange: (values: SelectOptions) => void;
+  selectAllOption?: boolean
+  placeholder?: string
+  description?: string
+  errorMessage?: string
+  required?: boolean
+  disabled?: boolean
+  onChange: (values: EnumOptionsType[]) => void;
 }
 
 const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps>
@@ -32,20 +31,20 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // PROPS
   const {
     label,
-    options,
     value,
+    enumOptions,
     type = 'one',
     selectAllOption,
     placeholder,
-    errorMessage,
     description,
-    required,
-    disabled,
     tooltip,
     dropdownDivider,
+    errorMessage,
+    required,
+    disabled,
     onChange
   } = props
-  const { enumOptions } = options
+
 
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
@@ -64,44 +63,44 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   )
 
   // EVENT HANDLERS
-  const handleOnChangeSelect = (selectedOptions: SelectOptions) => {
+  const handleOnChangeSelect = (selectedOptions: EnumOptionsType[]) => {
     if (onChange) {
       onChange(selectedOptions)
     }
   }
 
   const handleOnRemove = (optionId: number) => {
-    const newValue =  value?.enumOptions ? [...value.enumOptions] : []
+    const newValue =  value ? [...value] : []
     newValue.splice(optionId, 1)
-    handleOnChangeSelect({ enumOptions: newValue })
+    handleOnChangeSelect(newValue)
   }
 
   const handleOnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect({ enumOptions: [option] })
+    handleOnChangeSelect([option])
     setFilter("")
   }
 
   const handleOnUnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect({ enumOptions: [] })
+    handleOnChangeSelect([] )
   }
 
   const handleOnChooseMulti = (option: EnumOptionsType) => {
-    const newValue = value?.enumOptions ? [...value.enumOptions] : []
+    const newValue = value ? [...value] : []
     if (value) newValue.push(option)
-    handleOnChangeSelect({ enumOptions: newValue })
+    handleOnChangeSelect(newValue)
     setFilter("")
   }
 
   const handleOnUnChooseMulti = (option: EnumOptionsType) => {
-    const newValue = value?.enumOptions
-      ? [...value.enumOptions].filter(valueOption => {
+    const newValue = value
+      ? [...value].filter(valueOption => {
         return valueOption.value !== option.value
           || valueOption.label !== option.label
       })
       : []
-    handleOnChangeSelect({ enumOptions: newValue })
+    handleOnChangeSelect(newValue)
   }
 
   const handleOnDropdownArrowClick = () => {
@@ -119,33 +118,29 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnDeleteLastValue = () => {
-    const newValue = value?.enumOptions ? [...value.enumOptions] : []
+    const newValue = value ? [...value] : []
     newValue.pop()
-    handleOnChangeSelect({ enumOptions: newValue })
+    handleOnChangeSelect(newValue)
   }
 
   const handleOnSelectAll = () => {
     const newValue = enumOptions ? [...enumOptions] : []
-    handleOnChangeSelect({ enumOptions: newValue })
+    handleOnChangeSelect(newValue)
   }
 
   // HELPER FUNCTIONS
-  const getDropdownValues = () => {
-    const dropdownValues = value
-      ? type !== 'multiple' && value.enumOptions && value.enumOptions.length > 0
-        ? [value.enumOptions[0]]
-        : value.enumOptions
+  const getDropdownValues = (): EnumOptionsType[] => {
+    return value
+      ? type !== 'multiple' && value && value.length > 0
+        ? [value[0]]
+        : value
       : []
-
-    return { enumOptions: dropdownValues }
   }
 
-  const getFilteredOptions = () => {
-    const filteredOptions = enumOptions
+  const getFilteredOptions = (): EnumOptionsType[] => {
+    return enumOptions
       ? enumOptions.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
       : []
-
-    return { enumOptions: filteredOptions }
   }
 
   // RENDER
@@ -176,7 +171,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <div className="relative" ref={dropdownRef}>
         {
           isDropdownOpened &&
-          <Dropdown options={getFilteredOptions()} value={getDropdownValues()} type={type}
+          <Dropdown enumOptions={getFilteredOptions()} value={getDropdownValues()} type={type}
                     divider={dropdownDivider} selectAllOption={selectAllOption} absolute
                     onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne} onSelectAll={handleOnSelectAll}
                     onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti} />

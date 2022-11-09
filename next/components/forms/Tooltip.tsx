@@ -62,7 +62,7 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
           arrow && ['left', 'right'].includes(arrow) && <LeftArrowIcon />
         }
       </div>
-      <div className="min-w-min max-w-xs break-all rounded bg-universal-gray-700 py-3 px-14 text-white">
+      <div className="min-w-min max-w-xs rounded bg-universal-gray-700 py-3 px-14 text-white">
         {text}
       </div>
     </div>
