@@ -22,13 +22,12 @@ const Documents = ({
   setOpen: Dispatch<SetStateAction<boolean>>
   // TODO fix typing
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setActiveData: Dispatch<any>
+  setActiveData: Dispatch<SetStateAction<VznMeili | null>>
 }) => {
   const { t } = useTranslation('common')
 
   const setOpenModal = (id: string) => {
-    const vznClicked = data.hits.find((vzn) => vzn.id === id)
-    console.log(vznClicked)
+    const vznClicked = data.hits.find((vzn) => vzn.id === id) ?? null
     setActiveData(vznClicked)
     setOpen(true)
   }
@@ -72,7 +71,7 @@ interface DocumentsResultsProps {
 
 const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) => {
   const [isOpen, setOpen] = useState(false)
-  const [activeData, setActiveData] = useState<VznMeili | null>(null)
+  const [activeVzn, setActiveVzn] = useState<VznMeili | null>(null)
 
   const { data, error } = useSwr(getVznSwrKey(filters), vznFetcher(filters))
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
@@ -94,7 +93,7 @@ const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) =
     <>
       <LoadingOverlay loading={delayedLoading}>
         {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
-        <Documents data={dataToDisplay!} filters={filters} setOpen={setOpen} setActiveData={setActiveData} />
+        <Documents data={dataToDisplay!} filters={filters} setOpen={setOpen} setActiveData={setActiveVzn} />
         {dataToDisplay?.estimatedTotalHits !== 0 && (
           <Pagination
             key={filters.search}
@@ -108,7 +107,7 @@ const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) =
       </LoadingOverlay>
 
       <Modal isOpen={isOpen} onClose={() => setOpen(false)} className="z-50">
-        {activeData && <DocumentListModalBody vzn={activeData} />}
+        {activeVzn && <DocumentListModalBody vzn={activeVzn} />}
       </Modal>
     </>
   )

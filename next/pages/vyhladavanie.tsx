@@ -86,7 +86,6 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
   const blogPostsFilters = { search: searchQuery, page: 1, pageSize: 6 }
   const usersFilters = { search: searchQuery }
 
-  console.log(input, debouncedSearchInputValue, searchQuery)
   return (
     <PageWrapper
       locale={page.locale}

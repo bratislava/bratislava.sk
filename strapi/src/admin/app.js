@@ -1,5 +1,6 @@
 export default {
   config: {
+    // Add slovak as option for strapi admin
     locales: ['sk'],
 
     // Disable video tutorials and new release notifications
@@ -8,7 +9,5 @@ export default {
       releases: false,
     },
   },
-  bootstrap(app) {
-    console.log(app)
-  },
+  bootstrap(app) {},
 }

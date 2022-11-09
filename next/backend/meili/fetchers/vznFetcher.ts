@@ -19,7 +19,6 @@ export const vznDefaultFilters: VznFilters = {
 export const getVznSwrKey = (filters: VznFilters) => ['Vzn', filters] as Key
 
 export const vznFetcher = (filters: VznFilters) => () => {
-  console.log(filters)
   return meiliClient
     .index('search_index')
     .search<SearchIndexWrapped<'vzn', VznMeili>>(filters.search, {
