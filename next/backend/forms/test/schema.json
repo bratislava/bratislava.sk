@@ -12,7 +12,22 @@
             "school": {
               "type": "string",
               "title": "University",
-              "enum": ["English", "Japanese", "Chinese"]
+              "anyOf": [
+                {
+                  "type": "string",
+                  "title": "fakulta elektrotechniky a informatiky",
+                  "enum": ["STU FEI"]
+                },
+                {
+                  "type": "string",
+                  "title": "fakulta informatiky a informacnych technologii",
+                  "enum": ["STU FIIT"]
+                },
+                {
+                  "type": "string",
+                  "enum": ["STU FCHPT"]
+                }
+              ]
             },
             "firstName": {
               "type": "string"

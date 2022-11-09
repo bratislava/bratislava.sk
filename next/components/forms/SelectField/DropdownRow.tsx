@@ -23,8 +23,8 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
   const rowClassName = cx(
     "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
     {
-      "h-14": !option.label,
-      "h-[84px]": option.label
+      "h-14": !option.label || option.label === option.value,
+      "h-[84px]": option.label !== option.value
     }
   )
 
@@ -68,7 +68,7 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
               { getRowIcon() }
           </div>
         </div>
-        { option.label && <p className="text-p-sm">{option.label}</p> }
+        { option.label !== option.value && <p className="text-p-sm">{option.label}</p> }
       </div>
       { divider && <div className="border-b-2 border-form-input-default"/> }
     </div>
