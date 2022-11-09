@@ -63,7 +63,6 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
 
   useEffect(() => {
     if (debouncedSearchInputValue.length > minKeywordLength) {
-      console.log('setting search query')
       setSearchQuery(debouncedSearchInputValue)
     }
   }, [debouncedSearchInputValue])

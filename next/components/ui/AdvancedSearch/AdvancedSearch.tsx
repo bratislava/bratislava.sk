@@ -33,6 +33,7 @@ export interface SearchOptionProps {
   value: string
 }
 
+// TODO use BasicSearch instead of duplicating
 export const AdvancedSearch = ({
   className,
   placeholder,
@@ -79,7 +80,7 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
-          className="text-font h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-base outline-none"
+          className="text-base h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -103,14 +104,14 @@ export const AdvancedSearch = ({
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
-          className="text-font h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium outline-none"
+          className="text-sm h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="hover:color-white text-default hover:bg-primary h-14 rounded-l-none pr-6 font-medium shadow-none hover:text-white"
+          className="hover:color-white text-default h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-primary hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

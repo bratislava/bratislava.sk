@@ -1,27 +1,19 @@
 // @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable react/no-children-prop */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable react/destructuring-assignment */
 import { FileCard } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
 import ReactMarkdown from 'react-markdown'
 import useSWR from 'swr'
 
-// we're taking the entity from meilisearch which unfortunately types differently
-// TODO fix typing
+import { VznMeili } from '../../../../backend/meili/types'
 
-export const DocumentListModalBody = (vzn: any) => {
-  const vznId = vzn?.id?.slice(4, vzn?.id?.length)
+const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
+  const vznId = vzn?.id
   const { data } = useSWR(['VznDetail', vznId], () => client.VznDetail({ id: vznId }))
 
   const { t } = useTranslation()
   return (
-    <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background">
+    <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto bg-background rounded-xl">
       <div className="py-8 px-12">
         <div className="text-h4"> {vzn?.title} </div>
         <div className="flex pt-3">
@@ -34,12 +26,12 @@ export const DocumentListModalBody = (vzn: any) => {
           {!!vzn?.cancellationDocument?.length && (
             <div className="flex flex-col pl-5">
               <div> {t('vzn.validUntil')}: </div>
-              <div className="font-semibold">{vzn?.cancellationDocument[0].validFrom}</div>
+              <div className="font-semibold">{vzn?.cancellationDocument[0]?.validFrom}</div>
             </div>
           )}
         </div>
         <div className="pt-5">
-          <ReactMarkdown children={vzn?.details} />
+          <ReactMarkdown>{vzn?.details}</ReactMarkdown>
         </div>
         {/*  Main Document  */}
         {vzn?.mainDocument && (
@@ -50,6 +42,7 @@ export const DocumentListModalBody = (vzn: any) => {
                 downloadLink={vzn.mainDocument?.url}
                 fileDetail={`${vzn.mainDocument?.ext?.toUpperCase()} ${vzn.mainDocument?.size} KB`}
                 fileTitle={vzn?.title}
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 uploadDate={new Date(vzn.mainDocument?.createdAt).toLocaleDateString()}
               />
             </div>
@@ -63,6 +56,7 @@ export const DocumentListModalBody = (vzn: any) => {
                 downloadLink={vzn.consolidatedText?.url}
                 fileDetail={`${vzn.consolidatedText?.ext?.toUpperCase()} ${vzn.consolidatedText?.size} KB`}
                 fileTitle={vzn?.title}
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 uploadDate={new Date(vzn.consolidatedText?.createdAt).toLocaleDateString()}
               />
             </div>
@@ -85,6 +79,7 @@ export const DocumentListModalBody = (vzn: any) => {
                     downloadLink={file?.url}
                     fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
                     fileTitle={title}
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />
                 ) : null
@@ -109,6 +104,7 @@ export const DocumentListModalBody = (vzn: any) => {
                     downloadLink={file?.url}
                     fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
                     fileTitle={title}
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />
                 ) : null
@@ -120,3 +116,5 @@ export const DocumentListModalBody = (vzn: any) => {
     </div>
   )
 }
+
+export default DocumentListModalBody

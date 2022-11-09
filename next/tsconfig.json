@@ -32,7 +32,7 @@
       "@assets/images": ["./assets/images/index.ts"],
       "@assets/images/*": ["./assets/images/*"],
       "@bratislava/strapi-sdk-homepage": ["./graphql/index.ts"],
-      "@backend/*": ["./backend/*"],
+      "@backend/*": ["./backend/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],

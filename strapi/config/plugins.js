@@ -21,14 +21,16 @@ const wrapSearchIndexEntry = (type, data) => {
 // instead of merging. Therefore, for all entities we must provide shared settings.
 const searchIndexSettings = {
   searchableAttributes: [
-    // Page
     'page.title',
     'blog-post.title',
+    'vzn.title',
+    'vzn.amedmentDocument.title',
+    'vzn.cancellationDocument.title',
   ],
   filterableAttributes: [
     // All
     'type',
-    // Page + branch + article + bundle + cemetery
+    // Page + Blog post
     'locale',
   ],
   sortableAttributes: [
@@ -36,8 +38,7 @@ const searchIndexSettings = {
     'blog-post.title',
     'blog-post.publishedAt',
     'blog-post.publishedAtTimestamp',
-    // VZN
-    'vzn.title',
+    // Vzn
     'vzn.validFrom',
     'vzn.publishedAt',
     'vzn.publishedAtTimestamp',

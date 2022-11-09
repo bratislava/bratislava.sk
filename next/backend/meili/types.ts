@@ -36,6 +36,7 @@ export type VznMeili = Omit<
   Vzn,
   '__typename' | 'mainDocument' | 'consolidatedText' | 'cancelationDocument' | 'amendmentDocument'
 > & {
+  id: string
   mainDocument?: UploadFile
   consolidatedText?: UploadFile
 }
