@@ -10,7 +10,7 @@ export interface VideosProps extends ComponentSectionsVideos {
   className?: string
   title?: string
   subtitle?: string
-  videos?: VideoAttribute[] | null
+  videos: VideoAttribute[] | null | undefined
 }
 
 const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
@@ -54,7 +54,7 @@ const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
         onLoad={() => setLoaded(true)}
       />
       <a href={url} target="_blank" rel="noreferrer">
-        <h5 className="mt-8 cursor-pointer font-semibold hover:underline md:text-default">{title}</h5>
+        <h5 className="md:text-default mt-8 cursor-pointer font-semibold hover:underline">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
     </div>
@@ -65,13 +65,12 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
   if (!videos) {
     return null
   }
-  console.log(videos.length, buttonContent, title)
 
   const videosCount = 3
   return (
     <div key={id} className={className}>
       <h4 className="text-h4">{title}</h4>
-      <p className="mt-5 mb-10 md:text-default">{subtitle}</p>
+      <p className="md:text-default mt-5 mb-10">{subtitle}</p>
 
       {/* Mobile */}
       <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
@@ -86,7 +85,7 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
           <Video key={video.url} {...video} />
         ))}
         {shouldShowButtonContent(videos, buttonContent) && (
-          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="py-2 text-md">
+          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-md py-2">
             {buttonContent}
           </Button>
         )}
