@@ -1,6 +1,12 @@
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
-import { DocumentListItem, LoadingSpinner, Modal, NoResultsFound, Pagination } from '@bratislava/ui-bratislava'
+import {
+  DocumentListItem,
+  LoadingSpinner,
+  Modal,
+  NoResultsFound,
+  Pagination,
+} from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { fileCountVzns } from '@utils/utils'
@@ -48,7 +54,6 @@ const Documents = ({
                 Icon={category.icon}
                 count={fileCountVzns(vzn)}
                 onClick={setOpenModal}
-                // onClick={() => {}}
                 mainDocumentHref={vzn.mainDocument?.url}
               />
             )
@@ -92,13 +97,20 @@ const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) =
   return (
     <>
       <LoadingOverlay loading={delayedLoading}>
-        {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
-        <Documents data={dataToDisplay!} filters={filters} setOpen={setOpen} setActiveData={setActiveVzn} />
+        <Documents
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+          data={dataToDisplay!}
+          filters={filters}
+          setOpen={setOpen}
+          setActiveData={setActiveVzn}
+        />
         {dataToDisplay?.estimatedTotalHits !== 0 && (
           <Pagination
             key={filters.search}
             itemsPerPage={filters.pageSize}
-            totalPages={dataToDisplay ? Math.ceil(dataToDisplay.estimatedTotalHits / filters.pageSize) : 0}
+            totalPages={
+              dataToDisplay ? Math.ceil(dataToDisplay.estimatedTotalHits / filters.pageSize) : 0
+            }
             totalCount={dataToDisplay?.estimatedTotalHits}
             currentPage={filters.page}
             pageHandler={onPageChange}
