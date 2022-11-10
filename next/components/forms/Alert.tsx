@@ -38,7 +38,7 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       warning: <WarningIcon solid={solid} />,
     }
 
-    const alertContainer = cx('flex w-480 rounded-8 px-5', className, {
+    const alertContainer = cx('flex justify-between w-480 rounded-8 px-5', className, {
       'text-gray-800 flex-col py-4': variant === 'message',
       'bg-negative-100': type === 'error' && !solid,
       'bg-success-50': type === 'success' && !solid,
@@ -50,7 +50,7 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       'text-gray-700': type === 'info' && !solid && variant !== 'message',
       'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
-      'py-4 gap-3 items-center': variant === 'basic',
+      'py-4 items-center': variant === 'basic',
       'text-gray-0': solid,
       'bg-negative-700': type === 'error' && solid,
       'bg-success-700': type === 'success' && solid,
@@ -72,8 +72,10 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
 
     return variant === 'basic' ? (
       <div className={alertContainer}>
-        <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
-        <div className={contentStyle}>{message}</div>
+        <div className='flex items-center gap-[14px]'>
+          <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
+          <div className={contentStyle}>{message}</div>
+        </div>
         {close && (
           <span className="flex h-6 w-6 items-center justify-center">
             <CloseIcon onClick={close} solid={solid} type={type} />
@@ -82,13 +84,19 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       </div>
     ) : (
       <div className={alertContainer}>
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-row items-center gap-[14px]">
           <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
           <div className={contentStyle}>{message}</div>
         </div>
-        <div className={cx('text-base mt-2 w-full pl-9 font-normal not-italic leading-6 text-gray-700', {'text-gray-0': solid})}>{content}</div>
+        <div
+          className={cx('text-base mt-2 w-full pl-9 font-normal not-italic leading-6 text-gray-700', {
+            'text-gray-0': solid,
+          })}
+        >
+          {content}
+        </div>
         {rest.buttons ? (
-          <div className="mt-5 flex w-32 gap-5 pl-9">
+          <div className="mt-5 flex w-full gap-5 pl-9">
             <button type="button" className={extraButtonStyle} onClick={rest.buttons[0].handler}>
               {rest.buttons[0].title}
             </button>
