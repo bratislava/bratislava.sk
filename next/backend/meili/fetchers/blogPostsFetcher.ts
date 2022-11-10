@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Key } from 'swr'
 
 import { BlogItem } from '../../../components/ui'
@@ -36,7 +35,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
         coverImage: {
           data: {
             attributes: {
-              url: article.coverImage.url,
+              url: article.coverImage?.url,
             },
           },
         },
@@ -48,7 +47,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
                 data: {
                   attributes: {
                     color: 'red', // hardcoded, api does not return this attribute
-                    shortTitle: article.tag.title,
+                    shortTitle: article.tag?.title,
                   },
                 },
               },
