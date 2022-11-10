@@ -57,7 +57,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     )
 
     const style = cx(
-      'w-full px-4 py-2.5 border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed',
+      'w-full px-4 py-2.5 border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed focus:placeholder:text-transparent',
       className,
       {
         // conditions
@@ -85,7 +85,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           tooltip={tooltip}
         />
         <div className="relative">
-          {leftIcon && <i className="absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4">{leftIcon}</i>}
+          {leftIcon && <i className={cx('absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4', {'opacity-50' : disabled})}>{leftIcon}</i>}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
           {resetIcon && valueState && (
             <i

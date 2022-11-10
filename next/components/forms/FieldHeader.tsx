@@ -29,7 +29,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
   // STYLES
   const labelStyle = cx(
     'relative mb-1 text-button-1 font-semibold text-universal-black',
-    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-red-brick after:text-p3': required}
+    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-[#D83728] after:text-button-1': required}
   )
 
   return (
