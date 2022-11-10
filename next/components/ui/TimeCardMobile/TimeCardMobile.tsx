@@ -19,7 +19,7 @@ export const TimeCardMobile = ({
 }: TimeCardMobileProps) => {
   return (
     <div
-      className={cx('w-full text-center rounded-lg text-font font-medium relative bg-input-nav-bg mb-3', className, {
+      className={cx('w-full text-center rounded-lg text-font font-medium relative bg-white mb-3', className, {
         'cursor-pointer': !!onClick,
       })}
       onClick={onClick}
@@ -32,7 +32,7 @@ export const TimeCardMobile = ({
         {/* Circle Icon */}
         <div
           className={cx(
-            'absolute sm:hidden w-6 h-6 left-7 top-3 rounded-full transform -translate-x-1/2 border-2 border-primary bg-input-nav-bg'
+            'absolute sm:hidden w-6 h-6 left-7 top-3 rounded-full transform -translate-x-1/2 border-2 border-primary bg-white'
           )}
         />
         {isActive && (

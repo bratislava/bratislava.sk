@@ -36,7 +36,7 @@ export const AccordionCard = ({
     displayName && jobTitle ? (
       <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
         <div className="text-h4 pb-2">{displayName}</div>
-        <div className="text-gray-dark pb-6 text-xs lg:text-sm">{jobTitle}</div>
+        <div className="text-xs lg:text-sm pb-6 text-gray-700/75">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">

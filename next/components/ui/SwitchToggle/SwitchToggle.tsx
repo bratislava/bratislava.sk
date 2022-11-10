@@ -33,7 +33,7 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
           className={cx('w-10 h-5 flex items-center  rounded-full mx-3 px-0.5', {
             'justify-end': value,
             'border border-primary bg-white': variant === 'transparent',
-            'bg-gray-dark': variant === 'gray' || variant === 'primary' && !value,
+            'bg-gray-700/75': variant === 'gray' || variant === 'primary' && !value,
             'bg-secondary': variant === 'secondary' && value,
             'bg-primary': variant === 'primary' && value,
           })}

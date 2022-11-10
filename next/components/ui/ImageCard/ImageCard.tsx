@@ -42,7 +42,7 @@ export const ImageCard = ({
       )}
       <div
         className={cx(
-          'absolute rounded-lg font-medium bg-secondary text-red-universal-800 top-16',
+          'absolute rounded-lg font-medium bg-secondary top-16',
           'lg:top-41 w-74 h-60 lg:w-90 lg:h-72',
           {
             'left-5 lg:left-48': imagePosition === 'left',

@@ -50,8 +50,4 @@
   .text-button-1 {
     @apply text-p-md;
   }
-
-  .text-lbl-2 {
-    @apply text-p-base;
-  }
 }

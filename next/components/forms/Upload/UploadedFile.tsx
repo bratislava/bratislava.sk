@@ -20,7 +20,7 @@ const UploadedFile = ({fileName, errorMessage, isUploading, onRemove}: UploadedF
   const classNames = cx(
     "cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear text-default",
     {
-      "text-form-negative-default": errorMessage,
+      "text-error": errorMessage,
       "hover:bg-gray-100 hover:text-gray-500": !errorMessage && !isUploading
     }
   )

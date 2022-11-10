@@ -61,8 +61,8 @@ export const Bookmark = ({
   return (
     <div
       className={cx(className, 'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out', {
-        'bg-blue-sea text-font': variantWithFallback === 'blue',
-        'bg-red-brick text-white': variantWithFallback === 'red',
+        'bg-[#7CCEF2] text-font': variantWithFallback === 'blue',
+        'bg-main-600 text-white': variantWithFallback === 'red',
         'w-175': isOpen,
         'w-17.5 ml-157.5': !isOpen,
       })}
@@ -73,8 +73,8 @@ export const Bookmark = ({
     >
       <button
         className={cx('w-17.5 font-semibold text-default', {
-          'bg-blue-sea-dark': variantWithFallback === 'blue',
-          'bg-red-brick-dark': variantWithFallback === 'red',
+          'bg-[#66BDE3]': variantWithFallback === 'blue',
+          'bg-main-700': variantWithFallback === 'red',
         })}
         onClick={() => setIsOpen((prev) => !prev)}
       >

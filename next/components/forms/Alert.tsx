@@ -49,23 +49,23 @@ const Alert = (
   }
 
   const alertContainer = cx('flex w-480 rounded-8 px-5', className, {
-    'text-form-alert-textColor-default flex-col py-4': variant === 'message',
-    'bg-form-alert-error-default-bg': type === 'error' && !solid,
-    'bg-form-alert-success-default-bg': type === 'success' && !solid,
-    'bg-form-alert-info-default-bg': type === 'info' && !solid,
-    'bg-form-alert-warning-default-bg': type === 'warning' && !solid,
+    'text-gray-800 flex-col py-4': variant === 'message',
+    'bg-negative-50': type === 'error' && !solid,
+    'bg-success-50': type === 'success' && !solid,
+    'bg-gray-100': type === 'info' && !solid,
+    'bg-warning-50': type === 'warning' && !solid,
 
-    'text-form-alert-error-default': type === 'error' && !solid && variant !== 'message',
-    'text-form-alert-success-default': type === 'success' && !solid && variant !== 'message',
-    'text-form-alert-info-default': type === 'info' && !solid && variant !== 'message',
-    'text-form-alert-warning-default': type === 'warning' && !solid && variant !== 'message',
+    'text-negative-700': type === 'error' && !solid && variant !== 'message',
+    'text-success-700': type === 'success' && !solid && variant !== 'message',
+    'text-gray-700': type === 'info' && !solid && variant !== 'message',
+    'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
     'py-4 gap-3 items-center': variant === 'basic',
-    'text-gray-universal-0': solid,
-    'bg-form-alert-error-default': type === 'error' && solid,
-    'bg-form-alert-success-default': type === 'success' && solid,
-    'bg-form-alert-info-default': type === 'info' && solid,
-    'bg-form-alert-warning-default': type === 'warning' && solid,
+    'text-white': solid,
+    'bg-negative-700': type === 'error' && solid,
+    'bg-success-700': type === 'success' && solid,
+    'bg-gray-700': type === 'info' && solid,
+    'bg-warning-700': type === 'warning' && solid,
   })
 
   const contentStyle = cx('w-404', {
@@ -75,10 +75,10 @@ const Alert = (
   })
 
   const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
-    'text-form-alert-error-default': type === 'error' && !solid,
-    'text-form-alert-success-default': type === 'success' && !solid,
-    'text-form-alert-info-default': type === 'info' && !solid,
-    'text-form-alert-warning-default': type === 'warning' && !solid,
+    'text-negative-700': type === 'error' && !solid,
+    'text-success-700': type === 'success' && !solid,
+    'text-gray-700': type === 'info' && !solid,
+    'text-warning-700': type === 'warning' && !solid,
   })
 
   return variant === 'basic' ? (

@@ -19,7 +19,7 @@ export const CheckBox = ({ className, id, content, variant = 'default', ...rest 
           'rounded-5 w-8 h-8': variant === 'default',
           'rounded-full w-6 h-6': variant === 'circle',
           'bg-primary': rest.checked,
-          'bg-input-nav-bg': !rest.checked,
+          'bg-white': !rest.checked,
         },
         className
       )}

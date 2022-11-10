@@ -26,11 +26,11 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
   const toggleContainer = cx('group flex flex-row items-center p-0 gap-4 select-none', {
     'opacity-50 cursor-not-allowed': isDisabled,
   })
-  const labelStyle = cx('select-none not-italic font-normal text-button-1 leading-8 text-gray-universal-700 ml-16', {})
+  const labelStyle = cx('select-none not-italic font-normal text-button-1 leading-8 text-gray-700 ml-16', {})
 
   const togglerContainer = cx('absolute w-12 h-6 rounded-full items-center justify-center', {
     'bg-success-700': isSelected,
-    'bg-gray-universal-400': !isSelected,
+    'bg-gray-400': !isSelected,
   })
 
   const toggleBall = cx('absolute w-5 h-5 rounded-full bg-white top-[2px]', {

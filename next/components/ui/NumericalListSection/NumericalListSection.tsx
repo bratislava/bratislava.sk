@@ -46,7 +46,7 @@ export const NumericalListSection = ({
         className={cx(
           'flex justify-center flex-col items-center py-12',
           { 'bg-secondary': hasBackground },
-          { 'bg-background': !hasBackground }
+          { 'bg-gray-50': !hasBackground }
         )}
       >
         <div className="flex max-w-3xl flex-col">
