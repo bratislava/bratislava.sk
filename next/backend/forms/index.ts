@@ -6,21 +6,25 @@ import dopravneZnacenieHtmlStylesheet from './00603481.dopravneZnacenie.sk/form.
 import dopravneZnacenieTextStylesheet from './00603481.dopravneZnacenie.sk/form.sb.sef.json'
 import dopravneZnacenieSchema from './00603481.dopravneZnacenie.sk/schema.json'
 import dopravneZnacenieUiSchema from './00603481.dopravneZnacenie.sk/uiSchema.json'
+import dopravneZnacenieXmlTemplate from './00603481.dopravneZnacenie.sk/xmlTemplate'
 import testSchema from './test/schema.json'
 import testUiSchema from './test/uiSchema.json'
+import testXmlTemplate from './test/xmlTemplate'
 
 const eforms = {
   dopravneZnacenie: {
     schema: dopravneZnacenieSchema,
     uiSchema: dopravneZnacenieUiSchema,
+    xmlTemplate: dopravneZnacenieXmlTemplate,
     textStylesheet: dopravneZnacenieTextStylesheet,
     htmlStylesheet: dopravneZnacenieHtmlStylesheet,
   },
   test: {
     schema: testSchema,
     uiSchema: testUiSchema,
-    textStylesheet: undefined,
-    htmlStylesheet: undefined,
+    xmlTemplate: testXmlTemplate,
+    textStylesheet: null,
+    htmlStylesheet: null,
   },
 }
 
