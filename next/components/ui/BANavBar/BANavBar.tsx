@@ -15,11 +15,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import Hamburger from '@assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
-import CloseIcon from '@assets/images/close.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { covidUrls, eServicesData, minKeywordLength } from '@utils/constants'
+import { contactUrls, eServicesData, minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useRouter } from 'next/router'
@@ -27,7 +26,6 @@ import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
 
 import { Brand } from '../Brand/Brand'
-import Button from '../Button/Button'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { MenuMainItem } from '../HomepageMenu/HomepageMenu'
 import { Link } from '../Link/Link'
@@ -71,12 +69,12 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         id="desktop-navbar"
         className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}
       >
-        <div className="m-auto hidden w-full max-w-screen-1.5lg justify-between border-b border-gray-universal-200 py-4 lg:flex">
+        <div className="max-w-screen-1.5lg border-gray-universal-200 m-auto hidden h-[57px] w-full items-center justify-between border-b lg:flex">
           <Brand
             className="group flex-1"
             url="/"
             title={
-              <p className="text-sm text-font group-hover:text-red-universal-300">
+              <p className="text-font group-hover:text-red-universal-300 text-sm">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -84,82 +82,31 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             }
           />
 
-          <nav
-            className={cx(
-              'flex items-end text-gray-dark font-semibold',
-              { 'gap-x-8': !searchOpen },
-              { 'gap-x-4': searchOpen }
-            )}
-          >
-            <div className="hover:cursor-pointer" onClick={() => setSearchOpen(!searchOpen)}>
-              {searchOpen ? <CloseIcon className="-ml-px mr-px" /> : <SearchIcon />}
-            </div>
-            {searchOpen ? (
-              <div className="flex">
-                <input
-                  id="name"
-                  type="text"
-                  className="h-6 w-96 rounded-l-lg border-2 border-r-0 pl-6 text-sm text-font outline-none"
-                  value={input}
-                  onChange={handleChange}
-                  onKeyDown={handleKeyDown}
-                />
-                <Link href={input.length > minKeywordLength ? `${t('searchLink')}?keyword=${input}` : '#'}>
-                  <Button
-                    icon={<SearchIcon className="scale-75" />}
-                    hoverIcon={<SearchIcon className="scale-75" />}
-                    className={cx(
-                      'h-6 rounded-l-none text-sm px-6 shadow-none font-medium',
-                      { 'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength },
-                      { 'cursor-default': input.length <= minKeywordLength }
-                    )}
-                    variant="secondary-dark-text"
-                  >
-                    {t('search')}
-                  </Button>
-                </Link>
-              </div>
-            ) : (
-              <div className="flex gap-x-8 font-semibold text-gray-dark">
-                <Link href={covidUrls[languageKey]} variant="plain" className="whitespace-nowrap">
-                  {t('covid')}
-                </Link>
+          <nav className="text-gray-dark flex gap-x-8 font-semibold">
+            <div className="text-gray-dark flex items-center gap-x-8 font-semibold">
+              <Link href={t('searchLink')} variant="plain" className="p-4">
+                <SearchIcon />
+              </Link>
 
-                {
-                  /* This UILink set here just to prefetch EN version of page, this link is hidden */
-                  <UILink href="/en" className="hidden">
-                    hidden
-                  </UILink>
-                }
-                <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap">
-                  {t('eservices')}
-                </Link>
-                <div className="relative flex cursor-pointer items-center bg-transparent text-gray-dark">
-                  <LanguageSelect
-                    className="cursor-pointer appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
-                    {...languageSelectProps}
-                  />
-                </div>
-                {/*
-                <Link href="#" variant="plain">
-                  {t('login')}
-                </Link>
-                <Link
-                  href="#"
-                  variant="plain"
-                  // need to set bgcolor to bg-red-light or bg-light-red perhaps
-                  className="text-font px-6 h-12 inline-flex font-medium rounded shadow-md bg-[#F8D7D4]"
-                >
-                  {t('register')}
-                </Link>
-                 <Button
-                  className="text-base px-6 py-4 shadow-none font-medium"
-                  variant="secondary-dark-text"
-                >
-                  {t('register')}
-                </Button> */}
+              <Link href={contactUrls[languageKey]} variant="plain" className="whitespace-nowrap py-4">
+                {t('contacts')}
+              </Link>
+
+              {/* This UILink set here just to prefetch EN version of page, this link is hidden */}
+              <UILink href="/en" className="hidden">
+                hidden
+              </UILink>
+
+              <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap py-4">
+                {t('eservices')}
+              </Link>
+              <div className="text-gray-dark relative flex items-center bg-transparent">
+                <LanguageSelect
+                  className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
+                  {...languageSelectProps}
+                />
               </div>
-            )}
+            </div>
           </nav>
         </div>
       </div>
@@ -168,16 +115,16 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center justify-between py-5 px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between px-7.5 -mx-7.5 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
         <Brand url="/" />
         <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
-          <div className="hover:cursor-pointer" onClick={handleMobileSearchClick}>
-            {searchOpen ? <CloseIcon className="-ml-3 mr-px" /> : <SearchIcon className="text-gray-universal-500" />}
-          </div>
-          <div className="text-h4 relative flex cursor-pointer items-center bg-transparent text-gray-light">
+          <div className="text-h4 text-gray-light relative flex cursor-pointer items-center bg-transparent">
+            <Link href={t('searchLink')} variant="plain" className="p-4">
+              <SearchIcon />
+            </Link>
             <LanguageSelect
               className="text-p3 cursor-pointer appearance-none bg-transparent font-semibold focus:outline-none active:outline-none"
               {...languageSelectProps}
@@ -185,8 +132,10 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
           </div>
         </div>
 
-        <button onClick={() => setBurgerOpen(!burgerOpen)} className="w-6 cursor-pointer">
-          {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
+        <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 px-4 py-5">
+          <div className="flex w-6 items-center justify-center">
+            {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
+          </div>
         </button>
 
         {burgerOpen && !searchOpen && (
@@ -380,7 +329,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex w-[50px] items-center" ref={ref} onClick={handleClick}>
+    <div className="relative flex w-[50px] cursor-pointer items-center" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden mix-blend-normal lg:flex ${
@@ -388,7 +337,7 @@ const LanguageSelect = ({
         }`}
       />
       {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-[46px] flex-col items-center justify-center lg:left-0">
+        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-[46px] cursor-default flex-col items-center justify-center lg:left-0">
           <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-[#F8D7D4]" />
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
