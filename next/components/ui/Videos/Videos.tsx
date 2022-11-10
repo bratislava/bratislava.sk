@@ -10,7 +10,7 @@ export interface VideosProps extends ComponentSectionsVideos {
   className?: string
   title?: string
   subtitle?: string
-  videos: VideoAttribute[] | null | undefined
+  videos?: VideoAttribute[] | null
 }
 
 const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
