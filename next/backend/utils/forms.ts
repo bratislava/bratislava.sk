@@ -7,6 +7,7 @@ import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 
 import { forceString } from '../../utils/utils'
+import forms, { EFormKey, EFormValue } from '../forms'
 
 export type Json = string | number | boolean | null | { [property: string]: Json } | Json[]
 
@@ -120,4 +121,12 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   const validate = ajv.compile(schema)
   validate(data)
   return validate.errors
+}
+
+export const getEform = (id: string | string[] | undefined) : EFormValue => {
+  const formSlug: EFormKey = forceString(id) as any
+  const eform: EFormValue = forms[formSlug]
+  
+  if (!eform) throw new Error(`Invalid form name - validateFormName returned: ${formSlug}`)
+  return eform;
 }
