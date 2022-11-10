@@ -1,6 +1,6 @@
 import LightBulb from '@assets/images/bulb.svg'
-import Covid from '@assets/images/covid.svg'
 import EServices from '@assets/images/EServices.svg'
+import Phone from '@assets/images/phone-nav.svg'
 import Tourist from '@assets/images/Tourist-icon.svg'
 
 export const dateFormat = 'DD.MM.YYYY'
@@ -19,14 +19,15 @@ interface HamburgerSubLoginItem {
   url: string
 }
 
-export const covidUrls = {
-  sk: '/informacie-a-odporucania-k-ochoreniu-covid-19',
-  en: '/covid-19',
+export const contactUrls = {
+  sk: '/uradne-a-navstevne-hodiny',
+  en: '/visiting-and-office-hours',
 }
 
-export const covidData = {
-  icon: <Covid />,
-  title: 'covid',
+export const contactsData = {
+  // TODO replace by contact icon
+  icon: <Phone />,
+  title: 'contacts',
 }
 
 export const eServicesData = {
@@ -38,8 +39,8 @@ export const eServicesData = {
 export const MOCK_HAMBURGER_MENU_ITEMS: { sk: HamburgerSubLoginItem[]; en: HamburgerSubLoginItem[] } = {
   sk: [
     {
-      ...covidData,
-      url: covidUrls.sk,
+      ...contactsData,
+      url: contactUrls.sk,
     },
     {
       ...eServicesData,
@@ -67,8 +68,8 @@ export const MOCK_HAMBURGER_MENU_ITEMS: { sk: HamburgerSubLoginItem[]; en: Hambu
   ],
   en: [
     {
-      ...covidData,
-      url: covidUrls.en,
+      ...contactsData,
+      url: contactUrls.en,
     },
     {
       ...eServicesData,

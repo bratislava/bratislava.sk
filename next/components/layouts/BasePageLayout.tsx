@@ -1,4 +1,4 @@
-import { AdvancedSearch, BAStickyMenu, FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import { BAStickyMenu, FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { useState } from 'react'
 
@@ -39,10 +39,6 @@ const BasePageLayout = ({
         <div>{children}</div>
 
         {footer && <Footer {...footer} />}
-      </div>
-
-      <div className={cx('block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden', { hidden: !searchOpen })}>
-        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" /* options={[]} */ />
       </div>
     </div>
   )
