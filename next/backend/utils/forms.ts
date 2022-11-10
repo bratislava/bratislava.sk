@@ -8,11 +8,12 @@ import { cwd } from 'node:process'
 
 import { forceString } from '../../utils/utils'
 import forms, { EFormKey, EFormValue } from '../forms'
+import { firstCharToUpper } from './strings'
 
 export type Json = string | number | boolean | null | { [property: string]: Json } | Json[]
 
 export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheerio.CheerioAPI, node: Json) => {
-  const nodeName = last(currentPath)
+  const nodeName = firstCharToUpper(last(currentPath))
   const parentPath = dropRight(currentPath).join(' ')
   // we always edit the last element added - important for arrays in xml, where multiple nodes match the same path
   const parentNode = cheerioInstance(parentPath).last()
@@ -28,7 +29,7 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
     // objects add one level of nesting to xml
     parentNode.append(`<${nodeName}></${nodeName}>`)
     Object.keys(node).forEach((key) => {
-      buildXmlRecursive([...currentPath, key], cheerioInstance, node[key])
+      buildXmlRecursive([...currentPath, firstCharToUpper(key)], cheerioInstance, node[key])
     })
   } else if (['string', 'number', 'boolean'].includes(typeof node)) {
     // only 'basic' types add actual information and not just nesting
@@ -123,10 +124,10 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   return validate.errors
 }
 
-export const getEform = (id: string | string[] | undefined) : EFormValue => {
+export const getEform = (id: string | string[] | undefined): EFormValue => {
   const formSlug: EFormKey = forceString(id) as any
   const eform: EFormValue = forms[formSlug]
-  
+
   if (!eform) throw new Error(`Invalid form name - validateFormName returned: ${formSlug}`)
-  return eform;
+  return eform
 }
