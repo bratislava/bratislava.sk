@@ -93,6 +93,7 @@ module.exports = {
         error: 'var(--error-color)',
         font: 'var(--font-color)',
         gray: {
+          0: '#FFF',
           50: '#F5F5F5',
           100: '#EBEBEB',
           200: '#D6D6D6',
