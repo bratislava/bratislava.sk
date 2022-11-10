@@ -6,7 +6,7 @@ import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
   label: string
-  htmlFor: string
+  htmlFor?: string
   required?: boolean
   description?: string
   labelProps?: DOMAttributes<never>

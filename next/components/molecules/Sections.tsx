@@ -31,7 +31,7 @@ import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
-import { DocumentList } from './sections/documentList'
+import DocumentList from './sections/documentList/DocumentList'
 import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
