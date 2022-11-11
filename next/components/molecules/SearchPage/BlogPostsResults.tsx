@@ -1,5 +1,8 @@
-// @ts-strict-ignore
-import { blogPostsFetcher, BlogPostsFilters, getBlogPostsSwrKey } from '@backend/meili/fetchers/blogPostsFetcher'
+import {
+  blogPostsFetcher,
+  BlogPostsFilters,
+  getBlogPostsSwrKey,
+} from '@backend/meili/fetchers/blogPostsFetcher'
 import { BlogItem, BlogSearchCards, LoadingSpinner } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'
@@ -31,7 +34,10 @@ const DataWrapper = ({
 }) => {
   const { t, i18n } = useTranslation('common')
 
-  const { data, error } = useSwr(getBlogPostsSwrKey(filters, i18n.language), blogPostsFetcher(filters, i18n.language))
+  const { data, error } = useSwr(
+    getBlogPostsSwrKey(filters, i18n.language),
+    blogPostsFetcher(filters, i18n.language),
+  )
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
     data,

@@ -18,10 +18,9 @@ import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { contactUrls, eServicesData, minKeywordLength } from '@utils/constants'
+import { contactUrls, eServicesData } from '@utils/constants'
 import cx from 'classnames'
 import CookieConsent from 'components/organisms/CookieConsent'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
 
@@ -38,27 +37,11 @@ interface IProps extends LanguageSelectProps {
 }
 
 export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
-  const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
-  const handleMobileSearchClick = () => {
-    handleSearch && handleSearch(!searchOpen)
-    setSearchOpen(!searchOpen)
-  }
   const { t } = useTranslation(['common'])
-
-  const [input, setInput] = useState('')
-  const handleChange = (event) => {
-    setInput(event.target.value)
-  }
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' && input.length > minKeywordLength) {
-      router.push(`${t('searchLink')}?keyword=${input}`)
-    }
-  }
 
   const { Link: UILink } = useUIContext()
 
@@ -84,7 +67,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
 
           <nav className="text-gray-dark flex gap-x-8 font-semibold">
             <div className="text-gray-dark flex items-center gap-x-8 font-semibold">
-              <Link href={t('searchLink')} variant="plain" className="p-4">
+              <Link href={t('searchLink')} variant="plain" className="p-4 -mr-4">
                 <SearchIcon />
               </Link>
 
@@ -120,7 +103,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         )}
       >
         <Brand url="/" />
-        <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
+        <div className={cx('flex items-center gap-x-5')}>
           <div className="text-h4 text-gray-light relative flex cursor-pointer items-center bg-transparent">
             <Link href={t('searchLink')} variant="plain" className="p-4">
               <SearchIcon />
@@ -133,12 +116,10 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         </div>
 
         <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 px-4 py-5">
-          <div className="flex w-6 items-center justify-center">
-            {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
-          </div>
+          <div className="flex w-6 items-center justify-center">{burgerOpen ? <HamburgerClose /> : <Hamburger />}</div>
         </button>
 
-        {burgerOpen && !searchOpen && (
+        {burgerOpen && (
           <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} closeMenu={() => setBurgerOpen(false)} />
         )}
       </div>

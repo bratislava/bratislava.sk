@@ -11,7 +11,13 @@ export interface FileCardProps {
   downloadLink?: string
 }
 
-export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloadLink }: FileCardProps) => {
+export const FileCard = ({
+  className,
+  fileTitle,
+  uploadDate,
+  fileDetail,
+  downloadLink,
+}: FileCardProps) => {
   return (
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
       <Panel className={cx(className, 'flex flex-row md:flex-col px-5 justify-between')} hoverable>
