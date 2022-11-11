@@ -83,7 +83,7 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
         <div className="flex h-fit max-h-52 justify-between overflow-hidden px-4">
           <Selector array={hoursArray} type="hour" />
           <div className="flex items-center">
-            <span className="flex h-6 w-6 items-center justify-center text-default">:</span>
+            <span className="flex h-6 w-6 items-center justify-center text-button-1">:</span>
           </div>
           <Selector array={minutesArray} type="minute" />
         </div>

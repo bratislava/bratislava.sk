@@ -52,7 +52,7 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
       <Panel className={className}>
         <div className="flex w-full flex-col gap-y-5 px-5 py-6 lg:px-10 lg:py-8">
           <div className="text-button-1 -mb-3 font-semibold">{title}</div>
-          <div className="flex flex-col gap-x-6 text-xs text-gray-dark lg:flex-row">
+          <div className="flex flex-col gap-x-6 text-p3 text-gray-dark lg:flex-row">
             <div>{new Date(createdAt).toLocaleDateString()}</div>
 
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
@@ -70,7 +70,7 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
             </Button>
             {/* <Button
               variant="full-transparent"
-              className="px-6 py-4 text-sm font-medium shadow-none"
+              className="px-6 py-4 text-p2 font-medium shadow-none"
               icon={<Download />}
             >
               {downloadButtonText}

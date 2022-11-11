@@ -69,12 +69,12 @@ const Alert = (
   })
 
   const contentStyle = cx('w-404', {
-    'text-sm font-normal leading-6': variant === 'basic',
-    'text-default leading-7 ml-1 font-semibold': variant === 'message',
+    'text-p2 font-normal leading-6': variant === 'basic',
+    'text-button-1 leading-7 ml-1 font-semibold': variant === 'message',
     'w-368': close,
   })
 
-  const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
+  const extraButtonStyle = cx('underline font-medium text-p2 leading-6 not-italic', {
     'text-form-alert-error-default': type === 'error' && !solid,
     'text-form-alert-success-default': type === 'success' && !solid,
     'text-form-alert-info-default': type === 'info' && !solid,
@@ -93,7 +93,7 @@ const Alert = (
         <span>{icons[type]}</span>
         <div className={contentStyle}>{message}</div>
       </div>
-      <div className='ml-10 mt-2 w-404 text-base font-normal not-italic leading-6'>{content}</div>
+      <div className='ml-10 mt-2 w-404 text-p2 font-normal not-italic leading-6'>{content}</div>
       {rest.buttons ?
         <div className='ml-10 mt-5 flex w-32 gap-5'>
           <button type='button' className={extraButtonStyle} onClick={rest.buttons[0].handler}>{rest.buttons[0].title}</button>

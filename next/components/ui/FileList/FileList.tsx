@@ -107,7 +107,7 @@ export const FileList = ({
               </div>
               {length > NUM_PREVIEW_ITEMS && (
                 <Button
-                  className="self-center px-6 py-2.5 text-default"
+                  className="self-center px-6 py-2.5 text-button-1"
                   variant="secondary-dark-text"
                   onClick={handleClick}
                 >

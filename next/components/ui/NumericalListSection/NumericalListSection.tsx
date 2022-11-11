@@ -69,7 +69,7 @@ export const NumericalListSection = ({
         {variant != 'roadmap' && buttonText && (
           <UILink href={href} className="pt-10">
             <Button
-              className="z-10 h-12 border-primary bg-primary px-6 text-base lg:h-14 lg:text-default"
+              className="z-10 h-12 border-primary bg-primary px-6 text-p1 lg:h-14"
               variant="secondary-dark-text"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}

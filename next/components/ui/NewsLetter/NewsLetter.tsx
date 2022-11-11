@@ -44,7 +44,7 @@ export const NewsLetter = ({
         {/* Content */}
         <div className="mt-30 mb-8 p-6 lg:my-0 lg:p-12">
           <h2 className="text-h4">Newsletter</h2>
-          <div className="mt-5 text-base">{newsLetterContent}</div>
+          <div className="mt-5 text-p2">{newsLetterContent}</div>
           <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
             <input
               type="email"
@@ -59,7 +59,7 @@ export const NewsLetter = ({
               className="border-gray-light border-opacity-50"
               variant="circle"
               content={
-                <p className={cx('text-base -mt-1', { 'text-font': isChecked }, { 'text-gray-light': !isChecked })}>
+                <p className={cx('text-p2 -mt-1', { 'text-font': isChecked }, { 'text-gray-light': !isChecked })}>
                   {checkBoxContent}
                 </p>
               }

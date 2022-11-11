@@ -29,7 +29,7 @@ export const StepperStep = ({ title, number, onClick, active, checked, className
     {title && (
       <p
         className={cx(
-          'absolute top-full left-1/2 transform -translate-x-1/2 pt-3 text-center text-sm text-primary whitespace-pre',
+          'absolute top-full left-1/2 transform -translate-x-1/2 pt-3 text-center text-p2 text-primary whitespace-pre',
           { 'cursor-pointer': !!onClick }
         )}
       >

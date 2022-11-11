@@ -18,7 +18,7 @@ interface PaginationProps {
 export const ThreeDots = () => {
   return (
     <div className="ml-2 w-7 sm:ml-3 sm:w-8">
-      <span className="text-default font-semibold text-offWhite">&hellip;</span>
+      <span className="text-button-1 font-semibold text-offWhite">&hellip;</span>
     </div>
   )
 }
@@ -114,7 +114,7 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
           )}
           onClick={() => handleSelectPage(1)}
         >
-          <div className="m-auto block text-sm font-semibold leading-5 sm:text-default">{1}</div>
+          <div className="m-auto block text-p2 font-semibold leading-5 sm:text-p1">{1}</div>
         </Button>
         {items[0].page - 1 >= 2 ? <ThreeDots /> : null}
         {items.map((item, index) =>

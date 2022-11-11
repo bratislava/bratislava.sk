@@ -43,11 +43,11 @@ export const SubHeader = ({
       {description && <span className="mt-3 mb-5 w-76 md:mb-10 md:w-full md:max-w-md">{description}</span>}
       {href && buttonTitle && (
         <Link href={href}>
-          <Button className="h-12 p-2 text-default">{buttonTitle}</Button>
+          <Button className="h-12 p-2 text-button-1">{buttonTitle}</Button>
         </Link>
       )}
       {subHref && subButtonTitle && (
-        <Link href={subHref} className="h-12 p-2 text-default" variant="plain">
+        <Link href={subHref} className="h-12 p-2 text-button-1" variant="plain">
           <div
             className="flex items-center gap-x-6 font-semibold"
             onMouseEnter={() => setSignInHover(true)}

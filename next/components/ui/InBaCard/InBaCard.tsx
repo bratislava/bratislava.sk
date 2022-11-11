@@ -61,10 +61,10 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
           'md:items-start md:text-left md:pr-96 md:pl-12 md:py-8'
         )}
       >
-        <h1 className="text-md font-semibold">{title}</h1>
-        <span className="text-sm">{content}</span>
+        <h1 className="text-h4 font-semibold">{title}</h1>
+        <span className="text-p2">{content}</span>
         <UILink className="group flex h-6 cursor-pointer items-center space-x-5 underline" href={link}>
-          <span className="text-sm font-semibold">{t('readMore')}</span>
+          <span className="text-p2 font-semibold">{t('readMore')}</span>
           <span className="group-hover:hidden">
             <ChevronRight />
           </span>

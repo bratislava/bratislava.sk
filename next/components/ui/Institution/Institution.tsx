@@ -20,7 +20,7 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
     <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
       <div className="flex flex-col">
         <h4 className="text-button-1 font-semibold leading-[26px]">{title}</h4>
-        {subtitle && <UIMarkdown className="fontSize-base mt-6 text-base" content={subtitle} />}
+        {subtitle && <UIMarkdown className="fontSize-base mt-6 text-p2" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
             {[...Array.from({ length: 3 })].map((_, ix) => (

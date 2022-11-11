@@ -36,25 +36,25 @@ export const AccordionCard = ({
     displayName && jobTitle ? (
       <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
         <div className="text-h4 pb-2">{displayName}</div>
-        <div className="text-gray-dark pb-6 text-xs lg:text-sm">{jobTitle}</div>
+        <div className="text-gray-dark pb-6 text-p3 lg:text-p2">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">
               {!heading && <Phone className="hidden xl:flex" />}
               {businessPhones?.length > 0
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="text-red-brick flex items-center text-sm font-semibold">
+                    <div key={phone} className="text-red-brick flex items-center text-p2 font-semibold">
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-red-brick flex items-center text-sm font-semibold">{mobilePhone}</div>
+                    <div className="text-red-brick flex items-center text-p2 font-semibold">{mobilePhone}</div>
                   )}
             </div>
             <div className="flex flex-col">
               <div className="flex gap-x-4">
                 {!heading && <Mail className="hidden xl:flex" />}
-                <div className="text-red-brick text-xs font-semibold underline underline-offset-2 lg:text-sm">
+                <div className="text-red-brick text-p3 font-semibold underline underline-offset-2 lg:text-p2">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
                   <div className="hidden lg:flex">
                     {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
@@ -62,7 +62,7 @@ export const AccordionCard = ({
                 </div>
               </div>
               {mailUserName?.length > mailBreakpoint && (
-                <div className="text-red-brick hidden text-xs font-semibold underline underline-offset-2 lg:flex lg:text-sm xl:pl-12">
+                <div className="text-red-brick hidden text-p3 font-semibold underline underline-offset-2 lg:flex lg:text-p2 xl:pl-12">
                   {mailOrganization}
                 </div>
               )}

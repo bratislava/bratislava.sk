@@ -58,7 +58,7 @@ const HomepageMenu = ({ items }: IProps) => {
           <div data-hover-id={index} key={index} className="group">
             <button
               type="button"
-              className="relative z-10 flex cursor-pointer items-center gap-x-7 text-left text-default md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
+              className="relative z-10 flex cursor-pointer items-center gap-x-7 text-left text-button-1 md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
               onClick={() => {
                 setActiveId(item.id)
               }}

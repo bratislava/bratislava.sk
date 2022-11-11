@@ -10,7 +10,7 @@ type ICheckBoxProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInpu
 }
 
 export const CheckBox = ({ className, id, content, variant = 'default', ...rest }: ICheckBoxProps) => (
-  <label htmlFor={id} className={cx('cursor-pointer inline-flex gap-6 font-medium text-sm', className)}>
+  <label htmlFor={id} className={cx('cursor-pointer inline-flex gap-6 font-medium text-p2', className)}>
     <input type="checkbox" id={id} className="hidden" {...rest} />
     <div
       className={cx(

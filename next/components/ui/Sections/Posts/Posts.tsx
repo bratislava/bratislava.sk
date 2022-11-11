@@ -132,7 +132,7 @@ export const Posts = ({
             <UILink href={t('allNewsLink')}>
               <Button
                 variant="transparent"
-                className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+                className="mt-0 px-6 py-2 text-button-1 font-medium shadow-none"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -157,7 +157,7 @@ export const Posts = ({
           </div>
           <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-default font-medium shadow-none hover:text-primary"
+              className="px-6 py-3 text-button-1 font-medium shadow-none hover:text-primary"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -219,7 +219,7 @@ export const Posts = ({
             {/* TODO: change this button to custom button */}
             <Button
               variant="transparent"
-              className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+              className="mt-0 px-6 py-2 text-button-1 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
@@ -252,7 +252,7 @@ export const Posts = ({
           <UILink href={t('allNewsLink')}>
             <Button
               variant="transparent"
-              className="mt-9 px-6 py-2 text-default font-medium shadow-none"
+              className="mt-9 px-6 py-2 text-button-1 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >

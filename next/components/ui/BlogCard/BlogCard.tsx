@@ -29,7 +29,7 @@ export const BlogCard = ({ className, image, mobileImage, content, href }: BlogC
         <div className="hidden xl:inline-flex">{image && <img src={image} alt="blog" width="225" height="200" />}</div>
 
         <div className="mx-6 flex h-48 w-52 items-center justify-center text-center xl:w-65 xl:px-12 xl:text-left">
-          <span className="text-default font-medium">{content}</span>
+          <span className="text-p1 font-medium">{content}</span>
         </div>
       </Card>
     </div>

@@ -80,7 +80,7 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
-          className="text-base h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
+          className="text-p2 h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -90,7 +90,7 @@ export const AdvancedSearch = ({
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className={cx(
-            'h-14 rounded-l-none text-default px-6 shadow-none font-medium hover:bg-primary hover:text-white hover:color-white'
+            'h-14 rounded-l-none text-button-1 px-6 shadow-none font-medium hover:bg-primary hover:text-white hover:color-white'
           )}
           variant="secondary-dark-text"
           onClick={handleSearch}
@@ -104,14 +104,14 @@ export const AdvancedSearch = ({
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
-          className="text-sm h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
+          className="text-p2 h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="hover:color-white text-default h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-primary hover:text-white"
+          className="hover:color-white text-button-1 h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-primary hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

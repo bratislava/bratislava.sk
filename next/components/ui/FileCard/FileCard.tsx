@@ -19,11 +19,11 @@ export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloa
           <Download className="text-red-brick" />
         </div>
 
-        <div className="my-5 text-sm font-normal md:mt-0 md:mb-5">
+        <div className="my-5 text-p2 font-normal md:mt-0 md:mb-5">
           {fileTitle}
           <div
             className={cx(
-              'flex flex-col mt-4 text-xs opacity-50 space-y-1',
+              'flex flex-col mt-4 text-p3 opacity-50 space-y-1',
               'md:flex-row md:justify-between md:space-y-0'
             )}
           >

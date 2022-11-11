@@ -49,7 +49,7 @@ export const WeddingForm = () => {
     <div className="z-10 mx-auto w-10/12">
       <h1 className="text-center text-h1">{t('nonbindingWedding')}</h1>
 
-      <p className="text-center text-default font-medium">
+      <p className="text-center text-p1 font-medium">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
       </p>
 
@@ -66,7 +66,7 @@ export const WeddingForm = () => {
                 id="firstname"
                 name="firstname"
                 type="text"
-                className="text-default"
+                className="text-button-1"
                 // hasError={!!errors?.name}
                 value={reservationFormValues?.name}
                 onChange={(e) => handleChange({ name: e.target.value })}
@@ -82,7 +82,7 @@ export const WeddingForm = () => {
                 id="lastname"
                 name="lastname"
                 type="text"
-                className="text-default"
+                className="text-button-1"
                 // hasError={!!errors?.name}
                 value={reservationFormValues?.name}
                 onChange={(e) => handleChange({ name: e.target.value })}
@@ -98,7 +98,7 @@ export const WeddingForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                className="text-default"
+                className="text-button-1"
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.email}
                 onChange={(e) => handleChange({ email: e.target.value })}
@@ -115,7 +115,7 @@ export const WeddingForm = () => {
                 id="phone"
                 name="phone"
                 type="phone"
-                className="text-default"
+                className="text-button-1"
                 placeholder="+421 111 222 333"
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.phone}
@@ -141,7 +141,7 @@ export const WeddingForm = () => {
                   name="date"
                   type="date"
                   min={LocalDate.now().toJSON()}
-                  className="h-12.5 w-full text-default text-font focus:outline-none"
+                  className="h-12.5 w-full text-button-1 text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.date}
                   onChange={(e) => handleChange({ date: e.target.value })}
@@ -158,7 +158,7 @@ export const WeddingForm = () => {
               <TextArea
                 id="notes"
                 name="notes"
-                className="pt-5 pb-3.5 text-default"
+                className="pt-5 pb-3.5 text-button-1"
                 rows={11}
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.notes}
@@ -181,7 +181,7 @@ export const WeddingForm = () => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 h-12 w-3/12 text-default font-medium lg:mt-10">
+          <Button className="mt-8 h-12 w-3/12 text-button-1 font-medium lg:mt-10">
             {t('nonbindingWeddingConfirm')}
           </Button>
         </div>

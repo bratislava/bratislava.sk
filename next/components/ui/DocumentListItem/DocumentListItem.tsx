@@ -32,11 +32,11 @@ export const DocumentListItem = ({
           <Icon />
         </div>
         <div className="flex flex-[4] flex-col justify-start px-4 py-3 lg:px-8 lg:py-10 lg:pl-0">
-          <div className="text-xs lg:text-sm">{categoryName}</div>
-          <div className="text-truncate-2 text-sm font-semibold lg:text-default">
+          <div className="text-p3 lg:text-p2">{categoryName}</div>
+          <div className="text-truncate-2 text-p2 font-semibold lg:text-p1">
             {truncate(title, { length: 150 })}
           </div>
-          <div className="pt-4 text-xs lg:text-sm">
+          <div className="pt-4 text-p1 lg:text-p2">
             {' '}
             {t('documentCount')} {count}
           </div>
@@ -45,7 +45,7 @@ export const DocumentListItem = ({
       <div className="flex shrink-0 items-center justify-between bg-zinc-50 py-4 pl-5 md:grow-0 md:basis-[300px] md:justify-evenly md:py-11 md:px-2">
         <div>
           <Button
-            className="text-sm font-semibold text-font underline lg:text-default"
+            className="text-p2 font-semibold text-font underline lg:text-p1"
             shape="none"
             variant="muted"
             icon={<ChevronRight />}

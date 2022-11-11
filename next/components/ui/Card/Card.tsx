@@ -41,7 +41,7 @@ export const Card = ({
         variant="secondary-dark-text"
         onClick={onButtonClick}
       >
-        <div className="text-default font-normal"> {buttonContent}</div>
+        <div className="text-button-1 font-normal"> {buttonContent}</div>
       </Button>
     )}
   </div>

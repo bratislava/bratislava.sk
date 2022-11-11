@@ -42,7 +42,7 @@ export const BasicSearchOld = ({
           <input
             id="name"
             type="text"
-            className="text-base h-12 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:h-14"
+            className="text-p2 h-12 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:h-14"
             placeholder={placeholder}
             onChange={(e) => setInput(e.target.value)}
             value={input}
@@ -61,7 +61,7 @@ export const BasicSearchOld = ({
           <input
             id="name"
             type="text"
-            className="text-sm h-12 w-full rounded-lg border-2 pl-6 font-medium text-font outline-none lg:h-14"
+            className="text-p2 h-12 w-full rounded-lg border-2 pl-6 font-medium text-font outline-none lg:h-14"
             placeholder={placeholder}
             onChange={(e) => setInput(e.target.value)}
             value={input}
@@ -69,7 +69,7 @@ export const BasicSearchOld = ({
           <Button
             icon={<SearchIconSmallBlack />}
             hoverIcon={<SearchIconSmallWhite />}
-            className="hover:color-white text-base h-11 px-12 font-medium capitalize shadow-none hover:bg-primary hover:text-white lg:h-14"
+            className="hover:color-white text-p2 h-11 px-12 font-medium capitalize shadow-none hover:bg-primary hover:text-white lg:h-14"
             variant="secondary-dark-text"
             onClick={() => onSubmit(input)}
           >

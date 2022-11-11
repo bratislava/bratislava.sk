@@ -59,7 +59,7 @@ export const Contact = ({
             <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
               {description && (
                 <UIMarkdown
-                  className="text-sm leading-[24px] md:text-default md:leading-[30px]"
+                  className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]"
                   content={description}
                 />
               )}
@@ -104,13 +104,13 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
   const { Markdown: UIMarkdown } = useUIContext()
 
   if (variant === 'address') {
-    return <UIMarkdown className="text-sm leading-[24px] md:text-default md:leading-[30px]" content={value} />
+    return <UIMarkdown className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]" content={value} />
   }
 
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="relative flex h-full flex-col items-center justify-start pb-20 text-default leading-[30px]">
+    <div className="relative flex h-full flex-col items-center justify-start pb-20 text-button-1 leading-[30px]">
       <Icon className="h-24 w-24" />
       {value.split(',').map((item, key) => {
         return (
