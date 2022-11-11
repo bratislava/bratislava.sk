@@ -22,12 +22,7 @@ module.exports = {
     /** Doesn't work without changing our ts config */
     'unicorn/prefer-spread': 'off',
     /** Use official sorting */
-    'tailwindcss/classnames-order': [
-      'warn',
-      {
-        officialSorting: true,
-      },
-    ],
+    'tailwindcss/classnames-order': ['warn', { officialSorting: true }],
     /** To remove optinal parameter warning e.g. { page?: number } */
     'react/require-default-props': 'off',
     /** To Remove  */

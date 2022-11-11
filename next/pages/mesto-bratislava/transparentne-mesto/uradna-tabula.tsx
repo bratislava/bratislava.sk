@@ -1,6 +1,6 @@
 // @ts-strict-ignore
 import {
-  BasicSearch,
+  BasicSearchOld,
   DocumentCards,
   // Footer,
   // FooterProps,
@@ -195,7 +195,7 @@ AsyncServerProps<typeof getServerSideProps>) => {
           </SectionContainer>
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          <BasicSearch
+          <BasicSearchOld
             className="pb-14 lg:pb-24"
             placeholder={t('enterKeyword')}
             title={t('searching')}

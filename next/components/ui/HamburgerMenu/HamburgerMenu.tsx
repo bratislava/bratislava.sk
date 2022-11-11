@@ -34,7 +34,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
     >
       <div className={cx('flex-1 flex flex-col bg-secondary px-8 pb-11', className)}>
         {/* Main Hamburger Menu */}
-        <div className="flex flex-col gap-y-8 border-b-2 border-tertiary py-8">
+        <div className="border-tertiary flex flex-col gap-y-8 border-b-2 py-8">
           {hamburgerMenuItems.map((item) => {
             return (
               <button

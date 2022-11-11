@@ -2,19 +2,17 @@ import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScroll
 import { PageCard, PageCardProps } from '../PageCard/PageCard'
 
 export interface PageCardsProps {
-  title: string
   pages: PageCardProps[]
 }
 
-export const PageCards = ({ title, pages }: PageCardsProps) => (
+export const PageCards = ({ pages }: PageCardsProps) => (
   <div className="flex flex-col gap-y-3 lg:gap-y-6">
-    <span className="text-h4">{title}</span>
     <div className="hidden flex-col gap-y-6 lg:flex">
       {pages.map((page, index) => (
         <PageCard {...page} key={index} />
       ))}
     </div>
-    <HorizontalScrollWrapper className="flex gap-x-4 lg:hidden">
+    <HorizontalScrollWrapper className="flex gap-x-4 pt-4 pb-6 lg:hidden">
       {pages.map((page, index) => (
         <PageCard {...page} key={index} />
       ))}
