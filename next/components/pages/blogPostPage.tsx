@@ -76,7 +76,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
                 {tag?.title}
               </span>
             )}
-            <h1 className="text-h1 max-w-224 whitespace-pre-wrap pt-4">{blogPost?.title}</h1>
+            <h1 className="text-h1 max-w-[900px] whitespace-pre-wrap pt-4">{blogPost?.title}</h1>
             {blogPost && (
               <div className="pt-2 pb-14">
                 {getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)}

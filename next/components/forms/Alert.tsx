@@ -38,7 +38,7 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       warning: <WarningIcon solid={solid} />,
     }
 
-    const alertContainer = cx('flex w-120 rounded-lg px-5', className, {
+    const alertContainer = cx('flex w-[480px] rounded-lg px-5', className, {
       'text-form-alert-textColor-default flex-col py-4': variant === 'message',
       'bg-form-alert-error-default-bg': type === 'error' && !solid,
       'bg-form-alert-success-default-bg': type === 'success' && !solid,

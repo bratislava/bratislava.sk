@@ -64,7 +64,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       </div>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setOpen(false)}>
         <div
-          className="modal-content-rent max-w-164 max-h-104 overflow-y-auto rounded-2xl py-7 px-6 md:max-h-152 md:py-10 md:px-12"
+          className="modal-content-rent max-w-[660px] max-h-104 overflow-y-auto rounded-2xl py-7 px-6 md:max-h-[610px] md:py-10 md:px-12"
           style={{
             // maxHeight: '600px',
             backgroundColor: 'var(--secondary-color)',

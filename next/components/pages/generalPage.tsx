@@ -94,7 +94,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
             </div>
-            <h1 className="text-h1 max-w-184 mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
+            <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
             </h1>
 
