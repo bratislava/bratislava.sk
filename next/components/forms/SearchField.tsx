@@ -67,7 +67,7 @@ const SearchField = (
   }
 
   const style = cx(
-    'w-full pl-12.5 px-4 py-2.5 border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed',
+    'w-full pl-12.5 px-4 py-2.5 border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed focus:placeholder:text-transparent',
     className,
     {
       // conditions
@@ -95,7 +95,7 @@ const SearchField = (
         tooltip={tooltip}
       />
       <div className='relative'>
-        <i className='absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4'><DarkSearchIcon /></i>
+        <i className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {'opacity-50' : disabled})}><DarkSearchIcon /></i>
         <input {...inputProps} ref={ref} className={style} />
         {resetIcon && valueState && (
           <i
