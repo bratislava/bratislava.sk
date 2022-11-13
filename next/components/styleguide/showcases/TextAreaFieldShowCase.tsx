@@ -6,7 +6,7 @@ import { Wrapper } from '../Wrapper'
 
 const TextAreaFieldShowCase = () => {
   return (
-    <Wrapper direction="row" title="Text Area Field">
+    <Wrapper direction="column" title="Text Area Field">
       <Stack>
         <TextAreaField label="Label" placeholder="Placeholder" />
         <TextAreaField label="Label" placeholder="Placeholder" defaultValue="Default message" />
