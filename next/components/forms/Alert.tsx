@@ -48,7 +48,7 @@ const Alert = (
     warning: <WarningIcon solid={solid} />,
   }
 
-  const alertContainer = cx('flex w-480 rounded-8 px-5', className, {
+  const alertContainer = cx('flex w-full sm:w-[480px] rounded-8 px-5', className, {
     'text-form-alert-textColor-default flex-col py-4': variant === 'message',
     'bg-form-alert-error-default-bg': type === 'error' && !solid,
     'bg-form-alert-success-default-bg': type === 'success' && !solid,
@@ -68,7 +68,7 @@ const Alert = (
     'bg-form-alert-warning-default': type === 'warning' && solid,
   })
 
-  const contentStyle = cx('w-404', {
+  const contentStyle = cx('w-full', {
     'text-sm font-normal leading-6': variant === 'basic',
     'text-default leading-7 ml-1 font-semibold': variant === 'message',
     'w-368': close,
@@ -85,20 +85,27 @@ const Alert = (
     <div className={alertContainer}>
       <span>{icons[type]}</span>
       <div className={contentStyle}>{message}</div>
-      {close && <CloseIcon className='ml-1' onClick={close} solid={solid} type={type} />}
+      {close ?
+        <div className='w-6 h-6 flex items-center justify-center'>
+          <CloseIcon className='' onClick={close} solid={solid} type={type} />
+        </div> : null
+      }
     </div>
   ) : (
     <div className={alertContainer}>
-      <div className='flex flex-row items-center gap-3'>
-        <span>{icons[type]}</span>
-        <div className={contentStyle}>{message}</div>
+      <div className='flex flex-row gap-3'>
+        <span className='mt-1'>{icons[type]}</span>
+        <div className=''>
+          <div className={contentStyle}>{message}</div>
+          <div className='text-base ml-1 mt-2 md:w-404 font-normal not-italic leading-6'>{content}</div>
+          {rest.buttons ?
+            <div className='ml-1 mt-5 flex w-32 gap-5'>
+              <button type='button' className={extraButtonStyle} onClick={rest.buttons[0].handler}>{rest.buttons[0].title}</button>
+              <button type='button' className={extraButtonStyle} onClick={rest.buttons[1].handler}>{rest.buttons[1].title}</button>
+            </div> : null}
+        </div>
       </div>
-      <div className='ml-10 mt-2 w-404 text-base font-normal not-italic leading-6'>{content}</div>
-      {rest.buttons ?
-        <div className='ml-10 mt-5 flex w-32 gap-5'>
-          <button type='button' className={extraButtonStyle} onClick={rest.buttons[0].handler}>{rest.buttons[0].title}</button>
-          <button type='button' className={extraButtonStyle} onClick={rest.buttons[1].handler}>{rest.buttons[1].title}</button>
-        </div> : null}
+
     </div>
   )
 }
