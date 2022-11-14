@@ -24,6 +24,7 @@ interface SelectFieldProps {
   errorMessage?: string
   required?: boolean
   disabled?: boolean
+  className?: string
   onChange: (values: EnumOptionsType[]) => void;
 }
 
@@ -43,6 +44,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     errorMessage,
     required,
     disabled,
+    className,
     onChange
   } = props
 
@@ -172,7 +174,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // RENDER
   return (
-    <section className="relative max-w-[200px] xs:max-w-[320px] flex flex-col transition-all">
+    <section className={cx("relative max-w-[200px] xs:max-w-[320px] flex flex-col transition-all", className)}>
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 

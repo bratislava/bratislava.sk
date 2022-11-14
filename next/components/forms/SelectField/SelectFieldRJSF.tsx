@@ -30,7 +30,8 @@ const SelectFieldRJSF = (props: SelectFieldRJSFProps) => {
     selectAllOption,
     description,
     tooltip,
-    dropdownDivider
+    dropdownDivider,
+    className
   } = options
 
   const handleOnChange = (valueEnumOptions: EnumOptionsType[]) => {
@@ -44,7 +45,7 @@ const SelectFieldRJSF = (props: SelectFieldRJSFProps) => {
   return <SelectField type={type} label={label} enumOptions={enumOptions} value={value?.enumOptions}
                       selectAllOption={selectAllOption} placeholder={placeholder} description={description}
                       tooltip={tooltip} dropdownDivider={dropdownDivider} errorMessage={errorMessage}
-                      required={required} disabled={disabled} onChange={handleOnChange} />
+                      required={required} disabled={disabled} className={className} onChange={handleOnChange} />
 }
 
 export default SelectFieldRJSF

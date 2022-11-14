@@ -14,6 +14,7 @@ type SelectRJSFOptions = {
   selectAllOption?: boolean
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
   description?: string
+  className?: string
 }
 
 export default SelectRJSFOptions
