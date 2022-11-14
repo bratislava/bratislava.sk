@@ -20,6 +20,7 @@ import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 import UploadShowCase from '../components/styleguide/showcases/UploadShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
+import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   /**
@@ -45,6 +46,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <UploadShowCase/>
         <DropdownShowCase />
         <SelectFieldShowCase />
+        <ProgressBarShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )
