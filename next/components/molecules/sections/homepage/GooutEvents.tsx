@@ -50,7 +50,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
               title={ev.title}
               description={
                 <UILink
-                  className="text-p1 flex flex-col p-6 font-semibold text-primary"
+                  className="text-p1-semibold flex flex-col p-6 text-primary"
                   href={ev.url}
                   target="_blank"
                   rel="noreferrer"

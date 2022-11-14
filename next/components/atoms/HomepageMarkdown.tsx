@@ -49,7 +49,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h3: ({ children }) => (
           <h3
             id={getHeadingTag(children)}
-            className="text-h4 font-medium mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4-medium mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h3>

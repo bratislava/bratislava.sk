@@ -49,8 +49,8 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
            ref={ref}
            data-value={value}>
         <div className="flex flex-row">
-          <UploadIcon className="mr-2 h-6 w-6 self-center text-button-1"/>
-          <p className="text-button-1">Upload</p>
+          <UploadIcon className="text-20 mr-2 h-6 w-6 self-center"/>
+          <p className="text-20">Upload</p>
         </div>
       </div>
       <div className={buttonInfoClassNames}>

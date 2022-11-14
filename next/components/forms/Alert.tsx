@@ -59,11 +59,11 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
     })
 
     const contentStyle = cx('w-full', {
-      'text-p2 font-normal leading-6': variant === 'basic',
-      'text-button-1 leading-7 font-semibold': variant === 'message',
+      'text-16 leading-6': variant === 'basic',
+      'text-20-semibold leading-7': variant === 'message',
     })
 
-    const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
+    const extraButtonStyle = cx('underline text-16-medium leading-6 not-italic', {
       'text-form-alert-error-default': type === 'error' && !solid,
       'text-form-alert-success-default': type === 'success' && !solid,
       'text-form-alert-info-default': type === 'info' && !solid,
@@ -86,7 +86,7 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
           <span>{icons[type]}</span>
           <div className={contentStyle}>{message}</div>
         </div>
-        <div className="text-base mt-2 pl-9 font-normal not-italic leading-6">{content}</div>
+        <div className="text-16 mt-2 pl-9 not-italic leading-6">{content}</div>
         {rest.buttons ? (
           <div className="mt-5 flex gap-5 pl-9">
             <button type="button" className={extraButtonStyle} onClick={rest.buttons[0].handler}>

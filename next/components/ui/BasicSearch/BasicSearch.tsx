@@ -38,7 +38,7 @@ export const BasicSearch = ({
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-h4 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</div>
+      <div className="text-h4-medium scroll-mt-24 pb-3 lg:scroll-mt-48">{title}</div>
       <div className="pb-6 flex">
         <input
           id="name"

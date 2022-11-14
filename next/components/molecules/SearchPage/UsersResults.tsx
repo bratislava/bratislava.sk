@@ -46,7 +46,7 @@ const DataWrapper = ({ filters }: { filters: UsersFilters }) => {
 
   return (
     <LoadingOverlay loading={delayedLoading}>
-      <h2 className="text-p1 pb-6 font-semibold">{t('organisationalStructure')}</h2>
+      <h2 className="text-h5 pb-6">{t('organisationalStructure')}</h2>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
       <Users data={dataToDisplay!} filters={filters} />
     </LoadingOverlay>

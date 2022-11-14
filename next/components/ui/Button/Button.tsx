@@ -59,7 +59,7 @@ export const Button = ({
         'bg-secondary text-font': shape !== 'none' && variant === 'secondary-dark-text',
         'bg-transparent text-lightGray border-lightGray': shape !== 'none' && variant === 'transparent-gray',
         'bg-tertiary text-font': shape !== 'none' && variant === 'tertiary-dark-text',
-        'bg-transparent text-button-1 text-font hover:text-primary border-primary border-2':
+        'bg-transparent text-20 text-font hover:text-primary border-primary border-2':
           shape !== 'none' && variant === 'transparent',
 
         // transparent should be replaced with transparent-black

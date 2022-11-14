@@ -117,7 +117,7 @@ export const Posts = ({
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
+                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-primary"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -132,7 +132,7 @@ export const Posts = ({
             <UILink href={t('allNewsLink')}>
               <Button
                 variant="transparent"
-                className="mt-0 px-6 py-2 text-button-1 font-medium shadow-none"
+                className="text-20-medium mt-0 px-6 py-2 shadow-none"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -157,7 +157,7 @@ export const Posts = ({
           </div>
           <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-button-1 font-medium shadow-none hover:text-primary"
+              className="text-20-medium px-6 py-3 shadow-none hover:text-primary"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -204,7 +204,7 @@ export const Posts = ({
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
+                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-primary"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -219,7 +219,7 @@ export const Posts = ({
             {/* TODO: change this button to custom button */}
             <Button
               variant="transparent"
-              className="mt-0 px-6 py-2 text-button-1 font-medium shadow-none"
+              className="text-20-medium mt-0 px-6 py-2 shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
@@ -229,7 +229,7 @@ export const Posts = ({
         </div>
       )}
       {activeTab > 2 && (
-        <div className="text-h4 mt-14 items-end px-8 text-center font-normal">
+        <div className="text-h4-normal mt-14 items-end px-8 text-center">
           {t('allInformationOnSite')}
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">
@@ -252,7 +252,7 @@ export const Posts = ({
           <UILink href={t('allNewsLink')}>
             <Button
               variant="transparent"
-              className="mt-9 px-6 py-2 text-button-1 font-medium shadow-none"
+              className="text-20-medium mt-9 px-6 py-2 shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >

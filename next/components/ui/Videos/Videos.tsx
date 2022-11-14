@@ -54,7 +54,7 @@ const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
         onLoad={() => setLoaded(true)}
       />
       <a href={url} target="_blank" rel="noreferrer">
-        <h5 className="md:text-h5 mt-8 cursor-pointer font-semibold hover:underline">{title}</h5>
+        <h5 className="md:text-h5 mt-8 cursor-pointer hover:underline">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
     </div>
@@ -85,7 +85,7 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
           <Video key={video.url} {...video} />
         ))}
         {shouldShowButtonContent(videos, buttonContent) && (
-          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-button-1 py-2">
+          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-20 py-2">
             {buttonContent}
           </Button>
         )}

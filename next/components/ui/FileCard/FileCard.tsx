@@ -25,7 +25,7 @@ export const FileCard = ({
           <Download className="text-red-brick" />
         </div>
 
-        <div className="my-5 text-p2 font-normal md:mt-0 md:mb-5">
+        <div className="my-5 text-p2 md:mt-0 md:mb-5">
           {fileTitle}
           <div
             className={cx(

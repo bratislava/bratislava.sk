@@ -109,7 +109,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               <SearchIcon />
             </Link>
             <LanguageSelect
-              className="text-p3 cursor-pointer appearance-none bg-transparent font-semibold focus:outline-none active:outline-none"
+              className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
               {...languageSelectProps}
             />
           </div>
@@ -137,13 +137,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             </div>
             <div className="max-h-[90vh] overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
-                <h5 className="cursor-pointer text-p1 font-semibold">
+                <h5 className="cursor-pointer text-p1-semibold">
                   {' '}
                   {t('cookie_consent_modal_title')}{' '}
                 </h5>
               </div>
               <div className="mb-10">
-                <h6 className="mb-4 text-p4 font-semibold md:text-p1">
+                <h6 className="mb-4 text-p4-semibold md:text-p1-semibold">
                   {' '}
                   {t('cookie_consent_modal_content_title')}{' '}
                 </h6>
@@ -212,7 +212,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               </div>
               <div className="block items-center justify-between md:flex">
                 <Button
-                  className="mx-auto mb-3 h-12 bg-primary px-6 text-p2 font-medium md:my-0 md:mr-6 md:ml-0"
+                  className="mx-auto mb-3 h-12 bg-primary px-6 text-p2-medium md:my-0 md:mr-6 md:ml-0"
                   onClick={saveSettings}
                 >
                   {' '}
@@ -220,14 +220,14 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className="box-none mx-auto mt-0 h-12 px-6 text-p2 font-medium md:mr-6 md:ml-0"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-p2-medium md:mr-6 md:ml-0"
                     variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
                     {t('acceptAll')}
                   </Button>
                   <Button
-                    className="box-none mx-auto mt-0 h-12 px-6 text-p2 font-medium md:mx-0"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-p2-medium md:mx-0"
                     variant="secondary"
                     onClick={declineCookies}
                   >
@@ -323,7 +323,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3 mt-3 h-6 w-6 text-[#333333] hover:font-semibold"
+                className="text-p3 hover:text-p3-semibold mt-3 h-6 w-6 text-[#333333]"
                 key={option.key}
                 onClick={handleChange}
               >

@@ -62,14 +62,14 @@ export const CookieConsent = ({ pageColor }: IProps) => {
             </p>
             <div className="block sm:flex">
               <Button
-                className="text-button-base mb-3 h-12 px-6 font-medium sm:my-0 sm:mr-6"
+                className="text-20-medium mb-3 h-12 px-6 sm:my-0 sm:mr-6"
                 variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                 onClick={() => setConsents({ statistics: true })}
               >
                 {t('cookie_consent_accept')}
               </Button>
               <Button
-                className="text-button-base mt-0 h-12 px-6 font-medium"
+                className="text-20-medium mt-0 h-12 px-6"
                 variant="secondary-dark-text"
                 onClick={() => setConsents({ statistics: false })}
               >

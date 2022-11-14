@@ -33,7 +33,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
       })}
     />
     <p
-      className={cx('font-medium text-p2 mt-5 transition group-hover:font-bold text-center whitespace-pre', {
+      className={cx('text-p2-medium mt-5 transition group-hover:font-bold text-center whitespace-pre', {
         'font-bold': isActive,
       })}
     >
