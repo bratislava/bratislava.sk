@@ -138,7 +138,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   const handleOnSelectFieldClick = (event: React.MouseEvent) => {
     const targetClassList = (event.target as Element).classList
-    if (!isDropdownOpened && !targetClassList.contains("tag")) {
+    if (!isDropdownOpened && !targetClassList.contains("tag") && !disabled) {
       setIsDropdownOpened(true)
       filterRef.current?.focus()
     }
@@ -194,7 +194,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
           </div>
         </div>
 
-        { disabled && <div className={`${hashCode} absolute inset-0 rounded-lg`}/> }
+        { disabled && <div className={`absolute inset-0 rounded-lg z-20`}/> }
       </div>
 
       {/* DROPDOWN */}
