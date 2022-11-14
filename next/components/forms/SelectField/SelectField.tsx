@@ -60,7 +60,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STYLES
   const selectClassName = cx (
-    "flex flex-row w-80 min-h-min bg-white rounded-lg border-2 border-form-input-default",
+    "flex flex-row bg-white rounded-lg border-2 border-form-input-default",
     {
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed': !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
@@ -172,7 +172,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // RENDER
   return (
-    <section className="relative flex w-max flex-col transition-all">
+    <section className="relative max-w-[200px] xs:max-w-[320px] flex flex-col transition-all">
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 

@@ -24,7 +24,7 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
     "dropdown flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
     {
       "h-14": option.label === "" || option.label === option.value,
-      "h-[84px]": option.label !== "" && option.label !== option.value
+      "h-full xs:h-[84px]": option.label !== "" && option.label !== option.value
     },
     selectHashCode
   )
@@ -64,7 +64,9 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
     <div className={rowClassName} onClick={handleOnClick}>
       <div className={`${selectHashCode} dropdown flex h-full flex-col justify-center`}>
         <div className={`${selectHashCode} dropdown flex flex-row justify-center`}>
-          <p className={optionClassName}>{option.value}</p>
+          <p className={optionClassName}>
+            {option.value}
+          </p>
           <div className={`${selectHashCode} dropdown flex flex-col justify-center`}>
               { getRowIcon() }
           </div>

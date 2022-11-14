@@ -26,7 +26,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       ? 13
       : filter.length <= 1
         ? 1
-        : filter.length >= 9
+        : filter.length >=9
           ? 13
           : filter.length
   }
@@ -53,7 +53,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
             )
           : null
       }
-      <input ref={filterRef} className={`${hashCode} border-0 text-p-md outline-none`} type="text" size={getInputSize()}
+      <input ref={filterRef} className={`${hashCode} max-w-[130px] xs:max-w-none border-0 text-p-md outline-none`} type="text" size={getInputSize()}
              value={filter} placeholder={getPlaceholder()} onKeyDown={handleOnKeyDown}
              onChange={event => onFilterChange(event.target.value)}/>
     </section>
