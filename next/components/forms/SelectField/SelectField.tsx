@@ -88,7 +88,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   const handleOnChooseMulti = (option: EnumOptionsType) => {
     const newValue = value ? [...value] : []
-    if (value) newValue.push(option)
+    newValue.push(option)
     handleOnChangeSelect(newValue)
     setFilter("")
   }
