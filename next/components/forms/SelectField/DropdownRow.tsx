@@ -8,31 +8,33 @@ import { EnumOptionsType } from '@rjsf/utils'
 
 interface DropdownRowProps {
   option: EnumOptionsType
-  selectAllRow?: boolean
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
+  selectHashCode?: string
   onChooseOne: (option: EnumOptionsType, close?: boolean) => void
   onUnChooseOne: (option: EnumOptionsType, close?: boolean) => void
   onChooseMulti: (option: EnumOptionsType) => void
   onUnChooseMulti: (option: EnumOptionsType) => void
 }
 
-const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
+const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
     "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
     {
       "h-14": option.label === "" || option.label === option.value,
       "h-[84px]": option.label !== "" && option.label !== option.value
-    }
+    },
+    selectHashCode
   )
 
   const optionClassName = cx(
     "text-p-md w-full",
     {
       "font-semibold": option.label !== "" && option.label !== option.value
-    }
+    },
+    selectHashCode
   )
 
   // EVENT HANDLERS
@@ -61,16 +63,16 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
-      <div className="flex h-full flex-col justify-center">
-        <div className="flex flex-row justify-center">
+      <div className={`${selectHashCode} flex h-full flex-col justify-center`}>
+        <div className={`${selectHashCode} flex flex-row justify-center`}>
           <p className={optionClassName}>{option.value}</p>
-          <div className="flex flex-col justify-center">
+          <div className={`${selectHashCode} flex flex-col justify-center`}>
               { getRowIcon() }
           </div>
         </div>
-        { option.label !== option.value && <p className="text-p-sm">{option.label}</p> }
+        { option.label !== option.value && <p className={`${selectHashCode} text-p-sm`}>{option.label}</p> }
       </div>
-      { divider && <div className="border-b-2 border-form-input-default"/> }
+      { divider && <div className={`${selectHashCode} border-b-2 border-form-input-default`}/> }
     </div>
   )
 }

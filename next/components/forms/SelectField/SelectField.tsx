@@ -1,13 +1,14 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
+import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, RefObject, useEffect, useState } from 'react'
+import { v4 as createUuid } from 'uuid'
 
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
-import { EnumOptionsType } from '@rjsf/utils'
 
 
 interface SelectFieldProps {
@@ -49,9 +50,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
-  const dropdownRef = React.createRef<HTMLDivElement>()
-  const filterRef = React.createRef<HTMLInputElement>()
-
+  const [hashCode] = useState<string>(`select-${createUuid()}`)
+  const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
+  const [dropdownRef] = useState<RefObject<HTMLDivElement>>(React.createRef<HTMLDivElement>())
+  console.log("HASH CODE:", hashCode)
   // STYLES
   const selectClassName = cx (
     "flex flex-row w-80 min-h-min bg-white rounded-lg border-2 border-form-input-default",
@@ -59,8 +61,21 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed': !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
       'opacity-50 border-form-input-disabled': disabled,
-    }
+    },
+    hashCode
   )
+
+  useEffect(() => {
+    window.addEventListener("onclick", (event: Event) => {
+      const targetClassList = (event.target as Element)?.classList
+      console.log(hashCode)
+      if (!targetClassList.contains(hashCode)) {
+        setIsDropdownOpened(false)
+      } else {
+        filterRef.current?.click()
+      }
+    })
+  }, [filterRef, hashCode])
 
   // EVENT HANDLERS
   const handleOnChangeSelect = (selectedOptions: EnumOptionsType[]) => {
@@ -125,6 +140,16 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     }
   }
 
+  const handleOnSelectFieldBlur = () => {
+    // console.log("BLUR")
+    // setTimeout(() => {
+    //   if (isDropdownOpened) {
+    //     setIsDropdownOpened(false)
+    //     filterRef.current?.blur()
+    //   }
+    // }, 50)
+  }
+
   const handleOnInputFocusChange = (isFocused: boolean) => {
     setTimeout(() => {
       setIsDropdownOpened(isFocused)
@@ -164,25 +189,27 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick}>
+      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick} onBlur={handleOnSelectFieldBlur}>
 
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox ref={ref} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}
+        <SelectFieldBox ref={ref} hashCode={hashCode} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}
                         placeholder={placeholder} onRemove={handleOnRemove} onFilterChange={setFilter}
-                        onFilterFocusChange={handleOnInputFocusChange} onDeleteLastValue={handleOnDeleteLastValue}/>
+                        onDeleteLastValue={handleOnDeleteLastValue}/>
 
         {/* DROPDOWN ARROW */}
-        <div className="min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1" onClick={handleOnDropdownArrowClick}>
-          <div className="flex h-full flex-col justify-center" >
-            { isDropdownOpened ? <ArrowUpIcon/> : <ArrowDownIcon/> }
+        <div className={`${hashCode} min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`} onClick={handleOnDropdownArrowClick}>
+          <div className={`${hashCode} flex h-full flex-col justify-center`} >
+            { isDropdownOpened
+              ? <ArrowUpIcon className={`${hashCode}`}/>
+              : <ArrowDownIcon className={`${hashCode}`}/> }
           </div>
         </div>
 
-        { disabled && <div className="absolute inset-0 rounded-lg"/> }
+        { disabled && <div className={`${hashCode} absolute inset-0 rounded-lg`}/> }
       </div>
 
       {/* DROPDOWN */}
-      <div className="relative" ref={dropdownRef}>
+      <div className={`${hashCode} relative`} ref={dropdownRef}>
         {
           isDropdownOpened &&
           <Dropdown enumOptions={getFilteredOptions()} value={getDropdownValues()} type={type}

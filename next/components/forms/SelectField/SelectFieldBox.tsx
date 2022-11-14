@@ -1,7 +1,7 @@
+import { EnumOptionsType } from '@rjsf/utils'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../Tag'
-import { EnumOptionsType } from '@rjsf/utils'
 
 interface SelectFieldBoxProps {
   value?: EnumOptionsType[]
@@ -9,16 +9,16 @@ interface SelectFieldBoxProps {
   placeholder?: string
   filter: string
   filterRef?: React.RefObject<HTMLInputElement>
+  hashCode: string
   onRemove: (optionId: number) => void
   onFilterChange: (value: string) => void
-  onFilterFocusChange: (isFocused: boolean) => void
   onDeleteLastValue: () => void
 }
 
 const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps>
   = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, multiple, placeholder, filter, filterRef, onRemove, onFilterChange, onFilterFocusChange, onDeleteLastValue } = props
+  const { value, multiple, placeholder, filter, filterRef, hashCode, onRemove, onFilterChange, onDeleteLastValue } = props
 
   // HELPER FUNCTIONS
   const getInputSize = () => {
@@ -50,16 +50,16 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
 
   // RENDER
   return (
-    <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4" data-value={value}>
+    <section ref={ref} className={`${hashCode} flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4`} data-value={value}>
       { /* TAGS */
         value && value.length > 0
           ? (multiple ? value : value.slice(0,1))
             .map((option, key) =>
-              <Tag key={key} text={option.value} size="large" onRemove={() => onRemove(key)} removable/>
+              <Tag key={key} selectHashCode={hashCode} text={option.value} size="large" onRemove={() => onRemove(key)} removable/>
             )
           : null
       }
-      <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
+      <input ref={filterRef} className={`${hashCode} border-0 text-p-md outline-none`} type="text" size={getInputSize()}
              value={filter} placeholder={getPlaceholder()} onKeyDown={handleOnKeyDown}
              onChange={event => onFilterChange(event.target.value)}/>
     </section>

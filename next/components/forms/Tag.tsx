@@ -7,6 +7,7 @@ interface TagProps {
   removable?: boolean
   size?: 'large' | 'small'
   branded?: boolean
+  selectHashCode?: string
   onRemove?: () => void
 }
 
@@ -16,12 +17,13 @@ const Tag: FC<TagProps> = (
     removable,
     size,
     branded,
+    selectHashCode,
     onRemove
   }
 ) => {
   // STATE
   const [isHovered, setIsHovered] = useState<boolean>(false)
-
+  console.log("TAG HASH CODE:", selectHashCode)
   // STYLES
   const classStyles = cx(
     "tag align-items-start min-w-14 inline-block min-h-6 px-2 gap-2.5 text-center",
@@ -38,7 +40,8 @@ const Tag: FC<TagProps> = (
       'bg-secondary': !removable && branded,
       'text-tertiary': !removable && branded,
       'underline': !removable && isHovered
-    }
+    },
+    selectHashCode
   )
 
   const iconClassStyles = cx(
@@ -46,7 +49,8 @@ const Tag: FC<TagProps> = (
     {
       'text-button-1 w-3 h-3': size === 'large',
       'text-p3 w-2.5 h-2.5': size === 'small' || !size,
-    }
+    },
+    selectHashCode
   )
 
   // RENDER
@@ -56,7 +60,7 @@ const Tag: FC<TagProps> = (
          onMouseOver={() => setIsHovered(true)}
          onFocus={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}>
-      <p className="tag cursor-default select-none inline-block">{text}</p>
+      <p className={`${selectHashCode} tag cursor-default select-none inline-block`}>{text}</p>
       { removable && <CloseIcon className={iconClassStyles} onClick={onRemove}/> }
     </div>
   )

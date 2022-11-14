@@ -11,7 +11,8 @@ interface DropdownProps {
   selectAllOption?: boolean
   absolute?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
-  divider?: boolean
+  divider?: boolean,
+  selectHashCode?: string,
   className?: string
   onChooseOne?: (option: EnumOptionsType, close?: boolean) => void
   onUnChooseOne?: (option: EnumOptionsType, close?: boolean) => void
@@ -28,6 +29,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     absolute,
     type,
     divider,
+    selectHashCode,
     className,
     onChooseOne,
     onUnChooseOne,
@@ -43,6 +45,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
       'absolute top-2 left-0 right-0': absolute,
     },
     className,
+    selectHashCode
   )
 
   // HELP FUNCTIONS
