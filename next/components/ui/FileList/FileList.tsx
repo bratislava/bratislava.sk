@@ -118,11 +118,11 @@ export const FileList = ({
             {!noScroll && (
               <div className="block lg:hidden">
                 <span className="text-h4 font-medium">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="-mx-7.5 gap-x-5 py-6 px-7.5">
+                <HorizontalScrollWrapper className="-mx-8 gap-x-5 py-6 px-8">
                   {fileSection?.files.map((file, sectionIndex) => (
                     <div key={sectionIndex}>
                       <DownloadCard
-                        className="min-w-[280px] max-w-[290px]"
+                        className="min-w-66 max-w-72"
                         title={file.title ?? ''}
                         downloadLink={file.media?.url ?? ''}
                         uploadDate={file.media?.created_at ?? ''}

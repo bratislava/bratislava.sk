@@ -182,7 +182,7 @@ AsyncServerProps<typeof getServerSideProps>) => {
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
-            <div className="relative min-h-[220px]">
+            <div className="min-h-56 relative">
               <div className="absolute top-6">
                 {/* <PageBreadcrumbs
                   parentPage={boardPage?.parentPage}
@@ -190,7 +190,7 @@ AsyncServerProps<typeof getServerSideProps>) => {
                   title={boardPage.title}
                 /> */}
               </div>
-              <h1 className="text-h1 whitespace-pre-wrap pt-30">{t('officialBoard')}</h1>
+              <h1 className="text-h1 whitespace-pre-wrap pt-32">{t('officialBoard')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>

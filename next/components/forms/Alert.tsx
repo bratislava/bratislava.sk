@@ -13,9 +13,9 @@ type AlertButtons = {
 
 type ArrayLengthMutationKeys = 'splice' | 'push' | 'pop' | 'shift' | 'unshift' | number
 type ArrayItems<T extends Array<AlertButtons>> = T extends Array<infer TItems> ? TItems : never
-type FixedLengthArray<T extends AlertButtons[]> =
-  Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>>
-  & { [Symbol.iterator]: () => IterableIterator<ArrayItems<T>> }
+type FixedLengthArray<T extends AlertButtons[]> = Pick<T, Exclude<keyof T, ArrayLengthMutationKeys>> & {
+  [Symbol.iterator]: () => IterableIterator<ArrayItems<T>>
+}
 
 type AlertBase = {
   type: 'error' | 'success' | 'info' | 'warning'
@@ -28,45 +28,35 @@ type AlertBase = {
   className?: string
 }
 
-const Alert = (
-  {
-    solid = false,
-    close,
-    type,
-    variant = 'basic',
-    content,
-    message,
-    className,
-    ...rest
-  }: AlertBase,
+const Alert = ({ solid = false, close, type, variant = 'basic', content, message, className, ...rest }: AlertBase) =>
   // eslint-disable-next-line sonarjs/cognitive-complexity
-) => {
-  const icons = {
-    error: <ErrorIcon solid={solid} />,
-    success: <SuccessIcon solid={solid} />,
-    info: <InfoIcon solid={solid} />,
-    warning: <WarningIcon solid={solid} />,
-  }
+  {
+    const icons = {
+      error: <ErrorIcon solid={solid} />,
+      success: <SuccessIcon solid={solid} />,
+      info: <InfoIcon solid={solid} />,
+      warning: <WarningIcon solid={solid} />,
+    }
 
-  const alertContainer = cx('flex w-full sm:w-[480px] rounded-8 px-5', className, {
+  const alertContainer = cx('flex w-full sm:w-[480px] rounded-lg px-5', className, {
     'text-form-alert-textColor-default flex-col py-4': variant === 'message',
     'bg-form-alert-error-default-bg': type === 'error' && !solid,
     'bg-form-alert-success-default-bg': type === 'success' && !solid,
     'bg-form-alert-info-default-bg': type === 'info' && !solid,
     'bg-form-alert-warning-default-bg': type === 'warning' && !solid,
 
-    'text-form-alert-error-default': type === 'error' && !solid && variant !== 'message',
-    'text-form-alert-success-default': type === 'success' && !solid && variant !== 'message',
-    'text-form-alert-info-default': type === 'info' && !solid && variant !== 'message',
-    'text-form-alert-warning-default': type === 'warning' && !solid && variant !== 'message',
+      'text-form-alert-error-default': type === 'error' && !solid && variant !== 'message',
+      'text-form-alert-success-default': type === 'success' && !solid && variant !== 'message',
+      'text-form-alert-info-default': type === 'info' && !solid && variant !== 'message',
+      'text-form-alert-warning-default': type === 'warning' && !solid && variant !== 'message',
 
-    'py-4 gap-3 items-center': variant === 'basic',
-    'text-gray-universal-0': solid,
-    'bg-form-alert-error-default': type === 'error' && solid,
-    'bg-form-alert-success-default': type === 'success' && solid,
-    'bg-form-alert-info-default': type === 'info' && solid,
-    'bg-form-alert-warning-default': type === 'warning' && solid,
-  })
+      'py-4 gap-4 items-center': variant === 'basic',
+      'text-gray-universal-0': solid,
+      'bg-form-alert-error-default': type === 'error' && solid,
+      'bg-form-alert-success-default': type === 'success' && solid,
+      'bg-form-alert-info-default': type === 'info' && solid,
+      'bg-form-alert-warning-default': type === 'warning' && solid,
+    })
 
   const contentStyle = cx('w-full', {
     'text-sm font-normal leading-6': variant === 'basic',
@@ -74,12 +64,12 @@ const Alert = (
     'w-368': close,
   })
 
-  const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
-    'text-form-alert-error-default': type === 'error' && !solid,
-    'text-form-alert-success-default': type === 'success' && !solid,
-    'text-form-alert-info-default': type === 'info' && !solid,
-    'text-form-alert-warning-default': type === 'warning' && !solid,
-  })
+    const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
+      'text-form-alert-error-default': type === 'error' && !solid,
+      'text-form-alert-success-default': type === 'success' && !solid,
+      'text-form-alert-info-default': type === 'info' && !solid,
+      'text-form-alert-warning-default': type === 'warning' && !solid,
+    })
 
   return variant === 'basic' ? (
     <div className={alertContainer}>

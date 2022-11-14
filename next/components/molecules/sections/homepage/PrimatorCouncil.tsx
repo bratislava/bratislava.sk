@@ -15,7 +15,7 @@ const PrimatorCouncil = ({ className, primatorCards = [Primator as any, Council 
     <div
       className={cx(
         className,
-        'flex flex-col px-8 md:px-41 max-w-screen-1.5xl gap-y-28 xl:flex-row my-44 xl:gap-8 w-full '
+        'flex flex-col px-8 md:px-40 max-w-screen-1.5xl gap-y-28 xl:flex-row my-44 xl:gap-8 w-full '
       )}
     >
       {primatorCards.map((primatorCard) => (
