@@ -21,7 +21,7 @@ interface DropdownRowProps {
 const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
-    "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
+    "dropdown flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
     {
       "h-14": option.label === "" || option.label === option.value,
       "h-[84px]": option.label !== "" && option.label !== option.value
@@ -30,7 +30,7 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
   )
 
   const optionClassName = cx(
-    "text-p-md w-full",
+    "dropdown text-p-md w-full",
     {
       "font-semibold": option.label !== "" && option.label !== option.value
     },
@@ -41,38 +41,37 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
   const handleOnClick = () => {
     if (selected && type === 'multiple') onUnChooseMulti(option)
     else if (!selected && type === 'multiple') onChooseMulti(option)
-    else if (selected && ['one', 'arrow'].includes(type)) onUnChooseOne(option, true)
+    else if (selected && ['one', 'arrow', 'radio'].includes(type)) onUnChooseOne(option, true)
     else if (!selected && ['one', 'arrow'].includes(type)) onChooseOne(option, true)
-    else if (selected && type === 'radio') onUnChooseOne(option, false)
     else if (!selected && type === 'radio') onChooseOne(option, false)
   }
 
   // HELPER FUNCTIONS
   const getRowIcon = () => {
     return type === 'multiple'
-      ? <CheckboxIcon checked={selected}/>
+      ? <CheckboxIcon checked={selected} className={`${selectHashCode} dropdown`}/>
       : type === 'one' && selected
-        ? <FilledSelectedIcon/>
+        ? <FilledSelectedIcon className={`${selectHashCode} dropdown`}/>
         : type === 'arrow'
-          ? <ChevronRightIcon/>
+          ? <ChevronRightIcon className={`${selectHashCode} dropdown`}/>
           : type === 'radio'
-            ? <RadioButtonIcon selected={selected}/>
+            ? <RadioButtonIcon selected={selected} className={`${selectHashCode} dropdown`}/>
             : null
   }
 
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
-      <div className={`${selectHashCode} flex h-full flex-col justify-center`}>
-        <div className={`${selectHashCode} flex flex-row justify-center`}>
+      <div className={`${selectHashCode} dropdown flex h-full flex-col justify-center`}>
+        <div className={`${selectHashCode} dropdown flex flex-row justify-center`}>
           <p className={optionClassName}>{option.value}</p>
-          <div className={`${selectHashCode} flex flex-col justify-center`}>
+          <div className={`${selectHashCode} dropdown flex flex-col justify-center`}>
               { getRowIcon() }
           </div>
         </div>
-        { option.label !== option.value && <p className={`${selectHashCode} text-p-sm`}>{option.label}</p> }
+        { option.label !== option.value && <p className={`${selectHashCode} dropdown text-p-sm`}>{option.label}</p> }
       </div>
-      { divider && <div className={`${selectHashCode} border-b-2 border-form-input-default`}/> }
+      { divider && <div className={`${selectHashCode} dropdown border-b-2 border-form-input-default`}/> }
     </div>
   )
 }

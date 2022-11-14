@@ -23,7 +23,7 @@ const Tag: FC<TagProps> = (
 ) => {
   // STATE
   const [isHovered, setIsHovered] = useState<boolean>(false)
-  console.log("TAG HASH CODE:", selectHashCode)
+
   // STYLES
   const classStyles = cx(
     "tag align-items-start min-w-14 inline-block min-h-6 px-2 gap-2.5 text-center",

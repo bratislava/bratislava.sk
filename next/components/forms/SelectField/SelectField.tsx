@@ -69,40 +69,48 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     hashCode
   )
 
+  // EVENT HANDLERS
   useEffect(() => {
-    window.addEventListener("onclick", (event: Event) => {
+    const handleOnWindowClick = (event: Event) => {
       const targetClassList = (event.target as Element)?.classList
-      console.log(hashCode)
       if (!targetClassList.contains(hashCode)) {
+        // close me (actual select from 'loop') if i am not clicked
         setIsDropdownOpened(false)
-      } else {
-        filterRef.current?.click()
+      } else if (targetClassList.contains(hashCode) && !targetClassList.contains("dropdownButton") && !targetClassList.contains("dropdown") && !targetClassList.contains("tag")) {
+        // open me (actual select from 'loop') if I was clicked but was not clicked my dropdownArrow and dropdown
+        // dropdownButton will handle itself events
+        // dropdown will handle itself events
+        setIsDropdownOpened(true)
       }
-    })
+    }
+    document.addEventListener("click", handleOnWindowClick)
+    return () => document.removeEventListener("click", handleOnWindowClick)
   }, [filterRef, hashCode])
 
-  // EVENT HANDLERS
-  const handleOnChangeSelect = (selectedOptions: EnumOptionsType[]) => {
-    if (onChange) {
-      onChange(selectedOptions)
+  const handleOnChangeSelect = (selectedOptions: EnumOptionsType[], close?: boolean) => {
+    if (!onChange) return
+    onChange(selectedOptions)
+    if (type === "multiple" || !close) {
+      setIsDropdownOpened(true)
     }
   }
 
   const handleOnRemove = (optionId: number) => {
     const newValue =  value ? [...value] : []
     newValue.splice(optionId, 1)
-    handleOnChangeSelect(newValue)
+    const close = type !== 'multiple'
+    handleOnChangeSelect(newValue, close)
   }
 
   const handleOnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([option])
+    handleOnChangeSelect([option], close)
     setFilter("")
   }
 
   const handleOnUnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([] )
+    handleOnChangeSelect([] , close)
   }
 
   const handleOnChooseMulti = (option: EnumOptionsType) => {
@@ -201,11 +209,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
                         onDeleteLastValue={handleOnDeleteLastValue}/>
 
         {/* DROPDOWN ARROW */}
-        <div className={`${hashCode} min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`} onClick={handleOnDropdownArrowClick}>
-          <div className={`${hashCode} flex h-full flex-col justify-center`} >
+        <div className={`${hashCode} dropdownButton min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`}
+             onClick={handleOnDropdownArrowClick}>
+          <div className={`${hashCode} dropdownButton flex h-full flex-col justify-center`} >
             { isDropdownOpened
-              ? <ArrowUpIcon className={`${hashCode}`}/>
-              : <ArrowDownIcon className={`${hashCode}`}/> }
+              ? <ArrowUpIcon className={`${hashCode} [&>path]:${hashCode} dropdownButton`}/>
+              : <ArrowDownIcon className={`${hashCode} [&>path]:${hashCode} dropdownButton`}/> }
           </div>
         </div>
 
@@ -213,10 +222,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       </div>
 
       {/* DROPDOWN */}
-      <div className={`${hashCode} relative`} ref={dropdownRef}>
+      <div className={`${hashCode} dropdown relative`} ref={dropdownRef}>
         {
           isDropdownOpened &&
-          <Dropdown enumOptions={getFilteredOptions()} value={getDropdownValues()} type={type}
+          <Dropdown enumOptions={getFilteredOptions()} value={getDropdownValues()} type={type} selectHashCode={hashCode}
                     divider={dropdownDivider} selectAllOption={selectAllOption} absolute
                     onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne} onSelectAll={handleOnSelectAll}
                     onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti} />
