@@ -28,7 +28,6 @@ const Tag: FC<TagProps> = (
   const classStyles = cx(
     "tag align-items-start min-w-14 inline-block min-h-6 px-2 gap-2.5 text-center",
     {
-      /* FONTS in TAILWIND have different line height in compare to FIGMA */
       'text-button-1': size === 'large',
       'text-p3': size === 'small' || !size,
       'py-0.5': size === 'large',

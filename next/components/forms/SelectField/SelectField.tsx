@@ -50,10 +50,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
-  const [hashCode] = useState<string>(`select-${createUuid()}`)
+  const [hashCode, setHashCode] = useState<string>("")
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
   const [dropdownRef] = useState<RefObject<HTMLDivElement>>(React.createRef<HTMLDivElement>())
-  console.log("HASH CODE:", hashCode)
+
+  useEffect(() => {
+    setHashCode(`select-${createUuid()}`)
+  }, [])
+
   // STYLES
   const selectClassName = cx (
     "flex flex-row w-80 min-h-min bg-white rounded-lg border-2 border-form-input-default",
