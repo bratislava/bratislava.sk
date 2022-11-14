@@ -70,7 +70,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="min-h-[220px] pt-30">
+          <div className="min-h-56 pt-32">
             {blogPost?.tag && (
               <span className="text-p2 inline-block rounded bg-primary px-3 py-1 font-medium text-white">
                 {tag?.title}
