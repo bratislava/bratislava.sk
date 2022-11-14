@@ -71,7 +71,7 @@ const SearchField = (
     className,
     {
       // conditions
-      'pl-12.5': leftIcon,
+      'pl-[52px]': leftIcon,
       // hover
       'hover:border-form-input-hover': !disabled,
 
