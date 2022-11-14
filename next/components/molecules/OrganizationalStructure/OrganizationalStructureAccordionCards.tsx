@@ -24,10 +24,10 @@ export const OrganizationalStructureAccordionCards = ({ users }: OrganizationalS
   )
   return (
     <>
-      <HorizontalScrollWrapper className="-ml-7.5 px-7.5 flex w-screen gap-x-5 pt-4 pb-6 lg:hidden">
+      <HorizontalScrollWrapper className="my-8 -ml-8 flex w-screen gap-x-5 px-8 lg:hidden">
         {cards}
       </HorizontalScrollWrapper>
-      <div className="gap-x-7.5 my-8 hidden w-full grid-cols-3 gap-y-8 lg:grid">{cards}</div>
+      <div className="my-8 hidden w-full grid-cols-3 gap-8 lg:grid">{cards}</div>
     </>
   )
 }

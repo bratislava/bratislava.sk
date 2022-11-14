@@ -54,7 +54,7 @@ export const WeddingForm = () => {
       </p>
 
       <form>
-        <div className="flex flex-col gap-x-7.5 md:flex-row">
+        <div className="flex flex-col gap-x-8 md:flex-row">
           <div className="grow">
             <Field
               id="firstname"

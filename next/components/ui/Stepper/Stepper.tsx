@@ -15,7 +15,7 @@ export const Stepper = ({ steps, className, currentStep }: IProps) => (
     {steps.map((step, i) => (
       <React.Fragment key={i}>
         <StepperStep
-          className="flex-0 h-12.5 w-12.5"
+          className="flex-0 h-12 w-12"
           active={i <= currentStep - 1}
           checked={i < currentStep - 1}
           {...step}

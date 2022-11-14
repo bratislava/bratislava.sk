@@ -58,8 +58,8 @@ export const AccordionItem = ({
             </p>
           </div>
           <div className="ml-5 grow-0">
-            <Chevron className={cx('w-[24px] h-[12px] hidden lg:block', { 'rotate-180': active })} />
-            <ChevronSmall className={cx('w-[18px] h-[10px] lg:hidden', { 'rotate-180': active })} />
+            <Chevron className={cx('w-6 h-3 hidden lg:block', { 'rotate-180': active })} />
+            <ChevronSmall className={cx('w-[18px] h-2.5 lg:hidden', { 'rotate-180': active })} />
           </div>
         </button>
       </div>

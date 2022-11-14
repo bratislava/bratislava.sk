@@ -24,7 +24,7 @@ export const InfoCard = ({
   children,
 }: InfoCardProps) => {
   return (
-    <div className={cx(className, 'flex flex-col items-start w-72 max-w-sm lg:w-full')}>
+    <div className={cx(className, 'flex flex-col items-start w-18 max-w-sm lg:w-full')}>
       {imageSrc && <img alt={secondaryTitle} src={imageSrc} width={imageWidth} height={imageHeight} />}
       <ContentWrapper
         className="mt-8 lg:pl-6"

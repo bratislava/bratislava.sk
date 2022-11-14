@@ -94,7 +94,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         ),
         table: ({ children }) => <table className="table-block w-full">{children}</table>,
         tr: ({ children }) => (
-          <tr className="flex w-[280px] flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
+          <tr className="flex w-66 flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
             {children}
           </tr>
         ),
@@ -102,7 +102,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         thead: () => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="text-p1 mb-1 flex items-center px-4 text-left md:min-h-[92px] lg:mb-0">
+            <div className="text-p1 md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
               {children}
             </div>
           </td>

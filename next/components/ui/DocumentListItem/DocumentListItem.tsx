@@ -26,7 +26,7 @@ export const DocumentListItem = ({
   const { t } = useTranslation()
 
   return (
-    <div className="mb-1 flex w-full min-w-[280px] flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">
+    <div className="mb-1 flex w-full min-w-66 flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">
       <div className="flex w-full flex-col md:flex-row md:items-center">
         <div className="flex p-4 pb-0 md:justify-center lg:py-10 lg:px-12">
           <Icon />

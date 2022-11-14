@@ -29,7 +29,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
     <div
       style={{ backgroundColor: item.color, height: 'calc(100vh - 55px)' }}
       className={cx(
-        'fixed top-[64px] left-0 w-screen md:hidden flex flex-col z-40',
+        'fixed top-16 left-0 w-screen md:hidden flex flex-col z-40',
         // 'absolute top-0 h-full w-screen flex-1',
         className
       )}
