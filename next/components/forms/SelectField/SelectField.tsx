@@ -130,14 +130,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
-  const handleOnDropdownArrowClick2 = () => {
-    if (!isDropdownOpened) {
-      filterRef.current?.focus()
-    } else {
-      setIsDropdownOpened(false)
-    }
-  }
-
   const handleOnDropdownArrowClick = () => {
     if (isDropdownOpened) {
       setIsDropdownOpened(false)
@@ -150,22 +142,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       setIsDropdownOpened(true)
       filterRef.current?.focus()
     }
-  }
-
-  const handleOnSelectFieldBlur = () => {
-    // console.log("BLUR")
-    // setTimeout(() => {
-    //   if (isDropdownOpened) {
-    //     setIsDropdownOpened(false)
-    //     filterRef.current?.blur()
-    //   }
-    // }, 50)
-  }
-
-  const handleOnInputFocusChange = (isFocused: boolean) => {
-    setTimeout(() => {
-      setIsDropdownOpened(isFocused)
-    }, 50)
   }
 
   const handleOnDeleteLastValue = () => {
@@ -201,7 +177,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick} onBlur={handleOnSelectFieldBlur}>
+      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick}>
 
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox ref={ref} hashCode={hashCode} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}

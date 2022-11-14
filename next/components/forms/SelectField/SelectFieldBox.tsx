@@ -36,12 +36,6 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   }
 
   // EVENT HANDLERS
-  const handleOnInputFocus = (event: React.FormEvent) => {
-    if (!(event.target instanceof HTMLParagraphElement || event.target instanceof SVGElement || event.target instanceof HTMLDivElement)) {
-      filterRef?.current?.focus()
-    }
-  }
-
   const handleOnKeyDown = ({ key }: React.KeyboardEvent) => {
     if (["Backspace", "Delete"].includes(key) && !filter) {
       onDeleteLastValue()
