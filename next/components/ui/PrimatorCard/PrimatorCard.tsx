@@ -32,7 +32,7 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
             <img
               src={imageSrc}
               alt={title}
-              className={cx('absolute bottom-0 h-41.5 lg:h-57', {
+              className={cx('absolute bottom-0 h-40 lg:h-56', {
                 'right-5 lg:right-auto lg:left-11': smRight,
               })}
             />

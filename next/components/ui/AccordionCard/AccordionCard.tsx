@@ -34,7 +34,7 @@ export const AccordionCard = ({
     // TODO min-w-70 does not work anymore (worked fine on monorepo)
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
-      <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
+      <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-66 max-w-88')}>
         <div className="text-h4 pb-2">{displayName}</div>
         <div className="text-gray-dark pb-6 text-xs lg:text-sm">{jobTitle}</div>
         <div className="flex justify-between">
