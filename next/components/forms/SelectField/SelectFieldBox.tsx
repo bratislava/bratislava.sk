@@ -50,8 +50,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
 
   // RENDER
   return (
-    <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4" data-value={value}
-         onClick={handleOnInputFocus} onFocus={handleOnInputFocus}>
+    <section ref={ref} className="flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4" data-value={value}>
       { /* TAGS */
         value && value.length > 0
           ? (multiple ? value : value.slice(0,1))
@@ -62,7 +61,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
              value={filter} placeholder={getPlaceholder()} onKeyDown={handleOnKeyDown}
-             onChange={event => onFilterChange(event.target.value)} onFocus={() => onFilterFocusChange(true)}/>
+             onChange={event => onFilterChange(event.target.value)}/>
     </section>
   )
 }

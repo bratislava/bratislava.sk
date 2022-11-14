@@ -103,11 +103,25 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
-  const handleOnDropdownArrowClick = () => {
+  const handleOnDropdownArrowClick2 = () => {
     if (!isDropdownOpened) {
       filterRef.current?.focus()
     } else {
       setIsDropdownOpened(false)
+    }
+  }
+
+  const handleOnDropdownArrowClick = () => {
+    if (isDropdownOpened) {
+      setIsDropdownOpened(false)
+    }
+  }
+
+  const handleOnSelectFieldClick = (event: React.MouseEvent) => {
+    const targetClassList = (event.target as Element).classList
+    if (!isDropdownOpened && !targetClassList.contains("tag")) {
+      setIsDropdownOpened(true)
+      filterRef.current?.focus()
     }
   }
 
@@ -150,7 +164,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
 
       {/* SELECT PART */}
-      <div className={selectClassName} ref={ref}>
+      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick}>
 
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox ref={ref} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}
