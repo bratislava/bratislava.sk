@@ -23,7 +23,7 @@ export const TextWithImage = ({
   if (!content && !imageSrc) return null
 
   return (
-    <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-7.5')}>
+    <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-8')}>
       {imagePosition === 'left' && imageSrc && (
         <div>
           <UIImage alt={imageAlternativeText} src={imageSrc} shadow={imageShadow} />
