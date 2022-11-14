@@ -3,7 +3,9 @@ import React, { PropsWithChildren } from 'react'
 
 import { LoadingSpinner } from '../../ui'
 
-type LoadingOverlayProps = { loading: boolean }
+type LoadingOverlayProps = {
+  loading: boolean
+}
 
 /**
  * An element that acts like padding, but is shrunk when div changes its height.
