@@ -1,10 +1,10 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
+import { WidgetProps } from '@rjsf/utils'
 
 import Upload from '../Upload/Upload'
 import UploadRJSFOptions from '../Upload/UploadRJSFOptions'
-import { WidgetProps } from '@rjsf/utils'
 
-interface RJSFUploadProps extends WidgetProps{
+interface RJSFUploadProps extends WidgetProps {
   value: UploadMinioFile[]
   options: UploadRJSFOptions
   disabled?: boolean
