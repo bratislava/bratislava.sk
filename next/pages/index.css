@@ -256,7 +256,7 @@
   }
 
   .homepage-markdown .no-whitespace-wrap {
-    @apply overflow-x-scroll -mx-7.5 lg:mx-0 px-7.5 lg:px-0;
+    @apply overflow-x-scroll -mx-8 lg:mx-0 px-8 lg:px-0;
   }
 
   .table-block tbody tr td:first-child div {

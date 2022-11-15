@@ -60,33 +60,40 @@ export const Bookmark = ({
 
   return (
     <div
-      className={cx(className, 'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out', {
-        'bg-[#7CCEF2] text-font': variantWithFallback === 'blue',
-        'bg-main-600 text-white': variantWithFallback === 'red',
-        'w-175': isOpen,
-        'w-17.5 ml-157.5': !isOpen,
-      })}
+      className={cx(
+        className,
+        'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out',
+        {
+          'bg-[#7CCEF2] text-font': variantWithFallback === 'blue',
+          'bg-main-600 text-white': variantWithFallback === 'red',
+          'w-[700px]': isOpen,
+          'w-[70px] ml-[630px]': !isOpen,
+        },
+      )}
       style={{
         minHeight: contentLoaded ? width + 2 * PADDING : undefined,
       }}
       ref={modelref}
     >
       <button
-        className={cx('w-17.5 font-semibold text-default', {
+        className={cx('w-[70px] font-semibold text-default', {
           'bg-[#66BDE3]': variantWithFallback === 'blue',
           'bg-main-700': variantWithFallback === 'red',
         })}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className="block w-17.5 origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
-          <span className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible" ref={ref}>
+        <span className="block w-[70px] origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
+          <span
+            className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible"
+            ref={ref}
+          >
             {bookmarkTitle}
           </span>
         </span>
       </button>
 
       <div className="flex py-5">
-        <div className="flex w-44.5 items-center justify-center">
+        <div className="flex w-44 items-center justify-center">
           {icon ? (
             <div
               style={{
@@ -119,7 +126,7 @@ export const Bookmark = ({
           </a>
         </div>
 
-        <div className="flex w-33 items-start justify-end pr-5">
+        <div className="flex w-[132px] items-start justify-end pr-5">
           <button onClick={() => setIsOpen(false)}>
             <CloseOutline />
           </button>

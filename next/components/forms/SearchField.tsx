@@ -71,7 +71,7 @@ const SearchField = (
     className,
     {
       // conditions
-      'pl-12.5': leftIcon,
+      'pl-[52px]': leftIcon,
       // hover
       'hover:border-gray-400': !disabled,
 
@@ -95,7 +95,7 @@ const SearchField = (
         tooltip={tooltip}
       />
       <div className='relative'>
-        <i className='absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4'><DarkSearchIcon /></i>
+        <i className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {'opacity-50' : disabled})}><DarkSearchIcon /></i>
         <input {...inputProps} ref={ref} className={style} />
         {resetIcon && valueState && (
           <i

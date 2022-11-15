@@ -20,7 +20,7 @@ const NotFoundPage = () => {
   const { t } = useTranslation('common')
 
   return (
-    <div className="font-inter flex h-screen w-screen px-7 py-10 md:pl-36 md:pr-32 xl:pl-80 xl:pr-70">
+    <div className="font-inter flex h-screen w-screen px-7 py-10 md:pl-36 md:pr-32 xl:pl-80 xl:pr-66">
       <div className="flex w-full flex-col items-center md:flex-row-reverse md:justify-between">
         <NoResultsFound />
         <div className="flex flex-col items-center lg:items-start">

@@ -28,7 +28,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
   <div className="flex h-[106px] w-40 flex-col items-center " onClick={handleClick}>
     <StickyMenuTopper
       style={{ color: item.colorDark }}
-      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-30', {
+      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-32', {
         'opacity-100': isActive,
       })}
     />
@@ -96,7 +96,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
                   <button type="button" className="flex" onClick={() => setPanelHidden(true)}>
                     <UILink
                       href={isItExternal(subItem.url)}
-                      className="flex items-center text-left text-[20px] hover:underline"
+                      className="text-p1 flex items-center text-left hover:underline"
                     >
                       <div className="flex shrink-0 grow-0 items-center justify-center">
                         <Icon iconName={subItem.icon} />

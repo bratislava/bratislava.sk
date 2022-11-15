@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { FileCard } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
@@ -6,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import useSWR from 'swr'
 
 import { VznMeili } from '../../../../backend/meili/types'
+import { isPresent } from '../../../../utils/utils'
 
 const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
   const vznId = vzn?.id
@@ -30,9 +30,12 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             </div>
           )}
         </div>
-        <div className="pt-5">
-          <ReactMarkdown>{vzn?.details}</ReactMarkdown>
-        </div>
+        {vzn?.details && (
+          <div className="pt-5">
+            <ReactMarkdown>{vzn?.details}</ReactMarkdown>
+          </div>
+        )}
+
         {/*  Main Document  */}
         {vzn?.mainDocument && (
           <div className="max-w-xs pt-5">
@@ -41,7 +44,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
               <FileCard
                 downloadLink={vzn.mainDocument?.url}
                 fileDetail={`${vzn.mainDocument?.ext?.toUpperCase()} ${vzn.mainDocument?.size} KB`}
-                fileTitle={vzn?.title}
+                fileTitle={vzn?.title ?? vzn.mainDocument.name}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 uploadDate={new Date(vzn.mainDocument?.createdAt).toLocaleDateString()}
               />
@@ -54,8 +57,10 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             <div>
               <FileCard
                 downloadLink={vzn.consolidatedText?.url}
-                fileDetail={`${vzn.consolidatedText?.ext?.toUpperCase()} ${vzn.consolidatedText?.size} KB`}
-                fileTitle={vzn?.title}
+                fileDetail={`${vzn.consolidatedText?.ext?.toUpperCase()} ${
+                  vzn.consolidatedText?.size
+                } KB`}
+                fileTitle={vzn?.title ?? vzn.consolidatedText.name}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 uploadDate={new Date(vzn.consolidatedText?.createdAt).toLocaleDateString()}
               />
@@ -67,18 +72,18 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             <div className="pb-4 font-semibold"> {t('vzn.amendments')} </div>
             <div className="flex flex-row flex-wrap gap-5">
               {vzn.amedmentDocument.map((amedmentDocument) => {
-                const getDocument = data?.vzn?.data?.attributes?.amedmentDocument?.find(
-                  (doc) => doc.id === `${amedmentDocument.id}`
-                )
+                const getDocument = data?.vzn?.data?.attributes?.amedmentDocument
+                  ?.filter(isPresent)
+                  .find((doc) => doc.id === `${amedmentDocument?.id}`)
                 const title = getDocument?.title
                 const file = getDocument?.document?.data?.attributes
                 return file ? (
                   <FileCard
-                    key={amedmentDocument.id}
+                    key={amedmentDocument?.id}
                     className="w-80"
                     downloadLink={file?.url}
                     fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
-                    fileTitle={title}
+                    fileTitle={title ?? undefined}
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />
@@ -92,18 +97,18 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             <div className="pb-4 font-semibold"> {t('vzn.cancellationDocument')} </div>
             <div className="flex flex-row flex-wrap gap-5">
               {vzn.cancellationDocument.map((cancellationDocument) => {
-                const getDocument = data?.vzn?.data?.attributes?.cancellationDocument?.find(
-                  (doc) => doc.id === `${cancellationDocument.id}`
-                )
+                const getDocument = data?.vzn?.data?.attributes?.cancellationDocument
+                  ?.filter(isPresent)
+                  .find((doc) => doc.id === `${cancellationDocument?.id}`)
                 const title = getDocument?.title
                 const file = getDocument?.document?.data?.attributes
                 return file ? (
                   <FileCard
-                    key={cancellationDocument.id}
+                    key={cancellationDocument?.id}
                     className="w-80"
                     downloadLink={file?.url}
                     fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
-                    fileTitle={title}
+                    fileTitle={title ?? undefined}
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />

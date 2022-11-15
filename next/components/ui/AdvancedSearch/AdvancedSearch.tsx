@@ -80,7 +80,7 @@ export const AdvancedSearch = ({
         <input
           id="name"
           type="text"
-          className="text-base h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
+          className="text-base h-14 w-[576px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -104,7 +104,7 @@ export const AdvancedSearch = ({
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
-          className="text-sm h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
+          className="max-w-[576px] text-sm h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />

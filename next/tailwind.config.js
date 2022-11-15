@@ -52,6 +52,7 @@ module.exports = {
       sm: '0px 2px 8px rgba(0, 0, 0, 0.12)',
       none: 'none',
     },
+    
     fontFamily: {
       sans: [
         'Public Sans',
@@ -156,7 +157,6 @@ module.exports = {
       },
       borderRadius: {
         10: '10px',
-        8: '8px',
         5: '5px',
       },
       gridTemplateRows: {
@@ -165,79 +165,12 @@ module.exports = {
         9: 'repeat(9, minmax(0, 1fr))',
       },
       spacing: {
-        4.25: '17px',
-        4.5: '18px',
-        5.5: '22px',
-        6: '24px',
-        7.5: '30px',
-        12.5: '50px',
-        17.5: '70px',
-        18: '72px',
-        23: '92px',
-        25: '100px',
-        30: '120px',
-        33: '132px',
-        39: '156px',
-        41: '165px',
-        41.5: '166px',
-        44.5: '178px',
-        57: '228px',
-        61: '244px',
-        65: '260px',
-        66: '264px',
-        70: '280px',
-        73: '294px',
-        74: '300px',
-        76: '293px',
-        82: '330px',
-        87: '350px',
-        90: '350px',
-        100: '450px',
-        112: '450px',
-        157.5: '630px',
-        175: '700px',
-        xStandard: 'var(--padding-x)',
-        yStandard: 'var(--padding-y)',
-        yHigh: 'var(--padding-y-high)',
-        nav: 'var(--height-nav)',
-        sidepanel: 'var(--sidepanel-width)',
-        logoHeight: 'var(--logo-height)',
-        logoWidth: 'var(--logo-width)',
-      },
-      letterSpacing: {
-        wider: '.08em',
-      },
-      minHeight: {
-        220: '220px',
-      },
-      maxHeight: {
-        '90Vh': '90vh',
-      },
-      height: {
-        72: '72px',
-        196: '196px',
-      },
-      width: {
-        540: '540px',
-        480: '480px',
-        404: '404px',
-        368: '368px',
-        320: '320px',
-        480: '480px',
-        72: '72px',
-      },
-      minWidth: {
-        39: '156px',
-      },
-      maxWidth: {
-        61: '244px',
-        87: '350px',
-      },
-      gap: {
-        3: '13px',
-      },
-      lineHeight: {
-        'extra-tight': '1.3',
+        18: '4.5rem', // 72px
+        66: '17.5rem', // 280px
+        76: '19rem', // 304px
+        88: '22rem', // 352px
+        104: '26rem', // 416px
+        200: '50rem', // 800px
       },
     },
   },

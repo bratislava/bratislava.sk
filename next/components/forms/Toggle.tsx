@@ -33,9 +33,9 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
     'bg-gray-400': !isSelected,
   })
 
-  const toggleBall = cx('absolute w-5 h-5 rounded-full bg-white top-[2px]', {
+  const toggleBall = cx('absolute w-5 h-5 rounded-full bg-white top-0.5', {
     'left-[26px]': isSelected,
-    'left-[2px]': !isSelected,
+    'left-0.5': !isSelected,
   })
   return (
     <label htmlFor={rest.value} className={toggleContainer}>

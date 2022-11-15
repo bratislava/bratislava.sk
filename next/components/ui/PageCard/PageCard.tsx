@@ -66,7 +66,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           <ChevronRight />
         </div>
       </Panel>
-      <Panel className="flex min-w-[300px] flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
+      <Panel className="min-w-76 flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
         <div className="flex items-center justify-between">
           <div
             className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary"

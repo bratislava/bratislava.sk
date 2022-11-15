@@ -18,10 +18,9 @@ import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { contactUrls, eServicesData, minKeywordLength } from '@utils/constants'
+import { contactUrls, eServicesData } from '@utils/constants'
 import cx from 'classnames'
 import CookieConsent from 'components/organisms/CookieConsent'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
 
@@ -38,27 +37,11 @@ interface IProps extends LanguageSelectProps {
 }
 
 export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
-  const router = useRouter()
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
 
-  const handleMobileSearchClick = () => {
-    handleSearch && handleSearch(!searchOpen)
-    setSearchOpen(!searchOpen)
-  }
   const { t } = useTranslation(['common'])
-
-  const [input, setInput] = useState('')
-  const handleChange = (event) => {
-    setInput(event.target.value)
-  }
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' && input.length > minKeywordLength) {
-      router.push(`${t('searchLink')}?keyword=${input}`)
-    }
-  }
 
   const { Link: UILink } = useUIContext()
 
@@ -115,13 +98,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center justify-between px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between py-5 px-8 -mx-8 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
         <Brand url="/" />
-        <div className={cx('flex items-center gap-x-5', { 'gap-x-2': searchOpen })}>
-          <div className="text-h4 relative flex cursor-pointer items-center bg-transparent text-gray-700/50">
+        <div className={cx('flex items-center gap-x-5')}>
+          <div className="text-h4 text-gray-700/50 relative flex cursor-pointer items-center bg-transparent">
             <Link href={t('searchLink')} variant="plain" className="p-4">
               <SearchIcon />
             </Link>
@@ -133,12 +116,10 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         </div>
 
         <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 px-4 py-5">
-          <div className="flex w-6 items-center justify-center">
-            {burgerOpen && !searchOpen ? <HamburgerClose /> : <Hamburger />}
-          </div>
+          <div className="flex w-6 items-center justify-center">{burgerOpen ? <HamburgerClose /> : <Hamburger />}</div>
         </button>
 
-        {burgerOpen && !searchOpen && (
+        {burgerOpen && (
           <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} closeMenu={() => setBurgerOpen(false)} />
         )}
       </div>
@@ -149,12 +130,12 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         <div className="fixed inset-0 z-50 bg-gray-800/50 px-6">
           <div className="relative top-1/2 mx-auto max-w-[1110px] -translate-y-1/2 rounded-lg bg-white shadow">
             <div
-              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-primary text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-72 md:w-72"
+              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-primary text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-18 md:w-18"
               onClick={() => setShowModal(false)}
             >
               <HamburgerCloseWhite />
             </div>
-            <div className="max-h-90Vh overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
+            <div className="max-h-[90vh] overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
                 <h5 className="cursor-pointer text-default font-semibold md:text-md">
                   {' '}
@@ -329,7 +310,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex w-[50px] cursor-pointer items-center" ref={ref} onClick={handleClick}>
+    <div className="relative flex w-12 cursor-pointer items-center" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden mix-blend-normal lg:flex ${
@@ -337,12 +318,12 @@ const LanguageSelect = ({
         }`}
       />
       {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-[46px] cursor-default flex-col items-center justify-center lg:left-0">
+        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-11 cursor-default flex-col items-center justify-center lg:left-0">
           <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-[#F8D7D4]" />
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3 mt-3 h-6 w-[22px] text-gray-700 hover:font-semibold"
+                className="text-p3 hover:text-p3 mt-3 h-6 w-6 text-gray-700 hover:font-semibold"
                 key={option.key}
                 onClick={handleChange}
               >
