@@ -6,6 +6,10 @@
     "importOneFile": {
       "ui:widget": "Upload",
       "ui:label": false
+    },
+    "importMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false
     }
   }
 }

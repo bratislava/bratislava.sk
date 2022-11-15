@@ -2,8 +2,8 @@ import { EnumOptionsType } from '@rjsf/utils'
 
 type UploadRJSFOptions = {
    enumOptions?: EnumOptionsType[]
-   sizeLimit?: number
-   supportedFormats?: string[]
+   size?: number
+   accept?: string
    type?: 'button' | 'dragAndDrop'
 }
 

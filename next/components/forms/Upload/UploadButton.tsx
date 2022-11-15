@@ -1,7 +1,7 @@
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
-import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
 
 interface UploadButtonProps {
   value?: UploadMinioFile[]
@@ -18,7 +18,7 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
 
   // STYLES
   const buttonClassNames = cx(
-    "flex-col align-items-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
+    "flex-col justify-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white",
     {
       "cursor-pointer": !disabled,
       "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0),
@@ -48,9 +48,11 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
            onClick={handleOnClick}
            ref={ref}
            data-value={value}>
-        <div className="flex flex-row">
-          <UploadIcon className="mr-2 h-6 w-6 self-center text-default"/>
-          <p className="text-default">Upload</p>
+        <div className="flex flex-row justify-center">
+          <div className="mr-2 h-6 w-6 flex flex-col justify-center self-center">
+            <UploadIcon className="text-default"/>
+          </div>
+          <p className="text-p-md">Upload</p>
         </div>
       </div>
       <div className={buttonInfoClassNames}>

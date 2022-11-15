@@ -12,6 +12,9 @@
             "importOneFile": {
               "type": "string"
             },
+            "importMultipleFiles": {
+              "type": "string"
+            },
             "firstName": {
               "type": "string"
             },
