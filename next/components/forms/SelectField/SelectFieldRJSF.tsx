@@ -5,12 +5,12 @@ import { EnumOptionsType } from '@rjsf/utils'
 interface SelectFieldRJSFProps {
   label: string
   options: SelectRJSFOptions
-  value: SelectRJSFOptions
+  value: EnumOptionsType[]
   errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string
-  onChange: (values: SelectRJSFOptions) => void;
+  onChange: (values: EnumOptionsType[]) => void;
 }
 
 const SelectFieldRJSF = (props: SelectFieldRJSFProps) => {
@@ -34,18 +34,10 @@ const SelectFieldRJSF = (props: SelectFieldRJSFProps) => {
     className
   } = options
 
-  const handleOnChange = (valueEnumOptions: EnumOptionsType[]) => {
-    const newValue: SelectRJSFOptions = {
-      ...options,
-      enumOptions: valueEnumOptions
-    }
-    onChange(newValue)
-  }
-
-  return <SelectField type={type} label={label} enumOptions={enumOptions} value={value?.enumOptions}
+  return <SelectField type={type} label={label} enumOptions={enumOptions} value={value}
                       selectAllOption={selectAllOption} placeholder={placeholder} description={description}
                       tooltip={tooltip} dropdownDivider={dropdownDivider} errorMessage={errorMessage}
-                      required={required} disabled={disabled} className={className} onChange={handleOnChange} />
+                      required={required} disabled={disabled} className={className} onChange={onChange} />
 }
 
 export default SelectFieldRJSF
