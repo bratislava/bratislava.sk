@@ -43,37 +43,98 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
   }
 }
 
-// TODO typing for schema
-// does not support oneOf / allOf / anyOf etc
-export const getJsonSchemaNodeAtPath = (jsonSchema: any, path: string[]) => {
+// simplified JsonSchema, used from package json-schema-xsd-tools
+/**
+ * JSON schema object
+ *
+ * Read more about [JSON schema](https://json-schema.org/).
+ */
+interface JsonSchema {
+  type: string
+  format?: string
+  title?: string | undefined
+  description?: string | undefined
+  properties?: JsonSchemaProperties | undefined
+  items?: JsonSchemaItems | undefined
+  required?: string[] | undefined
+  pattern?: string | undefined
+  enum?: string[] | undefined
+  then?: JsonSchema | undefined
+  oneOf?: JsonSchema[] | undefined
+  anyOf?: JsonSchema[] | undefined
+  allOf?: JsonSchema[] | undefined
+}
+
+interface JsonSchemaItems {
+  type: string
+  format?: string
+}
+
+interface JsonSchemaProperties {
+  [key: string]: JsonSchema
+}
+
+const getAllPossibleJsonSchemaProperties = (jsonSchema: JsonSchema): JsonSchemaProperties => {
+  let properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+  if (jsonSchema.then) {
+    properties = { ...properties, ...getAllPossibleJsonSchemaProperties(jsonSchema.then) }
+  }
+  if (jsonSchema.allOf) {
+    jsonSchema.allOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+  if (jsonSchema.oneOf) {
+    jsonSchema.oneOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+  if (jsonSchema.anyOf) {
+    jsonSchema.anyOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+
+  return properties
+}
+
+export const getJsonSchemaNodeAtPath = (jsonSchema: JsonSchema, path: string[]) => {
   let currentNode = jsonSchema
   for (const key of path) {
-    if (currentNode.properties) {
-      currentNode = currentNode.properties[key]
-      if (!currentNode) return null
-    } else if (currentNode.items) {
-      // TODO there are edge cases where this should error but produces correct output (i,e key '1stuff' will get converted to 1)
-      if (Number.isSafeInteger(Number.parseInt(key))) {
-        currentNode = currentNode.items
-      } else {
-        return null
-      }
-    } else return null
+    const properties = getAllPossibleJsonSchemaProperties(currentNode)
+    currentNode = properties[key]
+    if (!currentNode) return null
+
+    // currentNode.items is of type JsonSchemaItems, not JsonSchema
+    // if (properties) {
+    //   currentNode = properties[key]
+    //   if (!currentNode) return null
+    // } else if (currentNode.items) {
+    //   // TODO there are edge cases where this should error but produces correct output (i,e key '1stuff' will get converted to 1)
+    //   if (Number.isSafeInteger(Number.parseInt(key))) {
+    //     currentNode = currentNode.items
+    //   } else {
+    //     return null
+    //   }
+    // } else return null
   }
   return currentNode
 }
 
 export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string[], schema: any) => {
-  if (typeof obj !== 'object') return obj
+  if (typeof obj !== 'object') {
+    return obj
+  }
+
   Object.keys(obj).forEach((k) => {
     const newPath = [...path, k]
-    const schemaType = getJsonSchemaNodeAtPath(schema, newPath)?.type
-    if (!schemaType) {
+    const childSchema = getJsonSchemaNodeAtPath(schema, newPath)
+    if (!childSchema) {
       // TODO here we're forgiving and just do nothing if we do not match type in schema - but we may want to error in these cases
       console.warn('Did not match schema! Details below')
       console.log('Path:', path)
-      console.dir(schema, { depth: 10 })
     }
+    const schemaType = childSchema?.type
     // because you can repeat each node any number of times in xml, everything is nested in arrays
     if (Array.isArray(obj[k]) && obj[k].length < 2 && schemaType !== 'array') {
       // this is the only time we modify the output of xml->json transform structure
@@ -97,6 +158,7 @@ export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string
     }
     removeNeedlessXmlTransformArraysRecursive(obj[k], newPath, schema)
   })
+
   return obj
 }
 
