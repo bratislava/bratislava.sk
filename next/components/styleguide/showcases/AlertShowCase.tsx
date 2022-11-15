@@ -5,7 +5,7 @@ import { Wrapper } from '../Wrapper'
 
 const AlertShowCase = () => {
   return (
-    <Wrapper direction='column' title='TEST Alert'>
+    <Wrapper direction='column' title='Alert'>
       <Stack direction='column'>
         <Alert message='Alert text' type='error' />
         <Alert message='Alert text' type='success' />
