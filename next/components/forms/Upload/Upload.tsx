@@ -142,7 +142,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
   // RENDER
   return (
-    <section className="select-none" style={{transition: "0.2 all linear"}}>
+    <section className="select-none w-fit h-fit" style={{transition: "0.2 all linear"}}>
       { /* UPLOAD AREA */
         type === 'button'
           ? <UploadButton ref={ref}

@@ -5,7 +5,11 @@
   "ziadatel": {
     "importOneFile": {
       "ui:widget": "Upload",
-      "ui:label": false
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg"
+      }
     },
     "importMultipleFiles": {
       "ui:widget": "Upload",

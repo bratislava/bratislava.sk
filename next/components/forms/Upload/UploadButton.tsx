@@ -43,7 +43,7 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
 
   // RENDER
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex flex-row gap-4 w-fit h-fit">
       <div className={buttonClassNames}
            onClick={handleOnClick}
            ref={ref}
@@ -55,10 +55,14 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
           <p className="text-p-md">Upload</p>
         </div>
       </div>
-      <div className={buttonInfoClassNames}>
-        <p>{sizeLimit} {sizeLimit && "MB"}</p>
-        <p>{supportedFormats?.join(' ')}</p>
-      </div>
+      {
+        (sizeLimit || supportedFormats)
+          ? <div className={buttonInfoClassNames}>
+              <p>{sizeLimit} {sizeLimit && "MB"}</p>
+              <p>{supportedFormats?.join(' ')}</p>
+            </div>
+          : null
+      }
     </div>
   )
 }
