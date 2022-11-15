@@ -1,5 +1,11 @@
 {
   "ui:submitButtonOptions": {
     "norender": true
+  },
+  "ziadatel": {
+    "importOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false
+    }
   }
 }

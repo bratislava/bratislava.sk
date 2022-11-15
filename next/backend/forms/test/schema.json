@@ -9,6 +9,9 @@
           "title": "Žiadateľ",
           "required": ["address"],
           "properties": {
+            "importOneFile": {
+              "type": "string"
+            },
             "firstName": {
               "type": "string"
             },
