@@ -38,12 +38,12 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       warning: <WarningIcon solid={solid} />,
     }
 
-    const alertContainer = cx('flex w-[480px] rounded-lg px-5', className, {
-      'text-form-alert-textColor-default flex-col py-4': variant === 'message',
-      'bg-form-alert-error-default-bg': type === 'error' && !solid,
-      'bg-form-alert-success-default-bg': type === 'success' && !solid,
-      'bg-form-alert-info-default-bg': type === 'info' && !solid,
-      'bg-form-alert-warning-default-bg': type === 'warning' && !solid,
+  const alertContainer = cx('flex w-full sm:w-[480px] rounded-lg px-5', className, {
+    'text-form-alert-textColor-default flex-col py-4': variant === 'message',
+    'bg-form-alert-error-default-bg': type === 'error' && !solid,
+    'bg-form-alert-success-default-bg': type === 'success' && !solid,
+    'bg-form-alert-info-default-bg': type === 'info' && !solid,
+    'bg-form-alert-warning-default-bg': type === 'warning' && !solid,
 
       'text-form-alert-error-default': type === 'error' && !solid && variant !== 'message',
       'text-form-alert-success-default': type === 'success' && !solid && variant !== 'message',
@@ -70,35 +70,32 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       'text-form-alert-warning-default': type === 'warning' && !solid,
     })
 
-    return variant === 'basic' ? (
-      <div className={alertContainer}>
-        <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
-        <div className={contentStyle}>{message}</div>
-        {close && (
-          <span className='flex h-6 w-6 items-center justify-center'>
-            <CloseIcon onClick={close} solid={solid} type={type} />
-          </span>
-        )}
-      </div>
-    ) : (
-      <div className={alertContainer}>
-        <div className="flex flex-row items-center gap-4">
-          <span>{icons[type]}</span>
+  return variant === 'basic' ? (
+    <div className={alertContainer}>
+      <span>{icons[type]}</span>
+      <div className={contentStyle}>{message}</div>
+      {close ?
+        <div className='w-6 h-6 flex items-center justify-center'>
+          <CloseIcon className='' onClick={close} solid={solid} type={type} />
+        </div> : null
+      }
+    </div>
+  ) : (
+    <div className={alertContainer}>
+      <div className='flex flex-row gap-3'>
+        <span className='mt-1'>{icons[type]}</span>
+        <div className=''>
           <div className={contentStyle}>{message}</div>
+          <div className='text-base ml-1 mt-2 md:w-404 font-normal not-italic leading-6'>{content}</div>
+          {rest.buttons ?
+            <div className='ml-1 mt-5 flex w-32 gap-5'>
+              <button type='button' className={extraButtonStyle} onClick={rest.buttons[0].handler}>{rest.buttons[0].title}</button>
+              <button type='button' className={extraButtonStyle} onClick={rest.buttons[1].handler}>{rest.buttons[1].title}</button>
+            </div> : null}
         </div>
-        <div className="text-16 mt-2 pl-9 not-italic leading-6">{content}</div>
-        {rest.buttons ? (
-          <div className="mt-5 flex gap-5 pl-9">
-            <button type="button" className={extraButtonStyle} onClick={rest.buttons[0].handler}>
-              {rest.buttons[0].title}
-            </button>
-            <button type="button" className={extraButtonStyle} onClick={rest.buttons[1].handler}>
-              {rest.buttons[1].title}
-            </button>
-          </div>
-        ) : null}
       </div>
-    )
-  }
+    </div>
+  )
+}
 
 export default Alert
