@@ -1,9 +1,8 @@
 import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
-
-import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
 
 interface UploadDropAreaProps {
   value?: UploadMinioFile[]
@@ -31,7 +30,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
   )
 
   const dragAndDropOverlayClassNames = cx(
-    "absolute inset-0 z-50 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
+    "absolute inset-[-1px] z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
     {
       "cursor-not-allowed": disabled,
       "cursor-pointer": !disabled,
@@ -73,7 +72,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
 
   // RENDER
   return (
-    <div className="relative h-40 w-480" ref={ref} data-value={value}>
+    <div className="w-480 relative h-40" ref={ref} data-value={value}>
       <div className={dragAndDropOverlayClassNames}
            onClick={handleOnClick}
            onDragEnter={() => setIsDraggedOver(true)}
@@ -83,11 +82,11 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
       <div className={dragAndDropClassNames}>
         <div className="flex flex-row justify-center" >
           <div className="flex h-12 w-12 flex-row justify-center rounded-full bg-gray-200">
-            <UploadIcon className="m-auto text-default"/>
+            <UploadIcon className="text-default m-auto"/>
           </div>
         </div>
-        <h5 className="text-default font-semibold">Drag & drop upload</h5>
-        <div className="flex flex-row justify-center gap-1 text-xs">
+        <h5 className="text-h-base font-semibold">Drag & drop upload</h5>
+        <div className="text-xs flex flex-row justify-center gap-1 text-p-sm">
           <p>{sizeLimit} {sizeLimit && "MB"}</p>
           {
             sizeLimit && supportedFormats && supportedFormats.length > 0 && (
