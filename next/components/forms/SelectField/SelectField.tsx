@@ -73,15 +73,22 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // EVENT HANDLERS
   useEffect(() => {
+    const isForcedToOpenDropdown = (targetClassList: DOMTokenList) => {
+      // open me (actual select from 'loop') if I was clicked but my dropdownArrow and dropdown were not clicked
+      // dropdownButton will handle itself events
+      // dropdown will handle itself events
+      return targetClassList.contains(hashCode)
+        && !targetClassList.contains("dropdownButton")
+        && !targetClassList.contains("dropdown")
+        && !targetClassList.contains("tag")
+    }
     const handleOnWindowClick = (event: Event) => {
-      const targetClassList = (event.target as Element)?.classList
+      const target = event.target as Element
+      const targetClassList = target?.classList
       if (!targetClassList.contains(hashCode)) {
         // close me (actual select from 'loop') if i am not clicked
         setIsDropdownOpened(false)
-      } else if (targetClassList.contains(hashCode) && !targetClassList.contains("dropdownButton") && !targetClassList.contains("dropdown") && !targetClassList.contains("tag")) {
-        // open me (actual select from 'loop') if I was clicked but was not clicked my dropdownArrow and dropdown
-        // dropdownButton will handle itself events
-        // dropdown will handle itself events
+      } else if (isForcedToOpenDropdown(targetClassList) && !(target instanceof SVGMPathElement)) {
         setIsDropdownOpened(true)
       }
     }
@@ -189,14 +196,15 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         {/* DROPDOWN ARROW */}
         <div className={`${hashCode} dropdownButton min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`}
              onClick={handleOnDropdownArrowClick}>
-          <div className={`${hashCode} dropdownButton flex h-full flex-col justify-center`} >
+          <div className={`${hashCode} dropdownButton relative flex h-full flex-col justify-center`} >
             { isDropdownOpened
-              ? <ArrowUpIcon className={`${hashCode} [&>path]:${hashCode} dropdownButton`}/>
-              : <ArrowDownIcon className={`${hashCode} [&>path]:${hashCode} dropdownButton`}/> }
+              ? <ArrowUpIcon />
+              : <ArrowDownIcon /> }
+            <div className={`${hashCode} dropdownButton absolute inset-0 z-10`}/>
           </div>
         </div>
 
-        { disabled && <div className={`absolute inset-0 rounded-lg z-20`}/> }
+        { disabled && <div className="absolute inset-0 rounded-lg z-20"/> }
       </div>
 
       {/* DROPDOWN */}

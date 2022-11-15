@@ -5,6 +5,7 @@ import CheckboxIcon from '../icon-components/CheckboxIcon'
 import SelectOption from './SelectRJSFOptions'
 import RadioButtonIcon from '../icon-components/RadioButtonIcon'
 import { EnumOptionsType } from '@rjsf/utils'
+import React from 'react'
 
 interface DropdownRowProps {
   option: EnumOptionsType
@@ -49,13 +50,13 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
   // HELPER FUNCTIONS
   const getRowIcon = () => {
     return type === 'multiple'
-      ? <CheckboxIcon checked={selected} className={`${selectHashCode} dropdown`}/>
+      ? <CheckboxIcon checked={selected}/>
       : type === 'one' && selected
-        ? <FilledSelectedIcon className={`${selectHashCode} dropdown`}/>
+        ? <FilledSelectedIcon/>
         : type === 'arrow'
-          ? <ChevronRightIcon className={`${selectHashCode} dropdown`}/>
+          ? <ChevronRightIcon/>
           : type === 'radio'
-            ? <RadioButtonIcon selected={selected} className={`${selectHashCode} dropdown`}/>
+            ? <RadioButtonIcon selected={selected}/>
             : null
   }
 
@@ -67,8 +68,9 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
           <p className={optionClassName}>
             {option.value}
           </p>
-          <div className={`${selectHashCode} dropdown flex flex-col justify-center`}>
+          <div className={`${selectHashCode} dropdown relative flex flex-col justify-center`}>
               { getRowIcon() }
+            <div className={`${selectHashCode} dropdown absolute inset-0 z-10`}/>
           </div>
         </div>
         { option.label !== option.value && <p className={`${selectHashCode} dropdown text-p-sm`}>{option.label}</p> }
