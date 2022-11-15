@@ -2,8 +2,9 @@ import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 
 import Upload from '../Upload/Upload'
 import UploadRJSFOptions from '../Upload/UploadRJSFOptions'
+import { WidgetProps } from '@rjsf/utils'
 
-interface RJSFUploadProps {
+interface RJSFUploadProps extends WidgetProps{
   value: UploadMinioFile[]
   options: UploadRJSFOptions
   disabled?: boolean
@@ -18,14 +19,14 @@ const UploadRJSF = (props: RJSFUploadProps) => {
     onChange
   } = props
 
-  // const {
-  //   sizeLimit,
-  //   supportedFormats,
-  //   type = "button"
-  // } = options
+  const {
+    sizeLimit,
+    supportedFormats,
+    type = "button"
+  } = options
 
-  return <Upload type={"button"} value={value} onChange={onChange}
-                  disabled={disabled}/>
+  return <Upload type={type} value={value} onChange={onChange} sizeLimit={sizeLimit}
+                 supportedFormats={supportedFormats} disabled={disabled}/>
 }
 
 export default UploadRJSF
