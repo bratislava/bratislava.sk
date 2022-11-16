@@ -151,7 +151,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
                           supportedFormats={supportedFormats}
                           disabled={disabled}
                           fileBrokenMessage={fileBrokenMessages}
-                          onClick={handleOnClickUpload} />
+                               onClick={handleOnClickUpload} />
           : type === 'dragAndDrop'
             ? <UploadDropArea ref={ref}
                               value={value}

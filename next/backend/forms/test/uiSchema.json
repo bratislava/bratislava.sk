@@ -13,7 +13,10 @@
     },
     "importMultipleFiles": {
       "ui:widget": "Upload",
-      "ui:label": false
+      "ui:label": false,
+      "ui:options": {
+        "type": "dragAndDrop"
+      }
     }
   }
 }

@@ -73,7 +73,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
 
   // RENDER
   return (
-    <div className="relative h-40 w-480" ref={ref} data-value={value}>
+    <div className="w-[180px] xs:w-[300px] sm:w-[480px] relative h-40" ref={ref} data-value={value}>
       <div className={dragAndDropOverlayClassNames}
            onClick={handleOnClick}
            onDragEnter={() => setIsDraggedOver(true)}
@@ -83,11 +83,11 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
       <div className={dragAndDropClassNames}>
         <div className="flex flex-row justify-center" >
           <div className="flex h-12 w-12 flex-row justify-center rounded-full bg-gray-200">
-            <UploadIcon className="m-auto text-default"/>
+            <UploadIcon className="text-default m-auto"/>
           </div>
         </div>
         <h5 className="text-default font-semibold">Drag & drop upload</h5>
-        <div className="flex flex-row justify-center gap-1 text-xs">
+        <div className="text-xs flex flex-row justify-center gap-1">
           <p>{sizeLimit} {sizeLimit && "MB"}</p>
           {
             sizeLimit && supportedFormats && supportedFormats.length > 0 && (
