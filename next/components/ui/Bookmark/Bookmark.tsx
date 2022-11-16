@@ -10,20 +10,20 @@ import { ArrowRight } from '../images'
 const PADDING = 20 // py-5
 
 export interface BookmarkLink {
-  title: string
-  href: string
+  title?: string | null
+  href?: string | null
 }
 
 // TODO add imageSrc ???
 
 export interface BookmarkProps {
   className?: string
-  bookmarkTitle: string
-  title: string
-  content: string
+  bookmarkTitle?: string | null
+  title?: string | null
+  content?: string | null
   link: BookmarkLink
-  variant: 'blue' | 'red' | string
-  icon?: string
+  variant?: 'blue' | 'red' | string | null
+  icon?: string | null
   IconComponent?: React.FunctionComponent<React.SVGAttributes<any>>
 }
 

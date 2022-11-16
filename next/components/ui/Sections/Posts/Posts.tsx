@@ -22,7 +22,7 @@ export interface PostsProps {
   className?: string
   posts?: TPostsTab[]
   // latestPost?: BlogPost[]
-  latestPost?: LatestBlogsFragment
+  latestPost?: LatestBlogsFragment | null
   leftHighLight?: NewsCardBlogFragment | null
   rightHighLight?: NewsCardBlogFragment | null
   readMoreText?: string
@@ -46,8 +46,9 @@ export const Posts = ({
   const [activeNewsCards] = React.useState<NewsCardProps[]>(activePosts?.newsCards ?? [])
 
   // TODO handle loading and errors
-  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>('/api/ginis/newest', () =>
-    fetch('/api/ginis/newest').then((res) => res.json())
+  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>(
+    '/api/ginis/newest',
+    () => fetch('/api/ginis/newest').then((res) => res.json()),
   )
   const documents = officialBoardData || []
 
@@ -58,8 +59,6 @@ export const Posts = ({
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation('common')
-
-
 
   return (
     <div className={cx(className)}>
@@ -88,8 +87,12 @@ export const Posts = ({
                     <NewsCard {...newsCard} />
                   </div>
                 ))}
-              {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
-              {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
+              {leftHighLight && (
+                <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />
+              )}
+              {rightHighLight && (
+                <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />
+              )}
 
               {latestPost?.data?.length > 0 && (
                 <div className="hidden lg:block">
@@ -162,7 +165,10 @@ export const Posts = ({
               />
             ))}
           </div>
-          <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
+          <UILink
+            href="/mesto-bratislava/transparentne-mesto/uradna-tabula"
+            className="flex justify-center"
+          >
             <Button
               className="text-default px-6 py-3 font-medium shadow-none hover:text-category-600"
               variant="transparent"
@@ -178,8 +184,12 @@ export const Posts = ({
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
             <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
-              {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
-              {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
+              {rozkoPosts?.data[0] && (
+                <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />
+              )}
+              {rozkoPosts?.data[1] && (
+                <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />
+              )}
 
               {rozkoPosts?.data?.length > 2 && (
                 <div className="hidden lg:block">
@@ -251,7 +261,12 @@ export const Posts = ({
       <div className="mt-9 hidden">
         <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
           {activeNewsCards.map((newsItem, index) => (
-            <NewsCard key={index} readMoreText={readMoreText} className="w-11/12 shrink-0" {...newsItem} />
+            <NewsCard
+              key={index}
+              readMoreText={readMoreText}
+              className="w-11/12 shrink-0"
+              {...newsItem}
+            />
           ))}
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
