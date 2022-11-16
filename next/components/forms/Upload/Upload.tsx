@@ -6,6 +6,7 @@ import { deleteFile, uploadFile } from '../../../backend/services/minio'
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
+import cx from 'classnames'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
@@ -13,11 +14,12 @@ interface UploadProps {
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
+  className?: string
   onChange?: (value: UploadMinioFile[]) => void
 }
 
 const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (props:UploadProps, ref: ForwardedRef<HTMLDivElement>) => {
-  const { type, value, disabled, sizeLimit, supportedFormats, onChange }: UploadProps = props
+  const { type, value, disabled, sizeLimit, supportedFormats, className, onChange }: UploadProps = props
 
   // STATES
   const [fileBrokenMessages, setFileBrokenMessages] = useState<string[]>([])
@@ -142,7 +144,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
   // RENDER
   return (
-    <section className="select-none w-fit h-fit" style={{transition: "0.2 all linear"}}>
+    <section className={cx("select-none w-fit h-fit", className)} style={{transition: "0.2 all linear"}}>
       { /* UPLOAD AREA */
         type === 'button'
           ? <UploadButton ref={ref}

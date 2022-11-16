@@ -22,13 +22,14 @@ const UploadRJSF = (props: RJSFUploadProps) => {
   const {
     size,
     accept,
-    type = "button"
+    type = "button",
+    className
   } = options
 
   const supportedFormats = accept?.split(",")
 
-  return <Upload type={type} value={value} onChange={onChange} sizeLimit={size}
-                 supportedFormats={supportedFormats} disabled={disabled}/>
+  return <Upload type={type} value={value} className={className} sizeLimit={size} supportedFormats={supportedFormats}
+                 disabled={disabled} onChange={onChange}/>
 }
 
 export default UploadRJSF
