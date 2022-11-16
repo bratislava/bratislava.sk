@@ -30,7 +30,7 @@ export const AdvancedAccordionSubSubitem = ({ title, className, cardClassName }:
         className={cx(className, 'flex items-start lg:items-center cursor-pointer lg:px-5 ml-12')}
         onClick={() => setOpen(!open)}
       >
-        <div className="pr-6 text-default lg:text-md">{title}</div>
+        <div className="text-p1 pr-6">{title}</div>
         <div className={cx('ml-auto pt-2.5', { 'rotate-180': open })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />

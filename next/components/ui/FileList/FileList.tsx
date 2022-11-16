@@ -74,7 +74,7 @@ export const FileList = ({
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
               <div className="space-y-6">
                 {fileSection.category && !hideCategory && (
-                  <span className="text-default font-medium md:text-md">{fileSection.category}</span>
+                  <span className="text-h4 font-medium">{fileSection.category}</span>
                 )}
                 {Array.from({ length: numberOfGroupsSeparatedByDividers }, (_, i) => {
                   const start = i * NUM_ITEMS_PER_GROUP
@@ -117,12 +117,12 @@ export const FileList = ({
             </div>
             {!noScroll && (
               <div className="block lg:hidden">
-                <span className="text-default font-medium md:text-md">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="-mx-7.5 gap-x-5 py-6 px-7.5">
+                <span className="text-h4 font-medium">{fileSection.category}</span>
+                <HorizontalScrollWrapper className="-mx-8 gap-x-5 py-6 px-8">
                   {fileSection?.files.map((file, sectionIndex) => (
                     <div key={sectionIndex}>
                       <DownloadCard
-                        className="min-w-[280px] max-w-[290px]"
+                        className="min-w-66 max-w-72"
                         title={file.title ?? ''}
                         downloadLink={file.media?.url ?? ''}
                         uploadDate={file.media?.created_at ?? ''}

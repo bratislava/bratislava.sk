@@ -178,7 +178,7 @@ const Homepage = ({
 
         <div className="bg-white">
           <SectionContainer>
-            <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
+            <div className="lg:pt-18 flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pb-10">
               <PageTitle className="flex-1 pb-4" title={header?.title} subtitle={header?.subtitle} />
               <img
                 className="hidden sm:block"
@@ -198,7 +198,7 @@ const Homepage = ({
             <HomepageMenu items={menuItems} />
           </SectionContainer>
           <Waves
-            className="mt-6 md:mt-18"
+            className="md:mt-18 mt-6"
             waveColor="white"
             wavePosition="bottom"
             isRich
@@ -236,10 +236,8 @@ const Homepage = ({
           isRich
         />
 
-        <SectionContainer className="relative bg-secondary py-16">
-          <h2 className="pb-10 text-center text-default font-semibold xs:mt-8 lg:pb-20 lg:text-2xl">
-            {data.topNineTitle}
-          </h2>
+        <SectionContainer className="bg-secondary relative py-16">
+          <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
@@ -252,7 +250,7 @@ const Homepage = ({
 
         <SectionContainer>
           <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
-          <div className="hidden md:block md:h-[78px]" />
+          <div className="hidden md:block md:h-20" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}

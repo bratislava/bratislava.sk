@@ -31,7 +31,7 @@ import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
-import { DocumentList } from './sections/documentList'
+import DocumentList from './sections/documentList/DocumentList'
 import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
@@ -106,7 +106,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsAccordion':
       return (
         <>
-          {section.title && <h1 className="flex justify-center pb-14 text-lg font-semibold">{section.title}</h1>}
+          {section.title && <h1 className="text-h2 flex justify-center pb-14">{section.title}</h1>}
           <div className="flex flex-col">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem
@@ -268,7 +268,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-[42px] md:pt-18', {
+      className={cx('pt-10 md:pt-18', {
         'pb-14 md:pb-18 bg-secondary': hasBackground === true,
       })}
       hasBackground={hasBackground}

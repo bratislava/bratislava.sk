@@ -78,7 +78,7 @@ export const Posts = ({
       {activeTab === 0 && (
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
+            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
                   <div key={i}>
@@ -117,7 +117,7 @@ export const Posts = ({
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="px-6 py-3 text-default font-medium text-font shadow-none hover:text-primary lg:text-md"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -170,7 +170,7 @@ export const Posts = ({
       {activeTab === 2 && (
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
+            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
               {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
               {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
 
@@ -204,7 +204,7 @@ export const Posts = ({
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="px-6 py-3 text-default font-medium text-font shadow-none hover:text-primary lg:text-md"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -229,7 +229,7 @@ export const Posts = ({
         </div>
       )}
       {activeTab > 2 && (
-        <div className="mt-14 items-end px-8 text-center text-default lg:text-md">
+        <div className="text-h4 mt-14 items-end px-8 text-center font-normal">
           {t('allInformationOnSite')}
           <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">

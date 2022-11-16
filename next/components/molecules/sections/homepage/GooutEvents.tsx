@@ -32,11 +32,11 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
 
   return (
     <div className={className}>
-      <h2 className="text-center text-default font-semibold lg:text-2xl">{title}</h2>
+      <h2 className="text-h1 text-center">{title}</h2>
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
-          className="-mx-7.5"
+          className="-mx-8"
           shiftIndex={3}
           visibleItems={3}
           items={gooutEvents.map((ev, i) => (
@@ -50,7 +50,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
               title={ev.title}
               description={
                 <UILink
-                  className="flex flex-col p-6 text-default font-semibold text-primary"
+                  className="text-p1 flex flex-col p-6 font-semibold text-primary"
                   href={ev.url}
                   target="_blank"
                   rel="noreferrer"
@@ -70,7 +70,7 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className=" box-border rounded-lg border-2 border-primary py-3.5 px-6 text-sm lg:text-default"
+          className=" text-p1 box-border rounded-lg border-2 border-primary py-3.5 px-6"
         >
           {linkTitle}
         </Link>

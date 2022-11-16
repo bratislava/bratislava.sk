@@ -13,8 +13,8 @@ export interface VenueInfoProps {
 }
 
 export const VenueInfo = ({ className, title, description, buttonTitle, linkTitle }: VenueInfoProps) => (
-  <div className={cx(className, 'flex flex-col gap-y-3 md:gap-y-4 w-full max-w-87')}>
-    <h1 className="text-md font-medium md:text-lg">{title}</h1>
+  <div className={cx(className, 'flex flex-col gap-y-3 md:gap-y-4 w-full max-w-88')}>
+    <h1 className="text-h3 font-medium">{title}</h1>
     <p className="text-base font-normal">{description}</p>
     <Button className="h-10 w-40 md:mt-4 md:h-12">
       <span className="text-base font-medium md:text-default">{buttonTitle}</span>

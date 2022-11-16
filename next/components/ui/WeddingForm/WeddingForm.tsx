@@ -47,14 +47,14 @@ export const WeddingForm = () => {
 
   return (
     <div className="z-10 mx-auto w-10/12">
-      <h1 className="text-center text-2xl font-semibold">{t('nonbindingWedding')}</h1>
+      <h1 className="text-center text-h1">{t('nonbindingWedding')}</h1>
 
       <p className="text-center text-default font-medium">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
       </p>
 
       <form>
-        <div className="flex flex-col gap-x-7.5 md:flex-row">
+        <div className="flex flex-col gap-x-8 md:flex-row">
           <div className="grow">
             <Field
               id="firstname"
@@ -141,7 +141,7 @@ export const WeddingForm = () => {
                   name="date"
                   type="date"
                   min={LocalDate.now().toJSON()}
-                  className="h-12.5 w-full text-default text-font focus:outline-none"
+                  className="h-12 w-full text-default text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.date}
                   onChange={(e) => handleChange({ date: e.target.value })}

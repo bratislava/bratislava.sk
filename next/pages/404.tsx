@@ -20,17 +20,17 @@ const NotFoundPage = () => {
   const { t } = useTranslation('common')
 
   return (
-    <div className="font-inter flex h-screen w-screen px-7 py-10 md:pl-36 md:pr-32 xl:pl-80 xl:pr-70">
+    <div className="font-inter flex h-screen w-screen px-7 py-10 md:pl-36 md:pr-32 xl:pl-80 xl:pr-66">
       <div className="flex w-full flex-col items-center md:flex-row-reverse md:justify-between">
         <NoResultsFound />
         <div className="flex flex-col items-center lg:items-start">
           {/* text-5xl font-extrabold does not work */}
           <div className="pb-4 text-[48px] font-[800] lg:text-[64px]">404</div>
-          <div className="max-w-xs pb-10 text-center lg:text-left lg:text-default">{t('sorryNoResultsFound')}</div>
+          <div className="text-p1 max-w-xs pb-10 text-center lg:text-left">{t('sorryNoResultsFound')}</div>
           <Link href="/">
             <Button
               variant="transparent-black"
-              className="px-6 py-3 text-sm md:text-default"
+              className="text-p1 px-6 py-3"
               icon={<ChevronRight className="scale-75" />}
             >
               {t('toTheMainPage')}

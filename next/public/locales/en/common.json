@@ -111,11 +111,15 @@
   "rentBenefits": "Rent benefits",
   "capitalCity": "the Capital City of Slovakia",
   "covid": "Covid-19",
+  "contacts": "Contacts",
   "eservices": "eServices",
   "login": "Login",
   "register": "Register",
   "loading": "Loading...",
   "organisationalStructure": "Organisational structure",
   "fromUkraine": "Я з України",
-  "tourist": "I am tourist"
+  "tourist": "I am tourist",
+  "noBlogPostsToShow": "No articles to show",
+  "noPagesToShow": "No pages to show",
+  "noUsersToShow": "No contacts to show"
 }

@@ -34,14 +34,14 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
       })}
       components={{
         h1: ({ children }) => (
-          <h2 id={getHeadingTag(children)} className=".typography-h1 scroll-mt-24 lg:scroll-mt-48">
+          <h2 id={getHeadingTag(children)} className=".text-h1 scroll-mt-24 lg:scroll-mt-48">
             {children}
           </h2>
         ),
         h2: ({ children }) => (
           <h2
             id={getHeadingTag(children)}
-            className="typography-h2 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h2 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h2>
@@ -49,7 +49,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h3: ({ children }) => (
           <h3
             id={getHeadingTag(children)}
-            className="typography-h3 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4 font-medium mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h3>
@@ -57,7 +57,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h4: ({ children }) => (
           <h4
             id={getHeadingTag(children)}
-            className="typography-h4 my-6 scroll-mt-24 first:mt-0 last:mb-0 lg:mt-10 lg:mb-6 lg:scroll-mt-48"
+            className="text-h4 my-6 scroll-mt-24 first:mt-0 last:mb-0 lg:mt-10 lg:mb-6 lg:scroll-mt-48"
           >
             {children}
           </h4>
@@ -65,7 +65,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h5: ({ children }) => (
           <h5
             id={getHeadingTag(children)}
-            className="typography-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h5>
@@ -73,12 +73,12 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h6: ({ children }) => (
           <h6
             id={getHeadingTag(children)}
-            className="typography-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4 mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="typography-regular mb-4 whitespace-pre-wrap last:mb-0" {...props} />,
+        p: ({ node, ...props }) => <div className="text-p1 mb-4 whitespace-pre-wrap last:mb-0" {...props} />,
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
@@ -94,7 +94,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         ),
         table: ({ children }) => <table className="table-block w-full">{children}</table>,
         tr: ({ children }) => (
-          <tr className="flex w-[280px] flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
+          <tr className="flex w-66 flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
             {children}
           </tr>
         ),
@@ -102,7 +102,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         thead: () => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="mb-1 flex items-center px-4 text-left text-sm md:min-h-[92px] md:text-default lg:mb-0">
+            <div className="text-p1 md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
               {children}
             </div>
           </td>
@@ -138,7 +138,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
                   { 'border-primary border-solid border-4': level !== 0 }
                 )}
               />
-              <div className="whitespace-pre-wrap text-base lg:text-default">{children}</div>
+              <div className="text-p1 whitespace-pre-wrap">{children}</div>
             </div>
           )
         },

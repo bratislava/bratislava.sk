@@ -16,7 +16,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div>
       <div className={cx(className, 'flex flex-col w-full md:w-10/12')}>
-        <h1 className="text-default font-semibold lg:text-md">{title}</h1>
+        <h1 className="text-h4">{title}</h1>
         <div className="flex flex-col space-y-4 pt-6">
           {pageLinks?.map((pageLink, index) => (
             <Button
@@ -27,7 +27,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
               shape="none"
             >
               <UILink href={pageLink.url ? isItExternal(pageLink.url) : `#${pageLink.anchor}`}>
-                <div className="relative text-left text-sm font-semibold underline decoration-2 underline-offset-4">
+                <div className="relative text-left text-p2 font-semibold underline decoration-2 underline-offset-4">
                   {pageLink?.title}
                 </div>
               </UILink>

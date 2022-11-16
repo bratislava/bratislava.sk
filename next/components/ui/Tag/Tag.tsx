@@ -34,7 +34,7 @@ export const Tag = ({
       style={{
         backgroundColor: isSelected ? `rgb(var(--color-${color}--dark)` : `rgb(var(--color-${color}--light)`,
       }}
-      className={cx('inline-block rounded-md px-3 py-1 text-center text-sm pt-1', className, {
+      className={cx('inline-block rounded-md px-3 py-1 text-center text-p2 pt-1', className, {
         'cursor-pointer': interactable,
       })}
     >

@@ -28,13 +28,13 @@ export const ImagesCarousel = ({
   fetchMoreItems,
 }: ImagesCarouselProps) => (
   <div className={cx(className, 'flex flex-col')}>
-    {title && <div className="pb-10 text-center text-default font-semibold sm:text-lg md:text-2xl">{title}</div>}
+    {title && <div className="text-h1 pb-10 text-center">{title}</div>}
     <div className="hidden xl:block">
       <Carousel
         scrollerClassName="py-6"
         items={items.map((item) => (
           <a
-            className="relative inline-block h-74 w-87 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:drop-shadow-lg"
+            className="relative inline-block h-76 w-88 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:drop-shadow-lg"
             key={item.id}
             href={item.url}
             target="_blank"
@@ -55,7 +55,7 @@ export const ImagesCarousel = ({
       <div className="flex gap-x-5">
         {items.map((item) => (
           <a
-            className="relative h-60 w-72 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:shadow-lg"
+            className="relative h-60 w-18 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:shadow-lg"
             key={item.id}
             href={item.url}
             target="_blank"

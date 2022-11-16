@@ -1,6 +1,7 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 import ArrowRight from '../../../assets/images/arrow-right.svg'
 import ChevronRight from '../../../assets/images/chevron-right.svg'
@@ -12,10 +13,11 @@ export interface InBaCardProps {
   title?: string | null
   content?: string | null
   link?: string | null
-  readMoreTitle?: string
 }
 
-export const InBaCard = ({ className, images, title, content, link, readMoreTitle = 'Čítať viac' }: InBaCardProps) => {
+export const InBaCard = ({ className, images, title, content, link }: InBaCardProps) => {
+  const { t } = useTranslation('common')
+
   const [frontImage, rearImage] = images || []
 
   const { Link: UILink } = useUIContext()
@@ -61,8 +63,8 @@ export const InBaCard = ({ className, images, title, content, link, readMoreTitl
       >
         <h1 className="text-md font-semibold">{title}</h1>
         <span className="text-sm">{content}</span>
-        <UILink className="group flex h-6 cursor-pointer items-center space-x-5 text-font underline" href={link}>
-          <span className="text-sm font-semibold">{readMoreTitle}</span>
+        <UILink className="group flex h-6 cursor-pointer items-center space-x-5 underline" href={link}>
+          <span className="text-sm font-semibold">{t('readMore')}</span>
           <span className="group-hover:hidden">
             <ChevronRight />
           </span>

@@ -6,78 +6,15 @@
 /* @import "@bratislava/ui-bratislava/common.css"; */
 
 @import './bratislava.css';
+@import './typography.css';
 
 @layer components {
   /* THESE SHOULD COVER ALL FONT VARIANTS ON PAGE */
   /* if you feel a different variant is needed, please contact desing/product beforehand */
 
-  .typography-h1-extra-large {
-    @apply text-xxxl font-bold;
-  }
-
-  .typography-h1 {
-    @apply text-2xl font-bold;
-  }
-
-  .typography-h2 {
-    @apply text-md lg:text-lg font-semibold;
-  }
-
-  .typography-h3 {
-    @apply text-default lg:text-md font-medium;
-  }
-
-  .typography-h4 {
-    @apply text-sm lg:text-default font-medium;
-  }
-
-  .typography-tab {
-    @apply text-default lg:text-md font-normal;
-  }
-
-  .typography-dense {
-    @apply text-sm lg:text-default font-medium;
-  }
-
-  .typography-highlight {
-    @apply text-sm lg:text-default font-semibold;
-  }
-
-  .typography-link {
-    @apply text-sm lg:text-default font-semibold underline;
-  }
-
-  .typography-subheadline {
-    @apply text-sm lg:text-default font-medium;
-  }
-
-  .typography-regular {
-    @apply text-sm lg:text-default font-normal;
-  }
-
-  .typography-highlight-sm {
-    @apply text-sm font-semibold;
-  }
-
-  .typography-link-sm {
-    @apply text-sm font-semibold underline;
-  }
-
-  .typography-tag-label {
-    @apply text-sm font-medium;
-  }
-
-  .typography-sm {
-    @apply text-sm font-normal;
-  }
-
-  .typography-xs {
-    @apply text-xs font-normal;
-  }
-
   .base-button {
     @apply appearance-none inline-flex items-center justify-center text-center focus:outline-none bg-primary;
-    @apply shadow-lg font-medium text-white text-lg;
+    @apply shadow-lg font-medium text-white text-p-md;
   }
   .homepage-markdown ul {
     @apply list-outside list-none;
@@ -224,7 +161,7 @@
   }
 
   .listitem .typography-regular {
-    @apply text-sm lg:text-default;
+    @apply text-p-sm lg:text-p-base;
   }
 
   .line-clamp-4 {
@@ -248,10 +185,6 @@
     @apply text-center mb-6;
   }
 
-  .fontSize-base .typography-regular {
-    @apply text-base leading-7;
-  }
-
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
   }
@@ -266,7 +199,7 @@
 }
 
 .table-block tbody tr td:first-child div {
-  @apply text-sm lg:text-default font-semibold;
+  @apply text-h-sm lg:text-h-base font-semibold;
 }
 
 .modal-content-rent-markdown a {
@@ -323,7 +256,7 @@
   }
 
   .homepage-markdown .no-whitespace-wrap {
-    @apply overflow-x-scroll -mx-7.5 lg:mx-0 px-7.5 lg:px-0;
+    @apply overflow-x-scroll -mx-8 lg:mx-0 px-8 lg:px-0;
   }
 
   .table-block tbody tr td:first-child div {

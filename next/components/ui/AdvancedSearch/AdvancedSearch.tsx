@@ -9,9 +9,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { minKeywordLength } from '@utils/constants'
 import cx from 'classnames'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 import Checkbox from '../../../assets/images/checkbox.svg'
 import SearchIcon from '../../../assets/images/search-icon.svg'
@@ -22,8 +21,11 @@ export interface AdvancedSearchProps {
   placeholder?: string
   title?: string
   buttonText?: string
+  checkedOptions: SearchOptionProps[]
   handleSelect?: (checkedOptions: SearchOptionProps[]) => void
-  keyword?: string
+  input?: string
+  setInput?: Dispatch<SetStateAction<string>>
+  setSearchQuery?: (query: string) => void
 }
 
 export interface SearchOptionProps {
@@ -31,84 +33,67 @@ export interface SearchOptionProps {
   value: string
 }
 
+// TODO use BasicSearch instead of duplicating
 export const AdvancedSearch = ({
   className,
   placeholder,
   title,
   buttonText,
+  checkedOptions,
   handleSelect,
-  keyword,
+  input,
+  setInput,
+  setSearchQuery,
 }: AdvancedSearchProps) => {
   const { t } = useTranslation('common')
-  const router = useRouter()
 
   const options = [
-    {
-      key: 'articles',
-      value: t('articles'),
-    },
+    { key: 'articles', value: t('articles') },
     { key: 'pages', value: t('pages') },
     { key: 'users', value: t('organisationalStructure') },
   ]
-  const [checked, setChecked] = useState(options)
 
   const handleAction = (option: SearchOptionProps) => {
-    if (checked.some(({ key }) => key === option.key)) {
-      const options = checked.filter((o) => o.key !== option.key)
-      setChecked(options)
+    if (checkedOptions.some(({ key }) => key === option.key)) {
+      const options = checkedOptions.filter((o) => o.key !== option.key)
       handleSelect(options)
     } else {
-      const options = [...checked, option]
-      setChecked(options)
+      const options = [...checkedOptions, option]
       handleSelect(options)
     }
   }
 
-  const [input, setInput] = useState('')
-  useEffect(() => {
-    keyword && setInput(keyword)
-  }, [keyword])
-  const handleChange = (event) => {
-    setInput(event.target.value)
+  const handleSearch = () => {
+    setSearchQuery(input)
   }
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && input.length > minKeywordLength) {
-      router.push(`${t('searchLink')}?keyword=${input}`)
-    }
-  }
-
-  const handleClick = () => {
-    if (input.length > minKeywordLength) {
-      router.push(`${t('searchLink')}?keyword=${input}`)
+      handleSearch()
     }
   }
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="scroll-mt-24 pb-3 text-sm font-medium lg:scroll-mt-48 lg:text-md">{title}</div>
+      <div className="text-h4 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</div>
       <div className="hidden pb-6 lg:flex">
         <input
           id="name"
           type="text"
-          className="h-14 w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-base text-font outline-none"
+          className="text-base h-14 w-[576px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
           placeholder={placeholder}
           value={input}
-          onChange={handleChange}
+          onChange={(event) => setInput(event.target.value)}
           onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className={cx(
-            'h-14 rounded-l-none text-default px-6 shadow-none font-medium',
-            {
-              'hover:bg-primary hover:text-white hover:color-white': input.length > minKeywordLength,
-            },
-            { 'cursor-default': input.length <= minKeywordLength }
+            'h-14 rounded-l-none text-default px-6 shadow-none font-medium hover:bg-primary hover:text-white hover:color-white'
           )}
           variant="secondary-dark-text"
-          onClick={handleClick}
+          onClick={handleSearch}
         >
           {buttonText}
         </Button>
@@ -118,17 +103,17 @@ export const AdvancedSearch = ({
           id="name"
           type="text"
           value={input}
-          onChange={handleChange}
-          className="h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-sm font-medium text-font outline-none"
+          onChange={(event) => setInput(event.target.value)}
+          className="max-w-[576px] text-sm h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="hover:color-white h-14 rounded-l-none pr-6 text-default font-medium shadow-none hover:bg-primary hover:text-white"
+          className="hover:color-white text-default h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-primary hover:text-white"
           variant="secondary-dark-text"
-          onClick={handleClick}
+          onClick={handleSearch}
         />
       </div>
       <div className="flex flex-col gap-x-14 gap-y-6 lg:flex-row">
@@ -138,14 +123,16 @@ export const AdvancedSearch = ({
               onClick={() => {
                 handleAction(option)
               }}
+              className="flex gap-4"
             >
-              {checked.some(({ key }) => key === option.key) ? (
+              {checkedOptions?.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
                 <div className="mr-px h-6 w-6 rounded border-2 border-solid border-slate-300" />
               )}
+
+              <label>{option.value}</label>
             </div>
-            <label>{option.value}</label>
           </div>
         ))}
       </div>
