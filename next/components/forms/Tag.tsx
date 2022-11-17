@@ -35,8 +35,8 @@ const Tag: FC<TagProps> = (
       'bg-gray-100': removable || !branded,
       'text-gray-700': (removable || !branded) && !isHovered,
       'text-gray-600': removable && isHovered,
-      'bg-secondary': !removable && branded,
-      'text-tertiary': !removable && branded,
+      'bg-category-200': !removable && branded,
+      'text-category-800': !removable && branded,
       'underline': !removable && isHovered
     }
   )

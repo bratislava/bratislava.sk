@@ -61,7 +61,7 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
           <div className="flex flex-col items-start gap-x-6">
             <Button
               variant="secondary-dark-text"
-              className="hover:color-white text-p2 w-fit px-6 py-4 font-medium shadow-none hover:bg-primary hover:text-white"
+              className="hover:color-white text-p2 w-fit px-6 py-4 font-medium shadow-none hover:bg-category-600 hover:text-white"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
               onClick={() => setIsOpen(true)}

@@ -21,7 +21,7 @@ export const FileCard = ({
   return (
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
       <Panel className={cx(className, 'flex flex-row md:flex-col px-5 justify-between')} hoverable>
-        <div className="mt-5 hidden justify-end text-primary md:flex">
+        <div className="mt-5 hidden justify-end text-category-600 md:flex">
           <Download className="text-red-brick" />
         </div>
 
@@ -38,7 +38,7 @@ export const FileCard = ({
           </div>
         </div>
 
-        <div className="mb-5 flex items-end text-primary md:hidden">
+        <div className="mb-5 flex items-end text-category-600 md:hidden">
           <Download className="text-red-brick" />
         </div>
       </Panel>

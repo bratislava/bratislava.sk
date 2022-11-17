@@ -14,6 +14,7 @@ import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/Horizonta
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
 import { Tag } from '../../Tag/Tag'
+import { transformColorToCategory } from '@utils/page'
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
@@ -58,6 +59,8 @@ export const Posts = ({
 
   const { t } = useTranslation('common')
 
+
+
   return (
     <div className={cx(className)}>
       <HorizontalScrollWrapper className="-mx-8 justify-start space-x-4 px-8 lg:justify-center">
@@ -97,12 +100,12 @@ export const Posts = ({
                       <div key={i}>
                         {tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title} color={transformColorToCategory(tag.pageCategory.data.attributes.color)} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory.data.attributes.color}))]`}
+                            className={`text-gray-700 mb-8 font-semibold underline hover:text-${transformColorToCategory(tag?.pageCategory.data.attributes.color)}-600`}
                           >
                             {card.title}
                           </div>
@@ -117,7 +120,7 @@ export const Posts = ({
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-category-600"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -157,7 +160,7 @@ export const Posts = ({
           </div>
           <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-default font-medium shadow-none hover:text-primary"
+              className="px-6 py-3 text-default font-medium shadow-none hover:text-category-600"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -183,12 +186,12 @@ export const Posts = ({
                       <div key={i}>
                         {card.tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title} color={transformColorToCategory(tag.pageCategory.data.attributes.color)} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag.pageCategory.data.attributes.color}))]`}
+                            className={`hover:text-${transformColorToCategory(tag.pageCategory.data.attributes.color)} mb-8 font-semibold underline`}
                           >
                             {card.title}
                           </div>
@@ -204,7 +207,7 @@ export const Posts = ({
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-category-600"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >

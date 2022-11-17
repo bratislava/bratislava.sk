@@ -67,7 +67,7 @@ export const PageHeader = ({
       style={{
         boxSizing: 'border-box',
         backgroundSize: '100%',
-        background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--secondary-color)',
+        background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--category-color-100)',
       }}
       {...rest}
     >

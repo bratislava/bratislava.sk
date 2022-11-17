@@ -130,7 +130,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         <div className="fixed inset-0 z-50 bg-gray-800/50 px-6">
           <div className="relative top-1/2 mx-auto max-w-[1110px] -translate-y-1/2 rounded-lg bg-white shadow">
             <div
-              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-primary text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-18 md:w-18"
+              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-category-600 text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-18 md:w-18"
               onClick={() => setShowModal(false)}
             >
               <HamburgerCloseWhite />
@@ -212,7 +212,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               </div>
               <div className="block items-center justify-between md:flex">
                 <Button
-                  className="mx-auto mb-3 h-12 bg-primary px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
+                  className="mx-auto mb-3 h-12 bg-category-600 px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
                   onClick={saveSettings}
                 >
                   {' '}
