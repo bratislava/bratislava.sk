@@ -59,7 +59,7 @@ export const NewsLetter = ({
               className="border-gray-700/50 border-opacity-50"
               variant="circle"
               content={
-                <p className={cx('text-base -mt-1', { 'text-font': isChecked }, { 'text-gray-700/50': !isChecked })}>
+                <p className={cx('text-base -mt-1', { 'text-font': isChecked }, { 'text-font/50': !isChecked })}>
                   {checkBoxContent}
                 </p>
               }

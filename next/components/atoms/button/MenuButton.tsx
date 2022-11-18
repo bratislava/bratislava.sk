@@ -33,7 +33,7 @@ export const MenuButton: FC<Props> = ({ isActive = false, iconItems, title }) =>
       >
         <Icon iconName={secondBtn.icon} />
       </div>
-      <p className="text-p2 whitespace-pre font-medium text-gray-700/75">{title}</p>
+      <p className="text-p2 text-font/75 whitespace-pre font-medium">{title}</p>
     </>
   )
 }

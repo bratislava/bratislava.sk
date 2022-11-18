@@ -54,7 +54,7 @@ export const AccordionItem = ({
           <div className="flex flex-row">
             <p className="text-h4 font-medium text-left text-font">
               {title}
-              {secondaryTitle && <span className="text-left text-gray-700 ">&nbsp;{secondaryTitle}</span>}
+              {secondaryTitle && <span className="text-left text-font ">&nbsp;{secondaryTitle}</span>}
             </p>
           </div>
           <div className="ml-5 grow-0">

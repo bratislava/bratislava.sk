@@ -63,9 +63,9 @@ export const AccordionItemSmall = ({
               <Chevron className={cx('', { 'rotate-180': active })}  />
             </div>
             <div className="flex flex-row font-medium">
-              <p className="text-left text-xxs font-medium text-font md:text-sm">{title}</p>
+              <p className="text-xxs md:text-sm text-left font-medium text-font">{title}</p>
               {secondaryTitle && (
-                <p className="text-left text-xxs text-gray-700 md:text-sm">&nbsp;{secondaryTitle}</p>
+                <p className="text-xxs md:text-sm text-left text-font">&nbsp;{secondaryTitle}</p>
               )}
             </div>
           </span>

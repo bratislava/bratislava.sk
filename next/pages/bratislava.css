@@ -102,7 +102,8 @@
 
 body {
   -webkit-font-smoothing: antialiased;
-  color: #333;
+  color: var(--font-color);
+  /* color: #333; */
 }
 
 .font-inter {

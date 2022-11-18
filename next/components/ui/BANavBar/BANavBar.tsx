@@ -65,8 +65,8 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             }
           />
 
-          <nav className="flex gap-x-8 font-semibold text-gray-700/75">
-            <div className="flex items-center gap-x-8 font-semibold text-gray-700/75">
+          <nav className="text-font/75 flex gap-x-8 font-semibold">
+            <div className="text-font/75 flex items-center gap-x-8 font-semibold">
               <Link href={t('searchLink')} variant="plain" className="p-4">
                 <SearchIcon />
               </Link>
@@ -83,7 +83,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap py-4">
                 {t('eservices')}
               </Link>
-              <div className="relative flex items-center bg-transparent text-gray-700/75">
+              <div className="text-font/75 relative flex items-center bg-transparent">
                 <LanguageSelect
                   className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
                   {...languageSelectProps}
@@ -104,7 +104,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
       >
         <Brand url="/" />
         <div className={cx('flex items-center gap-x-5')}>
-          <div className="text-h4 text-gray-700/50 relative flex cursor-pointer items-center bg-transparent">
+          <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
             <Link href={t('searchLink')} variant="plain" className="p-4">
               <SearchIcon />
             </Link>
@@ -323,7 +323,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3 mt-3 h-6 w-6 text-gray-700 hover:font-semibold"
+                className="text-p3 hover:text-p3 mt-3 h-6 w-6 text-font hover:font-semibold"
                 key={option.key}
                 onClick={handleChange}
               >

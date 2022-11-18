@@ -105,7 +105,7 @@ export const Posts = ({
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`text-gray-700 mb-8 font-semibold underline hover:text-${transformColorToCategory(tag?.pageCategory.data.attributes.color)}-600`}
+                            className={`text-font mb-8 font-semibold underline hover:text-${transformColorToCategory(tag?.pageCategory.data.attributes.color)}-600`}
                           >
                             {card.title}
                           </div>

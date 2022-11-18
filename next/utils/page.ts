@@ -94,10 +94,12 @@ export const COLOR_VARIABLES: {
     c100: '--color-culture-100',
   },
 }
-
-const getColorVariables = (pageCategory: string) =>
+// Return object with colors by category
+const getColorsVariables = (pageCategory: string) =>
   COLOR_VARIABLES[pageCategory] ?? COLOR_VARIABLES.main
 
+// We get colors from the server and we need to transorm it to category.
+// Function which get color (red, blue, green...) and tranform it to category (main, transport, environment ...)
 export const transformColorToCategory = (pageColor: string): string => {
   let category: string
   switch (pageColor) {
@@ -130,7 +132,7 @@ export const transformColorToCategory = (pageColor: string): string => {
 // Page
 export const pageStyle = (pageColor: string) => {
   const category = transformColorToCategory(pageColor)
-  const color = getColorVariables(category)
+  const color = getColorsVariables(category)
 
   return `
 :root {
@@ -250,8 +252,12 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
   sortBy(
     menu.data.map((item) => ({
       id: item.id ?? '',
-      color: `rgb(var(${getColorVariables(transformColorToCategory(item.attributes.color) ?? '').c100}))`,
-      colorDark: `rgb(var(${getColorVariables(transformColorToCategory(item.attributes.color) ?? '').c800}))`,
+      color: `rgb(var(${
+        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c100
+      }))`,
+      colorDark: `rgb(var(${
+        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c800
+      }))`,
       icon: item.attributes.icon ?? '',
       coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
       priority: item.attributes.priority ?? 0,
