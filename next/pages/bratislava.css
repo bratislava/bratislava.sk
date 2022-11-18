@@ -62,6 +62,47 @@
   --color-culture-200: 251, 233, 215; /*#fbe9d7*/
   --color-culture-100: 253, 244, 235; /*#fdf4eb*/
 
+  --color-gray-800: 31, 31, 31; /*#1F1F1F*/
+  --color-gray-700: 51, 51, 51; /*#333333*/
+  --color-gray-600: 92, 92, 92; /*#5C5C5C*/
+  --color-gray-500: 133, 133, 133; /*#858585*/
+  --color-gray-400: 173, 173, 173; /*#ADADAD*/
+  --color-gray-300: 194, 194, 194; /*#C2C2C2*/
+  --color-gray-200: 214, 214, 214; /*#D6D6D6*/
+  --color-gray-100: 235, 235, 235; /*#EBEBEB*/
+  --color-gray-50: 245, 245, 245; /*#F5F5F5*/
+  --color-gray-0: 255, 255, 255; /*#fff*/
+
+  --color-success-800: 1, 90, 41; /*#015A29*/
+  --color-success-700: 1, 132, 61; /*#01843D*/
+  --color-success-600: 52, 157, 100; /*#349D64*/
+  --color-success-500: 103, 181, 139; /*#67B58B*/
+  --color-success-400: 153, 206, 177; /*#99CEB1*/
+  --color-success-300: 179, 218, 197; /*#B3DAC5*/
+  --color-success-200: 204, 230, 216; /*#CCE6D8*/
+  --color-success-100: 230, 243, 236; /*#E6F3EC*/
+  --color-success-50: 242, 249, 245; /*#F2F9F5*/
+
+  --color-negative-800: 141, 0, 0; /*#8D0000*/
+  --color-negative-700: 208, 0, 0; /*#D00000*/
+  --color-negative-600: 218, 51, 51; /*#DA3333*/
+  --color-negative-500: 227, 102, 102; /*#E36666*/
+  --color-negative-400: 236, 153, 153; /*#EC9999*/
+  --color-negative-300: 241, 178, 178; /*#F1B2B2*/
+  --color-negative-200: 246, 204, 204; /*#F6CCCC*/
+  --color-negative-100: 250, 229, 229; /*#FAE5E5*/
+  --color-negative-50: 253, 242, 242; /*#FDF2F2*/
+
+  --color-warning-800: 152, 84, 3; /*#985403*/
+  --color-warning-700: 224, 123, 4; /*#E07B04*/
+  --color-warning-600: 230, 149, 54; /*#E69536*/
+  --color-warning-500: 236, 176, 104; /*#ECB068*/
+  --color-warning-400: 243, 202, 155; /*#F3CA9B*/
+  --color-warning-300: 246, 215, 180; /*#F6D7B4*/
+  --color-warning-200: 249, 229, 205; /*#F9E5CD*/
+  --color-warning-100: 252, 242, 230; /*#FCF2E6*/
+  --color-warning-50: 253, 248, 242; /*#FDF8F2*/
+
   /* These variables are overidden in pages to get custom colors for each category */
 
   --color-category-800: var(--color-main-800);
@@ -97,13 +138,12 @@
 
   --font-color: #333;
   --error-color: #d00000;
-  --background-color: #f5f5f5;
+  --background-color: rgb(var(--color-gray-50));
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   color: var(--font-color);
-  /* color: #333; */
 }
 
 .font-inter {
@@ -112,7 +152,7 @@ body {
 
 .base-input {
   @apply appearance-none box-border inline-block border-3 px-6 py-0 text-font rounded-10 font-medium h-14;
-  @apply bg-white border-white focus:outline-none focus:border-primary hover:border-primary;
+  @apply bg-white border-white focus:outline-none focus:border-category-600 hover:border-category-600;
 }
 
 .base-input--with-error {
