@@ -3,6 +3,41 @@
 @import 'tailwindcss/utilities';
 
 @layer components {
+  .text-20-light {
+    @apply font-light text-p-md;
+  }
+  .text-16-light {
+    @apply font-light text-p-base;
+  }
+
+  .text-20 {
+    @apply font-normal text-p-md;
+  }
+  .text-16 {
+    @apply font-normal text-p-base;
+  }
+
+  .text-20-medium {
+    @apply font-medium text-p-md;
+  }
+  .text-16-medium {
+    @apply font-medium text-p-base;
+  }
+
+  .text-20-semibold {
+    @apply font-semibold text-p-md;
+  }
+  .text-16-semibold {
+    @apply font-semibold text-p-base;
+  }
+
+  .text-20-bold {
+    @apply font-bold text-p-md;
+  }
+  .text-16-bold {
+    @apply font-bold text-p-base;
+  }
+
   .text-h1-lg-light {
     @apply text-h-2xl lg:text-h-3xl font-light;
   }
@@ -221,40 +256,5 @@
 
   .text-p4-bold {
     @apply font-bold text-p-xs;
-  }
-
-  .text-20-light {
-    @apply font-light text-p-md;
-  }
-  .text-16-light {
-    @apply font-light text-p-base;
-  }
-
-  .text-20 {
-    @apply font-normal text-p-md;
-  }
-  .text-16 {
-    @apply font-normal text-p-base;
-  }
-
-  .text-20-medium {
-    @apply font-medium text-p-md;
-  }
-  .text-16-medium {
-    @apply font-medium text-p-base;
-  }
-
-  .text-20-semibold {
-    @apply font-semibold text-p-md;
-  }
-  .text-16-semibold {
-    @apply font-semibold text-p-base;
-  }
-
-  .text-20-bold {
-    @apply font-bold text-p-md;
-  }
-  .text-16-bold {
-    @apply font-bold text-p-base;
   }
 }
