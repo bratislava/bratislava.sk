@@ -17,12 +17,12 @@ const ProgressBar = ({ type = 'default', value = 0, minValue = 0, maxValue = 100
   const percentage = (value - minValue) / (maxValue - minValue);
   const barWidth = `${Math.round(percentage * 100)}%`;
 
-  const progressBarStyleContainer = cx('flex flex-row items-center p-0 gap-4 w-full max-w-[500px] h-6', className, {
+  const progressBarStyleContainer = cx('flex flex-row items-center p-0 gap-4 w-full h-6', className, {
   })
   return (
     <div {...progressBarProps} className={progressBarStyleContainer}>
-      <div className={cx('flex flex-column items-center w-full max-w-[440px] h-2 bg-form-input-default rounded-full')}>
-        <div style={{ width: barWidth, height: 10 }} className={cx('rounded-full',{
+      <div className={cx('flex flex-column items-center w-full h-2 bg-form-input-default rounded-full')}>
+        <div style={{ width: barWidth }} className={cx('rounded-full h-2',{
           'bg-form-black-default': type === 'default',
           'bg-form-alert-success-default': type === 'success'
         })} />
