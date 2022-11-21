@@ -27,7 +27,6 @@
     "pg": "^8.7.3",
     "postinstall-postinstall": "^2.1.0",
     "strapi-plugin-email-designer": "^2.1.1",
-    "strapi-plugin-import-export-entries": "^1.18.0",
     "strapi-plugin-meilisearch": "https://github.com/bratislava/strapi-plugin-meilisearch.git",
     "strapi-provider-upload-ts-minio": "^3.1.0"
   },
