@@ -1,9 +1,8 @@
 import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
-
-import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
 
 interface UploadDropAreaProps {
   value?: UploadMinioFile[]
@@ -31,7 +30,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
   )
 
   const dragAndDropOverlayClassNames = cx(
-    "absolute inset-0 z-50 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
+    "absolute inset-[-1px] z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
     {
       "cursor-not-allowed": disabled,
       "cursor-pointer": !disabled,
