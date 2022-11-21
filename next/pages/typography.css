@@ -38,6 +38,48 @@
     @apply font-bold text-p-base;
   }
 
+  .text-btn-lg-light {
+    @apply font-light text-btn-lg;
+  }
+  .text-btn-light {
+    @apply font-light text-btn-base;
+  }
+
+  .text-btn-lg-normal {
+    @apply font-normal text-btn-lg;
+  }
+  .text-btn-normal {
+    @apply font-normal text-btn-base;
+  }
+
+  .text-btn-lg-medium {
+    @apply font-medium text-btn-lg;
+  }
+  .text-btn-medium {
+    @apply font-medium text-btn-base;
+  }
+
+  .text-btn-lg-medium {
+    @apply font-medium text-btn-lg;
+  }
+  .text-btn-medium {
+    @apply font-medium text-btn-base;
+  }
+
+  .text-btn-lg {
+    @apply font-semibold text-btn-lg;
+  }
+  .text-btn {
+    @apply font-semibold text-btn-base;
+  }
+
+  .text-btn-lg-bold {
+    @apply font-bold text-btn-lg;
+  }
+  .text-btn-bold {
+    @apply font-bold text-btn-base;
+  }
+
   .text-h1-lg-light {
     @apply text-h-2xl lg:text-h-3xl font-light;
   }
