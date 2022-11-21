@@ -1,6 +1,7 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
+import { parseXml } from 'libxmljs'
 import { dropRight, find, last } from 'lodash'
 import { access, readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
@@ -116,12 +117,19 @@ export const validateAndBuildXmlData = async (data: any, formName: unknown) => {
 
 // TODO create ajv instance once for BE, add async validations
 export const validateDataWithJsonSchema = (data: any, schema: any) => {
-  console.log(schema)
   const ajv = new Ajv()
   addFormats(ajv)
   const validate = ajv.compile(schema)
   validate(data)
   return validate.errors
+}
+
+export const validateDataWithXsd = (data: any, xsd: any) => {
+  const xsdDoc = parseXml(xsd)
+  const xmlDoc = parseXml(data)
+
+  xmlDoc.validate(xsdDoc)
+  return xmlDoc.validationErrors
 }
 
 export const getEform = (id: string | string[] | undefined): EFormValue => {
