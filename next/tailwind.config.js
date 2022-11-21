@@ -75,6 +75,7 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
     },
+    
     fontSize: {
       'btn-base': ['16px', '24px'],
       'btn-lg': ['20px', '32px'],
