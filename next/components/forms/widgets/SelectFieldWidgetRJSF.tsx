@@ -1,6 +1,6 @@
 import { EnumOptionsType } from '@rjsf/utils'
 
-import SelectField from './SelectField'
+import SelectField from '../SelectField/SelectField'
 
 type SelectRJSFOptions = {
   enumOptions?: EnumOptionsType[]
@@ -12,7 +12,7 @@ type SelectRJSFOptions = {
   className?: string
 }
 
-interface SelectFieldRJSFProps {
+interface SelectFieldWidgetRJSFProps {
   label: string
   options: SelectRJSFOptions
   value: EnumOptionsType[]
@@ -23,7 +23,7 @@ interface SelectFieldRJSFProps {
   onChange: (values: EnumOptionsType[]) => void;
 }
 
-const SelectFieldRJSF = (props: SelectFieldRJSFProps) => {
+const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   const {
     label,
     options,
@@ -50,4 +50,4 @@ const SelectFieldRJSF = (props: SelectFieldRJSFProps) => {
                       required={required} disabled={disabled} className={className} onChange={onChange} />
 }
 
-export default SelectFieldRJSF
+export default SelectFieldWidgetRJSF
