@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 
 import SelectField from '../../forms/SelectField/SelectField'
-import SelectOption from '../../forms/SelectField/SelectRJSFOptions'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
-import SelectRJSFOptions from '../../forms/SelectField/SelectRJSFOptions'
 import { EnumOptionsType } from '@rjsf/utils'
 
 interface SelectFieldShowCaseProps {
@@ -21,7 +19,7 @@ const SelectFieldShowCase = () => {
       { value: 'UNIZA FEIT', label: 'UNIZA FEIT' }
     ]
 
-  const [selectValueFirst, setSelectValueFirst] = useState<EnumOptionsType[]>(enumOptions.slice(0, 2))
+  const [selectValueFirst, setSelectValueFirst] = useState<EnumOptionsType[]>(enumOptions.slice(0, 1))
   const [selectValueSecond, setSelectValueSecond] = useState<EnumOptionsType[]>([])
   const [selectValueThird, setSelectValueThird] = useState<EnumOptionsType[]>(enumOptions.slice(0, 3))
   const [selectValue4, setSelectValue4] = useState<EnumOptionsType[]>([])

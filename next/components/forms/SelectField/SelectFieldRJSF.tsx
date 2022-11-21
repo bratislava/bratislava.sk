@@ -1,6 +1,16 @@
-import SelectField from './SelectField'
-import SelectRJSFOptions from './SelectRJSFOptions'
 import { EnumOptionsType } from '@rjsf/utils'
+
+import SelectField from './SelectField'
+
+type SelectRJSFOptions = {
+  enumOptions?: EnumOptionsType[]
+  tooltip?: string
+  dropdownDivider?: boolean
+  selectAllOption?: boolean
+  type?: 'one' | 'multiple' | 'arrow' | 'radio'
+  description?: string
+  className?: string
+}
 
 interface SelectFieldRJSFProps {
   label: string

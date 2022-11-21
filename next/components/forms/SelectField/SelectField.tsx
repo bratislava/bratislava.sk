@@ -2,14 +2,11 @@ import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, RefObject, useEffect, useState } from 'react'
-import { v4 as createUuid } from 'uuid'
-
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, RefObject, useEffect, useId, useState } from 'react'
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
-
 
 interface SelectFieldProps {
   label: string
@@ -52,13 +49,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>("")
-  const [hashCode, setHashCode] = useState<string>("")
+  const hashCode = useId()
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
   const [dropdownRef] = useState<RefObject<HTMLDivElement>>(React.createRef<HTMLDivElement>())
-
-  useEffect(() => {
-    setHashCode(`select-${createUuid()}`)
-  }, [])
 
   // STYLES
   const selectClassName = cx (
@@ -74,9 +67,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // EVENT HANDLERS
   useEffect(() => {
     const isForcedToOpenDropdown = (targetClassList: DOMTokenList) => {
-      // open me (actual select from 'loop') if I was clicked but my dropdownArrow and dropdown were not clicked
-      // dropdownButton will handle itself events
-      // dropdown will handle itself events
+      // open me (actual select) if I was clicked but my dropdownArrow and dropdown were not clicked
+      // dropdownButton will handle its own events
+      // dropdown will handle its own events
       return targetClassList.contains(hashCode)
         && !targetClassList.contains("dropdownButton")
         && !targetClassList.contains("dropdown")
@@ -86,11 +79,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       const target = event.target as Element
       const targetClassList = target?.classList
       if (!targetClassList.contains(hashCode)) {
-        // close me (actual select from 'loop') if i am not clicked
+        // close me (actual select) if i am not clicked
         setIsDropdownOpened(false)
       } else if (isForcedToOpenDropdown(targetClassList) && !(target instanceof SVGMPathElement)) {
+        // open me (actual select) if "I am forced to open"
+        // && <path> in SVG icons because it means that dropdownButton, dropdown or tag was clicked
+        // I can not set hashcode to path element so I can not recognize what belongs to me (actual select)
         setIsDropdownOpened(true)
-      }
+      } // no else because there are cases when none of above is done, so everything stays like it is or other events are handled independently
     }
     document.addEventListener("click", handleOnWindowClick)
     return () => document.removeEventListener("click", handleOnWindowClick)
