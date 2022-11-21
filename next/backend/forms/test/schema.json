@@ -8,6 +8,7 @@
         "ziadatel": {
           "title": "Žiadateľ",
           "required": ["address"],
+          "type": "object",
           "properties": {
             "firstName": {
               "type": "string"
