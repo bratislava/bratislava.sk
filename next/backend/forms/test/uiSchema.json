@@ -23,14 +23,6 @@
         "selectAllOption": true,
         "className": "px-2 py-4"
       }
-    },
-    "job": {
-      "ui:widget": "SelectField",
-      "ui:label": false,
-      "ui:disabled": true,
-      "ui:options": {
-        "className": "px-2 py-4"
-      }
     }
   }
 }

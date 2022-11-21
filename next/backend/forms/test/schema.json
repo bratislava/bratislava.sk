@@ -7,7 +7,7 @@
       "properties": {
         "ziadatel": {
           "title": "Žiadateľ",
-          "required": ["address", "school"],
+          "required": ["school"],
           "properties": {
             "school": {
               "type": "string",
@@ -38,38 +38,13 @@
                 "doc.",
                 "prof."
               ]
-            },
-            "job": {
-              "type": "string",
-              "enum": []
-            },
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
             }
           }
         }
       }
     },
     {
-      "required": ["email"],
+      "required": [],
       "properties": {
         "email": {
           "type": "string"
