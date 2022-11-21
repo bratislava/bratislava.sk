@@ -3,17 +3,17 @@ import { WidgetProps } from '@rjsf/utils'
 
 import Upload from '../Upload/Upload'
 import UploadRJSFOptions from '../Upload/UploadRJSFOptions'
+import { useState } from 'react'
 
 interface RJSFUploadProps extends WidgetProps {
-  value: UploadMinioFile[]
   options: UploadRJSFOptions
   disabled?: boolean
-  onChange: (values: UploadMinioFile[]) => void;
+  multiple?: boolean
+  onChange: (value: string|string[]) => void;
 }
 
 const UploadRJSF = (props: RJSFUploadProps) => {
   const {
-    value,
     disabled,
     options,
     onChange
@@ -28,8 +28,15 @@ const UploadRJSF = (props: RJSFUploadProps) => {
 
   const supportedFormats = accept?.split(",")
 
+  const [value, setValue] = useState<UploadMinioFile[]>([])
+
+  const handleOnChange = (files: UploadMinioFile[]) => {
+    setValue(files)
+    onChange(files[0]?.file.name)
+  }
+
   return <Upload type={type} value={value} className={className} sizeLimit={size} supportedFormats={supportedFormats}
-                 disabled={disabled} onChange={onChange}/>
+                 disabled={disabled} onChange={handleOnChange}/>
 }
 
 export default UploadRJSF

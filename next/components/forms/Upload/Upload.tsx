@@ -1,8 +1,8 @@
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 import { v4 as createUuid } from 'uuid'
 
-import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
-import { deleteFile, uploadFile } from '../../../backend/services/minio'
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
+import { deleteFile, uploadFile } from '@backend/services/minio'
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFile from './UploadedFile'
@@ -23,7 +23,6 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
   // STATES
   const [fileBrokenMessages, setFileBrokenMessages] = useState<string[]>([])
-
 
   // HELPER FUNCTIONS
   const emitOnChange = (newFiles: UploadMinioFile[], oldFiles?: UploadMinioFile[]) => {
@@ -60,17 +59,20 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     const messages: string[] = []
     const chosenFiles: UploadMinioFile[] = []
 
-    for (const minioFile of minioFiles) {
+    minioFiles.forEach(minioFile => {
       if (!isFileInSupportedFormats(minioFile.file)) {
         messages.push(`${minioFile.file.name} has wrong extension.`)
       } else if (!isFileInSizeLimit(minioFile.file)) {
         messages.push(`${minioFile.file.name} is too large.`)
       } else {
-        minioFile.file = addTimeStampToFileName(minioFile.file)
-        minioFile.isUploading = true
-        chosenFiles.push(minioFile)
+        const sanitizedFile: UploadMinioFile = {
+          file: addTimeStampToFileName(minioFile.file),
+          isUploading: true,
+          originalName: minioFile.originalName
+        }
+        chosenFiles.push(sanitizedFile)
       }
-    }
+    })
 
     setFileBrokenMessages(messages)
     return chosenFiles
@@ -83,17 +85,17 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     sanitizedFiles.forEach((minioFile, id) => {
       uploadFile(minioFile.file)
         .then((res) => {
-          if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
-          if (!value) throw new Error("Value not defined in component")
-          return res
-        })
-        .finally(() => {
+          console.log("RES:", res)
+          console.log("IS UPLAODING:", sanitizedFiles[id].isUploading)
           sanitizedFiles[id].isUploading = false
           emitOnChange(sanitizedFiles, value)
+          return res
         })
         .catch(error => {
           console.log(error)
           sanitizedFiles[id].errorMessage = "File not uploaded"
+          sanitizedFiles[id].isUploading = false
+          emitOnChange(sanitizedFiles, value)
         })
     })
   }
