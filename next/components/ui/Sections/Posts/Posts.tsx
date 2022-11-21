@@ -2,10 +2,11 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import { transformColorToCategory } from '@utils/page'
+import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
@@ -14,7 +15,6 @@ import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/Horizonta
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
 import { Tag } from '../../Tag/Tag'
-import { transformColorToCategory } from '@utils/page'
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
@@ -105,7 +105,8 @@ export const Posts = ({
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`text-font mb-8 font-semibold underline hover:text-${transformColorToCategory(tag?.pageCategory.data.attributes.color)}-600`}
+                          // TODO hover:text-color
+                            className="text-font mb-8 font-semibold underline hover:text-main-800"
                           >
                             {card.title}
                           </div>
@@ -135,7 +136,7 @@ export const Posts = ({
             <UILink href={t('allNewsLink')}>
               <Button
                 variant="transparent"
-                className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+                className="text-default mt-0 px-6 py-2 font-medium shadow-none"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -160,7 +161,7 @@ export const Posts = ({
           </div>
           <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="px-6 py-3 text-default font-medium shadow-none hover:text-category-600"
+              className="text-default px-6 py-3 font-medium shadow-none hover:text-category-600"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -222,7 +223,7 @@ export const Posts = ({
             {/* TODO: change this button to custom button */}
             <Button
               variant="transparent"
-              className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+              className="text-default mt-0 px-6 py-2 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
@@ -255,7 +256,7 @@ export const Posts = ({
           <UILink href={t('allNewsLink')}>
             <Button
               variant="transparent"
-              className="mt-9 px-6 py-2 text-default font-medium shadow-none"
+              className="text-default mt-9 px-6 py-2 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
