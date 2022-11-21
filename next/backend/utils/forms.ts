@@ -147,7 +147,7 @@ export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string
         if (find(['integer', 'int32', 'int64'], (t) => t === schemaType)) {
           obj[k] = Number.parseInt(obj[k])
         }
-        if (find(['float', 'double'], (t) => t === schemaType)) {
+        if (find(['float', 'double', 'number'], (t) => t === schemaType)) {
           obj[k] = Number.parseFloat(obj[k])
         }
         if (find(['boolean'], (t) => t === schemaType)) {
