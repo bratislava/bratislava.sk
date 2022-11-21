@@ -5,14 +5,14 @@ import Upload from '../Upload/Upload'
 import UploadRJSFOptions from '../Upload/UploadRJSFOptions'
 import { useState } from 'react'
 
-interface RJSFUploadProps extends WidgetProps {
+interface UploadWidgetRJSFProps extends WidgetProps {
   options: UploadRJSFOptions
   disabled?: boolean
   multiple?: boolean
   onChange: (value: string|string[]) => void;
 }
 
-const UploadRJSF = (props: RJSFUploadProps) => {
+const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   const {
     disabled,
     options,
@@ -39,4 +39,4 @@ const UploadRJSF = (props: RJSFUploadProps) => {
                  disabled={disabled} onChange={handleOnChange}/>
 }
 
-export default UploadRJSF
+export default UploadWidgetRJSF

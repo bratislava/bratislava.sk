@@ -10,8 +10,10 @@
           "required": [],
           "properties": {
             "importOneFile": {
-              "type": "string",
-              "format": "data-url"
+              "type": "string"
+            },
+            "importMultipleFiles": {
+              "type": "string"
             }
           }
         }

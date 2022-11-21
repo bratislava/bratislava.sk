@@ -1,14 +1,16 @@
 import { withTheme } from '@rjsf/core'
 
-import UploadRJSF from './widgets/UploadRJSF'
-import TestUploadFileRJSF from './widgets/TestUploadFileRJSF'
+import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
 
 // you can add custom widgets as well as override the default ones
 // we'll want to override all the default widgets listed here https://react-jsonschema-form.readthedocs.io/en/latest/advanced-customization/custom-widgets-fields/
 const theme = {
   widgets: {
-    Upload: UploadRJSF,
-  }
+    SingleUpload: UploadWidgetRJSF,
+  },
+  // fields: {
+  //   MultiUpload: UploadWidgetRJSF
+  // }
 }
 
 export const ThemedForm = withTheme(theme)

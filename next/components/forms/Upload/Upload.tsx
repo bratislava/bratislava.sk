@@ -86,7 +86,6 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       uploadFile(minioFile.file)
         .then((res) => {
           console.log("RES:", res)
-          console.log("IS UPLAODING:", sanitizedFiles[id].isUploading)
           sanitizedFiles[id].isUploading = false
           emitOnChange(sanitizedFiles, value)
           return res
