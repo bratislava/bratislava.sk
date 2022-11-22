@@ -1,5 +1,5 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
-import SearchIcon from '@assets/images/forms/search-icon.svg'
+import SearchIcon from '@assets/images/forms/search-icon-lg.svg'
 
 import Button from '../../forms/Button'
 import { Stack } from '../Stack'

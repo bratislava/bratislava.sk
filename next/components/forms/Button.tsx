@@ -27,9 +27,6 @@ type ButtonBase = {
   endIcon?: ReactNode
 }
 
-const LINK_ICON_LG = '16'
-const LINK_ICON_SM = '13.3'
-
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
   ButtonBase & {
     href?: undefined
@@ -50,25 +47,38 @@ type PolymorphicButton = {
 }
 
 const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProps>(
-  ({ className, disabled = false, variant = 'brand', size = 'lg', icon, text, startIcon, endIcon, ...rest }, ref) => {
+  (
+    {
+      className,
+      disabled = false,
+      variant = 'brand',
+      size = 'lg',
+      icon,
+      text,
+      startIcon,
+      endIcon,
+      ...rest
+    },
+    ref,
+  ) => {
     const { buttonProps } = useButton(
       {
         ...rest,
         elementType: rest.href ? 'a' : 'button',
         isDisabled: disabled,
       },
-      ref as RefObject<HTMLAnchorElement | HTMLButtonElement>
+      ref as RefObject<HTMLAnchorElement | HTMLButtonElement>,
     )
 
     const style = cx(
-      ' font-inter inline-flex items-center',
+      'inline-flex items-center',
       rest.href
         ? 'font-medium underline underline-offset-4 focus-visible:outline-none'
         : 'w-fit h-fit space-x-2 text-white font-semibold justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
         // text for lg button
-        'px-6 py-4 text-button-1 leading-5':
+        'px-6 py-3.5 text-button-1 leading-6':
           size === 'lg' &&
           !icon &&
           text &&
@@ -88,7 +98,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // icon for lg button
-        'px-4 py-4':
+        'px-3.5 py-3.5':
           size === 'lg' &&
           icon &&
           !text &&
@@ -98,20 +108,25 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // icon for sm button
-        'px-2.5 py-2.5':
+        'px-2 py-2':
+          (size === 'sm' &&
+            icon &&
+            !text &&
+            (variant === 'brand' ||
+              variant === 'black' ||
+              variant === 'negative' ||
+              variant === 'brand-outline' ||
+              variant === 'black-outline')) ||
+          (size === 'lg' &&
+            icon &&
+            !text &&
+            (variant === 'plain-brand' || variant === 'plain-black')),
+        // icon for sm button
+        'px-1.5 py-1.5':
           size === 'sm' &&
           icon &&
           !text &&
-          (variant === 'brand' ||
-            variant === 'black' ||
-            variant === 'negative' ||
-            variant === 'brand-outline' ||
-            variant === 'black-outline'),
-        // icon for lg button
-        'px-2.5 py-2.5 text-button-1 leading-6':
-          size === 'lg' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
-        // icon for sm button
-        'px-2 py-2 text-button-base': size === 'sm' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
+          (variant === 'plain-brand' || variant === 'plain-black'),
 
         // text for lg button
         'px-3 py-2 text-button-1 leading-6':
@@ -127,9 +142,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
 
         // text for lg link button
-        'text-button-1 leading-8': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
+        'text-button-1 leading-8':
+          size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
         // text for sm link button
-        'text-button-base leading-6': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
+        'text-button-base leading-6':
+          size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
 
         'border-2':
           variant === 'brand' ||
@@ -138,21 +155,17 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           variant === 'brand-outline' ||
           variant === 'black-outline',
         // bg and border color
-        'border-main-700 bg-main-700 focus:bg-main-800 focus:border-main-800':
-          variant === 'brand',
+        'border-main-700 bg-main-700 focus:bg-main-800 focus:border-main-800': variant === 'brand',
         'border-main-700 bg-transparent text-main-700 focus:border-main-800 focus:text-main-800':
           variant === 'brand-outline',
-        'border-gray-700 bg-gray-700 focus:bg-gray-800 focus:border-gray-800':
-          variant === 'black',
-        'border-gray-700 bg-transparent text-gray-700 focus:border-gray-800 focus:text-gray-800':
+        'border-gray-700 bg-gray-700 focus:bg-gray-800 focus:border-gray-800': variant === 'black',
+        'border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800':
           variant === 'black-outline',
         'border-negative-700 bg-negative-700 focus:bg-negative-800 focus:border-negative-800':
           variant === 'negative',
 
-        'text-main-700 focus:bg-main-200 focus:text-main-800':
-          variant === 'plain-brand',
-        'text-gray-700 focus:bg-gray-200 focus:text-gray-800':
-          variant === 'plain-black',
+        'text-main-700 focus:bg-main-200 focus:text-main-800': variant === 'plain-brand',
+        'text-gray-700 focus:bg-gray-200 focus:text-gray-800': variant === 'plain-black',
         'text-negative-700 focus:bg-negative-200 focus:text-negative-800':
           variant === 'plain-negative',
 
@@ -163,7 +176,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'hover:bg-main-600 hover:border-main-600': variant === 'brand' && !disabled,
         'hover:border-main-600 hover:text-main-600': variant === 'brand-outline' && !disabled,
         'hover:bg-gray-600 hover:border-gray-600': variant === 'black' && !disabled,
-        'hover:border-gray-600 hover:text-gray-600': variant === 'black-outline' && !disabled,
+        'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
         'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
 
         'hover:bg-main-100 hover:text-main-600': variant === 'plain-brand' && !disabled,
@@ -175,7 +188,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
         // disabled
         'opacity-50': disabled,
-      }
+      },
     )
 
     if (rest.href) {
@@ -188,31 +201,53 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           className={style}
           {...buttonPropsFixed}
         >
-          <i className={size === 'sm' ? 'ml-2' : 'ml-3'}>
-            <ArrowRightIcon
-              width={size === 'sm' ? LINK_ICON_SM : LINK_ICON_LG}
-              height={size === 'sm' ? LINK_ICON_SM : LINK_ICON_LG}
-            />
+          <i
+            className={`flex justify-center items-center ${size === 'lg' ? 'ml-3 h-6 w-6' : ''} ${
+              size === 'sm' ? 'w-5 h-5 ml-2.5' : ''
+            }`}
+          >
+            <ArrowRightIcon />
           </i>
         </MLink>
       )
     }
 
     return (
-      <button type="button" ref={ref as RefObject<HTMLButtonElement>} className={style} {...buttonProps}>
+      <button
+        type="button"
+        ref={ref as RefObject<HTMLButtonElement>}
+        className={style}
+        {...buttonProps}
+      >
         <div className="flex items-center">
           {startIcon && (
-            <i className={`${size === 'lg' && 'mr-3 h-5 w-5'} ${size === 'sm' && 'mr-2.5 h-4 w-4'}`}>{startIcon}</i>
+            <i
+              className={`${size === 'lg' ? 'mr-3 h-6 w-6' : ''} ${
+                size === 'sm' ? 'mr-2.5 h-5 w-5' : ''
+              }`}
+            >
+              {startIcon}
+            </i>
           )}
           {text && !icon && text}
-          {!text && icon && <i className={`${size === 'lg' && 'h-5 w-5'} ${size === 'sm' && 'h-4 w-4'}`}>{icon}</i>}
+          {!text && icon && (
+            <i className={`${size === 'lg' ? 'h-6 w-6' : ''} ${size === 'sm' ? 'h-5 w-5' : ''}`}>
+              {icon}
+            </i>
+          )}
           {endIcon && (
-            <i className={`${size === 'lg' && 'ml-3 h-4 w-4'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>
+            <i
+              className={`flex justify-center items-center ${size === 'lg' ? 'ml-3 h-6 w-6' : ''} ${
+                size === 'sm' ? 'w-5 h-5 ml-2.5' : ''
+              }`}
+            >
+              {endIcon}
+            </i>
           )}
         </div>
       </button>
     )
-  }
+  },
 ) as PolymorphicButton
 
 export default Button
