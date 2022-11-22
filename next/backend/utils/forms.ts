@@ -44,6 +44,12 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
   }
 }
 
+export const loadAndBuildXml = (xmlTemplate: string, data: Json) => {
+  const $ = cheerio.load(xmlTemplate, { xmlMode: true, decodeEntities: false })
+  buildXmlRecursive(['E-form', 'Body'], $, data)
+  return $.html();
+}
+
 // TODO typing for schema
 // does not support oneOf / allOf / anyOf etc
 export const getJsonSchemaNodeAtPath = (jsonSchema: any, path: string[]) => {
