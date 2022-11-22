@@ -1,5 +1,5 @@
 import { EFormValue } from '@backend/forms'
-import { getEform, validateDataWithJsonSchema } from '@backend/utils/forms'
+import { getEform, loadAndBuildXml, validateDataWithJsonSchema, validateDataWithXsd } from '@backend/utils/forms'
 import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -17,11 +17,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ message: 'Invalid form name or url' })
   }
 
-  const errors = validateDataWithJsonSchema(req.body, eform.schema)
+  let errors = []
+  errors = validateDataWithJsonSchema(req.body, eform.schema)
+  if (errors.length > 0) return res.status(400).json({ message: `Data did not pass JSON validation`, errors })
 
-  // TODO convert to xml && validate it against xsd schema around here - if it does not pass, return errors
-
-  if (errors) return res.status(400).json({ message: `Data did not pass validation`, errors })
+  const xml = loadAndBuildXml(eform.xmlTemplate, req.body)
+  errors = validateDataWithXsd(xml, eform.xsd)
+  if (errors.length > 0) return res.status(400).json({ message: `Data did not pass XSD validation`, errors })
 
   // TODO when no errors, send the xml to slovensko.sk BE
 
