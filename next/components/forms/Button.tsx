@@ -138,40 +138,40 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           variant === 'brand-outline' ||
           variant === 'black-outline',
         // bg and border color
-        'border-form-brand-default bg-form-brand-default focus:bg-form-brand-pressed focus:border-form-brand-pressed':
+        'border-main-700 bg-main-700 focus:bg-main-800 focus:border-main-800':
           variant === 'brand',
-        'border-form-brand-default bg-transparent text-form-brand-default focus:border-form-brand-pressed focus:text-form-brand-pressed':
+        'border-main-700 bg-transparent text-main-700 focus:border-main-800 focus:text-main-800':
           variant === 'brand-outline',
-        'border-form-black-default bg-form-black-default focus:bg-form-black-pressed focus:border-form-black-pressed':
+        'border-gray-700 bg-gray-700 focus:bg-gray-800 focus:border-gray-800':
           variant === 'black',
-        'border-form-black-default bg-transparent text-form-black-default focus:border-form-black-pressed focus:text-form-black-pressed':
+        'border-gray-700 bg-transparent text-gray-700 focus:border-gray-800 focus:text-gray-800':
           variant === 'black-outline',
-        'border-form-negative-default bg-form-negative-default focus:bg-form-negative-pressed focus:border-form-negative-pressed':
+        'border-negative-700 bg-negative-700 focus:bg-negative-800 focus:border-negative-800':
           variant === 'negative',
 
-        'text-form-brand-default focus:bg-form-plain-brand-pressed focus:text-form-brand-pressed':
+        'text-main-700 focus:bg-main-200 focus:text-main-800':
           variant === 'plain-brand',
-        'text-form-black-default focus:bg-form-plain-black-pressed focus:text-form-black-pressed':
+        'text-gray-700 focus:bg-gray-200 focus:text-gray-800':
           variant === 'plain-black',
-        'text-form-negative-default focus:bg-form-plain-negative-pressed focus:text-form-negative-pressed':
+        'text-negative-700 focus:bg-negative-200 focus:text-negative-800':
           variant === 'plain-negative',
 
-        'text-form-brand-default focus:text-form-brand-pressed': variant === 'link-brand',
-        'text-form-black-default focus:text-form-black-pressed': variant === 'link-black',
+        'text-main-700 focus:text-main-800': variant === 'link-brand',
+        'text-gray-700 focus:text-gray-800': variant === 'link-black',
 
         // hover
-        'hover:bg-form-brand-hover hover:border-form-brand-hover': variant === 'brand' && !disabled,
-        'hover:border-form-brand-hover hover:text-form-brand-hover': variant === 'brand-outline' && !disabled,
-        'hover:bg-form-black-hover hover:border-form-black-hover': variant === 'black' && !disabled,
-        'hover:border-form-black-hover hover:text-form-black-hover': variant === 'black-outline' && !disabled,
-        'hover:bg-form-negative-hover hover:border-form-negative-hover': variant === 'negative' && !disabled,
+        'hover:bg-main-600 hover:border-main-600': variant === 'brand' && !disabled,
+        'hover:border-main-600 hover:text-main-600': variant === 'brand-outline' && !disabled,
+        'hover:bg-gray-600 hover:border-gray-600': variant === 'black' && !disabled,
+        'hover:border-gray-600 hover:text-gray-600': variant === 'black-outline' && !disabled,
+        'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
 
-        'hover:bg-form-plain-brand-hover hover:text-form-brand-hover': variant === 'plain-brand' && !disabled,
-        'hover:bg-form-plain-black-hover hover:text-form-black-hover': variant === 'plain-black' && !disabled,
-        'hover:bg-form-plain-negative-hover hover:text-form-negative-hover': variant === 'plain-negative' && !disabled,
+        'hover:bg-main-100 hover:text-main-600': variant === 'plain-brand' && !disabled,
+        'hover:bg-gray-100 hover:text-gray-600': variant === 'plain-black' && !disabled,
+        'hover:bg-negative-100 hover:text-negative-600': variant === 'plain-negative' && !disabled,
 
-        'hover:text-form-brand-hover': variant === 'link-brand' && !disabled,
-        'hover:text-form-black-hover': variant === 'link-black' && !disabled,
+        'hover:text-main-600': variant === 'link-brand' && !disabled,
+        'hover:text-gray-600': variant === 'link-black' && !disabled,
 
         // disabled
         'opacity-50': disabled,
@@ -202,12 +202,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       <button type="button" ref={ref as RefObject<HTMLButtonElement>} className={style} {...buttonProps}>
         <div className="flex items-center">
           {startIcon && (
-            <i className={`${size === 'lg' && 'w-5 h-5 mr-3'} ${size === 'sm' && 'w-4 h-4 mr-2.5'}`}>{startIcon}</i>
+            <i className={`${size === 'lg' && 'mr-3 h-5 w-5'} ${size === 'sm' && 'mr-2.5 h-4 w-4'}`}>{startIcon}</i>
           )}
           {text && !icon && text}
-          {!text && icon && <i className={`${size === 'lg' && 'w-5 h-5'} ${size === 'sm' && 'w-4 h-4'}`}>{icon}</i>}
+          {!text && icon && <i className={`${size === 'lg' && 'h-5 w-5'} ${size === 'sm' && 'h-4 w-4'}`}>{icon}</i>}
           {endIcon && (
-            <i className={`${size === 'lg' && 'w-4 h-4 ml-3'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>
+            <i className={`${size === 'lg' && 'ml-3 h-4 w-4'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>
           )}
         </div>
       </button>

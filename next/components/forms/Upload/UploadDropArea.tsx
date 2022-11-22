@@ -32,7 +32,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
   )
 
   const dragAndDropOverlayClassNames = cx(
-    "absolute inset-0 z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
+    "absolute inset-[-1px] z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
     {
       "cursor-not-allowed": disabled,
       "cursor-pointer": !disabled,
@@ -87,8 +87,8 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
             <UploadIcon className="text-default m-auto"/>
           </div>
         </div>
-        <h5 className="text-default font-semibold">Drag & drop upload</h5>
-        <div className="text-xs flex flex-row justify-center gap-1">
+        <h5 className="text-h-base font-semibold">Drag & drop upload</h5>
+        <div className="text-xs flex flex-row justify-center gap-1 text-p-sm">
           <p>{sizeLimit} {sizeLimit && "MB"}</p>
           {
             sizeLimit && supportedFormats && supportedFormats.length > 0 && (

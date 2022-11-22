@@ -50,7 +50,7 @@ export const FinalStep = ({ state, slug }: FinalStepProps) => {
         </div>
       ))}
       {successMessage && <p>{successMessage}</p>}
-      {!!errors?.length && errors.map((error) => <p className="text-form-negative-default">{JSON.stringify(error)}</p>)}
+      {!!errors?.length && errors.map((error) => <p className="text-error">{JSON.stringify(error)}</p>)}
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
       <Button onPress={submit} text="Submit" />
     </div>

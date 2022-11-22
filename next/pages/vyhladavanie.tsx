@@ -99,13 +99,13 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
         <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: pageStyle('red'),
+            __html: pageStyle('main'),
           }}
         />
         {/* Header */}
         <PageHeader
-          color="var(--secondary-color)"
-          transparentColor="var(--secondary-color--transparent)"
+          color="var(--category-color-100)"
+          transparentColor="var(--category-color-100--transparent)"
           imageSrc=""
           // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"

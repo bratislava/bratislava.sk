@@ -82,15 +82,15 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
       <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
         <style
           dangerouslySetInnerHTML={{
-            __html: pageStyle('red'),
+            __html: pageStyle('main'),
           }}
         />
         {/* TODO replace with form header */}
         <PageHeader
           imageSrc=""
-          color="var(--secondary-color)"
-          transparentColor="var(--secondary-color--transparent)"
-          transparentColorMobile="var(--secondary-color--semi-transparent)"
+          color="var(--category-color-100)"
+          transparentColor="var(--category-color-100--transparent)"
+          transparentColorMobile="var(--category-color-100--semi-transparent)"
           className="header-main-bg bg-cover"
         >
           TODO form info
