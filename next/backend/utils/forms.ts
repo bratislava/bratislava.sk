@@ -121,7 +121,7 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   addFormats(ajv)
   const validate = ajv.compile(schema)
   validate(data)
-  return validate.errors
+  return validate.errors || []
 }
 
 export const validateDataWithXsd = (data: any, xsd: any) => {

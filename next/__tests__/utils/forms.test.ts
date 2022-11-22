@@ -1,8 +1,9 @@
 /* eslint-disable no-secrets/no-secrets */
 import { describe } from '@jest/globals'
 
+import testSchema from '../../backend/forms/test/schema.json'
 import testXsd from '../../backend/forms/test/schema.xsd'
-import { getEform, validateDataWithXsd } from '../../backend/utils/forms'
+import { getEform, validateDataWithJsonSchema, validateDataWithXsd } from '../../backend/utils/forms'
 
 const testXml = `<?xml version="1.0" encoding="utf-8"?>
 <E-form xmlns="http://schemas.gov.sk/doc/eform/form/0.1" xsi:schemaLocation="http://schemas.gov.sk/doc/eform/form/0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -58,9 +59,31 @@ describe('forms utils', () => {
 
   test('test not-exists eform', () => {
     const getNotExistsEform = () => {
-        return getEform('');
+      return getEform('')
     }
 
-    expect(getNotExistsEform).toThrow('Invalid form name');
+    expect(getNotExistsEform).toThrow('Invalid form name')
+  })
+
+  test('test validate data with JSON schema', () => {
+    const data = {
+      ziadatel: {
+        firstName: 'Janko',
+        address: 'Postova 1',
+      },
+      email: 'dev@bratislava.sk',
+    }
+
+    const errors = validateDataWithJsonSchema(data, testSchema)
+    expect(errors).toHaveLength(0)
+  })
+
+  test('test validate invalid data with JSON schema', () => {
+    const data = {
+      phone: '421900123456'
+    }
+
+    const errors = validateDataWithJsonSchema(data, testSchema)
+    expect(errors).toHaveLength(1)
   })
 })
