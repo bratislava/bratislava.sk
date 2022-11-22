@@ -28,8 +28,8 @@ const FieldHeader: FC<FieldHeaderProps> = (
 
   // STYLES
   const labelStyle = cx(
-    'relative mb-1 text-button-1 font-semibold text-universal-black',
-    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-[#D83728] after:text-button-1': required}
+    'relative mb-1 text-button-1 font-semibold text-gray-800',
+    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-main-700 after:text-p3': required}
   )
 
   return (
@@ -61,7 +61,7 @@ const FieldHeader: FC<FieldHeaderProps> = (
       </div>
       { /* DESCRIPTION */
         description && (
-          <div {...descriptionProps} className="mb-1 text-p2 text-universal-black">
+          <div {...descriptionProps} className="text-p2 mb-1 text-gray-700">
             {description}
           </div>
         )

@@ -36,7 +36,7 @@ interface AccordionItemHeadingProps {
 const AccordionItemHeading = ({ title }: AccordionItemHeadingProps) => {
   return (
     <div className="flex items-center gap-x-3 pb-8 lg:gap-x-6 lg:px-5">
-      <div className="h-6 w-6 rounded-full border-4 border-primary" />
+      <div className="h-6 w-6 rounded-full border-4 border-category-600" />
       <div className="text-p1">{title}</div>
     </div>
   )

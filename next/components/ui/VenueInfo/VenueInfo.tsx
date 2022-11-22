@@ -20,7 +20,7 @@ export const VenueInfo = ({ className, title, description, buttonTitle, linkTitl
       <span className="text-base font-medium md:text-default">{buttonTitle}</span>
     </Button>
     <Button
-      className="w-36 text-base font-medium text-primary md:text-default"
+      className="w-36 text-base font-medium text-category-600 md:text-default"
       icon={<ArrowRightShort />}
       hoverIcon={<ArrowRightLong />}
       shape="none"
