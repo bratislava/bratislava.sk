@@ -6,11 +6,8 @@ import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
 // we'll want to override all the default widgets listed here https://react-jsonschema-form.readthedocs.io/en/latest/advanced-customization/custom-widgets-fields/
 const theme = {
   widgets: {
-    SingleUpload: UploadWidgetRJSF,
-  },
-  // fields: {
-  //   MultiUpload: UploadWidgetRJSF
-  // }
+    Upload: UploadWidgetRJSF
+  }
 }
 
 export const ThemedForm = withTheme(theme)
