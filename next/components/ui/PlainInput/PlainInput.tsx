@@ -17,7 +17,7 @@ export const PlainInput = ({
   const hasIconRight = hasIcon && iconPosition === 'right'
 
   return (
-    <div className={cx('flex w-full border-b-4 border-primary items-center', className)}>
+    <div className={cx('flex w-full border-b-4 border-category-600 items-center', className)}>
       {hasIconLeft && <div>{icon}</div>}
       <input className="w-full bg-transparent py-2 focus:outline-none" {...props} />
       {hasIconRight && <div>{icon}</div>}

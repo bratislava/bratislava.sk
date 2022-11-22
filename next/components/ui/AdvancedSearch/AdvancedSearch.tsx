@@ -90,7 +90,7 @@ export const AdvancedSearch = ({
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className={cx(
-            'h-14 rounded-l-none text-default px-6 shadow-none font-medium hover:bg-primary hover:text-white hover:color-white'
+            'h-14 rounded-l-none text-default px-6 shadow-none font-medium hover:bg-category-600 hover:text-white hover:color-white'
           )}
           variant="secondary-dark-text"
           onClick={handleSearch}
@@ -111,7 +111,7 @@ export const AdvancedSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="hover:color-white text-default h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-primary hover:text-white"
+          className="hover:color-white text-default h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-category-600 hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

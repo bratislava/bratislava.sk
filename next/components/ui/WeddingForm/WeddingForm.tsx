@@ -132,7 +132,7 @@ export const WeddingForm = () => {
               // error={errors?.email}
             >
               <InputAccessory
-                className="flex w-full justify-between text-primary"
+                className="flex w-full justify-between text-category-600"
                 iconPosition="right"
                 icon={<Calendar />}
               >
