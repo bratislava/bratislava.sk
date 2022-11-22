@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+export default `<?xml version="1.0" encoding="utf-8"?>
 <E-form xmlns="http://schemas.gov.sk/doc/eform/form/0.1" xsi:schemaLocation="http://schemas.gov.sk/doc/eform/form/0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Meta>
         <ID>00603481.dopravneZnacenie.sk</ID>
@@ -18,4 +18,4 @@
         <Email>exercitation</Email>
         <Phone>enim ex quis</Phone>
     </Body>
-</E-form>
+</E-form>`
