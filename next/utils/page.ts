@@ -2,6 +2,7 @@
 import {
   BlogPostFragment,
   BlogPostLinkFragment,
+  Enum_Pagecategory_Color,
   FileFragment,
   FooterFragment,
   MainMenuItemFragment,
@@ -127,6 +128,27 @@ export const transformColorToCategory = (pageColor: string): string => {
       break
   }
   return category
+}
+
+// Return hover text color by Enum_Pagecategory_Color
+export const getHoverColor = (color: Enum_Pagecategory_Color): string => {
+  switch (color) {
+    case Enum_Pagecategory_Color.Red:
+      return 'hover:text-main-600'
+    case Enum_Pagecategory_Color.Blue:
+      return 'hover:text-transport-600'
+    case Enum_Pagecategory_Color.Green:
+      return 'hover:text-environment-600'
+    case Enum_Pagecategory_Color.Yellow:
+      return 'hover:text-social-600'
+    case Enum_Pagecategory_Color.Purple:
+      return 'hover:text-education-600'
+    case Enum_Pagecategory_Color.Brown:
+      return 'hover:text-culture-600'
+
+    default:
+      return 'hover:text-gray-600'
+  }
 }
 
 // Page

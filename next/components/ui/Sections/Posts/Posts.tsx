@@ -2,7 +2,7 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
-import { transformColorToCategory } from '@utils/page'
+import { getHoverColor, transformColorToCategory } from '@utils/page'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -105,8 +105,11 @@ export const Posts = ({
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                          // TODO hover:text-color
-                            className="text-font mb-8 font-semibold underline hover:text-main-800"
+                          // TODO hover:text-color (still don't work)
+                          className={cx(
+                            `text-font mb-8 font-semibold underline`,
+                            getHoverColor(tag?.pageCategory.data.attributes.color),
+                          )}
                           >
                             {card.title}
                           </div>
