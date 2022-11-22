@@ -75,8 +75,10 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   }, [])
 
   const handleOneFile = (files: UploadMinioFile[]) => {
-    if (!files[0].isUploading && !files[0].errorMessage) {
+    if (!files[0]?.isUploading && !files[0]?.errorMessage) {
       onChange(files[0]?.file.name)
+    } else {
+      onChange("")
     }
   }
 
