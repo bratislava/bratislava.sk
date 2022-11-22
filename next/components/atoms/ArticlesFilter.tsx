@@ -3,9 +3,9 @@ import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratisla
 import { useTranslation } from 'next-i18next'
 
 export interface Card {
-  title: string
-  color: string
-  category: string
+  title: string | null | undefined
+  color: string | null | undefined
+  category: string | null | undefined
 }
 
 export interface ArticlesFilterProps {

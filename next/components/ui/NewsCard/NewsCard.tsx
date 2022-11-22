@@ -5,6 +5,7 @@ import cx from 'classnames'
 import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { ArrowRight, ChevronRight } from '../../../assets/images'
+import BratislavaPlaceholder from '../../../public/bratislava-placeholder.jpg'
 import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
@@ -17,9 +18,9 @@ export interface NewsCardProps {
     data?: {
       attributes?: {
         url?: string | null
-      }
-    }
-  }
+      } | null
+    } | null
+  } | null
   tag?: {
     data?: {
       attributes?: {
@@ -28,12 +29,12 @@ export interface NewsCardProps {
           data?: {
             attributes?: {
               color?: string | null
-            }
-          }
-        }
-      }
-    }
-  }
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
   title?: string | null
   excerpt?: string | null
   date_added?: string | null
@@ -46,7 +47,9 @@ export interface NewsCardProps {
 
 export const NewsCard = ({
   className,
-  coverImage,
+  coverImage = {
+    data: { attributes: { url: BratislavaPlaceholder } },
+  },
   tag,
   title,
   excerpt,
@@ -114,7 +117,9 @@ export const NewsCard = ({
                 onMouseLeave={exitListner}
                 icon={
                   isHover ? (
-                    <ArrowRight color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color} />
+                    <ArrowRight
+                      color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
+                    />
                   ) : (
                     <ChevronRight color="black" />
                   )
@@ -123,7 +128,9 @@ export const NewsCard = ({
                 <div
                   className="relative font-semibold"
                   style={{
-                    color: isHover ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color : 'black',
+                    color: isHover
+                      ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color
+                      : 'black',
                   }}
                 >
                   {readMoreText}
