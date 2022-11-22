@@ -18,7 +18,7 @@ import {
   SectionContainer,
   SubpageList,
 } from '@bratislava/ui-bratislava'
-import { pageStyle, parsePageLink } from '@utils/page'
+import { pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Head from 'next/head'
@@ -60,12 +60,13 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
   )
+  console.log(page);
   return (
     <BasePageLayout
       footer={footer}
       menuItems={menuItems}
       activeMenuItem={page?.pageCategory?.data?.id}
-      pageColor={page?.pageColor}
+      pageColor={transformColorToCategory(page?.pageColor)}
     >
       {page?.pageCategory?.data?.attributes?.color && (
         <style
@@ -77,8 +78,8 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       {/* Header */}
       <PageHeader
         className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
-        color="var(--secondary-color)"
-        transparentColor="var(--secondary-color--transparent)"
+        color="var(--category-color-100)"
+        transparentColor="var(--category-color-100--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
       >
         {/* meta discription */}

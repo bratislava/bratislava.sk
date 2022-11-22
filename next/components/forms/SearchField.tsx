@@ -67,19 +67,19 @@ const SearchField = (
   }
 
   const style = cx(
-    'w-full pl-12.5 px-4 py-2.5 border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed focus:placeholder:text-transparent',
+    'w-full pl-12.5 px-4 py-2.5 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700',
     className,
     {
       // conditions
       'pl-[52px]': leftIcon,
       // hover
-      'hover:border-form-input-hover': !disabled,
+      'hover:border-gray-400': !disabled,
 
       // error
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
 
       // disabled
-      'opacity-50 border-form-input-disabled': disabled,
+      'border-gray-300 bg-gray-100': disabled,
     },
   )
 

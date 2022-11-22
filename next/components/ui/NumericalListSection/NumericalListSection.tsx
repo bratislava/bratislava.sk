@@ -33,7 +33,7 @@ export const NumericalListSection = ({
     <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
       {hasBackground ? (
         <Waves
-          waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
+          waveColor={cx({ 'var(--category-color-100)': hasBackground }, { 'var(--background-color)': !hasBackground })}
           wavePosition="top"
           isRich
           backgroundColor="var(--background-color)"
@@ -45,8 +45,8 @@ export const NumericalListSection = ({
       <div
         className={cx(
           'flex justify-center flex-col items-center py-12',
-          { 'bg-secondary': hasBackground },
-          { 'bg-background': !hasBackground }
+          { 'bg-category-100': hasBackground },
+          { 'bg-gray-50': !hasBackground }
         )}
       >
         <div className="flex max-w-3xl flex-col">
@@ -69,7 +69,7 @@ export const NumericalListSection = ({
         {variant != 'roadmap' && buttonText && (
           <UILink href={href} className="pt-10">
             <Button
-              className="z-10 h-12 border-primary bg-primary px-6 text-base lg:h-14 lg:text-default"
+              className="z-10 h-12 border-category-600 bg-category-600 px-6 text-base lg:h-14 lg:text-default"
               variant="secondary-dark-text"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -82,7 +82,7 @@ export const NumericalListSection = ({
 
       {hasBackground ? (
         <Waves
-          waveColor={cx({ 'var(--secondary-color)': hasBackground }, { 'var(--background-color)': !hasBackground })}
+          waveColor={cx({ 'var(--category-color-100)': hasBackground }, { 'var(--background-color)': !hasBackground })}
           wavePosition="bottom"
           isRich
           backgroundColor="var(--background-color)"

@@ -17,8 +17,8 @@ interface SelectFieldProps {
   dropdownDivider?: boolean
   selectAllOption?: boolean
   placeholder?: string
-  description?: string
   errorMessage?: string
+  description?: string
   required?: boolean
   disabled?: boolean
   className?: string

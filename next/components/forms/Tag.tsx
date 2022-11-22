@@ -33,11 +33,11 @@ const Tag: FC<TagProps> = (
       'py-0.5': size === 'large',
       'rounded-lg': size === 'large',
       'rounded': size === 'small' || !size,
-      'bg-universal-gray-100': removable || !branded,
-      'text-universal-gray-700': (removable || !branded) && !isHovered,
-      'text-universal-gray-600': removable && isHovered,
-      'bg-secondary': !removable && branded,
-      'text-tertiary': !removable && branded,
+      'bg-gray-100': removable || !branded,
+      'text-gray-700': (removable || !branded) && !isHovered,
+      'text-gray-600': removable && isHovered,
+      'bg-category-200': !removable && branded,
+      'text-category-800': !removable && branded,
       'underline': !removable && isHovered
     },
     selectHashCode
