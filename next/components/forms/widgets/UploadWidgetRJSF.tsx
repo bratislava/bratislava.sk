@@ -57,7 +57,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
     }
   }
 
-  return <Upload type={type} value={value} className={className} sizeLimit={size} supportedFormats={supportedFormats}
+  return <Upload type={type} multiple={multiple} value={value} className={className} sizeLimit={size} supportedFormats={supportedFormats}
                  disabled={disabled} onChange={handleOnChange}/>
 }
 

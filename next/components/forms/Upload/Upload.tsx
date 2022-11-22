@@ -10,6 +10,7 @@ import cx from 'classnames'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
+  multiple?: boolean
   value?: UploadMinioFile[]
   disabled?: boolean
   sizeLimit?: number
@@ -19,7 +20,7 @@ interface UploadProps {
 }
 
 const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (props:UploadProps, ref: ForwardedRef<HTMLDivElement>) => {
-  const { type, value, disabled, sizeLimit, supportedFormats, className, onChange }: UploadProps = props
+  const { type, multiple, value, disabled, sizeLimit, supportedFormats, className, onChange }: UploadProps = props
 
   // STATES
   const [fileBrokenMessages, setFileBrokenMessages] = useState<string[]>([])
@@ -27,9 +28,21 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
   // HELPER FUNCTIONS
   const emitOnChange = (newFiles: UploadMinioFile[], oldFiles?: UploadMinioFile[]) => {
     if (onChange) {
-      const changedValue = oldFiles ? [...oldFiles, ...newFiles] : newFiles
+      const changedValue = multiple && oldFiles ? [...oldFiles, ...newFiles] : [...newFiles]
       onChange(changedValue)
     }
+  }
+
+  const removeFirstFile = () => {
+    if (!value) return
+    const fileName = value[0].file.name
+
+    deleteFile(fileName)
+      .then((res) => {
+        if (res.status !== 200) throw new Error(`Api response status: ${res.status}`)
+        return res
+      })
+      .catch(error => console.log(error))
   }
 
   const isFileInSizeLimit = (file : File) => {
@@ -80,32 +93,34 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 
   const addNewFiles = (newFiles: UploadMinioFile[]) => {
     const sanitizedFiles = sanitizeClientFiles(newFiles)
+    if (multiple && value && value[0]) {
+      removeFirstFile()
+    }
     emitOnChange(sanitizedFiles, value)
 
     sanitizedFiles.forEach((minioFile, id) => {
       uploadFile(minioFile.file)
         .then((res) => {
-          console.log("RES:", res)
-          sanitizedFiles[id].isUploading = false
-          emitOnChange(sanitizedFiles, value)
+          console.log("RES UPLOAD:", res)
           return res
         })
         .catch(error => {
           console.log(error)
           sanitizedFiles[id].errorMessage = "File not uploaded"
+        })
+        .finally(() => {
           sanitizedFiles[id].isUploading = false
           emitOnChange(sanitizedFiles, value)
         })
     })
   }
 
-  // EVENT HANDLERS
   const handleOnClickUpload = () => {
     if (disabled) return
 
     const uploadInput = document.createElement('input')
     uploadInput.type = 'file'
-    uploadInput.multiple = true
+    uploadInput.multiple = multiple === undefined ? false : multiple
     uploadInput.accept = supportedFormats?.toString() || ""
 
     uploadInput.addEventListener('change', () => {
