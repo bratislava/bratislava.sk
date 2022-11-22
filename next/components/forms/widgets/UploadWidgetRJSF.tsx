@@ -1,7 +1,7 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import { useState } from 'react'
-
+import cx from 'classnames'
 import Upload from '../Upload/Upload'
 import UploadRJSFOptions from '../Upload/UploadRJSFOptions'
 
@@ -30,6 +30,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
 
   const supportedFormats = accept?.split(",")
   const multiple = schema.type === "array"
+  const widgetClassName = cx("px-2 py-4", className)
 
   const [value, setValue] = useState<UploadMinioFile[]>([])
 
@@ -57,7 +58,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
     }
   }
 
-  return <Upload type={type} multiple={multiple} value={value} className={className} sizeLimit={size} supportedFormats={supportedFormats}
+  return <Upload type={type} multiple={multiple} value={value} className={widgetClassName} sizeLimit={size} supportedFormats={supportedFormats}
                  disabled={disabled} onChange={handleOnChange}/>
 }
 

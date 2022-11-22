@@ -3,10 +3,11 @@ import UploadIcon from '@assets/images/forms/upload-icon.svg'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
-import { UploadMinioFile } from '../../../backend/dtos/minio/upload-minio-file.dto'
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 
 interface UploadDropAreaProps {
   value?: UploadMinioFile[]
+  multiple?: boolean
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
@@ -17,7 +18,7 @@ interface UploadDropAreaProps {
 
 const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (props: UploadDropAreaProps, ref: ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick, onDrop }: UploadDropAreaProps = props
+  const { value, multiple, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick, onDrop }: UploadDropAreaProps = props
 
   // STATE
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
@@ -56,7 +57,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
     event.preventDefault()
     if (disabled) return
 
-    const droppedItems: DataTransferItem[] = [...event.dataTransfer.items]
+    const droppedItems: DataTransferItem[] = multiple ? [...event.dataTransfer.items] : [event.dataTransfer.items[0]]
     const newFiles = droppedItems.reduce(reduceItemsToFiles, [])
 
     setIsDraggedOver(false)

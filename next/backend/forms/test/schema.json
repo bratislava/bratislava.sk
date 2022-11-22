@@ -5,20 +5,37 @@
   "allOf": [
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
+        "fileUploads": {
+          "title": "Nahratie suborov",
           "required": [],
           "properties": {
-            "importOneFile": {
+            "importButtonOneFile": {
               "type": "string"
             },
-            "importMultipleFiles": {
+            "importButtonMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
+              "type": "string"
+            },
+            "importDragAndDropMultipleFiles": {
               "type": "array",
               "items": {
                 "type": "string"
               }
             }
           }
+        }
+      }
+    },
+    {
+      "properties": {
+        "ziadatel": {
+          "title": "Ziadatel",
+          "required": []
         }
       }
     },
