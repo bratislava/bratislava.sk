@@ -1,9 +1,9 @@
+/* eslint-disable no-secrets/no-secrets */
 import { describe } from '@jest/globals'
 
 import testXsd from '../../backend/forms/test/schema.xsd'
-import { validateDataWithXsd } from '../../backend/utils/forms'
+import { getEform, validateDataWithXsd } from '../../backend/utils/forms'
 
-// eslint-disable-next-line no-secrets/no-secrets
 const testXml = `<?xml version="1.0" encoding="utf-8"?>
 <E-form xmlns="http://schemas.gov.sk/doc/eform/form/0.1" xsi:schemaLocation="http://schemas.gov.sk/doc/eform/form/0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Meta>
@@ -49,5 +49,18 @@ describe('forms utils', () => {
   test('test validate test form with XSD schema', () => {
     const errors = validateDataWithXsd(testXml, testXsd)
     expect(errors).toHaveLength(0)
+  })
+
+  test('test eform', () => {
+    const eform = getEform('test')
+    expect(eform).toBeTruthy()
+  })
+
+  test('test not-exists eform', () => {
+    const getNotExistsEform = () => {
+        return getEform('');
+    }
+
+    expect(getNotExistsEform).toThrow('Invalid form name');
   })
 })
