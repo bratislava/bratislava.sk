@@ -1,6 +1,7 @@
 import { describe, test } from '@jest/globals'
 import textStylesheet from '../../backend/forms/00603481.dopravneZnacenie.sk/form.sb.sef.json'
-import { transform } from '../../utils/xslt'
+import { transform } from '../../backend/utils/xslt'
+
 
 const data = `
     <?xml version="1.0" encoding="utf-8"?>
