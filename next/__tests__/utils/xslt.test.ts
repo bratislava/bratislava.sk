@@ -1,9 +1,10 @@
 import { describe, test } from '@jest/globals'
+
 import textStylesheet from '../../backend/forms/00603481.dopravneZnacenie.sk/form.sb.sef.json'
 import { transform } from '../../backend/utils/xslt'
 
 
-const data = `
+const textXml = `
     <?xml version="1.0" encoding="utf-8"?>
     <E-form xmlns="http://schemas.gov.sk/doc/eform/00603481.dopravneZnacenie.sk/0.2"
             xsi:schemaLocation="http://schemas.gov.sk/doc/eform/00603481.dopravneZnacenie.sk/0.2"
@@ -193,7 +194,7 @@ const data = `
 
 describe('xslt utils', () => {
   test('test text transformation', async () => {
-    const text = await transform(textStylesheet, data)
+    const text = await transform(textStylesheet, textXml)
     expect(text).toBeTruthy()
   })
 })
