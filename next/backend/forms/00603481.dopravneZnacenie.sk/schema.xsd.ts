@@ -443,7 +443,7 @@ export default `<?xml version="1.0" encoding="utf-8"?>
   <xs:simpleType name="EMailType">
     <xs:restriction base="xs:string">
       <xs:pattern
-              value="([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,6}|[0-9]{1,3})(\]?)"/>
+              value="(([a-zA-Z0-9_]|[.]|[-])+)@(([0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.])|((([a-zA-Z0-9]|[-])+[.])+))([a-zA-Z]{2,6}|[0-9]{1,3})"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -452,7 +452,7 @@ export default `<?xml version="1.0" encoding="utf-8"?>
       <xs:element name="MedzinarodneVolacieCislo">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:pattern value="(((\+[1-9])|(\+[1-9][0-9]{1,8}))|((00[1-9])|(00[1-9][0-9]{1,7})))"/>
+            <xs:pattern value="((([+][1-9])|([+][1-9][0-9]{1,8}))|((00[1-9])|(00[1-9][0-9]{1,7})))"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
