@@ -47,7 +47,7 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
 export const loadAndBuildXml = (xmlTemplate: string, data: Json) => {
   const $ = cheerio.load(xmlTemplate, { xmlMode: true, decodeEntities: false })
   buildXmlRecursive(['E-form', 'Body'], $, data)
-  return $.html();
+  return $.html()
 }
 
 // TODO typing for schema
@@ -124,7 +124,10 @@ export const validateAndBuildXmlData = async (data: any, formName: unknown) => {
 // TODO create ajv instance once for BE, add async validations
 export const validateDataWithJsonSchema = (data: any, schema: any) => {
   const ajv = new Ajv()
+  ajv.addFormat('data-url', () => true)
+  ajv.addFormat('ciselnik', () => true)
   addFormats(ajv)
+  
   const validate = ajv.compile(schema)
   validate(data)
   return validate.errors || []
