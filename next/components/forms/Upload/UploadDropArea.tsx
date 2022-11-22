@@ -32,7 +32,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
   )
 
   const dragAndDropOverlayClassNames = cx(
-    "absolute inset-0 z-50 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
+    "absolute inset-0 z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
     {
       "cursor-not-allowed": disabled,
       "cursor-pointer": !disabled,
