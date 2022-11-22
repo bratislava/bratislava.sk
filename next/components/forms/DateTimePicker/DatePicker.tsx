@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject, useRef } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -10,13 +11,14 @@ import Popover from './Popover'
 
 type ButtonBase = {
   children?: ReactNode
+  className?: string
 }
 
-const Button = ({ children, ...rest }: ButtonBase) => {
+const Button = ({ children, className, ...rest }: ButtonBase) => {
   const ref = useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton({ children, ...rest }, ref)
   return (
-    <button className="focus:outline-none" type="button" {...buttonProps} ref={ref}>
+    <button className={cx('focus:outline-none', className)} type="button" {...buttonProps} ref={ref}>
       {children}
     </button>
   )
@@ -68,7 +70,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
               tooltip={tooltip}
               errorMessage={errorMessage}
             >
-              <Button {...buttonProps}>
+              <Button {...buttonProps} className={disabled ? 'opacity-50' : ''}>
                 <CalendarIcon />
               </Button>
             </DateField>

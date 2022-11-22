@@ -61,13 +61,13 @@ const TextAreaField = (
     className,
     {
       // hover
-      'hover:border-form-input-hover': !disabled,
+      'hover:border-gray-400': !disabled,
 
       // error
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
 
       // disabled
-      'opacity-50 border-form-input-disabled': disabled,
+      'border-gray-300 bg-gray-100': disabled,
     },
   )
   return (
