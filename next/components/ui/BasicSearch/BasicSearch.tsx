@@ -52,7 +52,7 @@ export const BasicSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="lg:flex h-14 hidden rounded-l-none px-6 shadow-none font-medium hover:bg-primary hover:text-white"
+          className="lg:flex h-14 hidden rounded-l-none px-6 shadow-none font-medium hover:bg-category-600 hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         >
@@ -61,7 +61,7 @@ export const BasicSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="lg:hidden h-14 rounded-l-none pr-6 shadow-none font-medium hover:bg-primary hover:text-white"
+          className="lg:hidden h-14 rounded-l-none pr-6 shadow-none font-medium hover:bg-category-600 hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

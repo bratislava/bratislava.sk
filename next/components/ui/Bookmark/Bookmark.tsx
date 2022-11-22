@@ -60,12 +60,16 @@ export const Bookmark = ({
 
   return (
     <div
-      className={cx(className, 'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out', {
-        'bg-blue-sea text-font': variantWithFallback === 'blue',
-        'bg-red-brick text-white': variantWithFallback === 'red',
-        'w-[700px]': isOpen,
-        'w-[70px] ml-[630px]': !isOpen,
-      })}
+      className={cx(
+        className,
+        'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out',
+        {
+          'bg-[#7CCEF2] text-font': variantWithFallback === 'blue',
+          'bg-main-600 text-white': variantWithFallback === 'red',
+          'w-[700px]': isOpen,
+          'w-[70px] ml-[630px]': !isOpen,
+        },
+      )}
       style={{
         minHeight: contentLoaded ? width + 2 * PADDING : undefined,
       }}
@@ -73,13 +77,16 @@ export const Bookmark = ({
     >
       <button
         className={cx('w-17.5 text-20-semibold', {
-          'bg-blue-sea-dark': variantWithFallback === 'blue',
-          'bg-red-brick-dark': variantWithFallback === 'red',
+          'bg-[#66BDE3]': variantWithFallback === 'blue',
+          'bg-main-700': variantWithFallback === 'red',
         })}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <span className="block w-[70px] origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
-          <span className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible" ref={ref}>
+          <span
+            className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible"
+            ref={ref}
+          >
             {bookmarkTitle}
           </span>
         </span>

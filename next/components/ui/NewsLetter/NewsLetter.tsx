@@ -56,10 +56,10 @@ export const NewsLetter = ({
           <div className="mt-8 mb-5 max-w-xs">
             <CheckBox
               id="newsletterCheckbox"
-              className="border-gray-light border-opacity-50"
+              className="border-gray-700/50 border-opacity-50"
               variant="circle"
               content={
-                <p className={cx('text-p2 -mt-1', { 'text-font': isChecked }, { 'text-gray-light': !isChecked })}>
+                <p className={cx('text-p2 -mt-1', { 'text-font': isChecked }, { 'text-font/50': !isChecked })}>
                   {checkBoxContent}
                 </p>
               }

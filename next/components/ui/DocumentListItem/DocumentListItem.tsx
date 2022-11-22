@@ -57,7 +57,7 @@ export const DocumentListItem = ({
         </div>
 
         {mainDocumentHref && (
-          <div className="pr-6 text-primary md:pr-0 lg:text-font">
+          <div className="pr-6 text-category-600 md:pr-0 lg:text-font">
             <a href={mainDocumentHref} download>
               <Download />
             </a>

@@ -1,6 +1,7 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { getNumericLocalDate } from '@utils/local-date'
+import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 import { RefObject, useEffect, useRef, useState } from 'react'
 
@@ -100,7 +101,7 @@ export const NewsCard = ({
           {tag?.data?.attributes?.title && (
             <Tag
               title={tag?.data?.attributes?.title}
-              color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
+              color={transformColorToCategory(tag?.data?.attributes?.pageCategory?.data?.attributes?.color)}
             />
           )}
           <h3 className="news-small-content text-h4">{title}</h3>
@@ -117,9 +118,7 @@ export const NewsCard = ({
                 onMouseLeave={exitListner}
                 icon={
                   isHover ? (
-                    <ArrowRight
-                      color={tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
-                    />
+                    <ArrowRight color={`rgb(var(--color-${transformColorToCategory(tag?.data?.attributes?.pageCategory?.data?.attributes?.color)}-600))`} />
                   ) : (
                     <ChevronRight color="black" />
                   )
@@ -128,9 +127,7 @@ export const NewsCard = ({
                 <div
                   className="relative font-semibold"
                   style={{
-                    color: isHover
-                      ? tag?.data?.attributes?.pageCategory?.data?.attributes?.color
-                      : 'black',
+                    color: isHover ? `rgb(var(--color-${transformColorToCategory(tag?.data?.attributes?.pageCategory?.data?.attributes?.color)}-600))` : 'black',
                   }}
                 >
                   {readMoreText}

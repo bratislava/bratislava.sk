@@ -35,7 +35,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       <div
         className="rounded-full"
         style={{
-          backgroundColor: 'var(--secondary-color)',
+          backgroundColor: 'var(--category-color-100)',
         }}
       >
         {icon?.data?.attributes?.url && <img className="h-32 w-32 p-5" src={icon.data.attributes.url} alt={title} />}
@@ -67,7 +67,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
           className="modal-content-rent max-w-[660px] max-h-104 overflow-y-auto rounded-2xl py-7 px-6 md:max-h-[610px] md:py-10 md:px-12"
           style={{
             // maxHeight: '600px',
-            backgroundColor: 'var(--secondary-color)',
+            backgroundColor: 'var(--category-color-100)',
           }}
         >
           <div className="mx-auto mb-8 h-24 w-24 rounded-full bg-white md:mx-0 md:h-40 md:w-40">

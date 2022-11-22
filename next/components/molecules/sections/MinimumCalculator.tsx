@@ -102,7 +102,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
   }
 
   return (
-    <div className={cx('text-center bg-secondary text-font', className)}>
+    <div className={cx('text-center bg-category-100 text-font', className)}>
       <p className="text-h3">{t('title')}</p>
       <p className="text-20-medium m-auto mt-6 w-10/12 pt-0.5">{t('description')}</p>
       <form className="text-20-medium mt-10 flex flex-col items-center gap-y-8" onSubmit={handleSubmit}>
@@ -151,7 +151,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
         />
 
         <Button
-          className="text-20-semibold mt-6 bg-primary py-3 px-5 text-font lg:py-4 lg:px-6"
+          className="text-20-semibold mt-6 bg-category-600 py-3 px-5 text-font lg:py-4 lg:px-6"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"

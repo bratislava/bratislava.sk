@@ -14,12 +14,12 @@ export const CheckBox = ({ className, id, content, variant = 'default', ...rest 
     <input type="checkbox" id={id} className="hidden" {...rest} />
     <div
       className={cx(
-        'border-primary border-2 text-white flex flex-0 items-center justify-center box-border overflow-hidden',
+        'border-category-600 border-2 text-white flex flex-0 items-center justify-center box-border overflow-hidden',
         {
           'rounded-5 w-8 h-8': variant === 'default',
           'rounded-full w-6 h-6': variant === 'circle',
-          'bg-primary': rest.checked,
-          'bg-input-nav-bg': !rest.checked,
+          'bg-category-600': rest.checked,
+          'bg-white': !rest.checked,
         },
         className
       )}

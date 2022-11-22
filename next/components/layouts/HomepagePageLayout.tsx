@@ -49,7 +49,7 @@ const HomepagePageLayout = ({
   }, [])
 
   return (
-    <div className={cx('bg-background font-inter', className)}>
+    <div className={cx('bg-gray-50 font-inter', className)}>
       <div className="h-14 w-full bg-white">
         <SectionContainer>
           <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />

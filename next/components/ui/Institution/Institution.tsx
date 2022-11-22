@@ -44,7 +44,7 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
     <div className={cx(className, 'text-font')}>
       {url ? (
         <UILink href={url}>
-          <InstitutionCard {...rest} className="group hover:border-primary">
+          <InstitutionCard {...rest} className="group hover:border-category-600">
             {urlLabel && (
               <div className="text-p2-semibold mt-6 flex items-center underline">
                 <span className="mr-5">{urlLabel}</span>

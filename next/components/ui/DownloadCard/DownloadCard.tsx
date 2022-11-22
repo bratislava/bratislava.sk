@@ -28,12 +28,12 @@ export const DownloadCard = ({
         hoverable
         className={cx(
           className,
-          'py-6 px-5 space-y-4 border-4 border-transparent hover:border-primary md:min-h-[154px]'
+          'py-6 px-5 space-y-4 border-4 border-transparent hover:border-category-600 md:min-h-[154px]'
         )}
       >
         <div className=" flex items-end space-x-5 lg:space-x-8">
           <span className="text-p2 max-h-24 w-[250px] overflow-hidden">{title}</span>
-          <span className="flex h-[88px] items-end justify-end text-primary">
+          <span className="flex h-[88px] items-end justify-end text-category-600">
             <Download />
           </span>
         </div>

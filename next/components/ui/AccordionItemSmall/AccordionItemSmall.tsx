@@ -50,9 +50,9 @@ export const AccordionItemSmall = ({
         className={cx(
           'rounded-lg drop-shadow-[0 8 24 black] py-3 px-4 md:py-4 md:px-6',
           {
-            'border-primary border-2 border-solid shadow-lg bg-secondary': active,
-            'border-2 border-primary bg-transparent': !active,
-            'md:hover:bg-secondary md:hover:stroke-current': !isDisabled && !active
+            'border-category-600 border-2 border-solid shadow-lg bg-category-100': active,
+            'border-2 border-category-600 bg-transparent': !active,
+            'md:hover:bg-category-100 md:hover:stroke-current': !isDisabled && !active
           },
           className
         )}
@@ -65,7 +65,7 @@ export const AccordionItemSmall = ({
             <div className="flex flex-row font-medium">
               <p className="text-p4-medium md:text-p2-medium text-left text-font">{title}</p>
               {secondaryTitle && (
-                <p className="text-left text-p4 text-gray-universal-500 md:text-p2">&nbsp;{secondaryTitle}</p>
+                <p className="text-left text-p4 text-font md:text-p2">&nbsp;{secondaryTitle}</p>
               )}
             </div>
           </span>

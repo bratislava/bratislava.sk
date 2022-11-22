@@ -2,10 +2,11 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import { getHoverColor, transformColorToCategory } from '@utils/page'
+import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
@@ -58,6 +59,8 @@ export const Posts = ({
 
   const { t } = useTranslation('common')
 
+
+
   return (
     <div className={cx(className)}>
       <HorizontalScrollWrapper className="-mx-8 justify-start space-x-4 px-8 lg:justify-center">
@@ -97,12 +100,16 @@ export const Posts = ({
                       <div key={i}>
                         {tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title} color={transformColorToCategory(tag.pageCategory.data.attributes.color)} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory.data.attributes.color}))]`}
+                          // TODO hover:text-color (still don't work)
+                          className={cx(
+                            `text-font mb-8 font-semibold underline`,
+                            getHoverColor(tag?.pageCategory.data.attributes.color),
+                          )}
                           >
                             {card.title}
                           </div>
@@ -117,7 +124,7 @@ export const Posts = ({
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-primary"
+                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -157,7 +164,7 @@ export const Posts = ({
           </div>
           <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
             <Button
-              className="text-20-medium px-6 py-3 shadow-none hover:text-primary"
+              className="text-20-medium px-6 py-3 shadow-none hover:text-category-600"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -183,12 +190,12 @@ export const Posts = ({
                       <div key={i}>
                         {card.tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag title={tag?.title} color={transformColorToCategory(tag.pageCategory.data.attributes.color)} />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag.pageCategory.data.attributes.color}))]`}
+                            className={`hover:text-${transformColorToCategory(tag.pageCategory.data.attributes.color)} mb-8 font-semibold underline`}
                           >
                             {card.title}
                           </div>
@@ -204,7 +211,7 @@ export const Posts = ({
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-primary"
+                      className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -231,7 +238,7 @@ export const Posts = ({
       {activeTab > 2 && (
         <div className="text-h4-normal mt-14 items-end px-8 text-center">
           {t('allInformationOnSite')}
-          <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
+          <UILink className="underline hover:text-gray-600" href="https://zverejnovanie.bratislava.sk">
             <div className="lg:hidden">
               <br />
             </div>

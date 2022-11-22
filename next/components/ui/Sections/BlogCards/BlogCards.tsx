@@ -35,7 +35,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                     <HorizontalCard className="min-h-56 w-[550px]" key={i} imageSrc={blogCard.imageSrc}>
                       <p className="line-clamp-4 text-p2 lg:text-p1 overflow-hidden text-ellipsis">{blogCard.title}</p>
                       <UILink
-                        className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
+                        className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline"
                         href={`${blogCard?.url}` || ''}
                       >
                         <span className="text-p2-semibold">{t('readMore')}</span>
@@ -64,7 +64,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           >
             <p className="line-clamp-4 text-p2 lg:text-p1 overflow-hidden text-ellipsis text-left">{blogCard.title}</p>
             <UILink
-              className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-primary underline"
+              className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline"
               href={`${blogCard?.url}` || ''}
             >
               <span className="text-p2-semibold">{t('readMore')}</span>

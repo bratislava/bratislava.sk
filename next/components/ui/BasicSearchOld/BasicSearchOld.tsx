@@ -50,7 +50,7 @@ export const BasicSearchOld = ({
           <Button
             icon={<SearchIcon className="scale-75" />}
             hoverIcon={<SearchIcon className="scale-75" />}
-            className="hover:color-white text-20-medium h-14 rounded-l-none px-6 capitalize shadow-none hover:bg-primary hover:text-white"
+            className="hover:color-white text-20-medium h-14 rounded-l-none px-6 capitalize shadow-none hover:bg-category-600 hover:text-white"
             variant="secondary-dark-text"
             onClick={() => onSubmit(input)}
           >
@@ -69,7 +69,7 @@ export const BasicSearchOld = ({
           <Button
             icon={<SearchIconSmallBlack />}
             hoverIcon={<SearchIconSmallWhite />}
-            className="hover:color-white text-16-medium h-11 px-12 capitalize shadow-none hover:bg-primary hover:text-white lg:h-14"
+            className="hover:color-white text-16-medium h-11 px-12 capitalize shadow-none hover:bg-category-600 hover:text-white lg:h-14"
             variant="secondary-dark-text"
             onClick={() => onSubmit(input)}
           >
