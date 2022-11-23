@@ -15,7 +15,8 @@
             },
             "cons": {
               "title": "Cons",
-              "type": "string"
+              "type": "string",
+              "default": "Defaultna hodnota"
             }
           }
         }
