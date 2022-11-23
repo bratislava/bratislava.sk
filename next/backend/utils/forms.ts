@@ -13,7 +13,12 @@ import { firstCharToUpper } from './strings'
 
 export type Json = string | number | boolean | null | { [property: string]: Json } | Json[]
 
-export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheerio.CheerioAPI, node: Json) => {
+export const buildXmlRecursive = (
+  currentPath: string[],
+  cheerioInstance: cheerio.CheerioAPI,
+  node: Json,
+  jsonSchema: JsonSchema | undefined
+) => {
   const nodeName = firstCharToUpper(last(currentPath))
   const parentPath = dropRight(currentPath).join(' ')
   // we always edit the last element added - important for arrays in xml, where multiple nodes match the same path
@@ -24,17 +29,29 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
     // this will make us add multiple nodes with same name at the same level
     // nested arrays will flatten
     node.forEach((item) => {
-      buildXmlRecursive(currentPath, cheerioInstance, item)
+      buildXmlRecursive(currentPath, cheerioInstance, item, jsonSchema)
     })
   } else if (node && typeof node === 'object') {
     // objects add one level of nesting to xml
     parentNode.append(`<${nodeName}></${nodeName}>`)
     Object.keys(node).forEach((key) => {
-      buildXmlRecursive([...currentPath, firstCharToUpper(key)], cheerioInstance, node[key])
+      const properties = getAllPossibleJsonSchemaProperties(jsonSchema)
+      buildXmlRecursive([...currentPath, firstCharToUpper(key)], cheerioInstance, node[key], properties[key])
     })
-  } else if (['string', 'number', 'boolean'].includes(typeof node)) {
+  } else if (node && typeof node === 'string') {
+    if (jsonSchema) {
+      const format = jsonSchema.type === 'array' ? jsonSchema.items?.format : jsonSchema.format
+      if (format === 'ciselnik') {
+        // TODO fill name
+        node = `<Code>${node}</Code><Name>${node}</Name><WsEnumCode>${node}</WsEnumCode>`
+      } else if (format === 'data-url') {
+        node = `<Nazov>${node}</Nazov><Prilozena>true</Prilozena>`
+      }
+    }
+
+    parentNode.append(`<${nodeName}>${node}</${nodeName}>`)
+  } else if (['number', 'boolean'].includes(typeof node)) {
     // only 'basic' types add actual information and not just nesting
-    // TODO handle decimal numbers
     parentNode.append(`<${nodeName}>${node}</${nodeName}>`)
   } else if (node == null) {
     // noop
@@ -44,10 +61,69 @@ export const buildXmlRecursive = (currentPath: string[], cheerioInstance: cheeri
   }
 }
 
-export const loadAndBuildXml = (xmlTemplate: string, data: Json) => {
+export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: JsonSchema) => {
   const $ = cheerio.load(xmlTemplate, { xmlMode: true, decodeEntities: false })
-  buildXmlRecursive(['E-form', 'Body'], $, data)
+  buildXmlRecursive(['E-form', 'Body'], $, data, jsonSchema)
   return $.html()
+}
+
+// simplified JsonSchema, used from package json-schema-xsd-tools
+/**
+ * JSON schema object
+ *
+ * Read more about [JSON schema](https://json-schema.org/).
+ */
+interface JsonSchema {
+  type: string
+  format?: string
+  title?: string | undefined
+  description?: string | undefined
+  properties?: JsonSchemaProperties | undefined
+  items?: JsonSchemaItems | undefined
+  required?: string[] | undefined
+  pattern?: string | undefined
+  enum?: string[] | undefined
+  then?: JsonSchema | undefined
+  oneOf?: JsonSchema[] | undefined
+  anyOf?: JsonSchema[] | undefined
+  allOf?: JsonSchema[] | undefined
+}
+
+interface JsonSchemaItems {
+  type: string
+  format?: string
+}
+
+interface JsonSchemaProperties {
+  [key: string]: JsonSchema
+}
+
+const getAllPossibleJsonSchemaProperties = (jsonSchema: JsonSchema | undefined): JsonSchemaProperties => {
+  if (!jsonSchema) {
+    return {}
+  }
+
+  let properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+  if (jsonSchema.then) {
+    properties = { ...properties, ...getAllPossibleJsonSchemaProperties(jsonSchema.then) }
+  }
+  if (jsonSchema.allOf) {
+    jsonSchema.allOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+  if (jsonSchema.oneOf) {
+    jsonSchema.oneOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+  if (jsonSchema.anyOf) {
+    jsonSchema.anyOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+
+  return properties
 }
 
 // TODO typing for schema
@@ -127,7 +203,9 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
   addFormats(ajv)
-  
+
+  ajv.addKeyword('example')
+
   const validate = ajv.compile(schema)
   validate(data)
   return validate.errors || []
