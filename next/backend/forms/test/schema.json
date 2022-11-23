@@ -12,31 +12,32 @@
             "school": {
               "type": "string",
               "title": "University",
-              "oneOf": [
-                {
-                  "title": "fakulta elektrotechniky a informatiky",
-                  "const": "STU FEI"
-                },
-                {
-                  "title": "fakulta informatiky a informacnych technologii",
-                  "const": "STU FIIT"
-                },
-                {
-                  "enum": ["STU FCHPT"]
-                }
+              "enum": [
+                "STU FEI",
+                "STU FCHPT",
+                "STU FIIT"
+              ],
+              "enumNames": [
+                "fakulta elektrotechniky a informatiky",
+                null,
+                "fakulta informatiky a informacnych technologii"
               ]
             },
             "diplomas": {
-              "type": "string",
+              "type": "array",
               "title": "Reached diplomas",
-              "enum": [
-                "ing.",
-                "mgr.",
-                "bc.",
-                "phd.",
-                "doc.",
-                "prof."
-              ]
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ing.",
+                  "mgr.",
+                  "bc.",
+                  "phd.",
+                  "doc.",
+                  "prof."
+                ]
+              }
             }
           }
         }
