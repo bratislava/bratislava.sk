@@ -38,7 +38,7 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       warning: <WarningIcon solid={solid} />,
     }
 
-    const alertContainer = cx('flex justify-between max-w-[480px] w-full rounded-8 px-5', className, {
+    const alertContainer = cx('flex justify-between max-w-[480px] w-full rounded-lg px-5', className, {
       'text-gray-800 flex-col py-4': variant === 'message',
       'bg-negative-100': type === 'error' && !solid,
       'bg-success-50': type === 'success' && !solid,
@@ -60,7 +60,7 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
 
     const contentStyle = cx('', {
       'text-sm font-normal leading-6': variant === 'basic',
-      'text-default leading-7 font-semibold': variant === 'message',
+      'text-h-base leading-7 font-semibold': variant === 'message',
     })
 
     const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
