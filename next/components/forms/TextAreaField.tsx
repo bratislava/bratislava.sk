@@ -7,7 +7,7 @@ import FieldHeader from './FieldHeader'
 
 interface TextAreaBase {
   label: string
-  placeholder: string
+  placeholder?: string
   errorMessage?: string
   description?: string
   className?: string
@@ -16,7 +16,7 @@ interface TextAreaBase {
   required?: boolean
   disabled?: boolean
   tooltip?: string
-  onChange?: (e: string) => void
+  onChange?: (value: string) => void
 }
 
 const TextAreaField = (

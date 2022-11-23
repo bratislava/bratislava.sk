@@ -1,5 +1,19 @@
 {
   "ui:submitButtonOptions": {
     "norender": true
+  },
+  "textAreas": {
+    "pros": {
+      "ui:widget": "TextArea",
+      "ui:label": false,
+      "ui:options": {
+        "description": "Here write pros",
+        "tooltip": "This is simple tooltip"
+      }
+    },
+    "cons": {
+      "ui:widget": "TextArea",
+      "ui:label": false
+    }
   }
 }
