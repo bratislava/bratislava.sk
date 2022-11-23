@@ -32,14 +32,6 @@
       }
     },
     {
-      "properties": {
-        "ziadatel": {
-          "title": "Ziadatel",
-          "required": []
-        }
-      }
-    },
-    {
       "required": [],
       "properties": {
         "email": {
