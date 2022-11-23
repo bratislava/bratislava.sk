@@ -2,7 +2,7 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
-  "ziadatel": {
+  "selectFields": {
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,

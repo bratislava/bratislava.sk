@@ -5,8 +5,8 @@
   "allOf": [
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
+        "selectFields": {
+          "title": "Ukazka Selectov",
           "required": ["school"],
           "properties": {
             "school": {
