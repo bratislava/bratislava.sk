@@ -15,7 +15,6 @@
             },
             "cons": {
               "title": "Cons",
-              "placeholder": "Write some cons please",
               "type": "string"
             }
           }

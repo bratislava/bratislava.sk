@@ -6,6 +6,7 @@
     "pros": {
       "ui:widget": "TextArea",
       "ui:label": false,
+      "ui:placeholder": "Write some cons please",
       "ui:options": {
         "description": "Here write pros",
         "tooltip": "This is simple tooltip"
