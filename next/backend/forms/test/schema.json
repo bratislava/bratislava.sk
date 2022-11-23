@@ -7,7 +7,7 @@
       "properties": {
         "textAreas": {
           "title": "Textove polia",
-          "required": ["cons"],
+          "required": ["pros"],
           "properties": {
             "pros": {
               "title": "Pros",
@@ -23,7 +23,7 @@
       }
     },
     {
-      "required": ["email"],
+      "required": [],
       "properties": {
         "email": {
           "type": "string"
