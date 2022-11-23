@@ -1,7 +1,6 @@
-import forms, { EFormKey, EFormValue } from '@backend/forms'
-import { validateDataWithJsonSchema } from '@backend/utils/forms'
+import { EFormValue } from '@backend/forms'
+import { getEform, loadAndBuildXml, validateDataWithJsonSchema, validateDataWithXsd } from '@backend/utils/forms'
 import { withSentry } from '@sentry/nextjs'
-import { forceString } from '@utils/utils'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -10,22 +9,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(req.body)
   if (req.method !== 'POST') return res.status(400).json({ message: 'Invalid method or missing "data" field on body' })
 
-  let formSlug: EFormKey | undefined
-  let eform: EFormValue | undefined
+  let eform: EFormValue
   try {
-    formSlug = forceString(req.query.id) as EFormKey
-    eform = forms[formSlug]
-    if (!eform) return { notFound: true }
+    eform = getEform(req.query.id)
   } catch (error) {
     console.error(error)
-    return { notFound: true }
+    return res.status(400).json({ message: 'Invalid form name or url' })
   }
 
-  const errors = validateDataWithJsonSchema(req.body, eform.schema)
+  let errors = []
+  errors = validateDataWithJsonSchema(req.body, eform.schema)
+  if (errors.length > 0) return res.status(400).json({ message: `Data did not pass JSON validation`, errors })
 
-  // TODO convert to xml && validate it against xsd schema around here - if it does not pass, return errors
-
-  if (errors) return res.status(400).json({ message: `Data did not pass validation`, errors })
+  const xml = loadAndBuildXml(eform.xmlTemplate, req.body)
+  errors = validateDataWithXsd(xml, eform.xsd)
+  if (errors.length > 0) return res.status(400).json({ message: `Data did not pass XSD validation`, errors })
 
   // TODO when no errors, send the xml to slovensko.sk BE
 
