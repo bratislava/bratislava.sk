@@ -1,38 +1,32 @@
-// @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable unicorn/consistent-destructuring */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import {
+  ComponentBlocksHomepageHeader,
+  Homepage as HomepageType,
+} from '@bratislava/strapi-sdk-homepage'
 import {
   BlogCards,
   InBaCard,
-  PageHeader,
-  PageTitle,
   Posts,
   PrimatorCouncil,
   SectionContainer,
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
-import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
-// import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
-// import { GetServerSidePropsContext } from 'next'
-// import Image from 'next/image'
-import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import * as React from 'react'
+import React from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
+import { WelcomeSection } from '../components/sections/WelcomeSection'
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -156,55 +150,27 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
-  // Commented below line for reference.
-  // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
-  const { pageTitle, posts } = data
+  const { posts } = data
 
-  const menuItems = parseMainMenu(mainMenu)
+  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
-      <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
-        <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
-          {/* meta description */}
-          <Head>
-            <title>{homepage?.data?.attributes?.title}</title>
-            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
-          </Head>
-        </PageHeader>
-
-        <div className="bg-white">
-          <SectionContainer>
-            <div className="lg:pt-18 flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pb-10">
-              <PageTitle className="flex-1 pb-4" title={header?.title} subtitle={header?.subtitle} />
-              <img
-                className="hidden sm:block"
-                width={721}
-                height={364}
-                src={header?.picture?.data?.attributes?.url}
-                alt="Bratislava Hero"
-              />
-              <img
-                className="sm:hidden"
-                width={721}
-                height={364}
-                src={header?.mobilePicture?.data?.attributes?.url}
-                alt="Bratislava Hero"
-              />
-            </div>
-            <HomepageMenu items={menuItems} />
-          </SectionContainer>
-          <Waves
-            className="md:mt-18 mt-6"
-            waveColor="white"
-            wavePosition="bottom"
-            isRich
-            backgroundColor="var(--background-color)"
+      <HomepagePageLayout
+        menuItems={menuItems}
+        footer={(footer && parseFooter(footer)) ?? undefined}
+        bookmarks={cards}
+      >
+        {homepage?.data?.attributes && header && (
+          <WelcomeSection
+            homepageData={homepage.data.attributes as HomepageType}
+            mainMenuItems={menuItems}
+            headerAttribute={header as ComponentBlocksHomepageHeader}
           />
-        </div>
+        )}
 
         <SectionContainer>
           <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
