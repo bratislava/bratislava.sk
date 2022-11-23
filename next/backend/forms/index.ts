@@ -8,6 +8,10 @@ import dopravneZnacenieSchema from './00603481.dopravneZnacenie.sk/schema.json'
 import dopravneZnacenieXsd from './00603481.dopravneZnacenie.sk/schema.xsd'
 import dopravneZnacenieUiSchema from './00603481.dopravneZnacenie.sk/uiSchema.json'
 import dopravneZnacenieXmlTemplate from './00603481.dopravneZnacenie.sk/xmlTemplate'
+import kontajneroveStojiskaSchema from './kontajneroveStojiska/schema.json'
+import kontajneroveStojiskaXsd from './kontajneroveStojiska/schema.xsd'
+import kontajneroveStojiskaUiSchema from './kontajneroveStojiska/uiSchema.json'
+import kontajneroveStojiskaXmlTemplate from './kontajneroveStojiska/xmlTemplate'
 import testHtmlStylesheet from './test/form.html.sef.json'
 import testTextStylesheet from './test/form.sb.sef.json'
 import testSchema from './test/schema.json'
@@ -23,6 +27,14 @@ const eforms = {
     xmlTemplate: dopravneZnacenieXmlTemplate,
     textStylesheet: dopravneZnacenieTextStylesheet,
     htmlStylesheet: dopravneZnacenieHtmlStylesheet,
+  },
+  kontajneroveStojiska: {
+    schema: kontajneroveStojiskaSchema,
+    uiSchema: kontajneroveStojiskaUiSchema,
+    xsd: kontajneroveStojiskaXsd,
+    xmlTemplate: kontajneroveStojiskaXmlTemplate,
+    textStylesheet: null,
+    htmlStylesheet: null,
   },
   test: {
     schema: testSchema,
