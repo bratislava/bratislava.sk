@@ -12,7 +12,6 @@
             "school": {
               "type": "string",
               "title": "University",
-              "placeholder": "Tu pis",
               "oneOf": [
                 {
                   "title": "fakulta elektrotechniky a informatiky",
