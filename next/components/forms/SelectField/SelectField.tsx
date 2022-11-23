@@ -53,11 +53,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STYLES
   const selectClassName = cx (
-    "flex flex-row w-80 min-h-min bg-white rounded-lg border-2 border-form-input-default",
+    "flex flex-row w-80 min-h-min bg-white rounded-lg border-2 border-gray-200",
     {
-      'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed': !disabled,
+      'hover:border-gray-400 focus:border-gray-700 active:border-gray-700': !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
-      'opacity-50 border-form-input-disabled': disabled,
+      'opacity-50 border-gray-300': disabled,
     }
   )
 

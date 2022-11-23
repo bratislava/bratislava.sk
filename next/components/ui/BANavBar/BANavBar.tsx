@@ -52,12 +52,12 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         id="desktop-navbar"
         className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}
       >
-        <div className="max-w-screen-1.5lg border-gray-universal-200 m-auto hidden h-[57px] w-full items-center justify-between border-b lg:flex">
+        <div className="m-auto hidden h-[57px] w-full max-w-screen-1.5lg items-center justify-between border-b border-gray-200 lg:flex">
           <Brand
             className="group flex-1"
             url="/"
             title={
-              <p className="text-sm text-font group-hover:text-red-universal-300">
+              <p className="text-sm text-font group-hover:text-gray-600">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -65,9 +65,9 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             }
           />
 
-          <nav className="text-gray-dark flex gap-x-8 font-semibold">
-            <div className="text-gray-dark flex items-center gap-x-8 font-semibold">
-              <Link href={t('searchLink')} variant="plain" className="p-4 -mr-4">
+          <nav className="text-font/75 flex gap-x-8 font-semibold">
+            <div className="text-font/75 flex items-center gap-x-8 font-semibold">
+              <Link href={t('searchLink')} variant="plain" className="p-4">
                 <SearchIcon />
               </Link>
 
@@ -83,7 +83,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap py-4">
                 {t('eservices')}
               </Link>
-              <div className="text-gray-dark relative flex items-center bg-transparent">
+              <div className="text-font/75 relative flex items-center bg-transparent">
                 <LanguageSelect
                   className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
                   {...languageSelectProps}
@@ -98,13 +98,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center justify-between px-7.5 -mx-7.5 shadow-md drop-shadow-md',
+          'h-16 flex items-center justify-between py-5 px-8 -mx-8 shadow-md drop-shadow-md',
           'lg:hidden fixed top-0 w-full bg-white z-50'
         )}
       >
         <Brand url="/" />
         <div className={cx('flex items-center gap-x-5')}>
-          <div className="text-h4 text-gray-light relative flex cursor-pointer items-center bg-transparent">
+          <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
             <Link href={t('searchLink')} variant="plain" className="p-4">
               <SearchIcon />
             </Link>
@@ -127,15 +127,15 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
       <CookieConsent />
       {/* Cookie advanced options, kept in case they need resurrecting */}
       {/* {showModal ? (
-        <div className="fixed inset-0 z-50 bg-transperentBG px-6">
+        <div className="fixed inset-0 z-50 bg-gray-800/50 px-6">
           <div className="relative top-1/2 mx-auto max-w-[1110px] -translate-y-1/2 rounded-lg bg-white shadow">
             <div
-              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-primary text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-72 md:w-72"
+              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-category-600 text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-18 md:w-18"
               onClick={() => setShowModal(false)}
             >
               <HamburgerCloseWhite />
             </div>
-            <div className="max-h-90Vh overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
+            <div className="max-h-[90vh] overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
                 <h5 className="cursor-pointer text-default font-semibold md:text-md">
                   {' '}
@@ -212,7 +212,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               </div>
               <div className="block items-center justify-between md:flex">
                 <Button
-                  className="mx-auto mb-3 h-12 bg-primary px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
+                  className="mx-auto mb-3 h-12 bg-category-600 px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
                   onClick={saveSettings}
                 >
                   {' '}
@@ -310,7 +310,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div className="relative flex w-[50px] cursor-pointer items-center" ref={ref} onClick={handleClick}>
+    <div className="relative flex w-12 cursor-pointer items-center" ref={ref} onClick={handleClick}>
       <div className="font-light lg:font-semibold">{current.toUpperCase()} </div>
       <ChevronDownSmall
         className={`ml-3 hidden mix-blend-normal lg:flex ${
@@ -318,12 +318,12 @@ const LanguageSelect = ({
         }`}
       />
       {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-[46px] cursor-default flex-col items-center justify-center lg:left-0">
+        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-11 cursor-default flex-col items-center justify-center lg:left-0">
           <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-[#F8D7D4]" />
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3 mt-3 h-6 w-[22px] text-[#333333] hover:font-semibold"
+                className="text-p3 hover:text-p3 mt-3 h-6 w-6 text-font hover:font-semibold"
                 key={option.key}
                 onClick={handleChange}
               >

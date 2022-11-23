@@ -244,7 +244,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
         key={section.position}
         isRich={section.isRich ?? undefined}
         backgroundColor="var(--background-color)"
-        waveColor="var(--secondary-color)"
+        waveColor="var(--category-color-100)"
         wavePosition={section.position ?? 'top'}
       />
     )
@@ -268,8 +268,8 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-[42px] md:pt-18', {
-        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
+      className={cx('pt-10 md:pt-18', {
+        'pb-14 md:pb-18 bg-category-100': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

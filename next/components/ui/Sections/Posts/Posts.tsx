@@ -1,11 +1,16 @@
 // @ts-strict-ignore
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  LatestBlogsFragment,
+  LatestBlogsWithTagsQuery,
+  NewsCardBlogFragment,
+} from '@bratislava/strapi-sdk-homepage'
+import { getHoverColor, transformColorToCategory } from '@utils/page'
+import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import useSWR from 'swr'
 
 import { Button } from '../../Button/Button'
@@ -19,14 +24,14 @@ export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
 export interface PostsProps {
   className?: string
-  posts?: TPostsTab[]
+  posts: TPostsTab[] | undefined
   // latestPost?: BlogPost[]
-  latestPost?: LatestBlogsFragment
-  leftHighLight?: NewsCardBlogFragment | null
-  rightHighLight?: NewsCardBlogFragment | null
+  latestPost: LatestBlogsFragment | null | undefined
+  leftHighLight: NewsCardBlogFragment | null | undefined
+  rightHighLight: NewsCardBlogFragment | null | undefined
   readMoreText?: string
   readMoreNewsText?: string
-  rozkoPosts?: any
+  rozkoPosts: LatestBlogsWithTagsQuery['blogPosts']
 }
 
 export const Posts = ({
@@ -45,8 +50,9 @@ export const Posts = ({
   const [activeNewsCards] = React.useState<NewsCardProps[]>(activePosts?.newsCards ?? [])
 
   // TODO handle loading and errors
-  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>('/api/ginis/newest', () =>
-    fetch('/api/ginis/newest').then((res) => res.json())
+  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>(
+    '/api/ginis/newest',
+    () => fetch('/api/ginis/newest').then((res) => res.json()),
   )
   const documents = officialBoardData || []
 
@@ -78,15 +84,19 @@ export const Posts = ({
       {activeTab === 0 && (
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
+            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
                   <div key={i}>
                     <NewsCard {...newsCard} />
                   </div>
                 ))}
-              {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
-              {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
+              {leftHighLight && (
+                <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />
+              )}
+              {rightHighLight && (
+                <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />
+              )}
 
               {latestPost?.data?.length > 0 && (
                 <div className="hidden lg:block">
@@ -97,12 +107,21 @@ export const Posts = ({
                       <div key={i}>
                         {tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag
+                              title={tag?.title}
+                              color={transformColorToCategory(
+                                tag.pageCategory.data.attributes.color,
+                              )}
+                            />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag?.pageCategory.data.attributes.color}))]`}
+                            // TODO hover:text-color (still don't work)
+                            className={cx(
+                              `text-font mb-8 font-semibold underline`,
+                              getHoverColor(tag?.pageCategory.data.attributes.color),
+                            )}
                           >
                             {card.title}
                           </div>
@@ -117,7 +136,7 @@ export const Posts = ({
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-category-600"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -132,7 +151,7 @@ export const Posts = ({
             <UILink href={t('allNewsLink')}>
               <Button
                 variant="transparent"
-                className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+                className="text-default mt-0 px-6 py-2 font-medium shadow-none"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -155,9 +174,12 @@ export const Posts = ({
               />
             ))}
           </div>
-          <UILink href="/mesto-bratislava/transparentne-mesto/uradna-tabula" className="flex justify-center">
+          <UILink
+            href="/mesto-bratislava/transparentne-mesto/uradna-tabula"
+            className="flex justify-center"
+          >
             <Button
-              className="px-6 py-3 text-default font-medium shadow-none hover:text-primary"
+              className="text-default px-6 py-3 font-medium shadow-none hover:text-category-600"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -170,9 +192,13 @@ export const Posts = ({
       {activeTab === 2 && (
         <div className="mt-8 block lg:mt-14">
           <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-7.5">
-              {rozkoPosts?.data[0] && <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />}
-              {rozkoPosts?.data[1] && <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />}
+            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
+              {rozkoPosts?.data[0] && (
+                <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />
+              )}
+              {rozkoPosts?.data[1] && (
+                <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />
+              )}
 
               {rozkoPosts?.data?.length > 2 && (
                 <div className="hidden lg:block">
@@ -183,12 +209,19 @@ export const Posts = ({
                       <div key={i}>
                         {card.tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={tag.pageCategory.data.attributes.color} />
+                            <Tag
+                              title={tag?.title}
+                              color={transformColorToCategory(
+                                tag.pageCategory.data.attributes.color,
+                              )}
+                            />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-[color:rgb(var(--color- mb-8 font-semibold underline${tag.pageCategory.data.attributes.color}))]`}
+                            className={`hover:text-${transformColorToCategory(
+                              tag.pageCategory.data.attributes.color,
+                            )} mb-8 font-semibold underline`}
                           >
                             {card.title}
                           </div>
@@ -204,7 +237,7 @@ export const Posts = ({
                   <UILink href={t('rozkopavkyNews')}>
                     <Button
                       variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-primary"
+                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-category-600"
                       icon={<ChevronRight />}
                       hoverIcon={<ArrowRight />}
                     >
@@ -219,7 +252,7 @@ export const Posts = ({
             {/* TODO: change this button to custom button */}
             <Button
               variant="transparent"
-              className="mt-0 px-6 py-2 text-default font-medium shadow-none"
+              className="text-default mt-0 px-6 py-2 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >
@@ -231,7 +264,10 @@ export const Posts = ({
       {activeTab > 2 && (
         <div className="text-h4 mt-14 items-end px-8 text-center font-normal">
           {t('allInformationOnSite')}
-          <UILink className="underline hover:text-red-brick" href="https://zverejnovanie.bratislava.sk">
+          <UILink
+            className="underline hover:text-gray-600"
+            href="https://zverejnovanie.bratislava.sk"
+          >
             <div className="lg:hidden">
               <br />
             </div>
@@ -244,7 +280,12 @@ export const Posts = ({
       <div className="mt-9 hidden">
         <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
           {activeNewsCards.map((newsItem, index) => (
-            <NewsCard key={index} readMoreText={readMoreText} className="w-11/12 shrink-0" {...newsItem} />
+            <NewsCard
+              key={index}
+              readMoreText={readMoreText}
+              className="w-11/12 shrink-0"
+              {...newsItem}
+            />
           ))}
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
@@ -252,7 +293,7 @@ export const Posts = ({
           <UILink href={t('allNewsLink')}>
             <Button
               variant="transparent"
-              className="mt-9 px-6 py-2 text-default font-medium shadow-none"
+              className="text-default mt-9 px-6 py-2 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >

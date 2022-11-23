@@ -12,8 +12,8 @@ export const SectionContainer = ({
   ...rest
 }: React.HTMLAttributes<HTMLDivElement> & SectionContainerProps) => (
   <div
-    className={cx(className, 'px-7.5', {
-      'bg-secondary': hasBackground === true,
+    className={cx(className, 'px-8', {
+      'bg-category-100': hasBackground === true,
     })}
     {...rest}
   >
