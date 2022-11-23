@@ -47,7 +47,6 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   } = options
 
   const type = schema.type === "array" ? "multiple" : "one"
-  const [innerValue, setInnerValue] = useState<EnumOptionsType[]>([])
 
   const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
     const optionValues: string[] = newValue.map(option => option.value as string)
@@ -63,7 +62,6 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   const handleOnChange = (newValue: EnumOptionsType[]) => {
-    setInnerValue(newValue)
     if (type === "multiple") {
       handleOnChangeMultiple(newValue)
     } else {
@@ -71,8 +69,39 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     }
   }
 
+  const handleTransformOne = (): EnumOptionsType[] => {
+    const transformedValue: EnumOptionsType[] = []
+    if (!enumOptions || Array.isArray(value)) return transformedValue
 
-  return <SelectField type={type} label={label} enumOptions={enumOptions} value={innerValue}
+    for (const option of enumOptions) {
+      if (option.value === value) {
+        transformedValue.push(option)
+        break
+      }
+    }
+    return transformedValue
+  }
+
+  const handleTransformMultiple = (): EnumOptionsType[] => {
+    const transformedValue: EnumOptionsType[] = []
+    if (!enumOptions || !Array.isArray(value)) return transformedValue
+
+    value.forEach(optionValue => {
+      enumOptions.forEach(option => {
+        if (option.value === optionValue) {
+          transformedValue.push(option)
+        }
+      })
+    })
+
+    return transformedValue
+  }
+
+  const transformValue = (): EnumOptionsType[] => {
+    return type === "multiple" ? handleTransformMultiple() : handleTransformOne()
+  }
+
+  return <SelectField type={type} label={label} enumOptions={enumOptions} value={transformValue()}
                       selectAllOption={selectAllOption} placeholder={placeholder} description={description}
                       tooltip={tooltip} dropdownDivider={dropdownDivider} errorMessage={errorMessage}
                       required={required} disabled={disabled} className={className} onChange={handleOnChange} />
