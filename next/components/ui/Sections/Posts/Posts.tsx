@@ -1,7 +1,11 @@
 // @ts-strict-ignore
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { LatestBlogsFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  LatestBlogsFragment,
+  LatestBlogsWithTagsQuery,
+  NewsCardBlogFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import { getHoverColor, transformColorToCategory } from '@utils/page'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
@@ -20,14 +24,14 @@ export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
 export interface PostsProps {
   className?: string
-  posts?: TPostsTab[]
+  posts: TPostsTab[] | undefined
   // latestPost?: BlogPost[]
-  latestPost?: LatestBlogsFragment | null
-  leftHighLight?: NewsCardBlogFragment | null
-  rightHighLight?: NewsCardBlogFragment | null
+  latestPost: LatestBlogsFragment | null | undefined
+  leftHighLight: NewsCardBlogFragment | null | undefined
+  rightHighLight: NewsCardBlogFragment | null | undefined
   readMoreText?: string
   readMoreNewsText?: string
-  rozkoPosts?: any
+  rozkoPosts: LatestBlogsWithTagsQuery['blogPosts']
 }
 
 export const Posts = ({
@@ -103,16 +107,21 @@ export const Posts = ({
                       <div key={i}>
                         {tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={transformColorToCategory(tag.pageCategory.data.attributes.color)} />
+                            <Tag
+                              title={tag?.title}
+                              color={transformColorToCategory(
+                                tag.pageCategory.data.attributes.color,
+                              )}
+                            />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                          // TODO hover:text-color (still don't work)
-                          className={cx(
-                            `text-font mb-8 font-semibold underline`,
-                            getHoverColor(tag?.pageCategory.data.attributes.color),
-                          )}
+                            // TODO hover:text-color (still don't work)
+                            className={cx(
+                              `text-font mb-8 font-semibold underline`,
+                              getHoverColor(tag?.pageCategory.data.attributes.color),
+                            )}
                           >
                             {card.title}
                           </div>
@@ -200,12 +209,19 @@ export const Posts = ({
                       <div key={i}>
                         {card.tag && (
                           <div className="mb-5">
-                            <Tag title={tag?.title} color={transformColorToCategory(tag.pageCategory.data.attributes.color)} />
+                            <Tag
+                              title={tag?.title}
+                              color={transformColorToCategory(
+                                tag.pageCategory.data.attributes.color,
+                              )}
+                            />
                           </div>
                         )}
                         <UILink href={`blog/${card.slug}`}>
                           <div
-                            className={`hover:text-${transformColorToCategory(tag.pageCategory.data.attributes.color)} mb-8 font-semibold underline`}
+                            className={`hover:text-${transformColorToCategory(
+                              tag.pageCategory.data.attributes.color,
+                            )} mb-8 font-semibold underline`}
                           >
                             {card.title}
                           </div>
@@ -248,7 +264,10 @@ export const Posts = ({
       {activeTab > 2 && (
         <div className="text-h4 mt-14 items-end px-8 text-center font-normal">
           {t('allInformationOnSite')}
-          <UILink className="underline hover:text-gray-600" href="https://zverejnovanie.bratislava.sk">
+          <UILink
+            className="underline hover:text-gray-600"
+            href="https://zverejnovanie.bratislava.sk"
+          >
             <div className="lg:hidden">
               <br />
             </div>

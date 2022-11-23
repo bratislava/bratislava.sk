@@ -18,7 +18,7 @@ import { parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import * as React from 'react'
+import React from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -152,7 +152,7 @@ const Homepage = ({
 }: AsyncServerProps<typeof getStaticProps>) => {
   const { posts } = data
 
-  const menuItems = parseMainMenu(mainMenu)
+  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
@@ -164,11 +164,13 @@ const Homepage = ({
         footer={(footer && parseFooter(footer)) ?? undefined}
         bookmarks={cards}
       >
-        <WelcomeSection
-          homepageData={homepage?.data?.attributes as HomepageType}
-          mainMenuItems={menuItems}
-          headerAttribute={header as ComponentBlocksHomepageHeader}
-        />
+        {homepage?.data?.attributes && header && (
+          <WelcomeSection
+            homepageData={homepage.data.attributes as HomepageType}
+            mainMenuItems={menuItems}
+            headerAttribute={header as ComponentBlocksHomepageHeader}
+          />
+        )}
 
         <SectionContainer>
           <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />

@@ -270,9 +270,9 @@ export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
 
 // Main Menu
 // TODO
-export const parseMainMenu = (menu?: MainMenuItemFragment | null): MenuMainItem[] =>
+export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
   sortBy(
-    menu?.data.map((item) => ({
+    menu.data.map((item) => ({
       id: item.id ?? '',
       color: `rgb(var(${
         getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c100

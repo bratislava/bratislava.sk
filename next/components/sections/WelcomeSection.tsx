@@ -7,13 +7,13 @@ import {
   Waves,
 } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
-import { Maybe } from 'graphql/jsutils/Maybe'
 import Head from 'next/head'
 
 interface Props {
-  homepageData?: Maybe<Pick<Homepage, 'metaDescription' | 'title'>>
-  headerAttribute?: Maybe<
-    Pick<ComponentBlocksHomepageHeader, 'title' | 'subtitle' | 'picture' | 'mobilePicture'>
+  homepageData: Pick<Homepage, 'metaDescription' | 'title'>
+  headerAttribute: Pick<
+    ComponentBlocksHomepageHeader,
+    'title' | 'subtitle' | 'picture' | 'mobilePicture'
   >
   mainMenuItems: MenuMainItem[]
 }
