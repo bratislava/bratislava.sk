@@ -21,6 +21,13 @@
         "selectAllOption": true,
         "className": "px-2 py-4"
       }
+    },
+    "years": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:options": {
+        "className": "px-2 py-4"
+      }
     }
   }
 }

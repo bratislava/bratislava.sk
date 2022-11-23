@@ -1,7 +1,7 @@
 import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { useState } from 'react'
 
 import SelectField from '../SelectField/SelectField'
-import { useState } from 'react'
 
 type SelectRJSFOptions = {
   enumOptions?: EnumOptionsType[]
@@ -16,13 +16,13 @@ type SelectRJSFOptions = {
 interface SelectFieldWidgetRJSFProps extends WidgetProps{
   label: string
   options: SelectRJSFOptions
-  value: string|string[]
+  value: any|any[]
   errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string
   schema: StrictRJSFSchema
-  onChange: (value: string|string[]) => void;
+  onChange: (value: any|any[]) => void;
 }
 
 const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
@@ -49,15 +49,15 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   const type = schema.type === "array" ? "multiple" : "one"
 
   const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
-    const optionValues: string[] = newValue.map(option => option.value as string)
+    const optionValues: any[] = newValue.map(option => option.value)
     onChange(optionValues)
   }
 
   const handleOnChangeOne = (newValue: EnumOptionsType[]) => {
     if (newValue[0]) {
-      onChange(newValue[0].value as string)
+      onChange(newValue[0].value)
     } else {
-      onChange("")
+      onChange(null)
     }
   }
 

@@ -171,7 +171,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   const getFilteredOptions = (): EnumOptionsType[] => {
     return enumOptions
-      ? enumOptions.filter((option: { value: string }) => option.value.toLowerCase().includes(filter.toLowerCase()))
+      ? enumOptions.filter((option:EnumOptionsType) => String(option.value).toLowerCase().includes(filter.toLowerCase()))
       : []
   }
 
