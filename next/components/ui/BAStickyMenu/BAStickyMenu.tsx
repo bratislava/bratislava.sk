@@ -28,7 +28,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
   <div className="flex h-[106px] w-40 flex-col items-center " onClick={handleClick}>
     <StickyMenuTopper
       style={{ color: item.colorDark }}
-      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-32', {
+      className={cx('absolute top-0 transition opacity-0 group-hover:opacity-100 w-30', {
         'opacity-100': isActive,
       })}
     />
