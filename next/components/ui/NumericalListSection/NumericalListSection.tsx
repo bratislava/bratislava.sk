@@ -33,10 +33,13 @@ export const NumericalListSection = ({
     <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
       {hasBackground ? (
         <Waves
-          waveColor={cx({ 'var(--category-color-100)': hasBackground }, { 'var(--background-color)': !hasBackground })}
+          waveColor={cx(
+            { 'var(--category-color-100)': hasBackground },
+            // { 'var(--background-color)': !hasBackground },
+          )}
           wavePosition="top"
           isRich
-          backgroundColor="var(--background-color)"
+          // backgroundColor="var(--background-color)"
         />
       ) : (
         ''
@@ -46,7 +49,7 @@ export const NumericalListSection = ({
         className={cx(
           'flex justify-center flex-col items-center py-12',
           { 'bg-category-100': hasBackground },
-          { 'bg-gray-50': !hasBackground }
+          { 'bg-gray-50': !hasBackground },
         )}
       >
         <div className="flex max-w-3xl flex-col">
@@ -55,7 +58,7 @@ export const NumericalListSection = ({
               className={cx(
                 'text-center pb-14',
                 { 'text-h3': variant != 'roadmap' },
-                { 'text-h4': variant === 'roadmap' }
+                { 'text-h4': variant === 'roadmap' },
               )}
             >
               {title}
@@ -69,7 +72,7 @@ export const NumericalListSection = ({
         {variant != 'roadmap' && buttonText && (
           <UILink href={href} className="pt-10">
             <Button
-              className="z-10 h-12 border-category-600 bg-category-600 px-6 text-base lg:h-14 lg:text-default"
+              className="text-base lg:text-default z-10 h-12 border-category-600 bg-category-600 px-6 lg:h-14"
               variant="secondary-dark-text"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -82,10 +85,13 @@ export const NumericalListSection = ({
 
       {hasBackground ? (
         <Waves
-          waveColor={cx({ 'var(--category-color-100)': hasBackground }, { 'var(--background-color)': !hasBackground })}
+          waveColor={cx(
+            { 'var(--category-color-100)': hasBackground },
+            // { 'var(--background-color)': !hasBackground },
+          )}
           wavePosition="bottom"
           isRich
-          backgroundColor="var(--background-color)"
+          // backgroundColor="var(--background-color)"
         />
       ) : (
         ''
