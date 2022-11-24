@@ -35,7 +35,7 @@ RUN yarn build
 # EXPOSE 3000
 # CMD [ "yarn", "develop" ]
 
-FROM node:16-alpine as prod
+FROM node:16 as prod
 
 USER node
 ENV PORT 3000
