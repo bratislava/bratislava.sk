@@ -1,5 +1,35 @@
 {
   "ui:submitButtonOptions": {
     "norender": true
+  },
+  "inputFields": {
+    "firstName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "First Name",
+      "ui:options": {
+        "tooltip": "First name hint",
+        "resetIcon": true,
+        "leftIcon": true
+      }
+    },
+    "lastName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Last Name",
+      "ui:options": {
+        "tooltip": "Last name hint",
+        "resetIcon": true,
+        "leftIcon": true
+      }
+    },
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "tooltip": "Phone hint"
+      }
+    }
   }
 }

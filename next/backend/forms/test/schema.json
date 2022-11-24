@@ -5,37 +5,32 @@
   "allOf": [
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
-          "required": ["address"],
+        "inputFields": {
+          "title": "Showcase of InputField",
+          "required": [
+            "firstName"
+          ],
           "properties": {
             "firstName": {
-              "type": "string"
+              "type": "string",
+              "title": "First Name"
             },
             "lastName": {
-              "type": "string"
+              "type": "string",
+              "title": "Last Name"
             },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
+            "phone": {
+              "type": "string",
+              "title": "Phone number"
             }
           }
         }
       }
     },
     {
-      "required": ["email"],
+      "required": [
+        "email"
+      ],
       "properties": {
         "email": {
           "type": "string"

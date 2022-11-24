@@ -19,8 +19,8 @@ const eforms = {
   test: {
     schema: testSchema,
     uiSchema: testUiSchema,
-    textStylesheet: undefined,
-    htmlStylesheet: undefined,
+    textStylesheet: null,
+    htmlStylesheet: null,
   },
 }
 

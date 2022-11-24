@@ -1,7 +1,6 @@
 import InputField from 'components/forms/InputField'
 import React from 'react'
 
-import PersonIcon from '../../../assets/images/forms/person.svg'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -17,7 +16,13 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         <InputField label="Label" placeholder="Placeholder" errorMessage="Error message" disabled />
       </Stack>
       <Stack direction="column">
-        <InputField label="Label" placeholder="Placeholder" description="Help text" tooltip="InputField" required />
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          description="Help text"
+          tooltip="InputField"
+          required
+        />
         <InputField
           label="Label"
           placeholder="Placeholder"
@@ -50,7 +55,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon
           resetIcon
         />
         <InputField
@@ -59,7 +64,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           value="Value"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon
           resetIcon
         />
         <InputField
@@ -67,7 +72,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon
           resetIcon
           errorMessage="Error message"
         />
@@ -76,7 +81,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon
           resetIcon
           errorMessage="Error message"
           disabled
