@@ -172,8 +172,16 @@ const Homepage = ({
           />
         )}
 
-        <SectionContainer>
-          <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
+        <Waves
+          className="md:mt-18 mt-6"
+          waveColor="white"
+          wavePosition="bottom"
+          isRich
+          backgroundColor="var(--background-color)"
+        />
+
+        <SectionContainer className="bg-gray-50 pb-14">
+          <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
@@ -184,38 +192,45 @@ const Homepage = ({
             latestPost={latestBlogposts}
             rozkoPosts={rozkoPosts}
           />
-          <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
+          <PrimatorCouncil className="mt-14 lg:mt-20" primatorCards={data.council.cards} />
+        </SectionContainer>
+        <Waves
+          className="mt-[-1px] lg:mt-0"
+          backgroundColor="white"
+          wavePosition="bottom"
+          isRich
+          waveColor="var(--background-color)"
+        />
+        <SectionContainer>
           <GooutEvents
             linkTitle={t('allEvents')}
             linkUrl="https://www.bkis.sk/podujatia/"
             title={t('upComingEvents')}
-            className="mt-14 lg:mt-24"
+            className="mt-14"
           />
         </SectionContainer>
 
         <Waves
-          className="mt-20 mb-[-1px] lg:mb-0"
-          backgroundColor="var(--background-color)"
+          className="mb-[-1px] lg:mb-0"
           waveColor="var(--category-color-100)"
           wavePosition="top"
           isRich
         />
 
-        <SectionContainer className="bg-category-100 relative py-16">
+        <SectionContainer className="bg-category-100 relative py-8">
           <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
           waveColor="var(--category-color-100)"
-          backgroundColor="var(--background-color)"
           wavePosition="bottom"
           isRich
           className="mt-[-1px] lg:mt-0"
         />
 
         <SectionContainer>
-          <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
+          <InBaCard className="mx-auto mt-28 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-20" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
