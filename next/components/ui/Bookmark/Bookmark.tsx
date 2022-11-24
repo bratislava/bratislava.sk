@@ -75,7 +75,7 @@ export const Bookmark = ({
       ref={modelref}
     >
       <button
-        className={cx('w-17.5 text-20-semibold', {
+        className={cx('w-[70px] text-20-semibold', {
           'bg-[#66BDE3]': variant === 'blue',
           'bg-main-700': variant === 'red',
         })}
