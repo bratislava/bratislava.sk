@@ -2,6 +2,9 @@
 // TODO figure out what we need to export & which files we need for each eform
 // TODO figure out whether to store the schema files in this repo or in a different lib
 
+import { UiSchema } from '@rjsf/utils'
+
+import { JsonSchema } from '../utils/forms'
 import dopravneZnacenieHtmlStylesheet from './00603481.dopravneZnacenie.sk/form.html.sef.json'
 import dopravneZnacenieTextStylesheet from './00603481.dopravneZnacenie.sk/form.sb.sef.json'
 import dopravneZnacenieSchema from './00603481.dopravneZnacenie.sk/schema.json'
@@ -49,6 +52,13 @@ const eforms = {
 }
 
 export type EFormKey = keyof typeof eforms
-export type EFormValue = typeof eforms[EFormKey]
+export interface EFormValue {
+  schema: JsonSchema,
+  uiSchema: UiSchema<any, any>,
+  xsd: string,
+  xmlTemplate: string,
+  textStylesheet?: any,
+  htmlStylesheet?: any
+}
 
 export default eforms

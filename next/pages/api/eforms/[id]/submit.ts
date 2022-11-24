@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   errors = validateDataWithJsonSchema(req.body, eform.schema)
   if (errors.length > 0) return res.status(400).json({ message: `Data did not pass JSON validation`, errors })
 
-  const xml = loadAndBuildXml(eform.xmlTemplate, req.body)
+  const xml = loadAndBuildXml(eform.xmlTemplate, req.body, eform.schema)
   errors = validateDataWithXsd(xml, eform.xsd)
   if (errors.length > 0) return res.status(400).json({ message: `Data did not pass XSD validation`, errors })
 

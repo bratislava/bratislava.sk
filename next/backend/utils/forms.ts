@@ -1,6 +1,7 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
+// @ts-ignore
 import { parseXml } from 'libxmljs'
 import { dropRight, find, last } from 'lodash'
 
@@ -70,7 +71,7 @@ export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: Jso
  *
  * Read more about [JSON schema](https://json-schema.org/).
  */
-interface JsonSchema {
+export interface JsonSchema {
   type: string
   format?: string
   title?: string
@@ -204,7 +205,7 @@ export const validateDataWithXsd = (data: any, xsd: any) => {
 
 export const getEform = (id: string | string[] | undefined): EFormValue => {
   const formSlug: EFormKey = forceString(id) as any
-  const eform: EFormValue = forms[formSlug]
+  const eform: EFormValue = forms[formSlug] as EFormValue
 
   if (!eform) throw new Error(`Invalid form name - validateFormName returned: ${formSlug}`)
   return eform
