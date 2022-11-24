@@ -49,11 +49,13 @@ export const PageHeader = ({
             innerWidth >= smallScreenBreakPoint
               ? `${color}, ${transparentColor})`
               : `${transparentColorMobile ?? transparentColor})`
-          }`
+          }`,
         )
       if (imageSrc)
         newBackgroundStyle.push(
-          `url(${imageSrc}) right ${innerWidth >= smallScreenBreakPoint ? 'center' : 'top/160%'} no-repeat`
+          `url(${imageSrc}) right ${
+            innerWidth >= smallScreenBreakPoint ? 'center' : 'top/160%'
+          } no-repeat`,
         )
       if (color) newBackgroundStyle.push(color)
 
@@ -67,7 +69,8 @@ export const PageHeader = ({
       style={{
         boxSizing: 'border-box',
         backgroundSize: '100%',
-        background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--category-color-100)',
+        background:
+          backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--category-color-200)',
       }}
       {...rest}
     >

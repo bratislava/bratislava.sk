@@ -17,7 +17,7 @@ export const StepperStep = ({ title, number, onClick, active, checked, className
       'relative rounded-full text-h3 flex items-center justify-center',
       {
         'bg-category-600 text-white': active,
-        'bg-category-100 text-category-600': !active,
+        'bg-category-200 text-category-600': !active,
         'cursor-default': !onClick,
         'cursor-pointer': !!onClick,
       },

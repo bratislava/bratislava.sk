@@ -25,7 +25,7 @@ const HeaderItem = ({
 }: IProps) => (
   <div className="group">
     <Button
-      className={cx(className, 'hover:bg-category-100 w-full border-category-600 border-2 hover:text-font')}
+      className={cx(className, 'hover:bg-category-200 w-full border-category-600 border-2 hover:text-font')}
       icon={icon}
       iconPosition="left"
       shape="none"

@@ -275,7 +275,7 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
     menu.data.map((item) => ({
       id: item.id ?? '',
       color: `rgb(var(${
-        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c100
+        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c200
       }))`,
       colorDark: `rgb(var(${
         getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c800

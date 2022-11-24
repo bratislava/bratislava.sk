@@ -42,7 +42,7 @@ export const TimeCardMobile = ({
       {/* Mobile Design */}
       <div className="flex w-full items-center rounded-lg text-center text-sm shadow-md sm:hidden">
         <p className="w-3/5 py-3 pl-9">{primaryContent}</p>
-        <p className="w-2/5 rounded-r-lg bg-category-100 py-3">{secondaryContent}</p>
+        <p className="w-2/5 rounded-r-lg bg-category-200 py-3">{secondaryContent}</p>
       </div>
     </div>
   )

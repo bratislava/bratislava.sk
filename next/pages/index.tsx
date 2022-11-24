@@ -197,17 +197,17 @@ const Homepage = ({
         <Waves
           className="mt-20 mb-[-1px] lg:mb-0"
           backgroundColor="var(--background-color)"
-          waveColor="var(--category-color-100)"
+          waveColor="var(--category-color-200)"
           wavePosition="top"
           isRich
         />
 
-        <SectionContainer className="bg-category-100 relative py-16">
+        <SectionContainer className="bg-category-200 relative py-16">
           <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
-          waveColor="var(--category-color-100)"
+          waveColor="var(--category-color-200)"
           backgroundColor="var(--background-color)"
           wavePosition="bottom"
           isRich

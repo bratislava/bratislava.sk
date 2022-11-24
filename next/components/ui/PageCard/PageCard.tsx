@@ -69,7 +69,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
       <Panel className="min-w-76 flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
         <div className="flex items-center justify-between">
           <div
-            className="flex h-16 w-16 items-center justify-center rounded-full bg-category-100"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-category-200"
             style={{ backgroundColor }}
           >
             <SmallPageIcon />

@@ -41,8 +41,8 @@ export const AccordionItem = ({
         className={cx(
           'rounded-lg drop-shadow-[0 8 24 black] py-3 px-6 lg:py-4 lg:px-10',
           {
-            'border-transparent border-2 border-solid shadow-lg bg-category-100': active,
-            'md:hover:bg-category-100 md:hover:stroke-current border-2 border-category-600 bg-transparent': !active,
+            'border-transparent border-2 border-solid shadow-lg bg-category-200': active,
+            'md:hover:bg-category-200 md:hover:stroke-current border-2 border-category-600 bg-transparent': !active,
           },
           className
         )}

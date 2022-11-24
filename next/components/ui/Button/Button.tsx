@@ -54,9 +54,9 @@ export const Button = ({
         // styles for buttons
         'bg-category-600 text-white': shape !== 'none' && variant === 'primary',
         'bg-category-600 text-white border-category-600': shape !== 'none' && variant === 'primary-border',
-        'bg-category-100 text-category-600': shape !== 'none' && variant === 'secondary',
+        'bg-category-200 text-category-600': shape !== 'none' && variant === 'secondary',
         'bg-category-800 text-white': shape !== 'none' && variant === 'tertiary',
-        'bg-category-100 text-font': shape !== 'none' && variant === 'secondary-dark-text',
+        'bg-category-200 text-font': shape !== 'none' && variant === 'secondary-dark-text',
         'bg-transparent text-gray-500 border-gray-500': shape !== 'none' && variant === 'transparent-gray',
         'bg-category-800 text-font': shape !== 'none' && variant === 'tertiary-dark-text',
         'bg-transparent text-default text-font hover:text-category-600 border-category-600 border-2':
@@ -70,7 +70,7 @@ export const Button = ({
         'rounded-full': shape === 'circle',
         // styles for links
         'text-category-600': shape === 'none' && (variant === 'primary' || variant === 'transparent'),
-        'text-category-100': shape === 'none' && variant === 'secondary',
+        'text-category-200': shape === 'none' && variant === 'secondary',
       })}
       {...props}
     >
