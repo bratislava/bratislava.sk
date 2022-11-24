@@ -3,9 +3,6 @@ import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
 import { parseXml } from 'libxmljs'
 import { dropRight, find, last } from 'lodash'
-import { access, readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
-import { cwd } from 'node:process'
 
 import { forceString } from '../../utils/utils'
 import forms, { EFormKey, EFormValue } from '../forms'
@@ -76,17 +73,17 @@ export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: Jso
 interface JsonSchema {
   type: string
   format?: string
-  title?: string | undefined
-  description?: string | undefined
-  properties?: JsonSchemaProperties | undefined
-  items?: JsonSchemaItems | undefined
-  required?: string[] | undefined
-  pattern?: string | undefined
-  enum?: string[] | undefined
-  then?: JsonSchema | undefined
-  oneOf?: JsonSchema[] | undefined
-  anyOf?: JsonSchema[] | undefined
-  allOf?: JsonSchema[] | undefined
+  title?: string
+  description?: string
+  properties?: JsonSchemaProperties
+  items?: JsonSchemaItems
+  required?: string[]
+  pattern?: string
+  enum?: string[]
+  then?: JsonSchema
+  oneOf?: JsonSchema[]
+  anyOf?: JsonSchema[]
+  allOf?: JsonSchema[]
 }
 
 interface JsonSchemaItems {
@@ -181,20 +178,6 @@ export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string
     removeNeedlessXmlTransformArraysRecursive(obj[k], newPath, schema)
   })
   return obj
-}
-
-export const validateAndBuildXmlData = async (data: any, formName: unknown) => {
-  // TODO SANITIZE!
-  const validFormName = forceString(formName)
-  // test if directory existts
-  await access(resolve(cwd(), 'forms', validFormName))
-  // TODO validate
-  const validData = data
-  const filePath = resolve(cwd(), 'forms', validFormName, 'template.xml')
-  const fileBuffer = await readFile(filePath)
-  const $ = cheerio.load(fileBuffer, { xmlMode: true })
-  buildXmlRecursive(['E-form', 'Body'], $, validData)
-  return { xml: $.html(), name: validFormName }
 }
 
 // TODO create ajv instance once for BE, add async validations
