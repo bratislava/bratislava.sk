@@ -278,7 +278,7 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
         getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c200
       }))`,
       colorDark: `rgb(var(${
-        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c800
+        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c600
       }))`,
       icon: item.attributes.icon ?? '',
       coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',

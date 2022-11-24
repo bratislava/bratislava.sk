@@ -15,7 +15,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const defaultWaveProps = (color: string): WavesProps => ({
   wavePosition: 'top',
-  waveColor: 'var(--background-color)',
+  waveColor: 'white',
   backgroundColor: 'transparent',
   innerLinesColor: color,
   isRich: true,
