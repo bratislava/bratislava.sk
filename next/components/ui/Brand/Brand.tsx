@@ -15,7 +15,7 @@ export const Brand = ({ className, title, url = '#' }: BrandProps) => {
   return (
     <div className={cx('flex', className)} aria-label="brand">
       <UILink className="flex items-center space-x-3" href={url}>
-        <BALogo className="lg:w-6.5 h-7.5 w-8 lg:h-5.5" />
+        <BALogo className="lg:w-6.5 h-8 w-8 lg:h-6" />
         {title && <div>{title}</div>}
       </UILink>
     </div>

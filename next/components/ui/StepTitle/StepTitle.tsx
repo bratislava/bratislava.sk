@@ -13,7 +13,7 @@ export const StepTitle = ({ className, number, title }: StepTitleProps) => {
     <div className={cx('flex items-center', className)}>
       {number !== undefined && (
         <div className="col-3 md:col-1">
-          <StepperStep className="h-12.5 w-12.5" number={number} active />
+          <StepperStep className="h-12 w-12" number={number} active />
         </div>
       )}
       <p

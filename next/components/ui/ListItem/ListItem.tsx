@@ -16,7 +16,7 @@ export const ListItem = ({ className, content, circleOption = 'primary', moreLin
   const Circle = circleOption === 'primary' ? ListCircleFull : ListCircle
   return (
     <div className={cx(className, 'flex flex-row items-center')}>
-      <div className="text-primary">
+      <div className="text-category-600">
         <Circle />
       </div>
 

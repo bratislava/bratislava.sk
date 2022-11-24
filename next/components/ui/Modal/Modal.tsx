@@ -42,7 +42,7 @@ export const Modal = ({
                 className="modal-close-mobile-right transofrm closebutton absolute -bottom-9 left-[50%] z-10 h-16 w-16 -translate-x-1/2 md:inset-y-0 md:left-auto md:-right-8 md:translate-x-0 lg:-top-8"
                 shape="circle"
                 iconPosition="center"
-                icon={<Close className='h-10 w-10'/>} 
+                icon={<Close className="h-10 w-10" />}
                 onClick={onClose}
               />
             )}
