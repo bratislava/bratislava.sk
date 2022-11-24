@@ -23,9 +23,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // xml2js has issues when top level element isn't a single node
   const wrappedXmlString = `<wrapper>${req.body.data}</wrapper>`
-  const obj = (await parseStringPromise(wrappedXmlString, { tagNameProcessors: [firstCharLowerCase]})).wrapper
-  removeNeedlessXmlTransformArraysRecursive(obj, [], eform.schema)
-  return res.json(obj)
+  const obj = await parseStringPromise(wrappedXmlString, { tagNameProcessors: [firstCharLowerCase]})
+  const body = obj.wrapper['e-form'] ? obj.wrapper['e-form'][0].body[0] : obj.wrapper
+  removeNeedlessXmlTransformArraysRecursive(body, [], eform.schema)
+  return res.json(body)
 }
 
 export default withSentry(handler)
