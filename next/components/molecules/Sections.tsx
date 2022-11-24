@@ -278,7 +278,6 @@ const Section = ({
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}
-        // backgroundColor="var(--background-color)"
         waveColor="var(--category-color-100)"
         wavePosition={section.position ?? 'top'}
       />
