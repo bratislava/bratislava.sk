@@ -9,7 +9,7 @@ import { forceString } from '../../utils/utils'
 import forms, { EFormKey, EFormValue } from '../forms'
 import { firstCharToUpper } from './strings'
 
-export type Json = string | number | boolean | null | { [property: string]: Json } | Json[]
+export type Json = any
 
 export const buildXmlRecursive = (
   currentPath: string[],
