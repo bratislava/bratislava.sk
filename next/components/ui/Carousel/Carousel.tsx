@@ -94,7 +94,7 @@ export const Carousel = ({
       <div
         className={cx(
           scrollerClassName,
-          'flex overflow-x-auto lg:overflow-x-hidden overflow-y-hidden scrollbar-hide pb-4 lg:pb-0'
+          'flex overflow-x-auto lg:overflow-x-hidden overflow-y-hidden scrollbar-hide pb-4 lg:pb-0',
         )}
         ref={scrollerRef}
       >
