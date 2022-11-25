@@ -36,7 +36,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       className,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const [valueState, setValueState] = useState<string>(value)
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
@@ -53,11 +53,11 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         isRequired: required,
         isDisabled: disabled,
       },
-      ref as RefObject<HTMLInputElement>
+      ref as RefObject<HTMLInputElement>,
     )
 
     const style = cx(
-      'w-full px-4 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700',
+      'w-full px-4 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
       className,
       {
         // conditions
@@ -70,7 +70,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
 
         // disabled
         'border-gray-300 bg-gray-100': disabled,
-      }
+      },
     )
 
     return (
@@ -85,7 +85,15 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           tooltip={tooltip}
         />
         <div className="relative">
-          {leftIcon && <i className={cx('absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4', {'opacity-50' : disabled})}>{leftIcon}</i>}
+          {leftIcon && (
+            <i
+              className={cx('absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4', {
+                'opacity-50': disabled,
+              })}
+            >
+              {leftIcon}
+            </i>
+          )}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
           {resetIcon && valueState && (
             <i
@@ -99,10 +107,12 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             </i>
           )}
         </div>
-        {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+        {!disabled && (
+          <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+        )}
       </div>
     )
-  }
+  },
 )
 
 export default InputField
