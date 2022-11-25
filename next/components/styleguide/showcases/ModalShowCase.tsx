@@ -1,0 +1,160 @@
+import Modal from 'components/forms/Modal'
+import React, { useState } from 'react'
+
+import Button from '../../forms/Button'
+import MessageModal from '../../forms/MessageModal'
+import { Stack } from '../Stack'
+import { Wrapper } from '../Wrapper'
+
+const firstScreen = () => {
+  return (
+    <div className="flex h-full w-full items-center justify-center rounded-lg bg-[blue] p-2 text-white">
+      First screen
+    </div>
+  )
+}
+
+const secondScreen = () => {
+  return (
+    <div className="flex h-full w-full items-center justify-center rounded-lg bg-[orange] p-2 text-white">
+      Second screen
+    </div>
+  )
+}
+
+const thirdScreen = () => {
+  return (
+    <div className="flex h-full w-full items-center justify-center rounded-lg bg-[purple] p-2 text-white">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+      been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+      galley of type and scrambled it to make a type specimen book. It has survived not only five
+      centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
+      was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+      passages, and more recently with desktop publishing software like Aldus PageMaker including
+      versions of Lorem Ipsum.
+    </div>
+  )
+}
+
+const ModalShowCase = () => {
+  const [modalShow, setModalShow] = useState(false)
+  const [modalShowSuccess, setModalShowSuccess] = useState(false)
+  const [modalShowError, setModalShowError] = useState(false)
+  const [modalShowInfo, setModalShowInfo] = useState(false)
+  const [modalShowWarning, setModalShowWarning] = useState(false)
+  return (
+    <Wrapper direction="column" title="Modal">
+      <Stack direction="column">
+        <Button
+          size="sm"
+          variant="brand-outline"
+          text="Open modal (divider is optional parameter)"
+          onPress={() => setModalShow(true)}
+        />
+        <Button
+          size="sm"
+          variant="brand-outline"
+          text="Open success message modal"
+          onPress={() => setModalShowSuccess(true)}
+        />
+        <Button
+          size="sm"
+          variant="brand-outline"
+          text="Open error message modal"
+          onPress={() => setModalShowError(true)}
+        />
+        <Button
+          size="sm"
+          variant="brand-outline"
+          text="Open info message modal"
+          onPress={() => setModalShowInfo(true)}
+        />
+        <Button
+          size="sm"
+          variant="brand-outline"
+          text="Open warning message modal"
+          onPress={() => setModalShowWarning(true)}
+        />
+        <Modal
+          divider
+          header="Some header"
+          show={modalShow}
+          onClose={() => setModalShow(false)}
+          onSubmit={() => {
+            alert('Modal submitted')
+            setModalShow(false)
+          }}
+          content={[firstScreen, secondScreen, thirdScreen]}
+          className="w-[700px]"
+          confirmLabel="Finish"
+        />
+
+        <MessageModal
+          show={modalShowSuccess}
+          confirmLabel="Primary action"
+          type="success"
+          cancelHandler={() => {
+            setModalShowSuccess(false)
+          }}
+          submitHandler={() => {
+            setModalShowSuccess(false)
+          }}
+          title="Lorem ipsum"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </MessageModal>
+
+        <MessageModal
+          show={modalShowError}
+          confirmLabel="Primary action"
+          type="error"
+          cancelHandler={() => {
+            setModalShowError(false)
+          }}
+          submitHandler={() => {
+            setModalShowError(false)
+          }}
+          title="Lorem ipsum"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </MessageModal>
+
+        <MessageModal
+          show={modalShowInfo}
+          className="w-[700px]"
+          confirmLabel="Primary action"
+          type="info"
+          cancelHandler={() => {
+            setModalShowInfo(false)
+          }}
+          submitHandler={() => {
+            setModalShowInfo(false)
+          }}
+          title="Lorem ipsum"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </MessageModal>
+
+        <MessageModal
+          show={modalShowWarning}
+          className="w-[700px]"
+          confirmLabel="Primary action"
+          type="warning"
+          cancelHandler={() => {
+            setModalShowWarning(false)
+          }}
+          submitHandler={() => {
+            setModalShowWarning(false)
+          }}
+          title="Lorem ipsum"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </MessageModal>
+      </Stack>
+    </Wrapper>
+  )
+}
+
+export default ModalShowCase
