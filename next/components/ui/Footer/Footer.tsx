@@ -45,7 +45,7 @@ export const Footer = ({
   const { Link: UILink } = useUIContext()
 
   return (
-    <footer className={cx(className, 'text-base text-gray-600')}>
+    <footer className={cx(className, 'text-p2 text-gray-600')}>
       <section className="flex items-center justify-between pt-14" aria-label="Logo and Social Media Links">
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">

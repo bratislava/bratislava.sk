@@ -59,7 +59,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
             )
           : null
       }
-      <input ref={filterRef} className="border-0 text-p-md outline-none" type="text" size={getInputSize()}
+      <input ref={filterRef} className="text-20 border-0 outline-none" type="text" size={getInputSize()}
              value={filter} placeholder={getPlaceholder()} onKeyDown={handleOnKeyDown}
              onChange={event => onFilterChange(event.target.value)} onFocus={() => onFilterFocusChange(true)}/>
     </section>

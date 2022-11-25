@@ -34,7 +34,7 @@ export const ColumnedText = ({ content, hasBackground }: ColumnedTextProps) => {
           <UIMarkdown
             content={column}
             hasBackground={hasBackground}
-            className="mb-5 text-sm leading-[24px] md:text-default md:leading-[30px]"
+            className="text-p2 md:text-p1 mb-5 leading-[24px] md:leading-[30px]"
           />
         </div>
       ))}

@@ -28,7 +28,7 @@ export const NumberSwitcher = ({ className, value, hasError, id, onChange }: IPr
       >
         <MinusIcon />
       </button>
-      <span className="text-default font-medium">{value}</span>
+      <span className="text-p1-medium">{value}</span>
       <button
         onClick={() => {
           onChange(value + 1)

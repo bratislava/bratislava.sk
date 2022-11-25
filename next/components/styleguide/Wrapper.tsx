@@ -26,7 +26,7 @@ export const Wrapper = ({ title, children, direction = 'row', noBorder }: Wrappe
 
   return (
     <div className={wrapperClassNames}>
-      {title && <h2 className="text-h2 pb-2 font-semibold">{title}</h2>}
+      {title && <h2 className="text-h2 pb-2">{title}</h2>}
       <div className={childrenClassNames}>
         {children}
       </div>

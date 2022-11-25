@@ -39,15 +39,20 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
   const IconComponent = ICONS[icon]
   const { Link: UILink } = useUIContext()
   return (
-    <div className={cx('w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font xs:mt-8', className)}>
+    <div
+      className={cx('w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font', className)}
+    >
       <div className="mb-6 lg:mb-3.5">
         <IconComponent className="h-20" />
       </div>
       <div className="text-h4 w-full whitespace-pre-wrap leading-normal lg:font-medium">
         {title}
       </div>
-      <UILink className="group mt-6 flex h-6 cursor-pointer items-center space-x-5 text-font underline" href={href}>
-        <span className="text-p2 font-semibold">{linkTitle}</span>
+      <UILink
+        className="group mt-6 flex h-6 cursor-pointer items-center space-x-5 text-font underline"
+        href={href}
+      >
+        <span className="text-p2-semibold">{linkTitle}</span>
         <span className="group-hover:hidden">
           <ChevronRight />
         </span>
