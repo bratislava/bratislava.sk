@@ -1,7 +1,10 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+export type ButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   children?: React.ReactNode
   className?: string
   hoverIcon?: React.ReactNode
@@ -53,23 +56,28 @@ export const Button = ({
         'space-x-2': !!icon && spacing === 'small',
         // styles for buttons
         'bg-category-600 text-white': shape !== 'none' && variant === 'primary',
-        'bg-category-600 text-white border-category-600': shape !== 'none' && variant === 'primary-border',
+        'bg-category-600 text-white border-category-600':
+          shape !== 'none' && variant === 'primary-border',
         'bg-category-100 text-category-600': shape !== 'none' && variant === 'secondary',
         'bg-category-800 text-white': shape !== 'none' && variant === 'tertiary',
         'bg-category-100 text-font': shape !== 'none' && variant === 'secondary-dark-text',
-        'bg-transparent text-gray-500 border-gray-500': shape !== 'none' && variant === 'transparent-gray',
+        'bg-transparent text-gray-500 border-gray-500':
+          shape !== 'none' && variant === 'transparent-gray',
         'bg-category-800 text-font': shape !== 'none' && variant === 'tertiary-dark-text',
         'bg-transparent text-20 text-font hover:text-category-600 border-category-600 border-2':
           shape !== 'none' && variant === 'transparent',
 
         // transparent should be replaced with transparent-black
-        'bg-transparent text-font border-category-600 border-2': shape !== 'none' && variant === 'transparent-black',
+        'bg-transparent text-font border-category-600 border-2':
+          shape !== 'none' && variant === 'transparent-black',
         'bg-category-600 text-white hover:bg-category-600': shape !== 'none' && variant === 'muted',
-        'bg-transparent text-font underline underline-offset-2': shape !== 'none' && variant === 'full-transparent',
+        'bg-transparent text-font underline underline-offset-2':
+          shape !== 'none' && variant === 'full-transparent',
         'rounded-lg justify-center': shape === 'default',
-        'rounded-full': shape === 'circle',
+        'rounded-full justify-center items-center': shape === 'circle',
         // styles for links
-        'text-category-600': shape === 'none' && (variant === 'primary' || variant === 'transparent'),
+        'text-category-600':
+          shape === 'none' && (variant === 'primary' || variant === 'transparent'),
         'text-category-100': shape === 'none' && variant === 'secondary',
       })}
       {...props}

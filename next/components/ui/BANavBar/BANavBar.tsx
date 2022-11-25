@@ -36,7 +36,13 @@ interface IProps extends LanguageSelectProps {
   pageColor?: string
 }
 
-export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
+export const BANavBar = ({
+  className,
+  menuItems,
+  handleSearch,
+  pageColor,
+  ...languageSelectProps
+}: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
@@ -50,11 +56,15 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
       {/* Desktop */}
       <div
         id="desktop-navbar"
-        className={cx(className, 'items-center text-p2 ', 'fixed top-0 left-0 w-full bg-white z-50')}
+        className={cx(
+          className,
+          'items-center text-p2 ',
+          'fixed top-0 left-0 w-full bg-white z-50',
+        )}
       >
         <div className="m-auto hidden h-[57px] w-full max-w-screen-1.5lg items-center justify-between border-b border-gray-200 lg:flex">
           <Brand
-            className="group flex-1"
+            className="group"
             url="/"
             title={
               <p className="text-font group-hover:text-gray-600 text-p2">
@@ -71,7 +81,11 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 <SearchIcon />
               </Link>
 
-              <Link href={contactUrls[languageKey]} variant="plain" className="whitespace-nowrap py-4">
+              <Link
+                href={contactUrls[languageKey]}
+                variant="plain"
+                className="whitespace-nowrap py-4"
+              >
                 {t('contacts')}
               </Link>
 
@@ -99,13 +113,13 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         className={cx(
           className,
           'h-16 flex items-center justify-between py-5 px-8 -mx-8 shadow-md drop-shadow-md',
-          'lg:hidden fixed top-0 w-full bg-white z-50'
+          'lg:hidden fixed top-0 w-full bg-white z-50',
         )}
       >
         <Brand url="/" />
         <div className={cx('flex items-center gap-x-5')}>
           <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
-            <Link href={t('searchLink')} variant="plain" className="p-4">
+            <Link href={t('searchLink')} variant="plain" className="p-4 -mr-4">
               <SearchIcon />
             </Link>
             <LanguageSelect
@@ -116,11 +130,17 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         </div>
 
         <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 px-4 py-5">
-          <div className="flex w-6 items-center justify-center">{burgerOpen ? <HamburgerClose /> : <Hamburger />}</div>
+          <div className="flex w-6 items-center justify-center">
+            {burgerOpen ? <HamburgerClose /> : <Hamburger />}
+          </div>
         </button>
 
         {burgerOpen && (
-          <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} closeMenu={() => setBurgerOpen(false)} />
+          <HamburgerMenu
+            hamburgerMenuItems={menuItems}
+            lang={languageKey}
+            closeMenu={() => setBurgerOpen(false)}
+          />
         )}
       </div>
 
@@ -270,7 +290,7 @@ const useComponentVisible = (initialIsVisible, setIsSelectClicked) => {
         setIsComponentVisible(true)
       }
     },
-    [setIsSelectClicked]
+    [setIsSelectClicked],
   )
 
   React.useEffect(() => {

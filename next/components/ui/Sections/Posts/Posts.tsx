@@ -2,11 +2,12 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import {
+  Enum_Pagecategory_Color,
   LatestBlogsFragment,
   LatestBlogsWithTagsQuery,
   NewsCardBlogFragment,
 } from '@bratislava/strapi-sdk-homepage'
-import { getHoverColor, transformColorToCategory } from '@utils/page'
+import { transformColorToCategory } from '@utils/page'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -32,6 +33,27 @@ export interface PostsProps {
   readMoreText?: string
   readMoreNewsText?: string
   rozkoPosts: LatestBlogsWithTagsQuery['blogPosts']
+}
+
+// TODO: The function does not work if it is imported from other file so it is temporarily duplicated here
+export const getHoverColor = (color: Enum_Pagecategory_Color): string => {
+  switch (color) {
+    case Enum_Pagecategory_Color.Red:
+      return 'hover:text-main-600'
+    case Enum_Pagecategory_Color.Blue:
+      return 'hover:text-transport-600'
+    case Enum_Pagecategory_Color.Green:
+      return 'hover:text-environment-600'
+    case Enum_Pagecategory_Color.Yellow:
+      return 'hover:text-social-600'
+    case Enum_Pagecategory_Color.Purple:
+      return 'hover:text-education-600'
+    case Enum_Pagecategory_Color.Brown:
+      return 'hover:text-culture-600'
+
+    default:
+      return 'hover:text-gray-600'
+  }
 }
 
 export const Posts = ({
