@@ -57,17 +57,17 @@ const Alert = ({ solid = false, close, type, variant = 'basic', content, message
       'bg-gray-700': type === 'info' && solid,
       'bg-warning-700': type === 'warning' && solid,
     })
-
-    const contentStyle = cx('', {
-      'text-sm font-normal leading-6': variant === 'basic',
-      'text-default leading-7 font-semibold': variant === 'message',
+    
+    const contentStyle = cx('w-full', {
+      'text-16 leading-6': variant === 'basic',
+      'text-20-semibold leading-7': variant === 'message',
     })
 
-    const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
+    const extraButtonStyle = cx('underline text-16-medium leading-6 not-italic', {
       'text-negative-700': type === 'error' && !solid,
-      'text-success-700': type === 'success' && !solid,
-      'text-gray-700': type === 'info' && !solid,
-      'text-warning-700': type === 'warning' && !solid,
+      'text-success-700' : type === 'success' && !solid,
+      'text-gray-700'    : type === 'info' && !solid,
+      'text-warning-700' : type === 'warning' && !solid,
     })
 
     return variant === 'basic' ? (

@@ -58,7 +58,7 @@ export const BANavBar = ({
         id="desktop-navbar"
         className={cx(
           className,
-          'items-center text-base ',
+          'items-center text-p2 ',
           'fixed top-0 left-0 w-full bg-white z-50',
         )}
       >
@@ -67,7 +67,7 @@ export const BANavBar = ({
             className="group"
             url="/"
             title={
-              <p className="text-sm text-font group-hover:text-gray-600">
+              <p className="text-font group-hover:text-gray-600 text-p2">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -123,7 +123,7 @@ export const BANavBar = ({
               <SearchIcon />
             </Link>
             <LanguageSelect
-              className="text-p3 cursor-pointer appearance-none bg-transparent font-semibold focus:outline-none active:outline-none"
+              className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
               {...languageSelectProps}
             />
           </div>
@@ -157,18 +157,18 @@ export const BANavBar = ({
             </div>
             <div className="max-h-[90vh] overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
-                <h5 className="cursor-pointer text-default font-semibold md:text-md">
+                <h5 className="cursor-pointer text-p1-semibold">
                   {' '}
                   {t('cookie_consent_modal_title')}{' '}
                 </h5>
               </div>
               <div className="mb-10">
-                <h6 className="mb-4 text-xxs font-semibold md:text-default">
+                <h6 className="mb-4 text-p4-semibold md:text-p1-semibold">
                   {' '}
                   {t('cookie_consent_modal_content_title')}{' '}
                 </h6>
                 <p
-                  className="mb-8 text-xxs md:text-sm"
+                  className="mb-8 text-p4 md:text-p2"
                   dangerouslySetInnerHTML={{ __html: t('cookie_consent_modal_conent_body') }}
                 />
                 <AccordionItemSmall
@@ -182,7 +182,7 @@ export const BANavBar = ({
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
-                      className="text-sm"
+                      className="text-p2"
                       key="0"
                       align="left"
                       width="full"
@@ -201,7 +201,7 @@ export const BANavBar = ({
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
-                      className="text-sm"
+                      className="text-p2"
                       key="0"
                       align="left"
                       width="full"
@@ -220,7 +220,7 @@ export const BANavBar = ({
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
-                      className="text-sm"
+                      className="text-p2"
                       key="0"
                       align="left"
                       width="full"
@@ -232,7 +232,7 @@ export const BANavBar = ({
               </div>
               <div className="block items-center justify-between md:flex">
                 <Button
-                  className="mx-auto mb-3 h-12 bg-category-600 px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
+                  className="mx-auto mb-3 h-12 bg-category-600 px-6 text-p2-medium md:my-0 md:mr-6 md:ml-0"
                   onClick={saveSettings}
                 >
                   {' '}
@@ -240,14 +240,14 @@ export const BANavBar = ({
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mr-6 md:ml-0"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-p2-medium md:mr-6 md:ml-0"
                     variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
                     {t('acceptAll')}
                   </Button>
                   <Button
-                    className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mx-0"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-p2-medium md:mx-0"
                     variant="secondary"
                     onClick={declineCookies}
                   >
@@ -343,7 +343,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3 cursor-pointer mt-3 h-6 w-6 text-font hover:font-semibold"
+                className="text-p3 hover:text-p3-semibold mt-3 h-6 w-6 text-font"
                 key={option.key}
                 onClick={handleChange}
               >

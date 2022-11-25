@@ -39,7 +39,7 @@ const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
         >
           <ChevronIconLeft />
         </button>
-        <span className="text-p2 font-semibold">{title.charAt(0).toUpperCase() + title.slice(1)}</span>
+        <span className="text-p2-semibold">{title.charAt(0).toUpperCase() + title.slice(1)}</span>
         <button
           className="flex h-6 w-6 items-center justify-center focus:outline-none"
           ref={nextTriggerRef}

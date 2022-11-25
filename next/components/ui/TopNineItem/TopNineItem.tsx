@@ -52,7 +52,7 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
         className="group mt-6 flex h-6 cursor-pointer items-center space-x-5 text-font underline"
         href={href}
       >
-        <span className="text-p2 font-semibold">{linkTitle}</span>
+        <span className="text-p2-semibold">{linkTitle}</span>
         <span className="group-hover:hidden">
           <ChevronRight />
         </span>
