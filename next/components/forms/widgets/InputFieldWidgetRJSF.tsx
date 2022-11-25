@@ -24,7 +24,7 @@ interface InputFieldWidgetRJSFProps extends WidgetProps {
 const InputFieldWidgetRJSF = ({
   label,
   options,
-  placeholder,
+  placeholder = '',
   errorMessage,
   required,
   value = '',
