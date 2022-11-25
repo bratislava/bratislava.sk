@@ -28,7 +28,7 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
   )
 
   const optionClassName = cx(
-    "text-p-md w-full",
+    "text-20 w-full",
     {
       "font-semibold": option.description
     }
@@ -67,7 +67,7 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
               { getRowIcon() }
           </div>
         </div>
-        { option.description && <p className="text-p-sm">{option.description}</p> }
+        { option.description && <p className="text-p3">{option.description}</p> }
       </div>
       { divider && <div className="border-b-2 border-gray-200"/> }
     </div>

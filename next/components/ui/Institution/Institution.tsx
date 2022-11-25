@@ -19,8 +19,8 @@ const InstitutionCard = ({ className, title, subtitle, content, children }: Inst
   return (
     <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
       <div className="flex flex-col">
-        <h4 className="text-button-1 font-semibold leading-[26px]">{title}</h4>
-        {subtitle && <UIMarkdown className="fontSize-base mt-6 text-base" content={subtitle} />}
+        <h4 className="text-20-semibold leading-[26px]">{title}</h4>
+        {subtitle && <UIMarkdown className="fontSize-base text-16 mt-6" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
             {[...Array.from({ length: 3 })].map((_, ix) => (
@@ -46,7 +46,7 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
         <UILink href={url}>
           <InstitutionCard {...rest} className="group hover:border-category-600">
             {urlLabel && (
-              <div className="mt-6 flex items-center text-p2 font-semibold underline">
+              <div className="text-p2-semibold mt-6 flex items-center underline">
                 <span className="mr-5">{urlLabel}</span>
                 <ChevronRight className="block h-3 group-hover:hidden" />
                 <ArrowRight className="hidden h-3 group-hover:block" />
