@@ -58,7 +58,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     )
 
     const style = cx(
-      'w-full px-4 py-2.5 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700',
+      'w-full px-4 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700',
       className,
       {
         // conditions

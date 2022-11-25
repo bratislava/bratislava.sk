@@ -30,7 +30,7 @@ const HeaderItem = ({
       iconPosition="left"
       shape="none"
     >
-      <p className="text-p2 font-medium">{title}</p>
+      <p className="text-p2-medium">{title}</p>
     </Button>
     <HeaderSections className={cx('absolute left-0 right-0 hidden group-hover:block z-10')} />
   </div>

@@ -21,21 +21,19 @@ interface InputBase {
   onChange?: (e: string) => void
 }
 
-const SearchField = (
-  {
-    label,
-    placeholder,
-    errorMessage,
-    description,
-    tooltip,
-    required,
-    value = '',
-    disabled,
-    resetIcon,
-    className,
-    ...rest
-  }: InputBase,
-) => {
+const SearchField = ({
+  label,
+  placeholder,
+  errorMessage,
+  description,
+  tooltip,
+  required,
+  value = '',
+  disabled,
+  resetIcon,
+  className,
+  ...rest
+}: InputBase) => {
   const [valueState, setValueState] = useState<string>(value)
   const ref = useRef<HTMLInputElement>(null)
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
@@ -52,11 +50,11 @@ const SearchField = (
       isRequired: required,
       isDisabled: disabled,
     },
-    ref as RefObject<HTMLInputElement>
+    ref as RefObject<HTMLInputElement>,
   )
 
   const style = cx(
-    'w-full px-12 py-2.5 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
+    'w-full px-12 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
     className,
     {
       // hover
@@ -71,7 +69,7 @@ const SearchField = (
   )
 
   return (
-    <div className='flex w-full max-w-xs flex-col'>
+    <div className="flex w-full max-w-xs flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}
@@ -81,22 +79,30 @@ const SearchField = (
         required={required}
         tooltip={tooltip}
       />
-      <div className='relative'>
-        <i className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {'opacity-50' : disabled})}><DarkSearchIcon /></i>
+      <div className="relative">
+        <i
+          className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {
+            'opacity-50': disabled,
+          })}
+        >
+          <DarkSearchIcon />
+        </i>
         <input {...inputProps} ref={ref} value={valueState} className={style} />
         {resetIcon && valueState && (
           <i
-            role='button'
+            role="button"
             tabIndex={0}
             onKeyDown={() => setValueState('')}
             onClick={() => setValueState('')}
-            className='absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer'
+            className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
           >
             <ResetIcon />
           </i>
         )}
       </div>
-      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+      {!disabled && (
+        <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+      )}
     </div>
   )
 }

@@ -54,7 +54,7 @@ const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
         onLoad={() => setLoaded(true)}
       />
       <a href={url} target="_blank" rel="noreferrer">
-        <h5 className="md:text-default mt-8 cursor-pointer font-semibold hover:underline">{title}</h5>
+        <h5 className="md:text-h5 mt-8 cursor-pointer hover:underline">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
     </div>
@@ -70,7 +70,7 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
   return (
     <div key={id} className={className}>
       <h4 className="text-h4">{title}</h4>
-      <p className="md:text-default mt-5 mb-10">{subtitle}</p>
+      <p className="md:text-p1 mt-5 mb-10">{subtitle}</p>
 
       {/* Mobile */}
       <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
@@ -85,7 +85,7 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
           <Video key={video.url} {...video} />
         ))}
         {shouldShowButtonContent(videos, buttonContent) && (
-          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-md py-2">
+          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-20 py-2">
             {buttonContent}
           </Button>
         )}
