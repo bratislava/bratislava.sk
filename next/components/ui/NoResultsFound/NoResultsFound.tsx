@@ -17,6 +17,6 @@ export const NoResultsFound = ({ title, message, messageClassName }: NoResultsFo
     {/* TODO: troubleshoot different size icons issue */}
     <NoDataResultsFound />
     <span className="text-h3 pb-4">{title}</span>
-    <span className={cx(messageClassName, 'text-base lg:text-default')}>{message}</span>
+    <span className={cx(messageClassName, 'text-p2 lg:text-p1')}>{message}</span>
   </div>
 )
