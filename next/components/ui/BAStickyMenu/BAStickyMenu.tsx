@@ -33,7 +33,7 @@ const MenuCell = ({ item, isActive, handleClick }: MenuCellProps) => (
       })}
     />
     <p
-      className={cx('font-medium text-base mt-5 transition group-hover:font-bold text-center whitespace-pre', {
+      className={cx('text-p2-medium mt-5 transition group-hover:font-bold text-center whitespace-pre', {
         'font-bold': isActive,
       })}
     >
@@ -75,7 +75,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
   return (
     <div
       className={cx(
-        'cursor-default h-screen hidden opacity-0 pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-blackTransparent transition delay-500 duration-300 ease-in-out',
+        'cursor-default h-screen hidden opacity-0 pointer-events-none group-hover:pointer-events-auto fixed top-[106px] left-0 right-0 bottom-0 z-30 w-full bg-gray-700/50 transition delay-500 duration-300 ease-in-out',
         { hidden: panelHidden && disableHover },
         { 'opacity-100': panelHidden === false },
         { 'group-hover:flex': disableHover === false }
@@ -96,7 +96,7 @@ const MenuPanel = ({ item, panelHidden, setPanelHidden, disableHover, setDisable
                   <button type="button" className="flex" onClick={() => setPanelHidden(true)}>
                     <UILink
                       href={isItExternal(subItem.url)}
-                      className="flex items-center text-left text-[20px] hover:underline"
+                      className="text-p1 flex items-center text-left hover:underline"
                     >
                       <div className="flex shrink-0 grow-0 items-center justify-center">
                         <Icon iconName={subItem.icon} />

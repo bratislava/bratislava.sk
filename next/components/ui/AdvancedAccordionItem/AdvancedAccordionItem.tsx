@@ -29,14 +29,14 @@ export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionI
     <div className="flex flex-col">
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={() => setOpen(!open)}>
         <div className="flex items-center lg:px-5">
-          <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-primary lg:h-8 lg:w-8" />
+          <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-category-600 lg:h-8 lg:w-8" />
           <div className="text-h3 pr-6">{title}</div>
           <div className={cx('ml-auto', { 'rotate-180': open })}>
             <ChevronDown className="hidden lg:flex" />
             <ChevronDownSmall className="flex lg:hidden" />
           </div>
         </div>
-        <div className="h-1 w-full rounded-sm border border-transparent bg-secondary" />
+        <div className="h-1 w-full rounded-sm border border-transparent bg-category-100" />
       </div>
       {open && (
         <div className="pt-8">

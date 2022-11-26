@@ -57,17 +57,17 @@ const TextAreaField = (
     ref,
   )
   const style = cx(
-    'w-full px-4 py-2.5 w-320 h-196 border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed resize-none',
+    'w-full px-4 py-2.5 w-80 h-[196px] border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none',
     className,
     {
       // hover
-      'hover:border-form-input-hover': !disabled,
+      'hover:border-gray-400': !disabled,
 
       // error
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
 
       // disabled
-      'opacity-50 border-form-input-disabled': disabled,
+      'border-gray-300 bg-gray-100': disabled,
     },
   )
   return (

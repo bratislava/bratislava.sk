@@ -19,9 +19,9 @@ export const VenuesReservation = ({
   weddingCards,
 }: VenuesReservationProps) => (
   <div className={cx(className, 'flex items-center flex-col')}>
-    <span className="w-96 px-5 text-center text-4xl font-semibold">{title}</span>
+    <span className="text-h2 w-96 px-5 text-center">{title}</span>
 
-    <span className="text-h1 mt-7 font-normal"> {telephoneNumber}</span>
+    <span className="text-h1-normal mt-7"> {telephoneNumber}</span>
 
     <div className="mt-10 grid grid-cols-2 gap-x-52 gap-y-10">
       {contactCards && contactCards.map((contactCard) => <ContactCard key={contactCard.name} {...contactCard} />)}

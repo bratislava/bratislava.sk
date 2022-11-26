@@ -36,9 +36,9 @@ export const Accordion = ({
         <div key={i} className={cx(sectionClassName, 'flex flex-col w-full gap-5 items-center')}>
           {tabsVariant === 'default' ? (
             <Button
-              className={cx(tabClassName, 'text-h4 font-normal py-2', {
+              className={cx(tabClassName, 'text-h4-normal py-2', {
                 'text-font': !(tab.key === activeSection),
-                'text-primary': tab.key === activeSection,
+                'text-category-600': tab.key === activeSection,
               })}
               icon={tab.key === activeSection ? <ChevronDown /> : <ChevronRight />}
               onClick={() => onSelect?.(tab.key)}

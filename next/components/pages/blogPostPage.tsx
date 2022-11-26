@@ -57,8 +57,8 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
       {/* Header */}
       <PageHeader
         className="header-main-bg bg-cover"
-        color="var(--secondary-color)"
-        transparentColor="var(--secondary-color--transparent)"
+        color="var(--category-color-100)"
+        transparentColor="var(--category-color-100--transparent)"
         imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}
       >
         {/* meta description (Excerpt) */}
@@ -70,9 +70,9 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="min-h-[220px] pt-30">
+          <div className="min-h-56 pt-32">
             {blogPost?.tag && (
-              <span className="text-p2 inline-block rounded bg-primary px-3 py-1 font-medium text-white">
+              <span className="text-p2-medium inline-block rounded bg-category-600 px-3 py-1 text-white">
                 {tag?.title}
               </span>
             )}

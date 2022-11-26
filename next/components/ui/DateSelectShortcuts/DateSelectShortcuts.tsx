@@ -46,9 +46,9 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
 
           return (
             <button
-              className={cx('bg-input-nav-bg px-2 sm:px-4 relative cursor-pointer', {
-                'text-font hover:text-primary': !isActive,
-                'text-primary hover:text-font font-bold': isActive,
+              className={cx('bg-white px-2 sm:px-4 relative cursor-pointer', {
+                'text-font hover:text-category-600': !isActive,
+                'text-category-600 hover:text-font font-bold': isActive,
                 'hidden md:block': i > 2,
               })}
               key={i}

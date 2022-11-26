@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -17,7 +18,7 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   const ref = useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton({ isDisabled: disabled, ...rest }, ref)
   return (
-    <button className="focus:outline-none" type="button" {...buttonProps} ref={ref}>
+    <button className={cx('focus:outline-none', { 'opacity-50': disabled })} type="button" {...buttonProps} ref={ref}>
       {children}
     </button>
   )

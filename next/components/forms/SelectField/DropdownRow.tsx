@@ -20,7 +20,7 @@ interface DropdownRowProps {
 const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOne, onChooseMulti, onUnChooseMulti}: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
-    "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover",
+    "flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-gray-100",
     {
       "h-14": !option.description,
       "h-[84px]": option.description
@@ -28,7 +28,7 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
   )
 
   const optionClassName = cx(
-    "text-p-md w-full",
+    "text-20 w-full",
     {
       "font-semibold": option.description
     }
@@ -67,9 +67,9 @@ const DropdownRow = ({option, selected, type, divider, onChooseOne, onUnChooseOn
               { getRowIcon() }
           </div>
         </div>
-        { option.description && <p className="text-p-sm">{option.description}</p> }
+        { option.description && <p className="text-p3">{option.description}</p> }
       </div>
-      { divider && <div className="border-b-2 border-form-input-default"/> }
+      { divider && <div className="border-b-2 border-gray-200"/> }
     </div>
   )
 }

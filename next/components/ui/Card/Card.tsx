@@ -33,7 +33,7 @@ export const Card = ({
         type="submit"
         className={cx(
           buttonPosition,
-          'bg-secondary absolute bottom-0 transform translate-y-1/2',
+          'bg-category-100 absolute bottom-0 transform translate-y-1/2',
           { 'w-12 h-12': buttonVariant === 'circle' },
           { 'py-2.5 px-6': buttonVariant === 'default' }
         )}
@@ -41,7 +41,7 @@ export const Card = ({
         variant="secondary-dark-text"
         onClick={onButtonClick}
       >
-        <div className="text-default font-normal"> {buttonContent}</div>
+        <div className="text-20"> {buttonContent}</div>
       </Button>
     )}
   </div>
