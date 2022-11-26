@@ -74,7 +74,7 @@ export const FileList = ({
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
               <div className="space-y-6">
                 {fileSection.category && !hideCategory && (
-                  <span className="text-h4 font-medium">{fileSection.category}</span>
+                  <span className="text-h4-medium">{fileSection.category}</span>
                 )}
                 {Array.from({ length: numberOfGroupsSeparatedByDividers }, (_, i) => {
                   const start = i * NUM_ITEMS_PER_GROUP
@@ -107,7 +107,7 @@ export const FileList = ({
               </div>
               {length > NUM_PREVIEW_ITEMS && (
                 <Button
-                  className="self-center px-6 py-2.5 text-default"
+                  className="text-20 self-center px-6 py-2.5"
                   variant="secondary-dark-text"
                   onClick={handleClick}
                 >
@@ -117,7 +117,7 @@ export const FileList = ({
             </div>
             {!noScroll && (
               <div className="block lg:hidden">
-                <span className="text-h4 font-medium">{fileSection.category}</span>
+                <span className="text-h4-medium">{fileSection.category}</span>
                 <HorizontalScrollWrapper className="-mx-8 gap-x-5 py-6 px-8">
                   {fileSection?.files.map((file, sectionIndex) => (
                     <div key={sectionIndex}>
