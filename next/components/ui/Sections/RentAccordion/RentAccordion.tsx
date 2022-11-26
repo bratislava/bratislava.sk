@@ -55,7 +55,7 @@ export const RentAccordion = (props: IProps) => {
           <button
             onClick={() => setActiveSection?.(tab.key)}
             className={cx(
-              'flex justify-between w-full items-center py-6 shadow rounded-lg px-10 font-medium text-h4',
+              'flex justify-between w-full items-center py-6 shadow rounded-lg px-10 text-h4-medium',
               { 'bg-category-100': tab.key === activeSection },
               { 'bg-white': tab.key !== activeSection }
             )}
