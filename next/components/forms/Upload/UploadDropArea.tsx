@@ -82,11 +82,11 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
       <div className={dragAndDropClassNames}>
         <div className="flex flex-row justify-center" >
           <div className="flex h-12 w-12 flex-row justify-center rounded-full bg-gray-200">
-            <UploadIcon className="text-default m-auto"/>
+            <UploadIcon className="text-20 m-auto"/>
           </div>
         </div>
-        <h5 className="text-h-base font-semibold">Drag & drop upload</h5>
-        <div className="text-xs flex flex-row justify-center gap-1 text-p-sm">
+        <h5 className="text-20-semibold">Drag & drop upload</h5>
+        <div className="text-p3 flex flex-row justify-center gap-1">
           <p>{sizeLimit} {sizeLimit && "MB"}</p>
           {
             sizeLimit && supportedFormats && supportedFormats.length > 0 && (
