@@ -12,7 +12,7 @@ const SelectAllDropdownRow = ({ divider, onSelectAll }: SelectAllDropdownRowProp
     <div className="flex h-14 w-full cursor-pointer flex-col bg-white px-5 hover:text-gray-600" onClick={onSelectAll}>
       <div className="flex h-full flex-col justify-center">
         <div className="flex flex-row justify-center">
-          <p className="w-full text-p-md font-semibold">
+          <p className="text-20-semibold w-full">
             { t("selectAll") }
           </p>
         </div>

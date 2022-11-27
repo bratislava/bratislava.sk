@@ -44,14 +44,14 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
                 type="button"
               >
                 <Icon iconName={item.icon} />
-                <p className="w-36 text-base font-medium">{item.title}</p>
+                <p className="w-36 text-p2-medium">{item.title}</p>
                 <ChevronRight />
               </button>
             )
           })}
         </div>
         <div className="hidden items-center justify-between py-8 lg:flex">
-          <Link className="text-base font-medium" variant="plain" href="#">
+          <Link className="text-p2-medium" variant="plain" href="#">
             {t('login')}
           </Link>
         </div>
@@ -68,7 +68,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
             >
               <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
                 {item?.icon}
-                <span className="text-base font-medium">{t(item.title)}</span>
+                <span className="text-p2-medium">{t(item.title)}</span>
               </button>
             </Link>
           ))}
