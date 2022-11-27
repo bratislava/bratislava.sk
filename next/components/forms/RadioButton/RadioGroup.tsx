@@ -15,14 +15,13 @@ type RadioGroupBase = {
 }
 
 const RadioGroup = (props: RadioGroupBase) => {
-
   const { children, label } = props
   const state = useRadioGroupState(props)
   const { radioGroupProps, labelProps } = useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps}>
-      {/*<span {...labelProps}>{label}</span>*/}
+      {/* <span {...labelProps}>{label}</span> */}
       <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
     </div>
   )
