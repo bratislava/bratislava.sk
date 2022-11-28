@@ -15,13 +15,14 @@ export const buildXmlRecursive = (
   currentPath: string[],
   cheerioInstance: cheerio.CheerioAPI,
   node: Json,
-  jsonSchema: JsonSchema | undefined
+  jsonSchema: JsonSchema | undefined,
 ) => {
   const nodeName = firstCharToUpper(last(currentPath))
   const parentPath = dropRight(currentPath).join(' ')
   // we always edit the last element added - important for arrays in xml, where multiple nodes match the same path
   const parentNode = cheerioInstance(parentPath).last()
-  if (parentNode.length === 0) throw new Error(`Error, found ${parentNode.length} nodes for path ${parentPath}`)
+  if (parentNode.length === 0)
+    throw new Error(`Error, found ${parentNode.length} nodes for path ${parentPath}`)
   if (Array.isArray(node)) {
     // arrays move us one level deeper in json, but do not cause change to xml on their own
     // this will make us add multiple nodes with same name at the same level
@@ -34,7 +35,12 @@ export const buildXmlRecursive = (
     parentNode.append(`<${nodeName}></${nodeName}>`)
     Object.keys(node).forEach((key) => {
       const properties = getAllPossibleJsonSchemaProperties(jsonSchema)
-      buildXmlRecursive([...currentPath, firstCharToUpper(key)], cheerioInstance, node[key], properties[key])
+      buildXmlRecursive(
+        [...currentPath, firstCharToUpper(key)],
+        cheerioInstance,
+        node[key],
+        properties[key],
+      )
     })
   } else if (node && typeof node === 'string') {
     if (jsonSchema) {
@@ -55,7 +61,9 @@ export const buildXmlRecursive = (
     // noop
   } else {
     console.log('Erroneous node:', node)
-    throw new Error(`Unexpeted node type/value at path ${currentPath.join(' ')}, see the node in logs above.`)
+    throw new Error(
+      `Unexpeted node type/value at path ${currentPath.join(' ')}, see the node in logs above.`,
+    )
   }
 }
 
@@ -96,7 +104,9 @@ interface JsonSchemaProperties {
   [key: string]: JsonSchema
 }
 
-const getAllPossibleJsonSchemaProperties = (jsonSchema: JsonSchema | undefined): JsonSchemaProperties => {
+const getAllPossibleJsonSchemaProperties = (
+  jsonSchema: JsonSchema | undefined,
+): JsonSchemaProperties => {
   if (!jsonSchema) {
     return {}
   }
@@ -144,7 +154,11 @@ export const getJsonSchemaNodeAtPath = (jsonSchema: any, path: string[]) => {
   return currentNode
 }
 
-export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string[], schema: any) => {
+export const removeNeedlessXmlTransformArraysRecursive = (
+  obj: any,
+  path: string[],
+  schema: any,
+) => {
   if (typeof obj !== 'object') return obj
   Object.keys(obj).forEach((k) => {
     const newPath = [...path, k]
@@ -189,6 +203,7 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   addFormats(ajv)
 
   ajv.addKeyword('example')
+  ajv.addKeyword('enumNames')
 
   const validate = ajv.compile(schema)
   validate(data)
