@@ -28,7 +28,7 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
   )
 
   const buttonInfoClassNames = cx(
-    "flex flex-col justify-evenly text-xs",
+    "flex flex-col justify-evenly text-p3",
     {
       "min-w-40": supportedFormats || sizeLimit
     }
@@ -50,9 +50,9 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
            data-value={value}>
         <div className="flex flex-row justify-center">
           <div className="mr-2 h-6 w-6 flex flex-col justify-center self-center">
-            <UploadIcon className="text-default"/>
+            <UploadIcon className="text-20"/>
           </div>
-          <p className="text-p-md">Upload</p>
+          <p className="text-20">Upload</p>
         </div>
       </div>
       {

@@ -3,6 +3,9 @@
 @import 'tailwindcss/utilities';
 
 @layer components {
+  /* Figma template variables - start */
+
+  /* headings */
   .text-h1-lg {
     @apply text-h-2xl lg:text-h-3xl font-semibold;
   }
@@ -31,23 +34,248 @@
     @apply text-h-sm font-semibold;
   }
 
+  /* paragraphs */
   .text-p1 {
-    @apply text-p-base lg:text-p-md;
+    @apply font-normal text-p-base lg:text-p-md;
+  }
+  .text-p1-medium {
+    @apply font-medium text-p-base lg:text-p-md;
+  }
+  .text-p1-semibold {
+    @apply font-semibold text-p-base lg:text-p-md;
+  }
+  .text-p1-underline {
+    @apply underline font-medium text-p-base lg:text-p-md;
   }
 
   .text-p2 {
-    @apply text-p-base;
+    @apply font-normal text-p-base;
+  }
+  .text-p2-medium {
+    @apply font-medium text-p-base;
+  }
+  .text-p2-semibold {
+    @apply font-semibold text-p-base;
+  }
+  .text-p2-underline {
+    @apply underline font-normal text-p-base;
   }
 
   .text-p3 {
-    @apply text-p-sm;
+    @apply font-normal text-p-sm;
+  }
+  .text-p3-medium {
+    @apply font-medium text-p-sm;
+  }
+  .text-p3-semibold {
+    @apply font-semibold text-p-sm;
+  }
+  .text-p3-underline {
+    @apply underline font-normal text-p-sm;
   }
 
+  /* buttons */
+  .text-btn-lg {
+    @apply font-semibold text-btn-lg;
+  }
+  .text-btn {
+    @apply font-semibold text-btn-base;
+  }
+
+  /* Figma template variables - end */
+
+  /* Other variables - all of these to be removed as the redesign progresses - start */
+
+  /* heading */
+  .text-h1-lg-light {
+    @apply text-h-2xl lg:text-h-3xl font-light;
+  }
+  .text-h1-lg-normal {
+    @apply text-h-2xl lg:text-h-3xl font-normal;
+  }
+  .text-h1-lg-medium {
+    @apply text-h-2xl lg:text-h-3xl font-medium;
+  }
+  .text-h1-lg-bold {
+    @apply text-h-2xl lg:text-h-3xl font-bold;
+  }
+
+  .text-h1-light {
+    @apply text-h-xl lg:text-h-2xl font-light;
+  }
+  .text-h1-normal {
+    @apply text-h-xl lg:text-h-2xl font-normal;
+  }
+  .text-h1-medium {
+    @apply text-h-xl lg:text-h-2xl font-medium;
+  }
+  .text-h1-bold {
+    @apply text-h-xl lg:text-h-2xl font-bold;
+  }
+
+  .text-h2-light {
+    @apply text-h-lg lg:text-h-xl font-light;
+  }
+  .text-h2-normal {
+    @apply text-h-lg lg:text-h-xl font-normal;
+  }
+  .text-h2-medium {
+    @apply text-h-lg lg:text-h-xl font-medium;
+  }
+  .text-h2-bold {
+    @apply text-h-lg lg:text-h-xl font-bold;
+  }
+
+  .text-h3-light {
+    @apply text-h-md lg:text-h-lg font-light;
+  }
+  .text-h3-normal {
+    @apply text-h-md lg:text-h-lg font-normal;
+  }
+  .text-h3-medium {
+    @apply text-h-md lg:text-h-lg font-medium;
+  }
+  .text-h3-bold {
+    @apply text-h-md lg:text-h-lg font-bold;
+  }
+
+  .text-h4-light {
+    @apply text-h-base lg:text-h-md font-light;
+  }
+  .text-h4-normal {
+    @apply text-h-base lg:text-h-md font-normal;
+  }
+  .text-h4-medium {
+    @apply text-h-base lg:text-h-md font-medium;
+  }
+  .text-h4-bold {
+    @apply text-h-base lg:text-h-md font-bold;
+  }
+
+  .text-h5-light {
+    @apply text-h-sm lg:text-h-base font-light;
+  }
+  .text-h5-normal {
+    @apply text-h-sm lg:text-h-base font-normal;
+  }
+  .text-h5-medium {
+    @apply text-h-sm lg:text-h-base font-medium;
+  }
+  .text-h5-bold {
+    @apply text-h-sm lg:text-h-base font-bold;
+  }
+
+  .text-h6-light {
+    @apply text-h-sm font-light;
+  }
+  .text-h6-normal {
+    @apply text-h-sm font-normal;
+  }
+  .text-h6-medium {
+    @apply text-h-sm font-medium;
+  }
+  .text-h6-bold {
+    @apply text-h-sm font-bold;
+  }
+
+  /* paragraphs */
+  .text-p1-light {
+    @apply font-light text-p-base lg:text-p-md;
+  }
+
+  .text-p1-bold {
+    @apply font-bold text-p-base lg:text-p-md;
+  }
+
+  .text-p2-light {
+    @apply font-light text-p-base;
+  }
+
+  .text-p2-bold {
+    @apply font-bold text-p-base;
+  }
+
+  .text-p3-light {
+    @apply font-light text-p-sm;
+  }
+  .text-p3-bold {
+    @apply font-bold text-p-sm;
+  }
+
+  .text-p4-light {
+    @apply font-light text-p-xs;
+  }
   .text-p4 {
-    @apply text-p-xs;
+    @apply font-normal text-p-xs;
+  }
+  .text-p4-medium {
+    @apply font-medium text-p-xs;
+  }
+  .text-p4-semibold {
+    @apply font-semibold text-p-xs;
+  }
+  .text-p4-bold {
+    @apply font-bold text-p-xs;
+  }
+  /* buttons */
+  .text-btn-lg-light {
+    @apply font-light text-btn-lg;
+  }
+  .text-btn-lg-normal {
+    @apply font-normal text-btn-lg;
+  }
+  .text-btn-lg-medium {
+    @apply font-medium text-btn-lg;
+  }
+  .text-btn-lg-bold {
+    @apply font-bold text-btn-lg;
   }
 
-  .text-button-1 {
-    @apply text-p-md;
+  .text-btn-light {
+    @apply font-light text-btn-base;
+  }
+  .text-btn-normal {
+    @apply font-normal text-btn-base;
+  }
+  .text-btn-medium {
+    @apply font-medium text-btn-base;
+  }
+  .text-btn-bold {
+    @apply font-bold text-btn-base;
+  }
+
+  /* other */
+  .text-20-light {
+    @apply font-light text-p-md;
+  }
+  .text-20 {
+    @apply font-normal text-p-md;
+  }
+  .text-20-medium {
+    @apply font-medium text-p-md;
+  }
+  .text-20-semibold {
+    @apply font-semibold text-p-md;
+  }
+  .text-20-bold {
+    @apply font-bold text-p-md;
+  }
+
+  .text-16-light {
+    @apply font-light text-p-base;
+  }
+  .text-16 {
+    @apply font-normal text-p-base;
+  }
+  .text-16-medium {
+    @apply font-medium text-p-base;
+  }
+  .text-16-semibold {
+    @apply font-semibold text-p-base;
+  }
+  .text-16-bold {
+    @apply font-bold text-p-base;
   }
 }
+
+/* Another variables - end */

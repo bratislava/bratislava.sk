@@ -100,7 +100,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           >
             {headline}
           </div>
-          <div className="line-clamp-2 text-button-1 overflow-hidden text-ellipsis font-semibold">{title} </div>
+          <div className="line-clamp-2 text-20-semibold overflow-hidden text-ellipsis">{title} </div>
           <div>{date}</div>
         </div>
       </Panel>
@@ -126,7 +126,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
                 {headline}
               </div>
               <div className="flex">
-                <div className="line-clamp-2 text-button-1 overflow-hidden font-semibold text-white">{title}</div>
+                <div className="line-clamp-2 text-20-semibold overflow-hidden text-white">{title}</div>
                 <VerticalCardButton className="invisible shrink-0 group-hover:lg:visible" size="medium">
                   <ArrowRightShort className="scale-125" />
                 </VerticalCardButton>

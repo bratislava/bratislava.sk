@@ -1,7 +1,7 @@
 import ResetIcon from '@assets/images/forms/circle-filled-reset.svg'
 import DarkSearchIcon from '@assets/images/forms/dark-search-icon.svg'
 import cx from 'classnames'
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, RefObject, useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from './FieldErrorMessage'
@@ -14,7 +14,6 @@ interface InputBase {
   description?: string
   className?: string
   value?: string
-  leftIcon?: ReactNode
   required?: boolean
   resetIcon?: boolean
   disabled?: boolean
@@ -22,56 +21,42 @@ interface InputBase {
   onChange?: (e: string) => void
 }
 
-const SearchField = (
-  {
-    label,
-    placeholder,
-    errorMessage,
-    description,
-    tooltip,
-    required,
-    value = '',
-    disabled,
-    leftIcon,
-    resetIcon,
-    className,
-    ...rest
-  }: InputBase,
-) => {
+const SearchField = ({
+  label,
+  placeholder,
+  errorMessage,
+  description,
+  tooltip,
+  required,
+  value = '',
+  disabled,
+  resetIcon,
+  className,
+  ...rest
+}: InputBase) => {
   const [valueState, setValueState] = useState<string>(value)
   const ref = useRef<HTMLInputElement>(null)
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       ...rest,
       placeholder,
+      value,
       label,
       errorMessage,
-      value: valueState,
       description,
-      onChange(inputValue){
-        if (rest.onChange) {
-          rest.onChange(inputValue)
-        }
-        setValueState(inputValue)
+      onChange(value) {
+        setValueState(value)
       },
       isRequired: required,
       isDisabled: disabled,
     },
-    ref,
+    ref as RefObject<HTMLInputElement>,
   )
-  const resetHandler = () => {
-    if (rest.onChange) {
-      rest.onChange('')
-    }
-    setValueState('')
-  }
 
   const style = cx(
-    'w-full pl-12.5 px-4 py-2.5 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700',
+    'w-full px-12 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
     className,
     {
-      // conditions
-      'pl-[52px]': leftIcon,
       // hover
       'hover:border-gray-400': !disabled,
 
@@ -84,7 +69,7 @@ const SearchField = (
   )
 
   return (
-    <div className='flex w-full max-w-xs flex-col'>
+    <div className="flex w-full max-w-xs flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}
@@ -94,22 +79,30 @@ const SearchField = (
         required={required}
         tooltip={tooltip}
       />
-      <div className='relative'>
-        <i className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {'opacity-50' : disabled})}><DarkSearchIcon /></i>
-        <input {...inputProps} ref={ref} className={style} />
+      <div className="relative">
+        <i
+          className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {
+            'opacity-50': disabled,
+          })}
+        >
+          <DarkSearchIcon />
+        </i>
+        <input {...inputProps} ref={ref} value={valueState} className={style} />
         {resetIcon && valueState && (
           <i
-            role='button'
+            role="button"
             tabIndex={0}
-            onKeyDown={resetHandler}
-            onClick={resetHandler}
-            className='absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer'
+            onKeyDown={() => setValueState('')}
+            onClick={() => setValueState('')}
+            className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
           >
             <ResetIcon />
           </i>
         )}
       </div>
-      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+      {!disabled && (
+        <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+      )}
     </div>
   )
 }
