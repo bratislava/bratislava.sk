@@ -106,9 +106,7 @@ export const NewsCard = ({
           )}
           <h3 className="news-small-content text-h4">{title}</h3>
           {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
-          <span className="text-xs font-medium">
-            {getNumericLocalDate(date_added || publishedAt || updatedAt)}
-          </span>
+          <span className="text-p4-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
           <p className="news-small-content text-p2">{excerpt}</p>
           <div>
             {slug && (

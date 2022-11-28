@@ -48,10 +48,10 @@ export const NarrowText = ({
           content={content}
           hasBackground={hasBackground}
           className={cx(
-            'text-sm md:text-default narrow-text-wrapper',
+            'text-p2 md:text-p1 narrow-text-wrapper',
             {
-              'text-xxs md:text-sm leading-[20px] md:leading-[24px]': size === 'small',
-              'text-sm md:text-default leading-[24px] md:leading-[30px]': size === 'normal',
+              'text-p4 md:text-p2 leading-[20px] md:leading-[24px]': size === 'small',
+              'text-p2 md:text-p1 leading-[24px] md:leading-[30px]': size === 'normal',
             },
             contentStyle
           )}

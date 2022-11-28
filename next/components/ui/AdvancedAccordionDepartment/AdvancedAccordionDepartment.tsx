@@ -60,7 +60,7 @@ AdvancedAccordionDepartmentProps) => {
       {/*       {departmentPhone && (
         <div className="flex items-center pl-9 pb-5 lg:pb-8 lg:pl-16 gap-x-8">
           <Phone />
-          <div className="font-semibold text-red-brick text-default">{departmentPhone}</div>
+          <div className="text-p1-semibold text-red-brick ">{departmentPhone}</div>
         </div>
       )} */}
       {cards.length > 0 && <AccordionCards items={cards} />}
@@ -72,7 +72,7 @@ AdvancedAccordionDepartmentProps) => {
             </div>
           )} */}
         {/* {subitem.groupHeading && (
-            <div className="text-default lg:text-md pt-8 lg:pt-10 font-semibold">
+            <div className="text-p1-semibold pt-8 lg:pt-10">
               {subitem.groupHeading}
             </div>
           )} */}

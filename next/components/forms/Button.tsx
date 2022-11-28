@@ -73,12 +73,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const style = cx(
       'inline-flex items-center',
       rest.href
-        ? 'font-medium underline underline-offset-4 focus-visible:outline-none'
-        : 'w-fit h-fit space-x-2 text-white font-semibold justify-center text-center align-middle focus:outline-none rounded-lg',
+        ? 'underline underline-offset-4 focus-visible:outline-none'
+        : 'w-fit h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
         // text for lg button
-        'px-6 py-3.5 text-button-1 leading-6':
+        'px-6 py-3.5 text-20-semibold leading-6':
           size === 'lg' &&
           !icon &&
           text &&
@@ -88,7 +88,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // text for sm button
-        'px-5 py-3 text-button-base leading-5':
+        'px-5 py-3 text-16-semibold leading-5':
           size === 'sm' &&
           !icon &&
           text &&
@@ -126,26 +126,42 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           size === 'sm' &&
           icon &&
           !text &&
+          (variant === 'brand' ||
+            variant === 'black' ||
+            variant === 'negative' ||
+            variant === 'brand-outline' ||
+            variant === 'black-outline'),
+        // icon for lg button
+        'px-2.5 py-2.5 text-20-semibold leading-6':
+          size === 'lg' &&
+          icon &&
+          !text &&
+          (variant === 'plain-brand' || variant === 'plain-black'),
+        // icon for sm button
+        'px-2 py-2 text-16-semibold':
+          size === 'sm' &&
+          icon &&
+          !text &&
           (variant === 'plain-brand' || variant === 'plain-black'),
 
         // text for lg button
-        'px-3 py-2 text-button-1 leading-6':
+        'px-3 py-2 text-20-semibold leading-6':
           size === 'lg' &&
           !icon &&
           text &&
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
         // text for sm button
-        'px-2 py-1 text-button-base leading-6':
+        'px-2 py-1 text-16-semibold leading-6':
           size === 'sm' &&
           !icon &&
           text &&
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
 
         // text for lg link button
-        'text-button-1 leading-8':
+        'text-20-medium leading-8':
           size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
         // text for sm link button
-        'text-button-base leading-6':
+        'text-16-medium leading-6':
           size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
 
         'border-2':
