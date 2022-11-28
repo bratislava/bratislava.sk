@@ -2,7 +2,11 @@ import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject, useState } from 'react'
 import { useTextField } from 'react-aria'
 
+import CallIcon from '../../assets/images/forms/call.svg'
 import ResetIcon from '../../assets/images/forms/circle-filled-reset.svg'
+import LockIcon from '../../assets/images/forms/lock.svg'
+import MailIcon from '../../assets/images/forms/mail.svg'
+import PersonIcon from '../../assets/images/forms/person.svg'
 import FieldErrorMessage from './FieldErrorMessage'
 import FieldHeader from './FieldHeader'
 
@@ -13,7 +17,7 @@ interface InputBase {
   description?: string
   className?: string
   value?: string
-  leftIcon?: ReactNode
+  leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   required?: boolean
   resetIcon?: boolean
   disabled?: boolean
@@ -56,6 +60,21 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       ref as RefObject<HTMLInputElement>,
     )
 
+    const leftIconSwitcher = (icon: string): ReactNode | null => {
+      switch (icon) {
+        case 'person':
+          return <PersonIcon />
+        case 'mail':
+          return <MailIcon />
+        case 'call':
+          return <CallIcon />
+        case 'lock':
+          return <LockIcon />
+        default:
+          return null
+      }
+    }
+
     const style = cx(
       'w-full px-4 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
       className,
@@ -87,11 +106,11 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         <div className="relative">
           {leftIcon && (
             <i
-              className={cx('absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4', {
+              className={cx('absolute left-4 h-full flex items-center w-4-translate-y-2/4', {
                 'opacity-50': disabled,
               })}
             >
-              {leftIcon}
+              {leftIconSwitcher(leftIcon)}
             </i>
           )}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
