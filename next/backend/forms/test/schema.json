@@ -39,7 +39,39 @@
       }
     },
     {
-      "required": [],
+      "properties": {
+        "ziadatel": {
+          "title": "Žiadateľ",
+          "required": ["address"],
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "birthDate": {
+              "type": "string"
+            },
+            "newTaxpayer": {
+              "type": "boolean"
+            },
+            "address": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "required": ["email"],
       "properties": {
         "email": {
           "type": "string"
