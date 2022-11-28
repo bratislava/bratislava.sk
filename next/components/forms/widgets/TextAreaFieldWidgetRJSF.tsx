@@ -44,18 +44,20 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <TextAreaField
-      value={value}
-      label={label}
-      placeholder={placeholder}
-      required={required}
-      disabled={disabled}
-      description={description}
-      tooltip={tooltip}
-      className={className}
-      onChange={handleOnChange}
-      errorMessage={showErrorMessage}
-    />
+    <div className="py-2 px-4">
+      <TextAreaField
+        value={value}
+        label={label}
+        placeholder={placeholder}
+        required={required}
+        disabled={disabled}
+        description={description}
+        tooltip={tooltip}
+        className={className}
+        onChange={handleOnChange}
+        errorMessage={showErrorMessage}
+      />
+    </div>
   )
 }
 
