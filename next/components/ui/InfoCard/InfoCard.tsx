@@ -29,14 +29,14 @@ export const InfoCard = ({
       <ContentWrapper
         className="mt-8 lg:pl-6"
         title={
-          <h1 className="text-h4 text-primary">
+          <h1 className="text-h4 text-category-600">
             {primaryTitle}
             <br />
             {secondaryTitle}
           </h1>
         }
       >
-        <span className="mt-3 mb-8 text-default text-font">{description}</span>
+        <span className="mt-3 mb-8 text-p1 text-font">{description}</span>
         {children}
       </ContentWrapper>
     </div>

@@ -169,14 +169,14 @@ AsyncServerProps<typeof getServerSideProps>) => {
         <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: pageStyle('red'),
+            __html: pageStyle('main'),
           }}
         />
         {/* Header */}
         <PageHeader
-          color="var(--secondary-color)"
-          transparentColor="var(--secondary-color--transparent)"
-          transparentColorMobile="var(--secondary-color--semi-transparent)"
+          color="var(--category-color-100)"
+          transparentColor="var(--category-color-100--transparent)"
+          transparentColorMobile="var(--category-color-100--semi-transparent)"
           imageSrc={OfficialBoardBackgroundImage}
           // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"

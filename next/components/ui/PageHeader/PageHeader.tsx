@@ -15,7 +15,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const defaultWaveProps = (color: string): WavesProps => ({
   wavePosition: 'top',
-  waveColor: 'var(--background-color)',
+  waveColor: 'white',
   backgroundColor: 'transparent',
   innerLinesColor: color,
   isRich: true,
@@ -49,11 +49,13 @@ export const PageHeader = ({
             innerWidth >= smallScreenBreakPoint
               ? `${color}, ${transparentColor})`
               : `${transparentColorMobile ?? transparentColor})`
-          }`
+          }`,
         )
       if (imageSrc)
         newBackgroundStyle.push(
-          `url(${imageSrc}) right ${innerWidth >= smallScreenBreakPoint ? 'center' : 'top/160%'} no-repeat`
+          `url(${imageSrc}) right ${
+            innerWidth >= smallScreenBreakPoint ? 'center' : 'top/160%'
+          } no-repeat`,
         )
       if (color) newBackgroundStyle.push(color)
 
@@ -67,7 +69,8 @@ export const PageHeader = ({
       style={{
         boxSizing: 'border-box',
         backgroundSize: '100%',
-        background: backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--secondary-color)',
+        background:
+          backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--category-color-100)',
       }}
       {...rest}
     >

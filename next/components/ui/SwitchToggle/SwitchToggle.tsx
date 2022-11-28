@@ -25,17 +25,17 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
           onClick={() => {
             onValueChange(false)
           }}
-          className="cursor-pointer text-base font-medium text-font"
+          className="cursor-pointer text-p2-medium text-font"
         >
           {titleLeft}
         </span>
         <button
           className={cx('w-10 h-5 flex items-center  rounded-full mx-3 px-0.5', {
             'justify-end': value,
-            'border border-primary bg-white': variant === 'transparent',
-            'bg-gray-dark': variant === 'gray' || variant === 'primary' && !value,
-            'bg-secondary': variant === 'secondary' && value,
-            'bg-primary': variant === 'primary' && value,
+            'border border-category-600 bg-white': variant === 'transparent',
+            'bg-gray-700/75': variant === 'gray' || variant === 'primary' && !value,
+            'bg-category-100': variant === 'secondary' && value,
+            'bg-category-600': variant === 'primary' && value,
           })}
           onClick={() => {
             onValueChange(!value);
@@ -43,7 +43,7 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
         >
           <div
             className={cx('w-3.5 h-3.5 rounded-full shadow-md', {
-              'bg-primary': variant === 'transparent',
+              'bg-category-600': variant === 'transparent',
               'bg-white': variant === 'primary' || variant === 'secondary' || variant === 'gray',
             })}
           />
@@ -52,7 +52,7 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
           onClick={() => {
             onValueChange(true)
           }}
-          className="cursor-pointer text-base font-medium text-font"
+          className="cursor-pointer text-p2-medium text-font"
         >
           {titleRight}
         </span>

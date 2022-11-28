@@ -36,7 +36,13 @@ interface IProps extends LanguageSelectProps {
   pageColor?: string
 }
 
-export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...languageSelectProps }: IProps) => {
+export const BANavBar = ({
+  className,
+  menuItems,
+  handleSearch,
+  pageColor,
+  ...languageSelectProps
+}: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
@@ -50,14 +56,18 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
       {/* Desktop */}
       <div
         id="desktop-navbar"
-        className={cx(className, 'items-center text-base ', 'fixed top-0 left-0 w-full bg-white z-50')}
+        className={cx(
+          className,
+          'items-center text-p2 ',
+          'fixed top-0 left-0 w-full bg-white z-50',
+        )}
       >
-        <div className="max-w-screen-1.5lg border-gray-universal-200 m-auto hidden h-[57px] w-full items-center justify-between border-b lg:flex">
+        <div className="m-auto hidden h-[57px] w-full max-w-screen-1.5lg items-center justify-between border-b border-gray-200 lg:flex">
           <Brand
-            className="group flex-1"
+            className="group"
             url="/"
             title={
-              <p className="text-sm text-font group-hover:text-red-universal-300">
+              <p className="text-font group-hover:text-gray-600 text-p2">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -65,13 +75,17 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
             }
           />
 
-          <nav className="text-gray-dark flex gap-x-8 font-semibold">
-            <div className="text-gray-dark flex items-center gap-x-8 font-semibold">
-              <Link href={t('searchLink')} variant="plain" className="p-4 -mr-4">
+          <nav className="text-font/75 flex gap-x-8 font-semibold">
+            <div className="text-font/75 flex items-center gap-x-8 font-semibold">
+              <Link href={t('searchLink')} variant="plain" className="p-4">
                 <SearchIcon />
               </Link>
 
-              <Link href={contactUrls[languageKey]} variant="plain" className="whitespace-nowrap py-4">
+              <Link
+                href={contactUrls[languageKey]}
+                variant="plain"
+                className="whitespace-nowrap py-4"
+              >
                 {t('contacts')}
               </Link>
 
@@ -83,7 +97,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap py-4">
                 {t('eservices')}
               </Link>
-              <div className="text-gray-dark relative flex items-center bg-transparent">
+              <div className="text-font/75 relative flex items-center bg-transparent">
                 <LanguageSelect
                   className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
                   {...languageSelectProps}
@@ -99,56 +113,62 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
         className={cx(
           className,
           'h-16 flex items-center justify-between py-5 px-8 -mx-8 shadow-md drop-shadow-md',
-          'lg:hidden fixed top-0 w-full bg-white z-50'
+          'lg:hidden fixed top-0 w-full bg-white z-50',
         )}
       >
         <Brand url="/" />
         <div className={cx('flex items-center gap-x-5')}>
-          <div className="text-h4 text-gray-light relative flex cursor-pointer items-center bg-transparent">
-            <Link href={t('searchLink')} variant="plain" className="p-4">
+          <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
+            <Link href={t('searchLink')} variant="plain" className="p-4 -mr-4">
               <SearchIcon />
             </Link>
             <LanguageSelect
-              className="text-p3 cursor-pointer appearance-none bg-transparent font-semibold focus:outline-none active:outline-none"
+              className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
               {...languageSelectProps}
             />
           </div>
         </div>
 
         <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 px-4 py-5">
-          <div className="flex w-6 items-center justify-center">{burgerOpen ? <HamburgerClose /> : <Hamburger />}</div>
+          <div className="flex w-6 items-center justify-center">
+            {burgerOpen ? <HamburgerClose /> : <Hamburger />}
+          </div>
         </button>
 
         {burgerOpen && (
-          <HamburgerMenu hamburgerMenuItems={menuItems} lang={languageKey} closeMenu={() => setBurgerOpen(false)} />
+          <HamburgerMenu
+            hamburgerMenuItems={menuItems}
+            lang={languageKey}
+            closeMenu={() => setBurgerOpen(false)}
+          />
         )}
       </div>
 
       <CookieConsent />
       {/* Cookie advanced options, kept in case they need resurrecting */}
       {/* {showModal ? (
-        <div className="fixed inset-0 z-50 bg-transperentBG px-6">
+        <div className="fixed inset-0 z-50 bg-gray-800/50 px-6">
           <div className="relative top-1/2 mx-auto max-w-[1110px] -translate-y-1/2 rounded-lg bg-white shadow">
             <div
-              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-primary text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-18 md:w-18"
+              className="absolute inset-x-0 -bottom-6 mx-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-category-600 text-white md:bottom-auto md:left-auto md:-top-6 md:-right-6 md:mx-0 md:h-18 md:w-18"
               onClick={() => setShowModal(false)}
             >
               <HamburgerCloseWhite />
             </div>
             <div className="max-h-[90vh] overflow-y-scroll overscroll-y-auto rounded-lg py-8 px-5 md:py-12 md:px-16">
               <div className="mb-6 md:mb-10">
-                <h5 className="cursor-pointer text-default font-semibold md:text-md">
+                <h5 className="cursor-pointer text-p1-semibold">
                   {' '}
                   {t('cookie_consent_modal_title')}{' '}
                 </h5>
               </div>
               <div className="mb-10">
-                <h6 className="mb-4 text-xxs font-semibold md:text-default">
+                <h6 className="mb-4 text-p4-semibold md:text-p1-semibold">
                   {' '}
                   {t('cookie_consent_modal_content_title')}{' '}
                 </h6>
                 <p
-                  className="mb-8 text-xxs md:text-sm"
+                  className="mb-8 text-p4 md:text-p2"
                   dangerouslySetInnerHTML={{ __html: t('cookie_consent_modal_conent_body') }}
                 />
                 <AccordionItemSmall
@@ -162,7 +182,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
-                      className="text-sm"
+                      className="text-p2"
                       key="0"
                       align="left"
                       width="full"
@@ -181,7 +201,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
-                      className="text-sm"
+                      className="text-p2"
                       key="0"
                       align="left"
                       width="full"
@@ -200,7 +220,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 >
                   <div className="flex flex-col space-y-4">
                     <NarrowText
-                      className="text-sm"
+                      className="text-p2"
                       key="0"
                       align="left"
                       width="full"
@@ -212,7 +232,7 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
               </div>
               <div className="block items-center justify-between md:flex">
                 <Button
-                  className="mx-auto mb-3 h-12 bg-primary px-6 text-sm font-medium md:my-0 md:mr-6 md:ml-0"
+                  className="mx-auto mb-3 h-12 bg-category-600 px-6 text-p2-medium md:my-0 md:mr-6 md:ml-0"
                   onClick={saveSettings}
                 >
                   {' '}
@@ -220,14 +240,14 @@ export const BANavBar = ({ className, menuItems, handleSearch, pageColor, ...lan
                 </Button>
                 <div className="block md:flex">
                   <Button
-                    className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mr-6 md:ml-0"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-p2-medium md:mr-6 md:ml-0"
                     variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
                     onClick={acceptAllCookies}
                   >
                     {t('acceptAll')}
                   </Button>
                   <Button
-                    className="box-none mx-auto mt-0 h-12 px-6 text-sm font-medium md:mx-0"
+                    className="box-none mx-auto mt-0 h-12 px-6 text-p2-medium md:mx-0"
                     variant="secondary"
                     onClick={declineCookies}
                   >
@@ -270,7 +290,7 @@ const useComponentVisible = (initialIsVisible, setIsSelectClicked) => {
         setIsComponentVisible(true)
       }
     },
-    [setIsSelectClicked]
+    [setIsSelectClicked],
   )
 
   React.useEffect(() => {
@@ -323,7 +343,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3 mt-3 h-6 w-6 text-[#333333] hover:font-semibold"
+                className="text-p3 hover:text-p3-semibold mt-3 h-6 w-6 text-font"
                 key={option.key}
                 onClick={handleChange}
               >

@@ -1,12 +1,11 @@
-import { COLOR_VARIABLES, pageStyle } from '@utils/page'
+import { CategoriesType, COLOR_VARIABLES, pageStyle } from '@utils/page'
 import { ReactNode, useState } from 'react'
 import * as React from 'react'
 
-type BrandColorString = 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'brown'
 type BrandCategoryString = 'Mesto Bratislava' | 'Doprava' | 'Zivotne prostredie' | 'Skolstvo' | 'Socialne sluzby' | 'Kultura'
 
 interface Brand {
-  color: BrandColorString,
+  color: CategoriesType,
   category: BrandCategoryString
 }
 
@@ -15,14 +14,14 @@ interface StyleGuideWrapperProps {
 }
 
 const StyleGuideWrapper = ({children}: StyleGuideWrapperProps) => {
-  const [activeBrandColor, setActiveBrandColor] = useState<BrandColorString>('red')
+  const [activeBrandColor, setActiveBrandColor] = useState<CategoriesType>('main')
   const allColors: Brand[] = [
-    { color: 'red', category: 'Mesto Bratislava' },
-    { color: 'blue', category: 'Doprava' },
-    { color: 'green', category: 'Zivotne prostredie' },
-    { color: 'purple', category: 'Skolstvo' },
-    { color: 'yellow', category: 'Socialne sluzby' },
-    { color: 'brown', category: 'Kultura' },
+    { color: 'main', category: 'Mesto Bratislava' },
+    { color: 'transport', category: 'Doprava' },
+    { color: 'environment', category: 'Zivotne prostredie' },
+    { color: 'social', category: 'Skolstvo' },
+    { color: 'education', category: 'Socialne sluzby' },
+    { color: 'culture', category: 'Kultura' },
   ]
 
   const mapBrandColor = (brand: Brand, key: number) => {
@@ -30,8 +29,8 @@ const StyleGuideWrapper = ({children}: StyleGuideWrapperProps) => {
 
     const styles = {
       color: activeBrandColor === brand.color ? 'white' : 'black',
-      backgroundColor: activeBrandColor === brand.color ? `rgb(var(${colorVariable.default}))` : `rgb(var(${colorVariable.light}))`,
-      border: `1px solid rgb(var(${colorVariable.default}))`,
+      backgroundColor: activeBrandColor === brand.color ? `rgb(var(${colorVariable.c700}))` : `rgb(var(${colorVariable.c200}))`,
+      border: `1px solid rgb(var(${colorVariable.c700}))`,
       transition: '0.125s linear all'
     }
 

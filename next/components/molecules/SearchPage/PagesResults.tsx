@@ -43,7 +43,7 @@ const DataWrapper = ({ filters }: { filters: PagesFilters }) => {
 
   return (
     <LoadingOverlay loading={delayedLoading}>
-      <h2 className="text-default lg:text-md pb-6 font-semibold">{t('websites')}</h2>
+      <h2 className="text-h5 pb-6">{t('websites')}</h2>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
       <Pages data={dataToDisplay!} filters={filters} />
     </LoadingOverlay>

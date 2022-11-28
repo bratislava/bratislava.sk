@@ -58,7 +58,7 @@ const HomepageMenu = ({ items }: IProps) => {
           <div data-hover-id={index} key={index} className="group">
             <button
               type="button"
-              className="relative z-10 flex cursor-pointer items-center gap-x-7 text-left text-default md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
+              className="text-20 relative z-10 flex cursor-pointer items-center gap-x-7 text-left md:py-5 lg:z-30 lg:h-36 lg:w-40 lg:flex-col lg:justify-center lg:gap-x-0 lg:gap-y-4 lg:py-0 lg:text-center"
               onClick={() => {
                 setActiveId(item.id)
               }}
@@ -99,11 +99,11 @@ const HomepageMenu = ({ items }: IProps) => {
                 {item.subItems?.map((subItem, j) => {
                   return (
                     <div key={j}>
-                      <div className="flex items-center text-[20px]">
+                      <div className="text-20 flex items-center">
                         <div className="flex shrink-0 grow-0 items-center justify-center">
                           <Icon iconName={subItem.icon} />
                         </div>
-                        <UILink href={subItem.url} className="flex items-center text-[20px] hover:underline">
+                        <UILink href={subItem.url} className="text-20 flex items-center hover:underline">
                           <div className="ml-4 flex-1 cursor-pointer font-semibold">{subItem.title}</div>
                         </UILink>
                       </div>

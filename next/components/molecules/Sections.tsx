@@ -36,7 +36,14 @@ import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
 
-const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?: string; locale?: string }) => {
+const SectionContent = ({
+  section,
+  locale,
+}: {
+  section: SectionsFragment
+  slug?: string
+  locale?: string
+}) => {
   const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -63,7 +70,12 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       return <DocumentList />
 
     case 'ComponentSectionsColumnedText':
-      return <ColumnedText content={section.content ?? ''} hasBackground={section.hasBackground ?? false} />
+      return (
+        <ColumnedText
+          content={section.content ?? ''}
+          hasBackground={section.hasBackground ?? false}
+        />
+      )
 
     case 'ComponentSectionsTextWithImage':
       return (
@@ -77,7 +89,11 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       )
 
     case 'ComponentSectionsFileList':
-      return <FileList fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])} />
+      return (
+        <FileList
+          fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])}
+        />
+      )
 
     case 'ComponentSectionsDivider':
       return <Divider dividerStyle={section.style ?? undefined} />
@@ -86,7 +102,9 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       return (
         <Links
           title={section.title ?? ''}
-          pageLinks={section.pageLinks?.map((pageLink) => parsePageLink(pageLink)).filter(isPresent) ?? []}
+          pageLinks={
+            section.pageLinks?.map((pageLink) => parsePageLink(pageLink)).filter(isPresent) ?? []
+          }
         />
       )
 
@@ -120,7 +138,11 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
                       key={i}
                       title={file.title ?? undefined}
                       subtitle={file.subtitle ?? undefined}
-                      content={[file.firstColumn ?? '', file.secondColumn ?? '', file.thirdColumn ?? '']}
+                      content={[
+                        file.firstColumn ?? '',
+                        file.secondColumn ?? '',
+                        file.thirdColumn ?? '',
+                      ]}
                       url={file.url ?? undefined}
                       urlLabel={file.urlLabel ?? undefined}
                     />
@@ -144,7 +166,12 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
 
                   return (
                     <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
-                      <NarrowText contentStyle="my-8" align={item.align} width={item.width} content={item.content} />
+                      <NarrowText
+                        contentStyle="my-8"
+                        align={item.align}
+                        width={item.width}
+                        content={item.content}
+                      />
                       {link?.url && link.title && <PageLinkButton pageLink={link} />}
                     </div>
                   )
@@ -232,7 +259,15 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
   }
 }
 
-const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
+const Section = ({
+  section,
+  slug,
+  locale,
+}: {
+  section: SectionsFragment | null
+  slug?: string
+  locale?: string
+}) => {
   if (!section) return null
 
   if (section.__typename === 'ComponentSectionsWaves')
@@ -243,8 +278,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}
-        backgroundColor="var(--background-color)"
-        waveColor="var(--secondary-color)"
+        waveColor="var(--category-color-100)"
         wavePosition={section.position ?? 'top'}
       />
     )
@@ -269,7 +303,7 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
   return (
     <SectionContainer
       className={cx('pt-10 md:pt-18', {
-        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
+        'pb-14 md:pb-18 bg-category-100': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

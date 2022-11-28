@@ -19,7 +19,7 @@ export const TimeCardMobile = ({
 }: TimeCardMobileProps) => {
   return (
     <div
-      className={cx('w-full text-center rounded-lg text-font font-medium relative bg-input-nav-bg mb-3', className, {
+      className={cx('w-full text-center rounded-lg text-font font-medium relative bg-white mb-3', className, {
         'cursor-pointer': !!onClick,
       })}
       onClick={onClick}
@@ -32,17 +32,17 @@ export const TimeCardMobile = ({
         {/* Circle Icon */}
         <div
           className={cx(
-            'absolute sm:hidden w-6 h-6 left-7 top-3 rounded-full transform -translate-x-1/2 border-2 border-primary bg-input-nav-bg'
+            'absolute sm:hidden w-6 h-6 left-7 top-3 rounded-full transform -translate-x-1/2 border-2 border-category-600 bg-white'
           )}
         />
         {isActive && (
-          <div className="absolute left-7 top-5 h-3 w-3 -translate-x-1/2 rounded-full bg-primary sm:hidden" />
+          <div className="absolute left-7 top-5 h-3 w-3 -translate-x-1/2 rounded-full bg-category-600 sm:hidden" />
         )}
       </div>
       {/* Mobile Design */}
-      <div className="flex w-full items-center rounded-lg text-center text-sm shadow-md sm:hidden">
+      <div className="flex w-full items-center rounded-lg text-center text-p2 shadow-md sm:hidden">
         <p className="w-3/5 py-3 pl-9">{primaryContent}</p>
-        <p className="w-2/5 rounded-r-lg bg-secondary py-3">{secondaryContent}</p>
+        <p className="w-2/5 rounded-r-lg bg-category-100 py-3">{secondaryContent}</p>
       </div>
     </div>
   )

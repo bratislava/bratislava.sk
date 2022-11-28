@@ -45,11 +45,11 @@ export const Footer = ({
   const { Link: UILink } = useUIContext()
 
   return (
-    <footer className={cx(className, 'text-base text-gray-universal-800')}>
+    <footer className={cx(className, 'text-p2 text-gray-600')}>
       <section className="flex items-center justify-between pt-14" aria-label="Logo and Social Media Links">
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">
-          <nav className="hidden cursor-pointer gap-4 text-gray-universal-500 lg:flex" aria-label="Social Media Links">
+          <nav className="hidden cursor-pointer gap-4 text-gray-400 lg:flex" aria-label="Social Media Links">
             {facebookLink && (
               <a href={facebookLink} target="_blank" rel="noreferrer">
                 <FBLogo />
@@ -119,7 +119,7 @@ export const Footer = ({
           ))}
         </div>
         <nav
-          className="mt-5 flex justify-center gap-5 text-gray-universal-500 lg:hidden"
+          className="mt-5 flex justify-center gap-5 text-gray-400 lg:hidden"
           aria-label="Social Media Links"
         >
           {facebookLink && (
