@@ -1,4 +1,4 @@
-import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { EnumOptionsType, WidgetProps } from '@rjsf/utils'
 import { useState } from 'react'
 
 import SelectField from '../SelectField/SelectField'
@@ -21,7 +21,7 @@ interface SelectFieldWidgetRJSFProps extends WidgetProps{
   required?: boolean
   disabled?: boolean
   placeholder?: string
-  schema: StrictRJSFSchema
+  schema: any
   onChange: (value: any|any[]) => void;
 }
 
