@@ -37,7 +37,7 @@ const TextAreaField = ({
     {
       ...rest,
       placeholder,
-      value: value || ref.current?.value,
+      value,
       label,
       errorMessage,
       description,
@@ -55,7 +55,7 @@ const TextAreaField = ({
     ref,
   )
   const style = cx(
-    'w-full px-4 py-2.5 w-320 h-196 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none',
+    'overflow-auto px-4 py-2.5 bg-gray-0 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
     className,
     {
       // hover
@@ -69,7 +69,7 @@ const TextAreaField = ({
     },
   )
   return (
-    <div className="flex w-full max-w-xs flex-col">
+    <div className="flex w-[320px] h-[196px] flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}

@@ -1,7 +1,7 @@
+import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
 import React, { DOMAttributes, FC, useState } from 'react'
 
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
@@ -14,54 +14,66 @@ interface FieldHeaderProps {
   tooltip?: string
 }
 
-const FieldHeader: FC<FieldHeaderProps> = (
-  { label,
-    htmlFor,
-    required,
-    description,
-    labelProps,
-    descriptionProps,
-    tooltip
-  }
-) => {
+const FieldHeader: FC<FieldHeaderProps> = ({
+  label,
+  htmlFor,
+  required,
+  description,
+  labelProps,
+  descriptionProps,
+  tooltip,
+}) => {
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
-  const labelStyle = cx(
-    'relative mb-1 text-button-1 font-semibold text-gray-800',
-    {'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-main-700 after:text-p3': required}
-  )
+  const labelStyle = cx('relative mb-1 text-20-semibold text-gray-800', {
+    'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-main-700 after:text-20-semibold':
+      required,
+  })
 
   return (
     <div className="w-full">
-      {/* TOOLTIP */
-       tooltip && (
-         <div className="relative">
-          <Tooltip text={tooltip} visible={isTooltipOpened} arrow="bottom" alignArrow="right" bottom={0} right={-13} absolute/>
-        </div>
-       )
+      {
+        /* TOOLTIP */
+        tooltip && (
+          <div className="relative">
+            <Tooltip
+              text={tooltip}
+              visible={isTooltipOpened}
+              arrow="bottom"
+              alignArrow="right"
+              bottom={0}
+              right={-13}
+              absolute
+            />
+          </div>
+        )
       }
       <div className="flex justify-between">
         {/* LABEL */}
-        <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>{label}</label>
+        <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>
+          {label}
+        </label>
         <div className="flex-column flex items-center">
-          {/* OPTIONAL */
-            !required && <p className="text-button-1 mr-4">Optional</p>
-          }
-          {/* TOOLTIP ICON */
+          {/* OPTIONAL */ !required && <p className="text-20 mr-4">Optional</p>}
+          {
+            /* TOOLTIP ICON */
             tooltip && (
               <div className="flex-column flex items-center">
-                <HelpIcon className="cursor-pointer"
-                          onMouseOver={() => setIsTooltipOpened(true)}
-                          onMouseLeave={() => setIsTooltipOpened(false)}/>
+                <HelpIcon
+                  className="cursor-pointer"
+                  onMouseOver={() => setIsTooltipOpened(true)}
+                  onMouseLeave={() => setIsTooltipOpened(false)}
+                />
               </div>
             )
           }
         </div>
       </div>
-      { /* DESCRIPTION */
+      {
+        /* DESCRIPTION */
         description && (
-          <div {...descriptionProps} className="text-p2 mb-1 text-gray-700">
+          <div {...descriptionProps} className="text-16 mb-1 text-gray-700">
             {description}
           </div>
         )
