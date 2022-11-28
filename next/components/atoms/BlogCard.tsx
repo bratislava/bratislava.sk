@@ -41,7 +41,7 @@ export const BlogCard = ({
         </div>
 
         <div className="mx-6 flex h-48 w-52 items-center justify-center text-center xl:w-[264px] xl:px-12 xl:text-left">
-          <span className="text-p1 font-medium">{content}</span>
+          <span className="text-p1-medium">{content}</span>
         </div>
       </Card>
     </div>
