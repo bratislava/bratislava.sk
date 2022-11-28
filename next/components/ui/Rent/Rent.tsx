@@ -41,7 +41,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         {icon?.data?.attributes?.url && <img className="h-32 w-32 p-5" src={icon.data.attributes.url} alt={title} />}
       </div>
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-[294px]">
-        <h1 className="text-h4 mt-5 mb-7 h-16 font-normal">{title}</h1>
+        <h1 className="text-h4-normal mt-5 mb-7 h-16">{title}</h1>
 
         <div className="news-small-content w-full break-all text-center">
           <ReactMarkdown skipHtml>{desc}</ReactMarkdown>
@@ -75,7 +75,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
               <img className="p-5" src={icon.data.attributes.url} alt={title} width="160" height="160" />
             )}
           </div>
-          <h1 className="text-h4 mb-8 text-left font-normal">{title}</h1>
+          <h1 className="text-h4-normal mb-8 text-left">{title}</h1>
           <ReactMarkdown remarkPlugins={[[remarkGfm]]} skipHtml className="modal-content-rent-markdown text-left">
             {desc}
           </ReactMarkdown>

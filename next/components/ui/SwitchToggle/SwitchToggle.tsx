@@ -25,7 +25,7 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
           onClick={() => {
             onValueChange(false)
           }}
-          className="cursor-pointer text-base font-medium text-font"
+          className="cursor-pointer text-p2-medium text-font"
         >
           {titleLeft}
         </span>
@@ -52,7 +52,7 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
           onClick={() => {
             onValueChange(true)
           }}
-          className="cursor-pointer text-base font-medium text-font"
+          className="cursor-pointer text-p2-medium text-font"
         >
           {titleRight}
         </span>

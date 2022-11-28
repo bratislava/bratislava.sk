@@ -32,41 +32,32 @@ export const WelcomeSection = ({ homepageData, mainMenuItems, headerAttribute = 
         )}
       </PageHeader>
 
-      <div className="bg-white">
-        <SectionContainer>
-          <div className="lg:pt-18 flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pb-10">
-            {headerAttribute?.title && (
-              <PageTitle
-                className="flex-1 pb-4"
-                title={headerAttribute.title}
-                subtitle={headerAttribute?.subtitle}
-              />
-            )}
-            <img
-              className="hidden sm:block"
-              width={721}
-              height={364}
-              src={headerAttribute?.picture?.data?.attributes?.url}
-              alt="Bratislava Hero"
+      <SectionContainer>
+        <div className="lg:pt-18 flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pb-10">
+          {headerAttribute?.title && (
+            <PageTitle
+              className="flex-1 pb-4"
+              title={headerAttribute.title}
+              subtitle={headerAttribute?.subtitle}
             />
-            <img
-              className="sm:hidden"
-              width={721}
-              height={364}
-              src={headerAttribute?.mobilePicture?.data?.attributes?.url}
-              alt="Bratislava Hero"
-            />
-          </div>
-          <HomepageMenu items={mainMenuItems} />
-        </SectionContainer>
-        <Waves
-          className="md:mt-18 mt-6"
-          waveColor="white"
-          wavePosition="bottom"
-          isRich
-          backgroundColor="var(--background-color)"
-        />
-      </div>
+          )}
+          <img
+            className="hidden sm:block"
+            width={721}
+            height={364}
+            src={headerAttribute?.picture?.data?.attributes?.url}
+            alt="Bratislava Hero"
+          />
+          <img
+            className="sm:hidden"
+            width={721}
+            height={364}
+            src={headerAttribute?.mobilePicture?.data?.attributes?.url}
+            alt="Bratislava Hero"
+          />
+        </div>
+        <HomepageMenu items={mainMenuItems} />
+      </SectionContainer>
     </>
   )
 }
