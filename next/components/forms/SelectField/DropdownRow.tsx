@@ -1,6 +1,6 @@
 import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
 import cx from 'classnames'
-import ChevronRightIcon from '../../../assets/images/forms/chevron-right.svg'
+import ChevronRightIcon from '@assets/images/forms/chevron-right.svg'
 import CheckboxIcon from '../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../icon-components/RadioButtonIcon'
 import { EnumOptionsType } from '@rjsf/utils'
