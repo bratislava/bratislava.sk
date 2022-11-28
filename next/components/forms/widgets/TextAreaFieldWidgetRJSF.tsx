@@ -1,5 +1,6 @@
-import TextAreaField from '../TextAreaField'
 import { WidgetProps } from '@rjsf/utils'
+
+import TextAreaField from '../TextAreaField'
 
 type TextAreaRJSFOptions = {
   description?: string
@@ -7,15 +8,15 @@ type TextAreaRJSFOptions = {
   tooltip?: string
 }
 
-interface TextAreaFieldWidgetRJSFProps extends WidgetProps{
+interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
   value: string
   label: string
   placeholder?: string
-  errorMessage?: string
+  rawErrors?: string[]
   required?: boolean
   disabled?: boolean
   options: TextAreaRJSFOptions
-  onChange: (value: string) => void
+  onChange: (value?: string) => void
 }
 
 const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
@@ -23,20 +24,39 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
     value,
     label,
     placeholder,
+    rawErrors,
     required,
     disabled,
     options,
-    onChange
-  } = props
+    onChange,
+  }: TextAreaFieldWidgetRJSFProps = props
 
-  const {
-    description,
-    tooltip,
-    className
-  } = options
+  const { description, tooltip, className }: TextAreaRJSFOptions = options
 
-  return <TextAreaField value={value} label={label} placeholder={placeholder} required={required} disabled={disabled}
-                        description={description} tooltip={tooltip} className={className} onChange={onChange}/>
+  const showErrorMessage = rawErrors && rawErrors.length > 0 ? rawErrors[0] : undefined
+
+  const handleOnChange = (newValue?: string) => {
+    if (!newValue || newValue === '') {
+      onChange()
+    } else {
+      onChange(newValue)
+    }
+  }
+
+  return (
+    <TextAreaField
+      value={value}
+      label={label}
+      placeholder={placeholder}
+      required={required}
+      disabled={disabled}
+      description={description}
+      tooltip={tooltip}
+      className={className}
+      onChange={handleOnChange}
+      errorMessage={showErrorMessage}
+    />
+  )
 }
 
 export default TextAreaFieldWidgetRJSF

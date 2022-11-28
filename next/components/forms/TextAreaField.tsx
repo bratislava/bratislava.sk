@@ -16,23 +16,21 @@ interface TextAreaBase {
   required?: boolean
   disabled?: boolean
   tooltip?: string
-  onChange?: (value: string) => void
+  onChange?: (value?: string) => void
 }
 
-const TextAreaField = (
-  {
-    label,
-    placeholder,
-    errorMessage,
-    description,
-    tooltip,
-    required,
-    value = '',
-    disabled,
-    className,
-    ...rest
-  }: TextAreaBase,
-) => {
+const TextAreaField = ({
+  label,
+  placeholder,
+  errorMessage,
+  description,
+  tooltip,
+  required,
+  value = '',
+  disabled,
+  className,
+  ...rest
+}: TextAreaBase) => {
   const [, setValueState] = useState<string>(value)
   const ref = React.useRef<HTMLTextAreaElement>(null)
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
@@ -45,7 +43,7 @@ const TextAreaField = (
       description,
       inputElementType: 'textarea',
       onChange(inputValue) {
-        if(rest.onChange) {
+        if (rest.onChange) {
           rest.onChange(inputValue)
         } else {
           setValueState(inputValue)
@@ -71,7 +69,7 @@ const TextAreaField = (
     },
   )
   return (
-    <div className='flex w-full max-w-xs flex-col'>
+    <div className="flex w-full max-w-xs flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}
@@ -82,7 +80,9 @@ const TextAreaField = (
         tooltip={tooltip}
       />
       <textarea {...inputProps} ref={ref} className={style} />
-      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+      {!disabled && (
+        <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+      )}
     </div>
   )
 }
