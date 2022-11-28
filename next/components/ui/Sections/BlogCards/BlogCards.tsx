@@ -32,13 +32,19 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
             posts != null
               ? posts.map((blogCard, i) => (
                   <div key={i} className="box-content flex py-16">
-                    <HorizontalCard className="min-h-56 w-[550px]" key={i} imageSrc={blogCard.imageSrc}>
-                      <p className="line-clamp-4 text-p2 lg:text-p1 overflow-hidden text-ellipsis">{blogCard.title}</p>
+                    <HorizontalCard
+                      className="min-h-[220px] w-[550px]"
+                      key={i}
+                      imageSrc={blogCard.imageSrc}
+                    >
+                      <p className="line-clamp-4 text-p2 lg:text-p1 overflow-hidden text-ellipsis">
+                        {blogCard.title}
+                      </p>
                       <UILink
                         className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline"
                         href={`${blogCard?.url}` || ''}
                       >
-                        <span className="text-p2 font-semibold">{t('readMore')}</span>
+                        <span className="text-p2-semibold">{t('readMore')}</span>
                         <span className="group-hover:hidden">
                           <ChevronRight />
                         </span>
@@ -54,7 +60,9 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
         />
       </div>
 
-      <HorizontalScrollWrapper className={cx(className, 'lg:hidden pt-10 pb-14 lg:pb-5 pl-8 gap-x-4 -mx-8 px-8 mb-0')}>
+      <HorizontalScrollWrapper
+        className={cx(className, 'lg:hidden pt-10 pb-14 lg:pb-5 pl-8 gap-x-4 -mx-8 px-8 mb-0')}
+      >
         {posts.map((blogCard, i) => (
           <HorizontalCard
             key={i}
@@ -62,12 +70,14 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
             className="w-full max-w-xs shrink-0"
             // accessory={<VerticalCardButton />}
           >
-            <p className="line-clamp-4 text-p2 lg:text-p1 overflow-hidden text-ellipsis text-left">{blogCard.title}</p>
+            <p className="line-clamp-4 text-p2 lg:text-p1 overflow-hidden text-ellipsis text-left">
+              {blogCard.title}
+            </p>
             <UILink
               className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline"
               href={`${blogCard?.url}` || ''}
             >
-              <span className="text-sm font-semibold">{t('readMore')}</span>
+              <span className="text-p2-semibold">{t('readMore')}</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>

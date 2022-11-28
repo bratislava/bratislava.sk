@@ -38,7 +38,7 @@ export const DownloadCard = ({
           </span>
         </div>
 
-        <div className="mt-5 flex justify-between text-xs opacity-50">
+        <div className="mt-5 flex justify-between text-p3 opacity-50">
           <span>{uploadDate}</span>
           <span>{downloadDetail}</span>
         </div>

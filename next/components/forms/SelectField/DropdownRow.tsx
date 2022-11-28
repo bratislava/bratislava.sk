@@ -30,7 +30,7 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
   )
 
   const optionClassName = cx(
-    "dropdown text-p-md w-full",
+    "dropdown text-20 w-full",
     {
       "font-semibold": option.label !== "" && option.label !== String(option.value)
     },
@@ -72,7 +72,7 @@ const DropdownRow = ({option, selected, type, divider, selectHashCode, onChooseO
             <div className={`${selectHashCode} dropdown absolute inset-0 z-10`}/>
           </div>
         </div>
-        { option.label !== String(option.value) && <p className={`${selectHashCode} dropdown text-p-sm`}>{option.label}</p> }
+        { option.label !== String(option.value) && <p className={`${selectHashCode} dropdown text-3`}>{option.label}</p> }
       </div>
       { divider && <div className={`${selectHashCode} dropdown border-b-2 border-form-input-default`}/> }
     </div>

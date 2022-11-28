@@ -17,7 +17,7 @@ export const StepTitle = ({ className, number, title }: StepTitleProps) => {
         </div>
       )}
       <p
-        className={cx('col-8 md:col-6 text-h3 text-font font-medium', {
+        className={cx('col-8 md:col-6 text-h3-medium text-font', {
           'pt-1 pb-1': number !== undefined,
         })}
       >
