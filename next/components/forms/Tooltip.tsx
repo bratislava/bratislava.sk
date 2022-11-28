@@ -60,7 +60,7 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
         {arrow && ['top', 'bottom'].includes(arrow) && <TopArrowIcon />}
         {arrow && ['left', 'right'].includes(arrow) && <LeftArrowIcon />}
       </div>
-      <div className="m-0 border-0 flex flex-row justify-center text-p-base min-w-[118px] max-w-xs break-all rounded bg-universal-gray-700 py-3 px-4 text-white">
+      <div className="text-p2 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-xs break-all rounded bg-gray-700 py-3 px-4 text-white">
         <p className="w-fit">{text}</p>
       </div>
     </div>
