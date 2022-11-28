@@ -5,37 +5,59 @@
   "allOf": [
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
-          "required": ["address"],
+        "selectFields": {
+          "title": "Ukazka Selectov",
+          "required": ["school"],
           "properties": {
-            "firstName": {
-              "type": "string"
+            "school": {
+              "type": "string",
+              "title": "University",
+              "enum": [
+                "STU FEI",
+                "STU FCHPT",
+                "STU FIIT"
+              ],
+              "enumNames": [
+                "fakulta elektrotechniky a informatiky",
+                null,
+                "fakulta informatiky a informacnych technologii"
+              ]
             },
-            "lastName": {
-              "type": "string"
+            "diplomas": {
+              "type": "array",
+              "title": "Reached diplomas",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ing.",
+                  "mgr.",
+                  "bc.",
+                  "phd.",
+                  "doc.",
+                  "prof."
+                ]
+              }
             },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
+            "years": {
+              "type": "number",
+              "title": "Years in school",
+              "uniqueItems": true,
+              "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+              ]
             }
           }
         }
       }
     },
     {
-      "required": ["email"],
+      "required": [],
       "properties": {
         "email": {
           "type": "string"
