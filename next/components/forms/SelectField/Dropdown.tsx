@@ -1,76 +1,76 @@
+import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
-import SelectOption from './SelectOption'
 
 interface DropdownProps {
-  options: SelectOption[]
-  value?: SelectOption[]
+  enumOptions: EnumOptionsType[]
+  value: EnumOptionsType[]
   selectAllOption?: boolean
   absolute?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
-  divider?: boolean
+  divider?: boolean,
+  selectHashCode?: string,
   className?: string
-  onChooseOne?: (option: SelectOption, close?: boolean) => void
-  onUnChooseOne?: (option: SelectOption, close?: boolean) => void
-  onChooseMulti?: (option: SelectOption) => void
-  onUnChooseMulti?: (option: SelectOption) => void
+  onChooseOne?: (option: EnumOptionsType, close?: boolean) => void
+  onUnChooseOne?: (option: EnumOptionsType, close?: boolean) => void
+  onChooseMulti?: (option: EnumOptionsType) => void
+  onUnChooseMulti?: (option: EnumOptionsType) => void
   onSelectAll?: () => void
 }
 
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   const {
-    options,
+    enumOptions,
     value,
     selectAllOption,
     absolute,
     type,
     divider,
+    selectHashCode,
     className,
     onChooseOne,
     onUnChooseOne,
     onChooseMulti,
     onUnChooseMulti,
-    onSelectAll
+    onSelectAll,
   } = props
-
-  // STATE
-  const [isOneSelected, setIsOneSelected] = useState<boolean>(false)
 
   // STYLES
   const dropdownClassName = cx(
-    "rounded-lg border-2 border-gray-700 bg-white z-50 py-2",
+    'dropdown rounded-lg border-2 border-form-input-pressed bg-white z-50 py-2',
     {
-      "absolute top-2 left-0 right-0": absolute
+      'absolute top-2 left-0 right-0': absolute,
     },
-    className
+    className,
+    selectHashCode
   )
 
   // HELP FUNCTIONS
-  const isSelected = (option: SelectOption): boolean => {
-   return !!value?.find((valueOption) => {
+  const isSelected = (option: EnumOptionsType): boolean => {
+    return !!(value?.find((valueOption) => {
       return valueOption.value === option.value
         && valueOption.label === option.label
-        && valueOption.description === option.description
-    })
+    }))
   }
 
   // RENDER
   return (
     <div className={dropdownClassName}>
       {
-        selectAllOption && type === 'multiple' && <SelectAllDropdownRow onSelectAll={() => onSelectAll ? onSelectAll() : null} divider={divider}/>
+        selectAllOption && type === 'multiple' &&
+        <SelectAllDropdownRow onSelectAll={() => onSelectAll ? onSelectAll() : null} divider={divider} selectHashCode={selectHashCode} />
       }
       {
-        options.map(
+        enumOptions?.map(
           (option, key) =>
-            <DropdownRow key={key} option={option} divider={divider} selected={isSelected(option)} type={type}
-                         onChooseOne={(opt: SelectOption, close?: boolean) => onChooseOne ? onChooseOne(opt, close) : null}
-                         onUnChooseOne={(opt: SelectOption, close?: boolean) => onUnChooseOne ? onUnChooseOne(opt, close) : null}
-                         onChooseMulti={(opt: SelectOption) => onChooseMulti ? onChooseMulti(opt) : null}
-                         onUnChooseMulti={(opt: SelectOption) => onUnChooseMulti ? onUnChooseMulti(opt) : null} />
+            <DropdownRow key={key} selectHashCode={selectHashCode} option={option} divider={divider} selected={isSelected(option)} type={type}
+                         onChooseOne={(opt: EnumOptionsType, close?: boolean) => onChooseOne ? onChooseOne(opt, close) : null}
+                         onUnChooseOne={(opt: EnumOptionsType, close?: boolean) => onUnChooseOne ? onUnChooseOne(opt, close) : null}
+                         onChooseMulti={(opt: EnumOptionsType) => onChooseMulti ? onChooseMulti(opt) : null}
+                         onUnChooseMulti={(opt: EnumOptionsType) => onUnChooseMulti ? onUnChooseMulti(opt) : null} />
         )
       }
     </div>
