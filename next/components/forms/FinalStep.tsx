@@ -43,12 +43,14 @@ export const FinalStep = ({ state, slug }: FinalStepProps) => {
     <div>
       <h1>Final step placeholder</h1>
       {Object.keys(state).map((key) => (
-        <p>
-          {key}: {JSON.stringify(state[key])}
-        </p>
+        <div>
+          <pre>
+            {key}: {JSON.stringify(state[key], null, '\t')}
+          </pre>
+        </div>
       ))}
       {successMessage && <p>{successMessage}</p>}
-      {!!errors?.length && errors.map((error) => <p className="text-form-negative-default">{JSON.stringify(error)}</p>)}
+      {!!errors?.length && errors.map((error) => <p className="text-error">{JSON.stringify(error)}</p>)}
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
       <Button onPress={submit} text="Submit" />
     </div>

@@ -42,7 +42,7 @@ export const ImageCard = ({
       )}
       <div
         className={cx(
-          'absolute rounded-lg font-medium bg-secondary text-red-universal-800 top-16',
+          'absolute rounded-lg font-medium bg-category-100 text-main-800 top-16',
           'lg:top-40 w-76 h-60 lg:w-88 lg:h-18',
           {
             'left-5 lg:left-48': imagePosition === 'left',
@@ -52,7 +52,7 @@ export const ImageCard = ({
       >
         {/* Bottom Component */}
         <p
-          className={cx('absolute bottom-3 lg:bottom-6 w-56 md:w-64 text-base md:text-default text-center', {
+          className={cx('absolute bottom-3 lg:bottom-6 w-56 md:w-64 text-p2 md:text-p1 text-center', {
             'right-0': imagePosition === 'right',
           })}
         >
@@ -60,7 +60,7 @@ export const ImageCard = ({
         </p>
         {/* Side Component */}
         <div
-          className={cx('absolute top-6 flex text-base md:text-default flex-col gap-y-5 w-20 lg:w-24 text-center', {
+          className={cx('absolute top-6 flex text-p2 md:text-p1 flex-col gap-y-5 w-20 lg:w-24 text-center', {
             'right-0': imagePosition === 'left',
           })}
         >

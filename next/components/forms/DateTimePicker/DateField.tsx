@@ -19,11 +19,11 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
     <div
       {...segmentProps}
       ref={ref}
-      className="text-button-1 hover:bg-form-calendar-hover focus:bg-form-calendar-hover focus:outline-none"
+      className="text-20 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
     >
       <span
         className={cx('w-full text-center uppercase group-focus:text-white', {
-          'text-form-calendar-placeholder': segment?.isPlaceholder,
+          'text-gray-500': segment?.isPlaceholder,
         })}
         style={{
           opacity: segment?.isPlaceholder ? '1' : '0',
@@ -74,11 +74,11 @@ const DateField = ({
     ref
   )
   const dateFieldStyle = cx(
-    'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-form-input-default focus:border-form-input-pressed',
+    'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-gray-200 focus:border-gray-700',
     {
-      'hover:border-form-input-hover': !disabled,
-      'border-error focus:border-error hover:border-error': errorMessage,
-      'opacity-50 pointer-events-none border-form-input-disabled': disabled,
+      'hover:border-gray-400': !disabled,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessage,
+      'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
     }
   )
   return (

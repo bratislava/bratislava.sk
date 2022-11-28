@@ -3,9 +3,9 @@ import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratisla
 import { useTranslation } from 'next-i18next'
 
 export interface Card {
-  title: string
-  color: string
-  category: string
+  title: string | null | undefined
+  color: string | null | undefined
+  category: string | null | undefined
 }
 
 export interface ArticlesFilterProps {
@@ -72,7 +72,7 @@ export const ArticlesFilter = ({
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="min-h-8 mr-3 mb-3 text-p2 font-medium"
+              className="min-h-8 mr-3 mb-3 text-p2-medium"
             />
           ))}
       </div>

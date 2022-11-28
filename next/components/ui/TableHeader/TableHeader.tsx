@@ -22,8 +22,8 @@ export const TableHeader = ({ className, header, sortable, field, sortBy, onSort
   <th className={cx(className, 'text-left pb-5')}>
     {sortable ? (
       <Button
-        className={cx('text-font p-0 hover:text-primary', {
-          'text-primary': sortBy?.key === field,
+        className={cx('text-font p-0 hover:text-category-600', {
+          'text-category-600': sortBy?.key === field,
         })}
         icon={directionIcon(sortBy?.direction)}
         onClick={onSort}

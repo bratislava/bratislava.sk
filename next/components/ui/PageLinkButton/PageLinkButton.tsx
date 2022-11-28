@@ -16,7 +16,7 @@ export const PageLinkButton = ({ className, pageLink }: PageLinkButtonProps) => 
       <Button className="text-font" shape="none" variant="muted" icon={<ChevronRight />} hoverIcon={<ArrowRight />}>
         <div
           style={{ textDecorationThickness: 2, textUnderlineOffset: 3 }}
-          className="text-p1 text-left font-semibold text-font underline"
+          className="text-p1-semibold text-left text-font underline"
         >
           {pageLink?.title}
         </div>

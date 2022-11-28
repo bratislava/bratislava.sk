@@ -16,13 +16,13 @@ export const ListItem = ({ className, content, circleOption = 'primary', moreLin
   const Circle = circleOption === 'primary' ? ListCircleFull : ListCircle
   return (
     <div className={cx(className, 'flex flex-row items-center')}>
-      <div className="text-primary">
+      <div className="text-category-600">
         <Circle />
       </div>
 
       <div className="ml-6 flex flex-col lg:ml-14">
         {content && (
-          <UIMarkdown content={content} className="text-sm leading-[24px] md:text-default md:leading-[30px]" />
+          <UIMarkdown content={content} className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]" />
         )}
         {(moreLink?.url || moreLink?.title) && <PageLinkButton pageLink={moreLink} />}
       </div>

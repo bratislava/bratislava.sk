@@ -41,8 +41,8 @@ export const AccordionItem = ({
         className={cx(
           'rounded-lg drop-shadow-[0 8 24 black] py-3 px-6 lg:py-4 lg:px-10',
           {
-            'border-transparent border-2 border-solid shadow-lg bg-secondary': active,
-            'md:hover:bg-secondary md:hover:stroke-current border-2 border-primary bg-transparent': !active,
+            'border-transparent border-2 border-solid shadow-lg bg-category-100': active,
+            'md:hover:bg-category-100 md:hover:stroke-current border-2 border-category-600 bg-transparent': !active,
           },
           className
         )}
@@ -52,9 +52,9 @@ export const AccordionItem = ({
           onClick={handleClick}
         >
           <div className="flex flex-row">
-            <p className="text-h4 font-medium text-left text-font">
+            <p className="text-h4-medium text-left text-font">
               {title}
-              {secondaryTitle && <span className="text-left text-gray-universal-500 ">&nbsp;{secondaryTitle}</span>}
+              {secondaryTitle && <span className="text-left text-font ">&nbsp;{secondaryTitle}</span>}
             </p>
           </div>
           <div className="ml-5 grow-0">
@@ -64,7 +64,7 @@ export const AccordionItem = ({
         </button>
       </div>
       <div
-        className={cx('overflow-hidden text-fontBlack text-sm', {
+        className={cx('overflow-hidden text-fontBlack text-p2', {
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',

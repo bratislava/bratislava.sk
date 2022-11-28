@@ -51,8 +51,8 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
     <>
       <Panel className={className}>
         <div className="flex w-full flex-col gap-y-5 px-5 py-6 lg:px-10 lg:py-8">
-          <div className="text-button-1 -mb-3 font-semibold">{title}</div>
-          <div className="flex flex-col gap-x-6 text-xs text-gray-dark lg:flex-row">
+          <div className="text-20-semibold -mb-3">{title}</div>
+          <div className="flex flex-col gap-x-6 text-p3 text-font/75 lg:flex-row">
             <div>{new Date(createdAt).toLocaleDateString()}</div>
 
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
@@ -61,7 +61,7 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
           <div className="flex flex-col items-start gap-x-6">
             <Button
               variant="secondary-dark-text"
-              className="hover:color-white text-p2 w-fit px-6 py-4 font-medium shadow-none hover:bg-primary hover:text-white"
+              className="hover:color-white text-16-medium w-fit px-6 py-4 shadow-none hover:bg-category-600 hover:text-white"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
               onClick={() => setIsOpen(true)}
@@ -70,17 +70,17 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
             </Button>
             {/* <Button
               variant="full-transparent"
-              className="px-6 py-4 text-sm font-medium shadow-none"
+              className="px-6 py-4 text-16-medium shadow-none"
               icon={<Download />}
             >
               {downloadButtonText}
             </Button> */}
           </div>
         </div>
-        {/* <div className="flex lg:hidden bg-red-superlight h-[86px] -mt-[86px]" /> */}
+        {/* <div className="flex lg:hidden h-[86px] -mt-[86px]" /> */}
       </Panel>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="rounded-2xl bg-background px-5 py-8">
+        <div className="rounded-2xl bg-gray-50 px-5 py-8">
           {/* TODO handle loading/error */}
           <FileList fileSections={fileSections} noScroll />
         </div>

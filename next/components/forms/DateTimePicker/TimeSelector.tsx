@@ -65,8 +65,8 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
               if (type === 'hour') setHour(`${item}`)
               if (type === 'minute') setMinute(`${item}`)
             }}
-            className={cx('cursor-pointer rounded-lg px-10 py-2 hover:bg-form-calendar-hover focus:outline-none', {
-              'bg-form-calendar-pressed':
+            className={cx('cursor-pointer rounded-lg px-10 py-2 hover:bg-gray-50 focus:outline-none', {
+              'bg-gray-100':
                 (hour === `${item}` && type === 'hour') || (minute === `${item}` && type === 'minute'),
             })}
           >
@@ -78,17 +78,17 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
   }
 
   return (
-    <div className="w-80 rounded-lg border-2 border-form-input-pressed bg-white">
+    <div className="w-80 rounded-lg border-2 border-gray-700 bg-white">
       <div className="flex w-full flex-col justify-between py-10">
         <div className="flex h-fit max-h-52 justify-between overflow-hidden px-4">
           <Selector array={hoursArray} type="hour" />
           <div className="flex items-center">
-            <span className="flex h-6 w-6 items-center justify-center text-default">:</span>
+            <span className="text-20 flex h-6 w-6 items-center justify-center">:</span>
           </div>
           <Selector array={minutesArray} type="minute" />
         </div>
       </div>
-      <div className="flex items-center justify-between border-t-2 border-form-input-pressed py-3 px-4">
+      <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
         <Button onPress={onClose} text="Zrušiť" variant="plain-black" size="sm" />
         <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>
