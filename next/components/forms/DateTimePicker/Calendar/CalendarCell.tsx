@@ -11,11 +11,8 @@ type CalendarCellBase = {
 
 const CalendarCell = ({ state, date }: CalendarCellBase) => {
   const ref = useRef<HTMLDivElement>(null)
-  const { cellProps, buttonProps, isSelected, isOutsideVisibleRange, formattedDate } = useCalendarCell(
-    { date },
-    state,
-    ref
-  )
+  const { cellProps, buttonProps, isSelected, isOutsideVisibleRange, formattedDate } =
+    useCalendarCell({ date }, state, ref)
   return (
     <div {...cellProps}>
       <div
@@ -27,7 +24,7 @@ const CalendarCell = ({ state, date }: CalendarCellBase) => {
             'rounded-lg bg-gray-700 text-white': isSelected,
             'hover:rounded-lg hover:bg-gray-50': !isOutsideVisibleRange && !isSelected,
             'opacity-50': isOutsideVisibleRange,
-          }
+          },
         )}
       >
         {formattedDate.replace('.', '')}

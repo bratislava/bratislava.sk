@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import FieldErrorMessage from 'components/forms/FieldErrorMessage'
 import { forwardRef, ReactNode, RefObject, useRef } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -18,7 +19,12 @@ const Button = ({ children, className, ...rest }: ButtonBase) => {
   const ref = useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton({ children, ...rest }, ref)
   return (
-    <button className={cx('focus:outline-none', className)} type="button" {...buttonProps} ref={ref}>
+    <button
+      className={cx('focus:outline-none', className)}
+      type="button"
+      {...buttonProps}
+      ref={ref}
+    >
       {children}
     </button>
   )
@@ -44,11 +50,12 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       ...rest,
       shouldCloseOnSelect: false,
     })
-    const { fieldProps, buttonProps, calendarProps, dialogProps } = useDatePicker(
-      { errorMessage, isDisabled: disabled, label, ...rest },
-      state,
-      ref as RefObject<HTMLDivElement>
-    )
+    const { fieldProps, buttonProps, calendarProps, dialogProps, errorMessageProps } =
+      useDatePicker(
+        { errorMessage, isDisabled: disabled, label, ...rest },
+        state,
+        ref as RefObject<HTMLDivElement>,
+      )
 
     const closeHandler = () => {
       state?.close()
@@ -59,7 +66,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     }
     return (
       <I18nProvider locale={locale}>
-        <div className="relative">
+        <div className="relative w-full max-w-xs">
           <div ref={ref}>
             <DateField
               {...fieldProps}
@@ -69,6 +76,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
               disabled={disabled}
               tooltip={tooltip}
               errorMessage={errorMessage}
+              isOpen={state?.isOpen}
             >
               <Button {...buttonProps} className={disabled ? 'opacity-50' : ''}>
                 <CalendarIcon />
@@ -78,14 +86,21 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
           {state?.isOpen && (
             <OverlayProvider>
               <Popover {...dialogProps} isOpen={state?.isOpen} onClose={closeHandler}>
-                <Calendar {...calendarProps} onClose={closeHandler} onSubmit={() => state?.close()} />
+                <Calendar
+                  {...calendarProps}
+                  onClose={closeHandler}
+                  onSubmit={() => state?.close()}
+                />
               </Popover>
             </OverlayProvider>
+          )}
+          {!disabled && (
+            <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
           )}
         </div>
       </I18nProvider>
     )
-  }
+  },
 )
 
 export default DatePicker
