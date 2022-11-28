@@ -55,7 +55,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon
+          leftIcon="mail"
           resetIcon
         />
         <InputField
@@ -64,7 +64,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           value="Value"
           description="Help text"
           tooltip="InputField"
-          leftIcon
+          leftIcon="call"
           resetIcon
         />
         <InputField
@@ -72,7 +72,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon
+          leftIcon="lock"
           resetIcon
           errorMessage="Error message"
         />
@@ -81,7 +81,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon
+          leftIcon="person"
           resetIcon
           errorMessage="Error message"
           disabled

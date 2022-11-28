@@ -24,13 +24,62 @@
               "title": "Phone number"
             }
           }
+        },
+        "selectFields": {
+          "title": "Ukazka Selectov",
+          "required": [
+            "school"
+          ],
+          "properties": {
+            "school": {
+              "type": "string",
+              "title": "University",
+              "enum": [
+                "STU FEI",
+                "STU FCHPT",
+                "STU FIIT"
+              ],
+              "enumNames": [
+                "fakulta elektrotechniky a informatiky",
+                null,
+                "fakulta informatiky a informacnych technologii"
+              ]
+            },
+            "diplomas": {
+              "type": "array",
+              "title": "Reached diplomas",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ing.",
+                  "mgr.",
+                  "bc.",
+                  "phd.",
+                  "doc.",
+                  "prof."
+                ]
+              }
+            },
+            "years": {
+              "type": "number",
+              "title": "Years in school",
+              "uniqueItems": true,
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+            }
+          }
         }
       }
     },
     {
-      "required": [
-        "email"
-      ],
+      "required": [],
       "properties": {
         "email": {
           "type": "string"
