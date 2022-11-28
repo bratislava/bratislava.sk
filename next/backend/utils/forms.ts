@@ -2,7 +2,7 @@ import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
 // @ts-ignore
-import { parseXml } from 'libxmljs'
+import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
 
 import { forceString } from '../../utils/utils'
