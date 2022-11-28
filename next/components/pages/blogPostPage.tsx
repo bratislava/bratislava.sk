@@ -72,7 +72,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="min-h-56 pt-32">
             {blogPost?.tag && (
-              <span className="text-p2 inline-block rounded bg-category-600 px-3 py-1 font-medium text-white">
+              <span className="text-p2-medium inline-block rounded bg-category-600 px-3 py-1 text-white">
                 {tag?.title}
               </span>
             )}

@@ -44,7 +44,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
                         className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline"
                         href={`${blogCard?.url}` || ''}
                       >
-                        <span className="text-p2 font-semibold">{t('readMore')}</span>
+                        <span className="text-p2-semibold">{t('readMore')}</span>
                         <span className="group-hover:hidden">
                           <ChevronRight />
                         </span>
@@ -77,7 +77,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
               className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline"
               href={`${blogCard?.url}` || ''}
             >
-              <span className="text-sm font-semibold">{t('readMore')}</span>
+              <span className="text-p2-semibold">{t('readMore')}</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>
