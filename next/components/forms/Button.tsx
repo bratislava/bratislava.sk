@@ -126,22 +126,6 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           size === 'sm' &&
           icon &&
           !text &&
-          (variant === 'brand' ||
-            variant === 'black' ||
-            variant === 'negative' ||
-            variant === 'brand-outline' ||
-            variant === 'black-outline'),
-        // icon for lg button
-        'px-2.5 py-2.5 text-20-semibold leading-6':
-          size === 'lg' &&
-          icon &&
-          !text &&
-          (variant === 'plain-brand' || variant === 'plain-black'),
-        // icon for sm button
-        'px-2 py-2 text-16-semibold':
-          size === 'sm' &&
-          icon &&
-          !text &&
           (variant === 'plain-brand' || variant === 'plain-black'),
 
         // text for lg button
@@ -218,8 +202,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           {...buttonPropsFixed}
         >
           <i
-            className={`flex justify-center items-center ${size === 'lg' ? 'ml-3 h-6 w-6' : ''} ${
-              size === 'sm' ? 'w-5 h-5 ml-2.5' : ''
+            className={`flex justify-center items-center ${size === 'lg' ? 'ml-2 h-6 w-6' : ''} ${
+              size === 'sm' ? 'w-5 h-5 ml-1' : ''
             }`}
           >
             <ArrowRightIcon />
