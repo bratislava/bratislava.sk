@@ -15,7 +15,7 @@ const CheckboxGroup = (props: CheckBoxGroupBase) => {
   const { groupProps, labelProps } = useCheckboxGroup(props, state)
 
   return (
-    <div {...groupProps} className="">
+    <div {...groupProps}>
       <span {...labelProps}>{label}</span>
       <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
     </div>

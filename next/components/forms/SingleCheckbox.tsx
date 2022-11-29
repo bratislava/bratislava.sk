@@ -96,7 +96,7 @@ const SingleCheckBox = ({
         <div className={checkboxStyle}>
           {isSelected && (
             <svg
-              className={cx('', {
+              className={cx({
                 hidden: !isSelected,
               })}
               width="16"
@@ -112,7 +112,7 @@ const SingleCheckBox = ({
           )}
           {rest.isIndeterminate && (
             <svg
-              className={cx('', {
+              className={cx({
                 hidden: !rest.isIndeterminate,
               })}
               width="12"
