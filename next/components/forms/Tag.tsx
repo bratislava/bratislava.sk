@@ -7,6 +7,7 @@ interface TagProps {
   removable?: boolean
   size?: 'large' | 'small'
   branded?: boolean
+  selectHashCode?: string
   onRemove?: () => void
 }
 
@@ -16,6 +17,7 @@ const Tag: FC<TagProps> = (
     removable,
     size,
     branded,
+    selectHashCode,
     onRemove
   }
 ) => {
@@ -24,9 +26,8 @@ const Tag: FC<TagProps> = (
 
   // STYLES
   const classStyles = cx(
-    "align-items-start min-w-14 inline-block min-h-6 px-2 gap-2.5 text-center",
+    "tag align-items-start min-w-14 inline-block min-h-6 px-2 gap-2.5 text-center",
     {
-      /* FONTS in TAILWIND have different line height in compare to FIGMA */
       'text-20': size === 'large',
       'text-p3': size === 'small' || !size,
       'py-0.5': size === 'large',
@@ -38,25 +39,27 @@ const Tag: FC<TagProps> = (
       'bg-category-200': !removable && branded,
       'text-category-800': !removable && branded,
       'underline': !removable && isHovered
-    }
+    },
+    selectHashCode
   )
 
-
   const iconClassStyles = cx(
-    "cursor-pointer self-center inline-block mx-1",
+    "tag cursor-pointer self-center inline-block mx-1",
     {
       'text-20 w-3 h-3': size === 'large',
       'text-p3 w-2.5 h-2.5': size === 'small' || !size,
-    }
+    },
+    selectHashCode
   )
 
   // RENDER
+  /* class name tag is crucial for good working of select dropdown */
   return (
     <div className={classStyles}
          onMouseOver={() => setIsHovered(true)}
          onFocus={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}>
-      <p className="cursor-default select-none inline-block">{text}</p>
+      <p className={`${selectHashCode} tag cursor-default select-none inline-block`}>{text}</p>
       { removable && <CloseIcon className={iconClassStyles} onClick={onRemove}/> }
     </div>
   )
