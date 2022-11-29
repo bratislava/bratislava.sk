@@ -29,7 +29,7 @@ const Radio = ({
   const ref = React.useRef(null)
   const { inputProps } = useRadio({ ...rest, isDisabled }, state, ref)
   const inputStyle = cx(
-    `focus-visible:outline-none focus:outline-none appearance-none bg-white m-0 w-6 h-6 grid place-content-center left-0 right-0 top-0 bottom-0 rounded-full border-2 border-solid`,
+    'focus-visible:outline-none focus:outline-none appearance-none bg-white m-0 w-6 h-6 grid place-content-center left-0 right-0 top-0 bottom-0 rounded-full border-2 border-solid',
     {
       'border-gray-700': !error,
       'before:w-4 before:h-4 before:bg-gray-700 before:rounded-full': inputProps.checked,
