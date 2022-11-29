@@ -10,11 +10,13 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
+import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGroupedShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
+import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
@@ -46,6 +48,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <UploadShowCase />
         <DropdownShowCase />
         <SelectFieldShowCase />
+        <SingleCheckboxShowCase />
+        <CheckboxGroupShowCase />
         <RadioButtonShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
