@@ -13,6 +13,7 @@ import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldGroupsShowCase from '../components/styleguide/showcases/FieldGroupsShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
+import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
@@ -47,6 +48,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <DropdownShowCase />
         <SelectFieldShowCase />
         <FieldGroupsShowCase />
+        <RadioButtonShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )
