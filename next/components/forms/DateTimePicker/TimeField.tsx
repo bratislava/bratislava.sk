@@ -12,6 +12,7 @@ type TimeFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string
@@ -25,6 +26,7 @@ const TimeField = ({
   description,
   tooltip,
   required,
+  explicitOptional,
   children,
   disabled,
   errorMessage = '',
@@ -59,27 +61,31 @@ const TimeField = ({
       ...rest,
     },
     state,
-    ref
+    ref,
   )
   const timeFieldStyle = cx(
     'w-80 flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 text-20 leading-8 border-gray-200 focus:border-gray-700',
     {
       'hover:border-gray-400': !disabled,
-      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessageState,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error':
+        errorMessageState,
       'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
-    }
+    },
   )
 
   useEffect(() => {
     setInputValue(
       // eslint-disable-next-line lodash-fp/no-extraneous-args
-      `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${minute ? padStart(minute, 2, '0') : ''}`
+      `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${
+        minute ? padStart(minute, 2, '0') : ''
+      }`,
     )
   }, [hour, minute])
 
   // Validation
   useEffect(() => {
-    const isValideFormate = (): boolean => !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
+    const isValideFormate = (): boolean =>
+      !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
     if (!isOpen) setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
   }, [errorMessage, inputValue, isOpen])
 
@@ -93,6 +99,7 @@ const TimeField = ({
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
       />
       <div className="relative">
         <input
@@ -102,9 +109,13 @@ const TimeField = ({
           placeholder="HH:MM"
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">{children}</div>
+        <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">
+          {children}
+        </div>
       </div>
-      {!disabled && <FieldErrorMessage errorMessage={errorMessageState} errorMessageProps={errorMessageProps} />}
+      {!disabled && (
+        <FieldErrorMessage errorMessage={errorMessageState} errorMessageProps={errorMessageProps} />
+      )}
     </>
   )
 }

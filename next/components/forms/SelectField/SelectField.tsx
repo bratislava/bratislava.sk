@@ -2,7 +2,16 @@ import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, RefObject, useEffect, useId, useState } from 'react'
+import React, {
+  ForwardedRef,
+  forwardRef,
+  ForwardRefRenderFunction,
+  RefObject,
+  useEffect,
+  useId,
+  useState,
+} from 'react'
+
 import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 import Dropdown from './Dropdown'
@@ -20,13 +29,16 @@ interface SelectFieldProps {
   errorMessage?: string
   description?: string
   required?: boolean
+  explicitOptional?: boolean
   disabled?: boolean
   className?: string
-  onChange: (values: EnumOptionsType[]) => void;
+  onChange: (values: EnumOptionsType[]) => void
 }
 
-const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps>
-  = (props: SelectFieldProps, ref: ForwardedRef<HTMLDivElement>) => {
+const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps> = (
+  props: SelectFieldProps,
+  ref: ForwardedRef<HTMLDivElement>,
+) => {
   // PROPS
   const {
     label,
@@ -40,28 +52,29 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     dropdownDivider,
     errorMessage,
     required,
+    explicitOptional,
     disabled,
     className,
-    onChange
+    onChange,
   } = props
-
 
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
-  const [filter, setFilter] = useState<string>("")
+  const [filter, setFilter] = useState<string>('')
   const hashCode = useId()
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
   const [dropdownRef] = useState<RefObject<HTMLDivElement>>(React.createRef<HTMLDivElement>())
 
   // STYLES
-  const selectClassName = cx (
-    "flex flex-row bg-white rounded-lg border-2 border-form-input-default",
+  const selectClassName = cx(
+    'flex flex-row bg-white rounded-lg border-2 border-form-input-default',
     {
-      'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed': !disabled,
+      'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
+        !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
       'opacity-50 border-form-input-disabled': disabled,
     },
-    hashCode
+    hashCode,
   )
 
   // EVENT HANDLERS
@@ -70,10 +83,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       // open me (actual select) if I was clicked but my dropdownArrow and dropdown were not clicked
       // dropdownButton will handle its own events
       // dropdown will handle its own events
-      return targetClassList.contains(hashCode)
-        && !targetClassList.contains("dropdownButton")
-        && !targetClassList.contains("dropdown")
-        && !targetClassList.contains("tag")
+      return (
+        targetClassList.contains(hashCode) &&
+        !targetClassList.contains('dropdownButton') &&
+        !targetClassList.contains('dropdown') &&
+        !targetClassList.contains('tag')
+      )
     }
     const handleOnWindowClick = (event: Event) => {
       const target = event.target as Element
@@ -88,20 +103,20 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         setIsDropdownOpened(true)
       } // no else because there are cases when none of above is done, so everything stays like it is or other events are handled independently
     }
-    document.addEventListener("click", handleOnWindowClick)
-    return () => document.removeEventListener("click", handleOnWindowClick)
+    document.addEventListener('click', handleOnWindowClick)
+    return () => document.removeEventListener('click', handleOnWindowClick)
   }, [filterRef, hashCode])
 
   const handleOnChangeSelect = (selectedOptions: EnumOptionsType[], close?: boolean) => {
     if (!onChange) return
     onChange(selectedOptions)
-    if (type === "multiple" || !close) {
+    if (type === 'multiple' || !close) {
       setIsDropdownOpened(true)
     }
   }
 
   const handleOnRemove = (optionId: number) => {
-    const newValue =  value ? [...value] : []
+    const newValue = value ? [...value] : []
     newValue.splice(optionId, 1)
     const close = type !== 'multiple'
     handleOnChangeSelect(newValue, close)
@@ -110,27 +125,26 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const handleOnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([option], close)
-    setFilter("")
+    setFilter('')
   }
 
   const handleOnUnChooseOne = (option: EnumOptionsType, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([] , close)
+    handleOnChangeSelect([], close)
   }
 
   const handleOnChooseMulti = (option: EnumOptionsType) => {
     const newValue = value ? [...value] : []
     newValue.push(option)
     handleOnChangeSelect(newValue)
-    setFilter("")
+    setFilter('')
   }
 
   const handleOnUnChooseMulti = (option: EnumOptionsType) => {
     const newValue = value
-      ? [...value].filter(valueOption => {
-        return valueOption.value !== option.value
-          || valueOption.label !== option.label
-      })
+      ? [...value].filter((valueOption) => {
+          return valueOption.value !== option.value || valueOption.label !== option.label
+        })
       : []
     handleOnChangeSelect(newValue)
   }
@@ -143,7 +157,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   const handleOnSelectFieldClick = (event: React.MouseEvent) => {
     const targetClassList = (event.target as Element).classList
-    if (!isDropdownOpened && !targetClassList.contains("tag") && !disabled) {
+    if (!isDropdownOpened && !targetClassList.contains('tag') && !disabled) {
       setIsDropdownOpened(true)
       filterRef.current?.focus()
     }
@@ -162,64 +176,91 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // HELPER FUNCTIONS
   const getDropdownValues = (): EnumOptionsType[] => {
-    return value
-      ? type !== 'multiple' && value && value.length > 0
-        ? [value[0]]
-        : value
-      : []
+    return value ? (type !== 'multiple' && value && value.length > 0 ? [value[0]] : value) : []
   }
 
   const getFilteredOptions = (): EnumOptionsType[] => {
     return enumOptions
-      ? enumOptions.filter((option:EnumOptionsType) => String(option.value).toLowerCase().includes(filter.toLowerCase()))
+      ? enumOptions.filter((option: EnumOptionsType) =>
+          String(option.value).toLowerCase().includes(filter.toLowerCase()),
+        )
       : []
   }
 
   // RENDER
   return (
-    <section className={cx("relative max-w-[200px] xs:max-w-[320px] flex flex-col transition-all", className)}>
+    <section
+      className={cx(
+        'relative max-w-[200px] xs:max-w-[320px] flex flex-col transition-all',
+        className,
+      )}
+    >
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
-      <FieldHeader label={label} description={description} tooltip={tooltip} required={required}  />
+      <FieldHeader
+        label={label}
+        description={description}
+        tooltip={tooltip}
+        required={required}
+        explicitOptional={explicitOptional}
+      />
 
       {/* SELECT PART */}
       <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick}>
-
         {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox ref={ref} hashCode={hashCode} value={value} multiple={type==='multiple'} filter={filter} filterRef={filterRef}
-                        placeholder={placeholder} onRemove={handleOnRemove} onFilterChange={setFilter}
-                        onDeleteLastValue={handleOnDeleteLastValue}/>
+        <SelectFieldBox
+          ref={ref}
+          hashCode={hashCode}
+          value={value}
+          multiple={type === 'multiple'}
+          filter={filter}
+          filterRef={filterRef}
+          placeholder={placeholder}
+          onRemove={handleOnRemove}
+          onFilterChange={setFilter}
+          onDeleteLastValue={handleOnDeleteLastValue}
+        />
 
         {/* DROPDOWN ARROW */}
-        <div className={`${hashCode} dropdownButton min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`}
-             onClick={handleOnDropdownArrowClick}>
-          <div className={`${hashCode} dropdownButton relative flex h-full flex-col justify-center`} >
-            { isDropdownOpened
-              ? <ArrowUpIcon />
-              : <ArrowDownIcon /> }
-            <div className={`${hashCode} dropdownButton absolute inset-0 z-10`}/>
+        <div
+          className={`${hashCode} dropdownButton min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`}
+          onClick={handleOnDropdownArrowClick}
+        >
+          <div
+            className={`${hashCode} dropdownButton relative flex h-full flex-col justify-center`}
+          >
+            {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
+            <div className={`${hashCode} dropdownButton absolute inset-0 z-10`} />
           </div>
         </div>
 
-        { disabled && <div className="absolute inset-0 rounded-lg z-20"/> }
+        {disabled && <div className="absolute inset-0 rounded-lg z-20" />}
       </div>
 
       {/* DROPDOWN */}
       <div className={`${hashCode} dropdown relative`} ref={dropdownRef}>
-        {
-          isDropdownOpened &&
-          <Dropdown enumOptions={getFilteredOptions()} value={getDropdownValues()} type={type} selectHashCode={hashCode}
-                    divider={dropdownDivider} selectAllOption={selectAllOption} absolute
-                    onChooseOne={handleOnChooseOne} onUnChooseOne={handleOnUnChooseOne} onSelectAll={handleOnSelectAll}
-                    onChooseMulti={handleOnChooseMulti} onUnChooseMulti={handleOnUnChooseMulti} />
-        }
+        {isDropdownOpened && (
+          <Dropdown
+            enumOptions={getFilteredOptions()}
+            value={getDropdownValues()}
+            type={type}
+            selectHashCode={hashCode}
+            divider={dropdownDivider}
+            selectAllOption={selectAllOption}
+            absolute
+            onChooseOne={handleOnChooseOne}
+            onUnChooseOne={handleOnUnChooseOne}
+            onSelectAll={handleOnSelectAll}
+            onChooseMulti={handleOnChooseMulti}
+            onUnChooseMulti={handleOnUnChooseMulti}
+          />
+        )}
       </div>
 
-      {/* ERROR MESSAGE */ }
-      <FieldErrorMessage errorMessage={errorMessage}/>
+      {/* ERROR MESSAGE */}
+      <FieldErrorMessage errorMessage={errorMessage} />
     </section>
   )
 }
 
-
 const SelectField = forwardRef<HTMLDivElement, SelectFieldProps>(SelectFieldComponent)
-export default SelectField;
+export default SelectField
