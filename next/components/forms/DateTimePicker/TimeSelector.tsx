@@ -2,8 +2,9 @@
 import cx from 'classnames'
 import Button from 'components/forms/Button'
 import padStart from 'lodash/padStart'
-import { ReactNode, useRef } from 'react'
+import { ReactNode, useRef, WheelEvent } from 'react'
 import { useButton } from 'react-aria'
+import { useDidMount } from 'rooks'
 
 type TimeSelectorBase = {
   onClose?: () => void
@@ -26,7 +27,7 @@ type SelectorBase = {
 }
 
 const HOURS_LIMIT = 23
-const MINUTES_LIMIT = 55
+const MINUTES_LIMIT = 59
 
 const TimeSelector = ({
   onClose,
@@ -57,15 +58,36 @@ const TimeSelector = ({
   }
 
   const Selector = ({ array, type }: SelectorBase) => {
+    const ref = useRef<HTMLDivElement>(null)
+
+    useDidMount(() => {
+      const wheel = (delta: number) => {
+        const step = 40
+        const position = ref.current.scrollTop
+        const nextPos = position + step * delta
+        ref.current.scrollTo({ top: nextPos })
+      }
+      const wheelHandler = (event) => {
+        // TODO: an error with WheelEvent<HTMLDivElement> type (???)
+        // const wheelHandler = (event: WheelEvent<HTMLDivElement>) => {
+        const delta = event.deltaY / 100
+        if (delta > -2 && delta < 2) {
+          wheel(delta)
+        }
+        event.preventDefault()
+      }
+      ref.current?.addEventListener('wheel', wheelHandler, { passive: false })
+
+      return () => ref.current?.removeEventListener('wheel', wheelHandler)
+    })
+
     return (
       <div
-        style={{
-          paddingBottom: '85px',
-          paddingTop: '85px',
-        }}
+        ref={ref}
         className="flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden scrollbar-hide"
       >
-        {array.map((item) => (
+        <span className="pt-[84px] focus:outline-none" />
+        {array?.map((item) => (
           <ButtonSelector
             key={item}
             onPress={() => {
@@ -86,6 +108,7 @@ const TimeSelector = ({
             </span>
           </ButtonSelector>
         ))}
+        <span className="pb-[84px] focus:outline-none" />
       </div>
     )
   }
