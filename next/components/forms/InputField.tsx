@@ -36,7 +36,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       className,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const [valueState, setValueState] = useState<string>(value)
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
@@ -53,7 +53,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         isRequired: required,
         isDisabled: disabled,
       },
-      ref as RefObject<HTMLInputElement>
+      ref as RefObject<HTMLInputElement>,
     )
 
     const style = cx(
@@ -70,11 +70,11 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
 
         // disabled
         'border-gray-300 bg-gray-100': disabled,
-      }
+      },
     )
 
     return (
-      <div className="flex w-full max-w-xs flex-col">
+      <div className="flex w-full flex-col">
         <FieldHeader
           label={label}
           labelProps={labelProps}
@@ -85,7 +85,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           tooltip={tooltip}
         />
         <div className="relative">
-          {leftIcon && <i className="absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4">{leftIcon}</i>}
+          {leftIcon && (
+            <i className="absolute inset-y-1/2 left-5 h-4 w-4 -translate-y-2/4">{leftIcon}</i>
+          )}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
           {resetIcon && valueState && (
             <i
@@ -99,10 +101,12 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             </i>
           )}
         </div>
-        {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+        {!disabled && (
+          <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+        )}
       </div>
     )
-  }
+  },
 )
 
 export default InputField
