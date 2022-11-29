@@ -63,11 +63,11 @@ const TimeSelector = ({
     useDidMount(() => {
       const wheel = (delta: number) => {
         const step = 40
-        const position = ref.current.scrollTop
-        const nextPos = position + step * delta
-        ref.current.scrollTo({ top: nextPos })
+        const position = ref?.current?.scrollTop
+        const nextPos = position ? position + step * delta : 0
+        ref?.current?.scrollTo({ top: nextPos })
       }
-      const wheelHandler = (event) => {
+      const wheelHandler = (event: { deltaY: number; preventDefault: () => void }) => {
         // TODO: an error with WheelEvent<HTMLDivElement> type (???)
         // const wheelHandler = (event: WheelEvent<HTMLDivElement>) => {
         const delta = event.deltaY / 100
@@ -76,9 +76,9 @@ const TimeSelector = ({
         }
         event.preventDefault()
       }
-      ref.current?.addEventListener('wheel', wheelHandler, { passive: false })
+      ref?.current?.addEventListener('wheel', wheelHandler, { passive: false })
 
-      return () => ref.current?.removeEventListener('wheel', wheelHandler)
+      return () => ref?.current?.removeEventListener('wheel', wheelHandler)
     })
 
     return (
