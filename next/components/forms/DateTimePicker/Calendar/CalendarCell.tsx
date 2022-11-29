@@ -19,7 +19,7 @@ const CalendarCell = ({ state, date }: CalendarCellBase) => {
         {...buttonProps}
         ref={ref}
         className={cx(
-          'flex h-10 w-10 items-center justify-center text-p2-medium focus:rounded-lg focus:bg-gray-700 focus:text-white',
+          'flex xs:h-10 xs:w-10 h-8 w-8 items-center justify-center text-p2-medium focus:rounded-lg focus:bg-gray-700 focus:text-white focus-visible:outline-none',
           {
             'rounded-lg bg-gray-700 text-white': isSelected,
             'hover:rounded-lg hover:bg-gray-50': !isOutsideVisibleRange && !isSelected,
