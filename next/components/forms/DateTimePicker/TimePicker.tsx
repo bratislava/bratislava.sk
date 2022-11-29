@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import FieldErrorMessage from 'components/forms/FieldErrorMessage'
 import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -18,7 +19,12 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   const ref = useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton({ isDisabled: disabled, ...rest }, ref)
   return (
-    <button className={cx('focus:outline-none', { 'opacity-50': disabled })} type="button" {...buttonProps} ref={ref}>
+    <button
+      className={cx('focus:outline-none', { 'opacity-50': disabled })}
+      type="button"
+      {...buttonProps}
+      ref={ref}
+    >
       {children}
     </button>
   )
@@ -48,10 +54,10 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       shouldCloseOnSelect: false,
       ...rest,
     })
-    const { fieldProps, buttonProps, dialogProps } = useDatePicker(
+    const { fieldProps, buttonProps, dialogProps, errorMessageProps } = useDatePicker(
       { errorMessage, isDisabled: disabled, label, ...rest },
       state,
-      ref as RefObject<HTMLDivElement>
+      ref as RefObject<HTMLDivElement>,
     )
 
     const addZeroOnSuccess = (): void => {
@@ -73,7 +79,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
     return (
       <I18nProvider locale={locale}>
-        <div className="relative">
+        <div className="relative w-full max-w-xs">
           <div ref={ref}>
             <TimeField
               {...fieldProps}
@@ -94,7 +100,12 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
           </div>
           {state?.isOpen && (
             <OverlayProvider>
-              <Popover {...dialogProps} shouldCloseOnBlur={false} isOpen={state?.isOpen} onClose={closeFailedHandler}>
+              <Popover
+                {...dialogProps}
+                shouldCloseOnBlur={false}
+                isOpen={state?.isOpen}
+                onClose={closeFailedHandler}
+              >
                 <TimeSelector
                   setHour={setHour}
                   hour={hour}
@@ -106,10 +117,13 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               </Popover>
             </OverlayProvider>
           )}
+          {!disabled && (
+            <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+          )}
         </div>
       </I18nProvider>
     )
-  }
+  },
 )
 
 export default TimePicker

@@ -28,7 +28,14 @@ type SelectorBase = {
 const HOURS_LIMIT = 23
 const MINUTES_LIMIT = 55
 
-const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: TimeSelectorBase) => {
+const TimeSelector = ({
+  onClose,
+  onSubmit,
+  setHour,
+  setMinute,
+  hour,
+  minute,
+}: TimeSelectorBase) => {
   const hoursArray = Array.from({ length: HOURS_LIMIT + 1 }, (_, i) => i + 0)
   const minutesArray = Array.from({ length: MINUTES_LIMIT + 1 }, (_, i) => i + 0)
 
@@ -40,7 +47,7 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
         ...rest,
         onPress,
       },
-      ref
+      ref,
     )
     return (
       <button {...buttonProps} type="button" className={className}>
@@ -65,12 +72,18 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
               if (type === 'hour') setHour(`${item}`)
               if (type === 'minute') setMinute(`${item}`)
             }}
-            className={cx('cursor-pointer rounded-lg px-10 py-2 hover:bg-gray-50 focus:outline-none', {
-              'bg-gray-100':
-                (hour === `${item}` && type === 'hour') || (minute === `${item}` && type === 'minute'),
-            })}
+            className={cx(
+              'cursor-pointer rounded-lg px-10 py-2 hover:bg-gray-50 focus:outline-none',
+              {
+                'bg-gray-100':
+                  (hour === `${item}` && type === 'hour') ||
+                  (minute === `${item}` && type === 'minute'),
+              },
+            )}
           >
-            <span className="flex h-6 w-12 items-center justify-center">{padStart(`${item}`, 2, '0')}</span>
+            <span className="flex h-6 w-12 items-center justify-center">
+              {padStart(`${item}`, 2, '0')}
+            </span>
           </ButtonSelector>
         ))}
       </div>
@@ -78,7 +91,7 @@ const TimeSelector = ({ onClose, onSubmit, setHour, setMinute, hour, minute }: T
   }
 
   return (
-    <div className="w-80 rounded-lg border-2 border-gray-700 bg-white">
+    <div className="w-full max-w-xs rounded-lg border-2 border-gray-700 bg-white">
       <div className="flex w-full flex-col justify-between py-10">
         <div className="flex h-fit max-h-52 justify-between overflow-hidden px-4">
           <Selector array={hoursArray} type="hour" />
