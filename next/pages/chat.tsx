@@ -2,7 +2,8 @@ import { DirectLine } from 'botframework-directlinejs'
 import ReactWebChat from 'botframework-webchat'
 import React, { useRef, useState } from 'react'
 
-import CloseOutline from '../assets/images/close.svg'
+import Close from '../assets/images/close.svg'
+import Message from '../assets/images/message.svg'
 
 const token = 'bvhl_qg-4ho.2TlPRJ9vN5qxHn5KJ0OZLHY9Sd3D8LBQFjtR3wULFLM'
 const YOUR_USER_ID = 'YOUR_USER_ID'
@@ -15,8 +16,11 @@ const Chat = () => {
   }
   return (
     <>
-      <div className="floating-button" onClick={() => setShowChat((currentState) => !currentState)}>
-        <CloseOutline />
+      <div
+        className="floating-button text-white"
+        onClick={() => setShowChat((currentState) => !currentState)}
+      >
+        {showChat ? <Close /> : <Message />}
       </div>
       {dir?.current ? (
         <div className="webchat" style={style}>
