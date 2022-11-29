@@ -3,6 +3,7 @@ import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { AppProps } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
@@ -13,6 +14,10 @@ import { QueryParamProvider } from 'use-query-params'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
+
+const DynamicChat = dynamic(() => import('./chat'), {
+  ssr: false,
+})
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -41,13 +46,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           },
           Image: ({ alt, src, shadow }) => <ContentImage alt={alt} src={src} shadow={shadow} />,
           Markdown: ({ className, content, numericalList }) => (
-            <HomepageMarkdown className={className} content={content} numericalList={numericalList} />
+            <HomepageMarkdown
+              className={className}
+              content={content}
+              numericalList={numericalList}
+            />
           ),
         }}
       >
         <QueryParamProvider adapter={NextAdapter}>
           <SSRProvider>
             <Component {...pageProps} />
+            <DynamicChat />
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>

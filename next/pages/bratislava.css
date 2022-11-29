@@ -180,3 +180,32 @@ input[type='number']::-webkit-outer-spin-button {
 .form-group label.control-label {
   display: none;
 }
+
+.floating-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  height: 56px;
+  width: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--category-color-600);
+  border-radius: 50%;
+  color: #333333;
+  cursor: pointer;
+}
+  
+.webchat {
+  position: fixed;
+  height: 70%;
+  width: min(40%, 380px);
+  bottom: 96px;
+  right: 24px;
+  border-radius: 8px;
+  display: none;
+  overflow: hidden;
+  border: solid 2px RGB(51,51,51,0.5);
+  z-index: 9999;
+ }
