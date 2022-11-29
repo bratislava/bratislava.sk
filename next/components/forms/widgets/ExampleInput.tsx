@@ -5,7 +5,7 @@ export const ExampleInput = (props: any) => {
       THIS IS AN EXAMPLE CUSTOM WIDGET
       <input
         type="text"
-        className="custom"
+        className="custom bg-transparent"
         value={props.value}
         required={props.required}
         onChange={(event) => props.onChange(event.target.value)}
