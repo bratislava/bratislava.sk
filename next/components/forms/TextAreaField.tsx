@@ -26,18 +26,23 @@ const TextAreaField = ({
   description,
   tooltip,
   required,
-  value = '',
+  value,
   disabled,
   className,
   ...rest
 }: TextAreaBase) => {
-  const [, setValueState] = useState<string>(value)
+  const [valueState, setValueState] = useState<string>('')
   const ref = React.useRef<HTMLTextAreaElement>(null)
+
+  const getValue = () => {
+    return rest.onChange ? value : valueState
+  }
+
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       ...rest,
       placeholder,
-      value,
+      value: getValue(),
       label,
       errorMessage,
       description,
@@ -55,7 +60,7 @@ const TextAreaField = ({
     ref,
   )
   const style = cx(
-    'overflow-auto h-[196px] px-4 py-2.5 bg-gray-0 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
+    'overflow-auto px-4 py-2.5 bg-gray-0 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
     className,
     {
       // hover
@@ -69,7 +74,7 @@ const TextAreaField = ({
     },
   )
   return (
-    <div className="flex w-[320px] flex-col">
+    <div className="flex flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}
@@ -79,7 +84,7 @@ const TextAreaField = ({
         required={required}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} className={style} />
+      <textarea {...inputProps} ref={ref} className={style} value={getValue()} />
       {!disabled && (
         <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
       )}

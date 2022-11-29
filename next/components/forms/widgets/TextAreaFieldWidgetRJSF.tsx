@@ -1,4 +1,5 @@
 import { WidgetProps } from '@rjsf/utils'
+import cx from 'classnames'
 
 import TextAreaField from '../TextAreaField'
 
@@ -44,7 +45,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div className="py-2 px-4">
+    <div className="my-2 mx-4 max-w-[320px]">
       <TextAreaField
         value={value}
         label={label}
@@ -53,7 +54,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         disabled={disabled}
         description={description}
         tooltip={tooltip}
-        className={className}
+        className={cx('h-[196px]', className)}
         onChange={handleOnChange}
         errorMessage={showErrorMessage}
       />
