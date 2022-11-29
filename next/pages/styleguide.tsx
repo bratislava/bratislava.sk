@@ -12,6 +12,7 @@ import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
+import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
@@ -45,6 +46,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <UploadShowCase />
         <DropdownShowCase />
         <SelectFieldShowCase />
+        <RadioButtonShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )
