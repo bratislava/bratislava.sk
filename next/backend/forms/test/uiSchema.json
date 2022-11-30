@@ -2,6 +2,21 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "textAreas": {
+    "pros": {
+      "ui:widget": "TextArea",
+      "ui:label": false,
+      "ui:placeholder": "Write some cons please",
+      "ui:options": {
+        "description": "Here write pros",
+        "tooltip": "This is simple tooltip"
+      }
+    },
+    "cons": {
+      "ui:widget": "TextArea",
+      "ui:label": false
+    }
+  },
   "selectFields": {
     "school": {
       "ui:widget": "SelectField",
