@@ -44,5 +44,15 @@
         "className": "px-2 py-4"
       }
     }
+  },
+  "checkBoxes": {
+    "favouriteFruits": {
+      "ui:widget": "Checkboxes",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4 w-fit",
+        "variant": "boxed"
+      }
+    }
   }
 }
