@@ -8,7 +8,7 @@ import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 
 type DateSegmentBase = {
-  segment: DateSegment 
+  segment: DateSegment
   state: DateFieldState
 }
 
@@ -19,11 +19,11 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
     <div
       {...segmentProps}
       ref={ref}
-      className="text-button-1 hover:bg-form-calendar-hover focus:bg-form-calendar-hover focus:outline-none"
+      className="text-20 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
     >
       <span
         className={cx('w-full text-center uppercase group-focus:text-white', {
-          'text-form-calendar-placeholder': segment?.isPlaceholder,
+          'text-gray-500': segment?.isPlaceholder,
         })}
         style={{
           opacity: segment?.isPlaceholder ? '1' : '0',
@@ -40,6 +40,7 @@ type DateFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string
@@ -53,6 +54,7 @@ const DateField = ({
   tooltip,
   description,
   required,
+  explicitOptional,
   ...rest
 }: DateFieldBase) => {
   const ref = React.useRef<HTMLDivElement>(null)
@@ -71,15 +73,15 @@ const DateField = ({
   const { fieldProps, labelProps, errorMessageProps, descriptionProps } = useDateField(
     { errorMessage, isDisabled: disabled, label, ...rest },
     state,
-    ref
+    ref,
   )
   const dateFieldStyle = cx(
-    'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-form-input-default focus:border-form-input-pressed',
+    'w-80 mt-1 flex rounded-lg bg-white px-4 py-3 border-2 border-gray-200 focus:border-gray-700',
     {
-      'hover:border-form-input-hover': !disabled,
-      'border-error focus:border-error hover:border-error': errorMessage,
-      'opacity-50 pointer-events-none border-form-input-disabled': disabled,
-    }
+      'hover:border-gray-400': !disabled,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessage,
+      'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
+    },
   )
   return (
     <>
@@ -91,6 +93,7 @@ const DateField = ({
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
       />
       <div {...fieldProps} ref={ref} className={dateFieldStyle}>
         {state?.segments?.map((segment, i) => (
@@ -98,7 +101,9 @@ const DateField = ({
         ))}
         <div className="ml-auto flex items-center">{children}</div>
       </div>
-      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+      {!disabled && (
+        <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+      )}
     </>
   )
 }

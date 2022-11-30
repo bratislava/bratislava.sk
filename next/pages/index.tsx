@@ -1,38 +1,32 @@
-// @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable unicorn/consistent-destructuring */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import {
+  ComponentBlocksHomepageHeader,
+  Homepage as HomepageType,
+} from '@bratislava/strapi-sdk-homepage'
 import {
   BlogCards,
   InBaCard,
-  PageHeader,
-  PageTitle,
   Posts,
   PrimatorCouncil,
   SectionContainer,
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
-import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
-// import NewsLetterSection from '../components/molecules/sections/NewsLetterSection'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
-// import { GetServerSidePropsContext } from 'next'
-// import Image from 'next/image'
-import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import * as React from 'react'
+import React from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
+import { WelcomeSection } from '../components/sections/WelcomeSection'
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
 
   const { blogPosts } = await client.LatestBlogsWithTags({
@@ -156,58 +150,38 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
-  // Commented below line for reference.
-  // const { pageTitle, pageSubtitle, blogCardPosts, posts, bookmarks } = data
-  const { pageTitle, posts } = data
+  const { posts } = data
 
-  const menuItems = parseMainMenu(mainMenu)
+  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
-      <HomepagePageLayout menuItems={menuItems} footer={(footer && parseFooter(footer)) ?? undefined} bookmarks={cards}>
-        <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
-          {/* meta description */}
-          <Head>
-            <title>{homepage?.data?.attributes?.title}</title>
-            <meta name="description" content={homepage?.data?.attributes?.metaDescription} />
-          </Head>
-        </PageHeader>
-
-        <div className="bg-white">
-          <SectionContainer>
-            <div className="flex flex-col pt-28 pb-8 sm:flex-row sm:items-center lg:pt-18 lg:pb-10">
-              <PageTitle className="flex-1 pb-4" title={header?.title} subtitle={header?.subtitle} />
-              <img
-                className="hidden sm:block"
-                width={721}
-                height={364}
-                src={header?.picture?.data?.attributes?.url}
-                alt="Bratislava Hero"
-              />
-              <img
-                className="sm:hidden"
-                width={721}
-                height={364}
-                src={header?.mobilePicture?.data?.attributes?.url}
-                alt="Bratislava Hero"
-              />
-            </div>
-            <HomepageMenu items={menuItems} />
-          </SectionContainer>
-          <Waves
-            className="mt-6 md:mt-18"
-            waveColor="white"
-            wavePosition="bottom"
-            isRich
-            backgroundColor="var(--background-color)"
+      <HomepagePageLayout
+        menuItems={menuItems}
+        footer={(footer && parseFooter(footer)) ?? undefined}
+        bookmarks={cards}
+      >
+        {homepage?.data?.attributes && header && (
+          <WelcomeSection
+            homepageData={homepage.data.attributes as HomepageType}
+            mainMenuItems={menuItems}
+            headerAttribute={header as ComponentBlocksHomepageHeader}
           />
-        </div>
+        )}
 
-        <SectionContainer>
-          <BlogCards className="mb-0 lg:mb-24" posts={homepagePosts} shiftIndex={1} />
+        <Waves
+          className="md:mt-18 mt-6"
+          waveColor="white"
+          wavePosition="bottom"
+          isRich
+          backgroundColor="var(--background-color)"
+        />
+
+        <SectionContainer className="bg-gray-50 pb-14">
+          <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
@@ -218,41 +192,46 @@ const Homepage = ({
             latestPost={latestBlogposts}
             rozkoPosts={rozkoPosts}
           />
-          <PrimatorCouncil className="mt-14 lg:mt-24" primatorCards={data.council.cards} />
 
+          <PrimatorCouncil className="mt-14 lg:mt-20" primatorCards={data.council.cards} />
+        </SectionContainer>
+        <Waves
+          className="mt-[-1px] lg:mt-0"
+          backgroundColor="white"
+          wavePosition="bottom"
+          isRich
+          waveColor="var(--background-color)"
+        />
+        <SectionContainer>
           <GooutEvents
             linkTitle={t('allEvents')}
             linkUrl="https://www.bkis.sk/podujatia/"
             title={t('upComingEvents')}
-            className="mt-14 lg:mt-24"
+            className="mt-14"
           />
         </SectionContainer>
 
         <Waves
-          className="mt-20 mb-[-1px] lg:mb-0"
-          backgroundColor="var(--background-color)"
-          waveColor="var(--secondary-color)"
+          className="mb-[-1px] lg:mb-0"
+          waveColor="var(--category-color-100)"
           wavePosition="top"
           isRich
         />
 
-        <SectionContainer className="relative bg-secondary py-16">
-          <h2 className="pb-10 text-center text-h1 xs:mt-8 lg:pb-20">
-            {data.topNineTitle}
-          </h2>
+        <SectionContainer className="bg-category-100 relative py-8">
+          <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
-          waveColor="var(--secondary-color)"
-          backgroundColor="var(--background-color)"
+          waveColor="var(--category-color-100)"
           wavePosition="bottom"
           isRich
           className="mt-[-1px] lg:mt-0"
         />
 
         <SectionContainer>
-          <InBaCard className="mx-auto mt-56 min-h-[200px] max-w-3xl" {...inba} />
-          <div className="hidden md:block md:h-[78px]" />
+          <InBaCard className="mx-auto mt-28 min-h-[200px] max-w-3xl" {...inba} />
+          <div className="hidden md:block md:h-20" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}

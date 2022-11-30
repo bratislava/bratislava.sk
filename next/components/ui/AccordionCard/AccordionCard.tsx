@@ -29,30 +29,32 @@ export const AccordionCard = ({
   const mailUserName = mail?.split('@').at(0)
   const mailOrganization = mail && `@${mail?.split('@').at(1)}`
   const mailBreakpoint = 16
+
   return (
-    /* TODO min-w-70 does not work anymore (worked fine on monorepo) */
+    // TODO min-w-70 does not work anymore (worked fine on monorepo)
+    // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
-      <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-[280px] max-w-87')}>
+      <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-66 max-w-88')}>
         <div className="text-h4 pb-2">{displayName}</div>
-        <div className="pb-6 text-xs text-gray-dark lg:text-sm">{jobTitle}</div>
+        <div className="text-font/75 pb-6 text-p3 lg:text-p2">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">
               {!heading && <Phone className="hidden xl:flex" />}
               {businessPhones?.length > 0
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="flex items-center text-sm font-semibold text-red-brick">
+                    <div key={phone} className="text-red-brick flex items-center text-p2-semibold">
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="flex items-center text-sm font-semibold text-red-brick">{mobilePhone}</div>
+                    <div className="text-red-brick flex items-center text-p2-semibold">{mobilePhone}</div>
                   )}
             </div>
             <div className="flex flex-col">
               <div className="flex gap-x-4">
                 {!heading && <Mail className="hidden xl:flex" />}
-                <div className="text-xs font-semibold text-red-brick underline underline-offset-2 lg:text-sm">
+                <div className="text-red-brick text-p3-semibold underline underline-offset-2 lg:text-p2-semibold">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
                   <div className="hidden lg:flex">
                     {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
@@ -60,7 +62,7 @@ export const AccordionCard = ({
                 </div>
               </div>
               {mailUserName?.length > mailBreakpoint && (
-                <div className=" hidden text-xs font-semibold text-red-brick underline underline-offset-2 lg:flex lg:text-sm xl:pl-12">
+                <div className="text-red-brick hidden text-p3-semibold underline underline-offset-2 lg:flex lg:text-p2-semibold xl:pl-12">
                   {mailOrganization}
                 </div>
               )}

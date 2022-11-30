@@ -61,14 +61,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     )
 
     const style = cx(
-      ' font-inter inline-flex items-center',
+      'inline-flex items-center',
       rest.href
-        ? 'font-medium underline underline-offset-4 focus-visible:outline-none'
-        : 'w-fit h-fit space-x-2 text-white font-semibold justify-center text-center align-middle focus:outline-none rounded-lg',
+        ? 'underline underline-offset-4 focus-visible:outline-none'
+        : 'w-fit h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
         // text for lg button
-        'px-6 py-4 text-button-1 leading-5':
+        'px-6 py-4 text-20-semibold leading-5':
           size === 'lg' &&
           !icon &&
           text &&
@@ -78,7 +78,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // text for sm button
-        'px-5 py-3 text-button-base leading-5':
+        'px-5 py-3 text-16-semibold leading-5':
           size === 'sm' &&
           !icon &&
           text &&
@@ -108,28 +108,28 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'brand-outline' ||
             variant === 'black-outline'),
         // icon for lg button
-        'px-2.5 py-2.5 text-button-1 leading-6':
+        'px-2.5 py-2.5 text-20-semibold leading-6':
           size === 'lg' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
         // icon for sm button
-        'px-2 py-2 text-button-base': size === 'sm' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
+        'px-2 py-2 text-16-semibold': size === 'sm' && icon && !text && (variant === 'plain-brand' || variant === 'plain-black'),
 
         // text for lg button
-        'px-3 py-2 text-button-1 leading-6':
+        'px-3 py-2 text-20-semibold leading-6':
           size === 'lg' &&
           !icon &&
           text &&
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
         // text for sm button
-        'px-2 py-1 text-button-base leading-6':
+        'px-2 py-1 text-16-semibold leading-6':
           size === 'sm' &&
           !icon &&
           text &&
           (variant === 'plain-brand' || variant === 'plain-black' || variant === 'plain-negative'),
 
         // text for lg link button
-        'text-button-1 leading-8': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
+        'text-20-medium leading-8': size === 'lg' && (variant === 'link-brand' || variant === 'link-black'),
         // text for sm link button
-        'text-button-base leading-6': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
+        'text-16-medium leading-6': size === 'sm' && (variant === 'link-brand' || variant === 'link-black'),
 
         'border-2':
           variant === 'brand' ||
@@ -138,40 +138,40 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           variant === 'brand-outline' ||
           variant === 'black-outline',
         // bg and border color
-        'border-form-brand-default bg-form-brand-default focus:bg-form-brand-pressed focus:border-form-brand-pressed':
+        'border-main-700 bg-main-700 focus:bg-main-800 focus:border-main-800':
           variant === 'brand',
-        'border-form-brand-default bg-transparent text-form-brand-default focus:border-form-brand-pressed focus:text-form-brand-pressed':
+        'border-main-700 bg-transparent text-main-700 focus:border-main-800 focus:text-main-800':
           variant === 'brand-outline',
-        'border-form-black-default bg-form-black-default focus:bg-form-black-pressed focus:border-form-black-pressed':
+        'border-gray-700 bg-gray-700 focus:bg-gray-800 focus:border-gray-800':
           variant === 'black',
-        'border-form-black-default bg-transparent text-form-black-default focus:border-form-black-pressed focus:text-form-black-pressed':
+        'border-gray-700 bg-transparent text-gray-700 focus:border-gray-800 focus:text-gray-800':
           variant === 'black-outline',
-        'border-form-negative-default bg-form-negative-default focus:bg-form-negative-pressed focus:border-form-negative-pressed':
+        'border-negative-700 bg-negative-700 focus:bg-negative-800 focus:border-negative-800':
           variant === 'negative',
 
-        'text-form-brand-default focus:bg-form-plain-brand-pressed focus:text-form-brand-pressed':
+        'text-main-700 focus:bg-main-200 focus:text-main-800':
           variant === 'plain-brand',
-        'text-form-black-default focus:bg-form-plain-black-pressed focus:text-form-black-pressed':
+        'text-gray-700 focus:bg-gray-200 focus:text-gray-800':
           variant === 'plain-black',
-        'text-form-negative-default focus:bg-form-plain-negative-pressed focus:text-form-negative-pressed':
+        'text-negative-700 focus:bg-negative-200 focus:text-negative-800':
           variant === 'plain-negative',
 
-        'text-form-brand-default focus:text-form-brand-pressed': variant === 'link-brand',
-        'text-form-black-default focus:text-form-black-pressed': variant === 'link-black',
+        'text-main-700 focus:text-main-800': variant === 'link-brand',
+        'text-gray-700 focus:text-gray-800': variant === 'link-black',
 
         // hover
-        'hover:bg-form-brand-hover hover:border-form-brand-hover': variant === 'brand' && !disabled,
-        'hover:border-form-brand-hover hover:text-form-brand-hover': variant === 'brand-outline' && !disabled,
-        'hover:bg-form-black-hover hover:border-form-black-hover': variant === 'black' && !disabled,
-        'hover:border-form-black-hover hover:text-form-black-hover': variant === 'black-outline' && !disabled,
-        'hover:bg-form-negative-hover hover:border-form-negative-hover': variant === 'negative' && !disabled,
+        'hover:bg-main-600 hover:border-main-600': variant === 'brand' && !disabled,
+        'hover:border-main-600 hover:text-main-600': variant === 'brand-outline' && !disabled,
+        'hover:bg-gray-600 hover:border-gray-600': variant === 'black' && !disabled,
+        'hover:border-gray-600 hover:text-gray-600': variant === 'black-outline' && !disabled,
+        'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
 
-        'hover:bg-form-plain-brand-hover hover:text-form-brand-hover': variant === 'plain-brand' && !disabled,
-        'hover:bg-form-plain-black-hover hover:text-form-black-hover': variant === 'plain-black' && !disabled,
-        'hover:bg-form-plain-negative-hover hover:text-form-negative-hover': variant === 'plain-negative' && !disabled,
+        'hover:bg-main-100 hover:text-main-600': variant === 'plain-brand' && !disabled,
+        'hover:bg-gray-100 hover:text-gray-600': variant === 'plain-black' && !disabled,
+        'hover:bg-negative-100 hover:text-negative-600': variant === 'plain-negative' && !disabled,
 
-        'hover:text-form-brand-hover': variant === 'link-brand' && !disabled,
-        'hover:text-form-black-hover': variant === 'link-black' && !disabled,
+        'hover:text-main-600': variant === 'link-brand' && !disabled,
+        'hover:text-gray-600': variant === 'link-black' && !disabled,
 
         // disabled
         'opacity-50': disabled,
@@ -202,12 +202,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       <button type="button" ref={ref as RefObject<HTMLButtonElement>} className={style} {...buttonProps}>
         <div className="flex items-center">
           {startIcon && (
-            <i className={`${size === 'lg' && 'w-5 h-5 mr-3'} ${size === 'sm' && 'w-4 h-4 mr-2.5'}`}>{startIcon}</i>
+            <i className={`${size === 'lg' && 'mr-3 h-5 w-5'} ${size === 'sm' && 'mr-2.5 h-4 w-4'}`}>{startIcon}</i>
           )}
           {text && !icon && text}
-          {!text && icon && <i className={`${size === 'lg' && 'w-5 h-5'} ${size === 'sm' && 'w-4 h-4'}`}>{icon}</i>}
+          {!text && icon && <i className={`${size === 'lg' && 'h-5 w-5'} ${size === 'sm' && 'h-4 w-4'}`}>{icon}</i>}
           {endIcon && (
-            <i className={`${size === 'lg' && 'w-4 h-4 ml-3'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>
+            <i className={`${size === 'lg' && 'ml-3 h-4 w-4'} ${size === 'sm' && 'w-3.2 h-3.2 ml-2.5'}`}>{endIcon}</i>
           )}
         </div>
       </button>

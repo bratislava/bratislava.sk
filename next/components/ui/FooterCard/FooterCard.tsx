@@ -5,10 +5,10 @@ export interface IProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTM
 }
 
 export const FooterCard = ({ className, footer, children, ...rest }: IProps) => (
-  <div className={cx(className, 'bg-input-nav-bg shadow-md rounded-lg overflow-hidden')} {...rest}>
+  <div className={cx(className, 'bg-white shadow-md rounded-lg overflow-hidden')} {...rest}>
     <div className="flex flex-col rounded-xl">
-      <div className="flex flex-col bg-input-nav-bg">{children}</div>
-      <div className="bg-secondary">{footer}</div>
+      <div className="flex flex-col bg-white">{children}</div>
+      <div className="bg-category-100">{footer}</div>
     </div>
   </div>
 )

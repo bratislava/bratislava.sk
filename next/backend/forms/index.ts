@@ -53,11 +53,11 @@ const eforms = {
 
 export type EFormKey = keyof typeof eforms
 export interface EFormValue {
-  schema: JsonSchema,
-  uiSchema: UiSchema<any, any>,
-  xsd: string,
-  xmlTemplate: string,
-  textStylesheet?: any,
+  schema: JsonSchema
+  uiSchema: UiSchema<any, any>
+  xsd: string
+  xmlTemplate: string
+  textStylesheet?: any
   htmlStylesheet?: any
 }
 

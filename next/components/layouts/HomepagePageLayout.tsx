@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import {
-  AdvancedSearch,
   BAStickyMenu,
   Bookmarks,
   BookmarksProps,
@@ -50,7 +49,7 @@ const HomepagePageLayout = ({
   }, [])
 
   return (
-    <div className={cx('bg-background font-inter', className)}>
+    <div className={cx('font-inter', className)}>
       <div className="h-14 w-full bg-white">
         <SectionContainer>
           <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} />
@@ -71,10 +70,6 @@ const HomepagePageLayout = ({
         <div className="-mt-18">{children}</div>
 
         {footer && <Footer {...footer} />}
-      </div>
-
-      <div className={cx('block lg:hidden w-full h-screen p-8 bg-font overflow-y-hidden', { hidden: !searchOpen })}>
-        <AdvancedSearch className="text-white" placeholder="" title="" buttonText="TODO-FIX" /* options={[]} */ />
       </div>
     </div>
   )

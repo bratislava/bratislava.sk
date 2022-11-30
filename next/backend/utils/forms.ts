@@ -2,26 +2,27 @@ import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
 // @ts-ignore
-import { parseXml } from 'libxmljs'
+import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
 
 import { forceString } from '../../utils/utils'
 import forms, { EFormKey, EFormValue } from '../forms'
 import { firstCharToUpper } from './strings'
 
-export type Json = string | number | boolean | null | { [property: string]: Json } | Json[]
+export type Json = any
 
 export const buildXmlRecursive = (
   currentPath: string[],
   cheerioInstance: cheerio.CheerioAPI,
   node: Json,
-  jsonSchema: JsonSchema | undefined
+  jsonSchema: JsonSchema | undefined,
 ) => {
   const nodeName = firstCharToUpper(last(currentPath))
   const parentPath = dropRight(currentPath).join(' ')
   // we always edit the last element added - important for arrays in xml, where multiple nodes match the same path
   const parentNode = cheerioInstance(parentPath).last()
-  if (parentNode.length === 0) throw new Error(`Error, found ${parentNode.length} nodes for path ${parentPath}`)
+  if (parentNode.length === 0)
+    throw new Error(`Error, found ${parentNode.length} nodes for path ${parentPath}`)
   if (Array.isArray(node)) {
     // arrays move us one level deeper in json, but do not cause change to xml on their own
     // this will make us add multiple nodes with same name at the same level
@@ -55,7 +56,9 @@ export const buildXmlRecursive = (
     // noop
   } else {
     console.log('Erroneous node:', node)
-    throw new Error(`Unexpeted node type/value at path ${currentPath.join(' ')}, see the node in logs above.`)
+    throw new Error(
+      `Unexpeted node type/value at path ${currentPath.join(' ')}, see the node in logs above.`,
+    )
   }
 }
 
@@ -201,11 +204,12 @@ export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string
 // TODO create ajv instance once for BE, add async validations
 export const validateDataWithJsonSchema = (data: any, schema: any) => {
   const ajv = new Ajv()
+  addFormats(ajv)
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
-  addFormats(ajv)
 
   ajv.addKeyword('example')
+  ajv.addKeyword('enumNames')
 
   const validate = ajv.compile(schema)
   validate(data)
