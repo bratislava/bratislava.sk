@@ -13,6 +13,7 @@ import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGroupedShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
+import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
 import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
@@ -22,6 +23,7 @@ import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import UploadShowCase from '../components/styleguide/showcases/UploadShowCase'
+import AccordionShowCase from '../components/styleguide/showcases/AccordionShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -48,6 +50,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <UploadShowCase />
         <DropdownShowCase />
         <SelectFieldShowCase />
+        <AccordionShowCase />
+        <ProgressBarShowCase />
         <SingleCheckboxShowCase />
         <CheckboxGroupShowCase />
         <RadioButtonShowCase />
