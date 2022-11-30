@@ -185,9 +185,9 @@ export const removeNeedlessXmlTransformArraysRecursive = (
       } else if (childSchema.type === 'array') {
         const format = childSchema.items?.format
         if (format === 'data-url') {
-          obj[k] = obj[k].map((x) => x.nazov[0])
+          obj[k] = obj[k].map((x: any) => x.nazov[0])
         } else if (format === 'ciselnik') {
-          obj[k] = obj[k].map((x) => x.code[0])
+          obj[k] = obj[k].map((x: any) => x.code[0])
         }
       } else if (childSchema.type === 'string') {
         if (childSchema.format === 'data-url') {
