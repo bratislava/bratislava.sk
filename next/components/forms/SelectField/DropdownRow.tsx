@@ -60,7 +60,6 @@ const DropdownRow = ({
 
   // HELPER FUNCTIONS
   const getRowIcon = () => {
-    console.log(option.value, ' ', selected)
     return type === 'multiple' ? (
       <CheckboxIcon checked={selected} />
     ) : type === 'one' && selected ? (

@@ -74,7 +74,7 @@ const TextAreaField = ({
     },
   )
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}
