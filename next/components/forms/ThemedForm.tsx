@@ -1,6 +1,7 @@
 import { withTheme } from '@rjsf/core'
 
 import CheckboxWidgetRJSF from './widgets/CheckboxWidgetRJSF'
+import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
 import SelectFieldWidgetRJSF from './widgets/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
 
@@ -11,6 +12,8 @@ const theme = {
     TextArea: TextAreaFieldWidgetRJSF,
     SelectField: SelectFieldWidgetRJSF,
     Checkboxes: CheckboxWidgetRJSF,
+    Upload: UploadWidgetRJSF,
+    SelectField: SelectFieldWidgetRJSF
   },
 }
 
