@@ -1,6 +1,3 @@
-// @ts-strict-ignore
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { ArrowRight, ChevronDownSmall, ChevronRight } from '@assets/images'
 import StickyMenuTopper from '@assets/images/sticky-menu-topper.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
@@ -133,14 +130,15 @@ const MenuPanel = ({ item }: MenuPanelProps) => {
 }
 
 export const BAStickyMenu = ({ className, menuItems }: IProps) => {
-  const clickOutsideRef = useRef<HTMLDivElement | null>()
+  const clickOutsideRef = useRef<HTMLButtonElement | null>(null)
   const [activeMenuId, setActiveMenuId] = useState<number | null>()
   useOutsideClick(clickOutsideRef, () => setActiveMenuId(null))
 
   return (
-    <div className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>
+    <menu className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>
       {menuItems.map((item, i) => (
-        <div
+        <button
+          type="button"
           key={i}
           className="group flex-1 cursor-pointer"
           ref={clickOutsideRef}
@@ -148,9 +146,9 @@ export const BAStickyMenu = ({ className, menuItems }: IProps) => {
         >
           <MenuCell item={item} isActive={i === activeMenuId} />
           {activeMenuId === i && <MenuPanel item={item} />}
-        </div>
+        </button>
       ))}
-    </div>
+    </menu>
   )
 }
 
