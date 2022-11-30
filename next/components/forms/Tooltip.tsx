@@ -39,7 +39,7 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
     className,
   )
 
-  const arrowClassNames = cx('flex p-0', {
+  const arrowClassNames = cx('flex p-0 border-0', {
     hidden: !arrow,
     'flex-row': arrow && ['top', 'bottom'].includes(arrow),
     'flex-col': arrow && ['left', 'right'].includes(arrow),
@@ -48,17 +48,17 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
     'justify-center':
       arrow && (['left', 'right'].includes(arrow) || !alignArrow || alignArrow === 'center'),
     'justify-end pr-4': arrow && ['top', 'bottom'].includes(arrow) && alignArrow === 'right',
-    'mb-[-0.5px]': arrow === 'top',
-    'mt-[-0.5px]': arrow === 'bottom',
-    'ml-[-0.5px]': arrow === 'right',
-    'mr-[-0.5px]': arrow === 'left',
+    'mb-[-1px]': arrow === 'top',
+    'mt-[-1px]': arrow === 'bottom',
+    'ml-[-1px]': arrow === 'right',
+    'mr-[-1px]': arrow === 'left',
   })
 
   return (
     <div className={tooltipClassNames} style={positionStyle}>
       <div className={arrowClassNames}>
-        {arrow && ['top', 'bottom'].includes(arrow) && <TopArrowIcon />}
-        {arrow && ['left', 'right'].includes(arrow) && <LeftArrowIcon />}
+        {arrow && ['top', 'bottom'].includes(arrow) && <TopArrowIcon className="p-0 m-0 border-0" />}
+        {arrow && ['left', 'right'].includes(arrow) && <LeftArrowIcon className="p-0 m-0 border-0"/>}
       </div>
       <div className="text-p2 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-xs break-all rounded bg-gray-700 py-3 px-4 text-white">
         <p className="w-fit">{text}</p>
