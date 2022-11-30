@@ -34,15 +34,13 @@ const TextAreaField = ({
   const [valueState, setValueState] = useState<string>('')
   const ref = React.useRef<HTMLTextAreaElement>(null)
 
-  const getValue = () => {
-    return rest.onChange ? value : valueState
-  }
+  const displayValue = rest.onChange ? value : valueState
 
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       ...rest,
       placeholder,
-      value: getValue(),
+      value: displayValue,
       label,
       errorMessage,
       description,
@@ -84,7 +82,7 @@ const TextAreaField = ({
         required={required}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} className={style} value={getValue()} />
+      <textarea {...inputProps} ref={ref} className={style} value={displayValue} />
       {!disabled && (
         <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
       )}
