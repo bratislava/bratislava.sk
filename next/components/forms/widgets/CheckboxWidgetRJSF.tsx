@@ -13,8 +13,6 @@ type CheckboxesRJSFOptions = {
   error?: boolean
   isIndeterminate?: boolean
   isDisabled?: boolean
-  children: React.ReactNode
-  value: string
 }
 
 interface CheckboxesWidgetRJSFProps extends WidgetProps {
