@@ -8,18 +8,18 @@ const TextAreaFieldShowCase = () => {
   return (
     <Wrapper direction="column" title="Text Area Field">
       <Stack direction="column">
-        <TextAreaField label="Label" placeholder="Placeholder" className="w-[500px] h-[200px]" />
+        <TextAreaField label="Label" placeholder="Placeholder" className="h-[200px]" />
         <TextAreaField
           label="Label"
           placeholder="Placeholder"
           defaultValue="Default message"
-          className="w-[500px] h-[200px]"
+          className="h-[200px]"
         />
         <TextAreaField
           label="Label"
           placeholder="Placeholder"
           errorMessage="Error message"
-          className="w-[300px] h-[200px]"
+          className="h-[200px]"
         />
         <TextAreaField
           label="Label"
