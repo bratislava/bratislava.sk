@@ -5,6 +5,25 @@
   "allOf": [
     {
       "properties": {
+        "textAreas": {
+          "title": "Textove polia",
+          "required": ["pros"],
+          "properties": {
+            "pros": {
+              "title": "Pros",
+              "type": "string"
+            },
+            "cons": {
+              "title": "Cons",
+              "type": "string",
+              "default": "Defaultna hodnota"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
           "required": ["school"],
