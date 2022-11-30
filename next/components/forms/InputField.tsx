@@ -19,6 +19,7 @@ interface InputBase {
   value?: string
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   required?: boolean
+  explicitOptional?: boolean
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
@@ -33,6 +34,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       description,
       tooltip,
       required,
+      explicitOptional,
       value = '',
       disabled,
       leftIcon,
@@ -101,6 +103,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           description={description}
           descriptionProps={descriptionProps}
           required={required}
+          explicitOptional={explicitOptional}
           tooltip={tooltip}
         />
         <div className="relative">
