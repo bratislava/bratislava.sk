@@ -1,4 +1,4 @@
-import { EnumOptionsType, WidgetProps } from '@rjsf/utils'
+import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 
 import SelectField from '../SelectField/SelectField'
 
