@@ -15,6 +15,7 @@ interface InputBase {
   className?: string
   value?: string
   required?: boolean
+  explicitOptional?: boolean
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
@@ -28,6 +29,7 @@ const SearchField = ({
   description,
   tooltip,
   required,
+  explicitOptional,
   value = '',
   disabled,
   resetIcon,
@@ -77,6 +79,7 @@ const SearchField = ({
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
       <div className="relative">
