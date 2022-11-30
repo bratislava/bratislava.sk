@@ -1,5 +1,4 @@
 import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import { useState } from 'react'
 
 import SelectField from '../SelectField/SelectField'
 
