@@ -35,7 +35,12 @@ export const buildXmlRecursive = (
     parentNode.append(`<${nodeName}></${nodeName}>`)
     Object.keys(node).forEach((key) => {
       const properties = getAllPossibleJsonSchemaProperties(jsonSchema)
-      buildXmlRecursive([...currentPath, firstCharToUpper(key)], cheerioInstance, node[key], properties[key])
+      buildXmlRecursive(
+        [...currentPath, firstCharToUpper(key)],
+        cheerioInstance,
+        node[key],
+        properties[key],
+      )
     })
   } else if (node && typeof node === 'string') {
     if (jsonSchema) {
@@ -99,7 +104,9 @@ interface JsonSchemaProperties {
   [key: string]: JsonSchema
 }
 
-const getAllPossibleJsonSchemaProperties = (jsonSchema: JsonSchema | undefined): JsonSchemaProperties => {
+const getAllPossibleJsonSchemaProperties = (
+  jsonSchema: JsonSchema | undefined,
+): JsonSchemaProperties => {
   if (!jsonSchema) {
     return {}
   }
@@ -127,7 +134,10 @@ const getAllPossibleJsonSchemaProperties = (jsonSchema: JsonSchema | undefined):
   return properties
 }
 
-export const getJsonSchemaNodeAtPath = (jsonSchema: JsonSchema, path: string[]): JsonSchema | null => {
+export const getJsonSchemaNodeAtPath = (
+  jsonSchema: JsonSchema,
+  path: string[],
+): JsonSchema | null => {
   let currentNode = jsonSchema
   for (const key of path) {
     const properties = getAllPossibleJsonSchemaProperties(currentNode)
@@ -150,7 +160,11 @@ export const getJsonSchemaNodeAtPath = (jsonSchema: JsonSchema, path: string[]):
   return currentNode
 }
 
-export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string[], schema: JsonSchema) => {
+export const removeNeedlessXmlTransformArraysRecursive = (
+  obj: any,
+  path: string[],
+  schema: JsonSchema,
+) => {
   if (typeof obj !== 'object') {
     return obj
   }
@@ -159,12 +173,12 @@ export const removeNeedlessXmlTransformArraysRecursive = (obj: any, path: string
     const newPath = [...path, k]
 
     // skip index of array
-    if(isNaN(k)) {
+    if (Number.isNaN(Number(k))) {
       const childSchema = getJsonSchemaNodeAtPath(schema, newPath)
       if (!childSchema) {
         console.warn('Did not match schema! Details below')
         console.log('Path:', path)
-  
+
         if (Array.isArray(obj[k]) && obj[k].length < 2) {
           obj[k] = obj[k][0]
         }
