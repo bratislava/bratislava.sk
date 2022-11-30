@@ -7,7 +7,7 @@ import FieldHeader from './FieldHeader'
 
 interface TextAreaBase {
   label: string
-  placeholder: string
+  placeholder?: string
   errorMessage?: string
   description?: string
   className?: string
@@ -17,7 +17,7 @@ interface TextAreaBase {
   explicitOptional?: boolean
   disabled?: boolean
   tooltip?: string
-  onChange?: (e: string) => void
+  onChange?: (value?: string) => void
 }
 
 const TextAreaField = ({
@@ -28,18 +28,21 @@ const TextAreaField = ({
   tooltip,
   required,
   explicitOptional,
-  value = '',
+  value,
   disabled,
   className,
   ...rest
 }: TextAreaBase) => {
-  const [valueState, setValueState] = useState<string>(value)
+  const [valueState, setValueState] = useState<string>('')
   const ref = React.useRef<HTMLTextAreaElement>(null)
+
+  const displayValue = rest.onChange ? value : valueState
+
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       ...rest,
       placeholder,
-      value,
+      value: displayValue,
       label,
       errorMessage,
       description,
@@ -82,7 +85,7 @@ const TextAreaField = ({
         explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} value={valueState} className={style} />
+      <textarea {...inputProps} ref={ref} className={style} value={displayValue} />
       {!disabled && (
         <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
       )}
