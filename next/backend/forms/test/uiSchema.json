@@ -2,6 +2,40 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "fileUploads": {
+    "importButtonOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "type": "button"
+      }
+    },
+    "importButtonMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    },
+    "importDragAndDropOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "importDragAndDropMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:options": {
+        "type": "dragAndDrop",
+        "label": false
+      }
+    }
+  },
   "textAreas": {
     "pros": {
       "ui:widget": "TextArea",

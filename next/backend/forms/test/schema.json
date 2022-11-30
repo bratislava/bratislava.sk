@@ -76,6 +76,34 @@
       }
     },
     {
+      "properties": {
+        "fileUploads": {
+          "title": "Nahratie suborov",
+          "required": [],
+          "properties": {
+            "importButtonOneFile": {
+              "type": "string"
+            },
+            "importButtonMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
+              "type": "string"
+            },
+            "importDragAndDropMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "required": [],
       "properties": {
         "email": {

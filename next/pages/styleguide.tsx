@@ -23,6 +23,7 @@ import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import UploadShowCase from '../components/styleguide/showcases/UploadShowCase'
+import AccordionShowCase from '../components/styleguide/showcases/AccordionShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -49,6 +50,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <UploadShowCase />
         <DropdownShowCase />
         <SelectFieldShowCase />
+        <AccordionShowCase />
         <ProgressBarShowCase />
         <SingleCheckboxShowCase />
         <CheckboxGroupShowCase />
