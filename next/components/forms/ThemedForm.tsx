@@ -1,6 +1,7 @@
 import { withTheme } from '@rjsf/core'
 
 import RadioButtonsWidgetRJSF from './widgets/RadioButtonWidgetRJSF'
+import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
 import SelectFieldWidgetRJSF from './widgets/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
 
@@ -11,6 +12,7 @@ const theme = {
     SelectField: SelectFieldWidgetRJSF,
     RadioButton: RadioButtonsWidgetRJSF,
     TextArea: TextAreaFieldWidgetRJSF,
+    Upload: UploadWidgetRJSF,
   },
   fields: {},
 }
