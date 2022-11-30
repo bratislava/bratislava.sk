@@ -198,9 +198,9 @@ export const removeNeedlessXmlTransformArraysRecursive = (
 // TODO create ajv instance once for BE, add async validations
 export const validateDataWithJsonSchema = (data: any, schema: any) => {
   const ajv = new Ajv()
+  addFormats(ajv)
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
-  addFormats(ajv)
 
   ajv.addKeyword('example')
   ajv.addKeyword('enumNames')
