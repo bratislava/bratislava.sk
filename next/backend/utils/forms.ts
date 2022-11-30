@@ -202,8 +202,10 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
 
-  ajv.addKeyword('example')
-  ajv.addKeyword('enumNames')
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  ajv.addKeyword('example', undefined)
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  ajv.addKeyword('enumNames', undefined)
 
   const validate = ajv.compile(schema)
   validate(data)
