@@ -204,7 +204,10 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
 
+  // because pipeline failed
+  // @ts-ignore
   ajv.addKeyword('example')
+  // @ts-ignore
   ajv.addKeyword('enumNames')
 
   const validate = ajv.compile(schema)
