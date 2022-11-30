@@ -8,6 +8,7 @@ interface FieldHeaderProps {
   label: string
   htmlFor?: string
   required?: boolean
+  explicitOptional?: boolean
   description?: string
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
@@ -18,6 +19,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
   label,
   htmlFor,
   required,
+  explicitOptional,
   description,
   labelProps,
   descriptionProps,
@@ -55,11 +57,11 @@ const FieldHeader: FC<FieldHeaderProps> = ({
           {label}
         </label>
         <div className="flex-column flex items-center">
-          {/* OPTIONAL */ !required && <p className="text-20 mr-4">Optional</p>}
+          {/* OPTIONAL */ !required && explicitOptional && <p className="text-20">Optional</p>}
           {
             /* TOOLTIP ICON */
             tooltip && (
-              <div className="flex-column flex items-center">
+              <div className="flex-column ml-4 flex items-center">
                 <HelpIcon
                   className="cursor-pointer"
                   onMouseOver={() => setIsTooltipOpened(true)}

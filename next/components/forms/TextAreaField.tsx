@@ -14,6 +14,7 @@ interface TextAreaBase {
   defaultValue?: string
   value?: string
   required?: boolean
+  explicitOptional?: boolean
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
@@ -26,6 +27,7 @@ const TextAreaField = ({
   description,
   tooltip,
   required,
+  explicitOptional,
   value,
   disabled,
   className,
@@ -80,6 +82,7 @@ const TextAreaField = ({
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
       <textarea {...inputProps} ref={ref} className={style} value={displayValue} />

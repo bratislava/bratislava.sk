@@ -15,47 +15,77 @@ interface SelectFieldBoxProps {
   onDeleteLastValue: () => void
 }
 
-const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps>
-  = (props: SelectFieldBoxProps, ref:ForwardedRef<HTMLDivElement>) => {
+const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldBoxProps> = (
+  props: SelectFieldBoxProps,
+  ref: ForwardedRef<HTMLDivElement>,
+) => {
   // PROPS
-  const { value, multiple, placeholder, filter, filterRef, hashCode, onRemove, onFilterChange, onDeleteLastValue } = props
+  const {
+    value,
+    multiple,
+    placeholder,
+    filter,
+    filterRef,
+    hashCode,
+    onRemove,
+    onFilterChange,
+    onDeleteLastValue,
+  } = props
 
   // HELPER FUNCTIONS
   const getInputSize = () => {
     return !value || value.length === 0
       ? 13
       : filter.length <= 1
-        ? 1
-        : filter.length >= 9
-          ? 13
-          : filter.length
+      ? 1
+      : filter.length >= 9
+      ? 13
+      : filter.length
   }
 
   const getPlaceholder = () => {
-    return value && value.length > 0 ? "" : placeholder
+    return value && value.length > 0 ? '' : placeholder
   }
 
   // EVENT HANDLERS
   const handleOnKeyDown = ({ key }: React.KeyboardEvent) => {
-    if (["Backspace", "Delete"].includes(key) && !filter) {
+    if (['Backspace', 'Delete'].includes(key) && !filter) {
       onDeleteLastValue()
     }
   }
 
   // RENDER
   return (
-    <section ref={ref} className={`${hashCode} flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4`} data-value={value}>
-      { /* TAGS */
+    <section
+      ref={ref}
+      className={`${hashCode} flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4`}
+      data-value={value}
+    >
+      {
+        /* TAGS */
         value && value.length > 0
-          ? (multiple ? value : value.slice(0,1))
-            .map((option, key) =>
-              <Tag key={key} selectHashCode={hashCode} text={option.value} size="large" onRemove={() => onRemove(key)} removable/>
-            )
+          ? (multiple ? value : value.slice(0, 1)).map((option, key) => (
+              <Tag
+                key={key}
+                selectHashCode={hashCode}
+                text={option.value}
+                size="large"
+                onRemove={() => onRemove(key)}
+                removable
+              />
+            ))
           : null
       }
-      <input ref={filterRef} className={`${hashCode} max-w-[130px] xs:max-w-none border-0 text-20 outline-none`} type="text" size={getInputSize()}
-             value={filter} placeholder={getPlaceholder()} onKeyDown={handleOnKeyDown}
-             onChange={event => onFilterChange(event.target.value)}/>
+      <input
+        ref={filterRef}
+        className={`${hashCode} text-20 max-w-[80px] xs:max-w-none border-0 outline-none`}
+        type="text"
+        size={getInputSize()}
+        value={filter}
+        placeholder={getPlaceholder()}
+        onKeyDown={handleOnKeyDown}
+        onChange={(event) => onFilterChange(event.target.value)}
+      />
     </section>
   )
 }
