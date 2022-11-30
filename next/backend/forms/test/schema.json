@@ -5,6 +5,25 @@
   "allOf": [
     {
       "properties": {
+        "textAreas": {
+          "title": "Textove polia",
+          "required": ["pros"],
+          "properties": {
+            "pros": {
+              "title": "Pros",
+              "type": "string"
+            },
+            "cons": {
+              "title": "Cons",
+              "type": "string",
+              "default": "Defaultna hodnota"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
           "required": ["school"],
@@ -12,7 +31,11 @@
             "school": {
               "type": "string",
               "title": "University",
-              "enum": ["STU FEI", "STU FCHPT", "STU FIIT"],
+              "enum": [
+                "STU FEI",
+                "STU FCHPT",
+                "STU FIIT"
+              ],
               "enumNames": [
                 "fakulta elektrotechniky a informatiky",
                 null,
@@ -25,14 +48,28 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."]
+                "enum": [
+                  "ing.",
+                  "mgr.",
+                  "bc.",
+                  "phd.",
+                  "doc.",
+                  "prof."
+                ]
               }
             },
             "years": {
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [1, 2, 3, 4, 5, 6]
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
             }
           }
         }
@@ -40,38 +77,34 @@
     },
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
-          "required": ["address"],
-          "type": "object",
+        "fileUploads": {
+          "title": "Nahratie suborov",
+          "required": [],
           "properties": {
-            "firstName": {
+            "importButtonOneFile": {
               "type": "string"
             },
-            "lastName": {
+            "importButtonMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
               "type": "string"
             },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
+            "importDragAndDropMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           }
         }
       }
     },
     {
-      "required": ["email"],
+      "required": [],
       "properties": {
         "email": {
           "type": "string"

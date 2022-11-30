@@ -1,5 +1,4 @@
 import { EnumOptionsType, WidgetProps } from '@rjsf/utils'
-import { useState } from 'react'
 
 import SelectField from '../SelectField/SelectField'
 
@@ -11,45 +10,38 @@ type SelectRJSFOptions = {
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
   description?: string
   className?: string
+  explicitOptional?: boolean
 }
 
-interface SelectFieldWidgetRJSFProps extends WidgetProps{
+interface SelectFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: SelectRJSFOptions
-  value: any|any[]
+  value: any | any[]
   errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string
-  schema: any
-  onChange: (value: any|any[]) => void;
+  schema: StrictRJSFSchema
+  onChange: (value: any | any[]) => void
 }
 
 const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
-  const {
-    label,
-    options,
-    value,
-    errorMessage,
-    required,
-    disabled,
-    placeholder,
-    schema,
-    onChange
-  } = props
+  const { label, options, value, errorMessage, required, disabled, placeholder, schema, onChange } =
+    props
   const {
     enumOptions,
     selectAllOption,
     description,
     tooltip,
     dropdownDivider,
-    className
+    className,
+    explicitOptional,
   } = options
 
-  const type = schema.type === "array" ? "multiple" : "one"
+  const type = schema.type === 'array' ? 'multiple' : 'one'
 
   const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
-    const optionValues: any[] = newValue.map(option => option.value)
+    const optionValues: any[] = newValue.map((option) => option.value)
     onChange(optionValues)
   }
 
@@ -62,7 +54,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   const handleOnChange = (newValue: EnumOptionsType[]) => {
-    if (type === "multiple") {
+    if (type === 'multiple') {
       handleOnChangeMultiple(newValue)
     } else {
       handleOnChangeOne(newValue)
@@ -86,8 +78,8 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     const transformedValue: EnumOptionsType[] = []
     if (!enumOptions || !Array.isArray(value)) return transformedValue
 
-    value.forEach(optionValue => {
-      enumOptions.forEach(option => {
+    value.forEach((optionValue) => {
+      enumOptions.forEach((option) => {
         if (option.value === optionValue) {
           transformedValue.push(option)
         }
@@ -98,13 +90,28 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   const transformValue = (): EnumOptionsType[] => {
-    return type === "multiple" ? handleTransformMultiple() : handleTransformOne()
+    return type === 'multiple' ? handleTransformMultiple() : handleTransformOne()
   }
 
-  return <SelectField type={type} label={label} enumOptions={enumOptions} value={transformValue()}
-                      selectAllOption={selectAllOption} placeholder={placeholder} description={description}
-                      tooltip={tooltip} dropdownDivider={dropdownDivider} errorMessage={errorMessage}
-                      required={required} disabled={disabled} className={className} onChange={handleOnChange} />
+  return (
+    <SelectField
+      type={type}
+      label={label}
+      enumOptions={enumOptions}
+      value={transformValue()}
+      selectAllOption={selectAllOption}
+      placeholder={placeholder}
+      description={description}
+      tooltip={tooltip}
+      dropdownDivider={dropdownDivider}
+      errorMessage={errorMessage}
+      required={required}
+      disabled={disabled}
+      className={className}
+      onChange={handleOnChange}
+      explicitOptional={explicitOptional}
+    />
+  )
 }
 
 export default SelectFieldWidgetRJSF
