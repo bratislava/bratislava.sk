@@ -1,5 +1,6 @@
 import { withTheme } from '@rjsf/core'
 
+import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
 import SelectFieldWidgetRJSF from './widgets/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
 
@@ -8,8 +9,9 @@ import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
 const theme = {
   widgets: {
     TextArea: TextAreaFieldWidgetRJSF,
-    SelectField: SelectFieldWidgetRJSF,
-  },
+    Upload: UploadWidgetRJSF,
+    SelectField: SelectFieldWidgetRJSF
+  }
 }
 
 export const ThemedForm = withTheme(theme)
