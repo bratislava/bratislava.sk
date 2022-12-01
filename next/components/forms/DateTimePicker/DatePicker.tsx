@@ -35,12 +35,16 @@ type DatePickerBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   disabled?: boolean
   errorMessage?: string
 }
 
 const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
-  ({ label, disabled, errorMessage, required, tooltip, description, ...rest }, ref) => {
+  (
+    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    ref,
+  ) => {
     const { locale } = usePageWrapperContext()
     const state = useDatePickerState({
       label,
@@ -73,6 +77,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
               label={label}
               description={description}
               required={required}
+              explicitOptional={explicitOptional}
               disabled={disabled}
               tooltip={tooltip}
               errorMessage={errorMessage}

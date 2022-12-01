@@ -39,6 +39,7 @@ type DateFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string
@@ -54,6 +55,7 @@ const DateField = ({
   description,
   isOpen,
   required,
+  explicitOptional,
   ...rest
 }: DateFieldBase) => {
   const ref = React.useRef<HTMLDivElement>(null)
@@ -90,6 +92,7 @@ const DateField = ({
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
       />
       <div {...fieldProps} ref={ref} className={dateFieldStyle}>
         {state?.segments?.map((segment, i) => (
