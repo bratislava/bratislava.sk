@@ -31,7 +31,7 @@ export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }
       <label className="relative flex flex-1 items-center text-right text-category-600">
         <div
           className={cx(
-            'absolute md:bg-category-100 right-0 sm:right-5 w-full pointer-events-none z-10 flex items-center justify-center md:right-auto md:w-auto',
+            'absolute md:bg-category-200 right-0 sm:right-5 w-full pointer-events-none z-10 flex items-center justify-center md:right-auto md:w-auto',
             {
               'hidden md:block': showMobileDate,
               'md:left-7': showDate,
@@ -51,13 +51,13 @@ export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }
 
         {/* Desktop */}
         {!showDate && (
-          <div className="absolute left-3 hidden w-56 bg-category-100 pl-7 text-left sm:block md:left-20 md:w-60">
+          <div className="absolute left-3 hidden w-56 bg-category-200 pl-7 text-left sm:block md:left-20 md:w-60">
             {t('calendar')}
           </div>
         )}
 
         <input
-          className="h-full w-0 cursor-pointer appearance-none bg-category-100 text-center focus:outline-none sm:w-60 md:pr-6 md:pl-16"
+          className="h-full w-0 cursor-pointer appearance-none bg-category-200 text-center focus:outline-none sm:w-60 md:pr-6 md:pl-16"
           type="date"
           onChange={(e) => onChange?.(e.target.value)}
           value={value}

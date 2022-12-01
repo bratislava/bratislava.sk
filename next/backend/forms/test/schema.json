@@ -25,6 +25,27 @@
             }
           }
         },
+        "textAreas": {
+          "title": "Textove polia",
+          "required": [
+            "pros"
+          ],
+          "properties": {
+            "pros": {
+              "title": "Pros",
+              "type": "string"
+            },
+            "cons": {
+              "title": "Cons",
+              "type": "string",
+              "default": "Defaultna hodnota"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
           "required": [
@@ -72,6 +93,98 @@
                 4,
                 5,
                 6
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "fileUploads": {
+          "title": "Nahratie suborov",
+          "required": [],
+          "properties": {
+            "importButtonOneFile": {
+              "type": "string"
+            },
+            "importButtonMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
+              "type": "string"
+            },
+            "importDragAndDropMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "ziadatel": {
+          "title": "Žiadateľ",
+          "required": [
+            "address"
+          ],
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "birthDate": {
+              "type": "string"
+            },
+            "newTaxpayer": {
+              "type": "boolean"
+            },
+            "address": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "chooseOneOf": {
+          "title": "Choose one of radio buttons",
+          "properties": {
+            "chooseOne": {
+              "type": "string",
+              "title": "Some random choose",
+              "oneOf": [
+                {
+                  "const": "screen",
+                  "title": "Screen",
+                  "disabled": true,
+                  "tooltip": "This is some tooltip1"
+                },
+                {
+                  "const": "multiply",
+                  "title": "Multiply",
+                  "error": true
+                },
+                {
+                  "const": "overlay",
+                  "title": "Overlay"
+                }
               ]
             }
           }
