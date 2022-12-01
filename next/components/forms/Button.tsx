@@ -18,6 +18,8 @@ type ButtonBase = {
     | 'plain-negative'
     | 'link-brand'
     | 'link-black'
+    | 'category'
+    | 'category-outline'
   size?: 'lg' | 'sm'
   className?: string
   disabled?: boolean
@@ -86,7 +88,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'black' ||
             variant === 'negative' ||
             variant === 'brand-outline' ||
-            variant === 'black-outline'),
+            variant === 'black-outline' ||
+            variant === 'category' ||
+            variant === 'category-outline'),
         // text for sm button
         'px-5 py-3 text-16-semibold leading-5':
           size === 'sm' &&
@@ -96,7 +100,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'black' ||
             variant === 'negative' ||
             variant === 'brand-outline' ||
-            variant === 'black-outline'),
+            variant === 'black-outline' ||
+            variant === 'category' ||
+            variant === 'category-outline'),
         // icon for lg button
         'px-3.5 py-3.5':
           size === 'lg' &&
@@ -106,7 +112,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'black' ||
             variant === 'negative' ||
             variant === 'brand-outline' ||
-            variant === 'black-outline'),
+            variant === 'black-outline' ||
+            variant === 'category' ||
+            variant === 'category-outline'),
         // icon for sm button
         'px-2 py-2':
           (size === 'sm' &&
@@ -116,7 +124,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               variant === 'black' ||
               variant === 'negative' ||
               variant === 'brand-outline' ||
-              variant === 'black-outline')) ||
+              variant === 'black-outline' ||
+              variant === 'category' ||
+              variant === 'category-outline')) ||
           (size === 'lg' &&
             icon &&
             !text &&
@@ -153,7 +163,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           variant === 'black' ||
           variant === 'negative' ||
           variant === 'brand-outline' ||
-          variant === 'black-outline',
+          variant === 'black-outline' ||
+          variant === 'category' ||
+          variant === 'category-outline',
+
         // bg and border color
         'border-main-700 bg-main-700 focus:bg-main-800 focus:border-main-800': variant === 'brand',
         'border-main-700 bg-transparent text-main-700 focus:border-main-800 focus:text-main-800':
@@ -163,6 +176,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           variant === 'black-outline',
         'border-negative-700 bg-negative-700 focus:bg-negative-800 focus:border-negative-800':
           variant === 'negative',
+        'border-category-700 bg-category-700 focus:bg-category-800 focus:border-category-800':
+          variant === 'category',
+        'border-category-700 bg-transparent text-category-700 focus:border-category-800 focus:text-category-800':
+          variant === 'category-outline',
 
         'text-main-700 focus:bg-main-200 focus:text-main-800': variant === 'plain-brand',
         'text-gray-700 focus:bg-gray-200 focus:text-gray-800': variant === 'plain-black',

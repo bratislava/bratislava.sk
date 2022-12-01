@@ -5,14 +5,59 @@ import Button from '../../forms/Button'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-
-interface ButtonShowCaseProps {
-
-}
+interface ButtonShowCaseProps {}
 
 const ButtonShowCase = ({}: ButtonShowCaseProps) => {
   return (
     <Wrapper direction="column" title="Button">
+      <Stack>
+        <Button variant="category" icon={<SearchIcon />} />
+        <Button variant="category" icon={<SearchIcon />} size="sm" />
+        <Button variant="category" text="Button" />
+        <Button variant="category" text="Button" size="sm" />
+        <Button variant="category" text="Button disabled" disabled />
+        <Button variant="category" text="Button disabled" size="sm" disabled />
+      </Stack>
+      <Stack>
+        <Button variant="category-outline" text="Button" />
+        <Button variant="category-outline" text="Button" size="sm" />
+        <Button variant="category-outline" text="Button disabled" disabled />
+        <Button variant="category-outline" text="Button disabled" size="sm" disabled />
+      </Stack>
+      <Stack>
+        <Button
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+          variant="category"
+          text="Button"
+        />
+        <Button
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+          variant="category"
+          text="Button"
+          size="sm"
+        />
+        <Button variant="category" text="Button disabled" disabled />
+        <Button variant="category" text="Button disabled" size="sm" disabled />
+      </Stack>
+      <Stack>
+        <Button startIcon={<SearchIcon />} variant="category-outline" text="Button" />
+        <Button endIcon={<ArrowRightIcon />} variant="category-outline" text="Button" size="sm" />
+        <Button
+          startIcon={<SearchIcon />}
+          variant="category-outline"
+          text="Button disabled"
+          disabled
+        />
+        <Button
+          endIcon={<ArrowRightIcon />}
+          variant="category-outline"
+          text="Button disabled"
+          size="sm"
+          disabled
+        />
+      </Stack>
       <Stack>
         <Button text="Button" />
         <Button text="Button" size="sm" />
@@ -43,7 +88,12 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="brand-outline" text="Button" startIcon={<SearchIcon />} />
         <Button variant="brand-outline" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="brand-outline" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="brand-outline"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="brand-outline" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="brand-outline" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
         <Button
@@ -70,10 +120,21 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="black" text="Button" startIcon={<SearchIcon />} />
         <Button variant="black" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="black" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="black" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="black" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
-        <Button variant="black" text="Button" size="sm" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black"
+          text="Button"
+          size="sm"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
       </Stack>
       <Stack>
         <Button variant="black" icon={<SearchIcon />} />
@@ -91,7 +152,12 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="black-outline" text="Button" startIcon={<SearchIcon />} />
         <Button variant="black-outline" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="black-outline" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black-outline"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="black-outline" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="black-outline" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
         <Button
@@ -118,7 +184,12 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="negative" text="Button" startIcon={<SearchIcon />} />
         <Button variant="negative" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="negative" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="negative"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="negative" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="negative" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
         <Button
