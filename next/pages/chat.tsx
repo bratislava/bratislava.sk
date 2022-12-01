@@ -19,6 +19,7 @@ const Chat = () => {
       <div
         className="floating-button text-white"
         onClick={() => setShowChat((currentState) => !currentState)}
+        onKeyDown={() => setShowChat((currentState) => !currentState)}
       >
         {showChat ? <Close /> : <Message />}
       </div>
