@@ -174,9 +174,9 @@ AsyncServerProps<typeof getServerSideProps>) => {
         />
         {/* Header */}
         <PageHeader
-          color="var(--category-color-100)"
-          transparentColor="var(--category-color-100--transparent)"
-          transparentColorMobile="var(--category-color-100--semi-transparent)"
+          color="var(--category-color-200)"
+          transparentColor="var(--category-color-200--transparent)"
+          transparentColorMobile="var(--category-color-200--semi-transparent)"
           imageSrc={OfficialBoardBackgroundImage}
           // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"
@@ -206,7 +206,10 @@ AsyncServerProps<typeof getServerSideProps>) => {
             initialValue={forceString(query?.search)}
           />
           {noResultsFound ? (
-            <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
+            <NoResultsFound
+              title={t('weDidntFindAnything')}
+              message={t('tryEnteringSomethingElse')}
+            />
           ) : (
             <DocumentCards
               query={query?.search}
