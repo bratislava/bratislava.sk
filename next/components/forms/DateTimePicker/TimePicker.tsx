@@ -35,12 +35,16 @@ type TimePickerBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   disabled?: boolean
   errorMessage?: string
 }
 
 const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
-  ({ label, disabled, errorMessage, required, tooltip, description, ...rest }, ref) => {
+  (
+    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    ref,
+  ) => {
     const { locale } = usePageWrapperContext()
 
     const [hour, setHour] = useState<string>('')
@@ -86,6 +90,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               label={label}
               description={description}
               required={required}
+              explicitOptional={explicitOptional}
               disabled={disabled}
               tooltip={tooltip}
               errorMessage={errorMessage}

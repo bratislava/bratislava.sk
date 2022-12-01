@@ -11,6 +11,7 @@ type TimeFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string
@@ -24,6 +25,7 @@ const TimeField = ({
   description,
   tooltip,
   required,
+  explicitOptional,
   children,
   disabled,
   errorMessage = '',
@@ -96,6 +98,7 @@ const TimeField = ({
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
       />
       <div className="relative">
         <input

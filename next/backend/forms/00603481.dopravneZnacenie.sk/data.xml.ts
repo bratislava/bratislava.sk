@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+export default `<?xml version="1.0" encoding="utf-8"?>
 <E-form xmlns="http://schemas.gov.sk/doc/eform/00603481.dopravneZnacenie.sk/0.2"
         xsi:schemaLocation="http://schemas.gov.sk/doc/eform/00603481.dopravneZnacenie.sk/0.2"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -182,4 +182,4 @@
       <NeposkytujemSuhlasText>Neposkytujem súhlas na spracovanie osobných údajov</NeposkytujemSuhlasText>
     </ZakladneVyhlasenie>
   </Body>
-</E-form>
+</E-form>`
