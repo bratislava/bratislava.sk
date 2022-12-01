@@ -1,0 +1,90 @@
+export default `<Ziadatel>
+    <ZiatetelTyp>Právnicka osoba</ZiatetelTyp>
+    <ZiadatelMesto>
+        <Code>string</Code>
+        <Name>string</Name>
+        <WsEnumCode>string</WsEnumCode>
+    </ZiadatelMesto>
+    <ZiadatelPsc>string</ZiadatelPsc>
+    <ZiadatelEmail>string</ZiadatelEmail>
+    <ZiadatelTelefon>009</ZiadatelTelefon>
+    <ZiadatelIco>-2736</ZiadatelIco>
+    <ZiadatelMiestoPodnikania>string</ZiadatelMiestoPodnikania>
+</Ziadatel><Investor>
+    <InvestorZiadatelom>1</InvestorZiadatelom>
+    <Splnomocnenie>
+        <Nazov>string</Nazov>
+        <Prilozena>1</Prilozena>
+    </Splnomocnenie>
+    <Splnomocnenie>
+        <Nazov>string</Nazov>
+        <Prilozena>false</Prilozena>
+    </Splnomocnenie>
+    <Splnomocnenie>
+        <Nazov>string</Nazov>
+        <Prilozena>1</Prilozena>
+    </Splnomocnenie>
+    <InvestorTyp>Právnicka osoba</InvestorTyp>
+    <InvestorMenoPriezvisko>Janko Hrasko</InvestorMenoPriezvisko>
+    <InvestorMiestoPodnikania>string</InvestorMiestoPodnikania>
+    <InvestorMesto>
+        <Code>string</Code>
+        <Name>string</Name>
+        <WsEnumCode>string</WsEnumCode>
+    </InvestorMesto>
+    <InvestorEmail>string</InvestorEmail>
+    <InvestorTelefon>+4</InvestorTelefon>
+</Investor><Projektant>
+    <ProjektantMenoPriezvisko>Fero Mrkva</ProjektantMenoPriezvisko>
+    <ProjektantEmail>string</ProjektantEmail>
+    <ProjektantTelefon>005</ProjektantTelefon>
+    <AutorizacneOsvedcenie>string</AutorizacneOsvedcenie>
+    <DatumSpracovania>1989-03-27</DatumSpracovania>
+</Projektant><Stavba>
+    <StavbaNazov>string</StavbaNazov>
+    <StavbaDruh>Bytový dom</StavbaDruh>
+    <StavbaUlica>string</StavbaUlica>
+    <StavbaParcela>string</StavbaParcela>
+    <StavbaKataster>string</StavbaKataster>
+    <StavbaKataster>a</StavbaKataster>
+    <StavbaKataster>b</StavbaKataster>
+</Stavba><Konanie>
+    <KonanieTyp>Konanie o dodatočnom povolení zmeny dokončenej stavby</KonanieTyp>
+    <StavbaFotodokumentacia>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </StavbaFotodokumentacia>
+    <StavbaFotodokumentacia>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </StavbaFotodokumentacia>
+</Konanie><Prilohy>
+    <ProjektovaDokumentacia>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </ProjektovaDokumentacia>
+    <PodzemnePodlazie>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </PodzemnePodlazie>
+    <PodzemnePodlazie>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </PodzemnePodlazie>
+    <VyjadrenieUradu>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </VyjadrenieUradu>
+    <VyjadrenieUradu>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </VyjadrenieUradu>
+    <VyjadrenieUradu>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </VyjadrenieUradu>
+    <VyjadrenieUradu>
+        <Nazov>string</Nazov>
+        <Prilozena>true</Prilozena>
+    </VyjadrenieUradu>
+</Prilohy>`

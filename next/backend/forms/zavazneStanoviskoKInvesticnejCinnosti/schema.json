@@ -32,7 +32,7 @@
                 "properties": {
                   "ziadatelMenoPriezvisko": {
                     "type": "string",
-                    "pattern": "[ ]",
+                    "pattern": ".*[ ].*",
                     "title": "Meno a priezvisko"
                   }
                 },
@@ -43,7 +43,10 @@
               "if": {
                 "properties": {
                   "ziatetelTyp": {
-                    "oneOf": [{ "const": "Fyzická osoba - podnikateľ" }, { "const": "Právnicka osoba" }]
+                    "oneOf": [
+                      { "const": "Fyzická osoba - podnikateľ" },
+                      { "const": "Právnicka osoba" }
+                    ]
                   }
                 }
               },
@@ -258,7 +261,7 @@
                       "properties": {
                         "investorMenoPriezvisko": {
                           "type": "string",
-                          "pattern": "[ ]",
+                          "pattern": ".*[ ].*",
                           "title": "Meno a priezvisko"
                         }
                       },
@@ -269,7 +272,10 @@
                     "if": {
                       "properties": {
                         "investorTyp": {
-                          "oneOf": [{ "const": "Fyzická osoba - podnikateľ" }, { "const": "Právnicka osoba" }]
+                          "oneOf": [
+                            { "const": "Fyzická osoba - podnikateľ" },
+                            { "const": "Právnicka osoba" }
+                          ]
                         }
                       }
                     },
@@ -417,7 +423,7 @@
           "properties": {
             "projektantMenoPriezvisko": {
               "type": "string",
-              "pattern": "[ ]",
+              "pattern": ".*[ ].*",
               "title": "Meno a priezvisko"
             },
             "projektantEmail": {
@@ -464,7 +470,7 @@
             "stavbaDruh": {
               "type": "string",
               "title": "Druh stavby",
-              "enums": [
+              "enum": [
                 "Bytový dom",
                 "Rodinný dom",
                 "Iná budova na bývanie",
@@ -496,7 +502,13 @@
               }
             }
           },
-          "required": ["stavbaNazov", "stavbaDruh", "stavbaUlica", "stavbaParcela", "stavbaKataster"]
+          "required": [
+            "stavbaNazov",
+            "stavbaDruh",
+            "stavbaUlica",
+            "stavbaParcela",
+            "stavbaKataster"
+          ]
         }
       }
     },
@@ -545,7 +557,7 @@
                   "ziadostOdovodnenie": {
                     "type": "string",
                     "title": "Odôvodnenie žiadosti",
-                    "enums": [
+                    "enum": [
                       "Stavba bola zrealizovaná bez stavebného povolenia",
                       "Stavba bola zrealizovaná nad rámec vydaného stavebného povolenia",
                       "Iné"
