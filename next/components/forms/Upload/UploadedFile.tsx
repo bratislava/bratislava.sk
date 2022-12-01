@@ -5,6 +5,7 @@ import TrashBinErrorIcon from '@assets/images/forms/trash_bin_error_icon.svg'
 import TrashBinIcon from '@assets/images/forms/trash_bin_icon.svg'
 import cx from 'classnames'
 import { useState } from 'react'
+
 import Spinner from '../Spinner'
 
 interface UploadedFileProps {
@@ -14,15 +15,15 @@ interface UploadedFileProps {
   onRemove?: () => void
 }
 
-const UploadedFile = ({fileName, errorMessage, isUploading, onRemove}: UploadedFileProps) => {
+const UploadedFile = ({ fileName, errorMessage, isUploading, onRemove }: UploadedFileProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   const classNames = cx(
-    "cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear text-default",
+    'cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear text-20',
     {
-      "text-error": errorMessage,
-      "hover:bg-gray-100 hover:text-gray-500": !errorMessage && !isUploading
-    }
+      'text-error': errorMessage,
+      'hover:bg-gray-100 hover:text-gray-500': !errorMessage && !isUploading,
+    },
   )
 
   const handleOnRemove = () => {
@@ -32,29 +33,34 @@ const UploadedFile = ({fileName, errorMessage, isUploading, onRemove}: UploadedF
   }
 
   return (
-    <div className={classNames}
-         onMouseEnter={() => setIsHovered(true)}
-         onMouseLeave={() => setIsHovered(false)}>
+    <div
+      className={classNames}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="mr-2 flex w-full flex-row gap-2">
-        {
-          isUploading
-            ? <Spinner size='sm' className="self-center"/>
-            : errorMessage
-              ? <PinFileErrorIcon/>
-              : isHovered
-                ? <PinFileHoverIcon/>
-                : <PinFileIcon/>
-        }
+        <div className="flex flex-col justify-center">
+          {isUploading ? (
+            <Spinner size="sm" className="self-center" />
+          ) : errorMessage ? (
+            <PinFileErrorIcon />
+          ) : isHovered ? (
+            <PinFileHoverIcon />
+          ) : (
+            <PinFileIcon />
+          )}
+        </div>
         <p>{fileName}</p>
       </div>
       <div className="align-center flex w-5 flex-row gap-2">
-        {
-          errorMessage
-            ? <TrashBinErrorIcon className="cursor-pointer"
-                                 onClick={handleOnRemove}/>
-            : <TrashBinIcon className="hidden cursor-pointer self-center group-hover:block"
-                            onClick={handleOnRemove}/>
-        }
+        {errorMessage ? (
+          <TrashBinErrorIcon className="cursor-pointer" onClick={handleOnRemove} />
+        ) : (
+          <TrashBinIcon
+            className="hidden cursor-pointer self-center group-hover:block"
+            onClick={handleOnRemove}
+          />
+        )}
       </div>
     </div>
   )

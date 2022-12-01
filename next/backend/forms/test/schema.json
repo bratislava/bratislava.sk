@@ -5,9 +5,92 @@
   "allOf": [
     {
       "properties": {
+        "textAreas": {
+          "title": "Textove polia",
+          "required": ["pros"],
+          "properties": {
+            "pros": {
+              "title": "Pros",
+              "type": "string"
+            },
+            "cons": {
+              "title": "Cons",
+              "type": "string",
+              "default": "Defaultna hodnota"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "selectFields": {
+          "title": "Ukazka Selectov",
+          "required": ["school"],
+          "properties": {
+            "school": {
+              "type": "string",
+              "title": "University",
+              "enum": ["STU FEI", "STU FCHPT", "STU FIIT"],
+              "enumNames": [
+                "fakulta elektrotechniky a informatiky",
+                null,
+                "fakulta informatiky a informacnych technologii"
+              ]
+            },
+            "diplomas": {
+              "type": "array",
+              "title": "Reached diplomas",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."]
+              }
+            },
+            "years": {
+              "type": "number",
+              "title": "Years in school",
+              "uniqueItems": true,
+              "enum": [1, 2, 3, 4, 5, 6]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "fileUploads": {
+          "title": "Nahratie suborov",
+          "required": [],
+          "properties": {
+            "importButtonOneFile": {
+              "type": "string"
+            },
+            "importButtonMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
+              "type": "string"
+            },
+            "importDragAndDropMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "ziadatel": {
           "title": "Žiadateľ",
           "required": ["address"],
+          "type": "object",
           "properties": {
             "firstName": {
               "type": "string"
@@ -35,7 +118,37 @@
       }
     },
     {
-      "required": ["email"],
+      "properties": {
+        "chooseOneOf": {
+          "title": "Choose one of radio buttons",
+          "properties": {
+            "chooseOne": {
+              "type": "string",
+              "title": "Some random choose",
+              "oneOf": [
+                {
+                  "const": "screen",
+                  "title": "Screen",
+                  "disabled": true,
+                  "tooltip": "This is some tooltip1"
+                },
+                {
+                  "const": "multiply",
+                  "title": "Multiply",
+                  "error": true
+                },
+                {
+                  "const": "overlay",
+                  "title": "Overlay"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "required": [],
       "properties": {
         "email": {
           "type": "string"

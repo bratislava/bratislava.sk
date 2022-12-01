@@ -30,7 +30,7 @@ export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, classNam
       </div>
 
       {text && (
-        <div className="mt-8 px-5 pb-10 text-center text-base text-font">
+        <div className="mt-8 px-5 pb-10 text-center text-p2 text-font">
           {typeof text === 'string' ? <p>{text}</p> : text}
         </div>
       )}

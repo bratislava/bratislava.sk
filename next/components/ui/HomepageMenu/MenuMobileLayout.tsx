@@ -19,7 +19,7 @@ export const MenuMobileLayout: FC<Props> = ({ items }) => {
         {items?.map((item, i) => (
           <button onClick={() => setSelectedMenu(item)} className="flex items-center gap-x-7 p-2" key={i}>
             <Icon iconName={item.icon} />
-            <p className="text-left text-sm font-medium text-font">{item.title}</p>
+            <p className="text-left text-p2-medium text-font">{item.title}</p>
           </button>
         ))}
       </div>
