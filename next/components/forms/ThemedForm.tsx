@@ -1,5 +1,6 @@
 import { withTheme } from '@rjsf/core'
 
+import RadioButtonsWidgetRJSF from './widgets/RadioButtonWidgetRJSF'
 import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
 import SelectFieldWidgetRJSF from './widgets/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
@@ -8,10 +9,12 @@ import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
 // we'll want to override all the default widgets listed here https://react-jsonschema-form.readthedocs.io/en/latest/advanced-customization/custom-widgets-fields/
 const theme = {
   widgets: {
+    SelectField: SelectFieldWidgetRJSF,
+    RadioButton: RadioButtonsWidgetRJSF,
     TextArea: TextAreaFieldWidgetRJSF,
     Upload: UploadWidgetRJSF,
-    SelectField: SelectFieldWidgetRJSF
-  }
+  },
+  fields: {},
 }
 
 export const ThemedForm = withTheme(theme)
