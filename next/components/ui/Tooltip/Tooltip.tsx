@@ -16,7 +16,7 @@ interface IProps {
 export const TooltipTarget = ({ variant }: IProps) => (
   <div
     className={cx('text-p2 w-6 h-6 rounded-3xl relative inline-block', {
-      'bg-category-100 text-category-600': variant === 'default',
+      'bg-category-200 text-category-600': variant === 'default',
       'bg-category-600 text-white': variant === 'primary',
     })}
   >
@@ -24,7 +24,13 @@ export const TooltipTarget = ({ variant }: IProps) => (
   </div>
 )
 
-export const Tooltip = ({ className, content, target, size = 'small', variant = 'default' }: TooltipProps) => (
+export const Tooltip = ({
+  className,
+  content,
+  target,
+  size = 'small',
+  variant = 'default',
+}: TooltipProps) => (
   <div className={cx(className, 'flex flex-col w-6')}>
     <div className="group relative flex cursor-help items-center justify-center text-center">
       {target || <TooltipTarget variant={variant} />}
@@ -35,9 +41,9 @@ export const Tooltip = ({ className, content, target, size = 'small', variant = 
           {
             'w-56': size === 'small',
             'w-80': size === 'large',
-            'text-category-100 bg-category-100': variant === 'default',
+            'text-category-200 bg-category-200': variant === 'default',
             'text-category-600 bg-category-600': variant === 'primary',
-          }
+          },
         )}
       >
         <p
