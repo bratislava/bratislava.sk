@@ -103,8 +103,13 @@ const HomepageMenu = ({ items }: IProps) => {
                         <div className="flex shrink-0 grow-0 items-center justify-center">
                           <Icon iconName={subItem.icon} />
                         </div>
-                        <UILink href={subItem.url} className="text-20 flex items-center hover:underline">
-                          <div className="ml-4 flex-1 cursor-pointer font-semibold">{subItem.title}</div>
+                        <UILink
+                          href={subItem.url}
+                          className="text-20 flex items-center hover:underline"
+                        >
+                          <div className="ml-4 flex-1 cursor-pointer font-semibold">
+                            {subItem.title}
+                          </div>
                         </UILink>
                       </div>
                       <ul className="mt-8 space-y-3">
@@ -134,7 +139,10 @@ const HomepageMenu = ({ items }: IProps) => {
                   )
                 })}
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 cursor-pointer">
-                  <CloseFilled onClick={() => setActiveId(null)} style={{ color: item.colorDark }} />
+                  <CloseFilled
+                    onClick={() => setActiveId(null)}
+                    style={{ color: item.colorDark }}
+                  />
                 </div>
               </Panel>
             </div>
