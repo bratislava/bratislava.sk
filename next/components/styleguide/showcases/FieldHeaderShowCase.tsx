@@ -5,40 +5,70 @@ import FieldHeader from '../../forms/FieldHeader'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface FieldHeaderShowCaseProps {
-
-}
+interface FieldHeaderShowCaseProps {}
 
 const FieldHeaderShowCase = ({}: FieldHeaderShowCaseProps) => {
   return (
     <>
-      <Wrapper direction="column" title="Field header" >
+      <Wrapper direction="column" title="Field header">
         <Stack>
-          <FieldHeader label="Simple" htmlFor="input-name"/>
+          <FieldHeader label="Simple" htmlFor="input-name" />
         </Stack>
         <Stack>
-          <FieldHeader label="Required" htmlFor="input-name" required/>
+          <FieldHeader label="Explicit optional" htmlFor="input-name" explicitOptional />
         </Stack>
         <Stack>
-          <FieldHeader label="Tooltip" htmlFor="input-name" tooltip="This is random tooltip"/>
+          <FieldHeader label="Required" htmlFor="input-name" required />
         </Stack>
         <Stack>
-          <FieldHeader label="Description" htmlFor="input-name" description="This is simple description"/>
+          <FieldHeader label="Tooltip" htmlFor="input-name" tooltip="This is random tooltip" />
         </Stack>
         <Stack>
-          <FieldHeader label="Everything" htmlFor="input-name"
-                       description="This is is simple description" tooltip="This is some tooltip"
-                       required/>
+          <FieldHeader
+            label="Tooltip with explicit optional"
+            htmlFor="input-name"
+            tooltip="This is random tooltip"
+            explicitOptional
+          />
         </Stack>
         <Stack>
-          <FieldHeader label="Everything but optional" htmlFor="input-name"
-                       description="This is is simple description" tooltip="This is some tooltip" />
+          <FieldHeader
+            label="Description"
+            htmlFor="input-name"
+            description="This is simple description"
+          />
+        </Stack>
+        <Stack>
+          <FieldHeader
+            label="Everything"
+            htmlFor="input-name"
+            description="This is is simple description"
+            tooltip="This is some tooltip"
+            required
+          />
+        </Stack>
+        <Stack>
+          <FieldHeader
+            label="Everything - optional"
+            htmlFor="input-name"
+            description="This is is simple description"
+            tooltip="This is some tooltip"
+          />
+        </Stack>
+        <Stack>
+          <FieldHeader
+            label="Everything with forced optional"
+            htmlFor="input-name"
+            description="This is is simple description"
+            tooltip="This is some tooltip"
+            explicitOptional
+          />
         </Stack>
       </Wrapper>
 
-      <Wrapper direction="column" title="Field error message" >
+      <Wrapper direction="column" title="Field error message">
         <Stack>
-          <FieldErrorMessage errorMessage="This is error message for fields"/>
+          <FieldErrorMessage errorMessage="This is error message for fields" />
         </Stack>
       </Wrapper>
     </>

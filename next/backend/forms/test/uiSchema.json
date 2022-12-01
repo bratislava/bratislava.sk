@@ -2,6 +2,55 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "fileUploads": {
+    "importButtonOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "type": "button"
+      }
+    },
+    "importButtonMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    },
+    "importDragAndDropOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "importDragAndDropMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:options": {
+        "type": "dragAndDrop",
+        "label": false
+      }
+    }
+  },
+  "textAreas": {
+    "pros": {
+      "ui:widget": "TextArea",
+      "ui:label": false,
+      "ui:placeholder": "Write some cons please",
+      "ui:options": {
+        "description": "Here write pros",
+        "tooltip": "This is simple tooltip"
+      }
+    },
+    "cons": {
+      "ui:widget": "TextArea",
+      "ui:label": false
+    }
+  },
   "selectFields": {
     "school": {
       "ui:widget": "SelectField",
@@ -28,6 +77,17 @@
       "ui:options": {
         "className": "px-2 py-4"
       }
+    }
+  },
+  "chooseOneOf": {
+    "chooseOne": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      },
+      "ui:value": "overlay"
     }
   }
 }

@@ -1,11 +1,13 @@
 import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
-import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
+
 interface UploadDropAreaProps {
   value?: UploadMinioFile[]
+  multiple?: boolean
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
@@ -16,7 +18,7 @@ interface UploadDropAreaProps {
 
 const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (props: UploadDropAreaProps, ref: ForwardedRef<HTMLDivElement>) => {
   // PROPS
-  const { value, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick, onDrop }: UploadDropAreaProps = props
+  const { value, multiple, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick, onDrop }: UploadDropAreaProps = props
 
   // STATE
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
@@ -55,7 +57,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
     event.preventDefault()
     if (disabled) return
 
-    const droppedItems: DataTransferItem[] = [...event.dataTransfer.items]
+    const droppedItems: DataTransferItem[] = multiple ? [...event.dataTransfer.items] : [event.dataTransfer.items[0]]
     const newFiles = droppedItems.reduce(reduceItemsToFiles, [])
 
     setIsDraggedOver(false)
@@ -72,7 +74,7 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
 
   // RENDER
   return (
-    <div className="w-480 relative h-40" ref={ref} data-value={value}>
+    <div className="w-[180px] xs:w-[300px] sm:w-[480px] relative h-40" ref={ref} data-value={value}>
       <div className={dragAndDropOverlayClassNames}
            onClick={handleOnClick}
            onDragEnter={() => setIsDraggedOver(true)}
