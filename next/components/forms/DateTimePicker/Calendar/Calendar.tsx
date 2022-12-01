@@ -29,7 +29,11 @@ const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
   const { buttonProps: nextButtonPropsBtn } = useButton({ ...nextButtonProps }, nextTriggerRef)
 
   return (
-    <div {...calendarProps} ref={ref} className="w-80 rounded-lg border-2 border-gray-700 bg-white">
+    <div
+      {...calendarProps}
+      ref={ref}
+      className="w-full max-w-xs rounded-lg border-2 border-gray-700 bg-white"
+    >
       <div className="flex justify-between px-4 py-3">
         <button
           className="flex h-6 w-6 items-center justify-center focus:outline-none"
