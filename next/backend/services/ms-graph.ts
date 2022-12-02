@@ -118,6 +118,7 @@ export const getGroupMembersByGroupId = async ({
   id,
 }: GetGroupMembersByGroupIdParams): Promise<{ value: MSGraphGroupResponse }> => {
   const response = await fetch(
+    // sry no link for documentation, this is as close as documentation gets https://learn.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http
     `https://graph.microsoft.com/v1.0/groups/${id}/members?$select=id,businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,preferredLanguage,surname,userPrincipalName,otherMails`,
     {
       headers: {
@@ -212,7 +213,8 @@ export const getUsersByDisplayName = async ({
   token,
   query,
 }: GetUsersByDisplayNameParams): Promise<MSGraphFilteredGroupUser[]> => {
-  const url = `https://graph.microsoft.com/v1.0/users?$select=otherMails,id,mail,displayName,businessPhones,jobTitle&$search="displayName:${query}"`
+  // https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0
+  const url = `https://graph.microsoft.com/v1.0/users?$select=id,displayName,mail,businessPhones,jobTitle,otherMails&$search="displayName:${query}"`
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${token}`,
