@@ -13,6 +13,7 @@ export interface AccordionCardProps {
   businessPhones?: string[]
   mobilePhone?: string
   mail: string
+  otherMails?: string[]
   heading?: boolean
   className?: string
 }
@@ -23,10 +24,12 @@ export const AccordionCard = ({
   businessPhones,
   mobilePhone,
   mail,
+  otherMails,
   heading,
   className,
 }: AccordionCardProps) => {
-  const mailUserName = mail?.split('@').at(0)
+  const mailToParse = otherMails?.length > 0 ? otherMails[0] : mail
+  const mailUserName = mailToParse?.split('@').at(0)
   const mailOrganization = mail && `@${mail?.split('@').at(1)}`
   const mailBreakpoint = 16
 
@@ -48,7 +51,9 @@ export const AccordionCard = ({
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-red-brick flex items-center text-p2-semibold">{mobilePhone}</div>
+                    <div className="text-red-brick flex items-center text-p2-semibold">
+                      {mobilePhone}
+                    </div>
                   )}
             </div>
             <div className="flex flex-col">
@@ -57,7 +62,9 @@ export const AccordionCard = ({
                 <div className="text-red-brick text-p3-semibold underline underline-offset-2 lg:text-p2-semibold">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
                   <div className="hidden lg:flex">
-                    {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
+                    {mailUserName?.length > mailBreakpoint
+                      ? mailUserName
+                      : mailUserName + mailOrganization}
                   </div>
                 </div>
               </div>
