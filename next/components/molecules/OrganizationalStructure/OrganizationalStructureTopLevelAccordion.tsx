@@ -33,7 +33,7 @@ export const OrganizationalStructureTopLevelAccordion = ({
       </div>
       {open && (
         <div className="pt-8">
-          {group.users?.length && <OrganizationalStructureAccordionCards users={group.users} />}
+          {group.users?.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
           {orderedGroups.map((group) => (
             <OrganizationalStructureAccordion key={group.id} group={group} level={1} />
           ))}

@@ -61,6 +61,7 @@ export type MSGraphGroupUser = {
   preferredLanguage: string | null
   surname: string | null
   userPrincipalName: string | null
+  otherMails: string[]
 }
 
 export type MSGraphGroup = {
@@ -103,7 +104,7 @@ export type MSGraphGroup = {
 export type MSGraphFilteredGroup = Pick<MSGraphGroup, '@odata.type' | 'id' | 'displayName'>
 export type MSGraphFilteredGroupUser = Pick<
   MSGraphGroupUser,
-  '@odata.type' | 'id' | 'displayName' | 'mail' | 'businessPhones' | 'jobTitle'
+  '@odata.type' | 'id' | 'displayName' | 'mail' | 'businessPhones' | 'jobTitle' | 'otherMails'
 >
 export type MSGraphGroupResponse = Array<MSGraphFilteredGroupUser | MSGraphFilteredGroup>
 
@@ -116,11 +117,14 @@ export const getGroupMembersByGroupId = async ({
   token,
   id,
 }: GetGroupMembersByGroupIdParams): Promise<{ value: MSGraphGroupResponse }> => {
-  const response = await fetch(`https://graph.microsoft.com/v1.0/groups/${id}/members`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const response = await fetch(
+    `https://graph.microsoft.com/v1.0/groups/${id}/members?$select=id,businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,preferredLanguage,surname,userPrincipalName,otherMails`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
-  })
+  )
   return response.json()
 }
 
@@ -131,7 +135,11 @@ export type GetGroupMembersRecursiveResult = {
   groups: GetGroupMembersRecursiveResult[]
 }
 
-export const getGroupMembersRecursive = async (accessToken: string, groupId: string, groupDisplayName: string) => {
+export const getGroupMembersRecursive = async (
+  accessToken: string,
+  groupId: string,
+  groupDisplayName: string,
+) => {
   const { value } = await getGroupMembersByGroupId({ token: accessToken, id: groupId })
   const groupedResult = _.groupBy(value, '@odata.type')
   return {
@@ -139,13 +147,21 @@ export const getGroupMembersRecursive = async (accessToken: string, groupId: str
     displayName: groupDisplayName,
     users:
       groupedResult['#microsoft.graph.user']?.map((user) =>
-        _.pick(user, ['@odata.type', 'id', 'displayName', 'mail', 'businessPhones', 'jobTitle'])
+        _.pick(user, [
+          '@odata.type',
+          'id',
+          'displayName',
+          'mail',
+          'businessPhones',
+          'jobTitle',
+          'otherMails',
+        ]),
       ) || [],
     groups: groupedResult['#microsoft.graph.group']
       ? await Promise.all(
           groupedResult['#microsoft.graph.group'].map((group) =>
-            getGroupMembersRecursive(accessToken, group.id, group.displayName)
-          )
+            getGroupMembersRecursive(accessToken, group.id, group.displayName),
+          ),
         )
       : [],
   }
@@ -163,12 +179,15 @@ export const getUserByEmail = async ({ token, email }: GetUserByEmailParams) => 
 }
 
 export const getUsersByDepartment = async ({ token, department }: UsersRequest): Promise<any> => {
-  const result = await fetch(`https://graph.microsoft.com/v1.0/users?$filter=Department eq '${department}'`, {
-    method: 'get',
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const result = await fetch(
+    `https://graph.microsoft.com/v1.0/users?$filter=Department eq '${department}'`,
+    {
+      method: 'get',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
-  })
+  )
 
   const resultData = await result.json()
 
@@ -193,7 +212,7 @@ export const getUsersByDisplayName = async ({
   token,
   query,
 }: GetUsersByDisplayNameParams): Promise<MSGraphFilteredGroupUser[]> => {
-  const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${query}"`
+  const url = `https://graph.microsoft.com/v1.0/users?$select=otherMails,id,mail,displayName,businessPhones,jobTitle&$search="displayName:${query}"`
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -212,7 +231,15 @@ export const getUsersByDisplayName = async ({
 
   return (
     resultData?.value?.map((user) =>
-      _.pick(user, ['@odata.type', 'id', 'displayName', 'mail', 'businessPhones', 'jobTitle'])
+      _.pick(user, [
+        '@odata.type',
+        'id',
+        'displayName',
+        'mail',
+        'businessPhones',
+        'jobTitle',
+        'otherMails',
+      ]),
     ) || []
   )
 }
