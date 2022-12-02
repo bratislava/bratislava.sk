@@ -8,12 +8,14 @@
         "inputFields": {
           "title": "Showcase of InputField",
           "required": [
-            "firstName"
+            "firstName",
+            "lastName"
           ],
           "properties": {
             "firstName": {
               "type": "string",
-              "title": "First Name"
+              "title": "First Name",
+              "default": "Anton"
             },
             "lastName": {
               "type": "string",

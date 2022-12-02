@@ -7,7 +7,8 @@ type InputFieldRJSFOptions = {
   description?: string
   className?: string
   resetIcon?: boolean
-  leftIcon?: boolean
+  leftIcon?: 'person' | 'mail' | 'call' | 'lock'
+  explicitOptional?: boolean
 }
 
 interface InputFieldWidgetRJSFProps extends WidgetProps {
@@ -19,6 +20,7 @@ interface InputFieldWidgetRJSFProps extends WidgetProps {
   disabled?: boolean
   placeholder?: string
   schema: StrictRJSFSchema
+  onChange: (value?: string) => void
 }
 
 const InputFieldWidgetRJSF = ({
@@ -27,10 +29,14 @@ const InputFieldWidgetRJSF = ({
   placeholder = '',
   errorMessage,
   required,
-  value = '',
+  value,
   disabled,
+  onChange,
 }: InputFieldWidgetRJSFProps) => {
-  const { description, tooltip, className, resetIcon, leftIcon } = options
+  const { description, tooltip, className, resetIcon, leftIcon, explicitOptional } = options
+
+  const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
+
   return (
     <InputField
       label={label}
@@ -44,6 +50,8 @@ const InputFieldWidgetRJSF = ({
       className={className}
       resetIcon={resetIcon}
       leftIcon={leftIcon}
+      onChange={handleOnChange}
+      explicitOptional={explicitOptional}
     />
   )
 }

@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { forwardRef, ReactNode, RefObject, useState } from 'react'
+import { forwardRef, ReactNode, RefObject, useEffect, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import CallIcon from '../../assets/images/forms/call.svg'
@@ -23,6 +23,7 @@ interface InputBase {
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
+  onChange?: (value?: string) => void
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
@@ -40,11 +41,17 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       leftIcon,
       resetIcon,
       className,
+      onChange,
       ...rest
     },
     ref,
   ) => {
     const [valueState, setValueState] = useState<string>(value)
+
+    useEffect(() => {
+      setValueState(onChange ? value : valueState)
+    }, [valueState, value, onChange])
+
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
       {
         ...rest,
@@ -53,8 +60,12 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         label,
         errorMessage,
         description,
-        onChange(value) {
-          setValueState(value)
+        onChange(inputValue) {
+          if (onChange) {
+            onChange(inputValue)
+          } else {
+            setValueState(inputValue)
+          }
         },
         isRequired: required,
         isDisabled: disabled,
@@ -75,6 +86,11 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         default:
           return null
       }
+    }
+
+    const resetIconHandler = () => {
+      if (onChange) onChange('')
+      else setValueState('')
     }
 
     const style = cx(
@@ -118,15 +134,14 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           )}
           <input {...inputProps} ref={ref} value={valueState} className={style} />
           {resetIcon && valueState && (
-            <i
-              role="button"
+            <button
+              type="button"
               tabIndex={0}
-              onKeyDown={() => setValueState('')}
-              onClick={() => setValueState('')}
+              onClick={resetIconHandler}
               className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
             >
               <ResetIcon />
-            </i>
+            </button>
           )}
         </div>
         {!disabled && (
