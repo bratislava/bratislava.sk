@@ -104,8 +104,8 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
         />
         {/* Header */}
         <PageHeader
-          color="var(--category-color-100)"
-          transparentColor="var(--category-color-100--transparent)"
+          color="var(--category-color-200)"
+          transparentColor="var(--category-color-200--transparent)"
           imageSrc=""
           // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"
