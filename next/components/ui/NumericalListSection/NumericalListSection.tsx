@@ -33,7 +33,7 @@ export const NumericalListSection = ({
     <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
       {hasBackground ? (
         <Waves
-          waveColor={cx({ 'var(--category-color-100)': hasBackground })}
+          waveColor={cx({ 'var(--category-color-200)': hasBackground })}
           wavePosition="top"
           isRich
         />
@@ -41,7 +41,7 @@ export const NumericalListSection = ({
 
       <div
         className={cx('flex justify-center flex-col items-center py-12', {
-          'bg-category-100': hasBackground,
+          'bg-category-200': hasBackground,
         })}
       >
         <div className="flex max-w-3xl flex-col">
@@ -75,7 +75,7 @@ export const NumericalListSection = ({
 
       {hasBackground ? (
         <Waves
-          waveColor={cx({ 'var(--category-color-100)': hasBackground })}
+          waveColor={cx({ 'var(--category-color-200)': hasBackground })}
           wavePosition="bottom"
           isRich
         />

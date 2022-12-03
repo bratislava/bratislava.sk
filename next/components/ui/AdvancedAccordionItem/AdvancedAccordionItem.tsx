@@ -36,7 +36,7 @@ export const AdvancedAccordionItem = ({ title, departments }: AdvancedAccordionI
             <ChevronDownSmall className="flex lg:hidden" />
           </div>
         </div>
-        <div className="h-1 w-full rounded-sm border border-transparent bg-category-100" />
+        <div className="h-1 w-full rounded-sm border border-transparent bg-category-200" />
       </div>
       {open && (
         <div className="pt-8">

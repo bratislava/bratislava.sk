@@ -133,7 +133,7 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
             'mt-8 px-6 py-3 text-20-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
             {
               'bg-category-600 border-category-600': linkVariant === 'primary',
-              'bg-category-100 border-category-100 text-white': linkVariant === 'secondary',
+              'bg-category-200 border-category-200 text-white': linkVariant === 'secondary',
               'text-black': linkVariant === 'primary',
             }
           )}

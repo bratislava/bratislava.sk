@@ -12,7 +12,9 @@ export interface OrganizationalStructureTopLevelAccordionProps {
   group: GetGroupMembersRecursiveResult
 }
 
-export const OrganizationalStructureTopLevelAccordion = ({ group }: OrganizationalStructureTopLevelAccordionProps) => {
+export const OrganizationalStructureTopLevelAccordion = ({
+  group,
+}: OrganizationalStructureTopLevelAccordionProps) => {
   const [open, setOpen] = useToggle()
 
   const orderedGroups = group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName))
@@ -27,11 +29,11 @@ export const OrganizationalStructureTopLevelAccordion = ({ group }: Organization
             <ChevronDownSmall className="flex lg:hidden" />
           </div>
         </div>
-        <div className="h-1 w-full rounded-sm border border-transparent bg-category-100" />
+        <div className="h-1 w-full rounded-sm border border-transparent bg-category-200" />
       </div>
       {open && (
         <div className="pt-8">
-          {group.users?.length && <OrganizationalStructureAccordionCards users={group.users} />}
+          {group.users?.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
           {orderedGroups.map((group) => (
             <OrganizationalStructureAccordion key={group.id} group={group} level={1} />
           ))}

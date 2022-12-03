@@ -2,7 +2,7 @@
 // be aware it may break styling of the rest of the app, including custom components!
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
-import forms, { EFormKey, EFormValue } from '@backend/forms'
+import { EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import validator from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
@@ -12,10 +12,10 @@ import { forceString } from '@utils/utils'
 import Button from 'components/forms/Button'
 import FinalStep from 'components/forms/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
-import _ from 'lodash'
 import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import { getEform } from '../../backend/utils/forms'
 
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
@@ -25,13 +25,9 @@ import { isProductionDeployment } from '../../utils/utils'
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   if (isProductionDeployment()) return { notFound: true }
 
-  let formSlug: EFormKey
   let eform: EFormValue
   try {
-    formSlug = forceString(ctx.query.eform) as any
-    eform = forms[formSlug]
-    // sanity check
-    if (!eform) return { notFound: true }
+    eform = getEform(ctx.query.eform)
   } catch (error) {
     console.error(error)
     return { notFound: true }
@@ -88,9 +84,9 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
         {/* TODO replace with form header */}
         <PageHeader
           imageSrc=""
-          color="var(--category-color-100)"
-          transparentColor="var(--category-color-100--transparent)"
-          transparentColorMobile="var(--category-color-100--semi-transparent)"
+          color="var(--category-color-200)"
+          transparentColor="var(--category-color-200--transparent)"
+          transparentColorMobile="var(--category-color-200--semi-transparent)"
           className="header-main-bg bg-cover"
         >
           TODO form info

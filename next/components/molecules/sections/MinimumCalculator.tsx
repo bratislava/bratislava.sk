@@ -102,7 +102,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
   }
 
   return (
-    <div className={cx('text-center bg-category-100 text-font', className)}>
+    <div className={cx('text-center bg-category-200 text-font', className)}>
       <p className="text-h3">{t('title')}</p>
       <p className="text-20-medium m-auto mt-6 w-10/12 pt-0.5">{t('description')}</p>
       <form className="text-20-medium mt-10 flex flex-col items-center gap-y-8" onSubmit={handleSubmit}>
