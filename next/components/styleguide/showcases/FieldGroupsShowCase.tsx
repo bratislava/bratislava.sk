@@ -1,14 +1,14 @@
+import React from 'react'
+
 import {
-  CityZipCode,
-  DateGroup,
+  DateFromTo,
   DateTimePicker,
+  DoubledInputField,
   InputSelectGroup,
   InputUploadGroup,
   TextareaUploadGroup,
-  TimeGroup,
-} from 'components/forms/FieldGroups'
-import React from 'react'
-
+  TimeFromTo,
+} from '../../forms/Groups'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -16,25 +16,33 @@ const FieldGroupsShowCase = () => {
   return (
     <Wrapper direction="column" title="Field Group">
       <Stack direction="column">
-        <InputSelectGroup />
+        <InputSelectGroup
+          SelectLabel="Interval odvozu"
+          SelectOnChange={() => {}}
+          InputLabel="Počet"
+          InputClassName="w-[150px]"
+          SelectPlaceholder="Vybrať"
+          SelectClassName="w-max"
+          addNew="Pridať ďalší riadok"
+        />
       </Stack>
       <Stack direction="column">
-        <DateGroup />
+        <DateFromTo label="Dátum (od – do)" />
       </Stack>
       <Stack direction="column">
-        <TimeGroup />
+        <TimeFromTo label="Čas (od – do)" />
       </Stack>
       <Stack direction="column">
-        <CityZipCode />
+        <DoubledInputField label={['Mesto', 'PSČ']} classNames={['w-full', 'w-[100px]']} />
       </Stack>
       <Stack direction="column">
-        <DateTimePicker />
+        <DateTimePicker label="Date + time picker" />
       </Stack>
       <Stack direction="column">
-        <InputUploadGroup />
+        <InputUploadGroup InputLabel="Label" UploadLabel="Nahrajte súbor" />
       </Stack>
       <Stack direction="column">
-        <TextareaUploadGroup />
+        <TextareaUploadGroup TextareaLabel="Mesto" UploadLabel="Nahrajte súbor" />
       </Stack>
     </Wrapper>
   )
