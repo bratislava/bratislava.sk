@@ -58,9 +58,8 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
-    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
+    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts',
   )
-  console.log(page);
   return (
     <BasePageLayout
       footer={footer}
@@ -78,8 +77,8 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       {/* Header */}
       <PageHeader
         className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
-        color="var(--category-color-100)"
-        transparentColor="var(--category-color-100--transparent)"
+        color="var(--category-color-200)"
+        transparentColor="var(--category-color-200--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
       >
         {/* meta discription */}
@@ -93,7 +92,11 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="lg:min-h-56 relative">
             <div className="absolute top-4 lg:top-6">
-              <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
+              <PageBreadcrumbs
+                parentPage={page?.parentPage}
+                pageCategory={page?.pageCategory}
+                title={page.title}
+              />
             </div>
             <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
@@ -148,7 +151,9 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      {page?.sections && <Sections sections={page.sections} slug={page.slug} locale={page.locale} />}
+      {page?.sections && (
+        <Sections sections={page.sections} slug={page.slug} locale={page.locale} />
+      )}
 
       {/* Page - Related Content */}
       {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}

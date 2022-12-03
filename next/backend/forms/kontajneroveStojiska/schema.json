@@ -1,7 +1,14 @@
 {
   "title": "Dotácia kontajnerové stanovištia",
   "type": "object",
-  "required": ["ziadatel", "ziadatelUdaje", "typStanovista", "stanovisteInformacie", "miestoUmiestnenia", "dovodZiadosti"],
+  "required": [
+    "ziadatel",
+    "ziadatelUdaje",
+    "typStanovista",
+    "stanovisteInformacie",
+    "miestoUmiestnenia",
+    "dovodZiadosti"
+  ],
   "allOf": [
     {
       "properties": {
@@ -43,7 +50,18 @@
         "ziadatelUdaje": {
           "title": "Žiadateľ (údaje)",
           "type": "object",
-          "required": ["nazov", "sidlo", "mesto", "psc", "ico", "banka", "iban", "menoPriezvisko", "email", "telefon"],
+          "required": [
+            "nazov",
+            "sidlo",
+            "mesto",
+            "psc",
+            "ico",
+            "banka",
+            "iban",
+            "menoPriezvisko",
+            "email",
+            "telefon"
+          ],
           "properties": {
             "nazov": {
               "type": "string",
@@ -103,7 +121,11 @@
             "typStanovistaUpresnenie": {
               "title": "Upresnite o aký typ stanovišťa sa jedná",
               "type": "string",
-              "enum": ["Nové", "Rekonštrukcia existujúceho stanovišťa", "Nahradenie existujúceho stanovišťa"]
+              "enum": [
+                "Nové",
+                "Rekonštrukcia existujúceho stanovišťa",
+                "Nahradenie existujúceho stanovišťa"
+              ]
             }
           }
         }
