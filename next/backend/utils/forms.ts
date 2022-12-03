@@ -1,6 +1,7 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
+import { JSONSchema7Definition } from 'json-schema'
 // @ts-ignore
 import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
@@ -43,8 +44,9 @@ export const buildXmlRecursive = (
       )
     })
   } else if (node && typeof node === 'string') {
-    if (jsonSchema) {
-      const format = jsonSchema.type === 'array' ? jsonSchema.items?.format : jsonSchema.format
+    if (jsonSchema && jsonSchema !== true) {
+      const format =
+        jsonSchema.type === 'array' ? getFormatFromItems(jsonSchema.items) : jsonSchema.format
       if (format === 'ciselnik') {
         // TODO fill name
         node = `<Code>${node}</Code><Name>${node}</Name><WsEnumCode>${node}</WsEnumCode>`
@@ -73,41 +75,15 @@ export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: Jso
   return $.html()
 }
 
-// simplified JsonSchema, used from package json-schema-xsd-tools
-/**
- * JSON schema object
- *
- * Read more about [JSON schema](https://json-schema.org/).
- */
-export interface JsonSchema {
-  type: string
-  format?: string
-  title?: string
-  description?: string
-  properties?: JsonSchemaProperties
-  items?: JsonSchemaItems
-  required?: string[]
-  pattern?: string
-  enum?: string[]
-  then?: JsonSchema
-  oneOf?: JsonSchema[]
-  anyOf?: JsonSchema[]
-  allOf?: JsonSchema[]
-}
-
-interface JsonSchemaItems {
-  type: string
-  format?: string
-}
-
+export type JsonSchema = JSONSchema7Definition
 interface JsonSchemaProperties {
-  [key: string]: JsonSchema
+  [key: string]: JSONSchema7Definition
 }
 
 const getAllPossibleJsonSchemaProperties = (
-  jsonSchema: JsonSchema | undefined,
+  jsonSchema: JSONSchema7Definition | undefined,
 ): JsonSchemaProperties => {
-  if (!jsonSchema) {
+  if (!jsonSchema || jsonSchema === true) {
     return {}
   }
 
@@ -134,64 +110,77 @@ const getAllPossibleJsonSchemaProperties = (
   return properties
 }
 
-// TODO typing for schema
-// does not support oneOf / allOf / anyOf etc
-export const getJsonSchemaNodeAtPath = (jsonSchema: any, path: string[]) => {
+export const getJsonSchemaNodeAtPath = (
+  jsonSchema: JsonSchema,
+  path: string[],
+): JsonSchema | null => {
   let currentNode = jsonSchema
   for (const key of path) {
-    if (currentNode.properties) {
-      currentNode = currentNode.properties[key]
-      if (!currentNode) return null
-    } else if (currentNode.items) {
-      // TODO there are edge cases where this should error but produces correct output (i,e key '1stuff' will get converted to 1)
-      if (Number.isSafeInteger(Number.parseInt(key))) {
-        currentNode = currentNode.items
-      } else {
-        return null
-      }
-    } else return null
+    const properties = getAllPossibleJsonSchemaProperties(currentNode)
+    currentNode = properties[key]
+    if (!currentNode) return null
   }
   return currentNode
+}
+
+const getFormatFromItems = (
+  items: JSONSchema7Definition | JSONSchema7Definition[] | undefined,
+): string | undefined => {
+  return items && items !== true && !Array.isArray(items) ? items.format : undefined
 }
 
 export const removeNeedlessXmlTransformArraysRecursive = (
   obj: any,
   path: string[],
-  schema: any,
+  schema: JsonSchema,
 ) => {
-  if (typeof obj !== 'object') return obj
+  if (typeof obj !== 'object') {
+    return obj
+  }
+
   Object.keys(obj).forEach((k) => {
     const newPath = [...path, k]
-    const schemaType = getJsonSchemaNodeAtPath(schema, newPath)?.type
-    if (!schemaType) {
-      // TODO here we're forgiving and just do nothing if we do not match type in schema - but we may want to error in these cases
-      console.warn('Did not match schema! Details below')
-      console.log('Path:', path)
-      console.dir(schema, { depth: 10 })
-    }
-    // because you can repeat each node any number of times in xml, everything is nested in arrays
-    if (Array.isArray(obj[k]) && obj[k].length < 2 && schemaType !== 'array') {
-      // this is the only time we modify the output of xml->json transform structure
-      // any other potential errors we'll fail upon validation
-      obj[k] = obj[k][0]
 
-      if (schemaType) {
-        // parse non-string basic types
-        // TODO [].find kept throwing error ?
-        if (find(['integer', 'int32', 'int64'], (t) => t === schemaType)) {
-          obj[k] = Number.parseInt(obj[k])
+    // skip index of array
+    if (Number.isNaN(Number(k))) {
+      const childSchema = getJsonSchemaNodeAtPath(schema, newPath)
+      if (!childSchema || childSchema === true) {
+        console.warn('Did not match schema! Details below')
+        console.log('Path:', path)
+
+        if (Array.isArray(obj[k]) && obj[k].length < 2) {
+          obj[k] = obj[k][0]
         }
-        if (find(['float', 'double'], (t) => t === schemaType)) {
-          obj[k] = Number.parseFloat(obj[k])
+      } else if (childSchema.type === 'array') {
+        const format = getFormatFromItems(childSchema.items)
+        if (format === 'data-url') {
+          obj[k] = obj[k].map((x: any) => x.nazov[0])
+        } else if (format === 'ciselnik') {
+          obj[k] = obj[k].map((x: any) => x.code[0])
         }
-        if (find(['boolean'], (t) => t === schemaType)) {
-          // again very forgiving in what we can receive
-          obj[k] = obj[k] == null ? null : obj[k] === 'false' ? false : Boolean(obj[k])
+      } else if (childSchema.type === 'string') {
+        if (childSchema.format === 'data-url') {
+          obj[k] = obj[k][0].nazov[0]
+        } else if (childSchema.format === 'ciselnik') {
+          obj[k] = obj[k][0].code[0]
+        } else {
+          obj[k] = obj[k][0]
         }
+      } else if (find(['integer', 'int32', 'int64'], (t) => t === childSchema.type)) {
+        obj[k] = Number.parseInt(obj[k][0])
+      } else if (find(['float', 'double', 'number'], (t) => t === childSchema.type)) {
+        obj[k] = Number.parseFloat(obj[k][0])
+      } else if (childSchema.type === 'boolean') {
+        // again very forgiving in what we can receive
+        obj[k] = obj[k][0] == null ? null : obj[k][0] === 'false' ? false : Boolean(obj[k][0])
+      } else {
+        obj[k] = obj[k][0]
       }
     }
+
     removeNeedlessXmlTransformArraysRecursive(obj[k], newPath, schema)
   })
+
   return obj
 }
 
