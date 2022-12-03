@@ -34,7 +34,7 @@ export const SwitchToggle = ({ className, titleLeft, titleRight, value = false, 
             'justify-end': value,
             'border border-category-600 bg-white': variant === 'transparent',
             'bg-gray-700/75': variant === 'gray' || variant === 'primary' && !value,
-            'bg-category-100': variant === 'secondary' && value,
+            'bg-category-200': variant === 'secondary' && value,
             'bg-category-600': variant === 'primary' && value,
           })}
           onClick={() => {

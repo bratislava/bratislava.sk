@@ -278,7 +278,7 @@ const Section = ({
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}
-        waveColor="var(--category-color-100)"
+        waveColor="var(--category-color-200)"
         wavePosition={section.position ?? 'top'}
       />
     )
@@ -303,7 +303,7 @@ const Section = ({
   return (
     <SectionContainer
       className={cx('pt-10 md:pt-18', {
-        'pb-14 md:pb-18 bg-category-100': hasBackground === true,
+        'pb-14 md:pb-18 bg-category-200': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

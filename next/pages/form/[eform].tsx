@@ -84,9 +84,9 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
         {/* TODO replace with form header */}
         <PageHeader
           imageSrc=""
-          color="var(--category-color-100)"
-          transparentColor="var(--category-color-100--transparent)"
-          transparentColorMobile="var(--category-color-100--semi-transparent)"
+          color="var(--category-color-200)"
+          transparentColor="var(--category-color-200--transparent)"
+          transparentColorMobile="var(--category-color-200--semi-transparent)"
           className="header-main-bg bg-cover"
         >
           TODO form info

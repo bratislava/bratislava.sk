@@ -7,7 +7,9 @@ export interface OrganizationalStructureAccordionCardsProps {
   users: MSGraphFilteredGroupUser[]
 }
 
-export const OrganizationalStructureAccordionCards = ({ users }: OrganizationalStructureAccordionCardsProps) => {
+export const OrganizationalStructureAccordionCards = ({
+  users,
+}: OrganizationalStructureAccordionCardsProps) => {
   const cards = useMemo(
     () =>
       users.map((user) => (
@@ -18,9 +20,10 @@ export const OrganizationalStructureAccordionCards = ({ users }: OrganizationalS
           businessPhones={user.businessPhones}
           // mobilePhone omitted on request - add to api response as well if needed
           mail={user.mail}
+          otherMails={user.otherMails}
         />
       )),
-    [users]
+    [users],
   )
   return (
     <>
