@@ -5,6 +5,8 @@ import { JSONSchema7Definition } from 'json-schema'
 // @ts-ignore
 import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
+import { parseStringPromise } from 'xml2js'
+import { firstCharLowerCase } from 'xml2js/lib/processors'
 
 import { forceString } from '../../utils/utils'
 import forms, { EFormKey, EFormValue } from '../forms'
@@ -73,6 +75,17 @@ export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: Jso
   const $ = cheerio.load(xmlTemplate, { xmlMode: true, decodeEntities: false })
   buildXmlRecursive(['E-form', 'Body'], $, data, jsonSchema)
   return $.html()
+}
+
+export const xmlToJson = async (data: string, jsonSchema: JsonSchema): Json => {
+  // xml2js has issues when top level element isn't a single node
+  const wrappedXmlString = `<wrapper>${data}</wrapper>`
+  const obj = await parseStringPromise(wrappedXmlString, {
+    tagNameProcessors: [firstCharLowerCase],
+  })
+  const body = obj.wrapper['e-form'] ? obj.wrapper['e-form'][0].body[0] : obj.wrapper
+  removeNeedlessXmlTransformArraysRecursive(body, [], jsonSchema)
+  return body
 }
 
 export type JsonSchema = JSONSchema7Definition
@@ -149,7 +162,22 @@ export const removeNeedlessXmlTransformArraysRecursive = (
         console.log('Path:', path)
 
         if (Array.isArray(obj[k]) && obj[k].length < 2) {
-          obj[k] = obj[k][0]
+          if (obj[k][0] === 'true') {
+            obj[k] = true
+          } else if (obj[k][0] === 'false') {
+            obj[k] = false
+          } else {
+            const numValue = Number(obj[k][0])
+            if (
+              typeof obj[k][0] === 'string' &&
+              !obj[k][0].startsWith('+') &&
+              !Number.isNaN(numValue)
+            ) {
+              obj[k] = numValue
+            } else {
+              obj[k] = obj[k][0]
+            }
+          }
         }
       } else if (childSchema.type === 'array') {
         const format = getFormatFromItems(childSchema.items)
