@@ -32,9 +32,9 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
       className={cx('fixed top-16 left-0 w-screen overflow-y-scroll lg:hidden flex flex-col')}
       style={{ height: 'calc(100vh - 60px)' }}
     >
-      <div className={cx('flex-1 flex flex-col bg-secondary px-8 pb-11', className)}>
+      <div className={cx('flex-1 flex flex-col bg-category-200 px-8 pb-11', className)}>
         {/* Main Hamburger Menu */}
-        <div className="border-tertiary flex flex-col gap-y-8 border-b-2 py-8">
+        <div className="border-category-800 flex flex-col gap-y-8 border-b-2 py-8">
           {hamburgerMenuItems.map((item) => {
             return (
               <button
@@ -44,14 +44,14 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
                 type="button"
               >
                 <Icon iconName={item.icon} />
-                <p className="w-36 text-base font-medium">{item.title}</p>
+                <p className="w-36 text-p2-medium">{item.title}</p>
                 <ChevronRight />
               </button>
             )
           })}
         </div>
         <div className="hidden items-center justify-between py-8 lg:flex">
-          <Link className="text-base font-medium" variant="plain" href="#">
+          <Link className="text-p2-medium" variant="plain" href="#">
             {t('login')}
           </Link>
         </div>
@@ -68,7 +68,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
             >
               <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
                 {item?.icon}
-                <span className="text-base font-medium">{t(item.title)}</span>
+                <span className="text-p2-medium">{t(item.title)}</span>
               </button>
             </Link>
           ))}

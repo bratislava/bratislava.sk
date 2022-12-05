@@ -38,12 +38,12 @@ export const BasicSearch = ({
 
   return (
     <div className={cx('flex flex-col w-full', className)}>
-      <div className="text-h4 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</div>
+      <div className="text-h4-medium scroll-mt-24 pb-3 lg:scroll-mt-48">{title}</div>
       <div className="pb-6 flex">
         <input
           id="name"
           type="text"
-          className="text-base h-14 w-full lg:w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
+          className="text-p2 h-14 w-full lg:w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -52,7 +52,7 @@ export const BasicSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="lg:flex h-14 hidden rounded-l-none px-6 shadow-none font-medium hover:bg-primary hover:text-white"
+          className="lg:flex h-14 hidden rounded-l-none px-6 shadow-none font-medium hover:bg-category-600 hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         >
@@ -61,7 +61,7 @@ export const BasicSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="lg:hidden h-14 rounded-l-none pr-6 shadow-none font-medium hover:bg-primary hover:text-white"
+          className="lg:hidden h-14 rounded-l-none pr-6 shadow-none font-medium hover:bg-category-600 hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

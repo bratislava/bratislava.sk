@@ -40,8 +40,8 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
       >
         <div
           className={cx('org-structure-list-circle', {
-            'border-4 border-primary': level === 1,
-            'bg-secondary': level === 2,
+            'border-4 border-category-600': level === 1,
+            'bg-category-200': level === 2,
             hidden: level > 2,
           })}
         />

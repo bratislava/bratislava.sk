@@ -15,29 +15,35 @@ interface IProps {
 
 export const TooltipTarget = ({ variant }: IProps) => (
   <div
-    className={cx('text-sm w-6 h-6 rounded-3xl relative inline-block', {
-      'bg-secondary text-primary': variant === 'default',
-      'bg-primary text-white': variant === 'primary',
+    className={cx('text-p2 w-6 h-6 rounded-3xl relative inline-block', {
+      'bg-category-200 text-category-600': variant === 'default',
+      'bg-category-600 text-white': variant === 'primary',
     })}
   >
     ?
   </div>
 )
 
-export const Tooltip = ({ className, content, target, size = 'small', variant = 'default' }: TooltipProps) => (
+export const Tooltip = ({
+  className,
+  content,
+  target,
+  size = 'small',
+  variant = 'default',
+}: TooltipProps) => (
   <div className={cx(className, 'flex flex-col w-6')}>
     <div className="group relative flex cursor-help items-center justify-center text-center">
       {target || <TooltipTarget variant={variant} />}
       <div
         className={cx(
           className,
-          'absolute text-xs rounded-lg p-2 z-10 right-full mr-2 md:right-auto md:mb-2 md:mr-0 md:bottom-full pointer-events-none opacity-0 group-hover:opacity-100',
+          'absolute text-p3 rounded-lg p-2 z-10 right-full mr-2 md:right-auto md:mb-2 md:mr-0 md:bottom-full pointer-events-none opacity-0 group-hover:opacity-100',
           {
             'w-56': size === 'small',
             'w-80': size === 'large',
-            'text-secondary bg-secondary': variant === 'default',
-            'text-primary bg-primary': variant === 'primary',
-          }
+            'text-category-200 bg-category-200': variant === 'default',
+            'text-category-600 bg-category-600': variant === 'primary',
+          },
         )}
       >
         <p

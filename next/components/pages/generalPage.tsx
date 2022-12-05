@@ -18,7 +18,7 @@ import {
   SectionContainer,
   SubpageList,
 } from '@bratislava/ui-bratislava'
-import { pageStyle, parsePageLink } from '@utils/page'
+import { pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Head from 'next/head'
@@ -58,14 +58,14 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
-    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
+    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts',
   )
   return (
     <BasePageLayout
       footer={footer}
       menuItems={menuItems}
       activeMenuItem={page?.pageCategory?.data?.id}
-      pageColor={page?.pageColor}
+      pageColor={transformColorToCategory(page?.pageColor)}
     >
       {page?.pageCategory?.data?.attributes?.color && (
         <style
@@ -77,8 +77,8 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       {/* Header */}
       <PageHeader
         className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
-        color="var(--secondary-color)"
-        transparentColor="var(--secondary-color--transparent)"
+        color="var(--category-color-200)"
+        transparentColor="var(--category-color-200--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
       >
         {/* meta discription */}
@@ -92,7 +92,11 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="lg:min-h-56 relative">
             <div className="absolute top-4 lg:top-6">
-              <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
+              <PageBreadcrumbs
+                parentPage={page?.parentPage}
+                pageCategory={page?.pageCategory}
+                title={page.title}
+              />
             </div>
             <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
@@ -147,7 +151,9 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      {page?.sections && <Sections sections={page.sections} slug={page.slug} locale={page.locale} />}
+      {page?.sections && (
+        <Sections sections={page.sections} slug={page.slug} locale={page.locale} />
+      )}
 
       {/* Page - Related Content */}
       {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}

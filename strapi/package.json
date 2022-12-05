@@ -23,7 +23,6 @@
     "@strapi/plugin-i18n": "4.3.2",
     "@strapi/plugin-users-permissions": "4.3.2",
     "@strapi/strapi": "4.3.2",
-    "better-sqlite3": "7.4.6",
     "patch-package": "^6.4.7",
     "pg": "^8.7.3",
     "postinstall-postinstall": "^2.1.0",

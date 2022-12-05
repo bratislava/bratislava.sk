@@ -42,12 +42,12 @@ export const PrimatorCard = ({ className, title, imageSrc, href, smImageAlign = 
               'absolute lg:relative left-6 lg:left-0': smRight,
             })}
           >
-            <span className={cx(' text-h4 font-normal')}>{title}</span>
+            <span className={cx(' text-h4-normal')}>{title}</span>
             <UILink
-              className="group mt-1.5 flex h-6 cursor-pointer items-center space-x-5 text-primary underline lg:mt-3"
+              className="group mt-1.5 flex h-6 cursor-pointer items-center space-x-5 text-category-600 underline lg:mt-3"
               href={href}
             >
-              <span className="text-p2 font-semibold">{t('readMore')}</span>
+              <span className="text-p2-semibold">{t('readMore')}</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>

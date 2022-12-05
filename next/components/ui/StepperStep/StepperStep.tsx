@@ -16,8 +16,8 @@ export const StepperStep = ({ title, number, onClick, active, checked, className
     className={cx(
       'relative rounded-full text-h3 flex items-center justify-center',
       {
-        'bg-primary text-white': active,
-        'bg-secondary text-primary': !active,
+        'bg-category-600 text-white': active,
+        'bg-category-200 text-category-600': !active,
         'cursor-default': !onClick,
         'cursor-pointer': !!onClick,
       },
@@ -29,7 +29,7 @@ export const StepperStep = ({ title, number, onClick, active, checked, className
     {title && (
       <p
         className={cx(
-          'absolute top-full left-1/2 transform -translate-x-1/2 pt-3 text-center text-sm text-primary whitespace-pre',
+          'absolute top-full left-1/2 transform -translate-x-1/2 pt-3 text-center text-p2 text-category-600 whitespace-pre',
           { 'cursor-pointer': !!onClick }
         )}
       >

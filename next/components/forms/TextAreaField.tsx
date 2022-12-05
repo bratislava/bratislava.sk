@@ -7,45 +7,48 @@ import FieldHeader from './FieldHeader'
 
 interface TextAreaBase {
   label: string
-  placeholder: string
+  placeholder?: string
   errorMessage?: string
   description?: string
   className?: string
   defaultValue?: string
   value?: string
   required?: boolean
+  explicitOptional?: boolean
   disabled?: boolean
   tooltip?: string
-  onChange?: (e: string) => void
+  onChange?: (value?: string) => void
 }
 
-const TextAreaField = (
-  {
-    label,
-    placeholder,
-    errorMessage,
-    description,
-    tooltip,
-    required,
-    value = '',
-    disabled,
-    className,
-    ...rest
-  }: TextAreaBase,
-) => {
-  const [, setValueState] = useState<string>(value)
+const TextAreaField = ({
+  label,
+  placeholder,
+  errorMessage,
+  description,
+  tooltip,
+  required,
+  explicitOptional,
+  value,
+  disabled,
+  className,
+  ...rest
+}: TextAreaBase) => {
+  const [valueState, setValueState] = useState<string>('')
   const ref = React.useRef<HTMLTextAreaElement>(null)
+
+  const displayValue = rest.onChange ? value : valueState
+
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
       ...rest,
       placeholder,
-      value: value || ref.current?.value,
+      value: displayValue,
       label,
       errorMessage,
       description,
       inputElementType: 'textarea',
       onChange(inputValue) {
-        if(rest.onChange) {
+        if (rest.onChange) {
           rest.onChange(inputValue)
         } else {
           setValueState(inputValue)
@@ -57,21 +60,21 @@ const TextAreaField = (
     ref,
   )
   const style = cx(
-    'w-full px-4 py-2.5 w-80 h-[196px] border-2 border-form-input-default text-button-1 leading-8 rounded-lg caret-form-input-pressed focus:outline-none focus:border-form-input-pressed resize-none',
+    'overflow-auto px-4 py-2.5 bg-gray-0 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
     className,
     {
       // hover
-      'hover:border-form-input-hover': !disabled,
+      'hover:border-gray-400': !disabled,
 
       // error
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
 
       // disabled
-      'opacity-50 border-form-input-disabled': disabled,
+      'border-gray-300 bg-gray-100': disabled,
     },
   )
   return (
-    <div className='flex w-full max-w-xs flex-col'>
+    <div className="flex w-full flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}
@@ -79,10 +82,13 @@ const TextAreaField = (
         description={description}
         descriptionProps={descriptionProps}
         required={required}
+        explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} className={style} />
-      {!disabled && <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />}
+      <textarea {...inputProps} ref={ref} className={style} value={displayValue} />
+      {!disabled && (
+        <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+      )}
     </div>
   )
 }

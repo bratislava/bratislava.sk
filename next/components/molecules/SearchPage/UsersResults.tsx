@@ -33,7 +33,10 @@ const DataWrapper = ({ filters }: { filters: UsersFilters }) => {
 
   const { data, error } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({ data, error })
+  const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
+    data,
+    error,
+  })
 
   if (loadingAndNoDataToDisplay) {
     return <LoadingSpinner />
@@ -46,7 +49,7 @@ const DataWrapper = ({ filters }: { filters: UsersFilters }) => {
 
   return (
     <LoadingOverlay loading={delayedLoading}>
-      <h2 className="text-default lg:text-md pb-6 font-semibold">{t('organisationalStructure')}</h2>
+      <h2 className="text-h5 pb-6">{t('organisationalStructure')}</h2>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
       <Users data={dataToDisplay!} filters={filters} />
     </LoadingOverlay>

@@ -1,42 +1,36 @@
-// @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable promise/valid-params */
+import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
-import BratislavaPlaceholder from '../../../../public/bratislava-placeholder.jpg'
-import { ArticlesFilter } from '../../../atoms/ArticlesFilter'
+import { ArticlesFilter, Card } from '../../../atoms/ArticlesFilter'
 
 export interface ArticlesListProps {
   title: string
   itemsPerRow?: number
   itemsPerPage?: number
-  // category?: Object
   category?: string
   includesFiltering?: boolean
   locale?: string
+  articlesContentClassName?: string
 }
 
 export const ArticlesList = ({
   title,
-  itemsPerRow = 3,
   itemsPerPage = 6,
   category,
   includesFiltering = false,
   locale,
 }: ArticlesListProps) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [data, setData] = useState([])
-  const [totalArticles, setTotal] = useState(0)
-  const [numberOfPages, setNumberOfPages] = useState(0)
-  const [selectedTags, setSelectedTags] = useState([])
+  const [data, setData] = useState<BlogPostEntity[]>([])
+  const [totalArticles, setTotal] = useState<number>(0)
+  const [numberOfPages, setNumberOfPages] = useState<number>(0)
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [selectedCategory, setSelectedCategory] = useState(category ?? 'Mesto\nBratislava')
   const [categoryExists] = useState(!!category)
-  const [filteredTags, setFilteredTags] = useState([])
+  const [filteredTags, setFilteredTags] = useState<Card[]>([])
 
   const { t } = useTranslation()
 
@@ -72,7 +66,8 @@ export const ArticlesList = ({
         locale,
       })
       if (isMounted) return
-      setData(blogPosts?.data ?? [])
+      const blogData = (blogPosts?.data ?? []) as unknown as BlogPostEntity[]
+      setData(blogData)
     }
     getData()
       .then()
@@ -110,8 +105,8 @@ export const ArticlesList = ({
       })
 
       if (isMounted) return
-      setTotal(blogPosts.meta.pagination.total)
-      setNumberOfPages(blogPosts.meta.pagination.pageCount)
+      setTotal(blogPosts?.meta?.pagination?.total ?? 0)
+      setNumberOfPages(blogPosts?.meta?.pagination?.pageCount ?? 0)
     }
 
     getTotalCount()
@@ -138,11 +133,12 @@ export const ArticlesList = ({
           : {},
       })
       if (isMounted) return
-      const helperTags = tags?.data.map((item) => ({
-        title: item?.attributes?.title,
-        color: item?.attributes?.pageCategory?.data?.attributes?.color,
-        category: item?.attributes?.pageCategory?.data?.attributes.title,
-      }))
+      const helperTags =
+        tags?.data.map((item) => ({
+          title: item?.attributes?.title,
+          color: item?.attributes?.pageCategory?.data?.attributes?.color,
+          category: item?.attributes?.pageCategory?.data?.attributes?.title,
+        })) ?? []
       setFilteredTags(helperTags)
     }
     getTags()
@@ -155,28 +151,31 @@ export const ArticlesList = ({
   }, [selectedCategory])
 
   const handleFiltering = (tag: string) => {
-    selectedTags.includes(tag)
-      ? setSelectedTags(selectedTags.filter((selected) => selected !== tag))
-      : setSelectedTags([...selectedTags, tag])
     setCurrentPage(1)
+
+    if (selectedTags?.includes(tag)) {
+      setSelectedTags(selectedTags.filter((selected) => selected !== tag))
+      return
+    }
+    setSelectedTags([...selectedTags, tag])
   }
 
   return (
     <div>
       <div className="text-h2">{title}</div>
-      <div className={`lg:grid-cols- mt-6 grid grid-cols-1 sm:grid-cols-2 lg:mt-8${itemsPerRow} gap-8`}>
+      <div className="lg:grid-cols-3 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:mt-8 gap-8">
         {data.map((article, index) => (
           <NewsCard
             key={index}
-            coverImage={article.attributes.coverImage ?? { url: BratislavaPlaceholder }}
+            coverImage={article?.attributes?.coverImage}
             title={article.attributes?.title}
-            tag={article.attributes.tag}
+            tag={article?.attributes?.tag}
             date_added={article.attributes?.date_added}
             publishedAt={article.attributes?.publishedAt}
             updatedAt={article.attributes?.updatedAt}
             excerpt={article.attributes?.excerpt}
             readMoreText={t('readMore')}
-            slug={article.attributes.slug}
+            slug={article?.attributes?.slug}
           />
         ))}
       </div>

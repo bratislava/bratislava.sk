@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -17,7 +18,12 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   const ref = useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton({ isDisabled: disabled, ...rest }, ref)
   return (
-    <button className="focus:outline-none" type="button" {...buttonProps} ref={ref}>
+    <button
+      className={cx('focus:outline-none', { 'opacity-50': disabled })}
+      type="button"
+      {...buttonProps}
+      ref={ref}
+    >
       {children}
     </button>
   )
@@ -28,12 +34,16 @@ type TimePickerBase = {
   description?: string
   tooltip?: string
   required?: boolean
+  explicitOptional?: boolean
   disabled?: boolean
   errorMessage?: string
 }
 
 const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
-  ({ label, disabled, errorMessage, required, tooltip, description, ...rest }, ref) => {
+  (
+    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    ref,
+  ) => {
     const { locale } = usePageWrapperContext()
 
     const [hour, setHour] = useState<string>('')
@@ -50,7 +60,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     const { fieldProps, buttonProps, dialogProps } = useDatePicker(
       { errorMessage, isDisabled: disabled, label, ...rest },
       state,
-      ref as RefObject<HTMLDivElement>
+      ref as RefObject<HTMLDivElement>,
     )
 
     const addZeroOnSuccess = (): void => {
@@ -79,6 +89,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               label={label}
               description={description}
               required={required}
+              explicitOptional={explicitOptional}
               disabled={disabled}
               tooltip={tooltip}
               errorMessage={errorMessage}
@@ -93,7 +104,12 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
           </div>
           {state?.isOpen && (
             <OverlayProvider>
-              <Popover {...dialogProps} shouldCloseOnBlur={false} isOpen={state?.isOpen} onClose={closeFailedHandler}>
+              <Popover
+                {...dialogProps}
+                shouldCloseOnBlur={false}
+                isOpen={state?.isOpen}
+                onClose={closeFailedHandler}
+              >
                 <TimeSelector
                   setHour={setHour}
                   hour={hour}
@@ -108,7 +124,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
         </div>
       </I18nProvider>
     )
-  }
+  },
 )
 
 export default TimePicker
