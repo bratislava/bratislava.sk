@@ -1,0 +1,82 @@
+query VznStaticPaths($page: Int, $limit: Int) {
+  vzns(pagination: { page: $page, pageSize: $limit }) {
+    data {
+      id
+    }
+  }
+}
+
+query VznById($id: ID!, $locale: I18NLocaleCode!) {
+  vzn(id: $id) {
+    data {
+      ...VznEntity
+    }
+  }
+
+  footer(locale: $locale) {
+    ...Footer
+  }
+
+  mainMenu: pageCategories(locale: $locale) {
+    ...MainMenuItem
+  }
+}
+
+query VznDetail($id: ID!) {
+  vzn(id: $id) {
+    data {
+      ...VznEntity
+    }
+  }
+}
+
+fragment VznDocumentEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    size
+    ext
+    createdAt
+    name
+  }
+}
+
+fragment VznEntity on VznEntity {
+  id
+  attributes {
+    title
+    validFrom
+    details
+    category
+    mainDocument {
+      data {
+        ...VznDocumentEntity
+      }
+    }
+    consolidatedText {
+      data {
+        ...VznDocumentEntity
+      }
+    }
+    amedmentDocument {
+      id
+      title
+      validFrom
+      document {
+        data {
+          ...VznDocumentEntity
+        }
+      }
+    }
+    cancellationDocument {
+      id
+      title
+      validFrom
+      document {
+        data {
+          ...VznDocumentEntity
+        }
+      }
+    }
+  }
+}

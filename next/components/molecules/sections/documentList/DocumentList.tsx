@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { vznDefaultFilters, VznFilters } from '@backend/meili/fetchers/vznFetcher'
+import { BasicSearch } from '@bratislava/ui-bratislava'
 import { minKeywordLength } from '@utils/constants'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { useDebounce } from 'usehooks-ts'
 
-import { BasicSearch } from '../../../ui/BasicSearch/BasicSearch'
 import DocumentListResults from './DocumentListResults'
 
 const DocumentList = () => {
