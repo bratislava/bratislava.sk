@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regulations",
+  "info": {
+    "singularName": "regulation",
+    "pluralName": "regulations",
+    "displayName": "Regulation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "regex": "^(VZN ([1-9]|[1-9][0-9])\\/((199\\d|20\\d{2})))$",
+      "required": true,
+      "default": "VZN"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "code",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "daneAPoplatky",
+        "pomenovanieUlic",
+        "hospodarenie",
+        "uzemnePlanovanie",
+        "poriadokACistota",
+        "socialnaPomocASkolstvo",
+        "ostatne"
+      ],
+      "required": true
+    },
+    "effectiveFrom": {
+      "type": "date",
+      "required": true
+    },
+    "document": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["files"]
+    },
+    "consolidatedText": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
+    },
+    "fullTextRegulation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::regulation.regulation"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "amendingRegulations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regulation.regulation",
+      "mappedBy": "originalRegulation"
+    },
+    "originalRegulation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regulation.regulation",
+      "inversedBy": "amendingRegulations"
+    },
+    "cancelationRegulation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regulation.regulation",
+      "inversedBy": "canceledRegulations"
+    },
+    "canceledRegulations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regulation.regulation",
+      "mappedBy": "cancelationRegulation"
+    }
+  }
+}

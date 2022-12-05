@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_regulation_items",
+  "info": {
+    "displayName": "regulation item",
+    "icon": "file-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "effectiveFrom": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

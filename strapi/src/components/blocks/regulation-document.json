@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_regulation_documents",
+  "info": {
+    "displayName": "regulation document",
+    "icon": "file-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "regulation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::regulation.regulation"
+    },
+    "document": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.regulation-item"
+    }
+  }
+}
