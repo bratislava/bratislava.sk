@@ -12,6 +12,7 @@ import FieldHeader from './FieldHeader'
 
 interface InputBase {
   label: string
+  type?: string
   placeholder: string
   errorMessage?: string
   description?: string
@@ -30,6 +31,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
   (
     {
       label,
+      type,
       placeholder,
       errorMessage,
       description,
@@ -57,6 +59,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         ...rest,
         placeholder,
         value,
+        type,
         label,
         errorMessage,
         description,

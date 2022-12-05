@@ -24,6 +24,10 @@
             "phone": {
               "type": "string",
               "title": "Phone number"
+            },
+            "password": {
+              "type": "string",
+              "title": "Password"
             }
           }
         },

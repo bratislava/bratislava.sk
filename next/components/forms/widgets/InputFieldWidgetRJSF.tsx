@@ -4,6 +4,7 @@ import React from 'react'
 
 type InputFieldRJSFOptions = {
   tooltip?: string
+  type?: string
   description?: string
   className?: string
   resetIcon?: boolean
@@ -33,13 +34,14 @@ const InputFieldWidgetRJSF = ({
   disabled,
   onChange,
 }: InputFieldWidgetRJSFProps) => {
-  const { description, tooltip, className, resetIcon, leftIcon, explicitOptional } = options
+  const { description, tooltip, className, resetIcon, leftIcon, explicitOptional, type } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
     <InputField
       label={label}
+      type={type}
       placeholder={placeholder}
       value={value}
       errorMessage={errorMessage}

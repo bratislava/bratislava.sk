@@ -31,6 +31,16 @@
         "tooltip": "Phone hint",
         "leftIcon": "call"
       }
+    },
+    "password": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Password",
+      "ui:options": {
+        "tooltip": "Password hint",
+        "leftIcon": "lock",
+        "type": "password"
+      }
     }
   },
   "fileUploads": {

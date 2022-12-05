@@ -69,6 +69,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         />
         <InputField
           label="Label"
+          type="password"
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
