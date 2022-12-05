@@ -33,7 +33,10 @@ const DataWrapper = ({ filters }: { filters: UsersFilters }) => {
 
   const { data, error } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({ data, error })
+  const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
+    data,
+    error,
+  })
 
   if (loadingAndNoDataToDisplay) {
     return <LoadingSpinner />

@@ -22,7 +22,9 @@ export const OrganizationalStructure = ({ title, dividerStyle }: AdvancedAccordi
           {index > 0 && (
             <Divider
               className="py-6 lg:py-10"
-              dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
+              dividerStyle={
+                dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'
+              }
             />
           )}
           <OrganizationalStructureTopLevelAccordion group={group} />

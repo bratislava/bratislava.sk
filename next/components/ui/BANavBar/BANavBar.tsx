@@ -62,12 +62,12 @@ export const BANavBar = ({
           'fixed top-0 left-0 w-full bg-white z-50',
         )}
       >
-        <div className="m-auto hidden h-[57px] w-full max-w-screen-1.5lg items-center justify-between border-b border-gray-200 lg:flex">
+        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
           <Brand
             className="group"
             url="/"
             title={
-              <p className="text-font group-hover:text-gray-600 text-p2">
+              <p className="text-font text-p2 group-hover:text-gray-600">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -77,7 +77,7 @@ export const BANavBar = ({
 
           <nav className="text-font/75 flex gap-x-8 font-semibold">
             <div className="text-font/75 flex items-center gap-x-8 font-semibold">
-              <Link href={t('searchLink')} variant="plain" className="p-4">
+              <Link href={t('searchLink')} variant="plain" className="-mr-4 p-4">
                 <SearchIcon />
               </Link>
 
@@ -119,7 +119,7 @@ export const BANavBar = ({
         <Brand url="/" />
         <div className={cx('flex items-center gap-x-5')}>
           <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
-            <Link href={t('searchLink')} variant="plain" className="p-4 -mr-4">
+            <Link href={t('searchLink')} variant="plain" className="p-4">
               <SearchIcon />
             </Link>
             <LanguageSelect
@@ -343,7 +343,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3-semibold mt-3 h-6 w-6 text-font"
+                className="text-p3 hover:text-p3-semibold text-font mt-3 h-6 w-6"
                 key={option.key}
                 onClick={handleChange}
               >
