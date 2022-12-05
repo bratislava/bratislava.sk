@@ -79,6 +79,16 @@
       }
     }
   },
+  "chooseOneOf": {
+    "chooseOne": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    }
+  },
   "checkBoxes": {
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
