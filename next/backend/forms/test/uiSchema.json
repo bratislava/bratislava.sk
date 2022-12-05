@@ -41,6 +41,16 @@
         "leftIcon": "lock",
         "type": "password"
       }
+    },
+    "psc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSC",
+      "ui:options": {
+        "tooltip": "PSC hint, only numbers",
+        "description": "Only numbers",
+        "type": "zip"
+      }
     }
   },
   "fileUploads": {
