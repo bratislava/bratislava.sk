@@ -46,7 +46,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div className="my-2 mx-4 max-w-[320px]">
+    <div className="my-2 max-w-[320px]">
       <TextAreaField
         value={value}
         label={label}
