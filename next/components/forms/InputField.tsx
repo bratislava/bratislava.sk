@@ -56,7 +56,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
 
     // Max numbers in input
     useEffect(() => {
-      if (type === 'zip') onChange(value.slice(0, 5))
+      if (type === 'zip' && onChange) onChange(value.slice(0, 5))
       if (type === 'zip') setValueState((prev) => prev.slice(0, 5))
     }, [onChange, type, value])
 
