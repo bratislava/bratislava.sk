@@ -8,7 +8,7 @@ import {
   InputUploadGroup,
   TextareaUploadGroup,
   TimeFromTo,
-} from '../../forms/Groups'
+} from '../../forms/groups'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -33,16 +33,28 @@ const FieldGroupsShowCase = () => {
         <TimeFromTo label="Čas (od – do)" />
       </Stack>
       <Stack direction="column">
-        <DoubledInputField label={['Mesto', 'PSČ']} classNames={['w-full', 'w-[100px]']} />
+        <DoubledInputField label={['Mesto', 'PSČ']} classNames={['w-max', 'w-[100px]']} />
       </Stack>
       <Stack direction="column">
         <DateTimePicker label="Date + time picker" />
       </Stack>
       <Stack direction="column">
-        <InputUploadGroup InputLabel="Label" UploadLabel="Nahrajte súbor" />
+        <InputUploadGroup
+          InputLabel="Label"
+          UploadLabel="Nahrajte súbor"
+          middleText="alebo"
+          sizeLimit={5}
+          supportedFormats={['.jpg', '.png', '.pdf']}
+        />
       </Stack>
       <Stack direction="column">
-        <TextareaUploadGroup TextareaLabel="Mesto" UploadLabel="Nahrajte súbor" />
+        <TextareaUploadGroup
+          TextareaLabel="Mesto"
+          UploadLabel="Nahrajte súbor"
+          middleText="alebo"
+          sizeLimit={5}
+          supportedFormats={['.jpg', '.png', '.pdf']}
+        />
       </Stack>
     </Wrapper>
   )

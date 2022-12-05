@@ -1,26 +1,26 @@
 import cx from 'classnames'
 
-import DatePicker from '../DateTimePicker/DatePicker'
+import TimePicker from '../DateTimePicker/TimePicker'
 
-type DatePickerBase = {
+type TimePickerBase = {
   label: string
   errorMessage?: string
 }
 
-export const DateFromTo = ({ label, errorMessage }: DatePickerBase) => {
+export const TimeFromTo = ({ label, errorMessage }: TimePickerBase) => {
   return (
     <div className={cx('flex-col flex items-start p-0 gap-4')}>
-      <div className="flex flex-row items-center p-0 gap-6">
+      <div className="items-left flex flex-row p-0 gap-6">
         <div className="flex flex-col items-start p-0 gap-1">
-          <DatePicker label={label} errorMessage={errorMessage} />
+          <TimePicker label={label} errorMessage={errorMessage} />
         </div>
         <div
-          className={cx('w-8 h-0.5 bg-gray-300 mt-10', {
+          className={cx('w-8 h-0.5 bg-gray-300 mt-auto mb-7', {
             'mt-1': !label,
           })}
         />
         <div className="flex flex-row items-end p-0 gap-1 mt-auto">
-          <DatePicker />
+          <TimePicker />
         </div>
       </div>
     </div>

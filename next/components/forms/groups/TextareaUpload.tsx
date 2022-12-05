@@ -8,20 +8,31 @@ import Upload from '../Upload/Upload'
 type TextareaUploadBase = {
   UploadLabel: string
   TextareaLabel: string
+  middleText: string
+  sizeLimit: number
+  supportedFormats: Array<string>
+  className?: string
 }
 
-export const TextareaUploadGroup = ({ UploadLabel, TextareaLabel }: TextareaUploadBase) => {
+export const TextareaUploadGroup = ({
+  UploadLabel,
+  TextareaLabel,
+  middleText,
+  sizeLimit,
+  supportedFormats,
+  className,
+}: TextareaUploadBase) => {
   const [files6, setFiles6] = useState<UploadMinioFile[]>([])
   return (
-    <div className={cx('gap-6 w-full flex flex-col items-start p-6')}>
+    <div className={cx('gap-6 w-full flex flex-col items-start p-6', className)}>
       <TextAreaField label={TextareaLabel} placeholder="" className="h-[150px]" />
-      <div>alebo</div>
+      <div>{middleText}</div>
       <div>
         <div className="text-p-md font-semibold leading-8 not-italic">{UploadLabel}</div>
         <Upload
           type="button"
-          sizeLimit={5}
-          supportedFormats={['.jpg', '.png', '.pdf']}
+          sizeLimit={sizeLimit}
+          supportedFormats={supportedFormats}
           value={files6}
           onChange={(newValue) => setFiles6(newValue)}
         />
