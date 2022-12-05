@@ -14,7 +14,7 @@ export const WelcomeCard = ({ className, image, imageClassName, title, path }: W
     <a href={path}>
       <div
         className={cx(
-          'flex flex-col gap-8 items-center justify-center border-3 rounded-lg bg-white border-category-600 hover:bg-category-100 cursor-pointer',
+          'flex flex-col gap-8 items-center justify-center border-3 rounded-lg bg-white border-category-600 hover:bg-category-200 cursor-pointer',
           className
         )}
       >

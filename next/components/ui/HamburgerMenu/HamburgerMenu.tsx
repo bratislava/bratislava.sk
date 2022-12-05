@@ -32,7 +32,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
       className={cx('fixed top-16 left-0 w-screen overflow-y-scroll lg:hidden flex flex-col')}
       style={{ height: 'calc(100vh - 60px)' }}
     >
-      <div className={cx('flex-1 flex flex-col bg-category-100 px-8 pb-11', className)}>
+      <div className={cx('flex-1 flex flex-col bg-category-200 px-8 pb-11', className)}>
         {/* Main Hamburger Menu */}
         <div className="border-category-800 flex flex-col gap-y-8 border-b-2 py-8">
           {hamburgerMenuItems.map((item) => {
