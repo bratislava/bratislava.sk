@@ -77,7 +77,7 @@ export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: Jso
   return $.html()
 }
 
-export const xmlToJson = async (data: string, jsonSchema: JsonSchema): Json => {
+export const xmlToJson = async (data: string, jsonSchema: JsonSchema): Promise<Json> => {
   // xml2js has issues when top level element isn't a single node
   const wrappedXmlString = `<wrapper>${data}</wrapper>`
   const obj = await parseStringPromise(wrappedXmlString, {
