@@ -6,7 +6,7 @@ import { JSONSchema7Definition } from 'json-schema'
 import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
 
-import { forceString } from '../../utils/utils'
+import { forceString, getAllPossibleJsonSchemaProperties, JsonSchema } from '../../utils/utils'
 import forms, { EFormKey, EFormValue } from '../forms'
 import { firstCharToUpper } from './strings'
 
@@ -73,41 +73,6 @@ export const loadAndBuildXml = (xmlTemplate: string, data: Json, jsonSchema: Jso
   const $ = cheerio.load(xmlTemplate, { xmlMode: true, decodeEntities: false })
   buildXmlRecursive(['E-form', 'Body'], $, data, jsonSchema)
   return $.html()
-}
-
-export type JsonSchema = JSONSchema7Definition
-interface JsonSchemaProperties {
-  [key: string]: JSONSchema7Definition
-}
-
-const getAllPossibleJsonSchemaProperties = (
-  jsonSchema: JSONSchema7Definition | undefined,
-): JsonSchemaProperties => {
-  if (!jsonSchema || jsonSchema === true) {
-    return {}
-  }
-
-  let properties: JsonSchemaProperties = jsonSchema.properties ?? {}
-  if (jsonSchema.then) {
-    properties = { ...properties, ...getAllPossibleJsonSchemaProperties(jsonSchema.then) }
-  }
-  if (jsonSchema.allOf) {
-    jsonSchema.allOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
-    })
-  }
-  if (jsonSchema.oneOf) {
-    jsonSchema.oneOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
-    })
-  }
-  if (jsonSchema.anyOf) {
-    jsonSchema.anyOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
-    })
-  }
-
-  return properties
 }
 
 export const getJsonSchemaNodeAtPath = (
@@ -184,8 +149,14 @@ export const removeNeedlessXmlTransformArraysRecursive = (
   return obj
 }
 
-// TODO create ajv instance once for BE, add async validations
-export const validateDataWithJsonSchema = (data: any, schema: any) => {
+const checkIsPhone = () => {
+  // TODD: verify user in db
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(false), 500)
+  })
+}
+
+export const validateDataWithJsonSchema = async (data: any, schema: any) => {
   const ajv = new Ajv()
   addFormats(ajv)
   ajv.addFormat('data-url', () => true)
@@ -193,10 +164,23 @@ export const validateDataWithJsonSchema = (data: any, schema: any) => {
 
   ajv.addKeyword('example')
   ajv.addKeyword('enumNames')
+  ajv.addKeyword({
+    keyword: 'isPhone',
+    async: true,
+    type: 'string',
+    validate: checkIsPhone,
+  })
 
   const validate = ajv.compile(schema)
-  validate(data)
-  return validate.errors || []
+
+  try {
+    await validate(data)
+    return validate.errors || []
+  } catch (error) {
+    if (!(error instanceof Ajv.ValidationError)) throw error
+
+    return error.errors
+  }
 }
 
 export const validateDataWithXsd = (data: any, xsd: any) => {

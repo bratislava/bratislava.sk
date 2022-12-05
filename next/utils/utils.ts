@@ -1,3 +1,4 @@
+import { JSONSchema7Definition } from 'json-schema'
 import getConfig from 'next/config'
 
 const { serverRuntimeConfig } = getConfig()
@@ -52,3 +53,38 @@ const isServer = () => typeof window === 'undefined'
 export const isBrowser = () => !isServer()
 
 export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
+
+export type JsonSchema = JSONSchema7Definition
+interface JsonSchemaProperties {
+  [key: string]: JSONSchema7Definition
+}
+
+export const getAllPossibleJsonSchemaProperties = (
+  jsonSchema: JsonSchema | undefined,
+): JsonSchemaProperties => {
+  if (!jsonSchema || jsonSchema === true) {
+    return {}
+  }
+
+  let properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+  if (jsonSchema.then) {
+    properties = { ...properties, ...getAllPossibleJsonSchemaProperties(jsonSchema.then) }
+  }
+  if (jsonSchema.allOf) {
+    jsonSchema.allOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+  if (jsonSchema.oneOf) {
+    jsonSchema.oneOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+  if (jsonSchema.anyOf) {
+    jsonSchema.anyOf.forEach((s) => {
+      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+    })
+  }
+
+  return properties
+}

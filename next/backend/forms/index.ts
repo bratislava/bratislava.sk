@@ -3,8 +3,8 @@
 // TODO figure out whether to store the schema files in this repo or in a different lib
 
 import { UiSchema } from '@rjsf/utils'
+import { JsonSchema } from '@utils/utils'
 
-import { JsonSchema } from '../utils/forms'
 import dopravneZnacenie from './dopravneZnacenie'
 import kontajneroveStojiska from './kontajneroveStojiska'
 import test from './testForm'

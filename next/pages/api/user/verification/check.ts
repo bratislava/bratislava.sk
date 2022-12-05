@@ -13,6 +13,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const isValid = totp.check(token, `${process.env.OTP_SECRET}.${phone}`)
+  // TODO: if isValid, add verified user to db
+
   return res.status(200).json({ isValid })
 }
 
