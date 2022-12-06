@@ -5,9 +5,37 @@
   "allOf": [
     {
       "properties": {
+        "inputFields": {
+          "title": "Showcase of InputField",
+          "required": [
+            "firstName",
+            "lastName"
+          ],
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "title": "First Name",
+              "default": "Anton"
+            },
+            "lastName": {
+              "type": "string",
+              "title": "Last Name"
+            },
+            "phone": {
+              "type": "string",
+              "title": "Phone number"
+            },
+            "password": {
+              "type": "string",
+              "title": "Password"
+            }
+          }
+        },
         "textAreas": {
           "title": "Textove polia",
-          "required": ["pros"],
+          "required": [
+            "pros"
+          ],
           "properties": {
             "pros": {
               "title": "Pros",
@@ -26,16 +54,17 @@
       "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
-          "required": ["school"],
+          "required": [
+            "school"
+          ],
           "properties": {
             "school": {
               "type": "string",
               "title": "University",
-              "enum": ["STU FEI", "STU FCHPT", "STU FIIT"],
-              "enumNames": [
-                "fakulta elektrotechniky a informatiky",
-                null,
-                "fakulta informatiky a informacnych technologii"
+              "oneOf": [
+                {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
+                {"const": "STU FCHPT"},
+                {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
               ]
             },
             "diplomas": {
@@ -44,14 +73,29 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."]
+                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
+                "enumNames": [
+                  "Inzinier",
+                  "Magister",
+                  "Bakalar",
+                  null,
+                  "Docent",
+                  "Profesor"
+                ]
               }
             },
             "years": {
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [1, 2, 3, 4, 5, 6]
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
             }
           }
         }
@@ -87,43 +131,12 @@
     },
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
-          "required": ["address"],
-          "type": "object",
-          "properties": {
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    {
-      "properties": {
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
           "properties": {
             "chooseOne": {
               "type": "string",
+              "default": "multiply",
               "title": "Some random choose",
               "oneOf": [
                 {
@@ -142,6 +155,54 @@
                   "title": "Overlay"
                 }
               ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "checkBoxes": {
+          "title": "Checkboxes",
+          "properties": {
+            "favouriteFruits": {
+              "type": "array",
+              "title": "Fruits",
+              "default": ["kiwi","apple"],
+              "uniqueItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "label": "Orange",
+                    "const": "orange",
+                    "disabled": true
+                  },
+                  {
+                    "label": "Banana",
+                    "const": "banana",
+                    "error": true,
+                    "tooltip": "This is some tooltip"
+                  },
+                  {
+                    "label": "Grape",
+                    "const": "grape",
+                    "isDisabled": true
+                  },
+                  {
+                    "label": "Kiwi",
+                    "const": "kiwi",
+                    "isIndeterminate": true
+                  },
+                  {
+                    "label": "Apple",
+                    "const": "apple"
+                  },
+                  {
+                    "label": "Plum",
+                    "const": "plum"
+                  }
+                ]
+              }
             }
           }
         }

@@ -1,9 +1,6 @@
-// @ts-strict-ignore
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import { AdvancedSearch, FooterProps, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
@@ -18,13 +15,8 @@ import PageWrapper from '../components/layouts/PageWrapper'
 import BlogPostsResults from '../components/molecules/SearchPage/BlogPostsResults'
 import PagesResults from '../components/molecules/SearchPage/PagesResults'
 import UsersResults from '../components/molecules/SearchPage/UsersResults'
-import { minKeywordLength } from '../utils/constants'
 
-export interface SearchPageProps {
-  page?: GeneralPageFragment
-  footer: FooterProps
-}
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getServerSideProps = async (ctx: any) => {
   const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
@@ -52,7 +44,7 @@ export const getServerSideProps = async (ctx: any) => {
 
 const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('common')
-  const menuItems = parseMainMenu(mainMenu)
+  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const [input, setInput] = useState<string>('')
   const [routerSearchQuery] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -62,9 +54,10 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
   const [searchQuery, setSearchQuery] = useState<string>(debouncedSearchInputValue)
 
   useEffect(() => {
-    if (debouncedSearchInputValue.length > minKeywordLength) {
+    if (debouncedSearchInputValue !== searchQuery) {
       setSearchQuery(debouncedSearchInputValue)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchInputValue])
 
   const defaultOptions = [
@@ -102,20 +95,6 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
             __html: pageStyle('main'),
           }}
         />
-        {/* Header */}
-        <PageHeader
-          color="var(--category-color-200)"
-          transparentColor="var(--category-color-200--transparent)"
-          imageSrc=""
-          // eslint-disable-next-line tailwindcss/no-custom-classname
-          className="header-main-bg bg-cover"
-        >
-          <SectionContainer>
-            <div className="relative min-h-[220px]">
-              <h1 className="text-h1 pt-30 whitespace-pre-wrap">{t('searchTheSite')}</h1>
-            </div>
-          </SectionContainer>
-        </PageHeader>
         <SectionContainer>
           <div className="md:pt-18 flex w-full flex-col gap-y-14 pt-14 lg:gap-y-20">
             <AdvancedSearch

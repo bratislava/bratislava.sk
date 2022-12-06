@@ -2,6 +2,47 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "inputFields": {
+    "firstName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "First Name",
+      "ui:options": {
+        "tooltip": "First name hint",
+        "resetIcon": true,
+        "leftIcon": "person"
+      }
+    },
+    "lastName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Last Name",
+      "ui:options": {
+        "tooltip": "Last name hint",
+        "resetIcon": true,
+        "leftIcon": "person"
+      }
+    },
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "tooltip": "Phone hint",
+        "leftIcon": "call"
+      }
+    },
+    "password": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Password",
+      "ui:options": {
+        "tooltip": "Password hint",
+        "leftIcon": "lock",
+        "type": "password"
+      }
+    }
+  },
   "fileUploads": {
     "importButtonOneFile": {
       "ui:widget": "Upload",
@@ -86,8 +127,17 @@
       "ui:options": {
         "className": "flex flex-col gap-4",
         "variant": "boxed"
-      },
-      "ui:value": "overlay"
+      }
+    }
+  },
+  "checkBoxes": {
+    "favouriteFruits": {
+      "ui:widget": "Checkboxes",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4 w-fit",
+        "variant": "boxed"
+      }
     }
   }
 }
