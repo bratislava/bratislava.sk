@@ -32,9 +32,7 @@ export const DocumentListItem = ({
         </div>
         <div className="flex flex-[4] flex-col justify-start px-4 py-3 lg:px-8 lg:py-10 lg:pl-0">
           <div className="text-p3 lg:text-p2">{categoryName}</div>
-          <div className="text-truncate-2 text-p2-semibold lg:text-p1-semibold line-clamp-2">
-            {title}
-          </div>
+          <div className="text-p2-semibold lg:text-p1-semibold line-clamp-2">{title}</div>
           {moreDocuments.length > 0 ? (
             <div className="text-p1 lg:text-p2 pt-4">
               {t('documents')}:{' '}

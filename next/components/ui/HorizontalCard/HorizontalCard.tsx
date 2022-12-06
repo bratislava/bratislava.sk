@@ -7,7 +7,13 @@ export interface HorizontalCardProps extends React.HTMLAttributes<HTMLDivElement
   imageSrc?: string
 }
 
-export const HorizontalCard = ({ accessory, className, children, imageSrc, ...rest }: HorizontalCardProps) => (
+export const HorizontalCard = ({
+  accessory,
+  className,
+  children,
+  imageSrc,
+  ...rest
+}: HorizontalCardProps) => (
   <div className={cx(className, 'relative')} {...rest}>
     <Panel className="flex h-full w-full flex-col lg:flex-row" hoverable>
       {imageSrc && (
@@ -27,12 +33,14 @@ export const HorizontalCard = ({ accessory, className, children, imageSrc, ...re
           />
         </>
       )}
-      <div className="flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left text-p1">
+      <div className="text-p1 flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left">
         {children}
       </div>
     </Panel>
     {accessory && (
-      <div className={cx('absolute bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2')}>{accessory}</div>
+      <div className={cx('absolute bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2')}>
+        {accessory}
+      </div>
     )}
   </div>
 )
