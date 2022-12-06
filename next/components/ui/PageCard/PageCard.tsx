@@ -83,8 +83,6 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
     })?.backgroundColor ?? 'rgb(var(--color-red--light))'
   const { default: PageIcon, small: SmallPageIcon } = findIconByColor(pageColor)
 
-  console.log('pageColor', pageColor, backgroundColor)
-
   return (
     <UILink href={slug ? `/${slug}` : ''}>
       <Panel className="hidden w-full lg:flex" hoverable>
