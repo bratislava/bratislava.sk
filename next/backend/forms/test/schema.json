@@ -31,7 +31,8 @@
             },
             "psc": {
               "type": "string",
-              "title": "PSC"
+              "title": "PSC",
+              "format": "zip"
             }
           }
         },

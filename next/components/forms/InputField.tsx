@@ -12,7 +12,7 @@ import FieldHeader from './FieldHeader'
 
 interface InputBase {
   label: string
-  type?: 'text' | 'password' | 'zip'
+  type?: 'text' | 'password'
   placeholder: string
   errorMessage?: string
   description?: string
@@ -54,18 +54,12 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       setValueState(onChange ? value : valueState)
     }, [valueState, value, onChange])
 
-    // Max numbers in input
-    useEffect(() => {
-      if (type === 'zip' && onChange) onChange(value.slice(0, 5))
-      if (type === 'zip') setValueState((prev) => prev.slice(0, 5))
-    }, [onChange, type, value])
-
     const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
       {
         ...rest,
         placeholder,
         value,
-        type: type !== 'password' ? (type === 'zip' ? 'number' : 'text') : type,
+        type: type !== 'password' ? 'text' : type,
         label,
         errorMessage,
         description,

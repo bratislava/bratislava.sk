@@ -48,8 +48,7 @@
       "ui:placeholder": "PSC",
       "ui:options": {
         "tooltip": "PSC hint, only numbers",
-        "description": "Only numbers",
-        "type": "zip"
+        "description": "Only numbers"
       }
     }
   },

@@ -4,7 +4,7 @@ import React from 'react'
 
 type InputFieldRJSFOptions = {
   tooltip?: string
-  type?: 'text' | 'password' | 'zip'
+  type?: 'text' | 'password'
   description?: string
   className?: string
   resetIcon?: boolean
