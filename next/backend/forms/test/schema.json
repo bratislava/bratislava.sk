@@ -61,15 +61,10 @@
             "school": {
               "type": "string",
               "title": "University",
-              "enum": [
-                "STU FEI",
-                "STU FCHPT",
-                "STU FIIT"
-              ],
-              "enumNames": [
-                "fakulta elektrotechniky a informatiky",
-                null,
-                "fakulta informatiky a informacnych technologii"
+              "oneOf": [
+                {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
+                {"const": "STU FCHPT"},
+                {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
               ]
             },
             "diplomas": {
@@ -78,13 +73,14 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": [
-                  "ing.",
-                  "mgr.",
-                  "bc.",
-                  "phd.",
-                  "doc.",
-                  "prof."
+                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
+                "enumNames": [
+                  "Inzinier",
+                  "Magister",
+                  "Bakalar",
+                  null,
+                  "Docent",
+                  "Profesor"
                 ]
               }
             },
@@ -135,40 +131,6 @@
     },
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
-          "required": [
-            "address"
-          ],
-          "type": "object",
-          "properties": {
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    {
-      "properties": {
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
           "properties": {
@@ -194,17 +156,6 @@
               ]
             }
           }
-        }
-      }
-    },
-    {
-      "required": [],
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
         }
       }
     }
