@@ -5,6 +5,17 @@
   "allOf": [
     {
       "properties": {
+        "datePicker": {
+          "title": "Showcase of DatePicker",
+          "required": [],
+          "properties": {
+            "birth": {
+              "type": "string",
+              "format": "date",
+              "title": "Birth date"
+            }
+          }
+        },
         "inputFields": {
           "title": "Showcase of InputField",
           "required": [
@@ -62,9 +73,17 @@
               "type": "string",
               "title": "University",
               "oneOf": [
-                {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
-                {"const": "STU FCHPT"},
-                {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
+                {
+                  "const": "STU FEI",
+                  "title": "fakulta elektrotechniky a informatiky"
+                },
+                {
+                  "const": "STU FCHPT"
+                },
+                {
+                  "const": "STU FIIT",
+                  "title": "fakulta informatiky a informacnych technologii"
+                }
               ]
             },
             "diplomas": {
@@ -73,7 +92,14 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
+                "enum": [
+                  "ing.",
+                  "mgr.",
+                  "bc.",
+                  "phd.",
+                  "doc.",
+                  "prof."
+                ],
                 "enumNames": [
                   "Inzinier",
                   "Magister",

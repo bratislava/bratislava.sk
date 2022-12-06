@@ -2,6 +2,15 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "datePicker": {
+    "birth": {
+      "ui:widget": "DatePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Date picker hint"
+      }
+    }
+  },
   "inputFields": {
     "firstName": {
       "ui:widget": "InputField",

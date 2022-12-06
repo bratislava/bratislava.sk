@@ -1,6 +1,7 @@
+import { DateValue, parseDate } from '@internationalized/date'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/FieldErrorMessage'
-import { forwardRef, ReactNode, RefObject, useRef } from 'react'
+import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
 
@@ -38,17 +39,42 @@ type DatePickerBase = {
   explicitOptional?: boolean
   disabled?: boolean
   errorMessage?: string
+  value?: string
+  onChange?: (value?: DateValue) => void
 }
 
 const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
   (
-    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    {
+      label,
+      disabled,
+      errorMessage,
+      required,
+      explicitOptional,
+      tooltip,
+      description,
+      value,
+      onChange,
+      ...rest
+    },
     ref,
   ) => {
     const { locale } = usePageWrapperContext()
+    const [valueState, setValueState] = useState<DateValue>(null)
+
     const state = useDatePickerState({
       label,
       errorMessage,
+      // value: value && parseDate(value),
+      value: onChange && value ? parseDate(value) : valueState,
+      onChange(inputValue) {
+        console.log(inputValue)
+        if (onChange) {
+          onChange(inputValue)
+        } else {
+          setValueState(inputValue)
+        }
+      },
       isRequired: required,
       isDisabled: disabled,
       ...rest,
@@ -56,11 +82,15 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     })
     const { fieldProps, buttonProps, calendarProps, dialogProps, errorMessageProps } =
       useDatePicker(
-        { errorMessage, isDisabled: disabled, label, ...rest },
+        {
+          errorMessage,
+          isDisabled: disabled,
+          label,
+          ...rest,
+        },
         state,
         ref as RefObject<HTMLDivElement>,
       )
-
     const closeHandler = () => {
       state?.close()
       // https://github.com/adobe/react-spectrum/discussions/3318
