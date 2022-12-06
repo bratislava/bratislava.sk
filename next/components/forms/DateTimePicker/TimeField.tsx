@@ -4,7 +4,6 @@ import { ReactNode, useEffect, useRef, useState } from 'react'
 import { useLocale, useTimeField } from 'react-aria'
 import { useTimeFieldState } from 'react-stately'
 
-import FieldErrorMessage from '../FieldErrorMessage'
 import FieldHeader from '../FieldHeader'
 
 type TimeFieldBase = {
@@ -37,9 +36,9 @@ const TimeField = ({
 }: TimeFieldBase) => {
   const { locale } = useLocale()
   const [inputValue, setInputValue] = useState<string>('')
-  const [errorMessageState, setErrorMessageState] = useState<string>(errorMessage || '')
+  // const [errorMessageState, setErrorMessageState] = useState<string>(errorMessage || '')
   const ref = useRef<HTMLDivElement>(null)
-  const INVALID_ERROR_MESSAGE = 'Invalid date format'
+  // const INVALID_ERROR_MESSAGE = 'Invalid date format'
 
   const state = useTimeFieldState({
     label,
@@ -51,7 +50,7 @@ const TimeField = ({
     locale,
   })
 
-  const { labelProps, fieldProps, descriptionProps, errorMessageProps } = useTimeField(
+  const { labelProps, fieldProps, descriptionProps } = useTimeField(
     {
       label,
       description,
@@ -64,12 +63,12 @@ const TimeField = ({
     ref,
   )
   const timeFieldStyle = cx(
-    'w-80 flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 text-20 leading-8 border-gray-200 focus:border-gray-700',
+    'w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 text-20 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
     {
-      'hover:border-gray-400': !disabled,
-      'border-error focus:border-error focus-visible:outline-none hover:border-error':
-        errorMessageState,
+      'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessage,
       'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
+      'border-gray-700': isOpen && !disabled && !errorMessage,
     },
   )
 
@@ -83,11 +82,11 @@ const TimeField = ({
   }, [hour, minute])
 
   // Validation
-  useEffect(() => {
-    const isValideFormate = (): boolean =>
-      !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
-    if (!isOpen) setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
-  }, [errorMessage, inputValue, isOpen])
+  // useEffect(() => {
+  //   const isValideFormate = (): boolean =>
+  //     !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
+  //   if (!isOpen) setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
+  // }, [errorMessage, inputValue, isOpen])
 
   return (
     <>
@@ -113,9 +112,6 @@ const TimeField = ({
           {children}
         </div>
       </div>
-      {!disabled && (
-        <FieldErrorMessage errorMessage={errorMessageState} errorMessageProps={errorMessageProps} />
-      )}
     </>
   )
 }
