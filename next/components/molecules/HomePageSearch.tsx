@@ -1,7 +1,7 @@
 import { getHomepageSearchSwrKey, homepageFetcher } from '@backend/meili/fetchers/homepageFetcher'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
@@ -11,11 +11,15 @@ import { AnimateHeight } from '../atoms/AnimateHeight'
 import HomePageSearchField from './HomePageSearchField'
 import HomePageSearchResults from './HomePageSearchResults'
 
-const HomePageSearch = () => {
+interface HomePageSearchProps {
+  isOpen: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
+
+const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const router = useRouter()
   const { t, i18n } = useTranslation('common')
 
-  const [isOpen, setOpen] = useState<boolean>(false)
   const ref = useRef(null)
   useOnClickOutside(ref, () => setOpen(false))
 
