@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import FieldErrorMessage from 'components/forms/FieldErrorMessage'
 import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -57,7 +58,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       shouldCloseOnSelect: false,
       ...rest,
     })
-    const { fieldProps, buttonProps, dialogProps } = useDatePicker(
+    const { fieldProps, buttonProps, dialogProps, errorMessageProps } = useDatePicker(
       { errorMessage, isDisabled: disabled, label, ...rest },
       state,
       ref as RefObject<HTMLDivElement>,
@@ -82,7 +83,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
     return (
       <I18nProvider locale={locale}>
-        <div className="relative">
+        <div className="relative w-full max-w-xs">
           <div ref={ref}>
             <TimeField
               {...fieldProps}
@@ -120,6 +121,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                 />
               </Popover>
             </OverlayProvider>
+          )}
+          {!disabled && (
+            <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
           )}
         </div>
       </I18nProvider>
