@@ -218,13 +218,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           className={style}
           {...buttonPropsFixed}
         >
-          <i
-            className={`flex justify-center items-center ${size === 'lg' ? 'ml-2 h-6 w-6' : ''} ${
-              size === 'sm' ? 'w-5 h-5 ml-1' : ''
-            }`}
+          <span
+            className={cx('flex justify-center items-center', {
+              'ml-2 h-6 w-6': size === 'lg',
+              'w-5 h-5 ml-1': size === 'sm',
+            })}
           >
             <ArrowRightIcon />
-          </i>
+          </span>
         </MLink>
       )
     }
@@ -238,28 +239,27 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       >
         <div className="flex items-center">
           {startIcon && (
-            <i
-              className={`${size === 'lg' ? 'mr-3 h-6 w-6' : ''} ${
-                size === 'sm' ? 'mr-2.5 h-5 w-5' : ''
-              }`}
+            <span
+              className={cx({ 'mr-3 h-6 w-6': size === 'lg', 'mr-2.5 h-5 w-5': size === 'sm' })}
             >
               {startIcon}
-            </i>
+            </span>
           )}
           {text && !icon && text}
           {!text && icon && (
-            <i className={`${size === 'lg' ? 'h-6 w-6' : ''} ${size === 'sm' ? 'h-5 w-5' : ''}`}>
+            <span className={cx({ 'h-6 w-6': size === 'lg', 'h-5 w-5': size === 'sm' })}>
               {icon}
-            </i>
+            </span>
           )}
           {endIcon && (
-            <i
-              className={`flex justify-center items-center ${size === 'lg' ? 'ml-3 h-6 w-6' : ''} ${
-                size === 'sm' ? 'w-5 h-5 ml-2.5' : ''
-              }`}
+            <span
+              className={cx('flex justify-center items-center', {
+                'ml-3 h-6 w-6': size === 'lg',
+                'w-5 h-5 ml-2.5': size === 'sm',
+              })}
             >
               {endIcon}
-            </i>
+            </span>
           )}
         </div>
       </button>
