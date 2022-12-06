@@ -1,4 +1,12 @@
-import { BlogPost, Page, PageCategory, Tag, UploadFile, Vzn } from '../../graphql'
+import {
+  BlogPost,
+  ComponentBlocksDocListExtensions,
+  Page,
+  PageCategory,
+  Tag,
+  UploadFile,
+  Vzn,
+} from '../../graphql'
 
 /**
  * A type that describes an entity wrapped in shared search index.
@@ -37,11 +45,20 @@ export type BlogPostMeili = Omit<BlogPost, '__typename' | 'author' | 'tag' | 'co
   }
 }
 
+// Beware of typo in amedmentDocument
 export type VznMeili = Omit<
   Vzn,
-  '__typename' | 'mainDocument' | 'consolidatedText' | 'cancelationDocument' | 'amendmentDocument'
+  '__typename' | 'mainDocument' | 'consolidatedText' | 'cancellationDocument' | 'amedmentDocument'
 > & {
   id: string
   mainDocument?: UploadFile
   consolidatedText?: UploadFile
+  amedmentDocument?: Pick<
+    ComponentBlocksDocListExtensions,
+    'id' | 'title' | 'document' | 'validFrom'
+  >[]
+  cancellationDocument?: Pick<
+    ComponentBlocksDocListExtensions,
+    'id' | 'title' | 'document' | 'validFrom'
+  >[]
 }
