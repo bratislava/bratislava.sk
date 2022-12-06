@@ -1,4 +1,4 @@
-import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { EnumOptionsType, WidgetProps } from '@rjsf/utils'
 import React from 'react'
 
 import Radio from '../RadioButton/Radio'
@@ -6,11 +6,6 @@ import RadioGroup from '../RadioButton/RadioGroup'
 
 type RadioButtonRJSFOptions = {
   enumOptions?: EnumOptionsType[]
-  tooltip?: string
-  dropdownDivider?: boolean
-  selectAllOption?: boolean
-  // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-  description?: string
   className?: string
   variant?: 'basic' | 'boxed' | 'card'
 }
@@ -18,20 +13,16 @@ type RadioButtonRJSFOptions = {
 interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: RadioButtonRJSFOptions
-  value: any | any[]
-  errorMessage?: string
-  required?: boolean
-  disabled?: boolean
-  placeholder?: string
-  schema: StrictRJSFSchema
-  onChange: (value: any | any[]) => void
+  value: string
+  onChange: (value: string) => void
 }
 
 const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
   const { options, value, onChange } = props
-  const { enumOptions, className } = options
+  const { enumOptions, className, variant } = options
 
   if (!enumOptions || Array.isArray(value)) return null
+
   return (
     <RadioGroup value={value} onChange={onChange} className={className}>
       {enumOptions.map((radioElement: any) => {
@@ -39,7 +30,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
           <Radio
             key={radioElement.value}
             isDisabled={radioElement.schema.disabled}
-            variant={options.variant}
+            variant={variant || 'basic'}
             value={radioElement.value}
             error={radioElement.schema.error}
             tooltip={radioElement.schema.tooltip}
