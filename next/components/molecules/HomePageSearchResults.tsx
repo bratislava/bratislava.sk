@@ -30,7 +30,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
           <a className="hover:bg-main-100 px-4 py-2">
             <div className="flex justify-between items-center">
               <div>{title}</div>
-              <ChevronRightRounded className="scale-[0.9]" />
+              <ChevronRightRounded className="scale-[0.9] ml-4 shrink-0" />
             </div>
           </a>
         </Link>

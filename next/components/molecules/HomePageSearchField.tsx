@@ -26,6 +26,7 @@ const HomePageSearchField = ({
   ...rest
 }: HomePageSearchFieldProps) => {
   return (
+    // TODO use BasicSearch instead of duplicating, some functionality needs to be added to BasicSearch
     <div className="flex">
       <input
         id="name"

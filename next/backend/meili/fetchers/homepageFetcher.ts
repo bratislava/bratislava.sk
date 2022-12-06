@@ -13,7 +13,7 @@ export const homepageSearchDefaultFilters: HomepageSearchFilters = {
   search: '',
 }
 
-export const allSearchTypes = ['page' as const, 'blog-post' as const]
+export const allSearchTypes = ['page' as const, 'blog-post' as const, 'vzn' as const]
 
 // https://stackoverflow.com/a/52331580
 export type Unpacked<T> = T extends (infer U)[] ? U : T
@@ -36,19 +36,31 @@ export const homepageFetcher = (filters: HomepageSearchFilters, locale: string) 
     .index('search_index')
     .search<MixedResults>(filters.search, {
       ...getMeilisearchPageOptions({ page: 1, pageSize: 5 }),
-      filter: ['type = "page" OR type = "blog-post"', `locale = ${locale}`],
+      filter: [
+        'type = "page" OR type = "blog-post" OR type = "vzn"',
+        `locale = ${locale} OR locale NOT EXISTS`,
+      ],
     })
     .then((response) => {
       const newHits = response.hits.map((hit) => {
-        console.log(hit)
         const { type } = hit
+
         // TODO: Fix types, but not worth it.
         // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
         const dataInner = (hit as any)[type]
+
+        if (type === 'vzn') {
+          const { title } = dataInner
+          return {
+            type,
+            title,
+            // TODO: Fix link - get slug by some proper function. This one works for now for both locales, EN does not have a page for VZNs
+            link: `/sk/mesto-bratislava/sprava-mesta/legislativa-mesta/vseobecne-zavazne-nariadenia?keyword=${filters.search}`,
+            data: dataInner,
+          } as HomepageSearchResult
+        }
+
         const { title, slug: link } = dataInner
-
-        console.log('hit:', type, title, link)
-
         return { type, title, link, data: dataInner } as HomepageSearchResult
       })
 

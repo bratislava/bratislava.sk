@@ -19,15 +19,16 @@ const HomePageSearch = () => {
   const ref = useRef(null)
   useOnClickOutside(ref, () => setOpen(false))
 
+  const [input, setInput] = useState<string>('')
+  const debouncedInput = useDebounce(input, 300)
   const [searchValue, setSearchValue] = useState<string>('')
-  const debouncedSearchValue = useDebounce(searchValue, 300)
 
+  /* Use of separate searchValue instead of debouncedInput is to make it clear, what the actual search value is,
+   * and to keep it consistent with more complex search filters
+   */
   useEffect(() => {
-    if (debouncedSearchValue !== searchValue) {
-      setSearchValue(debouncedSearchValue)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchValue])
+    setSearchValue(debouncedInput)
+  }, [debouncedInput])
 
   const filters = { search: searchValue }
 
@@ -55,8 +56,8 @@ const HomePageSearch = () => {
         )}
       >
         <HomePageSearchField
-          value={searchValue}
-          setValue={setSearchValue}
+          value={input}
+          setValue={setInput}
           onSearchPressed={handleSearchPressed}
           onFocus={() => setOpen(true)}
         />
