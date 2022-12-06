@@ -1,4 +1,5 @@
 import { withTheme } from '@rjsf/core'
+import InputFieldWidgetRJSF from 'components/forms/widgets/InputFieldWidgetRJSF'
 
 import RadioButtonsWidgetRJSF from './widgets/RadioButtonWidgetRJSF'
 import UploadWidgetRJSF from './widgets/UploadWidgetRJSF'
@@ -10,6 +11,7 @@ import TextAreaFieldWidgetRJSF from './widgets/TextAreaFieldWidgetRJSF'
 const theme = {
   widgets: {
     SelectField: SelectFieldWidgetRJSF,
+    InputField: InputFieldWidgetRJSF,
     RadioButton: RadioButtonsWidgetRJSF,
     TextArea: TextAreaFieldWidgetRJSF,
     Upload: UploadWidgetRJSF,
