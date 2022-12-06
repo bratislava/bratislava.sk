@@ -1,5 +1,65 @@
 import Form from '@rjsf/core'
-import { Ref, RefObject, useEffect, useRef, useState } from 'react'
+import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
+import { checkIsPhone, checkIsToken } from '@utils/api'
+import { getAllPossibleJsonSchemaProperties } from '@utils/utils'
+import { get, merge } from 'lodash'
+import { RefObject, useEffect, useRef, useState } from 'react'
+
+const buildRJSFError = (path: string[], errorMsg: string | undefined): ErrorSchema => {
+  return path.reduceRight(
+    (memo: object, arrayValue: string) => {
+      const error = {}
+      error[arrayValue] = memo
+      return error
+    },
+    { __errors: [errorMsg || 'error'] },
+  )
+}
+
+const keywords = [
+  {
+    keyword: 'isPhone',
+    async: true,
+    type: 'string',
+    validate: checkIsPhone,
+  },
+  {
+    keyword: 'isToken',
+    async: true,
+    type: 'string',
+    validate: checkIsToken,
+  },
+]
+
+const validateAsyncProperties = async (
+  schema: RJSFSchema,
+  data: any,
+  path: string[],
+): Promise<ErrorSchema> => {
+  const errors = {}
+
+  await Promise.all(
+    keywords.map(async (k) => {
+      if (schema[k.keyword]) {
+        const value = get(data, path)
+        const isValid = await k.validate(schema[k.keyword], value, data)
+        if (!isValid) {
+          merge(errors, buildRJSFError(path, schema[k.keyword].errorMsg))
+        }
+      }
+    }),
+  )
+
+  const properties = getAllPossibleJsonSchemaProperties(schema)
+  await Promise.all(
+    Object.keys(properties).map(async (key) => {
+      const childSchema = properties[key] as RJSFSchema
+      merge(errors, await validateAsyncProperties(childSchema, data, [...path, key]))
+    }),
+  )
+
+  return errors
+}
 
 // TODO prevent unmounting
 // TODO persist state for session
@@ -7,6 +67,7 @@ import { Ref, RefObject, useEffect, useRef, useState } from 'react'
 export const useFormStepper = (eformSlug: string, schema: any) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
+  const [extraErrors, setExtraErrors] = useState<ErrorSchema | null>(null)
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast
@@ -18,8 +79,23 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
   const isComplete = stepIndex === steps.length
 
   const previous = () => setStepIndex(stepIndex - 1)
-  const next = () => {
-    if (formRef?.current?.validateForm()) {
+  const next = async () => {
+    let isValid = formRef?.current?.validateForm()
+    if (schema.$async === true) {
+      const errors = await validateAsyncProperties(
+        currentSchema,
+        formRef?.current?.state.formData,
+        [],
+      )
+      if (Object.keys(errors).length > 0) {
+        setExtraErrors(errors)
+        isValid = false
+      } else {
+        setExtraErrors(null)
+      }
+    }
+
+    if (isValid) {
       formRef?.current?.submit()
     }
   }
@@ -57,5 +133,7 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
     previousSchema,
     isComplete,
     formRef,
+    extraErrors,
+    keywords,
   }
 }

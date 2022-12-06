@@ -4,7 +4,7 @@
 
 import { EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import validator from '@rjsf/validator-ajv8'
+import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
@@ -15,8 +15,8 @@ import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { getEform } from '../../backend/utils/forms'
 
+import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import { pageStyle, parseFooter, parseMainMenu } from '../../utils/page'
@@ -59,7 +59,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof getServerSideProps>) => {
+const FormTestPage = ({
+  footer,
+  mainMenu,
+  page,
+  eform,
+}: AsyncServerProps<typeof getServerSideProps>) => {
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
@@ -67,6 +72,10 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
+
+  const keywords = form.keywords.map((k) => k.keyword)
+  const validator = customizeValidator({ ajvOptionsOverrides: { keywords } })
+
   return (
     <PageWrapper
       locale={page.locale}
@@ -113,6 +122,7 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
                 // currently syncing data only when we change step (and all the data in current step are valid )
                 // TODO instead, hook into onChange and keep data in form state up to date with what's in ThemedForm state
                 // passing data to state onChange in current state prevented the form from updating
+                extraErrors={form.extraErrors}
                 onSubmit={(e) => {
                   form.setState({ ...form.state, ...e.formData })
                   form.setStepIndex(form.stepIndex + 1)
@@ -121,7 +131,10 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />
-              <Button onPress={() => form.setStepIndex(form.stepIndex + 1)} text="[DEBUG] Go to next step" />
+              <Button
+                onPress={() => form.setStepIndex(form.stepIndex + 1)}
+                text="[DEBUG] Go to next step"
+              />
             </div>
           )}
         </SectionContainer>

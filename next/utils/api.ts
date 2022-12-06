@@ -2,6 +2,7 @@
 // frontend code for calling api endpoints grouped
 import * as Sentry from '@sentry/react'
 import { ErrorObject } from 'ajv'
+import { get } from 'lodash'
 
 export const API_ERROR_TEXT = 'API_ERROR'
 
@@ -20,7 +21,7 @@ const fetchJsonApi = async (path: string, options?: RequestInit) => {
   try {
     const response = await fetch(path, options)
     if (response.ok) {
-      return response.json()
+      return await response.json()
     }
     console.log('response not ok')
     // try parsing errors - if they may apper in different format extend here
@@ -38,11 +39,11 @@ const fetchJsonApi = async (path: string, options?: RequestInit) => {
       throw new ApiError(responseJson?.message || API_ERROR_TEXT, responseJson.errors)
     }
     throw new Error(API_ERROR_TEXT)
-  } catch (e) {
+  } catch (error) {
     // caught & rethrown so that we can handle Sentry in one place
-    console.error(e)
-    Sentry.captureException(e)
-    throw e
+    console.error(error)
+    Sentry.captureException(error)
+    throw error
   }
 }
 
@@ -57,4 +58,55 @@ export const submitEform = async (eformKey: string, data: Record<string, any>) =
     },
     body: JSON.stringify(data),
   })
+}
+
+interface PhoneResponse {
+  token: string
+}
+
+export const checkIsPhone = async (schema: any, value: string): Promise<boolean> => {
+  if (!value) {
+    return false
+  }
+
+  try {
+    const { token }: PhoneResponse = await fetchJsonApi(`/api/user/verification/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ phone: value }),
+    })
+
+    console.log(`TOKEN ${token}`)
+    return true
+  } catch (error) {
+    return false
+  }
+}
+
+interface TokenResponse {
+  isValid: boolean
+}
+
+export const checkIsToken = async (schema: any, value: string, data: any): Promise<boolean> => {
+  if (!value) {
+    return false
+  }
+
+  const phone = get(data, schema.ref)
+
+  try {
+    const { isValid }: TokenResponse = await fetchJsonApi(`/api/user/verification/check`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ phone, token: value }),
+    })
+
+    return isValid
+  } catch (error) {
+    return false
+  }
 }
