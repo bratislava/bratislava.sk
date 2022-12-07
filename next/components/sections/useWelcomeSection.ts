@@ -15,7 +15,6 @@ export const useWelcomeSection = (): HookResult => {
   const [menuState, setMenuState] = useState(STICKY_MENU_STATE.HIDDEN)
 
   const handleMenuState: IntersectionObserverCallback = (entries) => {
-    console.log(entries[0])
     if (!entries[0].isIntersecting) {
       setMenuState(STICKY_MENU_STATE.VISIBLE)
       return

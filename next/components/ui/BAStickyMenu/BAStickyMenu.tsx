@@ -62,7 +62,7 @@ const MenuPanel = ({ item }: MenuPanelProps) => {
   const { Link: UILink } = useUIContext()
 
   return (
-    <div className="bg-gray-900/50 z-30 h-screen fixed top-[106px] inset-x-0 w-full transition delay-500 duration-300 ease-in-out">
+    <div className="bg-gray-900/50 z-30 h-screen fixed top-[106px] inset-x-0 w-full transition delay-500 duration-300 ease-in-out text-left">
       <div className="cursor-default grid absolute top-0 inset-x-0 z-30 w-full pb-20 bg-transparent">
         <Panel style={{ backgroundColor: item.color }} className="px-6 py-10 rounded-none">
           <div className="m-auto grid w-full max-w-screen-1.5lg grid-cols-3 gap-10">
@@ -131,22 +131,35 @@ const MenuPanel = ({ item }: MenuPanelProps) => {
 
 export const BAStickyMenu = ({ className, menuItems }: IProps) => {
   const clickOutsideRef = useRef<HTMLButtonElement | null>(null)
-  const [activeMenuId, setActiveMenuId] = useState<number | null>()
-  useOutsideClick(clickOutsideRef, () => setActiveMenuId(null))
+  const [activeMenuId, setActiveMenuId] = useState<number | null>(null)
+  const handleOutsideClick = () => setActiveMenuId(null)
+  useOutsideClick(clickOutsideRef, handleOutsideClick)
+
+  const handleButtonClick = (buttonId: number): void => {
+    if (activeMenuId === buttonId) {
+      setActiveMenuId(null)
+      return
+    }
+    setActiveMenuId(buttonId)
+  }
 
   return (
-    <menu className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>
+    <menu
+      className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}
+      ref={clickOutsideRef}
+    >
       {menuItems.map((item, i) => (
-        <button
-          type="button"
-          key={i}
-          className="group flex-1 cursor-pointer"
-          ref={clickOutsideRef}
-          onClick={() => setActiveMenuId(i)}
-        >
-          <MenuCell item={item} isActive={i === activeMenuId} />
+        <div key={i}>
+          <button
+            value={i}
+            type="button"
+            className="group flex-1 cursor-pointer"
+            onClick={() => handleButtonClick(i)}
+          >
+            <MenuCell item={item} isActive={i === activeMenuId} />
+          </button>
           {activeMenuId === i && <MenuPanel item={item} />}
-        </button>
+        </div>
       ))}
     </menu>
   )
