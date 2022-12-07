@@ -31,12 +31,16 @@ const TextAreaField = ({
   value,
   disabled,
   className,
+  defaultValue,
+  onChange,
   ...rest
 }: TextAreaBase) => {
   const [valueState, setValueState] = useState<string>('')
+  const [useDefaultValue, setUseDefaultValue] = useState<boolean>(true)
   const ref = React.useRef<HTMLTextAreaElement>(null)
 
-  const displayValue = rest.onChange ? value : valueState
+  const displayValue =
+    useDefaultValue && defaultValue && !value ? defaultValue : onChange ? value : valueState
 
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     {
@@ -48,11 +52,12 @@ const TextAreaField = ({
       description,
       inputElementType: 'textarea',
       onChange(inputValue) {
-        if (rest.onChange) {
-          rest.onChange(inputValue)
+        if (onChange) {
+          onChange(inputValue)
         } else {
           setValueState(inputValue)
         }
+        setUseDefaultValue(false)
       },
       isRequired: required,
       isDisabled: disabled,
@@ -85,7 +90,7 @@ const TextAreaField = ({
         explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} className={style} value={displayValue} />
+      <textarea {...inputProps} ref={ref} className={style} />
       {!disabled && (
         <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
       )}
