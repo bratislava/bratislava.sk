@@ -1,4 +1,5 @@
 {
+  "$async": true,
   "title": "Example",
   "description": "Example schema",
   "type": "object",
@@ -170,6 +171,32 @@
                   "title": "Overlay"
                 }
               ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "isPhone": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "verification": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string",
+              "isToken": { "ref": "user.phone" }
             }
           }
         }
