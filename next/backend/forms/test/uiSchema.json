@@ -118,8 +118,17 @@
       "ui:options": {
         "className": "flex flex-col gap-4",
         "variant": "boxed"
-      },
-      "ui:value": "overlay"
+      }
+    }
+  },
+  "checkBoxes": {
+    "favouriteFruits": {
+      "ui:widget": "Checkboxes",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4 w-fit",
+        "variant": "boxed"
+      }
     }
   },
   "user": {
