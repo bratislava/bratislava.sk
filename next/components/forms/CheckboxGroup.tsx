@@ -6,17 +6,19 @@ export const CheckboxGroupContext = React.createContext({} as CheckboxGroupState
 
 type CheckBoxGroupBase = {
   children: React.ReactNode
+  value?: string[]
   label?: string
+  className?: string
+  onChange: (value: any[]) => void
 }
 
 const CheckboxGroup = (props: CheckBoxGroupBase) => {
-  const { children, label } = props
+  const { children, className } = props
   const state: CheckboxGroupState = useCheckboxGroupState(props)
-  const { groupProps, labelProps } = useCheckboxGroup(props, state)
+  const { groupProps } = useCheckboxGroup(props, state)
 
   return (
-    <div {...groupProps}>
-      <span {...labelProps}>{label}</span>
+    <div {...groupProps} className={className}>
       <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
     </div>
   )
