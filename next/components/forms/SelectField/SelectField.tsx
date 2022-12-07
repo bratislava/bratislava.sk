@@ -198,6 +198,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader
         label={label}
+        htmlFor={hashCode}
         description={description}
         tooltip={tooltip}
         required={required}

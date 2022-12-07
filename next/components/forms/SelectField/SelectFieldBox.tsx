@@ -78,6 +78,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input
         ref={filterRef}
+        name={hashCode}
         className={`${hashCode} text-20 max-w-[80px] xs:max-w-none border-0 outline-none`}
         type="text"
         size={getInputSize()}

@@ -75,7 +75,7 @@ const SearchField = ({
       <FieldHeader
         label={label}
         labelProps={labelProps}
-        htmlFor={inputProps?.id || ''}
+        htmlFor={inputProps?.id}
         description={description}
         descriptionProps={descriptionProps}
         required={required}
@@ -90,7 +90,13 @@ const SearchField = ({
         >
           <DarkSearchIcon />
         </i>
-        <input {...inputProps} ref={ref} value={valueState} className={style} />
+        <input
+          {...inputProps}
+          ref={ref}
+          value={valueState}
+          name={inputProps.id}
+          className={style}
+        />
         {resetIcon && valueState && (
           <i
             role="button"

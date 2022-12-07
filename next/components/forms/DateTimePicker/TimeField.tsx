@@ -92,7 +92,7 @@ const TimeField = ({
     <>
       <FieldHeader
         label={label || ''}
-        htmlFor={fieldProps?.id || ''}
+        htmlFor={fieldProps.id}
         labelProps={labelProps}
         tooltip={tooltip}
         description={description}
@@ -104,6 +104,7 @@ const TimeField = ({
         <input
           className={timeFieldStyle}
           type="text"
+          name={fieldProps.id}
           value={inputValue}
           placeholder="HH:MM"
           onChange={(e) => setInputValue(e.target.value)}

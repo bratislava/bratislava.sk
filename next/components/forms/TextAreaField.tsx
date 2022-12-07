@@ -83,14 +83,14 @@ const TextAreaField = ({
       <FieldHeader
         label={label}
         labelProps={labelProps}
-        htmlFor={inputProps?.id || ''}
+        htmlFor={inputProps.id}
         description={description}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} className={style} />
+      <textarea {...inputProps} ref={ref} name={inputProps.id} className={style} />
       {!disabled && (
         <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
       )}

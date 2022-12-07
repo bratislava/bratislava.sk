@@ -118,7 +118,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         <FieldHeader
           label={label}
           labelProps={labelProps}
-          htmlFor={inputProps?.id || ''}
+          htmlFor={inputProps.id}
           description={description}
           descriptionProps={descriptionProps}
           required={required}
@@ -135,7 +135,13 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               {leftIconSwitcher(leftIcon)}
             </i>
           )}
-          <input {...inputProps} ref={ref} value={valueState} className={style} />
+          <input
+            {...inputProps}
+            ref={ref}
+            value={valueState}
+            name={inputProps.id}
+            className={style}
+          />
           {resetIcon && valueState && (
             <button
               type="button"
