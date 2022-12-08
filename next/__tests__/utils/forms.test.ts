@@ -1,9 +1,13 @@
 import { describe } from '@jest/globals'
 
+import xmlTemplate from '../../backend/forms/test/xmlTemplate'
 import {
   getEform,
+  JsonSchema,
+  loadAndBuildXml,
   validateDataWithJsonSchema,
   validateDataWithXsd,
+  xmlToJson,
 } from '../../backend/utils/forms'
 
 const xsd =
@@ -109,5 +113,28 @@ describe('forms utils', () => {
 
     const errors = await validateDataWithJsonSchema(data, schema)
     expect(errors).toHaveLength(1)
+  })
+
+  test('json to xml, xml to json', async () => {
+    const schema: JsonSchema = {
+      type: 'object',
+      required: ['email'],
+      properties: {
+        email: {
+          type: 'string',
+        },
+        phone: {
+          type: 'string',
+        },
+      },
+    }
+
+    const data = {
+      phone: '946846365',
+    }
+
+    const xml = loadAndBuildXml(xmlTemplate, data, schema)
+    const json = await xmlToJson(xml, schema)
+    expect(data).toEqual(json)
   })
 })

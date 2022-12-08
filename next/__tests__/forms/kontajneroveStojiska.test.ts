@@ -7,6 +7,7 @@ import {
   loadAndBuildXml,
   validateDataWithJsonSchema,
   validateDataWithXsd,
+  xmlToJson,
 } from '../../backend/utils/forms'
 import { transform } from '../../backend/utils/xslt'
 
@@ -36,5 +37,10 @@ describe('form kontajnerove stojiska', () => {
   test('html transformation', async () => {
     const text = await transform(eform.htmlStylesheet, xml)
     expect(text).toBeTruthy()
+  })
+
+  test('xml to json', async () => {
+    const json = await xmlToJson(xml, eform.schema)
+    expect(data).toEqual(json)
   })
 })

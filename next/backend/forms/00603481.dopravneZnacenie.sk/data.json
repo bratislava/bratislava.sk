@@ -1,164 +1,164 @@
 {
-  "ZoznamPriloh": {
-    "ProjektOrganizacieDopravy": {
-      "Nazov": "POD.pdf",
-      "Prilozena": true
+  "zoznamPriloh": {
+    "projektOrganizacieDopravy": {
+      "nazov": "POD.pdf",
+      "prilozena": true
     },
-    "ZavazneStanoviskoKrajskehoDopravnehoInspektoratu": {
-      "Nazov": "KDI.pdf",
-      "Prilozena": true
+    "zavazneStanoviskoKrajskehoDopravnehoInspektoratu": {
+      "nazov": "KDI.pdf",
+      "prilozena": true
     },
-    "StanoviskaSpravcovCiest": [
+    "stanoviskaSpravcovCiest": [
       {
-        "Nazov": "Ruzinov.pdf",
-        "Prilozena": true
+        "nazov": "Ruzinov.pdf",
+        "prilozena": true
       },
       {
-        "Nazov": "NoveMesto.pdf",
-        "Prilozena": true
+        "nazov": "NoveMesto.pdf",
+        "prilozena": true
       }
     ],
-    "VyhradenehoParkovanieVztahKPrevadzke": {
-      "Nazov": "NajomnaZmluva.pdf",
-      "Prilozena": true
+    "vyhradenehoParkovanieVztahKPrevadzke": {
+      "nazov": "NajomnaZmluva.pdf",
+      "prilozena": true
     },
-    "SplnomocnenieNaZastupovanie": {
-      "Nazov": "splnomocnenie.pdf",
-      "Prilozena": true
+    "splnomocnenieNaZastupovanie": {
+      "nazov": "splnomocnenie.pdf",
+      "prilozena": true
     }
   },
-  "Ziadatel": {
-    "VoSvojomMene": true,
-    "TypOsoby": {
-      "Code": 1,
-      "Name": "Fyzická osoba",
-      "WsEnumCode": "UPVSIAM_001"
+  "ziadatel": {
+    "voSvojomMene": true,
+    "typOsoby": {
+      "code": 1,
+      "name": "Fyzická osoba",
+      "wsEnumCode": "UPVSIAM_001"
     },
-    "Kontakt": {
-      "TelefonneCislo": {
-        "MedzinarodneVolacieCislo": "+421",
-        "Predvolba": 904,
-        "Cislo": 123456
+    "kontakt": {
+      "telefonneCislo": {
+        "medzinarodneVolacieCislo": "+421",
+        "predvolba": 904,
+        "cislo": 123456
       },
-      "Email": "hruska@example.com",
-      "KontaktnaOsoba": {
-        "Meno": "Janko",
-        "Priezvisko": "Hruška"
+      "email": "hruska@example.com",
+      "kontaktnaOsoba": {
+        "meno": "Janko",
+        "priezvisko": "Hruška"
       }
     },
-    "Adresa": {
-      "Meno": "Janko",
-      "Priezvisko": "Hruška",
-      "UlicaACislo": {
-        "Ulica": "Hlboká cesta",
-        "SupisneCislo": 970,
-        "OrientacneCislo": 5
+    "adresa": {
+      "meno": "Janko",
+      "priezvisko": "Hruška",
+      "ulicaACislo": {
+        "ulica": "Hlboká cesta",
+        "supisneCislo": 970,
+        "orientacneCislo": 5
       },
-      "PSC": 81104,
-      "Obec": {
-        "Code": "SK0101528595",
-        "Name": "Bratislava - mestská časť Staré Mesto",
-        "WsEnumCode": "SUSR_0025"
+      "pSC": 81104,
+      "obec": {
+        "code": "SK0101528595",
+        "name": "Bratislava - mestská časť Staré Mesto",
+        "wsEnumCode": "SUSR_0025"
       },
-      "Stat": {
-        "Code": 703,
-        "Name": "Slovenská republika",
-        "WsEnumCode": "SUSR_0086"
-      }
-    }
-  },
-  "DopravneZnacenie": {
-    "NazvyUlic": "Hlboká cesta",
-    "DovodZmenyVDopravnomZnaceni": "VyhradeneParkovanie",
-    "VyhradeneParkovanie": {
-      "Typ": "Nove",
-      "PocetParkovacichMiest": 2,
-      "UzivanaPlochaJednehoMiestaDlzka": 6,
-      "UzivanaPlochaJednehoMiestaSirka": 2.8,
-      "TerminVyhradeniaMiestaOd": "2022-01-01",
-      "TerminVyhradeniaMiestaDo": "2023-01-01"
-    },
-    "TrvacnostDopravnehoZnacenia": "Docasne",
-    "DatumUmiestneniaDopravnehoZnacenia": "2022-01-01",
-    "DatumOdstraneniaDopravnehoZnacenia": "2023-01-01"
-  },
-  "Uzavierka": {
-    "Typ": "Ciastocna",
-    "SirkaVolnehoJazdnehoPruhu": 5,
-    "UliceOd": "Robotnicka ulica",
-    "UliceDo": "Kvetinova ulica",
-    "DlzkaVMetroch": 50,
-    "SirkaVMetroch": 10,
-    "DatumACasOd": "2022-01-01T05:00:00",
-    "DatumACasDo": "2022-05-01T17:00:00",
-    "Popis": "Bude uzatvorena cesta"
-  },
-  "KontaktnaOsobaRovnakaAkoZiadatel": false,
-  "KontaktnaOsoba": {
-    "TelefonneCislo": {
-      "MedzinarodneVolacieCislo": "+421",
-      "Predvolba": 905,
-      "Cislo": 987654
-    },
-    "Email": "jozefina.hruskova@example.com",
-    "KontaktnaOsoba": {
-      "Meno": "Jozefina",
-      "Priezvisko": "Hrušková"
-    }
-  },
-  "ZodpovednyProjektant": {
-    "ObchodneMeno": "Kutyil, s.r.o.",
-    "ICO": 12345678,
-    "Kontakt": {
-      "TelefonneCislo": {
-        "MedzinarodneVolacieCislo": "+421",
-        "Predvolba": 905,
-        "Cislo": 246135
-      },
-      "Email": "lazslo@example.com",
-      "KontaktnaOsoba": {
-        "Meno": "László",
-        "Priezvisko": "Komárom"
+      "stat": {
+        "code": 703,
+        "name": "Slovenská republika",
+        "wsEnumCode": "SUSR_0086"
       }
     }
   },
-  "Dorucenie": {
-    "AdresatPodania": {
-      "AdresatPodania": "Mesto"
+  "dopravneZnacenie": {
+    "nazvyUlic": "Hlboká cesta",
+    "dovodZmenyVDopravnomZnaceni": "VyhradeneParkovanie",
+    "vyhradeneParkovanie": {
+      "typ": "Nove",
+      "pocetParkovacichMiest": 2,
+      "uzivanaPlochaJednehoMiestaDlzka": 6,
+      "uzivanaPlochaJednehoMiestaSirka": 2.8,
+      "terminVyhradeniaMiestaOd": "2022-01-01",
+      "terminVyhradeniaMiestaDo": "2023-01-01"
     },
-    "Checkbox": {
-      "Notifikacia": true
+    "trvacnostDopravnehoZnacenia": "Docasne",
+    "datumUmiestneniaDopravnehoZnacenia": "2022-01-01",
+    "datumOdstraneniaDopravnehoZnacenia": "2023-01-01"
+  },
+  "uzavierka": {
+    "typ": "Ciastocna",
+    "sirkaVolnehoJazdnehoPruhu": 5,
+    "uliceOd": "Robotnicka ulica",
+    "uliceDo": "Kvetinova ulica",
+    "dlzkaVMetroch": 50,
+    "sirkaVMetroch": 10,
+    "datumACasOd": "2022-01-01T05:00:00",
+    "datumACasDo": "2022-05-01T17:00:00",
+    "popis": "Bude uzatvorena cesta"
+  },
+  "kontaktnaOsobaRovnakaAkoZiadatel": false,
+  "kontaktnaOsoba": {
+    "telefonneCislo": {
+      "medzinarodneVolacieCislo": "+421",
+      "predvolba": 905,
+      "cislo": 987654
     },
-    "FormaOdoslaniaZiadosti": "Elektronicky",
-    "FormaDoruceniaRozhodnutia": {
-      "TypSposobuDorucenia": "Pošta",
-      "AdresaDoruceniaRozhodnutia": {
-        "Meno": "Janko",
-        "Priezvisko": "Hruška",
-        "UlicaACislo": {
-          "Ulica": "Hlboká cesta",
-          "SupisneCislo": 970
+    "email": "jozefina.hruskova@example.com",
+    "kontaktnaOsoba": {
+      "meno": "Jozefina",
+      "priezvisko": "Hrušková"
+    }
+  },
+  "zodpovednyProjektant": {
+    "obchodneMeno": "Kutyil, s.r.o.",
+    "iCO": 12345678,
+    "kontakt": {
+      "telefonneCislo": {
+        "medzinarodneVolacieCislo": "+421",
+        "predvolba": 905,
+        "cislo": 246135
+      },
+      "email": "lazslo@example.com",
+      "kontaktnaOsoba": {
+        "meno": "László",
+        "priezvisko": "Komárom"
+      }
+    }
+  },
+  "dorucenie": {
+    "adresatPodania": {
+      "adresatPodania": "Mesto"
+    },
+    "checkbox": {
+      "notifikacia": true
+    },
+    "formaOdoslaniaZiadosti": "Elektronicky",
+    "formaDoruceniaRozhodnutia": {
+      "typSposobuDorucenia": "Pošta",
+      "adresaDoruceniaRozhodnutia": {
+        "meno": "Janko",
+        "priezvisko": "Hruška",
+        "ulicaACislo": {
+          "ulica": "Hlboká cesta",
+          "supisneCislo": 970
         },
-        "PSC": 81104,
-        "Obec": {
-          "Code": "SK0101528595",
-          "Name": "Bratislava - mestská časť Staré Mesto",
-          "WsEnumCode": "SUSR_0025"
+        "pSC": 81104,
+        "obec": {
+          "code": "SK0101528595",
+          "name": "Bratislava - mestská časť Staré Mesto",
+          "wsEnumCode": "SUSR_0025"
         },
-        "Stat": {
-          "Code": 703,
-          "Name": "Slovenská republika",
-          "WsEnumCode": "SUSR_0086"
+        "stat": {
+          "code": 703,
+          "name": "Slovenská republika",
+          "wsEnumCode": "SUSR_0086"
         }
       }
     }
   },
-  "ZakladneVyhlasenie": {
-    "SpravnostUdajovText": "Všeobecné informácie o poskytnutí, spracovaní a ochrane osobných údajov nájdete na\n        https://esluzby.bratislava.sk/page/ochrana-osobnych-udajov",
-    "SuhlasSoSpracovanimText": "Týmto dávam na základe slobodnej vôle súhlas na spracovanie mojich osobných údajov\n        uvedených vo formulári tohto podania a získaných z môjho osobného dokladu za v zmysle Nariadenia európskeho\n        parlamentu a rady EÚ 2016/679 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto\n        údajov a zákona č. 18/2018 Z.z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov. Zároveň\n        potvrdzujem dovŕšenie veku 16 rokov pre potreby spracovania osobných údajov. Osobné údaje poskytujem za účelom\n        spracovania mojej žiadosti.",
-    "PoskytujemSuhlas": true,
-    "PoskytujemSuhlasText": "Poskytujem súhlas na spracovanie osobných údajov",
-    "NeposkytujemSuhlas": false,
-    "NeposkytujemSuhlasText": "Neposkytujem súhlas na spracovanie osobných údajov"
+  "zakladneVyhlasenie": {
+    "spravnostUdajovText": "Všeobecné informácie o poskytnutí, spracovaní a ochrane osobných údajov nájdete na\n        https://esluzby.bratislava.sk/page/ochrana-osobnych-udajov",
+    "suhlasSoSpracovanimText": "Týmto dávam na základe slobodnej vôle súhlas na spracovanie mojich osobných údajov\n        uvedených vo formulári tohto podania a získaných z môjho osobného dokladu za v zmysle Nariadenia európskeho\n        parlamentu a rady EÚ 2016/679 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto\n        údajov a zákona č. 18/2018 Z.z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov. Zároveň\n        potvrdzujem dovŕšenie veku 16 rokov pre potreby spracovania osobných údajov. Osobné údaje poskytujem za účelom\n        spracovania mojej žiadosti.",
+    "poskytujemSuhlas": true,
+    "poskytujemSuhlasText": "Poskytujem súhlas na spracovanie osobných údajov",
+    "neposkytujemSuhlas": false,
+    "neposkytujemSuhlasText": "Neposkytujem súhlas na spracovanie osobných údajov"
   }
 }
