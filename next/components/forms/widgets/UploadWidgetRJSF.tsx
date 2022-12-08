@@ -1,5 +1,6 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { formSpacingHandler } from '@utils/formsHelper'
 import cx from 'classnames'
 import { useEffect, useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
@@ -19,13 +20,19 @@ interface UploadWidgetRJSFProps extends WidgetProps {
 const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   const { options, schema, value, disabled, onChange } = props
 
-  const { size, accept, type = 'button', className } = options
+  const {
+    size,
+    accept,
+    type = 'button',
+    className,
+    spaceBottom = 'none',
+    spaceTop = 'small',
+  } = options
 
   const [innerValue, setInnerValue] = useState<UploadMinioFile[]>([])
 
   const supportedFormats = accept?.split(',')
   const multiple = schema.type === 'array'
-  const widgetClassName = cx('px-2 py-4', className)
 
   const fileNameToMinioFile = (fileName: string): UploadMinioFile => {
     const fileNameArray = fileName.split('_')
@@ -80,16 +87,23 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   }
 
   return (
-    <Upload
-      type={type}
-      multiple={multiple}
-      value={innerValue}
-      className={widgetClassName}
-      sizeLimit={size}
-      supportedFormats={supportedFormats}
-      disabled={disabled}
-      onChange={handleOnChange}
-    />
+    <div
+      style={{
+        paddingBottom: formSpacingHandler(spaceBottom),
+        paddingTop: formSpacingHandler(spaceTop),
+      }}
+    >
+      <Upload
+        type={type}
+        multiple={multiple}
+        value={innerValue}
+        className={className}
+        sizeLimit={size}
+        supportedFormats={supportedFormats}
+        disabled={disabled}
+        onChange={handleOnChange}
+      />
+    </div>
   )
 }
 

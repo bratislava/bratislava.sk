@@ -1,4 +1,5 @@
 import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
 
 import SelectField from '../SelectField/SelectField'
 
@@ -11,6 +12,8 @@ type SelectRJSFOptions = {
   description?: string
   className?: string
   explicitOptional?: boolean
+  spaceBottom?: FormSpacingType
+  spaceTop?: FormSpacingType
 }
 
 interface SelectFieldWidgetRJSFProps extends WidgetProps {
@@ -36,6 +39,8 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     dropdownDivider,
     className,
     explicitOptional,
+    spaceBottom = 'none',
+    spaceTop = 'default',
   } = options
 
   const type = schema.type === 'array' ? 'multiple' : 'one'
@@ -94,23 +99,30 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   return (
-    <SelectField
-      type={type}
-      label={label}
-      enumOptions={enumOptions}
-      value={transformValue()}
-      selectAllOption={selectAllOption}
-      placeholder={placeholder}
-      description={description}
-      tooltip={tooltip}
-      dropdownDivider={dropdownDivider}
-      errorMessage={errorMessage}
-      required={required}
-      disabled={disabled}
-      className={className}
-      onChange={handleOnChange}
-      explicitOptional={explicitOptional}
-    />
+    <div
+      style={{
+        paddingBottom: formSpacingHandler(spaceBottom),
+        paddingTop: formSpacingHandler(spaceTop),
+      }}
+    >
+      <SelectField
+        type={type}
+        label={label}
+        enumOptions={enumOptions}
+        value={transformValue()}
+        selectAllOption={selectAllOption}
+        placeholder={placeholder}
+        description={description}
+        tooltip={tooltip}
+        dropdownDivider={dropdownDivider}
+        errorMessage={errorMessage}
+        required={required}
+        disabled={disabled}
+        className={className}
+        onChange={handleOnChange}
+        explicitOptional={explicitOptional}
+      />
+    </div>
   )
 }
 

@@ -1,8 +1,7 @@
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
 import InputField from 'components/forms/InputField'
 import React from 'react'
-
-type Spacing = 'large' | 'default' | 'small' | 'none'
 
 type InputFieldRJSFOptions = {
   tooltip?: string
@@ -12,8 +11,8 @@ type InputFieldRJSFOptions = {
   resetIcon?: boolean
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   explicitOptional?: boolean
-  spaceBottom?: Spacing
-  spaceTop?: Spacing
+  spaceBottom?: FormSpacingType
+  spaceTop?: FormSpacingType
 }
 
 interface InputFieldWidgetRJSFProps extends WidgetProps {
@@ -51,26 +50,11 @@ const InputFieldWidgetRJSF = ({
   } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
-
-  const spacingHandler = (space: Spacing): string => {
-    switch (space) {
-      case 'none':
-        return '0'
-      case 'large':
-        return '40px'
-      case 'default':
-        return '32px'
-      case 'small':
-        return '24px'
-      default:
-        return '0'
-    }
-  }
   return (
     <div
       style={{
-        paddingBottom: spacingHandler(spaceBottom),
-        paddingTop: spacingHandler(spaceTop),
+        paddingBottom: formSpacingHandler(spaceBottom),
+        paddingTop: formSpacingHandler(spaceTop),
       }}
     >
       <InputField

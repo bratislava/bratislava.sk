@@ -1,4 +1,5 @@
 import { WidgetProps } from '@rjsf/utils'
+import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
 import cx from 'classnames'
 
 import TextAreaField from '../TextAreaField'
@@ -8,6 +9,8 @@ type TextAreaRJSFOptions = {
   className?: string
   tooltip?: string
   explicitOptional?: boolean
+  spaceBottom?: FormSpacingType
+  spaceTop?: FormSpacingType
 }
 
 interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
@@ -33,7 +36,14 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
     onChange,
   }: TextAreaFieldWidgetRJSFProps = props
 
-  const { description, tooltip, explicitOptional, className }: TextAreaRJSFOptions = options
+  const {
+    description,
+    tooltip,
+    explicitOptional,
+    className,
+    spaceBottom = 'none',
+    spaceTop = 'default',
+  }: TextAreaRJSFOptions = options
 
   const showErrorMessage = rawErrors && rawErrors.length > 0 ? rawErrors[0] : undefined
 
@@ -46,7 +56,13 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div className="my-2 max-w-[320px]">
+    <div
+      className="max-w-[320px]"
+      style={{
+        paddingBottom: formSpacingHandler(spaceBottom),
+        paddingTop: formSpacingHandler(spaceTop),
+      }}
+    >
       <TextAreaField
         value={value}
         label={label}
