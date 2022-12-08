@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
 import {
@@ -9,7 +10,7 @@ import {
 } from '@bratislava/ui-bratislava'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
-import { fileCountVzns } from '@utils/utils'
+import { isPresent } from '@utils/utils'
 import { SearchResponse } from 'meilisearch'
 import { useTranslation } from 'next-i18next'
 import { Dispatch, SetStateAction, useState } from 'react'
@@ -26,8 +27,6 @@ const Documents = ({
   data: SearchResponse<VznMeili>
   filters: VznFilters
   setOpen: Dispatch<SetStateAction<boolean>>
-  // TODO fix typing
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setActiveData: Dispatch<SetStateAction<VznMeili | null>>
 }) => {
   const { t } = useTranslation('common')
@@ -52,7 +51,10 @@ const Documents = ({
                 key={vzn.id}
                 id={vzn.id}
                 Icon={category.icon}
-                count={fileCountVzns(vzn)}
+                moreDocuments={[
+                  ...(vzn.amedmentDocument?.map((doc) => doc.title) ?? []),
+                  ...(vzn.cancellationDocument?.map((doc) => doc.title) ?? []),
+                ].filter(isPresent)}
                 onClick={setOpenModal}
                 mainDocumentHref={vzn.mainDocument?.url}
               />

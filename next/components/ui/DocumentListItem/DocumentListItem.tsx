@@ -1,4 +1,3 @@
-import truncate from 'lodash/truncate'
 import { useTranslation } from 'next-i18next'
 
 import { ArrowRight, ChevronRight, Download } from '../../../assets/images'
@@ -8,38 +7,45 @@ interface DocumentListItemProps {
   categoryName: string
   title: string
   Icon: string
-  count: number
   onClick: Function
   mainDocumentHref?: string
   id: string
+  moreDocuments: string[]
 }
 
 export const DocumentListItem = ({
   categoryName,
   title,
   Icon,
-  count,
   onClick,
   id,
+  moreDocuments,
   mainDocumentHref,
 }: DocumentListItemProps) => {
   const { t } = useTranslation()
 
   return (
-    <div className="mb-1 flex w-full min-w-66 flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">
+    <div className="min-w-66 mb-1 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">
       <div className="flex w-full flex-col md:flex-row md:items-center">
         <div className="flex p-4 pb-0 md:justify-center lg:py-10 lg:px-12">
           <Icon />
         </div>
         <div className="flex flex-[4] flex-col justify-start px-4 py-3 lg:px-8 lg:py-10 lg:pl-0">
           <div className="text-p3 lg:text-p2">{categoryName}</div>
-          <div className="text-truncate-2 text-p2-semibold lg:text-p1-semibold">
-            {truncate(title, { length: 150 })}
+          <div className="text-truncate-2 text-p2-semibold lg:text-p1-semibold line-clamp-2">
+            {title}
           </div>
-          <div className="text-p1 lg:text-p2 pt-4">
-            {' '}
-            {t('documentCount')} {count}
-          </div>
+          {moreDocuments.length > 0 ? (
+            <div className="text-p1 lg:text-p2 pt-4">
+              {t('documents')}:{' '}
+              {moreDocuments.map((documentTitle, index) => (
+                <span>
+                  {documentTitle}
+                  {index !== moreDocuments.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
       <div className="flex shrink-0 items-center justify-between bg-zinc-50 py-4 pl-5 md:grow-0 md:basis-[300px] md:justify-evenly md:py-11 md:px-2">
