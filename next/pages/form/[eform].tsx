@@ -9,8 +9,8 @@ import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
 import { forceString } from '@utils/utils'
-import Button from 'components/forms/Button'
-import FinalStep from 'components/forms/FinalStep'
+import Button from 'components/forms/simple-components/Button'
+import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -102,8 +102,8 @@ const FormTestPage = ({
           TODO form info
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf, 
-              otherwise displays summary with all data and submit button 
+          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf,
+              otherwise displays summary with all data and submit button
             */}
           {form.isComplete ? (
             <div>
