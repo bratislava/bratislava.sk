@@ -158,9 +158,6 @@ export const removeNeedlessXmlTransformArraysRecursive = (
     if (Number.isNaN(Number(k))) {
       const childSchema = getJsonSchemaNodeAtPath(schema, newPath)
       if (!childSchema || childSchema === true) {
-        console.warn('Did not match schema! Details below')
-        console.log('Path:', path)
-
         if (Array.isArray(obj[k]) && obj[k].length < 2) {
           if (obj[k][0] === 'true') {
             obj[k] = true
