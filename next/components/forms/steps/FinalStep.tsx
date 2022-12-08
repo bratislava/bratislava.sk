@@ -1,10 +1,11 @@
+import { JsonSchema } from '@backend/utils/forms'
 import { ApiError, submitEform } from '@utils/api'
 import { ErrorObject } from 'ajv'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import Button from '../simple-components/Button'
-import StepSummaryRows from './StepSummaryRows'
+import StepSummaryRows from './Summary/StepSummaryRows'
 
 interface FinalStepProps {
   state: Record<string, any>

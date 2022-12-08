@@ -9,7 +9,7 @@ interface StepPropertySummaryRowsProps {
 
 const StepPropertySummaryRows = (props: StepPropertySummaryRowsProps) => {
   const { stepProperty, stepData } = props
-  const stepFields = stepProperty.properties ?? {}
+  const stepFields = typeof stepProperty !== 'boolean' ? stepProperty.properties ?? {} : {}
 
   return (
     <>

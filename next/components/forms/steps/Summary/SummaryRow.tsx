@@ -8,7 +8,7 @@ interface SummaryRowProps {
 
 const SummaryRow = (props: SummaryRowProps) => {
   const { fieldKey, schemaField, fieldData } = props
-  const label = schemaField.title ?? fieldKey
+  const label = typeof schemaField !== 'boolean' ? schemaField.title ?? fieldKey : fieldKey
 
   return (
     <div className="flex flex-row">
