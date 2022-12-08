@@ -1,11 +1,10 @@
+import { VznMeili } from '@backend/meili/types'
 import { FileCard } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
+import { isPresent } from '@utils/utils'
 import { useTranslation } from 'next-i18next'
 import ReactMarkdown from 'react-markdown'
 import useSWR from 'swr'
-
-import { VznMeili } from '../../../../backend/meili/types'
-import { isPresent } from '../../../../utils/utils'
 
 const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
   const vznId = vzn?.id
@@ -15,17 +14,17 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
   return (
     <div className="modal-content-rent max-h-[75vh] max-w-3xl overflow-y-auto rounded-xl bg-gray-50">
       <div className="py-8 px-12">
-        <div className="text-h4"> {vzn?.title} </div>
+        <div className="text-h4">{vzn?.title}</div>
         <div className="flex pt-3">
           {vzn?.mainDocument && (
             <div className="flex flex-col">
-              <div> {t('vzn.validFrom')}: </div>
-              <div className="font-semibold"> {vzn?.validFrom} </div>
+              <div>{t('vzn.validFrom')}:</div>
+              <div className="font-semibold">{vzn?.validFrom}</div>
             </div>
           )}
           {!!vzn?.cancellationDocument?.length && (
             <div className="flex flex-col pl-5">
-              <div> {t('vzn.validUntil')}: </div>
+              <div>{t('vzn.validUntil')}:</div>
               <div className="font-semibold">{vzn?.cancellationDocument[0]?.validFrom}</div>
             </div>
           )}
@@ -39,7 +38,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
         {/*  Main Document  */}
         {vzn?.mainDocument && (
           <div className="max-w-xs pt-5">
-            <div className="pb-4 font-semibold"> {t('vzn.mainDocument')} </div>
+            <div className="pb-4 font-semibold">{t('vzn.mainDocument')}</div>
             <div>
               <FileCard
                 downloadLink={vzn.mainDocument?.url}
@@ -69,7 +68,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
         )}
         {!!vzn?.amedmentDocument?.length && (
           <div className="pt-5">
-            <div className="pb-4 font-semibold"> {t('vzn.amendments')} </div>
+            <div className="pb-4 font-semibold">{t('vzn.amendments')}</div>
             <div className="flex flex-row flex-wrap gap-5">
               {vzn.amedmentDocument.map((amedmentDocument) => {
                 const getDocument = data?.vzn?.data?.attributes?.amedmentDocument
@@ -94,7 +93,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
         )}
         {!!vzn?.cancellationDocument?.length && (
           <div className="pt-5">
-            <div className="pb-4 font-semibold"> {t('vzn.cancellationDocument')} </div>
+            <div className="pb-4 font-semibold">{t('vzn.cancellationDocument')}</div>
             <div className="flex flex-row flex-wrap gap-5">
               {vzn.cancellationDocument.map((cancellationDocument) => {
                 const getDocument = data?.vzn?.data?.attributes?.cancellationDocument

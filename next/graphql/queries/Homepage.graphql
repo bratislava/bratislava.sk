@@ -24,22 +24,7 @@ query Homepage($locale: I18NLocaleCode!) {
           ...NewsCardBlog
         }
         header {
-          picture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          mobilePicture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          title
-          subtitle
+          ...HomepageHeader
         }
         cards {
           title
@@ -81,6 +66,24 @@ query Homepage($locale: I18NLocaleCode!) {
         }
       }
       id
+    }
+  }
+}
+
+fragment HomepageHeader on ComponentBlocksHomepageHeader {
+  headline
+  picture {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+  mobilePicture {
+    data {
+      attributes {
+        url
+      }
     }
   }
 }

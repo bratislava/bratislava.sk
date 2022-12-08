@@ -7,8 +7,10 @@
   },
   "options": {},
   "attributes": {
-    "subtitle": {
-      "type": "string"
+    "headline": {
+      "type": "text",
+      "required": true,
+      "default": "Ako vám môžeme pomôcť?"
     },
     "picture": {
       "type": "media",
@@ -31,9 +33,6 @@
         "videos",
         "audios"
       ]
-    },
-    "title": {
-      "type": "string"
     }
   }
 }
