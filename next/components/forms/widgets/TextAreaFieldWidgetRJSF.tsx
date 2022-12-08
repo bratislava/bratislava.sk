@@ -7,6 +7,7 @@ type TextAreaRJSFOptions = {
   description?: string
   className?: string
   tooltip?: string
+  explicitOptional?: boolean
 }
 
 interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
@@ -32,7 +33,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
     onChange,
   }: TextAreaFieldWidgetRJSFProps = props
 
-  const { description, tooltip, className }: TextAreaRJSFOptions = options
+  const { description, tooltip, explicitOptional, className }: TextAreaRJSFOptions = options
 
   const showErrorMessage = rawErrors && rawErrors.length > 0 ? rawErrors[0] : undefined
 
@@ -45,7 +46,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div className="my-2 mx-4 max-w-[320px]">
+    <div className="my-2 max-w-[320px]">
       <TextAreaField
         value={value}
         label={label}
@@ -55,6 +56,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         description={description}
         tooltip={tooltip}
         className={cx('h-[196px]', className)}
+        explicitOptional={explicitOptional}
         onChange={handleOnChange}
         errorMessage={showErrorMessage}
       />
