@@ -100,7 +100,7 @@ interface JsonSchemaItems {
   format?: string
 }
 
-interface JsonSchemaProperties {
+export interface JsonSchemaProperties {
   [key: string]: JsonSchema
 }
 

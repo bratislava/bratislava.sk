@@ -1,21 +1,24 @@
+import { JsonSchema } from '@backend/utils/forms'
 import { ApiError, submitEform } from '@utils/api'
 import { ErrorObject } from 'ajv'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
-import Button from './Button'
+import Button from '../Button'
+import StepSummaryRows from './StepSummaryRows'
 
 interface FinalStepProps {
   state: Record<string, any>
+  schema?: JsonSchema[]
   slug: string
 }
 
-// TODO styling + edit state type according to styling as needed
 // TODO find out if we need to submit to multiple different endpoints and allow configuration if so
-export const FinalStep = ({ state, slug }: FinalStepProps) => {
+export const FinalStep = ({ state, schema, slug }: FinalStepProps) => {
   const { t } = useTranslation('forms')
   const [errors, setErrors] = useState<Array<ErrorObject | string>>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
+
   const submit = async () => {
     try {
       // TODO do something more with the result then just showing success
@@ -38,19 +41,16 @@ export const FinalStep = ({ state, slug }: FinalStepProps) => {
   if (typeof state !== 'object' || state == null) {
     return null
   }
-  // TODO render according to design
+
   return (
     <div>
       <h1>Final step placeholder</h1>
-      {Object.keys(state).map((key) => (
-        <div>
-          <pre>
-            {key}: {JSON.stringify(state[key], null, '\t')}
-          </pre>
-        </div>
-      ))}
+      {schema?.map((step, key) => {
+        return <StepSummaryRows key={key} step={step} stateData={state} />
+      })}
       {successMessage && <p>{successMessage}</p>}
-      {!!errors?.length && errors.map((error) => <p className="text-error">{JSON.stringify(error)}</p>)}
+      {!!errors?.length &&
+        errors.map((error) => <p className="text-error">{JSON.stringify(error)}</p>)}
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
       <Button onPress={submit} text="Submit" />
     </div>

@@ -10,13 +10,13 @@ import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
 import { forceString } from '@utils/utils'
 import Button from 'components/forms/Button'
-import FinalStep from 'components/forms/FinalStep'
+import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { getEform } from '../../backend/utils/forms'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import { pageStyle, parseFooter, parseMainMenu } from '../../utils/page'
@@ -59,7 +59,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof getServerSideProps>) => {
+const FormTestPage = ({
+  footer,
+  mainMenu,
+  page,
+  eform,
+}: AsyncServerProps<typeof getServerSideProps>) => {
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
@@ -92,12 +97,12 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
           TODO form info
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf, 
-              otherwise displays summary with all data and submit button 
+          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf,
+              otherwise displays summary with all data and submit button
             */}
           {form.isComplete ? (
             <div>
-              <FinalStep state={form.state} slug={formSlug} />
+              <FinalStep state={form.state} slug={formSlug} schema={eform.schema.allOf} />
               <Button onPress={() => form.previous()} text="Previous" />
             </div>
           ) : (
@@ -121,7 +126,10 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />
-              <Button onPress={() => form.setStepIndex(form.stepIndex + 1)} text="[DEBUG] Go to next step" />
+              <Button
+                onPress={() => form.setStepIndex(form.stepIndex + 1)}
+                text="[DEBUG] Go to next step"
+              />
             </div>
           )}
         </SectionContainer>
