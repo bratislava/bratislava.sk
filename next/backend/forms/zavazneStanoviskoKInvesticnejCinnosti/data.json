@@ -17,11 +17,7 @@
     "investorTyp": "Právnicka osoba",
     "investorMenoPriezvisko": "Janko Hrasko",
     "investorMiestoPodnikania": "string",
-    "investorMesto": {
-      "code": "string",
-      "name": "string",
-      "wsEnumCode": "string"
-    },
+    "investorMesto": "mesto",
     "investorEmail": "investor@test.sk",
     "investorTelefon": "+4"
   },
@@ -42,16 +38,7 @@
   "konanie": {
     "konanieTyp": "Konanie o dodatočnom povolení zmeny dokončenej stavby",
     "ziadostOdovodnenie": "Iné",
-    "stavbaFotodokumentacia": [
-      {
-        "nazov": "string",
-        "prilozena": true
-      },
-      {
-        "nazov": "string",
-        "prilozena": true
-      }
-    ]
+    "stavbaFotodokumentacia": ["string", "string"]
   },
   "prilohy": {
     "projektovaDokumentacia": ["string"],

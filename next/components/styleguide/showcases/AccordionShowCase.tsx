@@ -1,4 +1,4 @@
-import Accordion from 'components/forms/Accordion'
+import Accordion from 'components/forms/simple-components/Accordion'
 import React from 'react'
 
 import { Stack } from '../Stack'

@@ -1,4 +1,4 @@
-import InputField from 'components/forms/InputField'
+import InputField from 'components/forms/widget-components/InputField/InputField'
 import React from 'react'
 
 import { Stack } from '../Stack'

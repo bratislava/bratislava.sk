@@ -4,12 +4,12 @@
 
 import { EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import validator from '@rjsf/validator-ajv8'
+import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
 import { forceString } from '@utils/utils'
-import Button from 'components/forms/Button'
+import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
@@ -72,6 +72,11 @@ const FormTestPage = ({
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
+
+  const customFormats = {
+    zip: /\b\d{5}\b/,
+  }
+  const validator = customizeValidator({ customFormats })
   return (
     <PageWrapper
       locale={page.locale}

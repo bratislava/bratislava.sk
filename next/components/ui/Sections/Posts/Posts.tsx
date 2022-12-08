@@ -50,7 +50,6 @@ export const getHoverColor = (color: Enum_Pagecategory_Color): string => {
       return 'hover:text-education-600'
     case Enum_Pagecategory_Color.Brown:
       return 'hover:text-culture-600'
-
     default:
       return 'hover:text-gray-600'
   }
@@ -126,7 +125,7 @@ export const Posts = ({
                     const card = newsCard.attributes
                     const tag = card.tag.data?.attributes
                     return (
-                      <div key={i}>
+                      <div key={i} className="relative">
                         {tag && (
                           <div className="mb-5">
                             <Tag
@@ -137,11 +136,10 @@ export const Posts = ({
                             />
                           </div>
                         )}
-                        <UILink href={`blog/${card.slug}`}>
+                        <UILink href={`/blog/${card.slug}`}>
                           <div
-                            // TODO hover:text-color (still don't work)
                             className={cx(
-                              `text-font mb-8 font-semibold underline`,
+                              `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
                               getHoverColor(tag?.pageCategory.data.attributes.color),
                             )}
                           >
@@ -228,7 +226,7 @@ export const Posts = ({
                     const card = newsCard.attributes
                     const tag = card.tag.data?.attributes
                     return (
-                      <div key={i}>
+                      <div key={i} className="relative">
                         {card.tag && (
                           <div className="mb-5">
                             <Tag
@@ -239,11 +237,12 @@ export const Posts = ({
                             />
                           </div>
                         )}
-                        <UILink href={`blog/${card.slug}`}>
+                        <UILink href={`/blog/${card.slug}`}>
                           <div
-                            className={`hover:text-${transformColorToCategory(
-                              tag.pageCategory.data.attributes.color,
-                            )} mb-8 font-semibold underline`}
+                            className={cx(
+                              `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
+                              getHoverColor(tag?.pageCategory.data.attributes.color),
+                            )}
                           >
                             {card.title}
                           </div>
@@ -271,21 +270,23 @@ export const Posts = ({
             </div>
           </HorizontalScrollWrapper>
           <div className="flex justify-center lg:hidden">
-            {/* TODO: change this button to custom button */}
-            <Button
-              variant="transparent"
-              className="text-20-medium mt-0 px-6 py-2 shadow-none"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-            >
-              {t('allNews')}
-            </Button>
+            <UILink href={t('rozkopavkyNews')}>
+              {/* TODO: change this button to custom button */}
+              <Button
+                variant="transparent"
+                className="text-20-medium mt-0 px-6 py-2 shadow-none"
+                icon={<ChevronRight />}
+                hoverIcon={<ArrowRight />}
+              >
+                {t('allNews')}
+              </Button>
+            </UILink>
           </div>
         </div>
       )}
       {activeTab > 2 && (
         <div className="text-h4-normal mt-14 items-end px-8 text-center">
-          {t('allInformationOnSite')}
+          {t('allInformationOnSite')}{' '}
           <UILink
             className="underline hover:text-gray-600"
             href="https://zverejnovanie.bratislava.sk"
@@ -293,7 +294,7 @@ export const Posts = ({
             <div className="lg:hidden">
               <br />
             </div>
-            <b> zverejnovanie.bratislava.sk</b>
+            <b>zverejnovanie.bratislava.sk</b>
           </UILink>
         </div>
       )}
