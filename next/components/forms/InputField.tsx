@@ -12,7 +12,7 @@ import FieldHeader from './FieldHeader'
 
 interface InputBase {
   label: string
-  type?: string
+  type?: 'text' | 'password'
   placeholder: string
   errorMessage?: string
   description?: string
@@ -59,7 +59,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         ...rest,
         placeholder,
         value,
-        type,
+        type: type !== 'password' ? 'text' : type,
         label,
         errorMessage,
         description,
@@ -114,7 +114,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     )
 
     return (
-      <div className="flex w-full max-w-xs flex-col">
+      <div className="flex w-full flex-col">
         <FieldHeader
           label={label}
           labelProps={labelProps}
