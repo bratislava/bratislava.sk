@@ -39,7 +39,8 @@
       "ui:options": {
         "tooltip": "Password hint",
         "leftIcon": "lock",
-        "type": "password"
+        "type": "password",
+        "spaceBottom": "large"
       }
     }
   },
