@@ -1,4 +1,4 @@
-import ProgressBar from 'components/forms/ProgressBar'
+import ProgressBar from 'components/forms/simple-components/ProgressBar'
 import React from 'react'
 
 import { Stack } from '../Stack'

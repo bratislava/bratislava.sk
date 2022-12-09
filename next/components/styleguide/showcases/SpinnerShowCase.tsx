@@ -1,4 +1,4 @@
-import Spinner from 'components/forms/Spinner'
+import Spinner from 'components/forms/simple-components/Spinner'
 import React from 'react'
 
 import { Stack } from '../Stack'
@@ -8,9 +8,9 @@ const SpinnerShowCase = () => {
   return (
     <Wrapper direction="column" title="Spinner">
       <Stack direction="row">
-        <Spinner size='sm'/>
-        <Spinner size='md'/>
-        <Spinner size='lg'/>
+        <Spinner size="sm" />
+        <Spinner size="md" />
+        <Spinner size="lg" />
       </Stack>
     </Wrapper>
   )
