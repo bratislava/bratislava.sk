@@ -8,7 +8,7 @@ import { RefObject, useEffect, useRef, useState } from 'react'
 const buildRJSFError = (path: string[], errorMsg: string | undefined): ErrorSchema => {
   return path.reduceRight(
     (memo: object, arrayValue: string) => {
-      const error = {}
+      const error: any = {}
       error[arrayValue] = memo
       return error
     },
@@ -67,7 +67,7 @@ const validateAsyncProperties = async (
 export const useFormStepper = (eformSlug: string, schema: any) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
-  const [extraErrors, setExtraErrors] = useState<ErrorSchema | null>(null)
+  const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast
@@ -87,11 +87,10 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
         formRef?.current?.state.formData,
         [],
       )
+      setExtraErrors(errors)
+
       if (Object.keys(errors).length > 0) {
-        setExtraErrors(errors)
         isValid = false
-      } else {
-        setExtraErrors(null)
       }
     }
 
