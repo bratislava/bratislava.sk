@@ -1,18 +1,18 @@
-import { StrictRJSFSchema } from '@rjsf/utils'
+import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import cx from 'classnames'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-interface InputFieldRJSFOptions extends WidgetOptions {
+type InputFieldRJSFOptions = {
   type?: 'text' | 'password'
   resetIcon?: boolean
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   size?: 'large' | 'default' | 'small'
-}
+} & WidgetOptions
 
-interface InputFieldWidgetRJSFProps {
+interface InputFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: InputFieldRJSFOptions
   value: string
@@ -64,7 +64,7 @@ const InputFieldWidgetRJSF = ({
   }
 
   return (
-    <WidgetWrapper className={cx(sizeHandler())} spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper className={cx('', sizeHandler())} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}

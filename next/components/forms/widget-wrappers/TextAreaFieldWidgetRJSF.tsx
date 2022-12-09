@@ -1,3 +1,4 @@
+import { WidgetProps } from '@rjsf/utils'
 import cx from 'classnames'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
@@ -6,7 +7,7 @@ import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 
 type TextAreaRJSFOptions = WidgetOptions
 
-interface TextAreaFieldWidgetRJSFProps {
+interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
   value: string
   label: string
   placeholder?: string

@@ -1,4 +1,4 @@
-import { EnumOptionsType, StrictRJSFSchema } from '@rjsf/utils'
+import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
@@ -6,15 +6,15 @@ import React from 'react'
 import Radio from '../widget-components/RadioButton/Radio'
 import RadioGroup from '../widget-components/RadioButton/RadioGroup'
 
-interface RadioButtonRJSFOptions extends WidgetOptions {
+type RadioButtonRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   dropdownDivider?: boolean
   selectAllOption?: boolean
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
   variant?: 'basic' | 'boxed' | 'card'
-}
+} & WidgetOptions
 
-interface RadioButtonFieldWidgetRJSFProps {
+interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: RadioButtonRJSFOptions
   value: any | any[]

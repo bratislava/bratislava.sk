@@ -1,5 +1,5 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
-import { StrictRJSFSchema } from '@rjsf/utils'
+import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
@@ -7,7 +7,7 @@ import { useEffectOnce } from 'usehooks-ts'
 import Upload from '../widget-components/Upload/Upload'
 import UploadRJSFOptions from '../widget-components/Upload/UploadRJSFOptions'
 
-interface UploadWidgetRJSFProps {
+interface UploadWidgetRJSFProps extends WidgetProps {
   options: UploadRJSFOptions
   schema: StrictRJSFSchema
   value: string | string[]

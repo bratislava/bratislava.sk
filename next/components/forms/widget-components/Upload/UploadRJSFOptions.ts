@@ -1,11 +1,11 @@
 import { EnumOptionsType } from '@rjsf/utils'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 
-interface UploadRJSFOptions extends WidgetOptions {
+type UploadRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   size?: number
   accept?: string
   type?: 'button' | 'dragAndDrop'
-}
+} & WidgetOptions
 
 export default UploadRJSFOptions

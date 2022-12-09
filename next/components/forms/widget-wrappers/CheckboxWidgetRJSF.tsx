@@ -1,4 +1,4 @@
-import { EnumOptionsType, StrictRJSFSchema } from '@rjsf/utils'
+import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
@@ -6,15 +6,15 @@ import React from 'react'
 import Checkbox from '../widget-components/Checkbox/Checkbox'
 import CheckboxGroup from '../widget-components/Checkbox/CheckboxGroup'
 
-interface CheckboxesRJSFOptions extends WidgetOptions {
+type CheckboxesRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   variant?: 'basic' | 'boxed'
   error?: boolean
   isIndeterminate?: boolean
   isDisabled?: boolean
-}
+} & WidgetOptions
 
-interface CheckboxesWidgetRJSFProps {
+interface CheckboxesWidgetRJSFProps extends WidgetProps {
   options: CheckboxesRJSFOptions
   value: string[]
   schema: StrictRJSFSchema

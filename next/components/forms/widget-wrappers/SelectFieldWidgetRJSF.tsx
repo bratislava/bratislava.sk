@@ -1,17 +1,17 @@
-import { EnumOptionsType, StrictRJSFSchema } from '@rjsf/utils'
+import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 
 import SelectField from '../widget-components/SelectField/SelectField'
 
-interface SelectRJSFOptions extends WidgetOptions {
+type SelectRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   dropdownDivider?: boolean
   selectAllOption?: boolean
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-}
+} & WidgetOptions
 
-interface SelectFieldWidgetRJSFProps {
+interface SelectFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: SelectRJSFOptions
   value: any | any[]
