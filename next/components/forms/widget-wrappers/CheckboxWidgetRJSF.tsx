@@ -1,24 +1,20 @@
-import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
+import { EnumOptionsType, StrictRJSFSchema } from '@rjsf/utils'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
 import Checkbox from '../widget-components/Checkbox/Checkbox'
 import CheckboxGroup from '../widget-components/Checkbox/CheckboxGroup'
 
-type CheckboxesRJSFOptions = {
+interface CheckboxesRJSFOptions extends WidgetOptions {
   enumOptions?: EnumOptionsType[]
-  tooltip?: string
-  description?: string
-  className?: string
   variant?: 'basic' | 'boxed'
   error?: boolean
   isIndeterminate?: boolean
   isDisabled?: boolean
-  spaceBottom?: FormSpacingType
-  spaceTop?: FormSpacingType
 }
 
-interface CheckboxesWidgetRJSFProps extends WidgetProps {
+interface CheckboxesWidgetRJSFProps {
   options: CheckboxesRJSFOptions
   value: string[]
   schema: StrictRJSFSchema
@@ -30,12 +26,7 @@ const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   const { enumOptions, className, spaceBottom = 'none', spaceTop = 'default' } = options
   if (!enumOptions) return <div />
   return (
-    <div
-      style={{
-        paddingBottom: formSpacingHandler(spaceBottom),
-        paddingTop: formSpacingHandler(spaceTop),
-      }}
-    >
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <CheckboxGroup value={value} onChange={onChange} className={className}>
         {enumOptions.map((option: any) => {
           return (
@@ -53,7 +44,7 @@ const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
           )
         })}
       </CheckboxGroup>
-    </div>
+    </WidgetWrapper>
   )
 }
 

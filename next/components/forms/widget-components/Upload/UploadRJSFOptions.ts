@@ -1,14 +1,11 @@
 import { EnumOptionsType } from '@rjsf/utils'
-import { FormSpacingType } from '@utils/formsHelper'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 
-type UploadRJSFOptions = {
+interface UploadRJSFOptions extends WidgetOptions {
   enumOptions?: EnumOptionsType[]
   size?: number
   accept?: string
   type?: 'button' | 'dragAndDrop'
-  className?: string
-  spaceBottom?: FormSpacingType
-  spaceTop?: FormSpacingType
 }
 
 export default UploadRJSFOptions

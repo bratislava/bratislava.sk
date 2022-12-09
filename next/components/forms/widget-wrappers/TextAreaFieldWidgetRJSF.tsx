@@ -1,19 +1,12 @@
-import { WidgetProps } from '@rjsf/utils'
-import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
 import cx from 'classnames'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 
 import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 
-type TextAreaRJSFOptions = {
-  description?: string
-  className?: string
-  tooltip?: string
-  explicitOptional?: boolean
-  spaceBottom?: FormSpacingType
-  spaceTop?: FormSpacingType
-}
+type TextAreaRJSFOptions = WidgetOptions
 
-interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
+interface TextAreaFieldWidgetRJSFProps {
   value: string
   label: string
   placeholder?: string
@@ -56,13 +49,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div
-      className="max-w-[320px]"
-      style={{
-        paddingBottom: formSpacingHandler(spaceBottom),
-        paddingTop: formSpacingHandler(spaceTop),
-      }}
-    >
+    <WidgetWrapper className="max-w-[320px]" spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <TextAreaField
         value={value}
         label={label}
@@ -76,7 +63,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         onChange={handleOnChange}
         errorMessage={showErrorMessage}
       />
-    </div>
+    </WidgetWrapper>
   )
 }
 

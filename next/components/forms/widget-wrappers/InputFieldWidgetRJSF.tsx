@@ -1,20 +1,18 @@
-import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import InputField from 'components/forms/widget-components/InputField/InputField'
+import { StrictRJSFSchema } from '@rjsf/utils'
 import cx from 'classnames'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import InputField from 'components/forms/widget-components/InputField/InputField'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-type InputFieldRJSFOptions = {
-  tooltip?: string
+interface InputFieldRJSFOptions extends WidgetOptions {
   type?: 'text' | 'password'
-  description?: string
-  className?: string
   resetIcon?: boolean
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
-  explicitOptional?: boolean
   size?: 'large' | 'default' | 'small'
 }
 
-interface InputFieldWidgetRJSFProps extends WidgetProps {
+interface InputFieldWidgetRJSFProps {
   label: string
   options: InputFieldRJSFOptions
   value: string
@@ -36,8 +34,18 @@ const InputFieldWidgetRJSF = ({
   disabled,
   onChange,
 }: InputFieldWidgetRJSFProps) => {
-  const { description, tooltip, className, resetIcon, leftIcon, explicitOptional, type, size } =
-    options
+  const {
+    description,
+    tooltip,
+    className,
+    resetIcon,
+    leftIcon,
+    explicitOptional,
+    type,
+    size,
+    spaceBottom = 'none',
+    spaceTop = 'default',
+  } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
@@ -56,7 +64,7 @@ const InputFieldWidgetRJSF = ({
   }
 
   return (
-    <div className={cx('', sizeHandler())}>
+    <WidgetWrapper className={cx(sizeHandler())} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}
@@ -73,7 +81,7 @@ const InputFieldWidgetRJSF = ({
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
       />
-    </div>
+    </WidgetWrapper>
   )
 }
 export default InputFieldWidgetRJSF

@@ -1,14 +1,13 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
-import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import { formSpacingHandler } from '@utils/formsHelper'
-import cx from 'classnames'
-import { useEffect, useState } from 'react'
+import { StrictRJSFSchema } from '@rjsf/utils'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
+import { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
 import Upload from '../widget-components/Upload/Upload'
 import UploadRJSFOptions from '../widget-components/Upload/UploadRJSFOptions'
 
-interface UploadWidgetRJSFProps extends WidgetProps {
+interface UploadWidgetRJSFProps {
   options: UploadRJSFOptions
   schema: StrictRJSFSchema
   value: string | string[]
@@ -87,12 +86,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   }
 
   return (
-    <div
-      style={{
-        paddingBottom: formSpacingHandler(spaceBottom),
-        paddingTop: formSpacingHandler(spaceTop),
-      }}
-    >
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <Upload
         type={type}
         multiple={multiple}
@@ -103,7 +97,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         disabled={disabled}
         onChange={handleOnChange}
       />
-    </div>
+    </WidgetWrapper>
   )
 }
 

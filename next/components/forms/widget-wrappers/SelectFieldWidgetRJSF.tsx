@@ -1,22 +1,17 @@
-import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
+import { EnumOptionsType, StrictRJSFSchema } from '@rjsf/utils'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 
 import SelectField from '../widget-components/SelectField/SelectField'
 
-type SelectRJSFOptions = {
+interface SelectRJSFOptions extends WidgetOptions {
   enumOptions?: EnumOptionsType[]
-  tooltip?: string
   dropdownDivider?: boolean
   selectAllOption?: boolean
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-  description?: string
-  className?: string
-  explicitOptional?: boolean
-  spaceBottom?: FormSpacingType
-  spaceTop?: FormSpacingType
 }
 
-interface SelectFieldWidgetRJSFProps extends WidgetProps {
+interface SelectFieldWidgetRJSFProps {
   label: string
   options: SelectRJSFOptions
   value: any | any[]
@@ -99,12 +94,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div
-      style={{
-        paddingBottom: formSpacingHandler(spaceBottom),
-        paddingTop: formSpacingHandler(spaceTop),
-      }}
-    >
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <SelectField
         type={type}
         label={label}
@@ -122,7 +112,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
       />
-    </div>
+    </WidgetWrapper>
   )
 }
 

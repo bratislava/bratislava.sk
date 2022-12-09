@@ -1,24 +1,20 @@
-import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import { formSpacingHandler, FormSpacingType } from '@utils/formsHelper'
+import { EnumOptionsType, StrictRJSFSchema } from '@rjsf/utils'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
 import Radio from '../widget-components/RadioButton/Radio'
 import RadioGroup from '../widget-components/RadioButton/RadioGroup'
 
-type RadioButtonRJSFOptions = {
+interface RadioButtonRJSFOptions extends WidgetOptions {
   enumOptions?: EnumOptionsType[]
-  tooltip?: string
   dropdownDivider?: boolean
   selectAllOption?: boolean
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-  description?: string
-  className?: string
   variant?: 'basic' | 'boxed' | 'card'
-  spaceBottom?: FormSpacingType
-  spaceTop?: FormSpacingType
 }
 
-interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
+interface RadioButtonFieldWidgetRJSFProps {
   label: string
   options: RadioButtonRJSFOptions
   value: any | any[]
@@ -36,12 +32,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
 
   if (!enumOptions || Array.isArray(value)) return null
   return (
-    <div
-      style={{
-        paddingBottom: formSpacingHandler(spaceBottom),
-        paddingTop: formSpacingHandler(spaceTop),
-      }}
-    >
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <RadioGroup value={value} onChange={onChange} className={className}>
         {enumOptions.map((radioElement: any) => {
           return (
@@ -58,7 +49,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
           )
         })}
       </RadioGroup>
-    </div>
+    </WidgetWrapper>
   )
 }
 

@@ -1,4 +1,4 @@
-export type FormSpacingType = 'large' | 'default' | 'small' | 'none'
+import { FormSpacingType } from 'components/forms/types/WidgetOptions'
 
 export const formSpacingHandler = (space: FormSpacingType): string => {
   switch (space) {
