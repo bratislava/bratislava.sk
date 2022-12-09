@@ -2,23 +2,27 @@ import { vznDefaultFilters, VznFilters } from '@backend/meili/fetchers/vznFetche
 import { BasicSearch } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
+import { useQueryParam } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
 import DocumentListResults from './DocumentListResults'
 
 const DocumentList = () => {
-  const [searchInputValue, setSearchInputValue] = useState<string>('')
   const { t } = useTranslation()
   const [filters, setFilters] = useState<VznFilters>(vznDefaultFilters)
-  const debouncedSearchInputValue = useDebounce<string>(searchInputValue, 300)
-  const [searchValue, setSearchValue] = useState<string>(searchInputValue)
+
+  const [routerQueryValue] = useQueryParam<string>('keyword')
+  const [input, setInput] = useState<string>('')
+  const debouncedInput = useDebounce<string>(input, 300)
+  const [searchValue, setSearchValue] = useState<string>(input)
 
   useEffect(() => {
-    if (debouncedSearchInputValue !== searchValue) {
-      setSearchValue(debouncedSearchInputValue)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchInputValue])
+    setInput(routerQueryValue)
+  }, [routerQueryValue])
+
+  useEffect(() => {
+    setSearchValue(debouncedInput)
+  }, [debouncedInput])
 
   useEffect(() => {
     if (filters.search !== searchValue) {
@@ -38,8 +42,8 @@ const DocumentList = () => {
           placeholder={t('searching')}
           title={t('searching')}
           buttonText={t('search')}
-          input={searchInputValue}
-          setInput={setSearchInputValue}
+          input={input}
+          setInput={setInput}
           setSearchQuery={setSearchValue}
         />
       </div>

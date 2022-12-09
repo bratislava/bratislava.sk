@@ -10,7 +10,8 @@
       "ui:options": {
         "tooltip": "First name hint",
         "resetIcon": true,
-        "leftIcon": "person"
+        "leftIcon": "person",
+        "size": "default"
       }
     },
     "lastName": {
@@ -20,7 +21,8 @@
       "ui:options": {
         "tooltip": "Last name hint",
         "resetIcon": true,
-        "leftIcon": "person"
+        "leftIcon": "person",
+        "size": "default"
       }
     },
     "phone": {
@@ -41,6 +43,16 @@
         "leftIcon": "lock",
         "type": "password",
         "spaceBottom": "large"
+      }
+    },
+    "psc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSC",
+      "ui:options": {
+        "tooltip": "PSC hint, only numbers",
+        "description": "Only numbers",
+        "size": "small"
       }
     }
   },
