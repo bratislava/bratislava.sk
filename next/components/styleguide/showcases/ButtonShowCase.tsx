@@ -1,14 +1,11 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import SearchIcon from '@assets/images/forms/search-icon.svg'
 
-import Button from '../../forms/Button'
+import Button from '../../forms/simple-components/Button'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-
-interface ButtonShowCaseProps {
-
-}
+interface ButtonShowCaseProps {}
 
 const ButtonShowCase = ({}: ButtonShowCaseProps) => {
   return (
@@ -43,7 +40,12 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="brand-outline" text="Button" startIcon={<SearchIcon />} />
         <Button variant="brand-outline" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="brand-outline" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="brand-outline"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="brand-outline" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="brand-outline" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
         <Button
@@ -70,10 +72,21 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="black" text="Button" startIcon={<SearchIcon />} />
         <Button variant="black" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="black" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="black" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="black" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
-        <Button variant="black" text="Button" size="sm" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black"
+          text="Button"
+          size="sm"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
       </Stack>
       <Stack>
         <Button variant="black" icon={<SearchIcon />} />
@@ -91,7 +104,12 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="black-outline" text="Button" startIcon={<SearchIcon />} />
         <Button variant="black-outline" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="black-outline" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black-outline"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="black-outline" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="black-outline" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
         <Button
@@ -118,7 +136,12 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button variant="negative" text="Button" startIcon={<SearchIcon />} />
         <Button variant="negative" text="Button" endIcon={<ArrowRightIcon />} />
-        <Button variant="negative" text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="negative"
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon />}
+        />
         <Button variant="negative" text="Button" size="sm" startIcon={<SearchIcon />} />
         <Button variant="negative" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
         <Button

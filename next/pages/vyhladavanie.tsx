@@ -46,19 +46,18 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
   const { t } = useTranslation('common')
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
+  const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState<string>('')
-  const [routerSearchQuery] = useQueryParam('keyword', withDefault(StringParam, ''))
-
-  const debouncedSearchInputValue = useDebounce<string>(input, 300)
-
-  const [searchQuery, setSearchQuery] = useState<string>(debouncedSearchInputValue)
+  const debouncedInput = useDebounce<string>(input, 300)
+  const [searchValue, setSearchValue] = useState<string>(debouncedInput)
 
   useEffect(() => {
-    if (debouncedSearchInputValue !== searchQuery) {
-      setSearchQuery(debouncedSearchInputValue)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchInputValue])
+    setInput(routerQueryValue)
+  }, [routerQueryValue])
+
+  useEffect(() => {
+    setSearchValue(debouncedInput)
+  }, [debouncedInput])
 
   const defaultOptions = [
     { key: 'articles', value: t('articles') },
@@ -70,14 +69,9 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
   const pagesSelected = checkedOptions.some(({ key }) => key === 'pages')
   const usersSelected = checkedOptions.some(({ key }) => key === 'users')
 
-  useEffect(() => {
-    setInput(routerSearchQuery)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const pagesFilters = { search: searchQuery }
-  const blogPostsFilters = { search: searchQuery, page: 1, pageSize: 6 }
-  const usersFilters = { search: searchQuery }
+  const pagesFilters = { search: searchValue }
+  const blogPostsFilters = { search: searchValue, page: 1, pageSize: 6 }
+  const usersFilters = { search: searchValue }
 
   return (
     <PageWrapper
@@ -105,7 +99,7 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
               handleSelect={setCheckedOptions}
               input={input}
               setInput={setInput}
-              setSearchQuery={setSearchQuery}
+              setSearchQuery={setSearchValue}
             />
 
             {blogPostsSelected && <BlogPostsResults filters={blogPostsFilters} />}

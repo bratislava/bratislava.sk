@@ -61,7 +61,12 @@ export interface BlogSearchCardProps {
   item: BlogItem
 }
 
-export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, item }: BlogSearchCardProps) => {
+export const BlogSearchCard = ({
+  className,
+  imageClassName,
+  fullCardSizeImage,
+  item,
+}: BlogSearchCardProps) => {
   const { Link: UILink } = useUIContext()
 
   const { slug, tag, coverImage, title } = item.attributes
@@ -78,7 +83,7 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           className,
           'w-full',
           { 'hidden lg:flex lg:flex-row': !fullCardSizeImage },
-          { hidden: fullCardSizeImage }
+          { hidden: fullCardSizeImage },
         )}
         hoverable
       >
@@ -100,12 +105,17 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
           >
             {headline}
           </div>
-          <div className="line-clamp-2 text-20-semibold overflow-hidden text-ellipsis">{title} </div>
+          <div className="text-20-semibold line-clamp-2">{title} </div>
           <div>{date}</div>
         </div>
       </Panel>
       <Panel
-        className={cx('group', className, { 'flex lg:hidden': !fullCardSizeImage }, { flex: fullCardSizeImage })}
+        className={cx(
+          'group',
+          className,
+          { 'flex lg:hidden': !fullCardSizeImage },
+          { flex: fullCardSizeImage },
+        )}
         hoverable
       >
         <UILink href={`/blog/${slug}`}>
@@ -126,8 +136,11 @@ export const BlogSearchCard = ({ className, imageClassName, fullCardSizeImage, i
                 {headline}
               </div>
               <div className="flex">
-                <div className="line-clamp-2 text-20-semibold overflow-hidden text-white">{title}</div>
-                <VerticalCardButton className="invisible shrink-0 group-hover:lg:visible" size="medium">
+                <div className="text-20-semibold line-clamp-2 text-white">{title}</div>
+                <VerticalCardButton
+                  className="invisible shrink-0 group-hover:lg:visible"
+                  size="medium"
+                >
                   <ArrowRightShort className="scale-125" />
                 </VerticalCardButton>
               </div>

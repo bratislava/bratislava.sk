@@ -4,19 +4,19 @@
 
 import { EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import validator from '@rjsf/validator-ajv8'
+import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
 import { forceString } from '@utils/utils'
-import Button from 'components/forms/Button'
-import FinalStep from 'components/forms/FinalStep'
+import Button from 'components/forms/simple-components/Button'
+import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { getEform } from '../../backend/utils/forms'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import { pageStyle, parseFooter, parseMainMenu } from '../../utils/page'
@@ -59,7 +59,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof getServerSideProps>) => {
+const FormTestPage = ({
+  footer,
+  mainMenu,
+  page,
+  eform,
+}: AsyncServerProps<typeof getServerSideProps>) => {
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
@@ -67,6 +72,11 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
+
+  const customFormats = {
+    zip: /\b\d{5}\b/,
+  }
+  const validator = customizeValidator({ customFormats })
   return (
     <PageWrapper
       locale={page.locale}
@@ -92,8 +102,8 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
           TODO form info
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf, 
-              otherwise displays summary with all data and submit button 
+          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf,
+              otherwise displays summary with all data and submit button
             */}
           {form.isComplete ? (
             <div>
@@ -121,7 +131,10 @@ const FormTestPage = ({ footer, mainMenu, page, eform }: AsyncServerProps<typeof
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />
-              <Button onPress={() => form.setStepIndex(form.stepIndex + 1)} text="[DEBUG] Go to next step" />
+              <Button
+                onPress={() => form.setStepIndex(form.stepIndex + 1)}
+                text="[DEBUG] Go to next step"
+              />
             </div>
           )}
         </SectionContainer>
