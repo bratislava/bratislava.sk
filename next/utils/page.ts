@@ -99,35 +99,31 @@ export const COLOR_VARIABLES: {
 const getColorsVariables = (pageCategory: string) =>
   COLOR_VARIABLES[pageCategory] ?? COLOR_VARIABLES.main
 
-// We get colors from the server and we need to transorm it to category.
-// Function which get color (red, blue, green...) and tranform it to category (main, transport, environment ...)
-export const transformColorToCategory = (pageColor: string): string => {
-  let category: string
+// We get colors from the server, and we need to transform it to category.
+// Function which get color (red, blue, green...) and transform it to category (main, transport, environment ...)
+export const transformColorToCategory = (pageColor: string) => {
   switch (pageColor) {
     case 'red':
-      category = 'main'
-      break
+      return 'main'
+
     case 'blue':
-      category = 'transport'
-      break
+      return 'transport'
+
     case 'green':
-      category = 'environment'
-      break
+      return 'environment'
+
     case 'yellow':
-      category = 'social'
-      break
+      return 'social'
+
     case 'purple':
-      category = 'education'
-      break
+      return 'education'
+
     case 'brown':
-      category = 'culture'
-      break
+      return 'culture'
 
     default:
-      category = pageColor
-      break
+      return pageColor
   }
-  return category
 }
 
 // Return hover text color by Enum_Pagecategory_Color
@@ -281,7 +277,7 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
         getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c600
       }))`,
       icon: item.attributes.icon ?? '',
-      coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
+      category: transformColorToCategory(item.attributes.color),
       priority: item.attributes.priority ?? 0,
       title: item.attributes.title ?? '',
       subItems: sortBy(
