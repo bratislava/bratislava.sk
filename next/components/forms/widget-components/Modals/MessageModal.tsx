@@ -1,12 +1,12 @@
 import cx from 'classnames'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import Button from './Button'
-import CloseIcon from './icon-components/CloseIcon'
-import ErrorIcon from './icon-components/ErrorIcon'
-import InfoIcon from './icon-components/InfoIcon'
-import SuccessIcon from './icon-components/SuccessIcon'
-import WarningIcon from './icon-components/WarningIcon'
+import CloseIcon from '../../icon-components/CloseIcon'
+import ErrorIcon from '../../icon-components/ErrorIcon'
+import InfoIcon from '../../icon-components/InfoIcon'
+import SuccessIcon from '../../icon-components/SuccessIcon'
+import WarningIcon from '../../icon-components/WarningIcon'
+import Button from '../../simple-components/Button'
 
 type MessageModalBase = {
   type: 'warning' | 'info' | 'error' | 'success'
@@ -16,6 +16,7 @@ type MessageModalBase = {
   submitHandler: () => void
   cancelHandler: () => void
   confirmLabel: string
+  cancelLabel: string
   className?: string
 }
 
@@ -34,8 +35,13 @@ const MessageModal = ({
   cancelHandler,
   confirmLabel,
   show,
+  cancelLabel,
   className,
 }: MessageModalBase) => {
+  useEffect(() => {
+    document.body.style.overflow = show ? 'hidden' : 'visible'
+  }, [show])
+
   if (!show) {
     return null
   }
@@ -73,7 +79,7 @@ const MessageModal = ({
               className="text-base flex cursor-pointer flex-row items-center justify-center gap-2 py-1 px-2 font-semibold not-italic leading-6"
               onClick={cancelHandler}
             >
-              Zrušiť
+              {cancelLabel}
             </div>
             <Button
               onPress={submitHandler}

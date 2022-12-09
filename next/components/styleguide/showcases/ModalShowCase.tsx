@@ -1,14 +1,14 @@
-import Modal from 'components/forms/Modal'
+import Modal from 'components/forms/widget-components/Modals/Modal'
 import React, { useState } from 'react'
 
-import Button from '../../forms/Button'
-import MessageModal from '../../forms/MessageModal'
+import Button from '../../forms/simple-components/Button'
+import MessageModal from '../../forms/widget-components/Modals/MessageModal'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
 const firstScreen = () => {
   return (
-    <div className="flex h-full w-full items-center justify-center rounded-lg bg-[blue] p-2 text-white">
+    <div className="flex w-full items-center justify-center rounded-lg bg-[blue] p-2 text-white">
       First screen
     </div>
   )
@@ -16,7 +16,7 @@ const firstScreen = () => {
 
 const secondScreen = () => {
   return (
-    <div className="flex h-full w-full items-center justify-center rounded-lg bg-[orange] p-2 text-white">
+    <div className="flex w-full items-center justify-center rounded-lg bg-[orange] p-2 text-white">
       Second screen
     </div>
   )
@@ -24,7 +24,7 @@ const secondScreen = () => {
 
 const thirdScreen = () => {
   return (
-    <div className="flex h-full w-full items-center justify-center rounded-lg bg-[purple] p-2 text-white">
+    <div className="flex w-full items-center justify-center rounded-lg bg-[purple] p-2 text-white">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
       been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
       galley of type and scrambled it to make a type specimen book. It has survived not only five
@@ -36,7 +36,28 @@ const thirdScreen = () => {
   )
 }
 
+const singleModalContent = ({ onSubmit }: any) => {
+  return (
+    <div>
+      <div className="flex w-full items-center justify-center rounded-lg bg-[green] p-2 text-white">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </div>
+      <div className="flex justify-between mt-2">
+        <Button text="First" variant="black-outline" onPress={onSubmit} />
+        <Button text="Second" variant="black-outline" onPress={onSubmit} />
+      </div>
+    </div>
+  )
+}
+
 const ModalShowCase = () => {
+  const [modalSingleShow, setModalSingleShow] = useState(false)
   const [modalShow, setModalShow] = useState(false)
   const [modalShowSuccess, setModalShowSuccess] = useState(false)
   const [modalShowError, setModalShowError] = useState(false)
@@ -45,6 +66,12 @@ const ModalShowCase = () => {
   return (
     <Wrapper direction="column" title="Modal">
       <Stack direction="column">
+        <Button
+          size="sm"
+          variant="brand-outline"
+          text="Open modal single content modal window"
+          onPress={() => setModalSingleShow(true)}
+        />
         <Button
           size="sm"
           variant="brand-outline"
@@ -78,6 +105,20 @@ const ModalShowCase = () => {
         <Modal
           divider
           header="Some header"
+          show={modalSingleShow}
+          onClose={() => setModalSingleShow(false)}
+          onSubmit={() => {
+            alert('Modal submitted')
+            setModalSingleShow(false)
+          }}
+          content={singleModalContent}
+          className="w-[700px]"
+          confirmLabel="Finish"
+          cancelLabel="Zrušit"
+        />
+        <Modal
+          divider
+          header="Some header"
           show={modalShow}
           onClose={() => setModalShow(false)}
           onSubmit={() => {
@@ -87,6 +128,7 @@ const ModalShowCase = () => {
           content={[firstScreen, secondScreen, thirdScreen]}
           className="w-[700px]"
           confirmLabel="Finish"
+          cancelLabel="Zrušit"
         />
 
         <MessageModal
@@ -100,6 +142,7 @@ const ModalShowCase = () => {
             setModalShowSuccess(false)
           }}
           title="Lorem ipsum"
+          cancelLabel="Cancel"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </MessageModal>
@@ -115,6 +158,7 @@ const ModalShowCase = () => {
             setModalShowError(false)
           }}
           title="Lorem ipsum"
+          cancelLabel="Cancel"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </MessageModal>
@@ -131,6 +175,7 @@ const ModalShowCase = () => {
             setModalShowInfo(false)
           }}
           title="Lorem ipsum"
+          cancelLabel="Cancel"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -148,6 +193,7 @@ const ModalShowCase = () => {
             setModalShowWarning(false)
           }}
           title="Lorem ipsum"
+          cancelLabel="Cancel"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.

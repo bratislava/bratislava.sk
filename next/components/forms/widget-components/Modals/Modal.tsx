@@ -1,24 +1,26 @@
 import ArrowLeft from '@assets/images/forms/arrow-left.svg'
 import cx from 'classnames'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-import Button from './Button'
-import CloseIcon from './icon-components/CloseIcon'
+import CloseIcon from '../../icon-components/CloseIcon'
+import Button from '../../simple-components/Button'
 
 type ModalBase = {
   show: boolean
   divider?: boolean
   onClose: () => void
   onSubmit: () => void
-  content: (() => JSX.Element)[]
+  content: (({}: any) => JSX.Element)[] | (({}: any) => JSX.Element)
   header: string
   confirmLabel: string
+  cancelLabel: string
+  isStepper?: boolean
   className?: string
 }
 
 type ModalHeaderBase = Omit<
   ModalBase,
-  'content' | 'confirmLabel' | 'onSubmit' | 'show' | 'startedIndex'
+  'content' | 'confirmLabel' | 'cancelLabel' | 'onSubmit' | 'show' | 'startedIndex'
 > & {
   currentScreenIndex: number
   setCurrentScreenIndex: Dispatch<SetStateAction<number>>
@@ -31,6 +33,7 @@ const ModalHeader = ({
   currentScreenIndex,
   setCurrentScreenIndex,
   header,
+  isStepper,
 }: ModalHeaderBase) => {
   const headerStyle = cx('flex py-4 px-6 gap-6 bg-white rounded-t-lg justify-between', {
     'border-b-solid border-b-2 border-b-form-input-default': divider,
@@ -38,6 +41,8 @@ const ModalHeader = ({
   const headlineStyle = cx('font-semibold h-7 text-default leading-7 not-italic', {
     'text-center ml-1': currentScreenIndex > 0,
   })
+
+  if (!isStepper) return null
 
   return (
     <div className={headerStyle}>
@@ -71,7 +76,9 @@ const ModalFooter = ({
   currentScreenIndex,
   setCurrentScreenIndex,
   contentLength,
+  isStepper,
   confirmLabel,
+  cancelLabel,
   onSubmit,
 }: ModalFooterBase) => {
   const footerStyle = cx(
@@ -80,6 +87,9 @@ const ModalFooter = ({
       'border-t-solid border-t-2 border-t-form-input-default': divider,
     },
   )
+
+  if (!isStepper) return null
+
   return (
     <div className={footerStyle}>
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -87,7 +97,7 @@ const ModalFooter = ({
         className="text-base flex cursor-pointer items-center font-semibold not-italic leading-6"
         onClick={onClose}
       >
-        Zrušiť
+        {cancelLabel}
       </div>
       <Button
         onPress={() => {
@@ -109,14 +119,29 @@ const ModalFooter = ({
 const ModalBody = ({
   content,
   currentScreenIndex,
+  isStepper,
+  onSubmit,
 }: {
-  content: (() => JSX.Element)[]
+  content: ((props?: any) => JSX.Element)[] | ((props?: any) => JSX.Element)
   currentScreenIndex: number
+  isStepper: boolean
+  onSubmit: () => void
 }) => {
   return (
-    <div className="flex flex-col items-start bg-white p-6">
-      <div className="border-form-input-default flex w-full flex-col items-start rounded-lg border-2 border-dashed p-2">
-        {content.length - 1 >= currentScreenIndex && content[currentScreenIndex]()}
+    <div
+      className={cx('flex flex-col bg-white p-6 overflow-hidden', {
+        'rounded-10': !isStepper,
+      })}
+    >
+      {!isStepper ? (
+        <div className="ml-1 flex flex-row justify-end items-center">
+          <CloseIcon className="cursor-pointer" type="info" onClick={() => {}} />
+        </div>
+      ) : null}
+      <div className="overflow-auto flex w-full flex-col items-start rounded-lg p-2">
+        {Array.isArray(content)
+          ? content.length - 1 >= currentScreenIndex && content[currentScreenIndex]()
+          : content({ onSubmit })}
       </div>
     </div>
   )
@@ -130,9 +155,15 @@ const Modal = ({
   divider = false,
   header,
   confirmLabel,
+  cancelLabel,
   className,
 }: ModalBase) => {
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0)
+
+  useEffect(() => {
+    document.body.style.overflow = show ? 'hidden' : ''
+  }, [show])
+
   if (!show) {
     return null
   }
@@ -151,18 +182,26 @@ const Modal = ({
           currentScreenIndex={currentScreenIndex}
           setCurrentScreenIndex={setCurrentScreenIndex}
           divider={divider}
+          isStepper={Array.isArray(content)}
           onClose={() => {
             setCurrentScreenIndex(0)
             onClose()
           }}
         />
-        <ModalBody content={content} currentScreenIndex={currentScreenIndex} />
+        <ModalBody
+          content={content}
+          isStepper={Array.isArray(content)}
+          currentScreenIndex={currentScreenIndex}
+          onSubmit={onSubmit}
+        />
         <ModalFooter
           onSubmit={onSubmit}
           confirmLabel={confirmLabel}
           currentScreenIndex={currentScreenIndex}
           contentLength={content.length}
           setCurrentScreenIndex={setCurrentScreenIndex}
+          isStepper={Array.isArray(content)}
+          cancelLabel={cancelLabel}
           divider
           onClose={() => {
             setCurrentScreenIndex(0)
