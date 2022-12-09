@@ -156,8 +156,7 @@ export const buildMockData = ({
     ],
     inba: {
       title: 'in.ba',
-      content:
-        'V bratislavskom informačnom magazíne in.ba vždy nájdete to, čo o dianí v meste potrebuje vedieť.',
+      content: 'V bratislavskom informačnom magazíne in.ba vždy nájdete to, čo o dianí v meste potrebuje vedieť.',
       images: [inBaImage1, inBaImage2],
     },
     homepageMenu: MAIN_MENU,
@@ -342,6 +341,7 @@ const MAIN_MENU: MenuMainItem[] = [
     color: '#F8D7D4',
     colorDark: '#E46054',
     icon: 'castle',
+    coloredIcon: 'castle-colored',
     subItems: [
       {
         title: 'Správa mesta',
@@ -398,6 +398,7 @@ const MAIN_MENU: MenuMainItem[] = [
     color: '#D0ECF8',
     colorDark: '#0F6D95',
     icon: 'car-with-map',
+    coloredIcon: 'car-with-map-colored',
     subItems: [
       {
         title: 'Doprava',
@@ -470,6 +471,7 @@ const MAIN_MENU: MenuMainItem[] = [
     color: '#C4EFCE',
     colorDark: '#237C36',
     icon: 'house-with-tree',
+    coloredIcon: 'house-with-tree-colored',
     subItems: [
       {
         title: 'Životné prostredie',
@@ -518,6 +520,7 @@ const MAIN_MENU: MenuMainItem[] = [
     color: '#FFE781',
     colorDark: '#E3A612',
     icon: 'hand-heart',
+    coloredIcon: 'hand-heart-colored',
     subItems: [
       {
         title: 'Bývanie a ubytovanie',
@@ -569,6 +572,7 @@ const MAIN_MENU: MenuMainItem[] = [
     color: '#C7CAFF',
     colorDark: '#5158D8',
     icon: 'book-with-child',
+    coloredIcon: 'book-with-child-colored',
     subItems: [
       {
         title: 'Školstvo',
@@ -633,6 +637,7 @@ const MAIN_MENU: MenuMainItem[] = [
     color: '#FFCB9B',
     colorDark: '#D97921',
     icon: 'mask-with-ball',
+    coloredIcon: 'mask-with-ball-colored',
     subItems: [
       {
         title: 'Kalendár podujatí',
@@ -750,6 +755,7 @@ const MAIN_MENU_EN: MenuMainItem[] = [
     color: '#F8D7D4',
     colorDark: '#E46054',
     icon: 'castle',
+    coloredIcon: 'castle-colored',
     subItems: [
       {
         title: 'Správa mesta',
@@ -806,6 +812,7 @@ const MAIN_MENU_EN: MenuMainItem[] = [
     color: '#D0ECF8',
     colorDark: '#0F6D95',
     icon: 'car-with-map',
+    coloredIcon: 'car-with-map-colored',
     subItems: [
       {
         title: 'Doprava',
@@ -878,6 +885,7 @@ const MAIN_MENU_EN: MenuMainItem[] = [
     color: '#C4EFCE',
     colorDark: '#237C36',
     icon: 'house-with-tree',
+    coloredIcon: 'house-with-tree-colored',
     subItems: [
       {
         title: 'Životné prostredie',
@@ -926,6 +934,7 @@ const MAIN_MENU_EN: MenuMainItem[] = [
     color: '#FFE781',
     colorDark: '#E3A612',
     icon: 'hand-heart',
+    coloredIcon: 'hand-heart-colored',
     subItems: [
       {
         title: 'Bývanie a ubytovanie',
@@ -977,6 +986,7 @@ const MAIN_MENU_EN: MenuMainItem[] = [
     color: '#C7CAFF',
     colorDark: '#5158D8',
     icon: 'book-with-child',
+    coloredIcon: 'book-with-child-colored',
     subItems: [
       {
         title: 'Školstvo',
@@ -1041,6 +1051,7 @@ const MAIN_MENU_EN: MenuMainItem[] = [
     color: '#FFCB9B',
     colorDark: '#D97921',
     icon: 'mask-with-ball',
+    coloredIcon: 'mask-with-ball-colored',
     subItems: [
       {
         title: 'Kalendár podujatí',
