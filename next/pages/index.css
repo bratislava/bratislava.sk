@@ -55,20 +55,6 @@
   .blog-card-image {
     clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
   }
-  .news-small-content {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-  }
-  .text-truncate-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-  }
   .modal-close-mobile-right {
     right: 45%;
   }
@@ -162,20 +148,6 @@
 
   .listitem .typography-regular {
     @apply text-p-sm lg:text-p-base;
-  }
-
-  .line-clamp-4 {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-  }
-
-  .line-clamp-2 {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
   }
 
   .text-title-center h1,

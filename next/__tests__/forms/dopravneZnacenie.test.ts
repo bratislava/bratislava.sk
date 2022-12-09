@@ -1,17 +1,23 @@
-import { describe } from '@jest/globals';
+import { describe } from '@jest/globals'
 
-import { EFormValue } from '../../backend/forms';
-import data from '../../backend/forms/00603481.dopravneZnacenie.sk/data.json';
-import { getEform, loadAndBuildXml, validateDataWithJsonSchema, validateDataWithXsd } from '../../backend/utils/forms';
-import { transform } from '../../backend/utils/xslt';
+import { EFormValue } from '../../backend/forms'
+import data from '../../backend/forms/00603481.dopravneZnacenie.sk/data.json'
+import {
+  getEform,
+  loadAndBuildXml,
+  validateDataWithJsonSchema,
+  validateDataWithXsd,
+  xmlToJson,
+} from '../../backend/utils/forms'
+import { transform } from '../../backend/utils/xslt'
 
 describe('form dopravne znacenie', () => {
-  let eform : EFormValue;
-  let xml : string;
+  let eform: EFormValue
+  let xml: string
   beforeAll(() => {
     eform = getEform('dopravneZnacenie')
-    xml = loadAndBuildXml(eform.xmlTemplate, data, eform.schema);
-  });
+    xml = loadAndBuildXml(eform.xmlTemplate, data, eform.schema)
+  })
 
   test('validate data with JSON schema', () => {
     const errors = validateDataWithJsonSchema(data, eform.schema)
@@ -31,5 +37,10 @@ describe('form dopravne znacenie', () => {
   test('html transformation', async () => {
     const text = await transform(eform.htmlStylesheet, xml)
     expect(text).toBeTruthy()
+  })
+
+  test('xml to json', async () => {
+    const json = await xmlToJson(xml, eform.schema)
+    expect(data).toEqual(json)
   })
 })
