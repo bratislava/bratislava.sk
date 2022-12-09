@@ -27,6 +27,11 @@
             "password": {
               "type": "string",
               "title": "Password"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSC",
+              "format": "zip"
             }
           }
         },

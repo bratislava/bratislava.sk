@@ -9,8 +9,8 @@ import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
 import { AsyncServerProps } from '@utils/types'
 import { forceString } from '@utils/utils'
-import Button from 'components/forms/Button'
-import FinalStep from 'components/forms/FinalStep'
+import Button from 'components/forms/simple-components/Button'
+import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -74,8 +74,10 @@ const FormTestPage = ({
   const form = useFormStepper(formSlug, eform.schema)
 
   const keywords = form.keywords.map((k) => k.keyword)
-  const validator = customizeValidator({ ajvOptionsOverrides: { keywords } })
-
+  const customFormats = {
+    zip: /\b\d{5}\b/,
+  }
+  const validator = customizeValidator({ customFormats, ajvOptionsOverrides: { keywords } })
   return (
     <PageWrapper
       locale={page.locale}
@@ -101,8 +103,8 @@ const FormTestPage = ({
           TODO form info
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf, 
-              otherwise displays summary with all data and submit button 
+          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf,
+              otherwise displays summary with all data and submit button
             */}
           {form.isComplete ? (
             <div>
