@@ -1,9 +1,9 @@
 import { describe } from '@jest/globals'
+import { JsonSchema } from '@utils/utils'
 
 import xmlTemplate from '../../backend/forms/test/xmlTemplate'
 import {
   getEform,
-  JsonSchema,
   loadAndBuildXml,
   validateDataWithJsonSchema,
   validateDataWithXsd,
