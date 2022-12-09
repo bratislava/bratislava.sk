@@ -11,16 +11,14 @@ export type HomepageMenuIconSvgProps = {
   color: string
 }
 
-const HomepageMenuIcon = ({
-  icon,
-  color,
-  isColored,
-}: {
+type HomepageMenuIconProps = {
+  // TODO use color instead of icon
   icon: Enum_Pagecategory_Icon
   color: string
   isColored: boolean
-}) => {
-  // TODO pass color to icon compoents
+}
+
+const HomepageMenuIcon = ({ icon, color, isColored }: HomepageMenuIconProps) => {
   switch (icon) {
     case 'mesto_01':
       return <IconMain isColored={isColored} color={color} />
