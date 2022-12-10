@@ -175,7 +175,6 @@ const Homepage = ({
 
         <div className="bg-white">
           <WelcomeSection mainMenuItems={menuItems} homepageHeader={header} />
-
           <Waves
             className="md:mt-18 mt-6"
             waveColor="white"
