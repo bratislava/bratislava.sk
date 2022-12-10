@@ -189,7 +189,6 @@ const Homepage = ({
           <Posts
             readMoreText={t('readMore')}
             readMoreNewsText={t('seeAllNews')}
-            className="lg:mt-10"
             leftHighLight={homepage?.data?.attributes?.left_highlight}
             rightHighLight={homepage?.data?.attributes?.right_highlight}
             posts={posts}
@@ -223,9 +222,7 @@ const Homepage = ({
         />
 
         <SectionContainer className="bg-category-200 relative py-8">
-          <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">
-            {data.topNineTitle}
-          </h2>
+          <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
         <Waves
