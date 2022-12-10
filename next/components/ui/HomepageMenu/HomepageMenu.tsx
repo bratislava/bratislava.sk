@@ -30,6 +30,7 @@ interface MenuSubItem {
 export interface MenuMainItem {
   id: string
   icon: MenuIcon
+  coloredIcon: MenuIcon
   title: string
   color: string
   colorDark?: string
@@ -52,12 +53,14 @@ const HomepageMenu = ({ items }: IProps) => {
   return (
     <>
       <MenuMobileLayout items={items} />
-      <div ref={ref}>
-        <MenuDesktopLayout>
-          {items?.map((item, index) => {
-            return (
-              <div data-hover-id={index} key={index} className="group">
-                <HomePageCategoryButton item={item} activeId={activeId} setActiveId={setActiveId} />
+      <MenuDesktopLayout>
+        {items?.map((item, index) => {
+          const isActive = activeId === item.id
+
+          return (
+            <div data-hover-id={index} key={index} className="group">
+              <div ref={ref}>
+                <HomePageCategoryButton item={item} isActive={isActive} setActiveId={setActiveId} />
                 <Panel
                   overflowVisible
                   data-hover-id={index}
@@ -125,10 +128,10 @@ const HomepageMenu = ({ items }: IProps) => {
                   </div>
                 </Panel>
               </div>
-            )
-          })}
-        </MenuDesktopLayout>
-      </div>
+            </div>
+          )
+        })}
+      </MenuDesktopLayout>
     </>
   )
 }
