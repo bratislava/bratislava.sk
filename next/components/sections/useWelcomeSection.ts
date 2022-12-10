@@ -21,7 +21,7 @@ export const useWelcomeSection = (): HookResult => {
     }
     setMenuState(STICKY_MENU_STATE.HIDDEN)
   }
-  const { elementRef } = useIntersectionObserver({ threshold: 0.9 }, handleMenuState)
+  const { elementRef } = useIntersectionObserver({ threshold: 0 }, handleMenuState)
 
   return {
     menuState,

@@ -6,6 +6,7 @@ import React, { useRef, useState } from 'react'
 import { useOutsideClick } from 'rooks'
 
 import { Icon } from '../../atoms/icon/Icon'
+import { useClickOutsideHandler } from '../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import { MenuMainItem, Panel, Waves } from '../index'
 import { isItExternal } from './external-link'
 
@@ -55,11 +56,14 @@ const MenuCell = ({ item, isActive }: MenuCellProps) => (
 
 interface MenuPanelProps {
   item: MenuMainItem
+
+  onPanelClick(): void
 }
 
-const MenuPanel = ({ item }: MenuPanelProps) => {
+const MenuPanel = ({ item, onPanelClick }: MenuPanelProps) => {
   const [moreLinkHoverIdx, setMoreLinkHoverIdx] = React.useState(-1)
   const { Link: UILink } = useUIContext()
+  const { clickOutsideRef } = useClickOutsideHandler(onPanelClick)
 
   return (
     <div className="bg-gray-900/50 z-30 h-screen fixed top-[106px] inset-x-0 w-full transition delay-500 duration-300 ease-in-out text-left">
@@ -69,7 +73,7 @@ const MenuPanel = ({ item }: MenuPanelProps) => {
             {/* SUB-ITEMS */}
             {item.subItems?.map((subItem, j) => {
               return (
-                <div key={j}>
+                <div key={j} ref={clickOutsideRef}>
                   <button type="button" className="flex">
                     <UILink
                       href={isItExternal(subItem.url)}
@@ -132,7 +136,9 @@ const MenuPanel = ({ item }: MenuPanelProps) => {
 export const BAStickyMenu = ({ className, menuItems }: IProps) => {
   const clickOutsideRef = useRef<HTMLButtonElement | null>(null)
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null)
-  const handleOutsideClick = () => setActiveMenuId(null)
+  const handleOutsideClick = () => {
+    setActiveMenuId(null)
+  }
   useOutsideClick(clickOutsideRef, handleOutsideClick)
 
   const handleButtonClick = (buttonId: number): void => {
@@ -158,7 +164,7 @@ export const BAStickyMenu = ({ className, menuItems }: IProps) => {
           >
             <MenuCell item={item} isActive={i === activeMenuId} />
           </button>
-          {activeMenuId === i && <MenuPanel item={item} />}
+          {activeMenuId === i && <MenuPanel item={item} onPanelClick={handleOutsideClick} />}
         </div>
       ))}
     </menu>
