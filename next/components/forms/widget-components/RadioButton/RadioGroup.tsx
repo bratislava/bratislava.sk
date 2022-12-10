@@ -9,6 +9,7 @@ export const RadioContext = React.createContext(radioGroupState as RadioGroupSta
 type RadioGroupBase = {
   children: React.ReactNode
   value?: string
+  label: string
   defaultValue?: string
   isDisabled?: boolean
   isReadOnly?: boolean
@@ -19,10 +20,13 @@ type RadioGroupBase = {
 const RadioGroup = (props: RadioGroupBase) => {
   const { children, className } = props
   const state = useRadioGroupState(props)
-  const { radioGroupProps } = useRadioGroup({ ...props, label: uuidv4() }, state)
+  const { radioGroupProps, labelProps } = useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps} className={className}>
+      <span {...labelProps} className="text-20-semibold">
+        {props.label}
+      </span>
       <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
     </div>
   )

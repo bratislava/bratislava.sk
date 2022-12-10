@@ -9,7 +9,7 @@ const RadioButtonShowCase = () => {
   return (
     <Wrapper direction="column" title="Radio Button">
       <Stack direction="column">
-        <RadioGroup onChange={() => {}}>
+        <RadioGroup onChange={() => {}} label="Label">
           <Radio value="one" tooltip="This is some tooltip1">
             One
           </Radio>
@@ -22,7 +22,7 @@ const RadioButtonShowCase = () => {
         </RadioGroup>
       </Stack>
       <Stack direction="column">
-        <RadioGroup onChange={() => {}}>
+        <RadioGroup onChange={() => {}} label="Label">
           <Radio value="one1" variant="boxed" tooltip="This is some tooltip1">
             Some random
           </Radio>
@@ -35,7 +35,7 @@ const RadioButtonShowCase = () => {
         </RadioGroup>
       </Stack>
       <Stack direction="column">
-        <RadioGroup defaultValue="two" onChange={() => {}}>
+        <RadioGroup defaultValue="two" onChange={() => {}} label="Label">
           <Radio value="one2" variant="card" tooltip="This is some tooltip1" className="w-[400px]">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
             has been the industry's standard dummy text ever since the 1500s, when an unknown
