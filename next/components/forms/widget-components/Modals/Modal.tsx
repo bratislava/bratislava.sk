@@ -36,9 +36,9 @@ const ModalHeader = ({
   isStepper,
 }: ModalHeaderBase) => {
   const headerStyle = cx('flex py-4 px-6 gap-6 bg-white rounded-t-lg justify-between', {
-    'border-b-solid border-b-2 border-b-form-input-default': divider,
+    'border-b-solid border-b-form-input-default border-b-2': divider,
   })
-  const headlineStyle = cx('font-semibold h-7 text-default leading-7 not-italic', {
+  const headlineStyle = cx('text-default font-semibold h-7 leading-7 not-italic', {
     'text-center ml-1': currentScreenIndex > 0,
   })
 
@@ -82,9 +82,9 @@ const ModalFooter = ({
   onSubmit,
 }: ModalFooterBase) => {
   const footerStyle = cx(
-    'flex w-592 h-18 bg-white items-center justify-between py-3 px-6 gap-6 rounded-b-lg',
+    'w-592 flex h-18 bg-white items-center justify-between py-3 px-6 gap-6 rounded-b-lg',
     {
-      'border-t-solid border-t-2 border-t-form-input-default': divider,
+      'border-t-solid border-t-form-input-default border-t-2': divider,
     },
   )
 
