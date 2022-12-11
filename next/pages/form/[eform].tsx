@@ -68,7 +68,11 @@ const FormTestPage = ({
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
-  const formSlug = forceString(router.query.eform)
+  let formSlug = forceString(router.query.eform)
+  if (/^[\d.a-z-]+$/.test(formSlug) === false) {
+    formSlug = ''
+  }
+
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
