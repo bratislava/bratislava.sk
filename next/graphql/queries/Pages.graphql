@@ -244,6 +244,7 @@ fragment MainMenuItem on PageCategoryEntityResponseCollection {
       title
       color
       icon
+      iconHover
       priority
       subcategories {
         data {

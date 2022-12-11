@@ -7,25 +7,32 @@ import PersonIcon from '../icon-components/PersonIcon'
 type AccordionBase = {
   size: 'sm' | 'md' | 'lg'
   title: string
-  content: string
+  children: React.ReactNode
   icon?: boolean
+  shadow?: boolean
   className?: string
 }
 
-const Accordion = ({ title, content, size, icon = false, className }: AccordionBase) => {
+const Accordion = ({
+  title,
+  children,
+  size,
+  icon = false,
+  shadow = false,
+  className,
+}: AccordionBase) => {
   const [isActive, setIsActive] = useState(false)
 
-  const accordionContainerStyle = cx(
-    'flex flex-col gap-4 w-full border-2 border-solid rounded-xl bg-gray-0 hover:border-gray-500',
-    className,
-    {
-      'p-5': size === 'sm',
-      'py-6 px-8': size === 'md',
-      'py-8 px-10': size === 'lg',
-      'border-gray-200': !isActive,
-      'border-gray-700': isActive,
-    },
-  )
+  const accordionContainerStyle = cx('flex flex-col gap-4 w-full rounded-xl bg-gray-0', className, {
+    'p-5': size === 'sm',
+    'py-6 px-8': size === 'md',
+    'py-8 px-10': size === 'lg',
+    'border-gray-200': !isActive && !shadow,
+    'border-gray-700': isActive && !shadow,
+    'border-2 border-solid hover:border-gray-500': !shadow,
+    'hover:shadow-[0_8px_16px_0_rgba(0,0,0,0.08)]': shadow,
+    'shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]': !isActive && shadow,
+  })
 
   return (
     <div className={accordionContainerStyle}>
@@ -76,12 +83,15 @@ const Accordion = ({ title, content, size, icon = false, className }: AccordionB
       </div>
       {isActive && (
         <div
-          className={cx('flex w-full items-center font-normal not-italic', {
+          className={cx('flex font-normal not-italic', {
             'text-h-sm': size === 'sm',
             'text-p-md': size === 'lg' || size === 'md',
+            'ml-9': icon && size === 'sm',
+            'ml-11': icon && size === 'md',
+            'ml-12': icon && size === 'lg',
           })}
         >
-          {content}
+          {children}
         </div>
       )}
     </div>
