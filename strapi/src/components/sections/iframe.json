@@ -7,7 +7,7 @@
   "options": {},
   "attributes": {
     "url": {
-      "type": "string",
+      "type": "text",
       "required": true,
       "default": "https://www.google.com"
     },

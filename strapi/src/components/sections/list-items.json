@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_list_items",
   "info": {
-    "displayName": "ListItems"
+    "displayName": "ListItems",
+    "description": ""
   },
   "options": {},
   "attributes": {

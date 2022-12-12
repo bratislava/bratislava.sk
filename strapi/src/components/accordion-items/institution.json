@@ -1,7 +1,8 @@
 {
   "collectionName": "components_accordion_items_institutions",
   "info": {
-    "displayName": "Institution"
+    "displayName": "Institution",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,7 +10,7 @@
       "type": "string"
     },
     "url": {
-      "type": "string"
+      "type": "text"
     },
     "urlLabel": {
       "type": "string"

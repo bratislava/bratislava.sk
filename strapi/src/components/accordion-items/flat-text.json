@@ -2,7 +2,8 @@
   "collectionName": "components_accordion_items_flat_texts",
   "info": {
     "displayName": "Flat Text",
-    "icon": "adjust"
+    "icon": "adjust",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,17 +15,26 @@
     },
     "width": {
       "type": "enumeration",
-      "enum": ["narrow", "default", "wide", "full"]
+      "enum": [
+        "narrow",
+        "default",
+        "wide",
+        "full"
+      ]
     },
     "align": {
       "type": "enumeration",
-      "enum": ["left", "center", "right"]
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
     },
     "moreLinkTitle": {
       "type": "string"
     },
     "moreLinkUrl": {
-      "type": "string"
+      "type": "text"
     },
     "moreLinkPage": {
       "type": "relation",
