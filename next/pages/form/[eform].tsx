@@ -106,15 +106,13 @@ const FormTestPage = ({
               otherwise displays summary with all data and submit button
             */}
           {form.isComplete ? (
-            <div>
-              <FinalStep
-                state={form.state}
-                slug={formSlug}
-                schema={eform.schema}
-                onGoToStep={(step: number) => form.setStepIndex(step)}
-              />
-              <Button onPress={() => form.previous()} text="Previous" />
-            </div>
+            <FinalStep
+              state={form.state}
+              slug={formSlug}
+              schema={eform.schema}
+              onGoToStep={(step: number) => form.setStepIndex(step)}
+              onGoToPreviousStep={() => form.previous()}
+            />
           ) : (
             <div>
               <ThemedForm

@@ -15,10 +15,17 @@ interface FinalStepProps {
   schema?: StrictRJSFSchema
   slug: string
   onGoToStep: (step: number) => void
+  onGoToPreviousStep: () => void
 }
 
 // TODO find out if we need to submit to multiple different endpoints and allow configuration if so
-export const FinalStep = ({ state, schema, slug, onGoToStep }: FinalStepProps) => {
+export const FinalStep = ({
+  state,
+  schema,
+  slug,
+  onGoToStep,
+  onGoToPreviousStep,
+}: FinalStepProps) => {
   const { t } = useTranslation('forms')
   const [errors, setErrors] = useState<Array<ErrorObject | string>>([])
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
@@ -52,7 +59,10 @@ export const FinalStep = ({ state, schema, slug, onGoToStep }: FinalStepProps) =
       <Summary schema={schema} state={state} onGoToStep={onGoToStep} />
       <SummaryMessages errors={errors} successMessage={successMessage} />
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
-      <Button onPress={submit} text="Submit" />
+      <div className="flex flex-row gap-3">
+        <Button onPress={onGoToPreviousStep} text="Previous" />
+        <Button onPress={submit} text="Submit" />
+      </div>
     </div>
   )
 }

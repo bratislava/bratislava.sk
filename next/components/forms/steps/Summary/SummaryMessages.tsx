@@ -10,7 +10,11 @@ const SummaryMessages = ({ successMessage, errors }: SummaryMessagesProps) => {
     <div>
       {successMessage && <p>{successMessage}</p>}
       {!!errors?.length &&
-        errors.map((error) => <p className="text-error">{JSON.stringify(error)}</p>)}
+        errors.map((error, key) => (
+          <p key={key} className="text-error">
+            {JSON.stringify(error)}
+          </p>
+        ))}
     </div>
   )
 }
