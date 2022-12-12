@@ -32,7 +32,6 @@
             "psc": {
               "type": "string",
               "title": "PSC",
-              "minLength": 3,
               "format": "zip"
             }
           }

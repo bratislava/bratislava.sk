@@ -4,7 +4,7 @@
 
 import { EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { ErrorSchema, FormValidation, RJSFValidationError } from '@rjsf/utils'
+import { FormValidation } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
@@ -13,11 +13,12 @@ import { forceString } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
+import FormData from 'form-data'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { getEform, validateDataWithJsonSchema } from '../../backend/utils/forms'
+import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 import { pageStyle, parseFooter, parseMainMenu } from '../../utils/page'
@@ -60,13 +61,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const transformErrors = (errors: RJSFValidationError[]) => {
-  return errors.map((error: RJSFValidationError) => {
-    if (error.params.missingProperty) error.message = 'Req'
-    return error
-  })
-}
-
 const FormTestPage = ({
   footer,
   mainMenu,
@@ -81,18 +75,19 @@ const FormTestPage = ({
 
   const form = useFormStepper(formSlug, eform.schema)
 
-  const validateRequiredFormat = (form: any, formData: object, errors: FormValidation) => {
+  // TODO refactor when useFormStepper will refactored
+  const validateRequiredFormat = (formData: object, errors: FormValidation) => {
     const REQUIRED_VALUE = 'Required input'
     const formDataKeys = Object.keys(formData)
-    formDataKeys.forEach((key) => {
-      form?.currentSchema.properties[key]?.required?.forEach((req: string) => {
+    formDataKeys?.forEach((key) => {
+      form?.currentSchema?.properties[key]?.required?.forEach((req: string) => {
         !formData[key][req] && errors[key][req]?.addError(REQUIRED_VALUE)
       })
     })
   }
 
   const customValidate = (formData: object, errors: FormValidation) => {
-    validateRequiredFormat(form, formData, errors)
+    validateRequiredFormat(formData, errors)
     return errors
   }
 
@@ -153,7 +148,7 @@ const FormTestPage = ({
                 }}
                 onError={(e) => console.log('errors', e)}
                 customValidate={customValidate}
-                transformErrors={transformErrors}
+                // showErrorList={false}
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />

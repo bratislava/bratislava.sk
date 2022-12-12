@@ -52,11 +52,12 @@
       "ui:options": {
         "tooltip": "PSC hint, only numbers",
         "description": "Only numbers",
-        "size": "default"
+        "size": "small"
       }
     }
   },
   "fileUploads": {
+    "ui:hideError": true,
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
@@ -91,6 +92,7 @@
     }
   },
   "textAreas": {
+    "ui:hideError": true,
     "pros": {
       "ui:widget": "TextArea",
       "ui:label": false,
@@ -106,6 +108,7 @@
     }
   },
   "selectFields": {
+    "ui:hideError": true,
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,
@@ -134,6 +137,7 @@
     }
   },
   "chooseOneOf": {
+    "ui:hideError": true,
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
@@ -144,6 +148,7 @@
     }
   },
   "checkBoxes": {
+    "ui:hideError": true,
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,

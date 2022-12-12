@@ -29,7 +29,7 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
         <div className="w-96">
           <UploadedFile
             fileName="something_wrong.jp"
-            errorMessage="Error message"
+            errorMessage={['Error message']}
             onRemove={() => console.log('REMOVE')}
           />
         </div>

@@ -18,13 +18,13 @@ const TextAreaFieldShowCase = () => {
         <TextAreaField
           label="Label"
           placeholder="Placeholder"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           className="h-[200px]"
         />
         <TextAreaField
           label="Label"
           placeholder="Placeholder"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           description="Help text"
           disabled
         />
@@ -36,7 +36,7 @@ const TextAreaFieldShowCase = () => {
           label="Label"
           tooltip="InputField"
           placeholder="Placeholder"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
         />
         <TextAreaField
           label="Label"
@@ -44,7 +44,7 @@ const TextAreaFieldShowCase = () => {
           tooltip="InputField"
           placeholder="Placeholder"
           description="Help text"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>

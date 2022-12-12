@@ -37,7 +37,7 @@ type TimePickerBase = {
   required?: boolean
   explicitOptional?: boolean
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
 }
 
 const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(

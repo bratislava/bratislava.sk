@@ -19,7 +19,6 @@ interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: RadioButtonRJSFOptions
   value: any | any[]
-  errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string

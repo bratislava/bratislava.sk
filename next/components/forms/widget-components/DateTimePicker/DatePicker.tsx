@@ -37,7 +37,7 @@ type DatePickerBase = {
   required?: boolean
   explicitOptional?: boolean
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
 }
 
 const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(

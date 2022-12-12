@@ -42,12 +42,12 @@ type DateFieldBase = {
   explicitOptional?: boolean
   children?: ReactNode
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
   isOpen?: boolean
 }
 
 const DateField = ({
-  errorMessage,
+  errorMessage = [],
   disabled,
   children,
   label,
@@ -78,9 +78,9 @@ const DateField = ({
   )
   const dateFieldStyle = cx('mt-1 flex rounded-lg bg-white px-4 py-3 border-2', {
     'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
-    'border-error hover:border-error': errorMessage && !disabled,
+    'border-error hover:border-error': errorMessage?.length > 0 && !disabled,
     'bg-gray-100 border-gray-300 pointer-events-none': disabled,
-    'border-gray-700': isOpen && !disabled && !errorMessage,
+    'border-gray-700': isOpen && !disabled && !(errorMessage?.length > 0),
   })
   return (
     <>

@@ -95,7 +95,7 @@ const SelectFieldShowCase = () => {
       <Stack direction="column">
         <SelectField
           label="Select Field"
-          errorMessage="Test error message"
+          errorMessage={['Error message']}
           type="one"
           onChange={(value) => console.log(value)}
         />

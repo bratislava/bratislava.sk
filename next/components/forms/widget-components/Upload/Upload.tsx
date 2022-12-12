@@ -118,7 +118,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
         })
         .catch((error) => {
           console.log(error)
-          sanitizedFiles[id].errorMessage = 'File not uploaded'
+          sanitizedFiles[id].errorMessage = ['File not uploaded']
         })
         .finally(() => {
           sanitizedFiles[id].isUploading = false

@@ -26,7 +26,7 @@ interface SelectFieldProps {
   dropdownDivider?: boolean
   selectAllOption?: boolean
   placeholder?: string
-  errorMessage?: string
+  errorMessage?: string[]
   description?: string
   required?: boolean
   explicitOptional?: boolean
@@ -50,7 +50,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     description,
     tooltip,
     dropdownDivider,
-    errorMessage,
+    errorMessage = [],
     required,
     explicitOptional,
     disabled,
@@ -67,12 +67,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STYLES
   const selectClassName = cx(
-    'flex flex-row bg-white rounded-lg border-2 border-form-input-default',
+    'border-form-input-default flex flex-row bg-white rounded-lg border-2',
     {
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
         !disabled,
-      'border-error hover:border-error focus:border-error': errorMessage && !disabled,
-      'opacity-50 border-form-input-disabled': disabled,
+      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
+      'border-form-input-disabled opacity-50': disabled,
     },
     hashCode,
   )
