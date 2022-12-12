@@ -13,5 +13,5 @@ jobs:
           node-version: '16'
       - run: yarn --frozen-lockfile
 
-      - name: Tests check
+      - name: Tests
         run: yarn test:ci
