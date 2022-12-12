@@ -3,6 +3,7 @@
     "norender": true
   },
   "inputFields": {
+    "ui:hideError": true,
     "firstName": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -51,7 +52,7 @@
       "ui:options": {
         "tooltip": "PSC hint, only numbers",
         "description": "Only numbers",
-        "size": "small"
+        "size": "default"
       }
     }
   },

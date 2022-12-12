@@ -32,6 +32,7 @@
             "psc": {
               "type": "string",
               "title": "PSC",
+              "minLength": 3,
               "format": "zip"
             }
           }
@@ -67,9 +68,17 @@
               "type": "string",
               "title": "University",
               "oneOf": [
-                {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
-                {"const": "STU FCHPT"},
-                {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
+                {
+                  "const": "STU FEI",
+                  "title": "fakulta elektrotechniky a informatiky"
+                },
+                {
+                  "const": "STU FCHPT"
+                },
+                {
+                  "const": "STU FIIT",
+                  "title": "fakulta informatiky a informacnych technologii"
+                }
               ]
             },
             "diplomas": {
@@ -78,7 +87,14 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
+                "enum": [
+                  "ing.",
+                  "mgr.",
+                  "bc.",
+                  "phd.",
+                  "doc.",
+                  "prof."
+                ],
                 "enumNames": [
                   "Inzinier",
                   "Magister",
@@ -173,7 +189,10 @@
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits",
-              "default": ["kiwi","apple"],
+              "default": [
+                "kiwi",
+                "apple"
+              ],
               "uniqueItems": true,
               "items": {
                 "anyOf": [

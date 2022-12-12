@@ -1,7 +1,7 @@
-import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import InputField from 'components/forms/widget-components/InputField/InputField'
+import { StrictRJSFSchema, UiSchema, WidgetProps } from '@rjsf/utils'
 import cx from 'classnames'
-import React from 'react'
+import InputField from 'components/forms/widget-components/InputField/InputField'
+import React, { useEffect, useState } from 'react'
 
 type InputFieldRJSFOptions = {
   tooltip?: string
@@ -24,6 +24,7 @@ interface InputFieldWidgetRJSFProps extends WidgetProps {
   placeholder?: string
   schema: StrictRJSFSchema
   onChange: (value?: string) => void
+  rawErrors: string[]
 }
 
 const InputFieldWidgetRJSF = ({
@@ -35,12 +36,20 @@ const InputFieldWidgetRJSF = ({
   value,
   disabled,
   onChange,
+  rawErrors,
 }: InputFieldWidgetRJSFProps) => {
   const { description, tooltip, className, resetIcon, leftIcon, explicitOptional, type, size } =
     options
-
+  const [reqiredError, setRequiredError] = useState<string[]>([])
+  // console.log(rawErrors)
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
+  useEffect(() => {
+    if (rawErrors === undefined && required && !value) setRequiredError(['Required input'])
+    // required && rawErrors?.push('Required input')
+  }, [rawErrors, required, value])
+
+  // console.log(rawErrors, 'asdasdas')
   const sizeHandler = (): string => {
     switch (size) {
       case 'large':
@@ -54,7 +63,6 @@ const InputFieldWidgetRJSF = ({
         return 'w-full'
     }
   }
-
   return (
     <div className={cx('', sizeHandler())}>
       <InputField
@@ -62,7 +70,7 @@ const InputFieldWidgetRJSF = ({
         type={type}
         placeholder={placeholder}
         value={value}
-        errorMessage={errorMessage}
+        errorMessage={rawErrors?.join(', ')}
         required={required}
         disabled={disabled}
         description={description}
