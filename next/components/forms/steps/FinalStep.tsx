@@ -6,6 +6,8 @@ import { useState } from 'react'
 
 import Button from '../simple-components/Button'
 import StepSummaryRows from './Summary/StepSummaryRows'
+import Summary from './Summary/Summary'
+import SummaryMessages from './Summary/SummaryMessages'
 
 interface FinalStepProps {
   state: Record<string, any>
@@ -44,13 +46,9 @@ export const FinalStep = ({ state, schema, slug }: FinalStepProps) => {
 
   return (
     <div>
-      <h1>Final step placeholder</h1>
-      {schema?.map((step, key) => {
-        return <StepSummaryRows key={key} step={step} stateData={state} />
-      })}
-      {successMessage && <p>{successMessage}</p>}
-      {!!errors?.length &&
-        errors.map((error) => <p className="text-error">{JSON.stringify(error)}</p>)}
+      <h1 className="text-h1">Summary</h1>
+      <Summary schema={schema} state={state} />
+      <SummaryMessages errors={errors} successMessage={successMessage} />
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
       <Button onPress={submit} text="Submit" />
     </div>
