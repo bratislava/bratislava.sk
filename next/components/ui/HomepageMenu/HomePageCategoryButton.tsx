@@ -7,23 +7,13 @@ import { useHover } from 'usehooks-ts'
 
 type HomePageCategoryButtonProps = {
   item: MenuMainItem
-  activeId: string | null
+  isActive: boolean
   setActiveId: Dispatch<SetStateAction<string | null>>
 }
 
-const HomePageCategoryButton = ({ item, setActiveId, activeId }: HomePageCategoryButtonProps) => {
+const HomePageCategoryButton = ({ item, setActiveId, isActive }: HomePageCategoryButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const isHover = useHover(buttonRef)
-
-  const isActive = activeId === item.id
-
-  const handleClick = () => {
-    if (item.id === activeId) {
-      setActiveId(null)
-      return
-    }
-    setActiveId(item.id)
-  }
 
   return (
     <button
@@ -37,7 +27,7 @@ const HomePageCategoryButton = ({ item, setActiveId, activeId }: HomePageCategor
       style={{
         backgroundColor: isActive ? item.color : 'transparent',
       }}
-      onClick={handleClick}
+      onClick={() => setActiveId(item.id)}
     >
       <div>
         <HomepageMenuIcon
