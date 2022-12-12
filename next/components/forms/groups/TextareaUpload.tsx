@@ -2,8 +2,8 @@ import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import { useState } from 'react'
 
-import TextAreaField from '../TextAreaField'
-import Upload from '../Upload/Upload'
+import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
+import Upload from '../widget-components/Upload/Upload'
 
 type TextareaUploadBase = {
   UploadLabel: string

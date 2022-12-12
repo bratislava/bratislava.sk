@@ -20,7 +20,7 @@ const FieldGroupsShowCase = () => {
           SelectLabel="Interval odvozu"
           SelectOnChange={() => {}}
           InputLabel="Počet"
-          InputClassName="w-[150px]"
+          InputClassName="sm:w-[150px]"
           SelectPlaceholder="Vybrať"
           SelectClassName="w-max"
           addNew="Pridať ďalší riadok"
@@ -33,7 +33,7 @@ const FieldGroupsShowCase = () => {
         <TimeFromTo label="Čas (od – do)" />
       </Stack>
       <Stack direction="column">
-        <DoubledInputField label={['Mesto', 'PSČ']} classNames={['w-max', 'w-[100px]']} />
+        <DoubledInputField label={['Mesto', 'PSČ']} classNames={['w-max', 'sm:w-[100px]']} />
       </Stack>
       <Stack direction="column">
         <DateTimePicker label="Date + time picker" />

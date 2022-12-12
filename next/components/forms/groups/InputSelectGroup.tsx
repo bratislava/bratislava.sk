@@ -3,8 +3,8 @@ import cx from 'classnames'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import InputField from '../InputField'
-import SelectField from '../SelectField/SelectField'
+import InputField from '../widget-components/InputField/InputField'
+import SelectField from '../widget-components/SelectField/SelectField'
 
 type InputBase = {
   InputLabel: string
@@ -95,7 +95,7 @@ export const InputSelectGroup = ({
     <div className={containerStyle}>
       {fieldGroups.map((element, index) => {
         return (
-          <div key={index} className="flex w-full flex-row items-start p-0 gap-4 h-full">
+          <div key={index} className="flex flex-row items-start p-0 gap-4 h-full">
             <div className="flex relative flex-col items-start pt-3 w-3 ">
               <div className="bg-gray-200 w-0.5 h-[50px]" />
               <div className="w-3 h-0.5 bg-gray-200" />
@@ -129,7 +129,7 @@ export const InputSelectGroup = ({
               selectAllOption={SelectSelectAllOption}
               value={element.selectField}
               onChange={SelectOnChange}
-              className="w-[400px]"
+              className="sm:w-[400px]"
             />
             {fieldGroups.length > 1 ? (
               <div

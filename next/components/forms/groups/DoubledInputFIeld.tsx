@@ -1,4 +1,4 @@
-import InputField from '../InputField'
+import InputField from '../widget-components/InputField/InputField'
 
 interface InputBase {
   label: [string, string]

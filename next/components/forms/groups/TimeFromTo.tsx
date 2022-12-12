@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import TimePicker from '../DateTimePicker/TimePicker'
+import TimePicker from '../widget-components/DateTimePicker/TimePicker'
 
 type TimePickerBase = {
   label: string

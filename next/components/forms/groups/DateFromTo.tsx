@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import DatePicker from '../DateTimePicker/DatePicker'
+import DatePicker from '../widget-components/DateTimePicker/DatePicker'
 
 type DatePickerBase = {
   label: string
