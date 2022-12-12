@@ -70,7 +70,8 @@ const FormTestPage = ({
 
   let escapedSlug = ''
   const formSlug = forceString(router.query.eform)
-  if (/^[\da-z-]+$/.test(formSlug) === true) {
+  // eslint-disable-next-line unicorn/prefer-regexp-test
+  if (formSlug.match(/^[\da-z-]+$/)) {
     escapedSlug = formSlug
   }
 
