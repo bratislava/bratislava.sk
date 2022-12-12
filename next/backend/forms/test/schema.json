@@ -5,22 +5,71 @@
   "allOf": [
     {
       "properties": {
+        "inputFields": {
+          "title": "Showcase of InputField",
+          "required": [
+            "firstName",
+            "lastName"
+          ],
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "title": "First Name",
+              "default": "Anton"
+            },
+            "lastName": {
+              "type": "string",
+              "title": "Last Name"
+            },
+            "phone": {
+              "type": "string",
+              "title": "Phone number"
+            },
+            "password": {
+              "type": "string",
+              "title": "Password"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSC",
+              "format": "zip"
+            }
+          }
+        },
+        "textAreas": {
+          "title": "Textove polia",
+          "required": [
+            "pros"
+          ],
+          "properties": {
+            "pros": {
+              "title": "Pros",
+              "type": "string"
+            },
+            "cons": {
+              "title": "Cons",
+              "type": "string",
+              "default": "Defaultna hodnota"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
-          "required": ["school"],
+          "required": [
+            "school"
+          ],
           "properties": {
             "school": {
               "type": "string",
               "title": "University",
-              "enum": [
-                "STU FEI",
-                "STU FCHPT",
-                "STU FIIT"
-              ],
-              "enumNames": [
-                "fakulta elektrotechniky a informatiky",
-                null,
-                "fakulta informatiky a informacnych technologii"
+              "oneOf": [
+                {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
+                {"const": "STU FCHPT"},
+                {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
               ]
             },
             "diplomas": {
@@ -29,13 +78,14 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": [
-                  "ing.",
-                  "mgr.",
-                  "bc.",
-                  "phd.",
-                  "doc.",
-                  "prof."
+                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
+                "enumNames": [
+                  "Inzinier",
+                  "Magister",
+                  "Bakalar",
+                  null,
+                  "Docent",
+                  "Profesor"
                 ]
               }
             },
@@ -44,13 +94,120 @@
               "title": "Years in school",
               "uniqueItems": true,
               "enum": [
-                  1,
-                  2,
-                  3,
-                  4,
-                  5,
-                  6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
               ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "fileUploads": {
+          "title": "Nahratie suborov",
+          "required": [],
+          "properties": {
+            "importButtonOneFile": {
+              "type": "string"
+            },
+            "importButtonMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
+              "type": "string"
+            },
+            "importDragAndDropMultipleFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "chooseOneOf": {
+          "title": "Choose one of radio buttons",
+          "properties": {
+            "chooseOne": {
+              "type": "string",
+              "default": "multiply",
+              "title": "Some random choose",
+              "oneOf": [
+                {
+                  "const": "screen",
+                  "title": "Screen",
+                  "disabled": true,
+                  "tooltip": "This is some tooltip1"
+                },
+                {
+                  "const": "multiply",
+                  "title": "Multiply",
+                  "error": true
+                },
+                {
+                  "const": "overlay",
+                  "title": "Overlay"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "checkBoxes": {
+          "title": "Checkboxes",
+          "properties": {
+            "favouriteFruits": {
+              "type": "array",
+              "title": "Fruits",
+              "default": ["kiwi","apple"],
+              "uniqueItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "label": "Orange",
+                    "const": "orange",
+                    "disabled": true
+                  },
+                  {
+                    "label": "Banana",
+                    "const": "banana",
+                    "error": true,
+                    "tooltip": "This is some tooltip"
+                  },
+                  {
+                    "label": "Grape",
+                    "const": "grape",
+                    "isDisabled": true
+                  },
+                  {
+                    "label": "Kiwi",
+                    "const": "kiwi",
+                    "isIndeterminate": true
+                  },
+                  {
+                    "label": "Apple",
+                    "const": "apple"
+                  },
+                  {
+                    "label": "Plum",
+                    "const": "plum"
+                  }
+                ]
+              }
             }
           }
         }

@@ -23,6 +23,7 @@ jobs:
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
       debug: --debug
+      version: beta
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
@@ -38,6 +39,7 @@ jobs:
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
       debug: --debug
+      version: beta
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
@@ -53,6 +55,7 @@ jobs:
       cluster: tkg-innov-dev
       url: https://tkg.dev.bratislava.sk
       debug: --debug
+      version: beta
     secrets:
       service-account: ${{ secrets.DEV_STANDALONE_TOKEN }}
       registry-pass: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}

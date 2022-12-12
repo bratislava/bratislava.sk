@@ -1,13 +1,13 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { getHoverColor } from '@bratislava/ui-bratislava/Sections/Posts/Posts'
 import { getNumericLocalDate } from '@utils/local-date'
 import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
-import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { ArrowRight, ChevronRight } from '../../../assets/images'
 import BratislavaPlaceholder from '../../../public/bratislava-placeholder.jpg'
-import { Button } from '../Button/Button'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
 
@@ -61,83 +61,50 @@ export const NewsCard = ({
   slug,
 }: NewsCardProps) => {
   const { Link: UILink } = useUIContext()
-  const [isHover, setHover] = useState(false)
-  const cardRef: RefObject<HTMLInputElement> = useRef()
-  const enterListner = () => setHover(true)
-  const exitListner = () => setHover(false)
-
-  useEffect(() => {
-    if (cardRef?.current) {
-      cardRef?.current.addEventListener('mouseenter', enterListner)
-      cardRef?.current.addEventListener('mouseleave', exitListner)
-    }
-    return () => {
-      cardRef?.current?.removeEventListener('mouseenter', enterListner)
-      cardRef?.current?.removeEventListener('mouseleave', exitListner)
-    }
-  }, [])
-
-  // TODO inject these from outside instead of useTranslation - react-i18n break the next app build
-  // const { t } = useTranslation('common');
-
-  useEffect(() => {
-    if (cardRef?.current) {
-      cardRef?.current.addEventListener('mouseenter', enterListner)
-      cardRef?.current.addEventListener('mouseleave', exitListner)
-    }
-    return () => {
-      cardRef?.current?.removeEventListener('mouseenter', enterListner)
-      cardRef?.current?.removeEventListener('mouseleave', exitListner)
-    }
-  }, [])
 
   return (
     <VerticalCard
       className={cx(className, 'min-w-66 leading-[1.3]')}
       imageSrc={coverImage?.data?.attributes?.url}
     >
-      <UILink href={`/blog/${slug}`}>
-        <div ref={cardRef} className="space-y-5">
-          {tag?.data?.attributes?.title && (
-            <Tag
-              title={tag?.data?.attributes?.title}
-              color={transformColorToCategory(tag?.data?.attributes?.pageCategory?.data?.attributes?.color)}
-            />
-          )}
-          <h3 className="news-small-content text-h4">{title}</h3>
-          {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
-          <span className="text-p4-medium">{getNumericLocalDate(date_added || publishedAt || updatedAt)}</span>
-          <p className="news-small-content text-p2">{excerpt}</p>
-          <div>
-            {slug && (
-              <Button
-                className="mt-5 h-6"
-                shape="none"
-                variant="muted"
-                onMouseEnter={enterListner}
-                onMouseLeave={exitListner}
-                icon={
-                  isHover ? (
-                    <ArrowRight color={`rgb(var(--color-${transformColorToCategory(tag?.data?.attributes?.pageCategory?.data?.attributes?.color)}-600))`} />
-                  ) : (
-                    <ChevronRight color="black" />
-                  )
-                }
-              >
-                <div
-                  className="relative font-semibold"
-                  style={{
-                    color: isHover ? `rgb(var(--color-${transformColorToCategory(tag?.data?.attributes?.pageCategory?.data?.attributes?.color)}-600))` : 'black',
-                  }}
-                >
-                  {readMoreText}
-                  <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-current" />
-                </div>
-              </Button>
+      <div className="space-y-5">
+        {tag?.data?.attributes?.title && (
+          <Tag
+            title={tag?.data?.attributes?.title}
+            color={transformColorToCategory(
+              tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
             )}
-          </div>
+          />
+        )}
+        <h3 className="text-h4 line-clamp-3">{title}</h3>
+        {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
+        <span className="text-p4-medium">
+          {getNumericLocalDate(date_added || publishedAt || updatedAt)}
+        </span>
+        <p className="text-p2 line-clamp-4">{excerpt}</p>
+        <div>
+          {slug && (
+            <UILink
+              className={cx(
+                'group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 hover:text-category-600 underline after:absolute after:inset-0',
+                getHoverColor(
+                  tag?.data?.attributes?.pageCategory?.data?.attributes
+                    ?.color as Enum_Pagecategory_Color,
+                ),
+              )}
+              href={`/blog/${slug}`}
+            >
+              <span className="text-p2-semibold">{readMoreText}</span>
+              <span className="group-hover:hidden">
+                <ChevronRight />
+              </span>
+              <span className="hidden group-hover:block">
+                <ArrowRight />
+              </span>
+            </UILink>
+          )}
         </div>
-      </UILink>
+      </div>
     </VerticalCard>
   )
 }

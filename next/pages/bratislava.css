@@ -134,7 +134,7 @@
   --category-color-200--transparent: rgba(var(--color-category-200), 0);
   --category-color-100--transparent: rgba(var(--color-category-100), 0);
 
-  --category-color-100--semi-transparent: rgba(var(--color-category-100), 0.6);
+  --category-color-200--semi-transparent: rgba(var(--color-category-200), 0.6);
 
   --font-color: #333;
   --error-color: #d00000;
@@ -168,4 +168,11 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* Remove arrows from input type='number' */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

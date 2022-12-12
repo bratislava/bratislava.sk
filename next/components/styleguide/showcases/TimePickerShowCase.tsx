@@ -1,4 +1,4 @@
-import TimePicker from '../../forms/DateTimePicker/TimePicker'
+import TimePicker from '../../forms/widget-components/DateTimePicker/TimePicker'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -14,7 +14,13 @@ const TimePickerShowCase = ({}: TimePickerShowCaseProps) => {
       </Stack>
       <Stack direction="column">
         <TimePicker label="Label" required tooltip="Time Picker" description="Help text" />
-        <TimePicker label="Label" errorMessage="Error message" required tooltip="Time Picker" description="Help text" />
+        <TimePicker
+          label="Label"
+          errorMessage="Error message"
+          required
+          tooltip="Time Picker"
+          description="Help text"
+        />
         <TimePicker
           label="Label"
           errorMessage="Error message"
