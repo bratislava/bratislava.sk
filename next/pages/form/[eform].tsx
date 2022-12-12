@@ -113,13 +113,13 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <div>
-              <FinalStep state={form.state} slug={formSlug} />
+              <FinalStep state={form.state} slug={escapedSlug} />
               <Button onPress={() => form.previous()} text="Previous" />
             </div>
           ) : (
             <div>
               <ThemedForm
-                key={`form-${formSlug}-step-${form.stepIndex}`}
+                key={`form-${escapedSlug}-step-${form.stepIndex}`}
                 ref={form.formRef}
                 schema={form.currentSchema}
                 uiSchema={eform.uiSchema}
