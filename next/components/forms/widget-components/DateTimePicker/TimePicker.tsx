@@ -1,0 +1,134 @@
+import TimeIcon from '@assets/images/forms/access-time-icon.svg'
+import cx from 'classnames'
+import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
+import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
+import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
+import { useDatePickerState } from 'react-stately'
+
+import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import Popover from './Popover'
+import TimeField from './TimeField'
+import TimeSelector from './TimeSelector'
+
+type ButtonBase = {
+  children?: ReactNode
+  disabled?: boolean
+}
+
+const Button = ({ children, disabled, ...rest }: ButtonBase) => {
+  const ref = useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton({ isDisabled: disabled, ...rest }, ref)
+  return (
+    <button
+      className={cx('focus:outline-none', { 'opacity-50': disabled })}
+      type="button"
+      {...buttonProps}
+      ref={ref}
+    >
+      {children}
+    </button>
+  )
+}
+
+type TimePickerBase = {
+  label?: string
+  description?: string
+  tooltip?: string
+  required?: boolean
+  explicitOptional?: boolean
+  disabled?: boolean
+  errorMessage?: string
+}
+
+const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
+  (
+    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    ref,
+  ) => {
+    const { locale } = usePageWrapperContext()
+
+    const [hour, setHour] = useState<string>('')
+    const [minute, setMinute] = useState<string>('')
+
+    const state = useDatePickerState({
+      label,
+      errorMessage,
+      isRequired: required,
+      isDisabled: disabled,
+      shouldCloseOnSelect: false,
+      ...rest,
+    })
+    const { fieldProps, buttonProps, dialogProps, errorMessageProps } = useDatePicker(
+      { errorMessage, isDisabled: disabled, label, ...rest },
+      state,
+      ref as RefObject<HTMLDivElement>,
+    )
+
+    const addZeroOnSuccess = (): void => {
+      if (!hour || !minute) {
+        if (hour) setMinute('00')
+        if (minute) setHour('00')
+      }
+    }
+
+    const closeFailedHandler = () => {
+      state?.close()
+      setHour('')
+      setMinute('')
+    }
+
+    const closeSuccessHandler = () => {
+      state?.close()
+      addZeroOnSuccess()
+    }
+    return (
+      <I18nProvider locale={locale}>
+        <div className="relative w-full max-w-xs">
+          <div ref={ref}>
+            <TimeField
+              {...fieldProps}
+              label={label}
+              description={description}
+              required={required}
+              explicitOptional={explicitOptional}
+              disabled={disabled}
+              tooltip={tooltip}
+              errorMessage={errorMessage}
+              hour={hour}
+              minute={minute}
+              isOpen={state?.isOpen}
+            >
+              <Button {...buttonProps} disabled={disabled}>
+                <TimeIcon />
+              </Button>
+            </TimeField>
+          </div>
+          {state?.isOpen && (
+            <OverlayProvider>
+              <Popover
+                {...dialogProps}
+                shouldCloseOnBlur={false}
+                isOpen={state?.isOpen}
+                onClose={closeFailedHandler}
+              >
+                <TimeSelector
+                  setHour={setHour}
+                  hour={hour}
+                  setMinute={setMinute}
+                  minute={minute}
+                  onClose={closeFailedHandler}
+                  onSubmit={closeSuccessHandler}
+                />
+              </Popover>
+            </OverlayProvider>
+          )}
+          {!disabled && (
+            <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
+          )}
+        </div>
+      </I18nProvider>
+    )
+  },
+)
+
+export default TimePicker

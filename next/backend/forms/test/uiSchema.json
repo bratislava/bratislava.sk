@@ -10,7 +10,8 @@
       "ui:options": {
         "tooltip": "First name hint",
         "resetIcon": true,
-        "leftIcon": "person"
+        "leftIcon": "person",
+        "size": "default"
       }
     },
     "lastName": {
@@ -20,7 +21,8 @@
       "ui:options": {
         "tooltip": "Last name hint",
         "resetIcon": true,
-        "leftIcon": "person"
+        "leftIcon": "person",
+        "size": "default"
       }
     },
     "phone": {
@@ -40,6 +42,16 @@
         "tooltip": "Password hint",
         "leftIcon": "lock",
         "type": "password"
+      }
+    },
+    "psc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSC",
+      "ui:options": {
+        "tooltip": "PSC hint, only numbers",
+        "description": "Only numbers",
+        "size": "small"
       }
     }
   },
@@ -127,8 +139,17 @@
       "ui:options": {
         "className": "flex flex-col gap-4",
         "variant": "boxed"
-      },
-      "ui:value": "overlay"
+      }
+    }
+  },
+  "checkBoxes": {
+    "favouriteFruits": {
+      "ui:widget": "Checkboxes",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4 w-fit",
+        "variant": "boxed"
+      }
     }
   }
 }

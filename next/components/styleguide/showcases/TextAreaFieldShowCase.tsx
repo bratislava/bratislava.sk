@@ -1,4 +1,4 @@
-import TextAreaField from 'components/forms/TextAreaField'
+import TextAreaField from 'components/forms/widget-components/TextAreaField/TextAreaField'
 import React from 'react'
 
 import { Stack } from '../Stack'
