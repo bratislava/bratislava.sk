@@ -1,6 +1,5 @@
 import cx from 'classnames'
 import { useProgressBar } from 'react-aria'
-import { v4 as uuidv4 } from 'uuid'
 
 type ProgressBarBase = {
   type?: 'success' | 'default'
@@ -23,7 +22,7 @@ const ProgressBar = ({
     value,
     minValue,
     maxValue,
-    label: uuidv4(),
+    label,
   })
 
   const percentage = (value - minValue) / (maxValue - minValue)
@@ -38,7 +37,7 @@ const ProgressBar = ({
     <div className="flex flex-col w-full">
       {label && <span {...labelProps}>{label}</span>}
       <div {...progressBarProps} className={progressBarStyleContainer}>
-        <div className={cx('flex flex-column items-center w-full h-2 bg-gray-200 rounded-full')}>
+        <div className={cx('flex-column flex items-center w-full h-2 bg-gray-200 rounded-full')}>
           <div
             style={{ width: barWidth }}
             className={cx('rounded-full h-2', {
