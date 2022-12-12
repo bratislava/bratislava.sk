@@ -107,7 +107,12 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <div>
-              <FinalStep state={form.state} slug={formSlug} schema={eform.schema.allOf} />
+              <FinalStep
+                state={form.state}
+                slug={formSlug}
+                schema={eform.schema}
+                onGoToStep={(step: number) => form.setStepIndex(step)}
+              />
               <Button onPress={() => form.previous()} text="Previous" />
             </div>
           ) : (

@@ -5,10 +5,11 @@ import SummaryRow from './SummaryRow'
 interface StepPropertySummaryRowsProps {
   stepProperty: JsonSchema
   stepData?: JsonSchemaProperties
+  onGoToStep?: () => void
 }
 
 const StepPropertySummaryRows = (props: StepPropertySummaryRowsProps) => {
-  const { stepProperty, stepData } = props
+  const { stepProperty, stepData, onGoToStep } = props
   const stepFields = typeof stepProperty !== 'boolean' ? stepProperty.properties ?? {} : {}
 
   return (
@@ -21,6 +22,7 @@ const StepPropertySummaryRows = (props: StepPropertySummaryRowsProps) => {
             fieldKey={fieldKey}
             schemaField={schemaField}
             fieldData={fieldData}
+            onGoToStep={onGoToStep}
           />
         )
       })}

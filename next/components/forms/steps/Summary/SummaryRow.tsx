@@ -6,10 +6,11 @@ interface SummaryRowProps {
   fieldKey: string
   schemaField: JsonSchema
   fieldData?: JsonSchema
+  onGoToStep?: () => void
 }
 
 const SummaryRow = (props: SummaryRowProps) => {
-  const { fieldKey, schemaField, fieldData } = props
+  const { fieldKey, schemaField, fieldData, onGoToStep } = props
   const label = typeof schemaField !== 'boolean' ? schemaField.title ?? fieldKey : fieldKey
   const value = fieldData ? JSON.stringify(fieldData, null, '\t').replaceAll('"', '') : '-'
 
@@ -22,7 +23,7 @@ const SummaryRow = (props: SummaryRowProps) => {
       <p className="text-p1-semibold w-full ">{label}</p>
       <div className="w-full flex flex-row items-center">
         <p className="text-p1 grow">{value}</p>
-        <EditIcon className="cursor-pointer hidden" />
+        <EditIcon className="cursor-pointer hidden" onClick={onGoToStep} />
       </div>
     </div>
   )
