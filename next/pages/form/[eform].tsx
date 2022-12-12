@@ -68,14 +68,15 @@ const FormTestPage = ({
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
-  let formSlug = forceString(router.query.eform)
-  if (/^[\d.a-z-]+$/.test(formSlug) === false) {
-    formSlug = ''
+  let escapedSlug = ''
+  const formSlug = forceString(router.query.eform)
+  if (/^[\da-z-]+$/.test(formSlug) === true) {
+    escapedSlug = formSlug
   }
 
-  const pageSlug = `form/${formSlug}`
+  const pageSlug = `form/${escapedSlug}`
 
-  const form = useFormStepper(formSlug, eform.schema)
+  const form = useFormStepper(escapedSlug, eform.schema)
 
   const keywords = form.keywords.map((k) => k.keyword)
   const customFormats = {
