@@ -35,8 +35,8 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
     tooltip,
     explicitOptional,
     className,
-    spaceBottom = 'none',
-    spaceTop = 'default',
+    spaceBottom = 'default',
+    spaceTop = 'none',
   }: TextAreaRJSFOptions = options
 
   const showErrorMessage = rawErrors && rawErrors.length > 0 ? rawErrors[0] : undefined

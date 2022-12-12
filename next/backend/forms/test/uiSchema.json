@@ -11,7 +11,8 @@
         "tooltip": "First name hint",
         "resetIcon": true,
         "leftIcon": "person",
-        "size": "default"
+        "size": "default",
+        "spaceTop": "large"
       }
     },
     "lastName": {
@@ -41,8 +42,7 @@
       "ui:options": {
         "tooltip": "Password hint",
         "leftIcon": "lock",
-        "type": "password",
-        "spaceBottom": "large"
+        "type": "password"
       }
     },
     "psc": {

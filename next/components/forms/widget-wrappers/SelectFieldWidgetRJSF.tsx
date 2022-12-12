@@ -34,8 +34,8 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     dropdownDivider,
     className,
     explicitOptional,
-    spaceBottom = 'none',
-    spaceTop = 'default',
+    spaceBottom = 'default',
+    spaceTop = 'none',
   } = options
 
   const type = schema.type === 'array' ? 'multiple' : 'one'

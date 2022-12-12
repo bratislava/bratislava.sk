@@ -23,7 +23,7 @@ interface CheckboxesWidgetRJSFProps extends WidgetProps {
 
 const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   const { options, value, onChange } = props
-  const { enumOptions, className, spaceBottom = 'none', spaceTop = 'default' } = options
+  const { enumOptions, className, spaceBottom = 'default', spaceTop = 'none' } = options
   if (!enumOptions) return <div />
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>

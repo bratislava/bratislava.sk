@@ -42,29 +42,23 @@ const InputFieldWidgetRJSF = ({
     leftIcon,
     explicitOptional,
     type,
-    size,
-    spaceBottom = 'none',
-    spaceTop = 'default',
+    size = 'default',
+    spaceBottom = 'default',
+    spaceTop = 'none',
   } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
-  const sizeHandler = (): string => {
-    switch (size) {
-      case 'large':
-        return 'w-full'
-      case 'default':
-        return 'max-w-[388px]'
-      case 'small':
-        return 'max-w-[200px]'
-
-      default:
-        return 'w-full'
-    }
-  }
-
   return (
-    <WidgetWrapper className={cx('', sizeHandler())} spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper
+      className={cx({
+        'w-full': size === 'large',
+        'max-w-[388px]': size === 'default',
+        'max-w-[200px]': size === 'small',
+      })}
+      spaceBottom={spaceBottom}
+      spaceTop={spaceTop}
+    >
       <InputField
         label={label}
         type={type}
