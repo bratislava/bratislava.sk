@@ -110,21 +110,25 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
-          "required": [],
+          "required": ["importButtonMultipleFiles"],
           "properties": {
             "importButtonOneFile": {
+              "title": "Importuj jeden subor",
               "type": "string"
             },
             "importButtonMultipleFiles": {
+              "title": "Importuj viac suborov",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
             "importDragAndDropOneFile": {
+              "title": "Presun sem jeden subor",
               "type": "string"
             },
             "importDragAndDropMultipleFiles": {
+              "title": "Presun sem viac suborov",
               "type": "array",
               "items": {
                 "type": "string"

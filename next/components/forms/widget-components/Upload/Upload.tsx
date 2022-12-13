@@ -4,12 +4,16 @@ import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 import { v4 as createUuid } from 'uuid'
 
+import UploadBrokenMessages from '../../info-components/UploadBrokenMessages'
+import UploadFieldHeader from '../../info-components/UploadFieldHeader'
 import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
-import UploadedFile from './UploadedFile'
+import UploadedFilesList from './UploadedFilesList'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
+  label: string
+  required?: boolean
   multiple?: boolean
   value?: UploadMinioFile[]
   disabled?: boolean
@@ -25,6 +29,8 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
 ) => {
   const {
     type,
+    label,
+    required,
     multiple,
     value,
     disabled,
@@ -175,6 +181,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       className={cx('select-none w-fit h-fit', className)}
       style={{ transition: '0.2 all linear' }}
     >
+      <UploadFieldHeader label={label} required={required} />
       {
         /* UPLOAD AREA */
         type === 'button' ? (
@@ -201,30 +208,8 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
           />
         ) : null
       }
-      {
-        /* messages when file is is broken/invalid before sending to bucket */
-        fileBrokenMessages.map((message, key) => (
-          <p key={key} className="w-full p-1 text-red-500">
-            {message}
-          </p>
-        ))
-      }
-      <div className="mt-2">
-        {
-          /* FILES AREA */
-          value?.map((minioFile: UploadMinioFile, key: number) => {
-            return (
-              <UploadedFile
-                key={key}
-                fileName={minioFile.originalName}
-                errorMessage={minioFile.errorMessage}
-                isUploading={minioFile.isUploading}
-                onRemove={() => handleOnRemoveFile(key)}
-              />
-            )
-          })
-        }
-      </div>
+      <UploadBrokenMessages fileBrokenMessages={fileBrokenMessages} />
+      <UploadedFilesList allFiles={value} handleOnRemoveFile={handleOnRemoveFile} />
     </section>
   )
 }
