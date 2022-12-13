@@ -2,16 +2,19 @@
 import cx from 'classnames'
 import Button from 'components/forms/simple-components/Button'
 import padStart from 'lodash/padStart'
-import React, { MouseEvent, useRef } from 'react'
+import React, { MouseEvent, useEffect, useRef } from 'react'
 import { useDidMount } from 'rooks'
 
 type TimeSelectorBase = {
   onClose?: () => void
   onSubmit?: () => void
   setHour: React.Dispatch<React.SetStateAction<string>>
-  setMinute: (value: string) => void
+  setMinute: React.Dispatch<React.SetStateAction<string>>
   hour: string
   minute: string
+  onChange?: (value?: string) => void
+  value?: string
+  setIsInputEdited?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const HOURS_LIMIT = 23
@@ -24,6 +27,8 @@ const TimeSelector = ({
   setMinute,
   hour,
   minute,
+  onChange,
+  setIsInputEdited,
 }: TimeSelectorBase) => {
   const hoursArray = Array.from({ length: HOURS_LIMIT + 1 }, (_, i) => i + 0)
   const minutesArray = Array.from({ length: MINUTES_LIMIT + 1 }, (_, i) => i + 0)
@@ -32,6 +37,10 @@ const TimeSelector = ({
   const minuteRef = useRef<HTMLDivElement>(null)
   const hoursItemRef = useRef<HTMLButtonElement[]>([])
   const minutesItemRef = useRef<HTMLButtonElement[]>([])
+
+  const timeValueFormat = `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${
+    minute ? padStart(minute, 2, '0') : ''
+  }`
 
   const clickHandler = (
     e: MouseEvent<HTMLButtonElement>,
@@ -50,8 +59,14 @@ const TimeSelector = ({
       setMinute(value)
       minuteRef?.current?.scrollTo({ top: minutesItemOffset - 125, behavior: 'smooth' })
     }
+    setIsInputEdited?.(false)
     e.preventDefault()
   }
+
+  useEffect(() => {
+    if (onChange) onChange(timeValueFormat)
+    console.log(hour, minute)
+  }, [onChange, timeValueFormat])
 
   useDidMount(() => {
     const hoursItemOffset =
@@ -124,7 +139,7 @@ const TimeSelector = ({
         </div>
       </div>
       <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
-        <Button onPress={onClose} text="Zrušiť" variant="plain-black" size="sm" />
+        <Button onPress={onClose} text="Resetovať" variant="plain-black" size="sm" />
         <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>
     </div>

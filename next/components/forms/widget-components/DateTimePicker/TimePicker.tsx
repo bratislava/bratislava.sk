@@ -1,8 +1,7 @@
 import TimeIcon from '@assets/images/forms/access-time-icon.svg'
-import { parseDate } from '@internationalized/date'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
-import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
+import { forwardRef, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
 
@@ -14,6 +13,7 @@ import TimeSelector from './TimeSelector'
 type ButtonBase = {
   children?: ReactNode
   disabled?: boolean
+  onClick?: () => void
 }
 
 const Button = ({ children, disabled, ...rest }: ButtonBase) => {
@@ -64,7 +64,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     const [hour, setHour] = useState<string>('')
     const [minute, setMinute] = useState<string>('')
 
-    const [valueState, setValueState] = useState<string>('')
+    const [isInputEdited, setIsInputEdited] = useState<boolean>(false)
+
+    const [prevValue, setPrevValue] = useState<string>('')
 
     const state = useDatePickerState({
       label,
@@ -72,15 +74,6 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       isRequired: required,
       isDisabled: disabled,
       shouldCloseOnSelect: false,
-      // value: onChange && value ? parseDate(value) : valueState && parseDate(valueState),
-      // onChange(inputValue) {
-      //   console.log(inputValue)
-      //   if (onChange) {
-      //     onChange(inputValue.toString())
-      //   } else {
-      //     setValueState(inputValue.toString())
-      //   }
-      // },
       ...rest,
     })
     const { fieldProps, buttonProps, dialogProps, errorMessageProps } = useDatePicker(
@@ -88,6 +81,12 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       state,
       ref as RefObject<HTMLDivElement>,
     )
+    useEffect(() => {
+      if (isInputEdited) {
+        setMinute('')
+        setHour('')
+      }
+    }, [isInputEdited])
 
     const addZeroOnSuccess = (): void => {
       if (!hour || !minute) {
@@ -95,16 +94,18 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
         if (minute) setHour('00')
       }
     }
-
+    console.log(prevValue)
     const closeFailedHandler = () => {
       state?.close()
-      setHour('')
-      setMinute('')
+      if (onChange) onChange(prevValue)
+      setHour(prevValue.split(':')[0])
+      setMinute(prevValue.split(':')[1])
     }
 
     const closeSuccessHandler = () => {
       state?.close()
-      addZeroOnSuccess()
+      if (value) setPrevValue((prev) => (prev !== value ? value : prev))
+      // addZeroOnSuccess()
     }
     return (
       <I18nProvider locale={locale}>
@@ -122,6 +123,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               hour={hour}
               minute={minute}
               isOpen={state?.isOpen}
+              onChange={onChange}
+              value={value}
+              setIsInputEdited={setIsInputEdited}
             >
               <Button {...buttonProps} disabled={disabled}>
                 <TimeIcon />
@@ -143,6 +147,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   minute={minute}
                   onClose={closeFailedHandler}
                   onSubmit={closeSuccessHandler}
+                  onChange={onChange}
+                  value={value}
+                  setIsInputEdited={setIsInputEdited}
                 />
               </Popover>
             </OverlayProvider>
