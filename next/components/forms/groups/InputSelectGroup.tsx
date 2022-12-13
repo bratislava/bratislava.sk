@@ -1,3 +1,4 @@
+import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
 import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import React, { useState } from 'react'
@@ -107,6 +108,7 @@ export const InputSelectGroup = ({
                 description={InputDescription}
                 tooltip={InputTooltip}
                 leftIcon={InputLeftIcon}
+                required={InputRequired}
                 resetIcon={InputResetIcon}
                 errorMessage={InputErrorMessage}
                 disabled={InputDisabled}
@@ -129,25 +131,14 @@ export const InputSelectGroup = ({
               selectAllOption={SelectSelectAllOption}
               value={element.selectField}
               onChange={SelectOnChange}
-              className="sm:w-[400px]"
+              className={SelectClassName}
             />
             {fieldGroups.length > 1 ? (
               <div
                 className="flex w-6 h-6 justify-center items-center cursor-pointer mt-auto mb-5 rotate-45"
                 onClick={() => removeField(element.id)}
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 5H9V9H5V11H9V15H11V11H15V9H11V5ZM10 0C4.475 0 0 4.475 0 10C0 15.525 4.475 20 10 20C15.525 20 20 15.525 20 10C20 4.475 15.525 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
-                    fill="red"
-                  />
-                </svg>
+                <PlusCircleIcon fill="red" />
               </div>
             ) : (
               // 0 IQ solution, I will fix it during other fixes
@@ -162,18 +153,7 @@ export const InputSelectGroup = ({
           onClick={() => addField()}
         >
           <div className="flex w-6 h-6 justify-center items-center">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11 5H9V9H5V11H9V15H11V11H15V9H11V5ZM10 0C4.475 0 0 4.475 0 10C0 15.525 4.475 20 10 20C15.525 20 20 15.525 20 10C20 4.475 15.525 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
-                fill="#333333"
-              />
-            </svg>
+            <PlusCircleIcon fill="black" />
           </div>
           <div className="text-xl font-semibold leading-6 not-italic">{addNew}</div>
         </div>

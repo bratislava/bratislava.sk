@@ -20,31 +20,39 @@ const FieldGroupsShowCase = () => {
           SelectLabel="Interval odvozu"
           SelectOnChange={() => {}}
           InputLabel="Počet"
+          InputTooltip="Some Tooltip"
           InputClassName="sm:w-[150px]"
           SelectPlaceholder="Vybrať"
-          SelectClassName="w-max"
+          SelectClassName="sm:w-[400px]"
           addNew="Pridať ďalší riadok"
         />
       </Stack>
       <Stack direction="column">
-        <DateFromTo label="Dátum (od – do)" />
+        <DateFromTo DateToTooltip="Date To Tooltip" label="Dátum (od – do)" />
       </Stack>
       <Stack direction="column">
-        <TimeFromTo label="Čas (od – do)" />
+        <TimeFromTo TimeFromTooltip="Time From Tooltip" label="Čas (od – do)" />
       </Stack>
       <Stack direction="column">
-        <DoubledInputField label={['Mesto', 'PSČ']} classNames={['w-max', 'sm:w-[100px]']} />
+        <DoubledInputField
+          FirstInputLabel="Mesto"
+          SecondInputLabel="PSČ"
+          FirstInputPlaceholder=""
+          SecondInputPlaceholder=""
+        />
       </Stack>
       <Stack direction="column">
-        <DateTimePicker label="Date + time picker" />
+        <DateTimePicker DateLabel="Date + time picker" />
       </Stack>
       <Stack direction="column">
         <InputUploadGroup
           InputLabel="Label"
           UploadLabel="Nahrajte súbor"
           middleText="alebo"
-          sizeLimit={5}
-          supportedFormats={['.jpg', '.png', '.pdf']}
+          UploadSizeLimit={5}
+          UploadSupportedFormats={['.jpg', '.png', '.pdf']}
+          InputPlaceholder=""
+          UploadType="button"
         />
       </Stack>
       <Stack direction="column">
@@ -52,8 +60,9 @@ const FieldGroupsShowCase = () => {
           TextareaLabel="Mesto"
           UploadLabel="Nahrajte súbor"
           middleText="alebo"
-          sizeLimit={5}
-          supportedFormats={['.jpg', '.png', '.pdf']}
+          UploadSizeLimit={5}
+          UploadSupportedFormats={['.jpg', '.png', '.pdf']}
+          UploadType="button"
         />
       </Stack>
     </Wrapper>

@@ -5,36 +5,90 @@ import { useState } from 'react'
 import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 import Upload from '../widget-components/Upload/Upload'
 
-type TextareaUploadBase = {
-  UploadLabel: string
+interface TextAreaBase {
   TextareaLabel: string
-  middleText: string
-  sizeLimit: number
-  supportedFormats: Array<string>
-  className?: string
+  TextareaPlaceholder?: string
+  TextareaErrorMessage?: string
+  TextareaDescription?: string
+  TextareaClassName?: string
+  TextareaDefaultValue?: string
+  TextareaValue?: string
+  TextareaRequired?: boolean
+  TextareaExplicitOptional?: boolean
+  TextareaDisabled?: boolean
+  TextareaTooltip?: string
+  TextareaOnChange?: (value?: string) => void
 }
 
+interface UploadProps {
+  UploadLabel: string
+  UploadType: 'button' | 'dragAndDrop'
+  UploadMultiple?: boolean
+  UploadValue?: UploadMinioFile[]
+  UploadDisabled?: boolean
+  UploadSizeLimit?: number
+  UploadSupportedFormats?: string[]
+  UploadClassName?: string
+  UploadOnChange?: (value: UploadMinioFile[]) => void
+}
+
+type TextareaUploadBase = TextAreaBase &
+  UploadProps & {
+    middleText: string
+    // className prop for whole container of two another components
+    className?: string
+  }
+
 export const TextareaUploadGroup = ({
-  UploadLabel,
   TextareaLabel,
+  TextareaOnChange,
+  TextareaDescription,
+  TextareaPlaceholder,
+  TextareaDisabled,
+  TextareaTooltip,
+  TextareaClassName,
+  TextareaRequired,
+  TextareaValue,
+  TextareaErrorMessage,
+  TextareaExplicitOptional,
   middleText,
-  sizeLimit,
-  supportedFormats,
+  UploadLabel,
+  UploadDisabled,
+  UploadOnChange,
+  UploadMultiple,
+  UploadClassName,
+  UploadType,
+  UploadValue,
+  UploadSizeLimit,
+  UploadSupportedFormats,
   className,
 }: TextareaUploadBase) => {
-  const [files6, setFiles6] = useState<UploadMinioFile[]>([])
   return (
     <div className={cx('gap-6 w-full flex flex-col items-start p-6', className)}>
-      <TextAreaField label={TextareaLabel} placeholder="" className="h-[150px]" />
+      <TextAreaField
+        label={TextareaLabel}
+        placeholder={TextareaPlaceholder}
+        className={TextareaClassName}
+        tooltip={TextareaTooltip}
+        required={TextareaRequired}
+        value={TextareaValue}
+        errorMessage={TextareaErrorMessage}
+        explicitOptional={TextareaExplicitOptional}
+        disabled={TextareaDisabled}
+        description={TextareaDescription}
+      />
       <div>{middleText}</div>
       <div>
         <div className="text-p-md font-semibold leading-8 not-italic">{UploadLabel}</div>
         <Upload
-          type="button"
-          sizeLimit={sizeLimit}
-          supportedFormats={supportedFormats}
-          value={files6}
-          onChange={(newValue) => setFiles6(newValue)}
+          type={UploadType}
+          sizeLimit={UploadSizeLimit}
+          supportedFormats={UploadSupportedFormats}
+          value={UploadValue}
+          onChange={UploadOnChange}
+          disabled={UploadDisabled}
+          multiple={UploadMultiple}
+          className={UploadClassName}
         />
       </div>
     </div>
