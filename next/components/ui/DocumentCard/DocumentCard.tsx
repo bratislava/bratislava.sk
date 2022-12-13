@@ -1,8 +1,8 @@
 // @ts-strict-ignore
 import ArrowRight from '@assets/images/arrow-right.svg'
 import ChevronRight from '@assets/images/chevron-right-small.svg'
-import { useState } from 'react'
 import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
+import { useState } from 'react'
 import useSWR from 'swr'
 
 import { Button } from '../Button/Button'
@@ -20,12 +20,19 @@ export interface DocumentCardProps {
   downloadButtonText: string
 }
 
-export const DocumentCard = ({ title, createdAt, id, content, className, viewButtonText }: DocumentCardProps) => {
+export const DocumentCard = ({
+  title,
+  createdAt,
+  id,
+  content,
+  className,
+  viewButtonText,
+}: DocumentCardProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
   const { data } = useSWR(isOpen ? getDocumentDetailURL(id) : null, () =>
-    fetch(getDocumentDetailURL(id)).then((res) => res.json())
+    fetch(getDocumentDetailURL(id)).then((res) => res.json()),
   )
 
   const files: TFile[] =
@@ -52,8 +59,9 @@ export const DocumentCard = ({ title, createdAt, id, content, className, viewBut
       <Panel className={className}>
         <div className="flex w-full flex-col gap-y-5 px-5 py-6 lg:px-10 lg:py-8">
           <div className="text-20-semibold -mb-3">{title}</div>
-          <div className="flex flex-col gap-x-6 text-p3 text-font/75 lg:flex-row">
-            <div>{new Date(createdAt).toLocaleDateString()}</div>
+          <div className="text-p3 text-font/75 flex flex-col gap-x-6 lg:flex-row">
+            {/* TODO: Fix local date */}
+            <div>{new Date(createdAt).toLocaleDateString('sk')}</div>
 
             {/* <div>{`${fileExtension}; ${fileSize}`}</div> */}
           </div>

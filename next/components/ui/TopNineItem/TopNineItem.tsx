@@ -40,7 +40,10 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
   const { Link: UILink } = useUIContext()
   return (
     <div
-      className={cx('w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font', className)}
+      className={cx(
+        'relative w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font',
+        className,
+      )}
     >
       <div className="mb-6 lg:mb-3.5">
         <IconComponent className="h-20" />
@@ -49,7 +52,7 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
         {title}
       </div>
       <UILink
-        className="group mt-6 flex h-6 cursor-pointer items-center space-x-5 text-font underline"
+        className="group mt-6 flex h-6 cursor-pointer items-center space-x-5 text-font underline after:absolute after:inset-0"
         href={href}
       >
         <span className="text-p2-semibold">{linkTitle}</span>

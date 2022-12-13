@@ -39,6 +39,11 @@
             "password": {
               "type": "string",
               "title": "Password"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSC",
+              "format": "zip"
             }
           }
         },
@@ -162,6 +167,7 @@
           "properties": {
             "chooseOne": {
               "type": "string",
+              "default": "multiply",
               "title": "Some random choose",
               "oneOf": [
                 {
@@ -182,6 +188,65 @@
               ]
             }
           }
+        }
+      }
+    },
+    {
+      "properties": {
+        "checkBoxes": {
+          "title": "Checkboxes",
+          "properties": {
+            "favouriteFruits": {
+              "type": "array",
+              "title": "Fruits",
+              "default": ["kiwi","apple"],
+              "uniqueItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "label": "Orange",
+                    "const": "orange",
+                    "disabled": true
+                  },
+                  {
+                    "label": "Banana",
+                    "const": "banana",
+                    "error": true,
+                    "tooltip": "This is some tooltip"
+                  },
+                  {
+                    "label": "Grape",
+                    "const": "grape",
+                    "isDisabled": true
+                  },
+                  {
+                    "label": "Kiwi",
+                    "const": "kiwi",
+                    "isIndeterminate": true
+                  },
+                  {
+                    "label": "Apple",
+                    "const": "apple"
+                  },
+                  {
+                    "label": "Plum",
+                    "const": "plum"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "required": [],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
         }
       }
     }

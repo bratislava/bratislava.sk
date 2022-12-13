@@ -14,7 +14,10 @@ module.exports = {
     /** It's annoying to refactor from one style to another */
     'arrow-body-style': 'off',
     /** This are exceptions that we use with "__" */
-    'no-underscore-dangle': [2, { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] }],
+    'no-underscore-dangle': [
+      2,
+      { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] },
+    ],
     /** Links get confused for secrets */
     'no-secrets/no-secrets': ['error', { ignoreContent: '^http' }],
     /** Presently at too many places & becomes just an ignored clutter, consider turning on later */
@@ -22,8 +25,11 @@ module.exports = {
     /** Doesn't work without changing our ts config */
     'unicorn/prefer-spread': 'off',
     /** Use official sorting */
-    'tailwindcss/classnames-order': ['warn', { officialSorting: true }],
-    /** To remove optinal parameter warning e.g. { page?: number } */
+    'tailwindcss/classnames-order': [
+      'warn',
+      { callees: ['classnames', 'cx'], officialSorting: true },
+    ],
+    /** To remove optional parameter warning e.g. { page?: number } */
     'react/require-default-props': 'off',
     /** To Remove  */
     'react/no-array-index-key': 'off',

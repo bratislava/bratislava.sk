@@ -48,6 +48,7 @@ export const Button = ({
   ) : null
   return (
     <button
+      type="button"
       className={cx('group flex items-center', className, {
         // common styles
         // 'base-button': shape !== 'none',

@@ -67,7 +67,7 @@ export const BANavBar = ({
             className="group"
             url="/"
             title={
-              <p className="text-font text-p2 group-hover:text-gray-600">
+              <p className="text-p2 text-font group-hover:text-gray-600">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
                 {t('capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
@@ -343,7 +343,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3-semibold text-font mt-3 h-6 w-6"
+                className="text-p3 hover:text-p3-semibold cursor-pointer text-font mt-3 h-6 w-6"
                 key={option.key}
                 onClick={handleChange}
               >
