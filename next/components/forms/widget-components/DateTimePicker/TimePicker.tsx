@@ -1,4 +1,5 @@
 import TimeIcon from '@assets/images/forms/access-time-icon.svg'
+import { parseDate } from '@internationalized/date'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
 import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
@@ -38,11 +39,24 @@ type TimePickerBase = {
   explicitOptional?: boolean
   disabled?: boolean
   errorMessage?: string
+  value?: string
+  onChange?: (value?: string) => void
 }
 
 const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
   (
-    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    {
+      label,
+      disabled,
+      errorMessage,
+      required,
+      explicitOptional,
+      tooltip,
+      description,
+      onChange,
+      value,
+      ...rest
+    },
     ref,
   ) => {
     const { locale } = usePageWrapperContext()
@@ -50,12 +64,23 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     const [hour, setHour] = useState<string>('')
     const [minute, setMinute] = useState<string>('')
 
+    const [valueState, setValueState] = useState<string>('')
+
     const state = useDatePickerState({
       label,
       errorMessage,
       isRequired: required,
       isDisabled: disabled,
       shouldCloseOnSelect: false,
+      // value: onChange && value ? parseDate(value) : valueState && parseDate(valueState),
+      // onChange(inputValue) {
+      //   console.log(inputValue)
+      //   if (onChange) {
+      //     onChange(inputValue.toString())
+      //   } else {
+      //     setValueState(inputValue.toString())
+      //   }
+      // },
       ...rest,
     })
     const { fieldProps, buttonProps, dialogProps, errorMessageProps } = useDatePicker(

@@ -11,6 +11,15 @@
       }
     }
   },
+  "timePicker": {
+    "meeting-time": {
+      "ui:widget": "TimePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Time picker hint"
+      }
+    }
+  },
   "inputFields": {
     "firstName": {
       "ui:widget": "InputField",

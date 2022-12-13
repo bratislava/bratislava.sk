@@ -1,44 +1,43 @@
-import { DateValue } from '@internationalized/date'
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import DatePicker from 'components/forms/widget-components/DateTimePicker/DatePicker'
+import TimePicker from 'components/forms/widget-components/DateTimePicker/TimePicker'
 import React from 'react'
 
-type DatePickerRJSFOptions = {
+type TimePickerRJSFOptions = {
   tooltip?: string
   description?: string
   className?: string
   explicitOptional?: boolean
 }
 
-interface DatePickerWidgetRJSFProps extends WidgetProps {
+interface TimePickerWidgetRJSFProps extends WidgetProps {
   label: string
-  options: DatePickerRJSFOptions
+  options: TimePickerRJSFOptions
   value: string
   errorMessage?: string
   required?: boolean
   disabled?: boolean
   schema: StrictRJSFSchema
   onChange: (value?: string) => void
+  rawErrors?: string[]
 }
 
-const DatePickerWidgetRJSF = ({
+const TimePickerWidgetRJSF = ({
   label,
   options,
-  errorMessage,
+  rawErrors = [],
   required,
   disabled,
   value,
   onChange,
-}: DatePickerWidgetRJSFProps) => {
+}: TimePickerWidgetRJSFProps) => {
   const { description, tooltip, explicitOptional } = options
 
-  const handleOnChange = (newValue?: DateValue) =>
-    newValue ? onChange(newValue.toString()) : onChange()
+  const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <DatePicker
+    <TimePicker
       label={label}
-      errorMessage={errorMessage}
+      errorMessage={rawErrors?.join(', ')}
       required={required}
       disabled={disabled}
       description={description}
@@ -49,4 +48,4 @@ const DatePickerWidgetRJSF = ({
     />
   )
 }
-export default DatePickerWidgetRJSF
+export default TimePickerWidgetRJSF

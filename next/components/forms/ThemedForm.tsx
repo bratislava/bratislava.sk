@@ -1,6 +1,8 @@
 import { withTheme } from '@rjsf/core'
-import InputFieldWidgetRJSF from 'components/forms/widget-wrappers/InputFieldWidgetRJSF'
 import DatePickerWidgetRJSF from 'components/forms/widget-wrappers/DatePickerWidgetRJSF'
+import InputFieldWidgetRJSF from 'components/forms/widget-wrappers/InputFieldWidgetRJSF'
+import TimePickerWidgetRJSF from 'components/forms/widget-wrappers/TimePickerWidgetRJSF'
+
 import CheckboxWidgetRJSF from './widget-wrappers/CheckboxWidgetRJSF'
 import RadioButtonsWidgetRJSF from './widget-wrappers/RadioButtonWidgetRJSF'
 import SelectFieldWidgetRJSF from './widget-wrappers/SelectFieldWidgetRJSF'
@@ -18,6 +20,7 @@ const theme = {
     Checkboxes: CheckboxWidgetRJSF,
     Upload: UploadWidgetRJSF,
     DatePicker: DatePickerWidgetRJSF,
+    TimePicker: TimePickerWidgetRJSF,
   },
   fields: {},
 }

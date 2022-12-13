@@ -63,7 +63,7 @@ const TimeField = ({
     ref,
   )
   const timeFieldStyle = cx(
-    'w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 text-20 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
+    'text-20 w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
     {
       'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
       'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessage,

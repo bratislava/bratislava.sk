@@ -7,7 +7,9 @@
       "properties": {
         "datePicker": {
           "title": "Showcase of DatePicker",
-          "required": [],
+          "required": [
+            "birth"
+          ],
           "properties": {
             "birth": {
               "type": "string",
@@ -16,6 +18,22 @@
             }
           }
         },
+        "timePicker": {
+          "title": "Showcase of TimePicker",
+          "required": [
+            "meeting-time"
+          ],
+          "properties": {
+            "meeting-time": {
+              "type": "string",
+              "title": "Meeting time"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
           "required": [
@@ -199,7 +217,10 @@
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits",
-              "default": ["kiwi","apple"],
+              "default": [
+                "kiwi",
+                "apple"
+              ],
               "uniqueItems": true,
               "items": {
                 "anyOf": [

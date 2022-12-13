@@ -60,15 +60,14 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     ref,
   ) => {
     const { locale } = usePageWrapperContext()
-    const [valueState, setValueState] = useState<DateValue>(null)
+    const [valueState, setValueState] = useState<DateValue | undefined>(null)
+    const [prevValue, setPrevValue] = useState<string | null>(null)
 
     const state = useDatePickerState({
       label,
       errorMessage,
-      // value: value && parseDate(value),
       value: onChange && value ? parseDate(value) : valueState,
       onChange(inputValue) {
-        console.log(inputValue)
         if (onChange) {
           onChange(inputValue)
         } else {
@@ -91,13 +90,17 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
         state,
         ref as RefObject<HTMLDivElement>,
       )
+
     const closeHandler = () => {
       state?.close()
-      // https://github.com/adobe/react-spectrum/discussions/3318
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      state?.setDateValue(null)
+      state?.setDateValue(typeof prevValue === 'string' ? parseDate(prevValue) : prevValue)
     }
+
+    const submitCloseHandler = () => {
+      setPrevValue((prev) => (prev !== value ? value : prev))
+      state?.close()
+    }
+
     return (
       <I18nProvider locale={locale}>
         <div className="relative w-full max-w-xs">
@@ -121,11 +124,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
           {state?.isOpen && (
             <OverlayProvider>
               <Popover {...dialogProps} isOpen={state?.isOpen} onClose={closeHandler}>
-                <Calendar
-                  {...calendarProps}
-                  onClose={closeHandler}
-                  onSubmit={() => state?.close()}
-                />
+                <Calendar {...calendarProps} onClose={closeHandler} onSubmit={submitCloseHandler} />
               </Popover>
             </OverlayProvider>
           )}
