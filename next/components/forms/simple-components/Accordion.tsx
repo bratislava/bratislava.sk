@@ -36,10 +36,7 @@ const Accordion = ({
 
   return (
     <div className={accordionContainerStyle}>
-      <div
-        className={cx('flex w-full items-center justify-between cursor-pointer gap-4', {})}
-        onClick={() => setIsActive(!isActive)}
-      >
+      <div className={cx('flex gap-4', {})}>
         {icon && (
           <div
             className={cx('flex items-center justify-center', {
@@ -57,43 +54,47 @@ const Accordion = ({
             />
           </div>
         )}
-        <div
-          className={cx('font-semibold not-italic w-full', {
-            'text-h-base': size === 'sm',
-            'text-h-md': size === 'md',
-            'text-h-lg': size === 'lg',
-          })}
-        >
-          {title}
-        </div>
-        <div
-          className={cx('flex items-center justify-center', {
-            'w-10 h-10': size === 'lg',
-            'w-8 h-8': size === 'md',
-            'w-6 h-6': size === 'sm',
-          })}
-        >
-          <ExpandMoreIcon
-            className={cx('', {
-              'transform rotate-180': isActive,
-            })}
-            size={size}
-          />
+        <div className="flex w-full flex-col">
+          <div
+            className="flex w-full items-center cursor-pointer"
+            onClick={() => setIsActive(!isActive)}
+          >
+            <div
+              className={cx('font-semibold not-italic w-full', {
+                'text-h-base': size === 'sm',
+                'text-h-md': size === 'md',
+                'text-h-lg': size === 'lg',
+              })}
+            >
+              {title}
+            </div>
+            <div
+              className={cx('flex items-center justify-center', {
+                'w-10 h-10': size === 'lg',
+                'w-8 h-8': size === 'md',
+                'w-6 h-6': size === 'sm',
+              })}
+            >
+              <ExpandMoreIcon
+                className={cx('', {
+                  'transform rotate-180': isActive,
+                })}
+                size={size}
+              />
+            </div>
+          </div>
+          {isActive && (
+            <div
+              className={cx('flex flex-col font-normal not-italic', {
+                'text-h-sm': size === 'sm',
+                'text-p-md': size === 'lg' || size === 'md',
+              })}
+            >
+              {children}
+            </div>
+          )}
         </div>
       </div>
-      {isActive && (
-        <div
-          className={cx('flex font-normal not-italic', {
-            'text-h-sm': size === 'sm',
-            'text-p-md': size === 'lg' || size === 'md',
-            'ml-9': icon && size === 'sm',
-            'ml-11': icon && size === 'md',
-            'ml-12': icon && size === 'lg',
-          })}
-        >
-          {children}
-        </div>
-      )}
     </div>
   )
 }
