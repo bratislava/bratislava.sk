@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_galleries",
+  "info": {
+    "displayName": "Gallery",
+    "icon": "camera",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "galleryItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.gallery-item"
+    }
+  }
+}
