@@ -235,7 +235,7 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard className="mx-auto mt-28 min-h-[200px] max-w-3xl" {...inba} />
+          <InBaCard className="mx-auto mt-40 md:mt-28 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-20" />
 
           <FacebookPosts title="Bratislava na Facebooku" />
