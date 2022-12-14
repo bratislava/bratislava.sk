@@ -1,32 +1,14 @@
 import LeftIcon from '@assets/images/chevron-left.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { PageCategoryEntityResponse, PageEntityResponse } from '@bratislava/strapi-sdk-homepage'
-import { pagePath } from '@utils/page'
 import cx from 'classnames'
 import * as React from 'react'
 
 interface Props {
-  parentPage: PageEntityResponse
-  pageCategory: PageCategoryEntityResponse
-  title: string
+  crumbs: { title: string; url: string | null }[]
 }
 
-const PageBreadcrumbs = ({ parentPage, pageCategory, title }: Props) => {
+const PageBreadcrumbs = ({ crumbs }: Props) => {
   const { Link: UILink } = useUIContext()
-  const crumbs: { title: string; url: string | null }[] = []
-  if (parentPage.data) {
-    crumbs.push({
-      title: parentPage.data?.attributes?.title ?? '',
-      url: pagePath({
-        locale: parentPage?.data?.attributes?.locale,
-        slug: parentPage?.data?.attributes?.slug,
-      }),
-    })
-  } else if (pageCategory) {
-    crumbs.push({ title: pageCategory?.data?.attributes?.title ?? '', url: null })
-  }
-
-  crumbs.push({ title: title ?? '', url: null })
   return (
     <>
       {crumbs.map((crumb, i) => {
