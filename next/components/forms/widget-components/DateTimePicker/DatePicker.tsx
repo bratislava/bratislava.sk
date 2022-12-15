@@ -101,6 +101,11 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       state?.close()
     }
 
+    const resetCloseHandler = () => {
+      state?.setDateValue(null)
+      state?.close()
+    }
+
     return (
       <I18nProvider locale={locale}>
         <div className="relative w-full max-w-xs">
@@ -124,7 +129,11 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
           {state?.isOpen && (
             <OverlayProvider>
               <Popover {...dialogProps} isOpen={state?.isOpen} onClose={closeHandler}>
-                <Calendar {...calendarProps} onClose={closeHandler} onSubmit={submitCloseHandler} />
+                <Calendar
+                  {...calendarProps}
+                  onSubmit={submitCloseHandler}
+                  onReset={resetCloseHandler}
+                />
               </Popover>
             </OverlayProvider>
           )}

@@ -54,7 +54,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       tooltip,
       description,
       onChange,
-      value,
+      value = '',
       ...rest
     },
     ref,
@@ -81,32 +81,56 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       state,
       ref as RefObject<HTMLDivElement>,
     )
+
+    const resetValues = () => {
+      onChange('')
+      setMinute('')
+      setHour('')
+      setPrevValue('')
+    }
+
+    // TODO not work
+    const addZeroOnSuccess = (): void => {
+      if (!hour || !minute) {
+        if (hour) {
+          setMinute('00')
+        }
+        if (minute) {
+          setHour('00')
+        }
+      }
+    }
+
+    const closeFailedHandler = () => {
+      onChange(prevValue)
+      if (prevValue) setHour(prevValue.split(':')[0])
+      else setHour('')
+
+      if (prevValue) setMinute(prevValue.split(':')[1])
+      else setMinute('')
+
+      state?.close()
+    }
+
+    const closeSuccessHandler = () => {
+      // addZeroOnSuccess()
+      if (onChange && value) setPrevValue((prev) => (prev !== value ? value : prev))
+      state?.close()
+    }
+
+    const resetCloseHandler = () => {
+      resetValues()
+      state?.close()
+    }
+
     useEffect(() => {
       if (isInputEdited) {
         setMinute('')
         setHour('')
+        setPrevValue('')
       }
     }, [isInputEdited])
 
-    const addZeroOnSuccess = (): void => {
-      if (!hour || !minute) {
-        if (hour) setMinute('00')
-        if (minute) setHour('00')
-      }
-    }
-    console.log(prevValue)
-    const closeFailedHandler = () => {
-      state?.close()
-      if (onChange) onChange(prevValue)
-      setHour(prevValue.split(':')[0])
-      setMinute(prevValue.split(':')[1])
-    }
-
-    const closeSuccessHandler = () => {
-      state?.close()
-      if (value) setPrevValue((prev) => (prev !== value ? value : prev))
-      // addZeroOnSuccess()
-    }
     return (
       <I18nProvider locale={locale}>
         <div className="relative w-full max-w-xs">
@@ -145,7 +169,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   hour={hour}
                   setMinute={setMinute}
                   minute={minute}
-                  onClose={closeFailedHandler}
+                  onReset={resetCloseHandler}
                   onSubmit={closeSuccessHandler}
                   onChange={onChange}
                   value={value}

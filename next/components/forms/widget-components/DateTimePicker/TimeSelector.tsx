@@ -6,7 +6,7 @@ import React, { MouseEvent, useEffect, useRef } from 'react'
 import { useDidMount } from 'rooks'
 
 type TimeSelectorBase = {
-  onClose?: () => void
+  onReset?: () => void
   onSubmit?: () => void
   setHour: React.Dispatch<React.SetStateAction<string>>
   setMinute: React.Dispatch<React.SetStateAction<string>>
@@ -21,7 +21,7 @@ const HOURS_LIMIT = 23
 const MINUTES_LIMIT = 59
 
 const TimeSelector = ({
-  onClose,
+  onReset,
   onSubmit,
   setHour,
   setMinute,
@@ -65,8 +65,7 @@ const TimeSelector = ({
 
   useEffect(() => {
     if (onChange) onChange(timeValueFormat)
-    console.log(hour, minute)
-  }, [onChange, timeValueFormat])
+  }, [timeValueFormat])
 
   useDidMount(() => {
     const hoursItemOffset =
@@ -139,7 +138,7 @@ const TimeSelector = ({
         </div>
       </div>
       <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
-        <Button onPress={onClose} text="Resetovať" variant="plain-black" size="sm" />
+        <Button onPress={onReset} text="Resetovať" variant="plain-black" size="sm" />
         <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>
     </div>
