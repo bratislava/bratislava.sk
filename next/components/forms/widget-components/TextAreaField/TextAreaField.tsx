@@ -65,7 +65,7 @@ const TextAreaField = ({
     ref,
   )
   const style = cx(
-    'overflow-auto px-4 py-2.5 bg-gray-0 border-2 border-gray-200 text-button-1 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
+    'text-20 overflow-auto px-4 py-2.5 bg-gray-0 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
     className,
     {
       // hover

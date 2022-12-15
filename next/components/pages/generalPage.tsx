@@ -18,7 +18,8 @@ import {
   SectionContainer,
   SubpageList,
 } from '@bratislava/ui-bratislava'
-import { pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
+import { pagePath, pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
+// import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Head from 'next/head'
@@ -28,6 +29,8 @@ import * as React from 'react'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
+
+// import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
@@ -60,6 +63,21 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts',
   )
+  const crumbs: { title: string; url: string | null }[] = []
+  if (page?.parentPage.data) {
+    crumbs.push({
+      title: page?.parentPage.data?.attributes?.title ?? '',
+      url: pagePath({
+        locale: page?.parentPage?.data?.attributes?.locale,
+        slug: page?.parentPage?.data?.attributes?.slug,
+      }),
+    })
+  } else if (page?.pageCategory) {
+    crumbs.push({ title: page?.pageCategory?.data?.attributes?.title ?? '', url: null })
+  }
+
+  crumbs.push({ title: page.title ?? '', url: null })
+
   return (
     <BasePageLayout
       footer={footer}
@@ -92,11 +110,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
         <SectionContainer>
           <div className="lg:min-h-56 relative">
             <div className="absolute top-4 lg:top-6">
-              <PageBreadcrumbs
-                parentPage={page?.parentPage}
-                pageCategory={page?.pageCategory}
-                title={page.title}
-              />
+              <PageBreadcrumbs crumbs={crumbs} />
             </div>
             <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
