@@ -120,5 +120,7 @@
   "tourist": "Som turista",
   "noBlogPostsToShow": "Žiadne články na zobrazenie.",
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
-  "noUsersToShow": "Žiadne kontakty na zobrazenie."
+  "noUsersToShow": "Žiadne kontakty na zobrazenie.",
+  "menu.show_less": "Zobraziť menej",
+  "menu.show_more": "Zobraziť viac"
 }

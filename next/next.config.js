@@ -13,7 +13,7 @@ const nextConfig = {
   i18n,
   reloadOnPrerender: process.env.NODE_ENV === 'development',
   images: {
-    domains: ['localhost'], // TODO will need fixing before deployment
+    domains: ['localhost', 'cdn-api.bratislava.sk'], // TODO will need fixing before deployment
   },
   typescript: {
     // !! WARN !!
