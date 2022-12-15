@@ -3,7 +3,7 @@ import { useProgressBar } from 'react-aria'
 
 type ProgressBarBase = {
   type?: 'success' | 'default'
-  label: string
+  label?: string
   value: number
   minValue?: number
   maxValue?: number
