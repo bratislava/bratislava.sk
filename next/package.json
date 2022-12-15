@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
+    "@bratislava/json-schema-xsd-tools": "^0.1.8",
     "@cloudflare/json-schema-walker": "^0.1.1",
     "@internationalized/date": "^3.0.1",
     "@js-joda/core": "5.2.0",
