@@ -57,7 +57,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     })
   }
 
-  const isEverythingDeselected = (): boolean => {
+  const isEverythingSelected = (): boolean => {
     return enumOptions.some((option: EnumOptionsType) => !isSelected(option))
   }
 
@@ -78,7 +78,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
           onSelectAll={handleOnSelectAllRowClick}
           divider={divider}
           selectHashCode={selectHashCode}
-          isEverythingDeselected={isEverythingDeselected()}
+          isEverythingSelected={isEverythingSelected()}
         />
       )}
       {enumOptions?.map((option, key) => (

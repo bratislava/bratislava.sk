@@ -32,7 +32,7 @@ const DropdownRow = ({
 }: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
-    'dropdown flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer hover:bg-form-plain-black-hover',
+    'dropdown hover:bg-form-plain-black-hover flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer',
     {
       'h-14': option.label === '' || option.label === String(option.value),
       'h-full xs:h-[84px]': option.label !== '' && option.label !== String(option.value),
@@ -50,7 +50,6 @@ const DropdownRow = ({
 
   // EVENT HANDLERS
   const handleOnClick = () => {
-    console.log('type', type)
     if (selected && type === 'multiple') onUnChooseMulti(option)
     else if (!selected && type === 'multiple') onChooseMulti(option)
     else if (selected && ['one', 'arrow', 'radio'].includes(type)) onUnChooseOne(option, true)

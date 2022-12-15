@@ -3,20 +3,20 @@ import { useTranslation } from 'next-i18next'
 interface SelectAllDropdownRowProps {
   divider?: boolean
   selectHashCode?: string
-  isEverythingDeselected: boolean
+  isEverythingSelected: boolean
   onSelectAll: (isEverythingSelect: boolean) => void
 }
 
 const SelectAllDropdownRow = ({
   divider,
   selectHashCode,
-  isEverythingDeselected,
+  isEverythingSelected,
   onSelectAll,
 }: SelectAllDropdownRowProps) => {
-  const [t] = useTranslation('forms')
-
+  const { t, i18n } = useTranslation('forms')
+  console.log(i18n.options.ns)
   const handleOnClick = () => {
-    onSelectAll(isEverythingDeselected)
+    onSelectAll(isEverythingSelected)
   }
 
   return (
@@ -27,7 +27,7 @@ const SelectAllDropdownRow = ({
       <div className={`${selectHashCode} dropdown flex h-full flex-col justify-center`}>
         <div className={`${selectHashCode} dropdown flex flex-row justify-center`}>
           <p className={`${selectHashCode} dropdown text-20-semibold w-full`}>
-            {isEverythingDeselected ? t('selectAll') : t('deselectAll')}
+            {isEverythingSelected ? t('selectAll') : t('deselectAll')}
           </p>
         </div>
       </div>
