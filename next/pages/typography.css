@@ -183,8 +183,16 @@
     @apply font-light text-p-base lg:text-p-md;
   }
 
+  .text-p1-semibold {
+    @apply font-semibold text-p-base lg:text-p-md;
+  }
+
   .text-p1-bold {
     @apply font-bold text-p-base lg:text-p-md;
+  }
+
+  .text-p2{
+    @apply font-normal text-p-base;
   }
 
   .text-p2-light {
@@ -195,11 +203,18 @@
     @apply font-bold text-p-base;
   }
 
+  .text-p3-bold {
+    @apply font-normal text-p-sm;
+  }
+
   .text-p3-light {
     @apply font-light text-p-sm;
   }
   .text-p3-bold {
     @apply font-bold text-p-sm;
+  }
+  .text-p3-semibold {
+    @apply font-semibold text-p-sm;
   }
 
   .text-p4-light {
