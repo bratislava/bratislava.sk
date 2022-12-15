@@ -1,3 +1,4 @@
+import { loadAndValidate } from '@bratislava/json-schema-xsd-tools'
 import { describe } from '@jest/globals'
 import each from 'jest-each'
 
@@ -33,6 +34,12 @@ describe('forms test', () => {
 
       const json = await xmlToJson(xml, eform.schema)
       expect(eform.data).toEqual(json)
+
+      const options = {
+        ignore: key === 'dopravneZnacenie' ? ['empty'] : undefined,
+      }
+      const errors = loadAndValidate(eform.xsd, eform.schema, options)
+      expect(errors).toHaveLength(0)
     },
   )
 })
