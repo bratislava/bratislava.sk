@@ -5,7 +5,7 @@ import Radio from '../widget-components/RadioButton/Radio'
 import RadioGroup from '../widget-components/RadioButton/RadioGroup'
 
 type RadioButtonRJSFOptions = {
-  enumOptions?: (EnumOptionsType & { schema: { tooltip?: string } })[]
+  enumOptions?: EnumOptionsType[]
   tooltip?: string
   radioOptions?: { value: string; tooltip?: string; isDisabled?: boolean }[]
   className?: string
