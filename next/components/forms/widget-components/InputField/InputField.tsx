@@ -58,7 +58,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       {
         ...rest,
         placeholder,
-        value,
+        value: onChange && value ? value : valueState,
         type: type !== 'password' ? 'text' : type,
         label,
         errorMessage,
@@ -97,7 +97,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     }
 
     const style = cx(
-      'w-full px-4 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
+      'text-20 w-full px-4 py-2.5 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
       className,
       {
         // conditions
@@ -128,20 +128,14 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         <div className="relative">
           {leftIcon && (
             <i
-              className={cx('absolute left-4 h-full flex items-center w-4-translate-y-2/4', {
+              className={cx('w-4-translate-y-2/4 absolute left-4 h-full flex items-center', {
                 'opacity-50': disabled,
               })}
             >
               {leftIconSwitcher(leftIcon)}
             </i>
           )}
-          <input
-            {...inputProps}
-            ref={ref}
-            value={valueState}
-            name={inputProps.id}
-            className={style}
-          />
+          <input {...inputProps} ref={ref} name={inputProps.id} className={style} />
           {resetIcon && valueState && (
             <button
               type="button"
