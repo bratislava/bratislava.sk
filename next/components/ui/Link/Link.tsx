@@ -4,6 +4,7 @@ import cx from 'classnames'
 interface IProps {
   className?: string
   href: string
+  target?: '_blank' | '_self' | '_parent' | '_top'
   children?: React.ReactNode
   icon?: React.ReactNode
   hoverIcon?: React.ReactNode
@@ -15,6 +16,7 @@ interface IProps {
 export const Link = ({
   className,
   href,
+  target,
   children,
   icon,
   hoverIcon: iHoverIcon,
@@ -31,9 +33,9 @@ export const Link = ({
   const hoverIcon = iHoverIcon || icon
 
   return (
-    <UILink className={className} href={href}>
+    <UILink className={className} href={href} target={target}>
       <div
-        className={cx('flex items-center cursor-pointer group', {
+        className={cx('group flex items-center cursor-pointer', {
           'text-category-600 font-medium': variant === 'primary',
         })}
       >

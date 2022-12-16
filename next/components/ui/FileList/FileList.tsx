@@ -65,6 +65,7 @@ export const FileList = ({
   return (
     <div className={className}>
       {/* TODO suggested sonarjs cognitive complexity refactor below */}
+      {/* eslint-disable-next-line sonarjs/cognitive-complexity */}
       {fileSections?.map((fileSection, index) => {
         const { length } = fileSection.files
         const numberOfGroupsSeparatedByDividers = Math.ceil(length / NUM_ITEMS_PER_GROUP)
@@ -81,14 +82,14 @@ export const FileList = ({
                   const end = showMore ? start + NUM_ITEMS_PER_GROUP : NUM_PREVIEW_ITEMS
                   const isLastGroup = i === numberOfGroupsSeparatedByDividers - 1
                   return (
-                    <div>
+                    <div key={i}>
                       <div className={cx('grid grid-cols-3 gap-x-7 gap-y-8')}>
                         {fileSection?.files.slice(start, end).map((file, sectionIndex) => (
                           <div key={sectionIndex} className="w-full">
                             <DownloadCard
-                              title={file.title ? file.title : ''}
-                              downloadLink={file.media?.url ? file.media?.url : ''}
-                              uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                              title={file.title ?? ''}
+                              downloadLink={file.media?.url ?? ''}
+                              uploadDate={file.media?.created_at ?? ''}
                               downloadDetail={
                                 file.media?.ext && file.media.size > 0
                                   ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
