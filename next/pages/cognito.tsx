@@ -1,20 +1,27 @@
+// this is non-production code, much of it is copied from https://www.npmjs.com/package/amazon-cognito-identity-js
+// disabling eslint/ts checks instead of fixing them
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-syntax */
+// @ts-nocheck
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
-import PageWrapper from 'components/layouts/PageWrapper'
 import {
-  CognitoUserPool,
-  CognitoUserAttribute,
-  CognitoUser,
   AuthenticationDetails,
+  CognitoUser,
+  CognitoUserAttribute,
+  CognitoUserPool,
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
-
-import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
-import { useEffect, useState } from 'react'
+import PageWrapper from 'components/layouts/PageWrapper'
 import { Wrapper } from 'components/styleguide/Wrapper'
+import { GetServerSidePropsContext } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useEffect, useState } from 'react'
 
 const TEST_USER_POOL_ID = 'eu-central-1_FZDV0j2ZK'
 const TEST_CLIENT_ID = '1pdeai19927kshpgikd6l1ptc6'
@@ -25,7 +32,7 @@ const poolData = {
 }
 const userPool = new CognitoUserPool(poolData)
 
-//AWS.config.region = 'eu-central-1'; // Region
+// AWS.config.region = 'eu-central-1'; // Region
 // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 //    IdentityPoolId: 'eu-central-1:e31a6d0a-5e01-4600-a20a-e4fb973d3893',
 // });
@@ -37,14 +44,13 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
   const [loginEmail, setLoginEmail] = useState('mpinter.pinto+1@gmail.com')
   const [loginPassword, setLoginPassword] = useState('Password1!')
   const [phone, setPhone] = useState('')
-  const [phoneOtp, setPhoneOtp] = useState('')
   const [cognitoUser, setCognitoUser] = useState(null)
   const [serializedUserData, setSerializedUserData] = useState('')
 
   const createUser = () => {
-    var attributeList = []
+    const attributeList = []
 
-    var dataEmail = {
+    const dataEmail = {
       Name: 'email',
       Value: email,
     }
@@ -53,20 +59,20 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
     //   Name: 'phone_number',
     //   Value: '+15555555555',
     // }
-    var attributeEmail = new CognitoUserAttribute(dataEmail)
+    const attributeEmail = new CognitoUserAttribute(dataEmail)
     // var attributePhoneNumber = new CognitoUserAttribute(dataPhoneNumber)
 
     attributeList.push(attributeEmail)
     // attributeList.push(attributePhoneNumber)
 
-    userPool.signUp(email, password, attributeList, [], function (err, result) {
+    userPool.signUp(email, password, attributeList, [], (err, result) => {
       if (err) {
         alert(err.message || JSON.stringify(err))
         return
       }
-      var cognitoUser = result.user
-      alert('user name is ' + cognitoUser.getUsername())
-      console.log('user name is ' + cognitoUser.getUsername())
+      const cognitoUser = result.user
+      alert(`user name is ${cognitoUser.getUsername()}`)
+      console.log(`user name is ${cognitoUser.getUsername()}`)
     })
   }
 
@@ -77,13 +83,13 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
     }
 
     const cognitoUser = new CognitoUser(userData)
-    cognitoUser.confirmRegistration(emailOtp, true, function (err, result) {
+    cognitoUser.confirmRegistration(emailOtp, true, (err, result) => {
       if (err) {
         alert(err.message || JSON.stringify(err))
         return
       }
-      alert('call result: ' + result)
-      console.log('call result: ' + result)
+      alert(`call result: ${result}`)
+      console.log(`call result: ${result}`)
     })
   }
 
@@ -94,13 +100,13 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
     }
 
     const cognitoUser = new CognitoUser(userData)
-    cognitoUser.resendConfirmationCode(function (err, result) {
+    cognitoUser.resendConfirmationCode((err, result) => {
       if (err) {
         alert(err.message || JSON.stringify(err))
         return
       }
-      alert('call result: ' + result)
-      console.log('call result: ' + result)
+      alert(`call result: ${result}`)
+      console.log(`call result: ${result}`)
     })
   }
 
@@ -119,10 +125,10 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
     const cognitoUser = new CognitoUser(userData)
 
     cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function (result) {
+      onSuccess(result) {
         const accessToken = result.getAccessToken().getJwtToken()
         console.log('accessToken', accessToken)
-        //POTENTIAL: Region needs to be set if not already set previously elsewhere.
+        // POTENTIAL: Region needs to be set if not already set previously elsewhere.
         AWS.config.region = 'eu-central-1'
 
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -135,7 +141,7 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
           },
         })
 
-        //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+        // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
         AWS.config.credentials.refresh((error) => {
           if (error) {
             console.error(error)
@@ -149,7 +155,7 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
         setCognitoUser(cognitoUser)
       },
 
-      onFailure: function (err) {
+      onFailure(err) {
         alert(err.message || JSON.stringify(err))
         console.log(err)
       },
@@ -184,14 +190,14 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
   // useEffect that updates on cognitoUser change and maps all the attributes into json
   useEffect(() => {
     if (cognitoUser) {
-      cognitoUser.getUserAttributes(function (err, result) {
+      cognitoUser.getUserAttributes((err, result) => {
         if (err) {
           alert(err.message || JSON.stringify(err))
           return
         }
         const obj = {}
-        for (let i = 0; i < result.length; i++) {
-          obj[result[i].getName()] = result[i].getValue()
+        for (const element of result) {
+          obj[element.getName()] = element.getValue()
         }
         // JSON stringify pretty print obj
         setSerializedUserData(JSON.stringify(obj, null, 2))
@@ -220,13 +226,13 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
             Value: phone,
           },
         ],
-        function (err, result) {
+        (err, result) => {
           if (err) {
             alert(err.message || JSON.stringify(err))
             return
           }
-          alert('call result: ' + result)
-          console.log('call result: ' + result)
+          alert(`call result: ${result}`)
+          console.log(`call result: ${result}`)
         },
       )
     }
@@ -236,14 +242,14 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
   const validatePhone = () => {
     if (cognitoUser) {
       cognitoUser.getAttributeVerificationCode('phone_number', {
-        onSuccess: function (result) {
-          console.log('call result: ' + result)
+        onSuccess(result) {
+          console.log(`call result: ${result}`)
         },
-        onFailure: function (err) {
+        onFailure(err) {
           alert(err.message || JSON.stringify(err))
         },
-        inputVerificationCode: function () {
-          var verificationCode = prompt('Please input verification code: ', '')
+        inputVerificationCode() {
+          const verificationCode = prompt('Please input verification code: ', '')
           cognitoUser.verifyAttribute('phone_number', verificationCode, this)
         },
       })
@@ -260,12 +266,12 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
             integration, will be resolved soon.
           </div>
           <Wrapper direction="column" title="Create user">
-            <InputField onChange={setEmail} value={email} label="Email" placeholder={'Email'} />
+            <InputField onChange={setEmail} value={email} label="Email" placeholder="Email" />
             <InputField
               onChange={setPassword}
               value={password}
               label="Password"
-              placeholder={'Password'}
+              placeholder="Password"
             />
             <Button onPress={createUser} text="1. Create user & send verification code to email" />
           </Wrapper>
@@ -277,7 +283,7 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
               onChange={setEmailOtp}
               value={emailOtp}
               label="EmailOTP"
-              placeholder={'EmailOTP'}
+              placeholder="EmailOTP"
             />
             <Button onPress={validateEmail} text="Validate Email" />
             <Button onPress={resendEmail} text="Resend Email" />
@@ -287,13 +293,13 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
               onChange={setLoginEmail}
               value={loginEmail}
               label="Email"
-              placeholder={'Email'}
+              placeholder="Email"
             />
             <InputField
               onChange={setLoginPassword}
               value={loginPassword}
               label="Password"
-              placeholder={'Password'}
+              placeholder="Password"
             />
             <Button onPress={login} text="Login" />
           </Wrapper>
@@ -302,7 +308,7 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
             {cognitoUser && <Button onPress={logout} text="Logout" />}
           </Wrapper>
           <Wrapper direction="column" title="4. Add phone number">
-            <InputField onChange={setPhone} value={phone} label="Phone" placeholder={'Phone'} />
+            <InputField onChange={setPhone} value={phone} label="Phone" placeholder="Phone" />
             <Button onPress={updateCognitoPhone} text="Update Phone" />
           </Wrapper>
           <Wrapper direction="column" title="5. Confirm or resend phone otp">
