@@ -5,12 +5,9 @@ import Radio from '../widget-components/RadioButton/Radio'
 import RadioGroup from '../widget-components/RadioButton/RadioGroup'
 
 type RadioButtonRJSFOptions = {
-  enumOptions?: EnumOptionsType[]
+  enumOptions?: (EnumOptionsType & { schema: { tooltip?: string } })[]
   tooltip?: string
-  dropdownDivider?: boolean
-  selectAllOption?: boolean
-  // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-  description?: string
+  radioOptions?: { value: string; tooltip?: string; isDisabled?: boolean }[]
   className?: string
   variant?: 'basic' | 'boxed' | 'card'
 }
@@ -18,31 +15,34 @@ type RadioButtonRJSFOptions = {
 interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: RadioButtonRJSFOptions
-  value: any | any[]
+  value: string
   errorMessage?: string
   required?: boolean
   disabled?: boolean
-  placeholder?: string
   schema: StrictRJSFSchema
-  onChange: (value: any | any[]) => void
+  onChange: (value: string) => void
 }
 
 const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
   const { options, value, onChange, label } = props
-  const { enumOptions, className } = options
-
+  const { enumOptions, className, radioOptions = [], variant } = options
   if (!enumOptions || Array.isArray(value)) return null
+  const getTooltip = (radioValue: string) => {
+    return radioOptions.find((option) => option.value === radioValue)?.tooltip
+  }
+  const isDisabled = (radioValue: string) => {
+    return radioOptions.find((option) => option.value === radioValue)?.isDisabled
+  }
   return (
     <RadioGroup value={value} onChange={onChange} className={className} label={label}>
-      {enumOptions.map((radioElement: any) => {
+      {enumOptions.map((radioElement: { value: string; label: string }) => {
         return (
           <Radio
             key={radioElement.value}
-            isDisabled={radioElement.schema.disabled}
-            variant={options.variant}
+            isDisabled={isDisabled(radioElement.value)}
+            variant={variant}
             value={radioElement.value}
-            error={radioElement.schema.error}
-            tooltip={radioElement.schema.tooltip}
+            tooltip={getTooltip(radioElement.value)}
           >
             {radioElement.label}
           </Radio>
