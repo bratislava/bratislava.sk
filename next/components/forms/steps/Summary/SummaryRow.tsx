@@ -5,7 +5,7 @@ import cx from 'classnames'
 interface SummaryRowProps {
   fieldKey: string
   schemaField: JsonSchema
-  fieldData?: JsonSchema
+  fieldData?: JsonSchema | string | number | boolean | object | []
   isError?: boolean
   onGoToStep?: () => void
 }
