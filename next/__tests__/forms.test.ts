@@ -1,3 +1,6 @@
+// TODO publish to @types: https://github.com/DefinitelyTyped/DefinitelyTyped
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { loadAndValidate } from '@bratislava/json-schema-xsd-tools'
 import { describe } from '@jest/globals'
 import each from 'jest-each'
@@ -35,6 +38,7 @@ describe('forms test', () => {
       const json = await xmlToJson(xml, eform.schema)
       expect(eform.data).toEqual(json)
 
+      // We don't have JSON schema of form "dopravneZnacenie", empty schema is valid.
       const options = {
         ignore: key === 'dopravneZnacenie' ? ['empty'] : undefined,
       }
