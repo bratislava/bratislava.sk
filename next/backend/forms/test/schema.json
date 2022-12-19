@@ -147,7 +147,8 @@
               "oneOf": [
                 {
                   "const": "screen",
-                  "title": "Screen"
+                  "title": "Screen",
+                  "tooltip": "Screen tooltip"
                 },
                 {
                   "const": "multiply",
