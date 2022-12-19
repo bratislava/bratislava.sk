@@ -9,11 +9,20 @@ import { MenuPanel } from './MenuPanel'
 interface IProps {
   className?: string
   menuItems: MenuMainItem[]
-  isVisible: boolean
+  isVisible?: boolean
+  initialActiveMenu?: number
 }
 
-export const BAStickyMenu = ({ className, menuItems, isVisible }: IProps) => {
-  const { activeButtonId, handleMenuButtonClick, handleClosePanel } = useStickyMenu(isVisible)
+export const BAStickyMenu = ({
+  className,
+  menuItems,
+  isVisible = true,
+  initialActiveMenu,
+}: IProps) => {
+  const { activeButtonId, handleMenuButtonClick, handleClosePanel } = useStickyMenu(
+    isVisible,
+    initialActiveMenu,
+  )
 
   return (
     <menu className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>

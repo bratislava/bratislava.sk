@@ -8,8 +8,12 @@ interface HookResult {
   handleMenuButtonClick(buttonId: number): void
 }
 
-export const useStickyMenu = (isVisible: boolean) => {
-  const [activeButtonId, setActiveButtonId] = useState<number | null>(null)
+export const useStickyMenu = (
+  isVisible: boolean,
+  initialActiveMenu: number | null = null,
+): HookResult => {
+  const [activeButtonId, setActiveButtonId] = useState<number | null>(initialActiveMenu)
+  console.log(initialActiveMenu)
 
   useEffect(() => {
     if (isVisible) {
