@@ -8,7 +8,7 @@ const UploadBrokenMessages = ({ fileBrokenMessages }: UploadBrokenMessagesProps)
   return (
     <>
       {
-        /* messages when file is is broken/invalid before sending to bucket */
+        /* messages when file is broken/invalid before sending to bucket */
         fileBrokenMessages.map((message, key) => (
           <p key={key} className="w-full p-1 text-red-500">
             {message}
