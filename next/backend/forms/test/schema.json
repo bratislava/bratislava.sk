@@ -216,17 +216,6 @@
           }
         }
       }
-    },
-    {
-      "required": [],
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        }
-      }
     }
   ]
 }
