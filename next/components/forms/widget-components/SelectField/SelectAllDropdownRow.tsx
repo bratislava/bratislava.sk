@@ -14,7 +14,6 @@ const SelectAllDropdownRow = ({
   onSelectAll,
 }: SelectAllDropdownRowProps) => {
   const { t, i18n } = useTranslation('forms')
-  console.log(i18n.options.ns)
   const handleOnClick = () => {
     onSelectAll(isEverythingSelected)
   }
