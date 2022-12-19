@@ -17,7 +17,10 @@ const StepPropertySummaryRows = (props: StepPropertySummaryRowsProps) => {
   const getIsError = (fieldKey: string): boolean => {
     console.log('SUMMARY ERRORS:', formErrors)
     return formErrors.some((error) => {
-      return Object.values(error.params).includes(fieldKey)
+      if (error.name === 'required') {
+        return Object.values(error.params).includes(fieldKey)
+      }
+      return error.schemaPath?.split('/')[4] === fieldKey
     })
   }
 
