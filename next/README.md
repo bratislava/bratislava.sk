@@ -1,4 +1,4 @@
-# Bratislava.sk
+# Bratislava.sk 
 
 This readme should get you up & running. For more detailed documentation, check the /docs file in the root of the repo.
 
