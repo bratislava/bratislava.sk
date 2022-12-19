@@ -10,18 +10,18 @@ interface IProps {
   className?: string
   menuItems: MenuMainItem[]
   isVisible?: boolean
-  initialActiveMenu?: number
+  initialActiveMenuId?: number
 }
 
 export const BAStickyMenu = ({
   className,
   menuItems,
   isVisible = true,
-  initialActiveMenu,
+  initialActiveMenuId,
 }: IProps) => {
-  const { activeButtonId, handleMenuButtonClick, handleClosePanel } = useStickyMenu(
+  const { activeButtonId, activePanelId, handleMenuButtonClick, handleClosePanel } = useStickyMenu(
     isVisible,
-    initialActiveMenu,
+    initialActiveMenuId,
   )
 
   return (
@@ -36,7 +36,7 @@ export const BAStickyMenu = ({
           >
             <MenuCell item={item} isActive={activeButtonId === i} />
           </button>
-          {isVisible && activeButtonId === i && (
+          {isVisible && activePanelId === i && (
             <MenuPanel item={item} onClosePanel={handleClosePanel} />
           )}
         </Fragment>
