@@ -73,7 +73,6 @@ export const Carousel = ({
           'right-0 transform translate-x-1/2': !isLeft,
           hidden:
             (isLeft && currentItem === 0) ||
-            (!isLeft && currentItem === visibleItems) ||
             (!isLeft && currentItem + shiftIndex >= totalItems - visibleItems + shiftIndex),
           'ml-4': isLeft && spacing === 'default',
           'mr-4': !isLeft && spacing === 'default',
@@ -89,6 +88,7 @@ export const Carousel = ({
         '-mx-4': spacing === 'default',
       })}
     >
+      {/* Left button */}
       <div className="hidden md:block">{sliderControl(true)}</div>
 
       <div
@@ -98,11 +98,12 @@ export const Carousel = ({
         )}
         ref={scrollerRef}
       >
-        {items?.map((carouselItem: React.ReactNode, i: number) => {
-          const isVisible = i >= currentItem && i < currentItem + visibleItems
+        {items?.map((carouselItem, index) => {
+          const isVisible = index >= currentItem && index < currentItem + visibleItems
+
           return (
             <div
-              key={i}
+              key={index}
               className={cx('flex-shrink-0 transition-all duration-200 transform', {
                 'px-4': spacing === 'default',
                 'w-1/2': visibleItems === 2,
@@ -120,7 +121,8 @@ export const Carousel = ({
         })}
       </div>
 
-      <div className="hidden md:block">{sliderControl(false)} </div>
+      {/* Right button */}
+      <div className="hidden md:block">{sliderControl(false)}</div>
     </div>
   )
 }

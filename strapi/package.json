@@ -1,7 +1,7 @@
 {
   "name": "bratislava-strapi",
   "private": true,
-  "version": "1.2.4",
+  "version": "1.4.0",
   "description": "A Strapi application",
   "scripts": {
     "dev": "yarn develop",

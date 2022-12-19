@@ -40,9 +40,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
             'md:w-40 md:top-auto md:right-0 md:translate-x-[15%] md:translate-y-0',
           )}
         >
-          <UILink href={link}>
-            <img src={rearImage} alt="inba" width="160" height="244" />
-          </UILink>{' '}
+          <img src={rearImage} alt="inba" width="160" height="244" />
         </Panel>
       )}
 
@@ -53,9 +51,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
             'md:w-52 md:top-auto md:right-0 md:translate-x-[-45%] md:translate-y-0',
           )}
         >
-          <UILink href={link}>
-            <img src={frontImage} alt="inba" width="211" height="329" />
-          </UILink>
+          <img src={frontImage} alt="inba" width="211" height="329" />
         </Panel>
       )}
 
