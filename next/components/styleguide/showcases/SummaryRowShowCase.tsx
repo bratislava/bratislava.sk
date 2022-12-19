@@ -24,6 +24,25 @@ const SummaryRowShowCase = () => {
           <SummaryRow fieldKey="myLabel" schemaField={schemaField} fieldData={5} />
         </div>
       </Stack>
+      <Stack direction="column">
+        <div className="w-full">
+          <SummaryRow fieldKey="myLabel" schemaField={schemaField} size="small" isError />
+        </div>
+        <div className="w-full">
+          <SummaryRow fieldKey="myLabel" schemaField={schemaField} fieldData="Value" size="small" />
+        </div>
+        <div className="w-full">
+          <SummaryRow
+            fieldKey="myLabel"
+            schemaField={schemaField}
+            fieldData={['Value1', 'Value2', 'Value3']}
+            size="small"
+          />
+        </div>
+        <div className="w-full">
+          <SummaryRow fieldKey="myLabel" schemaField={schemaField} fieldData={5} size="small" />
+        </div>
+      </Stack>
     </Wrapper>
   )
 }

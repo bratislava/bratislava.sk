@@ -7,11 +7,12 @@ interface SummaryRowProps {
   schemaField: JsonSchema
   fieldData?: JsonSchema | string | number | boolean | object | []
   isError?: boolean
+  size?: 'small' | 'large'
   onGoToStep?: () => void
 }
 
 const SummaryRow = (props: SummaryRowProps) => {
-  const { fieldKey, schemaField, fieldData, isError, onGoToStep } = props
+  const { fieldKey, schemaField, fieldData, isError, size = 'large', onGoToStep } = props
   const label = typeof schemaField !== 'boolean' ? schemaField.title ?? fieldKey : fieldKey
   const value =
     !fieldData ||
@@ -25,11 +26,21 @@ const SummaryRow = (props: SummaryRowProps) => {
     'border-gray-200 hover:border-gray-700 [&>div>*]:hover:block': !isError,
   })
 
+  const labelClassName = cx('w-full', {
+    'text-p1-semibold': size === 'large',
+    'text-p2-semibold': size === 'small',
+  })
+
+  const valueClassName = cx('grow', {
+    'text-p1': size === 'large',
+    'text-p2': size === 'small',
+  })
+
   return (
     <div className={containerClassName}>
-      <p className="text-p1-semibold w-full ">{label}</p>
+      <p className={labelClassName}>{label}</p>
       <div className="w-full flex flex-row items-center">
-        <p className="text-p1 grow">{value}</p>
+        <p className={valueClassName}>{value}</p>
         <EditIcon className="cursor-pointer hidden" onClick={onGoToStep} />
       </div>
     </div>
