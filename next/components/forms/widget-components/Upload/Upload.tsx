@@ -12,7 +12,7 @@ import UploadedFilesList from './UploadedFilesList'
 
 interface UploadProps {
   type: 'button' | 'dragAndDrop'
-  label: string
+  label?: string
   required?: boolean
   multiple?: boolean
   value?: UploadMinioFile[]
@@ -181,7 +181,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       className={cx('select-none w-fit h-fit', className)}
       style={{ transition: '0.2 all linear' }}
     >
-      <UploadFieldHeader label={label} required={required} />
+      <UploadFieldHeader label={label ?? ''} required={required} />
       {
         /* UPLOAD AREA */
         type === 'button' ? (
