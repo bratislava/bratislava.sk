@@ -5,13 +5,16 @@ interface HookResult {
   clickOutsideRef: MutableRefObject<never | null>
 }
 
-export const useClickOutsideHandler = (onClickOutside: () => void): HookResult => {
+export const useClickOutsideHandler = (
+  onClickOutside: (event: MouseEvent) => void,
+  shouldHandleClick?: boolean,
+): HookResult => {
   const clickOutsideRef: MutableRefObject<never | null> = useRef(null)
-
-  const handleOutsideClick = () => {
-    onClickOutside()
-  }
-  useOutsideClick(clickOutsideRef as unknown as MutableRefObject<HTMLElement>, handleOutsideClick)
+  useOutsideClick(
+    clickOutsideRef as unknown as MutableRefObject<HTMLElement>,
+    onClickOutside,
+    shouldHandleClick,
+  )
 
   return {
     clickOutsideRef,

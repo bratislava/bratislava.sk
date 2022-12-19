@@ -2,16 +2,16 @@ import { Enum_Pagecategory_Icon } from '@bratislava/strapi-sdk-homepage'
 import { MenuMainItem } from '@bratislava/ui-bratislava'
 import HomepageMenuIcon from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenuIcon'
 import cx from 'classnames'
-import { Dispatch, SetStateAction, useRef } from 'react'
+import { useRef } from 'react'
 import { useHover } from 'usehooks-ts'
 
 type HomePageCategoryButtonProps = {
   item: MenuMainItem
   isActive: boolean
-  setActiveId: Dispatch<SetStateAction<string | null>>
+  onClick(): void
 }
 
-const HomePageCategoryButton = ({ item, setActiveId, isActive }: HomePageCategoryButtonProps) => {
+const HomePageCategoryButton = ({ item, onClick, isActive }: HomePageCategoryButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const isHover = useHover(buttonRef)
 
@@ -27,7 +27,7 @@ const HomePageCategoryButton = ({ item, setActiveId, isActive }: HomePageCategor
       style={{
         backgroundColor: isActive ? item.color : 'transparent',
       }}
-      onClick={() => setActiveId(item.id)}
+      onClick={onClick}
     >
       <div>
         <HomepageMenuIcon
