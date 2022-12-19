@@ -1,5 +1,5 @@
 import { JsonSchema } from '@backend/utils/forms'
-import { StrictRJSFSchema } from '@rjsf/utils'
+import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { ApiError, submitEform } from '@utils/api'
 import { ErrorObject } from 'ajv'
 import { useTranslation } from 'next-i18next'
@@ -11,7 +11,8 @@ import Summary from './Summary/Summary'
 import SummaryMessages from './Summary/SummaryMessages'
 
 interface FinalStepProps {
-  state: Record<string, any>
+  formData: Record<string, any>
+  formErrors: RJSFValidationError[]
   schema?: StrictRJSFSchema
   slug: string
   onGoToStep: (step: number) => void
@@ -20,7 +21,8 @@ interface FinalStepProps {
 
 // TODO find out if we need to submit to multiple different endpoints and allow configuration if so
 export const FinalStep = ({
-  state,
+  formData,
+  formErrors,
   schema,
   slug,
   onGoToStep,
@@ -33,7 +35,7 @@ export const FinalStep = ({
   const submit = async () => {
     try {
       // TODO do something more with the result then just showing success
-      const result = await submitEform(slug, state)
+      const result = await submitEform(slug, formData)
       setErrors([])
       setSuccessMessage(t('success'))
     } catch (error) {
@@ -49,14 +51,19 @@ export const FinalStep = ({
     }
   }
 
-  if (typeof state !== 'object' || state == null) {
+  if (typeof formData !== 'object' || formData == null) {
     return null
   }
 
   return (
     <div>
       <h1 className="text-h1">Summary</h1>
-      <Summary schema={schema} state={state} onGoToStep={onGoToStep} />
+      <Summary
+        schema={schema}
+        formData={formData}
+        formErrors={formErrors}
+        onGoToStep={onGoToStep}
+      />
       <SummaryMessages errors={errors} successMessage={successMessage} />
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
       <div className="flex flex-row gap-3">

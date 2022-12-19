@@ -1,4 +1,5 @@
 import Form from '@rjsf/core'
+import { RJSFValidationError } from '@rjsf/utils'
 import { Ref, RefObject, useEffect, useRef, useState } from 'react'
 
 // TODO prevent unmounting
@@ -7,6 +8,7 @@ import { Ref, RefObject, useEffect, useRef, useState } from 'react'
 export const useFormStepper = (eformSlug: string, schema: any) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
+  const [errors, setErrors] = useState<RJSFValidationError[]>([])
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast
@@ -50,6 +52,8 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
     setStepIndex, // only for testing!
     state,
     setState,
+    errors,
+    setErrors,
     previous,
     next,
     currentSchema,

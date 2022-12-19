@@ -4,6 +4,7 @@
 
 import { EFormValue } from '@backend/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { RJSFValidationError } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
@@ -72,7 +73,7 @@ const FormTestPage = ({
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
-
+  console.log('FORM:', form)
   const customFormats = {
     zip: /\b\d{5}\b/,
   }
@@ -107,7 +108,8 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <FinalStep
-              state={form.state}
+              formData={form.state}
+              formErrors={form.errors}
               slug={formSlug}
               schema={eform.schema}
               onGoToStep={(step: number) => form.setStepIndex(step)}
@@ -130,7 +132,10 @@ const FormTestPage = ({
                   form.setState({ ...form.state, ...e.formData })
                   form.setStepIndex(form.stepIndex + 1)
                 }}
-                onError={(e) => console.log('errors', e)}
+                onError={(e: RJSFValidationError[]) => {
+                  form.setErrors([...form.errors, ...e])
+                  console.log('errors', e)
+                }}
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />

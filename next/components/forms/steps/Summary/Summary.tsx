@@ -1,15 +1,16 @@
 import { JsonSchema } from '@backend/utils/forms'
-import { StrictRJSFSchema } from '@rjsf/utils'
+import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 
 import StepSummaryRows from './StepSummaryRows'
 
 interface SummaryProps {
-  state: Record<string, any>
+  formData: Record<string, any>
+  formErrors: RJSFValidationError[]
   schema?: StrictRJSFSchema
   onGoToStep: (step: number) => void
 }
 
-const Summary = ({ schema, state, onGoToStep }: SummaryProps) => {
+const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => {
   return (
     <div className="my-10">
       {schema?.allOf?.map((step, key) => {
@@ -17,7 +18,8 @@ const Summary = ({ schema, state, onGoToStep }: SummaryProps) => {
           <StepSummaryRows
             key={key}
             step={step}
-            stateData={state}
+            formData={formData}
+            formErrors={formErrors}
             onGoToStep={() => onGoToStep(key)}
           />
         )
