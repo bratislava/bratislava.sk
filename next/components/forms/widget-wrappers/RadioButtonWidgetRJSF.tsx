@@ -27,12 +27,12 @@ interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
 }
 
 const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
-  const { options, value, onChange } = props
+  const { options, value, onChange, label } = props
   const { enumOptions, className } = options
 
   if (!enumOptions || Array.isArray(value)) return null
   return (
-    <RadioGroup value={value} onChange={onChange} className={className}>
+    <RadioGroup value={value} onChange={onChange} className={className} label={label}>
       {enumOptions.map((radioElement: any) => {
         return (
           <Radio

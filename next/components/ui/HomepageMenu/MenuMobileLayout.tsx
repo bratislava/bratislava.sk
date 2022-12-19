@@ -17,9 +17,13 @@ export const MenuMobileLayout: FC<Props> = ({ items }) => {
       {/* Mobile Design */}
       <div className="flex flex-col gap-y-1 md:hidden">
         {items?.map((item, i) => (
-          <button onClick={() => setSelectedMenu(item)} className="flex items-center gap-x-7 p-2" key={i}>
+          <button
+            onClick={() => setSelectedMenu(item)}
+            className="flex items-center gap-x-7 p-2"
+            key={i}
+          >
             <Icon iconName={item.icon} />
-            <p className="text-left text-p2-medium text-font">{item.title}</p>
+            <p className="text-p2-medium text-left text-font">{item.title}</p>
           </button>
         ))}
       </div>

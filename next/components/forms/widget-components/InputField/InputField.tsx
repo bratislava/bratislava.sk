@@ -58,7 +58,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       {
         ...rest,
         placeholder,
-        value,
+        value: onChange && value ? value : valueState,
         type: type !== 'password' ? 'text' : type,
         label,
         errorMessage,
@@ -134,13 +134,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               {leftIconSwitcher(leftIcon)}
             </i>
           )}
-          <input
-            {...inputProps}
-            ref={ref}
-            value={valueState}
-            name={inputProps.id}
-            className={style}
-          />
+          <input {...inputProps} ref={ref} name={inputProps.id} className={style} />
           {resetIcon && valueState && (
             <button
               type="button"
