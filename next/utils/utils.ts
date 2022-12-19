@@ -66,23 +66,23 @@ export const getAllPossibleJsonSchemaProperties = (
     return {}
   }
 
-  let properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+  const properties: JsonSchemaProperties = jsonSchema.properties ?? {}
   if (jsonSchema.then) {
-    properties = { ...properties, ...getAllPossibleJsonSchemaProperties(jsonSchema.then) }
+    Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.then))
   }
   if (jsonSchema.allOf) {
     jsonSchema.allOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
     })
   }
   if (jsonSchema.oneOf) {
     jsonSchema.oneOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
     })
   }
   if (jsonSchema.anyOf) {
     jsonSchema.anyOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
     })
   }
 
