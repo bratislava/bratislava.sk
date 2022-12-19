@@ -23,10 +23,10 @@ const UploadShowCase: FC<UploadShowCaseProps> = ({}: UploadShowCaseProps) => {
   return (
     <Wrapper title="Upload" direction="column">
       <Stack direction="column">
-        <div className="w-96">
+        <div className="max-w-96 w-full">
           <UploadedFile fileName="fish.jpg" onRemove={() => console.log('REMOVE')} />
         </div>
-        <div className="w-96">
+        <div className="max-w-96 w-full">
           <UploadedFile
             fileName="something_wrong.jp"
             errorMessage="Error message"
