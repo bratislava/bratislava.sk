@@ -8,18 +8,38 @@ const AccordionShowCase = () => {
   return (
     <Wrapper direction="column" title="Accordion">
       <Stack direction="column">
-        <Accordion
-          size="sm"
-          title="Headline"
-          content={
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-          }
-        />
-        <Accordion size="md" title="Headline" content="Text" />
-        <Accordion size="lg" title="Headline" content="Text" />
-        <Accordion size="sm" content="Text" title="Headline" icon />
-        <Accordion size="md" content="Text" title="Headline" icon />
-        <Accordion size="lg" content="Text" title="Headline" icon className="w-[500px]" />
+        <Accordion size="sm" title="Headline" shadow>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever since the 1500s
+        </Accordion>
+        <Accordion size="md" title="Headline" shadow>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever since the 1500s
+        </Accordion>
+        <Accordion size="lg" title="Headline" shadow>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever since the 1500s
+        </Accordion>
+        <Accordion size="sm" title="Headline">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever since the 1500s
+        </Accordion>
+        <Accordion size="md" title="Headline">
+          Text
+        </Accordion>
+        <Accordion size="lg" title="Headline">
+          Text
+        </Accordion>
+        <Accordion size="sm" title="Headline" icon>
+          Text
+        </Accordion>
+        <Accordion size="md" title="Headline" icon>
+          Text
+        </Accordion>
+        <Accordion size="lg" title="Headline" icon className="sm:w-[500px]">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever since the 1500s
+        </Accordion>
       </Stack>
     </Wrapper>
   )

@@ -37,8 +37,10 @@ const HomePageSearchField = ({
         autoComplete="off"
         {...rest}
       />
+      {/* TODO: fix rounded corners even no class is added (discovered on iPhones) */}
+      {/* quickfixed with negative left margin on button */}
       <Button
-        className="h-12 lg:h-14 rounded-l-none px-4 hover:bg-main-700"
+        className="h-12 lg:h-14 rounded-l-none pl-4 pr-5 hover:bg-main-700 -ml-1"
         variant="primary"
         onClick={onSearchPressed}
       >
