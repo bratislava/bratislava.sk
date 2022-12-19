@@ -8,6 +8,7 @@ import { Ref, RefObject, useEffect, useRef, useState } from 'react'
 export const useFormStepper = (eformSlug: string, schema: any) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
+  // TODO: handle new/old errors
   const [errors, setErrors] = useState<RJSFValidationError[]>([])
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`

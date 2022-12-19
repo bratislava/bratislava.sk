@@ -15,7 +15,6 @@ const StepPropertySummaryRows = (props: StepPropertySummaryRowsProps) => {
   const stepFields = typeof stepProperty !== 'boolean' ? stepProperty.properties ?? {} : {}
 
   const getIsError = (fieldKey: string): boolean => {
-    console.log('SUMMARY ERRORS:', formErrors)
     return formErrors.some((error) => {
       if (error.name === 'required') {
         return Object.values(error.params).includes(fieldKey)
