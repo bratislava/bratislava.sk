@@ -7,7 +7,9 @@ export interface OrganizationalStructureAccordionCardsProps {
   users: MSGraphFilteredGroupUser[]
 }
 
-export const OrganizationalStructureAccordionCards = ({ users }: OrganizationalStructureAccordionCardsProps) => {
+export const OrganizationalStructureAccordionCards = ({
+  users,
+}: OrganizationalStructureAccordionCardsProps) => {
   const cards = useMemo(
     () =>
       users.map((user) => (
@@ -18,13 +20,14 @@ export const OrganizationalStructureAccordionCards = ({ users }: OrganizationalS
           businessPhones={user.businessPhones}
           // mobilePhone omitted on request - add to api response as well if needed
           mail={user.mail}
+          otherMails={user.otherMails}
         />
       )),
-    [users]
+    [users],
   )
   return (
     <>
-      <HorizontalScrollWrapper className="my-8 -ml-8 flex w-screen gap-x-5 px-8 lg:hidden">
+      <HorizontalScrollWrapper className="my-8 -ml-8 flex w-screen gap-x-5 px-8 lg:hidden py-3">
         {cards}
       </HorizontalScrollWrapper>
       <div className="my-8 hidden w-full grid-cols-3 gap-8 lg:grid">{cards}</div>

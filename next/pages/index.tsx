@@ -1,10 +1,7 @@
 import {
-  ComponentBlocksHomepageHeader,
-  Homepage as HomepageType,
-} from '@bratislava/strapi-sdk-homepage'
-import {
   BlogCards,
   InBaCard,
+  PageHeader,
   Posts,
   PrimatorCouncil,
   SectionContainer,
@@ -16,6 +13,7 @@ import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
+import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
@@ -164,21 +162,28 @@ const Homepage = ({
         footer={(footer && parseFooter(footer)) ?? undefined}
         bookmarks={cards}
       >
-        {homepage?.data?.attributes && header && (
-          <WelcomeSection
-            homepageData={homepage.data.attributes as HomepageType}
-            mainMenuItems={menuItems}
-            headerAttribute={header as ComponentBlocksHomepageHeader}
-          />
-        )}
+        <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
+          {/* meta description */}
+          <Head>
+            <title>{homepage?.data?.attributes?.title}</title>
+            <meta
+              name="description"
+              content={homepage?.data?.attributes?.metaDescription ?? undefined}
+            />
+          </Head>
+        </PageHeader>
 
-        <Waves
-          className="md:mt-18 mt-6"
-          waveColor="white"
-          wavePosition="bottom"
-          isRich
-          backgroundColor="var(--background-color)"
-        />
+        <div className="bg-white">
+          <WelcomeSection mainMenuItems={menuItems} homepageHeader={header} />
+
+          <Waves
+            className="md:mt-18 mt-6"
+            waveColor="white"
+            wavePosition="bottom"
+            isRich
+            backgroundColor="var(--background-color)"
+          />
+        </div>
 
         <SectionContainer className="bg-gray-50 pb-14">
           <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
@@ -230,7 +235,7 @@ const Homepage = ({
         />
 
         <SectionContainer>
-          <InBaCard className="mx-auto mt-28 min-h-[200px] max-w-3xl" {...inba} />
+          <InBaCard className="mx-auto mt-40 md:mt-28 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-20" />
 
           <FacebookPosts title="Bratislava na Facebooku" />

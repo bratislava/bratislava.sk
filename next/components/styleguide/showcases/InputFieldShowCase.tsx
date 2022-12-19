@@ -1,7 +1,6 @@
-import InputField from 'components/forms/InputField'
+import InputField from 'components/forms/widget-components/InputField/InputField'
 import React from 'react'
 
-import PersonIcon from '../../../assets/images/forms/person.svg'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -70,6 +69,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         />
         <InputField
           label="Label"
+          type="password"
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"

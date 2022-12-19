@@ -13,6 +13,7 @@ export interface AccordionCardProps {
   businessPhones?: string[]
   mobilePhone?: string
   mail: string
+  otherMails?: string[]
   heading?: boolean
   className?: string
 }
@@ -23,10 +24,12 @@ export const AccordionCard = ({
   businessPhones,
   mobilePhone,
   mail,
+  otherMails,
   heading,
   className,
 }: AccordionCardProps) => {
-  const mailUserName = mail?.split('@').at(0)
+  const mailToParse = otherMails?.length > 0 ? otherMails[0] : mail
+  const mailUserName = mailToParse?.split('@').at(0)
   const mailOrganization = mail && `@${mail?.split('@').at(1)}`
   const mailBreakpoint = 16
 
@@ -34,35 +37,39 @@ export const AccordionCard = ({
     // TODO min-w-70 does not work anymore (worked fine on monorepo)
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
-      <Panel className={cx(className, 'flex flex-col py-8 px-6 min-w-66 max-w-88')}>
+      <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col py-8 px-6')} overflowVisible>
         <div className="text-h4 pb-2">{displayName}</div>
-        <div className="text-font/75 pb-6 text-p3 lg:text-p2">{jobTitle}</div>
+        <div className="text-font/75 text-p3 lg:text-p2 pb-6">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">
               {!heading && <Phone className="hidden xl:flex" />}
               {businessPhones?.length > 0
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="text-red-brick flex items-center text-p2-semibold">
+                    <div key={phone} className="text-red-brick text-p2-semibold flex items-center">
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-red-brick flex items-center text-p2-semibold">{mobilePhone}</div>
+                    <div className="text-red-brick text-p2-semibold flex items-center">
+                      {mobilePhone}
+                    </div>
                   )}
             </div>
             <div className="flex flex-col">
               <div className="flex gap-x-4">
                 {!heading && <Mail className="hidden xl:flex" />}
-                <div className="text-red-brick text-p3-semibold underline underline-offset-2 lg:text-p2-semibold">
+                <div className="text-red-brick text-p3-semibold lg:text-p2-semibold underline underline-offset-2">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
                   <div className="hidden lg:flex">
-                    {mailUserName?.length > mailBreakpoint ? mailUserName : mailUserName + mailOrganization}
+                    {mailUserName?.length > mailBreakpoint
+                      ? mailUserName
+                      : mailUserName + mailOrganization}
                   </div>
                 </div>
               </div>
               {mailUserName?.length > mailBreakpoint && (
-                <div className="text-red-brick hidden text-p3-semibold underline underline-offset-2 lg:flex lg:text-p2-semibold xl:pl-12">
+                <div className="text-red-brick text-p3-semibold lg:text-p2-semibold hidden underline underline-offset-2 lg:flex xl:pl-12">
                   {mailOrganization}
                 </div>
               )}

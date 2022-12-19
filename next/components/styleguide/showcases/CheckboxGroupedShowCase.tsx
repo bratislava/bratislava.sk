@@ -1,5 +1,5 @@
-import Checkbox from '../../forms/Checkbox'
-import CheckboxGroup from '../../forms/CheckboxGroup'
+import Checkbox from '../../forms/widget-components/Checkbox/Checkbox'
+import CheckboxGroup from '../../forms/widget-components/Checkbox/CheckboxGroup'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -7,7 +7,7 @@ const CheckboxGroupShowCase = () => {
   return (
     <Wrapper direction="column" title="Checkbox Group">
       <Stack direction="column">
-        <CheckboxGroup>
+        <CheckboxGroup onChange={() => {}} label="Label">
           <Checkbox value="value1" isIndeterminate tooltip="This is some tooltip">
             Value
           </Checkbox>
@@ -21,7 +21,7 @@ const CheckboxGroupShowCase = () => {
         </CheckboxGroup>
       </Stack>
       <Stack direction="column">
-        <CheckboxGroup>
+        <CheckboxGroup onChange={() => {}} label="Label">
           <Checkbox value="value1" variant="boxed" isIndeterminate tooltip="This is some tooltip">
             Value
           </Checkbox>

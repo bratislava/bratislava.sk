@@ -31,6 +31,7 @@
   "download": "Stiahnuť",
   "transparentCity": "Transparentné mesto",
   "sorryNoResultsFound": "Ľutujeme, pre dané vyhľadávanie sa nenašli žiadne výsledky.",
+  "allResults": "Všetky výsledky",
   "toTheMainPage": "Na hlavnú stránku",
   "toOfficialBoard": "Prejsť na úradnú tabuľu",
   "acceptAll": "Prijať všetky",
@@ -119,5 +120,7 @@
   "tourist": "Som turista",
   "noBlogPostsToShow": "Žiadne články na zobrazenie.",
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
-  "noUsersToShow": "Žiadne kontakty na zobrazenie."
+  "noUsersToShow": "Žiadne kontakty na zobrazenie.",
+  "menu.show_less": "Zobraziť menej",
+  "menu.show_more": "Zobraziť viac"
 }

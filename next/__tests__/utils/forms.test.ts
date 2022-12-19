@@ -1,19 +1,33 @@
 import { describe } from '@jest/globals'
 
-import testXml from '../../backend/forms/test/data.xml'
-import testSchema from '../../backend/forms/test/schema.json'
-import testXsd from '../../backend/forms/test/schema.xsd'
+import xmlTemplate from '../../backend/forms/test/xmlTemplate'
 import {
   getEform,
+  JsonSchema,
+  loadAndBuildXml,
   validateDataWithJsonSchema,
   validateDataWithXsd,
+  xmlToJson,
 } from '../../backend/utils/forms'
+
+const xsd =
+  '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="comment"><xs:complexType><xs:all><xs:element name="author" type="xs:string"/><xs:element name="content" type="xs:string"/></xs:all></xs:complexType></xs:element></xs:schema>'
+
+const schema: JsonSchema = {
+  type: 'object',
+  required: ['email'],
+  properties: {
+    email: {
+      type: 'string',
+    },
+    phone: {
+      type: 'string',
+    },
+  },
+}
 
 describe('forms utils', () => {
   test('test validate valid data with XSD schema', () => {
-    const xsd =
-      // eslint-disable-next-line no-secrets/no-secrets
-      '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="comment"><xs:complexType><xs:all><xs:element name="author" type="xs:string"/><xs:element name="content" type="xs:string"/></xs:all></xs:complexType></xs:element></xs:schema>'
     const xml =
       '<?xml version="1.0"?><comment><author>author</author><content>nothing</content></comment>'
 
@@ -22,18 +36,10 @@ describe('forms utils', () => {
   })
 
   test('test validate invalid data with XSD schema', () => {
-    const xsd =
-      // eslint-disable-next-line no-secrets/no-secrets
-      '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="comment"><xs:complexType><xs:all><xs:element name="author" type="xs:string"/><xs:element name="content" type="xs:string"/></xs:all></xs:complexType></xs:element></xs:schema>'
     const xml = '<?xml version="1.0"?><comment>A comment</comment>'
 
     const errors = validateDataWithXsd(xml, xsd)
     expect(errors).toHaveLength(2)
-  })
-
-  test('test validate test form with XSD schema', () => {
-    const errors = validateDataWithXsd(testXml, testXsd)
-    expect(errors).toHaveLength(0)
   })
 
   test('test eform', () => {
@@ -51,24 +57,29 @@ describe('forms utils', () => {
 
   test('test validate data with JSON schema', () => {
     const data = {
-      ziadatel: {
-        firstName: 'Janko',
-        address: 'Postova 1',
-      },
+      email: 'dev@bratislava.sk',
     }
 
-    const errors = validateDataWithJsonSchema(data, testSchema)
+    const errors = validateDataWithJsonSchema(data, schema)
     expect(errors).toHaveLength(0)
   })
 
   test('test validate invalid data with JSON schema', () => {
     const data = {
-      ziadatel: {
-        firstName: 'Janko',
-      },
+      phone: '946846365',
     }
 
-    const errors = validateDataWithJsonSchema(data, testSchema)
+    const errors = validateDataWithJsonSchema(data, schema)
     expect(errors).toHaveLength(1)
+  })
+
+  test('json to xml, xml to json', async () => {
+    const data = {
+      phone: '946846365',
+    }
+
+    const xml = loadAndBuildXml(xmlTemplate, data, schema)
+    const json = await xmlToJson(xml, schema)
+    expect(data).toEqual(json)
   })
 })

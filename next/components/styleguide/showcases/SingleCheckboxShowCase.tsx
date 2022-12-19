@@ -1,4 +1,4 @@
-import SingleCheckbox from 'components/forms/SingleCheckbox'
+import SingleCheckbox from 'components/forms/widget-components/Checkbox/SingleCheckbox'
 import React from 'react'
 
 import { Stack } from '../Stack'

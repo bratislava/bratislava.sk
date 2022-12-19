@@ -30,14 +30,14 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
         {
           'pt-24 md:pt-0': !!frontImage,
         },
-        className
+        className,
       )}
     >
       {rearImage && (
         <Panel
           className={cx(
             'absolute w-24 top-0 transform rotate-12 translate-x-1/2 translate-y-[-57%]',
-            'md:w-40 md:top-auto md:right-0 md:translate-x-[15%] md:translate-y-0'
+            'md:w-40 md:top-auto md:right-0 md:translate-x-[15%] md:translate-y-0',
           )}
         >
           <img src={rearImage} alt="inba" width="160" height="244" />
@@ -48,7 +48,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
         <Panel
           className={cx(
             'absolute w-32 top-0 transform rotate-[-9deg] translate-x-[-30%] translate-y-[-57%]',
-            'md:w-52 md:top-auto md:right-0 md:translate-x-[-45%] md:translate-y-0'
+            'md:w-52 md:top-auto md:right-0 md:translate-x-[-45%] md:translate-y-0',
           )}
         >
           <img src={frontImage} alt="inba" width="211" height="329" />
@@ -58,12 +58,15 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
       <div
         className={cx(
           'flex flex-col items-center text-center gap-4 px-6 pt-3 pb-8',
-          'md:items-start md:text-left md:pr-96 md:pl-12 md:py-8'
+          'md:items-start md:text-left md:pr-96 md:pl-12 md:py-8',
         )}
       >
-        <h1 className="text-h4">{title}</h1>
+        <h2 className="text-h4">{title}</h2>
         <span className="text-p2">{content}</span>
-        <UILink className="group flex h-6 cursor-pointer items-center space-x-5 underline" href={link}>
+        <UILink
+          className="group flex h-6 cursor-pointer items-center space-x-5 hover:text-main-600 underline after:absolute after:inset-0"
+          href={link}
+        >
           <span className="text-p2-semibold">{t('readMore')}</span>
           <span className="group-hover:hidden">
             <ChevronRight />
