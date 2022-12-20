@@ -102,6 +102,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       {
         // conditions
         'pl-[52px]': leftIcon,
+        'pr-[52px]': resetIcon,
         // hover
         'hover:border-gray-400': !disabled,
 
