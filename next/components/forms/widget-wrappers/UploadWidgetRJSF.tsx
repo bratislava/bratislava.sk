@@ -10,6 +10,8 @@ import UploadRJSFOptions from '../widget-components/Upload/UploadRJSFOptions'
 interface UploadWidgetRJSFProps extends WidgetProps {
   options: UploadRJSFOptions
   schema: StrictRJSFSchema
+  label: string
+  required?: boolean
   value: string | string[]
   disabled?: boolean
   multiple?: boolean
@@ -17,7 +19,7 @@ interface UploadWidgetRJSFProps extends WidgetProps {
 }
 
 const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
-  const { options, schema, value, disabled, onChange } = props
+  const { options, schema, label, required, value, disabled, onChange } = props
 
   const { size, accept, type = 'button', className } = options
 
@@ -82,6 +84,8 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   return (
     <Upload
       type={type}
+      label={label}
+      required={required}
       multiple={multiple}
       value={innerValue}
       className={widgetClassName}
