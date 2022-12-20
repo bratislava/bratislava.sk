@@ -1,4 +1,3 @@
-import { JsonSchema } from '@backend/utils/forms'
 import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { ApiError, submitEform } from '@utils/api'
 import { ErrorObject } from 'ajv'
@@ -6,7 +5,6 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import Button from '../simple-components/Button'
-import StepSummaryRows from './Summary/StepSummaryRows'
 import Summary from './Summary/Summary'
 import SummaryMessages from './Summary/SummaryMessages'
 

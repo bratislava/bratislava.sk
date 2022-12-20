@@ -1,4 +1,4 @@
-import SummaryRow from '../../forms/steps/Summary/SummaryRow'
+import SummaryRow from '../../forms/steps/Summary/deprecated/SummaryRow'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
