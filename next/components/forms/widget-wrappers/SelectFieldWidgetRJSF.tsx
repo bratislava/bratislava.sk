@@ -1,17 +1,15 @@
 import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 
 import SelectField from '../widget-components/SelectField/SelectField'
 
 type SelectRJSFOptions = {
   enumOptions?: EnumOptionsType[]
-  tooltip?: string
   dropdownDivider?: boolean
   selectAllOption?: boolean
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-  description?: string
-  className?: string
-  explicitOptional?: boolean
-}
+} & WidgetOptions
 
 interface SelectFieldWidgetRJSFProps extends WidgetProps {
   label: string
@@ -36,12 +34,13 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     dropdownDivider,
     className,
     explicitOptional,
+    spaceBottom = 'default',
+    spaceTop = 'none',
   } = options
 
   const type = schema.type === 'array' ? 'multiple' : 'one'
-
   const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
-    const optionValues: any[] = newValue.map((option) => option.value)
+    const optionValues: any[] = newValue.map((option: EnumOptionsType) => option.value)
     onChange(optionValues)
   }
 
@@ -94,23 +93,25 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   return (
-    <SelectField
-      type={type}
-      label={label}
-      enumOptions={enumOptions}
-      value={transformValue()}
-      selectAllOption={selectAllOption}
-      placeholder={placeholder}
-      description={description}
-      tooltip={tooltip}
-      dropdownDivider={dropdownDivider}
-      errorMessage={errorMessage}
-      required={required}
-      disabled={disabled}
-      className={className}
-      onChange={handleOnChange}
-      explicitOptional={explicitOptional}
-    />
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+      <SelectField
+        type={type}
+        label={label}
+        enumOptions={enumOptions}
+        value={transformValue()}
+        selectAllOption={selectAllOption}
+        placeholder={placeholder}
+        description={description}
+        tooltip={tooltip}
+        dropdownDivider={dropdownDivider}
+        errorMessage={errorMessage}
+        required={required}
+        disabled={disabled}
+        className={className}
+        onChange={handleOnChange}
+        explicitOptional={explicitOptional}
+      />
+    </WidgetWrapper>
   )
 }
 

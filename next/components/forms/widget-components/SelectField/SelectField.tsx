@@ -67,12 +67,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STYLES
   const selectClassName = cx(
-    'flex flex-row bg-white rounded-lg border-2 border-form-input-default',
+    'border-form-input-default flex flex-row bg-white rounded-lg border-2',
     {
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
         !disabled,
       'border-error hover:border-error focus:border-error': errorMessage && !disabled,
-      'opacity-50 border-form-input-disabled': disabled,
+      'border-form-input-disabled opacity-50': disabled,
     },
     hashCode,
   )
@@ -174,6 +174,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
+  const handleOnDeselectAll = () => {
+    handleOnChangeSelect([])
+  }
+
   // HELPER FUNCTIONS
   const getDropdownValues = (): EnumOptionsType[] => {
     return value ? (type !== 'multiple' && value && value.length > 0 ? [value[0]] : value) : []
@@ -251,6 +255,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
             onChooseOne={handleOnChooseOne}
             onUnChooseOne={handleOnUnChooseOne}
             onSelectAll={handleOnSelectAll}
+            onDeselectAll={handleOnDeselectAll}
             onChooseMulti={handleOnChooseMulti}
             onUnChooseMulti={handleOnUnChooseMulti}
           />
