@@ -5,5 +5,6 @@
     "API_ERROR": "Pri odosielaní formulára nastala chyba. Skúste to prosím znova.",
     "unknown": "Nastala neznáma chyba. Skúste to prosím znova."
   },
-  "selectAll": "Vybrať všetko"
+  "selectAll": "Vybrať všetko",
+  "deselectAll": "Odobrať všetko"
 }
