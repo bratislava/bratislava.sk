@@ -15,50 +15,48 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
   console.log('FORM DATA:', formData)
   console.log('FORM ERRORS:', formErrors)
 
-  const transformedData: TransformedFormData[] = []
+  console.log('SCHEMA:', schema?.$defs)
 
-  const getLabel = (schemaArray: JsonSchema[], fieldName: string): string => {
-    // need to find title of field in schema
-    let label = fieldName
-    for (const item of schemaArray) {
+  const getAllTransformedData = (
+    data: TransformedFormData[],
+    schemaArray?: JsonSchema[],
+    schemaKeys?: string[],
+  ) => {
+    if (!schemaArray) return
+    for (const [index, item] of schemaArray.entries()) {
       if (Array.isArray(item)) {
-        // if item is array, use recursively this function on it
-        label = getLabel(item, fieldName)
-      } else if (item && typeof item === 'object' && !Object.keys(item).includes(fieldName)) {
-        // if item is object and it has not fieldName we are finding, use recursively this function on array of values
-        const itemValues: JsonSchema[] = Object.values(item)
-        label = getLabel(itemValues, fieldName)
-      } else if (item && typeof item === 'object' && !item.required && !item.properties) {
-        // if item is object, includes fieldName we are finding and not includes required or properties, take value of fieldName and save title
-        const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
-          ([nestedFieldName]) => nestedFieldName === fieldName,
-        )
-        if (fieldValue && fieldValue[1] && typeof fieldValue[1] !== 'boolean') {
-          label =
-            fieldValue[1].title && fieldValue[1].type && fieldValue[1].type !== 'object'
-              ? fieldValue[1].title
-              : fieldName
+        getAllTransformedData(data, item)
+      } else if (typeof item === 'object' && (!item.type || item.type === 'object')) {
+        const values: JsonSchema[] = Object.values(item)
+        const keys: string[] = Object.keys(item)
+        getAllTransformedData(data, values, keys)
+      } else if (item && typeof item === 'object' && item.type && item.type !== 'object') {
+        const fieldName = schemaKeys ? schemaKeys[index] ?? null : null
+        if (fieldName) {
+          const field: TransformedFormData = {
+            label: item.title ?? fieldName,
+            value: '-',
+            isError: false,
+          }
+          data.push(field)
         }
       }
-      if (label !== fieldName) {
-        // if label is different from fieldName, return it and end recursion
-        return label
-      }
     }
-    return label
   }
 
-  Object.entries(formData).forEach(([stepName, step]) => {
-    Object.entries(step).forEach(([fieldName, fieldData]) => {
-      const field: TransformedFormData = {
-        label: schema?.allOf ? getLabel(schema?.allOf, fieldName) : fieldName,
-        value: JSON.stringify(fieldData).replaceAll('"', ''),
-        step: stepName,
-        isError: false,
-      }
-      transformedData.push(field)
-    })
-  })
+  const transformedData: TransformedFormData[] = []
+  getAllTransformedData(transformedData, schema?.allOf)
+
+  // Object.entries(formData).forEach(([stepName, step]) => {
+  //   Object.entries(step).forEach(([fieldName, fieldData]) => {
+  //     const field: TransformedFormData = {
+  //       label: schema?.allOf ? getLabel(schema?.allOf, fieldName) : fieldName,
+  //       value: JSON.stringify(fieldData).replaceAll('"', ''),
+  //       isError: false,
+  //     }
+  //     transformedData.push(field)
+  //   })
+  // })
 
   return (
     <div className="my-10">
