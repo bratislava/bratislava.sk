@@ -1,6 +1,6 @@
 export * from './DateFromTo'
 export * from './DateTimeGroup'
-export * from './DoubledInputFIeld'
+export * from './DoubledInputField'
 export * from './InputSelectGroup'
 export * from './InputUploadGroup'
 export * from './TextareaUpload'

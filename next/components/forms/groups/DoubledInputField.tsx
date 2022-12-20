@@ -1,4 +1,4 @@
-import InputField from '../widget-components/InputField/InputField'
+import InputField, { LeftIconVariants } from '../widget-components/InputField/InputField'
 
 interface InputBase {
   // label
@@ -28,8 +28,8 @@ interface InputBase {
   SecondInputValue?: string
 
   // leftIcon
-  FirstInputLeftIcon?: 'person' | 'mail' | 'call' | 'lock'
-  SecondInputLeftIcon?: 'person' | 'mail' | 'call' | 'lock'
+  FirstInputLeftIcon?: LeftIconVariants
+  SecondInputLeftIcon?: LeftIconVariants
 
   // required
   FirstInputRequired?: boolean
@@ -78,7 +78,7 @@ export const DoubledInputField = ({
   SecondInputTooltip,
 }: InputBase) => {
   return (
-    <div className="flex flex-row items-start p-0 gap-4">
+    <div className="flex flex-row items-start gap-4">
       <div className="w-full">
         <InputField
           label={FirstInputLabel}

@@ -29,8 +29,8 @@ export const DateFromTo = ({
   DateToDisabled,
 }: DatePickerBase) => {
   return (
-    <div className={cx('flex-col flex items-start p-0 gap-4')}>
-      <div className="items-left flex flex-row p-0 gap-4">
+    <div className={cx('flex-col flex items-start gap-4')}>
+      <div className="items-left flex flex-row gap-4">
         <div className="flex flex-col items-start sm:w-[300px]">
           <DatePicker
             label={label}
@@ -46,7 +46,7 @@ export const DateFromTo = ({
             'mt-1': !label,
           })}
         />
-        <div className="flex flex-row items-end p-0 gap-1 mt-auto sm:w-[300px]">
+        <div className="flex flex-row items-end gap-1 mt-auto sm:w-[300px]">
           <DatePicker
             tooltip={DateToTooltip}
             required={DateToRequired}

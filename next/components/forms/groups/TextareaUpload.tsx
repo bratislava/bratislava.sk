@@ -1,6 +1,5 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
-import { useState } from 'react'
 
 import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 import Upload from '../widget-components/Upload/Upload'
@@ -78,19 +77,17 @@ export const TextareaUploadGroup = ({
         description={TextareaDescription}
       />
       <div>{middleText}</div>
-      <div>
-        <div className="text-p-md font-semibold leading-8 not-italic">{UploadLabel}</div>
-        <Upload
-          type={UploadType}
-          sizeLimit={UploadSizeLimit}
-          supportedFormats={UploadSupportedFormats}
-          value={UploadValue}
-          onChange={UploadOnChange}
-          disabled={UploadDisabled}
-          multiple={UploadMultiple}
-          className={UploadClassName}
-        />
-      </div>
+      <Upload
+        label={UploadLabel}
+        type={UploadType}
+        sizeLimit={UploadSizeLimit}
+        supportedFormats={UploadSupportedFormats}
+        value={UploadValue}
+        onChange={UploadOnChange}
+        disabled={UploadDisabled}
+        multiple={UploadMultiple}
+        className={UploadClassName}
+      />
     </div>
   )
 }

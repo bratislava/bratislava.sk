@@ -75,7 +75,7 @@ export const InputSelectGroup = ({
   const [fieldGroups, setFieldGroups] = useState([
     { inputField: '', selectField: [], id: uuidv4() },
   ])
-  const containerStyle = cx('flex flex-col items-start p-0 gap-4', {})
+  const containerStyle = cx('flex flex-col items-start gap-4', {})
 
   const addField = () => {
     setFieldGroups([...fieldGroups, { inputField: '', selectField: [], id: uuidv4() }])
@@ -96,7 +96,7 @@ export const InputSelectGroup = ({
     <div className={containerStyle}>
       {fieldGroups.map((element, index) => {
         return (
-          <div key={index} className="flex flex-row items-start p-0 gap-4 h-full">
+          <div key={index} className="flex flex-row items-start gap-4 h-full">
             <div className="flex relative flex-col items-start pt-3 w-3 ">
               <div className="bg-gray-200 w-0.5 h-[50px]" />
               <div className="w-3 h-0.5 bg-gray-200" />

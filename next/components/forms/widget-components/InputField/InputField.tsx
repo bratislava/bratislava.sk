@@ -10,6 +10,8 @@ import { useTextField } from 'react-aria'
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
 
+export type LeftIconVariants = 'person' | 'mail' | 'call' | 'lock'
+
 interface InputBase {
   label: string
   type?: 'text' | 'password'
@@ -134,7 +136,6 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             >
               {leftIconSwitcher(leftIcon)}
             </i>
-
           )}
           <input {...inputProps} ref={ref} name={inputProps.id} className={style} />
           {resetIcon && valueState && (

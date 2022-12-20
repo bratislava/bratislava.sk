@@ -39,9 +39,9 @@ export const DateTimePicker = ({
   TimeExplicitOptional,
 }: DateTimePickerBase) => {
   return (
-    <div className={cx('flex-col flex items-start p-0 gap-4')}>
-      <div className="flex flex-row items-center p-0 gap-4">
-        <div className="flex flex-col items-start p-0 sm:w-[300px]">
+    <div className={cx('flex-col flex items-start gap-4')}>
+      <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-col items-start sm:w-[300px]">
           <DatePicker
             label={DateLabel}
             errorMessage={DateErrorMessage}
@@ -52,7 +52,7 @@ export const DateTimePicker = ({
             required={DateRequired}
           />
         </div>
-        <div className="flex flex-row items-end p-0 gap-1 mt-auto">
+        <div className="flex flex-row items-end gap-1 mt-auto">
           <TimePicker
             errorMessage={TimeErrorMessage}
             disabled={TimeDisabled}

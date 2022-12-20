@@ -1,6 +1,7 @@
+import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import InputField from '../widget-components/InputField/InputField'
 import Upload from '../widget-components/Upload/Upload'
@@ -24,6 +25,7 @@ interface InputBase {
 interface UploadProps {
   UploadLabel: string
   UploadType: 'button' | 'dragAndDrop'
+  UploadRequired?: boolean
   UploadMultiple?: boolean
   UploadValue?: UploadMinioFile[]
   UploadDisabled?: boolean
@@ -58,6 +60,7 @@ export const InputUploadGroup = ({
   middleText,
   className,
   UploadDisabled,
+  UploadRequired,
   UploadOnChange,
   UploadMultiple,
   UploadClassName,
@@ -83,20 +86,25 @@ export const InputUploadGroup = ({
         resetIcon={InputResetIcon}
         className={InputClassName}
       />
-      <div>{middleText}</div>
-      <div>
-        <div className="text-p-md font-semibold leading-8 not-italic">{UploadLabel}</div>
-        <Upload
-          type={UploadType}
-          sizeLimit={UploadSizeLimit}
-          supportedFormats={UploadSupportedFormats}
-          value={UploadValue}
-          onChange={UploadOnChange}
-          disabled={UploadDisabled}
-          multiple={UploadMultiple}
-          className={UploadClassName}
-        />
+      <div>{middleText}</div>{' '}
+      <div
+        className="flex w-6 h-6 justify-center items-center cursor-pointer mt-auto mb-5 rotate-45"
+        onClick={() => removeField(element.id)}
+      >
+        <PlusCircleIcon fill="red" />
       </div>
+      <Upload
+        label={UploadLabel}
+        type={UploadType}
+        sizeLimit={UploadSizeLimit}
+        supportedFormats={UploadSupportedFormats}
+        required={UploadRequired}
+        value={UploadValue}
+        onChange={UploadOnChange}
+        disabled={UploadDisabled}
+        multiple={UploadMultiple}
+        className={UploadClassName}
+      />
     </div>
   )
 }
