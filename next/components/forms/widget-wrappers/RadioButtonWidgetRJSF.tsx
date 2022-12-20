@@ -4,9 +4,15 @@ import React from 'react'
 import Radio from '../widget-components/RadioButton/Radio'
 import RadioGroup from '../widget-components/RadioButton/RadioGroup'
 
+type RadioUiOptions = {
+  value: string
+  tooltip: string
+}
+
 type RadioButtonRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   className?: string
+  radioOptions?: RadioUiOptions[]
   variant?: 'basic' | 'boxed' | 'card'
 }
 
@@ -23,8 +29,11 @@ interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
 
 const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
   const { options, value, onChange, label } = props
-  const { enumOptions, className, variant } = options
+  const { enumOptions, className, variant, radioOptions = [] } = options
   if (!enumOptions || Array.isArray(value)) return null
+  const getTooltip = (radioValue: string) => {
+    return radioOptions.find((option) => option.value === radioValue)?.tooltip
+  }
   return (
     <RadioGroup value={value} onChange={onChange} className={className} label={label}>
       {enumOptions.map((radioElement: EnumOptionsType) => {
@@ -33,7 +42,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
             key={radioElement.value}
             variant={variant}
             value={radioElement.value}
-            tooltip={radioElement?.schema?.tooltip}
+            tooltip={getTooltip(radioElement.value as string)}
           >
             {radioElement.label}
           </Radio>

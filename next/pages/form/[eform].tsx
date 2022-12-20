@@ -76,10 +76,7 @@ const FormTestPage = ({
   const customFormats = {
     zip: /\b\d{5}\b/,
   }
-  const validator = customizeValidator({
-    customFormats,
-    ajvOptionsOverrides: { keywords: ['tooltip'] },
-  })
+  const validator = customizeValidator({ customFormats })
   return (
     <PageWrapper
       locale={page.locale}

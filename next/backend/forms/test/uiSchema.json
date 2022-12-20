@@ -138,7 +138,17 @@
       "ui:label": false,
       "ui:options": {
         "className": "flex flex-col gap-4",
-        "variant": "boxed"
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
       }
     }
   },
