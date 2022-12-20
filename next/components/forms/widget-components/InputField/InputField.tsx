@@ -65,9 +65,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         description,
         onChange(inputValue) {
           if (onChange) {
-            onChange(inputValue)
+            onChange(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           } else {
-            setValueState(inputValue)
+            setValueState(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           }
         },
         isRequired: required,
