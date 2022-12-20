@@ -84,9 +84,9 @@
     },
     "importDragAndDropMultipleFiles": {
       "ui:widget": "Upload",
+      "ui:label": false,
       "ui:options": {
-        "type": "dragAndDrop",
-        "label": false
+        "type": "dragAndDrop"
       }
     }
   },

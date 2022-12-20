@@ -1,7 +1,7 @@
-// @ts-strict-ignore
-import { getNumericLocalDate } from './local-date'
+import { parseGooutScheduleResponse } from '@utils/parseGooutScheduleResponse'
+import { isPresent } from '@utils/utils'
 
-export interface GooutEvent {
+export interface GooutEventParsed {
   title: string
   id: string
   url: string
@@ -14,104 +14,42 @@ export interface GooutEvent {
 }
 
 export interface FetchGooutEventsResult {
-  events: GooutEvent[]
+  events: GooutEventParsed[]
 }
 
+// https://goout.net/services/entities/docs/index.html?url=/services/entities/v3/api-docs#/Entities/getV1Schedules
 export const fetchGooutEvents = async (): Promise<FetchGooutEventsResult> => {
   const params = [
-    ['source', 'bratislava.sk'],
-    ['locality', 'SK_BRATISLAVA'],
-    ['limit', 6],
-    ['page', 1],
-    ['category[]', 'CONCERTS'],
-    ['category[]', 'PLAY'],
-    ['category[]', 'CLUBBING'],
-    ['category[]', 'EXHIBITIONS'],
-    ['category[]', 'GASTRONOMY'],
-    ['category[]', 'FILM'],
-    ['category[]', 'FESTIVALS'],
-    ['category[]', 'OTHER_EVENTS'],
+    ['languages[]', 'sk'],
+    ['include', 'events,venues,images'],
+    ['sort', 'timestamp:asc'],
+    ['limit', '9'],
+    ['performerIds[]', '2503723'],
+    ['performerIds[]', '2503725'],
   ]
 
-  const result = await fetch(
-    `https://goout.net/services/feeder/v1/events?${params
-      .filter((p) => !!p[1])
-      .map((p) => p.join('='))
-      .join('&')}`
-  )
+  const commonQueryParamsJoined = params
+    .filter((p) => !!p[1])
+    .map((p) => p.join('='))
+    .join('&')
 
+  const fetchUrl = `https://goout.net/services/entities/v1/schedules?${commonQueryParamsJoined}`
+
+  const result = await fetch(fetchUrl)
   const resultData = await result.json()
 
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument */
   if (resultData.error) {
-    const error = new Error(resultData.error.message)
-    console.error(error)
-
-    return {
-      events: [],
-    }
+    console.error(new Error(resultData.error.message))
+    return { events: [] }
   }
+  /* eslint-enable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument */
 
-  const eventArray = Object.entries(
-    resultData.events as {
-      name: string
-      url: string
-      id: string
-      mainImage: { id: string; src: string }
-    }[]
-  ).map((e) => e[1])
+  const { shortEvents, longEvents } = parseGooutScheduleResponse(resultData)
 
-  const scheduleArray = Object.entries(
-    resultData.schedule as {
-      eventId: string
-      venueId: string
-      start: string
-      address: string
-      city: string
-    }[]
-  ).map((e) => e[1])
-
-  const venueArray = Object.entries(
-    resultData.venues as {
-      id: string
-      address: string
-      city: string
-    }[]
-  ).map((e) => e[1])
-
-  const schedule = scheduleArray.map((ev) => ({
-    eventId: ev.eventId,
-    venueId: ev.venueId,
-    start: ev.start,
-    address: ev.address,
-    city: ev.city,
-  }))
-
-  const venues = venueArray.map((ev) => ({
-    venueId: ev.id,
-    address: ev.address,
-    city: ev.city,
-  }))
-
-  const topSixGooutEvents: GooutEvent[] = eventArray.map((ev) => {
-    const eventSchedule = schedule.find((s) => s.eventId === ev.id)
-
-    const fullDate = eventSchedule.start.split(' ')
-    const date = getNumericLocalDate(new Date(fullDate[0]).toISOString())
-    const time = fullDate[1].split(':').slice(0, 2).join(':')
-
-    const eventVenue = venues.find((venue) => venue.venueId === eventSchedule.venueId)
-
-    return {
-      title: ev.name,
-      id: ev.id,
-      url: ev.url,
-      mainImage: ev.mainImage,
-      schedule: `${date} ${time}`,
-      venue: eventVenue.address,
-    }
-  })
+  const events = [...shortEvents, ...longEvents].filter(isPresent)
 
   return {
-    events: topSixGooutEvents,
+    events,
   }
 }
