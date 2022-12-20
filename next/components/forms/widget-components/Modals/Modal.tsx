@@ -92,13 +92,13 @@ const ModalFooter = ({
 
   return (
     <div className={footerStyle}>
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <div
+      <button
         className="text-base flex cursor-pointer items-center font-semibold not-italic leading-6"
         onClick={onClose}
+        type="button"
       >
-        {cancelLabel}
-      </div>
+        <span aria-hidden="true">{cancelLabel}</span>
+      </button>
       <Button
         onPress={() => {
           if (currentScreenIndex < contentLength - 1) {
@@ -121,10 +121,12 @@ const ModalBody = ({
   currentScreenIndex,
   isStepper,
   onSubmit,
+  onClose,
 }: {
   content: ((props?: any) => JSX.Element)[] | ((props?: any) => JSX.Element)
   currentScreenIndex: number
   isStepper: boolean
+  onClose: () => void
   onSubmit: () => void
 }) => {
   return (
@@ -135,7 +137,7 @@ const ModalBody = ({
     >
       {!isStepper ? (
         <div className="ml-1 flex flex-row justify-end items-center">
-          <CloseIcon className="cursor-pointer" type="info" onClick={() => {}} />
+          <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
         </div>
       ) : null}
       <div className="overflow-auto flex w-full flex-col items-start rounded-lg p-2">
@@ -193,6 +195,7 @@ const Modal = ({
           isStepper={Array.isArray(content)}
           currentScreenIndex={currentScreenIndex}
           onSubmit={onSubmit}
+          onClose={onClose}
         />
         <ModalFooter
           onSubmit={onSubmit}

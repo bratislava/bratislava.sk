@@ -68,37 +68,37 @@ const ModalShowCase = () => {
       <Stack direction="column">
         <Button
           size="sm"
-          variant="brand-outline"
+          variant="black"
           text="Open modal single content modal window"
           onPress={() => setModalSingleShow(true)}
         />
         <Button
           size="sm"
-          variant="brand-outline"
+          variant="black-outline"
           text="Open modal (divider is optional parameter)"
           onPress={() => setModalShow(true)}
         />
         <Button
           size="sm"
-          variant="brand-outline"
+          variant="black"
           text="Open success message modal"
           onPress={() => setModalShowSuccess(true)}
         />
         <Button
           size="sm"
-          variant="brand-outline"
+          variant="black-outline"
           text="Open error message modal"
           onPress={() => setModalShowError(true)}
         />
         <Button
           size="sm"
-          variant="brand-outline"
+          variant="black"
           text="Open info message modal"
           onPress={() => setModalShowInfo(true)}
         />
         <Button
           size="sm"
-          variant="brand-outline"
+          variant="black-outline"
           text="Open warning message modal"
           onPress={() => setModalShowWarning(true)}
         />
