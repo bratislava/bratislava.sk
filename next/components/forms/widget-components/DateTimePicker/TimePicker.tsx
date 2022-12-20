@@ -83,7 +83,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     )
 
     const resetValues = () => {
-      onChange('')
+      if (onChange) onChange('')
       setMinute('')
       setHour('')
       setPrevValue('')
@@ -102,7 +102,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
 
     const closeFailedHandler = () => {
-      onChange(prevValue)
+      if (onChange) onChange(prevValue)
       if (prevValue) setHour(prevValue.split(':')[0])
       else setHour('')
 

@@ -53,20 +53,22 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       explicitOptional,
       tooltip,
       description,
-      value,
+      value = '',
       onChange,
       ...rest
     },
     ref,
   ) => {
     const { locale } = usePageWrapperContext()
-    const [valueState, setValueState] = useState<DateValue | undefined>(null)
-    const [prevValue, setPrevValue] = useState<string | null>(null)
+    const [valueState, setValueState] = useState<DateValue | null>(null)
+    const [prevValue, setPrevValue] = useState<string>('')
 
     const state = useDatePickerState({
       label,
       errorMessage,
-      value: onChange && value ? parseDate(value) : valueState,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      value: onChange && value ? parseDate(value) : valueState || null,
       onChange(inputValue) {
         if (onChange) {
           onChange(inputValue)
@@ -92,17 +94,28 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       )
 
     const closeHandler = () => {
+      if (prevValue) {
+        state?.setDateValue(parseDate(prevValue))
+        setValueState(parseDate(prevValue))
+      }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      else state?.setDateValue(null)
       state?.close()
-      state?.setDateValue(typeof prevValue === 'string' ? parseDate(prevValue) : prevValue)
     }
 
     const submitCloseHandler = () => {
-      setPrevValue((prev) => (prev !== value ? value : prev))
+      setPrevValue(onChange ? value : valueState ? valueState.toString() : '')
       state?.close()
     }
 
     const resetCloseHandler = () => {
+      // https://github.com/adobe/react-spectrum/discussions/3318
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       state?.setDateValue(null)
+      setValueState(null)
+      setPrevValue('')
       state?.close()
     }
 
