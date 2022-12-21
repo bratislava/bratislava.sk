@@ -85,7 +85,8 @@
         "sections.waves",
         "sections.document-list",
         "sections.space",
-        "sections.organizational-structure"
+        "sections.organizational-structure",
+        "sections.gallery"
       ]
     },
     "pageHeaderSections": {

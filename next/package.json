@@ -1,6 +1,6 @@
 {
   "name": "bratislava-next",
-  "version": "1.2.4",
+  "version": "1.4.0",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
+    "@bratislava/json-schema-xsd-tools": "^0.1.8",
     "@cloudflare/json-schema-walker": "^0.1.1",
     "@internationalized/date": "^3.0.1",
     "@js-joda/core": "5.2.0",
@@ -33,7 +34,9 @@
     "@types/uuid": "^8.3.4",
     "ajv": "^8.11.0",
     "ajv-formats": "^2.1.1",
+    "amazon-cognito-identity-js": "^6.0.1",
     "apexcharts": "3.35.3",
+    "aws-sdk": "^2.1274.0",
     "axios": "0.27.2",
     "bootstrap": "^5.2.1",
     "cheerio": "^1.0.0-rc.12",
@@ -45,6 +48,7 @@
     "graphql-request": "4.3.0",
     "graphql-tag": "2.12.6",
     "immer": "9.0.15",
+    "jest-each": "^29.3.1",
     "json-schema": "^0.4.0",
     "libxmljs2": "^0.31.0",
     "lodash": "4.17.21",

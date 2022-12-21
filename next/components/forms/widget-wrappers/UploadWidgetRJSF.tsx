@@ -1,7 +1,7 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import cx from 'classnames'
-import { useEffect, useState } from 'react'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
+import { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
 import Upload from '../widget-components/Upload/Upload'
@@ -10,6 +10,8 @@ import UploadRJSFOptions from '../widget-components/Upload/UploadRJSFOptions'
 interface UploadWidgetRJSFProps extends WidgetProps {
   options: UploadRJSFOptions
   schema: StrictRJSFSchema
+  label: string
+  required?: boolean
   value: string | string[]
   disabled?: boolean
   multiple?: boolean
@@ -17,15 +19,21 @@ interface UploadWidgetRJSFProps extends WidgetProps {
 }
 
 const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
-  const { options, schema, value, disabled, onChange } = props
+  const { options, schema, label, required, value, disabled, onChange } = props
 
-  const { size, accept, type = 'button', className } = options
+  const {
+    size,
+    accept,
+    type = 'button',
+    className,
+    spaceBottom = 'small',
+    spaceTop = 'none',
+  } = options
 
   const [innerValue, setInnerValue] = useState<UploadMinioFile[]>([])
 
   const supportedFormats = accept?.split(',')
   const multiple = schema.type === 'array'
-  const widgetClassName = cx('px-2 py-4', className)
 
   const fileNameToMinioFile = (fileName: string): UploadMinioFile => {
     const fileNameArray = fileName.split('_')
@@ -80,16 +88,20 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   }
 
   return (
-    <Upload
-      type={type}
-      multiple={multiple}
-      value={innerValue}
-      className={widgetClassName}
-      sizeLimit={size}
-      supportedFormats={supportedFormats}
-      disabled={disabled}
-      onChange={handleOnChange}
-    />
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+      <Upload
+        type={type}
+        label={label}
+        required={required}
+        multiple={multiple}
+        value={innerValue}
+        className={className}
+        sizeLimit={size}
+        supportedFormats={supportedFormats}
+        disabled={disabled}
+        onChange={handleOnChange}
+      />
+    </WidgetWrapper>
   )
 }
 

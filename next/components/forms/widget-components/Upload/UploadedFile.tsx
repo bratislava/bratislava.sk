@@ -19,7 +19,7 @@ const UploadedFile = ({ fileName, errorMessage, isUploading, onRemove }: Uploade
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   const classNames = cx(
-    'cursor:pointer flex w-full flex-row gap-2 rounded-lg py-1 px-2 group transition-all linear text-20',
+    'cursor:pointer group linear text-20 flex w-full flex-row gap-2 rounded-lg py-1 px-2 transition-all',
     {
       'text-error': errorMessage,
       'hover:bg-gray-100 hover:text-gray-500': !errorMessage && !isUploading,
@@ -52,7 +52,7 @@ const UploadedFile = ({ fileName, errorMessage, isUploading, onRemove }: Uploade
         </div>
         <p>{fileName}</p>
       </div>
-      <div className="align-center flex w-5 flex-row gap-2">
+      <div className="align-center flex w-5 flex-col justify-center gap-2">
         {errorMessage ? (
           <TrashBinErrorIcon className="cursor-pointer" onClick={handleOnRemove} />
         ) : (

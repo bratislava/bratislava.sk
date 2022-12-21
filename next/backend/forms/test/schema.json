@@ -75,8 +75,11 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
-                "enumNames": ["Inzinier", "Magister", "Bakalar", null, "Docent", "Profesor"]
+                "oneOf": [
+                  { "const": "STU FEI", "title": "fakulta elektrotechniky a informatiky" },
+                  { "const": "STU FCHPT" },
+                  { "const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii" }
+                ]
               }
             },
             "years": {
@@ -93,22 +96,25 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
-          "required": [],
-          "type": "object",
+          "required": ["importButtonMultipleFiles"],
           "properties": {
             "importButtonOneFile": {
+              "title": "Importuj jeden subor",
               "type": "string"
             },
             "importButtonMultipleFiles": {
+              "title": "Importuj viac suborov",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
             "importDragAndDropOneFile": {
+              "title": "Presun sem jeden subor",
               "type": "string"
             },
             "importDragAndDropMultipleFiles": {
+              "title": "Presun sem viac suborov",
               "type": "array",
               "items": {
                 "type": "string"
@@ -173,18 +179,6 @@
               "isToken": { "ref": "user.phone" }
             }
           }
-        }
-      }
-    },
-    {
-      "required": [],
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
         }
       }
     }
