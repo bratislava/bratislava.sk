@@ -10,7 +10,7 @@ import SummaryMessages from './Summary/SummaryMessages'
 
 interface FinalStepProps {
   formData: Record<string, any>
-  formErrors: RJSFValidationError[]
+  formErrors: RJSFValidationError[][]
   schema?: StrictRJSFSchema
   slug: string
   onGoToStep: (step: number) => void

@@ -73,7 +73,7 @@ const FormTestPage = ({
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
-  console.log('FORM:', form)
+
   const customFormats = {
     zip: /\b\d{5}\b/,
   }
@@ -130,11 +130,15 @@ const FormTestPage = ({
                 // passing data to state onChange in current state prevented the form from updating
                 onSubmit={(e) => {
                   form.setState({ ...form.state, ...e.formData })
+                  form.setErrors(e.errors, form.stepIndex)
                   form.setStepIndex(form.stepIndex + 1)
                 }}
-                onError={(e: RJSFValidationError[]) => {
-                  form.setErrors([...form.errors, ...e])
-                  console.log('errors', e)
+                onChange={(e) => {
+                  form.setState({ ...form.state, ...e.formData })
+                }}
+                onError={(errors) => {
+                  form.setErrors(errors, form.stepIndex)
+                  form.setStepIndex(form.stepIndex + 1)
                 }}
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}

@@ -9,7 +9,21 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
   // TODO: handle new/old errors
-  const [errors, setErrors] = useState<RJSFValidationError[]>([])
+  const [errors, setErrors] = useState<RJSFValidationError[][]>([])
+
+  const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
+    let updatedErrors: RJSFValidationError[][] = []
+    if (errors.length === actualStepIndex) {
+      updatedErrors = [...errors]
+      updatedErrors.push(newErrors)
+    } else if (errors.length > actualStepIndex) {
+      updatedErrors = errors.map((innerErrors: RJSFValidationError[], index: number) =>
+        index === actualStepIndex ? [...newErrors] : [...innerErrors],
+      )
+    }
+    setErrors(updatedErrors)
+  }
+
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast
@@ -22,9 +36,12 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
 
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => {
-    if (formRef?.current?.validateForm()) {
-      formRef?.current?.submit()
-    }
+    formRef?.current?.validateForm()
+    formRef?.current?.submit()
+  }
+
+  const forceNext = () => {
+    formRef?.current?.submit()
   }
 
   const currentSchema = steps[stepIndex]
@@ -54,9 +71,10 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
     state,
     setState,
     errors,
-    setErrors,
+    setErrors: setUniqueErrors,
     previous,
     next,
+    forceNext,
     currentSchema,
     nextSchema,
     previousSchema,

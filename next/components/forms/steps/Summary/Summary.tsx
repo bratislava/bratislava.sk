@@ -6,7 +6,7 @@ import TransformedFormData from './TransformedFormData'
 
 interface SummaryProps {
   formData: Record<string, JsonSchema>
-  formErrors: RJSFValidationError[]
+  formErrors: RJSFValidationError[][]
   schema?: StrictRJSFSchema
   onGoToStep: (step: number) => void
 }
@@ -48,7 +48,9 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
 
   const isFieldError = (schemaPath: string, fieldName: string): boolean => {
     const errorProperty = `${schemaPath}.${fieldName}`
-    return formErrors.some((error) => error.property === errorProperty)
+    return formErrors.some((errors) => {
+      return errors.some((error) => error.property === errorProperty)
+    })
   }
 
   const getAllTransformedData = (
