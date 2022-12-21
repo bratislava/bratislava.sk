@@ -12,6 +12,16 @@
             "lastName"
           ],
           "properties": {
+            "nestedFields": {
+              "title": "Nested in inputFields",
+              "required": ["yourAddress"],
+              "properties": {
+                "yourAddress": {
+                  "type": "string",
+                  "title": "Your address"
+                }
+              }
+            },
             "firstName": {
               "type": "string",
               "title": "First Name",

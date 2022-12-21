@@ -3,6 +3,12 @@
     "norender": true
   },
   "inputFields": {
+    "nestedFields": {
+      "yourAddress": {
+        "ui:widget": "InputField",
+        "ui:label": false
+      }
+    },
     "firstName": {
       "ui:widget": "InputField",
       "ui:label": false,
