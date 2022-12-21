@@ -30,6 +30,9 @@ jobs:
       - name: Typescript strict plugin check
         run: yarn typecheck
 
+      - name: Tests
+        run: yarn test:ci
+
       # Commented out because a) eslint currently can't error (all errors are warnings) and b) it's incorrectly setup and never passes
       # Fix the latter whenever the former gets solved
       # - name: ESlint check
