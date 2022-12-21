@@ -30,7 +30,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           className="flex"
           items={posts.map((blogCard, index) => (
             <HorizontalCard
-              className="min-h-[220px] h-full py-16"
+              className="min-h-[350px] h-full py-16"
               key={index}
               imageSrc={blogCard.imageSrc ?? ''}
             >

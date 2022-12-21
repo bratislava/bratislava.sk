@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blocks_gallery_items",
+  "info": {
+    "displayName": "Gallery item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "imgTitle": {
+      "type": "text"
+    },
+    "imgSubtitle": {
+      "type": "text"
+    },
+    "imgSubtext": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
