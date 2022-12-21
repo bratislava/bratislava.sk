@@ -7,7 +7,7 @@ const CheckboxGroupShowCase = () => {
   return (
     <Wrapper direction="column" title="Checkbox Group">
       <Stack direction="column">
-        <CheckboxGroup onChange={() => {}}>
+        <CheckboxGroup onChange={() => {}} label="Label">
           <Checkbox value="value1" isIndeterminate tooltip="This is some tooltip">
             Value
           </Checkbox>
@@ -21,7 +21,7 @@ const CheckboxGroupShowCase = () => {
         </CheckboxGroup>
       </Stack>
       <Stack direction="column">
-        <CheckboxGroup onChange={() => {}}>
+        <CheckboxGroup onChange={() => {}} label="Label">
           <Checkbox value="value1" variant="boxed" isIndeterminate tooltip="This is some tooltip">
             Value
           </Checkbox>
