@@ -160,23 +160,11 @@
       "properties": {
         "user": {
           "type": "object",
+          "title": "Example async validation",
           "properties": {
             "phone": {
               "type": "string",
-              "isPhone": {}
-            }
-          }
-        }
-      }
-    },
-    {
-      "properties": {
-        "verification": {
-          "type": "object",
-          "properties": {
-            "token": {
-              "type": "string",
-              "isToken": { "ref": "user.phone" }
+              "isExampleAsyncValidation": {}
             }
           }
         }

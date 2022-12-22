@@ -2,7 +2,6 @@
 // frontend code for calling api endpoints grouped
 import * as Sentry from '@sentry/react'
 import { ErrorObject } from 'ajv'
-import { get } from 'lodash'
 
 export const API_ERROR_TEXT = 'API_ERROR'
 
@@ -60,49 +59,19 @@ export const submitEform = async (eformKey: string, data: Record<string, any>) =
   })
 }
 
-interface PhoneResponse {
-  token: string
-}
-
-export const checkIsPhone = async (schema: any, value: string): Promise<boolean> => {
-  if (!value) {
-    return false
-  }
-
+export const validateKeyword = async (
+  keyword: string,
+  schema: any,
+  value: any,
+  parentSchema: any,
+): Promise<boolean> => {
   try {
-    const { token }: PhoneResponse = await fetchJsonApi(`/api/user/verification/generate`, {
+    const { isValid }: { isValid: boolean } = await fetchJsonApi(`/api/eforms/validation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ phone: value }),
-    })
-
-    console.log(`TOKEN ${token}`)
-    return true
-  } catch (error) {
-    return false
-  }
-}
-
-interface TokenResponse {
-  isValid: boolean
-}
-
-export const checkIsToken = async (schema: any, value: string, data: any): Promise<boolean> => {
-  if (!value) {
-    return false
-  }
-
-  const phone = get(data, schema.ref)
-
-  try {
-    const { isValid }: TokenResponse = await fetchJsonApi(`/api/user/verification/check`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ phone, token: value }),
+      body: JSON.stringify({ keyword, schema, value, parentSchema }),
     })
 
     return isValid

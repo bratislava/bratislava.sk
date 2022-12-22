@@ -1,13 +1,13 @@
+import forms, { EFormKey, EFormValue } from '@backend/forms'
+import { firstCharToUpper } from '@backend/utils/strings'
+import { ajvKeywords, getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
+import { forceString } from '@utils/utils'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
-import forms, { EFormKey, EFormValue } from 'backend/forms'
-import { firstCharToUpper } from 'backend/utils/strings'
 import * as cheerio from 'cheerio'
 // @ts-ignore
 import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
-import { getAllPossibleJsonSchemaProperties, JsonSchema } from 'utils/forms'
-import { forceString } from 'utils/utils'
 import { parseStringPromise } from 'xml2js'
 import { firstCharLowerCase } from 'xml2js/lib/processors'
 
@@ -171,31 +171,18 @@ export const removeNeedlessXmlTransformArraysRecursive = (
   return obj
 }
 
-const checkIsPhone = (schema: any, value: string) => {
-  // TODD: verify user in db
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(false), 500)
-  })
-}
-
 export const validateDataWithJsonSchema = async (data: any, schema: any) => {
-  const ajv = new Ajv()
+  const ajv = new Ajv({
+    keywords: ajvKeywords,
+  })
+
   addFormats(ajv)
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
 
+  // keyword used for example value in JSON schema
   ajv.addKeyword('example')
   ajv.addKeyword('enumNames')
-  ajv.addKeyword('isToken')
-  ajv.addKeyword('disabled')
-  ajv.addKeyword('tooltip')
-  ajv.addKeyword('error')
-  ajv.addKeyword({
-    keyword: 'isPhone',
-    async: true,
-    type: 'string',
-    validate: checkIsPhone,
-  })
 
   const validate = ajv.compile(schema)
 

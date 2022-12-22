@@ -148,11 +148,5 @@
         "leftIcon": "call"
       }
     }
-  },
-  "verification": {
-    "token": {
-      "ui:widget": "InputField",
-      "ui:label": false
-    }
   }
 }

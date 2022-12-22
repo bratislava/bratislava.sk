@@ -1,9 +1,10 @@
 import Form from '@rjsf/core'
 import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
+import { validateKeyword } from '@utils/api'
+import { FuncKeywordDefinition, KeywordDefinition } from 'ajv'
 import { JSONSchema7Definition } from 'json-schema'
 import { get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
-import { checkIsPhone, checkIsToken } from 'utils/api'
 
 export type JsonSchema = JSONSchema7Definition
 interface JsonSchemaProperties {
@@ -51,18 +52,18 @@ const buildRJSFError = (path: string[], errorMsg: string | undefined): ErrorSche
   )
 }
 
-const keywords = [
+const exampleAsyncValidation = (schema: any, value: any, parentSchema: any) => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(!!value), 500)
+  })
+}
+
+export const ajvKeywords: FuncKeywordDefinition[] = [
   {
-    keyword: 'isPhone',
+    keyword: 'isExampleAsyncValidation',
     async: true,
     type: 'string',
-    validate: checkIsPhone,
-  },
-  {
-    keyword: 'isToken',
-    async: true,
-    type: 'string',
-    validate: checkIsToken,
+    validate: exampleAsyncValidation,
   },
 ]
 
@@ -74,12 +75,13 @@ const validateAsyncProperties = async (
   const errors = {}
 
   await Promise.all(
-    keywords.map(async (k) => {
-      if (schema[k.keyword]) {
+    ajvKeywords.map(async (k: KeywordDefinition) => {
+      const keyword: string = k.keyword as string
+      if (schema[keyword]) {
         const value = get(data, path)
-        const isValid = await k.validate(schema[k.keyword], value, data)
+        const isValid = await validateKeyword(keyword, schema[keyword], value, schema)
         if (!isValid) {
-          merge(errors, buildRJSFError(path, schema[k.keyword].errorMsg))
+          merge(errors, buildRJSFError(path, schema[keyword].errorMsg))
         }
       }
     }),
@@ -168,6 +170,6 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
     isComplete,
     formRef,
     extraErrors,
-    keywords,
+    keywords: ajvKeywords,
   }
 }

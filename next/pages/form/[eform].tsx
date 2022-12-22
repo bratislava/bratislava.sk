@@ -78,12 +78,13 @@ const FormTestPage = ({
   const pageSlug = `form/${escapedSlug}`
 
   const form = useFormStepper(escapedSlug, eform.schema)
-
-  const keywords = form.keywords.map((k) => k.keyword)
   const customFormats = {
     zip: /\b\d{5}\b/,
   }
-  const validator = customizeValidator({ customFormats, ajvOptionsOverrides: { keywords } })
+  const validator = customizeValidator({
+    customFormats,
+    ajvOptionsOverrides: { keywords: form.keywords },
+  })
   return (
     <PageWrapper
       locale={page.locale}

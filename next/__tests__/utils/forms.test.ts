@@ -1,14 +1,13 @@
-import { describe } from '@jest/globals'
-import { JsonSchema } from '@utils/utils'
-
-import xmlTemplate from '../../backend/forms/test/xmlTemplate'
+import xmlTemplate from '@backend/forms/test/xmlTemplate'
 import {
   getEform,
   loadAndBuildXml,
   validateDataWithJsonSchema,
   validateDataWithXsd,
   xmlToJson,
-} from '../../backend/utils/forms'
+} from '@backend/utils/forms'
+import { describe } from '@jest/globals'
+import { JsonSchema } from '@utils/forms'
 
 const xsd =
   '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="comment"><xs:complexType><xs:all><xs:element name="author" type="xs:string"/><xs:element name="content" type="xs:string"/></xs:all></xs:complexType></xs:element></xs:schema>'
@@ -97,7 +96,7 @@ describe('forms utils', () => {
           properties: {
             phone: {
               type: 'string',
-              isPhone: {},
+              isExampleAsyncValidation: {},
             },
           },
           required: ['phone'],
@@ -112,7 +111,7 @@ describe('forms utils', () => {
     }
 
     const errors = await validateDataWithJsonSchema(data, schema)
-    expect(errors).toHaveLength(1)
+    expect(errors).toHaveLength(0)
   })
 
   test('json to xml, xml to json', async () => {
