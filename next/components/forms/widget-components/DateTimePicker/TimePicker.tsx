@@ -1,6 +1,8 @@
+/* eslint-disable lodash-fp/no-extraneous-args */
 import TimeIcon from '@assets/images/forms/access-time-icon.svg'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
+import padStart from 'lodash/padStart'
 import { forwardRef, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -89,14 +91,17 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       setPrevValue('')
     }
 
-    // TODO not work
     const addZeroOnSuccess = (): void => {
       if (!hour || !minute) {
         if (hour) {
+          onChange(`${padStart(hour, 2, '0')}:00`)
           setMinute('00')
+          setPrevValue(`${padStart(hour, 2, '0')}:00`)
         }
         if (minute) {
+          onChange(`00:${padStart(minute, 2, '0')}`)
           setHour('00')
+          setPrevValue(`00:${padStart(minute, 2, '0')}`)
         }
       }
     }
@@ -113,8 +118,8 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
 
     const closeSuccessHandler = () => {
-      // addZeroOnSuccess()
       if (onChange && value) setPrevValue((prev) => (prev !== value ? value : prev))
+      addZeroOnSuccess()
       state?.close()
     }
 
