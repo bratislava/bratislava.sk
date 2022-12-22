@@ -1,13 +1,10 @@
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import TimePicker from 'components/forms/widget-components/DateTimePicker/TimePicker'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-type TimePickerRJSFOptions = {
-  tooltip?: string
-  description?: string
-  className?: string
-  explicitOptional?: boolean
-}
+type TimePickerRJSFOptions = WidgetOptions
 
 interface TimePickerWidgetRJSFProps extends WidgetProps {
   label: string
@@ -30,22 +27,30 @@ const TimePickerWidgetRJSF = ({
   value,
   onChange,
 }: TimePickerWidgetRJSFProps) => {
-  const { description, tooltip, explicitOptional } = options
+  const {
+    description,
+    tooltip,
+    explicitOptional,
+    spaceBottom = 'default',
+    spaceTop = 'none',
+  } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <TimePicker
-      label={label}
-      errorMessage={rawErrors?.join(', ')}
-      required={required}
-      disabled={disabled}
-      description={description}
-      tooltip={tooltip}
-      explicitOptional={explicitOptional}
-      value={value}
-      onChange={handleOnChange}
-    />
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+      <TimePicker
+        label={label}
+        errorMessage={rawErrors?.join(', ')}
+        required={required}
+        disabled={disabled}
+        description={description}
+        tooltip={tooltip}
+        explicitOptional={explicitOptional}
+        value={value}
+        onChange={handleOnChange}
+      />
+    </WidgetWrapper>
   )
 }
 export default TimePickerWidgetRJSF
