@@ -12,7 +12,8 @@
         "tooltip": "First name hint",
         "resetIcon": true,
         "leftIcon": "person",
-        "size": "default"
+        "size": "default",
+        "spaceTop": "large"
       }
     },
     "lastName": {
@@ -85,9 +86,9 @@
     },
     "importDragAndDropMultipleFiles": {
       "ui:widget": "Upload",
+      "ui:label": false,
       "ui:options": {
-        "type": "dragAndDrop",
-        "label": false
+        "type": "dragAndDrop"
       }
     }
   },
@@ -116,24 +117,19 @@
       "ui:options": {
         "dropdownDivider": true,
         "description": "Here choose your last school",
-        "tooltip": "This tooltip will tell you what to do better when you choose this.",
-        "className": "px-2 py-4"
+        "tooltip": "This tooltip will tell you what to do better when you choose this."
       }
     },
     "diplomas": {
       "ui:widget": "SelectField",
       "ui:label": false,
       "ui:options": {
-        "selectAllOption": true,
-        "className": "px-2 py-4"
+        "selectAllOption": true
       }
     },
     "years": {
       "ui:widget": "SelectField",
-      "ui:label": false,
-      "ui:options": {
-        "className": "px-2 py-4"
-      }
+      "ui:label": false
     }
   },
   "chooseOneOf": {

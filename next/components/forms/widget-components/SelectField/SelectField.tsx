@@ -174,6 +174,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
+  const handleOnDeselectAll = () => {
+    handleOnChangeSelect([])
+  }
+
   // HELPER FUNCTIONS
   const getDropdownValues = (): EnumOptionsType[] => {
     return value ? (type !== 'multiple' && value && value.length > 0 ? [value[0]] : value) : []
@@ -251,6 +255,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
             onChooseOne={handleOnChooseOne}
             onUnChooseOne={handleOnUnChooseOne}
             onSelectAll={handleOnSelectAll}
+            onDeselectAll={handleOnDeselectAll}
             onChooseMulti={handleOnChooseMulti}
             onUnChooseMulti={handleOnUnChooseMulti}
           />

@@ -1,14 +1,11 @@
 import { WidgetProps } from '@rjsf/utils'
 import cx from 'classnames'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 
 import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 
-type TextAreaRJSFOptions = {
-  description?: string
-  className?: string
-  tooltip?: string
-  explicitOptional?: boolean
-}
+type TextAreaRJSFOptions = WidgetOptions
 
 interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
   value: string
@@ -33,7 +30,14 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
     onChange,
   }: TextAreaFieldWidgetRJSFProps = props
 
-  const { description, tooltip, explicitOptional, className }: TextAreaRJSFOptions = options
+  const {
+    description,
+    tooltip,
+    explicitOptional,
+    className,
+    spaceBottom = 'default',
+    spaceTop = 'none',
+  }: TextAreaRJSFOptions = options
 
   const handleOnChange = (newValue?: string) => {
     if (!newValue || newValue === '') {
@@ -44,7 +48,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <div className="my-2 max-w-[320px]">
+    <WidgetWrapper className="max-w-[320px]" spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <TextAreaField
         value={value}
         label={label}
@@ -58,7 +62,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         onChange={handleOnChange}
         errorMessage={rawErrors}
       />
-    </div>
+    </WidgetWrapper>
   )
 }
 

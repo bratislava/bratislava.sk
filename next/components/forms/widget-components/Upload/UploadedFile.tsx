@@ -52,7 +52,7 @@ const UploadedFile = ({ fileName, errorMessage, isUploading, onRemove }: Uploade
         </div>
         <p>{fileName}</p>
       </div>
-      <div className="align-center flex w-5 flex-row gap-2">
+      <div className="align-center flex w-5 flex-col justify-center gap-2">
         {errorMessage ? (
           <TrashBinErrorIcon className="cursor-pointer" onClick={handleOnRemove} />
         ) : (

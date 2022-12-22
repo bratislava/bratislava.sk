@@ -47,7 +47,7 @@ const SearchField = ({
       errorMessage,
       description,
       onChange(value) {
-        setValueState(value)
+        setValueState(value.startsWith(' ') ? value.trim() : value)
       },
       isRequired: required,
       isDisabled: disabled,

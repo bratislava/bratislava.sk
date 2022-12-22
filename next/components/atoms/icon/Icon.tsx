@@ -4,7 +4,7 @@ import { FC, useMemo } from 'react'
 import { getIcon, MenuIcon } from './IconService'
 
 interface Props {
-  iconName: MenuIcon
+  iconName: MenuIcon | undefined
 }
 
 export const Icon: FC<Props> = ({ iconName }) => {
