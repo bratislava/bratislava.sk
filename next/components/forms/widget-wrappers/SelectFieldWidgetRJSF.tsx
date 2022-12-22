@@ -104,7 +104,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
         description={description}
         tooltip={tooltip}
         dropdownDivider={dropdownDivider}
-        errorMessage={errorMessage}
+        errorMessage={rawErrors}
         required={required}
         disabled={disabled}
         className={className}
