@@ -1,9 +1,44 @@
 import Form from '@rjsf/core'
 import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
-import { checkIsPhone, checkIsToken } from '@utils/api'
-import { getAllPossibleJsonSchemaProperties } from '@utils/utils'
+import { JSONSchema7Definition } from 'json-schema'
 import { get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
+import { checkIsPhone, checkIsToken } from 'utils/api'
+
+export type JsonSchema = JSONSchema7Definition
+interface JsonSchemaProperties {
+  [key: string]: JSONSchema7Definition
+}
+
+export const getAllPossibleJsonSchemaProperties = (
+  jsonSchema: JsonSchema | undefined,
+): JsonSchemaProperties => {
+  if (!jsonSchema || jsonSchema === true) {
+    return {}
+  }
+
+  const properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+  if (jsonSchema.then) {
+    Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.then))
+  }
+  if (jsonSchema.allOf) {
+    jsonSchema.allOf.forEach((s) => {
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
+    })
+  }
+  if (jsonSchema.oneOf) {
+    jsonSchema.oneOf.forEach((s) => {
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
+    })
+  }
+  if (jsonSchema.anyOf) {
+    jsonSchema.anyOf.forEach((s) => {
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
+    })
+  }
+
+  return properties
+}
 
 const buildRJSFError = (path: string[], errorMsg: string | undefined): ErrorSchema => {
   return path.reduceRight(

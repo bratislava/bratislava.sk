@@ -1,15 +1,15 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import forms, { EFormKey, EFormValue } from 'backend/forms'
+import { firstCharToUpper } from 'backend/utils/strings'
 import * as cheerio from 'cheerio'
 // @ts-ignore
 import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
+import { getAllPossibleJsonSchemaProperties, JsonSchema } from 'utils/forms'
+import { forceString } from 'utils/utils'
 import { parseStringPromise } from 'xml2js'
 import { firstCharLowerCase } from 'xml2js/lib/processors'
-
-import { forceString, getAllPossibleJsonSchemaProperties, JsonSchema } from '../../utils/utils'
-import forms, { EFormKey, EFormValue } from '../forms'
-import { firstCharToUpper } from './strings'
 
 export type Json = any
 
