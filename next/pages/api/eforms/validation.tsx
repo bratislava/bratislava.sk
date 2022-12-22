@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const { keyword, schema, value, parentSchema }: Body = req.body
-  const keywordDefinition = ajvKeywords.find((k) => k.keyword === keyword) as any
+  const keywordDefinition = ajvKeywords.find((k) => k.keyword === keyword)
   if (!keywordDefinition) {
     return res.status(400).json({ message: 'Keyword definition not found' })
   }
