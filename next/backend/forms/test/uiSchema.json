@@ -144,7 +144,17 @@
       "ui:label": false,
       "ui:options": {
         "className": "flex flex-col gap-4 w-fit",
-        "variant": "boxed"
+        "variant": "boxed",
+        "checkboxOptions": [
+          {
+            "value": "orange",
+            "tooltip": "Orange tooltip"
+          },
+          {
+            "value": "apple",
+            "tooltip": "Apple tooltip"
+          }
+        ]
       }
     }
   }

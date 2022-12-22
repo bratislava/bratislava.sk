@@ -169,41 +169,37 @@
       "properties": {
         "checkBoxes": {
           "title": "Checkboxes",
+          "required": ["favouriteFruits"],
           "properties": {
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits",
-              "default": ["kiwi","apple"],
+              "minItems": 1,
               "uniqueItems": true,
               "items": {
                 "anyOf": [
                   {
-                    "label": "Orange",
-                    "const": "orange",
-                    "disabled": true
+                    "title": "Orange",
+                    "const": "orange"
                   },
                   {
-                    "label": "Banana",
-                    "const": "banana",
-                    "error": true,
-                    "tooltip": "This is some tooltip"
+                    "title": "Banana",
+                    "const": "banana"
                   },
                   {
-                    "label": "Grape",
-                    "const": "grape",
-                    "isDisabled": true
+                    "title": "Grape",
+                    "const": "grape"
                   },
                   {
-                    "label": "Kiwi",
-                    "const": "kiwi",
-                    "isIndeterminate": true
+                    "title": "Kiwi",
+                    "const": "kiwi"
                   },
                   {
-                    "label": "Apple",
+                    "title": "Apple",
                     "const": "apple"
                   },
                   {
-                    "label": "Plum",
+                    "title": "Plum",
                     "const": "plum"
                   }
                 ]
