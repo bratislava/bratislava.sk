@@ -1,7 +1,6 @@
-import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React from 'react'
 
 import InputField from '../widget-components/InputField/InputField'
 import Upload from '../widget-components/Upload/Upload'
@@ -86,13 +85,7 @@ export const InputUploadGroup = ({
         resetIcon={InputResetIcon}
         className={InputClassName}
       />
-      <div>{middleText}</div>{' '}
-      <div
-        className="flex w-6 h-6 justify-center items-center cursor-pointer mt-auto mb-5 rotate-45"
-        onClick={() => removeField(element.id)}
-      >
-        <PlusCircleIcon fill="red" />
-      </div>
+      <div>{middleText}</div>
       <Upload
         label={UploadLabel}
         type={UploadType}
