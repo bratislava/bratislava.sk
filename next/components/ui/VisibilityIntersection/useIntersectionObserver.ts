@@ -6,26 +6,21 @@ interface HookResult {
 
 export const useIntersectionObserver = (
   observerOptions: IntersectionObserverInit,
-  onHandleIntersection: () => void,
+  onIntersection: IntersectionObserverCallback,
 ): HookResult => {
   const elementRef = useRef<HTMLDivElement | null>(null)
-
-  const handleIntersection = (entries: IntersectionObserverEntry[]): void => {
-    if (entries[0].isIntersecting) {
-      onHandleIntersection()
-    }
-  }
-
-  const { disconnect, observe } = new IntersectionObserver(handleIntersection, observerOptions)
+  const observerRef = useRef<IntersectionObserver | undefined>()
 
   useEffect(() => {
+    observerRef.current = new IntersectionObserver(onIntersection, observerOptions)
+
     if (!elementRef.current) {
       return
     }
-    observe(elementRef.current)
+    observerRef.current?.observe(elementRef.current)
   })
 
-  useEffect(() => disconnect)
+  useEffect(() => () => observerRef.current?.disconnect())
 
   return {
     elementRef,
