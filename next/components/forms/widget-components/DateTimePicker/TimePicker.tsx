@@ -94,12 +94,12 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     const addZeroOnSuccess = (): void => {
       if (!hour || !minute) {
         if (hour) {
-          onChange(`${padStart(hour, 2, '0')}:00`)
+          if (onChange) onChange(`${padStart(hour, 2, '0')}:00`)
           setMinute('00')
           setPrevValue(`${padStart(hour, 2, '0')}:00`)
         }
         if (minute) {
-          onChange(`00:${padStart(minute, 2, '0')}`)
+          if (onChange) onChange(`00:${padStart(minute, 2, '0')}`)
           setHour('00')
           setPrevValue(`00:${padStart(minute, 2, '0')}`)
         }
