@@ -21,6 +21,7 @@ export interface EFormValue {
   schema: StrictRJSFSchema
   uiSchema: UiSchema<any, any>
   xsd: string
+  data: any
   xmlTemplate: string
   textStylesheet?: any
   htmlStylesheet?: any

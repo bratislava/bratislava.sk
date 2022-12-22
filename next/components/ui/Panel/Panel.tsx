@@ -6,7 +6,12 @@ export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowVisible?: boolean
 }
 
-export const Panel = ({ className, hoverable = false, overflowVisible = false, ...rest }: PanelProps) => (
+export const Panel = ({
+  className,
+  hoverable = false,
+  overflowVisible = false,
+  ...rest
+}: PanelProps) => (
   <div
     // TODO added bg-white shadow class back in. We should find why it was there in first place.
     className={cx(className, 'rounded-lg bg-white shadow', {
