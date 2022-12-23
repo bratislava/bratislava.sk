@@ -101,7 +101,7 @@ const getColorsVariables = (pageCategory: string) =>
 
 // We get colors from the server and we need to transorm it to category.
 // Function which get color (red, blue, green...) and tranform it to category (main, transport, environment ...)
-export const transformColorToCategory = (pageColor: string): string => {
+export const transformColorToCategory = (pageColor: string | undefined | null): string => {
   let category: string
   switch (pageColor) {
     case 'red':

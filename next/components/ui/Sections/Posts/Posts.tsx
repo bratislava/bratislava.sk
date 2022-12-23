@@ -9,7 +9,6 @@ import {
   NewsCardBlogFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import HorizontalScrollWrapper from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
-import { PostButton } from '@bratislava/ui-bratislava/Sections/Posts/PostButton'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import useSWR from 'swr'
@@ -57,6 +56,7 @@ export const Posts = ({
   leftHighLight,
   rightHighLight,
   readMoreText,
+  readMoreNewsText,
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
@@ -89,29 +89,41 @@ export const Posts = ({
                   </div>
                 </>
               )}
-              {leftHighLight && <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />}
-              {rightHighLight && <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />}
+              {leftHighLight && (
+                <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />
+              )}
+              {rightHighLight && (
+                <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />
+              )}
             </>
           }
           sidePosts={
-            <>
-              {latestPost.data.map(({ attributes }, i) => {
-                const { tag, title, slug } = attributes
-                return (
-                  <SidePosts
-                    title={title}
-                    tagTitle={tag.data.attributes.title}
-                    linkHref={`blog/${slug}`}
-                    tagColor={tag.data.attributes.pageCategory.data.attributes.color}
-                    key={i}
-                  />
-                )
-              })}
-            </>
+            <SidePosts
+              blogPosts={latestPost.data}
+              readMoreButton={
+                <UILink href={t('allNewsLink')}>
+                  <Button
+                    variant="transparent"
+                    className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
+                    icon={<ChevronRight />}
+                    hoverIcon={<ArrowRight />}
+                  >
+                    {readMoreNewsText}
+                  </Button>
+                </UILink>
+              }
+            />
           }
           button={
             <UILink href={t('allNewsLink')}>
-              <PostButton buttonTitle={t('allNews')} />
+              <Button
+                variant="transparent"
+                className="text-20-medium mt-0 px-6 py-2 shadow-none"
+                icon={<ChevronRight />}
+                hoverIcon={<ArrowRight />}
+              >
+                {t('allNews')}
+              </Button>
             </UILink>
           }
         />
@@ -148,35 +160,44 @@ export const Posts = ({
         <PostCard
           highlightedPosts={
             <>
-              {firstRozkoPost && <NewsCard {...firstRozkoPost.attributes} readMoreText={readMoreText} />}
-              {secondRozkoPost && <NewsCard {...secondRozkoPost.attributes} readMoreText={readMoreText} />}
+              {firstRozkoPost && (
+                <NewsCard {...firstRozkoPost.attributes} readMoreText={readMoreText} />
+              )}
+              {secondRozkoPost && (
+                <NewsCard {...secondRozkoPost.attributes} readMoreText={readMoreText} />
+              )}
             </>
           }
           sidePosts={
-            <>
-              {restRozkoPosts.map(({ attributes }, i) => {
-                const { tag, title, slug } = attributes
-                return (
-                  <SidePosts
-                    title={title}
-                    tagTitle={tag.data.attributes.title}
-                    linkHref={`blog/${slug}`}
-                    tagColor={tag.data.attributes.pageCategory.data.attributes.color}
-                    key={i}
-                  />
-                )
-              })}
-            </>
+            <SidePosts
+              blogPosts={restRozkoPosts}
+              readMoreButton={
+                <UILink href={t('rozkopavkyNews')}>
+                  <Button
+                    variant="transparent"
+                    className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
+                    icon={<ChevronRight />}
+                    hoverIcon={<ArrowRight />}
+                  >
+                    {readMoreNewsText}
+                  </Button>
+                </UILink>
+              }
+            />
           }
           button={
-            url && (
-              <>
-                {rozkoPosts?.data?.length > 0 && (
-                  <UILink href={url}>
-                    <PostButton buttonTitle={t('toAllRoadClosures')} />
-                  </UILink>
-                )}
-              </>
+            url &&
+            rozkoPosts?.data?.length > 0 && (
+              <UILink href={url}>
+                <Button
+                  variant="transparent"
+                  className="text-20-medium mt-0 px-6 py-2 shadow-none"
+                  icon={<ChevronRight />}
+                  hoverIcon={<ArrowRight />}
+                >
+                  {t('toAllRoadClosures')}
+                </Button>
+              </UILink>
             )
           }
         />
@@ -200,7 +221,12 @@ export const Posts = ({
       <div className="mt-9 hidden">
         <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-12">
           {newsCards.map((newsItem, index) => (
-            <NewsCard key={index} readMoreText={readMoreText} className="w-11/12 shrink-0" {...newsItem} />
+            <NewsCard
+              key={index}
+              readMoreText={readMoreText}
+              className="w-11/12 shrink-0"
+              {...newsItem}
+            />
           ))}
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
