@@ -78,14 +78,10 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["ing.", "mgr.", "bc.", "phd.", "doc.", "prof."],
-                "enumNames": [
-                  "Inzinier",
-                  "Magister",
-                  "Bakalar",
-                  null,
-                  "Docent",
-                  "Profesor"
+                "oneOf": [
+                  {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
+                  {"const": "STU FCHPT"},
+                  {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
                 ]
               }
             },
@@ -110,21 +106,25 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
-          "required": [],
+          "required": ["importButtonMultipleFiles"],
           "properties": {
             "importButtonOneFile": {
+              "title": "Importuj jeden subor",
               "type": "string"
             },
             "importButtonMultipleFiles": {
+              "title": "Importuj viac suborov",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
             "importDragAndDropOneFile": {
+              "title": "Presun sem jeden subor",
               "type": "string"
             },
             "importDragAndDropMultipleFiles": {
+              "title": "Presun sem viac suborov",
               "type": "array",
               "items": {
                 "type": "string"
@@ -138,22 +138,20 @@
       "properties": {
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
+          "type": "object",
+          "required": ["chooseOne"],
           "properties": {
             "chooseOne": {
               "type": "string",
-              "default": "multiply",
               "title": "Some random choose",
               "oneOf": [
                 {
                   "const": "screen",
-                  "title": "Screen",
-                  "disabled": true,
-                  "tooltip": "This is some tooltip1"
+                  "title": "Screen"
                 },
                 {
                   "const": "multiply",
-                  "title": "Multiply",
-                  "error": true
+                  "title": "Multiply"
                 },
                 {
                   "const": "overlay",
@@ -169,58 +167,43 @@
       "properties": {
         "checkBoxes": {
           "title": "Checkboxes",
+          "required": ["favouriteFruits"],
           "properties": {
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits",
-              "default": ["kiwi","apple"],
+              "minItems": 1,
               "uniqueItems": true,
               "items": {
                 "anyOf": [
                   {
-                    "label": "Orange",
-                    "const": "orange",
-                    "disabled": true
+                    "title": "Orange",
+                    "const": "orange"
                   },
                   {
-                    "label": "Banana",
-                    "const": "banana",
-                    "error": true,
-                    "tooltip": "This is some tooltip"
+                    "title": "Banana",
+                    "const": "banana"
                   },
                   {
-                    "label": "Grape",
-                    "const": "grape",
-                    "isDisabled": true
+                    "title": "Grape",
+                    "const": "grape"
                   },
                   {
-                    "label": "Kiwi",
-                    "const": "kiwi",
-                    "isIndeterminate": true
+                    "title": "Kiwi",
+                    "const": "kiwi"
                   },
                   {
-                    "label": "Apple",
+                    "title": "Apple",
                     "const": "apple"
                   },
                   {
-                    "label": "Plum",
+                    "title": "Plum",
                     "const": "plum"
                   }
                 ]
               }
             }
           }
-        }
-      }
-    },
-    {
-      "required": [],
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
         }
       }
     }

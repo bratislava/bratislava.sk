@@ -1,3 +1,4 @@
+import data from './00603481.dopravneZnacenie.sk/data.json'
 import htmlStylesheet from './00603481.dopravneZnacenie.sk/form.html.sef.json'
 import textStylesheet from './00603481.dopravneZnacenie.sk/form.sb.sef.json'
 import schema from './00603481.dopravneZnacenie.sk/schema.json'
@@ -12,4 +13,5 @@ export default {
   xmlTemplate,
   textStylesheet,
   htmlStylesheet,
+  data,
 }

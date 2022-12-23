@@ -1,3 +1,4 @@
+import data from './zavazneStanoviskoKInvesticnejCinnosti/data.json'
 import htmlStylesheet from './zavazneStanoviskoKInvesticnejCinnosti/form.html.sef.json'
 import textStylesheet from './zavazneStanoviskoKInvesticnejCinnosti/form.sb.sef.json'
 import schema from './zavazneStanoviskoKInvesticnejCinnosti/schema.json'
@@ -12,4 +13,5 @@ export default {
   xmlTemplate,
   textStylesheet,
   htmlStylesheet,
+  data,
 }
