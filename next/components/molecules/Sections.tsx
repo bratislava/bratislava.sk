@@ -31,12 +31,20 @@ import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
-import { DocumentList } from './sections/documentList'
+import DocumentList from './sections/documentList/DocumentList'
+import Gallery from './sections/Gallery'
 import { ArticlesList } from './sections/homepage/ArticlesList'
 import MinimumCalculator from './sections/MinimumCalculator'
 import NewsLetterSection from './sections/NewsLetterSection'
 
-const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?: string; locale?: string }) => {
+const SectionContent = ({
+  section,
+  locale,
+}: {
+  section: SectionsFragment
+  slug?: string
+  locale?: string
+}) => {
   const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -63,7 +71,12 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       return <DocumentList />
 
     case 'ComponentSectionsColumnedText':
-      return <ColumnedText content={section.content ?? ''} hasBackground={section.hasBackground ?? false} />
+      return (
+        <ColumnedText
+          content={section.content ?? ''}
+          hasBackground={section.hasBackground ?? false}
+        />
+      )
 
     case 'ComponentSectionsTextWithImage':
       return (
@@ -77,7 +90,11 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       )
 
     case 'ComponentSectionsFileList':
-      return <FileList fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])} />
+      return (
+        <FileList
+          fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])}
+        />
+      )
 
     case 'ComponentSectionsDivider':
       return <Divider dividerStyle={section.style ?? undefined} />
@@ -86,7 +103,9 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
       return (
         <Links
           title={section.title ?? ''}
-          pageLinks={section.pageLinks?.map((pageLink) => parsePageLink(pageLink)).filter(isPresent) ?? []}
+          pageLinks={
+            section.pageLinks?.map((pageLink) => parsePageLink(pageLink)).filter(isPresent) ?? []
+          }
         />
       )
 
@@ -106,7 +125,7 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsAccordion':
       return (
         <>
-          {section.title && <h1 className="flex justify-center pb-14 text-lg font-semibold">{section.title}</h1>}
+          {section.title && <h1 className="text-h2 flex justify-center pb-14">{section.title}</h1>}
           <div className="flex flex-col">
             {groupByCategory(section.institutions ?? []).map((institution) => (
               <AccordionItem
@@ -120,7 +139,11 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
                       key={i}
                       title={file.title ?? undefined}
                       subtitle={file.subtitle ?? undefined}
-                      content={[file.firstColumn ?? '', file.secondColumn ?? '', file.thirdColumn ?? '']}
+                      content={[
+                        file.firstColumn ?? '',
+                        file.secondColumn ?? '',
+                        file.thirdColumn ?? '',
+                      ]}
                       url={file.url ?? undefined}
                       urlLabel={file.urlLabel ?? undefined}
                     />
@@ -144,7 +167,12 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
 
                   return (
                     <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
-                      <NarrowText contentStyle="my-8" align={item.align} width={item.width} content={item.content} />
+                      <NarrowText
+                        contentStyle="my-8"
+                        align={item.align}
+                        width={item.width}
+                        content={item.content}
+                      />
                       {link?.url && link.title && <PageLinkButton pageLink={link} />}
                     </div>
                   )
@@ -224,6 +252,16 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
     case 'ComponentSectionsOrganizationalStructure':
       return <OrganizationalStructure {...section} />
 
+    case 'ComponentSectionsGallery':
+      return (
+        <Gallery
+          title={section.title ?? ''}
+          subTitle={section.subtitle ?? ''}
+          // because of this https://github.com/strapi/strapi/issues/4548#issuecomment-615618608 we are using
+          galleryItems={section.galleryItems ?? undefined}
+        />
+      )
+
     case 'ComponentSectionsIframe':
       return <Iframe {...section} />
 
@@ -232,19 +270,26 @@ const SectionContent = ({ section, locale }: { section: SectionsFragment; slug?:
   }
 }
 
-const Section = ({ section, slug, locale }: { section: SectionsFragment | null; slug?: string; locale?: string }) => {
+const Section = ({
+  section,
+  slug,
+  locale,
+}: {
+  section: SectionsFragment | null
+  slug?: string
+  locale?: string
+}) => {
   if (!section) return null
 
   if (section.__typename === 'ComponentSectionsWaves')
     return (
       <Waves
         className={cx({
-          'mt-10 md:mt-18': section.position === 'top',
+          'md:mt-18 mt-10': section.position === 'top',
         })}
         key={section.position}
         isRich={section.isRich ?? undefined}
-        backgroundColor="var(--background-color)"
-        waveColor="var(--secondary-color)"
+        waveColor="var(--category-color-200)"
         wavePosition={section.position ?? 'top'}
       />
     )
@@ -268,8 +313,8 @@ const Section = ({ section, slug, locale }: { section: SectionsFragment | null; 
 
   return (
     <SectionContainer
-      className={cx('pt-[42px] md:pt-18', {
-        'pb-14 md:pb-18 bg-secondary': hasBackground === true,
+      className={cx('md:pt-18 pt-10', {
+        'md:pb-18 bg-category-200 pb-14': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

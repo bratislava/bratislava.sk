@@ -48,7 +48,7 @@ export const Contact = ({
 
   return (
     <>
-      {title && <h4 className="mb-6 text-md font-semibold leading-[36px]">{title}</h4>}
+      {title && <h4 className="text-h4 mb-6 leading-[36px]">{title}</h4>}
       <div className={cx(className, 'flex flex-col md:flex-row text-font items-center gap-3')}>
         {description && (
           <div
@@ -59,7 +59,7 @@ export const Contact = ({
             <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
               {description && (
                 <UIMarkdown
-                  className="text-sm leading-[24px] md:text-default md:leading-[30px]"
+                  className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]"
                   content={description}
                 />
               )}
@@ -104,19 +104,19 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
   const { Markdown: UIMarkdown } = useUIContext()
 
   if (variant === 'address') {
-    return <UIMarkdown className="text-sm leading-[24px] md:text-default md:leading-[30px]" content={value} />
+    return <UIMarkdown className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]" content={value} />
   }
 
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="relative flex h-full flex-col items-center justify-start pb-20 text-default leading-[30px]">
+    <div className="relative flex h-full flex-col items-center justify-start pb-20 text-20 leading-[30px]">
       <Icon className="h-24 w-24" />
       {value.split(',').map((item, key) => {
         return (
           <div key={key} className="text-center">
             <span
-              className={cx('font-semibold w-full break-all text-center', {
+              className={cx('text-20-semibold w-full break-all text-center', {
                 'mt-9': key === 0,
                 'whitespace-nowrap': variant === 'phone',
               })}
@@ -130,10 +130,10 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
         <a
           href={href}
           className={cx(
-            'mt-8 px-6 py-3 font-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
+            'mt-8 px-6 py-3 text-20-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
             {
-              'bg-primary border-primary': linkVariant === 'primary',
-              'bg-secondary border-secondary text-white': linkVariant === 'secondary',
+              'bg-category-600 border-category-600': linkVariant === 'primary',
+              'bg-category-200 border-category-200 text-white': linkVariant === 'secondary',
               'text-black': linkVariant === 'primary',
             }
           )}

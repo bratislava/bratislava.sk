@@ -36,15 +36,15 @@ export const NewsLetter = ({
         hasButton
         buttonPosition="left-1/2 -translate-x-1/2 w-56 h-14 lg:translate-x-0 lg:left-10"
         topImage={imageSrc ? <img src={imageSrc} alt="Newsletter decoration" /> : undefined}
-        topImagePosition="left-[-10px] lg:left-[492px] h-[180px] lg:h-[214px] w-[320px] lg:w-[382px] top-[-78px] lg:top-[59px] "
+        topImagePosition="-left-2.5 lg:left-[492px] h-[180px] lg:h-[214px] w-80 lg:w-96 top-[-78px] lg:top-[59px] "
         className="flex h-auto flex-col"
         onButtonClick={handleClick}
         buttonContent={buttonLabel}
       >
         {/* Content */}
-        <div className="mt-30 mb-8 p-6 lg:my-0 lg:p-12">
-          <h2 className="text-md font-semibold">Newsletter</h2>
-          <div className="mt-5 text-base">{newsLetterContent}</div>
+        <div className="mt-32 mb-8 p-6 lg:my-0 lg:p-12">
+          <h2 className="text-h4">Newsletter</h2>
+          <div className="mt-5 text-p2">{newsLetterContent}</div>
           <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
             <input
               type="email"
@@ -56,10 +56,10 @@ export const NewsLetter = ({
           <div className="mt-8 mb-5 max-w-xs">
             <CheckBox
               id="newsletterCheckbox"
-              className="border-gray-light border-opacity-50"
+              className="border-gray-700/50 border-opacity-50"
               variant="circle"
               content={
-                <p className={cx('text-base -mt-1', { 'text-font': isChecked }, { 'text-gray-light': !isChecked })}>
+                <p className={cx('text-p2 -mt-1', { 'text-font': isChecked }, { 'text-font/50': !isChecked })}>
                   {checkBoxContent}
                 </p>
               }

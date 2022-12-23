@@ -29,9 +29,9 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
     <div
       style={{ backgroundColor: item.color, height: 'calc(100vh - 55px)' }}
       className={cx(
-        'fixed top-[64px] left-0 w-screen md:hidden flex flex-col z-40',
+        'fixed top-16 left-0 w-screen lg:hidden flex flex-col z-40',
         // 'absolute top-0 h-full w-screen flex-1',
-        className
+        className,
       )}
     >
       <div className="flex h-full flex-col">
@@ -47,21 +47,24 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
           {variant === 'homepage' ? (
             <div className="flex items-center">
               <Icon iconName={item.coloredIcon} />
-              <span className="text-left text-base font-semibold">{item.title}</span>
+              <span className="text-p2-semibold text-left">{item.title}</span>
             </div>
           ) : (
             <button type="button" className="flex items-center" onClick={onClose}>
               <ChevronLeft className="mr-8" />
               <Icon iconName={item.coloredIcon} />
-              <span className="text-left text-base font-semibold">{item.title}</span>
+              <span className="text-p2-semibold text-left">{item.title}</span>
             </button>
           )}
         </div>
         {/* Item's SubMenu */}
         <div
-          className={cx('flex-1 min-h-0 overflow-scroll flex flex-col space-y-5 lg:space-y-10 p-6', {
-            'pb-36': variant === 'homepage',
-          })}
+          className={cx(
+            'flex-1 min-h-0 overflow-scroll flex flex-col space-y-5 lg:space-y-10 p-6',
+            {
+              'pb-36': variant === 'homepage',
+            },
+          )}
         >
           {item.subItems?.map((subItem, i) => {
             const isExpanded = expanded.includes(i)
@@ -69,7 +72,7 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
               <React.Fragment key={subItem.title}>
                 <div className="flex items-center gap-x-5">
                   <Icon iconName={subItem.icon} />
-                  <p className="text-default font-semibold">{subItem.title}</p>
+                  <p className="text-p1-semibold">{subItem.title}</p>
                 </div>
                 <div className="flex flex-col gap-y-2 pb-4">
                   <div className="flex flex-col gap-y-2">
@@ -96,12 +99,12 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
                       >
                         {isExpanded ? (
                           <>
-                            <p className="text-base font-semibold underline">{t('showLess')}</p>
+                            <p className="text-p2-semibold underline">{t('showLess')}</p>
                             <ChevronUp />
                           </>
                         ) : (
                           <>
-                            <p className="text-base font-semibold underline">{t('showMore')}</p>
+                            <p className="text-p2-semibold underline">{t('showMore')}</p>
                             {/* <ChevronDown /> */}
                             <ChevronRight />
                           </>
@@ -123,8 +126,12 @@ const HamburgerSubMenu = ({ className, item, onClose, variant, closeParentMenu }
         }}
         className="absolute bottom-0 flex h-32 w-screen flex-col items-center"
       >
-        <CloseFilled className="cursor-pointer" onClick={onClose} style={{ color: item.colorDark }} />
-        <div className="mt-4 text-center text-base font-semibold text-font">{t('closeMenu')}</div>
+        <CloseFilled
+          className="cursor-pointer"
+          onClick={onClose}
+          style={{ color: item.colorDark }}
+        />
+        <div className="text-p2-semibold mt-4 text-center text-font">{t('closeMenu')}</div>
       </div>
     </div>
   )

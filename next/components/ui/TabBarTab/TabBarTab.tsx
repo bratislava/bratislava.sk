@@ -20,15 +20,15 @@ export const TabBarTab = ({ className, tab, onClick, isActive, size = 'normal', 
   return (
     <button
       className={cx(className, 'relative py-2 whitespace-nowrap lg:whitespace-normal', {
-        'text-font': !isActive,
+        'text-font font-normal': !isActive,
         'font-semibold': isActive,
-        'text-default lg:text-md': size === 'normal',
-        'text-sm': size === 'small',
+        'text-h4': size === 'normal',
+        'text-p2': size === 'small',
       })}
       onClick={handleSelect ? () => handleSelect(tab.title) : onClick}
     >
       {tab.title}
-      {isActive && <div className="absolute bottom-0 left-1/2 w-10/12 -translate-x-1/2 border-b-2 border-primary" />}
+      {isActive && <div className="absolute bottom-0 left-1/2 w-10/12 -translate-x-1/2 border-b-2 border-category-600" />}
     </button>
   )
 }

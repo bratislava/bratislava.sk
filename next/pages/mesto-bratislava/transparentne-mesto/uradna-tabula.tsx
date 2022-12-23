@@ -1,6 +1,6 @@
 // @ts-strict-ignore
 import {
-  BasicSearch,
+  BasicSearchOld,
   DocumentCards,
   // Footer,
   // FooterProps,
@@ -169,20 +169,20 @@ AsyncServerProps<typeof getServerSideProps>) => {
         <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: pageStyle('red'),
+            __html: pageStyle('main'),
           }}
         />
         {/* Header */}
         <PageHeader
-          color="var(--secondary-color)"
-          transparentColor="var(--secondary-color--transparent)"
-          transparentColorMobile="var(--secondary-color--semi-transparent)"
+          color="var(--category-color-200)"
+          transparentColor="var(--category-color-200--transparent)"
+          transparentColorMobile="var(--category-color-200--semi-transparent)"
           imageSrc={OfficialBoardBackgroundImage}
           // eslint-disable-next-line tailwindcss/no-custom-classname
           className="header-main-bg bg-cover"
         >
           <SectionContainer>
-            <div className="relative min-h-[220px]">
+            <div className="min-h-56 relative">
               <div className="absolute top-6">
                 {/* <PageBreadcrumbs
                   parentPage={boardPage?.parentPage}
@@ -190,12 +190,12 @@ AsyncServerProps<typeof getServerSideProps>) => {
                   title={boardPage.title}
                 /> */}
               </div>
-              <h1 className="whitespace-pre-wrap pt-30 text-md font-bold md:text-2xl">{t('officialBoard')}</h1>
+              <h1 className="text-h1 whitespace-pre-wrap pt-32">{t('officialBoard')}</h1>
             </div>
           </SectionContainer>
         </PageHeader>
         <SectionContainer className="pt-14 md:pt-18">
-          <BasicSearch
+          <BasicSearchOld
             className="pb-14 lg:pb-24"
             placeholder={t('enterKeyword')}
             title={t('searching')}
@@ -206,7 +206,10 @@ AsyncServerProps<typeof getServerSideProps>) => {
             initialValue={forceString(query?.search)}
           />
           {noResultsFound ? (
-            <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
+            <NoResultsFound
+              title={t('weDidntFindAnything')}
+              message={t('tryEnteringSomethingElse')}
+            />
           ) : (
             <DocumentCards
               query={query?.search}

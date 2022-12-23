@@ -13,7 +13,12 @@ export interface ModalProps {
   onClose?: () => void
   actionButtonTitle?: string
   closeButtonColor?: string
+  arrowButtonsColor?: string
   onActionButtonClick?: () => void
+  showPrevBtn?: boolean
+  showNextBtn?: boolean
+  onPrev?: () => void
+  onNext?: () => void
 }
 
 export const Modal = ({
@@ -24,6 +29,11 @@ export const Modal = ({
   actionButtonTitle,
   onActionButtonClick,
   closeButtonColor,
+  arrowButtonsColor,
+  onPrev,
+  onNext,
+  showPrevBtn,
+  showNextBtn,
 }: ModalProps) => {
   return (
     <div
@@ -42,12 +52,33 @@ export const Modal = ({
                 className="modal-close-mobile-right transofrm closebutton absolute -bottom-9 left-[50%] z-10 h-16 w-16 -translate-x-1/2 md:inset-y-0 md:left-auto md:-right-8 md:translate-x-0 lg:-top-8"
                 shape="circle"
                 iconPosition="center"
-                icon={<Close className='h-10 w-10'/>} 
+                icon={<Close className="h-10 w-10" />}
                 onClick={onClose}
+              />
+            )}
+            {showPrevBtn && onPrev && (
+              <Button
+                style={{ backgroundColor: arrowButtonsColor }}
+                className="modal-close-mobile-right closebutton absolute bottom-0 left-0 z-10 h-16 w-16 -translate-y-full -translate-x-8 rotate-180"
+                shape="circle"
+                iconPosition="center"
+                icon={<ArrowRight />}
+                onClick={onPrev}
               />
             )}
 
             {children}
+
+            {showNextBtn && onNext && (
+              <Button
+                style={{ backgroundColor: arrowButtonsColor }}
+                className="modal-close-mobile-right closebutton absolute bottom-0 right-0 z-10 h-16 w-16 -translate-y-full translate-x-8"
+                shape="circle"
+                iconPosition="center"
+                icon={<ArrowRight />}
+                onClick={onNext}
+              />
+            )}
             {actionButtonTitle && onActionButtonClick && (
               <div className="transofrm absolute inset-x-0 bottom-0 mx-auto flex translate-y-1/2 justify-center">
                 <Button icon={<ChevronRight />} hoverIcon={<ArrowRight />} onClick={onActionButtonClick}>

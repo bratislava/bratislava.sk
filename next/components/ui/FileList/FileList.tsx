@@ -65,6 +65,7 @@ export const FileList = ({
   return (
     <div className={className}>
       {/* TODO suggested sonarjs cognitive complexity refactor below */}
+      {/* eslint-disable-next-line sonarjs/cognitive-complexity */}
       {fileSections?.map((fileSection, index) => {
         const { length } = fileSection.files
         const numberOfGroupsSeparatedByDividers = Math.ceil(length / NUM_ITEMS_PER_GROUP)
@@ -74,21 +75,21 @@ export const FileList = ({
             <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
               <div className="space-y-6">
                 {fileSection.category && !hideCategory && (
-                  <span className="text-default font-medium md:text-md">{fileSection.category}</span>
+                  <span className="text-h4-medium">{fileSection.category}</span>
                 )}
                 {Array.from({ length: numberOfGroupsSeparatedByDividers }, (_, i) => {
                   const start = i * NUM_ITEMS_PER_GROUP
                   const end = showMore ? start + NUM_ITEMS_PER_GROUP : NUM_PREVIEW_ITEMS
                   const isLastGroup = i === numberOfGroupsSeparatedByDividers - 1
                   return (
-                    <div>
+                    <div key={i}>
                       <div className={cx('grid grid-cols-3 gap-x-7 gap-y-8')}>
                         {fileSection?.files.slice(start, end).map((file, sectionIndex) => (
                           <div key={sectionIndex} className="w-full">
                             <DownloadCard
-                              title={file.title ? file.title : ''}
-                              downloadLink={file.media?.url ? file.media?.url : ''}
-                              uploadDate={file.media?.created_at ? file.media?.created_at : ''}
+                              title={file.title ?? ''}
+                              downloadLink={file.media?.url ?? ''}
+                              uploadDate={file.media?.created_at ?? ''}
                               downloadDetail={
                                 file.media?.ext && file.media.size > 0
                                   ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
@@ -107,7 +108,7 @@ export const FileList = ({
               </div>
               {length > NUM_PREVIEW_ITEMS && (
                 <Button
-                  className="self-center px-6 py-2.5 text-default"
+                  className="text-20 self-center px-6 py-2.5"
                   variant="secondary-dark-text"
                   onClick={handleClick}
                 >
@@ -117,12 +118,12 @@ export const FileList = ({
             </div>
             {!noScroll && (
               <div className="block lg:hidden">
-                <span className="text-default font-medium md:text-md">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="-mx-7.5 gap-x-5 py-6 px-7.5">
+                <span className="text-h4-medium">{fileSection.category}</span>
+                <HorizontalScrollWrapper className="-mx-8 gap-x-5 py-6 px-8">
                   {fileSection?.files.map((file, sectionIndex) => (
                     <div key={sectionIndex}>
                       <DownloadCard
-                        className="min-w-[280px] max-w-[290px]"
+                        className="min-w-66 max-w-72"
                         title={file.title ?? ''}
                         downloadLink={file.media?.url ?? ''}
                         uploadDate={file.media?.created_at ?? ''}

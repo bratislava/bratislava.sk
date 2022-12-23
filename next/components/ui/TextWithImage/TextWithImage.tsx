@@ -23,7 +23,7 @@ export const TextWithImage = ({
   if (!content && !imageSrc) return null
 
   return (
-    <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-7.5')}>
+    <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-8')}>
       {imagePosition === 'left' && imageSrc && (
         <div>
           <UIImage alt={imageAlternativeText} src={imageSrc} shadow={imageShadow} />
@@ -32,7 +32,7 @@ export const TextWithImage = ({
 
       {content && (
         <div>
-          <UIMarkdown content={content} className="text-sm leading-[24px] md:text-default md:leading-[30px]" />
+          <UIMarkdown content={content} className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]" />
         </div>
       )}
 

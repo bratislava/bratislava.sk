@@ -14,19 +14,19 @@ export const WelcomeCard = ({ className, image, imageClassName, title, path }: W
     <a href={path}>
       <div
         className={cx(
-          'flex flex-col gap-8 items-center justify-center border-3 rounded-lg bg-input-nav-bg border-primary hover:bg-secondary cursor-pointer',
+          'flex flex-col gap-8 items-center justify-center border-3 rounded-lg bg-white border-category-600 hover:bg-category-200 cursor-pointer',
           className
         )}
       >
         <div
           className={cx(
-            'w-32 h-28 flex items-center justify-center opacity-50 group-hover:text-primary group-hover:opacity-100',
+            'w-32 h-28 flex items-center justify-center opacity-50 group-hover:text-category-600 group-hover:opacity-100',
             imageClassName
           )}
         >
           {image}
         </div>
-        <p className="text-2xl text-primary group-hover:font-medium">{title}</p>
+        <p className="text-h1 text-category-600 group-hover:font-medium">{title}</p>
       </div>
     </a>
   )

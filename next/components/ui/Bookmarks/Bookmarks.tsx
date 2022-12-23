@@ -13,13 +13,21 @@ export interface BookmarksProps {
 export const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
   if (isEmpty(bookmarks)) return null
   return (
-    <div className={cx(className, 'hidden xl:flex flex-col absolute right-0 z-40 pointer-events-none')}>
-      {bookmarks?.map((b, ix) => (
+    <div
+      className={cx(className, 'hidden xl:flex flex-col absolute right-0 z-40 pointer-events-none')}
+    >
+      {bookmarks?.map((bookmark, index) => (
         <Bookmark
-          key={ix}
-          {...b}
+          key={index}
+          {...bookmark}
           className="pointer-events-auto mb-2"
-          IconComponent={b.icon === 'ua' ? UaIcon : b.icon === 'signpost' ? SignpostIcon : undefined}
+          IconComponent={
+            bookmark.icon === 'ua'
+              ? UaIcon
+              : bookmark.icon === 'signpost'
+              ? SignpostIcon
+              : undefined
+          }
         />
       ))}
     </div>

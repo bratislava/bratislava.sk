@@ -78,10 +78,10 @@ export const RentReservationForm = ({ className }: IProps) => {
 
   return (
     <div className="z-10 mx-auto md:w-10/12">
-      <h1 className="text-center text-2xl font-semibold">{t('nonbinding')}</h1>
+      <h1 className="text-h1 text-center">{t('nonbinding')}</h1>
 
       <div className="mb-14 mt-7 flex text-center">
-        <p className="px-2 text-center text-default font-medium lg:px-0">
+        <p className="text-p1-medium px-2 text-center lg:px-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
         </p>
       </div>
@@ -99,7 +99,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                 id="name"
                 name="name"
                 type="text"
-                className="text-default"
+                className="text-20"
                 // hasError={!!errors?.name}
                 value={reservationFormValues?.name}
                 onChange={(e) => handleChange?.({ name: e.target.value })}
@@ -116,7 +116,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                 id="email"
                 name="email"
                 type="email"
-                className="text-default"
+                className="text-20"
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.email}
                 onChange={(e) => handleChange?.({ email: e.target.value })}
@@ -133,7 +133,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                 id="phone"
                 name="phone"
                 type="text"
-                className="text-default"
+                className="text-20"
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.phone}
                 onChange={(e) => handleChange?.({ phone: e.target.value })}
@@ -146,7 +146,7 @@ export const RentReservationForm = ({ className }: IProps) => {
               // error={errors?.email}
             >
               <InputAccessory
-                className="flex w-full justify-between text-primary"
+                className="flex w-full justify-between text-category-600"
                 iconPosition="right"
                 icon={<Calendar />}
               >
@@ -154,7 +154,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                   id="date"
                   name="date"
                   type="date"
-                  className="h-14 text-default text-font focus:outline-none"
+                  className="text-20 h-14 text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.phone}
                   onChange={(e) => handleChange?.({ phone: e.target.value })}
@@ -170,7 +170,7 @@ export const RentReservationForm = ({ className }: IProps) => {
               // error={errors?.email}
             >
               <Select
-                className="w-full text-default"
+                className="text-20 w-full"
                 id="spaceId"
                 // hasError={!!errors?.venueId}
                 options={SPACEOPTIONS}
@@ -186,7 +186,7 @@ export const RentReservationForm = ({ className }: IProps) => {
               // error={errors?.email}
             >
               <Select
-                className="w-full text-default"
+                className="text-20 w-full"
                 id="spacePoss"
                 // hasError={!!errors?.venueId}
                 options={SPACEPOSSIBILITIES}
@@ -204,7 +204,7 @@ export const RentReservationForm = ({ className }: IProps) => {
               <TextArea
                 id="notes"
                 name="notes"
-                className="pt-5 text-default"
+                className="text-20 pt-5"
                 rows={11}
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.notes}
@@ -227,7 +227,7 @@ export const RentReservationForm = ({ className }: IProps) => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="mt-8 h-12 px-6 text-default font-medium lg:mt-9">{t('nonbindingConfirm')}</Button>
+          <Button className="text-20-medium mt-8 h-12 px-6 lg:mt-9">{t('nonbindingConfirm')}</Button>
         </div>
       </form>
     </div>

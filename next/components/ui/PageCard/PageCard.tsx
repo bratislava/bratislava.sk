@@ -1,18 +1,18 @@
+import ChevronRight from '@assets/images/chevron-right-large.svg'
+import PageBlueIcon from '@assets/images/page-blue-icon.svg'
+import PageBlueIconSmall from '@assets/images/page-blue-icon-small.svg'
+import PageBrownIcon from '@assets/images/page-brown-icon.svg'
+import PageBrownIconSmall from '@assets/images/page-brown-icon-small.svg'
+import PageGreenIcon from '@assets/images/page-green-icon.svg'
+import PageGreenIconSmall from '@assets/images/page-green-icon-small.svg'
+import PagePurpleIcon from '@assets/images/page-purple-icon.svg'
+import PagePurpleIconSmall from '@assets/images/page-purple-icon-small.svg'
+import PageRedIcon from '@assets/images/page-red-icon.svg'
+import PageRedIconSmall from '@assets/images/page-red-icon-small.svg'
+import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
+import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 
-import ChevronRight from '../../../assets/images/chevron-right-large.svg'
-import PageBlueIcon from '../../../assets/images/page-blue-icon.svg'
-import PageBlueIconSmall from '../../../assets/images/page-blue-icon-small.svg'
-import PageBrownIcon from '../../../assets/images/page-brown-icon.svg'
-import PageBrownIconSmall from '../../../assets/images/page-brown-icon-small.svg'
-import PageGreenIcon from '../../../assets/images/page-green-icon.svg'
-import PageGreenIconSmall from '../../../assets/images/page-green-icon-small.svg'
-import PagePurpleIcon from '../../../assets/images/page-purple-icon.svg'
-import PagePurpleIconSmall from '../../../assets/images/page-purple-icon-small.svg'
-import PageRedIcon from '../../../assets/images/page-red-icon.svg'
-import PageRedIconSmall from '../../../assets/images/page-red-icon-small.svg'
-import PageYellowIcon from '../../../assets/images/page-yellow-icon.svg'
-import PageYellowIconSmall from '../../../assets/images/page-yellow-icon-small.svg'
 import Panel from '../Panel/Panel'
 
 const findIconByColor = (pageColor: string) => {
@@ -49,6 +49,34 @@ export interface PageCardProps {
 export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
   const { Link: UILink } = useUIContext()
 
+  // TODO refactor to use common function
+  const colors = [
+    {
+      pageColor: 'red',
+      backgroundColor: 'rgb(var(--color-main-200))',
+    },
+    {
+      pageColor: 'blue',
+      backgroundColor: 'rgb(var(--color-transport-200))',
+    },
+    {
+      pageColor: 'green',
+      backgroundColor: 'rgb(var(--color-environment-200))',
+    },
+    {
+      pageColor: 'yellow',
+      backgroundColor: 'rgb(var(--color-social-200))',
+    },
+    {
+      pageColor: 'purple',
+      backgroundColor: 'rgb(var(--color-education-200))',
+    },
+    {
+      pageColor: 'brown',
+      backgroundColor: 'rgb(var(--color-culture-200))',
+    },
+  ]
+
   const backgroundColor =
     colors.find((c) => {
       return c.pageColor === pageColor
@@ -62,14 +90,14 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           <PageIcon />
         </div>
         <div className="flex w-full items-center justify-between px-14">
-          <span className="text-default font-semibold">{title}</span>
+          <span className="text-p1-semibold">{title}</span>
           <ChevronRight />
         </div>
       </Panel>
-      <Panel className="flex min-w-[300px] flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
+      <Panel className="min-w-76 flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
         <div className="flex items-center justify-between">
           <div
-            className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-category-200"
             style={{ backgroundColor }}
           >
             <SmallPageIcon />
@@ -79,35 +107,8 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           </div>
         </div>
 
-        <span className="text-base font-medium">{title}</span>
+        <span className="text-p2-medium">{title}</span>
       </Panel>
     </UILink>
   )
 }
-
-const colors = [
-  {
-    pageColor: 'red',
-    backgroundColor: 'rgb(var(--color-red--light))',
-  },
-  {
-    pageColor: 'blue',
-    backgroundColor: 'rgb(var(--color-blue--light))',
-  },
-  {
-    pageColor: 'green',
-    backgroundColor: 'rgb(var(--color-green--light))',
-  },
-  {
-    pageColor: 'yellow',
-    backgroundColor: 'rgb(var(--color-yellow--light))',
-  },
-  {
-    pageColor: 'purple',
-    backgroundColor: 'rgb(var(--color-purple--light))',
-  },
-  {
-    pageColor: 'brown',
-    backgroundColor: 'rgb(var(--color-brown--light))',
-  },
-]

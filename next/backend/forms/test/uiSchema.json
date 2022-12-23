@@ -1,0 +1,171 @@
+{
+  "ui:submitButtonOptions": {
+    "norender": true
+  },
+  "inputFields": {
+    "firstName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "First Name",
+      "ui:options": {
+        "tooltip": "First name hint",
+        "resetIcon": true,
+        "leftIcon": "person",
+        "size": "default",
+        "spaceTop": "large"
+      }
+    },
+    "lastName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Last Name",
+      "ui:options": {
+        "tooltip": "Last name hint",
+        "resetIcon": true,
+        "leftIcon": "person",
+        "size": "default"
+      }
+    },
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "tooltip": "Phone hint",
+        "leftIcon": "call"
+      }
+    },
+    "password": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Password",
+      "ui:options": {
+        "tooltip": "Password hint",
+        "leftIcon": "lock",
+        "type": "password"
+      }
+    },
+    "psc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSC",
+      "ui:options": {
+        "tooltip": "PSC hint, only numbers",
+        "description": "Only numbers",
+        "size": "small"
+      }
+    }
+  },
+  "fileUploads": {
+    "importButtonOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "type": "button"
+      }
+    },
+    "importButtonMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    },
+    "importDragAndDropOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "importDragAndDropMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "type": "dragAndDrop"
+      }
+    }
+  },
+  "textAreas": {
+    "pros": {
+      "ui:widget": "TextArea",
+      "ui:label": false,
+      "ui:placeholder": "Write some cons please",
+      "ui:options": {
+        "description": "Here write pros",
+        "tooltip": "This is simple tooltip"
+      }
+    },
+    "cons": {
+      "ui:widget": "TextArea",
+      "ui:label": false
+    }
+  },
+  "selectFields": {
+    "school": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:placeholder": "tu skus pisat",
+      "ui:options": {
+        "dropdownDivider": true,
+        "description": "Here choose your last school",
+        "tooltip": "This tooltip will tell you what to do better when you choose this."
+      }
+    },
+    "diplomas": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:options": {
+        "selectAllOption": true
+      }
+    },
+    "years": {
+      "ui:widget": "SelectField",
+      "ui:label": false
+    }
+  },
+  "chooseOneOf": {
+    "chooseOne": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
+      }
+    }
+  },
+  "checkBoxes": {
+    "favouriteFruits": {
+      "ui:widget": "Checkboxes",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4 w-fit",
+        "variant": "boxed",
+        "checkboxOptions": [
+          {
+            "value": "orange",
+            "tooltip": "Orange tooltip"
+          },
+          {
+            "value": "apple",
+            "tooltip": "Apple tooltip"
+          }
+        ]
+      }
+    }
+  }
+}

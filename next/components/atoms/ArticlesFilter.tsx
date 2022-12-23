@@ -3,9 +3,9 @@ import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratisla
 import { useTranslation } from 'next-i18next'
 
 export interface Card {
-  title: string
-  color: string
-  category: string
+  title: string | null | undefined
+  color: string | null | undefined
+  category: string | null | undefined
 }
 
 export interface ArticlesFilterProps {
@@ -39,13 +39,13 @@ export const ArticlesFilter = ({
 
   return (
     <div>
-      <div className="text-center text-default font-semibold lg:text-lg">{t('articleCategories')}</div>
-      <HorizontalScrollWrapper className="-mx-7.5 mt-8 px-7.5 lg:mt-10">
+      <div className="text-h2 text-center">{t('articleCategories')}</div>
+      <HorizontalScrollWrapper className="-mx-8 mt-8 px-8 lg:mt-10">
         <div className="flex">
           {!categoryExists
             ? BratislavaCategories.map((tab) => (
                 <TabBarTab
-                  className="mr-8 text-sm"
+                  className="text-p1 mr-8"
                   key={tab}
                   tab={{
                     title: tab,
@@ -72,7 +72,7 @@ export const ArticlesFilter = ({
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="min-h-8 mr-3 mb-3 text-sm font-medium"
+              className="min-h-8 mr-3 mb-3 text-p2-medium"
             />
           ))}
       </div>

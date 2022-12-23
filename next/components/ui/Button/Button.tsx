@@ -1,7 +1,10 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+export type ButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   children?: React.ReactNode
   className?: string
   hoverIcon?: React.ReactNode
@@ -45,32 +48,38 @@ export const Button = ({
   ) : null
   return (
     <button
+      type="button"
       className={cx('group flex items-center', className, {
         // common styles
-        'base-button': shape !== 'none',
+        // 'base-button': shape !== 'none',
         'base-link': shape === 'none',
         'space-x-6': !!icon && spacing === 'default',
         'space-x-2': !!icon && spacing === 'small',
         // styles for buttons
-        'bg-primary text-white': shape !== 'none' && variant === 'primary',
-        'bg-primary text-white border-primary': shape !== 'none' && variant === 'primary-border',
-        'bg-secondary text-primary': shape !== 'none' && variant === 'secondary',
-        'bg-tertiary text-white': shape !== 'none' && variant === 'tertiary',
-        'bg-secondary text-font': shape !== 'none' && variant === 'secondary-dark-text',
-        'bg-transparent text-lightGray border-lightGray': shape !== 'none' && variant === 'transparent-gray',
-        'bg-tertiary text-font': shape !== 'none' && variant === 'tertiary-dark-text',
-        'bg-transparent text-default text-font hover:text-primary border-primary border-2':
+        'bg-category-600 text-white': shape !== 'none' && variant === 'primary',
+        'bg-category-600 text-white border-category-600':
+          shape !== 'none' && variant === 'primary-border',
+        'bg-category-200 text-category-600': shape !== 'none' && variant === 'secondary',
+        'bg-category-800 text-white': shape !== 'none' && variant === 'tertiary',
+        'bg-category-200 text-font': shape !== 'none' && variant === 'secondary-dark-text',
+        'bg-transparent text-gray-500 border-gray-500':
+          shape !== 'none' && variant === 'transparent-gray',
+        'bg-category-800 text-font': shape !== 'none' && variant === 'tertiary-dark-text',
+        'bg-transparent text-20 text-font hover:text-category-600 border-category-600 border-2':
           shape !== 'none' && variant === 'transparent',
 
         // transparent should be replaced with transparent-black
-        'bg-transparent text-font border-primary border-2': shape !== 'none' && variant === 'transparent-black',
-        'bg-primary-muted text-white hover:bg-primary': shape !== 'none' && variant === 'muted',
-        'bg-transparent text-font underline underline-offset-2': shape !== 'none' && variant === 'full-transparent',
-        'rounded-lg': shape === 'default',
-        'rounded-full': shape === 'circle',
+        'bg-transparent text-font border-category-600 border-2':
+          shape !== 'none' && variant === 'transparent-black',
+        'bg-category-600 text-white hover:bg-category-600': shape !== 'none' && variant === 'muted',
+        'bg-transparent text-font underline underline-offset-2':
+          shape !== 'none' && variant === 'full-transparent',
+        'rounded-lg justify-center': shape === 'default',
+        'rounded-full justify-center items-center': shape === 'circle',
         // styles for links
-        'text-primary': shape === 'none' && (variant === 'primary' || variant === 'transparent'),
-        'text-secondary': shape === 'none' && variant === 'secondary',
+        'text-category-600':
+          shape === 'none' && (variant === 'primary' || variant === 'transparent'),
+        'text-category-200': shape === 'none' && variant === 'secondary',
       })}
       {...props}
     >

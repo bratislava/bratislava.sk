@@ -4,66 +4,146 @@
   /*
     These variables are used in different pages and component to override
     colors of different things. They are defined as RGB values on purpose
-    so they can be used in `rgb(var(--color-red))` style or with transparency
-    as `rgba(var(--color-red), 0.25)`.
+    so they can be used in `rgb(var(--color-main-600))` style or with transparency
+    as `rgba(var(--color-main-600), 0.25)`.
   */
-  --color-red: 228, 96, 84; /* #E46054 */
-  --color-red--light: 248, 215, 212; /* #F8D7D4 */
-  --color-red--dark: 147, 61, 53; /* #933D35 */
-  --color-blue: 15, 109, 149; /* #0F6D95 */
-  --color-blue--light: 208, 236, 248; /* #D0ECF8 */
-  --color-blue--dark: 0, 95, 136;
-  --color-green: 35, 124, 54; /* #237C36 */
-  --color-green--light: 196, 239, 206; /* #C4EFCE */
-  --color-green--dark: 0, 104, 23;
-  --color-yellow: 241, 184, 48; /* #F1B830 */
-  --color-yellow--light: 255, 231, 129; /* #FFE781 */
-  --color-yellow--dark: 241, 184, 48; /* #E3A612 */
-  --color-purple: 81, 88, 216; /* #5158D8 */
-  --color-purple--light: 199, 202, 255; /* #C7CAFF */
-  --color-purple--dark: 67, 73, 170;
-  --color-brown: 224, 125, 33; /* #E07D21 */
-  --color-brown--light: 255, 203, 155; /* #FFCB9B */
-  --color-brown--dark: 255, 176, 103;
+
+  --color-main-800: 147, 37, 27; /*#93251B*/
+  --color-main-700: 216, 55, 40; /*#D83728*/
+  --color-main-600: 224, 95, 83; /*#E05F53*/
+  --color-main-500: 238, 147, 139; /*#EE938B*/
+  --color-main-400: 239, 175, 169; /*#EFAFA9*/
+  --color-main-300: 243, 195, 191; /*#F3C3BF*/
+  --color-main-200: 247, 215, 212; /*#F7D7D4*/
+  --color-main-100: 251, 235, 234; /*#FBEBEA*/
+
+  --color-transport-800: 0, 76, 109; /*#004c6d*/
+  --color-transport-700: 0, 95, 136; /*#005f88*/
+  --color-transport-600: 51, 127, 160; /*#337fa0*/
+  --color-transport-500: 102, 159, 184; /*#669fb8*/
+  --color-transport-400: 153, 191, 207; /*#99bfcf*/
+  --color-transport-300: 178, 207, 219; /*#b2cfdb*/
+  --color-transport-200: 204, 223, 231; /*#ccdfe7*/
+  --color-transport-100: 229, 239, 243; /*#e5eff3*/
+
+  --color-environment-800: 0, 83, 18; /*#005312*/
+  --color-environment-700: 0, 104, 23; /*#006817*/
+  --color-environment-600: 51, 134, 69; /*#338645*/
+  --color-environment-500: 102, 164, 116; /*#66a474*/
+  --color-environment-400: 153, 195, 162; /*#99c3a2*/
+  --color-environment-300: 178, 210, 185; /*#b2d2b9*/
+  --color-environment-200: 204, 225, 209; /*#cce1d1*/
+  --color-environment-100: 229, 240, 232; /*#e5f0e8*/
+
+  --color-social-800: 193, 147, 38; /*#c19326*/
+  --color-social-700: 241, 184, 48; /*#f1b830*/
+  --color-social-600: 244, 198, 89; /*#f4c659*/
+  --color-social-500: 247, 212, 131; /*#f7d483*/
+  --color-social-400: 249, 227, 172; /*#f9e3ac*/
+  --color-social-300: 251, 234, 193; /*#fbeac1*/
+  --color-social-200: 252, 241, 214; /*#fcf1d6*/
+  --color-social-100: 254, 248, 234; /*#fef8ea*/
+
+  --color-education-800: 54, 58, 136; /*#363a88*/
+  --color-education-700: 67, 73, 170; /*#4349aa*/
+  --color-education-600: 105, 109, 187; /*#696dbb*/
+  --color-education-500: 142, 146, 204; /*#8e92cc*/
+  --color-education-400: 180, 182, 221; /*#b4b6dd*/
+  --color-education-300: 199, 200, 229; /*#c7c8e5*/
+  --color-education-200: 217, 219, 238; /*#d9dbee*/
+  --color-education-100: 236, 237, 246; /*#ecedf6*/
+
+  --color-culture-800: 189, 114, 46; /*#bd722e*/
+  --color-culture-700: 236, 143, 57; /*#ec8f39*/
+  --color-culture-600: 240, 165, 97; /*#f0a561*/
+  --color-culture-500: 244, 188, 136; /*#f4bc88*/
+  --color-culture-400: 247, 210, 176; /*#f7d2b0*/
+  --color-culture-300: 249, 221, 196; /*#f9ddc4*/
+  --color-culture-200: 251, 233, 215; /*#fbe9d7*/
+  --color-culture-100: 253, 244, 235; /*#fdf4eb*/
+
+  --color-gray-800: 31, 31, 31; /*#1F1F1F*/
+  --color-gray-700: 51, 51, 51; /*#333333*/
+  --color-gray-600: 92, 92, 92; /*#5C5C5C*/
+  --color-gray-500: 133, 133, 133; /*#858585*/
+  --color-gray-400: 173, 173, 173; /*#ADADAD*/
+  --color-gray-300: 194, 194, 194; /*#C2C2C2*/
+  --color-gray-200: 214, 214, 214; /*#D6D6D6*/
+  --color-gray-100: 235, 235, 235; /*#EBEBEB*/
+  --color-gray-50: 245, 245, 245; /*#F5F5F5*/
+  --color-gray-0: 255, 255, 255; /*#fff*/
+
+  --color-success-800: 1, 90, 41; /*#015A29*/
+  --color-success-700: 1, 132, 61; /*#01843D*/
+  --color-success-600: 52, 157, 100; /*#349D64*/
+  --color-success-500: 103, 181, 139; /*#67B58B*/
+  --color-success-400: 153, 206, 177; /*#99CEB1*/
+  --color-success-300: 179, 218, 197; /*#B3DAC5*/
+  --color-success-200: 204, 230, 216; /*#CCE6D8*/
+  --color-success-100: 230, 243, 236; /*#E6F3EC*/
+  --color-success-50: 242, 249, 245; /*#F2F9F5*/
+
+  --color-negative-800: 141, 0, 0; /*#8D0000*/
+  --color-negative-700: 208, 0, 0; /*#D00000*/
+  --color-negative-600: 218, 51, 51; /*#DA3333*/
+  --color-negative-500: 227, 102, 102; /*#E36666*/
+  --color-negative-400: 236, 153, 153; /*#EC9999*/
+  --color-negative-300: 241, 178, 178; /*#F1B2B2*/
+  --color-negative-200: 246, 204, 204; /*#F6CCCC*/
+  --color-negative-100: 250, 229, 229; /*#FAE5E5*/
+  --color-negative-50: 253, 242, 242; /*#FDF2F2*/
+
+  --color-warning-800: 152, 84, 3; /*#985403*/
+  --color-warning-700: 224, 123, 4; /*#E07B04*/
+  --color-warning-600: 230, 149, 54; /*#E69536*/
+  --color-warning-500: 236, 176, 104; /*#ECB068*/
+  --color-warning-400: 243, 202, 155; /*#F3CA9B*/
+  --color-warning-300: 246, 215, 180; /*#F6D7B4*/
+  --color-warning-200: 249, 229, 205; /*#F9E5CD*/
+  --color-warning-100: 252, 242, 230; /*#FCF2E6*/
+  --color-warning-50: 253, 248, 242; /*#FDF8F2*/
 
   /* These variables are overidden in pages to get custom colors for each category */
-  --color-primary: var(--color-red);
-  --color-secondary: var(--color-red--light);
-  --color-tertiary: var(--color-red--dark);
+
+  --color-category-800: var(--color-main-800);
+  --color-category-700: var(--color-main-700);
+  --color-category-600: var(--color-main-600);
+  --color-category-500: var(--color-main-500);
+  --color-category-400: var(--color-main-400);
+  --color-category-300: var(--color-main-300);
+  --color-category-200: var(--color-main-200);
+  --color-category-100: var(--color-main-100);
 
   /* default tailwind colors */
-  --primary-color: rgb(var(--color-primary));
-  --primary-color--transparent: rgb(var(--color-primary));
-  --secondary-color: rgb(var(--color-secondary));
-  --secondary-color--transparent: rgba(var(--color-secondary), 0);
-  --secondary-color--semi-transparent: rgba(var(--color-secondary), 0.6);
-  --tertiary-color: rgb(var(--color-tertiary));
-  --dark-gray-color: #333333bf;
-  --universal-gray-100: #EBEBEB;
-  --universal-gray-200: #c4c4c4;
-  --universal-gray-400: #ADADAD;
-  --universal-gray-500: #9f9f9f;
-  --universal-gray-600: #5C5C5C;
-  --universal-red-700: #333333;
-  --universal-gray-800: #585757;
-  --universal-black: #2f2f2f;
-  --input-nav-background-color: #fff;
-  --off-white-color: #fafafa;
-  --background-color: #f5f5f5;
-  --input-stroke-color: rgba(var(--color-primary), 0.5);
-  --universal-red-800: #873c35;
-  --universal-red-500: #d71920;
-  --universal-red-300: #f23005;
+
+  --category-color-800: rgb(var(--color-category-800));
+  --category-color-700: rgb(var(--color-category-700));
+  --category-color-600: rgb(var(--color-category-600));
+  --category-color-500: rgb(var(--color-category-500));
+  --category-color-400: rgb(var(--color-category-400));
+  --category-color-300: rgb(var(--color-category-300));
+  --category-color-200: rgb(var(--color-category-200));
+  --category-color-100: rgb(var(--color-category-100));
+
+  --category-color-800--transparent: rgba(var(--color-category-800), 0);
+  --category-color-700--transparent: rgba(var(--color-category-700), 0);
+  --category-color-600--transparent: rgba(var(--color-category-600), 0);
+  --category-color-500--transparent: rgba(var(--color-category-500), 0);
+  --category-color-400--transparent: rgba(var(--color-category-400), 0);
+  --category-color-300--transparent: rgba(var(--color-category-300), 0);
+  --category-color-200--transparent: rgba(var(--color-category-200), 0);
+  --category-color-100--transparent: rgba(var(--color-category-100), 0);
+
+  --category-color-200--semi-transparent: rgba(var(--color-category-200), 0.6);
+
   --font-color: #333;
-  --light-gray-color: rgba(51, 51, 51, 0.5);
-  --superlight-red-color: rgba(var(--color-red--light), 0.35);
-  --error-color: #dc2626;
-  --purple-color: #704b9d; /* TODO var */
+  --error-color: #d00000;
+  --background-color: rgb(var(--color-gray-50));
 }
 
 body {
   -webkit-font-smoothing: antialiased;
-  color: #333;
+  color: var(--font-color);
 }
 
 .font-inter {
@@ -72,7 +152,7 @@ body {
 
 .base-input {
   @apply appearance-none box-border inline-block border-3 px-6 py-0 text-font rounded-10 font-medium h-14;
-  @apply bg-input-nav-bg border-input-stroke focus:outline-none focus:border-primary hover:border-primary;
+  @apply bg-white border-white focus:outline-none focus:border-category-600 hover:border-category-600;
 }
 
 .base-input--with-error {
@@ -87,5 +167,16 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--input-nav-background-color) inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* Remove arrows from input type='number' */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-group label.control-label {
+  display: none;
 }

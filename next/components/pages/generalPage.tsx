@@ -18,7 +18,8 @@ import {
   SectionContainer,
   SubpageList,
 } from '@bratislava/ui-bratislava'
-import { pageStyle, parsePageLink } from '@utils/page'
+import { pagePath, pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
+// import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Head from 'next/head'
@@ -28,6 +29,8 @@ import * as React from 'react'
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
+
+// import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
@@ -58,14 +61,29 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
-    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts'
+    (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts',
   )
+  const crumbs: { title: string; url: string | null }[] = []
+  if (page?.parentPage.data) {
+    crumbs.push({
+      title: page?.parentPage.data?.attributes?.title ?? '',
+      url: pagePath({
+        locale: page?.parentPage?.data?.attributes?.locale,
+        slug: page?.parentPage?.data?.attributes?.slug,
+      }),
+    })
+  } else if (page?.pageCategory) {
+    crumbs.push({ title: page?.pageCategory?.data?.attributes?.title ?? '', url: null })
+  }
+
+  crumbs.push({ title: page.title ?? '', url: null })
+
   return (
     <BasePageLayout
       footer={footer}
       menuItems={menuItems}
       activeMenuItem={page?.pageCategory?.data?.id}
-      pageColor={page?.pageColor}
+      pageColor={transformColorToCategory(page?.pageColor)}
     >
       {page?.pageCategory?.data?.attributes?.color && (
         <style
@@ -76,9 +94,9 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       )}
       {/* Header */}
       <PageHeader
-        className={cx('bg-cover', { 'mb-30 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
-        color="var(--secondary-color)"
-        transparentColor="var(--secondary-color--transparent)"
+        className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
+        color="var(--category-color-200)"
+        transparentColor="var(--category-color-200--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
       >
         {/* meta discription */}
@@ -90,18 +108,18 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
         )}
         {/* Header - Breadcrumbs */}
         <SectionContainer>
-          <div className="relative lg:min-h-[220px]">
+          <div className="lg:min-h-56 relative">
             <div className="absolute top-4 lg:top-6">
-              <PageBreadcrumbs parentPage={page?.parentPage} pageCategory={page?.pageCategory} title={page.title} />
+              <PageBreadcrumbs crumbs={crumbs} />
             </div>
-            <h1 className="mb-10 max-w-[730px] whitespace-pre-wrap pt-20 text-md font-bold md:text-2xl lg:pt-30">
+            <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
             </h1>
 
             {/* Header - PageLink as Button */}
             {page?.pageButtonContent && page?.pageButtonContent.title && (
               <Button
-                className="base-button my-10 space-x-6 rounded-lg py-3 px-6 text-sm lg:text-default"
+                className="base-button text-p1 my-10 space-x-6 rounded-lg py-3 px-6"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -129,7 +147,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
                   return (
                     <div
                       key={index}
-                      className="-bottom-45 absolute -inset-x-7.5 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-87 lg:w-full"
+                      className="-bottom-45 absolute -inset-x-8 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-88 lg:w-full"
                     >
                       <FeaturedBlogs blogs={blogs} />
                     </div>
@@ -138,7 +156,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
             })}
 
             {/* Padding bottom from waves for header sections and button */}
-            {hasFeaturedBlogs && <div className="pb-10 lg:pb-25" />}
+            {hasFeaturedBlogs && <div className="pb-10 lg:pb-24" />}
             {/* {(page?.pageButtonContent?.title ||
               page?.pageButtonContent?.url ||
               page?.pageHeaderSections) && <div className="pb-14" />} */}
@@ -147,13 +165,15 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      {page?.sections && <Sections sections={page.sections} slug={page.slug} locale={page.locale} />}
+      {page?.sections && (
+        <Sections sections={page.sections} slug={page.slug} locale={page.locale} />
+      )}
 
       {/* Page - Related Content */}
       {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}
       {/* {page?.relatedBlogPosts?.length > 0 && (
         <SectionContainer className="pt-14 md:pt-18">
-          <h2 className="flex justify-center font-semibold text-lg">{t('relatedContentTitle')}</h2>
+          <h2 className="flex justify-center text-h3">{t('relatedContentTitle')}</h2>
           <RelatedBlogPosts page={page} />
         </SectionContainer>
       )} */}

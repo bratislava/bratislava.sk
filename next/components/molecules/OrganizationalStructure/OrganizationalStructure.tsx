@@ -16,13 +16,15 @@ export const OrganizationalStructure = ({ title, dividerStyle }: AdvancedAccordi
   const { t } = useTranslation('common')
   return data ? (
     <div className="flex flex-col">
-      <div className="pb-4 text-default font-semibold lg:text-lg">{title}</div>
+      <div className="text-h3 pb-4">{title}</div>
       {data.groups.map((group, index) => (
         <div key={group.id}>
           {index > 0 && (
             <Divider
               className="py-6 lg:py-10"
-              dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
+              dividerStyle={
+                dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'
+              }
             />
           )}
           <OrganizationalStructureTopLevelAccordion group={group} />

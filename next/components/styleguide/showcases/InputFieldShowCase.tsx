@@ -1,7 +1,6 @@
-import InputField from 'components/forms/InputField'
+import InputField from 'components/forms/widget-components/InputField/InputField'
 import React from 'react'
 
-import PersonIcon from '../../../assets/images/forms/person.svg'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -17,7 +16,13 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         <InputField label="Label" placeholder="Placeholder" errorMessage="Error message" disabled />
       </Stack>
       <Stack direction="column">
-        <InputField label="Label" placeholder="Placeholder" description="Help text" tooltip="InputField" required />
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          description="Help text"
+          tooltip="InputField"
+          required
+        />
         <InputField
           label="Label"
           placeholder="Placeholder"
@@ -50,7 +55,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon="mail"
           resetIcon
         />
         <InputField
@@ -59,15 +64,16 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           value="Value"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon="call"
           resetIcon
         />
         <InputField
           label="Label"
+          type="password"
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon="lock"
           resetIcon
           errorMessage="Error message"
         />
@@ -76,7 +82,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon="person"
           resetIcon
           errorMessage="Error message"
           disabled

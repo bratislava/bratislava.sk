@@ -1,30 +1,25 @@
-// @ts-strict-ignore
-import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
+import { ChevronRight } from '@assets/images'
+import { ComponentSectionsVideos } from '@bratislava/strapi-sdk-homepage'
+import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
+import { shouldShowButtonContent, VideoAttribute } from '@bratislava/ui-bratislava/Videos/VideosService'
 import cx from 'classnames'
 import React from 'react'
 
-interface IVideo {
-  title?: string
-  speaker?: string
-  url?: string
-  size?: 'default' | 'small'
-}
-
-export interface VideosProps {
-  id?: string
+export interface VideosProps extends ComponentSectionsVideos {
+  id: string
   className?: string
   title?: string
   subtitle?: string
-  videos?: IVideo[]
+  videos?: VideoAttribute[] | null
 }
 
-const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
+const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
   const [embedUrl, setEmbedUrl] = React.useState('')
   const [isLoaded, setLoaded] = React.useState(false)
 
   React.useEffect(() => {
     const parseYoutubeUrl = async () => {
-      if (url.includes('fb.watch')) {
+      if (url?.includes('fb.watch')) {
         const fembedUrl = `https://www.facebook.com/plugins/video.php?href=${url}`
         setEmbedUrl(fembedUrl)
       } else {
@@ -46,9 +41,9 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
   }, [url])
 
   return (
-    <div className="w-70 xl:w-87">
+    <div className="w-66 xl:w-88">
       <iframe
-        className={cx('rounded-5 shadow-xs', {
+        className={cx('rounded-5 shadow-sm', {
           'animate-pulse bg-gray-300': !isLoaded,
         })}
         title={title}
@@ -59,19 +54,23 @@ const Video = ({ title, speaker, url, size = 'default' }: IVideo) => {
         onLoad={() => setLoaded(true)}
       />
       <a href={url} target="_blank" rel="noreferrer">
-        <h5 className="mt-8 cursor-pointer font-semibold hover:underline md:text-default">{title}</h5>
+        <h5 className="md:text-h5 mt-8 cursor-pointer hover:underline">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
     </div>
   )
 }
 
-export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) => {
+export const Videos = ({ id, className, title, subtitle, videos, buttonContent }: VideosProps) => {
+  if (!videos) {
+    return null
+  }
+
   const videosCount = 3
   return (
     <div key={id} className={className}>
-      <h4 className="text-default font-semibold md:text-md">{title}</h4>
-      <p className="mt-5 mb-10 md:text-default">{subtitle}</p>
+      <h4 className="text-h4">{title}</h4>
+      <p className="md:text-p1 mt-5 mb-10">{subtitle}</p>
 
       {/* Mobile */}
       <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
@@ -81,22 +80,16 @@ export const Videos = ({ id, className, title, subtitle, videos }: VideosProps) 
       </HorizontalScrollWrapper>
 
       {/* Desktop */}
-      <div className="hidden gap-7.5 lg:grid lg:grid-cols-3">
+      <div className="hidden gap-8 lg:grid lg:grid-cols-3">
         {videos.slice(0, videosCount).map((video) => (
           <Video key={video.url} {...video} />
         ))}
-      </div>
-      {/* {videosCount <= videos.length && (
-        <div className="hidden lg:flex mt-14 justify-center">
-          <Button
-            className="text-default py-[13px] px-6 font-medium"
-            icon={<ChevronRight />}
-            onClick={() => setVideosCount((prev) => prev + 3)}
-          >
+        {shouldShowButtonContent(videos, buttonContent) && (
+          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-20 py-2">
             {buttonContent}
           </Button>
-        </div>
-      )} */}
+        )}
+      </div>
     </div>
   )
 }

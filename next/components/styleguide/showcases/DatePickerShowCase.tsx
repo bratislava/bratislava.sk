@@ -1,4 +1,4 @@
-import DatePicker from '../../forms/DatePicker/DatePicker'
+import DatePicker from '../../forms/widget-components/DateTimePicker/DatePicker'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -14,7 +14,13 @@ const DatePickerShowCase = ({}: DatePickerShowCaseProps) => {
       </Stack>
       <Stack direction="column">
         <DatePicker label="Label" tooltip="Date Picker" description="Help text" required />
-        <DatePicker label="Label" errorMessage="Error message" tooltip="Date Picker" description="Help text" required />
+        <DatePicker
+          label="Label"
+          errorMessage="Error message"
+          tooltip="Date Picker"
+          description="Help text"
+          required
+        />
         <DatePicker
           label="Label"
           errorMessage="Error message"

@@ -11,19 +11,25 @@ export interface FileCardProps {
   downloadLink?: string
 }
 
-export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloadLink }: FileCardProps) => {
+export const FileCard = ({
+  className,
+  fileTitle,
+  uploadDate,
+  fileDetail,
+  downloadLink,
+}: FileCardProps) => {
   return (
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
       <Panel className={cx(className, 'flex flex-row md:flex-col px-5 justify-between')} hoverable>
-        <div className="mt-5 hidden justify-end text-primary md:flex">
+        <div className="mt-5 hidden justify-end text-category-600 md:flex">
           <Download className="text-red-brick" />
         </div>
 
-        <div className="my-5 text-sm font-normal md:mt-0 md:mb-5">
+        <div className="my-5 text-p2 md:mt-0 md:mb-5">
           {fileTitle}
           <div
             className={cx(
-              'flex flex-col mt-4 text-xs opacity-50 space-y-1',
+              'flex flex-col mt-4 text-p3 opacity-50 space-y-1',
               'md:flex-row md:justify-between md:space-y-0'
             )}
           >
@@ -32,7 +38,7 @@ export const FileCard = ({ className, fileTitle, uploadDate, fileDetail, downloa
           </div>
         </div>
 
-        <div className="mb-5 flex items-end text-primary md:hidden">
+        <div className="mb-5 flex items-end text-category-600 md:hidden">
           <Download className="text-red-brick" />
         </div>
       </Panel>

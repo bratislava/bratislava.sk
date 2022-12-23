@@ -18,7 +18,7 @@ interface PaginationProps {
 export const ThreeDots = () => {
   return (
     <div className="ml-2 w-7 sm:ml-3 sm:w-8">
-      <span className="text-default font-semibold text-offWhite">&hellip;</span>
+      <span className="text-20-semibold text-gray-500">&hellip;</span>
     </div>
   )
 }
@@ -94,7 +94,7 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
     <div className="relative flex h-12 w-full">
       <div className="m-auto flex w-auto items-center justify-between">
         {currentPage !== 1 ? (
-          <div className="group mr-3 cursor-pointer text-primary">
+          <div className="group mr-3 cursor-pointer text-category-600">
             <span className="group-hover:hidden">
               <ChevronLeft />
             </span>
@@ -107,14 +107,14 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
         <Button
           value={1}
           variant={getVariant(1)}
-          // className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full  hover:border-2 hover:border-primary"
+          // className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full  hover:border-2 hover:border-category-600"
           className={cx(
-            'mx-2 md:mx-3 h-10 w-10 md:h-12 md:w-12 rounded-full border-2 hover:border-primary shadow-none',
-            { 'bg-primary text-white border-primary': currentPage === 1 }
+            'mx-2 md:mx-3 h-10 w-10 md:h-12 md:w-12 rounded-full border-2 hover:border-category-600 shadow-none',
+            { 'bg-category-600 text-white border-category-600': currentPage === 1 }
           )}
           onClick={() => handleSelectPage(1)}
         >
-          <div className="m-auto block text-sm font-semibold leading-5 sm:text-default">{1}</div>
+          <div className="text-p2-semibold sm:text-p1-semibold m-auto block leading-5">{1}</div>
         </Button>
         {items[0].page - 1 >= 2 ? <ThreeDots /> : null}
         {items.map((item, index) =>
@@ -123,12 +123,10 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
               key={index}
               value={item.page.valueOf()}
               variant={getVariant(item.page)}
-              className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-primary md:mx-3 md:h-12 md:w-12"
+              className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12"
               onClick={() => handleSelectPage(item.page)}
             >
-              <div className="text--gray-universal-200 m-auto block text-sm font-semibold leading-5 sm:text-default">
-                {item.page}
-              </div>
+              <div className="text-font/50 text-p1-semibold m-auto block leading-5">{item.page}</div>
             </Button>
           ) : null
         )}
@@ -137,14 +135,14 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
           <Button
             value={numberOfPages}
             variant={getVariant(numberOfPages)}
-            className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-primary md:mx-3 md:h-12 md:w-12"
+            className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12"
             onClick={() => handleSelectPage(numberOfPages)}
           >
-            <div className="m-auto block text-sm font-semibold leading-5 sm:text-default">{numberOfPages}</div>
+            <div className="text-p2-semibold m-auto block leading-5">{numberOfPages}</div>
           </Button>
         ) : null}
         {currentPage !== numberOfPages ? (
-          <div className="group ml-3 cursor-pointer text-primary">
+          <div className="group ml-3 cursor-pointer text-category-600">
             <span className="group-hover:hidden">
               <ChevronRight />
             </span>

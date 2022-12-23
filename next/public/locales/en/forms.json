@@ -1,0 +1,10 @@
+{
+  "submit": "Submit",
+  "success": "Success",
+  "errors": {
+    "API_ERROR": "There was an error making the request - please try again later.",
+    "unknown": "An unknown error occurred - please try again later."
+  },
+  "selectAll": "Select all",
+  "deselectAll": "Deselect all"
+}

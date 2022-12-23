@@ -24,16 +24,16 @@ export const NumberSwitcher = ({ className, value, hasError, id, onChange }: IPr
         onClick={() => {
           onChange(value - 1)
         }}
-        className="cursor-pointer py-2 text-primary"
+        className="cursor-pointer py-2 text-category-600"
       >
         <MinusIcon />
       </button>
-      <span className="text-default font-medium">{value}</span>
+      <span className="text-p1-medium">{value}</span>
       <button
         onClick={() => {
           onChange(value + 1)
         }}
-        className="cursor-pointer py-2 text-primary"
+        className="cursor-pointer py-2 text-category-600"
       >
         <PlusIcon />
       </button>

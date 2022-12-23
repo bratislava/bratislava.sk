@@ -10,16 +10,16 @@ type ICheckBoxProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInpu
 }
 
 export const CheckBox = ({ className, id, content, variant = 'default', ...rest }: ICheckBoxProps) => (
-  <label htmlFor={id} className={cx('cursor-pointer inline-flex gap-6 font-medium text-sm', className)}>
+  <label htmlFor={id} className={cx('cursor-pointer inline-flex gap-6 text-20-medium', className)}>
     <input type="checkbox" id={id} className="hidden" {...rest} />
     <div
       className={cx(
-        'border-primary border-2 text-white flex flex-0 items-center justify-center box-border overflow-hidden',
+        'border-category-600 border-2 text-white flex flex-0 items-center justify-center box-border overflow-hidden',
         {
           'rounded-5 w-8 h-8': variant === 'default',
           'rounded-full w-6 h-6': variant === 'circle',
-          'bg-primary': rest.checked,
-          'bg-input-nav-bg': !rest.checked,
+          'bg-category-600': rest.checked,
+          'bg-white': !rest.checked,
         },
         className
       )}

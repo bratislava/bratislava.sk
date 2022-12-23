@@ -57,6 +57,7 @@ Sections
     - [3.14 Text With Image](#314-text-with-image)
     - [3.15 Videos](#315-videos)
     - [3.16 Waves](#316-waves)
+    - [3.17 Gallery](#317-Gallery)
 
 ## 1. Accordion-Items
 
@@ -252,4 +253,12 @@ Name of React component: `Waves`
 Location: `libs/ui/bratislava/src/components/Waves/Waves.tsx`
 Screenshot:
 
+![](./assets/waves.png)
+
+### 3.17 Gallery
+
+Name of React component: `Gallery`
+Location: `libs/ui/bratislava/src/components/Waves/Waves.tsx`
+Screenshot:
+// todo
 ![](./assets/waves.png)
