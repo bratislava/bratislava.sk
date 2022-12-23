@@ -67,7 +67,7 @@ const Radio = ({
 
   return (
     <div>
-      {tooltip && (
+      {tooltip && variant !== 'card' && (
         <div className="relative">
           <Tooltip
             className="w-max"
@@ -88,7 +88,19 @@ const Radio = ({
             <div className="text-p-md text-gray-700 font-normal not-italic break-all">
               {rest.children}
               {tooltip && (
-                <div className="mt-8 flex flex-row">
+                <div className="mt-8 relative flex flex-row">
+                  {tooltip && (
+                    <Tooltip
+                      className="w-max"
+                      text={tooltip}
+                      visible={isTooltipOpened}
+                      arrow="bottom"
+                      alignArrow="left"
+                      bottom={30}
+                      left={-15}
+                      absolute
+                    />
+                  )}
                   <HelpIcon
                     className="cursor-pointer"
                     onMouseOver={() => setIsTooltipOpened(true)}
