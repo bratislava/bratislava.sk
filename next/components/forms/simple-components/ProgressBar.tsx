@@ -1,5 +1,6 @@
 import cx from 'classnames'
 import { useProgressBar } from 'react-aria'
+import { v4 as uuidv4 } from 'uuid'
 
 type ProgressBarBase = {
   type?: 'success' | 'default'
@@ -22,7 +23,7 @@ const ProgressBar = ({
     value,
     minValue,
     maxValue,
-    label,
+    label: label ?? uuidv4(),
   })
 
   const percentage = (value - minValue) / (maxValue - minValue)
