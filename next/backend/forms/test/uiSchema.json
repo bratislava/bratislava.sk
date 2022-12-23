@@ -139,7 +139,17 @@
       "ui:label": false,
       "ui:options": {
         "className": "flex flex-col gap-4",
-        "variant": "boxed"
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
       }
     }
   },
@@ -150,7 +160,17 @@
       "ui:label": false,
       "ui:options": {
         "className": "flex flex-col gap-4 w-fit",
-        "variant": "boxed"
+        "variant": "boxed",
+        "checkboxOptions": [
+          {
+            "value": "orange",
+            "tooltip": "Orange tooltip"
+          },
+          {
+            "value": "apple",
+            "tooltip": "Apple tooltip"
+          }
+        ]
       }
     }
   }
