@@ -16,6 +16,8 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import ChevronLeftIcon from '../../assets/images/forms/chevron-left.svg'
+import ChevronRightIcon from '../../assets/images/forms/chevron-right.svg'
 import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
@@ -107,8 +109,7 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <div>
-              <FinalStep state={form.state} slug={formSlug} />
-              <Button onPress={() => form.previous()} text="Previous" />
+              <FinalStep state={form.state} slug={formSlug} formPrevious={() => form.previous()} />
             </div>
           ) : (
             <div>
@@ -129,12 +130,21 @@ const FormTestPage = ({
                 }}
                 onError={(e) => console.log('errors', e)}
               />
-              {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
-              <Button onPress={() => form.next()} text="Next" />
-              <Button
-                onPress={() => form.setStepIndex(form.stepIndex + 1)}
-                text="[DEBUG] Go to next step"
-              />
+              <div className="items-center flex justify-between">
+                {form.stepIndex !== 0 && (
+                  <Button
+                    variant="plain-black"
+                    startIcon={<ChevronLeftIcon />}
+                    onPress={() => form.previous()}
+                    text="Späť"
+                  />
+                )}
+                <Button
+                  endIcon={<ChevronRightIcon />}
+                  onPress={() => form.next()}
+                  text="Pokračovať"
+                />
+              </div>
             </div>
           )}
         </SectionContainer>
