@@ -65,9 +65,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         description,
         onChange(inputValue) {
           if (onChange) {
-            onChange(inputValue)
+            onChange(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           } else {
-            setValueState(inputValue)
+            setValueState(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           }
         },
         isRequired: required,
@@ -102,6 +102,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       {
         // conditions
         'pl-[52px]': leftIcon,
+        'pr-[52px]': resetIcon,
         // hover
         'hover:border-gray-400': !disabled,
 

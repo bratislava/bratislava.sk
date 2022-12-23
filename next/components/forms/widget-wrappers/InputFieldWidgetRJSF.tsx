@@ -1,18 +1,16 @@
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import InputField from 'components/forms/widget-components/InputField/InputField'
 import cx from 'classnames'
+import { WidgetOptions } from 'components/forms/types/WidgetOptions'
+import InputField from 'components/forms/widget-components/InputField/InputField'
+import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
 type InputFieldRJSFOptions = {
-  tooltip?: string
   type?: 'text' | 'password'
-  description?: string
-  className?: string
   resetIcon?: boolean
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
-  explicitOptional?: boolean
   size?: 'large' | 'default' | 'small'
-}
+} & WidgetOptions
 
 interface InputFieldWidgetRJSFProps extends WidgetProps {
   label: string
@@ -36,27 +34,31 @@ const InputFieldWidgetRJSF = ({
   disabled,
   onChange,
 }: InputFieldWidgetRJSFProps) => {
-  const { description, tooltip, className, resetIcon, leftIcon, explicitOptional, type, size } =
-    options
+  const {
+    description,
+    tooltip,
+    className,
+    resetIcon,
+    leftIcon,
+    explicitOptional,
+    type,
+    size = 'default',
+    spaceBottom = 'default',
+    spaceTop = 'none',
+  } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
-  const sizeHandler = (): string => {
-    switch (size) {
-      case 'large':
-        return 'w-full'
-      case 'default':
-        return 'max-w-[388px]'
-      case 'small':
-        return 'max-w-[200px]'
-
-      default:
-        return 'w-full'
-    }
-  }
-
   return (
-    <div className={cx('', sizeHandler())}>
+    <WidgetWrapper
+      className={cx({
+        'w-full': size === 'large',
+        'max-w-[388px]': size === 'default',
+        'max-w-[200px]': size === 'small',
+      })}
+      spaceBottom={spaceBottom}
+      spaceTop={spaceTop}
+    >
       <InputField
         label={label}
         type={type}
@@ -73,7 +75,7 @@ const InputFieldWidgetRJSF = ({
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
       />
-    </div>
+    </WidgetWrapper>
   )
 }
 export default InputFieldWidgetRJSF

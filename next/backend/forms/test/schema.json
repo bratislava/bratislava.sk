@@ -138,22 +138,20 @@
       "properties": {
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
+          "type": "object",
+          "required": ["chooseOne"],
           "properties": {
             "chooseOne": {
               "type": "string",
-              "default": "multiply",
               "title": "Some random choose",
               "oneOf": [
                 {
                   "const": "screen",
-                  "title": "Screen",
-                  "disabled": true,
-                  "tooltip": "This is some tooltip1"
+                  "title": "Screen"
                 },
                 {
                   "const": "multiply",
-                  "title": "Multiply",
-                  "error": true
+                  "title": "Multiply"
                 },
                 {
                   "const": "overlay",
