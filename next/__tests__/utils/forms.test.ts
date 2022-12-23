@@ -48,6 +48,7 @@ describe('forms utils', () => {
       properties: {
         email: {
           type: 'string',
+          example: 'dev@bratislava.sk',
         },
         phone: {
           type: 'string',

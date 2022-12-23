@@ -180,10 +180,6 @@ export const validateDataWithJsonSchema = async (data: any, schema: any) => {
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
 
-  // keyword used for example value in JSON schema
-  ajv.addKeyword('example')
-  ajv.addKeyword('enumNames')
-
   const validate = ajv.compile(schema)
 
   try {

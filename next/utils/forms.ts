@@ -1,7 +1,7 @@
 import Form from '@rjsf/core'
 import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
 import { validateKeyword } from '@utils/api'
-import { FuncKeywordDefinition, KeywordDefinition } from 'ajv'
+import { FuncKeywordDefinition } from 'ajv'
 import { JSONSchema7Definition } from 'json-schema'
 import { get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
@@ -65,6 +65,9 @@ export const ajvKeywords: FuncKeywordDefinition[] = [
     type: 'string',
     validate: exampleAsyncValidation,
   },
+  {
+    keyword: 'example',
+  },
 ]
 
 const validateAsyncProperties = async (
@@ -75,11 +78,10 @@ const validateAsyncProperties = async (
   const errors = {}
 
   await Promise.all(
-    ajvKeywords.map(async (k: KeywordDefinition) => {
+    ajvKeywords.map(async (k: FuncKeywordDefinition) => {
       const keyword: string = k.keyword as string
-      if (schema[keyword]) {
-        const value = get(data, path)
-        const isValid = await validateKeyword(keyword, schema[keyword], value, schema)
+      if (k.async === true && schema[keyword]) {
+        const isValid = await validateKeyword(keyword, schema[keyword], get(data, path), schema)
         if (!isValid) {
           merge(errors, buildRJSFError(path, schema[keyword].errorMsg))
         }
