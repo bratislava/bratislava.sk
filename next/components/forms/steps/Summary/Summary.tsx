@@ -66,7 +66,10 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
       } else {
         const field: TransformedFormData = {
           label: schema?.allOf ? getLabel(schema?.allOf, key) : key,
-          value: value ? JSON.stringify(value, null, '\t').replaceAll('"', '') : '-',
+          value:
+            (value && !Array.isArray(value)) || (Array.isArray(value) && value.length > 0)
+              ? JSON.stringify(value, null, '\t').replaceAll('"', '')
+              : '-',
           schemaPath,
           isError: isFieldError(schemaPath, key),
         }

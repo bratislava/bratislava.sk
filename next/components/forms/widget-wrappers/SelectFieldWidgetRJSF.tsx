@@ -1,6 +1,7 @@
 import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
+import { useEffectOnce } from 'usehooks-ts'
 
 import SelectField from '../widget-components/SelectField/SelectField'
 
@@ -20,7 +21,7 @@ interface SelectFieldWidgetRJSFProps extends WidgetProps {
   disabled?: boolean
   placeholder?: string
   schema: StrictRJSFSchema
-  onChange: (value: any | any[]) => void
+  onChange: (value?: any | any[]) => void
 }
 
 const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
@@ -39,20 +40,24 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   } = options
 
   const type = schema.type === 'array' ? 'multiple' : 'one'
-  const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
-    const optionValues: any[] = newValue.map((option: EnumOptionsType) => option.value)
-    onChange(optionValues)
-  }
-
-  const handleOnChangeOne = (newValue: EnumOptionsType[]) => {
-    if (newValue[0]) {
-      onChange(newValue[0].value)
+  const handleOnChangeMultiple = (newValue?: EnumOptionsType[]) => {
+    if (newValue) {
+      const optionValues: any[] = newValue.map((option: EnumOptionsType) => option.value)
+      onChange(optionValues)
     } else {
-      onChange(null)
+      onChange()
     }
   }
 
-  const handleOnChange = (newValue: EnumOptionsType[]) => {
+  const handleOnChangeOne = (newValue?: EnumOptionsType[]) => {
+    if (newValue && newValue[0]) {
+      onChange(newValue[0].value)
+    } else {
+      onChange()
+    }
+  }
+
+  const handleOnChange = (newValue?: EnumOptionsType[]) => {
     if (type === 'multiple') {
       handleOnChangeMultiple(newValue)
     } else {
@@ -91,6 +96,10 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   const transformValue = (): EnumOptionsType[] => {
     return type === 'multiple' ? handleTransformMultiple() : handleTransformOne()
   }
+
+  useEffectOnce(() => {
+    setTimeout(() => handleOnChange(value), Math.floor(Math.random() * 300))
+  })
 
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
