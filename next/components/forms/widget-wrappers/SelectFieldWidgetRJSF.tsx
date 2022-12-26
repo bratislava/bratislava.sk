@@ -97,9 +97,9 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     return type === 'multiple' ? handleTransformMultiple() : handleTransformOne()
   }
 
-  useEffectOnce(() => {
-    setTimeout(() => handleOnChange(value), Math.floor(Math.random() * 300))
-  })
+  // useEffectOnce(() => {
+  //   setTimeout(() => handleOnChange(value), Math.floor(Math.random() * 300))
+  // })
 
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>

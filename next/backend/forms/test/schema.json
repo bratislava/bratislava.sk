@@ -148,30 +148,65 @@
       "properties": {
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
-          "properties": {
-            "chooseOne": {
-              "type": "string",
-              "default": "multiply",
-              "title": "Some random choose",
-              "oneOf": [
-                {
-                  "const": "screen",
-                  "title": "Screen",
-                  "disabled": true,
-                  "tooltip": "This is some tooltip1"
-                },
-                {
-                  "const": "multiply",
-                  "title": "Multiply",
-                  "error": true
-                },
-                {
-                  "const": "overlay",
-                  "title": "Overlay"
+          "allOf": [
+            {
+              "required": ["chooseOne"],
+              "properties": {
+                "chooseOne": {
+                  "type": "string",
+                  "default": "multiply",
+                  "title": "Some random choose",
+                  "oneOf": [
+                    {
+                      "const": "screen",
+                      "title": "Screen",
+                      "disabled": true,
+                      "tooltip": "This is some tooltip1"
+                    },
+                    {
+                      "const": "multiply",
+                      "title": "Multiply",
+                      "error": true
+                    },
+                    {
+                      "const": "overlay",
+                      "title": "Overlay"
+                    },
+                    {
+                      "const": "notOverlay",
+                      "title": "Not Overlay"
+                    }
+                  ]
                 }
-              ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "chooseOne": {
+                    "const": "overlay"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "overlayInput": {
+                    "type": "string",
+                    "title": "Write something for overlay input"
+                  }
+                },
+                "required": ["overlayInput"]
+              },
+              "else": {
+                "properties": {
+                  "notOverlayInput": {
+                    "type": "string",
+                    "title": "Write something for other inputs than overlay"
+                  }
+                }
+              }
             }
-          }
+          ]
         }
       }
     },

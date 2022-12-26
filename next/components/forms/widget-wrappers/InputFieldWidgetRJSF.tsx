@@ -4,6 +4,7 @@ import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
+import { useEffectOnce } from 'usehooks-ts'
 
 type InputFieldRJSFOptions = {
   type?: 'text' | 'password'
@@ -48,6 +49,10 @@ const InputFieldWidgetRJSF = ({
   } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
+
+  useEffectOnce(() => {
+    setTimeout(() => handleOnChange(value), Math.floor(Math.random() * 300))
+  })
 
   return (
     <WidgetWrapper
