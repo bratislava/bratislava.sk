@@ -96,7 +96,11 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
   // }
 
   const getAllTransformedData = (data: TransformedFormData[]) => {
-    schema?.allOf?.forEach((block) => {})
+    schema?.allOf?.forEach((step) => {
+      if (typeof step !== 'boolean' && step.properties) {
+        Object.entries(step.properties).forEach(stepB)
+      }
+    })
   }
 
   const transformedData: TransformedFormData[] = []

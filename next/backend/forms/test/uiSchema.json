@@ -180,6 +180,16 @@
           }
         ]
       }
+    },
+    "checkboxBonus": {
+      "firstBonus": {
+        "ui:widget": "InputField",
+        "ui:label": false
+      },
+      "secondBonus": {
+        "ui:widget": "InputField",
+        "ui:label": false
+      }
     }
   },
   "conditionalStep": {

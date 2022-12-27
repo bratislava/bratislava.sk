@@ -1,6 +1,8 @@
-export default interface TransformedFormData {
+export interface TransformedFormData {
   label: string
   value: string
-  step: string
+  schemaPath: string
   isError: boolean
 }
+
+export interface FormSteps {}

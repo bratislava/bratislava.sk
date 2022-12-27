@@ -7,6 +7,7 @@
       "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
+          "type": "object",
           "required": [
             "firstName",
             "lastName"
@@ -14,6 +15,7 @@
           "properties": {
             "nestedFields": {
               "title": "Nested in inputFields",
+              "type": "object",
               "required": ["yourAddress"],
               "properties": {
                 "yourAddress": {
@@ -48,6 +50,7 @@
         },
         "textAreas": {
           "title": "Textove polia",
+          "type": "object",
           "required": [
             "pros"
           ],
@@ -69,6 +72,7 @@
       "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
+          "type": "object",
           "required": [
             "school"
           ],
@@ -116,6 +120,7 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
+          "type": "object",
           "required": ["importButtonMultipleFiles"],
           "properties": {
             "importButtonOneFile": {
@@ -215,43 +220,76 @@
       "properties": {
         "checkBoxes": {
           "title": "Checkboxes",
+          "type": "object",
           "required": ["favouriteFruits"],
-          "properties": {
-            "favouriteFruits": {
-              "type": "array",
-              "title": "Fruits",
-              "minItems": 1,
-              "uniqueItems": true,
-              "items": {
-                "anyOf": [
-                  {
-                    "title": "Orange",
-                    "const": "orange"
-                  },
-                  {
-                    "title": "Banana",
-                    "const": "banana"
-                  },
-                  {
-                    "title": "Grape",
-                    "const": "grape"
-                  },
-                  {
-                    "title": "Kiwi",
-                    "const": "kiwi"
-                  },
-                  {
-                    "title": "Apple",
-                    "const": "apple"
-                  },
-                  {
-                    "title": "Plum",
-                    "const": "plum"
+          "allOf": [
+            {
+              "properties": {
+                "favouriteFruits": {
+                  "type": "array",
+                  "title": "Fruits",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "title": "Orange",
+                        "const": "orange"
+                      },
+                      {
+                        "title": "Banana",
+                        "const": "banana"
+                      },
+                      {
+                        "title": "Grape",
+                        "const": "grape"
+                      },
+                      {
+                        "title": "Kiwi",
+                        "const": "kiwi"
+                      },
+                      {
+                        "title": "Apple",
+                        "const": "apple"
+                      },
+                      {
+                        "title": "Plum",
+                        "const": "plum"
+                      }
+                    ]
                   }
-                ]
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "favouriteFruits": {
+                    "const": ["plum"]
+                  }
+                }
+              },
+              "then": {
+                "title": "Here are bonuses",
+                "properties": {
+                  "checkboxBonus": {
+                    "title": "This will show when we will click plum",
+                    "type": "object",
+                    "properties": {
+                      "firstBonus": {
+                        "type": "string",
+                        "title": "First bonus"
+                      },
+                      "secondBonus": {
+                        "type": "string",
+                        "title": "Second bonus"
+                      }
+                    }
+                  }
+                }
               }
             }
-          }
+          ]
         }
       }
     },{
@@ -277,6 +315,7 @@
         "properties": {
           "conditionalStep": {
             "title": "This is conditional step",
+            "type": "object",
             "properties": {
               "customText": {
                 "type": "string",
