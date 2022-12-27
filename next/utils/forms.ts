@@ -1,14 +1,29 @@
 import Form from '@rjsf/core'
-import { RJSFValidationError } from '@rjsf/utils'
+import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { Ref, RefObject, useEffect, useRef, useState } from 'react'
+import { useEffectOnce } from 'usehooks-ts'
+
+interface DataSchema {}
 
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
-export const useFormStepper = (eformSlug: string, schema: any) => {
+export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
+  const [data, setData] = useState([])
+
+  // const loadDataSchema = (dataSchema) => {}
+  //
+  // useEffectOnce(() => {
+  //   const dataSchema = []
+  //
+  //   loadDataSchema(dataSchema)
+  //
+  //   setData(dataSchema)
+  // })
+
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
-  // TODO: handle new/old errors
+
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
 
   const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
@@ -31,8 +46,8 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
 
   // TODO validate
   const steps = schema?.allOf
-
-  const isComplete = stepIndex === steps.length
+  const stepsLength: number = steps?.length ?? -1
+  const isComplete = stepIndex === stepsLength
 
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => {
@@ -44,11 +59,11 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
     formRef?.current?.submit()
   }
 
-  const currentSchema = steps[stepIndex]
+  const currentSchema = steps ? steps[stepIndex] : {}
 
   // these are used to display header
-  const nextSchema = steps[stepIndex + 1]
-  const previousSchema = steps[stepIndex - 1]
+  const nextSchema = steps ? steps[stepIndex + 1] : {}
+  const previousSchema = steps ? steps[stepIndex - 1] : {}
 
   // TODO consider validating steps can be merged into single schema without error on mount
   useEffect(() => {
@@ -59,11 +74,11 @@ export const useFormStepper = (eformSlug: string, schema: any) => {
 
   useEffect(() => {
     // stepIndex allowed to climb one step above the length of steps - i.e. to render a final overview or other custom components but still allow to return back
-    if (stepIndex > steps.length) {
+    if (stepIndex > stepsLength) {
       // stepIndex larger than last step index + 1
-      setStepIndex(steps.length)
+      setStepIndex(stepsLength)
     }
-  }, [stepIndex, steps])
+  }, [stepIndex, steps, stepsLength])
 
   return {
     stepIndex,

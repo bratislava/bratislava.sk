@@ -138,6 +138,7 @@ const FormTestPage = ({
                   form.setState({ ...form.state, ...e.formData })
                 }}
                 onError={(errors) => {
+                  console.log(errors)
                   form.setErrors(errors, form.stepIndex)
                   form.setStepIndex(form.stepIndex + 1)
                 }}
