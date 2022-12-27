@@ -47,7 +47,7 @@ const SearchField = ({
       errorMessage,
       description,
       onChange(value) {
-        setValueState(value)
+        setValueState(value.startsWith(' ') ? value.trim() : value)
       },
       isRequired: required,
       isDisabled: disabled,
@@ -56,7 +56,7 @@ const SearchField = ({
   )
 
   const style = cx(
-    'w-full px-12 py-2.5 border-2 border-gray-200 text-20 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
+    'text-20 w-full px-12 py-2.5 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
     className,
     {
       // hover

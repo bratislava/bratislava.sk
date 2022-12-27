@@ -39,7 +39,7 @@ const RadioButtonShowCase = () => {
           <Radio
             value="one2"
             variant="card"
-            tooltip="This is some tooltip1"
+            tooltip="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             className="sm:w-[400px]"
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
@@ -53,7 +53,7 @@ const RadioButtonShowCase = () => {
           <Radio value="two2" variant="card" isDisabled>
             Two
           </Radio>
-          <Radio value="three2" variant="card" error>
+          <Radio value="three2" variant="card" error tooltip="This is some tooltip">
             Three
           </Radio>
         </RadioGroup>
