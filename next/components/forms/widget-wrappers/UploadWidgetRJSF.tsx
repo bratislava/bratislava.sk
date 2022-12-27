@@ -15,7 +15,7 @@ interface UploadWidgetRJSFProps extends WidgetProps {
   value: string | string[]
   disabled?: boolean
   multiple?: boolean
-  onChange: (value: string | string[]) => void
+  onChange: (value?: string | string[]) => void
   rawErrors?: string[]
 }
 
@@ -65,7 +65,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
     if (!files[0]?.isUploading && !files[0]?.errorMessage) {
       onChange(files[0]?.file.name)
     } else {
-      onChange('')
+      onChange()
     }
   }
 
@@ -76,7 +76,11 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         chosenFileNames.push(minioFile.file.name)
       }
     })
-    onChange(chosenFileNames)
+    if (chosenFileNames.length > 0) {
+      onChange(chosenFileNames)
+    } else {
+      onChange()
+    }
   }
 
   const handleOnChange = (files: UploadMinioFile[]) => {
