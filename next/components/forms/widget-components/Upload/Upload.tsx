@@ -22,7 +22,7 @@ interface UploadProps {
   supportedFormats?: string[]
   className?: string
   onChange?: (value: UploadMinioFile[]) => void
-  errorMessage: string[]
+  errorMessage?: string[]
 }
 
 const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
