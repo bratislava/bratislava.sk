@@ -1,26 +1,11 @@
 import Form from '@rjsf/core'
-import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
-import { Ref, RefObject, useEffect, useRef, useState } from 'react'
-import { useEffectOnce } from 'usehooks-ts'
-
-interface DataSchema {}
+import { RJSFSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import { RefObject, useEffect, useRef, useState } from 'react'
 
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
 export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
-  const [data, setData] = useState([])
-
-  // const loadDataSchema = (dataSchema) => {}
-  //
-  // useEffectOnce(() => {
-  //   const dataSchema = []
-  //
-  //   loadDataSchema(dataSchema)
-  //
-  //   setData(dataSchema)
-  // })
-
   const [stepIndex, setStepIndex] = useState(0)
   const [state, setState] = useState({})
 
@@ -59,11 +44,11 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     formRef?.current?.submit()
   }
 
-  const currentSchema = steps ? steps[stepIndex] : {}
+  const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
 
   // these are used to display header
-  const nextSchema = steps ? steps[stepIndex + 1] : {}
-  const previousSchema = steps ? steps[stepIndex - 1] : {}
+  const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
+  const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
 
   // TODO consider validating steps can be merged into single schema without error on mount
   useEffect(() => {
