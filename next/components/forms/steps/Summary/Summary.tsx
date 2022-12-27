@@ -53,7 +53,8 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
     })
   }
 
-  const getAllErrorData = (data: TransformedFormData[], schemaPath: string) => {
+  const getRequiredEmptyData = (data: TransformedFormData[], schemaPath: string) => {
+    console.log('SCHEMA PATH:', schemaPath)
     formErrors.forEach((stepErrors) => {
       stepErrors.forEach((error) => {
         if (error.name === 'required' && error.property === schemaPath) {
@@ -77,10 +78,10 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
     parent?: JsonSchema,
   ) => {
     if (!parent) return
+    getRequiredEmptyData(data, schemaPath)
     Object.entries(parent).forEach(([key, value]: [string, JsonSchema]) => {
       if (typeof value === 'object' && !Array.isArray(value)) {
         const newSchemaPath = `${schemaPath}.${key}`
-        // getAllErrorData(data, schemaPath)
         getAllTransformedData(data, newSchemaPath, value)
       } else {
         const field: TransformedFormData = {

@@ -50,10 +50,6 @@ const InputFieldWidgetRJSF = ({
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
-  useEffectOnce(() => {
-    setTimeout(() => handleOnChange(value), Math.floor(Math.random() * 300))
-  })
-
   return (
     <WidgetWrapper
       className={cx({
