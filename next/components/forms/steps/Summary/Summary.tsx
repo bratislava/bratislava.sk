@@ -12,99 +12,91 @@ interface SummaryProps {
 }
 
 const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => {
-  // const getLabel = (schemaArray: JsonSchema[], fieldName: string): string => {
-  //   // need to find title of field in schema
-  //   let label = fieldName
-  //   for (const item of schemaArray) {
-  //     if (Array.isArray(item)) {
-  //       // if item is array, use recursively this function on it
-  //       label = getLabel(item, fieldName)
-  //     } else if (item && typeof item === 'object' && !Object.keys(item).includes(fieldName)) {
-  //       // if item is object and it has not fieldName we are finding, use recursively this function on array of values
-  //       const itemValues: JsonSchema[] = Object.values(item)
-  //       label = getLabel(itemValues, fieldName)
-  //     } else if (item && typeof item === 'object' && !item.required && !item.properties) {
-  //       // if item is object, includes fieldName we are finding and not includes required or properties, take value of fieldName and save title
-  //       const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
-  //         ([nestedFieldName]) => nestedFieldName === fieldName,
-  //       )
-  //       if (fieldValue && fieldValue[1] && typeof fieldValue[1] !== 'boolean') {
-  //         label =
-  //           fieldValue[1].title && fieldValue[1].type && fieldValue[1].type !== 'object'
-  //             ? fieldValue[1].title
-  //             : fieldName
-  //       }
-  //     }
-  //     if (label !== fieldName) {
-  //       // if label is different from fieldName, return it and end recursion
-  //       return label
-  //     }
-  //   }
-  //   return label
-  // }
-  //
-  // const isFieldError = (schemaPath: string, fieldName: string): boolean => {
-  //   const errorProperty = `${schemaPath}.${fieldName}`
-  //   return formErrors.some((errors) => {
-  //     return errors.some((error) => error.property === errorProperty)
-  //   })
-  // }
-  //
-  // const getRequiredEmptyData = (data: TransformedFormData[], schemaPath: string) => {
-  //   console.log('SCHEMA PATH:', schemaPath)
-  //   formErrors.forEach((stepErrors) => {
-  //     stepErrors.forEach((error) => {
-  //       if (error.name === 'required' && error.property === schemaPath) {
-  //         const field: TransformedFormData = {
-  //           label: schema?.allOf
-  //             ? getLabel(schema?.allOf, error.params.missingProperty)
-  //             : error.params.missingProperty,
-  //           value: '-',
-  //           schemaPath,
-  //           isError: true,
-  //         }
-  //         data.push(field)
-  //       }
-  //     })
-  //   })
-  // }
-  //
-  // const getAllTransformedData = (
-  //   data: TransformedFormData[],
-  //   schemaPath: string,
-  //   parent?: JsonSchema,
-  // ) => {
-  //   if (!parent) return
-  //   getRequiredEmptyData(data, schemaPath)
-  //   Object.entries(parent).forEach(([key, value]: [string, JsonSchema]) => {
-  //     if (typeof value === 'object' && !Array.isArray(value)) {
-  //       const newSchemaPath = `${schemaPath}.${key}`
-  //       getAllTransformedData(data, newSchemaPath, value)
-  //     } else {
-  //       const field: TransformedFormData = {
-  //         label: schema?.allOf ? getLabel(schema?.allOf, key) : key,
-  //         value:
-  //           (value && !Array.isArray(value)) || (Array.isArray(value) && value.length > 0)
-  //             ? JSON.stringify(value, null, '\t').replaceAll('"', '')
-  //             : '-',
-  //         schemaPath,
-  //         isError: isFieldError(schemaPath, key),
-  //       }
-  //       data.push(field)
-  //     }
-  //   })
-  // }
+  const getLabel = (schemaArray: JsonSchema[], fieldName: string): string => {
+    // need to find title of field in schema
+    let label = fieldName
+    for (const item of schemaArray) {
+      if (Array.isArray(item)) {
+        // if item is array, use recursively this function on it
+        label = getLabel(item, fieldName)
+      } else if (item && typeof item === 'object' && !Object.keys(item).includes(fieldName)) {
+        // if item is object and it has not fieldName we are finding, use recursively this function on array of values
+        const itemValues: JsonSchema[] = Object.values(item)
+        label = getLabel(itemValues, fieldName)
+      } else if (item && typeof item === 'object' && !item.required && !item.properties) {
+        // if item is object, includes fieldName we are finding and not includes required or properties, take value of fieldName and save title
+        const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
+          ([nestedFieldName]) => nestedFieldName === fieldName,
+        )
+        if (fieldValue && fieldValue[1] && typeof fieldValue[1] !== 'boolean') {
+          label =
+            fieldValue[1].title && fieldValue[1].type && fieldValue[1].type !== 'object'
+              ? fieldValue[1].title
+              : fieldName
+        }
+      }
+      if (label !== fieldName) {
+        // if label is different from fieldName, return it and end recursion
+        return label
+      }
+    }
+    return label
+  }
 
-  const getAllTransformedData = (data: TransformedFormData[]) => {
-    schema?.allOf?.forEach((step) => {
-      if (typeof step !== 'boolean' && step.properties) {
-        Object.entries(step.properties).forEach(stepB)
+  const isFieldError = (schemaPath: string, fieldName: string): boolean => {
+    const errorProperty = `${schemaPath}.${fieldName}`
+    return formErrors.some((errors) => {
+      return errors.some((error) => error.property === errorProperty)
+    })
+  }
+
+  const getRequiredEmptyData = (data: TransformedFormData[], schemaPath: string) => {
+    console.log('SCHEMA PATH:', schemaPath)
+    formErrors.forEach((stepErrors) => {
+      stepErrors.forEach((error) => {
+        if (error.name === 'required' && error.property === schemaPath) {
+          const field: TransformedFormData = {
+            label: schema?.allOf
+              ? getLabel(schema?.allOf, error.params.missingProperty)
+              : error.params.missingProperty,
+            value: '-',
+            schemaPath,
+            isError: true,
+          }
+          data.push(field)
+        }
+      })
+    })
+  }
+
+  const getAllTransformedData = (
+    data: TransformedFormData[],
+    schemaPath: string,
+    parent?: JsonSchema,
+  ) => {
+    if (!parent) return
+    getRequiredEmptyData(data, schemaPath)
+    Object.entries(parent).forEach(([key, value]: [string, JsonSchema]) => {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        const newSchemaPath = `${schemaPath}.${key}`
+        getAllTransformedData(data, newSchemaPath, value)
+      } else {
+        const field: TransformedFormData = {
+          label: schema?.allOf ? getLabel(schema?.allOf, key) : key,
+          value:
+            (value && !Array.isArray(value)) || (Array.isArray(value) && value.length > 0)
+              ? JSON.stringify(value, null, '\t').replaceAll('"', '')
+              : '-',
+          schemaPath,
+          isError: isFieldError(schemaPath, key),
+        }
+        data.push(field)
       }
     })
   }
 
   const transformedData: TransformedFormData[] = []
-  getAllTransformedData(transformedData)
+  getAllTransformedData(transformedData, '', formData)
 
   return (
     <div className="my-10">

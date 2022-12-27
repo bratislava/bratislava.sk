@@ -222,8 +222,6 @@
           "title": "Checkboxes",
           "type": "object",
           "required": ["favouriteFruits"],
-          "allOf": [
-            {
               "properties": {
                 "favouriteFruits": {
                   "type": "array",
@@ -259,9 +257,7 @@
                     ]
                   }
                 }
-              }
-            },
-            {
+              },
               "if": {
                 "properties": {
                   "favouriteFruits": {
@@ -270,7 +266,6 @@
                 }
               },
               "then": {
-                "title": "Here are bonuses",
                 "properties": {
                   "checkboxBonus": {
                     "title": "This will show when we will click plum",
@@ -288,11 +283,10 @@
                   }
                 }
               }
-            }
-          ]
         }
       }
-    },{
+    },
+    {
       "if": {
         "properties": {
           "checkBoxes": {
