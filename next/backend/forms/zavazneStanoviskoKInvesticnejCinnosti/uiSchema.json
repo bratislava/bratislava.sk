@@ -1,5 +1,97 @@
 {
   "ui:submitButtonOptions": {
     "norender": true
+  },
+  "ziadatel": {
+    "ziatetelTyp": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    },
+    "ziadatelMenoPriezvisko": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Meno a priezvisko",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelObchodneMeno": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Obchodné meno",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelIco": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "IČO"
+    },
+    "ziadatelAdresaPobytu": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Adresa trvalého pobytu",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelMesto": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Mesto",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelMiestoPodnikania": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Miesto podnikania",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelAdresaSidla": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Adresa sídla",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelPsc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSČ",
+      "ui:options": {
+        "size": "small"
+      }
+    },
+    "ziadatelKontaktnaOsoba": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Kontaktná osoba",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelEmail": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "E-mail",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "ziadatelTelefon": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Telefónne číslo"
+    }
   }
 }

@@ -72,7 +72,7 @@ const FormTestPage = ({
   const pageSlug = `form/${formSlug}`
 
   const form = useFormStepper(formSlug, eform.schema)
-
+  console.log(form)
   const customFormats = {
     zip: /\b\d{5}\b/,
   }
