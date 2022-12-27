@@ -16,10 +16,11 @@ interface UploadWidgetRJSFProps extends WidgetProps {
   disabled?: boolean
   multiple?: boolean
   onChange: (value: string | string[]) => void
+  rawErrors?: string[]
 }
 
 const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
-  const { options, schema, label, required, value, disabled, onChange } = props
+  const { options, schema, label, required, value, disabled, onChange, rawErrors } = props
 
   const {
     size,
@@ -90,6 +91,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <Upload
+        errorMessage={rawErrors}
         type={type}
         label={label}
         required={required}
