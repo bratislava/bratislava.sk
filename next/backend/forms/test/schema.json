@@ -254,6 +254,38 @@
           }
         }
       }
+    },{
+      "if": {
+        "properties": {
+          "checkBoxes": {
+            "properties": {
+              "favouriteFruits": {
+                "const": ["plum"]
+              }
+            }
+          },
+          "selectFields": {
+            "properties": {
+              "years": {
+                "const": 6
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "conditionalStep": {
+            "title": "This is conditional step",
+            "properties": {
+              "customText": {
+                "type": "string",
+                "title": "Write custom text"
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
