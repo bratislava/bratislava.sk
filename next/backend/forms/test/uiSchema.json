@@ -2,6 +2,23 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "inputUpload": {
+    "ui:field": "inputUpload"
+  },
+  "mestoPSC": {
+    "ui:field": "doubledInput",
+    "ui:options": {
+      "FirstInputTooltip": "Mesto tooltip",
+      "FirstInputDescription": "Description",
+      "FirstInputPlaceholder": "placeholder text",
+      "FirstInputRequired": true,
+      "FirstInputResetIcon": true,
+      "FirstInputLeftIcon": "person",
+      "FirstInputExplicitOptional": true,
+      "FirstInputClassNames": "w-full",
+      "SecondInputClassNames": "sm:w-1/4"
+    }
+  },
   "inputFields": {
     "firstName": {
       "ui:widget": "InputField",

@@ -50,6 +50,10 @@ interface InputBase {
   // tooltip
   FirstInputTooltip?: string
   SecondInputTooltip?: string
+
+  // handler
+  FirstInputHandler?: (value?: string) => void
+  SecondInputHandler?: (value?: string) => void
 }
 export const DoubledInputField = ({
   FirstInputLabel,
@@ -76,9 +80,11 @@ export const DoubledInputField = ({
   SecondInputDisabled,
   FirstInputTooltip,
   SecondInputTooltip,
+  FirstInputHandler,
+  SecondInputHandler,
 }: InputBase) => {
   return (
-    <div className="flex flex-row items-start gap-4">
+    <div className="flex flex-row items-end gap-4">
       <div className="w-full">
         <InputField
           label={FirstInputLabel}
@@ -90,12 +96,13 @@ export const DoubledInputField = ({
           required={FirstInputRequired}
           explicitOptional={FirstInputExplicitOptional}
           resetIcon={FirstInputResetIcon}
-          disabled={FirstInputDisabled}
+          // disabled={FirstInputDisabled}
           tooltip={FirstInputTooltip}
           className={FirstInputClassNames}
+          onChange={FirstInputHandler}
         />
       </div>
-      <div className="sm:w-1/4">
+      <div className={SecondInputClassNames}>
         <InputField
           label={SecondInputLabel}
           placeholder={SecondInputPlaceholder}
@@ -106,9 +113,9 @@ export const DoubledInputField = ({
           required={SecondInputRequired}
           explicitOptional={SecondInputExplicitOptional}
           resetIcon={SecondInputResetIcon}
-          disabled={SecondInputDisabled}
+          // disabled={SecondInputDisabled}
           tooltip={SecondInputTooltip}
-          className={SecondInputClassNames}
+          onChange={SecondInputHandler}
         />
       </div>
     </div>

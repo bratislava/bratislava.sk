@@ -5,6 +5,45 @@
   "allOf": [
     {
       "properties": {
+        "inputUpload": {
+          "properties": {
+            "inputField": {
+              "type": "string",
+              "title": "Mesto",
+              "default": "NYC"
+            },
+            "inputFileField": {
+              "title": "Importuj viac suborov",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "mestoPSC": {
+          "properties": {
+            "mesto": {
+              "type": "string",
+              "title": "Mesto",
+              "default": "Košice"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSČ",
+              "default": "04011",
+              "format": "zip"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
           "required": [
@@ -106,7 +145,7 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
-          "required": ["importButtonMultipleFiles"],
+
           "properties": {
             "importButtonOneFile": {
               "title": "Importuj jeden subor",

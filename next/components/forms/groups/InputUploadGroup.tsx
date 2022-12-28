@@ -84,6 +84,7 @@ export const InputUploadGroup = ({
         leftIcon={InputLeftIcon}
         resetIcon={InputResetIcon}
         className={InputClassName}
+        onChange={InputOnChange}
       />
       <div>{middleText}</div>
       <Upload
