@@ -1,4 +1,3 @@
-import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { ApiError, submitEform } from '@utils/api'
 import { ErrorObject } from 'ajv'
 import { useTranslation } from 'next-i18next'
@@ -66,7 +65,7 @@ export const FinalStep = ({
       {/* TODO figure out if we should turn off eslint no-misused-promises for these cases (or altogether) */}
       <div className="flex flex-row gap-3">
         <Button onPress={onGoToPreviousStep} text="Previous" />
-        <Button onPress={submit} text="Submit" />
+        <Button onPress={submit} text={t('submit')} />
       </div>
     </div>
   )
