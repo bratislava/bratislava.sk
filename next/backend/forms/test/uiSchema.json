@@ -3,9 +3,18 @@
     "norender": true
   },
   "inputFields": {
-    "nestedFields": {
-      "yourAddress": {
-        "ui:widget": "InputField",
+    "textAreas": {
+      "pros": {
+        "ui:widget": "TextArea",
+        "ui:label": false,
+        "ui:placeholder": "Write some cons please",
+        "ui:options": {
+          "description": "Here write pros",
+          "tooltip": "This is simple tooltip"
+        }
+      },
+      "cons": {
+        "ui:widget": "TextArea",
         "ui:label": false
       }
     },
@@ -96,21 +105,6 @@
       }
     }
   },
-  "textAreas": {
-    "pros": {
-      "ui:widget": "TextArea",
-      "ui:label": false,
-      "ui:placeholder": "Write some cons please",
-      "ui:options": {
-        "description": "Here write pros",
-        "tooltip": "This is simple tooltip"
-      }
-    },
-    "cons": {
-      "ui:widget": "TextArea",
-      "ui:label": false
-    }
-  },
   "selectFields": {
     "school": {
       "ui:widget": "SelectField",
@@ -159,6 +153,10 @@
     },
     "notOverlayInput": {
       "ui:widget": "InputField",
+      "ui:label": false
+    },
+    "againSchool": {
+      "ui:widget": "SelectField",
       "ui:label": false
     }
   },

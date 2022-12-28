@@ -13,17 +13,6 @@
             "lastName"
           ],
           "properties": {
-            "nestedFields": {
-              "title": "Nested in inputFields",
-              "type": "object",
-              "required": ["yourAddress"],
-              "properties": {
-                "yourAddress": {
-                  "type": "string",
-                  "title": "Your address"
-                }
-              }
-            },
             "firstName": {
               "type": "string",
               "title": "First Name",
@@ -45,24 +34,24 @@
               "type": "string",
               "title": "PSC",
               "format": "zip"
-            }
-          }
-        },
-        "textAreas": {
-          "title": "Textove polia",
-          "type": "object",
-          "required": [
-            "pros"
-          ],
-          "properties": {
-            "pros": {
-              "title": "Pros",
-              "type": "string"
             },
-            "cons": {
-              "title": "Cons",
-              "type": "string",
-              "default": "Defaultna hodnota"
+            "textAreas": {
+              "title": "Textove polia",
+              "type": "object",
+              "required": [
+                "pros"
+              ],
+              "properties": {
+                "pros": {
+                  "title": "Pros",
+                  "type": "string"
+                },
+                "cons": {
+                  "title": "Cons",
+                  "type": "string",
+                  "default": "Defaultna hodnota"
+                }
+              }
             }
           }
         }
@@ -152,67 +141,54 @@
     {
       "properties": {
         "chooseOneOf": {
-          "title": "Choose one of radio buttons",
+          "title": "Radio button step",
           "type": "object",
-          "allOf": [
-            {
-              "required": ["chooseOne"],
-              "properties": {
-                "chooseOne": {
-                  "type": "string",
-                  "default": "multiply",
-                  "title": "Some random choose",
-                  "oneOf": [
-                    {
-                      "const": "screen",
-                      "title": "Screen",
-                      "disabled": true,
-                      "tooltip": "This is some tooltip1"
-                    },
-                    {
-                      "const": "multiply",
-                      "title": "Multiply",
-                      "error": true
-                    },
-                    {
-                      "const": "overlay",
-                      "title": "Overlay"
-                    },
-                    {
-                      "const": "notOverlay",
-                      "title": "Not Overlay"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "chooseOne": {
-                    "const": "overlay"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "overlayInput": {
-                    "type": "string",
-                    "title": "Write something for overlay input"
-                  }
+          "required": ["againSchool"],
+          "properties": {
+            "chooseOne": {
+              "type": "string",
+              "default": "multiply",
+              "title": "Some random choose",
+              "oneOf": [
+                {
+                  "const": "screen",
+                  "title": "Screen",
+                  "disabled": true,
+                  "tooltip": "This is some tooltip1"
                 },
-                "required": ["overlayInput"]
-              },
-              "else": {
-                "properties": {
-                  "notOverlayInput": {
-                    "type": "string",
-                    "title": "Write something for other inputs than overlay"
-                  }
+                {
+                  "const": "multiply",
+                  "title": "Multiply",
+                  "error": true
+                },
+                {
+                  "const": "overlay",
+                  "title": "Overlay"
+                },
+                {
+                  "const": "notOverlay",
+                  "title": "Not Overlay"
                 }
-              }
+              ]
+            },
+            "againSchool": {
+              "type": "string",
+              "title": "University",
+              "oneOf": [
+                {
+                  "const": "STU FEI",
+                  "title": "fakulta elektrotechniky a informatiky"
+                },
+                {
+                  "const": "STU FCHPT"
+                },
+                {
+                  "const": "STU FIIT",
+                  "title": "fakulta informatiky a informacnych technologii"
+                }
+              ]
             }
-          ]
+          }
         }
       }
     },
@@ -222,67 +198,68 @@
           "title": "Checkboxes",
           "type": "object",
           "required": ["favouriteFruits"],
-              "properties": {
-                "favouriteFruits": {
-                  "type": "array",
-                  "title": "Fruits",
-                  "minItems": 1,
-                  "uniqueItems": true,
-                  "items": {
-                    "anyOf": [
-                      {
-                        "title": "Orange",
-                        "const": "orange"
-                      },
-                      {
-                        "title": "Banana",
-                        "const": "banana"
-                      },
-                      {
-                        "title": "Grape",
-                        "const": "grape"
-                      },
-                      {
-                        "title": "Kiwi",
-                        "const": "kiwi"
-                      },
-                      {
-                        "title": "Apple",
-                        "const": "apple"
-                      },
-                      {
-                        "title": "Plum",
-                        "const": "plum"
-                      }
-                    ]
+          "properties": {
+            "favouriteFruits": {
+              "type": "array",
+              "title": "Fruits",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "title": "Orange",
+                    "const": "orange"
+                  },
+                  {
+                    "title": "Banana",
+                    "const": "banana"
+                  },
+                  {
+                    "title": "Grape",
+                    "const": "grape"
+                  },
+                  {
+                    "title": "Kiwi",
+                    "const": "kiwi"
+                  },
+                  {
+                    "title": "Apple",
+                    "const": "apple"
+                  },
+                  {
+                    "title": "Plum",
+                    "const": "plum"
                   }
-                }
-              },
-              "if": {
+                ]
+              }
+            }
+          },
+          "if": {
+            "properties": {
+              "favouriteFruits": {
+                "const": ["plum"]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "checkboxBonus": {
+                "title": "This will show when we will click plum",
+                "type": "object",
+                "required": ["firstBonus"],
                 "properties": {
-                  "favouriteFruits": {
-                    "const": ["plum"]
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "checkboxBonus": {
-                    "title": "This will show when we will click plum",
-                    "type": "object",
-                    "properties": {
-                      "firstBonus": {
-                        "type": "string",
-                        "title": "First bonus"
-                      },
-                      "secondBonus": {
-                        "type": "string",
-                        "title": "Second bonus"
-                      }
-                    }
+                  "firstBonus": {
+                    "type": "string",
+                    "title": "First bonus"
+                  },
+                  "secondBonus": {
+                    "type": "string",
+                    "title": "Second bonus"
                   }
                 }
               }
+            }
+          }
         }
       }
     },

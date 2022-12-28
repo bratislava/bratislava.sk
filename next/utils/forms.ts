@@ -24,6 +24,8 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setErrors(updatedErrors)
   }
 
+  console.log('DATA:', state)
+
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast

@@ -55,7 +55,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
             locale: l,
           })),
       },
-      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common', 'footer', 'forms'])),
     },
   }
 }
@@ -129,7 +129,6 @@ const FormTestPage = ({
                 // TODO instead, hook into onChange and keep data in form state up to date with what's in ThemedForm state
                 // passing data to state onChange in current state prevented the form from updating
                 onSubmit={(e) => {
-                  console.log(e.formData)
                   form.setState({ ...form.state, ...e.formData })
                   form.setErrors(e.errors, form.stepIndex)
                   form.setStepIndex(form.stepIndex + 1)
@@ -138,7 +137,7 @@ const FormTestPage = ({
                   form.setState({ ...form.state, ...e.formData })
                 }}
                 onError={(errors) => {
-                  console.log(errors)
+                  console.log('ERRORS:', errors)
                   form.setErrors(errors, form.stepIndex)
                   form.setStepIndex(form.stepIndex + 1)
                 }}
