@@ -143,50 +143,48 @@
         "chooseOneOf": {
           "title": "Radio button step",
           "type": "object",
-          "required": ["againSchool"],
           "properties": {
             "chooseOne": {
               "type": "string",
-              "default": "multiply",
               "title": "Some random choose",
               "oneOf": [
                 {
                   "const": "screen",
-                  "title": "Screen",
-                  "disabled": true,
-                  "tooltip": "This is some tooltip1"
+                  "title": "Screen"
                 },
                 {
                   "const": "multiply",
-                  "title": "Multiply",
-                  "error": true
+                  "title": "Multiply"
                 },
                 {
                   "const": "overlay",
                   "title": "Overlay"
-                },
-                {
-                  "const": "notOverlay",
-                  "title": "Not Overlay"
                 }
               ]
-            },
-            "againSchool": {
-              "type": "string",
-              "title": "University",
-              "oneOf": [
-                {
-                  "const": "STU FEI",
-                  "title": "fakulta elektrotechniky a informatiky"
-                },
-                {
-                  "const": "STU FCHPT"
-                },
-                {
-                  "const": "STU FIIT",
-                  "title": "fakulta informatiky a informacnych technologii"
-                }
-              ]
+            }
+          },
+          "if": {
+            "properties": {
+              "chooseOne": {
+                "const": "overlay"
+              }
+            }
+          },
+          "then": {
+            "required": ["overlayInput"],
+            "properties": {
+              "overlayInput": {
+                "type": "string",
+                "title": "WRITE OVERLAY INPUT"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "notOverlayInput": {
+                "type": "string",
+                "title": "some other input"
+              }
             }
           }
         }
