@@ -1,4 +1,5 @@
 /* eslint-disable lodash-fp/no-extraneous-args */
+import useWindowSize from '@utils/useWindowSize'
 import cx from 'classnames'
 import Button from 'components/forms/simple-components/Button'
 import padStart from 'lodash/padStart'
@@ -32,7 +33,7 @@ const TimeSelector = ({
   const minuteRef = useRef<HTMLDivElement>(null)
   const hoursItemRef = useRef<HTMLButtonElement[]>([])
   const minutesItemRef = useRef<HTMLButtonElement[]>([])
-
+  const { width = 0 } = useWindowSize()
   const clickHandler = (
     e: MouseEvent<HTMLButtonElement>,
     type: 'hour' | 'minute',
@@ -63,7 +64,11 @@ const TimeSelector = ({
   })
 
   return (
-    <div className="w-full max-w-xs rounded-lg border-2 border-gray-700 bg-white">
+    <div
+      className={cx('w-full max-w-xs rounded-lg border-2 border-gray-700 bg-white', {
+        'w-[325px]': width < 500,
+      })}
+    >
       <div className="flex w-full flex-col justify-between py-10">
         <div className="flex h-fit max-h-52 justify-between overflow-hidden px-4">
           <div className="overflow-x-hidden flex flex-col items-center justify-start">
@@ -123,7 +128,7 @@ const TimeSelector = ({
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
+      <div className="w-full flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
         <Button onPress={onClose} text="Zrušiť" variant="plain-black" size="sm" />
         <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>

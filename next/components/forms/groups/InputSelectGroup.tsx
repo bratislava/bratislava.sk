@@ -140,16 +140,13 @@ export const InputSelectGroup = ({
               >
                 <PlusCircleIcon fill="red" />
               </div>
-            ) : (
-              // 0 IQ solution, I will fix it during other fixes
-              <div className="w-6 h-6" />
-            )}
+            ) : null}
           </div>
         )
       })}
-      <div className="py-0 pr-0 pl-8">
+      <div className="pl-8">
         <div
-          className="flex flex-row justify-center select-none items-center px-0 py-2 gap-2 cursor-pointer"
+          className="flex flex-row justify-center select-none items-center py-2 gap-2 cursor-pointer"
           onClick={() => addField()}
         >
           <div className="flex w-6 h-6 justify-center items-center">
