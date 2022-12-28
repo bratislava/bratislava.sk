@@ -54,7 +54,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
             locale: l,
           })),
       },
-      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common', 'footer', 'forms'])),
     },
   }
 }
