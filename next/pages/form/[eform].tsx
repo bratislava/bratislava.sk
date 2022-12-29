@@ -56,7 +56,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
             locale: l,
           })),
       },
-      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common', 'footer', 'forms'])),
     },
   }
 }
@@ -96,6 +96,7 @@ const FormTestPage = ({
 
   const customFormats = {
     zip: /\b\d{5}\b/,
+    time: /^[0-2]\d:[0-5]\d$/,
   }
   const validator = customizeValidator({ customFormats })
 

@@ -5,6 +5,34 @@
   "allOf": [
     {
       "properties": {
+        "datePicker": {
+          "title": "Showcase of DatePicker",
+          "required": [],
+          "properties": {
+            "birth": {
+              "type": "string",
+              "format": "date",
+              "title": "Birth date"
+            }
+          }
+        },
+        "timePicker": {
+          "title": "Showcase of TimePicker",
+          "required": [
+            "meeting-time"
+          ],
+          "properties": {
+            "meeting-time": {
+              "type": "string",
+              "title": "Meeting time",
+              "format": "time"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
           "required": [

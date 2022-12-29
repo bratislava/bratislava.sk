@@ -1,7 +1,8 @@
 import CalendarIcon from '@assets/images/forms/calendar-icon.svg'
+import { DateValue, parseDate } from '@internationalized/date'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
-import { forwardRef, ReactNode, RefObject, useRef } from 'react'
+import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
 
@@ -38,17 +39,43 @@ type DatePickerBase = {
   explicitOptional?: boolean
   disabled?: boolean
   errorMessage?: string[]
+  value?: string
+  onChange?: (value?: DateValue) => void
 }
 
 const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
   (
-    { label, disabled, errorMessage, required, explicitOptional, tooltip, description, ...rest },
+    {
+      label,
+      disabled,
+      errorMessage,
+      required,
+      explicitOptional,
+      tooltip,
+      description,
+      value = '',
+      onChange,
+      ...rest
+    },
     ref,
   ) => {
     const { locale } = usePageWrapperContext()
+    const [valueState, setValueState] = useState<DateValue | null>(null)
+    const [prevValue, setPrevValue] = useState<string>('')
+
     const state = useDatePickerState({
       label,
       errorMessage,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      value: onChange && value ? parseDate(value) : valueState || null,
+      onChange(inputValue) {
+        if (onChange) {
+          onChange(inputValue)
+        } else {
+          setValueState(inputValue)
+        }
+      },
       isRequired: required,
       isDisabled: disabled,
       ...rest,
@@ -56,18 +83,42 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     })
     const { fieldProps, buttonProps, calendarProps, dialogProps, errorMessageProps } =
       useDatePicker(
-        { errorMessage, isDisabled: disabled, label, ...rest },
+        {
+          errorMessage,
+          isDisabled: disabled,
+          label,
+          ...rest,
+        },
         state,
         ref as RefObject<HTMLDivElement>,
       )
 
     const closeHandler = () => {
+      if (prevValue) {
+        state?.setDateValue(parseDate(prevValue))
+        setValueState(parseDate(prevValue))
+      }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      else state?.setDateValue(null)
       state?.close()
+    }
+
+    const submitCloseHandler = () => {
+      setPrevValue(onChange ? value : valueState ? valueState.toString() : '')
+      state?.close()
+    }
+
+    const resetCloseHandler = () => {
       // https://github.com/adobe/react-spectrum/discussions/3318
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       state?.setDateValue(null)
+      setValueState(null)
+      setPrevValue('')
+      state?.close()
     }
+
     return (
       <I18nProvider locale={locale}>
         <div className="relative w-full max-w-xs">
@@ -93,8 +144,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
               <Popover {...dialogProps} isOpen={state?.isOpen} onClose={closeHandler}>
                 <Calendar
                   {...calendarProps}
-                  onClose={closeHandler}
-                  onSubmit={() => state?.close()}
+                  onSubmit={submitCloseHandler}
+                  onReset={resetCloseHandler}
                 />
               </Popover>
             </OverlayProvider>

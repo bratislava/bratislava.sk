@@ -2,6 +2,24 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "datePicker": {
+    "birth": {
+      "ui:widget": "DatePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Date picker hint"
+      }
+    }
+  },
+  "timePicker": {
+    "meeting-time": {
+      "ui:widget": "TimePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Time picker hint"
+      }
+    }
+  },
   "inputFields": {
     "ui:hideError": true,
     "firstName": {
