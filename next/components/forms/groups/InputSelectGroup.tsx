@@ -1,7 +1,9 @@
 import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
+import field from '@bratislava/ui-bratislava/Field/Field'
 import { EnumOptionsType } from '@rjsf/utils'
+import { prop } from 'cheerio/lib/api/attributes'
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import InputField from '../widget-components/InputField/InputField'
@@ -41,6 +43,10 @@ interface SelectFieldProps {
 }
 
 export const InputSelectGroup = ({
+  groupValues = [],
+  saveFormData,
+  propKeys,
+
   // input props
   InputLabel,
   InputPlaceholder,
@@ -68,29 +74,42 @@ export const InputSelectGroup = ({
   SelectExplicitOptional,
   SelectDisabled,
   SelectClassName,
-  SelectOnChange,
 
   addNew,
-}: SelectFieldProps & InputBase & { addNew: string }) => {
-  const [fieldGroups, setFieldGroups] = useState([
-    { inputField: '', selectField: [], id: uuidv4() },
-  ])
+}: SelectFieldProps &
+  InputBase & {
+    addNew: string
+    groupValues?: Array<any>
+    saveFormData: (obj: Array<any>) => void
+    propKeys: Array<string>
+  }) => {
+  const [fieldGroups, setFieldGroups] = useState([...groupValues])
   const containerStyle = cx('flex flex-col items-start gap-4', {})
 
   const addField = () => {
-    setFieldGroups([...fieldGroups, { inputField: '', selectField: [], id: uuidv4() }])
+    setFieldGroups([...fieldGroups, { [propKeys[0]]: '', [propKeys[1]]: [], id: uuidv4() }])
   }
 
   const removeField = (id: string) => {
     setFieldGroups((current) => current.filter((element) => element.id !== id))
   }
 
-  const updateState = (index: number) => (e: any) => {
+  const updateState = (index: number, propIndex: 0 | 1) => (e: string | undefined | Array<any>) => {
     const newArray = fieldGroups.map((item, i) => {
-      return index === i ? { ...item, inputField: e } : item
+      return index === i ? { ...item, [propKeys[propIndex]]: e } : item
     })
     setFieldGroups(newArray)
   }
+
+  useEffect(() => {
+    setFieldGroups((prev: Array<object>) => {
+      // to avoid render warning
+      setTimeout(() => {
+        saveFormData([...prev])
+      }, 0)
+      return prev
+    })
+  }, [fieldGroups])
 
   return (
     <div className={containerStyle}>
@@ -112,13 +131,13 @@ export const InputSelectGroup = ({
                 resetIcon={InputResetIcon}
                 errorMessage={InputErrorMessage}
                 disabled={InputDisabled}
-                value={element.inputField}
-                onChange={updateState(index)}
+                value={element[propKeys[0]]}
+                onChange={updateState(index, 0)}
               />
             </div>
             <SelectField
               label={SelectLabel}
-              type={SelectType}
+              type="one"
               enumOptions={SelectEnumOptions}
               disabled={SelectDisabled}
               tooltip={SelectTooltip}
@@ -129,8 +148,8 @@ export const InputSelectGroup = ({
               explicitOptional={SelectExplicitOptional}
               dropdownDivider={SelectDropdownDivider}
               selectAllOption={SelectSelectAllOption}
-              value={element.selectField}
-              onChange={SelectOnChange}
+              value={element[propKeys[1]]}
+              onChange={updateState(index, 1)}
               className={SelectClassName}
             />
             {fieldGroups.length > 1 ? (
@@ -140,10 +159,7 @@ export const InputSelectGroup = ({
               >
                 <PlusCircleIcon fill="red" />
               </div>
-            ) : (
-              // 0 IQ solution, I will fix it during other fixes
-              <div className="w-6 h-6" />
-            )}
+            ) : null}
           </div>
         )
       })}

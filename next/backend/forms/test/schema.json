@@ -5,6 +5,30 @@
   "allOf": [
     {
       "properties": {
+        "inputSelect": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pocet": {
+                "type": "string"
+              },
+              "school": {
+                "type": "array",
+                "title": "University",
+                "oneOf": [
+                  {"value": "STU FEI", "label": "fakulta elektrotechniky a informatiky"},
+                  {"value": "STU FCHPT"},
+                  {"value": "STU FIIT", "label": "fakulta informatiky a informacnych technologii"}
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputUpload": {
           "properties": {
             "inputField": {

@@ -3,6 +3,7 @@ import InputFieldWidgetRJSF from 'components/forms/widget-wrappers/InputFieldWid
 
 import CheckboxWidgetRJSF from './widget-wrappers/CheckboxWidgetRJSF'
 import DoubledInputWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/DoubledInputWidgetFieldRJSF'
+import InputSelectGroupWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/InputSelectGroupWidgetFieldRJSF'
 import InputUploadGroupWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/InputUploadGroupWidgetRJSF'
 import RadioButtonsWidgetRJSF from './widget-wrappers/RadioButtonWidgetRJSF'
 import SelectFieldWidgetRJSF from './widget-wrappers/SelectFieldWidgetRJSF'
@@ -22,6 +23,7 @@ const theme = {
   fields: {
     doubledInput: DoubledInputWidgetFieldRJSF,
     inputUpload: InputUploadGroupWidgetRJSF,
+    inputSelect: InputSelectGroupWidgetFieldRJSF,
   },
   templates: {},
 }

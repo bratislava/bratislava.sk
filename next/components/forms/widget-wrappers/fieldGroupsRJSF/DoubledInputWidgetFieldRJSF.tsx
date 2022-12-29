@@ -80,7 +80,7 @@ class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
           SecondInputLabel={this.getLabel(1)}
           FirstInputValue={state[Object.keys(state)[0] as keyof object]}
           SecondInputValue={state[Object.keys(state)[1] as keyof object]}
-          FirstInputHandler={(e) => this.handleOnChange('mesto', e)}
+          FirstInputHandler={(e) => this.handleOnChange(Object.keys(state)[0], e)}
           SecondInputHandler={(e) => this.handleOnChange(Object.keys(state)[1], e)}
           FirstInputPlaceholder={this.getUIProp('FirstInputPlaceholder')}
           SecondInputPlaceholder={this.getUIProp('SecondInputPlaceholder')}

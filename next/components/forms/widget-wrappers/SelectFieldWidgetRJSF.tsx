@@ -37,7 +37,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     spaceBottom = 'default',
     spaceTop = 'none',
   } = options
-
+  console.log(enumOptions)
   const type = schema.type === 'array' ? 'multiple' : 'one'
   const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
     const optionValues: any[] = newValue.map((option: EnumOptionsType) => option.value)

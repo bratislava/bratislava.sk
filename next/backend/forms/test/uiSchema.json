@@ -2,8 +2,21 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "inputSelect": {
+    "ui:field": "inputSelect"
+  },
   "inputUpload": {
-    "ui:field": "inputUpload"
+    "ui:field": "inputUpload",
+    "ui:options": {
+      "className": "sm:w-[500px]",
+      "InputPlaceholder": "placeholder",
+      "InputType": "text",
+      "InputDescription": "Input description",
+      "InputTooltip": "Input tooltip",
+      "UploadSizeLimit": 5,
+      "UploadSupportedFormats": ".jpg,.pdf",
+      "middleText": "alebo"
+    }
   },
   "mestoPSC": {
     "ui:field": "doubledInput",
