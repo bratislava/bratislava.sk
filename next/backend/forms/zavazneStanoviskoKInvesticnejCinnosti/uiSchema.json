@@ -3,6 +3,7 @@
     "norender": true
   },
   "ziadatel": {
+    "ui:hideError": true,
     "ziatetelTyp": {
       "ui:widget": "RadioButton",
       "ui:label": false,
@@ -92,6 +93,282 @@
       "ui:widget": "InputField",
       "ui:label": false,
       "ui:placeholder": "Telefónne číslo"
+    }
+  },
+  "investor": {
+    "ui:hideError": true,
+    "investorZiadatelom": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    },
+    "splnomocnenie": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    },
+    "investorTyp": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    },
+    "investorMenoPriezvisko": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Meno a priezvisko",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorObchodneMeno": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Obchodné meno",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorIco": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "IČO"
+    },
+    "investorAdresaPobytu": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Adresa trvalého pobytu",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorMiestoPodnikania": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Miesto podnikania",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorAdresaSidla": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Adresa sídla",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorMesto": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Mesto",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorPsc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSČ",
+      "ui:options": {
+        "size": "small"
+      }
+    },
+    "investorKontaktnaOsoba": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Kontaktná osoba",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorEmail": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "E-mail",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "investorTelefon": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Telefónne číslo"
+    }
+  },
+  "projektant": {
+    "ui:hideError": true,
+    "projektantMenoPriezvisko": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Meno a priezvisko",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "projektantEmail": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "E-mail",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "projektantTelefon": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Telefónne číslo"
+    },
+    "autorizacneOsvedcenie": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Číslo autorizačného osvedčenia",
+      "ui:options": {
+        "tooltip": "Autorizačné osvedčenie dokazuje, že projektant je oprávnený na výkon svojej činnosti. Nie je potrebné pri vypracovaní dokumentácie k jednoduchým / drobným stavbám, kde postačuje osoba s odborným vzdelaním. "
+      }
+    },
+    "datumSpracovania": {
+      "ui:widget": "DatePicker",
+      "ui:label": false
+    }
+  },
+  "stavba": {
+    "ui:hideError": true,
+    "stavbaNazov": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Názov stavby/projektu",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "stavbaDruh": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    },
+    "stavbaUlica": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Ulica",
+      "ui:options": {
+        "size": "large"
+      }
+    },
+    "stavbaSupisneCislo": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Súpisné číslo"
+    },
+    "stavbaParcela": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Parcelné číslo"
+    },
+    "stavbaKataster": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:placeholder": "Vyberte",
+      "ui:options": {
+        "dropdownDivider": true
+      }
+    }
+  },
+  "konanie": {
+    "ui:hideError": true,
+    "konanieTyp": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    },
+    "ziadostOdovodnenie": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "className": "flex flex-col gap-4",
+        "variant": "boxed"
+      }
+    },
+    "stavbaFotodokumentacia": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    },
+    "stavbaPisomnosti": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    }
+  },
+  "prilohy": {
+    "ui:hideError": true,
+    "projektovaDokumentacia": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "vykresy": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "ulicnyPohlad": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "podzemnePodlazie": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "vyjadrenieUradu": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
     }
   }
 }
