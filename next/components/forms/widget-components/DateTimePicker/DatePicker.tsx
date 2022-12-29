@@ -38,7 +38,7 @@ type DatePickerBase = {
   required?: boolean
   explicitOptional?: boolean
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
   value?: string
   onChange?: (value?: DateValue) => void
 }

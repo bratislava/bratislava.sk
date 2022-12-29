@@ -3,6 +3,7 @@
     "norender": true
   },
   "datePicker": {
+    "ui:hideError": true,
     "birth": {
       "ui:widget": "DatePicker",
       "ui:label": false,
@@ -12,6 +13,7 @@
     }
   },
   "timePicker": {
+    "ui:hideError": true,
     "meeting-time": {
       "ui:widget": "TimePicker",
       "ui:label": false,
@@ -21,6 +23,7 @@
     }
   },
   "inputFields": {
+    "ui:hideError": true,
     "firstName": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -75,6 +78,7 @@
     }
   },
   "fileUploads": {
+    "ui:hideError": true,
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
@@ -109,6 +113,7 @@
     }
   },
   "textAreas": {
+    "ui:hideError": true,
     "pros": {
       "ui:widget": "TextArea",
       "ui:label": false,
@@ -124,6 +129,7 @@
     }
   },
   "selectFields": {
+    "ui:hideError": true,
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,
@@ -147,6 +153,7 @@
     }
   },
   "chooseOneOf": {
+    "ui:hideError": true,
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
@@ -167,6 +174,7 @@
     }
   },
   "checkBoxes": {
+    "ui:hideError": true,
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,

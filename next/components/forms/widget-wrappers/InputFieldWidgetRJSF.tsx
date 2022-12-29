@@ -16,23 +16,23 @@ interface InputFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: InputFieldRJSFOptions
   value: string
-  errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string
   schema: StrictRJSFSchema
   onChange: (value?: string) => void
+  rawErrors?: string[]
 }
 
 const InputFieldWidgetRJSF = ({
   label,
   options,
   placeholder = '',
-  errorMessage,
   required,
   value,
   disabled,
   onChange,
+  rawErrors,
 }: InputFieldWidgetRJSFProps) => {
   const {
     description,
@@ -64,7 +64,7 @@ const InputFieldWidgetRJSF = ({
         type={type}
         placeholder={placeholder}
         value={value}
-        errorMessage={errorMessage}
+        errorMessage={rawErrors}
         required={required}
         disabled={disabled}
         description={description}

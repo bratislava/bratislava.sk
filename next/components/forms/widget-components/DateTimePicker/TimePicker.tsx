@@ -40,7 +40,7 @@ type TimePickerBase = {
   required?: boolean
   explicitOptional?: boolean
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
   value?: string
   onChange?: (value?: string) => void
 }

@@ -12,7 +12,7 @@ type TimeFieldBase = {
   explicitOptional?: boolean
   children?: ReactNode
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
   hour: string
   minute: string
   isOpen: boolean
@@ -29,7 +29,7 @@ const TimeField = ({
   explicitOptional,
   children,
   disabled,
-  errorMessage = '',
+  errorMessage = [],
   hour,
   minute,
   onChange,
@@ -70,9 +70,10 @@ const TimeField = ({
     'text-20 w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
     {
       'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
-      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessage,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error':
+        errorMessage?.length > 0,
       'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
-      'border-gray-700': isOpen && !disabled && !errorMessage,
+      'border-gray-700': isOpen && !disabled && !(errorMessage?.length > 0),
     },
   )
 
