@@ -152,7 +152,7 @@ const FormTestPage = ({
                 }}
                 onError={(e) => console.log('errors', e)}
                 customValidate={customValidate}
-                // showErrorList={false}
+                showErrorList={false}
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />

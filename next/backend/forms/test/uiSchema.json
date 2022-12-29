@@ -3,6 +3,7 @@
     "norender": true
   },
   "datePicker": {
+    "ui:hideError": true,
     "birth": {
       "ui:widget": "DatePicker",
       "ui:label": false,
@@ -12,6 +13,7 @@
     }
   },
   "timePicker": {
+    "ui:hideError": true,
     "meeting-time": {
       "ui:widget": "TimePicker",
       "ui:label": false,

@@ -41,7 +41,7 @@ const TimePickerWidgetRJSF = ({
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <TimePicker
         label={label}
-        errorMessage={rawErrors?.join(', ')}
+        errorMessage={rawErrors}
         required={required}
         disabled={disabled}
         description={description}
