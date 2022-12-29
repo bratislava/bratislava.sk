@@ -9,21 +9,21 @@ const TimePickerShowCase = ({}: TimePickerShowCaseProps) => {
     <Wrapper direction="column" title="Time Picker">
       <Stack direction="column">
         <TimePicker label="Label" />
-        <TimePicker label="Label" errorMessage="Error message" />
-        <TimePicker label="Label" errorMessage="Error message" disabled />
+        <TimePicker label="Label" errorMessage={['Error message']} />
+        <TimePicker label="Label" errorMessage={['Error message']} disabled />
       </Stack>
       <Stack direction="column">
         <TimePicker label="Label" required tooltip="Time Picker" description="Help text" />
         <TimePicker
           label="Label"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           required
           tooltip="Time Picker"
           description="Help text"
         />
         <TimePicker
           label="Label"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
           required
           tooltip="Time Picker"
