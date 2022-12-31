@@ -17,14 +17,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { keyword, schema, value, parentSchema }: Body = req.body
   const keywordDefinition = ajvKeywords.find((k) => k.keyword === keyword)
+
   if (!keywordDefinition) {
     return res.status(400).json({ message: 'Keyword definition not found' })
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // as we dont use parameter dataCxt
-  const isValid = await keywordDefinition.validate(schema, value, parentSchema)
+  const isValid = keywordDefinition.validate
+    ? await keywordDefinition.validate(schema, value, parentSchema)
+    : true
   return res.status(200).json({ isValid })
 }
 
