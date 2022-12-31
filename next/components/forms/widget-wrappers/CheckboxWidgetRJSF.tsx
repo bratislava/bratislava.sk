@@ -6,12 +6,15 @@ import React from 'react'
 import Checkbox from '../widget-components/Checkbox/Checkbox'
 import CheckboxGroup from '../widget-components/Checkbox/CheckboxGroup'
 
+type CheckboxUiOptions = {
+  value: string
+  tooltip: string
+}
+
 type CheckboxesRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   variant?: 'basic' | 'boxed'
-  error?: boolean
-  isIndeterminate?: boolean
-  isDisabled?: boolean
+  checkboxOptions?: CheckboxUiOptions[]
 } & WidgetOptions
 
 interface CheckboxesWidgetRJSFProps extends WidgetProps {
@@ -24,23 +27,30 @@ interface CheckboxesWidgetRJSFProps extends WidgetProps {
 
 const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   const { options, value, onChange, label } = props
-  const { enumOptions, className, spaceBottom = 'default', spaceTop = 'none' } = options
+  const {
+    enumOptions,
+    className,
+    spaceBottom = 'default',
+    spaceTop = 'none',
+    checkboxOptions = [],
+    variant = 'basic',
+  } = options
   if (!enumOptions) return <div />
+  const getTooltip = (radioValue: string) => {
+    return checkboxOptions.find((option) => option.value === radioValue)?.tooltip
+  }
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <CheckboxGroup value={value} onChange={onChange} className={className} label={label}>
-        {enumOptions.map((option: any) => {
+        {enumOptions.map((option: EnumOptionsType) => {
           return (
             <Checkbox
               key={option.value}
               value={option.value}
-              variant={options.variant}
-              error={option.schema.error}
-              tooltip={option.schema.tooltip ? option.schema.tooltip : null}
-              isDisabled={option.schema.isDisabled}
-              isIndeterminate={option.schema.isIndeterminate}
+              variant={variant}
+              tooltip={getTooltip(option.value as string)}
             >
-              {option.schema.label}
+              {option.label}
             </Checkbox>
           )
         })}

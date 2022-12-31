@@ -6,6 +6,32 @@
   "allOf": [
     {
       "properties": {
+        "datePicker": {
+          "title": "Showcase of DatePicker",
+          "required": [],
+          "properties": {
+            "birth": {
+              "type": "string",
+              "format": "date",
+              "title": "Birth date"
+            }
+          }
+        },
+        "timePicker": {
+          "title": "Showcase of TimePicker",
+          "required": ["meeting-time"],
+          "properties": {
+            "meeting-time": {
+              "type": "string",
+              "title": "Meeting time",
+              "format": "time"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
           "required": ["firstName", "lastName"],
@@ -64,9 +90,17 @@
               "type": "string",
               "title": "University",
               "oneOf": [
-                { "const": "STU FEI", "title": "fakulta elektrotechniky a informatiky" },
-                { "const": "STU FCHPT" },
-                { "const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii" }
+                {
+                  "const": "STU FEI",
+                  "title": "fakulta elektrotechniky a informatiky"
+                },
+                {
+                  "const": "STU FCHPT"
+                },
+                {
+                  "const": "STU FIIT",
+                  "title": "fakulta informatiky a informacnych technologii"
+                }
               ]
             },
             "diplomas": {
@@ -76,9 +110,17 @@
               "items": {
                 "type": "string",
                 "oneOf": [
-                  { "const": "STU FEI", "title": "fakulta elektrotechniky a informatiky" },
-                  { "const": "STU FCHPT" },
-                  { "const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii" }
+                  {
+                    "const": "STU FEI",
+                    "title": "fakulta elektrotechniky a informatiky"
+                  },
+                  {
+                    "const": "STU FCHPT"
+                  },
+                  {
+                    "const": "STU FIIT",
+                    "title": "fakulta informatiky a informacnych technologii"
+                  }
                 ]
               }
             },
@@ -148,6 +190,50 @@
                   "title": "Overlay"
                 }
               ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "checkBoxes": {
+          "title": "Checkboxes",
+          "required": ["favouriteFruits"],
+          "properties": {
+            "favouriteFruits": {
+              "type": "array",
+              "title": "Fruits",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "title": "Orange",
+                    "const": "orange"
+                  },
+                  {
+                    "title": "Banana",
+                    "const": "banana"
+                  },
+                  {
+                    "title": "Grape",
+                    "const": "grape"
+                  },
+                  {
+                    "title": "Kiwi",
+                    "const": "kiwi"
+                  },
+                  {
+                    "title": "Apple",
+                    "const": "apple"
+                  },
+                  {
+                    "title": "Plum",
+                    "const": "plum"
+                  }
+                ]
+              }
             }
           }
         }

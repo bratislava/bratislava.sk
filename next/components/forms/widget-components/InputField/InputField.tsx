@@ -14,7 +14,7 @@ interface InputBase {
   label: string
   type?: 'text' | 'password'
   placeholder: string
-  errorMessage?: string
+  errorMessage?: string[]
   description?: string
   className?: string
   value?: string
@@ -33,7 +33,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       label,
       type,
       placeholder,
-      errorMessage,
+      errorMessage = [],
       description,
       tooltip,
       required,
@@ -75,7 +75,6 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       },
       ref as RefObject<HTMLInputElement>,
     )
-
     const leftIconSwitcher = (icon: string): ReactNode | null => {
       switch (icon) {
         case 'person':
@@ -107,7 +106,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'hover:border-gray-400': !disabled,
 
         // error
-        'border-error hover:border-error focus:border-error': errorMessage && !disabled,
+        'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
 
         // disabled
         'border-gray-300 bg-gray-100': disabled,

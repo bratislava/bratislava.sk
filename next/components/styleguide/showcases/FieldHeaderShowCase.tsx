@@ -68,7 +68,7 @@ const FieldHeaderShowCase = ({}: FieldHeaderShowCaseProps) => {
 
       <Wrapper direction="column" title="Field error message">
         <Stack>
-          <FieldErrorMessage errorMessage="This is error message for fields" />
+          <FieldErrorMessage errorMessage={['This is error message for fields']} />
         </Stack>
       </Wrapper>
     </>
