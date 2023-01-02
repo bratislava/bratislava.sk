@@ -5,9 +5,10 @@ interface Errors {
   [key: string]: string[]
 }
 
-export default function useHookForm({ schema }) {
+export default function useHookForm({ schema, defaultValues }) {
   const form = useForm({
     resolver: ajvResolver(schema),
+    defaultValues,
   })
 
   const errors: Errors = {}

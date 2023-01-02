@@ -10,7 +10,7 @@ const schema = {
     email: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'username field is required' },
+      errorMessage: { minLength: 'email field is required' },
     },
     password: {
       type: 'string',
@@ -18,12 +18,14 @@ const schema = {
       errorMessage: { minLength: 'password field is required' },
     },
   },
-  required: ['username', 'password'],
-  additionalProperties: false,
+  required: ['email', 'password'],
 }
 
 const App = () => {
-  const { handleSubmit, control, errors } = useHookForm({ schema })
+  const { handleSubmit, control, errors } = useHookForm({
+    schema,
+    defaultValues: { email: '', password: '' },
+  })
   const onSubmit = (data) => console.log(data)
 
   return (
@@ -34,12 +36,7 @@ const App = () => {
           name="email"
           control={control}
           render={({ field }) => (
-            <InputField
-              label="email"
-              placeholder="email"
-              {...field}
-              errorMessage={errors.username}
-            />
+            <InputField label="email" placeholder="email" {...field} errorMessage={errors.email} />
           )}
         />
         <Controller
