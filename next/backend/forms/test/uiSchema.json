@@ -149,7 +149,8 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-row gap-4 mt-4",
+        "//className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed",
         "radioOptions": [
           {
