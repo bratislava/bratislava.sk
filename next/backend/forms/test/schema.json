@@ -1,4 +1,5 @@
 {
+  "$async": true,
   "title": "Example",
   "description": "Example schema",
   "type": "object",
@@ -18,9 +19,7 @@
         },
         "timePicker": {
           "title": "Showcase of TimePicker",
-          "required": [
-            "meeting-time"
-          ],
+          "required": ["meeting-time"],
           "properties": {
             "meeting-time": {
               "type": "string",
@@ -35,10 +34,8 @@
       "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
-          "required": [
-            "firstName",
-            "lastName"
-          ],
+          "required": ["firstName", "lastName"],
+          "type": "object",
           "properties": {
             "firstName": {
               "type": "string",
@@ -66,9 +63,8 @@
         },
         "textAreas": {
           "title": "Textove polia",
-          "required": [
-            "pros"
-          ],
+          "required": ["pros"],
+          "type": "object",
           "properties": {
             "pros": {
               "title": "Pros",
@@ -87,9 +83,8 @@
       "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
-          "required": [
-            "school"
-          ],
+          "required": ["school"],
+          "type": "object",
           "properties": {
             "school": {
               "type": "string",
@@ -133,14 +128,7 @@
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-              ]
+              "enum": [1, 2, 3, 4, 5, 6]
             }
           }
         }
@@ -150,9 +138,7 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
-          "required": [
-            "importButtonMultipleFiles"
-          ],
+          "required": ["importButtonMultipleFiles"],
           "properties": {
             "importButtonOneFile": {
               "title": "Importuj jeden subor",
@@ -185,9 +171,7 @@
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
           "type": "object",
-          "required": [
-            "chooseOne"
-          ],
+          "required": ["chooseOne"],
           "properties": {
             "chooseOne": {
               "type": "string",
@@ -215,9 +199,7 @@
       "properties": {
         "checkBoxes": {
           "title": "Checkboxes",
-          "required": [
-            "favouriteFruits"
-          ],
+          "required": ["favouriteFruits"],
           "properties": {
             "favouriteFruits": {
               "type": "array",
@@ -252,6 +234,20 @@
                   }
                 ]
               }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "user": {
+          "type": "object",
+          "title": "Example async validation",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "isExampleAsyncValidation": {}
             }
           }
         }
