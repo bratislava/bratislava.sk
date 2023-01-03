@@ -1,7 +1,5 @@
 import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
-import field from '@bratislava/ui-bratislava/Field/Field'
 import { EnumOptionsType } from '@rjsf/utils'
-import { prop } from 'cheerio/lib/api/attributes'
 import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
@@ -46,7 +44,7 @@ export const InputSelectGroup = ({
   groupValues = [],
   saveFormData,
   propKeys,
-
+  formDataArray,
   // input props
   InputLabel,
   InputPlaceholder,
@@ -81,28 +79,71 @@ export const InputSelectGroup = ({
     addNew: string
     groupValues?: Array<any>
     saveFormData: (obj: Array<any>) => void
+    formDataArray?: Array<any>
     propKeys: Array<string>
   }) => {
   const [fieldGroups, setFieldGroups] = useState([...groupValues])
+  const [formData, setFormData] = useState([...(formDataArray ?? [])])
   const containerStyle = cx('flex flex-col items-start gap-4', {})
 
   const addField = () => {
-    setFieldGroups([...fieldGroups, { [propKeys[0]]: '', [propKeys[1]]: [], id: uuidv4() }])
+    setFieldGroups(
+      fieldGroups.concat({
+        [propKeys[0]]: '',
+        [propKeys[1]]: SelectType === 'multiple' ? [] : '',
+        id: uuidv4(),
+      }),
+    )
+    setFormData(
+      formData.concat({
+        [propKeys[0]]: '',
+        [propKeys[1]]: SelectType === 'multiple' ? [] : '',
+        id: uuidv4(),
+      }),
+    )
+    setFormData((prev: Array<any>) => {
+      setFormData([...prev])
+      return prev
+    })
   }
 
   const removeField = (id: string) => {
     setFieldGroups((current) => current.filter((element) => element.id !== id))
+    setFormData((current) => current.filter((element) => element.id !== id))
   }
 
-  const updateState = (index: number, propIndex: 0 | 1) => (e: string | undefined | Array<any>) => {
-    const newArray = fieldGroups.map((item, i) => {
-      return index === i ? { ...item, [propKeys[propIndex]]: e } : item
-    })
-    setFieldGroups(newArray)
+  const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
+    const optionValues: any[] = newValue.map((option: EnumOptionsType) => option.value)
+    return optionValues
   }
+
+  const handleOnChangeOne = (newValue: EnumOptionsType[]) => {
+    if (newValue[0]) {
+      return newValue[0].value
+    }
+    return null
+  }
+
+  const updateState =
+    (index: number, propIndex: 0 | 1) => (e: string | undefined | Array<EnumOptionsType>) => {
+      let newValue = e
+      if (Array.isArray(e)) {
+        const optionValues: any =
+          SelectType === 'multiple' ? handleOnChangeMultiple(e) : handleOnChangeOne(e)
+        newValue = optionValues
+      }
+      const newArrayFormData = formData.map((item, i) => {
+        return index === i ? { ...item, [propKeys[propIndex]]: newValue } : item
+      })
+      setFormData(newArrayFormData)
+      const newArray = fieldGroups.map((item, i) => {
+        return index === i ? { ...item, [propKeys[propIndex]]: e } : item
+      })
+      setFieldGroups(newArray)
+    }
 
   useEffect(() => {
-    setFieldGroups((prev: Array<object>) => {
+    setFormData((prev: any) => {
       // to avoid render warning
       setTimeout(() => {
         saveFormData([...prev])
@@ -137,7 +178,7 @@ export const InputSelectGroup = ({
             </div>
             <SelectField
               label={SelectLabel}
-              type="one"
+              type={SelectType}
               enumOptions={SelectEnumOptions}
               disabled={SelectDisabled}
               tooltip={SelectTooltip}
@@ -163,9 +204,9 @@ export const InputSelectGroup = ({
           </div>
         )
       })}
-      <div className="py-0 pr-0 pl-8">
+      <div className="pl-8">
         <div
-          className="flex flex-row justify-center select-none items-center px-0 py-2 gap-2 cursor-pointer"
+          className="flex flex-row justify-center select-none items-center py-2 gap-2 cursor-pointer"
           onClick={() => addField()}
         >
           <div className="flex w-6 h-6 justify-center items-center">

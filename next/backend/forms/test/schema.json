@@ -5,6 +5,26 @@
   "allOf": [
     {
       "properties": {
+        "textareaUpload": {
+          "properties": {
+            "textareaField": {
+              "type": "string",
+              "title": "Some story",
+              "default": "Once upon a time..."
+            },
+            "inputFileField": {
+              "title": "Importuj viac suborov",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputSelect": {
           "type": "array",
           "items": {
@@ -14,7 +34,7 @@
                 "type": "string"
               },
               "school": {
-                "type": "array",
+                "type": "string",
                 "title": "University",
                 "oneOf": [
                   {"value": "STU FEI", "label": "fakulta elektrotechniky a informatiky"},

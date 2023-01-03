@@ -25,6 +25,7 @@ interface UploadProps {
   UploadMultiple?: boolean
   UploadValue?: UploadMinioFile[]
   UploadDisabled?: boolean
+  UploadRequired?: boolean
   UploadSizeLimit?: number
   UploadSupportedFormats?: string[]
   UploadClassName?: string
@@ -56,6 +57,7 @@ export const TextareaUploadGroup = ({
   UploadOnChange,
   UploadMultiple,
   UploadClassName,
+  UploadRequired,
   UploadType,
   UploadValue,
   UploadSizeLimit,
@@ -75,6 +77,7 @@ export const TextareaUploadGroup = ({
         explicitOptional={TextareaExplicitOptional}
         disabled={TextareaDisabled}
         description={TextareaDescription}
+        onChange={TextareaOnChange}
       />
       <div>{middleText}</div>
       <Upload
@@ -86,6 +89,7 @@ export const TextareaUploadGroup = ({
         onChange={UploadOnChange}
         disabled={UploadDisabled}
         multiple={UploadMultiple}
+        required={UploadRequired}
         className={UploadClassName}
       />
     </div>

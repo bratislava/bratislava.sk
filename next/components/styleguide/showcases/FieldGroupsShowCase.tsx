@@ -25,6 +25,8 @@ const FieldGroupsShowCase = () => {
           SelectPlaceholder="Vybrať"
           SelectClassName="sm:w-[400px]"
           addNew="Pridať ďalší riadok"
+          propKeys={[]}
+          saveFormData={() => {}}
         />
       </Stack>
       <Stack direction="column">

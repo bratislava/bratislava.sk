@@ -5,6 +5,7 @@ import CheckboxWidgetRJSF from './widget-wrappers/CheckboxWidgetRJSF'
 import DoubledInputWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/DoubledInputWidgetFieldRJSF'
 import InputSelectGroupWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/InputSelectGroupWidgetFieldRJSF'
 import InputUploadGroupWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/InputUploadGroupWidgetRJSF'
+import TextareaUploadWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/TextareaUploadGroupWidgetRJSF'
 import RadioButtonsWidgetRJSF from './widget-wrappers/RadioButtonWidgetRJSF'
 import SelectFieldWidgetRJSF from './widget-wrappers/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widget-wrappers/TextAreaFieldWidgetRJSF'
@@ -24,6 +25,7 @@ const theme = {
     doubledInput: DoubledInputWidgetFieldRJSF,
     inputUpload: InputUploadGroupWidgetRJSF,
     inputSelect: InputSelectGroupWidgetFieldRJSF,
+    textareaUpload: TextareaUploadWidgetRJSF,
   },
   templates: {},
 }
