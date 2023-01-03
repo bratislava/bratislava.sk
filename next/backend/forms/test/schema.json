@@ -21,7 +21,8 @@
             },
             "lastName": {
               "type": "string",
-              "title": "Last Name"
+              "title": "Last Name",
+              "default": "Peluha"
             },
             "password": {
               "type": "string",

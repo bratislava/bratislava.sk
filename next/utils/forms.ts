@@ -146,8 +146,25 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     }
   }, [stepIndex, steps, stepsLength])
 
+  const validate = () => {
+    if (formRef?.current?.validateForm) {
+      formRef?.current?.validateForm()
+    }
+    // if (schema.$async === true) {
+    //   const newExtraErrors = await validateAsyncProperties(
+    //     currentSchema,
+    //     formRef?.current?.state.formData,
+    //     [],
+    //   )
+    //   setExtraErrors(newExtraErrors)
+    // }
+  }
+
   const previous = () => setStepIndex(stepIndex - 1)
-  const next = () => setStepIndex(stepIndex + 1)
+  const next = () => {
+    formRef?.current?.submit()
+    setStepIndex(stepIndex + 1)
+  }
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
     const newState = { ...formData }
@@ -168,20 +185,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
       )
     }
     setErrors(updatedErrors)
-  }
-
-  const validate = async () => {
-    if (formRef?.current?.validate) {
-      formRef?.current?.validateForm()
-    }
-    // if (schema.$async === true) {
-    //   const newExtraErrors = await validateAsyncProperties(
-    //     currentSchema,
-    //     formRef?.current?.state.formData,
-    //     [],
-    //   )
-    //   setExtraErrors(newExtraErrors)
-    // }
   }
 
   return {

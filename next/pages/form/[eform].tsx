@@ -137,9 +137,12 @@ const FormTestPage = ({
                 validator={validator}
                 // TODO validate it isn't a problem we forward extraneous data (from other steps) into every step
                 formData={form.formData}
-                onChange={(e) => {
+                onSubmit={(e) => {
                   form.setStepFormData(e.formData)
                   form.validate()
+                }}
+                onChange={(e) => {
+                  form.setStepFormData(e.formData)
                 }}
                 onError={(errors) => {
                   form.setErrors(errors, form.stepIndex)
