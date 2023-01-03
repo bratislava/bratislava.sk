@@ -1,6 +1,7 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { deleteFile, uploadFile } from '@backend/services/minio'
 import cx from 'classnames'
+import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 import { v4 as createUuid } from 'uuid'
 
@@ -21,6 +22,7 @@ interface UploadProps {
   supportedFormats?: string[]
   className?: string
   onChange?: (value: UploadMinioFile[]) => void
+  errorMessage?: string[]
 }
 
 const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
@@ -38,6 +40,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     supportedFormats,
     className,
     onChange,
+    errorMessage,
   }: UploadProps = props
 
   // STATES
@@ -210,6 +213,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       }
       <UploadBrokenMessages fileBrokenMessages={fileBrokenMessages} />
       <UploadedFilesList allFiles={value} handleOnRemoveFile={handleOnRemoveFile} />
+      {!disabled && <FieldErrorMessage errorMessage={errorMessage} />}
     </section>
   )
 }

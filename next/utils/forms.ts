@@ -1,6 +1,114 @@
 import Form from '@rjsf/core'
 import { RJSFSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { RefObject, useEffect, useRef, useState } from 'react'
+import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
+import { validateKeyword } from '@utils/api'
+import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
+import { JSONSchema7Definition } from 'json-schema'
+import { get, merge } from 'lodash'
+import { RefObject, useEffect, useRef, useState } from 'react'
+
+export type JsonSchema = JSONSchema7Definition
+interface JsonSchemaProperties {
+  [key: string]: JSONSchema7Definition
+}
+
+export const getAllPossibleJsonSchemaProperties = (
+  jsonSchema: JsonSchema | undefined,
+): JsonSchemaProperties => {
+  if (!jsonSchema || jsonSchema === true) {
+    return {}
+  }
+
+  const properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+  if (jsonSchema.then) {
+    Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.then))
+  }
+  if (jsonSchema.allOf) {
+    jsonSchema.allOf.forEach((s) => {
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
+    })
+  }
+  if (jsonSchema.oneOf) {
+    jsonSchema.oneOf.forEach((s) => {
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
+    })
+  }
+  if (jsonSchema.anyOf) {
+    jsonSchema.anyOf.forEach((s) => {
+      Object.assign(properties, getAllPossibleJsonSchemaProperties(s))
+    })
+  }
+
+  return properties
+}
+
+const buildRJSFError = (path: string[], errorMsg: string | undefined): ErrorSchema => {
+  return path.reduceRight(
+    (memo: object, arrayValue: string) => {
+      const error: any = {}
+      error[arrayValue] = memo
+      return error
+    },
+    { __errors: [errorMsg || 'error'] },
+  )
+}
+
+const exampleAsyncValidation = (
+  schema: any,
+  value: any,
+  parentSchema?: AnySchemaObject,
+): Promise<boolean> => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(!!value), 500)
+  })
+}
+
+interface KeywordDefinition extends FuncKeywordDefinition {
+  validate?: (schema: any, value: any, parentSchema?: AnySchemaObject) => boolean | Promise<boolean>
+}
+
+export const ajvKeywords: KeywordDefinition[] = [
+  {
+    keyword: 'isExampleAsyncValidation',
+    async: true,
+    type: 'string',
+    validate: exampleAsyncValidation,
+  },
+  {
+    keyword: 'example',
+  },
+]
+
+const validateAsyncProperties = async (
+  schema: RJSFSchema,
+  data: any,
+  path: string[],
+): Promise<ErrorSchema> => {
+  const errors = {}
+
+  await Promise.all(
+    ajvKeywords.map(async (k: KeywordDefinition) => {
+      const keyword: string = k.keyword as string
+      if (k.async === true && schema[keyword]) {
+        const isValid = await validateKeyword(keyword, schema[keyword], get(data, path), schema)
+        if (!isValid) {
+          merge(errors, buildRJSFError(path, schema[keyword].errorMsg))
+        }
+      }
+    }),
+  )
+
+  const properties = getAllPossibleJsonSchemaProperties(schema)
+  await Promise.all(
+    Object.keys(properties).map(async (key) => {
+      const childSchema = properties[key] as RJSFSchema
+      merge(errors, await validateAsyncProperties(childSchema, data, [...path, key]))
+    }),
+  )
+
+  return errors
+}
 
 // TODO prevent unmounting
 // TODO persist state for session
@@ -14,6 +122,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
+  const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
 
   const steps = schema?.allOf
   const stepsLength: number = steps?.length ?? -1
@@ -22,6 +131,13 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
   const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
   const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
+
+  // const errors = await validateAsyncProperties(
+  //   currentSchema,
+  //   formRef?.current?.state.formData,
+  //   [],
+  // )
+  // setExtraErrors(errors)
 
   console.log('FORM DATA:', formData)
 
@@ -85,5 +201,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     previousSchema,
     isComplete,
     formRef,
+    extraErrors,
+    keywords: ajvKeywords,
   }
 }

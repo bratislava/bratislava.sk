@@ -3,7 +3,8 @@
     "norender": true
   },
   "inputFields": {
-    "ui:order": ["firstName", "lastName", "phone", "password", "psc", "textAreas"],
+    "ui:order": ["firstName", "lastName", "password", "psc", "textAreas"],
+    "ui:hideError": true,
     "firstName": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -25,15 +26,6 @@
         "resetIcon": true,
         "leftIcon": "person",
         "size": "default"
-      }
-    },
-    "phone": {
-      "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Phone",
-      "ui:options": {
-        "tooltip": "Phone hint",
-        "leftIcon": "call"
       }
     },
     "password": {
@@ -74,6 +66,7 @@
     }
   },
   "fileUploads": {
+    "ui:hideError": true,
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
@@ -107,7 +100,24 @@
       }
     }
   },
+  "textAreas": {
+    "ui:hideError": true,
+    "pros": {
+      "ui:widget": "TextArea",
+      "ui:label": false,
+      "ui:placeholder": "Write some cons please",
+      "ui:options": {
+        "description": "Here write pros",
+        "tooltip": "This is simple tooltip"
+      }
+    },
+    "cons": {
+      "ui:widget": "TextArea",
+      "ui:label": false
+    }
+  },
   "selectFields": {
+    "ui:hideError": true,
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,
@@ -131,11 +141,13 @@
     }
   },
   "chooseOneOf": {
+    "ui:hideError": true,
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-row gap-4 mt-4",
+        "//className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed",
         "radioOptions": [
           {
@@ -163,6 +175,7 @@
     }
   },
   "checkBoxes": {
+    "ui:hideError": true,
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
@@ -196,6 +209,36 @@
     "customText": {
       "ui:widget": "InputField",
       "ui:label": false
+    }
+  },
+  "user": {
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "leftIcon": "call"
+      }
+    }
+  },
+  "datePicker": {
+    "ui:hideError": true,
+    "birth": {
+      "ui:widget": "DatePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Date picker hint"
+      }
+    }
+  },
+  "timePicker": {
+    "ui:hideError": true,
+    "meeting-time": {
+      "ui:widget": "TimePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Time picker hint"
+      }
     }
   }
 }

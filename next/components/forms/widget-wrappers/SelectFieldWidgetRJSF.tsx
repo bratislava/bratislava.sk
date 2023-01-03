@@ -16,16 +16,16 @@ interface SelectFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: SelectRJSFOptions
   value: any | any[]
-  errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string
   schema: StrictRJSFSchema
   onChange: (value?: any | any[]) => void
+  rawErrors?: string[]
 }
 
 const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
-  const { label, options, value, errorMessage, required, disabled, placeholder, schema, onChange } =
+  const { label, options, value, required, disabled, placeholder, schema, onChange, rawErrors } =
     props
   const {
     enumOptions,
@@ -113,7 +113,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
         description={description}
         tooltip={tooltip}
         dropdownDivider={dropdownDivider}
-        errorMessage={errorMessage}
+        errorMessage={rawErrors}
         required={required}
         disabled={disabled}
         className={className}
