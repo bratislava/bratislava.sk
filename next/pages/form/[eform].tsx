@@ -3,25 +3,24 @@
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { EFormValue } from '@backend/forms'
+import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { FormValidation } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
+import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
-import { forceString } from '@utils/utils'
+import { forceString, isProductionDeployment } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
-import { pageStyle, parseFooter, parseMainMenu } from '../../utils/page'
-import { isProductionDeployment } from '../../utils/utils'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   if (isProductionDeployment()) return { notFound: true }
@@ -81,24 +80,6 @@ const FormTestPage = ({
   const pageSlug = `form/${escapedSlug}`
 
   const form = useFormStepper(escapedSlug, eform.schema)
-  // TODO refactor when useFormStepper will refactored
-  const validateRequiredFormat = (formData: object, errors: FormValidation) => {
-    const REQUIRED_VALUE = 'Required input'
-    const formDataKeys = Object.keys(formData)
-    formDataKeys?.forEach((key) => {
-      form?.currentSchema?.properties[key]?.required?.forEach((req: string) => {
-        // TODO fix ignoring errors
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        !formData[key][req] && errors[key][req]?.addError(REQUIRED_VALUE)
-      })
-    })
-  }
-
-  const customValidate = (formData: object, errors: FormValidation) => {
-    validateRequiredFormat(formData, errors)
-    return errors
-  }
 
   const customFormats = {
     zip: /\b\d{5}\b/,
@@ -163,7 +144,6 @@ const FormTestPage = ({
                 onError={(errors) => {
                   form.setErrors(errors, form.stepIndex)
                 }}
-                customValidate={customValidate}
                 showErrorList={false}
                 omitExtraData
                 liveOmit

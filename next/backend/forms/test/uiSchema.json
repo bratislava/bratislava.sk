@@ -49,7 +49,7 @@
       }
     },
     "textAreas": {
-      "ui:order": ["firstName", "lastName", "phone", "password", "psc", "textAreas"],
+      "ui:order": ["pros", "cons"],
       "pros": {
         "ui:widget": "TextArea",
         "ui:label": false,

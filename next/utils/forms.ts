@@ -1,7 +1,5 @@
 import Form from '@rjsf/core'
-import { RJSFSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
-import { RefObject, useEffect, useRef, useState } from 'react'
-import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
+import { ErrorSchema, RJSFSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { validateKeyword } from '@utils/api'
 import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
 import { JSONSchema7Definition } from 'json-schema'
@@ -132,13 +130,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
   const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
 
-  // const errors = await validateAsyncProperties(
-  //   currentSchema,
-  //   formRef?.current?.state.formData,
-  //   [],
-  // )
-  // setExtraErrors(errors)
-
   console.log('FORM DATA:', formData)
 
   useEffect(() => {
@@ -179,10 +170,18 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setErrors(updatedErrors)
   }
 
-  const validate = () => {
+  const validate = async () => {
     if (formRef?.current?.validate) {
       formRef?.current?.validateForm()
     }
+    // if (schema.$async === true) {
+    //   const newExtraErrors = await validateAsyncProperties(
+    //     currentSchema,
+    //     formRef?.current?.state.formData,
+    //     [],
+    //   )
+    //   setExtraErrors(newExtraErrors)
+    // }
   }
 
   return {
