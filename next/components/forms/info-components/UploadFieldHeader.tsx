@@ -9,7 +9,7 @@ interface UploadFieldHeaderProps {
 }
 
 const UploadFieldHeader = (props: UploadFieldHeaderProps) => {
-  const { label, htmlFor, required, description } = props
+  const { label, htmlFor, required, description = '' } = props
 
   // STYLES
   const labelStyle = cx('text-20-semibold relative text-gray-800', {

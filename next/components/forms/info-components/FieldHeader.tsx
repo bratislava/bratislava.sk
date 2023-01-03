@@ -28,8 +28,8 @@ const FieldHeader: FC<FieldHeaderProps> = ({
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
-  const labelStyle = cx('relative mb-1 text-20-semibold text-gray-800', {
-    'after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-main-700 after:text-20-semibold':
+  const labelStyle = cx('text-20-semibold relative mb-1 text-gray-800', {
+    'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-main-700':
       required,
   })
 
@@ -45,32 +45,34 @@ const FieldHeader: FC<FieldHeaderProps> = ({
               arrow="bottom"
               alignArrow="right"
               bottom={0}
-              right={-13}
+              left={-13}
               absolute
             />
           </div>
         )
       }
       <div className="flex justify-between">
-        {/* LABEL */}
-        <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>
-          {label}
-        </label>
-        <div className="flex-column flex items-center">
-          {/* OPTIONAL */ !required && explicitOptional && <p className="text-20">Optional</p>}
-          {
-            /* TOOLTIP ICON */
-            tooltip && (
-              <div className="flex-column ml-4 flex items-center">
-                <HelpIcon
-                  className="cursor-pointer"
-                  onMouseOver={() => setIsTooltipOpened(true)}
-                  onMouseLeave={() => setIsTooltipOpened(false)}
-                />
-              </div>
-            )
-          }
+        <div className="flex">
+          {/* LABEL */}
+          <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>
+            {label}
+          </label>
+          <div className="flex-column h-8 flex items-center">
+            {
+              /* TOOLTIP ICON */
+              tooltip && (
+                <div className="flex-column ml-5 flex items-center">
+                  <HelpIcon
+                    className="cursor-pointer"
+                    onMouseOver={() => setIsTooltipOpened(true)}
+                    onMouseLeave={() => setIsTooltipOpened(false)}
+                  />
+                </div>
+              )
+            }
+          </div>
         </div>
+        {/* OPTIONAL */ !required && explicitOptional && <p className="text-16">Optional</p>}
       </div>
       {
         /* DESCRIPTION */
