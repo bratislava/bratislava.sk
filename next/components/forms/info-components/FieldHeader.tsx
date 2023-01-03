@@ -8,7 +8,7 @@ interface FieldHeaderProps {
   label: string
   htmlFor?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   description?: string
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
@@ -19,7 +19,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
   label,
   htmlFor,
   required,
-  explicitOptional,
+  explicitOptional = 'none',
   description,
   labelProps,
   descriptionProps,
@@ -28,8 +28,8 @@ const FieldHeader: FC<FieldHeaderProps> = ({
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
-  const labelStyle = cx('text-20-semibold relative mb-1 text-gray-800', {
-    'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:-top-0.5 after:text-main-700':
+  const labelStyle = cx('text-20-semibold relative text-gray-800', {
+    'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
       required,
   })
 
@@ -45,19 +45,24 @@ const FieldHeader: FC<FieldHeaderProps> = ({
               arrow="bottom"
               alignArrow="right"
               bottom={0}
-              left={-13}
+              right={-13}
               absolute
             />
           </div>
         )
       }
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-1">
         <div className="flex">
           {/* LABEL */}
           <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>
             {label}
           </label>
-          <div className="flex-column h-8 flex items-center">
+          {
+            /* OPTIONAL */ !required && explicitOptional === 'left' && (
+              <p className="text-16 ml-1 mb-1 flex items-end">(optional)</p>
+            )
+          }
+          <div className="flex-column flex items-center">
             {
               /* TOOLTIP ICON */
               tooltip && (
@@ -72,7 +77,11 @@ const FieldHeader: FC<FieldHeaderProps> = ({
             }
           </div>
         </div>
-        {/* OPTIONAL */ !required && explicitOptional && <p className="text-16">Optional</p>}
+        {
+          /* OPTIONAL */ !required && explicitOptional === 'right' && (
+            <p className="text-16 ml-2 flex items-center">Optional</p>
+          )
+        }
       </div>
       {
         /* DESCRIPTION */

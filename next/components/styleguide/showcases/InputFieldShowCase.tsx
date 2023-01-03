@@ -26,7 +26,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          explicitOptional
+          explicitOptional="right"
         />
         <InputField
           label="Label"
