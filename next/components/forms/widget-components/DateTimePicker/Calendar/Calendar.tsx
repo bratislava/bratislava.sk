@@ -9,11 +9,11 @@ import { useCalendarState } from 'react-stately'
 import CalendarGrid from './CalendarGrid'
 
 type CalendarBase = {
-  onClose?: () => void
   onSubmit?: () => void
+  onReset?: () => void
 }
 
-const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
+const Calendar = ({ onSubmit, onReset, ...rest }: CalendarBase) => {
   const { locale } = useLocale()
   const state = useCalendarState({
     ...rest,
@@ -55,7 +55,7 @@ const Calendar = ({ onClose, onSubmit, ...rest }: CalendarBase) => {
       </div>
       <CalendarGrid state={state} />
       <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
-        <Button onPress={onClose} text="Zrušiť" variant="plain-black" size="sm" />
+        <Button onPress={onReset} text="Resetovať" variant="plain-black" size="sm" />
         <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>
     </div>

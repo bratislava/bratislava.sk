@@ -39,8 +39,6 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
     spaceTop = 'none',
   }: TextAreaRJSFOptions = options
 
-  const showErrorMessage = rawErrors && rawErrors.length > 0 ? rawErrors[0] : undefined
-
   const handleOnChange = (newValue?: string) => {
     if (!newValue || newValue === '') {
       onChange()
@@ -62,7 +60,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         className={cx('h-[196px]', className)}
         explicitOptional={explicitOptional}
         onChange={handleOnChange}
-        errorMessage={showErrorMessage}
+        errorMessage={rawErrors}
       />
     </WidgetWrapper>
   )

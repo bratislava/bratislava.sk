@@ -1,30 +1,16 @@
-import { describe } from '@jest/globals'
-
-import xmlTemplate from '../../backend/forms/test/xmlTemplate'
+import xmlTemplate from '@backend/forms/test/xmlTemplate'
 import {
   getEform,
-  JsonSchema,
   loadAndBuildXml,
   validateDataWithJsonSchema,
   validateDataWithXsd,
   xmlToJson,
-} from '../../backend/utils/forms'
+} from '@backend/utils/forms'
+import { describe } from '@jest/globals'
+import { JsonSchema } from '@utils/forms'
 
 const xsd =
   '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="comment"><xs:complexType><xs:all><xs:element name="author" type="xs:string"/><xs:element name="content" type="xs:string"/></xs:all></xs:complexType></xs:element></xs:schema>'
-
-const schema: JsonSchema = {
-  type: 'object',
-  required: ['email'],
-  properties: {
-    email: {
-      type: 'string',
-    },
-    phone: {
-      type: 'string',
-    },
-  },
-}
 
 describe('forms utils', () => {
   test('test validate valid data with XSD schema', () => {
@@ -55,25 +41,94 @@ describe('forms utils', () => {
     expect(getNotExistsEform).toThrow('Invalid form name')
   })
 
-  test('test validate data with JSON schema', () => {
+  test('test validate data with JSON schema', async () => {
+    const schema = {
+      type: 'object',
+      required: ['email'],
+      properties: {
+        email: {
+          type: 'string',
+          example: 'dev@bratislava.sk',
+        },
+        phone: {
+          type: 'string',
+        },
+      },
+    }
+
     const data = {
       email: 'dev@bratislava.sk',
     }
 
-    const errors = validateDataWithJsonSchema(data, schema)
+    const errors = await validateDataWithJsonSchema(data, schema)
     expect(errors).toHaveLength(0)
   })
 
-  test('test validate invalid data with JSON schema', () => {
+  test('test validate invalid data with JSON schema', async () => {
+    const schema = {
+      type: 'object',
+      required: ['email'],
+      properties: {
+        email: {
+          type: 'string',
+        },
+        phone: {
+          type: 'string',
+        },
+      },
+    }
+
     const data = {
       phone: '946846365',
     }
 
-    const errors = validateDataWithJsonSchema(data, schema)
+    const errors = await validateDataWithJsonSchema(data, schema)
     expect(errors).toHaveLength(1)
   })
 
+  test('test async validation', async () => {
+    const schema = {
+      $async: true,
+      type: 'object',
+      required: ['user'],
+      properties: {
+        user: {
+          type: 'object',
+          properties: {
+            phone: {
+              type: 'string',
+              isExampleAsyncValidation: {},
+            },
+          },
+          required: ['phone'],
+        },
+      },
+    }
+
+    const data = {
+      user: {
+        phone: '949453861',
+      },
+    }
+
+    const errors = await validateDataWithJsonSchema(data, schema)
+    expect(errors).toHaveLength(0)
+  })
+
   test('json to xml, xml to json', async () => {
+    const schema: JsonSchema = {
+      type: 'object',
+      required: ['email'],
+      properties: {
+        email: {
+          type: 'string',
+        },
+        phone: {
+          type: 'string',
+        },
+      },
+    }
+
     const data = {
       phone: '946846365',
     }
