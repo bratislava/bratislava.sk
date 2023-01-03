@@ -23,6 +23,8 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
   const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
 
+  console.log('FORM DATA:', formData)
+
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
     setFormData({})
@@ -70,7 +72,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   return {
     stepIndex,
     setStepIndex, // only for testing!
-    state: formData,
+    formData,
     setState: setFormData,
     setStepFormData,
     errors,
@@ -78,7 +80,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setErrors: setUniqueErrors,
     previous,
     next,
-    forceNext,
     currentSchema,
     nextSchema,
     previousSchema,

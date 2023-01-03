@@ -3,21 +3,7 @@
     "norender": true
   },
   "inputFields": {
-    "textAreas": {
-      "pros": {
-        "ui:widget": "TextArea",
-        "ui:label": false,
-        "ui:placeholder": "Write some cons please",
-        "ui:options": {
-          "description": "Here write pros",
-          "tooltip": "This is simple tooltip"
-        }
-      },
-      "cons": {
-        "ui:widget": "TextArea",
-        "ui:label": false
-      }
-    },
+    "ui:order": ["firstName", "lastName", "phone", "password", "psc", "textAreas"],
     "firstName": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -68,6 +54,22 @@
         "tooltip": "PSC hint, only numbers",
         "description": "Only numbers",
         "size": "small"
+      }
+    },
+    "textAreas": {
+      "ui:order": ["firstName", "lastName", "phone", "password", "psc", "textAreas"],
+      "pros": {
+        "ui:widget": "TextArea",
+        "ui:label": false,
+        "ui:placeholder": "Write some cons please",
+        "ui:options": {
+          "description": "Here write pros",
+          "tooltip": "This is simple tooltip"
+        }
+      },
+      "cons": {
+        "ui:widget": "TextArea",
+        "ui:label": false
       }
     }
   },

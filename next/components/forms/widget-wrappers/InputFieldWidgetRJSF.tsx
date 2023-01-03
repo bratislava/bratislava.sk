@@ -46,9 +46,14 @@ const InputFieldWidgetRJSF = ({
     size = 'default',
     spaceBottom = 'default',
     spaceTop = 'none',
+    stepOrder,
   } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
+
+  // useEffectOnce(() => {
+  //   setTimeout(() => handleOnChange(value), stepOrder * 100)
+  // })
 
   return (
     <WidgetWrapper

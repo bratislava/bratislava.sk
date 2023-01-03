@@ -109,7 +109,7 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <FinalStep
-              formData={form.state}
+              formData={form.formData}
               formErrors={form.errors}
               slug={formSlug}
               schema={eform.schema}
@@ -125,19 +125,7 @@ const FormTestPage = ({
                 uiSchema={eform.uiSchema}
                 validator={validator}
                 // TODO validate it isn't a problem we forward extraneous data (from other steps) into every step
-                formData={form.state}
-                // currently syncing data only when we change step (and all the data in current step are valid )
-                // TODO instead, hook into onChange and keep data in form state up to date with what's in ThemedForm state
-                // passing data to state onChange in current state prevented the form from updating
-                // onSubmit={(e) => {
-                //   // TODO: save only emitted (omitExtraData)
-                //   console.log('SUBMIT:', e.formData)
-                //   console.log('SUBMIT ERROR:', e.errors)
-                //   form.setSubmitFormData(e.formData)
-                //   form.setErrors(e.errors, form.stepIndex)
-                //   form.validate ? form.validate() : null
-                //   form.setStepIndex(form.stepIndex + 1)
-                // }}
+                formData={form.formData}
                 onChange={(e) => {
                   form.setStepFormData(e.formData)
                   form.validate()

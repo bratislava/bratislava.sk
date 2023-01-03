@@ -7,4 +7,5 @@ export type WidgetOptions = {
   explicitOptional?: boolean
   spaceBottom?: FormSpacingType
   spaceTop?: FormSpacingType
+  stepOrder: number
 }
