@@ -3,6 +3,11 @@ import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { Controller } from 'react-hook-form'
 
+interface Data {
+  email: string
+  password: string
+}
+
 // must use `minLength: 1` to implement required field
 const schema = {
   type: 'object',
@@ -22,11 +27,11 @@ const schema = {
 }
 
 const App = () => {
-  const { handleSubmit, control, errors } = useHookForm({
+  const { handleSubmit, control, errors } = useHookForm<Data>({
     schema,
     defaultValues: { email: '', password: '' },
   })
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data: Data) => console.log(data)
 
   return (
     <div>
