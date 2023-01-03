@@ -1,4 +1,6 @@
+import useAccount from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
+import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { useTranslation } from 'next-i18next'
@@ -28,16 +30,23 @@ const schema = {
 }
 
 const App = () => {
+  const { login, user, error } = useAccount()
   const { t } = useTranslation('account')
-  const { handleSubmit, control, errors } = useHookForm<Data>({
+  const {
+    handleSubmit,
+    control,
+    errors,
+    formState: { isSubmitting },
+  } = useHookForm<Data>({
     schema,
     defaultValues: { email: '', password: '' },
   })
-  const onSubmit = (data: Data) => console.log(data)
+  const onSubmit = (data: Data) => login(data)
 
   return (
     <div>
       <h1 className="text-h3">{t('login-title')}</h1>
+      {user && <Alert message={user.getUsername()} type="success" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
@@ -65,11 +74,13 @@ const App = () => {
           )}
         />
         <Button
-          className="min-w-full mt-4"
+          className="min-w-full my-4"
           type="submit"
           text={t('login-submit')}
           variant="category"
+          disabled={isSubmitting}
         />
+        {error && <Alert message={t(error.code)} type="error" />}
       </form>
     </div>
   )

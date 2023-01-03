@@ -6,5 +6,7 @@
   "password-label": "Password",
   "password-placeholder": "Password",
   "password-required": "Password is required",
-  "login-submit": "Login"
+  "login-submit": "Login",
+
+  "NotAuthorizedException": "Unauthorized"
 }

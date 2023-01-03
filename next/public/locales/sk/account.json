@@ -6,5 +6,7 @@
   "password-label": "Heslo",
   "password-placeholder": "Heslo",
   "password-required": "Heslo je povinné",
-  "login-submit": "Prihlásiť sa"
+  "login-submit": "Prihlásiť sa",
+
+  "NotAuthorizedException": "Unauthorized"
 }
