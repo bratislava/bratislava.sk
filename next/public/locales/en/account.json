@@ -1,12 +1,12 @@
 {
-  "login-title": "Login",
-  "email-label": "E-mail",
-  "email-placeholder": "E-mail",
-  "email-required": "E-mail is required",
-  "password-label": "Password",
-  "password-placeholder": "Password",
-  "password-required": "Password is required",
-  "login-submit": "Login",
+  "login_title": "Login",
+  "email_label": "E-mail",
+  "email_placeholder": "E-mail",
+  "email_required": "E-mail is required",
+  "password_label": "Password",
+  "password_placeholder": "Password",
+  "password_required": "Password is required",
+  "login_submit": "Login",
 
   "NotAuthorizedException": "Unauthorized"
 }

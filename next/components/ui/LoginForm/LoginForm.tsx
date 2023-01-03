@@ -18,12 +18,12 @@ const schema = {
     email: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'account:email-required' },
+      errorMessage: { minLength: 'account:email_required' },
     },
     password: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'account:password-required' },
+      errorMessage: { minLength: 'account:password_required' },
     },
   },
   required: ['email', 'password'],
@@ -45,7 +45,7 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-h3">{t('login-title')}</h1>
+      <h1 className="text-h3">{t('login_title')}</h1>
       {user && <Alert message={user.getUsername()} type="success" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
@@ -53,8 +53,8 @@ const App = () => {
           control={control}
           render={({ field }) => (
             <InputField
-              label={t('email-label')}
-              placeholder={t('email-placeholder')}
+              label={t('email_label')}
+              placeholder={t('email_placeholder')}
               {...field}
               errorMessage={errors.email}
             />
@@ -65,8 +65,8 @@ const App = () => {
           control={control}
           render={({ field }) => (
             <InputField
-              label={t('password-label')}
-              placeholder={t('password-placeholder')}
+              label={t('password_label')}
+              placeholder={t('password_placeholder')}
               type="password"
               {...field}
               errorMessage={errors.password}
@@ -76,7 +76,7 @@ const App = () => {
         <Button
           className="min-w-full my-4"
           type="submit"
-          text={t('login-submit')}
+          text={t('login_submit')}
           variant="category"
           disabled={isSubmitting}
         />

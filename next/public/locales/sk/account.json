@@ -1,12 +1,12 @@
 {
-  "login-title": "Prihláste sa do svojho konta",
-  "email-label": "E-mail",
-  "email-placeholder": "E-mail",
-  "email-required": "E-mail je povinný",
-  "password-label": "Heslo",
-  "password-placeholder": "Heslo",
-  "password-required": "Heslo je povinné",
-  "login-submit": "Prihlásiť sa",
+  "login_title": "Prihláste sa do svojho konta",
+  "email_label": "E-mail",
+  "email_placeholder": "E-mail",
+  "email_required": "E-mail je povinný",
+  "password_label": "Heslo",
+  "password_placeholder": "Heslo",
+  "password_required": "Heslo je povinné",
+  "login_submit": "Prihlásiť sa",
 
   "NotAuthorizedException": "Unauthorized"
 }
