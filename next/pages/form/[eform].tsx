@@ -78,6 +78,7 @@ const FormTestPage = ({
     zip: /\b\d{5}\b/,
   }
   const validator = customizeValidator({ customFormats })
+
   return (
     <PageWrapper
       locale={page.locale}
@@ -128,19 +129,25 @@ const FormTestPage = ({
                 // currently syncing data only when we change step (and all the data in current step are valid )
                 // TODO instead, hook into onChange and keep data in form state up to date with what's in ThemedForm state
                 // passing data to state onChange in current state prevented the form from updating
-                onSubmit={(e) => {
-                  form.setState({ ...form.state, ...e.formData })
-                  form.setErrors(e.errors, form.stepIndex)
-                  form.setStepIndex(form.stepIndex + 1)
-                }}
+                // onSubmit={(e) => {
+                //   // TODO: save only emitted (omitExtraData)
+                //   console.log('SUBMIT:', e.formData)
+                //   console.log('SUBMIT ERROR:', e.errors)
+                //   form.setSubmitFormData(e.formData)
+                //   form.setErrors(e.errors, form.stepIndex)
+                //   form.validate ? form.validate() : null
+                //   form.setStepIndex(form.stepIndex + 1)
+                // }}
                 onChange={(e) => {
-                  form.setState({ ...form.state, ...e.formData })
+                  form.setStepFormData(e.formData)
+                  form.validate()
                 }}
                 onError={(errors) => {
-                  console.log('ERRORS:', errors)
                   form.setErrors(errors, form.stepIndex)
-                  form.setStepIndex(form.stepIndex + 1)
                 }}
+                showErrorList={false}
+                omitExtraData
+                liveOmit
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />

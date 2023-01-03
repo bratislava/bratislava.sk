@@ -7,9 +7,11 @@ import { RefObject, useEffect, useRef, useState } from 'react'
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
 export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const [stepIndex, setStepIndex] = useState(0)
-  const [state, setState] = useState({})
+  const [formData, setFormData] = useState<RJSFSchema>({})
 
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
+
+  console.log('UPDATED STATE:', formData)
 
   const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
     let updatedErrors: RJSFValidationError[][] = []
@@ -24,7 +26,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setErrors(updatedErrors)
   }
 
-  console.log('DATA:', state)
+  // console.log('DATA:', state)
 
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
@@ -38,12 +40,19 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
 
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => {
-    formRef?.current?.validateForm()
-    formRef?.current?.submit()
+    setStepIndex(stepIndex + 1)
   }
 
   const forceNext = () => {
     formRef?.current?.submit()
+  }
+
+  const setStepFormData = (stepFormData: RJSFSchema) => {
+    const newState = { ...formData }
+    Object.entries(stepFormData).forEach(([key, value]: [string, RJSFSchema]) => {
+      newState[key] = value
+    })
+    setFormData(newState)
   }
 
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
@@ -52,10 +61,16 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
   const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
 
+  const validate = () => {
+    if (formRef?.current?.validate) {
+      formRef?.current?.validateForm()
+    }
+  }
+
   // TODO consider validating steps can be merged into single schema without error on mount
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
-    setState({})
+    setFormData({})
     setStepIndex(0)
   }, [eformSlug, schema])
 
@@ -70,9 +85,11 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   return {
     stepIndex,
     setStepIndex, // only for testing!
-    state,
-    setState,
+    state: formData,
+    setState: setFormData,
+    setStepFormData,
     errors,
+    validate,
     setErrors: setUniqueErrors,
     previous,
     next,
