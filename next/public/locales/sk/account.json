@@ -1,0 +1,10 @@
+{
+  "login-title": "Prihláste sa do svojho konta",
+  "email-label": "E-mail",
+  "email-placeholder": "E-mail",
+  "email-required": "E-mail je povinný",
+  "password-label": "Heslo",
+  "password-placeholder": "Heslo",
+  "password-required": "Heslo je povinné",
+  "login-submit": "Prihlásiť sa"
+}

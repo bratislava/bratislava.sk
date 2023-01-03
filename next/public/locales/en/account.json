@@ -1,0 +1,10 @@
+{
+  "login-title": "Login",
+  "email-label": "E-mail",
+  "email-placeholder": "E-mail",
+  "email-required": "E-mail is required",
+  "password-label": "Password",
+  "password-placeholder": "Password",
+  "password-required": "Password is required",
+  "login-submit": "Login"
+}

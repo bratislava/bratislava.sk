@@ -1,6 +1,7 @@
 import useHookForm from '@utils/useHookForm'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
+import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
 interface Data {
@@ -15,18 +16,19 @@ const schema = {
     email: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'email field is required' },
+      errorMessage: { minLength: 'account:email-required' },
     },
     password: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'password field is required' },
+      errorMessage: { minLength: 'account:password-required' },
     },
   },
   required: ['email', 'password'],
 }
 
 const App = () => {
+  const { t } = useTranslation('account')
   const { handleSubmit, control, errors } = useHookForm<Data>({
     schema,
     defaultValues: { email: '', password: '' },
@@ -35,13 +37,18 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-h3">login</h1>
+      <h1 className="text-h3">{t('login-title')}</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
-            <InputField label="email" placeholder="email" {...field} errorMessage={errors.email} />
+            <InputField
+              label={t('email-label')}
+              placeholder={t('email-placeholder')}
+              {...field}
+              errorMessage={errors.email}
+            />
           )}
         />
         <Controller
@@ -49,15 +56,20 @@ const App = () => {
           control={control}
           render={({ field }) => (
             <InputField
-              label="password"
-              placeholder="password"
+              label={t('password-label')}
+              placeholder={t('password-placeholder')}
               type="password"
               {...field}
               errorMessage={errors.password}
             />
           )}
         />
-        <Button className="min-w-full mt-4" type="submit" text="submit" variant="category" />
+        <Button
+          className="min-w-full mt-4"
+          type="submit"
+          text={t('login-submit')}
+          variant="category"
+        />
       </form>
     </div>
   )
