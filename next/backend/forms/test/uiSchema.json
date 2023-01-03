@@ -67,6 +67,7 @@
   },
   "fileUploads": {
     "ui:hideError": true,
+    "ui:order": ["importButtonOneFile", "importButtonMultipleFiles", "importDragAndDropOneFile", "importDragAndDropMultipleFiles"],
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
@@ -100,24 +101,9 @@
       }
     }
   },
-  "textAreas": {
-    "ui:hideError": true,
-    "pros": {
-      "ui:widget": "TextArea",
-      "ui:label": false,
-      "ui:placeholder": "Write some cons please",
-      "ui:options": {
-        "description": "Here write pros",
-        "tooltip": "This is simple tooltip"
-      }
-    },
-    "cons": {
-      "ui:widget": "TextArea",
-      "ui:label": false
-    }
-  },
   "selectFields": {
     "ui:hideError": true,
+    "ui:order": ["school", "diplomas", "years"],
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,
@@ -142,6 +128,7 @@
   },
   "chooseOneOf": {
     "ui:hideError": true,
+    "ui:order": ["chooseOne", "overlayInput", "notOverlayInput", "againSchool"],
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
@@ -176,6 +163,7 @@
   },
   "checkBoxes": {
     "ui:hideError": true,
+    "ui:order": ["favouriteFruits", "firstBonus", "secondBonus"],
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
@@ -206,12 +194,14 @@
     }
   },
   "conditionalStep": {
+    "ui:order": ["customText"],
     "customText": {
       "ui:widget": "InputField",
       "ui:label": false
     }
   },
   "user": {
+    "ui:order": ["phone"],
     "phone": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -223,6 +213,7 @@
   },
   "datePicker": {
     "ui:hideError": true,
+    "ui:order": ["birth"],
     "birth": {
       "ui:widget": "DatePicker",
       "ui:label": false,
@@ -233,6 +224,7 @@
   },
   "timePicker": {
     "ui:hideError": true,
+    "ui:order": ["meeting-time"],
     "meeting-time": {
       "ui:widget": "TimePicker",
       "ui:label": false,

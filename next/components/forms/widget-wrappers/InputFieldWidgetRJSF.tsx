@@ -46,7 +46,6 @@ const InputFieldWidgetRJSF = ({
     size = 'default',
     spaceBottom = 'default',
     spaceTop = 'none',
-    stepOrder,
   } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
