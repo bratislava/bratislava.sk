@@ -15,7 +15,7 @@ type SelectRJSFOptions = {
 interface SelectFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: SelectRJSFOptions
-  value: any | any[]
+  value: any | any[] | null
   required?: boolean
   disabled?: boolean
   placeholder?: string
@@ -67,7 +67,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
 
   const handleTransformOne = (): EnumOptionsType[] => {
     const transformedValue: EnumOptionsType[] = []
-    if (!enumOptions || Array.isArray(value)) return transformedValue
+    if (!enumOptions || !value || Array.isArray(value)) return transformedValue
 
     for (const option of enumOptions) {
       if (option.value === value) {
@@ -80,7 +80,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
 
   const handleTransformMultiple = (): EnumOptionsType[] => {
     const transformedValue: EnumOptionsType[] = []
-    if (!enumOptions || !Array.isArray(value)) return transformedValue
+    if (!enumOptions || !value || !Array.isArray(value)) return transformedValue
 
     value.forEach((optionValue) => {
       enumOptions.forEach((option) => {
@@ -96,10 +96,6 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   const transformValue = (): EnumOptionsType[] => {
     return type === 'multiple' ? handleTransformMultiple() : handleTransformOne()
   }
-
-  // useEffectOnce(() => {
-  //   setTimeout(() => handleOnChange(value), Math.floor(Math.random() * 300))
-  // })
 
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>

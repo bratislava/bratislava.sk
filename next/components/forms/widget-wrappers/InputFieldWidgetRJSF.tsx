@@ -4,7 +4,6 @@ import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
-import { useEffectOnce } from 'usehooks-ts'
 
 type InputFieldRJSFOptions = {
   type?: 'text' | 'password'
@@ -16,7 +15,7 @@ type InputFieldRJSFOptions = {
 interface InputFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: InputFieldRJSFOptions
-  value: string
+  value: string | null
   required?: boolean
   disabled?: boolean
   placeholder?: string
@@ -64,7 +63,7 @@ const InputFieldWidgetRJSF = ({
         label={label}
         type={type}
         placeholder={placeholder}
-        value={value}
+        value={value ?? undefined}
         errorMessage={rawErrors}
         required={required}
         disabled={disabled}

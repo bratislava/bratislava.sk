@@ -21,7 +21,7 @@ type RadioButtonRJSFOptions = {
 interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: RadioButtonRJSFOptions
-  value: string
+  value: string | null
   errorMessage?: string
   required?: boolean
   disabled?: boolean
@@ -46,7 +46,12 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
   }
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
-      <RadioGroup value={value} onChange={onChange} className={className} label={label}>
+      <RadioGroup
+        value={value ?? undefined}
+        onChange={onChange}
+        className={className}
+        label={label}
+      >
         {enumOptions.map((radioElement: EnumOptionsType) => {
           return (
             <Radio

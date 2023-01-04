@@ -2,6 +2,7 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "ui:order": ["inputFields", "fileUploads", "selectFields", "chooseOneOf", "checkBoxes", "conditionalStep", "user", "datePicker", "timePicker"],
   "inputFields": {
     "ui:order": ["firstName", "lastName", "password", "psc", "textAreas"],
     "ui:hideError": true,

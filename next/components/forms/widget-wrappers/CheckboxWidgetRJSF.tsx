@@ -19,7 +19,7 @@ type CheckboxesRJSFOptions = {
 
 interface CheckboxesWidgetRJSFProps extends WidgetProps {
   options: CheckboxesRJSFOptions
-  value: string[]
+  value: string[] | null
   label: string
   schema: StrictRJSFSchema
   onChange: (value: string[]) => void
@@ -41,7 +41,12 @@ const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   }
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
-      <CheckboxGroup value={value} onChange={onChange} className={className} label={label}>
+      <CheckboxGroup
+        value={value ?? undefined}
+        onChange={onChange}
+        className={className}
+        label={label}
+      >
         {enumOptions.map((option: EnumOptionsType) => {
           return (
             <Checkbox

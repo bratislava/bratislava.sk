@@ -5,7 +5,7 @@
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { FormValidation } from '@rjsf/utils'
+import { FormValidation, StrictRJSFSchema } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
@@ -60,6 +60,20 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
+const initDefaultSchemaFields = (schema: StrictRJSFSchema) => {
+  if (!schema || typeof schema !== 'object') return
+  if (schema.type && schema.type !== 'object' && !schema.default) {
+    Object.assign(schema, { default: null })
+  }
+  Object.values(schema).forEach((value) => {
+    if (Array.isArray(value)) {
+      value.forEach((item) => initDefaultSchemaFields(item))
+    } else {
+      initDefaultSchemaFields(value)
+    }
+  })
+}
+
 const FormTestPage = ({
   footer,
   mainMenu,
@@ -76,6 +90,7 @@ const FormTestPage = ({
   const escapedSlug = formSlug.match(/^[\da-z-]+$/) ? formSlug : ''
   const pageSlug = `form/${escapedSlug}`
 
+  initDefaultSchemaFields(eform.schema)
   const form = useFormStepper(escapedSlug, eform.schema)
 
   const customFormats = {

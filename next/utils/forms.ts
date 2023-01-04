@@ -19,8 +19,12 @@ export const getAllPossibleJsonSchemaProperties = (
   }
 
   const properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+
   if (jsonSchema.then) {
     Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.then))
+  }
+  if (jsonSchema.else) {
+    Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.else))
   }
   if (jsonSchema.allOf) {
     jsonSchema.allOf.forEach((s) => {
@@ -119,7 +123,7 @@ export const getLabel = (schemaArray: JsonSchema[], fieldName: string): string =
       // if item is object and it has not fieldName we are finding, use recursively this function on array of values
       const itemValues: JsonSchema[] = Object.values(item)
       label = getLabel(itemValues, fieldName)
-    } else {
+    } else if (item && typeof item === 'object') {
       // if item is object, includes fieldName we are finding, take value of fieldName and save title
       const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
         ([nestedFieldName]) => nestedFieldName === fieldName,

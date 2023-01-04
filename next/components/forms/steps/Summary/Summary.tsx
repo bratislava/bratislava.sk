@@ -20,24 +20,24 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
     })
   }
 
-  const getRequiredEmptyData = (data: TransformedFormData[], schemaPath: string) => {
-    console.log('SCHEMA PATH:', schemaPath)
-    formErrors.forEach((stepErrors) => {
-      stepErrors.forEach((error) => {
-        if (error.name === 'required' && error.property === schemaPath) {
-          const field: TransformedFormData = {
-            label: schema?.allOf
-              ? getLabel(schema?.allOf, error.params.missingProperty)
-              : error.params.missingProperty,
-            value: '-',
-            schemaPath,
-            isError: true,
-          }
-          data.push(field)
-        }
-      })
-    })
-  }
+  // const getRequiredEmptyData = (data: TransformedFormData[], schemaPath: string) => {
+  //   console.log('SCHEMA PATH:', schemaPath)
+  //   formErrors.forEach((stepErrors) => {
+  //     stepErrors.forEach((error) => {
+  //       if (error.name === 'required' && error.property === schemaPath) {
+  //         const field: TransformedFormData = {
+  //           label: schema?.allOf
+  //             ? getLabel(schema?.allOf, error.params.missingProperty)
+  //             : error.params.missingProperty,
+  //           value: '-',
+  //           schemaPath,
+  //           isError: true,
+  //         }
+  //         data.push(field)
+  //       }
+  //     })
+  //   })
+  // }
 
   const getAllTransformedData = (
     data: TransformedFormData[],
@@ -45,9 +45,9 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
     parent?: JsonSchema,
   ) => {
     if (!parent) return
-    getRequiredEmptyData(data, schemaPath)
     Object.entries(parent).forEach(([key, value]: [string, JsonSchema]) => {
-      if (typeof value === 'object' && !Array.isArray(value)) {
+      console.log(key, ':', value)
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
         const newSchemaPath = `${schemaPath}.${key}`
         getAllTransformedData(data, newSchemaPath, value)
       } else {
@@ -68,7 +68,7 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
   const transformStep = ([key, step]: [string, JSONSchema7Definition]): TransformedFormStep => {
     const label = schema?.allOf ? getLabel(schema.allOf, key) : key
     const data: TransformedFormData[] = []
-    getAllTransformedData(data, '', step)
+    getAllTransformedData(data, `.${key}`, step)
     return { key, label, data }
   }
 
