@@ -16,7 +16,12 @@ interface Props<T> {
 export default function useHookForm<T extends FieldValues>({ schema, defaultValues }: Props<T>) {
   const { t } = useTranslation()
   const form = useForm({
-    resolver: ajvResolver(schema as JSONSchemaType<T>),
+    resolver: ajvResolver(schema as JSONSchemaType<T>, {
+      formats: {
+        email:
+          "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
+      },
+    }),
     defaultValues,
   })
 

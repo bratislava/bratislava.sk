@@ -3,6 +3,7 @@
   "email_label": "E-mail",
   "email_placeholder": "E-mail",
   "email_required": "E-mail je povinný",
+  "email_format": "E-mail nie je valídny",
   "password_label": "Heslo",
   "password_placeholder": "Heslo",
   "password_description": "Požiadavky na heslo",

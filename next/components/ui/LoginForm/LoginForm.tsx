@@ -18,7 +18,8 @@ const schema = {
     email: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'account:email_required' },
+      format: 'email',
+      errorMessage: { minLength: 'account:email_required', format: 'account:email_format' },
     },
     password: {
       type: 'string',
@@ -46,6 +47,7 @@ const App = () => {
   return (
     <div>
       <h1 className="text-h3 mb-4">{t('login_title')}</h1>
+      {error && <Alert message={t(error.code)} type="error" className="min-w-full mb-4" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
@@ -76,13 +78,12 @@ const App = () => {
           )}
         />
         <Button
-          className="min-w-full my-4"
+          className="min-w-full mb-4"
           type="submit"
           text={t('login_submit')}
           variant="category"
           disabled={isSubmitting}
         />
-        {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
       </form>
       <div className="flex justify-between">
         <div className="text-20-semibold text-gray-800">{t('forgotten_password_label')}</div>
