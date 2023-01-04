@@ -14,6 +14,7 @@ interface SummaryProps {
 
 const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => {
   const isFieldError = (schemaPath: string, fieldName: string): boolean => {
+    console.log(schemaPath, ':', fieldName)
     const errorProperty = `${schemaPath}.${fieldName}`
     return formErrors.some((errors) => {
       return errors.some((error) => error.property === errorProperty)
@@ -46,7 +47,6 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
   ) => {
     if (!parent) return
     Object.entries(parent).forEach(([key, value]: [string, JsonSchema]) => {
-      console.log(key, ':', value)
       if (value && typeof value === 'object' && !Array.isArray(value)) {
         const newSchemaPath = `${schemaPath}.${key}`
         getAllTransformedData(data, newSchemaPath, value)

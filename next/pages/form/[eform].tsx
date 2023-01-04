@@ -149,9 +149,11 @@ const FormTestPage = ({
                 validator={validator}
                 formData={form.formData}
                 onSubmit={(e) => {
+                  form.increaseStepErrors()
                   form.setStepFormData(e.formData)
                   const isFormValid = form.validate()
                   if (isFormValid) {
+                    form.setErrors([], form.stepIndex)
                     form.next()
                   }
                 }}

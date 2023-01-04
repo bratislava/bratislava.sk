@@ -164,7 +164,7 @@
   },
   "checkBoxes": {
     "ui:hideError": true,
-    "ui:order": ["favouriteFruits", "firstBonus", "secondBonus"],
+    "ui:order": ["favouriteFruits", "checkboxBonus"],
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
@@ -184,6 +184,7 @@
       }
     },
     "checkboxBonus": {
+      "ui:order": ["firstBonus", "secondBonus"],
       "firstBonus": {
         "ui:widget": "InputField",
         "ui:label": false

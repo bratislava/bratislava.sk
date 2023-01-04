@@ -3,7 +3,7 @@ import { ErrorSchema, RJSFSchema, RJSFValidationError, StrictRJSFSchema } from '
 import { validateKeyword } from '@utils/api'
 import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
 import { JSONSchema7Definition } from 'json-schema'
-import { get, merge } from 'lodash'
+import { forEach, get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
 
 export type JsonSchema = JSONSchema7Definition
@@ -159,8 +159,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const isComplete = stepIndex === stepsLength
 
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
-  const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
-  const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
 
   console.log('FORM DATA:', formData)
   console.log('ERRORS:', errors)
@@ -192,8 +190,15 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     // }
   }
 
+  const increaseStepErrors = () => {
+    if (stepIndex - 1 === errors.length) {
+      setErrors([...errors, []])
+    }
+  }
+
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => setStepIndex(stepIndex + 1)
+
   const submitStep = () => formRef?.current?.submit()
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
@@ -205,15 +210,20 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   }
 
   const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
-    let updatedErrors: RJSFValidationError[][] = []
-    if (errors.length === actualStepIndex) {
-      updatedErrors = [...errors]
-      updatedErrors.push(newErrors)
-    } else if (errors.length > actualStepIndex) {
-      updatedErrors = errors.map((innerErrors: RJSFValidationError[], index: number) =>
-        index === actualStepIndex ? [...newErrors] : [...innerErrors],
-      )
-    }
+    const updatedErrors: RJSFValidationError[][] = []
+    const stepsRange = [...Array.from({ length: stepIndex + 1 }).keys()]
+
+    stepsRange.forEach((id) => {
+      const stepErrors = errors[id]
+      if (id === actualStepIndex) {
+        updatedErrors.push([...newErrors])
+      } else if (stepErrors) {
+        updatedErrors.push([...stepErrors])
+      } else {
+        updatedErrors.push([])
+      }
+    })
+
     setErrors(updatedErrors)
   }
 
@@ -228,9 +238,8 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     previous,
     next,
     submitStep,
+    increaseStepErrors,
     currentSchema,
-    nextSchema,
-    previousSchema,
     isComplete,
     formRef,
     extraErrors,
