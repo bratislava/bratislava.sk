@@ -108,6 +108,34 @@ const validateAsyncProperties = async (
   return errors
 }
 
+export const getLabel = (schemaArray: JsonSchema[], fieldName: string): string => {
+  // need to find title of field in schema
+  let label = fieldName
+  for (const item of schemaArray) {
+    if (Array.isArray(item)) {
+      // if item is array, use recursively this function on it
+      label = getLabel(item, fieldName)
+    } else if (item && typeof item === 'object' && !Object.keys(item).includes(fieldName)) {
+      // if item is object and it has not fieldName we are finding, use recursively this function on array of values
+      const itemValues: JsonSchema[] = Object.values(item)
+      label = getLabel(itemValues, fieldName)
+    } else {
+      // if item is object, includes fieldName we are finding, take value of fieldName and save title
+      const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
+        ([nestedFieldName]) => nestedFieldName === fieldName,
+      )
+      if (fieldValue && fieldValue[1] && typeof fieldValue[1] !== 'boolean') {
+        label = fieldValue[1].title ?? fieldName
+      }
+    }
+    if (label !== fieldName) {
+      // if label is different from fieldName, return it and end recursion
+      return label
+    }
+  }
+  return label
+}
+
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
@@ -131,6 +159,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const previousSchema = steps ? (steps[stepIndex - 1] as RJSFSchema) : {}
 
   console.log('FORM DATA:', formData)
+  console.log('ERRORS:', errors)
 
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change

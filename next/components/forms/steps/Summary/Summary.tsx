@@ -1,8 +1,9 @@
-import { JsonSchema } from '@backend/utils/forms'
 import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import { getLabel, JsonSchema } from '@utils/forms'
+import { JSONSchema7Definition } from 'json-schema'
 
-import SummaryRow from './SummaryRow'
-import TransformedFormData from './TransformedFormData'
+import SummaryStep from './SummaryStep'
+import { TransformedFormData, TransformedFormStep } from './TransformedFormData'
 
 interface SummaryProps {
   formData: Record<string, JsonSchema>
@@ -12,37 +13,6 @@ interface SummaryProps {
 }
 
 const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => {
-  const getLabel = (schemaArray: JsonSchema[], fieldName: string): string => {
-    // need to find title of field in schema
-    let label = fieldName
-    for (const item of schemaArray) {
-      if (Array.isArray(item)) {
-        // if item is array, use recursively this function on it
-        label = getLabel(item, fieldName)
-      } else if (item && typeof item === 'object' && !Object.keys(item).includes(fieldName)) {
-        // if item is object and it has not fieldName we are finding, use recursively this function on array of values
-        const itemValues: JsonSchema[] = Object.values(item)
-        label = getLabel(itemValues, fieldName)
-      } else if (item && typeof item === 'object' && !item.required && !item.properties) {
-        // if item is object, includes fieldName we are finding and not includes required or properties, take value of fieldName and save title
-        const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
-          ([nestedFieldName]) => nestedFieldName === fieldName,
-        )
-        if (fieldValue && fieldValue[1] && typeof fieldValue[1] !== 'boolean') {
-          label =
-            fieldValue[1].title && fieldValue[1].type && fieldValue[1].type !== 'object'
-              ? fieldValue[1].title
-              : fieldName
-        }
-      }
-      if (label !== fieldName) {
-        // if label is different from fieldName, return it and end recursion
-        return label
-      }
-    }
-    return label
-  }
-
   const isFieldError = (schemaPath: string, fieldName: string): boolean => {
     const errorProperty = `${schemaPath}.${fieldName}`
     return formErrors.some((errors) => {
@@ -95,13 +65,19 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
     })
   }
 
-  const transformedData: TransformedFormData[] = []
-  getAllTransformedData(transformedData, '', formData)
+  const transformStep = ([key, step]: [string, JSONSchema7Definition]): TransformedFormStep => {
+    const label = schema?.allOf ? getLabel(schema.allOf, key) : key
+    const data: TransformedFormData[] = []
+    getAllTransformedData(data, '', step)
+    return { key, label, data }
+  }
+
+  const transformedSteps: TransformedFormStep[] = Object.entries(formData).map(transformStep)
 
   return (
     <div className="my-10">
-      {transformedData.map((data: TransformedFormData, key: number) => {
-        return <SummaryRow key={key} data={data} />
+      {transformedSteps.map((step: TransformedFormStep, key: number) => {
+        return step.data.length > 0 ? <SummaryStep key={key} step={step} /> : null
       })}
     </div>
   )
