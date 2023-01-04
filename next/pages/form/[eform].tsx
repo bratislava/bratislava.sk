@@ -17,6 +17,7 @@ import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import BasePageLayout from '../../components/layouts/BasePageLayout'
@@ -65,18 +66,14 @@ const FormTestPage = ({
   page,
   eform,
 }: AsyncServerProps<typeof getServerSideProps>) => {
+  const [t] = useTranslation('forms')
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
-  let escapedSlug = ''
   const formSlug = forceString(router.query.eform)
-
   // Using string.match because CodeQL tools ignore regex.test as SSRF prevention.
   // eslint-disable-next-line unicorn/prefer-regexp-test
-  if (formSlug.match(/^[\da-z-]+$/)) {
-    escapedSlug = formSlug
-  }
-
+  const escapedSlug = formSlug.match(/^[\da-z-]+$/) ? formSlug : ''
   const pageSlug = `form/${escapedSlug}`
 
   const form = useFormStepper(escapedSlug, eform.schema)
@@ -135,11 +132,13 @@ const FormTestPage = ({
                 schema={form.currentSchema}
                 uiSchema={eform.uiSchema}
                 validator={validator}
-                // TODO validate it isn't a problem we forward extraneous data (from other steps) into every step
                 formData={form.formData}
                 onSubmit={(e) => {
                   form.setStepFormData(e.formData)
-                  form.validate()
+                  const isFormValid = form.validate()
+                  if (isFormValid) {
+                    form.next()
+                  }
                 }}
                 onChange={(e) => {
                   form.setStepFormData(e.formData)
@@ -151,12 +150,11 @@ const FormTestPage = ({
                 omitExtraData
                 liveOmit
               />
-              {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
-              <Button onPress={() => form.next()} text="Next" />
-              <Button
-                onPress={() => form.setStepIndex(form.stepIndex + 1)}
-                text="[DEBUG] Go to next step"
-              />
+              {form.stepIndex !== 0 && (
+                <Button onPress={form.previous} text={t('buttons.previous')} />
+              )}
+              <Button onPress={form.next} text={t('buttons.skip')} />
+              <Button onPress={form.submitStep} text={t('buttons.continue')} />
             </div>
           )}
         </SectionContainer>

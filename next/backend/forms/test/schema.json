@@ -307,6 +307,7 @@
       "properties": {
         "datePicker": {
           "title": "Showcase of DatePicker",
+          "type": "object",
           "required": [],
           "properties": {
             "birth": {
@@ -318,6 +319,7 @@
         },
         "timePicker": {
           "title": "Showcase of TimePicker",
+          "type": "object",
           "required": ["meeting-time"],
           "properties": {
             "meeting-time": {

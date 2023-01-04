@@ -6,5 +6,10 @@
     "unknown": "Nastala neznáma chyba. Skúste to prosím znova."
   },
   "selectAll": "Vybrať všetko",
-  "deselectAll": "Odobrať všetko"
+  "deselectAll": "Odobrať všetko",
+  "buttons": {
+    "previous": "Späť",
+    "skip": "Preskočiť",
+    "continue": "Pokračovať"
+  }
 }

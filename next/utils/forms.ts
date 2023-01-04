@@ -146,10 +146,9 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     }
   }, [stepIndex, steps, stepsLength])
 
-  const validate = () => {
-    if (formRef?.current?.validateForm) {
-      formRef?.current?.validateForm()
-    }
+  const validate = (): boolean | undefined => {
+    return formRef?.current?.validateForm()
+
     // if (schema.$async === true) {
     //   const newExtraErrors = await validateAsyncProperties(
     //     currentSchema,
@@ -161,10 +160,8 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   }
 
   const previous = () => setStepIndex(stepIndex - 1)
-  const next = () => {
-    formRef?.current?.submit()
-    setStepIndex(stepIndex + 1)
-  }
+  const next = () => setStepIndex(stepIndex + 1)
+  const submitStep = () => formRef?.current?.submit()
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
     const newState = { ...formData }
@@ -191,13 +188,13 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     stepIndex,
     setStepIndex, // only for testing!
     formData,
-    setState: setFormData,
     setStepFormData,
     errors,
     validate,
     setErrors: setUniqueErrors,
     previous,
     next,
+    submitStep,
     currentSchema,
     nextSchema,
     previousSchema,
