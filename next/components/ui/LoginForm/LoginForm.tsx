@@ -45,14 +45,14 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-h3">{t('login_title')}</h1>
-      {user && <Alert message={user.getUsername()} type="success" />}
+      <h1 className="text-h3 mb-4">{t('login_title')}</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
             <InputField
+              required
               label={t('email_label')}
               placeholder={t('email_placeholder')}
               {...field}
@@ -65,9 +65,11 @@ const App = () => {
           control={control}
           render={({ field }) => (
             <InputField
+              required
               label={t('password_label')}
               placeholder={t('password_placeholder')}
               type="password"
+              description={t('password_description')}
               {...field}
               errorMessage={errors.password}
             />
@@ -80,8 +82,17 @@ const App = () => {
           variant="category"
           disabled={isSubmitting}
         />
-        {error && <Alert message={t(error.code)} type="error" />}
+        {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
       </form>
+      <div className="flex justify-between">
+        <div className="text-20-semibold text-gray-800">{t('forgotten_password_label')}</div>
+        <Button
+          variant="link-black"
+          href="/"
+          label={t('forgotten_password_button')}
+          endIconHidden
+        />
+      </div>
     </div>
   )
 }

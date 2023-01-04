@@ -59,7 +59,7 @@ export default function useAccount() {
           AWS.config.credentials = credentials
 
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-          credentials.refresh((err: AWSError | undefined) => {
+          credentials.refresh((err?: AWSError) => {
             if (err) {
               setError(err)
             } else {

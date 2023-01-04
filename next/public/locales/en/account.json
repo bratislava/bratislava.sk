@@ -5,8 +5,11 @@
   "email_required": "E-mail is required",
   "password_label": "Password",
   "password_placeholder": "Password",
+  "password_description": "Strong password",
   "password_required": "Password is required",
   "login_submit": "Login",
+  "forgotten_password_label": "Forgot password?",
+  "forgotten_password_button": "Reset password",
 
   "NotAuthorizedException": "Unauthorized"
 }

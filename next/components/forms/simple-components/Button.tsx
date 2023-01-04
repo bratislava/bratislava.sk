@@ -1,7 +1,7 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
-import React, { forwardRef, ReactNode, RefObject } from 'react'
+import { forwardRef, ReactNode, RefObject } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
 
 import MLink from './MLink'
@@ -25,6 +25,7 @@ type ButtonBase = {
   text?: string
   startIcon?: ReactNode
   endIcon?: ReactNode
+  endIconHidden?: boolean
 }
 
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
@@ -57,6 +58,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       text,
       startIcon,
       endIcon,
+      endIconHidden,
       ...rest
     },
     ref,
@@ -206,14 +208,16 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           className={style}
           {...buttonPropsFixed}
         >
-          <span
-            className={cx('flex justify-center items-center', {
-              'ml-2 h-6 w-6': size === 'lg',
-              'w-5 h-5 ml-1': size === 'sm',
-            })}
-          >
-            <ArrowRightIcon />
-          </span>
+          {!endIconHidden && (
+            <span
+              className={cx('flex justify-center items-center', {
+                'ml-2 h-6 w-6': size === 'lg',
+                'w-5 h-5 ml-1': size === 'sm',
+              })}
+            >
+              <ArrowRightIcon />
+            </span>
+          )}
         </MLink>
       )
     }
