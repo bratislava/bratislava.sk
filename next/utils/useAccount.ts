@@ -3,12 +3,9 @@ import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
 import { useEffect, useState } from 'react'
 
-const TEST_USER_POOL_ID = 'eu-central-1_FZDV0j2ZK'
-const TEST_CLIENT_ID = '1pdeai19927kshpgikd6l1ptc6'
-const TEST_IDENTITY_POOL_ID = 'eu-central-1:e31a6d0a-5e01-4600-a20a-e4fb973d3893'
 const poolData = {
-  UserPoolId: TEST_USER_POOL_ID, // Your user pool id here
-  ClientId: TEST_CLIENT_ID, // Your client id here
+  UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID,
+  ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
 }
 const userPool = new CognitoUserPool(poolData)
 
@@ -49,15 +46,14 @@ export default function useAccount() {
           // const accessToken = result.getAccessToken().getJwtToken()
           // console.log('accessToken', accessToken)
           // POTENTIAL: Region needs to be set if not already set previously elsewhere.
-          AWS.config.region = 'eu-central-1'
+          AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
           const credentials = new AWS.CognitoIdentityCredentials({
-            IdentityPoolId: TEST_IDENTITY_POOL_ID,
+            IdentityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID,
             Logins: {
               // Change the key below according to the specific region your user pool is in.
-              [`cognito-idp.eu-central-1.amazonaws.com/${TEST_USER_POOL_ID}`]: result
-                .getIdToken()
-                .getJwtToken(),
+              [`cognito-idp.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID}`]:
+                result.getIdToken().getJwtToken(),
             },
           })
           AWS.config.credentials = credentials
