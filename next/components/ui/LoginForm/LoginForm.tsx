@@ -41,7 +41,7 @@ const App = () => {
     schema,
     defaultValues: { email: '', password: '' },
   })
-  const onSubmit = (data: Data) => login(data)
+  const onSubmit = (data: Data) => login(data.email, data.password)
 
   return (
     <div>

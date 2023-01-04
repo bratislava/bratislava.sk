@@ -4,14 +4,14 @@ import { AWSError } from 'aws-sdk/global'
 import { useEffect, useState } from 'react'
 
 const poolData = {
-  UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID,
-  ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
+  UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
+  ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
 }
 const userPool = new CognitoUserPool(poolData)
 
 export default function useAccount() {
-  const [user, setUser] = useState<CognitoUser>(null)
-  const [error, setError] = useState<AWSError>(null)
+  const [user, setUser] = useState<CognitoUser | null>(null)
+  const [error, setError] = useState<AWSError | undefined | null>(null)
 
   useEffect(() => {
     const currentUser = userPool.getCurrentUser()
@@ -25,7 +25,7 @@ export default function useAccount() {
     }
   }
 
-  const login = ({ email, password }) => {
+  const login = (email: string, password: string) => {
     // login into cognito using aws sdk
     const authenticationData = {
       Username: email,
@@ -49,7 +49,7 @@ export default function useAccount() {
           AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
           const credentials = new AWS.CognitoIdentityCredentials({
-            IdentityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID,
+            IdentityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '',
             Logins: {
               // Change the key below according to the specific region your user pool is in.
               [`cognito-idp.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID}`]:
@@ -59,7 +59,7 @@ export default function useAccount() {
           AWS.config.credentials = credentials
 
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-          credentials.refresh((err: AWSError) => {
+          credentials.refresh((err: AWSError | undefined) => {
             if (err) {
               setError(err)
             } else {

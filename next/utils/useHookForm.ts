@@ -23,7 +23,7 @@ export default function useHookForm<T extends FieldValues>({ schema, defaultValu
   const errors: Errors = {}
   Object.keys(form.formState.errors).forEach((key: string) => {
     const errorMessage = form.formState.errors[key]?.message?.toString()
-    errors[key] = [t(errorMessage)]
+    errors[key] = [t(errorMessage || 'error')]
   })
 
   return { ...form, errors }
