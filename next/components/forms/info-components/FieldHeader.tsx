@@ -59,7 +59,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
           </label>
           {
             /* OPTIONAL */ !required && explicitOptional === 'left' && (
-              <p className="text-16 ml-1 mb-1 flex items-end">(optional)</p>
+              <p className="text-16 ml-1 mb-1 flex items-center">(optional)</p>
             )
           }
           <div className="flex-column flex items-center">
@@ -79,7 +79,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
         </div>
         {
           /* OPTIONAL */ !required && explicitOptional === 'right' && (
-            <p className="text-16 ml-2 flex items-center">Optional</p>
+            <p className="text-16 ml-2 flex items-center">(optional)</p>
           )
         }
       </div>
