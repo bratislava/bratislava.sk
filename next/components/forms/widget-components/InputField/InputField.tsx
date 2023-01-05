@@ -10,6 +10,8 @@ import { useTextField } from 'react-aria'
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
 
+export type LeftIconVariants = 'person' | 'mail' | 'call' | 'lock'
+
 interface InputBase {
   label: string
   type?: 'text' | 'password'
@@ -18,7 +20,7 @@ interface InputBase {
   description?: string
   className?: string
   value?: string
-  leftIcon?: 'person' | 'mail' | 'call' | 'lock'
+  leftIcon?: LeftIconVariants
   required?: boolean
   explicitOptional?: boolean
   resetIcon?: boolean

@@ -33,6 +33,7 @@ module.exports = {
       xs: '360px',
       sm: '640px',
       md: '768px',
+      mdCustom: '850px',
       lg: '1024px',
       '1.5lg': '1110px',
       xl: '1280px',
@@ -233,6 +234,9 @@ module.exports = {
         88: '22rem', // 352px
         104: '26rem', // 416px
         200: '50rem', // 800px
+      },
+      width: {
+        sm: '320px',
       },
     },
   },

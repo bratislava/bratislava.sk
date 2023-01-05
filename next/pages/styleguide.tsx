@@ -13,6 +13,7 @@ import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGroupedShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
+import FieldGroupsShowCase from '../components/styleguide/showcases/FieldGroupsShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import ModalShowCase from '../components/styleguide/showcases/ModalShowCase'
 import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
@@ -57,6 +58,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <SingleCheckboxShowCase />
         <CheckboxGroupShowCase />
         <RadioButtonShowCase />
+        <FieldGroupsShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )
