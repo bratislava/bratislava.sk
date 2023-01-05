@@ -25,7 +25,7 @@ type TimePickerBase = {
   TimeFromDisabled?: boolean
   TimeToDisabled?: boolean
 
-  errorMessage?: string
+  errorMessage?: string[]
 }
 
 export const TimeFromTo = ({

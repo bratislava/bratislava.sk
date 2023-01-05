@@ -10,7 +10,7 @@ type DateTimePickerBase = {
   DateRequired?: boolean
   DateExplicitOptional?: boolean
   DateDisabled?: boolean
-  DateErrorMessage?: string
+  DateErrorMessage?: string[]
 
   TimeLabel?: string
   TimeDescription?: string
@@ -18,7 +18,7 @@ type DateTimePickerBase = {
   TimeRequired?: boolean
   TimeExplicitOptional?: boolean
   TimeDisabled?: boolean
-  TimeErrorMessage?: string
+  TimeErrorMessage?: string[]
 }
 
 export const DateTimePicker = ({

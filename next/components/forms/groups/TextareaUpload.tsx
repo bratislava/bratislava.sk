@@ -7,7 +7,7 @@ import Upload from '../widget-components/Upload/Upload'
 interface TextAreaBase {
   TextareaLabel: string
   TextareaPlaceholder?: string
-  TextareaErrorMessage?: string
+  TextareaErrorMessage?: string[]
   TextareaDescription?: string
   TextareaClassName?: string
   TextareaDefaultValue?: string

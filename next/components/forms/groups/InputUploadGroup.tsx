@@ -9,7 +9,7 @@ interface InputBase {
   InputLabel: string
   InputType?: 'text' | 'password'
   InputPlaceholder: string
-  InputErrorMessage?: string
+  InputErrorMessage?: string[]
   InputDescription?: string
   InputClassName?: string
   InputValue?: string

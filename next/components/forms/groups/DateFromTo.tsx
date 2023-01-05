@@ -13,7 +13,7 @@ type DatePickerBase = {
   DateToExplicitOptional?: boolean
   DateFromDisabled?: boolean
   DateToDisabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
 }
 
 export const DateFromTo = ({

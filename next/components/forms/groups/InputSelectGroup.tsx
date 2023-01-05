@@ -10,7 +10,7 @@ import SelectField from '../widget-components/SelectField/SelectField'
 type InputBase = {
   InputLabel: string
   InputPlaceholder?: string
-  InputErrorMessage?: string
+  InputErrorMessage?: string[]
   InputDescription?: string
   InputClassName?: string
   InputValue?: string
@@ -31,7 +31,7 @@ interface SelectFieldProps {
   SelectDropdownDivider?: boolean
   SelectSelectAllOption?: boolean
   SelectPlaceholder?: string
-  SelectErrorMessage?: string
+  SelectErrorMessage?: string[]
   SelectDescription?: string
   SelectRequired?: boolean
   SelectExplicitOptional?: boolean
