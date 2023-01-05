@@ -35,22 +35,6 @@ const FieldHeader: FC<FieldHeaderProps> = ({
 
   return (
     <div className="w-full">
-      {
-        /* TOOLTIP */
-        tooltip && (
-          <div className="relative">
-            <Tooltip
-              text={tooltip}
-              visible={isTooltipOpened}
-              arrow="bottom"
-              alignArrow="right"
-              bottom={0}
-              right={-13}
-              absolute
-            />
-          </div>
-        )
-      }
       <div className="flex justify-between mb-1">
         <div className="flex">
           {/* LABEL */}
@@ -59,19 +43,35 @@ const FieldHeader: FC<FieldHeaderProps> = ({
           </label>
           {
             /* OPTIONAL */ !required && explicitOptional === 'left' && (
-              <p className="text-16 ml-1 mb-1 flex items-center">(optional)</p>
+              <p className="text-16 ml-2 flex items-center">(optional)</p>
             )
           }
           <div className="flex-column flex items-center">
             {
               /* TOOLTIP ICON */
               tooltip && (
-                <div className="flex-column ml-5 flex items-center">
+                <div
+                  className={cx('flex-column flex items-center', {
+                    'ml-5': required,
+                    'ml-2': !required,
+                  })}
+                >
                   <HelpIcon
                     className="cursor-pointer"
                     onMouseOver={() => setIsTooltipOpened(true)}
                     onMouseLeave={() => setIsTooltipOpened(false)}
                   />
+                  <div className="relative">
+                    <Tooltip
+                      text={tooltip}
+                      visible={isTooltipOpened}
+                      arrow="bottom"
+                      alignArrow="right"
+                      bottom={15}
+                      right={-13}
+                      absolute
+                    />
+                  </div>
                 </div>
               )
             }
