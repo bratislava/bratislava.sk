@@ -31,9 +31,9 @@ const FieldGroupsShowCase = () => {
       <Stack direction="row">
         <DateFromTo
           DateToTooltip="Date To Tooltip"
-          label="Dátum (od – do)"
           DateFromOnChange={() => {}}
           DateToOnChange={() => {}}
+          DateFromLabel="From label"
         />
       </Stack>
       <Stack direction="row">
