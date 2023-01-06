@@ -2,7 +2,7 @@ import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React from 'react'
 
-import InputField from '../widget-components/InputField/InputField'
+import InputField, { LeftIconVariants } from '../widget-components/InputField/InputField'
 import Upload from '../widget-components/Upload/Upload'
 
 interface InputBase {
@@ -13,7 +13,7 @@ interface InputBase {
   InputDescription?: string
   InputClassName?: string
   InputValue?: string
-  InputLeftIcon?: 'person' | 'mail' | 'call' | 'lock'
+  InputLeftIcon?: LeftIconVariants
   InputRequired?: boolean
   InputExplicitOptional?: boolean
   InputResetIcon?: boolean
@@ -68,6 +68,9 @@ export const InputUploadGroup = ({
   UploadSizeLimit,
   UploadSupportedFormats,
 }: InputUploadBase) => {
+  const supportedFormats =
+    UploadSupportedFormats && UploadSupportedFormats.length > 0 ? UploadSupportedFormats : undefined
+
   return (
     <div className={cx('gap-6 w-full flex flex-col items-start p-6', className)}>
       <InputField
@@ -84,13 +87,14 @@ export const InputUploadGroup = ({
         leftIcon={InputLeftIcon}
         resetIcon={InputResetIcon}
         className={InputClassName}
+        onChange={InputOnChange}
       />
       <div>{middleText}</div>
       <Upload
         label={UploadLabel}
         type={UploadType}
         sizeLimit={UploadSizeLimit}
-        supportedFormats={UploadSupportedFormats}
+        supportedFormats={supportedFormats}
         required={UploadRequired}
         value={UploadValue}
         onChange={UploadOnChange}

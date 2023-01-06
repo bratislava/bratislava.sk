@@ -6,6 +6,108 @@
   "allOf": [
     {
       "properties": {
+        "dateFromTo": {
+          "title": "Showcase of DateFromTo Picker",
+          "properties": {
+            "dateFrom": {
+              "type": "string",
+              "format": "date",
+              "title": "Date From"
+            },
+            "dateTo": {
+              "type": "string",
+              "format": "date",
+              "title": "Date To"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "inputSelect": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pocet": {
+                "type": "string"
+              },
+              "school": {
+                "type": "array",
+                "title": "University",
+                "oneOf": [
+                  {"value": "STU FEI", "label": "fakulta elektrotechniky a informatiky"},
+                  {"value": "STU FCHPT"},
+                  {"value": "STU FIIT", "label": "fakulta informatiky a informacnych technologii"}
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "textareaUpload": {
+          "properties": {
+            "textareaField": {
+              "type": "string",
+              "title": "Some story",
+              "default": "Once upon a time..."
+            },
+            "inputFileField": {
+              "title": "Importuj viac suborov",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "inputUpload": {
+          "properties": {
+            "inputField": {
+              "type": "string",
+              "title": "Mesto",
+              "default": "NYC"
+            },
+            "inputFileField": {
+              "title": "Importuj viac suborov",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "mestoPSC": {
+          "properties": {
+            "mesto": {
+              "type": "string",
+              "title": "Mesto",
+              "default": "Košice"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSČ",
+              "default": "04011",
+              "format": "zip"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "datePicker": {
           "title": "Showcase of DatePicker",
           "required": [],

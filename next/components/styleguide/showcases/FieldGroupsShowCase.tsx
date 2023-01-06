@@ -18,17 +18,23 @@ const FieldGroupsShowCase = () => {
       <Stack direction="row">
         <InputSelectGroup
           SelectLabel="Interval odvozu"
-          SelectOnChange={() => {}}
           InputLabel="Počet"
           InputTooltip="Some Tooltip"
           InputClassName="sm:w-[150px]"
           SelectPlaceholder="Vybrať"
           SelectClassName="sm:w-[400px]"
           addNew="Pridať ďalší riadok"
+          saveFormData={() => {}}
+          propKeys={[]}
         />
       </Stack>
       <Stack direction="row">
-        <DateFromTo DateToTooltip="Date To Tooltip" label="Dátum (od – do)" />
+        <DateFromTo
+          DateToTooltip="Date To Tooltip"
+          label="Dátum (od – do)"
+          DateFromOnChange={() => {}}
+          DateToOnChange={() => {}}
+        />
       </Stack>
       <Stack direction="row">
         <TimeFromTo TimeFromTooltip="Time From Tooltip" label="Čas (od – do)" />

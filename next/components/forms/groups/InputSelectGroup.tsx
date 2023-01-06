@@ -1,7 +1,7 @@
 import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
 import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import InputField from '../widget-components/InputField/InputField'
@@ -37,10 +37,18 @@ interface SelectFieldProps {
   SelectExplicitOptional?: boolean
   SelectDisabled?: boolean
   SelectClassName?: string
-  SelectOnChange: (values: EnumOptionsType[]) => void
+}
+
+type mainObjectType = {
+  id: string
+  [key: string]: string | string[] | EnumOptionsType[] | EnumOptionsType[][]
 }
 
 export const InputSelectGroup = ({
+  groupValues = [],
+  saveFormData,
+  propKeys,
+  formDataArray,
   // input props
   InputLabel,
   InputPlaceholder,
@@ -56,7 +64,6 @@ export const InputSelectGroup = ({
   // select props
   SelectLabel,
   SelectType = 'one',
-  SelectValue,
   SelectEnumOptions,
   SelectTooltip,
   SelectDropdownDivider,
@@ -68,29 +75,84 @@ export const InputSelectGroup = ({
   SelectExplicitOptional,
   SelectDisabled,
   SelectClassName,
-  SelectOnChange,
 
   addNew,
-}: SelectFieldProps & InputBase & { addNew: string }) => {
-  const [fieldGroups, setFieldGroups] = useState([
-    { inputField: '', selectField: [], id: uuidv4() },
-  ])
+}: SelectFieldProps &
+  InputBase & {
+    addNew: string
+    groupValues?: mainObjectType[]
+    saveFormData: (obj: mainObjectType[]) => void
+    formDataArray?: mainObjectType[]
+    propKeys: string[]
+  }) => {
+  const [fieldGroups, setFieldGroups] = useState<mainObjectType[]>([...groupValues])
+  const [formData, setFormData] = useState<mainObjectType[]>([...(formDataArray ?? [])])
   const containerStyle = cx('flex flex-col items-start gap-4', {})
 
   const addField = () => {
-    setFieldGroups([...fieldGroups, { inputField: '', selectField: [], id: uuidv4() }])
+    setFieldGroups(
+      fieldGroups.concat({
+        [propKeys[0]]: '',
+        [propKeys[1]]: SelectType === 'multiple' ? [] : '',
+        id: uuidv4(),
+      }),
+    )
+    setFormData(
+      formData.concat({
+        [propKeys[0]]: '',
+        [propKeys[1]]: SelectType === 'multiple' ? [] : '',
+        id: uuidv4(),
+      }),
+    )
+    setFormData((prev: mainObjectType[]) => {
+      setFormData([...prev])
+      return prev
+    })
   }
 
   const removeField = (id: string) => {
-    setFieldGroups((current) => current.filter((element) => element.id !== id))
+    setFieldGroups((current: mainObjectType[]) => current.filter((element) => element.id !== id))
+    setFormData((current: mainObjectType[]) => current.filter((element) => element.id !== id))
   }
 
-  const updateState = (index: number) => (e: any) => {
-    const newArray = fieldGroups.map((item, i) => {
-      return index === i ? { ...item, inputField: e } : item
-    })
-    setFieldGroups(newArray)
+  const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
+    return newValue.map((option: EnumOptionsType) => option.value)
   }
+
+  const handleOnChangeOne = (newValue: EnumOptionsType[]) => {
+    if (newValue[0]) {
+      return newValue[0].value
+    }
+    return null
+  }
+
+  const updateState =
+    (index: number, propIndex: 0 | 1) => (e: string | undefined | EnumOptionsType[]) => {
+      if (e !== undefined) {
+        let newValue = e
+        if (Array.isArray(e)) {
+          newValue = SelectType === 'multiple' ? handleOnChangeMultiple(e) : handleOnChangeOne(e)
+        }
+        const newArrayFormData = formData.map((item, i) => {
+          return index === i ? { ...item, [propKeys[propIndex]]: newValue } : item
+        })
+        setFormData(newArrayFormData)
+        const newArray = fieldGroups.map((item, i) => {
+          return index === i ? { ...item, [propKeys[propIndex]]: e } : item
+        })
+        setFieldGroups(newArray)
+      }
+    }
+
+  useEffect(() => {
+    setFormData((prev: mainObjectType[]) => {
+      // to avoid render warning
+      setTimeout(() => {
+        saveFormData([...prev])
+      }, 0)
+      return prev
+    })
+  }, [fieldGroups, saveFormData])
 
   return (
     <div className={containerStyle}>
@@ -112,8 +174,8 @@ export const InputSelectGroup = ({
                 resetIcon={InputResetIcon}
                 errorMessage={InputErrorMessage}
                 disabled={InputDisabled}
-                value={element.inputField}
-                onChange={updateState(index)}
+                value={element[propKeys[0]] as string}
+                onChange={updateState(index, 0)}
               />
             </div>
             <SelectField
@@ -129,23 +191,25 @@ export const InputSelectGroup = ({
               explicitOptional={SelectExplicitOptional}
               dropdownDivider={SelectDropdownDivider}
               selectAllOption={SelectSelectAllOption}
-              value={element.selectField}
-              onChange={SelectOnChange}
+              value={element[propKeys[1]] as EnumOptionsType[]}
+              onChange={updateState(index, 1)}
               className={SelectClassName}
             />
             {fieldGroups.length > 1 ? (
-              <div
+              <button
+                type="button"
                 className="flex w-6 h-6 justify-center items-center cursor-pointer mt-auto mb-5 rotate-45"
                 onClick={() => removeField(element.id)}
               >
                 <PlusCircleIcon fill="red" />
-              </div>
+              </button>
             ) : null}
           </div>
         )
       })}
       <div className="pl-8">
-        <div
+        <button
+          type="button"
           className="flex flex-row justify-center select-none items-center py-2 gap-2 cursor-pointer"
           onClick={() => addField()}
         >
@@ -153,7 +217,7 @@ export const InputSelectGroup = ({
             <PlusCircleIcon fill="black" />
           </div>
           <div className="text-xl font-semibold leading-6 not-italic">{addNew}</div>
-        </div>
+        </button>
       </div>
     </div>
   )

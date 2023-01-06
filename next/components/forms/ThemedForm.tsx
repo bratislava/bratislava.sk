@@ -4,6 +4,11 @@ import InputFieldWidgetRJSF from 'components/forms/widget-wrappers/InputFieldWid
 import TimePickerWidgetRJSF from 'components/forms/widget-wrappers/TimePickerWidgetRJSF'
 
 import CheckboxWidgetRJSF from './widget-wrappers/CheckboxWidgetRJSF'
+import DateFromToWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/DateFromToWidgetRJSF'
+import DoubledInputWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/DoubledInputWidgetFieldRJSF'
+import InputSelectGroupWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/InputSelectGroupWidgetFieldRJSF'
+import InputUploadGroupWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/InputUploadGroupWidgetRJSF'
+import TextareaUploadGroupWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/TextareaUploadGroupWidgetRJSF'
 import RadioButtonsWidgetRJSF from './widget-wrappers/RadioButtonWidgetRJSF'
 import SelectFieldWidgetRJSF from './widget-wrappers/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widget-wrappers/TextAreaFieldWidgetRJSF'
@@ -22,7 +27,13 @@ const theme = {
     DatePicker: DatePickerWidgetRJSF,
     TimePicker: TimePickerWidgetRJSF,
   },
-  fields: {},
+  fields: {
+    doubledInput: DoubledInputWidgetFieldRJSF,
+    inputUpload: InputUploadGroupWidgetRJSF,
+    textareaUpload: TextareaUploadGroupWidgetRJSF,
+    inputSelect: InputSelectGroupWidgetFieldRJSF,
+    dateFromTo: DateFromToWidgetRJSF,
+  },
 }
 
 export const ThemedForm = withTheme(theme)

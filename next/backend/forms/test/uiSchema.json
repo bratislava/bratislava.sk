@@ -2,6 +2,61 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "dateFromTo": {
+    "ui:hideError": true,
+    "ui:field": "dateFromTo",
+    "ui:options": {
+      "DateFromLabel": "Date from",
+      "DateToLabel": "Date to",
+      "DateFromTooltip": "From tooltip",
+      "DateToTooltip": "To tooltip",
+      "DateFromDescription": "From desc",
+      "DateToDescription": "To desc"
+    }
+  },
+  "inputSelect": {
+    "ui:field": "inputSelect"
+  },
+  "textareaUpload": {
+    "ui:field": "textareaUpload",
+    "ui:options": {
+      "className": "sm:w-[500px]",
+      "TextareaPlaceholder": "Type here",
+      "TextareaDescription": "Description",
+      "TextareaTooltip": "Textarea tooltip",
+      "TextareaExplicitOptional": true,
+      "middleText": "alebo",
+      "UploadSizeLimit": 5,
+      "UploadSupportedFormats": ".jpg,.pdf"
+    }
+  },
+  "inputUpload": {
+    "ui:field": "inputUpload",
+    "ui:options": {
+      "className": "sm:w-[500px]",
+      "InputPlaceholder": "placeholder",
+      "InputType": "text",
+      "InputDescription": "Input description",
+      "InputTooltip": "Input tooltip",
+      "UploadSizeLimit": 5,
+      "middleText": "alebo"
+    }
+  },
+  "mestoPSC": {
+    "ui:field": "doubledInput",
+    "ui:options": {
+      "FirstInputTooltip": "Mesto tooltip",
+      "FirstInputDescription": "Description",
+      "FirstInputPlaceholder": "placeholder text",
+      "FirstInputRequired": true,
+      "FirstInputResetIcon": true,
+      "FirstInputLeftIcon": "person",
+      "FirstInputExplicitOptional": true,
+      "FirstInputClassNames": "w-full",
+      "SecondInputClassNames": "sm:w-1/4",
+      "className": "w-[600px]"
+    }
+  },
   "datePicker": {
     "ui:hideError": true,
     "birth": {
