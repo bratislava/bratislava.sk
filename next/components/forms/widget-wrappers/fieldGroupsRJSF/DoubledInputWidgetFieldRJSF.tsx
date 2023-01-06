@@ -10,17 +10,6 @@ class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
     this.state = { ...props.formData }
   }
 
-  // handleOnChange = (valueName: string, newValue?: string) => {
-  //   const {
-  //     props: { onChange },
-  //     state,
-  //   } = this
-  //   this.setState({
-  //     [valueName]: newValue,
-  //   })
-  //   onChange(state)
-  //   // newValue ? onChange(this.state) : onChange(this.state)
-  // }
   handleOnChange(name: string, event?: string) {
     this.setState(
       {

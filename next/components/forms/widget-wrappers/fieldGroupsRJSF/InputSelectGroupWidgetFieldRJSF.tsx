@@ -14,6 +14,7 @@ const InputSelectGroupWidgetFieldRJSF = (props: FieldProps) => {
       }?.properties,
     ),
   )
+  const [fieldGroups, setFieldGroups] = useState<Array<object>>([])
   const type =
     {
       ...({
@@ -32,7 +33,6 @@ const InputSelectGroupWidgetFieldRJSF = (props: FieldProps) => {
     }[keys[1]] as unknown as Record<string, Array<any>>),
   }.oneOf
 
-  const [fieldGroups, setFieldGroups] = useState<Array<object>>([])
   useEffectOnce(() => {
     if (!formData) {
       setFieldGroups(
@@ -57,7 +57,6 @@ const InputSelectGroupWidgetFieldRJSF = (props: FieldProps) => {
     const value: Array<any> = [...formData]
     return value.map((el) => {
       const result = []
-      console.log(el)
       const a: any[] = []
       enumOptions.map((enums) => {
         if (enums.value === el[keys[1]]) {
@@ -116,7 +115,7 @@ const InputSelectGroupWidgetFieldRJSF = (props: FieldProps) => {
     const obj = JSON.parse(JSON.stringify(testData))
     const kek = obj.map((obj1: Array<object>) => {
       return obj1.map((objMap: any) => {
-        objMap.mainObj[keys[1]] = [objMap.enumValues]
+        objMap.mainObj[keys[1]] = objMap.enumValues ? [objMap.enumValues] : ''
         return objMap.mainObj
       })
     })
