@@ -61,6 +61,28 @@ class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
     }[uiPropName]
   }
 
+  requiredField = (propKey: string) => {
+    const {
+      props: { schema },
+    } = this
+    return schema.required?.includes(propKey)
+  }
+
+  getErrorMessage = (propKey: string): string[] => {
+    const {
+      props: { rawErrors },
+    } = this
+    const errors: string[] = []
+    if (Array.isArray(rawErrors)) {
+      rawErrors.forEach((rawError: string) => {
+        if (rawError.includes(propKey)) {
+          errors.push(rawError)
+        }
+      })
+    }
+    return errors
+  }
+
   render() {
     const { state } = this
     return (
@@ -80,8 +102,8 @@ class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
           SecondInputDescription={this.getUIProp('SecondInputDescription')}
           FirstInputType={this.inputType('FirstInputType')}
           SecondInputType={this.inputType('SecondInputType')}
-          FirstInputRequired={this.getUIProp('FirstInputRequired') as unknown as boolean}
-          SecondInputRequired={this.getUIProp('SecondInputRequired') as unknown as boolean}
+          FirstInputRequired={this.requiredField(Object.keys(state)[0])}
+          SecondInputRequired={this.requiredField(Object.keys(state)[1])}
           FirstInputLeftIcon={this.getLeftIcon('FirstInputLeftIcon')}
           SecondInputLeftIcon={this.getLeftIcon('SecondInputLeftIcon')}
           FirstInputExplicitOptional={
@@ -94,6 +116,8 @@ class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
           SecondInputResetIcon={this.getUIProp('SecondInputResetIcon') as unknown as boolean}
           FirstInputClassNames={this.getUIProp('FirstInputClassNames')}
           SecondInputClassNames={this.getUIProp('SecondInputClassNames')}
+          FirstInputErrorMessage={this.getErrorMessage(Object.keys(state)[0])}
+          SecondInputErrorMessage={this.getErrorMessage(Object.keys(state)[1])}
         />
       </div>
     )

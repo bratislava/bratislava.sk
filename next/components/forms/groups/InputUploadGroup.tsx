@@ -31,6 +31,7 @@ interface UploadProps {
   UploadSizeLimit?: number
   UploadSupportedFormats?: string[]
   UploadClassName?: string
+  UploadErrorMessage?: string[]
   UploadOnChange?: (value: UploadMinioFile[]) => void
 }
 type InputUploadBase = InputBase &
@@ -67,6 +68,7 @@ export const InputUploadGroup = ({
   UploadValue,
   UploadSizeLimit,
   UploadSupportedFormats,
+  UploadErrorMessage,
 }: InputUploadBase) => {
   const supportedFormats =
     UploadSupportedFormats && UploadSupportedFormats.length > 0 ? UploadSupportedFormats : undefined
@@ -100,6 +102,7 @@ export const InputUploadGroup = ({
         onChange={UploadOnChange}
         disabled={UploadDisabled}
         multiple={UploadMultiple}
+        errorMessage={UploadErrorMessage}
         className={UploadClassName}
       />
     </div>

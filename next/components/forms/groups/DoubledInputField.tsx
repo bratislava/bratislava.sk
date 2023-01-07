@@ -17,7 +17,9 @@ interface InputBase {
   FirstInputPlaceholder: string
   SecondInputPlaceholder: string
 
-  errorMessage?: string
+  // errors
+  FirstInputErrorMessage?: string[]
+  SecondInputErrorMessage?: string[]
 
   // description
   FirstInputDescription?: string
@@ -82,6 +84,8 @@ export const DoubledInputField = ({
   SecondInputTooltip,
   FirstInputHandler,
   SecondInputHandler,
+  FirstInputErrorMessage,
+  SecondInputErrorMessage,
 }: InputBase) => {
   return (
     <div className="flex flex-row items-end gap-4">
@@ -89,6 +93,7 @@ export const DoubledInputField = ({
         <InputField
           label={FirstInputLabel}
           placeholder={FirstInputPlaceholder}
+          errorMessage={FirstInputErrorMessage}
           description={FirstInputDescription}
           type={FirstInputType}
           value={FirstInputValue}
@@ -106,6 +111,7 @@ export const DoubledInputField = ({
         <InputField
           label={SecondInputLabel}
           placeholder={SecondInputPlaceholder}
+          errorMessage={SecondInputErrorMessage}
           type={SecondInputType}
           description={SecondInputDescription}
           value={SecondInputValue}

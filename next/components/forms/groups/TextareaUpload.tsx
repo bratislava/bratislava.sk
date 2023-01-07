@@ -29,6 +29,7 @@ interface UploadProps {
   UploadSizeLimit?: number
   UploadSupportedFormats?: string[]
   UploadClassName?: string
+  UploadErrorMessage?: string[]
   UploadOnChange?: (value: UploadMinioFile[]) => void
 }
 
@@ -62,6 +63,7 @@ export const TextareaUploadGroup = ({
   UploadValue,
   UploadSizeLimit,
   UploadSupportedFormats,
+  UploadErrorMessage,
   className,
 }: TextareaUploadBase) => {
   return (
@@ -90,6 +92,7 @@ export const TextareaUploadGroup = ({
         disabled={UploadDisabled}
         multiple={UploadMultiple}
         required={UploadRequired}
+        errorMessage={UploadErrorMessage}
         className={UploadClassName}
       />
     </div>

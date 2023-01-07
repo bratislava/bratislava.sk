@@ -37,7 +37,7 @@ const FieldGroupsShowCase = () => {
         />
       </Stack>
       <Stack direction="row">
-        <TimeFromTo TimeFromTooltip="Time From Tooltip" label="Čas (od – do)" />
+        <TimeFromTo TimeFromTooltip="Time From Tooltip" TimeFromLabel="From" />
       </Stack>
       <Stack direction="row">
         <DoubledInputField

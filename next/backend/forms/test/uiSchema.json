@@ -2,6 +2,30 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "dateTimePicker": {
+    "ui:field": "dateTime",
+    "ui:hideError": true,
+    "ui:options": {
+      "TimeLabel": "Time",
+      "DateLabel": "Date",
+      "TimeTooltip": "Time tooltip",
+      "DateTooltip": "Time tooltip",
+      "TimeFromDescription": "From desc",
+      "TimeToDescription": "To desc"
+    }
+  },
+  "timeFromTo": {
+    "ui:field": "timeFromTo",
+    "ui:hideError": true,
+    "ui:options": {
+      "TimeFromLabel": "Time from",
+      "TimeToLabel": "Time to",
+      "TimeFromTooltip": "Time tooltip",
+      "TimeToTooltip": "Time tooltip",
+      "TimeFromDescription": "From desc",
+      "TimeToDescription": "To desc"
+    }
+  },
   "dateFromTo": {
     "ui:hideError": true,
     "ui:field": "dateFromTo",
@@ -15,10 +39,23 @@
     }
   },
   "inputSelect": {
-    "ui:field": "inputSelect"
+    "ui:field": "inputSelect",
+    "ui:hideError": true,
+    "ui:options": {
+      "className": "sm:w-[500px]",
+      "InputLabel": "Počet",
+      "SelectLabel": "Interval odvozu",
+      "InputTooltip": "Some Tooltip",
+      "SelectTooltip": "Tooltip text",
+      "InputPlaceholder": "Type...",
+      "SelectPlaceholder": "Vybrať",
+      "addNew": "Pridať ďalší riadok",
+      "SelectDropdownDivider": true
+    }
   },
   "textareaUpload": {
     "ui:field": "textareaUpload",
+    "ui:hideError": true,
     "ui:options": {
       "className": "sm:w-[500px]",
       "TextareaPlaceholder": "Type here",
@@ -32,6 +69,7 @@
   },
   "inputUpload": {
     "ui:field": "inputUpload",
+    "ui:hideError": true,
     "ui:options": {
       "className": "sm:w-[500px]",
       "InputPlaceholder": "placeholder",
@@ -44,6 +82,7 @@
   },
   "mestoPSC": {
     "ui:field": "doubledInput",
+    "ui:hideError": true,
     "ui:options": {
       "FirstInputTooltip": "Mesto tooltip",
       "FirstInputDescription": "Description",

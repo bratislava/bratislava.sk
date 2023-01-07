@@ -1,3 +1,4 @@
+import { DateValue as dateValue } from '@internationalized/date'
 import cx from 'classnames'
 
 import DatePicker from '../widget-components/DateTimePicker/DatePicker'
@@ -11,6 +12,8 @@ type DateTimePickerBase = {
   DateExplicitOptional?: boolean
   DateDisabled?: boolean
   DateErrorMessage?: string[]
+  DateOnChange?: (value?: dateValue) => void
+  DateValue?: string
 
   TimeLabel?: string
   TimeDescription?: string
@@ -19,6 +22,8 @@ type DateTimePickerBase = {
   TimeExplicitOptional?: boolean
   TimeDisabled?: boolean
   TimeErrorMessage?: string[]
+  TimeOnChange?: (value?: string) => void
+  TimeValue?: string
 }
 
 export const DateTimePicker = ({
@@ -29,6 +34,8 @@ export const DateTimePicker = ({
   DateDisabled,
   DateExplicitOptional,
   DateRequired,
+  DateOnChange,
+  DateValue,
 
   TimeDisabled,
   TimeDescription,
@@ -37,6 +44,8 @@ export const DateTimePicker = ({
   TimeTooltip,
   TimeErrorMessage,
   TimeExplicitOptional,
+  TimeOnChange,
+  TimeValue,
 }: DateTimePickerBase) => {
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
@@ -49,6 +58,8 @@ export const DateTimePicker = ({
             description={DateDescription}
             disabled={DateDisabled}
             explicitOptional={DateExplicitOptional}
+            value={DateValue}
+            onChange={DateOnChange}
             required={DateRequired}
           />
         </div>
@@ -60,6 +71,8 @@ export const DateTimePicker = ({
             label={TimeLabel}
             required={TimeRequired}
             tooltip={TimeTooltip}
+            value={TimeValue}
+            onChange={TimeOnChange}
             explicitOptional={TimeExplicitOptional}
           />
         </div>

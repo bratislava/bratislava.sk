@@ -1,10 +1,10 @@
 import { FieldProps } from '@rjsf/utils'
 import React, { useEffect, useState } from 'react'
 
-import { DateFromTo } from '../../groups'
+import { DateTimePicker } from '../../groups'
 
 const uiOptions = 'ui:options'
-const DateFromToWidgetRJSF = (props: FieldProps) => {
+const DateTimeWidgetRJSF = (props: FieldProps) => {
   const { formData, onChange, schema, uiSchema, rawErrors = [] } = props
   const [state, setState] = useState({ ...formData })
   const [keys] = useState(Object.keys({ ...schema.properties }))
@@ -20,7 +20,7 @@ const DateFromToWidgetRJSF = (props: FieldProps) => {
 
   useEffect(() => {
     onChange(state)
-  }, [onChange, state])
+  }, [state])
 
   const getUIProp = (uiPropName: string) => {
     return {
@@ -46,24 +46,24 @@ const DateFromToWidgetRJSF = (props: FieldProps) => {
 
   return (
     <div className={getUIProp('className')}>
-      <DateFromTo
-        DateToTooltip={getUIProp('DateToTooltip')}
-        DateFromTooltip={getUIProp('DateFromTooltip')}
-        DateFromRequired={requiredField(keys[0])}
-        DateToRequired={requiredField(keys[1])}
-        DateFromErrorMessage={getErrorMessage(keys[0])}
-        DateToErrorMessage={getErrorMessage(keys[1])}
-        DateFromDescription={getUIProp('DateFromDescription')}
-        DateToDescription={getUIProp('DateToDescription')}
-        DateFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
-        DateToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
-        DateFromValue={{ ...(state as Record<string, string>) }[keys[0]] as keyof object}
-        DateToValue={{ ...(state as Record<string, string>) }[keys[1]] as keyof object}
-        DateFromLabel={getUIProp('DateFromLabel')}
-        DateToLabel={getUIProp('DateToLabel')}
+      <DateTimePicker
+        DateTooltip={getUIProp('DateTooltip')}
+        TimeTooltip={getUIProp('TimeTooltip')}
+        DateDescription={getUIProp('DateDescription')}
+        TimeDescription={getUIProp('TimeDescription')}
+        DateRequired={requiredField(keys[0])}
+        TimeRequired={requiredField(keys[1])}
+        DateErrorMessage={getErrorMessage(keys[0])}
+        TimeErrorMessage={getErrorMessage(keys[1])}
+        DateOnChange={(e) => handleOnChange(keys[0], e?.toString())}
+        TimeOnChange={(e) => handleOnChange(keys[1], e?.toString())}
+        DateValue={{ ...(state as Record<string, string>) }[keys[0]] as keyof object}
+        TimeValue={{ ...(state as Record<string, string>) }[keys[1]] as keyof object}
+        TimeLabel={getUIProp('TimeLabel')}
+        DateLabel={getUIProp('DateLabel')}
       />
     </div>
   )
 }
 
-export default DateFromToWidgetRJSF
+export default DateTimeWidgetRJSF

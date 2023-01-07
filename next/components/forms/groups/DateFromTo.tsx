@@ -20,13 +20,15 @@ type DatePickerBase = {
   DateToValue?: string
   DateFromOnChange: (value?: DateValue) => void
   DateToOnChange: (value?: DateValue) => void
-  errorMessage?: string[]
+  DateFromErrorMessage?: string[]
+  DateToErrorMessage?: string[]
 }
 
 export const DateFromTo = ({
   DateFromLabel,
   DateToLabel,
-  errorMessage,
+  DateFromErrorMessage,
+  DateToErrorMessage,
   DateFromTooltip,
   DateToTooltip,
   DateFromRequired,
@@ -48,7 +50,7 @@ export const DateFromTo = ({
         <div className="w-sm flex flex-col items-start justify-end">
           <DatePicker
             label={DateFromLabel}
-            errorMessage={errorMessage}
+            errorMessage={DateFromErrorMessage}
             required={DateFromRequired}
             description={DateFromDescription}
             tooltip={DateFromTooltip}
@@ -62,6 +64,7 @@ export const DateFromTo = ({
         <div className="flex flex-row w-sm items-end gap-1 mt-auto">
           <DatePicker
             label={DateToLabel}
+            errorMessage={DateToErrorMessage}
             tooltip={DateToTooltip}
             required={DateToRequired}
             description={DateToDescription}

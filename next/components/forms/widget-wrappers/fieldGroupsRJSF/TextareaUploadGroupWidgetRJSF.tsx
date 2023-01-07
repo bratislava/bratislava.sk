@@ -6,7 +6,7 @@ import { useEffectOnce } from 'usehooks-ts'
 import { TextareaUploadGroup } from '../../groups'
 
 const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
-  const { formData, onChange, schema, uiSchema } = props
+  const { formData, onChange, schema, uiSchema, rawErrors = [] } = props
 
   const [state, setState] = useState({ ...formData })
   const [keys] = useState(Object.keys({ ...schema.properties }))
@@ -102,6 +102,23 @@ const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
   }
 
   const supportedFormats = getUIProp('UploadSupportedFormats')?.split(',')
+
+  const requiredField = (propKey: string) => {
+    return schema.required?.includes(propKey)
+  }
+
+  const getErrorMessage = (propKey: string): string[] => {
+    const errors: string[] = []
+    if (Array.isArray(rawErrors)) {
+      rawErrors.forEach((rawError: string) => {
+        if (rawError.includes(propKey)) {
+          errors.push(rawError)
+        }
+      })
+    }
+    return errors
+  }
+
   return (
     <div className={getUIProp('className')}>
       <TextareaUploadGroup
@@ -111,18 +128,20 @@ const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
         TextareaOnChange={(e) => handleOnChange(keys[0], e)}
         TextareaPlaceholder={getUIProp('TextareaPlaceholder')}
         TextareaDescription={getUIProp('TextareaDescription')}
-        TextareaRequired={getUIProp('TextareaRequired') as unknown as boolean}
+        TextareaRequired={requiredField(keys[0])}
         TextareaTooltip={getUIProp('TextareaTooltip')}
         TextareaExplicitOptional={getUIProp('TextareaExplicitOptional') as unknown as boolean}
         TextareaClassName={getUIProp('TextareaClassName')}
+        TextareaErrorMessage={getErrorMessage(keys[0])}
         UploadType={getUploadType('UploadType')}
         middleText={getUIProp('middleText')}
         UploadValue={innerValue}
         UploadMultiple={multiple}
         UploadOnChange={handleFileOnChange}
-        UploadRequired={getUIProp('UploadRequired') as unknown as boolean}
+        UploadRequired={requiredField(keys[1])}
         UploadSupportedFormats={supportedFormats}
         UploadSizeLimit={Number(getUIProp('UploadSizeLimit'))}
+        UploadErrorMessage={getErrorMessage(keys[1])}
         UploadClassName={getUIProp('UploadClassName')}
       />
     </div>

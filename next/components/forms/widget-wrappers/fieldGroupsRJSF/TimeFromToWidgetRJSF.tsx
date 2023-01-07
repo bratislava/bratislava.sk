@@ -1,11 +1,12 @@
 import { FieldProps } from '@rjsf/utils'
 import React, { useEffect, useState } from 'react'
 
-import { DateFromTo } from '../../groups'
+import { TimeFromTo } from '../../groups'
 
 const uiOptions = 'ui:options'
-const DateFromToWidgetRJSF = (props: FieldProps) => {
+const TimeFromToWidgetRJSF = (props: FieldProps) => {
   const { formData, onChange, schema, uiSchema, rawErrors = [] } = props
+
   const [state, setState] = useState({ ...formData })
   const [keys] = useState(Object.keys({ ...schema.properties }))
 
@@ -46,24 +47,26 @@ const DateFromToWidgetRJSF = (props: FieldProps) => {
 
   return (
     <div className={getUIProp('className')}>
-      <DateFromTo
-        DateToTooltip={getUIProp('DateToTooltip')}
-        DateFromTooltip={getUIProp('DateFromTooltip')}
-        DateFromRequired={requiredField(keys[0])}
-        DateToRequired={requiredField(keys[1])}
-        DateFromErrorMessage={getErrorMessage(keys[0])}
-        DateToErrorMessage={getErrorMessage(keys[1])}
-        DateFromDescription={getUIProp('DateFromDescription')}
-        DateToDescription={getUIProp('DateToDescription')}
-        DateFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
-        DateToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
-        DateFromValue={{ ...(state as Record<string, string>) }[keys[0]] as keyof object}
-        DateToValue={{ ...(state as Record<string, string>) }[keys[1]] as keyof object}
-        DateFromLabel={getUIProp('DateFromLabel')}
-        DateToLabel={getUIProp('DateToLabel')}
+      <TimeFromTo
+        TimeToTooltip={getUIProp('TimeToTooltip')}
+        TimeFromTooltip={getUIProp('TimeFromTooltip')}
+        TimeFromDescription={getUIProp('TimeFromDescription')}
+        TimeToDescription={getUIProp('TimeToDescription')}
+        TimeFromRequired={requiredField(keys[0])}
+        TimeToRequired={requiredField(keys[1])}
+        TimeFromErrorMessage={getErrorMessage(keys[0])}
+        TimeToErrorMessage={getErrorMessage(keys[1])}
+        TimeFromExplicitOptional={getUIProp('TimeFromExplicitOptional') as unknown as boolean}
+        TimeToExplicitOptional={getUIProp('TimeToExplicitOptional') as unknown as boolean}
+        TimeFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
+        TimeToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
+        TimeFromValue={{ ...(state as Record<string, string>) }[keys[0]] as keyof object}
+        TimeToValue={{ ...(state as Record<string, string>) }[keys[1]] as keyof object}
+        TimeFromLabel={getUIProp('TimeFromLabel')}
+        TimeToLabel={getUIProp('TimeToLabel')}
       />
     </div>
   )
 }
 
-export default DateFromToWidgetRJSF
+export default TimeFromToWidgetRJSF

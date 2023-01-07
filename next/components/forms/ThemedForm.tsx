@@ -5,10 +5,12 @@ import TimePickerWidgetRJSF from 'components/forms/widget-wrappers/TimePickerWid
 
 import CheckboxWidgetRJSF from './widget-wrappers/CheckboxWidgetRJSF'
 import DateFromToWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/DateFromToWidgetRJSF'
+import DateTimeWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/DateTimeWidgetRJSF'
 import DoubledInputWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/DoubledInputWidgetFieldRJSF'
 import InputSelectGroupWidgetFieldRJSF from './widget-wrappers/fieldGroupsRJSF/InputSelectGroupWidgetFieldRJSF'
 import InputUploadGroupWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/InputUploadGroupWidgetRJSF'
 import TextareaUploadGroupWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/TextareaUploadGroupWidgetRJSF'
+import TimeFromToWidgetRJSF from './widget-wrappers/fieldGroupsRJSF/TimeFromToWidgetRJSF'
 import RadioButtonsWidgetRJSF from './widget-wrappers/RadioButtonWidgetRJSF'
 import SelectFieldWidgetRJSF from './widget-wrappers/SelectFieldWidgetRJSF'
 import TextAreaFieldWidgetRJSF from './widget-wrappers/TextAreaFieldWidgetRJSF'
@@ -33,6 +35,8 @@ const theme = {
     textareaUpload: TextareaUploadGroupWidgetRJSF,
     inputSelect: InputSelectGroupWidgetFieldRJSF,
     dateFromTo: DateFromToWidgetRJSF,
+    timeFromTo: TimeFromToWidgetRJSF,
+    dateTime: DateTimeWidgetRJSF,
   },
 }
 

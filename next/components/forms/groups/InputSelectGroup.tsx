@@ -13,7 +13,6 @@ type InputBase = {
   InputErrorMessage?: string[]
   InputDescription?: string
   InputClassName?: string
-  InputValue?: string
   InputLeftIcon?: 'person' | 'mail' | 'call' | 'lock'
   InputRequired?: boolean
   InputExplicitOptional?: boolean

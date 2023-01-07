@@ -7,7 +7,7 @@ import { InputUploadGroup } from '../../groups'
 import { LeftIconVariants } from '../../widget-components/InputField/InputField'
 
 const InputUploadGroupWidgetRJSF = (props: FieldProps) => {
-  const { formData, onChange, schema } = props
+  const { formData, onChange, schema, rawErrors = [] } = props
   const [state, setState] = useState({ ...formData })
   const [keys] = useState(Object.keys({ ...schema.properties }))
   const [innerValue, setInnerValue] = useState<UploadMinioFile[]>([])
@@ -129,6 +129,22 @@ const InputUploadGroupWidgetRJSF = (props: FieldProps) => {
     ?.split(',')
     .filter((element) => element.length > 0)
 
+  const requiredField = (propKey: string) => {
+    return schema.required?.includes(propKey)
+  }
+
+  const getErrorMessage = (propKey: string): string[] => {
+    const errors: string[] = []
+    if (Array.isArray(rawErrors)) {
+      rawErrors.forEach((rawError: string) => {
+        if (rawError.includes(propKey)) {
+          errors.push(rawError)
+        }
+      })
+    }
+    return errors
+  }
+
   return (
     <div className={getUIProp('className')}>
       <InputUploadGroup
@@ -139,7 +155,9 @@ const InputUploadGroupWidgetRJSF = (props: FieldProps) => {
         InputPlaceholder={getUIProp('InputPlaceholder')}
         InputType={inputType('InputType')}
         InputDescription={getUIProp('InputDescription')}
-        InputRequired={getUIProp('InputRequired') as unknown as boolean}
+        InputRequired={requiredField(keys[0])}
+        InputErrorMessage={getErrorMessage(keys[0])}
+        UploadErrorMessage={getErrorMessage(keys[1])}
         InputTooltip={getUIProp('InputTooltip')}
         InputExplicitOptional={getUIProp('InputExplicitOptional') as unknown as boolean}
         InputLeftIcon={getLeftIcon('InputLeftIcon')}
@@ -150,7 +168,7 @@ const InputUploadGroupWidgetRJSF = (props: FieldProps) => {
         UploadValue={innerValue}
         UploadMultiple={multiple}
         UploadOnChange={handleFileOnChange}
-        UploadRequired={getUIProp('UploadRequired') as unknown as boolean}
+        UploadRequired={requiredField(keys[0])}
         UploadSupportedFormats={supportedFormats}
         UploadSizeLimit={Number(getUIProp('UploadSizeLimit'))}
         UploadClassName={getUIProp('UploadClassName')}

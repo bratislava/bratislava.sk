@@ -4,9 +4,11 @@ import { useEffectOnce } from 'usehooks-ts'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputSelectGroup } from '../../groups'
+import { LeftIconVariants } from '../../widget-components/InputField/InputField'
 
+const uiOptions = 'ui:options'
 const InputSelectGroupWidgetFieldRJSF = (props: FieldProps) => {
-  const { formData, onChange, schema } = props
+  const { formData, onChange, schema, uiSchema } = props
   const [keys] = useState(
     Object.keys(
       {
@@ -129,19 +131,52 @@ const InputSelectGroupWidgetFieldRJSF = (props: FieldProps) => {
     }
   })
 
+  const getUIProp = (uiPropName: string) => {
+    return {
+      ...(uiSchema && (uiSchema[uiOptions] as Record<string, string>)),
+    }[uiPropName]
+  }
+
+  const isLeftIconVariant = (val: string): val is LeftIconVariants => {
+    const list: LeftIconVariants[] = ['person', 'mail', 'call', 'lock']
+    return list.includes(val as LeftIconVariants)
+  }
+
+  const getLeftIcon = (iconInput: 'InputLeftIcon'): LeftIconVariants | undefined => {
+    const iconVariant = {
+      ...(uiSchema && (uiSchema[uiOptions] as Record<string, string>)),
+    }[iconInput]
+    return isLeftIconVariant(iconVariant) ? iconVariant : undefined
+  }
+
+  const requiredField = (propKey: string) => {
+    return schema.required?.includes(propKey)
+  }
+
   return (
     <div>
       {fieldGroups.length > 0 && Array.isArray(formData) && formData.length > 0 && (
         <InputSelectGroup
-          SelectLabel="Interval odvozu"
-          InputLabel="Počet"
-          InputTooltip="Some Tooltip"
+          SelectLabel={getUIProp('SelectLabel')}
+          InputLabel={getUIProp('InputLabel')}
+          InputTooltip={getUIProp('InputTooltip')}
+          SelectTooltip={getUIProp('SelectTooltip')}
+          InputPlaceholder={getUIProp('InputPlaceholder')}
+          SelectPlaceholder={getUIProp('SelectPlaceholder')}
+          InputDescription={getUIProp('InputDescription')}
+          SelectDescription={getUIProp('SelectDescription')}
+          InputLeftIcon={getLeftIcon('InputLeftIcon')}
+          InputResetIcon={getUIProp('InputResetIcon') as unknown as boolean}
+          InputRequired={requiredField(keys[0])}
+          SelectRequired={requiredField(keys[1])}
+          SelectDropdownDivider={getUIProp('SelectDropdownDivider') as unknown as boolean}
+          SelectSelectAllOption={getUIProp('SelectSelectAllOption') as unknown as boolean}
+          SelectExplicitOptional={getUIProp('SelectExplicitOptional') as unknown as boolean}
           InputClassName="sm:w-[150px]"
-          SelectPlaceholder="Vybrať"
           SelectEnumOptions={enumOptions as unknown as EnumOptionsType[]}
           SelectClassName="sm:w-[400px]"
           SelectType={type}
-          addNew="Pridať ďalší riadok"
+          addNew={getUIProp('addNew') ?? 'Add next'}
           groupValues={fieldGroups}
           formDataArray={formData ?? []}
           saveFormData={onChange}
