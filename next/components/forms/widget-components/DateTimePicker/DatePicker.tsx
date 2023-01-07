@@ -40,6 +40,8 @@ type DatePickerBase = {
   disabled?: boolean
   errorMessage?: string[]
   value?: string
+  minValue?: string
+  maxValue?: string
   onChange?: (value?: DateValue) => void
 }
 
@@ -54,6 +56,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       tooltip,
       description,
       value = '',
+      minValue,
+      maxValue,
       onChange,
       ...rest
     },
@@ -85,6 +89,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       useDatePicker(
         {
           errorMessage,
+          minValue: minValue ? parseDate(minValue) : undefined,
+          maxValue: maxValue ? parseDate(maxValue) : undefined,
           isDisabled: disabled,
           label,
           ...rest,

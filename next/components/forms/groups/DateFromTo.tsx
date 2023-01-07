@@ -57,6 +57,7 @@ export const DateFromTo = ({
             explicitOptional={DateFromExplicitOptional}
             disabled={DateFromDisabled}
             value={DateFromValue}
+            maxValue={DateToValue}
             onChange={DateFromOnChange}
           />
         </div>
@@ -71,6 +72,7 @@ export const DateFromTo = ({
             explicitOptional={DateToExplicitOptional}
             disabled={DateToDisabled}
             value={DateToValue}
+            minValue={DateFromValue}
             onChange={DateToOnChange}
           />
         </div>
