@@ -46,8 +46,8 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-h3 mb-4">{t('login_title')}</h1>
-      {error && <Alert message={t(error.code)} type="error" className="min-w-full mb-4" />}
+      <h1 className="text-h3 mb-6">{t('login_title')}</h1>
+      {error && <Alert message={t(error.code)} type="error" className="min-w-full mb-6" />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
@@ -57,6 +57,7 @@ const App = () => {
               required
               label={t('email_label')}
               placeholder={t('email_placeholder')}
+              className="mb-6"
               {...field}
               errorMessage={errors.email}
             />
@@ -78,7 +79,7 @@ const App = () => {
           )}
         />
         <Button
-          className="min-w-full mb-4"
+          className="min-w-full my-6"
           type="submit"
           text={t('login_submit')}
           variant="category"
