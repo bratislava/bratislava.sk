@@ -1,8 +1,7 @@
 import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import AccountNavBar from '@bratislava/ui-bratislava/AccountNavBar/AccountNavBar'
 import cx from 'classnames'
-import { useState } from 'react'
-
-import NavBar from '../molecules/NavBar'
+import { usePageWrapperContext } from 'components/layouts/PageWrapper'
 
 interface AccountPageLayoutProps {
   footer?: FooterProps
@@ -14,25 +13,18 @@ interface AccountPageLayoutProps {
 const AccountPageLayout = ({
   className,
   children,
-  menuItems,
-  pageColor,
 }: React.HTMLAttributes<HTMLDivElement> & AccountPageLayoutProps) => {
-  const [searchOpen, setSearchOpen] = useState(false)
+  const { locale } = usePageWrapperContext()
+
   return (
     <div className={cx('flex', 'flex-col', 'h-screen', 'font-inter', className)}>
       <div className="h-16 bg-white lg:h-14">
         <SectionContainer>
-          <NavBar menuItems={menuItems ?? []} handleSearch={setSearchOpen} pageColor={pageColor} />
+          <AccountNavBar currentLanguage={locale} />
         </SectionContainer>
       </div>
 
-      <div
-        className={cx('bg-main-100 flex flex-grow', {
-          'hidden lg:block': searchOpen,
-        })}
-      >
-        {children}
-      </div>
+      <div className="bg-main-100 flex grow">{children}</div>
     </div>
   )
 }
