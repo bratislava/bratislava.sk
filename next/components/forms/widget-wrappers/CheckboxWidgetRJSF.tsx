@@ -23,6 +23,7 @@ interface CheckboxesWidgetRJSFProps extends WidgetProps {
   label: string
   schema: StrictRJSFSchema
   onChange: (value: string[]) => void
+  rawErrors?: string[]
 }
 
 const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
@@ -32,6 +33,7 @@ const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
     onChange,
     label,
     schema: { maxItems },
+    rawErrors,
   } = props
   const {
     enumOptions,
@@ -50,7 +52,13 @@ const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   }
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
-      <CheckboxGroup value={value} onChange={onChange} className={className} label={label}>
+      <CheckboxGroup
+        rawErrors={rawErrors}
+        value={value}
+        onChange={onChange}
+        className={className}
+        label={label}
+      >
         {enumOptions.map((option: EnumOptionsType) => {
           return (
             <Checkbox
