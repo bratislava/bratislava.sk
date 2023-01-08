@@ -90,7 +90,7 @@ const TimeField = ({
         explicitOptional={explicitOptional}
       />
       <div className="relative">
-        <input {...inputProps} className={timeFieldStyle} ref={ref} name={inputProps.id} />
+        <input {...inputProps} readOnly className={timeFieldStyle} ref={ref} name={inputProps.id} />
         <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">
           {children}
         </div>

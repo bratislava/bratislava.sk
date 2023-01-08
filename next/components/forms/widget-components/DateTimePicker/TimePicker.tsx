@@ -42,6 +42,8 @@ type TimePickerBase = {
   disabled?: boolean
   errorMessage?: string[]
   value?: string
+  minValue?: string
+  maxValue?: string
   onChange?: (value?: string) => void
 }
 
@@ -57,6 +59,8 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       description,
       onChange,
       value = '',
+      minValue,
+      maxValue,
       ...rest
     },
     ref,
@@ -178,6 +182,8 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   onSubmit={closeSuccessHandler}
                   onChange={onChange}
                   value={value}
+                  minValue={minValue}
+                  maxValue={maxValue}
                   setIsInputEdited={setIsInputEdited}
                 />
               </Popover>

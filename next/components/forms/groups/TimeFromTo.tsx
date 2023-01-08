@@ -72,6 +72,7 @@ export const TimeFromTo = ({
             required={TimeFromRequired}
             explicitOptional={TimeFromExplicitOptional}
             value={TimeFromValue}
+            maxValue={TimeToValue}
             onChange={TimeFromOnChange}
             disabled={TimeFromDisabled}
           />
@@ -85,7 +86,8 @@ export const TimeFromTo = ({
             tooltip={TimeToTooltip}
             required={TimeToRequired}
             explicitOptional={TimeToExplicitOptional}
-            value={TimeToValue}
+            value={TimeToValue || TimeFromValue}
+            minValue={TimeFromValue}
             onChange={TimeToOnChange}
             disabled={TimeToDisabled}
           />
