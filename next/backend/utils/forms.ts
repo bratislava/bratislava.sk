@@ -1,16 +1,15 @@
+import forms, { EFormKey, EFormValue } from '@backend/forms'
+import { firstCharToUpper } from '@backend/utils/strings'
+import { ajvKeywords, getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
+import { forceString } from '@utils/utils'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import * as cheerio from 'cheerio'
-import { JSONSchema7Definition } from 'json-schema'
 // @ts-ignore
 import { parseXml } from 'libxmljs2'
 import { dropRight, find, last } from 'lodash'
 import { parseStringPromise } from 'xml2js'
 import { firstCharLowerCase } from 'xml2js/lib/processors'
-
-import { forceString } from '../../utils/utils'
-import forms, { EFormKey, EFormValue } from '../forms'
-import { firstCharToUpper } from './strings'
 
 export type Json = any
 
@@ -88,41 +87,6 @@ export const xmlToJson = async (data: string, jsonSchema: JsonSchema): Promise<J
   return body
 }
 
-export type JsonSchema = JSONSchema7Definition
-interface JsonSchemaProperties {
-  [key: string]: JSONSchema7Definition
-}
-
-const getAllPossibleJsonSchemaProperties = (
-  jsonSchema: JSONSchema7Definition | undefined,
-): JsonSchemaProperties => {
-  if (!jsonSchema || jsonSchema === true) {
-    return {}
-  }
-
-  let properties: JsonSchemaProperties = jsonSchema.properties ?? {}
-  if (jsonSchema.then) {
-    properties = { ...properties, ...getAllPossibleJsonSchemaProperties(jsonSchema.then) }
-  }
-  if (jsonSchema.allOf) {
-    jsonSchema.allOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
-    })
-  }
-  if (jsonSchema.oneOf) {
-    jsonSchema.oneOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
-    })
-  }
-  if (jsonSchema.anyOf) {
-    jsonSchema.anyOf.forEach((s) => {
-      properties = { ...properties, ...getAllPossibleJsonSchemaProperties(s) }
-    })
-  }
-
-  return properties
-}
-
 export const getJsonSchemaNodeAtPath = (
   jsonSchema: JsonSchema,
   path: string[],
@@ -136,9 +100,7 @@ export const getJsonSchemaNodeAtPath = (
   return currentNode
 }
 
-const getFormatFromItems = (
-  items: JSONSchema7Definition | JSONSchema7Definition[] | undefined,
-): string | undefined => {
+const getFormatFromItems = (items: JsonSchema | JsonSchema[] | undefined): string | undefined => {
   return items && items !== true && !Array.isArray(items) ? items.format : undefined
 }
 
@@ -209,19 +171,25 @@ export const removeNeedlessXmlTransformArraysRecursive = (
   return obj
 }
 
-// TODO create ajv instance once for BE, add async validations
-export const validateDataWithJsonSchema = (data: any, schema: any) => {
-  const ajv = new Ajv()
+export const validateDataWithJsonSchema = async (data: any, schema: any) => {
+  const ajv = new Ajv({
+    keywords: ajvKeywords,
+  })
+
   addFormats(ajv)
   ajv.addFormat('data-url', () => true)
   ajv.addFormat('ciselnik', () => true)
 
-  ajv.addKeyword('example')
-  ajv.addKeyword('enumNames')
-
   const validate = ajv.compile(schema)
-  validate(data)
-  return validate.errors || []
+
+  try {
+    await validate(data)
+    return validate.errors || []
+  } catch (error) {
+    if (!(error instanceof Ajv.ValidationError)) throw error
+
+    return error.errors
+  }
 }
 
 export const validateDataWithXsd = (data: any, xsd: any) => {

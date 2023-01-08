@@ -1,16 +1,41 @@
 {
+  "$async": true,
   "title": "Example",
   "description": "Example schema",
   "type": "object",
   "allOf": [
     {
       "properties": {
+        "datePicker": {
+          "title": "Showcase of DatePicker",
+          "required": [],
+          "properties": {
+            "birth": {
+              "type": "string",
+              "format": "date",
+              "title": "Birth date"
+            }
+          }
+        },
+        "timePicker": {
+          "title": "Showcase of TimePicker",
+          "required": ["meeting-time"],
+          "properties": {
+            "meeting-time": {
+              "type": "string",
+              "title": "Meeting time",
+              "format": "time"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
-          "required": [
-            "firstName",
-            "lastName"
-          ],
+          "required": ["firstName", "lastName"],
+          "type": "object",
           "properties": {
             "firstName": {
               "type": "string",
@@ -38,9 +63,8 @@
         },
         "textAreas": {
           "title": "Textove polia",
-          "required": [
-            "pros"
-          ],
+          "required": ["pros"],
+          "type": "object",
           "properties": {
             "pros": {
               "title": "Pros",
@@ -59,17 +83,24 @@
       "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
-          "required": [
-            "school"
-          ],
+          "required": ["school"],
+          "type": "object",
           "properties": {
             "school": {
               "type": "string",
               "title": "University",
               "oneOf": [
-                {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
-                {"const": "STU FCHPT"},
-                {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
+                {
+                  "const": "STU FEI",
+                  "title": "fakulta elektrotechniky a informatiky"
+                },
+                {
+                  "const": "STU FCHPT"
+                },
+                {
+                  "const": "STU FIIT",
+                  "title": "fakulta informatiky a informacnych technologii"
+                }
               ]
             },
             "diplomas": {
@@ -79,9 +110,17 @@
               "items": {
                 "type": "string",
                 "oneOf": [
-                  {"const": "STU FEI", "title": "fakulta elektrotechniky a informatiky"},
-                  {"const": "STU FCHPT"},
-                  {"const": "STU FIIT", "title": "fakulta informatiky a informacnych technologii"}
+                  {
+                    "const": "STU FEI",
+                    "title": "fakulta elektrotechniky a informatiky"
+                  },
+                  {
+                    "const": "STU FCHPT"
+                  },
+                  {
+                    "const": "STU FIIT",
+                    "title": "fakulta informatiky a informacnych technologii"
+                  }
                 ]
               }
             },
@@ -89,14 +128,7 @@
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-              ]
+              "enum": [1, 2, 3, 4, 5, 6]
             }
           }
         }
@@ -203,6 +235,20 @@
                   }
                 ]
               }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "user": {
+          "type": "object",
+          "title": "Example async validation",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "isExampleAsyncValidation": {}
             }
           }
         }

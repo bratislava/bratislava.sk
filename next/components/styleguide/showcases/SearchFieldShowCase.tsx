@@ -11,11 +11,11 @@ const SearchFieldShowCase = () => {
         <SearchField label="Label" value="Value" placeholder="Placeholder" resetIcon />
         <SearchField label="Label" placeholder="Placeholder" resetIcon />
         <SearchField label="Label" placeholder="Placeholder" />
-        <SearchField label="Label" placeholder="Placeholder" errorMessage="Error message" />
+        <SearchField label="Label" placeholder="Placeholder" errorMessage={['Error message']} />
         <SearchField
           label="Label"
           placeholder="Placeholder"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>
@@ -40,7 +40,7 @@ const SearchFieldShowCase = () => {
           description="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
         />
         <SearchField
           label="Label"
@@ -48,7 +48,7 @@ const SearchFieldShowCase = () => {
           description="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>

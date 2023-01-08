@@ -8,7 +8,7 @@ import FieldHeader from '../../info-components/FieldHeader'
 interface TextAreaBase {
   label: string
   placeholder?: string
-  errorMessage?: string
+  errorMessage?: string[]
   description?: string
   className?: string
   defaultValue?: string
@@ -23,7 +23,7 @@ interface TextAreaBase {
 const TextAreaField = ({
   label,
   placeholder,
-  errorMessage,
+  errorMessage = [],
   description,
   tooltip,
   required,
@@ -72,7 +72,7 @@ const TextAreaField = ({
       'hover:border-gray-400': !disabled,
 
       // error
-      'border-error hover:border-error focus:border-error': errorMessage && !disabled,
+      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
 
       // disabled
       'border-gray-300 bg-gray-100': disabled,

@@ -66,7 +66,7 @@ const Radio = ({
   )
 
   return (
-    <div>
+    <div className="w-full">
       {tooltip && variant !== 'card' && (
         <div className="relative">
           <Tooltip
