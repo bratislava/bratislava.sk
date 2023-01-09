@@ -1,5 +1,11 @@
 import Form from '@rjsf/core'
-import { ErrorSchema, RJSFSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import {
+  ErrorSchema,
+  FormValidation,
+  RJSFSchema,
+  RJSFValidationError,
+  StrictRJSFSchema,
+} from '@rjsf/utils'
 import { validateKeyword } from '@utils/api'
 import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
 import { JSONSchema7Definition } from 'json-schema'
@@ -109,6 +115,44 @@ const validateAsyncProperties = async (
     }),
   )
 
+  return errors
+}
+
+const isFieldRequired = (fieldKey: string, schema: StrictRJSFSchema): boolean => {
+  return Object.entries(schema).some(([key, value]: [string, RJSFSchema]) => {
+    if (key === 'required' && Array.isArray(value) && value.includes(fieldKey)) {
+      return true
+    }
+    let isRequired = false
+    if (key !== 'required' && value && Array.isArray(value)) {
+      value.forEach((item) => {
+        isRequired = isRequired || isFieldRequired(fieldKey, item)
+      })
+    } else if (key !== 'required' && value && typeof value === 'object') {
+      isRequired = isRequired || isFieldRequired(fieldKey, value)
+    }
+    return isRequired
+  })
+}
+
+const validateRequiredFormat = (
+  formData: RJSFSchema,
+  errors: FormValidation,
+  schema: StrictRJSFSchema,
+) => {
+  const REQUIRED_VALUE = 'Required input'
+  Object.entries(formData).forEach(([key, value]: [string, RJSFSchema]) => {
+    const currentErrors = errors[key]
+    if (value && currentErrors && typeof value === 'object') {
+      validateRequiredFormat(value, currentErrors, schema)
+    } else if (!value && currentErrors && isFieldRequired(key, schema)) {
+      currentErrors.addError(REQUIRED_VALUE)
+    }
+  })
+}
+
+const customValidate = (formData: RJSFSchema, errors: FormValidation, schema: StrictRJSFSchema) => {
+  validateRequiredFormat(formData, errors, schema)
   return errors
 }
 
@@ -255,6 +299,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     submitStep,
     skipStep,
     increaseStepErrors,
+    customValidate,
     currentSchema,
     isComplete,
     formRef,

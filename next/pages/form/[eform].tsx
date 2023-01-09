@@ -5,7 +5,7 @@
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { FormValidation, StrictRJSFSchema } from '@rjsf/utils'
+import { FormValidation, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
@@ -154,6 +154,7 @@ const FormTestPage = ({
                   const isFormValid = form.validate()
                   if (isFormValid) {
                     form.setErrors([], form.stepIndex)
+                    form.next()
                   }
                 }}
                 onChange={(e) => {
@@ -161,6 +162,9 @@ const FormTestPage = ({
                 }}
                 onError={(errors) => {
                   form.setErrors(errors, form.stepIndex)
+                }}
+                customValidate={(formData: RJSFSchema, errors: FormValidation) => {
+                  return form.customValidate(formData, errors, form.currentSchema)
                 }}
                 showErrorList={false}
                 omitExtraData
