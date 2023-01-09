@@ -36,7 +36,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
   return (
     <div className="w-full">
       <div className="flex justify-between mb-1">
-        <div className="flex">
+        <div className="flex w-full justify-between">
           {/* LABEL */}
           <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>
             {label}
