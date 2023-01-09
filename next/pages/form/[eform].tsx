@@ -15,7 +15,6 @@ import { forceString, isProductionDeployment } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
-import { handle } from 'mdast-util-to-markdown/lib/handle'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -94,15 +93,6 @@ const FormTestPage = ({
   initDefaultSchemaFields(eform.schema)
   const form = useFormStepper(escapedSlug, eform.schema)
 
-  const customFormats = {
-    zip: /\b\d{5}\b/,
-    time: /^[0-2]\d:[0-5]\d$/,
-  }
-  const validator = customizeValidator({
-    customFormats,
-    ajvOptionsOverrides: { keywords: form.keywords },
-  })
-
   return (
     <PageWrapper
       locale={page.locale}
@@ -148,7 +138,7 @@ const FormTestPage = ({
                 schema={form.currentSchema}
                 uiSchema={eform.uiSchema}
                 formData={form.formData}
-                validator={validator}
+                validator={form.validator}
                 customValidate={(formData: RJSFSchema, errors: FormValidation) => {
                   return form.customValidate(formData, errors, form.currentSchema)
                 }}
