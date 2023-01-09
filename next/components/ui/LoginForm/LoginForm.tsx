@@ -88,14 +88,9 @@ const App = () => {
       </form>
       <div className="flex justify-between">
         <div className="text-20-semibold hidden md:flex text-gray-800">
-          {t('forgotten_password_label')}
+          {t('forgotten_password_description')}
         </div>
-        <Button
-          variant="link-black"
-          href="/"
-          label={t('forgotten_password_button')}
-          endIconHidden
-        />
+        <Button variant="link-black" href="/" label={t('forgotten_password_link')} endIconHidden />
       </div>
     </div>
   )

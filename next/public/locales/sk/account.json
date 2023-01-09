@@ -9,8 +9,8 @@
   "password_description": "Požiadavky na heslo",
   "password_required": "Heslo je povinné",
   "login_submit": "Prihlásiť sa",
-  "forgotten_password_label": "Zabudli ste heslo?",
-  "forgotten_password_button": "Získať nové heslo",
+  "forgotten_password_description": "Zabudli ste heslo?",
+  "forgotten_password_link": "Získať nové heslo",
 
   "NotAuthorizedException": "Unauthorized"
 }
