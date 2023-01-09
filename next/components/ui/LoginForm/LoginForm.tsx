@@ -3,6 +3,7 @@ import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
+import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
@@ -67,11 +68,10 @@ const App = () => {
           name="password"
           control={control}
           render={({ field }) => (
-            <InputField
+            <PasswordField
               required
               label={t('password_label')}
               placeholder={t('password_placeholder')}
-              type="password"
               description={t('password_description')}
               {...field}
               errorMessage={errors.password}
