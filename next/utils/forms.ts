@@ -1,4 +1,5 @@
 import Form from '@rjsf/core'
+import IChangeEvent from '@rjsf/core'
 import {
   ErrorSchema,
   FormValidation,
@@ -292,6 +293,27 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setFormData(newState)
   }
 
+  const handleOnSubmit = (newFormData: RJSFSchema) => {
+    increaseStepErrors()
+    setStepFormData(newFormData)
+    const isFormValid = validate()
+    if (isFormValid) {
+      setUniqueErrors([], stepIndex)
+    }
+    if (isFormValid || isSkipEnabled) {
+      next()
+      disableSkip()
+    }
+  }
+
+  const handleOnErrors = (newErrors: RJSFValidationError[]) => {
+    setUniqueErrors(newErrors, stepIndex)
+    if (isSkipEnabled) {
+      next()
+      disableSkip()
+    }
+  }
+
   return {
     stepIndex,
     setStepIndex, // only for testing!
@@ -308,6 +330,8 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     disableSkip,
     increaseStepErrors,
     customValidate,
+    handleOnSubmit,
+    handleOnErrors,
     currentSchema,
     isComplete,
     formRef,

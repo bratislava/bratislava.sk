@@ -15,6 +15,7 @@ import { forceString, isProductionDeployment } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
+import { handle } from 'mdast-util-to-markdown/lib/handle'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -146,33 +147,18 @@ const FormTestPage = ({
                 ref={form.formRef}
                 schema={form.currentSchema}
                 uiSchema={eform.uiSchema}
-                validator={validator}
                 formData={form.formData}
+                validator={validator}
+                customValidate={(formData: RJSFSchema, errors: FormValidation) => {
+                  return form.customValidate(formData, errors, form.currentSchema)
+                }}
                 onSubmit={(e) => {
-                  form.increaseStepErrors()
-                  form.setStepFormData(e.formData)
-                  const isFormValid = form.validate()
-                  if (isFormValid) {
-                    form.setErrors([], form.stepIndex)
-                  }
-                  if (isFormValid || form.isSkipEnabled) {
-                    form.next()
-                    form.disableSkip()
-                  }
+                  form.handleOnSubmit(e.formData)
                 }}
                 onChange={(e) => {
                   form.setStepFormData(e.formData)
                 }}
-                onError={(errors) => {
-                  form.setErrors(errors, form.stepIndex)
-                  if (form.isSkipEnabled) {
-                    form.next()
-                    form.disableSkip()
-                  }
-                }}
-                customValidate={(formData: RJSFSchema, errors: FormValidation) => {
-                  return form.customValidate(formData, errors, form.currentSchema)
-                }}
+                onError={form.handleOnErrors}
                 showErrorList={false}
                 omitExtraData
                 liveOmit
