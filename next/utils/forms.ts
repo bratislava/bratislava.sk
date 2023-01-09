@@ -200,6 +200,10 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
   const next = () => setStepIndex(stepIndex + 1)
 
   const submitStep = () => formRef?.current?.submit()
+  const skipStep = () => {
+    submitStep()
+    next()
+  }
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
     const newState = { ...formData }
@@ -238,6 +242,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     previous,
     next,
     submitStep,
+    skipStep,
     increaseStepErrors,
     currentSchema,
     isComplete,

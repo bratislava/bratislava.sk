@@ -154,7 +154,6 @@ const FormTestPage = ({
                   const isFormValid = form.validate()
                   if (isFormValid) {
                     form.setErrors([], form.stepIndex)
-                    form.next()
                   }
                 }}
                 onChange={(e) => {
@@ -170,7 +169,7 @@ const FormTestPage = ({
               {form.stepIndex !== 0 && (
                 <Button onPress={form.previous} text={t('buttons.previous')} />
               )}
-              <Button onPress={form.next} text={t('buttons.skip')} />
+              <Button onPress={form.skipStep} text={t('buttons.skip')} />
               <Button onPress={form.submitStep} text={t('buttons.continue')} />
             </div>
           )}
