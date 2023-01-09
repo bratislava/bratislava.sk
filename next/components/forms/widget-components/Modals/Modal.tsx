@@ -172,8 +172,8 @@ const Modal = ({
 
   return (
     <div
-      className="h-full fixed w-full z-10 -top-2 flex items-center justify-center"
-      style={{ background: 'rgba(var(--color-gray-800), .4)' }}
+      className="h-full fixed w-full z-10 top-0 flex items-center justify-center"
+      style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={() => {
         setCurrentScreenIndex(0)
         onClose()
