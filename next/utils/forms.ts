@@ -184,6 +184,16 @@ export const getLabel = (schemaArray: JsonSchema[], fieldName: string): string =
   return label
 }
 
+const transformNullToUndefined = (newFormData: RJSFSchema) => {
+  Object.entries(newFormData).forEach(([key, value]: [string, RJSFSchema]) => {
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      transformNullToUndefined(value)
+    } else if (value === null) {
+      newFormData[key] = undefined
+    }
+  })
+}
+
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
@@ -234,40 +244,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     // }
   }
 
-  const increaseStepErrors = () => {
-    if (stepIndex - 1 === errors.length) {
-      setErrors([...errors, []])
-    }
-  }
-
-  const previous = () => setStepIndex(stepIndex - 1)
-  const next = () => setStepIndex(stepIndex + 1)
-
-  const submitStep = () => formRef?.current?.submit()
-  const skipStep = () => {
-    submitStep()
-    next()
-  }
-
-  const transformNullToUndefined = (newFormData: RJSFSchema) => {
-    Object.entries(newFormData).forEach(([key, value]: [string, RJSFSchema]) => {
-      if (value && typeof value === 'object' && !Array.isArray(value)) {
-        transformNullToUndefined(value)
-      } else if (value === null) {
-        newFormData[key] = undefined
-      }
-    })
-  }
-
-  const setStepFormData = (stepFormData: RJSFSchema) => {
-    const newState = { ...formData }
-    Object.entries(stepFormData).forEach(([key, value]: [string, RJSFSchema]) => {
-      newState[key] = value
-    })
-    transformNullToUndefined(newState)
-    setFormData(newState)
-  }
-
   const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
     const updatedErrors: RJSFValidationError[][] = []
     const stepsRange = [...Array.from({ length: stepIndex + 1 }).keys()]
@@ -286,6 +262,36 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setErrors(updatedErrors)
   }
 
+  const increaseStepErrors = () => {
+    if (stepIndex - 1 === errors.length) {
+      setErrors([...errors, []])
+    }
+  }
+
+  const previous = () => setStepIndex(stepIndex - 1)
+  const next = () => setStepIndex(stepIndex + 1)
+
+  const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
+  const disableSkip = () => setIsSkipEnabled(false)
+
+  const submitStep = () => formRef?.current?.submit()
+  const skipStep = () => setIsSkipEnabled(true)
+
+  useEffect(() => {
+    if (isSkipEnabled) {
+      submitStep()
+    }
+  }, [isSkipEnabled])
+
+  const setStepFormData = (stepFormData: RJSFSchema) => {
+    const newState = { ...formData }
+    Object.entries(stepFormData).forEach(([key, value]: [string, RJSFSchema]) => {
+      newState[key] = value
+    })
+    transformNullToUndefined(newState)
+    setFormData(newState)
+  }
+
   return {
     stepIndex,
     setStepIndex, // only for testing!
@@ -298,6 +304,8 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     next,
     submitStep,
     skipStep,
+    isSkipEnabled,
+    disableSkip,
     increaseStepErrors,
     customValidate,
     currentSchema,

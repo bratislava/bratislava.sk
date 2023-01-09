@@ -14,7 +14,6 @@ interface SummaryProps {
 
 const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => {
   const isFieldError = (schemaPath: string, fieldName: string): boolean => {
-    console.log(schemaPath, ':', fieldName)
     const errorProperty = `${schemaPath}.${fieldName}`
     return formErrors.some((errors) => {
       return errors.some((error) => error.property === errorProperty)

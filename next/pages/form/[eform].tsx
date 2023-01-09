@@ -154,7 +154,10 @@ const FormTestPage = ({
                   const isFormValid = form.validate()
                   if (isFormValid) {
                     form.setErrors([], form.stepIndex)
+                  }
+                  if (isFormValid || form.isSkipEnabled) {
                     form.next()
+                    form.disableSkip()
                   }
                 }}
                 onChange={(e) => {
@@ -162,6 +165,10 @@ const FormTestPage = ({
                 }}
                 onError={(errors) => {
                   form.setErrors(errors, form.stepIndex)
+                  if (form.isSkipEnabled) {
+                    form.next()
+                    form.disableSkip()
+                  }
                 }}
                 customValidate={(formData: RJSFSchema, errors: FormValidation) => {
                   return form.customValidate(formData, errors, form.currentSchema)
