@@ -38,15 +38,19 @@ const MessageModal = ({
   cancelLabel,
   className,
 }: MessageModalBase) => {
-  useEffect(() => {
-    document.body.style.overflow = show ? 'hidden' : 'visible'
-  }, [show])
+  // useEffect(() => {
+  //   document.body.style.overflow = show ? 'hidden' : 'visible'
+  // }, [show])
 
   if (!show) {
     return null
   }
   return (
-    <div className="fixed inset-1 z-10 flex items-center justify-center" onClick={cancelHandler}>
+    <div
+      className="h-full fixed w-full z-10 -top-2 flex items-center justify-center"
+      style={{ background: 'rgba(var(--color-gray-800), .4)' }}
+      onClick={cancelHandler}
+    >
       <div className={cx('flex flex-col items-end rounded-lg bg-white p-3', className)}>
         <div className="absolute flex h-6 w-6 items-center justify-center">
           <CloseIcon onClick={cancelHandler} type="info" />
