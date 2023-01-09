@@ -6,8 +6,12 @@
   "email_format": "E-mail is not valid",
   "password_label": "Password",
   "password_placeholder": "Password",
+  "password_confirmation_label": "Password again",
+  "password_confirmation_placeholder": "Password again",
   "password_description": "Strong password",
   "password_required": "Password is required",
+  "password_format": "Strong password",
+  "password_not_match": "Password does not match",
   "login_submit": "Login",
   "login_description": "Do you have an account?",
   "login_link": "Login",
@@ -16,5 +20,13 @@
   "forgotten_password_title": "Forgotten password",
   "forgotten_password_submit": "Send code",
 
-  "NotAuthorizedException": "Unauthorized"
+  "new_password_title": "New password",
+  "new_password_submit": "Confirm",
+  "verification_code_label": "Code",
+  "verification_code_placeholder": "Code",
+  "verification_code_required": "Code is required (6 characters)",
+
+  "NotAuthorizedException": "Unauthorized",
+  "CodeMismatchException": "Invalid verification code provided, please try again.",
+  "LimitExceededException": "Attempt limit exceeded, please try after some time."
 }

@@ -6,8 +6,12 @@
   "email_format": "E-mail nie je valídny",
   "password_label": "Heslo",
   "password_placeholder": "Heslo",
+  "password_confirmation_label": "Heslo znova",
+  "password_confirmation_placeholder": "Heslo znova",
   "password_description": "Požiadavky na heslo",
   "password_required": "Heslo je povinné",
+  "password_format": "Zadajte silné heslo",
+  "password_not_match": "Hesla sa nezhodujú",
   "login_submit": "Prihlásiť sa",
   "login_description": "Máte už mestské konto?",
   "login_link": "Prihlásiť sa",
@@ -16,5 +20,13 @@
   "forgotten_password_title": "Zabudli ste heslo?",
   "forgotten_password_submit": "Odoslať overovací kód",
 
-  "NotAuthorizedException": "Nesprávne prihlasovacie údaje"
+  "new_password_title": "Nové heslo",
+  "new_password_submit": "Potvrdiť",
+  "verification_code_label": "Kód",
+  "verification_code_placeholder": "Kód",
+  "verification_code_required": "Kód je povinný (6 znakov)",
+
+  "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
+  "CodeMismatchException": "Nesprávny verifikačný kód.",
+  "LimitExceededException": "Skúste to znova neskôr."
 }
