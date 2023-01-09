@@ -56,8 +56,8 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
             type="button"
             tabIndex={0}
             className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
-            onMouseDown={() => setType('text')}
-            onMouseUp={() => setType('password')}
+            onPointerUp={() => setType('password')}
+            onPointerDown={() => setType('text')}
           >
             <HiddenIcon />
           </button>
