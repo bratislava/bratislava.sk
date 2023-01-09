@@ -12,5 +12,5 @@
   "forgotten_password_description": "Zabudli ste heslo?",
   "forgotten_password_link": "Získať nové heslo",
 
-  "NotAuthorizedException": "Unauthorized"
+  "NotAuthorizedException": "Nesprávne prihlasovacie údaje"
 }
