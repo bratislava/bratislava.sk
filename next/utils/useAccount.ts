@@ -3,6 +3,11 @@ import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
 import { useEffect, useState } from 'react'
 
+export enum AccountStatus {
+  Idle,
+  NewPasswordRequired,
+}
+
 const poolData = {
   UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
   ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
@@ -12,6 +17,7 @@ const userPool = new CognitoUserPool(poolData)
 export default function useAccount() {
   const [user, setUser] = useState<CognitoUser | null>(null)
   const [error, setError] = useState<AWSError | undefined | null>(null)
+  const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
 
   useEffect(() => {
     const currentUser = userPool.getCurrentUser()
@@ -25,6 +31,26 @@ export default function useAccount() {
     }
   }
 
+  const confirmPassword = (verificationCode: string, password: string) => {
+    return new Promise((resolve) => {
+      if (user) {
+        user.confirmPassword(verificationCode, password, {
+          onSuccess() {
+            console.log('Password confirmed!')
+            resolve(true)
+          },
+          onFailure(err: Error) {
+            console.log(err.message)
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          },
+        })
+      } else {
+        resolve(false)
+      }
+    })
+  }
+
   const forgotPassword = (email: string): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
       Username: email,
@@ -33,14 +59,16 @@ export default function useAccount() {
 
     setError(null)
     return new Promise((resolve) => {
+      resolve(true)
       cognitoUser.forgotPassword({
         onSuccess: (data) => {
           // successfully initiated reset password request
-          console.log(data)
+          setUser(cognitoUser)
+          setStatus(AccountStatus.NewPasswordRequired)
           resolve(true)
         },
         onFailure: (err: Error) => {
-          setError(err as AWSError)
+          setError({ ...(err as AWSError) })
           resolve(false)
         },
         // Optional automatic callback
@@ -142,5 +170,5 @@ export default function useAccount() {
     })
   }
 
-  return { login, logout, user, error, forgotPassword }
+  return { login, logout, user, error, forgotPassword, confirmPassword, status }
 }
