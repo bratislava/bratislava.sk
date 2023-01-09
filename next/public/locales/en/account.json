@@ -9,8 +9,12 @@
   "password_description": "Strong password",
   "password_required": "Password is required",
   "login_submit": "Login",
+  "login_description": "Do you have an account?",
+  "login_link": "Login",
   "forgotten_password_description": "Forgot password?",
   "forgotten_password_link": "Reset password",
+  "forgotten_password_title": "Forgotten password",
+  "forgotten_password_submit": "Send code",
 
   "NotAuthorizedException": "Unauthorized"
 }

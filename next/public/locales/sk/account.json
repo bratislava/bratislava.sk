@@ -9,8 +9,12 @@
   "password_description": "Požiadavky na heslo",
   "password_required": "Heslo je povinné",
   "login_submit": "Prihlásiť sa",
+  "login_description": "Máte už mestské konto?",
+  "login_link": "Prihlásiť sa",
   "forgotten_password_description": "Zabudli ste heslo?",
   "forgotten_password_link": "Získať nové heslo",
+  "forgotten_password_title": "Zabudli ste heslo?",
+  "forgotten_password_submit": "Odoslať overovací kód",
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje"
 }
