@@ -18,6 +18,7 @@ type TimeFieldBase = {
   isOpen: boolean
   onChange?: (value?: string) => void
   value?: string
+  readOnly?: boolean
   setIsInputEdited?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -36,6 +37,7 @@ const TimeField = ({
   value = '',
   isOpen,
   setIsInputEdited,
+  readOnly,
   ...rest
 }: TimeFieldBase) => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -90,7 +92,13 @@ const TimeField = ({
         explicitOptional={explicitOptional}
       />
       <div className="relative">
-        <input {...inputProps} readOnly className={timeFieldStyle} ref={ref} name={inputProps.id} />
+        <input
+          {...inputProps}
+          readOnly={readOnly}
+          className={timeFieldStyle}
+          ref={ref}
+          name={inputProps.id}
+        />
         <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">
           {children}
         </div>

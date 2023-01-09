@@ -44,6 +44,7 @@ type TimePickerBase = {
   value?: string
   minValue?: string
   maxValue?: string
+  readOnly?: boolean
   onChange?: (value?: string) => void
 }
 
@@ -61,6 +62,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       value = '',
       minValue,
       maxValue,
+      readOnly = false,
       ...rest
     },
     ref,
@@ -158,6 +160,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               isOpen={state?.isOpen}
               onChange={onChange}
               value={value}
+              readOnly={readOnly}
               setIsInputEdited={setIsInputEdited}
             >
               <Button {...buttonProps} disabled={disabled}>

@@ -74,6 +74,7 @@ export const TimeFromTo = ({
             value={TimeFromValue}
             maxValue={TimeToValue}
             onChange={TimeFromOnChange}
+            readOnly
             disabled={TimeFromDisabled}
           />
         </div>
@@ -89,6 +90,7 @@ export const TimeFromTo = ({
             value={TimeToValue || TimeFromValue}
             minValue={TimeFromValue}
             onChange={TimeToOnChange}
+            readOnly
             disabled={TimeToDisabled}
           />
         </div>
