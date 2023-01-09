@@ -1,6 +1,7 @@
 import AccountContainer from '@bratislava/ui-bratislava/AccountContainer/AccountContainer'
-import ForgotPasswordForm from '@bratislava/ui-bratislava/ForgottenPasswordForm/ForgottenPasswordForm'
+import ForgottenPasswordForm from '@bratislava/ui-bratislava/ForgottenPasswordForm/ForgottenPasswordForm'
 import { AsyncServerProps } from '@utils/types'
+import useAccount from '@utils/useAccount'
 import AccountPageLayout from 'components/layouts/AccountPageLayout'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -29,16 +30,20 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
+const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
+  const { forgotPassword, error } = useAccount()
+
+  const onSubmit = (email: string) => forgotPassword(email)
+
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <AccountPageLayout>
         <AccountContainer>
-          <ForgotPasswordForm />
+          <ForgottenPasswordForm onSubmit={onSubmit} error={error} />
         </AccountContainer>
       </AccountPageLayout>
     </PageWrapper>
   )
 }
 
-export default LoginPage
+export default ForgottenPasswordPage

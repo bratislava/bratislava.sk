@@ -1,5 +1,5 @@
-import useAccount from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
+import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
@@ -8,6 +8,11 @@ import { Controller } from 'react-hook-form'
 
 interface Data {
   email: string
+}
+
+interface Props {
+  onSubmit: (email: string) => Promise<any>
+  error?: AWSError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field
@@ -24,8 +29,7 @@ const schema = {
   required: ['email'],
 }
 
-const App = () => {
-  const { login, user, error } = useAccount()
+const App = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -36,15 +40,12 @@ const App = () => {
     schema,
     defaultValues: { email: '' },
   })
-  const onSubmit = (data: Data) => {
-    console.log(data.email)
-  }
 
   return (
     <div>
       <h1 className="text-h3 mb-6">{t('forgotten_password_title')}</h1>
       {error && <Alert message={t(error.code)} type="error" className="min-w-full mb-6" />}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((data: Data) => onSubmit(data.email))}>
         <Controller
           name="email"
           control={control}
@@ -71,7 +72,7 @@ const App = () => {
         <div className="text-20-semibold hidden md:flex text-gray-800">
           {t('login_description')}
         </div>
-        <Button variant="link-black" href="/" label={t('login_link')} endIconHidden />
+        <Button variant="link-black" href="/login" label={t('login_link')} endIconHidden />
       </div>
     </div>
   )

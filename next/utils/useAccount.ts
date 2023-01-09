@@ -25,6 +25,42 @@ export default function useAccount() {
     }
   }
 
+  const forgotPassword = (email: string): Promise<boolean> => {
+    const cognitoUser = new CognitoUser({
+      Username: email,
+      Pool: userPool,
+    })
+
+    setError(null)
+    return new Promise((resolve) => {
+      cognitoUser.forgotPassword({
+        onSuccess: (data) => {
+          // successfully initiated reset password request
+          console.log(data)
+          resolve(true)
+        },
+        onFailure: (err: Error) => {
+          setError(err as AWSError)
+          resolve(false)
+        },
+        // Optional automatic callback
+        // inputVerificationCode: function (data) {
+        //   console.log('Code sent to: ' + data)
+        //   var code = document.getElementById('code').value
+        //   var newPassword = document.getElementById('new_password').value
+        //   cognitoUser.confirmPassword(verificationCode, newPassword, {
+        //     onSuccess() {
+        //       console.log('Password confirmed!')
+        //     },
+        //     onFailure(err) {
+        //       console.log('Password not confirmed!')
+        //     },
+        //   })
+        // },
+      })
+    })
+  }
+
   const login = (email: string, password: string) => {
     // login into cognito using aws sdk
     const authenticationData = {
@@ -106,5 +142,5 @@ export default function useAccount() {
     })
   }
 
-  return { login, logout, user, error }
+  return { login, logout, user, error, forgotPassword }
 }
