@@ -205,11 +205,22 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     next()
   }
 
+  const transformNullToUndefined = (newFormData: RJSFSchema) => {
+    Object.entries(newFormData).forEach(([key, value]: [string, RJSFSchema]) => {
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        transformNullToUndefined(value)
+      } else if (value === null) {
+        newFormData[key] = undefined
+      }
+    })
+  }
+
   const setStepFormData = (stepFormData: RJSFSchema) => {
     const newState = { ...formData }
     Object.entries(stepFormData).forEach(([key, value]: [string, RJSFSchema]) => {
       newState[key] = value
     })
+    transformNullToUndefined(newState)
     setFormData(newState)
   }
 
