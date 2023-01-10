@@ -17,7 +17,8 @@ export const blogPostsDefaultFilters: BlogPostsFilters = {
   page: 1,
 }
 
-export const getBlogPostsSwrKey = (filters: BlogPostsFilters, locale: string) => ['BlogPost', filters, locale] as Key
+export const getBlogPostsSwrKey = (filters: BlogPostsFilters, locale: string) =>
+  ['BlogPost', filters, locale] as Key
 
 export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => async () => {
   const data = await meiliClient
@@ -32,6 +33,10 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
   const hits = data.hits.map((article) => {
     return {
       attributes: {
+        title: article.title,
+        slug: article.slug,
+        publishedAt: article.publishedAt,
+
         coverImage: {
           data: {
             attributes: {
@@ -39,14 +44,13 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
             },
           },
         },
-        publishedAt: article.publishedAt,
         tag: {
           data: {
             attributes: {
               pageCategory: {
                 data: {
                   attributes: {
-                    color: 'red', // hardcoded, api does not return this attribute
+                    color: 'main', // hardcoded, api does not return this attribute
                     shortTitle: article.tag?.title,
                   },
                 },
@@ -54,8 +58,6 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
             },
           },
         },
-        title: article.title,
-        slug: article.slug,
       },
     } as BlogItem
   })
