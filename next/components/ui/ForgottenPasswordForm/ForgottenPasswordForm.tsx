@@ -54,7 +54,6 @@ const App = ({ onSubmit, error }: Props) => {
               required
               label={t('email_label')}
               placeholder={t('email_placeholder')}
-              className="mb-6"
               {...field}
               errorMessage={errors.email}
             />
