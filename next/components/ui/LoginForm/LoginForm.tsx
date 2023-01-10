@@ -58,12 +58,12 @@ const App = () => {
               required
               label={t('email_label')}
               placeholder={t('email_placeholder')}
-              className="mb-6"
               {...field}
               errorMessage={errors.email}
             />
           )}
         />
+        <div className="mb-6" />
         <Controller
           name="password"
           control={control}
