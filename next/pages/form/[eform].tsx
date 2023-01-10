@@ -149,6 +149,7 @@ const FormTestPage = ({
                   form.setStepFormData(e.formData)
                 }}
                 onError={form.handleOnErrors}
+                extraErrors={form.extraErrors}
                 showErrorList={false}
                 omitExtraData
                 liveOmit

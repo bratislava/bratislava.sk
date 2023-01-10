@@ -210,7 +210,7 @@ const validator = customizeValidator({
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
-export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
+export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast
@@ -218,7 +218,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
 
   const [stepIndex, setStepIndex] = useState(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
-  const [currentFormData, setCurrentFormData] = useState<RJSFSchema>()
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
   const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
 
@@ -230,6 +229,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
 
   console.log('FORM DATA:', formData)
   console.log('ERRORS:', errors)
+  console.log('EXTRA ERRORS:', extraErrors)
 
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
@@ -245,19 +245,16 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     }
   }, [stepIndex, steps, stepsLength])
 
-  useEffect(() => {}, [currentFormData])
+  const validate = async (): Promise<boolean> => {
+    let isValid = formRef?.current?.validateForm() ?? false
 
-  const validate = (): boolean | undefined => {
-    return formRef?.current?.validateForm()
+    if (schema.$async === true) {
+      const newExtraErrors = await validateAsyncProperties(currentSchema, formData, [])
+      isValid = isValid && Object.keys(newExtraErrors).length === 0
+      setExtraErrors(newExtraErrors)
+    }
 
-    // if (schema.$async === true) {
-    //   const newExtraErrors = await validateAsyncProperties(
-    //     currentSchema,
-    //     formRef?.current?.state.formData,
-    //     [],
-    //   )
-    //   setExtraErrors(newExtraErrors)
-    // }
+    return isValid
   }
 
   const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
@@ -327,10 +324,10 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     setFormData(newState)
   }
 
-  const handleOnSubmit = (newFormData: RJSFSchema) => {
+  const handleOnSubmit = async (newFormData: RJSFSchema) => {
     increaseStepErrors()
     setStepFormData(newFormData)
-    const isFormValid = validate()
+    const isFormValid = await validate()
     if (isFormValid) {
       setUniqueErrors([], stepIndex)
     }
@@ -354,6 +351,7 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     formData,
     setStepFormData,
     errors,
+    extraErrors,
     validate,
     setErrors: setUniqueErrors,
     previous,
@@ -369,7 +367,6 @@ export const useFormStepper = (eformSlug: string, schema: StrictRJSFSchema) => {
     currentSchema,
     isComplete,
     formRef,
-    extraErrors,
     keywords: ajvKeywords,
     customFormats,
     validator,
