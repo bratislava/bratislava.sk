@@ -123,7 +123,7 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <FinalStep
-              formData={form.formData}
+              formData={form.finalFormData}
               formErrors={form.errors}
               extraErrors={form.extraErrors}
               slug={formSlug}
@@ -146,9 +146,9 @@ const FormTestPage = ({
                 onSubmit={(e) => {
                   form.handleOnSubmit(e.formData)
                 }}
-                onChange={(e) => {
-                  form.setStepFormData(e.formData)
-                }}
+                // onChange={(e) => {
+                //   form.setStepFormData(e.formData)
+                // }}
                 onError={form.handleOnErrors}
                 extraErrors={form.extraErrors}
                 showErrorList={false}

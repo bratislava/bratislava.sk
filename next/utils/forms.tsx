@@ -198,6 +198,18 @@ const transformNullToUndefined = (newFormData: RJSFSchema) => {
   })
 }
 
+const removeNullFields = (newFormData: RJSFSchema) => {
+  const newSchema: RJSFSchema = {}
+  Object.entries(newFormData).forEach(([key, value]: [string, RJSFSchema]) => {
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      newSchema[key] = removeNullFields(value)
+    } else if (value && (typeof value !== 'object' || Array.isArray(value))) {
+      newSchema[key] = value
+    }
+  })
+  return newSchema
+}
+
 const customFormats = {
   zip: /\b\d{5}\b/,
   time: /^[0-2]\d:[0-5]\d$/,
@@ -218,6 +230,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const [stepIndex, setStepIndex] = useState(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
+  const [finalFormData, setFinalFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
   const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
 
@@ -227,9 +240,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
 
-  console.log('FORM DATA:', formData)
-  console.log('ERRORS:', errors)
-  console.log('EXTRA ERRORS:', extraErrors)
+  // console.log('FORM DATA:', formData)
 
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
@@ -282,26 +293,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }
 
   const previous = () => setStepIndex(stepIndex - 1)
-  const testRef = useRef<Form>() as RefObject<Form>
-  const next = () => {
-    // const nextSchema = steps ? (steps[stepIndex + 1] as RJSFSchema) : {}
-    // console.log('NEXT SCHEMA:', nextSchema)
-    // const themedForm = (
-    //   <ThemedForm
-    //     ref={testRef}
-    //     schema={nextSchema}
-    //     formData={formData}
-    //     omitExtraData
-    //     liveOmit
-    //     validator={validator}
-    //     onSubmit={(e) => {
-    //       console.log('NEXT STEP TEST', e)
-    //     }}
-    //   />
-    // )
-    // testRef?.current?.submit()
-    setStepIndex(stepIndex + 1)
-  }
+  const next = () => setStepIndex(stepIndex + 1)
 
   const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
   const disableSkip = () => setIsSkipEnabled(false)
@@ -316,9 +308,12 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }, [isSkipEnabled])
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
-    const newState = { ...formData, ...stepFormData }
-    transformNullToUndefined(newState)
+    console.log('STEP FORM DATA', stepFormData)
+    const newState = removeNullFields({ ...formData, ...stepFormData })
     setFormData(newState)
+    const newFinalState = { ...formData, ...stepFormData }
+    transformNullToUndefined(newFinalState)
+    setFinalFormData(newFinalState)
   }
 
   const handleOnSubmit = async (newFormData: RJSFSchema) => {
@@ -342,10 +337,17 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     }
   }
 
+  const testStepCondition = (newFormData: RJSFSchema) => {
+    if (Object.keys(newFormData).length === 0) {
+      next()
+    }
+  }
+
   return {
     stepIndex,
     setStepIndex, // only for testing!
     formData,
+    finalFormData,
     setStepFormData,
     errors,
     extraErrors,
@@ -361,6 +363,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     customValidate,
     handleOnSubmit,
     handleOnErrors,
+    testStepCondition,
     currentSchema,
     isComplete,
     formRef,
