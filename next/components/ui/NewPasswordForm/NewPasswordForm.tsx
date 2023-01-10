@@ -15,6 +15,7 @@ interface Data {
 
 interface Props {
   onSubmit: (verificationCode: string, password: string) => Promise<any>
+  resend: () => Promise<any>
   error?: AWSError | null | undefined
 }
 
@@ -44,7 +45,7 @@ const schema = {
   required: ['verificationCode', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error }: Props) => {
+const NewPasswordForm = ({ onSubmit, error, resend }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -109,6 +110,13 @@ const NewPasswordForm = ({ onSubmit, error }: Props) => {
           disabled={isSubmitting}
         />
       </form>
+      <p className="mb-6">{t('new_password_description')}</p>
+      <Button
+        onPress={() => resend()}
+        className="min-w-full"
+        text={t('new_password_resend')}
+        variant="category-outline"
+      />
     </div>
   )
 }

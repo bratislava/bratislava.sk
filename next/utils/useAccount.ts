@@ -40,7 +40,6 @@ export default function useAccount() {
             resolve(true)
           },
           onFailure(err: Error) {
-            console.log(err.message)
             setError({ ...(err as AWSError) })
             resolve(false)
           },
@@ -51,41 +50,32 @@ export default function useAccount() {
     })
   }
 
-  const forgotPassword = (email: string): Promise<boolean> => {
-    const cognitoUser = new CognitoUser({
-      Username: email,
-      Pool: userPool,
-    })
+  const forgotPassword = (email = ''): Promise<boolean> => {
+    const cognitoUser = email
+      ? new CognitoUser({
+          Username: email,
+          Pool: userPool,
+        })
+      : user
 
     setError(null)
     return new Promise((resolve) => {
-      resolve(true)
-      cognitoUser.forgotPassword({
-        onSuccess: (data) => {
-          // successfully initiated reset password request
-          setUser(cognitoUser)
-          setStatus(AccountStatus.NewPasswordRequired)
-          resolve(true)
-        },
-        onFailure: (err: Error) => {
-          setError({ ...(err as AWSError) })
-          resolve(false)
-        },
-        // Optional automatic callback
-        // inputVerificationCode: function (data) {
-        //   console.log('Code sent to: ' + data)
-        //   var code = document.getElementById('code').value
-        //   var newPassword = document.getElementById('new_password').value
-        //   cognitoUser.confirmPassword(verificationCode, newPassword, {
-        //     onSuccess() {
-        //       console.log('Password confirmed!')
-        //     },
-        //     onFailure(err) {
-        //       console.log('Password not confirmed!')
-        //     },
-        //   })
-        // },
-      })
+      if (cognitoUser) {
+        cognitoUser.forgotPassword({
+          onSuccess: (data) => {
+            // successfully initiated reset password request
+            setUser(cognitoUser)
+            setStatus(AccountStatus.NewPasswordRequired)
+            resolve(true)
+          },
+          onFailure: (err: Error) => {
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          },
+        })
+      } else {
+        resolve(false)
+      }
     })
   }
 
@@ -132,7 +122,6 @@ export default function useAccount() {
           })
 
           setUser(cognitoUser)
-          console.log(cognitoUser)
           resolve(true)
         },
 

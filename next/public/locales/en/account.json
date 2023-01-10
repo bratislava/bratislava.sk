@@ -21,6 +21,8 @@
   "forgotten_password_submit": "Send code",
 
   "new_password_title": "New password",
+  "new_password_description": "Didn't receive a verification code?",
+  "new_password_resend": "Resend code",
   "new_password_submit": "Confirm",
   "verification_code_label": "Code",
   "verification_code_placeholder": "Code",

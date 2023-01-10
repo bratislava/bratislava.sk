@@ -21,6 +21,8 @@
   "forgotten_password_submit": "Odoslať overovací kód",
 
   "new_password_title": "Nové heslo",
+  "new_password_description": "Do priečinka doručenej pošty sme vám odoslali overovací kód. Nedostali ste overovací kód?",
+  "new_password_resend": "Odoslať nový kód",
   "new_password_submit": "Potvrdiť",
   "verification_code_label": "Kód",
   "verification_code_placeholder": "Kód",

@@ -42,7 +42,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
             <ForgottenPasswordForm onSubmit={forgotPassword} error={error} />
           )}
           {status === AccountStatus.NewPasswordRequired && (
-            <NewPasswordForm onSubmit={confirmPassword} error={error} />
+            <NewPasswordForm onSubmit={confirmPassword} resend={forgotPassword} error={error} />
           )}
         </AccountContainer>
       </AccountPageLayout>
