@@ -63,6 +63,7 @@ export default function useAccount() {
       if (cognitoUser) {
         cognitoUser.forgotPassword({
           onSuccess: (data) => {
+            console.log(data)
             // successfully initiated reset password request
             setUser(cognitoUser)
             setStatus(AccountStatus.NewPasswordRequired)

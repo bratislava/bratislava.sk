@@ -5,6 +5,7 @@ import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
+import { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 
 interface Data {
@@ -15,7 +16,7 @@ interface Data {
 
 interface Props {
   onSubmit: (verificationCode: string, password: string) => Promise<any>
-  resend: () => Promise<any>
+  onResend: () => Promise<any>
   error?: AWSError | null | undefined
 }
 
@@ -45,7 +46,7 @@ const schema = {
   required: ['verificationCode', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error, resend }: Props) => {
+const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -56,6 +57,18 @@ const NewPasswordForm = ({ onSubmit, error, resend }: Props) => {
     schema,
     defaultValues: { password: '', passwordConfirmation: '' },
   })
+
+  const [cnt, setCnt] = useState(60)
+  useEffect(() => {
+    if (cnt > 0) {
+      setTimeout(() => setCnt((state) => state - 1), 1000)
+    }
+  }, [cnt])
+
+  const handleResend = async () => {
+    setCnt(60)
+    await onResend()
+  }
 
   return (
     <div>
@@ -110,12 +123,14 @@ const NewPasswordForm = ({ onSubmit, error, resend }: Props) => {
           disabled={isSubmitting}
         />
       </form>
-      <p className="mb-6">{t('new_password_description')}</p>
+      <p>{t('new_password_description')}</p>
+      {cnt > 0 && <p>{t('new_password_cnt_description').replace('{cnt}', cnt.toString())}</p>}
       <Button
-        onPress={() => resend()}
-        className="min-w-full"
+        onPress={handleResend}
+        className="min-w-full mt-6"
         text={t('new_password_resend')}
         variant="category-outline"
+        disabled={cnt > 0}
       />
     </div>
   )
