@@ -70,12 +70,13 @@ export const BlogSearchCard = ({
   const { Link: UILink } = useUIContext()
 
   const { slug, tag, coverImage, title } = item.attributes
-  const { shortTitle, color } = tag.data.attributes.pageCategory.data.attributes
+  const { shortTitle: tagTitle, color } = tag.data.attributes.pageCategory.data.attributes
 
   const publishedAt = new Date(item.attributes.publishedAt)
-  const date = `${publishedAt.getDay()}. ${publishedAt.getMonth()}. ${publishedAt.getFullYear()}`
-  const headline = shortTitle ?? 'No Title Found'
-  const headlineColor = color ? `--color-${color}--light` : '--color-red'
+  // TODO use formatter function, add locale
+  const date = publishedAt.toLocaleDateString('sk-SK')
+  const tagColor = color ? `--color-${color}-100` : '--color-main-100'
+
   return (
     <UILink href={slug ? `/blog/${slug}` : ''}>
       <Panel
@@ -99,12 +100,14 @@ export const BlogSearchCard = ({
         )}
 
         <div className="flex flex-col gap-y-4 p-8">
-          <div
-            className="w-fit rounded-lg px-3 py-1 font-medium"
-            style={{ backgroundColor: `rgb(var(${headlineColor}))` }}
-          >
-            {headline}
-          </div>
+          {tagTitle && (
+            <div
+              className="w-fit rounded-lg px-3 py-1"
+              style={{ backgroundColor: `rgb(var(${tagColor}))` }}
+            >
+              {tagTitle}
+            </div>
+          )}
           <div className="text-20-semibold line-clamp-2">{title} </div>
           <div>{date}</div>
         </div>
@@ -129,12 +132,14 @@ export const BlogSearchCard = ({
           >
             {/* should be from-black but it doesn't work */}
             <div className="flex flex-col gap-y-4 bg-gradient-to-t from-[#000000] p-4 lg:p-8">
-              <div
-                className="w-fit rounded-lg px-3 py-1 font-medium"
-                style={{ backgroundColor: `rgb(var(${headlineColor}))` }}
-              >
-                {headline}
-              </div>
+              {tagTitle && (
+                <div
+                  className="w-fit rounded-lg px-3 py-1"
+                  style={{ backgroundColor: `rgb(var(${tagColor}))` }}
+                >
+                  {tagTitle}
+                </div>
+              )}
               <div className="flex">
                 <div className="text-20-semibold line-clamp-2 text-white">{title}</div>
                 <VerticalCardButton
