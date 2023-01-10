@@ -5,6 +5,7 @@ import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { Controller } from 'react-hook-form'
 
 interface Data {
@@ -32,8 +33,10 @@ const schema = {
 }
 
 const App = () => {
-  const { login, user, error } = useAccount()
+  const { login, error } = useAccount()
   const { t } = useTranslation('account')
+  const router = useRouter()
+
   const {
     handleSubmit,
     control,
@@ -43,7 +46,15 @@ const App = () => {
     schema,
     defaultValues: { email: '', password: '' },
   })
-  const onSubmit = (data: Data) => login(data.email, data.password)
+  const onSubmit = async (data: Data) => {
+    if (await login(data.email, data.password)) {
+      const from =
+        router.query.from && typeof router.query.from === 'string'
+          ? decodeURIComponent(router.query.from)
+          : '/'
+      router.push(from)
+    }
+  }
 
   return (
     <div>
@@ -72,7 +83,6 @@ const App = () => {
               required
               label={t('password_label')}
               placeholder={t('password_placeholder')}
-              description={t('password_description')}
               {...field}
               errorMessage={errors.password}
             />

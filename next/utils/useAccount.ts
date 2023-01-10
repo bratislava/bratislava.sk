@@ -68,7 +68,6 @@ export default function useAccount() {
           })
 
           setUser(cognitoUser)
-          console.log(cognitoUser)
           resolve(true)
         },
 
