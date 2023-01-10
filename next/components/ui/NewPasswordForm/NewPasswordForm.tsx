@@ -55,7 +55,7 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
     formState: { isSubmitting },
   } = useHookForm<Data>({
     schema,
-    defaultValues: { password: '', passwordConfirmation: '' },
+    defaultValues: { verificationCode: '', password: '', passwordConfirmation: '' },
   })
 
   const [cnt, setCnt] = useState(60)
