@@ -125,6 +125,7 @@ const FormTestPage = ({
             <FinalStep
               formData={form.formData}
               formErrors={form.errors}
+              extraErrors={form.extraErrors}
               slug={formSlug}
               schema={eform.schema}
               onGoToStep={(step: number) => form.setStepIndex(step)}

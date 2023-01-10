@@ -1,4 +1,4 @@
-import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import { ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { getLabel, JsonSchema } from '@utils/forms'
 import { JSONSchema7Definition } from 'json-schema'
 
@@ -8,11 +8,12 @@ import { TransformedFormData, TransformedFormStep } from './TransformedFormData'
 interface SummaryProps {
   formData: Record<string, JsonSchema>
   formErrors: RJSFValidationError[][]
+  extraErrors: ErrorSchema
   schema?: StrictRJSFSchema
   onGoToStep: (step: number) => void
 }
 
-const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => {
+const Summary = ({ schema, formData, formErrors, extraErrors, onGoToStep }: SummaryProps) => {
   const isFieldError = (schemaPath: string, fieldName: string): boolean => {
     const errorProperty = `${schemaPath}.${fieldName}`
     return formErrors.some((errors) => {
@@ -20,36 +21,20 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
     })
   }
 
-  // const getRequiredEmptyData = (data: TransformedFormData[], schemaPath: string) => {
-  //   console.log('SCHEMA PATH:', schemaPath)
-  //   formErrors.forEach((stepErrors) => {
-  //     stepErrors.forEach((error) => {
-  //       if (error.name === 'required' && error.property === schemaPath) {
-  //         const field: TransformedFormData = {
-  //           label: schema?.allOf
-  //             ? getLabel(schema?.allOf, error.params.missingProperty)
-  //             : error.params.missingProperty,
-  //           value: '-',
-  //           schemaPath,
-  //           isError: true,
-  //         }
-  //         data.push(field)
-  //       }
-  //     })
-  //   })
-  // }
-
   const getAllTransformedData = (
     data: TransformedFormData[],
     schemaPath: string,
+    currentExtraErrors?: ErrorSchema,
     parent?: JsonSchema,
   ) => {
     if (!parent) return
     Object.entries(parent).forEach(([key, value]: [string, JsonSchema]) => {
+      const childExtraErrors = currentExtraErrors ? currentExtraErrors[key] : undefined
       if (value && typeof value === 'object' && !Array.isArray(value)) {
         const newSchemaPath = `${schemaPath}.${key}`
-        getAllTransformedData(data, newSchemaPath, value)
+        getAllTransformedData(data, newSchemaPath, childExtraErrors, value)
       } else {
+        const extraErrorCount = childExtraErrors?.__errors?.length ?? 0
         const field: TransformedFormData = {
           label: schema?.allOf ? getLabel(schema?.allOf, key) : key,
           value:
@@ -57,7 +42,7 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
               ? JSON.stringify(value, null, '\t').replaceAll('"', '')
               : '-',
           schemaPath,
-          isError: isFieldError(schemaPath, key),
+          isError: extraErrorCount > 0 || isFieldError(schemaPath, key),
         }
         data.push(field)
       }
@@ -67,7 +52,8 @@ const Summary = ({ schema, formData, formErrors, onGoToStep }: SummaryProps) => 
   const transformStep = ([key, step]: [string, JSONSchema7Definition]): TransformedFormStep => {
     const label = schema?.allOf ? getLabel(schema.allOf, key) : key
     const data: TransformedFormData[] = []
-    getAllTransformedData(data, `.${key}`, step)
+    const stepExtraErrors = extraErrors[key]
+    getAllTransformedData(data, `.${key}`, stepExtraErrors, step)
     return { key, label, data }
   }
 

@@ -251,7 +251,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     if (schema.$async === true) {
       const newExtraErrors = await validateAsyncProperties(currentSchema, formData, [])
       isValid = isValid && Object.keys(newExtraErrors).length === 0
-      setExtraErrors(newExtraErrors)
+      setExtraErrors({ ...extraErrors, ...newExtraErrors })
     }
 
     return isValid
@@ -316,10 +316,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }, [isSkipEnabled])
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
-    const newState = { ...formData }
-    Object.entries(stepFormData).forEach(([key, value]: [string, RJSFSchema]) => {
-      newState[key] = value
-    })
+    const newState = { ...formData, ...stepFormData }
     transformNullToUndefined(newState)
     setFormData(newState)
   }

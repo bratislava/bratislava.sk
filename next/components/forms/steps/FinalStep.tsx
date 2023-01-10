@@ -1,4 +1,4 @@
-import { RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import { ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { ApiError, submitEform } from '@utils/api'
 import { ErrorObject } from 'ajv'
 import { useTranslation } from 'next-i18next'
@@ -11,6 +11,7 @@ import SummaryMessages from './Summary/SummaryMessages'
 interface FinalStepProps {
   formData: Record<string, any>
   formErrors: RJSFValidationError[][]
+  extraErrors: ErrorSchema
   schema?: StrictRJSFSchema
   slug: string
   onGoToStep: (step: number) => void
@@ -21,6 +22,7 @@ interface FinalStepProps {
 export const FinalStep = ({
   formData,
   formErrors,
+  extraErrors,
   schema,
   slug,
   onGoToStep,
@@ -60,6 +62,7 @@ export const FinalStep = ({
         schema={schema}
         formData={formData}
         formErrors={formErrors}
+        extraErrors={extraErrors}
         onGoToStep={onGoToStep}
       />
       <SummaryMessages errors={errors} successMessage={successMessage} />
