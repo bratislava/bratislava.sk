@@ -35,15 +35,29 @@ export const buildXmlRecursive = (
   } else if (node && typeof node === 'object') {
     // objects add one level of nesting to xml
     parentNode.append(`<${nodeName}></${nodeName}>`)
-    Object.keys(node).forEach((key) => {
-      const properties = getAllPossibleJsonSchemaProperties(jsonSchema)
-      buildXmlRecursive(
-        [...currentPath, firstCharToUpper(key)],
-        cheerioInstance,
-        node[key],
-        properties[key],
-      )
-    })
+
+    const properties = getAllPossibleJsonSchemaProperties(jsonSchema)
+    if (Object.keys(properties).length === 0) {
+      Object.keys(node).forEach((key) => {
+        buildXmlRecursive(
+          [...currentPath, firstCharToUpper(key)],
+          cheerioInstance,
+          node[key],
+          properties[key],
+        )
+      })
+    } else {
+      Object.keys(properties).forEach((key) => {
+        if (node[key] !== undefined) {
+          buildXmlRecursive(
+            [...currentPath, firstCharToUpper(key)],
+            cheerioInstance,
+            node[key],
+            properties[key],
+          )
+        }
+      })
+    }
   } else if (node && typeof node === 'string') {
     if (jsonSchema && jsonSchema !== true) {
       const format =
