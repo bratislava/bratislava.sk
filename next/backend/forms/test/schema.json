@@ -256,8 +256,7 @@
                 "properties": {
                   "firstBonus": {
                     "type": "string",
-                    "title": "First bonus",
-                    "default": "KRAVINA"
+                    "title": "First bonus"
                   },
                   "secondBonus": {
                     "type": "string",

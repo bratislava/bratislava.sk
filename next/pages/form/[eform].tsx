@@ -90,7 +90,7 @@ const FormTestPage = ({
   const escapedSlug = formSlug.match(/^[\da-z-]+$/) ? formSlug : ''
   const pageSlug = `form/${escapedSlug}`
 
-  initDefaultSchemaFields(eform.schema)
+  // initDefaultSchemaFields(eform.schema)
   const form = useFormStepper(escapedSlug, eform.schema)
 
   return (
@@ -123,7 +123,7 @@ const FormTestPage = ({
             */}
           {form.isComplete ? (
             <FinalStep
-              formData={form.finalFormData}
+              formData={form.formData}
               formErrors={form.errors}
               extraErrors={form.extraErrors}
               slug={formSlug}
@@ -146,9 +146,9 @@ const FormTestPage = ({
                 onSubmit={(e) => {
                   form.handleOnSubmit(e.formData)
                 }}
-                // onChange={(e) => {
-                //   form.setStepFormData(e.formData)
-                // }}
+                onChange={(e) => {
+                  form.setStepFormData(e.formData)
+                }}
                 onError={form.handleOnErrors}
                 extraErrors={form.extraErrors}
                 showErrorList={false}

@@ -230,7 +230,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const [stepIndex, setStepIndex] = useState(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
-  const [finalFormData, setFinalFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
   const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
 
@@ -240,7 +239,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
 
-  // console.log('FORM DATA:', formData)
+  console.log('FORM DATA:', formData)
 
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
@@ -308,12 +307,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }, [isSkipEnabled])
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
-    console.log('STEP FORM DATA', stepFormData)
-    const newState = removeNullFields({ ...formData, ...stepFormData })
-    setFormData(newState)
-    const newFinalState = { ...formData, ...stepFormData }
-    transformNullToUndefined(newFinalState)
-    setFinalFormData(newFinalState)
+    setFormData({ ...formData, ...stepFormData })
   }
 
   const handleOnSubmit = async (newFormData: RJSFSchema) => {
@@ -347,7 +341,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     stepIndex,
     setStepIndex, // only for testing!
     formData,
-    finalFormData,
     setStepFormData,
     errors,
     extraErrors,
