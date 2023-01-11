@@ -9,7 +9,7 @@ interface StepperViewRowProps {
   isLast?: boolean
 }
 
-const StepperViewRow = ({ title, order, isCurrent, isFilled }: StepperViewRowProps) => {
+const StepperViewRow = ({ title, order, isCurrent, isFilled, isLast }: StepperViewRowProps) => {
   const iconClassName = cx(
     'flew-row w-8 h-8 rounded-full flex justify-center items-center border-2',
     {
@@ -20,15 +20,18 @@ const StepperViewRow = ({ title, order, isCurrent, isFilled }: StepperViewRowPro
   )
 
   return (
-    <div className="p-2 flex flex-row gap-3 items-center">
-      <div className={iconClassName}>
-        {isCurrent || !isFilled ? (
-          order
-        ) : (
-          <FilledSelectedIcon style={{ transform: 'scale(1.5)' }} />
-        )}
+    <div className="flex flex-col">
+      <div className="flex flex-row gap-3 items-center">
+        <div className={iconClassName}>
+          {isCurrent || !isFilled ? order : <FilledSelectedIcon className="scale-150" />}
+        </div>
+        <p className="text-p3-medium">{title}</p>
       </div>
-      <p className="text-p3-medium">{title}</p>
+      {!isLast && (
+        <div className="w-8 h-8 flex flex-row justify-center items-center">
+          <div className="w-0.5 h-4 bg-gray-300 py-2" />
+        </div>
+      )}
     </div>
   )
 }
