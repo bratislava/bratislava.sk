@@ -7,9 +7,12 @@ interface StepperViewRowProps {
   isCurrent?: boolean
   isFilled?: boolean
   isLast?: boolean
+  onClick: () => void
 }
 
-const StepperViewRow = ({ title, order, isCurrent, isFilled, isLast }: StepperViewRowProps) => {
+const StepperViewRow = (props: StepperViewRowProps) => {
+  const { title, order, isCurrent, isFilled, isLast, onClick } = props
+
   const iconClassName = cx(
     'flew-row w-8 h-8 rounded-full flex justify-center items-center border-2',
     {
@@ -20,8 +23,8 @@ const StepperViewRow = ({ title, order, isCurrent, isFilled, isLast }: StepperVi
   )
 
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row gap-3 items-center">
+    <div className="flex flex-col select-none">
+      <div className="flex flex-row gap-3 items-center cursor-pointer" onClick={onClick}>
         <div className={iconClassName}>
           {isCurrent || !isFilled ? order : <FilledSelectedIcon className="scale-150" />}
         </div>
