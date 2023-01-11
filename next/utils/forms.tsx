@@ -240,7 +240,12 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
 
   console.log('FORM DATA:', formData)
-
+  // console.log(
+  //   getAllPossibleJsonSchemaProperties(
+  //     getAllPossibleJsonSchemaProperties(getAllPossibleJsonSchemaProperties(schema).checkBoxes)
+  //       .favouriteFruits,
+  //   ),
+  // )
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
     setFormData({})
@@ -331,12 +336,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     }
   }
 
-  const testStepCondition = (newFormData: RJSFSchema) => {
-    if (Object.keys(newFormData).length === 0) {
-      next()
-    }
-  }
-
   return {
     stepIndex,
     setStepIndex, // only for testing!
@@ -356,7 +355,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     customValidate,
     handleOnSubmit,
     handleOnErrors,
-    testStepCondition,
     currentSchema,
     isComplete,
     formRef,
