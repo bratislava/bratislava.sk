@@ -1,7 +1,6 @@
 export interface StepData {
   title: string
-  key: string
-  isCurrent?: boolean
+  key?: string
   isFilled?: boolean
   fields?: []
 }
