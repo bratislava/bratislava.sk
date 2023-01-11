@@ -35,6 +35,7 @@ export interface BlogItem {
       }
     }
     publishedAt?: string
+    date_added?: string
     slug?: string
     tag?: {
       data?: {
@@ -69,12 +70,12 @@ export const BlogSearchCard = ({
 }: BlogSearchCardProps) => {
   const { Link: UILink } = useUIContext()
 
-  const { slug, tag, coverImage, title } = item.attributes
+  const { slug, tag, coverImage, title, publishedAt, date_added } = item.attributes
   const { shortTitle: tagTitle, color } = tag.data.attributes.pageCategory.data.attributes
 
-  const publishedAt = new Date(item.attributes.publishedAt)
   // TODO use formatter function, add locale
-  const date = publishedAt.toLocaleDateString('sk-SK')
+  console.log(item.attributes)
+  const date = new Date(date_added ?? publishedAt).toLocaleDateString('sk-SK')
   const tagColor = color ? `--color-${color}-100` : '--color-main-100'
 
   return (
