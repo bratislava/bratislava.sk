@@ -22,7 +22,11 @@ const StepperViewRow = ({ title, order, isCurrent, isFilled }: StepperViewRowPro
   return (
     <div className="p-2 flex flex-row gap-3 items-center">
       <div className={iconClassName}>
-        {isCurrent || !isFilled ? order : <FilledSelectedIcon className="text-[32px]" />}
+        {isCurrent || !isFilled ? (
+          order
+        ) : (
+          <FilledSelectedIcon style={{ transform: 'scale(1.5)' }} />
+        )}
       </div>
       <p className="text-p3-medium">{title}</p>
     </div>
