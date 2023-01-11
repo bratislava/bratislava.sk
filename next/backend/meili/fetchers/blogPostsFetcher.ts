@@ -17,9 +17,14 @@ export const blogPostsDefaultFilters: BlogPostsFilters = {
   page: 1,
 }
 
-export const getBlogPostsSwrKey = (filters: BlogPostsFilters, locale: string) => ['BlogPost', filters, locale] as Key
+export const getBlogPostsSwrKey = (filters: BlogPostsFilters, locale: string) =>
+  ['BlogPost', filters, locale] as Key
 
 export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => async () => {
+  // Tmp fix:
+  // We sort first in meilisearch by publish date because date_added is not required and then in FE by date_added
+  // TODO make date_added required
+
   const data = await meiliClient
     .index('search_index')
     .search<SearchIndexWrapped<'blog-post', BlogPostMeili>>(filters.search, {
@@ -29,36 +34,46 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
     })
     .then(unwrapFromSearchIndex('blog-post'))
 
-  const hits = data.hits.map((article) => {
-    return {
-      attributes: {
-        coverImage: {
-          data: {
-            attributes: {
-              url: article.coverImage?.url,
+  const hits = data.hits
+    .map((article) => {
+      return {
+        attributes: {
+          title: article.title,
+          slug: article.slug,
+          publishedAt: article.publishedAt,
+          date_added: article.date_added,
+          coverImage: {
+            data: {
+              attributes: {
+                url: article.coverImage?.url,
+              },
             },
           },
-        },
-        publishedAt: article.publishedAt,
-        tag: {
-          data: {
-            attributes: {
-              pageCategory: {
-                data: {
-                  attributes: {
-                    color: 'red', // hardcoded, api does not return this attribute
-                    shortTitle: article.tag?.title,
+          tag: {
+            data: {
+              attributes: {
+                pageCategory: {
+                  data: {
+                    attributes: {
+                      color: 'main', // hardcoded, api does not return this attribute
+                      shortTitle: article.tag?.title,
+                    },
                   },
                 },
               },
             },
           },
         },
-        title: article.title,
-        slug: article.slug,
-      },
-    } as BlogItem
-  })
+      } as BlogItem
+    })
+    .sort((a, b) => {
+      if (!a.attributes?.date_added || !b.attributes?.date_added) {
+        return 0
+      }
+      return (
+        new Date(b.attributes.date_added).getTime() - new Date(a.attributes.date_added).getTime()
+      )
+    })
 
   return { ...data, hits }
 }
