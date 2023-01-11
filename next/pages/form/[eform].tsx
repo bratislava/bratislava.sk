@@ -146,9 +146,9 @@ const FormTestPage = ({
                 onSubmit={(e) => {
                   form.handleOnSubmit(e.formData)
                 }}
-                // onChange={(e) => {
-                //   form.setStepFormData(e.formData)
-                // }}
+                onChange={(e) => {
+                  form.setStepFormData(e.formData)
+                }}
                 onError={form.handleOnErrors}
                 extraErrors={form.extraErrors}
                 showErrorList={false}
