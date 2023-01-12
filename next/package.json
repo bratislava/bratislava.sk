@@ -73,6 +73,8 @@
     "react-stately": "^3.18.0",
     "react-sweet-progress": "1.1.2",
     "rehype-raw": "6.1.1",
+    "remark-directive": "^2.0.1",
+    "remark-directive-rehype": "^0.4.2",
     "remark-gfm": "3.0.1",
     "rooks": "5.11.8",
     "saxon-js": "^2.5.0",
