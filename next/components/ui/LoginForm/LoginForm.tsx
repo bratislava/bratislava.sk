@@ -49,7 +49,9 @@ const App = () => {
   const onSubmit = async (data: Data) => {
     if (await login(data.email, data.password)) {
       const from =
-        router.query.from && typeof router.query.from === 'string'
+        router.query.from &&
+        typeof router.query.from === 'string' &&
+        router.query.from.startsWith('/')
           ? decodeURIComponent(router.query.from)
           : '/'
       router.push(from)
