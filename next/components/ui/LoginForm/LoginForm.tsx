@@ -57,52 +57,49 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-h3 mb-6">{t('login_title')}</h1>
-      {error && <Alert message={t(error.code)} type="error" className="min-w-full mb-6" />}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <InputField
-              required
-              label={t('email_label')}
-              placeholder={t('email_placeholder')}
-              {...field}
-              errorMessage={errors.email}
-            />
-          )}
-        />
-        <div className="mb-6" />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <PasswordField
-              required
-              label={t('password_label')}
-              placeholder={t('password_placeholder')}
-              {...field}
-              errorMessage={errors.password}
-            />
-          )}
-        />
-        <Button
-          className="min-w-full my-6"
-          type="submit"
-          text={t('login_submit')}
-          variant="category"
-          disabled={isSubmitting}
-        />
-      </form>
+    <form className="flex flex-col space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="text-h3">{t('login_title')}</h1>
+      {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
+      <Controller
+        name="email"
+        control={control}
+        render={({ field }) => (
+          <InputField
+            required
+            label={t('email_label')}
+            placeholder={t('email_placeholder')}
+            {...field}
+            errorMessage={errors.email}
+          />
+        )}
+      />
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <PasswordField
+            required
+            label={t('password_label')}
+            placeholder={t('password_placeholder')}
+            {...field}
+            errorMessage={errors.password}
+          />
+        )}
+      />
+      <Button
+        className="min-w-full"
+        type="submit"
+        text={t('login_submit')}
+        variant="category"
+        disabled={isSubmitting}
+      />
       <div className="flex justify-between">
         <div className="text-20-semibold hidden md:flex text-gray-800">
           {t('forgotten_password_description')}
         </div>
         <Button variant="link-black" href="/" label={t('forgotten_password_link')} endIconHidden />
       </div>
-    </div>
+    </form>
   )
 }
 
