@@ -5,7 +5,12 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "yarn" # See documentation for possible values
+    directory: "/strapi" # Location of package manifests
+    schedule:
+      interval: "weekly"
+      
+  - package-ecosystem: "yarn" # See documentation for possible values
+    directory: "/next" # Location of package manifests
     schedule:
       interval: "weekly"
