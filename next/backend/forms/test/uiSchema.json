@@ -2,7 +2,28 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "datePicker": {
+    "ui:hideError": true,
+    "birth": {
+      "ui:widget": "DatePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Date picker hint"
+      }
+    }
+  },
+  "timePicker": {
+    "ui:hideError": true,
+    "meeting-time": {
+      "ui:widget": "TimePicker",
+      "ui:label": false,
+      "ui:options": {
+        "tooltip": "Time picker hint"
+      }
+    }
+  },
   "inputFields": {
+    "ui:hideError": true,
     "firstName": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -24,15 +45,6 @@
         "resetIcon": true,
         "leftIcon": "person",
         "size": "default"
-      }
-    },
-    "phone": {
-      "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Phone",
-      "ui:options": {
-        "tooltip": "Phone hint",
-        "leftIcon": "call"
       }
     },
     "password": {
@@ -57,6 +69,7 @@
     }
   },
   "fileUploads": {
+    "ui:hideError": true,
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
@@ -91,6 +104,7 @@
     }
   },
   "textAreas": {
+    "ui:hideError": true,
     "pros": {
       "ui:widget": "TextArea",
       "ui:label": false,
@@ -106,6 +120,7 @@
     }
   },
   "selectFields": {
+    "ui:hideError": true,
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,
@@ -129,22 +144,55 @@
     }
   },
   "chooseOneOf": {
+    "ui:hideError": true,
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
-        "variant": "boxed"
+        "className": "flex flex-row gap-4 mt-4",
+        "//className": "flex flex-col gap-4 mt-4 max-w-[500px]",
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
       }
     }
   },
   "checkBoxes": {
+    "ui:hideError": true,
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
       "ui:options": {
         "className": "flex flex-col gap-4 w-fit",
-        "variant": "boxed"
+        "variant": "boxed",
+        "checkboxOptions": [
+          {
+            "value": "orange",
+            "tooltip": "Orange tooltip"
+          },
+          {
+            "value": "apple",
+            "tooltip": "Apple tooltip"
+          }
+        ]
+      }
+    }
+  },
+  "user": {
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "leftIcon": "call"
       }
     }
   }

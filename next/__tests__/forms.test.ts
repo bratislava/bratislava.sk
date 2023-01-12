@@ -23,7 +23,7 @@ describe('forms test', () => {
 
       const xml = loadAndBuildXml(eform.xmlTemplate, eform.data, eform.schema)
 
-      const jsonErrors = validateDataWithJsonSchema(eform.data, eform.schema)
+      const jsonErrors = await validateDataWithJsonSchema(eform.data, eform.schema)
       expect(jsonErrors).toHaveLength(0)
 
       const xmlErrors = validateDataWithXsd(xml, eform.xsd)

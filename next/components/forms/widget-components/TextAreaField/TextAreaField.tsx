@@ -8,7 +8,7 @@ import FieldHeader from '../../info-components/FieldHeader'
 interface TextAreaBase {
   label: string
   placeholder?: string
-  errorMessage?: string
+  errorMessage?: string[]
   description?: string
   className?: string
   defaultValue?: string
@@ -23,7 +23,7 @@ interface TextAreaBase {
 const TextAreaField = ({
   label,
   placeholder,
-  errorMessage,
+  errorMessage = [],
   description,
   tooltip,
   required,
@@ -53,9 +53,9 @@ const TextAreaField = ({
       inputElementType: 'textarea',
       onChange(inputValue) {
         if (onChange) {
-          onChange(inputValue)
+          onChange(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
         } else {
-          setValueState(inputValue)
+          setValueState(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
         }
         setUseDefaultValue(false)
       },
@@ -65,14 +65,14 @@ const TextAreaField = ({
     ref,
   )
   const style = cx(
-    'text-20 overflow-auto px-4 py-2.5 bg-gray-0 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
+    'text-20 overflow-y-scroll px-4 py-2.5 bg-gray-0 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
     className,
     {
       // hover
       'hover:border-gray-400': !disabled,
 
       // error
-      'border-error hover:border-error focus:border-error': errorMessage && !disabled,
+      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
 
       // disabled
       'border-gray-300 bg-gray-100': disabled,

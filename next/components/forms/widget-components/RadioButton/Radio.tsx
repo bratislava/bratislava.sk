@@ -66,8 +66,8 @@ const Radio = ({
   )
 
   return (
-    <div>
-      {tooltip && (
+    <div className="w-full">
+      {tooltip && variant !== 'card' && (
         <div className="relative">
           <Tooltip
             className="w-max"
@@ -85,10 +85,22 @@ const Radio = ({
         {variant === 'card' ? (
           <div className="w-full flex flex-col items-start gap-4 p-0 ">
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className="text-p-md text-gray-700 font-normal not-italic break-all">
+            <div className="text-p-md text-gray-700 font-normal not-italic break-words">
               {rest.children}
               {tooltip && (
-                <div className="mt-8 flex flex-row">
+                <div className="mt-8 relative flex flex-row">
+                  {tooltip && (
+                    <Tooltip
+                      className="w-max"
+                      text={tooltip}
+                      visible={isTooltipOpened}
+                      arrow="bottom"
+                      alignArrow="left"
+                      bottom={30}
+                      left={-15}
+                      absolute
+                    />
+                  )}
                   <HelpIcon
                     className="cursor-pointer"
                     onMouseOver={() => setIsTooltipOpened(true)}
@@ -102,7 +114,7 @@ const Radio = ({
           <div className={cx('flex items-center gap-4 w-full', {})}>
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
             <div
-              className={cx('text-p-md flex font-normal not-italic text-gray-700 break-all', {})}
+              className={cx('text-p-md flex font-normal not-italic text-gray-700 break-words', {})}
             >
               {rest.children}
             </div>
