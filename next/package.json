@@ -15,7 +15,8 @@
     "gen": "graphql-codegen",
     "gen-form-schemas": "json2ts -i 'forms/**/schema.json' -o",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "sentry-cli": "sentry-cli"
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
