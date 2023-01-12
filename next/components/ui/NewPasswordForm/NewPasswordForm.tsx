@@ -73,84 +73,81 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
   }
 
   return (
-    <div>
-      <h1 className="text-h3 mb-6">{t('new_password_title')}</h1>
-      <div className="mb-6">{t('verification_code_description')}</div>
+    <form
+      className="flex flex-col space-y-6"
+      onSubmit={handleSubmit((data: Data) => {
+        setLastVerificationCode(data.verificationCode)
+        onSubmit(data.verificationCode, data.password)
+      })}
+    >
+      <h1 className="text-h3">{t('new_password_title')}</h1>
+      <div>{t('verification_code_description')}</div>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
           type="error"
-          className="min-w-full mb-6"
+          className="min-w-full"
         />
       )}
-      <form
-        onSubmit={handleSubmit((data: Data) => {
-          setLastVerificationCode(data.verificationCode)
-          onSubmit(data.verificationCode, data.password)
-        })}
-      >
-        <Controller
-          name="verificationCode"
-          control={control}
-          render={({ field }) => (
-            <InputField
-              required
-              label={t('verification_code_label')}
-              placeholder={t('verification_code_placeholder')}
-              {...field}
-              errorMessage={errors.verificationCode}
-            />
-          )}
-        />
-        <div className="my-6">
-          <Controller
-            name="password"
-            control={control}
-            render={({ field }) => (
-              <PasswordField
-                required
-                label={t('new_password_label')}
-                placeholder={t('new_password_placeholder')}
-                tooltip={t('password_description')}
-                {...field}
-                errorMessage={errors.password}
-              />
-            )}
+      <Controller
+        name="verificationCode"
+        control={control}
+        render={({ field }) => (
+          <InputField
+            required
+            label={t('verification_code_label')}
+            placeholder={t('verification_code_placeholder')}
+            {...field}
+            errorMessage={errors.verificationCode}
           />
-        </div>
-        <Controller
-          name="passwordConfirmation"
-          control={control}
-          render={({ field }) => (
-            <PasswordField
-              required
-              label={t('new_password_confirmation_label')}
-              placeholder={t('new_password_confirmation_placeholder')}
-              {...field}
-              errorMessage={errors.passwordConfirmation}
-            />
-          )}
-        />
-        <Button
-          className="min-w-full my-6"
-          type="submit"
-          text={t('new_password_submit')}
-          variant="category"
-          disabled={isSubmitting}
-        />
-      </form>
+        )}
+      />
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <PasswordField
+            required
+            label={t('new_password_label')}
+            placeholder={t('new_password_placeholder')}
+            tooltip={t('password_description')}
+            {...field}
+            errorMessage={errors.password}
+          />
+        )}
+      />
+      <Controller
+        name="passwordConfirmation"
+        control={control}
+        render={({ field }) => (
+          <PasswordField
+            required
+            label={t('new_password_confirmation_label')}
+            placeholder={t('new_password_confirmation_placeholder')}
+            {...field}
+            errorMessage={errors.passwordConfirmation}
+          />
+        )}
+      />
+      <Button
+        className="min-w-full"
+        type="submit"
+        text={t('new_password_submit')}
+        variant="category"
+        disabled={isSubmitting}
+      />
       <div>
         <span>{t('new_password_description')}</span>
         {cnt > 0 && <span>{` ${formatUnicorn(t('new_password_cnt_description'), { cnt })}`}</span>}
       </div>
       <Button
         onPress={handleResend}
-        className="min-w-full mt-6"
+        className="min-w-full"
         text={t('new_password_resend')}
         variant="category-outline"
         disabled={cnt > 0}
       />
-    </div>
+    </form>
   )
 }
 
