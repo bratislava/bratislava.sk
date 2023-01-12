@@ -1,3 +1,4 @@
+import { formatUnicorn } from '@utils/string'
 import useHookForm from '@utils/useHookForm'
 import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
@@ -47,6 +48,7 @@ const schema = {
 }
 
 const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
+  const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -73,8 +75,20 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
   return (
     <div>
       <h1 className="text-h3 mb-6">{t('new_password_title')}</h1>
-      {error && <Alert message={t(error.code)} type="error" className="min-w-full mb-6" />}
-      <form onSubmit={handleSubmit((data: Data) => onSubmit(data.verificationCode, data.password))}>
+      <div className="mb-6">{t('verification_code_description')}</div>
+      {error && (
+        <Alert
+          message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
+          type="error"
+          className="min-w-full mb-6"
+        />
+      )}
+      <form
+        onSubmit={handleSubmit((data: Data) => {
+          setLastVerificationCode(data.verificationCode)
+          onSubmit(data.verificationCode, data.password)
+        })}
+      >
         <Controller
           name="verificationCode"
           control={control}
@@ -88,28 +102,30 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
             />
           )}
         />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <PasswordField
-              required
-              label={t('password_label')}
-              placeholder={t('password_placeholder')}
-              description={t('password_description')}
-              {...field}
-              errorMessage={errors.password}
-            />
-          )}
-        />
+        <div className="my-6">
+          <Controller
+            name="password"
+            control={control}
+            render={({ field }) => (
+              <PasswordField
+                required
+                label={t('new_password_label')}
+                placeholder={t('new_password_placeholder')}
+                tooltip={t('password_description')}
+                {...field}
+                errorMessage={errors.password}
+              />
+            )}
+          />
+        </div>
         <Controller
           name="passwordConfirmation"
           control={control}
           render={({ field }) => (
             <PasswordField
               required
-              label={t('password_confirmation_label')}
-              placeholder={t('password_confirmation_placeholder')}
+              label={t('new_password_confirmation_label')}
+              placeholder={t('new_password_confirmation_placeholder')}
               {...field}
               errorMessage={errors.passwordConfirmation}
             />
@@ -123,8 +139,10 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
           disabled={isSubmitting}
         />
       </form>
-      <p>{t('new_password_description')}</p>
-      {cnt > 0 && <p>{t('new_password_cnt_description').replace('{cnt}', cnt.toString())}</p>}
+      <div>
+        <span>{t('new_password_description')}</span>
+        {cnt > 0 && <span>{` ${formatUnicorn(t('new_password_cnt_description'), { cnt })}`}</span>}
+      </div>
       <Button
         onPress={handleResend}
         className="min-w-full mt-6"
