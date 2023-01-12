@@ -24,7 +24,7 @@
   "forgotten_password_title": "Zabudli ste heslo?",
   "forgotten_password_submit": "Odoslať overovací kód",
 
-  "new_password_title": "Zadajte nové heslo",
+  "new_password_title": "Zadajte overovací kód a nové heslo",
   "new_password_description": "Nedostali ste overovací kód?",
   "new_password_cnt_description": "Počkajte ešte {cnt}s a požiadajte o nový overovací kód.",
   "new_password_resend": "Odoslať nový kód",
