@@ -23,6 +23,7 @@
   "forgotten_password_link": "Získať nové heslo",
   "forgotten_password_title": "Zabudli ste heslo?",
   "forgotten_password_submit": "Odoslať overovací kód",
+  "forgotten_password_success_title": "Heslo bolo úspešne zmenené",
 
   "new_password_title": "Zadajte overovací kód a nové heslo",
   "new_password_description": "Nedostali ste overovací kód?",
@@ -33,6 +34,7 @@
   "verification_code_placeholder": "Overovací kód",
   "verification_code_required": "Overovací kód je povinný (6 znakov)",
   "verification_code_description": "Do priečinka doručenej pošty sme vám odoslali overovací kód. Skopírujte ho do poľa nižšie.",
+  "account_link": "Pokračovať do konta",
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",

@@ -23,6 +23,7 @@
   "forgotten_password_link": "Reset password",
   "forgotten_password_title": "Forgotten password",
   "forgotten_password_submit": "Send code",
+  "forgotten_password_success_title": "Password has been changed",
 
   "new_password_title": "New password",
   "new_password_description": "Didn't receive a verification code?",
@@ -33,6 +34,7 @@
   "verification_code_placeholder": "Code",
   "verification_code_required": "Code is required (6 characters)",
   "verification_code_description": "We've sent you a verification code",
+  "account_link": "Continue to account",
 
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",

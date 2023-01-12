@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 export enum AccountStatus {
   Idle,
   NewPasswordRequired,
+  Success,
 }
 
 const poolData = {
@@ -37,6 +38,7 @@ export default function useAccount() {
         user.confirmPassword(verificationCode, password, {
           onSuccess() {
             console.log('Password confirmed!')
+            setStatus(AccountStatus.Success)
             resolve(true)
           },
           onFailure(err: Error) {
