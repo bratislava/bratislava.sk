@@ -16,7 +16,7 @@ const Tooltip = ({ children }: never) => {
 type AccordionBase = {
   size: 'sm' | 'md' | 'lg'
   title: string
-  children: string
+  markdownContent: string
   icon?: boolean
   shadow?: boolean
   className?: string
@@ -24,7 +24,7 @@ type AccordionBase = {
 
 const Accordion = ({
   title,
-  children,
+  markdownContent,
   size,
   icon = false,
   shadow = false,
@@ -125,7 +125,7 @@ const Accordion = ({
                   } as any
                 }
               >
-                {children}
+                {markdownContent}
               </ReactMarkdown>
             </div>
           )}

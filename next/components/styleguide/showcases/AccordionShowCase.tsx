@@ -19,14 +19,12 @@ line 4
 
 <div class='flex items-center'>
 
-# h1 
+### h3
 &nbsp; &nbsp;
 ::tooltip[Tooltip text]
 
 </div>
 
-## h2
-### h3
 #### h4
 ##### h5
 ###### h6
@@ -136,34 +134,21 @@ Hello
   return (
     <Wrapper direction="column" title="Accordion">
       <Stack direction="column">
-        <Accordion size="sm" title="Headline" shadow>
-          {markdownSource}
-        </Accordion>
-        <Accordion size="md" title="Headline" shadow>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-          been the industry's standard dummy text ever since the 1500s
-        </Accordion>
-        <Accordion size="lg" title="Headline" shadow>
-          {markdownSource}
-        </Accordion>
-        <Accordion size="sm" title="Headline">
-          {markdownSource}
-        </Accordion>
-        <Accordion size="md" title="Headline">
-          Text
-        </Accordion>
-        <Accordion size="lg" title="Headline">
-          {markdownSource}
-        </Accordion>
-        <Accordion size="sm" title="Headline" icon>
-          Text
-        </Accordion>
-        <Accordion size="md" title="Headline" icon>
-          {markdownSource}
-        </Accordion>
-        <Accordion size="lg" title="Headline" icon className="sm:max-w-[500px]">
-          {markdownSource}
-        </Accordion>
+        <Accordion size="sm" title="Headline" shadow markdownContent={markdownSource} />
+        <Accordion size="md" title="Headline" shadow markdownContent={markdownSource} />
+        <Accordion size="lg" title="Headline" shadow markdownContent={markdownSource} />
+        <Accordion size="sm" title="Headline" markdownContent={markdownSource} />
+        <Accordion size="md" title="Headline" markdownContent={markdownSource} />
+        <Accordion size="lg" title="Headline" markdownContent={markdownSource} />
+        <Accordion size="sm" title="Headline" icon markdownContent={markdownSource} />
+        <Accordion size="md" title="Headline" icon markdownContent={markdownSource} />
+        <Accordion
+          size="lg"
+          title="Headline"
+          icon
+          className="sm:max-w-[500px]"
+          markdownContent={markdownSource}
+        />
       </Stack>
     </Wrapper>
   )
