@@ -20,11 +20,8 @@ commonLabels:
   app: ${BUILD_REPOSITORY_NAME}
   source: ${BUILD_REPOSITORY_NAME}
 
-commonAnnotations:
-  repositoryUrl: ${BUILD_REPOSITORY_URI}
-  commit: ${COMMIT}
-  tag: ${TAG}
-  image: ${IMAGE}
+generatorOptions:
+  disableNameSuffixHash: true
 
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
