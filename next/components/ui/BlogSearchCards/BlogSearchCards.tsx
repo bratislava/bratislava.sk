@@ -22,7 +22,14 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
       <div className="hidden flex-col gap-y-6 lg:flex">
         <div className="flex flex-col gap-y-6">
           {blogsToShow.map((blog) => {
-            return <BlogSearchCard key={blog.attributes.slug} item={blog} className="h-50" imageClassName="w-56 h-50" />
+            return (
+              <BlogSearchCard
+                key={blog.attributes.slug}
+                item={blog}
+                className="h-50"
+                imageClassName="w-56 h-50"
+              />
+            )
           })}
         </div>
         {blogs.length > SHOW_LESS_COUNT && (
@@ -37,7 +44,9 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
       </div>
       <HorizontalScrollWrapper className="gap-x-4 pt-4 pb-6 lg:hidden">
         {blogs.map((blog) => {
-          return <BlogSearchCard key={blog.attributes.slug} item={blog} className="w-74 h-60 shrink-0" />
+          return (
+            <BlogSearchCard key={blog.attributes.slug} item={blog} className="w-74 h-60 shrink-0" />
+          )
         })}
       </HorizontalScrollWrapper>
     </div>

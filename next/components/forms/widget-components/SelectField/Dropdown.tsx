@@ -57,9 +57,10 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     })
   }
 
-  const isEverythingSelected = (): boolean => {
-    return enumOptions.some((option: EnumOptionsType) => !isSelected(option))
-  }
+  const isEverythingSelected = enumOptions.some((option: EnumOptionsType) => !isSelected(option))
+  const isRowBold = enumOptions.some(
+    (option: EnumOptionsType) => option.label !== '' && option.label !== String(option.value),
+  )
 
   // EVENT HANDLERS
   const handleOnSelectAllRowClick = (isSelectingAll: boolean) => {
@@ -78,7 +79,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
           onSelectAll={handleOnSelectAllRowClick}
           divider={divider}
           selectHashCode={selectHashCode}
-          isEverythingSelected={isEverythingSelected()}
+          isEverythingSelected={isEverythingSelected}
         />
       )}
       {enumOptions?.map((option, key) => (
@@ -89,6 +90,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
           divider={divider}
           selected={isSelected(option)}
           type={type}
+          isBold={isRowBold}
           onChooseOne={(opt: EnumOptionsType, close?: boolean) =>
             onChooseOne ? onChooseOne(opt, close) : null
           }
