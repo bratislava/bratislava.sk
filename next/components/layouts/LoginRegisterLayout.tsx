@@ -3,17 +3,17 @@ import AccountNavBar from '@bratislava/ui-bratislava/AccountNavBar/AccountNavBar
 import cx from 'classnames'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
 
-interface AccountPageLayoutProps {
+interface LoginRegisterLayoutProps {
   footer?: FooterProps
   menuItems?: MenuMainItem[]
   activeMenuItem?: string
   pageColor?: string
 }
 
-const AccountPageLayout = ({
+const LoginRegisterLayout = ({
   className,
   children,
-}: React.HTMLAttributes<HTMLDivElement> & AccountPageLayoutProps) => {
+}: React.HTMLAttributes<HTMLDivElement> & LoginRegisterLayoutProps) => {
   const { locale } = usePageWrapperContext()
 
   return (
@@ -29,4 +29,4 @@ const AccountPageLayout = ({
   )
 }
 
-export default AccountPageLayout
+export default LoginRegisterLayout

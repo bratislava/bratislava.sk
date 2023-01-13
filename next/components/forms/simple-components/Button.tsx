@@ -25,7 +25,7 @@ type ButtonBase = {
   text?: string
   startIcon?: ReactNode
   endIcon?: ReactNode
-  endIconHidden?: boolean
+  hrefIconHidden?: boolean
 }
 
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
@@ -58,7 +58,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       text,
       startIcon,
       endIcon,
-      endIconHidden,
+      hrefIconHidden,
       ...rest
     },
     ref,
@@ -208,7 +208,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           className={style}
           {...buttonPropsFixed}
         >
-          {!endIconHidden && (
+          {!hrefIconHidden && (
             <span
               className={cx('flex justify-center items-center', {
                 'ml-2 h-6 w-6': size === 'lg',

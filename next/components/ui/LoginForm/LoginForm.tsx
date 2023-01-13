@@ -32,7 +32,7 @@ const schema = {
   required: ['email', 'password'],
 }
 
-const App = () => {
+const LoginForm = () => {
   const { login, error } = useAccount()
   const { t } = useTranslation('account')
   const router = useRouter()
@@ -49,7 +49,9 @@ const App = () => {
   const onSubmit = async (data: Data) => {
     if (await login(data.email, data.password)) {
       const from =
-        router.query.from && typeof router.query.from === 'string'
+        router.query.from &&
+        typeof router.query.from === 'string' &&
+        router.query.from.startsWith('/')
           ? decodeURIComponent(router.query.from)
           : '/'
       router.push(from)
@@ -97,10 +99,10 @@ const App = () => {
         <div className="text-20-semibold hidden md:flex text-gray-800">
           {t('forgotten_password_description')}
         </div>
-        <Button variant="link-black" href="/" label={t('forgotten_password_link')} endIconHidden />
+        <Button variant="link-black" href="/" label={t('forgotten_password_link')} hrefIconHidden />
       </div>
     </form>
   )
 }
 
-export default App
+export default LoginForm
