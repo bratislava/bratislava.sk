@@ -26,11 +26,12 @@ interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   required?: boolean
   disabled?: boolean
   schema: StrictRJSFSchema
-  onChange: (value: string) => void
+  onChange: (value?: string | undefined) => void
+  rawErrors?: string[]
 }
 
 const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
-  const { options, value, onChange, label } = props
+  const { options, value, onChange, label, rawErrors } = props
   const {
     enumOptions,
     className,
@@ -46,7 +47,13 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
   }
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
-      <RadioGroup value={value} onChange={onChange} className={className} label={label}>
+      <RadioGroup
+        errorMessage={rawErrors}
+        value={value}
+        onChange={onChange}
+        className={className}
+        label={label}
+      >
         {enumOptions.map((radioElement: EnumOptionsType) => {
           return (
             <Radio
