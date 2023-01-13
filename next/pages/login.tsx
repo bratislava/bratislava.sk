@@ -1,7 +1,7 @@
 import AccountContainer from '@bratislava/ui-bratislava/AccountContainer/AccountContainer'
 import LoginForm from '@bratislava/ui-bratislava/LoginForm/LoginForm'
 import { AsyncServerProps } from '@utils/types'
-import AccountPageLayout from 'components/layouts/AccountPageLayout'
+import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -32,11 +32,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <AccountPageLayout>
+      <LoginRegisterLayout>
         <AccountContainer>
           <LoginForm />
         </AccountContainer>
-      </AccountPageLayout>
+      </LoginRegisterLayout>
     </PageWrapper>
   )
 }
