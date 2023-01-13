@@ -13761,10 +13761,10 @@ next-i18next@11.2.2:
     i18next-fs-backend "^1.1.4"
     react-i18next "^11.18.0"
 
-next-query-params@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/next-query-params/-/next-query-params-4.0.0.tgz#54db6cdec04d226420f120b7c0647f7c1a33cc98"
-  integrity sha512-u4PV4fA1Nb6CFZYnW+0s01YbHMJVhCmmnIZ11Dvma4rn8wUdjPPMuMlv2VMWziHD8DWE2+z3Y0475HfjdcT4MQ==
+next-query-params@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/next-query-params/-/next-query-params-4.1.0.tgz#d69e0cb3f0ec1e746a7bb255cd5a07d9e03ba95d"
+  integrity sha512-jjoQByM9s2d4wCUBUazhgHNVztm18meCtVoDj6v45+LZIQfxAF5QYVFKCbDYarI3iXD4xcZprztqLtALiiV8nQ==
   dependencies:
     tslib "^2.0.3"
 
