@@ -32,7 +32,7 @@ const schema = {
   required: ['email', 'password'],
 }
 
-const App = () => {
+const LoginForm = () => {
   const { login, error } = useAccount()
   const { t } = useTranslation('account')
   const router = useRouter()
