@@ -121,7 +121,7 @@
     "eslint-config-auto": "0.7.1",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-array-func": "3.1.7",
+    "eslint-plugin-array-func": "3.1.8",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-html": "7.0.0",
     "eslint-plugin-import": "2.25.0",

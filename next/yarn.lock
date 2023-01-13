@@ -8781,10 +8781,10 @@ eslint-module-utils@^2.6.2, eslint-module-utils@^2.7.3:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-array-func@3.1.7:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-array-func/-/eslint-plugin-array-func-3.1.7.tgz#c47ce735eed2d9cb4129984d514898df4e0393ba"
-  integrity sha512-fB5TBICjHSTGToNTbCCgR8zsngpUkoCM31EMh/M/NEAyNg90i5rUuG0dnNNBML2n0BzM0nBE3sPvo2SEWf6jlA==
+eslint-plugin-array-func@3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-array-func/-/eslint-plugin-array-func-3.1.8.tgz#9dd635627f604e1ed6faf0c5525a8f84d48ed599"
+  integrity sha512-BjnbJvw+knaHgVddIL3q5xYcoqAZoK8wOdT7QF+mkvSAjXdZCdhL0z71Y7oRtgXA8BpN9QLJ2uHgD3I6ymlbOw==
 
 eslint-plugin-eslint-comments@3.2.0:
   version "3.2.0"
