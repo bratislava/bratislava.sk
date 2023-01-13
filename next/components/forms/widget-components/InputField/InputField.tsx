@@ -27,6 +27,7 @@ interface InputBase {
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
+  endIcon?: ReactNode
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
@@ -46,6 +47,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       resetIcon,
       className,
       onChange,
+      endIcon,
       ...rest
     },
     ref,
@@ -148,6 +150,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               <ResetIcon />
             </button>
           )}
+          {endIcon}
         </div>
         {!disabled && (
           <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />

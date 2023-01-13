@@ -8,12 +8,14 @@ import dopravneZnacenie from './dopravneZnacenie'
 import kontajneroveStojiska from './kontajneroveStojiska'
 import test from './testForm'
 import zavazneStanoviskoKInvesticnejCinnosti from './zavazneStanoviskoKInvesticnejCinnosti'
+import zastitaPrimatora from './zastitaPrimatora'
 
 const eforms = {
   dopravneZnacenie,
   kontajneroveStojiska,
   test,
   zavazneStanoviskoKInvesticnejCinnosti,
+  zastitaPrimatora,
 }
 
 export type EFormKey = keyof typeof eforms
