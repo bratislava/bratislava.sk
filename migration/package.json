@@ -12,7 +12,7 @@
   "dependencies": {
     "@vscode/sqlite3": "^5.0.8",
     "dotenv": "^16.0.0",
-    "knex": "^1.0.3",
+    "knex": "^2.4.0",
     "lodash": "^4.17.21",
     "mysql": "^2.18.1",
     "pg": "^8.7.3",
