@@ -5,6 +5,11 @@ metadata:
   namespace: ${NAMESPACE}
   labels:
     service: app
+  annotations:
+    commit: ${COMMIT}
+    tag: ${TAG}
+    image: ${IMAGE}
+    repositoryUrl: ${BUILD_REPOSITORY_URI}
 spec:
   selector:
     matchLabels:
