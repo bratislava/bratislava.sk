@@ -57,10 +57,14 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
   return (
     <div className={tooltipClassNames} style={positionStyle}>
       <div className={arrowClassNames}>
-        {arrow && ['top', 'bottom'].includes(arrow) && <TopArrowIcon className="p-0 m-0 border-0" />}
-        {arrow && ['left', 'right'].includes(arrow) && <LeftArrowIcon className="p-0 m-0 border-0"/>}
+        {arrow && ['top', 'bottom'].includes(arrow) && (
+          <TopArrowIcon className="p-0 m-0 border-0" />
+        )}
+        {arrow && ['left', 'right'].includes(arrow) && (
+          <LeftArrowIcon className="p-0 m-0 border-0" />
+        )}
       </div>
-      <div className="text-p2 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-xs break-all rounded bg-gray-700 py-3 px-4 text-white">
+      <div className="text-p2 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-xs break-words rounded bg-gray-700 py-3 px-4 text-white">
         <p className="w-fit">{text}</p>
       </div>
     </div>

@@ -19,10 +19,10 @@
     "eslint-scope": "^7.1.1"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "4.5.1",
-    "@strapi/plugin-i18n": "4.5.1",
-    "@strapi/plugin-users-permissions": "4.5.1",
-    "@strapi/strapi": "4.5.1",
+    "@strapi/plugin-graphql": "4.5.6",
+    "@strapi/plugin-i18n": "4.5.6",
+    "@strapi/plugin-users-permissions": "4.5.6",
+    "@strapi/strapi": "4.5.6",
     "patch-package": "^6.4.7",
     "pg": "^8.7.3",
     "postinstall-postinstall": "^2.1.0",
