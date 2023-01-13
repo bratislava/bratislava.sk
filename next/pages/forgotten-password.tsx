@@ -4,7 +4,7 @@ import NewPasswordForm from '@bratislava/ui-bratislava/NewPasswordForm/NewPasswo
 import SuccessAlert from '@bratislava/ui-bratislava/SuccessAlert/SuccessAlert'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
-import AccountPageLayout from 'components/layouts/AccountPageLayout'
+import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -45,15 +45,15 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <AccountPageLayout>
+      <LoginRegisterLayout>
         <AccountContainer>
-          {status === AccountStatus.Success && (
+          {status === AccountStatus.Idle && (
             <ForgottenPasswordForm onSubmit={forgotPassword} error={error} />
           )}
           {status === AccountStatus.NewPasswordRequired && (
             <NewPasswordForm onSubmit={confirmPassword} onResend={forgotPassword} error={error} />
           )}
-          {status === AccountStatus.Idle && (
+          {status === AccountStatus.Success && (
             <SuccessAlert
               title={t('forgotten_password_success_title')}
               confirmLabel={t('account_link')}
@@ -61,7 +61,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
             />
           )}
         </AccountContainer>
-      </AccountPageLayout>
+      </LoginRegisterLayout>
     </PageWrapper>
   )
 }
