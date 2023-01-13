@@ -105,8 +105,6 @@ const Accordion = ({
                 rehypePlugins={[rehypeRaw, remarkDirective, remarkDirectiveRehype]}
                 components={
                   {
-                    h1: ({ children }: any) => <h1 className="text-h1 font-bold">{children}</h1>,
-                    h2: ({ children }: any) => <h2 className="text-h2 font-bold">{children}</h2>,
                     h3: ({ children }: any) => <h3 className="text-h3 font-bold">{children}</h3>,
                     h4: ({ children }: any) => <h4 className="text-h4 font-bold">{children}</h4>,
                     h5: ({ children }: any) => <h5 className="text-h5 font-bold">{children}</h5>,
