@@ -2,6 +2,8 @@ import React from 'react'
 import { useRadioGroup } from 'react-aria'
 import { RadioGroupState, useRadioGroupState } from 'react-stately'
 
+import FieldErrorMessage from '../../info-components/FieldErrorMessage'
+
 const radioGroupState = {}
 export const RadioContext = React.createContext(radioGroupState as RadioGroupState)
 
@@ -14,12 +16,13 @@ type RadioGroupBase = {
   isReadOnly?: boolean
   onChange: (value: string) => void
   className?: string
+  errorMessage?: string[]
 }
 
 const RadioGroup = (props: RadioGroupBase) => {
   const { children, className } = props
   const state = useRadioGroupState(props)
-  const { radioGroupProps, labelProps } = useRadioGroup(props, state)
+  const { radioGroupProps, labelProps, errorMessageProps } = useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps}>
@@ -27,8 +30,23 @@ const RadioGroup = (props: RadioGroupBase) => {
         {props.label}
       </span>
       <RadioContext.Provider value={state}>
-        <div className={className}>{children}</div>
+        <div
+          className={className}
+          style={{
+            display: 'grid',
+            margin: '0 auto',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 2fr))',
+          }}
+        >
+          {children}
+        </div>
       </RadioContext.Provider>
+      {!props.isDisabled && (
+        <FieldErrorMessage
+          errorMessage={props.errorMessage}
+          errorMessageProps={errorMessageProps}
+        />
+      )}
     </div>
   )
 }
