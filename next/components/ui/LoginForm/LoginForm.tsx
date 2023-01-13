@@ -99,7 +99,12 @@ const LoginForm = () => {
         <div className="text-20-semibold hidden md:flex text-gray-800">
           {t('forgotten_password_description')}
         </div>
-        <Button variant="link-black" href="/" label={t('forgotten_password_link')} hrefIconHidden />
+        <Button
+          variant="link-black"
+          href="/forgotten-password"
+          label={t('forgotten_password_link')}
+          hrefIconHidden
+        />
       </div>
     </form>
   )
