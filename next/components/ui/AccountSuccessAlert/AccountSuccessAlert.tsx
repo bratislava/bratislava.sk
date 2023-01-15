@@ -9,7 +9,7 @@ interface Props {
   onConfirm: () => void
 }
 
-const SuccessAlert = ({ title, confirmLabel, onConfirm, description }: Props) => {
+const AccountSuccessAlert = ({ title, confirmLabel, onConfirm, description }: Props) => {
   return (
     <div className="flex flex-col space-y-6">
       <div className="h-14 w-14 rounded-full p-4 bg-success-100 mx-auto">
@@ -30,4 +30,4 @@ const SuccessAlert = ({ title, confirmLabel, onConfirm, description }: Props) =>
   )
 }
 
-export default SuccessAlert
+export default AccountSuccessAlert

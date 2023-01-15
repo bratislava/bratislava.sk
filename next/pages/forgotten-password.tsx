@@ -1,7 +1,7 @@
 import AccountContainer from '@bratislava/ui-bratislava/AccountContainer/AccountContainer'
+import AccountSuccessAlert from '@bratislava/ui-bratislava/AccountSuccessAlert/AccountSuccessAlert'
 import ForgottenPasswordForm from '@bratislava/ui-bratislava/ForgottenPasswordForm/ForgottenPasswordForm'
 import NewPasswordForm from '@bratislava/ui-bratislava/NewPasswordForm/NewPasswordForm'
-import SuccessAlert from '@bratislava/ui-bratislava/SuccessAlert/SuccessAlert'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
@@ -54,7 +54,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
             <NewPasswordForm onSubmit={confirmPassword} onResend={forgotPassword} error={error} />
           )}
           {status === AccountStatus.Success && (
-            <SuccessAlert
+            <AccountSuccessAlert
               title={t('forgotten_password_success_title')}
               confirmLabel={t('account_link')}
               onConfirm={onConfirm}
