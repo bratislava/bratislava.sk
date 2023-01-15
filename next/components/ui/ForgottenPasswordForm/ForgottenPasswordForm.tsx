@@ -72,7 +72,7 @@ const App = ({ onSubmit, error }: Props) => {
         <div className="text-20-semibold hidden md:flex text-gray-800">
           {t('login_description')}
         </div>
-        <Button variant="link-black" href="/login" label={t('login_link')} endIconHidden />
+        <Button variant="link-black" href="/login" label={t('login_link')} hrefIconHidden />
       </div>
     </form>
   )
