@@ -24,8 +24,8 @@ const FieldGroupsShowCase = () => {
           SelectPlaceholder="Vybrať"
           SelectClassName="sm:w-[400px]"
           addNew="Pridať ďalší riadok"
-          saveFormData={() => {}}
           propKeys={[]}
+          SelectOnChange={() => {}}
         />
       </Stack>
       <Stack direction="row">
@@ -34,6 +34,7 @@ const FieldGroupsShowCase = () => {
           DateFromOnChange={() => {}}
           DateToOnChange={() => {}}
           DateFromLabel="From label"
+          DateToLabel="To label"
         />
       </Stack>
       <Stack direction="row">

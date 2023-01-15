@@ -4,7 +4,7 @@ import cx from 'classnames'
 import DatePicker from '../widget-components/DateTimePicker/DatePicker'
 import TimePicker from '../widget-components/DateTimePicker/TimePicker'
 
-type DateTimePickerBase = {
+type DatePickerBase = {
   DateLabel?: string
   DateDescription?: string
   DateTooltip?: string
@@ -14,7 +14,9 @@ type DateTimePickerBase = {
   DateErrorMessage?: string[]
   DateOnChange?: (value?: dateValue) => void
   DateValue?: string
+}
 
+type TimePickerBase = {
   TimeLabel?: string
   TimeDescription?: string
   TimeTooltip?: string
@@ -46,11 +48,11 @@ export const DateTimePicker = ({
   TimeExplicitOptional,
   TimeOnChange,
   TimeValue,
-}: DateTimePickerBase) => {
+}: DatePickerBase & TimePickerBase) => {
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
-      <div className="flex mdCustom:flex-row flex-col items-center gap-4">
-        <div className="flex flex-col items-start w-sm">
+      <div className="flex lg:flex-row flex-col items-center gap-4">
+        <div className="flex flex-col items-start w-[320px]">
           <DatePicker
             label={DateLabel}
             errorMessage={DateErrorMessage}
@@ -63,7 +65,7 @@ export const DateTimePicker = ({
             required={DateRequired}
           />
         </div>
-        <div className="flex flex-row w-sm items-end gap-1 mt-auto">
+        <div className="w-[320px] flex flex-row items-end gap-1 mt-auto">
           <TimePicker
             errorMessage={TimeErrorMessage}
             disabled={TimeDisabled}

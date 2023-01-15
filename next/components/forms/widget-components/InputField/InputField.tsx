@@ -11,10 +11,16 @@ import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
 
 export type LeftIconVariants = 'person' | 'mail' | 'call' | 'lock'
+export type InputType = 'text' | 'password'
+
+export const isLeftIconVariant = (value: string): value is LeftIconVariants => {
+  const list: LeftIconVariants[] = ['person', 'mail', 'call', 'lock']
+  return list.includes(value as LeftIconVariants)
+}
 
 interface InputBase {
   label: string
-  type?: 'text' | 'password'
+  type?: InputType
   placeholder: string
   errorMessage?: string[]
   description?: string

@@ -1,8 +1,7 @@
 import PlusCircleIcon from '@assets/images/forms/circle-plus-icon.svg'
 import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import React, { useEffect, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
 
 import InputField from '../widget-components/InputField/InputField'
 import SelectField from '../widget-components/SelectField/SelectField'
@@ -19,6 +18,7 @@ type InputBase = {
   InputResetIcon?: boolean
   InputDisabled?: boolean
   InputTooltip?: string
+  InputOnChange?: (index: number, propIndex: 0 | 1, value?: string | undefined) => void
 }
 
 interface SelectFieldProps {
@@ -36,6 +36,7 @@ interface SelectFieldProps {
   SelectExplicitOptional?: boolean
   SelectDisabled?: boolean
   SelectClassName?: string
+  SelectOnChange: (index: number, propIndex: 0 | 1, value: any | any[]) => void
 }
 
 type mainObjectType = {
@@ -45,9 +46,11 @@ type mainObjectType = {
 
 export const InputSelectGroup = ({
   groupValues = [],
-  saveFormData,
+  addNew,
   propKeys,
-  formDataArray,
+  addField,
+  removeField,
+
   // input props
   InputLabel,
   InputPlaceholder,
@@ -59,6 +62,7 @@ export const InputSelectGroup = ({
   InputRequired,
   InputErrorMessage,
   InputDisabled,
+  InputOnChange,
 
   // select props
   SelectLabel,
@@ -74,88 +78,20 @@ export const InputSelectGroup = ({
   SelectExplicitOptional,
   SelectDisabled,
   SelectClassName,
-
-  addNew,
+  SelectOnChange,
 }: SelectFieldProps &
   InputBase & {
     addNew: string
     groupValues?: mainObjectType[]
-    saveFormData: (obj: mainObjectType[]) => void
-    formDataArray?: mainObjectType[]
+    addField?: () => void
+    removeField?: (id: string) => void
     propKeys: string[]
   }) => {
-  const [fieldGroups, setFieldGroups] = useState<mainObjectType[]>([...groupValues])
-  const [formData, setFormData] = useState<mainObjectType[]>([...(formDataArray ?? [])])
   const containerStyle = cx('flex flex-col items-start gap-4', {})
-
-  const addField = () => {
-    setFieldGroups(
-      fieldGroups.concat({
-        [propKeys[0]]: '',
-        [propKeys[1]]: SelectType === 'multiple' ? [] : '',
-        id: uuidv4(),
-      }),
-    )
-    setFormData(
-      formData.concat({
-        [propKeys[0]]: '',
-        [propKeys[1]]: SelectType === 'multiple' ? [] : '',
-        id: uuidv4(),
-      }),
-    )
-    setFormData((prev: mainObjectType[]) => {
-      setFormData([...prev])
-      return prev
-    })
-  }
-
-  const removeField = (id: string) => {
-    setFieldGroups((current: mainObjectType[]) => current.filter((element) => element.id !== id))
-    setFormData((current: mainObjectType[]) => current.filter((element) => element.id !== id))
-  }
-
-  const handleOnChangeMultiple = (newValue: EnumOptionsType[]) => {
-    return newValue.map((option: EnumOptionsType) => option.value)
-  }
-
-  const handleOnChangeOne = (newValue: EnumOptionsType[]) => {
-    if (newValue[0]) {
-      return newValue[0].value
-    }
-    return null
-  }
-
-  const updateState =
-    (index: number, propIndex: 0 | 1) => (e: string | undefined | EnumOptionsType[]) => {
-      if (e !== undefined) {
-        let newValue = e
-        if (Array.isArray(e)) {
-          newValue = SelectType === 'multiple' ? handleOnChangeMultiple(e) : handleOnChangeOne(e)
-        }
-        const newArrayFormData = formData.map((item, i) => {
-          return index === i ? { ...item, [propKeys[propIndex]]: newValue } : item
-        })
-        setFormData(newArrayFormData)
-        const newArray = fieldGroups.map((item, i) => {
-          return index === i ? { ...item, [propKeys[propIndex]]: e } : item
-        })
-        setFieldGroups(newArray)
-      }
-    }
-
-  useEffect(() => {
-    setFormData((prev: mainObjectType[]) => {
-      // to avoid render warning
-      setTimeout(() => {
-        saveFormData([...prev])
-      }, 0)
-      return prev
-    })
-  }, [fieldGroups, saveFormData])
 
   return (
     <div className={containerStyle}>
-      {fieldGroups.map((element, index) => {
+      {groupValues.map((element, index) => {
         return (
           <div key={index} className="flex flex-row items-start gap-4 h-full">
             <div className="flex relative flex-col items-start pt-3 w-3 ">
@@ -174,7 +110,7 @@ export const InputSelectGroup = ({
                 errorMessage={InputErrorMessage}
                 disabled={InputDisabled}
                 value={element[propKeys[0]] as string}
-                onChange={updateState(index, 0)}
+                onChange={(e) => InputOnChange && InputOnChange(index, 0, e)}
               />
             </div>
             <SelectField
@@ -191,14 +127,14 @@ export const InputSelectGroup = ({
               dropdownDivider={SelectDropdownDivider}
               selectAllOption={SelectSelectAllOption}
               value={element[propKeys[1]] as EnumOptionsType[]}
-              onChange={updateState(index, 1)}
+              onChange={(e) => SelectOnChange && SelectOnChange(index, 1, e)}
               className={SelectClassName}
             />
-            {fieldGroups.length > 1 ? (
+            {groupValues.length > 1 ? (
               <button
                 type="button"
                 className="flex w-6 h-6 justify-center items-center cursor-pointer mt-auto mb-5 rotate-45"
-                onClick={() => removeField(element.id)}
+                onClick={() => removeField && removeField(element.id)}
               >
                 <PlusCircleIcon fill="red" />
               </button>
@@ -210,7 +146,7 @@ export const InputSelectGroup = ({
         <button
           type="button"
           className="flex flex-row justify-center select-none items-center py-2 gap-2 cursor-pointer"
-          onClick={() => addField()}
+          onClick={() => addField && addField()}
         >
           <div className="flex w-6 h-6 justify-center items-center">
             <PlusCircleIcon fill="black" />

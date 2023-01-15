@@ -1,46 +1,37 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { FieldProps } from '@rjsf/utils'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
 import { TextareaUploadGroup } from '../../groups'
+import { fileNameToMinioFile } from '../UploadWidgetRJSF'
 
-const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
-  const { formData, onChange, schema, uiSchema, rawErrors = [] } = props
-
-  const [state, setState] = useState({ ...formData })
-  const [keys] = useState(Object.keys({ ...schema.properties }))
+const TextareaUploadGroupWidgetRJSF = ({
+  formData,
+  onChange,
+  schema,
+  uiSchema,
+  rawErrors = [],
+}: FieldProps) => {
+  const schemaProperties = {
+    ...(schema.properties as Record<string, { type: string; title: string }>),
+  }
+  const uiSchemaObject = {
+    ...(uiSchema && (uiSchema['ui:options'] as Record<string, string | number | boolean>)),
+  }
+  const keys = Object.keys({ ...schema.properties })
+  const multiple = schemaProperties[keys[1]]?.type === 'array'
   const [innerValue, setInnerValue] = useState<UploadMinioFile[]>([])
-  const multiple = ({ ...schema.properties }[keys[1]] as Record<string, string>)?.type === 'array'
-  const uiOptions = 'ui:options'
+
   const handleOnChange = (valueName: string, newValue?: string | string[]) => {
-    setState({
+    onChange({
+      ...formData,
       [valueName]: newValue,
     })
-    setState((prevState: object) => {
-      return { ...state, ...prevState } as object
-    })
   }
-
-  useEffect(() => {
-    onChange(state)
-  }, [state])
 
   const getLabel = (propName: string) => {
-    return {
-      ...(schema.properties && (schema.properties[propName] as Record<string, string>)),
-    }.title
-  }
-
-  const fileNameToMinioFile = (fileName: string): UploadMinioFile => {
-    const fileNameArray = fileName.split('_')
-    fileNameArray.splice(0, 2)
-    const originalName = fileNameArray.join('_')
-    return {
-      file: new File([], fileName),
-      isUploading: false,
-      originalName,
-    }
+    return schemaProperties[propName].title
   }
 
   useEffectOnce(() => {
@@ -49,10 +40,10 @@ const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
     // I am saving this info only in innerValue of widget
     // but when I go to previous step of the stepper, component is rebuilt and I still need at least the fileName, so I read fileNames from rjsf state and transform them
     const valueArray: string[] =
-      multiple && Array.isArray(state[statePropKey])
-        ? [...state[statePropKey]]
-        : state[statePropKey] && !Array.isArray(state[statePropKey])
-        ? [state[statePropKey]]
+      multiple && Array.isArray(formData[statePropKey])
+        ? [...formData[statePropKey]]
+        : formData[statePropKey] && !Array.isArray(formData[statePropKey])
+        ? [formData[statePropKey]]
         : []
     const initialInnerValue: UploadMinioFile[] = valueArray.map(fileNameToMinioFile)
     setInnerValue(initialInnerValue)
@@ -86,27 +77,24 @@ const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
   }
 
   const getUIProp = (uiPropName: string) => {
-    return {
-      ...(uiSchema && (uiSchema[uiOptions] as Record<string, string>)),
-    }[uiPropName]
+    return uiSchemaObject[uiPropName]
   }
 
   const getUploadType = (uploadType: string): 'button' | 'dragAndDrop' => {
-    const uploadTypeVariant = {
-      ...(uiSchema && (uiSchema[uiOptions] as Record<string, string>)),
-    }[uploadType]
+    const uploadTypeVariant = uiSchemaObject[uploadType]
     if (uploadTypeVariant !== 'button' && uploadTypeVariant !== 'dragAndDrop') {
       return 'button'
     }
     return uploadTypeVariant
   }
 
-  const supportedFormats = getUIProp('UploadSupportedFormats')?.split(',')
+  const supportedFormats = (getUIProp('UploadSupportedFormats') as string)?.split(',')
 
   const requiredField = (propKey: string) => {
     return schema.required?.includes(propKey)
   }
 
+  // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => {
     const errors: string[] = []
     if (Array.isArray(rawErrors)) {
@@ -120,21 +108,21 @@ const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
   }
 
   return (
-    <div className={getUIProp('className')}>
+    <div className={getUIProp('className') as string}>
       <TextareaUploadGroup
         TextareaLabel={getLabel(keys[0])}
         UploadLabel={getLabel(keys[1])}
-        TextareaValue={{ ...(state as Record<string, string>) }[keys[0]] as keyof object}
+        TextareaValue={formData[keys[0]]}
         TextareaOnChange={(e) => handleOnChange(keys[0], e)}
-        TextareaPlaceholder={getUIProp('TextareaPlaceholder')}
-        TextareaDescription={getUIProp('TextareaDescription')}
+        TextareaPlaceholder={getUIProp('TextareaPlaceholder') as string}
+        TextareaDescription={getUIProp('TextareaDescription') as string}
         TextareaRequired={requiredField(keys[0])}
-        TextareaTooltip={getUIProp('TextareaTooltip')}
-        TextareaExplicitOptional={getUIProp('TextareaExplicitOptional') as unknown as boolean}
-        TextareaClassName={getUIProp('TextareaClassName')}
+        TextareaTooltip={getUIProp('TextareaTooltip') as string}
+        TextareaExplicitOptional={getUIProp('TextareaExplicitOptional') as boolean}
+        TextareaClassName={getUIProp('TextareaClassName') as string}
         TextareaErrorMessage={getErrorMessage(keys[0])}
         UploadType={getUploadType('UploadType')}
-        middleText={getUIProp('middleText')}
+        middleText={getUIProp('middleText') as string}
         UploadValue={innerValue}
         UploadMultiple={multiple}
         UploadOnChange={handleFileOnChange}
@@ -142,9 +130,10 @@ const TextareaUploadGroupWidgetRJSF = (props: FieldProps) => {
         UploadSupportedFormats={supportedFormats}
         UploadSizeLimit={Number(getUIProp('UploadSizeLimit'))}
         UploadErrorMessage={getErrorMessage(keys[1])}
-        UploadClassName={getUIProp('UploadClassName')}
+        UploadClassName={getUIProp('UploadClassName') as string}
       />
     </div>
   )
 }
+
 export default TextareaUploadGroupWidgetRJSF

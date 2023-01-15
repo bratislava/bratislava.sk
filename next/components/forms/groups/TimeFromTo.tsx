@@ -62,8 +62,8 @@ export const TimeFromTo = ({
 }: TimePickerBase) => {
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
-      <div className="items-left flex mdCustom:flex-row flex-col gap-4">
-        <div className="flex flex-col w-sm items-start">
+      <div className="items-left flex lg:flex-row flex-col gap-4">
+        <div className="flex flex-col w-[320px] items-start">
           <TimePicker
             label={TimeFromLabel}
             errorMessage={TimeFromErrorMessage}
@@ -78,8 +78,8 @@ export const TimeFromTo = ({
             disabled={TimeFromDisabled}
           />
         </div>
-        <div className={cx('mdCustom:w-8 mdCustom:block hidden h-0.5 bg-gray-300 mt-auto mb-7')} />
-        <div className="flex flex-row w-sm items-end mt-auto">
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-7')} />
+        <div className="w-[320px] flex flex-row items-end mt-auto">
           <TimePicker
             label={TimeToLabel}
             description={TimeToDescription}

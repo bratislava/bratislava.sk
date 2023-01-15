@@ -1,4 +1,4 @@
-import InputField, { LeftIconVariants } from '../widget-components/InputField/InputField'
+import InputField, { InputType, LeftIconVariants } from '../widget-components/InputField/InputField'
 
 interface InputBase {
   // label
@@ -10,8 +10,8 @@ interface InputBase {
   SecondInputClassNames?: string
 
   // type
-  FirstInputType?: 'text' | 'password'
-  SecondInputType?: 'text' | 'password'
+  FirstInputType?: InputType
+  SecondInputType?: InputType
 
   // placeholder
   FirstInputPlaceholder: string

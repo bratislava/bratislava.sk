@@ -3,24 +3,27 @@ import cx from 'classnames'
 
 import DatePicker from '../widget-components/DateTimePicker/DatePicker'
 
-type DatePickerBase = {
+type DateFrom = {
   DateFromLabel: string
-  DateToLabel?: string
   DateFromTooltip?: string
-  DateToTooltip?: string
   DateFromDescription?: string
-  DateToDescription?: string
   DateFromRequired?: boolean
-  DateToRequired?: boolean
   DateFromExplicitOptional?: boolean
-  DateToExplicitOptional?: boolean
   DateFromDisabled?: boolean
-  DateToDisabled?: boolean
   DateFromValue?: string
-  DateToValue?: string
   DateFromOnChange: (value?: DateValue) => void
-  DateToOnChange: (value?: DateValue) => void
   DateFromErrorMessage?: string[]
+}
+
+type DateTo = {
+  DateToLabel: string
+  DateToTooltip?: string
+  DateToDescription?: string
+  DateToRequired?: boolean
+  DateToExplicitOptional?: boolean
+  DateToDisabled?: boolean
+  DateToValue?: string
+  DateToOnChange: (value?: DateValue) => void
   DateToErrorMessage?: string[]
 }
 
@@ -43,11 +46,11 @@ export const DateFromTo = ({
   DateToValue,
   DateFromOnChange,
   DateToOnChange,
-}: DatePickerBase) => {
+}: DateFrom & DateTo) => {
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
-      <div className="items-left mdCustom:flex-row flex-col flex gap-4">
-        <div className="w-sm flex flex-col items-start justify-end">
+      <div className="items-left lg:flex-row flex-col flex gap-4">
+        <div className="w-[320px] flex flex-col items-start justify-end">
           <DatePicker
             label={DateFromLabel}
             errorMessage={DateFromErrorMessage}
@@ -61,8 +64,8 @@ export const DateFromTo = ({
             onChange={DateFromOnChange}
           />
         </div>
-        <div className={cx('mdCustom:w-8 mdCustom:block hidden h-0.5 bg-gray-300 mt-auto mb-8')} />
-        <div className="flex flex-row w-sm items-end gap-1 mt-auto">
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-8')} />
+        <div className="flex flex-row w-[320px] items-end gap-1 mt-auto">
           <DatePicker
             label={DateToLabel}
             errorMessage={DateToErrorMessage}

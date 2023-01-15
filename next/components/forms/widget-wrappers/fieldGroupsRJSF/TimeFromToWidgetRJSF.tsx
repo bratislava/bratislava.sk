@@ -1,32 +1,28 @@
 import { FieldProps } from '@rjsf/utils'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { TimeFromTo } from '../../groups'
 
-const uiOptions = 'ui:options'
-const TimeFromToWidgetRJSF = (props: FieldProps) => {
-  const { formData, onChange, schema, uiSchema, rawErrors = [] } = props
-
-  const [state, setState] = useState({ ...formData })
-  const [keys] = useState(Object.keys({ ...schema.properties }))
-
+const TimeFromToWidgetRJSF = ({
+  formData,
+  onChange,
+  schema,
+  uiSchema,
+  rawErrors = [],
+}: FieldProps) => {
+  const keys = Object.keys({ ...schema.properties })
+  const schemaProperties = {
+    ...(schema.properties as Record<string, { type: string; title: string }>),
+  }
   const handleOnChange = (valueName: string, newValue?: string | undefined) => {
-    setState({
+    onChange({
+      ...formData,
       [valueName]: newValue,
-    })
-    setState((prevState: object) => {
-      return { ...state, ...prevState } as object
     })
   }
 
-  useEffect(() => {
-    onChange(state)
-  }, [onChange, state])
-
   const getUIProp = (uiPropName: string) => {
-    return {
-      ...(uiSchema && (uiSchema[uiOptions] as Record<string, string>)),
-    }[uiPropName]
+    return uiSchema && uiSchema['ui:options'] && uiSchema['ui:options'][uiPropName]
   }
 
   const requiredField = (propKey: string) => {
@@ -45,13 +41,17 @@ const TimeFromToWidgetRJSF = (props: FieldProps) => {
     return errors
   }
 
+  const getLabel = (index: 0 | 1) => {
+    return schemaProperties[keys[index]].title
+  }
+
   return (
-    <div className={getUIProp('className')}>
+    <div className={getUIProp('className') as string}>
       <TimeFromTo
-        TimeToTooltip={getUIProp('TimeToTooltip')}
-        TimeFromTooltip={getUIProp('TimeFromTooltip')}
-        TimeFromDescription={getUIProp('TimeFromDescription')}
-        TimeToDescription={getUIProp('TimeToDescription')}
+        TimeToTooltip={getUIProp('TimeToTooltip') as string}
+        TimeFromTooltip={getUIProp('TimeFromTooltip') as string}
+        TimeFromDescription={getUIProp('TimeFromDescription') as string}
+        TimeToDescription={getUIProp('TimeToDescription') as string}
         TimeFromRequired={requiredField(keys[0])}
         TimeToRequired={requiredField(keys[1])}
         TimeFromErrorMessage={getErrorMessage(keys[0])}
@@ -60,10 +60,10 @@ const TimeFromToWidgetRJSF = (props: FieldProps) => {
         TimeToExplicitOptional={getUIProp('TimeToExplicitOptional') as unknown as boolean}
         TimeFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
         TimeToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
-        TimeFromValue={{ ...(state as Record<string, string>) }[keys[0]] as keyof object}
-        TimeToValue={{ ...(state as Record<string, string>) }[keys[1]] as keyof object}
-        TimeFromLabel={getUIProp('TimeFromLabel')}
-        TimeToLabel={getUIProp('TimeToLabel')}
+        TimeFromValue={formData[keys[0]]}
+        TimeToValue={formData[keys[1]]}
+        TimeFromLabel={getLabel(0)}
+        TimeToLabel={getLabel(1)}
       />
     </div>
   )

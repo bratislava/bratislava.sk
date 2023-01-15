@@ -2,76 +2,56 @@ import { FieldProps } from '@rjsf/utils'
 import React from 'react'
 
 import { DoubledInputField } from '../../groups'
-import { LeftIconVariants } from '../../widget-components/InputField/InputField'
+import { isLeftIconVariant, LeftIconVariants } from '../../widget-components/InputField/InputField'
 
-const uiOptions = 'ui:options'
-class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
-  constructor(props: FieldProps) {
-    super(props)
-    this.state = { ...props.formData }
+const DoubledInputWidgetFieldRJSF = ({
+  formData,
+  onChange,
+  schema,
+  uiSchema,
+  rawErrors = [],
+}: FieldProps) => {
+  const keys = Object.keys({ ...schema.properties })
+  const uiSchemaObject = {
+    ...(uiSchema && (uiSchema['ui:options'] as Record<string, string | number | boolean>)),
+  }
+  const schemaProperties = {
+    ...(schema.properties as Record<string, { type: string; title: string }>),
+  }
+  const handleOnChange = (name: string, event?: string) => {
+    onChange({
+      ...formData,
+      [name]: event,
+    })
   }
 
-  handleOnChange(name: string, event?: string) {
-    this.setState(
-      {
-        [name]: event,
-      },
-      ({ props: { onChange } } = this) => onChange(this.state),
-    )
-  }
+  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
-  getLabel = (index: 0 | 1) => {
-    const { props, state } = this
-    return {
-      ...(props.schema.properties &&
-        (props.schema.properties[Object.keys(state)[index]] as Record<string, string>)),
-    }.title
-  }
-
-  inputType = (inputType: 'FirstInputType' | 'SecondInputType') => {
-    const { props } = this
-    const type = {
-      ...(props.uiSchema && (props.uiSchema[uiOptions] as Record<string, string>)),
-    }[inputType]
+  const inputType = (inputTypeName: 'FirstInputType' | 'SecondInputType') => {
+    const type = uiSchemaObject[inputTypeName]
     if (type !== 'text' && type !== 'password') {
       return 'text'
     }
     return type
   }
 
-  isLeftIconVariant = (val: string): val is LeftIconVariants => {
-    const list: LeftIconVariants[] = ['person', 'mail', 'call', 'lock']
-    return list.includes(val as LeftIconVariants)
-  }
-
-  getLeftIcon = (
-    iconInput: 'FirstInputLeftIcon' | 'SecondInputLeftIcon',
+  const getLeftIcon = (
+    iconInputPropValue: 'FirstInputLeftIcon' | 'SecondInputLeftIcon',
   ): LeftIconVariants | undefined => {
-    const { props } = this
-    const iconVariant = {
-      ...(props.uiSchema && (props.uiSchema[uiOptions] as Record<string, string>)),
-    }[iconInput]
-    return this.isLeftIconVariant(iconVariant) ? iconVariant : undefined
+    const iconVariant = uiSchemaObject[iconInputPropValue]
+    return typeof iconVariant === 'string' && isLeftIconVariant(iconVariant)
+      ? iconVariant
+      : undefined
   }
 
-  getUIProp = (uiPropName: string) => {
-    const { props } = this
-    return {
-      ...(props.uiSchema && (props.uiSchema[uiOptions] as Record<string, string>)),
-    }[uiPropName]
+  const getUIProp = (uiPropName: string): string | number | boolean => {
+    return uiSchemaObject[uiPropName]
   }
 
-  requiredField = (propKey: string) => {
-    const {
-      props: { schema },
-    } = this
-    return schema.required?.includes(propKey)
-  }
+  const requiredField = (propKey: string) => schema.required?.includes(propKey)
 
-  getErrorMessage = (propKey: string): string[] => {
-    const {
-      props: { rawErrors },
-    } = this
+  // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
+  const getErrorMessage = (propKey: string): string[] => {
     const errors: string[] = []
     if (Array.isArray(rawErrors)) {
       rawErrors.forEach((rawError: string) => {
@@ -83,44 +63,37 @@ class DoubledInputWidgetFieldRJSF extends React.Component<FieldProps> {
     return errors
   }
 
-  render() {
-    const { state } = this
-    return (
-      <div className={this.getUIProp('className')}>
-        <DoubledInputField
-          FirstInputLabel={this.getLabel(0)}
-          SecondInputLabel={this.getLabel(1)}
-          FirstInputValue={state[Object.keys(state)[0] as keyof object]}
-          SecondInputValue={state[Object.keys(state)[1] as keyof object]}
-          FirstInputHandler={(e) => this.handleOnChange(Object.keys(state)[0], e)}
-          SecondInputHandler={(e) => this.handleOnChange(Object.keys(state)[1], e)}
-          FirstInputPlaceholder={this.getUIProp('FirstInputPlaceholder')}
-          SecondInputPlaceholder={this.getUIProp('SecondInputPlaceholder')}
-          FirstInputTooltip={this.getUIProp('FirstInputTooltip')}
-          SecondInputTooltip={this.getUIProp('SecondInputTooltip')}
-          FirstInputDescription={this.getUIProp('FirstInputDescription')}
-          SecondInputDescription={this.getUIProp('SecondInputDescription')}
-          FirstInputType={this.inputType('FirstInputType')}
-          SecondInputType={this.inputType('SecondInputType')}
-          FirstInputRequired={this.requiredField(Object.keys(state)[0])}
-          SecondInputRequired={this.requiredField(Object.keys(state)[1])}
-          FirstInputLeftIcon={this.getLeftIcon('FirstInputLeftIcon')}
-          SecondInputLeftIcon={this.getLeftIcon('SecondInputLeftIcon')}
-          FirstInputExplicitOptional={
-            this.getUIProp('FirstInputExplicitOptional') as unknown as boolean
-          }
-          SecondInputExplicitOptional={
-            this.getUIProp('SecondInputExplicitOptional') as unknown as boolean
-          }
-          FirstInputResetIcon={this.getUIProp('FirstInputResetIcon') as unknown as boolean}
-          SecondInputResetIcon={this.getUIProp('SecondInputResetIcon') as unknown as boolean}
-          FirstInputClassNames={this.getUIProp('FirstInputClassNames')}
-          SecondInputClassNames={this.getUIProp('SecondInputClassNames')}
-          FirstInputErrorMessage={this.getErrorMessage(Object.keys(state)[0])}
-          SecondInputErrorMessage={this.getErrorMessage(Object.keys(state)[1])}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className={getUIProp('className') as string}>
+      <DoubledInputField
+        FirstInputLabel={getLabel(0)}
+        SecondInputLabel={getLabel(1)}
+        FirstInputValue={formData[keys[0]]}
+        SecondInputValue={formData[keys[1]]}
+        FirstInputHandler={(e) => handleOnChange(keys[0], e)}
+        SecondInputHandler={(e) => handleOnChange(keys[1], e)}
+        FirstInputPlaceholder={getUIProp('FirstInputPlaceholder') as string}
+        SecondInputPlaceholder={getUIProp('SecondInputPlaceholder') as string}
+        FirstInputTooltip={getUIProp('FirstInputTooltip') as string}
+        SecondInputTooltip={getUIProp('SecondInputTooltip') as string}
+        FirstInputDescription={getUIProp('FirstInputDescription') as string}
+        SecondInputDescription={getUIProp('SecondInputDescription') as string}
+        FirstInputType={inputType('FirstInputType')}
+        SecondInputType={inputType('SecondInputType')}
+        FirstInputRequired={requiredField(keys[0])}
+        SecondInputRequired={requiredField(keys[1])}
+        FirstInputLeftIcon={getLeftIcon('FirstInputLeftIcon')}
+        SecondInputLeftIcon={getLeftIcon('SecondInputLeftIcon')}
+        FirstInputExplicitOptional={getUIProp('FirstInputExplicitOptional') as unknown as boolean}
+        SecondInputExplicitOptional={getUIProp('SecondInputExplicitOptional') as unknown as boolean}
+        FirstInputResetIcon={getUIProp('FirstInputResetIcon') as unknown as boolean}
+        SecondInputResetIcon={getUIProp('SecondInputResetIcon') as unknown as boolean}
+        FirstInputClassNames={getUIProp('FirstInputClassNames') as string}
+        SecondInputClassNames={getUIProp('SecondInputClassNames') as string}
+        FirstInputErrorMessage={getErrorMessage(keys[0])}
+        SecondInputErrorMessage={getErrorMessage(keys[1])}
+      />
+    </div>
+  )
 }
 export default DoubledInputWidgetFieldRJSF

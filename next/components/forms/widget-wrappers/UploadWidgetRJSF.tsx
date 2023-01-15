@@ -7,6 +7,17 @@ import { useEffectOnce } from 'usehooks-ts'
 import Upload from '../widget-components/Upload/Upload'
 import UploadRJSFOptions from '../widget-components/Upload/UploadRJSFOptions'
 
+export const fileNameToMinioFile = (fileName: string): UploadMinioFile => {
+  const fileNameArray = fileName.split('_')
+  fileNameArray.splice(0, 2)
+  const originalName = fileNameArray.join('_')
+  return {
+    file: new File([], fileName),
+    isUploading: false,
+    originalName,
+  }
+}
+
 interface UploadWidgetRJSFProps extends WidgetProps {
   options: UploadRJSFOptions
   schema: StrictRJSFSchema
@@ -35,17 +46,6 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
 
   const supportedFormats = accept?.split(',')
   const multiple = schema.type === 'array'
-
-  const fileNameToMinioFile = (fileName: string): UploadMinioFile => {
-    const fileNameArray = fileName.split('_')
-    fileNameArray.splice(0, 2)
-    const originalName = fileNameArray.join('_')
-    return {
-      file: new File([], fileName),
-      isUploading: false,
-      originalName,
-    }
-  }
 
   useEffectOnce(() => {
     // I need to save multiple pieces of info about the file - this isn't stored in rjsf, but needed DURING upload

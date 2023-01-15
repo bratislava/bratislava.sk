@@ -6,8 +6,6 @@
     "ui:field": "dateTime",
     "ui:hideError": true,
     "ui:options": {
-      "TimeLabel": "Time",
-      "DateLabel": "Date",
       "TimeTooltip": "Time tooltip",
       "DateTooltip": "Time tooltip",
       "TimeFromDescription": "From desc",
@@ -30,8 +28,6 @@
     "ui:hideError": true,
     "ui:field": "dateFromTo",
     "ui:options": {
-      "DateFromLabel": "Date from",
-      "DateToLabel": "Date to",
       "DateFromTooltip": "From tooltip",
       "DateToTooltip": "To tooltip",
       "DateFromDescription": "From desc",
