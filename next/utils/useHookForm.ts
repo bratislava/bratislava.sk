@@ -20,8 +20,6 @@ export default function useHookForm<T extends FieldValues>({ schema, defaultValu
       formats: {
         email:
           "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
-        // Support whole set of special characters according to cognito.
-        // https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-policies.html
         password:
           /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[ !"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]).{8,}$/,
       },
