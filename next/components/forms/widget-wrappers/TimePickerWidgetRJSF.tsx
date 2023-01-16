@@ -36,7 +36,7 @@ const TimePickerWidgetRJSF = ({
   } = options
 
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
-  console.log(rawErrors)
+
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <TimePicker
