@@ -1,5 +1,4 @@
 import SummaryRow from '../../forms/steps/Summary/SummaryRow'
-import { TransformedFormData } from '../../forms/steps/Summary/TransformedFormData'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
