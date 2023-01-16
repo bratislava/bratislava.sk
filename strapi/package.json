@@ -12,10 +12,10 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.2",
+    "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.18.2",
     "eslint": "^8.17.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-scope": "^7.1.1"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "@strapi/plugin-users-permissions": "4.5.6",
     "@strapi/strapi": "4.5.6",
     "patch-package": "^6.4.7",
-    "pg": "^8.7.3",
+    "pg": "^8.8.0",
     "postinstall-postinstall": "^2.1.0",
     "strapi-plugin-email-designer": "^2.1.2",
     "strapi-plugin-meilisearch": "https://github.com/bratislava/strapi-plugin-meilisearch.git",
