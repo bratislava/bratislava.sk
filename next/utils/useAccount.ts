@@ -36,14 +36,44 @@ export default function useAccount() {
   const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
   const [userData, setUserData] = useState<UserData | null>(null)
 
-  const setAttributes = (attributes?: CognitoUserAttribute[]) => {
-    if (attributes) {
-      const data: any = {}
-      attributes.forEach((attribute: CognitoUserAttribute) => {
-        data[attribute.getName()] = attribute.getValue()
+  const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
+    const data: any = {}
+    attributes?.forEach((attribute: CognitoUserAttribute) => {
+      data[attribute.getName()] = attribute.getValue()
+    })
+    return data
+  }
+
+  const objectToUserAttributes = (data: UserData): CognitoUserAttribute[] => {
+    const attributeList: CognitoUserAttribute[] = []
+    Object.entries(data).forEach(([key, value]) => {
+      const attribute = new CognitoUserAttribute({
+        Name: key,
+        Value: value,
       })
-      setUserData(data)
-    }
+      attributeList.push(attribute)
+    })
+    return attributeList
+  }
+
+  const updateUserData = (data: UserData): Promise<boolean> => {
+    const attributeList = objectToUserAttributes(data)
+
+    return new Promise((resolve) => {
+      if (user) {
+        user.updateAttributes(attributeList, (err?: Error) => {
+          if (err) {
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          } else {
+            setUserData((state) => ({ ...state, ...data }))
+            resolve(true)
+          }
+        })
+      } else {
+        resolve(false)
+      }
+    })
   }
 
   useEffect(() => {
@@ -59,7 +89,7 @@ export default function useAccount() {
           if (err) {
             console.error(err)
           } else {
-            setAttributes(attributes)
+            setUserData(userAttributesToObject(attributes))
             setUser(currentUser)
           }
         })
@@ -75,26 +105,21 @@ export default function useAccount() {
   }
 
   const signUp = (email: string, password: string, data: UserData) => {
-    const attributeList: CognitoUserAttribute[] = []
-    Object.keys(data).forEach((key: string) => {
-      const attribute = new CognitoUserAttribute({
-        Name: key,
-        Value: data[key].toString(),
-      })
-      attributeList.push(attribute)
-    })
+    const attributeList = objectToUserAttributes(data)
 
     setError(null)
     return new Promise((resolve) => {
-      userPool.signUp(email, password, attributeList, [], (err: Error, result: ISignUpResult) => {
+      userPool.signUp(email, password, attributeList, [], (err?: Error, result?: ISignUpResult) => {
         if (err) {
           console.error(err.message)
           setError({ ...(err as AWSError) })
           resolve(false)
-        } else {
+        } else if (result) {
           setUser(result.user)
           setStatus(AccountStatus.VerificationRequired)
           resolve(true)
+        } else {
+          resolve(false)
         }
       })
     })
@@ -158,11 +183,10 @@ export default function useAccount() {
     }
     const authenticationDetails = new AuthenticationDetails(authenticationData)
 
-    const userData = {
+    const cognitoUser = new CognitoUser({
       Username: email,
       Pool: userPool,
-    }
-    const cognitoUser = new CognitoUser(userData)
+    })
 
     setError(null)
     return new Promise((resolve) => {
@@ -187,19 +211,18 @@ export default function useAccount() {
           credentials.refresh((err?: AWSError) => {
             if (err) {
               setError(err)
-            } else {
-              console.log('Successfully logged!')
-            }
-          })
-
-          cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
-            if (err) {
-              setError({ ...(err as AWSError) })
               resolve(false)
             } else {
-              setAttributes(attributes)
-              setUser(cognitoUser)
-              resolve(true)
+              cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
+                if (err) {
+                  setError({ ...(err as AWSError) })
+                  resolve(false)
+                } else {
+                  setUserData(userAttributesToObject(attributes))
+                  setUser(cognitoUser)
+                  resolve(true)
+                }
+              })
             }
           })
         },
@@ -238,5 +261,16 @@ export default function useAccount() {
     })
   }
 
-  return { login, logout, user, error, forgotPassword, confirmPassword, status, userData, signUp }
+  return {
+    login,
+    logout,
+    user,
+    error,
+    forgotPassword,
+    confirmPassword,
+    status,
+    userData,
+    updateUserData,
+    signUp,
+  }
 }
