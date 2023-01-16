@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 export enum AccountStatus {
   Idle,
   NewPasswordRequired,
+  VerificationRequired,
   Success,
 }
 
@@ -41,7 +42,6 @@ export default function useAccount() {
       attributes.forEach((attribute: CognitoUserAttribute) => {
         data[attribute.getName()] = attribute.getValue()
       })
-      console.log(data)
       setUserData(data)
     }
   }
@@ -92,10 +92,8 @@ export default function useAccount() {
           setError({ ...(err as AWSError) })
           resolve(false)
         } else {
-          const cognitoUser = result.user
-          console.log(cognitoUser.getUsername())
-          console.log(result.user)
-          setUser(cognitoUser)
+          setUser(result.user)
+          setStatus(AccountStatus.VerificationRequired)
           resolve(true)
         }
       })
