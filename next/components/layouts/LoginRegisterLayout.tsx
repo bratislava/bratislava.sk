@@ -17,7 +17,7 @@ const LoginRegisterLayout = ({
   const { locale } = usePageWrapperContext()
 
   return (
-    <div className={cx('flex', 'flex-col', 'h-screen', 'font-inter', className)}>
+    <div className={cx('flex', 'flex-col', 'min-h-screen', 'font-inter', className)}>
       <div className="h-16 bg-white lg:h-14">
         <SectionContainer>
           <AccountNavBar currentLanguage={locale} />
