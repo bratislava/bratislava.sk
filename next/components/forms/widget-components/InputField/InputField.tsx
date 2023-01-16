@@ -26,6 +26,7 @@ interface InputBase {
   tooltip?: string
   onChange?: (value?: string) => void
   size?: 'large' | 'default' | 'small'
+  endIcon?: ReactNode
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
@@ -46,6 +47,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       className,
       size,
       onChange,
+      endIcon,
       ...rest
     },
     ref,
@@ -153,6 +155,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               <ResetIcon />
             </button>
           )}
+          {endIcon}
         </div>
         {!disabled && (
           <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
