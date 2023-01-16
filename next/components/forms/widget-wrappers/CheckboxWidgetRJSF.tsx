@@ -23,10 +23,18 @@ interface CheckboxesWidgetRJSFProps extends WidgetProps {
   label: string
   schema: StrictRJSFSchema
   onChange: (value: string[]) => void
+  rawErrors?: string[]
 }
 
-const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
-  const { options, value, onChange, label } = props
+const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
+  const {
+    options,
+    value,
+    onChange,
+    label,
+    schema: { maxItems },
+    rawErrors,
+  } = props
   const {
     enumOptions,
     className,
@@ -39,9 +47,13 @@ const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   const getTooltip = (radioValue: string) => {
     return checkboxOptions.find((option) => option.value === radioValue)?.tooltip
   }
+  const isDisabled = (valueName: string) => {
+    return value?.length === maxItems && !value?.includes(valueName)
+  }
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <CheckboxGroup
+        rawErrors={rawErrors}
         value={value ?? undefined}
         onChange={onChange}
         className={className}
@@ -53,6 +65,7 @@ const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
               key={option.value}
               value={option.value}
               variant={variant}
+              isDisabled={isDisabled(option.value as string)}
               tooltip={getTooltip(option.value as string)}
             >
               {option.label}
@@ -64,4 +77,4 @@ const RadioButtonsWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   )
 }
 
-export default RadioButtonsWidgetRJSF
+export default CheckboxWidgetRJSF

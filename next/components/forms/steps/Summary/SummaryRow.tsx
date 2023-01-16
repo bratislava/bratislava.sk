@@ -2,7 +2,7 @@ import EditIcon from '@assets/images/forms/edit_icon.svg'
 import { JsonSchema } from '@backend/utils/forms'
 import cx from 'classnames'
 
-import TransformedFormData from './TransformedFormData'
+import { TransformedFormData } from './TransformedFormData'
 
 interface SummaryRowProps {
   data: TransformedFormData
