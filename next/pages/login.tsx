@@ -1,6 +1,6 @@
-import AccountContainer from '@bratislava/ui-bratislava/AccountContainer/AccountContainer'
-import LoginForm from '@bratislava/ui-bratislava/LoginForm/LoginForm'
 import { AsyncServerProps } from '@utils/types'
+import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
+import LoginForm from 'components/forms/segments/LoginForm/LoginForm'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
