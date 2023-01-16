@@ -27,11 +27,12 @@ const InputSelectGroupWidgetFieldRJSF = ({
   schema,
   uiSchema,
 }: FieldProps) => {
-  const keys = Object.keys(
-    {
+  const schemaProperties = {
+    ...({
       ...(schema.items as Record<string, string>),
-    }?.properties,
-  )
+    }?.properties as unknown as Record<string, { title: string; type: string }>),
+  }
+  const keys = Object.keys(schemaProperties)
 
   const uiSchemaObject = {
     ...(uiSchema && (uiSchema['ui:options'] as Record<string, string | number | boolean>)),
@@ -39,21 +40,13 @@ const InputSelectGroupWidgetFieldRJSF = ({
 
   const type =
     {
-      ...({
-        ...({
-          ...(schema.items as Record<string, string>),
-        }?.properties as unknown as Record<string, string>),
-      }[keys[1]] as unknown as Record<string, string>),
+      ...(schemaProperties[keys[1]] as unknown as Record<string, string>),
     }.type === 'array'
       ? 'multiple'
       : 'one'
 
   const enumOptions = {
-    ...({
-      ...({
-        ...(schema.items as Record<string, string>),
-      }?.properties as unknown as Record<string, string>),
-    }[keys[1]] as unknown as Record<string, Array<EnumOptionsType>>),
+    ...(schemaProperties[keys[1]] as unknown as Record<string, Array<EnumOptionsType>>),
   }.oneOf
 
   // default value for rendering component
@@ -165,10 +158,10 @@ const InputSelectGroupWidgetFieldRJSF = ({
     if (Array.isArray(e)) {
       newValue = type === 'multiple' ? handleOnChangeMultiple(e) : handleOnChangeOne(e)
     }
-    const a = (formData as mainObjectType[]).map((item: mainObjectType, i: number) => {
+    const updatedState = (formData as mainObjectType[]).map((item: mainObjectType, i: number) => {
       return index === i ? { ...item, [keys[propIndex]]: newValue } : item
     })
-    onChange(a)
+    onChange(updatedState)
   }
 
   const addField = () => {
@@ -185,11 +178,15 @@ const InputSelectGroupWidgetFieldRJSF = ({
     onChange(newFieldData)
   }
 
+  const getLabel = (index: 0 | 1) => {
+    return schemaProperties[keys[index]]?.title
+  }
+
   return (
     <div>
       <InputSelectGroup
-        SelectLabel={getUIProp('SelectLabel') as string}
-        InputLabel={getUIProp('InputLabel') as string}
+        SelectLabel={getLabel(1)}
+        InputLabel={getLabel(0)}
         InputTooltip={getUIProp('InputTooltip') as string}
         SelectTooltip={getUIProp('SelectTooltip') as string}
         InputPlaceholder={getUIProp('InputPlaceholder') as string}

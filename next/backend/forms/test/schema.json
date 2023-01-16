@@ -69,7 +69,8 @@
             "type": "object",
             "properties": {
               "pocet": {
-                "type": "string"
+                "type": "string",
+                "title": "Počet"
               },
               "school": {
                 "type": "array",

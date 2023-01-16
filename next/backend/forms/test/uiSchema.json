@@ -16,8 +16,6 @@
     "ui:field": "timeFromTo",
     "ui:hideError": true,
     "ui:options": {
-      "TimeFromLabel": "Time from",
-      "TimeToLabel": "Time to",
       "TimeFromTooltip": "Time tooltip",
       "TimeToTooltip": "Time tooltip",
       "TimeFromDescription": "From desc",
@@ -39,8 +37,6 @@
     "ui:hideError": true,
     "ui:options": {
       "className": "sm:w-[500px]",
-      "InputLabel": "Počet",
-      "SelectLabel": "Interval odvozu",
       "InputTooltip": "Some Tooltip",
       "SelectTooltip": "Tooltip text",
       "InputPlaceholder": "Type...",
