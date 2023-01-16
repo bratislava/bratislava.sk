@@ -9,6 +9,7 @@ import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
 
 interface DropdownRowProps {
   option: EnumOptionsType
+  isBold?: boolean
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
@@ -21,6 +22,7 @@ interface DropdownRowProps {
 
 const DropdownRow = ({
   option,
+  isBold,
   selected,
   type,
   divider,
@@ -34,8 +36,8 @@ const DropdownRow = ({
   const rowClassName = cx(
     'dropdown hover:bg-form-plain-black-hover flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer',
     {
-      'h-14': option.label === '' || option.label === String(option.value),
-      'h-full xs:h-[84px]': option.label !== '' && option.label !== String(option.value),
+      'h-14': !isBold,
+      'h-full xs:h-[84px]': isBold,
     },
     selectHashCode,
   )
@@ -43,7 +45,7 @@ const DropdownRow = ({
   const optionClassName = cx(
     'dropdown text-20 w-full',
     {
-      'font-semibold': option.label !== '' && option.label !== String(option.value),
+      'font-semibold': isBold,
     },
     selectHashCode,
   )
