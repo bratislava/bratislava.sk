@@ -13,18 +13,32 @@ export interface InstitutionProps {
   urlLabel?: string
 }
 
-const InstitutionCard = ({ className, title, subtitle, content, children }: InstitutionCardProps) => {
+const InstitutionCard = ({
+  className,
+  title,
+  subtitle,
+  content,
+  children,
+}: InstitutionCardProps) => {
   const { Markdown: UIMarkdown } = useUIContext()
 
   return (
-    <div className={cx(className, 'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full')}>
+    <div
+      className={cx(
+        className,
+        'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full',
+      )}
+    >
       <div className="flex flex-col">
         <h4 className="text-20-semibold leading-[26px]">{title}</h4>
         {subtitle && <UIMarkdown className="fontSize-base text-16 mt-6" content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
             {[...Array.from({ length: 3 })].map((_, ix) => (
-              <div key={ix} className="col-12 md:col-4 fontSize-base mb-2 break-all last:mb-0 md:mb-0">
+              <div
+                key={ix}
+                className="col-12 md:col-4 fontSize-base mb-2 break-words last:mb-0 md:mb-0"
+              >
                 {content[ix] && <UIMarkdown content={content[ix]} />}
               </div>
             ))}
@@ -61,7 +75,8 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
   )
 }
 
-interface InstitutionCardProps extends Pick<InstitutionProps, 'className' | 'title' | 'subtitle' | 'content'> {
+interface InstitutionCardProps
+  extends Pick<InstitutionProps, 'className' | 'title' | 'subtitle' | 'content'> {
   children?: React.ReactNode
 }
 

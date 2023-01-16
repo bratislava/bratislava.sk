@@ -32,7 +32,7 @@
         "tooltip": "First name hint",
         "resetIcon": true,
         "leftIcon": "person",
-        "size": "default",
+        "size": "large",
         "spaceTop": "large"
       }
     },
@@ -47,6 +47,18 @@
         "size": "default"
       }
     },
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "tooltip": "Phone hint",
+        "resetIcon": true,
+        "leftIcon": "call",
+        "size": "default",
+        "explicitOptional": "left"
+      }
+    },
     "password": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -54,7 +66,8 @@
       "ui:options": {
         "tooltip": "Password hint",
         "leftIcon": "lock",
-        "type": "password"
+        "type": "password",
+        "explicitOptional": "right"
       }
     },
     "psc": {
@@ -74,7 +87,8 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "type": "button"
+        "type": "button",
+        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
       }
     },
     "importButtonMultipleFiles": {

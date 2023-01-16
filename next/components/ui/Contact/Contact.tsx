@@ -59,7 +59,7 @@ export const Contact = ({
             <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
               {description && (
                 <UIMarkdown
-                  className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]"
+                  className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
                   content={description}
                 />
               )}
@@ -100,23 +100,31 @@ interface ContactItemProps {
   linkVariant?: string
 }
 
-const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: ContactItemProps) => {
+const ContactItem = ({
+  variant,
+  value,
+  label,
+  href,
+  linkVariant = 'primary',
+}: ContactItemProps) => {
   const { Markdown: UIMarkdown } = useUIContext()
 
   if (variant === 'address') {
-    return <UIMarkdown className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]" content={value} />
+    return (
+      <UIMarkdown className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]" content={value} />
+    )
   }
 
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="relative flex h-full flex-col items-center justify-start pb-20 text-20 leading-[30px]">
+    <div className="text-20 relative flex h-full flex-col items-center justify-start pb-20 leading-[30px]">
       <Icon className="h-24 w-24" />
       {value.split(',').map((item, key) => {
         return (
           <div key={key} className="text-center">
             <span
-              className={cx('text-20-semibold w-full break-all text-center', {
+              className={cx('text-20-semibold w-full text-center', {
                 'mt-9': key === 0,
                 'whitespace-nowrap': variant === 'phone',
               })}
@@ -130,12 +138,12 @@ const ContactItem = ({ variant, value, label, href, linkVariant = 'primary' }: C
         <a
           href={href}
           className={cx(
-            'mt-8 px-6 py-3 text-20-medium border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
+            'text-20-medium mt-8 px-6 py-3 border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
             {
               'bg-category-600 border-category-600': linkVariant === 'primary',
               'bg-category-200 border-category-200 text-white': linkVariant === 'secondary',
               'text-black': linkVariant === 'primary',
-            }
+            },
           )}
         >
           {label}
