@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 interface HookResult {
@@ -15,6 +16,7 @@ export const useStickyMenu = (
 ): HookResult => {
   const [activeButtonId, setActiveButtonId] = useState<number | null>(initialActiveMenuId)
   const [activePanelId, setActivePanelId] = useState<number | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     if (isVisible) {
@@ -41,6 +43,10 @@ export const useStickyMenu = (
     setActiveButtonId(null)
     setActivePanelId(null)
   }
+
+  useEffect(() => {
+    handleClosePanel()
+  }, [router.asPath])
 
   return {
     activePanelId,
