@@ -18,7 +18,7 @@ export const isLeftIconVariant = (value: string): value is LeftIconVariants => {
   return list.includes(value as LeftIconVariants)
 }
 
-interface InputBase {
+export interface InputBase {
   label: string
   type?: InputType
   placeholder: string

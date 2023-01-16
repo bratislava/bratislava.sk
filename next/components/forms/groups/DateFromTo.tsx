@@ -1,29 +1,28 @@
-import { DateValue } from '@internationalized/date'
 import cx from 'classnames'
 
-import DatePicker from '../widget-components/DateTimePicker/DatePicker'
+import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/DatePicker'
 
 type DateFrom = {
-  DateFromLabel: string
-  DateFromTooltip?: string
-  DateFromDescription?: string
-  DateFromRequired?: boolean
-  DateFromExplicitOptional?: boolean
-  DateFromDisabled?: boolean
-  DateFromValue?: string
-  DateFromOnChange: (value?: DateValue) => void
+  DateFromLabel: DatePickerBase['label']
+  DateFromTooltip?: DatePickerBase['tooltip']
+  DateFromDescription?: DatePickerBase['description']
+  DateFromRequired?: DatePickerBase['required']
+  DateFromExplicitOptional?: DatePickerBase['explicitOptional']
+  DateFromDisabled?: DatePickerBase['disabled']
+  DateFromValue?: DatePickerBase['value']
+  DateFromOnChange: DatePickerBase['onChange']
   DateFromErrorMessage?: string[]
 }
 
 type DateTo = {
-  DateToLabel: string
-  DateToTooltip?: string
-  DateToDescription?: string
-  DateToRequired?: boolean
-  DateToExplicitOptional?: boolean
-  DateToDisabled?: boolean
-  DateToValue?: string
-  DateToOnChange: (value?: DateValue) => void
+  DateToLabel: DatePickerBase['label']
+  DateToTooltip?: DatePickerBase['tooltip']
+  DateToDescription?: DatePickerBase['description']
+  DateToRequired?: DatePickerBase['required']
+  DateToExplicitOptional?: DatePickerBase['explicitOptional']
+  DateToDisabled?: DatePickerBase['disabled']
+  DateToValue?: DatePickerBase['value']
+  DateToOnChange: DatePickerBase['onChange']
   DateToErrorMessage?: string[]
 }
 

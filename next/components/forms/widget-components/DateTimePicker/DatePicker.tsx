@@ -31,7 +31,7 @@ const Button = ({ children, className, ...rest }: ButtonBase) => {
   )
 }
 
-type DatePickerBase = {
+export type DatePickerBase = {
   label?: string
   description?: string
   tooltip?: string

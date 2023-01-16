@@ -33,7 +33,7 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   )
 }
 
-type TimePickerBase = {
+export type TimePickerBase = {
   label?: string
   description?: string
   tooltip?: string

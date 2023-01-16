@@ -1,31 +1,31 @@
 import { DateValue as dateValue } from '@internationalized/date'
 import cx from 'classnames'
 
-import DatePicker from '../widget-components/DateTimePicker/DatePicker'
-import TimePicker from '../widget-components/DateTimePicker/TimePicker'
+import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/DatePicker'
+import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/TimePicker'
 
-type DatePickerBase = {
-  DateLabel?: string
-  DateDescription?: string
-  DateTooltip?: string
-  DateRequired?: boolean
-  DateExplicitOptional?: boolean
-  DateDisabled?: boolean
+type TDatePicker = {
+  DateLabel: DatePickerBase['label']
+  DateTooltip?: DatePickerBase['tooltip']
+  DateDescription?: DatePickerBase['description']
+  DateRequired?: DatePickerBase['required']
+  DateExplicitOptional?: DatePickerBase['explicitOptional']
+  DateDisabled?: DatePickerBase['disabled']
+  DateValue?: DatePickerBase['value']
+  DateOnChange: DatePickerBase['onChange']
   DateErrorMessage?: string[]
-  DateOnChange?: (value?: dateValue) => void
-  DateValue?: string
 }
 
-type TimePickerBase = {
-  TimeLabel?: string
-  TimeDescription?: string
-  TimeTooltip?: string
-  TimeRequired?: boolean
-  TimeExplicitOptional?: boolean
-  TimeDisabled?: boolean
+type TTimePicker = {
+  TimeLabel: TimePickerBase['label']
+  TimeTooltip?: TimePickerBase['tooltip']
+  TimeDescription?: TimePickerBase['description']
+  TimeRequired?: TimePickerBase['required']
+  TimeExplicitOptional?: TimePickerBase['explicitOptional']
+  TimeDisabled?: TimePickerBase['disabled']
+  TimeValue?: TimePickerBase['value']
+  TimeOnChange: TimePickerBase['onChange']
   TimeErrorMessage?: string[]
-  TimeOnChange?: (value?: string) => void
-  TimeValue?: string
 }
 
 export const DateTimePicker = ({
@@ -48,7 +48,7 @@ export const DateTimePicker = ({
   TimeExplicitOptional,
   TimeOnChange,
   TimeValue,
-}: DatePickerBase & TimePickerBase) => {
+}: TDatePicker & TTimePicker) => {
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
       <div className="flex lg:flex-row flex-col items-center gap-4">
