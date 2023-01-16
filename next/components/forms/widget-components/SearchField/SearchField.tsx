@@ -15,7 +15,7 @@ interface InputBase {
   className?: string
   value?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string

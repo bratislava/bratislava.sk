@@ -17,6 +17,7 @@ interface UploadProps {
   required?: boolean
   multiple?: boolean
   value?: UploadMinioFile[]
+  description?: string
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
@@ -35,6 +36,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     required,
     multiple,
     value,
+    description,
     disabled,
     sizeLimit,
     supportedFormats,
@@ -184,7 +186,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       className={cx('select-none w-fit h-fit', className)}
       style={{ transition: '0.2 all linear' }}
     >
-      <UploadFieldHeader label={label ?? ''} required={required} />
+      <UploadFieldHeader label={label ?? ''} required={required} description={description} />
       {
         /* UPLOAD AREA */
         type === 'button' ? (
