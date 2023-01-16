@@ -5,12 +5,12 @@
   "email_placeholder": "E-mail",
   "email_required": "E-mail is required",
   "email_format": "E-mail is not valid",
-  "first_name_label": "Name",
-  "first_name_placeholder": "Name",
-  "first_name_required": "Name is required",
-  "last_name_label": "Surname",
-  "last_name_placeholder": "Surname",
-  "last_name_required": "Surname is required",
+  "given_name_label": "Name",
+  "given_name_placeholder": "Name",
+  "given_name_required": "Name is required",
+  "family_name_label": "Surname",
+  "family_name_placeholder": "Surname",
+  "family_name_required": "Surname is required",
   "new_password_label": "New password",
   "new_password_placeholder": "New password",
   "new_password_confirmation_label": "New password again",
@@ -49,5 +49,7 @@
 
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
-  "LimitExceededException": "Attempt limit exceeded, please try after some time."
+  "LimitExceededException": "Attempt limit exceeded, please try after some time.",
+  "UserNotConfirmedException": "User is not confirmed.",
+  "UsernameExistsException": "An account with the given email already exists."
 }

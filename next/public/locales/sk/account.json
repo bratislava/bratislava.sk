@@ -5,12 +5,12 @@
   "email_placeholder": "E-mail",
   "email_required": "E-mail je povinný",
   "email_format": "E-mail nie je valídny",
-  "first_name_label": "Meno",
-  "first_name_placeholder": "Meno",
-  "first_name_required": "Meno je povinné",
-  "last_name_label": "Priezvisko",
-  "last_name_placeholder": "Priezvisko",
-  "last_name_required": "Priezvisko je povinné",
+  "given_name_label": "Meno",
+  "given_name_placeholder": "Meno",
+  "given_name_required": "Meno je povinné",
+  "family_name_label": "Priezvisko",
+  "family_name_placeholder": "Priezvisko",
+  "family_name_required": "Priezvisko je povinné",
   "new_password_label": "Nové heslo",
   "new_password_placeholder": "Nové heslo",
   "new_password_confirmation_label": "Zopakujte nové heslo",
@@ -49,5 +49,7 @@
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",
-  "LimitExceededException": "Skúste to znova neskôr."
+  "LimitExceededException": "Skúste to znova neskôr.",
+  "UserNotConfirmedException": "E-mail nie je verifikovaný.",
+  "UsernameExistsException": "Zvolený e-mail sa už používa."
 }

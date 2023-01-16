@@ -13,8 +13,8 @@ import { Controller } from 'react-hook-form'
 
 interface Data {
   email: string
-  firstName: string
-  lastName: string
+  given_name: string
+  family_name: string
   password: string
   passwordConfirmation: string
   gdprConfirmation: boolean
@@ -36,15 +36,15 @@ const schema = {
       format: 'email',
       errorMessage: { minLength: 'account:email_required', format: 'account:email_format' },
     },
-    firstName: {
+    given_name: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'account:first_name_required' },
+      errorMessage: { minLength: 'account:given_name_required' },
     },
-    lastName: {
+    family_name: {
       type: 'string',
       minLength: 1,
-      errorMessage: { minLength: 'account:last_name_required' },
+      errorMessage: { minLength: 'account:family_name_required' },
     },
     password: {
       type: 'string',
@@ -70,8 +70,8 @@ const schema = {
   },
   required: [
     'email',
-    'firstName',
-    'lastName',
+    'given_name',
+    'family_name',
     'password',
     'passwordConfirmation',
     'gdprConfirmation',
@@ -90,8 +90,8 @@ const RegisterForm = ({ onSubmit, error }: Props) => {
     schema,
     defaultValues: {
       email: '',
-      firstName: '',
-      lastName: '',
+      family_name: '',
+      given_name: '',
       password: '',
       passwordConfirmation: '',
       gdprConfirmation: true,
@@ -105,9 +105,8 @@ const RegisterForm = ({ onSubmit, error }: Props) => {
       onSubmit={handleSubmit((data: Data) => {
         const userData: UserData = {
           email: data.email,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          marketingConfirmation: data.marketingConfirmation,
+          given_name: data.given_name,
+          family_name: data.family_name,
         }
 
         return onSubmit(data.email, data.password, userData)
@@ -130,28 +129,28 @@ const RegisterForm = ({ onSubmit, error }: Props) => {
         )}
       />
       <Controller
-        name="firstName"
+        name="given_name"
         control={control}
         render={({ field }) => (
           <InputField
             required
-            label={t('first_name_label')}
-            placeholder={t('first_name_placeholder')}
+            label={t('given_name_label')}
+            placeholder={t('given_name_placeholder')}
             {...field}
-            errorMessage={errors.firstName}
+            errorMessage={errors.given_name}
           />
         )}
       />
       <Controller
-        name="lastName"
+        name="family_name"
         control={control}
         render={({ field }) => (
           <InputField
             required
-            label={t('last_name_label')}
-            placeholder={t('last_name_placeholder')}
+            label={t('family_name_label')}
+            placeholder={t('family_name_placeholder')}
             {...field}
-            errorMessage={errors.lastName}
+            errorMessage={errors.family_name}
           />
         )}
       />

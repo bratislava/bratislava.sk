@@ -3,6 +3,7 @@ import {
   CognitoUser,
   CognitoUserAttribute,
   CognitoUserPool,
+  ISignUpResult,
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
@@ -18,9 +19,8 @@ export interface UserData {
   sub?: string
   email_verified?: string
   email?: string
-  firstName?: string
-  lastName?: string
-  marketingConfirmation?: boolean
+  given_name?: string
+  family_name?: string
 }
 
 const poolData = {
@@ -30,36 +30,42 @@ const poolData = {
 const userPool = new CognitoUserPool(poolData)
 
 export default function useAccount() {
-  const [user, setUser] = useState<CognitoUser | null>(userPool.getCurrentUser())
+  const [user, setUser] = useState<CognitoUser | null>(null)
   const [error, setError] = useState<AWSError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
   const [userData, setUserData] = useState<UserData | null>(null)
 
+  const setAttributes = (attributes?: CognitoUserAttribute[]) => {
+    if (attributes) {
+      const data: any = {}
+      attributes.forEach((attribute: CognitoUserAttribute) => {
+        data[attribute.getName()] = attribute.getValue()
+      })
+      console.log(data)
+      setUserData(data)
+    }
+  }
+
   useEffect(() => {
-    if (user != null) {
-      user.getSession((err: Error) => {
+    const currentUser = userPool.getCurrentUser()
+    if (currentUser != null) {
+      currentUser.getSession((err: Error) => {
         if (err) {
           console.error(err)
           return
         }
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
-        user.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
+        currentUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
             console.error(err)
-            return
-          }
-
-          if (attributes) {
-            const data: any = {}
-            attributes.forEach((attribute: CognitoUserAttribute) => {
-              data[attribute.getName()] = attribute.getValue()
-            })
-            setUserData(data)
+          } else {
+            setAttributes(attributes)
+            setUser(currentUser)
           }
         })
       })
     }
-  }, [user])
+  }, [])
 
   const logout = () => {
     if (user) {
@@ -69,7 +75,31 @@ export default function useAccount() {
   }
 
   const signUp = (email: string, password: string, data: UserData) => {
-    console.log(data)
+    const attributeList: CognitoUserAttribute[] = []
+    Object.keys(data).forEach((key: string) => {
+      const attribute = new CognitoUserAttribute({
+        Name: key,
+        Value: data[key].toString(),
+      })
+      attributeList.push(attribute)
+    })
+
+    setError(null)
+    return new Promise((resolve) => {
+      userPool.signUp(email, password, attributeList, [], (err: Error, result: ISignUpResult) => {
+        if (err) {
+          console.error(err.message)
+          setError({ ...(err as AWSError) })
+          resolve(false)
+        } else {
+          const cognitoUser = result.user
+          console.log(cognitoUser.getUsername())
+          console.log(result.user)
+          setUser(cognitoUser)
+          resolve(true)
+        }
+      })
+    })
   }
 
   const confirmPassword = (verificationCode: string, password: string) => {
@@ -164,8 +194,16 @@ export default function useAccount() {
             }
           })
 
-          setUser(cognitoUser)
-          resolve(true)
+          cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
+            if (err) {
+              setError({ ...(err as AWSError) })
+              resolve(false)
+            } else {
+              setAttributes(attributes)
+              setUser(cognitoUser)
+              resolve(true)
+            }
+          })
         },
 
         onFailure(err: AWSError) {
