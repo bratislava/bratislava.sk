@@ -31,12 +31,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { error, status } = useAccount()
+  const { signUp, error, status } = useAccount()
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
         <AccountContainer>
-          {status === AccountStatus.Idle && <RegisterForm onSubmit={console.log} error={error} />}
+          {status === AccountStatus.Idle && <RegisterForm onSubmit={signUp} error={error} />}
         </AccountContainer>
       </LoginRegisterLayout>
     </PageWrapper>

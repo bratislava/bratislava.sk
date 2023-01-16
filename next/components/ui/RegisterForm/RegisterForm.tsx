@@ -1,3 +1,4 @@
+import { UserData } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
@@ -21,7 +22,7 @@ interface Data {
 }
 
 interface Props {
-  onSubmit: (data: any) => void
+  onSubmit: (email: string, password: string, userData: UserData) => void
   error?: AWSError | null | undefined
 }
 
@@ -102,7 +103,14 @@ const RegisterForm = ({ onSubmit, error }: Props) => {
     <form
       className="flex flex-col space-y-6"
       onSubmit={handleSubmit((data: Data) => {
-        onSubmit(data)
+        const userData: UserData = {
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          marketingConfirmation: data.marketingConfirmation,
+        }
+
+        return onSubmit(data.email, data.password, userData)
       })}
     >
       <h1 className="text-h3">{t('register_title')}</h1>

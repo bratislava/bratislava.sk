@@ -1,4 +1,9 @@
-import { AuthenticationDetails, CognitoUser, CognitoUserPool } from 'amazon-cognito-identity-js'
+import {
+  AuthenticationDetails,
+  CognitoUser,
+  CognitoUserAttribute,
+  CognitoUserPool,
+} from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
 import { useEffect, useState } from 'react'
@@ -9,6 +14,15 @@ export enum AccountStatus {
   Success,
 }
 
+export interface UserData {
+  sub?: string
+  email_verified?: string
+  email?: string
+  firstName?: string
+  lastName?: string
+  marketingConfirmation?: boolean
+}
+
 const poolData = {
   UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
   ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
@@ -16,20 +30,46 @@ const poolData = {
 const userPool = new CognitoUserPool(poolData)
 
 export default function useAccount() {
-  const [user, setUser] = useState<CognitoUser | null>(null)
+  const [user, setUser] = useState<CognitoUser | null>(userPool.getCurrentUser())
   const [error, setError] = useState<AWSError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
+  const [userData, setUserData] = useState<UserData | null>(null)
 
   useEffect(() => {
-    const currentUser = userPool.getCurrentUser()
-    setUser(currentUser)
-  }, [])
+    if (user != null) {
+      user.getSession((err: Error) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        // NOTE: getSession must be called to authenticate user before calling getUserAttributes
+        user.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+
+          if (attributes) {
+            const data: any = {}
+            attributes.forEach((attribute: CognitoUserAttribute) => {
+              data[attribute.getName()] = attribute.getValue()
+            })
+            setUserData(data)
+          }
+        })
+      })
+    }
+  }, [user])
 
   const logout = () => {
     if (user) {
       user.signOut()
       setUser(null)
     }
+  }
+
+  const signUp = (email: string, password: string, data: UserData) => {
+    console.log(data)
   }
 
   const confirmPassword = (verificationCode: string, password: string) => {
@@ -162,5 +202,5 @@ export default function useAccount() {
     })
   }
 
-  return { login, logout, user, error, forgotPassword, confirmPassword, status }
+  return { login, logout, user, error, forgotPassword, confirmPassword, status, userData, signUp }
 }
