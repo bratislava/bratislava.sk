@@ -1,9 +1,8 @@
 import { ArrowLeft } from '@assets/images'
+import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-
-import { Brand } from '../Brand/Brand'
 
 interface IProps {
   className?: string

@@ -1,6 +1,6 @@
 import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
-import AccountNavBar from '@bratislava/ui-bratislava/AccountNavBar/AccountNavBar'
 import cx from 'classnames'
+import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
 
 interface LoginRegisterLayoutProps {
