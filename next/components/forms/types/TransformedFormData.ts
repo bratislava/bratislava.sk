@@ -1,6 +1,6 @@
 export interface StepData {
   title: string
-  key?: string
+  stepKey?: string
   isFilled?: boolean
   fields?: []
 }
