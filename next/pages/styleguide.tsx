@@ -10,6 +10,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import AccordionShowCase from '../components/styleguide/showcases/AccordionShowCase'
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
+import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGroupedShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
@@ -22,6 +23,7 @@ import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldS
 import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
+import SummaryRowShowCase from '../components/styleguide/showcases/SummaryRowShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
@@ -59,6 +61,8 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <CheckboxGroupShowCase />
         <RadioButtonShowCase />
         <StepperShowCase />
+        <SummaryRowShowCase />
+        <BannerShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )
