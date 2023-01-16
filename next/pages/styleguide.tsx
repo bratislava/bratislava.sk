@@ -23,6 +23,7 @@ import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldS
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
+import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
 import SummaryRowShowCase from '../components/styleguide/showcases/SummaryRowShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
@@ -61,6 +62,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <CheckboxGroupShowCase />
         <RadioButtonShowCase />
         <FieldGroupsShowCase />
+        <StepperShowCase />
         <SummaryRowShowCase />
         <BannerShowCase />
       </StyleGuideWrapper>
