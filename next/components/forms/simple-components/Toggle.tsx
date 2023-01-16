@@ -12,8 +12,9 @@ type ToggleBase = {
   isReadOnly?: boolean
   defaultSelected?: boolean
   isSelected?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
   value: string
+  onChange?: (isSelected: boolean) => void
 }
 
 const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
@@ -30,7 +31,7 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
   const toggleContainer = cx('group flex flex-row items-center p-0 gap-4 select-none', {
     'opacity-50 cursor-not-allowed': isDisabled,
   })
-  const labelStyle = cx('select-none not-italic text-20 leading-8 text-gray-700 ml-16', {})
+  const labelStyle = cx('text-20 select-none not-italic leading-8 text-gray-700 ml-16', {})
 
   const togglerContainer = cx('absolute w-12 h-6 rounded-full items-center justify-center', {
     'bg-success-700': isSelected,
