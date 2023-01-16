@@ -28,6 +28,10 @@
       "ui:widget": "InputField",
       "ui:label": false,
       "ui:placeholder": "First Name",
+      "ui:markdown": {
+        "title": "Header name",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "tooltip": "First name hint",
         "resetIcon": true,

@@ -5,8 +5,11 @@ import InputField from 'components/forms/widget-components/InputField/InputField
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
+import Accordion from '../simple-components/Accordion'
+
 type InputFieldRJSFOptions = {
   type?: 'text' | 'password'
+  markdown?: { title: string; content: string }
   resetIcon?: boolean
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   size?: 'large' | 'default' | 'small'
@@ -40,6 +43,7 @@ const InputFieldWidgetRJSF = ({
     className,
     resetIcon,
     leftIcon,
+    markdown,
     explicitOptional,
     type,
     size = 'default',
@@ -51,7 +55,7 @@ const InputFieldWidgetRJSF = ({
 
   return (
     <WidgetWrapper
-      className={cx({
+      className={cx('flex flex-col gap-4', {
         'w-full': size === 'large',
         'max-w-[388px]': size === 'default',
         'max-w-[200px]': size === 'small',
@@ -75,6 +79,13 @@ const InputFieldWidgetRJSF = ({
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
       />
+      {markdown &&
+        Object.keys(markdown).length === 2 &&
+        // checking if 'ui:markdown' have title and content property
+        markdown.title &&
+        markdown.content && (
+          <Accordion size="sm" title={markdown.title} shadow markdownContent={markdown.content} />
+        )}
     </WidgetWrapper>
   )
 }
