@@ -15,15 +15,17 @@ interface UploadWidgetRJSFProps extends WidgetProps {
   value: string | string[]
   disabled?: boolean
   multiple?: boolean
-  onChange: (value: string | string[]) => void
+  onChange: (value?: string | string[]) => void
+  rawErrors?: string[]
 }
 
 const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
-  const { options, schema, label, required, value, disabled, onChange } = props
+  const { options, schema, label, required, value, disabled, onChange, rawErrors } = props
 
   const {
     size,
     accept,
+    description,
     type = 'button',
     className,
     spaceBottom = 'small',
@@ -64,7 +66,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
     if (!files[0]?.isUploading && !files[0]?.errorMessage) {
       onChange(files[0]?.file.name)
     } else {
-      onChange('')
+      onChange()
     }
   }
 
@@ -75,7 +77,11 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         chosenFileNames.push(minioFile.file.name)
       }
     })
-    onChange(chosenFileNames)
+    if (chosenFileNames.length > 0) {
+      onChange(chosenFileNames)
+    } else {
+      onChange()
+    }
   }
 
   const handleOnChange = (files: UploadMinioFile[]) => {
@@ -90,12 +96,14 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   return (
     <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <Upload
+        errorMessage={rawErrors}
         type={type}
         label={label}
         required={required}
         multiple={multiple}
         value={innerValue}
         className={className}
+        description={description}
         sizeLimit={size}
         supportedFormats={supportedFormats}
         disabled={disabled}

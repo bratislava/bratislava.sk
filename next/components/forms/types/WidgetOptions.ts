@@ -4,7 +4,7 @@ export type WidgetOptions = {
   tooltip?: string
   description?: string
   className?: string
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   spaceBottom?: FormSpacingType
   spaceTop?: FormSpacingType
 }

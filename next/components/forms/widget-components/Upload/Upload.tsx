@@ -1,6 +1,7 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { deleteFile, uploadFile } from '@backend/services/minio'
 import cx from 'classnames'
+import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
 import { v4 as createUuid } from 'uuid'
 
@@ -16,11 +17,13 @@ interface UploadProps {
   required?: boolean
   multiple?: boolean
   value?: UploadMinioFile[]
+  description?: string
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]
   className?: string
   onChange?: (value: UploadMinioFile[]) => void
+  errorMessage?: string[]
 }
 
 const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
@@ -33,11 +36,13 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
     required,
     multiple,
     value,
+    description,
     disabled,
     sizeLimit,
     supportedFormats,
     className,
     onChange,
+    errorMessage,
   }: UploadProps = props
 
   // STATES
@@ -181,7 +186,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       className={cx('select-none w-fit h-fit', className)}
       style={{ transition: '0.2 all linear' }}
     >
-      <UploadFieldHeader label={label ?? ''} required={required} />
+      <UploadFieldHeader label={label ?? ''} required={required} description={description} />
       {
         /* UPLOAD AREA */
         type === 'button' ? (
@@ -210,6 +215,7 @@ const UploadComponent: ForwardRefRenderFunction<HTMLDivElement, UploadProps> = (
       }
       <UploadBrokenMessages fileBrokenMessages={fileBrokenMessages} />
       <UploadedFilesList allFiles={value} handleOnRemoveFile={handleOnRemoveFile} />
+      {!disabled && <FieldErrorMessage errorMessage={errorMessage} />}
     </section>
   )
 }

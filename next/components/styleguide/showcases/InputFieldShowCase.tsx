@@ -12,8 +12,13 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
       <Stack direction="column">
         <InputField label="Label" placeholder="Placeholder" />
         <InputField label="Label" placeholder="Placeholder" value="Value" />
-        <InputField label="Label" placeholder="Placeholder" errorMessage="Error message" />
-        <InputField label="Label" placeholder="Placeholder" errorMessage="Error message" disabled />
+        <InputField label="Label" placeholder="Placeholder" errorMessage={['Error message']} />
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          errorMessage={['Error message']}
+          disabled
+        />
       </Stack>
       <Stack direction="column">
         <InputField
@@ -21,7 +26,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          required
+          explicitOptional="right"
         />
         <InputField
           label="Label"
@@ -37,7 +42,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           description="Help text"
           tooltip="InputField"
           required
-          errorMessage="Error message"
+          errorMessage={['Error message']}
         />
         <InputField
           label="Label"
@@ -45,7 +50,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           description="Help text"
           tooltip="InputField"
           required
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>
@@ -75,7 +80,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           tooltip="InputField"
           leftIcon="lock"
           resetIcon
-          errorMessage="Error message"
+          errorMessage={['Error message']}
         />
         <InputField
           label="Label"
@@ -84,7 +89,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           tooltip="InputField"
           leftIcon="person"
           resetIcon
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>

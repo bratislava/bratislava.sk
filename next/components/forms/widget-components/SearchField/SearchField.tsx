@@ -10,12 +10,12 @@ import FieldHeader from '../../info-components/FieldHeader'
 interface InputBase {
   label: string
   placeholder: string
-  errorMessage?: string
+  errorMessage?: string[]
   description?: string
   className?: string
   value?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
@@ -25,7 +25,7 @@ interface InputBase {
 const SearchField = ({
   label,
   placeholder,
-  errorMessage,
+  errorMessage = [],
   description,
   tooltip,
   required,
@@ -63,7 +63,7 @@ const SearchField = ({
       'hover:border-gray-400': !disabled,
 
       // error
-      'border-error hover:border-error focus:border-error': errorMessage && !disabled,
+      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
 
       // disabled
       'border-gray-300 bg-gray-100': disabled,

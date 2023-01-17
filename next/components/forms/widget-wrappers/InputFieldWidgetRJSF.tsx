@@ -1,5 +1,4 @@
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import cx from 'classnames'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
@@ -16,23 +15,23 @@ interface InputFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: InputFieldRJSFOptions
   value: string
-  errorMessage?: string
   required?: boolean
   disabled?: boolean
   placeholder?: string
   schema: StrictRJSFSchema
   onChange: (value?: string) => void
+  rawErrors?: string[]
 }
 
 const InputFieldWidgetRJSF = ({
   label,
   options,
   placeholder = '',
-  errorMessage,
   required,
   value,
   disabled,
   onChange,
+  rawErrors,
 }: InputFieldWidgetRJSFProps) => {
   const {
     description,
@@ -50,21 +49,13 @@ const InputFieldWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper
-      className={cx({
-        'w-full': size === 'large',
-        'max-w-[388px]': size === 'default',
-        'max-w-[200px]': size === 'small',
-      })}
-      spaceBottom={spaceBottom}
-      spaceTop={spaceTop}
-    >
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}
         placeholder={placeholder}
         value={value}
-        errorMessage={errorMessage}
+        errorMessage={rawErrors}
         required={required}
         disabled={disabled}
         description={description}
@@ -74,6 +65,7 @@ const InputFieldWidgetRJSF = ({
         leftIcon={leftIcon}
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
+        size={size}
       />
     </WidgetWrapper>
   )

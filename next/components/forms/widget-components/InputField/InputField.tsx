@@ -14,17 +14,19 @@ interface InputBase {
   label: string
   type?: 'text' | 'password'
   placeholder: string
-  errorMessage?: string
+  errorMessage?: string[]
   description?: string
   className?: string
   value?: string
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
+  size?: 'large' | 'default' | 'small'
+  endIcon?: ReactNode
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
@@ -33,7 +35,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       label,
       type,
       placeholder,
-      errorMessage,
+      errorMessage = [],
       description,
       tooltip,
       required,
@@ -43,7 +45,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       leftIcon,
       resetIcon,
       className,
+      size,
       onChange,
+      endIcon,
       ...rest
     },
     ref,
@@ -75,7 +79,6 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       },
       ref as RefObject<HTMLInputElement>,
     )
-
     const leftIconSwitcher = (icon: string): ReactNode | null => {
       switch (icon) {
         case 'person':
@@ -107,15 +110,20 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'hover:border-gray-400': !disabled,
 
         // error
-        'border-error hover:border-error focus:border-error': errorMessage && !disabled,
+        'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
 
         // disabled
         'border-gray-300 bg-gray-100': disabled,
       },
     )
-
     return (
-      <div className="flex w-full flex-col">
+      <div
+        className={cx('flex w-full flex-col', {
+          'w-full': size === 'large',
+          'max-w-[388px]': size === 'default',
+          'max-w-[200px]': size === 'small',
+        })}
+      >
         <FieldHeader
           label={label}
           labelProps={labelProps}
@@ -147,6 +155,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               <ResetIcon />
             </button>
           )}
+          {endIcon}
         </div>
         {!disabled && (
           <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />

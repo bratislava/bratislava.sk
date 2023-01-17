@@ -1,8 +1,6 @@
 import cx from 'classnames'
-import padStart from 'lodash/padStart'
-import { ReactNode, useEffect, useRef, useState } from 'react'
-import { useLocale, useTimeField } from 'react-aria'
-import { useTimeFieldState } from 'react-stately'
+import React, { ReactNode, RefObject, useEffect, useRef, useState } from 'react'
+import { useTextField } from 'react-aria'
 
 import FieldHeader from '../../info-components/FieldHeader'
 
@@ -11,13 +9,16 @@ type TimeFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   children?: ReactNode
   disabled?: boolean
-  errorMessage?: string
+  errorMessage?: string[]
   hour: string
   minute: string
   isOpen: boolean
+  onChange?: (value?: string) => void
+  value?: string
+  setIsInputEdited?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const TimeField = ({
@@ -28,71 +29,59 @@ const TimeField = ({
   explicitOptional,
   children,
   disabled,
-  errorMessage = '',
+  errorMessage = [],
   hour,
   minute,
+  onChange,
+  value = '',
   isOpen,
+  setIsInputEdited,
   ...rest
 }: TimeFieldBase) => {
-  const { locale } = useLocale()
   const [inputValue, setInputValue] = useState<string>('')
-  // const [errorMessageState, setErrorMessageState] = useState<string>(errorMessage || '')
-  const ref = useRef<HTMLDivElement>(null)
-  // const INVALID_ERROR_MESSAGE = 'Invalid date format'
+  const ref = useRef<HTMLInputElement>(null)
 
-  const state = useTimeFieldState({
-    label,
-    description,
-    isRequired: required,
-    isDisabled: disabled,
-    errorMessage,
-    ...rest,
-    locale,
-  })
+  useEffect(() => {
+    setInputValue(onChange ? value : inputValue)
+  }, [inputValue, onChange, value])
 
-  const { labelProps, fieldProps, descriptionProps } = useTimeField(
+  const { labelProps, inputProps, descriptionProps } = useTextField(
     {
       label,
       description,
+      placeholder: 'HH:MM',
       isRequired: required,
       isDisabled: disabled,
+      value: onChange && value ? value : inputValue,
+      onChange(val) {
+        setIsInputEdited?.(true)
+        if (onChange) {
+          onChange(val)
+        } else {
+          setInputValue(val)
+        }
+      },
       errorMessage,
       ...rest,
     },
-    state,
-    ref,
+    ref as RefObject<HTMLInputElement>,
   )
   const timeFieldStyle = cx(
-    'w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 text-20 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
+    'text-20 w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
     {
       'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
-      'border-error focus:border-error focus-visible:outline-none hover:border-error': errorMessage,
+      'border-error focus:border-error focus-visible:outline-none hover:border-error':
+        errorMessage?.length > 0,
       'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
-      'border-gray-700': isOpen && !disabled && !errorMessage,
+      'border-gray-700': isOpen && !disabled && !(errorMessage?.length > 0),
     },
   )
-
-  useEffect(() => {
-    setInputValue(
-      // eslint-disable-next-line lodash-fp/no-extraneous-args
-      `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${
-        minute ? padStart(minute, 2, '0') : ''
-      }`,
-    )
-  }, [hour, minute])
-
-  // Validation
-  // useEffect(() => {
-  //   const isValideFormate = (): boolean =>
-  //     !inputValue || /^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(inputValue)
-  //   if (!isOpen) setErrorMessageState(isValideFormate() ? errorMessage : INVALID_ERROR_MESSAGE)
-  // }, [errorMessage, inputValue, isOpen])
 
   return (
     <>
       <FieldHeader
         label={label || ''}
-        htmlFor={fieldProps.id}
+        htmlFor={inputProps.id}
         labelProps={labelProps}
         tooltip={tooltip}
         description={description}
@@ -101,14 +90,7 @@ const TimeField = ({
         explicitOptional={explicitOptional}
       />
       <div className="relative">
-        <input
-          className={timeFieldStyle}
-          type="text"
-          name={fieldProps.id}
-          value={inputValue}
-          placeholder="HH:MM"
-          onChange={(e) => setInputValue(e.target.value)}
-        />
+        <input {...inputProps} className={timeFieldStyle} ref={ref} name={inputProps.id} />
         <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">
           {children}
         </div>

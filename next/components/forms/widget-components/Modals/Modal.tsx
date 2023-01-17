@@ -162,9 +162,9 @@ const Modal = ({
 }: ModalBase) => {
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0)
 
-  useEffect(() => {
-    document.body.style.overflow = show ? 'hidden' : ''
-  }, [show])
+  // useEffect(() => {
+  //   document.body.style.overflow = show ? 'hidden' : ''
+  // }, [show])
 
   if (!show) {
     return null
@@ -172,7 +172,8 @@ const Modal = ({
 
   return (
     <div
-      className="fixed inset-1 z-10 flex items-center justify-center"
+      className="h-full fixed w-full z-10 top-0 flex items-center justify-center"
+      style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={() => {
         setCurrentScreenIndex(0)
         onClose()
