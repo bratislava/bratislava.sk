@@ -30,16 +30,7 @@ const RadioGroup = (props: RadioGroupBase) => {
         {props.label}
       </span>
       <RadioContext.Provider value={state}>
-        <div
-          className={className}
-          style={{
-            display: 'grid',
-            margin: '0 auto',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 2fr))',
-          }}
-        >
-          {children}
-        </div>
+        <div className={className}>{children}</div>
       </RadioContext.Provider>
       {!props.isDisabled && (
         <FieldErrorMessage

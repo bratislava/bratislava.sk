@@ -8,14 +8,13 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed"
       }
     },
     "ziadatelMenoPriezvisko": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Meno a priezvisko",
       "ui:options": {
         "size": "large"
       }
@@ -23,20 +22,17 @@
     "ziadatelObchodneMeno": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Obchodné meno",
       "ui:options": {
         "size": "large"
       }
     },
     "ziadatelIco": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "IČO"
+      "ui:label": false
     },
     "ziadatelAdresaPobytu": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Adresa trvalého pobytu",
       "ui:options": {
         "size": "large"
       }
@@ -44,7 +40,6 @@
     "ziadatelMesto": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Mesto",
       "ui:options": {
         "size": "large"
       }
@@ -52,7 +47,6 @@
     "ziadatelMiestoPodnikania": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Miesto podnikania",
       "ui:options": {
         "size": "large"
       }
@@ -60,7 +54,6 @@
     "ziadatelAdresaSidla": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Adresa sídla",
       "ui:options": {
         "size": "large"
       }
@@ -68,7 +61,6 @@
     "ziadatelPsc": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "PSČ",
       "ui:options": {
         "size": "small"
       }
@@ -76,7 +68,6 @@
     "ziadatelKontaktnaOsoba": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Kontaktná osoba",
       "ui:options": {
         "size": "large"
       }
@@ -84,15 +75,13 @@
     "ziadatelEmail": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "E-mail",
       "ui:options": {
         "size": "large"
       }
     },
     "ziadatelTelefon": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Telefónne číslo"
+      "ui:label": false
     }
   },
   "investor": {
@@ -101,7 +90,7 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex gap-4",
         "variant": "boxed"
       }
     },
@@ -109,6 +98,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "nahrajte splnomocnenie od investora",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "button"
@@ -118,14 +108,13 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed"
       }
     },
     "investorMenoPriezvisko": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Meno a priezvisko",
       "ui:options": {
         "size": "large"
       }
@@ -133,20 +122,17 @@
     "investorObchodneMeno": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Obchodné meno",
       "ui:options": {
         "size": "large"
       }
     },
     "investorIco": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "IČO"
+      "ui:label": false
     },
     "investorAdresaPobytu": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Adresa trvalého pobytu",
       "ui:options": {
         "size": "large"
       }
@@ -154,7 +140,6 @@
     "investorMiestoPodnikania": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Miesto podnikania",
       "ui:options": {
         "size": "large"
       }
@@ -162,7 +147,6 @@
     "investorAdresaSidla": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Adresa sídla",
       "ui:options": {
         "size": "large"
       }
@@ -170,7 +154,6 @@
     "investorMesto": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Mesto",
       "ui:options": {
         "size": "large"
       }
@@ -178,7 +161,6 @@
     "investorPsc": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "PSČ",
       "ui:options": {
         "size": "small"
       }
@@ -186,7 +168,6 @@
     "investorKontaktnaOsoba": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Kontaktná osoba",
       "ui:options": {
         "size": "large"
       }
@@ -194,15 +175,13 @@
     "investorEmail": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "E-mail",
       "ui:options": {
         "size": "large"
       }
     },
     "investorTelefon": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Telefónne číslo"
+      "ui:label": false
     }
   },
   "projektant": {
@@ -210,7 +189,6 @@
     "projektantMenoPriezvisko": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Meno a priezvisko",
       "ui:options": {
         "size": "large"
       }
@@ -218,20 +196,17 @@
     "projektantEmail": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "E-mail",
       "ui:options": {
         "size": "large"
       }
     },
     "projektantTelefon": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Telefónne číslo"
+      "ui:label": false
     },
     "autorizacneOsvedcenie": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Číslo autorizačného osvedčenia",
       "ui:options": {
         "tooltip": "Autorizačné osvedčenie dokazuje, že projektant je oprávnený na výkon svojej činnosti. Nie je potrebné pri vypracovaní dokumentácie k jednoduchým / drobným stavbám, kde postačuje osoba s odborným vzdelaním. "
       }
@@ -246,7 +221,6 @@
     "stavbaNazov": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Názov stavby/projektu",
       "ui:options": {
         "size": "large"
       }
@@ -255,27 +229,24 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed"
       }
     },
     "stavbaUlica": {
       "ui:widget": "InputField",
       "ui:label": false,
-      "ui:placeholder": "Ulica",
       "ui:options": {
         "size": "large"
       }
     },
     "stavbaSupisneCislo": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Súpisné číslo"
+      "ui:label": false
     },
     "stavbaParcela": {
       "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:placeholder": "Parcelné číslo"
+      "ui:label": false
     },
     "stavbaKataster": {
       "ui:widget": "SelectField",
@@ -292,7 +263,7 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-col gap-4 mt-4",
         "variant": "boxed"
       }
     },
@@ -300,7 +271,7 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4",
+        "className": "flex flex-col gap-4 mt-4",
         "variant": "boxed"
       }
     },
@@ -317,6 +288,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "napr. vydané stavebné povolenie, stanoviská hlavného mesta",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "button"
@@ -329,6 +301,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -338,6 +311,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "pešie ťahy, plochy zelene a iné",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -347,6 +321,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "povinné v zastavanom území",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -356,6 +331,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "podľa platnej STN 73 4301 - bytové budovy",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -365,6 +341,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
+        "description": "ak je riešený objekt národnou kultúrnou pamiatkou, resp. ide o novostavbu v pamiatkovej zóne Bratislavy - centrálna mestská oblasť (PZ CMO)",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
