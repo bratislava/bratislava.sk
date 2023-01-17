@@ -54,5 +54,6 @@
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",
   "LimitExceededException": "Skúste to znova neskôr.",
   "UserNotConfirmedException": "E-mail nie je verifikovaný.",
-  "UsernameExistsException": "Zvolený e-mail sa už používa."
+  "UsernameExistsException": "Zvolený e-mail sa už používa.",
+  "ExpiredCodeException": "E-mail a nepodarilo overiť. Skontrolujte správnosť kódu."
 }

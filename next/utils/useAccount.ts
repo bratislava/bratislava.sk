@@ -13,6 +13,7 @@ export enum AccountStatus {
   Idle,
   NewPasswordRequired,
   VerificationRequired,
+  SignedIn,
   Success,
 }
 
@@ -56,9 +57,48 @@ export default function useAccount() {
     return attributeList
   }
 
+  const verify = (verificationCode: string): Promise<boolean> => {
+    setError(null)
+    return new Promise((resolve) => {
+      if (user) {
+        user.confirmRegistration(verificationCode, true, (err?: AWSError) => {
+          if (err) {
+            setError({ ...err })
+            resolve(false)
+          } else {
+            setStatus(AccountStatus.Success)
+            resolve(true)
+          }
+        })
+      } else {
+        resolve(false)
+      }
+    })
+  }
+
+  const resendVerificationCode = (): Promise<boolean> => {
+    setError(null)
+    return new Promise((resolve) => {
+      if (user) {
+        user.resendConfirmationCode((err?: Error, res?: string) => {
+          if (err) {
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          } else {
+            console.log(res)
+            resolve(true)
+          }
+        })
+      } else {
+        resolve(false)
+      }
+    })
+  }
+
   const updateUserData = (data: UserData): Promise<boolean> => {
     const attributeList = objectToUserAttributes(data)
 
+    setError(null)
     return new Promise((resolve) => {
       if (user) {
         user.updateAttributes(attributeList, (err?: Error) => {
@@ -89,8 +129,11 @@ export default function useAccount() {
           if (err) {
             console.error(err)
           } else {
+            console.log(currentUser)
             setUserData(userAttributesToObject(attributes))
+            setStatus(AccountStatus.SignedIn)
             setUser(currentUser)
+            console.log(currentUser)
           }
         })
       })
@@ -101,6 +144,8 @@ export default function useAccount() {
     if (user) {
       user.signOut()
       setUser(null)
+      setUserData(null)
+      setStatus(AccountStatus.Idle)
     }
   }
 
@@ -219,6 +264,7 @@ export default function useAccount() {
                   resolve(false)
                 } else {
                   setUserData(userAttributesToObject(attributes))
+                  setStatus(AccountStatus.SignedIn)
                   setUser(cognitoUser)
                   resolve(true)
                 }
@@ -272,5 +318,7 @@ export default function useAccount() {
     userData,
     updateUserData,
     signUp,
+    verify,
+    resendVerificationCode,
   }
 }

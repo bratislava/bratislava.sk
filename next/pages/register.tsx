@@ -1,7 +1,8 @@
-import RegisterForm from 'components/forms/segments/RegisterForm/RegisterForm'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
+import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
+import RegisterForm from 'components/forms/segments/RegisterForm/RegisterForm'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -31,12 +32,19 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { signUp, error, status } = useAccount()
+  const { signUp, resendVerificationCode, verify, error, status } = useAccount()
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
         <AccountContainer>
           {status === AccountStatus.Idle && <RegisterForm onSubmit={signUp} error={error} />}
+          {status === AccountStatus.VerificationRequired && (
+            <EmailVerificationForm
+              onResend={resendVerificationCode}
+              onSubmit={verify}
+              error={error}
+            />
+          )}
         </AccountContainer>
       </LoginRegisterLayout>
     </PageWrapper>

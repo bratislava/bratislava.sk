@@ -22,7 +22,7 @@ interface Data {
 }
 
 interface Props {
-  onSubmit: (email: string, password: string, userData: UserData) => void
+  onSubmit: (email: string, password: string, userData: UserData) => Promise<any>
   error?: AWSError | null | undefined
 }
 

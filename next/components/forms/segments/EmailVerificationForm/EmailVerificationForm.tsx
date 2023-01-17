@@ -13,8 +13,8 @@ interface Data {
 }
 
 interface Props {
-  onSubmit: (verificationCode: string) => void
-  onResend: () => void
+  onSubmit: (verificationCode: string) => Promise<any>
+  onResend: () => Promise<any>
   error?: AWSError | null | undefined
 }
 
