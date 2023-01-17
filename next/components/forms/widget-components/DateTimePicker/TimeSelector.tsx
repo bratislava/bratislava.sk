@@ -14,6 +14,8 @@ type TimeSelectorBase = {
   minute: string
   onChange?: (value?: string) => void
   value?: string
+  minValue?: string
+  maxValue?: string
   setIsInputEdited?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -29,10 +31,14 @@ const TimeSelector = ({
   minute,
   onChange,
   setIsInputEdited,
+  minValue,
+  maxValue,
+  value,
 }: TimeSelectorBase) => {
   const hoursArray = Array.from({ length: HOURS_LIMIT + 1 }, (_, i) => i + 0)
   const minutesArray = Array.from({ length: MINUTES_LIMIT + 1 }, (_, i) => i + 0)
-
+  const minValueArray = minValue?.split(':').map((value) => parseInt(value))
+  const maxValueArray = maxValue?.split(':').map((value) => parseInt(value))
   const hourRef = useRef<HTMLDivElement>(null)
   const minuteRef = useRef<HTMLDivElement>(null)
   const hoursItemRef = useRef<HTMLButtonElement[]>([])
@@ -41,6 +47,7 @@ const TimeSelector = ({
   const timeValueFormat = `${hour ? padStart(hour, 2, '0') : ''}${hour || minute ? ':' : ''}${
     minute ? padStart(minute, 2, '0') : ''
   }`
+  const timeFormatArray = value ? value.split(':').map((value) => parseInt(value)) : [0, 0]
 
   const clickHandler = (
     e: MouseEvent<HTMLButtonElement>,
@@ -69,9 +76,13 @@ const TimeSelector = ({
 
   useDidMount(() => {
     const hoursItemOffset =
-      hoursItemRef && hoursItemRef.current ? hoursItemRef.current[+hour]?.offsetTop : 0
+      hoursItemRef && hoursItemRef.current
+        ? hoursItemRef.current[+timeFormatArray[0]]?.offsetTop
+        : 0
     const minutesItemOffset =
-      minutesItemRef && minutesItemRef.current ? minutesItemRef?.current[+minute]?.offsetTop : 0
+      minutesItemRef && minutesItemRef.current
+        ? minutesItemRef?.current[+timeFormatArray[1]]?.offsetTop
+        : 0
     hourRef?.current?.scrollTo({ top: hoursItemOffset - 125, behavior: 'auto' })
     minuteRef?.current?.scrollTo({ top: minutesItemOffset - 125, behavior: 'auto' })
   })
@@ -95,7 +106,10 @@ const TimeSelector = ({
                     clickHandler(e, 'hour', `${item}`)
                   }}
                   className={cx('cursor-pointer rounded-lg px-10 py-2 focus:outline-none', {
-                    'bg-gray-100': +hour === item,
+                    'bg-gray-100': +timeFormatArray[0] === item,
+                    'opacity-50 pointer-events-none':
+                      (minValueArray && item < minValueArray[0]) ||
+                      (maxValueArray && item > maxValueArray[0]),
                   })}
                 >
                   <span className="flex h-6 w-12 items-center justify-center">
@@ -124,7 +138,13 @@ const TimeSelector = ({
                     clickHandler(e, 'minute', `${item}`)
                   }}
                   className={cx('cursor-pointer rounded-lg px-10 py-2 focus:outline-none', {
-                    'bg-gray-100': +minute === item,
+                    'bg-gray-100': +timeFormatArray[1] === item,
+                    'cursor-pointer pointer-events-auto opacity-100':
+                      (minValueArray && minValueArray[0] < timeFormatArray[0]) ||
+                      (maxValueArray && maxValueArray[0] > timeFormatArray[0]),
+                    'opacity-50 pointer-events-none':
+                      (minValueArray && item < minValueArray[1]) ||
+                      (maxValueArray && item > maxValueArray[1]),
                   })}
                 >
                   <span className="flex h-6 w-12 items-center justify-center">

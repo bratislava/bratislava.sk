@@ -7,6 +7,7 @@ import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-a
 import { useDatePickerState } from 'react-stately'
 
 import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Calendar from './Calendar/Calendar'
 import DateField from './DateField'
 import Popover from './Popover'
@@ -31,15 +32,17 @@ const Button = ({ children, className, ...rest }: ButtonBase) => {
   )
 }
 
-type DatePickerBase = {
+export type DatePickerBase = {
   label?: string
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   errorMessage?: string[]
   value?: string
+  minValue?: string
+  maxValue?: string
   onChange?: (value?: DateValue) => void
 }
 
@@ -54,6 +57,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       tooltip,
       description,
       value = '',
+      minValue,
+      maxValue,
       onChange,
       ...rest
     },
@@ -85,6 +90,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       useDatePicker(
         {
           errorMessage,
+          minValue: minValue ? parseDate(minValue) : undefined,
+          maxValue: maxValue ? parseDate(maxValue) : undefined,
           isDisabled: disabled,
           label,
           ...rest,

@@ -3,13 +3,14 @@ import React, { ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 type TimeFieldBase = {
   label?: string
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string[]
@@ -18,6 +19,7 @@ type TimeFieldBase = {
   isOpen: boolean
   onChange?: (value?: string) => void
   value?: string
+  readOnly?: boolean
   setIsInputEdited?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -36,6 +38,7 @@ const TimeField = ({
   value = '',
   isOpen,
   setIsInputEdited,
+  readOnly,
   ...rest
 }: TimeFieldBase) => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -90,7 +93,13 @@ const TimeField = ({
         explicitOptional={explicitOptional}
       />
       <div className="relative">
-        <input {...inputProps} className={timeFieldStyle} ref={ref} name={inputProps.id} />
+        <input
+          {...inputProps}
+          readOnly={readOnly}
+          className={timeFieldStyle}
+          ref={ref}
+          name={inputProps.id}
+        />
         <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">
           {children}
         </div>

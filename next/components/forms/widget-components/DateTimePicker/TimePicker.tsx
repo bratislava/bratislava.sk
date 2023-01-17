@@ -8,6 +8,7 @@ import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-a
 import { useDatePickerState } from 'react-stately'
 
 import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Popover from './Popover'
 import TimeField from './TimeField'
 import TimeSelector from './TimeSelector'
@@ -33,15 +34,18 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   )
 }
 
-type TimePickerBase = {
+export type TimePickerBase = {
   label?: string
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   errorMessage?: string[]
   value?: string
+  minValue?: string
+  maxValue?: string
+  readOnly?: boolean
   onChange?: (value?: string) => void
 }
 
@@ -57,6 +61,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       description,
       onChange,
       value = '',
+      minValue,
+      maxValue,
+      readOnly = false,
       ...rest
     },
     ref,
@@ -154,6 +161,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               isOpen={state?.isOpen}
               onChange={onChange}
               value={value}
+              readOnly={readOnly}
               setIsInputEdited={setIsInputEdited}
             >
               <Button {...buttonProps} disabled={disabled}>
@@ -178,6 +186,8 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   onSubmit={closeSuccessHandler}
                   onChange={onChange}
                   value={value}
+                  minValue={minValue}
+                  maxValue={maxValue}
                   setIsInputEdited={setIsInputEdited}
                 />
               </Popover>

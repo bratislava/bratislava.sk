@@ -2,6 +2,52 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "mestoPSC": {
+    "ui:field": "doubledInput",
+    "ui:hideError": true,
+    "ui:options": {
+      "FirstInputTooltip": "Mesto tooltip",
+      "FirstInputDescription": "Description",
+      "FirstInputPlaceholder": "placeholder text",
+      "FirstInputRequired": true,
+      "FirstInputResetIcon": true,
+      "FirstInputLeftIcon": "person",
+      "FirstInputExplicitOptional": true,
+      "FirstInputClassNames": "w-full",
+      "SecondInputClassNames": "sm:w-1/4",
+      "className": "w-[600px]"
+    }
+  },
+  "dateTimePicker": {
+    "ui:field": "dateTime",
+    "ui:hideError": true,
+    "ui:options": {
+      "TimeTooltip": "Time tooltip",
+      "DateTooltip": "Time tooltip",
+      "TimeFromDescription": "From desc",
+      "TimeToDescription": "To desc"
+    }
+  },
+  "timeFromTo": {
+    "ui:field": "timeFromTo",
+    "ui:hideError": true,
+    "ui:options": {
+      "TimeFromTooltip": "Time tooltip",
+      "TimeToTooltip": "Time tooltip",
+      "TimeFromDescription": "From desc",
+      "TimeToDescription": "To desc"
+    }
+  },
+  "dateFromTo": {
+    "ui:hideError": true,
+    "ui:field": "dateFromTo",
+    "ui:options": {
+      "DateFromTooltip": "From tooltip",
+      "DateToTooltip": "To tooltip",
+      "DateFromDescription": "From desc",
+      "DateToDescription": "To desc"
+    }
+  },
   "datePicker": {
     "ui:hideError": true,
     "birth": {

@@ -9,23 +9,33 @@ import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
-interface InputBase {
+export type LeftIconVariants = 'person' | 'mail' | 'call' | 'lock'
+export type InputType = 'text' | 'password'
+export type SizeType = 'large' | 'default' | 'small'
+
+export const isLeftIconVariant = (value: string): value is LeftIconVariants => {
+  const list: LeftIconVariants[] = ['person', 'mail', 'call', 'lock']
+  return list.includes(value as LeftIconVariants)
+}
+
+export type InputBase = {
   label: string
-  type?: 'text' | 'password'
+  type?: InputType
   placeholder: string
   errorMessage?: string[]
   description?: string
   className?: string
   value?: string
-  leftIcon?: 'person' | 'mail' | 'call' | 'lock'
+  leftIcon?: LeftIconVariants
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
-  size?: 'large' | 'default' | 'small'
+  size?: SizeType
   endIcon?: ReactNode
 }
 
