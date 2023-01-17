@@ -1,43 +1,28 @@
 import cx from 'classnames'
 
-import TimePicker from '../widget-components/DateTimePicker/TimePicker'
+import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/TimePicker'
 
-type TimePickerBase = {
-  // label
-  TimeFromLabel: string
-  TimeToLabel?: string
-
-  // description
-  TimeFromDescription?: string
-  TimeToDescription?: string
-
-  // tooltip
-  TimeFromTooltip?: string
-  TimeToTooltip?: string
-
-  // required
-  TimeFromRequired?: boolean
-  TimeToRequired?: boolean
-
-  // explicitOptional
-  TimeFromExplicitOptional?: boolean
-  TimeToExplicitOptional?: boolean
-
-  // disabled
-  TimeFromDisabled?: boolean
-  TimeToDisabled?: boolean
-
-  // value
-  TimeFromValue?: string
-  TimeToValue?: string
-
-  // handlers
-  TimeFromOnChange?: (value?: string) => void
-  TimeToOnChange?: (value?: string) => void
-
-  // errors
-  TimeFromErrorMessage?: string[]
-  TimeToErrorMessage?: string[]
+type TimeFromBase = {
+  TimeFromLabel: TimePickerBase['label']
+  TimeFromDescription?: TimePickerBase['description']
+  TimeFromTooltip?: TimePickerBase['tooltip']
+  TimeFromRequired?: TimePickerBase['required']
+  TimeFromExplicitOptional?: TimePickerBase['explicitOptional']
+  TimeFromDisabled?: TimePickerBase['disabled']
+  TimeFromValue?: TimePickerBase['value']
+  TimeFromOnChange?: TimePickerBase['onChange']
+  TimeFromErrorMessage?: TimePickerBase['errorMessage']
+}
+type TimeToBase = {
+  TimeToLabel: TimePickerBase['label']
+  TimeToDescription?: TimePickerBase['description']
+  TimeToTooltip?: TimePickerBase['tooltip']
+  TimeToRequired?: TimePickerBase['required']
+  TimeToExplicitOptional?: TimePickerBase['explicitOptional']
+  TimeToDisabled?: TimePickerBase['disabled']
+  TimeToValue?: TimePickerBase['value']
+  TimeToOnChange?: TimePickerBase['onChange']
+  TimeToErrorMessage?: TimePickerBase['errorMessage']
 }
 
 export const TimeFromTo = ({
@@ -59,7 +44,7 @@ export const TimeFromTo = ({
   TimeToValue,
   TimeFromErrorMessage,
   TimeToErrorMessage,
-}: TimePickerBase) => {
+}: TimeFromBase & TimeToBase) => {
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
       <div className="items-left flex lg:flex-row flex-col gap-4">

@@ -42,7 +42,9 @@
       "InputPlaceholder": "Type...",
       "SelectPlaceholder": "Vybrať",
       "addNew": "Pridať ďalší riadok",
-      "SelectDropdownDivider": true
+      "SelectDropdownDivider": true,
+      "InputClassName": "sm:w-[150px]",
+      "SelectClassName": "sm:w-[400px]"
     }
   },
   "textareaUpload": {

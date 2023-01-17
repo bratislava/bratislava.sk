@@ -8,6 +8,7 @@ import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-a
 import { useDatePickerState } from 'react-stately'
 
 import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Popover from './Popover'
 import TimeField from './TimeField'
 import TimeSelector from './TimeSelector'
@@ -38,7 +39,7 @@ export type TimePickerBase = {
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   errorMessage?: string[]
   value?: string

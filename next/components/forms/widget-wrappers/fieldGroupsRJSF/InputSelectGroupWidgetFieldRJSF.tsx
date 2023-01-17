@@ -4,6 +4,7 @@ import { useEffectOnce } from 'usehooks-ts'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputSelectGroup } from '../../groups'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import { isLeftIconVariant, LeftIconVariants } from '../../widget-components/InputField/InputField'
 
 type mainObjectType = {
@@ -33,17 +34,9 @@ const InputSelectGroupWidgetFieldRJSF = ({
     }?.properties as unknown as Record<string, { title: string; type: string }>),
   }
   const keys = Object.keys(schemaProperties)
+  const localUiSchema = uiSchema?.['ui:options']
 
-  const uiSchemaObject = {
-    ...(uiSchema && (uiSchema['ui:options'] as Record<string, string | number | boolean>)),
-  }
-
-  const type =
-    {
-      ...(schemaProperties[keys[1]] as unknown as Record<string, string>),
-    }.type === 'array'
-      ? 'multiple'
-      : 'one'
+  const type = schemaProperties[keys[1]].type === 'array' ? 'multiple' : 'one'
 
   const enumOptions = {
     ...(schemaProperties[keys[1]] as unknown as Record<string, Array<EnumOptionsType>>),
@@ -91,6 +84,10 @@ const InputSelectGroupWidgetFieldRJSF = ({
 
   const getTransformMultipleData = (): mainObjectType[] => {
     // have a problem while doing this with spread operator, so another easy way was to use stringify -> parse. Problem: [...formData]
+    // DO NOT CHANGE THIS JSON PARSE STRINGIFY LOGIC, IT WORKS VERY STRANGE, ANY OTHER LIBRARIES/WAYS TO COPY OBJECT DON'T WORK
+    // FOR SOME REASON IF WE WANT USE DIRECTLY handleTransformMultiple FUNCTION RESULT, WE WILL GET SELECT OBJECT DATA ARRAY ONLY WITH VALUE PROPERTIES,
+    // I DON'T KNOW HOW, BUT IF WE ARE DOING (JSON PARSE STRINGIFY) LOGIC IT RETURNS AN OBJECT WITH {title: string, selectField: PROP<type>}
+    // I FOUND THE SAME LOGIC IN upload-file.ts, SO IT'S OK TO USE THIS METHOD
     const valueData: TransformDataType[] = JSON.parse(JSON.stringify(handleTransformMultiple()))
 
     // checking if array object is empty, if yes -> return first row of data, as a default value
@@ -107,6 +104,10 @@ const InputSelectGroupWidgetFieldRJSF = ({
 
   const getTransformSingleData = (): mainObjectType[] => {
     // have a problem while doing this with spread operator, so another easy way was to use stringify -> parse. Problem: [...formData]
+    // DO NOT CHANGE THIS JSON PARSE STRINGIFY LOGIC, IT WORKS VERY STRANGE, ANY OTHER LIBRARIES/WAYS TO COPY OBJECT DON'T WORK
+    // FOR SOME REASON IF WE WANT USE DIRECTLY handleTransformMultiple FUNCTION RESULT, WE WILL GET SELECT OBJECT DATA ARRAY ONLY WITH VALUE PROPERTIES,
+    // I DON'T KNOW HOW, BUT IF WE ARE DOING (JSON PARSE STRINGIFY) LOGIC IT RETURNS AN OBJECT WITH {title: string, selectField: PROP<type>}
+    // I FOUND THE SAME LOGIC IN upload-file.ts, SO IT'S OK TO USE THIS METHOD
     const valueData: TransformDataType[] = JSON.parse(JSON.stringify(handleTransformOne()))
 
     // checking if array object is empty, if yes -> return first row of data, as a default value
@@ -132,16 +133,12 @@ const InputSelectGroupWidgetFieldRJSF = ({
     }
   })
 
-  const getUIProp = (uiPropName: string) => uiSchemaObject[uiPropName]
-
   const getLeftIcon = (iconInput: 'InputLeftIcon'): LeftIconVariants | undefined => {
-    const iconVariant = uiSchemaObject[iconInput]
+    const iconVariant = localUiSchema?.[iconInput]
     return typeof iconVariant === 'string' && isLeftIconVariant(iconVariant)
       ? iconVariant
       : undefined
   }
-
-  const requiredField = (propKey: string) => schema.required?.includes(propKey)
 
   const handleOnChangeMultiple = (newValue: EnumOptionsType[]) =>
     newValue.map((option: EnumOptionsType) => option.value)
@@ -178,35 +175,34 @@ const InputSelectGroupWidgetFieldRJSF = ({
     onChange(newFieldData)
   }
 
-  const getLabel = (index: 0 | 1) => {
-    return schemaProperties[keys[index]]?.title
-  }
+  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]]?.title
 
   return (
     <div>
       <InputSelectGroup
         SelectLabel={getLabel(1)}
         InputLabel={getLabel(0)}
-        InputTooltip={getUIProp('InputTooltip') as string}
-        SelectTooltip={getUIProp('SelectTooltip') as string}
-        InputPlaceholder={getUIProp('InputPlaceholder') as string}
-        SelectPlaceholder={getUIProp('SelectPlaceholder') as string}
-        InputDescription={getUIProp('InputDescription') as string}
-        SelectDescription={getUIProp('SelectDescription') as string}
+        InputTooltip={localUiSchema?.InputTooltip as string}
+        SelectTooltip={localUiSchema?.SelectTooltip as string}
+        InputPlaceholder={localUiSchema?.InputPlaceholder as string}
+        SelectPlaceholder={localUiSchema?.SelectPlaceholder as string}
+        InputDescription={localUiSchema?.InputDescription as string}
+        SelectDescription={localUiSchema?.SelectDescription as string}
         InputLeftIcon={getLeftIcon('InputLeftIcon')}
-        InputResetIcon={getUIProp('InputResetIcon') as unknown as boolean}
-        InputRequired={requiredField(keys[0])}
-        SelectRequired={requiredField(keys[1])}
-        SelectDropdownDivider={getUIProp('SelectDropdownDivider') as unknown as boolean}
-        SelectSelectAllOption={getUIProp('SelectSelectAllOption') as unknown as boolean}
-        SelectExplicitOptional={getUIProp('SelectExplicitOptional') as unknown as boolean}
+        InputResetIcon={localUiSchema?.InputResetIcon as unknown as boolean}
+        InputRequired={schema.required?.includes(keys[0])}
+        SelectRequired={schema.required?.includes(keys[1])}
+        SelectDropdownDivider={localUiSchema?.SelectDropdownDivider as unknown as boolean}
+        SelectSelectAllOption={localUiSchema?.SelectSelectAllOption as unknown as boolean}
+        SelectExplicitOptional={localUiSchema?.SelectExplicitOptional as ExplicitOptionalType}
+        InputExplicitOptional={localUiSchema?.InputExplicitOptional as ExplicitOptionalType}
         InputOnChange={updateState}
         SelectOnChange={updateState}
-        InputClassName="sm:w-[150px]"
+        InputClassName={localUiSchema?.InputClassName as string}
         SelectEnumOptions={enumOptions as unknown as EnumOptionsType[]}
-        SelectClassName="sm:w-[400px]"
+        SelectClassName={localUiSchema?.SelectClassName as string}
         SelectType={type}
-        addNew={(getUIProp('addNew') as string) ?? 'Add next'}
+        addNew={(localUiSchema?.addNew as string) ?? 'Add next'}
         groupValues={transformValue()}
         addField={addField}
         removeField={removeField}

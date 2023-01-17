@@ -1,40 +1,39 @@
-import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 
-import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
-import Upload from '../widget-components/Upload/Upload'
+import TextAreaField, { TextAreaBase } from '../widget-components/TextAreaField/TextAreaField'
+import Upload, { UploadProps } from '../widget-components/Upload/Upload'
 
-interface TextAreaBase {
-  TextareaLabel: string
-  TextareaPlaceholder?: string
-  TextareaErrorMessage?: string[]
-  TextareaDescription?: string
-  TextareaClassName?: string
-  TextareaDefaultValue?: string
-  TextareaValue?: string
-  TextareaRequired?: boolean
-  TextareaExplicitOptional?: boolean
-  TextareaDisabled?: boolean
-  TextareaTooltip?: string
-  TextareaOnChange?: (value?: string) => void
+interface TextAreaBaseProps {
+  TextareaLabel: TextAreaBase['label']
+  TextareaPlaceholder?: TextAreaBase['placeholder']
+  TextareaErrorMessage?: TextAreaBase['errorMessage']
+  TextareaDescription?: TextAreaBase['description']
+  TextareaClassName?: TextAreaBase['className']
+  TextareaDefaultValue?: TextAreaBase['defaultValue']
+  TextareaValue?: TextAreaBase['value']
+  TextareaRequired?: TextAreaBase['required']
+  TextareaExplicitOptional?: TextAreaBase['explicitOptional']
+  TextareaDisabled?: TextAreaBase['disabled']
+  TextareaTooltip?: TextAreaBase['tooltip']
+  TextareaOnChange?: TextAreaBase['onChange']
 }
 
-interface UploadProps {
-  UploadLabel: string
-  UploadType: 'button' | 'dragAndDrop'
-  UploadMultiple?: boolean
-  UploadValue?: UploadMinioFile[]
-  UploadDisabled?: boolean
-  UploadRequired?: boolean
-  UploadSizeLimit?: number
-  UploadSupportedFormats?: string[]
-  UploadClassName?: string
-  UploadErrorMessage?: string[]
-  UploadOnChange?: (value: UploadMinioFile[]) => void
+interface UploadBaseProps {
+  UploadLabel: UploadProps['label']
+  UploadType: UploadProps['type']
+  UploadMultiple?: UploadProps['multiple']
+  UploadValue?: UploadProps['value']
+  UploadDisabled?: UploadProps['disabled']
+  UploadRequired?: UploadProps['required']
+  UploadSizeLimit?: UploadProps['sizeLimit']
+  UploadSupportedFormats?: UploadProps['supportedFormats']
+  UploadClassName?: UploadProps['className']
+  UploadErrorMessage?: UploadProps['errorMessage']
+  UploadOnChange?: UploadProps['onChange']
 }
 
-type TextareaUploadBase = TextAreaBase &
-  UploadProps & {
+type TextareaUploadBase = TextAreaBaseProps &
+  UploadBaseProps & {
     middleText: string
     // className prop for whole container of two another components
     className?: string

@@ -3,39 +3,39 @@ import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import React from 'react'
 
-import InputField from '../widget-components/InputField/InputField'
-import SelectField from '../widget-components/SelectField/SelectField'
+import InputField, { InputBase } from '../widget-components/InputField/InputField'
+import SelectField, { SelectFieldProps } from '../widget-components/SelectField/SelectField'
 
-type InputBase = {
-  InputLabel: string
-  InputPlaceholder?: string
-  InputErrorMessage?: string[]
-  InputDescription?: string
-  InputClassName?: string
-  InputLeftIcon?: 'person' | 'mail' | 'call' | 'lock'
-  InputRequired?: boolean
-  InputExplicitOptional?: boolean
-  InputResetIcon?: boolean
-  InputDisabled?: boolean
-  InputTooltip?: string
+type InputBase1 = {
+  InputLabel: InputBase['label']
+  InputPlaceholder?: InputBase['placeholder']
+  InputErrorMessage?: InputBase['errorMessage']
+  InputDescription?: InputBase['description']
+  InputClassName?: InputBase['className']
+  InputLeftIcon?: InputBase['leftIcon']
+  InputRequired?: InputBase['required']
+  InputExplicitOptional?: InputBase['explicitOptional']
+  InputResetIcon?: InputBase['resetIcon']
+  InputDisabled?: InputBase['disabled']
+  InputTooltip?: InputBase['tooltip']
   InputOnChange?: (index: number, propIndex: 0 | 1, value?: string | undefined) => void
 }
 
-interface SelectFieldProps {
-  SelectLabel: string
-  SelectType?: 'one' | 'multiple' | 'arrow' | 'radio'
-  SelectValue?: EnumOptionsType[]
-  SelectEnumOptions?: EnumOptionsType[]
-  SelectTooltip?: string
-  SelectDropdownDivider?: boolean
-  SelectSelectAllOption?: boolean
-  SelectPlaceholder?: string
-  SelectErrorMessage?: string[]
-  SelectDescription?: string
-  SelectRequired?: boolean
-  SelectExplicitOptional?: boolean
-  SelectDisabled?: boolean
-  SelectClassName?: string
+interface SelectFieldProps1 {
+  SelectLabel: SelectFieldProps['label']
+  SelectType?: SelectFieldProps['type']
+  SelectValue?: SelectFieldProps['value']
+  SelectEnumOptions?: SelectFieldProps['enumOptions']
+  SelectTooltip?: SelectFieldProps['tooltip']
+  SelectDropdownDivider?: SelectFieldProps['dropdownDivider']
+  SelectSelectAllOption?: SelectFieldProps['selectAllOption']
+  SelectPlaceholder?: SelectFieldProps['placeholder']
+  SelectErrorMessage?: SelectFieldProps['errorMessage']
+  SelectDescription?: SelectFieldProps['description']
+  SelectRequired?: SelectFieldProps['required']
+  SelectExplicitOptional?: SelectFieldProps['explicitOptional']
+  SelectDisabled?: SelectFieldProps['disabled']
+  SelectClassName?: SelectFieldProps['className']
   SelectOnChange: (index: number, propIndex: 0 | 1, value: any | any[]) => void
 }
 
@@ -79,8 +79,8 @@ export const InputSelectGroup = ({
   SelectDisabled,
   SelectClassName,
   SelectOnChange,
-}: SelectFieldProps &
-  InputBase & {
+}: SelectFieldProps1 &
+  InputBase1 & {
     addNew: string
     groupValues?: mainObjectType[]
     addField?: () => void

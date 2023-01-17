@@ -1,41 +1,42 @@
-import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React from 'react'
 
-import InputField, { LeftIconVariants } from '../widget-components/InputField/InputField'
-import Upload from '../widget-components/Upload/Upload'
+import InputField, { InputBase } from '../widget-components/InputField/InputField'
+import Upload, { UploadProps } from '../widget-components/Upload/Upload'
 
-interface InputBase {
-  InputLabel: string
-  InputType?: 'text' | 'password'
-  InputPlaceholder: string
-  InputErrorMessage?: string[]
-  InputDescription?: string
-  InputClassName?: string
-  InputValue?: string
-  InputLeftIcon?: LeftIconVariants
-  InputRequired?: boolean
-  InputExplicitOptional?: boolean
-  InputResetIcon?: boolean
-  InputDisabled?: boolean
-  InputTooltip?: string
-  InputOnChange?: (value?: string) => void
+interface InputBaseProps {
+  InputLabel: InputBase['label']
+  InputType?: InputBase['type']
+  InputPlaceholder: InputBase['placeholder']
+  InputErrorMessage?: InputBase['errorMessage']
+  InputDescription?: InputBase['description']
+  InputClassName?: InputBase['className']
+  InputValue?: InputBase['value']
+  InputLeftIcon?: InputBase['leftIcon']
+  InputRequired?: InputBase['required']
+  InputExplicitOptional?: InputBase['explicitOptional']
+  InputResetIcon?: InputBase['resetIcon']
+  InputDisabled?: InputBase['disabled']
+  InputTooltip?: InputBase['tooltip']
+  InputOnChange?: InputBase['onChange']
 }
-interface UploadProps {
-  UploadLabel: string
-  UploadType: 'button' | 'dragAndDrop'
-  UploadRequired?: boolean
-  UploadMultiple?: boolean
-  UploadValue?: UploadMinioFile[]
-  UploadDisabled?: boolean
-  UploadSizeLimit?: number
-  UploadSupportedFormats?: string[]
-  UploadClassName?: string
-  UploadErrorMessage?: string[]
-  UploadOnChange?: (value: UploadMinioFile[]) => void
+
+interface UploadBaseProps {
+  UploadLabel: UploadProps['label']
+  UploadType: UploadProps['type']
+  UploadRequired?: UploadProps['required']
+  UploadMultiple?: UploadProps['multiple']
+  UploadValue?: UploadProps['value']
+  UploadDisabled?: UploadProps['disabled']
+  UploadSizeLimit?: UploadProps['sizeLimit']
+  UploadSupportedFormats?: UploadProps['supportedFormats']
+  UploadClassName?: UploadProps['className']
+  UploadErrorMessage?: UploadProps['errorMessage']
+  UploadOnChange?: UploadProps['onChange']
 }
-type InputUploadBase = InputBase &
-  UploadProps & {
+
+type InputUploadBase = InputBaseProps &
+  UploadBaseProps & {
     middleText: string
     // className prop for whole container of two another components
     className?: string

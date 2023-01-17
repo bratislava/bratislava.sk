@@ -1,11 +1,12 @@
 import ResetIcon from '@assets/images/forms/circle-filled-reset.svg'
 import DarkSearchIcon from '@assets/images/forms/dark-search-icon.svg'
 import cx from 'classnames'
-import { ReactNode, RefObject, useRef, useState } from 'react'
+import { RefObject, useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 interface InputBase {
   label: string
@@ -15,7 +16,7 @@ interface InputBase {
   className?: string
   value?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string

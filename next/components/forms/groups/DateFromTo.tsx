@@ -11,7 +11,7 @@ type DateFrom = {
   DateFromDisabled?: DatePickerBase['disabled']
   DateFromValue?: DatePickerBase['value']
   DateFromOnChange: DatePickerBase['onChange']
-  DateFromErrorMessage?: string[]
+  DateFromErrorMessage?: DatePickerBase['errorMessage']
 }
 
 type DateTo = {
@@ -23,7 +23,7 @@ type DateTo = {
   DateToDisabled?: DatePickerBase['disabled']
   DateToValue?: DatePickerBase['value']
   DateToOnChange: DatePickerBase['onChange']
-  DateToErrorMessage?: string[]
+  DateToErrorMessage?: DatePickerBase['errorMessage']
 }
 
 export const DateFromTo = ({

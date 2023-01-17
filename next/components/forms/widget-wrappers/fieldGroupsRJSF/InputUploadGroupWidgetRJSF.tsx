@@ -4,7 +4,9 @@ import React, { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
 import { InputUploadGroup } from '../../groups'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import { isLeftIconVariant, LeftIconVariants } from '../../widget-components/InputField/InputField'
+import { UploadType } from '../../widget-components/Upload/Upload'
 import { fileNameToMinioFile } from '../UploadWidgetRJSF'
 
 const InputUploadGroupWidgetRJSF = ({
@@ -16,9 +18,8 @@ const InputUploadGroupWidgetRJSF = ({
 }: FieldProps) => {
   const keys = Object.keys({ ...schema.properties })
   const [innerValue, setInnerValue] = useState<UploadMinioFile[]>([])
-  const uiSchemaOptionsObject = {
-    ...(uiSchema && (uiSchema['ui:options'] as Record<string, string | number | boolean>)),
-  }
+  const localUiSchema = uiSchema?.['ui:options']
+
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
@@ -77,40 +78,22 @@ const InputUploadGroupWidgetRJSF = ({
     }
   }
 
-  const inputType = (inputTypeName: string) => {
-    const type = uiSchemaOptionsObject[inputTypeName]
-    if (type !== 'text' && type !== 'password') {
-      return 'text'
-    }
-    return type
-  }
-
-  const getUIProp = (uiPropName: string) => {
-    return uiSchemaOptionsObject[uiPropName]
-  }
+  const inputType = (inputTypeName: string) =>
+    localUiSchema?.[inputTypeName] === 'password' ? 'password' : 'text'
 
   const getLeftIcon = (iconInput: 'InputLeftIcon'): LeftIconVariants | undefined => {
-    const iconVariant = uiSchemaOptionsObject[iconInput]
+    const iconVariant = localUiSchema?.[iconInput]
     return typeof iconVariant === 'string' && isLeftIconVariant(iconVariant)
       ? iconVariant
       : undefined
   }
 
-  const getUploadType = (uploadType: string): 'button' | 'dragAndDrop' => {
-    const uploadTypeVariant = uiSchemaOptionsObject[uploadType]
-    if (uploadTypeVariant !== 'button' && uploadTypeVariant !== 'dragAndDrop') {
-      return 'button'
-    }
-    return uploadTypeVariant
-  }
+  const getUploadType = (uploadType: string): UploadType =>
+    localUiSchema?.[uploadType] === 'dragAndDrop' ? 'dragAndDrop' : 'button'
 
-  const supportedFormats = (getUIProp('UploadSupportedFormats') as string)
+  const supportedFormats = (localUiSchema?.UploadSupportedFormats as string)
     ?.split(',')
     .filter((element: string | any[]) => element.length > 0)
-
-  const requiredField = (propKey: string) => {
-    return schema.required?.includes(propKey)
-  }
 
   // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => {
@@ -126,32 +109,32 @@ const InputUploadGroupWidgetRJSF = ({
   }
 
   return (
-    <div className={getUIProp('className') as string}>
+    <div className={localUiSchema?.className as string}>
       <InputUploadGroup
         InputLabel={getLabel(keys[0])}
         UploadLabel={getLabel(keys[1])}
         InputValue={(formData as { [key: string]: unknown })[keys[0]] as string}
         InputOnChange={(e) => handleOnChange(keys[0], e)}
-        InputPlaceholder={getUIProp('InputPlaceholder') as string}
+        InputPlaceholder={localUiSchema?.InputPlaceholder as string}
         InputType={inputType('InputType')}
-        InputDescription={getUIProp('InputDescription') as string}
-        InputRequired={requiredField(keys[0])}
+        InputDescription={localUiSchema?.InputDescription as string}
+        InputRequired={schema.required?.includes(keys[0])}
         InputErrorMessage={getErrorMessage(keys[0])}
         UploadErrorMessage={getErrorMessage(keys[1])}
-        InputTooltip={getUIProp('InputTooltip') as string}
-        InputExplicitOptional={getUIProp('InputExplicitOptional') as unknown as boolean}
+        InputTooltip={localUiSchema?.InputTooltip as string}
+        InputExplicitOptional={localUiSchema?.InputExplicitOptional as ExplicitOptionalType}
         InputLeftIcon={getLeftIcon('InputLeftIcon')}
-        InputResetIcon={getUIProp('InputResetIcon') as unknown as boolean}
-        InputClassName={getUIProp('InputClassName') as string}
+        InputResetIcon={localUiSchema?.InputResetIcon as unknown as boolean}
+        InputClassName={localUiSchema?.InputClassName as string}
         UploadType={getUploadType('UploadType')}
-        middleText={getUIProp('middleText') as string}
+        middleText={localUiSchema?.middleText as string}
         UploadValue={innerValue}
         UploadMultiple={multiple}
         UploadOnChange={handleFileOnChange}
-        UploadRequired={requiredField(keys[0])}
+        UploadRequired={schema.required?.includes(keys[0])}
         UploadSupportedFormats={supportedFormats}
-        UploadSizeLimit={Number(getUIProp('UploadSizeLimit'))}
-        UploadClassName={getUIProp('UploadClassName') as string}
+        UploadSizeLimit={Number(localUiSchema?.UploadSizeLimit)}
+        UploadClassName={localUiSchema?.UploadClassName as string}
       />
     </div>
   )

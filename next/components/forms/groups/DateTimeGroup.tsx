@@ -1,4 +1,3 @@
-import { DateValue as dateValue } from '@internationalized/date'
 import cx from 'classnames'
 
 import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/DatePicker'
@@ -13,7 +12,7 @@ type TDatePicker = {
   DateDisabled?: DatePickerBase['disabled']
   DateValue?: DatePickerBase['value']
   DateOnChange: DatePickerBase['onChange']
-  DateErrorMessage?: string[]
+  DateErrorMessage?: DatePickerBase['errorMessage']
 }
 
 type TTimePicker = {
@@ -25,7 +24,7 @@ type TTimePicker = {
   TimeDisabled?: TimePickerBase['disabled']
   TimeValue?: TimePickerBase['value']
   TimeOnChange: TimePickerBase['onChange']
-  TimeErrorMessage?: string[]
+  TimeErrorMessage?: TimePickerBase['errorMessage']
 }
 
 export const DateTimePicker = ({

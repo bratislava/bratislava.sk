@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
 import { TextareaUploadGroup } from '../../groups'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
+import { UploadType } from '../../widget-components/Upload/Upload'
 import { fileNameToMinioFile } from '../UploadWidgetRJSF'
 
 const TextareaUploadGroupWidgetRJSF = ({
@@ -16,12 +18,11 @@ const TextareaUploadGroupWidgetRJSF = ({
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
-  const uiSchemaObject = {
-    ...(uiSchema && (uiSchema['ui:options'] as Record<string, string | number | boolean>)),
-  }
+
   const keys = Object.keys({ ...schema.properties })
   const multiple = schemaProperties[keys[1]]?.type === 'array'
   const [innerValue, setInnerValue] = useState<UploadMinioFile[]>([])
+  const localUiSchema = uiSchema?.['ui:options']
 
   const handleOnChange = (valueName: string, newValue?: string | string[]) => {
     onChange({
@@ -30,9 +31,7 @@ const TextareaUploadGroupWidgetRJSF = ({
     })
   }
 
-  const getLabel = (propName: string) => {
-    return schemaProperties[propName].title
-  }
+  const getLabel = (propName: string) => schemaProperties[propName].title
 
   useEffectOnce(() => {
     const statePropKey: string = keys[1]
@@ -76,23 +75,10 @@ const TextareaUploadGroupWidgetRJSF = ({
     }
   }
 
-  const getUIProp = (uiPropName: string) => {
-    return uiSchemaObject[uiPropName]
-  }
+  const getUploadType = (uploadType: string): UploadType =>
+    localUiSchema?.[uploadType] === 'dragAndDrop' ? 'dragAndDrop' : 'button'
 
-  const getUploadType = (uploadType: string): 'button' | 'dragAndDrop' => {
-    const uploadTypeVariant = uiSchemaObject[uploadType]
-    if (uploadTypeVariant !== 'button' && uploadTypeVariant !== 'dragAndDrop') {
-      return 'button'
-    }
-    return uploadTypeVariant
-  }
-
-  const supportedFormats = (getUIProp('UploadSupportedFormats') as string)?.split(',')
-
-  const requiredField = (propKey: string) => {
-    return schema.required?.includes(propKey)
-  }
+  const supportedFormats = (localUiSchema?.UploadSupportedFormats as string)?.split(',')
 
   // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => {
@@ -108,29 +94,29 @@ const TextareaUploadGroupWidgetRJSF = ({
   }
 
   return (
-    <div className={getUIProp('className') as string}>
+    <div className={localUiSchema?.className as string}>
       <TextareaUploadGroup
         TextareaLabel={getLabel(keys[0])}
         UploadLabel={getLabel(keys[1])}
         TextareaValue={formData[keys[0]]}
         TextareaOnChange={(e) => handleOnChange(keys[0], e)}
-        TextareaPlaceholder={getUIProp('TextareaPlaceholder') as string}
-        TextareaDescription={getUIProp('TextareaDescription') as string}
-        TextareaRequired={requiredField(keys[0])}
-        TextareaTooltip={getUIProp('TextareaTooltip') as string}
-        TextareaExplicitOptional={getUIProp('TextareaExplicitOptional') as boolean}
-        TextareaClassName={getUIProp('TextareaClassName') as string}
+        TextareaPlaceholder={localUiSchema?.TextareaPlaceholder as string}
+        TextareaDescription={localUiSchema?.TextareaDescription as string}
+        TextareaRequired={schema.required?.includes(keys[0])}
+        TextareaTooltip={localUiSchema?.TextareaTooltip as string}
+        TextareaExplicitOptional={localUiSchema?.TextareaExplicitOptional as ExplicitOptionalType}
+        TextareaClassName={localUiSchema?.TextareaClassName as string}
         TextareaErrorMessage={getErrorMessage(keys[0])}
         UploadType={getUploadType('UploadType')}
-        middleText={getUIProp('middleText') as string}
+        middleText={localUiSchema?.middleText as string}
         UploadValue={innerValue}
         UploadMultiple={multiple}
         UploadOnChange={handleFileOnChange}
-        UploadRequired={requiredField(keys[1])}
+        UploadRequired={schema.required?.includes(keys[1])}
         UploadSupportedFormats={supportedFormats}
-        UploadSizeLimit={Number(getUIProp('UploadSizeLimit'))}
+        UploadSizeLimit={Number(localUiSchema?.UploadSizeLimit)}
         UploadErrorMessage={getErrorMessage(keys[1])}
-        UploadClassName={getUIProp('UploadClassName') as string}
+        UploadClassName={localUiSchema?.UploadClassName as string}
       />
     </div>
   )

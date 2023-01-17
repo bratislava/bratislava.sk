@@ -3,13 +3,14 @@ import React, { ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 type TimeFieldBase = {
   label?: string
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string[]

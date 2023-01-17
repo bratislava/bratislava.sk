@@ -38,7 +38,7 @@ const FieldGroupsShowCase = () => {
         />
       </Stack>
       <Stack direction="row">
-        <TimeFromTo TimeFromTooltip="Time From Tooltip" TimeFromLabel="From" />
+        <TimeFromTo TimeFromTooltip="Time From Tooltip" TimeFromLabel="From" TimeToLabel="To" />
       </Stack>
       <Stack direction="row">
         <DoubledInputField
@@ -49,7 +49,12 @@ const FieldGroupsShowCase = () => {
         />
       </Stack>
       <Stack direction="row">
-        <DateTimePicker DateLabel="Date picker" TimeLabel="Time picker" />
+        <DateTimePicker
+          DateLabel="Date picker"
+          TimeLabel="Time picker"
+          DateOnChange={undefined}
+          TimeOnChange={undefined}
+        />
       </Stack>
       <Stack direction="row">
         <InputUploadGroup

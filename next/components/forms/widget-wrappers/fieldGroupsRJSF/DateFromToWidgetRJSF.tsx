@@ -2,6 +2,7 @@ import { FieldProps } from '@rjsf/utils'
 import React from 'react'
 
 import { DateFromTo } from '../../groups'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 const DateFromToWidgetRJSF = ({
   formData,
@@ -14,6 +15,8 @@ const DateFromToWidgetRJSF = ({
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
+  const localUiSchema = uiSchema?.['ui:options']
+
   const handleOnChange = (valueName: string, newValue?: string | undefined) => {
     onChange({
       ...formData,
@@ -21,17 +24,7 @@ const DateFromToWidgetRJSF = ({
     })
   }
 
-  const getUIProp = (uiPropName: string) => {
-    return uiSchema && uiSchema['ui:options'] && uiSchema['ui:options'][uiPropName]
-  }
-
-  const requiredField = (propKey: string) => {
-    return schema.required?.includes(propKey)
-  }
-
-  const getLabel = (index: 0 | 1) => {
-    return schemaProperties[keys[index]].title
-  }
+  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
   // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => {
@@ -47,16 +40,18 @@ const DateFromToWidgetRJSF = ({
   }
 
   return (
-    <div className={getUIProp('className') as string}>
+    <div className={localUiSchema?.className as string}>
       <DateFromTo
-        DateToTooltip={getUIProp('DateToTooltip') as string}
-        DateFromTooltip={getUIProp('DateFromTooltip') as string}
-        DateFromRequired={requiredField(keys[0])}
-        DateToRequired={requiredField(keys[1]) as unknown as boolean}
+        DateToTooltip={localUiSchema?.DateToTooltip as string}
+        DateFromTooltip={localUiSchema?.DateFromTooltip as string}
+        DateFromRequired={schema.required?.includes(keys[0])}
+        DateToRequired={schema.required?.includes(keys[1]) as unknown as boolean}
         DateFromErrorMessage={getErrorMessage(keys[0])}
         DateToErrorMessage={getErrorMessage(keys[1])}
-        DateFromDescription={getUIProp('DateFromDescription') as string}
-        DateToDescription={getUIProp('DateToDescription') as string}
+        DateFromDescription={localUiSchema?.DateFromDescription as string}
+        DateToDescription={localUiSchema?.DateToDescription as string}
+        DateFromExplicitOptional={localUiSchema?.DateFromExplicitOptional as ExplicitOptionalType}
+        DateToExplicitOptional={localUiSchema?.DateToExplicitOptional as ExplicitOptionalType}
         DateFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
         DateToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
         DateFromValue={formData[keys[0]]}

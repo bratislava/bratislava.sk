@@ -11,8 +11,9 @@ import UploadButton from './UploadButton'
 import UploadDropArea from './UploadDropArea'
 import UploadedFilesList from './UploadedFilesList'
 
-interface UploadProps {
-  type: 'button' | 'dragAndDrop'
+export type UploadType = 'button' | 'dragAndDrop'
+export type UploadProps = {
+  type: UploadType
   label?: string
   required?: boolean
   multiple?: boolean

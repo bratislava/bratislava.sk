@@ -1,62 +1,41 @@
-import InputField, { InputType, LeftIconVariants } from '../widget-components/InputField/InputField'
+import InputField, { InputBase } from '../widget-components/InputField/InputField'
 
-interface InputBase {
-  // label
-  FirstInputLabel: string
-  SecondInputLabel: string
-
-  // className
-  FirstInputClassNames?: string
-  SecondInputClassNames?: string
-
-  // type
-  FirstInputType?: InputType
-  SecondInputType?: InputType
-
-  // placeholder
-  FirstInputPlaceholder: string
-  SecondInputPlaceholder: string
-
-  // errors
-  FirstInputErrorMessage?: string[]
-  SecondInputErrorMessage?: string[]
-
-  // description
-  FirstInputDescription?: string
-  SecondInputDescription?: string
-
-  // value
-  FirstInputValue?: string
-  SecondInputValue?: string
-
-  // leftIcon
-  FirstInputLeftIcon?: LeftIconVariants
-  SecondInputLeftIcon?: LeftIconVariants
-
-  // required
-  FirstInputRequired?: boolean
-  SecondInputRequired?: boolean
-
-  // optional
-  FirstInputExplicitOptional?: boolean
-  SecondInputExplicitOptional?: boolean
-
-  // resetIcon
-  FirstInputResetIcon?: boolean
-  SecondInputResetIcon?: boolean
-
-  // disabled
-  FirstInputDisabled?: boolean
-  SecondInputDisabled?: boolean
-
-  // tooltip
-  FirstInputTooltip?: string
-  SecondInputTooltip?: string
-
-  // handler
-  FirstInputHandler?: (value?: string) => void
-  SecondInputHandler?: (value?: string) => void
+type FirstInputFieldBase = {
+  FirstInputLabel: InputBase['label']
+  FirstInputClassNames?: InputBase['className']
+  FirstInputType?: InputBase['type']
+  FirstInputPlaceholder: InputBase['placeholder']
+  FirstInputErrorMessage?: InputBase['errorMessage']
+  FirstInputDescription?: InputBase['description']
+  FirstInputValue?: InputBase['value']
+  FirstInputLeftIcon?: InputBase['leftIcon']
+  FirstInputRequired?: InputBase['required']
+  FirstInputExplicitOptional?: InputBase['explicitOptional']
+  FirstInputResetIcon?: InputBase['resetIcon']
+  FirstInputDisabled?: InputBase['disabled']
+  FirstInputSize?: InputBase['size']
+  FirstInputTooltip?: InputBase['tooltip']
+  FirstInputHandler?: InputBase['onChange']
 }
+
+type SecondInputFieldBase = {
+  SecondInputLabel: InputBase['label']
+  SecondInputClassNames?: InputBase['className']
+  SecondInputType?: InputBase['type']
+  SecondInputPlaceholder: InputBase['placeholder']
+  SecondInputErrorMessage?: InputBase['errorMessage']
+  SecondInputDescription?: InputBase['description']
+  SecondInputValue?: InputBase['value']
+  SecondInputLeftIcon?: InputBase['leftIcon']
+  SecondInputRequired?: InputBase['required']
+  SecondInputExplicitOptional?: InputBase['explicitOptional']
+  SecondInputResetIcon?: InputBase['resetIcon']
+  SecondInputDisabled?: InputBase['disabled']
+  SecondInputSize?: InputBase['size']
+  SecondInputTooltip?: InputBase['tooltip']
+  SecondInputHandler?: InputBase['onChange']
+}
+
 export const DoubledInputField = ({
   FirstInputLabel,
   SecondInputLabel,
@@ -84,9 +63,11 @@ export const DoubledInputField = ({
   SecondInputTooltip,
   FirstInputHandler,
   SecondInputHandler,
+  FirstInputSize,
+  SecondInputSize,
   FirstInputErrorMessage,
   SecondInputErrorMessage,
-}: InputBase) => {
+}: FirstInputFieldBase & SecondInputFieldBase) => {
   return (
     <div className="flex flex-row items-end gap-4">
       <div className="w-full">
@@ -103,6 +84,7 @@ export const DoubledInputField = ({
           resetIcon={FirstInputResetIcon}
           // disabled={FirstInputDisabled}
           tooltip={FirstInputTooltip}
+          size={FirstInputSize}
           className={FirstInputClassNames}
           onChange={FirstInputHandler}
         />
@@ -120,6 +102,7 @@ export const DoubledInputField = ({
           explicitOptional={SecondInputExplicitOptional}
           resetIcon={SecondInputResetIcon}
           // disabled={SecondInputDisabled}
+          size={SecondInputSize}
           tooltip={SecondInputTooltip}
           onChange={SecondInputHandler}
         />

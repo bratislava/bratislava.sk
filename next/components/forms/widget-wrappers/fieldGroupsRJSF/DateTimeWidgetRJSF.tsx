@@ -2,6 +2,7 @@ import { FieldProps } from '@rjsf/utils'
 import React from 'react'
 
 import { DateTimePicker } from '../../groups'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 const DateTimeWidgetRJSF = ({
   formData = {},
@@ -14,6 +15,8 @@ const DateTimeWidgetRJSF = ({
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
+  const localUiSchema = uiSchema?.['ui:options']
+
   const handleOnChange = (valueName: string, newValue?: string | undefined) => {
     onChange({
       ...formData,
@@ -21,17 +24,7 @@ const DateTimeWidgetRJSF = ({
     })
   }
 
-  const getUIProp = (uiPropName: string) => {
-    return uiSchema && uiSchema['ui:options'] && uiSchema['ui:options'][uiPropName]
-  }
-
-  const requiredField = (propKey: string) => {
-    return schema.required?.includes(propKey)
-  }
-
-  const getLabel = (index: 0 | 1) => {
-    return schemaProperties[keys[index]].title
-  }
+  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
   // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => {
@@ -47,14 +40,16 @@ const DateTimeWidgetRJSF = ({
   }
 
   return (
-    <div className={getUIProp('className') as string}>
+    <div className={localUiSchema?.className as string}>
       <DateTimePicker
-        DateTooltip={getUIProp('DateTooltip') as string}
-        TimeTooltip={getUIProp('TimeTooltip') as string}
-        DateDescription={getUIProp('DateDescription') as string}
-        TimeDescription={getUIProp('TimeDescription') as string}
-        DateRequired={requiredField(keys[0])}
-        TimeRequired={requiredField(keys[1])}
+        DateTooltip={localUiSchema?.DateTooltip as string}
+        TimeTooltip={localUiSchema?.TimeTooltip as string}
+        DateDescription={localUiSchema?.DateDescription as string}
+        TimeDescription={localUiSchema?.TimeDescription as string}
+        DateExplicitOptional={localUiSchema?.DateExplicitOptional as ExplicitOptionalType}
+        TimeExplicitOptional={localUiSchema?.TimeExplicitOptional as ExplicitOptionalType}
+        DateRequired={schema.required?.includes(keys[0])}
+        TimeRequired={schema.required?.includes(keys[1])}
         DateErrorMessage={getErrorMessage(keys[0])}
         TimeErrorMessage={getErrorMessage(keys[1])}
         DateOnChange={(e) => handleOnChange(keys[0], e?.toString())}

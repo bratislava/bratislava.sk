@@ -14,10 +14,11 @@ import React, {
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 
-interface SelectFieldProps {
+export type SelectFieldProps = {
   label: string
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
   value?: EnumOptionsType[]
@@ -29,7 +30,7 @@ interface SelectFieldProps {
   errorMessage?: string[]
   description?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   className?: string
   onChange: (values: EnumOptionsType[]) => void

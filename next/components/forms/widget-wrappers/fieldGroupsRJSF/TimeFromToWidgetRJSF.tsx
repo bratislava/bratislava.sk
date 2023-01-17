@@ -2,6 +2,7 @@ import { FieldProps } from '@rjsf/utils'
 import React from 'react'
 
 import { TimeFromTo } from '../../groups'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 const TimeFromToWidgetRJSF = ({
   formData,
@@ -14,19 +15,13 @@ const TimeFromToWidgetRJSF = ({
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
+  const localUiSchema = uiSchema?.['ui:options']
+
   const handleOnChange = (valueName: string, newValue?: string | undefined) => {
     onChange({
       ...formData,
       [valueName]: newValue,
     })
-  }
-
-  const getUIProp = (uiPropName: string) => {
-    return uiSchema && uiSchema['ui:options'] && uiSchema['ui:options'][uiPropName]
-  }
-
-  const requiredField = (propKey: string) => {
-    return schema.required?.includes(propKey)
   }
 
   const getErrorMessage = (propKey: string): string[] => {
@@ -41,23 +36,21 @@ const TimeFromToWidgetRJSF = ({
     return errors
   }
 
-  const getLabel = (index: 0 | 1) => {
-    return schemaProperties[keys[index]].title
-  }
+  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
   return (
-    <div className={getUIProp('className') as string}>
+    <div className={localUiSchema?.className as string}>
       <TimeFromTo
-        TimeToTooltip={getUIProp('TimeToTooltip') as string}
-        TimeFromTooltip={getUIProp('TimeFromTooltip') as string}
-        TimeFromDescription={getUIProp('TimeFromDescription') as string}
-        TimeToDescription={getUIProp('TimeToDescription') as string}
-        TimeFromRequired={requiredField(keys[0])}
-        TimeToRequired={requiredField(keys[1])}
+        TimeToTooltip={localUiSchema?.TimeToTooltip as string}
+        TimeFromTooltip={localUiSchema?.TimeFromTooltip as string}
+        TimeFromDescription={localUiSchema?.TimeFromDescription as string}
+        TimeToDescription={localUiSchema?.TimeToDescription as string}
+        TimeFromRequired={schema.required?.includes(keys[0])}
+        TimeToRequired={schema.required?.includes(keys[1])}
         TimeFromErrorMessage={getErrorMessage(keys[0])}
         TimeToErrorMessage={getErrorMessage(keys[1])}
-        TimeFromExplicitOptional={getUIProp('TimeFromExplicitOptional') as unknown as boolean}
-        TimeToExplicitOptional={getUIProp('TimeToExplicitOptional') as unknown as boolean}
+        TimeFromExplicitOptional={localUiSchema?.TimeFromExplicitOptional as ExplicitOptionalType}
+        TimeToExplicitOptional={localUiSchema?.TimeToExplicitOptional as ExplicitOptionalType}
         TimeFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
         TimeToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
         TimeFromValue={formData[keys[0]]}
