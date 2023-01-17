@@ -1,9 +1,10 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
+import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
 import Upload from '../widget-components/Upload/Upload'
 import UploadRJSFOptions from '../widget-components/Upload/UploadRJSFOptions'
 
@@ -28,6 +29,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
     description,
     type = 'button',
     className,
+    markdown,
     spaceBottom = 'small',
     spaceTop = 'none',
   } = options
@@ -94,7 +96,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   }
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper className="gap-4 flex flex-col" spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <Upload
         errorMessage={rawErrors}
         type={type}
@@ -109,6 +111,14 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         disabled={disabled}
         onChange={handleOnChange}
       />
+      {markdown && markdown.title && markdown.content && (
+        <Accordion
+          size={markdown.size as AccordionSizeType}
+          title={markdown.title}
+          shadow
+          markdownContent={markdown.content}
+        />
+      )}
     </WidgetWrapper>
   )
 }

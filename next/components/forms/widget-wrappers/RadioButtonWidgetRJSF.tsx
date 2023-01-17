@@ -3,6 +3,7 @@ import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
+import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
 import Radio from '../widget-components/RadioButton/Radio'
 import RadioGroup from '../widget-components/RadioButton/RadioGroup'
 
@@ -36,6 +37,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     enumOptions,
     className,
     variant,
+    markdown,
     radioOptions = [],
     spaceBottom = 'default',
     spaceTop = 'none',
@@ -46,7 +48,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     return radioOptions.find((option) => option.value === radioValue)?.tooltip
   }
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper className="gap-4 flex flex-col" spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <RadioGroup
         errorMessage={rawErrors}
         value={value}
@@ -67,6 +69,14 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
           )
         })}
       </RadioGroup>
+      {markdown && markdown.title && markdown.content && (
+        <Accordion
+          size={markdown.size as AccordionSizeType}
+          title={markdown.title}
+          shadow
+          markdownContent={markdown.content}
+        />
+      )}
     </WidgetWrapper>
   )
 }

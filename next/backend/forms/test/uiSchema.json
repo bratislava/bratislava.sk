@@ -7,6 +7,11 @@
     "birth": {
       "ui:widget": "DatePicker",
       "ui:label": false,
+      "ui:markdown": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "tooltip": "Date picker hint"
       }
@@ -44,6 +49,10 @@
       "ui:widget": "InputField",
       "ui:label": false,
       "ui:placeholder": "Last Name",
+      "ui:markdown": {
+        "title": "Header name",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "tooltip": "Last name hint",
         "resetIcon": true,
@@ -90,6 +99,11 @@
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
+      "ui:markdown": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "type": "button",
         "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
@@ -127,6 +141,11 @@
       "ui:widget": "TextArea",
       "ui:label": false,
       "ui:placeholder": "Write some cons please",
+      "ui:markdown": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "description": "Here write pros",
         "tooltip": "This is simple tooltip"
@@ -143,6 +162,11 @@
       "ui:widget": "SelectField",
       "ui:label": false,
       "ui:placeholder": "tu skus pisat",
+      "ui:markdown": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "dropdownDivider": true,
         "description": "Here choose your last school",
@@ -166,6 +190,11 @@
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
+      "ui:markdown": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "className": "flex flex-row gap-6 mt-4",
         "//className": "flex flex-col gap-3 mt-4 max-w-[500px]",
@@ -188,6 +217,11 @@
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
+      "ui:markdown": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "className": "flex flex-col gap-3 w-fit",
         "variant": "boxed",

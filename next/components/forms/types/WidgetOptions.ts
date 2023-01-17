@@ -5,6 +5,7 @@ export type WidgetOptions = {
   description?: string
   className?: string
   explicitOptional?: 'none' | 'right' | 'left'
+  markdown?: { title: string; size?: string; content: string }
   spaceBottom?: FormSpacingType
   spaceTop?: FormSpacingType
 }

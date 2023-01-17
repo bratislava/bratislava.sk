@@ -4,6 +4,8 @@ import TimePicker from 'components/forms/widget-components/DateTimePicker/TimePi
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
+import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
+
 type TimePickerRJSFOptions = WidgetOptions
 
 interface TimePickerWidgetRJSFProps extends WidgetProps {
@@ -30,6 +32,7 @@ const TimePickerWidgetRJSF = ({
   const {
     description,
     tooltip,
+    markdown,
     explicitOptional,
     spaceBottom = 'default',
     spaceTop = 'none',
@@ -38,7 +41,7 @@ const TimePickerWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper className="gap-4 flex flex-col" spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <TimePicker
         label={label}
         errorMessage={rawErrors}
@@ -50,6 +53,14 @@ const TimePickerWidgetRJSF = ({
         value={value}
         onChange={handleOnChange}
       />
+      {markdown && markdown.title && markdown.content && (
+        <Accordion
+          size={markdown.size as AccordionSizeType}
+          title={markdown.title}
+          shadow
+          markdownContent={markdown.content}
+        />
+      )}
     </WidgetWrapper>
   )
 }

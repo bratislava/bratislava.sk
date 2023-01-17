@@ -4,11 +4,10 @@ import InputField from 'components/forms/widget-components/InputField/InputField
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-import Accordion from '../simple-components/Accordion'
+import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
 
 type InputFieldRJSFOptions = {
   type?: 'text' | 'password'
-  markdown?: { title: string; content: string }
   resetIcon?: boolean
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   size?: 'large' | 'default' | 'small'
@@ -53,7 +52,7 @@ const InputFieldWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper className="gap-4 flex flex-col" spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}
@@ -71,13 +70,14 @@ const InputFieldWidgetRJSF = ({
         explicitOptional={explicitOptional}
         size={size}
       />
-      {markdown &&
-        Object.keys(markdown).length === 2 &&
-        // checking if 'ui:markdown' have title and content property
-        markdown.title &&
-        markdown.content && (
-          <Accordion size="sm" title={markdown.title} shadow markdownContent={markdown.content} />
-        )}
+      {markdown && markdown.title && markdown.content && (
+        <Accordion
+          size={markdown.size as AccordionSizeType}
+          title={markdown.title}
+          shadow
+          markdownContent={markdown.content}
+        />
+      )}
     </WidgetWrapper>
   )
 }

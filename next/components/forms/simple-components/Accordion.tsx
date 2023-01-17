@@ -13,8 +13,10 @@ import TooltipComponent from './Tooltip'
 const Tooltip = ({ children }: never) => {
   return <TooltipComponent tooltip={children} />
 }
+export type AccordionSizeType = 'sm' | 'md' | 'lg'
+
 type AccordionBase = {
-  size: 'sm' | 'md' | 'lg'
+  size: AccordionSizeType
   title: string
   markdownContent: string
   icon?: boolean
@@ -25,7 +27,7 @@ type AccordionBase = {
 const Accordion = ({
   title,
   markdownContent,
-  size,
+  size = 'sm',
   icon = false,
   shadow = false,
   className,

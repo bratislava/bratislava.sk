@@ -2,7 +2,9 @@ import { WidgetProps } from '@rjsf/utils'
 import cx from 'classnames'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
+import React from 'react'
 
+import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
 import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 
 type TextAreaRJSFOptions = WidgetOptions
@@ -33,6 +35,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   const {
     description,
     tooltip,
+    markdown,
     explicitOptional,
     className,
     spaceBottom = 'default',
@@ -62,6 +65,14 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         onChange={handleOnChange}
         errorMessage={rawErrors}
       />
+      {markdown && markdown.title && markdown.content && (
+        <Accordion
+          size={markdown.size as AccordionSizeType}
+          title={markdown.title}
+          shadow
+          markdownContent={markdown.content}
+        />
+      )}
     </WidgetWrapper>
   )
 }
