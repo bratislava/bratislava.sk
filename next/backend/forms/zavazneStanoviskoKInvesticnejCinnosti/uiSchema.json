@@ -98,7 +98,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "nahrajte splnomocnenie od investora",
+        "uDescription": "nahrajte splnomocnenie od investora",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "button"
@@ -288,7 +288,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "napr. vydané stavebné povolenie, stanoviská hlavného mesta",
+        "uDescription": "napr. vydané stavebné povolenie, stanoviská hlavného mesta",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "button"
@@ -301,7 +301,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
+        "uDescription": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -311,7 +311,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "pešie ťahy, plochy zelene a iné",
+        "uDescription": "pešie ťahy, plochy zelene a iné",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -321,7 +321,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "povinné v zastavanom území",
+        "uDescription": "povinné v zastavanom území",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -331,7 +331,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "podľa platnej STN 73 4301 - bytové budovy",
+        "uDescription": "podľa platnej STN 73 4301 - bytové budovy",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -341,7 +341,10 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "description": "ak je riešený objekt národnou kultúrnou pamiatkou, resp. ide o novostavbu v pamiatkovej zóne Bratislavy - centrálna mestská oblasť (PZ CMO)",
+        "uDescription": [
+          "ak je riešený objekt národnou kultúrnou pamiatkou,",
+          "resp. ide o novostavbu v pamiatkovej zóne Bratislavy - centrálna mestská oblasť (PZ CMO)"
+        ],
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"

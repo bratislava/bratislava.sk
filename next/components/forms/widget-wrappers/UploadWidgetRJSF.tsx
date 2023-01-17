@@ -25,7 +25,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   const {
     size,
     accept,
-    description,
+    uDescription,
     type = 'button',
     className,
     spaceBottom = 'small',
@@ -103,7 +103,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         multiple={multiple}
         value={innerValue}
         className={className}
-        description={description}
+        description={uDescription}
         sizeLimit={size}
         supportedFormats={supportedFormats}
         disabled={disabled}

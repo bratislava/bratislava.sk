@@ -88,7 +88,10 @@
       "ui:label": false,
       "ui:options": {
         "type": "button",
-        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
+        "uDescription": [
+          "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
+          "Prílohy nemôžu presiahnuť veľkosť 250MB."
+        ]
       }
     },
     "importButtonMultipleFiles": {

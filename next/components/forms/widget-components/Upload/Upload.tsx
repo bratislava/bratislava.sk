@@ -17,7 +17,7 @@ interface UploadProps {
   required?: boolean
   multiple?: boolean
   value?: UploadMinioFile[]
-  description?: string
+  description?: string | string[]
   disabled?: boolean
   sizeLimit?: number
   supportedFormats?: string[]

@@ -703,7 +703,6 @@
             "projektovaDokumentacia": {
               "type": "array",
               "title": "Projektová dokumentácia",
-              "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
               "items": {
                 "type": "string",
                 "format": "data-url"
@@ -712,7 +711,6 @@
             "vykresy": {
               "type": "array",
               "title": "Iné výkresy situácií",
-              "description": "pešie ťahy, plochy zelene a iné",
               "items": {
                 "type": "string",
                 "format": "data-url"
@@ -721,7 +719,6 @@
             "ulicnyPohlad": {
               "type": "array",
               "title": "Uličný pohľad so záberom najbližších stavieb",
-              "description": "povinné v zastavanom území",
               "items": {
                 "type": "string",
                 "format": "data-url"
@@ -730,7 +727,6 @@
             "podzemnePodlazie": {
               "type": "array",
               "title": "Vyhodnotenie podzemného podlažia pri bytových budovách",
-              "description": "podľa platnej STN 73 4301 - bytové budovy",
               "items": {
                 "type": "string",
                 "format": "data-url"
@@ -739,7 +735,6 @@
             "vyjadrenieUradu": {
               "type": "array",
               "title": "Vyjadrenie Krajského pamiatkového úradu",
-              "description": "ak je riešený objekt národnou kultúrnou pamiatkou, resp. ide o novostavbu v pamiatkovej zóne Bratislavy - centrálna mestská oblasť (PZ CMO)",
               "items": {
                 "type": "string",
                 "format": "data-url"
