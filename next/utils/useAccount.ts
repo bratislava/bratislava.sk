@@ -128,13 +128,12 @@ export default function useAccount() {
         currentUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
             console.error(err)
-          } else {
-            console.log(currentUser)
-            setUserData(userAttributesToObject(attributes))
-            setStatus(AccountStatus.SignedIn)
-            setUser(currentUser)
-            console.log(currentUser)
+            return
           }
+
+          setUserData(userAttributesToObject(attributes))
+          setStatus(AccountStatus.SignedIn)
+          setUser(currentUser)
         })
       })
     }
@@ -149,7 +148,7 @@ export default function useAccount() {
     }
   }
 
-  const signUp = (email: string, password: string, data: UserData) => {
+  const signUp = (email: string, password: string, data: UserData): Promise<boolean> => {
     const attributeList = objectToUserAttributes(data)
 
     setError(null)

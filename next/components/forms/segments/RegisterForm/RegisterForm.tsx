@@ -1,3 +1,4 @@
+import { formatUnicorn } from '@utils/string'
 import { UserData } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import { AWSError } from 'aws-sdk/global'
@@ -24,6 +25,7 @@ interface Data {
 interface Props {
   onSubmit: (email: string, password: string, userData: UserData) => Promise<any>
   error?: AWSError | null | undefined
+  lastEmail?: string
 }
 
 // must use `minLength: 1` to implement required field
@@ -79,7 +81,7 @@ const schema = {
   ],
 }
 
-const RegisterForm = ({ onSubmit, error }: Props) => {
+const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -113,7 +115,13 @@ const RegisterForm = ({ onSubmit, error }: Props) => {
       })}
     >
       <h1 className="text-h3">{t('register_title')}</h1>
-      {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
+      {error && (
+        <Alert
+          message={formatUnicorn(t(error.code), { email: lastEmail || '' })}
+          type="error"
+          className="min-w-full"
+        />
+      )}
       <Controller
         name="email"
         control={control}
