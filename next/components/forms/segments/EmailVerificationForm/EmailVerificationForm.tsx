@@ -4,20 +4,17 @@ import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
-import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 
 interface Data {
   verificationCode: string
-  password: string
-  passwordConfirmation: string
 }
 
 interface Props {
-  onSubmit: (verificationCode: string, password: string) => Promise<any>
-  onResend: () => Promise<any>
+  onSubmit: (verificationCode: string) => void
+  onResend: () => void
   error?: AWSError | null | undefined
 }
 
@@ -30,24 +27,11 @@ const schema = {
       minLength: 6,
       errorMessage: { minLength: 'account:verification_code_required' },
     },
-    password: {
-      type: 'string',
-      minLength: 1,
-      format: 'password',
-      errorMessage: { minLength: 'account:password_required', format: 'account:password_format' },
-    },
-    passwordConfirmation: {
-      const: {
-        $data: '1/password',
-      },
-      type: 'string',
-      errorMessage: { const: 'account:password_confirmation_required' },
-    },
   },
-  required: ['verificationCode', 'password', 'passwordConfirmation'],
+  required: ['verificationCode'],
 }
 
-const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
+const EmailVerificationForm = ({ onSubmit, error, onResend }: Props) => {
   const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
   const { t } = useTranslation('account')
   const {
@@ -57,7 +41,7 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
     formState: { isSubmitting },
   } = useHookForm<Data>({
     schema,
-    defaultValues: { verificationCode: '', password: '', passwordConfirmation: '' },
+    defaultValues: { verificationCode: '' },
   })
 
   const [cnt, setCnt] = useState(60)
@@ -77,11 +61,11 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
       className="flex flex-col space-y-6"
       onSubmit={handleSubmit((data: Data) => {
         setLastVerificationCode(data.verificationCode)
-        onSubmit(data.verificationCode, data.password)
+        onSubmit(data.verificationCode)
       })}
     >
-      <h1 className="text-h3">{t('new_password_title')}</h1>
-      <div>{t('verification_code_description')}</div>
+      <h1 className="text-h3">{t('email_verification_title')}</h1>
+      <div>{t('email_verification_description')}</div>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
@@ -102,48 +86,21 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
           />
         )}
       />
-      <Controller
-        name="password"
-        control={control}
-        render={({ field }) => (
-          <PasswordField
-            required
-            label={t('new_password_label')}
-            placeholder={t('new_password_placeholder')}
-            tooltip={t('password_description')}
-            {...field}
-            errorMessage={errors.password}
-          />
-        )}
-      />
-      <Controller
-        name="passwordConfirmation"
-        control={control}
-        render={({ field }) => (
-          <PasswordField
-            required
-            label={t('new_password_confirmation_label')}
-            placeholder={t('new_password_confirmation_placeholder')}
-            {...field}
-            errorMessage={errors.passwordConfirmation}
-          />
-        )}
-      />
       <Button
         className="min-w-full"
         type="submit"
-        text={t('new_password_submit')}
+        text={t('email_verification_submit')}
         variant="category"
         disabled={isSubmitting}
       />
       <div>
-        <span>{t('new_password_description')}</span>
-        {cnt > 0 && <span>{` ${formatUnicorn(t('new_password_cnt_description'), { cnt })}`}</span>}
+        <span>{t('verification_description')}</span>
+        {cnt > 0 && <span>{` ${formatUnicorn(t('verification_cnt_description'), { cnt })}`}</span>}
       </div>
       <Button
         onPress={handleResend}
         className="min-w-full"
-        text={t('new_password_resend')}
+        text={t('verification_resend')}
         variant="category-outline"
         disabled={cnt > 0}
       />
@@ -151,4 +108,4 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
   )
 }
 
-export default NewPasswordForm
+export default EmailVerificationForm
