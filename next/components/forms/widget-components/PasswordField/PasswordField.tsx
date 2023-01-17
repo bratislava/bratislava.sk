@@ -10,7 +10,7 @@ interface Props {
   className?: string
   value?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void

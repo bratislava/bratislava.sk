@@ -1,5 +1,4 @@
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
-import cx from 'classnames'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
@@ -54,15 +53,7 @@ const InputFieldWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper
-      className={cx('flex flex-col gap-4', {
-        'w-full': size === 'large',
-        'max-w-[388px]': size === 'default',
-        'max-w-[200px]': size === 'small',
-      })}
-      spaceBottom={spaceBottom}
-      spaceTop={spaceTop}
-    >
+    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}
@@ -78,6 +69,7 @@ const InputFieldWidgetRJSF = ({
         leftIcon={leftIcon}
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
+        size={size}
       />
       {markdown &&
         Object.keys(markdown).length === 2 &&

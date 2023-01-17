@@ -29,7 +29,7 @@ interface SelectFieldProps {
   errorMessage?: string[]
   description?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   disabled?: boolean
   className?: string
   onChange: (values: EnumOptionsType[]) => void

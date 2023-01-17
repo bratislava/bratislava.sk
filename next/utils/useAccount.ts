@@ -3,6 +3,12 @@ import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
 import { useEffect, useState } from 'react'
 
+export enum AccountStatus {
+  Idle,
+  NewPasswordRequired,
+  Success,
+}
+
 const poolData = {
   UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
   ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
@@ -12,6 +18,7 @@ const userPool = new CognitoUserPool(poolData)
 export default function useAccount() {
   const [user, setUser] = useState<CognitoUser | null>(null)
   const [error, setError] = useState<AWSError | undefined | null>(null)
+  const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
 
   useEffect(() => {
     const currentUser = userPool.getCurrentUser()
@@ -23,6 +30,56 @@ export default function useAccount() {
       user.signOut()
       setUser(null)
     }
+  }
+
+  const confirmPassword = (verificationCode: string, password: string) => {
+    return new Promise((resolve) => {
+      if (user) {
+        user.confirmPassword(verificationCode, password, {
+          onSuccess() {
+            console.log('Password confirmed!')
+            setStatus(AccountStatus.Success)
+            resolve(true)
+          },
+          onFailure(err: Error) {
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          },
+        })
+      } else {
+        resolve(false)
+      }
+    })
+  }
+
+  const forgotPassword = (email = ''): Promise<boolean> => {
+    const cognitoUser = email
+      ? new CognitoUser({
+          Username: email,
+          Pool: userPool,
+        })
+      : user
+
+    setError(null)
+    return new Promise((resolve) => {
+      if (cognitoUser) {
+        cognitoUser.forgotPassword({
+          onSuccess: (data) => {
+            console.log(data)
+            // successfully initiated reset password request
+            setUser(cognitoUser)
+            setStatus(AccountStatus.NewPasswordRequired)
+            resolve(true)
+          },
+          onFailure: (err: Error) => {
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          },
+        })
+      } else {
+        resolve(false)
+      }
+    })
   }
 
   const login = (email: string, password: string) => {
@@ -105,5 +162,5 @@ export default function useAccount() {
     })
   }
 
-  return { login, logout, user, error }
+  return { login, logout, user, error, forgotPassword, confirmPassword, status }
 }

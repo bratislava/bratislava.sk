@@ -36,7 +36,7 @@
         "tooltip": "First name hint",
         "resetIcon": true,
         "leftIcon": "person",
-        "size": "default",
+        "size": "large",
         "spaceTop": "large"
       }
     },
@@ -51,6 +51,18 @@
         "size": "default"
       }
     },
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "tooltip": "Phone hint",
+        "resetIcon": true,
+        "leftIcon": "call",
+        "size": "default",
+        "explicitOptional": "left"
+      }
+    },
     "password": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -58,7 +70,8 @@
       "ui:options": {
         "tooltip": "Password hint",
         "leftIcon": "lock",
-        "type": "password"
+        "type": "password",
+        "explicitOptional": "right"
       }
     },
     "psc": {
@@ -78,7 +91,8 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "type": "button"
+        "type": "button",
+        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
       }
     },
     "importButtonMultipleFiles": {
@@ -153,8 +167,8 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-row gap-4 mt-4",
-        "//className": "flex flex-col gap-4 mt-4 max-w-[500px]",
+        "className": "flex flex-row gap-6 mt-4",
+        "//className": "flex flex-col gap-3 mt-4 max-w-[500px]",
         "variant": "boxed",
         "radioOptions": [
           {
@@ -175,7 +189,7 @@
       "ui:widget": "Checkboxes",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4 w-fit",
+        "className": "flex flex-col gap-3 w-fit",
         "variant": "boxed",
         "checkboxOptions": [
           {
