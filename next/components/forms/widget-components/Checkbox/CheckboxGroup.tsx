@@ -22,11 +22,13 @@ const CheckboxGroup = (props: CheckBoxGroupBase) => {
   const { groupProps, labelProps, errorMessageProps } = useCheckboxGroup(props, state)
   return (
     <>
-      <div {...groupProps} className={className}>
-        <span {...labelProps} className="text-20-semibold">
+      <div {...groupProps}>
+        <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
           {label}
         </span>
-        <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
+        <div className={className}>
+          <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
+        </div>
       </div>
       {!disabled && (
         <FieldErrorMessage errorMessage={rawErrors} errorMessageProps={errorMessageProps} />

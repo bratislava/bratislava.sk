@@ -38,6 +38,7 @@ const TextAreaField = ({
 }: TextAreaBase) => {
   const [valueState, setValueState] = useState<string>('')
   const [useDefaultValue, setUseDefaultValue] = useState<boolean>(true)
+  const [isFocused, setIsFocused] = useState<boolean>(false)
   const ref = React.useRef<HTMLTextAreaElement>(null)
 
   const displayValue =
@@ -65,19 +66,19 @@ const TextAreaField = ({
     },
     ref,
   )
-  const style = cx(
-    'text-20 overflow-y-scroll px-4 py-2.5 bg-gray-0 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none focus:placeholder:text-transparent',
+  const containerStyle = cx(
+    'text-20 flex flex-col bg-gray-0 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none overflow-hidden',
     className,
     {
-      // hover
-      'hover:border-gray-400': !disabled,
-
-      // error
+      'hover:border-gray-400': !disabled && !isFocused,
       'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
-
-      // disabled
       'border-gray-300 bg-gray-100': disabled,
+      'border-gray-700 hover:border-gray-700': !disabled && isFocused,
     },
+  )
+
+  const textareaStyle = cx(
+    'overflow-y-scroll px-4 py-2.5 bg-gray-0 rounded-lg caret-gray-700 focus:outline-none resize-none focus:placeholder:text-transparent h-full w-full',
   )
   return (
     <div className="flex w-full flex-col">
@@ -91,7 +92,17 @@ const TextAreaField = ({
         explicitOptional={explicitOptional}
         tooltip={tooltip}
       />
-      <textarea {...inputProps} ref={ref} name={inputProps.id} className={style} />
+      <div className={containerStyle}>
+        <textarea
+          {...inputProps}
+          ref={ref}
+          name={inputProps.id}
+          className={textareaStyle}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+      </div>
+
       {!disabled && (
         <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
       )}
