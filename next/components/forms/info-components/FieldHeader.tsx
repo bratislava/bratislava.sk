@@ -28,7 +28,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
-  const labelStyle = cx('text-20-semibold relative text-gray-800', {
+  const labelStyle = cx('text-20-semibold leading-7 relative text-gray-800', {
     'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
       required,
   })

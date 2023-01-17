@@ -26,7 +26,7 @@ const RadioGroup = (props: RadioGroupBase) => {
 
   return (
     <div {...radioGroupProps}>
-      <span {...labelProps} className="text-20-semibold">
+      <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
         {props.label}
       </span>
       <RadioContext.Provider value={state}>
