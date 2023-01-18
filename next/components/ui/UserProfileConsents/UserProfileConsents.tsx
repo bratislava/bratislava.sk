@@ -2,8 +2,6 @@ import UserConsent from '@bratislava/ui-bratislava/UserConsent/UserConsent'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import Toggle from '../../forms/simple-components/Toggle'
-
 export interface Consent {
   title: string
   text: string
@@ -44,7 +42,12 @@ const UserProfileConsents = () => {
         )}
       >
         {allConsents.map((consent: Consent, key: number) => (
-          <UserConsent key={key} consent={consent} isLast={key === allConsents.length - 1} />
+          <UserConsent
+            key={key}
+            consent={consent}
+            isLast={key === allConsents.length - 1}
+            onChange={(isSelected) => console.log(key, ':', isSelected)}
+          />
         ))}
       </div>
     </div>

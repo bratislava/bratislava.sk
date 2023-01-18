@@ -6,9 +6,10 @@ import Toggle from '../../forms/simple-components/Toggle'
 interface UserConsentProps {
   consent: Consent
   isLast?: boolean
+  onChange: (isSelected: boolean) => void
 }
 
-const UserConsent = ({ consent, isLast }: UserConsentProps) => {
+const UserConsent = ({ consent, isLast, onChange }: UserConsentProps) => {
   return (
     <div
       className={cx('flex flex-col border-gray-200 gap-2 py-4', 'xs:flex-row xs:py-6', {
