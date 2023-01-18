@@ -9,6 +9,7 @@ import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
@@ -40,6 +41,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
   const { t } = useTranslation('account')
   const [lastEmail, setLastEmail] = useState<string>('')
   const { signUp, resendVerificationCode, verify, error, status, setStatus } = useAccount()
+  const router = useRouter()
 
   const onSignUp = (email: string, password: string, data: UserData): Promise<boolean> => {
     setLastEmail(email)
@@ -69,7 +71,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               confirmLabel={t('identity_verification_link')}
               onConfirm={() => setStatus(AccountStatus.IdentityVerificationRequired)}
               cancelLabel={t('identity_verification_skip')}
-              onCancel={() => setStatus(AccountStatus.Success)}
+              onCancel={() => router.push('/')}
             >
               <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
             </AccountSuccessAlert>

@@ -12,11 +12,11 @@ import { useEffect, useState } from 'react'
 export enum AccountStatus {
   Idle,
   NewPasswordRequired,
+  NewPasswordSuccess,
   EmailVerificationRequired,
   EmailVerificationSuccess,
   IdentityVerificationRequired,
   SignedIn,
-  Success,
 }
 
 export interface UserData {
@@ -177,7 +177,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
         user.confirmPassword(verificationCode, password, {
           onSuccess() {
             console.log('Password confirmed!')
-            setStatus(AccountStatus.Success)
+            setStatus(AccountStatus.NewPasswordSuccess)
             resolve(true)
           },
           onFailure(err: Error) {

@@ -53,7 +53,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
           {status === AccountStatus.NewPasswordRequired && (
             <NewPasswordForm onSubmit={confirmPassword} onResend={forgotPassword} error={error} />
           )}
-          {status === AccountStatus.Success && (
+          {status === AccountStatus.NewPasswordSuccess && (
             <AccountSuccessAlert
               title={t('forgotten_password_success_title')}
               confirmLabel={t('account_link')}
