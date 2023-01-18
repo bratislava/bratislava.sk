@@ -4,6 +4,7 @@ import useAccount, { AccountStatus, UserData } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
 import AccountSuccessAlert from 'components/forms/segments/AccountSuccessAlert/AccountSuccessAlert'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
+import IdentityVerificationForm from 'components/forms/segments/IdentityVerificationForm/IdentityVerificationForm'
 import RegisterForm from 'components/forms/segments/RegisterForm/RegisterForm'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
@@ -40,13 +41,18 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
   const [lastEmail, setLastEmail] = useState<string>('')
-  const { signUp, resendVerificationCode, verify, error, status, setStatus } = useAccount()
+  const { signUp, resendVerificationCode, verifyEmail, error, status, setStatus } = useAccount()
   const router = useRouter()
 
   const onSignUp = (email: string, password: string, data: UserData): Promise<boolean> => {
     setLastEmail(email)
     return signUp(email, password, data)
   }
+
+  const onVerifyIdentity = (rc: string, idCard: string) => {
+    setStatus(AccountStatus.IdentityVerificationSuccess)
+  }
+
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
@@ -58,7 +64,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
             <EmailVerificationForm
               lastEmail={lastEmail}
               onResend={resendVerificationCode}
-              onSubmit={verify}
+              onSubmit={verifyEmail}
               error={error}
             />
           )}
@@ -75,6 +81,17 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
             >
               <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
             </AccountSuccessAlert>
+          )}
+          {status === AccountStatus.IdentityVerificationRequired && (
+            <IdentityVerificationForm onSubmit={onVerifyIdentity} error={error} />
+          )}
+          {status === AccountStatus.IdentityVerificationSuccess && (
+            <AccountSuccessAlert
+              title={t('identity_verification_success_title')}
+              description={formatUnicorn(t('identity_verification_success_description'), {})}
+              confirmLabel={t('account_link')}
+              onConfirm={() => router.push('/')}
+            />
           )}
         </AccountContainer>
       </LoginRegisterLayout>

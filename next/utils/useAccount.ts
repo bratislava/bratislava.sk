@@ -16,6 +16,7 @@ export enum AccountStatus {
   EmailVerificationRequired,
   EmailVerificationSuccess,
   IdentityVerificationRequired,
+  IdentityVerificationSuccess,
   SignedIn,
 }
 
@@ -59,7 +60,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     return attributeList
   }
 
-  const verify = (verificationCode: string): Promise<boolean> => {
+  const verifyEmail = (verificationCode: string): Promise<boolean> => {
     setError(null)
     return new Promise((resolve) => {
       if (user) {
@@ -320,7 +321,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     userData,
     updateUserData,
     signUp,
-    verify,
+    verifyEmail,
     resendVerificationCode,
   }
 }
