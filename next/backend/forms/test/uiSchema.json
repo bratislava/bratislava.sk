@@ -162,7 +162,24 @@
   },
   "chooseOneOf": {
     "ui:hideError": true,
-    "chooseOne": {
+    "chooseOneOfMore": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
+      }
+    },
+    "chooseOneOfTwo": {
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
