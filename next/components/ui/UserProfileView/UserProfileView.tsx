@@ -7,7 +7,7 @@ const UserProfileView = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
   return (
-    <section className="gap- flex flex-col gap-2 xs:gap-0">
+    <section className="flex flex-col gap-2 xs:gap-0 h-full">
       <div className="bg-white">Kravina</div>
       <div className="bg-white">kravina</div>
       <UserProfileConsents />
