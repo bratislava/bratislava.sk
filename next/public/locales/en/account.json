@@ -49,6 +49,10 @@
   "email_verification_title": "Verify your e-mail",
   "email_verification_description": "We've sent you a verification code",
   "email_verification_submit": "Verify code",
+  "register_success_title": "Account created",
+  "register_success_description": "E-mail confirmed and account created.",
+  "identity_verification_link": "Continue",
+  "identity_verification_skip": "Skip",
 
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",

@@ -16,6 +16,7 @@ interface Props {
   onSubmit: (verificationCode: string) => Promise<any>
   onResend: () => Promise<any>
   error?: AWSError | null | undefined
+  lastEmail?: string
 }
 
 // must use `minLength: 1` to implement required field
@@ -31,8 +32,7 @@ const schema = {
   required: ['verificationCode'],
 }
 
-const EmailVerificationForm = ({ onSubmit, error, onResend }: Props) => {
-  const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
+const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -59,16 +59,13 @@ const EmailVerificationForm = ({ onSubmit, error, onResend }: Props) => {
   return (
     <form
       className="flex flex-col space-y-6"
-      onSubmit={handleSubmit((data: Data) => {
-        setLastVerificationCode(data.verificationCode)
-        onSubmit(data.verificationCode)
-      })}
+      onSubmit={handleSubmit((data: Data) => onSubmit(data.verificationCode))}
     >
       <h1 className="text-h3">{t('email_verification_title')}</h1>
       <div>{t('email_verification_description')}</div>
       {error && (
         <Alert
-          message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
+          message={formatUnicorn(t(error.code), { email: lastEmail || '' })}
           type="error"
           className="min-w-full"
         />

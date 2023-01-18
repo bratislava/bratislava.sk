@@ -49,11 +49,16 @@
   "email_verification_title": "Overte svoj e-mail",
   "email_verification_description": "Do priečinka doručenej pošty sme vám odoslali overovací kód. Skopírujte ho do poľa nižšie.",
   "email_verification_submit": "Overiť kód",
+  "register_success_title": "Overenie bolo úspešné a mestské konto vytvorené",
+  "register_success_description": "E-mailová adresa {email} bola overená a mestské konto vytvorené.",
+  "register_success_content": "Na to, aby ste mohli plne využívať služby mestského konta potrebujeme poznať vaše **rodné číslo** a **číslo občianskeho preukazu**. Bez týchto údajov nevieme overiť vašu identitu voči štátnym registrom, a preto nebudete schopný/á odoslať elektronicky všetky žiadosti.",
+  "identity_verification_link": "Pokračovať",
+  "identity_verification_skip": "Preskočiť a overiť neskôr",
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",
   "LimitExceededException": "Skúste to znova neskôr.",
   "UserNotConfirmedException": "E-mail nie je verifikovaný.",
   "UsernameExistsException": "E-mail {email} sa už používa.",
-  "ExpiredCodeException": "E-mail sa nepodarilo overiť. Skontrolujte správnosť kódu."
+  "ExpiredCodeException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu."
 }

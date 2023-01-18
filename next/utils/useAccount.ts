@@ -12,7 +12,9 @@ import { useEffect, useState } from 'react'
 export enum AccountStatus {
   Idle,
   NewPasswordRequired,
-  VerificationRequired,
+  EmailVerificationRequired,
+  EmailVerificationSuccess,
+  IdentityVerificationRequired,
   SignedIn,
   Success,
 }
@@ -31,10 +33,10 @@ const poolData = {
 }
 const userPool = new CognitoUserPool(poolData)
 
-export default function useAccount() {
+export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | null>(null)
   const [error, setError] = useState<AWSError | undefined | null>(null)
-  const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
+  const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
 
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
@@ -66,7 +68,7 @@ export default function useAccount() {
             setError({ ...err })
             resolve(false)
           } else {
-            setStatus(AccountStatus.Success)
+            setStatus(AccountStatus.EmailVerificationSuccess)
             resolve(true)
           }
         })
@@ -160,7 +162,7 @@ export default function useAccount() {
           resolve(false)
         } else if (result) {
           setUser(result.user)
-          setStatus(AccountStatus.VerificationRequired)
+          setStatus(AccountStatus.EmailVerificationRequired)
           resolve(true)
         } else {
           resolve(false)
@@ -314,6 +316,7 @@ export default function useAccount() {
     forgotPassword,
     confirmPassword,
     status,
+    setStatus,
     userData,
     updateUserData,
     signUp,
