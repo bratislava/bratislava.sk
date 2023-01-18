@@ -7,11 +7,19 @@
     "birth": {
       "ui:widget": "DatePicker",
       "ui:label": false,
-      "ui:markdown": {
-        "title": "Header name",
-        "size": "sm",
-        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
-      },
+      "ui:accordion": [
+        {
+          "title": "Header name 1",
+          "size": "lg",
+          "shadow": true,
+          "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+        },
+        {
+          "title": "Header name 2",
+          "size": "sm",
+          "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+        }
+      ],
       "ui:options": {
         "tooltip": "Date picker hint"
       }
@@ -22,6 +30,11 @@
     "meeting-time": {
       "ui:widget": "TimePicker",
       "ui:label": false,
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
       "ui:options": {
         "tooltip": "Time picker hint"
       }
@@ -33,7 +46,7 @@
       "ui:widget": "InputField",
       "ui:label": false,
       "ui:placeholder": "First Name",
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
       },
@@ -49,7 +62,7 @@
       "ui:widget": "InputField",
       "ui:label": false,
       "ui:placeholder": "Last Name",
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
       },
@@ -99,7 +112,7 @@
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "size": "sm",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
@@ -141,7 +154,7 @@
       "ui:widget": "TextArea",
       "ui:label": false,
       "ui:placeholder": "Write some cons please",
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "size": "sm",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
@@ -162,7 +175,7 @@
       "ui:widget": "SelectField",
       "ui:label": false,
       "ui:placeholder": "tu skus pisat",
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "size": "sm",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
@@ -190,7 +203,7 @@
     "chooseOne": {
       "ui:widget": "RadioButton",
       "ui:label": false,
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "size": "sm",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
@@ -216,7 +229,7 @@
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
-      "ui:markdown": {
+      "ui:accordion": {
         "title": "Header name",
         "size": "sm",
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"

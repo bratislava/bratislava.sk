@@ -52,3 +52,6 @@ const isServer = () => typeof window === 'undefined'
 export const isBrowser = () => !isServer()
 
 export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
+
+export const isObject = (value: any) =>
+  typeof value === 'object' && value !== null && !Array.isArray(value)

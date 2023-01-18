@@ -4,8 +4,6 @@ import InputField from 'components/forms/widget-components/InputField/InputField
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
-
 type InputFieldRJSFOptions = {
   type?: 'text' | 'password'
   resetIcon?: boolean
@@ -41,7 +39,7 @@ const InputFieldWidgetRJSF = ({
     className,
     resetIcon,
     leftIcon,
-    markdown,
+    accordion,
     explicitOptional,
     type,
     size = 'default',
@@ -52,7 +50,7 @@ const InputFieldWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper className="gap-4 flex flex-col" spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}
@@ -70,14 +68,6 @@ const InputFieldWidgetRJSF = ({
         explicitOptional={explicitOptional}
         size={size}
       />
-      {markdown && markdown.title && markdown.content && (
-        <Accordion
-          size={markdown.size as AccordionSizeType}
-          title={markdown.title}
-          shadow
-          markdownContent={markdown.content}
-        />
-      )}
     </WidgetWrapper>
   )
 }

@@ -5,8 +5,6 @@ import DatePicker from 'components/forms/widget-components/DateTimePicker/DatePi
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
-
 type DatePickerRJSFOptions = WidgetOptions
 
 interface DatePickerWidgetRJSFProps extends WidgetProps {
@@ -34,7 +32,7 @@ const DatePickerWidgetRJSF = ({
     description,
     tooltip,
     explicitOptional,
-    markdown,
+    accordion,
     spaceBottom = 'default',
     spaceTop = 'none',
   } = options
@@ -43,7 +41,7 @@ const DatePickerWidgetRJSF = ({
     newValue ? onChange(newValue.toString()) : onChange()
 
   return (
-    <WidgetWrapper className="flex flex-col gap-4" spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <DatePicker
         label={label}
         errorMessage={rawErrors}
@@ -55,14 +53,6 @@ const DatePickerWidgetRJSF = ({
         value={value}
         onChange={handleOnChange}
       />
-      {markdown && markdown.title && markdown.content && markdown?.size && (
-        <Accordion
-          size={markdown.size as AccordionSizeType}
-          title={markdown.title}
-          shadow
-          markdownContent={markdown.content}
-        />
-      )}
     </WidgetWrapper>
   )
 }

@@ -3,7 +3,6 @@ import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
 import Checkbox from '../widget-components/Checkbox/Checkbox'
 import CheckboxGroup from '../widget-components/Checkbox/CheckboxGroup'
 
@@ -39,7 +38,7 @@ const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
   const {
     enumOptions,
     className,
-    markdown,
+    accordion,
     spaceBottom = 'default',
     spaceTop = 'none',
     checkboxOptions = [],
@@ -53,7 +52,7 @@ const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
     return value.length === maxItems && !value.includes(valueName)
   }
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <CheckboxGroup
         rawErrors={rawErrors}
         value={value}
@@ -75,14 +74,6 @@ const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
           )
         })}
       </CheckboxGroup>
-      {markdown && markdown.title && markdown.content && (
-        <Accordion
-          size={markdown.size as AccordionSizeType}
-          title={markdown.title}
-          shadow
-          markdownContent={markdown.content}
-        />
-      )}
     </WidgetWrapper>
   )
 }

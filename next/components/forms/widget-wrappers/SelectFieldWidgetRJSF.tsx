@@ -3,7 +3,6 @@ import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import React from 'react'
 
-import Accordion, { AccordionSizeType } from '../simple-components/Accordion'
 import SelectField from '../widget-components/SelectField/SelectField'
 
 type SelectRJSFOptions = {
@@ -33,7 +32,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     selectAllOption,
     description,
     tooltip,
-    markdown,
+    accordion,
     dropdownDivider,
     className,
     explicitOptional,
@@ -96,7 +95,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   return (
-    <WidgetWrapper className="gap-4 flex flex-col" spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <SelectField
         type={type}
         label={label}
@@ -114,14 +113,6 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
         onChange={handleOnChange}
         explicitOptional={explicitOptional}
       />
-      {markdown && markdown.title && markdown.content && (
-        <Accordion
-          size={markdown.size as AccordionSizeType}
-          title={markdown.title}
-          shadow
-          markdownContent={markdown.content}
-        />
-      )}
     </WidgetWrapper>
   )
 }
