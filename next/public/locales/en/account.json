@@ -12,5 +12,6 @@
   "forgotten_password_description": "Forgot password?",
   "forgotten_password_link": "Reset password",
 
-  "NotAuthorizedException": "Unauthorized"
+  "NotAuthorizedException": "Unauthorized",
+  "my_profile": "My profile"
 }
