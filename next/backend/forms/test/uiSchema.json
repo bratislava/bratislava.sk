@@ -196,9 +196,8 @@
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
       },
       "ui:options": {
-        "className": "flex flex-row gap-6 mt-4",
-        "//className": "flex flex-col gap-3 mt-4 max-w-[500px]",
         "variant": "boxed",
+        "orientations": "row",
         "radioOptions": [
           {
             "value": "screen",
