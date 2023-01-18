@@ -25,5 +25,10 @@
       "title": "I am interested in receiving information about other digital services of the city of Bratislava",
       "text": "I want to subscribe to news and marketing notifications"
     }
+  },
+  "password_change": {
+    "title": "Password",
+    "text": "Change your login password",
+    "button": "Change password"
   }
 }

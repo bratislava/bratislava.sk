@@ -1,19 +1,26 @@
-import cx from 'classnames'
+import LockIcon from '@assets/images/forms/lock-white.svg'
+import UserProfileSection from '@bratislava/ui-bratislava/UserProfileSection/UserProfileSection'
+import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfileSectionHeader/UserProfileSectionHeader'
+import { useTranslation } from 'next-i18next'
+
+import Button from '../../forms/simple-components/Button'
 
 const UserProfilePassword = () => {
+  const { t } = useTranslation('account')
+
   return (
-    <div
-      className={cx('bg-white flex flex-col items-center pb-5 h-full', 'xs:pb-8 xs:pt-3 xs:px-8')}
-    >
-      <div
-        className={cx(
-          'flex flex-col w-full rounded-lg border-b-2 border-gray-200 p-4',
-          'xs:flex-row xs:border-2 xs:max-w-6xl xs:px-8 xs:py-6',
-        )}
-      >
-        <div />
-      </div>
-    </div>
+    <UserProfileSection>
+      <UserProfileSectionHeader title={t('password_change.title')} text={t('password_change.text')}>
+        <div className="w-44">
+          <Button
+            variant="black"
+            startIcon={<LockIcon />}
+            size="sm"
+            text={t('password_change.button')}
+          />
+        </div>
+      </UserProfileSectionHeader>
+    </UserProfileSection>
   )
 }
 

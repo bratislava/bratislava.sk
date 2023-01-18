@@ -1,4 +1,5 @@
 import UserProfileConsents from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
+import UserProfilePassword from '@bratislava/ui-bratislava/UserProfilePassword/UserProfilePassword'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
@@ -10,7 +11,7 @@ const UserProfileView = () => {
   return (
     <section className="flex flex-col gap-2 xs:gap-0 h-full">
       <div className="bg-white">Kravina</div>
-      <div className="bg-white">kravina</div>
+      <UserProfilePassword />
       <UserProfileConsents />
     </section>
   )
