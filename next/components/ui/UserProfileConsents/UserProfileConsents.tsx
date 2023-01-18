@@ -28,17 +28,17 @@ const UserProfileConsents = () => {
 
   return (
     <UserProfileSection>
-      <UserProfileSectionHeader title={t('consents.title')} text={t('consents.text')} />
-      {/* <div className={cx('w-full rounded-b-lg border-gray-200')}> */}
-      {/*  {allConsents.map((consent: Consent, key: number) => ( */}
-      {/*    <UserConsent */}
-      {/*      key={key} */}
-      {/*      consent={consent} */}
-      {/*      isLast={key === allConsents.length - 1} */}
-      {/*      onChange={(isSelected) => console.log(key, ':', isSelected)} */}
-      {/*    /> */}
-      {/*  ))} */}
-      {/* </div> */}
+      <UserProfileSectionHeader title={t('consents.title')} text={t('consents.text')} underline />
+      <div className={cx('px-4', 'xs:px-8')}>
+        {allConsents.map((consent: Consent, key: number) => (
+          <UserConsent
+            key={key}
+            consent={consent}
+            isLast={key === allConsents.length - 1}
+            onChange={(isSelected) => console.log(key, ':', isSelected)}
+          />
+        ))}
+      </div>
     </UserProfileSection>
   )
 }
