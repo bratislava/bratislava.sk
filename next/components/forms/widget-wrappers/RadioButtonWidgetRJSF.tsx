@@ -16,6 +16,7 @@ type RadioButtonRJSFOptions = {
   className?: string
   radioOptions?: RadioUiOptions[]
   variant?: 'basic' | 'boxed' | 'card'
+  orientations?: 'column' | 'row'
 } & WidgetOptions
 
 interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
@@ -37,6 +38,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     className,
     variant,
     radioOptions = [],
+    orientations,
     spaceBottom = 'default',
     spaceTop = 'none',
   } = options
@@ -53,6 +55,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
         onChange={onChange}
         className={className}
         label={label}
+        orientations={orientations}
       >
         {enumOptions.map((radioElement: EnumOptionsType) => {
           return (
