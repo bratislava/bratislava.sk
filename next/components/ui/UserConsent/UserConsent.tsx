@@ -12,11 +12,11 @@ interface UserConsentProps {
 const UserConsent = ({ consent, isLast, onChange }: UserConsentProps) => {
   return (
     <div
-      className={cx('flex flex-col border-gray-200 gap-2 py-4', 'xs:flex-row xs:py-6', {
+      className={cx('flex flex-col border-gray-200 gap-4 py-4', 'xs:flex-row xs:py-6', {
         'border-b-2': !isLast,
       })}
     >
-      <div className="w-full">
+      <div className="w-full grow">
         <h5 className="text-h6">{consent.title}</h5>
         <p className="text-p2-normal">{consent.text}</p>
       </div>

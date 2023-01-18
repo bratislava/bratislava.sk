@@ -1,5 +1,6 @@
 import UserProfileConsents from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfilePassword/UserProfilePassword'
+import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 

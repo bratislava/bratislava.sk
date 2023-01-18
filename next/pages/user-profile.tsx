@@ -2,6 +2,7 @@ import UserProfileView from '@bratislava/ui-bratislava/UserProfileView/UserProfi
 import { client } from '@utils/gql'
 import { parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
+import useAccount from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
 import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -32,6 +33,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const UserProfile = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
+  const { user } = useAccount()
+  console.log('USER', user)
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <GeneralLayout title={t('my_profile')}>
