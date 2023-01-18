@@ -13,5 +13,17 @@
   "forgotten_password_link": "Reset password",
 
   "NotAuthorizedException": "Unauthorized",
-  "my_profile": "My profile"
+  "my_profile": "My profile",
+  "consents": {
+    "title": "Consents",
+    "text": "Manage granted consents",
+    "personal_data": {
+      "title": "Consent to the processing of personal data",
+      "text": "I agree for the city to work with the data I filled out"
+    },
+    "receive_information": {
+      "title": "I am interested in receiving information about other digital services of the city of Bratislava",
+      "text": "I want to subscribe to news and marketing notifications"
+    }
+  }
 }

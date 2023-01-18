@@ -14,5 +14,17 @@
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
 
-  "my_profile": "Môj profil"
+  "my_profile": "Môj profil",
+  "consents": {
+    "title": "Súhlasy",
+    "text": "Spravujte udelené súhlasy",
+    "personal_data": {
+      "title": "Súhlas so spracovaním osobných údajov",
+      "text": "Súhlasím s tým, aby mesto pracovalo s údajmi, ktoré som vyplnil/a"
+    },
+    "receive_information": {
+      "title": "Mám záujem dostávať informácie aj o iných digitálnych službách mesta Bratislava",
+      "text": "Chcem sa prihlásiť na odber noviniek a marketingových upozornení"
+    }
+  }
 }
