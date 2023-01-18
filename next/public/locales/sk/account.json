@@ -26,5 +26,10 @@
       "title": "Mám záujem dostávať informácie aj o iných digitálnych službách mesta Bratislava",
       "text": "Chcem sa prihlásiť na odber noviniek a marketingových upozornení"
     }
+  },
+  "password_change": {
+    "title": "Heslo",
+    "text": "Zmeňte svoje prihlasovacie heslo",
+    "button": "Zmeniť heslo"
   }
 }

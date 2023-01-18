@@ -6,6 +6,7 @@ const UserProfileView = () => {
   const { t } = useTranslation('account')
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
+  // TODO: handle change of consents
   return (
     <section className="flex flex-col gap-2 xs:gap-0 h-full">
       <div className="bg-white">Kravina</div>
