@@ -8,6 +8,7 @@ type SelectRJSFOptions = {
   enumOptions?: EnumOptionsType[]
   dropdownDivider?: boolean
   selectAllOption?: boolean
+  uDescription?: string | string[]
   // selectType?: 'one' | 'multiple' | 'arrow' | 'radio'
 } & WidgetOptions
 
@@ -29,7 +30,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   const {
     enumOptions,
     selectAllOption,
-    description,
+    uDescription,
     tooltip,
     dropdownDivider,
     className,
@@ -101,7 +102,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
         value={transformValue()}
         selectAllOption={selectAllOption}
         placeholder={placeholder}
-        description={description}
+        description={uDescription}
         tooltip={tooltip}
         dropdownDivider={dropdownDivider}
         errorMessage={rawErrors}

@@ -27,7 +27,7 @@ interface SelectFieldProps {
   selectAllOption?: boolean
   placeholder?: string
   errorMessage?: string[]
-  description?: string
+  description?: string | string[]
   required?: boolean
   explicitOptional?: 'none' | 'right' | 'left'
   disabled?: boolean

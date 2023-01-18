@@ -9,7 +9,7 @@ interface FieldHeaderProps {
   htmlFor?: string
   required?: boolean
   explicitOptional?: 'none' | 'right' | 'left'
-  description?: string
+  description?: string | string[]
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
   tooltip?: string
@@ -32,6 +32,11 @@ const FieldHeader: FC<FieldHeaderProps> = ({
     'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
       required,
   })
+
+  const descriptionFormat = () => {
+    if (typeof description === 'string') return description.trim()
+    return description.map((sentence, i) => <span key={i}>{sentence}</span>)
+  }
 
   return (
     <div className="w-full">
@@ -87,7 +92,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
         /* DESCRIPTION */
         description && (
           <div {...descriptionProps} className="text-16 mb-1 text-gray-700">
-            {description}
+            {descriptionFormat()}
           </div>
         )
       }

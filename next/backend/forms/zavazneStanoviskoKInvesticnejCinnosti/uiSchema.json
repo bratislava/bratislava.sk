@@ -8,7 +8,6 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed"
       }
     },
@@ -90,7 +89,7 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex gap-4",
+        "orientations": "row",
         "variant": "boxed"
       }
     },
@@ -108,7 +107,6 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed"
       }
     },
@@ -229,7 +227,6 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4 mt-4 max-w-[500px]",
         "variant": "boxed"
       }
     },
@@ -253,6 +250,7 @@
       "ui:label": false,
       "ui:placeholder": "Vyberte",
       "ui:options": {
+        "uDescription": "Vyberte jedno alebo viacero katastrálnych území, v ktorých sa pozemok nachádza",
         "dropdownDivider": true
       }
     }
@@ -263,7 +261,6 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4 mt-4",
         "variant": "boxed"
       }
     },
@@ -271,7 +268,6 @@
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:options": {
-        "className": "flex flex-col gap-4 mt-4",
         "variant": "boxed"
       }
     },

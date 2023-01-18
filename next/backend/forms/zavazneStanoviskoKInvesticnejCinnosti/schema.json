@@ -564,7 +564,6 @@
             },
             "stavbaKataster": {
               "title": "Katastrálne územie",
-              "description": "Vyberte jedno alebo viacero katastrálnych území, v ktorých sa pozemok nachádza",
               "type": "array",
               "uniqueItems": true,
               "items": {

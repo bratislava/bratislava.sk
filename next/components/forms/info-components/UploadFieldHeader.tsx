@@ -17,15 +17,6 @@ const UploadFieldHeader = (props: UploadFieldHeaderProps) => {
       required,
   })
 
-  // const descriptionFormat = () => {
-  //   if (!description.includes('.')) return description
-  //   return description
-  //     .trim()
-  //     .split('.')
-  //     .filter(Boolean)
-  //     .map((sentence, i) => <span key={i}>{sentence}.</span>)
-  // }
-
   const descriptionFormat = () => {
     if (typeof description === 'string') return description.trim()
     return description.map((sentence, i) => <span key={i}>{sentence}</span>)
