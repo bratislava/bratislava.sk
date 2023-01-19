@@ -1,8 +1,7 @@
 import { isObject } from '@utils/utils'
 import cx from 'classnames'
 import { FormSpacingType } from 'components/forms/types/WidgetOptions'
-import React, { ReactNode } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React, { ReactNode, useId } from 'react'
 
 import Accordion, { AccordionBase } from '../simple-components/Accordion'
 
@@ -12,6 +11,7 @@ type WidgetWrapperBase = {
   spaceBottom?: FormSpacingType
   spaceTop?: FormSpacingType
   accordion?: AccordionBase | AccordionBase[]
+  id?: string
 }
 
 const WidgetWrapper = ({
@@ -20,7 +20,10 @@ const WidgetWrapper = ({
   accordion,
   spaceBottom = 'default',
   spaceTop = 'default',
+  id,
 }: WidgetWrapperBase) => {
+  const generatedId = useId()
+  const generatedOrProvidedId = id ?? generatedId
   return (
     <div
       className={cx('flex flex-col gap-4', className, {
@@ -37,10 +40,11 @@ const WidgetWrapper = ({
     >
       {children}
       {Array.isArray(accordion) &&
-        accordion.map((item) => {
+        accordion.map((item, index) => {
+          const labelId = `${generatedOrProvidedId}-item-label-${index}`
           return (
             <Accordion
-              key={uuidv4()}
+              key={labelId}
               size={item.size}
               title={item.title}
               shadow={item.shadow}
