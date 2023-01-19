@@ -10,24 +10,24 @@ const ToggleShowCase = () => {
   return (
     <Wrapper direction="column" title="Toggle">
       <Stack>
-        <Toggle value="firstToggle" defaultSelected />
+        <Toggle id="firstToggle" defaultSelected />
         <Toggle
-          value="secondToggle"
+          id="secondToggle"
           isSelected={secondToggleSelected}
           onChange={setSecondToggleSelected}
         >
           Value
         </Toggle>
-        <Toggle value="thirdToggle" isDisabled>
+        <Toggle id="thirdToggle" isDisabled>
           Value
         </Toggle>
-        <Toggle value="fourthToggle" isDisabled>
+        <Toggle id="fourthToggle" isDisabled>
           Value
         </Toggle>
-        <Toggle value="fifthToggle" isReadOnly>
+        <Toggle id="fifthToggle" isReadOnly>
           Read only
         </Toggle>
-        <Toggle value="sixthToggle" />
+        <Toggle id="sixthToggle" />
       </Stack>
     </Wrapper>
   )
