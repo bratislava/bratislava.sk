@@ -37,6 +37,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     enumOptions,
     className,
     variant,
+    accordion,
     radioOptions = [],
     orientations,
     spaceBottom = 'default',
@@ -48,7 +49,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     return radioOptions.find((option) => option.value === radioValue)?.tooltip
   }
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <RadioGroup
         errorMessage={rawErrors}
         value={value}
