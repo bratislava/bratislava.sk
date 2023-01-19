@@ -17,7 +17,6 @@ export enum AccountStatus {
   EmailVerificationSuccess,
   IdentityVerificationRequired,
   IdentityVerificationSuccess,
-  SignedIn,
 }
 
 export interface UserData {
@@ -39,6 +38,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [error, setError] = useState<AWSError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
+  const [lastEmail, setLastEmail] = useState<string>('')
 
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
@@ -61,40 +61,41 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   }
 
   const verifyEmail = (verificationCode: string): Promise<boolean> => {
-    setError(null)
+    const cognitoUser = new CognitoUser({
+      Username: lastEmail,
+      Pool: userPool,
+    })
+
     return new Promise((resolve) => {
-      if (user) {
-        user.confirmRegistration(verificationCode, true, (err?: AWSError) => {
-          if (err) {
-            setError({ ...err })
-            resolve(false)
-          } else {
-            setStatus(AccountStatus.EmailVerificationSuccess)
-            resolve(true)
-          }
-        })
-      } else {
-        resolve(false)
-      }
+      cognitoUser.confirmRegistration(verificationCode, true, (err?: AWSError) => {
+        if (err) {
+          setError({ ...err })
+          resolve(false)
+        } else {
+          setStatus(AccountStatus.EmailVerificationSuccess)
+          resolve(true)
+        }
+      })
     })
   }
 
   const resendVerificationCode = (): Promise<boolean> => {
+    const cognitoUser = new CognitoUser({
+      Username: lastEmail,
+      Pool: userPool,
+    })
+
     setError(null)
     return new Promise((resolve) => {
-      if (user) {
-        user.resendConfirmationCode((err?: Error, res?: string) => {
-          if (err) {
-            setError({ ...(err as AWSError) })
-            resolve(false)
-          } else {
-            console.log(res)
-            resolve(true)
-          }
-        })
-      } else {
-        resolve(false)
-      }
+      cognitoUser.resendConfirmationCode((err?: Error, res?: string) => {
+        if (err) {
+          setError({ ...(err as AWSError) })
+          resolve(false)
+        } else {
+          console.log(res)
+          resolve(true)
+        }
+      })
     })
   }
 
@@ -120,23 +121,22 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   }
 
   useEffect(() => {
-    const currentUser = userPool.getCurrentUser()
-    if (currentUser != null) {
-      currentUser.getSession((err: Error) => {
+    const cognitoUser = userPool.getCurrentUser()
+    if (cognitoUser != null) {
+      cognitoUser.getSession((err: Error) => {
         if (err) {
           console.error(err)
           return
         }
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
-        currentUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
+        cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
             console.error(err)
             return
           }
 
           setUserData(userAttributesToObject(attributes))
-          setStatus(AccountStatus.SignedIn)
-          setUser(currentUser)
+          setUser(cognitoUser)
         })
       })
     }
@@ -154,6 +154,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const signUp = (email: string, password: string, data: UserData): Promise<boolean> => {
     const attributeList = objectToUserAttributes(data)
 
+    setLastEmail(email)
     setError(null)
     return new Promise((resolve) => {
       userPool.signUp(email, password, attributeList, [], (err?: Error, result?: ISignUpResult) => {
@@ -162,7 +163,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           setError({ ...(err as AWSError) })
           resolve(false)
         } else if (result) {
-          setUser(result.user)
           setStatus(AccountStatus.EmailVerificationRequired)
           resolve(true)
         } else {
@@ -173,52 +173,49 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   }
 
   const confirmPassword = (verificationCode: string, password: string) => {
+    const cognitoUser = new CognitoUser({
+      Username: lastEmail,
+      Pool: userPool,
+    })
+
     return new Promise((resolve) => {
-      if (user) {
-        user.confirmPassword(verificationCode, password, {
-          onSuccess() {
-            console.log('Password confirmed!')
-            setStatus(AccountStatus.NewPasswordSuccess)
-            resolve(true)
-          },
-          onFailure(err: Error) {
-            setError({ ...(err as AWSError) })
-            resolve(false)
-          },
-        })
-      } else {
-        resolve(false)
-      }
+      cognitoUser.confirmPassword(verificationCode, password, {
+        onSuccess() {
+          console.log('Password confirmed!')
+          setStatus(AccountStatus.NewPasswordSuccess)
+          resolve(true)
+        },
+        onFailure(err: Error) {
+          setError({ ...(err as AWSError) })
+          resolve(false)
+        },
+      })
     })
   }
 
   const forgotPassword = (email = ''): Promise<boolean> => {
-    const cognitoUser = email
-      ? new CognitoUser({
-          Username: email,
-          Pool: userPool,
-        })
-      : user
+    const cognitoUser = new CognitoUser({
+      Username: email || lastEmail,
+      Pool: userPool,
+    })
 
+    if (email) {
+      setLastEmail(email)
+    }
     setError(null)
     return new Promise((resolve) => {
-      if (cognitoUser) {
-        cognitoUser.forgotPassword({
-          onSuccess: (data) => {
-            console.log(data)
-            // successfully initiated reset password request
-            setUser(cognitoUser)
-            setStatus(AccountStatus.NewPasswordRequired)
-            resolve(true)
-          },
-          onFailure: (err: Error) => {
-            setError({ ...(err as AWSError) })
-            resolve(false)
-          },
-        })
-      } else {
-        resolve(false)
-      }
+      cognitoUser.forgotPassword({
+        onSuccess: (data) => {
+          console.log(data)
+          // successfully initiated reset password request
+          setStatus(AccountStatus.NewPasswordRequired)
+          resolve(true)
+        },
+        onFailure: (err: Error) => {
+          setError({ ...(err as AWSError) })
+          resolve(false)
+        },
+      })
     })
   }
 
@@ -235,6 +232,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
       Pool: userPool,
     })
 
+    setLastEmail(email)
     setError(null)
     return new Promise((resolve) => {
       cognitoUser.authenticateUser(authenticationDetails, {
@@ -266,7 +264,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
                   resolve(false)
                 } else {
                   setUserData(userAttributesToObject(attributes))
-                  setStatus(AccountStatus.SignedIn)
                   setUser(cognitoUser)
                   resolve(true)
                 }
@@ -276,7 +273,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
         },
 
         onFailure(err: AWSError) {
-          setError({ ...err })
+          if (err.code === 'UserNotConfirmedException') {
+            setStatus(AccountStatus.EmailVerificationRequired)
+          } else {
+            setError({ ...err })
+          }
           resolve(false)
         },
 
@@ -323,5 +324,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     signUp,
     verifyEmail,
     resendVerificationCode,
+    lastEmail,
   }
 }

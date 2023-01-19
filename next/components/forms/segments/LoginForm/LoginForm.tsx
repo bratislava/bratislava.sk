@@ -1,16 +1,20 @@
-import useAccount from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
+import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import { Controller } from 'react-hook-form'
 
 interface Data {
   email: string
   password: string
+}
+
+interface Props {
+  onSubmit: (email: string, password: string) => Promise<any>
+  error?: AWSError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field
@@ -32,10 +36,8 @@ const schema = {
   required: ['email', 'password'],
 }
 
-const LoginForm = () => {
-  const { login, error } = useAccount()
+const LoginForm = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
-  const router = useRouter()
 
   const {
     handleSubmit,
@@ -46,20 +48,12 @@ const LoginForm = () => {
     schema,
     defaultValues: { email: '', password: '' },
   })
-  const onSubmit = async (data: Data) => {
-    if (await login(data.email, data.password)) {
-      const from =
-        router.query.from &&
-        typeof router.query.from === 'string' &&
-        router.query.from.startsWith('/')
-          ? decodeURIComponent(router.query.from)
-          : '/'
-      router.push(from)
-    }
-  }
 
   return (
-    <form className="flex flex-col space-y-6" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col space-y-6"
+      onSubmit={handleSubmit((data: Data) => onSubmit(data.email, data.password))}
+    >
       <h1 className="text-h3">{t('login_title')}</h1>
       {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
       <Controller

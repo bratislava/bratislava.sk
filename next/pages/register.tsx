@@ -1,6 +1,6 @@
 import { formatUnicorn } from '@utils/string'
 import { AsyncServerProps } from '@utils/types'
-import useAccount, { AccountStatus, UserData } from '@utils/useAccount'
+import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
 import AccountSuccessAlert from 'components/forms/segments/AccountSuccessAlert/AccountSuccessAlert'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
@@ -11,7 +11,6 @@ import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -40,14 +39,9 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
-  const [lastEmail, setLastEmail] = useState<string>('')
-  const { signUp, resendVerificationCode, verifyEmail, error, status, setStatus } = useAccount()
+  const { signUp, resendVerificationCode, verifyEmail, error, status, setStatus, lastEmail } =
+    useAccount()
   const router = useRouter()
-
-  const onSignUp = (email: string, password: string, data: UserData): Promise<boolean> => {
-    setLastEmail(email)
-    return signUp(email, password, data)
-  }
 
   const onVerifyIdentity = (rc: string, idCard: string) => {
     setStatus(AccountStatus.IdentityVerificationSuccess)
@@ -58,7 +52,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
       <LoginRegisterLayout>
         <AccountContainer>
           {status === AccountStatus.Idle && (
-            <RegisterForm lastEmail={lastEmail} onSubmit={onSignUp} error={error} />
+            <RegisterForm lastEmail={lastEmail} onSubmit={signUp} error={error} />
           )}
           {status === AccountStatus.EmailVerificationRequired && (
             <EmailVerificationForm
