@@ -1,5 +1,6 @@
 import cx from 'classnames'
 import * as React from 'react'
+import { useId } from 'react'
 import { useFocusRing, useSwitch, VisuallyHidden } from 'react-aria'
 import { ToggleState, useToggleState } from 'react-stately'
 
@@ -13,15 +14,17 @@ type ToggleBase = {
   defaultSelected?: boolean
   isSelected?: boolean
   children?: React.ReactNode
-  value?: string
+  id?: string
   onChange?: (isSelected: boolean) => void
 }
 
 const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
   const state: ToggleState = useToggleState({ ...rest, isDisabled, children })
+  const generatedId = useId()
+  const generatedOrProvidedId = rest.id ?? generatedId
   const ref = React.useRef(null)
   const { inputProps } = useSwitch(
-    { ...rest, isDisabled, children },
+    { ...rest, isDisabled, children, 'aria-label': generatedOrProvidedId },
     state,
     ref as React.MutableRefObject<null>,
   )
@@ -43,9 +46,9 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
     'left-0.5': !isSelected,
   })
   return (
-    <label htmlFor={rest.value} className={toggleContainer}>
+    <label htmlFor={generatedOrProvidedId} className={toggleContainer}>
       <VisuallyHidden>
-        <input id={rest.value} {...inputProps} {...focusProps} ref={ref} />
+        <input id={generatedOrProvidedId} {...inputProps} {...focusProps} ref={ref} />
       </VisuallyHidden>
       <div className={togglerContainer}>
         <div
