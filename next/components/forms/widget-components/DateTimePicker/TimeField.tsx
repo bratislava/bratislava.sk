@@ -6,7 +6,7 @@ import FieldHeader from '../../info-components/FieldHeader'
 
 type TimeFieldBase = {
   label?: string
-  description?: string
+  helptext?: string
   tooltip?: string
   required?: boolean
   explicitOptional?: 'none' | 'right' | 'left'
@@ -23,7 +23,7 @@ type TimeFieldBase = {
 
 const TimeField = ({
   label,
-  description,
+  helptext,
   tooltip,
   required,
   explicitOptional,
@@ -48,7 +48,7 @@ const TimeField = ({
   const { labelProps, inputProps, descriptionProps } = useTextField(
     {
       label,
-      description,
+      description: helptext,
       placeholder: 'HH:MM',
       isRequired: required,
       isDisabled: disabled,
@@ -84,7 +84,7 @@ const TimeField = ({
         htmlFor={inputProps.id}
         labelProps={labelProps}
         tooltip={tooltip}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}

@@ -11,7 +11,7 @@ interface InputBase {
   label: string
   placeholder: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   className?: string
   value?: string
   required?: boolean
@@ -26,7 +26,7 @@ const SearchField = ({
   label,
   placeholder,
   errorMessage = [],
-  description,
+  helptext,
   tooltip,
   required,
   explicitOptional,
@@ -45,7 +45,7 @@ const SearchField = ({
       value,
       label,
       errorMessage,
-      description,
+      description: helptext,
       onChange(value) {
         setValueState(value.startsWith(' ') ? value.trim() : value)
       },
@@ -76,7 +76,7 @@ const SearchField = ({
         label={label}
         labelProps={labelProps}
         htmlFor={inputProps?.id}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}

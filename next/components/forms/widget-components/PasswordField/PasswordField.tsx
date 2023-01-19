@@ -6,7 +6,7 @@ interface Props {
   label: string
   placeholder: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   className?: string
   value?: string
   required?: boolean
@@ -22,7 +22,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
       label,
       placeholder,
       errorMessage = [],
-      description,
+      helptext,
       tooltip,
       required,
       explicitOptional,
@@ -42,7 +42,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
         label={label}
         placeholder={placeholder}
         errorMessage={errorMessage}
-        description={description}
+        helptext={helptext}
         value={value}
         className={className}
         required={required}

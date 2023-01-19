@@ -27,7 +27,7 @@ interface SelectFieldProps {
   selectAllOption?: boolean
   placeholder?: string
   errorMessage?: string[]
-  description?: string | string[]
+  helptext?: string
   required?: boolean
   explicitOptional?: 'none' | 'right' | 'left'
   disabled?: boolean
@@ -47,7 +47,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     type = 'one',
     selectAllOption,
     placeholder,
-    description,
+    helptext,
     tooltip,
     dropdownDivider,
     errorMessage = [],
@@ -206,7 +206,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader
         label={label}
         htmlFor={hashCode}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         required={required}
         explicitOptional={explicitOptional}

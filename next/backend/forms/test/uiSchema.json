@@ -76,7 +76,7 @@
       "ui:placeholder": "PSC",
       "ui:options": {
         "tooltip": "PSC hint, only numbers",
-        "description": "Only numbers",
+        "helptext": "Only numbers",
         "size": "small"
       }
     }
@@ -88,10 +88,7 @@
       "ui:label": false,
       "ui:options": {
         "type": "button",
-        "uDescription": [
-          "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
-          "Prílohy nemôžu presiahnuť veľkosť 250MB."
-        ]
+        "helptext": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.\nPrílohy nemôžu presiahnuť veľkosť 250MB."
       }
     },
     "importButtonMultipleFiles": {
@@ -127,7 +124,7 @@
       "ui:label": false,
       "ui:placeholder": "Write some cons please",
       "ui:options": {
-        "description": "Here write pros",
+        "helptext": "Here write pros",
         "tooltip": "This is simple tooltip"
       }
     },
@@ -144,7 +141,7 @@
       "ui:placeholder": "tu skus pisat",
       "ui:options": {
         "dropdownDivider": true,
-        "description": "Here choose your last school",
+        "helptext": "Here choose your last school",
         "tooltip": "This tooltip will tell you what to do better when you choose this."
       }
     },

@@ -5,11 +5,11 @@ interface UploadFieldHeaderProps {
   label: string
   htmlFor?: string
   required?: boolean
-  description?: string | string[]
+  helptext?: string
 }
 
 const UploadFieldHeader = (props: UploadFieldHeaderProps) => {
-  const { label, htmlFor, required, description = '' } = props
+  const { label, htmlFor, required, helptext = '' } = props
 
   // STYLES
   const labelStyle = cx('text-20-semibold leading-7 relative text-gray-800', {
@@ -17,10 +17,11 @@ const UploadFieldHeader = (props: UploadFieldHeaderProps) => {
       required,
   })
 
-  const descriptionFormat = () => {
-    if (typeof description === 'string') return description.trim()
-    return description.map((sentence, i) => <span key={i}>{sentence}</span>)
-  }
+  const helptextHandler = () =>
+    helptext
+      .trim()
+      .split('\n')
+      .map((sentence, i) => <span key={i}>{sentence}</span>)
 
   return (
     <div className="flex flex-col gap-1 mb-3">
@@ -30,9 +31,7 @@ const UploadFieldHeader = (props: UploadFieldHeaderProps) => {
         </label>
         {!required && <span className="text-20 leading-7 ml-2">(optional)</span>}
       </div>
-      {description && (
-        <div className="text-16 text-gray-700 flex flex-col">{descriptionFormat()}</div>
-      )}
+      {helptext && <div className="text-16 text-gray-700 flex flex-col">{helptextHandler()}</div>}
     </div>
   )
 }

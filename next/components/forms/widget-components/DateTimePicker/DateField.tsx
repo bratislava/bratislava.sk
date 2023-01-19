@@ -36,7 +36,7 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
 }
 type DateFieldBase = {
   label?: string
-  description?: string
+  helptext?: string
   tooltip?: string
   required?: boolean
   explicitOptional?: 'none' | 'right' | 'left'
@@ -52,7 +52,7 @@ const DateField = ({
   children,
   label,
   tooltip,
-  description,
+  helptext,
   isOpen,
   required,
   explicitOptional,
@@ -62,7 +62,7 @@ const DateField = ({
   const { locale } = useLocale()
   const state = useDateFieldState({
     label,
-    description,
+    description: helptext,
     errorMessage,
     isDisabled: disabled,
     isRequired: required,
@@ -89,7 +89,7 @@ const DateField = ({
         htmlFor={fieldProps?.id || ''}
         labelProps={labelProps}
         tooltip={tooltip}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}

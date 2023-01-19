@@ -15,7 +15,7 @@ interface InputBase {
   type?: 'text' | 'password'
   placeholder: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   className?: string
   value?: string
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
@@ -36,7 +36,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       type,
       placeholder,
       errorMessage = [],
-      description,
+      helptext,
       tooltip,
       required,
       explicitOptional,
@@ -66,7 +66,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         type: type !== 'password' ? 'text' : type,
         label,
         errorMessage,
-        description,
+        description: helptext,
         onChange(inputValue) {
           if (onChange) {
             onChange(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
@@ -128,7 +128,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           label={label}
           labelProps={labelProps}
           htmlFor={inputProps.id}
-          description={description}
+          helptext={helptext}
           descriptionProps={descriptionProps}
           required={required}
           explicitOptional={explicitOptional}

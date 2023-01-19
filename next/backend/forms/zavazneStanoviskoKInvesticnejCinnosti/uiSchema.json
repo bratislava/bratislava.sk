@@ -97,7 +97,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": "nahrajte splnomocnenie od investora",
+        "helptext": "nahrajte splnomocnenie od investora",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "button"
@@ -250,7 +250,7 @@
       "ui:label": false,
       "ui:placeholder": "Vyberte",
       "ui:options": {
-        "uDescription": "Vyberte jedno alebo viacero katastrálnych území, v ktorých sa pozemok nachádza",
+        "helptext": "Vyberte jedno alebo viacero katastrálnych území, v ktorých sa pozemok nachádza",
         "dropdownDivider": true
       }
     }
@@ -284,7 +284,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": "napr. vydané stavebné povolenie, stanoviská hlavného mesta",
+        "helptext": "napr. vydané stavebné povolenie, stanoviská hlavného mesta",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "button"
@@ -297,7 +297,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
+        "helptext": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -307,7 +307,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": "pešie ťahy, plochy zelene a iné",
+        "helptext": "pešie ťahy, plochy zelene a iné",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -317,7 +317,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": "povinné v zastavanom území",
+        "helptext": "povinné v zastavanom území",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -327,7 +327,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": "podľa platnej STN 73 4301 - bytové budovy",
+        "helptext": "podľa platnej STN 73 4301 - bytové budovy",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"
@@ -337,10 +337,7 @@
       "ui:widget": "Upload",
       "ui:label": false,
       "ui:options": {
-        "uDescription": [
-          "ak je riešený objekt národnou kultúrnou pamiatkou,",
-          "resp. ide o novostavbu v pamiatkovej zóne Bratislavy - centrálna mestská oblasť (PZ CMO)"
-        ],
+        "helptext": "ak je riešený objekt národnou kultúrnou pamiatkou,\n resp. ide o novostavbu v pamiatkovej zóne Bratislavy - centrálna mestská oblasť (PZ CMO)",
         "size": 5,
         "accept": ".jpg,.pdf",
         "type": "dragAndDrop"

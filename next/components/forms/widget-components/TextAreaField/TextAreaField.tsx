@@ -9,7 +9,7 @@ interface TextAreaBase {
   label: string
   placeholder?: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   className?: string
   defaultValue?: string
   value?: string
@@ -24,7 +24,7 @@ const TextAreaField = ({
   label,
   placeholder,
   errorMessage = [],
-  description,
+  helptext,
   tooltip,
   required,
   explicitOptional,
@@ -50,7 +50,7 @@ const TextAreaField = ({
       value: displayValue,
       label,
       errorMessage,
-      description,
+      description: helptext,
       inputElementType: 'textarea',
       onChange(inputValue) {
         if (onChange) {
@@ -85,7 +85,7 @@ const TextAreaField = ({
         label={label}
         labelProps={labelProps}
         htmlFor={inputProps.id}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}

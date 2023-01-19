@@ -35,7 +35,7 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
 
 type TimePickerBase = {
   label?: string
-  description?: string
+  helptext?: string
   tooltip?: string
   required?: boolean
   explicitOptional?: 'none' | 'right' | 'left'
@@ -54,7 +54,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       required,
       explicitOptional,
       tooltip,
-      description,
+      helptext,
       onChange,
       value = '',
       ...rest
@@ -143,7 +143,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
             <TimeField
               {...fieldProps}
               label={label}
-              description={description}
+              helptext={helptext}
               required={required}
               explicitOptional={explicitOptional}
               disabled={disabled}
