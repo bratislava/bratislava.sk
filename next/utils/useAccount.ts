@@ -150,7 +150,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
       user.signOut()
       setUser(null)
       setUserData(null)
-      setStatus(AccountStatus.Idle)
     }
   }
 
