@@ -27,8 +27,15 @@ export interface UserData {
   given_name?: string
   family_name?: string
   phone_number?: string
+  phone_verified?: string
   address?: string
+  ifo?: string
+  rc_op_verified_date?: string
+  tier?: string
 }
+
+// non standard, has prefix custom: in cognito
+const customAttributes = new Set(['ifo', 'rc_op_verified_date', 'tier'])
 
 const poolData = {
   UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
@@ -46,7 +53,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
     attributes?.forEach((attribute: CognitoUserAttribute) => {
-      data[attribute.getName()] = attribute.getValue()
+      data[attribute.getName().replace(/^custom:/, '')] = attribute.getValue()
     })
     return data
   }
@@ -55,7 +62,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     const attributeList: CognitoUserAttribute[] = []
     Object.entries(data).forEach(([key, value]) => {
       const attribute = new CognitoUserAttribute({
-        Name: key,
+        Name: customAttributes.has(key) ? `custom:${key}` : key,
         Value: value,
       })
       attributeList.push(attribute)
@@ -90,12 +97,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
     setError(null)
     return new Promise((resolve) => {
-      cognitoUser.resendConfirmationCode((err?: Error, res?: string) => {
+      cognitoUser.resendConfirmationCode((err?: Error) => {
         if (err) {
           setError({ ...(err as AWSError) })
           resolve(false)
         } else {
-          console.log(res)
           resolve(true)
         }
       })
@@ -123,6 +129,15 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
+    const res = await updateUserData({ rc_op_verified_date: new Date().toISOString() })
+    if (res) {
+      setStatus(AccountStatus.IdentityVerificationSuccess)
+    }
+
+    return res
+  }
+
   useEffect(() => {
     const cognitoUser = userPool.getCurrentUser()
     if (cognitoUser != null) {
@@ -138,7 +153,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
             return
           }
 
-          setUserData(userAttributesToObject(attributes))
+          const userData = userAttributesToObject(attributes)
+          if (!userData.rc_op_verified_date) {
+            setStatus(AccountStatus.IdentityVerificationRequired)
+          }
+          setUserData(userData)
           setUser(cognitoUser)
         })
       })
@@ -183,7 +202,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     return new Promise((resolve) => {
       cognitoUser.confirmPassword(verificationCode, password, {
         onSuccess() {
-          console.log('Password confirmed!')
           setStatus(AccountStatus.NewPasswordSuccess)
           resolve(true)
         },
@@ -326,6 +344,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     signUp,
     verifyEmail,
     resendVerificationCode,
+    verifyIdentity,
     lastEmail,
   }
 }

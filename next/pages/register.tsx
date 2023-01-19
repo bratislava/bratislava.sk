@@ -39,13 +39,17 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
-  const { signUp, resendVerificationCode, verifyEmail, error, status, setStatus, lastEmail } =
-    useAccount()
+  const {
+    signUp,
+    resendVerificationCode,
+    verifyEmail,
+    error,
+    status,
+    setStatus,
+    verifyIdentity,
+    lastEmail,
+  } = useAccount()
   const router = useRouter()
-
-  const onVerifyIdentity = (rc: string, idCard: string) => {
-    setStatus(AccountStatus.IdentityVerificationSuccess)
-  }
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
@@ -77,7 +81,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
             </AccountSuccessAlert>
           )}
           {status === AccountStatus.IdentityVerificationRequired && (
-            <IdentityVerificationForm onSubmit={onVerifyIdentity} error={error} />
+            <IdentityVerificationForm onSubmit={verifyIdentity} error={error} />
           )}
           {status === AccountStatus.IdentityVerificationSuccess && (
             <AccountSuccessAlert

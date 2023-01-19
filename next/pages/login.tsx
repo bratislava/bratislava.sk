@@ -52,16 +52,15 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
         <AccountContainer>
-          {(status === AccountStatus.Idle || status === AccountStatus.EmailVerificationSuccess) && (
-            <LoginForm onSubmit={onLogin} error={error} />
-          )}
-          {status === AccountStatus.EmailVerificationRequired && (
+          {status === AccountStatus.EmailVerificationRequired ? (
             <EmailVerificationForm
               lastEmail={lastEmail}
               onResend={resendVerificationCode}
               onSubmit={verifyEmail}
               error={error}
             />
+          ) : (
+            <LoginForm onSubmit={onLogin} error={error} />
           )}
         </AccountContainer>
       </LoginRegisterLayout>
