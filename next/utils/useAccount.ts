@@ -23,8 +23,11 @@ export interface UserData {
   sub?: string
   email_verified?: string
   email?: string
+  name?: string
   given_name?: string
   family_name?: string
+  phone_number?: string
+  address?: string
 }
 
 const poolData = {
