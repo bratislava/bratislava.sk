@@ -60,6 +60,17 @@ export const homepageFetcher = (filters: HomepageSearchFilters, locale: string) 
           } as HomepageSearchResult
         }
 
+        if (type === 'blog-post') {
+          const { title, slug } = dataInner
+          return {
+            type,
+            title,
+            // TODO: Fix link - get slug by some proper function. This one works for now for both locales.
+            link: `/blog/${slug}`,
+            data: dataInner,
+          } as HomepageSearchResult
+        }
+
         const { title, slug: link } = dataInner
         return { type, title, link, data: dataInner } as HomepageSearchResult
       })
