@@ -137,7 +137,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     const newValue = value ? [...value] : []
     newValue.push(option)
     handleOnChangeSelect(newValue)
-    setFilter('')
   }
 
   const handleOnUnChooseMulti = (option: EnumOptionsType) => {
@@ -190,6 +189,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         )
       : []
   }
+
+  const isRowBold = enumOptions?.some(
+    (option: EnumOptionsType) => option.label !== '' && option.label !== String(option.value),
+  )
 
   // RENDER
   return (
@@ -247,6 +250,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
           <Dropdown
             enumOptions={getFilteredOptions()}
             value={getDropdownValues()}
+            isRowBold={isRowBold}
             type={type}
             selectHashCode={hashCode}
             divider={dropdownDivider}
