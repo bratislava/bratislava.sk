@@ -3,7 +3,6 @@ import {
   CognitoUser,
   CognitoUserAttribute,
   CognitoUserPool,
-  ISignUpResult,
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
@@ -178,16 +177,14 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     setLastEmail(email)
     setError(null)
     return new Promise((resolve) => {
-      userPool.signUp(email, password, attributeList, [], (err?: Error, result?: ISignUpResult) => {
+      userPool.signUp(email, password, attributeList, [], (err?: Error) => {
         if (err) {
           console.error(err.message)
           setError({ ...(err as AWSError) })
           resolve(false)
-        } else if (result) {
+        } else {
           setStatus(AccountStatus.EmailVerificationRequired)
           resolve(true)
-        } else {
-          resolve(false)
         }
       })
     })
