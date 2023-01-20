@@ -44,11 +44,6 @@ export interface UserData {
   tier?: string
 }
 
-interface Credentials {
-  email: string
-  password: string
-}
-
 // non standard, has prefix custom: in cognito
 const customAttributes = new Set(['ifo', 'rc_op_verified_date', 'tier'])
 
@@ -176,7 +171,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
               ? AccountStatus.IdentityVerificationRequired
               : AccountStatus.IdentityVerificationSuccess,
           )
-          console.log(cognitoUser)
           setUserData(userData)
           setUser(cognitoUser)
         })
@@ -200,7 +194,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     return new Promise((resolve) => {
       userPool.signUp(email, password, attributeList, [], (err?: Error) => {
         if (err) {
-          console.error(err.message)
           setError({ ...(err as AWSError) })
           resolve(false)
         } else {
