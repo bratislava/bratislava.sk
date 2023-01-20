@@ -3,6 +3,7 @@ import {
   CognitoUser,
   CognitoUserAttribute,
   CognitoUserPool,
+  IAuthenticationDetailsData,
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
@@ -18,6 +19,16 @@ export enum AccountStatus {
   IdentityVerificationSuccess,
 }
 
+interface Address {
+  formatted?: string
+  street_address?: string
+  locality?: string
+  region?: string
+  postal_code?: string
+  country?: string
+  phone_number?: string
+}
+
 export interface UserData {
   sub?: string
   email_verified?: string
@@ -27,10 +38,15 @@ export interface UserData {
   family_name?: string
   phone_number?: string
   phone_verified?: string
-  address?: string
+  address?: Address
   ifo?: string
   rc_op_verified_date?: string
   tier?: string
+}
+
+interface Credentials {
+  email: string
+  password: string
 }
 
 // non standard, has prefix custom: in cognito
@@ -47,7 +63,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [error, setError] = useState<AWSError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
-  const [lastEmail, setLastEmail] = useState<string>('')
+  const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
+    Username: '',
+  })
 
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
@@ -71,18 +89,18 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
   const verifyEmail = (verificationCode: string): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
-      Username: lastEmail,
+      Username: lastCredentials?.Username,
       Pool: userPool,
     })
 
     return new Promise((resolve) => {
-      cognitoUser.confirmRegistration(verificationCode, true, (err?: AWSError) => {
+      cognitoUser.confirmRegistration(verificationCode, true, async (err?: AWSError) => {
         if (err) {
           setError({ ...err })
           resolve(false)
         } else {
           setStatus(AccountStatus.EmailVerificationSuccess)
-          resolve(true)
+          resolve(await login(lastCredentials.Username, lastCredentials.Password))
         }
       })
     })
@@ -90,7 +108,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
   const resendVerificationCode = (): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
-      Username: lastEmail,
+      Username: lastCredentials.Username,
       Pool: userPool,
     })
 
@@ -153,9 +171,12 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           }
 
           const userData = userAttributesToObject(attributes)
-          if (!userData.rc_op_verified_date) {
-            setStatus(AccountStatus.IdentityVerificationRequired)
-          }
+          setStatus(
+            !userData.rc_op_verified_date
+              ? AccountStatus.IdentityVerificationRequired
+              : AccountStatus.IdentityVerificationSuccess,
+          )
+          console.log(cognitoUser)
           setUserData(userData)
           setUser(cognitoUser)
         })
@@ -174,7 +195,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const signUp = (email: string, password: string, data: UserData): Promise<boolean> => {
     const attributeList = objectToUserAttributes(data)
 
-    setLastEmail(email)
+    setLastCredentials({ Username: email, Password: password })
     setError(null)
     return new Promise((resolve) => {
       userPool.signUp(email, password, attributeList, [], (err?: Error) => {
@@ -192,15 +213,15 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
   const confirmPassword = (verificationCode: string, password: string) => {
     const cognitoUser = new CognitoUser({
-      Username: lastEmail,
+      Username: lastCredentials.Username,
       Pool: userPool,
     })
 
     return new Promise((resolve) => {
       cognitoUser.confirmPassword(verificationCode, password, {
-        onSuccess() {
+        async onSuccess() {
           setStatus(AccountStatus.NewPasswordSuccess)
-          resolve(true)
+          resolve(await login(lastCredentials.Username, password))
         },
         onFailure(err: Error) {
           setError({ ...(err as AWSError) })
@@ -212,12 +233,12 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
   const forgotPassword = (email = ''): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
-      Username: email || lastEmail,
+      Username: email || lastCredentials.Username,
       Pool: userPool,
     })
 
     if (email) {
-      setLastEmail(email)
+      setLastCredentials({ Username: email })
     }
     setError(null)
     return new Promise((resolve) => {
@@ -236,30 +257,29 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
-  const login = (email: string, password: string) => {
+  const login = (email: string, password: string | undefined): Promise<boolean> => {
     // login into cognito using aws sdk
-    const authenticationData = {
+    const credentials = {
       Username: email,
       Password: password,
     }
-    const authenticationDetails = new AuthenticationDetails(authenticationData)
 
     const cognitoUser = new CognitoUser({
       Username: email,
       Pool: userPool,
     })
 
-    setLastEmail(email)
+    setLastCredentials(credentials)
     setError(null)
     return new Promise((resolve) => {
-      cognitoUser.authenticateUser(authenticationDetails, {
+      cognitoUser.authenticateUser(new AuthenticationDetails(credentials), {
         onSuccess(result) {
           // const accessToken = result.getAccessToken().getJwtToken()
           // console.log('accessToken', accessToken)
           // POTENTIAL: Region needs to be set if not already set previously elsewhere.
           AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
-          const credentials = new AWS.CognitoIdentityCredentials({
+          const awsCredentials = new AWS.CognitoIdentityCredentials({
             IdentityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '',
             Logins: {
               // Change the key below according to the specific region your user pool is in.
@@ -267,10 +287,10 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
                 result.getIdToken().getJwtToken(),
             },
           })
-          AWS.config.credentials = credentials
+          AWS.config.credentials = awsCredentials
 
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-          credentials.refresh((err?: AWSError) => {
+          awsCredentials.refresh((err?: AWSError) => {
             if (err) {
               setError(err)
               resolve(false)
@@ -342,6 +362,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     verifyEmail,
     resendVerificationCode,
     verifyIdentity,
-    lastEmail,
+    lastEmail: lastCredentials.Username,
   }
 }

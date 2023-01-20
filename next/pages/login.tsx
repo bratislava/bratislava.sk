@@ -36,15 +36,25 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { login, error, status, resendVerificationCode, verifyEmail, lastEmail } = useAccount()
   const router = useRouter()
 
+  const redirect = () => {
+    const from =
+      router.query.from &&
+      typeof router.query.from === 'string' &&
+      router.query.from.startsWith('/')
+        ? decodeURIComponent(router.query.from)
+        : '/'
+    router.push(from)
+  }
+
   const onLogin = async (email: string, password: string) => {
     if (await login(email, password)) {
-      const from =
-        router.query.from &&
-        typeof router.query.from === 'string' &&
-        router.query.from.startsWith('/')
-          ? decodeURIComponent(router.query.from)
-          : '/'
-      router.push(from)
+      redirect()
+    }
+  }
+
+  const onVerifyEmail = async (verificationCode: string) => {
+    if (await verifyEmail(verificationCode)) {
+      redirect()
     }
   }
 
@@ -56,7 +66,7 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
             <EmailVerificationForm
               lastEmail={lastEmail}
               onResend={resendVerificationCode}
-              onSubmit={verifyEmail}
+              onSubmit={onVerifyEmail}
               error={error}
             />
           ) : (
