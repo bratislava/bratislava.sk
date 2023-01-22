@@ -9,7 +9,7 @@ const DateTimeWidgetRJSF = ({
   onChange,
   schema,
   uiSchema,
-  rawErrors = [],
+  errorSchema,
 }: FieldProps) => {
   const keys = Object.keys({ ...schema.properties })
   const schemaProperties = {
@@ -20,24 +20,14 @@ const DateTimeWidgetRJSF = ({
   const handleOnChange = (valueName: string, newValue?: string | undefined) => {
     onChange({
       ...formData,
-      [valueName]: newValue,
+      [valueName]: newValue || undefined,
     })
   }
 
   const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
-  // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
-  const getErrorMessage = (propKey: string): string[] => {
-    const errors: string[] = []
-    if (Array.isArray(rawErrors)) {
-      rawErrors.forEach((rawError: string) => {
-        if (rawError.includes(propKey)) {
-          errors.push(rawError)
-        }
-      })
-    }
-    return errors
-  }
+  // TODO: fix this code block. Re check what kind of error message it returns and fix in a new way according new task
+  const getErrorMessage = (propKey: string): string[] => errorSchema?.[propKey]?.__errors || []
 
   return (
     <div className={localUiSchema?.className as string}>
@@ -58,6 +48,8 @@ const DateTimeWidgetRJSF = ({
         TimeValue={formData[keys[1]]}
         DateLabel={getLabel(0)}
         TimeLabel={getLabel(1)}
+        DateDisabled={localUiSchema?.DateDisabled as unknown as boolean}
+        TimeDisabled={localUiSchema?.TimeDisabled as unknown as boolean}
       />
     </div>
   )

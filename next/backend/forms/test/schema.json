@@ -7,6 +7,7 @@
     {
       "properties": {
         "mestoPSC": {
+          "required": ["psc"],
           "properties": {
             "mesto": {
               "type": "string",
@@ -16,7 +17,6 @@
             "psc": {
               "type": "string",
               "title": "PSČ",
-              "default": "04011",
               "format": "zip"
             }
           }
@@ -46,6 +46,7 @@
       "properties": {
         "timeFromTo": {
           "title": "Showcase of TimeFromTo Picker",
+          "required": ["timeFrom", "timeTo"],
           "properties": {
             "timeFrom": {
               "type": "string",
@@ -65,6 +66,7 @@
       "properties": {
         "dateFromTo": {
           "title": "Showcase of DateFromTo Picker",
+          "required": ["dateFrom"],
           "properties": {
             "dateFrom": {
               "type": "string",

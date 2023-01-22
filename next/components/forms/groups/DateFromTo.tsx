@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import isEmpty from 'lodash/isEmpty'
 
 import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/DatePicker'
 
@@ -49,7 +50,11 @@ export const DateFromTo = ({
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
       <div className="items-left lg:flex-row flex-col flex gap-4">
-        <div className="w-[320px] flex flex-col items-start justify-end">
+        <div
+          className={cx('w-[320px] flex flex-col items-start justify-end', {
+            'mb-6': !isEmpty(DateToErrorMessage),
+          })}
+        >
           <DatePicker
             label={DateFromLabel}
             errorMessage={DateFromErrorMessage}
@@ -63,8 +68,16 @@ export const DateFromTo = ({
             onChange={DateFromOnChange}
           />
         </div>
-        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-8')} />
-        <div className="flex flex-row w-[320px] items-end gap-1 mt-auto">
+        <div
+          className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-7', {
+            'mb-14': !isEmpty(DateFromErrorMessage) || !isEmpty(DateToErrorMessage),
+          })}
+        />
+        <div
+          className={cx('flex flex-row w-[320px] items-end gap-1 mt-auto', {
+            'mb-6': !isEmpty(DateFromErrorMessage),
+          })}
+        >
           <DatePicker
             label={DateToLabel}
             errorMessage={DateToErrorMessage}

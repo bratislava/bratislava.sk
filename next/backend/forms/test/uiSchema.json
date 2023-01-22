@@ -14,8 +14,7 @@
       "FirstInputLeftIcon": "person",
       "FirstInputExplicitOptional": true,
       "FirstInputClassNames": "w-full",
-      "SecondInputClassNames": "sm:w-1/4",
-      "className": "w-[600px]"
+      "SecondInputClassNames": "sm:w-1/4"
     }
   },
   "dateTimePicker": {

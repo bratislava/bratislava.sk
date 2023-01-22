@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import isEmpty from 'lodash/isEmpty'
 
 import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/TimePicker'
 
@@ -48,7 +49,11 @@ export const TimeFromTo = ({
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
       <div className="items-left flex lg:flex-row flex-col gap-4">
-        <div className="flex flex-col w-[320px] items-start">
+        <div
+          className={cx('flex flex-col w-[320px] items-start', {
+            'mb-6': !isEmpty(TimeToErrorMessage),
+          })}
+        >
           <TimePicker
             label={TimeFromLabel}
             errorMessage={TimeFromErrorMessage}
@@ -58,13 +63,25 @@ export const TimeFromTo = ({
             explicitOptional={TimeFromExplicitOptional}
             value={TimeFromValue}
             maxValue={TimeToValue}
+            fillAllBeforeSubmit
             onChange={TimeFromOnChange}
             readOnly
             disabled={TimeFromDisabled}
           />
         </div>
-        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-7')} />
-        <div className="w-[320px] flex flex-row items-end mt-auto">
+        <div
+          className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-8', {
+            'mb-14':
+              (!isEmpty(TimeFromErrorMessage) && isEmpty(TimeToErrorMessage)) ||
+              (isEmpty(TimeFromErrorMessage) && !isEmpty(TimeToErrorMessage)),
+            'mb-20': !isEmpty(TimeFromErrorMessage) && !isEmpty(TimeToErrorMessage),
+          })}
+        />
+        <div
+          className={cx('w-[320px] flex flex-row items-end mt-auto', {
+            'mb-6': !isEmpty(TimeFromErrorMessage),
+          })}
+        >
           <TimePicker
             label={TimeToLabel}
             description={TimeToDescription}
@@ -72,8 +89,9 @@ export const TimeFromTo = ({
             tooltip={TimeToTooltip}
             required={TimeToRequired}
             explicitOptional={TimeToExplicitOptional}
-            value={TimeToValue || TimeFromValue}
+            value={TimeToValue}
             minValue={TimeFromValue}
+            fillAllBeforeSubmit
             onChange={TimeToOnChange}
             readOnly
             disabled={TimeToDisabled}

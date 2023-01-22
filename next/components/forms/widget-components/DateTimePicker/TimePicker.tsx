@@ -45,6 +45,7 @@ export type TimePickerBase = {
   value?: string
   minValue?: string
   maxValue?: string
+  fillAllBeforeSubmit?: boolean
   readOnly?: boolean
   onChange?: (value?: string) => void
 }
@@ -63,6 +64,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       value = '',
       minValue,
       maxValue,
+      fillAllBeforeSubmit,
       readOnly = false,
       ...rest
     },
@@ -114,7 +116,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
 
     const closeFailedHandler = () => {
-      if (onChange) onChange(prevValue)
+      if (onChange && prevValue) onChange(prevValue)
       if (prevValue) setHour(prevValue.split(':')[0])
       else setHour('')
 
@@ -188,6 +190,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   value={value}
                   minValue={minValue}
                   maxValue={maxValue}
+                  fillAllBeforeSubmit={fillAllBeforeSubmit}
                   setIsInputEdited={setIsInputEdited}
                 />
               </Popover>

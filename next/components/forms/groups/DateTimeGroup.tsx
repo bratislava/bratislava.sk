@@ -1,29 +1,30 @@
 import cx from 'classnames'
+import isEmpty from 'lodash/isEmpty'
 
 import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/DatePicker'
 import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/TimePicker'
 
 type TDatePicker = {
-  DateLabel: DatePickerBase['label']
+  DateLabel?: DatePickerBase['label']
   DateTooltip?: DatePickerBase['tooltip']
   DateDescription?: DatePickerBase['description']
   DateRequired?: DatePickerBase['required']
   DateExplicitOptional?: DatePickerBase['explicitOptional']
   DateDisabled?: DatePickerBase['disabled']
   DateValue?: DatePickerBase['value']
-  DateOnChange: DatePickerBase['onChange']
+  DateOnChange?: DatePickerBase['onChange']
   DateErrorMessage?: DatePickerBase['errorMessage']
 }
 
 type TTimePicker = {
-  TimeLabel: TimePickerBase['label']
+  TimeLabel?: TimePickerBase['label']
   TimeTooltip?: TimePickerBase['tooltip']
   TimeDescription?: TimePickerBase['description']
   TimeRequired?: TimePickerBase['required']
   TimeExplicitOptional?: TimePickerBase['explicitOptional']
   TimeDisabled?: TimePickerBase['disabled']
   TimeValue?: TimePickerBase['value']
-  TimeOnChange: TimePickerBase['onChange']
+  TimeOnChange?: TimePickerBase['onChange']
   TimeErrorMessage?: TimePickerBase['errorMessage']
 }
 
@@ -51,7 +52,11 @@ export const DateTimePicker = ({
   return (
     <div className={cx('flex-col flex items-start gap-4')}>
       <div className="flex lg:flex-row flex-col items-center gap-4">
-        <div className="flex flex-col items-start w-[320px]">
+        <div
+          className={cx('flex flex-col items-start w-[320px]', {
+            'mb-6': !isEmpty(TimeErrorMessage),
+          })}
+        >
           <DatePicker
             label={DateLabel}
             errorMessage={DateErrorMessage}
@@ -64,7 +69,11 @@ export const DateTimePicker = ({
             required={DateRequired}
           />
         </div>
-        <div className="w-[320px] flex flex-row items-end gap-1 mt-auto">
+        <div
+          className={cx('w-[320px] flex flex-row items-end gap-1 mt-auto', {
+            'mb-6': !isEmpty(DateErrorMessage),
+          })}
+        >
           <TimePicker
             errorMessage={TimeErrorMessage}
             disabled={TimeDisabled}

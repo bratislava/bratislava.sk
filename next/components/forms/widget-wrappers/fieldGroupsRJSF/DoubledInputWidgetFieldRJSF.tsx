@@ -3,14 +3,18 @@ import React from 'react'
 
 import { DoubledInputField } from '../../groups'
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
-import { isLeftIconVariant, LeftIconVariants } from '../../widget-components/InputField/InputField'
+import {
+  isInputSize,
+  isLeftIconVariant,
+  LeftIconVariants,
+} from '../../widget-components/InputField/InputField'
 
 const DoubledInputWidgetFieldRJSF = ({
   formData,
   onChange,
   schema,
   uiSchema,
-  rawErrors = [],
+  errorSchema,
 }: FieldProps) => {
   const keys = Object.keys({ ...schema.properties })
 
@@ -40,18 +44,13 @@ const DoubledInputWidgetFieldRJSF = ({
       : undefined
   }
 
-  // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
-  const getErrorMessage = (propKey: string): string[] => {
-    const errors: string[] = []
-    if (Array.isArray(rawErrors)) {
-      rawErrors.forEach((rawError: string) => {
-        if (rawError.includes(propKey)) {
-          errors.push(rawError)
-        }
-      })
-    }
-    return errors
+  const getInputSize = (sizeInputPropValue: 'FirstInputSize' | 'SecondInputSize') => {
+    const sizeVariant = localUiSchema?.[sizeInputPropValue]
+    return typeof sizeVariant === 'string' && isInputSize(sizeVariant) ? sizeVariant : undefined
   }
+
+  // TODO: fix this code block. Re check what kind of error message it returns and fix in a new way according new task
+  const getErrorMessage = (propKey: string): string[] => errorSchema?.[propKey]?.__errors || []
 
   return (
     <div className={localUiSchema?.className as string}>
@@ -86,6 +85,10 @@ const DoubledInputWidgetFieldRJSF = ({
         SecondInputClassNames={localUiSchema?.SecondInputClassNames as string}
         FirstInputErrorMessage={getErrorMessage(keys[0])}
         SecondInputErrorMessage={getErrorMessage(keys[1])}
+        FirstInputDisabled={localUiSchema?.FirstInputDisabled as unknown as boolean}
+        SecondInputDisabled={localUiSchema?.SecondInputDisabled as unknown as boolean}
+        FirstInputSize={getInputSize('FirstInputSize')}
+        SecondInputSize={getInputSize('SecondInputSize')}
       />
     </div>
   )

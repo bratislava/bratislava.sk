@@ -20,6 +20,11 @@ export const isLeftIconVariant = (value: string): value is LeftIconVariants => {
   return list.includes(value as LeftIconVariants)
 }
 
+export const isInputSize = (value: string): value is SizeType => {
+  const list: SizeType[] = ['large', 'default', 'small']
+  return list.includes(value as SizeType)
+}
+
 export type InputBase = {
   label: string
   type?: InputType

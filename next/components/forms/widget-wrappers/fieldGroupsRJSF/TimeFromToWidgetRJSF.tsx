@@ -9,7 +9,7 @@ const TimeFromToWidgetRJSF = ({
   onChange,
   schema,
   uiSchema,
-  rawErrors = [],
+  errorSchema,
 }: FieldProps) => {
   const keys = Object.keys({ ...schema.properties })
   const schemaProperties = {
@@ -20,21 +20,12 @@ const TimeFromToWidgetRJSF = ({
   const handleOnChange = (valueName: string, newValue?: string | undefined) => {
     onChange({
       ...formData,
-      [valueName]: newValue,
+      [valueName]: newValue || undefined,
     })
   }
 
-  const getErrorMessage = (propKey: string): string[] => {
-    const errors: string[] = []
-    if (Array.isArray(rawErrors)) {
-      rawErrors.forEach((rawError: string) => {
-        if (rawError.includes(propKey)) {
-          errors.push(rawError)
-        }
-      })
-    }
-    return errors
-  }
+  // TODO: fix this code block. Re check what kind of error message it returns and fix in a new way according new task
+  const getErrorMessage = (propKey: string): string[] => errorSchema?.[propKey]?.__errors || []
 
   const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
@@ -57,6 +48,8 @@ const TimeFromToWidgetRJSF = ({
         TimeToValue={formData[keys[1]]}
         TimeFromLabel={getLabel(0)}
         TimeToLabel={getLabel(1)}
+        TimeFromDisabled={localUiSchema?.TimeFromDisabled as unknown as boolean}
+        TimeToDisabled={localUiSchema?.TimeToDisabled as unknown as boolean}
       />
     </div>
   )

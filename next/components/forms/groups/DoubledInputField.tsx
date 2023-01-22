@@ -1,3 +1,6 @@
+import cx from 'classnames'
+import isEmpty from 'lodash/isEmpty'
+
 import InputField, { InputBase } from '../widget-components/InputField/InputField'
 
 type FirstInputFieldBase = {
@@ -70,7 +73,11 @@ export const DoubledInputField = ({
 }: FirstInputFieldBase & SecondInputFieldBase) => {
   return (
     <div className="flex flex-row items-end gap-4">
-      <div className="w-full">
+      <div
+        className={cx(FirstInputClassNames, {
+          'mb-6': !isEmpty(SecondInputErrorMessage),
+        })}
+      >
         <InputField
           label={FirstInputLabel}
           placeholder={FirstInputPlaceholder}
@@ -82,14 +89,18 @@ export const DoubledInputField = ({
           required={FirstInputRequired}
           explicitOptional={FirstInputExplicitOptional}
           resetIcon={FirstInputResetIcon}
-          // disabled={FirstInputDisabled}
+          disabled={FirstInputDisabled}
           tooltip={FirstInputTooltip}
           size={FirstInputSize}
           className={FirstInputClassNames}
           onChange={FirstInputHandler}
         />
       </div>
-      <div className={SecondInputClassNames}>
+      <div
+        className={cx(SecondInputClassNames, {
+          'mb-6': !isEmpty(FirstInputErrorMessage),
+        })}
+      >
         <InputField
           label={SecondInputLabel}
           placeholder={SecondInputPlaceholder}
@@ -101,7 +112,7 @@ export const DoubledInputField = ({
           required={SecondInputRequired}
           explicitOptional={SecondInputExplicitOptional}
           resetIcon={SecondInputResetIcon}
-          // disabled={SecondInputDisabled}
+          disabled={SecondInputDisabled}
           size={SecondInputSize}
           tooltip={SecondInputTooltip}
           onChange={SecondInputHandler}
