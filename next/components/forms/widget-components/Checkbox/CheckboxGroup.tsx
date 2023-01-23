@@ -2,6 +2,8 @@ import * as React from 'react'
 import { useCheckboxGroup } from 'react-aria'
 import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately'
 
+import FieldErrorMessage from '../../info-components/FieldErrorMessage'
+
 export const CheckboxGroupContext = React.createContext({} as CheckboxGroupState)
 
 type CheckBoxGroupBase = {
@@ -10,19 +12,28 @@ type CheckBoxGroupBase = {
   label: string
   className?: string
   onChange: (value: any[]) => void
+  rawErrors?: string[]
+  disabled?: boolean
 }
 
 const CheckboxGroup = (props: CheckBoxGroupBase) => {
-  const { children, className } = props
+  const { children, className, rawErrors, disabled, label } = props
   const state: CheckboxGroupState = useCheckboxGroupState(props)
-  const { groupProps, labelProps } = useCheckboxGroup(props, state)
+  const { groupProps, labelProps, errorMessageProps } = useCheckboxGroup(props, state)
   return (
-    <div {...groupProps} className={className}>
-      <span {...labelProps} className="text-20-semibold">
-        {props.label}
-      </span>
-      <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
-    </div>
+    <>
+      <div {...groupProps}>
+        <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
+          {label}
+        </span>
+        <div className={className}>
+          <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
+        </div>
+      </div>
+      {!disabled && (
+        <FieldErrorMessage errorMessage={rawErrors} errorMessageProps={errorMessageProps} />
+      )}
+    </>
   )
 }
 

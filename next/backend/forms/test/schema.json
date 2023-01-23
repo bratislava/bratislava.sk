@@ -19,7 +19,9 @@
         },
         "timePicker": {
           "title": "Showcase of TimePicker",
-          "required": ["meeting-time"],
+          "required": [
+            "meeting-time"
+          ],
           "properties": {
             "meeting-time": {
               "type": "string",
@@ -34,7 +36,10 @@
       "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
-          "required": ["firstName", "lastName"],
+          "required": [
+            "firstName",
+            "lastName"
+          ],
           "type": "object",
           "properties": {
             "firstName": {
@@ -44,11 +49,11 @@
             },
             "lastName": {
               "type": "string",
-              "title": "Last Name"
+              "title": "Dátum spracovania projektovej dokumentácie"
             },
             "phone": {
               "type": "string",
-              "title": "Phone number"
+              "title": "Dátum spracovania projektovej dokumentácie"
             },
             "password": {
               "type": "string",
@@ -63,7 +68,9 @@
         },
         "textAreas": {
           "title": "Textove polia",
-          "required": ["pros"],
+          "required": [
+            "pros"
+          ],
           "type": "object",
           "properties": {
             "pros": {
@@ -83,7 +90,9 @@
       "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
-          "required": ["school"],
+          "required": [
+            "school"
+          ],
           "type": "object",
           "properties": {
             "school": {
@@ -128,7 +137,14 @@
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [1, 2, 3, 4, 5, 6]
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
             }
           }
         }
@@ -138,7 +154,9 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
-          "required": ["importButtonMultipleFiles"],
+          "required": [
+            "importButtonMultipleFiles"
+          ],
           "properties": {
             "importButtonOneFile": {
               "title": "Importuj jeden subor",
@@ -171,7 +189,9 @@
         "chooseOneOf": {
           "title": "Choose one of radio buttons",
           "type": "object",
-          "required": ["chooseOne"],
+          "required": [
+            "chooseOne"
+          ],
           "properties": {
             "chooseOne": {
               "type": "string",
@@ -199,12 +219,15 @@
       "properties": {
         "checkBoxes": {
           "title": "Checkboxes",
-          "required": ["favouriteFruits"],
+          "required": [
+            "favouriteFruits"
+          ],
           "properties": {
             "favouriteFruits": {
               "type": "array",
-              "title": "Fruits",
+              "title": "Fruits max 3 items",
               "minItems": 1,
+              "maxItems": 3,
               "uniqueItems": true,
               "items": {
                 "anyOf": [

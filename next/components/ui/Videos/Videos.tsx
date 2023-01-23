@@ -1,7 +1,10 @@
 import { ChevronRight } from '@assets/images'
 import { ComponentSectionsVideos } from '@bratislava/strapi-sdk-homepage'
 import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
-import { shouldShowButtonContent, VideoAttribute } from '@bratislava/ui-bratislava/Videos/VideosService'
+import {
+  shouldShowButtonContent,
+  VideoAttribute,
+} from '@bratislava/ui-bratislava/Videos/VideosService'
 import cx from 'classnames'
 import React from 'react'
 
@@ -66,7 +69,9 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
     return null
   }
 
-  const videosCount = 3
+  // Quickfix to show all videos
+  // TODO: add proper loadmore functionality, buttonContent is not fetched by graphql at the moment
+  const videosCount = 300
   return (
     <div key={id} className={className}>
       <h4 className="text-h4">{title}</h4>
@@ -85,7 +90,12 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
           <Video key={video.url} {...video} />
         ))}
         {shouldShowButtonContent(videos, buttonContent) && (
-          <Button iconPosition="right" variant="secondary-dark-text" icon={<ChevronRight />} className="text-20 py-2">
+          <Button
+            iconPosition="right"
+            variant="secondary-dark-text"
+            icon={<ChevronRight />}
+            className="text-20 py-2"
+          >
             {buttonContent}
           </Button>
         )}

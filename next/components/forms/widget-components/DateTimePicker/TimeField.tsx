@@ -9,7 +9,7 @@ type TimeFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string[]
