@@ -8,23 +8,23 @@ export interface Consent {
   title: string
   text: string
   isDisabled: boolean
+  isSelected: boolean
 }
 
-const UserProfileConsents = () => {
+interface UserProfileConsentsProps {
+  allConsents: Consent[]
+  onChange: (newConsents: Consent[]) => void
+}
+
+const UserProfileConsents = ({ allConsents, onChange }: UserProfileConsentsProps) => {
   const { t } = useTranslation('account')
 
-  const allConsents = [
-    {
-      title: t('consents.personal_data.title'),
-      text: t('consents.personal_data.text'),
-      isDisabled: true,
-    },
-    {
-      title: t('consents.receive_information.title'),
-      text: t('consents.receive_information.text'),
-      isDisabled: false,
-    },
-  ]
+  const handleOnChangeConsent = (isSelected: boolean, key: number) => {
+    console.log('ON CHANGE')
+    const newConsents: Consent[] = [...allConsents]
+    newConsents[key].isSelected = isSelected
+    onChange(newConsents)
+  }
 
   return (
     <UserProfileSection>
@@ -35,7 +35,7 @@ const UserProfileConsents = () => {
             key={key}
             consent={consent}
             isLast={key === allConsents.length - 1}
-            onChange={(isSelected) => console.log(key, ':', isSelected)}
+            onChange={(isSelected) => handleOnChangeConsent(isSelected, key)}
           />
         ))}
       </div>

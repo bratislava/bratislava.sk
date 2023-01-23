@@ -22,10 +22,10 @@ const UserConsent = ({ consent, isLast, onChange }: UserConsentProps) => {
       </div>
       <div>
         <Toggle
-          value="personalDataConsent"
-          isSelected
+          id="personalDataConsent"
+          isSelected={consent.isSelected}
           isDisabled={consent.isDisabled}
-          isReadOnly={consent.isDisabled}
+          onChange={onChange}
         />
       </div>
     </div>
