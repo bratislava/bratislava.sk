@@ -205,13 +205,20 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   }
 
   const changePassword = (oldPassword: string, newPassword: string): Promise<boolean> => {
+    setError(null)
     return new Promise((resolve) => {
       if (user) {
         user.changePassword(oldPassword, newPassword, (err?: Error) => {
           if (err) {
-            setError({ ...(err as AWSError) })
+            const customErr = { ...(err as AWSError) }
+            if (customErr.code === 'NotAuthorizedException') {
+              customErr.code = 'IncorectPasswordException'
+              customErr.name = 'IncorectPasswordException'
+            }
+            setError(customErr)
             resolve(false)
           } else {
+            setStatus(AccountStatus.NewPasswordSuccess)
             resolve(true)
           }
         })

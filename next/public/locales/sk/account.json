@@ -81,5 +81,6 @@
   "LimitExceededException": "Skúste to znova neskôr.",
   "UserNotConfirmedException": "E-mail nie je verifikovaný.",
   "UsernameExistsException": "E-mail {email} sa už používa.",
-  "ExpiredCodeException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu."
+  "ExpiredCodeException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
+  "IncorectPasswordException": "Zadané heslo nie je správne."
 }

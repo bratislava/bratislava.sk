@@ -23,7 +23,9 @@ const schema = {
   properties: {
     oldPassword: {
       type: 'string',
-      minLength: 1,
+      // min length set to 2 according to cognito error InvalidParameterException:
+      // 1 validation error detected: Value at 'previousPassword' failed to satisfy constraint: Member must satisfy regular expression pattern: ^[\S]+.*[\S]+$
+      minLength: 2,
       errorMessage: { minLength: 'account:password_required' },
     },
     password: {
@@ -71,7 +73,7 @@ const NewPasswordForm = ({ onSubmit, error }: Props) => {
             label={t('old_password_label')}
             placeholder={t('old_password_placeholder')}
             {...field}
-            errorMessage={errors.verificationCode}
+            errorMessage={errors.oldPassword}
           />
         )}
       />
