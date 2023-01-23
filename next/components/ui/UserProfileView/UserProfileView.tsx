@@ -9,7 +9,7 @@ const UserProfileView = () => {
 
   // TODO: handle change of consents
   return (
-    <section className="flex flex-col gap-2 xs:gap-0 h-full">
+    <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
       <div className="bg-white">Kravina</div>
       <UserProfilePassword />
       <UserProfileConsents />
