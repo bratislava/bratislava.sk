@@ -14,7 +14,7 @@ type ToggleBase = {
   defaultSelected?: boolean
   isSelected?: boolean
   children?: React.ReactNode
-  value: string
+  value?: string
   id?: string
   onChange?: (isSelected: boolean) => void
 }
