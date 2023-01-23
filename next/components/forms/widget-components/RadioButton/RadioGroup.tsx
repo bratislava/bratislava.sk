@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import React from 'react'
 import { useRadioGroup } from 'react-aria'
 import { RadioGroupState, useRadioGroupState } from 'react-stately'
@@ -17,26 +18,25 @@ type RadioGroupBase = {
   onChange: (value: string) => void
   className?: string
   errorMessage?: string[]
+  orientations?: 'column' | 'row'
 }
 
 const RadioGroup = (props: RadioGroupBase) => {
-  const { children, className } = props
+  const { children, className, orientations = 'column' } = props
   const state = useRadioGroupState(props)
   const { radioGroupProps, labelProps, errorMessageProps } = useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps}>
-      <span {...labelProps} className="text-20-semibold">
+      <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
         {props.label}
       </span>
       <RadioContext.Provider value={state}>
         <div
-          className={className}
-          style={{
-            display: 'grid',
-            margin: '0 auto',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 2fr))',
-          }}
+          className={cx(className, {
+            'flex flex-col gap-3': orientations === 'column',
+            'flex flex-row gap-6': orientations === 'row',
+          })}
         >
           {children}
         </div>

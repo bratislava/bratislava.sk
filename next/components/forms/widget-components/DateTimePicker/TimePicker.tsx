@@ -38,7 +38,7 @@ type TimePickerBase = {
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   disabled?: boolean
   errorMessage?: string[]
   value?: string
