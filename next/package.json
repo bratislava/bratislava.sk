@@ -87,7 +87,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "3.1.0",
     "typescript-json": "^3.2.1",
-    "use-immer": "0.7.0",
+    "use-immer": "0.8.1",
     "use-query-params": "^2.1.2",
     "usehooks-ts": "^2.9.1",
     "uuid": "^9.0.0",
