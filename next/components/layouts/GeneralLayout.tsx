@@ -1,7 +1,8 @@
 import { SectionContainer } from '@bratislava/ui-bratislava'
-import AccountNavBar from '@bratislava/ui-bratislava/AccountNavBar/AccountNavBar'
 import cx from 'classnames'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
+
+import AccountNavBar from '../forms/segments/AccountNavBar/AccountNavBar'
 
 interface GeneralLayoutProps {
   className?: string
