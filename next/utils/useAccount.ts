@@ -204,6 +204,23 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const changePassword = (oldPassword: string, newPassword: string): Promise<boolean> => {
+    return new Promise((resolve) => {
+      if (user) {
+        user.changePassword(oldPassword, newPassword, (err?: Error) => {
+          if (err) {
+            setError({ ...(err as AWSError) })
+            resolve(false)
+          } else {
+            resolve(true)
+          }
+        })
+      } else {
+        resolve(false)
+      }
+    })
+  }
+
   const confirmPassword = (verificationCode: string, password: string) => {
     const cognitoUser = new CognitoUser({
       Username: lastCredentials.Username,
@@ -355,6 +372,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     verifyEmail,
     resendVerificationCode,
     verifyIdentity,
+    changePassword,
     lastEmail: lastCredentials.Username,
   }
 }

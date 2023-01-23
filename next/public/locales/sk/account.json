@@ -70,6 +70,12 @@
   "identity_verification_success_title": "Overenie bolo úspešné",
   "identity_verification_success_description": "Rodné číslo a číslo občianskeho preukazu boli overené.",
 
+  "password_change_title": "Zmena hesla",
+  "old_password_label": "Staré heslo",
+  "old_password_placeholder": "Staré heslo",
+  "password_change_submit": "Potvrdiť",
+  "password_change_success_title": "Heslo bolo úspešne zmenené",
+
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",
   "LimitExceededException": "Skúste to znova neskôr.",

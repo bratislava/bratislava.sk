@@ -69,6 +69,12 @@
   "identity_verification_success_title": "Verification successful",
   "identity_verification_success_description": "",
 
+  "password_change_title": "Change password",
+  "old_password_label": "Old password",
+  "old_password_placeholder": "Old password",
+  "password_change_submit": "Submit",
+  "password_change_success_title": "Password has been changed",
+
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
