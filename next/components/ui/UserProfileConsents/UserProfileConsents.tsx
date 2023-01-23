@@ -5,6 +5,7 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 export interface Consent {
+  id: string
   title: string
   text: string
   isDisabled: boolean
@@ -20,7 +21,6 @@ const UserProfileConsents = ({ allConsents, onChange }: UserProfileConsentsProps
   const { t } = useTranslation('account')
 
   const handleOnChangeConsent = (isSelected: boolean, key: number) => {
-    console.log('ON CHANGE')
     const newConsents: Consent[] = [...allConsents]
     newConsents[key].isSelected = isSelected
     onChange(newConsents)

@@ -1,5 +1,6 @@
 import { Consent } from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
 import cx from 'classnames'
+import { useId } from 'react'
 
 import Toggle from '../../forms/simple-components/Toggle'
 
@@ -22,7 +23,7 @@ const UserConsent = ({ consent, isLast, onChange }: UserConsentProps) => {
       </div>
       <div>
         <Toggle
-          id="personalDataConsent"
+          id={consent.id}
           isSelected={consent.isSelected}
           isDisabled={consent.isDisabled}
           onChange={onChange}
