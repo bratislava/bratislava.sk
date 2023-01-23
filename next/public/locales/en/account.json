@@ -56,5 +56,11 @@
     "title": "Password",
     "text": "Change your login password",
     "button": "Change password"
+  },
+  "profile_detail": {
+    "title": "Personal data",
+    "text": "Manage your personal data",
+    "start_edit_button": "Edit",
+    "save_edit_button": "Save changes"
   }
 }

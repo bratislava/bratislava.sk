@@ -1,6 +1,7 @@
 import UserProfileConsents, {
   Consent,
 } from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
+import UserProfileDetail from '@bratislava/ui-bratislava/UserProfileDetail/UserProfileDetail'
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfilePassword/UserProfilePassword'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
@@ -30,6 +31,7 @@ const UserProfileView = () => {
   // TODO: redirect to change password
   return (
     <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
+      <UserProfileDetail isEditing={isEditing} onChangeIsEditing={setIsEditing} />
       <UserProfilePassword />
       <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
     </section>
