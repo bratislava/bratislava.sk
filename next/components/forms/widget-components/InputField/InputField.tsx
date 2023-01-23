@@ -20,11 +20,12 @@ interface InputBase {
   value?: string
   leftIcon?: 'person' | 'mail' | 'call' | 'lock'
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: 'none' | 'right' | 'left'
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
+  size?: 'large' | 'default' | 'small'
   endIcon?: ReactNode
 }
 
@@ -44,6 +45,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       leftIcon,
       resetIcon,
       className,
+      size,
       onChange,
       endIcon,
       ...rest
@@ -114,9 +116,14 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'border-gray-300 bg-gray-100': disabled,
       },
     )
-
     return (
-      <div className="flex w-full flex-col">
+      <div
+        className={cx('flex w-full flex-col', {
+          'w-full': size === 'large',
+          'max-w-[388px]': size === 'default',
+          'max-w-[200px]': size === 'small',
+        })}
+      >
         <FieldHeader
           label={label}
           labelProps={labelProps}
