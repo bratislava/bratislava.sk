@@ -1232,10 +1232,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bratislava/json-schema-xsd-tools@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@bratislava/json-schema-xsd-tools/-/json-schema-xsd-tools-0.1.8.tgz#e2d477c8f9ae13ca5c2654ba9700da1d163bc964"
-  integrity sha512-E4Y0oN/7bKPgHURCivUkDZ9sxAwpE2f8LUdofgStIU4XL+q4+8sTMn/WIFQCajeSjNtNLr24VXqFWpwhMynK5g==
+"@bratislava/json-schema-xsd-tools@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@bratislava/json-schema-xsd-tools/-/json-schema-xsd-tools-0.1.9.tgz#ee2a26be317de77f56c6ab6d2fb059093049dfe8"
+  integrity sha512-96FWlFHuZSLUmgHi6kvA6Z0lm6ycRvPz3ju4ZgLYC4v6VA0VxDWluscDLE/B26VUi3IKUGQzHCTQBJTFmbLTNA==
   dependencies:
     chalk "2.4"
     cheerio "^1.0.0-rc.12"
