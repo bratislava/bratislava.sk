@@ -1,6 +1,7 @@
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
+import React from 'react'
 
 import AccountNavBar from '../forms/segments/AccountNavBar/AccountNavBar'
 
