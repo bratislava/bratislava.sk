@@ -9,12 +9,16 @@ type ModalBase = {
   show: boolean
   divider?: boolean
   onClose: () => void
-  onSubmit: () => void
+  onSubmit: (params: OnSubmitParams) => void
   content: (({}: any) => JSX.Element)[] | (({}: any) => JSX.Element)
   header?: string
   confirmLabel?: string
   cancelLabel?: string
   className?: string
+}
+
+type OnSubmitParams = {
+  data?: any
 }
 
 type ModalHeaderBase = Omit<
@@ -106,7 +110,7 @@ const ModalFooter = ({
             setCurrentScreenIndex(currentScreenIndex + 1)
           } else {
             setCurrentScreenIndex(0)
-            onSubmit()
+            onSubmit({})
           }
         }}
         variant="black"
@@ -130,7 +134,7 @@ const ModalBody = ({
   hasHeader: boolean
   hasFooter: boolean
   onClose: () => void
-  onSubmit: () => void
+  onSubmit: (params: OnSubmitParams) => void
 }) => {
   return (
     <div

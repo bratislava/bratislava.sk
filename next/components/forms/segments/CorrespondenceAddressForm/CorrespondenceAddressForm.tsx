@@ -36,7 +36,7 @@ const schema = {
 
 interface Props {
   errorMessage?: string
-  onSubmit: (data: CorrespondenceAddressData) => void
+  onSubmit: ({ data }: { data: CorrespondenceAddressData }) => void
   defaultValues: CorrespondenceAddressData
 }
 
@@ -54,7 +54,10 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
   })
 
   return (
-    <form className="flex flex-col space-y-6 w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col space-y-6 w-full"
+      onSubmit={handleSubmit((data: CorrespondenceAddressData) => onSubmit({ data }))}
+    >
       <div>{t('correspondece_address_description')}</div>
       {errorMessage && <Alert message={errorMessage} type="error" className="min-w-full" />}
       <Controller

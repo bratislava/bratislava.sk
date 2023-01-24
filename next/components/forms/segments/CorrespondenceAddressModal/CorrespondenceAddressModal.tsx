@@ -14,24 +14,22 @@ const CorrespondenceAddressModal = ({ show, onClose }: Props) => {
   const { t } = useTranslation('forms')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const onSubmit = (data: CorrespondenceAddressData) => {
+  const onSubmit = ({ data }: { data?: CorrespondenceAddressData }) => {
     console.log(data)
   }
 
-  const defaultValues = { streeAddress: 'w', locality: '', postalCode: '' }
-
+  const defaultValues = { streeAddress: '', locality: '', postalCode: '' }
   return (
     <Modal
       divider
       header={t('correspondece_address_title')}
       show={show}
       onClose={onClose}
-      onSubmit={() => {
-        alert('Modal submitted')
-        // onSubmit()
-      }}
-      content={() => CorrespondenceAddressForm({ onSubmit, errorMessage, defaultValues })}
-      className="w-[700px]"
+      onSubmit={onSubmit}
+      content={({ onSubmit }) =>
+        CorrespondenceAddressForm({ onSubmit, errorMessage, defaultValues })
+      }
+      className="w-[592px]"
     />
   )
 }
