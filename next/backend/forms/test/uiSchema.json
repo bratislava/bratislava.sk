@@ -251,6 +251,7 @@
     }
   },
   "user": {
+    "ui:hideError": true,
     "phone": {
       "ui:widget": "InputField",
       "ui:label": false,
