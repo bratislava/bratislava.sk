@@ -20,27 +20,31 @@ const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => 
           <Button
             variant="plain-black"
             size="sm"
-            text={t('profile_detail.save_edit_button')}
-            className="hidden xs:block"
-            onPress={() => onChangeIsEditing(false)}
+            text={t('profile_detail.stop_edit_button')}
+            onClick={() => onChangeIsEditing(false)}
           />
           <Button
             variant="black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
-            className="hidden xs:block"
-            onPress={() => onChangeIsEditing(false)}
+            onClick={() => onChangeIsEditing(false)}
           />
-          <EditIcon className="block xs:hidden cursor-pointer" />
         </div>
       ) : (
-        <Button
-          variant="black"
-          startIcon={<WhiteEditIcon />}
-          size="sm"
-          text={t('profile_detail.start_edit_button')}
-          onPress={() => onChangeIsEditing(true)}
-        />
+        <div className="width-fit">
+          <Button
+            variant="black"
+            startIcon={<WhiteEditIcon />}
+            size="sm"
+            text={t('profile_detail.start_edit_button')}
+            className="hidden xs:block"
+            onClick={() => onChangeIsEditing(true)}
+          />
+          <EditIcon
+            className="block xs:hidden cursor-pointer"
+            onClick={() => onChangeIsEditing(true)}
+          />
+        </div>
       )}
     </div>
   )
