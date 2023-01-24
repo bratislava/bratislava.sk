@@ -25,6 +25,10 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch-secret
+          resources:
+            requests:
+              cpu: ${MEILI_CPU_REQUESTS}
+              memory: ${MEILI_MEMORY_REQUESTS}
           ports:
             - name: http
               containerPort: 7700
