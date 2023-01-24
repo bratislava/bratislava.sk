@@ -312,6 +312,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }, [isSkipEnabled])
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
+    transformNullToUndefined(stepFormData)
     setFormData({ ...formData, ...stepFormData })
   }
 
