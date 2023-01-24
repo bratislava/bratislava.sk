@@ -1,7 +1,9 @@
 import EditIcon from '@assets/images/forms/edit_icon.svg'
 import WhiteEditIcon from '@assets/images/forms/edit_white.svg'
+import UserProfilePhoto from '@bratislava/ui-bratislava/UserProfilePhoto/UserProfilePhoto'
 import UserProfileSection from '@bratislava/ui-bratislava/UserProfileSection/UserProfileSection'
 import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfileSectionHeader/UserProfileSectionHeader'
+import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import Button from '../../forms/simple-components/Button'
@@ -60,9 +62,16 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
   const { t } = useTranslation('account')
   return (
     <UserProfileSection>
-      <UserProfileSectionHeader title={t('profile_detail.title')} text={t('profile_detail.text')}>
+      <UserProfileSectionHeader
+        title={t('profile_detail.title')}
+        text={t('profile_detail.text')}
+        underline
+      >
         <ButtonSection isEditing={isEditing} onChangeIsEditing={onChangeIsEditing} />
       </UserProfileSectionHeader>
+      <div className={cx('flex p-4 flex-col', 'xs:p-8 xs:flex-row')}>
+        <UserProfilePhoto />
+      </div>
     </UserProfileSection>
   )
 }
