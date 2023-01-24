@@ -96,7 +96,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
       password: '',
       passwordConfirmation: '',
       gdprConfirmation: true,
-      marketingConfirmation: true,
+      marketingConfirmation: false,
     },
   })
 
