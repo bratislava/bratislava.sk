@@ -21,13 +21,13 @@ const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => 
             variant="plain-black"
             size="sm"
             text={t('profile_detail.stop_edit_button')}
-            onClick={() => onChangeIsEditing(false)}
+            onPress={() => onChangeIsEditing(false)}
           />
           <Button
             variant="black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
-            onClick={() => onChangeIsEditing(false)}
+            onPress={() => onChangeIsEditing(false)}
           />
         </div>
       ) : (
@@ -38,7 +38,7 @@ const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => 
             size="sm"
             text={t('profile_detail.start_edit_button')}
             className="hidden xs:block"
-            onClick={() => onChangeIsEditing(true)}
+            onPress={() => onChangeIsEditing(true)}
           />
           <EditIcon
             className="block xs:hidden cursor-pointer"
