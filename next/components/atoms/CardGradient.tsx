@@ -16,11 +16,11 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
     <UILink href={url}>
       <div
         className={cx(
-          'group relative inline-block h-60 lg:h-76 pt-2 cursor-pointer transition-all transform lg:hover:-translate-y-2 lg:hover:drop-shadow-lg rounded-lg',
+          'group relative inline-block h-60 lg:h-76 md:pt-2 cursor-pointer transition-all transform lg:hover:-translate-y-2 lg:hover:drop-shadow-lg rounded-lg',
           className,
         )}
       >
-        <img src={mainImage.src} className="h-full w-full rounded-lg object-cover" alt={title} />
+        <img src={mainImage.src} className="h-[75%] md:h-full w-full rounded-lg object-cover" alt={title} />
         {/* Gradient */}
         <div className="absolute bottom-0 flex h-56 w-full items-end rounded-b-lg bg-gradient-to-t from-[#000]">
           <div className="flex-col flex">
