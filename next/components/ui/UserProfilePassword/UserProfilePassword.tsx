@@ -18,7 +18,7 @@ const UserProfilePassword = () => {
             startIcon={<LockIcon />}
             size="sm"
             text={t('password_change.button')}
-            onPress={() => push('/')}
+            onPress={() => push('/password-change')}
           />
         </div>
       </UserProfileSectionHeader>
