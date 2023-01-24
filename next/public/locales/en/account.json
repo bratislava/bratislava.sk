@@ -61,6 +61,7 @@
     "title": "Personal data",
     "text": "Manage your personal data",
     "start_edit_button": "Edit",
-    "save_edit_button": "Save changes"
+    "save_edit_button": "Save changes",
+    "stop_edit_button": "Remove changes"
   }
 }

@@ -28,7 +28,12 @@ const UserProfileConsents = ({ allConsents, onChange }: UserProfileConsentsProps
 
   return (
     <UserProfileSection>
-      <UserProfileSectionHeader title={t('consents.title')} text={t('consents.text')} underline />
+      <UserProfileSectionHeader
+        title={t('consents.title')}
+        text={t('consents.text')}
+        underline
+        isMobileColumn
+      />
       <div className={cx('px-4', 'xs:px-8')}>
         {allConsents.map((consent: Consent, key: number) => (
           <UserConsent

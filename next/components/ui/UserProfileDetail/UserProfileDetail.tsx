@@ -1,4 +1,5 @@
-import EditIcon from '@assets/images/forms/edit_white.svg'
+import EditIcon from '@assets/images/forms/edit_icon.svg'
+import WhiteEditIcon from '@assets/images/forms/edit_white.svg'
 import UserProfileSection from '@bratislava/ui-bratislava/UserProfileSection/UserProfileSection'
 import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfileSectionHeader/UserProfileSectionHeader'
 import { useTranslation } from 'next-i18next'
@@ -13,26 +14,29 @@ interface ButtonSectionProps {
 const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => {
   const { t } = useTranslation('account')
   return (
-    <div>
+    <div className="width-fit">
       {isEditing ? (
         <div className="flex flex-row gap-5 items-center">
           <Button
             variant="plain-black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
+            className="hidden xs:block"
             onPress={() => onChangeIsEditing(false)}
           />
           <Button
             variant="black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
+            className="hidden xs:block"
             onPress={() => onChangeIsEditing(false)}
           />
+          <EditIcon className="block xs:hidden cursor-pointer" />
         </div>
       ) : (
         <Button
           variant="black"
-          startIcon={<EditIcon />}
+          startIcon={<WhiteEditIcon />}
           size="sm"
           text={t('profile_detail.start_edit_button')}
           onPress={() => onChangeIsEditing(true)}

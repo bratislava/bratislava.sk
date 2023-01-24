@@ -11,7 +11,11 @@ const UserProfilePassword = () => {
   const { push } = useRouter()
   return (
     <UserProfileSection>
-      <UserProfileSectionHeader title={t('password_change.title')} text={t('password_change.text')}>
+      <UserProfileSectionHeader
+        title={t('password_change.title')}
+        text={t('password_change.text')}
+        isMobileColumn
+      >
         <Button
           variant="black"
           startIcon={<LockIcon />}
