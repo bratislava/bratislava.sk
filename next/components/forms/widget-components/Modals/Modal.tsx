@@ -12,8 +12,8 @@ type ModalBase = {
   onSubmit: () => void
   content: (({}: any) => JSX.Element)[] | (({}: any) => JSX.Element)
   header?: string
-  confirmLabel: string
-  cancelLabel: string
+  confirmLabel?: string
+  cancelLabel?: string
   className?: string
 }
 
