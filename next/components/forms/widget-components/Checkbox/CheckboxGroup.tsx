@@ -1,3 +1,4 @@
+import FieldHeader from 'components/forms/info-components/FieldHeader'
 import * as React from 'react'
 import { useCheckboxGroup } from 'react-aria'
 import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately'
@@ -14,18 +15,25 @@ type CheckBoxGroupBase = {
   onChange: (value: any[]) => void
   rawErrors?: string[]
   disabled?: boolean
+  required?: boolean
 }
 
 const CheckboxGroup = (props: CheckBoxGroupBase) => {
-  const { children, className, rawErrors, disabled, label } = props
+  const { children, className, rawErrors, disabled, label, required } = props
   const state: CheckboxGroupState = useCheckboxGroupState(props)
   const { groupProps, labelProps, errorMessageProps } = useCheckboxGroup(props, state)
   return (
     <>
       <div {...groupProps}>
-        <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
+        <FieldHeader
+          label={label}
+          labelProps={labelProps}
+          htmlFor={groupProps.id}
+          required={required}
+        />
+        {/* <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
           {label}
-        </span>
+        </span> */}
         <div className={className}>
           <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
         </div>
