@@ -1,22 +1,14 @@
 import { ArrowLeft } from '@assets/images'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import cx from 'classnames'
+import { SectionItemBase } from 'components/forms/types/AccountTypes'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { Dispatch, ReactNode, SetStateAction } from 'react'
-
-interface SectionItemBase {
-  id: number
-  title: string
-  icon: ReactNode
-}
 
 interface IProps {
   className?: string
   currentLanguage?: string
   sectionsList?: SectionItemBase[]
-  activeSection?: number
-  setActiveSection?: Dispatch<SetStateAction<number>>
 }
 
 const BackButton = () => {
@@ -32,17 +24,11 @@ const BackButton = () => {
 // test const, need to get from useAccount
 const isLogin = true
 
-export const AccountNavBar = ({
-  className,
-  currentLanguage,
-  sectionsList,
-  activeSection,
-  setActiveSection,
-}: IProps) => {
+export const AccountNavBar = ({ className, currentLanguage, sectionsList }: IProps) => {
   const languageKey = currentLanguage === 'sk' ? 'sk' : 'en'
-  // const [activeSection, setActiveSection] = useState(0)
 
   const { t } = useTranslation(['common'])
+  const router = useRouter()
   return (
     <>
       {/* Desktop */}
@@ -68,21 +54,22 @@ export const AccountNavBar = ({
             }
           />
         </div>
-        {isLogin && (
+        {isLogin && sectionsList && (
           <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
-              {sectionsList.map((sectionItem) => (
+              {sectionsList?.map((sectionItem) => (
                 // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
                 <li
                   className={cx(
                     'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
-                    { 'text-main-700 border-main-700': activeSection === sectionItem.id },
+                    { 'text-main-700 border-main-700': router.query.menu === sectionItem.link },
                   )}
                   key={sectionItem.id}
-                  onClick={() => setActiveSection(sectionItem.id)}
+                  // https://github.com/react-hook-form/react-hook-form/discussions/8622?sort=old
+                  onClick={() => router.push(`/account/${sectionItem.link}`)}
                 >
                   {sectionItem.icon}
-                  <span className="ml-3">{sectionItem.title}</span>
+                  <span className="ml-3">{sectionItem?.title}</span>
                 </li>
               ))}
             </ul>
