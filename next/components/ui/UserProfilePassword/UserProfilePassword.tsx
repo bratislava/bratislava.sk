@@ -12,15 +12,13 @@ const UserProfilePassword = () => {
   return (
     <UserProfileSection>
       <UserProfileSectionHeader title={t('password_change.title')} text={t('password_change.text')}>
-        <div className="w-44">
-          <Button
-            variant="black"
-            startIcon={<LockIcon />}
-            size="sm"
-            text={t('password_change.button')}
-            onPress={() => push('/password-change')}
-          />
-        </div>
+        <Button
+          variant="black"
+          startIcon={<LockIcon />}
+          size="sm"
+          text={t('password_change.button')}
+          onPress={() => push('/password-change')}
+        />
       </UserProfileSectionHeader>
     </UserProfileSection>
   )

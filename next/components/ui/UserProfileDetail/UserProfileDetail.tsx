@@ -5,6 +5,43 @@ import { useTranslation } from 'next-i18next'
 
 import Button from '../../forms/simple-components/Button'
 
+interface ButtonSectionProps {
+  isEditing?: boolean
+  onChangeIsEditing: (isEditing: boolean) => void
+}
+
+const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => {
+  const { t } = useTranslation('account')
+  return (
+    <div>
+      {isEditing ? (
+        <div className="flex flex-row gap-5 items-center">
+          <Button
+            variant="plain-black"
+            size="sm"
+            text={t('profile_detail.save_edit_button')}
+            onPress={() => onChangeIsEditing(false)}
+          />
+          <Button
+            variant="black"
+            size="sm"
+            text={t('profile_detail.save_edit_button')}
+            onPress={() => onChangeIsEditing(false)}
+          />
+        </div>
+      ) : (
+        <Button
+          variant="black"
+          startIcon={<EditIcon />}
+          size="sm"
+          text={t('profile_detail.start_edit_button')}
+          onPress={() => onChangeIsEditing(true)}
+        />
+      )}
+    </div>
+  )
+}
+
 interface UserProfileDetailProps {
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
@@ -16,24 +53,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
   return (
     <UserProfileSection>
       <UserProfileSectionHeader title={t('profile_detail.title')} text={t('profile_detail.text')}>
-        <div>
-          {isEditing ? (
-            <Button
-              variant="black"
-              size="sm"
-              text={t('profile_detail.save_edit_button')}
-              onPress={() => onChangeIsEditing(false)}
-            />
-          ) : (
-            <Button
-              variant="black"
-              startIcon={<EditIcon />}
-              size="sm"
-              text={t('profile_detail.start_edit_button')}
-              onPress={() => onChangeIsEditing(true)}
-            />
-          )}
-        </div>
+        <ButtonSection isEditing={isEditing} onChangeIsEditing={onChangeIsEditing} />
       </UserProfileSectionHeader>
     </UserProfileSection>
   )
