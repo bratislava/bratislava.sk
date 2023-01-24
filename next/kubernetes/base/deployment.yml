@@ -23,8 +23,8 @@ spec:
               cpu: 900m
               memory: 8Gi
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: ${NEXT_CPU_REQUESTS}
+              memory: ${NEXT_MEMORY_REQUESTS}
           envFrom:
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-ginis-secret
