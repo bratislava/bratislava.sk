@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import FieldHeader from 'components/forms/info-components/FieldHeader'
 import React from 'react'
 import { useRadioGroup } from 'react-aria'
 import { RadioGroupState, useRadioGroupState } from 'react-stately'
@@ -19,18 +20,22 @@ type RadioGroupBase = {
   className?: string
   errorMessage?: string[]
   orientations?: 'column' | 'row'
+  required?: boolean
 }
 
 const RadioGroup = (props: RadioGroupBase) => {
-  const { children, className, orientations = 'column' } = props
+  const { children, className, orientations = 'column', required, label } = props
   const state = useRadioGroupState(props)
   const { radioGroupProps, labelProps, errorMessageProps } = useRadioGroup(props, state)
 
   return (
     <div {...radioGroupProps}>
-      <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
-        {props.label}
-      </span>
+      <FieldHeader
+        label={label}
+        labelProps={labelProps}
+        htmlFor={radioGroupProps.id}
+        required={required}
+      />
       <RadioContext.Provider value={state}>
         <div
           className={cx(className, {
