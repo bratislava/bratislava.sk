@@ -47,7 +47,7 @@
   "marketing_confirmation_label": "Mám záujem dostávať informácie aj o iných digitálnych službách mesta Bratislava",
   "register_submit": "Vytvoriť konto",
   "email_verification_title": "Overte svoj e-mail",
-  "email_verification_description": "Do priečinka doručenej pošty sme vám odoslali overovací kód. Skopírujte ho do poľa nižšie.",
+  "email_verification_description": "Na e-mail {email} sme vám odoslali overovací kód. Skopírujte ho do poľa nižšie.",
   "email_verification_submit": "Overiť kód",
   "register_success_title": "Overenie bolo úspešné a mestské konto vytvorené",
   "register_success_description": "E-mailová adresa {email} bola overená a mestské konto vytvorené.",

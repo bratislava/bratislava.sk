@@ -66,7 +66,7 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) 
       })}
     >
       <h1 className="text-h3">{t('email_verification_title')}</h1>
-      <div>{t('email_verification_description')}</div>
+      <div>{formatUnicorn(t('email_verification_description'), { email: lastEmail || '' })}</div>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), {
