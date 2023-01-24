@@ -4,9 +4,8 @@ import useHookForm from '@utils/useHookForm'
 import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
-import FieldHeader from 'components/forms/info-components/FieldHeader'
 import Button from 'components/forms/simple-components/Button'
-import Toggle from 'components/forms/simple-components/Toggle'
+import SingleCheckbox from 'components/forms/widget-components/Checkbox/SingleCheckbox'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
@@ -190,32 +189,39 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         )}
       />
       <div>
-        <div className="flex flex-row justify-between">
-          <FieldHeader htmlFor="gdprConfirmation" label={t('gdpr_confirmation_label')} required />
-          <Controller
-            name="gdprConfirmation"
-            control={control}
-            render={({ field }) => (
-              <Toggle value="gdprConfirmation" onChange={field.onChange} isSelected={field.value} />
-            )}
-          />
-        </div>
-        <FieldErrorMessage errorMessage={errors.gdprConfirmation} />
-      </div>
-      <div className="flex flex-row justify-between">
-        <FieldHeader htmlFor="marketingConfirmation" label={t('marketing_confirmation_label')} />
         <Controller
-          name="marketingConfirmation"
+          name="gdprConfirmation"
           control={control}
           render={({ field }) => (
-            <Toggle
-              value="marketingConfirmation"
-              onChange={field.onChange}
+            <SingleCheckbox
+              value="gdprConfirmation"
               isSelected={field.value}
-            />
+              onChange={field.onChange}
+              required
+              fullWidth
+              error={errors.gdprConfirmation?.length > 0}
+            >
+              {t('gdpr_confirmation_label')}
+            </SingleCheckbox>
           )}
         />
+        <FieldErrorMessage errorMessage={errors.gdprConfirmation} />
       </div>
+      <Controller
+        name="marketingConfirmation"
+        control={control}
+        render={({ field }) => (
+          <SingleCheckbox
+            value="marketingConfirmation"
+            isSelected={field.value}
+            onChange={field.onChange}
+            fullWidth
+            error={errors.marketingConfirmation?.length > 0}
+          >
+            {t('marketing_confirmation_label')}
+          </SingleCheckbox>
+        )}
+      />
       <Button
         className="min-w-full"
         type="submit"
