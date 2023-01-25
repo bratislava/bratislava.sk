@@ -31,6 +31,7 @@ export default function useHookForm<T extends FieldValues>({ schema, defaultValu
           const rc = Number(value)
           return !Number.isNaN(rc) && rc % 11 === 0
         },
+        verificationCode: '^[0-9]{6}$',
       },
       $data: true,
     }),

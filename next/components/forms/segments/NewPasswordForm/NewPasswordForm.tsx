@@ -27,8 +27,12 @@ const schema = {
   properties: {
     verificationCode: {
       type: 'string',
-      minLength: 6,
-      errorMessage: { minLength: 'account:verification_code_required' },
+      minLength: 1,
+      format: 'verificationCode',
+      errorMessage: {
+        minLength: 'account:verification_code_required',
+        format: 'account:verification_code_format',
+      },
     },
     password: {
       type: 'string',
