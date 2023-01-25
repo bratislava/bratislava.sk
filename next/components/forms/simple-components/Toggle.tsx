@@ -30,8 +30,6 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
   )
   const { focusProps } = useFocusRing()
 
-  console.log(inputProps)
-
   const { isSelected } = state
   const toggleContainer = cx('group select-none flex flex-row items-center p-0 gap-4', {
     'opacity-50 cursor-not-allowed': isDisabled,
