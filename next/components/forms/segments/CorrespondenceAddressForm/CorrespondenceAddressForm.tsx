@@ -6,9 +6,9 @@ import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
 export interface CorrespondenceAddressData {
-  streeAddress: string
-  locality: string
-  postalCode: string
+  streeAddress?: string
+  locality?: string
+  postalCode?: string
 }
 
 // must use `minLength: 1` to implement required field
@@ -17,22 +17,17 @@ const schema = {
   properties: {
     streeAddress: {
       type: 'string',
-      minLength: 1,
-      errorMessage: { minLength: 'forms:street_address_required' },
     },
     locality: {
       type: 'string',
-      minLength: 1,
-      errorMessage: { minLength: 'forms:locality_required' },
     },
     postalCode: {
       type: 'string',
-      minLength: 1,
       format: 'postalCode',
-      errorMessage: { minLength: 'forms:postal_code_required', format: 'forms:postal_code_format' },
+      errorMessage: { format: 'forms:postal_code_format' },
     },
   },
-  required: ['streeAddress', 'locality', 'postalCode'],
+  required: [],
 }
 
 interface Props {
@@ -66,7 +61,6 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
         control={control}
         render={({ field }) => (
           <InputField
-            required
             label={t('street_address_label')}
             placeholder={t('street_address_placeholder')}
             {...field}
@@ -79,7 +73,6 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
         control={control}
         render={({ field }) => (
           <InputField
-            required
             label={t('locality_label')}
             placeholder={t('locality_placeholder')}
             {...field}
@@ -93,7 +86,6 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
         render={({ field }) => (
           <InputField
             className="max-w-xs"
-            required
             label={t('postal_code_label')}
             placeholder={t('postal_code_placeholder')}
             description={t('postal_code_description')}
@@ -105,7 +97,7 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
       <Button
         className="min-w-full"
         type="submit"
-        text={t('submit')}
+        text={t('changes_submit')}
         variant="black"
         disabled={isSubmitting}
       />

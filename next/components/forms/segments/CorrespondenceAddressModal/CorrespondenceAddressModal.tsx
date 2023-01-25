@@ -18,7 +18,7 @@ const CorrespondenceAddressModal = ({ show, onClose }: Props) => {
     console.log(data)
   }
 
-  const defaultValues = { streeAddress: '', locality: '', postalCode: '' }
+  const defaultValues = {}
   return (
     <Modal
       divider
