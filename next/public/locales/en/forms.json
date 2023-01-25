@@ -6,5 +6,17 @@
     "unknown": "An unknown error occurred - please try again later."
   },
   "selectAll": "Select all",
-  "deselectAll": "Deselect all"
+  "deselectAll": "Deselect all",
+
+  "correspondece_address_title": "Change correspondence address",
+  "correspondece_address_description": "",
+  "street_address_label": "Street",
+  "street_address_placeholder": "Street",
+  "locality_label": "Locality",
+  "locality_placeholder": "Locality",
+  "postal_code_label": "Postal code",
+  "postal_code_placeholder": "Postal code",
+  "postal_code_description": "",
+  "postal_code_format": "Postal code is not valid.",
+  "changes_submit": "Submit"
 }
