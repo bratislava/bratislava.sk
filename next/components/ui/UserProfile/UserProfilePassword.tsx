@@ -1,6 +1,6 @@
 import LockIcon from '@assets/images/forms/lock-white.svg'
-import UserProfileSection from '@bratislava/ui-bratislava/UserProfileSection/UserProfileSection'
-import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfileSectionHeader/UserProfileSectionHeader'
+import UserProfileSection from '@bratislava/ui-bratislava/UserProfile/UserProfileSection'
+import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfile/UserProfileSectionHeader'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 

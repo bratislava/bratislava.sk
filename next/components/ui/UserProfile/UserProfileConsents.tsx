@@ -1,6 +1,6 @@
-import UserConsent from '@bratislava/ui-bratislava/UserConsent/UserConsent'
-import UserProfileSection from '@bratislava/ui-bratislava/UserProfileSection/UserProfileSection'
-import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfileSectionHeader/UserProfileSectionHeader'
+import UserConsent from '@bratislava/ui-bratislava/UserProfile/UserConsent'
+import UserProfileSection from '@bratislava/ui-bratislava/UserProfile/UserProfileSection'
+import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfile/UserProfileSectionHeader'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 

@@ -1,4 +1,4 @@
-import { Consent } from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
+import { Consent } from '@bratislava/ui-bratislava/UserProfile/UserProfileConsents'
 import cx from 'classnames'
 import { useId } from 'react'
 

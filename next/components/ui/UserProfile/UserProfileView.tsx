@@ -1,8 +1,8 @@
 import UserProfileConsents, {
   Consent,
-} from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
-import UserProfileDetail from '@bratislava/ui-bratislava/UserProfileDetail/UserProfileDetail'
-import UserProfilePassword from '@bratislava/ui-bratislava/UserProfilePassword/UserProfilePassword'
+} from '@bratislava/ui-bratislava/UserProfile/UserProfileConsents'
+import UserProfileDetail from '@bratislava/ui-bratislava/UserProfile/UserProfileDetail'
+import UserProfilePassword from '@bratislava/ui-bratislava/UserProfile/UserProfilePassword'
 import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'

@@ -1,4 +1,4 @@
-import UserProfileView from '@bratislava/ui-bratislava/UserProfileView/UserProfileView'
+import UserProfileView from '@bratislava/ui-bratislava/UserProfile/UserProfileView'
 import { AsyncServerProps } from '@utils/types'
 import useAccount from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
