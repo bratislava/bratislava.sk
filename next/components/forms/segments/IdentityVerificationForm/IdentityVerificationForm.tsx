@@ -25,13 +25,13 @@ const schema = {
   properties: {
     rc: {
       type: 'string',
-      minLength: 10,
+      minLength: 1,
       format: 'rc',
       errorMessage: { minLength: 'account:rc_required', format: 'account:rc_format' },
     },
     idCard: {
       type: 'string',
-      minLength: 8,
+      minLength: 1,
       errorMessage: { minLength: 'account:id_card_required' },
     },
   },
