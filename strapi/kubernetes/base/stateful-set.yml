@@ -24,8 +24,8 @@ spec:
               cpu: 500m
               memory: 1Gi
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: ${DB_CPU_REQUESTS}
+              memory: ${DB_MEMORY_REQUESTS}
           volumeMounts:
             - name: ${BUILD_REPOSITORY_NAME}-database-storage
               mountPath: /var/lib/postgresql/data

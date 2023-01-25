@@ -25,8 +25,12 @@ const schema = {
   properties: {
     verificationCode: {
       type: 'string',
-      minLength: 6,
-      errorMessage: { minLength: 'account:verification_code_required' },
+      minLength: 1,
+      format: 'verificationCode',
+      errorMessage: {
+        minLength: 'account:verification_code_required',
+        format: 'account:verification_code_format',
+      },
     },
   },
   required: ['verificationCode'],
@@ -66,7 +70,7 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) 
       })}
     >
       <h1 className="text-h3">{t('email_verification_title')}</h1>
-      <div>{t('email_verification_description')}</div>
+      <div>{formatUnicorn(t('email_verification_description'), { email: lastEmail || '' })}</div>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), {
