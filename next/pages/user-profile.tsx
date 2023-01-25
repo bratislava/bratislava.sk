@@ -31,8 +31,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const UserProfile = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
-  const { user } = useAccount()
-  console.log('USER', user)
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>

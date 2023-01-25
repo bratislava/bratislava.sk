@@ -3,6 +3,7 @@ import WhiteEditIcon from '@assets/images/forms/edit_white.svg'
 import UserProfilePhoto from '@bratislava/ui-bratislava/UserProfilePhoto/UserProfilePhoto'
 import UserProfileSection from '@bratislava/ui-bratislava/UserProfileSection/UserProfileSection'
 import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfileSectionHeader/UserProfileSectionHeader'
+import { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
@@ -53,12 +54,13 @@ const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => 
 }
 
 interface UserProfileDetailProps {
+  userData?: UserData | null
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
 }
 
 const UserProfileDetails = (props: UserProfileDetailProps) => {
-  const { isEditing, onChangeIsEditing } = props
+  const { userData, isEditing, onChangeIsEditing } = props
   const { t } = useTranslation('account')
   return (
     <UserProfileSection>
@@ -70,7 +72,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
         <ButtonSection isEditing={isEditing} onChangeIsEditing={onChangeIsEditing} />
       </UserProfileSectionHeader>
       <div className={cx('flex p-4 flex-col', 'xs:p-8 xs:flex-row')}>
-        <UserProfilePhoto />
+        <UserProfilePhoto userData={userData ?? {}} />
       </div>
     </UserProfileSection>
   )

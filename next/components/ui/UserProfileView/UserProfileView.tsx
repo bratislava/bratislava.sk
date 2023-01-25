@@ -3,12 +3,15 @@ import UserProfileConsents, {
 } from '@bratislava/ui-bratislava/UserProfileConsents/UserProfileConsents'
 import UserProfileDetail from '@bratislava/ui-bratislava/UserProfileDetail/UserProfileDetail'
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfilePassword/UserProfilePassword'
+import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 const UserProfileView = () => {
   const { t } = useTranslation('account')
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const { userData } = useAccount()
+  console.log('USER', userData)
 
   // TODO: handle change of consents in backend DB
   const [allConsents, setAllConsents] = useState<Consent[]>([
@@ -31,7 +34,11 @@ const UserProfileView = () => {
   // TODO: redirect to change password
   return (
     <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
-      <UserProfileDetail isEditing={isEditing} onChangeIsEditing={setIsEditing} />
+      <UserProfileDetail
+        userData={userData}
+        isEditing={isEditing}
+        onChangeIsEditing={setIsEditing}
+      />
       <UserProfilePassword />
       <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
     </section>
