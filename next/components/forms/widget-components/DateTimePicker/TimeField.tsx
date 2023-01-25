@@ -21,6 +21,7 @@ type TimeFieldBase = {
   value?: string
   readOnly?: boolean
   setIsInputEdited?: React.Dispatch<React.SetStateAction<boolean>>
+  setPrevValue?: React.Dispatch<React.SetStateAction<string>>
 }
 
 const TimeField = ({
@@ -60,6 +61,7 @@ const TimeField = ({
         setIsInputEdited?.(true)
         if (onChange) {
           onChange(val)
+          rest?.setPrevValue?.(val)
         } else {
           setInputValue(val)
         }

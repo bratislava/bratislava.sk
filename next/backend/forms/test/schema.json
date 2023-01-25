@@ -46,14 +46,14 @@
       "properties": {
         "timeFromTo": {
           "title": "Showcase of TimeFromTo Picker",
-          "required": ["timeFrom", "timeTo"],
+          "timeFromTo": true,
           "properties": {
-            "timeFrom": {
+            "startTime": {
               "type": "string",
               "format": "time",
               "title": "Time From"
             },
-            "timeTo": {
+            "endTime": {
               "type": "string",
               "format": "time",
               "title": "Time To"
@@ -64,16 +64,17 @@
     },
     {
       "properties": {
-        "dateFromTo": {
+        "dateDepartureArrival": {
           "title": "Showcase of DateFromTo Picker",
-          "required": ["dateFrom"],
+          "required": ["startDate"],
+          "dateFromTo": true,
           "properties": {
-            "dateFrom": {
+            "startDate": {
               "type": "string",
               "format": "date",
               "title": "Date From"
             },
-            "dateTo": {
+            "endDate": {
               "type": "string",
               "format": "date",
               "title": "Date To"

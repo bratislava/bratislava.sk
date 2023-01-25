@@ -11,7 +11,6 @@ const DateFromToWidgetRJSF = ({
   uiSchema,
   errorSchema,
 }: FieldProps) => {
-  const keys = Object.keys({ ...schema.properties })
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
@@ -24,8 +23,6 @@ const DateFromToWidgetRJSF = ({
     })
   }
 
-  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
-
   // TODO fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => errorSchema?.[propKey]?.__errors || []
 
@@ -34,20 +31,20 @@ const DateFromToWidgetRJSF = ({
       <DateFromTo
         DateToTooltip={localUiSchema?.DateToTooltip as string}
         DateFromTooltip={localUiSchema?.DateFromTooltip as string}
-        DateFromRequired={schema.required?.includes(keys[0])}
-        DateToRequired={schema.required?.includes(keys[1]) as unknown as boolean}
-        DateFromErrorMessage={getErrorMessage(keys[0])}
-        DateToErrorMessage={getErrorMessage(keys[1])}
+        DateFromRequired={schema.required?.includes('startDate')}
+        DateToRequired={schema.required?.includes('endDate')}
+        DateFromErrorMessage={getErrorMessage('startDate')}
+        DateToErrorMessage={getErrorMessage('endDate')}
         DateFromDescription={localUiSchema?.DateFromDescription as string}
         DateToDescription={localUiSchema?.DateToDescription as string}
         DateFromExplicitOptional={localUiSchema?.DateFromExplicitOptional as ExplicitOptionalType}
         DateToExplicitOptional={localUiSchema?.DateToExplicitOptional as ExplicitOptionalType}
-        DateFromOnChange={(e) => handleOnChange(keys[0], e?.toString())}
-        DateToOnChange={(e) => handleOnChange(keys[1], e?.toString())}
-        DateFromValue={formData[keys[0]]}
-        DateToValue={formData[keys[1]]}
-        DateFromLabel={getLabel(0)}
-        DateToLabel={getLabel(1)}
+        DateFromOnChange={(e) => handleOnChange('startDate', e?.toString())}
+        DateToOnChange={(e) => handleOnChange('endDate', e?.toString())}
+        DateFromValue={formData.startDate}
+        DateToValue={formData.endDate}
+        DateFromLabel={schemaProperties?.startDate?.title}
+        DateToLabel={schemaProperties?.endDate?.title}
         DateFromDisabled={localUiSchema?.DateFromDisabled as unknown as boolean}
         DateToDisabled={localUiSchema?.DateToDisabled as unknown as boolean}
       />

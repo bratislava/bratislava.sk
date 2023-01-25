@@ -11,7 +11,6 @@ const DateTimeWidgetRJSF = ({
   uiSchema,
   errorSchema,
 }: FieldProps) => {
-  const keys = Object.keys({ ...schema.properties })
   const schemaProperties = {
     ...(schema.properties as Record<string, { type: string; title: string }>),
   }
@@ -23,8 +22,6 @@ const DateTimeWidgetRJSF = ({
       [valueName]: newValue || undefined,
     })
   }
-
-  const getLabel = (index: 0 | 1) => schemaProperties[keys[index]].title
 
   // TODO: fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => errorSchema?.[propKey]?.__errors || []
@@ -38,16 +35,16 @@ const DateTimeWidgetRJSF = ({
         TimeDescription={localUiSchema?.TimeDescription as string}
         DateExplicitOptional={localUiSchema?.DateExplicitOptional as ExplicitOptionalType}
         TimeExplicitOptional={localUiSchema?.TimeExplicitOptional as ExplicitOptionalType}
-        DateRequired={schema.required?.includes(keys[0])}
-        TimeRequired={schema.required?.includes(keys[1])}
-        DateErrorMessage={getErrorMessage(keys[0])}
-        TimeErrorMessage={getErrorMessage(keys[1])}
-        DateOnChange={(e) => handleOnChange(keys[0], e?.toString())}
-        TimeOnChange={(e) => handleOnChange(keys[1], e?.toString())}
-        DateValue={formData[keys[0]]}
-        TimeValue={formData[keys[1]]}
-        DateLabel={getLabel(0)}
-        TimeLabel={getLabel(1)}
+        DateRequired={schema.required?.includes('dateValue')}
+        TimeRequired={schema.required?.includes('timeValue')}
+        DateErrorMessage={getErrorMessage('dateValue')}
+        TimeErrorMessage={getErrorMessage('timeValue')}
+        DateOnChange={(e) => handleOnChange('dateValue', e?.toString())}
+        TimeOnChange={(e) => handleOnChange('timeValue', e?.toString())}
+        DateValue={formData.dateValue}
+        TimeValue={formData.timeValue}
+        DateLabel={schemaProperties?.dateValue?.title}
+        TimeLabel={schemaProperties?.timeValue?.title}
         DateDisabled={localUiSchema?.DateDisabled as unknown as boolean}
         TimeDisabled={localUiSchema?.TimeDisabled as unknown as boolean}
       />

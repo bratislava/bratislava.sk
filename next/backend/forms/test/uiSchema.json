@@ -37,7 +37,7 @@
       "TimeToDescription": "To desc"
     }
   },
-  "dateFromTo": {
+  "dateDepartureArrival": {
     "ui:hideError": true,
     "ui:field": "dateFromTo",
     "ui:options": {

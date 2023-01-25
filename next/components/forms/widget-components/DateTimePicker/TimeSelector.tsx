@@ -34,7 +34,6 @@ const TimeSelector = ({
   setIsInputEdited,
   minValue,
   maxValue,
-  fillAllBeforeSubmit,
   value,
 }: TimeSelectorBase) => {
   const hoursArray = Array.from({ length: HOURS_LIMIT + 1 }, (_, i) => i + 0)
@@ -50,9 +49,9 @@ const TimeSelector = ({
     minute ? padStart(minute, 2, '0') : ''
   }`
   const timeFormatArray = value
-    ? value.split(':').map((value) => parseInt(value, 10))
+    ? value.split(':').map((value) => parseInt(value, 10) || 0)
     : minValue
-    ? minValue.split(':').map((value) => parseInt(value, 10))
+    ? minValue.split(':').map((value) => parseInt(value, 10) || 0)
     : [0, 0]
 
   const clickHandler = (
@@ -65,10 +64,16 @@ const TimeSelector = ({
     const minutesItemOffset =
       minutesItemRef && minutesItemRef.current ? minutesItemRef?.current[+value]?.offsetTop : 0
     if (type === 'hour') {
+      if (!minute) {
+        setMinute(timeFormatArray[1].toString())
+      }
       setHour(value)
       hourRef?.current?.scrollTo({ top: hoursItemOffset - 125, behavior: 'smooth' })
     }
     if (type === 'minute') {
+      if (!hour) {
+        setHour(timeFormatArray[0].toString())
+      }
       setMinute(value)
       minuteRef?.current?.scrollTo({ top: minutesItemOffset - 125, behavior: 'smooth' })
     }
@@ -168,13 +173,7 @@ const TimeSelector = ({
       </div>
       <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
         <Button onPress={onReset} text="Resetovať" variant="plain-black" size="sm" />
-        <Button
-          onPress={onSubmit}
-          text="Potvrdiť"
-          disabled={(!hour || !minute) && fillAllBeforeSubmit}
-          variant="black"
-          size="sm"
-        />
+        <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
       </div>
     </div>
   )

@@ -45,7 +45,6 @@ export type TimePickerBase = {
   value?: string
   minValue?: string
   maxValue?: string
-  fillAllBeforeSubmit?: boolean
   readOnly?: boolean
   onChange?: (value?: string) => void
 }
@@ -64,7 +63,6 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       value = '',
       minValue,
       maxValue,
-      fillAllBeforeSubmit,
       readOnly = false,
       ...rest
     },
@@ -117,6 +115,8 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
 
     const closeFailedHandler = () => {
       if (onChange && prevValue) onChange(prevValue)
+      else if (onChange) onChange()
+
       if (prevValue) setHour(prevValue.split(':')[0])
       else setHour('')
 
@@ -145,6 +145,10 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       }
     }, [isInputEdited])
 
+    useEffect(() => {
+      if (value) setPrevValue(value)
+    }, [])
+
     return (
       <I18nProvider locale={locale}>
         <div className="relative w-full max-w-xs">
@@ -165,6 +169,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               value={value}
               readOnly={readOnly}
               setIsInputEdited={setIsInputEdited}
+              setPrevValue={setPrevValue}
             >
               <Button {...buttonProps} disabled={disabled}>
                 <TimeIcon />
@@ -190,7 +195,6 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   value={value}
                   minValue={minValue}
                   maxValue={maxValue}
-                  fillAllBeforeSubmit={fillAllBeforeSubmit}
                   setIsInputEdited={setIsInputEdited}
                 />
               </Popover>

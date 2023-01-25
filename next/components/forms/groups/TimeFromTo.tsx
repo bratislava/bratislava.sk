@@ -63,9 +63,7 @@ export const TimeFromTo = ({
             explicitOptional={TimeFromExplicitOptional}
             value={TimeFromValue}
             maxValue={TimeToValue}
-            fillAllBeforeSubmit
             onChange={TimeFromOnChange}
-            readOnly
             disabled={TimeFromDisabled}
           />
         </div>
@@ -91,9 +89,7 @@ export const TimeFromTo = ({
             explicitOptional={TimeToExplicitOptional}
             value={TimeToValue}
             minValue={TimeFromValue}
-            fillAllBeforeSubmit
             onChange={TimeToOnChange}
-            readOnly
             disabled={TimeToDisabled}
           />
         </div>
