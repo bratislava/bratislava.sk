@@ -1,15 +1,27 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import SuccessIcon from '@assets/images/forms/success.svg'
 import Button from 'components/forms/simple-components/Button'
+import { ReactNode } from 'react'
 
 interface Props {
   title: string
   description?: string
   confirmLabel: string
   onConfirm: () => void
+  onCancel?: () => void
+  cancelLabel?: string
+  children?: ReactNode
 }
 
-const AccountSuccessAlert = ({ title, confirmLabel, onConfirm, description }: Props) => {
+const AccountSuccessAlert = ({
+  title,
+  confirmLabel,
+  onConfirm,
+  description,
+  onCancel,
+  cancelLabel,
+  children,
+}: Props) => {
   return (
     <div className="flex flex-col space-y-6">
       <div className="h-14 w-14 rounded-full p-4 bg-success-100 mx-auto">
@@ -18,7 +30,8 @@ const AccountSuccessAlert = ({ title, confirmLabel, onConfirm, description }: Pr
         </div>
       </div>
       <h1 className="text-h3 text-center">{title}</h1>
-      {description && <p>{description}</p>}
+      {description && <p className="text-center">{description}</p>}
+      {children}
       <Button
         onPress={onConfirm}
         className="min-w-full"
@@ -26,6 +39,15 @@ const AccountSuccessAlert = ({ title, confirmLabel, onConfirm, description }: Pr
         text={confirmLabel}
         endIcon={<ArrowRightIcon />}
       />
+      {onCancel && (
+        <Button
+          variant="plain-black"
+          className="min-w-full"
+          onPress={onCancel}
+          text={cancelLabel}
+          endIcon={<ArrowRightIcon />}
+        />
+      )}
     </div>
   )
 }
