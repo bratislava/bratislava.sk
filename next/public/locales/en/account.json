@@ -75,7 +75,7 @@
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
   "UserNotConfirmedException": "User is not confirmed.",
   "UsernameExistsException": "An account with the given email already exists.",
-  "ExpiredCodeException": "Invalid code provided, please request a code again."
+  "ExpiredCodeException": "Invalid code provided, please request a code again.",
   "my_profile": "My profile",
   "consents": {
     "title": "Consents",
@@ -99,6 +99,12 @@
     "text": "Manage your personal data",
     "start_edit_button": "Edit",
     "save_edit_button": "Save changes",
-    "stop_edit_button": "Remove changes"
+    "stop_edit_button": "Remove changes",
+    "titles_before_name": "Titles before name",
+    "titles_after_name": "Titles after name",
+    "full_name": "Given name and family name",
+    "email": "E-mail",
+    "phone_number": "Phone number (with pattern +421...)",
+    "address": "Correspondence address"
   }
 }

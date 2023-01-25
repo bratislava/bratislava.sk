@@ -1,5 +1,6 @@
 import EditIcon from '@assets/images/forms/edit_icon.svg'
 import WhiteEditIcon from '@assets/images/forms/edit_white.svg'
+import UserProfileDetailView from '@bratislava/ui-bratislava/UserProfile/UserProfileDetailView'
 import UserProfilePhoto from '@bratislava/ui-bratislava/UserProfile/UserProfilePhoto'
 import UserProfileSection from '@bratislava/ui-bratislava/UserProfile/UserProfileSection'
 import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfile/UserProfileSectionHeader'
@@ -71,8 +72,9 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
       >
         <ButtonSection isEditing={isEditing} onChangeIsEditing={onChangeIsEditing} />
       </UserProfileSectionHeader>
-      <div className={cx('flex p-4 flex-col', 'xs:p-8 xs:flex-row')}>
+      <div className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}>
         <UserProfilePhoto userData={userData ?? {}} />
+        <UserProfileDetailView userData={userData ?? {}} />
       </div>
     </UserProfileSection>
   )
