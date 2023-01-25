@@ -1,23 +1,19 @@
-import { formatUnicorn } from '@utils/string'
 import useHookForm from '@utils/useHookForm'
 import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
-import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
 import { Controller } from 'react-hook-form'
 
 interface Data {
-  verificationCode: string
+  oldPassword: string
   password: string
   passwordConfirmation: string
 }
 
 interface Props {
-  onSubmit: (verificationCode: string, password: string) => Promise<any>
-  onResend: () => Promise<any>
+  onSubmit: (oldPassword: string, password: string) => Promise<any>
   error?: AWSError | null | undefined
 }
 
@@ -25,14 +21,12 @@ interface Props {
 const schema = {
   type: 'object',
   properties: {
-    verificationCode: {
+    oldPassword: {
       type: 'string',
-      minLength: 1,
-      format: 'verificationCode',
-      errorMessage: {
-        minLength: 'account:verification_code_required',
-        format: 'account:verification_code_format',
-      },
+      // min length set to 2 according to cognito error InvalidParameterException:
+      // 1 validation error detected: Value at 'previousPassword' failed to satisfy constraint: Member must satisfy regular expression pattern: ^[\S]+.*[\S]+$
+      minLength: 2,
+      errorMessage: { minLength: 'account:password_required' },
     },
     password: {
       type: 'string',
@@ -48,11 +42,10 @@ const schema = {
       errorMessage: { const: 'account:password_confirmation_required' },
     },
   },
-  required: ['verificationCode', 'password', 'passwordConfirmation'],
+  required: ['oldPassword', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
-  const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
+const PasswordChangeForm = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -61,48 +54,26 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
     formState: { isSubmitting },
   } = useHookForm<Data>({
     schema,
-    defaultValues: { verificationCode: '', password: '', passwordConfirmation: '' },
+    defaultValues: { oldPassword: '', password: '', passwordConfirmation: '' },
   })
-
-  const [cnt, setCnt] = useState(60)
-  useEffect(() => {
-    if (cnt > 0) {
-      setTimeout(() => setCnt((state) => state - 1), 1000)
-    }
-  }, [cnt])
-
-  const handleResend = async () => {
-    setCnt(60)
-    await onResend()
-  }
 
   return (
     <form
       className="flex flex-col space-y-6"
-      onSubmit={handleSubmit((data: Data) => {
-        setLastVerificationCode(data.verificationCode)
-        onSubmit(data.verificationCode, data.password)
-      })}
+      onSubmit={handleSubmit((data: Data) => onSubmit(data.oldPassword, data.password))}
     >
-      <h1 className="text-h3">{t('new_password_title')}</h1>
-      <div>{t('new_password_description')}</div>
-      {error && (
-        <Alert
-          message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
-          type="error"
-          className="min-w-full"
-        />
-      )}
+      <h1 className="text-h3">{t('password_change_title')}</h1>
+      {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
       <Controller
-        name="verificationCode"
+        name="oldPassword"
         control={control}
         render={({ field }) => (
-          <InputField
+          <PasswordField
             required
-            label={t('verification_code_label')}
-            placeholder={t('verification_code_placeholder')}
+            label={t('old_password_label')}
+            placeholder={t('old_password_placeholder')}
             {...field}
-            errorMessage={errors.verificationCode}
+            errorMessage={errors.oldPassword}
           />
         )}
       />
@@ -140,19 +111,8 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         variant="category"
         disabled={isSubmitting}
       />
-      <div>
-        <span>{t('verification_description')}</span>
-        {cnt > 0 && <span>{` ${formatUnicorn(t('verification_cnt_description'), { cnt })}`}</span>}
-      </div>
-      <Button
-        onPress={handleResend}
-        className="min-w-full"
-        text={t('verification_resend')}
-        variant="category-outline"
-        disabled={cnt > 0}
-      />
     </form>
   )
 }
 
-export default NewPasswordForm
+export default PasswordChangeForm
