@@ -23,6 +23,16 @@ export default function useHookForm<T extends FieldValues>({ schema, defaultValu
         password:
           /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[ !"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]).{8,}$/,
         postalCode: '^[0-9]{5}$',
+        rc: (value: string) => {
+          value = value.replace('/', '')
+          if (value.length !== 10) {
+            return false
+          }
+
+          const rc = Number(value)
+          return !Number.isNaN(rc) && rc % 11 === 0
+        },
+        verificationCode: '^[0-9]{6}$',
       },
       $data: true,
     }),
