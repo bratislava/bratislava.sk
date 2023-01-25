@@ -27,8 +27,9 @@ const schema = {
     },
     postalCode: {
       type: 'string',
-      minLength: 5,
-      errorMessage: { minLength: 'forms:postal_code_required' },
+      minLength: 1,
+      format: 'postalCode',
+      errorMessage: { minLength: 'forms:postal_code_required', format: 'forms:postal_code_format' },
     },
   },
   required: ['streeAddress', 'locality', 'postalCode'],
