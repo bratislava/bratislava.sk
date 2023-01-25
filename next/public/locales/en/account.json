@@ -103,6 +103,8 @@
     "titles_before_name": "Titles before name",
     "titles_after_name": "Titles after name",
     "full_name": "Given name and family name",
+    "given_name": "Given name",
+    "family_name": "Family name",
     "email": "E-mail",
     "phone_number": "Phone number (with pattern +421...)",
     "address": "Correspondence address"

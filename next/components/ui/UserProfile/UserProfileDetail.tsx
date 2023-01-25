@@ -1,5 +1,6 @@
 import EditIcon from '@assets/images/forms/edit_icon.svg'
 import WhiteEditIcon from '@assets/images/forms/edit_white.svg'
+import UserProfileDetailEdit from '@bratislava/ui-bratislava/UserProfile/UserProfileDetailEdit'
 import UserProfileDetailView from '@bratislava/ui-bratislava/UserProfile/UserProfileDetailView'
 import UserProfilePhoto from '@bratislava/ui-bratislava/UserProfile/UserProfilePhoto'
 import UserProfileSection from '@bratislava/ui-bratislava/UserProfile/UserProfileSection'
@@ -74,7 +75,11 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
       </UserProfileSectionHeader>
       <div className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}>
         <UserProfilePhoto userData={userData ?? {}} />
-        <UserProfileDetailView userData={userData ?? {}} />
+        {isEditing ? (
+          <UserProfileDetailEdit />
+        ) : (
+          <UserProfileDetailView userData={userData ?? {}} />
+        )}
       </div>
     </UserProfileSection>
   )

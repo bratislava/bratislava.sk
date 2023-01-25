@@ -102,8 +102,10 @@
     "save_edit_button": "Uložiť zmeny",
     "stop_edit_button": "Zahodiť zmeny",
     "titles_before_name": "Tituly pred menom",
-    "titles_after_name": "Meno a priezvisko",
-    "full_name": "Tituly za menom",
+    "titles_after_name": "Tituly za menom",
+    "full_name": "Meno a priezvisko",
+    "given_name": "Meno",
+    "family_name": "Priezvisko",
     "email": "E-mail",
     "phone_number": "Telefónne číslo (v tvare +421...)",
     "address": "Korešpondenčná adresa"

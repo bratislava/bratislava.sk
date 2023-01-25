@@ -13,7 +13,7 @@ import FieldHeader from '../../info-components/FieldHeader'
 interface InputBase {
   label: string
   type?: 'text' | 'password'
-  placeholder: string
+  placeholder?: string
   errorMessage?: string[]
   description?: string
   className?: string
