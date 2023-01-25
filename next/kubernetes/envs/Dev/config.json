@@ -1,0 +1,6 @@
+{
+  "envs": {
+      "NEXT_CPU_REQUESTS": "10m",
+      "NEXT_MEMORY_REQUESTS": "128Mi"
+  }
+}
