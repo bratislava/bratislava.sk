@@ -45,7 +45,7 @@ const schema = {
   required: ['oldPassword', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error }: Props) => {
+const PasswordChangeForm = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -115,4 +115,4 @@ const NewPasswordForm = ({ onSubmit, error }: Props) => {
   )
 }
 
-export default NewPasswordForm
+export default PasswordChangeForm

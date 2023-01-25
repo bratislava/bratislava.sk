@@ -82,5 +82,5 @@
   "UserNotConfirmedException": "User is not confirmed.",
   "UsernameExistsException": "An account with the given email already exists.",
   "ExpiredCodeException": "Invalid code provided, please request a code again.",
-  "IncorectPasswordException": "Invalid password"
+  "IncorectPasswordException": "Incorrect password."
 }
