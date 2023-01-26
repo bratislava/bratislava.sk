@@ -62,11 +62,11 @@ export const AccountNavBar = ({ className, currentLanguage, sectionsList }: IPro
                 <li
                   className={cx(
                     'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
-                    { 'text-main-700 border-main-700': router.query.menu === sectionItem.link },
+                    { 'text-main-700 border-main-700': router.route.includes(sectionItem.link) },
                   )}
                   key={sectionItem.id}
                   // https://github.com/react-hook-form/react-hook-form/discussions/8622?sort=old
-                  onClick={() => router.push(`/account/${sectionItem.link}`)}
+                  onClick={() => router.push(`/account${sectionItem.link}`)}
                 >
                   {sectionItem.icon}
                   <span className="ml-3">{sectionItem?.title}</span>

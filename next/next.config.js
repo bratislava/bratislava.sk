@@ -48,10 +48,23 @@ const nextConfig = {
           source: '/city-of-bratislava/transparent-city/official-noticeboard',
           destination: '/mesto-bratislava/transparentne-mesto/uradna-tabula',
         },
-        {
-          source: '/konto',
-          destination: '/account',
-        },
+        // does not work, revisit later
+        // {
+        //   source: '/ucet/uvod',
+        //   destination: '/account/intro',
+        // },
+        // {
+        //   source: '/ucet/mestske-sluzby',
+        //   destination: '/account/municipal-services',
+        // },
+        // {
+        //   source: '/ucet/dane-a-poplatky',
+        //   destination: '/account/taxes-and-fees',
+        // },
+        // {
+        //   source: '/ucet/mam-problem',
+        //   destination: '/account/i-have-a-problem',
+        // },
       ],
     }
   },
@@ -2686,16 +2699,6 @@ const nextConfig = {
       {
         source: '/sadni-si',
         destination: '/mesto-bratislava/projekty/kampane/sadni-si',
-        permanent: true,
-      },
-      {
-        source: '/konto',
-        destination: '/konto/uvod',
-        permanent: true,
-      },
-      {
-        source: '/account',
-        destination: '/account/uvod',
         permanent: true,
       },
     ]
