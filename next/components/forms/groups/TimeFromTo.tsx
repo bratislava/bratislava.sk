@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import isEmpty from 'lodash/isEmpty'
 
+import FieldErrorMessage from '../info-components/FieldErrorMessage'
 import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/TimePicker'
 
 type TimeFromBase = {
@@ -47,13 +47,9 @@ export const TimeFromTo = ({
   TimeToErrorMessage,
 }: TimeFromBase & TimeToBase) => {
   return (
-    <div className={cx('flex-col flex items-start gap-4')}>
-      <div className="items-left flex lg:flex-row flex-col gap-4">
-        <div
-          className={cx('flex flex-col w-[320px] items-start', {
-            'mb-6': !isEmpty(TimeToErrorMessage),
-          })}
-        >
+    <div className={cx('flex-col flex')}>
+      <div className="flex lg:flex-row flex-col gap-4 items-end">
+        <div className={cx('flex flex-col w-[320px] items-start')}>
           <TimePicker
             label={TimeFromLabel}
             errorMessage={TimeFromErrorMessage}
@@ -63,23 +59,17 @@ export const TimeFromTo = ({
             explicitOptional={TimeFromExplicitOptional}
             value={TimeFromValue}
             maxValue={TimeToValue}
+            customErrorPlace
             onChange={TimeFromOnChange}
             disabled={TimeFromDisabled}
           />
+          {/* Custom render error messages for both fields at small screens */}
+          <div className={cx('flex flex-col lg:hidden block lg:w-[320px]')}>
+            <FieldErrorMessage errorMessage={TimeFromErrorMessage} />
+          </div>
         </div>
-        <div
-          className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-8', {
-            'mb-14':
-              (!isEmpty(TimeFromErrorMessage) && isEmpty(TimeToErrorMessage)) ||
-              (isEmpty(TimeFromErrorMessage) && !isEmpty(TimeToErrorMessage)),
-            'mb-20': !isEmpty(TimeFromErrorMessage) && !isEmpty(TimeToErrorMessage),
-          })}
-        />
-        <div
-          className={cx('w-[320px] flex flex-row items-end mt-auto', {
-            'mb-6': !isEmpty(TimeFromErrorMessage),
-          })}
-        >
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-8')} />
+        <div className={cx('w-[320px] flex flex-col')}>
           <TimePicker
             label={TimeToLabel}
             description={TimeToDescription}
@@ -88,10 +78,26 @@ export const TimeFromTo = ({
             required={TimeToRequired}
             explicitOptional={TimeToExplicitOptional}
             value={TimeToValue}
+            customErrorPlace
             minValue={TimeFromValue}
             onChange={TimeToOnChange}
             disabled={TimeToDisabled}
           />
+          {/* Custom render error messages for both fields at small screens */}
+          <div className={cx('flex flex-col lg:hidden block lg:w-[320px]')}>
+            <FieldErrorMessage errorMessage={TimeToErrorMessage} />
+          </div>
+        </div>
+      </div>
+
+      {/* Custom render error messages for both fields */}
+      <div className="flex-row flex gap-4">
+        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+          <FieldErrorMessage errorMessage={TimeFromErrorMessage} />
+        </div>
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-white')} />
+        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+          <FieldErrorMessage errorMessage={TimeToErrorMessage} />
         </div>
       </div>
     </div>

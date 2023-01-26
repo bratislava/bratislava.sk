@@ -35,6 +35,8 @@ export type InputBase = {
   value?: string
   leftIcon?: LeftIconVariants
   required?: boolean
+  // providing this 'prop' will disable error messages rendering inside this component
+  customErrorPlace?: boolean
   explicitOptional?: ExplicitOptionalType
   resetIcon?: boolean
   disabled?: boolean
@@ -63,6 +65,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       size,
       onChange,
       endIcon,
+      customErrorPlace = false,
       ...rest
     },
     ref,
@@ -172,7 +175,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           )}
           {endIcon}
         </div>
-        {!disabled && (
+        {!disabled && !customErrorPlace && (
           <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
         )}
       </div>

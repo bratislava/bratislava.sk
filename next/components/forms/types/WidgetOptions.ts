@@ -1,5 +1,5 @@
-import { ExplicitOptionalType } from './ExplicitOptional'
 import { AccordionBase } from '../simple-components/Accordion'
+import { ExplicitOptionalType } from './ExplicitOptional'
 
 export type FormSpacingType = 'large' | 'default' | 'small' | 'none'
 

@@ -7,7 +7,7 @@
     {
       "properties": {
         "mestoPSC": {
-          "required": ["psc"],
+          "required": ["psc","mesto"],
           "properties": {
             "mesto": {
               "type": "string",
@@ -27,6 +27,7 @@
       "properties": {
         "dateTimePicker": {
           "title": "Showcase of DateTime Picker",
+          "required": ["dateValue","timeValue"],
           "properties": {
             "dateValue": {
               "type": "string",
@@ -66,7 +67,7 @@
       "properties": {
         "dateDepartureArrival": {
           "title": "Showcase of DateFromTo Picker",
-          "required": ["startDate"],
+          "required": ["startDate","endDate"],
           "dateFromTo": true,
           "properties": {
             "startDate": {

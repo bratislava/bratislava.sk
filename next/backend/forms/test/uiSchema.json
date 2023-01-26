@@ -5,6 +5,11 @@
   "mestoPSC": {
     "ui:field": "doubledInput",
     "ui:hideError": true,
+    "ui:accordion": {
+      "title": "Header name",
+      "size": "sm",
+      "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+    },
     "ui:options": {
       "FirstInputTooltip": "Mesto tooltip",
       "FirstInputDescription": "Description",
@@ -14,7 +19,8 @@
       "FirstInputLeftIcon": "person",
       "FirstInputExplicitOptional": true,
       "FirstInputClassNames": "w-full",
-      "SecondInputClassNames": "sm:w-1/4"
+      "SecondInputClassNames": "w-1/4",
+      "spaceTop": "large"
     }
   },
   "dateTimePicker": {
@@ -23,8 +29,7 @@
     "ui:options": {
       "TimeTooltip": "Time tooltip",
       "DateTooltip": "Time tooltip",
-      "TimeFromDescription": "From desc",
-      "TimeToDescription": "To desc"
+      "DateDescription": "From desc"
     }
   },
   "timeFromTo": {

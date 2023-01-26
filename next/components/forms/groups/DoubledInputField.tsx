@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import isEmpty from 'lodash/isEmpty'
 
+import FieldErrorMessage from '../info-components/FieldErrorMessage'
 import InputField, { InputBase } from '../widget-components/InputField/InputField'
 
 type FirstInputFieldBase = {
@@ -72,51 +72,65 @@ export const DoubledInputField = ({
   SecondInputErrorMessage,
 }: FirstInputFieldBase & SecondInputFieldBase) => {
   return (
-    <div className="flex flex-row items-end gap-4">
-      <div
-        className={cx(FirstInputClassNames, {
-          'mb-6': !isEmpty(SecondInputErrorMessage),
-        })}
-      >
-        <InputField
-          label={FirstInputLabel}
-          placeholder={FirstInputPlaceholder}
-          errorMessage={FirstInputErrorMessage}
-          description={FirstInputDescription}
-          type={FirstInputType}
-          value={FirstInputValue}
-          leftIcon={FirstInputLeftIcon}
-          required={FirstInputRequired}
-          explicitOptional={FirstInputExplicitOptional}
-          resetIcon={FirstInputResetIcon}
-          disabled={FirstInputDisabled}
-          tooltip={FirstInputTooltip}
-          size={FirstInputSize}
-          className={FirstInputClassNames}
-          onChange={FirstInputHandler}
-        />
+    <div className="flex flex-col">
+      <div className="flex sm:flex-row flex-col gap-4 sm:items-end">
+        <div className={cx(FirstInputClassNames)}>
+          <InputField
+            label={FirstInputLabel}
+            placeholder={FirstInputPlaceholder}
+            errorMessage={FirstInputErrorMessage}
+            description={FirstInputDescription}
+            type={FirstInputType}
+            value={FirstInputValue}
+            leftIcon={FirstInputLeftIcon}
+            required={FirstInputRequired}
+            explicitOptional={FirstInputExplicitOptional}
+            resetIcon={FirstInputResetIcon}
+            disabled={FirstInputDisabled}
+            customErrorPlace
+            tooltip={FirstInputTooltip}
+            size={FirstInputSize}
+            className={FirstInputClassNames}
+            onChange={FirstInputHandler}
+          />
+          {/* Custom render error messages for both fields at small screens */}
+          <div className={cx('flex sm:hidden block')}>
+            <FieldErrorMessage errorMessage={FirstInputErrorMessage} />
+          </div>
+        </div>
+        <div className={cx(SecondInputClassNames)}>
+          <InputField
+            label={SecondInputLabel}
+            placeholder={SecondInputPlaceholder}
+            errorMessage={SecondInputErrorMessage}
+            type={SecondInputType}
+            description={SecondInputDescription}
+            value={SecondInputValue}
+            leftIcon={SecondInputLeftIcon}
+            required={SecondInputRequired}
+            explicitOptional={SecondInputExplicitOptional}
+            resetIcon={SecondInputResetIcon}
+            customErrorPlace
+            disabled={SecondInputDisabled}
+            size={SecondInputSize}
+            tooltip={SecondInputTooltip}
+            onChange={SecondInputHandler}
+          />
+          {/* Custom render error messages for both fields at small screens */}
+          <div className={cx('flex sm:hidden w-full block')}>
+            <FieldErrorMessage errorMessage={SecondInputErrorMessage} />
+          </div>
+        </div>
       </div>
-      <div
-        className={cx(SecondInputClassNames, {
-          'mb-6': !isEmpty(FirstInputErrorMessage),
-        })}
-      >
-        <InputField
-          label={SecondInputLabel}
-          placeholder={SecondInputPlaceholder}
-          errorMessage={SecondInputErrorMessage}
-          type={SecondInputType}
-          description={SecondInputDescription}
-          value={SecondInputValue}
-          leftIcon={SecondInputLeftIcon}
-          required={SecondInputRequired}
-          explicitOptional={SecondInputExplicitOptional}
-          resetIcon={SecondInputResetIcon}
-          disabled={SecondInputDisabled}
-          size={SecondInputSize}
-          tooltip={SecondInputTooltip}
-          onChange={SecondInputHandler}
-        />
+
+      {/* Custom render error messages for both fields at large screens */}
+      <div className="flex-row flex gap-4">
+        <div className={cx('flex flex-col sm:block hidden', FirstInputClassNames)}>
+          <FieldErrorMessage errorMessage={FirstInputErrorMessage} />
+        </div>
+        <div className={cx('flex flex-col sm:block hidden', SecondInputClassNames)}>
+          <FieldErrorMessage errorMessage={SecondInputErrorMessage} />
+        </div>
       </div>
     </div>
   )

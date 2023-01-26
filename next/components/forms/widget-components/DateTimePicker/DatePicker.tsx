@@ -39,6 +39,8 @@ export type DatePickerBase = {
   required?: boolean
   explicitOptional?: ExplicitOptionalType
   disabled?: boolean
+  // providing this 'prop' will disable error messages rendering inside this component
+  customErrorPlace?: boolean
   errorMessage?: string[]
   value?: string
   minValue?: string
@@ -60,6 +62,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       minValue,
       maxValue,
       onChange,
+      customErrorPlace = false,
       ...rest
     },
     ref,
@@ -157,7 +160,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
               </Popover>
             </OverlayProvider>
           )}
-          {!disabled && (
+          {!disabled && !customErrorPlace && (
             <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
           )}
         </div>

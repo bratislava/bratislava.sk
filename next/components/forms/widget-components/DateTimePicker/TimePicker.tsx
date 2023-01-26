@@ -34,6 +34,13 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   )
 }
 
+export const convertTimeToValidFormat = (timeValue: string) => {
+  const [hours, minutes] = timeValue?.split(':')
+  return `${hours ? padStart(hours, 2, '0') : ''}${hours || minutes ? ':' : ''}${
+    minutes ? padStart(minutes, 2, '0') : ''
+  }`
+}
+
 export type TimePickerBase = {
   label?: string
   description?: string
@@ -41,6 +48,8 @@ export type TimePickerBase = {
   required?: boolean
   explicitOptional?: ExplicitOptionalType
   disabled?: boolean
+  // providing this 'prop' will disable error messages rendering inside this component
+  customErrorPlace?: boolean
   errorMessage?: string[]
   value?: string
   minValue?: string
@@ -64,6 +73,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       minValue,
       maxValue,
       readOnly = false,
+      customErrorPlace = false,
       ...rest
     },
     ref,
@@ -146,7 +156,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }, [isInputEdited])
 
     useEffect(() => {
-      if (value) setPrevValue(value)
+      const convertedTimeToValidFormat = convertTimeToValidFormat(value)
+      if (value) setPrevValue(convertedTimeToValidFormat)
+      if (onChange) onChange(convertedTimeToValidFormat)
     }, [])
 
     return (
@@ -200,7 +212,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               </Popover>
             </OverlayProvider>
           )}
-          {!disabled && (
+          {!disabled && !customErrorPlace && (
             <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
           )}
         </div>

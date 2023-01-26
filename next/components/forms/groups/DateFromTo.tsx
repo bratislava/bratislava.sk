@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import isEmpty from 'lodash/isEmpty'
 
+import FieldErrorMessage from '../info-components/FieldErrorMessage'
 import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/DatePicker'
 
 type DateFrom = {
@@ -48,13 +48,9 @@ export const DateFromTo = ({
   DateToOnChange,
 }: DateFrom & DateTo) => {
   return (
-    <div className={cx('flex-col flex items-start gap-4')}>
+    <div className={cx('flex-col flex items-start')}>
       <div className="items-left lg:flex-row flex-col flex gap-4">
-        <div
-          className={cx('w-[320px] flex flex-col items-start justify-end', {
-            'mb-6': !isEmpty(DateToErrorMessage),
-          })}
-        >
+        <div className={cx('w-[320px] flex flex-col items-start justify-end')}>
           <DatePicker
             label={DateFromLabel}
             errorMessage={DateFromErrorMessage}
@@ -63,21 +59,18 @@ export const DateFromTo = ({
             tooltip={DateFromTooltip}
             explicitOptional={DateFromExplicitOptional}
             disabled={DateFromDisabled}
+            customErrorPlace
             value={DateFromValue}
             maxValue={DateToValue}
             onChange={DateFromOnChange}
           />
+          {/* Custom render error messages for both fields at small screens */}
+          <div className={cx('flex flex-col lg:w-[320px] lg:hidden block')}>
+            <FieldErrorMessage errorMessage={DateFromErrorMessage} />
+          </div>
         </div>
-        <div
-          className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-7', {
-            'mb-14': !isEmpty(DateFromErrorMessage) || !isEmpty(DateToErrorMessage),
-          })}
-        />
-        <div
-          className={cx('flex flex-row w-[320px] items-end gap-1 mt-auto', {
-            'mb-6': !isEmpty(DateFromErrorMessage),
-          })}
-        >
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-9')} />
+        <div className={cx('flex flex-col w-[320px]')}>
           <DatePicker
             label={DateToLabel}
             errorMessage={DateToErrorMessage}
@@ -87,9 +80,25 @@ export const DateFromTo = ({
             explicitOptional={DateToExplicitOptional}
             disabled={DateToDisabled}
             value={DateToValue}
+            customErrorPlace
             minValue={DateFromValue}
             onChange={DateToOnChange}
           />
+          {/* Custom render error messages for both fields at small screens */}
+          <div className={cx('flex flex-col lg:w-[320px] lg:hidden block')}>
+            <FieldErrorMessage errorMessage={DateFromErrorMessage} />
+          </div>
+        </div>
+      </div>
+
+      {/* Custom render error messages for both fields */}
+      <div className="flex-row flex gap-4">
+        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+          <FieldErrorMessage errorMessage={DateFromErrorMessage} />
+        </div>
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-white')} />
+        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+          <FieldErrorMessage errorMessage={DateToErrorMessage} />
         </div>
       </div>
     </div>
