@@ -218,7 +218,6 @@
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits max 3 items",
-              "minItems": 1,
               "maxItems": 3,
               "uniqueItems": true,
               "items": {
@@ -262,7 +261,9 @@
           "properties": {
             "phone": {
               "type": "string",
-              "isExampleAsyncValidation": {}
+              "isExampleAsyncValidation": {
+                "errorMsg": "Required input"
+              }
             }
           }
         }

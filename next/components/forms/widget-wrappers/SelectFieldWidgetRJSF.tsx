@@ -1,6 +1,7 @@
 import { EnumOptionsType, StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
+import React from 'react'
 
 import SelectField from '../widget-components/SelectField/SelectField'
 
@@ -31,6 +32,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     selectAllOption,
     helptext,
     tooltip,
+    accordion,
     dropdownDivider,
     className,
     explicitOptional,
@@ -93,7 +95,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   }
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <SelectField
         type={type}
         label={label}

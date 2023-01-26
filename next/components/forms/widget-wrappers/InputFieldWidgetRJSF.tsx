@@ -39,6 +39,7 @@ const InputFieldWidgetRJSF = ({
     className,
     resetIcon,
     leftIcon,
+    accordion,
     explicitOptional,
     type,
     size = 'default',
@@ -49,7 +50,7 @@ const InputFieldWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <InputField
         label={label}
         type={type}

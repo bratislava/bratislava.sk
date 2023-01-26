@@ -2,6 +2,7 @@ import { WidgetProps } from '@rjsf/utils'
 import cx from 'classnames'
 import { WidgetOptions } from 'components/forms/types/WidgetOptions'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
+import React from 'react'
 
 import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 
@@ -33,6 +34,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   const {
     helptext,
     tooltip,
+    accordion,
     explicitOptional,
     className,
     spaceBottom = 'default',
@@ -48,7 +50,12 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }
 
   return (
-    <WidgetWrapper className="max-w-[320px]" spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper
+      accordion={accordion}
+      className="max-w-[320px]"
+      spaceBottom={spaceBottom}
+      spaceTop={spaceTop}
+    >
       <TextAreaField
         value={value}
         label={label}

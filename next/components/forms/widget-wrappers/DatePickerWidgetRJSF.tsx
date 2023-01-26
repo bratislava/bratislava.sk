@@ -32,6 +32,7 @@ const DatePickerWidgetRJSF = ({
     helptext,
     tooltip,
     explicitOptional,
+    accordion,
     spaceBottom = 'default',
     spaceTop = 'none',
   } = options
@@ -40,7 +41,7 @@ const DatePickerWidgetRJSF = ({
     newValue ? onChange(newValue.toString()) : onChange()
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <DatePicker
         label={label}
         errorMessage={rawErrors}

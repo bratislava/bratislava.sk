@@ -7,6 +7,7 @@ jobs:
   conditions:
     name: Check for build conditions
     uses: bratislava/github-actions/.github/workflows/build-conditions.yml@stable
+    permissions: write-all
 
   strapi:
     name: build Strapi

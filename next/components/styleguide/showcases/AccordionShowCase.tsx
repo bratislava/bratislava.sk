@@ -134,20 +134,20 @@ Hello
   return (
     <Wrapper direction="column" title="Accordion">
       <Stack direction="column">
-        <Accordion size="sm" title="Headline" shadow markdownContent={markdownSource} />
-        <Accordion size="md" title="Headline" shadow markdownContent={markdownSource} />
-        <Accordion size="lg" title="Headline" shadow markdownContent={markdownSource} />
-        <Accordion size="sm" title="Headline" markdownContent={markdownSource} />
-        <Accordion size="md" title="Headline" markdownContent={markdownSource} />
-        <Accordion size="lg" title="Headline" markdownContent={markdownSource} />
-        <Accordion size="sm" title="Headline" icon markdownContent={markdownSource} />
-        <Accordion size="md" title="Headline" icon markdownContent={markdownSource} />
+        <Accordion size="sm" title="Headline" shadow content={markdownSource} />
+        <Accordion size="md" title="Headline" shadow content={markdownSource} />
+        <Accordion size="lg" title="Headline" shadow content={markdownSource} />
+        <Accordion size="sm" title="Headline" content={markdownSource} />
+        <Accordion size="md" title="Headline" content={markdownSource} />
+        <Accordion size="lg" title="Headline" content={markdownSource} />
+        <Accordion size="sm" title="Headline" icon content={markdownSource} />
+        <Accordion size="md" title="Headline" icon content={markdownSource} />
         <Accordion
           size="lg"
           title="Headline"
           icon
           className="sm:max-w-[500px]"
-          markdownContent={markdownSource}
+          content={markdownSource}
         />
       </Stack>
     </Wrapper>

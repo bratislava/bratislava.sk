@@ -30,6 +30,7 @@ const TimePickerWidgetRJSF = ({
   const {
     helptext,
     tooltip,
+    accordion,
     explicitOptional,
     spaceBottom = 'default',
     spaceTop = 'none',
@@ -38,7 +39,7 @@ const TimePickerWidgetRJSF = ({
   const handleOnChange = (newValue?: string) => (newValue ? onChange(newValue) : onChange())
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <TimePicker
         label={label}
         errorMessage={rawErrors}
