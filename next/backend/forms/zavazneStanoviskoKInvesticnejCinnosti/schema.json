@@ -620,7 +620,7 @@
               },
               "then": {
                 "properties": {
-                  "ziadostUpresnenie": {
+                  "ziadostOdovodnenie": {
                     "type": "string",
                     "title": "Upresnenie konania",
                     "enum": [
@@ -630,14 +630,14 @@
                   }
                 },
                 "required": [
-                  "ziadostUpresnenie"
+                  "ziadostOdovodnenie"
                 ]
               }
             },
             {
               "if": {
                 "properties": {
-                  "ziadostUpresnenie": {
+                  "ziadostOdovodnenie": {
                     "const": "Dodatočné povolenie zmeny stavby pred dokončením"
                   }
                 }
@@ -661,7 +661,7 @@
             {
               "if": {
                 "properties": {
-                  "ziadostUpresnenie": {
+                  "ziadostOdovodnenie": {
                     "const": "Dodatočné povolenie zmeny stavby pred dokončením"
                   }
                 }
