@@ -8,15 +8,26 @@ import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import AccordionShowCase from '../components/styleguide/showcases/AccordionShowCase'
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
+import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
+import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGroupedShowCase'
+import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
+import ModalShowCase from '../components/styleguide/showcases/ModalShowCase'
+import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
+import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
+import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
+import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
+import SummaryRowShowCase from '../components/styleguide/showcases/SummaryRowShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
+import UploadShowCase from '../components/styleguide/showcases/UploadShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -29,18 +40,29 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
         <TagShowCase />
-        <TooltipShowCase/>
+        <TooltipShowCase />
         <FieldHeaderShowCase />
         <ButtonShowCase />
         <DatePickerShowCase />
         <InputFieldShowCase />
-        <SelectFieldShowCase />
         <SpinnerShowCase />
-        <TextAreaFieldShowCase/>
-        <AlertShowCase/>
-        <SearchFieldShowCase/>
-        <ToggleShowCase/>
+        <TextAreaFieldShowCase />
+        <AlertShowCase />
+        <SearchFieldShowCase />
+        <ToggleShowCase />
         <TimePickerShowCase />
+        <UploadShowCase />
+        <DropdownShowCase />
+        <SelectFieldShowCase />
+        <ModalShowCase />
+        <AccordionShowCase />
+        <ProgressBarShowCase />
+        <SingleCheckboxShowCase />
+        <CheckboxGroupShowCase />
+        <RadioButtonShowCase />
+        <StepperShowCase />
+        <SummaryRowShowCase />
+        <BannerShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )

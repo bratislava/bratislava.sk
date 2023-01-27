@@ -18,13 +18,17 @@ spec:
     spec:
       containers:
         - name: meilisearch
-          image: "getmeili/meilisearch:v0.28.0"
+          image: 'getmeili/meilisearch:v0.29.1'
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch-secret
+          resources:
+            requests:
+              cpu: ${MEILI_CPU_REQUESTS}
+              memory: ${MEILI_MEMORY_REQUESTS}
           ports:
             - name: http
               containerPort: 7700
@@ -44,8 +48,6 @@ spec:
           volumeMounts:
             - name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
               mountPath: /meili_data
-          resources:
-            {}
   volumeClaimTemplates:
     - metadata:
         name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
@@ -56,4 +58,3 @@ spec:
         resources:
           requests:
             storage: 10Gi
-

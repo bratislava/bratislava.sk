@@ -55,7 +55,7 @@ export const Select = <T extends ISelectOption>({
           </option>
         ))}
       </select>
-      {hasIcon && <ChevronDown className="pointer-events-none absolute right-0 mr-7 mt-1 text-primary" />}
+      {hasIcon && <ChevronDown className="pointer-events-none absolute right-0 mr-7 mt-1 text-category-600" />}
     </div>
   )
 }

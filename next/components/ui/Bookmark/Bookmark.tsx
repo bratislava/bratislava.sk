@@ -10,22 +10,24 @@ import { ArrowRight } from '../images'
 const PADDING = 20 // py-5
 
 export interface BookmarkLink {
-  title: string
-  href: string
+  title: string | null | undefined
+  href: string | null | undefined
 }
 
 // TODO add imageSrc ???
 
 export interface BookmarkProps {
   className?: string
-  bookmarkTitle: string
-  title: string
-  content: string
+  bookmarkTitle: string | null | undefined
+  title: string | null | undefined
+  content: string | null | undefined
   link: BookmarkLink
-  variant: 'blue' | 'red' | string
-  icon?: string
+  variant?: 'blue' | 'red' | string | null
+  icon?: string | null
   IconComponent?: React.FunctionComponent<React.SVGAttributes<any>>
 }
+
+const VARIANT_COLOR_FALLBACK = 'red'
 
 export const Bookmark = ({
   className,
@@ -33,7 +35,7 @@ export const Bookmark = ({
   title,
   content,
   link,
-  variant,
+  variant = VARIANT_COLOR_FALLBACK,
   // IconComponent,
   icon,
 }: BookmarkProps) => {
@@ -46,9 +48,6 @@ export const Bookmark = ({
   const modelref = useRef()
   useOutsideClick(ref, () => setIsOpen(false))
 
-  // fallback to red if incorrect variant
-  const variantWithFallback = variant === 'blue' || variant === 'red' ? variant : 'red'
-
   React.useEffect(() => {
     if (!ref.current) return
 
@@ -60,33 +59,40 @@ export const Bookmark = ({
 
   return (
     <div
-      className={cx(className, 'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out', {
-        'bg-blue-sea text-font': variantWithFallback === 'blue',
-        'bg-red-brick text-white': variantWithFallback === 'red',
-        'w-175': isOpen,
-        'w-17.5 ml-157.5': !isOpen,
-      })}
+      className={cx(
+        className,
+        'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out',
+        {
+          'bg-[#7CCEF2] text-font': variant === 'blue',
+          'bg-main-600 text-white': variant === 'red',
+          'w-[700px]': isOpen,
+          'w-[70px] ml-[630px]': !isOpen,
+        },
+      )}
       style={{
         minHeight: contentLoaded ? width + 2 * PADDING : undefined,
       }}
       ref={modelref}
     >
       <button
-        className={cx('w-17.5 font-semibold text-default', {
-          'bg-blue-sea-dark': variantWithFallback === 'blue',
-          'bg-red-brick-dark': variantWithFallback === 'red',
+        className={cx('w-[70px] text-20-semibold', {
+          'bg-[#66BDE3]': variant === 'blue',
+          'bg-main-700': variant === 'red',
         })}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className="block w-17.5 origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
-          <span className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible" ref={ref}>
+        <span className="block w-[70px] origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
+          <span
+            className="block w-max -translate-x-1/2 -translate-y-1/2 overflow-visible"
+            ref={ref}
+          >
             {bookmarkTitle}
           </span>
         </span>
       </button>
 
       <div className="flex py-5">
-        <div className="flex w-44.5 items-center justify-center">
+        <div className="flex w-44 items-center justify-center">
           {icon ? (
             <div
               style={{
@@ -97,8 +103,8 @@ export const Bookmark = ({
           ) : (
             <div
               className={cx('w-24 h-24 rounded-full', {
-                'bg-font': variantWithFallback === 'blue',
-                'bg-white': variantWithFallback === 'red',
+                'bg-font': variant === 'blue',
+                'bg-white': variant === 'red',
               })}
             />
           )}
@@ -108,7 +114,7 @@ export const Bookmark = ({
           <h3 className="text-h4 leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
           <a href={link.href} className="group flex items-center font-semibold underline">
-            <span className="text-sm font-semibold">{link.title}</span>
+            <span className="text-p2-semibold">{link.title}</span>
             {/* <ChevronRight className="ml-6" /> */}
             <span className="ml-4 group-hover:hidden">
               <ChevronRight />
@@ -119,7 +125,7 @@ export const Bookmark = ({
           </a>
         </div>
 
-        <div className="flex w-33 items-start justify-end pr-5">
+        <div className="flex w-[132px] items-start justify-end pr-5">
           <button onClick={() => setIsOpen(false)}>
             <CloseOutline />
           </button>

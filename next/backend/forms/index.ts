@@ -2,31 +2,31 @@
 // TODO figure out what we need to export & which files we need for each eform
 // TODO figure out whether to store the schema files in this repo or in a different lib
 
-import dopravneZnacenieHtmlStylesheet from './00603481.dopravneZnacenie.sk/form.html.sef.json'
-import dopravneZnacenieTextStylesheet from './00603481.dopravneZnacenie.sk/form.sb.sef.json'
-import dopravneZnacenieSchema from './00603481.dopravneZnacenie.sk/schema.json'
-import dopravneZnacenieUiSchema from './00603481.dopravneZnacenie.sk/uiSchema.json'
-import testSchema from './test/schema.json'
-import testUiSchema from './test/uiSchema.json'
+import { StrictRJSFSchema, UiSchema } from '@rjsf/utils'
+
+import dopravneZnacenie from './dopravneZnacenie'
+import kontajneroveStojiska from './kontajneroveStojiska'
+import test from './testForm'
+import zastitaPrimatora from './zastitaPrimatora'
+import zavazneStanoviskoKInvesticnejCinnosti from './zavazneStanoviskoKInvesticnejCinnosti'
 
 const eforms = {
-  dopravneZnacenie: {
-    schema: dopravneZnacenieSchema,
-    uiSchema: dopravneZnacenieUiSchema,
-    textStylesheet: dopravneZnacenieTextStylesheet,
-    htmlStylesheet: dopravneZnacenieHtmlStylesheet,
-    pdfStylesheetPath: '00603481.dopravneZnacenie.sk/form.fo.xslt',
-  },
-  test: {
-    schema: testSchema,
-    uiSchema: testUiSchema,
-    textStylesheet: undefined,
-    htmlStylesheet: undefined,
-    pdfStylesheetPath: undefined,
-  },
+  dopravneZnacenie,
+  kontajneroveStojiska,
+  test,
+  zavazneStanoviskoKInvesticnejCinnosti,
+  zastitaPrimatora,
 }
 
 export type EFormKey = keyof typeof eforms
-export type EFormValue = typeof eforms[EFormKey]
+export interface EFormValue {
+  schema: StrictRJSFSchema
+  uiSchema: UiSchema<any, any>
+  xsd: string
+  data: any
+  xmlTemplate: string
+  textStylesheet?: any
+  htmlStylesheet?: any
+}
 
 export default eforms

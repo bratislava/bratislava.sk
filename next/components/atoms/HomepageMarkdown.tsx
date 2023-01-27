@@ -49,7 +49,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
         h3: ({ children }) => (
           <h3
             id={getHeadingTag(children)}
-            className="text-h4 font-medium mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
+            className="text-h4-medium mt-10 mb-6 scroll-mt-24 first:mt-0 last:mb-0 lg:scroll-mt-48"
           >
             {children}
           </h3>
@@ -78,31 +78,39 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             {children}
           </h6>
         ),
-        p: ({ node, ...props }) => <div className="text-p1 mb-4 whitespace-pre-wrap last:mb-0" {...props} />,
+        p: ({ node, ...props }) => (
+          <div className="text-p1 mb-4 whitespace-pre-wrap last:mb-0" {...props} />
+        ),
         a: ({ href, children }) => (
           <UILink
             href={href ?? '#'}
-            className="break-all font-semibold text-font underline hover:text-primary"
+            className="break-words font-semibold text-font underline hover:text-category-600"
             target={href?.startsWith('http') ? '_blank' : null}
           >
             {children[0]}
           </UILink>
         ),
-        img: ({ src, alt }) => <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>,
+        img: ({ src, alt }) => (
+          <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>
+        ),
         blockquote: ({ children }) => (
-          <div className="mb-5 border-l-4 border-primary pl-10 last:mb-0  lg:mb-10">{children}</div>
+          <div className="mb-5 border-l-4 border-category-600 pl-10 last:mb-0  lg:mb-10">
+            {children}
+          </div>
         ),
         table: ({ children }) => <table className="table-block w-full">{children}</table>,
         tr: ({ children }) => (
-          <tr className="flex w-[280px] flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
+          <tr className="flex w-66 flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
             {children}
           </tr>
         ),
-        tbody: ({ children }) => <tbody className="flex gap-5 md:table-row-group md:gap-0">{children}</tbody>,
+        tbody: ({ children }) => (
+          <tbody className="flex gap-5 md:table-row-group md:gap-0">{children}</tbody>
+        ),
         thead: () => <thead className="bg-transparent" />,
         td: ({ children }) => (
           <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="text-p1 mb-1 flex items-center px-4 text-left md:min-h-[92px] lg:mb-0">
+            <div className="text-p1 md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
               {children}
             </div>
           </td>
@@ -114,7 +122,10 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
               return (
                 isValidElement(e) && {
                   ...e,
-                  props: { ...e.props, children: e.props.children.filter((c: string) => c !== '\n') },
+                  props: {
+                    ...e.props,
+                    children: e.props.children.filter((c: string) => c !== '\n'),
+                  },
                 }
               )
             })
@@ -133,9 +144,9 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
-                  'h-4 w-4 shrink-0 bg-primary rounded-full mt-1 border-4 border-solid border-primary',
-                  { 'bg-primary': level === 0 },
-                  { 'border-primary border-solid border-4': level !== 0 }
+                  'h-4 w-4 shrink-0 bg-category-600 rounded-full mt-1 border-4 border-solid border-category-600',
+                  { 'bg-category-600': level === 0 },
+                  { 'border-category-600 border-solid border-4': level !== 0 },
                 )}
               />
               <div className="text-p1 whitespace-pre-wrap">{children}</div>

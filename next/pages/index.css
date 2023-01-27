@@ -13,14 +13,14 @@
   /* if you feel a different variant is needed, please contact desing/product beforehand */
 
   .base-button {
-    @apply appearance-none inline-flex items-center justify-center text-center focus:outline-none bg-primary;
+    @apply appearance-none inline-flex items-center justify-center text-center focus:outline-none bg-category-600;
     @apply shadow-lg font-medium text-white text-p-md;
   }
   .homepage-markdown ul {
     @apply list-outside list-none;
   }
   .homepage-markdown ul li::before {
-    @apply absolute left-1 top-2 w-4 h-4 bg-primary rounded-full;
+    @apply absolute left-1 top-2 w-4 h-4 bg-category-600 rounded-full;
     /* use before to style it */
     content: '';
   }
@@ -31,7 +31,7 @@
     @apply ml-14 mt-1 -mb-8;
   }
   .homepage-markdown ul li ul li::before {
-    @apply absolute left-1 top-2 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-primary;
+    @apply absolute left-1 top-2 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-category-600;
     /* use before to style it */
     content: '';
   }
@@ -42,7 +42,7 @@
     @apply flex flex-col;
   }
   .numerical-list ul li::before {
-    @apply w-4 h-4 bg-primary rounded-full mr-6 -ml-12 lg:ml-6;
+    @apply w-4 h-4 bg-category-600 rounded-full mr-6 -ml-12 lg:ml-6;
     content: '';
     min-width: 16px;
   }
@@ -54,20 +54,6 @@
   }
   .blog-card-image {
     clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
-  }
-  .news-small-content {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-  }
-  .text-truncate-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
   }
   .modal-close-mobile-right {
     right: 45%;
@@ -86,7 +72,7 @@
     @apply ml-6 mt-4 list-outside list-none;
   }
   .modal-content-rent-markdown ul li::before {
-    @apply absolute left-1 top-1 w-4 h-4 bg-primary rounded-full;
+    @apply absolute left-1 top-1 w-4 h-4 bg-category-600 rounded-full;
     content: '';
   }
   .modal-content-rent-markdown ul li {
@@ -96,7 +82,7 @@
     @apply ml-14 mt-1 -mb-8;
   }
   .modal-content-rent-markdown ul li ul li::before {
-    @apply absolute left-1 top-1 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-primary;
+    @apply absolute left-1 top-1 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-category-600;
     content: '';
   }
   .modal-content-rent-markdown .no-whitespace-wrap {
@@ -162,20 +148,6 @@
 
   .listitem .typography-regular {
     @apply text-p-sm lg:text-p-base;
-  }
-
-  .line-clamp-4 {
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-  }
-
-  .line-clamp-2 {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
   }
 
   .text-title-center h1,
@@ -256,7 +228,7 @@
   }
 
   .homepage-markdown .no-whitespace-wrap {
-    @apply overflow-x-scroll -mx-7.5 lg:mx-0 px-7.5 lg:px-0;
+    @apply overflow-x-scroll -mx-8 lg:mx-0 px-8 lg:px-0;
   }
 
   .table-block tbody tr td:first-child div {

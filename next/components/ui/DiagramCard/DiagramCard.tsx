@@ -21,7 +21,7 @@ export interface TicketBuyDiagramCardProps {
 export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, className }: TicketBuyDiagramCardProps) => {
   return (
     <div
-      className={cx(className, 'relative rounded-lg border-secondary border-3 flex flex-col items-center shadow mb-2')}
+      className={cx(className, 'relative rounded-lg border-category-200 border-3 flex flex-col items-center shadow mb-2')}
     >
       <StepperStep active={false} className="absolute h-20 w-20 -translate-y-1/2 py-5 text-5xl" number={index} />
 
@@ -30,7 +30,7 @@ export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, classNam
       </div>
 
       {text && (
-        <div className="mt-8 px-5 pb-10 text-center text-base text-font">
+        <div className="mt-8 px-5 pb-10 text-center text-p2 text-font">
           {typeof text === 'string' ? <p>{text}</p> : text}
         </div>
       )}

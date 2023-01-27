@@ -11,10 +11,10 @@ type CloseIconProps = {
 const CloseIcon = ({ className, solid = false,onClick, type = 'error' }: CloseIconProps) => {
   const closeIconStyle = cx('fill-current cursor-pointer', className, {
     'text-white': solid,
-    'text-form-alert-error-default': type === 'error' && !solid,
-    'text-form-alert-success-default': type === 'success' && !solid,
-    'text-form-alert-info-default': type === 'info' && !solid,
-    'text-form-alert-warning-default': type === 'warning' && !solid,
+    'text-negative-700': type === 'error' && !solid,
+    'text-success-700': type === 'success' && !solid,
+    'text-gray-700': type === 'info' && !solid,
+    'text-warning-700': type === 'warning' && !solid,
   })
 
   return (

@@ -10,7 +10,7 @@ interface IProps {
 const ContentImage = ({ src, alt, shadow }: IProps) => (
   <span
     className={cx('inline-block', {
-      'rounded-lg overflow-hiddenbg-gray-universal-200 shadow-md': shadow,
+      'rounded-lg overflow-hiddenbg-gray-300 shadow-md': shadow,
     })}
   >
     <img src={src} alt={alt} />

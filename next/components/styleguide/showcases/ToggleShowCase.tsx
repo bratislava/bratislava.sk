@@ -1,17 +1,33 @@
-import Toggle from '../../forms/Toggle'
+import { useState } from 'react'
+
+import Toggle from '../../forms/simple-components/Toggle'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
 const ToggleShowCase = () => {
+  const [secondToggleSelected, setSecondToggleSelected] = useState<boolean>(true)
+
   return (
     <Wrapper direction="column" title="Toggle">
       <Stack>
-        <Toggle value='oneToggle'>Value</Toggle>
-        <Toggle value='twoToggle' defaultSelected>Value</Toggle>
-        <Toggle value='threeToggle' isDisabled>Value</Toggle>
-        <Toggle value='fourToggle' isDisabled defaultSelected>Value</Toggle>
-        <Toggle value='fiveToggle' isReadOnly>Read only</Toggle>
-        <Toggle value='sixToggle' isReadOnly defaultSelected>Read only selected</Toggle>
+        <Toggle id="firstToggle" defaultSelected />
+        <Toggle
+          id="secondToggle"
+          isSelected={secondToggleSelected}
+          onChange={setSecondToggleSelected}
+        >
+          Value
+        </Toggle>
+        <Toggle id="thirdToggle" isDisabled>
+          Value
+        </Toggle>
+        <Toggle id="fourthToggle" isDisabled>
+          Value
+        </Toggle>
+        <Toggle id="fifthToggle" isReadOnly>
+          Read only
+        </Toggle>
+        <Toggle id="sixthToggle" />
       </Stack>
     </Wrapper>
   )

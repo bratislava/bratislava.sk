@@ -1,0 +1,499 @@
+{
+  "title": "Dotácia kontajnerové stanovištia",
+  "type": "object",
+  "required": [
+    "ziadatel",
+    "ziadatelUdaje",
+    "typStanovista",
+    "stanovisteInformacie",
+    "miestoUmiestnenia",
+    "dovodZiadosti"
+  ],
+  "allOf": [
+    {
+      "properties": {
+        "ziadatel": {
+          "required": ["ziatetelTyp"],
+          "type": "object",
+          "title": "Žiadateľ",
+          "properties": {
+            "ziatetelTyp": {
+              "title": "Žiada o splnomocnenie?",
+              "type": "boolean"
+            }
+          },
+          "if": {
+            "properties": {
+              "ziatetelTyp": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "splnomocnenie": {
+                "type": "array",
+                "title": "Splnomocnenie na zastupovanie",
+                "items": {
+                  "type": "string",
+                  "format": "data-url"
+                }
+              }
+            },
+            "required": ["splnomocnenie"]
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "ziadatelUdaje": {
+          "title": "Žiadateľ (údaje)",
+          "type": "object",
+          "required": [
+            "nazov",
+            "sidlo",
+            "mesto",
+            "psc",
+            "ico",
+            "banka",
+            "iban",
+            "menoPriezvisko",
+            "email",
+            "telefon"
+          ],
+          "properties": {
+            "nazov": {
+              "type": "string",
+              "title": "Názov spoločenstva alebo obchodné meno správcu",
+              "example": "Extropy"
+            },
+            "sidlo": {
+              "type": "string",
+              "title": "Sídlo spoločenstva alebo správcu"
+            },
+            "mesto": {
+              "type": "string",
+              "title": "Mesto",
+              "format": "ciselnik"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSČ"
+            },
+            "ico": {
+              "type": "string",
+              "title": "IČO"
+            },
+            "banka": {
+              "type": "string",
+              "title": "Banka"
+            },
+            "iban": {
+              "type": "string",
+              "title": "IBAN"
+            },
+            "menoPriezvisko": {
+              "type": "string",
+              "title": "Meno a priezvisko zodpovednej osoby"
+            },
+            "email": {
+              "type": "string",
+              "title": "E-mail",
+              "format": "email"
+            },
+            "telefon": {
+              "type": "string",
+              "title": "Telefónne číslo (v tvare +421...)",
+              "pattern": "((([+][1-9])|([+][1-9][0-9]{1,8}))|((00[1-9])|(00[1-9][0-9]{1,7})))"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "typStanovista": {
+          "title": "Typ stanovišťa",
+          "type": "object",
+          "required": ["typStanovistaUpresnenie"],
+          "properties": {
+            "typStanovistaUpresnenie": {
+              "title": "Upresnite o aký typ stanovišťa sa jedná",
+              "type": "string",
+              "enum": [
+                "Nové",
+                "Rekonštrukcia existujúceho stanovišťa",
+                "Nahradenie existujúceho stanovišťa"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "stanovisteInformacie": {
+          "type": "object",
+          "title": "Informácie o stanovišti",
+          "required": [
+            "mestomPonukanaDokumentacia",
+            "popisZbernychNadob",
+            "vegetacnaStrecha",
+            "vegetacnaStena",
+            "sadoveUpravy"
+          ],
+          "properties": {
+            "mestomPonukanaDokumentacia": {
+              "title": "Použijete niektorú z mestom ponúkaných projektových dokumentácií?",
+              "type": "boolean"
+            },
+            "popisZbernychNadob": {
+              "type": "string",
+              "title": "Popíšte počet a typ jednotlivých zberných nádob a ich objemy",
+              "description": "(Príklad: 2x 1100l nádoba na komunálny odpad,...)"
+            },
+            "vegetacnaStrecha": {
+              "title": "Plánujete vybudovať / máte vegetačnú strechu?",
+              "type": "boolean"
+            },
+            "vegetacnaStena": {
+              "title": "Plánujete vybudovať / máte vegetačnú stenu kontajnerového stanovišťa?",
+              "type": "boolean"
+            },
+            "sadoveUpravy": {
+              "title": "Plánujete / urobili ste sadové úpravy bezprostredného okolia?",
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "miestoUmiestnenia": {
+          "title": "Miesto umiestnenia",
+          "type": "object",
+          "required": ["kataster", "parcela", "adresaUmiestnenia", "velkost"],
+          "properties": {
+            "kataster": {
+              "title": "Katasttrálne územie pozemku",
+              "description": "Vyberte jedno alebo viacero katastrálnych území, v ktorých sa pozemok nachádza",
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "parcela": {
+              "title": "Parcelné číslo pozemku",
+              "description": "Číslo parcely a bližšie informácie k pozemku a jeho vlastníkom nájdete na katastrálnej mape ZBGIS.",
+              "type": "string",
+              "format": "ciselnik"
+            },
+            "adresaUmiestnenia": {
+              "type": "array",
+              "title": "Adresa bytových domov, ktorým bude stanovište slúžiť",
+              "items": {
+                "type": "string"
+              }
+            },
+            "velkost": {
+              "type": "number",
+              "title": "Veľkosť plochy (v m2)"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "dovodZiadosti": {
+          "title": "Dôvod žiadosti",
+          "type": "object",
+          "required": ["zaujem"],
+          "properties": {
+            "zaujem": {
+              "type": "string",
+              "title": "Mám záujem o",
+              "enum": [
+                "Dotáciu na kontajnerové stojisko",
+                "Nájom mestského pozemku pod stojiskom",
+                "Nájom aj dotáciu zároveň"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "allOf": [
+        {
+          "properties": {
+            "zmluva": {
+              "type": "array",
+              "title": "Zmluva o výkone správy / Zmluva o bytovom spoločenstve",
+              "items": {
+                "type": "string",
+                "format": "data-url"
+              }
+            }
+          },
+          "required": ["zmluva"]
+        },
+        {
+          "if": {
+            "properties": {
+              "typStanovista": {
+                "type": "object",
+                "properties": {
+                  "typStanovistaUpresnenie": {
+                    "const": "Nové"
+                  }
+                }
+              },
+              "dovodZiadosti": {
+                "type": "object",
+                "properties": {
+                  "zaujem": {
+                    "oneOf": [
+                      {
+                        "const": "Nájom mestského pozemku pod stojiskom"
+                      },
+                      {
+                        "const": "Nájom aj dotáciu zároveň"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "stanovisko": {
+                "type": "array",
+                "title": "Stanovisko OLO",
+                "items": {
+                  "type": "string",
+                  "format": "data-url"
+                }
+              }
+            },
+            "required": ["stanovisko"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "typStanovista": {
+                "type": "object",
+                "properties": {
+                  "typStanovistaUpresnenie": {
+                    "oneOf": [
+                      {
+                        "const": "Rekonštrukcia existujúceho stanovišťa"
+                      },
+                      {
+                        "const": "Nahradenie existujúceho stanovišťa"
+                      }
+                    ]
+                  }
+                }
+              },
+              "dovodZiadosti": {
+                "type": "object",
+                "properties": {
+                  "zaujem": {
+                    "oneOf": [
+                      {
+                        "const": "Nájom mestského pozemku pod stojiskom"
+                      },
+                      {
+                        "const": "Nájom aj dotáciu zároveň"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "doklad": {
+                "type": "array",
+                "title": "Relevantný doklad potvrdzujúci súčasný odvoz",
+                "items": {
+                  "type": "string",
+                  "format": "data-url"
+                }
+              }
+            },
+            "required": ["doklad"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dovodZiadosti": {
+                "type": "object",
+                "properties": {
+                  "zaujem": {
+                    "const": "Dotáciu na kontajnerové stojisko"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "listVlastnictva": {
+                "type": "array",
+                "title": "Zmluva o nájme pozemku / List vlastníctva / Zmluva o zriadení vecného bremena",
+                "items": {
+                  "type": "string",
+                  "format": "data-url"
+                }
+              }
+            },
+            "required": ["listVlastnictva"]
+          }
+        },
+        {
+          "properties": {
+            "snimkaZMapy": {
+              "type": "array",
+              "title": "Snímka z katastrálnej mapy so zakresleným kontajnerovým stanovišťom",
+              "items": {
+                "type": "string",
+                "format": "data-url"
+              }
+            }
+          },
+          "required": ["snimkaZMapy"]
+        },
+        {
+          "properties": {
+            "podorysStanovista": {
+              "type": "array",
+              "title": "Pôdorys kontajnerového stanovišťa so zakreslením rozmiestnenia zberných nádob",
+              "items": {
+                "type": "string",
+                "format": "data-url"
+              }
+            }
+          },
+          "required": ["podorysStanovista"]
+        },
+        {
+          "properties": {
+            "vizualStanovista": {
+              "type": "array",
+              "title": "Vizuál kontajnerového stanovišťa - ilustračná alebo reálna fotografia / vizualizácia",
+              "items": {
+                "type": "string",
+                "format": "data-url"
+              }
+            }
+          },
+          "required": ["vizualStanovista"]
+        },
+        {
+          "properties": {
+            "technickyVykres": {
+              "title": "Technický výkres a rozmery navrhovanej konštrukci, popis navrhovaných / použitých materiálov a farieb",
+              "type": "object",
+              "oneOf": [
+                {
+                  "title": "Prílohy",
+                  "properties": {
+                    "technickyVykresPrilohy": {
+                      "title": "Prílohy",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "data-url"
+                      }
+                    }
+                  },
+                  "required": ["technickyVykresPrilohy"]
+                },
+                {
+                  "title": "Text",
+                  "properties": {
+                    "technickyVykresText": {
+                      "title": "Text",
+                      "type": "string"
+                    }
+                  },
+                  "required": ["technickyVykresText"]
+                }
+              ]
+            }
+          },
+          "required": ["technickyVykres"]
+        },
+        {
+          "properties": {
+            "stavebnaDokumentacia": {
+              "type": "array",
+              "title": "Stavebná dokumentácia kontajnerového stanovišťa alebo výber z poskytnutých stavebných dokumentácií",
+              "items": {
+                "type": "string",
+                "format": "data-url"
+              }
+            }
+          },
+          "required": ["stavebnaDokumentacia"]
+        },
+        {
+          "properties": {
+            "rozpocet": {
+              "title": "Položkový rozpočet",
+              "type": "object",
+              "oneOf": [
+                {
+                  "title": "Prílohy",
+                  "properties": {
+                    "rozpocetPrilohy": {
+                      "title": "Prílohy",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "data-url"
+                      }
+                    }
+                  },
+                  "required": ["rozpocetPrilohy"]
+                },
+                {
+                  "title": "Text",
+                  "properties": {
+                    "rozpocetText": {
+                      "title": "Text",
+                      "type": "string"
+                    }
+                  },
+                  "required": ["rozpocetText"]
+                }
+              ]
+            }
+          },
+          "required": ["rozpocet"]
+        },
+        {
+          "properties": {
+            "inePrilohy": {
+              "type": "array",
+              "title": "Iné",
+              "items": {
+                "type": "string",
+                "format": "data-url"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

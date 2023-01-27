@@ -12,12 +12,12 @@ export const SectionContainer = ({
   ...rest
 }: React.HTMLAttributes<HTMLDivElement> & SectionContainerProps) => (
   <div
-    className={cx(className, 'px-7.5', {
-      'bg-secondary': hasBackground === true,
+    className={cx(className, 'px-8', {
+      'bg-category-200': hasBackground === true,
     })}
     {...rest}
   >
-    <div className="mx-auto w-full max-w-screen-1.5lg">{children}</div>
+    <div className="max-w-screen-1.5lg mx-auto w-full">{children}</div>
   </div>
 )
 

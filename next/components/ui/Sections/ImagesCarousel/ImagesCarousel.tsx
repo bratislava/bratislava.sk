@@ -34,14 +34,14 @@ export const ImagesCarousel = ({
         scrollerClassName="py-6"
         items={items.map((item) => (
           <a
-            className="relative inline-block h-74 w-87 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:drop-shadow-lg"
+            className="relative inline-block h-76 w-88 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:drop-shadow-lg"
             key={item.id}
             href={item.url}
             target="_blank"
             rel="noreferrer"
           >
             <img className="h-full w-full rounded-lg object-cover" src={item.mainImage.src} alt={item.title} />
-            {item.title && <p className="absolute bottom-0 p-6 text-default font-semibold text-white">{item.title}</p>}
+            {item.title && <p className="text-20-semibold absolute bottom-0 p-6 text-white">{item.title}</p>}
           </a>
         ))}
         visibleItems={visibleItems}
@@ -55,7 +55,7 @@ export const ImagesCarousel = ({
       <div className="flex gap-x-5">
         {items.map((item) => (
           <a
-            className="relative h-60 w-72 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:shadow-lg"
+            className="relative h-60 w-18 cursor-pointer rounded-lg pt-2 transition-all hover:-translate-y-2 hover:shadow-lg"
             key={item.id}
             href={item.url}
             target="_blank"
@@ -63,7 +63,7 @@ export const ImagesCarousel = ({
           >
             <img className="h-full w-full rounded-lg object-cover" src={item.mainImage.src} alt={item.title} />
             {item.title && (
-              <p className="absolute bottom-0 px-6 py-5 text-default font-semibold text-white">{item.title}</p>
+              <p className="text-20-semibold absolute bottom-0 px-6 py-5 text-white">{item.title}</p>
             )}
           </a>
         ))}

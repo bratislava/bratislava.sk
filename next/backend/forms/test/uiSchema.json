@@ -1,5 +1,264 @@
 {
   "ui:submitButtonOptions": {
     "norender": true
+  },
+  "datePicker": {
+    "ui:hideError": true,
+    "birth": {
+      "ui:widget": "DatePicker",
+      "ui:label": false,
+      "ui:accordion": [
+        {
+          "title": "Header name 1",
+          "size": "lg",
+          "shadow": true,
+          "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+        },
+        {
+          "title": "Header name 2",
+          "size": "sm",
+          "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+        }
+      ],
+      "ui:options": {
+        "tooltip": "Date picker hint"
+      }
+    }
+  },
+  "timePicker": {
+    "ui:hideError": true,
+    "meeting-time": {
+      "ui:widget": "TimePicker",
+      "ui:label": false,
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "tooltip": "Time picker hint"
+      }
+    }
+  },
+  "inputFields": {
+    "ui:hideError": true,
+    "firstName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "First Name",
+      "ui:accordion": {
+        "title": "Header name",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "tooltip": "First name hint",
+        "resetIcon": true,
+        "leftIcon": "person",
+        "size": "large",
+        "spaceTop": "large"
+      }
+    },
+    "lastName": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Last Name",
+      "ui:accordion": {
+        "title": "Header name",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "tooltip": "Last name hint",
+        "resetIcon": true,
+        "leftIcon": "person",
+        "size": "default"
+      }
+    },
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "tooltip": "Phone hint",
+        "resetIcon": true,
+        "leftIcon": "call",
+        "size": "default",
+        "explicitOptional": "left"
+      }
+    },
+    "password": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Password",
+      "ui:options": {
+        "tooltip": "Password hint",
+        "leftIcon": "lock",
+        "type": "password",
+        "explicitOptional": "right"
+      }
+    },
+    "psc": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "PSC",
+      "ui:options": {
+        "tooltip": "PSC hint, only numbers",
+        "description": "Only numbers",
+        "size": "small"
+      }
+    }
+  },
+  "fileUploads": {
+    "ui:hideError": true,
+    "importButtonOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "type": "button",
+        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
+      }
+    },
+    "importButtonMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "button"
+      }
+    },
+    "importDragAndDropOneFile": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "size": 5,
+        "accept": ".jpg,.pdf",
+        "type": "dragAndDrop"
+      }
+    },
+    "importDragAndDropMultipleFiles": {
+      "ui:widget": "Upload",
+      "ui:label": false,
+      "ui:options": {
+        "type": "dragAndDrop"
+      }
+    }
+  },
+  "textAreas": {
+    "ui:hideError": true,
+    "pros": {
+      "ui:widget": "TextArea",
+      "ui:label": false,
+      "ui:placeholder": "Write some cons please",
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "description": "Here write pros",
+        "tooltip": "This is simple tooltip"
+      }
+    },
+    "cons": {
+      "ui:widget": "TextArea",
+      "ui:label": false
+    }
+  },
+  "selectFields": {
+    "ui:hideError": true,
+    "school": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:placeholder": "tu skus pisat",
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "dropdownDivider": true,
+        "description": "Here choose your last school",
+        "tooltip": "This tooltip will tell you what to do better when you choose this."
+      }
+    },
+    "diplomas": {
+      "ui:widget": "SelectField",
+      "ui:label": false,
+      "ui:options": {
+        "selectAllOption": true
+      }
+    },
+    "years": {
+      "ui:widget": "SelectField",
+      "ui:label": false
+    }
+  },
+  "chooseOneOf": {
+    "ui:hideError": true,
+    "chooseOne": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "variant": "boxed",
+        "orientations": "row",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
+      }
+    }
+  },
+  "checkBoxes": {
+    "ui:hideError": true,
+    "favouriteFruits": {
+      "ui:widget": "Checkboxes",
+      "ui:label": false,
+      "ui:accordion": {
+        "title": "Header name",
+        "size": "sm",
+        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+      },
+      "ui:options": {
+        "className": "flex flex-col gap-3 w-fit",
+        "variant": "boxed",
+        "checkboxOptions": [
+          {
+            "value": "orange",
+            "tooltip": "Orange tooltip"
+          },
+          {
+            "value": "apple",
+            "tooltip": "Apple tooltip"
+          }
+        ]
+      }
+    }
+  },
+  "user": {
+    "ui:hideError": true,
+    "phone": {
+      "ui:widget": "InputField",
+      "ui:label": false,
+      "ui:placeholder": "Phone",
+      "ui:options": {
+        "leftIcon": "call"
+      }
+    }
   }
 }

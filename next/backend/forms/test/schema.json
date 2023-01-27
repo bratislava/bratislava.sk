@@ -1,47 +1,279 @@
 {
+  "$async": true,
   "title": "Example",
   "description": "Example schema",
   "type": "object",
   "allOf": [
     {
       "properties": {
-        "ziadatel": {
-          "title": "Žiadateľ",
-          "required": ["address"],
+        "datePicker": {
+          "title": "Showcase of DatePicker",
+          "required": [],
           "properties": {
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "birthDate": {
-              "type": "string"
-            },
-            "newTaxpayer": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
+            "birth": {
+              "type": "string",
+              "format": "date",
+              "title": "Birth date"
+            }
+          }
+        },
+        "timePicker": {
+          "title": "Showcase of TimePicker",
+          "required": [
+            "meeting-time"
+          ],
+          "properties": {
+            "meeting-time": {
+              "type": "string",
+              "title": "Meeting time",
+              "format": "time"
             }
           }
         }
       }
     },
     {
-      "required": ["email"],
       "properties": {
-        "email": {
-          "type": "string"
+        "inputFields": {
+          "title": "Showcase of InputField",
+          "required": [
+            "firstName",
+            "lastName"
+          ],
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "title": "First Name",
+              "default": "Anton"
+            },
+            "lastName": {
+              "type": "string",
+              "title": "Dátum spracovania projektovej dokumentácie"
+            },
+            "phone": {
+              "type": "string",
+              "title": "Dátum spracovania projektovej dokumentácie"
+            },
+            "password": {
+              "type": "string",
+              "title": "Password"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSC",
+              "format": "zip"
+            }
+          }
         },
-        "phone": {
-          "type": "string"
+        "textAreas": {
+          "title": "Textove polia",
+          "required": [
+            "pros"
+          ],
+          "type": "object",
+          "properties": {
+            "pros": {
+              "title": "Pros",
+              "type": "string"
+            },
+            "cons": {
+              "title": "Cons",
+              "type": "string",
+              "default": "Defaultna hodnota"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "selectFields": {
+          "title": "Ukazka Selectov",
+          "required": [
+            "school"
+          ],
+          "type": "object",
+          "properties": {
+            "school": {
+              "type": "string",
+              "title": "University",
+              "oneOf": [
+                {
+                  "const": "STU FEI",
+                  "title": "fakulta elektrotechniky a informatiky"
+                },
+                {
+                  "const": "STU FCHPT"
+                },
+                {
+                  "const": "STU FIIT",
+                  "title": "fakulta informatiky a informacnych technologii"
+                }
+              ]
+            },
+            "diplomas": {
+              "type": "array",
+              "title": "Reached diplomas",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "oneOf": [
+                  {
+                    "const": "STU FEI",
+                    "title": "fakulta elektrotechniky a informatiky"
+                  },
+                  {
+                    "const": "STU FCHPT"
+                  },
+                  {
+                    "const": "STU FIIT",
+                    "title": "fakulta informatiky a informacnych technologii"
+                  }
+                ]
+              }
+            },
+            "years": {
+              "type": "number",
+              "title": "Years in school",
+              "uniqueItems": true,
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "fileUploads": {
+          "title": "Nahratie suborov",
+          "required": [
+            "importButtonMultipleFiles"
+          ],
+          "properties": {
+            "importButtonOneFile": {
+              "title": "Importuj jeden subor",
+              "type": "string"
+            },
+            "importButtonMultipleFiles": {
+              "title": "Importuj viac suborov",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "importDragAndDropOneFile": {
+              "title": "Presun sem jeden subor",
+              "type": "string"
+            },
+            "importDragAndDropMultipleFiles": {
+              "title": "Presun sem viac suborov",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "chooseOneOf": {
+          "title": "Choose one of radio buttons",
+          "type": "object",
+          "required": [
+            "chooseOne"
+          ],
+          "properties": {
+            "chooseOne": {
+              "type": "string",
+              "title": "Some random choose",
+              "oneOf": [
+                {
+                  "const": "screen",
+                  "title": "Screen"
+                },
+                {
+                  "const": "multiply",
+                  "title": "Multiply"
+                },
+                {
+                  "const": "overlay",
+                  "title": "Overlay"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "checkBoxes": {
+          "title": "Checkboxes",
+          "required": [
+            "favouriteFruits"
+          ],
+          "properties": {
+            "favouriteFruits": {
+              "type": "array",
+              "title": "Fruits max 3 items",
+              "maxItems": 3,
+              "uniqueItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "title": "Orange",
+                    "const": "orange"
+                  },
+                  {
+                    "title": "Banana",
+                    "const": "banana"
+                  },
+                  {
+                    "title": "Grape",
+                    "const": "grape"
+                  },
+                  {
+                    "title": "Kiwi",
+                    "const": "kiwi"
+                  },
+                  {
+                    "title": "Apple",
+                    "const": "apple"
+                  },
+                  {
+                    "title": "Plum",
+                    "const": "plum"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "user": {
+          "type": "object",
+          "title": "Example async validation",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "isExampleAsyncValidation": {
+                "errorMsg": "Required input"
+              }
+            }
+          }
         }
       }
     }

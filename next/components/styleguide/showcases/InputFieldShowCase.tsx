@@ -1,7 +1,6 @@
-import InputField from 'components/forms/InputField'
+import InputField from 'components/forms/widget-components/InputField/InputField'
 import React from 'react'
 
-import PersonIcon from '../../../assets/images/forms/person.svg'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -13,34 +12,11 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
       <Stack direction="column">
         <InputField label="Label" placeholder="Placeholder" />
         <InputField label="Label" placeholder="Placeholder" value="Value" />
-        <InputField label="Label" placeholder="Placeholder" errorMessage="Error message" />
-        <InputField label="Label" placeholder="Placeholder" errorMessage="Error message" disabled />
-      </Stack>
-      <Stack direction="column">
-        <InputField label="Label" placeholder="Placeholder" description="Help text" tooltip="InputField" required />
+        <InputField label="Label" placeholder="Placeholder" errorMessage={['Error message']} />
         <InputField
           label="Label"
           placeholder="Placeholder"
-          value="Value"
-          description="Help text"
-          tooltip="InputField"
-          required
-        />
-        <InputField
-          label="Label"
-          placeholder="Placeholder"
-          description="Help text"
-          tooltip="InputField"
-          required
-          errorMessage="Error message"
-        />
-        <InputField
-          label="Label"
-          placeholder="Placeholder"
-          description="Help text"
-          tooltip="InputField"
-          required
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>
@@ -50,7 +26,41 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          explicitOptional="right"
+        />
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          value="Value"
+          description="Help text"
+          tooltip="InputField"
+          required
+        />
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          description="Help text"
+          tooltip="InputField"
+          required
+          errorMessage={['Error message']}
+        />
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          description="Help text"
+          tooltip="InputField"
+          required
+          errorMessage={['Error message']}
+          disabled
+        />
+      </Stack>
+      <Stack direction="column">
+        <InputField
+          label="Label"
+          placeholder="Placeholder"
+          description="Help text"
+          tooltip="InputField"
+          leftIcon="mail"
           resetIcon
         />
         <InputField
@@ -59,26 +69,27 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           value="Value"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon="call"
           resetIcon
+        />
+        <InputField
+          label="Label"
+          type="password"
+          placeholder="Placeholder"
+          description="Help text"
+          tooltip="InputField"
+          leftIcon="lock"
+          resetIcon
+          errorMessage={['Error message']}
         />
         <InputField
           label="Label"
           placeholder="Placeholder"
           description="Help text"
           tooltip="InputField"
-          leftIcon={<PersonIcon />}
+          leftIcon="person"
           resetIcon
-          errorMessage="Error message"
-        />
-        <InputField
-          label="Label"
-          placeholder="Placeholder"
-          description="Help text"
-          tooltip="InputField"
-          leftIcon={<PersonIcon />}
-          resetIcon
-          errorMessage="Error message"
+          errorMessage={['Error message']}
           disabled
         />
       </Stack>

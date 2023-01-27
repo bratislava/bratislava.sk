@@ -1,6 +1,8 @@
 // @ts-strict-ignore
-import { AdvancedAccordionItem, AdvancedAccordionItemProps } from '../AdvancedAccordionItem/AdvancedAccordionItem'
-import { BasicSearch } from '../BasicSearch/BasicSearch'
+import {
+  AdvancedAccordionItem,
+  AdvancedAccordionItemProps,
+} from '../AdvancedAccordionItem/AdvancedAccordionItem'
 import { Divider } from '../Divider/Divider'
 
 export interface AdvancedAccordionProps {
@@ -18,7 +20,9 @@ export const AdvancedAccordion = ({ title, dividerStyle, items }: AdvancedAccord
       <AdvancedAccordionItem {...items[0]} />
       <Divider
         className="py-6 lg:py-10"
-        dividerStyle={dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'}
+        dividerStyle={
+          dividerStyle && dividerStyle?.length > 1 ? dividerStyle : 'mesto_01_full_width'
+        }
       />
       <AdvancedAccordionItem {...items[1]} />
     </div>
