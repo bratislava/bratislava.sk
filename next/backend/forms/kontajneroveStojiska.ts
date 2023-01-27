@@ -13,5 +13,6 @@ export default {
   xmlTemplate,
   textStylesheet,
   htmlStylesheet,
-  data
+  data,
+  pdfStylesheetPath: 'kontajneroveStojiska/form.fo.xslt',
 }

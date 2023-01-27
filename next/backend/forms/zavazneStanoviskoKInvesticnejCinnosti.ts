@@ -14,4 +14,5 @@ export default {
   textStylesheet,
   htmlStylesheet,
   data,
+  pdfStylesheetPath: 'zavazneStanoviskoKInvesticnejCinnosti/form.fo.xslt',
 }

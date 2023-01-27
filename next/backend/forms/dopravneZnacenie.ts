@@ -14,4 +14,5 @@ export default {
   textStylesheet,
   htmlStylesheet,
   data,
+  pdfStylesheetPath: '00603481.dopravneZnacenie.sk/form.fo.xslt',
 }
