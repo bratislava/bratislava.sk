@@ -64,7 +64,7 @@ export const NewsCard = ({
 
   return (
     <VerticalCard
-      className={cx(className, 'min-w-66 leading-[1.3]')}
+      className={cx(className, 'min-w-[22rem] leading-[1.3]')}
       imageSrc={coverImage?.data?.attributes?.url}
     >
       <div className="space-y-5">
