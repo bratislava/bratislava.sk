@@ -20,7 +20,7 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
           className,
         )}
       >
-        <img src={mainImage.src} className="h-[75%] md:h-full w-full rounded-lg object-cover" alt={title} />
+        <img src={mainImage.src} className="h-[75%] rounded-lg object-cover" alt={title} />
         {/* Gradient */}
         <div className="absolute bottom-0 flex h-56 w-full items-end rounded-b-lg bg-gradient-to-t from-[#000]">
           <div className="flex-col flex">
