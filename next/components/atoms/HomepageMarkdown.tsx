@@ -144,7 +144,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
-                  'h-4 w-4 shrink-0 bg-category-600 rounded-full mt-2 border-4 border-solid border-category-600',
+                  'h-4 w-4 shrink-0 bg-category-600 rounded-full mt-1 border-4 border-solid border-category-600',
                   { 'bg-category-600': level === 0 },
                   { 'border-category-600 border-solid border-4': level !== 0 },
                 )}
