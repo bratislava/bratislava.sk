@@ -107,6 +107,8 @@
     "given_name": "Meno",
     "family_name": "Priezvisko",
     "email": "E-mail",
+    "email_button": "Upraviť",
+    "email_tooltip": "Zmeniť email môžete keď napíšete na našu podporu",
     "phone_number": "Telefónne číslo (v tvare +421...)",
     "address": "Korešpondenčná adresa"
   }

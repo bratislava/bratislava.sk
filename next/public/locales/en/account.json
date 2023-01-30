@@ -106,6 +106,8 @@
     "given_name": "Given name",
     "family_name": "Family name",
     "email": "E-mail",
+    "email_button": "Edit",
+    "email_tooltip": "You can edit your email, when you write us on support.",
     "phone_number": "Phone number (with pattern +421...)",
     "address": "Correspondence address"
   }
