@@ -5,29 +5,40 @@ import Button from '../../forms/simple-components/Button'
 import InputField from '../../forms/widget-components/InputField/InputField'
 
 interface UserProfileDetailEditProps {
-  userData: UserData
+  temporaryUserData: UserData
+  onChangeTemporary: (newTemporaryUserData: UserData) => void
 }
 
-const UserProfileDetailEdit = () => {
+const UserProfileDetailEdit = ({
+  temporaryUserData,
+  onChangeTemporary,
+}: UserProfileDetailEditProps) => {
   const { t } = useTranslation('account')
 
   return (
     <div className="flex flex-col grow gap-6">
-      <InputField className="w-60" label={t('profile_detail.titles_before_name')} />
       <div className="gap flex flex-wrap flex-row gap-6">
         <div className="grow ">
-          <InputField label={t('profile_detail.given_name')} />
+          <InputField
+            label={t('profile_detail.given_name')}
+            value={temporaryUserData.given_name || ''}
+            onChange={(value) => onChangeTemporary({ ...temporaryUserData, given_name: value })}
+          />
         </div>
         <div className="grow ">
-          <InputField label={t('profile_detail.family_name')} />
+          <InputField
+            label={t('profile_detail.family_name')}
+            value={temporaryUserData.family_name || ''}
+            onChange={(value) => onChangeTemporary({ ...temporaryUserData, family_name: value })}
+          />
         </div>
       </div>
-      <InputField className="w-60" label={t('profile_detail.titles_after_name')} />
       <div className="flex flex-row flex-wrap gap-4">
         <div className="grow">
           <InputField
             label={t('profile_detail.email')}
             tooltip={t('profile_detail.email_tooltip')}
+            value={temporaryUserData.email || ''}
             disabled
           />
         </div>

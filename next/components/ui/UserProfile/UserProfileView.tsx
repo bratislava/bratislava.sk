@@ -10,7 +10,7 @@ import { useState } from 'react'
 const UserProfileView = () => {
   const { t } = useTranslation('account')
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  const { userData } = useAccount()
+  const { userData, temporaryUserData, setTemporaryUserData } = useAccount()
   console.log('USER', userData)
 
   // TODO: handle change of consents in backend DB
@@ -36,8 +36,10 @@ const UserProfileView = () => {
     <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
       <UserProfileDetail
         userData={userData}
+        temporaryUserData={temporaryUserData}
         isEditing={isEditing}
         onChangeIsEditing={setIsEditing}
+        onChangeTemporary={setTemporaryUserData}
       />
       <UserProfilePassword />
       <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />

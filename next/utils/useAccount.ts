@@ -58,9 +58,20 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [error, setError] = useState<AWSError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
+  const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
+
+  useEffect(() => {
+    const updatedUserData = userData ? { ...userData } : null
+    setTemporaryUserData(updatedUserData)
+  }, [userData])
+
+  const resetTemporaryUserData = () => {
+    const actualUserData = userData ? { ...userData } : null
+    setTemporaryUserData(actualUserData)
+  }
 
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
@@ -351,6 +362,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     setStatus,
     userData,
     updateUserData,
+    temporaryUserData,
+    resetTemporaryUserData,
+    setTemporaryUserData,
     signUp,
     verifyEmail,
     resendVerificationCode,

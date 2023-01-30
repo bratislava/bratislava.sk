@@ -57,12 +57,14 @@ const ButtonSection = ({ isEditing, onChangeIsEditing }: ButtonSectionProps) => 
 
 interface UserProfileDetailProps {
   userData?: UserData | null
+  temporaryUserData?: UserData | null
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
+  onChangeTemporary: (temporaryUserData: UserData) => void
 }
 
 const UserProfileDetails = (props: UserProfileDetailProps) => {
-  const { userData, isEditing, onChangeIsEditing } = props
+  const { userData, temporaryUserData, isEditing, onChangeIsEditing, onChangeTemporary } = props
   const { t } = useTranslation('account')
   return (
     <UserProfileSection>
@@ -76,7 +78,10 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
       <div className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}>
         <UserProfilePhoto userData={userData ?? {}} />
         {isEditing ? (
-          <UserProfileDetailEdit />
+          <UserProfileDetailEdit
+            temporaryUserData={temporaryUserData ?? {}}
+            onChangeTemporary={onChangeTemporary}
+          />
         ) : (
           <UserProfileDetailView userData={userData ?? {}} />
         )}
