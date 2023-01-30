@@ -11,7 +11,6 @@ export interface CorrespondenceAddressData {
   postalCode?: string
 }
 
-// must use `minLength: 1` to implement required field
 const schema = {
   type: 'object',
   properties: {
@@ -51,7 +50,7 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
 
   return (
     <form
-      className="flex flex-col space-y-6 w-full"
+      className="flex flex-col space-y-4 w-full"
       onSubmit={handleSubmit((data: CorrespondenceAddressData) => onSubmit({ data }))}
     >
       <div>{t('correspondece_address_description')}</div>
