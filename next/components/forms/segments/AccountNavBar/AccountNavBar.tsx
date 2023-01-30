@@ -1,14 +1,18 @@
 import { ArrowLeft } from '@assets/images'
+import BusinessIcon from '@assets/images/account/business-icon.svg'
+import HelpIcon from '@assets/images/account/help-icon.svg'
+import HomeIcon from '@assets/images/account/home-icon.svg'
+import PaymentIcon from '@assets/images/account/payment-icon.svg'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import cx from 'classnames'
-import { SectionItemBase } from 'components/forms/types/AccountTypes'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { ReactNode } from 'react'
 
 interface IProps {
   className?: string
   currentLanguage?: string
-  sectionsList?: SectionItemBase[]
 }
 
 const BackButton = () => {
@@ -21,14 +25,39 @@ const BackButton = () => {
     </>
   )
 }
-// test const, need to get from useAccount
+// TODO test const, need to get from useAccount
 const isLogin = true
 
-export const AccountNavBar = ({ className, currentLanguage, sectionsList }: IProps) => {
+interface SectionItemBase {
+  id: number
+  title: string
+  icon: ReactNode
+  link: string
+}
+
+export const AccountNavBar = ({ className, currentLanguage }: IProps) => {
   const languageKey = currentLanguage === 'sk' ? 'sk' : 'en'
 
-  const { t } = useTranslation(['common'])
+  const { t } = useTranslation('common')
+  const { t: t2 } = useTranslation('account')
   const router = useRouter()
+
+  const sectionsList: SectionItemBase[] = [
+    { id: 0, title: t2('account_section_intro'), icon: <HomeIcon />, link: '/intro' },
+    {
+      id: 1,
+      title: t2('account_section_services'),
+      icon: <BusinessIcon />,
+      link: '/municipal-services',
+    },
+    {
+      id: 2,
+      title: t2('account_section_payment', { joinArrays: 'account' }),
+      icon: <PaymentIcon />,
+      link: '/taxes-and-fees',
+    },
+    { id: 3, title: t2('account_section_help'), icon: <HelpIcon />, link: '/i-have-a-problem' },
+  ]
   return (
     <>
       {/* Desktop */}
@@ -56,23 +85,23 @@ export const AccountNavBar = ({ className, currentLanguage, sectionsList }: IPro
         </div>
         {isLogin && sectionsList && (
           <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
-            <ul className="w-full h-full flex items-center">
+            <div className="w-full h-full flex items-center">
               {sectionsList?.map((sectionItem) => (
-                // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-                <li
-                  className={cx(
-                    'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
-                    { 'text-main-700 border-main-700': router.route.includes(sectionItem.link) },
-                  )}
-                  key={sectionItem.id}
-                  // https://github.com/react-hook-form/react-hook-form/discussions/8622?sort=old
-                  onClick={() => router.push(`/account${sectionItem.link}`)}
-                >
-                  {sectionItem.icon}
-                  <span className="ml-3">{sectionItem?.title}</span>
-                </li>
+                <Link key={sectionItem.id} href={`/account${sectionItem.link}`}>
+                  <span
+                    className={cx(
+                      'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
+                      {
+                        'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
+                      },
+                    )}
+                  >
+                    {sectionItem.icon}
+                    <span className="ml-3">{sectionItem?.title}</span>
+                  </span>
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
         )}
       </div>

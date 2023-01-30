@@ -48,7 +48,7 @@ const nextConfig = {
           source: '/city-of-bratislava/transparent-city/official-noticeboard',
           destination: '/mesto-bratislava/transparentne-mesto/uradna-tabula',
         },
-        // does not work, revisit later
+        // TODO does not work, revisit later
         // {
         //   source: '/ucet/uvod',
         //   destination: '/account/intro',
