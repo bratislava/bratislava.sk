@@ -13,7 +13,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface IProps extends LanguageSelectProps {
   className?: string
-  hideMenu?: boolean
+  menuHidden?: boolean
 }
 
 interface LanguageSelectProps {
@@ -65,7 +65,7 @@ const BackButton = () => {
   )
 }
 
-export const AccountNavBar = ({ className, hideMenu, ...languageSelectProps }: IProps) => {
+export const AccountNavBar = ({ className, menuHidden, ...languageSelectProps }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
@@ -96,7 +96,7 @@ export const AccountNavBar = ({ className, hideMenu, ...languageSelectProps }: I
               </p>
             }
           />
-          {!hideMenu && (
+          {!menuHidden && (
             <nav className="text-font/75 flex gap-x-8 font-semibold">
               <div className="text-font/75 flex items-center gap-x-8 font-semibold">
                 <Link href={t('searchLink')} variant="plain" className="-mr-4 p-4">
@@ -141,7 +141,7 @@ export const AccountNavBar = ({ className, hideMenu, ...languageSelectProps }: I
       >
         <BackButton />
         <Brand url="/" className="grow" />
-        {!hideMenu && (
+        {!menuHidden && (
           <>
             <div className={cx('flex items-center gap-x-5')}>
               <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">

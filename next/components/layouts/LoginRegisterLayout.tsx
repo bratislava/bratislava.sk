@@ -34,7 +34,7 @@ const LoginRegisterLayout = ({
           <AccountNavBar
             currentLanguage={locale}
             onLanguageChange={handleLanguageChange}
-            // hideMenu
+            menuHidden
             languages={[
               { key: 'sk', title: t('language_short.sk') },
               { key: 'en', title: t('language_short.en') },
