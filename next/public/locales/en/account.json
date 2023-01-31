@@ -69,18 +69,20 @@
   "identity_verification_submit": "Verify",
   "identity_verification_success_title": "Verification successful",
   "identity_verification_success_description": "",
-
   "password_change_title": "Change password",
   "old_password_label": "Old password",
   "old_password_placeholder": "Old password",
   "password_change_submit": "Submit",
   "password_change_success_title": "Password has been changed",
-
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
   "UserNotConfirmedException": "User is not confirmed.",
   "UsernameExistsException": "An account with the given email already exists.",
   "ExpiredCodeException": "Invalid code provided, please request a code again.",
-  "IncorectPasswordException": "Incorrect password."
+  "IncorectPasswordException": "Incorrect password.",
+  "account_section_intro": "Intro",
+  "account_section_services": "Municipal services",
+  "account_section_payment": "Taxes and fees",
+  "account_section_help": "I have a problem"
 }

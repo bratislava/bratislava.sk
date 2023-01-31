@@ -13,7 +13,9 @@
   },
   "investor": {
     "investorZiadatelom": true,
-    "splnomocnenie": ["string"],
+    "splnomocnenie": [
+      "string"
+    ],
     "investorTyp": "Právnicka osoba",
     "investorMenoPriezvisko": "Janko Hrasko",
     "investorMiestoPodnikania": "string",
@@ -33,16 +35,34 @@
     "stavbaDruh": "Bytový dom",
     "stavbaUlica": "string",
     "stavbaParcela": "string",
-    "stavbaKataster": ["1", "2", "3"]
+    "stavbaKataster": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   "konanie": {
-    "konanieTyp": "Konanie o dodatočnom povolení zmeny dokončenej stavby",
-    "ziadostOdovodnenie": "Iné",
-    "stavbaFotodokumentacia": ["string", "string"]
+    "konanieTyp": "Konanie o dodatočnom povolení stavby",
+    "ziadostOdovodnenie": "Dodatočné povolenie zmeny stavby pred dokončením",
+    "stavbaFotodokumentacia": [
+      "string",
+      "string"
+    ],
+    "stavbaPisomnosti": [
+      "string",
+      "string"
+    ]
   },
   "prilohy": {
-    "projektovaDokumentacia": ["string"],
-    "podzemnePodlazie": ["string"],
-    "vyjadrenieUradu": ["string", "string 2"]
+    "projektovaDokumentacia": [
+      "string"
+    ],
+    "podzemnePodlazie": [
+      "string"
+    ],
+    "vyjadrenieUradu": [
+      "string",
+      "string 2"
+    ]
   }
 }
