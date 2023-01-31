@@ -40,30 +40,30 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     <PageWrapper locale={page.locale}>
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
-        <TagShowCase />
-        <TooltipShowCase />
-        <FieldHeaderShowCase />
-        <ButtonShowCase />
-        <DatePickerShowCase />
-        <InputFieldShowCase />
-        <SpinnerShowCase />
-        <TextAreaFieldShowCase />
-        <AlertShowCase />
-        <SearchFieldShowCase />
-        <ToggleShowCase />
-        <TimePickerShowCase />
-        <UploadShowCase />
-        <DropdownShowCase />
-        <SelectFieldShowCase />
-        <ModalShowCase />
-        <AccordionShowCase />
-        <ProgressBarShowCase />
-        <SingleCheckboxShowCase />
-        <CheckboxGroupShowCase />
-        <RadioButtonShowCase />
-        <StepperShowCase />
-        <SummaryRowShowCase />
-        <BannerShowCase />
+        {/* <TagShowCase /> */}
+        {/* <TooltipShowCase /> */}
+        {/* <FieldHeaderShowCase /> */}
+        {/* <ButtonShowCase /> */}
+        {/* <DatePickerShowCase /> */}
+        {/* <InputFieldShowCase /> */}
+        {/* <SpinnerShowCase /> */}
+        {/* <TextAreaFieldShowCase /> */}
+        {/* <AlertShowCase /> */}
+        {/* <SearchFieldShowCase /> */}
+        {/* <ToggleShowCase /> */}
+        {/* <TimePickerShowCase /> */}
+        {/* <UploadShowCase /> */}
+        {/* <DropdownShowCase /> */}
+        {/* <SelectFieldShowCase /> */}
+        {/* <ModalShowCase /> */}
+        {/* <AccordionShowCase /> */}
+        {/* <ProgressBarShowCase /> */}
+        {/* <SingleCheckboxShowCase /> */}
+        {/* <CheckboxGroupShowCase /> */}
+        {/* <RadioButtonShowCase /> */}
+        {/* <StepperShowCase /> */}
+        {/* <SummaryRowShowCase /> */}
+        {/* <BannerShowCase /> */}
         <ServiceCardShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
