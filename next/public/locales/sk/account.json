@@ -113,6 +113,8 @@
     "address": "Korešpondenčná adresa",
     "street": "Ulica a číslo",
     "city": "Mesto",
-    "postal_code": "PSČ"
+    "postal_code": "PSČ",
+    "success_alert": "Zmeny boli uložené",
+    "error_alert": "Zmeny sa nepodarilo uložiť"
   }
 }

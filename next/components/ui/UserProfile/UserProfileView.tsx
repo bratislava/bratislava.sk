@@ -19,8 +19,13 @@ const UserProfileView = () => {
     error,
   } = useAccount()
 
-  useEffect(() => console.log('USER DATA', userData), [userData])
-  console.log('ERROR', error)
+  const [isAlertOpened, setIsAlertOpened] = useState(false)
+  const [alertType, setAlertType] = useState<'success' | 'error'>('success')
+
+  useEffect(() => {
+    setAlertType(error ? 'error' : 'success')
+  }, [error])
+
   // TODO: handle change of consents in backend DB
   const [allConsents, setAllConsents] = useState<Consent[]>([
     {
@@ -46,9 +51,13 @@ const UserProfileView = () => {
 
   const handleOnSubmitEditing = () => {
     if (temporaryUserData) {
-      updateUserData(temporaryUserData).then(() => setIsEditing(false))
+      updateUserData(temporaryUserData).then(() => {
+        setIsEditing(false)
+        setIsAlertOpened(true)
+      })
     } else {
       setIsEditing(false)
+      setIsAlertOpened(true)
     }
   }
 
@@ -59,10 +68,13 @@ const UserProfileView = () => {
         userData={userData}
         temporaryUserData={temporaryUserData}
         isEditing={isEditing}
+        isAlertOpened={isAlertOpened}
+        alertType={alertType}
         onChangeIsEditing={setIsEditing}
         onChangeTemporary={setTemporaryUserData}
         onCancelEditing={handleOnCancelEditing}
         onSubmitEditing={handleOnSubmitEditing}
+        onCloserAlert={() => setIsAlertOpened(false)}
       />
       <UserProfilePassword />
       <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />

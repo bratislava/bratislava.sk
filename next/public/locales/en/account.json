@@ -112,6 +112,8 @@
     "address": "Correspondence address",
     "street": "Street and number",
     "city": "City",
-    "postal_code": "Postal code"
+    "postal_code": "Postal code",
+    "success_alert": "Changes have been saved",
+    "error_alert": "Changes could not be saved"
   }
 }
