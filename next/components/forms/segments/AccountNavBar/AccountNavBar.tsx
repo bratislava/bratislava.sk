@@ -1,8 +1,14 @@
 import { ArrowLeft } from '@assets/images'
+import BusinessIcon from '@assets/images/account/business-icon.svg'
+import HelpIcon from '@assets/images/account/help-icon.svg'
+import HomeIcon from '@assets/images/account/home-icon.svg'
+import PaymentIcon from '@assets/images/account/payment-icon.svg'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { ReactNode } from 'react'
 
 interface IProps {
   className?: string
@@ -19,11 +25,43 @@ const BackButton = () => {
     </>
   )
 }
+// TODO test const, need to get from useAccount
+const isLogin = true
+
+interface SectionItemBase {
+  id: number
+  title: string
+  icon: ReactNode
+  link: string
+}
 
 export const AccountNavBar = ({ className, currentLanguage }: IProps) => {
   const languageKey = currentLanguage === 'sk' ? 'sk' : 'en'
 
-  const { t } = useTranslation(['common'])
+  const { t } = useTranslation('account')
+  const router = useRouter()
+
+  const sectionsList: SectionItemBase[] = [
+    { id: 0, title: t('account_section_intro'), icon: <HomeIcon />, link: '/intro' },
+    {
+      id: 1,
+      title: t('account_section_services'),
+      icon: <BusinessIcon />,
+      link: '/municipal-services',
+    },
+    {
+      id: 2,
+      title: t('account_section_payment', { joinArrays: 'account' }),
+      icon: <PaymentIcon />,
+      link: '/taxes-and-fees',
+    },
+    {
+      id: 3,
+      title: t('account_section_help'),
+      icon: <HelpIcon />,
+      link: '/i-have-a-problem',
+    },
+  ]
   return (
     <>
       {/* Desktop */}
@@ -31,11 +69,11 @@ export const AccountNavBar = ({ className, currentLanguage }: IProps) => {
         id="desktop-navbar"
         className={cx(
           className,
-          'text-p2 items-center ',
-          'fixed top-0 left-0 w-full bg-white z-50',
+          'text-p2 items-center',
+          'fixed top-0 left-0 w-full bg-white z-50 shadow',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center border-b border-gray-200 lg:flex">
+        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center lg:flex">
           <BackButton />
           <Brand
             className="group"
@@ -43,12 +81,36 @@ export const AccountNavBar = ({ className, currentLanguage }: IProps) => {
             title={
               <p className="text-p2 text-font group-hover:text-gray-600">
                 {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
-                {t('capitalCity')}
+                {t('common:capitalCity')}
                 {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
               </p>
             }
           />
         </div>
+        {isLogin && (
+          <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
+            <ul className="w-full h-full flex items-center">
+              {sectionsList?.map((sectionItem) => (
+                <li className="w-full h-full" key={sectionItem.id}>
+                  <Link href={`/account${sectionItem.link}`}>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a
+                      className={cx(
+                        'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
+                        {
+                          'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
+                        },
+                      )}
+                    >
+                      {sectionItem.icon}
+                      <span className="ml-3">{sectionItem?.title}</span>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
       {/* Mobile */}
       <div
