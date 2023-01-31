@@ -1,4 +1,3 @@
-import { Button } from '@storybook/components'
 import cx from 'classnames'
 import React from 'react'
 
@@ -7,6 +6,7 @@ interface UserProfileSectionHeaderProps {
   text: string
   underline?: boolean
   isMobileColumn?: boolean
+  isEditing?: boolean
   children?: React.ReactNode
 }
 
@@ -15,6 +15,7 @@ const UserProfileSectionHeader = ({
   text,
   underline,
   isMobileColumn,
+  isEditing,
   children,
 }: UserProfileSectionHeaderProps) => {
   return (
@@ -27,7 +28,7 @@ const UserProfileSectionHeader = ({
     >
       <div className="flex flex-col grow">
         <h5 className={cx('text-h5-bold', 'xs:text-h4-bold')}>{title}</h5>
-        <p className="text-p2-normal">{text}</p>
+        <p className={cx('text-p2-normal', 'xs:block', { hidden: isEditing })}>{text}</p>
       </div>
       {children && <div>{children}</div>}
     </div>
