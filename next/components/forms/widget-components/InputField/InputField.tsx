@@ -118,12 +118,12 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     }
 
     const style = cx(
-      'text-20 w-full px-4 py-2.5 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
+      'text-p3 sm:text-16 leading-5 sm:leading-6 w-full px-3 sm:px-4 py-2 sm:py-2.5 border-2 border-gray-200 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
       className,
       {
         // conditions
-        'pl-[52px]': leftIcon,
-        'pr-[52px]': resetIcon,
+        'pl-12 sm:pl-[52px]': leftIcon,
+        'pr-12 sm:pr-[52px]': resetIcon,
         // hover
         'hover:border-gray-400': !disabled,
 
@@ -155,9 +155,12 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         <div className="relative">
           {leftIcon && (
             <i
-              className={cx('w-4-translate-y-2/4 absolute left-4 h-full flex items-center', {
-                'opacity-50': disabled,
-              })}
+              className={cx(
+                'w-6 h-6 -translate-y-2/4 inset-y-1/2 absolute left-3 sm:left-4 flex items-center justify-center',
+                {
+                  'opacity-50': disabled,
+                },
+              )}
             >
               {leftIconSwitcher(leftIcon)}
             </i>
@@ -168,7 +171,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               type="button"
               tabIndex={0}
               onClick={resetIconHandler}
-              className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
+              className="flex items-center justify-center absolute inset-y-1/2 right-3 sm:right-4 h-6 w-6 -translate-y-2/4 cursor-pointer"
             >
               <ResetIcon />
             </button>

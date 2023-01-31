@@ -32,10 +32,10 @@ const CalendarGrid = ({ state, offset = {}, ...rest }: CalendarGridBase) => {
     <div {...gridProps} className="flex flex-col items-center">
       <div
         {...headerProps}
-        className="text-p2-medium flex w-full justify-between border-y-2 border-gray-700 bg-gray-50 px-3 py-1"
+        className="text-p3-medium flex w-full justify-between border-y-2 border-gray-700 bg-gray-50 p-3"
       >
         {weekDays.map((day, index) => (
-          <span className="flex h-10 w-10 items-center justify-center" key={index}>
+          <span className="flex h-5 w-10 items-center justify-center" key={index}>
             {day}
           </span>
         ))}

@@ -10,11 +10,21 @@ const FieldErrorMessage: FC<FieldErrorMessageProps> = ({
   errorMessageProps,
 }) => {
   return (
-    <div className="text-p2 mt-1 text-error" {...errorMessageProps}>
-      {errorMessage?.map((error, i) => (
-        <div key={i}>{`${error.slice(0, 1).toUpperCase()}${error.slice(1).toLowerCase()}.`}</div>
-      ))}
-    </div>
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {errorMessage.length > 0 && (
+        <div
+          className="text-p3 sm:text-16 leading-5 sm:leading-6 mt-1 text-error"
+          {...errorMessageProps}
+        >
+          {errorMessage?.map((error, i) => (
+            <div key={i}>{`${error.slice(0, 1).toUpperCase()}${error
+              .slice(1)
+              .toLowerCase()}.`}</div>
+          ))}
+        </div>
+      )}
+    </>
   )
 }
 
