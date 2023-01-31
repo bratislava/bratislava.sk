@@ -10,9 +10,18 @@ import { useState } from 'react'
 const UserProfileView = () => {
   const { t } = useTranslation('account')
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  const { userData, temporaryUserData, setTemporaryUserData, resetTemporaryUserData } = useAccount()
-  console.log('USER', userData)
-
+  const {
+    user,
+    userData,
+    updateUserData,
+    temporaryUserData,
+    setTemporaryUserData,
+    resetTemporaryUserData,
+    error,
+  } = useAccount()
+  console.log('USER', user)
+  console.log('USER DATA', userData)
+  console.log('ERROR', error)
   // TODO: handle change of consents in backend DB
   const [allConsents, setAllConsents] = useState<Consent[]>([
     {
@@ -36,6 +45,14 @@ const UserProfileView = () => {
     resetTemporaryUserData()
   }
 
+  const handleOnSubmitEditing = () => {
+    if (temporaryUserData) {
+      updateUserData(temporaryUserData).then(() => setIsEditing(false))
+    } else {
+      setIsEditing(false)
+    }
+  }
+
   // TODO: redirect to change password
   return (
     <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
@@ -46,6 +63,7 @@ const UserProfileView = () => {
         onChangeIsEditing={setIsEditing}
         onChangeTemporary={setTemporaryUserData}
         onCancelEditing={handleOnCancelEditing}
+        onSubmitEditing={handleOnSubmitEditing}
       />
       <UserProfilePassword />
       <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />

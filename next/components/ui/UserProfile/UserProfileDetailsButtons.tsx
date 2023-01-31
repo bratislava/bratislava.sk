@@ -8,10 +8,11 @@ interface UserProfileDetailsButtonsProps {
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
   onCancelEditing: () => void
+  onSubmitEditing: () => void
 }
 
 const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
-  const { isEditing, onChangeIsEditing, onCancelEditing } = props
+  const { isEditing, onChangeIsEditing, onCancelEditing, onSubmitEditing } = props
   const { t } = useTranslation('account')
   return (
     <div className="width-fit">
@@ -27,7 +28,7 @@ const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
             variant="black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
-            onPress={() => onChangeIsEditing(false)}
+            onPress={onSubmitEditing}
           />
         </div>
       ) : (

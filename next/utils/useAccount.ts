@@ -46,6 +46,13 @@ export interface UserData {
 
 // non standard, has prefix custom: in cognito
 const customAttributes = new Set(['ifo', 'rc_op_verified_date', 'tier'])
+const updatableAttributes = new Set([
+  'name',
+  'given_name',
+  'family_name',
+  'phone_number',
+  'address',
+])
 
 const poolData = {
   UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
@@ -84,12 +91,15 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const objectToUserAttributes = (data: UserData): CognitoUserAttribute[] => {
     const attributeList: CognitoUserAttribute[] = []
     Object.entries(data).forEach(([key, value]) => {
-      const attribute = new CognitoUserAttribute({
-        Name: customAttributes.has(key) ? `custom:${key}` : key,
-        Value: value,
-      })
-      attributeList.push(attribute)
+      if (updatableAttributes.has(key)) {
+        const attribute = new CognitoUserAttribute({
+          Name: customAttributes.has(key) ? `custom:${key}` : key,
+          Value: value,
+        })
+        attributeList.push(attribute)
+      }
     })
+    console.log('ATTRIBUTE LIST', attributeList)
     return attributeList
   }
 
@@ -143,6 +153,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
             resolve(false)
           } else {
             setUserData((state) => ({ ...state, ...data }))
+            setError(null)
             resolve(true)
           }
         })

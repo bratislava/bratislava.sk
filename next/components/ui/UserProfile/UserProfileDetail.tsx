@@ -15,6 +15,7 @@ interface UserProfileDetailProps {
   onChangeIsEditing: (isEditing: boolean) => void
   onChangeTemporary: (temporaryUserData: UserData) => void
   onCancelEditing: () => void
+  onSubmitEditing: () => void
 }
 
 const UserProfileDetails = (props: UserProfileDetailProps) => {
@@ -25,6 +26,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
     onChangeIsEditing,
     onChangeTemporary,
     onCancelEditing,
+    onSubmitEditing,
   } = props
   const { t } = useTranslation('account')
   return (
@@ -38,6 +40,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
           isEditing={isEditing}
           onChangeIsEditing={onChangeIsEditing}
           onCancelEditing={onCancelEditing}
+          onSubmitEditing={onSubmitEditing}
         />
       </UserProfileSectionHeader>
       <div className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}>
