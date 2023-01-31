@@ -5,13 +5,12 @@ import UserProfileDetail from '@bratislava/ui-bratislava/UserProfile/UserProfile
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfile/UserProfilePassword'
 import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const UserProfileView = () => {
   const { t } = useTranslation('account')
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const {
-    user,
     userData,
     updateUserData,
     temporaryUserData,
@@ -19,8 +18,8 @@ const UserProfileView = () => {
     resetTemporaryUserData,
     error,
   } = useAccount()
-  console.log('USER', user)
-  console.log('USER DATA', userData)
+
+  useEffect(() => console.log('USER DATA', userData), [userData])
   console.log('ERROR', error)
   // TODO: handle change of consents in backend DB
   const [allConsents, setAllConsents] = useState<Consent[]>([

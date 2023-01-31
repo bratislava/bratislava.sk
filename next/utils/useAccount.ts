@@ -19,7 +19,7 @@ export enum AccountStatus {
   IdentityVerificationSuccess,
 }
 
-interface Address {
+export interface Address {
   formatted?: string
   street_address?: string
   locality?: string
@@ -99,7 +99,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
         attributeList.push(attribute)
       }
     })
-    console.log('ATTRIBUTE LIST', attributeList)
     return attributeList
   }
 
