@@ -1,19 +1,19 @@
 import { Client } from 'minio'
 
 export const region = "us-east-1"
-export const bucketName = "tkznmjmkzjbvwlmcogc3"
+export const bucketName = "forms-dev"
 
 /*
 https://www.npmjs.com/package/minio
-Check files on testing site: https://play.min.io
-Credentials are mapped as login=accessKey and password=secretKey
+TODO just for dev, likely to be replaced by slightly different approach
+TODO replace with a more restrictive key, this one limits it just to the bucket but allows all operations
  */
 const minioClient = new Client({
-  endPoint: 'play.min.io',
-  port: 9000,
+  endPoint: 'cdn-api.bratislava.sk',
+  port: 443,
   useSSL: true,
-  accessKey: 'Q3AM3UQ867SPQQA43P2F',
-  secretKey: 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
+  accessKey: 'FORMS_DEV_ALL',
+  secretKey: 'cfB1t2jBVi39fHT5Mxae3gz70b8TBbDh',
 })
 
 export default minioClient
