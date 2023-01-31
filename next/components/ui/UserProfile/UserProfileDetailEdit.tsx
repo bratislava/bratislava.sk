@@ -50,7 +50,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
           <Button variant="black" size="sm" text={t('profile_detail.email_button')} />
         </div>
       </div>
-      <div className="gap flex flex-wrap flex-row gap-6">
+      <div className="gap flex flex-wrap flex-row gap-x-6">
         <div className="grow ">
           <InputField
             label={t('profile_detail.phone_number')}
