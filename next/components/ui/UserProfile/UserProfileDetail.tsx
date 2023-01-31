@@ -14,10 +14,18 @@ interface UserProfileDetailProps {
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
   onChangeTemporary: (temporaryUserData: UserData) => void
+  onCancelEditing: () => void
 }
 
 const UserProfileDetails = (props: UserProfileDetailProps) => {
-  const { userData, temporaryUserData, isEditing, onChangeIsEditing, onChangeTemporary } = props
+  const {
+    userData,
+    temporaryUserData,
+    isEditing,
+    onChangeIsEditing,
+    onChangeTemporary,
+    onCancelEditing,
+  } = props
   const { t } = useTranslation('account')
   return (
     <UserProfileSection>
@@ -26,7 +34,11 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
         text={t('profile_detail.text')}
         underline
       >
-        <UserProfileDetailsButtons isEditing={isEditing} onChangeIsEditing={onChangeIsEditing} />
+        <UserProfileDetailsButtons
+          isEditing={isEditing}
+          onChangeIsEditing={onChangeIsEditing}
+          onCancelEditing={onCancelEditing}
+        />
       </UserProfileSectionHeader>
       <div className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}>
         <UserProfilePhoto userData={userData ?? {}} />

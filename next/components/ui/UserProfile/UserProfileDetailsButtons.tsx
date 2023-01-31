@@ -7,12 +7,11 @@ import Button from '../../forms/simple-components/Button'
 interface UserProfileDetailsButtonsProps {
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
+  onCancelEditing: () => void
 }
 
-const UserProfileDetailsButtons = ({
-  isEditing,
-  onChangeIsEditing,
-}: UserProfileDetailsButtonsProps) => {
+const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
+  const { isEditing, onChangeIsEditing, onCancelEditing } = props
   const { t } = useTranslation('account')
   return (
     <div className="width-fit">
@@ -22,7 +21,7 @@ const UserProfileDetailsButtons = ({
             variant="plain-black"
             size="sm"
             text={t('profile_detail.stop_edit_button')}
-            onPress={() => onChangeIsEditing(false)}
+            onPress={onCancelEditing}
           />
           <Button
             variant="black"
