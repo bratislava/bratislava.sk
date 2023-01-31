@@ -3,25 +3,24 @@
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { EFormValue } from '@backend/forms'
+import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { FormValidation } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
+import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
-import { forceString } from '@utils/utils'
+import { forceString, isProductionDeployment } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { getEform } from '../../backend/utils/forms'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
-import { pageStyle, parseFooter, parseMainMenu } from '../../utils/page'
-import { isProductionDeployment } from '../../utils/utils'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   if (isProductionDeployment()) return { notFound: true }
@@ -94,15 +93,59 @@ const FormTestPage = ({
       })
     })
   }
+  const validateDateFromToFormat = (formData: any, errors: FormValidation) => {
+    const formDataKeys = Object.keys(formData)
+    formDataKeys?.forEach((key) => {
+      if (
+        form?.currentSchema?.properties[key]?.dateFromTo &&
+        formData[key].startDate &&
+        formData[key].endDate
+      ) {
+        const startDate = new Date(formData[key].startDate)
+        const endDate = new Date(formData[key].endDate)
 
+        if (endDate <= startDate) {
+          errors[key]?.endDate?.addError('End date must be greater than start date')
+        }
+      }
+    })
+  }
+  const validateTimeFromToFormat = (formData: any, errors: FormValidation) => {
+    const formDataKeys = Object.keys(formData)
+    formDataKeys?.forEach((key) => {
+      if (
+        form?.currentSchema?.properties[key]?.timeFromTo &&
+        formData[key].startTime &&
+        formData[key].endTime
+      ) {
+        const startTime: number[] = formData[key].startTime
+          ?.split(':')
+          .map((time: string) => parseInt(time, 10))
+
+        const endTime: number[] = formData[key].endTime
+          ?.split(':')
+          .map((time: string) => parseInt(time, 10))
+
+        const startTimeSeconds = startTime[0] * 60 * 60 + startTime[1] * 60
+        const endTimeSeconds = endTime[0] * 60 * 60 + endTime[1] * 60
+
+        if (endTimeSeconds <= startTimeSeconds) {
+          errors[key]?.endTime?.addError('End time must be greater than start time')
+        }
+      }
+    })
+  }
   const customValidate = (formData: object, errors: FormValidation) => {
     validateRequiredFormat(formData, errors)
+    validateDateFromToFormat(formData, errors)
+    validateTimeFromToFormat(formData, errors)
     return errors
   }
 
   const customFormats = {
     zip: /\b\d{5}\b/,
-    time: /^[0-2]\d:[0-5]\d$/,
+    // https://stackoverflow.com/questions/7536755/regular-expression-for-matching-hhmm-time-format
+    time: /^(\d|0\d|1\d|2[0-3]):[0-5]\d$/,
   }
   const validator = customizeValidator({
     customFormats,
