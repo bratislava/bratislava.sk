@@ -4,6 +4,7 @@ import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 interface TextAreaBase {
   label: string
@@ -14,7 +15,7 @@ interface TextAreaBase {
   defaultValue?: string
   value?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void

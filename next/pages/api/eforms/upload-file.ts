@@ -50,7 +50,8 @@ const handleBucketCreation = async () => {
 const handlePostRequest = async (req: NextApiRequest) => {
   const file = await parseFormidableFile(req)
   console.log("DATA:", file)
-  await handleBucketCreation()
+  // this is for the minio play env, in our own bucket we don't want to do this - should get removed as we progress
+  // await handleBucketCreation()
   await minioClient.fPutObject(bucketName, file.originalFilename, file.filepath)
 }
 

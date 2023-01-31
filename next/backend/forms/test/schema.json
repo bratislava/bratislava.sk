@@ -6,6 +6,86 @@
   "allOf": [
     {
       "properties": {
+        "mestoPSC": {
+          "required": ["psc","mesto"],
+          "properties": {
+            "mesto": {
+              "type": "string",
+              "title": "Mesto",
+              "default": "Košice"
+            },
+            "psc": {
+              "type": "string",
+              "title": "PSČ",
+              "format": "zip"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "dateTimePicker": {
+          "title": "Showcase of DateTime Picker",
+          "required": ["dateValue","timeValue"],
+          "properties": {
+            "dateValue": {
+              "type": "string",
+              "format": "date",
+              "title": "Date"
+            },
+            "timeValue": {
+              "type": "string",
+              "format": "time",
+              "title": "Time"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "timeFromTo": {
+          "title": "Showcase of TimeFromTo Picker",
+          "timeFromTo": true,
+          "properties": {
+            "startTime": {
+              "type": "string",
+              "format": "time",
+              "title": "Time From"
+            },
+            "endTime": {
+              "type": "string",
+              "format": "time",
+              "title": "Time To"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "dateDepartureArrival": {
+          "title": "Showcase of DateFromTo Picker",
+          "required": ["startDate","endDate"],
+          "dateFromTo": true,
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date",
+              "title": "Date From"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date",
+              "title": "Date To"
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
         "datePicker": {
           "title": "Showcase of DatePicker",
           "required": [],

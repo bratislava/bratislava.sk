@@ -2,13 +2,14 @@ import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
 import React, { DOMAttributes, FC, useState } from 'react'
 
+import { ExplicitOptionalType } from '../types/ExplicitOptional'
 import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
   label: string
   htmlFor?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   helptext?: string
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>

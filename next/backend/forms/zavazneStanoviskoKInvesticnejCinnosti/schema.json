@@ -594,11 +594,10 @@
                   "type": "string",
                   "enum": [
                     "Územné konanie",
-                    "Územné konanie o zmene dokončenej stavby",
-                    "Územné konanie o zmene stavby pred dokončením",
-                    "Konanie o dodatočnom povolení stavby",
-                    "Konanie o dodatočnom povolení zmeny dokončenej stavby",
-                    "Konanie o dodatočnom povolení zmeny stavby pred dokončením"
+                    "Územné konanie spojené so stavebným konaním",
+                    "Zmena stavby pred dokončením",
+                    "Zmena v užívaní stavby",
+                    "Konanie o dodatočnom povolení stavby"
                   ]
                 }
               },
@@ -613,12 +612,6 @@
                     "oneOf": [
                       {
                         "const": "Konanie o dodatočnom povolení stavby"
-                      },
-                      {
-                        "const": "Konanie o dodatočnom povolení zmeny dokončenej stavby"
-                      },
-                      {
-                        "const": "Konanie o dodatočnom povolení zmeny stavby pred dokončením"
                       }
                     ]
                   }
@@ -628,11 +621,10 @@
                 "properties": {
                   "ziadostOdovodnenie": {
                     "type": "string",
-                    "title": "Odôvodnenie žiadosti",
+                    "title": "Upresnenie konania",
                     "enum": [
-                      "Stavba bola zrealizovaná bez stavebného povolenia",
-                      "Stavba bola zrealizovaná nad rámec vydaného stavebného povolenia",
-                      "Iné"
+                      "Realizácia stavby, resp. jej úprav bez akéhokoľvek povolenia",
+                      "Dodatočné povolenie zmeny stavby pred dokončením"
                     ]
                   }
                 },
@@ -645,7 +637,7 @@
               "if": {
                 "properties": {
                   "ziadostOdovodnenie": {
-                    "const": "Stavba bola zrealizovaná nad rámec vydaného stavebného povoleni"
+                    "const": "Dodatočné povolenie zmeny stavby pred dokončením"
                   }
                 }
               },
@@ -669,7 +661,7 @@
               "if": {
                 "properties": {
                   "ziadostOdovodnenie": {
-                    "const": "Stavba bola zrealizovaná nad rámec vydaného stavebného povoleni"
+                    "const": "Dodatočné povolenie zmeny stavby pred dokončením"
                   }
                 }
               },
