@@ -36,13 +36,6 @@
         "size": "large"
       }
     },
-    "ziadatelMesto": {
-      "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:options": {
-        "size": "large"
-      }
-    },
     "ziadatelMiestoPodnikania": {
       "ui:widget": "InputField",
       "ui:label": false,
@@ -55,13 +48,6 @@
       "ui:label": false,
       "ui:options": {
         "size": "large"
-      }
-    },
-    "ziadatelPsc": {
-      "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:options": {
-        "size": "small"
       }
     },
     "ziadatelKontaktnaOsoba": {
@@ -81,6 +67,14 @@
     "ziadatelTelefon": {
       "ui:widget": "InputField",
       "ui:label": false
+    },
+    "ziadatelMestoPsc": {
+      "ui:field": "doubledInput",
+      "ui:hideError": true,
+      "ui:options": {
+        "FirstInputClassNames": "w-full",
+        "SecondInputClassNames": "w-1/4"
+      }
     }
   },
   "investor": {
@@ -149,18 +143,12 @@
         "size": "large"
       }
     },
-    "investorMesto": {
-      "ui:widget": "InputField",
-      "ui:label": false,
+    "investorMestoPsc": {
+      "ui:field": "doubledInput",
+      "ui:hideError": true,
       "ui:options": {
-        "size": "large"
-      }
-    },
-    "investorPsc": {
-      "ui:widget": "InputField",
-      "ui:label": false,
-      "ui:options": {
-        "size": "small"
+        "FirstInputClassNames": "w-full",
+        "SecondInputClassNames": "w-1/4"
       }
     },
     "investorKontaktnaOsoba": {

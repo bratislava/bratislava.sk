@@ -162,20 +162,24 @@
             },
             {
               "properties": {
-                "ziadatelMesto": {
-                  "type": "string",
-                  "title": "Mesto",
-                  "format": "ciselnik"
-                },
-                "ziadatelPsc": {
-                  "type": "string",
-                  "title": "PSČ"
+                "ziadatelMestoPsc": {
+                  "properties": {
+                    "ziadatelMesto": {
+                      "type": "string",
+                      "title": "Mesto",
+                      "format": "ciselnik"
+                    },
+                    "ziadatelPsc": {
+                      "type": "string",
+                      "title": "PSČ"
+                    }
+                  },
+                  "required": [
+                    "ziadatelMesto",
+                    "ziadatelPsc"
+                  ]
                 }
-              },
-              "required": [
-                "ziadatelMesto",
-                "ziadatelPsc"
-              ]
+              }
             },
             {
               "if": {
@@ -425,20 +429,24 @@
                   },
                   {
                     "properties": {
-                      "investorMesto": {
-                        "type": "string",
-                        "title": "Mesto",
-                        "format": "ciselnik"
-                      },
-                      "investorPsc": {
-                        "type": "string",
-                        "title": "PSČ"
+                      "investorMestoPsc": {
+                        "properties": {
+                          "investorMesto": {
+                            "type": "string",
+                            "title": "Mesto",
+                            "format": "ciselnik"
+                          },
+                          "investorPsc": {
+                            "type": "string",
+                            "title": "PSČ"
+                          }
+                        },
+                        "required": [
+                          "investorMesto",
+                          "investorPsc"
+                        ]
                       }
-                    },
-                    "required": [
-                      "investorMesto",
-                      "investorPsc"
-                    ]
+                    }
                   },
                   {
                     "if": {
