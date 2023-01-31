@@ -46,7 +46,19 @@ const CalendarGrid = ({ state, offset = {}, ...rest }: CalendarGridBase) => {
             {state
               ?.getDatesInWeek(weekIndex, startDate)
               ?.map((date, i) =>
-                date ? <CalendarCell key={i} state={state} date={date} /> : <div key={i} />,
+                date ? (
+                  <CalendarCell
+                    isDisabled={
+                      (state.minValue && date < state.minValue) ||
+                      (state.maxValue && date > state.maxValue)
+                    }
+                    key={i}
+                    state={state}
+                    date={date}
+                  />
+                ) : (
+                  <div key={i} />
+                ),
               )}
           </div>
         ))}

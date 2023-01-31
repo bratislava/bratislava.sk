@@ -14,6 +14,10 @@ type WidgetWrapperBase = {
   id?: string
 }
 
+export const isFormSpacingType = (formSpacingType: string): formSpacingType is FormSpacingType => {
+  return ['large', 'default', 'small', 'none'].includes(formSpacingType)
+}
+
 const WidgetWrapper = ({
   children,
   className,
