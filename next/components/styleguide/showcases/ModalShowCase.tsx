@@ -1,3 +1,4 @@
+import { CorrespondenceAddressData } from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useState } from 'react'
@@ -65,6 +66,12 @@ const ModalShowCase = () => {
   const [modalShowInfo, setModalShowInfo] = useState(false)
   const [modalShowWarning, setModalShowWarning] = useState(false)
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
+
+  const onSubmitCorrespondenceAddress = ({ data }: { data?: CorrespondenceAddressData }) => {
+    console.log(data)
+    setCorrenspondenceAddressModalShow(false)
+  }
+
   return (
     <Wrapper direction="column" title="Modal">
       <Stack direction="column">
@@ -209,6 +216,8 @@ const ModalShowCase = () => {
         <CorrespondenceAddressModal
           show={correnspondenceAddressModalShow}
           onClose={() => setCorrenspondenceAddressModalShow(false)}
+          onSubmit={onSubmitCorrespondenceAddress}
+          defaultValues={{}}
         />
       </Stack>
     </Wrapper>

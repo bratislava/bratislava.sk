@@ -8,21 +8,18 @@ import { useState } from 'react'
 interface Props {
   show: boolean
   onClose: () => void
+  onSubmit: ({ data }: { data?: CorrespondenceAddressData }) => void
+  defaultValues: CorrespondenceAddressData
 }
 
-const CorrespondenceAddressModal = ({ show, onClose }: Props) => {
+const CorrespondenceAddressModal = ({ show, onClose, onSubmit, defaultValues }: Props) => {
   const { t } = useTranslation('forms')
   const [errorMessage, setErrorMessage] = useState('')
-
-  const onSubmit = ({ data }: { data?: CorrespondenceAddressData }) => {
-    console.log(data)
-  }
 
   const onHideErrorMessage = () => {
     setErrorMessage('')
   }
 
-  const defaultValues = {}
   return (
     <Modal
       divider
