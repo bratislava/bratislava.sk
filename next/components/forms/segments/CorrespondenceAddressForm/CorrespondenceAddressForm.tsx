@@ -1,5 +1,4 @@
 import useHookForm from '@utils/useHookForm'
-import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { useTranslation } from 'next-i18next'
@@ -30,12 +29,11 @@ const schema = {
 }
 
 interface Props {
-  errorMessage?: string
   onSubmit: ({ data }: { data: CorrespondenceAddressData }) => void
   defaultValues: CorrespondenceAddressData
 }
 
-const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Props) => {
+const CorrespondenceAddressForm = ({ onSubmit, defaultValues }: Props) => {
   const { t } = useTranslation('forms')
 
   const {
@@ -54,7 +52,6 @@ const CorrespondenceAddressForm = ({ errorMessage, onSubmit, defaultValues }: Pr
       onSubmit={handleSubmit((data: CorrespondenceAddressData) => onSubmit({ data }))}
     >
       <div>{t('correspondece_address_description')}</div>
-      {errorMessage && <Alert message={errorMessage} type="error" className="min-w-full" />}
       <Controller
         name="streeAddress"
         control={control}
