@@ -70,6 +70,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     Username: '',
   })
 
+  console.log('USER DATA:', userData)
+  console.log('ERROR:', error)
+
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
     setTemporaryUserData(updatedUserData)
@@ -83,18 +86,20 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
     attributes?.forEach((attribute: CognitoUserAttribute) => {
-      data[attribute.getName().replace(/^custom:/, '')] = attribute.getValue()
+      const attributeKey: string = attribute.getName().replace(/^custom:/, '')
+      data[attributeKey] =
+        attributeKey === 'address' ? JSON.parse(attribute.getValue()) : attribute.getValue()
     })
     return data
   }
 
-  const objectToUserAttributes = (data: UserData): CognitoUserAttribute[] => {
+  const objectToUserAttributes = (data: UserData | Address): CognitoUserAttribute[] => {
     const attributeList: CognitoUserAttribute[] = []
     Object.entries(data).forEach(([key, value]) => {
       if (updatableAttributes.has(key)) {
         const attribute = new CognitoUserAttribute({
           Name: customAttributes.has(key) ? `custom:${key}` : key,
-          Value: value,
+          Value: key === 'address' ? JSON.stringify(value) : value,
         })
         attributeList.push(attribute)
       }
