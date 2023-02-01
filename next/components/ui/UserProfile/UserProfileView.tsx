@@ -14,7 +14,7 @@ const UserProfileView = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [isAlertOpened, setIsAlertOpened] = useState(false)
   const [alertType, setAlertType] = useState<'success' | 'error'>('success')
-  const [isEmailModalOpened, setIsEmailModalOpened] = useState<boolean>(true)
+  const [isEmailModalOpened, setIsEmailModalOpened] = useState<boolean>(false)
   const {
     userData,
     updateUserData,

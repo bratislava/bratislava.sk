@@ -7,7 +7,6 @@ import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfile/User
 import { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
 
 import Alert from '../../forms/info-components/Alert'
 

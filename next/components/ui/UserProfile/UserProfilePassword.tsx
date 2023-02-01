@@ -21,7 +21,8 @@ const UserProfilePassword = () => {
           startIcon={<LockIcon />}
           size="sm"
           text={t('password_change.button')}
-          onPress={() => push('/password-change')}
+          // href="/forgotten-password"
+          onPress={() => (window.location.href = 'password-change')}
         />
       </UserProfileSectionHeader>
     </UserProfileSection>
