@@ -5,8 +5,12 @@ import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { ReactNode } from 'react'
 
-interface LoginRegisterLayoutProps {}
+interface LoginRegisterLayoutProps {
+  className?: string
+  children: ReactNode
+}
 
 const LoginRegisterLayout = ({
   className,
