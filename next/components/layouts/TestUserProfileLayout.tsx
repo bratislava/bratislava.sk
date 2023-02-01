@@ -9,7 +9,7 @@ interface GeneralLayoutProps {
   className?: string
 }
 
-const GeneralLayout = ({
+const TestUserProfileLayout = ({
   className,
   children,
 }: React.HTMLAttributes<HTMLDivElement> & GeneralLayoutProps) => {
@@ -28,4 +28,4 @@ const GeneralLayout = ({
   )
 }
 
-export default GeneralLayout
+export default TestUserProfileLayout
