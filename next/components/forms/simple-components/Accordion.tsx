@@ -13,25 +13,30 @@ import TooltipComponent from './Tooltip'
 const Tooltip = ({ children }: never) => {
   return <TooltipComponent tooltip={children} />
 }
-type AccordionBase = {
-  size: 'sm' | 'md' | 'lg'
+export type AccordionSizeType = 'sm' | 'md' | 'lg'
+
+export type AccordionBase = {
+  size: AccordionSizeType
   title: string
-  markdownContent: string
+  content: string
   icon?: boolean
   shadow?: boolean
   className?: string
 }
+export const isAccordionSizeType = (size: string) =>
+  ['sm', 'md', 'lg'].includes(size) ? size : 'sm'
 
 const Accordion = ({
   title,
-  markdownContent,
-  size,
+  content,
+  size = 'sm',
   icon = false,
   shadow = false,
   className,
 }: AccordionBase) => {
   const [isActive, setIsActive] = useState(false)
 
+  size = isAccordionSizeType(size) as AccordionSizeType
   const accordionContainerStyle = cx('flex flex-col gap-4 w-full rounded-xl bg-gray-0', className, {
     'p-5': size === 'sm',
     'py-6 px-8': size === 'md',
@@ -40,6 +45,7 @@ const Accordion = ({
     'border-gray-700': isActive && !shadow,
     'border-2 border-solid hover:border-gray-500': !shadow,
     'hover:shadow-[0_8px_16px_0_rgba(0,0,0,0.08)]': shadow,
+    'shadow-[0_0_16px_0_rgba(0,0,0,0.08)]': isActive && shadow,
     'shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]': !isActive && shadow,
   })
 
@@ -125,7 +131,7 @@ const Accordion = ({
                   } as any
                 }
               >
-                {markdownContent}
+                {content}
               </ReactMarkdown>
             </div>
           )}

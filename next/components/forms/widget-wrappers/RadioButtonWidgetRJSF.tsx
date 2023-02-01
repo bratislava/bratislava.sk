@@ -16,6 +16,7 @@ type RadioButtonRJSFOptions = {
   className?: string
   radioOptions?: RadioUiOptions[]
   variant?: 'basic' | 'boxed' | 'card'
+  orientations?: 'column' | 'row'
 } & WidgetOptions
 
 interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
@@ -31,12 +32,14 @@ interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
 }
 
 const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
-  const { options, value, onChange, label, rawErrors } = props
+  const { options, value, onChange, label, rawErrors, required } = props
   const {
     enumOptions,
     className,
     variant,
+    accordion,
     radioOptions = [],
+    orientations,
     spaceBottom = 'default',
     spaceTop = 'none',
   } = options
@@ -46,13 +49,15 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     return radioOptions.find((option) => option.value === radioValue)?.tooltip
   }
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <RadioGroup
         errorMessage={rawErrors}
         value={value ?? undefined}
         onChange={onChange}
         className={className}
         label={label}
+        orientations={orientations}
+        required={required}
       >
         {enumOptions.map((radioElement: EnumOptionsType) => {
           return (

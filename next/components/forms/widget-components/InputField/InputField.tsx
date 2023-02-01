@@ -9,22 +9,40 @@ import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
-interface InputBase {
+export type LeftIconVariants = 'person' | 'mail' | 'call' | 'lock'
+export type InputType = 'text' | 'password'
+export type SizeType = 'large' | 'default' | 'small'
+
+export const isLeftIconVariant = (value: string): value is LeftIconVariants => {
+  const list: LeftIconVariants[] = ['person', 'mail', 'call', 'lock']
+  return list.includes(value as LeftIconVariants)
+}
+
+export const isInputSize = (value: string): value is SizeType => {
+  const list: SizeType[] = ['large', 'default', 'small']
+  return list.includes(value as SizeType)
+}
+
+export type InputBase = {
   label: string
-  type?: 'text' | 'password'
+  type?: InputType
   placeholder: string
   errorMessage?: string[]
   description?: string
   className?: string
   value?: string
-  leftIcon?: 'person' | 'mail' | 'call' | 'lock'
+  leftIcon?: LeftIconVariants
   required?: boolean
-  explicitOptional?: boolean
+  // providing this 'prop' will disable error messages rendering inside this component
+  customErrorPlace?: boolean
+  explicitOptional?: ExplicitOptionalType
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
+  size?: SizeType
   endIcon?: ReactNode
 }
 
@@ -44,8 +62,10 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       leftIcon,
       resetIcon,
       className,
+      size,
       onChange,
       endIcon,
+      customErrorPlace = false,
       ...rest
     },
     ref,
@@ -114,9 +134,14 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'border-gray-300 bg-gray-100': disabled,
       },
     )
-
     return (
-      <div className="flex w-full flex-col">
+      <div
+        className={cx('flex w-full flex-col', {
+          'w-full': size === 'large',
+          'max-w-[388px]': size === 'default',
+          'max-w-[200px]': size === 'small',
+        })}
+      >
         <FieldHeader
           label={label}
           labelProps={labelProps}
@@ -150,7 +175,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           )}
           {endIcon}
         </div>
-        {!disabled && (
+        {!disabled && !customErrorPlace && (
           <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
         )}
       </div>

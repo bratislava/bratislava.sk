@@ -1,0 +1,10 @@
+{
+  "envs": {
+    "STRAPI_CPU_REQUESTS": "10m",
+    "STRAPI_MEMORY_REQUESTS": "128Mi",
+    "MEILI_CPU_REQUESTS": "1m",
+    "MEILI_MEMORY_REQUESTS": "32Mi",
+    "DB_CPU_REQUESTS": "10m",
+    "DB_MEMORY_REQUESTS": "128Mi"
+  }
+}

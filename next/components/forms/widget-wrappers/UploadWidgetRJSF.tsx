@@ -1,7 +1,7 @@
 import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import { StrictRJSFSchema, WidgetProps } from '@rjsf/utils'
 import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useEffectOnce } from 'usehooks-ts'
 
 import Upload from '../widget-components/Upload/Upload'
@@ -25,8 +25,10 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   const {
     size,
     accept,
+    description,
     type = 'button',
     className,
+    accordion,
     spaceBottom = 'small',
     spaceTop = 'none',
   } = options
@@ -93,7 +95,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   }
 
   return (
-    <WidgetWrapper spaceBottom={spaceBottom} spaceTop={spaceTop}>
+    <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <Upload
         errorMessage={rawErrors}
         type={type}
@@ -102,6 +104,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         multiple={multiple}
         value={innerValue}
         className={className}
+        description={description}
         sizeLimit={size}
         supportedFormats={supportedFormats}
         disabled={disabled}

@@ -2,6 +2,8 @@ import HiddenIcon from '@assets/images/forms/hidden.svg'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { forwardRef, useState } from 'react'
 
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
+
 interface Props {
   label: string
   placeholder: string
@@ -10,7 +12,7 @@ interface Props {
   className?: string
   value?: string
   required?: boolean
-  explicitOptional?: boolean
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void

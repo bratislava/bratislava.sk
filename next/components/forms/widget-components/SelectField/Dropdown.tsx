@@ -10,6 +10,7 @@ interface DropdownProps {
   value: EnumOptionsType[]
   selectAllOption?: boolean
   absolute?: boolean
+  isRowBold?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
   selectHashCode?: string
@@ -28,6 +29,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     value,
     selectAllOption,
     absolute,
+    isRowBold,
     type,
     divider,
     selectHashCode,
@@ -58,9 +60,6 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   }
 
   const isEverythingSelected = enumOptions.some((option: EnumOptionsType) => !isSelected(option))
-  const isRowBold = enumOptions.some(
-    (option: EnumOptionsType) => option.label !== '' && option.label !== String(option.value),
-  )
 
   // EVENT HANDLERS
   const handleOnSelectAllRowClick = (isSelectingAll: boolean) => {
