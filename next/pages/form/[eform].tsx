@@ -90,7 +90,7 @@ const FormTestPage = ({
   const escapedSlug = formSlug.match(/^[\da-z-]+$/) ? formSlug : ''
   const pageSlug = `form/${escapedSlug}`
 
-  initDefaultSchemaFields(eform.schema)
+  // initDefaultSchemaFields(eform.schema)
   const form = useFormStepper(escapedSlug, eform.schema)
 
   return (

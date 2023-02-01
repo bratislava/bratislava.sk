@@ -139,6 +139,41 @@ const isFieldRequired = (fieldKey: string, schema: StrictRJSFSchema): boolean =>
   })
 }
 
+const validateDateFromToFormat = (formData: RJSFSchema, errors: FormValidation, schema: any) => {
+  const formDataKeys = Object.keys(formData)
+  formDataKeys?.forEach((key) => {
+    if (schema?.properties[key]?.dateFromTo && formData[key].startDate && formData[key].endDate) {
+      const startDate = new Date(formData[key].startDate)
+      const endDate = new Date(formData[key].endDate)
+
+      if (endDate <= startDate) {
+        errors[key]?.endDate?.addError('End date must be greater than start date')
+      }
+    }
+  })
+}
+const validateTimeFromToFormat = (formData: RJSFSchema, errors: FormValidation, schema: any) => {
+  const formDataKeys = Object.keys(formData)
+  formDataKeys?.forEach((key) => {
+    if (schema?.properties[key]?.timeFromTo && formData[key].startTime && formData[key].endTime) {
+      const startTime: number[] = formData[key].startTime
+        ?.split(':')
+        .map((time: string) => parseInt(time, 10))
+
+      const endTime: number[] = formData[key].endTime
+        ?.split(':')
+        .map((time: string) => parseInt(time, 10))
+
+      const startTimeSeconds = startTime[0] * 60 * 60 + startTime[1] * 60
+      const endTimeSeconds = endTime[0] * 60 * 60 + endTime[1] * 60
+
+      if (endTimeSeconds <= startTimeSeconds) {
+        errors[key]?.endTime?.addError('End time must be greater than start time')
+      }
+    }
+  })
+}
+
 const validateRequiredFormat = (
   formData: RJSFSchema,
   errors: FormValidation,
@@ -157,6 +192,8 @@ const validateRequiredFormat = (
 
 const customValidate = (formData: RJSFSchema, errors: FormValidation, schema: StrictRJSFSchema) => {
   validateRequiredFormat(formData, errors, schema)
+  validateDateFromToFormat(formData, errors, schema)
+  validateTimeFromToFormat(formData, errors, schema)
   return errors
 }
 
@@ -312,7 +349,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }, [isSkipEnabled])
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
-    transformNullToUndefined(stepFormData)
+    // transformNullToUndefined(stepFormData)
     setFormData({ ...formData, ...stepFormData })
   }
 
