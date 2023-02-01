@@ -5,11 +5,16 @@ import UserProfileDetail from '@bratislava/ui-bratislava/UserProfile/UserProfile
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfile/UserProfilePassword'
 import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import MessageModal from '../../forms/widget-components/Modals/MessageModal'
 
 const UserProfileView = () => {
   const { t } = useTranslation('account')
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [isAlertOpened, setIsAlertOpened] = useState(false)
+  const [alertType, setAlertType] = useState<'success' | 'error'>('success')
+  const [isEmailModalOpened, setIsEmailModalOpened] = useState<boolean>(true)
   const {
     userData,
     updateUserData,
@@ -18,9 +23,6 @@ const UserProfileView = () => {
     resetTemporaryUserData,
     error,
   } = useAccount()
-
-  const [isAlertOpened, setIsAlertOpened] = useState(false)
-  const [alertType, setAlertType] = useState<'success' | 'error'>('success')
 
   useEffect(() => {
     setAlertType(error ? 'error' : 'success')
@@ -75,9 +77,26 @@ const UserProfileView = () => {
         onCancelEditing={handleOnCancelEditing}
         onSubmitEditing={handleOnSubmitEditing}
         onCloserAlert={() => setIsAlertOpened(false)}
+        onOpenEmailModal={() => setIsEmailModalOpened(true)}
       />
       <UserProfilePassword />
       <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
+      <MessageModal
+        show={isEmailModalOpened}
+        excludeButtons
+        className="w-[700px] m-5"
+        type="warning"
+        cancelHandler={() => {
+          setIsEmailModalOpened(false)
+        }}
+        submitHandler={() => {
+          setIsEmailModalOpened(false)
+        }}
+        title={t('profile_detail.modal_title')}
+      >
+        <p>{t('profile_detail.modal_message')}</p>
+        <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
+      </MessageModal>
     </section>
   )
 }

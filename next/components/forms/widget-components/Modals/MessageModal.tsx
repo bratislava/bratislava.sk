@@ -15,9 +15,10 @@ type MessageModalBase = {
   title: string
   submitHandler: () => void
   cancelHandler: () => void
-  confirmLabel: string
-  cancelLabel: string
+  confirmLabel?: string
+  cancelLabel?: string
   className?: string
+  excludeButtons?: boolean
 }
 
 const icons = {
@@ -37,6 +38,7 @@ const MessageModal = ({
   show,
   cancelLabel,
   className,
+  excludeButtons,
 }: MessageModalBase) => {
   // useEffect(() => {
   //   document.body.style.overflow = show ? 'hidden' : 'visible'
@@ -47,7 +49,7 @@ const MessageModal = ({
   }
   return (
     <div
-      className="h-full fixed w-full z-10 top-0 flex items-center justify-center"
+      className="h-full fixed w-full z-50 top-0 flex items-center justify-center"
       style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={cancelHandler}
     >
@@ -78,20 +80,22 @@ const MessageModal = ({
               </div>
             </div>
           </div>
-          <div className="order-1 flex flex-row items-center gap-6 p-0 justify-end mt-6">
-            <div
-              className="text-base flex cursor-pointer flex-row items-center justify-center gap-2 py-1 px-2 font-semibold not-italic leading-6"
-              onClick={cancelHandler}
-            >
-              {cancelLabel}
+          {!excludeButtons && (
+            <div className="order-1 flex flex-row items-center gap-6 p-0 justify-end mt-6">
+              <div
+                className="text-base flex cursor-pointer flex-row items-center justify-center gap-2 py-1 px-2 font-semibold not-italic leading-6"
+                onClick={cancelHandler}
+              >
+                {cancelLabel}
+              </div>
+              <Button
+                onPress={submitHandler}
+                variant={type === 'error' ? 'negative' : 'black'}
+                text={confirmLabel}
+                size="sm"
+              />
             </div>
-            <Button
-              onPress={submitHandler}
-              variant={type === 'error' ? 'negative' : 'black'}
-              text={confirmLabel}
-              size="sm"
-            />
-          </div>
+          )}
         </div>
       </div>
     </div>

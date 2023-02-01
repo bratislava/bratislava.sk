@@ -7,10 +7,11 @@ import InputField from '../../forms/widget-components/InputField/InputField'
 interface UserProfileDetailEditProps {
   temporaryUserData: UserData
   onChangeTemporary: (newTemporaryUserData: UserData) => void
+  onOpenEmailModal: () => void
 }
 
 const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
-  const { temporaryUserData, onChangeTemporary } = props
+  const { temporaryUserData, onChangeTemporary, onOpenEmailModal } = props
   const { t } = useTranslation('account')
 
   const handleOnChangeAddress = (newAddressInfo: Address) => {
@@ -47,7 +48,12 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
           />
         </div>
         <div className="justify-end flex flex-col py-1">
-          <Button variant="black" size="sm" text={t('profile_detail.email_button')} />
+          <Button
+            variant="black"
+            size="sm"
+            text={t('profile_detail.email_button')}
+            onPress={onOpenEmailModal}
+          />
         </div>
       </div>
       <div className="gap flex flex-wrap flex-row gap-x-6">

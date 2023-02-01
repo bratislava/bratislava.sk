@@ -22,6 +22,7 @@ interface UserProfileDetailProps {
   onCancelEditing: () => void
   onSubmitEditing: () => void
   onCloserAlert: () => void
+  onOpenEmailModal: () => void
 }
 
 const UserProfileDetails = (props: UserProfileDetailProps) => {
@@ -36,6 +37,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
     onCancelEditing,
     onSubmitEditing,
     onCloserAlert,
+    onOpenEmailModal,
   } = props
   const { t } = useTranslation('account')
 
@@ -76,6 +78,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
               <UserProfileDetailEdit
                 temporaryUserData={temporaryUserData ?? {}}
                 onChangeTemporary={onChangeTemporary}
+                onOpenEmailModal={onOpenEmailModal}
               />
             ) : (
               <UserProfileDetailView userData={userData ?? {}} />

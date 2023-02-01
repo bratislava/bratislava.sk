@@ -115,6 +115,9 @@
     "city": "Mesto",
     "postal_code": "PSČ",
     "success_alert": "Zmeny boli uložené",
-    "error_alert": "Zmeny sa nepodarilo uložiť"
+    "error_alert": "Zmeny sa nepodarilo uložiť",
+    "modal_title": "Zmeniť e-mail",
+    "modal_message": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktujte nás na support@bratislava.sk.",
+    "modal_thanks": "Ďakujeme!"
   }
 }

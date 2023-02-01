@@ -114,6 +114,9 @@
     "city": "City",
     "postal_code": "Postal code",
     "success_alert": "Changes have been saved",
-    "error_alert": "Changes could not be saved"
+    "error_alert": "Changes could not be saved",
+    "modal_title": "Change e-mail",
+    "modal_message": "If you would like to change the e-mail you use to log in to your account and to which we send you all information regarding your account, please contact us at support@bratislava.sk.",
+    "modal_thanks": "Thank you!"
   }
 }
