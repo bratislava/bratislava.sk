@@ -171,8 +171,7 @@ export const AccountNavBar = ({ className, menuHidden, ...languageSelectProps }:
               {sectionsList?.map((sectionItem) => (
                 <li className="w-full h-full" key={sectionItem.id}>
                   <Link href={`/account${sectionItem.link}`}>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a
+                    <div
                       className={cx(
                         'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
                         {
@@ -182,7 +181,7 @@ export const AccountNavBar = ({ className, menuHidden, ...languageSelectProps }:
                     >
                       {sectionItem.icon}
                       <span className="ml-3">{sectionItem?.title}</span>
-                    </a>
+                    </div>
                   </Link>
                 </li>
               ))}
