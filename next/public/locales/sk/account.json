@@ -98,5 +98,6 @@
   "correspondence_address": "Korešpondenčná adresa",
   "taxpayer_id": "Osobný identifikátor daňovníka",
   "equips": "Vybavuje",
-  "contact": "Kontakt"
+  "contact": "Kontakt",
+  "tax_liability_breakdown": "Rozpis daňovej povinnosti"
 }

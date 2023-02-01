@@ -13,21 +13,23 @@ import TooltipComponent from './Tooltip'
 const Tooltip = ({ children }: never) => {
   return <TooltipComponent tooltip={children} />
 }
-export type AccordionSizeType = 'sm' | 'md' | 'lg'
+export type AccordionSizeType = 'xs' | 'sm' | 'md' | 'lg'
 
 export type AccordionBase = {
   size: AccordionSizeType
   title: string
+  secondTitle?: string
   content: string
   icon?: boolean
   shadow?: boolean
   className?: string
 }
 export const isAccordionSizeType = (size: string) =>
-  ['sm', 'md', 'lg'].includes(size) ? size : 'sm'
+  ['xs', 'sm', 'md', 'lg'].includes(size) ? size : 'sm'
 
 const Accordion = ({
   title,
+  secondTitle,
   content,
   size = 'sm',
   icon = false,
@@ -38,6 +40,7 @@ const Accordion = ({
 
   size = isAccordionSizeType(size) as AccordionSizeType
   const accordionContainerStyle = cx('flex flex-col gap-4 w-full rounded-xl bg-gray-0', className, {
+    'p-4': size === 'xs',
     'p-5': size === 'sm',
     'py-6 px-8': size === 'md',
     'py-8 px-10': size === 'lg',
@@ -55,14 +58,14 @@ const Accordion = ({
         {icon && (
           <div
             className={cx('flex items-center justify-center', {
-              'w-6 h-6': size === 'sm',
+              'w-6 h-6': size === 'sm' || size === 'xs',
               'w-8 h-8': size === 'md',
               'w-10 h-10': size === 'lg',
             })}
           >
             <PersonIcon
               className={cx('', {
-                'w-4 h-4': size === 'sm',
+                'w-4 h-4': size === 'sm' || size === 'xs',
                 'w-5 h-5': size === 'md',
                 'w-6 h-6': size === 'lg',
               })}
@@ -70,12 +73,14 @@ const Accordion = ({
           </div>
         )}
         <div className="flex w-full flex-col">
-          <div
-            className="flex w-full items-center cursor-pointer"
+          <button
+            type="button"
+            className="flex cursor-pointer items-center gap-4"
             onClick={() => setIsActive(!isActive)}
           >
             <div
-              className={cx('font-semibold not-italic w-full', {
+              className={cx('font-semibold grow flex items-start not-italic', {
+                'text-p-base': size === 'xs',
                 'text-h-base': size === 'sm',
                 'text-h-md': size === 'md',
                 'text-h-lg': size === 'lg',
@@ -84,10 +89,20 @@ const Accordion = ({
               {title}
             </div>
             <div
+              className={cx('text-h-md font-semibold w-max', {
+                'text-p-base': size === 'xs',
+                'text-h-base': size === 'sm',
+                'text-h-md': size === 'md',
+                'text-h-lg': size === 'lg',
+              })}
+            >
+              {secondTitle}
+            </div>
+            <div
               className={cx('flex items-center justify-center', {
                 'w-10 h-10': size === 'lg',
                 'w-8 h-8': size === 'md',
-                'w-6 h-6': size === 'sm',
+                'w-6 h-6': size === 'sm' || size === 'xs',
               })}
             >
               <ExpandMoreIcon
@@ -97,11 +112,11 @@ const Accordion = ({
                 size={size}
               />
             </div>
-          </div>
+          </button>
           {isActive && (
             <div
               className={cx('flex flex-col font-normal not-italic', {
-                'text-h-sm': size === 'sm',
+                'text-h-sm': size === 'sm' || size === 'xs',
                 'text-p-md': size === 'lg' || size === 'md',
               })}
             >

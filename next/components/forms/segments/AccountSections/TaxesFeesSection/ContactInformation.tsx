@@ -5,7 +5,7 @@ import SummaryRow from '../../../steps/Summary/SummaryRow'
 const ContactInformationSection = (props: any) => {
   const { t } = useTranslation('account')
   return (
-    <div className="flex flex-col items-start sm:gap-8 gap-1 w-full">
+    <div className="flex flex-col items-start sm:gap-8 gap-6 w-full">
       <div className="flex flex-col w-full items-start gap-2">
         <div className="text-h-lg font-semibold">{t('personal_info')}</div>
         <div className="flex flex-col w-full">

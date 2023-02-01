@@ -97,5 +97,6 @@
   "correspondence_address": "Address for correspondence",
   "taxpayer_id": "Personal identifier of the taxpayer",
   "equips": "Equips",
-  "contact": "Contact"
+  "contact": "Contact",
+  "tax_liability_breakdown": "Tax liability"
 }

@@ -2,6 +2,7 @@ import TaxFeeSectionHeader from 'components/forms/segments/AccountSectionHeader/
 import { ReactNode } from 'react'
 
 import ContactInformationSection from './ContactInformation'
+import TaxDetails from './TaxDetails'
 
 type TaxAndFeeMainContentBase = {
   children: ReactNode
@@ -20,6 +21,7 @@ const TaxFeeSection = (props: any) => {
       <TaxFeeSectionHeader title="" />
       <TaxAndFeeMainContent>
         <ContactInformationSection />
+        <TaxDetails />
       </TaxAndFeeMainContent>
     </div>
   )
