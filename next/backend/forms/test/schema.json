@@ -8,6 +8,7 @@
       "properties": {
         "mestoPSC": {
           "required": ["psc","mesto"],
+          "type": "object",
           "properties": {
             "mesto": {
               "type": "string",
@@ -28,6 +29,7 @@
         "dateTimePicker": {
           "title": "Showcase of DateTime Picker",
           "required": ["dateValue","timeValue"],
+          "type": "object",
           "properties": {
             "dateValue": {
               "type": "string",
@@ -48,6 +50,7 @@
         "timeFromTo": {
           "title": "Showcase of TimeFromTo Picker",
           "timeFromTo": true,
+          "type": "object",
           "properties": {
             "startTime": {
               "type": "string",
@@ -69,6 +72,7 @@
           "title": "Showcase of DateFromTo Picker",
           "required": ["startDate","endDate"],
           "dateFromTo": true,
+          "type": "object",
           "properties": {
             "startDate": {
               "type": "string",
@@ -86,27 +90,35 @@
     },
     {
       "properties": {
-        "datePicker": {
-          "title": "Showcase of DatePicker",
-          "required": [],
+        "datePickerWithTimePicker": {
+          "title": "Showcase of DatePicker and TimePicker",
+          "type": "object",
           "properties": {
-            "birth": {
-              "type": "string",
-              "format": "date",
-              "title": "Birth date"
-            }
-          }
-        },
-        "timePicker": {
-          "title": "Showcase of TimePicker",
-          "required": [
-            "meeting-time"
-          ],
-          "properties": {
-            "meeting-time": {
-              "type": "string",
-              "title": "Meeting time",
-              "format": "time"
+            "datePicker": {
+              "title": "Showcase of DatePicker",
+              "required": [],
+              "type": "object",
+              "properties": {
+                "birth": {
+                  "type": "string",
+                  "format": "date",
+                  "title": "Birth date"
+                }
+              }
+            },
+            "timePicker": {
+              "title": "Showcase of TimePicker",
+              "required": [
+                "meeting-time"
+              ],
+              "type": "object",
+              "properties": {
+                "meeting-time": {
+                  "type": "string",
+                  "title": "Meeting time",
+                  "format": "time"
+                }
+              }
             }
           }
         }
@@ -325,6 +337,7 @@
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits max 3 items",
+              "minItems": 1,
               "maxItems": 3,
               "uniqueItems": true,
               "items": {
@@ -387,68 +400,6 @@
       }
     },
     {
-      "if": {
-        "properties": {
-          "checkBoxes": {
-            "properties": {
-              "favouriteFruits": {
-                "const": ["plum"]
-              }
-            }
-          },
-          "selectFields": {
-            "properties": {
-              "years": {
-                "const": 6
-              }
-            }
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "conditionalStep": {
-            "title": "This is conditional step",
-            "type": "object",
-            "properties": {
-              "customText": {
-                "type": "string",
-                "title": "Write custom text"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "properties": {
-        "datePicker": {
-          "title": "Showcase of DatePicker",
-          "type": "object",
-          "required": [],
-          "properties": {
-            "birth": {
-              "type": "string",
-              "format": "date",
-              "title": "Birth date"
-            }
-          }
-        },
-        "timePicker": {
-          "title": "Showcase of TimePicker",
-          "type": "object",
-          "required": ["meeting-time"],
-          "properties": {
-            "meeting-time": {
-              "type": "string",
-              "title": "Meeting time",
-              "format": "time"
-            }
-          }
-        }
-      }
-    },
-    {
       "properties": {
         "user": {
           "type": "object",
@@ -456,9 +407,7 @@
           "properties": {
             "phone": {
               "type": "string",
-              "isExampleAsyncValidation": {
-                "errorMsg": "Required input"
-              }
+              "isExampleAsyncValidation": {}
             }
           }
         }
