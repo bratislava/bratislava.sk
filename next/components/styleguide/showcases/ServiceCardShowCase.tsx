@@ -1,9 +1,9 @@
-import ContainerLogo from '@assets/images/container-logo.svg'
-import InvestmentLogo from '@assets/images/investment-logo.svg'
-import PropertyTaxLogo from '@assets/images/property-tax-logo.svg'
-import SwimmingPoolsLogo from '@assets/images/swimming-pools-logo.svg'
 import React from 'react'
 
+import ContainerLogoIcon from '../../forms/icon-components/ContainerLogoIcon'
+import InvestmentLogoIcon from '../../forms/icon-components/InvestmentLogoIcon'
+import PropertyLogoIcon from '../../forms/icon-components/PropertyTaxLogoIcon'
+import SwimmingPoolsLogoIcon from '../../forms/icon-components/SwimmingPoolsLogoIcon'
 import ServiceCard from '../../forms/simple-components/ServiceCard'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
@@ -16,30 +16,30 @@ const ServiceCardShowCase = () => {
           <ServiceCard
             title="Záväzné stanovisko k investičnej činnosti"
             description="Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade.Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade."
-            Logo={InvestmentLogo}
+            Logo={InvestmentLogoIcon}
             buttonText="Prejsť na formulár"
-            href="https://bratislava-next.staging.bratislava.sk"
+            iconFill="#C4EFCE"
           />
           <ServiceCard
             title="Dotácia na kontajnerové stanovištia"
             description="Požiadajte o dotáciu na kontajnerové stanovište alebo o nájom mestského pozemku."
-            Logo={ContainerLogo}
+            Logo={ContainerLogoIcon}
             buttonText="Prejsť na formulár"
-            href="https://bratislava-next.staging.bratislava.sk"
+            iconFill="#C4EFCE"
           />
           <ServiceCard
             title="Daň z nehnuteľností"
             description="Podajte priznanie k dani z nehnuteľností digitálne. Vyrúbenú daň môžete zaplatiť online cez QR kód, alebo platobným prevodom."
-            Logo={PropertyTaxLogo}
+            Logo={PropertyLogoIcon}
             buttonText="Prejsť na formulár"
-            href="https://bratislava-next.staging.bratislava.sk"
+            iconFill="#F8D7D4"
           />
           <ServiceCard
             title="Letné kúpaliská"
             description="Zakúpte si lístok alebo permanentku online a užívajte si leto na ktoromkoľvek z našich kúpalísk v Bratislave."
-            Logo={SwimmingPoolsLogo}
+            Logo={SwimmingPoolsLogoIcon}
             buttonText="Prejsť na formulár"
-            href="https://bratislava-next.staging.bratislava.sk"
+            iconFill="#D9D9D9"
           />
         </div>
       </Stack>
