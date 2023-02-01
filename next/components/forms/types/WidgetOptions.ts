@@ -11,5 +11,4 @@ export type WidgetOptions = {
   accordion?: AccordionBase | AccordionBase[]
   spaceBottom?: FormSpacingType
   spaceTop?: FormSpacingType
-  stepOrder: number
 }

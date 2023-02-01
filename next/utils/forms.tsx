@@ -207,56 +207,6 @@ const customValidate = (formData: RJSFSchema, errors: FormValidation, schema: St
   return errors
 }
 
-export const getLabel = (schemaArray: JsonSchema[], fieldName: string): string => {
-  // need to find title of field in schema
-  let label = fieldName
-  for (const item of schemaArray) {
-    if (Array.isArray(item)) {
-      // if item is array, use recursively this function on it
-      label = getLabel(item, fieldName)
-    } else if (item && typeof item === 'object' && !Object.keys(item).includes(fieldName)) {
-      // if item is object and it has not fieldName we are finding, use recursively this function on array of values
-      const itemValues: JsonSchema[] = Object.values(item)
-      label = getLabel(itemValues, fieldName)
-    } else if (item && typeof item === 'object') {
-      // if item is object, includes fieldName we are finding, take value of fieldName and save title
-      const fieldValue: [string, JsonSchema] | undefined = Object.entries(item).find(
-        ([nestedFieldName]) => nestedFieldName === fieldName,
-      )
-      if (fieldValue && fieldValue[1] && typeof fieldValue[1] !== 'boolean') {
-        label = fieldValue[1].title ?? fieldName
-      }
-    }
-    if (label !== fieldName) {
-      // if label is different from fieldName, return it and end recursion
-      return label
-    }
-  }
-  return label
-}
-
-const transformNullToUndefined = (newFormData: RJSFSchema) => {
-  Object.entries(newFormData).forEach(([key, value]: [string, RJSFSchema]) => {
-    if (value && typeof value === 'object' && !Array.isArray(value)) {
-      transformNullToUndefined(value)
-    } else if (value === null) {
-      newFormData[key] = undefined
-    }
-  })
-}
-
-const removeNullFields = (newFormData: RJSFSchema) => {
-  const newSchema: RJSFSchema = {}
-  Object.entries(newFormData).forEach(([key, value]: [string, RJSFSchema]) => {
-    if (value && typeof value === 'object' && !Array.isArray(value)) {
-      newSchema[key] = removeNullFields(value)
-    } else if (value && (typeof value !== 'object' || Array.isArray(value))) {
-      newSchema[key] = value
-    }
-  })
-  return newSchema
-}
-
 const customFormats = {
   zip: /\b\d{5}\b/,
   time: /^[0-2]\d:[0-5]\d$/,
@@ -286,13 +236,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
 
-  console.log('FORM DATA:', formData)
-  // console.log(
-  //   getAllPossibleJsonSchemaProperties(
-  //     getAllPossibleJsonSchemaProperties(getAllPossibleJsonSchemaProperties(schema).checkBoxes)
-  //       .favouriteFruits,
-  //   ),
-  // )
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
     setFormData({})
