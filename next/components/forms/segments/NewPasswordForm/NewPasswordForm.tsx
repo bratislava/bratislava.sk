@@ -45,7 +45,7 @@ const schema = {
         $data: '1/password',
       },
       type: 'string',
-      errorMessage: { const: 'account:password_not_match' },
+      errorMessage: { const: 'account:password_confirmation_required' },
     },
   },
   required: ['verificationCode', 'password', 'passwordConfirmation'],
