@@ -142,7 +142,12 @@ const isFieldRequired = (fieldKey: string, schema: StrictRJSFSchema): boolean =>
 const validateDateFromToFormat = (formData: RJSFSchema, errors: FormValidation, schema: any) => {
   const formDataKeys = Object.keys(formData)
   formDataKeys?.forEach((key) => {
-    if (schema?.properties[key]?.dateFromTo && formData[key].startDate && formData[key].endDate) {
+    if (
+      schema?.properties &&
+      schema?.properties[key]?.dateFromTo &&
+      formData[key].startDate &&
+      formData[key].endDate
+    ) {
       const startDate = new Date(formData[key].startDate)
       const endDate = new Date(formData[key].endDate)
 
@@ -155,7 +160,12 @@ const validateDateFromToFormat = (formData: RJSFSchema, errors: FormValidation, 
 const validateTimeFromToFormat = (formData: RJSFSchema, errors: FormValidation, schema: any) => {
   const formDataKeys = Object.keys(formData)
   formDataKeys?.forEach((key) => {
-    if (schema?.properties[key]?.timeFromTo && formData[key].startTime && formData[key].endTime) {
+    if (
+      schema?.properties &&
+      schema?.properties[key]?.timeFromTo &&
+      formData[key].startTime &&
+      formData[key].endTime
+    ) {
       const startTime: number[] = formData[key].startTime
         ?.split(':')
         .map((time: string) => parseInt(time, 10))
