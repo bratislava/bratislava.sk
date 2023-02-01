@@ -1,5 +1,7 @@
 import FileDownload from '@assets/images/account/file_download.svg'
 import PaymentIcon from '@assets/images/account/payment-icon.svg'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 import Button from '../../simple-components/Button'
 
@@ -8,7 +10,8 @@ type AccountSectionHeaderBase = {
 }
 
 const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
-  const { title } = props
+  const { t } = useTranslation('account')
+  const router = useRouter()
   return (
     <div className="flex flex-col items-start bg-gray-50 sm:px-28 sm:py-6 p-4 mt-16 lg:mt-28 gap-4">
       <div className="flex items-center gap-0.5 cursor-pointer">
@@ -24,11 +27,17 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
             fill="#333333"
           />
         </svg>
-        <div className="underline text-p-sm">Naspäť na zoznam</div>
+        <button
+          type="button"
+          className="underline text-p-sm"
+          onClick={() => router.push('/account/taxes-and-fees')}
+        >
+          {t('back_to_list')}
+        </button>
       </div>
       <div className="flex flex-col items-start gap-2 w-full h-full">
         <div className="text-p-base text-main-700 font-semibold sm:block hidden">
-          Mesto Bratislava
+          {t('city')} Bratislava
         </div>
         <div className="flex flex-col items-start gap-4 h-full w-full">
           <div className="flex flex-row items-center gap-4 w-full">
@@ -36,21 +45,21 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
             <Button
               startIcon={<PaymentIcon />}
               variant="black"
-              text="Zaplatiť daň"
+              text={t('pay_tax')}
               size="sm"
               className="sm:block hidden"
             />
             <Button
               startIcon={<FileDownload />}
               variant="black-outline"
-              text="Stiahnuť PDF"
+              text={t('download_pdf')}
               size="sm"
               className="sm:block hidden"
             />
           </div>
           <div className="flex sm:flex-row flex-col sm:items-center items-start sm:gap-4 gap-1">
             <div className="flex gap-2">
-              <div className="text-p-base font-semibold">Vytvorená</div>
+              <div className="text-p-base font-semibold">{t('tax_created')}</div>
               <div className="text-p-base font-normal">20. apríla 2023</div>
             </div>
             <div className="w-1.5 h-1.5 bg-black rounded-full sm:block hidden" />
@@ -71,7 +80,7 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
                       fill="#01843D"
                     />
                   </svg>
-                  <div className="text-success-700 font-semibold">Uhradená</div>
+                  <div className="text-success-700 font-semibold">{t('tax_paid')}</div>
                 </div>
                 <div>24. apríla 2023</div>
               </div>
@@ -84,14 +93,14 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
               <Button
                 startIcon={<PaymentIcon />}
                 variant="black"
-                text="Zaplatiť daň"
+                text={t('pay_tax')}
                 size="sm"
                 className="min-w-full"
               />
               <Button
                 startIcon={<FileDownload />}
                 variant="black-outline"
-                text="Stiahnuť PDF"
+                text={t('download_pdf')}
                 size="sm"
                 className="min-w-full"
               />

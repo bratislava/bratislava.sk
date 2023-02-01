@@ -85,5 +85,18 @@
   "account_section_intro": "Úvod",
   "account_section_services": "Mestské služby",
   "account_section_payment": "Dane a poplatky",
-  "account_section_help": "Mám problém"
+  "account_section_help": "Mám problém",
+  "pay_tax": "Zaplatiť",
+  "back_to_list": "Naspäť na zoznam",
+  "city": "Mesto",
+  "tax_created": "Vytvorená",
+  "tax_paid": "Uhradená",
+  "download_pdf": "Stiahnuť PDF",
+  "personal_info": "Osobné informácie",
+  "name_and_surname": "Meno a priezvisko",
+  "permanent_address": "Adresa trvalého pobytu",
+  "correspondence_address": "Korešpondenčná adresa",
+  "taxpayer_id": "Osobný identifikátor daňovníka",
+  "equips": "Vybavuje",
+  "contact": "Kontakt"
 }

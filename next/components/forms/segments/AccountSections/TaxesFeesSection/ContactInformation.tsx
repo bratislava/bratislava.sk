@@ -7,12 +7,13 @@ const ContactInformationSection = (props: any) => {
   return (
     <div className="flex flex-col items-start sm:gap-8 gap-1 w-full">
       <div className="flex flex-col w-full items-start gap-2">
-        <div className="text-h-lg font-semibold">Osobné informácie</div>
+        <div className="text-h-lg font-semibold">{t('personal_info')}</div>
         <div className="flex flex-col w-full">
           <SummaryRow
             size="small"
+            isEditable={false}
             data={{
-              label: 'Meno a priezvisko',
+              label: t('name_and_surname'),
               value: 'Michal Mrkvička',
               schemaPath: '',
               isError: false,
@@ -20,8 +21,9 @@ const ContactInformationSection = (props: any) => {
           />
           <SummaryRow
             size="small"
+            isEditable={false}
             data={{
-              label: 'Adresa trvalého pobytu',
+              label: t('permanent_address'),
               value: 'Námestie hraničiarov 12/A, 811 01 Bratislava',
               schemaPath: '',
               isError: false,
@@ -30,7 +32,7 @@ const ContactInformationSection = (props: any) => {
           <SummaryRow
             size="small"
             data={{
-              label: 'Korešpondenčná adresa',
+              label: t('correspondence_address'),
               value: 'Námestie hraničiarov 12/A, 811 01 Bratislava',
               schemaPath: '',
               isError: false,
@@ -38,8 +40,9 @@ const ContactInformationSection = (props: any) => {
           />
           <SummaryRow
             size="small"
+            isEditable={false}
             data={{
-              label: 'Osobný identifikátor daňovníka',
+              label: t('taxpayer_id'),
               value: '111 222',
               schemaPath: '',
               isError: false,
@@ -48,12 +51,13 @@ const ContactInformationSection = (props: any) => {
         </div>
       </div>
       <div className="flex flex-col w-full items-start gap-2">
-        <div className="text-h-lg font-semibold">Vybavuje</div>
+        <div className="text-h-lg font-semibold">{t('equips')}</div>
         <div className="flex flex-col w-full">
           <SummaryRow
             size="small"
+            isEditable={false}
             data={{
-              label: 'Meno a priezvisko',
+              label: t('name_and_surname'),
               value: 'Meno Správcu/Správkyne',
               schemaPath: '',
               isError: false,
@@ -61,8 +65,9 @@ const ContactInformationSection = (props: any) => {
           />
           <SummaryRow
             size="small"
+            isEditable={false}
             data={{
-              label: 'Kontakt',
+              label: t('contact'),
               value: '+421 2/553 559 38, meno.priezvisko@bratislava.sk',
               schemaPath: '',
               isError: false,
