@@ -6,5 +6,17 @@
     "unknown": "Nastala neznáma chyba. Skúste to prosím znova."
   },
   "selectAll": "Vybrať všetko",
-  "deselectAll": "Odobrať všetko"
+  "deselectAll": "Odobrať všetko",
+
+  "correspondece_address_title": "Zmena korešpondenčnej adresy",
+  "correspondece_address_description": "Údaje, ktoré máme v našich systémoch sa nemusia vždy zhodovať so skutočnosťou. Pomôžte nám držať naše údaje vždy aktuálne a dajte nám vedieť, kde vás vieme zastihnúť.",
+  "street_address_label": "Ulica a číslo",
+  "street_address_placeholder": "Ulica a číslo",
+  "locality_label": "Mesto",
+  "locality_placeholder": "Mesto",
+  "postal_code_label": "PSČ",
+  "postal_code_placeholder": "PSČ",
+  "postal_code_description": "Zadávajte bez medzier, napr. 11111",
+  "postal_code_format": "PSČ nie je valídne",
+  "changes_submit": "Potvrdiť zmeny"
 }

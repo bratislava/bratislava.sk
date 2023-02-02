@@ -231,11 +231,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
         {/* DROPDOWN ARROW */}
         <div
-          className={`${hashCode} dropdownButton min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`}
+          className={`${hashCode} dropdownButton flex items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1`}
           onClick={handleOnDropdownArrowClick}
         >
           <div
-            className={`${hashCode} dropdownButton relative flex h-full flex-col justify-center`}
+            className={`${hashCode} dropdownButton h-6 w-6 items-center relative flex h-full flex-col justify-center`}
           >
             {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
             <div className={`${hashCode} dropdownButton absolute inset-0 z-10`} />

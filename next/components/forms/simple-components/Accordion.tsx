@@ -75,7 +75,7 @@ const Accordion = ({
             onClick={() => setIsActive(!isActive)}
           >
             <div
-              className={cx('font-semibold not-italic w-full', {
+              className={cx('font-semibold w-full', {
                 'text-h-base': size === 'sm',
                 'text-h-md': size === 'md',
                 'text-h-lg': size === 'lg',
@@ -100,7 +100,7 @@ const Accordion = ({
           </div>
           {isActive && (
             <div
-              className={cx('flex flex-col font-normal not-italic', {
+              className={cx('flex flex-col font-normal', {
                 'text-h-sm': size === 'sm',
                 'text-p-md': size === 'lg' || size === 'md',
               })}
