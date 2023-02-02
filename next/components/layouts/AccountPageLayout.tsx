@@ -17,22 +17,22 @@ type AccountPageLayoutBase = {
 }
 
 const sectionsList = [
-  { id: 0, title: 'account_section_intro', icon: <HomeIcon />, link: '/intro' },
+  { id: 0, title: 'account:account_section_intro', icon: <HomeIcon />, link: '/intro' },
   {
     id: 1,
-    title: 'account_section_services',
+    title: 'account:account_section_services',
     icon: <BusinessIcon />,
     link: '/municipal-services',
   },
   {
     id: 2,
-    title: 'account_section_payment',
+    title: 'account:account_section_payment',
     icon: <PaymentIcon />,
     link: '/taxes-and-fees',
   },
   {
     id: 3,
-    title: 'account_section_help',
+    title: 'account:account_section_help',
     icon: <HelpIcon />,
     link: '/i-have-a-problem',
   },

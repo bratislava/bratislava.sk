@@ -120,7 +120,7 @@ export const AccountNavBar = ({
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
   const { Link: UILink } = useUIContext()
 
-  const { t } = useTranslation('account')
+  const { t } = useTranslation(['common', 'account'])
   const router = useRouter()
 
   const linkClassName = 'whitespace-nowrap py-4'
