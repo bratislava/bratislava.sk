@@ -52,7 +52,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
           ) : status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert
               title={t('forgotten_password_success_title')}
-              confirmLabel={t('account_link')}
+              confirmLabel={t('account_continue_link')}
               onConfirm={onConfirm}
             />
           ) : (

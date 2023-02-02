@@ -10,7 +10,7 @@ import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
-import useAccount from '@utils/useAccount'
+import useAccount, { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import Button from 'components/forms/simple-components/Button'
 import { useTranslation } from 'next-i18next'
@@ -84,27 +84,27 @@ interface MenuItem {
 const accountMenuList: MenuItem[] = [
   {
     id: 0,
-    title: 'account_link',
+    title: 'account:menu_account_link',
     icon: <CityIcon />,
     link: '/',
   },
   {
     id: 1,
-    title: 'profile_link',
+    title: 'account:menu_profile_link',
     icon: <ProfileIcon />,
     link: '/',
   },
   {
     id: 2,
-    title: 'help_link',
+    title: 'account:menu_help_link',
     icon: <HelpFilledIcon />,
     link: '/',
   },
   {
     id: 3,
-    title: 'logout_link',
+    title: 'account:menu_logout_link',
     icon: <LogoutIcon />,
-    link: '/',
+    link: '/logout',
   },
 ]
 
@@ -115,13 +115,22 @@ export const AccountNavBar = ({
   ...languageSelectProps
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const { isAuth } = useAccount()
+  const { isAuth, logout, userData } = useAccount()
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])
   const router = useRouter()
+
+  const onAccountMenuChange = (menuItem: MenuItem) => {
+    if (menuItem.link === '/logout') {
+      logout()
+      router.push('/login')
+    } else {
+      router.push(menuItem.link)
+    }
+  }
 
   const linkClassName = 'whitespace-nowrap py-4'
 
@@ -154,13 +163,15 @@ export const AccountNavBar = ({
             <nav className="text-font/75 flex gap-x-8 font-semibold">
               <div className="text-font/75 flex items-center gap-x-6 font-semibold">
                 <Link href="/" variant="plain" className={linkClassName}>
-                  Kontakty
+                  {t('account:menu_contacts_link')}
                 </Link>
                 {isAuth ? (
                   <>
                     <Divider />
                     <AccountSelect
                       options={accountMenuList}
+                      onChange={onAccountMenuChange}
+                      userData={userData}
                       // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
                     />
                     <Divider />
@@ -168,13 +179,18 @@ export const AccountNavBar = ({
                 ) : (
                   <>
                     <Link href="/" variant="plain" className={linkClassName}>
-                      Konto
+                      {t('account:menu_account_link')}
                     </Link>
                     <Divider />
                     <Link href="/login" variant="plain" className={linkClassName}>
-                      Prihlasenie
+                      {t('account:menu_login_link')}
                     </Link>
-                    <Button variant="negative" text="Registrácia" size="sm" />
+                    <Button
+                      onPress={() => router.push('/register')}
+                      variant="negative"
+                      text={t('account:menu_register_link')}
+                      size="sm"
+                    />
                   </>
                 )}
 
@@ -258,31 +274,32 @@ export const AccountNavBar = ({
   )
 }
 
-const Avatar = () => {
+const Avatar = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div
-      className={cx('flex relative flex-row items-start gap-2 rounded-full p-3', {
-        'bg-main-100': true,
-      })}
-    >
-      <div className="flex h-6 w-6 items-center justify-center font-semibold text-main-700">MK</div>
+    <div className="flex relative flex-row items-start gap-2 rounded-full p-3 bg-main-100">
+      <div className="flex h-6 w-6 items-center justify-center font-semibold text-main-700">
+        {children}
+      </div>
     </div>
   )
 }
 
 interface AccountSelectProps {
   options: MenuItem[]
+  onChange: (menuItem: MenuItem) => void
+  userData: UserData
 }
 
-const AccountSelect = ({ options }: AccountSelectProps) => {
+const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
   const [isSelectClicked, setIsSelectClicked] = useState(false)
   const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
+  const { t } = useTranslation()
 
   const handleChange = (selectedKey: number) => {
     const selectedOption = options?.find((opt) => opt.id === selectedKey)
 
     if (selectedOption) {
-      console.log('clicked')
+      onChange(selectedOption)
       setIsSelectClicked(false)
     }
   }
@@ -295,8 +312,12 @@ const AccountSelect = ({ options }: AccountSelectProps) => {
 
   return (
     <div className="relative flex cursor-pointer items-center" ref={ref} onClick={handleClick}>
-      <Avatar />
-      <div className="ml-3 font-light lg:font-semibold">Michaela</div>
+      <Avatar>
+        <span className="uppercase">{userData.given_name[0] + userData.family_name[0]}</span>
+      </Avatar>
+      <div className="ml-3 font-light lg:font-semibold">
+        {userData.given_name || userData.family_name}
+      </div>
       <ChevronDownSmall
         className={`ml-3 hidden mix-blend-normal lg:flex ${
           isSelectClicked && isComponentVisible && 'mb-1 -rotate-180'
@@ -317,7 +338,7 @@ const AccountSelect = ({ options }: AccountSelectProps) => {
                   key={option.id}
                   onClick={() => handleChange(option.id)}
                 >
-                  {option.title}
+                  {t(option.title)}
                 </div>
               </div>
             ))}
