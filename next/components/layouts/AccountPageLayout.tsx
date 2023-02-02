@@ -1,3 +1,7 @@
+import BusinessIcon from '@assets/images/account/business-icon.svg'
+import HelpIcon from '@assets/images/account/help-icon.svg'
+import HomeIcon from '@assets/images/account/home-icon.svg'
+import PaymentIcon from '@assets/images/account/payment-icon.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
 import cx from 'classnames'
@@ -11,6 +15,28 @@ type AccountPageLayoutBase = {
   className?: string
   children: ReactNode
 }
+
+const sectionsList = [
+  { id: 0, title: 'account_section_intro', icon: <HomeIcon />, link: '/intro' },
+  {
+    id: 1,
+    title: 'account_section_services',
+    icon: <BusinessIcon />,
+    link: '/municipal-services',
+  },
+  {
+    id: 2,
+    title: 'account_section_payment',
+    icon: <PaymentIcon />,
+    link: '/taxes-and-fees',
+  },
+  {
+    id: 3,
+    title: 'account_section_help',
+    icon: <HelpIcon />,
+    link: '/i-have-a-problem',
+  },
+]
 
 const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
@@ -34,7 +60,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
         <AccountNavBar
           currentLanguage={locale}
           onLanguageChange={handleLanguageChange}
-          menuHidden
+          sectionsList={sectionsList}
           languages={[
             { key: 'sk', title: t('language_short.sk') },
             { key: 'en', title: t('language_short.en') },
