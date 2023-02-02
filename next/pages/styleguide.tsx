@@ -21,6 +21,7 @@ import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarS
 import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
+import ServiceCardShowCase from '../components/styleguide/showcases/ServiceCardShowCase'
 import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
@@ -65,6 +66,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <StepperShowCase />
         <SummaryRowShowCase />
         <BannerShowCase />
+        <ServiceCardShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )

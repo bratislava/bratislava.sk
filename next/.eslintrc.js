@@ -42,6 +42,15 @@ module.exports = {
     'switch-case/newline-between-switch-case': 'off',
     // This rule disallows lexical declarations (let, const, function and class) in case/default clauses.
     'no-case-declarations': 'off',
+    // Solve warning "Promise-returning function provided to attribute where a void return was expected."
+    '@typescript-eslint/no-misused-promises': [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

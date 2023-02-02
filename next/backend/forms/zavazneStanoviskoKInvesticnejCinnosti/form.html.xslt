@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:z="http://schemas.gov.sk/doc/eform/form/0.1" exclude-result-prefixes="z">
@@ -490,7 +489,7 @@
               <xsl:with-param name="text" select="'Typ konania'"/>
               <xsl:with-param name="node" select="$values/z:KonanieTyp"/>
             </xsl:call-template></xsl:if><xsl:if test="$values/z:ZiadostOdovodnenie"><xsl:call-template name="base_labeled_field">
-              <xsl:with-param name="text" select="'Odôvodnenie žiadosti'"/>
+              <xsl:with-param name="text" select="'Upresnenie konania'"/>
               <xsl:with-param name="node" select="$values/z:ZiadostOdovodnenie"/>
             </xsl:call-template></xsl:if><xsl:for-each select="$values/z:StavbaFotodokumentacia">
               <xsl:call-template name="base_labeled_field">

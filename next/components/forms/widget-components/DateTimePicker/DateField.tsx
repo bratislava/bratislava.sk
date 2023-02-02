@@ -5,6 +5,7 @@ import { useDateField, useDateSegment, useLocale } from 'react-aria'
 import { DateFieldState, DateSegment, useDateFieldState } from 'react-stately'
 
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 type DateSegmentBase = {
   segment: DateSegment
@@ -18,7 +19,7 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
     <div
       {...segmentProps}
       ref={ref}
-      className="text-20 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+      className="text-16 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
     >
       <span
         className={cx('w-full text-center uppercase group-focus:text-white', {
@@ -39,7 +40,7 @@ type DateFieldBase = {
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   children?: ReactNode
   disabled?: boolean
   errorMessage?: string[]
@@ -76,7 +77,7 @@ const DateField = ({
     state,
     ref,
   )
-  const dateFieldStyle = cx('mt-1 flex rounded-lg bg-white px-4 py-3 border-2', {
+  const dateFieldStyle = cx('flex rounded-lg bg-white px-3 sm:px-4 py-1.5 sm:py-2.5 border-2', {
     'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
     'border-error hover:border-error': errorMessage?.length > 0 && !disabled,
     'bg-gray-100 border-gray-300 pointer-events-none': disabled,

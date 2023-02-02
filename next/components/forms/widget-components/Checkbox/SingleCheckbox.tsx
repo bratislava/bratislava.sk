@@ -16,6 +16,9 @@ type CheckBoxBase = {
   children: React.ReactNode
   value: string
   tooltip?: string
+  onChange?: (isSelected: boolean) => void
+  fullWidth?: boolean
+  required?: boolean
 }
 
 const SingleCheckBox = ({
@@ -24,6 +27,8 @@ const SingleCheckBox = ({
   tooltip,
   isDisabled = false,
   variant = 'basic',
+  fullWidth,
+  required,
   ...rest
 }: CheckBoxBase) => {
   const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
@@ -71,7 +76,9 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('flex select-none not-italic font-normal text-p-md text-gray-700 gap-4', {})
+  const labelStyle = cx('flex select-none font-normal text-p-md text-gray-700 gap-4', {
+    'w-full': fullWidth,
+  })
 
   return (
     <div>
@@ -125,7 +132,14 @@ const SingleCheckBox = ({
           )}
         </div>
         <div className={labelStyle}>
-          {children}
+          <div
+            className={cx('relative', {
+              'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+                required,
+            })}
+          >
+            {children}
+          </div>
           {tooltip && (
             <div className="flex items-center">
               <HelpIcon

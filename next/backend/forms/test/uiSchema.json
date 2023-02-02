@@ -2,6 +2,56 @@
   "ui:submitButtonOptions": {
     "norender": true
   },
+  "mestoPSC": {
+    "ui:field": "doubledInput",
+    "ui:hideError": true,
+    "ui:accordion": {
+      "title": "Header name",
+      "size": "sm",
+      "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+    },
+    "ui:options": {
+      "FirstInputTooltip": "Mesto tooltip",
+      "FirstInputDescription": "Description",
+      "FirstInputPlaceholder": "placeholder text",
+      "FirstInputRequired": true,
+      "FirstInputResetIcon": true,
+      "FirstInputLeftIcon": "person",
+      "FirstInputExplicitOptional": true,
+      "FirstInputClassNames": "w-full",
+      "SecondInputClassNames": "w-1/4",
+      "spaceTop": "large"
+    }
+  },
+  "dateTimePicker": {
+    "ui:field": "dateTime",
+    "ui:hideError": true,
+    "ui:options": {
+      "TimeTooltip": "Time tooltip",
+      "DateTooltip": "Time tooltip",
+      "DateDescription": "From desc"
+    }
+  },
+  "timeFromTo": {
+    "ui:field": "timeFromTo",
+    "ui:hideError": true,
+    "ui:options": {
+      "TimeFromTooltip": "Time tooltip",
+      "TimeToTooltip": "Time tooltip",
+      "TimeFromDescription": "From desc",
+      "TimeToDescription": "To desc"
+    }
+  },
+  "dateDepartureArrival": {
+    "ui:hideError": true,
+    "ui:field": "dateFromTo",
+    "ui:options": {
+      "DateFromTooltip": "From tooltip",
+      "DateToTooltip": "To tooltip",
+      "DateFromDescription": "From desc",
+      "DateToDescription": "To desc"
+    }
+  },
   "datePicker": {
     "ui:hideError": true,
     "birth": {
@@ -251,6 +301,7 @@
     }
   },
   "user": {
+    "ui:hideError": true,
     "phone": {
       "ui:widget": "InputField",
       "ui:label": false,

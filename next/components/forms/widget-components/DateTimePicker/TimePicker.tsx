@@ -8,6 +8,7 @@ import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-a
 import { useDatePickerState } from 'react-stately'
 
 import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Popover from './Popover'
 import TimeField from './TimeField'
 import TimeSelector from './TimeSelector'
@@ -33,15 +34,27 @@ const Button = ({ children, disabled, ...rest }: ButtonBase) => {
   )
 }
 
-type TimePickerBase = {
+export const convertTimeToValidFormat = (timeValue: string) => {
+  const [hours, minutes] = timeValue?.split(':')
+  return `${hours ? padStart(hours, 2, '0') : ''}${hours || minutes ? ':' : ''}${
+    minutes ? padStart(minutes, 2, '0') : ''
+  }`
+}
+
+export type TimePickerBase = {
   label?: string
   description?: string
   tooltip?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
+  // providing this 'prop' will disable error messages rendering inside this component
+  customErrorPlace?: boolean
   errorMessage?: string[]
   value?: string
+  minValue?: string
+  maxValue?: string
+  readOnly?: boolean
   onChange?: (value?: string) => void
 }
 
@@ -57,6 +70,10 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       description,
       onChange,
       value = '',
+      minValue,
+      maxValue,
+      readOnly = false,
+      customErrorPlace = false,
       ...rest
     },
     ref,
@@ -107,7 +124,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
 
     const closeFailedHandler = () => {
-      if (onChange) onChange(prevValue)
+      if (onChange && prevValue) onChange(prevValue)
+      else if (onChange) onChange()
+
       if (prevValue) setHour(prevValue.split(':')[0])
       else setHour('')
 
@@ -136,6 +155,12 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
       }
     }, [isInputEdited])
 
+    useEffect(() => {
+      const convertedTimeToValidFormat = convertTimeToValidFormat(value)
+      if (value) setPrevValue(convertedTimeToValidFormat)
+      if (onChange) onChange(convertedTimeToValidFormat)
+    }, [])
+
     return (
       <I18nProvider locale={locale}>
         <div className="relative w-full max-w-xs">
@@ -154,7 +179,9 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
               isOpen={state?.isOpen}
               onChange={onChange}
               value={value}
+              readOnly={readOnly}
               setIsInputEdited={setIsInputEdited}
+              setPrevValue={setPrevValue}
             >
               <Button {...buttonProps} disabled={disabled}>
                 <TimeIcon />
@@ -178,12 +205,14 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
                   onSubmit={closeSuccessHandler}
                   onChange={onChange}
                   value={value}
+                  minValue={minValue}
+                  maxValue={maxValue}
                   setIsInputEdited={setIsInputEdited}
                 />
               </Popover>
             </OverlayProvider>
           )}
-          {!disabled && (
+          {!disabled && !customErrorPlace && (
             <FieldErrorMessage errorMessage={errorMessage} errorMessageProps={errorMessageProps} />
           )}
         </div>

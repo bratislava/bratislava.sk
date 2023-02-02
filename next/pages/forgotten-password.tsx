@@ -47,18 +47,16 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
         <AccountContainer>
-          {status === AccountStatus.Idle && (
-            <ForgottenPasswordForm onSubmit={forgotPassword} error={error} />
-          )}
-          {status === AccountStatus.NewPasswordRequired && (
+          {status === AccountStatus.NewPasswordRequired ? (
             <NewPasswordForm onSubmit={confirmPassword} onResend={forgotPassword} error={error} />
-          )}
-          {status === AccountStatus.Success && (
+          ) : status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert
               title={t('forgotten_password_success_title')}
               confirmLabel={t('account_link')}
               onConfirm={onConfirm}
             />
+          ) : (
+            <ForgottenPasswordForm onSubmit={forgotPassword} error={error} />
           )}
         </AccountContainer>
       </LoginRegisterLayout>

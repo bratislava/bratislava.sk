@@ -27,8 +27,12 @@ const schema = {
   properties: {
     verificationCode: {
       type: 'string',
-      minLength: 6,
-      errorMessage: { minLength: 'account:verification_code_required' },
+      minLength: 1,
+      format: 'verificationCode',
+      errorMessage: {
+        minLength: 'account:verification_code_required',
+        format: 'account:verification_code_format',
+      },
     },
     password: {
       type: 'string',
@@ -41,7 +45,7 @@ const schema = {
         $data: '1/password',
       },
       type: 'string',
-      errorMessage: { const: 'account:password_not_match' },
+      errorMessage: { const: 'account:password_confirmation_required' },
     },
   },
   required: ['verificationCode', 'password', 'passwordConfirmation'],
@@ -81,7 +85,7 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
       })}
     >
       <h1 className="text-h3">{t('new_password_title')}</h1>
-      <div>{t('verification_code_description')}</div>
+      <div>{t('new_password_description')}</div>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
@@ -137,13 +141,13 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         disabled={isSubmitting}
       />
       <div>
-        <span>{t('new_password_description')}</span>
-        {cnt > 0 && <span>{` ${formatUnicorn(t('new_password_cnt_description'), { cnt })}`}</span>}
+        <span>{t('verification_description')}</span>
+        {cnt > 0 && <span>{` ${formatUnicorn(t('verification_cnt_description'), { cnt })}`}</span>}
       </div>
       <Button
         onPress={handleResend}
         className="min-w-full"
-        text={t('new_password_resend')}
+        text={t('verification_resend')}
         variant="category-outline"
         disabled={cnt > 0}
       />

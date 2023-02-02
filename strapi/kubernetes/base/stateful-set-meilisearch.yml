@@ -25,6 +25,10 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch-secret
+          resources:
+            requests:
+              cpu: ${MEILI_CPU_REQUESTS}
+              memory: ${MEILI_MEMORY_REQUESTS}
           ports:
             - name: http
               containerPort: 7700
@@ -44,7 +48,6 @@ spec:
           volumeMounts:
             - name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage
               mountPath: /meili_data
-          resources: {}
   volumeClaimTemplates:
     - metadata:
         name: ${BUILD_REPOSITORY_NAME}-meilisearch-data-storage

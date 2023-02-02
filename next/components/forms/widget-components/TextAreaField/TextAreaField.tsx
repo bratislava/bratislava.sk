@@ -4,6 +4,7 @@ import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 interface TextAreaBase {
   label: string
@@ -14,7 +15,7 @@ interface TextAreaBase {
   defaultValue?: string
   value?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   tooltip?: string
   onChange?: (value?: string) => void
@@ -66,7 +67,7 @@ const TextAreaField = ({
     ref,
   )
   const containerStyle = cx(
-    'text-20 flex flex-col bg-gray-0 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none overflow-hidden',
+    'text-p3 sm:text-16 leading-5 sm:leading-6 flex flex-col bg-gray-0 border-2 border-gray-200 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none overflow-hidden',
     className,
     {
       'hover:border-gray-400': !disabled && !isFocused,
@@ -77,7 +78,7 @@ const TextAreaField = ({
   )
 
   const textareaStyle = cx(
-    'overflow-y-scroll px-4 py-2.5 bg-gray-0 rounded-lg caret-gray-700 focus:outline-none resize-none focus:placeholder:text-transparent h-full w-full',
+    'overflow-y-scroll px-3 py-2 sm:px-4 sm:py-3 bg-gray-0 rounded-lg caret-gray-700 focus:outline-none resize-none focus:placeholder:text-transparent h-full w-full',
   )
   return (
     <div className="flex w-full flex-col">
