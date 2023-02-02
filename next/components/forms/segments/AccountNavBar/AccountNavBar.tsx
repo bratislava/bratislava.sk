@@ -12,6 +12,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import useAccount from '@utils/useAccount'
 import cx from 'classnames'
+import Button from 'components/forms/simple-components/Button'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
@@ -114,8 +115,7 @@ export const AccountNavBar = ({
   ...languageSelectProps
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const { user } = useAccount()
-  const isAuth = user !== null
+  const { isAuth } = useAccount()
 
   const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
   const { Link: UILink } = useUIContext()
@@ -156,36 +156,37 @@ export const AccountNavBar = ({
                 <Link href="/" variant="plain" className={linkClassName}>
                   Kontakty
                 </Link>
-                <Divider />
-                <AccountSelect
-                  options={accountMenuList}
-                  // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
-                />
-                <Divider />
-                {/* <Link href="/login" variant="plain" className={linkClassName}>
-                  Prihlasenie
-                </Link>
-                <Button variant="negative" text="Registrácia" size="sm" /> */}
+                {isAuth ? (
+                  <>
+                    <Divider />
+                    <AccountSelect
+                      options={accountMenuList}
+                      // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
+                    />
+                    <Divider />
+                  </>
+                ) : (
+                  <>
+                    <Link href="/" variant="plain" className={linkClassName}>
+                      Konto
+                    </Link>
+                    <Divider />
+                    <Link href="/login" variant="plain" className={linkClassName}>
+                      Prihlasenie
+                    </Link>
+                    <Button variant="negative" text="Registrácia" size="sm" />
+                  </>
+                )}
+
                 <Link href={t('searchLink')} variant="plain">
                   <SearchIcon />
                 </Link>
-
-                {/* <Link
-                href={contactUrls[languageKey]}
-                variant="plain"
-                className="whitespace-nowrap py-4"
-              >
-                {t('contacts')}
-              </Link> */}
 
                 {/* This UILink set here just to prefetch EN version of page, this link is hidden */}
                 <UILink href="/en" className="hidden">
                   hidden
                 </UILink>
 
-                {/* <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap py-4">
-                {t('eservices')}
-              </Link> */}
                 <div className="text-font/75 relative flex items-center bg-transparent">
                   <LanguageSelect
                     className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
