@@ -28,7 +28,7 @@ export const isInputSize = (value: string): value is SizeType => {
 export type InputBase = {
   label: string
   type?: InputType
-  placeholder: string
+  placeholder?: string
   errorMessage?: string[]
   description?: string
   className?: string

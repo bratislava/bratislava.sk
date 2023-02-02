@@ -70,18 +70,63 @@
   "identity_verification_submit": "Overiť údaje",
   "identity_verification_success_title": "Overenie bolo úspešné",
   "identity_verification_success_description": "Rodné číslo a číslo občianskeho preukazu boli overené.",
-
   "password_change_title": "Zmena hesla",
   "old_password_label": "Staré heslo",
   "old_password_placeholder": "Staré heslo",
   "password_change_submit": "Potvrdiť",
   "password_change_success_title": "Heslo bolo úspešne zmenené",
-
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",
   "LimitExceededException": "Skúste to znova neskôr.",
   "UserNotConfirmedException": "E-mail nie je verifikovaný.",
   "UsernameExistsException": "E-mail {email} sa už používa.",
   "ExpiredCodeException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
-  "IncorectPasswordException": "Zadané heslo nie je správne."
+  "IncorectPasswordException": "Zadané heslo nie je správne.",
+  "account_section_intro": "Úvod",
+  "account_section_services": "Mestské služby",
+  "account_section_payment": "Dane a poplatky",
+  "account_section_help": "Mám problém",
+  "my_profile": "Môj profil",
+  "consents": {
+    "title": "Súhlasy",
+    "text": "Spravujte udelené súhlasy",
+    "personal_data": {
+      "title": "Súhlas so spracovaním osobných údajov",
+      "text": "Súhlasím s tým, aby mesto pracovalo s údajmi, ktoré som vyplnil/a"
+    },
+    "receive_information": {
+      "title": "Mám záujem dostávať informácie aj o iných digitálnych službách mesta Bratislava",
+      "text": "Chcem sa prihlásiť na odber noviniek a marketingových upozornení"
+    }
+  },
+  "password_change": {
+    "title": "Heslo",
+    "text": "Zmeňte svoje prihlasovacie heslo",
+    "button": "Zmeniť heslo"
+  },
+  "profile_detail": {
+    "title": "Osobné údaje",
+    "text": "Spravujte svoje osobné údaje",
+    "start_edit_button": "Upraviť",
+    "save_edit_button": "Uložiť zmeny",
+    "stop_edit_button": "Zahodiť zmeny",
+    "titles_before_name": "Tituly pred menom",
+    "titles_after_name": "Tituly za menom",
+    "full_name": "Meno a priezvisko",
+    "given_name": "Meno",
+    "family_name": "Priezvisko",
+    "email": "E-mail",
+    "email_button": "Upraviť",
+    "email_tooltip": "Zmeniť email môžete keď napíšete na našu podporu",
+    "phone_number": "Telefónne číslo (v tvare +421...)",
+    "address": "Korešpondenčná adresa",
+    "street": "Ulica a číslo",
+    "city": "Mesto",
+    "postal_code": "PSČ",
+    "success_alert": "Zmeny boli uložené",
+    "error_alert": "Zmeny sa nepodarilo uložiť",
+    "modal_title": "Zmeniť e-mail",
+    "modal_message": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktujte nás na support@bratislava.sk.",
+    "modal_thanks": "Ďakujeme!"
+  }
 }
