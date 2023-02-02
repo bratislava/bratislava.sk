@@ -163,6 +163,7 @@
             {
               "properties": {
                 "ziadatelMestoPsc": {
+                  "type": "object",
                   "properties": {
                     "ziadatelMesto": {
                       "type": "string",
@@ -430,6 +431,7 @@
                   {
                     "properties": {
                       "investorMestoPsc": {
+                        "type": "object",
                         "properties": {
                           "investorMesto": {
                             "type": "string",
