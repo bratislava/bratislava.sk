@@ -12,6 +12,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import useAccount, { UserData } from '@utils/useAccount'
 import cx from 'classnames'
+import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
@@ -74,7 +75,7 @@ const BackButton = () => {
   return <ArrowLeft className="cursor-pointer mx-1" onClick={() => router.back()} />
 }
 
-interface MenuItem {
+export interface MenuItem {
   id: number
   title: string
   icon: ReactNode
@@ -123,12 +124,12 @@ export const AccountNavBar = ({
   const { t } = useTranslation(['common', 'account'])
   const router = useRouter()
 
-  const onAccountMenuChange = (menuItem: MenuItem) => {
-    if (menuItem.link === '/logout') {
+  const onRouteChange = (selectedItem: MenuItem) => {
+    if (selectedItem.link === '/logout') {
       logout()
       router.push('/login')
     } else {
-      router.push(menuItem.link)
+      router.push(selectedItem.link)
     }
   }
 
@@ -170,7 +171,7 @@ export const AccountNavBar = ({
                     <Divider />
                     <AccountSelect
                       options={accountMenuList}
-                      onChange={onAccountMenuChange}
+                      onChange={onRouteChange}
                       userData={userData}
                       // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
                     />
@@ -217,20 +218,22 @@ export const AccountNavBar = ({
           <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
-                <li className="w-full h-full" key={sectionItem.id}>
-                  <Link href={`/account${sectionItem.link}`}>
-                    <div
-                      className={cx(
-                        'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
-                        {
-                          'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
-                        },
-                      )}
-                    >
-                      {sectionItem.icon}
-                      <span className="ml-3">{t(sectionItem?.title)}</span>
-                    </div>
-                  </Link>
+                <li
+                  className="w-full h-full"
+                  key={sectionItem.id}
+                  onClick={() => onRouteChange(sectionItem.link)}
+                >
+                  <div
+                    className={cx(
+                      'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
+                      {
+                        'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
+                      },
+                    )}
+                  >
+                    {sectionItem.icon}
+                    <span className="ml-3">{t(sectionItem?.title)}</span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -243,10 +246,11 @@ export const AccountNavBar = ({
         className={cx(
           className,
           'h-16 flex items-center py-5 px-8 -mx-8 shadow-md drop-shadow-md',
-          'lg:hidden fixed top-0 w-full bg-white z-50',
+          'lg:hidden fixed top-0 w-full bg-white z-50 gap-x-6',
         )}
       >
-        <BackButton />
+        {/* <BackButton />
+        <Divider /> */}
         <Brand url="/" className="grow" />
         {!menuHidden && (
           <>
@@ -267,6 +271,15 @@ export const AccountNavBar = ({
                 {burgerOpen ? <HamburgerClose /> : <Hamburger />}
               </div>
             </button>
+
+            {burgerOpen && (
+              <HamburgerMenu
+                sectionsList={sectionsList}
+                lang={languageKey}
+                closeMenu={() => setBurgerOpen(false)}
+                onRouteChange={onRouteChange}
+              />
+            )}
           </>
         )}
       </div>
@@ -286,7 +299,7 @@ const Avatar = ({ children }: { children: React.ReactNode }) => {
 
 interface AccountSelectProps {
   options: MenuItem[]
-  onChange: (menuItem: MenuItem) => void
+  onChange: (selectedItem: MenuItem) => void
   userData: UserData
 }
 
@@ -327,7 +340,7 @@ const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
         <div className="absolute top-12 -left-3 z-20 mt-1 flex h-auto cursor-default flex-col items-center justify-center lg:left-0">
           <div className="flex h-auto min-h-[60px] w-full flex-col rounded-lg bg-white py-2 shadow-[0_8px_16px_rgba(0,0,0,0.12)]">
             {options.map((option) => (
-              <div className="cursor-pointer flex py-2 px-5">
+              <div key={option.id} className="cursor-pointer flex py-2 px-5">
                 <div className="flex relative flex-row items-start gap-2 rounded-xl p-4 bg-gray-50">
                   <div className="flex h-2 w-2 items-center justify-center">
                     <span>{option.icon}</span>
@@ -335,7 +348,6 @@ const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
                 </div>
                 <div
                   className="text-p2 hover:text-p2-semibold text-font p-2 whitespace-nowrap"
-                  key={option.id}
                   onClick={() => handleChange(option.id)}
                 >
                   {t(option.title)}
