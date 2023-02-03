@@ -101,7 +101,7 @@ const CorrespondenceAddressForm = ({
             className="max-w-xs"
             label={t('postal_code_label')}
             placeholder={t('postal_code_placeholder')}
-            description={t('postal_code_description')}
+            helptext={t('postal_code_description')}
             {...field}
             errorMessage={errors.postalCode}
           />

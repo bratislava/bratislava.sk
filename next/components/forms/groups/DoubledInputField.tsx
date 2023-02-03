@@ -9,7 +9,7 @@ type FirstInputFieldBase = {
   FirstInputType?: InputBase['type']
   FirstInputPlaceholder: InputBase['placeholder']
   FirstInputErrorMessage?: InputBase['errorMessage']
-  FirstInputDescription?: InputBase['description']
+  FirstInputDescription?: InputBase['helptext']
   FirstInputValue?: InputBase['value']
   FirstInputLeftIcon?: InputBase['leftIcon']
   FirstInputRequired?: InputBase['required']
@@ -27,7 +27,7 @@ type SecondInputFieldBase = {
   SecondInputType?: InputBase['type']
   SecondInputPlaceholder: InputBase['placeholder']
   SecondInputErrorMessage?: InputBase['errorMessage']
-  SecondInputDescription?: InputBase['description']
+  SecondInputDescription?: InputBase['helptext']
   SecondInputValue?: InputBase['value']
   SecondInputLeftIcon?: InputBase['leftIcon']
   SecondInputRequired?: InputBase['required']
@@ -79,7 +79,7 @@ export const DoubledInputField = ({
             label={FirstInputLabel}
             placeholder={FirstInputPlaceholder}
             errorMessage={FirstInputErrorMessage}
-            description={FirstInputDescription}
+            helptext={FirstInputDescription}
             type={FirstInputType}
             value={FirstInputValue}
             leftIcon={FirstInputLeftIcon}
@@ -104,7 +104,7 @@ export const DoubledInputField = ({
             placeholder={SecondInputPlaceholder}
             errorMessage={SecondInputErrorMessage}
             type={SecondInputType}
-            description={SecondInputDescription}
+            helptext={SecondInputDescription}
             value={SecondInputValue}
             leftIcon={SecondInputLeftIcon}
             required={SecondInputRequired}

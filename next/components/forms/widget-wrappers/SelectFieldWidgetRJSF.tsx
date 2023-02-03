@@ -30,7 +30,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   const {
     enumOptions,
     selectAllOption,
-    description,
+    helptext,
     tooltip,
     accordion,
     dropdownDivider,
@@ -103,7 +103,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
         value={transformValue()}
         selectAllOption={selectAllOption}
         placeholder={placeholder}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         dropdownDivider={dropdownDivider}
         errorMessage={rawErrors}

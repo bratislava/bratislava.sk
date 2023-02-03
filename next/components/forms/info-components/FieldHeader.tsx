@@ -10,22 +10,23 @@ interface FieldHeaderProps {
   htmlFor?: string
   required?: boolean
   explicitOptional?: ExplicitOptionalType
-  description?: string
+  helptext?: string
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
   tooltip?: string
 }
 
-const FieldHeader: FC<FieldHeaderProps> = ({
-  label,
-  htmlFor,
-  required,
-  explicitOptional = 'none',
-  description,
-  labelProps,
-  descriptionProps,
-  tooltip,
-}) => {
+const FieldHeader = (props: FieldHeaderProps) => {
+  const {
+    label,
+    htmlFor,
+    required,
+    explicitOptional = 'none',
+    helptext = '',
+    labelProps,
+    descriptionProps,
+    tooltip,
+  } = props
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
@@ -36,6 +37,12 @@ const FieldHeader: FC<FieldHeaderProps> = ({
         required,
     },
   )
+
+  const helptextHandler = () =>
+    helptext
+      .trim()
+      .split('\n')
+      .map((sentence, i) => <span key={i}>{sentence}</span>)
 
   return (
     <div className="w-full">
@@ -89,12 +96,12 @@ const FieldHeader: FC<FieldHeaderProps> = ({
       </div>
       {
         /* DESCRIPTION */
-        description && (
+        helptext && (
           <div
             {...descriptionProps}
             className="text-p3 sm:text-16 leading-5 sm:leading-6 mb-1 text-gray-700"
           >
-            {description}
+            {helptextHandler()}
           </div>
         )
       }
