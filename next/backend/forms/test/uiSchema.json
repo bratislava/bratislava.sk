@@ -152,7 +152,7 @@
       "ui:placeholder": "PSC",
       "ui:options": {
         "tooltip": "PSC hint, only numbers",
-        "description": "Only numbers",
+        "helptext": "Only numbers",
         "size": "small"
       }
     }
@@ -169,7 +169,7 @@
       },
       "ui:options": {
         "type": "button",
-        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
+        "helptext": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.\nPrílohy nemôžu presiahnuť veľkosť 250MB."
       }
     },
     "importButtonMultipleFiles": {
@@ -210,7 +210,7 @@
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
       },
       "ui:options": {
-        "description": "Here write pros",
+        "helptext": "Here write pros",
         "tooltip": "This is simple tooltip"
       }
     },
@@ -232,7 +232,7 @@
       },
       "ui:options": {
         "dropdownDivider": true,
-        "description": "Here choose your last school",
+        "helptext": "Here choose your last school",
         "tooltip": "This tooltip will tell you what to do better when you choose this."
       }
     },
@@ -250,7 +250,24 @@
   },
   "chooseOneOf": {
     "ui:hideError": true,
-    "chooseOne": {
+    "chooseOneOfMore": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
+      }
+    },
+    "chooseOneOfTwo": {
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:accordion": {
