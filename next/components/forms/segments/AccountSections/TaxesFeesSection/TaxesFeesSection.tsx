@@ -48,9 +48,9 @@ const TaxesFeesSection = () => {
     <div className="flex flex-col">
       <AccountSectionHeader title={t('account_section_payment')} />
       <div className="w-full max-w-screen-1.5lg m-auto">
-        <ul className="my-8">
+        <ul className="my-2 lg:my-8 px-4 sm:px-6 1.5lg:px-0">
           {cards.map((card, i) => (
-            <li className="mb-8" key={i}>
+            <li className="mb-2 lg:mb-6" key={i}>
               <TaxesFeesCard
                 title={card.title}
                 yearPay={card.yearPay}
