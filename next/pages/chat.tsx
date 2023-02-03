@@ -14,6 +14,16 @@ const Chat = () => {
   const style = {
     display: showChat ? 'inherit' : 'none',
   }
+  const styleOptions = {
+    botAvatarImage:
+      'https://www.ukraineslovakia.sk/wp-content/uploads/2022/06/Screenshot-2022-06-08-at-16.12.40.png',
+    botAvatarInitials: '',
+    userAvatarInitials: 'A',
+    hideUploadButton: true,
+    suggestedActionBackground: 'red',
+    suggestedActionHeight: '30px',
+    bubbleBorderColor: 'red',
+  }
   return (
     <>
       <div
@@ -25,7 +35,11 @@ const Chat = () => {
       </div>
       {dir?.current ? (
         <div className="webchat" style={style}>
-          <ReactWebChat directLine={dir?.current} userID={YOUR_USER_ID} />
+          <ReactWebChat
+            directLine={dir?.current}
+            userID={YOUR_USER_ID}
+            styleOptions={styleOptions}
+          />
         </div>
       ) : (
         <div />
