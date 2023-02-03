@@ -221,7 +221,7 @@ export const AccountNavBar = ({
                 <li
                   className="w-full h-full"
                   key={sectionItem.id}
-                  onClick={() => onRouteChange(sectionItem.link)}
+                  onClick={() => onRouteChange(sectionItem)}
                 >
                   <div
                     className={cx(
@@ -275,7 +275,7 @@ export const AccountNavBar = ({
             {burgerOpen && (
               <HamburgerMenu
                 sectionsList={sectionsList}
-                lang={languageKey}
+                accountMenuList={accountMenuList}
                 closeMenu={() => setBurgerOpen(false)}
                 onRouteChange={onRouteChange}
               />

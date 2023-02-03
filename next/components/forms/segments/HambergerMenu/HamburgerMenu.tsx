@@ -6,25 +6,50 @@ import { useRouter } from 'next/router'
 
 interface IProps {
   sectionsList?: MenuItem[]
+  accountMenuList: MenuItem[]
   className?: string
-  lang?: 'en' | 'sk'
   closeMenu: () => void
   onRouteChange: (selectedItem: MenuItem) => void
 }
 
 const Divider = () => {
-  return <div className="border-b-solid border-b-2 py-4" />
+  return <div className="border-b-solid border-b-2 my-4" />
+}
+
+const Item = ({
+  sectionItem,
+  isSelected,
+  onClick,
+}: {
+  sectionItem: MenuItem
+  isSelected?: boolean
+  onClick: () => void
+}) => {
+  const { t } = useTranslation()
+
+  return (
+    <div
+      onClick={onClick}
+      className={cx(
+        'text-p2-semibold rounded-lg p-4 flex cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:bg-main-100 transition-all',
+        {
+          'text-main-700 bg-main-100': isSelected,
+        },
+      )}
+    >
+      {sectionItem.icon}
+      <span className="ml-3">{t(sectionItem?.title)}</span>
+    </div>
+  )
 }
 
 export const HamburgerMenu = ({
   sectionsList,
+  accountMenuList,
   onRouteChange,
   className,
-  lang,
   closeMenu,
 }: IProps) => {
-  const { t } = useTranslation()
-  console.log(lang)
   const router = useRouter()
 
   return (
@@ -37,25 +62,30 @@ export const HamburgerMenu = ({
       <div className={cx('flex flex-col p-4', className)}>
         {sectionsList && (
           <>
-            {' '}
             {sectionsList.map((sectionItem) => (
-              <div
-                onClick={() => onRouteChange(sectionItem)}
+              <Item
                 key={sectionItem.id}
-                className={cx(
-                  'text-p2-semibold rounded-lg p-4 flex cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:bg-main-100 transition-all',
-                  {
-                    'text-main-700 bg-main-100': router.route.includes(sectionItem?.link),
-                  },
-                )}
-              >
-                {sectionItem.icon}
-                <span className="ml-3">{t(sectionItem?.title)}</span>
-              </div>
+                sectionItem={sectionItem}
+                isSelected={router.route.includes(sectionItem?.link)}
+                onClick={() => {
+                  onRouteChange(sectionItem)
+                  closeMenu()
+                }}
+              />
             ))}
             <Divider />
           </>
         )}
+        {accountMenuList.map((sectionItem) => (
+          <Item
+            key={sectionItem.id}
+            sectionItem={sectionItem}
+            onClick={() => {
+              onRouteChange(sectionItem)
+              closeMenu()
+            }}
+          />
+        ))}
       </div>
     </div>
   )
