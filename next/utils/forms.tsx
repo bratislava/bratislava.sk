@@ -273,6 +273,13 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     }
   }, [stepIndex, steps, stepsLength])
 
+  const changeStepData = (targetIndex: number, value: boolean): void => {
+    const newStepData: StepData[] = stepData.map((step: StepData, index: number) =>
+      index === targetIndex ? { ...step, isFilled: value } : { ...step },
+    )
+    setStepData(newStepData)
+  }
+
   const validate = async (): Promise<boolean> => {
     let isValid = formRef?.current?.validateForm() ?? false
 
@@ -336,6 +343,9 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     if (isFormValid) {
       setUniqueErrors([], stepIndex)
     }
+    if (isFormValid && !isSkipEnabled) {
+      changeStepData(stepIndex, true)
+    }
     if (isFormValid || isSkipEnabled) {
       next()
       disableSkip()
@@ -345,6 +355,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   const handleOnErrors = (newErrors: RJSFValidationError[]) => {
     setUniqueErrors(newErrors, stepIndex)
     if (isSkipEnabled) {
+      changeStepData(stepIndex, false)
       next()
       disableSkip()
     }
