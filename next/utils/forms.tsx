@@ -327,7 +327,22 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   const disableSkip = () => setIsSkipEnabled(false)
 
   const submitStep = () => formRef?.current?.submit()
-  const skipToStep = (newNextStepIndex: number) => setNextStepIndex(newNextStepIndex)
+  const skipToStep = (newNextStepIndex: number) => {
+    // console.log(newNextStepIndex)
+    // if (newNextStepIndex > stepIndex) {
+    //   let nextPossibleStepIndex = stepIndex + 1
+    //   while (nextPossibleStepIndex < newNextStepIndex) {
+    //     console.log(stepData[nextPossibleStepIndex])
+    //     if (!stepData[nextPossibleStepIndex].isFilled) {
+    //       break
+    //     }
+    //     nextPossibleStepIndex += 1
+    //   }
+    //   setNextStepIndex(nextPossibleStepIndex)
+    // } else {
+    setNextStepIndex(newNextStepIndex)
+    // }
+  }
 
   // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
   useEffect(() => {
