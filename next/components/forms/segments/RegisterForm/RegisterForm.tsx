@@ -167,8 +167,8 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_label')}
-            placeholder={t('new_password_placeholder')}
+            label={t('password_label')}
+            placeholder={t('password_placeholder')}
             tooltip={t('password_description')}
             {...field}
             errorMessage={errors.password}
@@ -181,8 +181,8 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_confirmation_label')}
-            placeholder={t('new_password_confirmation_placeholder')}
+            label={t('password_confirmation_label')}
+            placeholder={t('password_confirmation_placeholder')}
             {...field}
             errorMessage={errors.passwordConfirmation}
           />
