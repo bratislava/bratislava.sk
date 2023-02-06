@@ -184,7 +184,6 @@ export const AccountNavBar = ({
                   options={accountMenuList}
                   onChange={onRouteChange}
                   userData={userData}
-                  // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
                 />
               ) : (
                 <>

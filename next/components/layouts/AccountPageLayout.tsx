@@ -7,12 +7,13 @@ import PaymentIcon from '@assets/images/account/payment-icon.svg'
 import ProfileIcon from '@assets/images/account/profile.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
+import useAccount from '@utils/useAccount'
 import cx from 'classnames'
 import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 type AccountPageLayoutBase = {
   className?: string
@@ -65,6 +66,12 @@ const accountMenuList = [
 const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
   const router = useRouter()
+  const { isAuth } = useAccount()
+  useEffect(() => {
+    if (!isAuth) {
+      router.push('/login')
+    }
+  }, [isAuth])
 
   const [t] = useTranslation('common')
 
