@@ -77,14 +77,17 @@ export const HamburgerMenu = ({
           </>
         )}
         {accountMenuList.map((sectionItem) => (
-          <Item
-            key={sectionItem.id}
-            sectionItem={sectionItem}
-            onClick={() => {
-              onRouteChange(sectionItem)
-              closeMenu()
-            }}
-          />
+          <>
+            {sectionItem.link === '/logout' && <Divider />}
+            <Item
+              key={sectionItem.id}
+              sectionItem={sectionItem}
+              onClick={() => {
+                onRouteChange(sectionItem)
+                closeMenu()
+              }}
+            />
+          </>
         ))}
       </div>
     </div>

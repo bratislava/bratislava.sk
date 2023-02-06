@@ -1,8 +1,4 @@
-import CityIcon from '@assets/images/account/city.svg'
-import HelpFilledIcon from '@assets/images/account/help-filled.svg'
-import LogoutIcon from '@assets/images/account/logout.svg'
 import ProfileOutlinedIcon from '@assets/images/account/profile-outlined.svg'
-import ProfileIcon from '@assets/images/account/profile.svg'
 import VolumeIcon from '@assets/images/account/volume.svg'
 import Hamburger from '@assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
@@ -23,6 +19,7 @@ interface IProps extends LanguageSelectProps {
   className?: string
   navHidden?: boolean
   sectionsList?: MenuItem[]
+  accountMenuList: MenuItem[]
 }
 
 interface LanguageSelectProps {
@@ -77,36 +74,10 @@ export interface MenuItem {
   link: string
 }
 
-const accountMenuList: MenuItem[] = [
-  {
-    id: 0,
-    title: 'account:menu_account_link',
-    icon: <CityIcon />,
-    link: '/',
-  },
-  {
-    id: 1,
-    title: 'account:menu_profile_link',
-    icon: <ProfileIcon />,
-    link: '/',
-  },
-  {
-    id: 2,
-    title: 'account:menu_help_link',
-    icon: <HelpFilledIcon />,
-    link: '/',
-  },
-  {
-    id: 3,
-    title: 'account:menu_logout_link',
-    icon: <LogoutIcon />,
-    link: '/logout',
-  },
-]
-
 export const AccountNavBar = ({
   className,
   sectionsList,
+  accountMenuList,
   navHidden,
   ...languageSelectProps
 }: IProps) => {

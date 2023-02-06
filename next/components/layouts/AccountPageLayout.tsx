@@ -1,7 +1,10 @@
 import BusinessIcon from '@assets/images/account/business-icon.svg'
+import HelpFilledIcon from '@assets/images/account/help-filled.svg'
 import HelpIcon from '@assets/images/account/help-icon.svg'
 import HomeIcon from '@assets/images/account/home-icon.svg'
+import LogoutIcon from '@assets/images/account/logout.svg'
 import PaymentIcon from '@assets/images/account/payment-icon.svg'
+import ProfileIcon from '@assets/images/account/profile.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
 import cx from 'classnames'
@@ -38,6 +41,27 @@ const sectionsList = [
   },
 ]
 
+const accountMenuList = [
+  {
+    id: 1,
+    title: 'account:menu_profile_link',
+    icon: <ProfileIcon />,
+    link: '/',
+  },
+  {
+    id: 2,
+    title: 'account:menu_help_link',
+    icon: <HelpFilledIcon />,
+    link: '/',
+  },
+  {
+    id: 3,
+    title: 'account:menu_logout_link',
+    icon: <LogoutIcon />,
+    link: '/logout',
+  },
+]
+
 const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
   const router = useRouter()
@@ -61,6 +85,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
           currentLanguage={locale}
           onLanguageChange={handleLanguageChange}
           sectionsList={sectionsList}
+          accountMenuList={accountMenuList}
           navHidden
           languages={[
             { key: 'sk', title: t('language_short.sk') },
