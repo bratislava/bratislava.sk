@@ -1,7 +1,7 @@
 import { AccordionBase } from '../simple-components/Accordion'
 import { ExplicitOptionalType } from './ExplicitOptional'
 
-export type FormSpacingType = 'large' | 'default' | 'small' | 'none'
+export type FormSpacingType = 'large' | 'default' | 'small' | 'medium' | 'none'
 
 export type WidgetOptions = {
   tooltip?: string
