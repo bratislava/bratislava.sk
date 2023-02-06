@@ -19,7 +19,7 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
     <div
       {...segmentProps}
       ref={ref}
-      className="text-20 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+      className="text-16 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
     >
       <span
         className={cx('w-full text-center uppercase group-focus:text-white', {
@@ -37,7 +37,7 @@ const DateSegmentComponent = ({ segment, state }: DateSegmentBase) => {
 }
 type DateFieldBase = {
   label?: string
-  description?: string
+  helptext?: string
   tooltip?: string
   required?: boolean
   explicitOptional?: ExplicitOptionalType
@@ -53,7 +53,7 @@ const DateField = ({
   children,
   label,
   tooltip,
-  description,
+  helptext,
   isOpen,
   required,
   explicitOptional,
@@ -63,7 +63,7 @@ const DateField = ({
   const { locale } = useLocale()
   const state = useDateFieldState({
     label,
-    description,
+    description: helptext,
     errorMessage,
     isDisabled: disabled,
     isRequired: required,
@@ -77,7 +77,7 @@ const DateField = ({
     state,
     ref,
   )
-  const dateFieldStyle = cx('mt-1 flex rounded-lg bg-white px-4 py-3 border-2', {
+  const dateFieldStyle = cx('flex rounded-lg bg-white px-3 sm:px-4 py-1.5 sm:py-2.5 border-2', {
     'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
     'border-error hover:border-error': errorMessage?.length > 0 && !disabled,
     'bg-gray-100 border-gray-300 pointer-events-none': disabled,
@@ -90,7 +90,7 @@ const DateField = ({
         htmlFor={fieldProps?.id || ''}
         labelProps={labelProps}
         tooltip={tooltip}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}

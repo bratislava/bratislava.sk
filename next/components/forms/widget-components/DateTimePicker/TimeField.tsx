@@ -7,7 +7,7 @@ import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 type TimeFieldBase = {
   label?: string
-  description?: string
+  helptext?: string
   tooltip?: string
   required?: boolean
   explicitOptional?: ExplicitOptionalType
@@ -26,7 +26,7 @@ type TimeFieldBase = {
 
 const TimeField = ({
   label,
-  description,
+  helptext,
   tooltip,
   required,
   explicitOptional,
@@ -52,7 +52,7 @@ const TimeField = ({
   const { labelProps, inputProps, descriptionProps } = useTextField(
     {
       label,
-      description,
+      description: helptext,
       placeholder: 'HH:MM',
       isRequired: required,
       isDisabled: disabled,
@@ -72,7 +72,7 @@ const TimeField = ({
     ref as RefObject<HTMLInputElement>,
   )
   const timeFieldStyle = cx(
-    'text-20 w-full max-w-xs flex rounded-lg bg-white border-2 pl-4 py-2.5 pr-12 leading-8 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
+    'sm:text-16 leading-5 sm:leading-6 w-full max-w-xs flex rounded-lg bg-white border-2 px-3 sm:px-4 py-2 sm:py-2.5 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
     {
       'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
       'border-error focus:border-error focus-visible:outline-none hover:border-error':
@@ -89,7 +89,7 @@ const TimeField = ({
         htmlFor={inputProps.id}
         labelProps={labelProps}
         tooltip={tooltip}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}
@@ -102,7 +102,7 @@ const TimeField = ({
           ref={ref}
           name={inputProps.id}
         />
-        <div className="absolute right-4 top-2/4 flex -translate-y-2/4 items-center">
+        <div className="absolute right-3 sm:right-4 top-2/4 flex -translate-y-2/4 items-center">
           {children}
         </div>
       </div>

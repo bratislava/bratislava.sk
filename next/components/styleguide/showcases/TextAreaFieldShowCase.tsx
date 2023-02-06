@@ -25,7 +25,7 @@ const TextAreaFieldShowCase = () => {
           label="Label"
           placeholder="Placeholder"
           errorMessage={['Error message']}
-          description="Help text"
+          helptext="Help text"
           disabled
         />
       </Stack>
@@ -43,7 +43,7 @@ const TextAreaFieldShowCase = () => {
           required
           tooltip="InputField"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           errorMessage={['Error message']}
           disabled
         />

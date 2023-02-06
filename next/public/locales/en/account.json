@@ -79,7 +79,6 @@
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
   "UserNotConfirmedException": "User is not confirmed.",
   "UsernameExistsException": "An account with the given email already exists.",
-  "ExpiredCodeException": "Invalid code provided, please request a code again.",
   "IncorectPasswordException": "Incorrect password.",
   "account_section_intro": "Intro",
   "account_section_services": "Municipal services",
@@ -91,5 +90,49 @@
   "menu_help_link": "Help",
   "menu_logout_link": "Log out",
   "menu_login_link": "Login",
-  "menu_register_link": "Register"
+  "menu_register_link": "Register",
+  "ExpiredCodeException": "Invalid code provided, please request a code again.",
+  "my_profile": "My profile",
+  "consents": {
+    "title": "Consents",
+    "text": "Manage granted consents",
+    "personal_data": {
+      "title": "Consent to the processing of personal data",
+      "text": "I agree for the city to work with the data I filled out"
+    },
+    "receive_information": {
+      "title": "I am interested in receiving information about other digital services of the city of Bratislava",
+      "text": "I want to subscribe to news and marketing notifications"
+    }
+  },
+  "password_change": {
+    "title": "Password",
+    "text": "Change your login password",
+    "button": "Change password"
+  },
+  "profile_detail": {
+    "title": "Personal data",
+    "text": "Manage your personal data",
+    "start_edit_button": "Edit",
+    "save_edit_button": "Save changes",
+    "stop_edit_button": "Remove changes",
+    "titles_before_name": "Titles before name",
+    "titles_after_name": "Titles after name",
+    "full_name": "Given name and family name",
+    "given_name": "Given name",
+    "family_name": "Family name",
+    "email": "E-mail",
+    "email_button": "Edit",
+    "email_tooltip": "You can edit your email, when you write us on support.",
+    "phone_number": "Phone number (with pattern +421...)",
+    "address": "Correspondence address",
+    "street": "Street and number",
+    "city": "City",
+    "postal_code": "Postal code",
+    "success_alert": "Changes have been saved",
+    "error_alert": "Changes could not be saved",
+    "modal_title": "Change e-mail",
+    "modal_message": "If you would like to change the e-mail you use to log in to your account and to which we send you all information regarding your account, please contact us at support@bratislava.sk.",
+    "modal_thanks": "Thank you!"
+  }
 }

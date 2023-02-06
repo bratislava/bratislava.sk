@@ -101,7 +101,7 @@ const SelectFieldShowCase = () => {
         />
         <SelectField
           label="Select Field"
-          description="This is simple description"
+          helptext="This is simple description"
           type="one"
           onChange={(value) => console.log(value)}
         />

@@ -10,29 +10,39 @@ interface FieldHeaderProps {
   htmlFor?: string
   required?: boolean
   explicitOptional?: ExplicitOptionalType
-  description?: string
+  helptext?: string
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
   tooltip?: string
 }
 
-const FieldHeader: FC<FieldHeaderProps> = ({
-  label,
-  htmlFor,
-  required,
-  explicitOptional = 'none',
-  description,
-  labelProps,
-  descriptionProps,
-  tooltip,
-}) => {
+const FieldHeader = (props: FieldHeaderProps) => {
+  const {
+    label,
+    htmlFor,
+    required,
+    explicitOptional = 'none',
+    helptext = '',
+    labelProps,
+    descriptionProps,
+    tooltip,
+  } = props
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
-  const labelStyle = cx('text-20-semibold leading-7 relative text-gray-800', {
-    'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
-      required,
-  })
+  const labelStyle = cx(
+    'text-p3-semibold sm:text-16-semibold leading-5 sm:leading-6 relative text-gray-800',
+    {
+      'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+        required,
+    },
+  )
+
+  const helptextHandler = () =>
+    helptext
+      .trim()
+      .split('\n')
+      .map((sentence, i) => <span key={i}>{sentence}</span>)
 
   return (
     <div className="w-full">
@@ -58,7 +68,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
                   })}
                 >
                   <HelpIcon
-                    className="cursor-pointer"
+                    className="cursor-pointer w-5 h-5 sm:w-6 sm:h-6"
                     onMouseOver={() => setIsTooltipOpened(true)}
                     onMouseLeave={() => setIsTooltipOpened(false)}
                   />
@@ -80,15 +90,18 @@ const FieldHeader: FC<FieldHeaderProps> = ({
         </div>
         {
           /* OPTIONAL */ !required && explicitOptional === 'right' && (
-            <p className="text-16 ml-2 flex items-center">(optional)</p>
+            <p className="text-16 leading-5 sm:leading-6 ml-2 flex items-center">(optional)</p>
           )
         }
       </div>
       {
         /* DESCRIPTION */
-        description && (
-          <div {...descriptionProps} className="text-16 mb-1 text-gray-700">
-            {description}
+        helptext && (
+          <div
+            {...descriptionProps}
+            className="text-p3 sm:text-16 leading-5 sm:leading-6 mb-1 text-gray-700"
+          >
+            {helptextHandler()}
           </div>
         )
       }

@@ -25,7 +25,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   const {
     size,
     accept,
-    description,
+    helptext,
     type = 'button',
     className,
     accordion,
@@ -104,7 +104,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         multiple={multiple}
         value={innerValue}
         className={className}
-        description={description}
+        helptext={helptext}
         sizeLimit={size}
         supportedFormats={supportedFormats}
         disabled={disabled}
