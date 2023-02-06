@@ -39,11 +39,11 @@ const useComponentVisible = (
   setIsSelectClicked: (value: boolean) => void,
 ) => {
   const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible)
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (ref.current && !ref.current.contains(event.target as HTMLDivElement)) {
         setIsComponentVisible(false)
         setIsSelectClicked(false)
       } else {

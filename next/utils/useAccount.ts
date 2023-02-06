@@ -54,7 +54,7 @@ const poolData = {
 const userPool = new CognitoUserPool(poolData)
 
 export default function useAccount(initStatus = AccountStatus.Idle) {
-  const [user, setUser] = useState<CognitoUser | null>(null)
+  const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AWSError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
@@ -175,6 +175,8 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           setUser(cognitoUser)
         })
       })
+    } else {
+      setUser(null)
     }
   }, [])
 
