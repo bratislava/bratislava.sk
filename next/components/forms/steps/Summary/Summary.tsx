@@ -94,7 +94,9 @@ const Summary = ({ schema, formData, formErrors, extraErrors, onGoToStep }: Summ
   return (
     <div className="my-10">
       {transformedSteps.map((step: TransformedFormStep, key: number) => {
-        return step.data.length > 0 ? <SummaryStep key={key} step={step} /> : null
+        return step.data.length > 0 ? (
+          <SummaryStep key={key} step={step} onGoToStep={() => onGoToStep(key)} />
+        ) : null
       })}
     </div>
   )

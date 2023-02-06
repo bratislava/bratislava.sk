@@ -274,6 +274,8 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     }
   }, [stepIndex, steps, stepsLength])
 
+  useEffect(() => window.scrollTo(0, 0), [stepIndex])
+
   const changeStepData = (targetIndex: number, value: boolean): void => {
     const newStepData: StepData[] = stepData.map((step: StepData, index: number) =>
       index === targetIndex ? { ...step, isFilled: value } : { ...step },
