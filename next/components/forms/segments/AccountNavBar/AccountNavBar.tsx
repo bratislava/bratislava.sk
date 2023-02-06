@@ -280,17 +280,17 @@ export const AccountNavBar = ({
   )
 }
 
-const Avatar = ({ userData }: { userData?: UserData }) => {
+const Avatar = ({ userData }: { userData?: UserData | null }) => {
   return (
     <div className="flex relative flex-row items-start gap-2 rounded-full p-2 bg-main-100">
       <div className="flex h-6 w-6 items-center justify-center font-semibold text-main-700">
-        {userData ? (
-          <span className="uppercase">{userData.given_name[0] + userData.family_name[0]}</span>
-        ) : (
-          <span>
+        <span className="uppercase">
+          {userData && userData.given_name && userData.family_name ? (
+            userData.given_name[0] + userData.family_name[0]
+          ) : (
             <ProfileOutlinedIcon />
-          </span>
-        )}
+          )}
+        </span>
       </div>
     </div>
   )
@@ -299,7 +299,7 @@ const Avatar = ({ userData }: { userData?: UserData }) => {
 interface AccountSelectProps {
   options: MenuItem[]
   onChange: (selectedItem: MenuItem) => void
-  userData: UserData
+  userData: UserData | null
 }
 
 const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
@@ -326,7 +326,7 @@ const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
     <div className="relative flex cursor-pointer items-center" ref={ref} onClick={handleClick}>
       <Avatar userData={userData} />
       <div className="ml-3 font-light lg:font-semibold">
-        {userData.given_name || userData.family_name}
+        {userData?.given_name || userData?.family_name}
       </div>
       <ChevronDownSmall
         className={`ml-3 hidden mix-blend-normal lg:flex ${
