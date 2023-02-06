@@ -17,7 +17,7 @@ import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
 
 // error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
-const DynamicChat = dynamic(() => import('./chat'), {
+const DynamicChat = dynamic(() => import('../components/molecules/chat'), {
   ssr: false,
 })
 
