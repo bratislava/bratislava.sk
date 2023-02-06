@@ -5,6 +5,7 @@
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import FormRJSF from '@bratislava/ui-bratislava/FormRJSF'
 import { FormValidation, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
@@ -20,6 +21,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import StepperView from '../../components/forms/steps/StepperView'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 
@@ -80,7 +82,6 @@ const FormTestPage = ({
   page,
   eform,
 }: AsyncServerProps<typeof getServerSideProps>) => {
-  const [t] = useTranslation('forms')
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
@@ -89,9 +90,6 @@ const FormTestPage = ({
   // eslint-disable-next-line unicorn/prefer-regexp-test
   const escapedSlug = formSlug.match(/^[\da-z-]+$/) ? formSlug : ''
   const pageSlug = `form/${escapedSlug}`
-
-  // initDefaultSchemaFields(eform.schema)
-  const form = useFormStepper(escapedSlug, eform.schema)
 
   return (
     <PageWrapper
@@ -117,52 +115,7 @@ const FormTestPage = ({
         >
           TODO form info
         </PageHeader>
-        <SectionContainer className="pt-14 md:pt-18">
-          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf,
-              otherwise displays summary with all data and submit button
-            */}
-          {form.isComplete ? (
-            <FinalStep
-              formData={form.formData}
-              formErrors={form.errors}
-              extraErrors={form.extraErrors}
-              slug={formSlug}
-              schema={eform.schema}
-              onGoToStep={(step: number) => form.setStepIndex(step)}
-              onGoToPreviousStep={() => form.previous()}
-            />
-          ) : (
-            <div>
-              <ThemedForm
-                key={`form-${escapedSlug}-step-${form.stepIndex}`}
-                ref={form.formRef}
-                schema={form.currentSchema}
-                uiSchema={eform.uiSchema}
-                formData={form.formData}
-                validator={form.validator}
-                customValidate={(formData: RJSFSchema, errors: FormValidation) => {
-                  return form.customValidate(formData, errors, form.currentSchema)
-                }}
-                onSubmit={(e) => {
-                  form.handleOnSubmit(e.formData)
-                }}
-                onChange={(e) => {
-                  form.setStepFormData(e.formData)
-                }}
-                onError={form.handleOnErrors}
-                extraErrors={form.extraErrors}
-                showErrorList={false}
-                omitExtraData
-                liveOmit
-              />
-              {form.stepIndex !== 0 && (
-                <Button onPress={form.previous} text={t('buttons.previous')} />
-              )}
-              <Button onPress={form.skipStep} text={t('buttons.skip')} />
-              <Button onPress={form.submitStep} text={t('buttons.continue')} />
-            </div>
-          )}
-        </SectionContainer>
+        <FormRJSF eform={eform} escapedSlug={escapedSlug} formSlug={formSlug} />
       </BasePageLayout>
     </PageWrapper>
   )
