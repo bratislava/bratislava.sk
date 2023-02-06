@@ -1,3 +1,5 @@
+import LeftIcon from '@assets/images/chevron-left.svg'
+import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import { EFormValue } from '@backend/forms'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import { FormValidation, RJSFSchema } from '@rjsf/utils'
@@ -15,7 +17,7 @@ interface FormRJSF {
   formSlug: string
 }
 
-const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
+const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const [t] = useTranslation('forms')
   const form = useFormStepper(escapedSlug, eform.schema)
 
@@ -63,11 +65,28 @@ const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
               omitExtraData
               liveOmit
             />
-            {form.stepIndex !== 0 && (
-              <Button onPress={form.previous} text={t('buttons.previous')} />
-            )}
-            <Button onPress={() => form.skipToStep(form.stepIndex + 1)} text={t('buttons.skip')} />
-            <Button onPress={form.submitStep} text={t('buttons.continue')} />
+            <div className="flex flex-row gap-5">
+              <div className="grow">
+                {form.stepIndex !== 0 && (
+                  <Button
+                    variant="plain-black"
+                    onPress={form.previous}
+                    text={t('buttons.previous')}
+                    startIcon={<LeftIcon />}
+                  />
+                )}
+              </div>
+              <Button
+                variant="black-outline"
+                onPress={() => form.skipToStep(form.stepIndex + 1)}
+                text={t('buttons.skip')}
+              />
+              <Button
+                onPress={form.submitStep}
+                text={t('buttons.continue')}
+                endIcon={<ArrowRightIcon />}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -75,5 +94,4 @@ const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   )
 }
 
-export default FormRJSF
-7
+export default GeneratedFormRJSF

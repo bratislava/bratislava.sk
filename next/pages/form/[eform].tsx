@@ -5,7 +5,7 @@
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import FormRJSF from '@bratislava/ui-bratislava/FormRJSF/FormRJSF'
+import GeneratedFormRJSF from '@bratislava/ui-bratislava/FormRJSF/GeneratedFormRJSF'
 import { FormValidation, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
@@ -115,7 +115,7 @@ const FormTestPage = ({
         >
           TODO form info
         </PageHeader>
-        <FormRJSF eform={eform} escapedSlug={escapedSlug} formSlug={formSlug} />
+        <GeneratedFormRJSF eform={eform} escapedSlug={escapedSlug} formSlug={formSlug} />
       </BasePageLayout>
     </PageWrapper>
   )
