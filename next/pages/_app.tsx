@@ -11,6 +11,7 @@ import { NextAdapter } from 'next-query-params'
 import React from 'react'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
+import { useIsClient } from 'usehooks-ts'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
@@ -20,6 +21,8 @@ const DynamicChat = dynamic(() => import('./chat'), {
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const isClient = useIsClient()
+
   return (
     <>
       <Head>
@@ -57,7 +60,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <QueryParamProvider adapter={NextAdapter}>
           <SSRProvider>
             <Component {...pageProps} />
-            <DynamicChat />
+
+            {isClient && <DynamicChat />}
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>
