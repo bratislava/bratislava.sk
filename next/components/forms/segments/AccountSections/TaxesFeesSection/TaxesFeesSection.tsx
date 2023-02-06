@@ -47,7 +47,7 @@ const cards: TaxesCardBase[] = [
 ]
 
 const TaxesFeesSection = () => {
-  const [isOn, setIsOn] = useState<'default' | 'waiting' | 'error'>('waiting')
+  const [isOn, setIsOn] = useState<'default' | 'waiting' | 'error'>('default')
   const { t } = useTranslation('account')
 
   // Temporary switcher for presentation
@@ -68,7 +68,7 @@ const TaxesFeesSection = () => {
     ]
 
     return (
-      <div className="flex flex-col w-full max-w-screen-1.5lg m-auto mt-8">
+      <div className="flex flex-col w-full max-w-screen-1.5lg m-auto mt-8 px-4 lg:px-0">
         <span className="text-p2-semibold mb-2">Temporary switcher</span>
         <div className="flex">
           {array.map((item) => (
