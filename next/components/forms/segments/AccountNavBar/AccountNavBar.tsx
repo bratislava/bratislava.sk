@@ -1,4 +1,3 @@
-import { ArrowLeft } from '@assets/images'
 import CityIcon from '@assets/images/account/city.svg'
 import HelpFilledIcon from '@assets/images/account/help-filled.svg'
 import LogoutIcon from '@assets/images/account/logout.svg'
@@ -69,12 +68,6 @@ const useComponentVisible = (
 
 const Divider = ({ className }: { className?: string }) => {
   return <div className={`border-b-solid border-r-2 h-6 ${className}`} />
-}
-
-const BackButton = () => {
-  const router = useRouter()
-
-  return <ArrowLeft className="cursor-pointer mx-1" onClick={() => router.back()} />
 }
 
 export interface MenuItem {
@@ -149,8 +142,6 @@ export const AccountNavBar = ({
         )}
       >
         <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
-          {/* <BackButton />
-          <Divider /> */}
           <Brand
             className="group grow"
             url="/"
@@ -275,8 +266,6 @@ export const AccountNavBar = ({
           'lg:hidden fixed top-0 w-full bg-white z-50 gap-x-6',
         )}
       >
-        {/* <BackButton />
-        <Divider /> */}
         <Brand url="/" className="grow" />
         {!navHidden && (
           <div className={cx('flex items-center gap-x-5')}>
