@@ -5,7 +5,7 @@ import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/
 
 type TimeFromBase = {
   TimeFromLabel: TimePickerBase['label']
-  TimeFromDescription?: TimePickerBase['description']
+  TimeFromDescription?: TimePickerBase['helptext']
   TimeFromTooltip?: TimePickerBase['tooltip']
   TimeFromRequired?: TimePickerBase['required']
   TimeFromExplicitOptional?: TimePickerBase['explicitOptional']
@@ -16,7 +16,7 @@ type TimeFromBase = {
 }
 type TimeToBase = {
   TimeToLabel: TimePickerBase['label']
-  TimeToDescription?: TimePickerBase['description']
+  TimeToDescription?: TimePickerBase['helptext']
   TimeToTooltip?: TimePickerBase['tooltip']
   TimeToRequired?: TimePickerBase['required']
   TimeToExplicitOptional?: TimePickerBase['explicitOptional']
@@ -53,7 +53,7 @@ export const TimeFromTo = ({
           <TimePicker
             label={TimeFromLabel}
             errorMessage={TimeFromErrorMessage}
-            description={TimeFromDescription}
+            helptext={TimeFromDescription}
             tooltip={TimeFromTooltip}
             required={TimeFromRequired}
             explicitOptional={TimeFromExplicitOptional}
@@ -72,7 +72,7 @@ export const TimeFromTo = ({
         <div className={cx('w-[320px] flex flex-col')}>
           <TimePicker
             label={TimeToLabel}
-            description={TimeToDescription}
+            helptext={TimeToDescription}
             errorMessage={TimeToErrorMessage}
             tooltip={TimeToTooltip}
             required={TimeToRequired}

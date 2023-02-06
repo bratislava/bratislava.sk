@@ -5,8 +5,8 @@ import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
 interface Data {
@@ -68,7 +68,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
             required
             label={t('rc_label')}
             placeholder={t('rc_placeholder')}
-            description={t('rc_description')}
+            helptext={t('rc_description')}
             tooltip={t('rc_tooltip')}
             {...field}
             errorMessage={errors.rc}
@@ -83,7 +83,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
             required
             label={t('id_card_label')}
             placeholder={t('id_card_placeholder')}
-            description={t('id_card_description')}
+            helptext={t('id_card_description')}
             tooltip={t('id_card_tooltip')}
             {...field}
             errorMessage={errors.idCard}

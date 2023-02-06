@@ -32,7 +32,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
   }: TextAreaFieldWidgetRJSFProps = props
 
   const {
-    description,
+    helptext,
     tooltip,
     accordion,
     explicitOptional,
@@ -62,7 +62,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
         placeholder={placeholder}
         required={required}
         disabled={disabled}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         className={cx('h-[196px]', className)}
         explicitOptional={explicitOptional}

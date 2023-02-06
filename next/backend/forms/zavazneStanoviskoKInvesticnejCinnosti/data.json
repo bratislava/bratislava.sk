@@ -5,8 +5,10 @@
     "ziadatelIco": -2736,
     "ziadatelMiestoPodnikania": "string",
     "ziadatelAdresaSidla": "string",
-    "ziadatelMesto": "mesto",
-    "ziadatelPsc": "string",
+    "ziadatelMestoPsc": {
+      "ziadatelMesto": "mesto",
+      "ziadatelPsc": "string"
+    },
     "ziadatelKontaktnaOsoba": "test",
     "ziadatelEmail": "ziadatel@test.sk",
     "ziadatelTelefon": "+449"
@@ -19,7 +21,10 @@
     "investorTyp": "Právnicka osoba",
     "investorMenoPriezvisko": "Janko Hrasko",
     "investorMiestoPodnikania": "string",
-    "investorMesto": "mesto",
+    "investorMestoPsc": {
+      "investorMesto": "mesto",
+      "investorPsc": "string"
+    },
     "investorEmail": "investor@test.sk",
     "investorTelefon": "+4"
   },

@@ -34,7 +34,7 @@ const Button = ({ children, className, ...rest }: ButtonBase) => {
 
 export type DatePickerBase = {
   label?: string
-  description?: string
+  helptext?: string
   tooltip?: string
   required?: boolean
   explicitOptional?: ExplicitOptionalType
@@ -57,7 +57,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
       required,
       explicitOptional,
       tooltip,
-      description,
+      helptext,
       value = '',
       minValue,
       maxValue,
@@ -136,7 +136,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
             <DateField
               {...fieldProps}
               label={label}
-              description={description}
+              helptext={helptext}
               required={required}
               explicitOptional={explicitOptional}
               disabled={disabled}

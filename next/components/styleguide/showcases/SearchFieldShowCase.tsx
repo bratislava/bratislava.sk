@@ -23,21 +23,21 @@ const SearchFieldShowCase = () => {
         <SearchField
           label="Label"
           required
-          description="Help text"
+          helptext="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
           resetIcon
         />
         <SearchField
           label="Label"
-          description="Help text"
+          helptext="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
           value="Value"
         />
         <SearchField
           label="Label"
-          description="Help text"
+          helptext="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
           errorMessage={['Error message']}
@@ -45,7 +45,7 @@ const SearchFieldShowCase = () => {
         <SearchField
           label="Label"
           required
-          description="Help text"
+          helptext="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
           errorMessage={['Error message']}
