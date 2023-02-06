@@ -61,6 +61,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
           currentLanguage={locale}
           onLanguageChange={handleLanguageChange}
           sectionsList={sectionsList}
+          navHidden
           languages={[
             { key: 'sk', title: t('language_short.sk') },
             { key: 'en', title: t('language_short.en') },

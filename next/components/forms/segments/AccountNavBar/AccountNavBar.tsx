@@ -2,7 +2,9 @@ import { ArrowLeft } from '@assets/images'
 import CityIcon from '@assets/images/account/city.svg'
 import HelpFilledIcon from '@assets/images/account/help-filled.svg'
 import LogoutIcon from '@assets/images/account/logout.svg'
+import ProfileOutlinedIcon from '@assets/images/account/profile-outlined.svg'
 import ProfileIcon from '@assets/images/account/profile.svg'
+import VolumeIcon from '@assets/images/account/volume.svg'
 import Hamburger from '@assets/images/ba-hamburger.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
@@ -20,7 +22,7 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
 interface IProps extends LanguageSelectProps {
   className?: string
-  menuHidden?: boolean
+  navHidden?: boolean
   sectionsList?: MenuItem[]
 }
 
@@ -65,8 +67,8 @@ const useComponentVisible = (
   return { ref, isComponentVisible, setIsComponentVisible }
 }
 
-const Divider = () => {
-  return <div className="border-b-solid border-r-2 h-6" />
+const Divider = ({ className }: { className?: string }) => {
+  return <div className={`border-b-solid border-r-2 h-6 ${className}`} />
 }
 
 const BackButton = () => {
@@ -112,7 +114,7 @@ const accountMenuList: MenuItem[] = [
 export const AccountNavBar = ({
   className,
   sectionsList,
-  menuHidden,
+  navHidden,
   ...languageSelectProps
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
@@ -160,59 +162,83 @@ export const AccountNavBar = ({
               </p>
             }
           />
-          {!menuHidden && (
-            <nav className="text-font/75 flex gap-x-8 font-semibold">
-              <div className="text-font/75 flex items-center gap-x-6 font-semibold">
-                <Link href="/" variant="plain" className={linkClassName}>
-                  {t('account:menu_contacts_link')}
-                </Link>
-                {isAuth ? (
-                  <>
-                    <Divider />
-                    <AccountSelect
-                      options={accountMenuList}
-                      onChange={onRouteChange}
-                      userData={userData}
-                      // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
+          <nav className="text-font/75 flex gap-x-8 font-semibold">
+            <div className="text-font/75 flex items-center gap-x-6 font-semibold">
+              {!navHidden ? (
+                <>
+                  <Link href="/" variant="plain">
+                    <VolumeIcon />
+                  </Link>
+                  <Divider className="mx-2" />
+                  <Link href="/" variant="plain" className={linkClassName}>
+                    {t('account:menu_contacts_link')}
+                  </Link>
+                  {isAuth ? (
+                    <>
+                      <Divider />
+                      <AccountSelect
+                        options={accountMenuList}
+                        onChange={onRouteChange}
+                        userData={userData}
+                      />
+                      <Divider />
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/" variant="plain" className={linkClassName}>
+                        {t('account:menu_account_link')}
+                      </Link>
+                      <Divider />
+                      <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
+                        {t('account:menu_login_link')}
+                      </Link>
+                      <Button
+                        onPress={() => router.push('/register')}
+                        variant="negative"
+                        text={t('account:menu_register_link')}
+                        size="sm"
+                      />
+                    </>
+                  )}
+
+                  <Link href={t('searchLink')} variant="plain">
+                    <SearchIcon />
+                  </Link>
+
+                  {/* This UILink set here just to prefetch EN version of page, this link is hidden */}
+                  <UILink href="/en" className="hidden">
+                    hidden
+                  </UILink>
+
+                  <div className="text-font/75 relative flex items-center bg-transparent">
+                    <LanguageSelect
+                      className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
+                      {...languageSelectProps}
                     />
-                    <Divider />
-                  </>
-                ) : (
-                  <>
-                    <Link href="/" variant="plain" className={linkClassName}>
-                      {t('account:menu_account_link')}
-                    </Link>
-                    <Divider />
-                    <Link href="/login" variant="plain" className={linkClassName}>
-                      {t('account:menu_login_link')}
-                    </Link>
-                    <Button
-                      onPress={() => router.push('/register')}
-                      variant="negative"
-                      text={t('account:menu_register_link')}
-                      size="sm"
-                    />
-                  </>
-                )}
-
-                <Link href={t('searchLink')} variant="plain">
-                  <SearchIcon />
-                </Link>
-
-                {/* This UILink set here just to prefetch EN version of page, this link is hidden */}
-                <UILink href="/en" className="hidden">
-                  hidden
-                </UILink>
-
-                <div className="text-font/75 relative flex items-center bg-transparent">
-                  <LanguageSelect
-                    className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
-                    {...languageSelectProps}
+                  </div>
+                </>
+              ) : isAuth ? (
+                <AccountSelect
+                  options={accountMenuList}
+                  onChange={onRouteChange}
+                  userData={userData}
+                  // className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
+                />
+              ) : (
+                <>
+                  <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
+                    {t('account:menu_login_link')}
+                  </Link>
+                  <Button
+                    onPress={() => router.push('/register')}
+                    variant="negative"
+                    text={t('account:menu_register_link')}
+                    size="sm"
                   />
-                </div>
-              </div>
-            </nav>
-          )}
+                </>
+              )}
+            </div>
+          </nav>
         </div>
         {isAuth && sectionsList && (
           <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
@@ -252,46 +278,59 @@ export const AccountNavBar = ({
         {/* <BackButton />
         <Divider /> */}
         <Brand url="/" className="grow" />
-        {!menuHidden && (
-          <>
-            <div className={cx('flex items-center gap-x-5')}>
-              <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
-                <Link href={t('searchLink')} variant="plain" className="p-4">
-                  <SearchIcon />
-                </Link>
-                <LanguageSelect
-                  className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
-                  {...languageSelectProps}
-                />
-              </div>
-            </div>
-
-            <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 px-4 py-5">
-              <div className="flex w-6 items-center justify-center">
-                {burgerOpen ? <HamburgerClose /> : <Hamburger />}
-              </div>
-            </button>
-
-            {burgerOpen && (
-              <HamburgerMenu
-                sectionsList={sectionsList}
-                accountMenuList={accountMenuList}
-                closeMenu={() => setBurgerOpen(false)}
-                onRouteChange={onRouteChange}
+        {!navHidden && (
+          <div className={cx('flex items-center gap-x-5')}>
+            <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
+              <Link href={t('searchLink')} variant="plain" className="p-4">
+                <SearchIcon />
+              </Link>
+              <LanguageSelect
+                className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
+                {...languageSelectProps}
               />
+            </div>
+          </div>
+        )}
+
+        <button
+          onClick={() => (isAuth ? setBurgerOpen(!burgerOpen) : router.push('/login'))}
+          className="-mr-4 px-4 py-5"
+        >
+          <div className="flex w-6 items-center justify-center">
+            {burgerOpen ? (
+              <HamburgerClose />
+            ) : isAuth && sectionsList ? (
+              <Hamburger />
+            ) : (
+              <Avatar userData={userData} />
             )}
-          </>
+          </div>
+        </button>
+
+        {burgerOpen && (
+          <HamburgerMenu
+            sectionsList={sectionsList}
+            accountMenuList={accountMenuList}
+            closeMenu={() => setBurgerOpen(false)}
+            onRouteChange={onRouteChange}
+          />
         )}
       </div>
     </>
   )
 }
 
-const Avatar = ({ children }: { children: React.ReactNode }) => {
+const Avatar = ({ userData }: { userData?: UserData }) => {
   return (
-    <div className="flex relative flex-row items-start gap-2 rounded-full p-3 bg-main-100">
+    <div className="flex relative flex-row items-start gap-2 rounded-full p-2 bg-main-100">
       <div className="flex h-6 w-6 items-center justify-center font-semibold text-main-700">
-        {children}
+        {userData ? (
+          <span className="uppercase">{userData.given_name[0] + userData.family_name[0]}</span>
+        ) : (
+          <span>
+            <ProfileOutlinedIcon />
+          </span>
+        )}
       </div>
     </div>
   )
@@ -325,9 +364,7 @@ const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
 
   return (
     <div className="relative flex cursor-pointer items-center" ref={ref} onClick={handleClick}>
-      <Avatar>
-        <span className="uppercase">{userData.given_name[0] + userData.family_name[0]}</span>
-      </Avatar>
+      <Avatar userData={userData} />
       <div className="ml-3 font-light lg:font-semibold">
         {userData.given_name || userData.family_name}
       </div>
