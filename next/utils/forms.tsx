@@ -246,7 +246,8 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   // this is probably a bug in their typing therefore the cast
   const formRef = useRef<Form>() as RefObject<Form>
 
-  const [stepIndex, setStepIndex] = useState(0)
+  const [nextStepIndex, setNextStepIndex] = useState<number>(0)
+  const [stepIndex, setStepIndex] = useState<number>(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
   const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
@@ -318,18 +319,24 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => setStepIndex(stepIndex + 1)
+  const jumpToStep = () => setStepIndex(nextStepIndex)
 
   const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
   const disableSkip = () => setIsSkipEnabled(false)
 
   const submitStep = () => formRef?.current?.submit()
-  const skipStep = () => setIsSkipEnabled(true)
+  const skipToStep = (newNextStepIndex: number) => setNextStepIndex(newNextStepIndex)
 
+  // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
   useEffect(() => {
     if (isSkipEnabled) {
       submitStep()
     }
   }, [isSkipEnabled])
+
+  // this is needed for skipping multiple steps through StepperView
+  // TODO: could be reduced by wrapping nextStepIndex and isSkipEnabled to 1 object
+  useEffect(() => setIsSkipEnabled(true), [nextStepIndex])
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
     // transformNullToUndefined(stepFormData)
@@ -356,7 +363,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     setUniqueErrors(newErrors, stepIndex)
     if (isSkipEnabled) {
       changeStepData(stepIndex, false)
-      next()
+      jumpToStep()
       disableSkip()
     }
   }
@@ -374,7 +381,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     previous,
     next,
     submitStep,
-    skipStep,
+    skipToStep,
     isSkipEnabled,
     disableSkip,
     increaseStepErrors,

@@ -33,7 +33,13 @@ const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
         />
       ) : (
         <div className="flex flex-row">
-          <StepperView steps={form.stepData} currentStep={form.stepIndex} />
+          <StepperView
+            steps={form.stepData}
+            currentStep={form.stepIndex}
+            // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
+            // if not wanted because of broken validation when skipping multiple steps, comment it out
+            onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+          />
           <div>
             <ThemedForm
               key={`form-${escapedSlug}-step-${form.stepIndex}`}
@@ -60,7 +66,7 @@ const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
             {form.stepIndex !== 0 && (
               <Button onPress={form.previous} text={t('buttons.previous')} />
             )}
-            <Button onPress={form.skipStep} text={t('buttons.skip')} />
+            <Button onPress={() => form.skipToStep(form.stepIndex + 1)} text={t('buttons.skip')} />
             <Button onPress={form.submitStep} text={t('buttons.continue')} />
           </div>
         </div>
@@ -70,3 +76,4 @@ const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
 }
 
 export default FormRJSF
+7
