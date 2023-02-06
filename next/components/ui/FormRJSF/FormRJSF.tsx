@@ -4,10 +4,10 @@ import { FormValidation, RJSFSchema } from '@rjsf/utils'
 import { useFormStepper } from '@utils/forms'
 import { useTranslation } from 'next-i18next'
 
-import Button from '../forms/simple-components/Button'
-import FinalStep from '../forms/steps/FinalStep'
-import StepperView from '../forms/steps/StepperView'
-import { ThemedForm } from '../forms/ThemedForm'
+import Button from '../../forms/simple-components/Button'
+import FinalStep from '../../forms/steps/FinalStep'
+import StepperView from '../../forms/steps/StepperView'
+import { ThemedForm } from '../../forms/ThemedForm'
 
 interface FormRJSF {
   eform: EFormValue
@@ -33,7 +33,7 @@ const FormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
         />
       ) : (
         <div className="flex flex-row">
-          {/* <StepperView steps={} currentStep={} /> */}
+          <StepperView steps={form.stepData} currentStep={form.stepIndex} />
           <div>
             <ThemedForm
               key={`form-${escapedSlug}-step-${form.stepIndex}`}

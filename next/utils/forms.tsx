@@ -10,11 +10,12 @@ import {
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { validateKeyword } from '@utils/api'
 import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 import { forEach, get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { ThemedForm } from '../components/forms/ThemedForm'
+import { StepData } from '../components/forms/types/TransformedFormData'
 
 export type JsonSchema = JSONSchema7Definition
 interface JsonSchemaProperties {
@@ -216,6 +217,26 @@ const validator = customizeValidator({
   ajvOptionsOverrides: { keywords: ajvKeywords },
 })
 
+const getStepData = (schema: RJSFSchema): StepData[] => {
+  if (!schema || !schema.allOf) return []
+  return schema.allOf
+    .map((step) => {
+      if (typeof step === 'boolean') return null
+      const transformedStep: JSONSchema7 = step
+      if (!transformedStep.properties || Object.values(transformedStep.properties).length === 0)
+        return null
+      const stepProperties = transformedStep.properties ?? {}
+      const [key, value]: [string, JSONSchema7Definition] = Object.entries(stepProperties)[0]
+      if (typeof value === 'boolean') return null
+      return {
+        title: value.title ?? key,
+        stepKey: key,
+        isFilled: false,
+      }
+    })
+    .filter(Boolean) as StepData[]
+}
+
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
@@ -229,6 +250,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   const [formData, setFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
   const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
+  const [stepData, setStepData] = useState<StepData[]>(getStepData(schema))
 
   const steps = schema?.allOf
   const stepsLength: number = steps?.length ?? -1
@@ -240,6 +262,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     // effect to reset all internal state when critical input 'props' change
     setFormData({})
     setStepIndex(0)
+    setStepData(getStepData(schema))
   }, [eformSlug, schema])
 
   useEffect(() => {
@@ -336,6 +359,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     extraErrors,
     validate,
     setErrors: setUniqueErrors,
+    stepData,
     previous,
     next,
     submitStep,

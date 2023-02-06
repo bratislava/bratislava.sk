@@ -5,7 +5,7 @@
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import FormRJSF from '@bratislava/ui-bratislava/FormRJSF'
+import FormRJSF from '@bratislava/ui-bratislava/FormRJSF/FormRJSF'
 import { FormValidation, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
