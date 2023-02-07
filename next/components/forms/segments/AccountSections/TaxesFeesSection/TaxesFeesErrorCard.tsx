@@ -1,16 +1,13 @@
-import IconDesktop from '@assets/images/account/mestske-konto-situacia-2-1.svg'
-import IconMobile from '@assets/images/account/mestske-konto-situacia-2-1-mobile.svg'
+import Icon from '@assets/images/account/mestske-konto-situacia-2-1.svg'
 import Link from 'next/link'
 
 const TaxesFeesErrorCard = () => {
   return (
-    <div className="w-full max-w-screen-1.5lg m-auto mt-12 sm:mt-8 px-4 sm:px-16 sm:py-24 flex justify-center border-0 lg:border-2 border-gray-200 rounded-lg">
-      <div className="flex flex-col max-w-[592px] m-auto">
-        <span className="flex justify-center">
-          {/* TODO fix mobile version icon */}
-          <IconDesktop className="hidden sm:flex" />
-          <IconMobile className="flex sm:hidden" />
-        </span>
+    <div className="w-full max-w-screen-1.5lg m-auto mt-12 sm:mt-8 px-4 sm:px-16 py-10 flex flex-col lg:flex-row justify-around border-0 lg:border-2 border-gray-200 rounded-lg">
+      <span className="flex justify-center">
+        <Icon className="w-[145px] h-[138px] sm:w-[308px] sm:h-[296px]" />
+      </span>
+      <div className="flex flex-col max-w-none lg:max-w-[500px]">
         <span className="text-h4 mt-6 sm:mt-8 mb-2">
           Zatiaľ vás nevidíme v zozname daňovníkov a daňovníčok.
         </span>
