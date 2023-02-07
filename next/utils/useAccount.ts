@@ -60,18 +60,15 @@ const poolData = {
 }
 const userPool = new CognitoUserPool(poolData)
 
-export default function useAccount(initStatus = AccountStatus.Idle) {
+export default function useAccount() {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AWSError | undefined | null>(null)
-  const [status, setStatus] = useState<AccountStatus>(initStatus)
+  const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
   const [userData, setUserData] = useState<UserData | null>(null)
   const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
-
-  console.log('USER DATA:', userData)
-  console.log('ERROR:', error)
 
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
