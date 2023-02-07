@@ -76,7 +76,7 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('flex select-none font-normal text-p-md text-gray-700 gap-4', {
+  const labelStyle = cx('flex select-nonetext-20 text-gray-700 gap-4', {
     'w-full': fullWidth,
   })
 
