@@ -12,6 +12,7 @@ import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import { useTranslation } from 'next-i18next'
+import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
@@ -19,7 +20,7 @@ interface IProps extends LanguageSelectProps {
   className?: string
   navHidden?: boolean
   sectionsList?: MenuItem[]
-  accountMenuList: MenuItem[]
+  menuItems: MenuItem[]
 }
 
 interface LanguageSelectProps {
@@ -77,7 +78,7 @@ export interface MenuItem {
 export const AccountNavBar = ({
   className,
   sectionsList,
-  accountMenuList,
+  menuItems,
   navHidden,
   ...languageSelectProps
 }: IProps) => {
@@ -90,12 +91,12 @@ export const AccountNavBar = ({
   const { t } = useTranslation(['common', 'account'])
   const router = useRouter()
 
-  const onRouteChange = (selectedItem: MenuItem) => {
-    if (selectedItem.link === '/logout') {
+  const onRouteChange = (selectedMenuItem: MenuItem) => {
+    if (selectedMenuItem.link === '/logout') {
       logout()
       router.push('/login')
     } else {
-      router.push(selectedItem.link)
+      router.push(selectedMenuItem.link)
     }
   }
 
@@ -139,7 +140,7 @@ export const AccountNavBar = ({
                     <>
                       <Divider />
                       <AccountSelect
-                        options={accountMenuList}
+                        menuItems={menuItems}
                         onChange={onRouteChange}
                         userData={userData}
                       />
@@ -180,11 +181,7 @@ export const AccountNavBar = ({
                   </div>
                 </>
               ) : isAuth ? (
-                <AccountSelect
-                  options={accountMenuList}
-                  onChange={onRouteChange}
-                  userData={userData}
-                />
+                <AccountSelect menuItems={menuItems} onChange={onRouteChange} userData={userData} />
               ) : (
                 <>
                   <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
@@ -205,22 +202,20 @@ export const AccountNavBar = ({
           <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
-                <li
-                  className="w-full h-full"
-                  key={sectionItem.id}
-                  onClick={() => onRouteChange(sectionItem)}
-                >
-                  <div
-                    className={cx(
-                      'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
-                      {
-                        'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
-                      },
-                    )}
-                  >
-                    {sectionItem.icon}
-                    <span className="ml-3">{t(sectionItem?.title)}</span>
-                  </div>
+                <li className="w-full h-full" key={sectionItem.id}>
+                  <NextLink href={sectionItem.link}>
+                    <div
+                      className={cx(
+                        'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
+                        {
+                          'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
+                        },
+                      )}
+                    >
+                      {sectionItem.icon}
+                      <span className="ml-3">{t(sectionItem?.title)}</span>
+                    </div>
+                  </NextLink>
                 </li>
               ))}
             </ul>
@@ -269,7 +264,7 @@ export const AccountNavBar = ({
         {burgerOpen && (
           <HamburgerMenu
             sectionsList={sectionsList}
-            accountMenuList={accountMenuList}
+            menuItems={menuItems}
             closeMenu={() => setBurgerOpen(false)}
             onRouteChange={onRouteChange}
           />
@@ -296,26 +291,26 @@ const Avatar = ({ userData }: { userData?: UserData | null }) => {
 }
 
 interface AccountSelectProps {
-  options: MenuItem[]
+  menuItems: MenuItem[]
   onChange: (selectedItem: MenuItem) => void
   userData: UserData | null
 }
 
-const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
+const AccountSelect = ({ menuItems, onChange, userData }: AccountSelectProps) => {
   const [isSelectClicked, setIsSelectClicked] = useState(false)
   const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
   const { t } = useTranslation()
 
   const handleChange = (selectedKey: number) => {
-    const selectedOption = options?.find((opt) => opt.id === selectedKey)
+    const selectedMenuItem = menuItems?.find((opt) => opt.id === selectedKey)
 
-    if (selectedOption) {
-      onChange(selectedOption)
+    if (selectedMenuItem) {
+      onChange(selectedMenuItem)
       setIsSelectClicked(false)
     }
   }
 
-  if (!options) return null
+  if (!menuItems) return null
 
   const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
     setIsSelectClicked(!isSelectClicked)
@@ -335,7 +330,7 @@ const AccountSelect = ({ options, onChange, userData }: AccountSelectProps) => {
       {isSelectClicked && isComponentVisible && (
         <div className="absolute top-12 -left-3 z-20 mt-1 flex h-auto cursor-default flex-col items-center justify-center lg:left-0">
           <div className="flex h-auto min-h-[60px] w-full flex-col rounded-lg bg-white py-2 shadow-[0_8px_16px_rgba(0,0,0,0.12)]">
-            {options.map((option) => (
+            {menuItems.map((option) => (
               <div key={option.id} className="cursor-pointer flex py-2 px-5">
                 <div className="flex relative flex-row items-start gap-2 rounded-xl p-4 bg-gray-50">
                   <div className="flex h-2 w-2 items-center justify-center">

@@ -42,7 +42,7 @@ const sectionsList = [
   },
 ]
 
-const accountMenuList = [
+const menuItems = [
   {
     id: 1,
     title: 'account:menu_profile_link',
@@ -92,7 +92,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
           currentLanguage={locale}
           onLanguageChange={handleLanguageChange}
           sectionsList={sectionsList}
-          accountMenuList={accountMenuList}
+          menuItems={menuItems}
           navHidden
           languages={[
             { key: 'sk', title: t('language_short.sk') },

@@ -1,15 +1,15 @@
-// @ts-strict-ignore
 import cx from 'classnames'
 import { MenuItem } from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 interface IProps {
   sectionsList?: MenuItem[]
-  accountMenuList: MenuItem[]
+  menuItems: MenuItem[]
   className?: string
   closeMenu: () => void
-  onRouteChange: (selectedItem: MenuItem) => void
+  onRouteChange: (selectedMenuItem: MenuItem) => void
 }
 
 const Divider = () => {
@@ -17,11 +17,11 @@ const Divider = () => {
 }
 
 const Item = ({
-  sectionItem,
+  menuItem,
   isSelected,
   onClick,
 }: {
-  sectionItem: MenuItem
+  menuItem: MenuItem
   isSelected?: boolean
   onClick: () => void
 }) => {
@@ -37,15 +37,15 @@ const Item = ({
         },
       )}
     >
-      {sectionItem.icon}
-      <span className="ml-3">{t(sectionItem?.title)}</span>
+      {menuItem.icon}
+      <span className="ml-3">{t(menuItem?.title)}</span>
     </div>
   )
 }
 
 export const HamburgerMenu = ({
   sectionsList,
-  accountMenuList,
+  menuItems,
   onRouteChange,
   className,
   closeMenu,
@@ -63,32 +63,39 @@ export const HamburgerMenu = ({
         {sectionsList && (
           <>
             {sectionsList.map((sectionItem) => (
-              <Item
-                key={sectionItem.id}
-                sectionItem={sectionItem}
-                isSelected={router.route.includes(sectionItem?.link)}
-                onClick={() => {
-                  onRouteChange(sectionItem)
-                  closeMenu()
-                }}
-              />
+              <Link key={sectionItem.id} href={sectionItem.link}>
+                <Item
+                  menuItem={sectionItem}
+                  isSelected={router.route.includes(sectionItem?.link)}
+                  onClick={closeMenu}
+                />
+              </Link>
             ))}
             <Divider />
           </>
         )}
-        {accountMenuList.map((sectionItem) => (
-          <>
-            {sectionItem.link === '/logout' && <Divider />}
-            <Item
-              key={sectionItem.id}
-              sectionItem={sectionItem}
-              onClick={() => {
-                onRouteChange(sectionItem)
-                closeMenu()
-              }}
-            />
-          </>
-        ))}
+        {menuItems.map((sectionItem) => {
+          if (sectionItem.link === '/logout') {
+            return (
+              <>
+                <Divider />
+                <Item
+                  key={sectionItem.id}
+                  menuItem={sectionItem}
+                  onClick={() => {
+                    onRouteChange(sectionItem)
+                    closeMenu()
+                  }}
+                />
+              </>
+            )
+          }
+          return (
+            <Link key={sectionItem.id} href={sectionItem.link}>
+              <Item menuItem={sectionItem} onClick={closeMenu} />
+            </Link>
+          )
+        })}
       </div>
     </div>
   )
