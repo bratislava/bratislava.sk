@@ -69,7 +69,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
   const { isAuth } = useAccount()
   useEffect(() => {
     if (!isAuth) {
-      router.push('/login')
+      router.push({ pathname: '/login', query: { from: router.route } })
     }
   }, [isAuth])
 
