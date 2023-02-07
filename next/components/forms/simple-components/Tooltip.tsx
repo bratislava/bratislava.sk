@@ -9,6 +9,7 @@ interface TooltipProps {
 
 const TooltipComponent = ({ tooltip }: TooltipProps) => {
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
+  const [isTooltipClicked, setIsTooltipClicked] = useState<boolean>(false)
 
   return (
     <div className="w-max">
@@ -32,11 +33,11 @@ const TooltipComponent = ({ tooltip }: TooltipProps) => {
         {
           /* TOOLTIP ICON */
           tooltip && (
-            <div className="">
+            <div className="w-6 h-6 cursor-pointer">
               <HelpIcon
-                className="cursor-pointer"
+                onClick={() => setIsTooltipClicked((prev) => !prev)}
                 onMouseOver={() => setIsTooltipOpened(true)}
-                onMouseLeave={() => setIsTooltipOpened(false)}
+                onMouseLeave={() => !isTooltipClicked && setIsTooltipOpened(false)}
               />
             </div>
           )

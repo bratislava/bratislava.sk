@@ -26,6 +26,7 @@ const Radio = ({
 }: RadioBase) => {
   const state = React.useContext(RadioContext)
   const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
+  const [isTooltipClicked, setIsTooltipClicked] = React.useState<boolean>(false)
   const ref = React.useRef(null)
   const { inputProps } = useRadio({ ...rest, isDisabled: isDisabled || error }, state, ref)
   const inputStyle = cx(
@@ -104,8 +105,9 @@ const Radio = ({
                   )}
                   <div className="cursor-pointer w-6 h-6">
                     <HelpIcon
+                      onClick={() => setIsTooltipClicked((prev) => !prev)}
                       onMouseOver={() => setIsTooltipOpened(true)}
-                      onMouseLeave={() => setIsTooltipOpened(false)}
+                      onMouseLeave={() => !isTooltipClicked && setIsTooltipOpened(false)}
                     />
                   </div>
                 </div>
@@ -121,8 +123,12 @@ const Radio = ({
             {tooltip && (
               <div className="ml-auto cursor-pointer w-6 h-6">
                 <HelpIcon
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setIsTooltipClicked((prev) => !prev)
+                  }}
                   onMouseOver={() => setIsTooltipOpened(true)}
-                  onMouseLeave={() => setIsTooltipOpened(false)}
+                  onMouseLeave={() => !isTooltipClicked && setIsTooltipOpened(false)}
                 />
               </div>
             )}

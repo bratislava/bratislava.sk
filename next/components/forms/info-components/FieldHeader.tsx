@@ -28,6 +28,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
     tooltip,
   } = props
   const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
+  const [isTooltipClicked, setIsTooltipClicked] = useState<boolean>(false)
 
   // STYLES
   const labelStyle = cx(
@@ -69,8 +70,9 @@ const FieldHeader = (props: FieldHeaderProps) => {
                 >
                   <div className="cursor-pointer w-5 h-5 sm:w-6 sm:h-6">
                     <HelpIcon
+                      onClick={() => setIsTooltipClicked((prev) => !prev)}
                       onMouseOver={() => setIsTooltipOpened(true)}
-                      onMouseLeave={() => setIsTooltipOpened(false)}
+                      onMouseLeave={() => !isTooltipClicked && setIsTooltipOpened(false)}
                     />
                   </div>
                   <div className="relative">
