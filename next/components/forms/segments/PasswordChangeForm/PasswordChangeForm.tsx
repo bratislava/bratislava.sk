@@ -85,7 +85,6 @@ const PasswordChangeForm = ({ onSubmit, error }: Props) => {
             required
             label={t('new_password_label')}
             placeholder={t('new_password_placeholder')}
-            tooltip={t('password_description')}
             {...field}
             errorMessage={errors.password}
           />
