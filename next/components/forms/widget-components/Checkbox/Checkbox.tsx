@@ -66,7 +66,7 @@ const CheckboxGroupItem = ({
     'opacity-50 cursor-not-allowed': isDisabled,
   })
 
-  const labelStyle = cx('flex w-full text-p-md text-gray-700', {})
+  const labelStyle = cx('flex text-p-md text-gray-700', {})
 
   return (
     <div>
@@ -122,12 +122,11 @@ const CheckboxGroupItem = ({
               )}
             </div>
           </div>
-          <div className="items-center w-full gap-4 flex">
+          <div className="items-center justify-between w-full gap-4 flex">
             <div className={labelStyle}>{children}</div>
             {tooltip && (
-              <div className="flex items-center">
+              <div className="cursor-pointer w-6 h-6">
                 <HelpIcon
-                  className="cursor-pointer"
                   onMouseOver={() => setIsTooltipOpened(true)}
                   onMouseLeave={() => setIsTooltipOpened(false)}
                 />

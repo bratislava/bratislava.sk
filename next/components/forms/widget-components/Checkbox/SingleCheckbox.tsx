@@ -76,7 +76,7 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('flex select-none font-normal text-p-md text-gray-700 gap-4', {
+  const labelStyle = cx('flex items-center select-none font-normal text-p-md text-gray-700 gap-4', {
     'w-full': fullWidth,
   })
 
@@ -141,9 +141,8 @@ const SingleCheckBox = ({
             {children}
           </div>
           {tooltip && (
-            <div className="flex items-center">
+            <div className="cursor-pointer w-6 h-6">
               <HelpIcon
-                className="cursor-pointer"
                 onMouseOver={() => setIsTooltipOpened(true)}
                 onMouseLeave={() => setIsTooltipOpened(false)}
               />

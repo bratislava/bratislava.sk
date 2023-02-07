@@ -98,15 +98,16 @@ const Radio = ({
                       arrow="bottom"
                       alignArrow="left"
                       bottom={30}
-                      left={-15}
+                      left={-12}
                       absolute
                     />
                   )}
-                  <HelpIcon
-                    className="cursor-pointer"
-                    onMouseOver={() => setIsTooltipOpened(true)}
-                    onMouseLeave={() => setIsTooltipOpened(false)}
-                  />
+                  <div className="cursor-pointer w-6 h-6">
+                    <HelpIcon
+                      onMouseOver={() => setIsTooltipOpened(true)}
+                      onMouseLeave={() => setIsTooltipOpened(false)}
+                    />
+                  </div>
                 </div>
               )}
             </div>
@@ -118,9 +119,8 @@ const Radio = ({
               {rest.children}
             </div>
             {tooltip && (
-              <div className="ml-auto">
+              <div className="ml-auto cursor-pointer w-6 h-6">
                 <HelpIcon
-                  className="cursor-pointer"
                   onMouseOver={() => setIsTooltipOpened(true)}
                   onMouseLeave={() => setIsTooltipOpened(false)}
                 />

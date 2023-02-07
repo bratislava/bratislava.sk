@@ -67,11 +67,12 @@ const FieldHeader = (props: FieldHeaderProps) => {
                     'ml-2': !required,
                   })}
                 >
-                  <HelpIcon
-                    className="cursor-pointer w-5 h-5 sm:w-6 sm:h-6"
-                    onMouseOver={() => setIsTooltipOpened(true)}
-                    onMouseLeave={() => setIsTooltipOpened(false)}
-                  />
+                  <div className="cursor-pointer w-5 h-5 sm:w-6 sm:h-6">
+                    <HelpIcon
+                      onMouseOver={() => setIsTooltipOpened(true)}
+                      onMouseLeave={() => setIsTooltipOpened(false)}
+                    />
+                  </div>
                   <div className="relative">
                     <Tooltip
                       text={tooltip}
