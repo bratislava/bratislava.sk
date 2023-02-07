@@ -55,7 +55,7 @@ const PasswordChangePage = ({ page }: AsyncServerProps<typeof getServerSideProps
           {status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert
               title={t('password_change_success_title')}
-              confirmLabel={t('account_link')}
+              confirmLabel={t('account_continue_link')}
               onConfirm={onConfirm}
             />
           ) : (
