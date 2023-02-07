@@ -31,7 +31,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
 
   // STYLES
   const labelStyle = cx(
-    'text-p3-semibold sm:text-16-semibold leading-5 sm:leading-6 relative text-gray-800',
+    'text-p3-semibold sm:text-16-semibold relative text-gray-800',
     {
       'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
         required,
@@ -99,7 +99,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
         helptext && (
           <div
             {...descriptionProps}
-            className="text-p3 sm:text-16 leading-5 sm:leading-6 mb-1 text-gray-700"
+            className="text-p3 sm:text-16 mb-1 text-gray-700"
           >
             {helptextHandler()}
           </div>

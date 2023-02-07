@@ -31,7 +31,7 @@ const CheckboxGroup = (props: CheckBoxGroupBase) => {
           htmlFor={groupProps.id}
           required={required}
         />
-        {/* <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
+        {/* <span {...labelProps} className="text-20-semibold flex items-center mb-4">
           {label}
         </span> */}
         <div className={className}>
