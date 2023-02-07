@@ -79,3 +79,22 @@ export const validateKeyword = async (
     return false
   }
 }
+
+interface Identity {
+  birthNumber: string
+  identityCard: string
+}
+
+export const verifyIdentityApi = (data: Identity) => {
+  return fetchJsonApi(
+    `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/user-verification/identity-card`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    },
+  )
+}
