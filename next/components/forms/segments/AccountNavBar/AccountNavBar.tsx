@@ -208,7 +208,7 @@ export const AccountNavBar = ({
                       className={cx(
                         'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
                         {
-                          'text-main-700 border-main-700': router.route.includes(sectionItem?.link),
+                          'text-main-700 border-main-700': router.route.endsWith(sectionItem?.link),
                         },
                       )}
                     >
