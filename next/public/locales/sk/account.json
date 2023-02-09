@@ -22,7 +22,7 @@
   "password_description": "Heslo musí obsahovať minimálne 8 znakov, veľké a malé písmeno, číslo a špeciálny znak.",
   "password_required": "Heslo je povinné",
   "password_format": "Heslo musí obsahovať minimálne 8 znakov, veľké a malé písmeno, číslo a špeciálny znak.",
-  "password_confirmation_required": "Hesla sa nezhodujú",
+  "password_confirmation_required": "Heslá sa nezhodujú",
   "login_submit": "Prihlásiť sa",
   "login_description": "Máte už mestské konto?",
   "login_link": "Prihlásiť sa",
