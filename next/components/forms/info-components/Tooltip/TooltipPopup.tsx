@@ -1,11 +1,11 @@
 import LeftArrowIcon from '@assets/images/forms/tooltip_left_arrow_icon.svg'
 import TopArrowIcon from '@assets/images/forms/tooltip_top_arrow_icon.svg'
 import cx from 'classnames'
-import { FC } from 'react'
+import React from 'react'
+import { mergeProps, TooltipTriggerProps } from 'react-aria'
 
-interface TooltipProps {
-  text: string
-  visible: boolean
+type TooltipBase = {
+  text?: string
   arrow?: 'top' | 'right' | 'bottom' | 'left'
   alignArrow?: 'left' | 'center' | 'right'
   absolute?: boolean
@@ -16,9 +16,18 @@ interface TooltipProps {
   className?: string
 }
 
-const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
-  const { text, visible, arrow, alignArrow, absolute, top, bottom, left, right, className } = props
-
+const TooltipPopup = ({
+  arrow,
+  alignArrow,
+  absolute,
+  top,
+  bottom,
+  left,
+  right,
+  className,
+  text,
+  ...props
+}: TooltipBase) => {
   const positionStyle = {
     top: top !== undefined ? `${top}px` : 'auto',
     bottom: bottom !== undefined ? `${bottom}px` : 'auto',
@@ -27,9 +36,8 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
   }
 
   const tooltipClassNames = cx(
-    'flex',
+    'flex w-fit',
     {
-      hidden: !visible,
       'flex-col': arrow === 'top',
       'flex-col-reverse': arrow === 'bottom',
       'flex-row': arrow === 'left',
@@ -53,7 +61,6 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
     'ml-[-1px]': arrow === 'right',
     'mr-[-1px]': arrow === 'left',
   })
-
   return (
     <div className={tooltipClassNames} style={positionStyle}>
       <div className={arrowClassNames}>
@@ -64,11 +71,14 @@ const Tooltip: FC<TooltipProps> = (props: TooltipProps) => {
           <LeftArrowIcon className="p-0 m-0 border-0" />
         )}
       </div>
-      <div className="text-p2 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-xs break-words rounded bg-gray-700 py-3 px-4 text-white">
+      <div
+        className="text-p2 w-fit z-10 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-xs break-words rounded bg-gray-700 py-3 px-4 text-white"
+        {...mergeProps(props)}
+      >
         <p className="w-max">{text}</p>
       </div>
     </div>
   )
 }
 
-export default Tooltip
+export default TooltipPopup
