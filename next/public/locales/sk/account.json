@@ -49,7 +49,7 @@
   "register_submit": "Vytvoriť konto",
   "email_verification_title": "Overte svoj e-mail",
   "email_verification_description": "Na e-mail {email} sme vám odoslali overovací kód. Skopírujte ho do poľa nižšie.",
-  "email_verification_submit": "Overiť kód",
+  "email_verification_submit": "Overiť e-mail",
   "register_success_title": "Overenie bolo úspešné a mestské konto vytvorené",
   "register_success_description": "E-mailová adresa {email} bola overená a mestské konto vytvorené.",
   "register_success_content": "Na to, aby ste mohli plne využívať služby mestského konta potrebujeme poznať vaše **rodné číslo** a **číslo občianskeho preukazu**. Bez týchto údajov nevieme overiť vašu identitu voči štátnym registrom, a preto nebudete schopný/á odoslať elektronicky všetky žiadosti.",
