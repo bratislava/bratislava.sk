@@ -388,8 +388,8 @@ const LanguageSelect = ({
       />
       {isSelectClicked && isComponentVisible && (
         <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-11 cursor-default flex-col items-center justify-center lg:left-0">
-          <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-[#F8D7D4]" />
-          <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
+          <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-main-200" />
+          <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-main-200 pt-1 pb-3 shadow-lg">
             {dropDownOptions?.map((option) => (
               <div
                 className="text-p2 hover:text-p2-semibold cursor-pointer text-font mt-3 h-6 w-6"
