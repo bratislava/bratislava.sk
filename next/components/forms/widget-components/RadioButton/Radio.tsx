@@ -1,4 +1,3 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
 import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import * as React from 'react'
@@ -75,7 +74,7 @@ const Radio = ({
               {rest.children}
               {tooltip && (
                 <div className="mt-8 relative flex flex-row">
-                  <Tooltip text={tooltip} arrow="bottom" alignArrow="left" bottom={30} left={-12} />
+                  <Tooltip position="top-right" text={tooltip} />
                 </div>
               )}
             </div>
@@ -88,15 +87,7 @@ const Radio = ({
             </div>
           </div>
         )}
-        {tooltip && variant !== 'card' && (
-          <Tooltip
-            text={tooltip}
-            arrow="bottom"
-            alignArrow="right"
-            bottom={30}
-            right={variant === 'basic' ? -13 : -12}
-          />
-        )}
+        {tooltip && variant !== 'card' && <Tooltip text={tooltip} />}
       </label>
     </div>
   )

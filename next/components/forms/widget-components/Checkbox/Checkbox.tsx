@@ -108,15 +108,7 @@ const CheckboxGroupItem = ({
           </div>
           <div className="items-center justify-between w-full gap-4 flex">
             <div className={labelStyle}>{children}</div>
-            {tooltip && (
-              <Tooltip
-                text={tooltip}
-                arrow="bottom"
-                alignArrow="right"
-                bottom={30}
-                right={variant === 'basic' ? -14 : -12}
-              />
-            )}
+            {tooltip && <Tooltip text={tooltip} />}
           </div>
         </div>
       </label>

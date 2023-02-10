@@ -7,18 +7,27 @@ import { useTooltipTriggerState } from 'react-stately'
 
 type TooltipPopupBase = {
   text?: string
-  arrow?: 'top' | 'right' | 'bottom' | 'left'
+  arrow?: boolean
   alignArrow?: 'left' | 'center' | 'right'
   absolute?: boolean
   top?: number
   bottom?: number
   left?: number
   right?: number
+  position?:
+    | 'top-right'
+    | 'top-left'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'right-top'
+    | 'right-bottom'
+    | 'left-top'
+    | 'left-bottom'
   className?: string
 } & TooltipTriggerProps
 
 const Tooltip = (props: TooltipPopupBase) => {
-  const { text, arrow, alignArrow, absolute = true, top, bottom, left, right, className } = props
+  const { text, arrow, className, position } = props
 
   const ref = useRef<HTMLButtonElement>(null)
   const state = useTooltipTriggerState(props)
@@ -47,17 +56,7 @@ const Tooltip = (props: TooltipPopupBase) => {
         <HelpIcon />
       </button>
       {(state.isOpen || isClicked) && (
-        <TooltipPopup
-          text={text}
-          arrow={arrow}
-          alignArrow={alignArrow}
-          top={top}
-          bottom={bottom}
-          left={left}
-          right={right}
-          className={className}
-          absolute={absolute}
-        />
+        <TooltipPopup text={text} arrow={arrow} className={className} position={position} />
       )}
     </span>
   )

@@ -65,13 +65,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
                     'ml-2': !required,
                   })}
                 >
-                  <Tooltip
-                    text={tooltip}
-                    arrow="bottom"
-                    alignArrow="right"
-                    bottom={30}
-                    right={-12}
-                  />
+                  <Tooltip text={tooltip} />
                 </div>
               )
             }

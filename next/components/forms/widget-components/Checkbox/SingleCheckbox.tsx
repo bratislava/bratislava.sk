@@ -123,15 +123,7 @@ const SingleCheckBox = ({
           >
             {children}
           </div>
-          {tooltip && (
-            <Tooltip
-              text={tooltip}
-              arrow="bottom"
-              alignArrow="right"
-              bottom={30}
-              right={variant === 'basic' ? -14 : -12}
-            />
-          )}
+          {tooltip && <Tooltip text={tooltip} />}
         </div>
       </label>
     </div>
