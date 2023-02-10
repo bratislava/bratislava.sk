@@ -60,7 +60,7 @@ const SingleCheckBox = ({
   )
 
   const containerStyle = cx(
-    'group flex flex-row  items-center justify-center p-0 gap-4',
+    'group flex flex-row items-center justify-center p-0 gap-3',
     rest.className,
     {
       'py-3 px-4 bg-white border-2 border-solid rounded-lg': variant === 'boxed',
@@ -76,7 +76,7 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('text-20 flex select-none text-gray-700 gap-4', {
+  const labelStyle = cx('text-16 flex select-none text-gray-700 gap-3', {
     'w-full': fullWidth,
   })
 

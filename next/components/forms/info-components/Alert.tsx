@@ -76,7 +76,7 @@ const Alert = ({
 
     const contentStyle = cx('w-full', {
       'text-16': variant === 'basic',
-      'text-20-semibold': variant === 'message',
+      'text-16-semibold': variant === 'message',
     })
 
     const extraButtonStyle = cx('text-16-medium underline', {
