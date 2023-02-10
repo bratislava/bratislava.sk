@@ -59,7 +59,7 @@ const PasswordChangeForm = ({ onSubmit, error }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.oldPassword, data.password))}
     >
       <h1 className="text-h3">{t('password_change_title')}</h1>
