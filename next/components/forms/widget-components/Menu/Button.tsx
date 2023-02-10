@@ -1,23 +1,39 @@
 import { AriaButtonProps } from '@react-types/button'
-import React from 'react'
+import React, { RefObject } from 'react'
 import { mergeProps, useButton, useFocusRing } from 'react-aria'
 
 interface ButtonProps extends AriaButtonProps {
   isPressed: boolean
 }
 
-const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<HTMLButtonElement>) => {
-  const { buttonProps, isPressed } = useButton(props, ref)
-  const { focusProps, isFocusVisible } = useFocusRing()
+// const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProps>(
+//   (
+//     {
+//       className,
+//       disabled,
+//       variant = 'black',
+//       size = 'lg',
+//       icon,
+//       text,
+//       startIcon,
+//       endIcon,
+//       hrefIconHidden,
+//       ...rest
+//     },
+//     ref,
+//   ) => {
+//     const { buttonProps } = useButton(
+//       {
+//         ...rest,
+//         elementType: rest.href ? 'a' : 'button',
+//         isDisabled: disabled,
+//       },
+//       ref as RefObject<HTMLAnchorElement | HTMLButtonElement>,
+//     )
 
-  let bg = 'bg-blue-500'
-  if (props.isDisabled) {
-    bg = 'bg-gray-400'
-  } else if (isPressed || props.isPressed) {
-    bg = 'bg-blue-600'
-  }
-
-  const focus = isFocusVisible ? 'ring ring-offset-2 ring-blue-400' : ''
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const { buttonProps } = useButton(props, ref as RefObject<HTMLButtonElement>)
+  const { focusProps } = useFocusRing()
 
   return (
     <button

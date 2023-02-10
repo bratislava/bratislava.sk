@@ -143,7 +143,7 @@ export const AccountNavBar = ({
                       <Divider />
                       <MenuButton
                         el={<Avatar userData={userData} />}
-                        label={userData?.given_name || userData?.family_name}
+                        label={userData?.given_name || userData?.family_name || ''}
                         onAction={(key) => {
                           const selectedMenuItem = menuItems?.find(
                             (opt) => opt.id.toString() === key,
@@ -196,7 +196,7 @@ export const AccountNavBar = ({
               ) : isAuth ? (
                 <MenuButton
                   el={<Avatar userData={userData} />}
-                  label={userData?.given_name || userData?.family_name}
+                  label={userData?.given_name || userData?.family_name || ''}
                   onAction={(key) => {
                     const selectedMenuItem = menuItems?.find((opt) => opt.id.toString() === key)
                     if (selectedMenuItem) onRouteChange(selectedMenuItem)

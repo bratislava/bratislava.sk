@@ -6,13 +6,13 @@ import { TreeState } from 'react-stately'
 interface MenuItemProps<T> {
   item: Node<T>
   state: TreeState<T>
-  onAction: (key: React.Key) => void
+  onAction?: (key: React.Key) => void
   onClose: () => void
 }
 
 const MenuItem = <T,>({ item, state, onAction, onClose }: MenuItemProps<T>) => {
   // Get props for the menu item element
-  const ref = React.useRef()
+  const ref = React.useRef(null)
   const { menuItemProps } = useMenuItem(
     {
       key: item.key,

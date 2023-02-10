@@ -17,7 +17,7 @@ const MenuButton = <T extends object>(props: MenuButtonProps<T>) => {
   const state = useMenuTriggerState(props)
 
   // Get props for the menu trigger and menu elements
-  const ref = React.useRef()
+  const ref = React.useRef(null)
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref)
 
   return (

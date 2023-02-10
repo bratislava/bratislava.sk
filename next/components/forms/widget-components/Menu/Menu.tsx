@@ -13,22 +13,11 @@ const Menu = <T extends object>(props: MenuProps<T>) => {
   const state = useTreeState(props)
 
   // Get props for the menu element
-  const ref = React.useRef()
+  const ref = React.useRef(null)
   const { menuProps } = useMenu(props, state, ref)
 
   return (
-    <ul
-      {...menuProps}
-      ref={ref}
-      className="py-2 focus:outline-none"
-      // style={{
-      //   margin: 0,
-      //   padding: 0,
-      //   listStyle: 'none',
-      //   width: 150,
-      //   border: 'none',
-      // }}
-    >
+    <ul {...menuProps} ref={ref} className="py-2 focus:outline-none">
       {[...state.collection].map((item) => (
         <MenuItem
           key={item.key}
