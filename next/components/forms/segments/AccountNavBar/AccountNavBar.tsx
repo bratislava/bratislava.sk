@@ -11,10 +11,12 @@ import useAccount, { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
+import MenuButton from 'components/forms/widget-components/Menu/MenuButton'
 import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { Item } from 'react-stately'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -139,11 +141,22 @@ export const AccountNavBar = ({
                   {isAuth ? (
                     <>
                       <Divider />
-                      <AccountSelect
-                        menuItems={menuItems}
-                        onChange={onRouteChange}
-                        userData={userData}
-                      />
+                      <MenuButton
+                        el={<Avatar userData={userData} />}
+                        label={userData?.given_name || userData?.family_name}
+                        onAction={(key) => {
+                          const selectedMenuItem = menuItems?.find(
+                            (opt) => opt.id.toString() === key,
+                          )
+                          if (selectedMenuItem) onRouteChange(selectedMenuItem)
+                        }}
+                      >
+                        {menuItems.map((option) => (
+                          <Item key={option.id}>
+                            <AccountMenuItem menuItem={option} />
+                          </Item>
+                        ))}
+                      </MenuButton>
                       <Divider />
                     </>
                   ) : (
@@ -181,7 +194,20 @@ export const AccountNavBar = ({
                   </div>
                 </>
               ) : isAuth ? (
-                <AccountSelect menuItems={menuItems} onChange={onRouteChange} userData={userData} />
+                <MenuButton
+                  el={<Avatar userData={userData} />}
+                  label={userData?.given_name || userData?.family_name}
+                  onAction={(key) => {
+                    const selectedMenuItem = menuItems?.find((opt) => opt.id.toString() === key)
+                    if (selectedMenuItem) onRouteChange(selectedMenuItem)
+                  }}
+                >
+                  {menuItems.map((option) => (
+                    <Item key={option.id}>
+                      <AccountMenuItem menuItem={option} />
+                    </Item>
+                  ))}
+                </MenuButton>
               ) : (
                 <>
                   <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
@@ -274,6 +300,23 @@ export const AccountNavBar = ({
   )
 }
 
+const AccountMenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
+  const { t } = useTranslation()
+
+  return (
+    <div className="cursor-pointer flex py-2 px-5">
+      <div className="flex relative flex-row items-start gap-2 rounded-xl p-4 bg-gray-50">
+        <div className="flex h-2 w-2 items-center justify-center">
+          <span>{menuItem.icon}</span>
+        </div>
+      </div>
+      <div className="text-p2 hover:text-p2-semibold text-font p-2 whitespace-nowrap">
+        {t(menuItem.title)}
+      </div>
+    </div>
+  )
+}
+
 const Avatar = ({ userData }: { userData?: UserData | null }) => {
   return (
     <div className="flex relative flex-row items-start gap-2 rounded-full p-2 bg-main-100">
@@ -286,68 +329,6 @@ const Avatar = ({ userData }: { userData?: UserData | null }) => {
           )}
         </span>
       </div>
-    </div>
-  )
-}
-
-interface AccountSelectProps {
-  menuItems: MenuItem[]
-  onChange: (selectedItem: MenuItem) => void
-  userData: UserData | null
-}
-
-const AccountSelect = ({ menuItems, onChange, userData }: AccountSelectProps) => {
-  const [isSelectClicked, setIsSelectClicked] = useState(false)
-  const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
-  const { t } = useTranslation()
-
-  const handleChange = (selectedKey: number) => {
-    const selectedMenuItem = menuItems?.find((opt) => opt.id === selectedKey)
-
-    if (selectedMenuItem) {
-      onChange(selectedMenuItem)
-      setIsSelectClicked(false)
-    }
-  }
-
-  if (!menuItems) return null
-
-  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setIsSelectClicked(!isSelectClicked)
-  }
-
-  return (
-    <div className="relative flex cursor-pointer items-center" ref={ref} onClick={handleClick}>
-      <Avatar userData={userData} />
-      <div className="ml-3 font-light lg:font-semibold">
-        {userData?.given_name || userData?.family_name}
-      </div>
-      <ChevronDownSmall
-        className={`ml-3 hidden mix-blend-normal lg:flex ${
-          isSelectClicked && isComponentVisible && 'mb-1 -rotate-180'
-        }`}
-      />
-      {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-12 -left-3 z-20 mt-1 flex h-auto cursor-default flex-col items-center justify-center lg:left-0">
-          <div className="flex h-auto min-h-[60px] w-full flex-col rounded-lg bg-white py-2 shadow-[0_8px_16px_rgba(0,0,0,0.12)]">
-            {menuItems.map((option) => (
-              <div key={option.id} className="cursor-pointer flex py-2 px-5">
-                <div className="flex relative flex-row items-start gap-2 rounded-xl p-4 bg-gray-50">
-                  <div className="flex h-2 w-2 items-center justify-center">
-                    <span>{option.icon}</span>
-                  </div>
-                </div>
-                <div
-                  className="text-p2 hover:text-p2-semibold text-font p-2 whitespace-nowrap"
-                  onClick={() => handleChange(option.id)}
-                >
-                  {t(option.title)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
