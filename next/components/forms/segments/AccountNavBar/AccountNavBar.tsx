@@ -11,7 +11,7 @@ import useAccount, { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
-import MenuButton from 'components/forms/widget-components/Menu/MenuButton'
+import Menu from 'components/forms/widget-components/Menu/Menu'
 import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -141,7 +141,7 @@ export const AccountNavBar = ({
                   {isAuth ? (
                     <>
                       <Divider />
-                      <MenuButton
+                      <Menu
                         el={<Avatar userData={userData} />}
                         label={userData?.given_name || userData?.family_name || ''}
                         onAction={(key) => {
@@ -156,7 +156,7 @@ export const AccountNavBar = ({
                             <AccountMenuItem menuItem={option} />
                           </Item>
                         ))}
-                      </MenuButton>
+                      </Menu>
                       <Divider />
                     </>
                   ) : (
@@ -194,7 +194,7 @@ export const AccountNavBar = ({
                   </div>
                 </>
               ) : isAuth ? (
-                <MenuButton
+                <Menu
                   el={<Avatar userData={userData} />}
                   label={userData?.given_name || userData?.family_name || ''}
                   onAction={(key) => {
@@ -207,7 +207,7 @@ export const AccountNavBar = ({
                       <AccountMenuItem menuItem={option} />
                     </Item>
                   ))}
-                </MenuButton>
+                </Menu>
               ) : (
                 <>
                   <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
