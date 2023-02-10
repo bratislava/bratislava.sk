@@ -122,28 +122,36 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           (size === 'lg' &&
             icon &&
             !text &&
-            (variant === 'plain-category' || variant === 'plain-black')),
+            (variant === 'plain-category' ||
+              variant === 'plain-black' ||
+              variant === 'plain-negative')),
 
         // icon for sm button plain variant
         'px-1.5 py-1.5':
           size === 'sm' &&
           icon &&
           !text &&
-          (variant === 'plain-category' || variant === 'plain-black'),
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
 
         // text for lg button plain variant
         'text-16-semibold px-3 py-2':
           size === 'lg' &&
           !icon &&
           text &&
-          (variant === 'plain-category' || variant === 'plain-black'),
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
 
         // text for sm button plain variant
         'text-16-semibold px-2 py-1':
           size === 'sm' &&
           !icon &&
           text &&
-          (variant === 'plain-category' || variant === 'plain-black'),
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
 
         // text for lg link button
         'text-20-medium':
