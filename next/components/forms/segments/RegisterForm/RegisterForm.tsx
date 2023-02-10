@@ -102,7 +102,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => {
         const userData: UserData = {
           email: data.email,
@@ -113,7 +113,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         return onSubmit(data.email, data.password, userData)
       })}
     >
-      <h1 className="text-h3">{t('register_title')}</h1>
+      <h1 className="text-h2">{t('register_title')}</h1>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), { email: lastEmail || '' })}
@@ -230,10 +230,16 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         disabled={isSubmitting}
       />
       <div className="flex justify-between">
-        <div className="text-20-semibold hidden md:flex text-gray-800">
+        <div className="text-16-semibold hidden md:flex text-gray-800">
           {t('login_description')}
         </div>
-        <Button variant="link-black" href="/login" label={t('login_link')} hrefIconHidden />
+        <Button
+          size="sm"
+          variant="link-black"
+          href="/login"
+          label={t('login_link')}
+          hrefIconHidden
+        />
       </div>
     </form>
   )

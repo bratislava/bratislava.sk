@@ -37,7 +37,7 @@ const SingleCheckBox = ({
   const isSelected = state.isSelected && !rest.isIndeterminate
 
   const checkboxStyle = cx(
-    'flex items-center justify-center w-6 h-6 rounded border-2 border-solid border-gray-700',
+    'flex items-center justify-center min-w-[24px] w-6 h-6 rounded border-2 border-solid border-gray-700',
     {
       'bg-gray-700': (isSelected || rest.isIndeterminate) && !error,
       'group-hover:border-gray-600':
@@ -117,7 +117,7 @@ const SingleCheckBox = ({
         <div className={labelStyle}>
           <div
             className={cx('relative', {
-              'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+              'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
                 required,
             })}
           >
