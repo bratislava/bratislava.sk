@@ -298,10 +298,10 @@ const LanguageMenu = ({ languages, currentLanguage, onLanguageChange }: Language
     if (selectedOption) onLanguageChange?.(selectedOption)
   }
 
-  const dropDownOptions = languages?.filter((option) => option.key != currentLanguage)
+  const dropDownOptions = languages?.filter((option) => option.key !== currentLanguage) || []
   return (
     <Menu
-      label={currentLanguage.toUpperCase()}
+      label={currentLanguage?.toUpperCase() || ''}
       onAction={onSelectLanguage}
       className="flex w-11 h-auto min-h-[60px] flex-col items-center rounded-lg bg-main-200 pt-1 pb-3"
       containerHeaderEl={
