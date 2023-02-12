@@ -6,6 +6,8 @@ import { useTreeState } from 'react-stately'
 
 interface MenuContainerProps<T extends object> extends AriaMenuProps<T> {
   onClose: () => void
+  className?: string
+  containerHeaderEl?: React.ReactNode
 }
 
 const MenuContainer = <T extends object>(props: MenuContainerProps<T>) => {
@@ -17,16 +19,19 @@ const MenuContainer = <T extends object>(props: MenuContainerProps<T>) => {
   const { menuProps } = useMenu(props, state, ref)
 
   return (
-    <ul {...menuProps} ref={ref} className="py-2 focus:outline-none">
-      {[...state.collection].map((item) => (
-        <MenuItem
-          key={item.key}
-          item={item}
-          state={state}
-          onAction={props.onAction}
-          onClose={props.onClose}
-        />
-      ))}
+    <ul {...menuProps} ref={ref} className="focus:outline-none">
+      {props.containerHeaderEl}
+      <div className={`py-2 ${props.className}`}>
+        {[...state.collection].map((item) => (
+          <MenuItem
+            key={item.key}
+            item={item}
+            state={state}
+            onAction={props.onAction}
+            onClose={props.onClose}
+          />
+        ))}
+      </div>
     </ul>
   )
 }

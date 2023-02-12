@@ -9,7 +9,9 @@ import { useMenuTriggerState } from 'react-stately'
 
 interface MenuProps<T extends object> extends AriaMenuProps<T>, MenuTriggerProps {
   label: string
-  el?: React.ReactNode
+  buttonLeftEl?: React.ReactNode
+  containerHeaderEl?: React.ReactNode
+  className?: string
 }
 
 const MenuButton = <T extends object>(props: MenuProps<T>) => {
@@ -23,7 +25,7 @@ const MenuButton = <T extends object>(props: MenuProps<T>) => {
   return (
     <div style={{ position: 'relative', display: 'inline-block' }} className="focus:outline-none">
       <Button {...menuTriggerProps} isPressed={state.isOpen} ref={ref}>
-        {props.el}
+        {props.buttonLeftEl}
         <div className="ml-3 font-light lg:font-semibold">{props.label}</div>
         <ChevronDownSmall
           className={`ml-3 hidden mix-blend-normal lg:flex ${state.isOpen && 'mb-1 -rotate-180'}`}
@@ -34,8 +36,10 @@ const MenuButton = <T extends object>(props: MenuProps<T>) => {
           <MenuContainer
             {...menuProps}
             {...props}
+            className={props.className}
             autoFocus={state.focusStrategy || true}
             onClose={() => state.close()}
+            containerHeaderEl={props.containerHeaderEl}
           />
         </Popover>
       )}
