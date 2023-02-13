@@ -51,7 +51,7 @@ export const AccountNavBar = ({ className, currentLanguage }: IProps) => {
     },
     {
       id: 2,
-      title: t('account_section_payment', { joinArrays: 'account' }),
+      title: t('account_section_payment.title', { joinArrays: 'account' }),
       icon: <PaymentIcon />,
       link: '/taxes-and-fees',
     },

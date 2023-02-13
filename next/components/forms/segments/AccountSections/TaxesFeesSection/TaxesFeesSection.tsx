@@ -50,6 +50,15 @@ const TaxesFeesSection = () => {
   const [isOn, setIsOn] = useState<'default' | 'waiting' | 'error'>('default')
   const { t } = useTranslation('account')
 
+  const taxesFeesWaitingCardContent = `
+<h4>${t('account_section_payment.waiting_card_title')}</h4>
+<p>${t('account_section_payment.waiting_card_text')}</p>
+`
+  const taxesFeesErrorCardContent = `
+<h4>${t('account_section_payment.error_card_title')}</h4>
+<div>${t('account_section_payment.error_card_text')}</div>
+`
+
   // Temporary switcher for presentation
   const switcher = (): ReactNode => {
     const array: { id: 'default' | 'waiting' | 'error'; title: string }[] = [
@@ -91,7 +100,7 @@ const TaxesFeesSection = () => {
 
   return (
     <div className="flex flex-col">
-      <AccountSectionHeader title={t('account_section_payment')} />
+      <AccountSectionHeader title={t('account_section_payment.title')} />
       {isOn === 'default' && (
         <div className="w-full max-w-screen-1.5lg m-auto">
           <ul className="my-2 lg:my-8 px-4 sm:px-6 1.5lg:px-0">
@@ -111,8 +120,8 @@ const TaxesFeesSection = () => {
           </ul>
         </div>
       )}
-      {isOn === 'waiting' && <TaxesFeesWaitingCard />}
-      {isOn === 'error' && <TaxesFeesErrorCard />}
+      {isOn === 'waiting' && <TaxesFeesWaitingCard content={taxesFeesWaitingCardContent} />}
+      {isOn === 'error' && <TaxesFeesErrorCard content={taxesFeesErrorCardContent} />}
       {switcher()}
     </div>
   )
