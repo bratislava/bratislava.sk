@@ -1,5 +1,5 @@
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
@@ -14,7 +14,7 @@ interface Data {
 
 interface Props {
   onSubmit: (email: string, password: string) => Promise<any>
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field

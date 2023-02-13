@@ -1,8 +1,10 @@
+import { verifyIdentityApi } from '@utils/api'
 import {
   AuthenticationDetails,
   CognitoUser,
   CognitoUserAttribute,
   CognitoUserPool,
+  CognitoUserSession,
   IAuthenticationDetailsData,
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
@@ -17,6 +19,10 @@ export enum AccountStatus {
   EmailVerificationSuccess,
   IdentityVerificationRequired,
   IdentityVerificationSuccess,
+}
+
+export enum Tier {
+  IdentityCard = 'IDENTITY_CARD',
 }
 
 export interface Address {
@@ -41,7 +47,7 @@ export interface UserData {
   address?: Address
   ifo?: string
   rc_op_verified_date?: string
-  tier?: string
+  tier?: Tier
 }
 
 // non standard, has prefix custom: in cognito
@@ -59,16 +65,23 @@ const poolData = {
   ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
 }
 const userPool = new CognitoUserPool(poolData)
+
+export interface AccountError {
+  message: string
+  code: string
+}
+
 let tmpUser
 export default function useAccount(initStatus = AccountStatus.Idle) {
-  const [user, setUser] = useState<CognitoUser | null | undefined>()
-  const [error, setError] = useState<AWSError | undefined | null>(null)
+  const [user, setUser] = useState<CognitoUser | null>(null)
+  const [error, setError] = useState<AccountError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
   const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
+  const [accessToken, setAccessToken] = useState<string>()
 
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
@@ -165,22 +178,32 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   }
 
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
-    const res = await updateUserData({ rc_op_verified_date: new Date().toISOString() })
-    if (res) {
+    try {
+      await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
+      await updateUserData({ rc_op_verified_date: new Date().toISOString() })
       setStatus(AccountStatus.IdentityVerificationSuccess)
+      return true
+    } catch (error: any) {
+      setError({
+        code: error.message,
+        message: error.message,
+      })
+      return false
     }
-
-    return res
   }
 
   useEffect(() => {
     const cognitoUser = userPool.getCurrentUser()
     if (cognitoUser != null) {
-      cognitoUser.getSession((err: Error) => {
+      cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
         if (err) {
           console.error(err)
           return
         }
+
+        const token = result?.getAccessToken().getJwtToken()
+        setAccessToken(token)
+
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
@@ -329,9 +352,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     setError(null)
     return new Promise((resolve) => {
       cognitoUser.authenticateUser(new AuthenticationDetails(credentials), {
-        onSuccess(result) {
-          // const accessToken = result.getAccessToken().getJwtToken()
-          // console.log('accessToken', accessToken)
+        onSuccess(result: CognitoUserSession) {
+          const token = result.getAccessToken().getJwtToken()
+          setAccessToken(token)
           // POTENTIAL: Region needs to be set if not already set previously elsewhere.
           AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
