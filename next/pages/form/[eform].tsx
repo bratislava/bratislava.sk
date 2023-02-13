@@ -14,6 +14,7 @@ import { AsyncServerProps } from '@utils/types'
 import { forceString, isProductionDeployment } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
+import ObjectFieldTemplate from 'components/forms/templates/ObjectFieldTemplate'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
@@ -206,6 +207,7 @@ const FormTestPage = ({
                 onError={(e) => console.log('errors', e)}
                 customValidate={customValidate}
                 showErrorList={false}
+                templates={{ ObjectFieldTemplate }}
               />
               {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
               <Button onPress={() => form.next()} text="Next" />

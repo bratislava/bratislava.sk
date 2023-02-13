@@ -34,7 +34,7 @@ const InputFieldWidgetRJSF = ({
   rawErrors,
 }: InputFieldWidgetRJSFProps) => {
   const {
-    description,
+    helptext,
     tooltip,
     className,
     resetIcon,
@@ -59,7 +59,7 @@ const InputFieldWidgetRJSF = ({
         errorMessage={rawErrors}
         required={required}
         disabled={disabled}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         className={className}
         resetIcon={resetIcon}
