@@ -1,9 +1,5 @@
 import FileDownload from '@assets/images/account/file_download.svg'
 import PaymentIcon from '@assets/images/account/payment-icon.svg'
-
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-
 import ChevronLeft from '@assets/images/chevron-left-2.svg'
 import ExclamationIcon from '@assets/images/forms/exclamation-icon.svg'
 import SuccessIcon from '@assets/images/forms/success.svg'
@@ -12,7 +8,6 @@ import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { ReactNode } from 'react'
-
 
 import Button from '../../simple-components/Button'
 
