@@ -46,12 +46,11 @@ export interface UserData {
   phone_verified?: string
   address?: Address
   ifo?: string
-  rc_op_verified_date?: string
   tier?: Tier
 }
 
 // non standard, has prefix custom: in cognito
-const customAttributes = new Set(['ifo', 'rc_op_verified_date', 'tier'])
+const customAttributes = new Set(['ifo', 'tier'])
 const updatableAttributes = new Set([
   'name',
   'given_name',
@@ -179,7 +178,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
     try {
       await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
-      await updateUserData({ rc_op_verified_date: new Date().toISOString() })
       setStatus(AccountStatus.IdentityVerificationSuccess)
       return true
     } catch (error: any) {
@@ -212,7 +210,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
           const userData = userAttributesToObject(attributes)
           setStatus(
-            !userData.rc_op_verified_date
+            userData.tier !== Tier.IdentityCard
               ? AccountStatus.IdentityVerificationRequired
               : AccountStatus.IdentityVerificationSuccess,
           )
