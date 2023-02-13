@@ -3,6 +3,7 @@ import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { AppProps } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
@@ -10,11 +11,20 @@ import { NextAdapter } from 'next-query-params'
 import React from 'react'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
+import { useIsClient } from 'usehooks-ts'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
 
+// error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
+// https://github.com/microsoft/BotFramework-WebChat/issues/4607
+const DynamicChat = dynamic(() => import('../components/molecules/chat'), {
+  ssr: false,
+})
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const isClient = useIsClient()
+
   return (
     <>
       <Head>
@@ -41,13 +51,19 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           },
           Image: ({ alt, src, shadow }) => <ContentImage alt={alt} src={src} shadow={shadow} />,
           Markdown: ({ className, content, numericalList }) => (
-            <HomepageMarkdown className={className} content={content} numericalList={numericalList} />
+            <HomepageMarkdown
+              className={className}
+              content={content}
+              numericalList={numericalList}
+            />
           ),
         }}
       >
         <QueryParamProvider adapter={NextAdapter}>
           <SSRProvider>
             <Component {...pageProps} />
+
+            {isClient && <DynamicChat />}
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>
