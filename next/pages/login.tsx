@@ -1,6 +1,7 @@
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
+import CompleteNewPasswordForm from 'components/forms/segments/CompleteNewPasswordForm/CompleteNewPasswordForm'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
 import LoginForm from 'components/forms/segments/LoginForm/LoginForm'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
@@ -33,7 +34,15 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { login, error, status, resendVerificationCode, verifyEmail, lastEmail } = useAccount()
+  const {
+    login,
+    error,
+    status,
+    resendVerificationCode,
+    verifyEmail,
+    lastEmail,
+    completeNewPassword,
+  } = useAccount()
   const router = useRouter()
 
   const redirect = () => {
@@ -58,6 +67,12 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
     }
   }
 
+  const onNewPassword = async (password: string) => {
+    if (await completeNewPassword(password)) {
+      redirect()
+    }
+  }
+
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
@@ -69,6 +84,8 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
               onSubmit={onVerifyEmail}
               error={error}
             />
+          ) : status === AccountStatus.NewPasswordRequired ? (
+            <CompleteNewPasswordForm onSubmit={onNewPassword} error={error} />
           ) : (
             <LoginForm onSubmit={onLogin} error={error} />
           )}

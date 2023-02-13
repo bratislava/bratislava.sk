@@ -59,7 +59,7 @@ const poolData = {
   ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '',
 }
 const userPool = new CognitoUserPool(poolData)
-
+let tmpUser
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AWSError | undefined | null>(null)
@@ -299,6 +299,20 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const completeNewPassword = (newPassword: string) => {
+    return new Promise((resolve) => {
+      tmpUser.completeNewPasswordChallenge(newPassword, null, {
+        onSuccess(result) {
+          resolve(true)
+        },
+        onFailure(err: AWSError) {
+          setError({ ...err })
+          resolve(false)
+        },
+      })
+    })
+  }
+
   const login = (email: string, password: string | undefined): Promise<boolean> => {
     // login into cognito using aws sdk
     const credentials = {
@@ -362,6 +376,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
         newPasswordRequired: (userAttributes, requiredAttributes) => {
           setStatus(AccountStatus.NewPasswordRequired)
+          tmpUser = cognitoUser
           resolve(false)
         },
         mfaRequired: (challengeName, challengeParameters) => {
@@ -410,5 +425,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     changePassword,
     lastEmail: lastCredentials.Username,
     isAuth: user !== null,
+    completeNewPassword,
   }
 }
