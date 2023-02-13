@@ -9,7 +9,7 @@ import remarkGfm from 'remark-gfm'
 
 type AccountMarkdownBase = {
   className?: string
-  content: string
+  content?: string
 }
 
 const Tooltip = ({ children }: never) => {
@@ -46,13 +46,13 @@ const AccountMarkdown = ({ className, content }: AccountMarkdownBase) => {
               {children}
             </li>
           ),
-          a: ({ href, children }) => (
+          a: ({ href, children }: { href?: string; children?: string }) => (
             <UILink
               href={href ?? '#'}
               className="break-words font-semibold text-font underline hover:text-category-600"
-              target={href?.startsWith('http') ? '_blank' : null}
+              target={href?.startsWith('http') ? '_blank' : ''}
             >
-              {children[0]}
+              {children}
             </UILink>
           ),
           tooltip: Tooltip,
@@ -60,7 +60,7 @@ const AccountMarkdown = ({ className, content }: AccountMarkdownBase) => {
         } as any
       }
     >
-      {content}
+      {content ?? ''}
     </ReactMarkdown>
   )
 }
