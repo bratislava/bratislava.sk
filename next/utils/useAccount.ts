@@ -73,7 +73,7 @@ export interface AccountError {
 
 let tmpUser: CognitoUser
 export default function useAccount(initStatus = AccountStatus.Idle) {
-  const [user, setUser] = useState<CognitoUser | null>(null)
+  const [user, setUser] = useState<CognitoUser | undefined | null>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
@@ -329,8 +329,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           // POTENTIAL: Region needs to be set if not already set previously elsewhere.
           AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
-          console.log('PO')
-
           const awsCredentials = new AWS.CognitoIdentityCredentials({
             IdentityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '',
             Logins: {
@@ -344,11 +342,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
           awsCredentials.refresh((err?: AWSError) => {
             if (err) {
-              console.log(err)
               setError(err)
               resolve(false)
             } else {
-              console.log('OK')
               setUser(tmpUser)
               resolve(true)
             }
