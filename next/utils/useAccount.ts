@@ -326,29 +326,8 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     return new Promise((resolve) => {
       tmpUser.completeNewPasswordChallenge(newPassword, null, {
         onSuccess(result: CognitoUserSession) {
-          // POTENTIAL: Region needs to be set if not already set previously elsewhere.
-          AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
-
-          const awsCredentials = new AWS.CognitoIdentityCredentials({
-            IdentityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID || '',
-            Logins: {
-              // Change the key below according to the specific region your user pool is in.
-              [`cognito-idp.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/${process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID}`]:
-                result.getIdToken().getJwtToken(),
-            },
-          })
-          AWS.config.credentials = awsCredentials
-
-          // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-          awsCredentials.refresh((err?: AWSError) => {
-            if (err) {
-              setError(err)
-              resolve(false)
-            } else {
-              setUser(tmpUser)
-              resolve(true)
-            }
-          })
+          setUser(tmpUser)
+          resolve(true)
         },
         onFailure(err: AWSError) {
           setError({ ...err })
