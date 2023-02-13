@@ -15,7 +15,9 @@ const FieldErrorMessage: FC<FieldErrorMessageProps> = ({
       {...errorMessageProps}
     >
       {errorMessage?.map((error, i) => (
-        <div key={i}>{`${error.slice(0, 1).toUpperCase()}${error.slice(1).toLowerCase()}.`}</div>
+        <div key={i}>{`${error.slice(0, 1).toUpperCase()}${error.slice(1).toLowerCase()}${
+          error.trim().slice(-1) === '.' ? '' : '.'
+        }`}</div>
       ))}
     </div>
   ) : null
