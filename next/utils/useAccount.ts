@@ -361,7 +361,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
         },
 
         newPasswordRequired: (userAttributes, requiredAttributes) => {
-          console.log('newPasswordRequired', userAttributes, requiredAttributes)
+          setStatus(AccountStatus.NewPasswordRequired)
           resolve(false)
         },
         mfaRequired: (challengeName, challengeParameters) => {
