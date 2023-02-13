@@ -15,18 +15,17 @@ interface MenuProps<T extends object> extends AriaMenuProps<T>, MenuTriggerProps
 }
 
 const MenuButton = <T extends object>(props: MenuProps<T>) => {
-  // Create state based on the incoming props
   const state = useMenuTriggerState(props)
+  const { buttonLeftEl, label } = props
 
-  // Get props for the menu trigger and menu elements
   const ref = React.useRef(null)
   const { menuTriggerProps, menuProps } = useMenuTrigger<T>({}, state, ref)
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }} className="focus:outline-none">
+    <div className="focus:outline-none relative inline-block">
       <Button {...menuTriggerProps} isPressed={state.isOpen} ref={ref}>
-        {props.buttonLeftEl}
-        <div className="ml-3 font-light lg:font-semibold">{props.label}</div>
+        {buttonLeftEl}
+        <div className="ml-3 font-light lg:font-semibold">{label}</div>
         <ChevronDownSmall
           className={`ml-3 hidden mix-blend-normal lg:flex ${state.isOpen && 'mb-1 -rotate-180'}`}
         />
@@ -36,10 +35,8 @@ const MenuButton = <T extends object>(props: MenuProps<T>) => {
           <MenuContainer
             {...menuProps}
             {...props}
-            className={props.className}
             autoFocus={state.focusStrategy || true}
             onClose={() => state.close()}
-            containerHeaderEl={props.containerHeaderEl}
           />
         </Popover>
       )}

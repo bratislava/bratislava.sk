@@ -11,8 +11,8 @@ interface MenuContainerProps<T extends object> extends AriaMenuProps<T> {
 }
 
 const MenuContainer = <T extends object>(props: MenuContainerProps<T>) => {
-  // Create menu state based on the incoming props
   const state = useTreeState(props)
+  const { containerHeaderEl, onAction, onClose, className } = props
 
   // Get props for the menu element
   const ref = React.useRef(null)
@@ -20,15 +20,15 @@ const MenuContainer = <T extends object>(props: MenuContainerProps<T>) => {
 
   return (
     <ul {...menuProps} ref={ref} className="focus:outline-none">
-      {props.containerHeaderEl}
-      <div className={`py-2 ${props.className}`}>
+      {containerHeaderEl}
+      <div className={`py-2 ${className}`}>
         {[...state.collection].map((item) => (
           <MenuItem
             key={item.key}
             item={item}
             state={state}
-            onAction={props.onAction}
-            onClose={props.onClose}
+            onAction={onAction}
+            onClose={onClose}
           />
         ))}
       </div>

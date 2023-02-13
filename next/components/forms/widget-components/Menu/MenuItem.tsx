@@ -11,7 +11,6 @@ interface MenuItemProps<T> {
 }
 
 const MenuItem = <T,>({ item, state, onAction, onClose }: MenuItemProps<T>) => {
-  // Get props for the menu item element
   const ref = React.useRef(null)
   const { menuItemProps } = useMenuItem(
     {
@@ -22,14 +21,6 @@ const MenuItem = <T,>({ item, state, onAction, onClose }: MenuItemProps<T>) => {
     state,
     ref,
   )
-
-  // Handle focus events so we can apply highlighted
-  // style to the focused menu item
-  // const isFocused = state.selectionManager.focusedKey === item.key
-  // const focusBg = item.key === 'delete' ? 'bg-red-500' : 'bg-blue-500'
-  // const focus = isFocused ? `${focusBg} text-white` : 'text-gray-900'
-
-  // console.log(item)
 
   return (
     <li {...menuItemProps} ref={ref} className="focus:outline-none">
