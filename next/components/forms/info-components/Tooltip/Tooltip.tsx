@@ -1,5 +1,4 @@
 import HelpIcon from '@assets/images/forms/icon-help.svg'
-import cx from 'classnames'
 import TooltipPopup from 'components/forms/info-components/Tooltip/TooltipPopup'
 import { useRef, useState } from 'react'
 import { TooltipTriggerProps, useHover } from 'react-aria'
@@ -8,12 +7,6 @@ import { useTooltipTriggerState } from 'react-stately'
 type TooltipPopupBase = {
   text?: string
   arrow?: boolean
-  alignArrow?: 'left' | 'center' | 'right'
-  absolute?: boolean
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
   position?:
     | 'top-right'
     | 'top-left'
@@ -49,9 +42,7 @@ const Tooltip = (props: TooltipPopupBase) => {
         ref={ref}
         onClick={() => setIsClicked((prev) => !prev)}
         {...hoverProps}
-        className={cx('w-full outline-none cursor-pointer', {
-          'bg-gray-800 rounded-full text-white': isClicked,
-        })}
+        className="w-full outline-none cursor-pointer"
       >
         <HelpIcon />
       </button>

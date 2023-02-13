@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import TooltipPopup from 'components/forms/info-components/Tooltip/TooltipPopup'
 import React, { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
@@ -8,10 +9,9 @@ import remarkGfm from 'remark-gfm'
 
 import ExpandMoreIcon from '../icon-components/ExpandMoreIcon'
 import PersonIcon from '../icon-components/PersonIcon'
-import TooltipComponent from './Tooltip'
 
 const Tooltip = ({ children }: never) => {
-  return <TooltipComponent tooltip={children} />
+  return children ? <TooltipPopup position="top-right" text={children} /> : null
 }
 export type AccordionSizeType = 'sm' | 'md' | 'lg'
 
