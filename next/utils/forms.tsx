@@ -326,22 +326,25 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
   const disableSkip = () => setIsSkipEnabled(false)
 
-  const submitStep = () => formRef?.current?.submit()
+  const submitStep = () => {
+    formRef?.current?.submit()
+  }
+
   const skipToStep = (newNextStepIndex: number) => {
-    // console.log(newNextStepIndex)
-    // if (newNextStepIndex > stepIndex) {
-    //   let nextPossibleStepIndex = stepIndex + 1
-    //   while (nextPossibleStepIndex < newNextStepIndex) {
-    //     console.log(stepData[nextPossibleStepIndex])
-    //     if (!stepData[nextPossibleStepIndex].isFilled) {
-    //       break
-    //     }
-    //     nextPossibleStepIndex += 1
-    //   }
-    //   setNextStepIndex(nextPossibleStepIndex)
-    // } else {
-    setNextStepIndex(newNextStepIndex)
-    // }
+    console.log(newNextStepIndex)
+    if (newNextStepIndex > stepIndex) {
+      let nextPossibleStepIndex = stepIndex + 1
+      while (nextPossibleStepIndex < newNextStepIndex) {
+        console.log(stepData[nextPossibleStepIndex])
+        if (!stepData[nextPossibleStepIndex].isFilled) {
+          break
+        }
+        nextPossibleStepIndex += 1
+      }
+      setNextStepIndex(nextPossibleStepIndex)
+    } else {
+      setNextStepIndex(newNextStepIndex)
+    }
   }
 
   // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
@@ -369,9 +372,11 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     }
     if (isFormValid && !isSkipEnabled) {
       changeStepData(stepIndex, true)
-    }
-    if (isFormValid || isSkipEnabled) {
       next()
+      disableSkip()
+    }
+    if (isFormValid && isSkipEnabled) {
+      jumpToStep()
       disableSkip()
     }
   }
