@@ -115,7 +115,7 @@ const Accordion = ({
           </button>
           {isActive && (
             <div
-              className={cx('flex flex-col font-normal not-italic', {
+              className={cx('flex flex-col font-normal', {
                 'text-h-sm': size === 'sm' || size === 'xs',
                 'text-p-md': size === 'lg' || size === 'md',
               })}

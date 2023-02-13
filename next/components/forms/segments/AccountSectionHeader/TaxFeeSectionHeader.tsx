@@ -1,12 +1,57 @@
 import FileDownload from '@assets/images/account/file_download.svg'
 import PaymentIcon from '@assets/images/account/payment-icon.svg'
+
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+
+import ChevronLeft from '@assets/images/chevron-left-2.svg'
+import ExclamationIcon from '@assets/images/forms/exclamation-icon.svg'
+import SuccessIcon from '@assets/images/forms/success.svg'
+import TimeIcon from '@assets/images/forms/warning-time-icon.svg'
+import cx from 'classnames'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { ReactNode } from 'react'
+
 
 import Button from '../../simple-components/Button'
 
 type AccountSectionHeaderBase = {
   title: string
+
+  status?: string
+}
+
+const statusHandler = (status: 'negative' | 'warning' | 'success'): ReactNode => {
+  const statusStyle: string = cx('lg:text-p2-semibold text-p3-semibold', {
+    'text-negative-700': status === 'negative',
+    'text-warning-700': status === 'warning',
+    'text-success-700': status === 'success',
+  })
+  const statusNode = (icon: ReactNode, statusTitle: string): ReactNode => {
+    return (
+      <>
+        <span className="h-6 w-6 flex justify-center items-center">{icon}</span>
+        <span className={statusStyle}>{statusTitle}</span>
+      </>
+    )
+  }
+
+  switch (status) {
+    case 'negative':
+      return statusNode(<ExclamationIcon />, 'Neuhradená')
+    case 'warning':
+      return statusNode(<TimeIcon />, 'Čiastočne uhradená')
+    case 'success':
+      return statusNode(<SuccessIcon width={18} height={24} viewBox="0 0 24 18" />, 'Uhradená')
+
+    default:
+      return null
+  }
+}
+
+const priceFormat = (price: number): string => {
+  return Number.isInteger(price) ? `${price},00 €` : `${price} €`.replace('.', ',')
 }
 
 const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
@@ -15,33 +60,22 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
   return (
     <div className="flex flex-col items-start bg-gray-50 sm:px-28 sm:py-6 p-4 mt-16 lg:mt-28 gap-4">
       <div className="flex items-center gap-0.5 cursor-pointer">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12.8462 6.17917L11.667 5L6.66699 10L11.667 15L12.8462 13.8208L9.02533 10L12.8462 6.17917Z"
-            fill="#333333"
-          />
-        </svg>
+        <div className="w-5 h-5 flex justify-center items-center">
+          <ChevronLeft />
+        </div>
         <button
           type="button"
-          className="underline text-p-sm"
+          className="text-p3-medium underline-offset-2 underline"
           onClick={() => router.push('/account/taxes-and-fees')}
         >
           {t('back_to_list')}
         </button>
       </div>
       <div className="flex flex-col items-start gap-2 w-full h-full">
-        <div className="text-p-base text-main-700 font-semibold sm:block hidden">
-          {t('city')} Bratislava
-        </div>
+        <div className="text-p2-semibold text-main-700 sm:block hidden">{t('city')} Bratislava</div>
         <div className="flex flex-col items-start gap-4 h-full w-full">
           <div className="flex flex-row items-center gap-4 w-full">
-            <div className="font-semibold text-h-2xl grow">Daň z nehnuteľností</div>
+            <div className="text-h1 grow">Daň z nehnuteľností</div>
             <Button
               startIcon={<PaymentIcon />}
               variant="black"
@@ -57,32 +91,24 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
               className="sm:block hidden"
             />
           </div>
-          <div className="flex sm:flex-row flex-col sm:items-center items-start sm:gap-4 gap-1">
+          <div className="flex md:flex-row flex-col md:items-center items-start md:gap-4 gap-1">
             <div className="flex gap-2">
-              <div className="text-p-base font-semibold">{t('tax_created')}</div>
-              <div className="text-p-base font-normal">20. apríla 2023</div>
+              <div className="lg:text-p2-semibold text-p3-semibold">{t('tax_created')}</div>
+              <div className="lg:text-p2 text-p3">20. apríla 2023</div>
             </div>
-            <div className="w-1.5 h-1.5 bg-black rounded-full sm:block hidden" />
-            <div className="sm:text-p-base sm:font-bold text-p-sm font-normal">89,00 €</div>
-            <div className="w-1.5 h-1.5 bg-black rounded-full sm:block hidden" />
-            <div className="flex items-start gap-2">
-              <div className="flex items-start gap-2">
-                <div className="flex items-start gap-2">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.00004 16.17L4.83004 12L3.41504 13.415L9.00004 19L21 6.99996L19.585 5.58496L9.00004 16.17Z"
-                      fill="#01843D"
-                    />
-                  </svg>
-                  <div className="text-success-700 font-semibold">{t('tax_paid')}</div>
+            <div className="w-1.5 h-1.5 bg-black rounded-full md:block hidden" />
+            <div className="lg:text-p2-bold text-p3">{priceFormat(89)}</div>
+            <div className="w-1.5 h-1.5 bg-black rounded-full md:block hidden" />
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
+                <div
+                  className={cx('flex items-center gap-2', {
+                    'gap-1': props?.status === 'unpaid',
+                  })}
+                >
+                  {statusHandler('success')}
                 </div>
-                <div>24. apríla 2023</div>
+                <div className="lg:text-p2 text-p3">24. apríla 2023</div>
               </div>
             </div>
           </div>

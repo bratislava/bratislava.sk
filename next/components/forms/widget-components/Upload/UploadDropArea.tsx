@@ -1,9 +1,8 @@
 import BallDelimiterIcon from '@assets/images/forms/ball_delimiter_icon.svg'
 import UploadIcon from '@assets/images/forms/upload-icon.svg'
+import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 import cx from 'classnames'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useState } from 'react'
-
-import { UploadMinioFile } from '@backend/dtos/minio/upload-minio-file.dto'
 
 interface UploadDropAreaProps {
   value?: UploadMinioFile[]
@@ -16,35 +15,54 @@ interface UploadDropAreaProps {
   onDrop?: (newFiles: UploadMinioFile[]) => void
 }
 
-const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (props: UploadDropAreaProps, ref: ForwardedRef<HTMLDivElement>) => {
+const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDropAreaProps> = (
+  props: UploadDropAreaProps,
+  ref: ForwardedRef<HTMLDivElement>,
+) => {
   // PROPS
-  const { value, multiple, disabled, sizeLimit, supportedFormats, fileBrokenMessage, onClick, onDrop }: UploadDropAreaProps = props
+  const {
+    value,
+    multiple,
+    disabled,
+    sizeLimit,
+    supportedFormats,
+    fileBrokenMessage,
+    onClick,
+    onDrop,
+  }: UploadDropAreaProps = props
 
   // STATE
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false)
 
   // STYLES
   const dragAndDropClassNames = cx(
-    "flex flex-col justify-evenly h-full w-full p-6 bg-white rounded-lg text-center",
+    'flex flex-col justify-evenly h-full w-full p-6 bg-white rounded-lg text-center',
     {
-      "opacity-50 bg-gray-200": disabled,
-    }
+      'opacity-50 bg-gray-200': disabled,
+    },
   )
 
   const dragAndDropOverlayClassNames = cx(
-    "absolute inset-[-1px] z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300",
+    'absolute inset-[-1px] z-10 rounded-lg bg-transparent border-2 border-dashed border-gray-300',
     {
-      "cursor-not-allowed": disabled,
-      "cursor-pointer": !disabled,
-      "border-red-500 hover:border-red-300": !disabled && (fileBrokenMessage && fileBrokenMessage.length > 0) && !isDraggedOver,
-      "border-red-300": !disabled && (fileBrokenMessage && fileBrokenMessage.length > 0) && isDraggedOver,
-      "hover:border-gray-400 focus:border-gray-700 active:border-gray-700": !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0) && !isDraggedOver,
-      "border-gray-400": !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0) && isDraggedOver
-    }
+      'cursor-not-allowed': disabled,
+      'cursor-pointer': !disabled,
+      'border-red-500 hover:border-red-300':
+        !disabled && fileBrokenMessage && fileBrokenMessage.length > 0 && !isDraggedOver,
+      'border-red-300':
+        !disabled && fileBrokenMessage && fileBrokenMessage.length > 0 && isDraggedOver,
+      'hover:border-gray-400 focus:border-gray-700 active:border-gray-700':
+        !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0) && !isDraggedOver,
+      'border-gray-400':
+        !disabled && (!fileBrokenMessage || fileBrokenMessage.length === 0) && isDraggedOver,
+    },
   )
 
   // EVENT HANDLERS
-  const reduceItemsToFiles = (filtered: UploadMinioFile[], item: DataTransferItem): UploadMinioFile[] => {
+  const reduceItemsToFiles = (
+    filtered: UploadMinioFile[],
+    item: DataTransferItem,
+  ): UploadMinioFile[] => {
     if (item.kind !== 'file') return filtered
     const file = item.getAsFile()
     if (!file) return filtered
@@ -57,7 +75,9 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
     event.preventDefault()
     if (disabled) return
 
-    const droppedItems: DataTransferItem[] = multiple ? [...event.dataTransfer.items] : [event.dataTransfer.items[0]]
+    const droppedItems: DataTransferItem[] = multiple
+      ? [...event.dataTransfer.items]
+      : [event.dataTransfer.items[0]]
     const newFiles = droppedItems.reduce(reduceItemsToFiles, [])
 
     setIsDraggedOver(false)
@@ -75,28 +95,30 @@ const UploadDropAreaComponent: ForwardRefRenderFunction<HTMLDivElement, UploadDr
   // RENDER
   return (
     <div className="w-[180px] xs:w-[300px] sm:w-[480px] relative h-40" ref={ref} data-value={value}>
-      <div className={dragAndDropOverlayClassNames}
-           onClick={handleOnClick}
-           onDragEnter={() => setIsDraggedOver(true)}
-           onDragOver={event => event.preventDefault()}
-           onDragLeave={() => setIsDraggedOver(false)}
-           onDrop={handleDrop}/>
+      <div
+        className={dragAndDropOverlayClassNames}
+        onClick={handleOnClick}
+        onDragEnter={() => setIsDraggedOver(true)}
+        onDragOver={(event) => event.preventDefault()}
+        onDragLeave={() => setIsDraggedOver(false)}
+        onDrop={handleDrop}
+      />
       <div className={dragAndDropClassNames}>
-        <div className="flex flex-row justify-center" >
-          <div className="flex h-12 w-12 flex-row justify-center rounded-full bg-gray-200">
-            <UploadIcon className="text-20 m-auto"/>
+        <div className="flex flex-row justify-center">
+          <div className="flex h-12 w-12 flex-row justify-center items-center rounded-full bg-gray-200">
+            <UploadIcon />
           </div>
         </div>
-        <h5 className="text-20-semibold">Drag & drop upload</h5>
+        <h5 className="text-16-semibold">Drag & drop upload</h5>
         <div className="text-p3 flex flex-row justify-center gap-1">
-          <p>{sizeLimit} {sizeLimit && "MB"}</p>
-          {
-            sizeLimit && supportedFormats && supportedFormats.length > 0 && (
-              <div className="grid grid-cols-1 content-center">
-                <BallDelimiterIcon/>
-              </div>
-            )
-          }
+          <p>
+            {sizeLimit} {sizeLimit && 'MB'}
+          </p>
+          {sizeLimit && supportedFormats && supportedFormats.length > 0 && (
+            <div className="grid grid-cols-1 content-center">
+              <BallDelimiterIcon />
+            </div>
+          )}
           <p>{supportedFormats?.join(' ')}</p>
         </div>
       </div>

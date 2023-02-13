@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import FieldHeader from 'components/forms/info-components/FieldHeader'
 import * as React from 'react'
 import { useCheckboxGroup } from 'react-aria'
@@ -31,10 +32,7 @@ const CheckboxGroup = (props: CheckBoxGroupBase) => {
           htmlFor={groupProps.id}
           required={required}
         />
-        {/* <span {...labelProps} className="text-20-semibold leading-7 flex items-center mb-4">
-          {label}
-        </span> */}
-        <div className={className}>
+        <div className={cx('flex flex-col gap-3', className)}>
           <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
         </div>
       </div>
