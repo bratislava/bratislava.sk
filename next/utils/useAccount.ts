@@ -70,6 +70,7 @@ export interface AccountError {
   code: string
 }
 
+let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | null>(null)
   const [error, setError] = useState<AccountError | undefined | null>(null)
@@ -79,7 +80,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
-  const [accessToken, setAccessToken] = useState<string>()
 
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
@@ -198,9 +198,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           return
         }
 
-        const token = result?.getAccessToken().getJwtToken()
-        setAccessToken(token)
-
+        accessToken = result?.getAccessToken().getJwtToken()
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
