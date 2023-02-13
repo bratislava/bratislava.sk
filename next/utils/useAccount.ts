@@ -21,6 +21,10 @@ export enum AccountStatus {
   IdentityVerificationSuccess,
 }
 
+export enum Tier {
+  IdentityCard = 'IDENTITY_CARD',
+}
+
 export interface Address {
   formatted?: string
   street_address?: string
@@ -43,7 +47,7 @@ export interface UserData {
   address?: Address
   ifo?: string
   rc_op_verified_date?: string
-  tier?: string
+  tier?: Tier
 }
 
 // non standard, has prefix custom: in cognito
