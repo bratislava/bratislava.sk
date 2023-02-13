@@ -1,12 +1,12 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import { formatUnicorn } from '@utils/string'
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { Controller } from 'react-hook-form'
 
 interface Data {
@@ -16,7 +16,7 @@ interface Data {
 
 interface Props {
   onSubmit: (rc: string, idCard: string) => void
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field

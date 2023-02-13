@@ -88,7 +88,7 @@ interface Identity {
   identityCard: string
 }
 
-export const verifyIdentityApi = (data: Identity, token: string) => {
+export const verifyIdentityApi = (data: Identity, token: string | undefined) => {
   return fetchJsonApi(
     `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/user-verification/identity-card`,
     {
