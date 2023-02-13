@@ -46,12 +46,11 @@ export interface UserData {
   phone_verified?: string
   address?: Address
   ifo?: string
-  rc_op_verified_date?: string
   tier?: Tier
 }
 
 // non standard, has prefix custom: in cognito
-const customAttributes = new Set(['ifo', 'rc_op_verified_date', 'tier'])
+const customAttributes = new Set(['ifo', 'tier'])
 const updatableAttributes = new Set([
   'name',
   'given_name',
@@ -72,6 +71,7 @@ export interface AccountError {
 }
 
 let tmpUser: CognitoUser
+let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | undefined | null>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
@@ -81,7 +81,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
-  const [accessToken, setAccessToken] = useState<string>()
 
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
@@ -180,7 +179,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
     try {
       await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
-      await updateUserData({ rc_op_verified_date: new Date().toISOString() })
       setStatus(AccountStatus.IdentityVerificationSuccess)
       return true
     } catch (error: any) {
@@ -201,9 +199,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           return
         }
 
-        const token = result?.getAccessToken().getJwtToken()
-        setAccessToken(token)
-
+        accessToken = result?.getAccessToken().getJwtToken()
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
@@ -213,7 +209,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
           const userData = userAttributesToObject(attributes)
           setStatus(
-            !userData.rc_op_verified_date
+            userData.tier !== Tier.IdentityCard
               ? AccountStatus.IdentityVerificationRequired
               : AccountStatus.IdentityVerificationSuccess,
           )
