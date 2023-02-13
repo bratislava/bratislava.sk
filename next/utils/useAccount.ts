@@ -353,8 +353,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     return new Promise((resolve) => {
       cognitoUser.authenticateUser(new AuthenticationDetails(credentials), {
         onSuccess(result: CognitoUserSession) {
-          const token = result.getAccessToken().getJwtToken()
-          setAccessToken(token)
           // POTENTIAL: Region needs to be set if not already set previously elsewhere.
           AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
@@ -374,16 +372,8 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
               setError(err)
               resolve(false)
             } else {
-              cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
-                if (err) {
-                  setError({ ...(err as AWSError) })
-                  resolve(false)
-                } else {
-                  setUserData(userAttributesToObject(attributes))
-                  setUser(cognitoUser)
-                  resolve(true)
-                }
-              })
+              setUser(cognitoUser)
+              resolve(true)
             }
           })
         },
