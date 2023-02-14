@@ -44,10 +44,6 @@ const statusHandler = (status: 'negative' | 'warning' | 'success'): ReactNode =>
   }
 }
 
-const priceFormat = (price: number): string => {
-  return Number.isInteger(price) ? `${price},00 €` : `${price} €`.replace('.', ',')
-}
-
 const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
   const { t } = useTranslation('account')
   const router = useRouter()
@@ -96,7 +92,7 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
               <div className="lg:text-p2 text-p3">20. apríla 2023</div>
             </div>
             <div className="w-1.5 h-1.5 bg-black rounded-full md:block hidden" />
-            <div className="lg:text-p2-bold text-p3">{priceFormat(89)}</div>
+            <div className="lg:text-p2-bold text-p3">89,00 €</div>
             <div className="w-1.5 h-1.5 bg-black rounded-full md:block hidden" />
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2">
