@@ -16,7 +16,7 @@ const BackButton = () => {
   return (
     <>
       <ArrowLeft className="cursor-pointer mx-1" onClick={() => router.back()} />
-      <div className="border-b-solid border-r-2 h-6 mx-6" />
+      <div className="border-b-solid border-r-2 h-6 mx-6 hidden lg:flex" />
     </>
   )
 }
@@ -61,7 +61,15 @@ export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidd
         )}
       >
         {!backButtonHidden && <BackButton />}
-        <Brand url="/" />
+        <Brand
+          url="/"
+          className="mx-auto"
+          title={
+            <p className="text-p2 text-font group-hover:text-gray-600">
+              <span className="font-semibold">Bratislava</span>
+            </p>
+          }
+        />
       </div>
     </>
   )
