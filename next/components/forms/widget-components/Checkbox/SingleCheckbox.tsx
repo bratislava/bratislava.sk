@@ -1,10 +1,8 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import React from 'react'
 import { useCheckbox, useFocusRing, VisuallyHidden } from 'react-aria'
 import { useToggleState } from 'react-stately'
-
-import Tooltip from '../../info-components/Tooltip'
 
 type CheckBoxBase = {
   variant?: 'basic' | 'boxed'
@@ -31,7 +29,6 @@ const SingleCheckBox = ({
   required,
   ...rest
 }: CheckBoxBase) => {
-  const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
   const state = useToggleState(rest)
   const ref = React.useRef<HTMLInputElement>(null)
   const { inputProps } = useCheckbox({ ...rest, isDisabled, children }, state, ref)
@@ -82,20 +79,6 @@ const SingleCheckBox = ({
 
   return (
     <div>
-      {tooltip && (
-        <div className="relative">
-          <Tooltip
-            className="w-max"
-            text={tooltip}
-            visible={isTooltipOpened}
-            arrow="bottom"
-            alignArrow="right"
-            bottom={0}
-            right={variant === 'basic' ? -14 : 5}
-            absolute
-          />
-        </div>
-      )}
       <label htmlFor={rest.value} className={containerStyle}>
         <VisuallyHidden>
           <input id={rest.value} {...inputProps} {...focusProps} ref={ref} />
@@ -140,15 +123,7 @@ const SingleCheckBox = ({
           >
             {children}
           </div>
-          {tooltip && (
-            <div className="flex items-center">
-              <HelpIcon
-                className="cursor-pointer"
-                onMouseOver={() => setIsTooltipOpened(true)}
-                onMouseLeave={() => setIsTooltipOpened(false)}
-              />
-            </div>
-          )}
+          {tooltip && <Tooltip text={tooltip} />}
         </div>
       </label>
     </div>

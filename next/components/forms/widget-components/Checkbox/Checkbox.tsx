@@ -1,9 +1,8 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import * as React from 'react'
 import { useCheckboxGroupItem, useFocusRing, VisuallyHidden } from 'react-aria'
 
-import Tooltip from '../../info-components/Tooltip'
 import { CheckboxGroupContext } from './CheckboxGroup'
 
 type CheckBoxBase = {
@@ -25,7 +24,6 @@ const CheckboxGroupItem = ({
   variant = 'basic',
   ...rest
 }: CheckBoxBase) => {
-  const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
   const state = React.useContext(CheckboxGroupContext)
   const ref = React.useRef(null)
   const { inputProps } = useCheckboxGroupItem({ ...rest, isIndeterminate, children }, state, ref)
@@ -66,24 +64,10 @@ const CheckboxGroupItem = ({
     'opacity-50 cursor-not-allowed': isDisabled,
   })
 
-  const labelStyle = cx('text-16 flex w-full text-gray-700', {})
+  const labelStyle = cx('flex text-16 text-gray-700', {})
 
   return (
     <div>
-      {tooltip && (
-        <div className="relative">
-          <Tooltip
-            className="w-max"
-            text={tooltip}
-            visible={isTooltipOpened}
-            arrow="bottom"
-            alignArrow="right"
-            bottom={0}
-            right={variant === 'basic' ? -14 : 5}
-            absolute
-          />
-        </div>
-      )}
       <label className={containerStyle}>
         <VisuallyHidden>
           <input id={rest.value} {...inputProps} {...focusProps} ref={ref} />
@@ -122,17 +106,9 @@ const CheckboxGroupItem = ({
               )}
             </div>
           </div>
-          <div className="items-center w-full gap-3 flex">
+          <div className="items-center justify-between w-full gap-3 flex">
             <div className={labelStyle}>{children}</div>
-            {tooltip && (
-              <div className="flex items-center">
-                <HelpIcon
-                  className="cursor-pointer"
-                  onMouseOver={() => setIsTooltipOpened(true)}
-                  onMouseLeave={() => setIsTooltipOpened(false)}
-                />
-              </div>
-            )}
+            {tooltip && <Tooltip text={tooltip} />}
           </div>
         </div>
       </label>
