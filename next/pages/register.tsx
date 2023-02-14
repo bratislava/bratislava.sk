@@ -53,7 +53,13 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <LoginRegisterLayout>
+      <LoginRegisterLayout
+        backButtonHidden={[
+          AccountStatus.EmailVerificationSuccess,
+          AccountStatus.IdentityVerificationRequired,
+          AccountStatus.IdentityVerificationSuccess,
+        ].includes(status)}
+      >
         <AccountContainer>
           {status === AccountStatus.Idle && (
             <RegisterForm lastEmail={lastEmail} onSubmit={signUp} error={error} />
