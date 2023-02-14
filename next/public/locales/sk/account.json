@@ -26,6 +26,8 @@
   "login_submit": "Prihlásiť sa",
   "login_description": "Máte už mestské konto?",
   "login_link": "Prihlásiť sa",
+  "register_description": "Nemáte ešte vytvorené konto?",
+  "register_link": "Registrovať sa",
   "forgotten_password_description": "Zabudli ste heslo?",
   "forgotten_password_link": "Získať nové heslo",
   "forgotten_password_title": "Zabudli ste heslo?",

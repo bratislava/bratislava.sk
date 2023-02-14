@@ -26,6 +26,8 @@
   "login_submit": "Login",
   "login_description": "Do you have an account?",
   "login_link": "Login",
+  "register_description": "Don't have an account?",
+  "register_link": "Register",
   "forgotten_password_description": "Forgot password?",
   "forgotten_password_link": "Reset password",
   "forgotten_password_title": "Forgotten password",
