@@ -80,6 +80,16 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
           hrefIconHidden
         />
       </div>
+      <div className="flex justify-between flex-col md:flex-row">
+        <div className="text-16-semibold text-gray-800">{t('register_description')}</div>
+        <Button
+          size="sm"
+          variant="link-category"
+          href="/register"
+          label={t('register_link')}
+          hrefIconHidden
+        />
+      </div>
     </form>
   )
 }
