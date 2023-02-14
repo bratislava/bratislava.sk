@@ -36,8 +36,11 @@ const fetchJsonApi = async (path: string, options?: RequestInit) => {
     console.log('have json', responseJson)
     if (responseJson?.errors) {
       throw new ApiError(responseJson?.message || API_ERROR_TEXT, responseJson.errors)
+    } else if (responseJson.state === 'CustomError') {
+      throw new Error(responseJson.naming)
+    } else {
+      throw new Error(API_ERROR_TEXT)
     }
-    throw new Error(API_ERROR_TEXT)
   } catch (error) {
     // caught & rethrown so that we can handle Sentry in one place
     console.error(error)
@@ -78,4 +81,24 @@ export const validateKeyword = async (
   } catch (error) {
     return false
   }
+}
+
+interface Identity {
+  birthNumber: string
+  identityCard: string
+}
+
+export const verifyIdentityApi = (data: Identity, token: string | undefined) => {
+  return fetchJsonApi(
+    `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/user-verification/identity-card`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      // credentials: 'include',
+      body: JSON.stringify(data),
+    },
+  )
 }
