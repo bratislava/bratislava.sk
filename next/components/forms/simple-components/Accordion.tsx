@@ -13,21 +13,23 @@ import TooltipComponent from './Tooltip'
 const Tooltip = ({ children }: never) => {
   return <TooltipComponent tooltip={children} />
 }
-export type AccordionSizeType = 'sm' | 'md' | 'lg'
+export type AccordionSizeType = 'xs' | 'sm' | 'md' | 'lg'
 
 export type AccordionBase = {
   size: AccordionSizeType
   title: string
+  secondTitle?: string
   content: string
   icon?: boolean
   shadow?: boolean
   className?: string
 }
 export const isAccordionSizeType = (size: string) =>
-  ['sm', 'md', 'lg'].includes(size) ? size : 'sm'
+  ['xs', 'sm', 'md', 'lg'].includes(size) ? size : 'sm'
 
 const Accordion = ({
   title,
+  secondTitle,
   content,
   size = 'sm',
   icon = false,
@@ -38,9 +40,10 @@ const Accordion = ({
 
   size = isAccordionSizeType(size) as AccordionSizeType
   const accordionContainerStyle = cx('flex flex-col gap-4 w-full rounded-xl bg-gray-0', className, {
-    'p-5': size === 'sm',
-    'py-6 px-8': size === 'md',
-    'py-8 px-10': size === 'lg',
+    'lg:p-4 px-4 py-3': size === 'xs',
+    'lg:p-5 p-4': size === 'sm',
+    'p-4 lg:py-6 lg:px-8': size === 'md',
+    'lg:py-8 lg:px-10 py-5 px-6': size === 'lg',
     'border-gray-200': !isActive && !shadow,
     'border-gray-700': isActive && !shadow,
     'border-2 border-solid hover:border-gray-500': !shadow,
@@ -55,27 +58,29 @@ const Accordion = ({
         {icon && (
           <div
             className={cx('flex items-center justify-center', {
-              'w-6 h-6': size === 'sm',
+              'w-6 h-6': size === 'sm' || size === 'xs',
               'w-8 h-8': size === 'md',
               'w-10 h-10': size === 'lg',
             })}
           >
             <PersonIcon
               className={cx('', {
-                'w-4 h-4': size === 'sm',
+                'w-4 h-4': size === 'sm' || size === 'xs',
                 'w-5 h-5': size === 'md',
                 'w-6 h-6': size === 'lg',
               })}
             />
           </div>
         )}
-        <div className="flex w-full flex-col">
-          <div
-            className="flex w-full items-center cursor-pointer"
+        <div className="flex grow flex-col">
+          <button
+            type="button"
+            className="flex cursor-pointer items-center gap-4"
             onClick={() => setIsActive(!isActive)}
           >
             <div
-              className={cx('font-semibold w-full', {
+              className={cx('grow flex items-start', {
+                'text-h6': size === 'xs',
                 'text-h5': size === 'sm',
                 'text-h4': size === 'md',
                 'text-h3': size === 'lg',
@@ -84,10 +89,20 @@ const Accordion = ({
               {title}
             </div>
             <div
+              className={cx('', {
+                'text-h6': size === 'xs',
+                'text-h5': size === 'sm',
+                'text-h4': size === 'md',
+                'text-h3': size === 'lg',
+              })}
+            >
+              {secondTitle}
+            </div>
+            <div
               className={cx('flex items-center justify-center', {
                 'w-10 h-10': size === 'lg',
                 'w-8 h-8': size === 'md',
-                'w-6 h-6': size === 'sm',
+                'w-6 h-6': size === 'sm' || size === 'xs',
               })}
             >
               <ExpandMoreIcon
@@ -97,12 +112,12 @@ const Accordion = ({
                 size={size}
               />
             </div>
-          </div>
+          </button>
           {isActive && (
             <div
               className={cx('flex flex-col font-normal', {
-                'text-h6': size === 'sm',
-                'text-20': size === 'lg' || size === 'md',
+                'text-h-sm': size === 'sm' || size === 'xs',
+                'text-p-md': size === 'lg' || size === 'md',
               })}
             >
               <ReactMarkdown
