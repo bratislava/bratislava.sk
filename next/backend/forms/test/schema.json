@@ -309,7 +309,7 @@
           },
           "if": {
             "properties": {
-              "chooseOne": {
+              "chooseOneOfMore": {
                 "const": "overlay"
               }
             }
@@ -328,6 +328,22 @@
               "notOverlayInput": {
                 "type": "string",
                 "title": "some other input"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "user": {
+          "type": "object",
+          "title": "Example async validation",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "isExampleAsyncValidation": {
+                "errorMsg": "Required input"
               }
             }
           }
@@ -400,22 +416,6 @@
                     "title": "Second bonus"
                   }
                 }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "properties": {
-        "user": {
-          "type": "object",
-          "title": "Example async validation",
-          "properties": {
-            "phone": {
-              "type": "string",
-              "isExampleAsyncValidation": {
-                "errorMsg": "Required input"
               }
             }
           }
