@@ -23,25 +23,25 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
 
   return (
     <SectionContainer className="pt-14 md:pt-18">
-      {form.isComplete ? (
-        <FinalStep
-          formData={form.formData}
-          formErrors={form.errors}
-          extraErrors={form.extraErrors}
-          slug={formSlug}
-          schema={eform.schema}
-          onGoToStep={(step: number) => form.setStepIndex(step)}
-          onGoToPreviousStep={() => form.previous()}
+      <div className="flex flex-row">
+        <StepperView
+          steps={form.stepData}
+          currentStep={form.stepIndex}
+          // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
+          // if not wanted because of broken validation when skipping multiple steps, comment it out
+          onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
         />
-      ) : (
-        <div className="flex flex-row">
-          <StepperView
-            steps={form.stepData}
-            currentStep={form.stepIndex}
-            // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
-            // if not wanted because of broken validation when skipping multiple steps, comment it out
-            onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+        {form.isComplete ? (
+          <FinalStep
+            formData={form.formData}
+            formErrors={form.errors}
+            extraErrors={form.extraErrors}
+            slug={formSlug}
+            schema={eform.schema}
+            onGoToStep={(step: number) => form.setStepIndex(step)}
+            onGoToPreviousStep={() => form.previous()}
           />
+        ) : (
           <div>
             <ThemedForm
               key={`form-${escapedSlug}-step-${form.stepIndex}`}
@@ -88,8 +88,8 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
               />
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </SectionContainer>
   )
 }
