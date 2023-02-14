@@ -62,7 +62,6 @@ const DoubledInputWidgetFieldRJSF = ({
 
   // TODO: fix this code block. Re check what kind of error message it returns and fix in a new way according new task
   const getErrorMessage = (propKey: string): string[] => errorSchema?.[propKey]?.__errors || []
-
   return (
     <WidgetWrapper
       accordion={uiSchema?.['ui:accordion']}
@@ -73,8 +72,8 @@ const DoubledInputWidgetFieldRJSF = ({
         <DoubledInputField
           FirstInputLabel={getLabel(0)}
           SecondInputLabel={getLabel(1)}
-          FirstInputValue={formData[keys[0]]}
-          SecondInputValue={formData[keys[1]]}
+          FirstInputValue={formData?.[keys[0]]}
+          SecondInputValue={formData?.[keys[1]]}
           FirstInputHandler={(e) => handleOnChange(keys[0], e)}
           SecondInputHandler={(e) => handleOnChange(keys[1], e)}
           FirstInputPlaceholder={localUiSchema?.FirstInputPlaceholder as string}
