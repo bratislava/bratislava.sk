@@ -51,7 +51,7 @@ const TaxesFeesCard = (props: TaxesCardBase) => {
       >
         <div className="flex items-center justify-between w-full">
           <div className="w-full flex flex-col pl-6">
-            <span className="text-20-semibold leading-7 mb-1">{title}</span>
+            <span className="text-20-semibold mb-1">{title}</span>
             <span className="text-p3">{`za rok ${yearPay}`}</span>
           </div>
           <div className="w-full justify-end flex items-center">
@@ -97,11 +97,11 @@ const TaxesFeesCard = (props: TaxesCardBase) => {
                 <span className="text-p2-semibold leading-5 mb-1">{`${title} za rok ${yearPay}`}</span>
                 <div className="flex items-center flex-wrap">
                   {status === 'warning' && currentPaid ? (
-                    <span className="text-p3 w-max flex items-center leading-5">{`${priceFormat(
+                    <span className="text-p3 w-max flex items-center">{`${priceFormat(
                       currentPaid,
                     )} / ${priceFormat(finishPrice)}`}</span>
                   ) : (
-                    <span className="text-p3 leading-5">{priceFormat(finishPrice)}</span>
+                    <span className="text-p3">{priceFormat(finishPrice)}</span>
                   )}
                   <div className="flex items-center">
                     <span className="rounded-full w-1 h-1 bg-gray-700 mx-3" />
