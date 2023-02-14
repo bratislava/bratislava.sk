@@ -1,9 +1,8 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
-import React, { DOMAttributes, FC, useState } from 'react'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
+import React, { DOMAttributes } from 'react'
 
 import { ExplicitOptionalType } from '../types/ExplicitOptional'
-import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
   label: string
@@ -27,7 +26,6 @@ const FieldHeader = (props: FieldHeaderProps) => {
     descriptionProps,
     tooltip,
   } = props
-  const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
 
   // STYLES
   const labelStyle = cx('text-p3-semibold sm:text-16-semibold relative text-gray-800', {
@@ -56,7 +54,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
           }
           <div className="flex-column flex items-center">
             {
-              /* TOOLTIP ICON */
+              /* TOOLTIP */
               tooltip && (
                 <div
                   className={cx('flex-column flex items-center', {
@@ -64,22 +62,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
                     'ml-2': !required,
                   })}
                 >
-                  <HelpIcon
-                    className="cursor-pointer w-5 h-5 sm:w-6 sm:h-6"
-                    onMouseOver={() => setIsTooltipOpened(true)}
-                    onMouseLeave={() => setIsTooltipOpened(false)}
-                  />
-                  <div className="relative">
-                    <Tooltip
-                      text={tooltip}
-                      visible={isTooltipOpened}
-                      arrow="bottom"
-                      alignArrow="right"
-                      bottom={15}
-                      right={-13}
-                      absolute
-                    />
-                  </div>
+                  <Tooltip text={tooltip} />
                 </div>
               )
             }
