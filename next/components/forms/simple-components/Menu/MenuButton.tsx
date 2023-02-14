@@ -6,7 +6,7 @@ interface ButtonProps extends AriaButtonProps {
   isPressed: boolean
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+const MenuButton = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { buttonProps } = useButton(props, ref as RefObject<HTMLButtonElement>)
   const { focusProps } = useFocusRing()
   const { children } = props
@@ -22,4 +22,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
   )
 })
 
-export default Button
+export default MenuButton

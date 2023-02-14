@@ -8,7 +8,7 @@ interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
   state: OverlayTriggerState
 }
 
-const Popover = (props: PopoverProps) => {
+const MenuPopover = (props: PopoverProps) => {
   const ref = React.useRef<HTMLDivElement>(null)
   const { state, children } = props
 
@@ -32,4 +32,4 @@ const Popover = (props: PopoverProps) => {
   )
 }
 
-export default Popover
+export default MenuPopover

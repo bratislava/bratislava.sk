@@ -1,5 +1,5 @@
 import type { AriaMenuProps } from '@react-types/menu'
-import MenuItem from 'components/forms/widget-components/Menu/MenuItem'
+import MenuItem from 'components/forms/simple-components/Menu/MenuItem'
 import React from 'react'
 import { useMenu } from 'react-aria'
 import { useTreeState } from 'react-stately'
