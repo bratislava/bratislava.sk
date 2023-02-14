@@ -319,7 +319,7 @@
             "properties": {
               "overlayInput": {
                 "type": "string",
-                "title": "WRITE OVERLAY INPUT"
+                "title": "WRITE OVERLAY INPUT (conditional field)"
               }
             }
           },
@@ -409,11 +409,11 @@
                 "properties": {
                   "firstBonus": {
                     "type": "string",
-                    "title": "First bonus"
+                    "title": "First bonus (conditional field)"
                   },
                   "secondBonus": {
                     "type": "string",
-                    "title": "Second bonus"
+                    "title": "Second bonus (conditional field)"
                   }
                 }
               }
