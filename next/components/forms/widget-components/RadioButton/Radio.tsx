@@ -44,7 +44,7 @@ const Radio = ({
   )
 
   const containerStyle = cx(
-    'group flex relative flex-row items-center rounded-lg gap-3 ',
+    'group flex relative flex-row items-center justify-between rounded-lg gap-3 ',
     className,
     {
       'p-0': variant === 'basic' && !error,
@@ -80,7 +80,7 @@ const Radio = ({
             </div>
           </div>
         ) : (
-          <div className={cx('flex items-center gap-3 w-full', {})}>
+          <div className={cx('flex items-center gap-3', {})}>
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
             <div className={cx('text-16 flex text-gray-700 break-words', {})}>{rest.children}</div>
           </div>
