@@ -1224,7 +1224,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.17.2", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.6", "@babel/runtime@^7.20.7", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.14.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.16.3", "@babel/runtime@^7.17.2", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.9", "@babel/runtime@^7.20.7", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.20.13"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.13.tgz#7055ab8a7cff2b8f6058bf6ae45ff84ad2aded4b"
   integrity sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==
@@ -5453,12 +5453,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash@4.14.182":
-  version "4.14.182"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.182.tgz#05301a4d5e62963227eaafe0ce04dd77c54ea5c2"
-  integrity sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==
-
-"@types/lodash@^4.14.182":
+"@types/lodash@4.14.191", "@types/lodash@^4.14.182":
   version "4.14.191"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.191.tgz#09511e7f7cba275acd8b419ddac8da9a6a79e2fa"
   integrity sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==
@@ -11742,12 +11737,12 @@ husky@^8.0.1:
   resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
   integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
 
-i18next-fs-backend@^1.1.4:
+i18next-fs-backend@^1.1.5:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/i18next-fs-backend/-/i18next-fs-backend-1.2.0.tgz#c498c68c8e6a8ae5ed59bea5e5392a11991de696"
   integrity sha512-pUx3AcgXCbur0jpFA7U67Z2RJflAcIi698Y8VL+phdOqUchahxriV3Cs+M6UkPNQSS/zPEzWLfdJ8EgjB7HVxg==
 
-i18next@^21.8.13:
+i18next@^21.9.1:
   version "21.10.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.10.0.tgz#85429af55fdca4858345d0e16b584ec29520197d"
   integrity sha512-YeuIBmFsGjUfO3qBmMOc0rQaun4mIpGKET5WDwvu8lU7gvwpcariZLNtL0Fzj+zazcHUrlXHiptcFhBMFaxzfg==
@@ -14838,18 +14833,18 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-i18next@11.2.2:
-  version "11.2.2"
-  resolved "https://registry.yarnpkg.com/next-i18next/-/next-i18next-11.2.2.tgz#5d5536b21aa30c6ebe933fd44bd31d08dc00e30f"
-  integrity sha512-ylZBtZnNxI6WBt/BMG1caCwzM/ZS6lp2ZepzoMZxB45eTsnuRV+NyNz4ALqybWbuktwlQ85sT0uoT36hLTv4oQ==
+next-i18next@12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/next-i18next/-/next-i18next-12.1.0.tgz#70926fbe966bc4750d2f68573307bfe36eadba46"
+  integrity sha512-rhos/PVULmZPdC0jpec2MDBQMXdGZ3+Mbh/tZfrDtjgnVN3ucdq7k8BlwsJNww6FnqC8AC31n6dSYuqVzYsGsw==
   dependencies:
-    "@babel/runtime" "^7.18.6"
+    "@babel/runtime" "^7.18.9"
     "@types/hoist-non-react-statics" "^3.3.1"
     core-js "^3"
     hoist-non-react-statics "^3.3.2"
-    i18next "^21.8.13"
-    i18next-fs-backend "^1.1.4"
-    react-i18next "^11.18.0"
+    i18next "^21.9.1"
+    i18next-fs-backend "^1.1.5"
+    react-i18next "^11.18.4"
 
 next-query-params@^4.1.0:
   version "4.1.0"
@@ -16478,7 +16473,7 @@ react-hook-form@^7.42.1:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.43.0.tgz#d0c19b5c4ec561fbf8d652869ccb513c11c772e7"
   integrity sha512-/rVEz7T0gLdSFwPqutJ1kn2e0sQNyb9ci/hmwEYr2YG0KF/LSuRLvNrf9QWJM+gj88CjDpDW5Bh/1AD7B2+z9Q==
 
-react-i18next@^11.18.0:
+react-i18next@^11.18.4:
   version "11.18.6"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.18.6.tgz#e159c2960c718c1314f1e8fcaa282d1c8b167887"
   integrity sha512-yHb2F9BiT0lqoQDt8loZ5gWP331GwctHz9tYQ8A2EIEUu+CcEdjBLQWli1USG3RdWQt3W+jqQLg/d4rrQR96LA==
@@ -16548,10 +16543,10 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-resize-detector@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/react-resize-detector/-/react-resize-detector-7.1.2.tgz#8ef975dd8c3d56f9a5160ac382ef7136dcd2d86c"
-  integrity sha512-zXnPJ2m8+6oq9Nn8zsep/orts9vQv3elrpA+R8XTcW7DVVUJ9vwDwMXaBtykAYjMnkCIaOoK9vObyR7ZgFNlOw==
+react-resize-detector@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/react-resize-detector/-/react-resize-detector-8.0.3.tgz#dab4470aae23bb07deb857230ccf945d000ef99b"
+  integrity sha512-c3eqm5BVcluVhxHsBQnhyPO/5uYB3XHIHz6D1ZOHzU2WcnZF0Cr3KLl5OIozRC2RSsdQlu5vn1PHEqrvKRnIYA==
   dependencies:
     lodash "^4.17.21"
 
@@ -19182,10 +19177,10 @@ use-isomorphic-layout-effect@^1.1.2:
   resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.2.tgz#497cefb13d863d687b08477d9e5a164ad8c1a6fb"
   integrity sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==
 
-use-query-params@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/use-query-params/-/use-query-params-2.1.2.tgz#0bd100a0839e5195106cfb291b43d2159618ca9d"
-  integrity sha512-evg64srKaILvKyRQ1zpXvekTC7rktAT7OAekU7x6naHrOMqLHtq0MHR/PtKIQAP4d7HrkYNVOS8exHhiWy7m3A==
+use-query-params@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/use-query-params/-/use-query-params-2.2.0.tgz#921aa5bf5be653260a763e06ad004e7a960807e5"
+  integrity sha512-MPBwXVZYzFeJEdjv0YgPNFsafUOM8WTpwBEZfNEMlyzbTsf2c+ZpOBkdM95/w4rxzk4eVO3E4DW7v33+VDbiQw==
   dependencies:
     serialize-query-params "^2.0.2"
 
