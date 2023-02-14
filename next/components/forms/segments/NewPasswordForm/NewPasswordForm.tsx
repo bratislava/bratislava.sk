@@ -155,10 +155,8 @@ const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
         variant="category-outline"
         disabled={cnt > 0}
       />
-      <div className="flex justify-between">
-        <div className="text-16-semibold hidden md:flex text-gray-800">
-          {t('login_description')}
-        </div>
+      <div className="flex justify-between flex-col md:flex-row">
+        <div className="text-16-semibold text-gray-800">{t('login_description')}</div>
         <Button
           size="sm"
           variant="link-black"

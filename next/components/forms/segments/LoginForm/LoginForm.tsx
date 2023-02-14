@@ -82,6 +82,16 @@ const LoginForm = ({ onSubmit, error }: Props) => {
           />
         )}
       />
+      <div className="flex justify-between flex-col md:flex-row">
+        <div className="text-16-semibold text-gray-800">{t('forgotten_password_description')}</div>
+        <Button
+          size="sm"
+          variant="link-black"
+          href="/forgotten-password"
+          label={t('forgotten_password_link')}
+          hrefIconHidden
+        />
+      </div>
       <Button
         className="min-w-full"
         type="submit"
@@ -89,15 +99,13 @@ const LoginForm = ({ onSubmit, error }: Props) => {
         variant="category"
         disabled={isSubmitting}
       />
-      <div className="flex justify-between">
-        <div className="text-16-semibold hidden md:flex text-gray-800">
-          {t('forgotten_password_description')}
-        </div>
+      <div className="flex justify-between flex-col md:flex-row">
+        <div className="text-16-semibold text-gray-800">{t('register_description')}</div>
         <Button
           size="sm"
-          variant="link-black"
-          href="/forgotten-password"
-          label={t('forgotten_password_link')}
+          variant="link-category"
+          href="/register"
+          label={t('register_link')}
           hrefIconHidden
         />
       </div>
