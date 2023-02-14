@@ -50,7 +50,7 @@ const PasswordChangePage = ({ page }: AsyncServerProps<typeof getServerSideProps
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <LoginRegisterLayout>
+      <LoginRegisterLayout backButtonHidden={status === AccountStatus.NewPasswordSuccess}>
         <AccountContainer>
           {status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert

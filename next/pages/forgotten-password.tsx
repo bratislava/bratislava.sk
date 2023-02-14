@@ -45,7 +45,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <LoginRegisterLayout>
+      <LoginRegisterLayout backButtonHidden={status === AccountStatus.NewPasswordSuccess}>
         <AccountContainer>
           {status === AccountStatus.NewPasswordRequired ? (
             <NewPasswordForm onSubmit={confirmPassword} onResend={forgotPassword} error={error} />
