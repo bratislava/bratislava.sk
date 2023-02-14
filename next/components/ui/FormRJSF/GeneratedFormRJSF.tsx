@@ -22,15 +22,15 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const form = useFormStepper(escapedSlug, eform.schema)
 
   return (
-    <SectionContainer className="pt-14 md:pt-18">
-      <div className="flex flex-row">
-        <StepperView
-          steps={form.stepData}
-          currentStep={form.stepIndex}
-          // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
-          // if not wanted because of broken validation when skipping multiple steps, comment it out
-          onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
-        />
+    <div className="px-8 lg:px-28 flex flex-row gap-20 w-full">
+      <StepperView
+        steps={form.stepData}
+        currentStep={form.stepIndex}
+        // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
+        // if not wanted because of broken validation when skipping multiple steps, comment it out
+        onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+      />
+      <div className="grow">
         {form.isComplete ? (
           <FinalStep
             formData={form.formData}
@@ -42,7 +42,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
             onGoToPreviousStep={() => form.previous()}
           />
         ) : (
-          <div>
+          <>
             <ThemedForm
               key={`form-${escapedSlug}-step-${form.stepIndex}`}
               ref={form.formRef}
@@ -87,10 +87,10 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
                 endIcon={<ArrowRightIcon />}
               />
             </div>
-          </div>
+          </>
         )}
       </div>
-    </SectionContainer>
+    </div>
   )
 }
 
