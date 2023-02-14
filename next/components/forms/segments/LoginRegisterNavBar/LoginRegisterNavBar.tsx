@@ -56,7 +56,7 @@ export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidd
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center py-5 px-8 -mx-8 shadow-md drop-shadow-md',
+          'h-16 flex items-center py-5 px-8 -mx-8 border-b-2',
           'lg:hidden fixed top-0 w-full bg-white z-50',
         )}
       >
