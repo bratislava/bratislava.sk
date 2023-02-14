@@ -335,6 +335,7 @@
       }
     },
     {
+      "$async": true,
       "properties": {
         "user": {
           "type": "object",

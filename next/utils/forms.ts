@@ -283,7 +283,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const validate = async (): Promise<boolean> => {
     let isValid = formRef?.current?.validateForm() ?? false
-    console.log(schema)
+
     if (schema.$async === true) {
       const newExtraErrors = await validateAsyncProperties(currentSchema, formData, [])
       console.log(newExtraErrors)
@@ -350,9 +350,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }
 
   const handleOnSubmit = async (newFormData: RJSFSchema) => {
-    console.log('HERE 1')
     increaseStepErrors()
-    console.log('HERE')
     setStepFormData(newFormData)
     const isFormValid = await validate()
     if (isFormValid) {
