@@ -72,7 +72,7 @@ export interface AccountError {
 
 let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
-  const [user, setUser] = useState<CognitoUser | null>(null)
+  const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
@@ -216,6 +216,8 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           setUser(cognitoUser)
         })
       })
+    } else {
+      setUser(null)
     }
   }, [])
 
@@ -415,5 +417,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     verifyIdentity,
     changePassword,
     lastEmail: lastCredentials.Username,
+    isAuth: user !== null,
   }
 }

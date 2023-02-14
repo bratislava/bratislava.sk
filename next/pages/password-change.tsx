@@ -8,6 +8,7 @@ import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import PageWrapper from '../components/layouts/PageWrapper'
 import { isProductionDeployment } from '../utils/utils'
@@ -34,9 +35,14 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const PasswordChangePage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { changePassword, error, status } = useAccount()
+  const { changePassword, error, status, isAuth } = useAccount()
   const { t } = useTranslation('account')
   const router = useRouter()
+  useEffect(() => {
+    if (!isAuth) {
+      router.push('/login')
+    }
+  }, [isAuth])
 
   const onConfirm = () => {
     router.push('/')
@@ -49,7 +55,7 @@ const PasswordChangePage = ({ page }: AsyncServerProps<typeof getServerSideProps
           {status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert
               title={t('password_change_success_title')}
-              confirmLabel={t('account_link')}
+              confirmLabel={t('account_continue_link')}
               onConfirm={onConfirm}
             />
           ) : (

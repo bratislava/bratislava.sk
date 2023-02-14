@@ -87,7 +87,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
             <AccountSuccessAlert
               title={t('identity_verification_success_title')}
               description={formatUnicorn(t('identity_verification_success_description'), {})}
-              confirmLabel={t('account_link')}
+              confirmLabel={t('account_continue_link')}
               onConfirm={() => router.push('/')}
             />
           )}
