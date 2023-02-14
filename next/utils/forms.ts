@@ -1,5 +1,4 @@
 import Form from '@rjsf/core'
-import IChangeEvent from '@rjsf/core'
 import {
   ErrorSchema,
   FormValidation,
@@ -11,10 +10,9 @@ import { customizeValidator } from '@rjsf/validator-ajv8'
 import { validateKeyword } from '@utils/api'
 import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
-import { forEach, get, merge } from 'lodash'
+import { get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
 
-import { ThemedForm } from '../components/forms/ThemedForm'
 import { StepData } from '../components/forms/types/TransformedFormData'
 
 export type JsonSchema = JSONSchema7Definition
