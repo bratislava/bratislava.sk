@@ -2,7 +2,7 @@ import { ErrorSchema, RJSFValidationError } from '@rjsf/utils'
 import { getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
 import { JSONSchema7Definition } from 'json-schema'
 
-import { TransformedFormData } from '../forms/steps/Summary/TransformedFormData'
+import { TransformedFormData } from '../components/forms/steps/Summary/TransformedFormData'
 
 export function getFieldData(
   label: string,
