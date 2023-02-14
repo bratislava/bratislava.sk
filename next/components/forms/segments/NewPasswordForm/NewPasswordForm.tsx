@@ -19,6 +19,7 @@ interface Props {
   onSubmit: (verificationCode: string, password: string) => Promise<any>
   onResend: () => Promise<any>
   error?: AccountError | null | undefined
+  lastEmail?: string
 }
 
 // must use `minLength: 1` to implement required field
@@ -51,7 +52,7 @@ const schema = {
   required: ['verificationCode', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
+const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
   const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
   const { t } = useTranslation('account')
   const {
@@ -85,10 +86,13 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
       })}
     >
       <h1 className="text-h3">{t('new_password_title')}</h1>
-      <div>{t('new_password_description')}</div>
+      <div>{formatUnicorn(t('new_password_description'), { email: lastEmail })}</div>
       {error && (
         <Alert
-          message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
+          message={formatUnicorn(t(error.code), {
+            verificationCode: lastVerificationCode,
+            email: lastEmail,
+          })}
           type="error"
           className="min-w-full"
         />
@@ -151,6 +155,18 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         variant="category-outline"
         disabled={cnt > 0}
       />
+      <div className="flex justify-between">
+        <div className="text-16-semibold hidden md:flex text-gray-800">
+          {t('login_description')}
+        </div>
+        <Button
+          size="sm"
+          variant="link-black"
+          href="/login"
+          label={t('login_link')}
+          hrefIconHidden
+        />
+      </div>
     </form>
   )
 }

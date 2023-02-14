@@ -70,7 +70,6 @@ export interface AccountError {
   code: string
 }
 
-let tmpUser: CognitoUser
 let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | undefined | null>()
@@ -318,21 +317,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
-  const completeNewPassword = (newPassword: string) => {
-    return new Promise((resolve) => {
-      tmpUser.completeNewPasswordChallenge(newPassword, null, {
-        onSuccess(result: CognitoUserSession) {
-          setUser(tmpUser)
-          resolve(true)
-        },
-        onFailure(err: AWSError) {
-          setError({ ...err })
-          resolve(false)
-        },
-      })
-    })
-  }
-
   const login = (email: string, password: string | undefined): Promise<boolean> => {
     // login into cognito using aws sdk
     const credentials = {
@@ -385,8 +369,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
         },
 
         newPasswordRequired: (userAttributes, requiredAttributes) => {
-          setStatus(AccountStatus.NewPasswordRequired)
-          tmpUser = cognitoUser
+          console.log('newPasswordRequired', userAttributes, requiredAttributes)
           resolve(false)
         },
         mfaRequired: (challengeName, challengeParameters) => {
@@ -435,6 +418,5 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     changePassword,
     lastEmail: lastCredentials.Username,
     isAuth: user !== null,
-    completeNewPassword,
   }
 }

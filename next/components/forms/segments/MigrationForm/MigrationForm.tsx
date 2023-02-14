@@ -29,7 +29,7 @@ const schema = {
   required: ['email'],
 }
 
-const ForgottenPasswordForm = ({ onSubmit, error }: Props) => {
+const MigrationForm = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -46,7 +46,9 @@ const ForgottenPasswordForm = ({ onSubmit, error }: Props) => {
       className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.email))}
     >
-      <h1 className="text-h3">{t('forgotten_password_title')}</h1>
+      <h1 className="text-h3">{t('migration_title')}</h1>
+      <div>{t('migration_description')}</div>
+      <div>{t('migration_submit_description')}</div>
       {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
       <Controller
         name="email"
@@ -64,7 +66,7 @@ const ForgottenPasswordForm = ({ onSubmit, error }: Props) => {
       <Button
         className="min-w-full"
         type="submit"
-        text={t('forgotten_password_submit')}
+        text={t('migration_submit')}
         variant="category"
         disabled={isSubmitting}
       />
@@ -84,4 +86,4 @@ const ForgottenPasswordForm = ({ onSubmit, error }: Props) => {
   )
 }
 
-export default ForgottenPasswordForm
+export default MigrationForm

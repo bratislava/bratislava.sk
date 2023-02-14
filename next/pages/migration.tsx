@@ -2,7 +2,7 @@ import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
 import AccountSuccessAlert from 'components/forms/segments/AccountSuccessAlert/AccountSuccessAlert'
-import ForgottenPasswordForm from 'components/forms/segments/ForgottenPasswordForm/ForgottenPasswordForm'
+import MigrationForm from 'components/forms/segments/MigrationForm/MigrationForm'
 import NewPasswordForm from 'components/forms/segments/NewPasswordForm/NewPasswordForm'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
@@ -34,7 +34,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
+const MigrationPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { confirmPassword, forgotPassword, error, status, lastEmail } = useAccount()
   const { t } = useTranslation('account')
   const router = useRouter()
@@ -56,12 +56,12 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
             />
           ) : status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert
-              title={t('forgotten_password_success_title')}
+              title={t('migration_success_title')}
               confirmLabel={t('account_continue_link')}
               onConfirm={onConfirm}
             />
           ) : (
-            <ForgottenPasswordForm onSubmit={forgotPassword} error={error} />
+            <MigrationForm onSubmit={forgotPassword} error={error} />
           )}
         </AccountContainer>
       </LoginRegisterLayout>
@@ -69,4 +69,4 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
   )
 }
 
-export default ForgottenPasswordPage
+export default MigrationPage

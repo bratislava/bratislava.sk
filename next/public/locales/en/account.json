@@ -74,6 +74,12 @@
   "old_password_placeholder": "Old password",
   "password_change_submit": "Submit",
   "password_change_success_title": "Password has been changed",
+  "migration_title": "Enter an e-mail",
+  "migration_description": "",
+  "migration_submit_description": "",
+  "migration_submit": "Send code",
+  "migration_success_title": "Account created",
+
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
