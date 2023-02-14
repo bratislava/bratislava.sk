@@ -76,9 +76,9 @@ const Accordion = ({
           >
             <div
               className={cx('font-semibold w-full', {
-                'text-h-base': size === 'sm',
-                'text-h-md': size === 'md',
-                'text-h-lg': size === 'lg',
+                'text-h5': size === 'sm',
+                'text-h4': size === 'md',
+                'text-h3': size === 'lg',
               })}
             >
               {title}
@@ -101,8 +101,8 @@ const Accordion = ({
           {isActive && (
             <div
               className={cx('flex flex-col font-normal', {
-                'text-h-sm': size === 'sm',
-                'text-p-md': size === 'lg' || size === 'md',
+                'text-h6': size === 'sm',
+                'text-20': size === 'lg' || size === 'md',
               })}
             >
               <ReactMarkdown

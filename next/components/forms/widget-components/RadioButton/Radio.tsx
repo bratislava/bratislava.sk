@@ -44,7 +44,7 @@ const Radio = ({
   )
 
   const containerStyle = cx(
-    'group flex justify-between relative flex-row items-center rounded-lg gap-4 ',
+    'group flex relative flex-row items-center rounded-lg gap-3 ',
     className,
     {
       'p-0': variant === 'basic' && !error,
@@ -68,9 +68,9 @@ const Radio = ({
     <div className="w-full">
       <label htmlFor={rest.value} className={containerStyle}>
         {variant === 'card' ? (
-          <div className="w-full flex flex-col items-start gap-4 p-0 ">
+          <div className="w-full flex flex-col items-start gap-3 p-0 ">
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className="text-p-md text-gray-700 font-normal break-words">
+            <div className="text-16 text-gray-700 break-words">
               {rest.children}
               {tooltip && (
                 <div className="mt-8 relative flex flex-row">
@@ -80,11 +80,9 @@ const Radio = ({
             </div>
           </div>
         ) : (
-          <div className={cx('flex items-center gap-4', {})}>
+          <div className={cx('flex items-center gap-3 w-full', {})}>
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className={cx('text-p-md flex font-normal text-gray-700 break-words', {})}>
-              {rest.children}
-            </div>
+            <div className={cx('text-16 flex text-gray-700 break-words', {})}>{rest.children}</div>
           </div>
         )}
         {tooltip && variant !== 'card' && <Tooltip text={tooltip} />}
