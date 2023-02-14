@@ -20,7 +20,7 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, selectHashCode, onR
     'tag align-items-center min-w-14 h-5 inline-block px-2 gap-2.5 text-center',
     {
       'text-16': size === 'large',
-      'text-p3 leading-5': size === 'small' || !size,
+      'text-p3': size === 'small' || !size,
       'py-0.5': size === 'large',
       'rounded-lg': size === 'large',
       rounded: size === 'small' || !size,
@@ -38,7 +38,7 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, selectHashCode, onR
     'tag cursor-pointer self-center inline-block mx-1',
     {
       'text-16 w-3 h-3': size === 'large',
-      'text-p3 leading-5 w-2.5 h-2.5': size === 'small' || !size,
+      'text-p3 w-2.5 h-2.5': size === 'small' || !size,
     },
     selectHashCode,
   )
