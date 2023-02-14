@@ -80,7 +80,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       className,
       {
         // text for lg button
-        'text-20-semibold px-6 py-3.5 leading-6':
+        'text-16-semibold px-4 py-2.5':
           size === 'lg' &&
           !icon &&
           text &&
@@ -88,12 +88,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'negative' ||
             variant === 'black-outline' ||
             variant === 'category' ||
-            variant === 'category-outline' ||
-            variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+            variant === 'category-outline'),
         // text for sm button
-        'text-16-semibold px-5 py-3 leading-5':
+        'text-16-semibold px-4 py-1.5':
           size === 'sm' &&
           !icon &&
           text &&
@@ -101,12 +98,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'negative' ||
             variant === 'black-outline' ||
             variant === 'category' ||
-            variant === 'category-outline' ||
-            variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+            variant === 'category-outline'),
         // icon for lg button
-        'px-3.5 py-3.5':
+        'px-2.5 py-2.5':
           size === 'lg' &&
           icon &&
           !text &&
@@ -128,19 +122,42 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           (size === 'lg' &&
             icon &&
             !text &&
-            (variant === 'plain-category' || variant === 'plain-black')),
-        // icon for sm button
+            (variant === 'plain-category' ||
+              variant === 'plain-black' ||
+              variant === 'plain-negative')),
+
+        // icon for sm button plain variant
         'px-1.5 py-1.5':
           size === 'sm' &&
           icon &&
           !text &&
-          (variant === 'plain-category' || variant === 'plain-black'),
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
+
+        // text for lg button plain variant
+        'text-16-semibold px-3 py-2':
+          size === 'lg' &&
+          !icon &&
+          text &&
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
+
+        // text for sm button plain variant
+        'text-16-semibold px-2 py-1':
+          size === 'sm' &&
+          !icon &&
+          text &&
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
 
         // text for lg link button
-        'text-20-medium leading-8':
+        'text-20-medium':
           size === 'lg' && (variant === 'link-category' || variant === 'link-black'),
         // text for sm link button
-        'text-16-medium leading-6':
+        'text-16-medium':
           size === 'sm' && (variant === 'link-category' || variant === 'link-black'),
 
         'border-2':

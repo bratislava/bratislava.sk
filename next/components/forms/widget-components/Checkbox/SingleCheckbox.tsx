@@ -40,7 +40,7 @@ const SingleCheckBox = ({
   const isSelected = state.isSelected && !rest.isIndeterminate
 
   const checkboxStyle = cx(
-    'flex items-center justify-center w-6 h-6 rounded border-2 border-solid border-gray-700',
+    'flex items-center justify-center min-w-[24px] w-6 h-6 rounded border-2 border-solid border-gray-700',
     {
       'bg-gray-700': (isSelected || rest.isIndeterminate) && !error,
       'group-hover:border-gray-600':
@@ -60,7 +60,7 @@ const SingleCheckBox = ({
   )
 
   const containerStyle = cx(
-    'group flex flex-row  items-center justify-center p-0 gap-4',
+    'group flex flex-row items-center justify-center p-0 gap-3',
     rest.className,
     {
       'py-3 px-4 bg-white border-2 border-solid rounded-lg': variant === 'boxed',
@@ -76,7 +76,7 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('flex select-none font-normal text-p-md text-gray-700 gap-4', {
+  const labelStyle = cx('text-16 flex select-none text-gray-700 gap-3', {
     'w-full': fullWidth,
   })
 
@@ -134,7 +134,7 @@ const SingleCheckBox = ({
         <div className={labelStyle}>
           <div
             className={cx('relative', {
-              'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+              'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
                 required,
             })}
           >

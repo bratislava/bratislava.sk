@@ -78,7 +78,7 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => {
         setLastVerificationCode(data.verificationCode)
         onSubmit(data.verificationCode, data.password)

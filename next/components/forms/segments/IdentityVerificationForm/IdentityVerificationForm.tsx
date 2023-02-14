@@ -53,7 +53,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.rc, data.idCard))}
     >
       <h1 className="text-h3">{t('identity_verification_title')}</h1>
