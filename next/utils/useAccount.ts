@@ -70,9 +70,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     Username: '',
   })
 
-  console.log('USER DATA:', userData)
-  console.log('ERROR:', error)
-
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
     setTemporaryUserData(updatedUserData)

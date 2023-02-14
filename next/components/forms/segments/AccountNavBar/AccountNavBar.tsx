@@ -1,7 +1,6 @@
 import ProfileOutlinedIcon from '@assets/images/account/profile-outlined.svg'
 import VolumeIcon from '@assets/images/account/volume.svg'
 import Hamburger from '@assets/images/ba-hamburger.svg'
-import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
@@ -11,10 +10,12 @@ import useAccount, { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
+import Menu from 'components/forms/simple-components/Menu/Menu'
 import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { ReactNode, useState } from 'react'
+import { Item } from 'react-stately'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -33,35 +34,6 @@ interface LanguageSelectProps {
 interface LanguageOption {
   key: string
   title: string
-}
-
-const useComponentVisible = (
-  initialIsVisible: boolean,
-  setIsSelectClicked: (value: boolean) => void,
-) => {
-  const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible)
-  const ref = useRef<HTMLDivElement>(null)
-
-  const handleClickOutside = useCallback(
-    (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as HTMLDivElement)) {
-        setIsComponentVisible(false)
-        setIsSelectClicked(false)
-      } else {
-        setIsComponentVisible(true)
-      }
-    },
-    [setIsSelectClicked],
-  )
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true)
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true)
-    }
-  }, [handleClickOutside])
-
-  return { ref, isComponentVisible, setIsComponentVisible }
 }
 
 const Divider = ({ className }: { className?: string }) => {
@@ -102,6 +74,11 @@ export const AccountNavBar = ({
 
   const linkClassName = 'whitespace-nowrap py-4'
 
+  const onSelectMenuItem = (key: React.Key) => {
+    const selectedMenuItem = menuItems?.find((opt) => opt.id.toString() === key)
+    if (selectedMenuItem) onRouteChange(selectedMenuItem)
+  }
+
   return (
     <>
       {/* Desktop */}
@@ -139,11 +116,17 @@ export const AccountNavBar = ({
                   {isAuth ? (
                     <>
                       <Divider />
-                      <AccountSelect
-                        menuItems={menuItems}
-                        onChange={onRouteChange}
-                        userData={userData}
-                      />
+                      <Menu
+                        buttonLeftEl={<Avatar userData={userData} />}
+                        label={userData?.given_name || userData?.family_name || ''}
+                        onAction={onSelectMenuItem}
+                      >
+                        {menuItems.map((option) => (
+                          <Item key={option.id}>
+                            <AccountMenuItem menuItem={option} />
+                          </Item>
+                        ))}
+                      </Menu>
                       <Divider />
                     </>
                   ) : (
@@ -174,14 +157,21 @@ export const AccountNavBar = ({
                   </UILink>
 
                   <div className="text-font/75 relative flex items-center bg-transparent">
-                    <LanguageSelect
-                      className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
-                      {...languageSelectProps}
-                    />
+                    <LanguageMenu {...languageSelectProps} />
                   </div>
                 </>
               ) : isAuth ? (
-                <AccountSelect menuItems={menuItems} onChange={onRouteChange} userData={userData} />
+                <Menu
+                  buttonLeftEl={<Avatar userData={userData} />}
+                  label={userData?.given_name || userData?.family_name || ''}
+                  onAction={onSelectMenuItem}
+                >
+                  {menuItems.map((option) => (
+                    <Item key={option.id}>
+                      <AccountMenuItem menuItem={option} />
+                    </Item>
+                  ))}
+                </Menu>
               ) : (
                 <>
                   <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
@@ -238,10 +228,7 @@ export const AccountNavBar = ({
               <Link href={t('searchLink')} variant="plain" className="p-4">
                 <SearchIcon />
               </Link>
-              <LanguageSelect
-                className="text-p3-semibold cursor-pointer appearance-none bg-transparent focus:outline-none active:outline-none"
-                {...languageSelectProps}
-              />
+              <LanguageMenu {...languageSelectProps} />
             </div>
           </div>
         )}
@@ -274,6 +261,59 @@ export const AccountNavBar = ({
   )
 }
 
+const LanguageMenu = ({ languages, currentLanguage, onLanguageChange }: LanguageSelectProps) => {
+  const onSelectLanguage = (key: React.Key) => {
+    const selectedOption = languages?.find((opt) => opt.key === key)
+    if (selectedOption) onLanguageChange?.(selectedOption)
+  }
+
+  const dropDownOptions = languages?.filter((option) => option.key !== currentLanguage) || []
+  return (
+    <Menu
+      label={currentLanguage?.toUpperCase() || ''}
+      onAction={onSelectLanguage}
+      className="flex w-11 h-auto min-h-[60px] flex-col items-center rounded-lg bg-main-200 pt-1 pb-3"
+      containerHeaderEl={
+        <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-main-200 m-auto" />
+      }
+    >
+      {dropDownOptions.map((option) => (
+        <Item key={option.key}>
+          <LanguageMenuItem option={option} />
+        </Item>
+      ))}
+    </Menu>
+  )
+}
+
+const LanguageMenuItem = ({ option }: { option: LanguageOption }) => {
+  return (
+    <div
+      className="text-p2 hover:text-p2-semibold cursor-pointer text-font mt-3 h-6 w-6"
+      key={option.key}
+    >
+      {option.title}
+    </div>
+  )
+}
+
+const AccountMenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
+  const { t } = useTranslation()
+
+  return (
+    <div className="cursor-pointer flex py-2 px-5">
+      <div className="flex relative flex-row items-start gap-2 rounded-xl p-4 bg-gray-50">
+        <div className="flex h-2 w-2 items-center justify-center">
+          <span>{menuItem.icon}</span>
+        </div>
+      </div>
+      <div className="text-p2 hover:text-p2-semibold text-font p-2 whitespace-nowrap">
+        {t(menuItem.title)}
+      </div>
+    </div>
+  )
+}
+
 const Avatar = ({ userData }: { userData?: UserData | null }) => {
   return (
     <div className="flex relative flex-row items-start gap-2 rounded-full p-2 bg-main-100">
@@ -286,122 +326,6 @@ const Avatar = ({ userData }: { userData?: UserData | null }) => {
           )}
         </span>
       </div>
-    </div>
-  )
-}
-
-interface AccountSelectProps {
-  menuItems: MenuItem[]
-  onChange: (selectedItem: MenuItem) => void
-  userData: UserData | null
-}
-
-const AccountSelect = ({ menuItems, onChange, userData }: AccountSelectProps) => {
-  const [isSelectClicked, setIsSelectClicked] = useState(false)
-  const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
-  const { t } = useTranslation()
-
-  const handleChange = (selectedKey: number) => {
-    const selectedMenuItem = menuItems?.find((opt) => opt.id === selectedKey)
-
-    if (selectedMenuItem) {
-      onChange(selectedMenuItem)
-      setIsSelectClicked(false)
-    }
-  }
-
-  if (!menuItems) return null
-
-  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setIsSelectClicked(!isSelectClicked)
-  }
-
-  return (
-    <div className="relative flex cursor-pointer items-center" ref={ref} onClick={handleClick}>
-      <Avatar userData={userData} />
-      <div className="ml-3 font-light lg:font-semibold">
-        {userData?.given_name || userData?.family_name}
-      </div>
-      <ChevronDownSmall
-        className={`ml-3 hidden mix-blend-normal lg:flex ${
-          isSelectClicked && isComponentVisible && 'mb-1 -rotate-180'
-        }`}
-      />
-      {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-12 -left-3 z-20 mt-1 flex h-auto cursor-default flex-col items-center justify-center lg:left-0">
-          <div className="flex h-auto min-h-[60px] w-full flex-col rounded-lg bg-white py-2 shadow-[0_8px_16px_rgba(0,0,0,0.12)]">
-            {menuItems.map((option) => (
-              <div key={option.id} className="cursor-pointer flex py-2 px-5">
-                <div className="flex relative flex-row items-start gap-2 rounded-xl p-4 bg-gray-50">
-                  <div className="flex h-2 w-2 items-center justify-center">
-                    <span>{option.icon}</span>
-                  </div>
-                </div>
-                <div
-                  className="text-p2 hover:text-p2-semibold text-font p-2 whitespace-nowrap"
-                  onClick={() => handleChange(option.id)}
-                >
-                  {t(option.title)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-
-const LanguageSelect = ({
-  languages: options,
-  currentLanguage: current,
-  onLanguageChange: onChange,
-}: LanguageSelectProps) => {
-  const [isSelectClicked, setIsSelectClicked] = useState(false)
-  const { ref, isComponentVisible } = useComponentVisible(false, setIsSelectClicked)
-  const dropDownOptions = options?.filter((option) => option.key != current)
-  const handleChange: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (!onChange) return
-
-    const selectedKey = e.currentTarget.innerText.toLowerCase()
-    const selectedOption = options?.find((opt) => opt.key === selectedKey)
-
-    if (selectedOption) {
-      onChange(selectedOption)
-      setIsSelectClicked(false)
-    }
-  }
-
-  if (!options) return null
-
-  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    setIsSelectClicked(!isSelectClicked)
-  }
-
-  return (
-    <div className="relative flex w-12 cursor-pointer items-center" ref={ref} onClick={handleClick}>
-      <div className="font-light lg:font-semibold">{current?.toUpperCase()} </div>
-      <ChevronDownSmall
-        className={`ml-3 hidden mix-blend-normal lg:flex ${
-          isSelectClicked && isComponentVisible && 'mb-1 -rotate-180'
-        }`}
-      />
-      {isSelectClicked && isComponentVisible && (
-        <div className="absolute top-6 -left-3 z-20 mt-1 flex h-auto w-11 cursor-default flex-col items-center justify-center lg:left-0">
-          <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-[#F8D7D4]" />
-          <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
-            {dropDownOptions?.map((option) => (
-              <div
-                className="text-p2 hover:text-p2-semibold cursor-pointer text-font mt-3 h-6 w-6"
-                key={option.key}
-                onClick={handleChange}
-              >
-                {option.title}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
