@@ -63,7 +63,7 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) 
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => {
         setLastVerificationCode(data.verificationCode)
         onSubmit(data.verificationCode)

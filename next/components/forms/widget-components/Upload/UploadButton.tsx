@@ -28,7 +28,7 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
 
   // STYLES
   const buttonClassNames = cx(
-    'flex-col justify-center flex h-14 w-36 rounded-lg border-2 border-gray-300 py-3 px-6 bg-white',
+    'h-full flex-col justify-center flex rounded-lg border-2 border-gray-300 py-3 px-4 bg-white',
     {
       'cursor-pointer': !disabled,
       'hover:border-gray-400 focus:border-gray-700 active:border-gray-700':
@@ -39,7 +39,7 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
     },
   )
 
-  const buttonInfoClassNames = cx('flex flex-col justify-center text-p3', {
+  const buttonInfoClassNames = cx('text-p3 flex flex-col justify-center', {
     'min-w-40': supportedFormats || sizeLimit,
   })
 
@@ -54,11 +54,11 @@ const UploadButtonComponent: ForwardRefRenderFunction<HTMLDivElement, UploadButt
   return (
     <div className="flex flex-row gap-4 w-fit h-fit">
       <div className={buttonClassNames} onClick={handleOnClick} ref={ref} data-value={value}>
-        <div className="flex flex-row justify-center">
-          <div className="mr-2 h-6 w-6 flex flex-col justify-center self-center">
-            <UploadIcon className="text-20" />
+        <div className="w-full flex gap-2">
+          <div className="h-6 w-6 flex justify-center items-center">
+            <UploadIcon />
           </div>
-          <p className="text-20">Upload</p>
+          <p className="text-16">Upload</p>
         </div>
       </div>
       {sizeLimit || supportedFormats ? (

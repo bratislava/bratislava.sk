@@ -7,31 +7,31 @@
 
   /* headings */
   .text-h1-lg {
-    @apply text-h-2xl lg:text-h-3xl font-semibold;
+    @apply text-h-xl lg:text-h-3xl font-semibold;
   }
 
   .text-h1 {
-    @apply text-h-xl lg:text-h-2xl font-semibold;
+    @apply text-h-lg lg:text-h-2xl font-semibold;
   }
 
   .text-h2 {
-    @apply text-h-lg lg:text-h-xl font-semibold;
+    @apply text-h-md lg:text-h-xl font-semibold;
   }
 
   .text-h3 {
-    @apply text-h-md lg:text-h-lg font-semibold;
+    @apply text-h-base lg:text-h-lg font-semibold;
   }
 
   .text-h4 {
-    @apply text-h-base lg:text-h-md font-semibold;
+    @apply text-h-sm lg:text-h-md font-semibold;
   }
 
   .text-h5 {
-    @apply text-h-sm lg:text-h-base font-semibold;
+    @apply text-h-xs lg:text-h-base font-semibold;
   }
 
   .text-h6 {
-    @apply text-h-sm font-semibold;
+    @apply text-h-xs font-semibold;
   }
 
   /* paragraphs */
@@ -88,94 +88,94 @@
 
   /* heading */
   .text-h1-lg-light {
-    @apply text-h-2xl lg:text-h-3xl font-light;
+    @apply text-h-xl lg:text-h-3xl font-light;
   }
   .text-h1-lg-normal {
-    @apply text-h-2xl lg:text-h-3xl font-normal;
+    @apply text-h-xl lg:text-h-3xl font-normal;
   }
   .text-h1-lg-medium {
-    @apply text-h-2xl lg:text-h-3xl font-medium;
+    @apply text-h-xl lg:text-h-3xl font-medium;
   }
   .text-h1-lg-bold {
-    @apply text-h-2xl lg:text-h-3xl font-bold;
+    @apply text-h-xl lg:text-h-3xl font-bold;
   }
 
   .text-h1-light {
-    @apply text-h-xl lg:text-h-2xl font-light;
+    @apply text-h-lg lg:text-h-2xl font-light;
   }
   .text-h1-normal {
-    @apply text-h-xl lg:text-h-2xl font-normal;
+    @apply text-h-lg lg:text-h-2xl font-normal;
   }
   .text-h1-medium {
-    @apply text-h-xl lg:text-h-2xl font-medium;
+    @apply text-h-lg lg:text-h-2xl font-medium;
   }
   .text-h1-bold {
-    @apply text-h-xl lg:text-h-2xl font-bold;
+    @apply text-h-lg lg:text-h-2xl font-bold;
   }
 
   .text-h2-light {
-    @apply text-h-lg lg:text-h-xl font-light;
+    @apply text-h-md lg:text-h-xl font-light;
   }
   .text-h2-normal {
-    @apply text-h-lg lg:text-h-xl font-normal;
+    @apply text-h-md lg:text-h-xl font-normal;
   }
   .text-h2-medium {
-    @apply text-h-lg lg:text-h-xl font-medium;
+    @apply text-h-md lg:text-h-xl font-medium;
   }
   .text-h2-bold {
-    @apply text-h-lg lg:text-h-xl font-bold;
+    @apply text-h-md lg:text-h-xl font-bold;
   }
 
   .text-h3-light {
-    @apply text-h-md lg:text-h-lg font-light;
+    @apply text-h-base lg:text-h-lg font-light;
   }
   .text-h3-normal {
-    @apply text-h-md lg:text-h-lg font-normal;
+    @apply text-h-base lg:text-h-lg font-normal;
   }
   .text-h3-medium {
-    @apply text-h-md lg:text-h-lg font-medium;
+    @apply text-h-base lg:text-h-lg font-medium;
   }
   .text-h3-bold {
-    @apply text-h-md lg:text-h-lg font-bold;
+    @apply text-h-base lg:text-h-lg font-bold;
   }
 
   .text-h4-light {
-    @apply text-h-base lg:text-h-md font-light;
+    @apply text-h-sm lg:text-h-md font-light;
   }
   .text-h4-normal {
-    @apply text-h-base lg:text-h-md font-normal;
+    @apply text-h-sm lg:text-h-md font-normal;
   }
   .text-h4-medium {
-    @apply text-h-base lg:text-h-md font-medium;
+    @apply text-h-sm lg:text-h-md font-medium;
   }
   .text-h4-bold {
-    @apply text-h-base lg:text-h-md font-bold;
+    @apply text-h-sm lg:text-h-md font-bold;
   }
 
   .text-h5-light {
-    @apply text-h-sm lg:text-h-base font-light;
+    @apply text-h-xs lg:text-h-base font-light;
   }
   .text-h5-normal {
-    @apply text-h-sm lg:text-h-base font-normal;
+    @apply text-h-xs lg:text-h-base font-normal;
   }
   .text-h5-medium {
-    @apply text-h-sm lg:text-h-base font-medium;
+    @apply text-h-xs lg:text-h-base font-medium;
   }
   .text-h5-bold {
-    @apply text-h-sm lg:text-h-base font-bold;
+    @apply text-h-xs lg:text-h-base font-bold;
   }
 
   .text-h6-light {
-    @apply text-h-sm font-light;
+    @apply text-h-xs font-light;
   }
   .text-h6-normal {
-    @apply text-h-sm font-normal;
+    @apply text-h-xs font-normal;
   }
   .text-h6-medium {
-    @apply text-h-sm font-medium;
+    @apply text-h-xs font-medium;
   }
   .text-h6-bold {
-    @apply text-h-sm font-bold;
+    @apply text-h-xs font-bold;
   }
 
   /* paragraphs */
@@ -191,7 +191,7 @@
     @apply font-bold text-p-base lg:text-p-md;
   }
 
-  .text-p2{
+  .text-p2 {
     @apply font-normal text-p-base;
   }
 

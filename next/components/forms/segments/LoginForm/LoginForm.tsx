@@ -51,7 +51,7 @@ const LoginForm = ({ onSubmit, error }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.email, data.password))}
     >
       <h1 className="text-h3">{t('login_title')}</h1>
@@ -90,10 +90,11 @@ const LoginForm = ({ onSubmit, error }: Props) => {
         disabled={isSubmitting}
       />
       <div className="flex justify-between">
-        <div className="text-20-semibold hidden md:flex text-gray-800">
+        <div className="text-16-semibold hidden md:flex text-gray-800">
           {t('forgotten_password_description')}
         </div>
         <Button
+          size="sm"
           variant="link-black"
           href="/forgotten-password"
           label={t('forgotten_password_link')}
