@@ -76,7 +76,7 @@ const TaxesFeesCard = (props: TaxesCardBase) => {
           </div>
         </div>
         <div className="cursor-pointer w-16 min-w-[64px] h-full border-l-2">
-          <Link href="/account/taxes-and-fees#">
+          <Link href="/account/taxes-and-fees/1">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className="w-full h-full items-center flex justify-center">
               <ChevronRightIcon />
@@ -89,7 +89,7 @@ const TaxesFeesCard = (props: TaxesCardBase) => {
         id="mobile-card"
         className="bg-white w-full h-24 flex lg:hidden items-center justify-between border-b-2 border-gray-200"
       >
-        <Link href="/account/taxes-and-fees#">
+        <Link href="/account/taxes-and-fees/1">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="w-full h-full items-center flex justify-center">
             <div className="w-full flex items-start justify-between">

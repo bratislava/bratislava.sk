@@ -137,5 +137,18 @@
     "modal_title": "Zmeniť e-mail",
     "modal_message": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktujte nás na support@bratislava.sk.",
     "modal_thanks": "Ďakujeme!"
-  }
+  },
+  "pay_tax": "Zaplatiť",
+  "back_to_list": "Naspäť na zoznam",
+  "city": "Mesto",
+  "tax_created": "Vytvorená",
+  "tax_paid": "Uhradená",
+  "download_pdf": "Stiahnuť PDF",
+  "personal_info": "Osobné informácie",
+  "name_and_surname": "Meno a priezvisko",
+  "permanent_address": "Adresa trvalého pobytu",
+  "correspondence_address": "Korešpondenčná adresa",
+  "taxpayer_id": "Osobný identifikátor daňovníka",
+  "equips": "Vybavuje",
+  "contact": "Kontakt"
 }
