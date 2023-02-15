@@ -221,15 +221,7 @@ export const AccountNavBar = ({
           'lg:hidden fixed top-0 w-full bg-white z-50 gap-x-6',
         )}
       >
-        <Brand
-          url="/"
-          className="grow"
-          title={
-            <p className="text-p2 text-font group-hover:text-gray-600">
-              <span className="font-semibold">Bratislava</span>
-            </p>
-          }
-        />
+        <Brand url="/" className="grow" />
         {!navHidden && (
           <div className={cx('flex items-center gap-x-5')}>
             <div className="text-h4 text-font/50 relative flex cursor-pointer items-center bg-transparent">
