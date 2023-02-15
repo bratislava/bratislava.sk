@@ -1,6 +1,7 @@
 import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
+import AccountLink from 'components/forms/segments/AccountLink/AccountLink'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
@@ -82,16 +83,11 @@ const LoginForm = ({ onSubmit, error }: Props) => {
           />
         )}
       />
-      <div className="flex justify-between flex-col md:flex-row">
-        <div className="text-16-semibold text-gray-800">{t('forgotten_password_description')}</div>
-        <Button
-          size="sm"
-          variant="link-black"
-          href="/forgotten-password"
-          label={t('forgotten_password_link')}
-          hrefIconHidden
-        />
-      </div>
+      <AccountLink
+        label={t('forgotten_password_link')}
+        description={t('forgotten_password_description')}
+        href="/forgotten-password"
+      />
       <Button
         className="min-w-full"
         type="submit"
@@ -99,16 +95,12 @@ const LoginForm = ({ onSubmit, error }: Props) => {
         variant="category"
         disabled={isSubmitting}
       />
-      <div className="flex justify-between flex-col md:flex-row">
-        <div className="text-16-semibold text-gray-800">{t('register_description')}</div>
-        <Button
-          size="sm"
-          variant="link-category"
-          href="/register"
-          label={t('register_link')}
-          hrefIconHidden
-        />
-      </div>
+      <AccountLink
+        label={t('register_link')}
+        href="/register"
+        description={t('register_description')}
+        variant="category"
+      />
     </form>
   )
 }
