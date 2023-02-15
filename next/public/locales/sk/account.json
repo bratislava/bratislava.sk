@@ -150,5 +150,9 @@
   "correspondence_address": "Korešpondenčná adresa",
   "taxpayer_id": "Osobný identifikátor daňovníka",
   "equips": "Vybavuje",
-  "contact": "Kontakt"
+  "contact": "Kontakt",
+  "tax_liability_breakdown": "Rozpis daňovej povinnosti",
+  "land_tax": "Daň z pozemkov",
+  "construction_tax": "Daň zo stavby",
+  "apartments_tax": "Daň z bytov"
 }

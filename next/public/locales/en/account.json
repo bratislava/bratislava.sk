@@ -149,5 +149,9 @@
   "correspondence_address": "Address for correspondence",
   "taxpayer_id": "Personal identifier of the taxpayer",
   "equips": "Equips",
-  "contact": "Contact"
+  "contact": "Contact",
+  "tax_liability_breakdown": "Tax liability",
+  "land_tax": "Land tax",
+  "construction_tax": "Construction tax",
+  "apartments_tax": "Tax on apartments"
 }
