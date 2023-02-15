@@ -53,6 +53,7 @@ const MigrationPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) =>
               onResend={forgotPassword}
               error={error}
               lastEmail={lastEmail}
+              fromMigration
             />
           ) : status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert

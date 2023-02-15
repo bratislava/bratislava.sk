@@ -20,6 +20,7 @@ interface Props {
   onResend: () => Promise<any>
   error?: AccountError | null | undefined
   lastEmail: string
+  fromMigration?: boolean
 }
 
 // must use `minLength: 1` to implement required field
@@ -52,7 +53,7 @@ const schema = {
   required: ['verificationCode', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
+const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail, fromMigration }: Props) => {
   const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
   const { t } = useTranslation('account')
   const {
@@ -85,7 +86,9 @@ const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
         onSubmit(data.verificationCode, data.password)
       })}
     >
-      <h1 className="text-h3">{t('new_password_title')}</h1>
+      <h1 className="text-h3">
+        {t(fromMigration ? 'migration_new_password_title' : 'new_password_title')}
+      </h1>
       <div>{formatUnicorn(t('new_password_description'), { email: lastEmail })}</div>
       {error && (
         <Alert
@@ -116,8 +119,8 @@ const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_label')}
-            placeholder={t('new_password_placeholder')}
+            label={t(fromMigration ? 'password_label' : 'new_password_label')}
+            placeholder={t(fromMigration ? 'password_placeholder' : 'new_password_placeholder')}
             tooltip={t('password_description')}
             {...field}
             errorMessage={errors.password}
@@ -130,8 +133,14 @@ const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_confirmation_label')}
-            placeholder={t('new_password_confirmation_placeholder')}
+            label={t(
+              fromMigration ? 'password_confirmation_label' : 'new_password_confirmation_label',
+            )}
+            placeholder={t(
+              fromMigration
+                ? 'password_confirmation_placeholder'
+                : 'new_password_confirmation_placeholder',
+            )}
             {...field}
             errorMessage={errors.passwordConfirmation}
           />

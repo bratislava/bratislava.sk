@@ -81,10 +81,11 @@
   "migration_description": "Potrebujeme overiť váš e-mail. Zadajte e-mail, ktorý ste používali pre digitálnu platbu dane z nehnuteľností v roku 2022.",
   "migration_submit_description": "Po stlačení tlačidla vám na zadaný e-mail odošleme jednorázový overovací kód.",
   "migration_submit": "Odoslať overovací kód",
-  "migration_success_title": "Overenie bolo úspešné a konto vytvorené",
+  "migration_success_title": "Overenie bolo úspešné a konto aktivované",
   "migration_recognized_title": "Dobrý deň, p. {fullname}.",
   "migration_recognized_description": "Potrebujeme overiť váš e-mail {email}.",
   "migration_register_description": "Neplatili ste ešte daň digitálne?",
+  "migration_new_password_title": "Zadajte overovací kód a vytvorte si heslo",
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
