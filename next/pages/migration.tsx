@@ -45,7 +45,7 @@ const MigrationPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) =>
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <LoginRegisterLayout backButtonHidden={status === AccountStatus.NewPasswordSuccess}>
+      <LoginRegisterLayout backButtonHidden>
         <AccountContainer>
           {status === AccountStatus.NewPasswordRequired ? (
             <NewPasswordForm
