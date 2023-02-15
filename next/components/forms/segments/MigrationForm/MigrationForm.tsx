@@ -103,7 +103,9 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
       </div>
       {!email && (
         <div className="flex justify-between flex-col md:flex-row">
-          <div className="text-16-semibold text-gray-800">{t('register_description')}</div>
+          <div className="text-16-semibold text-gray-800">
+            {t('migration_register_description')}
+          </div>
           <Button
             size="sm"
             variant="link-category"

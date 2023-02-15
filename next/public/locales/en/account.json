@@ -83,6 +83,7 @@
   "migration_success_title": "Account created",
   "migration_recognized_title": "Hello {fullname}.",
   "migration_recognized_description": "",
+  "migration_register_description": "Don't have an account?",
 
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
