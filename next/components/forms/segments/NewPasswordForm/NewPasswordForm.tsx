@@ -19,7 +19,7 @@ interface Props {
   onSubmit: (verificationCode: string, password: string) => Promise<any>
   onResend: () => Promise<any>
   error?: AccountError | null | undefined
-  lastEmail?: string
+  lastEmail: string
 }
 
 // must use `minLength: 1` to implement required field

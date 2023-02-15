@@ -81,6 +81,8 @@
   "migration_submit_description": "",
   "migration_submit": "Send code",
   "migration_success_title": "Account created",
+  "migration_recognized_title": "Hello {fullname}.",
+  "migration_recognized_description": "",
 
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",

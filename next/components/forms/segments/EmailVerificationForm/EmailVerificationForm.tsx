@@ -16,7 +16,7 @@ interface Props {
   onSubmit: (verificationCode: string) => Promise<any>
   onResend: () => Promise<any>
   error?: AccountError | null | undefined
-  lastEmail?: string
+  lastEmail: string
   cntDisabled?: boolean
 }
 
@@ -71,11 +71,11 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail, cntDisabl
       })}
     >
       <h1 className="text-h3">{t('email_verification_title')}</h1>
-      <div>{formatUnicorn(t('email_verification_description'), { email: lastEmail || '' })}</div>
+      <div>{formatUnicorn(t('email_verification_description'), { email: lastEmail })}</div>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), {
-            email: lastEmail || '',
+            email: lastEmail,
             verificationCode: lastVerificationCode,
           })}
           type="error"

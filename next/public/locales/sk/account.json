@@ -82,6 +82,8 @@
   "migration_submit_description": "Po stlačení tlačidla vám na zadaný e-mail odošleme jednorázový overovací kód.",
   "migration_submit": "Odoslať overovací kód",
   "migration_success_title": "Overenie bolo úspešné a konto vytvorené",
+  "migration_recognized_title": "Dobrý deň, p. {fullname}.",
+  "migration_recognized_description": "Potrebujeme overiť váš e-mail {email}.",
 
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "Kód {verificationCode} sa nepodarilo overiť. Skontrolujte jeho správnosť.",
