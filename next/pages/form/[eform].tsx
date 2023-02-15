@@ -63,6 +63,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
+//it looks like we will not need this, but we can keep it for now
 const initDefaultSchemaFields = (schema: StrictRJSFSchema) => {
   if (!schema || typeof schema !== 'object') return
   if (schema.type && schema.type !== 'object' && !schema.default) {

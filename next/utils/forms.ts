@@ -329,7 +329,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   }
 
   const skipToStep = (newNextStepIndex: number) => {
-    console.log('NEW NEXT STEP INDEX', newNextStepIndex)
     setNextStepIndex(newNextStepIndex)
   }
 
