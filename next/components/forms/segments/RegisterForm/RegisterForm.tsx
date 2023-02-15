@@ -1,7 +1,6 @@
 import { formatUnicorn } from '@utils/string'
-import { UserData } from '@utils/useAccount'
+import { AccountError, UserData } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
 import Button from 'components/forms/simple-components/Button'
@@ -23,7 +22,7 @@ interface Data {
 
 interface Props {
   onSubmit: (email: string, password: string, userData: UserData) => Promise<any>
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
   lastEmail?: string
 }
 

@@ -53,7 +53,13 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <LoginRegisterLayout>
+      <LoginRegisterLayout
+        backButtonHidden={[
+          AccountStatus.EmailVerificationSuccess,
+          AccountStatus.IdentityVerificationRequired,
+          AccountStatus.IdentityVerificationSuccess,
+        ].includes(status)}
+      >
         <AccountContainer>
           {status === AccountStatus.Idle && (
             <RegisterForm lastEmail={lastEmail} onSubmit={signUp} error={error} />
@@ -87,7 +93,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
             <AccountSuccessAlert
               title={t('identity_verification_success_title')}
               description={formatUnicorn(t('identity_verification_success_description'), {})}
-              confirmLabel={t('account_link')}
+              confirmLabel={t('account_continue_link')}
               onConfirm={() => router.push('/')}
             />
           )}
