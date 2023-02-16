@@ -32,6 +32,13 @@ const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => 
     }
   }
 
+  const handleOnChangeStep = (stepIndex: number) => {
+    setIsCollapsed(true)
+    if (onChangeStep) {
+      onChangeStep(stepIndex)
+    }
+  }
+
   return (
     <>
       <div className="hidden xs:block">
@@ -64,7 +71,7 @@ const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => 
               <StepperViewList
                 steps={steps}
                 currentStep={currentStep}
-                onChangeStep={onChangeStep}
+                onChangeStep={handleOnChangeStep}
               />
             </div>
           </div>
