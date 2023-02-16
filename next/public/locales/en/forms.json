@@ -18,5 +18,6 @@
   "postal_code_placeholder": "Postal code",
   "postal_code_description": "",
   "postal_code_format": "Postal code is not valid",
-  "changes_submit": "Submit"
+  "changes_submit": "Submit",
+  "all_steps": "All steps"
 }
