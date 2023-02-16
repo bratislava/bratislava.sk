@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import ChevronDown from '../../../assets/images/forms/chevron-down.svg'
+import { useClickOutsideHandler } from '../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import { StepData } from '../types/TransformedFormData'
 import StepperViewList from './StepperViewList'
 import StepperViewRow from './StepperViewRow'
@@ -16,12 +17,27 @@ interface StepperViewProps {
 const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => {
   const { t } = useTranslation('forms')
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
+  const [isClickedOutside, setIsClickedOutside] = useState<boolean>(false)
+
+  const handleDropdownClick = () => {
+    setIsClickedOutside(true)
+    setIsCollapsed((state) => !state)
+    setTimeout(() => setIsClickedOutside(false), 200)
+  }
+  const { clickOutsideRef } = useClickOutsideHandler(handleDropdownClick)
+
+  const handleOnClickDropdownIcon = () => {
+    if (isCollapsed && !isClickedOutside) {
+      setIsCollapsed(false)
+    }
+  }
+
   return (
     <>
       <div className="hidden xs:block">
         <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
       </div>
-      <div className="block xs:hidden flex flex-col">
+      <div className="xs:hidden flex flex-col">
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg">
           {isCollapsed ? (
             <StepperViewRow
@@ -36,12 +52,15 @@ const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => 
           )}
           <ChevronDown
             className={cx({ 'rotate-180': !isCollapsed })}
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={handleOnClickDropdownIcon}
           />
         </div>
         {!isCollapsed && (
           <div className="relative h-0 w-full">
-            <div className="max-h-96 w-full bg-white absolute top-0 mt-1 z-50">
+            <div
+              className="max-h-96 w-full bg-white absolute top-0 mt-1 z-50"
+              ref={clickOutsideRef}
+            >
               <StepperViewList
                 steps={steps}
                 currentStep={currentStep}
