@@ -1,5 +1,9 @@
+import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
+
+import ChevronDown from '../../../assets/images/chevron-down-thin-small.svg'
 import { StepData } from '../types/TransformedFormData'
-import StepperViewRow from './StepperViewRow'
+import StepperViewList from './StepperViewList'
 
 interface StepperViewProps {
   steps: StepData[]
@@ -8,22 +12,20 @@ interface StepperViewProps {
 }
 
 const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => {
+  const { t } = useTranslation('forms')
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   return (
-    <div className="p-3">
-      {steps.map((step: StepData, key: number) => (
-        <StepperViewRow
-          key={key}
-          title={step.title}
-          order={key + 1}
-          isCurrent={key === currentStep}
-          isFilled={step.isFilled}
-          isLast={key === steps.length - 1}
-          onClick={() => {
-            if (onChangeStep) onChangeStep(key)
-          }}
-        />
-      ))}
-    </div>
+    <>
+      <div className="hidden xs:block">
+        <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
+      </div>
+      <div className="block xs:hidden">
+        <div className="p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg">
+          {isCollapsed && <h6 className="text-h6 grow">{t('all_steps')}</h6>}
+          <ChevronDown />
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -62,13 +62,19 @@ const StepperShowCase = () => {
   return (
     <Wrapper direction="column" title="Stepper">
       <Stack direction="column">
-        <StepperView steps={steps1} currentStep={0} />
+        <div className="w-full xs:w-fit">
+          <StepperView steps={steps1} currentStep={0} />
+        </div>
       </Stack>
       <Stack direction="column">
-        <StepperView steps={steps2} currentStep={1} />
+        <div className="w-full xs:w-fit">
+          <StepperView steps={steps2} currentStep={1} />
+        </div>
       </Stack>
       <Stack direction="column">
-        <StepperView steps={steps3} currentStep={4} />
+        <div className="w-full xs:w-fit">
+          <StepperView steps={steps3} currentStep={4} />
+        </div>
       </Stack>
     </Wrapper>
   )
