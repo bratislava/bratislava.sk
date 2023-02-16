@@ -11,10 +11,11 @@ import StepperViewRow from './StepperViewRow'
 interface StepperViewProps {
   steps: StepData[]
   currentStep: number
+  forceMobileSize?: boolean
   onChangeStep?: (stepIndex: number) => void
 }
 
-const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => {
+const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: StepperViewProps) => {
   const { t } = useTranslation('forms')
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [isClickedOutside, setIsClickedOutside] = useState<boolean>(false)
@@ -41,10 +42,10 @@ const StepperView = ({ steps, currentStep, onChangeStep }: StepperViewProps) => 
 
   return (
     <>
-      <div className="hidden xs:block">
+      <div className={cx('hidden', { 'xs:block': !forceMobileSize })}>
         <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
       </div>
-      <div className="xs:hidden flex flex-col">
+      <div className={cx('flex flex-col', { 'xs:hidden': !forceMobileSize })}>
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg">
           {isCollapsed ? (
             <StepperViewRow
