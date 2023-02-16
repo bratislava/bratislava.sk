@@ -1,6 +1,6 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import TooltipComponent from 'components/forms/simple-components/Tooltip'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkDirective from 'remark-directive'
@@ -12,8 +12,8 @@ type AccountMarkdownBase = {
   content?: string
 }
 
-const Tooltip = ({ children }: never) => {
-  return <TooltipComponent tooltip={children} />
+const TooltipComponent = ({ children }: never) => {
+  return children ? <Tooltip text={children} position="top-right" /> : null
 }
 
 const AccountMarkdown = ({ className, content }: AccountMarkdownBase) => {
@@ -55,7 +55,7 @@ const AccountMarkdown = ({ className, content }: AccountMarkdownBase) => {
               {children}
             </UILink>
           ),
-          tooltip: Tooltip,
+          tooltip: TooltipComponent,
           // without casting object to 'any' it throws an error TS
         } as any
       }
