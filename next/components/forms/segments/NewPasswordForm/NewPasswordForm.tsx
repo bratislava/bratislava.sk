@@ -1,6 +1,6 @@
 import { formatUnicorn } from '@utils/string'
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
@@ -18,7 +18,7 @@ interface Data {
 interface Props {
   onSubmit: (verificationCode: string, password: string) => Promise<any>
   onResend: () => Promise<any>
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field
@@ -78,7 +78,7 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => {
         setLastVerificationCode(data.verificationCode)
         onSubmit(data.verificationCode, data.password)

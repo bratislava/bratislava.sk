@@ -1,7 +1,6 @@
 import { formatUnicorn } from '@utils/string'
-import { UserData } from '@utils/useAccount'
+import { AccountError, UserData } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
 import Button from 'components/forms/simple-components/Button'
@@ -23,7 +22,7 @@ interface Data {
 
 interface Props {
   onSubmit: (email: string, password: string, userData: UserData) => Promise<any>
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
   lastEmail?: string
 }
 
@@ -102,7 +101,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => {
         const userData: UserData = {
           email: data.email,
@@ -113,7 +112,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         return onSubmit(data.email, data.password, userData)
       })}
     >
-      <h1 className="text-h3">{t('register_title')}</h1>
+      <h1 className="text-h2">{t('register_title')}</h1>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), { email: lastEmail || '' })}
@@ -167,8 +166,8 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_label')}
-            placeholder={t('new_password_placeholder')}
+            label={t('password_label')}
+            placeholder={t('password_placeholder')}
             tooltip={t('password_description')}
             {...field}
             errorMessage={errors.password}
@@ -181,8 +180,8 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_confirmation_label')}
-            placeholder={t('new_password_confirmation_placeholder')}
+            label={t('password_confirmation_label')}
+            placeholder={t('password_confirmation_placeholder')}
             {...field}
             errorMessage={errors.passwordConfirmation}
           />
@@ -230,10 +229,16 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         disabled={isSubmitting}
       />
       <div className="flex justify-between">
-        <div className="text-20-semibold hidden md:flex text-gray-800">
+        <div className="text-16-semibold hidden md:flex text-gray-800">
           {t('login_description')}
         </div>
-        <Button variant="link-black" href="/login" label={t('login_link')} hrefIconHidden />
+        <Button
+          size="sm"
+          variant="link-black"
+          href="/login"
+          label={t('login_link')}
+          hrefIconHidden
+        />
       </div>
     </form>
   )

@@ -35,7 +35,7 @@ const ServiceCard = ({
       </div>
       <div className="flex items-end w-full h-full">
         <div className="flex justify-between items-center h-max w-full">
-          <div className="text-p-base font-semibold">{buttonText}</div>
+          <div className="text-p2-semibold">{buttonText}</div>
           <CircleArrowRight />
         </div>
       </div>
