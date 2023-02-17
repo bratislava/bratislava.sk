@@ -39,7 +39,7 @@ const IntroSection = () => {
         <div className="flex gap-3 1.5lg:gap-8 overflow-x-scroll scrollbar-hide px-4 1.5lg:px-0">
           <ServiceCard
             title="Záväzné stanovisko k investičnej činnosti"
-            description="Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade."
+            description="Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade."
             icon={<CompassServiceIcon />}
             buttonText="Prejsť na žiadosť"
           />
