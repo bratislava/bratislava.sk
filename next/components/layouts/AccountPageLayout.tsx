@@ -35,7 +35,7 @@ const sectionsList = [
   },
   {
     id: 2,
-    title: 'account:account_section_payment',
+    title: 'account:account_section_payment.title',
     icon: <PaymentIcon />,
     link: '/account/taxes-and-fees',
   },
