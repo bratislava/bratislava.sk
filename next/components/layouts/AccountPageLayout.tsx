@@ -21,7 +21,12 @@ type AccountPageLayoutBase = {
 }
 
 const sectionsList = [
-  { id: 0, title: 'account:account_section_intro', icon: <HomeIcon />, link: '/account' },
+  {
+    id: 0,
+    title: 'account:account_section_intro.navigation',
+    icon: <HomeIcon />,
+    link: '/account',
+  },
   {
     id: 1,
     title: 'account:account_section_services',
