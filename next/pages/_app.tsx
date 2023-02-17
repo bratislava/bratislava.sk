@@ -64,7 +64,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <SSRProvider>
             <Component {...pageProps} />
 
-            {isClient && isProductionDeployment() && <DynamicChat />}
+            {isClient &&
+              isProductionDeployment() &&
+              pageProps.page.data?.length > 0 &&
+              (pageProps.page.data[0].id === '611' ||
+                pageProps.page.data[0].attributes.parentPage.data?.attributes.slug ===
+                  'bratislava-pre-ukrajinu') && <DynamicChat />}
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>
