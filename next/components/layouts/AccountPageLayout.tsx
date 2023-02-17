@@ -11,8 +11,8 @@ import useAccount from '@utils/useAccount'
 import cx from 'classnames'
 import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { ReactNode, useEffect } from 'react'
 
 type AccountPageLayoutBase = {
@@ -30,7 +30,7 @@ const sectionsList = [
   },
   {
     id: 2,
-    title: 'account:account_section_payment',
+    title: 'account:account_section_payment.title',
     icon: <PaymentIcon />,
     link: '/account/taxes-and-fees',
   },
