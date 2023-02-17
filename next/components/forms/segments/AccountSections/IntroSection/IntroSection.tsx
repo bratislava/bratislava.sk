@@ -1,5 +1,6 @@
 import useAccount from '@utils/useAccount'
 import AccountSectionHeader from 'components/forms/segments/AccountSectionHeader/AccountSectionHeader'
+import ActualBlock from 'components/forms/segments/AccountSections/IntroSection/ActualBlock'
 import Banner from 'components/forms/simple-components/Banner'
 import Button from 'components/forms/simple-components/Button'
 import ServiceCard from 'components/forms/simple-components/ServiceCard'
@@ -20,6 +21,13 @@ const IntroSection = () => {
         text={t('account_section_intro.header_text')}
       />
       <div className="w-full max-w-screen-1.5lg m-auto py-6 lg:py-16">
+        <ActualBlock
+          title="Digitálna platba dane z nehnuteľností "
+          text="Daň z nehnuteľností pre rok 2023 spracovávame od 20. apríla do 30. mája. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky."
+          imagePath="/img/kpba.png"
+          buttonTitle="Zaplatiť daň z nehnuteľností"
+          onPress={() => alert('Actual')}
+        />
         <div className="w-full flex items-center justify-between mb-8 px-4 1.5lg:px-0">
           <h2 className="text-h2">{t('account_section_services')}</h2>
           <Button

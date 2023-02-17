@@ -85,7 +85,6 @@
   "migration_recognized_description": "",
   "migration_register_description": "Don't have an account?",
   "migration_new_password_title": "New password",
-
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
@@ -96,7 +95,8 @@
     "navigation": "Intro",
     "header_title": "Hello,",
     "header_text": "Ďakujeme, že ste medzi prvými používateľmi a používateľkami Bratislavského konta.",
-    "all_services": "All services"
+    "all_services": "All services",
+    "actual_title": "Actual"
   },
   "account_section_services": "Municipal services",
   "account_section_payment": {
