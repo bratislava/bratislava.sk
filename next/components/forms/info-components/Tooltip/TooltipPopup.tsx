@@ -52,7 +52,7 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
         )}
       >
         <p className="w-max">
-          <ReactMarkdown>{text}</ReactMarkdown>
+          <ReactMarkdown>{text || ''}</ReactMarkdown>
         </p>
       </div>
       {arrow && (
