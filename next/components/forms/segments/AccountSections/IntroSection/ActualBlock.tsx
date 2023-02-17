@@ -11,7 +11,7 @@ type ActualBlockBase = {
   onPress?: () => void
 }
 
-const ActualBlock = ({ text, title, imagePath, buttonTitle, onPress }: ActualBlockBase) => {
+const ActualBlock = ({ text, title, imagePath = '', buttonTitle, onPress }: ActualBlockBase) => {
   const isDisplay = text || title || imagePath
   const { t } = useTranslation('account')
   return isDisplay ? (
