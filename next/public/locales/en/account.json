@@ -38,7 +38,7 @@
   "verification_description": "Didn't receive a verification code?",
   "verification_cnt_description": "Wait {cnt}s.",
   "verification_resend": "Resend code",
-  "new_password_submit": "Confirm",
+  "new_password_submit": "Continue",
   "verification_code_label": "Code",
   "verification_code_placeholder": "Code",
   "verification_code_required": "Code is required.",
@@ -85,6 +85,7 @@
   "migration_recognized_description": "",
   "migration_register_description": "Don't have an account?",
   "migration_new_password_title": "New password",
+  "migration_new_password_submit": "Confirm",
 
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
