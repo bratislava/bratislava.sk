@@ -21,12 +21,12 @@ interface Props {
 
 const MigrationForm = ({ onSubmit, error }: Props) => {
   const router = useRouter()
-  const email =
+  const queryEmail =
     router.query.email && typeof router.query.email === 'string'
       ? decodeURIComponent(router.query.email)
       : ''
 
-  const fullname =
+  const queryFullname =
     router.query.fullname && typeof router.query.fullname === 'string'
       ? decodeURIComponent(router.query.fullname)
       : ''
@@ -38,7 +38,7 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
         type: 'string',
         minLength: 1,
         // validate input, not query param
-        format: email ? undefined : 'email',
+        format: queryEmail ? undefined : 'email',
         errorMessage: { minLength: 'account:email_required', format: 'account:email_format' },
       },
     },
@@ -53,7 +53,7 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
     formState: { isSubmitting },
   } = useHookForm<Data>({
     schema,
-    defaultValues: { email },
+    defaultValues: { email: queryEmail },
   })
 
   return (
@@ -62,16 +62,16 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
       onSubmit={handleSubmit((data: Data) => onSubmit(data.email))}
     >
       <h1 className="text-h3">
-        {formatUnicorn(t(email ? 'migration_recognized_title' : 'migration_title'), { fullname })}
+        {formatUnicorn(t(queryEmail ? 'migration_recognized_title' : 'migration_title'), { fullname: queryFullname })}
       </h1>
       <div>
-        {formatUnicorn(t(email ? 'migration_recognized_description' : 'migration_description'), {
-          email,
+        {formatUnicorn(t(queryEmail ? 'migration_recognized_description' : 'migration_description'), {
+          email: queryEmail,
         })}
       </div>
       <div>{t('migration_submit_description')}</div>
       {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
-      {!email && (
+      {!queryEmail && (
         <Controller
           name="email"
           control={control}
@@ -94,7 +94,7 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
         disabled={isSubmitting}
       />
       <LoginAccountLink />
-      {!email && (
+      {!queryEmail && (
         <AccountLink
           label={t('register_link')}
           variant="category"
