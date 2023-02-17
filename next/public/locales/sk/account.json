@@ -38,7 +38,7 @@
   "verification_description": "Nedostali ste overovací kód?",
   "verification_cnt_description": "Počkajte ešte {cnt}s a požiadajte o nový overovací kód.",
   "verification_resend": "Odoslať nový kód",
-  "new_password_submit": "Overiť e-mail",
+  "new_password_submit": "Pokračovať",
   "verification_code_label": "Overovací kód",
   "verification_code_placeholder": "Overovací kód",
   "verification_code_required": "Overovací kód je povinný",
@@ -86,6 +86,8 @@
   "migration_recognized_description": "Potrebujeme overiť váš e-mail {email}.",
   "migration_register_description": "Neplatili ste ešte daň digitálne?",
   "migration_new_password_title": "Zadajte overovací kód a vytvorte si heslo",
+  "migration_new_password_submit": "Overiť e-mail",
+
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
   "LimitExceededException": "Skúste to znova neskôr.",
