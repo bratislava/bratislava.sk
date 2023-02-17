@@ -16,7 +16,7 @@ const BackButton = () => {
   return (
     <>
       <ArrowLeft className="cursor-pointer mx-1" onClick={() => router.back()} />
-      <div className="border-b-solid border-r-2 h-6 mx-6" />
+      <div className="border-b-solid border-r-2 h-6 mx-6 hidden lg:flex" />
     </>
   )
 }
@@ -56,12 +56,20 @@ export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidd
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center py-5 px-8 -mx-8 shadow-md drop-shadow-md',
+          'h-16 flex items-center py-5 px-8 -mx-8 border-b-2',
           'lg:hidden fixed top-0 w-full bg-white z-50',
         )}
       >
         {!backButtonHidden && <BackButton />}
-        <Brand url="/" />
+        <Brand
+          url="/"
+          className="mx-auto"
+          title={
+            <p className="text-p2 text-font group-hover:text-gray-600">
+              <span className="font-semibold">Bratislava</span>
+            </p>
+          }
+        />
       </div>
     </>
   )

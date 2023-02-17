@@ -2,6 +2,7 @@ import { formatUnicorn } from '@utils/string'
 import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
+import LoginAccountLink from 'components/forms/segments/LoginAccountLink/LoginAccountLink'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
@@ -19,6 +20,8 @@ interface Props {
   onSubmit: (verificationCode: string, password: string) => Promise<any>
   onResend: () => Promise<any>
   error?: AccountError | null | undefined
+  lastEmail: string
+  fromMigration?: boolean
 }
 
 // must use `minLength: 1` to implement required field
@@ -51,7 +54,7 @@ const schema = {
   required: ['verificationCode', 'password', 'passwordConfirmation'],
 }
 
-const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
+const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail, fromMigration }: Props) => {
   const [lastVerificationCode, setLastVerificationCode] = useState<string>('')
   const { t } = useTranslation('account')
   const {
@@ -84,11 +87,16 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         onSubmit(data.verificationCode, data.password)
       })}
     >
-      <h1 className="text-h3">{t('new_password_title')}</h1>
-      <div>{t('new_password_description')}</div>
+      <h1 className="text-h3">
+        {t(fromMigration ? 'migration_new_password_title' : 'new_password_title')}
+      </h1>
+      <div>{formatUnicorn(t('new_password_description'), { email: lastEmail })}</div>
       {error && (
         <Alert
-          message={formatUnicorn(t(error.code), { verificationCode: lastVerificationCode })}
+          message={formatUnicorn(t(error.code), {
+            verificationCode: lastVerificationCode,
+            email: lastEmail,
+          })}
           type="error"
           className="min-w-full"
         />
@@ -112,8 +120,8 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_label')}
-            placeholder={t('new_password_placeholder')}
+            label={t(fromMigration ? 'password_label' : 'new_password_label')}
+            placeholder={t(fromMigration ? 'password_placeholder' : 'new_password_placeholder')}
             tooltip={t('password_description')}
             {...field}
             errorMessage={errors.password}
@@ -126,8 +134,14 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         render={({ field }) => (
           <PasswordField
             required
-            label={t('new_password_confirmation_label')}
-            placeholder={t('new_password_confirmation_placeholder')}
+            label={t(
+              fromMigration ? 'password_confirmation_label' : 'new_password_confirmation_label',
+            )}
+            placeholder={t(
+              fromMigration
+                ? 'password_confirmation_placeholder'
+                : 'new_password_confirmation_placeholder',
+            )}
             {...field}
             errorMessage={errors.passwordConfirmation}
           />
@@ -151,6 +165,7 @@ const NewPasswordForm = ({ onSubmit, error, onResend }: Props) => {
         variant="category-outline"
         disabled={cnt > 0}
       />
+      <LoginAccountLink />
     </form>
   )
 }

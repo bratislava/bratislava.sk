@@ -1,3 +1,4 @@
+import { ROUTES } from '@utils/constants'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
@@ -35,12 +36,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { confirmPassword, forgotPassword, error, status } = useAccount()
+  const { confirmPassword, forgotPassword, error, status, lastEmail } = useAccount()
   const { t } = useTranslation('account')
   const router = useRouter()
 
   const onConfirm = () => {
-    router.push('/')
+    router.push(ROUTES.ACCOUNT)
   }
 
   return (
@@ -48,7 +49,12 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
       <LoginRegisterLayout backButtonHidden={status === AccountStatus.NewPasswordSuccess}>
         <AccountContainer>
           {status === AccountStatus.NewPasswordRequired ? (
-            <NewPasswordForm onSubmit={confirmPassword} onResend={forgotPassword} error={error} />
+            <NewPasswordForm
+              onSubmit={confirmPassword}
+              onResend={forgotPassword}
+              error={error}
+              lastEmail={lastEmail}
+            />
           ) : status === AccountStatus.NewPasswordSuccess ? (
             <AccountSuccessAlert
               title={t('forgotten_password_success_title')}

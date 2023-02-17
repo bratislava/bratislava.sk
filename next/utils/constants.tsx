@@ -36,7 +36,10 @@ export const eServicesData = {
   url: 'https://esluzby.bratislava.sk',
 }
 
-export const MOCK_HAMBURGER_MENU_ITEMS: { sk: HamburgerSubLoginItem[]; en: HamburgerSubLoginItem[] } = {
+export const MOCK_HAMBURGER_MENU_ITEMS: {
+  sk: HamburgerSubLoginItem[]
+  en: HamburgerSubLoginItem[]
+} = {
   sk: [
     {
       ...contactsData,
@@ -95,4 +98,12 @@ export const MOCK_HAMBURGER_MENU_ITEMS: { sk: HamburgerSubLoginItem[]; en: Hambu
     //   url: '#',
     // },
   ],
+}
+
+export const ROUTES = {
+  HOME: '/',
+  ACCOUNT: '/account',
+  REGISTER: '/register',
+  LOGIN: '/login',
+  FORGOTTEN_PASSWORD: 'forgotten-password',
 }

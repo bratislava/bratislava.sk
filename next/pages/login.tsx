@@ -1,3 +1,4 @@
+import { ROUTES } from '@utils/constants'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
@@ -42,7 +43,7 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
       typeof router.query.from === 'string' &&
       router.query.from.startsWith('/')
         ? decodeURIComponent(router.query.from)
-        : '/'
+        : ROUTES.ACCOUNT
     router.push(from)
   }
 
