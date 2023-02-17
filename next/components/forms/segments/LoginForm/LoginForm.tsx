@@ -1,3 +1,4 @@
+import { ROUTES } from '@utils/constants'
 import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
@@ -86,7 +87,7 @@ const LoginForm = ({ onSubmit, error }: Props) => {
       <AccountLink
         label={t('forgotten_password_link')}
         description={t('forgotten_password_description')}
-        href="/forgotten-password"
+        href={ROUTES.FORGOTTEN_PASSWORD}
       />
       <Button
         className="min-w-full"
@@ -97,7 +98,7 @@ const LoginForm = ({ onSubmit, error }: Props) => {
       />
       <AccountLink
         label={t('register_link')}
-        href="/register"
+        href={ROUTES.REGISTER}
         description={t('register_description')}
         variant="category"
       />

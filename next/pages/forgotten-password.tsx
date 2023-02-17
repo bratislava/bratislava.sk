@@ -1,3 +1,4 @@
+import { ROUTES } from '@utils/constants'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
@@ -40,7 +41,7 @@ const ForgottenPasswordPage = ({ page }: AsyncServerProps<typeof getServerSidePr
   const router = useRouter()
 
   const onConfirm = () => {
-    router.push('/')
+    router.push(ROUTES.ACCOUNT)
   }
 
   return (

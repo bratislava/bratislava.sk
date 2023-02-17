@@ -1,3 +1,4 @@
+import { ROUTES } from '@utils/constants'
 import { formatUnicorn } from '@utils/string'
 import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
@@ -62,12 +63,17 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
       onSubmit={handleSubmit((data: Data) => onSubmit(data.email))}
     >
       <h1 className="text-h3">
-        {formatUnicorn(t(queryEmail ? 'migration_recognized_title' : 'migration_title'), { fullname: queryFullname })}
+        {formatUnicorn(t(queryEmail ? 'migration_recognized_title' : 'migration_title'), {
+          fullname: queryFullname,
+        })}
       </h1>
       <div>
-        {formatUnicorn(t(queryEmail ? 'migration_recognized_description' : 'migration_description'), {
-          email: queryEmail,
-        })}
+        {formatUnicorn(
+          t(queryEmail ? 'migration_recognized_description' : 'migration_description'),
+          {
+            email: queryEmail,
+          },
+        )}
       </div>
       <div>{t('migration_submit_description')}</div>
       {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
@@ -99,7 +105,7 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
           label={t('register_link')}
           variant="category"
           description={t('migration_register_description')}
-          href="/register"
+          href={ROUTES.REGISTER}
         />
       )}
     </form>
