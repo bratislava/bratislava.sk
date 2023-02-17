@@ -92,7 +92,12 @@
   "UserNotConfirmedException": "User is not confirmed.",
   "UsernameExistsException": "An account with the given email already exists.",
   "IncorectPasswordException": "Incorrect password.",
-  "account_section_intro": "Intro",
+  "account_section_intro": {
+    "navigation": "Intro",
+    "header_title": "Hello,",
+    "header_text": "Ďakujeme, že ste medzi prvými používateľmi a používateľkami Bratislavského konta.",
+    "all_services": "All services"
+  },
   "account_section_services": "Municipal services",
   "account_section_payment": {
     "title": "Taxes and fees",
