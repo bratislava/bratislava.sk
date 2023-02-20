@@ -4,18 +4,20 @@ import { useRef, useState } from 'react'
 import { TooltipTriggerProps, useHover } from 'react-aria'
 import { useTooltipTriggerState } from 'react-stately'
 
+export type TooltipPosition =
+  | 'top-right'
+  | 'top-left'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'right-top'
+  | 'right-bottom'
+  | 'left-top'
+  | 'left-bottom'
+
 type TooltipPopupBase = {
   text?: string
   arrow?: boolean
-  position?:
-    | 'top-right'
-    | 'top-left'
-    | 'bottom-right'
-    | 'bottom-left'
-    | 'right-top'
-    | 'right-bottom'
-    | 'left-top'
-    | 'left-bottom'
+  position?: TooltipPosition
   className?: string
 } & TooltipTriggerProps
 

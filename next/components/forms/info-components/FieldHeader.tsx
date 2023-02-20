@@ -1,6 +1,6 @@
 import cx from 'classnames'
-import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
-import React, { DOMAttributes } from 'react'
+import Tooltip, { TooltipPosition } from 'components/forms/info-components/Tooltip/Tooltip'
+import { DOMAttributes } from 'react'
 
 import { ExplicitOptionalType } from '../types/ExplicitOptional'
 
@@ -13,6 +13,7 @@ interface FieldHeaderProps {
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
   tooltip?: string
+  tooltipPosition?: TooltipPosition
 }
 
 const FieldHeader = (props: FieldHeaderProps) => {
@@ -25,6 +26,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
     labelProps,
     descriptionProps,
     tooltip,
+    tooltipPosition,
   } = props
 
   // STYLES
@@ -62,7 +64,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
                     'ml-2': !required,
                   })}
                 >
-                  <Tooltip text={tooltip} />
+                  <Tooltip text={tooltip} position={tooltipPosition} />
                 </div>
               )
             }

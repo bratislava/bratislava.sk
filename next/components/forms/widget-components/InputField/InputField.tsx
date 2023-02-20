@@ -4,6 +4,7 @@ import LockIcon from '@assets/images/forms/lock.svg'
 import MailIcon from '@assets/images/forms/mail.svg'
 import PersonIcon from '@assets/images/forms/person.svg'
 import cx from 'classnames'
+import { TooltipPosition } from 'components/forms/info-components/Tooltip/Tooltip'
 import { forwardRef, ReactNode, RefObject, useEffect, useState } from 'react'
 import { useTextField } from 'react-aria'
 
@@ -41,6 +42,7 @@ export type InputBase = {
   resetIcon?: boolean
   disabled?: boolean
   tooltip?: string
+  tooltipPosition?: TooltipPosition
   onChange?: (value?: string) => void
   size?: SizeType
   endIcon?: ReactNode
@@ -66,6 +68,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       onChange,
       endIcon,
       customErrorPlace = false,
+      tooltipPosition,
       ...rest
     },
     ref,
@@ -151,6 +154,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           required={required}
           explicitOptional={explicitOptional}
           tooltip={tooltip}
+          tooltipPosition={tooltipPosition}
         />
         <div className="relative">
           {leftIcon && (
