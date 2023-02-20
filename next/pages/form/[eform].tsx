@@ -63,20 +63,20 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-//it looks like we will not need this, but we can keep it for now
-const initDefaultSchemaFields = (schema: StrictRJSFSchema) => {
-  if (!schema || typeof schema !== 'object') return
-  if (schema.type && schema.type !== 'object' && !schema.default) {
-    Object.assign(schema, { default: null })
-  }
-  Object.values(schema).forEach((value) => {
-    if (Array.isArray(value)) {
-      value.forEach((item) => initDefaultSchemaFields(item))
-    } else {
-      initDefaultSchemaFields(value)
-    }
-  })
-}
+// it looks like we will not need this, but we can keep it for now
+// const initDefaultSchemaFields = (schema: StrictRJSFSchema) => {
+//   if (!schema || typeof schema !== 'object') return
+//   if (schema.type && schema.type !== 'object' && !schema.default) {
+//     Object.assign(schema, { default: null })
+//   }
+//   Object.values(schema).forEach((value) => {
+//     if (Array.isArray(value)) {
+//       value.forEach((item) => initDefaultSchemaFields(item))
+//     } else {
+//       initDefaultSchemaFields(value)
+//     }
+//   })
+// }
 
 const FormTestPage = ({
   footer,
