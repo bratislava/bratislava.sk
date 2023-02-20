@@ -19,7 +19,7 @@ type CheckboxesRJSFOptions = {
 
 interface CheckboxesWidgetRJSFProps extends WidgetProps {
   options: CheckboxesRJSFOptions
-  value: string[]
+  value: string[] | null
   label: string
   schema: StrictRJSFSchema
   onChange: (value: string[]) => void
@@ -51,13 +51,13 @@ const CheckboxWidgetRJSF = (props: CheckboxesWidgetRJSFProps) => {
     return checkboxOptions.find((option) => option.value === radioValue)?.tooltip
   }
   const isDisabled = (valueName: string) => {
-    return value.length === maxItems && !value.includes(valueName)
+    return value?.length === maxItems && !value?.includes(valueName)
   }
   return (
     <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <CheckboxGroup
         rawErrors={rawErrors}
-        value={value}
+        value={value ?? undefined}
         onChange={onChange}
         className={className}
         label={label}

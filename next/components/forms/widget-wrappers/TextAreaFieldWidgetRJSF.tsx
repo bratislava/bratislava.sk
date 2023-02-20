@@ -9,7 +9,7 @@ import TextAreaField from '../widget-components/TextAreaField/TextAreaField'
 type TextAreaRJSFOptions = WidgetOptions
 
 interface TextAreaFieldWidgetRJSFProps extends WidgetProps {
-  value: string
+  value: string | null
   label: string
   placeholder?: string
   rawErrors?: string[]
@@ -57,7 +57,7 @@ const TextAreaFieldWidgetRJSF = (props: TextAreaFieldWidgetRJSFProps) => {
       spaceTop={spaceTop}
     >
       <TextAreaField
-        value={value}
+        value={value ?? undefined}
         label={label}
         placeholder={placeholder}
         required={required}

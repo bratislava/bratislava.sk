@@ -2,6 +2,7 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
+import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -63,7 +64,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <SSRProvider>
             <Component {...pageProps} />
 
-            {isClient && <DynamicChat />}
+            {isClient && isProductionDeployment() && <DynamicChat />}
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>
