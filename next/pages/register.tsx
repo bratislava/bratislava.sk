@@ -3,6 +3,7 @@ import { formatUnicorn } from '@utils/string'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import AccountSuccessAlert from 'components/forms/segments/AccountSuccessAlert/AccountSuccessAlert'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
 import IdentityVerificationForm from 'components/forms/segments/IdentityVerificationForm/IdentityVerificationForm'
@@ -85,6 +86,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               onCancel={() => router.push(ROUTES.ACCOUNT)}
             >
               <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
+              <AccountMarkdown content={t('register_success_content')} variant="sm" />
             </AccountSuccessAlert>
           )}
           {status === AccountStatus.IdentityVerificationRequired && (
