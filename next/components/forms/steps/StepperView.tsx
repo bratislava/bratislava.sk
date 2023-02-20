@@ -42,10 +42,10 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
 
   return (
     <>
-      <div className={cx('hidden', { 'xs:block': !forceMobileSize })}>
+      <div className={cx('hidden', { 'sm:block': !forceMobileSize })}>
         <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
       </div>
-      <div className={cx('flex flex-col', { 'xs:hidden': !forceMobileSize })}>
+      <div className={cx('flex flex-col', { 'sm:hidden': !forceMobileSize })}>
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg">
           {isCollapsed ? (
             <StepperViewRow

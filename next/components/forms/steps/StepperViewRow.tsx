@@ -15,7 +15,7 @@ const StepperViewRow = (props: StepperViewRowProps) => {
   const { title, order, isCurrent, isFilled, isLast, onClick, className } = props
 
   const iconClassName = cx(
-    'flew-row w-8 h-8 rounded-full flex justify-center items-center border-2',
+    'min-w-8 w-8 flex-row h-8 rounded-full flex justify-center items-center border-2 shrink-0',
     {
       'bg-gray-700 border-gray-700 text-white': isFilled || isCurrent,
       'border-gray-300 text-gray-300 bg-transparent': !isFilled && !isCurrent,
