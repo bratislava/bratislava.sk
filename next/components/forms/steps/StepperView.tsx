@@ -1,3 +1,4 @@
+import CloseIcon from '@assets/images/close.svg'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
@@ -46,33 +47,40 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
         <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
       </div>
       <div
-        className={cx('flex flex-col cursor-pointer', { 'sm:hidden': !forceMobileSize })}
+        className={cx('flex flex-col', { 'sm:hidden': !forceMobileSize })}
         onClick={handleOnClickDropdownIcon}
       >
-        <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg">
-          {isCollapsed ? (
-            <StepperViewRow
-              className="grow"
-              title={steps[currentStep].title}
-              order={currentStep + 1}
-              isCurrent
-              isLast
-            />
-          ) : (
-            <h6 className="text-h6 grow">{t('all_steps')}</h6>
-          )}
+        <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg cursor-pointer">
+          <StepperViewRow
+            className="grow"
+            title={steps[currentStep]?.title}
+            order={currentStep + 1}
+            isCurrent
+            isLast
+          />
           <ChevronDown className={cx({ 'rotate-180': !isCollapsed })} />
         </div>
         {!isCollapsed && (
           <div
-            className="inset-0 bg-white absolute mt-1 z-50 overflow-y-scroll drop-shadow-xl"
+            className="bg-gray-200 inset-0 fixed mt-1 z-50 flex flex-col gap-0.5"
             ref={clickOutsideRef}
           >
-            <StepperViewList
-              steps={steps}
-              currentStep={currentStep}
-              onChangeStep={handleOnChangeStep}
-            />
+            <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
+              <h6 className="text-h6 grow">{t('all_steps')}</h6>
+              <div
+                className="h-full cursor-pointer flex flex-col justify-center"
+                onClick={() => setIsCollapsed(true)}
+              >
+                <CloseIcon />
+              </div>
+            </div>
+            <div className="bg-white grow">
+              <StepperViewList
+                steps={steps}
+                currentStep={currentStep}
+                onChangeStep={handleOnChangeStep}
+              />
+            </div>
           </div>
         )}
       </div>

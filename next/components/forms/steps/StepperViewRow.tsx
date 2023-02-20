@@ -2,7 +2,7 @@ import SelectedIcon from '@assets/images/forms/selected.svg'
 import cx from 'classnames'
 
 interface StepperViewRowProps {
-  title: string
+  title?: string
   order: number
   isCurrent?: boolean
   isFilled?: boolean
