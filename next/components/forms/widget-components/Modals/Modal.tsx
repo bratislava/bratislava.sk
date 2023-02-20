@@ -182,7 +182,7 @@ const Modal = ({
   const hasFooter = Array.isArray(content)
   return (
     <div
-      className="h-full fixed w-full z-50 top-0 flex items-center justify-center"
+      className="z-100 h-full fixed w-full top-0 flex items-center justify-center"
       style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={() => {
         setCurrentScreenIndex(0)
