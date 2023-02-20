@@ -1,6 +1,7 @@
 import type { AriaPopoverProps } from '@react-aria/overlays'
-import { DismissButton, Overlay, usePopover } from '@react-aria/overlays'
+import { DismissButton, usePopover } from '@react-aria/overlays'
 import * as React from 'react'
+import { OverlayProvider } from 'react-aria'
 import type { OverlayTriggerState } from 'react-stately'
 
 interface PopoverProps extends Omit<AriaPopoverProps, 'popoverRef'> {
@@ -12,7 +13,7 @@ const MenuPopover = (props: PopoverProps) => {
   const ref = React.useRef<HTMLDivElement>(null)
   const { state, children } = props
 
-  const { popoverProps, underlayProps } = usePopover(
+  const { popoverProps } = usePopover(
     {
       ...props,
       popoverRef: ref,
@@ -21,14 +22,13 @@ const MenuPopover = (props: PopoverProps) => {
   )
 
   return (
-    <Overlay>
-      <div {...underlayProps} className="fixed inset-0" />
+    <OverlayProvider>
       <div {...popoverProps} ref={ref} className="z-20 shadow-lg bg-white rounded-lg mt-1">
         <DismissButton onDismiss={state.close} />
         {children}
         <DismissButton onDismiss={state.close} />
       </div>
-    </Overlay>
+    </OverlayProvider>
   )
 }
 
