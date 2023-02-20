@@ -35,7 +35,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 }
 
 const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { login, error, status, resendVerificationCode, verifyEmail, lastEmail, isAuth } =
+  const { login, error, status, resendVerificationCode, verifyEmail, lastEmail, user } =
     useAccount()
   const router = useRouter()
 
@@ -50,10 +50,10 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   }
 
   useEffect(() => {
-    if (isAuth) {
+    if (user !== null && user !== undefined) {
       router.push(ROUTES.ACCOUNT)
     }
-  }, [isAuth])
+  }, [user])
 
   const onLogin = async (email: string, password: string) => {
     if (await login(email, password)) {
