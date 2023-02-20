@@ -25,12 +25,18 @@ export default function useHookForm<T extends FieldValues>({ schema, defaultValu
         postalCode: '^([0-9]{5}|)$',
         rc: (value: string) => {
           value = value.replace('/', '')
-          if (value.length !== 10) {
-            return false
-          }
 
           const rc = Number(value)
-          return !Number.isNaN(rc) && rc % 11 === 0
+          if (Number.isNaN(rc)) {
+            return false
+          }
+          if (value.length === 9) {
+            return true
+          }
+          if (value.length === 10) {
+            return rc % 11 === 0 || (rc % 10 === 0 && (rc / 10) % 11 === 10)
+          }
+          return false
         },
         verificationCode: '^[0-9]{6}$',
       },
