@@ -31,14 +31,13 @@ module.exports = {
     },
     screens: {
       xs: '360px',
-      sm: '640px',
+      sm: '480px',
       md: '768px',
       lg: '1024px',
       '1.5lg': '1110px',
+      '2lg': '1216px',
       xl: '1280px',
       '2xl': '1536px',
-      '3xl': '1920px',
-      maxMd: { max: '768px' },
     },
     container: {
       xs: '360px',
@@ -237,7 +236,11 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/container-queries'),
+  ],
   corePlugins: {
     container: false,
   },

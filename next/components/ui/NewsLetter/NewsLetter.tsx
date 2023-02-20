@@ -31,7 +31,12 @@ export const NewsLetter = ({
   }
 
   return (
-    <div className={cx(className, 'max-w-xs w-full px-2.5 lg:px-0 my-10 lg:my-12 pt-1 lg:max-w-3xl lg:pr-9')}>
+    <div
+      className={cx(
+        className,
+        'max-w-xs w-full px-2.5 lg:px-0 my-10 lg:my-12 pt-1 lg:max-w-screen-md lg:pr-9',
+      )}
+    >
       <Card
         hasButton
         buttonPosition="left-1/2 -translate-x-1/2 w-56 h-14 lg:translate-x-0 lg:left-10"
@@ -44,7 +49,7 @@ export const NewsLetter = ({
         {/* Content */}
         <div className="mt-32 mb-8 p-6 lg:my-0 lg:p-12">
           <h2 className="text-h4">Newsletter</h2>
-          <div className="mt-5 text-p2">{newsLetterContent}</div>
+          <div className="text-p2 mt-5">{newsLetterContent}</div>
           <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
             <input
               type="email"
@@ -59,7 +64,13 @@ export const NewsLetter = ({
               className="border-gray-700/50 border-opacity-50"
               variant="circle"
               content={
-                <p className={cx('text-p2 -mt-1', { 'text-font': isChecked }, { 'text-font/50': !isChecked })}>
+                <p
+                  className={cx(
+                    'text-p2 -mt-1',
+                    { 'text-font': isChecked },
+                    { 'text-font/50': !isChecked },
+                  )}
+                >
                   {checkBoxContent}
                 </p>
               }
