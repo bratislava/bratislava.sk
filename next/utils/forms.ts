@@ -357,7 +357,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     increaseStepErrors()
     setStepFormData(newFormData)
     const isFormValid = await validate()
-    console.log(isFormValid)
+
     if (isFormValid) {
       setUniqueErrors([], stepIndex)
     }
