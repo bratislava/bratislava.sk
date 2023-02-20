@@ -1,7 +1,7 @@
 import HorizontalArrowIcon from '@assets/images/forms/tooltip-horizontal-arrow.svg'
 import VerticalArrowIcon from '@assets/images/forms/tooltip-vertical-arrow.svg'
 import cx from 'classnames'
-import React from 'react'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 
 type TooltipBase = {
   text?: string
@@ -51,7 +51,9 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
           className,
         )}
       >
-        <p className="w-max">{text}</p>
+        <p className="w-max">
+          <AccountMarkdown content={text} variant="sm" />
+        </p>
       </div>
       {arrow && (
         <span className={tooltipArrowStyle}>

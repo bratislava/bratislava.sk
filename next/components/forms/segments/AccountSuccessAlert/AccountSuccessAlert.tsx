@@ -30,7 +30,7 @@ const AccountSuccessAlert = ({
         </div>
       </div>
       <h1 className="text-h3 text-center">{title}</h1>
-      {description && <p className="text-center">{description}</p>}
+      {description && <p className="text-p3 lg:text-p2 text-center">{description}</p>}
       {children}
       <Button onPress={onConfirm} className="min-w-full" variant="category" text={confirmLabel} />
       {onCancel && (

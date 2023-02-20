@@ -71,7 +71,9 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail, cntDisabl
       })}
     >
       <h1 className="text-h3">{t('email_verification_title')}</h1>
-      <div>{formatUnicorn(t('email_verification_description'), { email: lastEmail })}</div>
+      <p className="text-p3 lg:text-p2">
+        {formatUnicorn(t('email_verification_description'), { email: lastEmail })}
+      </p>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), {
@@ -102,7 +104,7 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail, cntDisabl
         variant="category"
         disabled={isSubmitting}
       />
-      <div>
+      <div className="text-p3 lg:text-p2">
         <span>{t('verification_description')}</span>
         {cnt > 0 && <span>{` ${formatUnicorn(t('verification_cnt_description'), { cnt })}`}</span>}
       </div>
