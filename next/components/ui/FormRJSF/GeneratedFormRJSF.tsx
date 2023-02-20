@@ -1,9 +1,9 @@
 import LeftIcon from '@assets/images/chevron-left.svg'
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import { EFormValue } from '@backend/forms'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import { FormValidation, RJSFSchema } from '@rjsf/utils'
 import { useFormStepper } from '@utils/forms'
+import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import Button from '../../forms/simple-components/Button'
@@ -22,15 +22,17 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const form = useFormStepper(escapedSlug, eform.schema)
 
   return (
-    <div className="px-8 lg:px-28 flex flex-row gap-20 w-full">
-      <StepperView
-        steps={form.stepData}
-        currentStep={form.stepIndex}
-        // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
-        // if not wanted because of broken validation when skipping multiple steps, comment it out
-        onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
-      />
-      <div className="grow">
+    <div className={cx('flex flex-col  sm:gap-20 gap-10 w-full', 'sm:flex-row sm:gap-20')}>
+      <div className="">
+        <StepperView
+          steps={form.stepData}
+          currentStep={form.stepIndex}
+          // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
+          // if not wanted because of broken validation when skipping multiple steps, comment out onChangeStep
+          onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+        />
+      </div>
+      <div className={cx('grow mx-8', 'lg:mx-28')}>
         {form.isComplete ? (
           <FinalStep
             formData={form.formData}

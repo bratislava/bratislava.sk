@@ -45,7 +45,10 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
       <div className={cx('hidden', { 'sm:block': !forceMobileSize })}>
         <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
       </div>
-      <div className={cx('flex flex-col', { 'sm:hidden': !forceMobileSize })}>
+      <div
+        className={cx('flex flex-col cursor-pointer', { 'sm:hidden': !forceMobileSize })}
+        onClick={handleOnClickDropdownIcon}
+      >
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg">
           {isCollapsed ? (
             <StepperViewRow
@@ -58,10 +61,7 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
           ) : (
             <h6 className="text-h6 grow">{t('all_steps')}</h6>
           )}
-          <ChevronDown
-            className={cx({ 'rotate-180': !isCollapsed })}
-            onClick={handleOnClickDropdownIcon}
-          />
+          <ChevronDown className={cx({ 'rotate-180': !isCollapsed })} />
         </div>
         {!isCollapsed && (
           <div className="relative h-0 w-full">
