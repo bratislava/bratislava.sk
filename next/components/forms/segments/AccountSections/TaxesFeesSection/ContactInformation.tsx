@@ -23,7 +23,7 @@ const ContactInformationSection = (props: any) => {
         onSubmit={onSubmitCorrespondenceAddress}
         defaultValues={{}}
       />
-      <div className="flex flex-col items-start sm:gap-8 gap-6 w-full">
+      <div className="flex flex-col items-start sm:gap-8 gap-6 w-full 1.5lg:px-0 px-4">
         <div className="flex flex-col w-full items-start gap-2">
           <div className="text-h3">{t('personal_info')}</div>
           <div className="flex flex-col w-full">
