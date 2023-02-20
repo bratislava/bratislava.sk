@@ -71,7 +71,7 @@
   "id_card_required": "Číslo občianskeho preukazu je povinné",
   "identity_verification_submit": "Overiť údaje",
   "identity_verification_success_title": "Overenie bolo úspešné",
-  "identity_verification_success_description": "Rodné číslo a číslo občianskeho preukazu boli overené.",
+  "identity_verification_success_description": "Rodné číslo {rc} a číslo občianskeho preukazu {idCard} boli overené.",
   "password_change_title": "Zmena hesla",
   "old_password_label": "Staré heslo",
   "old_password_placeholder": "Staré heslo",
