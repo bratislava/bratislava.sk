@@ -67,15 +67,15 @@ const MigrationForm = ({ onSubmit, error }: Props) => {
           fullname: queryFullname,
         })}
       </h1>
-      <div>
+      <p className="text-p3 lg:text-p2">
         {formatUnicorn(
           t(queryEmail ? 'migration_recognized_description' : 'migration_description'),
           {
             email: queryEmail,
           },
         )}
-      </div>
-      <div>{t('migration_submit_description')}</div>
+      </p>
+      <p className="text-p3 lg:text-p2">{t('migration_submit_description')}</p>
       {error && <Alert message={t(error.code)} type="error" className="min-w-full" />}
       {!queryEmail && (
         <Controller

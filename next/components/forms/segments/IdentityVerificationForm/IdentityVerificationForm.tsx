@@ -69,7 +69,6 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
             required
             label={t('rc_label')}
             placeholder={t('rc_placeholder')}
-            helptext={t('rc_description')}
             tooltip={t('rc_tooltip')}
             {...field}
             errorMessage={errors.rc}

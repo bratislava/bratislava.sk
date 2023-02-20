@@ -90,7 +90,9 @@ const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail, fromMigration }
       <h1 className="text-h3">
         {t(fromMigration ? 'migration_new_password_title' : 'new_password_title')}
       </h1>
-      <div>{formatUnicorn(t('new_password_description'), { email: lastEmail })}</div>
+      <p className="text-p3 lg:text-p2">
+        {formatUnicorn(t('new_password_description'), { email: lastEmail })}
+      </p>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), {
@@ -150,11 +152,11 @@ const NewPasswordForm = ({ onSubmit, error, onResend, lastEmail, fromMigration }
       <Button
         className="min-w-full"
         type="submit"
-        text={t('new_password_submit')}
+        text={t(fromMigration ? 'migration_new_password_submit' : 'new_password_submit')}
         variant="category"
         disabled={isSubmitting}
       />
-      <div>
+      <div className="text-p3 lg:text-p2">
         <span>{t('verification_description')}</span>
         {cnt > 0 && <span>{` ${formatUnicorn(t('verification_cnt_description'), { cnt })}`}</span>}
       </div>

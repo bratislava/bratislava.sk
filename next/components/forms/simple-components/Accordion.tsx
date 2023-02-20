@@ -1,17 +1,9 @@
 import cx from 'classnames'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import React, { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
-import remarkDirective from 'remark-directive'
-import remarkDirectiveRehype from 'remark-directive-rehype'
-import remarkGfm from 'remark-gfm'
 
 import ExpandMoreIcon from '../icon-components/ExpandMoreIcon'
 import PersonIcon from '../icon-components/PersonIcon'
-import TooltipComponent from '../info-components/Tooltip/Tooltip'
-
-const Tooltip = ({ children }: never) =>
-  children ? <TooltipComponent position="top-right" text={children} /> : null
 
 export type AccordionSizeType = 'xs' | 'sm' | 'md' | 'lg'
 
@@ -121,34 +113,7 @@ const Accordion = ({
                 'text-20': accordionSize === 'lg' || accordionSize === 'md',
               })}
             >
-              <ReactMarkdown
-                className={cx('flex flex-col gap-4', className)}
-                remarkPlugins={[remarkGfm, remarkDirective, remarkDirectiveRehype]}
-                rehypePlugins={[rehypeRaw, remarkDirective, remarkDirectiveRehype]}
-                components={
-                  {
-                    h3: ({ children }: any) => <h3 className="text-h3 font-bold">{children}</h3>,
-                    h4: ({ children }: any) => <h4 className="text-h4 font-bold">{children}</h4>,
-                    h5: ({ children }: any) => <h5 className="text-h5 font-bold">{children}</h5>,
-                    h6: ({ children }: any) => <h6 className="text-h6 font-bold">{children}</h6>,
-                    ol: ({ children, ordered, ...props }: any) => (
-                      <ol className="list-decimal pl-8" {...props}>
-                        {children}
-                      </ol>
-                    ),
-                    ul: ({ children, ordered, ...props }: any) => (
-                      <ul className="list-disc pl-8" {...props}>
-                        {children}
-                      </ul>
-                    ),
-                    li: ({ children, ordered, ...props }: any) => <li {...props}>{children}</li>,
-                    tooltip: Tooltip,
-                    // without casting object to 'any' it throws an error TS
-                  } as any
-                }
-              >
-                {content}
-              </ReactMarkdown>
+              <AccountMarkdown content={content} className={className} />
             </div>
           )}
         </div>

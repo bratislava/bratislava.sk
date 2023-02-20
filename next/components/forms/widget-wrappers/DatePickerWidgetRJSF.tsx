@@ -10,7 +10,7 @@ type DatePickerRJSFOptions = WidgetOptions
 interface DatePickerWidgetRJSFProps extends WidgetProps {
   label: string
   options: DatePickerRJSFOptions
-  value: string
+  value: string | null
   errorMessage?: string
   required?: boolean
   disabled?: boolean
@@ -50,7 +50,7 @@ const DatePickerWidgetRJSF = ({
         helptext={helptext}
         tooltip={tooltip}
         explicitOptional={explicitOptional}
-        value={value}
+        value={value ?? undefined}
         onChange={handleOnChange}
       />
     </WidgetWrapper>
