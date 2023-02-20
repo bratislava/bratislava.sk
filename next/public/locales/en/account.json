@@ -86,7 +86,6 @@
   "migration_register_description": "Don't have an account?",
   "migration_new_password_title": "New password",
   "migration_new_password_submit": "Confirm",
-
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
@@ -97,7 +96,11 @@
     "navigation": "Intro",
     "header_title": "Hello,",
     "header_text": "Ďakujeme, že ste medzi prvými používateľmi a používateľkami Bratislavského konta.",
-    "all_services": "All services"
+    "all_services": "All services",
+    "announcement_title": "Actual",
+    "announcement_card_title": "Digitálna platba dane z nehnuteľností",
+    "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame od 20. apríla do 30. mája. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
+    "announcement_card_action": "Zaplatiť daň z nehnuteľností"
   },
   "account_section_services": "Municipal services",
   "account_section_payment": {
