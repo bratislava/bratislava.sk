@@ -6,14 +6,15 @@ import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
+import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import Menu from 'components/forms/simple-components/Menu/Menu'
-import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
 
@@ -66,7 +67,7 @@ export const AccountNavBar = ({
   const onRouteChange = (selectedMenuItem: MenuItem) => {
     if (selectedMenuItem.link === '/logout') {
       logout()
-      router.push('/login')
+      router.push(ROUTES.LOGIN)
     } else {
       router.push(selectedMenuItem.link)
     }
@@ -139,7 +140,7 @@ export const AccountNavBar = ({
                         {t('account:menu_login_link')}
                       </Link>
                       <Button
-                        onPress={() => router.push('/register')}
+                        onPress={() => router.push(ROUTES.REGISTER)}
                         variant="negative"
                         text={t('account:menu_register_link')}
                         size="sm"
@@ -178,7 +179,7 @@ export const AccountNavBar = ({
                     {t('account:menu_login_link')}
                   </Link>
                   <Button
-                    onPress={() => router.push('/register')}
+                    onPress={() => router.push(ROUTES.REGISTER)}
                     variant="negative"
                     text={t('account:menu_register_link')}
                     size="sm"
@@ -217,7 +218,7 @@ export const AccountNavBar = ({
         id="mobile-navbar"
         className={cx(
           className,
-          'h-16 flex items-center py-5 px-8 -mx-8 shadow-md drop-shadow-md',
+          'h-16 flex items-center py-5 px-8 -mx-8 border-b-2',
           'lg:hidden fixed top-0 w-full bg-white z-50 gap-x-6',
         )}
       >
@@ -234,7 +235,7 @@ export const AccountNavBar = ({
         )}
 
         <button
-          onClick={() => (isAuth ? setBurgerOpen(!burgerOpen) : router.push('/login'))}
+          onClick={() => (isAuth ? setBurgerOpen(!burgerOpen) : router.push(ROUTES.LOGIN))}
           className="-mr-4 px-4 py-5"
         >
           <div className="flex w-6 items-center justify-center">

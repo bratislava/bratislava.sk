@@ -1,7 +1,9 @@
+import { ROUTES } from '@utils/constants'
 import { formatUnicorn } from '@utils/string'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import AccountSuccessAlert from 'components/forms/segments/AccountSuccessAlert/AccountSuccessAlert'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
 import IdentityVerificationForm from 'components/forms/segments/IdentityVerificationForm/IdentityVerificationForm'
@@ -81,9 +83,10 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               confirmLabel={t('identity_verification_link')}
               onConfirm={() => setStatus(AccountStatus.IdentityVerificationRequired)}
               cancelLabel={t('identity_verification_skip')}
-              onCancel={() => router.push('/')}
+              onCancel={() => router.push(ROUTES.ACCOUNT)}
             >
               <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
+              <AccountMarkdown content={t('register_success_content')} variant="sm" />
             </AccountSuccessAlert>
           )}
           {status === AccountStatus.IdentityVerificationRequired && (
@@ -94,7 +97,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               title={t('identity_verification_success_title')}
               description={formatUnicorn(t('identity_verification_success_description'), {})}
               confirmLabel={t('account_continue_link')}
-              onConfirm={() => router.push('/')}
+              onConfirm={() => router.push(ROUTES.ACCOUNT)}
             />
           )}
         </AccountContainer>

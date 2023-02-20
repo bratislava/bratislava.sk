@@ -18,6 +18,13 @@
   "postal_code_placeholder": "PSČ",
   "postal_code_description": "Zadávajte bez medzier, napr. 11111",
   "postal_code_format": "PSČ nie je valídne",
+
+  "buttons": {
+    "previous": "Späť",
+    "skip": "Preskočiť",
+    "continue": "Pokračovať"
+  },
+  "summary": "Sumár",
   "changes_submit": "Potvrdiť zmeny",
   "all_steps": "Všetky kroky"
 }

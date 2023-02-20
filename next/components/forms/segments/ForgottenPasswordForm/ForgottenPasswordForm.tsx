@@ -1,6 +1,7 @@
 import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
+import LoginAccountLink from 'components/forms/segments/LoginAccountLink/LoginAccountLink'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { useTranslation } from 'next-i18next'
@@ -29,7 +30,7 @@ const schema = {
   required: ['email'],
 }
 
-const App = ({ onSubmit, error }: Props) => {
+const ForgottenPasswordForm = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -68,20 +69,9 @@ const App = ({ onSubmit, error }: Props) => {
         variant="category"
         disabled={isSubmitting}
       />
-      <div className="flex justify-between">
-        <div className="text-16-semibold hidden md:flex text-gray-800">
-          {t('login_description')}
-        </div>
-        <Button
-          size="sm"
-          variant="link-black"
-          href="/login"
-          label={t('login_link')}
-          hrefIconHidden
-        />
-      </div>
+      <LoginAccountLink />
     </form>
   )
 }
 
-export default App
+export default ForgottenPasswordForm

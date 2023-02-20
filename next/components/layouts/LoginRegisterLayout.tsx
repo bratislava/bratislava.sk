@@ -25,7 +25,7 @@ const LoginRegisterLayout = ({
         </SectionContainer>
       </div>
 
-      <div className="bg-main-100 flex grow">{children}</div>
+      <div className="md:bg-main-100 flex grow">{children}</div>
     </div>
   )
 }

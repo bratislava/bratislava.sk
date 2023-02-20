@@ -7,7 +7,6 @@
   },
   "selectAll": "Select all",
   "deselectAll": "Deselect all",
-
   "correspondece_address_title": "Change correspondence address",
   "correspondece_address_description": "",
   "street_address_label": "Street",
@@ -19,5 +18,11 @@
   "postal_code_description": "",
   "postal_code_format": "Postal code is not valid",
   "changes_submit": "Submit",
+  "buttons": {
+    "previous": "Previous",
+    "skip": "Skip",
+    "continue": "Continue"
+  },
+  "summary": "Summary",
   "all_steps": "All steps"
 }

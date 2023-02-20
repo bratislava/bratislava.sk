@@ -1,3 +1,4 @@
+import { ROUTES } from '@utils/constants'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
@@ -40,12 +41,12 @@ const PasswordChangePage = ({ page }: AsyncServerProps<typeof getServerSideProps
   const router = useRouter()
   useEffect(() => {
     if (!isAuth) {
-      router.push('/login')
+      router.push(ROUTES.LOGIN)
     }
   }, [isAuth])
 
   const onConfirm = () => {
-    router.push('/')
+    router.push(ROUTES.ACCOUNT)
   }
 
   return (
