@@ -347,6 +347,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           })
           AWS.config.credentials = awsCredentials
 
+          accessToken = result.getAccessToken().getJwtToken()
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
           awsCredentials.refresh((err?: AWSError) => {
             if (err) {
