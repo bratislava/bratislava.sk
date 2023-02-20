@@ -64,17 +64,15 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
           <ChevronDown className={cx({ 'rotate-180': !isCollapsed })} />
         </div>
         {!isCollapsed && (
-          <div className="relative h-0 w-full">
-            <div
-              className="max-h-96 w-full bg-white absolute top-0 mt-1 z-50"
-              ref={clickOutsideRef}
-            >
-              <StepperViewList
-                steps={steps}
-                currentStep={currentStep}
-                onChangeStep={handleOnChangeStep}
-              />
-            </div>
+          <div
+            className="inset-0 bg-white absolute mt-1 z-50 overflow-y-scroll drop-shadow-xl"
+            ref={clickOutsideRef}
+          >
+            <StepperViewList
+              steps={steps}
+              currentStep={currentStep}
+              onChangeStep={handleOnChangeStep}
+            />
           </div>
         )}
       </div>
