@@ -7,7 +7,7 @@ import TimePicker, { TimePickerBase } from '../widget-components/DateTimePicker/
 type TDatePicker = {
   DateLabel?: DatePickerBase['label']
   DateTooltip?: DatePickerBase['tooltip']
-  DateDescription?: DatePickerBase['description']
+  DateDescription?: DatePickerBase['helptext']
   DateRequired?: DatePickerBase['required']
   DateExplicitOptional?: DatePickerBase['explicitOptional']
   DateDisabled?: DatePickerBase['disabled']
@@ -19,7 +19,7 @@ type TDatePicker = {
 type TTimePicker = {
   TimeLabel?: TimePickerBase['label']
   TimeTooltip?: TimePickerBase['tooltip']
-  TimeDescription?: TimePickerBase['description']
+  TimeDescription?: TimePickerBase['helptext']
   TimeRequired?: TimePickerBase['required']
   TimeExplicitOptional?: TimePickerBase['explicitOptional']
   TimeDisabled?: TimePickerBase['disabled']
@@ -57,7 +57,7 @@ export const DateTimePicker = ({
             label={DateLabel}
             errorMessage={DateErrorMessage}
             tooltip={DateTooltip}
-            description={DateDescription}
+            helptext={DateDescription}
             disabled={DateDisabled}
             explicitOptional={DateExplicitOptional}
             value={DateValue}
@@ -74,7 +74,7 @@ export const DateTimePicker = ({
           <TimePicker
             errorMessage={TimeErrorMessage}
             disabled={TimeDisabled}
-            description={TimeDescription}
+            helptext={TimeDescription}
             label={TimeLabel}
             required={TimeRequired}
             tooltip={TimeTooltip}

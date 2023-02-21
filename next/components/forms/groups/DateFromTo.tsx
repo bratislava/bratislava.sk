@@ -6,7 +6,7 @@ import DatePicker, { DatePickerBase } from '../widget-components/DateTimePicker/
 type DateFrom = {
   DateFromLabel: DatePickerBase['label']
   DateFromTooltip?: DatePickerBase['tooltip']
-  DateFromDescription?: DatePickerBase['description']
+  DateFromDescription?: DatePickerBase['helptext']
   DateFromRequired?: DatePickerBase['required']
   DateFromExplicitOptional?: DatePickerBase['explicitOptional']
   DateFromDisabled?: DatePickerBase['disabled']
@@ -18,7 +18,7 @@ type DateFrom = {
 type DateTo = {
   DateToLabel: DatePickerBase['label']
   DateToTooltip?: DatePickerBase['tooltip']
-  DateToDescription?: DatePickerBase['description']
+  DateToDescription?: DatePickerBase['helptext']
   DateToRequired?: DatePickerBase['required']
   DateToExplicitOptional?: DatePickerBase['explicitOptional']
   DateToDisabled?: DatePickerBase['disabled']
@@ -55,7 +55,7 @@ export const DateFromTo = ({
             label={DateFromLabel}
             errorMessage={DateFromErrorMessage}
             required={DateFromRequired}
-            description={DateFromDescription}
+            helptext={DateFromDescription}
             tooltip={DateFromTooltip}
             explicitOptional={DateFromExplicitOptional}
             disabled={DateFromDisabled}
@@ -76,7 +76,7 @@ export const DateFromTo = ({
             errorMessage={DateToErrorMessage}
             tooltip={DateToTooltip}
             required={DateToRequired}
-            description={DateToDescription}
+            helptext={DateToDescription}
             explicitOptional={DateToExplicitOptional}
             disabled={DateToDisabled}
             value={DateToValue}

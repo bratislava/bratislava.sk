@@ -19,7 +19,7 @@ const TestUserProfileLayout = ({
     <div className={cx('flex', 'flex-col', 'h-screen', 'font-inter', className)}>
       <div className="h-16 bg-white lg:h-14">
         <SectionContainer>
-          <AccountNavBar currentLanguage={locale} />
+          <AccountNavBar currentLanguage={locale} menuItems={[]} />
         </SectionContainer>
       </div>
 

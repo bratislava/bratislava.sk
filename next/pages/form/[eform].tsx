@@ -5,7 +5,8 @@
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
 import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { FormValidation } from '@rjsf/utils'
+import GeneratedFormRJSF from '@bratislava/ui-bratislava/FormRJSF/GeneratedFormRJSF'
+import { FormValidation, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
 import { useFormStepper } from '@utils/forms'
 import { client } from '@utils/gql'
@@ -14,11 +15,14 @@ import { AsyncServerProps } from '@utils/types'
 import { forceString, isProductionDeployment } from '@utils/utils'
 import Button from 'components/forms/simple-components/Button'
 import FinalStep from 'components/forms/steps/FinalStep'
+import ObjectFieldTemplate from 'components/forms/templates/ObjectFieldTemplate'
 import { ThemedForm } from 'components/forms/ThemedForm'
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import StepperView from '../../components/forms/steps/StepperView'
 import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 
@@ -59,6 +63,21 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
+// it looks like we will not need this, but we can keep it for now
+// const initDefaultSchemaFields = (schema: StrictRJSFSchema) => {
+//   if (!schema || typeof schema !== 'object') return
+//   if (schema.type && schema.type !== 'object' && !schema.default) {
+//     Object.assign(schema, { default: null })
+//   }
+//   Object.values(schema).forEach((value) => {
+//     if (Array.isArray(value)) {
+//       value.forEach((item) => initDefaultSchemaFields(item))
+//     } else {
+//       initDefaultSchemaFields(value)
+//     }
+//   })
+// }
+
 const FormTestPage = ({
   footer,
   mainMenu,
@@ -68,89 +87,11 @@ const FormTestPage = ({
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
   const router = useRouter()
 
-  let escapedSlug = ''
   const formSlug = forceString(router.query.eform)
-
   // Using string.match because CodeQL tools ignore regex.test as SSRF prevention.
   // eslint-disable-next-line unicorn/prefer-regexp-test
-  if (formSlug.match(/^[\da-z-]+$/)) {
-    escapedSlug = formSlug
-  }
-
+  const escapedSlug = formSlug.match(/^[\da-z-]+$/) ? formSlug : ''
   const pageSlug = `form/${escapedSlug}`
-
-  const form = useFormStepper(escapedSlug, eform.schema)
-  // TODO refactor when useFormStepper will refactored
-  const validateRequiredFormat = (formData: object, errors: FormValidation) => {
-    const REQUIRED_VALUE = 'Required input'
-    const formDataKeys = Object.keys(formData)
-    formDataKeys?.forEach((key) => {
-      form?.currentSchema?.properties[key]?.required?.forEach((req: string) => {
-        // TODO fix ignoring errors
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        !formData[key][req] && errors[key][req]?.addError(REQUIRED_VALUE)
-      })
-    })
-  }
-  const validateDateFromToFormat = (formData: any, errors: FormValidation) => {
-    const formDataKeys = Object.keys(formData)
-    formDataKeys?.forEach((key) => {
-      if (
-        form?.currentSchema?.properties[key]?.dateFromTo &&
-        formData[key].startDate &&
-        formData[key].endDate
-      ) {
-        const startDate = new Date(formData[key].startDate)
-        const endDate = new Date(formData[key].endDate)
-
-        if (endDate <= startDate) {
-          errors[key]?.endDate?.addError('End date must be greater than start date')
-        }
-      }
-    })
-  }
-  const validateTimeFromToFormat = (formData: any, errors: FormValidation) => {
-    const formDataKeys = Object.keys(formData)
-    formDataKeys?.forEach((key) => {
-      if (
-        form?.currentSchema?.properties[key]?.timeFromTo &&
-        formData[key].startTime &&
-        formData[key].endTime
-      ) {
-        const startTime: number[] = formData[key].startTime
-          ?.split(':')
-          .map((time: string) => parseInt(time, 10))
-
-        const endTime: number[] = formData[key].endTime
-          ?.split(':')
-          .map((time: string) => parseInt(time, 10))
-
-        const startTimeSeconds = startTime[0] * 60 * 60 + startTime[1] * 60
-        const endTimeSeconds = endTime[0] * 60 * 60 + endTime[1] * 60
-
-        if (endTimeSeconds <= startTimeSeconds) {
-          errors[key]?.endTime?.addError('End time must be greater than start time')
-        }
-      }
-    })
-  }
-  const customValidate = (formData: object, errors: FormValidation) => {
-    validateRequiredFormat(formData, errors)
-    validateDateFromToFormat(formData, errors)
-    validateTimeFromToFormat(formData, errors)
-    return errors
-  }
-
-  const customFormats = {
-    zip: /\b\d{5}\b/,
-    // https://stackoverflow.com/questions/7536755/regular-expression-for-matching-hhmm-time-format
-    time: /^(\d|0\d|1\d|2[0-3]):[0-5]\d$/,
-  }
-  const validator = customizeValidator({
-    customFormats,
-    ajvOptionsOverrides: { keywords: form.keywords },
-  })
 
   return (
     <PageWrapper
@@ -176,46 +117,7 @@ const FormTestPage = ({
         >
           TODO form info
         </PageHeader>
-        <SectionContainer className="pt-14 md:pt-18">
-          {/* A prototype stepper, when useForm hook points to a valid jsonSchema it renders it using rjsf,
-              otherwise displays summary with all data and submit button
-            */}
-          {form.isComplete ? (
-            <div>
-              <FinalStep state={form.state} slug={escapedSlug} />
-              <Button onPress={() => form.previous()} text="Previous" />
-            </div>
-          ) : (
-            <div>
-              <ThemedForm
-                key={`form-${escapedSlug}-step-${form.stepIndex}`}
-                ref={form.formRef}
-                schema={form.currentSchema}
-                uiSchema={eform.uiSchema}
-                validator={validator}
-                // TODO validate it isn't a problem we forward extraneous data (from other steps) into every step
-                formData={form.state}
-                // currently syncing data only when we change step (and all the data in current step are valid )
-                // TODO instead, hook into onChange and keep data in form state up to date with what's in ThemedForm state
-                // passing data to state onChange in current state prevented the form from updating
-                extraErrors={form.extraErrors}
-                onSubmit={(e) => {
-                  form.setState({ ...form.state, ...e.formData })
-                  form.setStepIndex(form.stepIndex + 1)
-                }}
-                onError={(e) => console.log('errors', e)}
-                customValidate={customValidate}
-                showErrorList={false}
-              />
-              {form.stepIndex !== 0 && <Button onPress={() => form.previous()} text="Previous" />}
-              <Button onPress={() => form.next()} text="Next" />
-              <Button
-                onPress={() => form.setStepIndex(form.stepIndex + 1)}
-                text="[DEBUG] Go to next step"
-              />
-            </div>
-          )}
-        </SectionContainer>
+        <GeneratedFormRJSF eform={eform} escapedSlug={escapedSlug} formSlug={formSlug} />
       </BasePageLayout>
     </PageWrapper>
   )

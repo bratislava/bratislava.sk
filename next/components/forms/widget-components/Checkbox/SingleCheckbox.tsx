@@ -1,10 +1,8 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import React from 'react'
 import { useCheckbox, useFocusRing, VisuallyHidden } from 'react-aria'
 import { useToggleState } from 'react-stately'
-
-import Tooltip from '../../info-components/Tooltip'
 
 type CheckBoxBase = {
   variant?: 'basic' | 'boxed'
@@ -31,7 +29,6 @@ const SingleCheckBox = ({
   required,
   ...rest
 }: CheckBoxBase) => {
-  const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
   const state = useToggleState(rest)
   const ref = React.useRef<HTMLInputElement>(null)
   const { inputProps } = useCheckbox({ ...rest, isDisabled, children }, state, ref)
@@ -40,7 +37,7 @@ const SingleCheckBox = ({
   const isSelected = state.isSelected && !rest.isIndeterminate
 
   const checkboxStyle = cx(
-    'flex items-center justify-center w-6 h-6 rounded border-2 border-solid border-gray-700',
+    'flex items-center justify-center min-w-[24px] w-6 h-6 rounded border-2 border-solid border-gray-700',
     {
       'bg-gray-700': (isSelected || rest.isIndeterminate) && !error,
       'group-hover:border-gray-600':
@@ -60,7 +57,7 @@ const SingleCheckBox = ({
   )
 
   const containerStyle = cx(
-    'group flex flex-row  items-center justify-center p-0 gap-4',
+    'group flex flex-row items-center justify-center p-0 gap-3',
     rest.className,
     {
       'py-3 px-4 bg-white border-2 border-solid rounded-lg': variant === 'boxed',
@@ -76,26 +73,12 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('flex select-none font-normal text-p-md text-gray-700 gap-4', {
+  const labelStyle = cx('text-16 flex select-none text-gray-700 gap-3', {
     'w-full': fullWidth,
   })
 
   return (
     <div>
-      {tooltip && (
-        <div className="relative">
-          <Tooltip
-            className="w-max"
-            text={tooltip}
-            visible={isTooltipOpened}
-            arrow="bottom"
-            alignArrow="right"
-            bottom={0}
-            right={variant === 'basic' ? -14 : 5}
-            absolute
-          />
-        </div>
-      )}
       <label htmlFor={rest.value} className={containerStyle}>
         <VisuallyHidden>
           <input id={rest.value} {...inputProps} {...focusProps} ref={ref} />
@@ -134,21 +117,13 @@ const SingleCheckBox = ({
         <div className={labelStyle}>
           <div
             className={cx('relative', {
-              'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+              'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
                 required,
             })}
           >
             {children}
           </div>
-          {tooltip && (
-            <div className="flex items-center">
-              <HelpIcon
-                className="cursor-pointer"
-                onMouseOver={() => setIsTooltipOpened(true)}
-                onMouseLeave={() => setIsTooltipOpened(false)}
-              />
-            </div>
-          )}
+          {tooltip && <Tooltip text={tooltip} />}
         </div>
       </label>
     </div>

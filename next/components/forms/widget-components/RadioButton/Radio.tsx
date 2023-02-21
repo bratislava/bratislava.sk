@@ -1,9 +1,8 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import * as React from 'react'
 import { useRadio } from 'react-aria'
 
-import Tooltip from '../../info-components/Tooltip'
 import { RadioContext } from './RadioGroup'
 
 type RadioBase = {
@@ -25,7 +24,6 @@ const Radio = ({
   ...rest
 }: RadioBase) => {
   const state = React.useContext(RadioContext)
-  const [isTooltipOpened, setIsTooltipOpened] = React.useState<boolean>(false)
   const ref = React.useRef(null)
   const { inputProps } = useRadio({ ...rest, isDisabled: isDisabled || error }, state, ref)
   const inputStyle = cx(
@@ -46,7 +44,7 @@ const Radio = ({
   )
 
   const containerStyle = cx(
-    'group flex relative flex-row items-center rounded-lg gap-4 ',
+    'group flex relative flex-row items-center justify-between rounded-lg gap-3 ',
     className,
     {
       'p-0': variant === 'basic' && !error,
@@ -68,66 +66,26 @@ const Radio = ({
 
   return (
     <div className="w-full">
-      {tooltip && variant !== 'card' && (
-        <div className="relative">
-          <Tooltip
-            className="w-max"
-            text={tooltip}
-            visible={isTooltipOpened}
-            arrow="bottom"
-            alignArrow="right"
-            bottom={0}
-            right={variant === 'basic' ? -13 : 5}
-            absolute
-          />
-        </div>
-      )}
       <label htmlFor={rest.value} className={containerStyle}>
         {variant === 'card' ? (
-          <div className="w-full flex flex-col items-start gap-4 p-0 ">
+          <div className="w-full flex flex-col items-start gap-3 p-0 ">
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className="text-p-md text-gray-700 font-normal break-words">
+            <div className="text-16 text-gray-700 break-words">
               {rest.children}
               {tooltip && (
                 <div className="mt-8 relative flex flex-row">
-                  {tooltip && (
-                    <Tooltip
-                      className="w-max"
-                      text={tooltip}
-                      visible={isTooltipOpened}
-                      arrow="bottom"
-                      alignArrow="left"
-                      bottom={30}
-                      left={-15}
-                      absolute
-                    />
-                  )}
-                  <HelpIcon
-                    className="cursor-pointer"
-                    onMouseOver={() => setIsTooltipOpened(true)}
-                    onMouseLeave={() => setIsTooltipOpened(false)}
-                  />
+                  <Tooltip position="top-right" text={tooltip} />
                 </div>
               )}
             </div>
           </div>
         ) : (
-          <div className={cx('flex items-center gap-4 w-full', {})}>
+          <div className={cx('flex items-center gap-3', {})}>
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className={cx('text-p-md flex font-normal text-gray-700 break-words', {})}>
-              {rest.children}
-            </div>
-            {tooltip && (
-              <div className="ml-auto">
-                <HelpIcon
-                  className="cursor-pointer"
-                  onMouseOver={() => setIsTooltipOpened(true)}
-                  onMouseLeave={() => setIsTooltipOpened(false)}
-                />
-              </div>
-            )}
+            <div className={cx('text-16 flex text-gray-700 break-words', {})}>{rest.children}</div>
           </div>
         )}
+        {tooltip && variant !== 'card' && <Tooltip text={tooltip} />}
       </label>
     </div>
   )

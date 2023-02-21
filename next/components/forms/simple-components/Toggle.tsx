@@ -36,7 +36,7 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
     'opacity-50 cursor-not-allowed': isDisabled,
     'cursor-pointer': !isDisabled,
   })
-  const labelStyle = cx('text-20 select-none leading-8 text-gray-700')
+  const labelStyle = cx('text-16 select-none text-gray-700')
 
   const togglerContainer = cx('w-12 h-6 rounded-full flex items-center', {
     'bg-success-700': isSelected,

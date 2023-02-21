@@ -52,41 +52,43 @@
       "DateToDescription": "To desc"
     }
   },
-  "datePicker": {
-    "ui:hideError": true,
-    "birth": {
-      "ui:widget": "DatePicker",
-      "ui:label": false,
-      "ui:accordion": [
-        {
-          "title": "Header name 1",
-          "size": "lg",
-          "shadow": true,
-          "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
-        },
-        {
-          "title": "Header name 2",
+  "datePickerWithTimePicker": {
+    "datePicker": {
+      "ui:hideError": true,
+      "birth": {
+        "ui:widget": "DatePicker",
+        "ui:label": false,
+        "ui:accordion": [
+          {
+            "title": "Header name 1",
+            "size": "lg",
+            "shadow": true,
+            "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+          },
+          {
+            "title": "Header name 2",
+            "size": "sm",
+            "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+          }
+        ],
+        "ui:options": {
+          "tooltip": "Date picker hint"
+        }
+      }
+    },
+    "timePicker": {
+      "ui:hideError": true,
+      "meeting-time": {
+        "ui:widget": "TimePicker",
+        "ui:label": false,
+        "ui:accordion": {
+          "title": "Header name",
           "size": "sm",
           "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
+        },
+        "ui:options": {
+          "tooltip": "Time picker hint"
         }
-      ],
-      "ui:options": {
-        "tooltip": "Date picker hint"
-      }
-    }
-  },
-  "timePicker": {
-    "ui:hideError": true,
-    "meeting-time": {
-      "ui:widget": "TimePicker",
-      "ui:label": false,
-      "ui:accordion": {
-        "title": "Header name",
-        "size": "sm",
-        "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
-      },
-      "ui:options": {
-        "tooltip": "Time picker hint"
       }
     }
   },
@@ -152,13 +154,30 @@
       "ui:placeholder": "PSC",
       "ui:options": {
         "tooltip": "PSC hint, only numbers",
-        "description": "Only numbers",
+        "helptext": "Only numbers",
         "size": "small"
+      }
+    },
+    "textAreas": {
+      "ui:order": ["pros", "cons"],
+      "pros": {
+        "ui:widget": "TextArea",
+        "ui:label": false,
+        "ui:placeholder": "Write some cons please",
+        "ui:options": {
+          "description": "Here write pros",
+          "tooltip": "This is simple tooltip"
+        }
+      },
+      "cons": {
+        "ui:widget": "TextArea",
+        "ui:label": false
       }
     }
   },
   "fileUploads": {
     "ui:hideError": true,
+    "ui:order": ["importButtonOneFile", "importButtonMultipleFiles", "importDragAndDropOneFile", "importDragAndDropMultipleFiles"],
     "importButtonOneFile": {
       "ui:widget": "Upload",
       "ui:label": false,
@@ -169,7 +188,7 @@
       },
       "ui:options": {
         "type": "button",
-        "description": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor. Prílohy nemôžu presiahnuť veľkosť 250MB."
+        "helptext": "Jednotlivé časti štúdie môžete nahrať samostatne alebo ako jeden súbor.\nPrílohy nemôžu presiahnuť veľkosť 250MB."
       }
     },
     "importButtonMultipleFiles": {
@@ -210,7 +229,7 @@
         "content": "<div class='flex items-center'>\n\n### h3\n&nbsp; &nbsp;\n::tooltip[Tooltip text]\n\n</div>\n\n#### h4\n##### h5\n###### h6"
       },
       "ui:options": {
-        "description": "Here write pros",
+        "helptext": "Here write pros",
         "tooltip": "This is simple tooltip"
       }
     },
@@ -221,6 +240,7 @@
   },
   "selectFields": {
     "ui:hideError": true,
+    "ui:order": ["school", "diplomas", "years"],
     "school": {
       "ui:widget": "SelectField",
       "ui:label": false,
@@ -232,7 +252,7 @@
       },
       "ui:options": {
         "dropdownDivider": true,
-        "description": "Here choose your last school",
+        "helptext": "Here choose your last school",
         "tooltip": "This tooltip will tell you what to do better when you choose this."
       }
     },
@@ -250,7 +270,24 @@
   },
   "chooseOneOf": {
     "ui:hideError": true,
-    "chooseOne": {
+    "chooseOneOfMore": {
+      "ui:widget": "RadioButton",
+      "ui:label": false,
+      "ui:options": {
+        "variant": "boxed",
+        "radioOptions": [
+          {
+            "value": "screen",
+            "tooltip": "Screen tooltip"
+          },
+          {
+            "value": "overlay",
+            "tooltip": "Overlay tooltip"
+          }
+        ]
+      }
+    },
+    "chooseOneOfTwo": {
       "ui:widget": "RadioButton",
       "ui:label": false,
       "ui:accordion": {
@@ -272,10 +309,23 @@
           }
         ]
       }
+    },
+    "overlayInput": {
+      "ui:widget": "InputField",
+      "ui:label": false
+    },
+    "notOverlayInput": {
+      "ui:widget": "InputField",
+      "ui:label": false
+    },
+    "againSchool": {
+      "ui:widget": "SelectField",
+      "ui:label": false
     }
   },
   "checkBoxes": {
     "ui:hideError": true,
+    "ui:order": ["favouriteFruits", "checkboxBonus"],
     "favouriteFruits": {
       "ui:widget": "Checkboxes",
       "ui:label": false,
@@ -298,10 +348,29 @@
           }
         ]
       }
+    },
+    "checkboxBonus": {
+      "ui:order": ["firstBonus", "secondBonus"],
+      "firstBonus": {
+        "ui:widget": "InputField",
+        "ui:label": false
+      },
+      "secondBonus": {
+        "ui:widget": "InputField",
+        "ui:label": false
+      }
+    }
+  },
+  "conditionalStep": {
+    "ui:order": ["customText"],
+    "customText": {
+      "ui:widget": "InputField",
+      "ui:label": false
     }
   },
   "user": {
     "ui:hideError": true,
+    "ui:order": ["phone"],
     "phone": {
       "ui:widget": "InputField",
       "ui:label": false,

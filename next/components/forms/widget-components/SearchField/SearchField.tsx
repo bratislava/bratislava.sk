@@ -12,7 +12,7 @@ interface InputBase {
   label: string
   placeholder: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   className?: string
   value?: string
   required?: boolean
@@ -27,7 +27,7 @@ const SearchField = ({
   label,
   placeholder,
   errorMessage = [],
-  description,
+  helptext,
   tooltip,
   required,
   explicitOptional,
@@ -46,7 +46,7 @@ const SearchField = ({
       value,
       label,
       errorMessage,
-      description,
+      description: helptext,
       onChange(value) {
         setValueState(value.startsWith(' ') ? value.trim() : value)
       },
@@ -57,7 +57,7 @@ const SearchField = ({
   )
 
   const style = cx(
-    'text-20 w-full px-12 py-2.5 border-2 border-gray-200 leading-8 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
+    'sm:text-16 text-p3 w-full px-12 sm:px-[52px] py-2 sm:py-2.5 border-2 border-gray-200 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder-transparent',
     className,
     {
       // hover
@@ -77,7 +77,7 @@ const SearchField = ({
         label={label}
         labelProps={labelProps}
         htmlFor={inputProps?.id}
-        description={description}
+        helptext={helptext}
         descriptionProps={descriptionProps}
         required={required}
         explicitOptional={explicitOptional}
@@ -85,9 +85,12 @@ const SearchField = ({
       />
       <div className="relative">
         <i
-          className={cx('absolute inset-y-1/2 left-5 h-5 w-5 -translate-y-2/4', {
-            'opacity-50': disabled,
-          })}
+          className={cx(
+            'flex items-center justify-center absolute inset-y-1/2 left-3 sm:left-4 h-6 w-6 -translate-y-2/4',
+            {
+              'opacity-50': disabled,
+            },
+          )}
         >
           <DarkSearchIcon />
         </i>
@@ -104,7 +107,7 @@ const SearchField = ({
             tabIndex={0}
             onKeyDown={() => setValueState('')}
             onClick={() => setValueState('')}
-            className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
+            className="flex items-center justify-center absolute inset-y-1/2 right-3 sm:right-4 h-6 w-6 -translate-y-2/4 cursor-pointer"
           >
             <ResetIcon />
           </i>

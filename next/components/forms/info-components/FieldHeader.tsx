@@ -1,38 +1,43 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import cx from 'classnames'
-import React, { DOMAttributes, FC, useState } from 'react'
+import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
+import React, { DOMAttributes } from 'react'
 
 import { ExplicitOptionalType } from '../types/ExplicitOptional'
-import Tooltip from './Tooltip'
 
 interface FieldHeaderProps {
   label: string
   htmlFor?: string
   required?: boolean
   explicitOptional?: ExplicitOptionalType
-  description?: string
+  helptext?: string
   labelProps?: DOMAttributes<never>
   descriptionProps?: DOMAttributes<never>
   tooltip?: string
 }
 
-const FieldHeader: FC<FieldHeaderProps> = ({
-  label,
-  htmlFor,
-  required,
-  explicitOptional = 'none',
-  description,
-  labelProps,
-  descriptionProps,
-  tooltip,
-}) => {
-  const [isTooltipOpened, setIsTooltipOpened] = useState<boolean>(false)
+const FieldHeader = (props: FieldHeaderProps) => {
+  const {
+    label,
+    htmlFor,
+    required,
+    explicitOptional = 'none',
+    helptext = '',
+    labelProps,
+    descriptionProps,
+    tooltip,
+  } = props
 
   // STYLES
-  const labelStyle = cx('text-20-semibold leading-7 relative text-gray-800', {
-    'after:text-20-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+  const labelStyle = cx('text-p3-semibold sm:text-16-semibold relative text-gray-800', {
+    'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
       required,
   })
+
+  const helptextHandler = () =>
+    helptext
+      .trim()
+      .split('\n')
+      .map((sentence, i) => <span key={i}>{sentence}</span>)
 
   return (
     <div className="w-full">
@@ -44,12 +49,12 @@ const FieldHeader: FC<FieldHeaderProps> = ({
           </label>
           {
             /* OPTIONAL */ !required && explicitOptional === 'left' && (
-              <p className="text-16 ml-2 flex items-center">(optional)</p>
+              <p className="text-p3 sm:text-16 ml-2 flex items-center">(optional)</p>
             )
           }
           <div className="flex-column flex items-center">
             {
-              /* TOOLTIP ICON */
+              /* TOOLTIP */
               tooltip && (
                 <div
                   className={cx('flex-column flex items-center', {
@@ -57,22 +62,7 @@ const FieldHeader: FC<FieldHeaderProps> = ({
                     'ml-2': !required,
                   })}
                 >
-                  <HelpIcon
-                    className="cursor-pointer"
-                    onMouseOver={() => setIsTooltipOpened(true)}
-                    onMouseLeave={() => setIsTooltipOpened(false)}
-                  />
-                  <div className="relative">
-                    <Tooltip
-                      text={tooltip}
-                      visible={isTooltipOpened}
-                      arrow="bottom"
-                      alignArrow="right"
-                      bottom={15}
-                      right={-13}
-                      absolute
-                    />
-                  </div>
+                  <Tooltip text={tooltip} />
                 </div>
               )
             }
@@ -80,15 +70,15 @@ const FieldHeader: FC<FieldHeaderProps> = ({
         </div>
         {
           /* OPTIONAL */ !required && explicitOptional === 'right' && (
-            <p className="text-16 ml-2 flex items-center">(optional)</p>
+            <p className="text-p3 sm:text-16 ml-2 flex items-center">(optional)</p>
           )
         }
       </div>
       {
         /* DESCRIPTION */
-        description && (
-          <div {...descriptionProps} className="text-16 mb-1 text-gray-700">
-            {description}
+        helptext && (
+          <div {...descriptionProps} className="text-p3 sm:text-16 mb-1 text-gray-700">
+            {helptextHandler()}
           </div>
         )
       }

@@ -12,7 +12,7 @@ interface UploadWidgetRJSFProps extends WidgetProps {
   schema: StrictRJSFSchema
   label: string
   required?: boolean
-  value: string | string[]
+  value: string | string[] | null
   disabled?: boolean
   multiple?: boolean
   onChange: (value?: string | string[]) => void
@@ -25,7 +25,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
   const {
     size,
     accept,
-    description,
+    helptext,
     type = 'button',
     className,
     accordion,
@@ -54,7 +54,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
     // I am saving this info only in innerValue of widget
     // but when I go to previous step of the stepper, component is rebuilt and I still need at least the fileName, so I read fileNames from rjsf state and transform them
     const valueArray: string[] =
-      schema.type === 'array' && Array.isArray(value)
+      schema.type === 'array' && value && Array.isArray(value)
         ? [...value]
         : value && !Array.isArray(value)
         ? [value]
@@ -104,7 +104,7 @@ const UploadWidgetRJSF = (props: UploadWidgetRJSFProps) => {
         multiple={multiple}
         value={innerValue}
         className={className}
-        description={description}
+        helptext={helptext}
         sizeLimit={size}
         supportedFormats={supportedFormats}
         disabled={disabled}
