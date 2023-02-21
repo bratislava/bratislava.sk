@@ -105,5 +105,5 @@ export const ROUTES = {
   ACCOUNT: '/account',
   REGISTER: '/register',
   LOGIN: '/login',
-  FORGOTTEN_PASSWORD: 'forgotten-password',
+  FORGOTTEN_PASSWORD: '/forgotten-password',
 }

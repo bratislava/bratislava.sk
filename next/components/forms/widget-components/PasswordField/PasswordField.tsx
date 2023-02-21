@@ -15,6 +15,7 @@ interface Props {
   explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   tooltip?: string
+  autoComplete?: string
   onChange?: (value?: string) => void
 }
 
@@ -32,6 +33,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
       disabled,
       className,
       onChange,
+      autoComplete,
       ...rest
     },
     ref,
@@ -53,6 +55,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
         onChange={onChange}
         explicitOptional={explicitOptional}
         ref={ref}
+        autoComplete={autoComplete}
         endIcon={
           <button
             type="button"
