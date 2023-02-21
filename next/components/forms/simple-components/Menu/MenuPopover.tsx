@@ -23,7 +23,11 @@ const MenuPopover = (props: PopoverProps) => {
 
   return (
     <OverlayProvider>
-      <div {...popoverProps} ref={ref} className="z-20 shadow-lg bg-white rounded-lg mt-1">
+      <div
+        {...popoverProps}
+        // ref={ref}
+        className="z-20 shadow-lg bg-white rounded-lg mt-1"
+      >
         <DismissButton onDismiss={state.close} />
         {children}
         <DismissButton onDismiss={state.close} />
