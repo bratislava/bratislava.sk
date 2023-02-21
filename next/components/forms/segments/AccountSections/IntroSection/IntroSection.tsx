@@ -16,7 +16,7 @@ const IntroSection = () => {
   return (
     <div className="flex flex-col">
       <AccountSectionHeader
-        title={`${t('account_section_intro.header_title')} ${userData?.given_name}.`}
+        title={`${t('account_section_intro.header_title')} ${userData?.given_name || ''}.`}
         text={t('account_section_intro.header_text')}
       />
       <div className="w-full max-w-screen-1.5lg m-auto py-6 lg:py-16">
@@ -70,7 +70,7 @@ const IntroSection = () => {
           href="/account/municipal-services"
         />
       </div>
-      <div className="bg-gray-50 py-0 lg:py-16">
+      <div className="bg-gray-50 py-0 1.5lg:py-16">
         <Banner
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
