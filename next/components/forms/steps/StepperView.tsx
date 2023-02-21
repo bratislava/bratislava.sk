@@ -62,7 +62,7 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
         </div>
         {!isCollapsed && (
           <div
-            className="bg-gray-200 inset-0 fixed mt-1 z-50 flex flex-col gap-0.5"
+            className={cx('bg-gray-200 inset-0 fixed mt-1 z-50 flex flex-col gap-0.5')}
             ref={clickOutsideRef}
           >
             <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
