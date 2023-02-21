@@ -13,7 +13,6 @@ import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 import PageWrapper from '../components/layouts/PageWrapper'
 import { isProductionDeployment } from '../utils/utils'
@@ -85,8 +84,11 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               cancelLabel={t('identity_verification_skip')}
               onCancel={() => router.push(ROUTES.ACCOUNT)}
             >
-              <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
-              <AccountMarkdown content={t('register_success_content')} variant="sm" />
+              <AccountMarkdown
+                className="text-center"
+                content={t('register_success_content')}
+                variant="sm"
+              />
             </AccountSuccessAlert>
           )}
           {status === AccountStatus.IdentityVerificationRequired && (
