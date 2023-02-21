@@ -41,9 +41,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
   const { t } = useTranslation('account')
 
   return (
-    <div
-      className={cx('', 'sm:static sm:z-0', { 'absolute top-0 left-0 right-0 z-50': isEditing })}
-    >
+    <div className={cx('flex flex-col', 'sm:static sm:z-0', { 'fixed inset-0 z-50': isEditing })}>
       <UserProfileSection>
         <UserProfileSectionHeader
           title={t('profile_detail.title')}
