@@ -66,7 +66,7 @@ export const HamburgerMenu = ({
               <Link key={sectionItem.id} href={sectionItem.link}>
                 <Item
                   menuItem={sectionItem}
-                  isSelected={router.route.includes(sectionItem?.link)}
+                  isSelected={router.route.endsWith(sectionItem?.link)}
                   onClick={closeMenu}
                 />
               </Link>
