@@ -42,7 +42,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
 
   return (
     <div
-      className={cx('', 'xs:static xs:z-0', { 'absolute top-0 left-0 right-0 z-50': isEditing })}
+      className={cx('', 'sm:static sm:z-0', { 'absolute top-0 left-0 right-0 z-50': isEditing })}
     >
       <UserProfileSection>
         <UserProfileSectionHeader
@@ -70,7 +70,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
             </div>
           )}
           <div
-            className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}
+            className={cx('flex p-4 flex-col gap-8', 'sm:p-8 sm:flex-row sm:gap-16 sm:flex-wrap')}
           >
             <UserProfilePhoto userData={userData ?? {}} />
             {isEditing ? (

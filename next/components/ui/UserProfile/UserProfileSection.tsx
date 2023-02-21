@@ -7,8 +7,8 @@ interface UserProfileSectionProps {
 
 const UserProfileSection = ({ children }: UserProfileSectionProps) => {
   return (
-    <div className={cx('bg-white flex flex-col items-center', 'xs:py-3 xs:px-8')}>
-      <div className={cx('w-full rounded-lg border-gray-200', 'xs:border-2 xs:max-w-6xl')}>
+    <div className={cx('bg-white flex flex-col items-center', 'sm:py-3 sm:px-8')}>
+      <div className={cx('w-full rounded-lg border-gray-200', 'sm:border-2 sm:max-w-6xl')}>
         {children}
       </div>
     </div>

@@ -21,27 +21,27 @@ const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
       {isEditing ? (
         <div className="flex flex-row gap-5 items-center">
           <Button
-            className={cx('hidden', 'xs:block')}
+            className={cx('hidden', 'sm:block')}
             variant="plain-black"
             size="sm"
             text={t('profile_detail.stop_edit_button')}
             onPress={onCancelEditing}
           />
           <Button
-            className={cx('hidden', 'xs:block')}
+            className={cx('hidden', 'sm:block')}
             variant="black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
             onPress={onSubmitEditing}
           />
           <CloseIcon
-            className={cx('block cursor-pointer', 'xs:hidden')}
+            className={cx('block cursor-pointer', 'sm:hidden')}
             onClick={onCancelEditing}
           />
           <div
             className={cx(
               'fixed bottom-0 left-0 right-0 bg-white z-50 drop-shadow-2xl flex flex-row justify-center py-2',
-              'xs:hidden',
+              'sm:hidden',
             )}
           >
             <Button
@@ -59,11 +59,11 @@ const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
             startIcon={<WhiteEditIcon />}
             size="sm"
             text={t('profile_detail.start_edit_button')}
-            className="hidden xs:block"
+            className="hidden sm:block"
             onPress={() => onChangeIsEditing(true)}
           />
           <EditIcon
-            className="block xs:hidden cursor-pointer"
+            className="block sm:hidden cursor-pointer"
             onClick={() => onChangeIsEditing(true)}
           />
         </div>

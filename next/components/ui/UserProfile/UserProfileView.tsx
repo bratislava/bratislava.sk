@@ -65,7 +65,7 @@ const UserProfileView = () => {
 
   // TODO: redirect to change password
   return (
-    <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
+    <section className="flex flex-col gap-2 sm:gap-0 h-full sm:bg-white">
       <UserProfileDetail
         userData={userData}
         temporaryUserData={temporaryUserData}
