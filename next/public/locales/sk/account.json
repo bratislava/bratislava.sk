@@ -87,7 +87,6 @@
   "migration_register_description": "Neplatili ste ešte daň digitálne?",
   "migration_new_password_title": "Zadajte overovací kód a vytvorte si heslo",
   "migration_new_password_submit": "Overiť e-mail",
-
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
   "LimitExceededException": "Skúste to znova neskôr.",
@@ -104,7 +103,7 @@
     "all_services": "Všetky služby",
     "announcement_title": "Aktuálne",
     "announcement_card_title": "Digitálna platba dane z nehnuteľností",
-    "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame od 20. apríla do 30. mája. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
+    "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame <strong>od 20. apríla do 30. mája</strong>. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
     "announcement_card_action": "Zaplatiť daň z nehnuteľností"
   },
   "account_section_services": "Mestské služby",

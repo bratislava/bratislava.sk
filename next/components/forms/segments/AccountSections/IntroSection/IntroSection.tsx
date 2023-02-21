@@ -13,6 +13,12 @@ import { useTranslation } from 'next-i18next'
 const IntroSection = () => {
   const { t } = useTranslation('account')
   const { userData } = useAccount()
+
+  const announcementContent = `
+<h4>${t('account_section_intro.announcement_card_title')}</h4><span>${t(
+    'account_section_intro.announcement_card_text',
+  )}</span>`
+
   return (
     <div className="flex flex-col">
       <AccountSectionHeader
@@ -21,8 +27,7 @@ const IntroSection = () => {
       />
       <div className="w-full max-w-screen-1.5lg m-auto py-6 lg:py-16">
         <AnnouncementBlock
-          title={t('account_section_intro.announcement_card_title')}
-          text={t('account_section_intro.announcement_card_text')}
+          announcementContent={announcementContent}
           buttonTitle={t('account_section_intro.announcement_card_action')}
           imagePath="/img/kpba.png"
           onPress={() => alert('Actual')}
