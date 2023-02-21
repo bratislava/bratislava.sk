@@ -21,7 +21,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   }
 
   return (
-    <div className="flex flex-col grow gap-6 pb-20">
+    <div className="flex flex-col grow gap-6 pb-20 sm:pb-0">
       <div className="gap flex flex-wrap flex-row gap-6">
         <div className="grow ">
           <InputField
