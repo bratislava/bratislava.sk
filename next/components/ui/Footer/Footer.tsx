@@ -46,10 +46,16 @@ export const Footer = ({
 
   return (
     <footer className={cx(className, 'text-p2 text-gray-600')}>
-      <section className="flex items-center justify-between pt-14" aria-label="Logo and Social Media Links">
+      <section
+        className="flex items-center justify-between pt-14"
+        aria-label="Logo and Social Media Links"
+      >
         <BABrand />
         <div className="flex items-center justify-between lg:w-52">
-          <nav className="hidden cursor-pointer gap-4 text-gray-400 lg:flex" aria-label="Social Media Links">
+          <nav
+            className="hidden cursor-pointer gap-4 text-gray-400 lg:flex"
+            aria-label="Social Media Links"
+          >
             {facebookLink && (
               <a href={facebookLink} target="_blank" rel="noreferrer">
                 <FBLogo />
@@ -72,7 +78,10 @@ export const Footer = ({
         </div>
       </section>
 
-      <section aria-label="Contact Info and Sections" className="flex flex-col gap-x-28 py-14 xl:flex-row">
+      <section
+        aria-label="Contact Info and Sections"
+        className="flex flex-col gap-x-28 py-14 xl:flex-row"
+      >
         <div className="flex flex-col gap-y-6 xl:gap-y-16" aria-label="Contact Info">
           <p className="whitespace-pre-wrap leading-6">{address}</p>
           <div className="flex flex-col gap-y-1 underline xl:gap-y-5">
@@ -85,7 +94,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="mt-10 flex w-full flex-col justify-around gap-y-10 lg:w-2/3 lg:flex-row xl:mt-0 2xl:flex 2xl:flex-wrap"
+          className="mt-10 flex w-full flex-col justify-around gap-y-10 lg:w-2/3 lg:flex-row xl:mt-0 xl:flex xl:flex-wrap"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (

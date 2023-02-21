@@ -33,19 +33,8 @@ module.exports = {
       xs: '360px',
       sm: '480px',
       md: '768px',
-      lg: '1024px',
-      '1.5lg': '1110px',
-      '2lg': '1216px',
+      lg: '1216px',
       xl: '1280px',
-      '2xl': '1536px',
-    },
-    container: {
-      xs: '360px',
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1175px',
-      '2xl': '1470px',
     },
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
@@ -236,11 +225,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar-hide'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/container-queries'),
-  ],
+  plugins: [require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
   corePlugins: {
     container: false,
   },

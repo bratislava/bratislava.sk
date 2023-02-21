@@ -19,7 +19,7 @@ const IntroSection = () => {
         title={`${t('account_section_intro.header_title')} ${userData?.given_name}.`}
         text={t('account_section_intro.header_text')}
       />
-      <div className="w-full max-w-screen-2lg mx-auto">
+      <div className="w-full max-w-screen-lg mx-auto">
         <div className="py-6 lg:py-16">
           <AnnouncementBlock
             title={t('account_section_intro.announcement_card_title')}
@@ -28,7 +28,7 @@ const IntroSection = () => {
             imagePath="/img/kpba.png"
             onPress={() => alert('Actual')}
           />
-          <div className="w-full flex items-center justify-between mb-8 px-4 2lg:px-0">
+          <div className="w-full flex items-center justify-between mb-8 px-4 lg:px-0">
             <h2 className="text-h2">{t('account_section_services')}</h2>
             <Button
               className="hidden sm:flex"
@@ -37,7 +37,7 @@ const IntroSection = () => {
               href="/account/municipal-services"
             />
           </div>
-          <div className="flex gap-3 2lg:gap-8 overflow-x-scroll scrollbar-hide px-4 2lg:px-0">
+          <div className="scrollbar-hide flex gap-3 lg:gap-8 overflow-x-scroll px-4 lg:px-0">
             <ServiceCard
               title="Záväzné stanovisko k investičnej činnosti"
               description="Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade."
