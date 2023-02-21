@@ -53,7 +53,7 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg cursor-pointer">
           <StepperViewRow
             className="grow"
-            title={steps[currentStep]?.title}
+            title={currentStep === steps.length ? t('summary') : steps[currentStep]?.title}
             order={currentStep + 1}
             isCurrent
             isLast

@@ -1,5 +1,6 @@
 import SelectedIcon from '@assets/images/forms/selected.svg'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 interface StepperViewRowProps {
   title?: string
@@ -13,7 +14,7 @@ interface StepperViewRowProps {
 
 const StepperViewRow = (props: StepperViewRowProps) => {
   const { title, order, isCurrent, isFilled, isLast, onClick, className } = props
-
+  const { t } = useTranslation('forms')
   const iconClassName = cx(
     'min-w-8 w-8 flex-row h-8 rounded-full flex justify-center items-center border-2 shrink-0',
     {
