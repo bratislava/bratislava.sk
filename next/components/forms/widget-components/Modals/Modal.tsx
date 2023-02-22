@@ -138,7 +138,7 @@ const ModalBody = ({
 }) => {
   return (
     <div
-      className={cx('flex flex-col bg-white p-6 overflow-hidden', {
+      className={cx('flex h-full w-full flex-col bg-white p-6 overflow-hidden', {
         'rounded-t-10': !hasHeader,
         'rounded-b-10': !hasFooter,
       })}
@@ -182,7 +182,7 @@ const Modal = ({
   const hasFooter = Array.isArray(content)
   return (
     <div
-      className="h-full fixed w-full z-50 top-0 flex items-center justify-center"
+      className="h-full fixed w-full z-50 top-0 inset-x-0 flex items-center justify-center"
       style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={() => {
         setCurrentScreenIndex(0)

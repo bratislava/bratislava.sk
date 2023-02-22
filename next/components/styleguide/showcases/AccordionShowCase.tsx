@@ -1,6 +1,7 @@
 import Accordion from 'components/forms/simple-components/Accordion'
 import React from 'react'
 
+import AccordionTableContent from '../../forms/simple-components/AccordionTableContent'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -131,9 +132,45 @@ Hello
     
 </div>
 `
+  const tableContent = `
+  | Predmet dane | Základ dane v m<sup>2</sup> | Daň v EUR |
+  | -------- | - | - |
+  | <div class='h-0 font-semibold'>Byt</div><br/>(§ 14 zákona) | 58,00 |  58,00 |
+  | <div class='h-0 font-semibold'>Nebytový priestor</div><br/>(§ 14 zákona) | 0,00 | 0,00 |
+  
+  <div class='flex mt-3 lg:bg-gray-0 bg-gray-100 lg:p-0 p-4 rounded-lg'>
+    <div class='text-h4-bold grow'>Celkom</div>
+    <div class='text-h4-bold'>58,00 €</div> 
+  </div>
+  `
+
   return (
     <Wrapper direction="column" title="Accordion">
       <Stack direction="column">
+        <AccordionTableContent
+          size="xs"
+          title="Accordion table xs"
+          secondTitle="0 €"
+          content={tableContent}
+        />
+        <AccordionTableContent
+          size="sm"
+          title="Accordion table sm"
+          secondTitle="0 €"
+          content={tableContent}
+        />
+        <AccordionTableContent
+          size="md"
+          title="Accordion table md"
+          secondTitle="0 €"
+          content={tableContent}
+        />
+        <AccordionTableContent
+          size="lg"
+          title="Accordion table lg"
+          secondTitle="0 €"
+          content={tableContent}
+        />
         <Accordion
           size="xs"
           title="Headline xs"
