@@ -1,9 +1,9 @@
 import FileDownload from '@assets/images/account/file_download.svg'
-import ContentCopy from '@assets/images/content_copy.svg'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import Button from '../../../simple-components/Button'
+import ClipboardCopy from '../../../simple-components/ClipboardCopy'
 
 const PaymentData = () => {
   const { t } = useTranslation('account')
@@ -19,7 +19,7 @@ const PaymentData = () => {
               <div className="flex w-full">
                 <div className="text-16-semibold grow">SK75 0900 0000 0053 5353 5353</div>
                 <div className="w-6 h-6 cursor-pointer lg:block hidden">
-                  <ContentCopy />
+                  <ClipboardCopy copyText="SK75 0900 0000 0053 5353 5353" />
                 </div>
               </div>
             </div>
@@ -29,7 +29,7 @@ const PaymentData = () => {
               <div className="flex w-full">
                 <div className="text-16-semibold grow">SK31 7500 0000 0000 2574 7653</div>
                 <div className="w-6 h-6 cursor-pointer lg:block hidden">
-                  <ContentCopy />
+                  <ClipboardCopy copyText="SK31 7500 0000 0000 2574 7653" />
                 </div>
               </div>
             </div>
