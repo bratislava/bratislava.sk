@@ -7,6 +7,7 @@ import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import React, { useEffect, useState } from 'react'
 
+import AccountMarkdown from '../../forms/segments/AccountMarkdown/AccountMarkdown'
 import MessageModal from '../../forms/widget-components/Modals/MessageModal'
 
 const UserProfileView = () => {
@@ -94,7 +95,7 @@ const UserProfileView = () => {
         }}
         title={t('profile_detail.modal_title')}
       >
-        <p>{t('profile_detail.modal_message')}</p>
+        <AccountMarkdown content={t('profile_detail.modal_message')} variant="sm" />
         <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
       </MessageModal>
     </section>
