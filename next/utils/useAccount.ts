@@ -1,3 +1,4 @@
+import { verifyIdentityApi } from '@utils/api'
 import {
   AuthenticationDetails,
   CognitoUser,
