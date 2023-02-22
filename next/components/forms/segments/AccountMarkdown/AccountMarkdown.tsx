@@ -45,7 +45,7 @@ const AccountMarkdown = ({ className, content, variant = 'normal' }: AccountMark
             </ul>
           ),
           li: ({ children, ordered, ...props }: any) => (
-            <li className="text-p2" {...props}>
+            <li className="text-p1" {...props}>
               {children}
             </li>
           ),
