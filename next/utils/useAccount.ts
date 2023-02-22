@@ -70,7 +70,6 @@ export interface AccountError {
   code: string
 }
 
-let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
@@ -175,7 +174,32 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const getAccessToken = async (): Promise<string | null> => {
+    return new Promise((resolve) => {
+      const cognitoUser = userPool.getCurrentUser()
+      if (cognitoUser == null) {
+        resolve(null)
+      } else {
+        cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
+          if (err) {
+            resolve(null)
+          } else if (result) {
+            const accessToken = result.getAccessToken().getJwtToken()
+            resolve(accessToken)
+          } else {
+            resolve(null)
+          }
+        })
+      }
+    })
+  }
+
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
+    const accessToken = await getAccessToken()
+    if (!accessToken) {
+      return false
+    }
+
     try {
       await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
       setStatus(AccountStatus.IdentityVerificationSuccess)
@@ -198,7 +222,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           return
         }
 
-        accessToken = result?.getAccessToken().getJwtToken()
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
@@ -347,7 +370,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           })
           AWS.config.credentials = awsCredentials
 
-          accessToken = result.getAccessToken().getJwtToken()
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
           awsCredentials.refresh((err?: AWSError) => {
             if (err) {

@@ -97,9 +97,8 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
           {status === AccountStatus.IdentityVerificationRequired && (
             <IdentityVerificationForm
               onSubmit={(rc, idCard) => {
-                // bold values
-                setLastRc(`**${rc}**`)
-                setLastIdCard(`**${idCard}**`)
+                setLastRc(rc)
+                setLastIdCard(idCard)
                 verifyIdentity(rc, idCard)
               }}
               error={error}
@@ -108,10 +107,14 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
           {status === AccountStatus.IdentityVerificationSuccess && (
             <AccountSuccessAlert
               title={t('identity_verification_success_title')}
-              description={formatUnicorn(t('identity_verification_success_description'), {
-                rc: lastRc,
-                idCard: lastIdCard,
-              })}
+              description={
+                lastRc &&
+                lastIdCard &&
+                formatUnicorn(t('identity_verification_success_description'), {
+                  rc: lastRc,
+                  idCard: lastIdCard,
+                })
+              }
               confirmLabel={t('account_continue_link')}
               onConfirm={() => router.push(ROUTES.ACCOUNT)}
             />
