@@ -2698,7 +2698,12 @@ const nextConfig = {
       },
       {
         source: '/sadni-si',
-        destination: '/mesto-bratislava/projekty/kampane/sadni-si',
+        destination: '/mesto-bratislava/projekty/sadni-si',
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/projekty/kampane/sadni-si',
+        destination: '/mesto-bratislava/projekty/sadni-si',
         permanent: true,
       },
     ]

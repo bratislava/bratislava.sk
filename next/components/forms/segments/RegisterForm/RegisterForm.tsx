@@ -3,6 +3,7 @@ import { AccountError, UserData } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
+import LoginAccountLink from 'components/forms/segments/LoginAccountLink/LoginAccountLink'
 import Button from 'components/forms/simple-components/Button'
 import SingleCheckbox from 'components/forms/widget-components/Checkbox/SingleCheckbox'
 import InputField from 'components/forms/widget-components/InputField/InputField'
@@ -129,6 +130,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
             helptext={t('email_description')}
             label={t('email_label')}
             placeholder={t('email_placeholder')}
+            autoComplete="username"
             {...field}
             errorMessage={errors.email}
           />
@@ -169,6 +171,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
             label={t('password_label')}
             placeholder={t('password_placeholder')}
             tooltip={t('password_description')}
+            autoComplete="new-password"
             {...field}
             errorMessage={errors.password}
           />
@@ -228,18 +231,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
         variant="category"
         disabled={isSubmitting}
       />
-      <div className="flex justify-between">
-        <div className="text-16-semibold hidden md:flex text-gray-800">
-          {t('login_description')}
-        </div>
-        <Button
-          size="sm"
-          variant="link-black"
-          href="/login"
-          label={t('login_link')}
-          hrefIconHidden
-        />
-      </div>
+      <LoginAccountLink />
     </form>
   )
 }

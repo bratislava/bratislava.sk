@@ -19,18 +19,24 @@ export default function useHookForm<T extends FieldValues>({ schema, defaultValu
     resolver: ajvResolver(schema as JSONSchemaType<T>, {
       formats: {
         email:
-          "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
+          "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$",
         password:
           /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[ !"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]).{8,}$/,
         postalCode: '^([0-9]{5}|)$',
         rc: (value: string) => {
           value = value.replace('/', '')
-          if (value.length !== 10) {
-            return false
-          }
 
           const rc = Number(value)
-          return !Number.isNaN(rc) && rc % 11 === 0
+          if (Number.isNaN(rc)) {
+            return false
+          }
+          if (value.length === 9) {
+            return true
+          }
+          if (value.length === 10) {
+            return rc % 11 === 0 || (rc % 10 === 0 && (rc / 10) % 11 === 10)
+          }
+          return false
         },
         verificationCode: '^[0-9]{6}$',
       },

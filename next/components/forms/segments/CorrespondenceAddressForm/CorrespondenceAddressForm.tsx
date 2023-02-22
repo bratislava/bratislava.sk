@@ -59,7 +59,7 @@ const CorrespondenceAddressForm = ({
       className="flex flex-col space-y-4 w-full"
       onSubmit={handleSubmit((data: CorrespondenceAddressData) => onSubmit({ data }))}
     >
-      <div>{t('correspondece_address_description')}</div>
+      <p className="text-p3 lg:text-p2">{t('correspondece_address_description')}</p>
       {errorMessage && (
         <Alert
           message={errorMessage}

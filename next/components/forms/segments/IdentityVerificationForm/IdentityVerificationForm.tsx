@@ -1,4 +1,5 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
+import { ROUTES } from '@utils/constants'
 import { formatUnicorn } from '@utils/string'
 import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
@@ -68,7 +69,6 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
             required
             label={t('rc_label')}
             placeholder={t('rc_placeholder')}
-            helptext={t('rc_description')}
             tooltip={t('rc_tooltip')}
             {...field}
             errorMessage={errors.rc}
@@ -100,7 +100,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
       <Button
         variant="plain-black"
         className="min-w-full"
-        onPress={() => router.push('/')}
+        onPress={() => router.push(ROUTES.ACCOUNT)}
         text={t('identity_verification_skip')}
         endIcon={<ArrowRightIcon />}
       />
