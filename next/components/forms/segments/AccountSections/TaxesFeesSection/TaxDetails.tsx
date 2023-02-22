@@ -6,7 +6,7 @@ import AccordionTableContent from '../../../simple-components/AccordionTableCont
 
 const TaxDetails = () => {
   const { t } = useTranslation('account')
-  const tableContent = `
+  const staticData = `
   | Predmet dane | Základ dane v m<sup>2</sup> | Daň v EUR |
   | -------- | - | - |
   | <div class='h-0 font-semibold'>Byt</div><br/>(§ 14 zákona) | 58,00 |  58,00 |
@@ -17,23 +17,57 @@ const TaxDetails = () => {
     <div class='text-h4-bold'>58,00 €</div> 
   </div>
   `
+  /*
+    THIS IS ONLY FOR TEST PURPOSES
+  */
+  const data = {
+    headers: ['Predmet dane', 'Základ dane v m<sup>2</sup>', 'Daň v EUR'],
+
+    rows: [
+      ["<div class='h-0 font-semibold'>Byt</div><br/>(§ 14 zákona)", '58,00', '58,00'],
+      ["<div class='h-0 font-semibold'>Nebytový priestor</div><br/>(§ 14 zákona)", '0,00', '0,00'],
+    ],
+  }
+  let [th, tr, td] = ['', '', '']
+
+  data.headers.forEach((element) => {
+    th = `${th}<th>${element}</th>`
+  })
+
+  data.rows.forEach((element) => {
+    td = ''
+    element.forEach((element1) => {
+      td = `${td}<td>${element1}</td>`
+    })
+    tr = `${tr}<tr>${td}</tr>`
+  })
+  const footerContent = `
+  <div class='flex mt-3 lg:bg-gray-0 bg-gray-100 lg:p-0 p-4 rounded-lg'>
+    <div class='text-h4-bold grow'>Celkom</div>
+    <div class='text-h4-bold'>58,00 €</div>
+  </div>
+  `
+  const dynamicData = `<table><thead><tr>${th}</tr></thead><tbody>${tr}</tbody></table>${footerContent}`
+  /*
+    THIS IS ONLY FOR TEST PURPOSES
+  */
 
   return (
     <div className="flex flex-col items-start lg:gap-6 gap-3 w-full 1.5lg:px-0 px-4">
       <div className="text-h3">{t('tax_liability_breakdown')}</div>
       <div className="gap-4 flex flex-col w-full">
         <Accordion size="md" title={t('land_tax')} secondTitle="0 €" content="Lorem ipsum" />
-        <Accordion
+        <AccordionTableContent
           size="md"
           title={t('construction_tax')}
           secondTitle="0 €"
-          content="Lorem ipsum"
+          content={staticData}
         />
         <AccordionTableContent
           size="md"
           title={t('apartments_tax')}
           secondTitle="58 €"
-          content={tableContent}
+          content={dynamicData}
         />
       </div>
       <div className="rounded-lg flex flex-col items-start px-8 py-6 bg-gray-50 w-full lg:gap-6 gap-4">
