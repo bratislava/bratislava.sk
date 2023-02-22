@@ -61,7 +61,9 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
           <InputField
             label={t('profile_detail.phone_number')}
             value={temporaryUserData.phone_number || ''}
-            onChange={(value) => onChangeTemporary({ ...temporaryUserData, phone_number: value })}
+            onChange={(value) =>
+              onChangeTemporary({ ...temporaryUserData, phone_number: value?.replace(' ', '') })
+            }
           />
         </div>
         <div className="grow invisible h-0">

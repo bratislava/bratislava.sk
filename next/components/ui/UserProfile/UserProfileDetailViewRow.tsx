@@ -14,7 +14,7 @@ const UserProfileDetailViewRow = ({ label, value, tooltip }: UserProfileDetailVi
         <span className="text-p2-semibold">{label}</span>
         {tooltip && <Tooltip text={tooltip} />}
       </div>
-      <span className="text-p2 grow w-[49%]">{value || '-'}</span>
+      <span className="text-p2 grow w-[49%]">{!value || value === '' ? '-' : value}</span>
     </div>
   )
 }
