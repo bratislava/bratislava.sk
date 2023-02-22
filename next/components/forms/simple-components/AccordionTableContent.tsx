@@ -54,7 +54,7 @@ const AccordionTableContent = ({
     'shadow-[0_4px_16px_0_rgba(0,0,0,0.08)]': !isActive && shadow,
   })
   return (
-    <>
+    <div className="h-auto">
       <div className="lg:hidden block">
         <AccountMarkdownModal
           show={isActive}
@@ -142,7 +142,7 @@ const AccordionTableContent = ({
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }
 
