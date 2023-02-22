@@ -70,14 +70,14 @@ const AccountMarkdownTable = ({ content, variant = 'normal', className }: Accoun
           },
           th: ({ children }: never) => {
             return (
-              <th className="text-16 first:rounded-tl last:rounded-tr [&:not(:first-child)]:text-center border-spacing-0 border-b-2 text-left sm:py-4 pr-4">
+              <th className="text-16 lg:py-4 first:rounded-tl last:rounded-tr [&:not(:first-child)]:text-center border-spacing-0 border-b-2 text-left pr-4">
                 {children}
               </th>
             )
           },
           td: ({ children }: never) => {
             return (
-              <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center py-2 last:border-r-0 ">
+              <td className="[&:not(:first-child)]:text-20-semibold lg:py-4 border-r-2 [&:not(:first-child)]:text-center pr-4 last:border-r-0 ">
                 {children}
               </td>
             )
