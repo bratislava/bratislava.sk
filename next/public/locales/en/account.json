@@ -152,7 +152,7 @@
     "family_name": "Family name",
     "email": "E-mail",
     "email_button": "Edit",
-    "email_tooltip": "You can edit your email, when you write us on support.",
+    "email_tooltip": "If you would like to change the e-mail that you use to log in to your account and to which we send you all information related to your account, contact us at <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "phone_number": "Phone number (with pattern +421...)",
     "address": "Correspondence address",
     "street": "Street and number",

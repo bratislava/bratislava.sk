@@ -153,7 +153,7 @@
     "family_name": "Priezvisko",
     "email": "E-mail",
     "email_button": "Upraviť",
-    "email_tooltip": "Zmeniť email môžete keď napíšete na našu podporu",
+    "email_tooltip": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktuje nás na <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "phone_number": "Telefónne číslo (v tvare +421...)",
     "address": "Korešpondenčná adresa",
     "street": "Ulica a číslo",
