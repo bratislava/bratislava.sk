@@ -62,9 +62,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             label={t('profile_detail.phone_number')}
             helptext={t('profile_detail.phone_number_pattern')}
             value={temporaryUserData.phone_number || ''}
-            onChange={(value) =>
-              onChangeTemporary({ ...temporaryUserData, phone_number: value?.replace(' ', '') })
-            }
+            onChange={(value) => onChangeTemporary({ ...temporaryUserData, phone_number: value })}
           />
         </div>
         <div className="grow invisible h-0">
