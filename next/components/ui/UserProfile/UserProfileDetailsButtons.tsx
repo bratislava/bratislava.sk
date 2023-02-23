@@ -21,7 +21,7 @@ const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
       {isEditing ? (
         <div className="flex flex-row gap-5 items-center">
           <Button
-            className={cx('hidden', 'sm:block')}
+            className={cx('hidden focus:bg-white h-full', 'sm:block')}
             variant="plain-black"
             size="sm"
             text={t('profile_detail.stop_edit_button')}
