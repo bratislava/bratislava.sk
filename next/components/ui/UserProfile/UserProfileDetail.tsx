@@ -20,7 +20,6 @@ interface UserProfileDetailProps {
   onChangeTemporary: (temporaryUserData: UserData) => void
   onCancelEditing: () => void
   onSubmitEditing: () => void
-  onCloserAlert: () => void
   onOpenEmailModal: () => void
 }
 
@@ -35,7 +34,6 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
     onChangeTemporary,
     onCancelEditing,
     onSubmitEditing,
-    onCloserAlert,
     onOpenEmailModal,
   } = props
   const { t } = useTranslation('account')
@@ -63,7 +61,6 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
                 className="max-w-none grow"
                 type={alertType}
                 message={t(`profile_detail.${alertType}_alert`)}
-                close={onCloserAlert}
               />
             </div>
           )}

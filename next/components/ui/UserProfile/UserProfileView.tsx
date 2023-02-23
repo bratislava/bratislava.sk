@@ -57,10 +57,12 @@ const UserProfileView = () => {
       updateUserData(temporaryUserData).then(() => {
         setIsEditing(false)
         setIsAlertOpened(true)
+        setTimeout(() => setIsAlertOpened(false), 3000)
       })
     } else {
       setIsEditing(false)
       setIsAlertOpened(true)
+      setTimeout(() => setIsAlertOpened(false), 3000)
     }
   }
 
@@ -77,7 +79,6 @@ const UserProfileView = () => {
         onChangeTemporary={setTemporaryUserData}
         onCancelEditing={handleOnCancelEditing}
         onSubmitEditing={handleOnSubmitEditing}
-        onCloserAlert={() => setIsAlertOpened(false)}
         onOpenEmailModal={() => setIsEmailModalOpened(true)}
       />
       <UserProfilePassword />
