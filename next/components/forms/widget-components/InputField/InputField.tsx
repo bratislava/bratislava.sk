@@ -44,13 +44,14 @@ export type InputBase = {
   onChange?: (value?: string) => void
   size?: SizeType
   endIcon?: ReactNode
+  autoComplete?: string
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
   (
     {
       label,
-      type,
+      type = 'text',
       placeholder,
       errorMessage = [],
       helptext,
@@ -66,6 +67,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       onChange,
       endIcon,
       customErrorPlace = false,
+      autoComplete,
       ...rest
     },
     ref,
@@ -81,7 +83,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         ...rest,
         placeholder,
         value: onChange && value ? value : valueState,
-        type: type !== 'password' ? 'text' : type,
+        type,
         label,
         errorMessage,
         description: helptext,
@@ -94,6 +96,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         },
         isRequired: required,
         isDisabled: disabled,
+        autoComplete,
       },
       ref as RefObject<HTMLInputElement>,
     )

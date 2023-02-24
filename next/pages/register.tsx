@@ -13,7 +13,7 @@ import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { useState } from 'react'
 
 import PageWrapper from '../components/layouts/PageWrapper'
 import { isProductionDeployment } from '../utils/utils'
@@ -41,6 +41,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
+  const [lastRc, setLastRc] = useState('')
+  const [lastIdCard, setLastIdCard] = useState('')
   const {
     signUp,
     resendVerificationCode,
@@ -85,17 +87,34 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               cancelLabel={t('identity_verification_skip')}
               onCancel={() => router.push(ROUTES.ACCOUNT)}
             >
-              <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
-              <AccountMarkdown content={t('register_success_content')} variant="sm" />
+              <AccountMarkdown
+                className="text-center"
+                content={t('register_success_content')}
+                variant="sm"
+              />
             </AccountSuccessAlert>
           )}
           {status === AccountStatus.IdentityVerificationRequired && (
-            <IdentityVerificationForm onSubmit={verifyIdentity} error={error} />
+            <IdentityVerificationForm
+              onSubmit={(rc, idCard) => {
+                setLastRc(rc)
+                setLastIdCard(idCard)
+                verifyIdentity(rc, idCard)
+              }}
+              error={error}
+            />
           )}
           {status === AccountStatus.IdentityVerificationSuccess && (
             <AccountSuccessAlert
               title={t('identity_verification_success_title')}
-              description={formatUnicorn(t('identity_verification_success_description'), {})}
+              description={
+                lastRc &&
+                lastIdCard &&
+                formatUnicorn(t('identity_verification_success_description'), {
+                  rc: lastRc,
+                  idCard: lastIdCard,
+                })
+              }
               confirmLabel={t('account_continue_link')}
               onConfirm={() => router.push(ROUTES.ACCOUNT)}
             />

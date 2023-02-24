@@ -1,10 +1,13 @@
-import { ErrorSchema, RJSFValidationError } from '@rjsf/utils'
+import { ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
 import { JSONSchema7Definition } from 'json-schema'
 
-import { TransformedFormData } from '../components/forms/steps/Summary/TransformedFormData'
+import {
+  TransformedFormData,
+  TransformedFormStep,
+} from '../components/forms/steps/Summary/TransformedFormData'
 
-export function getFieldData(
+function getFieldData(
   label: string,
   schemaPath: string,
   isError: boolean,
@@ -15,14 +18,14 @@ export function getFieldData(
     value:
       (fieldFormData && !Array.isArray(fieldFormData)) ||
       (Array.isArray(fieldFormData) && fieldFormData.length > 0)
-        ? JSON.stringify(fieldFormData, null, '\t').replaceAll('"', '')
+        ? fieldFormData.toString()
         : '-',
     schemaPath,
     isError,
   }
 }
 
-export function isFieldError(
+function isFieldError(
   formErrors: RJSFValidationError[][],
   schemaPath: string,
   fieldName: string,
@@ -33,7 +36,7 @@ export function isFieldError(
   })
 }
 
-export function getAllSchemaData(
+function getAllSchemaData(
   data: TransformedFormData[],
   schemaContent: JsonSchema,
   schemaPath: string,
@@ -64,4 +67,40 @@ export function getAllSchemaData(
       data.push(fieldData)
     }
   })
+}
+
+function transformStep(
+  step: JSONSchema7Definition,
+  formData: Record<string, JsonSchema>,
+  formErrors: RJSFValidationError[][],
+  extraErrors: ErrorSchema,
+): TransformedFormStep {
+  if (typeof step === 'boolean' || !step?.properties) return { key: '', label: '', data: [] }
+  const stepContent: JSONSchema7Definition = Object.values(step.properties)[0]
+  const stepKey: string = Object.keys(step.properties)[0]
+  const label: string =
+    typeof stepContent !== 'boolean' && stepContent.title
+      ? stepContent.title
+      : typeof step !== 'boolean' && step.properties
+      ? Object.keys(step.properties)[0]
+      : ''
+  const data: TransformedFormData[] = []
+  const stepExtraErrors = extraErrors[stepKey]
+  getAllSchemaData(data, stepContent, `.${stepKey}`, formErrors, formData[stepKey], stepExtraErrors)
+  return { key: stepKey, label, data }
+}
+
+export const useFormDataTransform = (
+  formData: Record<string, JsonSchema>,
+  formErrors: RJSFValidationError[][],
+  extraErrors: ErrorSchema,
+  schema?: StrictRJSFSchema,
+) => {
+  const transformedSteps: TransformedFormStep[] = schema?.allOf
+    ? schema.allOf.map((step) => transformStep(step, formData, formErrors, extraErrors))
+    : []
+
+  return {
+    transformedSteps,
+  }
 }
