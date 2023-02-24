@@ -20,7 +20,6 @@ interface UserProfileDetailProps {
   onChangeTemporary: (temporaryUserData: UserData) => void
   onCancelEditing: () => void
   onSubmitEditing: () => void
-  onCloserAlert: () => void
   onOpenEmailModal: () => void
 }
 
@@ -35,15 +34,12 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
     onChangeTemporary,
     onCancelEditing,
     onSubmitEditing,
-    onCloserAlert,
     onOpenEmailModal,
   } = props
   const { t } = useTranslation('account')
 
   return (
-    <div
-      className={cx('', 'xs:static xs:z-0', { 'absolute top-0 left-0 right-0 z-50': isEditing })}
-    >
+    <div className={cx('flex flex-col', 'sm:static sm:z-0', { 'fixed inset-0 z-50': isEditing })}>
       <UserProfileSection>
         <UserProfileSectionHeader
           title={t('profile_detail.title')}
@@ -65,12 +61,11 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
                 className="max-w-none grow"
                 type={alertType}
                 message={t(`profile_detail.${alertType}_alert`)}
-                close={onCloserAlert}
               />
             </div>
           )}
           <div
-            className={cx('flex p-4 flex-col gap-8', 'xs:p-8 xs:flex-row xs:gap-16 xs:flex-wrap')}
+            className={cx('flex p-4 flex-col gap-8', 'sm:p-8 sm:flex-row sm:gap-16 sm:flex-wrap')}
           >
             <UserProfilePhoto userData={userData ?? {}} />
             {isEditing ? (
