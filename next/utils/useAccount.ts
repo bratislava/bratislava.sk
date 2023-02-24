@@ -210,7 +210,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     }
 
     try {
-      await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
+      setError(null)
+      await verifyIdentityApi(
+        { birthNumber: rc.replace('/', ''), identityCard: idCard },
+        accessToken,
+      )
       setStatus(AccountStatus.IdentityVerificationSuccess)
       return true
     } catch (error: any) {
