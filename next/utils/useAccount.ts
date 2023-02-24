@@ -106,7 +106,12 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
       if (updatableAttributes.has(key)) {
         const attribute = new CognitoUserAttribute({
           Name: customAttributes.has(key) ? `custom:${key}` : key,
-          Value: key === 'address' ? JSON.stringify(value) : value,
+          Value:
+            key === 'address'
+              ? JSON.stringify(value)
+              : key === 'phone_number'
+              ? value?.replace(' ', '')
+              : value,
         })
         attributeList.push(attribute)
       }
@@ -163,7 +168,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
             setError({ ...(err as AWSError) })
             resolve(false)
           } else {
-            setUserData((state) => ({ ...state, ...data }))
+            setUserData((state) => ({
+              ...state,
+              ...data,
+              phone_number: data.phone_number?.replace(' ', ''),
+            }))
             setError(null)
             resolve(true)
           }

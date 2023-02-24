@@ -51,9 +51,9 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
           className,
         )}
       >
-        <p className="w-max">
-          <AccountMarkdown content={text} variant="sm" />
-        </p>
+        <div className="w-max">
+          <AccountMarkdown content={text} variant="sm" uLinkVariant="primary" />
+        </div>
       </div>
       {arrow && (
         <span className={tooltipArrowStyle}>
