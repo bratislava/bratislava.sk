@@ -438,6 +438,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     verifyEmail,
     resendVerificationCode,
     verifyIdentity,
+    getAccessToken,
     changePassword,
     lastEmail: lastCredentials.Username,
     isAuth: user !== null,
