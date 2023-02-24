@@ -36,8 +36,8 @@ const fetchJsonApi = async (path: string, options?: RequestInit) => {
     console.log('have json', responseJson)
     if (responseJson?.errors) {
       throw new ApiError(responseJson?.message || API_ERROR_TEXT, responseJson.errors)
-    } else if (responseJson.state === 'CustomError') {
-      throw new Error(responseJson.naming)
+    } else if (responseJson.status === 'CustomError') {
+      throw new Error(responseJson.errorName)
     } else {
       throw new Error(API_ERROR_TEXT)
     }
@@ -88,7 +88,7 @@ interface Identity {
   identityCard: string
 }
 
-export const verifyIdentityApi = (data: Identity, token: string | undefined) => {
+export const verifyIdentityApi = (data: Identity, token: string) => {
   return fetchJsonApi(
     `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/user-verification/identity-card`,
     {
