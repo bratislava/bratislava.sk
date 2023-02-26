@@ -1,10 +1,19 @@
 import Form from '@rjsf/core'
-import { ErrorSchema, RJSFSchema } from '@rjsf/utils'
+import {
+  ErrorSchema,
+  FormValidation,
+  RJSFSchema,
+  RJSFValidationError,
+  StrictRJSFSchema,
+} from '@rjsf/utils'
+import { customizeValidator } from '@rjsf/validator-ajv8'
 import { validateKeyword } from '@utils/api'
 import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 import { get, merge } from 'lodash'
 import { RefObject, useEffect, useRef, useState } from 'react'
+
+import { StepData } from '../components/forms/types/TransformedFormData'
 
 export type JsonSchema = JSONSchema7Definition
 interface JsonSchemaProperties {
@@ -19,8 +28,12 @@ export const getAllPossibleJsonSchemaProperties = (
   }
 
   const properties: JsonSchemaProperties = jsonSchema.properties ?? {}
+
   if (jsonSchema.then) {
     Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.then))
+  }
+  if (jsonSchema.else) {
+    Object.assign(properties, getAllPossibleJsonSchemaProperties(jsonSchema.else))
   }
   if (jsonSchema.allOf) {
     jsonSchema.allOf.forEach((s) => {
@@ -108,78 +121,291 @@ const validateAsyncProperties = async (
   return errors
 }
 
+const isFieldRequired = (fieldKey: string, schema: StrictRJSFSchema): boolean => {
+  return Object.entries(schema).some(([key, value]: [string, RJSFSchema]) => {
+    if (key === 'required' && Array.isArray(value) && value.includes(fieldKey)) {
+      return true
+    }
+    let isRequired = false
+    if (key !== 'required' && value && Array.isArray(value)) {
+      value.forEach((item) => {
+        isRequired = isRequired || isFieldRequired(fieldKey, item)
+      })
+    } else if (key !== 'required' && value && typeof value === 'object') {
+      isRequired = isRequired || isFieldRequired(fieldKey, value)
+    }
+    return isRequired
+  })
+}
+
+const validateDateFromToFormat = (formData: RJSFSchema, errors: FormValidation, schema: any) => {
+  const formDataKeys = Object.keys(formData)
+  formDataKeys?.forEach((key) => {
+    if (
+      schema?.properties &&
+      schema?.properties[key]?.dateFromTo &&
+      formData[key].startDate &&
+      formData[key].endDate
+    ) {
+      const startDate = new Date(formData[key].startDate)
+      const endDate = new Date(formData[key].endDate)
+
+      if (endDate <= startDate) {
+        errors[key]?.endDate?.addError('End date must be greater than start date')
+      }
+    }
+  })
+}
+const validateTimeFromToFormat = (formData: RJSFSchema, errors: FormValidation, schema: any) => {
+  const formDataKeys = Object.keys(formData)
+  formDataKeys?.forEach((key) => {
+    if (
+      schema?.properties &&
+      schema?.properties[key]?.timeFromTo &&
+      formData[key].startTime &&
+      formData[key].endTime
+    ) {
+      const startTime: number[] = formData[key].startTime
+        ?.split(':')
+        .map((time: string) => parseInt(time, 10))
+
+      const endTime: number[] = formData[key].endTime
+        ?.split(':')
+        .map((time: string) => parseInt(time, 10))
+
+      const startTimeSeconds = startTime[0] * 60 * 60 + startTime[1] * 60
+      const endTimeSeconds = endTime[0] * 60 * 60 + endTime[1] * 60
+
+      if (endTimeSeconds <= startTimeSeconds) {
+        errors[key]?.endTime?.addError('End time must be greater than start time')
+      }
+    }
+  })
+}
+
+const validateRequiredFormat = (
+  formData: RJSFSchema,
+  errors: FormValidation,
+  schema: StrictRJSFSchema,
+) => {
+  const REQUIRED_VALUE = 'Required input'
+  Object.entries(formData).forEach(([key, value]: [string, RJSFSchema]) => {
+    const currentErrors = errors[key]
+    if (value && currentErrors && typeof value === 'object') {
+      validateRequiredFormat(value, currentErrors, schema)
+    } else if (!value && currentErrors && isFieldRequired(key, schema)) {
+      currentErrors.addError(REQUIRED_VALUE)
+    }
+  })
+}
+
+const customValidate = (formData: RJSFSchema, errors: FormValidation, schema: StrictRJSFSchema) => {
+  validateRequiredFormat(formData, errors, schema)
+  validateDateFromToFormat(formData, errors, schema)
+  validateTimeFromToFormat(formData, errors, schema)
+  return errors
+}
+
+const customFormats = {
+  zip: /\b\d{5}\b/,
+  time: /^[0-2]\d:[0-5]\d$/,
+}
+const validator = customizeValidator({
+  customFormats,
+  ajvOptionsOverrides: { keywords: ajvKeywords },
+})
+
+const getStepData = (schema: RJSFSchema): StepData[] => {
+  if (!schema || !schema.allOf) return []
+  return schema.allOf
+    .map((step) => {
+      if (typeof step === 'boolean') return null
+      const transformedStep: JSONSchema7 = step
+      if (!transformedStep.properties || Object.values(transformedStep.properties).length === 0)
+        return null
+      const stepProperties = transformedStep.properties ?? {}
+      const [key, value]: [string, JSONSchema7Definition] = Object.entries(stepProperties)[0]
+      if (typeof value === 'boolean') return null
+      return {
+        title: value.title ?? key,
+        stepKey: key,
+        isFilled: false,
+      }
+    })
+    .filter(Boolean) as StepData[]
+}
+
 // TODO prevent unmounting
 // TODO persist state for session
 // TODO figure out if we need to step over uiSchemas, or having a single one is enough (seems like it is for now)
-export const useFormStepper = (eformSlug: string, schema: any) => {
-  const [stepIndex, setStepIndex] = useState(0)
-  const [state, setState] = useState({})
-  const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
+export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   // since Form can be undefined, useRef<Form> is understood as an overload of useRef returning MutableRef, which does not match expected Ref type be rjsf
   // also, our code expects directly RefObject otherwise it will complain of no `.current`
   // this is probably a bug in their typing therefore the cast
   const formRef = useRef<Form>() as RefObject<Form>
 
-  // TODO validate
+  const [nextStepIndex, setNextStepIndex] = useState<number>(0)
+  const [stepIndex, setStepIndex] = useState<number>(0)
+  const [formData, setFormData] = useState<RJSFSchema>({})
+  const [errors, setErrors] = useState<RJSFValidationError[][]>([])
+  const [extraErrors, setExtraErrors] = useState<ErrorSchema>({})
+  const [stepData, setStepData] = useState<StepData[]>(getStepData(schema))
+
   const steps = schema?.allOf
+  const stepsLength: number = steps?.length ?? -1
+  const isComplete = stepIndex === stepsLength
 
-  const isComplete = stepIndex === steps.length
+  const currentSchema = steps ? (steps[stepIndex] as RJSFSchema) : {}
 
-  const previous = () => setStepIndex(stepIndex - 1)
-  const next = async () => {
-    let isValid = formRef?.current?.validateForm()
-    if (schema.$async === true) {
-      const errors = await validateAsyncProperties(
-        currentSchema,
-        formRef?.current?.state.formData,
-        [],
-      )
-      setExtraErrors(errors)
-
-      if (Object.keys(errors).length > 0) {
-        isValid = false
-      }
-    }
-
-    if (isValid) {
-      formRef?.current?.submit()
-    }
-  }
-
-  const currentSchema = steps[stepIndex]
-
-  // these are used to display header
-  const nextSchema = steps[stepIndex + 1]
-  const previousSchema = steps[stepIndex - 1]
-
-  // TODO consider validating steps can be merged into single schema without error on mount
   useEffect(() => {
     // effect to reset all internal state when critical input 'props' change
-    setState({})
+    setFormData({})
     setStepIndex(0)
+    setStepData(getStepData(schema))
   }, [eformSlug, schema])
 
   useEffect(() => {
     // stepIndex allowed to climb one step above the length of steps - i.e. to render a final overview or other custom components but still allow to return back
-    if (stepIndex > steps.length) {
+    if (stepIndex > stepsLength) {
       // stepIndex larger than last step index + 1
-      setStepIndex(steps.length)
+      setStepIndex(stepsLength)
     }
-  }, [stepIndex, steps])
+  }, [stepIndex, steps, stepsLength])
+
+  useEffect(() => window.scrollTo(0, 0), [stepIndex])
+
+  const changeStepData = (targetIndex: number, value: boolean): void => {
+    const newStepData: StepData[] = stepData.map((step: StepData, index: number) =>
+      index === targetIndex ? { ...step, isFilled: value } : { ...step },
+    )
+    setStepData(newStepData)
+  }
+
+  const validate = async (): Promise<boolean> => {
+    let isValid = formRef?.current?.validateForm() ?? false
+
+    if (schema.$async === true) {
+      const newExtraErrors = await validateAsyncProperties(currentSchema, formData, [])
+      isValid = isValid && Object.keys(newExtraErrors).length === 0
+      setExtraErrors({ ...extraErrors, ...newExtraErrors })
+    }
+
+    return isValid
+  }
+
+  const setUniqueErrors = (newErrors: RJSFValidationError[], actualStepIndex: number) => {
+    const updatedErrors: RJSFValidationError[][] = []
+    const stepsRange = [...Array.from({ length: stepIndex + 1 }).keys()]
+
+    stepsRange.forEach((id) => {
+      const stepErrors = errors[id]
+      if (id === actualStepIndex) {
+        updatedErrors.push([...newErrors])
+      } else if (stepErrors) {
+        updatedErrors.push([...stepErrors])
+      } else {
+        updatedErrors.push([])
+      }
+    })
+
+    setErrors(updatedErrors)
+  }
+
+  const increaseStepErrors = () => {
+    if (stepIndex - 1 === errors.length) {
+      setErrors([...errors, []])
+    }
+  }
+
+  const previous = () => setStepIndex(stepIndex - 1)
+  const next = () => setStepIndex(stepIndex + 1)
+  const jumpToStep = () => setStepIndex(nextStepIndex)
+
+  const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
+  const disableSkip = () => setIsSkipEnabled(false)
+
+  const submitStep = () => {
+    formRef?.current?.submit()
+  }
+
+  const skipToStep = (newNextStepIndex: number) => {
+    setNextStepIndex(newNextStepIndex)
+  }
+
+  // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
+  useEffect(() => {
+    if (isSkipEnabled) {
+      if (isComplete) {
+        jumpToStep()
+        disableSkip()
+      } else {
+        submitStep()
+      }
+    }
+  }, [isSkipEnabled])
+
+  // this is needed for skipping multiple steps through StepperView
+  // TODO: could be reduced by wrapping nextStepIndex and isSkipEnabled to 1 object
+  useEffect(() => setIsSkipEnabled(true), [nextStepIndex])
+
+  const setStepFormData = (stepFormData: RJSFSchema) => {
+    // transformNullToUndefined(stepFormData)
+    setFormData({ ...formData, ...stepFormData })
+  }
+
+  const handleOnSubmit = async (newFormData: RJSFSchema) => {
+    increaseStepErrors()
+    setStepFormData(newFormData)
+    const isFormValid = await validate()
+
+    if (isFormValid) {
+      setUniqueErrors([], stepIndex)
+    }
+    if (isFormValid && !isSkipEnabled) {
+      changeStepData(stepIndex, true)
+      next()
+      disableSkip()
+    }
+    if (!isFormValid || (isFormValid && isSkipEnabled)) {
+      jumpToStep()
+      disableSkip()
+    }
+  }
+
+  const handleOnErrors = (newErrors: RJSFValidationError[]) => {
+    setUniqueErrors(newErrors, stepIndex)
+    if (isSkipEnabled) {
+      changeStepData(stepIndex, false)
+      jumpToStep()
+      disableSkip()
+    }
+  }
 
   return {
     stepIndex,
     setStepIndex, // only for testing!
-    state,
-    setState,
+    formData,
+    setStepFormData,
+    errors,
+    extraErrors,
+    validate,
+    setErrors: setUniqueErrors,
+    stepData,
     previous,
     next,
+    submitStep,
+    skipToStep,
+    isSkipEnabled,
+    disableSkip,
+    increaseStepErrors,
+    customValidate,
+    handleOnSubmit,
+    handleOnErrors,
     currentSchema,
-    nextSchema,
-    previousSchema,
     isComplete,
     formRef,
-    extraErrors,
     keywords: ajvKeywords,
+    customFormats,
+    validator,
   }
 }

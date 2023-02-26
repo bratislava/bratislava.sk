@@ -22,7 +22,7 @@ type RadioButtonRJSFOptions = {
 interface RadioButtonFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: RadioButtonRJSFOptions
-  value: string
+  value: string | null
   errorMessage?: string
   required?: boolean
   disabled?: boolean
@@ -52,7 +52,7 @@ const RadioButtonsWidgetRJSF = (props: RadioButtonFieldWidgetRJSFProps) => {
     <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <RadioGroup
         errorMessage={rawErrors}
-        value={value}
+        value={value ?? undefined}
         onChange={onChange}
         className={className}
         label={label}

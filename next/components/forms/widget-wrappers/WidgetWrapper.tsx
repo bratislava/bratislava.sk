@@ -14,6 +14,10 @@ type WidgetWrapperBase = {
   id?: string
 }
 
+export const isFormSpacingType = (formSpacingType: string): formSpacingType is FormSpacingType => {
+  return ['large', 'default', 'small', 'medium', 'none'].includes(formSpacingType)
+}
+
 const WidgetWrapper = ({
   children,
   className,
@@ -27,15 +31,17 @@ const WidgetWrapper = ({
   return (
     <div
       className={cx('flex flex-col gap-4', className, {
-        'mb-[0px]': spaceBottom === 'none',
-        'mb-[40px]': spaceBottom === 'large',
-        'mb-[32px]': spaceBottom === 'default',
-        'mb-[24px]': spaceBottom === 'small',
+        'mb-0': spaceBottom === 'none',
+        'mb-10': spaceBottom === 'large',
+        'mb-8': spaceBottom === 'medium',
+        'mb-6': spaceBottom === 'small',
+        'mb-4': spaceBottom === 'default',
 
-        'mt-[0px]': spaceTop === 'none',
-        'mt-[40px]': spaceTop === 'large',
-        'mt-[32px]': spaceTop === 'default',
-        'mt-[24px]': spaceTop === 'small',
+        'mt-0': spaceTop === 'none',
+        'mt-10': spaceTop === 'large',
+        'mt-8': spaceTop === 'medium',
+        'mt-6': spaceTop === 'small',
+        'mt-4': spaceTop === 'default',
       })}
     >
       {children}

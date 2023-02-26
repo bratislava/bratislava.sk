@@ -81,11 +81,12 @@ module.exports = {
       'btn-lg': ['20px', '32px'],
 
       'p-xs': ['12px', '18px'],
-      'p-sm': ['14px', '24px'],
+      'p-sm': ['14px', '20px'],
       'p-base': ['16px', '24px'],
-      'p-md': ['20px', '32px'],
+      'p-md': ['20px', '28px'],
 
-      'h-sm': ['16px', '24px'],
+      'h-xs': ['16px', '24px'],
+      'h-sm': ['18px', '26px'],
       'h-base': ['20px', '28px'],
       'h-md': ['24px', '32px'],
       'h-lg': ['28px', '36px'],

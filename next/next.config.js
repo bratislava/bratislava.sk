@@ -48,6 +48,23 @@ const nextConfig = {
           source: '/city-of-bratislava/transparent-city/official-noticeboard',
           destination: '/mesto-bratislava/transparentne-mesto/uradna-tabula',
         },
+        // TODO does not work, revisit later
+        // {
+        //   source: '/ucet/uvod',
+        //   destination: '/account/intro',
+        // },
+        // {
+        //   source: '/ucet/mestske-sluzby',
+        //   destination: '/account/municipal-services',
+        // },
+        // {
+        //   source: '/ucet/dane-a-poplatky',
+        //   destination: '/account/taxes-and-fees',
+        // },
+        // {
+        //   source: '/ucet/mam-problem',
+        //   destination: '/account/i-have-a-problem',
+        // },
       ],
     }
   },
@@ -109,7 +126,8 @@ const nextConfig = {
       },
       {
         source: '/poplatky-za-komunalne-odpady-a-drobne-stavebne-odpady',
-        destination: '/mesto-bratislava/dane-a-poplatky/poplatok-za-komunalne-odpady-a-drobne-stavebne-odpady',
+        destination:
+          '/mesto-bratislava/dane-a-poplatky/poplatok-za-komunalne-odpady-a-drobne-stavebne-odpady',
         permanent: true,
       },
       {
@@ -119,7 +137,8 @@ const nextConfig = {
       },
       {
         source: '/najomne-byty-mesta',
-        destination: '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/najomne-byvanie/najomne-byty-mesta',
+        destination:
+          '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/najomne-byvanie/najomne-byty-mesta',
         permanent: true,
       },
       {
@@ -163,7 +182,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/harmonogram-zberu-triedeneho-odpadu-2021-pre-rodinne-domy-v-mestskych-castiach-v-prvej-etape',
+        source:
+          '/harmonogram-zberu-triedeneho-odpadu-2021-pre-rodinne-domy-v-mestskych-castiach-v-prvej-etape',
         destination:
           '/zivotne-prostredie-a-vystavba/zivotne-prostredie/odpady/triedeny-zber/zber-a-odvoz-vytriedeneho-odpadu-z-rodinnych-domov',
         permanent: true,
@@ -278,7 +298,8 @@ const nextConfig = {
       },
       {
         source: '/archiv-mesta-bratislavy',
-        destination: '/kultura-a-komunity/kulturne-sluzby/sluzby-badatelne-archivu-mesta-bratislavy',
+        destination:
+          '/kultura-a-komunity/kulturne-sluzby/sluzby-badatelne-archivu-mesta-bratislavy',
         permanent: true,
       },
       {
@@ -324,7 +345,8 @@ const nextConfig = {
       },
       {
         source: '/socialne-sluzby-a-pomoc',
-        destination: '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/sekcia-socialnych-veci',
+        destination:
+          '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/sekcia-socialnych-veci',
         permanent: true,
       },
       {
@@ -340,7 +362,8 @@ const nextConfig = {
       },
       {
         source: '/archivne-pomocky',
-        destination: '/kultura-a-komunity/kulturne-sluzby/sluzby-badatelne-archivu-mesta-bratislavy/archivne-pomocky',
+        destination:
+          '/kultura-a-komunity/kulturne-sluzby/sluzby-badatelne-archivu-mesta-bratislavy/archivne-pomocky',
         permanent: true,
       },
       {
@@ -477,7 +500,8 @@ const nextConfig = {
       },
       {
         source: '/elektricka-v-novom-centre',
-        destination: '/doprava-a-mapy/doprava/dopravne-projekty/nova-elektrickova-trat-pribinova-kosicka',
+        destination:
+          '/doprava-a-mapy/doprava/dopravne-projekty/nova-elektrickova-trat-pribinova-kosicka',
         permanent: true,
       },
       {
@@ -492,7 +516,8 @@ const nextConfig = {
       },
       {
         source: '/uzemnoplanovacia-informacia',
-        destination: '/zivotne-prostredie-a-vystavba/rozvoj-mesta/usmernovanie-vystavby/uzemnoplanovacia-informacia',
+        destination:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/usmernovanie-vystavby/uzemnoplanovacia-informacia',
         permanent: true,
       },
       {
@@ -593,7 +618,8 @@ const nextConfig = {
       },
       {
         source: '/dostupne-byvanie',
-        destination: '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/projekty-v-mestskom-najomnom-byvani',
+        destination:
+          '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/projekty-v-mestskom-najomnom-byvani',
         permanent: true,
       },
       {
@@ -619,7 +645,8 @@ const nextConfig = {
       },
       {
         source: '/zoznam-pridelenych-bytov',
-        destination: '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/najomne-byvanie/zoznam-pridelenych-bytov',
+        destination:
+          '/socialne-sluzby-a-byvanie/byvanie-a-ubytovanie/najomne-byvanie/zoznam-pridelenych-bytov',
         permanent: true,
       },
       {
@@ -634,12 +661,14 @@ const nextConfig = {
       },
       {
         source: '/komunitne-planovanie-socialnych-sluzieb',
-        destination: '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/komunitny-plan-socialnych-sluzieb',
+        destination:
+          '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/komunitny-plan-socialnych-sluzieb',
         permanent: true,
       },
       {
         source: '/organizacia-alebo-institucia/odvoz-a-likvidacia-odpadu-a-s',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
         permanent: true,
       },
       {
@@ -670,7 +699,8 @@ const nextConfig = {
       },
       {
         source: '/strategicka-podpora-kulturnych-podujati',
-        destination: '/kultura-a-komunity/kulturne-sluzby/podpora-strategickych-kulturnych-podujati',
+        destination:
+          '/kultura-a-komunity/kulturne-sluzby/podpora-strategickych-kulturnych-podujati',
         permanent: true,
       },
       {
@@ -739,7 +769,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/organizacia-alebo-institucia/bratislavska-organizacia-cestovneho-ruchu-bratislava-tourist-board',
+        source:
+          '/organizacia-alebo-institucia/bratislavska-organizacia-cestovneho-ruchu-bratislava-tourist-board',
         destination:
           '/mesto-bratislava/sprava-mesta/organizacie-mesta/ostatne-organizacie/bratislavska-organizacia-cestovneho-ruchu',
         permanent: true,
@@ -773,7 +804,8 @@ const nextConfig = {
       },
       {
         source: '/invazne-dreviny',
-        destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/stromy-v-meste/invazne-dreviny',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/stromy-v-meste/invazne-dreviny',
         permanent: true,
       },
       {
@@ -783,7 +815,8 @@ const nextConfig = {
       },
       {
         source: '/organizacia-alebo-institucia/mestsky-parkovaci-system-spol-s-r-o',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/mepasys',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/mepasys',
         permanent: true,
       },
       {
@@ -848,7 +881,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/ziadost-o-financny-prispevok-pre-neverejneho-poskytovatela-socialnej-sluzby-v-zariadeni-pre-seniorov',
+        source:
+          '/ziadost-o-financny-prispevok-pre-neverejneho-poskytovatela-socialnej-sluzby-v-zariadeni-pre-seniorov',
         destination:
           '/socialne-sluzby-a-byvanie/financna-podpora/financovanie-neverejnych-poskytovatelov-socialnych-sluzieb',
         permanent: true,
@@ -865,7 +899,8 @@ const nextConfig = {
       },
       {
         source: '/bankove-ucty-uradu',
-        destination: '/mesto-bratislava/transparentne-mesto/rozpocet-a-hospodarenie/bankove-ucty-uradu',
+        destination:
+          '/mesto-bratislava/transparentne-mesto/rozpocet-a-hospodarenie/bankove-ucty-uradu',
         permanent: true,
       },
       {
@@ -875,7 +910,8 @@ const nextConfig = {
       },
       {
         source: '/organizacia-alebo-institucia/centrum-volneho-casu-gessayova-6',
-        destination: '/vzdelavanie-a-volny-cas/skolstvo/centra-volneho-casu/centrum-volneho-casu-gessayova-6',
+        destination:
+          '/vzdelavanie-a-volny-cas/skolstvo/centra-volneho-casu/centrum-volneho-casu-gessayova-6',
         permanent: true,
       },
       {
@@ -910,7 +946,8 @@ const nextConfig = {
       },
       {
         source: '/komunitny-plan-socialnych-sluzieb-2020-2021',
-        destination: '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/komunitny-plan-socialnych-sluzieb',
+        destination:
+          '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/komunitny-plan-socialnych-sluzieb',
         permanent: true,
       },
       {
@@ -925,11 +962,13 @@ const nextConfig = {
       },
       {
         source: '/organizacia-alebo-institucia/metro-bratislava-a-s',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/metro',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/metro',
         permanent: true,
       },
       {
-        source: '/ziadost-o-umiestnenie-v-zariadeni-pre-seniorov-u-neverejneho-poskytovatela-socialnej-sluzby',
+        source:
+          '/ziadost-o-umiestnenie-v-zariadeni-pre-seniorov-u-neverejneho-poskytovatela-socialnej-sluzby',
         destination:
           '/socialne-sluzby-a-byvanie/socialne-zariadenia/zariadenia-pre-seniorov-zariadenia-opatrovatelskej-sluzby-a-denny-stacionar',
         permanent: true,
@@ -952,12 +991,14 @@ const nextConfig = {
       },
       {
         source: '/organizacia-alebo-institucia/bratislavske-kulturne-a-informacne-stredisko',
-        destination: '/kultura-a-komunity/mestske-kulturne-organizacie/bratislavske-kulturne-a-informacne-stredisko',
+        destination:
+          '/kultura-a-komunity/mestske-kulturne-organizacie/bratislavske-kulturne-a-informacne-stredisko',
         permanent: true,
       },
       {
         source: '/obehove-hospodarstvo-mesta-bratislava',
-        destination: '/zivotne-prostredie-a-vystavba/zivotne-prostredie/odpady/obehove-hospodarstvo',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zivotne-prostredie/odpady/obehove-hospodarstvo',
         permanent: true,
       },
       {
@@ -1118,7 +1159,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/organizacia-alebo-institucia/zakladna-umelecka-skola-milosa-ruppeldta-panenska-11',
+        source:
+          '/organizacia-alebo-institucia/zakladna-umelecka-skola-milosa-ruppeldta-panenska-11',
         destination: '/vzdelavanie-a-volny-cas/skolstvo/zakladne-umelecke-skoly',
         permanent: true,
       },
@@ -1134,7 +1176,8 @@ const nextConfig = {
       },
       {
         source: '/organizacia-alebo-institucia/ksp-s-r-o',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/ksp-sro',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/ksp-sro',
         permanent: true,
       },
       {
@@ -1320,7 +1363,8 @@ const nextConfig = {
       },
       {
         source: '/horsky-park-je-historicky',
-        destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
         permanent: true,
       },
       {
@@ -1421,7 +1465,8 @@ const nextConfig = {
       },
       {
         source: '/zonacia-horskeho-parku',
-        destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
         permanent: true,
       },
       {
@@ -1455,12 +1500,14 @@ const nextConfig = {
       },
       {
         source: '/budovanie-stanovist',
-        destination: '/zivotne-prostredie-a-vystavba/zivotne-prostredie/odpady/kontajnerove-stanovistia',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zivotne-prostredie/odpady/kontajnerove-stanovistia',
         permanent: true,
       },
       {
         source: '/specifikum-horskeho-parku',
-        destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
         permanent: true,
       },
       {
@@ -1475,7 +1522,8 @@ const nextConfig = {
       },
       {
         source: '/poplatky-za-komunalne-odpady-a-drobne-stavebne-odpady',
-        destination: '/mesto-bratislava/dane-a-poplatky/poplatok-za-komunalne-odpady-a-drobne-stavebne-odpady',
+        destination:
+          '/mesto-bratislava/dane-a-poplatky/poplatok-za-komunalne-odpady-a-drobne-stavebne-odpady',
         permanent: true,
       },
       {
@@ -1492,7 +1540,8 @@ const nextConfig = {
       },
       {
         source: '/organizacia-alebo-institucia/mestsky-ustav-ochrany-pamiatok',
-        destination: '/kultura-a-komunity/mestske-kulturne-organizacie/mestsky-ustav-ochrany-pamiatok',
+        destination:
+          '/kultura-a-komunity/mestske-kulturne-organizacie/mestsky-ustav-ochrany-pamiatok',
         permanent: true,
       },
       {
@@ -1504,7 +1553,8 @@ const nextConfig = {
       },
       {
         source: '/integrovany-regionalny-operacny-program',
-        destination: '/mesto-bratislava/projekty/eu-projekty/integrovany-regionalny-operacny-program',
+        destination:
+          '/mesto-bratislava/projekty/eu-projekty/integrovany-regionalny-operacny-program',
         permanent: true,
       },
       {
@@ -1582,7 +1632,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/rozkopavka-alebo-uzavierka/uplne-uzavierky-spojene-s-podujatim-csob-bratislava-marathon-2019',
+        source:
+          '/rozkopavka-alebo-uzavierka/uplne-uzavierky-spojene-s-podujatim-csob-bratislava-marathon-2019',
         destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
         permanent: true,
       },
@@ -1614,7 +1665,8 @@ const nextConfig = {
       },
       {
         source: '/cleanmobility',
-        destination: '/mesto-bratislava/projekty/eu-projekty/interreg-v-a-slovenska-republika–rakusko',
+        destination:
+          '/mesto-bratislava/projekty/eu-projekty/interreg-v-a-slovenska-republika–rakusko',
         permanent: true,
       },
       {
@@ -1668,12 +1720,14 @@ const nextConfig = {
       },
       {
         source: '/vyberove-konanie-predseda-nicka-predstavenstva-olo',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
         permanent: true,
       },
       {
         source: '/organizacia-alebo-institucia/halbart',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/halbart',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/halbart',
         permanent: true,
       },
       {
@@ -1712,7 +1766,8 @@ const nextConfig = {
       },
       {
         source: '/financny-mechanizmus-ehp-a-norska-2014-2021',
-        destination: '/mesto-bratislava/projekty/eu-projekty/financny-mechanizmus-ehp-a-norska-2014-2021',
+        destination:
+          '/mesto-bratislava/projekty/eu-projekty/financny-mechanizmus-ehp-a-norska-2014-2021',
         permanent: true,
       },
       {
@@ -1733,13 +1788,15 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/vyberove-konanie-na-riaditela-ku-bratislavskeho-a-kulturneho-informacneho-strediska',
+        source:
+          '/vyberove-konanie-na-riaditela-ku-bratislavskeho-a-kulturneho-informacneho-strediska',
         destination: '/mesto-bratislava/transparentne-mesto/vyberove-konania',
         permanent: true,
       },
       {
         source: '/rozpoctove-pravidla',
-        destination: '/mesto-bratislava/transparentne-mesto/rozpocet-a-hospodarenie/rozpoctove-pravidla',
+        destination:
+          '/mesto-bratislava/transparentne-mesto/rozpocet-a-hospodarenie/rozpoctove-pravidla',
         permanent: true,
       },
       {
@@ -1769,7 +1826,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-nabrezie-armadneho-generala-ludvika-svobodu-3',
+        source:
+          '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-nabrezie-armadneho-generala-ludvika-svobodu-3',
         destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
         permanent: true,
       },
@@ -1896,7 +1954,8 @@ const nextConfig = {
       },
       {
         source: '/ako-bude-horsky-park-vyuzivany-po-novom',
-        destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
         permanent: true,
       },
       {
@@ -1996,7 +2055,8 @@ const nextConfig = {
       },
       {
         source: '/vyberove-konanie-predseda-predstavenstva-olo',
-        destination: '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/olo',
         permanent: true,
       },
       {
@@ -2118,7 +2178,8 @@ const nextConfig = {
       },
       {
         source: '/archiv-mesta-bratislavy',
-        destination: '/kultura-a-komunity/kulturne-sluzby/sluzby-badatelne-archivu-mesta-bratislavy',
+        destination:
+          '/kultura-a-komunity/kulturne-sluzby/sluzby-badatelne-archivu-mesta-bratislavy',
         permanent: true,
       },
       {
@@ -2132,7 +2193,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/organizacia-alebo-institucia/bratislavska-organizacia-byvania-neziskova-organizacia',
+        source:
+          '/organizacia-alebo-institucia/bratislavska-organizacia-byvania-neziskova-organizacia',
         destination:
           '/mesto-bratislava/sprava-mesta/organizacie-mesta/ostatne-organizacie/bratislavska-organizacia-byvania',
         permanent: true,
@@ -2220,7 +2282,8 @@ const nextConfig = {
       },
       {
         source: '/sucasny-stav-horskeho-parku-a-dalsie-vizie',
-        destination: '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
+        destination:
+          '/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park',
         permanent: true,
       },
       {
@@ -2257,7 +2320,8 @@ const nextConfig = {
       {
         source:
           '/vseobecne-zavazne-nariadenie-hlavneho-mesta-slovenskej-republiky-bratislavy-c-12-2014/d-11045771/p1=11049947',
-        destination: '/mesto-bratislava/sprava-mesta/legislativa-mesta/vseobecne-zavazne-nariadenia',
+        destination:
+          '/mesto-bratislava/sprava-mesta/legislativa-mesta/vseobecne-zavazne-nariadenia',
         permanent: true,
       },
       {
@@ -2373,7 +2437,8 @@ const nextConfig = {
       },
       {
         source: '/analyzy-v-socialnej-oblasti',
-        destination: '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/analyzy-v-socialnej-oblasti',
+        destination:
+          '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/analyzy-v-socialnej-oblasti',
         permanent: true,
       },
       {
@@ -2483,7 +2548,8 @@ const nextConfig = {
       },
       {
         source: '/baum-2020-de',
-        destination: '/mesto-bratislava/projekty/eu-projekty/interreg-v-a-slovenska-republika–rakusko',
+        destination:
+          '/mesto-bratislava/projekty/eu-projekty/interreg-v-a-slovenska-republika–rakusko',
         permanent: true,
       },
       {
@@ -2632,7 +2698,12 @@ const nextConfig = {
       },
       {
         source: '/sadni-si',
-        destination: '/mesto-bratislava/projekty/kampane/sadni-si',
+        destination: '/mesto-bratislava/projekty/sadni-si',
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/projekty/kampane/sadni-si',
+        destination: '/mesto-bratislava/projekty/sadni-si',
         permanent: true,
       },
     ]

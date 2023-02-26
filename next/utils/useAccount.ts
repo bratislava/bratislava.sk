@@ -1,8 +1,10 @@
+import { verifyIdentityApi } from '@utils/api'
 import {
   AuthenticationDetails,
   CognitoUser,
   CognitoUserAttribute,
   CognitoUserPool,
+  CognitoUserSession,
   IAuthenticationDetailsData,
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
@@ -19,7 +21,11 @@ export enum AccountStatus {
   IdentityVerificationSuccess,
 }
 
-interface Address {
+export enum Tier {
+  IdentityCard = 'IDENTITY_CARD',
+}
+
+export interface Address {
   formatted?: string
   street_address?: string
   locality?: string
@@ -40,12 +46,18 @@ export interface UserData {
   phone_verified?: string
   address?: Address
   ifo?: string
-  rc_op_verified_date?: string
-  tier?: string
+  tier?: Tier
 }
 
 // non standard, has prefix custom: in cognito
-const customAttributes = new Set(['ifo', 'rc_op_verified_date', 'tier'])
+const customAttributes = new Set(['ifo', 'tier'])
+const updatableAttributes = new Set([
+  'name',
+  'given_name',
+  'family_name',
+  'phone_number',
+  'address',
+])
 
 const poolData = {
   UserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || '',
@@ -53,31 +65,56 @@ const poolData = {
 }
 const userPool = new CognitoUserPool(poolData)
 
+export interface AccountError {
+  message: string
+  code: string
+}
+
 export default function useAccount(initStatus = AccountStatus.Idle) {
-  const [user, setUser] = useState<CognitoUser | null>(null)
-  const [error, setError] = useState<AWSError | undefined | null>(null)
+  const [user, setUser] = useState<CognitoUser | null | undefined>()
+  const [error, setError] = useState<AccountError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(initStatus)
   const [userData, setUserData] = useState<UserData | null>(null)
+  const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
 
+  useEffect(() => {
+    const updatedUserData = userData ? { ...userData } : null
+    setTemporaryUserData(updatedUserData)
+  }, [userData])
+
+  const resetTemporaryUserData = () => {
+    const actualUserData = userData ? { ...userData } : null
+    setTemporaryUserData(actualUserData)
+  }
+
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
     attributes?.forEach((attribute: CognitoUserAttribute) => {
-      data[attribute.getName().replace(/^custom:/, '')] = attribute.getValue()
+      const attributeKey: string = attribute.getName().replace(/^custom:/, '')
+      data[attributeKey] =
+        attributeKey === 'address' ? JSON.parse(attribute.getValue()) : attribute.getValue()
     })
     return data
   }
 
-  const objectToUserAttributes = (data: UserData): CognitoUserAttribute[] => {
+  const objectToUserAttributes = (data: UserData | Address): CognitoUserAttribute[] => {
     const attributeList: CognitoUserAttribute[] = []
     Object.entries(data).forEach(([key, value]) => {
-      const attribute = new CognitoUserAttribute({
-        Name: customAttributes.has(key) ? `custom:${key}` : key,
-        Value: value,
-      })
-      attributeList.push(attribute)
+      if (updatableAttributes.has(key)) {
+        const attribute = new CognitoUserAttribute({
+          Name: customAttributes.has(key) ? `custom:${key}` : key,
+          Value:
+            key === 'address'
+              ? JSON.stringify(value)
+              : key === 'phone_number'
+              ? value?.replace(' ', '')
+              : value,
+        })
+        attributeList.push(attribute)
+      }
     })
     return attributeList
   }
@@ -131,7 +168,12 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
             setError({ ...(err as AWSError) })
             resolve(false)
           } else {
-            setUserData((state) => ({ ...state, ...data }))
+            setUserData((state) => ({
+              ...state,
+              ...data,
+              phone_number: data.phone_number?.replace(' ', ''),
+            }))
+            setError(null)
             resolve(true)
           }
         })
@@ -141,23 +183,58 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const getAccessToken = async (): Promise<string | null> => {
+    return new Promise((resolve) => {
+      const cognitoUser = userPool.getCurrentUser()
+      if (cognitoUser == null) {
+        resolve(null)
+      } else {
+        cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
+          if (err) {
+            resolve(null)
+          } else if (result) {
+            const accessToken = result.getAccessToken().getJwtToken()
+            resolve(accessToken)
+          } else {
+            resolve(null)
+          }
+        })
+      }
+    })
+  }
+
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
-    const res = await updateUserData({ rc_op_verified_date: new Date().toISOString() })
-    if (res) {
-      setStatus(AccountStatus.IdentityVerificationSuccess)
+    const accessToken = await getAccessToken()
+    if (!accessToken) {
+      return false
     }
 
-    return res
+    try {
+      setError(null)
+      await verifyIdentityApi(
+        { birthNumber: rc.replace('/', ''), identityCard: idCard },
+        accessToken,
+      )
+      setStatus(AccountStatus.IdentityVerificationSuccess)
+      return true
+    } catch (error: any) {
+      setError({
+        code: error.message,
+        message: error.message,
+      })
+      return false
+    }
   }
 
   useEffect(() => {
     const cognitoUser = userPool.getCurrentUser()
     if (cognitoUser != null) {
-      cognitoUser.getSession((err: Error) => {
+      cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
         if (err) {
           console.error(err)
           return
         }
+
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
@@ -167,7 +244,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
           const userData = userAttributesToObject(attributes)
           setStatus(
-            !userData.rc_op_verified_date
+            userData.tier !== Tier.IdentityCard
               ? AccountStatus.IdentityVerificationRequired
               : AccountStatus.IdentityVerificationSuccess,
           )
@@ -175,6 +252,8 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           setUser(cognitoUser)
         })
       })
+    } else {
+      setUser(null)
     }
   }, [])
 
@@ -290,9 +369,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     setError(null)
     return new Promise((resolve) => {
       cognitoUser.authenticateUser(new AuthenticationDetails(credentials), {
-        onSuccess(result) {
-          // const accessToken = result.getAccessToken().getJwtToken()
-          // console.log('accessToken', accessToken)
+        onSuccess(result: CognitoUserSession) {
           // POTENTIAL: Region needs to be set if not already set previously elsewhere.
           AWS.config.region = process.env.NEXT_PUBLIC_AWS_REGION
 
@@ -312,16 +389,8 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
               setError(err)
               resolve(false)
             } else {
-              cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
-                if (err) {
-                  setError({ ...(err as AWSError) })
-                  resolve(false)
-                } else {
-                  setUserData(userAttributesToObject(attributes))
-                  setUser(cognitoUser)
-                  resolve(true)
-                }
-              })
+              setUser(cognitoUser)
+              resolve(true)
             }
           })
         },
@@ -375,11 +444,16 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     setStatus,
     userData,
     updateUserData,
+    temporaryUserData,
+    resetTemporaryUserData,
+    setTemporaryUserData,
     signUp,
     verifyEmail,
     resendVerificationCode,
     verifyIdentity,
+    getAccessToken,
     changePassword,
     lastEmail: lastCredentials.Username,
+    isAuth: user !== null,
   }
 }

@@ -1,6 +1,6 @@
 import ArrowLeft from '@assets/images/forms/arrow-left.svg'
 import cx from 'classnames'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 import CloseIcon from '../../icon-components/CloseIcon'
 import Button from '../../simple-components/Button'
@@ -9,22 +9,26 @@ type ModalBase = {
   show: boolean
   divider?: boolean
   onClose: () => void
-  onSubmit: () => void
+  onSubmit: (params: OnSubmitParams) => void
   content: (({}: any) => JSX.Element)[] | (({}: any) => JSX.Element)
-  header: string
-  confirmLabel: string
-  cancelLabel: string
-  isStepper?: boolean
+  header?: string
+  confirmLabel?: string
+  cancelLabel?: string
   className?: string
+}
+
+type OnSubmitParams = {
+  data?: any
 }
 
 type ModalHeaderBase = Omit<
   ModalBase,
   'content' | 'confirmLabel' | 'cancelLabel' | 'onSubmit' | 'show' | 'startedIndex'
 > & {
+  hasHeader: boolean
   currentScreenIndex: number
   setCurrentScreenIndex: Dispatch<SetStateAction<number>>
-  header: string
+  header?: string
 }
 
 const ModalHeader = ({
@@ -33,16 +37,16 @@ const ModalHeader = ({
   currentScreenIndex,
   setCurrentScreenIndex,
   header,
-  isStepper,
+  hasHeader,
 }: ModalHeaderBase) => {
   const headerStyle = cx('flex py-4 px-6 gap-6 bg-white rounded-t-lg justify-between', {
     'border-b-solid border-b-form-input-default border-b-2': divider,
   })
-  const headlineStyle = cx('text-default font-semibold h-7 leading-7 not-italic', {
+  const headlineStyle = cx('text-20-semibold h-7', {
     'text-center ml-1': currentScreenIndex > 0,
   })
 
-  if (!isStepper) return null
+  if (!hasHeader) return null
 
   return (
     <div className={headerStyle}>
@@ -65,6 +69,7 @@ const ModalHeader = ({
 }
 
 type ModalFooterBase = Omit<ModalBase, 'content' | 'header' | 'show' | 'startedIndex'> & {
+  hasFooter: boolean
   currentScreenIndex: number
   setCurrentScreenIndex: Dispatch<SetStateAction<number>>
   contentLength: number
@@ -76,7 +81,7 @@ const ModalFooter = ({
   currentScreenIndex,
   setCurrentScreenIndex,
   contentLength,
-  isStepper,
+  hasFooter,
   confirmLabel,
   cancelLabel,
   onSubmit,
@@ -88,12 +93,12 @@ const ModalFooter = ({
     },
   )
 
-  if (!isStepper) return null
+  if (!hasFooter) return null
 
   return (
     <div className={footerStyle}>
       <button
-        className="text-base flex cursor-pointer items-center font-semibold not-italic leading-6"
+        className="text-p2-semibold flex cursor-pointer items-center"
         onClick={onClose}
         type="button"
       >
@@ -105,7 +110,7 @@ const ModalFooter = ({
             setCurrentScreenIndex(currentScreenIndex + 1)
           } else {
             setCurrentScreenIndex(0)
-            onSubmit()
+            onSubmit({})
           }
         }}
         variant="black"
@@ -119,23 +124,26 @@ const ModalFooter = ({
 const ModalBody = ({
   content,
   currentScreenIndex,
-  isStepper,
+  hasHeader,
+  hasFooter,
   onSubmit,
   onClose,
 }: {
   content: ((props?: any) => JSX.Element)[] | ((props?: any) => JSX.Element)
   currentScreenIndex: number
-  isStepper: boolean
+  hasHeader: boolean
+  hasFooter: boolean
   onClose: () => void
-  onSubmit: () => void
+  onSubmit: (params: OnSubmitParams) => void
 }) => {
   return (
     <div
       className={cx('flex flex-col bg-white p-6 overflow-hidden', {
-        'rounded-10': !isStepper,
+        'rounded-t-10': !hasHeader,
+        'rounded-b-10': !hasFooter,
       })}
     >
-      {!isStepper ? (
+      {!hasHeader ? (
         <div className="ml-1 flex flex-row justify-end items-center">
           <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
         </div>
@@ -170,9 +178,11 @@ const Modal = ({
     return null
   }
 
+  const hasHeader = Array.isArray(content) || Boolean(header)
+  const hasFooter = Array.isArray(content)
   return (
     <div
-      className="h-full fixed w-full z-10 top-0 flex items-center justify-center"
+      className="z-20 h-full fixed w-full top-0 flex items-center justify-center"
       style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={() => {
         setCurrentScreenIndex(0)
@@ -185,7 +195,7 @@ const Modal = ({
           currentScreenIndex={currentScreenIndex}
           setCurrentScreenIndex={setCurrentScreenIndex}
           divider={divider}
-          isStepper={Array.isArray(content)}
+          hasHeader={hasHeader}
           onClose={() => {
             setCurrentScreenIndex(0)
             onClose()
@@ -193,7 +203,8 @@ const Modal = ({
         />
         <ModalBody
           content={content}
-          isStepper={Array.isArray(content)}
+          hasHeader={hasHeader}
+          hasFooter={hasFooter}
           currentScreenIndex={currentScreenIndex}
           onSubmit={onSubmit}
           onClose={onClose}
@@ -204,7 +215,7 @@ const Modal = ({
           currentScreenIndex={currentScreenIndex}
           contentLength={content.length}
           setCurrentScreenIndex={setCurrentScreenIndex}
-          isStepper={Array.isArray(content)}
+          hasFooter={hasFooter}
           cancelLabel={cancelLabel}
           divider
           onClose={() => {
