@@ -48,7 +48,7 @@ export const TimeFromTo = ({
 }: TimeFromBase & TimeToBase) => {
   return (
     <div className={cx('flex-col flex')}>
-      <div className="flex lg:flex-row flex-col gap-4 items-end">
+      <div className="flex lg:flex-row flex-col gap-4">
         <div className={cx('flex flex-col w-[320px] items-start')}>
           <TimePicker
             label={TimeFromLabel}
@@ -68,7 +68,7 @@ export const TimeFromTo = ({
             <FieldErrorMessage errorMessage={TimeFromErrorMessage} />
           </div>
         </div>
-        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-8')} />
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-6')} />
         <div className={cx('w-[320px] flex flex-col')}>
           <TimePicker
             label={TimeToLabel}
