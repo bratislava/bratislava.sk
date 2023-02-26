@@ -4,7 +4,7 @@ import MenuButton from 'components/forms/simple-components/Menu/MenuButton'
 import MenuContainer from 'components/forms/simple-components/Menu/MenuContainer'
 import MenuPopover from 'components/forms/simple-components/Menu/MenuPopover'
 import React from 'react'
-import { useMenuTrigger } from 'react-aria'
+import { OverlayProvider, useMenuTrigger } from 'react-aria'
 import { useMenuTriggerState } from 'react-stately'
 
 interface MenuProps<T extends object> extends AriaMenuProps<T>, MenuTriggerProps {
@@ -31,14 +31,16 @@ const Menu = <T extends object>(props: MenuProps<T>) => {
         />
       </MenuButton>
       {state.isOpen && (
-        <MenuPopover state={state} triggerRef={ref} placement="bottom start">
-          <MenuContainer
-            {...menuProps}
-            {...props}
-            autoFocus={state.focusStrategy || true}
-            onClose={() => state.close()}
-          />
-        </MenuPopover>
+        <OverlayProvider>
+          <MenuPopover state={state} triggerRef={ref} placement="bottom start">
+            <MenuContainer
+              {...menuProps}
+              {...props}
+              autoFocus={state.focusStrategy || true}
+              onClose={() => state.close()}
+            />
+          </MenuPopover>
+        </OverlayProvider>
       )}
     </div>
   )
