@@ -7,6 +7,7 @@ import useAccount from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import React, { useEffect, useState } from 'react'
 
+import AccountMarkdown from '../../forms/segments/AccountMarkdown/AccountMarkdown'
 import MessageModal from '../../forms/widget-components/Modals/MessageModal'
 
 const UserProfileView = () => {
@@ -56,16 +57,18 @@ const UserProfileView = () => {
       updateUserData(temporaryUserData).then(() => {
         setIsEditing(false)
         setIsAlertOpened(true)
+        setTimeout(() => setIsAlertOpened(false), 3000)
       })
     } else {
       setIsEditing(false)
       setIsAlertOpened(true)
+      setTimeout(() => setIsAlertOpened(false), 3000)
     }
   }
 
   // TODO: redirect to change password
   return (
-    <section className="flex flex-col gap-2 xs:gap-0 h-full xs:bg-white">
+    <section className="flex flex-col gap-2 sm:gap-0 h-full sm:bg-white">
       <UserProfileDetail
         userData={userData}
         temporaryUserData={temporaryUserData}
@@ -76,7 +79,6 @@ const UserProfileView = () => {
         onChangeTemporary={setTemporaryUserData}
         onCancelEditing={handleOnCancelEditing}
         onSubmitEditing={handleOnSubmitEditing}
-        onCloserAlert={() => setIsAlertOpened(false)}
         onOpenEmailModal={() => setIsEmailModalOpened(true)}
       />
       <UserProfilePassword />
@@ -94,7 +96,7 @@ const UserProfileView = () => {
         }}
         title={t('profile_detail.modal_title')}
       >
-        <p>{t('profile_detail.modal_message')}</p>
+        <AccountMarkdown content={t('profile_detail.modal_message')} variant="sm" />
         <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
       </MessageModal>
     </section>

@@ -70,7 +70,6 @@ export interface AccountError {
   code: string
 }
 
-let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
@@ -107,7 +106,12 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
       if (updatableAttributes.has(key)) {
         const attribute = new CognitoUserAttribute({
           Name: customAttributes.has(key) ? `custom:${key}` : key,
-          Value: key === 'address' ? JSON.stringify(value) : value,
+          Value:
+            key === 'address'
+              ? JSON.stringify(value)
+              : key === 'phone_number'
+              ? value?.replace(' ', '')
+              : value,
         })
         attributeList.push(attribute)
       }
@@ -164,7 +168,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
             setError({ ...(err as AWSError) })
             resolve(false)
           } else {
-            setUserData((state) => ({ ...state, ...data }))
+            setUserData((state) => ({
+              ...state,
+              ...data,
+              phone_number: data.phone_number?.replace(' ', ''),
+            }))
             setError(null)
             resolve(true)
           }
@@ -175,9 +183,38 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const getAccessToken = async (): Promise<string | null> => {
+    return new Promise((resolve) => {
+      const cognitoUser = userPool.getCurrentUser()
+      if (cognitoUser == null) {
+        resolve(null)
+      } else {
+        cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
+          if (err) {
+            resolve(null)
+          } else if (result) {
+            const accessToken = result.getAccessToken().getJwtToken()
+            resolve(accessToken)
+          } else {
+            resolve(null)
+          }
+        })
+      }
+    })
+  }
+
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
+    const accessToken = await getAccessToken()
+    if (!accessToken) {
+      return false
+    }
+
     try {
-      await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
+      setError(null)
+      await verifyIdentityApi(
+        { birthNumber: rc.replace('/', ''), identityCard: idCard },
+        accessToken,
+      )
       setStatus(AccountStatus.IdentityVerificationSuccess)
       return true
     } catch (error: any) {
@@ -198,7 +235,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           return
         }
 
-        accessToken = result?.getAccessToken().getJwtToken()
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
@@ -415,6 +451,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     verifyEmail,
     resendVerificationCode,
     verifyIdentity,
+    getAccessToken,
     changePassword,
     lastEmail: lastCredentials.Username,
     isAuth: user !== null,

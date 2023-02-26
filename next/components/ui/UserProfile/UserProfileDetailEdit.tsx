@@ -21,7 +21,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   }
 
   return (
-    <div className="flex flex-col grow gap-6">
+    <div className="flex flex-col grow gap-6 pb-20 sm:pb-0">
       <div className="gap flex flex-wrap flex-row gap-6">
         <div className="grow ">
           <InputField
@@ -60,6 +60,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
         <div className="grow ">
           <InputField
             label={t('profile_detail.phone_number')}
+            helptext={t('profile_detail.phone_number_pattern')}
             value={temporaryUserData.phone_number || ''}
             onChange={(value) => onChangeTemporary({ ...temporaryUserData, phone_number: value })}
           />
