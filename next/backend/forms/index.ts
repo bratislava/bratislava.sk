@@ -27,7 +27,7 @@ export interface EFormValue {
   xmlTemplate: string
   textStylesheet?: any
   htmlStylesheet?: any
-  pdfStylesheetPath?: string
+  pdfStylesheet?: string
 }
 
 export default eforms

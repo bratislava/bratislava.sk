@@ -1,4 +1,5 @@
 import data from './zastitaPrimatora/data.json'
+import pdfStylesheet from './zastitaPrimatora/form.fo.xslt'
 import htmlStylesheet from './zastitaPrimatora/form.html.sef.json'
 import textStylesheet from './zastitaPrimatora/form.sb.sef.json'
 import schema from './zastitaPrimatora/schema.json'
@@ -14,5 +15,5 @@ export default {
   textStylesheet,
   htmlStylesheet,
   data,
-  pdfStylesheetPath: 'zastitaPrimatora/form.fo.xslt',
+  pdfStylesheet,
 }

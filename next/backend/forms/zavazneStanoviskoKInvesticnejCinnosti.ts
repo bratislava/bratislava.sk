@@ -1,4 +1,5 @@
 import data from './zavazneStanoviskoKInvesticnejCinnosti/data.json'
+import pdfStylesheet from './zavazneStanoviskoKInvesticnejCinnosti/form.fo.xslt'
 import htmlStylesheet from './zavazneStanoviskoKInvesticnejCinnosti/form.html.sef.json'
 import textStylesheet from './zavazneStanoviskoKInvesticnejCinnosti/form.sb.sef.json'
 import schema from './zavazneStanoviskoKInvesticnejCinnosti/schema.json'
@@ -14,5 +15,5 @@ export default {
   textStylesheet,
   htmlStylesheet,
   data,
-  pdfStylesheetPath: 'zavazneStanoviskoKInvesticnejCinnosti/form.fo.xslt',
+  pdfStylesheet,
 }
