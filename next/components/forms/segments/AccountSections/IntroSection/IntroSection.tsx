@@ -29,7 +29,7 @@ const IntroSection = () => {
         <AnnouncementBlock
           announcementContent={announcementContent}
           buttonTitle={t('account_section_intro.announcement_card_action')}
-          imagePath="/img/kpba.png"
+          imagePath="/img/platba_dane2.png"
           onPress={() => alert('Actual')}
         />
         <div className="w-full flex items-center justify-between mb-8 px-4 1.5lg:px-0">

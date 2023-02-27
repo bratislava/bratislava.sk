@@ -51,7 +51,8 @@ const AnnouncementBlock = ({
             src={imagePath}
             alt=""
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
+            objectPosition="left"
             className="rounded-r-3xl "
           />
         </div>
