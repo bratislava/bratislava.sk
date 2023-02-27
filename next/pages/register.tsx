@@ -1,7 +1,9 @@
+import { ROUTES } from '@utils/constants'
 import { formatUnicorn } from '@utils/string'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import AccountSuccessAlert from 'components/forms/segments/AccountSuccessAlert/AccountSuccessAlert'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
 import IdentityVerificationForm from 'components/forms/segments/IdentityVerificationForm/IdentityVerificationForm'
@@ -11,7 +13,7 @@ import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { useState } from 'react'
 
 import PageWrapper from '../components/layouts/PageWrapper'
 import { isProductionDeployment } from '../utils/utils'
@@ -39,6 +41,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
 const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   const { t } = useTranslation('account')
+  const [lastRc, setLastRc] = useState('')
+  const [lastIdCard, setLastIdCard] = useState('')
   const {
     signUp,
     resendVerificationCode,
@@ -53,7 +57,13 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <LoginRegisterLayout>
+      <LoginRegisterLayout
+        backButtonHidden={[
+          AccountStatus.EmailVerificationSuccess,
+          AccountStatus.IdentityVerificationRequired,
+          AccountStatus.IdentityVerificationSuccess,
+        ].includes(status)}
+      >
         <AccountContainer>
           {status === AccountStatus.Idle && (
             <RegisterForm lastEmail={lastEmail} onSubmit={signUp} error={error} />
@@ -75,20 +85,38 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               confirmLabel={t('identity_verification_link')}
               onConfirm={() => setStatus(AccountStatus.IdentityVerificationRequired)}
               cancelLabel={t('identity_verification_skip')}
-              onCancel={() => router.push('/')}
+              onCancel={() => router.push(ROUTES.ACCOUNT)}
             >
-              <ReactMarkdown className="text-center">{t('register_success_content')}</ReactMarkdown>
+              <AccountMarkdown
+                className="text-center"
+                content={t('register_success_content')}
+                variant="sm"
+              />
             </AccountSuccessAlert>
           )}
           {status === AccountStatus.IdentityVerificationRequired && (
-            <IdentityVerificationForm onSubmit={verifyIdentity} error={error} />
+            <IdentityVerificationForm
+              onSubmit={(rc, idCard) => {
+                setLastRc(rc)
+                setLastIdCard(idCard)
+                verifyIdentity(rc, idCard)
+              }}
+              error={error}
+            />
           )}
           {status === AccountStatus.IdentityVerificationSuccess && (
             <AccountSuccessAlert
               title={t('identity_verification_success_title')}
-              description={formatUnicorn(t('identity_verification_success_description'), {})}
-              confirmLabel={t('account_link')}
-              onConfirm={() => router.push('/')}
+              description={
+                lastRc &&
+                lastIdCard &&
+                formatUnicorn(t('identity_verification_success_description'), {
+                  rc: lastRc,
+                  idCard: lastIdCard,
+                })
+              }
+              confirmLabel={t('account_continue_link')}
+              onConfirm={() => router.push(ROUTES.ACCOUNT)}
             />
           )}
         </AccountContainer>

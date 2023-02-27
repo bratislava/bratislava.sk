@@ -1,6 +1,6 @@
 import { formatUnicorn } from '@utils/string'
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
@@ -15,8 +15,9 @@ interface Data {
 interface Props {
   onSubmit: (verificationCode: string) => Promise<any>
   onResend: () => Promise<any>
-  error?: AWSError | null | undefined
-  lastEmail?: string
+  error?: AccountError | null | undefined
+  lastEmail: string
+  cntDisabled?: boolean
 }
 
 // must use `minLength: 1` to implement required field
@@ -36,7 +37,7 @@ const schema = {
   required: ['verificationCode'],
 }
 
-const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) => {
+const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail, cntDisabled }: Props) => {
   const [lastVerificationCode, setLastVerificationCode] = useState('')
   const { t } = useTranslation('account')
   const {
@@ -49,7 +50,7 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) 
     defaultValues: { verificationCode: '' },
   })
 
-  const [cnt, setCnt] = useState(60)
+  const [cnt, setCnt] = useState(cntDisabled ? 0 : 60)
   useEffect(() => {
     if (cnt > 0) {
       setTimeout(() => setCnt((state) => state - 1), 1000)
@@ -70,11 +71,13 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) 
       })}
     >
       <h1 className="text-h3">{t('email_verification_title')}</h1>
-      <div>{formatUnicorn(t('email_verification_description'), { email: lastEmail || '' })}</div>
+      <p className="text-p3 lg:text-p2">
+        {formatUnicorn(t('email_verification_description'), { email: lastEmail })}
+      </p>
       {error && (
         <Alert
           message={formatUnicorn(t(error.code), {
-            email: lastEmail || '',
+            email: lastEmail,
             verificationCode: lastVerificationCode,
           })}
           type="error"
@@ -101,7 +104,7 @@ const EmailVerificationForm = ({ onSubmit, error, onResend, lastEmail }: Props) 
         variant="category"
         disabled={isSubmitting}
       />
-      <div>
+      <div className="text-p3 lg:text-p2">
         <span>{t('verification_description')}</span>
         {cnt > 0 && <span>{` ${formatUnicorn(t('verification_cnt_description'), { cnt })}`}</span>}
       </div>

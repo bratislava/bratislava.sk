@@ -34,7 +34,7 @@ const UserProfileConsents = ({ allConsents, onChange }: UserProfileConsentsProps
         underline
         isMobileColumn
       />
-      <div className={cx('px-4', 'xs:px-8')}>
+      <div className={cx('px-4', 'sm:px-8')}>
         {allConsents.map((consent: Consent, key: number) => (
           <UserConsent
             key={key}

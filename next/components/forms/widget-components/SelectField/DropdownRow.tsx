@@ -84,7 +84,7 @@ const DropdownRow = ({
           </div>
         </div>
         {option.label !== String(option.value) && (
-          <p className={`${selectHashCode} dropdown text-p3 leading-5`}>{option.label}</p>
+          <p className={`${selectHashCode} dropdown text-p3`}>{option.label}</p>
         )}
       </div>
       {divider && (

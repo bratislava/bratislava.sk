@@ -8,6 +8,7 @@
       "properties": {
         "mestoPSC": {
           "required": ["psc","mesto"],
+          "type": "object",
           "properties": {
             "mesto": {
               "type": "string",
@@ -28,6 +29,7 @@
         "dateTimePicker": {
           "title": "Showcase of DateTime Picker",
           "required": ["dateValue","timeValue"],
+          "type": "object",
           "properties": {
             "dateValue": {
               "type": "string",
@@ -48,6 +50,7 @@
         "timeFromTo": {
           "title": "Showcase of TimeFromTo Picker",
           "timeFromTo": true,
+          "type": "object",
           "properties": {
             "startTime": {
               "type": "string",
@@ -69,6 +72,7 @@
           "title": "Showcase of DateFromTo Picker",
           "required": ["startDate","endDate"],
           "dateFromTo": true,
+          "type": "object",
           "properties": {
             "startDate": {
               "type": "string",
@@ -86,25 +90,35 @@
     },
     {
       "properties": {
-        "datePicker": {
-          "title": "Showcase of DatePicker",
-          "required": [],
+        "datePickerWithTimePicker": {
+          "title": "Showcase of DatePicker and TimePicker",
+          "type": "object",
           "properties": {
-            "birth": {
-              "type": "string",
-              "format": "date",
-              "title": "Birth date"
-            }
-          }
-        },
-        "timePicker": {
-          "title": "Showcase of TimePicker",
-          "required": ["meeting-time"],
-          "properties": {
-            "meeting-time": {
-              "type": "string",
-              "title": "Meeting time",
-              "format": "time"
+            "datePicker": {
+              "title": "Showcase of DatePicker",
+              "required": [],
+              "type": "object",
+              "properties": {
+                "birth": {
+                  "type": "string",
+                  "format": "date",
+                  "title": "Birth date"
+                }
+              }
+            },
+            "timePicker": {
+              "title": "Showcase of TimePicker",
+              "required": [
+                "meeting-time"
+              ],
+              "type": "object",
+              "properties": {
+                "meeting-time": {
+                  "type": "string",
+                  "title": "Meeting time",
+                  "format": "time"
+                }
+              }
             }
           }
         }
@@ -114,8 +128,11 @@
       "properties": {
         "inputFields": {
           "title": "Showcase of InputField",
-          "required": ["firstName", "lastName"],
           "type": "object",
+          "required": [
+            "firstName",
+            "lastName"
+          ],
           "properties": {
             "firstName": {
               "type": "string",
@@ -124,11 +141,8 @@
             },
             "lastName": {
               "type": "string",
-              "title": "Dátum spracovania projektovej dokumentácie"
-            },
-            "phone": {
-              "type": "string",
-              "title": "Dátum spracovania projektovej dokumentácie"
+              "title": "Last Name",
+              "default": "Peluha"
             },
             "password": {
               "type": "string",
@@ -138,22 +152,24 @@
               "type": "string",
               "title": "PSC",
               "format": "zip"
-            }
-          }
-        },
-        "textAreas": {
-          "title": "Textove polia",
-          "required": ["pros"],
-          "type": "object",
-          "properties": {
-            "pros": {
-              "title": "Pros",
-              "type": "string"
             },
-            "cons": {
-              "title": "Cons",
-              "type": "string",
-              "default": "Defaultna hodnota"
+            "textAreas": {
+              "title": "Textove polia",
+              "type": "object",
+              "required": [
+                "pros"
+              ],
+              "properties": {
+                "pros": {
+                  "title": "Pros",
+                  "type": "string"
+                },
+                "cons": {
+                  "title": "Cons",
+                  "type": "string",
+                  "default": "Defaultna hodnota"
+                }
+              }
             }
           }
         }
@@ -163,8 +179,10 @@
       "properties": {
         "selectFields": {
           "title": "Ukazka Selectov",
-          "required": ["school"],
           "type": "object",
+          "required": [
+            "school"
+          ],
           "properties": {
             "school": {
               "type": "string",
@@ -208,7 +226,14 @@
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [1, 2, 3, 4, 5, 6]
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
             }
           }
         }
@@ -218,6 +243,7 @@
       "properties": {
         "fileUploads": {
           "title": "Nahratie suborov",
+          "type": "object",
           "required": ["importButtonMultipleFiles"],
           "properties": {
             "importButtonOneFile": {
@@ -249,9 +275,11 @@
     {
       "properties": {
         "chooseOneOf": {
-          "title": "Choose one of radio buttons",
+          "title": "Radio button step",
           "type": "object",
-          "required": ["chooseOne"],
+          "required": [
+            "chooseOneOfMore"
+          ],
           "properties": {
             "chooseOneOfMore": {
               "type": "string",
@@ -285,6 +313,47 @@
                 }
               ]
             }
+          },
+          "if": {
+            "properties": {
+              "chooseOneOfMore": {
+                "const": "overlay"
+              }
+            }
+          },
+          "then": {
+            "required": ["overlayInput"],
+            "properties": {
+              "overlayInput": {
+                "type": "string",
+                "title": "WRITE OVERLAY INPUT (conditional field)"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "notOverlayInput": {
+                "type": "string",
+                "title": "some other input"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$async": true,
+      "properties": {
+        "user": {
+          "type": "object",
+          "title": "Example async validation",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "isExampleAsyncValidation": {
+                "errorMsg": "Required input"
+              }
+            }
           }
         }
       }
@@ -293,11 +362,13 @@
       "properties": {
         "checkBoxes": {
           "title": "Checkboxes",
+          "type": "object",
           "required": ["favouriteFruits"],
           "properties": {
             "favouriteFruits": {
               "type": "array",
               "title": "Fruits max 3 items",
+              "minItems": 1,
               "maxItems": 3,
               "uniqueItems": true,
               "items": {
@@ -329,20 +400,30 @@
                 ]
               }
             }
-          }
-        }
-      }
-    },
-    {
-      "properties": {
-        "user": {
-          "type": "object",
-          "title": "Example async validation",
-          "properties": {
-            "phone": {
-              "type": "string",
-              "isExampleAsyncValidation": {
-                "errorMsg": "Required input"
+          },
+          "if": {
+            "properties": {
+              "favouriteFruits": {
+                "const": ["plum"]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "checkboxBonus": {
+                "title": "This will show when we will click plum",
+                "type": "object",
+                "required": ["firstBonus"],
+                "properties": {
+                  "firstBonus": {
+                    "type": "string",
+                    "title": "First bonus (conditional field)"
+                  },
+                  "secondBonus": {
+                    "type": "string",
+                    "title": "Second bonus (conditional field)"
+                  }
+                }
               }
             }
           }

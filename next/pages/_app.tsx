@@ -2,6 +2,7 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
+import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -24,6 +25,18 @@ const DynamicChat = dynamic(() => import('../components/molecules/chat'), {
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const isClient = useIsClient()
+
+  const shouldDisplayUkraineSupportChat =
+    isClient &&
+    pageProps?.page?.data?.length > 0 &&
+    (pageProps.page.data[0].id === '611' || // /bratislava-pre-ukrainu
+      pageProps.page.data[0].id === '612' || // /братислава-для-украiни
+      pageProps.page.data[0].id === '635' || // /en/bratislava-for-ukraine
+      pageProps.page.data[0].id === '636' || // /en/братислава-для-украiни
+      pageProps.page.data[0].attributes.parentPage.data?.attributes.slug ===
+        'bratislava-pre-ukrajinu' || // /bratislava-pre-ukrajinu/...
+      pageProps.page.data[0].attributes.parentPage.data?.attributes.slug ===
+        'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
     <>
@@ -63,7 +76,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <SSRProvider>
             <Component {...pageProps} />
 
-            {isClient && <DynamicChat />}
+            {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>

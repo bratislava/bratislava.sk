@@ -44,13 +44,14 @@ export type InputBase = {
   onChange?: (value?: string) => void
   size?: SizeType
   endIcon?: ReactNode
+  autoComplete?: string
 }
 
 const InputField = forwardRef<HTMLInputElement, InputBase>(
   (
     {
       label,
-      type,
+      type = 'text',
       placeholder,
       errorMessage = [],
       helptext,
@@ -66,6 +67,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       onChange,
       endIcon,
       customErrorPlace = false,
+      autoComplete,
       ...rest
     },
     ref,
@@ -81,7 +83,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         ...rest,
         placeholder,
         value: onChange && value ? value : valueState,
-        type: type !== 'password' ? 'text' : type,
+        type,
         label,
         errorMessage,
         description: helptext,
@@ -94,6 +96,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         },
         isRequired: required,
         isDisabled: disabled,
+        autoComplete,
       },
       ref as RefObject<HTMLInputElement>,
     )
@@ -118,7 +121,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     }
 
     const style = cx(
-      'text-p3 sm:text-16 leading-5 sm:leading-6 w-full px-3 sm:px-4 py-2 sm:py-2.5 border-2 border-gray-200 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
+      'text-p3 sm:text-16 w-full px-3 sm:px-4 py-2 sm:py-2.5 border-2 border-gray-200 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 focus:placeholder:opacity-0',
       className,
       {
         // conditions
