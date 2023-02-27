@@ -12,9 +12,9 @@ import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import Menu from 'components/forms/simple-components/Menu/Menu'
+import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
 
@@ -88,7 +88,7 @@ export const AccountNavBar = ({
         className={cx(
           className,
           'text-p2 items-center',
-          'fixed top-0 left-0 w-full bg-white z-50 shadow',
+          'fixed top-0 left-0 w-full bg-white z-10 shadow',
         )}
       >
         <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
@@ -222,7 +222,7 @@ export const AccountNavBar = ({
         className={cx(
           className,
           'h-16 flex items-center py-5 px-8 -mx-8 border-b-2',
-          'lg:hidden fixed top-0 w-full bg-white z-50 gap-x-6',
+          'lg:hidden fixed top-0 w-full bg-white z-10 gap-x-6',
         )}
       >
         <Brand url="/" className="grow" />

@@ -28,7 +28,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   const shouldDisplayUkraineSupportChat =
     isClient &&
-    pageProps.page.data?.length > 0 &&
+    pageProps?.page?.data?.length > 0 &&
     (pageProps.page.data[0].id === '611' || // /bratislava-pre-ukrainu
       pageProps.page.data[0].id === '612' || // /братислава-для-украiни
       pageProps.page.data[0].id === '635' || // /en/bratislava-for-ukraine

@@ -13,7 +13,7 @@ interface UserConsentProps {
 const UserConsent = ({ consent, isLast, onChange }: UserConsentProps) => {
   return (
     <div
-      className={cx('flex flex-col border-gray-200 gap-4 py-4', 'xs:flex-row xs:py-6', {
+      className={cx('flex flex-col border-gray-200 gap-4 py-4', 'sm:flex-row sm:py-6', {
         'border-b-2': !isLast,
       })}
     >
