@@ -69,7 +69,7 @@ export const DateFromTo = ({
             <FieldErrorMessage errorMessage={DateFromErrorMessage} />
           </div>
         </div>
-        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-9')} />
+        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-6')} />
         <div className={cx('flex flex-col w-[320px]')}>
           <DatePicker
             label={DateToLabel}
