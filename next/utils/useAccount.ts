@@ -228,10 +228,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
   useEffect(() => {
     const cognitoUser = userPool.getCurrentUser()
-    if (cognitoUser != null) {
+    if (cognitoUser !== null) {
       cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
         if (err) {
           console.error(err)
+          setUser(null)
           return
         }
 
@@ -239,6 +240,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
             console.error(err)
+            setUser(null)
             return
           }
 
@@ -383,13 +385,13 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           })
           AWS.config.credentials = awsCredentials
 
+          setUser(cognitoUser)
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
           awsCredentials.refresh((err?: AWSError) => {
             if (err) {
-              setError(err)
+              console.error(err)
               resolve(false)
             } else {
-              setUser(cognitoUser)
               resolve(true)
             }
           })
