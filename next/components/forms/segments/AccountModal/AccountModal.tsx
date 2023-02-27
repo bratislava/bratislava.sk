@@ -1,16 +1,15 @@
 import Modal from 'components/forms/widget-components/Modals/Modal'
-
-import AccountMarkdownTable from '../AccountMarkdown/AccountMarkdownTable'
+import { ReactElement } from 'react'
 
 interface Props {
   show: boolean
   onClose: () => void
   onSubmit: () => void
-  content: string
+  content: ReactElement
   header: string
 }
 
-const AccountMarkdownModal = ({ show, onClose, content, header, onSubmit }: Props) => {
+const AccountModal = ({ show, onClose, content, header, onSubmit }: Props) => {
   return (
     <Modal
       divider
@@ -18,10 +17,10 @@ const AccountMarkdownModal = ({ show, onClose, content, header, onSubmit }: Prop
       show={show}
       onClose={onClose}
       onSubmit={onSubmit}
-      content={() => AccountMarkdownTable({ content })}
+      content={() => content}
       className="h-full w-full"
     />
   )
 }
 
-export default AccountMarkdownModal
+export default AccountModal
