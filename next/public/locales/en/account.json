@@ -120,8 +120,11 @@
   "menu_register_link": "Register",
   "ExpiredCodeException": "Invalid code provided, please request a code again.",
   "API_ERROR": "There was an error making the request - please try again later.",
-  "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Birth number and identity card not valid.",
+  "RFO_ACCESS_ERROR": "There was an error making the request - please try again later.",
   "RFO_NOT_RESPONDING": "There was an error making the request - please try again later.",
+  "DEAD_PERSON": "Birth number and identity card not valid.",
+  "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Birth number and identity card not valid.",
+  "BIRTHNUMBER_IFO_DUPLICITY": "Birth number and identity card not valid.",
   "my_profile": "My profile",
   "consents": {
     "title": "Consents",
