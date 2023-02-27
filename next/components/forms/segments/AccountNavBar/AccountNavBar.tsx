@@ -12,9 +12,9 @@ import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import Menu from 'components/forms/simple-components/Menu/Menu'
-import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
 
@@ -91,7 +91,7 @@ export const AccountNavBar = ({
           'fixed top-0 left-0 w-full bg-white z-10 shadow',
         )}
       >
-        <div className="max-w-screen-2lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
           <Brand
             className="group grow"
             url="/"
@@ -190,7 +190,7 @@ export const AccountNavBar = ({
           </nav>
         </div>
         {isAuth && sectionsList && (
-          <div className="border-t border-gray-200 max-w-screen-2lg m-auto h-[57px] w-full items-center justify-between lg:flex">
+          <div className="border-t border-gray-200 max-w-screen-lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
                 <li className="w-full h-full" key={sectionItem.id}>

@@ -21,7 +21,7 @@ const AnnouncementBlock = ({
   const isDisplay = text || title || imagePath
   const { t } = useTranslation('account')
   return isDisplay ? (
-    <div className="mb-6 lg:mb-16 px-4 2lg:px-0">
+    <div className="mb-6 lg:mb-16 px-4 lg:px-0">
       <h2 className="text-h2 mb-4 lg:mb-6">{t('account_section_intro.announcement_title')}</h2>
       <div className="w-full border-2 border-gray-200 rounded-lg lg:rounded-3xl flex flex-col-reverse lg:flex-row">
         <div className="w-full lg:w-1/2 flex flex-col justify-center gap-4 lg:gap-6 p-4 lg:p-12">
