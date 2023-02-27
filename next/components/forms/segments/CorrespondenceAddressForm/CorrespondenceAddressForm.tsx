@@ -74,6 +74,7 @@ const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues
           <InputField
             label={t('street_address_label')}
             placeholder={t('street_address_placeholder')}
+            required
             {...field}
             errorMessage={errors.street_address}
           />
@@ -88,6 +89,7 @@ const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues
             placeholder={t('locality_placeholder')}
             {...field}
             errorMessage={errors.locality}
+            required
           />
         )}
       />
@@ -99,7 +101,7 @@ const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues
             className="max-w-xs"
             label={t('postal_code_label')}
             placeholder={t('postal_code_placeholder')}
-            helptext={t('postal_code_description')}
+            required
             {...field}
             errorMessage={errors.postal_code}
           />
