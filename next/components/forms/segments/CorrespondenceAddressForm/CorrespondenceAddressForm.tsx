@@ -9,19 +9,27 @@ import { Controller } from 'react-hook-form'
 const schema = {
   type: 'object',
   properties: {
-    stree_address: {
+    street_address: {
       type: 'string',
+      minLength: 1,
+      errorMessage: { minLength: 'forms:street_address_required' },
     },
     locality: {
       type: 'string',
+      minLength: 1,
+      errorMessage: { minLength: 'forms:locality_required' },
     },
     postal_code: {
       type: 'string',
+      minLength: 1,
       format: 'postalCode',
-      errorMessage: { format: 'forms:postal_code_format' },
+      errorMessage: {
+        minLength: 'forms:postal_code_required',
+        format: 'forms:postal_code_format',
+      },
     },
   },
-  required: [],
+  required: ['street_address', 'locality', 'postal_code'],
 }
 
 interface Props {
@@ -41,7 +49,7 @@ const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues
     formState: { isSubmitting },
   } = useHookForm<Address>({
     schema,
-    defaultValues: defaultValues || { street_address: '', locality: '', postal_code: '' },
+    defaultValues: { street_address: '', locality: '', postal_code: '', ...defaultValues },
   })
 
   return (
