@@ -61,7 +61,9 @@ const PhoneNumberForm = ({ errorMessage, onHideErrorMessage, onSubmit, defaultVa
         control={control}
         render={({ field }) => (
           <InputField
-            label={t1('profile_detail.phone_number')}
+            label={`${t1('profile_detail.phone_number')} (${t1(
+              'profile_detail.phone_number_pattern',
+            ).toLowerCase()})`}
             placeholder=""
             {...field}
             errorMessage={errors.phoneNumber}
@@ -71,7 +73,7 @@ const PhoneNumberForm = ({ errorMessage, onHideErrorMessage, onSubmit, defaultVa
       <Button
         className="min-w-full"
         type="submit"
-        text={t('changes_submit')}
+        text={t1('profile_detail.save_button')}
         variant="black"
         disabled={isSubmitting}
       />
