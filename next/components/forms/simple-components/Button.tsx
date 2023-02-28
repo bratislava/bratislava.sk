@@ -192,6 +192,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
         'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
 
+        'hover:bg-category-600 hover:border-category-600': variant === 'category' && !disabled,
+        'hover:border-category-600 hover:text-category-600':
+          variant === 'category-outline' && !disabled,
         'hover:bg-category-100 hover:text-category-600': variant === 'plain-category' && !disabled,
         'hover:bg-gray-100 hover:text-gray-600': variant === 'plain-black' && !disabled,
         'hover:bg-negative-100 hover:text-negative-600': variant === 'plain-negative' && !disabled,
