@@ -22,8 +22,13 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const form = useFormStepper(escapedSlug, eform.schema)
 
   return (
-    <div className={cx('flex flex-col  sm:gap-20 gap-10 w-full', 'sm:flex-row sm:gap-20')}>
-      <div className="">
+    <div
+      className={cx(
+        'flex flex-col sm:gap-18 gap-10 w-full max-w-screen-lg mx-auto',
+        'sm:flex-row sm:gap-20',
+      )}
+    >
+      <div className="w-full max-w-[344px]">
         <StepperView
           steps={form.stepData}
           currentStep={form.stepIndex}
@@ -32,7 +37,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
         />
       </div>
-      <div className={cx('grow mx-8', 'lg:mx-28')}>
+      <div className={cx('w-full')}>
         {form.isComplete ? (
           <FinalStep
             formData={form.formData}
