@@ -133,6 +133,7 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
     }
 
     try {
+      // the default behaviour when no channels are selected is to subscribe to everything
       await subscribeApi({}, token)
     } catch (error) {
       console.error(error)
