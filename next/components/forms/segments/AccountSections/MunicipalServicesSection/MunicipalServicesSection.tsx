@@ -67,7 +67,7 @@ const MunicipalServicesSection = () => {
     className?: string
     icon: ReactNode
     href?: string
-    category?: string
+    category: string
     onPress?: () => void
   }
 
@@ -325,7 +325,7 @@ const MunicipalServicesSection = () => {
   const filteredServiceCards = serviceCards.filter((card) =>
     selectorValuesArr.length <= 0 || selectorValuesArr.includes(ALL_CATEGORY)
       ? true
-      : selectorValuesArr.includes(card.category),
+      : selectorValuesArr.includes(card?.category),
   )
 
   return (

@@ -4,9 +4,9 @@ import { Dispatch, SetStateAction } from 'react'
 
 type MunicipalServicesSectionHeaderBase = {
   title: string
-  selectorValue?: EnumOptionsType[]
-  setSelectorValue?: (val: EnumOptionsType[]) => void
-  setCurrentPage?: Dispatch<SetStateAction<number>>
+  selectorValue: EnumOptionsType[]
+  setSelectorValue: (val: EnumOptionsType[]) => void
+  setCurrentPage: Dispatch<SetStateAction<number>>
   enumOptions: EnumOptionsType[]
 }
 
@@ -26,6 +26,7 @@ const MunicipalServicesSectionHeader = ({
           type="multiple"
           value={selectorValue}
           onChange={(val) => {
+            console.log(val)
             setSelectorValue(val)
             setCurrentPage(1)
           }}
