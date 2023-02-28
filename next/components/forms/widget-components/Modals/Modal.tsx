@@ -39,7 +39,7 @@ const ModalHeader = ({
   header,
   hasHeader,
 }: ModalHeaderBase) => {
-  const headerStyle = cx('flex py-4 px-6 gap-6 bg-white rounded-t-lg justify-between', {
+  const headerStyle = cx('flex py-4 px-6 gap-6 bg-white sm:rounded-t-lg justify-between', {
     'border-b-solid border-b-form-input-default border-b-2': divider,
   })
   const headlineStyle = cx('text-20-semibold h-7', {
@@ -138,7 +138,7 @@ const ModalBody = ({
 }) => {
   return (
     <div
-      className={cx('flex flex-col bg-white p-6 overflow-hidden', {
+      className={cx('flex h-full w-full flex-col bg-white p-6 overflow-hidden', {
         'rounded-t-10': !hasHeader,
         'rounded-b-10': !hasFooter,
       })}
