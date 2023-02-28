@@ -9,7 +9,7 @@ import {
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
-import { useEffect, useState } from 'react'
+import React, { ReactNode, useContext, useEffect, useState } from 'react'
 
 export enum AccountStatus {
   Idle,
@@ -70,10 +70,12 @@ export interface AccountError {
   code: string
 }
 
-export default function useAccount(initStatus = AccountStatus.Idle) {
+const AccountContext = React.createContext({} as any)
+
+export const AccountProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
-  const [status, setStatus] = useState<AccountStatus>(initStatus)
+  const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
   const [userData, setUserData] = useState<UserData | null>(null)
   const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
@@ -411,14 +413,29 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           })
           AWS.config.credentials = awsCredentials
 
-          setUser(cognitoUser)
-          // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-          awsCredentials.refresh((err?: AWSError) => {
+          cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
             if (err) {
               console.error(err)
               resolve(false)
             } else {
-              resolve(true)
+              const userData = userAttributesToObject(attributes)
+              setStatus(
+                userData.tier !== Tier.IdentityCard
+                  ? AccountStatus.IdentityVerificationRequired
+                  : AccountStatus.IdentityVerificationSuccess,
+              )
+              setUserData(userData)
+              setUser(cognitoUser)
+
+              // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+              awsCredentials.refresh((err?: AWSError) => {
+                if (err) {
+                  console.error(err)
+                  resolve(false)
+                } else {
+                  resolve(true)
+                }
+              })
             }
           })
         },
@@ -461,27 +478,37 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
-  return {
-    login,
-    logout,
-    user,
-    error,
-    forgotPassword,
-    confirmPassword,
-    status,
-    setStatus,
-    userData,
-    updateUserData,
-    temporaryUserData,
-    resetTemporaryUserData,
-    setTemporaryUserData,
-    signUp,
-    verifyEmail,
-    resendVerificationCode,
-    verifyIdentity,
-    getAccessToken,
-    changePassword,
-    lastEmail: lastCredentials.Username,
-    isAuth: user !== null,
-  }
+  return (
+    <AccountContext.Provider
+      value={{
+        login,
+        logout,
+        user,
+        error,
+        forgotPassword,
+        confirmPassword,
+        status,
+        setStatus,
+        userData,
+        updateUserData,
+        temporaryUserData,
+        resetTemporaryUserData,
+        setTemporaryUserData,
+        signUp,
+        verifyEmail,
+        resendVerificationCode,
+        verifyIdentity,
+        getAccessToken,
+        changePassword,
+        lastEmail: lastCredentials.Username,
+        isAuth: user !== null,
+      }}
+    >
+      {children}
+    </AccountContext.Provider>
+  )
+}
+
+export default function useAccount() {
+  return useContext(AccountContext)
 }

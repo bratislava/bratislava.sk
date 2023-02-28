@@ -2,14 +2,14 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
+import { AccountProvider } from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
+import { appWithTranslation } from 'next-i18next'
+import { NextAdapter } from 'next-query-params'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
-import { appWithTranslation } from 'next-i18next'
-import { NextAdapter } from 'next-query-params'
-import React from 'react'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 import { useIsClient } from 'usehooks-ts'
@@ -74,9 +74,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       >
         <QueryParamProvider adapter={NextAdapter}>
           <SSRProvider>
-            <Component {...pageProps} />
+            <AccountProvider>
+              <Component {...pageProps} />
 
-            {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+              {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+            </AccountProvider>
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>
