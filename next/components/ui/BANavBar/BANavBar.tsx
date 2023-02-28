@@ -62,7 +62,7 @@ export const BANavBar = ({
           'fixed top-0 left-0 w-full bg-white z-50',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
           <Brand
             className="group"
             url="/"
