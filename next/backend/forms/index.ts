@@ -7,8 +7,8 @@ import { StrictRJSFSchema, UiSchema } from '@rjsf/utils'
 import dopravneZnacenie from './dopravneZnacenie'
 import kontajneroveStojiska from './kontajneroveStojiska'
 import test from './testForm'
-import zavazneStanoviskoKInvesticnejCinnosti from './zavazneStanoviskoKInvesticnejCinnosti'
 import zastitaPrimatora from './zastitaPrimatora'
+import zavazneStanoviskoKInvesticnejCinnosti from './zavazneStanoviskoKInvesticnejCinnosti'
 
 const eforms = {
   dopravneZnacenie,
@@ -27,6 +27,7 @@ export interface EFormValue {
   xmlTemplate: string
   textStylesheet?: any
   htmlStylesheet?: any
+  pdfStylesheet?: string
 }
 
 export default eforms
