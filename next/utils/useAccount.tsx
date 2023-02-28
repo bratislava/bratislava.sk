@@ -196,7 +196,6 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
               ...data,
               phone_number: data.phone_number?.replace(' ', ''),
             }))
-            setError(null)
             resolve(true)
           }
         })
