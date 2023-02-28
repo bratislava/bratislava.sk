@@ -146,7 +146,7 @@
     "eslint-plugin-promise": "6.0.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-scanjs-rules": "0.2.1",
-    "eslint-plugin-security": "1.5.0",
+    "eslint-plugin-security": "1.7.1",
     "eslint-plugin-simple-import-sort": "10.0.0",
     "eslint-plugin-sonarjs": "0.13.0",
     "eslint-plugin-switch-case": "1.1.2",
