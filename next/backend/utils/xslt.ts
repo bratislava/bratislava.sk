@@ -1,3 +1,4 @@
+// Declaration file for module 'saxon-js' not exists.
 // @ts-ignore
 import * as SaxonJS from 'saxon-js'
 
@@ -19,7 +20,7 @@ export const transform = async (stylesheet: any, data: string): Promise<string> 
       sourceText: data,
       destination: 'serialized',
     },
-    'async'
+    'async',
   )
 
   return output.principalResult
