@@ -40,6 +40,9 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
       <div
         className={cx('flex flex-col', { 'sm:hidden': !forceMobileSize })}
         onClick={handleOnClickDropdownIcon}
+        onKeyDown={handleOnClickDropdownIcon}
+        role="button"
+        tabIndex={0}
       >
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg cursor-pointer">
           <StepperViewRow
@@ -60,12 +63,13 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
         >
           <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
             <h6 className="text-h6 grow">{t('all_steps')}</h6>
-            <div
+            <button
+              type="button"
               className="h-full cursor-pointer flex flex-col justify-center"
               onClick={() => setIsCollapsed(true)}
             >
               <CloseIcon />
-            </div>
+            </button>
           </div>
           <div className="bg-white grow">
             <StepperViewList
