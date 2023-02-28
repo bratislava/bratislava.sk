@@ -102,8 +102,8 @@ const TaxesFeesSection = () => {
     <div className="flex flex-col">
       <AccountSectionHeader title={t('account_section_payment.title')} />
       {isOn === 'default' && (
-        <div className="w-full max-w-screen-lg m-auto">
-          <ul className="my-2 lg:my-8 px-4 sm:px-6 lg:px-0">
+        <div className="max-w-screen-lg w-full m-auto">
+          <ul className="lg:px-0 my-2 lg:my-8 px-4 sm:px-6">
             {cards.map((card, i) => (
               <li className="mb-2 lg:mb-6" key={i}>
                 <TaxesFeesCard

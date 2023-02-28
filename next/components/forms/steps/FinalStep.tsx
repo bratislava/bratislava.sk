@@ -57,7 +57,7 @@ export const FinalStep = ({
 
   return (
     <div>
-      <h1 className="text-h1-lg-medium font-semibold">{t('summary')}</h1>
+      <h1 className="text-h1-medium font-semibold">{t('summary')}</h1>
       <Summary
         schema={schema}
         formData={formData}

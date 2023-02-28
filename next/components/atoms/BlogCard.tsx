@@ -23,11 +23,16 @@ export const BlogCard = ({
   href = '/',
 }: BlogCardProps) => (
   <NextLink href={href} passHref>
-    <div className={cx(className, 'inline-flex flex-col 2xl:pr-8 xl:pr-5 cursor-pointer bg-white py-5')}>
+    <div
+      className={cx(
+        className,
+        'inline-flex flex-col 2xl:pr-8 xl:pr-5 cursor-pointer bg-white py-5',
+      )}
+    >
       <Card
         className={cx(
           className,
-          'rounded-b-lg xl:rounded-l-none xl:rounded-r-lg xl:inline-flex xl:flex-row xl:items-center'
+          'rounded-b-lg xl:rounded-l-none xl:rounded-r-lg xl:inline-flex xl:flex-row xl:items-center',
         )}
         buttonContent={<ChevronRight />}
         buttonPosition="mx-auto left-0 right-0 xl:hidden"

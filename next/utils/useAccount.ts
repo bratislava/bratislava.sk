@@ -1,4 +1,4 @@
-import { verifyIdentityApi } from '@utils/api'
+import { subscribeApi, verifyIdentityApi } from '@utils/api'
 import {
   AuthenticationDetails,
   CognitoUser,
@@ -70,7 +70,6 @@ export interface AccountError {
   code: string
 }
 
-let accessToken: string | undefined
 export default function useAccount(initStatus = AccountStatus.Idle) {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
@@ -80,6 +79,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
+  const [lastMarketingConfirmation, setLastMarketingConfirmation] = useState(false)
 
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
@@ -107,12 +107,35 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
       if (updatableAttributes.has(key)) {
         const attribute = new CognitoUserAttribute({
           Name: customAttributes.has(key) ? `custom:${key}` : key,
-          Value: key === 'address' ? JSON.stringify(value) : value,
+          Value:
+            key === 'address'
+              ? JSON.stringify(value)
+              : key === 'phone_number'
+              ? value?.replace(' ', '')
+              : value,
         })
         attributeList.push(attribute)
       }
     })
     return attributeList
+  }
+
+  const subscribe = async () => {
+    if (lastMarketingConfirmation === false) {
+      return
+    }
+
+    const token = await getAccessToken()
+    if (!token) {
+      return
+    }
+
+    try {
+      // the default behaviour when no channels are selected is to subscribe to everything
+      await subscribeApi({}, token)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const verifyEmail = (verificationCode: string): Promise<boolean> => {
@@ -128,7 +151,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           resolve(false)
         } else {
           setStatus(AccountStatus.EmailVerificationSuccess)
-          resolve(await login(lastCredentials.Username, lastCredentials.Password))
+          const res = await login(lastCredentials.Username, lastCredentials.Password)
+          await subscribe()
+          resolve(res)
         }
       })
     })
@@ -164,8 +189,11 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
             setError({ ...(err as AWSError) })
             resolve(false)
           } else {
-            setUserData((state) => ({ ...state, ...data }))
-            setError(null)
+            setUserData((state) => ({
+              ...state,
+              ...data,
+              phone_number: data.phone_number?.replace(' ', ''),
+            }))
             resolve(true)
           }
         })
@@ -175,9 +203,38 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const getAccessToken = async (): Promise<string | null> => {
+    return new Promise((resolve) => {
+      const cognitoUser = userPool.getCurrentUser()
+      if (cognitoUser == null) {
+        resolve(null)
+      } else {
+        cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
+          if (err) {
+            resolve(null)
+          } else if (result) {
+            const accessToken = result.getAccessToken().getJwtToken()
+            resolve(accessToken)
+          } else {
+            resolve(null)
+          }
+        })
+      }
+    })
+  }
+
   const verifyIdentity = async (rc: string, idCard: string): Promise<boolean> => {
+    const accessToken = await getAccessToken()
+    if (!accessToken) {
+      return false
+    }
+
     try {
-      await verifyIdentityApi({ birthNumber: rc, identityCard: idCard }, accessToken)
+      setError(null)
+      await verifyIdentityApi(
+        { birthNumber: rc.replace('/', ''), identityCard: idCard },
+        accessToken,
+      )
       setStatus(AccountStatus.IdentityVerificationSuccess)
       return true
     } catch (error: any) {
@@ -191,18 +248,19 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
 
   useEffect(() => {
     const cognitoUser = userPool.getCurrentUser()
-    if (cognitoUser != null) {
+    if (cognitoUser !== null) {
       cognitoUser.getSession((err: Error | null, result: CognitoUserSession | null) => {
         if (err) {
           console.error(err)
+          setUser(null)
           return
         }
 
-        accessToken = result?.getAccessToken().getJwtToken()
         // NOTE: getSession must be called to authenticate user before calling getUserAttributes
         cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
           if (err) {
             console.error(err)
+            setUser(null)
             return
           }
 
@@ -229,10 +287,16 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     }
   }
 
-  const signUp = (email: string, password: string, data: UserData): Promise<boolean> => {
+  const signUp = (
+    email: string,
+    password: string,
+    marketingConfirmation: boolean,
+    data: UserData,
+  ): Promise<boolean> => {
     const attributeList = objectToUserAttributes(data)
 
     setLastCredentials({ Username: email, Password: password })
+    setLastMarketingConfirmation(marketingConfirmation)
     setError(null)
     return new Promise((resolve) => {
       userPool.signUp(email, password, attributeList, [], (err?: Error) => {
@@ -347,13 +411,13 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           })
           AWS.config.credentials = awsCredentials
 
+          setUser(cognitoUser)
           // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
           awsCredentials.refresh((err?: AWSError) => {
             if (err) {
-              setError(err)
+              console.error(err)
               resolve(false)
             } else {
-              setUser(cognitoUser)
               resolve(true)
             }
           })
@@ -397,6 +461,10 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const resetError = () => {
+    setError(null)
+  }
+
   return {
     login,
     logout,
@@ -415,8 +483,10 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     verifyEmail,
     resendVerificationCode,
     verifyIdentity,
+    getAccessToken,
     changePassword,
     lastEmail: lastCredentials.Username,
     isAuth: user !== null,
+    resetError,
   }
 }

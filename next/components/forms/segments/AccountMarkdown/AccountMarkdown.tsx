@@ -11,13 +11,19 @@ type AccountMarkdownBase = {
   className?: string
   content?: string
   variant?: 'sm' | 'normal'
+  uLinkVariant?: 'primary' | 'default'
 }
 
 const TooltipComponent = ({ children }: never) => {
   return children ? <Tooltip text={children} position="top-right" /> : null
 }
 
-const AccountMarkdown = ({ className, content, variant = 'normal' }: AccountMarkdownBase) => {
+const AccountMarkdown = ({
+  className,
+  content,
+  variant = 'normal',
+  uLinkVariant = 'default',
+}: AccountMarkdownBase) => {
   const { Link: UILink } = useUIContext()
   return (
     <ReactMarkdown
@@ -52,7 +58,10 @@ const AccountMarkdown = ({ className, content, variant = 'normal' }: AccountMark
           a: ({ href, children }: { href?: string; children?: string }) => (
             <UILink
               href={href ?? '#'}
-              className="break-words font-semibold text-font underline hover:text-category-600"
+              className={cx('break-words font-semibold  underline hover:text-category-600', {
+                'text-white': uLinkVariant === 'primary',
+                'text-font': uLinkVariant === 'default',
+              })}
               target={href?.startsWith('http') ? '_blank' : ''}
             >
               {children}
