@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import ChevronDown from '../../../assets/images/forms/chevron-down.svg'
-import { useClickOutsideHandler } from '../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import { StepData } from '../types/TransformedFormData'
 import StepperViewList from './StepperViewList'
 import StepperViewRow from './StepperViewRow'
@@ -19,17 +18,9 @@ interface StepperViewProps {
 const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: StepperViewProps) => {
   const { t } = useTranslation('forms')
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
-  const [isClickedOutside, setIsClickedOutside] = useState<boolean>(false)
-
-  const handleDropdownClick = () => {
-    setIsClickedOutside(true)
-    setIsCollapsed((state) => !state)
-    setTimeout(() => setIsClickedOutside(false), 200)
-  }
-  const { clickOutsideRef } = useClickOutsideHandler(handleDropdownClick)
 
   const handleOnClickDropdownIcon = () => {
-    if (isCollapsed && !isClickedOutside) {
+    if (isCollapsed) {
       setIsCollapsed(false)
     }
   }
@@ -61,12 +52,11 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
           <ChevronDown className={cx({ 'rotate-180': !isCollapsed })} />
         </div>
         <div
-          className={cx('fixed bg-gray-200 inset-0 mt-1 z-50 flex flex-col gap-0.5', {
+          className={cx('fixed bg-gray-200 w-full h-full inset-0 mt-1 z-50 flex flex-col gap-0.5', {
             'transition-all duration-500 h-screen w-screen': true,
             'translate-y-full': isCollapsed,
             'translate-y-0': !isCollapsed,
           })}
-          ref={clickOutsideRef}
         >
           <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
             <h6 className="text-h6 grow">{t('all_steps')}</h6>
