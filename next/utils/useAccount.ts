@@ -193,7 +193,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
               ...data,
               phone_number: data.phone_number?.replace(' ', ''),
             }))
-            setError(null)
             resolve(true)
           }
         })
@@ -461,6 +460,10 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
+  const resetError = () => {
+    setError(null)
+  }
+
   return {
     login,
     logout,
@@ -483,5 +486,6 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     changePassword,
     lastEmail: lastCredentials.Username,
     isAuth: user !== null,
+    resetError,
   }
 }
