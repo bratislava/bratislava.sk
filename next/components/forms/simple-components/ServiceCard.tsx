@@ -30,9 +30,7 @@ const ServiceCard = ({
 
   const Card = () => (
     <>
-      <div className="p-1.5 lg:p-2.5 rounded-lg border-2 border-gray-200">
-        <span className="w-10 h-10 lg:w-12 lg:h-12 flex justify-center items-center">{icon}</span>
-      </div>
+      <div className="p-1.5 lg:p-2.5 rounded-lg border-2 border-gray-200">{icon}</div>
       <div className="gap-3 flex flex-col items-start text-left w-full">
         <h5 className="text-h5 leading-5 lg:leading-7 group-hover:underline font-semibold">
           {title}

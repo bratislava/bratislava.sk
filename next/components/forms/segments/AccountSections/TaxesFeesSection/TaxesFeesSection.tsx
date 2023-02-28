@@ -77,7 +77,7 @@ const TaxesFeesSection = () => {
     ]
 
     return (
-      <div className="flex flex-col w-full max-w-screen-1.5lg m-auto mt-8 px-4 lg:px-0">
+      <div className="flex flex-col w-full max-w-screen-lg m-auto mt-8 px-4 lg:px-0">
         <span className="text-p2-semibold mb-2">Temporary switcher</span>
         <div className="flex">
           {array.map((item) => (
@@ -102,8 +102,8 @@ const TaxesFeesSection = () => {
     <div className="flex flex-col">
       <AccountSectionHeader title={t('account_section_payment.title')} />
       {isOn === 'default' && (
-        <div className="w-full max-w-screen-1.5lg m-auto">
-          <ul className="my-2 lg:my-8 px-4 sm:px-6 1.5lg:px-0">
+        <div className="max-w-screen-lg w-full m-auto">
+          <ul className="lg:px-0 my-2 lg:my-8 px-4 sm:px-6">
             {cards.map((card, i) => (
               <li className="mb-2 lg:mb-6" key={i}>
                 <TaxesFeesCard
