@@ -15,20 +15,20 @@ const Banner = ({ title, content, onPress, className }: BannerBase) => {
   return (
     <div
       className={cx(
-        'flex-col sm:flex-row flex h-full items-start justify-center gap-6 sm:gap-8 rounded-none lg:rounded-3xl bg-gray-800 w-full max-w-screen-lg m-auto',
+        'flex-col lg:flex-row flex h-full items-center justify-end rounded-none lg:rounded-3xl bg-gray-800 w-full max-w-screen-lg m-auto py-6 lg:py-0',
         className,
       )}
     >
-      <div className="sm:w-1/2 w-full text-white h-full flex flex-col rounded-l-3xl items-start px-4 pt-6 lg:p-12 sm:py-24 sm:pr-0 sm:pl-24 gap-6">
+      <div className="lg:w-1/2 w-full max-w-[488px] text-white h-full flex flex-col justify-center rounded-l-3xl gap-6 px-4 sm:px-0 mb-6 lg:mb-0">
         <div className="flex flex-col items-start gap-3">
           <h2 className="text-h1 lg:text-h2">{title}</h2>
           <div className="text-p2 text-gray-200 flex items-center font-normal">{content}</div>
         </div>
-        <Button className="hidden lg:flex" variant="negative" text="Button" onPress={onPress} />
+        <Button className="hidden lg:flex" variant="category" text="Button" onPress={onPress} />
         <Button
           className="flex lg:hidden"
           size="sm"
-          variant="negative"
+          variant="category"
           text="Button"
           onPress={onPress}
         />

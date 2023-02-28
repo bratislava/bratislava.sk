@@ -22,7 +22,7 @@ const IntroSection = () => {
   return (
     <div className="flex flex-col">
       <AccountSectionHeader
-        title={`${t('account_section_intro.header_title')} ${userData?.given_name}.`}
+        title={`${t('account_section_intro.header_title')} ${userData?.given_name || ''}.`}
         text={t('account_section_intro.header_text')}
       />
       <div className="w-full max-w-screen-lg m-auto py-6 lg:py-16">
