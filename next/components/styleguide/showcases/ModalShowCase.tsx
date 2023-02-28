@@ -1,6 +1,7 @@
-import { CorrespondenceAddressData } from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
+import { Address } from '@utils/useAccount'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
 import { PhoneNumberData } from 'components/forms/segments/PhoneNumberForm/PhoneNumberForm'
+import RegistrationModal from 'components/forms/segments/RegistrationModal/RegistrationModal'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useState } from 'react'
 
@@ -69,8 +70,9 @@ const ModalShowCase = () => {
   const [modalShowWarning, setModalShowWarning] = useState(false)
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
   const [phoneNumberModalShow, setPhoneNumberModalShow] = useState(false)
+  const [registrationModal, setRegistrationModal] = useState(false)
 
-  const onSubmitCorrespondenceAddress = ({ data }: { data?: CorrespondenceAddressData }) => {
+  const onSubmitCorrespondenceAddress = ({ data }: { data?: Address }) => {
     console.log(data)
     setCorrenspondenceAddressModalShow(false)
   }
@@ -130,6 +132,12 @@ const ModalShowCase = () => {
           variant="black"
           text="Open phone number modal"
           onPress={() => setPhoneNumberModalShow(true)}
+        />
+        <Button
+          size="sm"
+          variant="black"
+          text="Open registration modal"
+          onPress={() => setRegistrationModal(true)}
         />
         <Modal
           divider
@@ -239,6 +247,7 @@ const ModalShowCase = () => {
           onSubmit={onSubmitPhoneNumber}
           defaultValues={{}}
         />
+        <RegistrationModal show={registrationModal} onClose={() => setRegistrationModal(false)} />
       </Stack>
     </Wrapper>
   )
