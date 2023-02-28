@@ -207,5 +207,6 @@
   "tax_liability_breakdown": "Tax liability",
   "land_tax": "Land tax",
   "construction_tax": "Construction tax",
+  "tax_constructions": "Construction tax",
   "apartments_tax": "Tax on apartments"
 }
