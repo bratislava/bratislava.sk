@@ -32,7 +32,7 @@ const CorrespondenceAddressModal = ({
       content={({ onSubmit }) =>
         CorrespondenceAddressForm({ onSubmit, error, defaultValues, onHideError })
       }
-      className="w-[592px]"
+      className="w-[592px] md:h-max h-full"
     />
   )
 }
