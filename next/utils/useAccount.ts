@@ -131,6 +131,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     }
 
     try {
+      // the default behaviour when no channels are selected is to subscribe to everything
       await subscribeApi({}, token)
     } catch (error) {
       console.error(error)
