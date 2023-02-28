@@ -99,7 +99,7 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
               onSubmit={(rc, idCard) => {
                 setLastRc(rc)
                 setLastIdCard(idCard)
-                verifyIdentity(rc, idCard)
+                return verifyIdentity(rc, idCard)
               }}
               error={error}
             />

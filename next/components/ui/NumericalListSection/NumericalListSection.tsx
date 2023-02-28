@@ -44,7 +44,7 @@ export const NumericalListSection = ({
           'bg-category-200': hasBackground,
         })}
       >
-        <div className="flex max-w-3xl flex-col">
+        <div className="flex max-w-screen-md flex-col">
           {title ? (
             <div
               className={cx(

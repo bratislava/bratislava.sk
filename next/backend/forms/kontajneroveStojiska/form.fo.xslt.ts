@@ -1,5 +1,4 @@
-
-<?xml version="1.0" encoding="utf-8"?>
+export default `<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xml:lang="en" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:z="http://schemas.gov.sk/doc/eform/form/0.1" version="1.0" xmlns:Xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template match="/z:E-form">
@@ -385,4 +384,4 @@
                 <xsl:with-param name="text" select="'Zmluva o nájme pozemku / List vlastníctva / Zmluva o zriadení vecného bremena'"/>
                 <xsl:with-param name="node" select="z:Nazov"/>
               </xsl:call-template>
-            </xsl:for-each></xsl:template></xsl:stylesheet>
+            </xsl:for-each></xsl:template></xsl:stylesheet>`

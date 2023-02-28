@@ -31,22 +31,10 @@ module.exports = {
     },
     screens: {
       xs: '360px',
-      sm: '640px',
+      sm: '480px',
       md: '768px',
-      lg: '1024px',
-      '1.5lg': '1110px',
+      lg: '1216px',
       xl: '1280px',
-      '2xl': '1536px',
-      '3xl': '1920px',
-      maxMd: { max: '768px' },
-    },
-    container: {
-      xs: '360px',
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1175px',
-      '2xl': '1470px',
     },
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
@@ -55,7 +43,6 @@ module.exports = {
       sm: '0px 2px 8px rgba(0, 0, 0, 0.12)',
       none: 'none',
     },
-
     fontFamily: {
       sans: [
         'Public Sans',

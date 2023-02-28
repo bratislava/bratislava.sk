@@ -1,4 +1,5 @@
 import data from './kontajneroveStojiska/data.json'
+import pdfStylesheet from './kontajneroveStojiska/form.fo.xslt'
 import htmlStylesheet from './kontajneroveStojiska/form.html.sef.json'
 import textStylesheet from './kontajneroveStojiska/form.sb.sef.json'
 import schema from './kontajneroveStojiska/schema.json'
@@ -13,5 +14,6 @@ export default {
   xmlTemplate,
   textStylesheet,
   htmlStylesheet,
-  data
+  data,
+  pdfStylesheet,
 }
