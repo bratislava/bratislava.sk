@@ -48,8 +48,8 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
   const { t } = useTranslation('account')
   const router = useRouter()
   return (
-    <div className="bg-gray-50 h-full mt-16 lg:mt-28 px-4 1.5lg:px-0">
-      <div className="flex flex-col py-6 gap-4 max-w-screen-1.5lg m-auto">
+    <div className="lg:px-0 bg-gray-50 h-full mt-16 lg:mt-28 px-4">
+      <div className="flex flex-col py-6 gap-4 max-w-screen-lg m-auto">
         <div className="flex items-center gap-0.5 cursor-pointer">
           <div className="w-5 h-5 flex justify-center items-center">
             <ChevronLeft />
@@ -72,14 +72,14 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
                 variant="black"
                 text={t('pay_tax')}
                 size="sm"
-                className="sm:block hidden"
+                className="md:block hidden"
               />
               <Button
                 startIcon={<FileDownload />}
                 variant="black-outline"
                 text={t('download_pdf')}
                 size="sm"
-                className="sm:block hidden"
+                className="md:block hidden"
               />
             </div>
             <div className="flex md:flex-row flex-col md:items-center items-start md:gap-4 gap-1">
@@ -105,7 +105,7 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
             </div>
 
             {/* for mobile version */}
-            <div className="w-full sm:hidden block">
+            <div className="w-full md:hidden block">
               <div className="flex flex-col gap-3">
                 <Button
                   startIcon={<PaymentIcon />}

@@ -8,7 +8,7 @@ const TaxDetails = () => {
   const { t } = useTranslation('account')
 
   return (
-    <div className="flex flex-col items-start lg:gap-6 gap-3 w-full 1.5lg:px-0 px-4">
+    <div className="flex flex-col items-start lg:gap-6 gap-3 w-full lg:px-0 px-4">
       <div className="text-h3">{t('tax_liability_breakdown')}</div>
       <div className="gap-4 flex flex-col w-full">
         <Accordion size="md" title={t('land_tax')} secondTitle="0 €" content="Lorem ipsum" />

@@ -72,7 +72,7 @@ const TableRow = () => {
 
 const Table = () => {
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="no-scrollbar overflow-x-auto w-full">
       <table className="border-separate border-spacing-0 border-2 border-solid border-gray-200 lg:border-0 sm:w-full w-max table-auto lg:rounded-none rounded-lg last:border-b-2">
         <TableHeaderRow />
         <TableRow />
