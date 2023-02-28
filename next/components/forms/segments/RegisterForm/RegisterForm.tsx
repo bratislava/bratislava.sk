@@ -22,7 +22,12 @@ interface Data {
 }
 
 interface Props {
-  onSubmit: (email: string, password: string, userData: UserData) => Promise<any>
+  onSubmit: (
+    email: string,
+    password: string,
+    marketingConfirmation: boolean,
+    userData: UserData,
+  ) => Promise<any>
   error?: AccountError | null | undefined
   lastEmail?: string
 }
@@ -110,7 +115,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
           family_name: data.family_name,
         }
 
-        return onSubmit(data.email, data.password, userData)
+        return onSubmit(data.email, data.password, data.marketingConfirmation, userData)
       })}
     >
       <h1 className="text-h2">{t('register_title')}</h1>

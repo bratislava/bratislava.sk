@@ -1,9 +1,10 @@
+import data from './zastitaPrimatora/data.json'
+import pdfStylesheet from './zastitaPrimatora/form.fo.xslt'
 import htmlStylesheet from './zastitaPrimatora/form.html.sef.json'
 import textStylesheet from './zastitaPrimatora/form.sb.sef.json'
 import schema from './zastitaPrimatora/schema.json'
 import xsd from './zastitaPrimatora/schema.xsd'
 import uiSchema from './zastitaPrimatora/uiSchema.json'
-import data from './zastitaPrimatora/data.json'
 import xmlTemplate from './zastitaPrimatora/xmlTemplate'
 
 export default {
@@ -13,5 +14,6 @@ export default {
   xmlTemplate,
   textStylesheet,
   htmlStylesheet,
-  data
+  data,
+  pdfStylesheet,
 }
