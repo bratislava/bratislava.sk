@@ -35,7 +35,7 @@ const UserProfile = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <TestUserProfileLayout title={t('my_profile')}>
-        <h1 className="text-h1 xs:text-h1-lg pb pl-4 xs:pl-28 pb-6 pt-14 xs:pt-6">
+        <h1 className="text-h1 sm:text-h1-lg pb pl-4 sm:pl-28 pb-6 pt-14 sm:pt-6">
           {t('my_profile')}
         </h1>
         <UserProfileView />

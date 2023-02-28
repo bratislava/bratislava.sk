@@ -1,4 +1,4 @@
-import { CorrespondenceAddressData } from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
+import { Address } from '@utils/useAccount'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useState } from 'react'
@@ -67,7 +67,7 @@ const ModalShowCase = () => {
   const [modalShowWarning, setModalShowWarning] = useState(false)
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
 
-  const onSubmitCorrespondenceAddress = ({ data }: { data?: CorrespondenceAddressData }) => {
+  const onSubmitCorrespondenceAddress = ({ data }: { data?: Address }) => {
     console.log(data)
     setCorrenspondenceAddressModalShow(false)
   }

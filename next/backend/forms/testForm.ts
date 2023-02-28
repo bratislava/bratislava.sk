@@ -1,4 +1,5 @@
 import data from './test/data.json'
+import pdfStylesheet from './test/form.fo.xslt'
 import htmlStylesheet from './test/form.html.sef.json'
 import textStylesheet from './test/form.sb.sef.json'
 import schema from './test/schema.json'
@@ -14,4 +15,5 @@ export default {
   textStylesheet,
   htmlStylesheet,
   data,
+  pdfStylesheet,
 }
