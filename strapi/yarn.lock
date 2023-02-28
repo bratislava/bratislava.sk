@@ -2341,12 +2341,12 @@
     pluralize "^8.0.0"
     subscriptions-transport-ws "0.9.19"
 
-"@strapi/plugin-i18n@4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@strapi/plugin-i18n/-/plugin-i18n-4.6.0.tgz#4b548670161f0f0ec2045517cf3e76c7a49097b3"
-  integrity sha512-+o9PJCWxQOCs7dBAaBqKTtUMYwSk87noWkD1EMzP76zwEzcOVnV4aE855kHhTW3bxNsMrFm4uaAocGHGzhIQOw==
+"@strapi/plugin-i18n@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@strapi/plugin-i18n/-/plugin-i18n-4.7.0.tgz#e7fbab375b29bfe316c931f801251316066954e2"
+  integrity sha512-iwHbzKSVwyIg+q2uG9pyJDf+VBcvxaJi9Heh7dkC0qJvt7j+zM2bRvB/nw8qqb8UUCI3pIeI9oI3Q++WRyQNAA==
   dependencies:
-    "@strapi/utils" "4.6.0"
+    "@strapi/utils" "4.7.0"
     lodash "4.17.21"
 
 "@strapi/plugin-upload@4.6.0":
@@ -2492,7 +2492,7 @@
     prettier "2.7.1"
     typescript "4.6.2"
 
-"@strapi/utils@4.6.0", "@strapi/utils@^4.2.3":
+"@strapi/utils@4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-4.6.0.tgz#d2deec97fd21f9b802c858aa7a19c5d05850a467"
   integrity sha512-zJfcGVlGLVGTs4Lc5OH+g4vO/+MD5UA6DzMzlSvJ1gsObYpA/a+IMRIMG90nfEKZ9R52LLdaYyGU8ALzxulEmQ==
@@ -2501,6 +2501,18 @@
     date-fns "2.29.3"
     http-errors "1.8.1"
     lodash "4.17.21"
+    yup "0.32.9"
+
+"@strapi/utils@4.7.0", "@strapi/utils@^4.2.3":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-4.7.0.tgz#423e01d93010379ba43cd73a2ba07ee86bd1ef17"
+  integrity sha512-E1+dYjFWJdXTq1XnRt/DoFrMXc23UFQf/mB2BTCBEq/ajV3QDhbritAQM30XMpGPSFaOJoLs7earT/1GGuv2TQ==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    date-fns "2.29.3"
+    http-errors "1.8.1"
+    lodash "4.17.21"
+    p-map "4.0.0"
     yup "0.32.9"
 
 "@szmarczak/http-timer@^4.0.5":
