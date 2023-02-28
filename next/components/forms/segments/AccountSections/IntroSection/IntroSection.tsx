@@ -73,7 +73,7 @@ const IntroSection = () => {
           />
         </div>
       </div>
-      <div className="bg-gray-50 py-0 1.5lg:py-16">
+      <div className="bg-gray-50 py-0 lg:py-16">
         <Banner
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
