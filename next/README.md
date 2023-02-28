@@ -63,6 +63,11 @@ STRAPI_REVALIDATE_SECRET_TOKEN = <value>
 
 This token should be the same as we pass in webhook url as query param.
 
+## FOP
+Apache™ FOP (Formatting Objects Processor) is a print formatter driven by XSL formatting objects (XSL-FO) and an output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. 
+
+We are using [FOP](https://xmlgraphics.apache.org/fop/) to transform eForms to pdf. If you'd like to use this feature, Java 1.7 or later RE must be installed on your system. See [FOP Quick start guide](https://xmlgraphics.apache.org/fop/quickstartguide.html)
+
 ## Temp forms libraries
 
 The following libraries have been added as part of forms experiments and should be reviewed & cleared up as needed before merging to master:
