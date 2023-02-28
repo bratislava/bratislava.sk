@@ -1,4 +1,4 @@
-import { verifyIdentityApi } from '@utils/api'
+import { subscribeApi, verifyIdentityApi } from '@utils/api'
 import {
   AuthenticationDetails,
   CognitoUser,
@@ -79,6 +79,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
+  const [lastMarketingConfirmation, setLastMarketingConfirmation] = useState(false)
 
   useEffect(() => {
     const updatedUserData = userData ? { ...userData } : null
@@ -119,6 +120,23 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     return attributeList
   }
 
+  const subscribe = async () => {
+    if (lastMarketingConfirmation === false) {
+      return
+    }
+
+    const token = await getAccessToken()
+    if (!token) {
+      return
+    }
+
+    try {
+      await subscribeApi({}, token)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const verifyEmail = (verificationCode: string): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
       Username: lastCredentials?.Username,
@@ -132,7 +150,9 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           resolve(false)
         } else {
           setStatus(AccountStatus.EmailVerificationSuccess)
-          resolve(await login(lastCredentials.Username, lastCredentials.Password))
+          const res = await login(lastCredentials.Username, lastCredentials.Password)
+          await subscribe()
+          resolve(res)
         }
       })
     })
@@ -267,10 +287,16 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     }
   }
 
-  const signUp = (email: string, password: string, data: UserData): Promise<boolean> => {
+  const signUp = (
+    email: string,
+    password: string,
+    marketingConfirmation: boolean,
+    data: UserData,
+  ): Promise<boolean> => {
     const attributeList = objectToUserAttributes(data)
 
     setLastCredentials({ Username: email, Password: password })
+    setLastMarketingConfirmation(marketingConfirmation)
     setError(null)
     return new Promise((resolve) => {
       userPool.signUp(email, password, attributeList, [], (err?: Error) => {
