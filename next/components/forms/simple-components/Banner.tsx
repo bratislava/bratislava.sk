@@ -15,7 +15,7 @@ const Banner = ({ title, content, onPress, className }: BannerBase) => {
   return (
     <div
       className={cx(
-        'flex-col lg:flex-row flex h-full items-center justify-end rounded-none 1.5lg:rounded-3xl bg-gray-800 w-full max-w-screen-1.5lg m-auto py-6 lg:py-0',
+        'flex-col lg:flex-row flex h-full items-center justify-end rounded-none lg:rounded-3xl bg-gray-800 w-full max-w-screen-lg m-auto py-6 lg:py-0',
         className,
       )}
     >

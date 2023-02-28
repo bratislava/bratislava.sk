@@ -88,10 +88,10 @@ export const AccountNavBar = ({
         className={cx(
           className,
           'text-p2 items-center',
-          'fixed top-0 left-0 w-full bg-white z-50 shadow',
+          'fixed top-0 left-0 w-full bg-white z-10 shadow',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
           <Brand
             className="group grow"
             url="/"
@@ -190,7 +190,7 @@ export const AccountNavBar = ({
           </nav>
         </div>
         {isAuth && sectionsList && (
-          <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
+          <div className="border-t border-gray-200 max-w-screen-lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
                 <li className="w-full h-full" key={sectionItem.id}>
@@ -219,7 +219,7 @@ export const AccountNavBar = ({
         className={cx(
           className,
           'h-16 flex items-center py-5 px-8 -mx-8 border-b-2',
-          'lg:hidden fixed top-0 w-full bg-white z-50 gap-x-6',
+          'lg:hidden fixed top-0 w-full bg-white z-10 gap-x-6',
         )}
       >
         <Brand url="/" className="grow" />

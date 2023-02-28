@@ -36,8 +36,8 @@ const fetchJsonApi = async (path: string, options?: RequestInit) => {
     console.log('have json', responseJson)
     if (responseJson?.errors) {
       throw new ApiError(responseJson?.message || API_ERROR_TEXT, responseJson.errors)
-    } else if (responseJson.state === 'CustomError') {
-      throw new Error(responseJson.naming)
+    } else if (responseJson.errorName) {
+      throw new Error(responseJson.errorName)
     } else {
       throw new Error(API_ERROR_TEXT)
     }
@@ -88,7 +88,7 @@ interface Identity {
   identityCard: string
 }
 
-export const verifyIdentityApi = (data: Identity, token: string | undefined) => {
+export const verifyIdentityApi = (data: Identity, token: string) => {
   return fetchJsonApi(
     `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/user-verification/identity-card`,
     {
@@ -97,8 +97,23 @@ export const verifyIdentityApi = (data: Identity, token: string | undefined) => 
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      // credentials: 'include',
       body: JSON.stringify(data),
     },
   )
+}
+
+interface Gdpr {
+  type: 'subscribe' | 'unsubscribe'
+  category: 'SWIMMINGPOOLS' | 'TAXES' | 'CITY' | 'ESBS'
+}
+
+export const subscribeApi = (data: { gdprData?: Gdpr[] }, token: string) => {
+  return fetchJsonApi(`${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/user/subscribe`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  })
 }

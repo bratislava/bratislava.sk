@@ -47,13 +47,13 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
     <div className={tooltipPopupStyle}>
       <div
         className={cx(
-          'text-p3 sm:text-p2 w-fit z-10 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-[280px] sm:max-w-xs break-words rounded bg-gray-700 py-2 px-3 sm:py-3 sm:px-4 text-white',
+          'text-p3 sm:text-p2 w-fit z-20 m-0 border-0 flex flex-row justify-center min-w-[118px] max-w-[280px] sm:max-w-xs break-words rounded bg-gray-700 py-2 px-3 sm:py-3 sm:px-4 text-white',
           className,
         )}
       >
-        <p className="w-max">
-          <AccountMarkdown content={text} variant="sm" />
-        </p>
+        <div className="w-max">
+          <AccountMarkdown content={text} variant="sm" uLinkVariant="primary" />
+        </div>
       </div>
       {arrow && (
         <span className={tooltipArrowStyle}>

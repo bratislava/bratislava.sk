@@ -7,12 +7,13 @@ import PaymentIcon from '@assets/images/account/payment-icon.svg'
 import ProfileIcon from '@assets/images/account/profile.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
+import { ROUTES } from '@utils/constants'
 import useAccount from '@utils/useAccount'
 import cx from 'classnames'
 import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { ReactNode, useEffect } from 'react'
 
 type AccountPageLayoutBase = {
@@ -52,13 +53,13 @@ const menuItems = [
     id: 1,
     title: 'account:menu_profile_link',
     icon: <ProfileIcon />,
-    link: '/',
+    link: '/user-profile',
   },
   {
     id: 2,
     title: 'account:menu_help_link',
     icon: <HelpFilledIcon />,
-    link: '/',
+    link: '/account/i-have-a-problem',
   },
   {
     id: 3,
@@ -74,7 +75,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
   const { isAuth } = useAccount()
   useEffect(() => {
     if (!isAuth) {
-      router.push({ pathname: '/login', query: { from: router.route } })
+      router.push({ pathname: ROUTES.LOGIN, query: { from: router.route } })
     }
   }, [isAuth])
 

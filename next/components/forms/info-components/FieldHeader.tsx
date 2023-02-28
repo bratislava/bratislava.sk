@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
-import React, { DOMAttributes } from 'react'
+import { DOMAttributes } from 'react'
 
 import { ExplicitOptionalType } from '../types/ExplicitOptional'
 

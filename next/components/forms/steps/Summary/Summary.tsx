@@ -1,10 +1,9 @@
 import { ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
-import { getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
-import { getAllSchemaData } from '@utils/rjsf-schema-handler'
-import { JSONSchema7Definition } from 'json-schema'
+import { JsonSchema } from '@utils/forms'
+import { useFormDataTransform } from '@utils/rjsf-schema-handler'
 
 import SummaryStep from './SummaryStep'
-import { TransformedFormData, TransformedFormStep } from './TransformedFormData'
+import { TransformedFormStep } from './TransformedFormData'
 
 interface SummaryProps {
   formData: Record<string, JsonSchema>
@@ -15,32 +14,7 @@ interface SummaryProps {
 }
 
 const Summary = ({ schema, formData, formErrors, extraErrors, onGoToStep }: SummaryProps) => {
-  const transformStep = (step: JSONSchema7Definition): TransformedFormStep => {
-    if (typeof step === 'boolean' || !step?.properties) return { key: '', label: '', data: [] }
-    const stepContent: JSONSchema7Definition = Object.values(step.properties)[0]
-    const stepKey: string = Object.keys(step.properties)[0]
-    const label: string =
-      typeof stepContent !== 'boolean' && stepContent.title
-        ? stepContent.title
-        : typeof step !== 'boolean' && step.properties
-        ? Object.keys(step.properties)[0]
-        : ''
-    const data: TransformedFormData[] = []
-    const stepExtraErrors = extraErrors[stepKey]
-    getAllSchemaData(
-      data,
-      stepContent,
-      `.${stepKey}`,
-      formErrors,
-      formData[stepKey],
-      stepExtraErrors,
-    )
-    return { key: stepKey, label, data }
-  }
-
-  const transformedSteps: TransformedFormStep[] = schema?.allOf
-    ? schema.allOf.map(transformStep)
-    : []
+  const { transformedSteps } = useFormDataTransform(formData, formErrors, extraErrors, schema)
 
   return (
     <div className="my-10">

@@ -22,7 +22,12 @@ interface Data {
 }
 
 interface Props {
-  onSubmit: (email: string, password: string, userData: UserData) => Promise<any>
+  onSubmit: (
+    email: string,
+    password: string,
+    marketingConfirmation: boolean,
+    userData: UserData,
+  ) => Promise<any>
   error?: AccountError | null | undefined
   lastEmail?: string
 }
@@ -110,7 +115,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
           family_name: data.family_name,
         }
 
-        return onSubmit(data.email, data.password, userData)
+        return onSubmit(data.email, data.password, data.marketingConfirmation, userData)
       })}
     >
       <h1 className="text-h2">{t('register_title')}</h1>
@@ -130,6 +135,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
             helptext={t('email_description')}
             label={t('email_label')}
             placeholder={t('email_placeholder')}
+            autoComplete="username"
             {...field}
             errorMessage={errors.email}
           />
@@ -170,6 +176,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
             label={t('password_label')}
             placeholder={t('password_placeholder')}
             tooltip={t('password_description')}
+            autoComplete="new-password"
             {...field}
             errorMessage={errors.password}
           />
