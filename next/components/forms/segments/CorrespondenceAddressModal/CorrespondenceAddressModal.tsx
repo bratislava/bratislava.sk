@@ -1,24 +1,26 @@
-import CorrespondenceAddressForm, {
-  CorrespondenceAddressData,
-} from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
+import { AccountError, Address } from '@utils/useAccount'
+import CorrespondenceAddressForm from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
 
 interface Props {
   show: boolean
   onClose: () => void
-  onSubmit: ({ data }: { data?: CorrespondenceAddressData }) => void
-  defaultValues: CorrespondenceAddressData
+  onSubmit: ({ data }: { data?: Address }) => void
+  defaultValues?: Address
+  error?: AccountError | null
+  onHideError?: () => void
 }
 
-const CorrespondenceAddressModal = ({ show, onClose, onSubmit, defaultValues }: Props) => {
+const CorrespondenceAddressModal = ({
+  show,
+  onClose,
+  onSubmit,
+  defaultValues,
+  error,
+  onHideError,
+}: Props) => {
   const { t } = useTranslation('forms')
-  const [errorMessage, setErrorMessage] = useState('')
-
-  const onHideErrorMessage = () => {
-    setErrorMessage('')
-  }
 
   return (
     <Modal
@@ -28,9 +30,9 @@ const CorrespondenceAddressModal = ({ show, onClose, onSubmit, defaultValues }: 
       onClose={onClose}
       onSubmit={onSubmit}
       content={({ onSubmit }) =>
-        CorrespondenceAddressForm({ onSubmit, errorMessage, defaultValues, onHideErrorMessage })
+        CorrespondenceAddressForm({ onSubmit, error, defaultValues, onHideError })
       }
-      className="w-[592px]"
+      className="w-[592px] md:h-max h-full"
     />
   )
 }

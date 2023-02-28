@@ -1,3 +1,4 @@
+import { AccountError, Address } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
@@ -5,43 +6,40 @@ import InputField from 'components/forms/widget-components/InputField/InputField
 import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
-export interface CorrespondenceAddressData {
-  streeAddress?: string
-  locality?: string
-  postalCode?: string
-}
-
 const schema = {
   type: 'object',
   properties: {
-    streeAddress: {
+    street_address: {
       type: 'string',
+      minLength: 1,
+      errorMessage: { minLength: 'forms:street_address_required' },
     },
     locality: {
       type: 'string',
+      minLength: 1,
+      errorMessage: { minLength: 'forms:locality_required' },
     },
-    postalCode: {
+    postal_code: {
       type: 'string',
+      minLength: 1,
       format: 'postalCode',
-      errorMessage: { format: 'forms:postal_code_format' },
+      errorMessage: {
+        minLength: 'forms:postal_code_required',
+        format: 'forms:postal_code_format',
+      },
     },
   },
-  required: [],
+  required: ['street_address', 'locality', 'postal_code'],
 }
 
 interface Props {
-  errorMessage?: string
-  onHideErrorMessage?: () => void
-  onSubmit: ({ data }: { data?: CorrespondenceAddressData }) => void
-  defaultValues: CorrespondenceAddressData
+  error?: AccountError | null
+  onHideError?: () => void
+  onSubmit: ({ data }: { data?: Address }) => void
+  defaultValues?: Address
 }
 
-const CorrespondenceAddressForm = ({
-  errorMessage,
-  onHideErrorMessage,
-  onSubmit,
-  defaultValues,
-}: Props) => {
+const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues }: Props) => {
   const { t } = useTranslation('forms')
 
   const {
@@ -49,35 +47,36 @@ const CorrespondenceAddressForm = ({
     control,
     errors,
     formState: { isSubmitting },
-  } = useHookForm<CorrespondenceAddressData>({
+  } = useHookForm<Address>({
     schema,
-    defaultValues,
+    defaultValues: { street_address: '', locality: '', postal_code: '', ...defaultValues },
   })
 
   return (
     <form
       className="flex flex-col space-y-4 w-full"
-      onSubmit={handleSubmit((data: CorrespondenceAddressData) => onSubmit({ data }))}
+      onSubmit={handleSubmit((data: Address) => onSubmit({ data }))}
     >
       <p className="text-p3 lg:text-p2">{t('correspondece_address_description')}</p>
-      {errorMessage && (
+      {error && (
         <Alert
-          message={errorMessage}
+          message={t(error.code)}
           type="error"
-          close={onHideErrorMessage}
+          close={onHideError}
           solid
           className="min-w-full"
         />
       )}
       <Controller
-        name="streeAddress"
+        name="street_address"
         control={control}
         render={({ field }) => (
           <InputField
             label={t('street_address_label')}
             placeholder={t('street_address_placeholder')}
+            required
             {...field}
-            errorMessage={errors.streeAddress}
+            errorMessage={errors.street_address}
           />
         )}
       />
@@ -90,20 +89,21 @@ const CorrespondenceAddressForm = ({
             placeholder={t('locality_placeholder')}
             {...field}
             errorMessage={errors.locality}
+            required
           />
         )}
       />
       <Controller
-        name="postalCode"
+        name="postal_code"
         control={control}
         render={({ field }) => (
           <InputField
             className="max-w-xs"
             label={t('postal_code_label')}
             placeholder={t('postal_code_placeholder')}
-            helptext={t('postal_code_description')}
+            required
             {...field}
-            errorMessage={errors.postalCode}
+            errorMessage={errors.postal_code}
           />
         )}
       />

@@ -12,7 +12,7 @@ type TaxAndFeeMainContentBase = {
 
 const TaxAndFeeMainContent = ({ children }: TaxAndFeeMainContentBase) => {
   return (
-    <div className="flex flex-col items-center sm:gap-12 gap-6 sm:px-28 p-4 sm:py-12">
+    <div className="flex flex-col items-center w-full max-w-screen-lg m-auto gap-12 py-12">
       {children}
     </div>
   )

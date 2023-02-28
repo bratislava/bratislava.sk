@@ -1,4 +1,4 @@
-import { CorrespondenceAddressData } from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
+import useAccount, { Address } from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
@@ -7,12 +7,14 @@ import CorrespondenceAddressModal from '../../CorrespondenceAddressModal/Corresp
 
 const ContactInformationSection = (props: any) => {
   const { t } = useTranslation('account')
+  const { userData, updateUserData, error, resetError } = useAccount()
 
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
 
-  const onSubmitCorrespondenceAddress = ({ data }: { data?: CorrespondenceAddressData }) => {
-    console.log(data)
-    setCorrenspondenceAddressModalShow(false)
+  const onSubmitCorrespondenceAddress = async ({ data }: { data?: Address }) => {
+    if (await updateUserData({ address: data })) {
+      setCorrenspondenceAddressModalShow(false)
+    }
   }
 
   return (
@@ -21,9 +23,11 @@ const ContactInformationSection = (props: any) => {
         show={correnspondenceAddressModalShow}
         onClose={() => setCorrenspondenceAddressModalShow(false)}
         onSubmit={onSubmitCorrespondenceAddress}
-        defaultValues={{}}
+        defaultValues={userData?.address}
+        error={error}
+        onHideError={resetError}
       />
-      <div className="flex flex-col items-start sm:gap-8 gap-6 w-full">
+      <div className="lg:px-0 flex flex-col items-start sm:gap-8 gap-6 w-full px-4">
         <div className="flex flex-col w-full items-start gap-2">
           <div className="text-h3">{t('personal_info')}</div>
           <div className="flex flex-col w-full">
@@ -51,7 +55,10 @@ const ContactInformationSection = (props: any) => {
               size="small"
               data={{
                 label: t('correspondence_address'),
-                value: 'Námestie hraničiarov 12/A, 811 01 Bratislava',
+                value:
+                  userData && userData.address
+                    ? `${userData.address.street_address}, ${userData.address.postal_code} ${userData.address.locality}`
+                    : '',
                 schemaPath: '',
                 isError: false,
               }}

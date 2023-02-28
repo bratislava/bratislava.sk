@@ -1,8 +1,8 @@
 import { ArrowLeft } from '@assets/images'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 interface IProps {
   className?: string
@@ -33,10 +33,10 @@ export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidd
         className={cx(
           className,
           'text-p2 items-center',
-          'fixed top-0 left-0 w-full bg-white z-50 shadow',
+          'fixed top-0 left-0 w-full bg-white z-10 shadow',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center lg:flex">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center lg:flex">
           {!backButtonHidden && <BackButton />}
           <Brand
             className="group"
@@ -57,7 +57,7 @@ export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidd
         className={cx(
           className,
           'h-16 flex items-center py-5 px-8 -mx-8 border-b-2',
-          'lg:hidden fixed top-0 w-full bg-white z-50',
+          'lg:hidden fixed top-0 w-full bg-white z-10',
         )}
       >
         {!backButtonHidden && <BackButton />}
