@@ -1,14 +1,11 @@
+import parse from 'html-react-parser'
+import { useTranslation } from 'next-i18next'
+
 const TaxFooter = () => {
+  const { t } = useTranslation('forms')
   return (
-    <div className="text-20-medium">
-      Radi by ste sa v niečom uistili alebo máte otázky? Pozrite si odpovede na tie, ktoré sú{' '}
-      <a href="#" className="underline">
-        často kladené.
-      </a>{' '}
-      Ak nenájdete odpoveď na Vašu otázku, neváhajte nás kontaktovať na adrese:{' '}
-      <a href="mailto:platbadane@bratislava.sk" className="underline-offset-2 underline">
-        platbadane@bratislava.sk
-      </a>
+    <div className="lg:text-20 text-16 lg:px-0 px-4 md:whitespace-normal whitespace-pre-line">
+      {parse(t('tax_footer_description'))}
     </div>
   )
 }

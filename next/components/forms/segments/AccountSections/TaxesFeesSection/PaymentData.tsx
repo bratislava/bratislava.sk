@@ -8,66 +8,77 @@ import ClipboardCopy from '../../../simple-components/ClipboardCopy'
 const PaymentData = () => {
   const { t } = useTranslation('account')
   return (
-    <div className="flex flex-col items-start lg:gap-6 gap-3 w-full">
+    <div className="flex flex-col items-start lg:gap-6 gap-3 w-full lg:px-0 px-4">
       <div className="text-h3">{t('payment_data')}</div>
-      <div className="flex-col-reverse flex lg:flex-row gap-8 w-full">
-        <div className="flex-col flex  px-6 py-5 gap-5 border-2 border-solid border-gray-200 rounded-lg">
+      <div className="flex-col-reverse flex md:flex-row lg:gap-8 gap-6 w-full">
+        <div className="flex-col flex md:w-[488px] w-full sm:px-6 sm:py-5 p-0 gap-5 sm:border-2 border-0 border-solid border-gray-200 rounded-lg">
           <div className="text-p2">{t('use_one_of_ibans_to_pay')}</div>
           <div className="flex flex-col items-start gap-4">
             <div className="flex flex-col items-start gap-1 isolate self-stretch">
               <div className="text-p2">Slovenská sporiteľňa, a.s.</div>
               <div className="flex w-full">
                 <div className="text-16-semibold grow">SK75 0900 0000 0053 5353 5353</div>
-                <div className="w-6 h-6 cursor-pointer lg:block hidden">
+                <div className="w-6 h-6 cursor-pointer sm:block hidden">
                   <ClipboardCopy copyText="SK75 0900 0000 0053 5353 5353" />
                 </div>
               </div>
             </div>
-            <div className="bg-gray-200 w-full h-0.5 lg:block hidden" />
+            <div className="bg-gray-200 w-full h-0.5 sm:block hidden" />
             <div className="flex flex-col items-start gap-1 isolate self-stretch">
               <div className="text-p2">ČSOB, a.s.</div>
               <div className="flex w-full">
                 <div className="text-16-semibold grow">SK31 7500 0000 0000 2574 7653</div>
-                <div className="w-6 h-6 cursor-pointer lg:block hidden">
+                <div className="w-6 h-6 cursor-pointer sm:block hidden">
                   <ClipboardCopy copyText="SK31 7500 0000 0000 2574 7653" />
                 </div>
               </div>
             </div>
-            <div className="bg-gray-200 w-full h-0.5 lg:block hidden" />
+            <div className="bg-gray-200 w-full h-0.5 sm:block hidden" />
             <div className="flex flex-col items-start gap-2">
-              <div className="flex items-start gap-6 self-stretch">
+              <div className="flex lg:flex-row flex-col items-start lg:gap-6 self-stretch">
                 <div className="text-16-semibold">{t('constant_symbol')}</div>
                 <div className="text-16">8147</div>
               </div>
-              <div className="flex items-start gap-6 self-stretch">
+              <div className="flex lg:flex-row flex-col items-start lg:gap-6 self-stretch">
                 <div className="text-16-semibold">{t('variable_symbol')}</div>
                 <div className="text-16">312006100</div>
               </div>
             </div>
-            <div className="bg-gray-200 w-full h-0.5 lg:block hidden" />
-            <div className="flex flex-col items-start gap-2">
+            <div className="bg-gray-200 w-full h-0.5 sm:block hidden" />
+            <div className="flex flex-col items-start w-full gap-2">
               <div className="text-16-semibold">{t('tax_due')}</div>
-              <div className="text-16">
-                Daň je splatná v termíne do 15 dní odo dňa právoplatnosti rozhodnutia.
+              <div className="text-16 grow">
+                Daň je splatná v termíne do 15 dní{' '}
+                <div className="text-16-semibold">odo dňa právoplatnosti rozhodnutia.</div>
               </div>
             </div>
           </div>
+          <div className="sm:hidden block h-0.5 w-full bg-gray-200" />
         </div>
         <div className="flex flex-col gap-4 grow">
-          {/* items-center flex px-6 py-8 gap-6 bg-main-200 rounded-lg self-stretch */}
-          <div className="lg:items-center items-start flex xl:flex-row flex-col px-6 py-8 gap-6 bg-main-200 rounded-lg w-full">
+          <div className="lg:items-center items-start flex lg:flex-row flex-col lg:px-6 lg:py-8 p-4 gap-6 bg-main-200 rounded-lg w-full">
             <div className="flex-col flex items-start gap-2 grow">
               <div className="text-h4">{t('card_payment')}</div>
               <div className="text-16">{t('you_will_be_redirected_to_the_payment_gateway')}</div>
             </div>
             {/* Desktop 'To pay' button */}
-            <Button variant="category" text={t('pay_tax')} className="xl:block hidden min-w-max" />
+            <Button
+              variant="category"
+              size="lg"
+              text={t('pay_tax')}
+              className="lg:block hidden min-w-max"
+            />
 
             {/* Mobile 'To pay' button */}
-            <Button variant="category" text={t('pay_tax')} className="xl:hidden block min-w-full" />
+            <Button
+              variant="category"
+              size="sm"
+              text={t('pay_tax')}
+              className="lg:hidden block min-w-full"
+            />
           </div>
-          <div className="flex xl:flex-row flex-col p-6 gap-12 border-2 border-solid border-gray-200 rounded-lg self-stretch grow">
-            <div className="flex flex-col justify-between items-start gap-2 grow">
+          <div className="flex lg:flex-row flex-col lg:p-6 p-4 gap-4 border-2 border-solid border-gray-200 rounded-lg self-stretch grow">
+            <div className="flex flex-col w-full justify-between items-start gap-2 grow self-stretch">
               <div className="flex flex-col items-start gap-2">
                 <div className="text-h4">{t('qr_code')}</div>
                 <div className="text-16">{t('use_your_banking_app_to_load')}</div>
@@ -78,10 +89,10 @@ const PaymentData = () => {
                 variant="black-outline"
                 text={t('download_image')}
                 size="sm"
-                className="xl:block hidden"
+                className="lg:block hidden"
               />
             </div>
-            <div className="flex max-w-[256px] max-h-[256px] items-center justify-center bg-[red] aspect-square">
+            <div className="flex sm:max-w-[256px] sm:max-h-[256px] max-w-full max-h-max items-center justify-center bg-[red] aspect-square">
               qr code
             </div>
 
@@ -91,7 +102,7 @@ const PaymentData = () => {
               variant="black-outline"
               text={t('download_image')}
               size="sm"
-              className="xl:hidden block"
+              className="lg:hidden block min-w-full"
             />
           </div>
         </div>
