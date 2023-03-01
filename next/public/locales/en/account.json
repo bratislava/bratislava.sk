@@ -28,6 +28,28 @@
   "login_link": "Login",
   "register_description": "Don't have an account?",
   "register_link": "Register",
+  "register_modal": {
+    "header_title": "Žiadosť je možné odoslať až po prihlásení",
+    "header_subtitle": "Na to, aby ste žiadosť odoslali elektronicky, je potrebné vyplniť osobné údaje. Urobiť tak môžete cez Bratislavské konto alebo použitím eID.",
+    "body_title": "Vytvorte si Bratislavské konto",
+    "body_list": {
+      "1": "Nájdite všetky služby mesta na jednom mieste",
+      "2": "Sledujte aktuálny stav podaných žiadostí a čo sa s nimi deje v čase",
+      "3": "Majte prehľad o daniach a poplatkoch",
+      "4": "Využívajte dôveryhodné digitálne služby pod hlavičkou hlavného mesta",
+      "5": "Uložte si žiadosti a vráťte sa k ním kedykoľvek budete chcieť"
+    },
+    "body_action": "Vytvoriť Bratislavské konto a vyplniť žiadosť",
+    "body_login_link": "Login",
+    "body_login_description": "Do you have an account?",
+    "footer_choice": "or",
+    "footer_desktop_button_eID_text": "Vyplniť osobné údaje cez eID",
+    "footer_desktop_button_app_text": "Preskočiť na žiadosť",
+    "footer_mobile_button_eID_text": "Použiť eID",
+    "footer_mobile_button_app_text": "Preskočiť na žiadosť",
+    "footer_mobile_button_eID_title": "Vyplniť osobné údaje cez eID",
+    "footer_mobile_button_app_title": "Vyplňte osobné údaje neskôr"
+  },
   "forgotten_password_description": "Forgot password?",
   "forgotten_password_link": "Reset password",
   "forgotten_password_title": "Forgotten password",
@@ -185,5 +207,6 @@
   "tax_liability_breakdown": "Tax liability",
   "land_tax": "Land tax",
   "construction_tax": "Construction tax",
+  "tax_constructions": "Construction tax",
   "apartments_tax": "Tax on apartments"
 }

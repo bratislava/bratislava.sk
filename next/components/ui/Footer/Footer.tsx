@@ -46,10 +46,16 @@ export const Footer = ({
 
   return (
     <footer className={cx(className, 'text-p2 text-gray-600')}>
-      <section className="flex items-center justify-between pt-14" aria-label="Logo and Social Media Links">
+      <section
+        className="flex items-center justify-between pt-14"
+        aria-label="Logo and Social Media Links"
+      >
         <BABrand />
-        <div className="flex items-center justify-between lg:w-52">
-          <nav className="hidden cursor-pointer gap-4 text-gray-400 lg:flex" aria-label="Social Media Links">
+        <div className="flex items-center justify-between xl:w-52">
+          <nav
+            className="hidden cursor-pointer gap-4 text-gray-400 xl:flex"
+            aria-label="Social Media Links"
+          >
             {facebookLink && (
               <a href={facebookLink} target="_blank" rel="noreferrer">
                 <FBLogo />
@@ -66,13 +72,16 @@ export const Footer = ({
               </a>
             )}
           </nav>
-          <span className="hidden lg:block">
+          <span className="hidden xl:block">
             <EULogo />
           </span>
         </div>
       </section>
 
-      <section aria-label="Contact Info and Sections" className="flex flex-col gap-x-28 py-14 xl:flex-row">
+      <section
+        aria-label="Contact Info and Sections"
+        className="flex flex-col gap-x-28 py-14 xl:flex-row"
+      >
         <div className="flex flex-col gap-y-6 xl:gap-y-16" aria-label="Contact Info">
           <p className="whitespace-pre-wrap leading-6">{address}</p>
           <div className="flex flex-col gap-y-1 underline xl:gap-y-5">
@@ -85,7 +94,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="mt-10 flex w-full flex-col justify-around gap-y-10 lg:w-2/3 lg:flex-row xl:mt-0 2xl:flex 2xl:flex-wrap"
+          className="mt-10 flex w-full flex-col justify-around gap-y-10 xl:w-2/3 xl:flex-row xl:mt-0 xl:flex xl:flex-wrap"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
@@ -98,14 +107,14 @@ export const Footer = ({
 
       <section
         aria-label="Accessibility and Copyright"
-        className="flex grid-cols-3 flex-col gap-y-6 pt-14 text-center lg:grid lg:flex-row lg:justify-between lg:gap-y-0"
+        className="flex grid-cols-3 flex-col gap-y-6 pt-14 text-center xl:grid xl:flex-row xl:justify-between xl:gap-y-0"
       >
         {accessibilityLink && (
-          <UILink href={accessibilityLink.url} className="hover:underline lg:text-left">
+          <UILink href={accessibilityLink.url} className="hover:underline xl:text-left">
             {accessibilityLink.title}
           </UILink>
         )}
-        <div className="flex justify-center gap-x-10 lg:hidden" aria-label="lang">
+        <div className="flex justify-center gap-x-10 xl:hidden" aria-label="lang">
           {languageLinks?.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
               {url === undefined ? (
@@ -119,7 +128,7 @@ export const Footer = ({
           ))}
         </div>
         <nav
-          className="mt-5 flex justify-center gap-5 text-gray-400 lg:hidden"
+          className="mt-5 flex justify-center gap-5 text-gray-400 xl:hidden"
           aria-label="Social Media Links"
         >
           {facebookLink && (
@@ -138,11 +147,11 @@ export const Footer = ({
             </a>
           )}
         </nav>
-        <span className="mt-5 lg:hidden">
+        <span className="mt-5 xl:hidden">
           <Image src={EULogoPng} />
         </span>
-        <p className="mt-2 lg:mt-0">{copyright}</p>
-        <div className="hidden text-right lg:block" aria-label="lang">
+        <p className="mt-2 xl:mt-0">{copyright}</p>
+        <div className="hidden text-right xl:block" aria-label="lang">
           {languageLinks.map(({ url, title, locale }, i) => (
             <React.Fragment key={i}>
               {url === undefined ? (

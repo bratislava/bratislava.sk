@@ -12,9 +12,9 @@ import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import Menu from 'components/forms/simple-components/Menu/Menu'
-import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
 
@@ -80,6 +80,25 @@ export const AccountNavBar = ({
     if (selectedMenuItem) onRouteChange(selectedMenuItem)
   }
 
+  /**
+   * Matches `/account` URL with given param sectionItem link
+   * @match
+   * `/account`
+   * @param {MenuItem} sectionItem - Menu item object.
+   */
+  const isAccountPage = (sectionItem: MenuItem) =>
+    router.route.endsWith('/account') && router.route.includes(sectionItem.link)
+
+  /**
+   * Matches parent URL with children url (inner pages)
+   * @example
+   * `account/taxes-and-fees` and `account/taxes-and-fees/[id]` where `taxes-and-fees` is parent page
+   * It also excludes home page `/account` if we are on `account/taxes-and-fees`
+   * @param {MenuItem} sectionItem - Menu item object.
+   */
+  const isActive = (sectionItem: MenuItem) =>
+    sectionItem?.link.includes(router.route.split('/')[2]) || isAccountPage(sectionItem)
+
   return (
     <>
       {/* Desktop */}
@@ -91,7 +110,7 @@ export const AccountNavBar = ({
           'fixed top-0 left-0 w-full bg-white z-10 shadow',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center lg:flex gap-x-6">
           <Brand
             className="group grow"
             url="/"
@@ -190,7 +209,7 @@ export const AccountNavBar = ({
           </nav>
         </div>
         {isAuth && sectionsList && (
-          <div className="border-t border-gray-200 max-w-screen-1.5lg m-auto h-[57px] w-full items-center justify-between lg:flex">
+          <div className="border-t border-gray-200 max-w-screen-lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
                 <li className="w-full h-full" key={sectionItem.id}>
@@ -199,7 +218,7 @@ export const AccountNavBar = ({
                       className={cx(
                         'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
                         {
-                          'text-main-700 border-main-700': router.route.endsWith(sectionItem?.link),
+                          'text-main-700 border-main-700': isActive(sectionItem),
                         },
                       )}
                     >
