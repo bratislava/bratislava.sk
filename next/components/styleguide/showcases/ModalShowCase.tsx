@@ -1,4 +1,4 @@
-import { Address } from '@utils/useAccount'
+import useAccount, { Address } from '@utils/useAccount'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
 import { PhoneNumberData } from 'components/forms/segments/PhoneNumberForm/PhoneNumberForm'
 import RegistrationModal from 'components/forms/segments/RegistrationModal/RegistrationModal'
@@ -71,15 +71,17 @@ const ModalShowCase = () => {
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
   const [phoneNumberModalShow, setPhoneNumberModalShow] = useState(false)
   const [registrationModal, setRegistrationModal] = useState(false)
+  const { userData, updateUserData, error, resetError } = useAccount()
 
   const onSubmitCorrespondenceAddress = ({ data }: { data?: Address }) => {
     console.log(data)
     setCorrenspondenceAddressModalShow(false)
   }
 
-  const onSubmitPhoneNumber = ({ data }: { data?: PhoneNumberData }) => {
-    console.log(data)
-    setPhoneNumberModalShow(false)
+  const onSubmitPhoneNumber = async ({ data }: { data?: PhoneNumberData }) => {
+    if (await updateUserData({ phone_number: data?.phone_number })) {
+      setPhoneNumberModalShow(false)
+    }
   }
 
   return (
@@ -239,13 +241,15 @@ const ModalShowCase = () => {
           show={correnspondenceAddressModalShow}
           onClose={() => setCorrenspondenceAddressModalShow(false)}
           onSubmit={onSubmitCorrespondenceAddress}
-          defaultValues={{}}
+          defaultValues={userData?.address}
         />
         <PhoneNumberModal
           show={phoneNumberModalShow}
           onClose={() => setPhoneNumberModalShow(false)}
           onSubmit={onSubmitPhoneNumber}
-          defaultValues={{}}
+          error={error}
+          onHideError={resetError}
+          defaultValues={{ phone_number: userData?.phone_number }}
         />
         <RegistrationModal show={registrationModal} onClose={() => setRegistrationModal(false)} />
       </Stack>
