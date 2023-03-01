@@ -1,6 +1,7 @@
 // this is non-production code
 // disabling eslint/ts checks instead of fixing them
 // @ts-nocheck
+import { getUserApi, resetRcApi } from '@utils/api'
 import { AsyncServerProps } from '@utils/types'
 import useAccount from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
@@ -10,16 +11,35 @@ import { Wrapper } from 'components/styleguide/Wrapper'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useState } from 'react'
-
 import { useEffectOnce } from 'usehooks-ts'
 
 const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { getAccessToken } = useAccount()
+  const { getAccessToken, isAuth, updateUserData } = useAccount()
   const [accessToken, setAccessToken] = useState('')
 
-  useEffectOnce(() => {
-    getAccessToken().then(setAccessToken).catch(console.log)
+  useEffectOnce(async () => {
+    try {
+      const token = await getAccessToken()
+      if (token) {
+        setAccessToken(token)
+        const user = await getUserApi(token)
+        console.log(user)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   })
+
+  const resetRc = async () => {
+    try {
+      await resetRcApi(accessToken)
+      const res = await updateUserData({ tier: null })
+      alert(`Res: ${res}`)
+    } catch (error) {
+      console.log(error)
+      alert(`ERROR`)
+    }
+  }
 
   return (
     <PageWrapper locale={page.locale}>
@@ -29,7 +49,12 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
             direction="column"
             title="Below you can see the access token of currently logged-in user"
           >
-            {accessToken || (
+            {isAuth ? (
+              <div>
+                <div>{accessToken}</div>
+                <Button onPress={resetRc} text="Reset RC" />
+              </div>
+            ) : (
               <Button href="/login" label="No user - go to login" variant="link-category" />
             )}
           </Wrapper>
