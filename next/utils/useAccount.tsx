@@ -70,7 +70,37 @@ export interface AccountError {
   code: string
 }
 
-const AccountContext = React.createContext({} as any)
+interface Account {
+  login: (email: string, password: string | undefined) => Promise<boolean>
+  logout: () => void
+  user: CognitoUser | null | undefined
+  error: AccountError | undefined | null
+  forgotPassword: (email?: string) => Promise<boolean>
+  confirmPassword: (verificationCode: string, password: string) => Promise<boolean>
+  status: AccountStatus
+  setStatus: (status: AccountStatus) => void
+  userData: UserData | null
+  updateUserData: (data: UserData) => Promise<boolean>
+  temporaryUserData: UserData | null
+  resetTemporaryUserData: () => void
+  setTemporaryUserData: (userData: UserData | null) => void
+  signUp: (
+    email: string,
+    password: string,
+    marketingConfirmation: boolean,
+    data: UserData,
+  ) => Promise<boolean>
+  verifyEmail: (verificationCode: string) => Promise<boolean>
+  resendVerificationCode: () => Promise<boolean>
+  verifyIdentity: (rc: string, idCard: string) => Promise<boolean>
+  getAccessToken: () => Promise<string | null>
+  changePassword: (oldPassword: string, newPassword: string) => Promise<boolean>
+  lastEmail: string
+  isAuth: boolean
+  resetError: () => void
+}
+
+const AccountContext = React.createContext<Account>({} as Account)
 
 export const AccountProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
@@ -337,7 +367,7 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
     })
   }
 
-  const confirmPassword = (verificationCode: string, password: string) => {
+  const confirmPassword = (verificationCode: string, password: string): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
       Username: lastCredentials.Username,
       Pool: userPool,
@@ -478,6 +508,10 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
     })
   }
 
+  const resetError = () => {
+    setError(null)
+  }
+
   return (
     <AccountContext.Provider
       value={{
@@ -502,6 +536,7 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
         changePassword,
         lastEmail: lastCredentials.Username,
         isAuth: user !== null,
+        resetError,
       }}
     >
       {children}
