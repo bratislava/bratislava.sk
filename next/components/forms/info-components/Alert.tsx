@@ -25,6 +25,7 @@ type AlertBase = {
   variant?: 'basic' | 'message'
   solid?: boolean
   content?: string
+  icon?: boolean
   message: string
   close?: () => void
   buttons?: FixedLengthArray<[AlertButtons, AlertButtons]>
@@ -37,6 +38,7 @@ const Alert = ({
   type,
   variant = 'basic',
   content,
+  icon = true,
   message,
   className,
   ...rest
@@ -89,7 +91,9 @@ const Alert = ({
     return variant === 'basic' ? (
       <div className={alertContainer}>
         <div className="flex items-center gap-[14px]">
-          <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
+          {icon && (
+            <span className="min-w-[22px] justify-center sm:flex hidden">{icons[type]}</span>
+          )}
           <div className={contentStyle}>{message}</div>
         </div>
         {close && (
@@ -101,7 +105,9 @@ const Alert = ({
     ) : (
       <div className={alertContainer}>
         <div className="flex flex-row items-center gap-[14px]">
-          <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
+          {icon && (
+            <span className="min-w-[22px] justify-center sm:flex hidden">{icons[type]}</span>
+          )}
           <div className={contentStyle}>{message}</div>
         </div>
         <div
