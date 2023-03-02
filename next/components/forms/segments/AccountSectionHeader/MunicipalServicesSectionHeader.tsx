@@ -26,7 +26,6 @@ const MunicipalServicesSectionHeader = ({
           type="multiple"
           value={selectorValue}
           onChange={(val) => {
-            console.log(val)
             setSelectorValue(val)
             setCurrentPage(1)
           }}
