@@ -33,17 +33,10 @@ import { Link } from '../Link/Link'
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
-  handleSearch?: (searchOpen: boolean) => void
   pageColor?: string
 }
 
-export const BANavBar = ({
-  className,
-  menuItems,
-  handleSearch,
-  pageColor,
-  ...languageSelectProps
-}: IProps) => {
+export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectProps }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
