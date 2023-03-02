@@ -33,7 +33,7 @@ const IntroSection = () => {
           onPress={() => alert('Actual')}
         />
         <div className="w-full flex items-center justify-between mb-8 px-4 lg:px-0">
-          <h2 className="text-h2">{t('account_section_services')}</h2>
+          <h2 className="text-h2">{t('account_section_services.navigation')}</h2>
           <Button
             size="sm"
             className="flex sm:hidden pt-4 pl-4"
