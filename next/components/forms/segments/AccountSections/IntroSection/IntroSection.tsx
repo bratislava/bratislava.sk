@@ -1,7 +1,7 @@
-import BasketServiceIcon from '@assets/images/account/basket-service-icon.svg'
-import CompassServiceIcon from '@assets/images/account/compass-service-icon.svg'
-import MoneyServiceIcon from '@assets/images/account/money-service-icon.svg'
-import PoolServiceIcon from '@assets/images/account/pool-service-icon.svg'
+import BasketServiceIcon from '@assets/images/account/municipal-services/basket-icon.svg'
+import CompassServiceIcon from '@assets/images/account/municipal-services/compass-icon.svg'
+import MoneyServiceIcon from '@assets/images/account/municipal-services/money-icon.svg'
+import PoolServiceIcon from '@assets/images/account/municipal-services/pool-icon.svg'
 import useAccount from '@utils/useAccount'
 import AccountSectionHeader from 'components/forms/segments/AccountSectionHeader/AccountSectionHeader'
 import AnnouncementBlock from 'components/forms/segments/AccountSections/IntroSection/AnnouncementBlock'
@@ -33,7 +33,7 @@ const IntroSection = () => {
           onPress={() => alert('Actual')}
         />
         <div className="w-full flex items-center justify-between mb-8 px-4 lg:px-0">
-          <h2 className="text-h2">{t('account_section_services')}</h2>
+          <h2 className="text-h2">{t('account_section_services.navigation')}</h2>
           <Button
             size="sm"
             className="sm:flex hidden pt-4 pl-4"
