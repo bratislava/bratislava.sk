@@ -122,7 +122,6 @@
   "DEAD_PERSON": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
   "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
   "BIRTHNUMBER_IFO_DUPLICITY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
-
   "account_section_intro": {
     "navigation": "Úvod",
     "header_title": "Dobrý deň,",
@@ -131,7 +130,10 @@
     "announcement_title": "Aktuálne",
     "announcement_card_title": "Digitálna platba dane z nehnuteľností",
     "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame <strong>od 20. apríla do 30. mája</strong>. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
-    "announcement_card_action": "Zaplatiť daň z nehnuteľností"
+    "announcement_card_action": "Zaplatiť daň z nehnuteľností",
+    "banner_title": "Potrebujete pomôcť?",
+    "banner_content": "Aké služby nájdem v Bratislavskom konte? Prečo vzniklo Bratislavské konto? Ako si viem zmeniť heslo? Nevidím svoju daň, čo mám robiť?<br /><br />Aj toto sú niektoré z otázok, na ktoré nájdete odpovede v sekcii Najčastejšie kladené otázky.",
+    "banner_button_text": "Prejsť na otázky"
   },
   "account_section_services": "Mestské služby",
   "account_section_payment": {

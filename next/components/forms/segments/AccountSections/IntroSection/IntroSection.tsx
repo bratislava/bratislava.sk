@@ -14,6 +14,8 @@ const IntroSection = () => {
   const { t } = useTranslation('account')
   const { userData } = useAccount()
 
+  const bannerContent = `${t('account_section_intro.banner_content')}`
+
   const announcementContent = `
 <h4>${t('account_section_intro.announcement_card_title')}</h4><span>${t(
     'account_section_intro.announcement_card_text',
@@ -78,10 +80,9 @@ const IntroSection = () => {
       </div>
       <div className="bg-gray-50 py-0 lg:py-16">
         <Banner
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-          title="Banner Headline"
+          title={t('account_section_intro.banner_title')}
+          content={bannerContent}
+          buttonText={t('account_section_intro.banner_button_text')}
           onPress={() => {
             alert('Button was pressed')
           }}
