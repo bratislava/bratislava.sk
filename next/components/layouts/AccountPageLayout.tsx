@@ -30,7 +30,7 @@ const sectionsList = [
   },
   {
     id: 1,
-    title: 'account:account_section_services',
+    title: 'account:account_section_services.navigation',
     icon: <BusinessIcon />,
     link: '/account/municipal-services',
   },
