@@ -35,30 +35,35 @@ const HomepagePageLayout = ({
 
   return (
     <div className={cx('font-inter', className)}>
-      <div className="h-14 w-full bg-white">
-        <SectionContainer>
-          <NavBar menuItems={menuItems ?? []} />
-        </SectionContainer>
-      </div>
-      <Bookmarks bookmarks={bookmarks} className="top-56" />
-      <div className="bg-white">
-        <WithoutMenuSection
-          mainMenuItems={menuItems}
-          homepageHeader={header}
-          elementRef={elementRef}
-        />
-        <div
-          className={cx(
-            'mx-auto w-full bg-white fixed z-40 drop-shadow-sm shadow-lg left-0 hidden lg:block',
-            {
-              'top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.VISIBLE,
-              '-top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.HIDDEN,
-            },
-          )}
-        >
-          <BAStickyMenu menuItems={menuItems} isVisible={menuState === STICKY_MENU_STATE.VISIBLE} />
+      <header>
+        <div className="h-14 w-full bg-white">
+          <SectionContainer>
+            <NavBar menuItems={menuItems ?? []} />
+          </SectionContainer>
         </div>
-      </div>
+        <div className="bg-white">
+          <WithoutMenuSection
+            mainMenuItems={menuItems}
+            homepageHeader={header}
+            elementRef={elementRef}
+          />
+          <div
+            className={cx(
+              'mx-auto w-full bg-white fixed z-40 drop-shadow-sm shadow-lg left-0 hidden lg:block',
+              {
+                'top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.VISIBLE,
+                '-top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.HIDDEN,
+              },
+            )}
+          >
+            <BAStickyMenu
+              menuItems={menuItems}
+              isVisible={menuState === STICKY_MENU_STATE.VISIBLE}
+            />
+          </div>
+        </div>
+      </header>
+      <Bookmarks bookmarks={bookmarks} className="top-56" />
       {children}
 
       {footer && <Footer {...footer} />}
