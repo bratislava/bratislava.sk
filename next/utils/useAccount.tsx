@@ -9,7 +9,7 @@ import {
 } from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import { AWSError } from 'aws-sdk/global'
-import { useEffect, useState } from 'react'
+import React, { ReactNode, useContext, useEffect, useState } from 'react'
 
 export enum AccountStatus {
   Idle,
@@ -70,10 +70,42 @@ export interface AccountError {
   code: string
 }
 
-export default function useAccount(initStatus = AccountStatus.Idle) {
+interface Account {
+  login: (email: string, password: string | undefined) => Promise<boolean>
+  logout: () => void
+  user: CognitoUser | null | undefined
+  error: AccountError | undefined | null
+  forgotPassword: (email?: string) => Promise<boolean>
+  confirmPassword: (verificationCode: string, password: string) => Promise<boolean>
+  status: AccountStatus
+  setStatus: (status: AccountStatus) => void
+  userData: UserData | null
+  updateUserData: (data: UserData) => Promise<boolean>
+  temporaryUserData: UserData | null
+  resetTemporaryUserData: () => void
+  setTemporaryUserData: (userData: UserData | null) => void
+  signUp: (
+    email: string,
+    password: string,
+    marketingConfirmation: boolean,
+    data: UserData,
+  ) => Promise<boolean>
+  verifyEmail: (verificationCode: string) => Promise<boolean>
+  resendVerificationCode: () => Promise<boolean>
+  verifyIdentity: (rc: string, idCard: string) => Promise<boolean>
+  getAccessToken: () => Promise<string | null>
+  changePassword: (oldPassword: string, newPassword: string) => Promise<boolean>
+  lastEmail: string
+  isAuth: boolean
+  resetError: () => void
+}
+
+const AccountContext = React.createContext<Account>({} as Account)
+
+export const AccountProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<CognitoUser | null | undefined>()
   const [error, setError] = useState<AccountError | undefined | null>(null)
-  const [status, setStatus] = useState<AccountStatus>(initStatus)
+  const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
   const [userData, setUserData] = useState<UserData | null>(null)
   const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
@@ -335,7 +367,7 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     })
   }
 
-  const confirmPassword = (verificationCode: string, password: string) => {
+  const confirmPassword = (verificationCode: string, password: string): Promise<boolean> => {
     const cognitoUser = new CognitoUser({
       Username: lastCredentials.Username,
       Pool: userPool,
@@ -411,14 +443,29 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
           })
           AWS.config.credentials = awsCredentials
 
-          setUser(cognitoUser)
-          // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-          awsCredentials.refresh((err?: AWSError) => {
+          cognitoUser.getUserAttributes((err?: Error, attributes?: CognitoUserAttribute[]) => {
             if (err) {
               console.error(err)
               resolve(false)
             } else {
-              resolve(true)
+              const userData = userAttributesToObject(attributes)
+              setStatus(
+                userData.tier !== Tier.IdentityCard
+                  ? AccountStatus.IdentityVerificationRequired
+                  : AccountStatus.IdentityVerificationSuccess,
+              )
+              setUserData(userData)
+              setUser(cognitoUser)
+
+              // refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+              awsCredentials.refresh((err?: AWSError) => {
+                if (err) {
+                  console.error(err)
+                  resolve(false)
+                } else {
+                  resolve(true)
+                }
+              })
             }
           })
         },
@@ -465,28 +512,38 @@ export default function useAccount(initStatus = AccountStatus.Idle) {
     setError(null)
   }
 
-  return {
-    login,
-    logout,
-    user,
-    error,
-    forgotPassword,
-    confirmPassword,
-    status,
-    setStatus,
-    userData,
-    updateUserData,
-    temporaryUserData,
-    resetTemporaryUserData,
-    setTemporaryUserData,
-    signUp,
-    verifyEmail,
-    resendVerificationCode,
-    verifyIdentity,
-    getAccessToken,
-    changePassword,
-    lastEmail: lastCredentials.Username,
-    isAuth: user !== null,
-    resetError,
-  }
+  return (
+    <AccountContext.Provider
+      value={{
+        login,
+        logout,
+        user,
+        error,
+        forgotPassword,
+        confirmPassword,
+        status,
+        setStatus,
+        userData,
+        updateUserData,
+        temporaryUserData,
+        resetTemporaryUserData,
+        setTemporaryUserData,
+        signUp,
+        verifyEmail,
+        resendVerificationCode,
+        verifyIdentity,
+        getAccessToken,
+        changePassword,
+        lastEmail: lastCredentials.Username,
+        isAuth: user !== null,
+        resetError,
+      }}
+    >
+      {children}
+    </AccountContext.Provider>
+  )
+}
+
+export default function useAccount() {
+  return useContext(AccountContext)
 }
