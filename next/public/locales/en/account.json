@@ -294,7 +294,12 @@
     "error_card_title": "Zatiaľ vás nevidíme v zozname daňovníkov daňovníčok.",
     "error_card_text": "<p>Môže to tak byť, lebo:</p><ul><li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li></ul><br/><p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
   },
-  "account_section_help": "I have a problem",
+  "account_section_help": {
+    "navigation": "I have a problem",
+    "banner_title": "Nenašli ste odpoveď na vašu otázku?",
+    "banner_content": "Kontaktujte nás a radi vás nasmerujeme na správnu odpoveď.",
+    "banner_button_text": "Napísať správu"
+  },
   "menu_contacts_link": "Contacts",
   "menu_account_link": "Account",
   "menu_profile_link": "Profile",

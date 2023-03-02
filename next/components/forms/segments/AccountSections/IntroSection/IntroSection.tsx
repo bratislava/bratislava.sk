@@ -14,7 +14,9 @@ const IntroSection = () => {
   const { t } = useTranslation('account')
   const { userData } = useAccount()
 
-  const bannerContent = `${t('account_section_intro.banner_content')}`
+  const bannerContent = `<span className='text-p2'>${t(
+    'account_section_intro.banner_content',
+  )}</span>`
 
   const announcementContent = `
 <h4>${t('account_section_intro.announcement_card_title')}</h4><span>${t(
