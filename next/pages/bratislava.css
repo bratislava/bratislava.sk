@@ -170,6 +170,12 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+/* Move safari key icon to the left for fields with type password */
+/*noinspection CssInvalidPseudoSelector*/
+input[type='password']::-webkit-credentials-auto-fill-button {
+  @apply mr-8
+}
+
 /* Remove arrows from input type='number' */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {

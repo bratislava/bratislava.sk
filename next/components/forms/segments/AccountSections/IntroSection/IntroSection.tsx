@@ -36,7 +36,7 @@ const IntroSection = () => {
           <h2 className="text-h2">{t('account_section_services.navigation')}</h2>
           <Button
             size="sm"
-            className="flex sm:hidden pt-4 pl-4"
+            className="sm:flex hidden pt-4 pl-4"
             label={t('account_section_intro.all_services')}
             variant="link-category"
             href="/account/municipal-services"

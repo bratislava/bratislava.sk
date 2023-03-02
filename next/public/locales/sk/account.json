@@ -331,6 +331,7 @@
     "text": "Spravujte svoje osobné údaje",
     "start_edit_button": "Upraviť",
     "save_edit_button": "Uložiť zmeny",
+    "save_button": "Uložiť",
     "stop_edit_button": "Zahodiť zmeny",
     "titles_before_name": "Tituly pred menom",
     "titles_after_name": "Tituly za menom",
@@ -368,5 +369,6 @@
   "tax_liability_breakdown": "Rozpis daňovej povinnosti",
   "land_tax": "Daň z pozemkov",
   "construction_tax": "Daň zo stavby",
+  "tax_constructions": "Daň zo stavieb",
   "apartments_tax": "Daň z bytov"
 }
