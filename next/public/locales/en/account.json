@@ -313,7 +313,7 @@
   "RFO_NOT_RESPONDING": "There was an error making the request - please try again later.",
   "DEAD_PERSON": "Birth number and identity card not valid.",
   "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Birth number and identity card not valid.",
-  "BIRTHNUMBER_IFO_DUPLICITY": "Birth number and identity card not valid.",
+  "BIRTHNUMBER_IFO_DUPLICITY": "Tieto osobné údaje už boli použité pri inej e-mailovej adrese. Ak ste účet nevytvorili vy, kontaktujte nás na info@bratislava.sk.",
   "my_profile": "My profile",
   "consents": {
     "title": "Consents",

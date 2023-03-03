@@ -121,7 +121,7 @@
   "RFO_NOT_RESPONDING": "Pri odosielaní formulára nastala chyba. Skúste to prosím znova neskôr.",
   "DEAD_PERSON": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
   "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
-  "BIRTHNUMBER_IFO_DUPLICITY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
+  "BIRTHNUMBER_IFO_DUPLICITY": "Tieto osobné údaje už boli použité pri inej e-mailovej adrese. Ak ste účet nevytvorili vy, kontaktujte nás na info@bratislava.sk.",
   "account_section_intro": {
     "navigation": "Úvod",
     "header_title": "Dobrý deň,",
