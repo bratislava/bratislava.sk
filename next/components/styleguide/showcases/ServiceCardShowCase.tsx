@@ -16,28 +16,28 @@ const ServiceCardShowCase = () => {
           <ServiceCard
             title="Záväzné stanovisko k investičnej činnosti"
             description="Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade."
-            icon={<CompassServiceIcon />}
+            icon={<CompassServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
             buttonText="Prejsť na žiadosť"
             href="#"
           />
           <ServiceCard
             title="Dotácia na kontajnerové stanovištia"
             description="Žiadosť o dotáciu na kontajnerové stanovište alebo o nájom mestského pozemku."
-            icon={<BasketServiceIcon />}
+            icon={<BasketServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
             buttonText="Prejsť na žiadosť"
             onPress={() => alert('Hello')}
           />
           <ServiceCard
             title="Digitálna platba dane z nehnuteľností"
             description="Digitálna platba dane z nehnuteľnosti, pohodlne a online."
-            icon={<MoneyServiceIcon />}
+            icon={<MoneyServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
             buttonText="Zaplatiť daň digitálne"
             href="#"
           />
           <ServiceCard
             title="Online lístky na kúpaliská"
             description="Kúpa online lístku alebo permanentky na všetky mestské kúpalíská v Bratislave."
-            icon={<PoolServiceIcon />}
+            icon={<PoolServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
             buttonText="Kúpiť lístok"
             onPress={() => alert('Hello')}
           />
