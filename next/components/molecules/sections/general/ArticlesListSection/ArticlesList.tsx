@@ -4,7 +4,7 @@ import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
-import { ArticlesFilter, Card } from '../../../atoms/ArticlesFilter'
+import { ArticlesFilter, Card } from '../../../../atoms/ArticlesFilter'
 
 export interface ArticlesListProps {
   title: string
@@ -16,7 +16,7 @@ export interface ArticlesListProps {
   articlesContentClassName?: string
 }
 
-export const ArticlesList = ({
+const ArticlesList = ({
   title,
   itemsPerPage = 6,
   category,

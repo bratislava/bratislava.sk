@@ -19,7 +19,7 @@ export interface NumericalListSectionProps {
   variant?: 'basic' | 'combined' | 'roadmap'
 }
 
-export const NumericalListSection = ({
+export const NumericalListSectionUI = ({
   title,
   items,
   hasBackground,

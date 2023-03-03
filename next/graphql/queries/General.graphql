@@ -1,0 +1,78 @@
+query Footer($locale: I18NLocaleCode!) {
+    footer(locale: $locale) {
+        ...Footer
+    }
+}
+
+fragment PageLink on ComponentBlocksPageLink {
+    title
+    url
+    anchor
+    page {
+        data {
+            attributes {
+                title
+                slug
+                locale
+            }
+        }
+    }
+}
+
+fragment Footer on FooterEntityResponse {
+    data {
+        attributes {
+            address
+            copyright
+            email
+            facebookUrl
+            instagramUrl
+            phone
+            youtubeUrl
+            accessibilityLink {
+                ...PageLink
+            }
+            footerSections {
+                title
+                pageLinks {
+                    ...PageLink
+                }
+            }
+        }
+    }
+}
+
+fragment MainMenuItem on PageCategoryEntityResponseCollection {
+    data {
+        id
+        attributes {
+            title
+            color
+            icon
+            iconHover
+            priority
+            subcategories {
+                data {
+                    id
+                    attributes {
+                        title
+                        priority
+                        icon
+                        moreLink {
+                            ...PageLink
+                        }
+                        pages {
+                            ...PageLink
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+query MainMenu($locale: I18NLocaleCode!) {
+    pageCategories(locale: $locale) {
+        ...MainMenuItem
+    }
+}

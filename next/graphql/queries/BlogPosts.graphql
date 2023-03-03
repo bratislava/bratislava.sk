@@ -11,59 +11,6 @@ query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
 #   }
 # }
 
-query Footer($locale: I18NLocaleCode!) {
-  footer(locale: $locale) {
-    data {
-      attributes {
-        address
-        copyright
-        email
-        facebookUrl
-        instagramUrl
-        phone
-        youtubeUrl
-        accessibilityLink {
-          anchor
-          title
-          url
-          page {
-            data {
-              attributes {
-                title
-                slug
-                locale
-              }
-            }
-          }
-        }
-        footerSections {
-          title
-          pageLinks {
-            anchor
-            title
-            url
-            page {
-              data {
-                attributes {
-                  title
-                  slug
-                  locale
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-query MainMenu($locale: I18NLocaleCode!) {
-  pageCategories(locale: $locale) {
-    ...MainMenuItem
-  }
-}
-
 query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
   blogPosts(
     filters: { tag: { title: { in: $tags } } }
@@ -222,17 +169,3 @@ fragment BlogPostLink on ComponentBlocksBlogPostLink {
   url
 }
 
-fragment PageLink on ComponentBlocksPageLink {
-  title
-  url
-  anchor
-  page {
-    data {
-      attributes {
-        title
-        slug
-        locale
-      }
-    }
-  }
-}

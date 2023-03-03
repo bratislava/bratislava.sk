@@ -1,9 +1,9 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { NumericalListItemObject } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 
 import { DashedLine } from '../DashedLine/DashedLine'
-import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 
 export interface NumericalListItemProps {
   index: number
@@ -51,7 +51,7 @@ export const NumericalListItem = ({
       >
         <div
           className={cx(
-            'z-10 shrink-0 min-w-16 rounded-full text-h4 flex items-center justify-center w-10 h-10',
+            'min-w-16 text-h4 z-10 shrink-0 rounded-full flex items-center justify-center w-10 h-10',
             { 'bg-white text-font': variant !== 'roadmap' && hasBackground },
             { 'bg-category-600 text-white': variant === 'roadmap' || !hasBackground },
           )}
@@ -60,7 +60,7 @@ export const NumericalListItem = ({
         </div>
         <div
           className={cx(
-            'text-p1 pl-5 lg:pl-11 listitem',
+            'text-p1 listitem pl-5 lg:pl-11',
             {
               'pt-0': variant === 'combined',
             },
@@ -79,7 +79,7 @@ export const NumericalListItem = ({
                 'flex',
                 { 'flex-col items-start gap-y-10': variant === 'combined' },
                 {
-                  'items-center numerical-list-hidden': variant !== 'combined',
+                  'numerical-list-hidden items-center': variant !== 'combined',
                 },
               )}
               content={item.text}

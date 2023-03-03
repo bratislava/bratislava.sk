@@ -4,8 +4,8 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { FormEvent } from 'react'
 
-import MinusIcon from '../../../assets/images/minus.svg'
-import PlusIcon from '../../../assets/images/plus.svg'
+import MinusIcon from '../../../../../assets/images/minus.svg'
+import PlusIcon from '../../../../../assets/images/plus.svg'
 
 interface IProps {
   className?: string
@@ -20,7 +20,7 @@ const calculateLivingSituation = (
   childValue: number,
   adults: number,
   children: number,
-  income: number
+  income: number,
 ): [number, boolean] => {
   const minimumWage = singleAdultValue + (adults - 1) * anotherAdultValue + children * childValue
   const canAccomodate = income >= minimumWage
@@ -43,7 +43,10 @@ const InputField = ({
   onAddSub,
   ...rest
 }: IInputFieldProps &
-  Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'onChange'>) => (
+  Omit<
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    'onChange'
+  >) => (
   <label className="text-20 flex flex-col items-center text-center" htmlFor={id}>
     {label}
     <div className="relative mt-3 flex items-center">
@@ -79,7 +82,12 @@ const InputField = ({
   </label>
 )
 
-const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, childValue }: IProps) => {
+const MinimumCalculator = ({
+  className,
+  singleAdultValue,
+  anotherAdultValue,
+  childValue,
+}: IProps) => {
   const { t } = useTranslation('minimum-calculator')
 
   const [adults, setAdults] = React.useState(1)
@@ -94,7 +102,7 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
     childValue,
     Number(adults),
     Number(children),
-    Number(income)
+    Number(income),
   )
   const handleSubmit = (ev: FormEvent) => {
     ev.preventDefault()
@@ -105,7 +113,10 @@ const MinimumCalculator = ({ className, singleAdultValue, anotherAdultValue, chi
     <div className={cx('text-center bg-category-200 text-font', className)}>
       <p className="text-h3">{t('title')}</p>
       <p className="text-20-medium m-auto mt-6 w-10/12 pt-0.5">{t('description')}</p>
-      <form className="text-20-medium mt-10 flex flex-col items-center gap-y-8" onSubmit={handleSubmit}>
+      <form
+        className="text-20-medium mt-10 flex flex-col items-center gap-y-8"
+        onSubmit={handleSubmit}
+      >
         <InputField
           id="adults"
           label={t('adultsText')}

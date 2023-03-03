@@ -301,7 +301,7 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
   )
 
 // Page Accordion Items
-export const groupByCategory = <T extends { category?: string }>(items: T[]) => {
+export const groupByCategory = <T extends { category?: string | null }>(items: T[]) => {
   const grouped = _(items)
     .groupBy((item) => item?.category)
     .sortBy((group) => items.indexOf(group[0]))

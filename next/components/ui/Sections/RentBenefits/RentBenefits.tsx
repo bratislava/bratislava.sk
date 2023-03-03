@@ -7,10 +7,10 @@ import { Rent, RentProps } from '../../Rent/Rent'
 
 export interface RentBenefitsProps {
   className?: string
-  title?: string
-  linkLabel?: string
+  title?: string | null
+  linkLabel?: string | null
   hasBackground?: boolean
-  list?: Array<RentProps>
+  list?: Array<RentProps> | null
 }
 
 const LIST = [
@@ -61,7 +61,7 @@ export const RentBenefits = ({
           },
         )}
       >
-        {list.map((item, index) => (
+        {list?.map((item, index) => (
           <Rent
             key={index}
             {...item}
