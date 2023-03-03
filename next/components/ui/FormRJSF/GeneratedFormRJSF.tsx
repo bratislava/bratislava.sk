@@ -4,7 +4,9 @@ import { EFormValue } from '@backend/forms'
 import { FormValidation, RJSFSchema } from '@rjsf/utils'
 import { useFormStepper } from '@utils/forms'
 import cx from 'classnames'
+import SkipStepModal from 'components/forms/segments/SkipStepModal/SkipStepModal'
 import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
 
 import Button from '../../forms/simple-components/Button'
 import FinalStep from '../../forms/steps/FinalStep'
@@ -20,6 +22,13 @@ interface FormRJSF {
 const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const [t] = useTranslation('forms')
   const form = useFormStepper(escapedSlug, eform.schema)
+  const [isOnShowSkipModal, setIsOnShowSkipModal] = useState<boolean>(false)
+  const [skipModalWasShowed, setSkipModalWasShowed] = useState<boolean>(false)
+
+  const skipButtonHandler = () => {
+    if (skipModalWasShowed) form.skipToStep(form.stepIndex + 1)
+    setIsOnShowSkipModal(true)
+  }
 
   return (
     <div className={cx('flex flex-col  sm:gap-20 gap-10 w-full', 'sm:flex-row sm:gap-20')}>
@@ -30,6 +39,18 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
           // if not wanted because of broken validation when skipping multiple steps, comment out onChangeStep
           onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+        />
+        <SkipStepModal
+          show={isOnShowSkipModal && !skipModalWasShowed}
+          onClose={() => {
+            setIsOnShowSkipModal(false)
+            setSkipModalWasShowed(true)
+          }}
+          onSkip={() => {
+            form.skipToStep(form.stepIndex + 1)
+            setIsOnShowSkipModal(false)
+            setSkipModalWasShowed(true)
+          }}
         />
       </div>
       <div className={cx('grow mx-8', 'lg:mx-28')}>
@@ -80,7 +101,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
               </div>
               <Button
                 variant="black-outline"
-                onPress={() => form.skipToStep(form.stepIndex + 1)}
+                onPress={skipButtonHandler}
                 text={t('buttons.skip')}
               />
               <Button
