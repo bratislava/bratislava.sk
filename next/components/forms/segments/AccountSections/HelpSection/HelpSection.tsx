@@ -8,9 +8,13 @@ const accordionContent =
 
 const HelpSection = () => {
   const { t } = useTranslation('account')
+
+  const bannerContent = `<span className='text-p2'>${t(
+    'account_section_help.banner_content',
+  )}</span>`
   return (
     <div className="flex flex-col">
-      <AccountSectionHeader title={t('account_section_help')} />
+      <AccountSectionHeader title={t('account_section_help.navigation')} />
       <div className="w-full max-w-screen-lg mx-auto">
         <h2 className="text-h2 justify-center hidden md:flex mt-8">Často kladené otázky</h2>
         <div className="flex flex-col gap-2 md:gap-3 px-4 lg:px-0 my-4 md:my-6">
@@ -26,8 +30,10 @@ const HelpSection = () => {
       </div>
       <div className="bg-gray-50 py-0 lg:py-16">
         <Banner
-          content="Kontaktujte nás a radi vás nasmerujeme na správnu odpoveď."
           title="Nenašli ste odpoveď na vašu otázku?"
+          content={bannerContent}
+          buttonText={t('account_section_help.banner_button_text')}
+          mobileNumber="+421 XXX XXX XXX"
           onPress={() => {
             alert('Button was pressed')
           }}
