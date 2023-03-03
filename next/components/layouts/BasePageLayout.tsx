@@ -34,7 +34,7 @@ const BasePageLayout = ({
         </div>
 
         <div id="sticky-menu" className="lg:h-[106px]">
-          <div className="fixed z-40 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
+          <div className="fixed z-30 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
             <BAStickyMenu
               menuItems={menuItems ?? []}
               initialActiveMenuId={Number(activeMenuItem)}
@@ -42,7 +42,7 @@ const BasePageLayout = ({
           </div>
         </div>
       </header>
-      <div>{children}</div>
+      <main id="content-anchor">{children}</main>
       {footer && <Footer {...footer} />}
     </div>
   )

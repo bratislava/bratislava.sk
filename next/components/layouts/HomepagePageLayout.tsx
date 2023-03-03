@@ -14,6 +14,7 @@ import React from 'react'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
+import SkipToContentButton from '../molecules/SkipToContentButton'
 
 interface HomepagePageLayoutProps {
   header?: HomepageHeaderFragment | null | undefined
@@ -49,7 +50,7 @@ const HomepagePageLayout = ({
           />
           <div
             className={cx(
-              'mx-auto w-full bg-white fixed z-40 drop-shadow-sm shadow-lg left-0 hidden lg:block',
+              'mx-auto w-full bg-white fixed z-30 drop-shadow-sm shadow-lg left-0 hidden lg:block',
               {
                 'top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.VISIBLE,
                 '-top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.HIDDEN,
@@ -64,8 +65,7 @@ const HomepagePageLayout = ({
         </div>
       </header>
       <Bookmarks bookmarks={bookmarks} className="top-56" />
-      {children}
-
+      <main id="content-anchor">{children}</main>
       {footer && <Footer {...footer} />}
     </div>
   )

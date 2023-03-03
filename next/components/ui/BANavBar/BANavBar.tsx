@@ -21,6 +21,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { contactUrls, eServicesData } from '@utils/constants'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
+import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
@@ -53,7 +54,7 @@ export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectPro
         className={cx(
           className,
           'text-p2 items-center ',
-          'fixed top-0 left-0 w-full bg-white z-50',
+          'fixed top-0 left-0 w-full bg-white z-40',
         )}
       >
         <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
@@ -68,6 +69,7 @@ export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectPro
               </p>
             }
           />
+          <SkipToContentButton />
 
           <nav className="text-font/75 flex gap-x-8 font-semibold">
             <div className="text-font/75 flex items-center gap-x-8 font-semibold">
