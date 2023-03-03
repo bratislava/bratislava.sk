@@ -2,6 +2,7 @@ import { Address } from '@utils/useAccount'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
 import { PhoneNumberData } from 'components/forms/segments/PhoneNumberForm/PhoneNumberForm'
 import RegistrationModal from 'components/forms/segments/RegistrationModal/RegistrationModal'
+import SkipStepModal from 'components/forms/segments/SkipStepModal/SkipStepModal'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useState } from 'react'
 
@@ -71,6 +72,7 @@ const ModalShowCase = () => {
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
   const [phoneNumberModalShow, setPhoneNumberModalShow] = useState(false)
   const [registrationModal, setRegistrationModal] = useState(false)
+  const [skipStepModal, setSkipStepModal] = useState(false)
 
   const onSubmitCorrespondenceAddress = ({ data }: { data?: Address }) => {
     console.log(data)
@@ -138,6 +140,12 @@ const ModalShowCase = () => {
           variant="black"
           text="Open registration modal"
           onPress={() => setRegistrationModal(true)}
+        />
+        <Button
+          size="sm"
+          variant="black"
+          text="Open skip step modal"
+          onPress={() => setSkipStepModal(true)}
         />
         <Modal
           divider
@@ -248,6 +256,7 @@ const ModalShowCase = () => {
           defaultValues={{}}
         />
         <RegistrationModal show={registrationModal} onClose={() => setRegistrationModal(false)} />
+        <SkipStepModal show={skipStepModal} onClose={() => setSkipStepModal(false)} />
       </Stack>
     </Wrapper>
   )
