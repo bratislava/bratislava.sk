@@ -42,7 +42,7 @@ const sectionsList = [
   },
   {
     id: 3,
-    title: 'account:account_section_help',
+    title: 'account:account_section_help.navigation',
     icon: <HelpIcon />,
     link: '/account/i-have-a-problem',
   },

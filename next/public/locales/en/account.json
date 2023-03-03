@@ -122,7 +122,10 @@
     "announcement_title": "Actual",
     "announcement_card_title": "Digitálna platba dane z nehnuteľností",
     "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame od 20. apríla do 30. mája. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
-    "announcement_card_action": "Zaplatiť daň z nehnuteľností"
+    "announcement_card_action": "Zaplatiť daň z nehnuteľností",
+    "banner_title": "Potrebujete pomôcť?",
+    "banner_content": "Aké služby nájdem v Bratislavskom konte? Prečo vzniklo Bratislavské konto? Ako si viem zmeniť heslo? Nevidím svoju daň, čo mám robiť?<br /><br />Aj toto sú niektoré z otázok, na ktoré nájdete odpovede v sekcii Najčastejšie kladené otázky.",
+    "banner_button_text": "Prejsť na otázky"
   },
   "account_section_services": {
     "navigation": "Municipal services",
@@ -291,7 +294,12 @@
     "error_card_title": "Zatiaľ vás nevidíme v zozname daňovníkov daňovníčok.",
     "error_card_text": "<p>Môže to tak byť, lebo:</p><ul><li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li></ul><br/><p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
   },
-  "account_section_help": "I have a problem",
+  "account_section_help": {
+    "navigation": "I have a problem",
+    "banner_title": "Nenašli ste odpoveď na vašu otázku?",
+    "banner_content": "Kontaktujte nás a radi vás nasmerujeme na správnu odpoveď.",
+    "banner_button_text": "Napísať správu"
+  },
   "menu_contacts_link": "Contacts",
   "menu_account_link": "Account",
   "menu_profile_link": "Profile",
