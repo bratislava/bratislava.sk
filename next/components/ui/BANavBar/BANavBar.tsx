@@ -58,11 +58,11 @@ export const BANavBar = ({
         id="desktop-navbar"
         className={cx(
           className,
-          'items-center text-p2 ',
+          'text-p2 items-center ',
           'fixed top-0 left-0 w-full bg-white z-50',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
           <Brand
             className="group"
             url="/"
@@ -343,7 +343,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3-semibold cursor-pointer text-font mt-3 h-6 w-6"
+                className="text-p3 hover:text-p3-semibold text-font cursor-pointer mt-3 h-6 w-6"
                 key={option.key}
                 onClick={handleChange}
               >

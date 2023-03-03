@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+export default `<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xml:lang="en" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:z="http://schemas.gov.sk/doc/eform/form/0.1" version="1.0" xmlns:Xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template match="/z:E-form">
@@ -360,4 +360,4 @@
             </xsl:call-template></xsl:if><xsl:if test="$values/z:ZiadostPodporaPartneri"><xsl:call-template name="base_labeled_field">
               <xsl:with-param name="text" select="'Máte iných partnerov podujatia?'"/>
               <xsl:with-param name="node" select="$values/z:ZiadostPodporaPartneri"/>
-            </xsl:call-template></xsl:if></xsl:template></xsl:stylesheet>
+            </xsl:call-template></xsl:if></xsl:template></xsl:stylesheet>`

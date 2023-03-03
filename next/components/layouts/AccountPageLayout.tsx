@@ -30,7 +30,7 @@ const sectionsList = [
   },
   {
     id: 1,
-    title: 'account:account_section_services',
+    title: 'account:account_section_services.navigation',
     icon: <BusinessIcon />,
     link: '/account/municipal-services',
   },
@@ -42,7 +42,7 @@ const sectionsList = [
   },
   {
     id: 3,
-    title: 'account:account_section_help',
+    title: 'account:account_section_help.navigation',
     icon: <HelpIcon />,
     link: '/account/i-have-a-problem',
   },
@@ -53,13 +53,13 @@ const menuItems = [
     id: 1,
     title: 'account:menu_profile_link',
     icon: <ProfileIcon />,
-    link: '/',
+    link: '/user-profile',
   },
   {
     id: 2,
     title: 'account:menu_help_link',
     icon: <HelpFilledIcon />,
-    link: '/',
+    link: '/account/i-have-a-problem',
   },
   {
     id: 3,

@@ -1,8 +1,12 @@
-import { CorrespondenceAddressData } from 'components/forms/segments/CorrespondenceAddressForm/CorrespondenceAddressForm'
+import { Address } from '@utils/useAccount'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
+import { PhoneNumberData } from 'components/forms/segments/PhoneNumberForm/PhoneNumberForm'
+import RegistrationModal from 'components/forms/segments/RegistrationModal/RegistrationModal'
+import SkipStepModal from 'components/forms/segments/SkipStepModal/SkipStepModal'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useState } from 'react'
 
+import PhoneNumberModal from '../../forms/segments/PhoneNumberModal/PhoneNumberModal'
 import Button from '../../forms/simple-components/Button'
 import MessageModal from '../../forms/widget-components/Modals/MessageModal'
 import { Stack } from '../Stack'
@@ -66,10 +70,18 @@ const ModalShowCase = () => {
   const [modalShowInfo, setModalShowInfo] = useState(false)
   const [modalShowWarning, setModalShowWarning] = useState(false)
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
+  const [phoneNumberModalShow, setPhoneNumberModalShow] = useState(false)
+  const [registrationModal, setRegistrationModal] = useState(false)
+  const [skipStepModal, setSkipStepModal] = useState(false)
 
-  const onSubmitCorrespondenceAddress = ({ data }: { data?: CorrespondenceAddressData }) => {
+  const onSubmitCorrespondenceAddress = ({ data }: { data?: Address }) => {
     console.log(data)
     setCorrenspondenceAddressModalShow(false)
+  }
+
+  const onSubmitPhoneNumber = ({ data }: { data?: PhoneNumberData }) => {
+    console.log(data)
+    setPhoneNumberModalShow(false)
   }
 
   return (
@@ -116,6 +128,24 @@ const ModalShowCase = () => {
           variant="black"
           text="Open correspondence address modal"
           onPress={() => setCorrenspondenceAddressModalShow(true)}
+        />
+        <Button
+          size="sm"
+          variant="black"
+          text="Open phone number modal"
+          onPress={() => setPhoneNumberModalShow(true)}
+        />
+        <Button
+          size="sm"
+          variant="black"
+          text="Open registration modal"
+          onPress={() => setRegistrationModal(true)}
+        />
+        <Button
+          size="sm"
+          variant="black"
+          text="Open skip step modal"
+          onPress={() => setSkipStepModal(true)}
         />
         <Modal
           divider
@@ -219,6 +249,14 @@ const ModalShowCase = () => {
           onSubmit={onSubmitCorrespondenceAddress}
           defaultValues={{}}
         />
+        <PhoneNumberModal
+          show={phoneNumberModalShow}
+          onClose={() => setPhoneNumberModalShow(false)}
+          onSubmit={onSubmitPhoneNumber}
+          defaultValues={{}}
+        />
+        <RegistrationModal show={registrationModal} onClose={() => setRegistrationModal(false)} />
+        <SkipStepModal show={skipStepModal} onClose={() => setSkipStepModal(false)} />
       </Stack>
     </Wrapper>
   )
