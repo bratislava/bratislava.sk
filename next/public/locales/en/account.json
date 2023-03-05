@@ -358,6 +358,11 @@
     "modal_message": "If you would like to change the e-mail you use to log in to your account and to which we send you all information regarding your account, please contact us at <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "modal_thanks": "Thank you!"
   },
+  "adding_phone_number": {
+    "title": "Adding a phone number",
+    "description": "Would you like us to communicate with you via SMS in rare cases? Leave us your phone number and we will remind you, for example, of the approaching tax due date via SMS.\n\nYou can add a phone number to your profile at any time.\n\n",
+    "phoneNumber_not_required": "*Failure to provide a phone number does not affect the use of services in the Bratislava account."
+  },
   "pay_tax": "To pay",
   "back_to_list": "Back to list",
   "city": "City",
