@@ -2,12 +2,14 @@ import BasketServiceIcon from '@assets/images/account/municipal-services/basket-
 import CompassServiceIcon from '@assets/images/account/municipal-services/compass-icon.svg'
 import MoneyServiceIcon from '@assets/images/account/municipal-services/money-icon.svg'
 import PoolServiceIcon from '@assets/images/account/municipal-services/pool-icon.svg'
+import { ROUTES } from '@utils/constants'
 import useAccount from '@utils/useAccount'
 import AccountSectionHeader from 'components/forms/segments/AccountSectionHeader/AccountSectionHeader'
 import AnnouncementBlock from 'components/forms/segments/AccountSections/IntroSection/AnnouncementBlock'
 import Banner from 'components/forms/simple-components/Banner'
 import Button from 'components/forms/simple-components/Button'
 import ServiceCard from 'components/forms/simple-components/ServiceCard'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
@@ -17,6 +19,7 @@ import PhoneNumberModal from '../../PhoneNumberModal/PhoneNumberModal'
 const IntroSection = () => {
   const { t } = useTranslation('account')
   const { userData, updateUserData, error, resetError } = useAccount()
+  const router = useRouter()
   const [_, setPhoneNumberModalShow] = useState<boolean>(false)
 
   const onSubmitPhoneNumber = async ({ data }: { data?: PhoneNumberData }) => {
@@ -38,7 +41,7 @@ const IntroSection = () => {
     <>
       {userData && (
         <PhoneNumberModal
-          show={!userData?.phone_number}
+          show={router.query.from === ROUTES.REGISTER}
           onClose={() => setPhoneNumberModalShow(false)}
           onSubmit={onSubmitPhoneNumber}
           error={error}
