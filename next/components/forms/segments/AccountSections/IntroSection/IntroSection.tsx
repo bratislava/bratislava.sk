@@ -1,7 +1,7 @@
-import BasketServiceIcon from '@assets/images/account/basket-service-icon.svg'
-import CompassServiceIcon from '@assets/images/account/compass-service-icon.svg'
-import MoneyServiceIcon from '@assets/images/account/money-service-icon.svg'
-import PoolServiceIcon from '@assets/images/account/pool-service-icon.svg'
+import BasketServiceIcon from '@assets/images/account/municipal-services/basket-icon.svg'
+import CompassServiceIcon from '@assets/images/account/municipal-services/compass-icon.svg'
+import MoneyServiceIcon from '@assets/images/account/municipal-services/money-icon.svg'
+import PoolServiceIcon from '@assets/images/account/municipal-services/pool-icon.svg'
 import useAccount from '@utils/useAccount'
 import AccountSectionHeader from 'components/forms/segments/AccountSectionHeader/AccountSectionHeader'
 import AnnouncementBlock from 'components/forms/segments/AccountSections/IntroSection/AnnouncementBlock'
@@ -24,6 +24,10 @@ const IntroSection = () => {
       setPhoneNumberModalShow(false)
     }
   }
+
+  const bannerContent = `<span className='text-p2'>${t(
+    'account_section_intro.banner_content',
+  )}</span>`
 
   const announcementContent = `
 <h4>${t('account_section_intro.announcement_card_title')}</h4><span>${t(
@@ -55,10 +59,10 @@ const IntroSection = () => {
             onPress={() => alert('Actual')}
           />
           <div className="w-full flex items-center justify-between mb-8 px-4 lg:px-0">
-            <h2 className="text-h2">{t('account_section_services')}</h2>
+            <h2 className="text-h2">{t('account_section_services.navigation')}</h2>
             <Button
               size="sm"
-              className="flex sm:hidden pt-4 pl-4"
+              className="sm:flex hidden pt-4 pl-4"
               label={t('account_section_intro.all_services')}
               variant="link-category"
               href="/account/municipal-services"
@@ -100,10 +104,9 @@ const IntroSection = () => {
         </div>
         <div className="bg-gray-50 py-0 lg:py-16">
           <Banner
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            title="Banner Headline"
+            title={t('account_section_intro.banner_title')}
+            content={bannerContent}
+            buttonText={t('account_section_intro.banner_button_text')}
             onPress={() => {
               alert('Button was pressed')
             }}
