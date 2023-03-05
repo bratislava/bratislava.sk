@@ -2,6 +2,7 @@ import { Address } from '@utils/useAccount'
 import CorrespondenceAddressModal from 'components/forms/segments/CorrespondenceAddressModal/CorrespondenceAddressModal'
 import { PhoneNumberData } from 'components/forms/segments/PhoneNumberForm/PhoneNumberForm'
 import RegistrationModal from 'components/forms/segments/RegistrationModal/RegistrationModal'
+import SkipStepModal from 'components/forms/segments/SkipStepModal/SkipStepModal'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useState } from 'react'
 
@@ -69,16 +70,27 @@ const ModalShowCase = () => {
   const [modalShowInfo, setModalShowInfo] = useState(false)
   const [modalShowWarning, setModalShowWarning] = useState(false)
   const [correnspondenceAddressModalShow, setCorrenspondenceAddressModalShow] = useState(false)
+  const [addressModalData, setAddressModalData] = useState<any>({
+    street_address: 'Stef 12',
+    locality: 'Bratislava',
+    postal_code: '05801',
+  })
   const [phoneNumberModalShow, setPhoneNumberModalShow] = useState(false)
+  const [phoneNumberModalData, setPhoneNumberModalData] = useState<string | undefined>(
+    '+421999999999',
+  )
   const [registrationModal, setRegistrationModal] = useState(false)
+  const [skipStepModal, setSkipStepModal] = useState(false)
 
   const onSubmitCorrespondenceAddress = ({ data }: { data?: Address }) => {
     console.log(data)
+    setAddressModalData(data)
     setCorrenspondenceAddressModalShow(false)
   }
 
-  const onSubmitPhoneNumber = ({ data }: { data?: PhoneNumberData }) => {
+  const onSubmitPhoneNumber = async ({ data }: { data?: PhoneNumberData }) => {
     console.log(data)
+    setPhoneNumberModalData(data?.phone_number)
     setPhoneNumberModalShow(false)
   }
 
@@ -138,6 +150,12 @@ const ModalShowCase = () => {
           variant="black"
           text="Open registration modal"
           onPress={() => setRegistrationModal(true)}
+        />
+        <Button
+          size="sm"
+          variant="black"
+          text="Open skip step modal"
+          onPress={() => setSkipStepModal(true)}
         />
         <Modal
           divider
@@ -239,15 +257,16 @@ const ModalShowCase = () => {
           show={correnspondenceAddressModalShow}
           onClose={() => setCorrenspondenceAddressModalShow(false)}
           onSubmit={onSubmitCorrespondenceAddress}
-          defaultValues={{}}
+          defaultValues={addressModalData}
         />
         <PhoneNumberModal
           show={phoneNumberModalShow}
           onClose={() => setPhoneNumberModalShow(false)}
           onSubmit={onSubmitPhoneNumber}
-          defaultValues={{}}
+          defaultValues={{ phone_number: phoneNumberModalData }}
         />
         <RegistrationModal show={registrationModal} onClose={() => setRegistrationModal(false)} />
+        <SkipStepModal show={skipStepModal} onClose={() => setSkipStepModal(false)} />
       </Stack>
     </Wrapper>
   )
