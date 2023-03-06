@@ -26,6 +26,7 @@ type ButtonBase = {
   startIcon?: ReactNode
   endIcon?: ReactNode
   hrefIconHidden?: boolean
+  fullWidth?: boolean
 }
 
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
@@ -59,6 +60,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       startIcon,
       endIcon,
       hrefIconHidden,
+      fullWidth,
       ...rest
     },
     ref,
@@ -76,8 +78,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       'inline-flex items-center',
       rest.href
         ? 'underline underline-offset-4 focus-visible:outline-none'
-        : 'w-fit h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
+        : 'h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
+      {
+        'w-full': fullWidth,
+        'w-fit': !fullWidth,
+      },
       {
         // text for lg button
         'text-16-semibold px-4 py-2.5':
@@ -192,6 +198,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
         'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
 
+        'hover:bg-category-600 hover:border-category-600': variant === 'category' && !disabled,
+        'hover:border-category-600 hover:text-category-600':
+          variant === 'category-outline' && !disabled,
         'hover:bg-category-100 hover:text-category-600': variant === 'plain-category' && !disabled,
         'hover:bg-gray-100 hover:text-gray-600': variant === 'plain-black' && !disabled,
         'hover:bg-negative-100 hover:text-negative-600': variant === 'plain-negative' && !disabled,

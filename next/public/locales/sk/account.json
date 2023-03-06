@@ -121,8 +121,7 @@
   "RFO_NOT_RESPONDING": "Pri odosielaní formulára nastala chyba. Skúste to prosím znova neskôr.",
   "DEAD_PERSON": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
   "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
-  "BIRTHNUMBER_IFO_DUPLICITY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
-
+  "BIRTHNUMBER_IFO_DUPLICITY": "Tieto osobné údaje už boli použité pri inej e-mailovej adrese. Ak ste účet nevytvorili vy, kontaktujte nás na info@bratislava.sk.",
   "account_section_intro": {
     "navigation": "Úvod",
     "header_title": "Dobrý deň,",
@@ -131,9 +130,171 @@
     "announcement_title": "Aktuálne",
     "announcement_card_title": "Digitálna platba dane z nehnuteľností",
     "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame <strong>od 20. apríla do 30. mája</strong>. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
-    "announcement_card_action": "Zaplatiť daň z nehnuteľností"
+    "announcement_card_action": "Zaplatiť daň z nehnuteľností",
+    "banner_title": "Potrebujete pomôcť?",
+    "banner_content": "Aké služby nájdem v Bratislavskom konte? Prečo vzniklo Bratislavské konto? Ako si viem zmeniť heslo? Nevidím svoju daň, čo mám robiť?<br /><br />Aj toto sú niektoré z otázok, na ktoré nájdete odpovede v sekcii Najčastejšie kladené otázky.",
+    "banner_button_text": "Prejsť na otázky"
   },
-  "account_section_services": "Mestské služby",
+  "account_section_services": {
+    "navigation": "Mestské služby",
+    "cards": {
+      "1": {
+        "title": "Digitálna platba dane z nehnuteľností",
+        "description": "Digitálna platba dane z nehnuteľnosti, pohodlne a online.",
+        "buttonText": "Zaplatiť daň digitálne"
+      },
+      "2": {
+        "title": "Online kúpa električenky a cestovných lístkov",
+        "description": "Nákup predplatných cestovných lístkov a električenky online. Možnosť kúpiť si električenku aj na bezkontaktnú platobnú kartu.",
+        "buttonText": "Kúpiť električenku"
+      },
+      "3": {
+        "title": "Podpora PAAS",
+        "description": "Kontaktný formulár PAAS. Poslúži, napríklad, ak potrebujete poradiť, doplniť informácie o parkovaní alebo máte problém s registráciou.",
+        "buttonText": "Kontaktovať PAAS"
+      },
+      "4": {
+        "title": "Parkovacia karta",
+        "description": "Jednoduché vybavenie parkovacej karty a všetky potrebné informácie o parkovaní na jednom mieste.",
+        "buttonText": "Vybaviť kartu"
+      },
+      "5": {
+        "title": "Registrácia do knižnice",
+        "description": "Online registrácia do Mestskej knižnice a všetko, čo potrebujete vedieť o výpožičkách a cenníku.",
+        "buttonText": "Registrovať sa"
+      },
+      "6": {
+        "title": "Odtiahli mi auto",
+        "description": "Presný postup, čo robiť, ak vám odtiahnu auto.",
+        "buttonText": "Prejsť na postup"
+      },
+      "7": {
+        "title": "Mesto pre deti",
+        "description": "Zvyšovanie bezpečnosti ulíc v okolí škôl, priame nápady od obyvateľov a obyvateliek na zlepšenia, aby bola Bratislava lepším mestom pre deti.",
+        "buttonText": "Mám nápad"
+      },
+      "8": {
+        "title": "10 000 stromov",
+        "description": "Odporučenie lokality, kde vysadiť nový strom a možnosť stať sa našim partnerom pri tvorbe zelenšej Bratislavy. Iniciatíva 10 000 stromov.",
+        "buttonText": "Odporúčiť lokalitu"
+      },
+      "9": {
+        "title": "Komunitné záhrady",
+        "description": "Potrebujete, ak si chcete vytvoriť komunitnú záhradu. Organizácia, financovanie i riešenie pozemku.",
+        "buttonText": "Vytvoriť si záhradu"
+      },
+      "10": {
+        "title": "Lístky na divadelné predstavenia",
+        "description": "Nákup vstupeniek na predstavenia v Divadle P. O. Hviezdoslava.",
+        "buttonText": "Kúpiť lístok do divadla"
+      },
+      "11": {
+        "title": "Nahlásiť problém s rozkopávkami",
+        "description": "Monitorovanie problémov s rozkopávkami pomáha mestu s ich riešením a jeho obyvateľom a obyvateľkám s bezpečnosťou.",
+        "buttonText": "Nahlásiť problém"
+      },
+      "12": {
+        "title": "Rýchle zásahy",
+        "description": "Informovanie o drobnom nedostatku vo vašom okolí. Podnety zvyčajne riešime do 72 hodín.",
+        "buttonText": "Nahlásiť rýchly zásah"
+      },
+      "13": {
+        "title": "Vstupenky do ZOO",
+        "description": "Online kúpa vstupeniek a permanentiek do ZOO Bratislava.",
+        "buttonText": "Kúpiť vstup do ZOO"
+      },
+      "14": {
+        "title": "Lovci komárov",
+        "description": "Efektívny lov komárov v častiach monitoring - sypanie - kontrola. Zistíte, čo je žufankobal a ako sa stať lovcom či lovkyňou komárov.",
+        "buttonText": "Chcem loviť"
+      },
+      "15": {
+        "title": "Darovanie stromu",
+        "description": "Možnosť darovať strom a vybrať si oblasť, v ktorej sa má nachádzať.",
+        "buttonText": "Darovať celý strom"
+      },
+      "16": {
+        "title": "Pridelenie/Rezervácia hrobového miesta",
+        "description": "Formulár na pridelenie alebo rezerváciu hrobového/urnového miesta online.",
+        "buttonText": "Získať hrobové miesto"
+      },
+      "17": {
+        "title": "Deti pre Bratislavu",
+        "description": "Aké problémy vnímate v našom meste? Máte nápad ako mesto zlepšiť? Vzdelávací zážitkový projekt pre žiakov a žiačky základných škôl.",
+        "buttonText": "Prihlásiť svoj projekt"
+      },
+      "18": {
+        "title": "Ohrádky na zber vianočných stromčekov",
+        "description": "Máte v okolí preplnenú ohrádku? Nahláste ju. Pozrite si tiež mapu všetkých ohrádok.",
+        "buttonText": "Nahlásiť plnú ohrádku"
+      },
+      "19": {
+        "title": "Predzáhradky",
+        "description": "Návod na vytvorenie predzáhradky, čo všetko môže obsahovať a ako sa o vysadenú zeleň najlepšie starať.",
+        "buttonText": "Vytvoriť predzáhradku"
+      },
+      "20": {
+        "title": "Evidencia neodvezeného odpadu",
+        "description": "Popis dôvodu, prečo nebol odvezený odpad na vašej ulici.",
+        "buttonText": "Zistiť dôvod"
+      },
+      "21": {
+        "title": "Odvozový deň - Vrecový zber",
+        "description": "Harmonogram odvozov vrecového odpadu. Triedený odpad - vrecový zber.",
+        "buttonText": "Zistiť odvozový deň"
+      },
+      "22": {
+        "title": "Odvozový deň - Záhradný bioodpad",
+        "description": "Harmonogram odvozov záhradného bioodpadu.",
+        "buttonText": "Zistiť odvozový deň"
+      },
+      "23": {
+        "title": "Odvozový deň - Zmesový komunálny odpad",
+        "description": "Harmonogram odvozov zmesového komunálneho odpadu.",
+        "buttonText": "Zistiť odvozový deň"
+      },
+      "24": {
+        "title": "Odvozový deň - Kuchynský bioodpad",
+        "description": "Harmonogram odvozov kuchynského bioodpadu.",
+        "buttonText": "Zistiť odvozový deň"
+      },
+      "25": {
+        "title": "Zoznam obradov",
+        "description": "Zoznam a archív civilných i cirkevných obradov, ktorý pravidelne aktualizujeme.",
+        "buttonText": "Prejsť na zoznam"
+      },
+      "26": {
+        "title": "Nebytové priestory vo vlastníctve mesta",
+        "description": "Pasport priestorov, ich obsadenosť a odkaz na verejnú obchodnú súťaž a nájomné zmluvy.",
+        "buttonText": "Viac informácií"
+      },
+      "27": {
+        "title": "Vyhľadávanie hrobových miest",
+        "description": "Možnosť vyhľadať hrobové miesto podľa mena zosnulého v rámci všetkých bratislavských cintorínov.",
+        "buttonText": "Nájsť hrobové miesto"
+      },
+      "28": {
+        "title": "Prípojka na vodu",
+        "description": "Presné inštrukcie, dokumenty a žiadosti, ktoré potrebujete k vodovodnej/kanalizačnej prípojke.",
+        "buttonText": "Viac informácií"
+      },
+      "29": {
+        "title": "Vývoz odpadu pre fyzické osoby",
+        "description": "Objednanie odvozu odpadu pre fyzické osoby.",
+        "buttonText": "Objednať odvoz"
+      },
+      "30": {
+        "title": "Vývoz odpadu pre právnické osoby",
+        "description": "Objednanie odvozu odpadu pre právnické osoby.",
+        "buttonText": "Objednať odvoz"
+      },
+      "31": {
+        "title": "Vývoz odpadu pre správcovské spoločnosti",
+        "description": "Objednanie odvozu odpadu pre správcovské spoločnosti.",
+        "buttonText": "Objednať odvoz"
+      }
+    }
+  },
   "account_section_payment": {
     "title": "Dane a poplatky",
     "waiting_card_title": "Vašu daň z nehnuteľností pripravujeme.",
@@ -141,7 +302,12 @@
     "error_card_title": "Zatiaľ vás nevidíme v zozname daňovníkov daňovníčok.",
     "error_card_text": "<p>Môže to tak byť, lebo:</p><ul><li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li></ul><br/><p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
   },
-  "account_section_help": "Mám problém",
+  "account_section_help": {
+    "navigation": "Mám problém",
+    "banner_title": "Nenašli ste odpoveď na vašu otázku?",
+    "banner_content": "Kontaktujte nás a radi vás nasmerujeme na správnu odpoveď.",
+    "banner_button_text": "Napísať správu"
+  },
   "menu_contacts_link": "Kontakty",
   "menu_account_link": "Mestské konto",
   "menu_profile_link": "Môj profil",
@@ -194,7 +360,7 @@
     "modal_message": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktujte nás na <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "modal_thanks": "Ďakujeme!"
   },
-  "pay_tax": "Zaplatiť",
+  "pay_tax": "Zaplatiť daň",
   "back_to_list": "Naspäť na zoznam",
   "city": "Mesto",
   "tax_created": "Vytvorená",
