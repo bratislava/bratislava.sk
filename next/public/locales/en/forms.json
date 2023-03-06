@@ -11,12 +11,17 @@
   "correspondece_address_description": "",
   "street_address_label": "Street",
   "street_address_placeholder": "Street",
+  "street_address_required": "Street is required",
   "locality_label": "Locality",
   "locality_placeholder": "Locality",
+  "locality_required": "Locality is required",
   "postal_code_label": "Postal code",
   "postal_code_placeholder": "Postal code",
   "postal_code_description": "",
+  "postal_code_required": "Postal code is required",
   "postal_code_format": "Postal code is not valid",
+  "adding_phone_number_title": "Adding a phone number",
+  "adding_phone_number_description": "Would you like us to communicate with you via SMS in rare cases? Leave us your phone number and we will remind you, for example, of the approaching tax due date via SMS.\n\nYou can add a phone number to your profile at any time.\n\n*Failure to provide a phone number does not affect the use of services in the Bratislava account.",
   "changes_submit": "Submit",
   "buttons": {
     "previous": "Previous",
@@ -24,5 +29,11 @@
     "continue": "Continue"
   },
   "summary": "Summary",
-  "all_steps": "All steps"
+  "all_steps": "All steps",
+  "skip_step_modal": {
+    "title": "Vyplňte správne všetky povinné polia",
+    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť",
+    "button_skip_text": "Skip",
+    "button_submit_text": "Upraviť"
+  }
 }

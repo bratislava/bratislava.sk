@@ -2,14 +2,14 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
+import { AccountProvider } from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
+import { appWithTranslation } from 'next-i18next'
+import { NextAdapter } from 'next-query-params'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
-import { appWithTranslation } from 'next-i18next'
-import { NextAdapter } from 'next-query-params'
-import React from 'react'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 import { useIsClient } from 'usehooks-ts'
@@ -28,7 +28,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   const shouldDisplayUkraineSupportChat =
     isClient &&
-    pageProps.page.data?.length > 0 &&
+    pageProps?.page?.data?.length > 0 &&
     (pageProps.page.data[0].id === '611' || // /bratislava-pre-ukrainu
       pageProps.page.data[0].id === '612' || // /братислава-для-украiни
       pageProps.page.data[0].id === '635' || // /en/bratislava-for-ukraine
@@ -74,9 +74,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       >
         <QueryParamProvider adapter={NextAdapter}>
           <SSRProvider>
-            <Component {...pageProps} />
+            <AccountProvider>
+              <Component {...pageProps} />
 
-            {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+              {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+            </AccountProvider>
           </SSRProvider>
         </QueryParamProvider>{' '}
       </UIContextProvider>
