@@ -9,7 +9,8 @@ import {
   PageLinkBlockFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
-import _, { groupBy, sortBy } from 'lodash'
+import groupBy from 'lodash/groupBy'
+import sortBy from 'lodash/sortBy'
 
 import { getLocalDate, getNumericLocalDate } from './local-date'
 import { isPresent } from './utils'
@@ -304,13 +305,12 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
 export const groupByCategory = <Category extends string | null, T extends { category?: Category }>(
   items: T[],
 ) => {
-  const grouped = _(items)
-    .groupBy((item) => item?.category)
-    .sortBy((group) => items.indexOf(group[0]))
-    .value()
-  return Object.keys(grouped).map((key) => ({
-    category: grouped[key].length > 0 ? grouped[key][0]?.category : (key as Category),
-    items: grouped[key] as T[],
+  const grouped = groupBy(items, (item) => item?.category)
+  const sorted = sortBy(grouped, (group) => items.indexOf(group[0]))
+
+  return Object.keys(sorted).map((key) => ({
+    category: sorted[key].length > 0 ? sorted[key][0]?.category : (key as Category),
+    items: sorted[key] as T[],
   }))
 }
 
