@@ -20,7 +20,9 @@ const IntroSection = () => {
   const { t } = useTranslation('account')
   const { userData, updateUserData, error, resetError } = useAccount()
   const router = useRouter()
-  const [_, setPhoneNumberModalShow] = useState<boolean>(false)
+  const [phoneNumberModalShow, setPhoneNumberModalShow] = useState<boolean>(
+    router.query.from === ROUTES.REGISTER,
+  )
 
   const onSubmitPhoneNumber = async ({ data }: { data?: PhoneNumberData }) => {
     if (await updateUserData({ phone_number: data?.phone_number })) {
@@ -41,7 +43,7 @@ const IntroSection = () => {
     <>
       {userData && (
         <PhoneNumberModal
-          show={router.query.from === ROUTES.REGISTER}
+          show={phoneNumberModalShow}
           onClose={() => setPhoneNumberModalShow(false)}
           onSubmit={onSubmitPhoneNumber}
           error={error}
