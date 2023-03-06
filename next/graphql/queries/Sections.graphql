@@ -1,421 +1,421 @@
 fragment IconWithTitleAndDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
-    title
-    desc
-    icon {
-        data {
-            id
-            attributes {
-                url
-            }
-        }
+  title
+  desc
+  icon {
+    data {
+      id
+      attributes {
+        url
+      }
     }
+  }
 }
 
 fragment DocumentListSection on ComponentSectionsDocumentList {
-    vzns {
-        data {
+  vzns {
+    data {
+      id
+      attributes {
+        category
+        details
+        amedmentDocument {
+          id
+          title
+          validFrom
+          document {
+            data {
+              attributes {
+                url
+                size
+                ext
+                createdAt
+              }
+            }
+          }
+        }
+        cancellationDocument {
+          id
+          title
+          validFrom
+          document {
+            data {
+              attributes {
+                url
+                size
+                ext
+                createdAt
+              }
+            }
+          }
+        }
+        title
+        validFrom
+        mainDocument {
+          data {
+            attributes {
+              url
+              size
+              ext
+              createdAt
+            }
+          }
+        }
+        consolidatedText {
+          data {
             id
             attributes {
-                category
-                details
-                amedmentDocument {
-                    id
-                    title
-                    validFrom
-                    document {
-                        data {
-                            attributes {
-                                url
-                                size
-                                ext
-                                createdAt
-                            }
-                        }
-                    }
-                }
-                cancellationDocument {
-                    id
-                    title
-                    validFrom
-                    document {
-                        data {
-                            attributes {
-                                url
-                                size
-                                ext
-                                createdAt
-                            }
-                        }
-                    }
-                }
-                title
-                validFrom
-                mainDocument {
-                    data {
-                        attributes {
-                            url
-                            size
-                            ext
-                            createdAt
-                        }
-                    }
-                }
-                consolidatedText {
-                    data {
-                        id
-                        attributes {
-                            url
-                            size
-                            ext
-                            createdAt
-                        }
-                    }
-                }
+              url
+              size
+              ext
+              createdAt
             }
+          }
         }
+      }
     }
+  }
 }
 
 fragment GalleryItemBlock on ComponentBlocksGalleryItem {
-    imgTitle
-    imgSubtitle
-    imgSubtext
-    media {
-        data {
-            attributes {
-                url
-                width
-                height
-                caption
-                alternativeText
-            }
-        }
+  imgTitle
+  imgSubtitle
+  imgSubtext
+  media {
+    data {
+      attributes {
+        url
+        width
+        height
+        caption
+        alternativeText
+      }
     }
+  }
 }
 
 fragment GallerySection on ComponentSectionsGallery {
-    title
-    subtitle
-    galleryItems {
-        ...GalleryItemBlock
-    }
+  title
+  subtitle
+  galleryItems {
+    ...GalleryItemBlock
+  }
 }
 
 fragment ArticlesListSection on ComponentSectionsArticlesList {
-    title
-    category {
-        data {
-            attributes {
-                title
-            }
-        }
+  title
+  category {
+    data {
+      attributes {
+        title
+      }
     }
-    filtering
+  }
+  filtering
 }
 
 fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
-    title
-    hasBackground
-    list {
-        ...IconWithTitleAndDescriptionBlock
-    }
+  title
+  hasBackground
+  list {
+    ...IconWithTitleAndDescriptionBlock
+  }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
-    hasBackground
-    style
+  hasBackground
+  style
 }
 
 fragment TextWithImageSection on ComponentSectionsTextWithImage {
-    hasBackground
-    content
-    imagePosition
-    imageShadow
-    imageSrc {
-        data {
-            attributes {
-                url
-                alternativeText
-            }
-        }
+  hasBackground
+  content
+  imagePosition
+  imageShadow
+  imageSrc {
+    data {
+      attributes {
+        url
+        alternativeText
+      }
     }
+  }
 }
 
 fragment IframeSection on ComponentSectionsIframe {
-    url
-    iframeWidth
-    iframeHeight
-    fullHeight
-    allowFullscreen
-    css
-    allowGeolocation
+  url
+  iframeWidth
+  iframeHeight
+  fullHeight
+  allowFullscreen
+  css
+  allowGeolocation
 }
 
 fragment FileBlock on ComponentBlocksFile {
-    title
-    category
-    media {
-        data {
-            attributes {
-                url
-                createdAt
-                size
-                ext
-            }
-        }
+  title
+  category
+  media {
+    data {
+      attributes {
+        url
+        createdAt
+        size
+        ext
+      }
     }
+  }
 }
 
 fragment FileListSection on ComponentSectionsFileList {
-    hasBackground
-    # TODO consider limit -1
-    fileList(pagination: { limit: 500 }) {
-        ...FileBlock
-    }
+  hasBackground
+  # TODO consider limit -1
+  fileList(pagination: { limit: 500 }) {
+    ...FileBlock
+  }
 }
 
 fragment ColumnedTextSection on ComponentSectionsColumnedText {
-    hasBackground
-    content
+  hasBackground
+  content
 }
 
 fragment NarrowTextSection on ComponentSectionsNarrowText {
-    hasBackground
-    content
-    width
-    align
+  hasBackground
+  content
+  width
+  align
 }
 
 fragment WavesSection on ComponentSectionsWaves {
-    position
-    isRich
+  position
+  isRich
 }
 
 fragment PageLinkBlock on ComponentBlocksPageLink {
-    title
-    url
-    anchor
-    page {
-        data {
-            attributes {
-                title
-                slug
-                locale
-            }
-        }
+  title
+  url
+  anchor
+  page {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
     }
+  }
 }
 
 fragment LinksSection on ComponentSectionsLinks {
-    title
-    hasBackground
-    # TODO consider limit -1
-    pageLinks(pagination: { limit: 100 }) {
-        ...PageLinkBlock
-    }
+  title
+  hasBackground
+  # TODO consider limit -1
+  pageLinks(pagination: { limit: 100 }) {
+    ...PageLinkBlock
+  }
 }
 
 fragment ContactSection on ComponentSectionsContact {
-    title
-    hasBackground
-    description
-    phone
-    phoneLabel
-    email
-    emailLabel
-    address
+  title
+  hasBackground
+  description
+  phone
+  phoneLabel
+  email
+  emailLabel
+  address
 }
 
 fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
-    title
-    subtitle
-    category
-    url
-    urlLabel
+  title
+  subtitle
+  category
+  url
+  urlLabel
 }
 
 fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
-    category
-    content
-    width
-    align
-    moreLinkTitle
-    moreLinkUrl
-    moreLinkPage {
-        data {
-            attributes {
-                slug
-                title
-                locale
-            }
-        }
+  category
+  content
+  width
+  align
+  moreLinkTitle
+  moreLinkUrl
+  moreLinkPage {
+    data {
+      attributes {
+        slug
+        title
+        locale
+      }
     }
+  }
 }
 
 fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitution {
-    title
-    subtitle
-    category
-    firstColumn
-    secondColumn
-    thirdColumn
-    url
-    urlLabel
+  title
+  subtitle
+  category
+  firstColumn
+  secondColumn
+  thirdColumn
+  url
+  urlLabel
 }
 
 fragment AccordionSection on ComponentSectionsAccordion {
-    title
-    hasBackground
-    institutions(pagination: { limit: -1 }) {
-        ...ComponentAccordionItemsInstitution
-    }
-    flatText(pagination: { limit: -1 }) {
-        ...ComponentAccordionItemsFlatText
-    }
-    institutionsNarrow(pagination: { limit: -1 }) {
-        ...ComponentAccordionItemsInstitutionNarrow
-    }
+  title
+  hasBackground
+  institutions(pagination: { limit: -1 }) {
+    ...ComponentAccordionItemsInstitution
+  }
+  flatText(pagination: { limit: -1 }) {
+    ...ComponentAccordionItemsFlatText
+  }
+  institutionsNarrow(pagination: { limit: -1 }) {
+    ...ComponentAccordionItemsInstitutionNarrow
+  }
 }
 
 fragment CalculatorSection on ComponentSectionsCalculator {
-    hasBackground
-    single_adult_value
-    another_adult_value
-    child_value
+  hasBackground
+  single_adult_value
+  another_adult_value
+  child_value
 }
 
 fragment ListItemsSection on ComponentSectionsListItems {
-    title
-    hasBackground
-    listItems {
-        content
-        moreLinkTitle
-        moreLinkUrl
-        moreLinkPage {
-            data {
-                attributes {
-                    locale
-                    slug
-                    title
-                }
-            }
+  title
+  hasBackground
+  listItems {
+    content
+    moreLinkTitle
+    moreLinkUrl
+    moreLinkPage {
+      data {
+        attributes {
+          locale
+          slug
+          title
         }
-        circleOption
+      }
     }
+    circleOption
+  }
 }
 
 fragment VideoBlock on ComponentBlocksVideo {
-    id
-    title
-    speaker
-    url
+  id
+  title
+  speaker
+  url
 }
 
 fragment VideosSection on ComponentSectionsVideos {
-    id
-    title
-    subtitle
-    videos {
-        ...VideoBlock
-    }
-    buttonContent
+  id
+  title
+  subtitle
+  videos {
+    ...VideoBlock
+  }
+  buttonContent
 }
 
 fragment NumericalListItemBlock on ComponentBlocksNumericalListItem {
-    text
+  text
 }
 
 fragment NumericalListSection on ComponentSectionsNumericalList {
-    id
-    items {
-        ...NumericalListItemBlock
-    }
-    title
-    variant
-    buttonText
-    buttonLink
-    hasBackground
+  id
+  items {
+    ...NumericalListItemBlock
+  }
+  title
+  variant
+  buttonText
+  buttonLink
+  hasBackground
 }
 
 fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
-    title
+  title
 }
 
 fragment Sections on PageSectionsDynamicZone {
-    __typename
+  __typename
 
-    ... on ComponentSectionsIconTitleDesc {
-        ...IconTitleDescSection
-    }
+  ... on ComponentSectionsIconTitleDesc {
+    ...IconTitleDescSection
+  }
 
-    ... on ComponentSectionsDocumentList {
-        ...DocumentListSection
-    }
+  ... on ComponentSectionsDocumentList {
+    ...DocumentListSection
+  }
 
-    ... on ComponentSectionsDivider {
-        ...DividerSection
-    }
+  ... on ComponentSectionsDivider {
+    ...DividerSection
+  }
 
-    ... on ComponentSectionsTextWithImage {
-        ...TextWithImageSection
-    }
+  ... on ComponentSectionsTextWithImage {
+    ...TextWithImageSection
+  }
 
-    ... on ComponentSectionsIframe {
-        ...IframeSection
-    }
+  ... on ComponentSectionsIframe {
+    ...IframeSection
+  }
 
-    ... on ComponentSectionsGallery {
-        ...GallerySection
-    }
+  ... on ComponentSectionsGallery {
+    ...GallerySection
+  }
 
-    ... on ComponentSectionsFileList {
-        ...FileListSection
-    }
+  ... on ComponentSectionsFileList {
+    ...FileListSection
+  }
 
-    ... on ComponentSectionsColumnedText {
-        ...ColumnedTextSection
-    }
+  ... on ComponentSectionsColumnedText {
+    ...ColumnedTextSection
+  }
 
-    ... on ComponentSectionsNarrowText {
-        ...NarrowTextSection
-    }
+  ... on ComponentSectionsNarrowText {
+    ...NarrowTextSection
+  }
 
-    ... on ComponentSectionsWaves {
-        ...WavesSection
-    }
+  ... on ComponentSectionsWaves {
+    ...WavesSection
+  }
 
-    ... on ComponentSectionsLinks {
-        ...LinksSection
-    }
-    ... on ComponentSectionsContact {
-        ...ContactSection
-    }
+  ... on ComponentSectionsLinks {
+    ...LinksSection
+  }
+  ... on ComponentSectionsContact {
+    ...ContactSection
+  }
 
-    ... on ComponentSectionsAccordion {
-        ...AccordionSection
-    }
+  ... on ComponentSectionsAccordion {
+    ...AccordionSection
+  }
 
-    ... on ComponentSectionsCalculator {
-        ...CalculatorSection
-    }
+  ... on ComponentSectionsCalculator {
+    ...CalculatorSection
+  }
 
-    ... on ComponentSectionsListItems {
-        ...ListItemsSection
-    }
+  ... on ComponentSectionsListItems {
+    ...ListItemsSection
+  }
 
-    ... on ComponentSectionsVideos {
-        ...VideosSection
-    }
+  ... on ComponentSectionsVideos {
+    ...VideosSection
+  }
 
-    ... on ComponentSectionsNumericalList {
-        ...NumericalListSection
-    }
+  ... on ComponentSectionsNumericalList {
+    ...NumericalListSection
+  }
 
-    ... on ComponentSectionsArticlesList {
-        ...ArticlesListSection
-    }
+  ... on ComponentSectionsArticlesList {
+    ...ArticlesListSection
+  }
 
-    ... on ComponentSectionsOrganizationalStructure {
-        ...OrganizationalStructureSection
-    }
+  ... on ComponentSectionsOrganizationalStructure {
+    ...OrganizationalStructureSection
+  }
 }

@@ -39,7 +39,12 @@ query LatestBlogsWithTags(
   $filters: BlogPostFiltersInput
   $locale: I18NLocaleCode
 ) {
-  blogPosts(sort: $sort, pagination: { limit: $limit, start: $start }, filters: $filters, locale: $locale) {
+  blogPosts(
+    sort: $sort
+    pagination: { limit: $limit, start: $start }
+    filters: $filters
+    locale: $locale
+  ) {
     ...LatestBlogs
   }
 }
@@ -169,4 +174,3 @@ fragment BlogPostLink on ComponentBlocksBlogPostLink {
   title
   url
 }
-

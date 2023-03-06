@@ -12,11 +12,12 @@
     "typecheck": "tsc && tsc-strict",
     "eslint": "eslint --color --ext .html,.js,.json,.jsx,.md,.ts,.tsx .",
     "eslint:fix": "npm run eslint -- --fix",
-    "gen": "graphql-codegen",
+    "gen": "graphql-codegen && prettier --write ./graphql/index.ts",
     "gen-form-schemas": "json2ts -i 'forms/**/schema.json' -o",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "sentry-cli": "sentry-cli"
+    "sentry-cli": "sentry-cli",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",

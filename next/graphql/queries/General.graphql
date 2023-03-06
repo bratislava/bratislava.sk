@@ -1,63 +1,63 @@
 query Footer($locale: I18NLocaleCode!) {
-    footer(locale: $locale) {
-        ...Footer
-    }
+  footer(locale: $locale) {
+    ...Footer
+  }
 }
 
 fragment Footer on FooterEntityResponse {
-    data {
-        attributes {
-            address
-            copyright
-            email
-            facebookUrl
-            instagramUrl
-            phone
-            youtubeUrl
-            accessibilityLink {
-                ...PageLinkBlock
-            }
-            footerSections {
-                title
-                pageLinks {
-                    ...PageLinkBlock
-                }
-            }
+  data {
+    attributes {
+      address
+      copyright
+      email
+      facebookUrl
+      instagramUrl
+      phone
+      youtubeUrl
+      accessibilityLink {
+        ...PageLinkBlock
+      }
+      footerSections {
+        title
+        pageLinks {
+          ...PageLinkBlock
         }
+      }
     }
+  }
 }
 
 fragment MainMenuItem on PageCategoryEntityResponseCollection {
-    data {
-        id
-        attributes {
+  data {
+    id
+    attributes {
+      title
+      color
+      icon
+      iconHover
+      priority
+      subcategories {
+        data {
+          id
+          attributes {
             title
-            color
-            icon
-            iconHover
             priority
-            subcategories {
-                data {
-                    id
-                    attributes {
-                        title
-                        priority
-                        icon
-                        moreLink {
-                            ...PageLinkBlock
-                        }
-                        pages {
-                            ...PageLinkBlock
-                        }
-                    }
-                }
+            icon
+            moreLink {
+              ...PageLinkBlock
             }
+            pages {
+              ...PageLinkBlock
+            }
+          }
         }
+      }
     }
+  }
 }
 
 query MainMenu($locale: I18NLocaleCode!) {
-    pageCategories(locale: $locale) {
-        ...MainMenuItem
-    }
+  pageCategories(locale: $locale) {
+    ...MainMenuItem
+  }
 }

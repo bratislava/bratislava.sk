@@ -1,49 +1,49 @@
 query VznDetail($id: ID!) {
-    vzn(id: $id) {
-        data {
-            id
+  vzn(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        validFrom
+        mainDocument {
+          data {
             attributes {
-                title
-                validFrom
-                mainDocument {
-                    data {
-                        attributes {
-                            url
-                            size
-                            ext
-                            createdAt
-                        }
-                    }
-                }
-                cancellationDocument {
-                    id
-                    title
-                    document {
-                        data {
-                            attributes {
-                                url
-                                size
-                                ext
-                                createdAt
-                            }
-                        }
-                    }
-                }
-                amedmentDocument {
-                    id
-                    title
-                    document {
-                        data {
-                            attributes {
-                                url
-                                size
-                                ext
-                                createdAt
-                            }
-                        }
-                    }
-                }
+              url
+              size
+              ext
+              createdAt
             }
+          }
         }
+        cancellationDocument {
+          id
+          title
+          document {
+            data {
+              attributes {
+                url
+                size
+                ext
+                createdAt
+              }
+            }
+          }
+        }
+        amedmentDocument {
+          id
+          title
+          document {
+            data {
+              attributes {
+                url
+                size
+                ext
+                createdAt
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }

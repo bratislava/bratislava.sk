@@ -1,5 +1,3 @@
-
-
 query PagesStaticPaths($page: Int, $limit: Int) {
   pages(pagination: { page: $page, pageSize: $limit }) {
     data {
@@ -24,8 +22,6 @@ query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
     ...MainMenuItem
   }
 }
-
-
 
 fragment GeneralPage on PageEntityResponseCollection {
   data {
