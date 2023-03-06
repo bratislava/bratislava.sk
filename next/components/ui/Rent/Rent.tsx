@@ -14,12 +14,12 @@ export interface RentProps {
     data?: {
       attributes?: {
         url?: string
-      }
-    }
-  }
+      } | null
+    } | null
+  } | null
   title?: string | null | undefined
   desc?: string | null | undefined
-  linkLabel?: string
+  linkLabel?: string | null
 }
 
 export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => {
