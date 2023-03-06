@@ -18,7 +18,7 @@ const StepButtonGroup = (props: StepButtonGroupProps) => {
   const [t] = useTranslation('forms')
 
   return (
-    <div className="flex flex-row gap-5">
+    <div className="flex flex-row flex-wrap gap-5">
       <div className="grow">
         {stepIndex !== 0 && (
           <Button
@@ -32,10 +32,10 @@ const StepButtonGroup = (props: StepButtonGroupProps) => {
       {isFinalStep ? (
         <Button onPress={submitForm} text={t('buttons.send')} />
       ) : (
-        <>
+        <div className="flex flex-row flex-wrap gap-5">
           <Button variant="black-outline" onPress={skip} text={t('buttons.skip')} />
           <Button onPress={submitStep} text={t('buttons.continue')} endIcon={<ArrowRightIcon />} />
-        </>
+        </div>
       )}
     </div>
   )

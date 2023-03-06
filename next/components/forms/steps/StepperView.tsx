@@ -34,7 +34,7 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
 
   return (
     <>
-      <div className={cx('hidden w-72', { 'sm:block': !forceMobileSize })}>
+      <div className={cx('hidden', { 'sm:block': !forceMobileSize })}>
         <StepperViewList steps={steps} currentStep={currentStep} onChangeStep={onChangeStep} />
       </div>
       <div
