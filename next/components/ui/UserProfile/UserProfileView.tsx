@@ -3,7 +3,7 @@ import UserProfileConsents, {
 } from '@bratislava/ui-bratislava/UserProfile/UserProfileConsents'
 import UserProfileDetail from '@bratislava/ui-bratislava/UserProfile/UserProfileDetail'
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfile/UserProfilePassword'
-import useAccount from '@utils/useAccount'
+import useAccount, { UserData } from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import React, { useEffect, useState } from 'react'
 
@@ -44,18 +44,12 @@ const UserProfileView = () => {
     setIsEditing(false)
   }
 
-  const handleOnSubmitEditing = () => {
-    // if (temporaryUserData) {
-    //   updateUserData(temporaryUserData).then(() => {
-    //     setIsEditing(false)
-    //     setIsAlertOpened(true)
-    //     setTimeout(() => setIsAlertOpened(false), 3000)
-    //   })
-    // } else {
-    //   setIsEditing(false)
-    //   setIsAlertOpened(true)
-    //   setTimeout(() => setIsAlertOpened(false), 3000)
-    // }
+  const handleOnSubmitEditing = (newUserData: UserData) => {
+    updateUserData(newUserData).then(() => {
+      setIsEditing(false)
+      setIsAlertOpened(true)
+      setTimeout(() => setIsAlertOpened(false), 3000)
+    })
   }
 
   // TODO: redirect to change password
@@ -68,7 +62,7 @@ const UserProfileView = () => {
         alertType={alertType}
         onChangeIsEditing={setIsEditing}
         onCancelEditing={handleOnCancelEditing}
-        onSubmitEditing={handleOnSubmitEditing}
+        onSubmit={handleOnSubmitEditing}
         onOpenEmailModal={() => setIsEmailModalOpened(true)}
       />
       <UserProfilePassword />

@@ -7,6 +7,7 @@ import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfile/User
 import { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
+import { MutableRefObject, useId, useRef } from 'react'
 
 import Alert from '../../forms/info-components/Alert'
 
@@ -17,7 +18,7 @@ interface UserProfileDetailProps {
   isAlertOpened: boolean
   onChangeIsEditing: (isEditing: boolean) => void
   onCancelEditing: () => void
-  onSubmitEditing: () => void
+  onSubmit: (newUseData: UserData) => void
   onOpenEmailModal: () => void
 }
 
@@ -29,10 +30,11 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
     alertType,
     onChangeIsEditing,
     onCancelEditing,
-    onSubmitEditing,
+    onSubmit,
     onOpenEmailModal,
   } = props
   const { t } = useTranslation('account')
+  const formId = `form-${useId()}`
 
   return (
     <div className={cx('flex flex-col', 'sm:static sm:z-0', { 'fixed inset-0 z-50': isEditing })}>
@@ -44,10 +46,10 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
           underline
         >
           <UserProfileDetailsButtons
+            formId={formId}
             isEditing={isEditing}
             onChangeIsEditing={onChangeIsEditing}
             onCancelEditing={onCancelEditing}
-            onSubmitEditing={onSubmitEditing}
           />
         </UserProfileSectionHeader>
         <div className="flex flex-col">
@@ -65,7 +67,12 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
           >
             <UserProfilePhoto userData={userData ?? {}} />
             {isEditing ? (
-              <UserProfileDetailEdit onOpenEmailModal={onOpenEmailModal} />
+              <UserProfileDetailEdit
+                formId={formId}
+                userData={userData ?? {}}
+                onOpenEmailModal={onOpenEmailModal}
+                onSubmit={onSubmit}
+              />
             ) : (
               <UserProfileDetailView userData={userData ?? {}} />
             )}

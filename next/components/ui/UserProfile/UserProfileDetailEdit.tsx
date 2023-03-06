@@ -54,33 +54,50 @@ const schema = {
 }
 
 interface UserProfileDetailEditProps {
+  formId: string
+  userData: UserData
   onOpenEmailModal: () => void
+  onSubmit: (newUserData: UserData) => void
 }
 
 const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
-  const { onOpenEmailModal } = props
+  const { formId, userData, onOpenEmailModal, onSubmit } = props
   const { t } = useTranslation('account')
-
-  const {
-    handleSubmit,
-    control,
-    errors,
-    formState: { isSubmitting },
-  } = useHookForm<Data>({
+  const { handleSubmit, control, errors } = useHookForm<Data>({
     schema,
     defaultValues: {
-      email: '',
-      family_name: '',
-      given_name: '',
-      phone_number: '',
-      street_address: '',
-      city: '',
-      postal_code: '',
+      family_name: userData.family_name,
+      given_name: userData.given_name,
+      email: userData.email,
+      phone_number: userData.phone_number,
+      street_address: userData.address?.street_address,
+      city: userData.address?.locality,
+      postal_code: userData.address?.postal_code,
     },
   })
 
+  const handleSubmitCallback = (data: Data) => {
+    const newUserData: UserData = {
+      email: data.email,
+      given_name: data.given_name,
+      family_name: data.family_name,
+      phone_number: data.phone_number,
+      address: {
+        street_address: data.street_address,
+        locality: data.city,
+        postal_code: data.postal_code,
+      },
+    }
+
+    return onSubmit(newUserData)
+  }
+
   return (
-    <form className="flex flex-col grow gap-6 pb-20 sm:pb-0">
+    <form
+      id={formId}
+      className="flex flex-col grow gap-6 pb-20 sm:pb-0"
+      onSubmit={handleSubmit(handleSubmitCallback)}
+    >
       <div className="gap flex flex-wrap flex-row gap-6">
         <div className="grow ">
           <Controller
@@ -140,7 +157,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
       <div className="gap flex flex-wrap flex-row gap-x-6">
         <div className="grow ">
           <Controller
-            name="family_name"
+            name="phone_number"
             control={control}
             render={({ field }) => (
               <InputField
@@ -175,11 +192,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             name="city"
             control={control}
             render={({ field }) => (
-              <InputField
-                label={t('profile_detail.city')}
-                {...field}
-                errorMessage={errors.family_name}
-              />
+              <InputField label={t('profile_detail.city')} {...field} errorMessage={errors.city} />
             )}
           />
         </div>
@@ -191,7 +204,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
               <InputField
                 label={t('profile_detail.postal_code')}
                 {...field}
-                errorMessage={errors.family_name}
+                errorMessage={errors.city}
               />
             )}
           />
