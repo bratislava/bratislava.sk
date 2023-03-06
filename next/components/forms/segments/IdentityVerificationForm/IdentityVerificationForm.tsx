@@ -100,7 +100,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
       <Button
         variant="plain-black"
         className="min-w-full"
-        onPress={() => router.push(ROUTES.ACCOUNT)}
+        onPress={() => router.push({ pathname: ROUTES.ACCOUNT, query: { from: ROUTES.REGISTER } })}
         text={t('identity_verification_skip')}
         endIcon={<ArrowRightIcon />}
       />

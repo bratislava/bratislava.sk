@@ -3,6 +3,7 @@ resources:
   - service-app.yml
   - ingress.yml
   - ukrajina.ingress.yml
+  - platbadane.ingress.yml
 configurations:
   - configuration.yml
 

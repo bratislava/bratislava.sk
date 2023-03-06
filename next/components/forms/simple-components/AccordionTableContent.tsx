@@ -46,10 +46,10 @@ const TableRow = () => {
           <br />
           (§ 14 zákona)
         </td>
-        <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
           58,00
         </td>
-        <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
           58,00
         </td>
       </tr>
@@ -59,10 +59,10 @@ const TableRow = () => {
           <br />
           (§ 14 zákona)
         </td>
-        <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
           0,00
         </td>
-        <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
           0,00
         </td>
       </tr>
@@ -158,36 +158,39 @@ const AccordionTableContent = ({
               className="flex cursor-pointer items-center gap-4"
               onClick={() => setIsActive(!isActive)}
             >
-              <div
-                className={cx('flex grow', {
-                  'text-h6': accordionSize === 'xs',
-                  'text-h5': accordionSize === 'sm',
-                  'text-h4': accordionSize === 'md',
-                  'text-h3': accordionSize === 'lg',
-                })}
-              >
-                {title}
+              <div className="flex grow sm:flex-row flex-col items-start">
+                <div
+                  className={cx('flex grow', {
+                    'text-h6': accordionSize === 'xs',
+                    'text-h5': accordionSize === 'sm',
+                    'text-h4': accordionSize === 'md',
+                    'text-h3': accordionSize === 'lg',
+                  })}
+                >
+                  {title}
+                </div>
+                <div
+                  className={cx('md:font-semibold', {
+                    'text-p-base': size === 'xs',
+                    'text-h-base': size === 'sm',
+                    'md:text-h-md text-p-base': size === 'md',
+                    'text-h-lg': size === 'lg',
+                  })}
+                >
+                  {secondTitle}
+                </div>
               </div>
               <div
-                className={cx('lg:font-semibold', {
-                  'text-p-base': size === 'xs',
-                  'text-h-base': size === 'sm',
-                  'lg:text-h-md text-p-base': size === 'md',
-                  'text-h-lg': size === 'lg',
-                })}
-              >
-                {secondTitle}
-              </div>
-              <div
-                className={cx('flex items-center justify-center', {
+                className={cx('flex sm:items-center justify-center items-start', {
                   'w-10 h-10': accordionSize === 'lg',
                   'w-8 h-8': accordionSize === 'md',
                   'w-6 h-6': accordionSize === 'sm' || accordionSize === 'xs',
                 })}
               >
                 <ExpandMoreIcon
-                  className={cx('', {
+                  className={cx({
                     'transform rotate-180': isActive,
+                    'transform rotate-270 md:rotate-0': !isActive,
                   })}
                   size={accordionSize}
                 />
