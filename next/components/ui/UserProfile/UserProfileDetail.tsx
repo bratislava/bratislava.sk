@@ -12,12 +12,10 @@ import Alert from '../../forms/info-components/Alert'
 
 interface UserProfileDetailProps {
   userData?: UserData | null
-  temporaryUserData?: UserData | null
   isEditing?: boolean
   alertType: 'success' | 'error'
   isAlertOpened: boolean
   onChangeIsEditing: (isEditing: boolean) => void
-  onChangeTemporary: (temporaryUserData: UserData) => void
   onCancelEditing: () => void
   onSubmitEditing: () => void
   onOpenEmailModal: () => void
@@ -26,12 +24,10 @@ interface UserProfileDetailProps {
 const UserProfileDetails = (props: UserProfileDetailProps) => {
   const {
     userData,
-    temporaryUserData,
     isEditing,
     isAlertOpened,
     alertType,
     onChangeIsEditing,
-    onChangeTemporary,
     onCancelEditing,
     onSubmitEditing,
     onOpenEmailModal,
@@ -69,11 +65,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
           >
             <UserProfilePhoto userData={userData ?? {}} />
             {isEditing ? (
-              <UserProfileDetailEdit
-                temporaryUserData={temporaryUserData ?? {}}
-                onChangeTemporary={onChangeTemporary}
-                onOpenEmailModal={onOpenEmailModal}
-              />
+              <UserProfileDetailEdit onOpenEmailModal={onOpenEmailModal} />
             ) : (
               <UserProfileDetailView userData={userData ?? {}} />
             )}

@@ -16,14 +16,7 @@ const UserProfileView = () => {
   const [isAlertOpened, setIsAlertOpened] = useState(false)
   const [alertType, setAlertType] = useState<'success' | 'error'>('success')
   const [isEmailModalOpened, setIsEmailModalOpened] = useState<boolean>(false)
-  const {
-    userData,
-    updateUserData,
-    temporaryUserData,
-    setTemporaryUserData,
-    resetTemporaryUserData,
-    error,
-  } = useAccount()
+  const { userData, updateUserData, error } = useAccount()
 
   useEffect(() => {
     setAlertType(error ? 'error' : 'success')
@@ -49,21 +42,20 @@ const UserProfileView = () => {
 
   const handleOnCancelEditing = () => {
     setIsEditing(false)
-    resetTemporaryUserData()
   }
 
   const handleOnSubmitEditing = () => {
-    if (temporaryUserData) {
-      updateUserData(temporaryUserData).then(() => {
-        setIsEditing(false)
-        setIsAlertOpened(true)
-        setTimeout(() => setIsAlertOpened(false), 3000)
-      })
-    } else {
-      setIsEditing(false)
-      setIsAlertOpened(true)
-      setTimeout(() => setIsAlertOpened(false), 3000)
-    }
+    // if (temporaryUserData) {
+    //   updateUserData(temporaryUserData).then(() => {
+    //     setIsEditing(false)
+    //     setIsAlertOpened(true)
+    //     setTimeout(() => setIsAlertOpened(false), 3000)
+    //   })
+    // } else {
+    //   setIsEditing(false)
+    //   setIsAlertOpened(true)
+    //   setTimeout(() => setIsAlertOpened(false), 3000)
+    // }
   }
 
   // TODO: redirect to change password
@@ -71,12 +63,10 @@ const UserProfileView = () => {
     <section className="flex flex-col gap-2 sm:gap-0 h-full sm:bg-white">
       <UserProfileDetail
         userData={userData}
-        temporaryUserData={temporaryUserData}
         isEditing={isEditing}
         isAlertOpened={isAlertOpened}
         alertType={alertType}
         onChangeIsEditing={setIsEditing}
-        onChangeTemporary={setTemporaryUserData}
         onCancelEditing={handleOnCancelEditing}
         onSubmitEditing={handleOnSubmitEditing}
         onOpenEmailModal={() => setIsEmailModalOpened(true)}

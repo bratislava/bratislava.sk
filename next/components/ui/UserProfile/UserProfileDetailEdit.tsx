@@ -54,14 +54,11 @@ const schema = {
 }
 
 interface UserProfileDetailEditProps {
-  temporaryUserData: UserData
-  schema: RJSFSchema
-  onChangeTemporary: (newTemporaryUserData: UserData) => void
   onOpenEmailModal: () => void
 }
 
 const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
-  const { temporaryUserData, onChangeTemporary, onOpenEmailModal } = props
+  const { onOpenEmailModal } = props
   const { t } = useTranslation('account')
 
   const {
@@ -81,12 +78,6 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
       postal_code: '',
     },
   })
-
-  const handleOnChangeAddress = (newAddressInfo: Address) => {
-    const newAddress: Address = { ...temporaryUserData.address, ...newAddressInfo }
-    const newTemporaryUserData: UserData = { ...temporaryUserData, address: newAddress }
-    onChangeTemporary(newTemporaryUserData)
-  }
 
   return (
     <form className="flex flex-col grow gap-6 pb-20 sm:pb-0">
@@ -167,12 +158,6 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
       </div>
       <div className="h-0 w-full border-b-2 border-gray-200" />
       <h5 className="text-h5">{t('profile_detail.address')}</h5>
-      <InputField
-        className="w-full"
-        label={t('profile_detail.street')}
-        value={temporaryUserData.address?.street_address || ''}
-        onChange={(value) => handleOnChangeAddress({ street_address: value })}
-      />
       <Controller
         name="street_address"
         control={control}
