@@ -336,7 +336,6 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
   useEffect(() => {
-    console.log('is skip enabled:', isSkipEnabled)
     if (isSkipEnabled) {
       if (isComplete) {
         jumpToStep()
