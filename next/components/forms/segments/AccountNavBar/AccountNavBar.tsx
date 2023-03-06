@@ -17,6 +17,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
+import { getLanguageKey } from '@utils/utils'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -58,7 +59,7 @@ export const AccountNavBar = ({
   const [burgerOpen, setBurgerOpen] = useState(false)
   const { isAuth, logout, userData } = useAccount()
 
-  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])

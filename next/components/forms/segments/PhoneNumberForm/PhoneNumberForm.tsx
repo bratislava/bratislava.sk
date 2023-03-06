@@ -1,3 +1,4 @@
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
@@ -6,13 +7,13 @@ import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
 export interface PhoneNumberData {
-  phoneNumber?: string
+  phone_number?: string
 }
 
 const schema = {
   type: 'object',
   properties: {
-    phoneNumber: {
+    phone_number: {
       type: 'string',
     },
   },
@@ -20,13 +21,13 @@ const schema = {
 }
 
 interface Props {
-  errorMessage?: string
-  onHideErrorMessage?: () => void
+  error?: AccountError | null
+  onHideError?: () => void
   onSubmit: ({ data }: { data?: PhoneNumberData }) => void
-  defaultValues: PhoneNumberData
+  defaultValues?: PhoneNumberData
 }
 
-const PhoneNumberForm = ({ errorMessage, onHideErrorMessage, onSubmit, defaultValues }: Props) => {
+const PhoneNumberForm = ({ error, onHideError, onSubmit, defaultValues }: Props) => {
   const { t } = useTranslation('forms')
   const { t: t1 } = useTranslation('account')
   const {
@@ -36,7 +37,7 @@ const PhoneNumberForm = ({ errorMessage, onHideErrorMessage, onSubmit, defaultVa
     formState: { isSubmitting },
   } = useHookForm<PhoneNumberData>({
     schema,
-    defaultValues,
+    defaultValues: { ...defaultValues },
   })
 
   return (
@@ -47,17 +48,17 @@ const PhoneNumberForm = ({ errorMessage, onHideErrorMessage, onSubmit, defaultVa
       <p className="text-p3 lg:text-p2 whitespace-pre-line">
         {t('adding_phone_number_description')}
       </p>
-      {errorMessage && (
+      {error && (
         <Alert
-          message={errorMessage}
+          message={t(error.code)}
           type="error"
-          close={onHideErrorMessage}
+          close={onHideError}
           solid
           className="min-w-full"
         />
       )}
       <Controller
-        name="phoneNumber"
+        name="phone_number"
         control={control}
         render={({ field }) => (
           <InputField

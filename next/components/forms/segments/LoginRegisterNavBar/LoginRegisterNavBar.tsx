@@ -3,6 +3,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { getLanguageKey } from '@utils/utils'
 
 interface IProps {
   className?: string
@@ -22,7 +23,7 @@ const BackButton = () => {
 }
 
 export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidden }: IProps) => {
-  const languageKey = currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(currentLanguage)
 
   const { t } = useTranslation('account')
   return (

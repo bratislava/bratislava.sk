@@ -26,6 +26,7 @@ type ButtonBase = {
   startIcon?: ReactNode
   endIcon?: ReactNode
   hrefIconHidden?: boolean
+  fullWidth?: boolean
 }
 
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
@@ -59,6 +60,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       startIcon,
       endIcon,
       hrefIconHidden,
+      fullWidth,
       ...rest
     },
     ref,
@@ -76,8 +78,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       'inline-flex items-center',
       rest.href
         ? 'underline underline-offset-4 focus-visible:outline-none'
-        : 'w-fit h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
+        : 'h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
+      {
+        'w-full': fullWidth,
+        'w-fit': !fullWidth,
+      },
       {
         // text for lg button
         'text-16-semibold px-4 py-2.5':

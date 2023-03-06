@@ -57,6 +57,7 @@ const updatableAttributes = new Set([
   'family_name',
   'phone_number',
   'address',
+  'tier',
 ])
 
 const poolData = {
