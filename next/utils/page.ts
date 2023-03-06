@@ -6,7 +6,7 @@ import {
   FileBlockFragment,
   FooterFragment,
   MainMenuItemFragment,
-  PageLinkFragment,
+  PageLinkBlockFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
 import _, { groupBy, sortBy } from 'lodash'
@@ -190,7 +190,7 @@ export const pagePath = (
 }
 
 export const parsePageLink = (
-  pageLink?: PageLinkFragment | null,
+  pageLink?: PageLinkBlockFragment | null,
 ): { title: string; url: string; anchor?: string } | null => {
   if (!pageLink) return null
   const param = {
