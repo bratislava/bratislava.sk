@@ -1,10 +1,10 @@
-import { ComponentSectionsContactFragment } from '@bratislava/strapi-sdk-homepage'
+import { ContactSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Contact } from '@bratislava/ui-bratislava'
 import React from 'react'
 
-type ContactSectionProps = {section: ComponentSectionsContactFragment}
+type ContactSectionProps = { section: ContactSectionFragment }
 
-const ContactSection = ({section}: ContactSectionProps) => {
+const ContactSection = ({ section }: ContactSectionProps) => {
   return (
     <Contact
       title={section.title ?? undefined}

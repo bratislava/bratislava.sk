@@ -1,9 +1,9 @@
-import { ComponentSectionsNarrowTextFragment } from '@bratislava/strapi-sdk-homepage'
+import { NarrowTextSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { NarrowText } from '@bratislava/ui-bratislava'
 import React from 'react'
 
 type NarrowTextSectionProps = {
-  section: ComponentSectionsNarrowTextFragment
+  section: NarrowTextSectionFragment
 }
 
 const NarrowTextSection = ({ section }: NarrowTextSectionProps) => {

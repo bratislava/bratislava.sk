@@ -3196,39 +3196,39 @@ export type ParentPageFragment = { __typename?: 'Page', slug?: string | null, lo
 
 export type LocalizationFragment = { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', attributes?: { __typename?: 'Page', slug?: string | null, locale?: string | null } | null }> };
 
-export type ComponentBlocksIconWithTitleAndDescriptionFragment = { __typename?: 'ComponentBlocksIconWithTitleAndDescription', title?: string | null, desc?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null };
+export type IconWithTitleAndDescriptionBlockFragment = { __typename?: 'ComponentBlocksIconWithTitleAndDescription', title?: string | null, desc?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null };
 
-export type ComponentSectionsDocumentListFragment = { __typename?: 'ComponentSectionsDocumentList', vzns?: { __typename?: 'VznRelationResponseCollection', data: Array<{ __typename?: 'VznEntity', id?: string | null, attributes?: { __typename?: 'Vzn', category?: Enum_Vzn_Category | null, details?: string | null, title?: string | null, validFrom?: any | null, amedmentDocument?: Array<{ __typename?: 'ComponentBlocksDocListExtensions', id: string, title?: string | null, validFrom?: any | null, document?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null> | null, cancellationDocument?: Array<{ __typename?: 'ComponentBlocksDocListExtensions', id: string, title?: string | null, validFrom?: any | null, document?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null> | null, mainDocument?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null, consolidatedText?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null }> } | null };
+export type DocumentListSectionFragment = { __typename?: 'ComponentSectionsDocumentList', vzns?: { __typename?: 'VznRelationResponseCollection', data: Array<{ __typename?: 'VznEntity', id?: string | null, attributes?: { __typename?: 'Vzn', category?: Enum_Vzn_Category | null, details?: string | null, title?: string | null, validFrom?: any | null, amedmentDocument?: Array<{ __typename?: 'ComponentBlocksDocListExtensions', id: string, title?: string | null, validFrom?: any | null, document?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null> | null, cancellationDocument?: Array<{ __typename?: 'ComponentBlocksDocListExtensions', id: string, title?: string | null, validFrom?: any | null, document?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null> | null, mainDocument?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null, consolidatedText?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null }> } | null };
 
-export type ComponentBlocksGalleryItemFragment = { __typename?: 'ComponentBlocksGalleryItem', imgTitle?: string | null, imgSubtitle?: string | null, imgSubtext?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, caption?: string | null, alternativeText?: string | null } | null } | null } | null };
+export type GalleryItemBlockFragment = { __typename?: 'ComponentBlocksGalleryItem', imgTitle?: string | null, imgSubtitle?: string | null, imgSubtext?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, caption?: string | null, alternativeText?: string | null } | null } | null } | null };
 
-export type ComponentSectionsGalleryFragment = { __typename?: 'ComponentSectionsGallery', title?: string | null, subtitle?: string | null, galleryItems?: Array<{ __typename?: 'ComponentBlocksGalleryItem', imgTitle?: string | null, imgSubtitle?: string | null, imgSubtext?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, caption?: string | null, alternativeText?: string | null } | null } | null } | null } | null> | null };
+export type GallerySectionFragment = { __typename?: 'ComponentSectionsGallery', title?: string | null, subtitle?: string | null, galleryItems?: Array<{ __typename?: 'ComponentBlocksGalleryItem', imgTitle?: string | null, imgSubtitle?: string | null, imgSubtext?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, caption?: string | null, alternativeText?: string | null } | null } | null } | null } | null> | null };
 
-export type ComponentSectionsArticlesListFragment = { __typename?: 'ComponentSectionsArticlesList', title?: string | null, filtering?: boolean | null, category?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', title?: string | null } | null } | null } | null };
+export type ArticlesListSectionFragment = { __typename?: 'ComponentSectionsArticlesList', title?: string | null, filtering?: boolean | null, category?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', title?: string | null } | null } | null } | null };
 
-export type ComponentSectionsIconTitleDescFragment = { __typename?: 'ComponentSectionsIconTitleDesc', title?: string | null, hasBackground?: boolean | null, list?: Array<{ __typename?: 'ComponentBlocksIconWithTitleAndDescription', title?: string | null, desc?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null> | null };
+export type IconTitleDescSectionFragment = { __typename?: 'ComponentSectionsIconTitleDesc', title?: string | null, hasBackground?: boolean | null, list?: Array<{ __typename?: 'ComponentBlocksIconWithTitleAndDescription', title?: string | null, desc?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null> | null };
 
-export type ComponentSectionsDividerFragment = { __typename?: 'ComponentSectionsDivider', hasBackground?: boolean | null, style?: Enum_Componentsectionsdivider_Style | null };
+export type DividerSectionFragment = { __typename?: 'ComponentSectionsDivider', hasBackground?: boolean | null, style?: Enum_Componentsectionsdivider_Style | null };
 
-export type ComponentSectionsTextWithImageFragment = { __typename?: 'ComponentSectionsTextWithImage', hasBackground?: boolean | null, content?: string | null, imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null, imageShadow?: boolean | null, imageSrc?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null };
+export type TextWithImageSectionFragment = { __typename?: 'ComponentSectionsTextWithImage', hasBackground?: boolean | null, content?: string | null, imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null, imageShadow?: boolean | null, imageSrc?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null };
 
-export type ComponentSectionsIframeFragment = { __typename?: 'ComponentSectionsIframe', url: string, iframeWidth: Enum_Componentsectionsiframe_Iframewidth, iframeHeight: string, fullHeight: boolean, allowFullscreen: boolean, css?: string | null, allowGeolocation?: boolean | null };
+export type IframeSectionFragment = { __typename?: 'ComponentSectionsIframe', url: string, iframeWidth: Enum_Componentsectionsiframe_Iframewidth, iframeHeight: string, fullHeight: boolean, allowFullscreen: boolean, css?: string | null, allowGeolocation?: boolean | null };
 
-export type ComponentBlocksFileFragment = { __typename?: 'ComponentBlocksFile', title?: string | null, category?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, createdAt?: any | null, size: number, ext?: string | null } | null } | null } | null };
+export type FileBlockFragment = { __typename?: 'ComponentBlocksFile', title?: string | null, category?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, createdAt?: any | null, size: number, ext?: string | null } | null } | null } | null };
 
-export type ComponentSectionsFileListFragment = { __typename?: 'ComponentSectionsFileList', hasBackground?: boolean | null, fileList?: Array<{ __typename?: 'ComponentBlocksFile', title?: string | null, category?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, createdAt?: any | null, size: number, ext?: string | null } | null } | null } | null } | null> | null };
+export type FileListSectionFragment = { __typename?: 'ComponentSectionsFileList', hasBackground?: boolean | null, fileList?: Array<{ __typename?: 'ComponentBlocksFile', title?: string | null, category?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, createdAt?: any | null, size: number, ext?: string | null } | null } | null } | null } | null> | null };
 
-export type ComponentSectionsColumnedTextFragment = { __typename?: 'ComponentSectionsColumnedText', hasBackground?: boolean | null, content?: string | null };
+export type ColumnedTextSectionFragment = { __typename?: 'ComponentSectionsColumnedText', hasBackground?: boolean | null, content?: string | null };
 
-export type ComponentSectionsNarrowTextFragment = { __typename?: 'ComponentSectionsNarrowText', hasBackground?: boolean | null, content?: string | null, width?: Enum_Componentsectionsnarrowtext_Width | null, align?: Enum_Componentsectionsnarrowtext_Align | null };
+export type NarrowTextSectionFragment = { __typename?: 'ComponentSectionsNarrowText', hasBackground?: boolean | null, content?: string | null, width?: Enum_Componentsectionsnarrowtext_Width | null, align?: Enum_Componentsectionsnarrowtext_Align | null };
 
-export type ComponentSectionsWavesFragment = { __typename?: 'ComponentSectionsWaves', position?: Enum_Componentsectionswaves_Position | null, isRich?: boolean | null };
+export type WavesSectionFragment = { __typename?: 'ComponentSectionsWaves', position?: Enum_Componentsectionswaves_Position | null, isRich?: boolean | null };
 
-export type ComponentBlocksPageLinkFragment = { __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null };
+export type PageLinkBlockFragment = { __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null };
 
-export type ComponentSectionsLinksFragment = { __typename?: 'ComponentSectionsLinks', title?: string | null, hasBackground?: boolean | null, pageLinks?: Array<{ __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null> | null };
+export type LinksSectionFragment = { __typename?: 'ComponentSectionsLinks', title?: string | null, hasBackground?: boolean | null, pageLinks?: Array<{ __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null> | null };
 
-export type ComponentSectionsContactFragment = { __typename?: 'ComponentSectionsContact', title?: string | null, hasBackground?: boolean | null, description?: string | null, phone?: string | null, phoneLabel?: string | null, email?: string | null, emailLabel?: string | null, address?: string | null };
+export type ContactSectionFragment = { __typename?: 'ComponentSectionsContact', title?: string | null, hasBackground?: boolean | null, description?: string | null, phone?: string | null, phoneLabel?: string | null, email?: string | null, emailLabel?: string | null, address?: string | null };
 
 export type ComponentAccordionItemsInstitutionNarrowFragment = { __typename?: 'ComponentAccordionItemsInstitutionNarrow', title?: string | null, subtitle?: string | null, category?: string | null, url?: string | null, urlLabel?: string | null };
 
@@ -3236,21 +3236,21 @@ export type ComponentAccordionItemsFlatTextFragment = { __typename?: 'ComponentA
 
 export type ComponentAccordionItemsInstitutionFragment = { __typename?: 'ComponentAccordionItemsInstitution', title?: string | null, subtitle?: string | null, category?: string | null, firstColumn?: string | null, secondColumn?: string | null, thirdColumn?: string | null, url?: string | null, urlLabel?: string | null };
 
-export type ComponentSectionsAccordionFragment = { __typename?: 'ComponentSectionsAccordion', title?: string | null, hasBackground?: boolean | null, institutions?: Array<{ __typename?: 'ComponentAccordionItemsInstitution', title?: string | null, subtitle?: string | null, category?: string | null, firstColumn?: string | null, secondColumn?: string | null, thirdColumn?: string | null, url?: string | null, urlLabel?: string | null } | null> | null, flatText?: Array<{ __typename?: 'ComponentAccordionItemsFlatText', category?: string | null, content?: string | null, width?: Enum_Componentaccordionitemsflattext_Width | null, align?: Enum_Componentaccordionitemsflattext_Align | null, moreLinkTitle?: string | null, moreLinkUrl?: string | null, moreLinkPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', slug?: string | null, title?: string | null, locale?: string | null } | null } | null } | null } | null> | null, institutionsNarrow?: Array<{ __typename?: 'ComponentAccordionItemsInstitutionNarrow', title?: string | null, subtitle?: string | null, category?: string | null, url?: string | null, urlLabel?: string | null } | null> | null };
+export type AccordionSectionFragment = { __typename?: 'ComponentSectionsAccordion', title?: string | null, hasBackground?: boolean | null, institutions?: Array<{ __typename?: 'ComponentAccordionItemsInstitution', title?: string | null, subtitle?: string | null, category?: string | null, firstColumn?: string | null, secondColumn?: string | null, thirdColumn?: string | null, url?: string | null, urlLabel?: string | null } | null> | null, flatText?: Array<{ __typename?: 'ComponentAccordionItemsFlatText', category?: string | null, content?: string | null, width?: Enum_Componentaccordionitemsflattext_Width | null, align?: Enum_Componentaccordionitemsflattext_Align | null, moreLinkTitle?: string | null, moreLinkUrl?: string | null, moreLinkPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', slug?: string | null, title?: string | null, locale?: string | null } | null } | null } | null } | null> | null, institutionsNarrow?: Array<{ __typename?: 'ComponentAccordionItemsInstitutionNarrow', title?: string | null, subtitle?: string | null, category?: string | null, url?: string | null, urlLabel?: string | null } | null> | null };
 
-export type ComponentSectionsCalculatorFragment = { __typename?: 'ComponentSectionsCalculator', hasBackground?: boolean | null, single_adult_value?: number | null, another_adult_value?: number | null, child_value?: number | null };
+export type CalculatorSectionFragment = { __typename?: 'ComponentSectionsCalculator', hasBackground?: boolean | null, single_adult_value?: number | null, another_adult_value?: number | null, child_value?: number | null };
 
-export type ComponentSectionsListItemsFragment = { __typename?: 'ComponentSectionsListItems', title?: string | null, hasBackground?: boolean | null, listItems?: Array<{ __typename?: 'ComponentBlocksListItem', content?: string | null, moreLinkTitle?: string | null, moreLinkUrl?: string | null, circleOption?: Enum_Componentblockslistitem_Circleoption | null, moreLinkPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', locale?: string | null, slug?: string | null, title?: string | null } | null } | null } | null } | null> | null };
+export type ListItemsSectionFragment = { __typename?: 'ComponentSectionsListItems', title?: string | null, hasBackground?: boolean | null, listItems?: Array<{ __typename?: 'ComponentBlocksListItem', content?: string | null, moreLinkTitle?: string | null, moreLinkUrl?: string | null, circleOption?: Enum_Componentblockslistitem_Circleoption | null, moreLinkPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', locale?: string | null, slug?: string | null, title?: string | null } | null } | null } | null } | null> | null };
 
-export type ComponentBlocksVideoFragment = { __typename?: 'ComponentBlocksVideo', id: string, title?: string | null, speaker?: string | null, url?: string | null };
+export type VideoBlockFragment = { __typename?: 'ComponentBlocksVideo', id: string, title?: string | null, speaker?: string | null, url?: string | null };
 
-export type ComponentSectionsVideosFragment = { __typename?: 'ComponentSectionsVideos', id: string, title?: string | null, subtitle?: string | null, buttonContent?: string | null, videos?: Array<{ __typename?: 'ComponentBlocksVideo', id: string, title?: string | null, speaker?: string | null, url?: string | null } | null> | null };
+export type VideosSectionFragment = { __typename?: 'ComponentSectionsVideos', id: string, title?: string | null, subtitle?: string | null, buttonContent?: string | null, videos?: Array<{ __typename?: 'ComponentBlocksVideo', id: string, title?: string | null, speaker?: string | null, url?: string | null } | null> | null };
 
-export type ComponentBlocksNumericalListItemFragment = { __typename?: 'ComponentBlocksNumericalListItem', text?: string | null };
+export type NumericalListItemBlockFragment = { __typename?: 'ComponentBlocksNumericalListItem', text?: string | null };
 
-export type ComponentSectionsNumericalListFragment = { __typename?: 'ComponentSectionsNumericalList', id: string, title?: string | null, variant?: Enum_Componentsectionsnumericallist_Variant | null, buttonText?: string | null, buttonLink?: string | null, hasBackground?: boolean | null, items?: Array<{ __typename?: 'ComponentBlocksNumericalListItem', text?: string | null } | null> | null };
+export type NumericalListSectionFragment = { __typename?: 'ComponentSectionsNumericalList', id: string, title?: string | null, variant?: Enum_Componentsectionsnumericallist_Variant | null, buttonText?: string | null, buttonLink?: string | null, hasBackground?: boolean | null, items?: Array<{ __typename?: 'ComponentBlocksNumericalListItem', text?: string | null } | null> | null };
 
-export type ComponentSectionsOrganizationalStructureFragment = { __typename?: 'ComponentSectionsOrganizationalStructure', title?: string | null };
+export type OrganizationalStructureSectionFragment = { __typename?: 'ComponentSectionsOrganizationalStructure', title?: string | null };
 
 type Sections_ComponentSectionsAccordion_Fragment = { __typename: 'ComponentSectionsAccordion', title?: string | null, hasBackground?: boolean | null, institutions?: Array<{ __typename?: 'ComponentAccordionItemsInstitution', title?: string | null, subtitle?: string | null, category?: string | null, firstColumn?: string | null, secondColumn?: string | null, thirdColumn?: string | null, url?: string | null, urlLabel?: string | null } | null> | null, flatText?: Array<{ __typename?: 'ComponentAccordionItemsFlatText', category?: string | null, content?: string | null, width?: Enum_Componentaccordionitemsflattext_Width | null, align?: Enum_Componentaccordionitemsflattext_Align | null, moreLinkTitle?: string | null, moreLinkUrl?: string | null, moreLinkPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', slug?: string | null, title?: string | null, locale?: string | null } | null } | null } | null } | null> | null, institutionsNarrow?: Array<{ __typename?: 'ComponentAccordionItemsInstitutionNarrow', title?: string | null, subtitle?: string | null, category?: string | null, url?: string | null, urlLabel?: string | null } | null> | null };
 
@@ -3358,8 +3358,8 @@ export const BlogPostLinkFragmentDoc = gql`
   url
 }
     `;
-export const ComponentBlocksIconWithTitleAndDescriptionFragmentDoc = gql`
-    fragment ComponentBlocksIconWithTitleAndDescription on ComponentBlocksIconWithTitleAndDescription {
+export const IconWithTitleAndDescriptionBlockFragmentDoc = gql`
+    fragment IconWithTitleAndDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
   title
   desc
   icon {
@@ -3372,17 +3372,17 @@ export const ComponentBlocksIconWithTitleAndDescriptionFragmentDoc = gql`
   }
 }
     `;
-export const ComponentSectionsIconTitleDescFragmentDoc = gql`
-    fragment ComponentSectionsIconTitleDesc on ComponentSectionsIconTitleDesc {
+export const IconTitleDescSectionFragmentDoc = gql`
+    fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
   hasBackground
   list {
-    ...ComponentBlocksIconWithTitleAndDescription
+    ...IconWithTitleAndDescriptionBlock
   }
 }
-    ${ComponentBlocksIconWithTitleAndDescriptionFragmentDoc}`;
-export const ComponentSectionsDocumentListFragmentDoc = gql`
-    fragment ComponentSectionsDocumentList on ComponentSectionsDocumentList {
+    ${IconWithTitleAndDescriptionBlockFragmentDoc}`;
+export const DocumentListSectionFragmentDoc = gql`
+    fragment DocumentListSection on ComponentSectionsDocumentList {
   vzns {
     data {
       id
@@ -3447,14 +3447,14 @@ export const ComponentSectionsDocumentListFragmentDoc = gql`
   }
 }
     `;
-export const ComponentSectionsDividerFragmentDoc = gql`
-    fragment ComponentSectionsDivider on ComponentSectionsDivider {
+export const DividerSectionFragmentDoc = gql`
+    fragment DividerSection on ComponentSectionsDivider {
   hasBackground
   style
 }
     `;
-export const ComponentSectionsTextWithImageFragmentDoc = gql`
-    fragment ComponentSectionsTextWithImage on ComponentSectionsTextWithImage {
+export const TextWithImageSectionFragmentDoc = gql`
+    fragment TextWithImageSection on ComponentSectionsTextWithImage {
   hasBackground
   content
   imagePosition
@@ -3469,8 +3469,8 @@ export const ComponentSectionsTextWithImageFragmentDoc = gql`
   }
 }
     `;
-export const ComponentSectionsIframeFragmentDoc = gql`
-    fragment ComponentSectionsIframe on ComponentSectionsIframe {
+export const IframeSectionFragmentDoc = gql`
+    fragment IframeSection on ComponentSectionsIframe {
   url
   iframeWidth
   iframeHeight
@@ -3480,8 +3480,8 @@ export const ComponentSectionsIframeFragmentDoc = gql`
   allowGeolocation
 }
     `;
-export const ComponentBlocksGalleryItemFragmentDoc = gql`
-    fragment ComponentBlocksGalleryItem on ComponentBlocksGalleryItem {
+export const GalleryItemBlockFragmentDoc = gql`
+    fragment GalleryItemBlock on ComponentBlocksGalleryItem {
   imgTitle
   imgSubtitle
   imgSubtext
@@ -3498,17 +3498,17 @@ export const ComponentBlocksGalleryItemFragmentDoc = gql`
   }
 }
     `;
-export const ComponentSectionsGalleryFragmentDoc = gql`
-    fragment ComponentSectionsGallery on ComponentSectionsGallery {
+export const GallerySectionFragmentDoc = gql`
+    fragment GallerySection on ComponentSectionsGallery {
   title
   subtitle
   galleryItems {
-    ...ComponentBlocksGalleryItem
+    ...GalleryItemBlock
   }
 }
-    ${ComponentBlocksGalleryItemFragmentDoc}`;
-export const ComponentBlocksFileFragmentDoc = gql`
-    fragment ComponentBlocksFile on ComponentBlocksFile {
+    ${GalleryItemBlockFragmentDoc}`;
+export const FileBlockFragmentDoc = gql`
+    fragment FileBlock on ComponentBlocksFile {
   title
   category
   media {
@@ -3523,36 +3523,36 @@ export const ComponentBlocksFileFragmentDoc = gql`
   }
 }
     `;
-export const ComponentSectionsFileListFragmentDoc = gql`
-    fragment ComponentSectionsFileList on ComponentSectionsFileList {
+export const FileListSectionFragmentDoc = gql`
+    fragment FileListSection on ComponentSectionsFileList {
   hasBackground
   fileList(pagination: {limit: 500}) {
-    ...ComponentBlocksFile
+    ...FileBlock
   }
 }
-    ${ComponentBlocksFileFragmentDoc}`;
-export const ComponentSectionsColumnedTextFragmentDoc = gql`
-    fragment ComponentSectionsColumnedText on ComponentSectionsColumnedText {
+    ${FileBlockFragmentDoc}`;
+export const ColumnedTextSectionFragmentDoc = gql`
+    fragment ColumnedTextSection on ComponentSectionsColumnedText {
   hasBackground
   content
 }
     `;
-export const ComponentSectionsNarrowTextFragmentDoc = gql`
-    fragment ComponentSectionsNarrowText on ComponentSectionsNarrowText {
+export const NarrowTextSectionFragmentDoc = gql`
+    fragment NarrowTextSection on ComponentSectionsNarrowText {
   hasBackground
   content
   width
   align
 }
     `;
-export const ComponentSectionsWavesFragmentDoc = gql`
-    fragment ComponentSectionsWaves on ComponentSectionsWaves {
+export const WavesSectionFragmentDoc = gql`
+    fragment WavesSection on ComponentSectionsWaves {
   position
   isRich
 }
     `;
-export const ComponentBlocksPageLinkFragmentDoc = gql`
-    fragment ComponentBlocksPageLink on ComponentBlocksPageLink {
+export const PageLinkBlockFragmentDoc = gql`
+    fragment PageLinkBlock on ComponentBlocksPageLink {
   title
   url
   anchor
@@ -3567,17 +3567,17 @@ export const ComponentBlocksPageLinkFragmentDoc = gql`
   }
 }
     `;
-export const ComponentSectionsLinksFragmentDoc = gql`
-    fragment ComponentSectionsLinks on ComponentSectionsLinks {
+export const LinksSectionFragmentDoc = gql`
+    fragment LinksSection on ComponentSectionsLinks {
   title
   hasBackground
   pageLinks(pagination: {limit: 100}) {
-    ...ComponentBlocksPageLink
+    ...PageLinkBlock
   }
 }
-    ${ComponentBlocksPageLinkFragmentDoc}`;
-export const ComponentSectionsContactFragmentDoc = gql`
-    fragment ComponentSectionsContact on ComponentSectionsContact {
+    ${PageLinkBlockFragmentDoc}`;
+export const ContactSectionFragmentDoc = gql`
+    fragment ContactSection on ComponentSectionsContact {
   title
   hasBackground
   description
@@ -3628,8 +3628,8 @@ export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
   urlLabel
 }
     `;
-export const ComponentSectionsAccordionFragmentDoc = gql`
-    fragment ComponentSectionsAccordion on ComponentSectionsAccordion {
+export const AccordionSectionFragmentDoc = gql`
+    fragment AccordionSection on ComponentSectionsAccordion {
   title
   hasBackground
   institutions(pagination: {limit: -1}) {
@@ -3645,16 +3645,16 @@ export const ComponentSectionsAccordionFragmentDoc = gql`
     ${ComponentAccordionItemsInstitutionFragmentDoc}
 ${ComponentAccordionItemsFlatTextFragmentDoc}
 ${ComponentAccordionItemsInstitutionNarrowFragmentDoc}`;
-export const ComponentSectionsCalculatorFragmentDoc = gql`
-    fragment ComponentSectionsCalculator on ComponentSectionsCalculator {
+export const CalculatorSectionFragmentDoc = gql`
+    fragment CalculatorSection on ComponentSectionsCalculator {
   hasBackground
   single_adult_value
   another_adult_value
   child_value
 }
     `;
-export const ComponentSectionsListItemsFragmentDoc = gql`
-    fragment ComponentSectionsListItems on ComponentSectionsListItems {
+export const ListItemsSectionFragmentDoc = gql`
+    fragment ListItemsSection on ComponentSectionsListItems {
   title
   hasBackground
   listItems {
@@ -3674,35 +3674,35 @@ export const ComponentSectionsListItemsFragmentDoc = gql`
   }
 }
     `;
-export const ComponentBlocksVideoFragmentDoc = gql`
-    fragment ComponentBlocksVideo on ComponentBlocksVideo {
+export const VideoBlockFragmentDoc = gql`
+    fragment VideoBlock on ComponentBlocksVideo {
   id
   title
   speaker
   url
 }
     `;
-export const ComponentSectionsVideosFragmentDoc = gql`
-    fragment ComponentSectionsVideos on ComponentSectionsVideos {
+export const VideosSectionFragmentDoc = gql`
+    fragment VideosSection on ComponentSectionsVideos {
   id
   title
   subtitle
   videos {
-    ...ComponentBlocksVideo
+    ...VideoBlock
   }
   buttonContent
 }
-    ${ComponentBlocksVideoFragmentDoc}`;
-export const ComponentBlocksNumericalListItemFragmentDoc = gql`
-    fragment ComponentBlocksNumericalListItem on ComponentBlocksNumericalListItem {
+    ${VideoBlockFragmentDoc}`;
+export const NumericalListItemBlockFragmentDoc = gql`
+    fragment NumericalListItemBlock on ComponentBlocksNumericalListItem {
   text
 }
     `;
-export const ComponentSectionsNumericalListFragmentDoc = gql`
-    fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
+export const NumericalListSectionFragmentDoc = gql`
+    fragment NumericalListSection on ComponentSectionsNumericalList {
   id
   items {
-    ...ComponentBlocksNumericalListItem
+    ...NumericalListItemBlock
   }
   title
   variant
@@ -3710,9 +3710,9 @@ export const ComponentSectionsNumericalListFragmentDoc = gql`
   buttonLink
   hasBackground
 }
-    ${ComponentBlocksNumericalListItemFragmentDoc}`;
-export const ComponentSectionsArticlesListFragmentDoc = gql`
-    fragment ComponentSectionsArticlesList on ComponentSectionsArticlesList {
+    ${NumericalListItemBlockFragmentDoc}`;
+export const ArticlesListSectionFragmentDoc = gql`
+    fragment ArticlesListSection on ComponentSectionsArticlesList {
   title
   category {
     data {
@@ -3724,8 +3724,8 @@ export const ComponentSectionsArticlesListFragmentDoc = gql`
   filtering
 }
     `;
-export const ComponentSectionsOrganizationalStructureFragmentDoc = gql`
-    fragment ComponentSectionsOrganizationalStructure on ComponentSectionsOrganizationalStructure {
+export const OrganizationalStructureSectionFragmentDoc = gql`
+    fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
   title
 }
     `;
@@ -3733,82 +3733,82 @@ export const SectionsFragmentDoc = gql`
     fragment Sections on PageSectionsDynamicZone {
   __typename
   ... on ComponentSectionsIconTitleDesc {
-    ...ComponentSectionsIconTitleDesc
+    ...IconTitleDescSection
   }
   ... on ComponentSectionsDocumentList {
-    ...ComponentSectionsDocumentList
+    ...DocumentListSection
   }
   ... on ComponentSectionsDivider {
-    ...ComponentSectionsDivider
+    ...DividerSection
   }
   ... on ComponentSectionsTextWithImage {
-    ...ComponentSectionsTextWithImage
+    ...TextWithImageSection
   }
   ... on ComponentSectionsIframe {
-    ...ComponentSectionsIframe
+    ...IframeSection
   }
   ... on ComponentSectionsGallery {
-    ...ComponentSectionsGallery
+    ...GallerySection
   }
   ... on ComponentSectionsFileList {
-    ...ComponentSectionsFileList
+    ...FileListSection
   }
   ... on ComponentSectionsColumnedText {
-    ...ComponentSectionsColumnedText
+    ...ColumnedTextSection
   }
   ... on ComponentSectionsNarrowText {
-    ...ComponentSectionsNarrowText
+    ...NarrowTextSection
   }
   ... on ComponentSectionsWaves {
-    ...ComponentSectionsWaves
+    ...WavesSection
   }
   ... on ComponentSectionsLinks {
-    ...ComponentSectionsLinks
+    ...LinksSection
   }
   ... on ComponentSectionsContact {
-    ...ComponentSectionsContact
+    ...ContactSection
   }
   ... on ComponentSectionsAccordion {
-    ...ComponentSectionsAccordion
+    ...AccordionSection
   }
   ... on ComponentSectionsCalculator {
-    ...ComponentSectionsCalculator
+    ...CalculatorSection
   }
   ... on ComponentSectionsListItems {
-    ...ComponentSectionsListItems
+    ...ListItemsSection
   }
   ... on ComponentSectionsVideos {
-    ...ComponentSectionsVideos
+    ...VideosSection
   }
   ... on ComponentSectionsNumericalList {
-    ...ComponentSectionsNumericalList
+    ...NumericalListSection
   }
   ... on ComponentSectionsArticlesList {
-    ...ComponentSectionsArticlesList
+    ...ArticlesListSection
   }
   ... on ComponentSectionsOrganizationalStructure {
-    ...ComponentSectionsOrganizationalStructure
+    ...OrganizationalStructureSection
   }
 }
-    ${ComponentSectionsIconTitleDescFragmentDoc}
-${ComponentSectionsDocumentListFragmentDoc}
-${ComponentSectionsDividerFragmentDoc}
-${ComponentSectionsTextWithImageFragmentDoc}
-${ComponentSectionsIframeFragmentDoc}
-${ComponentSectionsGalleryFragmentDoc}
-${ComponentSectionsFileListFragmentDoc}
-${ComponentSectionsColumnedTextFragmentDoc}
-${ComponentSectionsNarrowTextFragmentDoc}
-${ComponentSectionsWavesFragmentDoc}
-${ComponentSectionsLinksFragmentDoc}
-${ComponentSectionsContactFragmentDoc}
-${ComponentSectionsAccordionFragmentDoc}
-${ComponentSectionsCalculatorFragmentDoc}
-${ComponentSectionsListItemsFragmentDoc}
-${ComponentSectionsVideosFragmentDoc}
-${ComponentSectionsNumericalListFragmentDoc}
-${ComponentSectionsArticlesListFragmentDoc}
-${ComponentSectionsOrganizationalStructureFragmentDoc}`;
+    ${IconTitleDescSectionFragmentDoc}
+${DocumentListSectionFragmentDoc}
+${DividerSectionFragmentDoc}
+${TextWithImageSectionFragmentDoc}
+${IframeSectionFragmentDoc}
+${GallerySectionFragmentDoc}
+${FileListSectionFragmentDoc}
+${ColumnedTextSectionFragmentDoc}
+${NarrowTextSectionFragmentDoc}
+${WavesSectionFragmentDoc}
+${LinksSectionFragmentDoc}
+${ContactSectionFragmentDoc}
+${AccordionSectionFragmentDoc}
+${CalculatorSectionFragmentDoc}
+${ListItemsSectionFragmentDoc}
+${VideosSectionFragmentDoc}
+${NumericalListSectionFragmentDoc}
+${ArticlesListSectionFragmentDoc}
+${OrganizationalStructureSectionFragmentDoc}`;
 export const BlogPostFragmentDoc = gql`
     fragment BlogPost on BlogPostEntityResponseCollection {
   data {
@@ -3884,18 +3884,18 @@ export const FooterFragmentDoc = gql`
       phone
       youtubeUrl
       accessibilityLink {
-        ...ComponentBlocksPageLink
+        ...PageLinkBlock
       }
       footerSections {
         title
         pageLinks {
-          ...ComponentBlocksPageLink
+          ...PageLinkBlock
         }
       }
     }
   }
 }
-    ${ComponentBlocksPageLinkFragmentDoc}`;
+    ${PageLinkBlockFragmentDoc}`;
 export const MainMenuItemFragmentDoc = gql`
     fragment MainMenuItem on PageCategoryEntityResponseCollection {
   data {
@@ -3914,10 +3914,10 @@ export const MainMenuItemFragmentDoc = gql`
             priority
             icon
             moreLink {
-              ...ComponentBlocksPageLink
+              ...PageLinkBlock
             }
             pages {
-              ...ComponentBlocksPageLink
+              ...PageLinkBlock
             }
           }
         }
@@ -3925,7 +3925,7 @@ export const MainMenuItemFragmentDoc = gql`
     }
   }
 }
-    ${ComponentBlocksPageLinkFragmentDoc}`;
+    ${PageLinkBlockFragmentDoc}`;
 export const HomepageHeaderFragmentDoc = gql`
     fragment HomepageHeader on ComponentBlocksHomepageHeader {
   headline
@@ -4059,7 +4059,7 @@ export const GeneralPageFragmentDoc = gql`
         ... on ComponentSectionsSubpageList {
           id
           subpageList(pagination: {limit: 50}) {
-            ...ComponentBlocksPageLink
+            ...PageLinkBlock
           }
         }
         ... on ComponentSectionsFeaturedBlogPosts {
@@ -4111,7 +4111,7 @@ export const GeneralPageFragmentDoc = gql`
 }
     ${SectionsFragmentDoc}
 ${LocalizationFragmentDoc}
-${ComponentBlocksPageLinkFragmentDoc}
+${PageLinkBlockFragmentDoc}
 ${BlogSectionFragmentDoc}
 ${ParentPageFragmentDoc}`;
 export const BlogPostBySlugDocument = gql`

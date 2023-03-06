@@ -1,10 +1,10 @@
-import { ComponentSectionsOrganizationalStructureFragment } from '@bratislava/strapi-sdk-homepage'
+import { OrganizationalStructureSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import React from 'react'
 
 import { OrganizationalStructure } from '../../OrganizationalStructure/OrganizationalStructure'
 
 type OrganizationalStructureSectionProps = {
-  section: ComponentSectionsOrganizationalStructureFragment
+  section: OrganizationalStructureSectionFragment
 }
 
 const OrganizationalStructureSection = ({ section }: OrganizationalStructureSectionProps) => {

@@ -1,8 +1,5 @@
 import { ChevronRight } from '@assets/images'
-import {
-  ComponentBlocksVideoFragment,
-  ComponentSectionsVideosFragment,
-} from '@bratislava/strapi-sdk-homepage'
+import { VideoBlockFragment, VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
@@ -13,7 +10,7 @@ const Video = ({
   speaker,
   url,
   size = 'default',
-}: ComponentBlocksVideoFragment & { size?: 'default' | 'small' }) => {
+}: VideoBlockFragment & { size?: 'default' | 'small' }) => {
   const [embedUrl, setEmbedUrl] = React.useState('')
   const [isLoaded, setLoaded] = React.useState(false)
 
@@ -61,12 +58,7 @@ const Video = ({
   )
 }
 
-export const Videos = ({
-  title,
-  subtitle,
-  videos,
-  buttonContent,
-}: ComponentSectionsVideosFragment) => {
+export const Videos = ({ title, subtitle, videos, buttonContent }: VideosSectionFragment) => {
   if (!videos) {
     return null
   }

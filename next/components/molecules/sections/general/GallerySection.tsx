@@ -1,6 +1,6 @@
 import { ChevronDown } from '@assets/images'
 import IconEye from '@assets/images/icon-eye-white.svg'
-import { ComponentSectionsGalleryFragment } from '@bratislava/strapi-sdk-homepage'
+import { GallerySectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { HorizontalScrollWrapper, Modal } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
@@ -9,7 +9,7 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 export interface GallerySectionProps {
-  section: ComponentSectionsGalleryFragment
+  section: GallerySectionFragment
   className?: string
 }
 

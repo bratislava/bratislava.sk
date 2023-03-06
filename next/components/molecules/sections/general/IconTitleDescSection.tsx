@@ -1,11 +1,11 @@
-import { ComponentSectionsIconTitleDescFragment } from '@bratislava/strapi-sdk-homepage'
+import { IconTitleDescSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { RentBenefits } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 type IconTitleDescSectionProps = {
-  section: ComponentSectionsIconTitleDescFragment
+  section: IconTitleDescSectionFragment
 }
 
 const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {

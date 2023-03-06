@@ -1,11 +1,11 @@
-import { ComponentSectionsFileListFragment } from '@bratislava/strapi-sdk-homepage'
+import { FileListSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { FileList } from '@bratislava/ui-bratislava'
 import { groupByCategoryFileList } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
 type FileListSectionProps = {
-  section: ComponentSectionsFileListFragment
+  section: FileListSectionFragment
 }
 
 const FileListSection = ({ section }: FileListSectionProps) => {

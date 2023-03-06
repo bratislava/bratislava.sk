@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */
-import { ComponentSectionsNumericalListFragment } from '@bratislava/strapi-sdk-homepage'
+import { NumericalListSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { NumericalListSectionUI } from '@bratislava/ui-bratislava/NumericalListSectionUI/NumericalListSectionUI'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
 type NumericalListSectionProps = {
-  section: ComponentSectionsNumericalListFragment
+  section: NumericalListSectionFragment
 }
 
 const NumericalListSection = ({ section }: NumericalListSectionProps) => {

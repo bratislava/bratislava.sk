@@ -1,10 +1,10 @@
-import { ComponentSectionsCalculatorFragment } from '@bratislava/strapi-sdk-homepage'
+import { CalculatorSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import React from 'react'
 
 import MinimumCalculator from './MinimumCalculator'
 
 type CalculatorSectionProps = {
-  section: ComponentSectionsCalculatorFragment
+  section: CalculatorSectionFragment
 }
 
 const CalculatorSection = ({ section }: CalculatorSectionProps) => {

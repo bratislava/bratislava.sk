@@ -57,7 +57,7 @@ fragment GeneralPage on PageEntityResponseCollection {
         ... on ComponentSectionsSubpageList {
           id
           subpageList(pagination: { limit: 50 }) {
-            ...ComponentBlocksPageLink
+            ...PageLinkBlock
           }
         }
         ... on ComponentSectionsFeaturedBlogPosts {

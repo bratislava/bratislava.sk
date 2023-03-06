@@ -1,10 +1,10 @@
-import { ComponentSectionsListItemsFragment } from '@bratislava/strapi-sdk-homepage'
+import { ListItemsSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { ListItems } from '@bratislava/ui-bratislava'
 import { parsePageLink } from '@utils/page'
 import React from 'react'
 
 type ListItemsSectionProps = {
-  section: ComponentSectionsListItemsFragment
+  section: ListItemsSectionFragment
 }
 
 const ListItemsSection = ({ section }: ListItemsSectionProps) => {

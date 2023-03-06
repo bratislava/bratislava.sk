@@ -1,11 +1,11 @@
-import { ComponentSectionsLinksFragment } from '@bratislava/strapi-sdk-homepage'
+import { LinksSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Links } from '@bratislava/ui-bratislava'
 import { parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
 type LinksSectionProps = {
-  section: ComponentSectionsLinksFragment
+  section: LinksSectionFragment
 }
 
 const LinksSection = ({ section }: LinksSectionProps) => {

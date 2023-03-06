@@ -1,9 +1,9 @@
-import { ComponentSectionsDividerFragment } from '@bratislava/strapi-sdk-homepage'
+import { DividerSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Divider } from '@bratislava/ui-bratislava'
 import React from 'react'
 
 type DividerSectionProps = {
-  section: ComponentSectionsDividerFragment
+  section: DividerSectionFragment
 }
 
 const DividerSection = ({ section }: DividerSectionProps) => {

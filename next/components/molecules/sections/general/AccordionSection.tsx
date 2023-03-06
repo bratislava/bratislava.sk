@@ -1,11 +1,11 @@
-import { ComponentSectionsAccordionFragment } from '@bratislava/strapi-sdk-homepage'
+import { AccordionSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { AccordionItem, Institution, NarrowText, PageLinkButton } from '@bratislava/ui-bratislava'
 import { groupByCategory, parseCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
 type AccordionSectionProps = {
-  section: ComponentSectionsAccordionFragment
+  section: AccordionSectionFragment
 }
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {

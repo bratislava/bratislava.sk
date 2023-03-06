@@ -1,9 +1,9 @@
-import { ComponentSectionsVideosFragment } from '@bratislava/strapi-sdk-homepage'
+import { VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Videos } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
-type VideosSectionProps = { section: ComponentSectionsVideosFragment }
+type VideosSectionProps = { section: VideosSectionFragment }
 
 const VideosSection = ({ section }: VideosSectionProps) => {
   return (

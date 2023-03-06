@@ -1,4 +1,4 @@
-fragment ComponentBlocksIconWithTitleAndDescription on ComponentBlocksIconWithTitleAndDescription {
+fragment IconWithTitleAndDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
     title
     desc
     icon {
@@ -11,7 +11,7 @@ fragment ComponentBlocksIconWithTitleAndDescription on ComponentBlocksIconWithTi
     }
 }
 
-fragment ComponentSectionsDocumentList on ComponentSectionsDocumentList {
+fragment DocumentListSection on ComponentSectionsDocumentList {
     vzns {
         data {
             id
@@ -76,7 +76,7 @@ fragment ComponentSectionsDocumentList on ComponentSectionsDocumentList {
     }
 }
 
-fragment ComponentBlocksGalleryItem on ComponentBlocksGalleryItem {
+fragment GalleryItemBlock on ComponentBlocksGalleryItem {
     imgTitle
     imgSubtitle
     imgSubtext
@@ -93,15 +93,15 @@ fragment ComponentBlocksGalleryItem on ComponentBlocksGalleryItem {
     }
 }
 
-fragment ComponentSectionsGallery on ComponentSectionsGallery {
+fragment GallerySection on ComponentSectionsGallery {
     title
     subtitle
     galleryItems {
-        ...ComponentBlocksGalleryItem
+        ...GalleryItemBlock
     }
 }
 
-fragment ComponentSectionsArticlesList on ComponentSectionsArticlesList {
+fragment ArticlesListSection on ComponentSectionsArticlesList {
     title
     category {
         data {
@@ -113,20 +113,20 @@ fragment ComponentSectionsArticlesList on ComponentSectionsArticlesList {
     filtering
 }
 
-fragment ComponentSectionsIconTitleDesc on ComponentSectionsIconTitleDesc {
+fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
     title
     hasBackground
     list {
-        ...ComponentBlocksIconWithTitleAndDescription
+        ...IconWithTitleAndDescriptionBlock
     }
 }
 
-fragment ComponentSectionsDivider on ComponentSectionsDivider {
+fragment DividerSection on ComponentSectionsDivider {
     hasBackground
     style
 }
 
-fragment ComponentSectionsTextWithImage on ComponentSectionsTextWithImage {
+fragment TextWithImageSection on ComponentSectionsTextWithImage {
     hasBackground
     content
     imagePosition
@@ -141,7 +141,7 @@ fragment ComponentSectionsTextWithImage on ComponentSectionsTextWithImage {
     }
 }
 
-fragment ComponentSectionsIframe on ComponentSectionsIframe {
+fragment IframeSection on ComponentSectionsIframe {
     url
     iframeWidth
     iframeHeight
@@ -151,7 +151,7 @@ fragment ComponentSectionsIframe on ComponentSectionsIframe {
     allowGeolocation
 }
 
-fragment ComponentBlocksFile on ComponentBlocksFile {
+fragment FileBlock on ComponentBlocksFile {
     title
     category
     media {
@@ -166,32 +166,32 @@ fragment ComponentBlocksFile on ComponentBlocksFile {
     }
 }
 
-fragment ComponentSectionsFileList on ComponentSectionsFileList {
+fragment FileListSection on ComponentSectionsFileList {
     hasBackground
     # TODO consider limit -1
     fileList(pagination: { limit: 500 }) {
-        ...ComponentBlocksFile
+        ...FileBlock
     }
 }
 
-fragment ComponentSectionsColumnedText on ComponentSectionsColumnedText {
+fragment ColumnedTextSection on ComponentSectionsColumnedText {
     hasBackground
     content
 }
 
-fragment ComponentSectionsNarrowText on ComponentSectionsNarrowText {
+fragment NarrowTextSection on ComponentSectionsNarrowText {
     hasBackground
     content
     width
     align
 }
 
-fragment ComponentSectionsWaves on ComponentSectionsWaves {
+fragment WavesSection on ComponentSectionsWaves {
     position
     isRich
 }
 
-fragment ComponentBlocksPageLink on ComponentBlocksPageLink {
+fragment PageLinkBlock on ComponentBlocksPageLink {
     title
     url
     anchor
@@ -206,16 +206,16 @@ fragment ComponentBlocksPageLink on ComponentBlocksPageLink {
     }
 }
 
-fragment ComponentSectionsLinks on ComponentSectionsLinks {
+fragment LinksSection on ComponentSectionsLinks {
     title
     hasBackground
     # TODO consider limit -1
     pageLinks(pagination: { limit: 100 }) {
-        ...ComponentBlocksPageLink
+        ...PageLinkBlock
     }
 }
 
-fragment ComponentSectionsContact on ComponentSectionsContact {
+fragment ContactSection on ComponentSectionsContact {
     title
     hasBackground
     description
@@ -263,7 +263,7 @@ fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitutio
     urlLabel
 }
 
-fragment ComponentSectionsAccordion on ComponentSectionsAccordion {
+fragment AccordionSection on ComponentSectionsAccordion {
     title
     hasBackground
     institutions(pagination: { limit: -1 }) {
@@ -277,14 +277,14 @@ fragment ComponentSectionsAccordion on ComponentSectionsAccordion {
     }
 }
 
-fragment ComponentSectionsCalculator on ComponentSectionsCalculator {
+fragment CalculatorSection on ComponentSectionsCalculator {
     hasBackground
     single_adult_value
     another_adult_value
     child_value
 }
 
-fragment ComponentSectionsListItems on ComponentSectionsListItems {
+fragment ListItemsSection on ComponentSectionsListItems {
     title
     hasBackground
     listItems {
@@ -304,31 +304,31 @@ fragment ComponentSectionsListItems on ComponentSectionsListItems {
     }
 }
 
-fragment ComponentBlocksVideo on ComponentBlocksVideo {
+fragment VideoBlock on ComponentBlocksVideo {
     id
     title
     speaker
     url
 }
 
-fragment ComponentSectionsVideos on ComponentSectionsVideos {
+fragment VideosSection on ComponentSectionsVideos {
     id
     title
     subtitle
     videos {
-        ...ComponentBlocksVideo
+        ...VideoBlock
     }
     buttonContent
 }
 
-fragment ComponentBlocksNumericalListItem on ComponentBlocksNumericalListItem {
+fragment NumericalListItemBlock on ComponentBlocksNumericalListItem {
     text
 }
 
-fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
+fragment NumericalListSection on ComponentSectionsNumericalList {
     id
     items {
-        ...ComponentBlocksNumericalListItem
+        ...NumericalListItemBlock
     }
     title
     variant
@@ -337,7 +337,7 @@ fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
     hasBackground
 }
 
-fragment ComponentSectionsOrganizationalStructure on ComponentSectionsOrganizationalStructure {
+fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
     title
 }
 
@@ -345,77 +345,77 @@ fragment Sections on PageSectionsDynamicZone {
     __typename
 
     ... on ComponentSectionsIconTitleDesc {
-        ...ComponentSectionsIconTitleDesc
+        ...IconTitleDescSection
     }
 
     ... on ComponentSectionsDocumentList {
-        ...ComponentSectionsDocumentList
+        ...DocumentListSection
     }
 
     ... on ComponentSectionsDivider {
-        ...ComponentSectionsDivider
+        ...DividerSection
     }
 
     ... on ComponentSectionsTextWithImage {
-        ...ComponentSectionsTextWithImage
+        ...TextWithImageSection
     }
 
     ... on ComponentSectionsIframe {
-        ...ComponentSectionsIframe
+        ...IframeSection
     }
 
     ... on ComponentSectionsGallery {
-        ...ComponentSectionsGallery
+        ...GallerySection
     }
 
     ... on ComponentSectionsFileList {
-        ...ComponentSectionsFileList
+        ...FileListSection
     }
 
     ... on ComponentSectionsColumnedText {
-        ...ComponentSectionsColumnedText
+        ...ColumnedTextSection
     }
 
     ... on ComponentSectionsNarrowText {
-        ...ComponentSectionsNarrowText
+        ...NarrowTextSection
     }
 
     ... on ComponentSectionsWaves {
-        ...ComponentSectionsWaves
+        ...WavesSection
     }
 
     ... on ComponentSectionsLinks {
-        ...ComponentSectionsLinks
+        ...LinksSection
     }
     ... on ComponentSectionsContact {
-        ...ComponentSectionsContact
+        ...ContactSection
     }
 
     ... on ComponentSectionsAccordion {
-        ...ComponentSectionsAccordion
+        ...AccordionSection
     }
 
     ... on ComponentSectionsCalculator {
-        ...ComponentSectionsCalculator
+        ...CalculatorSection
     }
 
     ... on ComponentSectionsListItems {
-        ...ComponentSectionsListItems
+        ...ListItemsSection
     }
 
     ... on ComponentSectionsVideos {
-        ...ComponentSectionsVideos
+        ...VideosSection
     }
 
     ... on ComponentSectionsNumericalList {
-        ...ComponentSectionsNumericalList
+        ...NumericalListSection
     }
 
     ... on ComponentSectionsArticlesList {
-        ...ComponentSectionsArticlesList
+        ...ArticlesListSection
     }
 
     ... on ComponentSectionsOrganizationalStructure {
-        ...ComponentSectionsOrganizationalStructure
+        ...OrganizationalStructureSection
     }
 }

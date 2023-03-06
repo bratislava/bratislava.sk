@@ -30,12 +30,12 @@ fragment Footer on FooterEntityResponse {
             phone
             youtubeUrl
             accessibilityLink {
-                ...ComponentBlocksPageLink
+                ...PageLinkBlock
             }
             footerSections {
                 title
                 pageLinks {
-                    ...ComponentBlocksPageLink
+                    ...PageLinkBlock
                 }
             }
         }
@@ -59,10 +59,10 @@ fragment MainMenuItem on PageCategoryEntityResponseCollection {
                         priority
                         icon
                         moreLink {
-                            ...ComponentBlocksPageLink
+                            ...PageLinkBlock
                         }
                         pages {
-                            ...ComponentBlocksPageLink
+                            ...PageLinkBlock
                         }
                     }
                 }

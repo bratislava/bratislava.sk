@@ -1,10 +1,10 @@
-import { ComponentSectionsWavesFragment } from '@bratislava/strapi-sdk-homepage'
+import { WavesSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Waves } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
 type WavesSectionProps = {
-  section: ComponentSectionsWavesFragment
+  section: WavesSectionFragment
 }
 
 const WavesSection = ({ section }: WavesSectionProps) => {
