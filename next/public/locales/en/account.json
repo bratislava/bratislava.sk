@@ -377,7 +377,9 @@
   "apartments_tax": "Tax on apartments",
   "payment_data": "Payment data",
   "constant_symbol": "Constant symbol",
+  "constant_symbol_number": "8147",
   "variable_symbol": "Variable symbol",
+  "variable_symbol_number": "312006100",
   "tax_due": "Tax due",
   "card_payment": "Card payment",
   "qr_code": "QR code",
@@ -385,5 +387,11 @@
   "use_one_of_ibans_to_pay": "When making a bank transfer, use one of the following IBAN accounts for payment:",
   "you_will_be_redirected_to_the_payment_gateway": "You will be redirected to the payment gateway.",
   "use_your_banking_app_to_load": "Use your banking app to load.",
-  "tax_constructions": "Construction tax"
+  "tax_constructions": "Construction tax",
+  "bank_info": {
+    "slovak_sporitelna": "Slovenská sporiteľňa, a.s.",
+    "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",
+    "csob": "ČSOB, a.s.",
+    "csob_iban": "SK31 7500 0000 0000 2574 7653"
+  }
 }

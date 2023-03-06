@@ -4,7 +4,6 @@ import { ReactNode } from 'react'
 import ContactInformationSection from './ContactInformation'
 import PaymentData from './PaymentData'
 import TaxDetails from './TaxDetails'
-import TaxFooter from './TaxFooter'
 
 type TaxAndFeeMainContentBase = {
   children: ReactNode
@@ -26,7 +25,6 @@ const TaxFeeSection = (props: any) => {
         <ContactInformationSection />
         <TaxDetails />
         <PaymentData />
-        <TaxFooter />
       </TaxAndFeeMainContent>
     </div>
   )

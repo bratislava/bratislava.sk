@@ -6,8 +6,10 @@ const ClipboardCopy = ({ copyText }: { copyText: string }) => {
   return (
     <button
       type="button"
-      onClick={async () => {
-        await copy(copyText)
+      onClick={() => {
+        copy(copyText)
+          .then(() => {})
+          .catch(() => {})
       }}
     >
       <ContentCopy />

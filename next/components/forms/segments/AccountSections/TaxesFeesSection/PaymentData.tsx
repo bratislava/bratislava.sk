@@ -4,6 +4,7 @@ import React from 'react'
 
 import Button from '../../../simple-components/Button'
 import ClipboardCopy from '../../../simple-components/ClipboardCopy'
+import TaxFooter from './TaxFooter'
 
 const PaymentData = () => {
   const { t } = useTranslation('account')
@@ -15,21 +16,21 @@ const PaymentData = () => {
           <div className="text-p2">{t('use_one_of_ibans_to_pay')}</div>
           <div className="flex flex-col items-start gap-4">
             <div className="flex flex-col items-start gap-1 isolate self-stretch">
-              <div className="text-p2">Slovenská sporiteľňa, a.s.</div>
+              <div className="text-p2">{t('bank_info.slovak_sporitelna')}</div>
               <div className="flex w-full">
-                <div className="text-16-semibold grow">SK75 0900 0000 0053 5353 5353</div>
+                <div className="text-16-semibold grow">{t('bank_info.slovak_sporitelna_iban')}</div>
                 <div className="w-6 h-6 cursor-pointer sm:block hidden">
-                  <ClipboardCopy copyText="SK75 0900 0000 0053 5353 5353" />
+                  <ClipboardCopy copyText={t('bank_info.slovak_sporitelna_iban')} />
                 </div>
               </div>
             </div>
             <div className="bg-gray-200 w-full h-0.5 sm:block hidden" />
             <div className="flex flex-col items-start gap-1 isolate self-stretch">
-              <div className="text-p2">ČSOB, a.s.</div>
+              <div className="text-p2">{t('bank_info.csob')}</div>
               <div className="flex w-full">
-                <div className="text-16-semibold grow">SK31 7500 0000 0000 2574 7653</div>
+                <div className="text-16-semibold grow">{t('bank_info.csob_iban')}</div>
                 <div className="w-6 h-6 cursor-pointer sm:block hidden">
-                  <ClipboardCopy copyText="SK31 7500 0000 0000 2574 7653" />
+                  <ClipboardCopy copyText={t('bank_info.csob_iban')} />
                 </div>
               </div>
             </div>
@@ -37,19 +38,19 @@ const PaymentData = () => {
             <div className="flex flex-col items-start gap-2">
               <div className="flex lg:flex-row flex-col items-start lg:gap-6 self-stretch">
                 <div className="text-16-semibold">{t('constant_symbol')}</div>
-                <div className="text-16">8147</div>
+                <div className="text-16">{t('constant_symbol_number')}</div>
               </div>
               <div className="flex lg:flex-row flex-col items-start lg:gap-6 self-stretch">
                 <div className="text-16-semibold">{t('variable_symbol')}</div>
-                <div className="text-16">312006100</div>
+                <div className="text-16">{t('variable_symbol_number')}</div>
               </div>
             </div>
             <div className="bg-gray-200 w-full h-0.5 sm:block hidden" />
             <div className="flex flex-col items-start w-full gap-2">
               <div className="text-16-semibold">{t('tax_due')}</div>
-              <div className="text-16 grow">
-                Daň je splatná v termíne do 15 dní{' '}
-                <div className="text-16-semibold">odo dňa právoplatnosti rozhodnutia.</div>
+              <div className="text-16">
+                <div className="inline-block">{t('tax_payable_within')}</div>{' '}
+                <div className="text-16-semibold inline">{t('validity_decision')}</div>
               </div>
             </div>
           </div>
@@ -107,6 +108,7 @@ const PaymentData = () => {
           </div>
         </div>
       </div>
+      <TaxFooter />
     </div>
   )
 }
