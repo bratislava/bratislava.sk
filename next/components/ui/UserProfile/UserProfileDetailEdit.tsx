@@ -1,11 +1,61 @@
+import { RJSFSchema } from '@rjsf/utils'
 import { Address, UserData } from '@utils/useAccount'
+import useHookForm from '@utils/useHookForm'
 import { useTranslation } from 'next-i18next'
+import { Controller } from 'react-hook-form'
 
 import Button from '../../forms/simple-components/Button'
 import InputField from '../../forms/widget-components/InputField/InputField'
 
+interface Data {
+  email: string
+  given_name: string
+  family_name: string
+  phone_number: string
+  street_address: string
+  city: string
+  postal_code: string
+}
+
+// must use `minLength: 1` to implement required field
+const schema = {
+  type: 'object',
+  properties: {
+    given_name: {
+      type: 'string',
+      minLength: 1,
+      errorMessage: { minLength: 'account:given_name_required' },
+    },
+    family_name: {
+      type: 'string',
+      minLength: 1,
+      errorMessage: { minLength: 'account:family_name_required' },
+    },
+    email: {
+      type: 'string',
+      minLength: 1,
+      format: 'email',
+      errorMessage: { minLength: 'account:email_required', format: 'account:email_format' },
+    },
+    phone_number: {
+      type: 'string',
+    },
+    street_address: {
+      type: 'string',
+    },
+    city: {
+      type: 'string',
+    },
+    postal_code: {
+      type: 'string',
+    },
+  },
+  required: ['email', 'given_name', 'family_name'],
+}
+
 interface UserProfileDetailEditProps {
   temporaryUserData: UserData
+  schema: RJSFSchema
   onChangeTemporary: (newTemporaryUserData: UserData) => void
   onOpenEmailModal: () => void
 }
@@ -14,6 +64,24 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   const { temporaryUserData, onChangeTemporary, onOpenEmailModal } = props
   const { t } = useTranslation('account')
 
+  const {
+    handleSubmit,
+    control,
+    errors,
+    formState: { isSubmitting },
+  } = useHookForm<Data>({
+    schema,
+    defaultValues: {
+      email: '',
+      family_name: '',
+      given_name: '',
+      phone_number: '',
+      street_address: '',
+      city: '',
+      postal_code: '',
+    },
+  })
+
   const handleOnChangeAddress = (newAddressInfo: Address) => {
     const newAddress: Address = { ...temporaryUserData.address, ...newAddressInfo }
     const newTemporaryUserData: UserData = { ...temporaryUserData, address: newAddress }
@@ -21,30 +89,52 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   }
 
   return (
-    <div className="flex flex-col grow gap-6 pb-20 sm:pb-0">
+    <form className="flex flex-col grow gap-6 pb-20 sm:pb-0">
       <div className="gap flex flex-wrap flex-row gap-6">
         <div className="grow ">
-          <InputField
-            label={t('profile_detail.given_name')}
-            value={temporaryUserData.given_name || ''}
-            onChange={(value) => onChangeTemporary({ ...temporaryUserData, given_name: value })}
+          <Controller
+            name="given_name"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                required
+                label={t('profile_detail.given_name')}
+                {...field}
+                errorMessage={errors.given_name}
+              />
+            )}
           />
         </div>
         <div className="grow ">
-          <InputField
-            label={t('profile_detail.family_name')}
-            value={temporaryUserData.family_name || ''}
-            onChange={(value) => onChangeTemporary({ ...temporaryUserData, family_name: value })}
+          <Controller
+            name="family_name"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                required
+                label={t('profile_detail.family_name')}
+                {...field}
+                errorMessage={errors.family_name}
+              />
+            )}
           />
         </div>
       </div>
       <div className="flex flex-row flex-wrap gap-4">
         <div className="grow">
-          <InputField
-            label={t('profile_detail.email')}
-            tooltip={t('profile_detail.email_tooltip')}
-            value={temporaryUserData.email || ''}
-            disabled
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                disabled
+                label={t('profile_detail.email')}
+                tooltip={t('profile_detail.email_tooltip')}
+                autoComplete="username"
+                {...field}
+                errorMessage={errors.email}
+              />
+            )}
           />
         </div>
         <div className="justify-end flex flex-col py-1">
@@ -58,11 +148,17 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
       </div>
       <div className="gap flex flex-wrap flex-row gap-x-6">
         <div className="grow ">
-          <InputField
-            label={t('profile_detail.phone_number')}
-            helptext={t('profile_detail.phone_number_pattern')}
-            value={temporaryUserData.phone_number || ''}
-            onChange={(value) => onChangeTemporary({ ...temporaryUserData, phone_number: value })}
+          <Controller
+            name="family_name"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                label={t('profile_detail.phone_number')}
+                helptext={t('profile_detail.phone_number_pattern')}
+                {...field}
+                errorMessage={errors.phone_number}
+              />
+            )}
           />
         </div>
         <div className="grow invisible h-0">
@@ -77,23 +173,46 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
         value={temporaryUserData.address?.street_address || ''}
         onChange={(value) => handleOnChangeAddress({ street_address: value })}
       />
+      <Controller
+        name="street_address"
+        control={control}
+        render={({ field }) => (
+          <InputField
+            label={t('profile_detail.street')}
+            {...field}
+            errorMessage={errors.street_address}
+          />
+        )}
+      />
       <div className="gap flex flex-wrap flex-row gap-6">
         <div className="grow">
-          <InputField
-            label={t('profile_detail.city')}
-            value={temporaryUserData.address?.locality || ''}
-            onChange={(value) => handleOnChangeAddress({ locality: value })}
+          <Controller
+            name="city"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                label={t('profile_detail.city')}
+                {...field}
+                errorMessage={errors.family_name}
+              />
+            )}
           />
         </div>
         <div className="w-52">
-          <InputField
-            label={t('profile_detail.postal_code')}
-            value={temporaryUserData.address?.postal_code || ''}
-            onChange={(value) => handleOnChangeAddress({ postal_code: value })}
+          <Controller
+            name="postal_code"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                label={t('profile_detail.postal_code')}
+                {...field}
+                errorMessage={errors.family_name}
+              />
+            )}
           />
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 
