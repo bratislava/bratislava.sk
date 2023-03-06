@@ -461,16 +461,21 @@ fragment ComponentSectionsListItems on ComponentSectionsListItems {
   }
 }
 
+fragment ComponentBlocksVideo on ComponentBlocksVideo {
+  id
+  title
+  speaker
+  url
+}
+
 fragment ComponentSectionsVideos on ComponentSectionsVideos {
   id
   title
   subtitle
   videos {
-    id
-    title
-    speaker
-    url
+    ...ComponentBlocksVideo
   }
+  buttonContent
 }
 
 fragment NumericalListItem on ComponentBlocksNumericalListItem {
