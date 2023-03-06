@@ -1,4 +1,4 @@
-fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
+fragment ComponentBlocksIconWithTitleAndDescription on ComponentBlocksIconWithTitleAndDescription {
     title
     desc
     icon {
@@ -11,7 +11,7 @@ fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
     }
 }
 
-fragment DocumentList on ComponentSectionsDocumentList {
+fragment ComponentSectionsDocumentList on ComponentSectionsDocumentList {
     vzns {
         data {
             id
@@ -76,7 +76,7 @@ fragment DocumentList on ComponentSectionsDocumentList {
     }
 }
 
-fragment GalleryItem on ComponentBlocksGalleryItem {
+fragment ComponentBlocksGalleryItem on ComponentBlocksGalleryItem {
     imgTitle
     imgSubtitle
     imgSubtext
@@ -97,7 +97,7 @@ fragment ComponentSectionsGallery on ComponentSectionsGallery {
     title
     subtitle
     galleryItems {
-        ...GalleryItem
+        ...ComponentBlocksGalleryItem
     }
 }
 
@@ -117,7 +117,7 @@ fragment ComponentSectionsIconTitleDesc on ComponentSectionsIconTitleDesc {
     title
     hasBackground
     list {
-        ...IconTitleDesc
+        ...ComponentBlocksIconWithTitleAndDescription
     }
 }
 
@@ -151,7 +151,7 @@ fragment ComponentSectionsIframe on ComponentSectionsIframe {
     allowGeolocation
 }
 
-fragment File on ComponentBlocksFile {
+fragment ComponentBlocksFile on ComponentBlocksFile {
     title
     category
     media {
@@ -170,7 +170,7 @@ fragment ComponentSectionsFileList on ComponentSectionsFileList {
     hasBackground
     # TODO consider limit -1
     fileList(pagination: { limit: 500 }) {
-        ...File
+        ...ComponentBlocksFile
     }
 }
 
@@ -191,7 +191,7 @@ fragment ComponentSectionsWaves on ComponentSectionsWaves {
     isRich
 }
 
-fragment PageLink on ComponentBlocksPageLink {
+fragment ComponentBlocksPageLink on ComponentBlocksPageLink {
     title
     url
     anchor
@@ -211,7 +211,7 @@ fragment ComponentSectionsLinks on ComponentSectionsLinks {
     hasBackground
     # TODO consider limit -1
     pageLinks(pagination: { limit: 100 }) {
-        ...PageLink
+        ...ComponentBlocksPageLink
     }
 }
 
@@ -226,7 +226,7 @@ fragment ComponentSectionsContact on ComponentSectionsContact {
     address
 }
 
-fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
+fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
     title
     subtitle
     category
@@ -234,7 +234,7 @@ fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
     urlLabel
 }
 
-fragment FlatText on ComponentAccordionItemsFlatText {
+fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
     category
     content
     width
@@ -252,7 +252,7 @@ fragment FlatText on ComponentAccordionItemsFlatText {
     }
 }
 
-fragment Institution on ComponentAccordionItemsInstitution {
+fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitution {
     title
     subtitle
     category
@@ -267,13 +267,13 @@ fragment ComponentSectionsAccordion on ComponentSectionsAccordion {
     title
     hasBackground
     institutions(pagination: { limit: -1 }) {
-        ...Institution
+        ...ComponentAccordionItemsInstitution
     }
     flatText(pagination: { limit: -1 }) {
-        ...FlatText
+        ...ComponentAccordionItemsFlatText
     }
     institutionsNarrow(pagination: { limit: -1 }) {
-        ...institutionsNarrow
+        ...ComponentAccordionItemsInstitutionNarrow
     }
 }
 
@@ -321,14 +321,14 @@ fragment ComponentSectionsVideos on ComponentSectionsVideos {
     buttonContent
 }
 
-fragment NumericalListItem on ComponentBlocksNumericalListItem {
+fragment ComponentBlocksNumericalListItem on ComponentBlocksNumericalListItem {
     text
 }
 
 fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
     id
     items {
-        ...NumericalListItem
+        ...ComponentBlocksNumericalListItem
     }
     title
     variant
@@ -349,7 +349,7 @@ fragment Sections on PageSectionsDynamicZone {
     }
 
     ... on ComponentSectionsDocumentList {
-        ...DocumentList
+        ...ComponentSectionsDocumentList
     }
 
     ... on ComponentSectionsDivider {

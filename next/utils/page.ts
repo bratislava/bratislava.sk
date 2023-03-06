@@ -2,8 +2,8 @@
 import {
   BlogPostFragment,
   BlogPostLinkFragment,
+  ComponentBlocksFileFragment,
   Enum_Pagecategory_Color,
-  FileFragment,
   FooterFragment,
   MainMenuItemFragment,
   PageLinkFragment,
@@ -222,7 +222,7 @@ export const parseBlogPostLink = (
 }
 
 // Page FileList
-export const formatFiles = (files: FileFragment[]): TFile[] =>
+export const formatFiles = (files: ComponentBlocksFileFragment[]): TFile[] =>
   files.map((file) => ({
     title: file.title ?? undefined,
     category: file.category ?? undefined,
@@ -236,7 +236,7 @@ export const formatFiles = (files: FileFragment[]): TFile[] =>
     },
   }))
 
-export const groupByCategoryFileList = (fileList: FileFragment[]) => {
+export const groupByCategoryFileList = (fileList: ComponentBlocksFileFragment[]) => {
   const files = fileList.map((file) => ({
     category: file.category ?? '',
     media: file.media,
