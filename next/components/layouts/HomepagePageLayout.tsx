@@ -44,7 +44,7 @@ const HomepagePageLayout = ({
         </div>
         <div className="bg-white">
           <WithoutMenuSection
-            mainMenuItems={menuItems}
+            mainMenuItems={menuItems ?? []}
             homepageHeader={header}
             elementRef={elementRef}
           />
@@ -58,7 +58,7 @@ const HomepagePageLayout = ({
             )}
           >
             <BAStickyMenu
-              menuItems={menuItems}
+              menuItems={menuItems ?? []}
               isVisible={menuState === STICKY_MENU_STATE.VISIBLE}
             />
           </div>
