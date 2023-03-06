@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: platbadane-${BUILD_REPOSITORY_NAME}-ingress
+  namespace: ${NAMESPACE}
+  labels:
+    service: redirect
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/issue-temporary-certificate: 'true'
+    kubernetes.io/ingress.class: haproxy
+    ingress.kubernetes.io/redirect-to: 'https://www.${HOSTNAME}/mesto-bratislava/dane-a-poplatky/dan-z-nehnutelnosti/digitalna-platba'
+spec:
+  tls:
+    - hosts:
+        - platbadane.${DEPLOYMENT_ENV}bratislava.sk
+        - www.platbadane.${DEPLOYMENT_ENV}bratislava.sk
+      secretName: platbadane-${BUILD_REPOSITORY_NAME}-tls
+  rules:
+    - host: platbadane.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.platbadane.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
