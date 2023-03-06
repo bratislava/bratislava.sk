@@ -21,7 +21,7 @@ const ThankYouCard = ({ status, title, content }: ThankYouCardBase) => {
         className={cx(
           'min-w-14 md:min-w-[88px] w-14 md:w-[88px] h-14 md:h-[88px] bg-negative-100 flex justify-center items-center rounded-full',
           {
-            'bg-negative-100': status.includes('error'),
+            'bg-negative-100': status?.includes('error'),
             'bg-success-100': status === 'success',
           },
         )}
