@@ -4,21 +4,6 @@ query Footer($locale: I18NLocaleCode!) {
     }
 }
 
-fragment PageLink on ComponentBlocksPageLink {
-    title
-    url
-    anchor
-    page {
-        data {
-            attributes {
-                title
-                slug
-                locale
-            }
-        }
-    }
-}
-
 fragment Footer on FooterEntityResponse {
     data {
         attributes {
