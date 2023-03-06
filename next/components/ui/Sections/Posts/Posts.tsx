@@ -95,6 +95,8 @@ export const Posts = ({
   const deadline = LocalDate.of(2023, Month.MARCH, 14)
   const isAfterDeadline = Period.between(now, deadline).isNegative()
 
+  const roadClosuresAddress = 'doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
+
   return (
     <div className={cx(className)}>
       <HorizontalScrollWrapper className="-mx-8 justify-start space-x-4 px-8 lg:justify-center">
@@ -223,88 +225,107 @@ export const Posts = ({
         <div className="mt-8 block lg:mt-14">
           {/* TODO erase unused code after 14.3.2023 and let only iframe part */}
           {isAfterDeadline ? (
-            <Iframe
-              url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${getLanguageKey(
-                locale,
-              )}`}
-              iframeWidth="container"
-              iframeHeight="100"
-              fullHeight
-              allowFullscreen={false}
-            />
-          ) : (
-            <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-              <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
-                {rozkoPosts?.data[0] && (
-                  <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />
-                )}
-                {rozkoPosts?.data[1] && (
-                  <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />
-                )}
-
-                {rozkoPosts?.data?.length > 2 && (
-                  <div className="hidden lg:block">
-                    {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
-                      const card = newsCard.attributes
-                      const tag = card.tag.data?.attributes
-                      return (
-                        <div key={i} className="relative">
-                          {card.tag && (
-                            <div className="mb-5">
-                              <Tag
-                                title={tag?.title}
-                                color={transformColorToCategory(
-                                  tag.pageCategory.data.attributes.color,
-                                )}
-                              />
-                            </div>
-                          )}
-                          <UILink href={`/blog/${card.slug}`}>
-                            <div
-                              className={cx(
-                                `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
-                                getHoverColor(tag?.pageCategory.data.attributes.color),
-                              )}
-                            >
-                              {card.title}
-                            </div>
-                          </UILink>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
-                <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                  {/* TODO: change this button to custom button */}
-                  {rozkoPosts?.data?.length > 0 && (
-                    <UILink href={t('rozkopavkyNews')}>
-                      <Button
-                        variant="transparent"
-                        className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
-                        icon={<ChevronRight />}
-                        hoverIcon={<ArrowRight />}
-                      >
-                        {readMoreNewsText}
-                      </Button>
-                    </UILink>
-                  )}
-                </div>
+            <>
+              <div className="pb-8">
+                <Iframe
+                  url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${getLanguageKey(
+                    locale,
+                  )}`}
+                  iframeWidth="container"
+                  iframeHeight="100"
+                  fullHeight
+                  allowFullscreen={false}
+                />
               </div>
-            </HorizontalScrollWrapper>
+              <div className="flex justify-center">
+                <UILink href={roadClosuresAddress}>
+                  {/* TODO: change this button to custom button */}
+                  <Button
+                    variant="transparent"
+                    className="text-20-medium mt-0 px-6 py-2 shadow-none"
+                    icon={<ChevronRight />}
+                    hoverIcon={<ArrowRight />}
+                  >
+                    {t('seeAllNews')}
+                  </Button>
+                </UILink>
+              </div>
+            </>
+          ) : (
+            <>
+              <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
+                <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
+                  {rozkoPosts?.data[0] && (
+                    <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />
+                  )}
+                  {rozkoPosts?.data[1] && (
+                    <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />
+                  )}
+
+                  {rozkoPosts?.data?.length > 2 && (
+                    <div className="hidden lg:block">
+                      {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
+                        const card = newsCard.attributes
+                        const tag = card.tag.data?.attributes
+                        return (
+                          <div key={i} className="relative">
+                            {card.tag && (
+                              <div className="mb-5">
+                                <Tag
+                                  title={tag?.title}
+                                  color={transformColorToCategory(
+                                    tag.pageCategory.data.attributes.color,
+                                  )}
+                                />
+                              </div>
+                            )}
+                            <UILink href={`/blog/${card.slug}`}>
+                              <div
+                                className={cx(
+                                  `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
+                                  getHoverColor(tag?.pageCategory.data.attributes.color),
+                                )}
+                              >
+                                {card.title}
+                              </div>
+                            </UILink>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
+                  <div className="col-span-3 mt-14 hidden justify-center lg:flex">
+                    {/* TODO: change this button to custom button */}
+                    {rozkoPosts?.data?.length > 0 && (
+                      <UILink href={roadClosuresAddress}>
+                        <Button
+                          variant="transparent"
+                          className="text-h4-medium px-6 py-3 text-font shadow-none hover:text-category-600"
+                          icon={<ChevronRight />}
+                          hoverIcon={<ArrowRight />}
+                        >
+                          {readMoreNewsText}
+                        </Button>
+                      </UILink>
+                    )}
+                  </div>
+                </div>
+              </HorizontalScrollWrapper>
+              <div className="flex justify-center lg:hidden">
+                <UILink href={roadClosuresAddress}>
+                  {/* TODO: change this button to custom button */}
+                  <Button
+                    variant="transparent"
+                    className="text-20-medium mt-0 px-6 py-2 shadow-none"
+                    icon={<ChevronRight />}
+                    hoverIcon={<ArrowRight />}
+                  >
+                    {t('allNews')}
+                  </Button>
+                </UILink>
+              </div>
+            </>
           )}
-          <div className="flex justify-center lg:hidden">
-            <UILink href={t('rozkopavkyNews')}>
-              {/* TODO: change this button to custom button */}
-              <Button
-                variant="transparent"
-                className="text-20-medium mt-0 px-6 py-2 shadow-none"
-                icon={<ChevronRight />}
-                hoverIcon={<ArrowRight />}
-              >
-                {t('allNews')}
-              </Button>
-            </UILink>
-          </div>
         </div>
       )}
       {activeTab > 2 && (
