@@ -245,7 +245,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   // this is probably a bug in their typing therefore the cast
   const formRef = useRef<Form>() as RefObject<Form>
 
-  const [nextStepIndex, setNextStepIndex] = useState<number>(0)
+  const [nextStepIndex, setNextStepIndex] = useState<number | null>(null)
   const [stepIndex, setStepIndex] = useState<number>(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
@@ -320,7 +320,12 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => setStepIndex(stepIndex + 1)
-  const jumpToStep = () => setStepIndex(nextStepIndex)
+  const jumpToStep = () => {
+    if (nextStepIndex) {
+      setStepIndex(nextStepIndex)
+      setNextStepIndex(null)
+    }
+  }
 
   const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
   const disableSkip = () => setIsSkipEnabled(false)
@@ -329,12 +334,9 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     formRef?.current?.submit()
   }
 
-  const skipToStep = (newNextStepIndex: number) => {
-    setNextStepIndex(newNextStepIndex)
-  }
-
   // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
   useEffect(() => {
+    console.log('is skip enabled:', isSkipEnabled)
     if (isSkipEnabled) {
       if (isComplete) {
         jumpToStep()
@@ -347,7 +349,15 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   // this is needed for skipping multiple steps through StepperView
   // TODO: could be reduced by wrapping nextStepIndex and isSkipEnabled to 1 object
-  useEffect(() => setIsSkipEnabled(true), [nextStepIndex])
+  useEffect(() => {
+    if (nextStepIndex) {
+      setIsSkipEnabled(true)
+    }
+  }, [nextStepIndex])
+
+  const skipToStep = (newNextStepIndex: number) => {
+    setNextStepIndex(newNextStepIndex)
+  }
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
     // transformNullToUndefined(stepFormData)
