@@ -19,6 +19,7 @@ import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { contactUrls, eServicesData } from '@utils/constants'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useTranslation } from 'next-i18next'
@@ -45,7 +46,7 @@ export const BANavBar = ({
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
-  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
 
   const { t } = useTranslation(['common'])
 
