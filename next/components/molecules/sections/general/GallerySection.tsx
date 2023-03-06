@@ -1,20 +1,22 @@
 import { ChevronDown } from '@assets/images'
 import IconEye from '@assets/images/icon-eye-white.svg'
-import { GalleryItemFragment } from '@bratislava/strapi-sdk-homepage'
+import { ComponentSectionsGalleryFragment } from '@bratislava/strapi-sdk-homepage'
 import { HorizontalScrollWrapper, Modal } from '@bratislava/ui-bratislava'
+import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
-export interface GalleryProps {
+export interface GallerySectionProps {
+  section: ComponentSectionsGalleryFragment
   className?: string
-  title?: string
-  subTitle?: string
-  galleryItems?: GalleryItemFragment[]
 }
 
-const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps) => {
+const GallerySection = ({
+  section: { title, subtitle, galleryItems },
+  className = '',
+}: GallerySectionProps) => {
   const { t } = useTranslation('common')
 
   const [currentIndex, setCurrentIndex] = useState<number | null>(null)
@@ -47,16 +49,16 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
   const currentItem = galleryItems && currentIndex !== null ? galleryItems[currentIndex] : undefined
 
   return (
-    <div className={cx(className, 'component-gallery sm:mb-6')}>
+    <div className={cx('component-gallery sm:mb-6')}>
       {title && (
         <div className="xs:text-default sm:text-title font-semibold sm:text-center">{title}</div>
       )}
-      {subTitle && <div className="text-default mt-5 sm:mt-6 sm:text-center">{subTitle}</div>}
+      {subtitle && <div className="text-default mt-5 sm:mt-6 sm:text-center">{subtitle}</div>}
 
       <div className="relative mx-[-30px] block overflow-hidden sm:hidden">
         <HorizontalScrollWrapper className={cx(className, 'flex overflow-visible')}>
           <div className="mt-6 flex w-full snap-x snap-mandatory gap-3.5 overflow-visible overflow-x-scroll px-[30px] pb-7">
-            {galleryItems?.map((image, index) => {
+            {galleryItems?.filter(isPresent).map((image, index) => {
               return (
                 <button
                   type="button"
@@ -110,7 +112,7 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
       </div>
 
       <div className="mt-14 mb-8 hidden w-full grid-cols-2 gap-8 sm:grid md:grid-cols-3">
-        {galleryItems?.map((image, index) => (
+        {galleryItems?.filter(isPresent).map((image, index) => (
           <button
             key={index}
             type="button"
@@ -229,4 +231,4 @@ const Gallery = ({ className = '', title, subTitle, galleryItems }: GalleryProps
   )
 }
 
-export default Gallery
+export default GallerySection
