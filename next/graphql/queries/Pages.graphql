@@ -495,22 +495,6 @@ fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
 }
 
 fragment ComponentSectionsOrganizationalStructure on ComponentSectionsOrganizationalStructure {
-  id
-  items {
-    title
-    departments {
-      title
-      # TODO consider limit -1
-      items(pagination: { limit: 50 }) {
-        isGroupTitle
-        title
-        # TODO consider limit -1
-        items(pagination: { limit: 50 }) {
-          title
-        }
-      }
-    }
-  }
   title
 }
 
