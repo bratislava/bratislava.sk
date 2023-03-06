@@ -25,7 +25,8 @@
   "buttons": {
     "previous": "Späť",
     "skip": "Preskočiť",
-    "continue": "Pokračovať"
+    "continue": "Pokračovať",
+    "send": "Odoslať"
   },
   "summary": "Sumár",
   "changes_submit": "Potvrdiť zmeny",

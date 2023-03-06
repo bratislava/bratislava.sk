@@ -26,7 +26,8 @@
   "buttons": {
     "previous": "Previous",
     "skip": "Skip",
-    "continue": "Continue"
+    "continue": "Continue",
+    "send": "Send"
   },
   "summary": "Summary",
   "all_steps": "All steps",
