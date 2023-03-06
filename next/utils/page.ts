@@ -301,14 +301,16 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
   )
 
 // Page Accordion Items
-export const groupByCategory = <T extends { category?: string }>(items: T[]) => {
+export const groupByCategory = <Category extends string | null, T extends { category?: Category }>(
+  items: T[],
+) => {
   const grouped = _(items)
     .groupBy((item) => item?.category)
     .sortBy((group) => items.indexOf(group[0]))
     .value()
   return Object.keys(grouped).map((key) => ({
-    category: grouped[key].length > 0 ? grouped[key][0]?.category : key,
-    items: grouped[key],
+    category: grouped[key].length > 0 ? grouped[key][0]?.category : (key as Category),
+    items: grouped[key] as T[],
   }))
 }
 
