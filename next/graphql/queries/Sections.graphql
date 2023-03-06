@@ -1,0 +1,421 @@
+fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
+    title
+    desc
+    icon {
+        data {
+            id
+            attributes {
+                url
+            }
+        }
+    }
+}
+
+fragment DocumentList on ComponentSectionsDocumentList {
+    vzns {
+        data {
+            id
+            attributes {
+                category
+                details
+                amedmentDocument {
+                    id
+                    title
+                    validFrom
+                    document {
+                        data {
+                            attributes {
+                                url
+                                size
+                                ext
+                                createdAt
+                            }
+                        }
+                    }
+                }
+                cancellationDocument {
+                    id
+                    title
+                    validFrom
+                    document {
+                        data {
+                            attributes {
+                                url
+                                size
+                                ext
+                                createdAt
+                            }
+                        }
+                    }
+                }
+                title
+                validFrom
+                mainDocument {
+                    data {
+                        attributes {
+                            url
+                            size
+                            ext
+                            createdAt
+                        }
+                    }
+                }
+                consolidatedText {
+                    data {
+                        id
+                        attributes {
+                            url
+                            size
+                            ext
+                            createdAt
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+fragment GalleryItem on ComponentBlocksGalleryItem {
+    imgTitle
+    imgSubtitle
+    imgSubtext
+    media {
+        data {
+            attributes {
+                url
+                width
+                height
+                caption
+                alternativeText
+            }
+        }
+    }
+}
+
+fragment ComponentSectionsGallery on ComponentSectionsGallery {
+    title
+    subtitle
+    galleryItems {
+        ...GalleryItem
+    }
+}
+
+fragment ComponentSectionsArticlesList on ComponentSectionsArticlesList {
+    title
+    category {
+        data {
+            attributes {
+                title
+            }
+        }
+    }
+    filtering
+}
+
+fragment ComponentSectionsIconTitleDesc on ComponentSectionsIconTitleDesc {
+    title
+    hasBackground
+    list {
+        ...IconTitleDesc
+    }
+}
+
+fragment ComponentSectionsDivider on ComponentSectionsDivider {
+    hasBackground
+    style
+}
+
+fragment ComponentSectionsTextWithImage on ComponentSectionsTextWithImage {
+    hasBackground
+    content
+    imagePosition
+    imageShadow
+    imageSrc {
+        data {
+            attributes {
+                url
+                alternativeText
+            }
+        }
+    }
+}
+
+fragment ComponentSectionsIframe on ComponentSectionsIframe {
+    url
+    iframeWidth
+    iframeHeight
+    fullHeight
+    allowFullscreen
+    css
+    allowGeolocation
+}
+
+fragment File on ComponentBlocksFile {
+    title
+    category
+    media {
+        data {
+            attributes {
+                url
+                createdAt
+                size
+                ext
+            }
+        }
+    }
+}
+
+fragment ComponentSectionsFileList on ComponentSectionsFileList {
+    hasBackground
+    # TODO consider limit -1
+    fileList(pagination: { limit: 500 }) {
+        ...File
+    }
+}
+
+fragment ComponentSectionsColumnedText on ComponentSectionsColumnedText {
+    hasBackground
+    content
+}
+
+fragment ComponentSectionsNarrowText on ComponentSectionsNarrowText {
+    hasBackground
+    content
+    width
+    align
+}
+
+fragment ComponentSectionsWaves on ComponentSectionsWaves {
+    position
+    isRich
+}
+
+fragment PageLink on ComponentBlocksPageLink {
+    title
+    url
+    anchor
+    page {
+        data {
+            attributes {
+                title
+                slug
+                locale
+            }
+        }
+    }
+}
+
+fragment ComponentSectionsLinks on ComponentSectionsLinks {
+    title
+    hasBackground
+    # TODO consider limit -1
+    pageLinks(pagination: { limit: 100 }) {
+        ...PageLink
+    }
+}
+
+fragment ComponentSectionsContact on ComponentSectionsContact {
+    title
+    hasBackground
+    description
+    phone
+    phoneLabel
+    email
+    emailLabel
+    address
+}
+
+fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
+    title
+    subtitle
+    category
+    url
+    urlLabel
+}
+
+fragment FlatText on ComponentAccordionItemsFlatText {
+    category
+    content
+    width
+    align
+    moreLinkTitle
+    moreLinkUrl
+    moreLinkPage {
+        data {
+            attributes {
+                slug
+                title
+                locale
+            }
+        }
+    }
+}
+
+fragment Institution on ComponentAccordionItemsInstitution {
+    title
+    subtitle
+    category
+    firstColumn
+    secondColumn
+    thirdColumn
+    url
+    urlLabel
+}
+
+fragment ComponentSectionsAccordion on ComponentSectionsAccordion {
+    title
+    hasBackground
+    institutions(pagination: { limit: -1 }) {
+        ...Institution
+    }
+    flatText(pagination: { limit: -1 }) {
+        ...FlatText
+    }
+    institutionsNarrow(pagination: { limit: -1 }) {
+        ...institutionsNarrow
+    }
+}
+
+fragment ComponentSectionsCalculator on ComponentSectionsCalculator {
+    hasBackground
+    single_adult_value
+    another_adult_value
+    child_value
+}
+
+fragment ComponentSectionsListItems on ComponentSectionsListItems {
+    title
+    hasBackground
+    listItems {
+        content
+        moreLinkTitle
+        moreLinkUrl
+        moreLinkPage {
+            data {
+                attributes {
+                    locale
+                    slug
+                    title
+                }
+            }
+        }
+        circleOption
+    }
+}
+
+fragment ComponentBlocksVideo on ComponentBlocksVideo {
+    id
+    title
+    speaker
+    url
+}
+
+fragment ComponentSectionsVideos on ComponentSectionsVideos {
+    id
+    title
+    subtitle
+    videos {
+        ...ComponentBlocksVideo
+    }
+    buttonContent
+}
+
+fragment NumericalListItem on ComponentBlocksNumericalListItem {
+    text
+}
+
+fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
+    id
+    items {
+        ...NumericalListItem
+    }
+    title
+    variant
+    buttonText
+    buttonLink
+    hasBackground
+}
+
+fragment ComponentSectionsOrganizationalStructure on ComponentSectionsOrganizationalStructure {
+    title
+}
+
+fragment Sections on PageSectionsDynamicZone {
+    __typename
+
+    ... on ComponentSectionsIconTitleDesc {
+        ...ComponentSectionsIconTitleDesc
+    }
+
+    ... on ComponentSectionsDocumentList {
+        ...DocumentList
+    }
+
+    ... on ComponentSectionsDivider {
+        ...ComponentSectionsDivider
+    }
+
+    ... on ComponentSectionsTextWithImage {
+        ...ComponentSectionsTextWithImage
+    }
+
+    ... on ComponentSectionsIframe {
+        ...ComponentSectionsIframe
+    }
+
+    ... on ComponentSectionsGallery {
+        ...ComponentSectionsGallery
+    }
+
+    ... on ComponentSectionsFileList {
+        ...ComponentSectionsFileList
+    }
+
+    ... on ComponentSectionsColumnedText {
+        ...ComponentSectionsColumnedText
+    }
+
+    ... on ComponentSectionsNarrowText {
+        ...ComponentSectionsNarrowText
+    }
+
+    ... on ComponentSectionsWaves {
+        ...ComponentSectionsWaves
+    }
+
+    ... on ComponentSectionsLinks {
+        ...ComponentSectionsLinks
+    }
+    ... on ComponentSectionsContact {
+        ...ComponentSectionsContact
+    }
+
+    ... on ComponentSectionsAccordion {
+        ...ComponentSectionsAccordion
+    }
+
+    ... on ComponentSectionsCalculator {
+        ...ComponentSectionsCalculator
+    }
+
+    ... on ComponentSectionsListItems {
+        ...ComponentSectionsListItems
+    }
+
+    ... on ComponentSectionsVideos {
+        ...ComponentSectionsVideos
+    }
+
+    ... on ComponentSectionsNumericalList {
+        ...ComponentSectionsNumericalList
+    }
+
+    ... on ComponentSectionsArticlesList {
+        ...ComponentSectionsArticlesList
+    }
+
+    ... on ComponentSectionsOrganizationalStructure {
+        ...ComponentSectionsOrganizationalStructure
+    }
+}
