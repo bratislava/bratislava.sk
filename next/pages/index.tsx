@@ -159,7 +159,7 @@ const Homepage = ({
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout
         menuItems={menuItems}
-        footer={(footer && parseFooter(footer)) ?? undefined}
+        footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
         bookmarks={cards}
       >
         <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">

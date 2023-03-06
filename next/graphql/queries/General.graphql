@@ -1,28 +1,28 @@
 query Footer($locale: I18NLocaleCode!) {
   footer(locale: $locale) {
-    ...Footer
+    data {
+      attributes {
+        ...Footer
+      }
+    }
   }
 }
 
-fragment Footer on FooterEntityResponse {
-  data {
-    attributes {
-      address
-      copyright
-      email
-      facebookUrl
-      instagramUrl
-      phone
-      youtubeUrl
-      accessibilityLink {
-        ...PageLinkBlock
-      }
-      footerSections {
-        title
-        pageLinks {
-          ...PageLinkBlock
-        }
-      }
+fragment Footer on Footer {
+  address
+  copyright
+  email
+  facebookUrl
+  instagramUrl
+  phone
+  youtubeUrl
+  accessibilityLink {
+    ...PageLinkBlock
+  }
+  footerSections {
+    title
+    pageLinks {
+      ...PageLinkBlock
     }
   }
 }

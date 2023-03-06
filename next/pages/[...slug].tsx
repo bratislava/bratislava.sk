@@ -2,7 +2,11 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { GeneralPageFragment, MainMenuItemFragment, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import {
+  GeneralPageFragment,
+  MainMenuItemFragment,
+  PageBySlugQuery,
+} from '@bratislava/strapi-sdk-homepage'
 import { paginationObj } from '@utils/constants'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
@@ -23,7 +27,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   while (defaultStart !== 0) {
     // eslint-disable-next-line no-await-in-loop
-    const { pages } = await client.PagesStaticPaths({ page: defaultStart, limit: paginationObj.maxLimit })
+    const { pages } = await client.PagesStaticPaths({
+      page: defaultStart,
+      limit: paginationObj.maxLimit,
+    })
     allPages.push(...pages.data)
     if (pages.data.length === 0) {
       defaultStart = 0
@@ -92,7 +99,7 @@ interface GenericPageProps {
 }
 
 const Page = ({ page, footer, mainMenu }: GenericPageProps) => {
-  const parsedFooter = parseFooter(footer)
+  const parsedFooter = parseFooter(footer?.data?.attributes)
   const menuItems = parseMainMenu(mainMenu)
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
     return {
