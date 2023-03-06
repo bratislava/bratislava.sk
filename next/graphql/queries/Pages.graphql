@@ -1,16 +1,4 @@
-query Pages {
-  pages {
-    data {
-      id
-      attributes {
-        slug
-        sections {
-          ...Sections
-        }
-      }
-    }
-  }
-}
+
 
 query PagesStaticPaths($page: Int, $limit: Int) {
   pages(pagination: { page: $page, pageSize: $limit }) {
@@ -37,55 +25,7 @@ query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
-query VznDetail($id: ID!) {
-  vzn(id: $id) {
-    data {
-      id
-      attributes {
-        title
-        validFrom
-        mainDocument {
-          data {
-            attributes {
-              url
-              size
-              ext
-              createdAt
-            }
-          }
-        }
-        cancellationDocument {
-          id
-          title
-          document {
-            data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
-            }
-          }
-        }
-        amedmentDocument {
-          id
-          title
-          document {
-            data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+
 
 fragment GeneralPage on PageEntityResponseCollection {
   data {
@@ -214,72 +154,6 @@ fragment Localization on PageRelationResponseCollection {
   }
 }
 
-fragment Footer on FooterEntityResponse {
-  data {
-    attributes {
-      address
-      copyright
-      email
-      facebookUrl
-      instagramUrl
-      phone
-      youtubeUrl
-      accessibilityLink {
-        ...PageLink
-      }
-      footerSections {
-        title
-        pageLinks {
-          ...PageLink
-        }
-      }
-    }
-  }
-}
-
-fragment MainMenuItem on PageCategoryEntityResponseCollection {
-  data {
-    id
-    attributes {
-      title
-      color
-      icon
-      iconHover
-      priority
-      subcategories {
-        data {
-          id
-          attributes {
-            title
-            priority
-            icon
-            moreLink {
-              ...PageLink
-            }
-            pages {
-              ...PageLink
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-fragment PageLink on ComponentBlocksPageLink {
-  title
-  url
-  anchor
-  page {
-    data {
-      attributes {
-        title
-        slug
-        locale
-      }
-    }
-  }
-}
 
 fragment IconTitleDesc on ComponentBlocksIconWithTitleAndDescription {
   title
@@ -359,6 +233,81 @@ fragment DocumentList on ComponentSectionsDocumentList {
   }
 }
 
+fragment GalleryItem on ComponentBlocksGalleryItem {
+  imgTitle
+  imgSubtitle
+  imgSubtext
+  media {
+    data {
+      attributes {
+        url
+        width
+        height
+        caption
+        alternativeText
+      }
+    }
+  }
+}
+
+fragment ComponentSectionsGallery on ComponentSectionsGallery {
+  title
+  subtitle
+  galleryItems {
+    ...GalleryItem
+  }
+}
+
+fragment ComponentSectionsArticlesList on ComponentSectionsArticlesList {
+  title
+  category {
+    data {
+      attributes {
+        title
+      }
+    }
+  }
+  filtering
+}
+
+fragment ComponentSectionsIconTitleDesc on ComponentSectionsIconTitleDesc {
+  title
+  hasBackground
+  list {
+    ...IconTitleDesc
+  }
+}
+
+fragment ComponentSectionsDivider on ComponentSectionsDivider {
+  hasBackground
+  style
+}
+
+fragment ComponentSectionsTextWithImage on ComponentSectionsTextWithImage {
+  hasBackground
+  content
+  imagePosition
+  imageShadow
+  imageSrc {
+    data {
+      attributes {
+        url
+        alternativeText
+      }
+    }
+  }
+}
+
+fragment ComponentSectionsIframe on ComponentSectionsIframe {
+  url
+  iframeWidth
+  iframeHeight
+  fullHeight
+  allowFullscreen
+  css
+  allowGeolocation
+}
+
 fragment File on ComponentBlocksFile {
   title
   category
@@ -372,6 +321,66 @@ fragment File on ComponentBlocksFile {
       }
     }
   }
+}
+
+fragment ComponentSectionsFileList on ComponentSectionsFileList {
+  hasBackground
+  # TODO consider limit -1
+  fileList(pagination: { limit: 500 }) {
+    ...File
+  }
+}
+
+fragment ComponentSectionsColumnedText on ComponentSectionsColumnedText {
+  hasBackground
+  content
+}
+
+fragment ComponentSectionsNarrowText on ComponentSectionsNarrowText {
+  hasBackground
+  content
+  width
+  align
+}
+
+fragment ComponentSectionsWaves on ComponentSectionsWaves {
+  position
+  isRich
+}
+
+fragment PageLink on ComponentBlocksPageLink {
+  title
+  url
+  anchor
+  page {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
+    }
+  }
+}
+
+fragment ComponentSectionsLinks on ComponentSectionsLinks {
+  title
+  hasBackground
+  # TODO consider limit -1
+  pageLinks(pagination: { limit: 100 }) {
+    ...PageLink
+  }
+}
+
+fragment ComponentSectionsContact on ComponentSectionsContact {
+  title
+  hasBackground
+  description
+  phone
+  phoneLabel
+  email
+  emailLabel
+  address
 }
 
 fragment institutionsNarrow on ComponentAccordionItemsInstitutionNarrow {
@@ -411,36 +420,100 @@ fragment Institution on ComponentAccordionItemsInstitution {
   urlLabel
 }
 
+fragment ComponentSectionsAccordion on ComponentSectionsAccordion {
+  title
+  hasBackground
+  institutions(pagination: { limit: -1 }) {
+    ...Institution
+  }
+  flatText(pagination: { limit: -1 }) {
+    ...FlatText
+  }
+  institutionsNarrow(pagination: { limit: -1 }) {
+    ...institutionsNarrow
+  }
+}
+
+fragment ComponentSectionsCalculator on ComponentSectionsCalculator {
+  hasBackground
+  single_adult_value
+  another_adult_value
+  child_value
+}
+
+fragment ComponentSectionsListItems on ComponentSectionsListItems {
+  title
+  hasBackground
+  listItems {
+    content
+    moreLinkTitle
+    moreLinkUrl
+    moreLinkPage {
+      data {
+        attributes {
+          locale
+          slug
+          title
+        }
+      }
+    }
+    circleOption
+  }
+}
+
+fragment ComponentSectionsVideos on ComponentSectionsVideos {
+  id
+  title
+  subtitle
+  videos {
+    id
+    title
+    speaker
+    url
+  }
+}
+
 fragment NumericalListItem on ComponentBlocksNumericalListItem {
   text
 }
 
-fragment GalleryItem on ComponentBlocksGalleryItem {
-  imgTitle
-  imgSubtitle
-  imgSubtext
-  media {
-    data {
-      attributes {
-        url
-        width
-        height
-        caption
-        alternativeText
+fragment ComponentSectionsNumericalList on ComponentSectionsNumericalList {
+  id
+  items {
+    ...NumericalListItem
+  }
+  title
+  variant
+  buttonText
+  buttonLink
+  hasBackground
+}
+
+fragment ComponentSectionsOrganizationalStructure on ComponentSectionsOrganizationalStructure {
+  id
+  items {
+    title
+    departments {
+      title
+      # TODO consider limit -1
+      items(pagination: { limit: 50 }) {
+        isGroupTitle
+        title
+        # TODO consider limit -1
+        items(pagination: { limit: 50 }) {
+          title
+        }
       }
     }
   }
+  title
 }
 
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
   ... on ComponentSectionsIconTitleDesc {
-    title
-    hasBackground
-    list {
-      ...IconTitleDesc
-    }
+    ...ComponentSectionsIconTitleDesc
   }
 
   ... on ComponentSectionsDocumentList {
@@ -448,190 +521,69 @@ fragment Sections on PageSectionsDynamicZone {
   }
 
   ... on ComponentSectionsDivider {
-    hasBackground
-    style
+    ...ComponentSectionsDivider
   }
 
   ... on ComponentSectionsTextWithImage {
-    hasBackground
-    content
-    imagePosition
-    imageShadow
-    imageSrc {
-      data {
-        attributes {
-          url
-          alternativeText
-        }
-      }
-    }
+    ...ComponentSectionsTextWithImage
   }
 
   ... on ComponentSectionsIframe {
-    url
-    iframeWidth
-    iframeHeight
-    fullHeight
-    allowFullscreen
-    css
-    allowGeolocation
+    ...ComponentSectionsIframe
   }
 
   ... on ComponentSectionsGallery {
-    title
-    subtitle
-    galleryItems {
-      imgTitle
-      imgSubtitle
-      imgSubtext
-      media {
-        data {
-          attributes {
-            url
-            width
-            height
-            caption
-            alternativeText
-          }
-        }
-      }
-    }
+    ...ComponentSectionsGallery
   }
 
   ... on ComponentSectionsFileList {
-    hasBackground
-    fileList(pagination: { limit: 500 }) {
-      ...File
-    }
+    ...ComponentSectionsFileList
   }
 
   ... on ComponentSectionsColumnedText {
-    hasBackground
-    content
+    ...ComponentSectionsColumnedText
   }
 
   ... on ComponentSectionsNarrowText {
-    hasBackground
-    content
-    width
-    align
+    ...ComponentSectionsNarrowText
   }
 
   ... on ComponentSectionsWaves {
-    position
-    isRich
+    ...ComponentSectionsWaves
   }
 
   ... on ComponentSectionsLinks {
-    title
-    hasBackground
-    pageLinks(pagination: { limit: 100 }) {
-      ...PageLink
-    }
+    ...ComponentSectionsLinks
   }
   ... on ComponentSectionsContact {
-    title
-    hasBackground
-    description
-    phone
-    phoneLabel
-    email
-    emailLabel
-    address
+    ...ComponentSectionsContact
   }
 
   ... on ComponentSectionsAccordion {
-    title
-    hasBackground
-    institutions(pagination: { limit: 100 }) {
-      ...Institution
-    }
-    flatText(pagination: { limit: 100 }) {
-      ...FlatText
-    }
-    institutionsNarrow(pagination: { limit: 100 }) {
-      ...institutionsNarrow
-    }
+    ...ComponentSectionsAccordion
   }
 
   ... on ComponentSectionsCalculator {
-    hasBackground
-    single_adult_value
-    another_adult_value
-    child_value
+    ...ComponentSectionsCalculator
   }
 
   ... on ComponentSectionsListItems {
-    title
-    hasBackground
-    listItems {
-      content
-      moreLinkTitle
-      moreLinkUrl
-      moreLinkPage {
-        data {
-          attributes {
-            locale
-            slug
-            title
-          }
-        }
-      }
-      circleOption
-    }
+    ...ComponentSectionsListItems
   }
 
   ... on ComponentSectionsVideos {
-    id
-    title
-    subtitle
-    videos {
-      id
-      title
-      speaker
-      url
-    }
+    ...ComponentSectionsVideos
   }
 
   ... on ComponentSectionsNumericalList {
-    id
-    items {
-      ...NumericalListItem
-    }
-    title
-    variant
-    buttonText
-    buttonLink
-    hasBackground
+    ...ComponentSectionsNumericalList
   }
 
   ... on ComponentSectionsArticlesList {
-    title
-    category {
-      data {
-        attributes {
-          title
-        }
-      }
-    }
-    filtering
+    ...ComponentSectionsArticlesList
   }
 
   ... on ComponentSectionsOrganizationalStructure {
-    id
-    items {
-      title
-      departments {
-        title
-        items(pagination: { limit: 50 }) {
-          isGroupTitle
-          title
-          items(pagination: { limit: 50 }) {
-            title
-          }
-        }
-      }
-    }
-    title
+    ...ComponentSectionsOrganizationalStructure
   }
 }
