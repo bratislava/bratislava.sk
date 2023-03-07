@@ -23,10 +23,10 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const [t] = useTranslation('forms')
   const form = useFormStepper(escapedSlug, eform.schema)
   const [isOnShowSkipModal, setIsOnShowSkipModal] = useState<boolean>(false)
-  const [skipModalWasShowed, setSkipModalWasShowed] = useState<boolean>(false)
+  const [skipModalWasShown, setSkipModalWasShown] = useState<boolean>(false)
 
   const skipButtonHandler = () => {
-    if (skipModalWasShowed) form.skipToStep(form.stepIndex + 1)
+    if (skipModalWasShown) form.skipToStep(form.stepIndex + 1)
     setIsOnShowSkipModal(true)
   }
 
@@ -41,15 +41,15 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
         />
         <SkipStepModal
-          show={isOnShowSkipModal && !skipModalWasShowed}
+          show={isOnShowSkipModal && !skipModalWasShown}
           onClose={() => {
             setIsOnShowSkipModal(false)
-            setSkipModalWasShowed(true)
+            setSkipModalWasShown(true)
           }}
           onSkip={() => {
             form.skipToStep(form.stepIndex + 1)
             setIsOnShowSkipModal(false)
-            setSkipModalWasShowed(true)
+            setSkipModalWasShown(true)
           }}
         />
       </div>
