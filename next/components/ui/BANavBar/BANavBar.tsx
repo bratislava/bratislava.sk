@@ -21,6 +21,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { contactUrls, eServicesData } from '@utils/constants'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
+import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
@@ -33,17 +34,10 @@ import { Link } from '../Link/Link'
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
-  handleSearch?: (searchOpen: boolean) => void
   pageColor?: string
 }
 
-export const BANavBar = ({
-  className,
-  menuItems,
-  handleSearch,
-  pageColor,
-  ...languageSelectProps
-}: IProps) => {
+export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectProps }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
@@ -60,10 +54,11 @@ export const BANavBar = ({
         className={cx(
           className,
           'text-p2 items-center ',
-          'fixed top-0 left-0 w-full bg-white z-50',
+          'fixed top-0 left-0 w-full bg-white z-40',
         )}
       >
         <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
+          <SkipToContentButton />
           <Brand
             className="group"
             url="/"
