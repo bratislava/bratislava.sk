@@ -8,6 +8,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
@@ -58,7 +59,7 @@ export const AccountNavBar = ({
   const [burgerOpen, setBurgerOpen] = useState(false)
   const { isAuth, logout, userData } = useAccount()
 
-  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])
@@ -79,6 +80,25 @@ export const AccountNavBar = ({
     const selectedMenuItem = menuItems?.find((opt) => opt.id.toString() === key)
     if (selectedMenuItem) onRouteChange(selectedMenuItem)
   }
+
+  /**
+   * Matches `/account` URL with given param sectionItem link
+   * @match
+   * `/account`
+   * @param {MenuItem} sectionItem - Menu item object.
+   */
+  const isAccountPage = (sectionItem: MenuItem) =>
+    router.route.endsWith('/account') && router.route.includes(sectionItem.link)
+
+  /**
+   * Matches parent URL with children url (inner pages)
+   * @example
+   * `account/taxes-and-fees` and `account/taxes-and-fees/[id]` where `taxes-and-fees` is parent page
+   * It also excludes home page `/account` if we are on `account/taxes-and-fees`
+   * @param {MenuItem} sectionItem - Menu item object.
+   */
+  const isActive = (sectionItem: MenuItem) =>
+    sectionItem?.link.includes(router.route.split('/')[2]) || isAccountPage(sectionItem)
 
   return (
     <>
@@ -199,7 +219,7 @@ export const AccountNavBar = ({
                       className={cx(
                         'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
                         {
-                          'text-main-700 border-main-700': router.route.endsWith(sectionItem?.link),
+                          'text-main-700 border-main-700': isActive(sectionItem),
                         },
                       )}
                     >

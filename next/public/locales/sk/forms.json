@@ -7,7 +7,6 @@
   },
   "selectAll": "Vybrať všetko",
   "deselectAll": "Odobrať všetko",
-
   "correspondece_address_title": "Zmena korešpondenčnej adresy",
   "correspondece_address_description": "Údaje, ktoré máme v našich systémoch sa nemusia vždy zhodovať so skutočnosťou. Pomôžte nám držať naše údaje vždy aktuálne a dajte nám vedieť, kde vás vieme zastihnúť.",
   "street_address_label": "Ulica a číslo",
@@ -21,7 +20,6 @@
   "postal_code_description": "Zadávajte bez medzier, napr. 11111",
   "postal_code_required": "PSČ je povinné",
   "postal_code_format": "PSČ nie je valídne",
-
   "buttons": {
     "previous": "Späť",
     "skip": "Preskočiť",
@@ -29,5 +27,11 @@
   },
   "summary": "Sumár",
   "changes_submit": "Potvrdiť zmeny",
-  "all_steps": "Všetky kroky"
+  "all_steps": "Všetky kroky",
+  "skip_step_modal": {
+    "title": "Vyplňte správne všetky povinné polia",
+    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť",
+    "button_skip_text": "Preskočiť",
+    "button_submit_text": "Upraviť"
+  }
 }

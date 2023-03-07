@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import ChevronDown from '../../../assets/images/forms/chevron-down.svg'
-import { useClickOutsideHandler } from '../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import { StepData } from '../types/TransformedFormData'
 import StepperViewList from './StepperViewList'
 import StepperViewRow from './StepperViewRow'
@@ -19,17 +18,9 @@ interface StepperViewProps {
 const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: StepperViewProps) => {
   const { t } = useTranslation('forms')
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
-  const [isClickedOutside, setIsClickedOutside] = useState<boolean>(false)
-
-  const handleDropdownClick = () => {
-    setIsClickedOutside(true)
-    setIsCollapsed((state) => !state)
-    setTimeout(() => setIsClickedOutside(false), 200)
-  }
-  const { clickOutsideRef } = useClickOutsideHandler(handleDropdownClick)
 
   const handleOnClickDropdownIcon = () => {
-    if (isCollapsed && !isClickedOutside) {
+    if (isCollapsed) {
       setIsCollapsed(false)
     }
   }
@@ -49,6 +40,9 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
       <div
         className={cx('flex flex-col', { 'sm:hidden': !forceMobileSize })}
         onClick={handleOnClickDropdownIcon}
+        onKeyDown={handleOnClickDropdownIcon}
+        role="button"
+        tabIndex={0}
       >
         <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg cursor-pointer">
           <StepperViewRow
@@ -60,29 +54,31 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
           />
           <ChevronDown className={cx({ 'rotate-180': !isCollapsed })} />
         </div>
-        {!isCollapsed && (
-          <div
-            className={cx('bg-gray-200 inset-0 fixed mt-1 z-50 flex flex-col gap-0.5')}
-            ref={clickOutsideRef}
-          >
-            <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
-              <h6 className="text-h6 grow">{t('all_steps')}</h6>
-              <div
-                className="h-full cursor-pointer flex flex-col justify-center"
-                onClick={() => setIsCollapsed(true)}
-              >
-                <CloseIcon />
-              </div>
-            </div>
-            <div className="bg-white grow">
-              <StepperViewList
-                steps={steps}
-                currentStep={currentStep}
-                onChangeStep={handleOnChangeStep}
-              />
-            </div>
+        <div
+          className={cx('fixed bg-gray-200 w-full h-full inset-0 mt-1 z-50 flex flex-col gap-0.5', {
+            'transition-all duration-500 h-screen w-screen': true,
+            'translate-y-full': isCollapsed,
+            'translate-y-0': !isCollapsed,
+          })}
+        >
+          <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
+            <h6 className="text-h6 grow">{t('all_steps')}</h6>
+            <button
+              type="button"
+              className="h-full cursor-pointer flex flex-col justify-center"
+              onClick={() => setIsCollapsed(true)}
+            >
+              <CloseIcon />
+            </button>
           </div>
-        )}
+          <div className="bg-white grow">
+            <StepperViewList
+              steps={steps}
+              currentStep={currentStep}
+              onChangeStep={handleOnChangeStep}
+            />
+          </div>
+        </div>
       </div>
     </>
   )
