@@ -378,8 +378,20 @@
   "tax_liability_breakdown": "Tax liability",
   "land_tax": "Land tax",
   "construction_tax": "Construction tax",
-  "tax_constructions": "Construction tax",
   "apartments_tax": "Tax on apartments",
+  "payment_data": "Payment data",
+  "constant_symbol": "Constant symbol",
+  "constant_symbol_number": "8147",
+  "variable_symbol": "Variable symbol",
+  "variable_symbol_number": "312006100",
+  "tax_due": "Tax due",
+  "card_payment": "Card payment",
+  "qr_code": "QR code",
+  "download_image": "Download image",
+  "use_one_of_ibans_to_pay": "When making a bank transfer, use one of the following IBAN accounts for payment:",
+  "you_will_be_redirected_to_the_payment_gateway": "You will be redirected to the payment gateway.",
+  "use_your_banking_app_to_load": "Use your banking app to load.",
+  "tax_constructions": "Construction tax",
   "thank_you": {
     "footer_text": "© 2023 Hlavné mesto Bratislava",
     "subtitle_mail": "<span className='text-p2'>V prípade akýchkoľvek otázok nás neváhajte kontaktovať na adrese:</span>",
@@ -411,5 +423,11 @@
       "button_to_formular_text": "Vyplniť dotazník",
       "button_to_profil_text": "Pokračovať do konta"
     }
+  },
+  "bank_info": {
+    "slovak_sporitelna": "Slovenská sporiteľňa, a.s.",
+    "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",
+    "csob": "ČSOB, a.s.",
+    "csob_iban": "SK31 7500 0000 0000 2574 7653"
   }
 }
