@@ -1,5 +1,6 @@
 import { ArrowLeft } from '@assets/images'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -22,7 +23,7 @@ const BackButton = () => {
 }
 
 export const LoginRegisterNavBar = ({ className, currentLanguage, backButtonHidden }: IProps) => {
-  const languageKey = currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(currentLanguage)
 
   const { t } = useTranslation('account')
   return (

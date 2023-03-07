@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next'
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSwr from 'swr'
 
-import LoadingOverlay from '../../SearchPage/LoadingOverlay'
+import LoadingOverlay from '../../../SearchPage/LoadingOverlay'
 import DocumentListModalBody from './DocumentListModalBody'
 
 const Documents = ({

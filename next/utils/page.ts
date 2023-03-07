@@ -3,13 +3,14 @@ import {
   BlogPostFragment,
   BlogPostLinkFragment,
   Enum_Pagecategory_Color,
-  FileFragment,
+  FileBlockFragment,
   FooterFragment,
   MainMenuItemFragment,
-  PageLinkFragment,
+  PageLinkBlockFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
-import _, { groupBy, sortBy } from 'lodash'
+import groupBy from 'lodash/groupBy'
+import sortBy from 'lodash/sortBy'
 
 import { getLocalDate, getNumericLocalDate } from './local-date'
 import { isPresent } from './utils'
@@ -190,7 +191,7 @@ export const pagePath = (
 }
 
 export const parsePageLink = (
-  pageLink?: PageLinkFragment | null,
+  pageLink?: PageLinkBlockFragment | null,
 ): { title: string; url: string; anchor?: string } | null => {
   if (!pageLink) return null
   const param = {
@@ -222,7 +223,7 @@ export const parseBlogPostLink = (
 }
 
 // Page FileList
-export const formatFiles = (files: FileFragment[]): TFile[] =>
+export const formatFiles = (files: FileBlockFragment[]): TFile[] =>
   files.map((file) => ({
     title: file.title ?? undefined,
     category: file.category ?? undefined,
@@ -236,7 +237,7 @@ export const formatFiles = (files: FileFragment[]): TFile[] =>
     },
   }))
 
-export const groupByCategoryFileList = (fileList: FileFragment[]) => {
+export const groupByCategoryFileList = (fileList: FileBlockFragment[]) => {
   const files = fileList.map((file) => ({
     category: file.category ?? '',
     media: file.media,
@@ -251,17 +252,16 @@ export const groupByCategoryFileList = (fileList: FileFragment[]) => {
 
 // Page Footer
 export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
-  const data = footer?.data?.attributes
   return {
-    accessibilityLink: parsePageLink(data?.accessibilityLink) ?? undefined,
-    address: data?.address ?? undefined,
-    copyright: data?.copyright ?? undefined,
-    email: data?.email ?? undefined,
-    facebookLink: data?.facebookUrl ?? undefined,
-    instagramLink: data?.instagramUrl ?? undefined,
-    phone: data?.phone ?? undefined,
-    youtubeLink: data?.youtubeUrl ?? undefined,
-    sections: data?.footerSections?.filter(isPresent).map((s) => ({
+    accessibilityLink: parsePageLink(footer?.accessibilityLink) ?? undefined,
+    address: footer?.address ?? undefined,
+    copyright: footer?.copyright ?? undefined,
+    email: footer?.email ?? undefined,
+    facebookLink: footer?.facebookUrl ?? undefined,
+    instagramLink: footer?.instagramUrl ?? undefined,
+    phone: footer?.phone ?? undefined,
+    youtubeLink: footer?.youtubeUrl ?? undefined,
+    sections: footer?.footerSections?.filter(isPresent).map((s) => ({
       title: s.title ?? '',
       pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
     })),
@@ -301,14 +301,15 @@ export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
   )
 
 // Page Accordion Items
-export const groupByCategory = <T extends { category?: string }>(items: T[]) => {
-  const grouped = _(items)
-    .groupBy((item) => item?.category)
-    .sortBy((group) => items.indexOf(group[0]))
-    .value()
-  return Object.keys(grouped).map((key) => ({
-    category: grouped[key].length > 0 ? grouped[key][0]?.category : key,
-    items: grouped[key],
+export const groupByCategory = <Category extends string | null, T extends { category?: Category }>(
+  items: T[],
+) => {
+  const grouped = groupBy(items, (item) => item?.category)
+  const sorted = sortBy(grouped, (group) => items.indexOf(group[0]))
+
+  return Object.keys(sorted).map((key) => ({
+    category: sorted[key].length > 0 ? sorted[key][0]?.category : (key as Category),
+    items: sorted[key] as T[],
   }))
 }
 
