@@ -13,9 +13,6 @@
   "pluginOptions": {
     "i18n": {
       "localized": true
-    },
-    "content-manager": {
-      "visible": false
     }
   },
   "attributes": {
