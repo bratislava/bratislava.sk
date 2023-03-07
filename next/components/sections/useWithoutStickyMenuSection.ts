@@ -11,7 +11,7 @@ interface HookResult {
   elementRef: MutableRefObject<HTMLDivElement | null>
 }
 
-export const useWithoutMenuSection = (): HookResult => {
+export const useWithoutStickyMenuSection = (): HookResult => {
   const [menuState, setMenuState] = useState(STICKY_MENU_STATE.HIDDEN)
 
   const handleMenuState: IntersectionObserverCallback = (entries) => {

@@ -8,8 +8,11 @@ import {
   SectionContainer,
 } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
-import { STICKY_MENU_STATE, useWithoutMenuSection } from 'components/sections/useWithoutMenuSection'
-import { WithoutMenuSection } from 'components/sections/WithoutMenuSection'
+import {
+  STICKY_MENU_STATE,
+  useWithoutStickyMenuSection,
+} from 'components/sections/useWithoutStickyMenuSection'
+import { WithoutStickyMenuSection } from 'components/sections/WithoutStickyMenuSection'
 import React from 'react'
 
 import Footer from '../molecules/Footer'
@@ -31,7 +34,7 @@ const HomepagePageLayout = ({
   bookmarks,
 }: React.HTMLAttributes<HTMLDivElement> & HomepagePageLayoutProps) => {
   // const isEN = true // TODO: use localization // TODO get bookmarks determined by localization
-  const { elementRef, menuState } = useWithoutMenuSection()
+  const { elementRef, menuState } = useWithoutStickyMenuSection()
 
   return (
     <div className={cx('font-inter', className)}>
@@ -42,7 +45,7 @@ const HomepagePageLayout = ({
           </SectionContainer>
         </div>
         <div className="bg-white">
-          <WithoutMenuSection
+          <WithoutStickyMenuSection
             mainMenuItems={menuItems ?? []}
             homepageHeader={header}
             elementRef={elementRef}

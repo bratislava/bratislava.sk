@@ -5,7 +5,7 @@ import cx from 'classnames'
 import { MutableRefObject, useState } from 'react'
 
 import HomePageSearch from '../molecules/HomePageSearch'
-import { STICKY_MENU_STATE, useWithoutMenuSection } from './useWithoutMenuSection'
+import { STICKY_MENU_STATE, useWithoutStickyMenuSection } from './useWithoutStickyMenuSection'
 
 interface Props {
   homepageHeader: HomepageHeaderFragment | null | undefined
@@ -13,9 +13,9 @@ interface Props {
   elementRef: MutableRefObject<HTMLDivElement | null>
 }
 
-export const WithoutMenuSection = ({ mainMenuItems, homepageHeader, elementRef }: Props) => {
+export const WithoutStickyMenuSection = ({ mainMenuItems, homepageHeader, elementRef }: Props) => {
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
-  const { menuState } = useWithoutMenuSection()
+  const { menuState } = useWithoutStickyMenuSection()
 
   return (
     <div ref={elementRef}>
