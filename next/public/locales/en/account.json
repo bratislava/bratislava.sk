@@ -107,7 +107,6 @@
   "migration_recognized_description": "",
   "migration_register_description": "Don't have an account?",
   "migration_new_password_title": "New password",
-  "migration_new_password_submit": "Confirm",
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",
@@ -358,6 +357,11 @@
     "modal_message": "If you would like to change the e-mail you use to log in to your account and to which we send you all information regarding your account, please contact us at <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "modal_thanks": "Thank you!"
   },
+  "adding_phone_number": {
+    "title": "Adding a phone number",
+    "description": "Would you like us to communicate with you via SMS in rare cases? Leave us your phone number and we will remind you, for example, of the approaching tax due date via SMS.\n\nYou can add a phone number to your profile at any time.\n\n",
+    "phoneNumber_not_required": "*Failure to provide a phone number does not affect the use of services in the Bratislava account."
+  },
   "pay_tax": "To pay",
   "back_to_list": "Back to list",
   "city": "City",
@@ -374,6 +378,24 @@
   "tax_liability_breakdown": "Tax liability",
   "land_tax": "Land tax",
   "construction_tax": "Construction tax",
+  "apartments_tax": "Tax on apartments",
+  "payment_data": "Payment data",
+  "constant_symbol": "Constant symbol",
+  "constant_symbol_number": "8147",
+  "variable_symbol": "Variable symbol",
+  "variable_symbol_number": "312006100",
+  "tax_due": "Tax due",
+  "card_payment": "Card payment",
+  "qr_code": "QR code",
+  "download_image": "Download image",
+  "use_one_of_ibans_to_pay": "When making a bank transfer, use one of the following IBAN accounts for payment:",
+  "you_will_be_redirected_to_the_payment_gateway": "You will be redirected to the payment gateway.",
+  "use_your_banking_app_to_load": "Use your banking app to load.",
   "tax_constructions": "Construction tax",
-  "apartments_tax": "Tax on apartments"
+  "bank_info": {
+    "slovak_sporitelna": "Slovenská sporiteľňa, a.s.",
+    "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",
+    "csob": "ČSOB, a.s.",
+    "csob_iban": "SK31 7500 0000 0000 2574 7653"
+  }
 }

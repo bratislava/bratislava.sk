@@ -8,6 +8,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
@@ -58,7 +59,7 @@ export const AccountNavBar = ({
   const [burgerOpen, setBurgerOpen] = useState(false)
   const { isAuth, logout, userData } = useAccount()
 
-  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])

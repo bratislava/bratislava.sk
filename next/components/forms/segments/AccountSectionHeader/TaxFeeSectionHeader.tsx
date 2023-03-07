@@ -68,7 +68,7 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
               <div className="text-h1 grow">Daň z nehnuteľností za rok 2023</div>
 
               <Button
-                startIcon={<PaymentIcon />}
+                startIcon={<PaymentIcon className="w-5 h-5" />}
                 variant="black"
                 text={t('pay_tax')}
                 size="sm"
@@ -108,7 +108,7 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
             <div className="w-full md:hidden block">
               <div className="flex flex-col gap-3">
                 <Button
-                  startIcon={<PaymentIcon />}
+                  startIcon={<PaymentIcon className="w-5 h-5" />}
                   variant="black"
                   text={t('pay_tax')}
                   size="sm"
