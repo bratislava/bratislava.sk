@@ -1,4 +1,5 @@
 import { Address, UserData } from '@utils/useAccount'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import { useTranslation } from 'next-i18next'
 
 import Button from '../../forms/simple-components/Button'
@@ -87,6 +88,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
         </div>
         <div className="w-52">
           <InputField
+            tooltip={t('profile_detail.postal_code_tooltip')}
             label={t('profile_detail.postal_code')}
             value={temporaryUserData.address?.postal_code || ''}
             onChange={(value) => handleOnChangeAddress({ postal_code: value })}

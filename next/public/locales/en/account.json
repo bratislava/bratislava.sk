@@ -351,6 +351,7 @@
     "street": "Street and number",
     "city": "City",
     "postal_code": "Postal code",
+    "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
     "success_alert": "Changes have been saved",
     "error_alert": "Changes could not be saved",
     "modal_title": "Change e-mail",
