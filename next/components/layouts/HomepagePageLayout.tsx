@@ -14,7 +14,6 @@ import React from 'react'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
-import SkipToContentButton from '../molecules/SkipToContentButton'
 
 interface HomepagePageLayoutProps {
   header?: HomepageHeaderFragment | null | undefined
