@@ -8,16 +8,16 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
 import Menu from 'components/forms/simple-components/Menu/Menu'
+import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
-import { getLanguageKey } from '@utils/utils'
 
 interface IProps extends LanguageSelectProps {
   className?: string
@@ -151,21 +151,12 @@ export const AccountNavBar = ({
                       <Divider />
                     </>
                   ) : (
-                    <>
-                      <Link href="/" variant="plain" className={linkClassName}>
-                        {t('account:menu_account_link')}
-                      </Link>
-                      <Divider />
-                      <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
-                        {t('account:menu_login_link')}
-                      </Link>
-                      <Button
-                        onPress={() => router.push(ROUTES.REGISTER)}
-                        variant="negative"
-                        text={t('account:menu_register_link')}
-                        size="sm"
-                      />
-                    </>
+                    <Button
+                      onPress={() => router.push(ROUTES.REGISTER)}
+                      variant="negative"
+                      text={t('account:menu_account_link')}
+                      size="sm"
+                    />
                   )}
 
                   <Link href={t('searchLink')} variant="plain">
