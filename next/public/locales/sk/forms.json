@@ -20,8 +20,6 @@
   "postal_code_description": "Zadávajte bez medzier, napr. 11111",
   "postal_code_required": "PSČ je povinné",
   "postal_code_format": "PSČ nie je valídne",
-  "adding_phone_number_title": "Doplnenie telefónneho čísla",
-  "adding_phone_number_description": "Prajete si, aby sme s vami v ojedinelých prípadoch komunikovali aj prostredníctvom SMS? Zanechajte nám vaše telefónne číslo a my vám pripomenieme, napríklad, blížiaci sa termín splatnosti dane aj cez SMS.\n\nTelefónne číslo môžete kedykoľvek doplniť do profilu.\n\n*Neposkytnutie telefónneho čísla nemá vplyv na využívanie služieb v Bratislavskom konte.",
   "tax_footer": {
     "maybe_questions": "Radi by ste sa v niečom uistili alebo máte otázky?",
     "see_answers": "Pozrite si odpovede na tie, ktoré sú",
