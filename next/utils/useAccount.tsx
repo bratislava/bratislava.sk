@@ -211,7 +211,6 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
             setUserData((state) => ({
               ...state,
               ...data,
-              phone_number: data.phone_number?.replace(' ', ''),
             }))
             setError(null)
             resolve(true)

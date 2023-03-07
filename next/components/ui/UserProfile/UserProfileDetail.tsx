@@ -22,7 +22,7 @@ interface UserProfileDetailProps {
   onOpenEmailModal: () => void
 }
 
-const UserProfileDetails = (props: UserProfileDetailProps) => {
+const UserProfileDetail = (props: UserProfileDetailProps) => {
   const {
     userData,
     isEditing,
@@ -35,6 +35,13 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
   } = props
   const { t } = useTranslation('account')
   const formId = `form-${useId()}`
+
+  const handleOnSubmit = (newUserData: UserData) => {
+    onSubmit({
+      ...newUserData,
+      phone_number: newUserData.phone_number?.replace(' ', ''),
+    })
+  }
 
   return (
     <div className={cx('flex flex-col', 'sm:static sm:z-0', { 'fixed inset-0 z-50': isEditing })}>
@@ -71,7 +78,7 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
                 formId={formId}
                 userData={userData ?? {}}
                 onOpenEmailModal={onOpenEmailModal}
-                onSubmit={onSubmit}
+                onSubmit={handleOnSubmit}
               />
             ) : (
               <UserProfileDetailView userData={userData ?? {}} />
@@ -83,4 +90,4 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
   )
 }
 
-export default UserProfileDetails
+export default UserProfileDetail
