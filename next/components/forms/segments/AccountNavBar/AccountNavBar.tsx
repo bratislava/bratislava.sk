@@ -60,6 +60,7 @@ export const AccountNavBar = ({
   const { isAuth, logout, userData } = useAccount()
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
+  const anotherLanguage = languageSelectProps.languages?.find((l) => l.key !== languageKey)
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])
@@ -167,10 +168,16 @@ export const AccountNavBar = ({
                   <UILink href="/en" className="hidden">
                     hidden
                   </UILink>
-
-                  <div className="text-font/75 relative flex items-center bg-transparent">
-                    <LanguageMenu {...languageSelectProps} />
-                  </div>
+                  <Divider />
+                  {anotherLanguage && (
+                    <Button
+                      size="sm"
+                      className="underline underline-offset-4"
+                      variant="link-black"
+                      onPress={() => languageSelectProps.onLanguageChange?.(anotherLanguage)}
+                      text={anotherLanguage?.title}
+                    />
+                  )}
                 </>
               ) : isAuth ? (
                 <Menu
@@ -240,7 +247,6 @@ export const AccountNavBar = ({
               <Link href={t('searchLink')} variant="plain" className="p-4">
                 <SearchIcon />
               </Link>
-              <LanguageMenu {...languageSelectProps} />
             </div>
           </div>
         )}
