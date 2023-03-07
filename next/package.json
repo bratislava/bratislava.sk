@@ -12,11 +12,12 @@
     "typecheck": "tsc && tsc-strict",
     "eslint": "eslint --color --ext .html,.js,.json,.jsx,.md,.ts,.tsx .",
     "eslint:fix": "npm run eslint -- --fix",
-    "gen": "graphql-codegen",
+    "gen": "graphql-codegen && prettier --write ./graphql/index.ts",
     "gen-form-schemas": "json2ts -i 'forms/**/schema.json' -o",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "sentry-cli": "sentry-cli"
+    "sentry-cli": "sentry-cli",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
@@ -115,8 +116,8 @@
     "@types/react-mailchimp-subscribe": "2.1.1",
     "@types/react-modal": "3.13.1",
     "@types/xml2js": "^0.4.11",
-    "@typescript-eslint/eslint-plugin": "5.30.0",
-    "@typescript-eslint/parser": "5.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "^10.4.7",
     "eslint": "8.20.0",
     "eslint-config-adjunct": "4.11.1",
