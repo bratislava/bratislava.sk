@@ -9,7 +9,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   transparentColor: string
   transparentColorMobile?: string
   imageSrc: string
-  waves?: Omit<WavesProps, 'wavePosition'>
+  waves?: WavesProps
   smallScreenBreakPoint?: number
 }
 

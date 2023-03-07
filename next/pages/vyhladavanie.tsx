@@ -82,7 +82,10 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
       ]}
       slug="/vyhladavanie"
     >
-      <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
+      <BasePageLayout
+        footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
+        menuItems={menuItems}
+      >
         <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{

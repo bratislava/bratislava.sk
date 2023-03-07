@@ -1,20 +1,21 @@
 import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
-import { BAStickyMenu, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import { MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import cx from 'classnames'
-import { useState } from 'react'
+import { MutableRefObject, useState } from 'react'
 
 import HomePageSearch from '../molecules/HomePageSearch'
-import { STICKY_MENU_STATE, useWelcomeSection } from './useWelcomeSection'
+import { STICKY_MENU_STATE, useWithoutStickyMenuSection } from './useWithoutStickyMenuSection'
 
 interface Props {
   homepageHeader: HomepageHeaderFragment | null | undefined
   mainMenuItems: MenuMainItem[]
+  elementRef: MutableRefObject<HTMLDivElement | null>
 }
 
-export const WelcomeSection = ({ mainMenuItems, homepageHeader }: Props) => {
+export const WithoutStickyMenuSection = ({ mainMenuItems, homepageHeader, elementRef }: Props) => {
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
-  const { elementRef, menuState } = useWelcomeSection()
+  const { menuState } = useWithoutStickyMenuSection()
 
   return (
     <div ref={elementRef}>
@@ -52,21 +53,6 @@ export const WelcomeSection = ({ mainMenuItems, homepageHeader }: Props) => {
           </div>
         </div>
         <div className="mb-[20rem] md:mb-0 h-36 w-full relative">
-          <div
-            className={cx(
-              'mx-auto w-full bg-white fixed z-40 drop-shadow-sm shadow-lg left-0 hidden lg:block',
-              {
-                'top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.VISIBLE,
-                '-top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.HIDDEN,
-              },
-            )}
-          >
-            <BAStickyMenu
-              menuItems={mainMenuItems}
-              isVisible={menuState === STICKY_MENU_STATE.VISIBLE}
-            />
-          </div>
-
           <div className="relative">
             <HomepageMenu
               items={mainMenuItems}
