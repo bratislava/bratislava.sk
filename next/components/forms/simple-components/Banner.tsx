@@ -30,7 +30,7 @@ const Banner = ({
         className,
       )}
     >
-      <div className="lg:w-1/2 w-full max-w-[488px] text-white h-full flex flex-col justify-center rounded-l-3xl gap-6 lg:gap-3 px-4 md:px-0 mb-6 lg:mb-0">
+      <div className="lg:w-1/2 w-full max-w-[488px] text-white h-full flex flex-col justify-center rounded-l-3xl gap-6 px-4 md:px-0 mb-6 lg:mb-0">
         <div className="flex flex-col items-start gap-3">
           <h2 className="text-h1 lg:text-h2">{title}</h2>
           <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-200" />
