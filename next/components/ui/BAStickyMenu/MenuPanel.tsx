@@ -39,7 +39,7 @@ export const MenuPanel = ({ item, onClosePanel }: MenuPanelProps) => {
       <div className="cursor-default grid absolute top-0 inset-x-0 z-30 w-full pb-20 bg-transparent">
         <Panel style={{ backgroundColor: item.color }} className="px-6 py-10 rounded-none">
           <div
-            className="m-auto grid w-full max-w-screen-1.5lg grid-cols-3 gap-10"
+            className="m-auto grid w-full max-w-screen-lg grid-cols-3 gap-10"
             ref={clickOutsideRef}
           >
             {/* SUB-ITEMS */}

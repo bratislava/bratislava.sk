@@ -94,7 +94,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
           <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>
         ),
         blockquote: ({ children }) => (
-          <div className="mb-5 border-l-4 border-category-600 pl-10 last:mb-0  lg:mb-10">
+          <div className="mb-5 py-3 border-l-4 border-category-600 pl-10 last:mb-0 lg:my-10">
             {children}
           </div>
         ),

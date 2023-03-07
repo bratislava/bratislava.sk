@@ -9,7 +9,7 @@ type TimePickerRJSFOptions = WidgetOptions
 interface TimePickerWidgetRJSFProps extends WidgetProps {
   label: string
   options: TimePickerRJSFOptions
-  value: string
+  value: string | null
   errorMessage?: string
   required?: boolean
   disabled?: boolean
@@ -28,7 +28,7 @@ const TimePickerWidgetRJSF = ({
   onChange,
 }: TimePickerWidgetRJSFProps) => {
   const {
-    description,
+    helptext,
     tooltip,
     accordion,
     explicitOptional,
@@ -45,10 +45,10 @@ const TimePickerWidgetRJSF = ({
         errorMessage={rawErrors}
         required={required}
         disabled={disabled}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         explicitOptional={explicitOptional}
-        value={value}
+        value={value ?? undefined}
         onChange={handleOnChange}
       />
     </WidgetWrapper>

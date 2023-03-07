@@ -3,11 +3,11 @@ import cx from 'classnames'
 
 export interface NarrowTextProps {
   className?: string
-  content?: string
+  content?: string | null
   contentStyle?: string
-  width?: 'narrow' | 'default' | 'wide' | 'full'
-  align?: 'left' | 'center' | 'right'
-  size?: 'small' | 'normal'
+  width?: 'narrow' | 'default' | 'wide' | 'full' | null
+  align?: 'left' | 'center' | 'right' | null
+  size?: 'small' | 'normal' | null
   hasBackground?: boolean
 }
 
@@ -30,10 +30,10 @@ export const NarrowText = ({
         'flex',
         {
           'justify-start': align === 'left',
-          'justify-center text-title-center': align === 'center',
+          'text-title-center justify-center': align === 'center',
           'justify-end': align === 'right',
         },
-        className
+        className,
       )}
     >
       <div
@@ -53,7 +53,7 @@ export const NarrowText = ({
               'text-p4 md:text-p2 leading-[20px] md:leading-[24px]': size === 'small',
               'text-p2 md:text-p1 leading-[24px] md:leading-[30px]': size === 'normal',
             },
-            contentStyle
+            contentStyle,
           )}
         />
       </div>

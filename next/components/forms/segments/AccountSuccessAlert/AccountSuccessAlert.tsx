@@ -1,5 +1,6 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import SuccessIcon from '@assets/images/forms/success.svg'
+import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import Button from 'components/forms/simple-components/Button'
 import { ReactNode } from 'react'
 
@@ -30,15 +31,11 @@ const AccountSuccessAlert = ({
         </div>
       </div>
       <h1 className="text-h3 text-center">{title}</h1>
-      {description && <p className="text-center">{description}</p>}
+      {description && (
+        <AccountMarkdown className="text-center" content={description} variant="sm" />
+      )}
       {children}
-      <Button
-        onPress={onConfirm}
-        className="min-w-full"
-        variant="category"
-        text={confirmLabel}
-        endIcon={<ArrowRightIcon />}
-      />
+      <Button onPress={onConfirm} className="min-w-full" variant="category" text={confirmLabel} />
       {onCancel && (
         <Button
           variant="plain-black"

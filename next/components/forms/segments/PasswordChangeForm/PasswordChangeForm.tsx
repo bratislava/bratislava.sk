@@ -1,5 +1,5 @@
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import PasswordField from 'components/forms/widget-components/PasswordField/PasswordField'
@@ -14,7 +14,7 @@ interface Data {
 
 interface Props {
   onSubmit: (oldPassword: string, password: string) => Promise<any>
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field
@@ -59,7 +59,7 @@ const PasswordChangeForm = ({ onSubmit, error }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.oldPassword, data.password))}
     >
       <h1 className="text-h3">{t('password_change_title')}</h1>
@@ -107,7 +107,7 @@ const PasswordChangeForm = ({ onSubmit, error }: Props) => {
       <Button
         className="min-w-full"
         type="submit"
-        text={t('new_password_submit')}
+        text={t('password_change_submit')}
         variant="category"
         disabled={isSubmitting}
       />

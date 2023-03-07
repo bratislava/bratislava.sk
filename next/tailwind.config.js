@@ -31,22 +31,10 @@ module.exports = {
     },
     screens: {
       xs: '360px',
-      sm: '640px',
+      sm: '480px',
       md: '768px',
-      lg: '1024px',
-      '1.5lg': '1110px',
+      lg: '1216px',
       xl: '1280px',
-      '2xl': '1536px',
-      '3xl': '1920px',
-      maxMd: { max: '768px' },
-    },
-    container: {
-      xs: '360px',
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1175px',
-      '2xl': '1470px',
     },
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
@@ -55,7 +43,6 @@ module.exports = {
       sm: '0px 2px 8px rgba(0, 0, 0, 0.12)',
       none: 'none',
     },
-
     fontFamily: {
       sans: [
         'Public Sans',
@@ -81,11 +68,12 @@ module.exports = {
       'btn-lg': ['20px', '32px'],
 
       'p-xs': ['12px', '18px'],
-      'p-sm': ['14px', '24px'],
+      'p-sm': ['14px', '20px'],
       'p-base': ['16px', '24px'],
-      'p-md': ['20px', '32px'],
+      'p-md': ['20px', '28px'],
 
-      'h-sm': ['16px', '24px'],
+      'h-xs': ['16px', '24px'],
+      'h-sm': ['18px', '26px'],
       'h-base': ['20px', '28px'],
       'h-md': ['24px', '32px'],
       'h-lg': ['28px', '36px'],
@@ -231,6 +219,7 @@ module.exports = {
         66: '17.5rem', // 280px
         76: '19rem', // 304px
         88: '22rem', // 352px
+        100: '25rem',
         104: '26rem', // 416px
         200: '50rem', // 800px
       },

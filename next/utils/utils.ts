@@ -56,3 +56,7 @@ export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !
 // https://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript
 export const isObject = (value: any) =>
   typeof value === 'object' && value !== null && !Array.isArray(value)
+
+export const getLanguageKey = (currentLanguage?: string) => {
+  return currentLanguage === 'sk' ? 'sk' : 'en'
+}

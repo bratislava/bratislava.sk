@@ -1,20 +1,22 @@
 import SelectedIcon from '@assets/images/forms/selected.svg'
 import cx from 'classnames'
+import { useTranslation } from 'next-i18next'
 
 interface StepperViewRowProps {
-  title: string
+  title?: string
   order: number
   isCurrent?: boolean
   isFilled?: boolean
   isLast?: boolean
-  onClick: () => void
+  onClick?: () => void
+  className?: string
 }
 
 const StepperViewRow = (props: StepperViewRowProps) => {
-  const { title, order, isCurrent, isFilled, isLast, onClick } = props
-
+  const { title, order, isCurrent, isFilled, isLast, onClick, className } = props
+  const { t } = useTranslation('forms')
   const iconClassName = cx(
-    'flew-row w-8 h-8 rounded-full flex justify-center items-center border-2',
+    'min-w-8 w-8 flex-row h-8 rounded-full flex justify-center items-center border-2 shrink-0',
     {
       'bg-gray-700 border-gray-700 text-white': isFilled || isCurrent,
       'border-gray-300 text-gray-300 bg-transparent': !isFilled && !isCurrent,
@@ -22,8 +24,13 @@ const StepperViewRow = (props: StepperViewRowProps) => {
   )
 
   return (
-    <div className="flex flex-col select-none">
-      <div className="flex flex-row gap-3 items-center cursor-pointer" onClick={onClick}>
+    <div className={cx('flex flex-col select-none', className)}>
+      <div
+        className="flex flex-row gap-3 items-center cursor-pointer"
+        onClick={() => {
+          if (onClick) onClick()
+        }}
+      >
         <div className={iconClassName}>
           {isCurrent || !isFilled ? order : <SelectedIcon className="scale-125" />}
         </div>

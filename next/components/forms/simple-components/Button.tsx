@@ -26,6 +26,7 @@ type ButtonBase = {
   startIcon?: ReactNode
   endIcon?: ReactNode
   hrefIconHidden?: boolean
+  fullWidth?: boolean
 }
 
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
@@ -59,6 +60,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       startIcon,
       endIcon,
       hrefIconHidden,
+      fullWidth,
       ...rest
     },
     ref,
@@ -76,11 +78,15 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       'inline-flex items-center',
       rest.href
         ? 'underline underline-offset-4 focus-visible:outline-none'
-        : 'w-fit h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
+        : 'h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
+        'w-full': fullWidth,
+        'w-fit': !fullWidth,
+      },
+      {
         // text for lg button
-        'text-20-semibold px-6 py-3.5 leading-6':
+        'text-16-semibold px-4 py-2.5':
           size === 'lg' &&
           !icon &&
           text &&
@@ -88,12 +94,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'negative' ||
             variant === 'black-outline' ||
             variant === 'category' ||
-            variant === 'category-outline' ||
-            variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+            variant === 'category-outline'),
         // text for sm button
-        'text-16-semibold px-5 py-3 leading-5':
+        'text-16-semibold px-4 py-1.5':
           size === 'sm' &&
           !icon &&
           text &&
@@ -101,12 +104,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'negative' ||
             variant === 'black-outline' ||
             variant === 'category' ||
-            variant === 'category-outline' ||
-            variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+            variant === 'category-outline'),
         // icon for lg button
-        'px-3.5 py-3.5':
+        'px-2.5 py-2.5':
           size === 'lg' &&
           icon &&
           !text &&
@@ -128,19 +128,42 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           (size === 'lg' &&
             icon &&
             !text &&
-            (variant === 'plain-category' || variant === 'plain-black')),
-        // icon for sm button
+            (variant === 'plain-category' ||
+              variant === 'plain-black' ||
+              variant === 'plain-negative')),
+
+        // icon for sm button plain variant
         'px-1.5 py-1.5':
           size === 'sm' &&
           icon &&
           !text &&
-          (variant === 'plain-category' || variant === 'plain-black'),
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
+
+        // text for lg button plain variant
+        'text-16-semibold px-3 py-2':
+          size === 'lg' &&
+          !icon &&
+          text &&
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
+
+        // text for sm button plain variant
+        'text-16-semibold px-2 py-1':
+          size === 'sm' &&
+          !icon &&
+          text &&
+          (variant === 'plain-category' ||
+            variant === 'plain-black' ||
+            variant === 'plain-negative'),
 
         // text for lg link button
-        'text-20-medium leading-8':
+        'text-20-medium':
           size === 'lg' && (variant === 'link-category' || variant === 'link-black'),
         // text for sm link button
-        'text-16-medium leading-6':
+        'text-16-medium':
           size === 'sm' && (variant === 'link-category' || variant === 'link-black'),
 
         'border-2':
@@ -175,6 +198,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
         'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
 
+        'hover:bg-category-600 hover:border-category-600': variant === 'category' && !disabled,
+        'hover:border-category-600 hover:text-category-600':
+          variant === 'category-outline' && !disabled,
         'hover:bg-category-100 hover:text-category-600': variant === 'plain-category' && !disabled,
         'hover:bg-gray-100 hover:text-gray-600': variant === 'plain-black' && !disabled,
         'hover:bg-negative-100 hover:text-negative-600': variant === 'plain-negative' && !disabled,
@@ -218,7 +244,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         className={style}
         {...buttonProps}
       >
-        <div className="flex items-center">
+        <div className="justify-center flex items-center">
           {startIcon && (
             <span
               className={cx({ 'mr-3 h-6 w-6': size === 'lg', 'mr-2.5 h-5 w-5': size === 'sm' })}
