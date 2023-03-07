@@ -1,17 +1,23 @@
 import { withSentry } from '@sentry/nextjs'
-import { ResponseGinisDocumentsList } from 'backend/dtos/ginis/api-data.dto'
-import { getUDEDocumentsList } from 'backend/services/ginis'
+import {
+  getParsedUDEDocumentsList,
+  mockedParsedDocuments,
+  ParsedOfficialBoardDocument,
+  shouldMockGinis,
+} from 'backend/services/ginis'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { search } = req.query
   let parsedSearch: string | undefined
-  let result: ResponseGinisDocumentsList[] = []
+  let result: ParsedOfficialBoardDocument[] = []
   if (search && typeof search === 'string') {
     parsedSearch = search
   }
   try {
-    result = await getUDEDocumentsList(parsedSearch)
+    result = shouldMockGinis()
+      ? mockedParsedDocuments
+      : await getParsedUDEDocumentsList(parsedSearch)
   } catch (error) {
     console.log(error)
   }
