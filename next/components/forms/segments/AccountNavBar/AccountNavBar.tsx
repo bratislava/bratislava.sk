@@ -24,6 +24,7 @@ interface IProps extends LanguageSelectProps {
   navHidden?: boolean
   sectionsList?: MenuItem[]
   menuItems: MenuItem[]
+  hiddenHeaderNav?: boolean
 }
 
 interface LanguageSelectProps {
@@ -54,6 +55,7 @@ export const AccountNavBar = ({
   sectionsList,
   menuItems,
   navHidden,
+  hiddenHeaderNav,
   ...languageSelectProps
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
@@ -209,7 +211,7 @@ export const AccountNavBar = ({
             </div>
           </nav>
         </div>
-        {isAuth && sectionsList && (
+        {isAuth && sectionsList && !hiddenHeaderNav && (
           <div className="border-t border-gray-200 max-w-screen-lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
