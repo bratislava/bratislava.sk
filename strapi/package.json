@@ -12,7 +12,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.21.0",
     "@babel/eslint-parser": "^7.19.1",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
