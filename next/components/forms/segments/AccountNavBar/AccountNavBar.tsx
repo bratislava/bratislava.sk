@@ -279,42 +279,6 @@ export const AccountNavBar = ({
   )
 }
 
-const LanguageMenu = ({ languages, currentLanguage, onLanguageChange }: LanguageSelectProps) => {
-  const onSelectLanguage = (key: React.Key) => {
-    const selectedOption = languages?.find((opt) => opt.key === key)
-    if (selectedOption) onLanguageChange?.(selectedOption)
-  }
-
-  const dropDownOptions = languages?.filter((option) => option.key !== currentLanguage) || []
-  return (
-    <Menu
-      label={currentLanguage?.toUpperCase() || ''}
-      onAction={onSelectLanguage}
-      className="flex w-11 h-auto min-h-[60px] flex-col items-center rounded-lg bg-main-200 pt-1 pb-3"
-      containerHeaderEl={
-        <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-main-200 m-auto" />
-      }
-    >
-      {dropDownOptions.map((option) => (
-        <Item key={option.key}>
-          <LanguageMenuItem option={option} />
-        </Item>
-      ))}
-    </Menu>
-  )
-}
-
-const LanguageMenuItem = ({ option }: { option: LanguageOption }) => {
-  return (
-    <div
-      className="text-p2 hover:text-p2-semibold cursor-pointer text-font mt-3 h-6 w-6"
-      key={option.key}
-    >
-      {option.title}
-    </div>
-  )
-}
-
 const AccountMenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
   const { t } = useTranslation()
 
