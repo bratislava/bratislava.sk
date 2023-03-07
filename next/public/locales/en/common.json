@@ -121,5 +121,6 @@
   "tourist": "I am tourist",
   "noBlogPostsToShow": "No articles to show",
   "noPagesToShow": "No pages to show",
-  "noUsersToShow": "No contacts to show"
+  "noUsersToShow": "No contacts to show",
+  "skipNavigation": "Skip navigation"
 }
