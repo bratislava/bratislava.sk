@@ -1,22 +1,16 @@
 import { ChevronRight } from '@assets/images'
-import { ComponentSectionsVideos } from '@bratislava/strapi-sdk-homepage'
+import { VideoBlockFragment, VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
-import {
-  shouldShowButtonContent,
-  VideoAttribute,
-} from '@bratislava/ui-bratislava/Videos/VideosService'
+import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import React from 'react'
 
-export interface VideosProps extends ComponentSectionsVideos {
-  id: string
-  className?: string
-  title?: string
-  subtitle?: string
-  videos?: VideoAttribute[] | null
-}
-
-const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
+const Video = ({
+  title,
+  speaker,
+  url,
+  size = 'default',
+}: VideoBlockFragment & { size?: 'default' | 'small' }) => {
   const [embedUrl, setEmbedUrl] = React.useState('')
   const [isLoaded, setLoaded] = React.useState(false)
 
@@ -49,14 +43,14 @@ const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
         className={cx('rounded-5 shadow-sm', {
           'animate-pulse bg-gray-300': !isLoaded,
         })}
-        title={title}
+        title={title ?? undefined}
         width={size === 'default' ? '350' : '280'}
         height={size === 'default' ? '196' : '157'}
         src={embedUrl}
         allowFullScreen
         onLoad={() => setLoaded(true)}
       />
-      <a href={url} target="_blank" rel="noreferrer">
+      <a href={url ?? undefined} target="_blank" rel="noreferrer">
         <h5 className="md:text-h5 mt-8 cursor-pointer hover:underline">{title}</h5>
       </a>
       <p className="mt-5">{speaker}</p>
@@ -64,7 +58,7 @@ const Video = ({ title, speaker, url, size = 'default' }: VideoAttribute) => {
   )
 }
 
-export const Videos = ({ id, className, title, subtitle, videos, buttonContent }: VideosProps) => {
+export const Videos = ({ title, subtitle, videos, buttonContent }: VideosSectionFragment) => {
   if (!videos) {
     return null
   }
@@ -72,24 +66,29 @@ export const Videos = ({ id, className, title, subtitle, videos, buttonContent }
   // Quickfix to show all videos
   // TODO: add proper loadmore functionality, buttonContent is not fetched by graphql at the moment
   const videosCount = 300
+  const shouldShowButtonContent = buttonContent ? false : videos.length > 3
+
   return (
-    <div key={id} className={className}>
+    <div>
       <h4 className="text-h4">{title}</h4>
       <p className="md:text-p1 mt-5 mb-10">{subtitle}</p>
 
       {/* Mobile */}
       <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
-        {videos.map((video) => (
+        {videos.filter(isPresent).map((video) => (
           <Video key={video.url} size="small" {...video} />
         ))}
       </HorizontalScrollWrapper>
 
       {/* Desktop */}
       <div className="hidden gap-8 lg:grid lg:grid-cols-3">
-        {videos.slice(0, videosCount).map((video) => (
-          <Video key={video.url} {...video} />
-        ))}
-        {shouldShowButtonContent(videos, buttonContent) && (
+        {videos
+          .filter(isPresent)
+          .slice(0, videosCount)
+          .map((video) => (
+            <Video key={video.url} {...video} />
+          ))}
+        {shouldShowButtonContent && (
           <Button
             iconPosition="right"
             variant="secondary-dark-text"

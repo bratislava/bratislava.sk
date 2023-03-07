@@ -7,7 +7,7 @@ import { useDebounce } from 'usehooks-ts'
 
 import DocumentListResults from './DocumentListResults'
 
-const DocumentList = () => {
+const DocumentListSection = () => {
   const { t } = useTranslation()
   const [filters, setFilters] = useState<VznFilters>(vznDefaultFilters)
 
@@ -53,4 +53,4 @@ const DocumentList = () => {
   )
 }
 
-export default DocumentList
+export default DocumentListSection
