@@ -5,37 +5,30 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
-import {
-  AccordionItem,
-  ColumnedText,
-  Contact,
-  Divider,
-  FileList,
-  Iframe,
-  Institution,
-  Links,
-  ListItems,
-  NarrowText,
-  NumericalListSection,
-  PageLinkButton,
-  RentBenefits,
-  SectionContainer,
-  TextWithImage,
-  Videos,
-  Waves,
-} from '@bratislava/ui-bratislava'
-import { groupByCategory, groupByCategoryFileList, parseCategory, parsePageLink } from '@utils/page'
-import { isPresent } from '@utils/utils'
+import { SectionContainer } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import { OrganizationalStructure } from './OrganizationalStructure/OrganizationalStructure'
-import DocumentList from './sections/documentList/DocumentList'
-import Gallery from './sections/Gallery'
-import { ArticlesList } from './sections/homepage/ArticlesList'
-import MinimumCalculator from './sections/MinimumCalculator'
-import NewsLetterSection from './sections/NewsLetterSection'
+import AccordionSection from './sections/general/AccordionSection'
+import ArticlesListSection from './sections/general/ArticlesListSection/ArticlesListSection'
+import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
+import ColumnedTextSection from './sections/general/ColumnedTextSection'
+import ContactSection from './sections/general/ContactSection'
+import DividerSection from './sections/general/DividerSection'
+import DocumentListSection from './sections/general/DocumentListSection/DocumentListSection'
+import FileListSection from './sections/general/FileListSection'
+import GallerySection from './sections/general/GallerySection'
+import IconTitleDescSection from './sections/general/IconTitleDescSection'
+import IframeSection from './sections/general/IframeSection'
+import LinksSection from './sections/general/LinksSection'
+import ListItemsSection from './sections/general/ListItemsSection'
+import NarrowTextSection from './sections/general/NarrowTextSection'
+import NewsletterSection from './sections/general/NewsletterSection'
+import NumericalListSection from './sections/general/NumericalListSection'
+import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
+import TextWithImageSection from './sections/general/TextWithImageSection'
+import VideosSection from './sections/general/VideosSection'
+import WavesSection from './sections/general/WavesSection'
 
 const SectionContent = ({
   section,
@@ -45,225 +38,60 @@ const SectionContent = ({
   slug?: string
   locale?: string
 }) => {
-  const { t } = useTranslation('common')
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
-      return (
-        <NarrowText
-          align={section.align ?? undefined}
-          content={section.content ?? undefined}
-          width={section.width ?? undefined}
-          hasBackground={section.hasBackground ?? false}
-        />
-      )
+      return <NarrowTextSection section={section} />
 
     case 'ComponentSectionsIconTitleDesc':
-      return (
-        <RentBenefits
-          title={section.title}
-          list={section.list}
-          linkLabel={t('readMore')}
-          hasBackground={section.hasBackground ?? false}
-        />
-      )
+      return <IconTitleDescSection section={section} />
 
     case 'ComponentSectionsDocumentList':
-      return <DocumentList />
+      return <DocumentListSection />
 
     case 'ComponentSectionsColumnedText':
-      return (
-        <ColumnedText
-          content={section.content ?? ''}
-          hasBackground={section.hasBackground ?? false}
-        />
-      )
+      return <ColumnedTextSection section={section} />
 
     case 'ComponentSectionsTextWithImage':
-      return (
-        <TextWithImage
-          imageSrc={section.imageSrc?.data?.attributes.url ?? ''}
-          imagePosition={section.imagePosition ?? 'left'}
-          content={section.content ?? ''}
-          imageShadow={section.imageShadow ?? false}
-          imageAlternativeText={section.imageSrc?.data?.attributes?.alternativeText}
-        />
-      )
+      return <TextWithImageSection section={section} />
 
     case 'ComponentSectionsFileList':
-      return (
-        <FileList
-          fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])}
-        />
-      )
+      return <FileListSection section={section} />
 
     case 'ComponentSectionsDivider':
-      return <Divider dividerStyle={section.style ?? undefined} />
+      return <DividerSection section={section} />
 
     case 'ComponentSectionsLinks':
-      return (
-        <Links
-          title={section.title ?? ''}
-          pageLinks={
-            section.pageLinks?.map((pageLink) => parsePageLink(pageLink)).filter(isPresent) ?? []
-          }
-        />
-      )
+      return <LinksSection section={section} />
 
     case 'ComponentSectionsContact':
-      return (
-        <Contact
-          title={section.title ?? undefined}
-          description={section?.description ?? undefined}
-          phone={section.phone ?? undefined}
-          phoneLabel={section.phoneLabel ?? undefined}
-          email={section.email ?? undefined}
-          emailLabel={section.emailLabel ?? undefined}
-          address={section.address ?? undefined}
-        />
-      )
+      return <ContactSection section={section} />
 
     case 'ComponentSectionsAccordion':
-      return (
-        <>
-          {section.title && <h1 className="text-h2 flex justify-center pb-14">{section.title}</h1>}
-          <div className="flex flex-col">
-            {groupByCategory(section.institutions ?? []).map((institution) => (
-              <AccordionItem
-                key={institution.category}
-                title={parseCategory(institution.category).title}
-                secondaryTitle={parseCategory(institution.category).secondaryTitle}
-              >
-                <div className="flex flex-col space-y-4">
-                  {institution.items.filter(isPresent).map((file, i) => (
-                    <Institution
-                      key={i}
-                      title={file.title ?? undefined}
-                      subtitle={file.subtitle ?? undefined}
-                      content={[
-                        file.firstColumn ?? '',
-                        file.secondColumn ?? '',
-                        file.thirdColumn ?? '',
-                      ]}
-                      url={file.url ?? undefined}
-                      urlLabel={file.urlLabel ?? undefined}
-                    />
-                  ))}
-                </div>
-              </AccordionItem>
-            ))}
-
-            {groupByCategory(section.flatText ?? []).map((text) => (
-              <AccordionItem
-                key={text.category}
-                title={parseCategory(text.category).title}
-                secondaryTitle={parseCategory(text.category).secondaryTitle}
-              >
-                {text.items.filter(isPresent).map((item, i) => {
-                  const link = parsePageLink({
-                    title: item.moreLinkTitle,
-                    url: item.moreLinkUrl,
-                    page: item.moreLinkPage,
-                  })
-
-                  return (
-                    <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
-                      <NarrowText
-                        contentStyle="my-8"
-                        align={item.align}
-                        width={item.width}
-                        content={item.content}
-                      />
-                      {link?.url && link.title && <PageLinkButton pageLink={link} />}
-                    </div>
-                  )
-                })}
-              </AccordionItem>
-            ))}
-
-            {groupByCategory(section.institutionsNarrow ?? []).map((text) => (
-              <AccordionItem
-                key={text.category}
-                title={parseCategory(text.category).title}
-                secondaryTitle={parseCategory(text.category).secondaryTitle}
-              >
-                <div className="grid grid-cols-1 gap-y-8 gap-x-7 md:grid-cols-3">
-                  {text.items.filter(isPresent).map((file) => (
-                    <Institution
-                      key={file.title}
-                      title={file.title ?? undefined}
-                      subtitle={file.subtitle ?? undefined}
-                      url={file.url ?? undefined}
-                      urlLabel={file.urlLabel ?? undefined}
-                    />
-                  ))}
-                </div>
-              </AccordionItem>
-            ))}
-          </div>
-        </>
-      )
+      return <AccordionSection section={section} />
 
     case 'ComponentSectionsCalculator':
-      return (
-        <MinimumCalculator
-          singleAdultValue={section.single_adult_value ?? 0}
-          anotherAdultValue={section.another_adult_value ?? 0}
-          childValue={section.child_value ?? 0}
-        />
-      )
+      return <CalculatorSection section={section} />
 
     case 'ComponentSectionsListItems':
-      return (
-        <ListItems
-          title={section.title ?? ''}
-          listItems={
-            section.listItems?.map((listItem) => ({
-              content: listItem?.content ?? undefined,
-              circleOption: listItem?.circleOption ?? 'primary',
-              moreLink:
-                parsePageLink({
-                  title: listItem?.moreLinkTitle,
-                  url: listItem?.moreLinkUrl,
-                  page: listItem?.moreLinkPage,
-                }) ?? undefined,
-            })) ?? undefined
-          }
-        />
-      )
+      return <ListItemsSection section={section} />
 
     case 'ComponentSectionsNewsletter':
-      return <NewsLetterSection />
+      return <NewsletterSection />
 
     case 'ComponentSectionsVideos':
-      return <Videos {...section} />
+      return <VideosSection section={section} />
 
     case 'ComponentSectionsArticlesList':
-      const { title, category, filtering } = section
-      return (
-        <ArticlesList
-          title={title}
-          includesFiltering={filtering}
-          category={category?.data?.attributes?.title}
-          locale={locale}
-        />
-      )
+      return <ArticlesListSection section={section} locale={locale} />
 
-    // TODO clear up component in Strapi
     case 'ComponentSectionsOrganizationalStructure':
-      return <OrganizationalStructure {...section} />
+      return <OrganizationalStructureSection section={section} />
 
     case 'ComponentSectionsGallery':
-      return (
-        <Gallery
-          title={section.title ?? ''}
-          subTitle={section.subtitle ?? ''}
-          // because of this https://github.com/strapi/strapi/issues/4548#issuecomment-615618608 we are using
-          galleryItems={section.galleryItems ?? undefined}
-        />
-      )
+      return <GallerySection section={section} />
 
     case 'ComponentSectionsIframe':
-      return <Iframe {...section} />
+      return <IframeSection section={section} />
 
     default:
       return null
@@ -281,31 +109,10 @@ const Section = ({
 }) => {
   if (!section) return null
 
-  if (section.__typename === 'ComponentSectionsWaves')
-    return (
-      <Waves
-        className={cx({
-          'md:mt-18 mt-10': section.position === 'top',
-        })}
-        key={section.position}
-        isRich={section.isRich ?? undefined}
-        waveColor="var(--category-color-200)"
-        wavePosition={section.position ?? 'top'}
-      />
-    )
+  if (section.__typename === 'ComponentSectionsWaves') return <WavesSection section={section} />
 
   if (section.__typename === 'ComponentSectionsNumericalList') {
-    const { title, items, buttonText, buttonLink, variant, hasBackground } = section
-    return (
-      <NumericalListSection
-        title={title}
-        items={items}
-        buttonText={buttonText}
-        buttonLink={buttonLink}
-        variant={variant}
-        hasBackground={hasBackground}
-      />
-    )
+    return <NumericalListSection section={section} />
   }
 
   // Not All sections has property hasBackground

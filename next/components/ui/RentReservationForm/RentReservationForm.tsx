@@ -50,7 +50,7 @@ export const RentReservationForm = ({ className }: IProps) => {
     setReservationFormValues((o) => ({ ...o, ...change }))
   }
 
-  const handleSpaceChange = (option: typeof SPACEOPTIONS[0]) => {
+  const handleSpaceChange = (option: (typeof SPACEOPTIONS)[0]) => {
     // const selectedVenue = venues?.find((v) => v.id === option.key);
     // if (selectedVenue) {
     //   handleChange?.({
@@ -82,7 +82,8 @@ export const RentReservationForm = ({ className }: IProps) => {
 
       <div className="mb-14 mt-7 flex text-center">
         <p className="text-p1-medium px-2 text-center lg:px-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit
+          lobortis arcu.
         </p>
       </div>
 
@@ -156,6 +157,7 @@ export const RentReservationForm = ({ className }: IProps) => {
                   type="date"
                   className="text-20 h-14 text-font focus:outline-none"
                   // hasError={!!errors?.email}
+                  // TODO this can't work refering to property "work" even when this is "date"
                   value={reservationFormValues?.phone}
                   onChange={(e) => handleChange?.({ phone: e.target.value })}
                 />
@@ -227,7 +229,9 @@ export const RentReservationForm = ({ className }: IProps) => {
         </div>
 
         <div className="flex justify-center">
-          <Button className="text-20-medium mt-8 h-12 px-6 lg:mt-9">{t('nonbindingConfirm')}</Button>
+          <Button className="text-20-medium mt-8 h-12 px-6 lg:mt-9">
+            {t('nonbindingConfirm')}
+          </Button>
         </div>
       </form>
     </div>

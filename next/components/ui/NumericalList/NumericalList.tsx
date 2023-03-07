@@ -1,6 +1,7 @@
 // @ts-strict-ignore
+import { NumericalListItemObject } from '@bratislava/ui-bratislava'
+
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
-import { NumericalListItemObject } from '../NumericalListSection/NumericalListSection'
 
 export interface NumericalListProps {
   items: NumericalListItemObject[]
@@ -12,7 +13,13 @@ export const NumericalList = ({ items, hasBackground, variant }: NumericalListPr
   return (
     <>
       {items.map((item, index) => (
-        <NumericalListItem key={index} index={index} item={item} variant={variant} hasBackground={hasBackground} />
+        <NumericalListItem
+          key={index}
+          index={index}
+          item={item}
+          variant={variant}
+          hasBackground={hasBackground}
+        />
       ))}
     </>
   )
