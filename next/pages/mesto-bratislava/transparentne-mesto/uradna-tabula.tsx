@@ -165,7 +165,10 @@ AsyncServerProps<typeof getServerSideProps>) => {
         { locale: 'en', slug: 'city-of-bratislava/transparent-city/official-noticeboard' },
       ]}
     >
-      <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
+      <BasePageLayout
+        footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
+        menuItems={menuItems}
+      >
         <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{

@@ -107,7 +107,6 @@
   "migration_recognized_description": "",
   "migration_register_description": "Don't have an account?",
   "migration_new_password_title": "New password",
-  "migration_new_password_submit": "Confirm",
   "NotAuthorizedException": "Unauthorized",
   "CodeMismatchException": "Code {verificationCode} could not be verified.",
   "LimitExceededException": "Attempt limit exceeded, please try after some time.",

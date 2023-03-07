@@ -7,8 +7,8 @@ export interface IframeProps {
   iframeHeight: string
   fullHeight: boolean
   allowFullscreen: boolean
-  allowGeolocation?: boolean
-  css?: string
+  allowGeolocation?: boolean | null
+  css?: string | null
 }
 export const Iframe = ({
   url,
@@ -16,7 +16,7 @@ export const Iframe = ({
   iframeHeight,
   fullHeight,
   allowFullscreen,
-  allowGeolocation,
+  allowGeolocation = false,
   css,
 }: IframeProps) => {
   const ref = useRef<HTMLIFrameElement>()

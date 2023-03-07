@@ -101,7 +101,10 @@ const FormTestPage = ({
         { locale: 'en', slug: pageSlug },
       ]}
     >
-      <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
+      <BasePageLayout
+        footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
+        menuItems={menuItems}
+      >
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle('main'),

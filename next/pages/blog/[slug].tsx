@@ -83,7 +83,7 @@ interface BlogPostPageProps {
 }
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
-  const parsedFooter = parseFooter(footer ?? {})
+  const parsedFooter = parseFooter(footer?.data?.attributes ?? {})
   const menuItems = parseMainMenu(mainMenu)
 
   // TODO change if multilingual blogs
