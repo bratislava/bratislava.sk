@@ -21,12 +21,12 @@ const PhoneNumberModal = ({
   onHideError,
   defaultValues,
 }: Props) => {
-  const { t } = useTranslation('forms')
+  const { t } = useTranslation('account')
 
   return (
     <Modal
       divider
-      header={t('adding_phone_number_title')}
+      header={t('adding_phone_number_modal.title')}
       show={show}
       onClose={onClose}
       onSubmit={onSubmit}
