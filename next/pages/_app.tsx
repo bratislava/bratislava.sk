@@ -4,18 +4,19 @@ import './index.css'
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { AccountProvider } from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
-import { appWithTranslation } from 'next-i18next'
-import { NextAdapter } from 'next-query-params'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
+import { appWithTranslation } from 'next-i18next'
+import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 import { useIsClient } from 'usehooks-ts'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
+import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
 
 // error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
 // https://github.com/microsoft/BotFramework-WebChat/issues/4607
@@ -72,15 +73,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           ),
         }}
       >
-        <QueryParamProvider adapter={NextAdapter}>
-          <SSRProvider>
-            <AccountProvider>
-              <Component {...pageProps} />
+        <BAQueryClientProvider>
+          <QueryParamProvider adapter={NextAdapter}>
+            <SSRProvider>
+              <AccountProvider>
+                <Component {...pageProps} />
 
-              {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
-            </AccountProvider>
-          </SSRProvider>
-        </QueryParamProvider>{' '}
+                {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+              </AccountProvider>
+            </SSRProvider>
+          </QueryParamProvider>
+        </BAQueryClientProvider>
       </UIContextProvider>
     </>
   )
