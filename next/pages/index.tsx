@@ -159,7 +159,7 @@ const Homepage = ({
       <HomepagePageLayout
         header={header}
         menuItems={menuItems}
-        footer={(footer && parseFooter(footer)) ?? undefined}
+        footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
         bookmarks={cards}
       >
         <PageHeader
