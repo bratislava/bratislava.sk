@@ -566,8 +566,9 @@ export type ComponentBlocksVideoFiltersInput = {
 
 export type ComponentMenuMenuItem = {
   __typename?: 'ComponentMenuMenuItem';
-  icon?: Maybe<Enum_Componentmenumenuitem_Icon>;
+  icon: Enum_Componentmenumenuitem_Icon;
   id: Scalars['ID'];
+  label: Scalars['String'];
   page?: Maybe<PageEntityResponse>;
   sections?: Maybe<Array<Maybe<ComponentMenuMenuSection>>>;
 };
@@ -582,6 +583,7 @@ export type ComponentMenuMenuItemSectionsArgs = {
 export type ComponentMenuMenuItemFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentMenuMenuItemFiltersInput>>>;
   icon?: InputMaybe<StringFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentMenuMenuItemFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentMenuMenuItemFiltersInput>>>;
   page?: InputMaybe<PageFiltersInput>;
@@ -591,20 +593,53 @@ export type ComponentMenuMenuItemFiltersInput = {
 export type ComponentMenuMenuItemInput = {
   icon?: InputMaybe<Enum_Componentmenumenuitem_Icon>;
   id?: InputMaybe<Scalars['ID']>;
+  label?: InputMaybe<Scalars['String']>;
   page?: InputMaybe<Scalars['ID']>;
   sections?: InputMaybe<Array<InputMaybe<ComponentMenuMenuSectionInput>>>;
 };
 
+export type ComponentMenuMenuLink = {
+  __typename?: 'ComponentMenuMenuLink';
+  id: Scalars['ID'];
+  label: Scalars['String'];
+  page?: Maybe<PageEntityResponse>;
+};
+
+export type ComponentMenuMenuLinkFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkFiltersInput>>>;
+  label?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentMenuMenuLinkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkFiltersInput>>>;
+  page?: InputMaybe<PageFiltersInput>;
+};
+
+export type ComponentMenuMenuLinkInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  label?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['ID']>;
+};
+
 export type ComponentMenuMenuSection = {
   __typename?: 'ComponentMenuMenuSection';
-  icon?: Maybe<Enum_Componentmenumenusection_Icon>;
+  icon: Enum_Componentmenumenusection_Icon;
   id: Scalars['ID'];
+  label: Scalars['String'];
+  links?: Maybe<Array<Maybe<ComponentMenuMenuLink>>>;
   page?: Maybe<PageEntityResponse>;
+};
+
+
+export type ComponentMenuMenuSectionLinksArgs = {
+  filters?: InputMaybe<ComponentMenuMenuLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type ComponentMenuMenuSectionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentMenuMenuSectionFiltersInput>>>;
   icon?: InputMaybe<StringFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
+  links?: InputMaybe<ComponentMenuMenuLinkFiltersInput>;
   not?: InputMaybe<ComponentMenuMenuSectionFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentMenuMenuSectionFiltersInput>>>;
   page?: InputMaybe<PageFiltersInput>;
@@ -613,6 +648,8 @@ export type ComponentMenuMenuSectionFiltersInput = {
 export type ComponentMenuMenuSectionInput = {
   icon?: InputMaybe<Enum_Componentmenumenusection_Icon>;
   id?: InputMaybe<Scalars['ID']>;
+  label?: InputMaybe<Scalars['String']>;
+  links?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkInput>>>;
   page?: InputMaybe<Scalars['ID']>;
 };
 
@@ -1242,65 +1279,6 @@ export enum Enum_Vzn_Category {
   UzemnePlanovanie = 'uzemnePlanovanie'
 }
 
-export type EmailDesignerEmailTemplate = {
-  __typename?: 'EmailDesignerEmailTemplate';
-  bodyHtml?: Maybe<Scalars['String']>;
-  bodyText?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  design?: Maybe<Scalars['JSON']>;
-  enabled?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  subject?: Maybe<Scalars['String']>;
-  tags?: Maybe<Scalars['JSON']>;
-  templateReferenceId?: Maybe<Scalars['Int']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type EmailDesignerEmailTemplateEntity = {
-  __typename?: 'EmailDesignerEmailTemplateEntity';
-  attributes?: Maybe<EmailDesignerEmailTemplate>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type EmailDesignerEmailTemplateEntityResponse = {
-  __typename?: 'EmailDesignerEmailTemplateEntityResponse';
-  data?: Maybe<EmailDesignerEmailTemplateEntity>;
-};
-
-export type EmailDesignerEmailTemplateEntityResponseCollection = {
-  __typename?: 'EmailDesignerEmailTemplateEntityResponseCollection';
-  data: Array<EmailDesignerEmailTemplateEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type EmailDesignerEmailTemplateFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>;
-  bodyHtml?: InputMaybe<StringFilterInput>;
-  bodyText?: InputMaybe<StringFilterInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  design?: InputMaybe<JsonFilterInput>;
-  enabled?: InputMaybe<BooleanFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<EmailDesignerEmailTemplateFiltersInput>>>;
-  subject?: InputMaybe<StringFilterInput>;
-  tags?: InputMaybe<JsonFilterInput>;
-  templateReferenceId?: InputMaybe<IntFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type EmailDesignerEmailTemplateInput = {
-  bodyHtml?: InputMaybe<Scalars['String']>;
-  bodyText?: InputMaybe<Scalars['String']>;
-  design?: InputMaybe<Scalars['JSON']>;
-  enabled?: InputMaybe<Scalars['Boolean']>;
-  name?: InputMaybe<Scalars['String']>;
-  subject?: InputMaybe<Scalars['String']>;
-  tags?: InputMaybe<Scalars['JSON']>;
-  templateReferenceId?: InputMaybe<Scalars['Int']>;
-};
-
 export type Error = {
   __typename?: 'Error';
   code: Scalars['String'];
@@ -1396,7 +1374,7 @@ export type FooterRelationResponseCollection = {
   data: Array<FooterEntity>;
 };
 
-export type GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | EmailDesignerEmailTemplate | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn;
+export type GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -1636,7 +1614,6 @@ export type Mutation = {
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createBlogPost?: Maybe<BlogPostEntityResponse>;
   createBlogPostLocalization?: Maybe<BlogPostEntityResponse>;
-  createEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>;
   createFooterLocalization?: Maybe<FooterEntityResponse>;
   createHomepageLocalization?: Maybe<HomepageEntityResponse>;
   createMenuLocalization?: Maybe<MenuEntityResponse>;
@@ -1655,7 +1632,6 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   createVzn?: Maybe<VznEntityResponse>;
   deleteBlogPost?: Maybe<BlogPostEntityResponse>;
-  deleteEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>;
   deleteFooter?: Maybe<FooterEntityResponse>;
   deleteHomepage?: Maybe<HomepageEntityResponse>;
   deleteMenu?: Maybe<MenuEntityResponse>;
@@ -1682,7 +1658,6 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateBlogPost?: Maybe<BlogPostEntityResponse>;
-  updateEmailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateFooter?: Maybe<FooterEntityResponse>;
   updateHomepage?: Maybe<HomepageEntityResponse>;
@@ -1719,11 +1694,6 @@ export type MutationCreateBlogPostLocalizationArgs = {
   data?: InputMaybe<BlogPostInput>;
   id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-export type MutationCreateEmailDesignerEmailTemplateArgs = {
-  data: EmailDesignerEmailTemplateInput;
 };
 
 
@@ -1820,11 +1790,6 @@ export type MutationCreateVznArgs = {
 export type MutationDeleteBlogPostArgs = {
   id: Scalars['ID'];
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-export type MutationDeleteEmailDesignerEmailTemplateArgs = {
-  id: Scalars['ID'];
 };
 
 
@@ -1935,12 +1900,6 @@ export type MutationUpdateBlogPostArgs = {
   data: BlogPostInput;
   id: Scalars['ID'];
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-export type MutationUpdateEmailDesignerEmailTemplateArgs = {
-  data: EmailDesignerEmailTemplateInput;
-  id: Scalars['ID'];
 };
 
 
@@ -2337,8 +2296,6 @@ export type Query = {
   __typename?: 'Query';
   blogPost?: Maybe<BlogPostEntityResponse>;
   blogPosts?: Maybe<BlogPostEntityResponseCollection>;
-  emailDesignerEmailTemplate?: Maybe<EmailDesignerEmailTemplateEntityResponse>;
-  emailDesignerEmailTemplates?: Maybe<EmailDesignerEmailTemplateEntityResponseCollection>;
   footer?: Maybe<FooterEntityResponse>;
   homepage?: Maybe<HomepageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
@@ -2377,18 +2334,6 @@ export type QueryBlogPostsArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type QueryEmailDesignerEmailTemplateArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryEmailDesignerEmailTemplatesArgs = {
-  filters?: InputMaybe<EmailDesignerEmailTemplateFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
