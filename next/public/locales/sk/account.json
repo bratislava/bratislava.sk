@@ -110,7 +110,6 @@
   "migration_recognized_description": "Potrebujeme overiť váš e-mail {email}.",
   "migration_register_description": "Neplatili ste ešte daň digitálne?",
   "migration_new_password_title": "Zadajte overovací kód a vytvorte si heslo",
-  "migration_new_password_submit": "Overiť e-mail",
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
   "LimitExceededException": "Skúste to znova neskôr.",
