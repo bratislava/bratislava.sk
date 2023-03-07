@@ -19,7 +19,9 @@ import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { contactUrls, eServicesData } from '@utils/constants'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
+import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
@@ -32,20 +34,13 @@ import { Link } from '../Link/Link'
 interface IProps extends LanguageSelectProps {
   className?: string
   menuItems?: MenuMainItem[]
-  handleSearch?: (searchOpen: boolean) => void
   pageColor?: string
 }
 
-export const BANavBar = ({
-  className,
-  menuItems,
-  handleSearch,
-  pageColor,
-  ...languageSelectProps
-}: IProps) => {
+export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectProps }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
 
-  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
 
   const { t } = useTranslation(['common'])
 
@@ -58,11 +53,12 @@ export const BANavBar = ({
         id="desktop-navbar"
         className={cx(
           className,
-          'items-center text-p2 ',
-          'fixed top-0 left-0 w-full bg-white z-50',
+          'text-p2 items-center ',
+          'fixed top-0 left-0 w-full bg-white z-40',
         )}
       >
-        <div className="max-w-screen-1.5lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
+        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
+          <SkipToContentButton />
           <Brand
             className="group"
             url="/"
@@ -343,7 +339,7 @@ const LanguageSelect = ({
           <div className="flex h-auto min-h-[60px] w-full flex-col items-center rounded-lg bg-[#F8D7D4] pt-1 pb-3 shadow-[0_8px_24px_rgba(0,0,0,0.16)]">
             {dropDownOptions?.map((option) => (
               <div
-                className="text-p3 hover:text-p3-semibold cursor-pointer text-font mt-3 h-6 w-6"
+                className="text-p3 hover:text-p3-semibold text-font cursor-pointer mt-3 h-6 w-6"
                 key={option.key}
                 onClick={handleChange}
               >

@@ -25,7 +25,7 @@ export const BAStickyMenu = ({
   )
 
   return (
-    <menu className={cx('flex max-w-screen-1.5lg m-auto w-full justify-between', className)}>
+    <menu className={cx('flex max-w-screen-lg m-auto w-full justify-between', className)}>
       {menuItems.map((item, i) => (
         <Fragment key={i}>
           <button

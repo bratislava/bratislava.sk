@@ -47,7 +47,7 @@ const ProgressBar = ({
             })}
           />
         </div>
-        <div className={cx('text-p-base not-italic')}>{value}%</div>
+        <div className={cx('text-p2')}>{value}%</div>
       </div>
     </div>
   )

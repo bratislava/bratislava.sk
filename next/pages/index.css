@@ -207,22 +207,22 @@
   -moz-appearance: textfield;
 }
 
-@screen maxMd {
+/* @screen maxMd {
   ::-webkit-scrollbar {
     @apply h-1.5 w-0;
   }
 
-  /* Track */
+  Track
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
 
-  /* Handle */
+  Handle
   ::-webkit-scrollbar-thumb {
     @apply bg-transparent;
   }
 
-  /* Handle on hover */
+  Handle on hover
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-transparent rounded-2xl;
   }
@@ -233,5 +233,20 @@
 
   .table-block tbody tr td:first-child div {
     @apply mb-6;
+  }
+} */
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
   }
 }

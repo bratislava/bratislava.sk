@@ -1,7 +1,8 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
+import { ROUTES } from '@utils/constants'
 import { formatUnicorn } from '@utils/string'
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
@@ -16,7 +17,7 @@ interface Data {
 
 interface Props {
   onSubmit: (rc: string, idCard: string) => void
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field
@@ -53,7 +54,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.rc, data.idCard))}
     >
       <h1 className="text-h3">{t('identity_verification_title')}</h1>
@@ -68,7 +69,6 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
             required
             label={t('rc_label')}
             placeholder={t('rc_placeholder')}
-            description={t('rc_description')}
             tooltip={t('rc_tooltip')}
             {...field}
             errorMessage={errors.rc}
@@ -83,7 +83,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
             required
             label={t('id_card_label')}
             placeholder={t('id_card_placeholder')}
-            description={t('id_card_description')}
+            helptext={t('id_card_description')}
             tooltip={t('id_card_tooltip')}
             {...field}
             errorMessage={errors.idCard}
@@ -100,7 +100,7 @@ const IdentityVerificationForm = ({ onSubmit, error }: Props) => {
       <Button
         variant="plain-black"
         className="min-w-full"
-        onPress={() => router.push('/')}
+        onPress={() => router.push({ pathname: ROUTES.ACCOUNT, query: { from: ROUTES.REGISTER } })}
         text={t('identity_verification_skip')}
         endIcon={<ArrowRightIcon />}
       />

@@ -14,6 +14,7 @@ import React, {
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 
@@ -27,9 +28,9 @@ interface SelectFieldProps {
   selectAllOption?: boolean
   placeholder?: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   className?: string
   onChange: (values: EnumOptionsType[]) => void
@@ -47,7 +48,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     type = 'one',
     selectAllOption,
     placeholder,
-    description,
+    helptext,
     tooltip,
     dropdownDivider,
     errorMessage = [],
@@ -206,7 +207,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       <FieldHeader
         label={label}
         htmlFor={hashCode}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         required={required}
         explicitOptional={explicitOptional}
@@ -230,11 +231,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
         {/* DROPDOWN ARROW */}
         <div
-          className={`${hashCode} dropdownButton min-h-[56px] cursor-pointer select-none rounded-lg pl-4 pr-5 [&>svg]:m-1`}
+          className={`${hashCode} dropdownButton flex items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1`}
           onClick={handleOnDropdownArrowClick}
         >
           <div
-            className={`${hashCode} dropdownButton relative flex h-full flex-col justify-center`}
+            className={`${hashCode} dropdownButton h-6 w-6 items-center relative flex h-full flex-col justify-center`}
           >
             {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
             <div className={`${hashCode} dropdownButton absolute inset-0 z-10`} />

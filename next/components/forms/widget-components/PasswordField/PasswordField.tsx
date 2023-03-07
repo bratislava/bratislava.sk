@@ -2,17 +2,20 @@ import HiddenIcon from '@assets/images/forms/hidden.svg'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { forwardRef, useState } from 'react'
 
+import { ExplicitOptionalType } from '../../types/ExplicitOptional'
+
 interface Props {
   label: string
   placeholder: string
   errorMessage?: string[]
-  description?: string
+  helptext?: string
   className?: string
   value?: string
   required?: boolean
-  explicitOptional?: 'none' | 'right' | 'left'
+  explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   tooltip?: string
+  autoComplete?: string
   onChange?: (value?: string) => void
 }
 
@@ -22,7 +25,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
       label,
       placeholder,
       errorMessage = [],
-      description,
+      helptext,
       tooltip,
       required,
       explicitOptional,
@@ -30,6 +33,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
       disabled,
       className,
       onChange,
+      autoComplete,
       ...rest
     },
     ref,
@@ -42,7 +46,7 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
         label={label}
         placeholder={placeholder}
         errorMessage={errorMessage}
-        description={description}
+        helptext={helptext}
         value={value}
         className={className}
         required={required}
@@ -51,11 +55,12 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
         onChange={onChange}
         explicitOptional={explicitOptional}
         ref={ref}
+        autoComplete={autoComplete}
         endIcon={
           <button
             type="button"
             tabIndex={0}
-            className="absolute inset-y-1/2 right-5 h-5 w-5 -translate-y-2/4 cursor-pointer"
+            className="flex items-center justify-center absolute inset-y-1/2 right-3 sm:right-4 h-6 w-6 -translate-y-2/4 cursor-pointer"
             onPointerUp={() => setType('password')}
             onPointerDown={() => setType('text')}
           >

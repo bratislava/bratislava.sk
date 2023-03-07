@@ -43,9 +43,9 @@ const DropdownRow = ({
   )
 
   const optionClassName = cx(
-    'dropdown text-20 w-full',
+    'dropdown text-16 w-full',
     {
-      'font-semibold': isBold,
+      'text-16-semibold': isBold,
     },
     selectHashCode,
   )
@@ -84,7 +84,7 @@ const DropdownRow = ({
           </div>
         </div>
         {option.label !== String(option.value) && (
-          <p className={`${selectHashCode} dropdown text-3`}>{option.label}</p>
+          <p className={`${selectHashCode} dropdown text-p3`}>{option.label}</p>
         )}
       </div>
       {divider && (

@@ -14,7 +14,7 @@ type InputFieldRJSFOptions = {
 interface InputFieldWidgetRJSFProps extends WidgetProps {
   label: string
   options: InputFieldRJSFOptions
-  value: string
+  value: string | null
   required?: boolean
   disabled?: boolean
   placeholder?: string
@@ -34,7 +34,7 @@ const InputFieldWidgetRJSF = ({
   rawErrors,
 }: InputFieldWidgetRJSFProps) => {
   const {
-    description,
+    helptext,
     tooltip,
     className,
     resetIcon,
@@ -55,11 +55,11 @@ const InputFieldWidgetRJSF = ({
         label={label}
         type={type}
         placeholder={placeholder}
-        value={value}
+        value={value ?? undefined}
         errorMessage={rawErrors}
         required={required}
         disabled={disabled}
-        description={description}
+        helptext={helptext}
         tooltip={tooltip}
         className={className}
         resetIcon={resetIcon}

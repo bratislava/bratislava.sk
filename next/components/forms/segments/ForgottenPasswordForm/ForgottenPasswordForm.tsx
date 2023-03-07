@@ -1,6 +1,7 @@
+import { AccountError } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
-import { AWSError } from 'aws-sdk/global'
 import Alert from 'components/forms/info-components/Alert'
+import LoginAccountLink from 'components/forms/segments/LoginAccountLink/LoginAccountLink'
 import Button from 'components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import { useTranslation } from 'next-i18next'
@@ -12,7 +13,7 @@ interface Data {
 
 interface Props {
   onSubmit: (email: string) => Promise<any>
-  error?: AWSError | null | undefined
+  error?: AccountError | null | undefined
 }
 
 // must use `minLength: 1` to implement required field
@@ -29,7 +30,7 @@ const schema = {
   required: ['email'],
 }
 
-const App = ({ onSubmit, error }: Props) => {
+const ForgottenPasswordForm = ({ onSubmit, error }: Props) => {
   const { t } = useTranslation('account')
   const {
     handleSubmit,
@@ -43,7 +44,7 @@ const App = ({ onSubmit, error }: Props) => {
 
   return (
     <form
-      className="flex flex-col space-y-6"
+      className="flex flex-col space-y-4"
       onSubmit={handleSubmit((data: Data) => onSubmit(data.email))}
     >
       <h1 className="text-h3">{t('forgotten_password_title')}</h1>
@@ -68,14 +69,9 @@ const App = ({ onSubmit, error }: Props) => {
         variant="category"
         disabled={isSubmitting}
       />
-      <div className="flex justify-between">
-        <div className="text-20-semibold hidden md:flex text-gray-800">
-          {t('login_description')}
-        </div>
-        <Button variant="link-black" href="/login" label={t('login_link')} hrefIconHidden />
-      </div>
+      <LoginAccountLink />
     </form>
   )
 }
 
-export default App
+export default ForgottenPasswordForm

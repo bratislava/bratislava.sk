@@ -6,7 +6,7 @@ import useSWR from 'swr'
 import { OrganizationalStructureTopLevelAccordion } from './OrganizationalStructureTopLevelAccordion'
 
 export interface AdvancedAccordionProps {
-  title?: string
+  title?: string | null
   dividerStyle?: string
 }
 

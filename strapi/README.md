@@ -59,6 +59,15 @@ Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/lates
 yarn build
 ```
 
+## Patches
+
+We use [pach-package](https://github.com/ds300/patch-package) to slightly change the behaviour of some packages. See the `patches` folder for more details.
+
+When updating these packages, please run also `pack-package`:
+```
+yarn patch-package @strapi/plugin-users-permissions
+```
+
 ## Secrets
 
 Let's have a look if you are in the proper cluster:

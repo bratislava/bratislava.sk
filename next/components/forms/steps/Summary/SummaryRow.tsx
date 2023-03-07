@@ -6,15 +6,17 @@ import { TransformedFormData } from './TransformedFormData'
 interface SummaryRowProps {
   data: TransformedFormData
   size?: 'small' | 'large'
+  isEditable?: boolean
   onGoToStep?: () => void
 }
 
 const SummaryRow = (props: SummaryRowProps) => {
-  const { data, size = 'large', onGoToStep } = props
+  const { data, size = 'large', isEditable = true, onGoToStep } = props
 
   const containerClassName = cx('border-b-2 sm:flex-nowrap flex flex-wrap flex-row py-2.5 gap-2', {
     '[&>div>*]:block border-red-500': data.isError,
-    'border-gray-200 hover:border-gray-700 [&>div>*]:hover:block': !data.isError,
+    'border-gray-200 [&>div>*]:hover:block': !data.isError,
+    'hover:border-gray-700': isEditable,
   })
 
   const labelClassName = cx('w-full', {
@@ -32,7 +34,7 @@ const SummaryRow = (props: SummaryRowProps) => {
       <p className={labelClassName}>{data.label}</p>
       <div className="w-full flex flex-row items-center">
         <p className={valueClassName}>{data.value}</p>
-        <EditIcon className="cursor-pointer hidden" onClick={onGoToStep} />
+        {isEditable && <EditIcon className="cursor-pointer hidden" onClick={onGoToStep} />}
       </div>
     </div>
   )

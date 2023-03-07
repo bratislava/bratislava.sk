@@ -24,7 +24,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         <InputField
           label="Label"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           explicitOptional="right"
         />
@@ -32,14 +32,14 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           label="Label"
           placeholder="Placeholder"
           value="Value"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           required
         />
         <InputField
           label="Label"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           required
           errorMessage={['Error message']}
@@ -47,7 +47,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         <InputField
           label="Label"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           required
           errorMessage={['Error message']}
@@ -58,7 +58,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         <InputField
           label="Label"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           leftIcon="mail"
           resetIcon
@@ -67,7 +67,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           label="Label"
           placeholder="Placeholder"
           value="Value"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           leftIcon="call"
           resetIcon
@@ -76,7 +76,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           label="Label"
           type="password"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           leftIcon="lock"
           resetIcon
@@ -85,7 +85,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
         <InputField
           label="Label"
           placeholder="Placeholder"
-          description="Help text"
+          helptext="Help text"
           tooltip="InputField"
           leftIcon="person"
           resetIcon

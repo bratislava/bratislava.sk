@@ -5,19 +5,26 @@
     "ziadatelIco": -2736,
     "ziadatelMiestoPodnikania": "string",
     "ziadatelAdresaSidla": "string",
-    "ziadatelMesto": "mesto",
-    "ziadatelPsc": "string",
+    "ziadatelMestoPsc": {
+      "ziadatelMesto": "mesto",
+      "ziadatelPsc": "string"
+    },
     "ziadatelKontaktnaOsoba": "test",
     "ziadatelEmail": "ziadatel@test.sk",
     "ziadatelTelefon": "+449"
   },
   "investor": {
     "investorZiadatelom": true,
-    "splnomocnenie": ["string"],
+    "splnomocnenie": [
+      "string"
+    ],
     "investorTyp": "Právnicka osoba",
     "investorMenoPriezvisko": "Janko Hrasko",
     "investorMiestoPodnikania": "string",
-    "investorMesto": "mesto",
+    "investorMestoPsc": {
+      "investorMesto": "mesto",
+      "investorPsc": "string"
+    },
     "investorEmail": "investor@test.sk",
     "investorTelefon": "+4"
   },
@@ -33,16 +40,34 @@
     "stavbaDruh": "Bytový dom",
     "stavbaUlica": "string",
     "stavbaParcela": "string",
-    "stavbaKataster": ["1", "2", "3"]
+    "stavbaKataster": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   "konanie": {
-    "konanieTyp": "Konanie o dodatočnom povolení zmeny dokončenej stavby",
-    "ziadostOdovodnenie": "Iné",
-    "stavbaFotodokumentacia": ["string", "string"]
+    "konanieTyp": "Konanie o dodatočnom povolení stavby",
+    "ziadostOdovodnenie": "Dodatočné povolenie zmeny stavby pred dokončením",
+    "stavbaFotodokumentacia": [
+      "string",
+      "string"
+    ],
+    "stavbaPisomnosti": [
+      "string",
+      "string"
+    ]
   },
   "prilohy": {
-    "projektovaDokumentacia": ["string"],
-    "podzemnePodlazie": ["string"],
-    "vyjadrenieUradu": ["string", "string 2"]
+    "projektovaDokumentacia": [
+      "string"
+    ],
+    "podzemnePodlazie": [
+      "string"
+    ],
+    "vyjadrenieUradu": [
+      "string",
+      "string 2"
+    ]
   }
 }

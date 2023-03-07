@@ -58,7 +58,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   return (
     <section
       ref={ref}
-      className={`${hashCode} flex w-full flex-row flex-wrap gap-2 py-2.5 pl-4`}
+      className={`${hashCode} flex items-center w-full flex-row flex-wrap gap-2 py-2 sm:py-2.5 sm:pl-4 pl-3`}
       data-value={value}
     >
       {
@@ -69,7 +69,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
                 key={key}
                 selectHashCode={hashCode}
                 text={option.value}
-                size="large"
+                size="small"
                 onRemove={() => onRemove(key)}
                 removable
               />
@@ -79,7 +79,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       <input
         ref={filterRef}
         name={hashCode}
-        className={`${hashCode} text-20 max-w-[80px] xs:max-w-none border-0 outline-none`}
+        className={`${hashCode} text-16 max-w-[80px] xs:max-w-none border-0 outline-none`}
         type="text"
         size={getInputSize()}
         value={filter}
