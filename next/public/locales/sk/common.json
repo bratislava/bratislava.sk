@@ -121,5 +121,6 @@
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
   "noUsersToShow": "Žiadne kontakty na zobrazenie.",
   "menu.show_less": "Zobraziť menej",
-  "menu.show_more": "Zobraziť viac"
+  "menu.show_more": "Zobraziť viac",
+  "skipNavigation": "Preskočiť navigáciu"
 }

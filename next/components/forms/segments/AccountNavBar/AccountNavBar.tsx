@@ -8,6 +8,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
@@ -17,7 +18,6 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
-import { getLanguageKey } from '@utils/utils'
 
 interface IProps extends LanguageSelectProps {
   className?: string

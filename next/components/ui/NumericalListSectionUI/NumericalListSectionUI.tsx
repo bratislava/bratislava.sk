@@ -7,7 +7,7 @@ import { NumericalList } from '../NumericalList/NumericalList'
 import Waves from '../Waves/Waves'
 
 export interface NumericalListItemObject {
-  text?: string
+  text?: string | null
 }
 
 export interface NumericalListSectionProps {
@@ -19,7 +19,7 @@ export interface NumericalListSectionProps {
   variant?: 'basic' | 'combined' | 'roadmap'
 }
 
-export const NumericalListSection = ({
+export const NumericalListSectionUI = ({
   title,
   items,
   hasBackground,

@@ -1,9 +1,9 @@
 import { ArrowLeft } from '@assets/images'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { getLanguageKey } from '@utils/utils'
 
 interface IProps {
   className?: string
