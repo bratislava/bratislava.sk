@@ -58,6 +58,7 @@ export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectPro
         )}
       >
         <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
+          <SkipToContentButton />
           <Brand
             className="group"
             url="/"
@@ -69,7 +70,6 @@ export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectPro
               </p>
             }
           />
-          <SkipToContentButton />
 
           <nav className="text-font/75 flex gap-x-8 font-semibold">
             <div className="text-font/75 flex items-center gap-x-8 font-semibold">
