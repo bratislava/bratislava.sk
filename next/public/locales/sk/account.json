@@ -108,7 +108,6 @@
   "migration_recognized_description": "Potrebujeme overiť váš e-mail {email}.",
   "migration_register_description": "Neplatili ste ešte daň digitálne?",
   "migration_new_password_title": "Zadajte overovací kód a vytvorte si heslo",
-  "migration_new_password_submit": "Overiť e-mail",
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
   "LimitExceededException": "Skúste to znova neskôr.",
@@ -360,7 +359,12 @@
     "modal_message": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktujte nás na <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "modal_thanks": "Ďakujeme!"
   },
-  "pay_tax": "Zaplatiť daň",
+  "adding_phone_number_modal": {
+    "title": "Doplnenie telefónneho čísla",
+    "description": "Prajete si, aby sme s vami v ojedinelých prípadoch komunikovali aj prostredníctvom SMS? Zanechajte nám vaše telefónne číslo a my vám pripomenieme, napríklad, blížiaci sa termín splatnosti dane aj cez SMS.\n\nTelefónne číslo môžete kedykoľvek doplniť do profilu.\n\n",
+    "phoneNumber_not_required": "*Neposkytnutie telefónneho čísla nemá vplyv na využívanie služieb v Bratislavskom konte."
+  },
+  "pay_tax": "Zaplatiť",
   "back_to_list": "Naspäť na zoznam",
   "city": "Mesto",
   "tax_created": "Vytvorená",
