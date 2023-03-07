@@ -4,14 +4,7 @@ import { useCopyToClipboard } from 'usehooks-ts'
 const ClipboardCopy = ({ copyText }: { copyText: string }) => {
   const [_, copy] = useCopyToClipboard()
   return (
-    <button
-      type="button"
-      onClick={() => {
-        copy(copyText)
-          .then(() => {})
-          .catch(() => {})
-      }}
-    >
+    <button type="button" onClick={() => copy(copyText)}>
       <ContentCopy />
     </button>
   )
