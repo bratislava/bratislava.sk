@@ -22,7 +22,6 @@ import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
 import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
-import { WelcomeSection } from '../components/sections/WelcomeSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
@@ -158,12 +157,22 @@ const Homepage = ({
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout
+        header={header}
         menuItems={menuItems}
         footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
         bookmarks={cards}
       >
-        <PageHeader color="" transparentColor="" imageSrc="" className="h-14 overflow-hidden">
-          {/* meta description */}
+        <PageHeader
+          color=""
+          transparentColor=""
+          imageSrc=""
+          waves={{
+            className: 'md:mt-18 mt-6',
+            waveColor: 'white',
+            wavePosition: 'bottom',
+            backgroundColor: 'var(--background-color)',
+          }}
+        >
           <Head>
             <title>{homepage?.data?.attributes?.title}</title>
             <meta
@@ -172,17 +181,6 @@ const Homepage = ({
             />
           </Head>
         </PageHeader>
-
-        <div className="bg-white">
-          <WelcomeSection mainMenuItems={menuItems} homepageHeader={header} />
-          <Waves
-            className="md:mt-18 mt-6"
-            waveColor="white"
-            wavePosition="bottom"
-            isRich
-            backgroundColor="var(--background-color)"
-          />
-        </div>
 
         <SectionContainer className="bg-gray-50 pb-14">
           <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
