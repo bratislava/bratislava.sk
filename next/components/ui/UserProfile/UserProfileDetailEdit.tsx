@@ -1,6 +1,7 @@
 import { RJSFSchema } from '@rjsf/utils'
 import { Address, UserData } from '@utils/useAccount'
 import useHookForm from '@utils/useHookForm'
+import { isValidPhoneNumber } from 'libphonenumber-js'
 import { useTranslation } from 'next-i18next'
 import { Controller } from 'react-hook-form'
 
@@ -48,6 +49,8 @@ const schema = {
     },
     postal_code: {
       type: 'string',
+      format: 'postalCode',
+      errorMessage: { format: 'account:postal_code_format' },
     },
   },
   required: ['email', 'given_name', 'family_name'],
@@ -63,7 +66,7 @@ interface UserProfileDetailEditProps {
 const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   const { formId, userData, onOpenEmailModal, onSubmit } = props
   const { t } = useTranslation('account')
-  const { handleSubmit, control, errors } = useHookForm<Data>({
+  const { handleSubmit, control, errors, setError } = useHookForm<Data>({
     schema,
     defaultValues: {
       family_name: userData.family_name,
@@ -77,19 +80,22 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   })
 
   const handleSubmitCallback = (data: Data) => {
-    const newUserData: UserData = {
-      email: data.email,
-      given_name: data.given_name,
-      family_name: data.family_name,
-      phone_number: data.phone_number,
-      address: {
-        street_address: data.street_address,
-        locality: data.city,
-        postal_code: data.postal_code,
-      },
+    if (!data.phone_number || isValidPhoneNumber(data.phone_number)) {
+      const newUserData: UserData = {
+        email: data.email,
+        given_name: data.given_name,
+        family_name: data.family_name,
+        phone_number: data.phone_number,
+        address: {
+          street_address: data.street_address,
+          locality: data.city,
+          postal_code: data.postal_code,
+        },
+      }
+      return onSubmit(newUserData)
     }
 
-    return onSubmit(newUserData)
+    return setError('phone_number', { type: 'manual', message: 'account:phone_number_format' })
   }
 
   return (
@@ -204,7 +210,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
               <InputField
                 label={t('profile_detail.postal_code')}
                 {...field}
-                errorMessage={errors.city}
+                errorMessage={errors.postal_code}
               />
             )}
           />

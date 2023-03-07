@@ -54,6 +54,7 @@
     "immer": "9.0.18",
     "jest-each": "^29.3.1",
     "json-schema": "^0.4.0",
+    "libphonenumber-js": "^1.10.21",
     "libxmljs2": "^0.31.0",
     "lodash": "4.17.21",
     "mapbox-gl": "2.12.1",
