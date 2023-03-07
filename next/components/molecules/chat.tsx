@@ -1,6 +1,6 @@
 import { DirectLine } from 'botframework-directlinejs'
 import ReactWebChat from 'botframework-webchat'
-import { uniqueId } from 'lodash'
+import uniqueId from 'lodash/uniqueId'
 import React, { useRef, useState } from 'react'
 
 import Close from '../../assets/images/close.svg'
