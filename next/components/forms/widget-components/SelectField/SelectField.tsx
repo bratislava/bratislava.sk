@@ -123,16 +123,13 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue)
   }
 
-  const handleOnDropdownArrowClick = () => {
-    if (!isOutsideClickProgressing) {
-      setIsDropdownOpened(true)
-    }
-  }
-
   const handleOnSelectFieldClick = (event: React.MouseEvent) => {
     const targetClassList = (event.target as Element).classList
     if (!isDropdownOpened && !targetClassList.contains('tag') && !disabled) {
       filterRef.current?.focus()
+      if (!isOutsideClickProgressing) {
+        setIsDropdownOpened(true)
+      }
     }
   }
 
@@ -206,10 +203,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         />
 
         {/* DROPDOWN ARROW */}
-        <div
-          className="dropdownButton flex flex-col items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1"
-          onClick={handleOnDropdownArrowClick}
-        >
+        <div className="dropdownButton flex flex-col items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1">
           <div className="dropdownButton h-6 w-6 items-center relative flex h-full flex-col justify-center">
             {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
             <div className="dropdownButton absolute inset-0 z-10" />
