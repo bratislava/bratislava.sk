@@ -3120,10 +3120,7 @@ export type HomepageHeaderFragment = { __typename?: 'ComponentBlocksHomepageHead
 
 export type NewsCardBlogFragment = { __typename?: 'BlogPostEntityResponse', data?: { __typename?: 'BlogPostEntity', attributes?: { __typename?: 'BlogPost', title?: string | null, excerpt?: string | null, slug?: string | null, updatedAt?: any | null, date_added?: any | null, coverImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', attributes?: { __typename?: 'Tag', title?: string | null, pageCategory?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', color?: Enum_Pagecategory_Color | null } | null } | null } | null } | null } | null } | null } | null } | null };
 
-export type PagesStaticPathsQueryVariables = Exact<{
-  page?: InputMaybe<Scalars['Int']>;
-  limit?: InputMaybe<Scalars['Int']>;
-}>;
+export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type PagesStaticPathsQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', slug?: string | null } | null }> } | null };
@@ -4210,8 +4207,8 @@ export const HomepageDocument = gql`
     ${NewsCardBlogFragmentDoc}
 ${HomepageHeaderFragmentDoc}`;
 export const PagesStaticPathsDocument = gql`
-    query PagesStaticPaths($page: Int, $limit: Int) {
-  pages(pagination: {page: $page, pageSize: $limit}) {
+    query PagesStaticPaths {
+  pages(pagination: {limit: -1}) {
     data {
       id
       attributes {
