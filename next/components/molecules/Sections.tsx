@@ -25,6 +25,7 @@ import ListItemsSection from './sections/general/ListItemsSection'
 import NarrowTextSection from './sections/general/NarrowTextSection'
 import NewsletterSection from './sections/general/NewsletterSection'
 import NumericalListSection from './sections/general/NumericalListSection'
+import OfficialBoardSection from './sections/general/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
 import TextWithImageSection from './sections/general/TextWithImageSection'
 import VideosSection from './sections/general/VideosSection'
@@ -92,6 +93,9 @@ const SectionContent = ({
 
     case 'ComponentSectionsIframe':
       return <IframeSection section={section} />
+
+    case 'ComponentSectionsOfficialBoard':
+      return <OfficialBoardSection />
 
     default:
       return null
