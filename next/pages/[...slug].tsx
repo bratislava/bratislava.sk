@@ -10,7 +10,7 @@ import {
 import { paginationObj } from '@utils/constants'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
-import { arrayify, isPresent, shouldSkipStaticPaths } from '@utils/utils'
+import { arrayify, isPresent } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -19,7 +19,6 @@ import GeneralPage from '../components/pages/generalPage'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths = []
-  if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   let defaultStart: number = paginationObj.defaultPage
   // Fetch all pages to prerender
