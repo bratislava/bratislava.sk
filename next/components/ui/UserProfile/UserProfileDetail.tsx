@@ -44,7 +44,11 @@ const UserProfileDetail = (props: UserProfileDetailProps) => {
   }
 
   return (
-    <div className={cx('flex flex-col', 'md:static md:z-0', { 'fixed inset-0 z-50': isEditing })}>
+    <div
+      className={cx(' flex flex-col', 'md:static md:z-0', {
+        'fixed inset-0 z-50': isEditing,
+      })}
+    >
       <UserProfileSection>
         <UserProfileSectionHeader
           title={t('profile_detail.title')}
