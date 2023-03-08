@@ -49,7 +49,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
 
   // STYLES
   const dropdownClassName = cx(
-    'dropdown border-form-input-pressed rounded-lg border-2 bg-white z-50 py-2',
+    'dropdown border-form-input-pressed max-h-96 overflow-y-auto rounded-lg border-2 bg-white z-50 py-2',
     {
       'absolute top-2 left-0 right-0': absolute,
     },
