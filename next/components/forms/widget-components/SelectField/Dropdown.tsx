@@ -49,7 +49,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
 
   // STYLES
   const dropdownClassName = cx(
-    'dropdown border-form-input-pressed max-h-96 overflow-y-auto rounded-lg border-2 bg-white z-50 py-2',
+    'dropdown border-form-input-pressed max-h-96 overflow-hidden rounded-lg border-2 bg-white z-30',
     {
       'absolute top-2 left-0 right-0': absolute,
     },
@@ -77,33 +77,35 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   // RENDER
   return (
     <div className={dropdownClassName} ref={clickOutsideRef}>
-      {selectAllOption && type === 'multiple' && (
-        <SelectAllDropdownRow
-          onSelectAll={handleOnSelectAllRowClick}
-          divider={divider}
-          isEverythingSelected={isEverythingSelected}
-        />
-      )}
-      {enumOptions?.map((option, key) => (
-        <DropdownRow
-          key={key}
-          option={option}
-          divider={divider}
-          selected={isSelected(option)}
-          type={type}
-          isBold={isRowBold}
-          onChooseOne={(opt: EnumOptionsType, close?: boolean) =>
-            onChooseOne ? onChooseOne(opt, close) : null
-          }
-          onUnChooseOne={(opt: EnumOptionsType, close?: boolean) =>
-            onUnChooseOne ? onUnChooseOne(opt, close) : null
-          }
-          onChooseMulti={(opt: EnumOptionsType) => (onChooseMulti ? onChooseMulti(opt) : null)}
-          onUnChooseMulti={(opt: EnumOptionsType) =>
-            onUnChooseMulti ? onUnChooseMulti(opt) : null
-          }
-        />
-      ))}
+      <div className="max-h-96 overflow-y-auto py-2">
+        {selectAllOption && type === 'multiple' && (
+          <SelectAllDropdownRow
+            onSelectAll={handleOnSelectAllRowClick}
+            divider={divider}
+            isEverythingSelected={isEverythingSelected}
+          />
+        )}
+        {enumOptions?.map((option, key) => (
+          <DropdownRow
+            key={key}
+            option={option}
+            divider={divider}
+            selected={isSelected(option)}
+            type={type}
+            isBold={isRowBold}
+            onChooseOne={(opt: EnumOptionsType, close?: boolean) =>
+              onChooseOne ? onChooseOne(opt, close) : null
+            }
+            onUnChooseOne={(opt: EnumOptionsType, close?: boolean) =>
+              onUnChooseOne ? onUnChooseOne(opt, close) : null
+            }
+            onChooseMulti={(opt: EnumOptionsType) => (onChooseMulti ? onChooseMulti(opt) : null)}
+            onUnChooseMulti={(opt: EnumOptionsType) =>
+              onUnChooseMulti ? onUnChooseMulti(opt) : null
+            }
+          />
+        ))}
+      </div>
     </div>
   )
 }
