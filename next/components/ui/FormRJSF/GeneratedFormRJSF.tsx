@@ -1,12 +1,11 @@
-import LeftIcon from '@assets/images/chevron-left.svg'
-import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import { EFormValue } from '@backend/forms'
 import { FormValidation, RJSFSchema } from '@rjsf/utils'
 import { useFormStepper, useFormSubmitter } from '@utils/forms'
 import cx from 'classnames'
+import SkipStepModal from 'components/forms/segments/SkipStepModal/SkipStepModal'
 import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
 
-import Button from '../../forms/simple-components/Button'
 import FinalStep from '../../forms/steps/FinalStep'
 import StepperView from '../../forms/steps/StepperView'
 import StepButtonGroup from '../../forms/steps/Summary/StepButtonGroup'
@@ -19,8 +18,14 @@ interface FormRJSF {
 }
 
 const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
-  const [t] = useTranslation('forms')
   const form = useFormStepper(escapedSlug, eform.schema)
+  const [isOnShowSkipModal, setIsOnShowSkipModal] = useState<boolean>(false)
+  const [skipModalWasShown, setSkipModalWasShown] = useState<boolean>(false)
+
+  const skipButtonHandler = () => {
+    if (skipModalWasShown) form.skipToStep(form.stepIndex + 1)
+    setIsOnShowSkipModal(true)
+  }
   const submitter = useFormSubmitter(formSlug)
 
   return (
@@ -32,6 +37,18 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
           // if not wanted because of broken validation when skipping multiple steps, comment out onChangeStep
           onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+        />
+        <SkipStepModal
+          show={isOnShowSkipModal && !skipModalWasShown}
+          onClose={() => {
+            setIsOnShowSkipModal(false)
+            setSkipModalWasShown(true)
+          }}
+          onSkip={() => {
+            form.skipToStep(form.stepIndex + 1)
+            setIsOnShowSkipModal(false)
+            setSkipModalWasShown(true)
+          }}
         />
       </div>
       <div className={cx('grow mx-8', 'lg:mx-28')}>
@@ -73,7 +90,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           stepIndex={form.stepIndex}
           isFinalStep={form.isComplete}
           previous={form.previous}
-          skip={() => form.skipToStep(form.stepIndex + 1)}
+          skip={skipButtonHandler}
           submitStep={form.submitStep}
           submitForm={() => submitter.submitForm(form.formData)}
         />

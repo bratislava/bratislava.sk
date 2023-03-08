@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_menu_menu_links",
+  "info": {
+    "displayName": "menu link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  }
+}
