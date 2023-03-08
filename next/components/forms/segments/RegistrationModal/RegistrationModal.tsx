@@ -14,12 +14,14 @@ type ButtonDesktopBase = {
 
 const ButtonDesktop = ({ text, endIcon, href = '#' }: ButtonDesktopBase) => {
   return (
-    <Link href={href}>
+    <Link
+      href={href}
+      className="cursor-pointer w-full hidden md:flex justify-center gap-3 py-2.5 border-2 border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800 hover:border-gray-200 hover:text-gray-600 rounded-lg"
+    >
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className="cursor-pointer w-full hidden md:flex justify-center gap-3 py-2.5 border-2 border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800 hover:border-gray-200 hover:text-gray-600 rounded-lg">
-        <div className="text-p2-semibold ">{text}</div>
-        <span className="w-6 h-6 flex justify-center items-center">{endIcon}</span>
-      </a>
+
+      <div className="text-p2-semibold ">{text}</div>
+      <span className="w-6 h-6 flex justify-center items-center">{endIcon}</span>
     </Link>
   )
 }
@@ -33,15 +35,17 @@ type ButtonMobileBase = {
 
 const ButtonMobile = ({ text, endIcon, href = '', title }: ButtonMobileBase) => {
   return (
-    <Link href={href}>
+    <Link
+      href={href}
+      className="cursor-pointer w-full max-w-sm flex flex-col md:hidden gap-2 p-4 border-2 border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 hover:border-gray-200 rounded-lg"
+    >
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className="cursor-pointer w-full max-w-sm flex flex-col md:hidden gap-2 p-4 border-2 border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 hover:border-gray-200 rounded-lg">
-        <div className="text-p2-semibold">{title}</div>
-        <div className="flex items-center gap-2">
-          <span className="text-p2-semibold text-main-700 hover:text-main-600">{text}</span>
-          <span className="w-6 h-6 flex justify-center items-center text-main-700">{endIcon}</span>
-        </div>
-      </a>
+
+      <div className="text-p2-semibold">{title}</div>
+      <div className="flex items-center gap-2">
+        <span className="text-p2-semibold text-main-700 hover:text-main-600">{text}</span>
+        <span className="w-6 h-6 flex justify-center items-center text-main-700">{endIcon}</span>
+      </div>
     </Link>
   )
 }
@@ -104,21 +108,25 @@ const RegistrationModal = ({ show, onClose, className }: RegistrationModalBase) 
             </ul>
           </div>
           <div className="bg-main-100 rounded-b-lg">
-            <Link href="/login">
+            <Link
+              href="/login"
+              className="text-p1-semibold text-gray-0 leading-6 text-center bg-main-700 py-2 sm:py-6 mb-4 md:mb-0 mx-4 md:mx-0 px-5 md:px-0 rounded-lg md:rounded-t-none md:rounded-b-lg flex justify-center hover:bg-main-600"
+            >
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a className="text-p1-semibold text-gray-0 leading-6 text-center bg-main-700 py-2 sm:py-6 mb-4 md:mb-0 mx-4 md:mx-0 px-5 md:px-0 rounded-lg md:rounded-t-none md:rounded-b-lg flex justify-center hover:bg-main-600">
-                {t('register_modal.body_action')}
-              </a>
+
+              {t('register_modal.body_action')}
             </Link>
           </div>
 
           <div className="flex flex-col gap-1 sm:gap-0 sm:flex-row sm:justify-between sm:items-center my-3 md:my-6">
             <span className="text-p1-semibold">{t('register_modal.body_login_description')}</span>
-            <Link href="/login">
+            <Link
+              href="/login"
+              className="text-p1-semibold underline text-main-700 hover:text-main-600"
+            >
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a className="text-p1-semibold underline text-main-700 hover:text-main-600">
-                {t('register_modal.body_login_link')}
-              </a>
+
+              {t('register_modal.body_login_link')}
             </Link>
           </div>
         </div>
