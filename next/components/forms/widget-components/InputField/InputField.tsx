@@ -94,16 +94,6 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             setValueState(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           }
         },
-        onFocusChange(isFocused) {
-          // capitalize first letter after un focus field with type === 'text'
-          if (!isFocused && type === 'text') {
-            if (onChange) {
-              onChange(valueState.replace(/^\w/, (c) => c.toUpperCase()))
-            } else {
-              setValueState(valueState.replace(/^\w/, (c) => c.toUpperCase()))
-            }
-          }
-        },
         isRequired: required,
         isDisabled: disabled,
         autoComplete,

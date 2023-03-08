@@ -8,10 +8,14 @@ import { parseStringPromise } from 'xml2js'
 // ginis accessible only from internal network
 // if developing from internal network, change here
 export const shouldMockGinis = () => {
-  return process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' || process.env.CI === 'true'
+  return (
+    process.env.NODE_ENV === 'development' ||
+    process.env.NODE_ENV === 'test' ||
+    process.env.CI === 'true'
+  )
 }
 
-export const getUDEDocumentsList = async (search?: string): Promise<Array<ResponseGinisDocumentsList>> => {
+const getUDEDocumentsList = async (search?: string): Promise<Array<ResponseGinisDocumentsList>> => {
   const axiosConfig: AxiosRequestConfig = {
     headers: {
       'Content-Type': 'text/xml; charset=utf-8',
@@ -63,7 +67,9 @@ export const getUDEDocumentsList = async (search?: string): Promise<Array<Respon
     throw new Error('bad soap request to Ginis')
   }
   const response = await parseStringPromise(responseAxios.data, { explicitArray: false })
-  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg['Seznam-dokumentu']
+  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg[
+    'Seznam-dokumentu'
+  ]
 }
 
 export type ParsedOfficialBoardDocument = {
@@ -91,7 +97,7 @@ export const getParsedUDEDocumentsList = async (search?: string, limit?: number)
           }
         : null
     })
-    .filter(identity)
+    .filter(identity) as ParsedOfficialBoardDocument[]
   return limit ? parsedDocuments.slice(0, limit) : parsedDocuments
 }
 
