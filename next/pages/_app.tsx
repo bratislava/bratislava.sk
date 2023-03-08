@@ -6,6 +6,7 @@ import { AccountProvider } from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
@@ -22,6 +23,11 @@ import BAQueryClientProvider from '../components/providers/BAQueryClientProvider
 // https://github.com/microsoft/BotFramework-WebChat/issues/4607
 const DynamicChat = dynamic(() => import('../components/molecules/chat'), {
   ssr: false,
+})
+
+const inter = Inter({
+  variable: '--inter-font',
+  subsets: ['latin', 'latin-ext'],
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -75,9 +81,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <QueryParamProvider adapter={NextAdapter}>
             <SSRProvider>
               <AccountProvider>
-                <Component {...pageProps} />
+                <div className={`${inter.variable} font-sans`}>
+                  <Component {...pageProps} />
 
-                {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+                  {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+                </div>
               </AccountProvider>
             </SSRProvider>
           </QueryParamProvider>
