@@ -232,8 +232,8 @@ export const Posts = ({
                     locale,
                   )}`}
                   iframeWidth="container"
-                  iframeHeight="100"
-                  fullHeight
+                  iframeHeight="620"
+                  fullHeight={false}
                   allowFullscreen={false}
                 />
               </div>
