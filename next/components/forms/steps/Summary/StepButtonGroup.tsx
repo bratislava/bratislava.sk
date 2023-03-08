@@ -15,7 +15,7 @@ interface StepButtonGroupProps {
 
 const StepButtonGroup = (props: StepButtonGroupProps) => {
   const { stepIndex, isFinalStep, previous, skip, submitStep, submitForm } = props
-  const [t] = useTranslation('forms')
+  const { t } = useTranslation('forms')
 
   return (
     <div className="flex flex-row flex-wrap gap-5">
