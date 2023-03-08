@@ -53,17 +53,23 @@ export const CookieConsent = ({ pageColor }: IProps) => {
             <p className="text-p2 mb-8">
               {' '}
               {t('cookie_consent_body')}{' '}
-              <NextLink href={t('cookie_consent_privacy_policy_link')} passHref>
-                <a href={t('cookie_consent_privacy_policy_link')} className="cursor-pointer font-semibold underline">
-                  {' '}
-                  {t('cookie_consent_privacy_policy')}{' '}
-                </a>
+              <NextLink
+                href={t('cookie_consent_privacy_policy_link')}
+                passHref
+                className="cursor-pointer font-semibold underline"
+              >
+                {' '}
+                {t('cookie_consent_privacy_policy')}{' '}
               </NextLink>
             </p>
             <div className="block sm:flex">
               <Button
                 className="text-16-medium mb-3 h-12 px-6 sm:my-0 sm:mr-6"
-                variant={pageColor === 'yellow' || pageColor === 'brown' ? 'tertiary-dark-text' : 'tertiary'}
+                variant={
+                  pageColor === 'yellow' || pageColor === 'brown'
+                    ? 'tertiary-dark-text'
+                    : 'tertiary'
+                }
                 onClick={() => setConsents({ statistics: true })}
               >
                 {t('cookie_consent_accept')}

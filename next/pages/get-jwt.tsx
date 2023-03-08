@@ -43,7 +43,7 @@ const CognitoPrototype = ({ page }: AsyncServerProps<typeof getServerSideProps>)
 
   return (
     <PageWrapper locale={page.locale}>
-      <div className="font-inter min-h-screen bg-[#E5E5E5]">
+      <div className="min-h-screen bg-[#E5E5E5]">
         <div className="mx-auto max-w-screen-lg md:px-12 md:pt-12 pb-64">
           <Wrapper
             direction="column"

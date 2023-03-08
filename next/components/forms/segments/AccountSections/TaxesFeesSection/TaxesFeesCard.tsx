@@ -76,11 +76,11 @@ const TaxesFeesCard = (props: TaxesCardBase) => {
           </div>
         </div>
         <div className="cursor-pointer w-16 min-w-[64px] h-full border-l-2">
-          <Link href="/account/taxes-and-fees/1">
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a className="w-full h-full items-center flex justify-center">
-              <ChevronRightIcon />
-            </a>
+          <Link
+            href="/account/taxes-and-fees/1"
+            className="w-full h-full items-center flex justify-center"
+          >
+            <ChevronRightIcon />
           </Link>
         </div>
       </div>
@@ -89,31 +89,31 @@ const TaxesFeesCard = (props: TaxesCardBase) => {
         id="mobile-card"
         className="bg-white w-full h-24 flex lg:hidden items-center justify-between border-b-2 border-gray-200"
       >
-        <Link href="/account/taxes-and-fees/1">
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="w-full h-full items-center flex justify-center">
-            <div className="w-full flex items-start justify-between">
-              <div className="flex flex-col">
-                <span className="text-p2-semibold leading-5 mb-1">{`${title} za rok ${yearPay}`}</span>
-                <div className="flex items-center flex-wrap">
-                  {status === 'warning' && currentPaid ? (
-                    <span className="text-p3 w-max flex items-center">{`${priceFormat(
-                      currentPaid,
-                    )} / ${priceFormat(finishPrice)}`}</span>
-                  ) : (
-                    <span className="text-p3">{priceFormat(finishPrice)}</span>
-                  )}
-                  <div className="flex items-center">
-                    <span className="rounded-full w-1 h-1 bg-gray-700 mx-3" />
-                    <div className="flex">{statusHandler()}</div>
-                  </div>
+        <Link
+          href="/account/taxes-and-fees/1"
+          className="w-full h-full items-center flex justify-center"
+        >
+          <div className="w-full flex items-start justify-between">
+            <div className="flex flex-col">
+              <span className="text-p2-semibold leading-5 mb-1">{`${title} za rok ${yearPay}`}</span>
+              <div className="flex items-center flex-wrap">
+                {status === 'warning' && currentPaid ? (
+                  <span className="text-p3 w-max flex items-center">{`${priceFormat(
+                    currentPaid,
+                  )} / ${priceFormat(finishPrice)}`}</span>
+                ) : (
+                  <span className="text-p3">{priceFormat(finishPrice)}</span>
+                )}
+                <div className="flex items-center">
+                  <span className="rounded-full w-1 h-1 bg-gray-700 mx-3" />
+                  <div className="flex">{statusHandler()}</div>
                 </div>
               </div>
-              <span className="h-5 w-5 flex justify-center items-center">
-                <ChevronRightIcon />
-              </span>
             </div>
-          </a>
+            <span className="h-5 w-5 flex justify-center items-center">
+              <ChevronRightIcon />
+            </span>
+          </div>
         </Link>
       </div>
     </>
