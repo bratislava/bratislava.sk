@@ -31,6 +31,8 @@ export type InputBase = {
   placeholder?: string
   errorMessage?: string[]
   helptext?: string
+  // capitalize input value after field un-focus with type === text
+  capitalize?: boolean
   className?: string
   value?: string
   leftIcon?: LeftIconVariants
@@ -67,6 +69,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       onChange,
       endIcon,
       customErrorPlace = false,
+      capitalize = false,
       autoComplete,
       ...rest
     },
@@ -92,6 +95,15 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             onChange(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           } else {
             setValueState(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
+          }
+        },
+        onFocusChange(isFocused) {
+          if (!isFocused && type === 'text' && capitalize) {
+            if (onChange) {
+              onChange(valueState.replace(/^\w/, (c) => c.toUpperCase()))
+            } else {
+              setValueState(valueState.replace(/^\w/, (c) => c.toUpperCase()))
+            }
           }
         },
         isRequired: required,

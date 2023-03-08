@@ -74,6 +74,7 @@ const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues
           <InputField
             label={t('street_address_label')}
             placeholder={t('street_address_placeholder')}
+            capitalize
             required
             {...field}
             errorMessage={errors.street_address}
@@ -87,6 +88,7 @@ const CorrespondenceAddressForm = ({ error, onHideError, onSubmit, defaultValues
           <InputField
             label={t('locality_label')}
             placeholder={t('locality_placeholder')}
+            capitalize
             {...field}
             errorMessage={errors.locality}
             required
