@@ -5,6 +5,7 @@
   "email_placeholder": "E-mail",
   "email_required": "E-mail je povinný",
   "email_format": "E-mail nie je valídny",
+  "postal_code_format": "PSČ musí obsahovať práve 5 číslic",
   "given_name_label": "Meno",
   "given_name_placeholder": "Meno",
   "given_name_required": "Meno je povinné",
@@ -23,6 +24,7 @@
   "password_required": "Heslo je povinné",
   "password_format": "Heslo musí obsahovať minimálne 8 znakov, veľké a malé písmeno, číslo a špeciálny znak.",
   "password_confirmation_required": "Heslá sa nezhodujú",
+  "phone_number_format": "Nesprávny formát - zadajte platné telefónne číslo vo formáte +421XXXXXX...",
   "login_submit": "Prihlásiť sa",
   "login_description": "Máte už mestské konto?",
   "login_link": "Prihlásiť sa",
@@ -108,7 +110,6 @@
   "migration_recognized_description": "Potrebujeme overiť váš e-mail {email}.",
   "migration_register_description": "Neplatili ste ešte daň digitálne?",
   "migration_new_password_title": "Zadajte overovací kód a vytvorte si heslo",
-  "migration_new_password_submit": "Overiť e-mail",
   "NotAuthorizedException": "Nesprávne prihlasovacie údaje",
   "CodeMismatchException": "E-mail {email} sa nepodarilo overiť. Skontrolujte správnosť kódu.",
   "LimitExceededException": "Skúste to znova neskôr.",
@@ -121,8 +122,7 @@
   "RFO_NOT_RESPONDING": "Pri odosielaní formulára nastala chyba. Skúste to prosím znova neskôr.",
   "DEAD_PERSON": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
   "BIRTH_NUMBER_AND_IDENTITY_CARD_INCONSISTENCY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
-  "BIRTHNUMBER_IFO_DUPLICITY": "Overenie bolo neúspešné. Skontrolujte správnosť údajov.",
-
+  "BIRTHNUMBER_IFO_DUPLICITY": "Tieto osobné údaje už boli použité pri inej e-mailovej adrese. Ak ste účet nevytvorili vy, kontaktujte nás na info@bratislava.sk.",
   "account_section_intro": {
     "navigation": "Úvod",
     "header_title": "Dobrý deň,",
@@ -131,7 +131,10 @@
     "announcement_title": "Aktuálne",
     "announcement_card_title": "Digitálna platba dane z nehnuteľností",
     "announcement_card_text": "Daň z nehnuteľností pre rok 2023 spracovávame <strong>od 20. apríla do 30. mája</strong>. Keď bude vaša daň z nehnuteľností pripravená, pošleme vám informačný e-mail a nájdete ju v konte, v časti Dane a poplatky.",
-    "announcement_card_action": "Zaplatiť daň z nehnuteľností"
+    "announcement_card_action": "Zaplatiť daň z nehnuteľností",
+    "banner_title": "Potrebujete pomôcť?",
+    "banner_content": "Aké služby nájdem v Bratislavskom konte? Prečo vzniklo Bratislavské konto? Ako si viem zmeniť heslo? Nevidím svoju daň, čo mám robiť?<br /><br />Aj toto sú niektoré z otázok, na ktoré nájdete odpovede v sekcii Najčastejšie kladené otázky.",
+    "banner_button_text": "Prejsť na otázky"
   },
   "account_section_services": {
     "navigation": "Mestské služby",
@@ -300,7 +303,12 @@
     "error_card_title": "Zatiaľ vás nevidíme v zozname daňovníkov daňovníčok.",
     "error_card_text": "<p>Môže to tak byť, lebo:</p><ul><li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li></ul><br/><p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
   },
-  "account_section_help": "Mám problém",
+  "account_section_help": {
+    "navigation": "Mám problém",
+    "banner_title": "Nenašli ste odpoveď na vašu otázku?",
+    "banner_content": "Kontaktujte nás a radi vás nasmerujeme na správnu odpoveď.",
+    "banner_button_text": "Napísať správu"
+  },
   "menu_contacts_link": "Kontakty",
   "menu_account_link": "Mestské konto",
   "menu_profile_link": "Môj profil",
@@ -353,6 +361,11 @@
     "modal_message": "Ak by ste si priali zmeniť e-mail, ktorým sa do konta prihlasujete a na ktorý vám zasielame všetky informácie týkajúce sa vášho konta, kontaktujte nás na <a href='mailto:info@bratislava.sk'>info@bratislava.sk</a>.",
     "modal_thanks": "Ďakujeme!"
   },
+  "adding_phone_number_modal": {
+    "title": "Doplnenie telefónneho čísla",
+    "description": "Prajete si, aby sme s vami v ojedinelých prípadoch komunikovali aj prostredníctvom SMS? Zanechajte nám vaše telefónne číslo a my vám pripomenieme, napríklad, blížiaci sa termín splatnosti dane aj cez SMS.\n\nTelefónne číslo môžete kedykoľvek doplniť do profilu.\n\n",
+    "phoneNumber_not_required": "*Neposkytnutie telefónneho čísla nemá vplyv na využívanie služieb v Bratislavskom konte."
+  },
   "pay_tax": "Zaplatiť",
   "back_to_list": "Naspäť na zoznam",
   "city": "Mesto",
@@ -369,6 +382,58 @@
   "tax_liability_breakdown": "Rozpis daňovej povinnosti",
   "land_tax": "Daň z pozemkov",
   "construction_tax": "Daň zo stavby",
+  "apartments_tax": "Daň z bytov",
+  "payment_data": "Platobné údaje",
+  "constant_symbol": "Konštantný symbol",
+  "constant_symbol_number": "8147",
+  "variable_symbol": "Variabilný symbol",
+  "variable_symbol_number": "312006100",
+  "tax_due": "Splatnosť dane",
+  "card_payment": "Platba kartou",
+  "qr_code": "QR kód",
+  "download_image": "Stiahnuť obrázok",
+  "use_one_of_ibans_to_pay": "Pri bankovom prevode použite na úhradu jeden z nasledujúcich IBAN účtov:",
+  "you_will_be_redirected_to_the_payment_gateway": "Budete presmerovaný na platobnú bránu.",
+  "use_your_banking_app_to_load": "Na načítanie použite bankovú aplikáciu.",
   "tax_constructions": "Daň zo stavieb",
-  "apartments_tax": "Daň z bytov"
+  "thank_you": {
+    "footer_text": "© 2023 Hlavné mesto Bratislava",
+    "subtitle_mail": "<span className='text-p2'>V prípade akýchkoľvek otázok nás neváhajte kontaktovať na adrese:</span>",
+    "button_faq_text": "Často kladené otázky",
+    "button_privacy_text": "Ochrana osobných údajov",
+    "error": {
+      "1": {
+        "title": "Platba nebola úspešná",
+        "content": "<span className='text-p2'>Nastal neznámy problém.<br />Prosím, pokúste sa požadovanú stránku načítať opätovne.</span>"
+      },
+      "2": {
+        "title": "Platba nebola úspešná",
+        "content": "<span className='text-p2'>Prosím, skúste platbu opakovať.<br />Uistite sa, že zadávate všetky platobné údaje správne.</span>"
+      },
+      "3": {
+        "title": "Platba bola zamietnutá",
+        "content": "<span className='text-p2'>Prosím, skúste platbu opakovať.<br />Uistite sa, že zadávate všetky platobné údaje správne.</span>"
+      },
+      "4": {
+        "title": "Nastal technický problém",
+        "content": "<span className='text-p2'>Prepáčte, platba neprebehla v dôsledku technických problémov.<br />Opakujte platbu neskôr.</span>"
+      },
+      "button_restart_text": "Opakovať platbu",
+      "button_cancel_text": "Zrušiť platbu"
+    },
+    "success": {
+      "title": "Platba prebehla úspešne",
+      "content": "<span className='text-p2'>Ďakujeme za zaplatenie dane z nehnuteľností.<br />Ohodnoťte službu a pomôžte mestu Bratislava zlepšovať sa.</span>",
+      "button_to_formular_text": "Vyplniť dotazník",
+      "button_to_profil_text": "Pokračovať do konta"
+    }
+  },
+  "bank_info": {
+    "slovak_sporitelna": "Slovenská sporiteľňa, a.s.",
+    "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",
+    "csob": "ČSOB, a.s.",
+    "csob_iban": "SK31 7500 0000 0000 2574 7653"
+  },
+  "tax_payable_within": "Daň je splatná v termíne do 15 dní",
+  "validity_decision": "odo dňa právoplatnosti rozhodnutia."
 }

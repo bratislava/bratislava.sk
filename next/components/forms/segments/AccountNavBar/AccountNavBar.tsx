@@ -8,6 +8,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
@@ -23,6 +24,7 @@ interface IProps extends LanguageSelectProps {
   navHidden?: boolean
   sectionsList?: MenuItem[]
   menuItems: MenuItem[]
+  hiddenHeaderNav?: boolean
 }
 
 interface LanguageSelectProps {
@@ -53,12 +55,13 @@ export const AccountNavBar = ({
   sectionsList,
   menuItems,
   navHidden,
+  hiddenHeaderNav,
   ...languageSelectProps
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
   const { isAuth, logout, userData } = useAccount()
 
-  const languageKey = languageSelectProps.currentLanguage === 'sk' ? 'sk' : 'en'
+  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])
@@ -208,7 +211,7 @@ export const AccountNavBar = ({
             </div>
           </nav>
         </div>
-        {isAuth && sectionsList && (
+        {isAuth && sectionsList && !hiddenHeaderNav && (
           <div className="border-t border-gray-200 max-w-screen-lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (

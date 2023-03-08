@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_menu_menu_items",
+  "info": {
+    "displayName": "menu item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "text",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "icon": {
+      "type": "enumeration",
+      "required": true,
+      "default": "mesto_01",
+      "enum": [
+        "mesto_01",
+        "doprava_mapy_02",
+        "zp_vystavba_03",
+        "socialna_pomoc_04",
+        "vzdelavanie_05",
+        "kultura_06"
+      ]
+    },
+    "sections": {
+      "displayName": "menu section",
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-section"
+    }
+  }
+}

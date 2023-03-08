@@ -1,6 +1,6 @@
+import { AccountError } from '@utils/useAccount'
 import Modal from 'components/forms/widget-components/Modals/Modal'
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
 
 import PhoneNumberForm, { PhoneNumberData } from '../PhoneNumberForm/PhoneNumberForm'
 
@@ -9,26 +9,28 @@ interface Props {
   onClose: () => void
   onSubmit: ({ data }: { data?: PhoneNumberData }) => void
   defaultValues: PhoneNumberData
+  error?: AccountError | null
+  onHideError?: () => void
 }
 
-const PhoneNumberModal = ({ show, onClose, onSubmit, defaultValues }: Props) => {
-  const { t } = useTranslation('forms')
-  const [errorMessage, setErrorMessage] = useState('')
-
-  const onHideErrorMessage = () => {
-    setErrorMessage('')
-  }
+const PhoneNumberModal = ({
+  show,
+  onClose,
+  onSubmit,
+  error,
+  onHideError,
+  defaultValues,
+}: Props) => {
+  const { t } = useTranslation('account')
 
   return (
     <Modal
       divider
-      header={t('adding_phone_number_title')}
+      header={t('adding_phone_number_modal.title')}
       show={show}
       onClose={onClose}
       onSubmit={onSubmit}
-      content={({ onSubmit }) =>
-        PhoneNumberForm({ onSubmit, errorMessage, defaultValues, onHideErrorMessage })
-      }
+      content={({ onSubmit }) => PhoneNumberForm({ error, onHideError, onSubmit, defaultValues })}
       className="w-[592px] sm:h-max h-full"
     />
   )

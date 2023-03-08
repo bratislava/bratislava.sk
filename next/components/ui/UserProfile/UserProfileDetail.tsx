@@ -7,36 +7,41 @@ import UserProfileSectionHeader from '@bratislava/ui-bratislava/UserProfile/User
 import { UserData } from '@utils/useAccount'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
+import { MutableRefObject, useId, useRef } from 'react'
 
 import Alert from '../../forms/info-components/Alert'
 
 interface UserProfileDetailProps {
   userData?: UserData | null
-  temporaryUserData?: UserData | null
   isEditing?: boolean
   alertType: 'success' | 'error'
   isAlertOpened: boolean
   onChangeIsEditing: (isEditing: boolean) => void
-  onChangeTemporary: (temporaryUserData: UserData) => void
   onCancelEditing: () => void
-  onSubmitEditing: () => void
+  onSubmit: (newUseData: UserData) => void
   onOpenEmailModal: () => void
 }
 
-const UserProfileDetails = (props: UserProfileDetailProps) => {
+const UserProfileDetail = (props: UserProfileDetailProps) => {
   const {
     userData,
-    temporaryUserData,
     isEditing,
     isAlertOpened,
     alertType,
     onChangeIsEditing,
-    onChangeTemporary,
     onCancelEditing,
-    onSubmitEditing,
+    onSubmit,
     onOpenEmailModal,
   } = props
   const { t } = useTranslation('account')
+  const formId = `form-${useId()}`
+
+  const handleOnSubmit = (newUserData: UserData) => {
+    onSubmit({
+      ...newUserData,
+      phone_number: newUserData.phone_number?.replace(' ', ''),
+    })
+  }
 
   return (
     <div className={cx('flex flex-col', 'sm:static sm:z-0', { 'fixed inset-0 z-50': isEditing })}>
@@ -48,10 +53,10 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
           underline
         >
           <UserProfileDetailsButtons
+            formId={formId}
             isEditing={isEditing}
             onChangeIsEditing={onChangeIsEditing}
             onCancelEditing={onCancelEditing}
-            onSubmitEditing={onSubmitEditing}
           />
         </UserProfileSectionHeader>
         <div className="flex flex-col">
@@ -70,9 +75,10 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
             <UserProfilePhoto userData={userData ?? {}} />
             {isEditing ? (
               <UserProfileDetailEdit
-                temporaryUserData={temporaryUserData ?? {}}
-                onChangeTemporary={onChangeTemporary}
+                formId={formId}
+                userData={userData ?? {}}
                 onOpenEmailModal={onOpenEmailModal}
+                onSubmit={handleOnSubmit}
               />
             ) : (
               <UserProfileDetailView userData={userData ?? {}} />
@@ -84,4 +90,4 @@ const UserProfileDetails = (props: UserProfileDetailProps) => {
   )
 }
 
-export default UserProfileDetails
+export default UserProfileDetail

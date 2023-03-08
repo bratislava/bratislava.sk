@@ -12,13 +12,14 @@ import useAccount from '@utils/useAccount'
 import cx from 'classnames'
 import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
-import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { ReactNode, useEffect } from 'react'
 
 type AccountPageLayoutBase = {
   className?: string
   children: ReactNode
+  hiddenHeaderNav?: boolean
 }
 
 const sectionsList = [
@@ -37,12 +38,12 @@ const sectionsList = [
   {
     id: 2,
     title: 'account:account_section_payment.title',
-    icon: <PaymentIcon />,
+    icon: <PaymentIcon className="w-6 h-6" />,
     link: '/account/taxes-and-fees',
   },
   {
     id: 3,
-    title: 'account:account_section_help',
+    title: 'account:account_section_help.navigation',
     icon: <HelpIcon />,
     link: '/account/i-have-a-problem',
   },
@@ -69,7 +70,7 @@ const menuItems = [
   },
 ]
 
-const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
+const AccountPageLayout = ({ className, children, hiddenHeaderNav }: AccountPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
   const router = useRouter()
   const { isAuth } = useAccount()
@@ -100,6 +101,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
           sectionsList={sectionsList}
           menuItems={menuItems}
           navHidden
+          hiddenHeaderNav={hiddenHeaderNav}
           languages={[
             { key: 'sk', title: t('language_short.sk') },
             { key: 'en', title: t('language_short.en') },

@@ -1,0 +1,67 @@
+{
+  "collectionName": "components_menu_menu_sections",
+  "info": {
+    "displayName": "menu section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "icon": {
+      "type": "enumeration",
+      "required": true,
+      "default": "sprava_mesta_01",
+      "enum": [
+        "sprava_mesta_01",
+        "transparentne_mesto_01",
+        "dane_01",
+        "projekty_01",
+        "partnerstva_01",
+        "mhd_02",
+        "cyklo_02",
+        "mapy_02",
+        "sprava_a_udrzba_02",
+        "doprava_02",
+        "parkovanie_02",
+        "zdielana_mobilita_02",
+        "zivotne_prostredie_03",
+        "zelen_03",
+        "vystavba_a_nehnutelnosti_03",
+        "uzemny_plan_03",
+        "rozvoj_mesta_03",
+        "verejne_osvetlenie_03",
+        "byvanie_04",
+        "sluzby_04",
+        "zariadenia_04",
+        "pomoc_04",
+        "aktivity_04",
+        "skolstvo_05",
+        "sport_05",
+        "deti_a_mladez_05",
+        "ocenovanie_05",
+        "dotacie_05",
+        "kalendar_06",
+        "organizacie_06",
+        "dedicstvo_06",
+        "sluzby_06",
+        "koncepcia_06",
+        "komunity_06",
+        "covid_06"
+      ]
+    },
+    "links": {
+      "displayName": "menu link",
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-link"
+    }
+  }
+}
