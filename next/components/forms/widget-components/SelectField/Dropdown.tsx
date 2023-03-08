@@ -2,6 +2,7 @@ import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import { FC } from 'react'
 
+import { useClickOutsideHandler } from '../../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
 
@@ -13,7 +14,6 @@ interface DropdownProps {
   isRowBold?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
-  selectHashCode?: string
   className?: string
   onChooseOne?: (option: EnumOptionsType, close?: boolean) => void
   onUnChooseOne?: (option: EnumOptionsType, close?: boolean) => void
@@ -21,6 +21,7 @@ interface DropdownProps {
   onUnChooseMulti?: (option: EnumOptionsType) => void
   onSelectAll?: () => void
   onDeselectAll?: () => void
+  onClickOutside?: () => void
 }
 
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
@@ -32,7 +33,6 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     isRowBold,
     type,
     divider,
-    selectHashCode,
     className,
     onChooseOne,
     onUnChooseOne,
@@ -40,7 +40,12 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     onUnChooseMulti,
     onSelectAll,
     onDeselectAll,
+    onClickOutside,
   } = props
+
+  const { clickOutsideRef } = useClickOutsideHandler(() => {
+    if (onClickOutside) onClickOutside()
+  })
 
   // STYLES
   const dropdownClassName = cx(
@@ -49,7 +54,6 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
       'absolute top-2 left-0 right-0': absolute,
     },
     className,
-    selectHashCode,
   )
 
   // HELP FUNCTIONS
@@ -72,19 +76,17 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
 
   // RENDER
   return (
-    <div className={dropdownClassName}>
+    <div className={dropdownClassName} ref={clickOutsideRef}>
       {selectAllOption && type === 'multiple' && (
         <SelectAllDropdownRow
           onSelectAll={handleOnSelectAllRowClick}
           divider={divider}
-          selectHashCode={selectHashCode}
           isEverythingSelected={isEverythingSelected}
         />
       )}
       {enumOptions?.map((option, key) => (
         <DropdownRow
           key={key}
-          selectHashCode={selectHashCode}
           option={option}
           divider={divider}
           selected={isSelected(option)}

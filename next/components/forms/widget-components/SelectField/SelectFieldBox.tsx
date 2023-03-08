@@ -9,7 +9,6 @@ interface SelectFieldBoxProps {
   placeholder?: string
   filter: string
   filterRef?: React.RefObject<HTMLInputElement>
-  hashCode: string
   onRemove: (optionId: number) => void
   onFilterChange: (value: string) => void
   onDeleteLastValue: () => void
@@ -26,7 +25,6 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     placeholder,
     filter,
     filterRef,
-    hashCode,
     onRemove,
     onFilterChange,
     onDeleteLastValue,
@@ -58,7 +56,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   return (
     <section
       ref={ref}
-      className={`${hashCode} flex items-center w-full flex-row flex-wrap gap-2 py-2 sm:py-2.5 sm:pl-4 pl-3`}
+      className="flex items-center w-full flex-row flex-wrap gap-2 py-2 sm:py-2.5 sm:pl-4 pl-3"
       data-value={value}
     >
       {
@@ -67,7 +65,6 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
           ? (multiple ? value : value.slice(0, 1)).map((option, key) => (
               <Tag
                 key={key}
-                selectHashCode={hashCode}
                 text={option.value}
                 size="small"
                 onRemove={() => onRemove(key)}
@@ -78,8 +75,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input
         ref={filterRef}
-        name={hashCode}
-        className={`${hashCode} text-16 max-w-[80px] xs:max-w-none border-0 outline-none`}
+        className="text-16 max-w-[80px] xs:max-w-none border-0 outline-none"
         type="text"
         size={getInputSize()}
         value={filter}

@@ -13,7 +13,6 @@ interface DropdownRowProps {
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
-  selectHashCode?: string
   onChooseOne: (option: EnumOptionsType, close?: boolean) => void
   onUnChooseOne: (option: EnumOptionsType, close?: boolean) => void
   onChooseMulti: (option: EnumOptionsType) => void
@@ -26,7 +25,6 @@ const DropdownRow = ({
   selected,
   type,
   divider,
-  selectHashCode,
   onChooseOne,
   onUnChooseOne,
   onChooseMulti,
@@ -39,16 +37,11 @@ const DropdownRow = ({
       'h-14': !isBold,
       'h-full xs:h-[84px]': isBold,
     },
-    selectHashCode,
   )
 
-  const optionClassName = cx(
-    'dropdown text-16 w-full',
-    {
-      'text-16-semibold': isBold,
-    },
-    selectHashCode,
-  )
+  const optionClassName = cx('dropdown text-16 w-full', {
+    'text-16-semibold': isBold,
+  })
 
   // EVENT HANDLERS
   const handleOnClick = () => {
@@ -75,21 +68,19 @@ const DropdownRow = ({
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
-      <div className={`${selectHashCode} dropdown flex h-full flex-col justify-center`}>
-        <div className={`${selectHashCode} dropdown flex flex-row justify-center`}>
+      <div className="dropdown flex h-full flex-col justify-center">
+        <div className="dropdown flex flex-row justify-center">
           <p className={optionClassName}>{option.value}</p>
-          <div className={`${selectHashCode} dropdown relative flex flex-col justify-center`}>
+          <div className="dropdown relative flex flex-col justify-center">
             {getRowIcon()}
-            <div className={`${selectHashCode} dropdown absolute inset-0 z-10`} />
+            <div className="dropdown absolute inset-0 z-10" />
           </div>
         </div>
         {option.label !== String(option.value) && (
-          <p className={`${selectHashCode} dropdown text-p3`}>{option.label}</p>
+          <p className="dropdown text-p3">{option.label}</p>
         )}
       </div>
-      {divider && (
-        <div className={`${selectHashCode} dropdown border-form-input-default border-b-2`} />
-      )}
+      {divider && <div className="dropdown border-form-input-default border-b-2" />}
     </div>
   )
 }

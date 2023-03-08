@@ -61,52 +61,26 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STATE
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
+  const [isOutsideClickProgressing, setIsOutsideClickProgressing] = useState<boolean>(false)
   const [filter, setFilter] = useState<string>('')
-  const hashCode = useId()
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
-  const [dropdownRef] = useState<RefObject<HTMLDivElement>>(React.createRef<HTMLDivElement>())
 
   // STYLES
   const selectClassName = cx(
-    'border-form-input-default flex flex-row bg-white rounded-lg border-2',
+    'border-form-input-default flex flex-row bg-white rounded-lg border-2 items-center',
     {
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
         !disabled,
       'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
       'border-form-input-disabled opacity-50': disabled,
     },
-    hashCode,
   )
 
-  // EVENT HANDLERS
   useEffect(() => {
-    const isForcedToOpenDropdown = (targetClassList: DOMTokenList) => {
-      // open me (actual select) if I was clicked but my dropdownArrow and dropdown were not clicked
-      // dropdownButton will handle its own events
-      // dropdown will handle its own events
-      return (
-        targetClassList.contains(hashCode) &&
-        !targetClassList.contains('dropdownButton') &&
-        !targetClassList.contains('dropdown') &&
-        !targetClassList.contains('tag')
-      )
+    if (!isDropdownOpened) {
+      setIsOutsideClickProgressing(false)
     }
-    const handleOnWindowClick = (event: Event) => {
-      const target = event.target as Element
-      const targetClassList = target?.classList
-      if (!targetClassList.contains(hashCode)) {
-        // close me (actual select) if i am not clicked
-        setIsDropdownOpened(false)
-      } else if (isForcedToOpenDropdown(targetClassList) && !(target instanceof SVGMPathElement)) {
-        // open me (actual select) if "I am forced to open"
-        // && <path> in SVG icons because it means that dropdownButton, dropdown or tag was clicked
-        // I can not set hashcode to path element so I can not recognize what belongs to me (actual select)
-        setIsDropdownOpened(true)
-      } // no else because there are cases when none of above is done, so everything stays like it is or other events are handled independently
-    }
-    document.addEventListener('click', handleOnWindowClick)
-    return () => document.removeEventListener('click', handleOnWindowClick)
-  }, [filterRef, hashCode])
+  }, [isDropdownOpened])
 
   const handleOnChangeSelect = (selectedOptions: EnumOptionsType[], close?: boolean) => {
     if (!onChange) return
@@ -150,15 +124,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   const handleOnDropdownArrowClick = () => {
-    if (isDropdownOpened) {
-      setIsDropdownOpened(false)
+    if (!isOutsideClickProgressing) {
+      setIsDropdownOpened(true)
     }
   }
 
   const handleOnSelectFieldClick = (event: React.MouseEvent) => {
     const targetClassList = (event.target as Element).classList
     if (!isDropdownOpened && !targetClassList.contains('tag') && !disabled) {
-      setIsDropdownOpened(true)
       filterRef.current?.focus()
     }
   }
@@ -176,6 +149,11 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   const handleOnDeselectAll = () => {
     handleOnChangeSelect([])
+  }
+
+  const handleOnClickOutside = () => {
+    setIsOutsideClickProgressing(true)
+    setIsDropdownOpened(false)
   }
 
   // HELPER FUNCTIONS
@@ -206,7 +184,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader
         label={label}
-        htmlFor={hashCode}
         helptext={helptext}
         tooltip={tooltip}
         required={required}
@@ -218,7 +195,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox
           ref={ref}
-          hashCode={hashCode}
           value={value}
           multiple={type === 'multiple'}
           filter={filter}
@@ -231,14 +207,12 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
         {/* DROPDOWN ARROW */}
         <div
-          className={`${hashCode} dropdownButton flex items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1`}
+          className="dropdownButton flex flex-col items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1"
           onClick={handleOnDropdownArrowClick}
         >
-          <div
-            className={`${hashCode} dropdownButton h-6 w-6 items-center relative flex h-full flex-col justify-center`}
-          >
+          <div className="dropdownButton h-6 w-6 items-center relative flex h-full flex-col justify-center">
             {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
-            <div className={`${hashCode} dropdownButton absolute inset-0 z-10`} />
+            <div className="dropdownButton absolute inset-0 z-10" />
           </div>
         </div>
 
@@ -246,14 +220,13 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       </div>
 
       {/* DROPDOWN */}
-      <div className={`${hashCode} dropdown relative`} ref={dropdownRef}>
+      <div className="dropdown relative">
         {isDropdownOpened && (
           <Dropdown
             enumOptions={getFilteredOptions()}
             value={getDropdownValues()}
             isRowBold={isRowBold}
             type={type}
-            selectHashCode={hashCode}
             divider={dropdownDivider}
             selectAllOption={selectAllOption}
             absolute
@@ -263,6 +236,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
             onDeselectAll={handleOnDeselectAll}
             onChooseMulti={handleOnChooseMulti}
             onUnChooseMulti={handleOnUnChooseMulti}
+            onClickOutside={handleOnClickOutside}
           />
         )}
       </div>
