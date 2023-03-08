@@ -7,15 +7,16 @@ import { useTranslation } from 'next-i18next'
 import Button from '../../forms/simple-components/Button'
 
 interface UserProfileDetailsButtonsProps {
+  formId: string
   isEditing?: boolean
   onChangeIsEditing: (isEditing: boolean) => void
   onCancelEditing: () => void
-  onSubmitEditing: () => void
 }
 
 const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
-  const { isEditing, onChangeIsEditing, onCancelEditing, onSubmitEditing } = props
+  const { formId, isEditing, onChangeIsEditing, onCancelEditing } = props
   const { t } = useTranslation('account')
+
   return (
     <div className="width-fit">
       {isEditing ? (
@@ -32,7 +33,8 @@ const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
             variant="black"
             size="sm"
             text={t('profile_detail.save_edit_button')}
-            onPress={onSubmitEditing}
+            type="submit"
+            form={formId}
           />
           <CloseIcon
             className={cx('block cursor-pointer', 'sm:hidden')}
@@ -48,7 +50,8 @@ const UserProfileDetailsButtons = (props: UserProfileDetailsButtonsProps) => {
               variant="black"
               size="sm"
               text={t('profile_detail.save_edit_button')}
-              onPress={onSubmitEditing}
+              type="submit"
+              form={formId}
             />
           </div>
         </div>

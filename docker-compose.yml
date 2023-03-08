@@ -12,7 +12,7 @@ services:
     ports:
       - '127.0.0.1:5432:5432'
   meilisearch:
-    image: getmeili/meilisearch:v0.29.1
+    image: getmeili/meilisearch:v0.30.5
     environment:
       - http_proxy
       - https_proxy
