@@ -7,6 +7,8 @@
   },
   "selectAll": "Select all",
   "deselectAll": "Deselect all",
+  "options1": "Options",
+  "options2": "Options",
   "correspondece_address_title": "Change correspondence address",
   "correspondece_address_description": "",
   "street_address_label": "Street",

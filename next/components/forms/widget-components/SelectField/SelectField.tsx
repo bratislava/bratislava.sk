@@ -198,6 +198,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
           filterRef={filterRef}
           placeholder={placeholder}
           onRemove={handleOnRemove}
+          onRemoveAll={handleOnDeselectAll}
           onFilterChange={setFilter}
           onDeleteLastValue={handleOnDeleteLastValue}
         />

@@ -1,4 +1,5 @@
 import { EnumOptionsType } from '@rjsf/utils'
+import { useTranslation } from 'next-i18next'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../../simple-components/Tag'
@@ -10,6 +11,7 @@ interface SelectFieldBoxProps {
   filter: string
   filterRef?: React.RefObject<HTMLInputElement>
   onRemove: (optionId: number) => void
+  onRemoveAll: () => void
   onFilterChange: (value: string) => void
   onDeleteLastValue: () => void
 }
@@ -26,10 +28,15 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     filter,
     filterRef,
     onRemove,
+    onRemoveAll,
     onFilterChange,
     onDeleteLastValue,
   } = props
 
+  const { t } = useTranslation('forms')
+  const multipleOptionsTagText = value
+    ? `${value.length} ${t(value.length < 5 ? 'options1' : 'options2').toLowerCase()}`
+    : t('options1')
   // HELPER FUNCTIONS
   const getInputSize = () => {
     return !value || value.length === 0
@@ -61,8 +68,9 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     >
       {
         /* TAGS */
-        value && value.length > 0
-          ? (multiple ? value : value.slice(0, 1)).map((option, key) => (
+        value && value.length > 0 ? (
+          value.length < 3 ? (
+            (multiple ? value : value.slice(0, 1)).map((option, key) => (
               <Tag
                 key={key}
                 text={option.value}
@@ -71,7 +79,10 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
                 removable
               />
             ))
-          : null
+          ) : (
+            <Tag text={multipleOptionsTagText} size="small" onRemove={onRemoveAll} removable />
+          )
+        ) : null
       }
       <input
         ref={filterRef}
