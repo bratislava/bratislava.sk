@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { FC, useMemo } from 'react'
 
 import { getIcon, MenuIcon } from './IconService'
