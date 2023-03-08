@@ -30,7 +30,7 @@
   "all_steps": "All steps",
   "skip_step_modal": {
     "title": "Vyplňte správne všetky povinné polia",
-    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť",
+    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť.",
     "button_skip_text": "Skip",
     "button_submit_text": "Upraviť"
   }
