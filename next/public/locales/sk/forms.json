@@ -20,17 +20,25 @@
   "postal_code_description": "Zadávajte bez medzier, napr. 11111",
   "postal_code_required": "PSČ je povinné",
   "postal_code_format": "PSČ nie je valídne",
+  "tax_footer": {
+    "maybe_questions": "Radi by ste sa v niečom uistili alebo máte otázky?",
+    "see_answers": "Pozrite si odpovede na tie, ktoré sú",
+    "frequently_asked": "často kladené.",
+    "contact_us_at": "Ak nenájdete odpoveď na Vašu otázku, neváhajte nás kontaktovať na adrese: ",
+    "mail_to_contact": "platbadane@bratislava.sk"
+  },
   "buttons": {
     "previous": "Späť",
     "skip": "Preskočiť",
-    "continue": "Pokračovať"
+    "continue": "Pokračovať",
+    "send": "Odoslať"
   },
   "summary": "Sumár",
   "changes_submit": "Potvrdiť zmeny",
   "all_steps": "Všetky kroky",
   "skip_step_modal": {
     "title": "Vyplňte správne všetky povinné polia",
-    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť",
+    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť.",
     "button_skip_text": "Preskočiť",
     "button_submit_text": "Upraviť"
   }

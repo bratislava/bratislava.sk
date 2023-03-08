@@ -6,6 +6,10 @@
   },
   "options": {},
   "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
     "page": {
       "type": "relation",
       "relation": "oneToOne",
@@ -13,6 +17,8 @@
     },
     "icon": {
       "type": "enumeration",
+      "required": true,
+      "default": "sprava_mesta_01",
       "enum": [
         "sprava_mesta_01",
         "transparentne_mesto_01",
@@ -50,6 +56,12 @@
         "komunity_06",
         "covid_06"
       ]
+    },
+    "links": {
+      "displayName": "menu link",
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-link"
     }
   }
 }

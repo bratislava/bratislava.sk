@@ -7,10 +7,11 @@ import { useTranslation } from 'next-i18next'
 type SkipStepModalBase = {
   show: boolean
   onClose: () => void
+  onSkip?: () => void
   className?: string
 }
 
-const SkipStepModal = ({ show, onClose, className }: SkipStepModalBase) => {
+const SkipStepModal = ({ show, onClose, onSkip, className }: SkipStepModalBase) => {
   const { t } = useTranslation('forms')
 
   if (!show) {
@@ -47,8 +48,17 @@ const SkipStepModal = ({ show, onClose, className }: SkipStepModalBase) => {
               </div>
             </div>
             <div className="flex items-center justify-end gap-6">
-              <Button variant="plain-black" text={t('skip_step_modal.button_skip_text')} />
-              <Button variant="negative" size="sm" text={t('skip_step_modal.button_submit_text')} />
+              <Button
+                text={t('skip_step_modal.button_skip_text')}
+                variant="plain-black"
+                onPress={onSkip}
+              />
+              <Button
+                text={t('skip_step_modal.button_submit_text')}
+                variant="negative"
+                size="sm"
+                onPress={onClose}
+              />
             </div>
           </div>
         </div>
