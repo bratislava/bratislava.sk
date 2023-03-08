@@ -71,7 +71,7 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
               <CloseIcon />
             </button>
           </div>
-          <div className="bg-white grow">
+          <div className="bg-white grow overflow-y-scroll overscroll-none">
             <StepperViewList
               steps={steps}
               currentStep={currentStep}
