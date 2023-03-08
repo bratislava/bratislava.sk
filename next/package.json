@@ -59,7 +59,7 @@
     "libxmljs2": "^0.31.0",
     "lodash": "4.17.21",
     "mapbox-gl": "2.12.1",
-    "meilisearch": "0.27.0",
+    "meilisearch": "0.30.0",
     "micro": "^10.0.1",
     "minio": "^7.0.32",
     "next": "12.2.0",
