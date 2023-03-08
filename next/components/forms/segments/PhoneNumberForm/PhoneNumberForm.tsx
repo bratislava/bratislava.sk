@@ -44,10 +44,10 @@ const PhoneNumberForm = ({ error, onHideError, onSubmit, defaultValues }: Props)
       className="flex flex-col space-y-4 w-full"
       onSubmit={handleSubmit((data: PhoneNumberData) => onSubmit({ data }))}
     >
-      <p className="whitespace-pre-line">
+      <div className="whitespace-pre-line">
         <div className="text-p2">{t('adding_phone_number_modal.description')}</div>
         <div className="text-p3">{t('adding_phone_number_modal.phoneNumber_not_required')}</div>
-      </p>
+      </div>
       {error && (
         <Alert
           message={t(error.code)}
