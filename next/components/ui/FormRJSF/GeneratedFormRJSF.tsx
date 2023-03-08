@@ -22,8 +22,8 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const [isOnShowSkipModal, setIsOnShowSkipModal] = useState<boolean>(false)
   const [skipModalWasShown, setSkipModalWasShown] = useState<boolean>(false)
 
-  const skipButtonHandler = () => {
-    if (skipModalWasShown) form.skipToStep(form.stepIndex + 1)
+  const skipButtonHandler = (nextStepIndex: number = form.stepIndex + 1) => {
+    if (skipModalWasShown) form.skipToStep(nextStepIndex)
     setIsOnShowSkipModal(true)
   }
   const submitter = useFormSubmitter(formSlug)
@@ -36,7 +36,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           currentStep={form.stepIndex}
           // hook useFormStepper is prepared to skipping multiple steps but they will not be validated
           // if not wanted because of broken validation when skipping multiple steps, comment out onChangeStep
-          onChangeStep={(stepIndex: number) => form.skipToStep(stepIndex)}
+          onChangeStep={skipButtonHandler}
         />
         <SkipStepModal
           show={isOnShowSkipModal && !skipModalWasShown}
