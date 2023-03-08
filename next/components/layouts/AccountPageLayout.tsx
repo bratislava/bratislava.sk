@@ -19,6 +19,7 @@ import { ReactNode, useEffect } from 'react'
 type AccountPageLayoutBase = {
   className?: string
   children: ReactNode
+  hiddenHeaderNav?: boolean
 }
 
 const sectionsList = [
@@ -69,7 +70,7 @@ const menuItems = [
   },
 ]
 
-const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
+const AccountPageLayout = ({ className, children, hiddenHeaderNav }: AccountPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
   const router = useRouter()
   const { isAuth } = useAccount()
@@ -100,6 +101,7 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
           sectionsList={sectionsList}
           menuItems={menuItems}
           navHidden
+          hiddenHeaderNav={hiddenHeaderNav}
           languages={[
             { key: 'sk', title: t('language_long.sk') },
             { key: 'en', title: t('language_long.en') },

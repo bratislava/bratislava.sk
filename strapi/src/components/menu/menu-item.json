@@ -6,6 +6,10 @@
   },
   "options": {},
   "attributes": {
+    "label": {
+      "type": "text",
+      "required": true
+    },
     "page": {
       "type": "relation",
       "relation": "oneToOne",
@@ -13,6 +17,8 @@
     },
     "icon": {
       "type": "enumeration",
+      "required": true,
+      "default": "mesto_01",
       "enum": [
         "mesto_01",
         "doprava_mapy_02",
@@ -26,8 +32,7 @@
       "displayName": "menu section",
       "type": "component",
       "repeatable": true,
-      "component": "menu.menu-section",
-      "max": 3
+      "component": "menu.menu-section"
     }
   }
 }
