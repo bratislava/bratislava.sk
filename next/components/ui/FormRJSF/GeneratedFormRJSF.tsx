@@ -3,7 +3,6 @@ import { FormValidation, RJSFSchema } from '@rjsf/utils'
 import { useFormStepper, useFormSubmitter } from '@utils/forms'
 import cx from 'classnames'
 import SkipStepModal from 'components/forms/segments/SkipStepModal/SkipStepModal'
-import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 import FinalStep from '../../forms/steps/FinalStep'
@@ -29,7 +28,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const submitter = useFormSubmitter(formSlug)
 
   return (
-    <div className={cx('flex flex-col  sm:gap-20 gap-10 w-full', 'sm:flex-row sm:gap-20')}>
+    <div className={cx('flex flex-col  md:gap-20 gap-10 w-full', 'md:flex-row md:gap-20')}>
       <div className="">
         <StepperView
           steps={form.stepData}
