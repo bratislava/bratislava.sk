@@ -10,10 +10,10 @@ const UserProfileSection = ({ children }: UserProfileSectionProps) => {
     <div
       className={cx(
         'bg-white flex flex-col items-center grow overflow-y-scroll',
-        'sm:py-3 sm:px-8',
+        'md:py-3 md:px-8',
       )}
     >
-      <div className={cx('w-full rounded-lg border-gray-200', 'sm:border-2 sm:max-w-6xl')}>
+      <div className={cx('w-full rounded-lg border-gray-200', 'md:border-2 md:max-w-6xl')}>
         {children}
       </div>
     </div>
