@@ -42,11 +42,6 @@ export const isPresent = <U>(a: U | null | undefined | void): a is U => {
 
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
 
-// TODO kept in case we need to turn this off easily (in dev or elsewhere)
-export const shouldSkipStaticPaths = () => {
-  return serverRuntimeConfig?.phase === 'phase-development-server'
-}
-
 const isServer = () => typeof window === 'undefined'
 
 export const isBrowser = () => !isServer()

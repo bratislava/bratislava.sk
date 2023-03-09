@@ -52,37 +52,38 @@ const UserProfileView = () => {
     })
   }
 
-  // TODO: redirect to change password
   return (
-    <section className="flex flex-col gap-2 sm:gap-0 h-full sm:bg-white">
-      <UserProfileDetail
-        userData={userData}
-        isEditing={isEditing}
-        isAlertOpened={isAlertOpened}
-        alertType={alertType}
-        onChangeIsEditing={setIsEditing}
-        onCancelEditing={handleOnCancelEditing}
-        onSubmit={handleOnSubmitEditing}
-        onOpenEmailModal={() => setIsEmailModalOpened(true)}
-      />
-      <UserProfilePassword />
-      <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
-      <MessageModal
-        show={isEmailModalOpened}
-        excludeButtons
-        className="w-[700px] m-5"
-        type="warning"
-        cancelHandler={() => {
-          setIsEmailModalOpened(false)
-        }}
-        submitHandler={() => {
-          setIsEmailModalOpened(false)
-        }}
-        title={t('profile_detail.modal_title')}
-      >
-        <AccountMarkdown content={t('profile_detail.modal_message')} variant="sm" />
-        <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
-      </MessageModal>
+    <section className="bg-gray-100 h-full">
+      <div className="flex flex-col gap-2 md:gap-0 h-full">
+        <UserProfileDetail
+          userData={userData}
+          isEditing={isEditing}
+          isAlertOpened={isAlertOpened}
+          alertType={alertType}
+          onChangeIsEditing={setIsEditing}
+          onCancelEditing={handleOnCancelEditing}
+          onSubmit={handleOnSubmitEditing}
+          onOpenEmailModal={() => setIsEmailModalOpened(true)}
+        />
+        <UserProfilePassword />
+        <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
+        <MessageModal
+          show={isEmailModalOpened}
+          excludeButtons
+          className="w-[700px] m-5"
+          type="warning"
+          cancelHandler={() => {
+            setIsEmailModalOpened(false)
+          }}
+          submitHandler={() => {
+            setIsEmailModalOpened(false)
+          }}
+          title={t('profile_detail.modal_title')}
+        >
+          <AccountMarkdown content={t('profile_detail.modal_message')} variant="sm" />
+          <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
+        </MessageModal>
+      </div>
     </section>
   )
 }

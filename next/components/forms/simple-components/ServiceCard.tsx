@@ -47,11 +47,8 @@ const ServiceCard = ({
   )
 
   return href ? (
-    <Link href={href}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className={style}>
-        <Card />
-      </a>
+    <Link href={href} className={style}>
+      <Card />
     </Link>
   ) : (
     <button type="button" onClick={onPress} className={style}>
