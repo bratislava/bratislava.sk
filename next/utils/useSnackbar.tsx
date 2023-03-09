@@ -32,7 +32,6 @@ type SnackbarProviderProp = {
 export const SnackbarProvider = ({ children }: SnackbarProviderProp) => {
   const [message, setMessage] = useState<string>('')
   const [isVisible, setIsVisible] = useState<boolean>(false)
-  // const [duration, setDuration] = useState<number>(defaultDuration)
   const [position, setPosition] = useState<SnackbarPosition>(defaultPosition)
   const [type, setType] = useState<AlertType>(defaultType)
   const [isClose, setIsClose] = useState<boolean>(false)
