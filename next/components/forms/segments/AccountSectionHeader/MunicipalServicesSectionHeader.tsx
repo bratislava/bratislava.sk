@@ -23,7 +23,7 @@ const MunicipalServicesSectionHeader = ({
         <h1 className="text-h1 mb-6">{title}</h1>
         <SelectField
           label=""
-          type="multiple"
+          type="one"
           value={selectorValue}
           onChange={(val) => {
             setSelectorValue(val)

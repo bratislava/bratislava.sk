@@ -47,7 +47,7 @@ const ServiceCard = ({
   )
 
   return href ? (
-    <Link href={href} className={style}>
+    <Link target={href.includes('http') ? '_blank' : '_self'} href={href} className={style}>
       <Card />
     </Link>
   ) : (
