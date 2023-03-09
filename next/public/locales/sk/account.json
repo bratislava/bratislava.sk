@@ -5,6 +5,7 @@
   "email_placeholder": "E-mail",
   "email_required": "E-mail je povinný",
   "email_format": "E-mail nie je valídny",
+  "postal_code_format": "PSČ musí obsahovať práve 5 číslic",
   "given_name_label": "Meno",
   "given_name_placeholder": "Meno",
   "given_name_required": "Meno je povinné",
@@ -23,6 +24,7 @@
   "password_required": "Heslo je povinné",
   "password_format": "Heslo musí obsahovať minimálne 8 znakov, veľké a malé písmeno, číslo a špeciálny znak.",
   "password_confirmation_required": "Heslá sa nezhodujú",
+  "phone_number_format": "Nesprávny formát - zadajte platné telefónne číslo vo formáte +421XXXXXX...",
   "login_submit": "Prihlásiť sa",
   "login_description": "Máte už mestské konto?",
   "login_link": "Prihlásiť sa",
@@ -308,7 +310,7 @@
     "banner_button_text": "Napísať správu"
   },
   "menu_contacts_link": "Kontakty",
-  "menu_account_link": "Mestské konto",
+  "menu_account_link": "Bratislavské konto",
   "menu_profile_link": "Môj profil",
   "menu_help_link": "Pomoc",
   "menu_logout_link": "Odhlásiť sa",
@@ -395,6 +397,42 @@
   "you_will_be_redirected_to_the_payment_gateway": "Budete presmerovaný na platobnú bránu.",
   "use_your_banking_app_to_load": "Na načítanie použite bankovú aplikáciu.",
   "tax_constructions": "Daň zo stavieb",
+  "thank_you": {
+    "footer_text": "© 2023 Hlavné mesto Bratislava",
+    "subtitle_mail": "<span className='text-p2'>V prípade akýchkoľvek otázok nás neváhajte kontaktovať na adrese:</span>",
+    "button_faq_text": "Často kladené otázky",
+    "button_privacy_text": "Ochrana osobných údajov",
+    "error": {
+      "1": {
+        "title": "Platba nebola úspešná",
+        "content": "<span className='text-p2'>Nastal neznámy problém.<br />Prosím, pokúste sa požadovanú stránku načítať opätovne.</span>"
+      },
+      "2": {
+        "title": "Platba nebola úspešná",
+        "content": "<span className='text-p2'>Prosím, skúste platbu opakovať.<br />Uistite sa, že zadávate všetky platobné údaje správne.</span>"
+      },
+      "3": {
+        "title": "Platba bola zamietnutá",
+        "content": "<span className='text-p2'>Prosím, skúste platbu opakovať.<br />Uistite sa, že zadávate všetky platobné údaje správne.</span>"
+      },
+      "4": {
+        "title": "Nastal technický problém",
+        "content": "<span className='text-p2'>Prepáčte, platba neprebehla v dôsledku technických problémov.<br />Opakujte platbu neskôr.</span>"
+      },
+      "button_restart_text": "Opakovať platbu",
+      "button_cancel_text": "Zrušiť platbu"
+    },
+    "success": {
+      "title": "Platba prebehla úspešne",
+      "content": "<span className='text-p2'>Ďakujeme za zaplatenie dane z nehnuteľností.<br />Ohodnoťte službu a pomôžte mestu Bratislava zlepšovať sa.</span>",
+      "button_to_formular_text": "Vyplniť dotazník",
+      "button_to_profil_text": "Pokračovať do konta"
+    },
+    "form_submit": {
+      "title": "Ďakujeme za odoslanie žiadosti",
+      "content": "<span className='text-p2'>Žiadosť musíme najprv spracovať a skontrolovať správnosť všetkých údajov.<br />Ak by nám od Vás chýbali nejaké informácie budeme Vás kontaktovať emailom.</span>"
+    }
+  },
   "bank_info": {
     "slovak_sporitelna": "Slovenská sporiteľňa, a.s.",
     "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",

@@ -418,4 +418,6 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsOrganizationalStructure {
     ...OrganizationalStructureSection
   }
+
+  # ComponentSectionsOfficialBoard has no attributes
 }

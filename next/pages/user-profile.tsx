@@ -1,11 +1,12 @@
 import UserProfileView from '@bratislava/ui-bratislava/UserProfile/UserProfileView'
 import { AsyncServerProps } from '@utils/types'
-import useAccount from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
 import { GetServerSidePropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
+import AccountSectionHeader from '../components/forms/segments/AccountSectionHeader/AccountSectionHeader'
+import AccountPageLayout from '../components/layouts/AccountPageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import TestUserProfileLayout from '../components/layouts/TestUserProfileLayout'
 
@@ -34,12 +35,10 @@ const UserProfile = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <TestUserProfileLayout title={t('my_profile')}>
-        <h1 className="text-h1 sm:text-h1-lg pb pl-4 sm:pl-28 pb-6 pt-14 sm:pt-6">
-          {t('my_profile')}
-        </h1>
+      <AccountPageLayout>
+        <AccountSectionHeader title={t('my_profile')} />
         <UserProfileView />
-      </TestUserProfileLayout>
+      </AccountPageLayout>
     </PageWrapper>
   )
 }

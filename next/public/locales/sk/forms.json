@@ -31,14 +31,15 @@
   "buttons": {
     "previous": "Späť",
     "skip": "Preskočiť",
-    "continue": "Pokračovať"
+    "continue": "Pokračovať",
+    "send": "Odoslať"
   },
   "summary": "Sumár",
   "changes_submit": "Potvrdiť zmeny",
   "all_steps": "Všetky kroky",
   "skip_step_modal": {
     "title": "Vyplňte správne všetky povinné polia",
-    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť",
+    "text": "Bez toho nebude možné formulár úspešne odoslať. K doplneniu polí sa môžete kedykoľvek vrátiť.",
     "button_skip_text": "Preskočiť",
     "button_submit_text": "Upraviť"
   }

@@ -2,7 +2,7 @@
 import FBLogo from '@assets/images/FB.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import React from 'react'
 
 import BABrand from '../../../assets/images/BABrand.svg'
@@ -167,7 +167,7 @@ export const Footer = ({
         </div>
       </section>
     </footer>
-  )
+  );
 }
 
 export default Footer

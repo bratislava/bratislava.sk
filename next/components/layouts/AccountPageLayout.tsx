@@ -12,13 +12,14 @@ import useAccount from '@utils/useAccount'
 import cx from 'classnames'
 import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import { ReactNode, useEffect } from 'react'
 
 type AccountPageLayoutBase = {
   className?: string
   children: ReactNode
+  hiddenHeaderNav?: boolean
 }
 
 const sectionsList = [
@@ -69,7 +70,7 @@ const menuItems = [
   },
 ]
 
-const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
+const AccountPageLayout = ({ className, children, hiddenHeaderNav }: AccountPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
   const router = useRouter()
   const { isAuth } = useAccount()
@@ -100,9 +101,10 @@ const AccountPageLayout = ({ className, children }: AccountPageLayoutBase) => {
           sectionsList={sectionsList}
           menuItems={menuItems}
           navHidden
+          hiddenHeaderNav={hiddenHeaderNav}
           languages={[
-            { key: 'sk', title: t('language_short.sk') },
-            { key: 'en', title: t('language_short.en') },
+            { key: 'sk', title: t('language_long.sk') },
+            { key: 'en', title: t('language_long.en') },
           ]}
         />
       </SectionContainer>
