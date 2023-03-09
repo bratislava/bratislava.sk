@@ -37,7 +37,7 @@ const HomepagePageLayout = ({
   const { elementRef, menuState } = useWithoutStickyMenuSection()
 
   return (
-    <div className={cx('font-inter', className)}>
+    <div className={className}>
       <header>
         <div className="h-14 w-full bg-white">
           <SectionContainer>

@@ -1,19 +1,17 @@
-import UserProfileView from '@bratislava/ui-bratislava/UserProfile/UserProfileView'
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
+import AccountPageLayout from 'components/layouts/AccountPageLayout'
+import PageWrapper from 'components/layouts/PageWrapper'
 import { GetServerSidePropsContext } from 'next'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import AccountSectionHeader from '../components/forms/segments/AccountSectionHeader/AccountSectionHeader'
-import AccountPageLayout from '../components/layouts/AccountPageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
-import TestUserProfileLayout from '../components/layouts/TestUserProfileLayout'
+import ThankYouFormSection from '../../components/forms/segments/AccountSections/ThankYouSection/ThankYouFormSection'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   if (isProductionDeployment()) return { notFound: true }
 
   const locale = ctx.locale ?? 'sk'
+
   return {
     props: {
       page: {
@@ -30,17 +28,14 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-const UserProfile = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { t } = useTranslation('account')
-
+const AccountThankYouFormPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
-      <AccountPageLayout>
-        <AccountSectionHeader title={t('my_profile')} />
-        <UserProfileView />
+      <AccountPageLayout hiddenHeaderNav className="bg-gray-50">
+        <ThankYouFormSection />
       </AccountPageLayout>
     </PageWrapper>
   )
 }
 
-export default UserProfile
+export default AccountThankYouFormPage
