@@ -19,9 +19,9 @@ type FixedLengthArray<T extends AlertButtons[]> = Pick<
 > & {
   [Symbol.iterator]: () => IterableIterator<ArrayItems<T>>
 }
-
+export type AlertType = 'error' | 'success' | 'info' | 'warning'
 type AlertBase = {
-  type: 'error' | 'success' | 'info' | 'warning'
+  type: AlertType
   variant?: 'basic' | 'message'
   solid?: boolean
   content?: string
@@ -67,7 +67,7 @@ const Alert = ({
         'text-gray-700': type === 'info' && !solid && variant !== 'message',
         'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
-        'py-4 items-center': variant === 'basic',
+        'py-4 items-center gap-3': variant === 'basic',
         'text-gray-0': solid,
         'bg-negative-700': type === 'error' && solid,
         'bg-success-700': type === 'success' && solid,

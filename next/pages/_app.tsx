@@ -3,6 +3,7 @@ import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { AccountProvider } from '@utils/useAccount'
+import { SnackbarProvider } from '@utils/useSnackbar'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
@@ -82,8 +83,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <SSRProvider>
               <AccountProvider>
                 <div className={`${inter.variable} font-sans`}>
-                  <Component {...pageProps} />
-
+                  <SnackbarProvider>
+                    <Component {...pageProps} />
+                  </SnackbarProvider>
                   {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
                 </div>
               </AccountProvider>
