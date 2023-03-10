@@ -65,7 +65,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       leftIcon,
       resetIcon,
       className,
-      size,
+      size = 'large',
       onChange,
       endIcon,
       customErrorPlace = false,
@@ -149,12 +149,13 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'border-gray-300 bg-gray-100': disabled,
       },
     )
+    console.log(size)
     return (
       <div
-        className={cx('flex w-full flex-col', {
+        className={cx('flex flex-col', {
           'w-full': size === 'large',
-          'max-w-[388px]': size === 'default',
-          'max-w-[200px]': size === 'small',
+          'max-w-[388px] w-fit': size === 'default',
+          'max-w-[200px] w-fit': size === 'small',
         })}
       >
         <FieldHeader

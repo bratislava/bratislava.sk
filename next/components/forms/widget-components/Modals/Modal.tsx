@@ -138,7 +138,7 @@ const ModalBody = ({
 }) => {
   return (
     <div
-      className={cx('flex h-full w-full flex-col bg-white p-6 overflow-hidden', {
+      className={cx('flex h-full w-full flex-col bg-white p-6', {
         'rounded-t-10': !hasHeader,
         'rounded-b-10': !hasFooter,
       })}
@@ -148,7 +148,7 @@ const ModalBody = ({
           <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
         </div>
       ) : null}
-      <div className="overflow-auto flex w-full flex-col items-start rounded-lg p-2">
+      <div className="flex w-full flex-col items-start rounded-lg p-2">
         {Array.isArray(content)
           ? content.length - 1 >= currentScreenIndex && content[currentScreenIndex]()
           : content({ onSubmit })}
