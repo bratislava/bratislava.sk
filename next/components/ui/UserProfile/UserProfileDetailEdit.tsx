@@ -208,6 +208,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             control={control}
             render={({ field }) => (
               <InputField
+                tooltip={t('profile_detail.postal_code_tooltip')}
                 label={t('profile_detail.postal_code')}
                 {...field}
                 errorMessage={errors.postal_code}
