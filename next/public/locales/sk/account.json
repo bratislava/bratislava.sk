@@ -441,9 +441,18 @@
   },
   "tax_payable_within": "Daň je splatná v termíne do 15 dní",
   "validity_decision": "odo dňa právoplatnosti rozhodnutia.",
+  "tax_determined": "Splátky dane určené správcom dane v rozhodnutí",
   "account_activator": {
     "title": "Platili ste už daň z nehnuteľností digitálne?",
     "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
     "button_text": "Aktivovať konto"
+  },
+  "payment_schedule": {
+    "title": "Splátkový kalendár",
+    "three_pieces": "Daň je splatná v troch splátkach, ",
+    "paid_at_once": "môže byť uhradená aj naraz, ",
+    "not_later": "najneskôr v lehote splatnosti prvej splátky.",
+    "pay_with_qr": "Zaplatiť môžete okrem platobných údajov aj pomocou QR kódu.",
+    "change_amount": "V bankovej aplikácii zmeňte sumu na vyššie uvedenú sumu splátky dane."
   }
 }

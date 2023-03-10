@@ -112,12 +112,7 @@ const PaymentData = () => {
             </div>
           </div>
         </div>
-        <AccordionPaymentSchedule
-          size="md"
-          secondTitle="Daň je splatná v troch splátkach, môže byť uhradená aj naraz, najneskôr v lehote splatnosti prvej splátky."
-          title="Splátkový kalendár"
-          data={[]}
-        />
+        <AccordionPaymentSchedule size="md" title={t('payment_schedule.title')} data={[]} />
       </div>
       <TaxFooter />
     </div>
