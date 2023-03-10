@@ -1,8 +1,8 @@
+import ExpandMore from '@assets/images/expand-more.svg'
 import cx from 'classnames'
 import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import React, { useState } from 'react'
 
-import ExpandMoreIcon from '../icon-components/ExpandMoreIcon'
 import PersonIcon from '../icon-components/PersonIcon'
 
 export type AccordionSizeType = 'xs' | 'sm' | 'md' | 'lg'
@@ -91,20 +91,13 @@ const Accordion = ({
             >
               {secondTitle}
             </div>
-            <div
+            <ExpandMore
               className={cx('flex items-center justify-center', {
-                'w-10 h-10': accordionSize === 'lg',
-                'w-8 h-8': accordionSize === 'md',
+                'lg:w-10 lg:h-10 w-8 h-8': accordionSize === 'lg',
+                'lg:w-8 lg:h-8 w-6 h-6': accordionSize === 'md',
                 'w-6 h-6': accordionSize === 'sm' || accordionSize === 'xs',
               })}
-            >
-              <ExpandMoreIcon
-                className={cx('', {
-                  'transform rotate-180': isActive,
-                })}
-                size={accordionSize}
-              />
-            </div>
+            />
           </button>
           {isActive && (
             <div

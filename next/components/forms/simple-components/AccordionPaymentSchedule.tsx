@@ -1,9 +1,9 @@
 import CalendarSchedule from '@assets/images/account/calendar-schedule.svg'
+import ExpandMore from '@assets/images/expand-more.svg'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
-import ExpandMoreIcon from '../icon-components/ExpandMoreIcon'
 import PersonIcon from '../icon-components/PersonIcon'
 import AccountMarkdownModal from '../segments/AccountModal/AccountModal'
 import Button from './Button'
@@ -168,21 +168,13 @@ const AccordionPaymentSchedule = ({
                   </div>
                 </div>
               </div>
-              <div
-                className={cx('flex  items-center justify-center', {
-                  'w-10 h-10': accordionSize === 'lg',
-                  'w-8 h-8': accordionSize === 'md',
+              <ExpandMore
+                className={cx('flex items-center justify-center', {
+                  'lg:w-10 lg:h-10 w-8 h-8': accordionSize === 'lg',
+                  'lg:w-8 lg:h-8 w-6 h-6': accordionSize === 'md',
                   'w-6 h-6': accordionSize === 'sm' || accordionSize === 'xs',
                 })}
-              >
-                <ExpandMoreIcon
-                  className={cx({
-                    'transform rotate-180': isActive,
-                    'transform rotate-270 md:rotate-0': !isActive,
-                  })}
-                  size={accordionSize}
-                />
-              </div>
+              />
             </div>
           </div>
         </div>
