@@ -137,7 +137,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'border-gray-300 bg-gray-100': disabled,
       },
     )
-    console.log(size)
+
     return (
       <div
         className={cx('flex flex-col', {
