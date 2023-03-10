@@ -439,8 +439,10 @@
     "csob": "ČSOB, a.s.",
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
   },
-  "tax_payable_within": "Daň je splatná v termíne do 15 dní",
+  "tax_payable_within": "Daň je splatná v termíne do 15 dní ",
   "validity_decision": "odo dňa právoplatnosti rozhodnutia.",
+  "validity_decision_with_schedule": "odo dňa právoplatnosti rozhodnutia ",
+  "according_schedule": "podľa splátkového kalendára.",
   "tax_determined": "Splátky dane určené správcom dane v rozhodnutí",
   "account_activator": {
     "title": "Platili ste už daň z nehnuteľností digitálne?",

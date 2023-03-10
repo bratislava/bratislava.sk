@@ -53,8 +53,11 @@ const PaymentData = () => {
               <div className="flex flex-col items-start w-full gap-2">
                 <div className="text-16-semibold">{t('tax_due')}</div>
                 <div className="text-16">
-                  <div className="inline-block">{t('tax_payable_within')}</div>{' '}
-                  <div className="text-16-semibold inline">{t('validity_decision')}</div>
+                  <div className="inline">{t('tax_payable_within')}</div>
+                  <div className="text-16-semibold inline">
+                    {t('validity_decision_with_schedule')}
+                  </div>{' '}
+                  <div className="inline">{t('according_schedule')}</div>
                 </div>
               </div>
             </div>
