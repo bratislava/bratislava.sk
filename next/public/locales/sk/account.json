@@ -440,5 +440,10 @@
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
   },
   "tax_payable_within": "Daň je splatná v termíne do 15 dní",
-  "validity_decision": "odo dňa právoplatnosti rozhodnutia."
+  "validity_decision": "odo dňa právoplatnosti rozhodnutia.",
+  "account_activator": {
+    "title": "Platili ste už daň z nehnuteľností digitálne?",
+    "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
+    "button_text": "Aktivovať konto"
+  }
 }
