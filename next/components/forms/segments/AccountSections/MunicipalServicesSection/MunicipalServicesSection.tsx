@@ -16,9 +16,11 @@ import TowIcon from '@assets/images/account/municipal-services/tow-icon.svg'
 import TransportIcon from '@assets/images/account/municipal-services/transport-icon.svg'
 import TreeIcon from '@assets/images/account/municipal-services/tree-icon.svg'
 import ZooIcon from '@assets/images/account/municipal-services/zoo-icon.svg'
-import { Pagination } from '@bratislava/ui-bratislava/index'
 import { EnumOptionsType } from '@rjsf/utils'
 import MunicipalServicesSectionHeader from 'components/forms/segments/AccountSectionHeader/MunicipalServicesSectionHeader'
+import Pagination, {
+  PaginationOption,
+} from 'components/forms/simple-components/Pagination/Pagination'
 import ServiceCard from 'components/forms/simple-components/ServiceCard'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
@@ -57,7 +59,7 @@ const MunicipalServicesSection = () => {
   const { t } = useTranslation('account')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [selectorValue, setSelectorValue] = useState<EnumOptionsType[]>(enumOptions.slice(0, 1))
-  const selectorValuesArr: string = selectorValue[0].value
+  const selectorValuesArr: string = selectorValue[0]?.value
   const ITEMS_PER_PAGE = 20
 
   type ServiceCardBase = {
@@ -70,7 +72,6 @@ const MunicipalServicesSection = () => {
     category: string[]
     onPress?: () => void
   }
-  console.log(selectorValue)
   const serviceCards: ServiceCardBase[] = [
     {
       title: t('account_section_services.cards.1.title'),
@@ -323,8 +324,13 @@ const MunicipalServicesSection = () => {
   ]
 
   const filteredServiceCards = serviceCards.filter((card) =>
-    selectorValuesArr.includes(ALL_CATEGORY) ? true : card.category.includes(selectorValuesArr),
+    selectorValuesArr?.includes(ALL_CATEGORY) ? true : card.category.includes(selectorValuesArr),
   )
+
+  const paginationOption: PaginationOption = {
+    itemsPerPage: 20,
+    listLength: filteredServiceCards.length,
+  }
 
   return (
     <div className="flex flex-col">
@@ -336,7 +342,7 @@ const MunicipalServicesSection = () => {
         title={t('account_section_services.navigation')}
       />
       <div className="w-full max-w-screen-lg mx-auto py-4 lg:py-8">
-        <div className="flex flex-wrap gap-3 sm:gap-6 md:gap-8 place-content-center justify-items-center">
+        <div className="flex flex-wrap gap-3 sm:gap-6 md:gap-8 px-4 lg:px-0">
           {filteredServiceCards
             .filter(
               (_, i) =>
@@ -357,8 +363,7 @@ const MunicipalServicesSection = () => {
         </div>
         <div className="my-4 lg:my-8">
           <Pagination
-            totalPages={Math.ceil(filteredServiceCards.length / ITEMS_PER_PAGE)}
-            totalCount={filteredServiceCards.length}
+            paginationOption={paginationOption}
             currentPage={currentPage}
             pageHandler={setCurrentPage}
           />

@@ -13,7 +13,6 @@ interface PaginationProps {
   currentPage: number
   itemsPerPage?: number
   pageHandler?: (pageNumber: number) => void
-  variant?: 'category' | 'black'
 }
 
 export const ThreeDots = () => {
@@ -24,12 +23,7 @@ export const ThreeDots = () => {
   )
 }
 
-export const Pagination = ({
-  totalPages,
-  currentPage = 1,
-  pageHandler,
-  variant,
-}: PaginationProps) => {
+export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: PaginationProps) => {
   const [items, setItems] = useState([
     {
       page: currentPage === 1 ? currentPage : currentPage - 1,
