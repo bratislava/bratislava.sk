@@ -1,5 +1,5 @@
-query PagesStaticPaths($page: Int, $limit: Int) {
-  pages(pagination: { page: $page, pageSize: $limit }) {
+query PagesStaticPaths {
+  pages(pagination: { limit: -1 }) {
     data {
       id
       attributes {

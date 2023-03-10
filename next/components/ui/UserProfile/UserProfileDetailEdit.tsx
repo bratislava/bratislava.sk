@@ -101,7 +101,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
   return (
     <form
       id={formId}
-      className="flex flex-col grow gap-6 pb-20 sm:pb-0"
+      className="flex flex-col grow gap-6 pb-20 md:pb-0"
       onSubmit={handleSubmit(handleSubmitCallback)}
     >
       <div className="gap flex flex-wrap flex-row gap-6">
@@ -208,6 +208,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             control={control}
             render={({ field }) => (
               <InputField
+                tooltip={t('profile_detail.postal_code_tooltip')}
                 label={t('profile_detail.postal_code')}
                 {...field}
                 errorMessage={errors.postal_code}

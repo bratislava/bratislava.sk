@@ -9,7 +9,7 @@ interface UserProfileDetailViewRowProps {
 }
 const UserProfileDetailViewRow = ({ label, value, tooltip }: UserProfileDetailViewRowProps) => {
   return (
-    <div className={cx('w-full flex-wrap flex flex-col gap-2', 'sm:flex-row')}>
+    <div className={cx('w-full flex-wrap flex flex-col gap-2', 'md:flex-row')}>
       <div className="grow w-[50%] flex flex-row items-center gap-3">
         <span className="text-p2-semibold">{label}</span>
         {tooltip && <Tooltip text={tooltip} />}

@@ -25,7 +25,7 @@ const BasePageLayout = ({
   pageColor,
 }: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
   return (
-    <div className={cx('font-inter', className)}>
+    <div className={className}>
       <header>
         <div className="h-16 bg-white lg:h-14">
           <SectionContainer>

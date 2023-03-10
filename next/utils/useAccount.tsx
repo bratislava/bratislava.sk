@@ -303,6 +303,7 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
       user.signOut()
       setUser(null)
       setUserData(null)
+      setStatus(AccountStatus.Idle)
     }
   }
 

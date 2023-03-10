@@ -4,7 +4,7 @@ import { GallerySectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { HorizontalScrollWrapper, Modal } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
