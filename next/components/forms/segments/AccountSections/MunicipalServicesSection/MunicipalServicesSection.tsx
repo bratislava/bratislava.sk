@@ -79,7 +79,7 @@ const MunicipalServicesSection = () => {
       buttonText: t('account_section_services.cards.1.buttonText'),
       icon: <TaxesIcon className="w-10 h-10 lg:w-12 lg:h-12" />,
       category: [TAXES_CATEGORY],
-      href: '',
+      href: '/account/taxes-and-fees',
     },
     {
       title: t('account_section_services.cards.2.title'),
