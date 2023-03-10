@@ -353,6 +353,7 @@
     "street": "Street and number",
     "city": "City",
     "postal_code": "Postal code",
+    "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
     "success_alert": "Changes have been saved",
     "error_alert": "Changes could not be saved",
     "modal_title": "Change e-mail",
@@ -435,5 +436,10 @@
     "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",
     "csob": "ČSOB, a.s.",
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
+  },
+  "account_activator": {
+    "title": "Platili ste už daň z nehnuteľností digitálne?",
+    "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
+    "button_text": "Aktivovať konto"
   }
 }
