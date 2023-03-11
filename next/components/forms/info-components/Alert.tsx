@@ -77,13 +77,16 @@ const Alert = ({
     const contentStyle = cx('w-full', {
       'text-16': variant === 'basic',
       'text-16-semibold': variant === 'message',
+      'text-gray-0': solid,
+      'text-gray-700': !solid,
     })
 
-    const extraButtonStyle = cx('text-16-medium underline', {
+    const extraButtonStyle = cx('text-16-medium underline underline-offset-4 decoration-2', {
       'text-negative-700': type === 'error' && !solid,
       'text-success-700': type === 'success' && !solid,
       'text-gray-700': type === 'info' && !solid,
       'text-warning-700': type === 'warning' && !solid,
+      'text-gray-0': solid,
     })
 
     return variant === 'basic' ? (
@@ -105,8 +108,9 @@ const Alert = ({
           <div className={contentStyle}>{message}</div>
         </div>
         <div
-          className={cx('text-p2 mt-2 w-full pl-9 font-normal text-gray-700', {
+          className={cx('text-p2 mt-2 w-full pl-9 font-normal', {
             'text-gray-0': solid,
+            'text-gray-700': !solid,
           })}
         >
           {content}
