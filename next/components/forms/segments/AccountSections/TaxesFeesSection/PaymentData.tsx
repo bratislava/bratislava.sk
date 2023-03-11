@@ -7,7 +7,7 @@ import Button from '../../../simple-components/Button'
 import ClipboardCopy from '../../../simple-components/ClipboardCopy'
 import TaxFooter from './TaxFooter'
 
-const PaymentData = () => {
+const PaymentData = (props: any) => {
   const { t } = useTranslation('account')
   return (
     <div className="flex flex-col items-start lg:gap-6 gap-3 w-full lg:px-0 px-4">
@@ -115,7 +115,9 @@ const PaymentData = () => {
             </div>
           </div>
         </div>
-        <AccordionPaymentSchedule size="md" title={t('payment_schedule.title')} data={[]} />
+        {props.who === 'splatkar' && (
+          <AccordionPaymentSchedule size="md" title={t('payment_schedule.title')} data={[]} />
+        )}
       </div>
       <TaxFooter />
     </div>

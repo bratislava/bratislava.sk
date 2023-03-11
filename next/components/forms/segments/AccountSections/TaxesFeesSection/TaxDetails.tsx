@@ -3,7 +3,7 @@ import React from 'react'
 
 import AccordionTableContent from '../../../simple-components/AccordionTableContent'
 
-const TaxDetails = () => {
+const TaxDetails = (props: any) => {
   const { t } = useTranslation('account')
 
   return (

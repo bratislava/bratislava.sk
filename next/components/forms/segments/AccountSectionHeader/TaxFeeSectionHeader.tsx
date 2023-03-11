@@ -14,6 +14,7 @@ import Button from '../../simple-components/Button'
 type AccountSectionHeaderBase = {
   title: string
   status?: string
+  who?: string
 }
 
 const statusHandler = (status: 'negative' | 'warning' | 'success'): ReactNode => {
@@ -88,7 +89,9 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
                 <div className="lg:text-p2 text-p3">20. apríla 2023</div>
               </div>
               <div className="w-1.5 h-1.5 bg-black rounded-full md:block hidden" />
-              <div className="lg:text-p2-bold text-p3">89,00 €</div>
+              <div className="lg:text-p2-bold text-p3">
+                {props.who === 'splatkar' ? '29,66€ / 89,00 €' : '58,00 €'}
+              </div>
               <div className="w-1.5 h-1.5 bg-black rounded-full md:block hidden" />
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-2">
@@ -97,7 +100,7 @@ const TaxFeeSectionHeader = (props: AccountSectionHeaderBase) => {
                       'gap-1': props?.status === 'unpaid',
                     })}
                   >
-                    {statusHandler('success')}
+                    {props.who === 'splatkar' ? statusHandler('warning') : statusHandler('success')}
                   </div>
                   <div className="lg:text-p2 text-p3">24. apríla 2023</div>
                 </div>
