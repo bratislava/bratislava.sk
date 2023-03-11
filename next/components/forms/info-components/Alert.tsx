@@ -51,10 +51,10 @@ const Alert = ({
     }
 
     const alertContainer = cx(
-      'flex justify-between max-w-[480px] w-full rounded-lg px-5',
+      'flex justify-between max-w-[480px] w-full rounded-lg lg:px-5 px-3',
       className,
       {
-        'text-gray-800 flex-col py-4': variant === 'message',
+        'text-gray-800 flex-col lg:py-4 py-3': variant === 'message',
         'bg-negative-100': type === 'error' && !solid,
         'bg-success-50': type === 'success' && !solid,
         'bg-gray-100': type === 'info' && !solid,
@@ -65,7 +65,7 @@ const Alert = ({
         'text-gray-700': type === 'info' && !solid && variant !== 'message',
         'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
-        'py-4 items-center': variant === 'basic',
+        'lg:py-4 p-3 items-center': variant === 'basic',
         'text-gray-0': solid,
         'bg-negative-700': type === 'error' && solid,
         'bg-success-700': type === 'success' && solid,
@@ -81,7 +81,7 @@ const Alert = ({
       'text-gray-700': !solid,
     })
 
-    const extraButtonStyle = cx('text-16-medium underline underline-offset-4 decoration-2', {
+    const extraButtonStyle = cx('text-16-medium underline underline-offset-4', {
       'text-negative-700': type === 'error' && !solid,
       'text-success-700': type === 'success' && !solid,
       'text-gray-700': type === 'info' && !solid,
@@ -116,7 +116,7 @@ const Alert = ({
           {content}
         </div>
         {rest.buttons ? (
-          <div className="mt-5 flex w-full gap-5 pl-9">
+          <div className="lg:mt-5 mt-3 flex w-full gap-5 pl-9">
             <button type="button" className={extraButtonStyle} onClick={rest.buttons[0].handler}>
               {rest.buttons[0].title}
             </button>
