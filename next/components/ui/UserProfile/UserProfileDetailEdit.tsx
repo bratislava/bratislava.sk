@@ -112,6 +112,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             render={({ field }) => (
               <InputField
                 required
+                capitalize
                 label={t('profile_detail.given_name')}
                 {...field}
                 errorMessage={errors.given_name}
@@ -126,6 +127,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             render={({ field }) => (
               <InputField
                 required
+                capitalize
                 label={t('profile_detail.family_name')}
                 {...field}
                 errorMessage={errors.family_name}
@@ -187,6 +189,7 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
         render={({ field }) => (
           <InputField
             label={t('profile_detail.street')}
+            capitalize
             {...field}
             errorMessage={errors.street_address}
           />
@@ -198,7 +201,12 @@ const UserProfileDetailEdit = (props: UserProfileDetailEditProps) => {
             name="city"
             control={control}
             render={({ field }) => (
-              <InputField label={t('profile_detail.city')} {...field} errorMessage={errors.city} />
+              <InputField
+                label={t('profile_detail.city')}
+                capitalize
+                {...field}
+                errorMessage={errors.city}
+              />
             )}
           />
         </div>
