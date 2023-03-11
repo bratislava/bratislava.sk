@@ -3,6 +3,7 @@ import TooltipPopup from 'components/forms/info-components/Tooltip/TooltipPopup'
 import { useRef, useState } from 'react'
 import { TooltipTriggerProps, useHover } from 'react-aria'
 import { useTooltipTriggerState } from 'react-stately'
+import { useOnClickOutside } from 'usehooks-ts'
 
 type TooltipPopupBase = {
   text?: string
@@ -27,12 +28,13 @@ const Tooltip = (props: TooltipPopupBase) => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false)
 
+  useOnClickOutside(ref, () => setIsClicked(false))
   const { hoverProps } = useHover({
     onHoverStart() {
       state.open(true)
     },
     onHoverEnd() {
-      if (!isClicked) state.close(true)
+      state.close(true)
     },
   })
   return (
