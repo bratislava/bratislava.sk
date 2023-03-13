@@ -141,17 +141,20 @@ Hello
           title="Accordion table xs"
           secondTitle="0 €"
           data={[]}
+          dataType="ground"
         />
         <AccordionTableTaxContent
           size="sm"
           title="Accordion table sm"
           secondTitle="0 €"
           data={[]}
+          dataType="construction"
         />
         <AccordionTableTaxContent
           size="md"
           title="Accordion table md"
           secondTitle="0 €"
+          dataType="ground"
           data={[]}
         />
         <AccordionTableTaxContent
@@ -159,6 +162,7 @@ Hello
           title="Accordion table lg"
           secondTitle="0 €"
           data={[]}
+          dataType="apartment"
         />
         <Accordion
           size="xs"
