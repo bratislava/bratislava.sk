@@ -11,7 +11,7 @@ function transformValueArray(
   fieldFormData?: JSONSchema7Definition,
   fieldSchema?: JSONSchema7Definition,
 ) {
-  if (!fieldFormData || typeof fieldFormData === 'boolean') return undefined
+  if (!fieldFormData || typeof fieldFormData === 'boolean') return
   if (fieldFormData && !Array.isArray(fieldFormData)) return fieldFormData
   if (
     !fieldSchema ||
@@ -24,7 +24,7 @@ function transformValueArray(
     return fieldFormData
 
   const items = fieldSchema.items.anyOf ?? fieldSchema.items.oneOf ?? fieldSchema.items.allOf
-  if (!items) return fieldFormData
+  if (!items || typeof items === 'boolean' || !Array.isArray(items)) return fieldFormData
 
   return fieldFormData.map((value) => {
     const enumOption = items.find(
