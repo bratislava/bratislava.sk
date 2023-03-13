@@ -355,6 +355,7 @@
     "street": "Ulica a číslo",
     "city": "Mesto",
     "postal_code": "PSČ",
+    "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
     "success_alert": "Zmeny boli uložené",
     "error_alert": "Zmeny sa nepodarilo uložiť",
     "modal_title": "Zmeniť e-mail",
@@ -439,5 +440,10 @@
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
   },
   "tax_payable_within": "Daň je splatná v termíne do 15 dní",
-  "validity_decision": "odo dňa právoplatnosti rozhodnutia."
+  "validity_decision": "odo dňa právoplatnosti rozhodnutia.",
+  "account_activator": {
+    "title": "Platili ste už daň z nehnuteľností digitálne?",
+    "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
+    "button_text": "Aktivovať konto"
+  }
 }
