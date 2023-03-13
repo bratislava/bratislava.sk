@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import AccordionTableContent from '../../../simple-components/AccordionTableContent'
+import AccordionTableTaxContent from '../../../simple-components/AccordionTableTaxContent'
 
 const TaxDetails = () => {
   const { t } = useTranslation('account')
@@ -10,21 +10,21 @@ const TaxDetails = () => {
     <div className="flex flex-col items-start lg:gap-6 gap-3 w-full lg:px-0 px-4">
       <div className="text-h3">{t('tax_liability_breakdown')}</div>
       <div className="gap-4 flex flex-col w-full">
-        <AccordionTableContent
+        <AccordionTableTaxContent
           size="md"
           dataType="ground"
           title={t('land_tax')}
           secondTitle="0 €"
           data={[]}
         />
-        <AccordionTableContent
+        <AccordionTableTaxContent
           size="md"
           dataType="construction"
           title={t('construction_tax')}
           secondTitle="0 €"
           data={[]}
         />
-        <AccordionTableContent
+        <AccordionTableTaxContent
           size="md"
           dataType="apartment"
           title={t('apartments_tax')}

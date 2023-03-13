@@ -242,7 +242,7 @@ const Table = ({ dataType }: { dataType: 'ground' | 'construction' | 'apartment'
     </div>
   )
 }
-const AccordionTableContent = ({
+const AccordionTableTaxContent = ({
   title,
   secondTitle,
   size = 'sm',
@@ -382,4 +382,4 @@ const AccordionTableContent = ({
   )
 }
 
-export default AccordionTableContent
+export default AccordionTableTaxContent

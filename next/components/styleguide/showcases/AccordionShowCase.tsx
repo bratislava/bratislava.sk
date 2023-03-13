@@ -1,7 +1,7 @@
 import Accordion from 'components/forms/simple-components/Accordion'
 import React from 'react'
 
-import AccordionTableContent from '../../forms/simple-components/AccordionTableContent'
+import AccordionTableTaxContent from '../../forms/simple-components/AccordionTableTaxContent'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
@@ -136,10 +136,30 @@ Hello
   return (
     <Wrapper direction="column" title="Accordion">
       <Stack direction="column">
-        <AccordionTableContent size="xs" title="Accordion table xs" secondTitle="0 €" data={[]} />
-        <AccordionTableContent size="sm" title="Accordion table sm" secondTitle="0 €" data={[]} />
-        <AccordionTableContent size="md" title="Accordion table md" secondTitle="0 €" data={[]} />
-        <AccordionTableContent size="lg" title="Accordion table lg" secondTitle="0 €" data={[]} />
+        <AccordionTableTaxContent
+          size="xs"
+          title="Accordion table xs"
+          secondTitle="0 €"
+          data={[]}
+        />
+        <AccordionTableTaxContent
+          size="sm"
+          title="Accordion table sm"
+          secondTitle="0 €"
+          data={[]}
+        />
+        <AccordionTableTaxContent
+          size="md"
+          title="Accordion table md"
+          secondTitle="0 €"
+          data={[]}
+        />
+        <AccordionTableTaxContent
+          size="lg"
+          title="Accordion table lg"
+          secondTitle="0 €"
+          data={[]}
+        />
         <Accordion
           size="xs"
           title="Headline xs"
