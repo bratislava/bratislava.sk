@@ -30,7 +30,7 @@ const AnnouncementBlock = ({
             <>
               <Button
                 className="hidden lg:flex"
-                endIcon={<ArrowRightIcon />}
+                endIcon={<ArrowRightIcon className="w-6 h-6" />}
                 variant="category"
                 text={buttonTitle}
                 onPress={onPress}
@@ -51,6 +51,7 @@ const AnnouncementBlock = ({
             src={imagePath}
             alt=""
             layout="fill"
+            priority
             objectFit="cover"
             objectPosition="left"
             className="rounded-r-3xl "

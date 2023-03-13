@@ -18,6 +18,7 @@
   "locality_placeholder": "Mesto",
   "locality_required": "Mesto je povinné",
   "postal_code_label": "PSČ",
+  "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
   "postal_code_placeholder": "PSČ",
   "postal_code_description": "Zadávajte bez medzier, napr. 11111",
   "postal_code_required": "PSČ je povinné",

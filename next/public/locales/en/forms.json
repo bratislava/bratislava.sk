@@ -18,6 +18,7 @@
   "locality_placeholder": "Locality",
   "locality_required": "Locality is required",
   "postal_code_label": "Postal code",
+  "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
   "postal_code_placeholder": "Postal code",
   "postal_code_description": "",
   "postal_code_required": "Postal code is required",
