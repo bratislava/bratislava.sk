@@ -1,7 +1,6 @@
 import cx from 'classnames'
 import { FC, useRef } from 'react'
 
-import { useClickOutsideHandler } from '../../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
 import { useOnClickOutside } from 'usehooks-ts'
