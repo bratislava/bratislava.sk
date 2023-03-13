@@ -10,14 +10,27 @@ const TaxDetails = () => {
     <div className="flex flex-col items-start lg:gap-6 gap-3 w-full lg:px-0 px-4">
       <div className="text-h3">{t('tax_liability_breakdown')}</div>
       <div className="gap-4 flex flex-col w-full">
-        <AccordionTableContent size="md" title={t('apartments_tax')} secondTitle="58 €" data={[]} />
         <AccordionTableContent
           size="md"
+          dataType="ground"
+          title={t('land_tax')}
+          secondTitle="0 €"
+          data={[]}
+        />
+        <AccordionTableContent
+          size="md"
+          dataType="construction"
           title={t('construction_tax')}
           secondTitle="0 €"
           data={[]}
         />
-        <AccordionTableContent size="md" title={t('apartments_tax')} secondTitle="58 €" data={[]} />
+        <AccordionTableContent
+          size="md"
+          dataType="apartment"
+          title={t('apartments_tax')}
+          secondTitle="58 €"
+          data={[]}
+        />
       </div>
       <div className="rounded-lg flex flex-col items-start lg:px-8 lg:py-6 p-4 bg-gray-50 w-full lg:gap-6 gap-4">
         <div className="flex flex-col items-start lg:gap-5 gap-3 w-full">

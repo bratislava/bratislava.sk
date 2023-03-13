@@ -3,14 +3,175 @@ import React, { useState } from 'react'
 
 import ExpandMoreIcon from '../icon-components/ExpandMoreIcon'
 import PersonIcon from '../icon-components/PersonIcon'
+import AccountMarkdown from '../segments/AccountMarkdown/AccountMarkdown'
 import AccountMarkdownModal from '../segments/AccountModal/AccountModal'
 
-export type AccordionSizeType = 'xs' | 'sm' | 'md' | 'lg'
+const tableHeaderData = {
+  subject: 'Predmet dane',
+  area: 'Výmera pozemku v m<sup>2</sup>',
+  base: 'Základ dane m<sup>2</sup>',
+  total: 'Daň v EUR',
+}
 
+const tableTotal = {
+  ground: '0,00 €',
+  construction: '0,00 €',
+  apartment: '58,00 €',
+}
+
+const matchHeader = {
+  ground: [tableHeaderData.area, tableHeaderData.base, tableHeaderData.total],
+  construction: [tableHeaderData.base, tableHeaderData.total],
+  apartment: [tableHeaderData.base, tableHeaderData.total],
+}
+export type AccordionSizeType = 'xs' | 'sm' | 'md' | 'lg'
+const groundData = {
+  A: {
+    title: 'Orná pôda, chmeľnice, vinice, ovocné sady',
+    description: '(§ 6 ods. 1 písm. a) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  B: {
+    title: 'Trvalé trávnaté porasty',
+    description: '(§ 6 ods. 1 písm. a) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  C: {
+    title: 'Záhrady',
+    description: '(§ 6 ods. 1 písm. b) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  D: {
+    title: 'Lesné pozemky, na ktorých sú hospodárske lesy',
+    description: '(§ 6 ods. 1 písm. d) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  E: {
+    title: 'Rybníky s chovom rýb a ostatné hospodársky využívané vodné plochy',
+    description: '(§ 6 ods. 1 písm. d) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  F: {
+    title: 'Zastavané plochy a nádvoria',
+    description: '(§ 6 ods. 1 písm. c) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  G: {
+    title: 'Stavebné pozemky',
+    description: '(§ 6 ods. 1 písm. e) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+  H: {
+    title: 'Ostatné plochy',
+    description: '(§ 6 ods. 1 písm. c) zákona)',
+    area: '0,00',
+    base: '0,00',
+    total: '0,00',
+  },
+}
+
+const constructionData = {
+  A: {
+    title: 'Stavba na bývanie',
+    description: '(§ 10 ods. 1 písm. a) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  B: {
+    title: 'Stavby na pôdohospodársku produkciu',
+    description: '(§ 10 ods. 1 písm. b) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  C: {
+    title: 'Chaty',
+    description: '(§ 10 ods. 1 písm. c) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  D: {
+    title: 'Samostatne stojace garáže',
+    description: '(§ 10 ods. 1 písm. d) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  E: {
+    title: 'Stavby hromadných garáží',
+    description: '(§ 10 ods. 1 písm. e) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  F: {
+    title: 'Stavby hromadných garáží umiestnených pod zemou',
+    description: '(§ 10 ods. 1 písm. f) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  G: {
+    title: 'Priemyselné stavby',
+    description: '(§ 10 ods. 1 písm. g) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  jH: {
+    title: 'Stavba na ost. podnik. a zárobk. činnosť, skladovanie a administratívu',
+    description: '(§ 10 ods. 1 písm. h) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  jI: {
+    title: 'Ostatné stavby',
+    description: '(§ 10 ods. 1 písm. i) zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+  H: {
+    title: 'Viacúčelová stavba',
+    description: '(§ 12 ods. 6 zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+}
+
+const apartmentData = {
+  residential: {
+    title: 'Byt',
+    description: '(§ 14 zákona)',
+    base: '58,00',
+    total: '58,00',
+  },
+  nonResidential: {
+    title: 'Nebytový priestor',
+    description: '(§ 14 zákona)',
+    base: '0,00',
+    total: '0,00',
+  },
+}
+
+const matchMainData = {
+  ground: groundData,
+  construction: constructionData,
+  apartment: apartmentData,
+}
 export type AccordionBase = {
   size: AccordionSizeType
   title: string
   secondTitle?: string
+  dataType: 'ground' | 'construction' | 'apartment'
   data: any
   icon?: boolean
   shadow?: boolean
@@ -19,63 +180,64 @@ export type AccordionBase = {
 export const isAccordionSizeType = (size: string) =>
   ['xs', 'sm', 'md', 'lg'].includes(size) ? size : 'sm'
 
-const TableHeaderRow = () => {
+const TableHeaderRow = ({ dataType }: { dataType: 'ground' | 'construction' | 'apartment' }) => {
+  const headerData = matchHeader[dataType]
+
   return (
     <thead className="lg:bg-gray-0 bg-gray-200 self-stretch">
       <tr>
         <th className="text-16 first:rounded-tl last:rounded-tr [&:not(:first-child)]:text-center border-spacing-0 border-b-2 text-left lg:py-4 lg:p-0 p-4">
           Predmet dane
         </th>
-        <th className="text-16 w-max grow first:rounded-tl last:rounded-tr [&:not(:first-child)]:text-center border-spacing-0 border-b-2 text-left lg:py-4 lg:p-0 p-4">
-          Základ dane v m<sup>2</sup>
-        </th>
-        <th className="text-16 grow first:rounded-tl last:rounded-tr [&:not(:first-child)]:text-center border-spacing-0 border-b-2 text-left lg:py-4 lg:p-0 p-4">
-          Daň v EUR
-        </th>
+        {headerData.map((header) => {
+          return (
+            <th className="text-16 first:rounded-tl last:rounded-tr [&:not(:first-child)]:text-center border-spacing-0 border-b-2 text-left lg:py-4 lg:p-0 p-4">
+              <AccountMarkdown content={`<div class="text-16 p-2">${header}</div>`} />
+            </th>
+          )
+        })}
       </tr>
     </thead>
   )
 }
 
-const TableRow = () => {
+const TableRow = ({ dataType }: { dataType: 'ground' | 'construction' | 'apartment' }) => {
+  const mainData = matchMainData[dataType] as Record<any, any>
+  const mainDataKeys = Object.keys(mainData)
   return (
     <tbody>
-      <tr>
-        <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
-          <div className="h-0 font-semibold">Byt</div>
-          <br />
-          (§ 14 zákona)
-        </td>
-        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
-          58,00
-        </td>
-        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
-          58,00
-        </td>
-      </tr>
-      <tr>
-        <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
-          <div className="h-0 font-semibold">Nebytový priestor</div>
-          <br />
-          (§ 14 zákona)
-        </td>
-        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
-          0,00
-        </td>
-        <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
-          0,00
-        </td>
-      </tr>
+      {mainDataKeys.map((k) => {
+        return (
+          <tr>
+            <td className="[&:not(:first-child)]:text-20-semibold border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 h-max lg:p-0 p-4">
+              <div className="h-0 font-semibold inline">{mainData[k].title}</div>
+              <br />
+              {mainData[k].description}
+            </td>
+            {dataType === 'ground' && (
+              <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold w-[15%] border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+                {mainData[k].area}
+              </td>
+            )}
+            <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold w-[15%] border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+              {mainData[k].base}
+            </td>
+            <td className="lg:[&:not(:first-child)]:text-20-semibold [&:not(:first-child)]:text-16-semibold w-[15%] border-r-2 [&:not(:first-child)]:text-center last:border-r-0 lg:py-4 lg:p-0 p-4">
+              {mainData[k].total}
+            </td>
+          </tr>
+        )
+      })}
     </tbody>
   )
 }
 
-const Table = () => {
+const Table = ({ dataType }: { dataType: 'ground' | 'construction' | 'apartment' }) => {
   return (
     <div className="no-scrollbar overflow-x-auto w-full">
       <table className="border-separate border-spacing-0 border-2 border-solid border-gray-200 lg:border-0 sm:w-full w-max table-auto lg:rounded-none rounded-lg last:border-b-2">
-        <TableHeaderRow />
-        <TableRow />
+        <TableHeaderRow dataType={dataType} />
+        <TableRow dataType={dataType} />
       </table>
     </div>
   )
@@ -85,6 +247,8 @@ const AccordionTableContent = ({
   secondTitle,
   size = 'sm',
   icon = false,
+  dataType,
+  data,
   shadow = false,
   className,
 }: AccordionBase) => {
@@ -93,11 +257,11 @@ const AccordionTableContent = ({
   const accordionSize = isAccordionSizeType(size) as AccordionSizeType
 
   const TableContent = () => (
-    <div className="flex flex-col w-full gap-6">
-      <Table />
+    <div className="h-full flex flex-col w-full gap-6">
+      <Table dataType={dataType} />
       <div className="flex lg:bg-gray-0 bg-gray-100 lg:p-0 p-4 rounded-lg">
         <div className="text-h4-bold grow">Celkom</div>
-        <div className="text-h4-bold">58,00 €</div>
+        <div className="text-h4-bold">{tableTotal[dataType]}</div>
       </div>
     </div>
   )
