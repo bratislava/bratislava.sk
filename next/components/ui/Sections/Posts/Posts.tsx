@@ -92,7 +92,7 @@ export const Posts = ({
   const { t } = useTranslation('common')
 
   const now = LocalDate.now()
-  const deadline = LocalDate.of(2023, Month.MARCH, 14)
+  const deadline = LocalDate.of(2024, Month.MARCH, 14)
   const isAfterDeadline = Period.between(now, deadline).isNegative()
 
   const roadClosuresAddress = 'doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
