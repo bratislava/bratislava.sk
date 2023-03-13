@@ -60,7 +60,6 @@ const MunicipalServicesSection = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [selectorValue, setSelectorValue] = useState<EnumOptionsType[]>(enumOptions.slice(0, 1))
   const selectorValuesArr: string = selectorValue[0]?.value
-  const ITEMS_PER_PAGE = 20
 
   type ServiceCardBase = {
     title: string
@@ -328,7 +327,7 @@ const MunicipalServicesSection = () => {
   )
 
   const paginationOption: PaginationOption = {
-    itemsPerPage: 20,
+    itemsPerPage: 1,
     listLength: filteredServiceCards.length,
   }
 
@@ -346,7 +345,8 @@ const MunicipalServicesSection = () => {
           {filteredServiceCards
             .filter(
               (_, i) =>
-                i + 1 <= currentPage * ITEMS_PER_PAGE && i + 1 > (currentPage - 1) * ITEMS_PER_PAGE,
+                i + 1 <= currentPage * paginationOption.itemsPerPage &&
+                i + 1 > (currentPage - 1) * paginationOption.itemsPerPage,
             )
             .map((card, i) => (
               <ServiceCard
