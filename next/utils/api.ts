@@ -83,6 +83,16 @@ export const validateKeyword = async (
   }
 }
 
+export const toXml = (eform: string, data: any) => {
+  return fetchJsonApi(`/api/eforms/${eform}/transform/xml`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data }),
+  })
+}
+
 interface Identity {
   birthNumber: string
   identityCard: string
