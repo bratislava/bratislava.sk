@@ -1,4 +1,4 @@
-import { ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import { EnumOptionsType, ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
 import { JSONSchema7Definition } from 'json-schema'
 
@@ -7,19 +7,53 @@ import {
   TransformedFormStep,
 } from '../components/forms/steps/Summary/TransformedFormData'
 
+function transformValueArray(
+  fieldFormData?: JSONSchema7Definition,
+  fieldSchema?: JSONSchema7Definition,
+) {
+  if (!fieldFormData || typeof fieldFormData === 'boolean') return undefined
+  if (fieldFormData && !Array.isArray(fieldFormData)) return fieldFormData
+  if (
+    !fieldSchema ||
+    typeof fieldSchema === 'boolean' ||
+    fieldSchema.type !== 'array' ||
+    !fieldSchema.items ||
+    typeof fieldSchema.items !== 'object' ||
+    Array.isArray(fieldSchema.items)
+  )
+    return fieldFormData
+
+  const items = fieldSchema.items.anyOf ?? fieldSchema.items.oneOf ?? fieldSchema.items.allOf
+  if (!items) return fieldFormData
+
+  return fieldFormData.map((value) => {
+    const enumOption = items.find(
+      (item: JSONSchema7Definition) => typeof item !== 'boolean' && item.const === value,
+    )
+    return enumOption && typeof enumOption !== 'boolean' && enumOption.title
+      ? enumOption.title
+      : value
+  })
+}
+
 function getFieldData(
   label: string,
   schemaPath: string,
   isError: boolean,
   fieldFormData?: JSONSchema7Definition,
+  fieldSchema?: JSONSchema7Definition,
 ): TransformedFormData {
+  const transformedFieldFormData = transformValueArray(fieldFormData, fieldSchema)
+  const value =
+    transformedFieldFormData && !Array.isArray(transformedFieldFormData)
+      ? transformedFieldFormData.toString()
+      : Array.isArray(transformedFieldFormData) && transformedFieldFormData.length > 0
+      ? transformedFieldFormData.join(', ')
+      : '-'
+
   return {
     label,
-    value:
-      (fieldFormData && !Array.isArray(fieldFormData)) ||
-      (Array.isArray(fieldFormData) && fieldFormData.length > 0)
-        ? fieldFormData.toString()
-        : '-',
+    value,
     schemaPath,
     isError,
   }
@@ -63,6 +97,7 @@ function getAllSchemaData(
         newSchemaPath,
         isError,
         childFormData,
+        value,
       )
       data.push(fieldData)
     }
