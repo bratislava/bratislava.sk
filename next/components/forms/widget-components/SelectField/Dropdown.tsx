@@ -1,10 +1,11 @@
 import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 
 import { useClickOutsideHandler } from '../../../utils/ClickOutsideHandler/useClickOutsideHandler'
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
+import { useOnClickOutside } from 'usehooks-ts'
 
 interface DropdownProps {
   enumOptions: EnumOptionsType[]
@@ -43,7 +44,8 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     onClickOutside,
   } = props
 
-  const { clickOutsideRef } = useClickOutsideHandler(() => {
+  const clickOutsideRef = useRef<HTMLDivElement>(null)
+  useOnClickOutside(clickOutsideRef, () => {
     if (onClickOutside) onClickOutside()
   })
 

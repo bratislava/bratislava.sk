@@ -35,8 +35,8 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
 
   const { t } = useTranslation('forms')
   const multipleOptionsTagText = value
-    ? `${value.length} ${t(value.length < 5 ? 'options1' : 'options2').toLowerCase()}`
-    : t('options1')
+    ? `${value.length} ${t(value.length < 5 ? 'options_few' : 'options_many').toLowerCase()}`
+    : t('options_zero')
   // HELPER FUNCTIONS
   const getInputSize = () => {
     return !value || value.length === 0
