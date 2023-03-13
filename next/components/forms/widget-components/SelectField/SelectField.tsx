@@ -79,7 +79,8 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     {
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
         !disabled,
-      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
+      'border-negative-700 hover:border-negative-700 focus:border-negative-700':
+        errorMessage?.length > 0 && !disabled,
       'border-form-input-disabled opacity-50': disabled,
     },
   )

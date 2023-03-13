@@ -8,7 +8,7 @@ type CloseIconProps = {
   onClick: MouseEventHandler<SVGSVGElement> | undefined
 }
 
-const CloseIcon = ({ className, solid = false,onClick, type = 'error' }: CloseIconProps) => {
+const CloseIcon = ({ className, solid = false, onClick, type = 'error' }: CloseIconProps) => {
   const closeIconStyle = cx('fill-current cursor-pointer', className, {
     'text-white': solid,
     'text-negative-700': type === 'error' && !solid,
@@ -20,14 +20,14 @@ const CloseIcon = ({ className, solid = false,onClick, type = 'error' }: CloseIc
   return (
     <svg
       onClick={onClick}
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={closeIconStyle}
     >
-      <path d="M14 1.41502L12.585 2.09808e-05L7 5.58502L1.415 2.09808e-05L0 1.41502L5.585 7.00002L0 12.585L1.415 14L7 8.41502L12.585 14L14 12.585L8.415 7.00002L14 1.41502Z" />
+      <path d="M20.84 4.22L19.78 3.16L12 10.94L4.22 3.16L3.16 4.22L10.94 12L3.16 19.78L4.22 20.84L12 13.06L19.78 20.84L20.84 19.78L13.06 12L20.84 4.22Z" />
     </svg>
   )
 }
