@@ -7,33 +7,36 @@ import {
   TransformedFormStep,
 } from '../components/forms/steps/Summary/TransformedFormData'
 
+function findTitle(value: JSONSchema7Definition, items: JSONSchema7Definition[]) {
+  if (typeof items === 'boolean') return value
+  const enumOption = items.find(
+    (item: JSONSchema7Definition) => typeof item !== 'boolean' && item.const === value,
+  )
+  return enumOption && typeof enumOption !== 'boolean' && enumOption.title
+    ? enumOption.title
+    : value
+}
+
 function transformValueArray(
   fieldFormData?: JSONSchema7Definition,
   fieldSchema?: JSONSchema7Definition,
 ) {
   if (!fieldFormData || typeof fieldFormData === 'boolean') return
-  if (!Array.isArray(fieldFormData)) return fieldFormData
-  if (
-    !fieldSchema ||
-    typeof fieldSchema === 'boolean' ||
-    fieldSchema.type !== 'array' ||
-    !fieldSchema.items ||
-    typeof fieldSchema.items !== 'object' ||
-    Array.isArray(fieldSchema.items)
-  )
-    return fieldFormData
+  if (!fieldSchema || typeof fieldSchema === 'boolean') return fieldFormData
 
-  const items = fieldSchema.items.anyOf ?? fieldSchema.items.oneOf ?? fieldSchema.items.allOf
+  const items =
+    fieldSchema.type === 'array' &&
+    fieldSchema.items &&
+    typeof fieldSchema.items === 'object' &&
+    !Array.isArray(fieldSchema.items)
+      ? fieldSchema.items.anyOf ?? fieldSchema.items.oneOf ?? fieldSchema.items.allOf
+      : fieldSchema.oneOf
+
   if (!items || typeof items === 'boolean' || !Array.isArray(items)) return fieldFormData
 
-  return fieldFormData.map((value) => {
-    const enumOption = items.find(
-      (item: JSONSchema7Definition) => typeof item !== 'boolean' && item.const === value,
-    )
-    return enumOption && typeof enumOption !== 'boolean' && enumOption.title
-      ? enumOption.title
-      : value
-  })
+  return Array.isArray(fieldFormData)
+    ? fieldFormData.map((value) => findTitle(value, items))
+    : findTitle(fieldFormData, items)
 }
 
 function getFieldData(
