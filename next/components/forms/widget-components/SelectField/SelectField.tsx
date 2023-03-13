@@ -1,6 +1,5 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
-import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import React, {
   ForwardedRef,
@@ -18,11 +17,17 @@ import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 
+export interface SelectOptions {
+  const: string | number
+  title?: string
+  description?: string
+}
+
 interface SelectFieldProps {
   label: string
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
-  value?: EnumOptionsType[]
-  enumOptions?: EnumOptionsType[]
+  value?: SelectOptions[]
+  enumOptions?: SelectOptions[]
   tooltip?: string
   dropdownDivider?: boolean
   selectAllOption?: boolean
@@ -33,7 +38,7 @@ interface SelectFieldProps {
   explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   className?: string
-  onChange: (values: EnumOptionsType[]) => void
+  onChange: (values: SelectOptions[]) => void
 }
 
 const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps> = (
@@ -65,6 +70,9 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const [filter, setFilter] = useState<string>('')
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
 
+  console.log('\nENUM OPTIONS', enumOptions)
+  console.log('VALUE:', value)
+
   // STYLES
   const selectClassName = cx(
     'border-form-input-default flex flex-row bg-white rounded-lg border-2 items-center',
@@ -82,7 +90,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     }
   }, [isDropdownOpened])
 
-  const handleOnChangeSelect = (selectedOptions: EnumOptionsType[], close?: boolean) => {
+  const handleOnChangeSelect = (selectedOptions: SelectOptions[], close?: boolean) => {
     if (!onChange) return
     onChange(selectedOptions)
     if (type === 'multiple' || !close) {
@@ -97,27 +105,27 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue, close)
   }
 
-  const handleOnChooseOne = (option: EnumOptionsType, close?: boolean) => {
+  const handleOnChooseOne = (option: SelectOptions, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([option], close)
     setFilter('')
   }
 
-  const handleOnUnChooseOne = (option: EnumOptionsType, close?: boolean) => {
+  const handleOnUnChooseOne = (option: SelectOptions, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([], close)
   }
 
-  const handleOnChooseMulti = (option: EnumOptionsType) => {
+  const handleOnChooseMulti = (option: SelectOptions) => {
     const newValue = value ? [...value] : []
     newValue.push(option)
     handleOnChangeSelect(newValue)
   }
 
-  const handleOnUnChooseMulti = (option: EnumOptionsType) => {
+  const handleOnUnChooseMulti = (option: SelectOptions) => {
     const newValue = value
       ? [...value].filter((valueOption) => {
-          return valueOption.value !== option.value || valueOption.label !== option.label
+          return valueOption.const !== option.const
         })
       : []
     handleOnChangeSelect(newValue)
@@ -154,20 +162,20 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   // HELPER FUNCTIONS
-  const getDropdownValues = (): EnumOptionsType[] => {
+  const getDropdownValues = (): SelectOptions[] => {
     return value ? (type !== 'multiple' && value && value.length > 0 ? [value[0]] : value) : []
   }
 
-  const getFilteredOptions = (): EnumOptionsType[] => {
+  const getFilteredOptions = (): SelectOptions[] => {
     return enumOptions
-      ? enumOptions.filter((option: EnumOptionsType) =>
-          String(option.value).toLowerCase().includes(filter.toLowerCase()),
+      ? enumOptions.filter((option: SelectOptions) =>
+          String(option.title).toLowerCase().includes(filter.toLowerCase()),
         )
       : []
   }
 
   const isRowBold = enumOptions?.some(
-    (option: EnumOptionsType) => option.label !== '' && option.label !== String(option.value),
+    (option: SelectOptions) => option.description && option.description !== '',
   )
 
   // RENDER

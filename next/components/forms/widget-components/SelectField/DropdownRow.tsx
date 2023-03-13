@@ -1,22 +1,22 @@
 import ChevronRightIcon from '@assets/images/forms/chevron-right.svg'
 import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
-import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import React from 'react'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
+import { SelectOptions } from './SelectField'
 
 interface DropdownRowProps {
-  option: EnumOptionsType
+  option: SelectOptions
   isBold?: boolean
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
-  onChooseOne: (option: EnumOptionsType, close?: boolean) => void
-  onUnChooseOne: (option: EnumOptionsType, close?: boolean) => void
-  onChooseMulti: (option: EnumOptionsType) => void
-  onUnChooseMulti: (option: EnumOptionsType) => void
+  onChooseOne: (option: SelectOptions, close?: boolean) => void
+  onUnChooseOne: (option: SelectOptions, close?: boolean) => void
+  onChooseMulti: (option: SelectOptions) => void
+  onUnChooseMulti: (option: SelectOptions) => void
 }
 
 const DropdownRow = ({
@@ -70,15 +70,13 @@ const DropdownRow = ({
     <div className={rowClassName} onClick={handleOnClick}>
       <div className="dropdown flex h-full flex-col justify-center">
         <div className="dropdown flex flex-row justify-center">
-          <p className={optionClassName}>{option.value}</p>
+          <p className={optionClassName}>{option.title}</p>
           <div className="dropdown relative flex flex-col justify-center">
             {getRowIcon()}
             <div className="dropdown absolute inset-0 z-10" />
           </div>
         </div>
-        {option.label !== String(option.value) && (
-          <p className="dropdown text-p3">{option.label}</p>
-        )}
+        {option.description && <p className="dropdown text-p3">{option.description}</p>}
       </div>
       {divider && <div className="dropdown border-form-input-default border-b-2" />}
     </div>

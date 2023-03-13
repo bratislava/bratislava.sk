@@ -3,9 +3,10 @@ import { useTranslation } from 'next-i18next'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../../simple-components/Tag'
+import { SelectOptions } from './SelectField'
 
 interface SelectFieldBoxProps {
-  value?: EnumOptionsType[]
+  value?: SelectOptions[]
   multiple?: boolean
   placeholder?: string
   filter: string
@@ -73,7 +74,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
             (multiple ? value : value.slice(0, 1)).map((option, key) => (
               <Tag
                 key={key}
-                text={option.value}
+                text={option.title ?? option.const}
                 size="small"
                 onRemove={() => onRemove(key)}
                 removable

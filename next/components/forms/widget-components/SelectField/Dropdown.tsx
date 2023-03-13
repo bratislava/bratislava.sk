@@ -1,4 +1,3 @@
-import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import { FC, useRef } from 'react'
 
@@ -6,20 +5,21 @@ import { useClickOutsideHandler } from '../../../utils/ClickOutsideHandler/useCl
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
 import { useOnClickOutside } from 'usehooks-ts'
+import { SelectOptions } from './SelectField'
 
 interface DropdownProps {
-  enumOptions: EnumOptionsType[]
-  value: EnumOptionsType[]
+  enumOptions: SelectOptions[]
+  value: SelectOptions[]
   selectAllOption?: boolean
   absolute?: boolean
   isRowBold?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
   className?: string
-  onChooseOne?: (option: EnumOptionsType, close?: boolean) => void
-  onUnChooseOne?: (option: EnumOptionsType, close?: boolean) => void
-  onChooseMulti?: (option: EnumOptionsType) => void
-  onUnChooseMulti?: (option: EnumOptionsType) => void
+  onChooseOne?: (option: SelectOptions, close?: boolean) => void
+  onUnChooseOne?: (option: SelectOptions, close?: boolean) => void
+  onChooseMulti?: (option: SelectOptions) => void
+  onUnChooseMulti?: (option: SelectOptions) => void
   onSelectAll?: () => void
   onDeselectAll?: () => void
   onClickOutside?: () => void
@@ -59,13 +59,13 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   )
 
   // HELP FUNCTIONS
-  const isSelected = (option: EnumOptionsType): boolean => {
-    return value?.some((valueOption: EnumOptionsType) => {
-      return valueOption.value === option.value && valueOption.label === option.label
+  const isSelected = (option: SelectOptions): boolean => {
+    return value?.some((valueOption: SelectOptions) => {
+      return valueOption.const === option.const
     })
   }
 
-  const isEverythingSelected = enumOptions.some((option: EnumOptionsType) => !isSelected(option))
+  const isEverythingSelected = enumOptions.some((option: SelectOptions) => !isSelected(option))
 
   // EVENT HANDLERS
   const handleOnSelectAllRowClick = (isSelectingAll: boolean) => {
@@ -95,14 +95,14 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
             selected={isSelected(option)}
             type={type}
             isBold={isRowBold}
-            onChooseOne={(opt: EnumOptionsType, close?: boolean) =>
+            onChooseOne={(opt: SelectOptions, close?: boolean) =>
               onChooseOne ? onChooseOne(opt, close) : null
             }
-            onUnChooseOne={(opt: EnumOptionsType, close?: boolean) =>
+            onUnChooseOne={(opt: SelectOptions, close?: boolean) =>
               onUnChooseOne ? onUnChooseOne(opt, close) : null
             }
-            onChooseMulti={(opt: EnumOptionsType) => (onChooseMulti ? onChooseMulti(opt) : null)}
-            onUnChooseMulti={(opt: EnumOptionsType) =>
+            onChooseMulti={(opt: SelectOptions) => (onChooseMulti ? onChooseMulti(opt) : null)}
+            onUnChooseMulti={(opt: SelectOptions) =>
               onUnChooseMulti ? onUnChooseMulti(opt) : null
             }
           />
