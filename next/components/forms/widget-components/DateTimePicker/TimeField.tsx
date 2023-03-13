@@ -75,7 +75,7 @@ const TimeField = ({
     'sm:text-16 w-full max-w-xs flex rounded-lg bg-white border-2 px-3 sm:px-4 py-1.5 sm:py-2.5 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
     {
       'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
-      'border-error focus:border-error focus-visible:outline-none hover:border-error':
+      'border-negative-700 focus:border-negative-700 focus-visible:outline-none hover:border-negative-700':
         errorMessage?.length > 0,
       'pointer-events-none border-gray-300 bg-gray-100 text-gray-500': disabled,
       'border-gray-700': isOpen && !disabled && !(errorMessage?.length > 0),

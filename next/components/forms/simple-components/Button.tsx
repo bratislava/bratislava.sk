@@ -80,7 +80,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       'inline-flex items-center',
       rest.href
         ? 'underline underline-offset-4 focus-visible:outline-none'
-        : 'h-fit space-x-2 text-white justify-center text-center align-middle focus:outline-none rounded-lg',
+        : 'h-fit space-x-2 justify-center text-center align-middle focus:outline-none rounded-lg',
       className,
       {
         'w-full': fullWidth,
@@ -209,6 +209,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
         'hover:text-category-600': variant === 'link-category' && !disabled,
         'hover:text-gray-600': variant === 'link-black' && !disabled,
+
+        // text color
+        'text-white': variant === 'negative' || variant === 'black' || variant === 'category',
 
         // disabled
         'opacity-50': disabled,
