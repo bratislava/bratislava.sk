@@ -310,7 +310,7 @@
     "banner_button_text": "Napísať správu"
   },
   "menu_contacts_link": "Kontakty",
-  "menu_account_link": "Mestské konto",
+  "menu_account_link": "Bratislavské konto",
   "menu_profile_link": "Môj profil",
   "menu_help_link": "Pomoc",
   "menu_logout_link": "Odhlásiť sa",
@@ -355,6 +355,7 @@
     "street": "Ulica a číslo",
     "city": "Mesto",
     "postal_code": "PSČ",
+    "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
     "success_alert": "Zmeny boli uložené",
     "error_alert": "Zmeny sa nepodarilo uložiť",
     "modal_title": "Zmeniť e-mail",
@@ -426,6 +427,10 @@
       "content": "<span className='text-p2'>Ďakujeme za zaplatenie dane z nehnuteľností.<br />Ohodnoťte službu a pomôžte mestu Bratislava zlepšovať sa.</span>",
       "button_to_formular_text": "Vyplniť dotazník",
       "button_to_profil_text": "Pokračovať do konta"
+    },
+    "form_submit": {
+      "title": "Ďakujeme za odoslanie žiadosti",
+      "content": "<span className='text-p2'>Žiadosť musíme najprv spracovať a skontrolovať správnosť všetkých údajov.<br />Ak by nám od Vás chýbali nejaké informácie budeme Vás kontaktovať emailom.</span>"
     }
   },
   "bank_info": {
@@ -435,5 +440,10 @@
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
   },
   "tax_payable_within": "Daň je splatná v termíne do 15 dní",
-  "validity_decision": "odo dňa právoplatnosti rozhodnutia."
+  "validity_decision": "odo dňa právoplatnosti rozhodnutia.",
+  "account_activator": {
+    "title": "Platili ste už daň z nehnuteľností digitálne?",
+    "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
+    "button_text": "Aktivovať konto"
+  }
 }

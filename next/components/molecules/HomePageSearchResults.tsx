@@ -25,21 +25,20 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           passHref
+          className="hover:bg-main-100 px-4 py-2"
         >
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="hover:bg-main-100 px-4 py-2">
-            <div className="flex justify-between items-center">
-              <div>{title}</div>
-              <ChevronRightRounded className="scale-[0.9] ml-4 shrink-0" />
-            </div>
-          </a>
+          <div className="flex justify-between items-center">
+            <div>{title}</div>
+            <ChevronRightRounded className="scale-[0.9] ml-4 shrink-0" />
+          </div>
         </Link>
       ))}
-      <Link href={`${t('searchLink')}?keyword=${searchValue}`} passHref>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a className="focus:bg-main-100 hover:bg-main-100 font-semibold px-4 py-2">
-          {t('allResults')}
-        </a>
+      <Link
+        href={`${t('searchLink')}?keyword=${searchValue}`}
+        passHref
+        className="focus:bg-main-100 hover:bg-main-100 font-semibold px-4 py-2"
+      >
+        {t('allResults')}
       </Link>
     </div>
   ) : (

@@ -1,6 +1,6 @@
 import { Card } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
-import Image, { StaticImageData } from 'next/image'
+import Image, { StaticImageData } from "next/legacy/image";
 import NextLink from 'next/link'
 
 import image1 from '../../assets/images/blog-image.png'
@@ -22,7 +22,7 @@ export const BlogCard = ({
   content = 'Verejný priestor na Kazanskej ulici vo Vrakuni sa dočká obnovy',
   href = '/',
 }: BlogCardProps) => (
-  <NextLink href={href} passHref>
+  <NextLink href={href} passHref legacyBehavior>
     <div
       className={cx(
         className,
