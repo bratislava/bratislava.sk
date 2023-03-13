@@ -74,7 +74,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
             (multiple ? value : value.slice(0, 1)).map((option, key) => (
               <Tag
                 key={key}
-                text={option.title ?? option.const}
+                text={option.title ?? String(option.const)}
                 size="small"
                 onRemove={() => onRemove(key)}
                 removable
