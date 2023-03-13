@@ -64,7 +64,8 @@ const SearchField = ({
       'hover:border-gray-400': !disabled,
 
       // error
-      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
+      'border-negative-700 hover:border-negative-700 focus:border-negative-700':
+        errorMessage?.length > 0 && !disabled,
 
       // disabled
       'border-gray-300 bg-gray-100': disabled,
