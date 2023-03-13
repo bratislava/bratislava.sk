@@ -6,17 +6,26 @@ type SuccessIconProps = {
 const SuccessIcon = ({ solid = false, className }: SuccessIconProps) => {
   return (
     <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path
-        d="M10 0C4.475 0 0 4.475 0 10C0 15.52 4.475 20 10 20C15.52 20 20 15.52 20 10C20 4.475 15.52 0 10 0ZM8 15L3 10L4.415 8.585L8 12.17L15.585 4.585L17 6L8 15Z"
-        fill={solid ? 'white' : '#01843D'}
-      />
+      <g clipPath="url(#clip0_10_244)">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M0.869995 12C0.869995 18.14 5.86 23.13 12 23.13C18.14 23.13 23.13 18.14 23.13 12C23.13 5.86 18.14 0.869995 12 0.869995C5.86 0.869995 0.869995 5.86 0.869995 12ZM2.37 12C2.37 6.69 6.69 2.37 12 2.38V2.37C17.31 2.37 21.63 6.69 21.63 12C21.63 17.31 17.31 21.63 12 21.63C6.69 21.63 2.37 17.31 2.37 12ZM7.12 12.05L10.87 15.84L17.36 9.31L16.29 8.25L10.87 13.71L8.18999 10.99L7.12 12.05Z"
+          fill={solid ? 'white' : 'rgb(var(--color-success-700))'}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_10_244">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   )
 }
