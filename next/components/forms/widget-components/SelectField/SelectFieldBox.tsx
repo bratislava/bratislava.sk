@@ -3,10 +3,10 @@ import { useTranslation } from 'next-i18next'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../../simple-components/Tag'
-import { SelectOptions } from './SelectField'
+import { SelectOption } from './SelectField'
 
 interface SelectFieldBoxProps {
-  value?: SelectOptions[]
+  value?: SelectOption[]
   multiple?: boolean
   placeholder?: string
   filter: string

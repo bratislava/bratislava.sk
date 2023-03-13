@@ -17,7 +17,7 @@ import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 
-export interface SelectOptions {
+export interface SelectOption {
   const: string | number
   title?: string
   description?: string
@@ -26,8 +26,8 @@ export interface SelectOptions {
 interface SelectFieldProps {
   label: string
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
-  value?: SelectOptions[]
-  enumOptions?: SelectOptions[]
+  value?: SelectOption[]
+  enumOptions?: SelectOption[]
   tooltip?: string
   dropdownDivider?: boolean
   selectAllOption?: boolean
@@ -38,7 +38,7 @@ interface SelectFieldProps {
   explicitOptional?: ExplicitOptionalType
   disabled?: boolean
   className?: string
-  onChange: (values: SelectOptions[]) => void
+  onChange: (values: SelectOption[]) => void
 }
 
 const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps> = (
@@ -90,7 +90,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     }
   }, [isDropdownOpened])
 
-  const handleOnChangeSelect = (selectedOptions: SelectOptions[], close?: boolean) => {
+  const handleOnChangeSelect = (selectedOptions: SelectOption[], close?: boolean) => {
     if (!onChange) return
     onChange(selectedOptions)
     if (type === 'multiple' || !close) {
@@ -105,24 +105,24 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
     handleOnChangeSelect(newValue, close)
   }
 
-  const handleOnChooseOne = (option: SelectOptions, close?: boolean) => {
+  const handleOnChooseOne = (option: SelectOption, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([option], close)
     setFilter('')
   }
 
-  const handleOnUnChooseOne = (option: SelectOptions, close?: boolean) => {
+  const handleOnUnChooseOne = (option: SelectOption, close?: boolean) => {
     if (close) setIsDropdownOpened(false)
     handleOnChangeSelect([], close)
   }
 
-  const handleOnChooseMulti = (option: SelectOptions) => {
+  const handleOnChooseMulti = (option: SelectOption) => {
     const newValue = value ? [...value] : []
     newValue.push(option)
     handleOnChangeSelect(newValue)
   }
 
-  const handleOnUnChooseMulti = (option: SelectOptions) => {
+  const handleOnUnChooseMulti = (option: SelectOption) => {
     const newValue = value
       ? [...value].filter((valueOption) => {
           return valueOption.const !== option.const
@@ -162,20 +162,20 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   }
 
   // HELPER FUNCTIONS
-  const getDropdownValues = (): SelectOptions[] => {
+  const getDropdownValues = (): SelectOption[] => {
     return value ? (type !== 'multiple' && value && value.length > 0 ? [value[0]] : value) : []
   }
 
-  const getFilteredOptions = (): SelectOptions[] => {
+  const getFilteredOptions = (): SelectOption[] => {
     return enumOptions
-      ? enumOptions.filter((option: SelectOptions) =>
+      ? enumOptions.filter((option: SelectOption) =>
           String(option.title).toLowerCase().includes(filter.toLowerCase()),
         )
       : []
   }
 
   const isRowBold = enumOptions?.some(
-    (option: SelectOptions) => option.description && option.description !== '',
+    (option: SelectOption) => option.description && option.description !== '',
   )
 
   // RENDER

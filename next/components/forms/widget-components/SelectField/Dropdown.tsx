@@ -5,21 +5,21 @@ import { useClickOutsideHandler } from '../../../utils/ClickOutsideHandler/useCl
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
 import { useOnClickOutside } from 'usehooks-ts'
-import { SelectOptions } from './SelectField'
+import { SelectOption } from './SelectField'
 
 interface DropdownProps {
-  enumOptions: SelectOptions[]
-  value: SelectOptions[]
+  enumOptions: SelectOption[]
+  value: SelectOption[]
   selectAllOption?: boolean
   absolute?: boolean
   isRowBold?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
   className?: string
-  onChooseOne?: (option: SelectOptions, close?: boolean) => void
-  onUnChooseOne?: (option: SelectOptions, close?: boolean) => void
-  onChooseMulti?: (option: SelectOptions) => void
-  onUnChooseMulti?: (option: SelectOptions) => void
+  onChooseOne?: (option: SelectOption, close?: boolean) => void
+  onUnChooseOne?: (option: SelectOption, close?: boolean) => void
+  onChooseMulti?: (option: SelectOption) => void
+  onUnChooseMulti?: (option: SelectOption) => void
   onSelectAll?: () => void
   onDeselectAll?: () => void
   onClickOutside?: () => void
@@ -59,13 +59,13 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   )
 
   // HELP FUNCTIONS
-  const isSelected = (option: SelectOptions): boolean => {
-    return value?.some((valueOption: SelectOptions) => {
+  const isSelected = (option: SelectOption): boolean => {
+    return value?.some((valueOption: SelectOption) => {
       return valueOption.const === option.const
     })
   }
 
-  const isEverythingSelected = enumOptions.some((option: SelectOptions) => !isSelected(option))
+  const isEverythingSelected = enumOptions.some((option: SelectOption) => !isSelected(option))
 
   // EVENT HANDLERS
   const handleOnSelectAllRowClick = (isSelectingAll: boolean) => {
@@ -95,16 +95,14 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
             selected={isSelected(option)}
             type={type}
             isBold={isRowBold}
-            onChooseOne={(opt: SelectOptions, close?: boolean) =>
+            onChooseOne={(opt: SelectOption, close?: boolean) =>
               onChooseOne ? onChooseOne(opt, close) : null
             }
-            onUnChooseOne={(opt: SelectOptions, close?: boolean) =>
+            onUnChooseOne={(opt: SelectOption, close?: boolean) =>
               onUnChooseOne ? onUnChooseOne(opt, close) : null
             }
-            onChooseMulti={(opt: SelectOptions) => (onChooseMulti ? onChooseMulti(opt) : null)}
-            onUnChooseMulti={(opt: SelectOptions) =>
-              onUnChooseMulti ? onUnChooseMulti(opt) : null
-            }
+            onChooseMulti={(opt: SelectOption) => (onChooseMulti ? onChooseMulti(opt) : null)}
+            onUnChooseMulti={(opt: SelectOption) => (onUnChooseMulti ? onUnChooseMulti(opt) : null)}
           />
         ))}
       </div>

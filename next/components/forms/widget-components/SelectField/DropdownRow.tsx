@@ -5,18 +5,18 @@ import React from 'react'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
-import { SelectOptions } from './SelectField'
+import { SelectOption } from './SelectField'
 
 interface DropdownRowProps {
-  option: SelectOptions
+  option: SelectOption
   isBold?: boolean
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
-  onChooseOne: (option: SelectOptions, close?: boolean) => void
-  onUnChooseOne: (option: SelectOptions, close?: boolean) => void
-  onChooseMulti: (option: SelectOptions) => void
-  onUnChooseMulti: (option: SelectOptions) => void
+  onChooseOne: (option: SelectOption, close?: boolean) => void
+  onUnChooseOne: (option: SelectOption, close?: boolean) => void
+  onChooseMulti: (option: SelectOption) => void
+  onUnChooseMulti: (option: SelectOption) => void
 }
 
 const DropdownRow = ({

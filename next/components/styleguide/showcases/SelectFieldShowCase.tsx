@@ -1,14 +1,14 @@
 import { EnumOptionsType } from '@rjsf/utils'
 import React, { useState } from 'react'
 
-import SelectField, { SelectOptions } from '../../forms/widget-components/SelectField/SelectField'
+import SelectField, { SelectOption } from '../../forms/widget-components/SelectField/SelectField'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
 interface SelectFieldShowCaseProps {}
 
 const SelectFieldShowCase = () => {
-  const enumOptions: SelectOptions[] = [
+  const enumOptions: SelectOption[] = [
     { const: '_example', title: 'example', description: 'skola' },
     { const: 'stu_fei', title: 'STU FEI', description: 'feika' },
     { const: 'stu_fiit', title: 'STU FIIT', description: 'fiitka' },
@@ -17,12 +17,12 @@ const SelectFieldShowCase = () => {
     { const: 'uniza_feit', title: 'UNIZA FEIT', description: 'UNIZA FEIT' },
   ]
 
-  const [selectValueFirst, setSelectValueFirst] = useState<SelectOptions[]>(enumOptions.slice(0, 1))
-  const [selectValueSecond, setSelectValueSecond] = useState<SelectOptions[]>([])
-  const [selectValueThird, setSelectValueThird] = useState<SelectOptions[]>(enumOptions.slice(0, 3))
-  const [selectValue4, setSelectValue4] = useState<SelectOptions[]>([])
-  const [selectValue5, setSelectValue5] = useState<SelectOptions[]>(enumOptions.slice(2, 3))
-  const [selectValue6, setSelectValue6] = useState<SelectOptions[]>([])
+  const [selectValueFirst, setSelectValueFirst] = useState<SelectOption[]>(enumOptions.slice(0, 1))
+  const [selectValueSecond, setSelectValueSecond] = useState<SelectOption[]>([])
+  const [selectValueThird, setSelectValueThird] = useState<SelectOption[]>(enumOptions.slice(0, 3))
+  const [selectValue4, setSelectValue4] = useState<SelectOption[]>([])
+  const [selectValue5, setSelectValue5] = useState<SelectOption[]>(enumOptions.slice(2, 3))
+  const [selectValue6, setSelectValue6] = useState<SelectOption[]>([])
 
   return (
     <Wrapper direction="column" title="SelectField">
