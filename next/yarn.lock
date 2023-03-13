@@ -9774,6 +9774,13 @@ eslint-plugin-array-func@3.1.8:
   resolved "https://registry.yarnpkg.com/eslint-plugin-array-func/-/eslint-plugin-array-func-3.1.8.tgz#9dd635627f604e1ed6faf0c5525a8f84d48ed599"
   integrity sha512-BjnbJvw+knaHgVddIL3q5xYcoqAZoK8wOdT7QF+mkvSAjXdZCdhL0z71Y7oRtgXA8BpN9QLJ2uHgD3I6ymlbOw==
 
+eslint-plugin-const-case@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-const-case/-/eslint-plugin-const-case-1.2.2.tgz#bbd3717fa8e82c0d1083fa5f9b9483814be9925a"
+  integrity sha512-ON8VLOfGqXRW9Zck+lhgT5k6+jAW+lH7RRjH0YvA42trYhSq6Ayq8m3frqCJhlArDwfPKnjHVVyZhQurTDL3OQ==
+  dependencies:
+    requireindex "1.2.0"
+
 eslint-plugin-eslint-comments@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-comments/-/eslint-plugin-eslint-comments-3.2.0.tgz#9e1cd7b4413526abb313933071d7aba05ca12ffa"
@@ -9946,6 +9953,15 @@ eslint-plugin-optimize-regex@1.2.1:
   dependencies:
     regexp-tree "^0.1.21"
 
+eslint-plugin-pii@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-pii/-/eslint-plugin-pii-1.0.2.tgz#bffc4717ecd73fd74ed6b9bbce083df9059dbb4a"
+  integrity sha512-UKOpjAxd2aGDfykeICHi6yceZOQD4KXTX25A/PLq1HCgkFRudRTvGkRzuDYZoI6oLj8TjHsEiHnDxkoapFKX4Q==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    ignore "^5.1.8"
+    requireindex "~1.1.0"
+
 eslint-plugin-promise@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-6.0.0.tgz#017652c07c9816413a41e11c30adc42c3d55ff18"
@@ -10045,6 +10061,13 @@ eslint-plugin-unicorn@43.0.2:
     safe-regex "^2.1.1"
     semver "^7.3.7"
     strip-indent "^3.0.0"
+
+eslint-plugin-xss@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-xss/-/eslint-plugin-xss-0.1.12.tgz#738e2acb70c4e63883fac98306bb3b202906ff3f"
+  integrity sha512-L5oYaD//ZE7fKNtWUfVgYTRW19jrZlvaHe2swyFLxXQ5pwVQLivi5m92rtXd/ww8yqg4Drasqyi0hlBmhf9YQg==
+  dependencies:
+    requireindex "~1.1.0"
 
 eslint-scope@5.1.1, eslint-scope@^5.1.1:
   version "5.1.1"
@@ -11875,7 +11898,7 @@ ignore@^4.0.3:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-ignore@^5.0.5, ignore@^5.2.0:
+ignore@^5.0.5, ignore@^5.1.8, ignore@^5.2.0:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
@@ -17239,7 +17262,7 @@ require-main-filename@^2.0.0:
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
 
-requireindex@^1.2.0, requireindex@~1.2.0:
+requireindex@1.2.0, requireindex@^1.2.0, requireindex@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
   integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
