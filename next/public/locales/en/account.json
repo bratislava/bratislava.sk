@@ -5,6 +5,7 @@
   "email_placeholder": "E-mail",
   "email_required": "E-mail is required",
   "email_format": "E-mail is not valid",
+  "postal_code_format": "Postal code must contain exactly 5 numbers",
   "given_name_label": "Name",
   "given_name_placeholder": "Name",
   "given_name_required": "Name is required",
@@ -23,6 +24,7 @@
   "password_required": "Password is required",
   "password_format": "Password must contain at least 8 characters, lowercase and uppercase character, number and special character.",
   "password_confirmation_required": "Password does not match",
+  "phone_number_format": "Invalid format - please enter a valid phone number in format +421XXXXXX...",
   "login_submit": "Login",
   "login_description": "Do you have an account?",
   "login_link": "Login",
@@ -351,6 +353,7 @@
     "street": "Street and number",
     "city": "City",
     "postal_code": "Postal code",
+    "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
     "success_alert": "Changes have been saved",
     "error_alert": "Changes could not be saved",
     "modal_title": "Change e-mail",
@@ -422,6 +425,10 @@
       "content": "<span className='text-p2'>Ďakujeme za zaplatenie dane z nehnuteľností.<br />Ohodnoťte službu a pomôžte mestu Bratislava zlepšovať sa.</span>",
       "button_to_formular_text": "Vyplniť dotazník",
       "button_to_profil_text": "Pokračovať do konta"
+    },
+    "form_submit": {
+      "title": "Ďakujeme za odoslanie žiadosti",
+      "content": "<span className='text-p2'>Žiadosť musíme najprv spracovať a skontrolovať správnosť všetkých údajov.<br />Ak by nám od Vás chýbali nejaké informácie budeme Vás kontaktovať emailom.</span>"
     }
   },
   "bank_info": {
@@ -429,5 +436,10 @@
     "slovak_sporitelna_iban": "SK75 0900 0000 0053 5353 5353",
     "csob": "ČSOB, a.s.",
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
+  },
+  "account_activator": {
+    "title": "Platili ste už daň z nehnuteľností digitálne?",
+    "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
+    "button_text": "Aktivovať konto"
   }
 }

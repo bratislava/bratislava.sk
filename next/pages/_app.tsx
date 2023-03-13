@@ -4,23 +4,30 @@ import './index.css'
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { AccountProvider } from '@utils/useAccount'
 import { isProductionDeployment } from '@utils/utils'
-import { appWithTranslation } from 'next-i18next'
-import { NextAdapter } from 'next-query-params'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
+import { appWithTranslation } from 'next-i18next'
+import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 import { useIsClient } from 'usehooks-ts'
 
 import ContentImage from '../components/atoms/ContentImage'
 import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
+import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
 
 // error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
 // https://github.com/microsoft/BotFramework-WebChat/issues/4607
 const DynamicChat = dynamic(() => import('../components/molecules/chat'), {
   ssr: false,
+})
+
+const inter = Inter({
+  variable: '--inter-font',
+  subsets: ['latin', 'latin-ext'],
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -55,10 +62,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           Link: ({ href, className, children, locale, target, rel }) => {
             if (href === undefined || href === null) return null
             return (
-              <Link href={href} locale={locale}>
-                <a target={target} rel={rel} href={href} className={className}>
-                  {children}
-                </a>
+              <Link href={href} locale={locale} target={target} rel={rel} className={className}>
+                {children}
               </Link>
             )
           },
@@ -72,15 +77,19 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           ),
         }}
       >
-        <QueryParamProvider adapter={NextAdapter}>
-          <SSRProvider>
-            <AccountProvider>
-              <Component {...pageProps} />
+        <BAQueryClientProvider>
+          <QueryParamProvider adapter={NextAdapter}>
+            <SSRProvider>
+              <AccountProvider>
+                <div className={`${inter.variable} font-sans`}>
+                  <Component {...pageProps} />
 
-              {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
-            </AccountProvider>
-          </SSRProvider>
-        </QueryParamProvider>{' '}
+                  {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
+                </div>
+              </AccountProvider>
+            </SSRProvider>
+          </QueryParamProvider>
+        </BAQueryClientProvider>
       </UIContextProvider>
     </>
   )

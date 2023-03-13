@@ -1,8 +1,13 @@
-import React from 'react'
+import cx from 'classnames'
 
-export const AccountContainer = ({ children }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className="md:py-8 md:px-10 mx-auto w-full max-w-[696px]">
-    <div className="md:rounded-lg bg-white py-6 px-4 md:shadow md:px-12 md:py-10">{children}</div>
+export const AccountContainer = ({ children, className }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cx(
+      'mx-auto w-full max-w-[696px] md:rounded-lg bg-gray-0 py-6 px-4 md:shadow md:px-12 md:py-8',
+      className,
+    )}
+  >
+    {children}
   </div>
 )
 

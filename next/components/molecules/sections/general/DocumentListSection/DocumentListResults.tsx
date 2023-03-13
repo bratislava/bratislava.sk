@@ -106,13 +106,11 @@ const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) =
           setOpen={setOpen}
           setActiveData={setActiveVzn}
         />
-        {dataToDisplay?.estimatedTotalHits !== 0 && (
+        {dataToDisplay?.estimatedTotalHits && (
           <Pagination
             key={filters.search}
             itemsPerPage={filters.pageSize}
-            totalPages={
-              dataToDisplay ? Math.ceil(dataToDisplay.estimatedTotalHits / filters.pageSize) : 0
-            }
+            totalPages={Math.ceil(dataToDisplay.estimatedTotalHits / filters.pageSize)}
             totalCount={dataToDisplay?.estimatedTotalHits}
             currentPage={filters.page}
             pageHandler={onPageChange}

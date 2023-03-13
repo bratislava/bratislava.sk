@@ -82,9 +82,6 @@ interface Account {
   setStatus: (status: AccountStatus) => void
   userData: UserData | null
   updateUserData: (data: UserData) => Promise<boolean>
-  temporaryUserData: UserData | null
-  resetTemporaryUserData: () => void
-  setTemporaryUserData: (userData: UserData | null) => void
   signUp: (
     email: string,
     password: string,
@@ -108,21 +105,10 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
   const [error, setError] = useState<AccountError | undefined | null>(null)
   const [status, setStatus] = useState<AccountStatus>(AccountStatus.Idle)
   const [userData, setUserData] = useState<UserData | null>(null)
-  const [temporaryUserData, setTemporaryUserData] = useState<UserData | null>(null)
   const [lastCredentials, setLastCredentials] = useState<IAuthenticationDetailsData>({
     Username: '',
   })
   const [lastMarketingConfirmation, setLastMarketingConfirmation] = useState(false)
-
-  useEffect(() => {
-    const updatedUserData = userData ? { ...userData } : null
-    setTemporaryUserData(updatedUserData)
-  }, [userData])
-
-  const resetTemporaryUserData = () => {
-    const actualUserData = userData ? { ...userData } : null
-    setTemporaryUserData(actualUserData)
-  }
 
   const userAttributesToObject = (attributes?: CognitoUserAttribute[]): UserData => {
     const data: any = {}
@@ -225,8 +211,8 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
             setUserData((state) => ({
               ...state,
               ...data,
-              phone_number: data.phone_number?.replace(' ', ''),
             }))
+            setError(null)
             resolve(true)
           }
         })
@@ -317,6 +303,7 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
       user.signOut()
       setUser(null)
       setUserData(null)
+      setStatus(AccountStatus.Idle)
     }
   }
 
@@ -526,9 +513,6 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
         setStatus,
         userData,
         updateUserData,
-        temporaryUserData,
-        resetTemporaryUserData,
-        setTemporaryUserData,
         signUp,
         verifyEmail,
         resendVerificationCode,

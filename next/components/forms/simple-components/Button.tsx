@@ -27,6 +27,7 @@ type ButtonBase = {
   endIcon?: ReactNode
   hrefIconHidden?: boolean
   fullWidth?: boolean
+  form?: string
 }
 
 export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
@@ -61,6 +62,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       endIcon,
       hrefIconHidden,
       fullWidth,
+      form,
       ...rest
     },
     ref,
@@ -230,7 +232,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 'w-5 h-5 ml-1': size === 'sm',
               })}
             >
-              <ArrowRightIcon />
+              <ArrowRightIcon className="w-6 h-6" />
             </span>
           )}
         </MLink>
@@ -242,6 +244,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         type="button"
         ref={ref as RefObject<HTMLButtonElement>}
         className={style}
+        form={form}
         {...buttonProps}
       >
         <div className="justify-center flex items-center">
