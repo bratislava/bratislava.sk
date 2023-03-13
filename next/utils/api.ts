@@ -49,6 +49,23 @@ const fetchJsonApi = async (path: string, options?: RequestInit) => {
   }
 }
 
+const fetchBlob = async (path: string, options?: RequestInit) => {
+  try {
+    const response = await fetch(path, options)
+    if (response.ok) {
+      return await response.blob()
+    }
+
+    const responseText = await response.text()
+    throw new Error(responseText)
+  } catch (error) {
+    // caught & rethrown so that we can handle Sentry in one place
+    console.error(error)
+    Sentry.captureException(error)
+    throw error
+  }
+}
+
 // TODO move error handling here
 export const submitEform = async (eformKey: string, data: Record<string, any>) => {
   console.log('-------------------')
@@ -83,8 +100,8 @@ export const validateKeyword = async (
   }
 }
 
-export const toXml = (eform: string, data: any) => {
-  return fetchJsonApi(`/api/eforms/${eform}/transform/xml`, {
+export const formDataToXml = (eform: string, data: any) => {
+  return fetchBlob(`/api/eforms/${eform}/transform/xml`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
