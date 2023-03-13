@@ -96,6 +96,7 @@ export const Posts = ({
   const isAfterDeadline = Period.between(now, deadline).isNegative()
 
   const roadClosuresAddress = 'doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
+  const roadClosuresAddressNew = 'doprava-a-mapy/sprava-a-udrzba-komunikacii'
 
   return (
     <div className={cx(className)}>
@@ -238,7 +239,7 @@ export const Posts = ({
                 />
               </div>
               <div className="flex justify-center">
-                <UILink href={roadClosuresAddress}>
+                <UILink href={roadClosuresAddressNew}>
                   {/* TODO: change this button to custom button */}
                   <Button
                     variant="transparent"
@@ -246,7 +247,7 @@ export const Posts = ({
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
-                    {t('seeAllNews')}
+                    {t('moreInfo')}
                   </Button>
                 </UILink>
               </div>
