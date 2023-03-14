@@ -60,7 +60,7 @@ const MunicipalServicesSection = () => {
   const { t } = useTranslation('account')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [selectorValue, setSelectorValue] = useState<SelectOption[]>(enumOptions.slice(0, 1))
-  const selectorValuesArr: string = selectorValue[0]?.title
+  const selectorValuesArr: string = selectorValue[0]?.title || ''
 
   type ServiceCardBase = {
     title: string

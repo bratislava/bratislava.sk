@@ -15,7 +15,7 @@ export const Pagination = ({ onChange, selectedPage, className, count }: Paginat
     count,
     page: selectedPage,
     onChange(_, value) {
-      onChange(value)
+      if (onChange) onChange(value)
     },
   })
 
