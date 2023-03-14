@@ -79,7 +79,7 @@ const DateField = ({
   )
   const dateFieldStyle = cx('flex rounded-lg bg-white px-3 sm:px-4 py-1.5 sm:py-2.5 border-2', {
     'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
-    'border-error hover:border-error': errorMessage?.length > 0 && !disabled,
+    'hover:border-negative-700 border-negative-700': errorMessage?.length > 0 && !disabled,
     'bg-gray-100 border-gray-300 pointer-events-none': disabled,
     'border-gray-700': isOpen && !disabled && !(errorMessage?.length > 0),
   })
