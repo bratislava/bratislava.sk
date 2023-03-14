@@ -65,7 +65,7 @@ const Alert = ({
         'text-gray-700': type === 'info' && !solid && variant !== 'message',
         'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
-        'lg:py-4 p-3 items-center gap-3': variant === 'basic',
+        'lg:py-4 p-3 items-center': variant === 'basic',
         'text-gray-0': solid,
         'bg-negative-700': type === 'error' && solid,
         'bg-success-700': type === 'success' && solid,
