@@ -301,7 +301,14 @@
     "waiting_card_title": "Vašu daň z nehnuteľností pripravujeme.",
     "waiting_card_text": "Aj v tomto momente pracujeme na výpočte dane z nehnuteľností až pre 200.000 daňovníkov. Pripravené rozhodnutia budeme distribuovať v termíne <strong>od 20. apríla do 30. mája.</strong> Keď bude vaša daň z nehnuteľností pripravená, pošleme vám notifikačný e-mail.",
     "error_card_title": "Zatiaľ vás nevidíme v zozname daňovníkov daňovníčok.",
-    "error_card_text": "<p>Môže to tak byť, lebo:</p><ul><li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li></ul><br/><p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
+    "error_card_content": {
+      "title": "<p>Môže to tak byť, lebo:</p>",
+      "list": {
+        "verification": "<li>ste neoverili svoju identitu cez rodné číslo a číslo občianskeho preukazu (<a href='/register'>Overiť identitu</a>),</li>",
+        "other": "<li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li>"
+      },
+      "help_text": "<p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
+    }
   },
   "account_section_help": {
     "navigation": "Mám problém",
