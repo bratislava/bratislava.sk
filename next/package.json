@@ -67,7 +67,7 @@
     "next-query-params": "^4.1.0",
     "react": "18.2.0",
     "react-apexcharts": "1.4.0",
-    "react-aria": "^3.19.0",
+    "react-aria": "3.23.1",
     "react-cookie-consent": "7.5.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.1",
