@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
 import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
+import SnackbarProvider from 'react-simple-snackbar'
 import { QueryParamProvider } from 'use-query-params'
 import { useIsClient } from 'usehooks-ts'
 
@@ -82,8 +83,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <SSRProvider>
               <AccountProvider>
                 <div className={`${inter.variable} font-sans`}>
-                  <Component {...pageProps} />
-
+                  <SnackbarProvider>
+                    <Component {...pageProps} />
+                  </SnackbarProvider>
                   {isProductionDeployment() && shouldDisplayUkraineSupportChat && <DynamicChat />}
                 </div>
               </AccountProvider>
