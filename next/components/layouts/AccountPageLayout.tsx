@@ -1,5 +1,4 @@
 import BusinessIcon from '@assets/images/account/business-icon.svg'
-import HelpFilledIcon from '@assets/images/account/help-filled.svg'
 import HelpIcon from '@assets/images/account/help-icon.svg'
 import HomeIcon from '@assets/images/account/home-icon.svg'
 import LogoutIcon from '@assets/images/account/logout.svg'
@@ -59,7 +58,7 @@ const menuItems = [
   {
     id: 2,
     title: 'account:menu_help_link',
-    icon: <HelpFilledIcon />,
+    icon: <HelpIcon />,
     link: '/account/i-have-a-problem',
   },
   {
