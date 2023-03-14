@@ -34,7 +34,7 @@ const BannerBasic = ({
   return (
     <div
       className={cx(
-        'flex-col lg:flex-row flex h-full items-center justify-between rounded-none lg:rounded-3xl w-full max-w-screen-lg m-auto py-6 px-4 lg:py-0 lg:px-0 border-2',
+        'flex-col lg:flex-row flex h-full items-center justify-between rounded-lg w-full max-w-screen-lg m-auto py-6 px-4 lg:py-0 lg:px-0 border-2',
         className,
       )}
     >
