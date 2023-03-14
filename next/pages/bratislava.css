@@ -164,6 +164,11 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+.w-fit-title::before {
+  @apply block font-bold h-0 overflow-hidden invisible;
+  content: attr(title);
+}
+
 /* Move safari key icon to the left for fields with type password */
 /*noinspection CssInvalidPseudoSelector*/
 input[type='password']::-webkit-credentials-auto-fill-button {
@@ -203,7 +208,6 @@ input[type='number']::-webkit-outer-spin-button {
   cursor: pointer;
 }
 
-
 /* styles for chatbot START */
 .webchat {
   position: fixed;
@@ -214,9 +218,9 @@ input[type='number']::-webkit-outer-spin-button {
   border-radius: 8px;
   display: none;
   overflow: hidden;
-  border: solid 2px RGB(51,51,51,0.5);
+  border: solid 2px RGB(51, 51, 51, 0.5);
   z-index: 9999;
- }
+}
 
 .webchat__imageAvatar__image img {
   position: absolute;
@@ -227,22 +231,22 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .webchat__bubble__content {
-    border-radius: 20px !important;
+  border-radius: 20px !important;
 }
 
 .floating-button.hide-on-click svg:first-child {
-    display: block;
+  display: block;
 }
 .floating-button.hide-on-click svg:last-child {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 768px) {
   .webchat {
-      width: 100%;
-      height: calc(100% - 88px);
-      left: 0;
-      border-radius: 0;
+    width: 100%;
+    height: calc(100% - 88px);
+    left: 0;
+    border-radius: 0;
   }
 }
 /* styles for chatbot END*/
