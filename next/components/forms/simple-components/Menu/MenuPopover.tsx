@@ -25,7 +25,7 @@ const MenuPopover = (props: PopoverProps) => {
   )
 
   return (
-    <FocusScope contain restoreFocus>
+    <FocusScope contain>
       <div
         {...overlayProps}
         ref={triggerRef}
