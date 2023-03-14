@@ -1,78 +1,66 @@
 import PaginationArrow from 'components/forms/simple-components/Pagination/PaginationArrow'
 import PaginationButton from 'components/forms/simple-components/Pagination/PaginationButton'
 import usePagination from 'components/forms/simple-components/Pagination/usePagination'
-
-export type PaginationOption = {
-  itemsPerPage: number
-  listLength: number
-}
+import { ReactNode } from 'react'
 
 interface PaginationProps {
-  paginationOption: PaginationOption
-  currentPage: number
-  pageHandler: (pageNumber: number) => void
-  variant?: 'category' | 'black'
+  onChange?: (value: number) => void
+  selectedPage: number
+  count: number
+  className?: string
 }
 
-const ThreeDots = () => {
-  return (
-    <div className="center w-12 h-12 flex justify-center items-center">
-      <span className="text-20-semibold h-6 text-gray-700 flex items-start">&hellip;</span>
-    </div>
-  )
-}
-
-export const Pagination = ({
-  currentPage = 1,
-  pageHandler,
-  variant = 'black',
-  paginationOption,
-}: PaginationProps) => {
-  const { next, prev, jump, useCurrentPage, items } = usePagination({
-    paginationOption,
-    currentPage,
-    pageHandler,
+export const Pagination = ({ onChange, selectedPage, className, count }: PaginationProps) => {
+  const { items } = usePagination({
+    count,
+    page: selectedPage,
+    onChange(_, value) {
+      onChange(value)
+    },
   })
 
-  const numberOfPages = Math.ceil(paginationOption.listLength / paginationOption.itemsPerPage)
   return (
-    <div className="relative flex justify-center h-12 w-full">
-      <div className="flex items-center gap-2">
-        {useCurrentPage !== 1 ? (
-          <PaginationArrow variant={variant} onPress={() => prev()} orientation="left" />
-        ) : null}
+    <div className={className}>
+      <ul className="flex flex-wrap items-center justify-center gap-1 md:gap-2">
+        {items.map(({ page, type, selected, disabled, onPress }, index) => {
+          let children: ReactNode = null
 
-        <PaginationButton
-          variant={variant}
-          pageNumber={1}
-          onPress={() => jump(1)}
-          isActive={useCurrentPage === 1}
-        />
-        {items[0].page - 1 >= 2 ? <ThreeDots /> : null}
-        {items.map((item, index) =>
-          item.page < numberOfPages && item.page > 1 ? (
-            <PaginationButton
-              key={index}
-              pageNumber={item.page}
-              variant={variant}
-              onPress={() => jump(item.page)}
-              isActive={item.page === useCurrentPage}
-            />
-          ) : null,
-        )}
-        {items[2].page + 1 < numberOfPages ? <ThreeDots /> : null}
-        {numberOfPages > 1 ? (
-          <PaginationButton
-            pageNumber={numberOfPages}
-            variant={variant}
-            onPress={() => jump(numberOfPages)}
-            isActive={numberOfPages === useCurrentPage}
-          />
-        ) : null}
-        {useCurrentPage !== numberOfPages ? (
-          <PaginationArrow variant={variant} onPress={() => next()} />
-        ) : null}
-      </div>
+          // eslint-disable-next-line unicorn/prefer-switch
+          if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+            children = '…'
+          } else if (type === 'page') {
+            children = (
+              <PaginationButton
+                variant={selected ? 'pagination-selected' : 'pagination'}
+                disabled={disabled}
+                onPress={onPress}
+              >
+                {page}
+              </PaginationButton>
+            )
+          } else if (type === 'previous' || type === 'next') {
+            let icon: ReactNode
+            if (type === 'previous' && selectedPage !== 1) {
+              icon = <PaginationArrow orientation="left" />
+            }
+            if (type === 'next' && selectedPage !== count) {
+              icon = <PaginationArrow />
+            }
+
+            children = (
+              <PaginationButton type="arrow" disabled={disabled} onPress={onPress}>
+                {icon}
+              </PaginationButton>
+            )
+          }
+
+          return (
+            <li className="text-p2-semibold w-10 md:w-12 flex justify-center" key={index}>
+              {children}
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }

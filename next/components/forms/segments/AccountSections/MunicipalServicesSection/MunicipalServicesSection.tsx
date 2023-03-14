@@ -17,12 +17,11 @@ import TransportIcon from '@assets/images/account/municipal-services/transport-i
 import TreeIcon from '@assets/images/account/municipal-services/tree-icon.svg'
 import ZooIcon from '@assets/images/account/municipal-services/zoo-icon.svg'
 import MunicipalServicesSectionHeader from 'components/forms/segments/AccountSectionHeader/MunicipalServicesSectionHeader'
-import Pagination, {
-  PaginationOption,
-} from 'components/forms/simple-components/Pagination/Pagination'
+import Pagination from 'components/forms/simple-components/Pagination/Pagination'
 import ServiceCard from 'components/forms/simple-components/ServiceCard'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
+
 import { SelectOption } from '../../../widget-components/SelectField/SelectField'
 
 const ALL_CATEGORY = 'Všetky kategórie'
@@ -55,12 +54,13 @@ const enumOptions: SelectOption[] = [
   { const: 'GREEN_CATEGORY', title: GREEN_CATEGORY, description: '' },
 ]
 
+const ITEMS_PER_PAGE = 20
+
 const MunicipalServicesSection = () => {
   const { t } = useTranslation('account')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [selectorValue, setSelectorValue] = useState<SelectOption[]>(enumOptions.slice(0, 1))
   const selectorValuesArr: string = selectorValue[0]?.title
-  const ITEMS_PER_PAGE = 20
 
   type ServiceCardBase = {
     title: string
@@ -327,11 +327,6 @@ const MunicipalServicesSection = () => {
     selectorValuesArr?.includes(ALL_CATEGORY) ? true : card.category.includes(selectorValuesArr),
   )
 
-  const paginationOption: PaginationOption = {
-    itemsPerPage: 1,
-    listLength: filteredServiceCards.length,
-  }
-
   return (
     <div className="flex flex-col">
       <MunicipalServicesSectionHeader
@@ -346,8 +341,7 @@ const MunicipalServicesSection = () => {
           {filteredServiceCards
             .filter(
               (_, i) =>
-                i + 1 <= currentPage * paginationOption.itemsPerPage &&
-                i + 1 > (currentPage - 1) * paginationOption.itemsPerPage,
+                i + 1 <= currentPage * ITEMS_PER_PAGE && i + 1 > (currentPage - 1) * ITEMS_PER_PAGE,
             )
             .map((card, i) => (
               <ServiceCard
@@ -364,9 +358,9 @@ const MunicipalServicesSection = () => {
         </div>
         <div className="my-4 lg:my-8">
           <Pagination
-            paginationOption={paginationOption}
-            currentPage={currentPage}
-            pageHandler={setCurrentPage}
+            count={Math.ceil(filteredServiceCards.length / ITEMS_PER_PAGE)}
+            selectedPage={currentPage}
+            onChange={setCurrentPage}
           />
         </div>
       </div>
