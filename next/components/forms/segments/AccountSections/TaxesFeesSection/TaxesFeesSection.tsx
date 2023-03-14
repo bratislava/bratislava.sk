@@ -1,3 +1,4 @@
+import useAccount, { AccountStatus } from '@utils/useAccount'
 import cx from 'classnames'
 import AccountSectionHeader from 'components/forms/segments/AccountSectionHeader/AccountSectionHeader'
 import TaxesFeesCard from 'components/forms/segments/AccountSections/TaxesFeesSection/TaxesFeesCard'
@@ -49,6 +50,7 @@ const cards: TaxesCardBase[] = [
 const TaxesFeesSection = () => {
   const [isOn, setIsOn] = useState<'default' | 'waiting' | 'error'>('default')
   const { t } = useTranslation('account')
+  const { status } = useAccount()
 
   const taxesFeesWaitingCardContent = `
 <h4>${t('account_section_payment.waiting_card_title')}</h4>
@@ -57,9 +59,13 @@ const TaxesFeesSection = () => {
   const taxesFeesErrorCardContent = `
 <h4>${t('account_section_payment.error_card_title')}</h4>
 <div>${t('account_section_payment.error_card_content.title')}
-<ul>${t('account_section_payment.error_card_content.list.verification')}${t(
-    'account_section_payment.error_card_content.list.other',
-  )}</ul><br />${t('account_section_payment.error_card_content.help_text')}</div>
+<ul>${
+    status === AccountStatus.IdentityVerificationRequired
+      ? t('account_section_payment.error_card_content.list.verification')
+      : ''
+  }${t('account_section_payment.error_card_content.list.other')}</ul><br />${t(
+    'account_section_payment.error_card_content.help_text',
+  )}</div>
 `
 
   // Temporary switcher for presentation
