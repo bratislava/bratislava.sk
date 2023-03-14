@@ -75,6 +75,7 @@
     "react-query": "^3.39.3",
     "react-resize-detector": "^8.0.3",
     "react-select": "^5.4.0",
+    "react-simple-snackbar": "^1.1.11",
     "react-stately": "3.21.0",
     "react-sweet-progress": "1.1.2",
     "rehype-raw": "6.1.1",
