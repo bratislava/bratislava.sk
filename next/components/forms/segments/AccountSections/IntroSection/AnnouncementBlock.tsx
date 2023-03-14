@@ -46,10 +46,10 @@ const AnnouncementBlock = ({
             </>
           )}
         </div>
-        <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 rounded-r-3xl flex justify-center items-center">
+        <div className="rounded-rt-none lg:h-auto relative h-[180px] w-full lg:w-1/2 rounded-t-lg lg:rounded-tl-none lg:rounded-r-3xl flex justify-center items-center">
           <Image
             src={imagePath}
-            className="rounded-r-3xl"
+            className="rounded-rt-none rounded-t-lg lg:rounded-tl-none lg:rounded-r-3xl"
             layout="fill"
             priority
             objectFit="cover"
