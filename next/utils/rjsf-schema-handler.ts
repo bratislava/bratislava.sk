@@ -17,6 +17,9 @@ function findTitle(value: JSONSchema7Definition, items: JSONSchema7Definition[])
     : value
 }
 
+// transform value from formData which is array to simple text for Summary
+// array values (select, checkboxes etc) are arrays with value of enum (property .const)
+// we need original title of enum to show in Summary, so we must map it
 function transformValueArray(
   fieldFormData?: JSONSchema7Definition,
   fieldSchema?: JSONSchema7Definition,
