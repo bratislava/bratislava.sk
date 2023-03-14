@@ -15,7 +15,7 @@ type BannerBase = {
   onPressSecondary?: () => void
   buttonTertiaryText?: string
   linkTertiary?: string
-  orientation?: 'left' | 'right'
+  textOrientation?: 'left' | 'right'
   className?: string
 }
 
@@ -29,7 +29,7 @@ const BannerBasic = ({
   onPressSecondary,
   buttonTertiaryText,
   linkTertiary,
-  orientation = 'left',
+  textOrientation = 'left',
   className,
 }: BannerBase) => {
   const imageElement = (
@@ -46,7 +46,7 @@ const BannerBasic = ({
         className,
       )}
     >
-      {orientation === 'right' && imageElement}
+      {textOrientation === 'right' && imageElement}
       <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center rounded-l-3xl lg:mb-0">
         <div className="flex flex-col lg:p-12 gap-6">
           <div className="flex flex-col items-start gap-3">
@@ -116,7 +116,7 @@ const BannerBasic = ({
           </div>
         </div>
       </div>
-      {orientation === 'left' && imageElement}
+      {textOrientation === 'left' && imageElement}
     </div>
   )
 }
