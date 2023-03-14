@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import { MenuItem } from 'components/forms/segments/AccountNavBar/AccountNavBar'
+import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 
 interface IProps {
   sectionsList?: MenuItem[]
@@ -55,7 +55,7 @@ export const HamburgerMenu = ({
   return (
     <div
       className={cx(
-        'fixed top-16 mt-1 left-0 bg-white w-screen overflow-y-scroll lg:hidden flex flex-col',
+        'fixed top-16 left-0 bg-white w-screen overflow-y-scroll lg:hidden flex flex-col',
       )}
       style={{ height: 'calc(100vh - 60px)' }}
     >
