@@ -19,13 +19,12 @@ type FixedLengthArray<T extends AlertButtons[]> = Pick<
 > & {
   [Symbol.iterator]: () => IterableIterator<ArrayItems<T>>
 }
-export type AlertType = 'error' | 'success' | 'info' | 'warning'
+
 type AlertBase = {
-  type: AlertType
+  type: 'error' | 'success' | 'info' | 'warning'
   variant?: 'basic' | 'message'
   solid?: boolean
   content?: string
-  icon?: boolean
   message: string
   close?: () => void
   buttons?: FixedLengthArray<[AlertButtons, AlertButtons]>
@@ -38,7 +37,6 @@ const Alert = ({
   type,
   variant = 'basic',
   content,
-  icon = true,
   message,
   className,
   ...rest
@@ -66,7 +64,7 @@ const Alert = ({
         'text-success-700': type === 'success' && !solid && variant !== 'message',
         'text-gray-700': type === 'info' && !solid && variant !== 'message',
         'text-warning-700': type === 'warning' && !solid && variant !== 'message',
-        
+
         'lg:py-4 p-3 items-center gap-3': variant === 'basic',
         'text-gray-0': solid,
         'bg-negative-700': type === 'error' && solid,
@@ -94,9 +92,7 @@ const Alert = ({
     return variant === 'basic' ? (
       <div className={alertContainer}>
         <div className="flex items-center gap-[14px]">
-          {icon && (
-            <span className="min-w-[22px] justify-center sm:flex hidden">{icons[type]}</span>
-          )}
+          <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
           <div className={contentStyle}>{message}</div>
         </div>
         {close && (
@@ -108,9 +104,7 @@ const Alert = ({
     ) : (
       <div className={alertContainer}>
         <div className="flex flex-row items-center gap-[14px]">
-          {icon && (
-            <span className="min-w-[22px] justify-center sm:flex hidden">{icons[type]}</span>
-          )}
+          <span className="flex min-w-[22px] justify-center">{icons[type]}</span>
           <div className={contentStyle}>{message}</div>
         </div>
         <div
