@@ -56,7 +56,10 @@ const TaxesFeesSection = () => {
 `
   const taxesFeesErrorCardContent = `
 <h4>${t('account_section_payment.error_card_title')}</h4>
-<div>${t('account_section_payment.error_card_text')}</div>
+<div>${t('account_section_payment.error_card_content.title')}
+<ul>${t('account_section_payment.error_card_content.list.verification')}${t(
+    'account_section_payment.error_card_content.list.other',
+  )}</ul><br />${t('account_section_payment.error_card_content.help_text')}</div>
 `
 
   // Temporary switcher for presentation
