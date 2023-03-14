@@ -1,4 +1,3 @@
-import BannerPhone from '@assets/images/banner-phone.png'
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import cx from 'classnames'
 import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
@@ -9,10 +8,13 @@ import Button from './Button'
 type BannerBase = {
   title: string
   content?: string
+  imagePath?: string
   buttonPrimaryText?: string
   onPressPrimary?: () => void
   buttonSecondaryText?: string
   onPressSecondary?: () => void
+  buttonTertiaryText?: string
+  linkTertiary?: string
   orientation?: 'left' | 'right'
   className?: string
 }
@@ -20,17 +22,20 @@ type BannerBase = {
 const BannerBasic = ({
   title,
   content,
+  imagePath = '',
   buttonPrimaryText,
   onPressPrimary,
   buttonSecondaryText,
   onPressSecondary,
+  buttonTertiaryText,
+  linkTertiary,
   orientation = 'left',
   className,
 }: BannerBase) => {
   const imageElement = (
     <>
       <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 rounded-r-3xl flex justify-center items-center">
-        <Image src={BannerPhone} alt="" layout="fill" objectFit="cover" />
+        <Image src={imagePath} alt="" layout="fill" objectFit="cover" />
       </div>
     </>
   )
@@ -45,7 +50,7 @@ const BannerBasic = ({
       <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center rounded-l-3xl lg:mb-0">
         <div className="flex flex-col lg:p-12 gap-6">
           <div className="flex flex-col items-start gap-3">
-            <h2 className="text-h4">{title}</h2>
+            <h2 className="text-h4 lg:text-h4">{title}</h2>
             <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-700" />
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-4">
@@ -86,6 +91,25 @@ const BannerBasic = ({
                   text={buttonSecondaryText}
                   onPress={onPressSecondary}
                   fullWidth
+                />
+              </>
+            )}
+            {linkTertiary && buttonTertiaryText && (
+              <>
+                <Button
+                  className="hidden lg:flex w-full"
+                  variant="link-black"
+                  fullWidth
+                  href={linkTertiary}
+                  label={buttonTertiaryText}
+                />
+                <Button
+                  className="flex lg:hidden"
+                  size="sm"
+                  variant="link-black"
+                  fullWidth
+                  href={linkTertiary}
+                  label={buttonTertiaryText}
                 />
               </>
             )}
