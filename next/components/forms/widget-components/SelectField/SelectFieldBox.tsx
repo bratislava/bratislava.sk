@@ -1,4 +1,3 @@
-import { EnumOptionsType } from '@rjsf/utils'
 import { useTranslation } from 'next-i18next'
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
@@ -71,7 +70,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
         /* TAGS */
         value && value.length > 0 ? (
           value.length < 3 ? (
-            (multiple ? value : value.slice(0, 1)).map((option, key) => (
+            (multiple ? value : value.slice(0, 1)).map((option: SelectOption, key: number) => (
               <Tag
                 key={key}
                 text={option.title ?? String(option.const)}

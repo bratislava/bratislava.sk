@@ -70,9 +70,6 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const [filter, setFilter] = useState<string>('')
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
 
-  console.log('\nENUM OPTIONS', enumOptions)
-  console.log('VALUE:', value)
-
   // STYLES
   const selectClassName = cx(
     'border-form-input-default flex flex-row bg-white rounded-lg border-2 items-center',
