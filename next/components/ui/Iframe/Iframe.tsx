@@ -21,7 +21,7 @@ export const Iframe = ({
 }: IframeProps) => {
   const ref = useRef<HTMLIFrameElement>()
 
-  const [height, setHeight] = useState('0')
+  const [height, setHeight] = useState(iframeHeight)
 
   useEffect(() => {
     ref.current?.setAttribute('style', css)

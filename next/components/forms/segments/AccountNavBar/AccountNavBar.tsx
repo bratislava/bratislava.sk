@@ -292,7 +292,12 @@ const AccountMenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
           <span>{menuItem.icon}</span>
         </div>
       </div>
-      <div className="text-p2 text-font p-2 whitespace-nowrap">{t(menuItem.title)}</div>
+      <div
+        className="text-p2 hover:text-p2-semibold w-fit-title text-font p-2 whitespace-nowrap"
+        title={t(menuItem.title)}
+      >
+        {t(menuItem.title)}
+      </div>
     </div>
   )
 }
