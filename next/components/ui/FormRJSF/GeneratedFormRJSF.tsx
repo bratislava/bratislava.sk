@@ -20,10 +20,15 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
   const form = useFormStepper(escapedSlug, eform.schema)
   const [isOnShowSkipModal, setIsOnShowSkipModal] = useState<boolean>(false)
   const [skipModalWasShown, setSkipModalWasShown] = useState<boolean>(false)
+  const [skipModalNextStepIndex, setSkipModalNextStepIndex] = useState<number>(form.stepIndex)
 
   const skipButtonHandler = (nextStepIndex: number = form.stepIndex + 1) => {
-    if (skipModalWasShown) form.skipToStep(nextStepIndex)
-    setIsOnShowSkipModal(true)
+    if (skipModalWasShown) {
+      form.skipToStep(nextStepIndex)
+    } else {
+      setSkipModalNextStepIndex(nextStepIndex)
+      setIsOnShowSkipModal(true)
+    }
   }
   const submitter = useFormSubmitter(formSlug)
 
@@ -44,7 +49,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
             setSkipModalWasShown(true)
           }}
           onSkip={() => {
-            form.skipToStep(form.stepIndex + 1)
+            form.skipToStep(skipModalNextStepIndex)
             setIsOnShowSkipModal(false)
             setSkipModalWasShown(true)
           }}
@@ -89,7 +94,7 @@ const GeneratedFormRJSF = ({ eform, escapedSlug, formSlug }: FormRJSF) => {
           stepIndex={form.stepIndex}
           isFinalStep={form.isComplete}
           previous={form.previous}
-          skip={skipButtonHandler}
+          skip={() => skipButtonHandler(form.stepIndex + 1)}
           submitStep={form.submitStep}
           submitForm={() => submitter.submitForm(form.formData)}
         />
