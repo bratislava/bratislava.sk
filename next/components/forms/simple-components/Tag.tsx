@@ -7,10 +7,11 @@ interface TagProps {
   removable?: boolean
   size?: 'large' | 'small'
   branded?: boolean
+  shorthand?: boolean
   onRemove?: () => void
 }
 
-const Tag: FC<TagProps> = ({ text, removable, size, branded, onRemove }) => {
+const Tag: FC<TagProps> = ({ text, removable, size, branded, shorthand, onRemove }: TagProps) => {
   // STATE
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
@@ -37,6 +38,11 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, onRemove }) => {
     'text-p3 w-2.5 h-2.5': size === 'small' || !size,
   })
 
+  const MAX_TEXT_SIZE = 10
+  const tagText = shorthand
+    ? `${text.slice(0, MAX_TEXT_SIZE)}${text.length > MAX_TEXT_SIZE ? '...' : ''}`
+    : text
+
   // RENDER
   /* class name tag is crucial for good working of select dropdown */
   return (
@@ -46,7 +52,7 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, onRemove }) => {
       onFocus={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <p className="tag cursor-default select-none inline-block">{text}</p>
+      <p className="tag cursor-default select-none inline-block">{tagText}</p>
       {removable && <CloseIcon className={iconClassStyles} onClick={onRemove} />}
     </div>
   )

@@ -1,4 +1,3 @@
-import { EnumOptionsType } from '@rjsf/utils'
 import React, { useState } from 'react'
 
 import SelectField, { SelectOption } from '../../forms/widget-components/SelectField/SelectField'
@@ -9,7 +8,11 @@ interface SelectFieldShowCaseProps {}
 
 const SelectFieldShowCase = () => {
   const enumOptions: SelectOption[] = [
-    { const: '_example', title: 'example', description: 'skola' },
+    {
+      const: '_example',
+      title: 'exampleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+      description: 'skola',
+    },
     { const: 'stu_fei', title: 'STU FEI', description: 'feika' },
     { const: 'stu_fiit', title: 'STU FIIT', description: 'fiitka' },
     { const: 'uk_fmfi', title: 'UK FMFI', description: 'matfyz' },

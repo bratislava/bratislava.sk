@@ -77,6 +77,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
                 size="small"
                 onRemove={() => onRemove(key)}
                 removable
+                shorthand
               />
             ))
           ) : (

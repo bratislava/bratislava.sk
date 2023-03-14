@@ -63,12 +63,18 @@ const DropdownRow = ({
       <RadioButtonIcon selected={selected} />
     ) : null
 
+  const MAX_TEXT_SIZE = 18
+  const optionText = option.title ?? String(option.const)
+  const transformedOptionText = `${optionText.slice(0, MAX_TEXT_SIZE)}${
+    optionText.length > MAX_TEXT_SIZE ? '...' : ''
+  }`
+
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
       <div className="dropdown flex h-full flex-col justify-center">
         <div className="dropdown flex flex-row justify-center">
-          <p className={optionClassName}>{option.title ?? String(option.const)}</p>
+          <p className={optionClassName}>{transformedOptionText}</p>
           <div className="dropdown relative flex flex-col justify-center">
             {rowIcon}
             <div className="dropdown absolute inset-0 z-10" />
