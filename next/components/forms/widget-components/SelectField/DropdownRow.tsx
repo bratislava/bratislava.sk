@@ -52,9 +52,8 @@ const DropdownRow = ({
     else if (!selected && type === 'radio') onChooseOne(option, false)
   }
 
-  // HELPER FUNCTIONS
-  const getRowIcon = () => {
-    return type === 'multiple' ? (
+  const rowIcon =
+    type === 'multiple' ? (
       <CheckboxIcon checked={selected} />
     ) : type === 'one' && selected ? (
       <FilledSelectedIcon />
@@ -63,16 +62,15 @@ const DropdownRow = ({
     ) : type === 'radio' ? (
       <RadioButtonIcon selected={selected} />
     ) : null
-  }
 
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
       <div className="dropdown flex h-full flex-col justify-center">
         <div className="dropdown flex flex-row justify-center">
-          <p className={optionClassName}>{option.title}</p>
+          <p className={optionClassName}>{option.title ?? String(option.const)}</p>
           <div className="dropdown relative flex flex-col justify-center">
-            {getRowIcon()}
+            {rowIcon}
             <div className="dropdown absolute inset-0 z-10" />
           </div>
         </div>
