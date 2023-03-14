@@ -1,85 +1,54 @@
-import BusinessIcon from '@assets/images/account/business-icon.svg'
+import CityIcon from '@assets/images/account/city.svg'
 import HelpIcon from '@assets/images/account/help-icon.svg'
-import HomeIcon from '@assets/images/account/home-icon.svg'
 import LogoutIcon from '@assets/images/account/logout.svg'
-import PaymentIcon from '@assets/images/account/payment-icon.svg'
 import ProfileIcon from '@assets/images/account/profile.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
-import { ROUTES } from '@utils/constants'
-import useAccount from '@utils/useAccount'
 import cx from 'classnames'
 import AccountNavBar from 'components/forms/segments/AccountNavBar/AccountNavBar'
 import { usePageWrapperContext } from 'components/layouts/PageWrapper'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import { ReactNode, useEffect } from 'react'
+import { ReactNode } from 'react'
 
-type AccountPageLayoutBase = {
+type FormPageLayoutBase = {
   className?: string
   children: ReactNode
-  hiddenHeaderNav?: boolean
+  navHidden?: boolean
 }
-
-const sectionsList = [
-  {
-    id: 0,
-    title: 'account:account_section_intro.navigation',
-    icon: <HomeIcon />,
-    link: '/account',
-  },
-  {
-    id: 1,
-    title: 'account:account_section_services.navigation',
-    icon: <BusinessIcon />,
-    link: '/account/municipal-services',
-  },
-  {
-    id: 2,
-    title: 'account:account_section_payment.title',
-    icon: <PaymentIcon className="w-6 h-6" />,
-    link: '/account/taxes-and-fees',
-  },
-  {
-    id: 3,
-    title: 'account:account_section_help.navigation',
-    icon: <HelpIcon />,
-    link: '/account/i-have-a-problem',
-  },
-]
 
 const menuItems = [
   {
     id: 1,
+    title: 'account:menu_account_link',
+    icon: <CityIcon />,
+    link: '/account',
+  },
+  {
+    id: 2,
     title: 'account:menu_profile_link',
     icon: <ProfileIcon />,
     link: '/user-profile',
   },
   {
-    id: 2,
+    id: 3,
     title: 'account:menu_help_link',
     icon: <HelpIcon />,
     link: '/account/i-have-a-problem',
   },
   {
-    id: 3,
+    id: 4,
     title: 'account:menu_logout_link',
     icon: <LogoutIcon />,
     link: '/logout',
   },
 ]
 
-const AccountPageLayout = ({ className, children, hiddenHeaderNav }: AccountPageLayoutBase) => {
+const FormPageLayout = ({ className, navHidden, children }: FormPageLayoutBase) => {
   const { locale, localizations = [] } = usePageWrapperContext()
   const router = useRouter()
-  const { isAuth } = useAccount()
-  useEffect(() => {
-    if (!isAuth) {
-      router.push({ pathname: ROUTES.LOGIN, query: { from: router.route } })
-    }
-  }, [isAuth])
 
-  const [t] = useTranslation('common')
+  const [t] = useTranslation()
 
   const handleLanguageChange = async ({ key }: { key: string }) => {
     const path = localizations.find((l) => l.locale === key)?.slug || ''
@@ -97,10 +66,8 @@ const AccountPageLayout = ({ className, children, hiddenHeaderNav }: AccountPage
         <AccountNavBar
           currentLanguage={locale}
           onLanguageChange={handleLanguageChange}
-          sectionsList={sectionsList}
           menuItems={menuItems}
-          navHidden
-          hiddenHeaderNav={hiddenHeaderNav}
+          navHidden={navHidden}
           languages={[
             { key: 'sk', title: t('language_long.sk') },
             { key: 'en', title: t('language_long.en') },
@@ -113,4 +80,4 @@ const AccountPageLayout = ({ className, children, hiddenHeaderNav }: AccountPage
   )
 }
 
-export default AccountPageLayout
+export default FormPageLayout

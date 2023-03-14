@@ -1,4 +1,4 @@
-import { ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
+import { EnumOptionsType, ErrorSchema, RJSFValidationError, StrictRJSFSchema } from '@rjsf/utils'
 import { getAllPossibleJsonSchemaProperties, JsonSchema } from '@utils/forms'
 import { JSONSchema7Definition } from 'json-schema'
 
@@ -7,19 +7,59 @@ import {
   TransformedFormStep,
 } from '../components/forms/steps/Summary/TransformedFormData'
 
+function findTitle(value: JSONSchema7Definition, items: JSONSchema7Definition[]) {
+  if (typeof items === 'boolean') return value
+  const enumOption = items.find(
+    (item: JSONSchema7Definition) => typeof item !== 'boolean' && item.const === value,
+  )
+  return enumOption && typeof enumOption !== 'boolean' && enumOption.title
+    ? enumOption.title
+    : value
+}
+
+// transform value from formData which is array to simple text for Summary
+// array values (select, checkboxes etc) are arrays with value of enum (property .const)
+// we need original title of enum to show in Summary, so we must map it
+function transformValueArray(
+  fieldFormData?: JSONSchema7Definition,
+  fieldSchema?: JSONSchema7Definition,
+) {
+  if (!fieldFormData || typeof fieldFormData === 'boolean') return
+  if (!fieldSchema || typeof fieldSchema === 'boolean') return fieldFormData
+
+  const items =
+    fieldSchema.type === 'array' &&
+    fieldSchema.items &&
+    typeof fieldSchema.items === 'object' &&
+    !Array.isArray(fieldSchema.items)
+      ? fieldSchema.items.anyOf ?? fieldSchema.items.oneOf ?? fieldSchema.items.allOf
+      : fieldSchema.oneOf
+
+  if (!items || typeof items === 'boolean' || !Array.isArray(items)) return fieldFormData
+
+  return Array.isArray(fieldFormData)
+    ? fieldFormData.map((value) => findTitle(value, items))
+    : findTitle(fieldFormData, items)
+}
+
 function getFieldData(
   label: string,
   schemaPath: string,
   isError: boolean,
   fieldFormData?: JSONSchema7Definition,
+  fieldSchema?: JSONSchema7Definition,
 ): TransformedFormData {
+  const transformedFieldFormData = transformValueArray(fieldFormData, fieldSchema)
+  const value =
+    transformedFieldFormData && !Array.isArray(transformedFieldFormData)
+      ? transformedFieldFormData.toString()
+      : Array.isArray(transformedFieldFormData) && transformedFieldFormData.length > 0
+      ? transformedFieldFormData.join(', ')
+      : '-'
+
   return {
     label,
-    value:
-      (fieldFormData && !Array.isArray(fieldFormData)) ||
-      (Array.isArray(fieldFormData) && fieldFormData.length > 0)
-        ? fieldFormData.toString()
-        : '-',
+    value,
     schemaPath,
     isError,
   }
@@ -63,6 +103,7 @@ function getAllSchemaData(
         newSchemaPath,
         isError,
         childFormData,
+        value,
       )
       data.push(fieldData)
     }
