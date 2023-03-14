@@ -3,22 +3,23 @@ import { EnumOptionsType } from '@rjsf/utils'
 import Dropdown from '../../forms/widget-components/SelectField/Dropdown'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
+import { SelectOption } from '../../forms/widget-components/SelectField/SelectField'
 
 const DropdownShowCase = () => {
-  const selectOptions: EnumOptionsType[] = [
-    { value: 'example', label: 'skola' },
-    { value: 'STU FEI', label: 'feika' },
-    { value: 'STU FIIT', label: 'fiitka' },
-    { value: 'UK FMFI', label: 'matfyz' },
-    { value: 'TUKE FEI', label: '' },
-    { value: 'UNIZA FEIT', label: 'UNIZA FEIT' },
+  const selectOptions: SelectOption[] = [
+    { const: '_example', title: 'example', description: 'skola' },
+    { const: 'stu_fei', title: 'STU FEI', description: 'feika' },
+    { const: 'stu_fiit', title: 'STU FIIT', description: 'fiitka' },
+    { const: 'uk_fmfi', title: 'UK FMFI', description: 'matfyz' },
+    { const: 'tuke_fei', title: 'TUKE FEI', description: '' },
+    { const: 'uniza_feit', title: 'UNIZA FEIT', description: 'UNIZA FEIT' },
   ]
 
-  const valueOne: EnumOptionsType[] = [{ value: 'TUKE FEI', label: '' }]
+  const valueOne: SelectOption[] = [{ const: 'tuke_fei', title: 'TUKE FEI', description: '' }]
 
-  const valueMulti: EnumOptionsType[] = [
-    { value: 'example', label: 'skola' },
-    { value: 'UK FMFI', label: 'matfyz' },
+  const valueMulti: SelectOption[] = [
+    { const: 'uk_fmfi', title: 'UK FMFI', description: 'matfyz' },
+    { const: 'tuke_fei', title: 'TUKE FEI', description: '' },
   ]
 
   return (

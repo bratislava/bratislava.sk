@@ -1,23 +1,22 @@
 import ChevronRightIcon from '@assets/images/forms/chevron-right.svg'
 import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
-import { EnumOptionsType } from '@rjsf/utils'
 import cx from 'classnames'
 import React from 'react'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
+import { SelectOption } from './SelectField'
 
 interface DropdownRowProps {
-  option: EnumOptionsType
+  option: SelectOption
   isBold?: boolean
   selected?: boolean
   type: 'one' | 'multiple' | 'arrow' | 'radio'
   divider?: boolean
-  selectHashCode?: string
-  onChooseOne: (option: EnumOptionsType, close?: boolean) => void
-  onUnChooseOne: (option: EnumOptionsType, close?: boolean) => void
-  onChooseMulti: (option: EnumOptionsType) => void
-  onUnChooseMulti: (option: EnumOptionsType) => void
+  onChooseOne: (option: SelectOption, close?: boolean) => void
+  onUnChooseOne: (option: SelectOption, close?: boolean) => void
+  onChooseMulti: (option: SelectOption) => void
+  onUnChooseMulti: (option: SelectOption) => void
 }
 
 const DropdownRow = ({
@@ -26,7 +25,6 @@ const DropdownRow = ({
   selected,
   type,
   divider,
-  selectHashCode,
   onChooseOne,
   onUnChooseOne,
   onChooseMulti,
@@ -39,16 +37,11 @@ const DropdownRow = ({
       'h-14': !isBold,
       'h-full xs:h-[84px]': isBold,
     },
-    selectHashCode,
   )
 
-  const optionClassName = cx(
-    'dropdown text-16 w-full',
-    {
-      'text-16-semibold': isBold,
-    },
-    selectHashCode,
-  )
+  const optionClassName = cx('dropdown text-16 w-full', {
+    'text-16-semibold': isBold,
+  })
 
   // EVENT HANDLERS
   const handleOnClick = () => {
@@ -59,9 +52,8 @@ const DropdownRow = ({
     else if (!selected && type === 'radio') onChooseOne(option, false)
   }
 
-  // HELPER FUNCTIONS
-  const getRowIcon = () => {
-    return type === 'multiple' ? (
+  const rowIcon =
+    type === 'multiple' ? (
       <CheckboxIcon checked={selected} />
     ) : type === 'one' && selected ? (
       <FilledSelectedIcon />
@@ -70,26 +62,27 @@ const DropdownRow = ({
     ) : type === 'radio' ? (
       <RadioButtonIcon selected={selected} />
     ) : null
-  }
+
+  const MAX_TEXT_SIZE = 18
+  const optionText = option.title ?? String(option.const)
+  const transformedOptionText = `${optionText.slice(0, MAX_TEXT_SIZE)}${
+    optionText.length > MAX_TEXT_SIZE ? '...' : ''
+  }`
 
   // RENDER
   return (
     <div className={rowClassName} onClick={handleOnClick}>
-      <div className={`${selectHashCode} dropdown flex h-full flex-col justify-center`}>
-        <div className={`${selectHashCode} dropdown flex flex-row justify-center`}>
-          <p className={optionClassName}>{option.value}</p>
-          <div className={`${selectHashCode} dropdown relative flex flex-col justify-center`}>
-            {getRowIcon()}
-            <div className={`${selectHashCode} dropdown absolute inset-0 z-10`} />
+      <div className="dropdown flex h-full flex-col justify-center">
+        <div className="dropdown flex flex-row justify-center">
+          <p className={optionClassName}>{transformedOptionText}</p>
+          <div className="dropdown relative flex flex-col justify-center">
+            {rowIcon}
+            <div className="dropdown absolute inset-0 z-10" />
           </div>
         </div>
-        {option.label !== String(option.value) && (
-          <p className={`${selectHashCode} dropdown text-p3`}>{option.label}</p>
-        )}
+        {option.description && <p className="dropdown text-p3">{option.description}</p>}
       </div>
-      {divider && (
-        <div className={`${selectHashCode} dropdown border-form-input-default border-b-2`} />
-      )}
+      {divider && <div className="dropdown border-form-input-default border-b-2" />}
     </div>
   )
 }
