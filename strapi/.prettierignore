@@ -1,7 +1,0 @@
-# Add files here to ignore them from prettier formatting
-
-yarn.lock
-build
-.cache
-.tmp
-strapi-updater.json

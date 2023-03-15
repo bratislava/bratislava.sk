@@ -6,14 +6,14 @@
   ],
   "settings": {
     "workbench.colorCustomizations": {
-      "sideBar.border": "#E05F53",
-      "statusBar.background": "#E05F53",
+      "sideBar.border": "#e08b53",
+      "statusBar.background": "#e08b53",
       "statusBar.foreground": "#15202b",
-      "statusBarItem.hoverBackground": "#D83728",
-      "statusBarItem.remoteBackground": "#E05F53",
+      "statusBarItem.hoverBackground": "#d8a928",
+      "statusBarItem.remoteBackground": "#e08b53",
       "statusBarItem.remoteForeground": "#15202b"
     },
-    "peacock.color": "#E05F53",
+    "peacock.color": "#e08b53",
     "typescript.tsdk": "./next/node_modules/typescript/lib"
   }
 }

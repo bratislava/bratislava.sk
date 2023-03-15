@@ -2,8 +2,6 @@ resources:
   - deployment.yml
   - service-app.yml
   - ingress.yml
-  - ukrajina.ingress.yml
-  - platbadane.ingress.yml
 configurations:
   - configuration.yml
 
