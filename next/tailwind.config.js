@@ -1,5 +1,6 @@
 const { join } = require('path')
 const plugin = require('tailwindcss/plugin')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 const scrollBarHide = plugin(function ({ addUtilities }) {
   addUtilities({
@@ -44,23 +45,7 @@ module.exports = {
       none: 'none',
     },
     fontFamily: {
-      sans: [
-        'Public Sans',
-        'ui-sans-serif',
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
+      sans: ['var(--inter-font)', ...defaultTheme.fontFamily.sans],
     },
 
     fontSize: {
@@ -219,6 +204,7 @@ module.exports = {
         66: '17.5rem', // 280px
         76: '19rem', // 304px
         88: '22rem', // 352px
+        100: '25rem',
         104: '26rem', // 416px
         200: '50rem', // 800px
       },

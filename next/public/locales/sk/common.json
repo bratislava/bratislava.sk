@@ -11,6 +11,7 @@
   "allEvents": "Všetky podujatia",
   "goOutNewsLink": "mesto-bratislava/transparentne-mesto/aktuality",
   "seeAllNews": "Prejsť na všetky aktuality",
+  "moreInfo": "Viac informacií",
   "allNewsLink": "/mesto-bratislava/transparentne-mesto/aktuality",
   "upComingEvents": "Najbližšie podujatia",
   "searchTheSite": "Vyhľadávanie na stránke",
@@ -121,5 +122,6 @@
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
   "noUsersToShow": "Žiadne kontakty na zobrazenie.",
   "menu.show_less": "Zobraziť menej",
-  "menu.show_more": "Zobraziť viac"
+  "menu.show_more": "Zobraziť viac",
+  "skipNavigation": "Preskočiť navigáciu"
 }

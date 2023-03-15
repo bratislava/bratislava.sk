@@ -4,7 +4,7 @@
 import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
-import { arrayify, shouldSkipStaticPaths } from '@utils/utils'
+import { arrayify } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -13,7 +13,6 @@ import BlogPostPage from '../../components/pages/blogPostPage'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   let paths: { params: { slug: string } }[] = []
-  if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   const { blogPosts: blogPostSk } = await client.BlogPostsStaticPaths({
     locale: ctx.locales[0],
@@ -83,7 +82,7 @@ interface BlogPostPageProps {
 }
 
 const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
-  const parsedFooter = parseFooter(footer ?? {})
+  const parsedFooter = parseFooter(footer?.data?.attributes ?? {})
   const menuItems = parseMainMenu(mainMenu)
 
   // TODO change if multilingual blogs

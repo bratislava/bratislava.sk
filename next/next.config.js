@@ -1,8 +1,3 @@
-// TODO use @ts-check
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path')
-const fs = require('fs')
 const { i18n } = require('./next-i18next.config')
 const { withSentryConfig } = require('@sentry/nextjs')
 
@@ -11,18 +6,10 @@ const { withSentryConfig } = require('@sentry/nextjs')
  */
 const nextConfig = {
   i18n,
-  reloadOnPrerender: process.env.NODE_ENV === 'development',
+  reactStrictMode: true,
   images: {
     domains: ['localhost', 'cdn-api.bratislava.sk'], // TODO will need fixing before deployment
   },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: false,
-  },
-  reactStrictMode: false,
   async rewrites() {
     return {
       beforeFiles: [
@@ -2708,6 +2695,16 @@ const nextConfig = {
       },
     ]
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+    // used for loading eform xml template
+    config.module.rules.push({ test: /\.xml$/, loader: 'xml-loader' })
+
+    return config
+  },
 }
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -2721,30 +2718,15 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
 
-const moduleExports = (phase, { defaultConfig }) => {
-  // Assign phase to modify on-demand revalidation part
-  nextConfig.serverRuntimeConfig['phase'] = phase
-
-  return {
-    ...defaultConfig,
+// Make sure adding Sentry options is the last code to run before exporting, to
+// ensure that your source maps include changes from all other Webpack plugins
+module.exports = withSentryConfig(
+  {
     ...nextConfig,
-    // TODO enable sentry sourcemap uploading below once pipelines are used not just for testing, but also for deployment
     sentry: {
       disableServerWebpackPlugin: true,
       disableClientWebpackPlugin: true,
     },
-    webpack(config) {
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      })
-      // used for loading eform xml template
-      config.module.rules.push({ test: /\.xml$/, loader: 'xml-loader' })
-
-      return config
-    },
-  }
-}
-// Make sure adding Sentry options is the last code to run before exporting, to
-// ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
+  },
+  sentryWebpackPluginOptions,
+)

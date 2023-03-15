@@ -13,7 +13,7 @@ interface SummaryRowProps {
 const SummaryRow = (props: SummaryRowProps) => {
   const { data, size = 'large', isEditable = true, onGoToStep } = props
 
-  const containerClassName = cx('border-b-2 sm:flex-nowrap flex flex-wrap flex-row py-2.5 gap-2', {
+  const containerClassName = cx('border-b-2 md:flex-nowrap flex flex-wrap flex-row py-2.5 gap-2', {
     '[&>div>*]:block border-red-500': data.isError,
     'border-gray-200 [&>div>*]:hover:block': !data.isError,
     'hover:border-gray-700': isEditable,

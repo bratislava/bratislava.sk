@@ -55,7 +55,7 @@ export const HamburgerMenu = ({
   return (
     <div
       className={cx(
-        'fixed top-16 mt-1 left-0 bg-white w-screen overflow-y-scroll lg:hidden flex flex-col',
+        'fixed top-16 left-0 bg-white w-screen overflow-y-scroll lg:hidden flex flex-col',
       )}
       style={{ height: 'calc(100vh - 60px)' }}
     >

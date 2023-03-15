@@ -14,7 +14,7 @@ export const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
   if (isEmpty(bookmarks)) return null
   return (
     <div
-      className={cx(className, 'hidden xl:flex flex-col absolute right-0 z-40 pointer-events-none')}
+      className={cx(className, 'hidden xl:flex flex-col absolute right-0 z-20 pointer-events-none')}
     >
       {bookmarks?.map((bookmark, index) => (
         <Bookmark

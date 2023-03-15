@@ -4,26 +4,16 @@
 
 import { EFormValue } from '@backend/forms'
 import { getEform } from '@backend/utils/forms'
-import { PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { PageHeader } from '@bratislava/ui-bratislava'
 import GeneratedFormRJSF from '@bratislava/ui-bratislava/FormRJSF/GeneratedFormRJSF'
-import { FormValidation, RJSFSchema, StrictRJSFSchema } from '@rjsf/utils'
-import { customizeValidator } from '@rjsf/validator-ajv8'
-import { useFormStepper } from '@utils/forms'
-import { client } from '@utils/gql'
-import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
+import { pageStyle } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import { forceString, isProductionDeployment } from '@utils/utils'
-import Button from 'components/forms/simple-components/Button'
-import FinalStep from 'components/forms/steps/FinalStep'
-import ObjectFieldTemplate from 'components/forms/templates/ObjectFieldTemplate'
-import { ThemedForm } from 'components/forms/ThemedForm'
+import FormPageLayout from 'components/layouts/FormPageLayout'
 import { GetServerSidePropsContext } from 'next'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 
-import StepperView from '../../components/forms/steps/StepperView'
-import BasePageLayout from '../../components/layouts/BasePageLayout'
 import PageWrapper from '../../components/layouts/PageWrapper'
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
@@ -39,15 +29,9 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   // necessary for page wrappers common for entire web
   const locale = ctx.locale ?? 'sk'
-  const { footer, mainMenu } = await client.PageBySlug({
-    slug: 'test',
-    locale,
-  })
 
   return {
     props: {
-      footer,
-      mainMenu,
       eform,
       page: {
         locale: ctx.locale,
@@ -58,7 +42,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
             locale: l,
           })),
       },
-      ...(await serverSideTranslations(locale, ['common', 'footer', 'forms'])),
+      ...(await serverSideTranslations(locale)),
     },
   }
 }
@@ -78,13 +62,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 //   })
 // }
 
-const FormTestPage = ({
-  footer,
-  mainMenu,
-  page,
-  eform,
-}: AsyncServerProps<typeof getServerSideProps>) => {
-  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
+const FormTestPage = ({ page, eform }: AsyncServerProps<typeof getServerSideProps>) => {
   const router = useRouter()
 
   const formSlug = forceString(router.query.eform)
@@ -101,7 +79,7 @@ const FormTestPage = ({
         { locale: 'en', slug: pageSlug },
       ]}
     >
-      <BasePageLayout footer={(footer && parseFooter(footer)) ?? undefined} menuItems={menuItems}>
+      <FormPageLayout navHidden>
         <style
           dangerouslySetInnerHTML={{
             __html: pageStyle('main'),
@@ -118,7 +96,7 @@ const FormTestPage = ({
           TODO form info
         </PageHeader>
         <GeneratedFormRJSF eform={eform} escapedSlug={escapedSlug} formSlug={formSlug} />
-      </BasePageLayout>
+      </FormPageLayout>
     </PageWrapper>
   )
 }

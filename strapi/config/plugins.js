@@ -56,6 +56,10 @@ module.exports = {
       apolloServer: {
         introspection: true,
       },
+      artifacts: {
+        // When changing schema path, also change watchIgnoreFiles in strapi/config/admin.js
+        schema: true,
+      },
     },
   },
   meilisearch: {
@@ -81,7 +85,9 @@ module.exports = {
             ...entry,
             // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
             // use (number) filters.
-            publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+            publishedAtTimestamp: entry.publishedAt
+              ? new Date(entry.publishedAt).getTime()
+              : undefined,
           }),
       },
       vzn: {
@@ -95,7 +101,9 @@ module.exports = {
             ...entry,
             // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
             // use (number) filters.
-            publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+            publishedAtTimestamp: entry.publishedAt
+              ? new Date(entry.publishedAt).getTime()
+              : undefined,
           }),
       },
     },

@@ -4,7 +4,7 @@ import WidgetWrapper from 'components/forms/widget-wrappers/WidgetWrapper'
 import { useEffectOnce } from 'usehooks-ts'
 import React from 'react'
 
-import SelectField from '../widget-components/SelectField/SelectField'
+import SelectField, { SelectOption } from '../widget-components/SelectField/SelectField'
 
 type SelectRJSFOptions = {
   enumOptions?: EnumOptionsType[]
@@ -42,6 +42,7 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
   } = options
 
   const type = schema.type === 'array' ? 'multiple' : 'one'
+
   const handleOnChangeMultiple = (newValue?: EnumOptionsType[]) => {
     if (newValue) {
       const optionValues: any[] = newValue.map((option: EnumOptionsType) => option.value)
@@ -59,34 +60,41 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     }
   }
 
-  const handleOnChange = (newValue?: EnumOptionsType[]) => {
+  const handleOnChange = (newValue?: SelectOption[]) => {
+    const originalNewValue = enumOptions?.filter(({ schema }: EnumOptionsType) => {
+      return newValue?.some((value) => {
+        return (
+          schema?.title === value.title &&
+          schema?.description === value.description &&
+          schema?.const === value.const
+        )
+      })
+    })
+
     if (type === 'multiple') {
-      handleOnChangeMultiple(newValue)
+      handleOnChangeMultiple(originalNewValue)
     } else {
-      handleOnChangeOne(newValue)
+      handleOnChangeOne(originalNewValue)
     }
   }
 
-  const handleTransformOne = (): EnumOptionsType[] => {
-    const transformedValue: EnumOptionsType[] = []
+  const transformedEnumOptions = enumOptions?.map((option) => option.schema as SelectOption) ?? []
+
+  const handleTransformOne = (): SelectOption[] => {
+    const transformedValue: SelectOption[] = []
     if (!enumOptions || !value || Array.isArray(value)) return transformedValue
 
-    for (const option of enumOptions) {
-      if (option.value === value) {
-        transformedValue.push(option)
-        break
-      }
-    }
-    return transformedValue
+    const chosenOption = transformedEnumOptions.find((option) => value === option.const)
+    return chosenOption ? [chosenOption] : []
   }
 
-  const handleTransformMultiple = (): EnumOptionsType[] => {
-    const transformedValue: EnumOptionsType[] = []
+  const handleTransformMultiple = (): SelectOption[] => {
+    const transformedValue: SelectOption[] = []
     if (!enumOptions || !value || !Array.isArray(value)) return transformedValue
 
     value.forEach((optionValue) => {
-      enumOptions.forEach((option) => {
-        if (option.value === optionValue) {
+      transformedEnumOptions.forEach((option) => {
+        if (option.const === optionValue) {
           transformedValue.push(option)
         }
       })
@@ -95,17 +103,15 @@ const SelectFieldWidgetRJSF = (props: SelectFieldWidgetRJSFProps) => {
     return transformedValue
   }
 
-  const transformValue = (): EnumOptionsType[] => {
-    return type === 'multiple' ? handleTransformMultiple() : handleTransformOne()
-  }
+  const transformedValue = type === 'multiple' ? handleTransformMultiple() : handleTransformOne()
 
   return (
     <WidgetWrapper accordion={accordion} spaceBottom={spaceBottom} spaceTop={spaceTop}>
       <SelectField
         type={type}
         label={label}
-        enumOptions={enumOptions}
-        value={transformValue()}
+        enumOptions={transformedEnumOptions}
+        value={transformedValue}
         selectAllOption={selectAllOption}
         placeholder={placeholder}
         helptext={helptext}

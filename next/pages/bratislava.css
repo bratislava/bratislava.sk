@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 :root {
   /*
     These variables are used in different pages and component to override
@@ -146,10 +144,6 @@ body {
   color: var(--font-color);
 }
 
-.font-inter {
-  font-family: 'Inter', sans-serif;
-}
-
 .base-input {
   @apply appearance-none box-border inline-block border-3 px-6 py-0 text-font rounded-10 font-medium h-14;
   @apply bg-white border-white focus:outline-none focus:border-category-600 hover:border-category-600;
@@ -170,10 +164,21 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+.w-fit-title::before {
+  @apply block font-bold h-0 overflow-hidden invisible;
+  content: attr(title);
+}
+
 /* Move safari key icon to the left for fields with type password */
 /*noinspection CssInvalidPseudoSelector*/
 input[type='password']::-webkit-credentials-auto-fill-button {
-  @apply mr-8
+  @apply mr-8;
+}
+
+/* Move safari 'Strong password' to the left for fields with type password */
+/*noinspection CssInvalidPseudoSelector*/
+input[type='password']::-webkit-strong-password-auto-fill-button {
+  @apply mr-8 pb-2;
 }
 
 /* Remove arrows from input type='number' */
@@ -202,7 +207,6 @@ input[type='number']::-webkit-outer-spin-button {
   color: #333333;
   cursor: pointer;
 }
-  
 
 /* styles for chatbot START */
 .webchat {
@@ -214,9 +218,9 @@ input[type='number']::-webkit-outer-spin-button {
   border-radius: 8px;
   display: none;
   overflow: hidden;
-  border: solid 2px RGB(51,51,51,0.5);
+  border: solid 2px RGB(51, 51, 51, 0.5);
   z-index: 9999;
- }
+}
 
 .webchat__imageAvatar__image img {
   position: absolute;
@@ -225,24 +229,24 @@ input[type='number']::-webkit-outer-spin-button {
   bottom: 0;
   right: 0;
 }
-  
+
 .webchat__bubble__content {
-    border-radius: 20px !important;
+  border-radius: 20px !important;
 }
 
 .floating-button.hide-on-click svg:first-child {
-    display: block;
+  display: block;
 }
 .floating-button.hide-on-click svg:last-child {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 768px) {
   .webchat {
-      width: 100%;
-      height: calc(100% - 88px);
-      left: 0;
-      border-radius: 0;
+    width: 100%;
+    height: calc(100% - 88px);
+    left: 0;
+    border-radius: 0;
   }
 }
 /* styles for chatbot END*/

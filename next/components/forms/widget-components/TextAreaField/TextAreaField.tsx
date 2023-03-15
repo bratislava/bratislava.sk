@@ -71,7 +71,8 @@ const TextAreaField = ({
     className,
     {
       'hover:border-gray-400': !disabled && !isFocused,
-      'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
+      'border-negative-700 hover:border-negative-700 focus:border-negative-700':
+        errorMessage?.length > 0 && !disabled,
       'border-gray-300 bg-gray-100': disabled,
       'border-gray-700 hover:border-gray-700': !disabled && isFocused,
     },

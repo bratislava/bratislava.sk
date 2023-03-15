@@ -8,6 +8,7 @@ import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Link from '@bratislava/ui-bratislava/Link/Link'
 import { ROUTES } from '@utils/constants'
 import useAccount, { UserData } from '@utils/useAccount'
+import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import HamburgerMenu from 'components/forms/segments/HambergerMenu/HamburgerMenu'
 import Button from 'components/forms/simple-components/Button'
@@ -17,13 +18,13 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
 import { Item } from 'react-stately'
-import { getLanguageKey } from '@utils/utils'
 
 interface IProps extends LanguageSelectProps {
   className?: string
   navHidden?: boolean
   sectionsList?: MenuItem[]
   menuItems: MenuItem[]
+  hiddenHeaderNav?: boolean
 }
 
 interface LanguageSelectProps {
@@ -54,12 +55,14 @@ export const AccountNavBar = ({
   sectionsList,
   menuItems,
   navHidden,
+  hiddenHeaderNav,
   ...languageSelectProps
 }: IProps) => {
   const [burgerOpen, setBurgerOpen] = useState(false)
   const { isAuth, logout, userData } = useAccount()
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
+  const anotherLanguage = languageSelectProps.languages?.find((l) => l.key !== languageKey)
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation(['common', 'account'])
@@ -151,21 +154,12 @@ export const AccountNavBar = ({
                       <Divider />
                     </>
                   ) : (
-                    <>
-                      <Link href="/" variant="plain" className={linkClassName}>
-                        {t('account:menu_account_link')}
-                      </Link>
-                      <Divider />
-                      <Link href="/login" variant="plain" className={`${linkClassName} ml-2`}>
-                        {t('account:menu_login_link')}
-                      </Link>
-                      <Button
-                        onPress={() => router.push(ROUTES.REGISTER)}
-                        variant="negative"
-                        text={t('account:menu_register_link')}
-                        size="sm"
-                      />
-                    </>
+                    <Button
+                      onPress={() => router.push(ROUTES.REGISTER)}
+                      variant="negative"
+                      text={t('account:menu_account_link')}
+                      size="sm"
+                    />
                   )}
 
                   <Link href={t('searchLink')} variant="plain">
@@ -176,10 +170,16 @@ export const AccountNavBar = ({
                   <UILink href="/en" className="hidden">
                     hidden
                   </UILink>
-
-                  <div className="text-font/75 relative flex items-center bg-transparent">
-                    <LanguageMenu {...languageSelectProps} />
-                  </div>
+                  <Divider />
+                  {anotherLanguage && (
+                    <Button
+                      size="sm"
+                      className="underline underline-offset-4"
+                      variant="link-black"
+                      onPress={() => languageSelectProps.onLanguageChange?.(anotherLanguage)}
+                      text={anotherLanguage?.title}
+                    />
+                  )}
                 </>
               ) : isAuth ? (
                 <Menu
@@ -209,7 +209,7 @@ export const AccountNavBar = ({
             </div>
           </nav>
         </div>
-        {isAuth && sectionsList && (
+        {isAuth && sectionsList && !hiddenHeaderNav && (
           <div className="border-t border-gray-200 max-w-screen-lg m-auto h-[57px] w-full items-center justify-between lg:flex">
             <ul className="w-full h-full flex items-center">
               {sectionsList.map((sectionItem) => (
@@ -217,9 +217,10 @@ export const AccountNavBar = ({
                   <NextLink href={sectionItem.link}>
                     <div
                       className={cx(
-                        'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 border-transparent hover:text-main-700 hover:border-main-700 transition-all',
+                        'text-p2-semibold w-full h-full flex items-center justify-center cursor-pointer border-b-2 hover:text-main-700 hover:border-main-700 transition-all',
                         {
                           'text-main-700 border-main-700': isActive(sectionItem),
+                          'border-transparent': !isActive(sectionItem),
                         },
                       )}
                     >
@@ -249,7 +250,6 @@ export const AccountNavBar = ({
               <Link href={t('searchLink')} variant="plain" className="p-4">
                 <SearchIcon />
               </Link>
-              <LanguageMenu {...languageSelectProps} />
             </div>
           </div>
         )}
@@ -282,42 +282,6 @@ export const AccountNavBar = ({
   )
 }
 
-const LanguageMenu = ({ languages, currentLanguage, onLanguageChange }: LanguageSelectProps) => {
-  const onSelectLanguage = (key: React.Key) => {
-    const selectedOption = languages?.find((opt) => opt.key === key)
-    if (selectedOption) onLanguageChange?.(selectedOption)
-  }
-
-  const dropDownOptions = languages?.filter((option) => option.key !== currentLanguage) || []
-  return (
-    <Menu
-      label={currentLanguage?.toUpperCase() || ''}
-      onAction={onSelectLanguage}
-      className="flex w-11 h-auto min-h-[60px] flex-col items-center rounded-lg bg-main-200 pt-1 pb-3"
-      containerHeaderEl={
-        <div className="z-10 h-0 w-4 border-x-8 border-b-4 border-solid border-transparent border-b-main-200 m-auto" />
-      }
-    >
-      {dropDownOptions.map((option) => (
-        <Item key={option.key}>
-          <LanguageMenuItem option={option} />
-        </Item>
-      ))}
-    </Menu>
-  )
-}
-
-const LanguageMenuItem = ({ option }: { option: LanguageOption }) => {
-  return (
-    <div
-      className="text-p2 hover:text-p2-semibold cursor-pointer text-font mt-3 h-6 w-6"
-      key={option.key}
-    >
-      {option.title}
-    </div>
-  )
-}
-
 const AccountMenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
   const { t } = useTranslation()
 
@@ -328,7 +292,10 @@ const AccountMenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
           <span>{menuItem.icon}</span>
         </div>
       </div>
-      <div className="text-p2 hover:text-p2-semibold text-font p-2 whitespace-nowrap">
+      <div
+        className="text-p2 hover:text-p2-semibold w-fit-title text-font p-2 whitespace-nowrap"
+        title={t(menuItem.title)}
+      >
         {t(menuItem.title)}
       </div>
     </div>

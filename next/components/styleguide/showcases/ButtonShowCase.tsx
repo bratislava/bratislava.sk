@@ -21,13 +21,13 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       <Stack>
         <Button
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
           variant="category"
           text="Button"
         />
         <Button
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
           variant="category"
           text="Button"
           size="sm"
@@ -43,21 +43,30 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       </Stack>
       <Stack>
         <Button variant="category-outline" text="Button" startIcon={<SearchIcon />} />
-        <Button variant="category-outline" text="Button" endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="category-outline"
+          text="Button"
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
         <Button
           variant="category-outline"
           text="Button"
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
         />
         <Button variant="category-outline" text="Button" size="sm" startIcon={<SearchIcon />} />
-        <Button variant="category-outline" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="category-outline"
+          text="Button"
+          size="sm"
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
         <Button
           variant="category-outline"
           text="Button"
           size="sm"
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
         />
       </Stack>
       <Stack>
@@ -75,11 +84,20 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       </Stack>
       <Stack>
         <Button text="Button" startIcon={<SearchIcon />} />
-        <Button text="Button" endIcon={<ArrowRightIcon />} />
-        <Button text="Button" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button text="Button" endIcon={<ArrowRightIcon className="w-6 h-6" />} />
+        <Button
+          text="Button"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
         <Button text="Button" size="sm" startIcon={<SearchIcon />} />
-        <Button text="Button" size="sm" endIcon={<ArrowRightIcon />} />
-        <Button text="Button" size="sm" startIcon={<SearchIcon />} endIcon={<ArrowRightIcon />} />
+        <Button text="Button" size="sm" endIcon={<ArrowRightIcon className="w-6 h-6" />} />
+        <Button
+          text="Button"
+          size="sm"
+          startIcon={<SearchIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
       </Stack>
       <Stack>
         <Button icon={<SearchIcon />} />
@@ -96,21 +114,30 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       </Stack>
       <Stack>
         <Button variant="black-outline" text="Button" startIcon={<SearchIcon />} />
-        <Button variant="black-outline" text="Button" endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black-outline"
+          text="Button"
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
         <Button
           variant="black-outline"
           text="Button"
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
         />
         <Button variant="black-outline" text="Button" size="sm" startIcon={<SearchIcon />} />
-        <Button variant="black-outline" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="black-outline"
+          text="Button"
+          size="sm"
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
         <Button
           variant="black-outline"
           text="Button"
           size="sm"
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
         />
       </Stack>
       <Stack>
@@ -128,21 +155,26 @@ const ButtonShowCase = ({}: ButtonShowCaseProps) => {
       </Stack>
       <Stack>
         <Button variant="negative" text="Button" startIcon={<SearchIcon />} />
-        <Button variant="negative" text="Button" endIcon={<ArrowRightIcon />} />
+        <Button variant="negative" text="Button" endIcon={<ArrowRightIcon className="w-6 h-6" />} />
         <Button
           variant="negative"
           text="Button"
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
         />
         <Button variant="negative" text="Button" size="sm" startIcon={<SearchIcon />} />
-        <Button variant="negative" text="Button" size="sm" endIcon={<ArrowRightIcon />} />
+        <Button
+          variant="negative"
+          text="Button"
+          size="sm"
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
+        />
         <Button
           variant="negative"
           text="Button"
           size="sm"
           startIcon={<SearchIcon />}
-          endIcon={<ArrowRightIcon />}
+          endIcon={<ArrowRightIcon className="w-6 h-6" />}
         />
       </Stack>
 

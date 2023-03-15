@@ -1,13 +1,14 @@
-import { EnumOptionsType } from '@rjsf/utils'
-import SelectField from 'components/forms/widget-components/SelectField/SelectField'
+import SelectField, {
+  SelectOption,
+} from 'components/forms/widget-components/SelectField/SelectField'
 import { Dispatch, SetStateAction } from 'react'
 
 type MunicipalServicesSectionHeaderBase = {
   title: string
-  selectorValue: EnumOptionsType[]
-  setSelectorValue: (val: EnumOptionsType[]) => void
+  selectorValue: SelectOption[]
+  setSelectorValue: (val: SelectOption[]) => void
   setCurrentPage: Dispatch<SetStateAction<number>>
-  enumOptions: EnumOptionsType[]
+  enumOptions: SelectOption[]
 }
 
 const MunicipalServicesSectionHeader = ({

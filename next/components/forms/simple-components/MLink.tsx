@@ -8,22 +8,22 @@ export type LinkProps = Omit<ComponentProps<typeof Link>, 'as' | 'passHref'> & {
   href?: string
 }
 
-const MLink = forwardRef<HTMLAnchorElement, LinkProps>(({ href, label, children, className, ...rest }, ref) => {
-  const regEx = /^http/
+const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ href, label, children, className, ...rest }, ref) => {
+    const regEx = /^http/
 
-  return !regEx.test(href) ? (
-    <Link href={href} passHref>
-      <a ref={ref} {...rest} className={className}>
+    return !regEx.test(href) ? (
+      <Link href={href} passHref ref={ref} {...rest} className={className}>
+        <p>{label}</p>
+        {children}
+      </Link>
+    ) : (
+      <a ref={ref} {...rest} className={className} href={href}>
         <p>{label}</p>
         {children}
       </a>
-    </Link>
-  ) : (
-    <a ref={ref} {...rest} className={className} href={href}>
-      <p>{label}</p>
-      {children}
-    </a>
-  )
-})
+    )
+  },
+)
 
 export default MLink

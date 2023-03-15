@@ -22,6 +22,7 @@ import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldS
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import ServiceCardShowCase from '../components/styleguide/showcases/ServiceCardShowCase'
 import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
+import SnackbarShowCase from '../components/styleguide/showcases/SnackbarShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
 import SummaryRowShowCase from '../components/styleguide/showcases/SummaryRowShowCase'
@@ -65,6 +66,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <SummaryRowShowCase />
         <BannerShowCase />
         <ServiceCardShowCase />
+        <SnackbarShowCase />
       </StyleGuideWrapper>
     </PageWrapper>
   )

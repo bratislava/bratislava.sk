@@ -7,10 +7,11 @@ import {
   StrictRJSFSchema,
 } from '@rjsf/utils'
 import { customizeValidator } from '@rjsf/validator-ajv8'
-import { validateKeyword } from '@utils/api'
-import { AnySchemaObject, FuncKeywordDefinition } from 'ajv'
+import { ApiError, submitEform, validateKeyword } from '@utils/api'
+import { AnySchemaObject, ErrorObject, FuncKeywordDefinition } from 'ajv'
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 import { get, merge } from 'lodash'
+import { useTranslation } from 'next-i18next'
 import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { StepData } from '../components/forms/types/TransformedFormData'
@@ -244,7 +245,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   // this is probably a bug in their typing therefore the cast
   const formRef = useRef<Form>() as RefObject<Form>
 
-  const [nextStepIndex, setNextStepIndex] = useState<number>(0)
+  const [nextStepIndex, setNextStepIndex] = useState<number | null>(null)
   const [stepIndex, setStepIndex] = useState<number>(0)
   const [formData, setFormData] = useState<RJSFSchema>({})
   const [errors, setErrors] = useState<RJSFValidationError[][]>([])
@@ -319,17 +320,18 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => setStepIndex(stepIndex + 1)
-  const jumpToStep = () => setStepIndex(nextStepIndex)
+  const jumpToStep = () => {
+    if (nextStepIndex != null) {
+      setStepIndex(nextStepIndex)
+      setNextStepIndex(null)
+    }
+  }
 
   const [isSkipEnabled, setIsSkipEnabled] = useState<boolean>(false)
   const disableSkip = () => setIsSkipEnabled(false)
 
   const submitStep = () => {
     formRef?.current?.submit()
-  }
-
-  const skipToStep = (newNextStepIndex: number) => {
-    setNextStepIndex(newNextStepIndex)
   }
 
   // need to handle skipping with submitting and validating (skip step means do submitting and validating but always go to next step)
@@ -346,7 +348,15 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
 
   // this is needed for skipping multiple steps through StepperView
   // TODO: could be reduced by wrapping nextStepIndex and isSkipEnabled to 1 object
-  useEffect(() => setIsSkipEnabled(true), [nextStepIndex])
+  useEffect(() => {
+    if (nextStepIndex != null) {
+      setIsSkipEnabled(true)
+    }
+  }, [nextStepIndex])
+
+  const skipToStep = (newNextStepIndex: number) => {
+    setNextStepIndex(newNextStepIndex)
+  }
 
   const setStepFormData = (stepFormData: RJSFSchema) => {
     // transformNullToUndefined(stepFormData)
@@ -407,5 +417,36 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
     keywords: ajvKeywords,
     customFormats,
     validator,
+  }
+}
+
+export const useFormSubmitter = (slug: string) => {
+  const [errors, setErrors] = useState<Array<ErrorObject | string>>([])
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const { t } = useTranslation('forms')
+
+  const submitForm = async (formData: RJSFSchema) => {
+    try {
+      // TODO do something more with the result then just showing success
+      const result = await submitEform(slug, formData)
+      setErrors([])
+      setSuccessMessage(t('success'))
+    } catch (error) {
+      console.log('Form submission error')
+      console.log(error)
+      if (error instanceof ApiError) {
+        setErrors(error.errors)
+      } else if (error instanceof Error) {
+        setErrors([t([`errors.${error?.message}`, 'errors.unknown'])])
+      } else {
+        setErrors([t('errors.unknown')])
+      }
+    }
+  }
+
+  return {
+    submitForm,
+    errors,
+    successMessage,
   }
 }

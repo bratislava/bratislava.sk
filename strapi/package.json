@@ -5,29 +5,28 @@
   "description": "A Strapi application",
   "scripts": {
     "dev": "yarn develop",
-    "develop": "ENV_PATH='./.env.local' strapi develop",
+    "develop": "cross-env ENV_PATH='./.env.local' strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.21.0",
     "@babel/eslint-parser": "^7.19.1",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-scope": "^7.1.1"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "4.6.0",
-    "@strapi/plugin-i18n": "4.6.0",
-    "@strapi/plugin-users-permissions": "4.6.0",
-    "@strapi/strapi": "4.6.0",
+    "@strapi/plugin-graphql": "4.7.1",
+    "@strapi/plugin-i18n": "4.7.1",
+    "@strapi/plugin-users-permissions": "4.7.1",
+    "@strapi/strapi": "4.7.1",
     "patch-package": "^6.5.1",
-    "pg": "^8.9.0",
+    "pg": "^8.10.0",
     "postinstall-postinstall": "^2.1.0",
-    "strapi-plugin-email-designer": "^2.1.2",
-    "strapi-plugin-meilisearch": "https://github.com/bratislava/strapi-plugin-meilisearch.git",
+    "strapi-plugin-meilisearch": "0.9.1",
     "strapi-provider-upload-ts-minio": "^3.1.0"
   },
   "author": {

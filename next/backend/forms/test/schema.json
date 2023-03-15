@@ -189,15 +189,18 @@
               "title": "University",
               "oneOf": [
                 {
-                  "const": "STU FEI",
-                  "title": "fakulta elektrotechniky a informatiky"
+                  "const": "stu_fei",
+                  "title": "STU FEI",
+                  "description": "fakulta elektrotechniky a informatiky"
                 },
                 {
-                  "const": "STU FCHPT"
+                  "const": "stu_fchpt",
+                  "title": "STU FCHPT"
                 },
                 {
-                  "const": "STU FIIT",
-                  "title": "fakulta informatiky a informacnych technologii"
+                  "const": "stu_fiit",
+                  "title": "STU FIIT",
+                  "description": "fakulta informatiky a informacnych technologii"
                 }
               ]
             },
@@ -209,15 +212,18 @@
                 "type": "string",
                 "oneOf": [
                   {
-                    "const": "STU FEI",
-                    "title": "fakulta elektrotechniky a informatiky"
+                    "const": "stu_fei",
+                    "title": "STU FEI",
+                    "description": "fakulta elektrotechniky a informatiky"
                   },
                   {
-                    "const": "STU FCHPT"
+                    "const": "stu_fchpt",
+                    "title": "STU FCHPT"
                   },
                   {
-                    "const": "STU FIIT",
-                    "title": "fakulta informatiky a informacnych technologii"
+                    "const": "stu_fiit",
+                    "title": "STU FIIT",
+                    "description": "fakulta informatiky a informacnych technologii"
                   }
                 ]
               }
@@ -226,13 +232,16 @@
               "type": "number",
               "title": "Years in school",
               "uniqueItems": true,
-              "enum": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
+              "oneOf": [
+                {
+                  "const": 1
+                },
+                {
+                  "const": 2
+                },
+                {
+                  "const": 3
+                }
               ]
             }
           }

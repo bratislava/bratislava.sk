@@ -1,7 +1,8 @@
-import BasketServiceIcon from '@assets/images/account/municipal-services/basket-icon.svg'
-import CompassServiceIcon from '@assets/images/account/municipal-services/compass-icon.svg'
-import MoneyServiceIcon from '@assets/images/account/municipal-services/money-icon.svg'
-import PoolServiceIcon from '@assets/images/account/municipal-services/pool-icon.svg'
+import LibraryIcon from '@assets/images/account/municipal-services/library-icon.svg'
+import ParkingIcon from '@assets/images/account/municipal-services/parking-icon.svg'
+import TaxesIcon from '@assets/images/account/municipal-services/taxes-icon.svg'
+import TreeIcon from '@assets/images/account/municipal-services/tree-icon.svg'
+import PlatbaDaneImg from '@assets/images/platba-dane2.png'
 import { ROUTES } from '@utils/constants'
 import useAccount from '@utils/useAccount'
 import AccountSectionHeader from 'components/forms/segments/AccountSectionHeader/AccountSectionHeader'
@@ -20,7 +21,9 @@ const IntroSection = () => {
   const { t } = useTranslation('account')
   const { userData, updateUserData, error, resetError } = useAccount()
   const router = useRouter()
-  const [_, setPhoneNumberModalShow] = useState<boolean>(false)
+  const [phoneNumberModalShow, setPhoneNumberModalShow] = useState<boolean>(
+    router.query.from === ROUTES.REGISTER,
+  )
 
   const onSubmitPhoneNumber = async ({ data }: { data?: PhoneNumberData }) => {
     if (await updateUserData({ phone_number: data?.phone_number })) {
@@ -41,7 +44,7 @@ const IntroSection = () => {
     <>
       {userData && (
         <PhoneNumberModal
-          show={router.query.from === ROUTES.REGISTER}
+          show={phoneNumberModalShow}
           onClose={() => setPhoneNumberModalShow(false)}
           onSubmit={onSubmitPhoneNumber}
           error={error}
@@ -58,7 +61,7 @@ const IntroSection = () => {
           <AnnouncementBlock
             announcementContent={announcementContent}
             buttonTitle={t('account_section_intro.announcement_card_action')}
-            imagePath="/img/platba_dane2.png"
+            imagePath={PlatbaDaneImg}
             onPress={() => alert('Actual')}
           />
           <div className="w-full flex items-center justify-between mb-8 px-4 lg:px-0">
@@ -73,28 +76,32 @@ const IntroSection = () => {
           </div>
           <div className="flex gap-3 lg:gap-8 overflow-x-scroll scrollbar-hide px-4 lg:px-0">
             <ServiceCard
-              title="Záväzné stanovisko k investičnej činnosti"
-              description="Záväzné stanovisko slúži ako podklad pre konanie vedené na príslušnom stavebnom úrade."
-              icon={<CompassServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
-              buttonText="Prejsť na žiadosť"
+              title={t('account_section_services.cards.1.title')}
+              description={t('account_section_services.cards.1.description')}
+              icon={<TaxesIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
+              buttonText={t('account_section_services.cards.1.buttonText')}
+              href="/account/taxes-and-fees"
             />
             <ServiceCard
-              title="Dotácia na kontajnerové stanovištia"
-              description="Žiadosť o dotáciu na kontajnerové stanovište alebo o nájom mestského pozemku."
-              icon={<BasketServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
-              buttonText="Prejsť na žiadosť"
+              title={t('account_section_services.cards.4.title')}
+              description={t('account_section_services.cards.4.description')}
+              icon={<ParkingIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
+              buttonText={t('account_section_services.cards.4.buttonText')}
+              href="https://api.parkdots.com/auth/realms/parkingrealm/protocol/openid-connect/registrations?client_id=parkingclient&redirect_uri=https%3A%2F%2Fpermits.parkdots.com%2Fwizard%2Fuser%3FprojectId%3D08b21098-3df8-4a0f-9e5c-75a21711aef7&state=f7127136-6bbf-4325-b603-5623cd086c3f&response_mode=fragment&response_type=code&scope=openid&nonce=33fa1798-098a-4ed6-89d8-7dc464bf5e30&kc_locale=sk"
             />
             <ServiceCard
-              title="Digitálna platba dane z nehnuteľností"
-              description="Digitálna platba dane z nehnuteľnosti, pohodlne a online."
-              icon={<MoneyServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
-              buttonText="Zaplatiť daň digitálne"
+              title={t('account_section_services.cards.5.title')}
+              description={t('account_section_services.cards.5.description')}
+              icon={<LibraryIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
+              buttonText={t('account_section_services.cards.5.buttonText')}
+              href="https://mestskakniznica.sk/sluzby/citanie/ako-sa-prihlasit-do-kniznice"
             />
             <ServiceCard
-              title="Online lístky na kúpaliská"
-              description="Kúpa online lístku alebo permanentky na všetky mestské kúpalíská v Bratislave."
-              icon={<PoolServiceIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
-              buttonText="Kúpiť lístok"
+              title={t('account_section_services.cards.15.title')}
+              description={t('account_section_services.cards.15.description')}
+              icon={<TreeIcon className="w-10 h-10 lg:w-12 lg:h-12" />}
+              buttonText={t('account_section_services.cards.15.buttonText')}
+              href="https://10000stromov.sk/zapojit-sa"
             />
           </div>
           <Button

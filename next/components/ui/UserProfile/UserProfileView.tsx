@@ -3,7 +3,7 @@ import UserProfileConsents, {
 } from '@bratislava/ui-bratislava/UserProfile/UserProfileConsents'
 import UserProfileDetail from '@bratislava/ui-bratislava/UserProfile/UserProfileDetail'
 import UserProfilePassword from '@bratislava/ui-bratislava/UserProfile/UserProfilePassword'
-import useAccount from '@utils/useAccount'
+import useAccount, { UserData } from '@utils/useAccount'
 import { useTranslation } from 'next-i18next'
 import React, { useEffect, useState } from 'react'
 
@@ -16,14 +16,7 @@ const UserProfileView = () => {
   const [isAlertOpened, setIsAlertOpened] = useState(false)
   const [alertType, setAlertType] = useState<'success' | 'error'>('success')
   const [isEmailModalOpened, setIsEmailModalOpened] = useState<boolean>(false)
-  const {
-    userData,
-    updateUserData,
-    temporaryUserData,
-    setTemporaryUserData,
-    resetTemporaryUserData,
-    error,
-  } = useAccount()
+  const { userData, updateUserData, error } = useAccount()
 
   useEffect(() => {
     setAlertType(error ? 'error' : 'success')
@@ -49,56 +42,48 @@ const UserProfileView = () => {
 
   const handleOnCancelEditing = () => {
     setIsEditing(false)
-    resetTemporaryUserData()
   }
 
-  const handleOnSubmitEditing = () => {
-    if (temporaryUserData) {
-      updateUserData(temporaryUserData).then(() => {
-        setIsEditing(false)
-        setIsAlertOpened(true)
-        setTimeout(() => setIsAlertOpened(false), 3000)
-      })
-    } else {
+  const handleOnSubmitEditing = (newUserData: UserData) => {
+    updateUserData(newUserData).then(() => {
       setIsEditing(false)
       setIsAlertOpened(true)
       setTimeout(() => setIsAlertOpened(false), 3000)
-    }
+    })
   }
 
-  // TODO: redirect to change password
   return (
-    <section className="flex flex-col gap-2 sm:gap-0 h-full sm:bg-white">
-      <UserProfileDetail
-        userData={userData}
-        temporaryUserData={temporaryUserData}
-        isEditing={isEditing}
-        isAlertOpened={isAlertOpened}
-        alertType={alertType}
-        onChangeIsEditing={setIsEditing}
-        onChangeTemporary={setTemporaryUserData}
-        onCancelEditing={handleOnCancelEditing}
-        onSubmitEditing={handleOnSubmitEditing}
-        onOpenEmailModal={() => setIsEmailModalOpened(true)}
-      />
-      <UserProfilePassword />
-      <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
-      <MessageModal
-        show={isEmailModalOpened}
-        excludeButtons
-        className="w-[700px] m-5"
-        type="warning"
-        cancelHandler={() => {
-          setIsEmailModalOpened(false)
-        }}
-        submitHandler={() => {
-          setIsEmailModalOpened(false)
-        }}
-        title={t('profile_detail.modal_title')}
-      >
-        <AccountMarkdown content={t('profile_detail.modal_message')} variant="sm" />
-        <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
-      </MessageModal>
+    <section className="bg-gray-100 h-full">
+      <div className="flex flex-col gap-2 md:gap-0 h-full">
+        <UserProfileDetail
+          userData={userData}
+          isEditing={isEditing}
+          isAlertOpened={isAlertOpened}
+          alertType={alertType}
+          onChangeIsEditing={setIsEditing}
+          onCancelEditing={handleOnCancelEditing}
+          onSubmit={handleOnSubmitEditing}
+          onOpenEmailModal={() => setIsEmailModalOpened(true)}
+        />
+        <UserProfilePassword />
+        <UserProfileConsents allConsents={allConsents} onChange={setAllConsents} />
+        <MessageModal
+          show={isEmailModalOpened}
+          excludeButtons
+          className="w-[700px] m-5"
+          type="warning"
+          cancelHandler={() => {
+            setIsEmailModalOpened(false)
+          }}
+          submitHandler={() => {
+            setIsEmailModalOpened(false)
+          }}
+          title={t('profile_detail.modal_title')}
+        >
+          <AccountMarkdown content={t('profile_detail.modal_message')} variant="sm" />
+          <p className="mt-6">{t('profile_detail.modal_thanks')}</p>
+        </MessageModal>
+      </div>
     </section>
   )
 }
