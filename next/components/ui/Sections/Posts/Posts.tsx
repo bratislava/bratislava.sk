@@ -92,10 +92,11 @@ export const Posts = ({
   const { t } = useTranslation('common')
 
   const now = LocalDate.now()
-  const deadline = LocalDate.of(2023, Month.MARCH, 14)
+  const deadline = LocalDate.of(2024, Month.MARCH, 14)
   const isAfterDeadline = Period.between(now, deadline).isNegative()
 
   const roadClosuresAddress = 'doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
+  const roadClosuresAddressNew = 'doprava-a-mapy/sprava-a-udrzba-komunikacii'
 
   return (
     <div className={cx(className)}>
@@ -232,13 +233,13 @@ export const Posts = ({
                     locale,
                   )}`}
                   iframeWidth="container"
-                  iframeHeight="100"
-                  fullHeight
+                  iframeHeight="620"
+                  fullHeight={false}
                   allowFullscreen={false}
                 />
               </div>
               <div className="flex justify-center">
-                <UILink href={roadClosuresAddress}>
+                <UILink href={roadClosuresAddressNew}>
                   {/* TODO: change this button to custom button */}
                   <Button
                     variant="transparent"
@@ -246,7 +247,7 @@ export const Posts = ({
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
-                    {t('seeAllNews')}
+                    {t('moreInfo')}
                   </Button>
                 </UILink>
               </div>

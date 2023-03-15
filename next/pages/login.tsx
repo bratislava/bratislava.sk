@@ -1,13 +1,14 @@
 import { ROUTES } from '@utils/constants'
 import { AsyncServerProps } from '@utils/types'
 import useAccount, { AccountStatus } from '@utils/useAccount'
+import AccountActivator from 'components/forms/segments/AccountActivator/AccountActivator'
 import AccountContainer from 'components/forms/segments/AccountContainer/AccountContainer'
 import EmailVerificationForm from 'components/forms/segments/EmailVerificationForm/EmailVerificationForm'
 import LoginForm from 'components/forms/segments/LoginForm/LoginForm'
 import LoginRegisterLayout from 'components/layouts/LoginRegisterLayout'
 import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -70,7 +71,8 @@ const LoginPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations}>
       <LoginRegisterLayout>
-        <AccountContainer>
+        {status === AccountStatus.Idle && <AccountActivator />}
+        <AccountContainer className="md:pt-6 pt-0">
           {status === AccountStatus.EmailVerificationRequired ? (
             <EmailVerificationForm
               lastEmail={lastEmail}
