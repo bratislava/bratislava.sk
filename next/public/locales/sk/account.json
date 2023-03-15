@@ -301,7 +301,14 @@
     "waiting_card_title": "Vašu daň z nehnuteľností pripravujeme.",
     "waiting_card_text": "Aj v tomto momente pracujeme na výpočte dane z nehnuteľností až pre 200.000 daňovníkov. Pripravené rozhodnutia budeme distribuovať v termíne <strong>od 20. apríla do 30. mája.</strong> Keď bude vaša daň z nehnuteľností pripravená, pošleme vám notifikačný e-mail.",
     "error_card_title": "Zatiaľ vás nevidíme v zozname daňovníkov daňovníčok.",
-    "error_card_text": "<p>Môže to tak byť, lebo:</p><ul><li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li></ul><br/><p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
+    "error_card_content": {
+      "title": "<p>Môže to tak byť, lebo:</p>",
+      "list": {
+        "verification": "<li>ste neoverili svoju identitu cez rodné číslo a číslo občianskeho preukazu (<a href='/register'>Overiť identitu</a>),</li>",
+        "other": "<li>vaša nehnuteľnosť je v spoluvlastníctve,</li><li>vaše daňové priznanie ešte čaká na spracovanie,</li><li>nie ste vlastníkom či vlastníčkou nehnuteľnosti,</li><li>alebo ste nepodali priznanie k dani z nehnuteľností.</li>"
+      },
+      "help_text": "<p>Viac informácií môžete nájsť v <a href='/account/i-have-a-problem'>často kladených otázkach</a>.</p>"
+    }
   },
   "account_section_help": {
     "navigation": "Mám problém",
@@ -355,6 +362,7 @@
     "street": "Ulica a číslo",
     "city": "Mesto",
     "postal_code": "PSČ",
+    "postal_code_tooltip": "V prípade, že je vaša korešpondenčná adresa v zahraničí a PSČ má iný formát ako 5 čísiel, kontaktujte nás na info@bratislava.sk.",
     "success_alert": "Zmeny boli uložené",
     "error_alert": "Zmeny sa nepodarilo uložiť",
     "modal_title": "Zmeniť e-mail",
@@ -439,5 +447,10 @@
     "csob_iban": "SK31 7500 0000 0000 2574 7653"
   },
   "tax_payable_within": "Daň je splatná v termíne do 15 dní",
-  "validity_decision": "odo dňa právoplatnosti rozhodnutia."
+  "validity_decision": "odo dňa právoplatnosti rozhodnutia.",
+  "account_activator": {
+    "title": "Platili ste už daň z nehnuteľností digitálne?",
+    "content": "Ak ste v minulosti platili daň z nehnuteľností digitálne, tento rok ju nájdete v novom Bratislavskom konte. <strong>Nepotrebujete prejsť celou registráciou.</strong> Stačí, ak si aktivujete konto <strong>overením e-mailu</strong> a <strong>vytvorením hesla</strong>.",
+    "button_text": "Aktivovať konto"
+  }
 }

@@ -149,6 +149,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
             required
             label={t('given_name_label')}
             placeholder={t('given_name_placeholder')}
+            capitalize
             {...field}
             errorMessage={errors.given_name}
           />
@@ -162,6 +163,7 @@ const RegisterForm = ({ onSubmit, error, lastEmail }: Props) => {
             required
             label={t('family_name_label')}
             placeholder={t('family_name_placeholder')}
+            capitalize
             {...field}
             errorMessage={errors.family_name}
           />

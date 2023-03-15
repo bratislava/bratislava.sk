@@ -17,11 +17,11 @@ import TransportIcon from '@assets/images/account/municipal-services/transport-i
 import TreeIcon from '@assets/images/account/municipal-services/tree-icon.svg'
 import ZooIcon from '@assets/images/account/municipal-services/zoo-icon.svg'
 import { Pagination } from '@bratislava/ui-bratislava/index'
-import { EnumOptionsType } from '@rjsf/utils'
 import MunicipalServicesSectionHeader from 'components/forms/segments/AccountSectionHeader/MunicipalServicesSectionHeader'
 import ServiceCard from 'components/forms/simple-components/ServiceCard'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useState } from 'react'
+import { SelectOption } from '../../../widget-components/SelectField/SelectField'
 
 const ALL_CATEGORY = 'Všetky kategórie'
 const TAXES_CATEGORY = 'Dane'
@@ -33,31 +33,31 @@ const BASKET_CATEGORY = 'Odpady'
 const PARKING_CATEGORY = 'Parkovanie'
 const MARINIUM_CATEGORY = 'Pohrebníctvo (Marianum)'
 const ENTERTAINMENT_CATEGORY = 'Rýchle zásahy'
-const СONSTRUCTION_CATEGORY = 'Výstavba'
+const CONSTRUCTION_CATEGORY = 'Výstavba'
 const JOIN_CATEGORY = 'Zapojiť sa'
 const GREEN_CATEGORY = 'Zeleň'
 
-const enumOptions: EnumOptionsType[] = [
-  { value: ALL_CATEGORY, label: '' },
-  { value: TAXES_CATEGORY, label: '' },
-  { value: CULTURE_CATEGORY, label: '' },
-  { value: TRANSPORT_CATEGORY, label: '' },
-  { value: SECURITY_CATEGORY, label: '' },
-  { value: ENVIROMENTS_CATEGORY, label: '' },
-  { value: BASKET_CATEGORY, label: '' },
-  { value: PARKING_CATEGORY, label: '' },
-  { value: MARINIUM_CATEGORY, label: '' },
-  { value: ENTERTAINMENT_CATEGORY, label: '' },
-  { value: СONSTRUCTION_CATEGORY, label: '' },
-  { value: JOIN_CATEGORY, label: '' },
-  { value: GREEN_CATEGORY, label: '' },
+const enumOptions: SelectOption[] = [
+  { const: 'ALL_CATEGORY', title: ALL_CATEGORY, description: '' },
+  { const: 'TAXES_CATEGORY', title: TAXES_CATEGORY, description: '' },
+  { const: 'CULTURE_CATEGORY', title: CULTURE_CATEGORY, description: '' },
+  { const: 'TRANSPORT_CATEGORY', title: TRANSPORT_CATEGORY, description: '' },
+  { const: 'SECURITY_CATEGORY', title: SECURITY_CATEGORY, description: '' },
+  { const: 'ENVIROMENTS_CATEGORY', title: ENVIROMENTS_CATEGORY, description: '' },
+  { const: 'BASKET_CATEGORY', title: BASKET_CATEGORY, description: '' },
+  { const: 'PARKING_CATEGORY', title: PARKING_CATEGORY, description: '' },
+  { const: 'MARINIUM_CATEGORY', title: MARINIUM_CATEGORY, description: '' },
+  { const: 'ENTERTAINMENT_CATEGORY', title: ENTERTAINMENT_CATEGORY, description: '' },
+  { const: 'CONSTRUCTION_CATEGORY', title: CONSTRUCTION_CATEGORY, description: '' },
+  { const: 'JOIN_CATEGORY', title: JOIN_CATEGORY, description: '' },
+  { const: 'GREEN_CATEGORY', title: GREEN_CATEGORY, description: '' },
 ]
 
 const MunicipalServicesSection = () => {
   const { t } = useTranslation('account')
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [selectorValue, setSelectorValue] = useState<EnumOptionsType[]>(enumOptions.slice(0, 1))
-  const selectorValuesArr: string[] = selectorValue.map((item) => item.value)
+  const [selectorValue, setSelectorValue] = useState<SelectOption[]>(enumOptions.slice(0, 1))
+  const selectorValuesArr: string[] = selectorValue.map((item) => String(item.const))
   const ITEMS_PER_PAGE = 20
 
   type ServiceCardBase = {

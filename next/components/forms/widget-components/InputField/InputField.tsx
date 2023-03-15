@@ -31,6 +31,8 @@ export type InputBase = {
   placeholder?: string
   errorMessage?: string[]
   helptext?: string
+  // capitalize input value after field un-focus with type === text
+  capitalize?: boolean
   className?: string
   value?: string
   leftIcon?: LeftIconVariants
@@ -63,10 +65,11 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       leftIcon,
       resetIcon,
       className,
-      size,
+      size = 'large',
       onChange,
       endIcon,
       customErrorPlace = false,
+      capitalize = false,
       autoComplete,
       ...rest
     },
@@ -92,6 +95,15 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
             onChange(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
           } else {
             setValueState(inputValue.startsWith(' ') ? inputValue.trim() : inputValue)
+          }
+        },
+        onFocusChange(isFocused) {
+          if (!isFocused && type === 'text' && capitalize) {
+            if (onChange) {
+              onChange(valueState.replace(/^\w/, (c) => c.toUpperCase()))
+            } else {
+              setValueState(valueState.replace(/^\w/, (c) => c.toUpperCase()))
+            }
           }
         },
         isRequired: required,
@@ -131,18 +143,20 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         'hover:border-gray-400': !disabled,
 
         // error
-        'border-error hover:border-error focus:border-error': errorMessage?.length > 0 && !disabled,
+        'border-negative-700 hover:border-negative-700 focus:border-negative-700':
+          errorMessage?.length > 0 && !disabled,
 
         // disabled
         'border-gray-300 bg-gray-100': disabled,
       },
     )
+
     return (
       <div
-        className={cx('flex w-full flex-col', {
+        className={cx('flex flex-col', {
           'w-full': size === 'large',
-          'max-w-[388px]': size === 'default',
-          'max-w-[200px]': size === 'small',
+          'max-w-[388px] w-fit': size === 'default',
+          'max-w-[200px] w-fit': size === 'small',
         })}
       >
         <FieldHeader
