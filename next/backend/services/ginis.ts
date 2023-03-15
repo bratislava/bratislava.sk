@@ -2,7 +2,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { ResponseGinisDocumentsList } from 'backend/dtos/ginis/api-data.dto'
 import { forceString, isRecord } from 'backend/utils/ginis-service'
-import { identity } from 'lodash'
+import identity from 'lodash/identity'
 import { parseStringPromise } from 'xml2js'
 
 // ginis accessible only from internal network
