@@ -33,11 +33,9 @@ const BannerBasic = ({
   className,
 }: BannerBase) => {
   const imageElement = (
-    <>
-      <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 rounded-r-3xl flex justify-center items-center">
-        <Image src={imagePath} alt="" layout="fill" objectFit="cover" />
-      </div>
-    </>
+    <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 flex justify-center items-center">
+      <Image src={imagePath} alt="" layout="fill" objectFit="cover" />
+    </div>
   )
   return (
     <div
@@ -47,7 +45,7 @@ const BannerBasic = ({
       )}
     >
       {textOrientation === 'right' && imageElement}
-      <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center rounded-l-3xl lg:mb-0">
+      <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center lg:mb-0">
         <div className="flex flex-col lg:p-12 gap-6">
           <div className="flex flex-col items-start gap-3">
             <h2 className="text-h4 lg:text-h4">{title}</h2>
