@@ -1,6 +1,5 @@
 const { i18n } = require('./next-i18next.config')
 const { withSentryConfig } = require('@sentry/nextjs')
-const { webpack } = require('next/dist/compiled/webpack/webpack')
 
 /**
  * @type {import('next').NextConfig}
