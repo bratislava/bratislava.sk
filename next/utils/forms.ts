@@ -321,7 +321,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   const previous = () => setStepIndex(stepIndex - 1)
   const next = () => setStepIndex(stepIndex + 1)
   const jumpToStep = () => {
-    if (nextStepIndex) {
+    if (nextStepIndex != null) {
       setStepIndex(nextStepIndex)
       setNextStepIndex(null)
     }
@@ -349,7 +349,7 @@ export const useFormStepper = (eformSlug: string, schema: RJSFSchema) => {
   // this is needed for skipping multiple steps through StepperView
   // TODO: could be reduced by wrapping nextStepIndex and isSkipEnabled to 1 object
   useEffect(() => {
-    if (nextStepIndex) {
+    if (nextStepIndex != null) {
       setIsSkipEnabled(true)
     }
   }, [nextStepIndex])

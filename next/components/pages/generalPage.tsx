@@ -20,17 +20,25 @@ import {
 } from '@bratislava/ui-bratislava'
 import { pagePath, pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
-import { isPresent } from '@utils/utils'
+import { isPresent, isProductionDeployment } from '@utils/utils'
 import cx from 'classnames'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
+import { useIsClient } from 'usehooks-ts'
 
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import Sections from '../molecules/Sections'
 
 // import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
+
+// error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
+// https://github.com/microsoft/BotFramework-WebChat/issues/4607
+const DynamicChat = dynamic(() => import('../molecules/chat'), {
+  ssr: false,
+})
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
@@ -58,6 +66,8 @@ const renderColor = (color: any) => {
 }
 const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
+  const pageId = pages?.data?.[0].id
+
   const { Link: UILink } = useUIContext()
   const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
@@ -77,6 +87,19 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   }
 
   crumbs.push({ title: page.title ?? '', url: null })
+
+  const isClient = useIsClient()
+
+  // TODO: Refactor
+  const shouldDisplayUkraineSupportChat =
+    isProductionDeployment() &&
+    isClient &&
+    (pageId === '611' || // /bratislava-pre-ukrainu
+      pageId === '612' || // /братислава-для-украiни
+      pageId === '635' || // /en/bratislava-for-ukraine
+      pageId === '636' || // /en/братислава-для-украiни
+      page.parentPage.data?.attributes.slug === 'bratislava-pre-ukrajinu' || // /bratislava-pre-ukrajinu/...
+      page.parentPage.data?.attributes.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
     <BasePageLayout
@@ -177,6 +200,8 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
           <RelatedBlogPosts page={page} />
         </SectionContainer>
       )} */}
+
+      {shouldDisplayUkraineSupportChat && <DynamicChat />}
     </BasePageLayout>
   )
 }

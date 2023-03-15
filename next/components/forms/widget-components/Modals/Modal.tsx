@@ -148,7 +148,7 @@ const ModalBody = ({
           <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
         </div>
       ) : null}
-      <div className="h-[calc(100%-80px)] flex w-full flex-col items-start rounded-lg">
+      <div className="h-[calc(100%-80px)] flex w-full flex-col items-start rounded-lg p-2">
         {Array.isArray(content)
           ? content.length - 1 >= currentScreenIndex && content[currentScreenIndex]()
           : content({ onSubmit })}

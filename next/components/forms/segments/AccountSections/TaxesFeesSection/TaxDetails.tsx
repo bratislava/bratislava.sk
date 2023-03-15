@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import AccordionTableContent from '../../../simple-components/AccordionTableContent'
+import AccordionTableTaxContent from '../../../simple-components/AccordionTableTaxContent'
 
 const TaxDetails = (props: any) => {
   const { t } = useTranslation('account')
@@ -10,14 +10,27 @@ const TaxDetails = (props: any) => {
     <div className="flex flex-col items-start lg:gap-6 gap-3 w-full lg:px-0 px-4">
       <div className="text-h3">{t('tax_liability_breakdown')}</div>
       <div className="gap-4 flex flex-col w-full">
-        <AccordionTableContent size="md" title={t('apartments_tax')} secondTitle="58 €" data={[]} />
-        <AccordionTableContent
+        <AccordionTableTaxContent
           size="md"
+          dataType="ground"
+          title={t('land_tax')}
+          secondTitle="0 €"
+          data={[]}
+        />
+        <AccordionTableTaxContent
+          size="md"
+          dataType="construction"
           title={t('construction_tax')}
           secondTitle="0 €"
           data={[]}
         />
-        <AccordionTableContent size="md" title={t('apartments_tax')} secondTitle="58 €" data={[]} />
+        <AccordionTableTaxContent
+          size="md"
+          dataType="apartment"
+          title={t('apartments_tax')}
+          secondTitle="58 €"
+          data={[]}
+        />
       </div>
       <div className="rounded-lg flex flex-col items-start lg:px-8 lg:py-6 p-4 bg-gray-50 w-full lg:gap-6 gap-4">
         <div className="flex flex-col items-start lg:gap-5 gap-3 w-full">

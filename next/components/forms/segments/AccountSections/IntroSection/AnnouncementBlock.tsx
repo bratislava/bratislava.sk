@@ -1,7 +1,7 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
 import Button from 'components/forms/simple-components/Button'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import { useTranslation } from 'next-i18next'
 
 type ActualBlockBase = {
@@ -38,7 +38,7 @@ const AnnouncementBlock = ({
               <Button
                 className="flex lg:hidden"
                 size="sm"
-                endIcon={<ArrowRightIcon />}
+                endIcon={<ArrowRightIcon className="w-5 h-5" />}
                 variant="category"
                 text={buttonTitle}
                 onPress={onPress}
@@ -46,15 +46,14 @@ const AnnouncementBlock = ({
             </>
           )}
         </div>
-        <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 rounded-r-3xl flex justify-center items-center">
+        <div className="rounded-rt-none lg:h-auto relative h-[180px] w-full lg:w-1/2 rounded-t-lg lg:rounded-tl-none lg:rounded-r-3xl flex justify-center items-center">
           <Image
             src={imagePath}
-            alt=""
+            className="rounded-rt-none rounded-t-lg lg:rounded-tl-none lg:rounded-r-3xl"
             layout="fill"
             priority
             objectFit="cover"
             objectPosition="left"
-            className="rounded-r-3xl "
           />
         </div>
       </div>
