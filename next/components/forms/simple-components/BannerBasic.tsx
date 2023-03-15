@@ -5,8 +5,8 @@ import Image from 'next/legacy/image'
 
 import Button from './Button'
 
-type BannerBase = {
-  title: string
+type BannerBasicProps = {
+  header: string
   content?: string
   imagePath?: string
   buttonPrimaryText?: string
@@ -15,12 +15,12 @@ type BannerBase = {
   onPressSecondary?: () => void
   buttonTertiaryText?: string
   linkTertiary?: string
-  textOrientation?: 'left' | 'right'
+  textPosition?: 'left' | 'right'
   className?: string
 }
 
 const BannerBasic = ({
-  title,
+  header,
   content,
   imagePath = '',
   buttonPrimaryText,
@@ -29,9 +29,9 @@ const BannerBasic = ({
   onPressSecondary,
   buttonTertiaryText,
   linkTertiary,
-  textOrientation = 'left',
+  textPosition = 'left',
   className,
-}: BannerBase) => {
+}: BannerBasicProps) => {
   const imageElement = (
     <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 flex justify-center items-center">
       <Image src={imagePath} alt="" layout="fill" objectFit="cover" />
@@ -44,11 +44,11 @@ const BannerBasic = ({
         className,
       )}
     >
-      {textOrientation === 'right' && imageElement}
+      {textPosition === 'right' && imageElement}
       <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center lg:mb-0">
         <div className="flex flex-col lg:p-12 gap-6">
           <div className="flex flex-col items-start gap-3">
-            <h2 className="text-h4 lg:text-h4">{title}</h2>
+            <h2 className="text-h4 lg:text-h4">{header}</h2>
             <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-700" />
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-4">
@@ -114,7 +114,7 @@ const BannerBasic = ({
           </div>
         </div>
       </div>
-      {textOrientation === 'left' && imageElement}
+      {textPosition === 'left' && imageElement}
     </div>
   )
 }
