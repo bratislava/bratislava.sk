@@ -24,7 +24,13 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
   console.log(lang)
 
   if (subMenu) {
-    return <HamburgerSubMenu item={subMenu} onClose={() => setSubMenu(null)} closeParentMenu={closeMenu} />
+    return (
+      <HamburgerSubMenu
+        item={subMenu}
+        onClose={() => setSubMenu(null)}
+        closeParentMenu={closeMenu}
+      />
+    )
   }
 
   return (
@@ -44,7 +50,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
                 type="button"
               >
                 <Icon iconName={item.icon} />
-                <p className="w-36 text-p2-medium">{item.title}</p>
+                <p className="text-p2-medium w-36">{item.title}</p>
                 <ChevronRight />
               </button>
             )
@@ -66,7 +72,11 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
               key={t(item.title)}
               className={cx({ 'mt-3': index % 3 === 0 })}
             >
-              <button className="flex items-center gap-x-3" onClick={() => closeMenu()} type="button">
+              <button
+                className="flex items-center gap-x-3"
+                onClick={() => closeMenu()}
+                type="button"
+              >
                 {item?.icon}
                 <span className="text-p2-medium">{t(item.title)}</span>
               </button>
