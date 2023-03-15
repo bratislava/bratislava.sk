@@ -455,6 +455,13 @@
     "three_pieces": "Daň je splatná v troch splátkach, ",
     "paid_at_once": "môže byť uhradená aj naraz, ",
     "not_later": "najneskôr v lehote splatnosti prvej splátky.",
-    "pay_with_qr": "Zaplatiť môžete okrem platobných údajov aj pomocou QR kódu."
+    "pay_with_qr": "Zaplatiť môžete okrem platobných údajov aj pomocou QR kódu.",
+    "change_amount": "V bankovej aplikácii zmeňte sumu na vyššie uvedenú sumu splátky dane.",
+    "first_piece": "Prvá splátka v termíne ",
+    "first_piece_to": "do 15 dní ",
+    "second_piece": "Druhá splátka v termíne ",
+    "second_piece_to": "do 31. 8. 2022",
+    "third_piece": "Tretia splátka v termíne ",
+    "third_piece_to": "do 31. 10. 2022"
   }
 }

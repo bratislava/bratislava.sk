@@ -26,7 +26,7 @@ const PaymentScheduleView = (props: any) => {
   return (
     <div className="no-scrollbar flex flex-col items-start lg:gap-6 gap-4 w-full overflow-auto">
       <div className="flex flex-col items-start lg:gap-6 gap-4 w-full">
-        <div className="flex lg:hidden block flex-col w-full gap-4">
+        <div className="flex lg:hidden flex-col w-full gap-4">
           <div className={cx('text-h6-normal flex')}>
             <div className={cx('text-h6-normal grow')}>
               {t('payment_schedule.three_pieces')}
@@ -48,7 +48,8 @@ const PaymentScheduleView = (props: any) => {
         <div className="flex flex-col items-start p-6 lg:gap-6 gap-4 w-full bg-gray-50 rounded-lg">
           <div id="content" className="flex lg:flex-row flex-col items-start lg:gap-6 gap-3 w-full">
             <div className="grow items-start">
-              Prvá splátka v termíne <div className="text-h5 inline">do 15 dní</div>{' '}
+              {t('payment_schedule.first_piece')}{' '}
+              <div className="text-h5 inline">{t('payment_schedule.first_piece_to')}</div>
               {t('validity_decision')}
             </div>
             <div className="text-h5">29,66 €</div>
@@ -56,14 +57,16 @@ const PaymentScheduleView = (props: any) => {
           <div id="divider" className="w-full h-0.5 bg-gray-200" />
           <div id="content" className="flex lg:flex-row flex-col items-start lg:gap-6 gap-3 w-full">
             <div className="grow items-start">
-              Druhá splátka v termíne <div className="text-h5 inline">do 31. 8. 2022</div>
+              {t('payment_schedule.second_piece')}
+              <div className="text-h5 inline">{t('payment_schedule.second_piece_to')}</div>
             </div>
             <div className="text-h5">29,66 €</div>
           </div>
           <div id="divider" className="w-full h-0.5 bg-gray-200" />
           <div id="content" className="flex lg:flex-row flex-col items-start lg:gap-6 gap-3 w-full">
             <div className="grow items-start">
-              Tretia splátka v termíne <div className="text-h5 inline">do 31. 8. 2022</div>
+              {t('payment_schedule.third_piece')}
+              <div className="text-h5 inline">{t('payment_schedule.third_piece_to')}</div>
             </div>
             <div className="text-h5">29,66 €</div>
           </div>
