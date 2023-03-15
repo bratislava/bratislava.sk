@@ -48,7 +48,6 @@ We are using [FOP](https://xmlgraphics.apache.org/fop/) to transform eForms to p
 The following libraries have been added as part of forms experiments and should be reviewed & cleared up as needed before merging to master:
 
 ```
-    "@cloudflare/json-schema-walker": "^0.1.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@jsonforms/core": "^3.0.0-rc.1",
