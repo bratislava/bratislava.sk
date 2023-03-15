@@ -2,7 +2,6 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
-import { AccountProvider } from '@utils/useAccount'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -10,7 +9,6 @@ import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
 import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
-import SnackbarProvider from 'react-simple-snackbar'
 import { QueryParamProvider } from 'use-query-params'
 
 import ContentImage from '../components/atoms/ContentImage'
@@ -58,13 +56,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <BAQueryClientProvider>
           <QueryParamProvider adapter={NextAdapter}>
             <SSRProvider>
-              <AccountProvider>
-                <div className={`${inter.variable} font-sans`}>
-                  <SnackbarProvider>
-                    <Component {...pageProps} />
-                  </SnackbarProvider>
-                </div>
-              </AccountProvider>
+              <div className={`${inter.variable} font-sans`}>
+                <Component {...pageProps} />
+              </div>
             </SSRProvider>
           </QueryParamProvider>
         </BAQueryClientProvider>
