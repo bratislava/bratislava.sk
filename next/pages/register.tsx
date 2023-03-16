@@ -65,8 +65,8 @@ const RegisterPage = ({ page }: AsyncServerProps<typeof getServerSideProps>) => 
           AccountStatus.IdentityVerificationSuccess,
         ].includes(status)}
       >
-        <AccountActivator />
-        <AccountContainer className="md:pt-6 pt-0">
+        {status === AccountStatus.Idle && <AccountActivator />}
+        <AccountContainer className="md:pt-6 pt-0 mb-0 md:mb-8">
           {status === AccountStatus.Idle && (
             <RegisterForm lastEmail={lastEmail} onSubmit={signUp} error={error} />
           )}
