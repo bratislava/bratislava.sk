@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_sections_banner_basics",
+  "info": {
+    "displayName": "Banner Basic",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text"
+    },
+    "textPosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "header": {
+      "type": "string",
+      "required": true
+    },
+    "primaryLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.banner-basic-button"
+    },
+    "secondaryLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.banner-basic-button"
+    },
+    "tertiaryLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.banner-basic-button"
+    }
+  }
+}

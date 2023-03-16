@@ -69,7 +69,7 @@ type BlogPostRelationResponseCollection {
   data: [BlogPostEntity!]!
 }
 
-union BlogPostSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOrganizationalStructure | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union BlogPostSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOrganizationalStructure | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar BlogPostSectionsDynamicZoneInput
 
@@ -197,6 +197,26 @@ input ComponentAccordionItemsInstitutionNarrowInput {
   title: String
   url: String
   urlLabel: String
+}
+
+type ComponentBlocksBannerBasicButton {
+  id: ID!
+  linkText: String
+  url: String
+}
+
+input ComponentBlocksBannerBasicButtonFiltersInput {
+  and: [ComponentBlocksBannerBasicButtonFiltersInput]
+  linkText: StringFilterInput
+  not: ComponentBlocksBannerBasicButtonFiltersInput
+  or: [ComponentBlocksBannerBasicButtonFiltersInput]
+  url: StringFilterInput
+}
+
+input ComponentBlocksBannerBasicButtonInput {
+  id: ID
+  linkText: String
+  url: String
 }
 
 type ComponentBlocksBlogPostLink {
@@ -831,6 +851,40 @@ input ComponentSectionsArticlesListInput {
   filtering: Boolean
   id: ID
   title: String
+}
+
+type ComponentSectionsBannerBasic {
+  content: String
+  header: String!
+  id: ID!
+  media: UploadFileEntityResponse!
+  primaryLink: ComponentBlocksBannerBasicButton
+  secondaryLink: ComponentBlocksBannerBasicButton
+  tertiaryLink: ComponentBlocksBannerBasicButton
+  textPosition: ENUM_COMPONENTSECTIONSBANNERBASIC_TEXTPOSITION!
+}
+
+input ComponentSectionsBannerBasicFiltersInput {
+  and: [ComponentSectionsBannerBasicFiltersInput]
+  content: StringFilterInput
+  header: StringFilterInput
+  not: ComponentSectionsBannerBasicFiltersInput
+  or: [ComponentSectionsBannerBasicFiltersInput]
+  primaryLink: ComponentBlocksBannerBasicButtonFiltersInput
+  secondaryLink: ComponentBlocksBannerBasicButtonFiltersInput
+  tertiaryLink: ComponentBlocksBannerBasicButtonFiltersInput
+  textPosition: StringFilterInput
+}
+
+input ComponentSectionsBannerBasicInput {
+  content: String
+  header: String
+  id: ID
+  media: ID
+  primaryLink: ComponentBlocksBannerBasicButtonInput
+  secondaryLink: ComponentBlocksBannerBasicButtonInput
+  tertiaryLink: ComponentBlocksBannerBasicButtonInput
+  textPosition: ENUM_COMPONENTSECTIONSBANNERBASIC_TEXTPOSITION
 }
 
 type ComponentSectionsCalculator {
@@ -1475,6 +1529,11 @@ enum ENUM_COMPONENTMENUMENUSECTION_ICON {
   zivotne_prostredie_03
 }
 
+enum ENUM_COMPONENTSECTIONSBANNERBASIC_TEXTPOSITION {
+  left
+  right
+}
+
 enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
   bicykel_02_full_width
   budovy_04_full_width
@@ -1714,7 +1773,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBannerBasicButton | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
@@ -2196,7 +2255,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 

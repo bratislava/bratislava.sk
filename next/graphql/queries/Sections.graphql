@@ -341,6 +341,31 @@ fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStruct
   title
 }
 
+fragment BannerBasicSection on ComponentSectionsBannerBasic {
+  header
+  content
+  textPosition
+  media {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+  primaryLink {
+    url
+    linkText
+  }
+  secondaryLink {
+    url
+    linkText
+  }
+  tertiaryLink {
+    url
+    linkText
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -417,6 +442,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsOrganizationalStructure {
     ...OrganizationalStructureSection
+  }
+
+  ... on ComponentSectionsBannerBasic {
+    ...BannerBasicSection
   }
 
   # ComponentSectionsOfficialBoard has no attributes

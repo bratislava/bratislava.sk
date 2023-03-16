@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_banner_basic_buttons",
+  "info": {
+    "displayName": "Banner Basic Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "linkText": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

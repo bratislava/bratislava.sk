@@ -7,7 +7,7 @@ import Button from './Button'
 
 type BannerBasicProps = {
   header: string
-  content?: string
+  content?: string | null
   imagePath?: string
   buttonPrimaryText?: string
   onPressPrimary?: () => void
@@ -40,19 +40,21 @@ const BannerBasic = ({
   return (
     <div
       className={cx(
-        'flex-col lg:flex-row flex h-full justify-between rounded-lg w-full max-w-screen-lg m-auto py-6 px-4 lg:py-0 lg:px-0 border-2',
+        'flex-col lg:flex-row flex h-full justify-between rounded-lg w-full max-w-screen-lg m-auto border-2',
         className,
       )}
     >
       {textPosition === 'right' && imageElement}
-      <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center lg:mb-0">
-        <div className="flex flex-col lg:p-12 gap-6">
+      <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center lg:mb-0 lg:p-12 py-6 px-4">
+        <div className="flex flex-col gap-6">
           <div className="flex flex-col items-start gap-3">
             <h2 className="text-h4 lg:text-h4">{header}</h2>
-            <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-700" />
+            {content && (
+              <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-700" />
+            )}
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-4">
-            {onPressPrimary && (
+            {onPressPrimary && buttonPrimaryText && (
               <>
                 <Button
                   className="hidden lg:flex w-full"
@@ -72,7 +74,7 @@ const BannerBasic = ({
                 />
               </>
             )}
-            {onPressSecondary && (
+            {onPressSecondary && buttonSecondaryText && (
               <>
                 <Button
                   className="hidden lg:flex w-full"

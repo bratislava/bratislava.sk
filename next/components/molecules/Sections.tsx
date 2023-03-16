@@ -5,6 +5,7 @@ import * as React from 'react'
 
 import AccordionSection from './sections/general/AccordionSection'
 import ArticlesListSection from './sections/general/ArticlesListSection/ArticlesListSection'
+import BannerBasicSection from './sections/general/BannerBasicSection'
 import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
 import ColumnedTextSection from './sections/general/ColumnedTextSection'
 import ContactSection from './sections/general/ContactSection'
@@ -83,6 +84,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsOfficialBoard':
       return <OfficialBoardSection />
+
+    case 'ComponentSectionsBannerBasic':
+      return <BannerBasicSection section={section} />
 
     default:
       return null
