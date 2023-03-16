@@ -18,7 +18,7 @@ const fetchGooutEvents = async () => {
   return data.events
 }
 
-const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
+const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IProps) => {
   const [gooutEvents, setGooutEvents] = React.useState<GooutEventParsed[]>([])
 
   React.useEffect(() => {
@@ -75,4 +75,4 @@ const GooutEvents = ({ title, linkTitle, linkUrl, className }: IProps) => {
   )
 }
 
-export default GooutEvents
+export default GooutEventsHomepageSection
