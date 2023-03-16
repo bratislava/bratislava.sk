@@ -1,6 +1,5 @@
 const { i18n } = require('./next-i18next.config')
 const { withSentryConfig } = require('@sentry/nextjs')
-const { webpack } = require('next/dist/compiled/webpack/webpack')
 
 /**
  * @type {import('next').NextConfig}
@@ -2699,22 +2698,6 @@ const nextConfig = {
     })
     // used for loading eform xml template
     config.module.rules.push({ test: /\.xml$/, loader: 'xml-loader' })
-
-    // After upgrade to Next 13.2 some modules from `botframework-webchat` started to break the build:
-    // Module not found: Can't resolve '...'
-    //
-    // https://nextjs.org/docs/messages/module-not-found
-    config.plugins.push(
-      new webpack.IgnorePlugin({
-        resourceRegExp: /p-defer-es5/,
-      }),
-      new webpack.IgnorePlugin({
-        resourceRegExp: /abort-controller-es5/,
-      }),
-      new webpack.IgnorePlugin({
-        resourceRegExp: /markdown-it-attrs-es5/,
-      }),
-    )
 
     return config
   },
