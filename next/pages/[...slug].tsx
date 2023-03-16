@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       mainMenu,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
-    revalidate: 14_400, // revalidate after 4 hours
+    revalidate: 10,
   }
 }
 

@@ -130,7 +130,7 @@ export const getStaticProps = async (ctx: { locale: string }) => {
       rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
-    revalidate: 30,
+    revalidate: 10,
   }
 }
 
