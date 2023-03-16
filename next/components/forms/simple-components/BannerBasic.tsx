@@ -34,13 +34,13 @@ const BannerBasic = ({
 }: BannerBasicProps) => {
   const imageElement = (
     <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 flex justify-center items-center">
-      <Image src={imagePath} alt="" layout="fill" objectFit="cover" />
+      <Image src={imagePath} alt="" layout="fill" objectFit="cover" objectPosition="left" />
     </div>
   )
   return (
     <div
       className={cx(
-        'flex-col lg:flex-row flex h-full justify-between rounded-lg w-full max-w-screen-lg m-auto border-2',
+        'flex-col lg:flex-row flex h-full justify-between rounded-lg max-w-screen-lg m-auto border-2 mx-4 lg:mx-0',
         className,
       )}
     >
@@ -49,15 +49,13 @@ const BannerBasic = ({
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-start gap-3">
             <h2 className="text-h4 lg:text-h4">{header}</h2>
-            {content && (
-              <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-700" />
-            )}
+            {content && <AccountMarkdown content={content} className="text-gray-700" />}
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-4">
             {onPressPrimary && buttonPrimaryText && (
               <>
                 <Button
-                  className="hidden lg:flex w-full"
+                  className="hidden lg:flex"
                   endIcon={<ArrowRightIcon className="w-6 h-6" />}
                   variant="category"
                   text={buttonPrimaryText}
@@ -77,7 +75,7 @@ const BannerBasic = ({
             {onPressSecondary && buttonSecondaryText && (
               <>
                 <Button
-                  className="hidden lg:flex w-full"
+                  className="hidden lg:flex"
                   endIcon={<ArrowRightIcon className="w-6 h-6" />}
                   variant="category-outline"
                   text={buttonSecondaryText}
@@ -90,14 +88,13 @@ const BannerBasic = ({
                   variant="category-outline"
                   text={buttonSecondaryText}
                   onPress={onPressSecondary}
-                  fullWidth
                 />
               </>
             )}
             {linkTertiary && buttonTertiaryText && (
               <>
                 <Button
-                  className="hidden lg:flex w-full"
+                  className="hidden lg:flex"
                   variant="link-black"
                   fullWidth
                   href={linkTertiary}
