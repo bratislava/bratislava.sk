@@ -4,7 +4,6 @@ import {
   MenuMainItem,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import cx from 'classnames'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'

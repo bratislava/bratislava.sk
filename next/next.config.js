@@ -31,10 +31,6 @@ const nextConfig = {
           source: '/search',
           destination: '/vyhladavanie',
         },
-        {
-          source: '/city-of-bratislava/transparent-city/official-noticeboard',
-          destination: '/mesto-bratislava/transparentne-mesto/uradna-tabula',
-        },
         // TODO does not work, revisit later
         // {
         //   source: '/ucet/uvod',
@@ -2700,9 +2696,6 @@ const nextConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
-    // used for loading eform xml template
-    config.module.rules.push({ test: /\.xml$/, loader: 'xml-loader' })
-
     return config
   },
 }

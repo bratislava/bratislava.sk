@@ -2,6 +2,7 @@ import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
 import cx from 'classnames'
+import Image from 'next/image'
 import { MutableRefObject, useState } from 'react'
 
 import HomePageSearch from '../molecules/HomePageSearch'
@@ -36,20 +37,32 @@ export const WithoutStickyMenuSection = ({ mainMenuItems, homepageHeader, elemen
               },
             )}
           >
-            <img
+            <Image
               className="hidden sm:block"
               width={647}
               height={326}
-              src={homepageHeader?.picture?.data?.attributes?.url}
+              src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
               alt="Bratislava Hero"
             />
-            <img
+            <Image
               className="sm:hidden"
               width={721}
               height={364}
-              src={homepageHeader?.mobilePicture?.data?.attributes?.url}
+              src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
               alt="Bratislava Hero"
             />
+            {/* <img */}
+            {/*  className="hidden sm:block" */}
+
+            {/*  alt="Bratislava Hero" */}
+            {/* /> */}
+            {/* <img */}
+            {/*  className="sm:hidden" */}
+            {/*  width={721} */}
+            {/*  height={364} */}
+            {/*  src={homepageHeader?.mobilePicture?.data?.attributes?.url} */}
+            {/*  alt="Bratislava Hero" */}
+            {/* /> */}
           </div>
         </div>
         <div className="mb-[20rem] md:mb-0 h-36 w-full relative">

@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { MainMenuItemFragment, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
-import { AsyncServerProps } from '@utils/types'
+import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect, useState } from 'react'
@@ -16,34 +17,34 @@ import BlogPostsResults from '../components/molecules/SearchPage/BlogPostsResult
 import PagesResults from '../components/molecules/SearchPage/PagesResults'
 import UsersResults from '../components/molecules/SearchPage/UsersResults'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getServerSideProps = async (ctx: any) => {
+type PageProps = {
+  footer: PageBySlugQuery['footer']
+  mainMenu: MainMenuItemFragment
+}
+
+export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
   const { footer, mainMenu } = await client.PageBySlug({
     slug: 'test',
     locale,
   })
 
+  if (!footer || !mainMenu) {
+    return { notFound: true }
+  }
+
   return {
     props: {
       footer,
       mainMenu,
-      page: {
-        locale: ctx.locale,
-        localizations: ['sk', 'en']
-          .filter((l) => l !== ctx.locale)
-          .map((l) => ({
-            slug: '',
-            locale: l,
-          })),
-      },
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
+    revalidate: 10,
   }
 }
 
-const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSideProps>) => {
-  const { t } = useTranslation('common')
+const Search = ({ footer, mainMenu }: PageProps) => {
+  const { t, i18n } = useTranslation('common')
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -75,7 +76,7 @@ const Search = ({ footer, mainMenu, page }: AsyncServerProps<typeof getServerSid
 
   return (
     <PageWrapper
-      locale={page.locale}
+      locale={i18n.language}
       localizations={[
         { locale: 'sk', slug: 'vyhladavanie' },
         { locale: 'en', slug: 'search' },

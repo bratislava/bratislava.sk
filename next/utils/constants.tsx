@@ -3,13 +3,6 @@ import EServices from '@assets/images/EServices.svg'
 import Phone from '@assets/images/phone-nav.svg'
 import Tourist from '@assets/images/Tourist-icon.svg'
 
-export const dateFormat = 'DD.MM.YYYY'
-export const minKeywordLength = 2
-
-export const articleLimits = {
-  minLimit: 3,
-  maxLimit: 100,
-}
 interface HamburgerSubLoginItem {
   icon?: React.ReactNode
   title: string
@@ -33,6 +26,7 @@ export const eServicesData = {
   url: 'https://esluzby.bratislava.sk',
 }
 
+// TODO: Move to Strapi
 export const MOCK_HAMBURGER_MENU_ITEMS: {
   sk: HamburgerSubLoginItem[]
   en: HamburgerSubLoginItem[]

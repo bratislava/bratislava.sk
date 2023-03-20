@@ -1,6 +1,7 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
+import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 
 import ArrowRight from '../../../assets/images/arrow-right.svg'
@@ -40,7 +41,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
             'md:w-40 md:top-auto md:right-0 md:translate-x-[15%] md:translate-y-0',
           )}
         >
-          <img src={rearImage} alt="inba" width="160" height="244" />
+          <Image src={rearImage} alt="inba" width="160" height="244" />
         </Panel>
       )}
 
@@ -51,7 +52,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
             'md:w-52 md:top-auto md:right-0 md:translate-x-[-45%] md:translate-y-0',
           )}
         >
-          <img src={frontImage} alt="inba" width="211" height="329" />
+          <Image src={frontImage} alt="inba" width="211" height="329" />
         </Panel>
       )}
 
