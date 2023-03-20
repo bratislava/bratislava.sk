@@ -1,7 +1,7 @@
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import cx from 'classnames'
 import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import Button from './Button'
 
@@ -34,22 +34,24 @@ const BannerBasic = ({
 }: BannerBasicProps) => {
   const imageElement = (
     <div className="lg:h-auto relative h-[180px] w-full lg:w-1/2 flex justify-center items-center">
-      <Image src={imagePath} alt="" layout="fill" objectFit="cover" objectPosition="left" />
+      <Image src={imagePath} className="object-cover object-left" alt="" fill />
     </div>
   )
   return (
     <div
       className={cx(
-        'flex-col lg:flex-row flex h-full justify-between rounded-lg max-w-screen-lg m-auto border-2 mx-4 lg:mx-0',
+        'flex-col lg:flex-row flex h-full justify-between rounded-lg max-w-screen-lg m-auto border-2 w-full',
         className,
       )}
     >
       {textPosition === 'right' && imageElement}
-      <div className="text-grey-800 w-full h-full flex flex-col lg:w-1/2 justify-center lg:mb-0 lg:p-12 py-6 px-4">
-        <div className="flex flex-col gap-6">
+      <div className="text-grey-800 w-full h-full flex flex-row lg:flex-col lg:w-1/2 justify-center lg:mb-0 lg:p-12 py-6 px-4">
+        <div className="flex flex-col gap-6 max-w-[488px]">
           <div className="flex flex-col items-start gap-3">
             <h2 className="text-h4">{header}</h2>
-            {content && <AccountMarkdown content={content} className="text-gray-700" />}
+            {content && (
+              <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-700" />
+            )}
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-4">
             {onPressPrimary && buttonPrimaryText && (
