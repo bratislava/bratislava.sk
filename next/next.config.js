@@ -2696,9 +2696,6 @@ const nextConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
-    // used for loading eform xml template
-    config.module.rules.push({ test: /\.xml$/, loader: 'xml-loader' })
-
     return config
   },
 }

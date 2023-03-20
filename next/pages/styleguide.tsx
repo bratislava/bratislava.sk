@@ -15,7 +15,6 @@ import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
 import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGroupedShowCase'
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
-import ModalShowCase from '../components/styleguide/showcases/ModalShowCase'
 import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
 import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
@@ -25,11 +24,9 @@ import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleChe
 import SnackbarShowCase from '../components/styleguide/showcases/SnackbarShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
 import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
-import SummaryRowShowCase from '../components/styleguide/showcases/SummaryRowShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
-import UploadShowCase from '../components/styleguide/showcases/UploadShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
 const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
@@ -53,17 +50,14 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <SearchFieldShowCase />
         <ToggleShowCase />
         <TimePickerShowCase />
-        <UploadShowCase />
         <DropdownShowCase />
         <SelectFieldShowCase />
-        <ModalShowCase />
         <AccordionShowCase />
         <ProgressBarShowCase />
         <SingleCheckboxShowCase />
         <CheckboxGroupShowCase />
         <RadioButtonShowCase />
         <StepperShowCase />
-        <SummaryRowShowCase />
         <BannerShowCase />
         <ServiceCardShowCase />
         <SnackbarShowCase />
