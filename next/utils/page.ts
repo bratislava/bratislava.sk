@@ -97,7 +97,7 @@ export const COLOR_VARIABLES: {
   },
 }
 // Return object with colors by category
-const getColorsVariables = (pageCategory: string) =>
+export const getColorsVariables = (pageCategory: string) =>
   COLOR_VARIABLES[pageCategory] ?? COLOR_VARIABLES.main
 
 // We get colors from the server and we need to transorm it to category.

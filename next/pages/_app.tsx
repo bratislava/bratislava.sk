@@ -2,6 +2,7 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
+import { NavMenuContextProvider } from '@bratislava/ui-bratislava/NavMenu/navMenuContext'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -56,9 +57,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <BAQueryClientProvider>
           <QueryParamProvider adapter={NextAdapter}>
             <SSRProvider>
-              <div className={`${inter.variable} font-sans`}>
-                <Component {...pageProps} />
-              </div>
+              <NavMenuContextProvider>
+                <div className={`${inter.variable} font-sans`}>
+                  <Component {...pageProps} />
+                </div>
+              </NavMenuContextProvider>
             </SSRProvider>
           </QueryParamProvider>
         </BAQueryClientProvider>

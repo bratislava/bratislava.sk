@@ -8,15 +8,17 @@ import {
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
+import { isDefined } from '@utils/isDefined'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -32,17 +34,13 @@ export const getStaticProps = async (ctx: { locale: string }) => {
     locale,
   })
 
-  const { homepage } = await client.Homepage({
-    locale,
-  })
+  const { homepage } = await client.Homepage({ locale })
 
-  const { pageCategories: mainMenu } = await client.MainMenu({
-    locale,
-  })
+  const { pageCategories: mainMenu } = await client.MainMenu({ locale })
 
-  const { footer } = await client.Footer({
-    locale,
-  })
+  const { menu } = await client.Menu({ locale })
+
+  const { footer } = await client.Footer({ locale })
 
   const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
     title: post?.title,
@@ -114,6 +112,7 @@ export const getStaticProps = async (ctx: { locale: string }) => {
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
+      menu,
       page: {
         locale: ctx.locale,
         localizations: ['sk', 'en']
@@ -138,6 +137,7 @@ const Homepage = ({
   data,
   footer,
   mainMenu,
+  menu,
   page,
   homepage,
   latestBlogposts,
@@ -149,7 +149,49 @@ const Homepage = ({
 }: AsyncServerProps<typeof getStaticProps>) => {
   const { posts } = data
 
-  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
+  const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
+
+  const menusParsed: MenuItem[] = useMemo(() => {
+    return (
+      menu?.data?.attributes?.menus
+        ?.map((menuItem) => {
+          if (!menuItem?.page?.data?.attributes?.slug) return null
+
+          const { label, icon } = menuItem
+          const linkHref = menuItem.page.data.attributes.slug
+          const items =
+            // eslint-disable-next-line unicorn/consistent-destructuring
+            menuItem.sections
+              ?.map((section) => {
+                if (!section) return null
+
+                const sectionLabel = section.label
+
+                const sectionItems =
+                  section.links
+                    ?.map((menuLink) => {
+                      if (!menuLink?.page?.data?.attributes?.slug) return null
+
+                      return {
+                        label: menuLink.label,
+                        url: menuLink.page.data.attributes.slug,
+                      }
+                    })
+                    .filter(isDefined) ?? []
+
+                return {
+                  label: sectionLabel,
+                  items: sectionItems,
+                  colSpan: 1,
+                }
+              })
+              .filter(isDefined) ?? []
+
+          return { label, items, colCount: 3, linkHref, icon }
+        })
+        .filter(isDefined) ?? []
+    )
+  }, [menu])
 
   const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
@@ -158,7 +200,8 @@ const Homepage = ({
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout
         header={header}
-        menuItems={menuItems}
+        menuItemsOld={menuItemsOld}
+        menus={menusParsed}
         footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
         bookmarks={cards}
       >

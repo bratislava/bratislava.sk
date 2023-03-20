@@ -61,3 +61,62 @@ query MainMenu($locale: I18NLocaleCode!) {
     ...MainMenuItem
   }
 }
+
+
+fragment PageForMenuEntity on PageEntity {
+  id
+  attributes {
+    title
+    slug
+  }
+}
+
+fragment MenuLink on ComponentMenuMenuLink {
+  id
+  label
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+}
+
+fragment MenuSection on ComponentMenuMenuSection {
+  id
+  label
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  links {
+    ...MenuLink
+  }
+}
+
+fragment MenuItem on ComponentMenuMenuItem {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  sections {
+    ...MenuSection
+  }
+}
+
+
+query Menu($locale: I18NLocaleCode!) {
+  menu(locale: $locale) {
+    data {
+      attributes {
+        menus {
+          ...MenuItem
+        }
+      }
+    }
+  }
+}
