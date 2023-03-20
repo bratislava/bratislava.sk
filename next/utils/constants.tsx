@@ -26,6 +26,7 @@ export const eServicesData = {
   url: 'https://esluzby.bratislava.sk',
 }
 
+// TODO: Move to Strapi
 export const MOCK_HAMBURGER_MENU_ITEMS: {
   sk: HamburgerSubLoginItem[]
   en: HamburgerSubLoginItem[]

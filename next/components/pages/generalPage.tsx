@@ -8,28 +8,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Enum_Pagecategory_Color, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
+import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import {
   Button,
-  FeaturedBlogs,
   FooterProps,
   MenuMainItem,
   PageHeader,
   SectionContainer,
-  SubpageList,
 } from '@bratislava/ui-bratislava'
-import { pagePath, pageStyle, parsePageLink, transformColorToCategory } from '@utils/page'
+import { pagePath, pageStyle, transformColorToCategory } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
-import { isPresent, isProductionDeployment } from '@utils/utils'
+import { isProductionDeployment } from '@utils/utils'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 import { useIsClient } from 'usehooks-ts'
 
 import BasePageLayout from '../layouts/BasePageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
+import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
 
 // import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
@@ -47,29 +45,11 @@ export interface GeneralPageProps {
   menuItems?: MenuMainItem[]
 }
 
-const renderColor = (color: any) => {
-  if (color === 'blue') {
-    return Enum_Pagecategory_Color.Blue
-  }
-  if (color === 'brown') {
-    return Enum_Pagecategory_Color.Brown
-  }
-  if (color === 'green') {
-    return Enum_Pagecategory_Color.Green
-  }
-  if (color === 'purple') {
-    return Enum_Pagecategory_Color.Purple
-  }
-  if (color === 'yellow') {
-    return Enum_Pagecategory_Color.Yellow
-  }
-}
 const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
   const { Link: UILink } = useUIContext()
-  const { t } = useTranslation('common')
   const hasFeaturedBlogs = page?.pageHeaderSections?.some(
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts',
   )
@@ -152,31 +132,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
               </Button>
             )}
 
-            {/* Header Sections - Subpages */}
-            {page?.pageHeaderSections?.filter(isPresent).map((section, index) => {
-              switch (section.__typename) {
-                case 'ComponentSectionsSubpageList':
-                  return (
-                    <SubpageList
-                      className="mt-10"
-                      key={index}
-                      subpageList={section.subpageList?.map(parsePageLink).filter(isPresent)}
-                    />
-                  )
-
-                case 'ComponentSectionsFeaturedBlogPosts':
-                  const { first_blog, second_blog, third_blog } = section
-                  const blogs = [first_blog, second_blog, third_blog]
-                  return (
-                    <div
-                      key={index}
-                      className="-bottom-45 absolute -inset-x-8 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-88 lg:w-full"
-                    >
-                      <FeaturedBlogs blogs={blogs} />
-                    </div>
-                  )
-              }
-            })}
+            <PageHeaderSections sections={page?.pageHeaderSections} />
 
             {/* Padding bottom from waves for header sections and button */}
             {hasFeaturedBlogs && <div className="pb-10 lg:pb-24" />}
@@ -188,9 +144,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      {page?.sections && (
-        <Sections sections={page.sections} slug={page.slug} locale={page.locale} />
-      )}
+      {page?.sections && <Sections sections={page.sections} />}
 
       {/* Page - Related Content */}
       {/* TODO: this needs a revisit as relatedBlogPosts changed to related  */}

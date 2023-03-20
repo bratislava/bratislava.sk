@@ -16,11 +16,13 @@ const fetchFBPosts = async () => {
   }))
 }
 
-const FacebookPosts = ({ title }: IProps) => {
+const FacebookPostsHomepageSection = ({ title }: IProps) => {
   const [posts, setFBPosts] = React.useState<TImageCarouselItem[]>([])
 
   React.useEffect(() => {
-    fetchFBPosts().then(setFBPosts).catch(error => console.log(error))
+    fetchFBPosts()
+      .then(setFBPosts)
+      .catch((error) => console.log(error))
   }, [])
 
   if (posts.length === 0) return null
@@ -28,4 +30,4 @@ const FacebookPosts = ({ title }: IProps) => {
   return <ImagesCarousel className="mt-44" title={title} items={posts} shiftIndex={3} />
 }
 
-export default FacebookPosts
+export default FacebookPostsHomepageSection

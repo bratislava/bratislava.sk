@@ -4,9 +4,9 @@ import React from 'react'
 
 import ArticlesList from './ArticlesList'
 
-type ArticlesListSectionProps = { section: ArticlesListSectionFragment; locale: string }
+type ArticlesListSectionProps = { section: ArticlesListSectionFragment }
 
-const ArticlesListSection = ({ section, locale }: ArticlesListSectionProps) => {
+const ArticlesListSection = ({ section }: ArticlesListSectionProps) => {
   if (!isPresent(section.title) || !isPresent(section.filtering)) {
     return null
   }
@@ -16,7 +16,6 @@ const ArticlesListSection = ({ section, locale }: ArticlesListSectionProps) => {
       title={section.title}
       includesFiltering={section.filtering}
       category={section.category?.data?.attributes?.title ?? undefined}
-      locale={locale}
     />
   )
 }

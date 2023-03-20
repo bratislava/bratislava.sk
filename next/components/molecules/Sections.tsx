@@ -1,9 +1,3 @@
-// @ts-strict-ignore
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-case-declarations */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
@@ -31,14 +25,7 @@ import TextWithImageSection from './sections/general/TextWithImageSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
 
-const SectionContent = ({
-  section,
-  locale,
-}: {
-  section: SectionsFragment
-  slug?: string
-  locale?: string
-}) => {
+const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
       return <NarrowTextSection section={section} />
@@ -83,7 +70,7 @@ const SectionContent = ({
       return <VideosSection section={section} />
 
     case 'ComponentSectionsArticlesList':
-      return <ArticlesListSection section={section} locale={locale} />
+      return <ArticlesListSection section={section} />
 
     case 'ComponentSectionsOrganizationalStructure':
       return <OrganizationalStructureSection section={section} />
@@ -102,15 +89,7 @@ const SectionContent = ({
   }
 }
 
-const Section = ({
-  section,
-  slug,
-  locale,
-}: {
-  section: SectionsFragment | null
-  slug?: string
-  locale?: string
-}) => {
+const Section = ({ section }: { section: SectionsFragment | null }) => {
   if (!section) return null
 
   if (section.__typename === 'ComponentSectionsWaves') return <WavesSection section={section} />
@@ -120,7 +99,8 @@ const Section = ({
   }
 
   // Not All sections has property hasBackground
-  const hasBackground = (section as any).hasBackground ?? false
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
+  const hasBackground = (section as any)?.hasBackground ?? false
 
   return (
     <SectionContainer
@@ -129,25 +109,17 @@ const Section = ({
       })}
       hasBackground={hasBackground}
     >
-      <SectionContent section={section} slug={slug} locale={locale} />
+      <SectionContent section={section} />
     </SectionContainer>
   )
 }
 
-const Sections = ({
-  sections,
-  slug,
-  locale,
-}: {
-  sections: (SectionsFragment | null)[]
-  slug?: string
-  locale?: string
-}) => {
+const Sections = ({ sections }: { sections: (SectionsFragment | null)[] }) => {
   return (
     <>
       {sections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Section key={index} section={section} slug={slug} locale={locale} />
+        <Section key={index} section={section} />
       ))}
     </>
   )

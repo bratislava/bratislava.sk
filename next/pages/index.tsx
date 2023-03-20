@@ -20,8 +20,8 @@ import React from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
-import FacebookPosts from '../components/molecules/sections/homepage/FacebookPosts'
-import GooutEvents from '../components/molecules/sections/homepage/GooutEvents'
+import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
+import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
@@ -130,7 +130,7 @@ export const getStaticProps = async (ctx: { locale: string }) => {
       rozkoPosts,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
-    revalidate: 30,
+    revalidate: 10,
   }
 }
 
@@ -205,7 +205,7 @@ const Homepage = ({
           waveColor="var(--background-color)"
         />
         <SectionContainer>
-          <GooutEvents
+          <GooutEventsHomepageSection
             linkTitle={t('allEvents')}
             linkUrl="https://www.bkis.sk/podujatia/"
             title={t('upComingEvents')}
@@ -235,7 +235,7 @@ const Homepage = ({
           <InBaCard className="mx-auto mt-40 md:mt-28 min-h-[200px] max-w-3xl" {...inba} />
           <div className="hidden md:block md:h-20" />
 
-          <FacebookPosts title="Bratislava na Facebooku" />
+          <FacebookPostsHomepageSection title="Bratislava na Facebooku" />
           {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
           {/* <NewsLetterSection className="mt-24" /> */}
         </SectionContainer>

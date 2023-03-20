@@ -12,7 +12,6 @@ export interface ArticlesListProps {
   itemsPerPage?: number
   category?: string
   includesFiltering?: boolean
-  locale?: string
   articlesContentClassName?: string
 }
 
@@ -21,8 +20,8 @@ const ArticlesList = ({
   itemsPerPage = 6,
   category,
   includesFiltering = false,
-  locale,
 }: ArticlesListProps) => {
+  const { i18n } = useTranslation()
   const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState<BlogPostEntity[]>([])
   const [totalArticles, setTotal] = useState<number>(0)
@@ -63,7 +62,7 @@ const ArticlesList = ({
               : {},
           },
         },
-        locale,
+        locale: i18n.language,
       })
       if (isMounted) return
       const blogData = (blogPosts?.data ?? []) as unknown as BlogPostEntity[]
@@ -101,7 +100,7 @@ const ArticlesList = ({
           },
         },
         limit: itemsPerPage,
-        locale,
+        locale: i18n.language,
       })
 
       if (isMounted) return

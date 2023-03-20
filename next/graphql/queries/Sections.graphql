@@ -421,3 +421,35 @@ fragment Sections on PageSectionsDynamicZone {
 
   # ComponentSectionsOfficialBoard has no attributes
 }
+
+fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
+  id
+  # TODO consider limit -1
+  subpageList(pagination: { limit: 50 }) {
+    ...PageLinkBlock
+  }
+}
+
+fragment FeaturedBlogPostsPageHeaderSection on ComponentSectionsFeaturedBlogPosts {
+  id
+  first_blog {
+    ...BlogSection
+  }
+  second_blog {
+    ...BlogSection
+  }
+  third_blog {
+    ...BlogSection
+  }
+}
+
+fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
+  __typename
+
+  ... on ComponentSectionsSubpageList {
+    ...SubpageListPageHeaderSection
+  }
+  ... on ComponentSectionsFeaturedBlogPosts {
+    ...FeaturedBlogPostsPageHeaderSection
+  }
+}
