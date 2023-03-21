@@ -659,6 +659,7 @@ type ComponentMenuMenuLink {
   id: ID!
   label: String!
   page: PageEntityResponse
+  url: String
 }
 
 input ComponentMenuMenuLinkFiltersInput {
@@ -667,12 +668,14 @@ input ComponentMenuMenuLinkFiltersInput {
   not: ComponentMenuMenuLinkFiltersInput
   or: [ComponentMenuMenuLinkFiltersInput]
   page: PageFiltersInput
+  url: StringFilterInput
 }
 
 input ComponentMenuMenuLinkInput {
   id: ID
   label: String
   page: ID
+  url: String
 }
 
 type ComponentMenuMenuSection {

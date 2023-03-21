@@ -603,6 +603,7 @@ export type ComponentMenuMenuLink = {
   id: Scalars['ID'];
   label: Scalars['String'];
   page?: Maybe<PageEntityResponse>;
+  url?: Maybe<Scalars['String']>;
 };
 
 export type ComponentMenuMenuLinkFiltersInput = {
@@ -611,12 +612,14 @@ export type ComponentMenuMenuLinkFiltersInput = {
   not?: InputMaybe<ComponentMenuMenuLinkFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkFiltersInput>>>;
   page?: InputMaybe<PageFiltersInput>;
+  url?: InputMaybe<StringFilterInput>;
 };
 
 export type ComponentMenuMenuLinkInput = {
   id?: InputMaybe<Scalars['ID']>;
   label?: InputMaybe<Scalars['String']>;
   page?: InputMaybe<Scalars['ID']>;
+  url?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentMenuMenuSection = {
