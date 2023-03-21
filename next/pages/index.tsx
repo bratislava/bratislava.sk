@@ -1,18 +1,18 @@
 import {
   BlogCards,
+  Bookmarks,
   InBaCard,
-  PageHeader,
   Posts,
   PrimatorCouncil,
   SectionContainer,
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
-import { MenuItem, MenuLink } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
+import { getParsedMenus } from '@utils/getParsedMenus'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
-import { isDefined } from '@utils/isDefined'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
@@ -24,6 +24,7 @@ import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
+import { WelcomeSection } from '../components/sections/WelcomeSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
@@ -154,88 +155,40 @@ const Homepage = ({
   const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
 
   const menusParsed: MenuItem[] = useMemo(() => {
-    return (
-      menu?.data?.attributes?.menus
-        ?.map((menuItem) => {
-          if (!menuItem?.page?.data?.attributes?.slug) return null
-
-          const { label, icon } = menuItem
-          const linkHref = menuItem.page.data.attributes.slug
-          const items =
-            // eslint-disable-next-line unicorn/consistent-destructuring
-            menuItem.sections
-              ?.map((section) => {
-                if (!section) return null
-
-                const sectionLabel = section.label
-
-                const sectionItems =
-                  section.links
-                    ?.map((menuLink) => {
-                      if (!menuLink?.page?.data?.attributes?.slug) return null
-
-                      return {
-                        label: menuLink.label,
-                        url: menuLink.page.data.attributes.slug,
-                      }
-                    })
-                    .filter(isDefined) ?? []
-
-                const showMoreLink = section.page?.data?.attributes
-                  ? ({
-                      label: t('navMenuMore'),
-                      url: section.page.data.attributes.slug,
-                    } as MenuLink)
-                  : undefined
-
-                const sectionIcon = section.icon
-
-                return {
-                  label: sectionLabel,
-                  items: sectionItems,
-                  showMoreLink,
-                  icon: sectionIcon,
-                  colSpan: 1,
-                }
-              })
-              .filter(isDefined) ?? []
-
-          return { label, items, colCount: 3, linkHref, icon }
-        })
-        .filter(isDefined) ?? []
-    )
-  }, [menu, t])
+    return menu ? getParsedMenus(menu) : []
+  }, [menu])
 
   // TODO: Change Image to img when Image handling changed
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout
-        header={header}
         menuItemsOld={menuItemsOld}
         menus={menusParsed}
         footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
-        bookmarks={cards}
       >
-        <PageHeader
-          color=""
-          transparentColor=""
-          imageSrc=""
-          waves={{
-            className: 'md:mt-18 mt-6',
-            waveColor: 'white',
-            wavePosition: 'bottom',
-            backgroundColor: 'var(--background-color)',
-          }}
-        >
-          <Head>
-            <title>{homepage?.data?.attributes?.title}</title>
-            <meta
-              name="description"
-              content={homepage?.data?.attributes?.metaDescription ?? undefined}
-            />
-          </Head>
-        </PageHeader>
+        {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
+        <Head>
+          <title>{homepage?.data?.attributes?.title}</title>
+          <meta
+            name="description"
+            content={homepage?.data?.attributes?.metaDescription ?? undefined}
+          />
+        </Head>
+        {/* </PageHeader> */}
+        <Bookmarks bookmarks={cards} className="top-56" />
+
+        <WelcomeSection
+          menus={menusParsed}
+          mainMenuItems={menuItemsOld ?? []}
+          homepageHeader={header}
+        />
+
+        <Waves
+          className="mb-[-1px] lg:mb-0"
+          waveColor="var(--background-color)"
+          wavePosition="top"
+        />
 
         <SectionContainer className="bg-gray-50 pb-14">
           <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />

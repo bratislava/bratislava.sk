@@ -1,44 +1,33 @@
-import {
-  BAStickyMenu,
-  FooterProps,
-  MenuMainItem,
-  SectionContainer,
-} from '@bratislava/ui-bratislava'
+import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import NavMenu, { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import React from 'react'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
 
 interface BasePageLayoutProps {
   footer?: FooterProps
-  menuItems?: MenuMainItem[]
-  activeMenuItem?: string
-  pageColor?: string
+  menuItemsOld?: MenuMainItem[]
+  menus: MenuItem[]
 }
 
 const BasePageLayout = ({
   className,
   children,
   footer,
-  menuItems,
-  activeMenuItem,
-  pageColor,
+  menuItemsOld,
+  menus,
 }: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
   return (
     <div className={className}>
       <header>
-        <div className="h-16 bg-white lg:h-14">
+        <div className="h-14 w-full bg-white">
           <SectionContainer>
-            <NavBar menuItems={menuItems ?? []} pageColor={pageColor} />
+            <NavBar menuItems={menuItemsOld ?? []} />
           </SectionContainer>
         </div>
-
-        <div id="sticky-menu" className="lg:h-[106px]">
-          <div className="fixed z-30 hidden w-full bg-white shadow-lg drop-shadow-sm lg:block ">
-            <BAStickyMenu
-              menuItems={menuItems ?? []}
-              initialActiveMenuId={Number(activeMenuItem)}
-            />
-          </div>
+        <div className="mx-auto w-full fixed z-30 top-14 left-0 hidden lg:block">
+          <NavMenu menus={menus} />
         </div>
       </header>
       <main id="content-anchor">{children}</main>

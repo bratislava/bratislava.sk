@@ -18,7 +18,7 @@ export const WelcomeSection = ({ mainMenuItems, homepageHeader, menus }: Props) 
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
 
   return (
-    <div>
+    <div className="bg-white">
       <SectionContainer>
         <div className="relative flex flex-col pt-28 pb-8 lg:flex-row lg:items-center lg:pb-10 lg:pt-18">
           <div className="lg:absolute z-[1] flex grow flex-col gap-8">

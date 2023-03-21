@@ -16,7 +16,8 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { pagePath, pageStyle, transformColorToCategory } from '@utils/page'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
 import cx from 'classnames'
@@ -43,9 +44,10 @@ export interface GeneralPageProps {
   footer: FooterProps
   children?: React.ReactNode
   menuItems?: MenuMainItem[]
+  menus: MenuItem[]
 }
 
-const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -82,12 +84,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       page.parentPage.data?.attributes.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
-    <BasePageLayout
-      footer={footer}
-      menuItems={menuItems}
-      activeMenuItem={page?.pageCategory?.data?.id}
-      pageColor={transformColorToCategory(page?.pageColor)}
-    >
+    <BasePageLayout footer={footer} menuItemsOld={menuItems} menus={menus}>
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{
