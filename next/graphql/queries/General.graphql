@@ -84,6 +84,7 @@ fragment MenuLink on ComponentMenuMenuLink {
 fragment MenuSection on ComponentMenuMenuSection {
   id
   label
+  icon
   page {
     data {
       ...PageForMenuEntity

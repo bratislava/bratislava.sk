@@ -21,7 +21,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         {label}
         <StickyMenuTopper
           style={{ color }}
-          className="group:data-[state=open]:opacity-100 absolute bottom-[-8px] transition opacity-100 group-hover:opacity-100"
+          className="group:data-[state=open]:opacity-100 absolute bottom-[-7px] transition opacity-100 group-hover:opacity-100"
         />
       </NavigationMenu.Trigger>
     )

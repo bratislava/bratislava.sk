@@ -1,4 +1,7 @@
-import { Enum_Componentmenumenuitem_Icon } from '@bratislava/strapi-sdk-homepage'
+import {
+  Enum_Componentmenumenuitem_Icon,
+  Enum_Componentmenumenusection_Icon,
+} from '@bratislava/strapi-sdk-homepage'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -17,6 +20,7 @@ export type MenuSection = {
   colSpan: number
   label?: string
   showMoreLink?: MenuLink
+  icon?: Enum_Componentmenumenusection_Icon
 }
 
 export type MenuItem = {
@@ -49,18 +53,20 @@ const NavMenu = ({ menus }: NavigationMenuProps) => {
       // to re-enable pointer events when menu is open and whole page has pointer events disabled
       className="pointer-events-auto"
     >
-      <NavigationMenu.List className="max-w-screen-lg m-auto w-full grid grid-flow-col grid-cols-6">
-        {menus.map((menu, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <NavMenuItem key={index} menu={menu} />
-        ))}
+      <NavigationMenu.List className="shadow-md z-20 bg-white">
+        <div className="max-w-screen-lg m-auto w-full grid grid-flow-col grid-cols-6">
+          {menus.map((menu, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <NavMenuItem key={index} menu={menu} />
+          ))}
+        </div>
       </NavigationMenu.List>
 
       {/* Viewport represents popup div with links that appears under menu button */}
       <NavigationMenu.Viewport
         // Together with onCLick in NavMenuContent, it closes the menu on click outside of container area
         onClick={() => setMenuValue('')}
-        className="absolute z-50 w-full"
+        className="z-10 w-full"
       />
     </NavigationMenu.Root>
   )

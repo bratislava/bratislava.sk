@@ -7,7 +7,6 @@ import {
   SectionContainer,
 } from '@bratislava/ui-bratislava'
 import NavMenu, { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
-import cx from 'classnames'
 import { WelcomeSection } from 'components/sections/WelcomeSection'
 import React from 'react'
 
@@ -41,7 +40,7 @@ const HomepagePageLayout = ({
             <NavBar menuItems={menuItemsOld ?? []} />
           </SectionContainer>
         </div>
-        <div className="mx-auto w-full bg-white fixed z-30 drop-shadow-sm shadow-lg top-14 left-0 hidden lg:block">
+        <div className="mx-auto w-full fixed z-30 top-14 left-0 hidden lg:block">
           <NavMenu menus={menus} />
         </div>
         <div className="bg-white">

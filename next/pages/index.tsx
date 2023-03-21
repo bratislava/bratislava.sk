@@ -8,7 +8,7 @@ import {
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { MenuItem, MenuLink } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
@@ -147,6 +147,8 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
+  const { t } = useTranslation('common')
+
   const { posts } = data
 
   const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
@@ -179,9 +181,20 @@ const Homepage = ({
                     })
                     .filter(isDefined) ?? []
 
+                const showMoreLink = section.page?.data?.attributes
+                  ? ({
+                      label: t('navMenuMore'),
+                      url: section.page.data.attributes.slug,
+                    } as MenuLink)
+                  : undefined
+
+                const sectionIcon = section.icon
+
                 return {
                   label: sectionLabel,
                   items: sectionItems,
+                  showMoreLink,
+                  icon: sectionIcon,
                   colSpan: 1,
                 }
               })
@@ -191,9 +204,8 @@ const Homepage = ({
         })
         .filter(isDefined) ?? []
     )
-  }, [menu])
+  }, [menu, t])
 
-  const { t } = useTranslation('common')
   // TODO: Change Image to img when Image handling changed
 
   return (

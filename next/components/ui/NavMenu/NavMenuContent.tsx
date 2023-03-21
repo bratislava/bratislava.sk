@@ -1,6 +1,7 @@
+import { Waves } from '@bratislava/ui-bratislava'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import cx from 'classnames'
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { MenuSection } from './NavMenu'
 import NavMenuContentCell from './NavMenuContentCell'
@@ -45,43 +46,50 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSecti
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
       onPointerMove={(event) => event.preventDefault()}
       onPointerLeave={(event) => event.preventDefault()}
-      style={{ backgroundColor }}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <div
-        className={cx('max-w-screen-lg mx-auto grid w-full gap-x-10 px-4 py-8', {
-          // Keeping for consistency with mestskakniznica.sk
-          'grid-cols-3': colCount === 3,
-          'grid-cols-4': colCount === 4,
-        })}
-        // Together with onCLick in Viewport, it closes the menu on click outside of container area
-        onClick={(event) => event.stopPropagation()}
-      >
-        {/* eslint-disable react/no-array-index-key */}
-        {menuCells.map((cell, index) => {
-          // Keeping for consistency with mestskakniznica.sk
-          if (Array.isArray(cell)) {
+      <div style={{ backgroundColor }}>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+        <div
+          className={cx('max-w-screen-lg mx-auto grid w-full gap-x-8 gap-y-6 px-4 py-8', {
+            // Keeping for consistency with mestskakniznica.sk
+            'grid-cols-3': colCount === 3,
+            'grid-cols-4': colCount === 4,
+          })}
+          // Together with onCLick in Viewport, it closes the menu on click outside of container area
+          onClick={(event) => event.stopPropagation()}
+        >
+          {/* eslint-disable react/no-array-index-key */}
+          {menuCells.map((cell, index) => {
+            // Keeping for consistency with mestskakniznica.sk
+            if (Array.isArray(cell)) {
+              return (
+                // Group sections in one grid cell
+                <NavMenuContentCell key={index} colSpan={1}>
+                  {cell.map((section, sectionIndex) => (
+                    <NavMenuSection
+                      key={sectionIndex}
+                      section={section}
+                      classNames={sectionIndex !== 0 ? 'pt-8' : ''}
+                    />
+                  ))}
+                </NavMenuContentCell>
+              )
+            }
             return (
-              // Group sections in one grid cell
-              <NavMenuContentCell key={index} colSpan={1}>
-                {cell.map((section, sectionIndex) => (
-                  <NavMenuSection
-                    key={sectionIndex}
-                    section={section}
-                    classNames={sectionIndex !== 0 ? 'pt-8' : ''}
-                  />
-                ))}
+              <NavMenuContentCell key={index} colSpan={cell.colSpan}>
+                <NavMenuSection key={index} section={cell} />
               </NavMenuContentCell>
             )
-          }
-          return (
-            <NavMenuContentCell key={index} colSpan={cell.colSpan}>
-              <NavMenuSection key={index} section={cell} />
-            </NavMenuContentCell>
-          )
-        })}
-        {/* eslint-enable react/no-array-index-key */}
+          })}
+          {/* eslint-enable react/no-array-index-key */}
+        </div>
       </div>
+      <Waves
+        className="overflow-hidden"
+        wavePosition="bottom"
+        backgroundColor="transparent"
+        waveColor={backgroundColor}
+      />
     </NavigationMenu.Content>
   )
 }

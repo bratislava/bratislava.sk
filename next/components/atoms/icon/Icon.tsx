@@ -14,13 +14,9 @@ export const Icon: FC<Props> = ({ iconName }) => {
   }
 
   return (
-    <>
-      <div className="hidden md:block">
-        <iconCollection.size_64 width={64} height={64} />
-      </div>
-      <div className="block md:hidden">
-        <iconCollection.size_48 width={48} height={48} />
-      </div>
-    </>
+    // TODO revisit icon sizing
+    <div className="scale-[83.33%]">
+      <iconCollection.size_48 width={48} height={48} />
+    </div>
   )
 }

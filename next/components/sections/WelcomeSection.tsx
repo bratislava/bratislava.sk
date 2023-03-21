@@ -41,27 +41,15 @@ export const WelcomeSection = ({ mainMenuItems, homepageHeader, menus }: Props) 
               width={647}
               height={326}
               src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt="Bratislava Hero"
+              alt=""
             />
             <Image
               className="sm:hidden"
               width={721}
               height={364}
               src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt="Bratislava Hero"
+              alt=""
             />
-            {/* <img */}
-            {/*  className="hidden sm:block" */}
-
-            {/*  alt="Bratislava Hero" */}
-            {/* /> */}
-            {/* <img */}
-            {/*  className="sm:hidden" */}
-            {/*  width={721} */}
-            {/*  height={364} */}
-            {/*  src={homepageHeader?.mobilePicture?.data?.attributes?.url} */}
-            {/*  alt="Bratislava Hero" */}
-            {/* /> */}
           </div>
         </div>
         <div className="mb-[20rem] md:mb-0 h-36 w-full relative">

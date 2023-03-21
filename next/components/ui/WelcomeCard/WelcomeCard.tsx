@@ -18,12 +18,16 @@ export const WelcomeCard = ({ item }: WelcomeCardProps) => {
       ref={hoverRef}
       className="text-20 group relative w-full h-full flex items-center gap-x-6 text-left md:px-2 md:py-1 lg:pb-2 lg:flex-col lg:gap-y-4 lg:text-center"
     >
-      <div>
-        {/* TODO color */}
-        <WelcomeCardIcon isColored={isHover} color={item.hoverColor} icon={item.icon} />
+      {/* TODO scaling */}
+      <div className="scale-75 lg:scale-100">
+        <WelcomeCardIcon isColored={isHover} icon={item.icon} />
       </div>
-      <div className="text-p2-medium text-font/75 lg:whitespace-pre overflow-hidden">
-        <MLink href={item.linkHref} className="after:inset-0 after:absolute group-hover:underline">
+      {/* */}
+      <div className="text-p2-medium text-font/75 md:whitespace-pre-wrap overflow-hidden">
+        <MLink
+          href={item.linkHref}
+          className="after:inset-0 after:absolute group-hover:underline underline lg:no-underline"
+        >
           {item.label}
         </MLink>
       </div>

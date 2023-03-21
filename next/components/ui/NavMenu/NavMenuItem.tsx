@@ -18,7 +18,7 @@ const NavMenuItem = ({ menu }: NavItemProps) => {
   const backgroundColor = `rgb(var(${getColorsVariables(category).c200}))`
 
   return (
-    <NavigationMenu.Item className="">
+    <NavigationMenu.Item>
       <NavMenuTrigger label={menu.label} color={activeColor} />
       <NavMenuContent
         sections={menu.items}

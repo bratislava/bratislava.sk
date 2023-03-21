@@ -5,6 +5,8 @@ import IconEducation from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/
 import IconEnvironment from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconEnvironment'
 import IconSocial from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconSocial'
 import IconTransport from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconTransport'
+import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
+import { getColorsVariables } from '@utils/page'
 
 export type IconProps = {
   isColored: boolean
@@ -13,11 +15,13 @@ export type IconProps = {
 
 type WelcomeCardIconProps = {
   icon: Enum_Componentmenumenuitem_Icon
-  color: string
   isColored: boolean
 }
 
-const WelcomeCardIcon = ({ icon, color, isColored }: WelcomeCardIconProps) => {
+const WelcomeCardIcon = ({ icon, isColored }: WelcomeCardIconProps) => {
+  const category = transformIconToCategory(icon)
+  const color = `rgb(var(${getColorsVariables(category).c600}))`
+
   // TODO pass color to icon compoents
   switch (icon) {
     case 'mesto_01':

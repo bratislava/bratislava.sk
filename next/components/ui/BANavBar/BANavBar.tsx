@@ -51,11 +51,7 @@ export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectPro
       {/* Desktop */}
       <div
         id="desktop-navbar"
-        className={cx(
-          className,
-          'text-p2 items-center ',
-          'fixed top-0 left-0 w-full bg-white z-40',
-        )}
+        className={cx(className, 'text-p2 items-center', 'fixed top-0 left-0 w-full bg-white z-40')}
       >
         <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
           <SkipToContentButton />
