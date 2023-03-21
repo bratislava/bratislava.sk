@@ -1,7 +1,8 @@
 {
   "collectionName": "components_menu_menu_links",
   "info": {
-    "displayName": "menu link"
+    "displayName": "menu link",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
+    },
+    "url": {
+      "type": "string"
     }
   }
 }
