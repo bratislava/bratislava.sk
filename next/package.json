@@ -73,7 +73,7 @@
     "@graphql-codegen/typescript": "3.0.0",
     "@graphql-codegen/typescript-graphql-request": "4.5.2",
     "@graphql-codegen/typescript-operations": "2.5.2",
-    "@storybook/addon-docs": "6.5.0",
+    "@storybook/addon-docs": "6.5.16",
     "@storybook/addon-essentials": "6.5.0",
     "@storybook/builder-webpack5": "6.5.0",
     "@storybook/manager-webpack5": "6.5.16",
