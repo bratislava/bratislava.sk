@@ -8,7 +8,7 @@ import {
   MenuQuery,
   PageBySlugQuery,
 } from '@bratislava/strapi-sdk-homepage'
-import { getParsedMenus } from '@utils/getParsedMenus'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify, isPresent } from '@utils/utils'
@@ -96,8 +96,6 @@ const Page = ({ page, footer, mainMenu, menu }: GenericPageProps) => {
   const menusParsed = useMemo(() => {
     return getParsedMenus(menu)
   }, [menu])
-
-  console.log(menu)
 
   return (
     <PageWrapper

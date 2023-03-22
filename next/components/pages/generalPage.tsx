@@ -16,7 +16,7 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'

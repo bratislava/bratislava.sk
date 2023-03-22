@@ -1,5 +1,8 @@
 import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
-import NavMenu, { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import NavMenu from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { useNavMenuContext } from '@bratislava/ui-bratislava/NavMenu/navMenuContext'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import cx from 'classnames'
 import React from 'react'
 
 import Footer from '../molecules/Footer'
@@ -18,8 +21,15 @@ const BasePageLayout = ({
   menuItemsOld,
   menus,
 }: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
+  const { menuValue } = useNavMenuContext()
+
   return (
-    <div className={className}>
+    <div
+      className={cx(className, {
+        // If menu is open, disable pointer events on the whole page (pointer events on menu must be re-enabled)
+        'pointer-events-none': menuValue !== '',
+      })}
+    >
       <header>
         <div className="h-14 w-full bg-white">
           <SectionContainer>

@@ -8,9 +8,8 @@ import {
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
-import { getParsedMenus } from '@utils/getParsedMenus'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
 import { parseFooter, parseMainMenu } from '@utils/page'
@@ -154,8 +153,8 @@ const Homepage = ({
 
   const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
 
-  const menusParsed: MenuItem[] = useMemo(() => {
-    return menu ? getParsedMenus(menu) : []
+  const menusParsed = useMemo(() => {
+    return getParsedMenus(menu)
   }, [menu])
 
   // TODO: Change Image to img when Image handling changed
@@ -178,11 +177,7 @@ const Homepage = ({
         {/* </PageHeader> */}
         <Bookmarks bookmarks={cards} className="top-56" />
 
-        <WelcomeSection
-          menus={menusParsed}
-          mainMenuItems={menuItemsOld ?? []}
-          homepageHeader={header}
-        />
+        <WelcomeSection menus={menusParsed} homepageHeader={header} />
 
         <Waves
           className="mb-[-1px] lg:mb-0"

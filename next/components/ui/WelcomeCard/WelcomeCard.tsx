@@ -1,4 +1,4 @@
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import WelcomeCardIcon from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import React, { useRef } from 'react'
 import { useHover } from 'usehooks-ts'

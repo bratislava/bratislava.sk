@@ -1,9 +1,9 @@
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
 import { getColorsVariables } from '@utils/page'
 import React from 'react'
 
-import { MenuItem } from './NavMenu'
 import NavMenuContent from './NavMenuContent'
 import NavMenuTrigger from './NavMenuTrigger'
 

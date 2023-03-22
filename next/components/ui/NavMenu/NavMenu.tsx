@@ -1,7 +1,4 @@
-import {
-  Enum_Componentmenumenuitem_Icon,
-  Enum_Componentmenumenusection_Icon,
-} from '@bratislava/strapi-sdk-homepage'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -9,27 +6,6 @@ import React, { useEffect } from 'react'
 
 import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
-
-export type MenuLink = {
-  label: string
-  url: string
-}
-
-export type MenuSection = {
-  items: MenuLink[]
-  colSpan: number
-  label?: string
-  showMoreLink?: MenuLink
-  icon?: Enum_Componentmenumenusection_Icon
-}
-
-export type MenuItem = {
-  label: string
-  colCount: number
-  items: MenuSection[]
-  icon: Enum_Componentmenumenuitem_Icon
-  linkHref: string
-}
 
 type NavigationMenuProps = {
   menus: MenuItem[]

@@ -79,6 +79,7 @@ fragment MenuLink on ComponentMenuMenuLink {
       ...PageForMenuEntity
     }
   }
+  url
 }
 
 fragment MenuSection on ComponentMenuMenuSection {

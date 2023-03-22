@@ -1,8 +1,8 @@
+import { MenuSection } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { Icon } from '../../atoms/icon/Icon'
-import { MenuSection } from './NavMenu'
 import NavMenuLink from './NavMenuLink'
 
 interface NavigationSectionProps {

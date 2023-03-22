@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { MainMenuItemFragment, MenuQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
-import { getParsedMenus } from '@utils/getParsedMenus'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { GetStaticProps } from 'next'
@@ -58,8 +57,8 @@ const Search = ({ footer, mainMenu, menu }: PageProps) => {
   const debouncedInput = useDebounce<string>(input, 300)
   const [searchValue, setSearchValue] = useState<string>(debouncedInput)
 
-  const menusParsed: MenuItem[] = useMemo(() => {
-    return menu ? getParsedMenus(menu) : []
+  const menusParsed = useMemo(() => {
+    return getParsedMenus(menu)
   }, [menu])
 
   useEffect(() => {

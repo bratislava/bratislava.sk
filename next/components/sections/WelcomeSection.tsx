@@ -1,6 +1,6 @@
 import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
-import { MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { SectionContainer } from '@bratislava/ui-bratislava'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -10,11 +10,10 @@ import HomePageSearch from '../molecules/HomePageSearch'
 
 interface Props {
   homepageHeader: HomepageHeaderFragment | null | undefined
-  mainMenuItems: MenuMainItem[]
   menus: MenuItem[]
 }
 
-export const WelcomeSection = ({ mainMenuItems, homepageHeader, menus }: Props) => {
+export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
 
   return (

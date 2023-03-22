@@ -1,18 +1,17 @@
+import { MenuLink } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React from 'react'
 
 import Button from '../../forms/simple-components/Button'
 import MLink from '../../forms/simple-components/MLink'
-import { MenuLink } from './NavMenu'
 
 // https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing
 
-type NavMenuLinkProps = MenuLink & {
+type NavMenuLinkProps = {
   variant?: 'simple' | 'showMoreLink'
-}
+} & MenuLink
 
 const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
-  // eslint-disable-next-line default-case
   switch (variant) {
     case 'simple':
       return (
@@ -29,6 +28,9 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
           <Button variant="link-black" href={url} label={label} className="font-semibold mt-2" />
         </NavigationMenu.Link>
       )
+
+    default:
+      return null
   }
 }
 

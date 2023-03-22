@@ -7,7 +7,7 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'

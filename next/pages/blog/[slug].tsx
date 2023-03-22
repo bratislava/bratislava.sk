@@ -7,7 +7,7 @@ import {
   MainMenuQuery,
   MenuQuery,
 } from '@bratislava/strapi-sdk-homepage'
-import { getParsedMenus } from '@utils/getParsedMenus'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify } from '@utils/utils'

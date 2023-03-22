@@ -1,5 +1,5 @@
 import { MenuQuery } from '@bratislava/strapi-sdk-homepage'
-import { MenuItem, MenuLink } from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { MenuItem, MenuLink } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import { isDefined } from '@utils/isDefined'
 
 export const getParsedMenus = (menu: MenuQuery['menu']): MenuItem[] => {
@@ -21,18 +21,29 @@ export const getParsedMenus = (menu: MenuQuery['menu']): MenuItem[] => {
               const sectionItems =
                 section.links
                   ?.map((menuLink) => {
-                    if (!menuLink?.page?.data?.attributes?.slug) return null
+                    const menuLinkSlug = menuLink?.page?.data?.attributes?.slug
 
-                    return {
-                      label: menuLink.label,
-                      url: menuLink.page.data.attributes.slug,
+                    if (menuLinkSlug) {
+                      return {
+                        label: menuLink.label,
+                        url: menuLinkSlug,
+                      }
                     }
+
+                    if (menuLink?.url) {
+                      return {
+                        label: menuLink.label,
+                        url: menuLink.url,
+                      }
+                    }
+
+                    return null
                   })
                   .filter(isDefined) ?? []
 
               const showMoreLink = section.page?.data?.attributes
                 ? ({
-                    // label: t('navMenuMore'),
+                    // TODO use label: t('navMenuMore'),
                     label: 'Ďalšie',
                     url: section.page.data.attributes.slug,
                   } as MenuLink)
