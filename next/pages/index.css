@@ -160,6 +160,14 @@
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
   }
+
+  button[data-state='open'] > svg {
+    display: block;
+  }
+
+  button[data-state='closed'] > svg {
+    display: none;
+  }
 }
 
 .closebutton .ml-5 {
@@ -245,8 +253,8 @@
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
     }
   }
 }

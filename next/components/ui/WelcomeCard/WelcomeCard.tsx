@@ -1,34 +1,37 @@
-import cx from 'classnames'
-import React from 'react'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import WelcomeCardIcon from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
+import React, { useRef } from 'react'
+import { useHover } from 'usehooks-ts'
+
+import MLink from '../../forms/simple-components/MLink'
 
 export interface WelcomeCardProps {
-  className?: string
-  image: React.ReactNode
-  imageClassName?: string
-  title: string
-  path: string
+  item: MenuItem
 }
 
-export const WelcomeCard = ({ className, image, imageClassName, title, path }: WelcomeCardProps) => {
+export const WelcomeCard = ({ item }: WelcomeCardProps) => {
+  const hoverRef = useRef<HTMLDivElement>(null)
+  const isHover = useHover(hoverRef)
+
   return (
-    <a href={path}>
-      <div
-        className={cx(
-          'flex flex-col gap-8 items-center justify-center border-3 rounded-lg bg-white border-category-600 hover:bg-category-200 cursor-pointer',
-          className
-        )}
-      >
-        <div
-          className={cx(
-            'w-32 h-28 flex items-center justify-center opacity-50 group-hover:text-category-600 group-hover:opacity-100',
-            imageClassName
-          )}
-        >
-          {image}
-        </div>
-        <p className="text-h1 text-category-600 group-hover:font-medium">{title}</p>
+    <div
+      ref={hoverRef}
+      className="text-20 group relative w-full h-full flex items-center gap-x-6 text-left md:px-2 md:py-1 lg:pb-2 lg:flex-col lg:gap-y-4 lg:text-center"
+    >
+      {/* TODO scaling */}
+      <div className="scale-75 lg:scale-100">
+        <WelcomeCardIcon isColored={isHover} icon={item.icon} />
       </div>
-    </a>
+      {/* */}
+      <div className="text-p2-medium text-font/75 md:whitespace-pre-wrap overflow-hidden">
+        <MLink
+          href={item.linkHref}
+          className="after:inset-0 after:absolute group-hover:underline underline lg:no-underline"
+        >
+          {item.label}
+        </MLink>
+      </div>
+    </div>
   )
 }
 

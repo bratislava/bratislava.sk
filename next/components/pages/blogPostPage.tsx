@@ -7,6 +7,7 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'
@@ -20,7 +21,8 @@ export interface GeneralPageProps {
   post: BlogPostFragment
   footer: FooterProps
   children?: React.ReactNode
-  menuItems?: MenuMainItem[]
+  menuItemsOld?: MenuMainItem[]
+  menus: MenuItem[]
 }
 
 const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
@@ -36,7 +38,7 @@ const SocialMediaButton = ({ href, children }: { href: string; children: React.R
   return <button onClick={openSharePage}>{children}</button>
 }
 
-const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
+const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) => {
   const [socialLink, setSocialLink] = React.useState('')
   React.useEffect(() => setSocialLink(window.location.href), [])
   const blogPost = post.data[0].attributes
@@ -46,11 +48,7 @@ const BlogPostPage = ({ post, footer, menuItems }: GeneralPageProps) => {
   const { t } = useTranslation()
 
   return (
-    <BasePageLayout
-      footer={footer}
-      menuItems={menuItems}
-      activeMenuItem={tag?.pageCategory?.data?.id ?? '1'}
-    >
+    <BasePageLayout footer={footer} menuItemsOld={menuItemsOld} menus={menus}>
       {pageCategory?.color && (
         <style
           dangerouslySetInnerHTML={{

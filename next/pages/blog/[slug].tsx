@@ -1,12 +1,19 @@
 // @ts-strict-ignore
 /* eslint-disable unicorn/consistent-destructuring */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
+import {
+  BlogPostBySlugQuery,
+  FooterQuery,
+  MainMenuQuery,
+  MenuQuery,
+} from '@bratislava/strapi-sdk-homepage'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useMemo } from 'react'
 
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
@@ -46,13 +53,13 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
     locale,
   })
 
-  const { pageCategories: mainMenu } = await client.MainMenu({
-    locale,
-  })
+  const { pageCategories: mainMenu } = await client.MainMenu({ locale })
 
-  const { footer } = await client.Footer({
-    locale,
-  })
+  const { menu } = await client.Menu({ locale })
+
+  console.log('MENU', menu)
+
+  const { footer } = await client.Footer({ locale })
 
   const blogPostBySlug = blogPosts?.data[0]
 
@@ -66,6 +73,7 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
       post: blogPosts,
       footer,
       mainMenu,
+      menu: menu ?? null,
       locale,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
@@ -79,16 +87,26 @@ interface BlogPostPageProps {
   post: NonNullable<BlogPostBySlugQuery['blogPosts']>
   footer: FooterQuery['footer']
   mainMenu: MainMenuQuery['pageCategories']
+  menu: MenuQuery['menu']
 }
 
-const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
+const Page = ({ post, footer, mainMenu, menu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes ?? {})
   const menuItems = parseMainMenu(mainMenu)
+
+  const menusParsed = useMemo(() => {
+    return getParsedMenus(menu)
+  }, [menu])
 
   // TODO change if multilingual blogs
   return (
     <PageWrapper locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
-      <BlogPostPage post={post} footer={parsedFooter} menuItems={menuItems} />
+      <BlogPostPage
+        post={post}
+        footer={parsedFooter}
+        menuItemsOld={menuItems}
+        menus={menusParsed}
+      />
     </PageWrapper>
   )
 }

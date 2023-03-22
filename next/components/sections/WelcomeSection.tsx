@@ -1,25 +1,23 @@
 import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
-import { MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
-import HomepageMenu from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenu'
+import { SectionContainer } from '@bratislava/ui-bratislava'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
 import cx from 'classnames'
 import Image from 'next/image'
-import { MutableRefObject, useState } from 'react'
+import { useState } from 'react'
 
 import HomePageSearch from '../molecules/HomePageSearch'
-import { STICKY_MENU_STATE, useWithoutStickyMenuSection } from './useWithoutStickyMenuSection'
 
 interface Props {
   homepageHeader: HomepageHeaderFragment | null | undefined
-  mainMenuItems: MenuMainItem[]
-  elementRef: MutableRefObject<HTMLDivElement | null>
+  menus: MenuItem[]
 }
 
-export const WithoutStickyMenuSection = ({ mainMenuItems, homepageHeader, elementRef }: Props) => {
+export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
-  const { menuState } = useWithoutStickyMenuSection()
 
   return (
-    <div ref={elementRef}>
+    <div className="bg-white">
       <SectionContainer>
         <div className="relative flex flex-col pt-28 pb-8 lg:flex-row lg:items-center lg:pb-10 lg:pt-18">
           <div className="lg:absolute z-[1] flex grow flex-col gap-8">
@@ -42,35 +40,22 @@ export const WithoutStickyMenuSection = ({ mainMenuItems, homepageHeader, elemen
               width={647}
               height={326}
               src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt="Bratislava Hero"
+              alt=""
             />
             <Image
               className="sm:hidden"
               width={721}
               height={364}
               src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt="Bratislava Hero"
+              alt=""
             />
-            {/* <img */}
-            {/*  className="hidden sm:block" */}
-
-            {/*  alt="Bratislava Hero" */}
-            {/* /> */}
-            {/* <img */}
-            {/*  className="sm:hidden" */}
-            {/*  width={721} */}
-            {/*  height={364} */}
-            {/*  src={homepageHeader?.mobilePicture?.data?.attributes?.url} */}
-            {/*  alt="Bratislava Hero" */}
-            {/* /> */}
           </div>
         </div>
         <div className="mb-[20rem] md:mb-0 h-36 w-full relative">
-          <div className="relative">
-            <HomepageMenu
-              items={mainMenuItems}
-              isVisible={menuState === STICKY_MENU_STATE.HIDDEN}
-            />
+          <div className="relative md:grid md:grid-cols-3 md:gap-x-4 lg:gap-x-6 lg:grid-cols-6">
+            {menus?.map((item, index) => (
+              <WelcomeCard key={index} item={item} />
+            ))}
           </div>
         </div>
       </SectionContainer>

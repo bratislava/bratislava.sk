@@ -3112,6 +3112,21 @@ export type MainMenuQueryVariables = Exact<{
 
 export type MainMenuQuery = { __typename?: 'Query', pageCategories?: { __typename?: 'PageCategoryEntityResponseCollection', data: Array<{ __typename?: 'PageCategoryEntity', id?: string | null, attributes?: { __typename?: 'PageCategory', title?: string | null, color?: Enum_Pagecategory_Color | null, icon?: Enum_Pagecategory_Icon | null, iconHover?: Enum_Pagecategory_Iconhover | null, priority?: number | null, subcategories?: { __typename?: 'PageSubcategoryRelationResponseCollection', data: Array<{ __typename?: 'PageSubcategoryEntity', id?: string | null, attributes?: { __typename?: 'PageSubcategory', title?: string | null, priority?: number | null, icon?: Enum_Pagesubcategory_Icon | null, moreLink?: { __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null, pages?: Array<{ __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null> | null } | null }> } | null } | null }> } | null };
 
+export type PageForMenuEntityFragment = { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null };
+
+export type MenuLinkFragment = { __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null };
+
+export type MenuSectionFragment = { __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null };
+
+export type MenuItemFragment = { __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null };
+
+export type MenuQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode'];
+}>;
+
+
+export type MenuQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', menus?: Array<{ __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null } | null> | null } | null } | null } | null };
+
 export type HomepageQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode'];
 }>;
@@ -3868,6 +3883,59 @@ export const MainMenuItemFragmentDoc = gql`
   }
 }
     ${PageLinkBlockFragmentDoc}`;
+export const PageForMenuEntityFragmentDoc = gql`
+    fragment PageForMenuEntity on PageEntity {
+  id
+  attributes {
+    title
+    slug
+  }
+}
+    `;
+export const MenuLinkFragmentDoc = gql`
+    fragment MenuLink on ComponentMenuMenuLink {
+  id
+  label
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  url
+}
+    ${PageForMenuEntityFragmentDoc}`;
+export const MenuSectionFragmentDoc = gql`
+    fragment MenuSection on ComponentMenuMenuSection {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  links {
+    ...MenuLink
+  }
+}
+    ${PageForMenuEntityFragmentDoc}
+${MenuLinkFragmentDoc}`;
+export const MenuItemFragmentDoc = gql`
+    fragment MenuItem on ComponentMenuMenuItem {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  sections {
+    ...MenuSection
+  }
+}
+    ${PageForMenuEntityFragmentDoc}
+${MenuSectionFragmentDoc}`;
 export const HomepageHeaderFragmentDoc = gql`
     fragment HomepageHeader on ComponentBlocksHomepageHeader {
   headline
@@ -4181,6 +4249,19 @@ export const MainMenuDocument = gql`
   }
 }
     ${MainMenuItemFragmentDoc}`;
+export const MenuDocument = gql`
+    query Menu($locale: I18NLocaleCode!) {
+  menu(locale: $locale) {
+    data {
+      attributes {
+        menus {
+          ...MenuItem
+        }
+      }
+    }
+  }
+}
+    ${MenuItemFragmentDoc}`;
 export const HomepageDocument = gql`
     query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
@@ -4368,6 +4449,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     MainMenu(variables: MainMenuQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MainMenuQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<MainMenuQuery>(MainMenuDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'MainMenu', 'query');
+    },
+    Menu(variables: MenuQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MenuQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<MenuQuery>(MenuDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Menu', 'query');
     },
     Homepage(variables: HomepageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<HomepageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<HomepageQuery>(HomepageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Homepage', 'query');

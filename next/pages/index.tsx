@@ -1,13 +1,14 @@
 import {
   BlogCards,
+  Bookmarks,
   InBaCard,
-  PageHeader,
   Posts,
   PrimatorCouncil,
   SectionContainer,
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
@@ -16,12 +17,13 @@ import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
 import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
+import { WelcomeSection } from '../components/sections/WelcomeSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
@@ -32,17 +34,13 @@ export const getStaticProps = async (ctx: { locale: string }) => {
     locale,
   })
 
-  const { homepage } = await client.Homepage({
-    locale,
-  })
+  const { homepage } = await client.Homepage({ locale })
 
-  const { pageCategories: mainMenu } = await client.MainMenu({
-    locale,
-  })
+  const { pageCategories: mainMenu } = await client.MainMenu({ locale })
 
-  const { footer } = await client.Footer({
-    locale,
-  })
+  const { menu } = await client.Menu({ locale })
+
+  const { footer } = await client.Footer({ locale })
 
   const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
     title: post?.title,
@@ -114,6 +112,7 @@ export const getStaticProps = async (ctx: { locale: string }) => {
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
+      menu,
       page: {
         locale: ctx.locale,
         localizations: ['sk', 'en']
@@ -138,6 +137,7 @@ const Homepage = ({
   data,
   footer,
   mainMenu,
+  menu,
   page,
   homepage,
   latestBlogposts,
@@ -147,40 +147,43 @@ const Homepage = ({
   inba,
   rozkoPosts,
 }: AsyncServerProps<typeof getStaticProps>) => {
+  const { t } = useTranslation('common')
+
   const { posts } = data
 
-  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
+  const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
 
-  const { t } = useTranslation('common')
+  const menusParsed = useMemo(() => {
+    return getParsedMenus(menu)
+  }, [menu])
+
   // TODO: Change Image to img when Image handling changed
 
   return (
     <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
       <HomepagePageLayout
-        header={header}
-        menuItems={menuItems}
+        menuItemsOld={menuItemsOld}
+        menus={menusParsed}
         footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
-        bookmarks={cards}
       >
-        <PageHeader
-          color=""
-          transparentColor=""
-          imageSrc=""
-          waves={{
-            className: 'md:mt-18 mt-6',
-            waveColor: 'white',
-            wavePosition: 'bottom',
-            backgroundColor: 'var(--background-color)',
-          }}
-        >
-          <Head>
-            <title>{homepage?.data?.attributes?.title}</title>
-            <meta
-              name="description"
-              content={homepage?.data?.attributes?.metaDescription ?? undefined}
-            />
-          </Head>
-        </PageHeader>
+        {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
+        <Head>
+          <title>{homepage?.data?.attributes?.title}</title>
+          <meta
+            name="description"
+            content={homepage?.data?.attributes?.metaDescription ?? undefined}
+          />
+        </Head>
+        {/* </PageHeader> */}
+        <Bookmarks bookmarks={cards} className="top-56" />
+
+        <WelcomeSection menus={menusParsed} homepageHeader={header} />
+
+        <Waves
+          className="mb-[-1px] lg:mb-0"
+          waveColor="var(--background-color)"
+          wavePosition="top"
+        />
 
         <SectionContainer className="bg-gray-50 pb-14">
           <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />

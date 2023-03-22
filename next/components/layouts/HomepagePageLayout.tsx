@@ -1,73 +1,50 @@
-import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
-import {
-  BAStickyMenu,
-  Bookmarks,
-  BookmarksProps,
-  FooterProps,
-  MenuMainItem,
-  SectionContainer,
-} from '@bratislava/ui-bratislava'
+import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
+import NavMenu from '@bratislava/ui-bratislava/NavMenu/NavMenu'
+import { useNavMenuContext } from '@bratislava/ui-bratislava/NavMenu/navMenuContext'
+import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import cx from 'classnames'
-import {
-  STICKY_MENU_STATE,
-  useWithoutStickyMenuSection,
-} from 'components/sections/useWithoutStickyMenuSection'
-import { WithoutStickyMenuSection } from 'components/sections/WithoutStickyMenuSection'
 import React from 'react'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../molecules/NavBar'
 
 interface HomepagePageLayoutProps {
-  header?: HomepageHeaderFragment | null | undefined
   footer?: FooterProps
-  menuItems?: MenuMainItem[]
-  bookmarks?: BookmarksProps['bookmarks']
+  menuItemsOld?: MenuMainItem[]
+  menus: MenuItem[]
 }
 
 const HomepagePageLayout = ({
-  header,
   className,
   children,
   footer,
-  menuItems,
-  bookmarks,
+  menuItemsOld,
+  menus,
 }: React.HTMLAttributes<HTMLDivElement> & HomepagePageLayoutProps) => {
   // const isEN = true // TODO: use localization // TODO get bookmarks determined by localization
-  const { elementRef, menuState } = useWithoutStickyMenuSection()
+  const { menuValue } = useNavMenuContext()
 
   return (
-    <div className={className}>
+    <div
+      className={cx(className, {
+        // If menu is open, disable pointer events on the whole page (pointer events on menu must be re-enabled)
+        'pointer-events-none': menuValue !== '',
+      })}
+    >
       <header>
         <div className="h-14 w-full bg-white">
           <SectionContainer>
-            <NavBar menuItems={menuItems ?? []} />
+            <NavBar menuItems={menuItemsOld ?? []} />
           </SectionContainer>
         </div>
-        <div className="bg-white">
-          <WithoutStickyMenuSection
-            mainMenuItems={menuItems ?? []}
-            homepageHeader={header}
-            elementRef={elementRef}
-          />
-          <div
-            className={cx(
-              'mx-auto w-full bg-white fixed z-30 drop-shadow-sm shadow-lg left-0 hidden lg:block',
-              {
-                'top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.VISIBLE,
-                '-top-14 transition-all duration-300': menuState === STICKY_MENU_STATE.HIDDEN,
-              },
-            )}
-          >
-            <BAStickyMenu
-              menuItems={menuItems ?? []}
-              isVisible={menuState === STICKY_MENU_STATE.VISIBLE}
-            />
-          </div>
+        <div className="mx-auto w-full fixed z-30 top-14 left-0 hidden lg:block">
+          <NavMenu menus={menus} />
         </div>
       </header>
-      <Bookmarks bookmarks={bookmarks} className="top-56" />
-      <main id="content-anchor">{children}</main>
+      {/* TODO tmp fix by lg:mt-20 - remove when solving layout */}
+      <main id="content-anchor" className="lg:mt-20">
+        {children}
+      </main>
       {footer && <Footer {...footer} />}
     </div>
   )

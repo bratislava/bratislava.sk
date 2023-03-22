@@ -1,7 +1,7 @@
-import { HomepageMenuIconSvgProps } from '@bratislava/ui-bratislava/HomepageMenu/HomepageMenuIcon'
+import { IconProps } from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import React from 'react'
 
-const IconEnvironment = ({ isColored, color }: HomepageMenuIconSvgProps) => {
+const IconEnvironment = ({ isColored, color }: IconProps) => {
   const fillColor = isColored ? color : 'white'
   const strokeColor = isColored ? color : '#333333'
 
