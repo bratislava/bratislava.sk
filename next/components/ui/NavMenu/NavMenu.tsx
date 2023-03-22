@@ -53,7 +53,7 @@ const NavMenu = ({ menus }: NavigationMenuProps) => {
       // to re-enable pointer events when menu is open and whole page has pointer events disabled
       className="pointer-events-auto"
     >
-      <NavigationMenu.List className="shadow-md z-20 bg-white">
+      <NavigationMenu.List className="shadow-md relative z-30 bg-white">
         <div className="max-w-screen-lg m-auto w-full grid grid-flow-col grid-cols-6">
           {menus.map((menu, index) => (
             // eslint-disable-next-line react/no-array-index-key
@@ -66,7 +66,6 @@ const NavMenu = ({ menus }: NavigationMenuProps) => {
       <NavigationMenu.Viewport
         // Together with onCLick in NavMenuContent, it closes the menu on click outside of container area
         onClick={() => setMenuValue('')}
-        className="z-10 w-full"
       />
     </NavigationMenu.Root>
   )

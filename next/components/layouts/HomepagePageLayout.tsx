@@ -32,7 +32,10 @@ const HomepagePageLayout = ({
           <NavMenu menus={menus} />
         </div>
       </header>
-      <main id="content-anchor">{children}</main>
+      {/* TODO tmp fix by lg:mt-20 - remove when solving layout */}
+      <main id="content-anchor" className="lg:mt-20">
+        {children}
+      </main>
       {footer && <Footer {...footer} />}
     </div>
   )

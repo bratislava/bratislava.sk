@@ -47,7 +47,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSecti
       onPointerMove={(event) => event.preventDefault()}
       onPointerLeave={(event) => event.preventDefault()}
     >
-      <div style={{ backgroundColor }}>
+      <div style={{ backgroundColor }} className="relative z-[29]">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
         <div
           className={cx('max-w-screen-lg mx-auto grid w-full gap-x-8 gap-y-6 px-4 py-8', {
@@ -85,7 +85,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSecti
         </div>
       </div>
       <Waves
-        className="overflow-hidden"
+        className="drop-shadow-xl -mt-px relative z-[28]"
         wavePosition="bottom"
         backgroundColor="transparent"
         waveColor={backgroundColor}
