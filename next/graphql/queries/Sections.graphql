@@ -188,7 +188,6 @@ fragment NarrowTextSection on ComponentSectionsNarrowText {
 
 fragment WavesSection on ComponentSectionsWaves {
   position
-  isRich
 }
 
 fragment PageLinkBlock on ComponentBlocksPageLink {

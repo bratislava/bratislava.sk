@@ -2,24 +2,15 @@ import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'rooks'
 
-import { Waves, WavesProps } from '../Waves/Waves'
+import { Waves } from '../Waves/Waves'
 
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   color: string
   transparentColor: string
   transparentColorMobile?: string
   imageSrc: string
-  waves?: WavesProps
   smallScreenBreakPoint?: number
 }
-
-const defaultWaveProps = (color: string): WavesProps => ({
-  wavePosition: 'top',
-  waveColor: 'white',
-  backgroundColor: 'transparent',
-  innerLinesColor: color,
-  isRich: true,
-})
 
 // TODO isn't ideal as we're just referencing tailwind config value - good enough for most uses
 const DEFAULT_SMALL_SCREEN_BREAK_POINT = 768
@@ -31,7 +22,6 @@ export const PageHeader = ({
   transparentColor,
   transparentColorMobile,
   imageSrc,
-  waves,
   smallScreenBreakPoint = DEFAULT_SMALL_SCREEN_BREAK_POINT,
   ...rest
 }: PageHeaderProps) => {
@@ -75,7 +65,7 @@ export const PageHeader = ({
       {...rest}
     >
       {children}
-      <Waves {...{ ...defaultWaveProps(color), ...waves }} />
+      <Waves wavePosition="top" waveColor="white" />
     </div>
   )
 }

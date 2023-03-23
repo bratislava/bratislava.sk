@@ -1469,13 +1469,11 @@ input ComponentSectionsVideosInput {
 
 type ComponentSectionsWaves {
   id: ID!
-  isRich: Boolean
   position: ENUM_COMPONENTSECTIONSWAVES_POSITION
 }
 
 input ComponentSectionsWavesFiltersInput {
   and: [ComponentSectionsWavesFiltersInput]
-  isRich: BooleanFilterInput
   not: ComponentSectionsWavesFiltersInput
   or: [ComponentSectionsWavesFiltersInput]
   position: StringFilterInput
@@ -1483,7 +1481,6 @@ input ComponentSectionsWavesFiltersInput {
 
 input ComponentSectionsWavesInput {
   id: ID
-  isRich: Boolean
   position: ENUM_COMPONENTSECTIONSWAVES_POSITION
 }
 
