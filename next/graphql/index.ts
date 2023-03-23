@@ -3311,11 +3311,11 @@ export type NumericalListSectionFragment = { __typename?: 'ComponentSectionsNume
 
 export type OrganizationalStructureSectionFragment = { __typename?: 'ComponentSectionsOrganizationalStructure', title?: string | null };
 
-export type ProsAndConsCardFragment = { __typename?: 'ComponentBlocksProsAndConsCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null> };
+export type ProsAndConsCardComponentFragment = { __typename?: 'ComponentBlocksProsAndConsCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null> };
 
 export type ProsAndConsSectionFragment = { __typename?: 'ComponentSectionsProsAndConsSection', title?: string | null, text?: string | null, textAlignProsAndCons: Enum_Componentsectionsprosandconssection_Textalign, pros: { __typename?: 'ComponentBlocksProsAndConsCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null> }, cons: { __typename?: 'ComponentBlocksProsAndConsCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null> } };
 
-export type ComparisonCardFragment = { __typename?: 'ComponentBlocksComparisonCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null>, iconMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null };
+export type ComparisonCardComponentFragment = { __typename?: 'ComponentBlocksComparisonCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null>, iconMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null };
 
 export type ComparisonSectionFragment = { __typename?: 'ComponentSectionsComparisonSection', title?: string | null, text?: string | null, textAlignComparison: Enum_Componentsectionscomparisonsection_Textalign, cards: Array<{ __typename?: 'ComponentBlocksComparisonCard', title: string, items: Array<{ __typename?: 'ComponentBlocksComparisonItem', label: string } | null>, iconMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null> };
 
@@ -3814,8 +3814,8 @@ export const OrganizationalStructureSectionFragmentDoc = gql`
   title
 }
     `;
-export const ProsAndConsCardFragmentDoc = gql`
-    fragment ProsAndConsCard on ComponentBlocksProsAndConsCard {
+export const ProsAndConsCardComponentFragmentDoc = gql`
+    fragment ProsAndConsCardComponent on ComponentBlocksProsAndConsCard {
   title
   items {
     label
@@ -3828,15 +3828,15 @@ export const ProsAndConsSectionFragmentDoc = gql`
   text
   textAlignProsAndCons: textAlign
   pros {
-    ...ProsAndConsCard
+    ...ProsAndConsCardComponent
   }
   cons {
-    ...ProsAndConsCard
+    ...ProsAndConsCardComponent
   }
 }
-    ${ProsAndConsCardFragmentDoc}`;
-export const ComparisonCardFragmentDoc = gql`
-    fragment ComparisonCard on ComponentBlocksComparisonCard {
+    ${ProsAndConsCardComponentFragmentDoc}`;
+export const ComparisonCardComponentFragmentDoc = gql`
+    fragment ComparisonCardComponent on ComponentBlocksComparisonCard {
   title
   items {
     label
@@ -3856,10 +3856,10 @@ export const ComparisonSectionFragmentDoc = gql`
   text
   textAlignComparison: textAlign
   cards {
-    ...ComparisonCard
+    ...ComparisonCardComponent
   }
 }
-    ${ComparisonCardFragmentDoc}`;
+    ${ComparisonCardComponentFragmentDoc}`;
 export const SectionsFragmentDoc = gql`
     fragment Sections on PageSectionsDynamicZone {
   __typename

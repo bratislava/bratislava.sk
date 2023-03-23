@@ -341,7 +341,7 @@ fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStruct
   title
 }
 
-fragment ProsAndConsCard on ComponentBlocksProsAndConsCard {
+fragment ProsAndConsCardComponent on ComponentBlocksProsAndConsCard {
   title
   items {
     label
@@ -356,14 +356,14 @@ fragment ProsAndConsSection on ComponentSectionsProsAndConsSection {
   #    ...CommonLink
   #  }
   pros {
-    ...ProsAndConsCard
+    ...ProsAndConsCardComponent
   }
   cons {
-    ...ProsAndConsCard
+    ...ProsAndConsCardComponent
   }
 }
 
-fragment ComparisonCard on ComponentBlocksComparisonCard {
+fragment ComparisonCardComponent on ComponentBlocksComparisonCard {
   title
   items {
     label
@@ -385,7 +385,7 @@ fragment ComparisonSection on ComponentSectionsComparisonSection {
   #    ...CommonLink
   #  }
   cards {
-    ...ComparisonCard
+    ...ComparisonCardComponent
   }
 }
 
