@@ -1,3 +1,17 @@
+fragment CommonLink on ComponentBlocksCommonLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+}
+
 query Footer($locale: I18NLocaleCode!) {
   footer(locale: $locale) {
     data {

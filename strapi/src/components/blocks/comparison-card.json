@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blocks_comparison_cards",
+  "info": {
+    "displayName": "comparison card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.comparison-item",
+      "required": true
+    },
+    "iconMedia": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

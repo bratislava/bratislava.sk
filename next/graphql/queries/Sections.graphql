@@ -341,6 +341,54 @@ fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStruct
   title
 }
 
+fragment ProsAndConsCardComponent on ComponentBlocksProsAndConsCard {
+  title
+  items {
+    label
+  }
+}
+
+fragment ProsAndConsSection on ComponentSectionsProsAndConsSection {
+  title
+  text
+  textAlignProsAndCons: textAlign
+  #  showMoreLink {
+  #    ...CommonLink
+  #  }
+  pros {
+    ...ProsAndConsCardComponent
+  }
+  cons {
+    ...ProsAndConsCardComponent
+  }
+}
+
+fragment ComparisonCardComponent on ComponentBlocksComparisonCard {
+  title
+  items {
+    label
+  }
+  iconMedia {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+}
+
+fragment ComparisonSection on ComponentSectionsComparisonSection {
+  title
+  text
+  textAlignComparison: textAlign
+  #  showMoreLink {
+  #    ...CommonLink
+  #  }
+  cards {
+    ...ComparisonCardComponent
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -420,6 +468,14 @@ fragment Sections on PageSectionsDynamicZone {
   }
 
   # ComponentSectionsOfficialBoard has no attributes
+
+  ... on ComponentSectionsProsAndConsSection {
+    ...ProsAndConsSection
+  }
+
+  ... on ComponentSectionsComparisonSection {
+    ...ComparisonSection
+  }
 }
 
 fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
