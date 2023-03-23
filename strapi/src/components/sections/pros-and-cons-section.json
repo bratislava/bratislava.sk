@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_pros_and_cons_sections",
+  "info": {
+    "displayName": "Pros and Cons Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "textAlign": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center"
+      ],
+      "required": true,
+      "default": "left"
+    },
+    "pros": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.pros-and-cons-card",
+      "required": true
+    },
+    "cons": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.pros-and-cons-card",
+      "required": true
+    }
+  }
+}

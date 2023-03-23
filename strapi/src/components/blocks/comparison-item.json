@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blocks_comparison_items",
+  "info": {
+    "displayName": "comparison item"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

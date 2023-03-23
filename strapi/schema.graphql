@@ -242,6 +242,68 @@ input ComponentBlocksBookmarkLinkInput {
   title: String
 }
 
+type ComponentBlocksCommonLink {
+  id: ID!
+  label: String!
+  page: PageEntityResponse
+  url: String
+}
+
+input ComponentBlocksCommonLinkFiltersInput {
+  and: [ComponentBlocksCommonLinkFiltersInput]
+  label: StringFilterInput
+  not: ComponentBlocksCommonLinkFiltersInput
+  or: [ComponentBlocksCommonLinkFiltersInput]
+  page: PageFiltersInput
+  url: StringFilterInput
+}
+
+input ComponentBlocksCommonLinkInput {
+  id: ID
+  label: String
+  page: ID
+  url: String
+}
+
+type ComponentBlocksComparisonCard {
+  iconMedia: UploadFileEntityResponse
+  id: ID!
+  items(filters: ComponentBlocksComparisonItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonItem]!
+  title: String!
+}
+
+input ComponentBlocksComparisonCardFiltersInput {
+  and: [ComponentBlocksComparisonCardFiltersInput]
+  items: ComponentBlocksComparisonItemFiltersInput
+  not: ComponentBlocksComparisonCardFiltersInput
+  or: [ComponentBlocksComparisonCardFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlocksComparisonCardInput {
+  iconMedia: ID
+  id: ID
+  items: [ComponentBlocksComparisonItemInput]
+  title: String
+}
+
+type ComponentBlocksComparisonItem {
+  id: ID!
+  label: String!
+}
+
+input ComponentBlocksComparisonItemFiltersInput {
+  and: [ComponentBlocksComparisonItemFiltersInput]
+  label: StringFilterInput
+  not: ComponentBlocksComparisonItemFiltersInput
+  or: [ComponentBlocksComparisonItemFiltersInput]
+}
+
+input ComponentBlocksComparisonItemInput {
+  id: ID
+  label: String
+}
+
 type ComponentBlocksDocListExtensions {
   document: UploadFileEntityResponse
   id: ID!
@@ -544,6 +606,26 @@ input ComponentBlocksPageLinkInput {
   page: ID
   title: String
   url: String
+}
+
+type ComponentBlocksProsAndConsCard {
+  id: ID!
+  items(filters: ComponentBlocksComparisonItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonItem]!
+  title: String!
+}
+
+input ComponentBlocksProsAndConsCardFiltersInput {
+  and: [ComponentBlocksProsAndConsCardFiltersInput]
+  items: ComponentBlocksComparisonItemFiltersInput
+  not: ComponentBlocksProsAndConsCardFiltersInput
+  or: [ComponentBlocksProsAndConsCardFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlocksProsAndConsCardInput {
+  id: ID
+  items: [ComponentBlocksComparisonItemInput]
+  title: String
 }
 
 type ComponentBlocksSpaceInfo {
@@ -880,6 +962,32 @@ input ComponentSectionsColumnedTextInput {
   content: String
   hasBackground: Boolean
   id: ID
+}
+
+type ComponentSectionsComparisonSection {
+  cards(filters: ComponentBlocksComparisonCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonCard]!
+  id: ID!
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN!
+  title: String
+}
+
+input ComponentSectionsComparisonSectionFiltersInput {
+  and: [ComponentSectionsComparisonSectionFiltersInput]
+  cards: ComponentBlocksComparisonCardFiltersInput
+  not: ComponentSectionsComparisonSectionFiltersInput
+  or: [ComponentSectionsComparisonSectionFiltersInput]
+  text: StringFilterInput
+  textAlign: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsComparisonSectionInput {
+  cards: [ComponentBlocksComparisonCardInput]
+  id: ID
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN
+  title: String
 }
 
 type ComponentSectionsContact {
@@ -1236,6 +1344,35 @@ input ComponentSectionsOrganizationalStructureInput {
   title: String
 }
 
+type ComponentSectionsProsAndConsSection {
+  cons: ComponentBlocksProsAndConsCard!
+  id: ID!
+  pros: ComponentBlocksProsAndConsCard!
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN!
+  title: String
+}
+
+input ComponentSectionsProsAndConsSectionFiltersInput {
+  and: [ComponentSectionsProsAndConsSectionFiltersInput]
+  cons: ComponentBlocksProsAndConsCardFiltersInput
+  not: ComponentSectionsProsAndConsSectionFiltersInput
+  or: [ComponentSectionsProsAndConsSectionFiltersInput]
+  pros: ComponentBlocksProsAndConsCardFiltersInput
+  text: StringFilterInput
+  textAlign: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsProsAndConsSectionInput {
+  cons: ComponentBlocksProsAndConsCardInput
+  id: ID
+  pros: ComponentBlocksProsAndConsCardInput
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN
+  title: String
+}
+
 type ComponentSectionsSpace {
   id: ID!
   sectionTitle: String
@@ -1478,6 +1615,11 @@ enum ENUM_COMPONENTMENUMENUSECTION_ICON {
   zivotne_prostredie_03
 }
 
+enum ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN {
+  center
+  left
+}
+
 enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
   bicykel_02_full_width
   budovy_04_full_width
@@ -1517,6 +1659,11 @@ enum ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT {
   basic
   combined
   roadmap
+}
+
+enum ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN {
+  center
+  left
 }
 
 enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION {
@@ -1717,7 +1864,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
@@ -2199,7 +2346,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 

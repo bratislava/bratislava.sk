@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_common_links",
+  "info": {
+    "displayName": "common link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

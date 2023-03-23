@@ -7,6 +7,7 @@ import AccordionSection from './sections/general/AccordionSection'
 import ArticlesListSection from './sections/general/ArticlesListSection/ArticlesListSection'
 import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
 import ColumnedTextSection from './sections/general/ColumnedTextSection'
+import ComparisonSection from './sections/general/ComparisonSection'
 import ContactSection from './sections/general/ContactSection'
 import DividerSection from './sections/general/DividerSection'
 import DocumentListSection from './sections/general/DocumentListSection/DocumentListSection'
@@ -21,6 +22,7 @@ import NewsletterSection from './sections/general/NewsletterSection'
 import NumericalListSection from './sections/general/NumericalListSection'
 import OfficialBoardSection from './sections/general/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
+import ProsAndConsSection from './sections/general/ProsAndConsSection'
 import TextWithImageSection from './sections/general/TextWithImageSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
@@ -83,6 +85,12 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsOfficialBoard':
       return <OfficialBoardSection />
+
+    case 'ComponentSectionsProsAndConsSection':
+      return <ProsAndConsSection section={section} />
+
+    case 'ComponentSectionsComparisonSection':
+      return <ComparisonSection section={section} />
 
     default:
       return null

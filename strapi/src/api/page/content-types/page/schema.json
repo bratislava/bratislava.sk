@@ -87,7 +87,9 @@
         "sections.space",
         "sections.organizational-structure",
         "sections.gallery",
-        "sections.official-board"
+        "sections.official-board",
+        "sections.pros-and-cons-section",
+        "sections.comparison-section"
       ]
     },
     "pageHeaderSections": {

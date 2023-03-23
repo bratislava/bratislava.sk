@@ -1,12 +1,21 @@
 const { join } = require('path')
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
+
+const customVariants = plugin(function ({ addVariant }) {
+  addVariant('not-first', '&:not(:first-child)')
+})
 
 module.exports = {
   content: [
     join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'),
     join(__dirname, 'components/**/*.{js,jsx,ts,tsx}'),
   ],
-  darkMode: 'media', // or 'class'
+  plugins: [customVariants, require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
+  corePlugins: {
+    container: false,
+  },
+  mode: 'jit',
   theme: {
     fontWeight: {
       light: '300',
@@ -195,9 +204,4 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
-  corePlugins: {
-    container: false,
-  },
-  mode: 'jit',
 }
