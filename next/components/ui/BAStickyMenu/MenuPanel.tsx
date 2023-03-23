@@ -98,7 +98,6 @@ export const MenuPanel = ({ item, onClosePanel }: MenuPanelProps) => {
           wavePosition="bottom"
           backgroundColor="transparent"
           waveColor={item.color}
-          isRich
         />
       </div>
     </div>

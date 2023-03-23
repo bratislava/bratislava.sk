@@ -5,53 +5,36 @@ import WaveBottomSmall from './waves/WaveBottomSmall'
 import WaveTopLarge from './waves/WaveTopLarge'
 import WaveTopSmall from './waves/WaveTopSmall'
 
-export interface WavesProps {
-  className?: string
-  waveColor: string
-  outerLinesColor?: string
-  innerLinesColor?: string
-  backgroundColor?: string
+interface WavesProps {
   wavePosition: 'top' | 'bottom'
-  isRich?: boolean
+  waveColor: string
+  backgroundColor?: string
+  className?: string
 }
 
-export interface WaveProps {
-  isRich?: boolean
-  waveColor: string
-  outerLinesColor?: string
-  innerLinesColor?: string
+export interface WavesSvgProps {
+  waveColor?: string
   className?: string
 }
 
 export const Waves = ({
   className,
-  backgroundColor,
+  backgroundColor = 'transparent',
   waveColor,
   wavePosition,
-  outerLinesColor,
-  innerLinesColor,
-  isRich,
 }: WavesProps) => {
-  const waveProps: WaveProps = {
-    // BA-552: Rich variant disabled everywhere, no matter the value of isRich prop
-    isRich: false,
-    waveColor,
-    outerLinesColor: outerLinesColor || waveColor,
-    innerLinesColor: innerLinesColor || backgroundColor || 'white',
-  }
-
   return (
-    <div style={{ backgroundColor }} className={cx('overflow-hidden', className)}>
+    <div style={{ backgroundColor, color: waveColor }} className={cx('overflow-hidden', className)}>
       {wavePosition === 'top' && (
         <>
-          <WaveTopLarge className="-mb-0.5 hidden md:block" {...waveProps} />
-          <WaveTopSmall className="md:hidden " {...waveProps} />
+          <WaveTopLarge className="-mb-px hidden md:block" />
+          <WaveTopSmall className="-mb-px md:hidden" waveColor={waveColor} />
         </>
       )}
       {wavePosition === 'bottom' && (
         <>
-          <WaveBottomLarge className="-mt-0.5 hidden md:block" {...waveProps} />
-          <WaveBottomSmall className="md:hidden" {...waveProps} />
+          <WaveBottomLarge className="-mt-px hidden md:block" />
+          <WaveBottomSmall className="-mt-px md:hidden" waveColor={waveColor} />
         </>
       )}
     </div>

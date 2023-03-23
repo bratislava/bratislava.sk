@@ -19,10 +19,10 @@ export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
   return (
     <div className="bg-white">
       <SectionContainer>
-        <div className="relative flex flex-col pt-28 pb-8 lg:flex-row lg:items-center lg:pb-10 lg:pt-18">
+        <div className="relative flex flex-col py-8 lg:flex-row lg:items-center lg:py-10">
           <div className="lg:absolute z-[1] flex grow flex-col gap-8">
             {/* TODO change to font size from config */}
-            <h1 className="text-h3 text-category-600 flex flex-col sm:text-[40px] font-bold sm:leading-[52px] whitespace-pre-wrap">
+            <h1 className="text-h2 text-category-600 flex flex-col sm:text-[40px] font-bold sm:leading-[52px] whitespace-pre-wrap">
               {homepageHeader?.headline}
             </h1>
             <HomePageSearch isOpen={isSearchOpen} setOpen={setSearchOpen} />
@@ -51,7 +51,7 @@ export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
             />
           </div>
         </div>
-        <div className="mb-[20rem] md:mb-0 h-36 w-full relative">
+        <div className="mb-5 lg:mb-14 w-full relative">
           <div className="relative md:grid md:grid-cols-3 md:gap-x-4 lg:gap-x-6 lg:grid-cols-6">
             {menus?.map((item, index) => (
               <WelcomeCard key={index} item={item} />

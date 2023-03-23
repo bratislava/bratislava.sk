@@ -8,9 +8,6 @@
     "position": {
       "type": "enumeration",
       "enum": ["top", "bottom"]
-    },
-    "isRich": {
-      "type": "boolean"
     }
   }
 }

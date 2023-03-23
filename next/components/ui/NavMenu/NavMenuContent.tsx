@@ -85,9 +85,8 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSecti
         </div>
       </div>
       <Waves
-        className="drop-shadow-xl -mt-px relative z-[28]"
+        className="drop-shadow-xl relative z-[28]"
         wavePosition="bottom"
-        backgroundColor="transparent"
         waveColor={backgroundColor}
       />
     </NavigationMenu.Content>

@@ -179,11 +179,7 @@ const Homepage = ({
 
         <WelcomeSection menus={menusParsed} homepageHeader={header} />
 
-        <Waves
-          className="mb-[-1px] lg:mb-0"
-          waveColor="var(--background-color)"
-          wavePosition="top"
-        />
+        <Waves waveColor="var(--background-color)" wavePosition="top" />
 
         <SectionContainer className="bg-gray-50 pb-14">
           <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
@@ -200,13 +196,7 @@ const Homepage = ({
 
           <PrimatorCouncil className="mt-14 lg:mt-20" primatorCards={data.council.cards} />
         </SectionContainer>
-        <Waves
-          className="mt-[-1px] lg:mt-0"
-          backgroundColor="white"
-          wavePosition="bottom"
-          isRich
-          waveColor="var(--background-color)"
-        />
+        <Waves wavePosition="bottom" waveColor="var(--background-color)" />
         <SectionContainer>
           <GooutEventsHomepageSection
             linkTitle={t('allEvents')}
@@ -216,23 +206,14 @@ const Homepage = ({
           />
         </SectionContainer>
 
-        <Waves
-          className="mb-[-1px] lg:mb-0"
-          waveColor="var(--category-color-200)"
-          wavePosition="top"
-          isRich
-        />
+        <Waves waveColor="var(--category-color-200)" wavePosition="top" />
 
         <SectionContainer className="bg-category-200 relative py-8">
           <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
           <TopNine items={data.topNine as TopNineItemProps[]} />
         </SectionContainer>
-        <Waves
-          waveColor="var(--category-color-200)"
-          wavePosition="bottom"
-          isRich
-          className="mt-[-1px] lg:mt-0"
-        />
+
+        <Waves waveColor="var(--category-color-200)" wavePosition="bottom" />
 
         <SectionContainer>
           <InBaCard className="mx-auto mt-40 md:mt-28 min-h-[200px] max-w-3xl" {...inba} />
