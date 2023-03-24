@@ -711,6 +711,58 @@ input ComponentBlocksVideoInput {
   url: String
 }
 
+type ComponentGeneralHeader {
+  accountLink: ComponentBlocksCommonLink
+  id: ID!
+  links(filters: ComponentGeneralHeaderLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentGeneralHeaderLink]
+}
+
+input ComponentGeneralHeaderFiltersInput {
+  accountLink: ComponentBlocksCommonLinkFiltersInput
+  and: [ComponentGeneralHeaderFiltersInput]
+  links: ComponentGeneralHeaderLinkFiltersInput
+  not: ComponentGeneralHeaderFiltersInput
+  or: [ComponentGeneralHeaderFiltersInput]
+}
+
+input ComponentGeneralHeaderInput {
+  accountLink: ComponentBlocksCommonLinkInput
+  id: ID
+  links: [ComponentGeneralHeaderLinkInput]
+}
+
+type ComponentGeneralHeaderLink {
+  icon: ENUM_COMPONENTGENERALHEADERLINK_ICON!
+  id: ID!
+  label: String!
+  page: PageEntityResponse
+  showOnDesktop: Boolean!
+  showOnMobile: Boolean!
+  url: String
+}
+
+input ComponentGeneralHeaderLinkFiltersInput {
+  and: [ComponentGeneralHeaderLinkFiltersInput]
+  icon: StringFilterInput
+  label: StringFilterInput
+  not: ComponentGeneralHeaderLinkFiltersInput
+  or: [ComponentGeneralHeaderLinkFiltersInput]
+  page: PageFiltersInput
+  showOnDesktop: BooleanFilterInput
+  showOnMobile: BooleanFilterInput
+  url: StringFilterInput
+}
+
+input ComponentGeneralHeaderLinkInput {
+  icon: ENUM_COMPONENTGENERALHEADERLINK_ICON
+  id: ID
+  label: String
+  page: ID
+  showOnDesktop: Boolean
+  showOnMobile: Boolean
+  url: String
+}
+
 type ComponentMenuMenuItem {
   icon: ENUM_COMPONENTMENUMENUITEM_ICON!
   id: ID!
@@ -1565,6 +1617,13 @@ enum ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION {
   right
 }
 
+enum ENUM_COMPONENTGENERALHEADERLINK_ICON {
+  esluzby
+  kontakt
+  som_turista
+  ukraina
+}
+
 enum ENUM_COMPONENTMENUMENUITEM_ICON {
   doprava_mapy_02
   kultura_06
@@ -1861,7 +1920,48 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+type General {
+  createdAt: DateTime
+  header: ComponentGeneralHeader
+  locale: String
+  localizations: GeneralRelationResponseCollection
+  updatedAt: DateTime
+}
+
+type GeneralEntity {
+  attributes: General
+  id: ID
+}
+
+type GeneralEntityResponse {
+  data: GeneralEntity
+}
+
+type GeneralEntityResponseCollection {
+  data: [GeneralEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input GeneralFiltersInput {
+  and: [GeneralFiltersInput]
+  createdAt: DateTimeFilterInput
+  header: ComponentGeneralHeaderFiltersInput
+  locale: StringFilterInput
+  localizations: GeneralFiltersInput
+  not: GeneralFiltersInput
+  or: [GeneralFiltersInput]
+  updatedAt: DateTimeFilterInput
+}
+
+input GeneralInput {
+  header: ComponentGeneralHeaderInput
+}
+
+type GeneralRelationResponseCollection {
+  data: [GeneralEntity!]!
+}
+
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
@@ -2125,6 +2225,7 @@ type Mutation {
   createBlogPost(data: BlogPostInput!, locale: I18NLocaleCode): BlogPostEntityResponse
   createBlogPostLocalization(data: BlogPostInput, id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   createFooterLocalization(data: FooterInput, id: ID, locale: I18NLocaleCode): FooterEntityResponse
+  createGeneralLocalization(data: GeneralInput, id: ID, locale: I18NLocaleCode): GeneralEntityResponse
   createHomepageLocalization(data: HomepageInput, id: ID, locale: I18NLocaleCode): HomepageEntityResponse
   createMenuLocalization(data: MenuInput, id: ID, locale: I18NLocaleCode): MenuEntityResponse
   createPage(data: PageInput!, locale: I18NLocaleCode): PageEntityResponse
@@ -2145,6 +2246,7 @@ type Mutation {
   createVzn(data: VznInput!): VznEntityResponse
   deleteBlogPost(id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
   deleteFooter(locale: I18NLocaleCode): FooterEntityResponse
+  deleteGeneral(locale: I18NLocaleCode): GeneralEntityResponse
   deleteHomepage(locale: I18NLocaleCode): HomepageEntityResponse
   deleteMenu(locale: I18NLocaleCode): MenuEntityResponse
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
@@ -2180,6 +2282,7 @@ type Mutation {
   updateBlogPost(data: BlogPostInput!, id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFooter(data: FooterInput!, locale: I18NLocaleCode): FooterEntityResponse
+  updateGeneral(data: GeneralInput!, locale: I18NLocaleCode): GeneralEntityResponse
   updateHomepage(data: HomepageInput!, locale: I18NLocaleCode): HomepageEntityResponse
   updateMenu(data: MenuInput!, locale: I18NLocaleCode): MenuEntityResponse
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
@@ -2427,6 +2530,7 @@ type Query {
   blogPost(id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   blogPosts(filters: BlogPostFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostEntityResponseCollection
   footer(locale: I18NLocaleCode, publicationState: PublicationState = LIVE): FooterEntityResponse
+  general(locale: I18NLocaleCode): GeneralEntityResponse
   homepage(locale: I18NLocaleCode, publicationState: PublicationState = LIVE): HomepageEntityResponse
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
