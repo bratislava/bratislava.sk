@@ -6,7 +6,7 @@ import cx from 'classnames'
 import Image from 'next/image'
 import { useState } from 'react'
 
-import HomePageSearch from '../molecules/HomePageSearch'
+import HomePageSearch from '../../HomePageSearch'
 
 interface Props {
   homepageHeader: HomepageHeaderFragment | null | undefined
@@ -19,7 +19,7 @@ export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
   return (
     <div className="bg-white">
       <SectionContainer>
-        <div className="relative flex flex-col py-8 lg:flex-row lg:items-center lg:py-10">
+        <div className="relative flex flex-col py-8 lg:flex-row lg:items-center lg:py-0">
           <div className="lg:absolute z-[1] flex grow flex-col gap-8">
             {/* TODO change to font size from config */}
             <h1 className="text-h2 text-category-600 flex flex-col sm:text-[40px] font-bold sm:leading-[52px] whitespace-pre-wrap">

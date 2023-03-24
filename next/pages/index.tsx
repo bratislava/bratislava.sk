@@ -22,9 +22,9 @@ import React, { useMemo } from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
+import { WelcomeSection } from '../components/molecules/sections/general/WelcomeSection'
 import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
-import { WelcomeSection } from '../components/sections/WelcomeSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
   const locale: string = ctx.locale ?? 'sk'
