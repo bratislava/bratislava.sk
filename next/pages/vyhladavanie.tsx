@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { MainMenuItemFragment, MenuQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import {
+  GeneralQuery,
+  MainMenuItemFragment,
+  MenuQuery,
+  PageBySlugQuery,
+} from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
 import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
+import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { GetStaticProps } from 'next'
@@ -19,6 +25,7 @@ import PagesResults from '../components/molecules/SearchPage/PagesResults'
 import UsersResults from '../components/molecules/SearchPage/UsersResults'
 
 type PageProps = {
+  general: GeneralQuery
   footer: PageBySlugQuery['footer']
   mainMenu: MainMenuItemFragment
   menu: MenuQuery['menu']
@@ -33,12 +40,15 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
 
   const { menu } = await client.Menu({ locale })
 
+  const general = await client.General({ locale })
+
   if (!footer || !mainMenu || !menu) {
     return { notFound: true }
   }
 
   return {
     props: {
+      general,
       footer,
       mainMenu,
       menu,
@@ -48,7 +58,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   }
 }
 
-const Search = ({ footer, mainMenu, menu }: PageProps) => {
+const Search = ({ general, footer, mainMenu, menu }: PageProps) => {
   const { t, i18n } = useTranslation('common')
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
@@ -84,48 +94,50 @@ const Search = ({ footer, mainMenu, menu }: PageProps) => {
   const usersFilters = { search: searchValue }
 
   return (
-    <PageWrapper
-      locale={i18n.language}
-      localizations={[
-        { locale: 'sk', slug: 'vyhladavanie' },
-        { locale: 'en', slug: 'search' },
-      ]}
-      slug="/vyhladavanie"
-    >
-      <BasePageLayout
-        footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
-        menuItemsOld={menuItems}
-        menus={menusParsed}
+    <GeneralContextProvider general={general}>
+      <PageWrapper
+        locale={i18n.language}
+        localizations={[
+          { locale: 'sk', slug: 'vyhladavanie' },
+          { locale: 'en', slug: 'search' },
+        ]}
+        slug="/vyhladavanie"
       >
-        <style
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: pageStyle('main'),
-          }}
-        />
-        <SectionContainer>
-          <div className="md:pt-18 flex w-full flex-col gap-y-14 pt-14 lg:gap-y-20">
-            <AdvancedSearch
-              placeholder={t('enterKeyword')}
-              title={t('searching')}
-              buttonText={t('search')}
-              checkedOptions={checkedOptions}
-              handleSelect={setCheckedOptions}
-              input={input}
-              setInput={setInput}
-              setSearchQuery={setSearchValue}
-            />
+        <BasePageLayout
+          footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
+          menuItemsOld={menuItems}
+          menus={menusParsed}
+        >
+          <style
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: pageStyle('main'),
+            }}
+          />
+          <SectionContainer>
+            <div className="md:pt-18 flex w-full flex-col gap-y-14 pt-14 lg:gap-y-20">
+              <AdvancedSearch
+                placeholder={t('enterKeyword')}
+                title={t('searching')}
+                buttonText={t('search')}
+                checkedOptions={checkedOptions}
+                handleSelect={setCheckedOptions}
+                input={input}
+                setInput={setInput}
+                setSearchQuery={setSearchValue}
+              />
 
-            {blogPostsSelected && <BlogPostsResults filters={blogPostsFilters} />}
-            {pagesSelected && <PagesResults filters={pagesFilters} />}
-            {usersSelected && <UsersResults filters={usersFilters} />}
+              {blogPostsSelected && <BlogPostsResults filters={blogPostsFilters} />}
+              {pagesSelected && <PagesResults filters={pagesFilters} />}
+              {usersSelected && <UsersResults filters={usersFilters} />}
 
-            {/* TODO : commented newsletter for this release probably on future release we will uncomment */}
-            {/* <NewsLetterSection /> */}
-          </div>
-        </SectionContainer>
-      </BasePageLayout>
-    </PageWrapper>
+              {/* TODO : commented newsletter for this release probably on future release we will uncomment */}
+              {/* <NewsLetterSection /> */}
+            </div>
+          </SectionContainer>
+        </BasePageLayout>
+      </PageWrapper>
+    </GeneralContextProvider>
   )
 }
 

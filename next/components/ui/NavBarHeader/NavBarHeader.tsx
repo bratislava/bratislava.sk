@@ -73,7 +73,7 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
               </>
             )}
 
-            <MLink href={t('searchLink')}>
+            <MLink href={t('searchLink')} className="p-4 -mx-4">
               <SearchIcon />
             </MLink>
 

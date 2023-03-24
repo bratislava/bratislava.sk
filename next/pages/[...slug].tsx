@@ -4,11 +4,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   GeneralPageFragment,
+  GeneralQuery,
   MainMenuItemFragment,
   MenuQuery,
   PageBySlugQuery,
 } from '@bratislava/strapi-sdk-homepage'
 import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
+import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify, isPresent } from '@utils/utils'
@@ -62,8 +64,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     pageTranslations.push('newsletter')
   }
 
+  const general = await client.General({ locale })
+
   return {
     props: {
+      general,
       slug,
       page: pages,
       footer,
@@ -76,6 +81,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 }
 
 interface GenericPageProps {
+  general: GeneralQuery
   slug: string
   page: GeneralPageFragment
   footer: PageBySlugQuery['footer']
@@ -83,7 +89,7 @@ interface GenericPageProps {
   menu: MenuQuery['menu']
 }
 
-const Page = ({ page, footer, mainMenu, menu }: GenericPageProps) => {
+const Page = ({ general, page, footer, mainMenu, menu }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes)
   const menuItems = parseMainMenu(mainMenu)
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
@@ -98,13 +104,15 @@ const Page = ({ page, footer, mainMenu, menu }: GenericPageProps) => {
   }, [menu])
 
   return (
-    <PageWrapper
-      locale={page?.data?.[0].attributes?.locale ?? 'sk'}
-      slug={page?.data?.[0]?.attributes.slug ?? ''}
-      localizations={localizations}
-    >
-      <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} menus={menusParsed} />
-    </PageWrapper>
+    <GeneralContextProvider general={general}>
+      <PageWrapper
+        locale={page?.data?.[0].attributes?.locale ?? 'sk'}
+        slug={page?.data?.[0]?.attributes.slug ?? ''}
+        localizations={localizations}
+      >
+        <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} menus={menusParsed} />
+      </PageWrapper>
+    </GeneralContextProvider>
   )
 }
 
