@@ -1,19 +1,22 @@
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import { useGeneralContext } from '@utils/generalContext'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 
 import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
 
-type NavigationMenuProps = {
-  menus: MenuItem[]
-}
-
-const NavMenu = ({ menus }: NavigationMenuProps) => {
+const NavMenu = () => {
   const { t } = useTranslation('common')
   const router = useRouter()
+
+  const { menu } = useGeneralContext()
+
+  const menus = useMemo(() => {
+    return getParsedMenus(menu, t('navMenuMore'))
+  }, [menu, t])
 
   const { menuValue, setMenuValue } = useNavMenuContext()
 

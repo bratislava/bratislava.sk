@@ -3338,13 +3338,6 @@ export type MenuSectionFragment = { __typename?: 'ComponentMenuMenuSection', id:
 
 export type MenuItemFragment = { __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null };
 
-export type MenuQueryVariables = Exact<{
-  locale: Scalars['I18NLocaleCode'];
-}>;
-
-
-export type MenuQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', menus?: Array<{ __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null } | null> | null } | null } | null } | null };
-
 export type HeaderLinkFragment = { __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null };
 
 export type GeneralFragment = { __typename?: 'General', header?: { __typename?: 'ComponentGeneralHeader', links?: Array<{ __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null, accountLink?: { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null } | null };
@@ -3354,7 +3347,7 @@ export type GeneralQueryVariables = Exact<{
 }>;
 
 
-export type GeneralQuery = { __typename?: 'Query', general?: { __typename?: 'GeneralEntityResponse', data?: { __typename?: 'GeneralEntity', attributes?: { __typename?: 'General', header?: { __typename?: 'ComponentGeneralHeader', links?: Array<{ __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null, accountLink?: { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null } | null } | null } | null } | null };
+export type GeneralQuery = { __typename?: 'Query', general?: { __typename?: 'GeneralEntityResponse', data?: { __typename?: 'GeneralEntity', attributes?: { __typename?: 'General', header?: { __typename?: 'ComponentGeneralHeader', links?: Array<{ __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null, accountLink?: { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null } | null } | null } | null } | null, menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', menus?: Array<{ __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null } | null> | null } | null } | null } | null };
 
 export type HomepageQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode'];
@@ -4589,8 +4582,15 @@ export const MainMenuDocument = gql`
   }
 }
     ${MainMenuItemFragmentDoc}`;
-export const MenuDocument = gql`
-    query Menu($locale: I18NLocaleCode!) {
+export const GeneralDocument = gql`
+    query General($locale: I18NLocaleCode!) {
+  general(locale: $locale) {
+    data {
+      attributes {
+        ...General
+      }
+    }
+  }
   menu(locale: $locale) {
     data {
       attributes {
@@ -4601,18 +4601,8 @@ export const MenuDocument = gql`
     }
   }
 }
-    ${MenuItemFragmentDoc}`;
-export const GeneralDocument = gql`
-    query General($locale: I18NLocaleCode!) {
-  general(locale: $locale) {
-    data {
-      attributes {
-        ...General
-      }
-    }
-  }
-}
-    ${GeneralFragmentDoc}`;
+    ${GeneralFragmentDoc}
+${MenuItemFragmentDoc}`;
 export const HomepageDocument = gql`
     query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
@@ -4800,9 +4790,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     MainMenu(variables: MainMenuQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MainMenuQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<MainMenuQuery>(MainMenuDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'MainMenu', 'query');
-    },
-    Menu(variables: MenuQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MenuQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<MenuQuery>(MenuDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Menu', 'query');
     },
     General(variables: GeneralQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GeneralQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GeneralQuery>(GeneralDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'General', 'query');

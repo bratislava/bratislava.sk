@@ -1,19 +1,27 @@
 import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
+import { useGeneralContext } from '@utils/generalContext'
 import cx from 'classnames'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import { useMemo, useState } from 'react'
 
 import HomePageSearch from '../../HomePageSearch'
 
 interface Props {
   homepageHeader: HomepageHeaderFragment | null | undefined
-  menus: MenuItem[]
 }
 
-export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
+export const WelcomeSection = ({ homepageHeader }: Props) => {
+  const { t } = useTranslation('common')
+  const { menu } = useGeneralContext()
+
+  const menus = useMemo(() => {
+    return getParsedMenus(menu, t('navMenuMore'))
+  }, [menu, t])
+
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
 
   return (

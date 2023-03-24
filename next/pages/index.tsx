@@ -8,7 +8,6 @@ import {
   TopNine,
   Waves,
 } from '@bratislava/ui-bratislava'
-import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
@@ -18,7 +17,7 @@ import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React, { useMemo } from 'react'
+import React from 'react'
 
 import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
 import PageWrapper from '../components/layouts/PageWrapper'
@@ -35,11 +34,11 @@ export const getStaticProps = async (ctx: { locale: string }) => {
     locale,
   })
 
+  const general = await client.General({ locale })
+
   const { homepage } = await client.Homepage({ locale })
 
   const { pageCategories: mainMenu } = await client.MainMenu({ locale })
-
-  const { menu } = await client.Menu({ locale })
 
   const { footer } = await client.Footer({ locale })
 
@@ -95,8 +94,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
     variant: card?.variant,
   }))
 
-  const general = await client.General({ locale })
-
   return {
     props: {
       data: buildMockData({
@@ -116,7 +113,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
       latestBlogposts: blogPosts,
       homepage,
       mainMenu,
-      menu,
       page: {
         locale: ctx.locale,
         localizations: ['sk', 'en']
@@ -142,7 +138,6 @@ const Homepage = ({
   data,
   footer,
   mainMenu,
-  menu,
   page,
   homepage,
   latestBlogposts,
@@ -158,10 +153,6 @@ const Homepage = ({
 
   const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
 
-  const menusParsed = useMemo(() => {
-    return getParsedMenus(menu)
-  }, [menu])
-
   // TODO: Change Image to img when Image handling changed
 
   return (
@@ -169,7 +160,6 @@ const Homepage = ({
       <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
         <HomepagePageLayout
           menuItemsOld={menuItemsOld}
-          menus={menusParsed}
           footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
         >
           {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
@@ -183,7 +173,7 @@ const Homepage = ({
           {/* </PageHeader> */}
           <Bookmarks bookmarks={cards} className="top-56" />
 
-          <WelcomeSection menus={menusParsed} homepageHeader={header} />
+          <WelcomeSection homepageHeader={header} />
 
           <Waves waveColor="var(--background-color)" wavePosition="top" />
 

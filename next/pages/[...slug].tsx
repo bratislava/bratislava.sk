@@ -6,17 +6,14 @@ import {
   GeneralPageFragment,
   GeneralQuery,
   MainMenuItemFragment,
-  MenuQuery,
   PageBySlugQuery,
 } from '@bratislava/strapi-sdk-homepage'
-import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify, isPresent } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useMemo } from 'react'
 
 import PageWrapper from '../components/layouts/PageWrapper'
 import GeneralPage from '../components/pages/generalPage'
@@ -42,8 +39,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     slug,
     locale,
   })
-
-  const { menu } = await client.Menu({ locale })
 
   if (!pages?.data?.[0]) return { notFound: true } as { notFound: true }
 
@@ -73,7 +68,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       page: pages,
       footer,
       mainMenu,
-      menu,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
     revalidate: 10,
@@ -86,10 +80,9 @@ interface GenericPageProps {
   page: GeneralPageFragment
   footer: PageBySlugQuery['footer']
   mainMenu: MainMenuItemFragment
-  menu: MenuQuery['menu']
 }
 
-const Page = ({ general, page, footer, mainMenu, menu }: GenericPageProps) => {
+const Page = ({ general, page, footer, mainMenu }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes)
   const menuItems = parseMainMenu(mainMenu)
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
@@ -99,10 +92,6 @@ const Page = ({ general, page, footer, mainMenu, menu }: GenericPageProps) => {
     }
   })
 
-  const menusParsed = useMemo(() => {
-    return getParsedMenus(menu)
-  }, [menu])
-
   return (
     <GeneralContextProvider general={general}>
       <PageWrapper
@@ -110,7 +99,7 @@ const Page = ({ general, page, footer, mainMenu, menu }: GenericPageProps) => {
         slug={page?.data?.[0]?.attributes.slug ?? ''}
         localizations={localizations}
       >
-        <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} menus={menusParsed} />
+        <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
       </PageWrapper>
     </GeneralContextProvider>
   )

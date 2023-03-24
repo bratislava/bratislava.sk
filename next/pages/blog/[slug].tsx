@@ -6,16 +6,13 @@ import {
   FooterQuery,
   GeneralQuery,
   MainMenuQuery,
-  MenuQuery,
 } from '@bratislava/strapi-sdk-homepage'
-import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useMemo } from 'react'
 
 import PageWrapper from '../../components/layouts/PageWrapper'
 import BlogPostPage from '../../components/pages/blogPostPage'
@@ -57,8 +54,6 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 
   const { pageCategories: mainMenu } = await client.MainMenu({ locale })
 
-  const { menu } = await client.Menu({ locale })
-
   const { footer } = await client.Footer({ locale })
 
   const general = await client.General({ locale })
@@ -76,7 +71,6 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
       post: blogPosts,
       footer,
       mainMenu,
-      menu: menu ?? null,
       locale,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
@@ -91,27 +85,17 @@ interface BlogPostPageProps {
   post: NonNullable<BlogPostBySlugQuery['blogPosts']>
   footer: FooterQuery['footer']
   mainMenu: MainMenuQuery['pageCategories']
-  menu: MenuQuery['menu']
 }
 
-const Page = ({ general, post, footer, mainMenu, menu, locale }: BlogPostPageProps) => {
+const Page = ({ general, post, footer, mainMenu, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes ?? {})
   const menuItems = parseMainMenu(mainMenu)
-
-  const menusParsed = useMemo(() => {
-    return getParsedMenus(menu)
-  }, [menu])
 
   // TODO change if multilingual blogs
   return (
     <GeneralContextProvider general={general}>
       <PageWrapper locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
-        <BlogPostPage
-          post={post}
-          footer={parsedFooter}
-          menuItemsOld={menuItems}
-          menus={menusParsed}
-        />
+        <BlogPostPage post={post} footer={parsedFooter} menuItemsOld={menuItems} />
       </PageWrapper>
     </GeneralContextProvider>
   )

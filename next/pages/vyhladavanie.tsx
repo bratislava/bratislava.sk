@@ -3,18 +3,16 @@
 import {
   GeneralQuery,
   MainMenuItemFragment,
-  MenuQuery,
   PageBySlugQuery,
 } from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
-import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
@@ -28,7 +26,6 @@ type PageProps = {
   general: GeneralQuery
   footer: PageBySlugQuery['footer']
   mainMenu: MainMenuItemFragment
-  menu: MenuQuery['menu']
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
@@ -38,11 +35,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
     locale,
   })
 
-  const { menu } = await client.Menu({ locale })
-
   const general = await client.General({ locale })
 
-  if (!footer || !mainMenu || !menu) {
+  if (!footer || !mainMenu) {
     return { notFound: true }
   }
 
@@ -51,25 +46,21 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
       general,
       footer,
       mainMenu,
-      menu,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
     revalidate: 10,
   }
 }
 
-const Search = ({ general, footer, mainMenu, menu }: PageProps) => {
+const Search = ({ general, footer, mainMenu }: PageProps) => {
   const { t, i18n } = useTranslation('common')
+
   const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState<string>('')
   const debouncedInput = useDebounce<string>(input, 300)
   const [searchValue, setSearchValue] = useState<string>(debouncedInput)
-
-  const menusParsed = useMemo(() => {
-    return getParsedMenus(menu)
-  }, [menu])
 
   useEffect(() => {
     setInput(routerQueryValue)
@@ -106,7 +97,6 @@ const Search = ({ general, footer, mainMenu, menu }: PageProps) => {
         <BasePageLayout
           footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
           menuItemsOld={menuItems}
-          menus={menusParsed}
         >
           <style
             // eslint-disable-next-line react/no-danger

@@ -124,19 +124,6 @@ fragment MenuItem on ComponentMenuMenuItem {
   }
 }
 
-
-query Menu($locale: I18NLocaleCode!) {
-  menu(locale: $locale) {
-    data {
-      attributes {
-        menus {
-          ...MenuItem
-        }
-      }
-    }
-  }
-}
-
 fragment HeaderLink on ComponentGeneralHeaderLink {
   label
   page {
@@ -170,6 +157,15 @@ query General($locale: I18NLocaleCode!) {
     data {
       attributes {
         ...General
+      }
+    }
+  }
+  menu(locale: $locale) {
+    data {
+      attributes {
+        menus {
+          ...MenuItem
+        }
       }
     }
   }
