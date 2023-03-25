@@ -1,5 +1,6 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
 import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
@@ -76,7 +77,7 @@ export const BlogSearchCard = ({
   // TODO use formatter function, add locale
   console.log(item.attributes)
   const date = new Date(date_added ?? publishedAt).toLocaleDateString('sk-SK')
-  const tagColor = color ? `--color-${color}-100` : '--color-main-100'
+  const tagColor = transformColorToCategory(color ?? 'red')
 
   return (
     <UILink href={slug ? `/blog/${slug}` : ''}>
@@ -104,7 +105,7 @@ export const BlogSearchCard = ({
           {tagTitle && (
             <div
               className="w-fit rounded-lg px-3 py-1"
-              style={{ backgroundColor: `rgb(var(${tagColor}))` }}
+              style={{ backgroundColor: `rgb(var(--color-${tagColor}-200)` }}
             >
               {tagTitle}
             </div>
@@ -136,7 +137,7 @@ export const BlogSearchCard = ({
               {tagTitle && (
                 <div
                   className="w-fit rounded-lg px-3 py-1"
-                  style={{ backgroundColor: `rgb(var(${tagColor}))` }}
+                  style={{ backgroundColor: `rgb(var(--color-${tagColor}-200)` }}
                 >
                   {tagTitle}
                 </div>
