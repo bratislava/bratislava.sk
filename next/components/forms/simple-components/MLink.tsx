@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 
 export type LinkProps = Omit<ComponentProps<typeof Link>, 'as' | 'passHref'> & {
   children: ReactNode
-  variant?: 'unstyled' | 'underlineOnHover' | 'navMenu'
+  variant?: 'unstyled' | 'underlineOnHover' | 'navMenu' | 'breadcrumbs'
   /**
    * Similar to this:
    * https://getbootstrap.com/docs/4.3/utilities/stretched-link/
@@ -25,6 +25,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
       cx({
         'hover:underline': variant === 'underlineOnHover',
         'underline hover:font-semibold': variant === 'navMenu',
+        underline: variant === 'breadcrumbs',
 
         // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
         'after:absolute after:inset-0': stretched,
