@@ -11,7 +11,7 @@ import { GeneralPageFragment, PageHeaderButtonFragment } from '@bratislava/strap
 import { FooterProps, MenuMainItem } from '@bratislava/ui-bratislava'
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
-import PageHeaderV2 from '@bratislava/ui-bratislava/PageHeaderV2/PageHeaderV2'
+import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
@@ -138,7 +138,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
           />
         )}
         {/* Header */}
-        <PageHeaderV2
+        <PageHeader
           title={page.title}
           subtitle={page.subtitle}
           breadcrumbs={breadcrumbs}
@@ -156,7 +156,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
           className={hasFeaturedBlogs && 'mb-[110px] lg:mb-[266px]'}
         >
           <PageHeaderSections sections={page?.pageHeaderSections} />
-        </PageHeaderV2>
+        </PageHeader>
 
         {/* Page - Common Sections */}
         {page?.sections && <Sections sections={page.sections} />}

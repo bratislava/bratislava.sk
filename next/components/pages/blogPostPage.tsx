@@ -8,7 +8,7 @@ import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
-import PageHeaderV2 from '@bratislava/ui-bratislava/PageHeaderV2/PageHeaderV2'
+import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'
@@ -65,7 +65,7 @@ const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) =
           />
         )}
         {/* Header */}
-        <PageHeaderV2
+        <PageHeader
           title={blogPost?.title}
           // TODO: Fix breadcrumbs after Navikronos.
           breadcrumbs={[]}

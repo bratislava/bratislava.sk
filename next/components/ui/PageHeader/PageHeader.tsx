@@ -12,7 +12,7 @@ type PageHeaderButton = {
   path: string | null
 }
 
-type PageHeaderV2Props = {
+type PageHeaderProps = {
   title?: string | null
   subtitle?: string | null
   primaryButton?: PageHeaderButton | null
@@ -25,7 +25,7 @@ type PageHeaderV2Props = {
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=888%3A3162&t=7uti0MQv3SyaK3Tk-4
  */
-const PageHeaderV2 = ({
+const PageHeader = ({
   title,
   subtitle,
   breadcrumbs,
@@ -35,7 +35,7 @@ const PageHeaderV2 = ({
   tag,
   className,
   children,
-}: PropsWithChildren<PageHeaderV2Props>) => {
+}: PropsWithChildren<PageHeaderProps>) => {
   return (
     <div className={twMerge('bg-category-200 relative', className)}>
       {imageSrc && (
@@ -94,4 +94,4 @@ const PageHeaderV2 = ({
   )
 }
 
-export default PageHeaderV2
+export default PageHeader
