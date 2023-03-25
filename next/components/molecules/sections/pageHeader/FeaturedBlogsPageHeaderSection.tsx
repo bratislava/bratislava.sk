@@ -12,8 +12,12 @@ const FeaturedBlogsPageHeaderSection = ({ section }: FeaturedBlogsPageHeaderSect
   const blogs = [first_blog, second_blog, third_blog].filter(isPresent)
 
   return (
-    <div className="-bottom-45 absolute -inset-x-8 z-10 w-screen overflow-hidden lg:inset-x-0 lg:-bottom-88 lg:w-full">
-      <FeaturedBlogs blogs={blogs} />
+    <div className="relative">
+      <div className="w-full h-14" />
+      {/* Blogs move upwards on hover, therefore "-top-3 pt-3" makes a space to not be cut b overflow. */}
+      <div className="absolute z-10 w-screen overflow-hidden lg:w-full -top-3 pt-3">
+        <FeaturedBlogs blogs={blogs} />
+      </div>
     </div>
   )
 }
