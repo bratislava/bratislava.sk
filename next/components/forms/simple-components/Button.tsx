@@ -3,6 +3,7 @@ import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
+import { twMerge } from 'tailwind-merge'
 
 import MLink from './MLink'
 
@@ -76,22 +77,22 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       ref as RefObject<HTMLAnchorElement | HTMLButtonElement>,
     )
 
-    const style = cx(
+    const isLinkVariant = variant === 'link-black' || variant === 'link-category'
+    const hasText = Boolean(text || rest.label)
+
+    const style = twMerge(
       'inline-flex items-center',
-      rest.href
+      isLinkVariant
         ? 'underline underline-offset-4 focus-visible:outline-none'
         : 'h-fit space-x-2 justify-center text-center align-middle focus:outline-none rounded-lg',
-      className,
-      {
+      cx({
         'w-full': fullWidth,
         'w-fit': !fullWidth,
-      },
-      {
         // text for lg button
         'text-16-semibold px-4 py-2.5':
           size === 'lg' &&
           !icon &&
-          text &&
+          hasText &&
           (variant === 'black' ||
             variant === 'negative' ||
             variant === 'black-outline' ||
@@ -101,7 +102,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'text-16-semibold px-4 py-1.5':
           size === 'sm' &&
           !icon &&
-          text &&
+          hasText &&
           (variant === 'black' ||
             variant === 'negative' ||
             variant === 'black-outline' ||
@@ -111,7 +112,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'px-2.5 py-2.5':
           size === 'lg' &&
           icon &&
-          !text &&
+          !hasText &&
           (variant === 'black' ||
             variant === 'negative' ||
             variant === 'black-outline' ||
@@ -121,7 +122,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'px-2 py-2':
           (size === 'sm' &&
             icon &&
-            !text &&
+            !hasText &&
             (variant === 'black' ||
               variant === 'negative' ||
               variant === 'black-outline' ||
@@ -129,7 +130,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               variant === 'category-outline')) ||
           (size === 'lg' &&
             icon &&
-            !text &&
+            !hasText &&
             (variant === 'plain-category' ||
               variant === 'plain-black' ||
               variant === 'plain-negative')),
@@ -138,7 +139,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'px-1.5 py-1.5':
           size === 'sm' &&
           icon &&
-          !text &&
+          !hasText &&
           (variant === 'plain-category' ||
             variant === 'plain-black' ||
             variant === 'plain-negative'),
@@ -147,7 +148,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'text-16-semibold px-3 py-2':
           size === 'lg' &&
           !icon &&
-          text &&
+          hasText &&
           (variant === 'plain-category' ||
             variant === 'plain-black' ||
             variant === 'plain-negative'),
@@ -156,7 +157,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'text-16-semibold px-2 py-1':
           size === 'sm' &&
           !icon &&
-          text &&
+          hasText &&
           (variant === 'plain-category' ||
             variant === 'plain-black' ||
             variant === 'plain-negative'),
@@ -215,7 +216,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
         // disabled
         'opacity-50': disabled,
-      },
+      }),
+      className,
     )
 
     if (rest.href) {
@@ -228,7 +230,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           className={style}
           {...buttonPropsFixed}
         >
-          {!hrefIconHidden && (
+          {!hrefIconHidden && isLinkVariant && (
             <span
               className={cx('flex justify-center items-center', {
                 'ml-2 h-6 w-6': size === 'lg',
