@@ -19,7 +19,15 @@ module.exports = {
       { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] },
     ],
     /** Links get confused for secrets */
-    'no-secrets/no-secrets': ['error', { ignoreContent: '^http' }],
+    'no-secrets/no-secrets': [
+      'error',
+      {
+        ignoreContent: [
+          // https://stackoverflow.com/a/3809435
+          /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm,
+        ],
+      },
+    ],
     /** Presently at too many places & becomes just an ignored clutter, consider turning on later */
     '@typescript-eslint/no-unsafe-assignment': 'off',
     /** Doesn't work without changing our ts config */
