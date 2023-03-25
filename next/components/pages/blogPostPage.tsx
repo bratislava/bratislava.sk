@@ -6,8 +6,9 @@
 /* eslint-disable react/no-danger */
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
+import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import PageHeaderV2 from '@bratislava/ui-bratislava/PageHeaderV2/PageHeaderV2'
 import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'
@@ -48,80 +49,69 @@ const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) =
   const { t } = useTranslation()
 
   return (
-    <BasePageLayout footer={footer} menuItemsOld={menuItemsOld} menus={menus}>
-      {pageCategory?.color && (
-        <style
-          dangerouslySetInnerHTML={{
-            __html: pageStyle(pageCategory.color),
-          }}
-        />
+    <>
+      {blogPost?.excerpt && blogPost?.title && (
+        <Head>
+          <title>{blogPost?.title} – Bratislava</title>
+          <meta name="description" content={blogPost?.excerpt} />
+        </Head>
       )}
-      {/* Header */}
-      <PageHeader
-        className="header-main-bg bg-cover"
-        color="var(--category-color-200)"
-        transparentColor="var(--category-color-200--transparent)"
-        imageSrc={blogPost?.coverImage?.data?.attributes?.url || ''}
-      >
-        {/* meta description (Excerpt) */}
-        {blogPost?.excerpt && blogPost?.title && (
-          <Head>
-            <title> {blogPost?.title} </title>
-            <meta name="description" content={blogPost?.excerpt} />
-          </Head>
+      <BasePageLayout footer={footer} menuItemsOld={menuItemsOld} menus={menus}>
+        {pageCategory?.color && (
+          <style
+            dangerouslySetInnerHTML={{
+              __html: pageStyle(pageCategory.color),
+            }}
+          />
         )}
-        {/* Header - Breadcrumbs */}
+        {/* Header */}
+        <PageHeaderV2
+          title={blogPost?.title}
+          // TODO: Fix breadcrumbs after Navikronos.
+          breadcrumbs={[]}
+          subtitle={
+            blogPost &&
+            getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)
+          }
+          tag={tag?.title}
+          imageSrc={blogPost?.coverImage?.data?.attributes?.url}
+        />
+
+        {/* Page - Common Sections */}
+        {blogPost?.sections && <Sections sections={blogPost.sections} />}
+
+        {/* Page - Social media buttons for sharing */}
+        {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
         <SectionContainer>
-          <div className="min-h-56 pt-32">
-            {blogPost?.tag && (
-              <span className="text-p2-medium inline-block rounded bg-category-600 px-3 py-1 text-white">
-                {tag?.title}
-              </span>
-            )}
-            <h1 className="text-h1 max-w-[900px] whitespace-pre-wrap pt-4">{blogPost?.title}</h1>
-            {blogPost && (
-              <div className="pt-2 pb-14">
-                {getNumericLocalDate(
-                  blogPost.date_added || blogPost.publishedAt || blogPost.createdAt,
-                )}
-              </div>
-            )}
+          <div className="mt-14 flex flex-col">
+            <span className="text-h5">{t('share')}</span>
+            <div className="flex space-x-10 pt-5">
+              <SocialMediaButton
+                href={`https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}
+              >
+                <FacebookIcon />
+              </SocialMediaButton>
+
+              <SocialMediaButton
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${socialLink}`}
+              >
+                <LinkedinIcon />
+              </SocialMediaButton>
+
+              <SocialMediaButton href="https://www.instagram.com/bratislava.sk/">
+                <InstagramIcon />
+              </SocialMediaButton>
+
+              <SocialMediaButton
+                href={`https://twitter.com/intent/tweet?url=${socialLink}&text=${blogPost?.title}`}
+              >
+                <TwitterIcon />
+              </SocialMediaButton>
+            </div>
           </div>
         </SectionContainer>
-      </PageHeader>
-
-      {/* Page - Common Sections */}
-      {blogPost?.sections && <Sections sections={blogPost.sections} />}
-
-      {/* Page - Social media buttons for sharing */}
-      {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
-      <SectionContainer>
-        <div className="mt-14 flex flex-col">
-          <span className="text-h5">{t('share')}</span>
-          <div className="flex space-x-10 pt-5">
-            <SocialMediaButton href={`https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}>
-              <FacebookIcon />
-            </SocialMediaButton>
-
-            <SocialMediaButton
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${socialLink}`}
-            >
-              <LinkedinIcon />
-            </SocialMediaButton>
-
-            <SocialMediaButton href="https://www.instagram.com/bratislava.sk/">
-              <InstagramIcon />
-            </SocialMediaButton>
-
-            <SocialMediaButton
-              href={`https://twitter.com/intent/tweet?url=${socialLink}&text=${blogPost?.title}`}
-            >
-              <TwitterIcon />
-            </SocialMediaButton>
-          </div>
-        </div>
-      </SectionContainer>
-    </BasePageLayout>
+      </BasePageLayout>
+    </>
   )
 }
 
