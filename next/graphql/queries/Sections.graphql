@@ -508,3 +508,26 @@ fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
     ...FeaturedBlogPostsPageHeaderSection
   }
 }
+
+fragment PageHeaderButton on ComponentBlocksPageHeaderButton {
+  title
+  page {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
+    }
+  }
+  blogPost {
+    data {
+      attributes {
+        title
+        slug
+        locale
+      }
+    }
+  }
+  url
+}

@@ -582,6 +582,32 @@ input ComponentBlocksNumericalListItemInput {
   title: String
 }
 
+type ComponentBlocksPageHeaderButton {
+  blogPost: BlogPostEntityResponse
+  id: ID!
+  page: PageEntityResponse
+  title: String!
+  url: String
+}
+
+input ComponentBlocksPageHeaderButtonFiltersInput {
+  and: [ComponentBlocksPageHeaderButtonFiltersInput]
+  blogPost: BlogPostFiltersInput
+  not: ComponentBlocksPageHeaderButtonFiltersInput
+  or: [ComponentBlocksPageHeaderButtonFiltersInput]
+  page: PageFiltersInput
+  title: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlocksPageHeaderButtonInput {
+  blogPost: ID
+  id: ID
+  page: ID
+  title: String
+  url: String
+}
+
 type ComponentBlocksPageLink {
   anchor: String
   id: ID!
@@ -1861,7 +1887,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageHeaderButton | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
@@ -2201,6 +2227,8 @@ type Mutation {
 type Page {
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
+  headerPrimaryButton: ComponentBlocksPageHeaderButton
+  headerSecondaryButton: ComponentBlocksPageHeaderButton
   locale: String
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   metaDiscription: String
@@ -2214,6 +2242,7 @@ type Page {
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
   slug: String
+  subtitle: String
   title: String
   updatedAt: DateTime
 }
@@ -2302,6 +2331,8 @@ input PageFiltersInput {
   and: [PageFiltersInput]
   childPages: PageFiltersInput
   createdAt: DateTimeFilterInput
+  headerPrimaryButton: ComponentBlocksPageHeaderButtonFiltersInput
+  headerSecondaryButton: ComponentBlocksPageHeaderButtonFiltersInput
   id: IDFilterInput
   locale: StringFilterInput
   localizations: PageFiltersInput
@@ -2315,12 +2346,15 @@ input PageFiltersInput {
   publishedAt: DateTimeFilterInput
   relatedContents: TagFiltersInput
   slug: StringFilterInput
+  subtitle: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input PageInput {
   childPages: [ID]
+  headerPrimaryButton: ComponentBlocksPageHeaderButtonInput
+  headerSecondaryButton: ComponentBlocksPageHeaderButtonInput
   metaDiscription: String
   pageBackgroundImage: ID
   pageButtonContent: ComponentBlocksBlogPostLinkInput
@@ -2332,6 +2366,7 @@ input PageInput {
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
   slug: String
+  subtitle: String
   title: String
 }
 

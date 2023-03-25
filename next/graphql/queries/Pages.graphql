@@ -32,6 +32,7 @@ fragment GeneralPage on PageEntityResponseCollection {
     attributes {
       slug
       title
+      subtitle
       pageColor
       metaDiscription
       pageBackgroundImage {
@@ -40,6 +41,12 @@ fragment GeneralPage on PageEntityResponseCollection {
             url
           }
         }
+      }
+      headerPrimaryButton {
+        ...PageHeaderButton
+      }
+      headerSecondaryButton {
+        ...PageHeaderButton
       }
       pageButtonContent {
         title
@@ -85,6 +92,13 @@ fragment GeneralPage on PageEntityResponseCollection {
                     data {
                       attributes {
                         ...ParentPage
+                        parentPage {
+                          data {
+                            attributes {
+                              ...ParentPage
+                            }
+                          }
+                        }
                       }
                     }
                   }
