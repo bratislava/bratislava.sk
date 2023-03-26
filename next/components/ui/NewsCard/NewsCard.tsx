@@ -22,6 +22,7 @@ export interface NewsCardProps {
       } | null
     } | null
   } | null
+  coverImageSizes?: string
   tag?: {
     data?: {
       attributes?: {
@@ -51,6 +52,7 @@ export const NewsCard = ({
   coverImage = {
     data: { attributes: { url: BratislavaPlaceholder } },
   },
+  coverImageSizes,
   tag,
   title,
   excerpt,
@@ -66,6 +68,7 @@ export const NewsCard = ({
     <VerticalCard
       className={cx(className, 'min-w-66 leading-[1.3]')}
       imageSrc={coverImage?.data?.attributes?.url}
+      imageSizes={coverImageSizes}
     >
       <div className="space-y-5">
         {tag?.data?.attributes?.title && (
