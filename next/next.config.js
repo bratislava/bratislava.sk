@@ -8,7 +8,7 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'cdn-api.bratislava.sk'], // TODO will need fixing before deployment
+    domains: ['localhost', 'cdn-api.bratislava.sk', 'goout.net'],
   },
   async rewrites() {
     return {
