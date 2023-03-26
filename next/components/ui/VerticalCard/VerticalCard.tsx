@@ -6,6 +6,7 @@ import { Panel } from '../Panel/Panel'
 export interface VerticalCardProps extends React.HTMLAttributes<HTMLDivElement> {
   accessory?: React.ReactNode
   imageSrc?: string
+  imageSizes?: string
 }
 
 export const VerticalCard = ({
@@ -13,6 +14,7 @@ export const VerticalCard = ({
   className,
   children,
   imageSrc,
+  imageSizes,
   ...rest
 }: VerticalCardProps) => (
   <div className={cx(className, 'relative flex flex-col')} {...rest}>
@@ -24,7 +26,7 @@ export const VerticalCard = ({
             paddingTop: '71.4%',
           }}
         >
-          <Image src={imageSrc} alt="" fill className="object-cover" />
+          <Image src={imageSrc} alt="" fill sizes={imageSizes} className="object-cover" />
         </div>
       )}
       <div className="flex-1 px-6 py-8 lg:px-8 lg:pt-8 lg:pb-11">{children}</div>

@@ -10,6 +10,8 @@ const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
   return (
     <TextWithImage
       imageSrc={section.imageSrc?.data?.attributes?.url ?? ''}
+      imageWidth={section.imageSrc?.data?.attributes?.width}
+      imageHeight={section.imageSrc?.data?.attributes?.height}
       imagePosition={section.imagePosition ?? 'left'}
       content={section.content ?? ''}
       imageShadow={section.imageShadow ?? false}
