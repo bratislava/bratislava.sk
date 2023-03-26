@@ -37,8 +37,7 @@ export const TextWithImage = ({
             alt={imageAlternativeText ?? ''}
             width={imageWidth ?? 0}
             height={imageHeight ?? 0}
-            sizes={generateImageSizes({ md: '100vw', default: '50vw' })}
-            className="object-fit w-full h-full"
+            sizes={generateImageSizes({ md: '50vw', default: '100vw' })}
           />
         </div>
       )}
@@ -59,8 +58,7 @@ export const TextWithImage = ({
             alt={imageAlternativeText ?? ''}
             width={imageWidth ?? 0}
             height={imageHeight ?? 0}
-            sizes={generateImageSizes({ md: '100vw', default: '50vw' })}
-            className="object-fit w-full h-full"
+            sizes={generateImageSizes({ md: '50vw', default: '100vw' })}
           />
         </div>
       )}

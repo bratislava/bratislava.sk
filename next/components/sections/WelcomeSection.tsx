@@ -2,6 +2,7 @@ import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -35,22 +36,17 @@ export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
               },
             )}
           >
-            <Image
-              className="hidden sm:block"
-              width={647}
-              height={326}
-              src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt=""
-              priority
-            />
-            <Image
-              className="sm:hidden"
-              width={721}
-              height={364}
-              src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt=""
-              priority
-            />
+            <div className="w-[721px] sm:w-[647px]">
+              <Image
+                width={homepageHeader?.picture?.data?.attributes?.width ?? undefined}
+                height={homepageHeader?.picture?.data?.attributes?.height ?? undefined}
+                src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
+                alt=""
+                priority
+                quality={100}
+                sizes={generateImageSizes({ sm: '647px', default: '721px' })}
+              />
+            </div>
           </div>
         </div>
         <div className="mb-5 lg:mb-14 w-full relative">

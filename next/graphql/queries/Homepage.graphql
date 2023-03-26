@@ -76,6 +76,8 @@ fragment HomepageHeader on ComponentBlocksHomepageHeader {
     data {
       attributes {
         url
+        height
+        width
       }
     }
   }
