@@ -41,6 +41,7 @@ export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
               height={326}
               src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
               alt=""
+              priority
             />
             <Image
               className="sm:hidden"
@@ -48,6 +49,7 @@ export const WelcomeSection = ({ homepageHeader, menus }: Props) => {
               height={364}
               src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
               alt=""
+              priority
             />
           </div>
         </div>
