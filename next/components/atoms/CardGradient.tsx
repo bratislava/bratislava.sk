@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { TImageCarouselItem } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
@@ -13,7 +12,7 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
   const { Link: UILink } = useUIContext()
 
   return (
-    <UILink href={url}>
+    <UILink href={url ?? '#'}>
       <div
         className={cx(
           'group relative inline-block h-60 lg:h-76 pt-2 cursor-pointer transition-all transform lg:hover:-translate-y-2 lg:hover:drop-shadow-lg rounded-lg',
