@@ -1,4 +1,3 @@
-import { MenuMainItem } from '@bratislava/ui-bratislava'
 import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -10,12 +9,9 @@ import MobileNavBar from './MobileNavBar'
 import NavBarHeader from './NavBarHeader/NavBarHeader'
 import NavMenu from './NavMenu/NavMenu'
 
-interface IProps {
-  menuItems: MenuMainItem[]
-  pageColor?: string
-}
+interface IProps {}
 
-const NavBar = ({ menuItems, pageColor }: IProps) => {
+const NavBar = ({}: IProps) => {
   const router = useRouter()
   const { locale, localizations = [] } = usePageContext()
   const [t] = useTranslation('common')
@@ -55,7 +51,6 @@ const NavBar = ({ menuItems, pageColor }: IProps) => {
       {/* TODO mobile header, BANavBar (= old component) renders only on mobile */}
       <MobileNavBar
         className="lg:hidden"
-        menuItems={menuItems}
         onLanguageChange={handleLanguageChange}
         currentLanguage={locale}
         languages={[

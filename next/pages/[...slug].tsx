@@ -2,15 +2,10 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import {
-  GeneralPageFragment,
-  GeneralQuery,
-  MainMenuItemFragment,
-  PageBySlugQuery,
-} from '@bratislava/strapi-sdk-homepage'
+import { GeneralPageFragment, GeneralQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { parseFooter, parseMainMenu } from '@utils/page'
+import { parseFooter } from '@utils/page'
 import { arrayify, isPresent } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -35,7 +30,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
   const slug = arrayify(ctx.params.slug).join('/')
 
-  const { pages, footer, mainMenu } = await client.PageBySlug({
+  const { pages, footer } = await client.PageBySlug({
     slug,
     locale,
   })
@@ -67,7 +62,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       slug,
       page: pages,
       footer,
-      mainMenu,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
     revalidate: 10,
@@ -79,12 +73,10 @@ interface GenericPageProps {
   slug: string
   page: GeneralPageFragment
   footer: PageBySlugQuery['footer']
-  mainMenu: MainMenuItemFragment
 }
 
-const Page = ({ general, page, footer, mainMenu }: GenericPageProps) => {
+const Page = ({ general, page, footer }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes)
-  const menuItems = parseMainMenu(mainMenu)
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
     return {
       locale: locale.attributes.locale,
@@ -99,7 +91,7 @@ const Page = ({ general, page, footer, mainMenu }: GenericPageProps) => {
         slug={page?.data?.[0]?.attributes.slug ?? ''}
         localizations={localizations}
       >
-        <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
+        <GeneralPage pages={page} footer={parsedFooter} />
       </PageContextProvider>
     </GeneralContextProvider>
   )

@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import {
-  GeneralQuery,
-  MainMenuItemFragment,
-  PageBySlugQuery,
-} from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
+import { pageStyle, parseFooter } from '@utils/page'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -25,19 +21,18 @@ import UsersResults from '../components/molecules/SearchPage/UsersResults'
 type PageProps = {
   general: GeneralQuery
   footer: PageBySlugQuery['footer']
-  mainMenu: MainMenuItemFragment
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
-  const { footer, mainMenu } = await client.PageBySlug({
+  const { footer } = await client.PageBySlug({
     slug: 'test',
     locale,
   })
 
   const general = await client.General({ locale })
 
-  if (!footer || !mainMenu) {
+  if (!footer) {
     return { notFound: true }
   }
 
@@ -45,17 +40,14 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
     props: {
       general,
       footer,
-      mainMenu,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
     revalidate: 10,
   }
 }
 
-const Search = ({ general, footer, mainMenu }: PageProps) => {
+const Search = ({ general, footer }: PageProps) => {
   const { t, i18n } = useTranslation('common')
-
-  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState<string>('')
@@ -94,10 +86,7 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
         ]}
         slug="/vyhladavanie"
       >
-        <PageLayout
-          footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
-          menuItemsOld={menuItems}
-        >
+        <PageLayout footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}>
           <style
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
