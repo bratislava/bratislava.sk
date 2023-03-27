@@ -79,8 +79,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const style = cx(
       'inline-flex items-center',
       rest.href
-        ? 'underline underline-offset-4 focus-visible:outline-none'
-        : 'h-fit space-x-2 justify-center text-center align-middle focus:outline-none rounded-lg',
+        ? 'underline underline-offset-4'
+        : 'h-fit space-x-2 justify-center text-center align-middle rounded-lg',
       className,
       {
         'w-full': fullWidth,

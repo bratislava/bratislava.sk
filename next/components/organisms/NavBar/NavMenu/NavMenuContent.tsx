@@ -7,13 +7,13 @@ import NavMenuContentCell from './NavMenuContentCell'
 import NavMenuSection from './NavMenuSection'
 import { MenuSection } from './navMenuTypes'
 
-type NavigationSectionProps = {
+type NavMenuContentProps = {
   colCount: number
   sections: MenuSection[]
   backgroundColor: string
 }
 
-const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSectionProps) => {
+const NavMenuContent = ({ colCount, sections, backgroundColor }: NavMenuContentProps) => {
   // Parse sections into grid cells:
   // - group sections with colSpan=0 to column
   // - sections with colSpan=0 should be followed by section with colSpan=1 - this needs to be set up in Strapi
@@ -49,7 +49,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSecti
     >
       <div style={{ backgroundColor }} className="relative z-[29]">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-        <div
+        <ul
           className={cx('max-w-screen-lg mx-auto grid w-full gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
             'grid-cols-3': colCount === 3,
@@ -82,7 +82,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavigationSecti
             )
           })}
           {/* eslint-enable react/no-array-index-key */}
-        </div>
+        </ul>
       </div>
       <Waves
         className="drop-shadow-xl relative z-[28]"

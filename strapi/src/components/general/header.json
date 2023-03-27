@@ -9,8 +9,7 @@
     "links": {
       "type": "component",
       "repeatable": true,
-      "component": "general.header-link",
-      "max": 2
+      "component": "general.header-link"
     },
     "accountLink": {
       "type": "component",

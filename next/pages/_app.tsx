@@ -58,7 +58,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <QueryParamProvider adapter={NextAdapter}>
             <SSRProvider>
               <NavMenuContextProvider>
-                <div className={`${inter.variable} font-sans`}>
+                <div id="root" className={`${inter.variable} font-sans`}>
                   <Component {...pageProps} />
                 </div>
               </NavMenuContextProvider>

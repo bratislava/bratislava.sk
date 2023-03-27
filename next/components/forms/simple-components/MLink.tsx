@@ -23,7 +23,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
     const styles = twMerge(
       cx({
         'hover:underline': variant === 'underlineOnHover',
-        'font-semibold underline hover:text-gray-600': variant === 'navBarHeader',
+        'underline hover:text-gray-600 font-medium': variant === 'navBarHeader',
 
         // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
         'after:absolute after:inset-0': stretched,
