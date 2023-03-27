@@ -98,19 +98,19 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             {children}
           </div>
         ),
-        table: ({ children }) => <table className="table-block w-full">{children}</table>,
+        table: ({ children }) => (
+          <div className="overflow-x-auto">
+            <table className="table-auto w-full">{children}</table>
+          </div>
+        ),
         tr: ({ children }) => (
-          <tr className="flex w-66 flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
-            {children}
-          </tr>
+          <tr className="table md:table-row w-full mb-4 md:mb-0">{children}</tr>
         ),
-        tbody: ({ children }) => (
-          <tbody className="flex gap-5 md:table-row-group md:gap-0">{children}</tbody>
-        ),
-        thead: () => <thead className="bg-transparent" />,
+        tbody: ({ children }) => <tbody>{children}</tbody>,
+        thead: () => <thead />,
         td: ({ children }) => (
-          <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="text-p1 md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
+          <td className="first:text-p1-semibold text-p1 md:table-cell table-row">
+            <div className="md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
               {children}
             </div>
           </td>
