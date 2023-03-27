@@ -15,18 +15,22 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
   switch (variant) {
     case 'simple':
       return (
-        <NavigationMenu.Link asChild>
-          <MLink href={url} variant="underlineOnHover" className="py-1">
-            {label}
-          </MLink>
-        </NavigationMenu.Link>
+        <li className="flex">
+          <NavigationMenu.Link asChild>
+            <MLink href={url} variant="underlineOnHover" className="py-1 w-full">
+              {label}
+            </MLink>
+          </NavigationMenu.Link>
+        </li>
       )
 
     case 'showMoreLink':
       return (
-        <NavigationMenu.Link asChild>
-          <Button variant="link-black" href={url} label={label} className="font-semibold mt-2" />
-        </NavigationMenu.Link>
+        <li className="flex">
+          <NavigationMenu.Link asChild>
+            <Button variant="link-black" href={url} label={label} className="font-medium mt-2" />
+          </NavigationMenu.Link>
+        </li>
       )
 
     default:

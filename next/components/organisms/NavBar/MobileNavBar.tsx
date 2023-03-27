@@ -1,74 +1,81 @@
 import { CrossIcon } from '@assets/images'
 import Hamburger from '@assets/images/ba-hamburger.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
-import { Brand, HamburgerMenu, MenuMainItem } from '@bratislava/ui-bratislava'
+import { Brand } from '@bratislava/ui-bratislava'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
+import FocusTrap from 'focus-trap-react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 
 import Button from '../../forms/simple-components/Button'
 import MLink from '../../forms/simple-components/MLink'
+import MobileNavMenu from './NavMenu/MobileNavMenu'
+import { useMobileNavMenu } from './NavMenu/useMobileNavMenu'
 
 const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`border-r h-6 ${className}`} />
 }
 
-interface IProps extends LanguageSelectProps {
+interface MobileNavBarProps extends LanguageSelectProps {
   className?: string
-  menuItems?: MenuMainItem[]
 }
 
-export const BANavBar = ({ className, menuItems, ...languageSelectProps }: IProps) => {
-  const [burgerOpen, setBurgerOpen] = useState(false)
+export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) => {
+  const { t } = useTranslation(['common'])
+  const router = useRouter()
+  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useMobileNavMenu()
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
-
-  const { t } = useTranslation(['common'])
-
   const otherLanguage = languageSelectProps.languages?.find((l) => l.key !== languageKey)
+
+  useEffect(() => {
+    closeMobileMenu()
+  }, [router.asPath])
 
   return (
     <>
-      <div
-        className={cx(
-          'h-14 flex text-gray-700 items-center justify-between px-4 shadow-md fixed top-0 w-full bg-white z-30',
-          className,
-        )}
-      >
-        <div className="flex items-center">
-          <Brand url="/" className="py-3 px-4 -ml-4" />
+      <FocusTrap active={isMobileMenuOpen}>
+        <div>
+          <div
+            className={cx(
+              'h-14 flex text-gray-700 items-center justify-between px-4 shadow-md fixed top-0 w-full bg-white z-30',
+              className,
+            )}
+          >
+            <div className="flex items-center">
+              <Brand url="/" className="py-3 px-4 -ml-4" />
+            </div>
+            <div className="flex items-center">
+              {otherLanguage && (
+                <Button
+                  size="sm"
+                  className="underline underline-offset-2 p-4"
+                  variant="link-black"
+                  onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
+                  text={otherLanguage?.title}
+                />
+              )}
+              <Divider />
+              <MLink href={t('searchLink')} className="p-4">
+                <SearchIcon />
+              </MLink>
+              <Divider />
+              {isMobileMenuOpen ? (
+                <button type="button" onClick={() => closeMobileMenu()} className="-mr-4 p-4">
+                  <CrossIcon />
+                </button>
+              ) : (
+                <button type="button" onClick={() => openMobileMenu()} className="-mr-4 p-4">
+                  <Hamburger />
+                </button>
+              )}
+            </div>
+          </div>
+          {isMobileMenuOpen && <MobileNavMenu />}
         </div>
-
-        <div className="flex items-center">
-          {otherLanguage && (
-            <Button
-              size="sm"
-              className="underline underline-offset-2 p-4"
-              variant="link-black"
-              onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
-              text={otherLanguage?.title}
-            />
-          )}
-          <Divider />
-          <MLink href={t('searchLink')} className="p-4">
-            <SearchIcon />
-          </MLink>
-          <Divider />
-          <button onClick={() => setBurgerOpen(!burgerOpen)} className="-mr-4 p-4">
-            {burgerOpen ? <CrossIcon /> : <Hamburger />}
-          </button>
-        </div>
-
-        {burgerOpen && (
-          <HamburgerMenu
-            hamburgerMenuItems={menuItems}
-            lang={languageKey}
-            closeMenu={() => setBurgerOpen(false)}
-          />
-        )}
-      </div>
-
+      </FocusTrap>
       {/* Empty div under header */}
       <div className={cx('h-14', className)} />
     </>
@@ -87,4 +94,4 @@ interface LanguageOption {
   title: string
 }
 
-export default BANavBar
+export default MobileNavBar

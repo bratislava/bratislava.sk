@@ -12,15 +12,15 @@ interface NavigationSectionProps {
 
 const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
   return (
-    <div className={twMerge('flex gap-2', classNames)}>
-      <div>
+    <li className={twMerge('flex gap-2', classNames)}>
+      <div aria-hidden>
         <Icon iconName={section.icon} />
       </div>
-      <div>
-        {section.label && <div className="text-h5 mt-1.5">{section.label}</div>}
+      <div className="w-full">
+        {section.label && <h3 className="text-h5 mt-1.5">{section.label}</h3>}
 
         {/* TODO replace by <ul> and <li> */}
-        <div className="mt-1.5 flex flex-col">
+        <ul className="mt-1.5 flex flex-col">
           {/* eslint-disable react/no-array-index-key */}
           {section.items?.map((menuLink, index) => {
             return <NavMenuLink key={index} label={menuLink.label} url={menuLink.url} />
@@ -33,9 +33,9 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
             />
           )}
           {/* eslint-enable react/no-array-index-key */}
-        </div>
+        </ul>
       </div>
-    </div>
+    </li>
   )
 }
 
