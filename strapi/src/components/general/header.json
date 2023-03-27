@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_general_headers",
+  "info": {
+    "displayName": "header",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.header-link",
+      "max": 2
+    },
+    "accountLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    }
+  }
+}

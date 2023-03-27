@@ -1,3 +1,4 @@
+import EServices48pxIcon from '../../../assets/images/EServices.svg'
 import Accommodation48pxIcon from '../../../assets/images/menu-icons/48px/accommodation_48px.svg'
 import Bike48pxIcon from '../../../assets/images/menu-icons/48px/bike_48px.svg'
 import Calendar48pxIcon from '../../../assets/images/menu-icons/48px/calendar_48px.svg'
@@ -86,6 +87,8 @@ import Travel64pxFilledIcon from '../../../assets/images/menu-icons/64px/travel_
 import Travel64pxStrokeIcon from '../../../assets/images/menu-icons/64px/travel_64px_stroke.svg'
 import Tree64pxIcon from '../../../assets/images/menu-icons/64px/tree_64px.svg'
 import Trolleybus64pxIcon from '../../../assets/images/menu-icons/64px/trolleybus_64px.svg'
+import Phone48pxIcon from '../../../assets/images/phone-medium.svg'
+import TouristSign48pxIcon from '../../../assets/images/Tourist-icon.svg'
 
 export type MenuIcon = string
 
@@ -149,6 +152,10 @@ export const ICON_URL_MAP: IconUrlMap = {
     sluzby_06: Stage48pxIcon,
     koncepcia_06: Culture48pxIcon,
     komunity_06: Community48pxIcon,
+    esluzby: EServices48pxIcon,
+    kontakt: Phone48pxIcon,
+    ziarovka: LightBulbOff48pxIcon,
+    turisticka_znacka: TouristSign48pxIcon,
   },
   size_64: {
     mesto_01: Castle64pxStrokeIcon,

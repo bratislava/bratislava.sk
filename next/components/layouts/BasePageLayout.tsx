@@ -1,7 +1,6 @@
 import { FooterProps, MenuMainItem, SectionContainer } from '@bratislava/ui-bratislava'
 import NavMenu from '@bratislava/ui-bratislava/NavMenu/NavMenu'
 import { useNavMenuContext } from '@bratislava/ui-bratislava/NavMenu/navMenuContext'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import cx from 'classnames'
 import React from 'react'
 
@@ -11,7 +10,6 @@ import NavBar from '../molecules/NavBar'
 interface BasePageLayoutProps {
   footer?: FooterProps
   menuItemsOld?: MenuMainItem[]
-  menus: MenuItem[]
 }
 
 const BasePageLayout = ({
@@ -19,7 +17,6 @@ const BasePageLayout = ({
   children,
   footer,
   menuItemsOld,
-  menus,
 }: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
   const { menuValue } = useNavMenuContext()
 
@@ -37,7 +34,7 @@ const BasePageLayout = ({
           </SectionContainer>
         </div>
         <div className="mx-auto w-full fixed z-30 top-14 left-0 hidden lg:block">
-          <NavMenu menus={menus} />
+          <NavMenu />
         </div>
       </header>
       {/* TODO tmp fix by lg:mt-20 - remove when solving layout */}

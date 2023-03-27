@@ -16,7 +16,6 @@ import {
   PageHeader,
   SectionContainer,
 } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
@@ -44,10 +43,9 @@ export interface GeneralPageProps {
   footer: FooterProps
   children?: React.ReactNode
   menuItems?: MenuMainItem[]
-  menus: MenuItem[]
 }
 
-const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -84,7 +82,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
       page.parentPage.data?.attributes.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
-    <BasePageLayout footer={footer} menuItemsOld={menuItems} menus={menus}>
+    <BasePageLayout footer={footer} menuItemsOld={menuItems}>
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{

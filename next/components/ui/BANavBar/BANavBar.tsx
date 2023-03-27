@@ -18,10 +18,8 @@ import ChevronDownSmall from '@assets/images/chevron-down-small.svg'
 import HamburgerClose from '@assets/images/hamburger-close.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { contactUrls, eServicesData } from '@utils/constants'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
-import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import CookieConsent from 'components/organisms/CookieConsent'
 import { useTranslation } from 'next-i18next'
 import React, { useCallback, useState } from 'react'
@@ -48,64 +46,13 @@ export const BANavBar = ({ className, menuItems, pageColor, ...languageSelectPro
 
   return (
     <>
-      {/* Desktop */}
-      <div
-        id="desktop-navbar"
-        className={cx(className, 'text-p2 items-center', 'fixed top-0 left-0 w-full bg-white z-40')}
-      >
-        <div className="max-w-screen-lg m-auto hidden h-[57px] w-full items-center justify-between border-b border-gray-200 lg:flex">
-          <SkipToContentButton />
-          <Brand
-            className="group"
-            url="/"
-            title={
-              <p className="text-p2 text-font group-hover:text-gray-600">
-                {languageKey === 'en' && <span className="font-semibold">Bratislava </span>}
-                {t('capitalCity')}
-                {languageKey !== 'en' && <span className="font-semibold"> Bratislava</span>}
-              </p>
-            }
-          />
-
-          <nav className="text-font/75 flex gap-x-8 font-semibold">
-            <div className="text-font/75 flex items-center gap-x-8 font-semibold">
-              <Link href={t('searchLink')} variant="plain" className="-mr-4 p-4">
-                <SearchIcon />
-              </Link>
-
-              <Link
-                href={contactUrls[languageKey]}
-                variant="plain"
-                className="whitespace-nowrap py-4"
-              >
-                {t('contacts')}
-              </Link>
-
-              {/* This UILink set here just to prefetch EN version of page, this link is hidden */}
-              <UILink href="/en" className="hidden">
-                hidden
-              </UILink>
-
-              <Link href={eServicesData.url} variant="plain" className="whitespace-nowrap py-4">
-                {t('eservices')}
-              </Link>
-              <div className="text-font/75 relative flex items-center bg-transparent">
-                <LanguageSelect
-                  className="appearance-none bg-transparent pr-6 font-semibold focus:outline-none active:outline-none"
-                  {...languageSelectProps}
-                />
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
       {/* Mobile */}
       <div
         id="mobile-navbar"
         className={cx(
           className,
           'h-16 flex items-center justify-between py-5 px-8 -mx-8 shadow-md drop-shadow-md',
-          'lg:hidden fixed top-0 w-full bg-white z-50',
+          'fixed top-0 w-full bg-white z-50',
         )}
       >
         <Brand url="/" />
