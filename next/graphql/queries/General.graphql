@@ -9,6 +9,15 @@ fragment CommonLink on ComponentBlocksCommonLink {
       }
     }
   }
+  blogPost {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
   url
 }
 

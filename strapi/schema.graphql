@@ -243,6 +243,7 @@ input ComponentBlocksBookmarkLinkInput {
 }
 
 type ComponentBlocksCommonLink {
+  blogPost: BlogPostEntityResponse
   id: ID!
   label: String!
   page: PageEntityResponse
@@ -251,6 +252,7 @@ type ComponentBlocksCommonLink {
 
 input ComponentBlocksCommonLinkFiltersInput {
   and: [ComponentBlocksCommonLinkFiltersInput]
+  blogPost: BlogPostFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
@@ -259,6 +261,7 @@ input ComponentBlocksCommonLinkFiltersInput {
 }
 
 input ComponentBlocksCommonLinkInput {
+  blogPost: ID
   id: ID
   label: String
   page: ID

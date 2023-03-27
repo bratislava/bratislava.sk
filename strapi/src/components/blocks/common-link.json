@@ -1,7 +1,8 @@
 {
   "collectionName": "components_blocks_common_links",
   "info": {
-    "displayName": "common link"
+    "displayName": "common link",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
+    },
+    "blogPost": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-post.blog-post"
     },
     "url": {
       "type": "string"

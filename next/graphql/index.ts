@@ -250,6 +250,7 @@ export type ComponentBlocksBookmarkLinkInput = {
 
 export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink';
+  blogPost?: Maybe<BlogPostEntityResponse>;
   id: Scalars['ID'];
   label: Scalars['String'];
   page?: Maybe<PageEntityResponse>;
@@ -3223,7 +3224,7 @@ export type BlogPostFragment = { __typename?: 'BlogPostEntityResponseCollection'
 
 export type BlogPostLinkFragment = { __typename?: 'ComponentBlocksBlogPostLink', title?: string | null, url?: string | null, blogPost?: { __typename?: 'BlogPostEntityResponse', data?: { __typename?: 'BlogPostEntity', id?: string | null, attributes?: { __typename?: 'BlogPost', title?: string | null, slug?: string | null } | null } | null } | null };
 
-export type CommonLinkFragment = { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null };
+export type CommonLinkFragment = { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, blogPost?: { __typename?: 'BlogPostEntityResponse', data?: { __typename?: 'BlogPostEntity', id?: string | null, attributes?: { __typename?: 'BlogPost', title?: string | null, slug?: string | null } | null } | null } | null };
 
 export type FooterQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode'];
@@ -4035,6 +4036,15 @@ export const CommonLinkFragmentDoc = gql`
     fragment CommonLink on ComponentBlocksCommonLink {
   label
   page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  blogPost {
     data {
       id
       attributes {
