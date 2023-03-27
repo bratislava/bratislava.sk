@@ -32,7 +32,7 @@ fragment GeneralPage on PageEntityResponseCollection {
     attributes {
       slug
       title
-      subtitle
+      subtext
       pageColor
       metaDiscription
       pageBackgroundImage {

@@ -69,7 +69,7 @@ const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) =
           title={blogPost?.title}
           // TODO: Fix breadcrumbs after Navikronos.
           breadcrumbs={[]}
-          subtitle={
+          subtext={
             blogPost &&
             getNumericLocalDate(blogPost.date_added || blogPost.publishedAt || blogPost.createdAt)
           }

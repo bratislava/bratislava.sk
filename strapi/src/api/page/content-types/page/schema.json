@@ -58,7 +58,7 @@
       },
       "type": "text"
     },
-    "subtitle": {
+    "subtext": {
       "pluginOptions": {
         "i18n": {
           "localized": true

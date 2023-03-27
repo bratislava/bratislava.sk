@@ -140,7 +140,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
         {/* Header */}
         <PageHeader
           title={page.title}
-          subtitle={page.subtitle}
+          subtext={page.subtext}
           breadcrumbs={breadcrumbs}
           primaryButton={
             page?.headerPrimaryButton

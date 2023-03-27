@@ -2242,7 +2242,7 @@ type Page {
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
   slug: String
-  subtitle: String
+  subtext: String
   title: String
   updatedAt: DateTime
 }
@@ -2346,7 +2346,7 @@ input PageFiltersInput {
   publishedAt: DateTimeFilterInput
   relatedContents: TagFiltersInput
   slug: StringFilterInput
-  subtitle: StringFilterInput
+  subtext: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -2366,7 +2366,7 @@ input PageInput {
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
   slug: String
-  subtitle: String
+  subtext: String
   title: String
 }
 

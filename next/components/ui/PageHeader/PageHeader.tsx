@@ -14,7 +14,7 @@ type PageHeaderButton = {
 
 type PageHeaderProps = {
   title?: string | null
-  subtitle?: string | null
+  subtext?: string | null
   primaryButton?: PageHeaderButton | null
   secondaryButton?: PageHeaderButton | null
   tag?: string | null
@@ -27,7 +27,7 @@ type PageHeaderProps = {
  */
 const PageHeader = ({
   title,
-  subtitle,
+  subtext,
   breadcrumbs,
   primaryButton,
   secondaryButton,
@@ -64,10 +64,10 @@ const PageHeader = ({
                 {tag}
               </span>
             )}
-            {(title || subtitle) && (
+            {(title || subtext) && (
               <div className="gap-y-1 lg:gap-y-4 flex flex-col max-w-[800px]">
                 {title && <h1 className="text-h1">{title}</h1>}
-                {subtitle && <p>{subtitle}</p>}
+                {subtext && <p>{subtext}</p>}
               </div>
             )}
             {(primaryButton || secondaryButton) && (
