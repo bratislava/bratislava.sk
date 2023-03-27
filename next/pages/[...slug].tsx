@@ -4,17 +4,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   GeneralPageFragment,
+  GeneralQuery,
   MainMenuItemFragment,
-  MenuQuery,
   PageBySlugQuery,
 } from '@bratislava/strapi-sdk-homepage'
-import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
+import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { parseFooter, parseMainMenu } from '@utils/page'
 import { arrayify, isPresent } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useMemo } from 'react'
 
 import PageWrapper from '../components/layouts/PageWrapper'
 import GeneralPage from '../components/pages/generalPage'
@@ -41,8 +40,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     locale,
   })
 
-  const { menu } = await client.Menu({ locale })
-
   if (!pages?.data?.[0]) return { notFound: true } as { notFound: true }
 
   const pageTranslations = ['common']
@@ -62,13 +59,15 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     pageTranslations.push('newsletter')
   }
 
+  const general = await client.General({ locale })
+
   return {
     props: {
+      general,
       slug,
       page: pages,
       footer,
       mainMenu,
-      menu,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
     revalidate: 10,
@@ -76,14 +75,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 }
 
 interface GenericPageProps {
+  general: GeneralQuery
   slug: string
   page: GeneralPageFragment
   footer: PageBySlugQuery['footer']
   mainMenu: MainMenuItemFragment
-  menu: MenuQuery['menu']
 }
 
-const Page = ({ page, footer, mainMenu, menu }: GenericPageProps) => {
+const Page = ({ general, page, footer, mainMenu }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes)
   const menuItems = parseMainMenu(mainMenu)
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
@@ -93,18 +92,16 @@ const Page = ({ page, footer, mainMenu, menu }: GenericPageProps) => {
     }
   })
 
-  const menusParsed = useMemo(() => {
-    return getParsedMenus(menu)
-  }, [menu])
-
   return (
-    <PageWrapper
-      locale={page?.data?.[0].attributes?.locale ?? 'sk'}
-      slug={page?.data?.[0]?.attributes.slug ?? ''}
-      localizations={localizations}
-    >
-      <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} menus={menusParsed} />
-    </PageWrapper>
+    <GeneralContextProvider general={general}>
+      <PageWrapper
+        locale={page?.data?.[0].attributes?.locale ?? 'sk'}
+        slug={page?.data?.[0]?.attributes.slug ?? ''}
+        localizations={localizations}
+      >
+        <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
+      </PageWrapper>
+    </GeneralContextProvider>
   )
 }
 

@@ -10,7 +10,6 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { CommonLinkFragment, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem } from '@bratislava/ui-bratislava'
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { isDefined } from '@utils/isDefined'
 import { pagePath, pageStyle } from '@utils/page'
@@ -106,10 +105,9 @@ export interface GeneralPageProps {
   footer: FooterProps
   children?: React.ReactNode
   menuItems?: MenuMainItem[]
-  menus: MenuItem[]
 }
 
-const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -141,7 +139,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
           <meta name="description" content={page?.metaDiscription} />
         </Head>
       )}
-      <BasePageLayout footer={footer} menuItemsOld={menuItems} menus={menus}>
+      <BasePageLayout footer={footer} menuItemsOld={menuItems}>
         {page?.pageCategory?.data?.attributes?.color && (
           <style
             dangerouslySetInnerHTML={{

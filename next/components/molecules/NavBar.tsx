@@ -1,4 +1,6 @@
-import { BANavBar, MenuMainItem } from '@bratislava/ui-bratislava'
+import { MenuMainItem } from '@bratislava/ui-bratislava'
+import BANavBar from '@bratislava/ui-bratislava/BANavBar/BANavBar'
+import NavBarHeader from '@bratislava/ui-bratislava/NavBarHeader/NavBarHeader'
 import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -27,16 +29,32 @@ const NavBar = ({ menuItems, pageColor }: IProps) => {
   }
 
   return (
-    <BANavBar
-      menuItems={menuItems}
-      onLanguageChange={handleLanguageChange}
-      currentLanguage={locale}
-      languages={[
-        { key: 'sk', title: t('language_short.sk') },
-        { key: 'en', title: t('language_short.en') },
-      ]}
-      pageColor={pageColor}
-    />
+    <>
+      {/* TODO mobile header, NavBarHeader (= new component) renders only on desktop */}
+      {/* TODO language change is overcomplicated */}
+      <NavBarHeader
+        className="hidden lg:block"
+        onLanguageChange={handleLanguageChange}
+        currentLanguage={locale}
+        languages={[
+          { key: 'sk', title: t('language_long.sk') },
+          { key: 'en', title: t('language_long.en') },
+        ]}
+      />
+
+      {/* TODO mobile header, BANavBar (= old component) renders only on mobile */}
+      <BANavBar
+        className="lg:hidden"
+        menuItems={menuItems}
+        onLanguageChange={handleLanguageChange}
+        currentLanguage={locale}
+        languages={[
+          { key: 'sk', title: t('language_short.sk') },
+          { key: 'en', title: t('language_short.en') },
+        ]}
+        pageColor={pageColor}
+      />
+    </>
   )
 }
 

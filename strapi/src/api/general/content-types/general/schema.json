@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "generals",
+  "info": {
+    "singularName": "general",
+    "pluralName": "generals",
+    "displayName": "General",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "header": {
+      "displayName": "header",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "general.header"
+    }
+  }
+}

@@ -1,4 +1,3 @@
-import navMenu from '@bratislava/ui-bratislava/NavMenu/NavMenu'
 import cx from 'classnames'
 import Link from 'next/link'
 import { ComponentProps, forwardRef, ReactNode } from 'react'
@@ -6,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 
 export type LinkProps = Omit<ComponentProps<typeof Link>, 'as' | 'passHref'> & {
   children: ReactNode
-  variant?: 'unstyled' | 'underlineOnHover' | 'navMenu' | 'breadcrumbs'
+  variant?: 'unstyled' | 'underlineOnHover' | 'navBarHeader' | 'breadcrumbs'
   /**
    * Similar to this:
    * https://getbootstrap.com/docs/4.3/utilities/stretched-link/
@@ -24,7 +23,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
     const styles = twMerge(
       cx({
         'hover:underline': variant === 'underlineOnHover',
-        'underline hover:font-semibold': variant === 'navMenu',
+        'font-semibold underline hover:text-gray-600': variant === 'navBarHeader',
         underline: variant === 'breadcrumbs',
 
         // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
