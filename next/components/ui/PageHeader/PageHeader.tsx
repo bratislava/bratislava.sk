@@ -1,6 +1,5 @@
 import { Waves } from '@bratislava/ui-bratislava'
 import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
-import { isDefined } from '@utils/isDefined'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -8,15 +7,14 @@ import { twMerge } from 'tailwind-merge'
 import Button from '../../forms/simple-components/Button'
 
 type PageHeaderButton = {
-  title: string
+  label: string
   path: string | null
 }
 
 type PageHeaderProps = {
   title?: string | null
   subtext?: string | null
-  primaryButton?: PageHeaderButton | null
-  secondaryButton?: PageHeaderButton | null
+  buttons?: PageHeaderButton[] | null
   tag?: string | null
   className?: string | null
   imageSrc?: string | null
@@ -29,8 +27,7 @@ const PageHeader = ({
   title,
   subtext,
   breadcrumbs,
-  primaryButton,
-  secondaryButton,
+  buttons,
   imageSrc,
   tag,
   className,
@@ -70,14 +67,14 @@ const PageHeader = ({
                 {subtext && <p>{subtext}</p>}
               </div>
             )}
-            {(primaryButton || secondaryButton) && (
+            {buttons && buttons.length > 0 && (
               <div className="gap-2 lg:gap-3 flex sm:flex-row flex-col max-w-[800px]">
-                {[primaryButton, secondaryButton].filter(isDefined).map((button, index) => (
+                {buttons.map((button, index) => (
                   <Button
                     key={index}
                     href={button.path ?? '#'}
-                    label={button.title}
-                    variant={button === primaryButton ? 'category' : 'category-outline'}
+                    label={button.label}
+                    variant={index === 0 ? 'category' : 'category-outline'}
                     size="sm"
                     className="sm:w-fit w-full"
                   />

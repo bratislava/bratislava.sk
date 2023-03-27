@@ -7,11 +7,12 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { GeneralPageFragment, PageHeaderButtonFragment } from '@bratislava/strapi-sdk-homepage'
+import { CommonLinkFragment, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
 import { FooterProps, MenuMainItem } from '@bratislava/ui-bratislava'
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
+import { isDefined } from '@utils/isDefined'
 import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
@@ -65,14 +66,18 @@ const getBreadcrumbs = (page: GeneralPageFragment) => {
 }
 
 // TODO: Remove
-const parseOldButton = (button: { title?: string | null; url?: string | null }) => {
+const parseOldButton = (button?: { title?: string | null; url?: string | null }) => {
+  if (!button) {
+    return null
+  }
+
   return {
-    title: button.title,
+    label: button.title,
     path: button.url,
   }
 }
 
-const parseButton = (button: PageHeaderButtonFragment) => {
+const parseButton = (button: CommonLinkFragment) => {
   // TODO: Replace with Navikronos.
   const getPath = () => {
     if (button?.page?.data) {
@@ -85,9 +90,15 @@ const parseButton = (button: PageHeaderButtonFragment) => {
   }
 
   return {
-    title: button.title,
+    label: button.label,
     path: getPath(),
   }
+}
+
+const parseButtons = (page: GeneralPageFragment['data']['0']['attributes']) => {
+  return [parseOldButton(page.pageButtonContent), ...page.headerLinks.map(parseButton)].filter(
+    isDefined,
+  )
 }
 
 export interface GeneralPageProps {
@@ -107,6 +118,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
     (section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts',
   )
   const breadcrumbs = useMemo(() => getBreadcrumbs(pages), [pages])
+  const headerButtons = useMemo(() => parseButtons(page), [page])
 
   const isClient = useIsClient()
 
@@ -142,17 +154,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
           title={page.title}
           subtext={page.subtext}
           breadcrumbs={breadcrumbs}
-          primaryButton={
-            page?.headerPrimaryButton
-              ? parseButton(page?.headerPrimaryButton)
-              : // TODO: Remove
-              page?.pageButtonContent
-              ? parseOldButton(page?.pageButtonContent)
-              : null
-          }
-          secondaryButton={
-            page?.headerSecondaryButton ? parseButton(page?.headerSecondaryButton) : null
-          }
+          buttons={headerButtons}
           className={hasFeaturedBlogs && 'mb-[110px] lg:mb-[266px]'}
         >
           <PageHeaderSections sections={page?.pageHeaderSections} />

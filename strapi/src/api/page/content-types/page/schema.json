@@ -140,26 +140,6 @@
         }
       }
     },
-    "headerPrimaryButton": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.page-header-button"
-    },
-    "headerSecondaryButton": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.page-header-button"
-    },
     "pageButtonContent": {
       "type": "component",
       "repeatable": false,
@@ -180,6 +160,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
+    },
+    "headerLinks": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.common-link"
     }
   }
 }

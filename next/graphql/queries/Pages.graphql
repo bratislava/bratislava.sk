@@ -42,12 +42,10 @@ fragment GeneralPage on PageEntityResponseCollection {
           }
         }
       }
-      headerPrimaryButton {
-        ...PageHeaderButton
+      headerLinks {
+        ...CommonLink
       }
-      headerSecondaryButton {
-        ...PageHeaderButton
-      }
+      # TODO: Remove legacy
       pageButtonContent {
         title
         url
