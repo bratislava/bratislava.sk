@@ -14,7 +14,7 @@ import { arrayify } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import PageWrapper from '../../components/layouts/PageWrapper'
+import PageContextProvider from '../../components/layouts/PageContextProvider'
 import BlogPostPage from '../../components/pages/blogPostPage'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
@@ -94,9 +94,9 @@ const Page = ({ general, post, footer, mainMenu, locale }: BlogPostPageProps) =>
   // TODO change if multilingual blogs
   return (
     <GeneralContextProvider general={general}>
-      <PageWrapper locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
+      <PageContextProvider locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
         <BlogPostPage post={post} footer={parsedFooter} menuItemsOld={menuItems} />
-      </PageWrapper>
+      </PageContextProvider>
     </GeneralContextProvider>
   )
 }

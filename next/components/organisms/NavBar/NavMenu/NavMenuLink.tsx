@@ -1,9 +1,9 @@
-import { MenuLink } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React from 'react'
 
-import Button from '../../forms/simple-components/Button'
-import MLink from '../../forms/simple-components/MLink'
+import Button from '../../../forms/simple-components/Button'
+import MLink from '../../../forms/simple-components/MLink'
+import { MenuLink } from './navMenuTypes'
 
 // https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing
 

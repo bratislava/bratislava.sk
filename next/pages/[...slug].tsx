@@ -15,7 +15,7 @@ import { arrayify, isPresent } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import PageWrapper from '../components/layouts/PageWrapper'
+import PageContextProvider from '../components/layouts/PageContextProvider'
 import GeneralPage from '../components/pages/generalPage'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -94,13 +94,13 @@ const Page = ({ general, page, footer, mainMenu }: GenericPageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <PageWrapper
+      <PageContextProvider
         locale={page?.data?.[0].attributes?.locale ?? 'sk'}
         slug={page?.data?.[0]?.attributes.slug ?? ''}
         localizations={localizations}
       >
         <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
-      </PageWrapper>
+      </PageContextProvider>
     </GeneralContextProvider>
   )
 }

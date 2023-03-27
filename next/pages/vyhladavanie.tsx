@@ -16,8 +16,8 @@ import { useEffect, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import BasePageLayout from '../components/layouts/BasePageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
+import PageContextProvider from '../components/layouts/PageContextProvider'
+import PageLayout from '../components/layouts/PageLayout'
 import BlogPostsResults from '../components/molecules/SearchPage/BlogPostsResults'
 import PagesResults from '../components/molecules/SearchPage/PagesResults'
 import UsersResults from '../components/molecules/SearchPage/UsersResults'
@@ -86,7 +86,7 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <PageWrapper
+      <PageContextProvider
         locale={i18n.language}
         localizations={[
           { locale: 'sk', slug: 'vyhladavanie' },
@@ -94,7 +94,7 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
         ]}
         slug="/vyhladavanie"
       >
-        <BasePageLayout
+        <PageLayout
           footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
           menuItemsOld={menuItems}
         >
@@ -125,8 +125,8 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
               {/* <NewsLetterSection /> */}
             </div>
           </SectionContainer>
-        </BasePageLayout>
-      </PageWrapper>
+        </PageLayout>
+      </PageContextProvider>
     </GeneralContextProvider>
   )
 }

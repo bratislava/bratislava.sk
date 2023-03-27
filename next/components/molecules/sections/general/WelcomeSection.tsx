@@ -1,6 +1,5 @@
 import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
-import { getParsedMenus } from '@bratislava/ui-bratislava/NavMenu/getParsedMenus'
 import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@utils/generalContext'
 import cx from 'classnames'
@@ -8,6 +7,7 @@ import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 import { useMemo, useState } from 'react'
 
+import { getParsedMenus } from '../../../organisms/NavBar/NavMenu/getParsedMenus'
 import HomePageSearch from '../../HomePageSearch'
 
 interface Props {

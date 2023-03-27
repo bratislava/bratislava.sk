@@ -25,7 +25,7 @@ import Head from 'next/head'
 import * as React from 'react'
 import { useIsClient } from 'usehooks-ts'
 
-import BasePageLayout from '../layouts/BasePageLayout'
+import PageLayout from '../layouts/PageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
@@ -82,7 +82,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       page.parentPage.data?.attributes.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
-    <BasePageLayout footer={footer} menuItemsOld={menuItems}>
+    <PageLayout footer={footer} menuItemsOld={menuItems}>
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{
@@ -151,7 +151,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       )} */}
 
       {shouldDisplayUkraineSupportChat && <DynamicChat />}
-    </BasePageLayout>
+    </PageLayout>
   )
 }
 
