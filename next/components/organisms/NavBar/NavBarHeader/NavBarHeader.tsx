@@ -1,9 +1,9 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
-import { isItExternal } from '@bratislava/ui-bratislava/BAStickyMenu/external-link'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import { useGeneralContext } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
+import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
@@ -52,7 +52,7 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
                   <MLink
                     variant="navBarHeader"
                     href={link.page?.data?.attributes?.slug ?? link.url ?? ''}
-                    target={link.url && isItExternal(link.url) ? '_blank' : undefined}
+                    target={link.url && isExternalLink(link.url) ? '_blank' : undefined}
                   >
                     {link.label}
                   </MLink>
