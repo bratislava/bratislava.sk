@@ -35,7 +35,7 @@ export const HamburgerMenu = ({ hamburgerMenuItems = [], className, lang, closeM
 
   return (
     <div
-      className={cx('fixed top-16 left-0 w-screen overflow-y-scroll lg:hidden flex flex-col')}
+      className={cx('fixed top-14 left-0 w-screen overflow-y-scroll lg:hidden flex flex-col')}
       style={{ height: 'calc(100vh - 60px)' }}
     >
       <div className={cx('flex-1 flex flex-col bg-category-200 px-8 pb-11', className)}>

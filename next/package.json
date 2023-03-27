@@ -50,6 +50,7 @@
     "react-cookie-consent": "7.5.0",
     "react-dom": "18.2.0",
     "react-markdown": "8.0.3",
+    "react-modal": "^3.16.1",
     "react-query": "^3.39.3",
     "react-resize-detector": "^8.0.3",
     "react-simple-snackbar": "^1.1.11",
