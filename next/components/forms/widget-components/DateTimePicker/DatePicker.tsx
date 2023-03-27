@@ -6,7 +6,7 @@ import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
 
-import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import { usePageContext } from '../../../layouts/PageContextProvider'
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Calendar from './Calendar/Calendar'
 import DateField from './DateField'
@@ -67,7 +67,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     },
     ref,
   ) => {
-    const { locale } = usePageWrapperContext()
+    const { locale } = usePageContext()
     const [valueState, setValueState] = useState<DateValue | null>(null)
     const [prevValue, setPrevValue] = useState<string>('')
 

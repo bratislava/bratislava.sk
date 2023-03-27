@@ -1,11 +1,11 @@
 import { Waves } from '@bratislava/ui-bratislava'
-import { MenuSection } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import cx from 'classnames'
 import React, { useMemo } from 'react'
 
 import NavMenuContentCell from './NavMenuContentCell'
 import NavMenuSection from './NavMenuSection'
+import { MenuSection } from './navMenuTypes'
 
 type NavigationSectionProps = {
   colCount: number

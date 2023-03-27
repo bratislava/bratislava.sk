@@ -13,7 +13,7 @@ import { transformColorToCategory } from '@utils/page'
 import { getLanguageKey } from '@utils/utils'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
-import { usePageWrapperContext } from 'components/layouts/PageWrapper'
+import { usePageContext } from 'components/layouts/PageContextProvider'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 import useSWR from 'swr'
@@ -69,7 +69,7 @@ export const Posts = ({
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const { locale } = usePageWrapperContext()
+  const { locale } = usePageContext()
 
   const [activeTab, setActiveTab] = React.useState(0)
   // TODO refactor this

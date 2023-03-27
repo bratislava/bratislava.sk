@@ -1,6 +1,7 @@
 import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
-import { MenuItem, MenuLink } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
 import { isDefined } from '@utils/isDefined'
+
+import { MenuItem, MenuLink } from './navMenuTypes'
 
 export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): MenuItem[] => {
   return (

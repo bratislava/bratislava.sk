@@ -19,8 +19,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
-import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
+import PageContextProvider from '../components/layouts/PageContextProvider'
+import PageLayout from '../components/layouts/PageLayout'
 import { WelcomeSection } from '../components/molecules/sections/general/WelcomeSection'
 import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
@@ -157,8 +157,8 @@ const Homepage = ({
 
   return (
     <GeneralContextProvider general={general}>
-      <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
-        <HomepagePageLayout
+      <PageContextProvider locale={page.locale} localizations={page.localizations} slug="">
+        <PageLayout
           menuItemsOld={menuItemsOld}
           footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
         >
@@ -219,8 +219,8 @@ const Homepage = ({
             {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
             {/* <NewsLetterSection className="mt-24" /> */}
           </SectionContainer>
-        </HomepagePageLayout>
-      </PageWrapper>
+        </PageLayout>
+      </PageContextProvider>
     </GeneralContextProvider>
   )
 }

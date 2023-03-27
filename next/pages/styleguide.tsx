@@ -1,6 +1,6 @@
 import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
-import PageWrapper from 'components/layouts/PageWrapper'
+import PageContextProvider from 'components/layouts/PageContextProvider'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
 import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCase'
@@ -35,7 +35,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
    * Path to StyleGuide showcase components should be ./next/components/styleguide/showcases
    * */
   return (
-    <PageWrapper locale={page.locale}>
+    <PageContextProvider locale={page.locale}>
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
         <TagShowCase />
@@ -62,7 +62,7 @@ const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
         <ServiceCardShowCase />
         <SnackbarShowCase />
       </StyleGuideWrapper>
-    </PageWrapper>
+    </PageContextProvider>
   )
 }
 

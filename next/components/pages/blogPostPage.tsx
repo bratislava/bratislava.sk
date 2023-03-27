@@ -13,7 +13,7 @@ import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import BasePageLayout from '../layouts/BasePageLayout'
+import PageLayout from '../layouts/PageLayout'
 import Sections from '../molecules/Sections'
 
 export interface GeneralPageProps {
@@ -46,7 +46,7 @@ const BlogPostPage = ({ post, footer, menuItemsOld }: GeneralPageProps) => {
   const { t } = useTranslation()
 
   return (
-    <BasePageLayout footer={footer} menuItemsOld={menuItemsOld}>
+    <PageLayout footer={footer} menuItemsOld={menuItemsOld}>
       {pageCategory?.color && (
         <style
           dangerouslySetInnerHTML={{
@@ -119,7 +119,7 @@ const BlogPostPage = ({ post, footer, menuItemsOld }: GeneralPageProps) => {
           </div>
         </div>
       </SectionContainer>
-    </BasePageLayout>
+    </PageLayout>
   )
 }
 

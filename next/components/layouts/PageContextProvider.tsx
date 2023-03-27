@@ -11,12 +11,12 @@ interface PageLocalization {
   slug: string
 }
 
-interface IPageWrapperContext {
+interface IPageContext {
   locale?: string
   localizations: PageLocalization[]
 }
 
-const PageWrapperContext = createContext<IPageWrapperContext>({
+const PageContext = createContext<IPageContext>({
   localizations: [],
 })
 
@@ -27,7 +27,7 @@ interface IProps {
   slug?: string
 }
 
-const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
+const PageContextProvider = ({ children, locale, localizations, slug }: IProps) => {
   const [, { language }] = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
@@ -46,11 +46,11 @@ const PageWrapper = ({ children, locale, localizations, slug }: IProps) => {
   }, [localizations])
 
   return (
-    <PageWrapperContext.Provider value={{ locale: locale ?? language, localizations: pageLocalizations }}>
+    <PageContext.Provider value={{ locale: locale ?? language, localizations: pageLocalizations }}>
       {children}
-    </PageWrapperContext.Provider>
+    </PageContext.Provider>
   )
 }
 
-export const usePageWrapperContext = () => useContext(PageWrapperContext)
-export default PageWrapper
+export const usePageContext = () => useContext(PageContext)
+export default PageContextProvider
