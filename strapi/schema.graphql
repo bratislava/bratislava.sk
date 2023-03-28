@@ -243,6 +243,7 @@ input ComponentBlocksBookmarkLinkInput {
 }
 
 type ComponentBlocksCommonLink {
+  blogPost: BlogPostEntityResponse
   id: ID!
   label: String!
   page: PageEntityResponse
@@ -251,6 +252,7 @@ type ComponentBlocksCommonLink {
 
 input ComponentBlocksCommonLinkFiltersInput {
   and: [ComponentBlocksCommonLinkFiltersInput]
+  blogPost: BlogPostFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
@@ -259,6 +261,7 @@ input ComponentBlocksCommonLinkFiltersInput {
 }
 
 input ComponentBlocksCommonLinkInput {
+  blogPost: ID
   id: ID
   label: String
   page: ID
@@ -2304,6 +2307,7 @@ type Mutation {
 type Page {
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
+  headerLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
   locale: String
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   metaDiscription: String
@@ -2317,6 +2321,7 @@ type Page {
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
   slug: String
+  subtext: String
   title: String
   updatedAt: DateTime
 }
@@ -2405,6 +2410,7 @@ input PageFiltersInput {
   and: [PageFiltersInput]
   childPages: PageFiltersInput
   createdAt: DateTimeFilterInput
+  headerLinks: ComponentBlocksCommonLinkFiltersInput
   id: IDFilterInput
   locale: StringFilterInput
   localizations: PageFiltersInput
@@ -2418,12 +2424,14 @@ input PageFiltersInput {
   publishedAt: DateTimeFilterInput
   relatedContents: TagFiltersInput
   slug: StringFilterInput
+  subtext: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input PageInput {
   childPages: [ID]
+  headerLinks: [ComponentBlocksCommonLinkInput]
   metaDiscription: String
   pageBackgroundImage: ID
   pageButtonContent: ComponentBlocksBlogPostLinkInput
@@ -2435,6 +2443,7 @@ input PageInput {
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
   slug: String
+  subtext: String
   title: String
 }
 

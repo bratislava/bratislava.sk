@@ -5,5 +5,5 @@ module.exports = ({ env }) => ({
   apiToken: {
     salt: env('API_TOKEN_SALT'),
   },
-  watchIgnoreFiles: ['/schema.graphql'],
+  watchIgnoreFiles: ['./schema.graphql'],
 })

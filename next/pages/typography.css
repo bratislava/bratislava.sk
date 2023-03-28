@@ -203,16 +203,22 @@
     @apply text-p-base font-bold;
   }
 
-  .text-p3-bold {
+  .text-p3 {
     @apply text-p-sm font-normal;
   }
 
   .text-p3-light {
     @apply text-p-sm font-light;
   }
+
+  .text-p3-medium {
+    @apply font-medium text-p-sm;
+  }
+
   .text-p3-bold {
     @apply text-p-sm font-bold;
   }
+
   .text-p3-semibold {
     @apply text-p-sm font-semibold;
   }

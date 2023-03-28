@@ -32,6 +32,7 @@ fragment GeneralPage on PageEntityResponseCollection {
     attributes {
       slug
       title
+      subtext
       pageColor
       metaDiscription
       pageBackgroundImage {
@@ -41,6 +42,10 @@ fragment GeneralPage on PageEntityResponseCollection {
           }
         }
       }
+      headerLinks {
+        ...CommonLink
+      }
+      # TODO: Remove legacy
       pageButtonContent {
         title
         url
@@ -85,6 +90,13 @@ fragment GeneralPage on PageEntityResponseCollection {
                     data {
                       attributes {
                         ...ParentPage
+                        parentPage {
+                          data {
+                            attributes {
+                              ...ParentPage
+                            }
+                          }
+                        }
                       }
                     }
                   }
