@@ -39,36 +39,39 @@ export const AccordionItem = ({
     <div className="mb-6 last:mb-0">
       <div
         className={cx(
-          'rounded-lg drop-shadow-[0 8 24 black] py-3 px-6 lg:py-4 lg:px-10',
+          'drop-shadow-[0 8 24 black] rounded-lg py-3 px-6 lg:py-4 lg:px-10',
           {
-            'border-transparent border-2 border-solid shadow-lg bg-category-200': active,
-            'md:hover:bg-category-200 md:hover:stroke-current border-2 border-category-600 bg-transparent': !active,
+            'border-2 border-solid border-transparent bg-category-200 shadow-lg': active,
+            'border-2 border-category-600 bg-transparent md:hover:bg-category-200 md:hover:stroke-current':
+              !active,
           },
-          className
+          className,
         )}
       >
         <button
-          className={cx('flex items-center cursor-pointer justify-between w-full font-medium')}
+          className={cx('flex w-full cursor-pointer items-center justify-between font-medium')}
           onClick={handleClick}
         >
           <div className="flex flex-row">
             <p className="text-h4-medium text-left text-font">
               {title}
-              {secondaryTitle && <span className="text-left text-font ">&nbsp;{secondaryTitle}</span>}
+              {secondaryTitle && (
+                <span className="text-left text-font ">&nbsp;{secondaryTitle}</span>
+              )}
             </p>
           </div>
           <div className="ml-5 grow-0">
-            <Chevron className={cx('w-6 h-3 hidden lg:block', { 'rotate-180': active })} />
-            <ChevronSmall className={cx('w-[18px] h-2.5 lg:hidden', { 'rotate-180': active })} />
+            <Chevron className={cx('hidden h-3 w-6 lg:block', { 'rotate-180': active })} />
+            <ChevronSmall className={cx('h-2.5 w-[18px] lg:hidden', { 'rotate-180': active })} />
           </div>
         </button>
       </div>
       <div
-        className={cx('overflow-hidden text-fontBlack text-p2', {
+        className={cx('text-fontBlack text-p2 overflow-hidden', {
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',
-          'lg:my-14 last:mb-0': active && paddingVariant === 'normal',
+          'last:mb-0 lg:my-14': active && paddingVariant === 'normal',
         })}
       >
         {children}

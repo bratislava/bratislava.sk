@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import { Download } from '../../../assets/images'
+import { Download } from '@assets/images'
 import { Panel } from '../Panel/Panel'
 
 export interface DownloadCardProps {
@@ -28,7 +28,7 @@ export const DownloadCard = ({
         hoverable
         className={cx(
           className,
-          'py-6 px-5 space-y-4 border-4 border-transparent hover:border-category-600 md:min-h-[154px]'
+          'space-y-4 border-4 border-transparent py-6 px-5 hover:border-category-600 md:min-h-[154px]',
         )}
       >
         <div className=" flex items-end space-x-5 lg:space-x-8">
@@ -38,7 +38,7 @@ export const DownloadCard = ({
           </span>
         </div>
 
-        <div className="mt-5 flex justify-between text-p3 opacity-50">
+        <div className="text-p3 mt-5 flex justify-between opacity-50">
           <span>{uploadDate}</span>
           <span>{downloadDetail}</span>
         </div>

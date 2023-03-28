@@ -72,7 +72,7 @@ const CheckboxGroupItem = ({
         <VisuallyHidden>
           <input id={rest.value} {...inputProps} {...focusProps} ref={ref} />
         </VisuallyHidden>
-        <div className="flex w-full gap-3 items-center">
+        <div className="flex w-full items-center gap-3">
           <div>
             <div className={checkboxStyle}>
               {isSelected && !isIndeterminate && (
@@ -106,7 +106,7 @@ const CheckboxGroupItem = ({
               )}
             </div>
           </div>
-          <div className="items-center justify-between w-full gap-3 flex">
+          <div className="flex w-full items-center justify-between gap-3">
             <div className={labelStyle}>{children}</div>
             {tooltip && <Tooltip text={tooltip} />}
           </div>

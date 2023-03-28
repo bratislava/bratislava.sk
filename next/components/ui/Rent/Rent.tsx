@@ -4,7 +4,7 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-import { ArrowRight, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 
@@ -29,7 +29,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
     <div
       className={cx(
         className,
-        'rent-shadow max-h-sm min-w-60 flex flex-col text-center flex-1 items-center px-3 md:bg-transparent rounded-xl p-5 mr-4 md:mr-0 lg:min-w-0',
+        'rent-shadow max-h-sm min-w-60 mr-4 flex flex-1 flex-col items-center rounded-xl p-5 px-3 text-center md:mr-0 md:bg-transparent lg:min-w-0',
       )}
     >
       <div
@@ -45,7 +45,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-[294px]">
         <h1 className="text-h4-normal mt-5 mb-7 h-16">{title}</h1>
 
-        <div className="line-clamp-3 w-full break-words text-center">
+        <div className="w-full break-words text-center line-clamp-3">
           <ReactMarkdown skipHtml>{desc}</ReactMarkdown>
         </div>
         {isMore && (
@@ -66,7 +66,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       </div>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setOpen(false)}>
         <div
-          className="modal-content-rent max-w-[660px] max-h-104 overflow-y-auto rounded-2xl py-7 px-6 md:max-h-[610px] md:py-10 md:px-12"
+          className="modal-content-rent max-h-104 max-w-[660px] overflow-y-auto rounded-2xl py-7 px-6 md:max-h-[610px] md:py-10 md:px-12"
           style={{
             // maxHeight: '600px',
             backgroundColor: 'var(--category-color-200)',

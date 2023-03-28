@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs'
 import OpenDataClient from 'backend/utils/opendata'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -7,4 +6,4 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   return res.json(data)
 }
 
-export default withSentry(handler)
+export default handler

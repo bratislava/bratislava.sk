@@ -9,10 +9,11 @@ export const TextArea = ({
   className,
   hasError,
   ...props
-}: React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & IProps) => {
+}: React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> &
+  IProps) => {
   return (
     <textarea
-      className={cx('base-input resize-none h-auto w-full', className, {
+      className={cx('base-input h-auto w-full resize-none', className, {
         'base-input--with-error': hasError,
         'base-input--disabled': props.disabled,
       })}

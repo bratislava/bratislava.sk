@@ -1,8 +1,8 @@
 // @ts-strict-ignore
 import cx from 'classnames'
 
-import MinusIcon from '../../../assets/images/minus.svg'
-import PlusIcon from '../../../assets/images/plus.svg'
+import MinusIcon from '@assets/images/minus.svg'
+import PlusIcon from '@assets/images/plus.svg'
 
 interface IProps {
   id?: string

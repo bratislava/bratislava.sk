@@ -73,7 +73,7 @@ export const DoubledInputField = ({
 }: FirstInputFieldBase & SecondInputFieldBase) => {
   return (
     <div className="flex flex-col">
-      <div className="flex sm:flex-row flex-col gap-4 sm:items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
         <div className={cx(FirstInputClassNames)}>
           <InputField
             label={FirstInputLabel}
@@ -94,7 +94,7 @@ export const DoubledInputField = ({
             onChange={FirstInputHandler}
           />
           {/* Custom render error messages for both fields at small screens */}
-          <div className={cx('flex sm:hidden block')}>
+          <div className={cx('block flex sm:hidden')}>
             <FieldErrorMessage errorMessage={FirstInputErrorMessage} />
           </div>
         </div>
@@ -117,18 +117,18 @@ export const DoubledInputField = ({
             onChange={SecondInputHandler}
           />
           {/* Custom render error messages for both fields at small screens */}
-          <div className={cx('flex sm:hidden w-full block')}>
+          <div className={cx('block flex w-full sm:hidden')}>
             <FieldErrorMessage errorMessage={SecondInputErrorMessage} />
           </div>
         </div>
       </div>
 
       {/* Custom render error messages for both fields at large screens */}
-      <div className="flex-row flex gap-4">
-        <div className={cx('flex flex-col sm:block hidden', FirstInputClassNames)}>
+      <div className="flex flex-row gap-4">
+        <div className={cx('flex hidden flex-col sm:block', FirstInputClassNames)}>
           <FieldErrorMessage errorMessage={FirstInputErrorMessage} />
         </div>
-        <div className={cx('flex flex-col sm:block hidden', SecondInputClassNames)}>
+        <div className={cx('flex hidden flex-col sm:block', SecondInputClassNames)}>
           <FieldErrorMessage errorMessage={SecondInputErrorMessage} />
         </div>
       </div>

@@ -1,9 +1,9 @@
 import cx from 'classnames'
 import React from 'react'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
-import Close from '../../../assets/images/close.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
+import Close from '@assets/images/close.svg'
 import { Button } from '../Button/Button'
 
 export interface ModalProps {
@@ -37,7 +37,7 @@ export const Modal = ({
 }: ModalProps) => {
   return (
     <div
-      className={cx(className, 'absolute w-full z-[55]', {
+      className={cx(className, 'absolute z-[55] w-full', {
         flex: isOpen === true,
         hidden: isOpen === false,
       })}
@@ -81,7 +81,11 @@ export const Modal = ({
             )}
             {actionButtonTitle && onActionButtonClick && (
               <div className="transofrm absolute inset-x-0 bottom-0 mx-auto flex translate-y-1/2 justify-center">
-                <Button icon={<ChevronRight />} hoverIcon={<ArrowRight />} onClick={onActionButtonClick}>
+                <Button
+                  icon={<ChevronRight />}
+                  hoverIcon={<ArrowRight />}
+                  onClick={onActionButtonClick}
+                >
                   {actionButtonTitle}
                 </Button>
               </div>

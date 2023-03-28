@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Card } from '../Card/Card'
 
 export interface BlogCardProps {
@@ -14,12 +14,12 @@ export interface BlogCardProps {
 export const BlogCard = ({ className, image, mobileImage, content, href }: BlogCardProps) => (
   <a href={href}>
     <div
-      className={cx(className, 'inline-flex flex-col xl:pr-8 xl:pr-5 cursor-pointer bg-white py-5')}
+      className={cx(className, 'inline-flex cursor-pointer flex-col bg-white py-5 xl:pr-8 xl:pr-5')}
     >
       <Card
         className={cx(
           className,
-          'rounded-b-lg xl:rounded-l-none xl:rounded-r-lg xl:inline-flex xl:flex-row xl:items-center',
+          'rounded-b-lg xl:inline-flex xl:flex-row xl:items-center xl:rounded-l-none xl:rounded-r-lg',
         )}
         buttonContent={<ChevronRight />}
         buttonPosition="mx-auto left-0 right-0 xl:hidden"

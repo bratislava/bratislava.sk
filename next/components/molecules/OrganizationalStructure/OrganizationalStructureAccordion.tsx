@@ -1,10 +1,10 @@
 // @ts-strict-ignore
+import ChevronDown from '@assets/images/chevron-down-thin.svg'
+import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
-import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
 import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
 
 export interface OrganizationalStructureAccordionProps {
@@ -26,7 +26,7 @@ export const OrganizationalStructureAccordion = ({
   return (
     <div className="flex flex-col">
       <div
-        className={cx('lg-gap-x-6 flex items-start lg:items-center gap-x-3', {
+        className={cx('lg-gap-x-6 flex items-start gap-x-3 lg:items-center', {
           'cursor-pointer': !alwaysOpen,
           'pb-8': !alwaysOpen && !open,
         })}

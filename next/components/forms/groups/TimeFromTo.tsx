@@ -47,9 +47,9 @@ export const TimeFromTo = ({
   TimeToErrorMessage,
 }: TimeFromBase & TimeToBase) => {
   return (
-    <div className={cx('flex-col flex')}>
-      <div className="flex lg:flex-row flex-col gap-4">
-        <div className={cx('flex flex-col w-[320px] items-start')}>
+    <div className={cx('flex flex-col')}>
+      <div className="flex flex-col gap-4 lg:flex-row">
+        <div className={cx('flex w-[320px] flex-col items-start')}>
           <TimePicker
             label={TimeFromLabel}
             errorMessage={TimeFromErrorMessage}
@@ -64,12 +64,12 @@ export const TimeFromTo = ({
             disabled={TimeFromDisabled}
           />
           {/* Custom render error messages for both fields at small screens */}
-          <div className={cx('flex flex-col lg:hidden block lg:w-[320px]')}>
+          <div className={cx('block flex flex-col lg:hidden lg:w-[320px]')}>
             <FieldErrorMessage errorMessage={TimeFromErrorMessage} />
           </div>
         </div>
-        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-gray-300 mt-auto mb-6')} />
-        <div className={cx('w-[320px] flex flex-col')}>
+        <div className={cx('mt-auto mb-6 hidden h-0.5 bg-gray-300 lg:block lg:w-8')} />
+        <div className={cx('flex w-[320px] flex-col')}>
           <TimePicker
             label={TimeToLabel}
             helptext={TimeToDescription}
@@ -84,19 +84,19 @@ export const TimeFromTo = ({
             disabled={TimeToDisabled}
           />
           {/* Custom render error messages for both fields at small screens */}
-          <div className={cx('flex flex-col lg:hidden block lg:w-[320px]')}>
+          <div className={cx('block flex flex-col lg:hidden lg:w-[320px]')}>
             <FieldErrorMessage errorMessage={TimeToErrorMessage} />
           </div>
         </div>
       </div>
 
       {/* Custom render error messages for both fields */}
-      <div className="flex-row flex gap-4">
-        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+      <div className="flex flex-row gap-4">
+        <div className={cx('flex hidden flex-col lg:block lg:w-[320px]')}>
           <FieldErrorMessage errorMessage={TimeFromErrorMessage} />
         </div>
-        <div className={cx('lg:w-8 lg:block hidden h-0.5 bg-white')} />
-        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+        <div className={cx('hidden h-0.5 bg-white lg:block lg:w-8')} />
+        <div className={cx('flex hidden flex-col lg:block lg:w-[320px]')}>
           <FieldErrorMessage errorMessage={TimeToErrorMessage} />
         </div>
       </div>

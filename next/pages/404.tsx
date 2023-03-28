@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import ChevronRight from '../assets/images/chevron-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -20,7 +20,7 @@ const NotFoundPage = () => {
   const { t } = useTranslation('common')
 
   return (
-    <div className="xl:pr-66 flex h-screen w-screen px-7 py-10 md:pl-36 md:pr-32 xl:pl-80">
+    <div className="flex h-screen w-screen px-7 py-10 md:pl-36 md:pr-32 xl:pr-66 xl:pl-80">
       <div className="flex w-full flex-col items-center md:flex-row-reverse md:justify-between">
         <NoResultsFound />
         <div className="flex flex-col items-center lg:items-start">

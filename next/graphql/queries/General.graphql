@@ -76,7 +76,6 @@ query MainMenu($locale: I18NLocaleCode!) {
   }
 }
 
-
 fragment PageForMenuEntity on PageEntity {
   id
   attributes {
@@ -124,8 +123,42 @@ fragment MenuItem on ComponentMenuMenuItem {
   }
 }
 
+fragment HeaderLink on ComponentGeneralHeaderLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+  showOnDesktop
+  showOnMobile
+  icon
+}
 
-query Menu($locale: I18NLocaleCode!) {
+fragment General on General {
+  header {
+    links {
+      ...HeaderLink
+    }
+    accountLink {
+      ...CommonLink
+    }
+  }
+}
+
+query General($locale: I18NLocaleCode!) {
+  general(locale: $locale) {
+    data {
+      attributes {
+        ...General
+      }
+    }
+  }
   menu(locale: $locale) {
     data {
       attributes {

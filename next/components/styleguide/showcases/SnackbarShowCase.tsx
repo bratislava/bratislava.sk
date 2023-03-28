@@ -1,6 +1,6 @@
+import Button from '@components/forms/simple-components/Button'
 import { useSnackbar } from 'react-simple-snackbar'
 
-import Button from '../../forms/simple-components/Button'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 

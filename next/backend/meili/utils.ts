@@ -12,7 +12,13 @@ export const unwrapFromSearchIndex = <T extends string, K extends object>(type: 
   }
 }
 
-export const getMeilisearchPageOptions = ({ page, pageSize }: { page: number; pageSize: number }) => ({
+export const getMeilisearchPageOptions = ({
+  page,
+  pageSize,
+}: {
+  page: number
+  pageSize: number
+}) => ({
   limit: pageSize,
   offset: (page - 1) * pageSize,
 })

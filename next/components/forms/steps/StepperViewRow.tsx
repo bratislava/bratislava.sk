@@ -24,9 +24,9 @@ const StepperViewRow = (props: StepperViewRowProps) => {
   )
 
   return (
-    <div className={cx('flex flex-col select-none', className)}>
+    <div className={cx('flex select-none flex-col', className)}>
       <div
-        className="flex flex-row gap-3 items-center cursor-pointer"
+        className="flex cursor-pointer flex-row items-center gap-3"
         onClick={() => {
           if (onClick) onClick()
         }}
@@ -37,8 +37,8 @@ const StepperViewRow = (props: StepperViewRowProps) => {
         <p className="text-p3-medium">{title}</p>
       </div>
       {!isLast && (
-        <div className="w-8 h-8 flex flex-row justify-center items-center">
-          <div className="w-0.5 h-4 bg-gray-300 py-2" />
+        <div className="flex h-8 w-8 flex-row items-center justify-center">
+          <div className="h-4 w-0.5 bg-gray-300 py-2" />
         </div>
       )}
     </div>

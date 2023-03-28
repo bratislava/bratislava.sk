@@ -1,8 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import icon1 from './icons/elektronicke-sluzby.svg'
 import icon5 from './icons/kampane-a-projekty.svg'
 import icon8 from './icons/kontakty-a-uradne-hodiny.svg'
@@ -41,7 +41,7 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
   return (
     <div
       className={cx(
-        'relative w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font',
+        'relative flex w-40 flex-shrink-0 flex-col font-medium text-font lg:w-full',
         className,
       )}
     >

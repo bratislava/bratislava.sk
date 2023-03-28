@@ -94,23 +94,23 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
           <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>
         ),
         blockquote: ({ children }) => (
-          <div className="mb-5 py-3 border-l-4 border-category-600 pl-10 last:mb-0 lg:my-10">
+          <div className="mb-5 border-l-4 border-category-600 py-3 pl-10 last:mb-0 lg:my-10">
             {children}
           </div>
         ),
-        table: ({ children }) => <table className="table-block w-full">{children}</table>,
+        table: ({ children }) => (
+          <div className="overflow-x-auto">
+            <table className="w-full table-auto">{children}</table>
+          </div>
+        ),
         tr: ({ children }) => (
-          <tr className="flex w-66 flex-col rounded-lg bg-white py-8 px-1 md:table-row md:w-full md:p-0 md:odd:bg-white md:even:bg-transparent">
-            {children}
-          </tr>
+          <tr className="mb-4 table w-full md:mb-0 md:table-row">{children}</tr>
         ),
-        tbody: ({ children }) => (
-          <tbody className="flex gap-5 md:table-row-group md:gap-0">{children}</tbody>
-        ),
-        thead: () => <thead className="bg-transparent" />,
+        tbody: ({ children }) => <tbody>{children}</tbody>,
+        thead: () => <thead />,
         td: ({ children }) => (
-          <td className="first:rounded-l-lg last:rounded-r-lg">
-            <div className="text-p1 md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
+          <td className="first:text-p1-semibold text-p1 table-row md:table-cell">
+            <div className="md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
               {children}
             </div>
           </td>
@@ -144,9 +144,9 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
             <div className="flex gap-x-8 lg:gap-x-6">
               <div
                 className={cx(
-                  'h-4 w-4 shrink-0 bg-category-600 rounded-full mt-1 border-4 border-solid border-category-600',
+                  'mt-1 h-4 w-4 shrink-0 rounded-full border-4 border-solid border-category-600 bg-category-600',
                   { 'bg-category-600': level === 0 },
-                  { 'border-category-600 border-solid border-4': level !== 0 },
+                  { 'border-4 border-solid border-category-600': level !== 0 },
                 )}
               />
               <div className="text-p1 whitespace-pre-wrap">{children}</div>

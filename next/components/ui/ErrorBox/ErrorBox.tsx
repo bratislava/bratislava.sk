@@ -10,7 +10,9 @@ export const ErrorBox = ({ className, error }: ErrorBoxProps) => {
 
   const message = typeof error === 'string' ? error : error.message
   return (
-    <div className={cx(className, 'py-4 px-6 bg-white border border-l-8 border-error rounded-r-lg')}>
+    <div
+      className={cx(className, 'rounded-r-lg border border-l-8 border-error bg-white py-4 px-6')}
+    >
       <p className="text-p2 text-error">{message}</p>
     </div>
   )

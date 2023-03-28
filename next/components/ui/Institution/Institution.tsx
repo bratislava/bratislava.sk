@@ -1,8 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import ArrowRight from '../../../assets/images/arrow-right2.svg'
-import ChevronRight from '../../../assets/images/chevron-right2.svg'
+import ArrowRight from '@assets/images/arrow-right2.svg'
+import ChevronRight from '@assets/images/chevron-right2.svg'
 
 export interface InstitutionProps {
   className?: string
@@ -26,7 +26,7 @@ const InstitutionCard = ({
     <div
       className={cx(
         className,
-        'px-8 py-8 bg-white border-2 border-[rgba(51,51,51,0.25)] rounded-lg h-full',
+        'h-full rounded-lg border-2 border-[rgba(51,51,51,0.25)] bg-white px-8 py-8',
       )}
     >
       <div className="flex flex-col">

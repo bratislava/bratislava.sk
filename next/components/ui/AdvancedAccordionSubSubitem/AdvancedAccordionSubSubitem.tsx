@@ -7,8 +7,8 @@ import cx from 'classnames'
 import { useState } from 'react'
 import useSWR from 'swr'
 
-import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
+import ChevronDown from '@assets/images/chevron-down-thin.svg'
+import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { AccordionCards } from '../AccordionCards/AccordionCards'
 
 export interface AdvancedAccordionSubSubitemProps {
@@ -17,7 +17,11 @@ export interface AdvancedAccordionSubSubitemProps {
   cardClassName?: string
 }
 
-export const AdvancedAccordionSubSubitem = ({ title, className, cardClassName }: AdvancedAccordionSubSubitemProps) => {
+export const AdvancedAccordionSubSubitem = ({
+  title,
+  className,
+  cardClassName,
+}: AdvancedAccordionSubSubitemProps) => {
   const [open, setOpen] = useState(false)
   const [cards, setCards] = useState([])
   const { data } = useSWR(title, usersFromDepartmentFetcher)
@@ -27,7 +31,7 @@ export const AdvancedAccordionSubSubitem = ({ title, className, cardClassName }:
   return (
     <div className="flex flex-col">
       <div
-        className={cx(className, 'flex items-start lg:items-center cursor-pointer lg:px-5 ml-12')}
+        className={cx(className, 'ml-12 flex cursor-pointer items-start lg:items-center lg:px-5')}
         onClick={() => setOpen(!open)}
       >
         <div className="text-p1 pr-6">{title}</div>
