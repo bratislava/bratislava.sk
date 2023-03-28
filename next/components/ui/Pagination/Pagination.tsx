@@ -109,8 +109,8 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
           variant={getVariant(1)}
           // className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full  hover:border-2 hover:border-category-600"
           className={cx(
-            'mx-2 md:mx-3 h-10 w-10 md:h-12 md:w-12 rounded-full border-2 hover:border-category-600 shadow-none',
-            { 'bg-category-600 text-white border-category-600': currentPage === 1 }
+            'mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12',
+            { 'border-category-600 bg-category-600 text-white': currentPage === 1 },
           )}
           onClick={() => handleSelectPage(1)}
         >
@@ -126,9 +126,11 @@ export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: Paginat
               className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12"
               onClick={() => handleSelectPage(item.page)}
             >
-              <div className="text-font/50 text-p1-semibold m-auto block leading-5">{item.page}</div>
+              <div className="text-font/50 text-p1-semibold m-auto block leading-5">
+                {item.page}
+              </div>
             </Button>
-          ) : null
+          ) : null,
         )}
         {items[2].page + 1 < numberOfPages ? <ThreeDots /> : null}
         {numberOfPages > 1 ? (

@@ -41,7 +41,7 @@ export const TopNineItem = ({ className, icon, title, href, linkTitle }: TopNine
   return (
     <div
       className={cx(
-        'relative w-40 lg:w-full flex-shrink-0 flex flex-col font-medium text-font',
+        'relative flex w-40 flex-shrink-0 flex-col font-medium text-font lg:w-full',
         className,
       )}
     >

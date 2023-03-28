@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Container = ({ className, children }: IProps) => (
-  <div className={cx(className, 'max-w-screen-1.5xl md:px-12 xl:px-40 md:mx-auto')}>{children}</div>
+  <div className={cx(className, 'max-w-screen-1.5xl md:mx-auto md:px-12 xl:px-40')}>{children}</div>
 )
 
 export default Container

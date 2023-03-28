@@ -41,7 +41,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between mb-1">
+      <div className="mb-1 flex justify-between">
         <div className="flex w-full justify-between">
           {/* LABEL */}
           <label htmlFor={htmlFor} className={labelStyle} {...labelProps}>

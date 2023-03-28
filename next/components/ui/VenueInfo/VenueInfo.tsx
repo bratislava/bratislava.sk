@@ -12,15 +12,21 @@ export interface VenueInfoProps {
   linkTitle: string
 }
 
-export const VenueInfo = ({ className, title, description, buttonTitle, linkTitle }: VenueInfoProps) => (
-  <div className={cx(className, 'flex flex-col gap-y-3 md:gap-y-4 w-full max-w-88')}>
+export const VenueInfo = ({
+  className,
+  title,
+  description,
+  buttonTitle,
+  linkTitle,
+}: VenueInfoProps) => (
+  <div className={cx(className, 'max-w-88 flex w-full flex-col gap-y-3 md:gap-y-4')}>
     <h1 className="text-h3-medium">{title}</h1>
     <p className="text-p2">{description}</p>
     <Button className="h-10 w-40 md:mt-4 md:h-12">
       <span className="text-p2-medium md:text-p1-medium">{buttonTitle}</span>
     </Button>
     <Button
-      className="w-36 text-p2-medium text-category-600 md:text-p1-medium"
+      className="text-p2-medium md:text-p1-medium w-36 text-category-600"
       icon={<ArrowRightShort />}
       hoverIcon={<ArrowRightLong />}
       shape="none"

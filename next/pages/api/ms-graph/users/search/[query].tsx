@@ -10,7 +10,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req.query
   const { accessToken } = await getToken()
   console.log(sanitize(forceString(query)))
-  const users = await getUsersByDisplayName({ token: accessToken, query: sanitize(forceString(query)) })
+  const users = await getUsersByDisplayName({
+    token: accessToken,
+    query: sanitize(forceString(query)),
+  })
   res.json(users)
 }
 

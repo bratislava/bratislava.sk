@@ -20,17 +20,17 @@ export const FileCard = ({
 }: FileCardProps) => {
   return (
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
-      <Panel className={cx(className, 'flex flex-row md:flex-col px-5 justify-between')} hoverable>
+      <Panel className={cx(className, 'flex flex-row justify-between px-5 md:flex-col')} hoverable>
         <div className="mt-5 hidden justify-end text-category-600 md:flex">
           <Download className="text-red-brick" />
         </div>
 
-        <div className="my-5 text-p2 md:mt-0 md:mb-5">
+        <div className="text-p2 my-5 md:mt-0 md:mb-5">
           {fileTitle}
           <div
             className={cx(
-              'flex flex-col mt-4 text-p3 opacity-50 space-y-1',
-              'md:flex-row md:justify-between md:space-y-0'
+              'text-p3 mt-4 flex flex-col space-y-1 opacity-50',
+              'md:flex-row md:justify-between md:space-y-0',
             )}
           >
             <span>{uploadDate}</span>

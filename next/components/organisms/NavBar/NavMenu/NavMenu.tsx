@@ -32,8 +32,8 @@ const NavMenu = () => {
       // to re-enable pointer events when menu is open and whole page has pointer events disabled
       className="pointer-events-auto"
     >
-      <NavigationMenu.List className="shadow-md relative z-30">
-        <div className="max-w-screen-lg m-auto w-full grid grid-flow-col grid-cols-6">
+      <NavigationMenu.List className="relative z-30 shadow-md">
+        <div className="m-auto grid w-full max-w-screen-lg grid-flow-col grid-cols-6">
           {menus.map((menu, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <NavMenuItem key={index} menu={menu} />

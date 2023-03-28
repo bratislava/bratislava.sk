@@ -37,7 +37,7 @@ export const Modal = ({
 }: ModalProps) => {
   return (
     <div
-      className={cx(className, 'absolute w-full z-[55]', {
+      className={cx(className, 'absolute z-[55] w-full', {
         flex: isOpen === true,
         hidden: isOpen === false,
       })}
@@ -81,7 +81,11 @@ export const Modal = ({
             )}
             {actionButtonTitle && onActionButtonClick && (
               <div className="transofrm absolute inset-x-0 bottom-0 mx-auto flex translate-y-1/2 justify-center">
-                <Button icon={<ChevronRight />} hoverIcon={<ArrowRight />} onClick={onActionButtonClick}>
+                <Button
+                  icon={<ChevronRight />}
+                  hoverIcon={<ArrowRight />}
+                  onClick={onActionButtonClick}
+                >
                   {actionButtonTitle}
                 </Button>
               </div>

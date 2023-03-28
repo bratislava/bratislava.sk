@@ -20,7 +20,7 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
       return (
         <li className="flex">
           <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-            <MLink href={url} variant="underlineOnHover" className="py-1 w-full">
+            <MLink href={url} variant="underlineOnHover" className="w-full py-1">
               {label}
             </MLink>
           </NavigationMenu.Link>
@@ -31,7 +31,7 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
       return (
         <li className="flex">
           <NavigationMenu.Link asChild>
-            <Button variant="link-black" href={url} label={label} className="font-medium mt-2" />
+            <Button variant="link-black" href={url} label={label} className="mt-2 font-medium" />
           </NavigationMenu.Link>
         </li>
       )

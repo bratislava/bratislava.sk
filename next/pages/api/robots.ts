@@ -7,11 +7,10 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
       `
       User-Agent: *
       Disallow: /
-      `
+      `,
     )
-  } 
-    return res.send('')
-  
+  }
+  return res.send('')
 }
 
 export default withSentry(handler)

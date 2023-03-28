@@ -68,7 +68,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
       }
       response = r
     })
-    result = response['s:Envelope']['s:Body']['Nacist-souborResponse']['Nacist-souborResult'].Xrg['Nacist-soubor']
+    result =
+      response['s:Envelope']['s:Body']['Nacist-souborResponse']['Nacist-souborResult'].Xrg[
+        'Nacist-soubor'
+      ]
     buffer = Buffer.from(result.Data, 'base64')
     res.setHeader('Content-Type', 'application/pdf')
     res.setHeader('Content-Disposition', `attachment; filename=${result['Jmeno-souboru']}`)

@@ -50,7 +50,7 @@ export const useCookieConsent = () => {
       setConsentsState(mergedConsents)
       console.log('rerender')
     },
-    [consents]
+    [consents],
   )
 
   return { dismissBanner, shouldShowBanner, setConsents, consents, refresh }

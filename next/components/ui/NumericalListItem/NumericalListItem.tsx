@@ -36,14 +36,14 @@ export const NumericalListItem = ({
     >
       {variant === 'roadmap' && index > 0 && (
         <DashedLine
-          className="-ml-2 -mt-8 -mb-10 top-0"
+          className="top-0 -ml-2 -mt-8 -mb-10"
           position={position}
           color="rgb(var(--color-category-600))"
         />
       )}
       <div
         className={cx(
-          'group flex pr-8 items-center',
+          'group flex items-center pr-8',
           { 'h-16': variant === 'roadmap' },
           { 'h-auto': variant !== 'roadmap' },
           { 'items-center': variant !== 'combined' },
@@ -51,7 +51,7 @@ export const NumericalListItem = ({
       >
         <div
           className={cx(
-            'min-w-16 text-h4 z-10 shrink-0 rounded-full flex items-center justify-center w-10 h-10',
+            'min-w-16 text-h4 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full',
             { 'bg-white text-font': variant !== 'roadmap' && hasBackground },
             { 'bg-category-600 text-white': variant === 'roadmap' || !hasBackground },
           )}

@@ -10,19 +10,22 @@ const SAMPLE_RELATED_CONTENT = [
     imageSrc: img1.src ?? img1,
     tag: 'Lorem ipsum',
     title: 'Nadpis lorem ipsum dolor sit',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },
   {
     imageSrc: img2.src ?? img1,
     tag: 'Lorem ipsum',
     title: 'Nadpis lorem ipsum dolor sit',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },
   {
     imageSrc: img1.src ?? img1,
     tag: 'Lorem ipsum',
     title: 'Nadpis lorem ipsum dolor sit',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit massa morbi tristique sit mi, faucibus.',
   },
 ]
 

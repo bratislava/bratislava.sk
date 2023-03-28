@@ -54,14 +54,14 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
       </VisuallyHidden>
       <div className={togglerContainer}>
         <div
-          className={cx('absolute w-4 h-4 flex items-center justify-center ml-1.5', {
+          className={cx('absolute ml-1.5 flex h-4 w-4 items-center justify-center', {
             hidden: !isSelected,
           })}
         >
           <CheckedIcon />
         </div>
         <div
-          className={cx('ml-[26px] absolute w-4 h-4 flex items-center justify-center', {
+          className={cx('absolute ml-[26px] flex h-4 w-4 items-center justify-center', {
             hidden: isSelected,
           })}
         >

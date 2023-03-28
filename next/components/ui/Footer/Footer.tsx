@@ -2,7 +2,7 @@
 import FBLogo from '@assets/images/FB.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import React from 'react'
 
 import BABrand from '../../../assets/images/BABrand.svg'
@@ -94,7 +94,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="mt-10 flex w-full flex-col justify-around gap-y-10 xl:w-2/3 xl:flex-row xl:mt-0 xl:flex xl:flex-wrap"
+          className="mt-10 flex w-full flex-col justify-around gap-y-10 xl:mt-0 xl:flex xl:w-2/3 xl:flex-row xl:flex-wrap"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
@@ -167,7 +167,7 @@ export const Footer = ({
         </div>
       </section>
     </footer>
-  );
+  )
 }
 
 export default Footer

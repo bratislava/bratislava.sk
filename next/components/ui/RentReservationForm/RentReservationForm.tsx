@@ -50,7 +50,7 @@ export const RentReservationForm = ({ className }: IProps) => {
     setReservationFormValues((o) => ({ ...o, ...change }))
   }
 
-  const handleSpaceChange = (option: (typeof SPACEOPTIONS)[0]) => {
+  const handleSpaceChange = (option: typeof SPACEOPTIONS[0]) => {
     // const selectedVenue = venues?.find((v) => v.id === option.key);
     // if (selectedVenue) {
     //   handleChange?.({

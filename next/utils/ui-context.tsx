@@ -25,7 +25,13 @@ interface IComponents {
   }>
 }
 
-export const UIContextProvider = ({ children, components }: { children: React.ReactNode; components: IComponents }) => {
+export const UIContextProvider = ({
+  children,
+  components,
+}: {
+  children: React.ReactNode
+  components: IComponents
+}) => {
   return <UIContext.Provider value={components}>{children}</UIContext.Provider>
 }
 

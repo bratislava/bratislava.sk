@@ -34,7 +34,7 @@ export const NumericalListSectionUI = ({
       {hasBackground && <Waves waveColor="var(--category-color-200)" wavePosition="top" />}
 
       <div
-        className={cx('flex justify-center flex-col items-center py-12', {
+        className={cx('flex flex-col items-center justify-center py-12', {
           'bg-category-200': hasBackground,
         })}
       >
@@ -42,7 +42,7 @@ export const NumericalListSectionUI = ({
           {title ? (
             <div
               className={cx(
-                'text-center pb-14',
+                'pb-14 text-center',
                 { 'text-h3': variant !== 'roadmap' },
                 { 'text-h4': variant === 'roadmap' },
               )}

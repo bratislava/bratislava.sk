@@ -5,7 +5,7 @@ import { useIsFirstRender, useIsomorphicLayoutEffect } from 'usehooks-ts'
 export const useScrollToViewIfDataChange = <T extends object | null, K extends object>(
   data: T | undefined,
   filters: K,
-  elementRef: RefObject<HTMLElement>
+  elementRef: RefObject<HTMLElement>,
 ) => {
   // We don't want to scroll to the content initially.
   const isFirst = useIsFirstRender()

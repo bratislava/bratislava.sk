@@ -22,7 +22,9 @@ export const ContactCard = ({
 
   return (
     <div className={cx(className, 'flex flex-col items-center md:flex-row md:space-x-14')}>
-      <div className="flex items-center">{image && <img src={image} alt="Kontakt" width="120" height="120" />}</div>
+      <div className="flex items-center">
+        {image && <img src={image} alt="Kontakt" width="120" height="120" />}
+      </div>
 
       <div className="flex flex-col items-center  justify-center md:items-start">
         <h1 className="text-h4 mb-4 mt-2">{name}</h1>

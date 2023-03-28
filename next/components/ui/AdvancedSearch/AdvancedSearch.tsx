@@ -65,7 +65,7 @@ export const AdvancedSearch = ({
   }
 
   return (
-    <div className={cx('flex flex-col w-full', className)}>
+    <div className={cx('flex w-full flex-col', className)}>
       <h1 className="text-h3-medium scroll-mt-24 pb-3 lg:scroll-mt-48">{title}</h1>
       <div className="hidden pb-6 lg:flex">
         <input
@@ -81,7 +81,7 @@ export const AdvancedSearch = ({
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className={cx(
-            'h-14 rounded-l-none text-20-medium px-6 shadow-none hover:bg-category-600 hover:text-white hover:color-white',
+            'text-20-medium hover:color-white h-14 rounded-l-none px-6 shadow-none hover:bg-category-600 hover:text-white',
           )}
           variant="secondary-dark-text"
           onClick={handleSearch}

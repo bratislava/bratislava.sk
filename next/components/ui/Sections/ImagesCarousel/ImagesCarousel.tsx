@@ -40,8 +40,14 @@ export const ImagesCarousel = ({
             target="_blank"
             rel="noreferrer"
           >
-            <img className="h-full w-full rounded-lg object-cover" src={item.mainImage.src} alt={item.title} />
-            {item.title && <p className="text-20-semibold absolute bottom-0 p-6 text-white">{item.title}</p>}
+            <img
+              className="h-full w-full rounded-lg object-cover"
+              src={item.mainImage.src}
+              alt={item.title}
+            />
+            {item.title && (
+              <p className="text-20-semibold absolute bottom-0 p-6 text-white">{item.title}</p>
+            )}
           </a>
         ))}
         visibleItems={visibleItems}
@@ -61,9 +67,15 @@ export const ImagesCarousel = ({
             target="_blank"
             rel="noreferrer"
           >
-            <img className="h-full w-full rounded-lg object-cover" src={item.mainImage.src} alt={item.title} />
+            <img
+              className="h-full w-full rounded-lg object-cover"
+              src={item.mainImage.src}
+              alt={item.title}
+            />
             {item.title && (
-              <p className="text-20-semibold absolute bottom-0 px-6 py-5 text-white">{item.title}</p>
+              <p className="text-20-semibold absolute bottom-0 px-6 py-5 text-white">
+                {item.title}
+              </p>
             )}
           </a>
         ))}

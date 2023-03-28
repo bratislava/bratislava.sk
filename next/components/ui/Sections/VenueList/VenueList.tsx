@@ -23,7 +23,8 @@ export const VenueList = ({
       venues: [
         {
           title: 'Zrkadlová sieň',
-          description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
+          description:
+            'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
           // TODO fix types
           imageSrc: VenueImg as any,
@@ -31,7 +32,8 @@ export const VenueList = ({
         },
         {
           title: 'Zrkadlová sieň',
-          description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
+          description:
+            'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
           // TODO fix types
           imageSrc: VenueImg as any,
@@ -45,7 +47,8 @@ export const VenueList = ({
       venues: [
         {
           title: 'Zrkadlová sieň',
-          description: 'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
+          description:
+            'Reprezentatívny historický priestor určený pre významné kultúrno spoločenské udalosti. ',
           buttonTitle: 'Detail',
           // TODO fix types
           imageSrc: VenueImg as any,
@@ -59,7 +62,7 @@ export const VenueList = ({
   const venues = tabs[activeIndex]?.venues ?? tabs[0]?.venues ?? []
 
   return (
-    <div className={cx(className, 'flex items-center flex-col py-56')}>
+    <div className={cx(className, 'flex flex-col items-center py-56')}>
       <span className="text-h2 w-96 px-5 text-center">{title}</span>
 
       <div className="my-20 flex space-x-5">

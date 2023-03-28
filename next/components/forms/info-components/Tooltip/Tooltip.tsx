@@ -38,13 +38,13 @@ const Tooltip = (props: TooltipPopupBase) => {
     },
   })
   return (
-    <span className="relative w-5 h-5 sm:w-6 sm:h-6">
+    <span className="relative h-5 w-5 sm:h-6 sm:w-6">
       <button
         type="button"
         ref={ref}
         onClick={() => setIsClicked((prev) => !prev)}
         {...hoverProps}
-        className="w-full outline-none cursor-pointer"
+        className="w-full cursor-pointer outline-none"
       >
         <HelpIcon />
       </button>

@@ -42,14 +42,18 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
       })
   }, [])
 
-  const filteredData = cyclingData?.filter((d) => d.name.startsWith(`${location}-${direction}`)) ?? []
+  const filteredData =
+    cyclingData?.filter((d) => d.name.startsWith(`${location}-${direction}`)) ?? []
 
   const totalSeries: ISeries[] = filteredData.map((dataByYear) => {
     const year = dataByYear.name.slice(Math.max(0, dataByYear.name.lastIndexOf('-') + 1))
 
     return {
       name: year,
-      data: [...Array.from({ length: MONTHS })].map((_, ix) => [ix + 1, dataByYear.jsonData[ix + 1]?.total ?? 0]),
+      data: [...Array.from({ length: MONTHS })].map((_, ix) => [
+        ix + 1,
+        dataByYear.jsonData[ix + 1]?.total ?? 0,
+      ]),
     }
   })
   const sortedTotalSeries = totalSeries.reverse()

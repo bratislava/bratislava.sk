@@ -14,7 +14,7 @@ import MobileNavMenu from './NavMenu/MobileNavMenu'
 import { useNavMenuContext } from './NavMenu/navMenuContext'
 
 const Divider = ({ className }: { className?: string }) => {
-  return <div aria-hidden className={`border-r h-6 ${className}`} />
+  return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
 interface MobileNavBarProps extends LanguageSelectProps {
@@ -34,18 +34,18 @@ export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBar
         <div>
           <div
             className={cx(
-              'h-14 flex text-gray-700 items-center justify-between px-4 shadow-md fixed top-0 w-full bg-white z-30',
+              'fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-gray-700 shadow-md',
               className,
             )}
           >
             <div className="flex items-center">
-              <Brand url="/" className="py-3 px-4 -ml-4" />
+              <Brand url="/" className="-ml-4 py-3 px-4" />
             </div>
             <div className="flex items-center">
               {otherLanguage && (
                 <Button
                   size="sm"
-                  className="underline underline-offset-2 p-4"
+                  className="p-4 underline underline-offset-2"
                   variant="link-black"
                   onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
                   text={otherLanguage?.title}

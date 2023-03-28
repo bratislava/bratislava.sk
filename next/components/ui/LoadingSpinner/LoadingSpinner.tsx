@@ -7,18 +7,18 @@ interface IProps {
 }
 
 export const LoadingSpinner = ({ className, size = 'default', text }: IProps) => (
-  <div className={cx('flex flex-col gap-20 items-center text-center', className)}>
+  <div className={cx('flex flex-col items-center gap-20 text-center', className)}>
     <div
       style={{
         borderTopColor: 'currentColor',
       }}
-      className={cx('box-border border-transparent border-solid rounded-full animate-spin', {
-        'w-8 h-8 border-2': size === 'small',
-        'w-20 h-20 border-4': size === 'medium',
-        'w-40 h-40 border-8': size === 'default',
+      className={cx('box-border animate-spin rounded-full border-solid border-transparent', {
+        'h-8 w-8 border-2': size === 'small',
+        'h-20 w-20 border-4': size === 'medium',
+        'h-40 w-40 border-8': size === 'default',
       })}
     />
-    {text && <p className="text-h3-medium text-category-600 w-52">{text}</p>}
+    {text && <p className="text-h3-medium w-52 text-category-600">{text}</p>}
   </div>
 )
 

@@ -8,10 +8,9 @@
     "develop": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "typecheck": "tsc && tsc-strict",
-    "eslint": "eslint --color --ext .html,.js,.json,.jsx,.md,.ts,.tsx .",
-    "eslint:fix": "npm run eslint -- --fix",
+    "lint": "eslint components pages utils backend",
+    "lint:fix": "yarn lint --fix",
     "gen": "graphql-codegen && prettier --write ./graphql/index.ts",
     "test": "jest --watch",
     "test:ci": "jest --ci --passWithNoTests",
@@ -90,7 +89,7 @@
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "10.4.13",
-    "eslint": "8.20.0",
+    "eslint": "8.36.0",
     "eslint-config-adjunct": "4.11.1",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "17.0.0",
@@ -130,6 +129,7 @@
     "lint-staged": "^13.1.2",
     "postcss": "8.4.21",
     "pre-commit": "^1.2.2",
+    "prettier-plugin-tailwindcss": "^0.2.5",
     "tailwindcss": "3.2.7",
     "typescript": "4.9.5",
     "typescript-strict-plugin": "^2.0.1"
@@ -140,6 +140,7 @@
     "yarn": "1.22"
   },
   "volta": {
-    "node": "16.19.0"
+    "node": "16.19.0",
+    "yarn": "1.22.18"
   }
 }

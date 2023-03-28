@@ -34,7 +34,8 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
       </Field>
       <Field className="flex max-w-xs flex-col gap-4 md:mt-16 md:pt-1">
         <p className="text-p2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis viverra quis dui nisl.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis
+          viverra quis dui nisl.
         </p>
         <p className="text-p2">{t('photoMaxSize')}</p>
         <Button

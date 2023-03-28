@@ -8,7 +8,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(404).json({})
   const { department } = req.query
   const { accessToken } = await getToken()
-  const { value } = await getUsersByDepartment({ token: accessToken, department: forceString(department) })
+  const { value } = await getUsersByDepartment({
+    token: accessToken,
+    department: forceString(department),
+  })
   return res.json(value)
 }
 

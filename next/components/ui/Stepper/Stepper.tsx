@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export const Stepper = ({ steps, className, currentStep }: IProps) => (
-  <div className={cx('flex items-center overflow-hidden pb-16 bg-transparent', className)}>
+  <div className={cx('flex items-center overflow-hidden bg-transparent pb-16', className)}>
     {steps.map((step, i) => (
       <React.Fragment key={i}>
         <StepperStep

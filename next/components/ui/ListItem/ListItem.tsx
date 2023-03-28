@@ -11,7 +11,12 @@ export interface ListItemProps {
   moreLink?: { title?: string; url?: string }
 }
 
-export const ListItem = ({ className, content, circleOption = 'primary', moreLink }: ListItemProps) => {
+export const ListItem = ({
+  className,
+  content,
+  circleOption = 'primary',
+  moreLink,
+}: ListItemProps) => {
   const { Markdown: UIMarkdown } = useUIContext()
   const Circle = circleOption === 'primary' ? ListCircleFull : ListCircle
   return (
@@ -22,7 +27,10 @@ export const ListItem = ({ className, content, circleOption = 'primary', moreLin
 
       <div className="ml-6 flex flex-col lg:ml-14">
         {content && (
-          <UIMarkdown content={content} className="text-p2 leading-[24px] md:text-p1 md:leading-[30px]" />
+          <UIMarkdown
+            content={content}
+            className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
+          />
         )}
         {(moreLink?.url || moreLink?.title) && <PageLinkButton pageLink={moreLink} />}
       </div>

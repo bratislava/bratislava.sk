@@ -60,7 +60,7 @@ const Accordion = () => {
           <button
             onClick={() => setActiveSection?.(tab.key)}
             className={cx(
-              'flex justify-between w-full items-center py-7 shadow rounded-lg px-10 text-h2-medium',
+              'text-h2-medium flex w-full items-center justify-between rounded-lg py-7 px-10 shadow',
               { 'bg-category-200': tab.key === activeSection },
               { 'bg-white': tab.key !== activeSection },
             )}

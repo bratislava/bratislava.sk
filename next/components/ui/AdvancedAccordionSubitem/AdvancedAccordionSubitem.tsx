@@ -39,10 +39,12 @@ export const AdvancedAccordionSubitem = ({
   return (
     <div className="flex flex-col">
       <div
-        className={cx(className, 'flex items-start lg:items-center cursor-pointer lg:px-5')}
+        className={cx(className, 'flex cursor-pointer items-start lg:items-center lg:px-5')}
         onClick={() => setOpen(!open)}
       >
-        {isGroupTitle ?? <div className="mr-3 mt-1 h-6 w-6 shrink-0 rounded-full bg-category-200 lg:mr-6 lg:mt-0" />}
+        {isGroupTitle ?? (
+          <div className="mr-3 mt-1 h-6 w-6 shrink-0 rounded-full bg-category-200 lg:mr-6 lg:mt-0" />
+        )}
         {/* TODO optimize this  */}
         {isGroupTitle ? (
           <div className="text-h4 pt-8 lg:pt-10">{title}</div>

@@ -44,7 +44,7 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
         role="button"
         tabIndex={0}
       >
-        <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-5 drop-shadow-lg cursor-pointer">
+        <div className="flex h-14 w-full cursor-pointer flex-row items-center gap-5 bg-white p-4 drop-shadow-lg">
           <StepperViewRow
             className="grow"
             title={currentStep === steps.length ? t('summary') : steps[currentStep]?.title}
@@ -55,23 +55,23 @@ const StepperView = ({ steps, currentStep, forceMobileSize, onChangeStep }: Step
           <ChevronDown className={cx({ 'rotate-180': !isCollapsed })} />
         </div>
         <div
-          className={cx('fixed bg-gray-200 w-full h-full inset-0 mt-1 z-50 flex flex-col gap-0.5', {
-            'transition-all duration-500 h-screen w-screen': true,
+          className={cx('fixed inset-0 z-50 mt-1 flex h-full w-full flex-col gap-0.5 bg-gray-200', {
+            'h-screen w-screen transition-all duration-500': true,
             'translate-y-full': isCollapsed,
             'translate-y-0': !isCollapsed,
           })}
         >
-          <div className="h-14 p-4 w-full bg-white flex flex-row items-center gap-1 drop-shadow-lg">
+          <div className="flex h-14 w-full flex-row items-center gap-1 bg-white p-4 drop-shadow-lg">
             <h6 className="text-h6 grow">{t('all_steps')}</h6>
             <button
               type="button"
-              className="h-full cursor-pointer flex flex-col justify-center"
+              className="flex h-full cursor-pointer flex-col justify-center"
               onClick={() => setIsCollapsed(true)}
             >
               <CloseIcon />
             </button>
           </div>
-          <div className="bg-white grow overflow-y-scroll overscroll-none pb-20">
+          <div className="grow overflow-y-scroll overscroll-none bg-white pb-20">
             <StepperViewList
               steps={steps}
               currentStep={currentStep}

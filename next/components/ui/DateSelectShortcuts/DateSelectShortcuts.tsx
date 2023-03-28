@@ -46,16 +46,18 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
 
           return (
             <button
-              className={cx('bg-white px-2 sm:px-4 relative cursor-pointer', {
+              className={cx('relative cursor-pointer bg-white px-2 sm:px-4', {
                 'text-font hover:text-category-600': !isActive,
-                'text-category-600 hover:text-font font-bold': isActive,
+                'font-bold text-category-600 hover:text-font': isActive,
                 'hidden md:block': i > 2,
               })}
               key={i}
               onClick={() => onClick?.(dateValue)}
             >
               {title}
-              {isActive && <div className="absolute top-1/2 left-1/2 mt-4 h-1 w-1 rounded-full bg-current" />}
+              {isActive && (
+                <div className="absolute top-1/2 left-1/2 mt-4 h-1 w-1 rounded-full bg-current" />
+              )}
             </button>
           )
         })}

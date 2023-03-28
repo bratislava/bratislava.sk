@@ -21,7 +21,9 @@ const PageBreadcrumbs = ({ crumbs }: Props) => {
                 <LeftIcon className="mt-[-3px] inline-block h-4 w-5 lg:hidden" /> {crumb.title}
               </UILink>
             ) : (
-              <span className={cx('hidden lg:inline-block', { 'font-bold': last })}>{crumb.title}</span>
+              <span className={cx('hidden lg:inline-block', { 'font-bold': last })}>
+                {crumb.title}
+              </span>
             )}
             {!last && <span className="hidden px-2 lg:inline-block">&gt;</span>}
           </React.Fragment>

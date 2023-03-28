@@ -52,7 +52,7 @@ export const RentBenefits = ({
       <h1 className="text-h4 flex text-center">{title}</h1>
       <HorizontalScrollWrapper
         className={cx(
-          'md:w-full flex lg:flex-wrap flex-row xs:items-center md:items-baseline -mx-8 px-8 md:px-0 md:mx-0 ',
+          '-mx-8 flex flex-row px-8 xs:items-center md:mx-0 md:w-full md:items-baseline md:px-0 lg:flex-wrap ',
           {
             'mb-0': iconBg,
           },
