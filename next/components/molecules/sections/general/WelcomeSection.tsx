@@ -44,7 +44,7 @@ export const WelcomeSection = ({ homepageHeader }: Props) => {
               },
             )}
           >
-            <div className="w-[721px] sm:w-[647px]">
+            <div className="w-full max-w-[721px] sm:max-w-[647px]">
               <Image
                 width={homepageHeader?.picture?.data?.attributes?.width ?? undefined}
                 height={homepageHeader?.picture?.data?.attributes?.height ?? undefined}
