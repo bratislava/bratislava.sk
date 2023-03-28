@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt
     cert-manager.io/issue-temporary-certificate: 'true'
     kubernetes.io/ingress.class: haproxy
-    ingress.kubernetes.io/redirect-to: "https://www.${HOSTNAME}/bratislava-pre-ukrajinu"
+    ingress.kubernetes.io/redirect-to: 'https://www.${HOSTNAME}/bratislava-pre-ukrajinu'
 spec:
   tls:
     - hosts:
@@ -37,4 +37,3 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-app
                 port:
                   number: 80
-

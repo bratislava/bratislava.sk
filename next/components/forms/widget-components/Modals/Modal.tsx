@@ -52,7 +52,7 @@ const ModalHeader = ({
     <div className={headerStyle}>
       {currentScreenIndex > 0 ? (
         <div
-          className="ml-1 flex flex-row cursor-pointer items-center"
+          className="ml-1 flex cursor-pointer flex-row items-center"
           onClick={() => {
             setCurrentScreenIndex(currentScreenIndex - 1)
           }}
@@ -61,7 +61,7 @@ const ModalHeader = ({
         </div>
       ) : null}
       <div className={headlineStyle}>{header}</div>
-      <div className="ml-1 flex flex-row justify-end items-center">
+      <div className="ml-1 flex flex-row items-center justify-end">
         <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
       </div>
     </div>
@@ -144,11 +144,11 @@ const ModalBody = ({
       })}
     >
       {!hasHeader ? (
-        <div className="ml-1 flex flex-row justify-end items-center">
+        <div className="ml-1 flex flex-row items-center justify-end">
           <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
         </div>
       ) : null}
-      <div className="h-[calc(100%-80px)] flex w-full flex-col items-start rounded-lg p-2">
+      <div className="flex h-[calc(100%-80px)] w-full flex-col items-start rounded-lg p-2">
         {Array.isArray(content)
           ? content.length - 1 >= currentScreenIndex && content[currentScreenIndex]()
           : content({ onSubmit })}
@@ -182,7 +182,7 @@ const Modal = ({
   const hasFooter = Array.isArray(content)
   return (
     <div
-      className="z-20 h-full fixed w-full inset-x-0 top-0 flex items-center justify-center"
+      className="fixed inset-x-0 top-0 z-20 flex h-full w-full items-center justify-center"
       style={{ background: 'rgba(var(--color-gray-800), .4)', marginTop: '0' }}
       onClick={() => {
         setCurrentScreenIndex(0)

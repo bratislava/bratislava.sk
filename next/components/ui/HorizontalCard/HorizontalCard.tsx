@@ -45,7 +45,7 @@ export const HorizontalCard = ({
       </div>
     </Panel>
     {accessory && (
-      <div className={cx('absolute bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2')}>
+      <div className={cx('absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 transform')}>
         {accessory}
       </div>
     )}

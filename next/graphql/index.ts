@@ -256,6 +256,13 @@ export type ComponentBlocksCommonLink = {
   url?: Maybe<Scalars['String']>;
 };
 
+export type ComponentBlocksCommonLinkInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  label?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['ID']>;
+  url?: InputMaybe<Scalars['String']>;
+};
+
 export type ComponentBlocksComparisonCard = {
   __typename?: 'ComponentBlocksComparisonCard';
   iconMedia?: Maybe<UploadFileEntityResponse>;
@@ -620,6 +627,59 @@ export type ComponentBlocksVideoFiltersInput = {
   speaker?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   url?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentGeneralHeader = {
+  __typename?: 'ComponentGeneralHeader';
+  accountLink?: Maybe<ComponentBlocksCommonLink>;
+  id: Scalars['ID'];
+  links?: Maybe<Array<Maybe<ComponentGeneralHeaderLink>>>;
+};
+
+
+export type ComponentGeneralHeaderLinksArgs = {
+  filters?: InputMaybe<ComponentGeneralHeaderLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentGeneralHeaderInput = {
+  accountLink?: InputMaybe<ComponentBlocksCommonLinkInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  links?: InputMaybe<Array<InputMaybe<ComponentGeneralHeaderLinkInput>>>;
+};
+
+export type ComponentGeneralHeaderLink = {
+  __typename?: 'ComponentGeneralHeaderLink';
+  icon: Enum_Componentgeneralheaderlink_Icon;
+  id: Scalars['ID'];
+  label: Scalars['String'];
+  page?: Maybe<PageEntityResponse>;
+  showOnDesktop: Scalars['Boolean'];
+  showOnMobile: Scalars['Boolean'];
+  url?: Maybe<Scalars['String']>;
+};
+
+export type ComponentGeneralHeaderLinkFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentGeneralHeaderLinkFiltersInput>>>;
+  icon?: InputMaybe<StringFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentGeneralHeaderLinkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentGeneralHeaderLinkFiltersInput>>>;
+  page?: InputMaybe<PageFiltersInput>;
+  showOnDesktop?: InputMaybe<BooleanFilterInput>;
+  showOnMobile?: InputMaybe<BooleanFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentGeneralHeaderLinkInput = {
+  icon?: InputMaybe<Enum_Componentgeneralheaderlink_Icon>;
+  id?: InputMaybe<Scalars['ID']>;
+  label?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['ID']>;
+  showOnDesktop?: InputMaybe<Scalars['Boolean']>;
+  showOnMobile?: InputMaybe<Scalars['Boolean']>;
+  url?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentMenuMenuItem = {
@@ -1187,6 +1247,13 @@ export enum Enum_Componentblocksspaceinfo_Imageposition {
   Right = 'right'
 }
 
+export enum Enum_Componentgeneralheaderlink_Icon {
+  Esluzby = 'esluzby',
+  Kontakt = 'kontakt',
+  SomTurista = 'som_turista',
+  Ukraina = 'ukraina'
+}
+
 export enum Enum_Componentmenumenuitem_Icon {
   DopravaMapy_02 = 'doprava_mapy_02',
   Kultura_06 = 'kultura_06',
@@ -1475,7 +1542,36 @@ export type FooterRelationResponseCollection = {
   data: Array<FooterEntity>;
 };
 
-export type GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn;
+export type General = {
+  __typename?: 'General';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  header?: Maybe<ComponentGeneralHeader>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<GeneralRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type GeneralEntity = {
+  __typename?: 'GeneralEntity';
+  attributes?: Maybe<General>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type GeneralEntityResponse = {
+  __typename?: 'GeneralEntityResponse';
+  data?: Maybe<GeneralEntity>;
+};
+
+export type GeneralInput = {
+  header?: InputMaybe<ComponentGeneralHeaderInput>;
+};
+
+export type GeneralRelationResponseCollection = {
+  __typename?: 'GeneralRelationResponseCollection';
+  data: Array<GeneralEntity>;
+};
+
+export type GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -1716,6 +1812,7 @@ export type Mutation = {
   createBlogPost?: Maybe<BlogPostEntityResponse>;
   createBlogPostLocalization?: Maybe<BlogPostEntityResponse>;
   createFooterLocalization?: Maybe<FooterEntityResponse>;
+  createGeneralLocalization?: Maybe<GeneralEntityResponse>;
   createHomepageLocalization?: Maybe<HomepageEntityResponse>;
   createMenuLocalization?: Maybe<MenuEntityResponse>;
   createPage?: Maybe<PageEntityResponse>;
@@ -1734,6 +1831,7 @@ export type Mutation = {
   createVzn?: Maybe<VznEntityResponse>;
   deleteBlogPost?: Maybe<BlogPostEntityResponse>;
   deleteFooter?: Maybe<FooterEntityResponse>;
+  deleteGeneral?: Maybe<GeneralEntityResponse>;
   deleteHomepage?: Maybe<HomepageEntityResponse>;
   deleteMenu?: Maybe<MenuEntityResponse>;
   deletePage?: Maybe<PageEntityResponse>;
@@ -1761,6 +1859,7 @@ export type Mutation = {
   updateBlogPost?: Maybe<BlogPostEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateFooter?: Maybe<FooterEntityResponse>;
+  updateGeneral?: Maybe<GeneralEntityResponse>;
   updateHomepage?: Maybe<HomepageEntityResponse>;
   updateMenu?: Maybe<MenuEntityResponse>;
   updatePage?: Maybe<PageEntityResponse>;
@@ -1800,6 +1899,13 @@ export type MutationCreateBlogPostLocalizationArgs = {
 
 export type MutationCreateFooterLocalizationArgs = {
   data?: InputMaybe<FooterInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationCreateGeneralLocalizationArgs = {
+  data?: InputMaybe<GeneralInput>;
   id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
@@ -1895,6 +2001,11 @@ export type MutationDeleteBlogPostArgs = {
 
 
 export type MutationDeleteFooterArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationDeleteGeneralArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -2012,6 +2123,12 @@ export type MutationUpdateFileInfoArgs = {
 
 export type MutationUpdateFooterArgs = {
   data: FooterInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationUpdateGeneralArgs = {
+  data: GeneralInput;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -2398,6 +2515,7 @@ export type Query = {
   blogPost?: Maybe<BlogPostEntityResponse>;
   blogPosts?: Maybe<BlogPostEntityResponseCollection>;
   footer?: Maybe<FooterEntityResponse>;
+  general?: Maybe<GeneralEntityResponse>;
   homepage?: Maybe<HomepageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
@@ -2442,6 +2560,11 @@ export type QueryBlogPostsArgs = {
 export type QueryFooterArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
   publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryGeneralArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
@@ -3215,12 +3338,16 @@ export type MenuSectionFragment = { __typename?: 'ComponentMenuMenuSection', id:
 
 export type MenuItemFragment = { __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null };
 
-export type MenuQueryVariables = Exact<{
+export type HeaderLinkFragment = { __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null };
+
+export type GeneralFragment = { __typename?: 'General', header?: { __typename?: 'ComponentGeneralHeader', links?: Array<{ __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null, accountLink?: { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null } | null };
+
+export type GeneralQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode'];
 }>;
 
 
-export type MenuQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', menus?: Array<{ __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null } | null> | null } | null } | null } | null };
+export type GeneralQuery = { __typename?: 'Query', general?: { __typename?: 'GeneralEntityResponse', data?: { __typename?: 'GeneralEntity', attributes?: { __typename?: 'General', header?: { __typename?: 'ComponentGeneralHeader', links?: Array<{ __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null, accountLink?: { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null } | null } | null } | null } | null, menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', menus?: Array<{ __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null } | null> | null } | null } | null } | null };
 
 export type HomepageQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode'];
@@ -3995,21 +4122,6 @@ export const BlogPostFragmentDoc = gql`
 }
     ${BlogPostLinkFragmentDoc}
 ${SectionsFragmentDoc}`;
-export const CommonLinkFragmentDoc = gql`
-    fragment CommonLink on ComponentBlocksCommonLink {
-  label
-  page {
-    data {
-      id
-      attributes {
-        title
-        slug
-      }
-    }
-  }
-  url
-}
-    `;
 export const FooterFragmentDoc = gql`
     fragment Footer on Footer {
   address
@@ -4113,6 +4225,52 @@ export const MenuItemFragmentDoc = gql`
 }
     ${PageForMenuEntityFragmentDoc}
 ${MenuSectionFragmentDoc}`;
+export const HeaderLinkFragmentDoc = gql`
+    fragment HeaderLink on ComponentGeneralHeaderLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+  showOnDesktop
+  showOnMobile
+  icon
+}
+    `;
+export const CommonLinkFragmentDoc = gql`
+    fragment CommonLink on ComponentBlocksCommonLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+}
+    `;
+export const GeneralFragmentDoc = gql`
+    fragment General on General {
+  header {
+    links {
+      ...HeaderLink
+    }
+    accountLink {
+      ...CommonLink
+    }
+  }
+}
+    ${HeaderLinkFragmentDoc}
+${CommonLinkFragmentDoc}`;
 export const HomepageHeaderFragmentDoc = gql`
     fragment HomepageHeader on ComponentBlocksHomepageHeader {
   headline
@@ -4428,8 +4586,15 @@ export const MainMenuDocument = gql`
   }
 }
     ${MainMenuItemFragmentDoc}`;
-export const MenuDocument = gql`
-    query Menu($locale: I18NLocaleCode!) {
+export const GeneralDocument = gql`
+    query General($locale: I18NLocaleCode!) {
+  general(locale: $locale) {
+    data {
+      attributes {
+        ...General
+      }
+    }
+  }
   menu(locale: $locale) {
     data {
       attributes {
@@ -4440,7 +4605,8 @@ export const MenuDocument = gql`
     }
   }
 }
-    ${MenuItemFragmentDoc}`;
+    ${GeneralFragmentDoc}
+${MenuItemFragmentDoc}`;
 export const HomepageDocument = gql`
     query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
@@ -4629,8 +4795,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     MainMenu(variables: MainMenuQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MainMenuQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<MainMenuQuery>(MainMenuDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'MainMenu', 'query');
     },
-    Menu(variables: MenuQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MenuQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<MenuQuery>(MenuDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Menu', 'query');
+    General(variables: GeneralQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GeneralQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GeneralQuery>(GeneralDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'General', 'query');
     },
     Homepage(variables: HomepageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<HomepageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<HomepageQuery>(HomepageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Homepage', 'query');

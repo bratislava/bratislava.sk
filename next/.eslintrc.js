@@ -5,7 +5,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     /** We use this a lot with isDefined and hasAttributes */
     'unicorn/no-array-callback-reference': 'off',
-    // Named export is easier to refactor automatically
+    /** Named export is easier to refactor automatically */
     'import/prefer-default-export': 'off',
     /** Too tedious to type every function return explicitly */
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -19,9 +19,15 @@ module.exports = {
       { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] },
     ],
     /** Links get confused for secrets */
-    'no-secrets/no-secrets': ['error', { ignoreContent: '^http' }],
-    /** Presently at too many places & becomes just an ignored clutter, consider turning on later */
-    '@typescript-eslint/no-unsafe-assignment': 'off',
+    'no-secrets/no-secrets': [
+      'error',
+      {
+        ignoreContent: [
+          // https://stackoverflow.com/a/3809435
+          /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm,
+        ],
+      },
+    ],
     /** Doesn't work without changing our ts config */
     'unicorn/prefer-spread': 'off',
     /** Use official sorting */
@@ -29,28 +35,31 @@ module.exports = {
       'warn',
       { callees: ['classnames', 'cx'], officialSorting: true },
     ],
-    /** To remove optional parameter warning e.g. { page?: number } */
+    /** We specify default props in props decomposition */
     'react/require-default-props': 'off',
-    /** To Remove  */
-    'react/no-array-index-key': 'off',
-    'react/no-unused-prop-types': 'off',
-    'tailwindcss/no-custom-classname': 'off',
-    /** Remove console.log() warnings */
-    'no-console': 'off',
+    /** Next Link does not need href in <a> tag */
+    'jsx-a11y/anchor-is-valid': 'off',
+    /** Do not work in our case */
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    'lodash/prefer-noop': 'off',
+    'jsx-a11y/img-redundant-alt': 'warn',
     '@next/next/no-img-element': 'off',
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
-    'switch-case/newline-between-switch-case': 'off',
-    // This rule disallows lexical declarations (let, const, function and class) in case/default clauses.
-    'no-case-declarations': 'off',
+    // https://github.com/jsx-eslint/eslint-plugin-react/issues/2584#issuecomment-1191175244
+    'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
     // Solve warning "Promise-returning function provided to attribute where a void return was expected."
-    '@typescript-eslint/no-misused-promises': [
-      2,
-      {
-        checksVoidReturn: {
-          attributes: false,
-        },
-      },
-    ],
+    // '@typescript-eslint/no-misused-promises': [
+    //   2,
+    //   {
+    //     checksVoidReturn: {
+    //       attributes: false,
+    //     },
+    //   },
+    // ],
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

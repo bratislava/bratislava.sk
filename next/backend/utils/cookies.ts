@@ -1,8 +1,7 @@
 // @ts-strict-ignore
-import { captureException } from '@sentry/nextjs'
+import { isBrowser } from '@utils/utils'
 import mapValues from 'lodash/mapValues'
 import pick from 'lodash/pick'
-import { isBrowser } from '@utils/utils'
 import { useCallback, useEffect, useState } from 'react'
 // todo swap for js-cookie
 import { Cookies } from 'react-cookie-consent'
@@ -30,7 +29,6 @@ export const useCookieConsent = () => {
       }
     } catch (error) {
       console.error(error)
-      captureException(error)
     }
     setBannerDismissed(false)
   }, [])
@@ -50,7 +48,7 @@ export const useCookieConsent = () => {
       setConsentsState(mergedConsents)
       console.log('rerender')
     },
-    [consents]
+    [consents],
   )
 
   return { dismissBanner, shouldShowBanner, setConsents, consents, refresh }

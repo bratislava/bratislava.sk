@@ -25,7 +25,7 @@ export const Card = ({
   buttonVariant,
   onButtonClick,
 }: CardProps) => (
-  <div className={cx(className, 'relative max-w-full bg-white shadow-lg rounded-lg')}>
+  <div className={cx(className, 'relative max-w-full rounded-lg bg-white shadow-lg')}>
     {topImage && <div className={cx(topImagePosition, 'absolute z-10')}>{topImage}</div>}
     {children}
     {hasButton && (
@@ -33,9 +33,9 @@ export const Card = ({
         type="submit"
         className={cx(
           buttonPosition,
-          'bg-category-200 absolute bottom-0 transform translate-y-1/2',
-          { 'w-12 h-12': buttonVariant === 'circle' },
-          { 'py-2.5 px-6': buttonVariant === 'default' }
+          'absolute bottom-0 translate-y-1/2 transform bg-category-200',
+          { 'h-12 w-12': buttonVariant === 'circle' },
+          { 'py-2.5 px-6': buttonVariant === 'default' },
         )}
         shape={buttonVariant}
         variant="secondary-dark-text"

@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import React from 'react'
 
-import ChevronDown from '../../../assets/images/chevron-down.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ChevronDown from '@assets/images/chevron-down.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Button } from '../Button/Button'
 
 export type TAccordionTab = { key: string; title: string | React.ReactNode }
@@ -31,9 +31,9 @@ export const Accordion = ({
   contents,
 }: AccordionProps) => {
   return (
-    <div className={cx(className, 'w-full flex items-center flex-col')}>
+    <div className={cx(className, 'flex w-full flex-col items-center')}>
       {tabs?.map((tab, i) => (
-        <div key={i} className={cx(sectionClassName, 'flex flex-col w-full gap-5 items-center')}>
+        <div key={i} className={cx(sectionClassName, 'flex w-full flex-col items-center gap-5')}>
           {tabsVariant === 'default' ? (
             <Button
               className={cx(tabClassName, 'text-h4-normal py-2', {
@@ -49,7 +49,7 @@ export const Accordion = ({
           ) : (
             tab.title
           )}
-          <div className={cx(contentClassName, 'flex flex-col gap-y-3 w-full')}>
+          <div className={cx(contentClassName, 'flex w-full flex-col gap-y-3')}>
             {tab.key === activeSection && contents && <div>{contents[i]}</div>}
           </div>
         </div>

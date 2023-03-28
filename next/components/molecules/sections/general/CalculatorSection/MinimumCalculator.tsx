@@ -4,8 +4,8 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { FormEvent } from 'react'
 
-import MinusIcon from '../../../../../assets/images/minus.svg'
-import PlusIcon from '../../../../../assets/images/plus.svg'
+import MinusIcon from '@assets/images/minus.svg'
+import PlusIcon from '@assets/images/plus.svg'
 
 interface IProps {
   className?: string
@@ -110,7 +110,7 @@ const MinimumCalculator = ({
   }
 
   return (
-    <div className={cx('text-center bg-category-200 text-font', className)}>
+    <div className={cx('bg-category-200 text-center text-font', className)}>
       <p className="text-h3">{t('title')}</p>
       <p className="text-20-medium m-auto mt-6 w-10/12 pt-0.5">{t('description')}</p>
       <form

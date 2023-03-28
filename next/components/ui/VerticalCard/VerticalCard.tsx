@@ -32,7 +32,7 @@ export const VerticalCard = ({
       <div className="flex-1 px-6 py-8 lg:px-8 lg:pt-8 lg:pb-11">{children}</div>
     </Panel>
     {accessory && (
-      <div className={cx('absolute bottom-0 pl-8 transform translate-y-1/2')}>{accessory}</div>
+      <div className={cx('absolute bottom-0 translate-y-1/2 transform pl-8')}>{accessory}</div>
     )}
   </div>
 )

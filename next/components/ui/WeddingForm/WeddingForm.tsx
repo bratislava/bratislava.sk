@@ -2,7 +2,7 @@ import { LocalDate } from '@js-joda/core'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import Calendar from '../../../assets/images/calendar-form.svg'
+import Calendar from '@assets/images/calendar-form.svg'
 import { Button } from '../Button/Button'
 import { CheckBox } from '../CheckBox/CheckBox'
 import { Field } from '../Field/Field'
@@ -50,7 +50,8 @@ export const WeddingForm = () => {
       <h1 className="text-h1 text-center">{t('nonbindingWedding')}</h1>
 
       <p className="text-p1-medium text-center">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit lobortis arcu.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis non vitae ultrices sit
+        lobortis arcu.
       </p>
 
       <form>

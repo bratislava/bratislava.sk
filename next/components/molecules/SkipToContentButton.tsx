@@ -17,7 +17,7 @@ const SkipToContentButton = () => {
   return (
     <Button
       onPress={handleSkip}
-      className="bg-button-dark text-base top-15 -translate-x-100 z-50 fixed left-2 text-white transition-transform focus:translate-x-0 md:top-16"
+      className="bg-button-dark text-base top-15 fixed left-2 z-50 -translate-x-100 text-white transition-transform focus:translate-x-0 md:top-16"
       text={t('skipNavigation')}
     />
   )

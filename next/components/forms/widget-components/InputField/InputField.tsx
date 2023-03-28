@@ -155,8 +155,8 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       <div
         className={cx('flex flex-col', {
           'w-full': size === 'large',
-          'max-w-[388px] w-fit': size === 'default',
-          'max-w-[200px] w-fit': size === 'small',
+          'w-fit max-w-[388px]': size === 'default',
+          'w-fit max-w-[200px]': size === 'small',
         })}
       >
         <FieldHeader
@@ -173,7 +173,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
           {leftIcon && (
             <i
               className={cx(
-                'w-6 h-6 -translate-y-2/4 inset-y-1/2 absolute left-3 sm:left-4 flex items-center justify-center',
+                'absolute inset-y-1/2 left-3 flex h-6 w-6 -translate-y-2/4 items-center justify-center sm:left-4',
                 {
                   'opacity-50': disabled,
                 },
@@ -188,7 +188,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               type="button"
               tabIndex={0}
               onClick={resetIconHandler}
-              className="flex items-center justify-center absolute inset-y-1/2 right-3 sm:right-4 h-6 w-6 -translate-y-2/4 cursor-pointer"
+              className="absolute inset-y-1/2 right-3 flex h-6 w-6 -translate-y-2/4 cursor-pointer items-center justify-center sm:right-4"
             >
               <ResetIcon />
             </button>

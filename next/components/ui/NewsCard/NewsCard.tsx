@@ -6,7 +6,7 @@ import { getNumericLocalDate } from '@utils/local-date'
 import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
-import { ArrowRight, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import BratislavaPlaceholder from '../../../public/bratislava-placeholder.jpg'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
@@ -89,7 +89,7 @@ export const NewsCard = ({
           {slug && (
             <UILink
               className={cx(
-                'group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 hover:text-category-600 underline after:absolute after:inset-0',
+                'group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 underline after:absolute after:inset-0 hover:text-category-600',
                 getHoverColor(
                   tag?.data?.attributes?.pageCategory?.data?.attributes
                     ?.color as Enum_Pagecategory_Color,

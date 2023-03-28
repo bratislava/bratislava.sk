@@ -102,7 +102,7 @@ const TimeField = ({
           ref={ref}
           name={inputProps.id}
         />
-        <div className="absolute right-3 sm:right-4 top-2/4 flex -translate-y-2/4 items-center">
+        <div className="absolute right-3 top-2/4 flex -translate-y-2/4 items-center sm:right-4">
           {children}
         </div>
       </div>

@@ -5,10 +5,9 @@ import {
   Enum_Pagecategory_Color,
   FileBlockFragment,
   FooterFragment,
-  MainMenuItemFragment,
   PageLinkBlockFragment,
 } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, MenuMainItem, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
+import { FooterProps, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
@@ -267,38 +266,6 @@ export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
     })),
   }
 }
-
-// Main Menu
-// TODO
-export const parseMainMenu = (menu: MainMenuItemFragment): MenuMainItem[] =>
-  sortBy(
-    menu.data.map((item) => ({
-      id: item.id ?? '',
-      color: `rgb(var(${
-        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c200
-      }))`,
-      colorDark: `rgb(var(${
-        getColorsVariables(transformColorToCategory(item.attributes.color) ?? '').c600
-      }))`,
-      icon: item.attributes.icon ?? '',
-      coloredIcon: item?.attributes.iconHover ?? item.attributes.icon ?? '',
-      priority: item.attributes.priority ?? 0,
-      title: item.attributes.title ?? '',
-      subItems: sortBy(
-        item?.attributes?.subcategories?.data.map((subCategory) => ({
-          icon: subCategory.attributes.icon ?? '',
-          title: (subCategory.attributes.title || subCategory.attributes.moreLink?.title) ?? '',
-          moreLinkTitle:
-            (subCategory.attributes.moreLink?.title || subCategory.attributes.title) ?? '',
-          url: parsePageLink(subCategory.attributes.moreLink)?.url ?? '',
-          subItems: subCategory.attributes.pages?.map(parsePageLink).filter(isPresent) ?? [],
-          priority: subCategory.attributes.priority ?? 0,
-        })) ?? [],
-        ['priority'],
-      ),
-    })),
-    ['priority'],
-  )
 
 // Page Accordion Items
 export const groupByCategory = <Category extends string | null, T extends { category?: Category }>(

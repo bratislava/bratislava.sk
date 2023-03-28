@@ -10,7 +10,10 @@ export interface NewsProps {
 
 export const News = ({ className, news }: NewsProps) => (
   <HorizontalScrollWrapper
-    className={cx(className, 'space-x-4 max-w-6xl pb-14 lg:grid lg:grid-cols-3 lg:gap-8 lg:mx-auto')}
+    className={cx(
+      className,
+      'max-w-6xl space-x-4 pb-14 lg:mx-auto lg:grid lg:grid-cols-3 lg:gap-8',
+    )}
   >
     {news?.map((newsItem, index) => (
       <NewsCard className="w-11/12 shrink-0" key={index} {...newsItem} />

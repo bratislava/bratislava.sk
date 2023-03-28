@@ -29,7 +29,7 @@ export const TextWithImage = ({
   if (!content && !imageSrc) return null
 
   return (
-    <div className={cx(className, 'items-center grid grid-cols-1 md:grid-cols-2 gap-8')}>
+    <div className={cx(className, 'grid grid-cols-1 items-center gap-8 md:grid-cols-2')}>
       {imagePosition === 'left' && imageSrc && (
         <div>
           <Image

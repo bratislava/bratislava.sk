@@ -1,8 +1,6 @@
+import NewsLetterImage from '@assets/images/newsletter-image.png'
 import { NewsLetter } from '@bratislava/ui-bratislava'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useTranslation } from 'react-i18next'
-
-import NewsLetterImage from '../../../../assets/images/newsletter-image.png'
+import { useTranslation } from 'next-i18next'
 
 const NewsletterSection = () => {
   const { t } = useTranslation('newsletter')

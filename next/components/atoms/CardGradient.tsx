@@ -30,9 +30,9 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
         />
         {/* Gradient */}
         <div className="absolute bottom-0 flex h-56 w-full items-end rounded-b-lg bg-gradient-to-t from-[#000]">
-          <div className="flex-col flex">
+          <div className="flex flex-col">
             {title && (
-              <p className="text-h5 p-6 text-white pb-0 lg:pb-6 lg:group-hover:pb-3">{title}</p>
+              <p className="text-h5 p-6 pb-0 text-white lg:pb-6 lg:group-hover:pb-3">{title}</p>
             )}
             {description && <p className="block lg:hidden lg:group-hover:block">{description}</p>}
           </div>

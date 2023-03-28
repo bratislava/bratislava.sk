@@ -7,8 +7,8 @@ import cx from 'classnames'
 import { useState } from 'react'
 import useSWR from 'swr'
 
-import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
+import ChevronDown from '@assets/images/chevron-down-thin.svg'
+import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { AccordionCard } from '../AccordionCard/AccordionCard'
 import {
   AdvancedAccordionDepartment,

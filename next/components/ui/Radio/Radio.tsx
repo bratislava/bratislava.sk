@@ -14,16 +14,22 @@ export const Radio = ({ className, id, title, ...rest }: RadioProps) => {
         'base-radio',
         className,
         cx({
-          'focus:outline-none focus:border-category-600 focus:border-opacity-100 hover:border-category-600 hover:border-opacity-100':
+          'hover:border-category-600 hover:border-opacity-100 focus:border-category-600 focus:border-opacity-100 focus:outline-none':
             !rest.checked,
-          'outline-none border-category-600 border-opacity-100': rest.checked,
-        })
+          'border-category-600 border-opacity-100 outline-none': rest.checked,
+        }),
       )}
     >
       <input id={id} className="hidden" type="radio" {...rest} />
-      <div className={cx('absolute w-6 h-6 left-9 rounded-full bg-category-600 transform -translate-x-1/2')} />
+      <div
+        className={cx(
+          'absolute left-9 h-6 w-6 -translate-x-1/2 transform rounded-full bg-category-600',
+        )}
+      />
       {rest.checked && (
-        <div className={cx('absolute w-3 h-3 left-9 rounded-full bg-white transform -translate-x-1/2')} />
+        <div
+          className={cx('absolute left-9 h-3 w-3 -translate-x-1/2 transform rounded-full bg-white')}
+        />
       )}
       {title}
     </label>

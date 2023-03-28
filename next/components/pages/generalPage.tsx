@@ -9,14 +9,7 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import {
-  Button,
-  FooterProps,
-  MenuMainItem,
-  PageHeader,
-  SectionContainer,
-} from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import { Button, FooterProps, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
@@ -26,7 +19,7 @@ import Head from 'next/head'
 import * as React from 'react'
 import { useIsClient } from 'usehooks-ts'
 
-import BasePageLayout from '../layouts/BasePageLayout'
+import PageLayout from '../layouts/PageLayout'
 import PageBreadcrumbs from '../molecules/PageBreadcrumbs'
 import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
@@ -43,11 +36,9 @@ export interface GeneralPageProps {
   pages: GeneralPageFragment
   footer: FooterProps
   children?: React.ReactNode
-  menuItems?: MenuMainItem[]
-  menus: MenuItem[]
 }
 
-const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -84,7 +75,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
       page.parentPage.data?.attributes.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
-    <BasePageLayout footer={footer} menuItemsOld={menuItems} menus={menus}>
+    <PageLayout footer={footer}>
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{
@@ -94,7 +85,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
       )}
       {/* Header */}
       <PageHeader
-        className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
+        className={cx('bg-cover', { 'mb-32 bg-cover md:mb-16 lg:mb-64': hasFeaturedBlogs })}
         color="var(--category-color-200)"
         transparentColor="var(--category-color-200--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
@@ -112,7 +103,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs crumbs={crumbs} />
             </div>
-            <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
+            <h1 className="text-h1 mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
             </h1>
 
@@ -153,7 +144,7 @@ const GeneralPage = ({ pages, footer, menuItems, menus }: GeneralPageProps) => {
       )} */}
 
       {shouldDisplayUkraineSupportChat && <DynamicChat />}
-    </BasePageLayout>
+    </PageLayout>
   )
 }
 

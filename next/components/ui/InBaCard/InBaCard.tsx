@@ -3,8 +3,8 @@ import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Panel } from '../Panel/Panel'
 
 export interface InBaCardProps {
@@ -26,7 +26,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
     <Panel
       overflowVisible
       className={cx(
-        'relative flex flex-col md:flex-row items-center',
+        'relative flex flex-col items-center md:flex-row',
         {
           'pt-24 md:pt-0': !!frontImage,
         },
@@ -36,8 +36,8 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
       {rearImage && (
         <Panel
           className={cx(
-            'absolute w-24 top-0 transform rotate-12 translate-x-1/2 translate-y-[-57%]',
-            'md:w-40 md:top-auto md:right-0 md:translate-x-[15%] md:translate-y-0',
+            'absolute top-0 w-24 translate-x-1/2 translate-y-[-57%] rotate-12 transform',
+            'md:top-auto md:right-0 md:w-40 md:translate-x-[15%] md:translate-y-0',
           )}
         >
           <Image src={rearImage} alt="inba" width="160" height="244" />
@@ -47,8 +47,8 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
       {frontImage && (
         <Panel
           className={cx(
-            'absolute w-32 top-0 transform rotate-[-9deg] translate-x-[-30%] translate-y-[-57%]',
-            'md:w-52 md:top-auto md:right-0 md:translate-x-[-45%] md:translate-y-0',
+            'absolute top-0 w-32 translate-x-[-30%] translate-y-[-57%] rotate-[-9deg] transform',
+            'md:top-auto md:right-0 md:w-52 md:translate-x-[-45%] md:translate-y-0',
           )}
         >
           <Image src={frontImage} alt="inba" width="211" height="329" />
@@ -57,14 +57,14 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
 
       <div
         className={cx(
-          'flex flex-col items-center text-center gap-4 px-6 pt-3 pb-8',
-          'md:items-start md:text-left md:pr-96 md:pl-12 md:py-8',
+          'flex flex-col items-center gap-4 px-6 pt-3 pb-8 text-center',
+          'md:items-start md:py-8 md:pr-96 md:pl-12 md:text-left',
         )}
       >
         <h2 className="text-h4">{title}</h2>
         <span className="text-p2">{content}</span>
         <UILink
-          className="group flex h-6 cursor-pointer items-center space-x-5 hover:text-main-600 underline after:absolute after:inset-0"
+          className="group flex h-6 cursor-pointer items-center space-x-5 underline after:absolute after:inset-0 hover:text-main-600"
           href={link ?? '#'}
         >
           <span className="text-p2-semibold">{t('readMore')}</span>

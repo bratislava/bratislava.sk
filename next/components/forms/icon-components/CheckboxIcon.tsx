@@ -9,26 +9,21 @@ interface SelectCheckboxProps {
 const CheckboxIcon = ({ checked, className }: SelectCheckboxProps) => {
   // STYLES
   const checkboxClassName = cx(
-    "rounded w-6 h-6 flex flex-col justify-center",
+    'rounded w-6 h-6 flex flex-col justify-center',
     {
-      "bg-gray-700": checked,
-      "border-2 border-gray-600": !checked
+      'bg-gray-700': checked,
+      'border-2 border-gray-600': !checked,
     },
-    className
+    className,
   )
 
-  const iconClassName = cx(
-    "m-auto",
-    {
-      "dropdown": className && className.split(" ").includes("dropdown")
-    }
-  )
+  const iconClassName = cx('m-auto', {
+    dropdown: className && className.split(' ').includes('dropdown'),
+  })
 
   // RENDER
   return (
-    <div className={checkboxClassName}>
-      { checked && <SelectedIcon className={iconClassName}/> }
-    </div>
+    <div className={checkboxClassName}>{checked && <SelectedIcon className={iconClassName} />}</div>
   )
 }
 

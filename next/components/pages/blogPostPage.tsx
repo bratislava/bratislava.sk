@@ -6,23 +6,20 @@
 /* eslint-disable react/no-danger */
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, MenuMainItem, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
-import { MenuItem } from '@bratislava/ui-bratislava/NavMenu/navMenuTypes'
+import { FooterProps, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { getNumericLocalDate } from '@utils/local-date'
 import { pageStyle } from '@utils/page'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import BasePageLayout from '../layouts/BasePageLayout'
+import PageLayout from '../layouts/PageLayout'
 import Sections from '../molecules/Sections'
 
 export interface GeneralPageProps {
   post: BlogPostFragment
   footer: FooterProps
   children?: React.ReactNode
-  menuItemsOld?: MenuMainItem[]
-  menus: MenuItem[]
 }
 
 const SocialMediaButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
@@ -38,7 +35,7 @@ const SocialMediaButton = ({ href, children }: { href: string; children: React.R
   return <button onClick={openSharePage}>{children}</button>
 }
 
-const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) => {
+const BlogPostPage = ({ post, footer }: GeneralPageProps) => {
   const [socialLink, setSocialLink] = React.useState('')
   React.useEffect(() => setSocialLink(window.location.href), [])
   const blogPost = post.data[0].attributes
@@ -48,7 +45,7 @@ const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) =
   const { t } = useTranslation()
 
   return (
-    <BasePageLayout footer={footer} menuItemsOld={menuItemsOld} menus={menus}>
+    <PageLayout footer={footer}>
       {pageCategory?.color && (
         <style
           dangerouslySetInnerHTML={{
@@ -121,7 +118,7 @@ const BlogPostPage = ({ post, footer, menuItemsOld, menus }: GeneralPageProps) =
           </div>
         </div>
       </SectionContainer>
-    </BasePageLayout>
+    </PageLayout>
   )
 }
 

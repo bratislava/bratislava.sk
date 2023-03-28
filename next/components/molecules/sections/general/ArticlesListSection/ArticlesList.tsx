@@ -163,7 +163,7 @@ const ArticlesList = ({
   return (
     <div>
       <div className="text-h2">{title}</div>
-      <div className="lg:grid-cols-3 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:mt-8 gap-8">
+      <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3">
         {data.map((article, index) => (
           <NewsCard
             key={index}

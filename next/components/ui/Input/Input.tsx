@@ -9,7 +9,8 @@ export const Input = ({
   className,
   hasError,
   ...props
-}: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & IProps) => (
+}: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
+  IProps) => (
   <input
     className={cx('base-input w-full', className, {
       'base-input--with-error': hasError,
