@@ -30,7 +30,7 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
     case 'showMoreLink':
       return (
         <li className="flex">
-          <NavigationMenu.Link asChild>
+          <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
             <Button variant="link-black" href={url} label={label} className="mt-2 font-medium" />
           </NavigationMenu.Link>
         </li>

@@ -19,7 +19,7 @@ export const WelcomeSection = ({ homepageHeader }: Props) => {
   const { menu } = useGeneralContext()
 
   const menus = useMemo(() => {
-    return getParsedMenus(menu, t('navMenuMore'))
+    return getParsedMenus(menu, t('NavMenu.more'))
   }, [menu, t])
 
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)

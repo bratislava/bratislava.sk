@@ -7,8 +7,9 @@ import MLink from '@components/forms/simple-components/MLink'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
 import { useNavMenuContext } from './NavMenu/navMenuContext'
@@ -23,10 +24,15 @@ interface MobileNavBarProps extends LanguageSelectProps {
 
 export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) => {
   const { t } = useTranslation(['common'])
+  const router = useRouter()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
   const otherLanguage = languageSelectProps.languages?.find((l) => l.key !== languageKey)
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [router.asPath, setMobileMenuOpen])
 
   return (
     <>

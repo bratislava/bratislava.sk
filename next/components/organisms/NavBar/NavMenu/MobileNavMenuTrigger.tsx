@@ -20,7 +20,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerLeave={(event) => event.preventDefault()}
         className="flex w-full"
       >
-        <div className="text-p2-medium flex h-full w-full items-center gap-2 hover:font-semibold">
+        <div className="text-p2-medium flex h-full w-full items-center gap-2">
           <div className="flex grow items-center gap-2">
             <Icon iconName={menuItem.icon} aria-hidden />
             <div>{menuItem.label}</div>

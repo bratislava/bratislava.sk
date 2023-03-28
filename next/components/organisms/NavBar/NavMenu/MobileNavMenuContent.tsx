@@ -2,6 +2,7 @@ import { ChevronLeftLarge } from '@assets/images'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
 import { getColorsVariables } from '@utils/page'
+import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import HorizontalDivider from './HorizontalDivider'
@@ -15,6 +16,7 @@ type NavMenuContentProps = {
 }
 
 const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps) => {
+  const { t } = useTranslation('common', { keyPrefix: 'NavMenu' })
   const { setMenuValue } = useNavMenuContext()
   const { items: sections, label: parentLabel } = menuItem
 
@@ -35,9 +37,8 @@ const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps
           <button
             type="button"
             onClick={() => setMenuValue('')}
-            className="-mt-2 flex w-full items-center gap-2 py-2"
-            // TODO translations
-            aria-label={`Späť na ${parentLabel}`}
+            className="-my-2 flex w-full items-center gap-2 py-2"
+            aria-label={t('aria.backTo', { backTo: parentLabel })}
           >
             <ChevronLeftLarge aria-hidden /> {parentLabel}
           </button>
