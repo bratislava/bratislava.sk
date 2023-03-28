@@ -1,5 +1,7 @@
 import { ChevronLeftLarge } from '@assets/images'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
+import { getColorsVariables } from '@utils/page'
 import React from 'react'
 
 import HorizontalDivider from './HorizontalDivider'
@@ -15,6 +17,9 @@ type NavMenuContentProps = {
 const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps) => {
   const { setMenuValue } = useNavMenuContext()
   const { items: sections, label: parentLabel } = menuItem
+
+  const category = transformIconToCategory(menuItem.icon)
+  const dividerColor = `rgb(var(${getColorsVariables(category).c400}))`
 
   return (
     <NavigationMenu.Content
@@ -38,7 +43,7 @@ const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps
           </button>
         </li>
 
-        <HorizontalDivider />
+        <HorizontalDivider color={dividerColor} />
 
         {/* eslint-disable react/no-array-index-key */}
         {sections.map((section, index) => {

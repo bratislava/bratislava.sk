@@ -62,14 +62,16 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
             })}
 
           {/* TODO replace by button, remove Dividers */}
-          {accountLink?.url && (
-            <>
-              <Divider />
-              <MLink variant="navBarHeader" href={accountLink.url} target="_blank">
-                {accountLink.label}
-              </MLink>
-              <Divider />
-            </>
+          {accountLink?.url ? (
+            <Button
+              size="sm"
+              onPress={() => window.open(accountLink.url ?? '', '_blank')}
+              variant="negative"
+              text={accountLink.label}
+              className="mb-30"
+            />
+          ) : (
+            <Divider />
           )}
 
           <MLink href={t('searchLink')} className="p-4 -mx-4">

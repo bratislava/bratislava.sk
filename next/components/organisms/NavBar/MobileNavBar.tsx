@@ -5,14 +5,13 @@ import { Brand } from '@bratislava/ui-bratislava'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import Button from '../../forms/simple-components/Button'
 import MLink from '../../forms/simple-components/MLink'
 import MobileNavMenu from './NavMenu/MobileNavMenu'
-import { useMobileNavMenu } from './NavMenu/useMobileNavMenu'
+import { useNavMenuContext } from './NavMenu/navMenuContext'
 
 const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`border-r h-6 ${className}`} />
@@ -24,15 +23,10 @@ interface MobileNavBarProps extends LanguageSelectProps {
 
 export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) => {
   const { t } = useTranslation(['common'])
-  const router = useRouter()
-  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useMobileNavMenu()
+  const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
 
   const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
   const otherLanguage = languageSelectProps.languages?.find((l) => l.key !== languageKey)
-
-  useEffect(() => {
-    closeMobileMenu()
-  }, [router.asPath])
 
   return (
     <>
@@ -63,11 +57,15 @@ export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBar
               </MLink>
               <Divider />
               {isMobileMenuOpen ? (
-                <button type="button" onClick={() => closeMobileMenu()} className="-mr-4 p-4">
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="-mr-4 p-4"
+                >
                   <CrossIcon />
                 </button>
               ) : (
-                <button type="button" onClick={() => openMobileMenu()} className="-mr-4 p-4">
+                <button type="button" onClick={() => setMobileMenuOpen(true)} className="-mr-4 p-4">
                   <Hamburger />
                 </button>
               )}

@@ -35,7 +35,6 @@ const NavBar = ({}: IProps) => {
           {/* TODO mobile header, NavBarHeader (= new component) renders only on desktop */}
           {/* TODO language change is overcomplicated */}
           <NavBarHeader
-            className=""
             onLanguageChange={handleLanguageChange}
             currentLanguage={locale}
             languages={[
