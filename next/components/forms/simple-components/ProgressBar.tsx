@@ -35,13 +35,13 @@ const ProgressBar = ({
     {},
   )
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex w-full flex-col">
       {label && <span {...labelProps}>{label}</span>}
       <div {...progressBarProps} className={progressBarStyleContainer}>
-        <div className={cx('flex-column flex items-center w-full h-2 bg-gray-200 rounded-full')}>
+        <div className={cx('flex-column flex h-2 w-full items-center rounded-full bg-gray-200')}>
           <div
             style={{ width: barWidth }}
-            className={cx('rounded-full h-2', {
+            className={cx('h-2 rounded-full', {
               'bg-gray-700': type === 'default',
               'bg-success-700': type === 'success',
             })}

@@ -31,7 +31,7 @@ const HomePageSearchField = ({
       <input
         id="name"
         type="text"
-        className="text-font h-12 w-full rounded-l-lg border-2 border-r-0 px-4 outline-none lg:h-14 focus:border-gray-700"
+        className="h-12 w-full rounded-l-lg border-2 border-r-0 px-4 text-font outline-none focus:border-gray-700 lg:h-14"
         onChange={(e) => setValue(e.target.value)}
         value={value}
         autoComplete="off"
@@ -40,7 +40,7 @@ const HomePageSearchField = ({
       {/* TODO: fix rounded corners even no class is added (discovered on iPhones) */}
       {/* quickfixed with negative left margin on button */}
       <Button
-        className="h-12 lg:h-14 rounded-l-none pl-4 pr-5 hover:bg-main-700 -ml-1"
+        className="-ml-1 h-12 rounded-l-none pl-4 pr-5 hover:bg-main-700 lg:h-14"
         variant="primary"
         onClick={onSearchPressed}
       >

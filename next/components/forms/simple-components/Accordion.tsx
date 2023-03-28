@@ -51,16 +51,16 @@ const Accordion = ({
         {icon && (
           <div
             className={cx('flex items-center justify-center', {
-              'w-6 h-6': accordionSize === 'sm' || accordionSize === 'xs',
-              'w-8 h-8': accordionSize === 'md',
-              'w-10 h-10': accordionSize === 'lg',
+              'h-6 w-6': accordionSize === 'sm' || accordionSize === 'xs',
+              'h-8 w-8': accordionSize === 'md',
+              'h-10 w-10': accordionSize === 'lg',
             })}
           >
             <PersonIcon
               className={cx('', {
-                'w-4 h-4': accordionSize === 'sm' || accordionSize === 'xs',
-                'w-5 h-5': accordionSize === 'md',
-                'w-6 h-6': accordionSize === 'lg',
+                'h-4 w-4': accordionSize === 'sm' || accordionSize === 'xs',
+                'h-5 w-5': accordionSize === 'md',
+                'h-6 w-6': accordionSize === 'lg',
               })}
             />
           </div>
@@ -85,7 +85,7 @@ const Accordion = ({
               className={cx('lg:font-semibold', {
                 'text-p-base': size === 'xs',
                 'text-h-base': size === 'sm',
-                'lg:text-h-md text-p-base': size === 'md',
+                'text-p-base lg:text-h-md': size === 'md',
                 'text-h-lg': size === 'lg',
               })}
             >
@@ -93,14 +93,14 @@ const Accordion = ({
             </div>
             <div
               className={cx('flex items-center justify-center', {
-                'w-10 h-10': accordionSize === 'lg',
-                'w-8 h-8': accordionSize === 'md',
-                'w-6 h-6': accordionSize === 'sm' || accordionSize === 'xs',
+                'h-10 w-10': accordionSize === 'lg',
+                'h-8 w-8': accordionSize === 'md',
+                'h-6 w-6': accordionSize === 'sm' || accordionSize === 'xs',
               })}
             >
               <ExpandMoreIcon
                 className={cx('', {
-                  'transform rotate-180': isActive,
+                  'rotate-180 transform': isActive,
                 })}
                 size={accordionSize}
               />

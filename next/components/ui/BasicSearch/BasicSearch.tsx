@@ -2,7 +2,7 @@
 import cx from 'classnames'
 import { Dispatch, SetStateAction } from 'react'
 
-import SearchIcon from '../../../assets/images/search-icon.svg'
+import SearchIcon from '@assets/images/search-icon.svg'
 import { Button } from '../Button/Button'
 
 export interface BasicSearchProps {
@@ -37,13 +37,13 @@ export const BasicSearch = ({
   }
 
   return (
-    <div className={cx('flex flex-col w-full', className)}>
+    <div className={cx('flex w-full flex-col', className)}>
       <div className="text-h4-medium scroll-mt-24 pb-3 lg:scroll-mt-48">{title}</div>
-      <div className="pb-6 flex">
+      <div className="flex pb-6">
         <input
           id="name"
           type="text"
-          className="text-p2 h-14 w-full lg:w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
+          className="text-p2 h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:w-[574px]"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -52,7 +52,7 @@ export const BasicSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="lg:flex h-14 hidden rounded-l-none px-6 shadow-none font-medium hover:bg-category-600 hover:text-white"
+          className="hidden h-14 rounded-l-none px-6 font-medium shadow-none hover:bg-category-600 hover:text-white lg:flex"
           variant="secondary-dark-text"
           onClick={handleSearch}
         >
@@ -61,7 +61,7 @@ export const BasicSearch = ({
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="lg:hidden h-14 rounded-l-none pr-6 shadow-none font-medium hover:bg-category-600 hover:text-white"
+          className="h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-category-600 hover:text-white lg:hidden"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

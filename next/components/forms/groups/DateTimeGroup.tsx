@@ -50,9 +50,9 @@ export const DateTimePicker = ({
   TimeValue,
 }: TDatePicker & TTimePicker) => {
   return (
-    <div className={cx('flex-col flex items-start')}>
-      <div className="flex lg:flex-row flex-col gap-4 items-end">
-        <div className={cx('flex flex-col w-[320px]')}>
+    <div className={cx('flex flex-col items-start')}>
+      <div className="flex flex-col items-end gap-4 lg:flex-row">
+        <div className={cx('flex w-[320px] flex-col')}>
           <DatePicker
             label={DateLabel}
             errorMessage={DateErrorMessage}
@@ -66,11 +66,11 @@ export const DateTimePicker = ({
             required={DateRequired}
           />
           {/* Custom render error messages for both fields at small screens */}
-          <div className={cx('flex flex-col lg:hidden block')}>
+          <div className={cx('block flex flex-col lg:hidden')}>
             <FieldErrorMessage errorMessage={DateErrorMessage} />
           </div>
         </div>
-        <div className={cx('w-[320px] flex flex-col gap-1')}>
+        <div className={cx('flex w-[320px] flex-col gap-1')}>
           <TimePicker
             errorMessage={TimeErrorMessage}
             disabled={TimeDisabled}
@@ -84,18 +84,18 @@ export const DateTimePicker = ({
             explicitOptional={TimeExplicitOptional}
           />
           {/* Custom render error messages for both fields at small screens */}
-          <div className={cx('flex flex-col lg:hidden block')}>
+          <div className={cx('block flex flex-col lg:hidden')}>
             <FieldErrorMessage errorMessage={TimeErrorMessage} />
           </div>
         </div>
       </div>
 
       {/* Custom render error messages for both fields */}
-      <div className="flex-row flex gap-4">
-        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+      <div className="flex flex-row gap-4">
+        <div className={cx('flex hidden flex-col lg:block lg:w-[320px]')}>
           <FieldErrorMessage errorMessage={DateErrorMessage} />
         </div>
-        <div className={cx('flex flex-col lg:block hidden lg:w-[320px]')}>
+        <div className={cx('flex hidden flex-col lg:block lg:w-[320px]')}>
           <FieldErrorMessage errorMessage={TimeErrorMessage} />
         </div>
       </div>

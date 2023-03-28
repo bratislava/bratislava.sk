@@ -8,12 +8,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { CommonLinkFragment, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, MenuMainItem } from '@bratislava/ui-bratislava'
+import { FooterProps } from '@bratislava/ui-bratislava'
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { isDefined } from '@utils/isDefined'
 import { pagePath, pageStyle } from '@utils/page'
-// import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -21,11 +20,9 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import { useIsClient } from 'usehooks-ts'
 
-import BasePageLayout from '../layouts/BasePageLayout'
+import PageLayout from '../layouts/PageLayout'
 import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
-
-// import RelatedBlogPosts from '../molecules/sections/homepage/RelatedBlogPosts'
 
 // error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
 // https://github.com/microsoft/BotFramework-WebChat/issues/4607
@@ -104,10 +101,9 @@ export interface GeneralPageProps {
   pages: GeneralPageFragment
   footer: FooterProps
   children?: React.ReactNode
-  menuItems?: MenuMainItem[]
 }
 
-const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -139,7 +135,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
           <meta name="description" content={page?.metaDiscription} />
         </Head>
       )}
-      <BasePageLayout footer={footer} menuItemsOld={menuItems}>
+      <PageLayout footer={footer}>
         {page?.pageCategory?.data?.attributes?.color && (
           <style
             dangerouslySetInnerHTML={{
@@ -171,7 +167,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       )} */}
 
         {shouldDisplayUkraineSupportChat && <DynamicChat />}
-      </BasePageLayout>
+      </PageLayout>
     </>
   )
 }

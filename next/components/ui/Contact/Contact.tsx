@@ -1,8 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import Email from '../../../assets/images/email2.svg'
-import Phone from '../../../assets/images/phone.svg'
+import Email from '@assets/images/email2.svg'
+import Phone from '@assets/images/phone.svg'
 
 export interface ContactProps {
   className?: string
@@ -49,14 +49,14 @@ export const Contact = ({
   return (
     <>
       {title && <h4 className="text-h4 mb-6 leading-[36px]">{title}</h4>}
-      <div className={cx(className, 'flex flex-col md:flex-row text-font items-center gap-3')}>
+      <div className={cx(className, 'flex flex-col items-center gap-3 text-font md:flex-row')}>
         {description && (
           <div
             className={cx('mb-6 md:mb-0', {
               'md:w-1/2': items,
             })}
           >
-            <div className={cx('flex flex-col h-full', { 'justify-center': !address })}>
+            <div className={cx('flex h-full flex-col', { 'justify-center': !address })}>
               {description && (
                 <UIMarkdown
                   className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
@@ -138,10 +138,10 @@ const ContactItem = ({
         <a
           href={href}
           className={cx(
-            'text-20-medium mt-8 px-6 py-3 border-2 rounded-lg shadow-sm whitespace-nowrap absolute bottom-0',
+            'text-20-medium absolute bottom-0 mt-8 whitespace-nowrap rounded-lg border-2 px-6 py-3 shadow-sm',
             {
-              'bg-category-600 border-category-600': linkVariant === 'primary',
-              'bg-category-200 border-category-200 text-white': linkVariant === 'secondary',
+              'border-category-600 bg-category-600': linkVariant === 'primary',
+              'border-category-200 bg-category-200 text-white': linkVariant === 'secondary',
               'text-black': linkVariant === 'primary',
             },
           )}

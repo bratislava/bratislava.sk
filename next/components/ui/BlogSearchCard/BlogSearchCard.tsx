@@ -3,7 +3,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
-import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
@@ -143,7 +143,7 @@ export const BlogSearchCard = ({
                 </div>
               )}
               <div className="flex">
-                <div className="text-20-semibold line-clamp-2 text-white">{title}</div>
+                <div className="text-20-semibold text-white line-clamp-2">{title}</div>
                 <VerticalCardButton
                   className="invisible shrink-0 group-hover:lg:visible"
                   size="medium"

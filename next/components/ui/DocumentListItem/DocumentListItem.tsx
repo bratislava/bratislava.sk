@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 
-import { ArrowRight, ChevronRight, Download } from '../../../assets/images'
+import { ArrowRight, ChevronRight, Download } from '@assets/images'
 import Button from '../Button/Button'
 
 interface DocumentListItemProps {

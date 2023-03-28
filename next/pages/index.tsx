@@ -12,15 +12,15 @@ import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineI
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
-import { parseFooter, parseMainMenu } from '@utils/page'
+import { parseFooter } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
-import HomepagePageLayout from '../components/layouts/HomepagePageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
+import PageContextProvider from '../components/layouts/PageContextProvider'
+import PageLayout from '../components/layouts/PageLayout'
 import { WelcomeSection } from '../components/molecules/sections/general/WelcomeSection'
 import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
@@ -37,8 +37,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
   const general = await client.General({ locale })
 
   const { homepage } = await client.Homepage({ locale })
-
-  const { pageCategories: mainMenu } = await client.MainMenu({ locale })
 
   const { footer } = await client.Footer({ locale })
 
@@ -112,7 +110,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
       footer,
       latestBlogposts: blogPosts,
       homepage,
-      mainMenu,
       page: {
         locale: ctx.locale,
         localizations: ['sk', 'en']
@@ -137,7 +134,6 @@ const Homepage = ({
   general,
   data,
   footer,
-  mainMenu,
   page,
   homepage,
   latestBlogposts,
@@ -151,17 +147,12 @@ const Homepage = ({
 
   const { posts } = data
 
-  const menuItemsOld = mainMenu ? parseMainMenu(mainMenu) : []
-
   // TODO: Change Image to img when Image handling changed
 
   return (
     <GeneralContextProvider general={general}>
-      <PageWrapper locale={page.locale} localizations={page.localizations} slug="">
-        <HomepagePageLayout
-          menuItemsOld={menuItemsOld}
-          footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
-        >
+      <PageContextProvider locale={page.locale} localizations={page.localizations} slug="">
+        <PageLayout footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}>
           {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
           <Head>
             <title>{homepage?.data?.attributes?.title}</title>
@@ -204,23 +195,23 @@ const Homepage = ({
 
           <Waves waveColor="var(--category-color-200)" wavePosition="top" />
 
-          <SectionContainer className="bg-category-200 relative py-8">
-            <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
+          <SectionContainer className="relative bg-category-200 py-8">
+            <h2 className="text-h1 pb-10 text-center xs:mt-8 lg:pb-20">{data.topNineTitle}</h2>
             <TopNine items={data.topNine as TopNineItemProps[]} />
           </SectionContainer>
 
           <Waves waveColor="var(--category-color-200)" wavePosition="bottom" />
 
           <SectionContainer>
-            <InBaCard className="mx-auto mt-40 md:mt-28 min-h-[200px] max-w-3xl" {...inba} />
+            <InBaCard className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28" {...inba} />
             <div className="hidden md:block md:h-20" />
 
             <FacebookPostsHomepageSection title="Bratislava na Facebooku" />
             {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
             {/* <NewsLetterSection className="mt-24" /> */}
           </SectionContainer>
-        </HomepagePageLayout>
-      </PageWrapper>
+        </PageLayout>
+      </PageContextProvider>
     </GeneralContextProvider>
   )
 }

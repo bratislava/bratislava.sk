@@ -85,7 +85,6 @@ query MainMenu($locale: I18NLocaleCode!) {
   }
 }
 
-
 fragment PageForMenuEntity on PageEntity {
   id
   attributes {

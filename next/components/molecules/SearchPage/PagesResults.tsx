@@ -25,7 +25,10 @@ const Pages = ({ data }: { data: SearchResponse<PageMeili>; filters: PagesFilter
 const DataWrapper = ({ filters }: { filters: PagesFilters }) => {
   const { t, i18n } = useTranslation('common')
 
-  const { data, error } = useSwr(getPagesSwrKey(filters, i18n.language), pagesFetcher(filters, i18n.language))
+  const { data, error } = useSwr(
+    getPagesSwrKey(filters, i18n.language),
+    pagesFetcher(filters, i18n.language),
+  )
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
     data,

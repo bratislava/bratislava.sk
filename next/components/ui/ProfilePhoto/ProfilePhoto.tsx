@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Button } from '../Button/Button'
 import { Field } from '../Field/Field'
 
@@ -11,6 +11,7 @@ export interface ProfilePhotoProps {
   profileImage?: File
   setProfileImage?: React.Dispatch<File> | undefined
 }
+
 // TODO Image Upload to DB
 export const ProfilePhoto = ({ className, profileImage, setProfileImage }: ProfilePhotoProps) => {
   const { t } = useTranslation()
@@ -34,7 +35,8 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
       </Field>
       <Field className="flex max-w-xs flex-col gap-4 md:mt-16 md:pt-1">
         <p className="text-p2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis viverra quis dui nisl.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis
+          viverra quis dui nisl.
         </p>
         <p className="text-p2">{t('photoMaxSize')}</p>
         <Button

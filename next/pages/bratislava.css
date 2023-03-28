@@ -145,8 +145,8 @@ body {
 }
 
 .base-input {
-  @apply appearance-none box-border inline-block border-3 px-6 py-0 text-font rounded-10 font-medium h-14;
-  @apply bg-white border-white focus:outline-none focus:border-category-600 hover:border-category-600;
+  @apply box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
+  @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
 }
 
 .base-input--with-error {
@@ -165,7 +165,7 @@ input:-webkit-autofill:active {
 }
 
 .w-fit-title::before {
-  @apply block font-bold h-0 overflow-hidden invisible;
+  @apply invisible block h-0 overflow-hidden font-bold;
   content: attr(title);
 }
 

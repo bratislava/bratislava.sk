@@ -83,8 +83,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const style = twMerge(
       'inline-flex items-center',
       isLinkVariant
-        ? 'underline underline-offset-4 focus-visible:outline-none'
-        : 'h-fit space-x-2 justify-center text-center align-middle focus:outline-none rounded-lg',
+        ? 'underline underline-offset-2'
+        : 'h-fit space-x-2 justify-center text-center align-middle rounded-lg',
       cx({
         'w-full': fullWidth,
         'w-fit': !fullWidth,
@@ -232,12 +232,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         >
           {!hrefIconHidden && isLinkVariant && (
             <span
-              className={cx('flex justify-center items-center', {
+              className={cx('flex items-center justify-center', {
                 'ml-2 h-6 w-6': size === 'lg',
-                'w-5 h-5 ml-1': size === 'sm',
+                'ml-1 h-5 w-5': size === 'sm',
               })}
             >
-              <ArrowRightIcon className="w-6 h-6" />
+              <ArrowRightIcon className="h-6 w-6" />
             </span>
           )}
         </MLink>
@@ -252,7 +252,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         form={form}
         {...buttonProps}
       >
-        <div className="justify-center flex items-center">
+        <div className="flex items-center justify-center">
           {startIcon && (
             <span
               className={cx({ 'mr-3 h-6 w-6': size === 'lg', 'mr-2.5 h-5 w-5': size === 'sm' })}
@@ -268,9 +268,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           )}
           {endIcon && (
             <span
-              className={cx('flex justify-center items-center', {
+              className={cx('flex items-center justify-center', {
                 'ml-3 h-6 w-6': size === 'lg',
-                'w-5 h-5 ml-2.5': size === 'sm',
+                'ml-2.5 h-5 w-5': size === 'sm',
               })}
             >
               {endIcon}

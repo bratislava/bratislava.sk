@@ -25,18 +25,18 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           passHref
-          className="hover:bg-main-100 px-4 py-2"
+          className="px-4 py-2 hover:bg-main-100"
         >
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <div>{title}</div>
-            <ChevronRightRounded className="scale-[0.9] ml-4 shrink-0" />
+            <ChevronRightRounded className="ml-4 shrink-0 scale-[0.9]" />
           </div>
         </Link>
       ))}
       <Link
         href={`${t('searchLink')}?keyword=${searchValue}`}
         passHref
-        className="focus:bg-main-100 hover:bg-main-100 font-semibold px-4 py-2"
+        className="px-4 py-2 font-semibold hover:bg-main-100 focus:bg-main-100"
       >
         {t('allResults')}
       </Link>

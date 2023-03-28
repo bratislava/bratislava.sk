@@ -2,7 +2,8 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
-import { NavMenuContextProvider } from '@bratislava/ui-bratislava/NavMenu/navMenuContext'
+import { HomepageMarkdown } from '@components/atoms/HomepageMarkdown'
+import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -13,7 +14,6 @@ import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
 import ContentImage from '../components/atoms/ContentImage'
-import { HomepageMarkdown } from '../components/atoms/HomepageMarkdown'
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
 
 const inter = Inter({
@@ -58,7 +58,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <QueryParamProvider adapter={NextAdapter}>
             <SSRProvider>
               <NavMenuContextProvider>
-                <div className={`${inter.variable} font-sans`}>
+                <div id="root" className={`${inter.variable} font-sans`}>
                   <Component {...pageProps} />
                 </div>
               </NavMenuContextProvider>

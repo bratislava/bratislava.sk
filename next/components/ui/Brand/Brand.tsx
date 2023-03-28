@@ -2,7 +2,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import React from 'react'
 
-import BALogo from '../../../assets/images/BALogo.svg'
+import BALogo from '@assets/images/BALogo.svg'
 
 export interface BrandProps {
   className?: string

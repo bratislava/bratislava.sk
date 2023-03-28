@@ -3,8 +3,8 @@ import cx from 'classnames'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'
 
-import ChevronRight from '../../../assets/images/chevron-right.svg'
-import CloseOutline from '../../../assets/images/close-outline.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
+import CloseOutline from '@assets/images/close-outline.svg'
 import { ArrowRight } from '../images'
 
 const PADDING = 20 // py-5
@@ -61,12 +61,12 @@ export const Bookmark = ({
     <div
       className={cx(
         className,
-        'flex rounded-l-lg overflow-hidden transition-all duration-500 ease-in-out',
+        'flex overflow-hidden rounded-l-lg transition-all duration-500 ease-in-out',
         {
           'bg-[#7CCEF2] text-font': variant === 'blue',
           'bg-main-600 text-white': variant === 'red',
           'w-[700px]': isOpen,
-          'w-[70px] ml-[630px]': !isOpen,
+          'ml-[630px] w-[70px]': !isOpen,
         },
       )}
       style={{
@@ -75,7 +75,7 @@ export const Bookmark = ({
       ref={modelref}
     >
       <button
-        className={cx('w-[70px] text-20-semibold', {
+        className={cx('text-20-semibold w-[70px]', {
           'bg-[#66BDE3]': variant === 'blue',
           'bg-main-700': variant === 'red',
         })}
@@ -102,7 +102,7 @@ export const Bookmark = ({
             />
           ) : (
             <div
-              className={cx('w-24 h-24 rounded-full', {
+              className={cx('h-24 w-24 rounded-full', {
                 'bg-font': variant === 'blue',
                 'bg-white': variant === 'red',
               })}

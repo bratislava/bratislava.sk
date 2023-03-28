@@ -63,7 +63,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
   return (
     <section
       ref={ref}
-      className="flex items-center w-full flex-row flex-wrap gap-2 py-2 sm:py-2.5 sm:pl-4 pl-3"
+      className="flex w-full flex-row flex-wrap items-center gap-2 py-2 pl-3 sm:py-2.5 sm:pl-4"
       data-value={value}
     >
       {
@@ -87,7 +87,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input
         ref={filterRef}
-        className="text-16 max-w-[80px] xs:max-w-none border-0 outline-none"
+        className="text-16 max-w-[80px] border-0 outline-none xs:max-w-none"
         type="text"
         size={getInputSize()}
         value={filter}

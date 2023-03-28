@@ -3,7 +3,7 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import Calendar from '../../../assets/images/calendar.svg'
+import Calendar from '@assets/images/calendar.svg'
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
 
 export type DateSelectProps = Omit<
@@ -16,27 +16,47 @@ export type DateSelectProps = Omit<
   showShorcuts?: boolean
 }
 
-export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }: DateSelectProps) => {
+export const DateSelect = ({
+  className,
+  value,
+  onChange,
+  showShorcuts,
+  ...rest
+}: DateSelectProps) => {
   const { t } = useTranslation()
 
   const selectedDate = LocalDate.parse(value)
-  const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+  const MONTHS = [
+    'jan',
+    'feb',
+    'mar',
+    'apr',
+    'may',
+    'jun',
+    'jul',
+    'aug',
+    'sep',
+    'oct',
+    'nov',
+    'dec',
+  ]
 
   const showDate = selectedDate >= LocalDate.now().plusDays(5) || selectedDate < LocalDate.now()
 
-  const showMobileDate = selectedDate >= LocalDate.now().plusDays(3) || selectedDate < LocalDate.now()
+  const showMobileDate =
+    selectedDate >= LocalDate.now().plusDays(3) || selectedDate < LocalDate.now()
   return (
-    <div className={cx('flex md:inline-flex rounded-lg overflow-hidden h-16', className)}>
+    <div className={cx('flex h-16 overflow-hidden rounded-lg md:inline-flex', className)}>
       {showShorcuts && <DateSelectShortcuts value={value} onClick={onChange} />}
       <label className="relative flex flex-1 items-center text-right text-category-600">
         <div
           className={cx(
-            'absolute md:bg-category-200 right-0 sm:right-5 w-full pointer-events-none z-10 flex items-center justify-center md:right-auto md:w-auto',
+            'pointer-events-none absolute right-0 z-10 flex w-full items-center justify-center sm:right-5 md:right-auto md:w-auto md:bg-category-200',
             {
               'hidden md:block': showMobileDate,
               'md:left-7': showDate,
               'md:left-12': !showDate,
-            }
+            },
           )}
         >
           <Calendar />
@@ -44,7 +64,7 @@ export const DateSelect = ({ className, value, onChange, showShorcuts, ...rest }
 
         {/* Mobile */}
         {showMobileDate && (
-          <div className="pointer-events-none absolute w-full text-center text-20 sm:hidden">
+          <div className="text-20 pointer-events-none absolute w-full text-center sm:hidden">
             {`${selectedDate.dayOfMonth()}.`} {t(MONTHS[selectedDate.monthValue() - 1])}
           </div>
         )}

@@ -2,7 +2,7 @@ import { LocalDate } from '@js-joda/core'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import Calendar from '../../../assets/images/calendar-form.svg'
+import Calendar from '@assets/images/calendar-form.svg'
 import { Button } from '../Button/Button'
 import { CheckBox } from '../CheckBox/CheckBox'
 import { Field } from '../Field/Field'

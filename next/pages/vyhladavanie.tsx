@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import {
-  GeneralQuery,
-  MainMenuItemFragment,
-  PageBySlugQuery,
-} from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { pageStyle, parseFooter, parseMainMenu } from '@utils/page'
+import { pageStyle, parseFooter } from '@utils/page'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -16,8 +12,8 @@ import { useEffect, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import BasePageLayout from '../components/layouts/BasePageLayout'
-import PageWrapper from '../components/layouts/PageWrapper'
+import PageContextProvider from '../components/layouts/PageContextProvider'
+import PageLayout from '../components/layouts/PageLayout'
 import BlogPostsResults from '../components/molecules/SearchPage/BlogPostsResults'
 import PagesResults from '../components/molecules/SearchPage/PagesResults'
 import UsersResults from '../components/molecules/SearchPage/UsersResults'
@@ -25,19 +21,18 @@ import UsersResults from '../components/molecules/SearchPage/UsersResults'
 type PageProps = {
   general: GeneralQuery
   footer: PageBySlugQuery['footer']
-  mainMenu: MainMenuItemFragment
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
-  const { footer, mainMenu } = await client.PageBySlug({
+  const { footer } = await client.PageBySlug({
     slug: 'test',
     locale,
   })
 
   const general = await client.General({ locale })
 
-  if (!footer || !mainMenu) {
+  if (!footer) {
     return { notFound: true }
   }
 
@@ -45,17 +40,14 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
     props: {
       general,
       footer,
-      mainMenu,
       ...(await serverSideTranslations(locale, ['common', 'footer'])),
     },
     revalidate: 10,
   }
 }
 
-const Search = ({ general, footer, mainMenu }: PageProps) => {
+const Search = ({ general, footer }: PageProps) => {
   const { t, i18n } = useTranslation('common')
-
-  const menuItems = mainMenu ? parseMainMenu(mainMenu) : []
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState<string>('')
@@ -86,7 +78,7 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <PageWrapper
+      <PageContextProvider
         locale={i18n.language}
         localizations={[
           { locale: 'sk', slug: 'vyhladavanie' },
@@ -94,10 +86,7 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
         ]}
         slug="/vyhladavanie"
       >
-        <BasePageLayout
-          footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}
-          menuItemsOld={menuItems}
-        >
+        <PageLayout footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}>
           <style
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
@@ -105,7 +94,7 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
             }}
           />
           <SectionContainer>
-            <div className="md:pt-18 flex w-full flex-col gap-y-14 pt-14 lg:gap-y-20">
+            <div className="flex w-full flex-col gap-y-14 pt-14 md:pt-18 lg:gap-y-20">
               <AdvancedSearch
                 placeholder={t('enterKeyword')}
                 title={t('searching')}
@@ -125,8 +114,8 @@ const Search = ({ general, footer, mainMenu }: PageProps) => {
               {/* <NewsLetterSection /> */}
             </div>
           </SectionContainer>
-        </BasePageLayout>
-      </PageWrapper>
+        </PageLayout>
+      </PageContextProvider>
     </GeneralContextProvider>
   )
 }
