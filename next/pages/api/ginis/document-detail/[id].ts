@@ -1,5 +1,4 @@
 // @ts-strict-ignore
-import { withSentry } from '@sentry/nextjs'
 import axios, { AxiosRequestConfig } from 'axios'
 import { ResponseGinisBodyDocumentDetail } from 'backend/dtos/ginis/api-data.dto'
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -22,23 +21,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     }
     const xml = `
       <s:Envelope
-      xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
-      xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      xmlns:s='http://schemas.xmlsoap.org/soap/envelope/'
+      xmlns:u='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd'>
       <s:Header>
-        <o:Security s:mustUnderstand="1"
-          xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-          <o:UsernameToken u:Id="uuid-ea5d8d3d-df90-4b69-b034-9026f34a3f21-1">
+        <o:Security s:mustUnderstand='1'
+          xmlns:o='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd'>
+          <o:UsernameToken u:Id='uuid-ea5d8d3d-df90-4b69-b034-9026f34a3f21-1'>
             <o:Username>${process.env.GINIS_USERNAME}</o:Username>
-            <o:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">${process.env.GINIS_PASSWORD}</o:Password>
+            <o:Password Type='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText'>${process.env.GINIS_PASSWORD}</o:Password>
           </o:UsernameToken>
         </o:Security>
       </s:Header>
       <s:Body>
         <Detail-dokumentu
-          xmlns="http://www.gordic.cz/svc/xrg-ude/v_1.0.0.0">
+          xmlns='http://www.gordic.cz/svc/xrg-ude/v_1.0.0.0'>
           <requestXml>
             <Xrg
-              xmlns="http://www.gordic.cz/xrg/ude/detail-dokumentu/request/v_1.0.0.0">
+              xmlns='http://www.gordic.cz/xrg/ude/detail-dokumentu/request/v_1.0.0.0'>
               <Detail-dokumentu>
                 <Id-zaznamu>${parsedId}</Id-zaznamu>
               </Detail-dokumentu>
@@ -71,11 +70,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     const documentDetail =
       response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg[
         'Detail-dokumentu'
-      ]
+        ]
     const documentFiles =
       response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg[
         'Soubory-dokumentu'
-      ]
+        ]
     if (Array.isArray(documentFiles)) {
       result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': documentFiles }
     } else if (typeof documentFiles === 'object') {
@@ -90,4 +89,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   return res.json(result)
 }
 
-export default withSentry(handler)
+export default handler

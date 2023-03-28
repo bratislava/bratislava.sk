@@ -12,7 +12,6 @@
     "lint": "eslint components pages utils backend",
     "lint:fix": "yarn lint --fix",
     "gen": "graphql-codegen && prettier --write ./graphql/index.ts",
-    "sentry-cli": "sentry-cli",
     "prettier": "prettier --write .",
     "fix-botframework": "yarn --cwd ./node_modules/p-defer-es5 postinstall && yarn --cwd ./node_modules/abort-controller-es5 postinstall && yarn --cwd ./node_modules/markdown-it-attrs-es5 postinstall",
     "postinstall": "yarn fix-botframework"
@@ -21,7 +20,6 @@
     "@azure/msal-node": "^1.12.0",
     "@js-joda/core": "5.2.0",
     "@radix-ui/react-navigation-menu": "^1.1.2",
-    "@sentry/nextjs": "7.7.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/minio": "^7.0.14",
     "@types/uuid": "^9.0.0",

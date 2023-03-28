@@ -1,5 +1,4 @@
 // @ts-strict-ignore
-import { withSentry } from '@sentry/nextjs'
 import {
   getParsedUDEDocumentsList,
   mockedParsedDocuments,
@@ -17,4 +16,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.json(latestOfficialBoard)
 }
 
-export default withSentry(handler)
+export default handler
