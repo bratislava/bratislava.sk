@@ -31,7 +31,7 @@ const Chat = () => {
   return (
     <>
       <div
-        className="floating-button text-white"
+        className="bottom-6 fixed z-[9999] h-14 w-14 flex justify-center items-center bg-category-600 cursor-pointer rounded-[50%] left-6 text-white"
         onClick={() => setShowChat((currentState) => !currentState)}
         onKeyDown={() => setShowChat((currentState) => !currentState)}
       >

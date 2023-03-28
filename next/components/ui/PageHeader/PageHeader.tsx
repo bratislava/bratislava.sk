@@ -1,71 +1,92 @@
-import cx from 'classnames'
-import React, { useEffect, useState } from 'react'
-import { useWindowSize } from 'rooks'
+import { Waves } from '@bratislava/ui-bratislava'
+import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
+import Image from 'next/image'
+import React, { PropsWithChildren } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-import { Waves } from '../Waves/Waves'
+import Button from '../../forms/simple-components/Button'
 
-export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  color: string
-  transparentColor: string
-  transparentColorMobile?: string
-  imageSrc: string
-  smallScreenBreakPoint?: number
+type PageHeaderButton = {
+  label: string
+  path: string | null
 }
 
-// TODO isn't ideal as we're just referencing tailwind config value - good enough for most uses
-const DEFAULT_SMALL_SCREEN_BREAK_POINT = 768
+type PageHeaderProps = {
+  title?: string | null
+  subtext?: string | null
+  buttons?: PageHeaderButton[] | null
+  tag?: string | null
+  className?: string | null
+  imageSrc?: string | null
+} & BreadcrumbsProps
 
-export const PageHeader = ({
+/**
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=888%3A3162&t=7uti0MQv3SyaK3Tk-4
+ */
+const PageHeader = ({
+  title,
+  subtext,
+  breadcrumbs,
+  buttons,
+  imageSrc,
+  tag,
   className,
   children,
-  color,
-  transparentColor,
-  transparentColorMobile,
-  imageSrc,
-  smallScreenBreakPoint = DEFAULT_SMALL_SCREEN_BREAK_POINT,
-  ...rest
-}: PageHeaderProps) => {
-  const [backgroundStyle, setBackgroundStyle] = useState<string[]>([])
-  const { innerWidth } = useWindowSize()
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Client-side-only code
-      // TODO update the breakpoints for non-tax pages
-      const newBackgroundStyle = []
-      if (color && imageSrc)
-        newBackgroundStyle.push(
-          `linear-gradient(${innerWidth >= smallScreenBreakPoint ? '90deg' : '180deg'}, ${color}, ${
-            innerWidth >= smallScreenBreakPoint
-              ? `${color}, ${transparentColor})`
-              : `${transparentColorMobile ?? transparentColor})`
-          }`,
-        )
-      if (imageSrc)
-        newBackgroundStyle.push(
-          `url(${imageSrc}) right ${
-            innerWidth >= smallScreenBreakPoint ? 'center' : 'top/160%'
-          } no-repeat`,
-        )
-      if (color) newBackgroundStyle.push(color)
-
-      setBackgroundStyle(newBackgroundStyle)
-    }
-  }, [imageSrc, color, innerWidth, transparentColor, smallScreenBreakPoint])
+}: PropsWithChildren<PageHeaderProps>) => {
   return (
-    <div
-      // className={className}
-      className={cx(className, 'header-main-bg bg-cover')}
-      style={{
-        boxSizing: 'border-box',
-        backgroundSize: '100%',
-        background:
-          backgroundStyle.length > 0 ? backgroundStyle.join(', ') : 'var(--category-color-200)',
-      }}
-      {...rest}
-    >
-      {children}
-      <Waves wavePosition="top" waveColor="white" />
+    <div className={twMerge('bg-category-200 relative', className)}>
+      {imageSrc && (
+        <div className="absolute top-0 right-0 w-[350px] lg:w-[750px] h-full hidden md:block">
+          <Image
+            src={imageSrc}
+            alt=""
+            style={{
+              WebkitMaskImage:
+                '-webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), color-stop(50%, rgba(0,0,0,1)), to(rgba(0,0,0,1)))',
+              maskImage:
+                'linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 50%, rgba(0,0,0,1))',
+            }}
+            sizes="100vw"
+            fill
+            className="object-cover w-full h-full pointer-events-none"
+          />
+        </div>
+      )}
+      <div className="px-8">
+        <div className="flex flex-col max-w-screen-lg mx-auto relative">
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+          <div className="gap-y-4 lg:gap-y-6 flex flex-col mt-3 lg:mt-6 mb-6 lg:mb-10">
+            {tag && (
+              <span className="text-p2-medium inline-block rounded bg-category-700 px-3 py-1 text-white self-start">
+                {tag}
+              </span>
+            )}
+            {(title || subtext) && (
+              <div className="gap-y-1 lg:gap-y-4 flex flex-col max-w-[800px]">
+                {title && <h1 className="text-h1">{title}</h1>}
+                {subtext && <p>{subtext}</p>}
+              </div>
+            )}
+            {buttons && buttons.length > 0 && (
+              <div className="gap-2 lg:gap-3 flex sm:flex-row flex-col max-w-[800px]">
+                {buttons.map((button, index) => (
+                  <Button
+                    key={index}
+                    href={button.path ?? '#'}
+                    label={button.label}
+                    variant={index === 0 ? 'category' : 'category-outline'}
+                    size="sm"
+                    className="sm:w-fit w-full"
+                  />
+                ))}
+              </div>
+            )}
+            {children && <div className="empty:hidden">{children}</div>}
+          </div>
+        </div>
+      </div>
+      {/* Must be relative to cover up the image. */}
+      <Waves wavePosition="top" waveColor="white" className="relative" />
     </div>
   )
 }

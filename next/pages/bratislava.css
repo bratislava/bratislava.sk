@@ -192,22 +192,6 @@ input[type='number']::-webkit-outer-spin-button {
   display: none;
 }
 
-.floating-button {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  z-index: 9999;
-  height: 56px;
-  width: 56px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--category-color-600);
-  border-radius: 50%;
-  color: #333333;
-  cursor: pointer;
-}
-
 /* styles for chatbot START */
 .webchat {
   position: fixed;
@@ -232,13 +216,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .webchat__bubble__content {
   border-radius: 20px !important;
-}
-
-.floating-button.hide-on-click svg:first-child {
-  display: block;
-}
-.floating-button.hide-on-click svg:last-child {
-  display: none;
 }
 
 @media (max-width: 768px) {
