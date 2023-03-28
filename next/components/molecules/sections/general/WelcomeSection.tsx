@@ -1,6 +1,7 @@
 import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
+import { useGeneralContext } from '@utils/generalContext'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
