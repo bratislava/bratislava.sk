@@ -136,6 +136,8 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
       attributes {
         url
         alternativeText
+        width
+        height
       }
     }
   }

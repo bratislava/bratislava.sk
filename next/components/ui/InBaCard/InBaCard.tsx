@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -66,7 +65,7 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
         <span className="text-p2">{content}</span>
         <UILink
           className="group flex h-6 cursor-pointer items-center space-x-5 underline after:absolute after:inset-0 hover:text-main-600"
-          href={link}
+          href={link ?? '#'}
         >
           <span className="text-p2-semibold">{t('readMore')}</span>
           <span className="group-hover:hidden">

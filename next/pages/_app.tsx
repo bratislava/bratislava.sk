@@ -13,7 +13,6 @@ import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
-import ContentImage from '../components/atoms/ContentImage'
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
 
 const inter = Inter({
@@ -44,7 +43,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               </Link>
             )
           },
-          Image: ({ alt, src, shadow }) => <ContentImage alt={alt} src={src} shadow={shadow} />,
           Markdown: ({ className, content, numericalList }) => (
             <HomepageMarkdown
               className={className}
