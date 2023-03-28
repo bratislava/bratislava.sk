@@ -52,14 +52,14 @@ module.exports = {
     // https://github.com/jsx-eslint/eslint-plugin-react/issues/2584#issuecomment-1191175244
     'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
     // Solve warning "Promise-returning function provided to attribute where a void return was expected."
-    '@typescript-eslint/no-misused-promises': [
-      2,
-      {
-        checksVoidReturn: {
-          attributes: false,
-        },
-      },
-    ],
+    // '@typescript-eslint/no-misused-promises': [
+    //   2,
+    //   {
+    //     checksVoidReturn: {
+    //       attributes: false,
+    //     },
+    //   },
+    // ],
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }
