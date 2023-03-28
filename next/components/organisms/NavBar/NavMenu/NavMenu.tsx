@@ -9,13 +9,13 @@ import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
 
 const NavMenu = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common', { keyPrefix: 'NavMenu' })
   const router = useRouter()
 
   const { menu } = useGeneralContext()
 
   const menus = useMemo(() => {
-    return getParsedMenus(menu, t('navMenuMore'))
+    return getParsedMenus(menu, t('more'))
   }, [menu, t])
 
   const { menuValue, setMenuValue } = useNavMenuContext()
@@ -28,7 +28,7 @@ const NavMenu = () => {
     <NavigationMenu.Root
       value={menuValue}
       onValueChange={setMenuValue}
-      aria-label={t('navAriaLabel')}
+      aria-label={t('NavMenu.aria.navMenuLabel')}
       // to re-enable pointer events when menu is open and whole page has pointer events disabled
       className="pointer-events-auto"
     >

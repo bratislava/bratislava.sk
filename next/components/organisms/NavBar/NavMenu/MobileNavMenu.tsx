@@ -15,7 +15,7 @@ import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
 const MobileNavMenu = () => {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common', { keyPrefix: 'NavMenu' })
   const { height } = useWindowSize()
   const heightWithoutHeader = `calc(${height}px - 14*4px)`
 
@@ -24,7 +24,7 @@ const MobileNavMenu = () => {
   const { links, accountLink } = header ?? {}
 
   const menus = useMemo(() => {
-    return getParsedMenus(generalMenu, t('navMenuMore'))
+    return getParsedMenus(generalMenu, t('more'))
   }, [generalMenu, t])
 
   const { menuValue, setMenuValue, isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
@@ -51,7 +51,7 @@ const MobileNavMenu = () => {
       <NavigationMenu.Root
         value={menuValue}
         onValueChange={setMenuValue}
-        aria-label={t('navAriaLabel')}
+        aria-label={t('aria.navMenuLabel')}
       >
         <NavigationMenu.List className="flex flex-col gap-2">
           {menus.map((menu, index) => (
@@ -94,7 +94,6 @@ const MobileNavMenu = () => {
                     onPress={() => window.open(accountLink.url ?? '', '_blank')}
                     variant="negative"
                     text={accountLink.label}
-                    className="mb-30"
                   />
                 </NavigationMenu.Link>
               </li>
