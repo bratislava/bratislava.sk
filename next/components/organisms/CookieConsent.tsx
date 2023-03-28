@@ -24,7 +24,7 @@ export const CookieConsent = ({ pageColor }: IProps) => {
           {/* no consent needed for plausible - always load it after page is interactive */}
           <Script
             strategy="afterInteractive"
-            data-domain="nova.bratislava.sk"
+            data-domain="bratislava.sk"
             src="https://plausible.io/js/plausible.js"
           />
           {consents?.statistics ? (
