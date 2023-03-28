@@ -36,14 +36,14 @@ const getBreadcrumbs = (page: GeneralPageFragment) => {
   if (!current) {
     return [] as Breadcrumb[]
   }
-  let parentPage = current?.attributes.parentPage
+  let parentPage = current?.attributes?.parentPage
   const breadcrumbs: Breadcrumb[] = [
     {
       title: current?.attributes?.title,
       path: null,
     },
   ]
-  while (parentPage.data?.attributes) {
+  while (parentPage?.data?.attributes) {
     breadcrumbs.push({
       title: parentPage.data?.attributes?.title,
       path: parentPage.data?.attributes?.slug,
