@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import ChevronRight from '../assets/images/chevron-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {

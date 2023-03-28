@@ -1,7 +1,7 @@
 import cx from 'classnames'
 
-import Image1 from '../../../../assets/images/inBa1.svg'
-import Image2 from '../../../../assets/images/inBa2.svg'
+import Image1 from '@assets/images/inBa1.svg'
+import Image2 from '@assets/images/inBa2.svg'
 import { InBaCard, InBaCardProps } from '../../InBaCard/InBaCard'
 
 export interface InBaProps {

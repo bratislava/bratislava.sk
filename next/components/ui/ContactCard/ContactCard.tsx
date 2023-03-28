@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import ContactImage from '../../../assets/images/contact.svg'
+import ContactImage from '@assets/images/contact.svg'
 import { Button } from '../Button/Button'
 
 export interface ContactCardProps {

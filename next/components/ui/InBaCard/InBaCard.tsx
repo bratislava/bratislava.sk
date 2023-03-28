@@ -4,8 +4,8 @@ import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Panel } from '../Panel/Panel'
 
 export interface InBaCardProps {

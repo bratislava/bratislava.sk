@@ -3,7 +3,7 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
-import Calendar from '../../../assets/images/calendar.svg'
+import Calendar from '@assets/images/calendar.svg'
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
 
 export type DateSelectProps = Omit<

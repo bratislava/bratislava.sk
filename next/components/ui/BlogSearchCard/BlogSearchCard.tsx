@@ -2,7 +2,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 

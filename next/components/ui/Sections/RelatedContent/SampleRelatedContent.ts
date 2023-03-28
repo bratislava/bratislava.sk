@@ -1,5 +1,5 @@
-import NewsImage from '../../../../assets/images/sample-news-image.jpeg'
-import NewsImage2 from '../../../../assets/images/sample-news-image-2.jpeg'
+import NewsImage from '@assets/images/sample-news-image.jpeg'
+import NewsImage2 from '@assets/images/sample-news-image-2.jpeg'
 
 // NewsImage can be loaded as {src: '...'} or '...', depending on configuration (next vs storybook)
 const img1 = NewsImage as any

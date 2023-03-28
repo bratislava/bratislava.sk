@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import { Download } from '../../../assets/images'
+import { Download } from '@assets/images'
 import { Panel } from '../Panel/Panel'
 
 export interface DownloadCardProps {

@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-import SearchIcon from '../../../assets/images/search-icon.svg'
+import SearchIcon from '@assets/images/search-icon.svg'
 import { Input } from '../Input/Input'
 
 interface IProps

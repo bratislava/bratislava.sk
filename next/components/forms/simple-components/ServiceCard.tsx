@@ -2,7 +2,7 @@ import cx from 'classnames'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 
-import CircleArrowRight from '../../../assets/images/circle-arrow-right.svg'
+import CircleArrowRight from '../@assets/images/circle-arrow-right.svg'
 
 type ServiceCardBase = {
   title: string

@@ -4,8 +4,8 @@ import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { FormEvent } from 'react'
 
-import MinusIcon from '../../../../../assets/images/minus.svg'
-import PlusIcon from '../../../../../assets/images/plus.svg'
+import MinusIcon from '@assets/images/minus.svg'
+import PlusIcon from '@assets/images/plus.svg'
 
 interface IProps {
   className?: string

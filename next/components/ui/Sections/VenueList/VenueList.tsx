@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
 
-import VenueImg from '../../../../assets/images/news.svg'
+import VenueImg from '@assets/images/news.svg'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
 import { Venue, VenueProps } from '../../Venue/Venue'
 

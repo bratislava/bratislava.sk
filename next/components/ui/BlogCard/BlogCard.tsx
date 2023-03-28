@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Card } from '../Card/Card'
 
 export interface BlogCardProps {

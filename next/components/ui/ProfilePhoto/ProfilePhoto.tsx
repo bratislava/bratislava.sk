@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import ChevronRight from '../../../assets/images/chevron-right.svg'
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Button } from '../Button/Button'
 import { Field } from '../Field/Field'
 
@@ -11,6 +11,7 @@ export interface ProfilePhotoProps {
   profileImage?: File
   setProfileImage?: React.Dispatch<File> | undefined
 }
+
 // TODO Image Upload to DB
 export const ProfilePhoto = ({ className, profileImage, setProfileImage }: ProfilePhotoProps) => {
   const { t } = useTranslation()

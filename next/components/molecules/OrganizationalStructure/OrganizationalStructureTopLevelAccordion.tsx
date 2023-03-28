@@ -3,8 +3,8 @@ import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
-import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
+import ChevronDown from '../@assets/images/chevron-down-thin.svg'
+import ChevronDownSmall from '../@assets/images/chevron-down-thin-small.svg'
 import { OrganizationalStructureAccordion } from './OrganizationalStructureAccordion'
 import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
 

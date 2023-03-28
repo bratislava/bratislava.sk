@@ -4,7 +4,7 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-import { ArrowRight, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 

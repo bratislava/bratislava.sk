@@ -2,7 +2,7 @@
 import cx from 'classnames'
 import { Dispatch, SetStateAction } from 'react'
 
-import SearchIcon from '../../../assets/images/search-icon.svg'
+import SearchIcon from '@assets/images/search-icon.svg'
 import { Button } from '../Button/Button'
 
 export interface BasicSearchProps {

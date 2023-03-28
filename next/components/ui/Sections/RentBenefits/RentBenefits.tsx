@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useState } from 'react'
 
-import RentImage from '../../../../assets/images/rent.svg'
+import RentImage from '@assets/images/rent.svg'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { Rent, RentProps } from '../../Rent/Rent'
 

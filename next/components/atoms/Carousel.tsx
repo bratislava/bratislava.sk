@@ -2,8 +2,8 @@ import { Button } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
-import ChevronLeft from '../../assets/images/arrow-long-left.svg'
-import ChevronRight from '../../assets/images/arrow-long-right.svg'
+import ChevronLeft from '@assets/images/arrow-long-left.svg'
+import ChevronRight from '@assets/images/arrow-long-right.svg'
 import Container from './Container'
 
 interface IProps {

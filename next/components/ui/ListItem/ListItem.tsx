@@ -1,7 +1,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import { ListCircle, ListCircleFull } from '../../../assets/images'
+import { ListCircle, ListCircleFull } from '@assets/images'
 import { PageLinkButton } from '../PageLinkButton/PageLinkButton'
 
 export interface ListItemProps {

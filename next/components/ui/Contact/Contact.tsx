@@ -1,8 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import Email from '../../../assets/images/email2.svg'
-import Phone from '../../../assets/images/phone.svg'
+import Email from '@assets/images/email2.svg'
+import Phone from '@assets/images/phone.svg'
 
 export interface ContactProps {
   className?: string

@@ -1,7 +1,7 @@
 import cx from 'classnames'
 
-import ArrowRightLong from '../../../assets/images/arrow-right.svg'
-import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import ArrowRightLong from '@assets/images/arrow-right.svg'
+import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { Button } from '../Button/Button'
 
 export interface VenueInfoProps {

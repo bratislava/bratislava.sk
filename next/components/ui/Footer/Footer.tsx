@@ -1,14 +1,14 @@
 // @ts-strict-ignore
+import BABrand from '@assets/images/BABrand.svg'
+import EULogo from '@assets/images/EULogo.svg'
 import FBLogo from '@assets/images/FB.svg'
+import IGLogo from '@assets/images/IG.svg'
+import YTLogo from '@assets/images/YT.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import Image from 'next/legacy/image'
 import React from 'react'
 
-import BABrand from '../../../assets/images/BABrand.svg'
-import EULogo from '../../../assets/images/EULogo.svg'
-import IGLogo from '../../../assets/images/IG.svg'
-import YTLogo from '../../../assets/images/YT.svg'
 import { FooterSection, FooterSectionProps } from '../FooterSection/FooterSection'
 import EULogoPng from '../images/EULogo.png'
 

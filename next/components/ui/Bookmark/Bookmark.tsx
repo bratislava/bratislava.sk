@@ -3,8 +3,8 @@ import cx from 'classnames'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'
 
-import ChevronRight from '../../../assets/images/chevron-right.svg'
-import CloseOutline from '../../../assets/images/close-outline.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
+import CloseOutline from '@assets/images/close-outline.svg'
 import { ArrowRight } from '../images'
 
 const PADDING = 20 // py-5

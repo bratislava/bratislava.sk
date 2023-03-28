@@ -3,8 +3,8 @@ import ReactWebChat from 'botframework-webchat'
 import uniqueId from 'lodash/uniqueId'
 import React, { useRef, useState } from 'react'
 
-import Close from '../../assets/images/close.svg'
-import Message from '../../assets/images/message.svg'
+import Close from '@assets/images/close.svg'
+import Message from '@assets/images/message.svg'
 
 const token = 'bvhl_qg-4ho.2TlPRJ9vN5qxHn5KJ0OZLHY9Sd3D8LBQFjtR3wULFLM'
 

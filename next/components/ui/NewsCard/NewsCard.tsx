@@ -6,7 +6,7 @@ import { getNumericLocalDate } from '@utils/local-date'
 import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
-import { ArrowRight, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import BratislavaPlaceholder from '../../../public/bratislava-placeholder.jpg'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'

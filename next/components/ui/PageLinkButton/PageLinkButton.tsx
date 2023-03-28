@@ -1,7 +1,7 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import { ArrowRight, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { Button } from '../Button/Button'
 
 export interface PageLinkButtonProps {
