@@ -1,8 +1,8 @@
 import { ChevronRightLarge } from '@assets/images'
+import { Icon } from '@components/atoms/icon/Icon'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { forwardRef } from 'react'
 
-import { Icon } from '../../../atoms/icon/Icon'
 import { MenuItem } from './navMenuTypes'
 
 type NavMenuTriggerProps = {

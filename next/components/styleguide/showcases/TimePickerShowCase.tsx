@@ -1,4 +1,5 @@
-import TimePicker from '../../forms/widget-components/DateTimePicker/TimePicker'
+import TimePicker from '@components/forms/widget-components/DateTimePicker/TimePicker'
+
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 

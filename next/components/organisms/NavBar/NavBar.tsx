@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
@@ -20,7 +19,7 @@ const NavBar = () => {
     try {
       await router.push(`/${path}`, undefined, { locale: key })
     } catch (error) {
-      Sentry.captureException(error)
+      console.log(error)
     }
   }
 

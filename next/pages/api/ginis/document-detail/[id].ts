@@ -70,11 +70,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     const documentDetail =
       response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg[
         'Detail-dokumentu'
-        ]
+      ]
     const documentFiles =
       response['s:Envelope']['s:Body']['Detail-dokumentuResponse']['Detail-dokumentuResult'].Xrg[
         'Soubory-dokumentu'
-        ]
+      ]
     if (Array.isArray(documentFiles)) {
       result = { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': documentFiles }
     } else if (typeof documentFiles === 'object') {

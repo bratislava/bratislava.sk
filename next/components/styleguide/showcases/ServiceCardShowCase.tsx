@@ -2,9 +2,9 @@ import BasketServiceIcon from '@assets/images/account/municipal-services/basket-
 import CompassServiceIcon from '@assets/images/account/municipal-services/compass-icon.svg'
 import MoneyServiceIcon from '@assets/images/account/municipal-services/money-icon.svg'
 import PoolServiceIcon from '@assets/images/account/municipal-services/pool-icon.svg'
+import ServiceCard from '@components/forms/simple-components/ServiceCard'
 import React from 'react'
 
-import ServiceCard from '../../forms/simple-components/ServiceCard'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 

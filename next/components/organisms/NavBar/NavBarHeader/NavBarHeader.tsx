@@ -1,15 +1,14 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
+import Button from '@components/forms/simple-components/Button'
+import MLink from '@components/forms/simple-components/MLink'
 import { useGeneralContext } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
 import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-
-import Button from '../../../forms/simple-components/Button'
-import MLink from '../../../forms/simple-components/MLink'
 
 type NavBarProps = { className?: string } & LanguageSelectProps
 
