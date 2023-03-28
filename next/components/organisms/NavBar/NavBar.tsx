@@ -1,5 +1,3 @@
-import { MenuMainItem } from '@bratislava/ui-bratislava'
-import BANavBar from '@bratislava/ui-bratislava/BANavBar/BANavBar'
 import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -7,15 +5,13 @@ import * as React from 'react'
 
 import { usePageContext } from '../../layouts/PageContextProvider'
 import CookieConsent from '../CookieConsent'
+import MobileNavBar from './MobileNavBar'
 import NavBarHeader from './NavBarHeader/NavBarHeader'
 import NavMenu from './NavMenu/NavMenu'
 
-interface IProps {
-  menuItems: MenuMainItem[]
-  pageColor?: string
-}
+interface IProps {}
 
-const NavBar = ({ menuItems, pageColor }: IProps) => {
+const NavBar = ({}: IProps) => {
   const router = useRouter()
   const { locale, localizations = [] } = usePageContext()
   const [t] = useTranslation('common')
@@ -39,7 +35,6 @@ const NavBar = ({ menuItems, pageColor }: IProps) => {
           {/* TODO mobile header, NavBarHeader (= new component) renders only on desktop */}
           {/* TODO language change is overcomplicated */}
           <NavBarHeader
-            className=""
             onLanguageChange={handleLanguageChange}
             currentLanguage={locale}
             languages={[
@@ -53,16 +48,14 @@ const NavBar = ({ menuItems, pageColor }: IProps) => {
       <div className="h-[137px] hidden lg:block" />
 
       {/* TODO mobile header, BANavBar (= old component) renders only on mobile */}
-      <BANavBar
+      <MobileNavBar
         className="lg:hidden"
-        menuItems={menuItems}
         onLanguageChange={handleLanguageChange}
         currentLanguage={locale}
         languages={[
           { key: 'sk', title: t('language_short.sk') },
           { key: 'en', title: t('language_short.en') },
         ]}
-        pageColor={pageColor}
       />
     </>
   )

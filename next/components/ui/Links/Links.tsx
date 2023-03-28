@@ -1,8 +1,8 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 
 import { ArrowRight, ChevronRight } from '../../../assets/images'
-import { isItExternal } from '../BAStickyMenu/external-link'
 import { Button } from '../Button/Button'
 
 export interface LinksProps {
@@ -26,7 +26,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
               hoverIcon={<ArrowRight />}
               shape="none"
             >
-              <UILink href={pageLink.url ? isItExternal(pageLink.url) : `#${pageLink.anchor}`}>
+              <UILink href={pageLink.url ? isExternalLink(pageLink.url) : `#${pageLink.anchor}`}>
                 <div className="text-p2-semibold relative text-left underline decoration-2 underline-offset-4">
                   {pageLink?.title}
                 </div>

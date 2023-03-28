@@ -1,5 +1,5 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { isItExternal } from '@bratislava/ui-bratislava/BAStickyMenu/external-link'
+import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 
 export interface SubpageListProps {
@@ -26,7 +26,7 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
           </div>
           <div className="text-20-medium leading-6 tracking-wide group-hover:underline">
             <UILink
-              href={subpage.url ? isItExternal(subpage.url) : `#${subpage.anchor}`}
+              href={subpage.url ? isExternalLink(subpage.url) : `#${subpage.anchor}`}
               target={subpage.url?.startsWith('http') ? '_blank' : undefined}
               className="after:absolute after:inset-0"
             >

@@ -154,8 +154,8 @@ export const ICON_URL_MAP: IconUrlMap = {
     komunity_06: Community48pxIcon,
     esluzby: EServices48pxIcon,
     kontakt: Phone48pxIcon,
-    ziarovka: LightBulbOff48pxIcon,
-    turisticka_znacka: TouristSign48pxIcon,
+    ukraina: SocialService48pxStrokeIcon,
+    som_turista: TouristSign48pxIcon,
   },
   size_64: {
     mesto_01: Castle64pxStrokeIcon,

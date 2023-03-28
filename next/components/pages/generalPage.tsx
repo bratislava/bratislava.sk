@@ -9,13 +9,7 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import {
-  Button,
-  FooterProps,
-  MenuMainItem,
-  PageHeader,
-  SectionContainer,
-} from '@bratislava/ui-bratislava'
+import { Button, FooterProps, PageHeader, SectionContainer } from '@bratislava/ui-bratislava'
 import { pagePath, pageStyle } from '@utils/page'
 // import { pagePath, pageStyle, parsePageLink } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
@@ -42,10 +36,9 @@ export interface GeneralPageProps {
   pages: GeneralPageFragment
   footer: FooterProps
   children?: React.ReactNode
-  menuItems?: MenuMainItem[]
 }
 
-const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
+const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -82,7 +75,7 @@ const GeneralPage = ({ pages, footer, menuItems }: GeneralPageProps) => {
       page.parentPage.data?.attributes.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
-    <PageLayout footer={footer} menuItemsOld={menuItems}>
+    <PageLayout footer={footer}>
       {page?.pageCategory?.data?.attributes?.color && (
         <style
           dangerouslySetInnerHTML={{
