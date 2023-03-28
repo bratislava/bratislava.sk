@@ -11,16 +11,21 @@ interface TabBarTabProps {
   onClick?: () => void
   isActive?: boolean
   handleSelect?: (arg0: string) => void
-  size?:
-    | 'small'
-    | 'normal'
+  size?: 'small' | 'normal'
 }
 
-export const TabBarTab = ({ className, tab, onClick, isActive, size = 'normal', handleSelect }: TabBarTabProps) => {
+export const TabBarTab = ({
+  className,
+  tab,
+  onClick,
+  isActive,
+  size = 'normal',
+  handleSelect,
+}: TabBarTabProps) => {
   return (
     <button
-      className={cx(className, 'relative py-2 whitespace-nowrap lg:whitespace-normal', {
-        'text-font font-normal': !isActive,
+      className={cx(className, 'relative whitespace-nowrap py-2 lg:whitespace-normal', {
+        'font-normal text-font': !isActive,
         'font-semibold': isActive,
         'text-h4': size === 'normal',
         'text-p2': size === 'small',
@@ -28,7 +33,9 @@ export const TabBarTab = ({ className, tab, onClick, isActive, size = 'normal', 
       onClick={handleSelect ? () => handleSelect(tab.title) : onClick}
     >
       {tab.title}
-      {isActive && <div className="absolute bottom-0 left-1/2 w-10/12 -translate-x-1/2 border-b-2 border-category-600" />}
+      {isActive && (
+        <div className="absolute bottom-0 left-1/2 w-10/12 -translate-x-1/2 border-b-2 border-category-600" />
+      )}
     </button>
   )
 }

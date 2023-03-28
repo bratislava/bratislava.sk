@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-import ChevronDown from '../../../assets/images/chevron-down.svg'
+import ChevronDown from '@assets/images/chevron-down.svg'
 
 export interface ISelectOption {
   key: string
@@ -40,9 +40,9 @@ export const Select = <T extends ISelectOption>({
   const value = typeof iValue === 'string' ? iValue : iValue?.key
 
   return (
-    <div className={cx('inline-flex relative items-center', className)}>
+    <div className={cx('relative inline-flex items-center', className)}>
       <select
-        className={cx('base-input cursor-pointer pr-16 w-full', selectClassName, {
+        className={cx('base-input w-full cursor-pointer pr-16', selectClassName, {
           'base-input--with-error': hasError,
         })}
         onChange={handleChange}
@@ -55,7 +55,9 @@ export const Select = <T extends ISelectOption>({
           </option>
         ))}
       </select>
-      {hasIcon && <ChevronDown className="pointer-events-none absolute right-0 mr-7 mt-1 text-category-600" />}
+      {hasIcon && (
+        <ChevronDown className="pointer-events-none absolute right-0 mr-7 mt-1 text-category-600" />
+      )}
     </div>
   )
 }

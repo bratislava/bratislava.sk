@@ -195,15 +195,15 @@ const Homepage = ({
 
           <Waves waveColor="var(--category-color-200)" wavePosition="top" />
 
-          <SectionContainer className="bg-category-200 relative py-8">
-            <h2 className="text-h1 xs:mt-8 pb-10 text-center lg:pb-20">{data.topNineTitle}</h2>
+          <SectionContainer className="relative bg-category-200 py-8">
+            <h2 className="text-h1 pb-10 text-center xs:mt-8 lg:pb-20">{data.topNineTitle}</h2>
             <TopNine items={data.topNine as TopNineItemProps[]} />
           </SectionContainer>
 
           <Waves waveColor="var(--category-color-200)" wavePosition="bottom" />
 
           <SectionContainer>
-            <InBaCard className="mx-auto mt-40 md:mt-28 min-h-[200px] max-w-3xl" {...inba} />
+            <InBaCard className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28" {...inba} />
             <div className="hidden md:block md:h-20" />
 
             <FacebookPostsHomepageSection title="Bratislava na Facebooku" />

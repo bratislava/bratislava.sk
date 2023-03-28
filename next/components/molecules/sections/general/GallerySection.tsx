@@ -4,7 +4,7 @@ import { GallerySectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { HorizontalScrollWrapper, Modal } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
@@ -159,7 +159,7 @@ const GallerySection = ({
           className=" z-50 overflow-hidden rounded-2xl"
         >
           {currentItem && (
-            <div className="modal-content-rent xs:h-[calc(100vh-120px)] xs:w-[calc(100vw-100px)] overflow-y-auto  md:max-h-[951px] lg:w-[1000px] xl:w-[1110px]">
+            <div className="modal-content-rent overflow-y-auto xs:h-[calc(100vh-120px)] xs:w-[calc(100vw-100px)]  md:max-h-[951px] lg:w-[1000px] xl:w-[1110px]">
               <div className="from-galleryFrom absolute z-[9] flex h-full w-full overflow-hidden rounded-2xl bg-gradient-to-t via-transparent to-white">
                 <div className="absolute inset-x-0 bottom-0 mx-8 mb-10 text-center md:mx-24 md:text-left">
                   {
@@ -203,7 +203,7 @@ const GallerySection = ({
                         {showModalDetails ? t('menu.show_less') : t('menu.show_more')}
                       </button>
                       <ChevronDown
-                        className={cx('inline ml-4 ', {
+                        className={cx('ml-4 inline ', {
                           'rotate-180': showModalDetails,
                         })}
                       />

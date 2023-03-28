@@ -12,14 +12,14 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
   return (
     <div
       className={cx(
-        'grid mb-10 mt-10 grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-10',
+        'mb-10 mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-10',
         className,
       )}
     >
       {subpageList?.map((subpage, index) => (
         <div
           key={index}
-          className="group relative flex items-center sm:items-start gap-y-5 gap-x-8 sm:flex-col"
+          className="group relative flex items-center gap-y-5 gap-x-8 sm:flex-col sm:items-start"
         >
           <div className="text-h3 flex h-12 w-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-category-600 text-white sm:h-16 sm:w-16 sm:basis-16">
             {index + 1}

@@ -7,7 +7,7 @@ interface IProps {
 export const StepperSpacer = ({ active }: IProps) => (
   <div className="flex-1 px-2">
     <div
-      className={cx('border-b-2 w-20 md:w-32', {
+      className={cx('w-20 border-b-2 md:w-32', {
         'border-category-600': active,
         'border-stepper-divider': !active,
       })}

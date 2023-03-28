@@ -50,7 +50,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavMenuContentP
       <div style={{ backgroundColor }} className="relative z-[29]">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
         <ul
-          className={cx('max-w-screen-lg mx-auto grid w-full gap-x-8 gap-y-6 px-4 py-8', {
+          className={cx('mx-auto grid w-full max-w-screen-lg gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
             'grid-cols-3': colCount === 3,
             'grid-cols-4': colCount === 4,
@@ -85,7 +85,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavMenuContentP
         </ul>
       </div>
       <Waves
-        className="drop-shadow-xl relative z-[28]"
+        className="relative z-[28] drop-shadow-xl"
         wavePosition="bottom"
         waveColor={backgroundColor}
       />

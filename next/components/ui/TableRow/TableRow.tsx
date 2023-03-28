@@ -7,11 +7,11 @@ export interface TableRowProps {
 
 export const TableRow = ({ className, tableCells }: TableRowProps) => {
   return (
-    <tr className={cx(className, 'h-14 shadow rounded-lg')}>
+    <tr className={cx(className, 'h-14 rounded-lg shadow')}>
       {tableCells.map((tableCell, i) => (
         <td
           key={i}
-          className={cx(tableCell.className, 'text-font pl-5 py-6', {
+          className={cx(tableCell.className, 'py-6 pl-5 text-font', {
             'rounded-l-lg': i === 0,
             'rounded-r-lg': i === tableCells.length - 1,
           })}

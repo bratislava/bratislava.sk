@@ -1,7 +1,7 @@
+import StepperView from '@components/forms/steps/StepperView'
+import { StepData } from '@components/forms/types/TransformedFormData'
 import { useState } from 'react'
 
-import StepperView from '../../forms/steps/StepperView'
-import { StepData } from '../../forms/types/TransformedFormData'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 

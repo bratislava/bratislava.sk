@@ -66,9 +66,9 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
           onFocus={() => setOpen(true)}
         />
       </div>
-      <AnimateHeight isVisible={isOpen} className="absolute w-full md:w-[634px] top-full z-40 mt-2">
+      <AnimateHeight isVisible={isOpen} className="absolute top-full z-40 mt-2 w-full md:w-[634px]">
         {searchValue ? (
-          <div className="py-2 border-2 rounded-lg bg-white">
+          <div className="rounded-lg border-2 bg-white py-2">
             <HomePageSearchResults
               data={dataToDisplay}
               isLoading={loadingAndNoDataToDisplay}

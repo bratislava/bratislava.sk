@@ -33,7 +33,7 @@ export const RelatedContent = ({
       />
     </div>
 
-    <HorizontalScrollWrapper className={cx(className, 'xl:hidden py-10 pl-8 gap-x-4')}>
+    <HorizontalScrollWrapper className={cx(className, 'gap-x-4 py-10 pl-8 xl:hidden')}>
       {cards.map((card, index) => (
         <NewsCard className="w-10/12 shrink-0" key={index} {...card} />
       ))}

@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/nextjs'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
@@ -9,9 +8,7 @@ import MobileNavBar from './MobileNavBar'
 import NavBarHeader from './NavBarHeader/NavBarHeader'
 import NavMenu from './NavMenu/NavMenu'
 
-interface IProps {}
-
-const NavBar = ({}: IProps) => {
+const NavBar = () => {
   const router = useRouter()
   const { locale, localizations = [] } = usePageContext()
   const [t] = useTranslation('common')
@@ -22,7 +19,7 @@ const NavBar = ({}: IProps) => {
     try {
       await router.push(`/${path}`, undefined, { locale: key })
     } catch (error) {
-      Sentry.captureException(error)
+      console.log(error)
     }
   }
 
@@ -30,7 +27,7 @@ const NavBar = ({}: IProps) => {
     <>
       <CookieConsent />
 
-      <div className="fixed top-0 bg-white w-full z-30 hidden lg:block">
+      <div className="fixed top-0 z-30 hidden w-full bg-white lg:block">
         <div className="w-full">
           {/* TODO mobile header, NavBarHeader (= new component) renders only on desktop */}
           {/* TODO language change is overcomplicated */}
@@ -45,7 +42,7 @@ const NavBar = ({}: IProps) => {
           <NavMenu />
         </div>
       </div>
-      <div className="h-[137px] hidden lg:block" />
+      <div className="hidden h-[137px] lg:block" />
 
       {/* TODO mobile header, BANavBar (= old component) renders only on mobile */}
       <MobileNavBar

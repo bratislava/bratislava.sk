@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs'
 import { fetchFacebookPosts } from '@utils/facebook'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -7,4 +6,4 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   return res.json(posts)
 }
 
-export default withSentry(handler)
+export default handler

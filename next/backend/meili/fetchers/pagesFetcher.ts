@@ -12,7 +12,8 @@ export const pagesDefaultFilters: PagesFilters = {
   search: '',
 }
 
-export const getPagesSwrKey = (filters: PagesFilters, locale: string) => ['Pages', filters, locale] as Key
+export const getPagesSwrKey = (filters: PagesFilters, locale: string) =>
+  ['Pages', filters, locale] as Key
 
 export const pagesFetcher = (filters: PagesFilters, locale: string) => () => {
   return meiliClient

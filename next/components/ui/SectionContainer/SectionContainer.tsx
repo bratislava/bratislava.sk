@@ -17,7 +17,7 @@ export const SectionContainer = ({
     })}
     {...rest}
   >
-    <div className="max-w-screen-lg mx-auto w-full">{children}</div>
+    <div className="mx-auto w-full max-w-screen-lg">{children}</div>
   </div>
 )
 

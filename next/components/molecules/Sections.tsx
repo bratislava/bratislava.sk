@@ -112,8 +112,8 @@ const Section = ({ section }: { section: SectionsFragment | null }) => {
 
   return (
     <SectionContainer
-      className={cx('md:pt-18 pt-10', {
-        'md:pb-18 bg-category-200 pb-14': hasBackground === true,
+      className={cx('pt-10 md:pt-18', {
+        'bg-category-200 pb-14 md:pb-18': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

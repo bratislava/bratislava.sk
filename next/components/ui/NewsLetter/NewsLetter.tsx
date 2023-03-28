@@ -34,7 +34,7 @@ export const NewsLetter = ({
     <div
       className={cx(
         className,
-        'max-w-xs w-full px-2.5 lg:px-0 my-10 lg:my-12 pt-1 lg:max-w-screen-md lg:pr-9',
+        'my-10 w-full max-w-xs px-2.5 pt-1 lg:my-12 lg:max-w-screen-md lg:px-0 lg:pr-9',
       )}
     >
       <Card

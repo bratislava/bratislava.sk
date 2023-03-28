@@ -1,3 +1,6 @@
+import { Icon } from '@components/atoms/icon/Icon'
+import Button from '@components/forms/simple-components/Button'
+import MLink from '@components/forms/simple-components/MLink'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
@@ -6,9 +9,6 @@ import { useTranslation } from 'next-i18next'
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
 
-import { Icon } from '../../../atoms/icon/Icon'
-import Button from '../../../forms/simple-components/Button'
-import MLink from '../../../forms/simple-components/MLink'
 import { getParsedMenus } from './getParsedMenus'
 import HorizontalDivider from './HorizontalDivider'
 import MobileNavMenuItem from './MobileNavMenuItem'
@@ -40,7 +40,7 @@ const MobileNavMenu = () => {
   return (
     <div
       className={cx(
-        'gap-4 fixed top-14 left-0 w-screen overflow-y-scroll bg-white lg:hidden flex flex-col px-4 py-6 z-[28]',
+        'fixed top-14 left-0 z-[28] flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
         {
           'animate-fadeIn': isMobileMenuOpen,
           'animate-fadeOut': !isMobileMenuOpen,
@@ -104,7 +104,7 @@ const MobileNavMenu = () => {
 
         {/* Viewport represents popup div with links that appears under menu button */}
         <NavigationMenu.Viewport
-          className="fixed top-14 left-0 w-screen overflow-y-scroll z-[29] data-[state=open]:animate-enterFromRight data-[state=closed]:animate-exitToRight"
+          className="fixed top-14 left-0 z-[29] w-screen overflow-y-scroll data-[state=open]:animate-enterFromRight data-[state=closed]:animate-exitToRight"
           style={{ height: `calc(${height}px - 14*4px)` }}
         />
       </NavigationMenu.Root>

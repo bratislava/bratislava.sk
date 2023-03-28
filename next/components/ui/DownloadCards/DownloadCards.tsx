@@ -10,7 +10,9 @@ export interface DownloadCardsProps {
 
 export const DownloadCards = ({ className, downloads }: DownloadCardsProps) => {
   return (
-    <HorizontalScrollWrapper className={cx('space-x-8 md:space-x-0 md:grid md:grid-cols-3 md:gap-8', className)}>
+    <HorizontalScrollWrapper
+      className={cx('space-x-8 md:grid md:grid-cols-3 md:gap-8 md:space-x-0', className)}
+    >
       {downloads?.map((download, index) => (
         <DownloadCard key={index} {...download} />
       ))}

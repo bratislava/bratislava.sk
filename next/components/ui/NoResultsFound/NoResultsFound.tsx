@@ -1,11 +1,6 @@
 import NoDataResultsFound from '@assets/images/NoResults-Found.svg'
 import cx from 'classnames'
 
-import ArrowLeft from '../../../assets/images/arrow-left.svg'
-import ArrowRight from '../../../assets/images/arrow-right.svg'
-import NoResultsIlustration from '../../../assets/images/no-results.svg'
-import NoResultsIlustrationSmall from '../../../assets/images/no-results-small.svg'
-
 export interface NoResultsFoundProps {
   title: string
   message: string

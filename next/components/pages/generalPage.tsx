@@ -85,7 +85,7 @@ const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
       )}
       {/* Header */}
       <PageHeader
-        className={cx('bg-cover', { 'mb-32 md:mb-16 bg-cover lg:mb-64': hasFeaturedBlogs })}
+        className={cx('bg-cover', { 'mb-32 bg-cover md:mb-16 lg:mb-64': hasFeaturedBlogs })}
         color="var(--category-color-200)"
         transparentColor="var(--category-color-200--transparent)"
         imageSrc={page?.pageBackgroundImage?.data?.attributes?.url || ''}
@@ -103,7 +103,7 @@ const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
             <div className="absolute top-4 lg:top-6">
               <PageBreadcrumbs crumbs={crumbs} />
             </div>
-            <h1 className="text-h1 max-w-[730px] mb-10 whitespace-pre-wrap pt-20 lg:pt-32">
+            <h1 className="text-h1 mb-10 max-w-[730px] whitespace-pre-wrap pt-20 lg:pt-32">
               {page?.title}
             </h1>
 

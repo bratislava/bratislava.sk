@@ -98,7 +98,7 @@ const TimeSelector = ({
     <div className="w-full max-w-xs rounded-lg border-2 border-gray-700 bg-white">
       <div className="flex w-full flex-col justify-between py-10">
         <div className="flex h-fit max-h-52 justify-between overflow-hidden px-4">
-          <div className="overflow-x-hidden flex flex-col items-center justify-start">
+          <div className="flex flex-col items-center justify-start overflow-x-hidden">
             <div ref={hourRef} className="flex flex-col overflow-y-auto scrollbar-hide">
               <span className="pt-[84px] focus:outline-none" />
               {hoursArray?.map((item) => (
@@ -114,10 +114,10 @@ const TimeSelector = ({
                   }}
                   className={cx('cursor-pointer rounded-lg px-10 py-2 focus:outline-none', {
                     'bg-gray-100': +timeFormatArray[0] === item,
-                    'opacity-50 pointer-events-none':
+                    'pointer-events-none opacity-50':
                       (minValueArray && item < minValueArray[0]) ||
                       (maxValueArray && item > maxValueArray[0]),
-                    'qwe opacity-50 pointer-events-none':
+                    'qwe pointer-events-none opacity-50':
                       (minValueArray &&
                         parseInt(minute, 10) < minValueArray[1] &&
                         item <= minValueArray[0]) ||
@@ -137,7 +137,7 @@ const TimeSelector = ({
           <div className="flex items-center">
             <span className="text-20 flex h-6 w-6 items-center justify-center">:</span>
           </div>
-          <div className="overflow-x-hidden flex flex-col items-center justify-start">
+          <div className="flex flex-col items-center justify-start overflow-x-hidden">
             <div ref={minuteRef} className="flex flex-col overflow-y-auto scrollbar-hide">
               <span className="pt-[84px] focus:outline-none" />
               {minutesArray?.map((item) => (
@@ -153,10 +153,10 @@ const TimeSelector = ({
                   }}
                   className={cx('cursor-pointer rounded-lg px-10 py-2 focus:outline-none', {
                     'bg-gray-100': +timeFormatArray[1] === item,
-                    'cursor-pointer pointer-events-auto opacity-100':
+                    'pointer-events-auto cursor-pointer opacity-100':
                       (minValueArray && minValueArray[0] < timeFormatArray[0]) ||
                       (maxValueArray && maxValueArray[0] > timeFormatArray[0]),
-                    'opacity-50 pointer-events-none':
+                    'pointer-events-none opacity-50':
                       (minValueArray && item < minValueArray[1]) ||
                       (maxValueArray && item > maxValueArray[1]),
                   })}

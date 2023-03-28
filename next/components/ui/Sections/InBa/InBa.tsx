@@ -1,7 +1,7 @@
 import cx from 'classnames'
 
-import Image1 from '../../../../assets/images/inBa1.svg'
-import Image2 from '../../../../assets/images/inBa2.svg'
+import Image1 from '@assets/images/inBa1.svg'
+import Image2 from '@assets/images/inBa2.svg'
 import { InBaCard, InBaCardProps } from '../../InBaCard/InBaCard'
 
 export interface InBaProps {
@@ -26,7 +26,7 @@ const INBACARDS = [
 ]
 
 export const InBa = ({ className, inBaCards = INBACARDS }: InBaProps) => (
-  <div className={cx(className, 'max-w-screen-1.5xl md:px-12 xl:px-40 md:mx-auto')}>
+  <div className={cx(className, 'max-w-screen-1.5xl md:mx-auto md:px-12 xl:px-40')}>
     <div className={(cx(className), 'flex flex-col items-center gap-y-20')}>
       {inBaCards?.map((inBaCard, index) => (
         <InBaCard key={index} {...inBaCard} />

@@ -45,7 +45,11 @@ export const DocumentCards = ({
             .slice((currentPage - 1) * itemsPerPageDesktop, currentPage * itemsPerPageDesktop)
             .map((doc, index) => (
               <div key={index}>
-                <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
+                <DocumentCard
+                  {...doc}
+                  viewButtonText={viewButtonText}
+                  downloadButtonText={downloadButtonText}
+                />
                 {dividerBugSolved &&
                   index == dividerBreakpointDesktop - 1 &&
                   currentItemsCountDesktop > dividerBreakpointDesktop && (
@@ -68,7 +72,11 @@ export const DocumentCards = ({
             .slice((currentPage - 1) * itemsPerPageMobile, currentPage * itemsPerPageMobile)
             .map((doc, index) => (
               <div key={index}>
-                <DocumentCard {...doc} viewButtonText={viewButtonText} downloadButtonText={downloadButtonText} />
+                <DocumentCard
+                  {...doc}
+                  viewButtonText={viewButtonText}
+                  downloadButtonText={downloadButtonText}
+                />
                 {dividerBugSolved &&
                   index === dividerBreakpointMobile - 1 &&
                   currentItemsCountMobile > dividerBreakpointMobile && (

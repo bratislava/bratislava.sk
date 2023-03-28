@@ -23,7 +23,7 @@ export const Field = ({ children, tooltip, className, id, title, error }: FieldP
       )}
       {children}
 
-      {error && <p className="mt-2 text-center text-p2 text-error sm:text-left">{error}</p>}
+      {error && <p className="text-p2 mt-2 text-center text-error sm:text-left">{error}</p>}
     </div>
   )
 }

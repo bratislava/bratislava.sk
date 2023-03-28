@@ -24,7 +24,7 @@ const ProsAndConsSection = ({ section }: ProsAndConsSectionProps) => {
           {/* <div>button</div> */}
         </div>
       ) : null}
-      <ul className="grid gap-3 lg:gap-8 md:grid-cols-2">
+      <ul className="grid gap-3 md:grid-cols-2 lg:gap-8">
         {cons && (
           <ComparisonCard
             icon={<CrossIcon />}

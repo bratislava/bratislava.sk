@@ -2,7 +2,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 
-import { ArrowRight, ChevronRight } from '../../../assets/images'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { Button } from '../Button/Button'
 
 export interface LinksProps {
@@ -15,7 +15,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
   const { Link: UILink } = useUIContext()
   return (
     <div>
-      <div className={cx(className, 'flex flex-col w-full md:w-10/12')}>
+      <div className={cx(className, 'flex w-full flex-col md:w-10/12')}>
         <h1 className="text-h4">{title}</h1>
         <div className="flex flex-col space-y-4 pt-6">
           {pageLinks?.map((pageLink, index) => (

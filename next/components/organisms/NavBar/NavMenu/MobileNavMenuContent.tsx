@@ -30,12 +30,12 @@ const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps
       style={{ backgroundColor }}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <ul className="w-full flex gap-2 px-4 py-8 flex-col">
+      <ul className="flex w-full flex-col gap-2 px-4 py-8">
         <li className="w-full">
           <button
             type="button"
             onClick={() => setMenuValue('')}
-            className="flex items-center gap-2 py-2 -mt-2 w-full"
+            className="-mt-2 flex w-full items-center gap-2 py-2"
             // TODO translations
             aria-label={`Späť na ${parentLabel}`}
           >

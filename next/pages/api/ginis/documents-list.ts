@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs'
 import {
   getParsedUDEDocumentsList,
   mockedParsedDocuments,
@@ -25,4 +24,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   return res.json(result)
 }
 
-export default withSentry(handler)
+export default handler

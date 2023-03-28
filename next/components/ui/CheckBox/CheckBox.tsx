@@ -1,27 +1,36 @@
 import cx from 'classnames'
 import React from 'react'
 
-import CheckMark from '../../../assets/images/check-mark.svg'
+import CheckMark from '@assets/images/check-mark.svg'
 
-type ICheckBoxProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+type ICheckBoxProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   id: string
   content?: React.ReactNode
   variant?: 'default' | 'circle'
 }
 
-export const CheckBox = ({ className, id, content, variant = 'default', ...rest }: ICheckBoxProps) => (
-  <label htmlFor={id} className={cx('cursor-pointer inline-flex gap-6 text-20-medium', className)}>
+export const CheckBox = ({
+  className,
+  id,
+  content,
+  variant = 'default',
+  ...rest
+}: ICheckBoxProps) => (
+  <label htmlFor={id} className={cx('text-20-medium inline-flex cursor-pointer gap-6', className)}>
     <input type="checkbox" id={id} className="hidden" {...rest} />
     <div
       className={cx(
-        'border-category-600 border-2 text-white flex flex-0 items-center justify-center box-border overflow-hidden',
+        'flex-0 box-border flex items-center justify-center overflow-hidden border-2 border-category-600 text-white',
         {
-          'rounded-5 w-8 h-8': variant === 'default',
-          'rounded-full w-6 h-6': variant === 'circle',
+          'h-8 w-8 rounded-5': variant === 'default',
+          'h-6 w-6 rounded-full': variant === 'circle',
           'bg-category-600': rest.checked,
           'bg-white': !rest.checked,
         },
-        className
+        className,
       )}
     >
       <CheckMark className={cx({ hidden: !rest.checked })} />

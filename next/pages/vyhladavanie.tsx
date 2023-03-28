@@ -94,7 +94,7 @@ const Search = ({ general, footer }: PageProps) => {
             }}
           />
           <SectionContainer>
-            <div className="md:pt-18 flex w-full flex-col gap-y-14 pt-14 lg:gap-y-20">
+            <div className="flex w-full flex-col gap-y-14 pt-14 md:pt-18 lg:gap-y-20">
               <AdvancedSearch
                 placeholder={t('enterKeyword')}
                 title={t('searching')}

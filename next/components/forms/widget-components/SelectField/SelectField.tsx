@@ -180,7 +180,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   return (
     <section
       className={cx(
-        'relative w-full max-w-[200px] xs:max-w-[320px] flex flex-col transition-all',
+        'relative flex w-full max-w-[200px] flex-col transition-all xs:max-w-[320px]',
         className,
       )}
     >
@@ -210,14 +210,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         />
 
         {/* DROPDOWN ARROW */}
-        <div className="dropdownButton flex flex-col items-center h-10 sm:h-12 cursor-pointer select-none rounded-lg px-3 sm:px-4 [&>svg]:m-1">
-          <div className="dropdownButton h-6 w-6 items-center relative flex h-full flex-col justify-center">
+        <div className="dropdownButton flex h-10 cursor-pointer select-none flex-col items-center rounded-lg px-3 sm:h-12 sm:px-4 [&>svg]:m-1">
+          <div className="dropdownButton relative flex h-6 h-full w-6 flex-col items-center justify-center">
             {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
             <div className="dropdownButton absolute inset-0 z-10" />
           </div>
         </div>
 
-        {disabled && <div className="absolute inset-0 rounded-lg z-20" />}
+        {disabled && <div className="absolute inset-0 z-20 rounded-lg" />}
       </div>
 
       {/* DROPDOWN */}
