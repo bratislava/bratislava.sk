@@ -1,9 +1,9 @@
 import CloseIcon from '@assets/images/close.svg'
+import ChevronDown from '@assets/images/forms/chevron-down.svg'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
-import ChevronDown from '../@assets/images/forms/chevron-down.svg'
 import { StepData } from '../types/TransformedFormData'
 import StepperViewList from './StepperViewList'
 import StepperViewRow from './StepperViewRow'
