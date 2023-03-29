@@ -1,7 +1,7 @@
 import { CommonLinkFragment } from '@bratislava/strapi-sdk-homepage'
 
 export const getCommonLinkProps = (link: CommonLinkFragment) => {
-  let href = ''
+  let href = '#'
   let target: '_blank' | undefined
 
   if (link.page?.data?.attributes?.slug) {

@@ -4,6 +4,7 @@ import {
 } from '@bratislava/strapi-sdk-homepage'
 import AccountMarkdown from '@components/forms/segments/AccountMarkdown/AccountMarkdown'
 import Button from '@components/forms/simple-components/Button'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -115,7 +116,13 @@ const Banner = ({
           variant === 'white_condensed' ? 'h-[180px]' : 'h-[234px]'
         }`}
       >
-        <Image src={imagePath} className="object-cover object-left" alt="" fill />
+        <Image
+          src={imagePath}
+          className="object-cover object-left"
+          alt=""
+          fill
+          sizes={generateImageSizes({ default: '100vw', lg: '50vw' })}
+        />
       </div>
     </div>
   )
