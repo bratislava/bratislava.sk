@@ -1,33 +1,31 @@
-@import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
 @layer components {
   /* Figma template variables - start */
 
   /* headings */
   .text-h1-lg {
-    @apply text-h-xl lg:text-h-3xl font-semibold;
+    @apply text-h-xl font-semibold lg:text-h-3xl;
   }
 
   .text-h1 {
-    @apply text-h-lg lg:text-h-2xl font-semibold;
+    @apply text-h-lg font-semibold lg:text-h-2xl;
   }
 
   .text-h2 {
-    @apply text-h-md lg:text-h-xl font-semibold;
+    @apply text-h-md font-semibold lg:text-h-xl;
   }
 
   .text-h3 {
-    @apply text-h-base lg:text-h-lg font-semibold;
+    @apply text-h-base font-semibold lg:text-h-lg;
   }
 
   .text-h4 {
-    @apply text-h-sm lg:text-h-md font-semibold;
+    @apply text-h-sm font-semibold lg:text-h-md;
   }
 
   .text-h5 {
-    @apply text-h-xs lg:text-h-base font-semibold;
+    @apply text-h-xs font-semibold lg:text-h-base;
   }
 
   .text-h6 {
@@ -36,50 +34,50 @@
 
   /* paragraphs */
   .text-p1 {
-    @apply font-normal text-p-base lg:text-p-md;
+    @apply text-p-base font-normal lg:text-p-md;
   }
   .text-p1-medium {
-    @apply font-medium text-p-base lg:text-p-md;
+    @apply text-p-base font-medium lg:text-p-md;
   }
   .text-p1-semibold {
-    @apply font-semibold text-p-base lg:text-p-md;
+    @apply text-p-base font-semibold lg:text-p-md;
   }
   .text-p1-underline {
-    @apply underline font-medium text-p-base lg:text-p-md;
+    @apply text-p-base font-medium underline lg:text-p-md;
   }
 
   .text-p2 {
-    @apply font-normal text-p-base;
+    @apply text-p-base font-normal;
   }
   .text-p2-medium {
-    @apply font-medium text-p-base;
+    @apply text-p-base font-medium;
   }
   .text-p2-semibold {
-    @apply font-semibold text-p-base;
+    @apply text-p-base font-semibold;
   }
   .text-p2-underline {
-    @apply underline font-normal text-p-base;
+    @apply text-p-base font-normal underline;
   }
 
   .text-p3 {
-    @apply font-normal text-p-sm;
+    @apply text-p-sm font-normal;
   }
   .text-p3-medium {
-    @apply font-medium text-p-sm;
+    @apply text-p-sm font-medium;
   }
   .text-p3-semibold {
-    @apply font-semibold text-p-sm;
+    @apply text-p-sm font-semibold;
   }
   .text-p3-underline {
-    @apply underline font-normal text-p-sm;
+    @apply text-p-sm font-normal underline;
   }
 
   /* buttons */
   .text-btn-lg {
-    @apply font-semibold text-btn-lg;
+    @apply text-btn-lg font-semibold;
   }
   .text-btn {
-    @apply font-semibold text-btn-base;
+    @apply text-btn-base font-semibold;
   }
 
   /* Figma template variables - end */
@@ -88,81 +86,81 @@
 
   /* heading */
   .text-h1-lg-light {
-    @apply text-h-xl lg:text-h-3xl font-light;
+    @apply text-h-xl font-light lg:text-h-3xl;
   }
   .text-h1-lg-normal {
-    @apply text-h-xl lg:text-h-3xl font-normal;
+    @apply text-h-xl font-normal lg:text-h-3xl;
   }
   .text-h1-lg-medium {
-    @apply text-h-xl lg:text-h-3xl font-medium;
+    @apply text-h-xl font-medium lg:text-h-3xl;
   }
   .text-h1-lg-bold {
-    @apply text-h-xl lg:text-h-3xl font-bold;
+    @apply text-h-xl font-bold lg:text-h-3xl;
   }
 
   .text-h1-light {
-    @apply text-h-lg lg:text-h-2xl font-light;
+    @apply text-h-lg font-light lg:text-h-2xl;
   }
   .text-h1-normal {
-    @apply text-h-lg lg:text-h-2xl font-normal;
+    @apply text-h-lg font-normal lg:text-h-2xl;
   }
   .text-h1-medium {
-    @apply text-h-lg lg:text-h-2xl font-medium;
+    @apply text-h-lg font-medium lg:text-h-2xl;
   }
   .text-h1-bold {
-    @apply text-h-lg lg:text-h-2xl font-bold;
+    @apply text-h-lg font-bold lg:text-h-2xl;
   }
 
   .text-h2-light {
-    @apply text-h-md lg:text-h-xl font-light;
+    @apply text-h-md font-light lg:text-h-xl;
   }
   .text-h2-normal {
-    @apply text-h-md lg:text-h-xl font-normal;
+    @apply text-h-md font-normal lg:text-h-xl;
   }
   .text-h2-medium {
-    @apply text-h-md lg:text-h-xl font-medium;
+    @apply text-h-md font-medium lg:text-h-xl;
   }
   .text-h2-bold {
-    @apply text-h-md lg:text-h-xl font-bold;
+    @apply text-h-md font-bold lg:text-h-xl;
   }
 
   .text-h3-light {
-    @apply text-h-base lg:text-h-lg font-light;
+    @apply text-h-base font-light lg:text-h-lg;
   }
   .text-h3-normal {
-    @apply text-h-base lg:text-h-lg font-normal;
+    @apply text-h-base font-normal lg:text-h-lg;
   }
   .text-h3-medium {
-    @apply text-h-base lg:text-h-lg font-medium;
+    @apply text-h-base font-medium lg:text-h-lg;
   }
   .text-h3-bold {
-    @apply text-h-base lg:text-h-lg font-bold;
+    @apply text-h-base font-bold lg:text-h-lg;
   }
 
   .text-h4-light {
-    @apply text-h-sm lg:text-h-md font-light;
+    @apply text-h-sm font-light lg:text-h-md;
   }
   .text-h4-normal {
-    @apply text-h-sm lg:text-h-md font-normal;
+    @apply text-h-sm font-normal lg:text-h-md;
   }
   .text-h4-medium {
-    @apply text-h-sm lg:text-h-md font-medium;
+    @apply text-h-sm font-medium lg:text-h-md;
   }
   .text-h4-bold {
-    @apply text-h-sm lg:text-h-md font-bold;
+    @apply text-h-sm font-bold lg:text-h-md;
   }
 
   .text-h5-light {
-    @apply text-h-xs lg:text-h-base font-light;
+    @apply text-h-xs font-light lg:text-h-base;
   }
   .text-h5-normal {
-    @apply text-h-xs lg:text-h-base font-normal;
+    @apply text-h-xs font-normal lg:text-h-base;
   }
   .text-h5-medium {
-    @apply text-h-xs lg:text-h-base font-medium;
+    @apply text-h-xs font-medium lg:text-h-base;
   }
   .text-h5-bold {
-    @apply text-h-xs lg:text-h-base font-bold;
+    @apply text-h-xs font-bold lg:text-h-base;
   }
 
   .text-h6-light {
@@ -180,116 +178,122 @@
 
   /* paragraphs */
   .text-p1-light {
-    @apply font-light text-p-base lg:text-p-md;
+    @apply text-p-base font-light lg:text-p-md;
   }
 
   .text-p1-semibold {
-    @apply font-semibold text-p-base lg:text-p-md;
+    @apply text-p-base font-semibold lg:text-p-md;
   }
 
   .text-p1-bold {
-    @apply font-bold text-p-base lg:text-p-md;
+    @apply text-p-base font-bold lg:text-p-md;
   }
 
   .text-p2 {
-    @apply font-normal text-p-base;
+    @apply text-p-base font-normal;
   }
 
   .text-p2-light {
-    @apply font-light text-p-base;
+    @apply text-p-base font-light;
   }
 
   .text-p2-bold {
-    @apply font-bold text-p-base;
+    @apply text-p-base font-bold;
   }
 
-  .text-p3-bold {
-    @apply font-normal text-p-sm;
+  .text-p3 {
+    @apply text-p-sm font-normal;
   }
 
   .text-p3-light {
-    @apply font-light text-p-sm;
+    @apply text-p-sm font-light;
   }
+
+  .text-p3-medium {
+    @apply font-medium text-p-sm;
+  }
+
   .text-p3-bold {
-    @apply font-bold text-p-sm;
+    @apply text-p-sm font-bold;
   }
+
   .text-p3-semibold {
-    @apply font-semibold text-p-sm;
+    @apply text-p-sm font-semibold;
   }
 
   .text-p4-light {
-    @apply font-light text-p-xs;
+    @apply text-p-xs font-light;
   }
   .text-p4 {
-    @apply font-normal text-p-xs;
+    @apply text-p-xs font-normal;
   }
   .text-p4-medium {
-    @apply font-medium text-p-xs;
+    @apply text-p-xs font-medium;
   }
   .text-p4-semibold {
-    @apply font-semibold text-p-xs;
+    @apply text-p-xs font-semibold;
   }
   .text-p4-bold {
-    @apply font-bold text-p-xs;
+    @apply text-p-xs font-bold;
   }
   /* buttons */
   .text-btn-lg-light {
-    @apply font-light text-btn-lg;
+    @apply text-btn-lg font-light;
   }
   .text-btn-lg-normal {
-    @apply font-normal text-btn-lg;
+    @apply text-btn-lg font-normal;
   }
   .text-btn-lg-medium {
-    @apply font-medium text-btn-lg;
+    @apply text-btn-lg font-medium;
   }
   .text-btn-lg-bold {
-    @apply font-bold text-btn-lg;
+    @apply text-btn-lg font-bold;
   }
 
   .text-btn-light {
-    @apply font-light text-btn-base;
+    @apply text-btn-base font-light;
   }
   .text-btn-normal {
-    @apply font-normal text-btn-base;
+    @apply text-btn-base font-normal;
   }
   .text-btn-medium {
-    @apply font-medium text-btn-base;
+    @apply text-btn-base font-medium;
   }
   .text-btn-bold {
-    @apply font-bold text-btn-base;
+    @apply text-btn-base font-bold;
   }
 
   /* other */
   .text-20-light {
-    @apply font-light text-p-md;
+    @apply text-p-md font-light;
   }
   .text-20 {
-    @apply font-normal text-p-md;
+    @apply text-p-md font-normal;
   }
   .text-20-medium {
-    @apply font-medium text-p-md;
+    @apply text-p-md font-medium;
   }
   .text-20-semibold {
-    @apply font-semibold text-p-md;
+    @apply text-p-md font-semibold;
   }
   .text-20-bold {
-    @apply font-bold text-p-md;
+    @apply text-p-md font-bold;
   }
 
   .text-16-light {
-    @apply font-light text-p-base;
+    @apply text-p-base font-light;
   }
   .text-16 {
-    @apply font-normal text-p-base;
+    @apply text-p-base font-normal;
   }
   .text-16-medium {
-    @apply font-medium text-p-base;
+    @apply text-p-base font-medium;
   }
   .text-16-semibold {
-    @apply font-semibold text-p-base;
+    @apply text-p-base font-semibold;
   }
   .text-16-bold {
-    @apply font-bold text-p-base;
+    @apply text-p-base font-bold;
   }
 }
 

@@ -1,10 +1,12 @@
 import cx from 'classnames'
+import Image from 'next/image'
 
 import { Panel } from '../Panel/Panel'
 
 export interface HorizontalCardProps extends React.HTMLAttributes<HTMLDivElement> {
   accessory?: React.ReactNode
   imageSrc?: string
+  imageSizes?: string
 }
 
 export const HorizontalCard = ({
@@ -12,6 +14,7 @@ export const HorizontalCard = ({
   className,
   children,
   imageSrc,
+  imageSizes,
   ...rest
 }: HorizontalCardProps) => (
   <div className={cx(className, 'relative')} {...rest}>
@@ -19,18 +22,22 @@ export const HorizontalCard = ({
       {imageSrc && (
         <>
           <div
-            className="bg-cover lg:hidden"
+            className="lg:hidden overflow-hidden relative"
             style={{
-              backgroundImage: `url(${imageSrc})`,
               paddingTop: '71.4%',
             }}
-          />
-          <div
-            className="flex-0 max-w hidden w-56 bg-cover lg:block"
-            style={{
-              backgroundImage: `url(${imageSrc})`,
-            }}
-          />
+          >
+            <Image
+              src={imageSrc}
+              alt=""
+              fill
+              className="object-cover w-full h-full"
+              sizes={imageSizes}
+            />
+          </div>
+          <div className="flex-0 max-w hidden w-56 bg-cover lg:block relative">
+            <Image src={imageSrc} alt="" fill className="object-cover" sizes={imageSizes} />
+          </div>
         </>
       )}
       <div className="text-p1 flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left">
@@ -38,7 +45,7 @@ export const HorizontalCard = ({
       </div>
     </Panel>
     {accessory && (
-      <div className={cx('absolute bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2')}>
+      <div className={cx('absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 transform')}>
         {accessory}
       </div>
     )}

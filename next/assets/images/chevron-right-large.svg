@@ -1,3 +1,7 @@
-<svg width="15" height="26" viewBox="0 0 15 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.0625 1L13.0625 13L1.0625 25" stroke="#333333" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- NEW DS -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M7.93005 4.1601L15.8701 12.0501L7.93005 19.9401L8.99005 21.0001L18.0001 12.0501L8.99005 3.1001L7.93005 4.1601Z"
+    fill="currentColor"/>
 </svg>
+ 

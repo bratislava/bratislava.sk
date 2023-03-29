@@ -13,25 +13,25 @@
   /* if you feel a different variant is needed, please contact desing/product beforehand */
 
   .base-button {
-    @apply appearance-none inline-flex items-center justify-center text-center focus:outline-none bg-category-600;
-    @apply shadow-lg font-medium text-white text-p-md;
+    @apply inline-flex appearance-none items-center justify-center bg-category-600 text-center focus:outline-none;
+    @apply text-p-md font-medium text-white shadow-lg;
   }
   .homepage-markdown ul {
     @apply list-outside list-none;
   }
   .homepage-markdown ul li::before {
-    @apply absolute left-1 top-2 w-4 h-4 bg-category-600 rounded-full;
+    @apply absolute left-1 top-2 h-4 w-4 rounded-full bg-category-600;
     /* use before to style it */
     content: '';
   }
   .homepage-markdown ul li {
-    @apply relative list-none pl-18 -my-2;
+    @apply relative -my-2 list-none pl-18;
   }
   .homepage-markdown ul li ul {
     @apply ml-14 mt-1 -mb-8;
   }
   .homepage-markdown ul li ul li::before {
-    @apply absolute left-1 top-2 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-category-600;
+    @apply absolute left-1 top-2 inline-block h-4 w-4 rounded-full border-4 border-category-600 bg-transparent;
     /* use before to style it */
     content: '';
   }
@@ -42,12 +42,12 @@
     @apply flex flex-col;
   }
   .numerical-list ul li::before {
-    @apply w-4 h-4 bg-category-600 rounded-full mr-6 -ml-12 lg:ml-6;
+    @apply mr-6 -ml-12 h-4 w-4 rounded-full bg-category-600 lg:ml-6;
     content: '';
     min-width: 16px;
   }
   .numerical-list ul li {
-    @apply py-4 flex items-center;
+    @apply flex items-center py-4;
   }
   .numerical-list-hidden ul li {
     @apply hidden;
@@ -100,10 +100,10 @@
   */
 
   .modal-content-rent-markdown ul {
-    @apply my-6 pl-12 list-disc;
+    @apply my-6 list-disc pl-12;
   }
   .modal-content-rent-markdown ol {
-    @apply my-6 pl-12 list-decimal;
+    @apply my-6 list-decimal pl-12;
   }
   .modal-content-rent-markdown p {
     @apply mb-4;
@@ -154,11 +154,19 @@
   .text-title-center h2,
   .text-title-center h3,
   .text-title-center h4 {
-    @apply text-center mb-6;
+    @apply mb-6 text-center;
   }
 
   .inner-list .inner-list .rounded-full {
     @apply bg-transparent;
+  }
+
+  button[data-state='open'] > svg {
+    display: block;
+  }
+
+  button[data-state='closed'] > svg {
+    display: none;
   }
 }
 
@@ -171,11 +179,11 @@
 }
 
 .table-block tbody tr td:first-child div {
-  @apply text-h-sm lg:text-h-base font-semibold;
+  @apply text-h-sm font-semibold lg:text-h-base;
 }
 
 .modal-content-rent-markdown a {
-  @apply underline font-bold;
+  @apply font-bold underline;
 }
 
 /* width */
@@ -193,7 +201,7 @@
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-transparent rounded-2xl;
+    @apply rounded-2xl bg-transparent;
   }
 }
 
@@ -245,8 +253,8 @@
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
     }
   }
 }

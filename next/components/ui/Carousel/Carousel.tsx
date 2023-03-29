@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import React, { useRef } from 'react'
 
-import ChevronLeft from '../../../assets/images/arrow-long-left.svg'
-import ChevronRight from '../../../assets/images/arrow-long-right.svg'
+import ChevronLeft from '@assets/images/arrow-long-left.svg'
+import ChevronRight from '@assets/images/arrow-long-right.svg'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
 export interface CarouselProps {
@@ -68,9 +68,9 @@ export const Carousel = ({
       <VerticalCardButton
         onClick={isLeft ? previousImage : nextImage}
         size="large"
-        className={cx('absolute z-10 my-auto top-0 bottom-0', {
-          'left-0 transform -translate-x-1/2': isLeft,
-          'right-0 transform translate-x-1/2': !isLeft,
+        className={cx('absolute top-0 bottom-0 z-10 my-auto', {
+          'left-0 -translate-x-1/2 transform': isLeft,
+          'right-0 translate-x-1/2 transform': !isLeft,
           hidden:
             (isLeft && currentItem === 0) ||
             (!isLeft && currentItem + shiftIndex >= totalItems - visibleItems + shiftIndex),
@@ -94,7 +94,7 @@ export const Carousel = ({
       <div
         className={cx(
           scrollerClassName,
-          'w-full flex overflow-x-auto lg:overflow-x-hidden overflow-y-hidden scrollbar-hide pb-4 lg:pb-0',
+          'flex w-full overflow-x-auto overflow-y-hidden pb-4 scrollbar-hide lg:overflow-x-hidden lg:pb-0',
         )}
         ref={scrollerRef}
       >
@@ -104,14 +104,14 @@ export const Carousel = ({
           return (
             <div
               key={index}
-              className={cx('flex-shrink-0 transition-all duration-200 transform', {
+              className={cx('flex-shrink-0 transform transition-all duration-200', {
                 'px-4': spacing === 'default',
                 'w-1/2': visibleItems === 2,
                 'lg:w-1/3': visibleItems === 3,
                 'w-1/4': visibleItems === 4,
                 'w-1/5': visibleItems === 5,
                 'w-1/6': visibleItems === 6,
-                'opacity-100 scale-100': isVisible,
+                'scale-100 opacity-100': isVisible,
                 // 'opacity-0 scale-50': !isVisible,
               })}
             >

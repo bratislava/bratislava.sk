@@ -7,7 +7,7 @@ import { forwardRef, ReactNode, RefObject, useEffect, useRef, useState } from 'r
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
 
-import { usePageWrapperContext } from '../../../layouts/PageWrapper'
+import { usePageContext } from '../../../layouts/PageContextProvider'
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Popover from './Popover'
 import TimeField from './TimeField'
@@ -78,7 +78,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     },
     ref,
   ) => {
-    const { locale } = usePageWrapperContext()
+    const { locale } = usePageContext()
 
     const [hour, setHour] = useState<string>('')
     const [minute, setMinute] = useState<string>('')

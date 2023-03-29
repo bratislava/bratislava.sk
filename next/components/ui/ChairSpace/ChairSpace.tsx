@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Chair from '../../../assets/images/chair.svg'
+import Chair from '@assets/images/chair.svg'
 
 interface IProps {
   className?: string

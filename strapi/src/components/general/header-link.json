@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_general_header_links",
+  "info": {
+    "displayName": "header link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "url": {
+      "type": "string"
+    },
+    "showOnDesktop": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "showOnMobile": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "required": true,
+      "default": "kontakt",
+      "enum": [
+        "esluzby",
+        "kontakt",
+        "ukraina",
+        "som_turista"
+      ]
+    }
+  }
+}

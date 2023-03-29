@@ -13,10 +13,13 @@ const { serverRuntimeConfig }: { serverRuntimeConfig: serverTypeConfig } = getCo
 
 const protocol =
   serverRuntimeConfig?.strapiUrl &&
-  (serverRuntimeConfig?.strapiUrl.startsWith('http://') || serverRuntimeConfig?.strapiUrl.startsWith('https://'))
+  (serverRuntimeConfig?.strapiUrl.startsWith('http://') ||
+    serverRuntimeConfig?.strapiUrl.startsWith('https://'))
     ? ''
     : 'http://'
 
 const urlWithProtocol = `${protocol}${serverRuntimeConfig.strapiUrl}`
-const gql = new GraphQLClient(`${serverRuntimeConfig?.strapiUrl ? urlWithProtocol : window.location.origin}/graphql`)
+const gql = new GraphQLClient(
+  `${serverRuntimeConfig?.strapiUrl ? urlWithProtocol : window.location.origin}/graphql`,
+)
 export const client = getSdk(gql)

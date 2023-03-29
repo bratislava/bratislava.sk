@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs'
 import { forceString } from '@utils/utils'
 import { getToken, getUserByEmail } from 'backend/services/ms-graph'
 import _ from 'lodash'
@@ -13,4 +12,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.json(_.pick(user, ['businessPhones', 'displayName', 'jobTitle', 'mail', 'mobilePhone']))
 }
 
-export default withSentry(handler)
+export default handler

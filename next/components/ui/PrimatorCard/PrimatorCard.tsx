@@ -26,7 +26,7 @@ export const PrimatorCard = ({
   return (
     <div
       className={cx(
-        'mt-24 lg:mt-28 w-full relative',
+        'relative mt-24 w-full lg:mt-28',
         {
           'mt-12 lg:mt-28': smRight,
         },
@@ -35,7 +35,7 @@ export const PrimatorCard = ({
     >
       <Panel
         className={cx(
-          'flex items-center justify-between lg:justify-start px-6 lg:px-11 h-24 lg:h-32 relative overflow-visible',
+          'relative flex h-24 items-center justify-between overflow-visible px-6 lg:h-32 lg:justify-start lg:px-11',
         )}
       >
         <div>
@@ -43,10 +43,10 @@ export const PrimatorCard = ({
             <img src={imageSrc} alt={title} className="absolute bottom-0 h-40 lg:h-56" />
           </UILink>
         </div>
-        <div className="ml-0 lg:ml-56 flex flex-col items-end lg:items-start">
+        <div className="ml-0 flex flex-col items-end lg:ml-56 lg:items-start">
           <div className="text-h4-normal">{title}</div>
           <UILink
-            className="group mt-1.5 flex h-6 items-center space-x-5 text-category-600 underline lg:mt-3 after:absolute after:inset-0"
+            className="group mt-1.5 flex h-6 items-center space-x-5 text-category-600 underline after:absolute after:inset-0 lg:mt-3"
             href={href}
           >
             <span className="text-p2-semibold">{t('readMore')}</span>

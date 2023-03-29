@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_sections_comparison_sections",
+  "info": {
+    "displayName": "Comparison Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "textAlign": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center"
+      ],
+      "required": true,
+      "default": "left"
+    },
+    "cards": {
+      "displayName": "comparison card",
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.comparison-card",
+      "required": true,
+      "max": 3
+    }
+  }
+}

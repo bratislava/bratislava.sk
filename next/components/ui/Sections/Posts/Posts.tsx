@@ -9,11 +9,12 @@ import {
 } from '@bratislava/strapi-sdk-homepage'
 import { Iframe } from '@bratislava/ui-bratislava'
 import { LocalDate, Month, Period } from '@js-joda/core'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import { transformColorToCategory } from '@utils/page'
 import { getLanguageKey } from '@utils/utils'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
-import { usePageWrapperContext } from 'components/layouts/PageWrapper'
+import { usePageContext } from 'components/layouts/PageContextProvider'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 import useSWR from 'swr'
@@ -24,6 +25,8 @@ import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/Horizonta
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
 import { TabBarTab } from '../../TabBarTab/TabBarTab'
 import { Tag } from '../../Tag/Tag'
+
+const imageSizes = generateImageSizes({ lg: '33vw', default: '50vw' })
 
 export type TPostsTab = { category?: string; newsCards?: NewsCardProps[] }
 
@@ -69,7 +72,7 @@ export const Posts = ({
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const { locale } = usePageWrapperContext()
+  const { locale } = usePageContext()
 
   const [activeTab, setActiveTab] = React.useState(0)
   // TODO refactor this
@@ -122,14 +125,22 @@ export const Posts = ({
               {!leftHighLight &&
                 largeNews.map((newsCard, i) => (
                   <div key={i}>
-                    <NewsCard {...newsCard} />
+                    <NewsCard {...newsCard} coverImageSizes={imageSizes} />
                   </div>
                 ))}
               {leftHighLight && (
-                <NewsCard {...leftHighLight?.data?.attributes} readMoreText={readMoreText} />
+                <NewsCard
+                  {...leftHighLight?.data?.attributes}
+                  readMoreText={readMoreText}
+                  coverImageSizes={imageSizes}
+                />
               )}
               {rightHighLight && (
-                <NewsCard {...rightHighLight?.data?.attributes} readMoreText={readMoreText} />
+                <NewsCard
+                  {...rightHighLight?.data?.attributes}
+                  readMoreText={readMoreText}
+                  coverImageSizes={imageSizes}
+                />
               )}
 
               {latestPost?.data?.length > 0 && (
@@ -152,7 +163,7 @@ export const Posts = ({
                         <UILink href={`/blog/${card.slug}`}>
                           <div
                             className={cx(
-                              `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
+                              `mb-8 font-semibold text-font underline after:absolute after:inset-0`,
                               getHoverColor(tag?.pageCategory.data.attributes.color),
                             )}
                           >
@@ -257,10 +268,18 @@ export const Posts = ({
               <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
                 <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
                   {rozkoPosts?.data[0] && (
-                    <NewsCard {...rozkoPosts?.data[0].attributes} readMoreText={readMoreText} />
+                    <NewsCard
+                      {...rozkoPosts?.data[0].attributes}
+                      readMoreText={readMoreText}
+                      coverImageSizes={imageSizes}
+                    />
                   )}
                   {rozkoPosts?.data[1] && (
-                    <NewsCard {...rozkoPosts?.data[1].attributes} readMoreText={readMoreText} />
+                    <NewsCard
+                      {...rozkoPosts?.data[1].attributes}
+                      readMoreText={readMoreText}
+                      coverImageSizes={imageSizes}
+                    />
                   )}
 
                   {rozkoPosts?.data?.length > 2 && (
@@ -283,7 +302,7 @@ export const Posts = ({
                             <UILink href={`/blog/${card.slug}`}>
                               <div
                                 className={cx(
-                                  `text-font mb-8 font-semibold underline after:absolute after:inset-0`,
+                                  `mb-8 font-semibold text-font underline after:absolute after:inset-0`,
                                   getHoverColor(tag?.pageCategory.data.attributes.color),
                                 )}
                               >

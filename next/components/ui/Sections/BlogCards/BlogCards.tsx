@@ -1,5 +1,6 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
@@ -30,13 +31,14 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           className="flex"
           items={posts.map((blogCard, index) => (
             <HorizontalCard
-              className="min-h-[350px] h-full py-16"
+              className="h-full min-h-[350px] py-16"
               key={index}
               imageSrc={blogCard.imageSrc ?? ''}
+              imageSizes={generateImageSizes({ lg: '224px', default: '50vw' })}
             >
-              <p className="text-p2 lg:text-p1 line-clamp-3 text-left">{blogCard.title}</p>
+              <p className="text-p2 lg:text-p1 text-left line-clamp-3">{blogCard.title}</p>
               <UILink
-                className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 hover:text-category-600 underline after:absolute after:inset-0"
+                className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 underline after:absolute after:inset-0 hover:text-category-600"
                 href={blogCard?.url || ''}
                 target={blogCard?.url?.startsWith('http') ? '_blank' : undefined}
               >

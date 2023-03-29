@@ -2,7 +2,7 @@ import BannerPhone from '@assets/images/banner-phone.png'
 import CallIcon from '@assets/images/forms/call.svg'
 import cx from 'classnames'
 import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import Button from './Button'
 
@@ -26,16 +26,16 @@ const Banner = ({
   return (
     <div
       className={cx(
-        'flex-col lg:flex-row flex h-full items-center justify-end rounded-none lg:rounded-3xl bg-gray-800 w-full max-w-screen-lg m-auto py-6 lg:py-0',
+        'm-auto flex h-full w-full max-w-screen-lg flex-col items-center justify-end rounded-none bg-gray-800 py-6 lg:flex-row lg:rounded-3xl lg:py-0',
         className,
       )}
     >
-      <div className="lg:w-1/2 w-full max-w-[488px] text-white h-full flex flex-col justify-center rounded-l-3xl gap-6 px-4 md:px-0 mb-6 lg:mb-0">
+      <div className="mb-6 flex h-full w-full max-w-[488px] flex-col justify-center gap-6 rounded-l-3xl px-4 text-white md:px-0 lg:mb-0 lg:w-1/2">
         <div className="flex flex-col items-start gap-3">
           <h2 className="text-h1 lg:text-h2">{title}</h2>
           <AccountMarkdown content={content} variant="sm" className="text-p2 text-gray-200" />
         </div>
-        <div className="flex flex-col lg:flex-row items-center gap-4">
+        <div className="flex flex-col items-center gap-4 lg:flex-row">
           <Button
             className="hidden lg:flex"
             variant="category"
@@ -51,15 +51,15 @@ const Banner = ({
             fullWidth
           />
           {mobileNumber && (
-            <div className="text-gray-0 flex items-center gap-2 px-3 py-2">
+            <div className="flex items-center gap-2 px-3 py-2 text-gray-0">
               <CallIcon />
               <span className="text-p2-semibold">{mobileNumber}</span>
             </div>
           )}
         </div>
       </div>
-      <div className="my-auto sm:w-1/2 w-full">
-        <Image src={BannerPhone} />
+      <div className="my-auto w-full sm:w-1/2">
+        <Image src={BannerPhone} alt="" />
       </div>
     </div>
   )

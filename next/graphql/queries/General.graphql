@@ -1,3 +1,26 @@
+fragment CommonLink on ComponentBlocksCommonLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  blogPost {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+}
+
 query Footer($locale: I18NLocaleCode!) {
   footer(locale: $locale) {
     data {
@@ -59,5 +82,99 @@ fragment MainMenuItem on PageCategoryEntityResponseCollection {
 query MainMenu($locale: I18NLocaleCode!) {
   pageCategories(locale: $locale) {
     ...MainMenuItem
+  }
+}
+
+fragment PageForMenuEntity on PageEntity {
+  id
+  attributes {
+    title
+    slug
+  }
+}
+
+fragment MenuLink on ComponentMenuMenuLink {
+  id
+  label
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  url
+}
+
+fragment MenuSection on ComponentMenuMenuSection {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  links {
+    ...MenuLink
+  }
+}
+
+fragment MenuItem on ComponentMenuMenuItem {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  sections {
+    ...MenuSection
+  }
+}
+
+fragment HeaderLink on ComponentGeneralHeaderLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+  showOnDesktop
+  showOnMobile
+  icon
+}
+
+fragment General on General {
+  header {
+    links {
+      ...HeaderLink
+    }
+    accountLink {
+      ...CommonLink
+    }
+  }
+}
+
+query General($locale: I18NLocaleCode!) {
+  general(locale: $locale) {
+    data {
+      attributes {
+        ...General
+      }
+    }
+  }
+  menu(locale: $locale) {
+    data {
+      attributes {
+        menus {
+          ...MenuItem
+        }
+      }
+    }
   }
 }

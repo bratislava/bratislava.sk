@@ -102,7 +102,7 @@ const OpenDataChart = ({
         {loading && <LoadingSpinner size="small" className="absolute top-1/2 left-1/2" />}
 
         <div
-          className={cx('py-5 px-8 shadow-lg rounded-2xl', {
+          className={cx('rounded-2xl py-5 px-8 shadow-lg', {
             'opacity-25': loading,
           })}
         >

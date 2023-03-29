@@ -1,8 +1,9 @@
 // @ts-strict-ignore
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
-import ArrowRightShort from '../../../assets/images/arrow-right-short.svg'
+import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
@@ -76,7 +77,7 @@ export const BlogSearchCard = ({
   // TODO use formatter function, add locale
   console.log(item.attributes)
   const date = new Date(date_added ?? publishedAt).toLocaleDateString('sk-SK')
-  const tagColor = color ? `--color-${color}-100` : '--color-main-100'
+  const tagColor = transformColorToCategory(color ?? 'red')
 
   return (
     <UILink href={slug ? `/blog/${slug}` : ''}>
@@ -104,7 +105,7 @@ export const BlogSearchCard = ({
           {tagTitle && (
             <div
               className="w-fit rounded-lg px-3 py-1"
-              style={{ backgroundColor: `rgb(var(${tagColor}))` }}
+              style={{ backgroundColor: `rgb(var(--color-${tagColor}-200)` }}
             >
               {tagTitle}
             </div>
@@ -136,13 +137,13 @@ export const BlogSearchCard = ({
               {tagTitle && (
                 <div
                   className="w-fit rounded-lg px-3 py-1"
-                  style={{ backgroundColor: `rgb(var(${tagColor}))` }}
+                  style={{ backgroundColor: `rgb(var(--color-${tagColor}-200)` }}
                 >
                   {tagTitle}
                 </div>
               )}
               <div className="flex">
-                <div className="text-20-semibold line-clamp-2 text-white">{title}</div>
+                <div className="text-20-semibold text-white line-clamp-2">{title}</div>
                 <VerticalCardButton
                   className="invisible shrink-0 group-hover:lg:visible"
                   size="medium"

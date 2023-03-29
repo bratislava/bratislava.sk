@@ -11,10 +11,9 @@ const WavesSection = ({ section }: WavesSectionProps) => {
   return (
     <Waves
       className={cx({
-        'md:mt-18 mt-10': section.position === 'top',
+        'mt-10 md:mt-18': section.position === 'top',
       })}
       key={section.position}
-      isRich={section.isRich ?? undefined}
       waveColor="var(--category-color-200)"
       wavePosition={section.position ?? 'top'}
     />

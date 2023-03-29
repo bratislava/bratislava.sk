@@ -2,18 +2,15 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import {
-  GeneralPageFragment,
-  MainMenuItemFragment,
-  PageBySlugQuery,
-} from '@bratislava/strapi-sdk-homepage'
+import { GeneralPageFragment, GeneralQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { parseFooter, parseMainMenu } from '@utils/page'
+import { parseFooter } from '@utils/page'
 import { arrayify, isPresent } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import PageWrapper from '../components/layouts/PageWrapper'
+import PageContextProvider from '../components/layouts/PageContextProvider'
 import GeneralPage from '../components/pages/generalPage'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -33,10 +30,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
   const slug = arrayify(ctx.params.slug).join('/')
 
-  const { pages, footer, mainMenu } = await client.PageBySlug({
+  const { pages, footer } = await client.PageBySlug({
     slug,
     locale,
   })
+
   if (!pages?.data?.[0]) return { notFound: true } as { notFound: true }
 
   const pageTranslations = ['common']
@@ -56,12 +54,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     pageTranslations.push('newsletter')
   }
 
+  const general = await client.General({ locale })
+
   return {
     props: {
+      general,
       slug,
       page: pages,
       footer,
-      mainMenu,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
     revalidate: 10,
@@ -69,15 +69,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 }
 
 interface GenericPageProps {
+  general: GeneralQuery
   slug: string
   page: GeneralPageFragment
   footer: PageBySlugQuery['footer']
-  mainMenu: MainMenuItemFragment
 }
 
-const Page = ({ page, footer, mainMenu }: GenericPageProps) => {
+const Page = ({ general, page, footer }: GenericPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes)
-  const menuItems = parseMainMenu(mainMenu)
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
     return {
       locale: locale.attributes.locale,
@@ -86,13 +85,15 @@ const Page = ({ page, footer, mainMenu }: GenericPageProps) => {
   })
 
   return (
-    <PageWrapper
-      locale={page?.data?.[0].attributes?.locale ?? 'sk'}
-      slug={page?.data?.[0]?.attributes.slug ?? ''}
-      localizations={localizations}
-    >
-      <GeneralPage pages={page} footer={parsedFooter} menuItems={menuItems} />
-    </PageWrapper>
+    <GeneralContextProvider general={general}>
+      <PageContextProvider
+        locale={page?.data?.[0].attributes?.locale ?? 'sk'}
+        slug={page?.data?.[0]?.attributes.slug ?? ''}
+        localizations={localizations}
+      >
+        <GeneralPage pages={page} footer={parsedFooter} />
+      </PageContextProvider>
+    </GeneralContextProvider>
   )
 }
 

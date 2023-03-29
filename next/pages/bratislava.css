@@ -145,8 +145,8 @@ body {
 }
 
 .base-input {
-  @apply appearance-none box-border inline-block border-3 px-6 py-0 text-font rounded-10 font-medium h-14;
-  @apply bg-white border-white focus:outline-none focus:border-category-600 hover:border-category-600;
+  @apply box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
+  @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
 }
 
 .base-input--with-error {
@@ -165,7 +165,7 @@ input:-webkit-autofill:active {
 }
 
 .w-fit-title::before {
-  @apply block font-bold h-0 overflow-hidden invisible;
+  @apply invisible block h-0 overflow-hidden font-bold;
   content: attr(title);
 }
 
@@ -192,22 +192,6 @@ input[type='number']::-webkit-outer-spin-button {
   display: none;
 }
 
-.floating-button {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  z-index: 9999;
-  height: 56px;
-  width: 56px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--category-color-600);
-  border-radius: 50%;
-  color: #333333;
-  cursor: pointer;
-}
-
 /* styles for chatbot START */
 .webchat {
   position: fixed;
@@ -232,13 +216,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .webchat__bubble__content {
   border-radius: 20px !important;
-}
-
-.floating-button.hide-on-click svg:first-child {
-  display: block;
-}
-.floating-button.hide-on-click svg:last-child {
-  display: none;
 }
 
 @media (max-width: 768px) {

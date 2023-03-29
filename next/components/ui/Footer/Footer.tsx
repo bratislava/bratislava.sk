@@ -1,16 +1,14 @@
 // @ts-strict-ignore
+import BABrand from '@assets/images/BABrand.svg'
+import EULogo from '@assets/images/EULogo.svg'
 import FBLogo from '@assets/images/FB.svg'
+import IGLogo from '@assets/images/IG.svg'
+import YTLogo from '@assets/images/YT.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
-import Image from "next/legacy/image";
 import React from 'react'
 
-import BABrand from '../../../assets/images/BABrand.svg'
-import EULogo from '../../../assets/images/EULogo.svg'
-import IGLogo from '../../../assets/images/IG.svg'
-import YTLogo from '../../../assets/images/YT.svg'
 import { FooterSection, FooterSectionProps } from '../FooterSection/FooterSection'
-import EULogoPng from '../images/EULogo.png'
 
 export interface FooterProps {
   className?: string
@@ -73,7 +71,7 @@ export const Footer = ({
             )}
           </nav>
           <span className="hidden xl:block">
-            <EULogo />
+            <EULogo className="w-15" />
           </span>
         </div>
       </section>
@@ -94,7 +92,7 @@ export const Footer = ({
           </div>
         </div>
         <div
-          className="mt-10 flex w-full flex-col justify-around gap-y-10 xl:w-2/3 xl:flex-row xl:mt-0 xl:flex xl:flex-wrap"
+          className="mt-10 flex w-full flex-col justify-around gap-y-10 xl:mt-0 xl:flex xl:w-2/3 xl:flex-row xl:flex-wrap"
           aria-label="Project Info sections"
         >
           {sections?.map((section, i) => (
@@ -148,7 +146,7 @@ export const Footer = ({
           )}
         </nav>
         <span className="mt-5 xl:hidden">
-          <Image src={EULogoPng} />
+          <EULogo className="w-15 inline-block" />
         </span>
         <p className="mt-2 xl:mt-0">{copyright}</p>
         <div className="hidden text-right xl:block" aria-label="lang">
@@ -167,7 +165,7 @@ export const Footer = ({
         </div>
       </section>
     </footer>
-  );
+  )
 }
 
 export default Footer

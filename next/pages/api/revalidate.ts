@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type strapiWebhookPayload = {
@@ -44,6 +43,7 @@ const handler = async function handler(req: NextApiRequest, res: NextApiResponse
         const pageUrl = generateUrl(payload, payload?.model)
         await res.revalidate(pageUrl)
         break
+
       default:
         break
     }
@@ -55,4 +55,4 @@ const handler = async function handler(req: NextApiRequest, res: NextApiResponse
   }
 }
 
-export default withSentry(handler)
+export default handler

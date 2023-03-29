@@ -8,6 +8,7 @@ import ArticlesListSection from './sections/general/ArticlesListSection/Articles
 import BannerBasicSection from './sections/general/BannerBasicSection'
 import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
 import ColumnedTextSection from './sections/general/ColumnedTextSection'
+import ComparisonSection from './sections/general/ComparisonSection'
 import ContactSection from './sections/general/ContactSection'
 import DividerSection from './sections/general/DividerSection'
 import DocumentListSection from './sections/general/DocumentListSection/DocumentListSection'
@@ -22,6 +23,7 @@ import NewsletterSection from './sections/general/NewsletterSection'
 import NumericalListSection from './sections/general/NumericalListSection'
 import OfficialBoardSection from './sections/general/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
+import ProsAndConsSection from './sections/general/ProsAndConsSection'
 import TextWithImageSection from './sections/general/TextWithImageSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
@@ -85,6 +87,12 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsOfficialBoard':
       return <OfficialBoardSection />
 
+    case 'ComponentSectionsProsAndConsSection':
+      return <ProsAndConsSection section={section} />
+
+    case 'ComponentSectionsComparisonSection':
+      return <ComparisonSection section={section} />
+
     case 'ComponentSectionsBannerBasic':
       return <BannerBasicSection section={section} />
 
@@ -108,8 +116,8 @@ const Section = ({ section }: { section: SectionsFragment | null }) => {
 
   return (
     <SectionContainer
-      className={cx('md:pt-18 pt-10', {
-        'md:pb-18 bg-category-200 pb-14': hasBackground === true,
+      className={cx('pt-10 md:pt-18', {
+        'bg-category-200 pb-14 md:pb-18': hasBackground === true,
       })}
       hasBackground={hasBackground}
     >

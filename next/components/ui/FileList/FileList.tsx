@@ -72,7 +72,10 @@ export const FileList = ({
         const shouldDisplayDividers = showMore && length >= MIN_ITEMS_TO_DISPLAY_DIVIDERS
         return (
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
-            <div className={cx('lg:flex flex-col space-y-8', { hidden: !noScroll })} key={fileSection.category ?? ''}>
+            <div
+              className={cx('flex-col space-y-8 lg:flex', { hidden: !noScroll })}
+              key={fileSection.category ?? ''}
+            >
               <div className="space-y-6">
                 {fileSection.category && !hideCategory && (
                   <span className="text-h4-medium">{fileSection.category}</span>

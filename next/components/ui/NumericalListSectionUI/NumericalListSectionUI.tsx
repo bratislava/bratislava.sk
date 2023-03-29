@@ -31,16 +31,10 @@ export const NumericalListSectionUI = ({
   const href = buttonLink?.length ? buttonLink : '#'
   return (
     <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
-      {hasBackground ? (
-        <Waves
-          waveColor={cx({ 'var(--category-color-200)': hasBackground })}
-          wavePosition="top"
-          isRich
-        />
-      ) : null}
+      {hasBackground && <Waves waveColor="var(--category-color-200)" wavePosition="top" />}
 
       <div
-        className={cx('flex justify-center flex-col items-center py-12', {
+        className={cx('flex flex-col items-center justify-center py-12', {
           'bg-category-200': hasBackground,
         })}
       >
@@ -48,7 +42,7 @@ export const NumericalListSectionUI = ({
           {title ? (
             <div
               className={cx(
-                'text-center pb-14',
+                'pb-14 text-center',
                 { 'text-h3': variant !== 'roadmap' },
                 { 'text-h4': variant === 'roadmap' },
               )}
@@ -73,13 +67,7 @@ export const NumericalListSectionUI = ({
         )}
       </div>
 
-      {hasBackground ? (
-        <Waves
-          waveColor={cx({ 'var(--category-color-200)': hasBackground })}
-          wavePosition="bottom"
-          isRich
-        />
-      ) : null}
+      {hasBackground && <Waves waveColor="var(--category-color-200)" wavePosition="bottom" />}
     </div>
   )
 }

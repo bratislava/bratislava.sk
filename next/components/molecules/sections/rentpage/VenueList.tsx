@@ -15,8 +15,8 @@ const VenueList = ({ className, title, tabs }: IProps) => {
   const activeTab = tabs?.[activeIndex]
 
   return (
-    <div className={cx(className, 'flex items-center flex-col py-56')}>
-      <span className="w-96 px-5 text-center text-h2">{title}</span>
+    <div className={cx(className, 'flex flex-col items-center py-56')}>
+      <span className="text-h2 w-96 px-5 text-center">{title}</span>
 
       <div className="my-20 flex space-x-5">
         {tabs?.map((tab, index) => (

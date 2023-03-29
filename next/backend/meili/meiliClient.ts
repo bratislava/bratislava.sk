@@ -6,7 +6,7 @@ export const MEILI_PAGE_SIZE = 10
 console.log(
   'NEXT_PUBLIC_MEILISEARCH_HOST:',
   process.env.NEXT_PUBLIC_MEILISEARCH_HOST,
-  process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY
+  process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY,
 )
 
 export const meiliClient = new MeiliSearch({

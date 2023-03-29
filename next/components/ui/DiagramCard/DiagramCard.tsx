@@ -18,19 +18,33 @@ export interface TicketBuyDiagramCardProps {
   className?: string
 }
 
-export const DiagramCard = ({ imgSrc, imgWidth, imgHeight, text, index, className }: TicketBuyDiagramCardProps) => {
+export const DiagramCard = ({
+  imgSrc,
+  imgWidth,
+  imgHeight,
+  text,
+  index,
+  className,
+}: TicketBuyDiagramCardProps) => {
   return (
     <div
-      className={cx(className, 'relative rounded-lg border-category-200 border-3 flex flex-col items-center shadow mb-2')}
+      className={cx(
+        className,
+        'relative mb-2 flex flex-col items-center rounded-lg border-3 border-category-200 shadow',
+      )}
     >
-      <StepperStep active={false} className="absolute h-20 w-20 -translate-y-1/2 py-5 text-5xl" number={index} />
+      <StepperStep
+        active={false}
+        className="text-5xl absolute h-20 w-20 -translate-y-1/2 py-5"
+        number={index}
+      />
 
       <div className="px-12">
         {imgSrc && <img alt="diagramcard" src={imgSrc} width={imgWidth} height={imgHeight} />}
       </div>
 
       {text && (
-        <div className="mt-8 px-5 pb-10 text-center text-p2 text-font">
+        <div className="text-p2 mt-8 px-5 pb-10 text-center text-font">
           {typeof text === 'string' ? <p>{text}</p> : text}
         </div>
       )}

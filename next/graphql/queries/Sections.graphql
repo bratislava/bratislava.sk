@@ -136,6 +136,8 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
       attributes {
         url
         alternativeText
+        width
+        height
       }
     }
   }
@@ -188,7 +190,6 @@ fragment NarrowTextSection on ComponentSectionsNarrowText {
 
 fragment WavesSection on ComponentSectionsWaves {
   position
-  isRich
 }
 
 fragment PageLinkBlock on ComponentBlocksPageLink {
@@ -341,6 +342,54 @@ fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStruct
   title
 }
 
+fragment ProsAndConsCardComponent on ComponentBlocksProsAndConsCard {
+  title
+  items {
+    label
+  }
+}
+
+fragment ProsAndConsSection on ComponentSectionsProsAndConsSection {
+  title
+  text
+  textAlignProsAndCons: textAlign
+  #  showMoreLink {
+  #    ...CommonLink
+  #  }
+  pros {
+    ...ProsAndConsCardComponent
+  }
+  cons {
+    ...ProsAndConsCardComponent
+  }
+}
+
+fragment ComparisonCardComponent on ComponentBlocksComparisonCard {
+  title
+  items {
+    label
+  }
+  iconMedia {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+}
+
+fragment ComparisonSection on ComponentSectionsComparisonSection {
+  title
+  text
+  textAlignComparison: textAlign
+  #  showMoreLink {
+  #    ...CommonLink
+  #  }
+  cards {
+    ...ComparisonCardComponent
+  }
+}
+
 fragment BannerBasicSection on ComponentSectionsBannerBasic {
   header
   content
@@ -449,6 +498,14 @@ fragment Sections on PageSectionsDynamicZone {
   }
 
   # ComponentSectionsOfficialBoard has no attributes
+
+  ... on ComponentSectionsProsAndConsSection {
+    ...ProsAndConsSection
+  }
+
+  ... on ComponentSectionsComparisonSection {
+    ...ComparisonSection
+  }
 }
 
 fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {

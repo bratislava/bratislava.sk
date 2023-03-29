@@ -1,5 +1,6 @@
 import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import { client } from '@utils/gql'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
@@ -162,11 +163,12 @@ const ArticlesList = ({
   return (
     <div>
       <div className="text-h2">{title}</div>
-      <div className="lg:grid-cols-3 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:mt-8 gap-8">
+      <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3">
         {data.map((article, index) => (
           <NewsCard
             key={index}
             coverImage={article?.attributes?.coverImage}
+            coverImageSizes={generateImageSizes({ sm: '50vw', lg: '33vw', default: '100vw' })}
             title={article.attributes?.title}
             tag={article?.attributes?.tag}
             date_added={article.attributes?.date_added}

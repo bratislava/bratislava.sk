@@ -11,7 +11,7 @@ export const getLocalDate = (dateString: string) =>
         convert(ZonedDateTime.parse(dateString)).toDate().toLocaleDateString('sk', {
           month: 'long',
           year: 'numeric',
-        })
+        }),
       )
 
 // "1.3.2021"
@@ -35,7 +35,6 @@ export const getLocalMonthName = (month: number | string) => {
   return lCapitalize(
     convert(LocalDate.parse(`1970-${m}-01`))
       .toDate()
-      .toLocaleDateString('sk', { month: 'long' })
+      .toLocaleDateString('sk', { month: 'long' }),
   )
 }
-

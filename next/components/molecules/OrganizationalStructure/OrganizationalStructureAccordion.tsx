@@ -1,11 +1,10 @@
 // @ts-strict-ignore
+import ChevronDown from '@assets/images/chevron-down-thin.svg'
+import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
-import { roleOrderingScore } from 'backend/utils/organisationalStructure'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
-import ChevronDown from '../../../assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '../../../assets/images/chevron-down-thin-small.svg'
 import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
 
 export interface OrganizationalStructureAccordionProps {
@@ -17,21 +16,17 @@ export interface OrganizationalStructureAccordionProps {
 // level 1 - always open, empty circle
 // level 2 - toggleable, filled secondary circle
 // level >2 - toggleable, no circle
-export const OrganizationalStructureAccordion = ({ group, level }: OrganizationalStructureAccordionProps) => {
+export const OrganizationalStructureAccordion = ({
+  group,
+  level,
+}: OrganizationalStructureAccordionProps) => {
   const [open, setOpen] = useToggle()
   const alwaysOpen = level === 1
-  // put leadership in front
-  const orderedUsers = group.users?.sort((a, b) => {
-    const aScore = roleOrderingScore(a.jobTitle)
-    const bScore = roleOrderingScore(b.jobTitle)
-    const difference = bScore - aScore
-    return difference === 0 ? a.displayName.localeCompare(b.displayName) : difference
-  })
-  const orderedGroups = group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName))
+
   return (
     <div className="flex flex-col">
       <div
-        className={cx('flex items-start lg:items-center gap-x-3 lg-gap-x-6', {
+        className={cx('lg-gap-x-6 flex items-start gap-x-3 lg:items-center', {
           'cursor-pointer': !alwaysOpen,
           'pb-8': !alwaysOpen && !open,
         })}
@@ -55,12 +50,16 @@ export const OrganizationalStructureAccordion = ({ group, level }: Organizationa
       </div>
 
       {(open || alwaysOpen) && (
-        <div className={cx({ 'pt-8': !orderedUsers?.length })}>
-          {!!orderedUsers?.length && <OrganizationalStructureAccordionCards users={orderedUsers} />}
-          {!!orderedGroups?.length && (
+        <div className={cx({ 'pt-8': !group.users?.length })}>
+          {!!group.users?.length && <OrganizationalStructureAccordionCards users={group.users} />}
+          {!!group.groups?.length && (
             <div className="lg:ml-8">
-              {orderedGroups.map((groupTmp) => (
-                <OrganizationalStructureAccordion key={groupTmp.id} group={groupTmp} level={level + 1} />
+              {group.groups.map((groupTmp) => (
+                <OrganizationalStructureAccordion
+                  key={groupTmp.id}
+                  group={groupTmp}
+                  level={level + 1}
+                />
               ))}
             </div>
           )}

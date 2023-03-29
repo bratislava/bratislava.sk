@@ -1,14 +1,15 @@
 // @ts-strict-ignore
 /* eslint-disable unicorn/consistent-destructuring */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { BlogPostBySlugQuery, FooterQuery, MainMenuQuery } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostBySlugQuery, FooterQuery, GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { parseFooter, parseMainMenu } from '@utils/page'
+import { parseFooter } from '@utils/page'
 import { arrayify } from '@utils/utils'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import PageWrapper from '../../components/layouts/PageWrapper'
+import PageContextProvider from '../../components/layouts/PageContextProvider'
 import BlogPostPage from '../../components/pages/blogPostPage'
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
@@ -46,13 +47,9 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
     locale,
   })
 
-  const { pageCategories: mainMenu } = await client.MainMenu({
-    locale,
-  })
+  const { footer } = await client.Footer({ locale })
 
-  const { footer } = await client.Footer({
-    locale,
-  })
+  const general = await client.General({ locale })
 
   const blogPostBySlug = blogPosts?.data[0]
 
@@ -62,10 +59,10 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 
   return {
     props: {
+      general,
       slug,
       post: blogPosts,
       footer,
-      mainMenu,
       locale,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
@@ -74,22 +71,23 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async (ctx) => 
 }
 
 interface BlogPostPageProps {
+  general: GeneralQuery
   slug: string
   locale: string
   post: NonNullable<BlogPostBySlugQuery['blogPosts']>
   footer: FooterQuery['footer']
-  mainMenu: MainMenuQuery['pageCategories']
 }
 
-const Page = ({ post, footer, mainMenu, locale }: BlogPostPageProps) => {
+const Page = ({ general, post, footer, locale }: BlogPostPageProps) => {
   const parsedFooter = parseFooter(footer?.data?.attributes ?? {})
-  const menuItems = parseMainMenu(mainMenu)
 
   // TODO change if multilingual blogs
   return (
-    <PageWrapper locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
-      <BlogPostPage post={post} footer={parsedFooter} menuItems={menuItems} />
-    </PageWrapper>
+    <GeneralContextProvider general={general}>
+      <PageContextProvider locale={locale} slug={post.data[0].attributes?.slug ?? ''}>
+        <BlogPostPage post={post} footer={parsedFooter} />
+      </PageContextProvider>
+    </GeneralContextProvider>
   )
 }
 

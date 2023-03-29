@@ -123,5 +123,12 @@
   "noUsersToShow": "Žiadne kontakty na zobrazenie.",
   "menu.show_less": "Zobraziť menej",
   "menu.show_more": "Zobraziť viac",
-  "skipNavigation": "Preskočiť navigáciu"
+  "skipNavigation": "Preskočiť navigáciu",
+  "NavMenu": {
+    "aria": {
+      "navMenuLabel": "Navigačné menu",
+      "backTo": "Späť na {{backTo}}"
+    },
+    "more": "Ďalšie"
+  }
 }

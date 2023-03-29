@@ -136,6 +136,24 @@ export type GetGroupMembersRecursiveResult = {
   groups: GetGroupMembersRecursiveResult[]
 }
 
+// for ordering people from most important within their department - the higher score the better
+const roleOrderingScore = (role: string | null | undefined) => {
+  let score = 0
+  if (!role) return score
+  // puts leadership in front, their secretaries as second
+  // counting on 'Veduci/Veduca' and 'Riaditel/Riaditelka' to be the Role names in AD
+  // deals with '1. ...' or 'Prvý ...' as super-special role (i.e. '1. námestníčka primátora')
+  if (role.startsWith('1.') || role.startsWith('Prv')) {
+    score = 3
+  } else if (role.startsWith('Vedúc') || role.startsWith('Riadit')) {
+    score = 2
+  } else if (role.includes('Vedúc') || role.includes('Riadit')) {
+    score = 1
+  }
+  return score
+  // TODO deal with other roles
+}
+
 export const getGroupMembersRecursive = async (
   accessToken: string,
   groupId: string,
@@ -146,22 +164,31 @@ export const getGroupMembersRecursive = async (
   return {
     id: groupId,
     displayName: groupDisplayName,
-    users:
-      groupedResult['#microsoft.graph.user']?.map((user) =>
-        _.pick(user, [
-          '@odata.type',
-          'id',
-          'displayName',
-          'mail',
-          'businessPhones',
-          'jobTitle',
-          'otherMails',
-        ]),
-      ) || [],
+    users: (
+      groupedResult['#microsoft.graph.user']?.map(
+        (user) =>
+          _.pick(user, [
+            '@odata.type',
+            'id',
+            'displayName',
+            'mail',
+            'businessPhones',
+            'jobTitle',
+            'otherMails',
+          ]) as MSGraphFilteredGroupUser,
+      ) || []
+    ).sort((a, b) => {
+      const aScore = roleOrderingScore(a.jobTitle)
+      const bScore = roleOrderingScore(b.jobTitle)
+      const difference = bScore - aScore
+      return difference === 0 ? a.displayName.localeCompare(b.displayName) : difference
+    }),
     groups: groupedResult['#microsoft.graph.group']
       ? await Promise.all(
           groupedResult['#microsoft.graph.group'].map((group) =>
-            getGroupMembersRecursive(accessToken, group.id, group.displayName),
+            getGroupMembersRecursive(accessToken, group.id, group.displayName).then((result) =>
+              result.sort((a, b) => a.displayName.localeCompare(b.displayName)),
+            ),
           ),
         )
       : [],

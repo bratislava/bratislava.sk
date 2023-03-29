@@ -116,7 +116,7 @@ const Alert = ({
           {content}
         </div>
         {rest.buttons ? (
-          <div className="lg:mt-5 mt-3 flex w-full gap-5 pl-9">
+          <div className="mt-3 flex w-full gap-5 pl-9 lg:mt-5">
             <button type="button" className={extraButtonStyle} onClick={rest.buttons[0].handler}>
               {rest.buttons[0].title}
             </button>

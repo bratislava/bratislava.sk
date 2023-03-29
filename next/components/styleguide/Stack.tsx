@@ -13,12 +13,8 @@ export const Stack = ({ direction = 'row', children }: StackProps) => {
     {
       'flex-col space-y-2 items-center': direction === 'column',
       'space-x-2 items-end': direction === 'row',
-    }
+    },
   )
 
-  return (
-    <div className={classNameStyles}>
-      {children}
-    </div>
-  )
+  return <div className={classNameStyles}>{children}</div>
 }

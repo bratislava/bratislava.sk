@@ -1,4 +1,3 @@
-import { withSentry } from '@sentry/nextjs'
 import { fetchBlogPosts } from '@utils/blogpost'
 import { arrayify } from '@utils/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -11,4 +10,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.json(posts)
 }
 
-export default withSentry(handler)
+export default handler

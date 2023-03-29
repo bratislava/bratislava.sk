@@ -262,6 +262,71 @@ input ComponentBlocksBookmarkLinkInput {
   title: String
 }
 
+type ComponentBlocksCommonLink {
+  blogPost: BlogPostEntityResponse
+  id: ID!
+  label: String!
+  page: PageEntityResponse
+  url: String
+}
+
+input ComponentBlocksCommonLinkFiltersInput {
+  and: [ComponentBlocksCommonLinkFiltersInput]
+  blogPost: BlogPostFiltersInput
+  label: StringFilterInput
+  not: ComponentBlocksCommonLinkFiltersInput
+  or: [ComponentBlocksCommonLinkFiltersInput]
+  page: PageFiltersInput
+  url: StringFilterInput
+}
+
+input ComponentBlocksCommonLinkInput {
+  blogPost: ID
+  id: ID
+  label: String
+  page: ID
+  url: String
+}
+
+type ComponentBlocksComparisonCard {
+  iconMedia: UploadFileEntityResponse
+  id: ID!
+  items(filters: ComponentBlocksComparisonItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonItem]!
+  title: String!
+}
+
+input ComponentBlocksComparisonCardFiltersInput {
+  and: [ComponentBlocksComparisonCardFiltersInput]
+  items: ComponentBlocksComparisonItemFiltersInput
+  not: ComponentBlocksComparisonCardFiltersInput
+  or: [ComponentBlocksComparisonCardFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlocksComparisonCardInput {
+  iconMedia: ID
+  id: ID
+  items: [ComponentBlocksComparisonItemInput]
+  title: String
+}
+
+type ComponentBlocksComparisonItem {
+  id: ID!
+  label: String!
+}
+
+input ComponentBlocksComparisonItemFiltersInput {
+  and: [ComponentBlocksComparisonItemFiltersInput]
+  label: StringFilterInput
+  not: ComponentBlocksComparisonItemFiltersInput
+  or: [ComponentBlocksComparisonItemFiltersInput]
+}
+
+input ComponentBlocksComparisonItemInput {
+  id: ID
+  label: String
+}
+
 type ComponentBlocksDocListExtensions {
   document: UploadFileEntityResponse
   id: ID!
@@ -566,6 +631,26 @@ input ComponentBlocksPageLinkInput {
   url: String
 }
 
+type ComponentBlocksProsAndConsCard {
+  id: ID!
+  items(filters: ComponentBlocksComparisonItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonItem]!
+  title: String!
+}
+
+input ComponentBlocksProsAndConsCardFiltersInput {
+  and: [ComponentBlocksProsAndConsCardFiltersInput]
+  items: ComponentBlocksComparisonItemFiltersInput
+  not: ComponentBlocksProsAndConsCardFiltersInput
+  or: [ComponentBlocksProsAndConsCardFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlocksProsAndConsCardInput {
+  id: ID
+  items: [ComponentBlocksComparisonItemInput]
+  title: String
+}
+
 type ComponentBlocksSpaceInfo {
   bigGapCapacity: Long
   buttonTitle: String
@@ -649,6 +734,58 @@ input ComponentBlocksVideoInput {
   url: String
 }
 
+type ComponentGeneralHeader {
+  accountLink: ComponentBlocksCommonLink
+  id: ID!
+  links(filters: ComponentGeneralHeaderLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentGeneralHeaderLink]
+}
+
+input ComponentGeneralHeaderFiltersInput {
+  accountLink: ComponentBlocksCommonLinkFiltersInput
+  and: [ComponentGeneralHeaderFiltersInput]
+  links: ComponentGeneralHeaderLinkFiltersInput
+  not: ComponentGeneralHeaderFiltersInput
+  or: [ComponentGeneralHeaderFiltersInput]
+}
+
+input ComponentGeneralHeaderInput {
+  accountLink: ComponentBlocksCommonLinkInput
+  id: ID
+  links: [ComponentGeneralHeaderLinkInput]
+}
+
+type ComponentGeneralHeaderLink {
+  icon: ENUM_COMPONENTGENERALHEADERLINK_ICON!
+  id: ID!
+  label: String!
+  page: PageEntityResponse
+  showOnDesktop: Boolean!
+  showOnMobile: Boolean!
+  url: String
+}
+
+input ComponentGeneralHeaderLinkFiltersInput {
+  and: [ComponentGeneralHeaderLinkFiltersInput]
+  icon: StringFilterInput
+  label: StringFilterInput
+  not: ComponentGeneralHeaderLinkFiltersInput
+  or: [ComponentGeneralHeaderLinkFiltersInput]
+  page: PageFiltersInput
+  showOnDesktop: BooleanFilterInput
+  showOnMobile: BooleanFilterInput
+  url: StringFilterInput
+}
+
+input ComponentGeneralHeaderLinkInput {
+  icon: ENUM_COMPONENTGENERALHEADERLINK_ICON
+  id: ID
+  label: String
+  page: ID
+  showOnDesktop: Boolean
+  showOnMobile: Boolean
+  url: String
+}
+
 type ComponentMenuMenuItem {
   icon: ENUM_COMPONENTMENUMENUITEM_ICON!
   id: ID!
@@ -679,6 +816,7 @@ type ComponentMenuMenuLink {
   id: ID!
   label: String!
   page: PageEntityResponse
+  url: String
 }
 
 input ComponentMenuMenuLinkFiltersInput {
@@ -687,12 +825,14 @@ input ComponentMenuMenuLinkFiltersInput {
   not: ComponentMenuMenuLinkFiltersInput
   or: [ComponentMenuMenuLinkFiltersInput]
   page: PageFiltersInput
+  url: StringFilterInput
 }
 
 input ComponentMenuMenuLinkInput {
   id: ID
   label: String
   page: ID
+  url: String
 }
 
 type ComponentMenuMenuSection {
@@ -931,6 +1071,32 @@ input ComponentSectionsColumnedTextInput {
   content: String
   hasBackground: Boolean
   id: ID
+}
+
+type ComponentSectionsComparisonSection {
+  cards(filters: ComponentBlocksComparisonCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonCard]!
+  id: ID!
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN!
+  title: String
+}
+
+input ComponentSectionsComparisonSectionFiltersInput {
+  and: [ComponentSectionsComparisonSectionFiltersInput]
+  cards: ComponentBlocksComparisonCardFiltersInput
+  not: ComponentSectionsComparisonSectionFiltersInput
+  or: [ComponentSectionsComparisonSectionFiltersInput]
+  text: StringFilterInput
+  textAlign: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsComparisonSectionInput {
+  cards: [ComponentBlocksComparisonCardInput]
+  id: ID
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN
+  title: String
 }
 
 type ComponentSectionsContact {
@@ -1287,6 +1453,35 @@ input ComponentSectionsOrganizationalStructureInput {
   title: String
 }
 
+type ComponentSectionsProsAndConsSection {
+  cons: ComponentBlocksProsAndConsCard!
+  id: ID!
+  pros: ComponentBlocksProsAndConsCard!
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN!
+  title: String
+}
+
+input ComponentSectionsProsAndConsSectionFiltersInput {
+  and: [ComponentSectionsProsAndConsSectionFiltersInput]
+  cons: ComponentBlocksProsAndConsCardFiltersInput
+  not: ComponentSectionsProsAndConsSectionFiltersInput
+  or: [ComponentSectionsProsAndConsSectionFiltersInput]
+  pros: ComponentBlocksProsAndConsCardFiltersInput
+  text: StringFilterInput
+  textAlign: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsProsAndConsSectionInput {
+  cons: ComponentBlocksProsAndConsCardInput
+  id: ID
+  pros: ComponentBlocksProsAndConsCardInput
+  text: String
+  textAlign: ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN
+  title: String
+}
+
 type ComponentSectionsSpace {
   id: ID!
   sectionTitle: String
@@ -1383,13 +1578,11 @@ input ComponentSectionsVideosInput {
 
 type ComponentSectionsWaves {
   id: ID!
-  isRich: Boolean
   position: ENUM_COMPONENTSECTIONSWAVES_POSITION
 }
 
 input ComponentSectionsWavesFiltersInput {
   and: [ComponentSectionsWavesFiltersInput]
-  isRich: BooleanFilterInput
   not: ComponentSectionsWavesFiltersInput
   or: [ComponentSectionsWavesFiltersInput]
   position: StringFilterInput
@@ -1397,7 +1590,6 @@ input ComponentSectionsWavesFiltersInput {
 
 input ComponentSectionsWavesInput {
   id: ID
-  isRich: Boolean
   position: ENUM_COMPONENTSECTIONSWAVES_POSITION
 }
 
@@ -1482,6 +1674,13 @@ enum ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION {
   right
 }
 
+enum ENUM_COMPONENTGENERALHEADERLINK_ICON {
+  esluzby
+  kontakt
+  som_turista
+  ukraina
+}
+
 enum ENUM_COMPONENTMENUMENUITEM_ICON {
   doprava_mapy_02
   kultura_06
@@ -1534,6 +1733,11 @@ enum ENUM_COMPONENTSECTIONSBANNERBASIC_TEXTPOSITION {
   right
 }
 
+enum ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN {
+  center
+  left
+}
+
 enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
   bicykel_02_full_width
   budovy_04_full_width
@@ -1573,6 +1777,11 @@ enum ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT {
   basic
   combined
   roadmap
+}
+
+enum ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN {
+  center
+  left
 }
 
 enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION {
@@ -1773,7 +1982,48 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBannerBasicButton | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+type General {
+  createdAt: DateTime
+  header: ComponentGeneralHeader
+  locale: String
+  localizations: GeneralRelationResponseCollection
+  updatedAt: DateTime
+}
+
+type GeneralEntity {
+  attributes: General
+  id: ID
+}
+
+type GeneralEntityResponse {
+  data: GeneralEntity
+}
+
+type GeneralEntityResponseCollection {
+  data: [GeneralEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input GeneralFiltersInput {
+  and: [GeneralFiltersInput]
+  createdAt: DateTimeFilterInput
+  header: ComponentGeneralHeaderFiltersInput
+  locale: StringFilterInput
+  localizations: GeneralFiltersInput
+  not: GeneralFiltersInput
+  or: [GeneralFiltersInput]
+  updatedAt: DateTimeFilterInput
+}
+
+input GeneralInput {
+  header: ComponentGeneralHeaderInput
+}
+
+type GeneralRelationResponseCollection {
+  data: [GeneralEntity!]!
+}
+
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBannerBasicButton | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
@@ -2037,6 +2287,7 @@ type Mutation {
   createBlogPost(data: BlogPostInput!, locale: I18NLocaleCode): BlogPostEntityResponse
   createBlogPostLocalization(data: BlogPostInput, id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   createFooterLocalization(data: FooterInput, id: ID, locale: I18NLocaleCode): FooterEntityResponse
+  createGeneralLocalization(data: GeneralInput, id: ID, locale: I18NLocaleCode): GeneralEntityResponse
   createHomepageLocalization(data: HomepageInput, id: ID, locale: I18NLocaleCode): HomepageEntityResponse
   createMenuLocalization(data: MenuInput, id: ID, locale: I18NLocaleCode): MenuEntityResponse
   createPage(data: PageInput!, locale: I18NLocaleCode): PageEntityResponse
@@ -2057,6 +2308,7 @@ type Mutation {
   createVzn(data: VznInput!): VznEntityResponse
   deleteBlogPost(id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
   deleteFooter(locale: I18NLocaleCode): FooterEntityResponse
+  deleteGeneral(locale: I18NLocaleCode): GeneralEntityResponse
   deleteHomepage(locale: I18NLocaleCode): HomepageEntityResponse
   deleteMenu(locale: I18NLocaleCode): MenuEntityResponse
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
@@ -2092,6 +2344,7 @@ type Mutation {
   updateBlogPost(data: BlogPostInput!, id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFooter(data: FooterInput!, locale: I18NLocaleCode): FooterEntityResponse
+  updateGeneral(data: GeneralInput!, locale: I18NLocaleCode): GeneralEntityResponse
   updateHomepage(data: HomepageInput!, locale: I18NLocaleCode): HomepageEntityResponse
   updateMenu(data: MenuInput!, locale: I18NLocaleCode): MenuEntityResponse
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
@@ -2113,6 +2366,7 @@ type Mutation {
 type Page {
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
+  headerLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
   locale: String
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   metaDiscription: String
@@ -2126,6 +2380,7 @@ type Page {
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
   slug: String
+  subtext: String
   title: String
   updatedAt: DateTime
 }
@@ -2214,6 +2469,7 @@ input PageFiltersInput {
   and: [PageFiltersInput]
   childPages: PageFiltersInput
   createdAt: DateTimeFilterInput
+  headerLinks: ComponentBlocksCommonLinkFiltersInput
   id: IDFilterInput
   locale: StringFilterInput
   localizations: PageFiltersInput
@@ -2227,12 +2483,14 @@ input PageFiltersInput {
   publishedAt: DateTimeFilterInput
   relatedContents: TagFiltersInput
   slug: StringFilterInput
+  subtext: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input PageInput {
   childPages: [ID]
+  headerLinks: [ComponentBlocksCommonLinkInput]
   metaDiscription: String
   pageBackgroundImage: ID
   pageButtonContent: ComponentBlocksBlogPostLinkInput
@@ -2244,6 +2502,7 @@ input PageInput {
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
   slug: String
+  subtext: String
   title: String
 }
 
@@ -2255,7 +2514,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBannerBasic | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 
@@ -2339,6 +2598,7 @@ type Query {
   blogPost(id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   blogPosts(filters: BlogPostFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostEntityResponseCollection
   footer(locale: I18NLocaleCode, publicationState: PublicationState = LIVE): FooterEntityResponse
+  general(locale: I18NLocaleCode): GeneralEntityResponse
   homepage(locale: I18NLocaleCode, publicationState: PublicationState = LIVE): HomepageEntityResponse
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection

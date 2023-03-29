@@ -109,7 +109,7 @@ class OpenDataClient {
 
     if (res.status >= 300) {
       throw new Error(
-        `Problem with server communication [status:${res.status}] [params: type:${type} id:${id} action:${action}]`
+        `Problem with server communication [status:${res.status}] [params: type:${type} id:${id} action:${action}]`,
       )
     }
 
@@ -148,7 +148,10 @@ class OpenDataClient {
     return data.files
   }
 
-  private _downloadAllFiles = async (datasetFiles: IDatasetFile[], resultFileType: IResultFileType) => {
+  private _downloadAllFiles = async (
+    datasetFiles: IDatasetFile[],
+    resultFileType: IResultFileType,
+  ) => {
     const downloadedFiles: IJSONFile[] = []
 
     for (const file of datasetFiles) {

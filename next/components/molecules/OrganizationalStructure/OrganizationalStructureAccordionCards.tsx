@@ -27,7 +27,7 @@ export const OrganizationalStructureAccordionCards = ({
   )
   return (
     <>
-      <HorizontalScrollWrapper className="my-8 -ml-8 flex w-screen gap-x-5 px-8 lg:hidden py-3">
+      <HorizontalScrollWrapper className="my-8 -ml-8 flex w-screen gap-x-5 px-8 py-3 lg:hidden">
         {cards}
       </HorizontalScrollWrapper>
       <div className="my-8 hidden w-full grid-cols-3 gap-8 lg:grid">{cards}</div>

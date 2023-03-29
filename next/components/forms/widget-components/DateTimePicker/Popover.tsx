@@ -30,7 +30,7 @@ const Popover = (props: PopoverBase) => {
       <div
         {...mergeProps(overlayProps, modalProps, dialogProps)}
         ref={popoverRef}
-        className="w-full absolute z-50 mt-2 focus:outline-none"
+        className="absolute z-50 mt-2 w-full focus:outline-none"
       >
         {children}
         <DismissButton onDismiss={onClose} />

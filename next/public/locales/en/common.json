@@ -123,5 +123,12 @@
   "noBlogPostsToShow": "No articles to show",
   "noPagesToShow": "No pages to show",
   "noUsersToShow": "No contacts to show",
-  "skipNavigation": "Skip navigation"
+  "skipNavigation": "Skip navigation",
+  "NavMenu": {
+    "aria": {
+      "navMenuLabel": "Main menu",
+      "backTo": "Back to {{backTo}}"
+    },
+    "more": "More"
+  }
 }

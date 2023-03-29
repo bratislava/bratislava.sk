@@ -30,7 +30,7 @@ export const BasicSearchOld = ({
   // const { Link: UILink } = useUIContext()
   const [input, setInput] = useState(initialValue || '')
   return (
-    <div className={cx('flex flex-col w-full max-w-[730px]', className)}>
+    <div className={cx('flex w-full max-w-[730px] flex-col', className)}>
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -57,7 +57,9 @@ export const BasicSearchOld = ({
             {buttonText}
           </Button>
         </div>
-        <div className={cx('lg:hidden gap-y-4', { 'flex flex-col': !collapse }, { hidden: collapse })}>
+        <div
+          className={cx('gap-y-4 lg:hidden', { 'flex flex-col': !collapse }, { hidden: collapse })}
+        >
           <input
             id="name"
             type="text"

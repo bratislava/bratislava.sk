@@ -1,12 +1,22 @@
 const { join } = require('path')
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
+const screens = require('./tailwind.config.screens')
+
+const customVariants = plugin(function ({ addVariant }) {
+  addVariant('not-first', '&:not(:first-child)')
+})
 
 module.exports = {
   content: [
     join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'),
     join(__dirname, 'components/**/*.{js,jsx,ts,tsx}'),
   ],
-  darkMode: 'media', // or 'class'
+  plugins: [customVariants, require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
+  corePlugins: {
+    container: false,
+  },
+  mode: 'jit',
   theme: {
     fontWeight: {
       light: '300',
@@ -15,13 +25,7 @@ module.exports = {
       semibold: '600',
       bold: '700',
     },
-    screens: {
-      xs: '360px',
-      sm: '480px',
-      md: '768px',
-      lg: '1216px',
-      xl: '1280px',
-    },
+    screens,
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
       md: '0px 8px 16px rgba(0, 0, 0, 0.12)',
@@ -172,6 +176,51 @@ module.exports = {
         'category-200': 'var(--category-color-200)',
         'category-100': 'var(--category-color-100)',
       },
+      // Inspired by: https://www.radix-ui.com/docs/primitives/components/navigation-menu
+      keyframes: {
+        enterFromRight: {
+          from: { opacity: 0, transform: 'translateX(200px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+        enterFromLeft: {
+          from: { opacity: 0, transform: 'translateX(-200px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+        exitToRight: {
+          from: { opacity: 1, transform: 'translateX(0)' },
+          to: { opacity: 0, transform: 'translateX(200px)' },
+        },
+        exitToLeft: {
+          from: { opacity: 1, transform: 'translateX(0)' },
+          to: { opacity: 0, transform: 'translateX(-200px)' },
+        },
+        scaleIn: {
+          from: { opacity: 0, transform: 'rotateX(-10deg) scale(0.9)' },
+          to: { opacity: 1, transform: 'rotateX(0deg) scale(1)' },
+        },
+        scaleOut: {
+          from: { opacity: 1, transform: 'rotateX(0deg) scale(1)' },
+          to: { opacity: 0, transform: 'rotateX(-10deg) scale(0.95)' },
+        },
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        fadeOut: {
+          from: { opacity: 1 },
+          to: { opacity: 0 },
+        },
+      },
+      animation: {
+        scaleIn: 'scaleIn 200ms ease',
+        scaleOut: 'scaleOut 200ms ease',
+        fadeIn: 'fadeIn 200ms ease',
+        fadeOut: 'fadeOut 200ms ease',
+        enterFromLeft: 'enterFromLeft 250ms ease',
+        enterFromRight: 'enterFromRight 250ms ease',
+        exitToLeft: 'exitToLeft 250ms ease',
+        exitToRight: 'exitToRight 250ms ease',
+      },
       borderWidth: {
         3: '3px',
       },
@@ -195,9 +244,4 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
-  corePlugins: {
-    container: false,
-  },
-  mode: 'jit',
 }
