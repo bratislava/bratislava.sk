@@ -108,8 +108,7 @@
         "sections.articles-list",
         "sections.organizational-structure",
         "sections.iframe",
-        "sections.gallery",
-        "sections.banner-basic"
+        "sections.gallery"
       ]
     }
   }

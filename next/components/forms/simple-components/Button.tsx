@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
 import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
@@ -89,7 +90,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'w-full': fullWidth,
         'w-fit': !fullWidth,
         // text for lg button
-        'text-16-semibold px-4 py-2.5':
+        'text-16 font-semibold px-4 py-2.5':
           size === 'lg' &&
           !icon &&
           hasText &&
@@ -99,7 +100,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             variant === 'category' ||
             variant === 'category-outline'),
         // text for sm button
-        'text-16-semibold px-4 py-1.5':
+        'text-16 font-semibold px-4 py-1.5':
           size === 'sm' &&
           !icon &&
           hasText &&

@@ -390,10 +390,11 @@ fragment ComparisonSection on ComponentSectionsComparisonSection {
   }
 }
 
-fragment BannerBasicSection on ComponentSectionsBannerBasic {
-  header
+fragment BannerSection on ComponentSectionsBanner {
+  bannerTitle: title
   content
-  textPosition
+  contentPosition
+  bannerVariant: variant
   media {
     data {
       attributes {
@@ -402,16 +403,13 @@ fragment BannerBasicSection on ComponentSectionsBannerBasic {
     }
   }
   primaryLink {
-    url
-    linkText
+    ...CommonLink
   }
   secondaryLink {
-    url
-    linkText
+    ...CommonLink
   }
   tertiaryLink {
-    url
-    linkText
+    ...CommonLink
   }
 }
 
@@ -493,10 +491,6 @@ fragment Sections on PageSectionsDynamicZone {
     ...OrganizationalStructureSection
   }
 
-  ... on ComponentSectionsBannerBasic {
-    ...BannerBasicSection
-  }
-
   # ComponentSectionsOfficialBoard has no attributes
 
   ... on ComponentSectionsProsAndConsSection {
@@ -505,6 +499,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsComparisonSection {
     ...ComparisonSection
+  }
+
+  ... on ComponentSectionsBanner {
+    ...BannerSection
   }
 }
 

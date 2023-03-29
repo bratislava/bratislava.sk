@@ -5,7 +5,7 @@ import * as React from 'react'
 
 import AccordionSection from './sections/general/AccordionSection'
 import ArticlesListSection from './sections/general/ArticlesListSection/ArticlesListSection'
-import BannerBasicSection from './sections/general/BannerBasicSection'
+import BannerSection from './sections/general/BannerSection'
 import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
 import ColumnedTextSection from './sections/general/ColumnedTextSection'
 import ComparisonSection from './sections/general/ComparisonSection'
@@ -93,8 +93,8 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsComparisonSection':
       return <ComparisonSection section={section} />
 
-    case 'ComponentSectionsBannerBasic':
-      return <BannerBasicSection section={section} />
+    case 'ComponentSectionsBanner':
+      return <BannerSection section={section} />
 
     default:
       return null
