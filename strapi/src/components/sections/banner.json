@@ -1,0 +1,59 @@
+{
+  "collectionName": "components_sections_banners",
+  "info": {
+    "displayName": "Banner",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text"
+    },
+    "contentPosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "required": true,
+      "default": "left"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "color",
+        "dark",
+        "white_condensed"
+      ],
+      "required": true,
+      "default": "color"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "primaryLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    },
+    "secondaryLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    },
+    "tertiaryLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    }
+  }
+}
