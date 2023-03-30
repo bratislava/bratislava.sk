@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { GeneralQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
 import { AdvancedSearch, SectionContainer } from '@bratislava/ui-bratislava'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { pageStyle, parseFooter } from '@utils/page'
+import { pageStyle } from '@utils/page'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -20,33 +18,23 @@ import UsersResults from '../components/molecules/SearchPage/UsersResults'
 
 type PageProps = {
   general: GeneralQuery
-  footer: PageBySlugQuery['footer']
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
-  const { footer } = await client.PageBySlug({
-    slug: 'test',
-    locale,
-  })
 
   const general = await client.General({ locale })
-
-  if (!footer) {
-    return { notFound: true }
-  }
 
   return {
     props: {
       general,
-      footer,
-      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common'])),
     },
     revalidate: 10,
   }
 }
 
-const Search = ({ general, footer }: PageProps) => {
+const Search = ({ general }: PageProps) => {
   const { t, i18n } = useTranslation('common')
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -86,7 +74,7 @@ const Search = ({ general, footer }: PageProps) => {
         ]}
         slug="/vyhladavanie"
       >
-        <PageLayout footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}>
+        <PageLayout>
           <style
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{

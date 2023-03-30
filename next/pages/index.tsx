@@ -38,8 +38,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
 
   const { homepage } = await client.Homepage({ locale })
 
-  const { footer } = await client.Footer({ locale })
-
   const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
     title: post?.title,
     url: post?.slug,
@@ -107,7 +105,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
         locale,
       }),
       general,
-      footer,
       latestBlogposts: blogPosts,
       homepage,
       page: {
@@ -133,7 +130,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
 const Homepage = ({
   general,
   data,
-  footer,
   page,
   homepage,
   latestBlogposts,
@@ -152,7 +148,7 @@ const Homepage = ({
   return (
     <GeneralContextProvider general={general}>
       <PageContextProvider locale={page.locale} localizations={page.localizations} slug="">
-        <PageLayout footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}>
+        <PageLayout>
           {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
           <Head>
             <title>{homepage?.data?.attributes?.title}</title>

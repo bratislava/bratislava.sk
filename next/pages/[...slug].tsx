@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
   const slug = arrayify(ctx.params.slug).join('/')
 
-  const { pages, footer } = await client.PageBySlug({
+  const { pages } = await client.PageBySlug({
     slug,
     locale,
   })
@@ -61,7 +61,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       general,
       slug,
       page: pages,
-      footer,
       ...(await serverSideTranslations(locale, pageTranslations)),
     },
     revalidate: 10,
@@ -72,11 +71,9 @@ interface GenericPageProps {
   general: GeneralQuery
   slug: string
   page: GeneralPageFragment
-  footer: PageBySlugQuery['footer']
 }
 
-const Page = ({ general, page, footer }: GenericPageProps) => {
-  const parsedFooter = parseFooter(footer?.data?.attributes)
+const Page = ({ general, page }: GenericPageProps) => {
   const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
     return {
       locale: locale.attributes.locale,
@@ -91,7 +88,7 @@ const Page = ({ general, page, footer }: GenericPageProps) => {
         slug={page?.data?.[0]?.attributes.slug ?? ''}
         localizations={localizations}
       >
-        <GeneralPage pages={page} footer={parsedFooter} />
+        <GeneralPage pages={page} />
       </PageContextProvider>
     </GeneralContextProvider>
   )

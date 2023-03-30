@@ -8,7 +8,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { CommonLinkFragment, GeneralPageFragment } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps } from '@bratislava/ui-bratislava'
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { isDefined } from '@utils/isDefined'
@@ -99,11 +98,10 @@ const parseButtons = (page: GeneralPageFragment['data']['0']['attributes']) => {
 
 export interface GeneralPageProps {
   pages: GeneralPageFragment
-  footer: FooterProps
   children?: React.ReactNode
 }
 
-const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
+const GeneralPage = ({ pages }: GeneralPageProps) => {
   const page = pages?.data?.[0]?.attributes
   const pageId = pages?.data?.[0].id
 
@@ -135,7 +133,7 @@ const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
           <meta name="description" content={page?.metaDiscription} />
         </Head>
       )}
-      <PageLayout footer={footer}>
+      <PageLayout>
         {page?.pageCategory?.data?.attributes?.color && (
           <style
             dangerouslySetInnerHTML={{

@@ -6,7 +6,7 @@
 /* eslint-disable react/no-danger */
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostFragment } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, SectionContainer } from '@bratislava/ui-bratislava'
+import { SectionContainer } from '@bratislava/ui-bratislava'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import PageLayout from '@components/layouts/PageLayout'
 import { getNumericLocalDate } from '@utils/local-date'
@@ -19,7 +19,6 @@ import Sections from '../molecules/Sections'
 
 export interface GeneralPageProps {
   post: BlogPostFragment
-  footer: FooterProps
   children?: React.ReactNode
 }
 
@@ -36,7 +35,7 @@ const SocialMediaButton = ({ href, children }: { href: string; children: React.R
   return <button onClick={openSharePage}>{children}</button>
 }
 
-const BlogPostPage = ({ post, footer }: GeneralPageProps) => {
+const BlogPostPage = ({ post }: GeneralPageProps) => {
   const [socialLink, setSocialLink] = React.useState('')
   React.useEffect(() => setSocialLink(window.location.href), [])
   const blogPost = post.data[0].attributes
@@ -53,7 +52,7 @@ const BlogPostPage = ({ post, footer }: GeneralPageProps) => {
           <meta name="description" content={blogPost?.excerpt} />
         </Head>
       )}
-      <PageLayout footer={footer}>
+      <PageLayout>
         {pageCategory?.color && (
           <style
             dangerouslySetInnerHTML={{
