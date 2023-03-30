@@ -2,7 +2,7 @@ import BannerPhone from '@assets/images/banner-phone.png'
 import CallIcon from '@assets/images/forms/call.svg'
 import cx from 'classnames'
 import AccountMarkdown from 'components/forms/segments/AccountMarkdown/AccountMarkdown'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import Button from './Button'
 
@@ -59,7 +59,7 @@ const Banner = ({
         </div>
       </div>
       <div className="my-auto w-full sm:w-1/2">
-        <Image src={BannerPhone} />
+        <Image src={BannerPhone} alt="" />
       </div>
     </div>
   )

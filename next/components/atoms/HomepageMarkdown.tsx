@@ -10,8 +10,6 @@ import { LiProps } from 'react-markdown/lib/ast-to-react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
-import ContentImage from './ContentImage'
-
 export interface HomepageMarkdownProps {
   className?: string
   content?: string
@@ -91,7 +89,7 @@ export const HomepageMarkdown = ({ className, content, numericalList }: Homepage
           </UILink>
         ),
         img: ({ src, alt }) => (
-          <div className="flex justify-center">{src && <ContentImage src={src} alt={alt} />}</div>
+          <div className="flex justify-center">{src && <img src={src} alt={alt} />}</div>
         ),
         blockquote: ({ children }) => (
           <div className="mb-5 border-l-4 border-category-600 py-3 pl-10 last:mb-0 lg:my-10">

@@ -1,5 +1,6 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
@@ -33,6 +34,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
               className="h-full min-h-[350px] py-16"
               key={index}
               imageSrc={blogCard.imageSrc ?? ''}
+              imageSizes={generateImageSizes({ lg: '224px', default: '50vw' })}
             >
               <p className="text-p2 lg:text-p1 text-left line-clamp-3">{blogCard.title}</p>
               <UILink
