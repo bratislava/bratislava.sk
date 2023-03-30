@@ -12,7 +12,6 @@ import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineI
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
-import { parseFooter } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
@@ -37,8 +36,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
   const general = await client.General({ locale })
 
   const { homepage } = await client.Homepage({ locale })
-
-  const { footer } = await client.Footer({ locale })
 
   const homepagePosts = homepage?.data?.attributes?.posts?.map((post) => ({
     title: post?.title,
@@ -107,7 +104,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
         locale,
       }),
       general,
-      footer,
       latestBlogposts: blogPosts,
       homepage,
       page: {
@@ -133,7 +129,6 @@ export const getStaticProps = async (ctx: { locale: string }) => {
 const Homepage = ({
   general,
   data,
-  footer,
   page,
   homepage,
   latestBlogposts,
@@ -151,8 +146,8 @@ const Homepage = ({
 
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider locale={page.locale} localizations={page.localizations} slug="">
-        <PageLayout footer={(footer && parseFooter(footer?.data?.attributes)) ?? undefined}>
+      <PageContextProvider localizations={page.localizations} slug="">
+        <PageLayout>
           {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
           <Head>
             <title>{homepage?.data?.attributes?.title}</title>

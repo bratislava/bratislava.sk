@@ -3,6 +3,7 @@ import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -89,12 +90,7 @@ const MobileNavMenu = () => {
               <HorizontalDivider />
               <li className="mt-2 flex justify-center">
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-                  <Button
-                    size="sm"
-                    onPress={() => window.open(accountLink.url ?? '', '_blank')}
-                    variant="negative"
-                    text={accountLink.label}
-                  />
+                  <Button size="sm" variant="negative" {...getCommonLinkProps(accountLink)} />
                 </NavigationMenu.Link>
               </li>
             </>

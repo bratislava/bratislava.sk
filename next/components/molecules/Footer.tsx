@@ -1,15 +1,15 @@
-import { Footer as UIFooter, FooterProps } from '@bratislava/ui-bratislava'
+import { Footer as UIFooter } from '@bratislava/ui-bratislava'
+import { useGeneralContext } from '@utils/generalContext'
+import { parseFooter } from '@utils/page'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
+import { useMemo } from 'react'
 
-// Uncomment for panorama divider
-// import FooterWidth from '@assets/images/footer-city.svg'
-// import FooterWidthMobile from '@assets/images/footer-city-mobile.svg'
-// import FooterWidthTablet from '../../components/ui/Divider/dividers/footer-city-tablet.svg'
 import { usePageContext } from '../layouts/PageContextProvider'
 
-const Footer = (props: FooterProps) => {
+const Footer = () => {
   const { locale: currentLocale, localizations = [] } = usePageContext()
+  const { footer } = useGeneralContext()
   const [t] = useTranslation('common')
 
   const languageLinks = localizations.map(({ locale, slug }) => ({
@@ -18,20 +18,14 @@ const Footer = (props: FooterProps) => {
     locale,
   }))
 
+  const parsedFooter = useMemo(() => parseFooter(footer?.data?.attributes), [footer])
+
   return (
-    <div className="mt-24 ">
-      {/* Uncomment for panorama divider */}
-      {/* <FooterWidth className="hidden w-full md:block" />
-      <FooterWidthTablet className="hidden w-full md:hidden" />
-      <FooterWidthMobile className="w-full block sm:hidden" /> */}
-
-      {/* Uncomment for waves divider */}
-      {/* <Waves className="-mb-1" waveColor="white" wavePosition="top" /> */}
-
+    <div className="mt-24">
       <div className="px-8">
         <div className="mx-auto max-w-screen-lg">
           <hr />
-          <UIFooter className="pb-14" {...props} languageLinks={languageLinks} />
+          <UIFooter className="pb-14" {...parsedFooter} languageLinks={languageLinks} />
         </div>
       </div>
     </div>

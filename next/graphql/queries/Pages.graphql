@@ -11,90 +11,79 @@ query PagesStaticPaths {
 
 query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
   pages(filters: { slug: { eq: $slug } }, locale: $locale) {
-    ...GeneralPage
-  }
-
-  footer(locale: $locale) {
     data {
-      attributes {
-        ...Footer
-      }
+      ...PageEntity
     }
-  }
-
-  mainMenu: pageCategories(locale: $locale) {
-    ...MainMenuItem
   }
 }
 
-fragment GeneralPage on PageEntityResponseCollection {
-  data {
-    attributes {
-      slug
+fragment PageEntity on PageEntity {
+  id
+  attributes {
+    slug
+    title
+    subtext
+    pageColor
+    metaDiscription
+    pageBackgroundImage {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
+    headerLinks {
+      ...CommonLink
+    }
+    # TODO: Remove legacy
+    pageButtonContent {
       title
-      subtext
-      pageColor
-      metaDiscription
-      pageBackgroundImage {
-        data {
-          attributes {
-            url
-          }
+      url
+    }
+    sections {
+      ...Sections
+    }
+    locale
+    localizations {
+      ...Localization
+    }
+    pageHeaderSections {
+      __typename
+      ... on ComponentSectionsSubpageList {
+        id
+        subpageList(pagination: { limit: 50 }) {
+          ...PageLinkBlock
         }
       }
-      headerLinks {
-        ...CommonLink
-      }
-      # TODO: Remove legacy
-      pageButtonContent {
-        title
-        url
-      }
-      sections {
-        ...Sections
-      }
-      locale
-      localizations {
-        ...Localization
-      }
-      pageHeaderSections {
-        __typename
-        ... on ComponentSectionsSubpageList {
-          id
-          subpageList(pagination: { limit: 50 }) {
-            ...PageLinkBlock
-          }
+      ... on ComponentSectionsFeaturedBlogPosts {
+        id
+        first_blog {
+          ...BlogSection
         }
-        ... on ComponentSectionsFeaturedBlogPosts {
-          id
-          first_blog {
-            ...BlogSection
-          }
-          second_blog {
-            ...BlogSection
-          }
-          third_blog {
-            ...BlogSection
-          }
+        second_blog {
+          ...BlogSection
+        }
+        third_blog {
+          ...BlogSection
         }
       }
-      parentPage {
-        data {
-          attributes {
-            ...ParentPage
-            parentPage {
-              data {
-                attributes {
-                  ...ParentPage
-                  parentPage {
-                    data {
-                      attributes {
-                        ...ParentPage
-                        parentPage {
-                          data {
-                            attributes {
-                              ...ParentPage
-                            }
+    }
+    parentPage {
+      data {
+        attributes {
+          ...ParentPage
+          parentPage {
+            data {
+              attributes {
+                ...ParentPage
+                parentPage {
+                  data {
+                    attributes {
+                      ...ParentPage
+                      parentPage {
+                        data {
+                          attributes {
+                            ...ParentPage
                           }
                         }
                       }
@@ -106,17 +95,16 @@ fragment GeneralPage on PageEntityResponseCollection {
           }
         }
       }
-      pageCategory {
-        data {
-          id
-          attributes {
-            title
-            color
-          }
+    }
+    pageCategory {
+      data {
+        id
+        attributes {
+          title
+          color
         }
       }
     }
-    id
   }
 }
 

@@ -1,17 +1,15 @@
 // @ts-strict-ignore
 import {
-  BlogPostFragment,
-  BlogPostLinkFragment,
   Enum_Pagecategory_Color,
   FileBlockFragment,
   FooterFragment,
   PageLinkBlockFragment,
 } from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, NewsCardProps, TFile } from '@bratislava/ui-bratislava'
+import { FooterProps, TFile } from '@bratislava/ui-bratislava'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
-import { getLocalDate, getNumericLocalDate } from './local-date'
+import { getLocalDate } from './local-date'
 import { isPresent } from './utils'
 
 export type CategoriesType =
@@ -107,18 +105,23 @@ export const transformColorToCategory = (pageColor: string): string => {
     case 'red':
       category = 'main'
       break
+
     case 'blue':
       category = 'transport'
       break
+
     case 'green':
       category = 'environment'
       break
+
     case 'yellow':
       category = 'social'
       break
+
     case 'purple':
       category = 'education'
       break
+
     case 'brown':
       category = 'culture'
       break
@@ -135,14 +138,19 @@ export const getHoverColor = (color: Enum_Pagecategory_Color): string => {
   switch (color) {
     case Enum_Pagecategory_Color.Red:
       return 'hover:text-main-600'
+
     case Enum_Pagecategory_Color.Blue:
       return 'hover:text-transport-600'
+
     case Enum_Pagecategory_Color.Green:
       return 'hover:text-environment-600'
+
     case Enum_Pagecategory_Color.Yellow:
       return 'hover:text-social-600'
+
     case Enum_Pagecategory_Color.Purple:
       return 'hover:text-education-600'
+
     case Enum_Pagecategory_Color.Brown:
       return 'hover:text-culture-600'
 
@@ -205,22 +213,6 @@ export const parsePageLink = (
   }
 }
 
-export const parseBlogPostLink = (
-  blogPostLink?: BlogPostLinkFragment | null,
-  slug?: string,
-): { title: string; url: string } | null => {
-  if (!blogPostLink)
-    return {
-      title: '',
-      url: `/blog/${slug}` ?? '',
-    }
-
-  return {
-    title: blogPostLink.title || blogPostLink.blogPost?.data?.attributes?.title || '',
-    url: blogPostLink.url ?? `/blog/${blogPostLink.blogPost?.data?.attributes?.slug}` ?? '',
-  }
-}
-
 // Page FileList
 export const formatFiles = (files: FileBlockFragment[]): TFile[] =>
   files.map((file) => ({
@@ -278,48 +270,6 @@ export const groupByCategory = <Category extends string | null, T extends { cate
     category: sorted[key].length > 0 ? sorted[key][0]?.category : (key as Category),
     items: sorted[key] as T[],
   }))
-}
-
-// Page Related Content
-export const parseRelatedBlogPosts = (
-  RelatedContentBlogPosts: BlogPostFragment[],
-): NewsCardProps[] => {
-  const array: NewsCardProps[] = RelatedContentBlogPosts.map((relatedBlogPost) => {
-    const blogpost = relatedBlogPost.data[0]
-    return {
-      id: blogpost.id,
-      title: blogpost.attributes?.title ?? undefined,
-      coverImage: {
-        data: {
-          attributes: {
-            url: blogpost.attributes?.coverImage?.data?.attributes?.url,
-          },
-        },
-      },
-      tag: {
-        data: {
-          attributes: {
-            title:
-              blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
-            pageCategory: {
-              data: {
-                attributes: {
-                  color:
-                    blogpost.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes
-                      ?.color,
-                },
-              },
-            },
-          },
-        },
-      },
-      excerpt: blogpost.attributes?.excerpt ?? undefined,
-      updatedAt: getNumericLocalDate(blogpost.attributes?.updatedAt).split('.').join('.  '),
-      createdAt: getNumericLocalDate(blogpost.attributes?.date_added).split('.').join('.  '),
-      moreLink: parseBlogPostLink(blogpost.attributes?.moreLink, blogpost.attributes?.slug),
-    }
-  })
-  return array
 }
 
 // Page Accordion Item - regex for secondary text

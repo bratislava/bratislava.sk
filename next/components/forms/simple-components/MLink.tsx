@@ -34,12 +34,12 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
 
     return !regEx.test(href) ? (
       <Link href={href} passHref ref={ref} {...rest} className={styles}>
-        <p>{label}</p>
+        <span>{label}</span>
         {children}
       </Link>
     ) : (
       <a ref={ref} {...rest} className={styles} href={href}>
-        <p>{label}</p>
+        <span>{label}</span>
         {children}
       </a>
     )

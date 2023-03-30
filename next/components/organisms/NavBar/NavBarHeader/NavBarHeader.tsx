@@ -4,6 +4,7 @@ import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import { useGeneralContext } from '@utils/generalContext'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
@@ -60,15 +61,8 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
               return null
             })}
 
-          {/* TODO replace by button, remove Dividers */}
-          {accountLink?.url ? (
-            <Button
-              size="sm"
-              onPress={() => window.open(accountLink.url ?? '', '_blank')}
-              variant="negative"
-              text={accountLink.label}
-              className="mb-30"
-            />
+          {accountLink ? (
+            <Button size="sm" variant="negative" {...getCommonLinkProps(accountLink)} />
           ) : (
             <Divider />
           )}

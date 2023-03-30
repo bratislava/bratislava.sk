@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { getGroupMembersRecursive, getToken } from 'backend/services/ms-graph'
 import type { NextApiRequest, NextApiResponse } from 'next'
 

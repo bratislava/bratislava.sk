@@ -1,28 +1,27 @@
-import { FooterProps } from '@bratislava/ui-bratislava'
 import { useNavMenuContext } from '@bratislava/ui-bratislava/../organisms/NavBar/NavMenu/navMenuContext'
 import cx from 'classnames'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import Footer from '../molecules/Footer'
 import NavBar from '../organisms/NavBar/NavBar'
 
-interface BasePageLayoutProps {
-  footer?: FooterProps
+type PageLayoutProps = {
+  className?: string
 }
 
-const PageLayout = ({
-  className,
-  children,
-  footer,
-}: React.HTMLAttributes<HTMLDivElement> & BasePageLayoutProps) => {
+const PageLayout = ({ className, children }: PropsWithChildren<PageLayoutProps>) => {
   const { menuValue } = useNavMenuContext()
 
   return (
     <div
-      className={cx(className, {
-        // If menu is open, disable pointer events on the whole page (pointer events on menu must be re-enabled)
-        'lg:pointer-events-none': menuValue !== '',
-      })}
+      className={twMerge(
+        className,
+        cx({
+          // If menu is open, disable pointer events on the whole page (pointer events on menu must be re-enabled)
+          'lg:pointer-events-none': menuValue !== '',
+        }),
+      )}
     >
       <header>
         <NavBar />
@@ -30,7 +29,7 @@ const PageLayout = ({
 
       <main>{children}</main>
 
-      {footer && <Footer {...footer} />}
+      <Footer />
     </div>
   )
 }
