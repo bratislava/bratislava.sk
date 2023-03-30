@@ -20,17 +20,6 @@ fragment CommonLink on ComponentBlocksCommonLink {
   }
   url
 }
-
-query Footer($locale: I18NLocaleCode!) {
-  footer(locale: $locale) {
-    data {
-      attributes {
-        ...Footer
-      }
-    }
-  }
-}
-
 fragment Footer on Footer {
   address
   copyright
@@ -47,41 +36,6 @@ fragment Footer on Footer {
     pageLinks {
       ...PageLinkBlock
     }
-  }
-}
-
-fragment MainMenuItem on PageCategoryEntityResponseCollection {
-  data {
-    id
-    attributes {
-      title
-      color
-      icon
-      iconHover
-      priority
-      subcategories {
-        data {
-          id
-          attributes {
-            title
-            priority
-            icon
-            moreLink {
-              ...PageLinkBlock
-            }
-            pages {
-              ...PageLinkBlock
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-query MainMenu($locale: I18NLocaleCode!) {
-  pageCategories(locale: $locale) {
-    ...MainMenuItem
   }
 }
 
@@ -149,6 +103,14 @@ fragment HeaderLink on ComponentGeneralHeaderLink {
   icon
 }
 
+fragment GeneralPageRelation on PageEntity {
+    id
+    attributes {
+      title
+      slug
+    }
+}
+
 fragment General on General {
   header {
     links {
@@ -156,6 +118,31 @@ fragment General on General {
     }
     accountLink {
       ...CommonLink
+    }
+  }
+  newsPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  officialBoardPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  privacyPolicyPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  vznPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  showUaChatPages {
+    data {
+      ...GeneralPageRelation
     }
   }
 }
@@ -174,6 +161,13 @@ query General($locale: I18NLocaleCode!) {
         menus {
           ...MenuItem
         }
+      }
+    }
+  }
+  footer(locale: $locale) {
+    data {
+      attributes {
+        ...Footer
       }
     }
   }

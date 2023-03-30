@@ -508,8 +508,7 @@ fragment Sections on PageSectionsDynamicZone {
 
 fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
   id
-  # TODO consider limit -1
-  subpageList(pagination: { limit: 50 }) {
+  subpageList(pagination: { limit: -1 }) {
     ...PageLinkBlock
   }
 }

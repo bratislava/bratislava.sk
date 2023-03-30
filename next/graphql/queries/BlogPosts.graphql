@@ -1,15 +1,10 @@
 query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
   blogPosts(filters: { slug: { eq: $slug } }, locale: $locale) {
-    ...BlogPost
+    data {
+      ...BlogPostEntity
+    }
   }
 }
-
-# TODO: still unclear the logic
-# query RelatedPostsBySlug($slug: String!, $locale: String!) {
-#   relatedPostsBySlug(slug: $slug, locale: $locale) {
-#     ...BlogPost
-#   }
-# }
 
 query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
   blogPosts(
@@ -17,16 +12,19 @@ query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
     pagination: { limit: $limit, start: $start }
     sort: "publishedAt:desc"
   ) {
-    ...BlogPost
+    data {
+      ...BlogPostEntity
+    }
   }
 }
 
-query BlogPostsStaticPaths($locale: I18NLocaleCode) {
-  blogPosts(locale: $locale, sort: "publishedAt:desc") {
+query BlogPostsStaticPaths {
+  blogPosts(locale: "all", sort: "publishedAt:desc") {
     data {
       id
       attributes {
         slug
+        locale
       }
     }
   }
@@ -98,8 +96,7 @@ query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLo
 }
 
 query RelatedTags($where: TagFiltersInput) {
-  # TODO: Consider using limit: -1.
-  tags(pagination: { limit: 100 }, filters: $where) {
+  tags(pagination: { limit: -1 }, filters: $where) {
     data {
       attributes {
         title
@@ -116,47 +113,45 @@ query RelatedTags($where: TagFiltersInput) {
   }
 }
 
-fragment BlogPost on BlogPostEntityResponseCollection {
-  data {
-    id
-    attributes {
-      slug
-      excerpt
-      title
-      updatedAt
-      publishedAt
-      date_added
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
-                id
+fragment BlogPostEntity on BlogPostEntity {
+  id
+  attributes {
+    slug
+    excerpt
+    title
+    updatedAt
+    publishedAt
+    date_added
+    tag {
+      data {
+        attributes {
+          title
+          pageCategory {
+            data {
+              attributes {
+                title
+                color
               }
+              id
             }
           }
-          id
+        }
+        id
+      }
+    }
+    coverImage {
+      data {
+        attributes {
+          url
         }
       }
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      moreLink {
-        ...BlogPostLink
-      }
-      createdAt
-      sections {
-        ...Sections
-      }
+    }
+    moreLink {
+      ...BlogPostLink
+    }
+    createdAt
+    sections {
+      ...Sections
     }
   }
 }

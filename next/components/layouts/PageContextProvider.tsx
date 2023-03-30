@@ -1,6 +1,3 @@
-// @ts-strict-ignore
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable lodash/collection-ordering */
 import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
@@ -22,17 +19,18 @@ const PageContext = createContext<IPageContext>({
 
 interface IProps {
   children?: React.ReactNode
-  locale?: string
   localizations?: PageLocalization[]
   slug?: string
 }
 
-const PageContextProvider = ({ children, locale, localizations, slug }: IProps) => {
-  const [, { language }] = useTranslation()
+const PageContextProvider = ({ children, localizations, slug }: IProps) => {
+  const {
+    i18n: { language },
+  } = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
-    if (locale) {
-      base.push({ locale, slug: localePath(locale, slug) })
+    if (language && slug) {
+      base.push({ locale: language, slug: localePath(language, slug) })
     }
 
     localizations?.forEach((l) => {
@@ -46,7 +44,7 @@ const PageContextProvider = ({ children, locale, localizations, slug }: IProps) 
   }, [localizations])
 
   return (
-    <PageContext.Provider value={{ locale: locale ?? language, localizations: pageLocalizations }}>
+    <PageContext.Provider value={{ locale: language, localizations: pageLocalizations }}>
       {children}
     </PageContext.Provider>
   )

@@ -1,4 +1,3 @@
-import { AsyncServerProps } from '@utils/types'
 import { isProductionDeployment } from '@utils/utils'
 import PageContextProvider from 'components/layouts/PageContextProvider'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
@@ -28,13 +27,13 @@ import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFi
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
-const Styleguide = ({ page }: AsyncServerProps<typeof getServerSideProps>) => {
+const Styleguide = () => {
   /**
    * Always create new component for adding showcase in StyleGuide
    * Path to StyleGuide showcase components should be ./next/components/styleguide/showcases
    * */
   return (
-    <PageContextProvider locale={page.locale}>
+    <PageContextProvider>
       <StyleGuideWrapper>
         {/* HERE ADD SHOWCASES */}
         <TagShowCase />
@@ -72,9 +71,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   return {
     props: {
-      page: {
-        locale: ctx.locale,
-      },
       ...(await serverSideTranslations(locale)),
     },
   }
