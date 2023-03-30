@@ -130,5 +130,12 @@
       "backTo": "Späť na {{backTo}}"
     },
     "more": "Ďalšie"
+  },
+  "Pagination": {
+    "aria": {
+      "goToPage": "Ísť na stranu {{page}}",
+      "goToPreviousPage": "Ísť na predchádzajúcu stranu",
+      "goToNextPage": "Ísť na ďalšiu stranu"
+    }
   }
 }

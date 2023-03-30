@@ -13,6 +13,7 @@ export interface DocumentCardsProps {
   downloadButtonText: string
   query: string | string[]
 }
+
 export const DocumentCards = ({
   documents,
   dividerStyle,
@@ -44,6 +45,7 @@ export const DocumentCards = ({
           {documents
             .slice((currentPage - 1) * itemsPerPageDesktop, currentPage * itemsPerPageDesktop)
             .map((doc, index) => (
+              // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
                 <DocumentCard
                   {...doc}
@@ -51,7 +53,7 @@ export const DocumentCards = ({
                   downloadButtonText={downloadButtonText}
                 />
                 {dividerBugSolved &&
-                  index == dividerBreakpointDesktop - 1 &&
+                  index === dividerBreakpointDesktop - 1 &&
                   currentItemsCountDesktop > dividerBreakpointDesktop && (
                     <Divider className="py-24" dividerStyle={dividerStyle} />
                   )}
@@ -59,11 +61,9 @@ export const DocumentCards = ({
             ))}
         </div>
         <Pagination
-          itemsPerPage={itemsPerPageDesktop}
-          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
-          totalCount={documents.length}
+          totalCount={Math.ceil(documents.length / itemsPerPageDesktop)}
           currentPage={currentPage}
-          pageHandler={setCurrentPage}
+          onPageChange={setCurrentPage}
         />
       </div>
       <div className="flex flex-col lg:hidden">
@@ -71,6 +71,7 @@ export const DocumentCards = ({
           {documents
             .slice((currentPage - 1) * itemsPerPageMobile, currentPage * itemsPerPageMobile)
             .map((doc, index) => (
+              // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
                 <DocumentCard
                   {...doc}
@@ -86,11 +87,9 @@ export const DocumentCards = ({
             ))}
         </div>
         <Pagination
-          itemsPerPage={itemsPerPageMobile}
-          totalPages={Math.ceil(documents.length / itemsPerPageDesktop)}
-          totalCount={documents.length}
+          totalCount={Math.ceil(documents.length / itemsPerPageDesktop)}
           currentPage={currentPage}
-          pageHandler={setCurrentPage}
+          onPageChange={setCurrentPage}
         />
       </div>
     </div>
