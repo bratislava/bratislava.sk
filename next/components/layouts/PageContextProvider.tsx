@@ -1,6 +1,3 @@
-// @ts-strict-ignore
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable lodash/collection-ordering */
 import { localePath } from '@utils/page'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from 'next-i18next'
@@ -32,7 +29,7 @@ const PageContextProvider = ({ children, localizations, slug }: IProps) => {
   } = useTranslation()
   const pageLocalizations: PageLocalization[] = useMemo(() => {
     const base: PageLocalization[] = []
-    if (language) {
+    if (language && slug) {
       base.push({ locale: language, slug: localePath(language, slug) })
     }
 
