@@ -1,5 +1,4 @@
 import SearchIcon from '@assets/images/search-icon.svg'
-import { CommonLinkFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import Button from '@components/forms/simple-components/Button'
@@ -7,6 +6,7 @@ import MLink from '@components/forms/simple-components/MLink'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
+import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
@@ -47,12 +47,16 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
             ?.filter(isDefined)
             .filter((link) => link.showOnDesktop)
             .map((link) => {
-              if (link.page?.data?.attributes?.slug || link.url) {
-                const linkProps = getCommonLinkProps(link as CommonLinkFragment)
-                // TODO getLinkProps return label instead of children - make Button and MLink
+              // TODO better approach to links
+              const pageSlug = link.page?.data?.attributes?.slug
+              if (pageSlug || link.url) {
                 return (
-                  <MLink variant="navBarHeader" href={linkProps.href} target={linkProps.target}>
-                    {linkProps.label}
+                  <MLink
+                    variant="navBarHeader"
+                    href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
+                    target={link.url && isExternalLink(link.url) ? '_blank' : undefined}
+                  >
+                    {link.label}
                   </MLink>
                 )
               }
