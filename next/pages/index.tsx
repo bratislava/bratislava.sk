@@ -12,7 +12,6 @@ import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineI
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
-import { parseFooter } from '@utils/page'
 import { AsyncServerProps } from '@utils/types'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
@@ -147,7 +146,7 @@ const Homepage = ({
 
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider locale={page.locale} localizations={page.localizations} slug="">
+      <PageContextProvider localizations={page.localizations} slug="">
         <PageLayout>
           {/* <PageHeader color="" transparentColor="" imageSrc=""> */}
           <Head>

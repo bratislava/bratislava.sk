@@ -1,94 +1,100 @@
-// @ts-strict-ignore
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { GeneralPageFragment, GeneralQuery, PageBySlugQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery, PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import PageLayout from '@components/layouts/PageLayout'
+import GeneralPageContent from '@components/pages/generalPageContent'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { parseFooter } from '@utils/page'
-import { arrayify, isPresent } from '@utils/utils'
+import { hasAttributes } from '@utils/isDefined'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import * as React from 'react'
 
 import PageContextProvider from '../components/layouts/PageContextProvider'
-import GeneralPage from '../components/pages/generalPage'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // TODO localizations
+type PageProps = {
+  general: GeneralQuery
+  page: PageEntityFragment
+}
+
+type StaticParams = {
+  slug: string[]
+}
+
+export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
+  // English pages are not generated.
   const { pages } = await client.PagesStaticPaths()
-  const paths = (pages?.data ?? []).map(({ attributes }) => ({
-    params: {
-      slug: attributes?.slug?.split('/'),
-    },
-  }))
 
-  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS`)
+  const paths = (pages?.data ?? [])
+    .filter((page) => page?.attributes?.slug)
+    .map((page) => ({
+      params: {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+        slug: page.attributes!.slug!.split('/'),
+      },
+    }))
+
+  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - PAGES`)
   return { paths, fallback: 'blocking' }
 }
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  console.log(`Revalidating ${ctx.params?.slug}`)
-  const locale = ctx.locale ?? 'sk'
-  const slug = arrayify(ctx.params.slug).join('/')
 
-  const { pages } = await client.PageBySlug({
-    slug,
-    locale,
-  })
+export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
+  locale,
+  params,
+}) => {
+  const slug = params?.slug
 
-  if (!pages?.data?.[0]) return { notFound: true } as { notFound: true }
+  // eslint-disable-next-line no-console
+  console.log(`Revalidating page ${slug}`)
 
-  const pageTranslations = ['common']
+  if (!slug || !locale) return { notFound: true }
 
-  if (
-    pages?.data[0]?.attributes?.sections
-      ?.filter(isPresent)
-      .find((section) => section.__typename === 'ComponentSectionsCalculator')
-  ) {
-    pageTranslations.push('minimum-calculator')
-  }
-  if (
-    pages?.data[0]?.attributes?.sections
-      ?.filter(isPresent)
-      .find((section) => section.__typename === 'ComponentSectionsNewsletter')
-  ) {
-    pageTranslations.push('newsletter')
-  }
+  const [{ pages }, general, translations] = await Promise.all([
+    client.PageBySlug({
+      slug: slug.join('/'),
+      locale,
+    }),
+    client.General({ locale }),
+    serverSideTranslations(locale, ['common', 'minimum-calculator', 'newsletter']),
+  ])
 
-  const general = await client.General({ locale })
+  const page = pages?.data?.[0]
+  if (!page) return { notFound: true }
 
   return {
     props: {
       general,
-      slug,
-      page: pages,
-      ...(await serverSideTranslations(locale, pageTranslations)),
+      page,
+      ...translations,
     },
     revalidate: 10,
   }
 }
 
-interface GenericPageProps {
-  general: GeneralQuery
-  slug: string
-  page: GeneralPageFragment
-}
+const Page = ({ general, page }: PageProps) => {
+  const localizations = page?.attributes?.localizations?.data
+    .filter(hasAttributes)
+    .map((locale) => {
+      return {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        locale: locale.attributes.locale!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        slug: locale.attributes.slug!,
+      }
+    })
 
-const Page = ({ general, page }: GenericPageProps) => {
-  const localizations = page?.data?.[0]?.attributes?.localizations.data.map((locale) => {
-    return {
-      locale: locale.attributes.locale,
-      slug: locale.attributes.slug,
-    }
-  })
+  const { slug, title, metaDiscription } = page?.attributes ?? {}
 
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider
-        locale={page?.data?.[0].attributes?.locale ?? 'sk'}
-        slug={page?.data?.[0]?.attributes.slug ?? ''}
-        localizations={localizations}
-      >
-        <GeneralPage pages={page} />
+      <PageContextProvider slug={slug ?? ''} localizations={localizations}>
+        <Head>
+          {/* TODO: Use translation. */}
+          {title && <title>{title} – Bratislava.sk</title>}
+          {metaDiscription && <meta name="description" content={metaDiscription} />}
+        </Head>
+        <PageLayout>
+          <GeneralPageContent page={page} />
+        </PageLayout>
       </PageContextProvider>
     </GeneralContextProvider>
   )
