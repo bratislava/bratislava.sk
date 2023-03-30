@@ -10,7 +10,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
         if (!menuItem?.page?.data?.attributes?.slug) return null
 
         const { label, icon } = menuItem
-        const linkHref = menuItem.page.data.attributes.slug
+        const linkHref = `/${menuItem.page.data.attributes.slug}`
         const items =
           // eslint-disable-next-line unicorn/consistent-destructuring
           menuItem.sections
@@ -27,7 +27,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
                     if (menuLinkSlug) {
                       return {
                         label: menuLink.label,
-                        url: menuLinkSlug,
+                        url: `/${menuLinkSlug}`,
                       }
                     }
 
@@ -45,7 +45,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
               const showMoreLink = section.page?.data?.attributes
                 ? ({
                     label: moreLabel,
-                    url: section.page.data.attributes.slug,
+                    url: `/${section.page.data.attributes.slug}`,
                   } as MenuLink)
                 : undefined
 
