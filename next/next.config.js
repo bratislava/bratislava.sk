@@ -31,23 +31,6 @@ const nextConfig = {
           source: '/search',
           destination: '/vyhladavanie',
         },
-        // TODO does not work, revisit later
-        // {
-        //   source: '/ucet/uvod',
-        //   destination: '/account/intro',
-        // },
-        // {
-        //   source: '/ucet/mestske-sluzby',
-        //   destination: '/account/municipal-services',
-        // },
-        // {
-        //   source: '/ucet/dane-a-poplatky',
-        //   destination: '/account/taxes-and-fees',
-        // },
-        // {
-        //   source: '/ucet/mam-problem',
-        //   destination: '/account/i-have-a-problem',
-        // },
       ],
     }
   },
