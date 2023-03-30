@@ -150,6 +150,7 @@ const GeneralPage = ({ pages, footer }: GeneralPageProps) => {
           breadcrumbs={breadcrumbs}
           buttons={headerButtons}
           className={hasFeaturedBlogs && 'mb-[110px] lg:mb-[266px]'}
+          imageSrc={page?.pageBackgroundImage?.data?.attributes?.url}
         >
           <PageHeaderSections sections={page?.pageHeaderSections} />
         </PageHeader>
