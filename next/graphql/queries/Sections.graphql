@@ -136,6 +136,8 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
       attributes {
         url
         alternativeText
+        width
+        height
       }
     }
   }
@@ -388,6 +390,29 @@ fragment ComparisonSection on ComponentSectionsComparisonSection {
   }
 }
 
+fragment BannerSection on ComponentSectionsBanner {
+  bannerTitle: title
+  content
+  contentPosition
+  bannerVariant: variant
+  media {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+  primaryLink {
+    ...CommonLink
+  }
+  secondaryLink {
+    ...CommonLink
+  }
+  tertiaryLink {
+    ...CommonLink
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -474,6 +499,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsComparisonSection {
     ...ComparisonSection
+  }
+
+  ... on ComponentSectionsBanner {
+    ...BannerSection
   }
 }
 

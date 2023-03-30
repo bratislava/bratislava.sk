@@ -1,10 +1,14 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
+import Image from 'next/image'
 
 export interface TextWithImageProps {
   className?: string
   content?: string
   imageSrc?: string
+  imageWidth?: number | null
+  imageHeight?: number | null
   imagePosition?: 'left' | 'right'
   imageShadow: boolean
   imageAlternativeText?: string
@@ -14,11 +18,13 @@ export const TextWithImage = ({
   className,
   content,
   imageSrc,
+  imageWidth,
+  imageHeight,
   imagePosition = 'left',
   imageShadow = false,
   imageAlternativeText,
 }: TextWithImageProps) => {
-  const { Markdown: UIMarkdown, Image: UIImage } = useUIContext()
+  const { Markdown: UIMarkdown } = useUIContext()
 
   if (!content && !imageSrc) return null
 
@@ -26,7 +32,13 @@ export const TextWithImage = ({
     <div className={cx(className, 'grid grid-cols-1 items-center gap-8 md:grid-cols-2')}>
       {imagePosition === 'left' && imageSrc && (
         <div>
-          <UIImage alt={imageAlternativeText} src={imageSrc} shadow={imageShadow} />
+          <Image
+            src={imageSrc}
+            alt={imageAlternativeText ?? ''}
+            width={imageWidth ?? 0}
+            height={imageHeight ?? 0}
+            sizes={generateImageSizes({ md: '50vw', default: '100vw' })}
+          />
         </div>
       )}
 
@@ -40,8 +52,14 @@ export const TextWithImage = ({
       )}
 
       {imagePosition === 'right' && imageSrc && (
-        <div>
-          <UIImage alt={imageAlternativeText} src={imageSrc} shadow={imageShadow} />
+        <div className="relative">
+          <Image
+            src={imageSrc}
+            alt={imageAlternativeText ?? ''}
+            width={imageWidth ?? 0}
+            height={imageHeight ?? 0}
+            sizes={generateImageSizes({ md: '50vw', default: '100vw' })}
+          />
         </div>
       )}
     </div>

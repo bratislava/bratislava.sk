@@ -2,6 +2,7 @@ import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@utils/generalContext'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
@@ -43,20 +44,17 @@ export const WelcomeSection = ({ homepageHeader }: Props) => {
               },
             )}
           >
-            <Image
-              className="hidden sm:block"
-              width={647}
-              height={326}
-              src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt=""
-            />
-            <Image
-              className="sm:hidden"
-              width={721}
-              height={364}
-              src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
-              alt=""
-            />
+            <div className="w-full max-w-[721px] sm:max-w-[647px]">
+              <Image
+                width={homepageHeader?.picture?.data?.attributes?.width ?? undefined}
+                height={homepageHeader?.picture?.data?.attributes?.height ?? undefined}
+                src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
+                alt=""
+                priority
+                quality={100}
+                sizes={generateImageSizes({ sm: '647px', default: '721px' })}
+              />
+            </div>
           </div>
         </div>
         <div className="relative mb-5 w-full lg:mb-14">

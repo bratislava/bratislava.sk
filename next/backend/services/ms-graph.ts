@@ -184,13 +184,15 @@ export const getGroupMembersRecursive = async (
       return difference === 0 ? a.displayName.localeCompare(b.displayName) : difference
     }),
     groups: groupedResult['#microsoft.graph.group']
-      ? await Promise.all(
-          groupedResult['#microsoft.graph.group'].map((group) =>
-            getGroupMembersRecursive(accessToken, group.id, group.displayName).then((result) =>
-              result.sort((a, b) => a.displayName.localeCompare(b.displayName)),
+      ? (
+          await Promise.all(
+            groupedResult['#microsoft.graph.group'].map((group) =>
+              getGroupMembersRecursive(accessToken, group.id, group.displayName),
             ),
-          ),
+          )
         )
+          // eslint-disable-next-line unicorn/no-await-expression-member
+          .sort((a, b) => a.displayName.localeCompare(b.displayName))
       : [],
   }
 }

@@ -1,6 +1,7 @@
 const { join } = require('path')
 const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
+const screens = require('./tailwind.config.screens')
 
 const customVariants = plugin(function ({ addVariant }) {
   addVariant('not-first', '&:not(:first-child)')
@@ -24,13 +25,7 @@ module.exports = {
       semibold: '600',
       bold: '700',
     },
-    screens: {
-      xs: '360px',
-      sm: '480px',
-      md: '768px',
-      lg: '1216px',
-      xl: '1280px',
-    },
+    screens,
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
       md: '0px 8px 16px rgba(0, 0, 0, 0.12)',

@@ -9,6 +9,11 @@ export interface SubpageListProps {
 
 export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
   const { Link: UILink } = useUIContext()
+
+  if (!subpageList || subpageList.length === 0) {
+    return null
+  }
+
   return (
     <div
       className={cx(
@@ -16,7 +21,7 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
         className,
       )}
     >
-      {subpageList?.map((subpage, index) => (
+      {subpageList.map((subpage, index) => (
         <div
           key={index}
           className="group relative flex items-center gap-y-5 gap-x-8 sm:flex-col sm:items-start"

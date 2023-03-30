@@ -97,7 +97,8 @@
         "sections.gallery",
         "sections.official-board",
         "sections.pros-and-cons-section",
-        "sections.comparison-section"
+        "sections.comparison-section",
+        "sections.banner"
       ]
     },
     "pageHeaderSections": {
