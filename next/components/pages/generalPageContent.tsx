@@ -2,14 +2,13 @@ import { CommonLinkFragment, PageEntityFragment } from '@bratislava/strapi-sdk-h
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { isDefined } from '@utils/isDefined'
-import { pagePath, pageStyle } from '@utils/page'
+import { pagePath } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { useMemo } from 'react'
 import { useIsClient } from 'usehooks-ts'
 
-import PageLayout from '../layouts/PageLayout'
 import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
 
@@ -114,14 +113,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       page.attributes?.parentPage?.data?.attributes?.slug === 'братислава-для-украiни') // /братислава-для-украiни/... || /en/братислава-для-украiни... because parent page slug is same for all languages
 
   return (
-    <PageLayout>
-      {page.attributes?.pageCategory?.data?.attributes?.color && (
-        <style
-          dangerouslySetInnerHTML={{
-            __html: pageStyle(page.attributes?.pageCategory.data.attributes.color),
-          }}
-        />
-      )}
+    <>
       {/* Header */}
       <PageHeader
         title={page.attributes?.title}
@@ -138,7 +130,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
 
       {shouldDisplayUkraineSupportChat && <DynamicChat />}
-    </PageLayout>
+    </>
   )
 }
 
