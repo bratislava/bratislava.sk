@@ -1976,7 +1976,12 @@ type General {
   header: ComponentGeneralHeader
   locale: String
   localizations: GeneralRelationResponseCollection
+  newsPage: PageEntityResponse
+  officialBoardPage: PageEntityResponse
+  privacyPolicyPage: PageEntityResponse
+  showUaChatPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   updatedAt: DateTime
+  vznPage: PageEntityResponse
 }
 
 type GeneralEntity {
@@ -1999,13 +2004,23 @@ input GeneralFiltersInput {
   header: ComponentGeneralHeaderFiltersInput
   locale: StringFilterInput
   localizations: GeneralFiltersInput
+  newsPage: PageFiltersInput
   not: GeneralFiltersInput
+  officialBoardPage: PageFiltersInput
   or: [GeneralFiltersInput]
+  privacyPolicyPage: PageFiltersInput
+  showUaChatPages: PageFiltersInput
   updatedAt: DateTimeFilterInput
+  vznPage: PageFiltersInput
 }
 
 input GeneralInput {
   header: ComponentGeneralHeaderInput
+  newsPage: ID
+  officialBoardPage: ID
+  privacyPolicyPage: ID
+  showUaChatPages: [ID]
+  vznPage: ID
 }
 
 type GeneralRelationResponseCollection {

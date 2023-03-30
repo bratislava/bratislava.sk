@@ -157,7 +157,7 @@ const roleOrderingScore = (role: string | null | undefined) => {
 export const getGroupMembersRecursive = async (
   accessToken: string,
   groupId: string,
-  groupDisplayName: string,
+  groupDisplayName: string | null,
 ) => {
   const { value } = await getGroupMembersByGroupId({ token: accessToken, id: groupId })
   const groupedResult = _.groupBy(value, '@odata.type')

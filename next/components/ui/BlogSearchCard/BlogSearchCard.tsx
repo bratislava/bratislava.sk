@@ -1,9 +1,9 @@
 // @ts-strict-ignore
+import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
-import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { Panel } from '../Panel/Panel'
 import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
@@ -75,7 +75,6 @@ export const BlogSearchCard = ({
   const { shortTitle: tagTitle, color } = tag.data.attributes.pageCategory.data.attributes
 
   // TODO use formatter function, add locale
-  console.log(item.attributes)
   const date = new Date(date_added ?? publishedAt).toLocaleDateString('sk-SK')
   const tagColor = transformColorToCategory(color ?? 'red')
 
