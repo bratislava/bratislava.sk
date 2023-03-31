@@ -12,7 +12,7 @@ module.exports = {
     join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'),
     join(__dirname, 'components/**/*.{js,jsx,ts,tsx}'),
   ],
-  plugins: [customVariants, require('tailwind-scrollbar-hide'), require('@tailwindcss/line-clamp')],
+  plugins: [customVariants, require('tailwind-scrollbar-hide')],
   corePlugins: {
     container: false,
   },
