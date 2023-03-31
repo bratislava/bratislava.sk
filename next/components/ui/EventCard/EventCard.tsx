@@ -13,6 +13,9 @@ type EventCardProps = {
   className?: string
 }
 
+/**
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=487-938&t=7RMKJATYwi0EYY9K-0
+ */
 const EventCard = ({
   headline,
   href,
