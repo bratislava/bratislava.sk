@@ -39,7 +39,7 @@ export const Pagination = ({
 
   return (
     <nav>
-      <ul className="flex flex-wrap items-center justify-center gap-2">
+      <ul className="flex flex-wrap items-center justify-center gap-1 lg:gap-2">
         {items.map(
           ({ page, type, selected, disabled, onPress, 'aria-current': ariaCurrent }, index) => {
             let children: ReactNode = null
@@ -56,7 +56,7 @@ export const Pagination = ({
                   aria-current={ariaCurrent}
                   aria-label={t('aria.goToPage', { page })}
                   text={`${page}`}
-                  className="flex h-12 w-12 shrink-0 grow-0 items-center justify-center rounded-full"
+                  className="flex h-10 w-10 shrink-0 grow-0 items-center justify-center rounded-full lg:h-12 lg:w-12"
                 />
               )
             } else if (type === 'previous' || type === 'next') {
@@ -88,10 +88,10 @@ export const Pagination = ({
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className={cx({
-                  'text-sm flex w-12 items-center justify-center font-semibold':
+                  'text-sm flex w-10 items-center justify-center font-semibold lg:w-12':
                     type === 'start-ellipsis' || type === 'end-ellipsis',
-                  'mr-2': type === 'previous',
-                  'ml-2': type === 'next',
+                  'lg:mr-2': type === 'previous',
+                  'lg:ml-2': type === 'next',
                 })}
               >
                 {children}
