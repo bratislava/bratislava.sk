@@ -1,9 +1,7 @@
 import { ChevronLeftLarge } from '@assets/images'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
-import { getColorsVariables } from '@utils/page'
 import { useTranslation } from 'next-i18next'
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import HorizontalDivider from './HorizontalDivider'
 import { useNavMenuContext } from './navMenuContext'
@@ -12,16 +10,13 @@ import { MenuItem } from './navMenuTypes'
 
 type NavMenuContentProps = {
   menuItem: MenuItem
-  backgroundColor: string
+  colorStyle: CSSProperties
 }
 
-const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps) => {
+const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => {
   const { t } = useTranslation('common', { keyPrefix: 'NavMenu' })
   const { setMenuValue } = useNavMenuContext()
   const { items: sections, label: parentLabel } = menuItem
-
-  const category = transformIconToCategory(menuItem.icon)
-  const dividerColor = `rgb(var(${getColorsVariables(category).c400}))`
 
   return (
     <NavigationMenu.Content
@@ -29,7 +24,8 @@ const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
       onPointerMove={(event) => event.preventDefault()}
       onPointerLeave={(event) => event.preventDefault()}
-      style={{ backgroundColor }}
+      className="bg-category-200"
+      style={colorStyle}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <ul className="flex w-full flex-col gap-2 px-4 py-8">
@@ -44,7 +40,7 @@ const MobileNavMenuContent = ({ menuItem, backgroundColor }: NavMenuContentProps
           </button>
         </li>
 
-        <HorizontalDivider color={dividerColor} />
+        <HorizontalDivider categoryColor />
 
         {/* eslint-disable react/no-array-index-key */}
         {sections.map((section, index) => {
