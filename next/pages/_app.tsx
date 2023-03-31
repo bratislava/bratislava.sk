@@ -2,7 +2,6 @@
 import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
-import { HomepageMarkdown } from '@components/atoms/HomepageMarkdown'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
@@ -43,13 +42,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               </Link>
             )
           },
-          Markdown: ({ className, content, numericalList }) => (
-            <HomepageMarkdown
-              className={className}
-              content={content}
-              numericalList={numericalList}
-            />
-          ),
         }}
       >
         <BAQueryClientProvider>

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
@@ -9,8 +8,7 @@ import remarkGfm from 'remark-gfm'
 
 export interface HomepageMarkdownProps {
   className?: string
-  content?: string
-  numericalList?: boolean
+  content: string | null | undefined
 }
 
 export type AdvancedListItemProps = LiProps & { depth?: number }
@@ -20,17 +18,11 @@ export type AdvancedListItemProps = LiProps & { depth?: number }
  *
  * @param className
  * @param content
- * @param numericalList
  * @constructor
  */
-export const HomepageMarkdown = ({ className, content, numericalList }: HomepageMarkdownProps) => {
-  const { Link: UILink } = useUIContext()
+export const HomepageMarkdown = ({ content }: HomepageMarkdownProps) => {
   return (
     <ReactMarkdown
-      // className={cx(className, 'text-font', {
-      //   'homepage-markdown': !numericalList,
-      //   'numerical-list': numericalList,
-      // })
       className="flex flex-col gap-4"
       components={{
         // Standard components: a, blockquote, br, code, em, h1, h2, h3, h4, h5, h6, hr, img, li, ol, p, pre, strong, and ul

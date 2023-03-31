@@ -2,7 +2,6 @@ import * as React from 'react'
 
 const UIContext = React.createContext<IComponents>({
   Link: ({ ...props }) => <a {...props} />,
-  Markdown: ({ ...props }) => <div {...props}>{props.content}</div>,
 })
 
 interface IComponents {
@@ -13,13 +12,6 @@ interface IComponents {
     target?: string
     rel?: string
     children: React.ReactNode
-  }>
-  Markdown: React.FC<{
-    className?: string
-    paragraphClassName?: string
-    numericalList?: boolean
-    hasBackground?: boolean
-    content: string
   }>
 }
 

@@ -1,4 +1,4 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import HomepageMarkdown from '@components/atoms/HomepageMarkdown'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -24,8 +24,6 @@ export const TextWithImage = ({
   imageShadow = false,
   imageAlternativeText,
 }: TextWithImageProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
-
   if (!content && !imageSrc) return null
 
   return (
@@ -44,9 +42,9 @@ export const TextWithImage = ({
 
       {content && (
         <div>
-          <UIMarkdown
+          <HomepageMarkdown
             content={content}
-            className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
+            // className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
           />
         </div>
       )}
