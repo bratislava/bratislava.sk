@@ -102,7 +102,6 @@
   --color-warning-50: 253, 248, 242; /*#FDF8F2*/
 
   /* These variables are overidden in pages to get custom colors for each category */
-
   --color-category-800: var(--color-main-800);
   --color-category-700: var(--color-main-700);
   --color-category-600: var(--color-main-600);
@@ -111,28 +110,6 @@
   --color-category-300: var(--color-main-300);
   --color-category-200: var(--color-main-200);
   --color-category-100: var(--color-main-100);
-
-  /* default tailwind colors */
-
-  --category-color-800: rgb(var(--color-category-800));
-  --category-color-700: rgb(var(--color-category-700));
-  --category-color-600: rgb(var(--color-category-600));
-  --category-color-500: rgb(var(--color-category-500));
-  --category-color-400: rgb(var(--color-category-400));
-  --category-color-300: rgb(var(--color-category-300));
-  --category-color-200: rgb(var(--color-category-200));
-  --category-color-100: rgb(var(--color-category-100));
-
-  --category-color-800--transparent: rgba(var(--color-category-800), 0);
-  --category-color-700--transparent: rgba(var(--color-category-700), 0);
-  --category-color-600--transparent: rgba(var(--color-category-600), 0);
-  --category-color-500--transparent: rgba(var(--color-category-500), 0);
-  --category-color-400--transparent: rgba(var(--color-category-400), 0);
-  --category-color-300--transparent: rgba(var(--color-category-300), 0);
-  --category-color-200--transparent: rgba(var(--color-category-200), 0);
-  --category-color-100--transparent: rgba(var(--color-category-100), 0);
-
-  --category-color-200--semi-transparent: rgba(var(--color-category-200), 0.6);
 
   --font-color: #333;
   --error-color: #d00000;
