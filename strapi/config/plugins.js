@@ -50,6 +50,10 @@ const searchIndexSettings = {
 }
 
 module.exports = {
+  'ba-icon-field': {
+    enabled: true,
+    resolve: './src/plugins/ba-icon-field',
+  },
   graphql: {
     config: {
       playgroundAlways: true,

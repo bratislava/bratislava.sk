@@ -7,7 +7,7 @@
     "dev": "yarn develop",
     "develop": "cross-env ENV_PATH='./.env.local' strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "yarn --cwd ./src/plugins/ba-icon-field/ build && strapi build",
     "strapi": "strapi",
     "postinstall": "patch-package"
   },
