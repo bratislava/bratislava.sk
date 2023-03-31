@@ -4,7 +4,13 @@ import {
 } from '@bratislava/strapi-sdk-homepage'
 import React, { CSSProperties } from 'react'
 
-type ColorCategory = 'main' | 'transport' | 'environment' | 'social' | 'education' | 'culture'
+export type ColorCategory =
+  | 'main'
+  | 'transport'
+  | 'environment'
+  | 'social'
+  | 'education'
+  | 'culture'
 
 const colorCategoryMap = {
   red: 'main',
@@ -30,7 +36,7 @@ const transformColorToCategory = (
   return colorCategoryMap[pageColor ?? 'red']
 }
 
-export const transformIconToCategory = (icon: Enum_Componentmenumenuitem_Icon) => {
+export const transformIconToCategory = (icon: Enum_Componentmenumenuitem_Icon): ColorCategory => {
   return iconCategoryMap[icon] ?? 'main'
 }
 
@@ -40,15 +46,21 @@ const generateCssVariables = (category: ColorCategory) => {
   )
 }
 
-type GlobalCategoryColorProviderProps = {
-  color: Enum_Pagecategory_Color | null | undefined
-}
+type Props =
+  | {
+      color: Enum_Pagecategory_Color | null | undefined
+      category?: never
+    }
+  | {
+      color?: never
+      category: ColorCategory
+    }
 
 /**
  * This component is used to provide global CSS variables for category colors.
  */
-export const GlobalCategoryColorProvider = ({ color }: GlobalCategoryColorProviderProps) => {
-  const category = transformColorToCategory(color)
+export const GlobalCategoryColorProvider = ({ color, category: categoryProp }: Props) => {
+  const category = categoryProp ?? transformColorToCategory(color)
   const cssVariables = generateCssVariables(category)
   const style = cssVariables.map(([key, value]) => `${key}: ${value};`).join('\n')
 
@@ -67,15 +79,7 @@ export const GlobalCategoryColorProvider = ({ color }: GlobalCategoryColorProvid
  * This function is used to generate CSS variables for category colors locally. All the children elements will have
  * the category color set to provided color.
  */
-export const getStyleForColor = (color: Enum_Pagecategory_Color | null | undefined) => {
-  const category = transformColorToCategory(color)
-  return Object.fromEntries(generateCssVariables(category)) as CSSProperties
-}
-
-/**
- * This function is used to generate CSS variables for category colors locally. All the children elements will have
- * the category color set to provided color.
- */
-export const getStyleForCategory = (category: ColorCategory) => {
+export const getCategoryColorLocalStyle = ({ color, category: categoryProp }: Props) => {
+  const category = categoryProp ?? transformColorToCategory(color)
   return Object.fromEntries(generateCssVariables(category)) as CSSProperties
 }
