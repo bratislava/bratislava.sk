@@ -1,3 +1,4 @@
+import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
 import PageContextProvider from 'components/layouts/PageContextProvider'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
@@ -58,6 +59,8 @@ const Styleguide = () => {
         <StepperShowCase />
         <BannerShowCase />
         <ServiceCardShowCase />
+        <EventCardShowcase />
+
         {/* <SnackbarShowCase /> */}
       </StyleGuideWrapper>
     </PageContextProvider>
