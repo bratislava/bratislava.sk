@@ -31,7 +31,7 @@ export const NumericalListSectionUI = ({
   const href = buttonLink?.length ? buttonLink : '#'
   return (
     <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
-      {hasBackground && <Waves waveColor="var(--category-color-200)" wavePosition="top" />}
+      {hasBackground && <Waves waveColor="rgb(var(--color-category-200))" wavePosition="top" />}
 
       <div
         className={cx('flex flex-col items-center justify-center py-12', {
@@ -67,7 +67,7 @@ export const NumericalListSectionUI = ({
         )}
       </div>
 
-      {hasBackground && <Waves waveColor="var(--category-color-200)" wavePosition="bottom" />}
+      {hasBackground && <Waves waveColor="rgb(var(--color-category-200))" wavePosition="bottom" />}
     </div>
   )
 }

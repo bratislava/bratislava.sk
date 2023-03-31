@@ -1,12 +1,11 @@
 // @ts-strict-ignore
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
-import { getHoverColor } from '@bratislava/ui-bratislava/Sections/Posts/Posts'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { getNumericLocalDate } from '@utils/local-date'
-import { transformColorToCategory } from '@utils/page'
 import cx from 'classnames'
 
-import { ArrowRight, ChevronRight } from '@assets/images'
 import BratislavaPlaceholder from '../../../public/bratislava-placeholder.jpg'
 import { Tag } from '../Tag/Tag'
 import { VerticalCard } from '../VerticalCard/VerticalCard'
@@ -63,22 +62,19 @@ export const NewsCard = ({
   slug,
 }: NewsCardProps) => {
   const { Link: UILink } = useUIContext()
+  const colorStyle = getCategoryColorLocalStyle({
+    color: tag?.data?.attributes?.pageCategory?.data?.attributes?.color as Enum_Pagecategory_Color,
+  })
 
   return (
     <VerticalCard
       className={cx(className, 'min-w-66 leading-[1.3]')}
       imageSrc={coverImage?.data?.attributes?.url}
       imageSizes={coverImageSizes}
+      style={colorStyle}
     >
       <div className="space-y-5">
-        {tag?.data?.attributes?.title && (
-          <Tag
-            title={tag?.data?.attributes?.title}
-            color={transformColorToCategory(
-              tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
-            )}
-          />
-        )}
+        {tag?.data?.attributes?.title && <Tag title={tag?.data?.attributes?.title} />}
         <h3 className="text-h4 line-clamp-3">{title}</h3>
         {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
         <span className="text-p4-medium">
@@ -90,10 +86,6 @@ export const NewsCard = ({
             <UILink
               className={cx(
                 'group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 underline after:absolute after:inset-0 hover:text-category-600',
-                getHoverColor(
-                  tag?.data?.attributes?.pageCategory?.data?.attributes
-                    ?.color as Enum_Pagecategory_Color,
-                ),
               )}
               href={`/blog/${slug}`}
             >

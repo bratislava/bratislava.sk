@@ -14,7 +14,7 @@ const WavesSection = ({ section }: WavesSectionProps) => {
         'mt-10 md:mt-18': section.position === 'top',
       })}
       key={section.position}
-      waveColor="var(--category-color-200)"
+      waveColor="rgb(var(--color-category-200))"
       wavePosition={section.position ?? 'top'}
     />
   )

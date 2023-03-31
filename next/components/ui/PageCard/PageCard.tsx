@@ -12,36 +12,26 @@ import PageRedIconSmall from '@assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 
 import Panel from '../Panel/Panel'
 
-const findIconByColor = (pageColor: string) => {
-  switch (pageColor) {
-    case 'red':
-      return { default: PageRedIcon, small: PageRedIconSmall }
-
-    case 'blue':
-      return { default: PageBlueIcon, small: PageBlueIconSmall }
-
-    case 'green':
-      return { default: PageGreenIcon, small: PageGreenIconSmall }
-
-    case 'yellow':
-      return { default: PageYellowIcon, small: PageYellowIconSmall }
-
-    case 'purple':
-      return { default: PagePurpleIcon, small: PagePurpleIconSmall }
-
-    case 'brown':
-      return { default: PageBrownIcon, small: PageBrownIconSmall }
-
-    default:
-      return { default: PageRedIcon, small: PageRedIconSmall }
+const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
+  const icons = {
+    red: { default: PageRedIcon, small: PageRedIconSmall },
+    blue: { default: PageBlueIcon, small: PageBlueIconSmall },
+    green: { default: PageGreenIcon, small: PageGreenIconSmall },
+    yellow: { default: PageYellowIcon, small: PageYellowIconSmall },
+    purple: { default: PagePurpleIcon, small: PagePurpleIconSmall },
+    brown: { default: PageBrownIcon, small: PageBrownIconSmall },
   }
+
+  return icons[pageColor] ?? icons.red
 }
 
 export interface PageCardProps {
-  pageColor: string
+  pageColor: Enum_Pagecategory_Color
   title: string
   slug: string
 }
@@ -49,44 +39,13 @@ export interface PageCardProps {
 export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
   const { Link: UILink } = useUIContext()
 
-  // TODO refactor to use common function
-  const colors = [
-    {
-      pageColor: 'red',
-      backgroundColor: 'rgb(var(--color-main-200))',
-    },
-    {
-      pageColor: 'blue',
-      backgroundColor: 'rgb(var(--color-transport-200))',
-    },
-    {
-      pageColor: 'green',
-      backgroundColor: 'rgb(var(--color-environment-200))',
-    },
-    {
-      pageColor: 'yellow',
-      backgroundColor: 'rgb(var(--color-social-200))',
-    },
-    {
-      pageColor: 'purple',
-      backgroundColor: 'rgb(var(--color-education-200))',
-    },
-    {
-      pageColor: 'brown',
-      backgroundColor: 'rgb(var(--color-culture-200))',
-    },
-  ]
-
-  const backgroundColor =
-    colors.find((c) => {
-      return c.pageColor === pageColor
-    })?.backgroundColor ?? 'rgb(var(--color-red--light))'
+  const colorStyle = getCategoryColorLocalStyle({ color: pageColor })
   const { default: PageIcon, small: SmallPageIcon } = findIconByColor(pageColor)
 
   return (
-    <UILink href={slug ? `/${slug}` : ''}>
+    <UILink href={slug ? `/${slug}` : ''} style={colorStyle}>
       <Panel className="hidden w-full lg:flex" hoverable>
-        <div className="px-12 py-4" style={{ backgroundColor }}>
+        <div className="bg-category-200 px-12 py-4">
           <PageIcon />
         </div>
         <div className="flex w-full items-center justify-between px-14">
@@ -96,10 +55,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
       </Panel>
       <Panel className="min-w-76 flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
         <div className="flex items-center justify-between">
-          <div
-            className="flex h-16 w-16 items-center justify-center rounded-full bg-category-200"
-            style={{ backgroundColor }}
-          >
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-category-200">
             <SmallPageIcon />
           </div>
           <div className="pr-8">
