@@ -21,7 +21,6 @@ import React from 'react'
 import PageContextProvider from '../components/layouts/PageContextProvider'
 import PageLayout from '../components/layouts/PageLayout'
 import { WelcomeSection } from '../components/molecules/sections/general/WelcomeSection'
-import FacebookPostsHomepageSection from '../components/molecules/sections/homepage/FacebookPostsHomepageSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
@@ -200,10 +199,6 @@ const Homepage = ({
           <SectionContainer>
             <InBaCard className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28" {...inba} />
             <div className="hidden md:block md:h-20" />
-
-            <FacebookPostsHomepageSection title="Bratislava na Facebooku" />
-            {/* TODO : commented newsletter for this release probabbly on future release we will uncomment */}
-            {/* <NewsLetterSection className="mt-24" /> */}
           </SectionContainer>
         </PageLayout>
       </PageContextProvider>
