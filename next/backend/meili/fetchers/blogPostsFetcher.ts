@@ -1,3 +1,4 @@
+import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
 import { Key } from 'swr'
 
 import { BlogItem } from '../../../components/ui'
@@ -55,7 +56,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
                 pageCategory: {
                   data: {
                     attributes: {
-                      color: 'main', // hardcoded, api does not return this attribute
+                      color: 'main' as Enum_Pagecategory_Color, // hardcoded, api does not return this attribute
                       shortTitle: article.tag?.title,
                     },
                   },

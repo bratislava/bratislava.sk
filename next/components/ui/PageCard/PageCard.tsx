@@ -12,7 +12,7 @@ import PageRedIconSmall from '@assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 
 import Panel from '../Panel/Panel'
@@ -31,7 +31,7 @@ const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
 }
 
 export interface PageCardProps {
-  pageColor: Enum_Pagecategory_Color
+  pageColor: Enum_Pagecategory_Color | Enum_Page_Pagecolor
   title: string
   slug: string
 }
@@ -39,8 +39,10 @@ export interface PageCardProps {
 export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
   const { Link: UILink } = useUIContext()
 
-  const colorStyle = getCategoryColorLocalStyle({ color: pageColor })
-  const { default: PageIcon, small: SmallPageIcon } = findIconByColor(pageColor)
+  const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
+  const { default: PageIcon, small: SmallPageIcon } = findIconByColor(
+    pageColor as Enum_Pagecategory_Color,
+  )
 
   return (
     <UILink href={slug ? `/${slug}` : ''} style={colorStyle}>
