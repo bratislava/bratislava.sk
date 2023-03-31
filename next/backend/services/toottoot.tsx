@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-type ToottootEvent = {
+type ToottootEventResponse = {
   _id: string
   ProfileName?: string
   ShareImage?: string
@@ -9,6 +9,14 @@ type ToottootEvent = {
   AddressContact?: {
     AddressLine?: string
   }
+}
+
+export type ToottootEvent = {
+  id: string
+  title: string
+  url: string
+  image: string
+  address?: string
 }
 
 /**
@@ -25,16 +33,20 @@ const fetchTootTootHomepageEvents = async () => {
     },
   )
 
-  return result.json()
+  return result.json() as Promise<ToottootEventResponse[]>
 }
 
 export const getTootTootHomepageEvents = async () => {
   const events = await fetchTootTootHomepageEvents()
-  return events.map((event: ToottootEvent) => ({
-    id: event._id,
-    title: event.ProfileName,
-    url: `https://tootoot.co/event/${event._id}`,
-    image: `https://api.tootoot.co/api/event/${event._id}/images/${event.ShareImage}/1200/1200/AUTO`,
-    address: event.AddressContact?.AddressLine,
-  }))
+
+  return events.map(
+    (event: ToottootEventResponse) =>
+      ({
+        id: event._id,
+        title: event.ProfileName,
+        url: `https://tootoot.co/event/${event._id}`,
+        image: `https://api.tootoot.co/api/event/${event._id}/images/${event.ShareImage}/1200/1200/AUTO`,
+        address: event.AddressContact?.AddressLine,
+      } as ToottootEvent),
+  )
 }

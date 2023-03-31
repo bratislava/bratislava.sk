@@ -9,6 +9,7 @@ import {
   Waves,
 } from '@bratislava/ui-bratislava'
 import { TopNineItemProps } from '@bratislava/ui-bratislava/TopNineItem/TopNineItem'
+import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { buildMockData } from '@utils/homepage-mockdata'
@@ -20,7 +21,6 @@ import React from 'react'
 
 import PageContextProvider from '../components/layouts/PageContextProvider'
 import PageLayout from '../components/layouts/PageLayout'
-import { WelcomeSection } from '../components/molecules/sections/general/WelcomeSection'
 import GooutEventsHomepageSection from '../components/molecules/sections/homepage/GooutEventsHomepageSection'
 
 export const getStaticProps = async (ctx: { locale: string }) => {
@@ -156,50 +156,6 @@ const Homepage = ({
             />
           </Head>
           {/* </PageHeader> */}
-          <Bookmarks bookmarks={cards} className="top-56" />
-
-          <WelcomeSection homepageHeader={header} />
-
-          <Waves waveColor="var(--background-color)" wavePosition="top" />
-
-          <SectionContainer className="bg-gray-50 pb-14">
-            <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
-            <Posts
-              readMoreText={t('readMore')}
-              readMoreNewsText={t('seeAllNews')}
-              className="lg:mt-10"
-              leftHighLight={homepage?.data?.attributes?.left_highlight}
-              rightHighLight={homepage?.data?.attributes?.right_highlight}
-              posts={posts}
-              latestPost={latestBlogposts}
-              rozkoPosts={rozkoPosts}
-            />
-
-            <PrimatorCouncil className="mt-14 lg:mt-20" primatorCards={data.council.cards} />
-          </SectionContainer>
-          <Waves wavePosition="bottom" waveColor="var(--background-color)" />
-          <SectionContainer>
-            <GooutEventsHomepageSection
-              linkTitle={t('allEvents')}
-              linkUrl="https://www.bkis.sk/podujatia/"
-              title={t('upComingEvents')}
-              className="mt-14"
-            />
-          </SectionContainer>
-
-          <Waves waveColor="rgb(var(--color-category-200))" wavePosition="top" />
-
-          <SectionContainer className="relative bg-category-200 py-8">
-            <h2 className="text-h1 pb-10 text-center xs:mt-8 lg:pb-20">{data.topNineTitle}</h2>
-            <TopNine items={data.topNine as TopNineItemProps[]} />
-          </SectionContainer>
-
-          <Waves waveColor="rgb(var(--color-category-200))" wavePosition="bottom" />
-
-          <SectionContainer>
-            <InBaCard className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28" {...inba} />
-            <div className="hidden md:block md:h-20" />
-          </SectionContainer>
         </PageLayout>
       </PageContextProvider>
     </GeneralContextProvider>
