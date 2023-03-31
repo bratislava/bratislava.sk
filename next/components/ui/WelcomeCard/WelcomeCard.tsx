@@ -18,11 +18,7 @@ export const WelcomeCard = ({ item }: WelcomeCardProps) => {
       ref={hoverRef}
       className="text-20 group relative flex h-full w-full items-center gap-x-6 text-left md:px-2 md:py-1 lg:flex-col lg:gap-y-4 lg:pb-2 lg:text-center"
     >
-      {/* TODO scaling */}
-      <div className="scale-75 lg:scale-100">
-        <WelcomeCardIcon isColored={isHover} icon={item.icon} />
-      </div>
-      {/* */}
+      <WelcomeCardIcon isColored={isHover} icon={item.icon} />
       <div className="text-p2-medium text-font/75 overflow-hidden md:whitespace-pre-wrap">
         <MLink
           href={item.linkHref}
