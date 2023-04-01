@@ -1105,14 +1105,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.7", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  version "7.20.13"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.13.tgz#7055ab8a7cff2b8f6058bf6ae45ff84ad2aded4b"
-  integrity sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==
-  dependencies:
-    regenerator-runtime "^0.13.11"
-
-"@babel/runtime@^7.13.10", "@babel/runtime@^7.14.5", "@babel/runtime@^7.17.2", "@babel/runtime@^7.18.9", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.17.2", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.9", "@babel/runtime@^7.20.7", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.21.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.21.0.tgz#5b55c9d394e5fcf304909a8b00c07dc217b56673"
   integrity sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==
@@ -4242,13 +4235,27 @@ boolbase@^1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
-botframework-directlinejs@0.15.1, botframework-directlinejs@^0.15.1:
+botframework-directlinejs@0.15.1:
   version "0.15.1"
   resolved "https://registry.yarnpkg.com/botframework-directlinejs/-/botframework-directlinejs-0.15.1.tgz#140c65e90c18fa7b6a7df9394cc0a3e356f73c2a"
   integrity sha512-KMCCSed7Aee7V030tlbKWevBH1yS99PGYZ0G2CUhP+By7YuAPJYQOH90pR3oP1m50RPpHu16JCgg6mLvJU1W8w==
   dependencies:
     "@babel/runtime" "7.14.8"
     botframework-streaming "4.14.1"
+    buffer "6.0.3"
+    core-js "3.15.2"
+    cross-fetch "^3.1.5"
+    jwt-decode "3.1.2"
+    rxjs "5.5.12"
+    url-search-params-polyfill "8.1.1"
+
+botframework-directlinejs@^0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/botframework-directlinejs/-/botframework-directlinejs-0.15.2.tgz#8f91ac1d488874a9d1c3440a29941ed0b2616a1e"
+  integrity sha512-wbZ0CoxiqfPQRXoCYSFXSmOxDug4/qzZ9tXUNtkW3HMd2QJ9By7vjK9NgwINVwrNZwjtkHYu6jvb8yE7quWmqg==
+  dependencies:
+    "@babel/runtime" "7.14.8"
+    botframework-streaming "4.19.3"
     buffer "6.0.3"
     core-js "3.15.2"
     cross-fetch "^3.1.5"
@@ -4278,6 +4285,16 @@ botframework-streaming@4.14.1:
   version "4.14.1"
   resolved "https://registry.yarnpkg.com/botframework-streaming/-/botframework-streaming-4.14.1.tgz#3eed51c2581886b6d5fdd9dee41291eaf7a7cc3d"
   integrity sha512-x5J9CB/PbKieJroPDy0qgwx7l6s9djkIxW7nSfq4neqKpquPJe+tukw2heINvXZWGkL3OXlaHTXVJRaRsoyNRQ==
+  dependencies:
+    "@types/node" "^10.17.27"
+    "@types/ws" "^6.0.3"
+    uuid "^8.3.2"
+    ws "^7.1.2"
+
+botframework-streaming@4.19.3:
+  version "4.19.3"
+  resolved "https://registry.yarnpkg.com/botframework-streaming/-/botframework-streaming-4.19.3.tgz#46e98b4630b777d6c75e4c070a413aebbdf103bb"
+  integrity sha512-X7QlzN9aMN0F1ADlYCrtDy71wWaBzDDIAiOsdwLlzl5xKnZc0gbbFLL+WyYYieX/3K2B1UHBZEimGvRL0yWrbQ==
   dependencies:
     "@types/node" "^10.17.27"
     "@types/ws" "^6.0.3"
