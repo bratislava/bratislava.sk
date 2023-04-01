@@ -22,7 +22,7 @@
     "@radix-ui/react-navigation-menu": "^1.1.2",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/minio": "^7.0.14",
-    "@types/uuid": "^9.0.0",
+    "@types/uuid": "^9.0.1",
     "apexcharts": "3.35.3",
     "axios": "0.27.2",
     "botframework-directlinejs": "^0.15.1",
