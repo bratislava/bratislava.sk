@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@strapi/plugin-graphql": "4.8.2",
-    "@strapi/plugin-i18n": "4.8.2",
+    "@strapi/plugin-i18n": "4.9.0",
     "@strapi/plugin-users-permissions": "4.8.2",
     "@strapi/strapi": "4.8.2",
     "patch-package": "^6.5.1",
