@@ -21,7 +21,7 @@ type PageHeaderProps = {
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=888%3A3162&t=7uti0MQv3SyaK3Tk-4
  */
-const PageHeader = ({
+export const PageHeader = ({
   title,
   subtext,
   breadcrumbs,

@@ -12,6 +12,11 @@
     "draftAndPublish": false,
     "timestamps": true
   },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": false
+    }
+  },
   "attributes": {
     "username": {
       "type": "string",

@@ -101,6 +101,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
           ),
 
         // Remark-gfm components: del, input, table, tbody, td, th, thead, and tr
+        // FIXME tables need revisit - align, spacing, etc.
         table: ({ node, children }) => (
           <div className="overflow-x-auto">
             <table className="w-full table-auto">{children}</table>
@@ -118,6 +119,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
             </div>
           </td>
         ),
+        // th: ...
       }}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}

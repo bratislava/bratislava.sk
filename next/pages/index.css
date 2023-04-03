@@ -143,10 +143,6 @@
   @apply bg-white !important;
 }
 
-.table-block tbody tr td:first-child div {
-  @apply text-h-sm font-semibold lg:text-h-base;
-}
-
 .modal-content-rent-markdown a {
   @apply font-bold underline;
 }
@@ -203,10 +199,6 @@
 
   .homepage-markdown .no-whitespace-wrap {
     @apply overflow-x-scroll -mx-8 lg:mx-0 px-8 lg:px-0;
-  }
-
-  .table-block tbody tr td:first-child div {
-    @apply mb-6;
   }
 } */
 
