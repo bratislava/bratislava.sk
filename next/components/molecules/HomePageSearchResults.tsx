@@ -1,5 +1,5 @@
 import { ChevronRightRounded } from '@assets/images'
-import { HomepageSearchData } from '@backend/meili/fetchers/homepageFetcher'
+import { HomepageSearchData } from '@backend/meili/fetchers/homepageSearchFetcher'
 import { LoadingSpinner } from '@bratislava/ui-bratislava'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'

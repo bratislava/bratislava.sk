@@ -3350,7 +3350,7 @@ export type LatestBlogsWithTagsQueryVariables = Exact<{
 
 export type LatestBlogsWithTagsQuery = { __typename?: 'Query', blogPosts?: { __typename?: 'BlogPostEntityResponseCollection', data: Array<{ __typename?: 'BlogPostEntity', id?: string | null, attributes?: { __typename?: 'BlogPost', slug?: string | null, title?: string | null, excerpt?: string | null, date_added?: any | null, publishedAt?: any | null, updatedAt?: any | null, coverImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', attributes?: { __typename?: 'Tag', title?: string | null, publishedAt?: any | null, pageCategory?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', title?: string | null, color?: Enum_Pagecategory_Color | null } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
-export type LatestBlogsFragment = { __typename?: 'BlogPostEntityResponseCollection', data: Array<{ __typename?: 'BlogPostEntity', id?: string | null, attributes?: { __typename?: 'BlogPost', slug?: string | null, title?: string | null, excerpt?: string | null, date_added?: any | null, publishedAt?: any | null, updatedAt?: any | null, coverImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', attributes?: { __typename?: 'Tag', title?: string | null, publishedAt?: any | null, pageCategory?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', title?: string | null, color?: Enum_Pagecategory_Color | null } | null } | null } | null } | null } | null } | null } | null }> };
+export type LatestBlogPostEntityFragment = { __typename?: 'BlogPostEntity', id?: string | null, attributes?: { __typename?: 'BlogPost', slug?: string | null, title?: string | null, excerpt?: string | null, date_added?: any | null, publishedAt?: any | null, updatedAt?: any | null, coverImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', attributes?: { __typename?: 'Tag', title?: string | null, publishedAt?: any | null, pageCategory?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', title?: string | null, color?: Enum_Pagecategory_Color | null } | null } | null } | null } | null } | null } | null } | null };
 
 export type TotalPostsCountQueryVariables = Exact<{
   where?: InputMaybe<BlogPostFiltersInput>;
@@ -3396,6 +3396,8 @@ export type GeneralQueryVariables = Exact<{
 
 
 export type GeneralQuery = { __typename?: 'Query', general?: { __typename?: 'GeneralEntityResponse', data?: { __typename?: 'GeneralEntity', attributes?: { __typename?: 'General', header?: { __typename?: 'ComponentGeneralHeader', links?: Array<{ __typename?: 'ComponentGeneralHeaderLink', label: string, url?: string | null, showOnDesktop: boolean, showOnMobile: boolean, icon: Enum_Componentgeneralheaderlink_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null, accountLink?: { __typename?: 'ComponentBlocksCommonLink', label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, blogPost?: { __typename?: 'BlogPostEntityResponse', data?: { __typename?: 'BlogPostEntity', id?: string | null, attributes?: { __typename?: 'BlogPost', title?: string | null, slug?: string | null } | null } | null } | null } | null } | null, newsPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, officialBoardPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, privacyPolicyPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, vznPage?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, showUaChatPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null }> } | null } | null } | null } | null, menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', menus?: Array<{ __typename?: 'ComponentMenuMenuItem', id: string, label: string, icon: Enum_Componentmenumenuitem_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, sections?: Array<{ __typename?: 'ComponentMenuMenuSection', id: string, label: string, icon: Enum_Componentmenumenusection_Icon, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null, links?: Array<{ __typename?: 'ComponentMenuMenuLink', id: string, label: string, url?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null } | null } | null } | null } | null> | null } | null> | null } | null> | null } | null } | null } | null, footer?: { __typename?: 'FooterEntityResponse', data?: { __typename?: 'FooterEntity', attributes?: { __typename?: 'Footer', address?: string | null, copyright?: string | null, email?: string | null, facebookUrl?: string | null, instagramUrl?: string | null, phone?: string | null, youtubeUrl?: string | null, accessibilityLink?: { __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null, footerSections?: Array<{ __typename?: 'ComponentBlocksFooterSection', title?: string | null, pageLinks?: Array<{ __typename?: 'ComponentBlocksPageLink', title?: string | null, url?: string | null, anchor?: string | null, page?: { __typename?: 'PageEntityResponse', data?: { __typename?: 'PageEntity', attributes?: { __typename?: 'Page', title?: string | null, slug?: string | null, locale?: string | null } | null } | null } | null } | null> | null } | null> | null } | null } | null } | null };
+
+export type HomepageEntityFragment = { __typename?: 'HomepageEntity', id?: string | null, attributes?: { __typename?: 'Homepage', updatedAt?: any | null, createdAt?: any | null, title?: string | null, metaDescription?: string | null, posts?: Array<{ __typename?: 'ComponentBlocksHomepagePost', title?: string | null, slug?: string | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null> | null, right_highlight?: { __typename?: 'BlogPostEntityResponse', data?: { __typename?: 'BlogPostEntity', attributes?: { __typename?: 'BlogPost', title?: string | null, excerpt?: string | null, slug?: string | null, updatedAt?: any | null, date_added?: any | null, coverImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', attributes?: { __typename?: 'Tag', title?: string | null, pageCategory?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', color?: Enum_Pagecategory_Color | null } | null } | null } | null } | null } | null } | null } | null } | null } | null, left_highlight?: { __typename?: 'BlogPostEntityResponse', data?: { __typename?: 'BlogPostEntity', attributes?: { __typename?: 'BlogPost', title?: string | null, excerpt?: string | null, slug?: string | null, updatedAt?: any | null, date_added?: any | null, coverImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', attributes?: { __typename?: 'Tag', title?: string | null, pageCategory?: { __typename?: 'PageCategoryEntityResponse', data?: { __typename?: 'PageCategoryEntity', attributes?: { __typename?: 'PageCategory', color?: Enum_Pagecategory_Color | null } | null } | null } | null } | null } | null } | null } | null } | null } | null, header?: { __typename?: 'ComponentBlocksHomepageHeader', headline: string, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null } | null } | null } | null, mobilePicture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null, cards?: Array<{ __typename?: 'ComponentBlocksHomepageBookmark', title?: string | null, headline?: string | null, text?: string | null, variant?: string | null, link?: { __typename?: 'ComponentBlocksBookmarkLink', title?: string | null, href?: string | null } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null> | null, inba?: { __typename?: 'ComponentBlocksInBa', title?: string | null, content?: string | null, link?: string | null, images?: { __typename?: 'ComponentBlocksInBaPictures', frontImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, rearImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null } | null } | null };
 
 export type HomepageQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode'];
@@ -3568,35 +3570,33 @@ export type VznDetailQueryVariables = Exact<{
 
 export type VznDetailQuery = { __typename?: 'Query', vzn?: { __typename?: 'VznEntityResponse', data?: { __typename?: 'VznEntity', id?: string | null, attributes?: { __typename?: 'Vzn', title?: string | null, validFrom?: any | null, mainDocument?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null, cancellationDocument?: Array<{ __typename?: 'ComponentBlocksDocListExtensions', id: string, title?: string | null, document?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null> | null, amedmentDocument?: Array<{ __typename?: 'ComponentBlocksDocListExtensions', id: string, title?: string | null, document?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, size: number, ext?: string | null, createdAt?: any | null } | null } | null } | null } | null> | null } | null } | null } | null };
 
-export const LatestBlogsFragmentDoc = gql`
-    fragment LatestBlogs on BlogPostEntityResponseCollection {
-  data {
-    id
-    attributes {
-      slug
-      title
-      excerpt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
+export const LatestBlogPostEntityFragmentDoc = gql`
+    fragment LatestBlogPostEntity on BlogPostEntity {
+  id
+  attributes {
+    slug
+    title
+    excerpt
+    coverImage {
+      data {
+        attributes {
+          url
         }
       }
-      date_added
-      publishedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            publishedAt
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
+    }
+    date_added
+    publishedAt
+    updatedAt
+    tag {
+      data {
+        attributes {
+          title
+          publishedAt
+          pageCategory {
+            data {
+              attributes {
+                title
+                color
               }
             }
           }
@@ -4363,27 +4363,6 @@ export const GeneralFragmentDoc = gql`
     ${HeaderLinkFragmentDoc}
 ${CommonLinkFragmentDoc}
 ${GeneralPageRelationFragmentDoc}`;
-export const HomepageHeaderFragmentDoc = gql`
-    fragment HomepageHeader on ComponentBlocksHomepageHeader {
-  headline
-  picture {
-    data {
-      attributes {
-        url
-        height
-        width
-      }
-    }
-  }
-  mobilePicture {
-    data {
-      attributes {
-        url
-      }
-    }
-  }
-}
-    `;
 export const NewsCardBlogFragmentDoc = gql`
     fragment NewsCardBlog on BlogPostEntityResponse {
   data {
@@ -4418,6 +4397,97 @@ export const NewsCardBlogFragmentDoc = gql`
   }
 }
     `;
+export const HomepageHeaderFragmentDoc = gql`
+    fragment HomepageHeader on ComponentBlocksHomepageHeader {
+  headline
+  picture {
+    data {
+      attributes {
+        url
+        height
+        width
+      }
+    }
+  }
+  mobilePicture {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+}
+    `;
+export const HomepageEntityFragmentDoc = gql`
+    fragment HomepageEntity on HomepageEntity {
+  id
+  attributes {
+    updatedAt
+    createdAt
+    title
+    metaDescription
+    posts {
+      title
+      slug
+      image {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+    }
+    right_highlight {
+      ...NewsCardBlog
+    }
+    left_highlight {
+      ...NewsCardBlog
+    }
+    header {
+      ...HomepageHeader
+    }
+    cards {
+      title
+      headline
+      text
+      link {
+        title
+        href
+      }
+      picture {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      variant
+    }
+    inba {
+      title
+      content
+      images {
+        frontImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        rearImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+      link
+    }
+  }
+}
+    ${NewsCardBlogFragmentDoc}
+${HomepageHeaderFragmentDoc}`;
 export const LocalizationFragmentDoc = gql`
     fragment Localization on PageRelationResponseCollection {
   data {
@@ -4636,10 +4706,12 @@ export const LatestBlogsWithTagsDocument = gql`
     filters: $filters
     locale: $locale
   ) {
-    ...LatestBlogs
+    data {
+      ...LatestBlogPostEntity
+    }
   }
 }
-    ${LatestBlogsFragmentDoc}`;
+    ${LatestBlogPostEntityFragmentDoc}`;
 export const TotalPostsCountDocument = gql`
     query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLocaleCode) {
   blogPosts(filters: $where, pagination: {limit: $limit}, locale: $locale) {
@@ -4704,76 +4776,11 @@ export const HomepageDocument = gql`
     query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
     data {
-      attributes {
-        updatedAt
-        createdAt
-        title
-        metaDescription
-        posts {
-          title
-          slug
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-        right_highlight {
-          ...NewsCardBlog
-        }
-        left_highlight {
-          ...NewsCardBlog
-        }
-        header {
-          ...HomepageHeader
-        }
-        cards {
-          title
-          headline
-          text
-          link {
-            title
-            href
-          }
-          picture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          variant
-        }
-        inba {
-          title
-          content
-          images {
-            frontImage {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-            rearImage {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-          }
-          link
-        }
-      }
-      id
+      ...HomepageEntity
     }
   }
 }
-    ${NewsCardBlogFragmentDoc}
-${HomepageHeaderFragmentDoc}`;
+    ${HomepageEntityFragmentDoc}`;
 export const PagesStaticPathsDocument = gql`
     query PagesStaticPaths {
   pages(pagination: {limit: -1}) {

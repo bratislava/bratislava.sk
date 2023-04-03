@@ -1,4 +1,7 @@
-import { getHomepageSearchSwrKey, homepageFetcher } from '@backend/meili/fetchers/homepageFetcher'
+import {
+  getHomepageSearchSwrKey,
+  homepageSearchFetcher,
+} from '@backend/meili/fetchers/homepageSearchFetcher'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
@@ -38,7 +41,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
 
   const { data, error } = useSWR(
     getHomepageSearchSwrKey(filters, i18n.language),
-    homepageFetcher(filters, i18n.language),
+    homepageSearchFetcher(filters, i18n.language),
   )
 
   const { dataToDisplay, loadingAndNoDataToDisplay } = useGetSwrExtras({

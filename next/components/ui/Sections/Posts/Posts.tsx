@@ -1,11 +1,7 @@
 // @ts-strict-ignore
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import {
-  LatestBlogsFragment,
-  LatestBlogsWithTagsQuery,
-  NewsCardBlogFragment,
-} from '@bratislava/strapi-sdk-homepage'
+import { LatestBlogPostEntityFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { Iframe } from '@bratislava/ui-bratislava'
 import { LocalDate, Month, Period } from '@js-joda/core'
 import { getCategoryColorLocalStyle } from '@utils/colors'
@@ -33,12 +29,12 @@ export interface PostsProps {
   className?: string
   posts: TPostsTab[] | undefined
   // latestPost?: BlogPost[]
-  latestPost: LatestBlogsFragment | null | undefined
+  latestPost: LatestBlogPostEntityFragment[] | null
   leftHighLight: NewsCardBlogFragment | null | undefined
   rightHighLight: NewsCardBlogFragment | null | undefined
   readMoreText?: string
   readMoreNewsText?: string
-  rozkoPosts: LatestBlogsWithTagsQuery['blogPosts']
+  rozkoPosts: LatestBlogPostEntityFragment[] | null
 }
 
 export const Posts = ({
@@ -122,9 +118,9 @@ export const Posts = ({
                 />
               )}
 
-              {latestPost?.data?.length > 0 && (
+              {latestPost?.length > 0 && (
                 <div className="hidden lg:block">
-                  {latestPost.data.map((newsCard, i) => {
+                  {latestPost.map((newsCard, i) => {
                     const card = newsCard.attributes
                     const tag = card.tag.data?.attributes
                     const colorStyle = getCategoryColorLocalStyle({
@@ -149,7 +145,7 @@ export const Posts = ({
                 </div>
               )}
               <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                {latestPost?.data?.length > 0 && (
+                {latestPost?.length > 0 && (
                   <UILink href={t('allNewsLink')}>
                     <Button
                       variant="transparent"
@@ -240,24 +236,24 @@ export const Posts = ({
             <>
               <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
                 <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
-                  {rozkoPosts?.data[0] && (
+                  {rozkoPosts?.[0] && (
                     <NewsCard
-                      {...rozkoPosts?.data[0].attributes}
+                      {...rozkoPosts?.[0].attributes}
                       readMoreText={readMoreText}
                       coverImageSizes={imageSizes}
                     />
                   )}
-                  {rozkoPosts?.data[1] && (
+                  {rozkoPosts?.[1] && (
                     <NewsCard
-                      {...rozkoPosts?.data[1].attributes}
+                      {...rozkoPosts?.[1].attributes}
                       readMoreText={readMoreText}
                       coverImageSizes={imageSizes}
                     />
                   )}
 
-                  {rozkoPosts?.data?.length > 2 && (
+                  {rozkoPosts?.length > 2 && (
                     <div className="hidden lg:block">
-                      {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
+                      {rozkoPosts.slice(2, 7).map((newsCard, i) => {
                         const card = newsCard.attributes
                         const tag = card.tag.data?.attributes
                         const colorStyle = getCategoryColorLocalStyle({
@@ -283,7 +279,7 @@ export const Posts = ({
                   )}
                   <div className="col-span-3 mt-14 hidden justify-center lg:flex">
                     {/* TODO: change this button to custom button */}
-                    {rozkoPosts?.data?.length > 0 && (
+                    {rozkoPosts?.length > 0 && (
                       <UILink href={roadClosuresAddress}>
                         <Button
                           variant="transparent"
