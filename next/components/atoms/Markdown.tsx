@@ -54,7 +54,8 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
               target={href?.startsWith('http') ? '_blank' : undefined}
             >
               {children[0]}
-              {isExternal && ' ↗'}
+              {/* TODO add external indicator */}
+              {/* {isExternal && ' ↗'} */}
             </MLink>
           )
         },

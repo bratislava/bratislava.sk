@@ -1,21 +1,18 @@
+import { CommonLinkFragment } from '@bratislava/strapi-sdk-homepage'
 import { Waves } from '@bratislava/ui-bratislava'
 import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import { generateImageSizes } from '@utils/generateImageSizes'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import Button from '../../forms/simple-components/Button'
 
-type PageHeaderButton = {
-  label: string
-  path: string | null
-}
-
 type PageHeaderProps = {
   title?: string | null
   subtext?: string | null
-  buttons?: PageHeaderButton[] | null
+  buttons?: CommonLinkFragment[] | null
   tag?: string | null
   className?: string | null
   imageSrc?: string | null
@@ -37,7 +34,7 @@ const PageHeader = ({
   return (
     <div className={twMerge('relative bg-category-200', className)}>
       {imageSrc && (
-        <div className="absolute top-0 right-0 hidden h-full w-[350px] md:block lg:w-[750px]">
+        <div className="absolute right-0 top-0 hidden h-full w-[350px] md:block lg:w-[750px]">
           <Image
             src={imageSrc}
             alt=""
@@ -47,7 +44,7 @@ const PageHeader = ({
               maskImage:
                 'linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 50%, rgba(0,0,0,1))',
             }}
-            sizes={generateImageSizes({ lg: '750px', default: '350px' })}
+            sizes={generateImageSizes({ default: '350px', lg: '750px' })}
             fill
             className="pointer-events-none h-full w-full object-cover"
           />
@@ -56,7 +53,7 @@ const PageHeader = ({
       <div className="px-8">
         <div className="relative mx-auto flex max-w-screen-lg flex-col">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
-          <div className="mt-3 mb-6 flex flex-col gap-y-4 lg:mt-6 lg:mb-10 lg:gap-y-6">
+          <div className="mb-6 mt-3 flex flex-col gap-y-4 lg:mb-10 lg:mt-6 lg:gap-y-6">
             {tag && (
               <span className="text-p2-medium inline-block self-start rounded bg-category-700 px-3 py-1 text-white">
                 {tag}
@@ -72,12 +69,11 @@ const PageHeader = ({
               <div className="flex max-w-[800px] flex-col gap-2 sm:flex-row lg:gap-3">
                 {buttons.map((button, index) => (
                   <Button
+                    // eslint-disable-next-line react/no-array-index-key
                     key={index}
-                    href={button.path ?? '#'}
-                    label={button.label}
                     variant={index === 0 ? 'category' : 'category-outline'}
-                    size="sm"
                     className="w-full sm:w-fit"
+                    {...getCommonLinkProps(button)}
                   />
                 ))}
               </div>
