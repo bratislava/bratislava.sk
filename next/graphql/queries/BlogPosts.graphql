@@ -43,12 +43,13 @@ query LatestBlogsWithTags(
     filters: $filters
     locale: $locale
   ) {
-    ...LatestBlogs
+    data {
+      ...LatestBlog
+    }
   }
 }
 
-fragment LatestBlogs on BlogPostEntityResponseCollection {
-  data {
+fragment LatestBlog on BlogPostEntity {
     id
     attributes {
       slug
@@ -81,7 +82,6 @@ fragment LatestBlogs on BlogPostEntityResponseCollection {
         }
       }
     }
-  }
 }
 
 query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLocaleCode) {

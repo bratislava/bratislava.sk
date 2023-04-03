@@ -1,71 +1,75 @@
+fragment HomepageEntity on HomepageEntity {
+  id
+  attributes {
+    updatedAt
+    createdAt
+    title
+    metaDescription
+    posts {
+      title
+      slug
+      image {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+    }
+    right_highlight {
+      ...NewsCardBlog
+    }
+    left_highlight {
+      ...NewsCardBlog
+    }
+    header {
+      ...HomepageHeader
+    }
+    cards {
+      title
+      headline
+      text
+      link {
+        title
+        href
+      }
+      picture {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      variant
+    }
+    inba {
+      title
+      content
+      images {
+        frontImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        rearImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+      link
+    }
+  }
+}
+
 query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
     data {
-      attributes {
-        updatedAt
-        createdAt
-        title
-        metaDescription
-        posts {
-          title
-          slug
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-        right_highlight {
-          ...NewsCardBlog
-        }
-        left_highlight {
-          ...NewsCardBlog
-        }
-        header {
-          ...HomepageHeader
-        }
-        cards {
-          title
-          headline
-          text
-          link {
-            title
-            href
-          }
-          picture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          variant
-        }
-        inba {
-          title
-          content
-          images {
-            frontImage {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-            rearImage {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-          }
-          link
-        }
-      }
-      id
+      ...HomepageEntity
     }
   }
 }
