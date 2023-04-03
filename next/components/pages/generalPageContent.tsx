@@ -1,8 +1,7 @@
-import { CommonLinkFragment, PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import { PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { isDefined } from '@utils/isDefined'
-import { pagePath } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
@@ -12,7 +11,7 @@ import { useIsClient } from 'usehooks-ts'
 import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
 
-// error with 'window' is not defined, that's beacause server side rendering + (ReactWebChat + DirectLine)
+// error with 'window' is not defined, that's because server side rendering + (ReactWebChat + DirectLine)
 // https://github.com/microsoft/BotFramework-WebChat/issues/4607
 const DynamicChat = dynamic(() => import('../molecules/chat'), {
   ssr: false,
@@ -49,43 +48,6 @@ const getBreadcrumbs = (page: PageEntityFragment) => {
   return breadcrumbs.reverse()
 }
 
-// TODO: Remove
-const parseOldButton = (button?: { title?: string | null; url?: string | null } | null) => {
-  if (!button) {
-    return null
-  }
-
-  return {
-    label: button.title ?? '',
-    path: button.url ?? '#',
-  }
-}
-
-const parseButton = (button: CommonLinkFragment) => {
-  // TODO: Replace with Navikronos.
-  const getPath = () => {
-    if (button?.page?.data) {
-      return pagePath(button.page.data.attributes)
-    }
-    if (button?.blogPost?.data) {
-      return `/blog/${button?.blogPost?.data?.attributes?.slug}`
-    }
-    return button.url
-  }
-
-  return {
-    label: button.label ?? '',
-    path: getPath() ?? '#',
-  }
-}
-
-const parseButtons = (page: PageEntityFragment) => {
-  return [
-    parseOldButton(page.attributes?.pageButtonContent),
-    ...(page.attributes?.headerLinks ?? []).filter(isDefined).map(parseButton),
-  ].filter(isDefined)
-}
-
 export interface GeneralPageProps {
   page: PageEntityFragment
 }
@@ -97,7 +59,6 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
     ?.filter(isDefined)
     .some((section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts')
   const breadcrumbs = useMemo(() => getBreadcrumbs(page), [page])
-  const headerButtons = useMemo(() => parseButtons(page), [page])
 
   const isClient = useIsClient()
 
@@ -119,7 +80,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         title={page.attributes?.title}
         subtext={page.attributes?.subtext}
         breadcrumbs={breadcrumbs}
-        buttons={headerButtons}
+        buttons={page.attributes?.headerLinks?.filter(isDefined)}
         className={hasFeaturedBlogs ? 'mb-[110px] lg:mb-[266px]' : null}
         imageSrc={page.attributes?.pageBackgroundImage?.data?.attributes?.url}
       >
