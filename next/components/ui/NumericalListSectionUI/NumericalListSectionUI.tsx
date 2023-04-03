@@ -11,11 +11,11 @@ export interface NumericalListItemObject {
 }
 
 export interface NumericalListSectionProps {
-  title: string
-  items: NumericalListItemObject[]
-  hasBackground: boolean
-  buttonText?: string
-  buttonLink?: string
+  title: string | null | undefined
+  items: NumericalListItemObject[] | null | undefined
+  hasBackground: boolean | null | undefined
+  buttonText?: string | null | undefined
+  buttonLink?: string | null | undefined
   variant?: 'basic' | 'combined' | 'roadmap'
 }
 
