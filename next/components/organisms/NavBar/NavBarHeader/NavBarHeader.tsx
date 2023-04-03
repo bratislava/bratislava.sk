@@ -3,6 +3,7 @@ import { SectionContainer } from '@bratislava/ui-bratislava'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
@@ -27,7 +28,10 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
   const otherLanguage = languageSelectProps.languages?.find((l) => l.key !== i18n.language)
 
   return (
-    <SectionContainer className="relative z-[31] bg-white">
+    <SectionContainer
+      className="relative z-[31] bg-white"
+      style={getCategoryColorLocalStyle({ category: 'main' })}
+    >
       <nav className="flex w-full items-center justify-between border-b border-gray-200">
         <SkipToContentButton />
         <Brand
@@ -64,7 +68,7 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
             })}
 
           {accountLink ? (
-            <Button size="sm" variant="negative" {...getCommonLinkProps(accountLink)} />
+            <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
           ) : (
             <Divider />
           )}
