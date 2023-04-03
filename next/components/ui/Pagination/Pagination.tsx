@@ -1,160 +1,106 @@
-// @ts-strict-ignore
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronLeft from '@assets/images/chevron-left.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
+import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
+import Button from '@components/forms/simple-components/Button'
+import usePagination from '@components/ui/Pagination/usePagination'
 import cx from 'classnames'
-import { useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import React, { ReactNode } from 'react'
 
-import { Button } from '../Button/Button'
-
-interface PaginationProps {
-  totalPages?: number
-  totalCount?: number
+type PaginationProps = {
   currentPage: number
-  itemsPerPage?: number
-  pageHandler?: (pageNumber: number) => void
+  totalCount: number
+  onPageChange?: (value: number) => void
 }
 
-export const ThreeDots = () => {
-  return (
-    <div className="ml-2 w-7 sm:ml-3 sm:w-8">
-      <span className="text-20-semibold text-gray-500">&hellip;</span>
-    </div>
-  )
-}
+/**
+ * Inspired by Marianum: https://github.com/bratislava/marianum.sk/tree/master/next/components/atoms/Pagination
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=10-223&t=XE0jQhTbQ7OSncdz-0
+ *
+ * @param selectedPage
+ * @param totalCount
+ * @param onPageChange
+ * @constructor
+ */
+export const Pagination = ({
+  currentPage,
+  totalCount,
+  onPageChange = () => {},
+}: PaginationProps) => {
+  const { t } = useTranslation('common', { keyPrefix: 'Pagination' })
 
-export const Pagination = ({ totalPages, currentPage = 1, pageHandler }: PaginationProps) => {
-  const [items, setItems] = useState([
-    {
-      page: currentPage === 1 ? currentPage : currentPage - 1,
+  const { items } = usePagination({
+    count: totalCount,
+    page: currentPage,
+    onChange: (event, value) => {
+      // When not blurred the button stays focused and is confusing.
+      ;(event.target as HTMLButtonElement).blur()
+      onPageChange(value)
     },
-    {
-      page: currentPage === 1 ? currentPage + 1 : currentPage,
-    },
-    {
-      page: currentPage === 1 ? currentPage + 2 : currentPage + 1,
-    },
-  ])
-  const numberOfPages = totalPages
-
-  const handleCurrentPageChange = (currentPageTmp: number) => {
-    setItems([
-      {
-        page:
-          currentPageTmp === 1
-            ? currentPageTmp
-            : currentPageTmp === numberOfPages
-            ? currentPageTmp - 2
-            : currentPageTmp - 1,
-      },
-      {
-        page:
-          currentPageTmp === 1
-            ? currentPageTmp + 1
-            : currentPageTmp === numberOfPages
-            ? currentPageTmp - 1
-            : currentPageTmp,
-      },
-      {
-        page:
-          currentPageTmp === 1
-            ? currentPageTmp + 2
-            : currentPageTmp === numberOfPages
-            ? currentPageTmp
-            : currentPageTmp + 1,
-      },
-    ])
-  }
-
-  const handleNextPageChange = () => {
-    if (currentPage !== numberOfPages) {
-      pageHandler(currentPage + 1)
-      handleCurrentPageChange(currentPage + 1)
-    }
-  }
-
-  const handlePreviousPageChange = () => {
-    if (currentPage === 1) return
-    pageHandler(currentPage - 1)
-    handleCurrentPageChange(currentPage - 1)
-  }
-
-  const handleSelectPage = (e: number) => {
-    if (e !== currentPage) {
-      pageHandler(e)
-      handleCurrentPageChange(e)
-    }
-  }
-
-  const getVariant = (pageNumber: number) => {
-    return pageNumber === currentPage ? 'primary-border' : 'transparent-gray'
-  }
+  })
 
   return (
-    <div className="relative flex h-12 w-full">
-      <div className="m-auto flex w-auto items-center justify-between">
-        {currentPage !== 1 ? (
-          <div className="group mr-3 cursor-pointer text-category-600">
-            <span className="group-hover:hidden">
-              <ChevronLeft />
-            </span>
-            <span className="hidden group-hover:block">
-              <ArrowRight onClick={handlePreviousPageChange} className="rotate-180" />
-            </span>
-          </div>
-        ) : null}
+    <nav>
+      <ul className="flex flex-wrap items-center justify-center gap-1 lg:gap-2">
+        {items.map(
+          ({ page, type, selected, disabled, onPress, 'aria-current': ariaCurrent }, index) => {
+            let children: ReactNode = null
 
-        <Button
-          value={1}
-          variant={getVariant(1)}
-          // className="mx-2 md:mx-3 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full  hover:border-2 hover:border-category-600"
-          className={cx(
-            'mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12',
-            { 'border-category-600 bg-category-600 text-white': currentPage === 1 },
-          )}
-          onClick={() => handleSelectPage(1)}
-        >
-          <div className="text-p2-semibold sm:text-p1-semibold m-auto block leading-5">{1}</div>
-        </Button>
-        {items[0].page - 1 >= 2 ? <ThreeDots /> : null}
-        {items.map((item, index) =>
-          item.page < numberOfPages && item.page > 1 ? (
-            <Button
-              key={index}
-              value={item.page.valueOf()}
-              variant={getVariant(item.page)}
-              className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12"
-              onClick={() => handleSelectPage(item.page)}
-            >
-              <div className="text-font/50 text-p1-semibold m-auto block leading-5">
-                {item.page}
-              </div>
-            </Button>
-          ) : null,
+            // eslint-disable-next-line unicorn/prefer-switch
+            if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+              children = '…'
+            } else if (type === 'page') {
+              children = (
+                <Button
+                  variant={selected ? 'category' : 'category-outline'}
+                  disabled={disabled}
+                  onPress={onPress}
+                  aria-current={ariaCurrent}
+                  aria-label={t('aria.goToPage', { page })}
+                  text={`${page}`}
+                  className="flex h-10 w-10 shrink-0 grow-0 items-center justify-center rounded-full lg:h-12 lg:w-12"
+                />
+              )
+            } else if (type === 'previous' || type === 'next') {
+              let icon: ReactNode
+              let ariaLabel = ''
+              if (type === 'previous') {
+                icon = <ArrowLeftIcon />
+                ariaLabel = t('aria.goToPreviousPage', { page })
+              }
+              if (type === 'next') {
+                icon = <ArrowRightIcon />
+                ariaLabel = t('aria.goToNextPage', { page })
+              }
+
+              children = (
+                <Button
+                  variant="plain-category"
+                  disabled={disabled}
+                  onPress={onPress}
+                  aria-label={ariaLabel}
+                  icon={icon}
+                  className="rounded-full"
+                />
+              )
+            }
+
+            return (
+              <li
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                className={cx({
+                  'text-sm flex w-10 items-center justify-center font-semibold lg:w-12':
+                    type === 'start-ellipsis' || type === 'end-ellipsis',
+                  'lg:mr-2': type === 'previous',
+                  'lg:ml-2': type === 'next',
+                })}
+              >
+                {children}
+              </li>
+            )
+          },
         )}
-        {items[2].page + 1 < numberOfPages ? <ThreeDots /> : null}
-        {numberOfPages > 1 ? (
-          <Button
-            value={numberOfPages}
-            variant={getVariant(numberOfPages)}
-            className="mx-2 h-10 w-10 rounded-full border-2 shadow-none hover:border-category-600 md:mx-3 md:h-12 md:w-12"
-            onClick={() => handleSelectPage(numberOfPages)}
-          >
-            <div className="text-p2-semibold m-auto block leading-5">{numberOfPages}</div>
-          </Button>
-        ) : null}
-        {currentPage !== numberOfPages ? (
-          <div className="group ml-3 cursor-pointer text-category-600">
-            <span className="group-hover:hidden">
-              <ChevronRight />
-            </span>
-            <span className="hidden group-hover:block">
-              <ArrowRight onClick={handleNextPageChange} />
-            </span>
-          </div>
-        ) : null}
-      </div>
-    </div>
+      </ul>
+    </nav>
   )
 }
 

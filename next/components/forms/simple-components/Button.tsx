@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import ArrowRightIcon from '@assets/images/forms/arrow-right.svg'
+import { ArrowRightIcon } from '@assets/images'
 import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject } from 'react'
@@ -238,7 +238,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 'ml-1 h-5 w-5': size === 'sm',
               })}
             >
-              <ArrowRightIcon className="h-6 w-6" />
+              <ArrowRightIcon />
             </span>
           )}
         </MLink>

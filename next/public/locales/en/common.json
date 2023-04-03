@@ -130,5 +130,12 @@
       "backTo": "Back to {{backTo}}"
     },
     "more": "More"
+  },
+  "Pagination": {
+    "aria": {
+      "goToPage": "Go to page {{page}}",
+      "goToPreviousPage": "Go to previous page",
+      "goToNextPage": "Go to next page"
+    }
   }
 }
