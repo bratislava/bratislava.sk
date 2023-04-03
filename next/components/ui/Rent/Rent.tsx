@@ -32,12 +32,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         'rent-shadow max-h-sm min-w-60 mr-4 flex flex-1 flex-col items-center rounded-xl p-5 px-3 text-center md:mr-0 md:bg-transparent lg:min-w-0',
       )}
     >
-      <div
-        className="rounded-full"
-        style={{
-          backgroundColor: 'var(--color-category-200)',
-        }}
-      >
+      <div className="rounded-full bg-category-200">
         {icon?.data?.attributes?.url && (
           <img className="h-32 w-32 p-5" src={icon.data.attributes.url} alt={title} />
         )}
@@ -66,13 +61,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         )}
       </div>
       <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setOpen(false)}>
-        <div
-          className="modal-content-rent max-h-104 max-w-[660px] overflow-y-auto rounded-2xl px-6 py-7 md:max-h-[610px] md:px-12 md:py-10"
-          style={{
-            // maxHeight: '600px',
-            backgroundColor: 'var(--color-category-200)',
-          }}
-        >
+        <div className="modal-content-rent max-h-104 max-w-[660px] overflow-y-auto rounded-2xl bg-category-200 px-6 py-7 md:max-h-[610px] md:px-12 md:py-10">
           <div className="mx-auto mb-8 h-24 w-24 rounded-full bg-white md:mx-0 md:h-40 md:w-40">
             {icon?.data?.attributes?.url && (
               <img
