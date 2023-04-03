@@ -3,7 +3,6 @@ import { BlogPostEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { getNumericLocalDate } from '@utils/local-date'
-import { pageStyle } from '@utils/page'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 import { PropsWithChildren } from 'react'
@@ -36,19 +35,11 @@ export type BlogPostPageContentProps = {
 
 const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
   const tag = blogPost.attributes?.tag?.data?.attributes
-  const pageCategory = tag?.pageCategory?.data?.attributes
 
   const { t } = useTranslation()
 
   return (
     <>
-      {pageCategory?.color && (
-        <style
-          dangerouslySetInnerHTML={{
-            __html: pageStyle(pageCategory.color),
-          }}
-        />
-      )}
       {/* Header */}
       <PageHeader
         title={blogPost.attributes?.title}
@@ -70,7 +61,6 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       {blogPost.attributes?.sections && <Sections sections={blogPost.attributes?.sections} />}
 
       {/* Page - Social media buttons for sharing */}
-      {/* These might not behave correctly in development. Try changing socialLink to some publicly accessible url for testing. */}
       <SectionContainer>
         <div className="mt-14 flex flex-col">
           <span className="text-h5">{t('share')}</span>

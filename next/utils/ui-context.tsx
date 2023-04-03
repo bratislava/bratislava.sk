@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { CSSProperties } from 'react'
 
 const UIContext = React.createContext<IComponents>({
   Link: ({ ...props }) => <a {...props} />,
@@ -11,6 +12,7 @@ interface IComponents {
     href: string
     target?: string
     rel?: string
+    style?: CSSProperties
     children: React.ReactNode
   }>
 }

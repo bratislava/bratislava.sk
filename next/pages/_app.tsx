@@ -34,10 +34,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       <UIContextProvider
         components={{
-          Link: ({ href, className, children, locale, target, rel }) => {
+          Link: ({ href, className, children, locale, target, rel, style }) => {
             if (href === undefined || href === null) return null
             return (
-              <Link href={href} locale={locale} target={target} rel={rel} className={className}>
+              <Link
+                href={href}
+                locale={locale}
+                target={target}
+                rel={rel}
+                className={className}
+                style={style}
+              >
                 {children}
               </Link>
             )

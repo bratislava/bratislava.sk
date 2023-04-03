@@ -1,7 +1,8 @@
 // @ts-strict-ignore
 import ArrowRightShort from '@assets/images/arrow-right-short.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { transformColorToCategory } from '@utils/page'
+import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'
 
 import { Panel } from '../Panel/Panel'
@@ -44,7 +45,7 @@ export interface BlogItem {
           pageCategory?: {
             data?: {
               attributes?: {
-                color?: string
+                color?: Enum_Pagecategory_Color
                 shortTitle?: string
               }
             }
@@ -76,10 +77,11 @@ export const BlogSearchCard = ({
 
   // TODO use formatter function, add locale
   const date = new Date(date_added ?? publishedAt).toLocaleDateString('sk-SK')
-  const tagColor = transformColorToCategory(color ?? 'red')
+
+  const colorStyle = getCategoryColorLocalStyle({ color })
 
   return (
-    <UILink href={slug ? `/blog/${slug}` : ''}>
+    <UILink href={slug ? `/blog/${slug}` : ''} style={colorStyle}>
       <Panel
         className={cx(
           className,
@@ -101,14 +103,7 @@ export const BlogSearchCard = ({
         )}
 
         <div className="flex flex-col gap-y-4 p-8">
-          {tagTitle && (
-            <div
-              className="w-fit rounded-lg px-3 py-1"
-              style={{ backgroundColor: `rgb(var(--color-${tagColor}-200)` }}
-            >
-              {tagTitle}
-            </div>
-          )}
+          {tagTitle && <div className="w-fit rounded-lg bg-category-200 px-3 py-1">{tagTitle}</div>}
           <div className="text-20-semibold line-clamp-2">{title} </div>
           <div>{date}</div>
         </div>
@@ -134,15 +129,10 @@ export const BlogSearchCard = ({
             {/* should be from-black but it doesn't work */}
             <div className="flex flex-col gap-y-4 bg-gradient-to-t from-[#000000] p-4 lg:p-8">
               {tagTitle && (
-                <div
-                  className="w-fit rounded-lg px-3 py-1"
-                  style={{ backgroundColor: `rgb(var(--color-${tagColor}-200)` }}
-                >
-                  {tagTitle}
-                </div>
+                <div className="w-fit rounded-lg px-3 py-1 text-category-200">{tagTitle}</div>
               )}
               <div className="flex">
-                <div className="text-20-semibold text-white line-clamp-2">{title}</div>
+                <div className="text-20-semibold line-clamp-2 text-white">{title}</div>
                 <VerticalCardButton
                   className="invisible shrink-0 group-hover:lg:visible"
                   size="medium"

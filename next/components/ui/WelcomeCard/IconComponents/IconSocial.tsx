@@ -1,12 +1,19 @@
 import { IconProps } from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import React from 'react'
 
-const IconSocial = ({ isColored, color }: IconProps) => {
-  const fillColor = isColored ? color : 'white'
-  const strokeColor = isColored ? color : '#333333'
+const IconSocial = ({ isColored, className }: IconProps) => {
+  const fillColor = isColored ? 'rgb(var(--color-category-600))' : 'white'
+  const strokeColor = isColored ? 'rgb(var(--color-category-600))' : '#333333'
 
   return (
-    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="65"
+      height="65"
+      viewBox="0 0 65 65"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
       <g clipPath="url(#clip0_13527_47203)">
         <path
           d="M39.2466 20.2578C37.8962 20.2916 36.6125 20.8519 35.6695 21.819C34.7265 22.7862 34.1989 24.0837 34.1993 25.4345C34.1997 24.0837 33.6721 22.7862 32.7291 21.819C31.7861 20.8519 30.5024 20.2916 29.152 20.2578C28.4606 20.2589 27.7761 20.3965 27.1379 20.6627C26.4997 20.9289 25.9204 21.3184 25.433 21.809C24.9457 22.2995 24.56 22.8814 24.298 23.5213C24.036 24.1612 23.9029 24.8466 23.9063 25.538V25.3827C23.9063 28.7562 25.3299 29.8778 27.8147 32.1556L34.1993 38.0225L40.5839 32.1556C43.0773 29.8778 44.4923 28.7562 44.4923 25.3827V25.538C44.4957 24.8466 44.3626 24.1612 44.1006 23.5213C43.8386 22.8814 43.4529 22.2995 42.9655 21.809C42.4782 21.3184 41.8988 20.9289 41.2607 20.6627C40.6225 20.3965 39.938 20.2589 39.2466 20.2578Z"

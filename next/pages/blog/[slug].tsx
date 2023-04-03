@@ -1,6 +1,7 @@
 import { BlogPostEntityFragment, GeneralQuery } from '@bratislava/strapi-sdk-homepage'
 import PageLayout from '@components/layouts/PageLayout'
 import BlogPostPageContent from '@components/pages/blogPostPageContent'
+import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -82,6 +83,9 @@ const Page = ({ general, blogPost }: PageProps) => {
           {title && <title>{title} – Bratislava.sk</title>}
           {excerpt && <meta name="description" content={excerpt} />}
         </Head>
+        <GlobalCategoryColorProvider
+          color={blogPost?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
+        />
         <PageLayout>
           <BlogPostPageContent blogPost={blogPost} />
         </PageLayout>

@@ -5,12 +5,12 @@ import IconEducation from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/
 import IconEnvironment from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconEnvironment'
 import IconSocial from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconSocial'
 import IconTransport from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconTransport'
-import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
-import { getColorsVariables } from '@utils/page'
+import { getCategoryColorLocalStyle, transformIconToCategory } from '@utils/colors'
+import { useMemo } from 'react'
 
 export type IconProps = {
   isColored: boolean
-  color: string
+  className?: string
 }
 
 type WelcomeCardIconProps = {
@@ -20,25 +20,25 @@ type WelcomeCardIconProps = {
 
 const WelcomeCardIcon = ({ icon, isColored }: WelcomeCardIconProps) => {
   const category = transformIconToCategory(icon)
-  const color = `rgb(var(${getColorsVariables(category).c600}))`
+  const colorStyle = getCategoryColorLocalStyle({ category })
 
-  // TODO pass color to icon compoents
-  switch (icon) {
-    case 'mesto_01':
-      return <IconCity isColored={isColored} color={color} />
-    case 'doprava_mapy_02':
-      return <IconTransport isColored={isColored} color={color} />
-    case 'zp_vystavba_03':
-      return <IconEnvironment isColored={isColored} color={color} />
-    case 'socialna_pomoc_04':
-      return <IconSocial isColored={isColored} color={color} />
-    case 'vzdelavanie_05':
-      return <IconEducation isColored={isColored} color={color} />
-    case 'kultura_06':
-      return <IconCulture isColored={isColored} color={color} />
-    default:
-      return null
-  }
+  const IconComponent = useMemo(() => {
+    const icons = {
+      mesto_01: IconCity,
+      doprava_mapy_02: IconTransport,
+      zp_vystavba_03: IconEnvironment,
+      socialna_pomoc_04: IconSocial,
+      vzdelavanie_05: IconEducation,
+      kultura_06: IconCulture,
+    }
+    return icons[icon] ?? null
+  }, [icon])
+
+  return (
+    <div style={colorStyle} className="flex h-[65px] w-[65px] items-center justify-center">
+      <IconComponent isColored={isColored} className="h-[48px] w-[48px] lg:h-[65px] lg:w-[65px]" />
+    </div>
+  )
 }
 
 export default WelcomeCardIcon

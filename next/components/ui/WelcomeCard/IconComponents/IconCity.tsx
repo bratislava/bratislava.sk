@@ -1,12 +1,19 @@
 import { IconProps } from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import React from 'react'
 
-const IconCity = ({ isColored, color }: IconProps) => {
-  const fillColor = isColored ? color : 'white'
-  const strokeColor = isColored ? color : '#333333'
+const IconCity = ({ isColored, className }: IconProps) => {
+  const fillColor = isColored ? 'rgb(var(--color-category-600))' : 'white'
+  const strokeColor = isColored ? 'rgb(var(--color-category-600))' : '#333333'
 
   return (
-    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="65"
+      height="65"
+      viewBox="0 0 65 65"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
       <path
         d="M43.1409 19.4102V24.905H22.1704V19.4102H10.2812V26.4954V52.5001H55.041V26.4954V19.4102H43.1409Z"
         fill="white"

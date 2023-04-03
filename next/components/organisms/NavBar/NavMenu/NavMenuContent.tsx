@@ -1,7 +1,7 @@
 import { Waves } from '@bratislava/ui-bratislava'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import cx from 'classnames'
-import React, { useMemo } from 'react'
+import React, { CSSProperties, useMemo } from 'react'
 
 import NavMenuContentCell from './NavMenuContentCell'
 import NavMenuSection from './NavMenuSection'
@@ -10,10 +10,10 @@ import { MenuSection } from './navMenuTypes'
 type NavMenuContentProps = {
   colCount: number
   sections: MenuSection[]
-  backgroundColor: string
+  colorStyle: CSSProperties
 }
 
-const NavMenuContent = ({ colCount, sections, backgroundColor }: NavMenuContentProps) => {
+const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps) => {
   // Parse sections into grid cells:
   // - group sections with colSpan=0 to column
   // - sections with colSpan=0 should be followed by section with colSpan=1 - this needs to be set up in Strapi
@@ -46,8 +46,9 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavMenuContentP
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
       onPointerMove={(event) => event.preventDefault()}
       onPointerLeave={(event) => event.preventDefault()}
+      style={colorStyle}
     >
-      <div style={{ backgroundColor }} className="relative z-[29]">
+      <div className="relative z-[29] bg-category-200">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
         <ul
           className={cx('mx-auto grid w-full max-w-screen-lg gap-x-8 gap-y-6 px-4 py-8', {
@@ -87,7 +88,7 @@ const NavMenuContent = ({ colCount, sections, backgroundColor }: NavMenuContentP
       <Waves
         className="relative z-[28] drop-shadow-xl"
         wavePosition="bottom"
-        waveColor={backgroundColor}
+        waveColor="rgb(var(--color-category-200))"
       />
     </NavigationMenu.Content>
   )

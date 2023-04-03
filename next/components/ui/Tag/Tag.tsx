@@ -31,13 +31,10 @@ export const Tag = ({
             }
           : null
       }
-      style={{
-        backgroundColor: isSelected
-          ? `rgb(var(--color-${color}-800)`
-          : `rgb(var(--color-${color}-200)`,
-      }}
       className={cx('text-p2 inline-block rounded-md px-3 py-1 pt-1 text-center', className, {
         'cursor-pointer': interactable,
+        'bg-category-800': isSelected,
+        'bg-category-200': !isSelected,
       })}
     >
       {title}

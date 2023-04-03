@@ -2,15 +2,14 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import {
-  Enum_Pagecategory_Color,
   LatestBlogsFragment,
   LatestBlogsWithTagsQuery,
   NewsCardBlogFragment,
 } from '@bratislava/strapi-sdk-homepage'
 import { Iframe } from '@bratislava/ui-bratislava'
 import { LocalDate, Month, Period } from '@js-joda/core'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
-import { transformColorToCategory } from '@utils/page'
 import { getLanguageKey } from '@utils/utils'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
@@ -40,26 +39,6 @@ export interface PostsProps {
   readMoreText?: string
   readMoreNewsText?: string
   rozkoPosts: LatestBlogsWithTagsQuery['blogPosts']
-}
-
-// TODO: The function does not work if it is imported from other file so it is temporarily duplicated here
-export const getHoverColor = (color: Enum_Pagecategory_Color): string => {
-  switch (color) {
-    case Enum_Pagecategory_Color.Red:
-      return 'hover:text-main-600'
-    case Enum_Pagecategory_Color.Blue:
-      return 'hover:text-transport-600'
-    case Enum_Pagecategory_Color.Green:
-      return 'hover:text-environment-600'
-    case Enum_Pagecategory_Color.Yellow:
-      return 'hover:text-social-600'
-    case Enum_Pagecategory_Color.Purple:
-      return 'hover:text-education-600'
-    case Enum_Pagecategory_Color.Brown:
-      return 'hover:text-culture-600'
-    default:
-      return 'hover:text-gray-600'
-  }
 }
 
 export const Posts = ({
@@ -148,25 +127,19 @@ export const Posts = ({
                   {latestPost.data.map((newsCard, i) => {
                     const card = newsCard.attributes
                     const tag = card.tag.data?.attributes
+                    const colorStyle = getCategoryColorLocalStyle({
+                      color: card.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
+                    })
+
                     return (
-                      <div key={i} className="relative">
+                      <div key={i} className="relative" style={colorStyle}>
                         {tag && (
                           <div className="mb-5">
-                            <Tag
-                              title={tag?.title}
-                              color={transformColorToCategory(
-                                tag.pageCategory.data.attributes.color,
-                              )}
-                            />
+                            <Tag title={tag?.title} />
                           </div>
                         )}
                         <UILink href={`/blog/${card.slug}`}>
-                          <div
-                            className={cx(
-                              `mb-8 font-semibold text-font underline after:absolute after:inset-0`,
-                              getHoverColor(tag?.pageCategory.data.attributes.color),
-                            )}
-                          >
+                          <div className="mb-8 font-semibold text-font underline after:absolute after:inset-0 hover:text-category-600">
                             {card.title}
                           </div>
                         </UILink>
@@ -287,25 +260,19 @@ export const Posts = ({
                       {rozkoPosts.data.slice(2, 7).map((newsCard, i) => {
                         const card = newsCard.attributes
                         const tag = card.tag.data?.attributes
+                        const colorStyle = getCategoryColorLocalStyle({
+                          color: card.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
+                        })
+
                         return (
-                          <div key={i} className="relative">
+                          <div key={i} className="relative" style={colorStyle}>
                             {card.tag && (
                               <div className="mb-5">
-                                <Tag
-                                  title={tag?.title}
-                                  color={transformColorToCategory(
-                                    tag.pageCategory.data.attributes.color,
-                                  )}
-                                />
+                                <Tag title={tag?.title} />
                               </div>
                             )}
                             <UILink href={`/blog/${card.slug}`}>
-                              <div
-                                className={cx(
-                                  `mb-8 font-semibold text-font underline after:absolute after:inset-0`,
-                                  getHoverColor(tag?.pageCategory.data.attributes.color),
-                                )}
-                              >
+                              <div className="mb-8 font-semibold text-font underline after:absolute after:inset-0 hover:text-category-600">
                                 {card.title}
                               </div>
                             </UILink>

@@ -1,6 +1,7 @@
 import { GeneralQuery, PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import PageLayout from '@components/layouts/PageLayout'
 import GeneralPageContent from '@components/pages/generalPageContent'
+import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { hasAttributes } from '@utils/isDefined'
@@ -75,9 +76,9 @@ const Page = ({ general, page }: PageProps) => {
     .filter(hasAttributes)
     .map((locale) => {
       return {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
         locale: locale.attributes.locale!,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
         slug: locale.attributes.slug!,
       }
     })
@@ -92,6 +93,9 @@ const Page = ({ general, page }: PageProps) => {
           {title && <title>{title} – Bratislava.sk</title>}
           {metaDiscription && <meta name="description" content={metaDiscription} />}
         </Head>
+        <GlobalCategoryColorProvider
+          color={page?.attributes?.pageCategory?.data?.attributes?.color}
+        />
         <PageLayout>
           <GeneralPageContent page={page} />
         </PageLayout>

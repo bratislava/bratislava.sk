@@ -1,6 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { transformIconToCategory } from '@utils/getHoverColorFromIcon'
-import { getColorsVariables } from '@utils/page'
+import { getCategoryColorLocalStyle, transformIconToCategory } from '@utils/colors'
 import React from 'react'
 
 import NavMenuContent from './NavMenuContent'
@@ -13,18 +12,12 @@ type NavItemProps = {
 
 const NavMenuItem = ({ menu }: NavItemProps) => {
   const category = transformIconToCategory(menu.icon)
-
-  const activeColor = `rgb(var(${getColorsVariables(category).c600}))`
-  const backgroundColor = `rgb(var(${getColorsVariables(category).c200}))`
+  const colorStyle = getCategoryColorLocalStyle({ category })
 
   return (
     <NavigationMenu.Item>
-      <NavMenuTrigger label={menu.label} color={activeColor} />
-      <NavMenuContent
-        sections={menu.items}
-        colCount={menu.colCount}
-        backgroundColor={backgroundColor}
-      />
+      <NavMenuTrigger label={menu.label} colorStyle={colorStyle} />
+      <NavMenuContent sections={menu.items} colCount={menu.colCount} colorStyle={colorStyle} />
     </NavigationMenu.Item>
   )
 }
