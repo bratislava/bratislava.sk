@@ -50,7 +50,7 @@ export const AdvancedAccordionDepartment = ({
 // departmentPhone,
 AdvancedAccordionDepartmentProps) => {
   const [cards, setCards] = useState([])
-  const { data } = useSWR(title, usersFromDepartmentFetcher)
+  const { data } = useSWR(title, usersFromwDepartmentFetcher)
   if (cards.length === 0 && data && data.length > 0) {
     setCards(data)
   }

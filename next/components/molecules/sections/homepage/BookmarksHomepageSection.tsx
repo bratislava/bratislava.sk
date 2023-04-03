@@ -4,7 +4,7 @@ import { useHomepageContext } from '@utils/homepageContext'
 const BookmarksHomepageSection = () => {
   const { homepage } = useHomepageContext()
 
-  const cards = homepage?.data?.attributes?.cards?.map((card) => ({
+  const cards = homepage?.attributes?.cards?.map((card) => ({
     bookmarkTitle: card?.title,
     title: card?.headline,
     content: card?.text,
