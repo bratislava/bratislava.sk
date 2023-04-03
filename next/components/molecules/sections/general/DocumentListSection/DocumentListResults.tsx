@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
 import {
@@ -81,7 +80,6 @@ const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) =
   const [activeVzn, setActiveVzn] = useState<VznMeili | null>(null)
 
   const { data, error } = useSwr(getVznSwrKey(filters), vznFetcher(filters))
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
     data,
     error,
@@ -109,11 +107,9 @@ const DocumentListResults = ({ filters, onPageChange }: DocumentsResultsProps) =
         {dataToDisplay?.estimatedTotalHits && (
           <Pagination
             key={filters.search}
-            itemsPerPage={filters.pageSize}
-            totalPages={Math.ceil(dataToDisplay.estimatedTotalHits / filters.pageSize)}
-            totalCount={dataToDisplay?.estimatedTotalHits}
+            totalCount={Math.ceil(dataToDisplay.estimatedTotalHits / filters.pageSize)}
             currentPage={filters.page}
-            pageHandler={onPageChange}
+            onPageChange={onPageChange}
           />
         )}
       </LoadingOverlay>

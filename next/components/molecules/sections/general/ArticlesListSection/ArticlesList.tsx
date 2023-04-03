@@ -166,6 +166,7 @@ const ArticlesList = ({
       <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3">
         {data.map((article, index) => (
           <NewsCard
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
             coverImage={article?.attributes?.coverImage}
             coverImageSizes={generateImageSizes({ sm: '50vw', lg: '33vw', default: '100vw' })}
@@ -183,10 +184,9 @@ const ArticlesList = ({
       {totalArticles > itemsPerPage ? (
         <div className="mt-10 lg:mt-14">
           <Pagination
-            totalPages={numberOfPages}
-            totalCount={totalArticles}
+            totalCount={numberOfPages}
             currentPage={currentPage}
-            pageHandler={setCurrentPage}
+            onPageChange={setCurrentPage}
           />
         </div>
       ) : null}

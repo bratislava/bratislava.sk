@@ -3,7 +3,6 @@ import { CSSProperties } from 'react'
 
 const UIContext = React.createContext<IComponents>({
   Link: ({ ...props }) => <a {...props} />,
-  Markdown: ({ ...props }) => <div {...props}>{props.content}</div>,
 })
 
 interface IComponents {
@@ -15,13 +14,6 @@ interface IComponents {
     rel?: string
     style?: CSSProperties
     children: React.ReactNode
-  }>
-  Markdown: React.FC<{
-    className?: string
-    paragraphClassName?: string
-    numericalList?: boolean
-    hasBackground?: boolean
-    content: string
   }>
 }
 

@@ -1,8 +1,7 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import cx from 'classnames'
-
 import Email from '@assets/images/email2.svg'
 import Phone from '@assets/images/phone.svg'
+import Markdown from '@components/atoms/Markdown'
+import cx from 'classnames'
 
 export interface ContactProps {
   className?: string
@@ -27,8 +26,6 @@ export const Contact = ({
   emailLabel,
   address,
 }: ContactProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
-
   const items: ContactItemProps[] = []
   if (address) items.push({ variant: 'address', value: address })
   if (phone)
@@ -57,12 +54,7 @@ export const Contact = ({
             })}
           >
             <div className={cx('flex h-full flex-col', { 'justify-center': !address })}>
-              {description && (
-                <UIMarkdown
-                  className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
-                  content={description}
-                />
-              )}
+              {description && <Markdown content={description} />}
             </div>
           </div>
         )}
@@ -107,12 +99,8 @@ const ContactItem = ({
   href,
   linkVariant = 'primary',
 }: ContactItemProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
-
   if (variant === 'address') {
-    return (
-      <UIMarkdown className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]" content={value} />
-    )
+    return <Markdown content={value} />
   }
 
   const Icon = variant === 'phone' ? Phone : Email

@@ -1,4 +1,4 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import Markdown from '@components/atoms/Markdown'
 
 export interface ColumnedTextProps {
   className?: string
@@ -9,7 +9,6 @@ export interface ColumnedTextProps {
 export const ColumnedText = ({ content, hasBackground }: ColumnedTextProps) => {
   const breakWord = '<break>'
   const columns = content.split(breakWord)
-  const { Markdown: UIMarkdown } = useUIContext()
   if (!content) return null
   const columnLength = columns.length >= 12 ? 12 : columns.length
   return (
@@ -31,11 +30,7 @@ export const ColumnedText = ({ content, hasBackground }: ColumnedTextProps) => {
     >
       {columns.map((column, i) => (
         <div key={i}>
-          <UIMarkdown
-            content={column}
-            hasBackground={hasBackground}
-            className="text-p2 md:text-p1 mb-5 leading-[24px] md:leading-[30px]"
-          />
+          <Markdown content={column} />
         </div>
       ))}
     </div>

@@ -35,11 +35,6 @@ fragment PageEntity on PageEntity {
     headerLinks {
       ...CommonLink
     }
-    # TODO: Remove legacy
-    pageButtonContent {
-      title
-      url
-    }
     sections {
       ...Sections
     }

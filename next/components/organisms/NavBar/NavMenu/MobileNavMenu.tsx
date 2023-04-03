@@ -66,6 +66,8 @@ const MobileNavMenu = () => {
             ?.filter(isDefined)
             .filter((link) => link.showOnMobile)
             .map((link) => {
+              // TODO better approach to links
+              const pageSlug = link.page?.data?.attributes?.slug
               return (
                 <li className="relative flex items-center gap-2">
                   <div aria-hidden>
@@ -73,7 +75,7 @@ const MobileNavMenu = () => {
                   </div>
                   <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                     <MLink
-                      href={link.page?.data?.attributes?.slug ?? link.url ?? ''}
+                      href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
                       target={link.url ? '_blank' : undefined}
                       variant="navBarHeader"
                       stretched

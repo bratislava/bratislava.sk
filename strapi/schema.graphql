@@ -2375,7 +2375,6 @@ type Page {
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   metaDiscription: String
   pageBackgroundImage: UploadFileEntityResponse
-  pageButtonContent: ComponentBlocksBlogPostLink
   pageCategory: PageCategoryEntityResponse
   pageColor: ENUM_PAGE_PAGECOLOR
   pageHeaderSections: [PagePageHeaderSectionsDynamicZone]
@@ -2480,7 +2479,6 @@ input PageFiltersInput {
   metaDiscription: StringFilterInput
   not: PageFiltersInput
   or: [PageFiltersInput]
-  pageButtonContent: ComponentBlocksBlogPostLinkFiltersInput
   pageCategory: PageCategoryFiltersInput
   pageColor: StringFilterInput
   parentPage: PageFiltersInput
@@ -2497,7 +2495,6 @@ input PageInput {
   headerLinks: [ComponentBlocksCommonLinkInput]
   metaDiscription: String
   pageBackgroundImage: ID
-  pageButtonContent: ComponentBlocksBlogPostLinkInput
   pageCategory: ID
   pageColor: ENUM_PAGE_PAGECOLOR
   pageHeaderSections: [PagePageHeaderSectionsDynamicZoneInput!]

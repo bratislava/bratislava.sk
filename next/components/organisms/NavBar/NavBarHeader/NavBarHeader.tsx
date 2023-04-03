@@ -47,11 +47,13 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
             ?.filter(isDefined)
             .filter((link) => link.showOnDesktop)
             .map((link) => {
-              if (link.page?.data?.attributes?.slug || link.url) {
+              // TODO better approach to links
+              const pageSlug = link.page?.data?.attributes?.slug
+              if (pageSlug || link.url) {
                 return (
                   <MLink
                     variant="navBarHeader"
-                    href={link.page?.data?.attributes?.slug ?? link.url ?? ''}
+                    href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
                     target={link.url && isExternalLink(link.url) ? '_blank' : undefined}
                   >
                     {link.label}
