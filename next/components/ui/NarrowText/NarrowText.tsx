@@ -1,4 +1,4 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
 export interface NarrowTextProps {
@@ -20,8 +20,6 @@ export const NarrowText = ({
   size = 'normal',
   contentStyle,
 }: NarrowTextProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
-
   if (!content) return null
 
   return (
@@ -44,18 +42,8 @@ export const NarrowText = ({
           'md:w-full': width === 'full',
         })}
       >
-        <UIMarkdown
-          content={content}
-          hasBackground={hasBackground}
-          className={cx(
-            'text-p2 md:text-p1 narrow-text-wrapper',
-            {
-              'text-p4 md:text-p2 leading-[20px] md:leading-[24px]': size === 'small',
-              'text-p2 md:text-p1 leading-[24px] md:leading-[30px]': size === 'normal',
-            },
-            contentStyle,
-          )}
-        />
+        {/* TODO may need smaller/condensed styles for size === 'small' */}
+        <Markdown content={content} />
       </div>
     </div>
   )

@@ -1,10 +1,10 @@
 // @ts-strict-ignore
+import { ArrowRight, ChevronRight } from '@assets/images'
 import cx from 'classnames'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-import { ArrowRight, ChevronRight } from '@assets/images'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 
@@ -46,6 +46,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         <h1 className="text-h4-normal mt-5 mb-7 h-16">{title}</h1>
 
         <div className="w-full break-words text-center line-clamp-3">
+          {/* TODO replace by Markdown component - not used now, because it breaks modal for some reason */}
           <ReactMarkdown skipHtml>{desc}</ReactMarkdown>
         </div>
         {isMore && (
@@ -84,6 +85,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
             )}
           </div>
           <h1 className="text-h4-normal mb-8 text-left">{title}</h1>
+          {/* TODO replace by Markdown component with proper styles, remove modal-content-rent-markdown class */}
           <ReactMarkdown
             remarkPlugins={[[remarkGfm]]}
             skipHtml

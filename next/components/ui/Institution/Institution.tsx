@@ -1,8 +1,8 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import cx from 'classnames'
-
 import ArrowRight from '@assets/images/arrow-right2.svg'
 import ChevronRight from '@assets/images/chevron-right2.svg'
+import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import Markdown from '@components/atoms/Markdown'
+import cx from 'classnames'
 
 export interface InstitutionProps {
   className?: string
@@ -20,8 +20,6 @@ const InstitutionCard = ({
   content,
   children,
 }: InstitutionCardProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
-
   return (
     <div
       className={cx(
@@ -31,7 +29,7 @@ const InstitutionCard = ({
     >
       <div className="flex flex-col">
         <h4 className="text-20-semibold leading-[26px]">{title}</h4>
-        {subtitle && <UIMarkdown className="fontSize-base text-16 mt-6" content={subtitle} />}
+        {subtitle && <Markdown content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
             {[...Array.from({ length: 3 })].map((_, ix) => (
@@ -39,7 +37,7 @@ const InstitutionCard = ({
                 key={ix}
                 className="col-12 md:col-4 fontSize-base mb-2 break-words last:mb-0 md:mb-0"
               >
-                {content[ix] && <UIMarkdown content={content[ix]} />}
+                {content[ix] && <Markdown content={content[ix]} />}
               </div>
             ))}
           </div>

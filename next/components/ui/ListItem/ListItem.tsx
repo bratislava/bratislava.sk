@@ -1,7 +1,7 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { ListCircle, ListCircleFull } from '@assets/images'
+import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
-import { ListCircle, ListCircleFull } from '@assets/images'
 import { PageLinkButton } from '../PageLinkButton/PageLinkButton'
 
 export interface ListItemProps {
@@ -17,7 +17,6 @@ export const ListItem = ({
   circleOption = 'primary',
   moreLink,
 }: ListItemProps) => {
-  const { Markdown: UIMarkdown } = useUIContext()
   const Circle = circleOption === 'primary' ? ListCircleFull : ListCircle
   return (
     <div className={cx(className, 'flex flex-row items-center')}>
@@ -26,12 +25,7 @@ export const ListItem = ({
       </div>
 
       <div className="ml-6 flex flex-col lg:ml-14">
-        {content && (
-          <UIMarkdown
-            content={content}
-            className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
-          />
-        )}
+        {content && <Markdown content={content} />}
         {(moreLink?.url || moreLink?.title) && <PageLinkButton pageLink={moreLink} />}
       </div>
     </div>
