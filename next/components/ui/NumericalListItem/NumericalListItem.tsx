@@ -1,6 +1,6 @@
 // @ts-strict-ignore
 import { NumericalListItemObject } from '@bratislava/ui-bratislava'
-import HomepageMarkdown from '@components/atoms/HomepageMarkdown'
+import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
 import { DashedLine } from '../DashedLine/DashedLine'
@@ -72,7 +72,8 @@ export const NumericalListItem = ({
           )}
         >
           {item && (
-            <HomepageMarkdown
+            <Markdown
+              // TODO investigate numericalList class and variant === 'combined'
               // numericalList
               // className={cx(
               //   'flex',

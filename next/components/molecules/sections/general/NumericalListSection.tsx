@@ -9,7 +9,7 @@ type NumericalListSectionProps = {
 }
 
 const NumericalListSection = ({ section }: NumericalListSectionProps) => {
-  // TODO: Fix.
+  // FIXME it does now show
   // The UI component doesn't expect Strapi version (with undefined/null).
   if (
     !isPresent(section.title) ||

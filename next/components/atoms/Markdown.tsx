@@ -2,7 +2,6 @@
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
-import { LiProps } from 'react-markdown/lib/ast-to-react'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
@@ -11,8 +10,7 @@ export interface HomepageMarkdownProps {
   content: string | null | undefined
 }
 
-export type AdvancedListItemProps = LiProps & { depth?: number }
-
+// TODO hasBackground behaviour
 /**
  * See documentation: https://github.com/remarkjs/react-markdown#appendix-b-components
  *
@@ -20,7 +18,7 @@ export type AdvancedListItemProps = LiProps & { depth?: number }
  * @param content
  * @constructor
  */
-export const HomepageMarkdown = ({ content }: HomepageMarkdownProps) => {
+const Markdown = ({ content }: HomepageMarkdownProps) => {
   return (
     <ReactMarkdown
       className="flex flex-col gap-4"
@@ -44,33 +42,38 @@ export const HomepageMarkdown = ({ content }: HomepageMarkdownProps) => {
         h6: ({ node, level, ...props }) => (
           <h6 className="text-h5 scroll-mt-24 lg:scroll-mt-48" {...props} />
         ),
-        p: ({ node, ...props }) => <div className="text-p1 whitespace-pre-wrap" {...props} />,
-        a: ({ node, href, title, ...props }) => (
-          <MLink
-            href={href ?? '#'}
-            className="break-words font-semibold text-font underline hover:text-category-600"
-            target={href?.startsWith('http') ? '_blank' : undefined}
-          >
-            {title}
-          </MLink>
-        ),
+        p: ({ node, ...props }) => <p className="text-p1 whitespace-pre-wrap" {...props} />,
+        strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
+        a: ({ node, href, title, children, ...props }) => {
+          const isExternal = href?.startsWith('http')
 
+          return (
+            <MLink
+              href={href ?? '#'}
+              className="break-words font-semibold text-font underline hover:text-category-600"
+              target={href?.startsWith('http') ? '_blank' : undefined}
+            >
+              {children[0]}
+              {isExternal && ' ↗'}
+            </MLink>
+          )
+        },
+        // TODO caption from Strapi, use <figure> and <figcaption> tags, see Marianum project
         img: ({ node, src, alt, title }) => (
           <div className="flex justify-center">{src && <img src={src} alt={alt} />}</div>
         ),
         blockquote: ({ node, ...props }) => (
-          <blockquote
-            className="mb-5 border-l-4 border-category-600 py-3 pl-10 lg:my-10"
-            {...props}
-          />
+          <blockquote className="my-4 border-l-4 border-category-600 py-2 pl-8" {...props} />
         ),
         ul: ({ node, depth, ...props }) => {
-          return <ul className={`ml-6 lg:ml-9 ${depth !== 0 ? 'mt-4' : ''}`} {...props} />
+          return (
+            <ul className={`inner-list ml-6 lg:ml-9 ${depth !== 0 ? 'mt-4' : ''}`} {...props} />
+          )
         },
         ol: ({ node, depth, ordered, ...props }) => {
-          return <ol className="ml-6 lg:ml-10" {...props} />
+          return <ol className={`ml-12 lg:ml-16 ${depth === 0 ? 'mb-8' : ''}`} {...props} />
         },
-        li: ({ node, index, ordered, children, ...props }: AdvancedListItemProps) =>
+        li: ({ node, index, ordered, children, ...props }) =>
           ordered ? (
             <li className="text-p1 relative mt-8 lg:mt-10" {...props}>
               {/* FIXME text-white on yellow and orange color */}
@@ -109,7 +112,7 @@ export const HomepageMarkdown = ({ content }: HomepageMarkdownProps) => {
         thead: () => <thead />,
         td: ({ node, children }) => (
           <td className="first:text-p1-semibold text-p1 table-row md:table-cell">
-            <div className="md:min-h-24 mb-1 flex items-center px-4 text-left lg:mb-0">
+            <div className="mb-1 flex items-center px-4 text-left md:min-h-[96px] lg:mb-0">
               {children}
             </div>
           </td>
@@ -123,4 +126,4 @@ export const HomepageMarkdown = ({ content }: HomepageMarkdownProps) => {
   )
 }
 
-export default HomepageMarkdown
+export default Markdown

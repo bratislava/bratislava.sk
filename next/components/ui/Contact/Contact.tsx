@@ -1,6 +1,6 @@
 import Email from '@assets/images/email2.svg'
 import Phone from '@assets/images/phone.svg'
-import HomepageMarkdown from '@components/atoms/HomepageMarkdown'
+import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
 export interface ContactProps {
@@ -54,12 +54,7 @@ export const Contact = ({
             })}
           >
             <div className={cx('flex h-full flex-col', { 'justify-center': !address })}>
-              {description && (
-                <HomepageMarkdown
-                  // className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
-                  content={description}
-                />
-              )}
+              {description && <Markdown content={description} />}
             </div>
           </div>
         )}
@@ -105,12 +100,7 @@ const ContactItem = ({
   linkVariant = 'primary',
 }: ContactItemProps) => {
   if (variant === 'address') {
-    return (
-      <HomepageMarkdown
-        // className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
-        content={value}
-      />
-    )
+    return <Markdown content={value} />
   }
 
   const Icon = variant === 'phone' ? Phone : Email

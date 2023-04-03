@@ -1,4 +1,4 @@
-import HomepageMarkdown from '@components/atoms/HomepageMarkdown'
+import Markdown from '@components/atoms/Markdown'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -42,10 +42,7 @@ export const TextWithImage = ({
 
       {content && (
         <div>
-          <HomepageMarkdown
-            content={content}
-            // className="text-p2 md:text-p1 leading-[24px] md:leading-[30px]"
-          />
+          <Markdown content={content} />
         </div>
       )}
 

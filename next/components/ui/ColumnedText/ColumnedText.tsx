@@ -1,4 +1,4 @@
-import HomepageMarkdown from '@components/atoms/HomepageMarkdown'
+import Markdown from '@components/atoms/Markdown'
 
 export interface ColumnedTextProps {
   className?: string
@@ -30,11 +30,7 @@ export const ColumnedText = ({ content, hasBackground }: ColumnedTextProps) => {
     >
       {columns.map((column, i) => (
         <div key={i}>
-          <HomepageMarkdown
-            content={column}
-            // hasBackground={hasBackground}
-            // className="text-p2 md:text-p1 mb-5 leading-[24px] md:leading-[30px]"
-          />
+          <Markdown content={column} />
         </div>
       ))}
     </div>
