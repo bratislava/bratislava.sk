@@ -1,13 +1,16 @@
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { TImageCarouselItem } from '@bratislava/ui-bratislava'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
 import React from 'react'
 
-interface IProps extends TImageCarouselItem {
+interface IProps {
   className?: string
   description?: React.ReactNode
+  id: string
+  url?: string
+  mainImage: { id: string; src: string }
+  title?: string
 }
 
 const CardGradient = ({ title, url, mainImage, className, description }: IProps) => {
@@ -17,7 +20,7 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
     <UILink href={url ?? '#'}>
       <div
         className={cx(
-          'group relative inline-block h-60 lg:h-76 lg:w-[395px] w-[348px] pt-2 cursor-pointer transition-all transform lg:hover:-translate-y-2 lg:hover:drop-shadow-lg rounded-lg',
+          'group relative inline-block h-60 w-[348px] transform cursor-pointer rounded-lg pt-2 transition-all lg:h-76 lg:w-[395px] lg:hover:-translate-y-2 lg:hover:drop-shadow-lg',
           className,
         )}
       >
