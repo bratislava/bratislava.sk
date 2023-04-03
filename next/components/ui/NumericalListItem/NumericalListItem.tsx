@@ -1,6 +1,6 @@
 // @ts-strict-ignore
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { NumericalListItemObject } from '@bratislava/ui-bratislava'
+import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
 import { DashedLine } from '../DashedLine/DashedLine'
@@ -23,7 +23,6 @@ export const NumericalListItem = ({
   className,
 }: NumericalListItemProps) => {
   const position = index % 2 === 0 ? 'left' : 'right'
-  const { Markdown: UIMarkdown } = useUIContext()
   return (
     <div
       key={index}
@@ -73,15 +72,16 @@ export const NumericalListItem = ({
           )}
         >
           {item && (
-            <UIMarkdown
-              numericalList
-              className={cx(
-                'flex',
-                { 'flex-col items-start gap-y-10': variant === 'combined' },
-                {
-                  'numerical-list-hidden items-center': variant !== 'combined',
-                },
-              )}
+            <Markdown
+              // TODO investigate numericalList class and variant === 'combined'
+              // numericalList
+              // className={cx(
+              //   'flex',
+              //   { 'flex-col items-start gap-y-10': variant === 'combined' },
+              //   {
+              //     'numerical-list-hidden items-center': variant !== 'combined',
+              //   },
+              // )}
               content={item.text}
             />
           )}

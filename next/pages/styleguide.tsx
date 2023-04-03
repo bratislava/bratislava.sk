@@ -1,3 +1,4 @@
+import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
 import PageContextProvider from 'components/layouts/PageContextProvider'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
@@ -7,7 +8,6 @@ import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import AccordionShowCase from '../components/styleguide/showcases/AccordionShowCase'
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
@@ -50,7 +50,6 @@ const Styleguide = () => {
         <TimePickerShowCase />
         <DropdownShowCase />
         <SelectFieldShowCase />
-        <AccordionShowCase />
         <ProgressBarShowCase />
         <SingleCheckboxShowCase />
         <CheckboxGroupShowCase />
@@ -58,6 +57,8 @@ const Styleguide = () => {
         <StepperShowCase />
         <BannerShowCase />
         <ServiceCardShowCase />
+        <EventCardShowcase />
+
         {/* <SnackbarShowCase /> */}
       </StyleGuideWrapper>
     </PageContextProvider>

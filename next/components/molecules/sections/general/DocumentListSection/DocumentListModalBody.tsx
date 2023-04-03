@@ -1,9 +1,9 @@
 import { VznMeili } from '@backend/meili/types'
 import { FileCard } from '@bratislava/ui-bratislava'
+import Markdown from '@components/atoms/Markdown'
 import { client } from '@utils/gql'
 import { isPresent } from '@utils/utils'
 import { useTranslation } from 'next-i18next'
-import ReactMarkdown from 'react-markdown'
 import useSWR from 'swr'
 
 const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
@@ -31,7 +31,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
         </div>
         {vzn?.details && (
           <div className="pt-5">
-            <ReactMarkdown>{vzn?.details}</ReactMarkdown>
+            <Markdown content={vzn?.details} />
           </div>
         )}
 

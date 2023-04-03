@@ -11,103 +11,62 @@
 @layer components {
   /* THESE SHOULD COVER ALL FONT VARIANTS ON PAGE */
   /* if you feel a different variant is needed, please contact desing/product beforehand */
-
   .base-button {
     @apply inline-flex appearance-none items-center justify-center bg-category-600 text-center focus:outline-none;
     @apply text-p-md font-medium text-white shadow-lg;
   }
-  .homepage-markdown ul {
-    @apply list-outside list-none;
-  }
-  .homepage-markdown ul li::before {
-    @apply absolute left-1 top-2 h-4 w-4 rounded-full bg-category-600;
-    /* use before to style it */
-    content: '';
-  }
-  .homepage-markdown ul li {
-    @apply relative -my-2 list-none pl-18;
-  }
-  .homepage-markdown ul li ul {
-    @apply ml-14 mt-1 -mb-8;
-  }
-  .homepage-markdown ul li ul li::before {
-    @apply absolute left-1 top-2 inline-block h-4 w-4 rounded-full border-4 border-category-600 bg-transparent;
-    /* use before to style it */
-    content: '';
-  }
-  .homepage-markdown .no-whitespace-wrap {
-    @apply whitespace-normal;
-  }
+
   .numerical-list ul {
     @apply flex flex-col;
   }
+
   .numerical-list ul li::before {
     @apply mr-6 -ml-12 h-4 w-4 rounded-full bg-category-600 lg:ml-6;
     content: '';
     min-width: 16px;
   }
+
   .numerical-list ul li {
     @apply flex items-center py-4;
   }
+
   .numerical-list-hidden ul li {
     @apply hidden;
   }
+
   .blog-card-image {
     clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
   }
+
   .modal-close-mobile-right {
     right: 45%;
   }
+
   .modal-content-rent::-webkit-scrollbar {
     display: none;
   }
+
   .modal-content-rent {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .rent-shadow {
     boxshadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
   }
-  /*.modal-content-rent-markdown ul {
-    @apply ml-6 mt-4 list-outside list-none;
-  }
-  .modal-content-rent-markdown ul li::before {
-    @apply absolute left-1 top-1 w-4 h-4 bg-category-600 rounded-full;
-    content: '';
-  }
-  .modal-content-rent-markdown ul li {
-    @apply relative list-none pl-18 my-2;
-  }
-  .modal-content-rent-markdown ul li ul {
-    @apply ml-14 mt-1 -mb-8;
-  }
-  .modal-content-rent-markdown ul li ul li::before {
-    @apply absolute left-1 top-1 bg-transparent w-4 h-4 inline-block rounded-full border-4 border-category-600;
-    content: '';
-  }
-  .modal-content-rent-markdown .no-whitespace-wrap {
-    @apply whitespace-normal;
-  }
-  .modal-content-rent-markdown ol {
-    @apply ml-12 mt-4 list-outside;
-  }
-  .modal-content-rent-markdown ol li {
-    @apply relative list-decimal pl-12 my-2;
-  }
-  .modal-content-rent-markdown ol li ol {
-    @apply ml-18 mt-1 -mb-8;
-  }
-  */
 
   .modal-content-rent-markdown ul {
     @apply my-6 list-disc pl-12;
   }
+
   .modal-content-rent-markdown ol {
     @apply my-6 list-decimal pl-12;
   }
+
   .modal-content-rent-markdown p {
     @apply mb-4;
   }
+
   .modal-content-rent-markdown h1,
   .modal-content-rent-markdown h2,
   .modal-content-rent-markdown h3,
@@ -116,27 +75,31 @@
   .modal-content-rent-markdown h6 {
     @apply my-6 font-bold;
   }
+
   .modal-content-rent-markdown h1 {
     font-size: 2rem;
   }
+
   .modal-content-rent-markdown h2 {
     font-size: 1.5rem;
   }
+
   .modal-content-rent-markdown h3 {
     font-size: 1.17rem;
   }
+
   .modal-content-rent-markdown h4 {
     font-size: 1rem;
   }
+
   .modal-content-rent-markdown h5 {
     font-size: 0.83rem;
   }
+
   .modal-content-rent-markdown h6 {
     font-size: 0.67rem;
   }
-  .narrow-text-wrapper ul li ul {
-    @apply mt-0 -mb-12;
-  }
+
   .box-none {
     @apply shadow-none md:shadow-lg;
   }
@@ -153,7 +116,9 @@
   .text-title-center h1,
   .text-title-center h2,
   .text-title-center h3,
-  .text-title-center h4 {
+  .text-title-center h4,
+  .text-title-center h5,
+  .text-title-center h6 {
     @apply mb-6 text-center;
   }
 
@@ -211,6 +176,7 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
 .number-control-none {
   -moz-appearance: textfield;
 }
