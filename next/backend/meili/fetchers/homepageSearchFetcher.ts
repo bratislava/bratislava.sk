@@ -31,7 +31,7 @@ export type HomepageSearchData = SearchResponse<HomepageSearchResult>
 export const getHomepageSearchSwrKey = (filters: HomepageSearchFilters, locale: string) =>
   ['HomepageSearch', filters, locale] as Key
 
-export const homepageFetcher = (filters: HomepageSearchFilters, locale: string) => () => {
+export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: string) => () => {
   return meiliClient
     .index('search_index')
     .search<MixedResults>(filters.search, {
