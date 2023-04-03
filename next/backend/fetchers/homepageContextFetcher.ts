@@ -1,13 +1,16 @@
 import { getTootTootHomepageEvents, ToottootEvent } from '@backend/services/toottoot'
-import { HomepageEntityFragment, LatestBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  HomepageEntityFragment,
+  LatestBlogPostEntityFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
 
 export type HomepageContext = {
   homepage: HomepageEntityFragment | null
   toottootEvents: ToottootEvent[] | null
-  blogPosts: LatestBlogFragment[] | null
-  rozkopavkyBlogPosts: LatestBlogFragment[] | null
+  blogPosts: LatestBlogPostEntityFragment[] | null
+  rozkopavkyBlogPosts: LatestBlogPostEntityFragment[] | null
 }
 
 export const homepageContextFetcher = async (locale: string): Promise<HomepageContext> => {

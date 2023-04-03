@@ -44,12 +44,12 @@ query LatestBlogsWithTags(
     locale: $locale
   ) {
     data {
-      ...LatestBlog
+      ...LatestBlogPostEntity
     }
   }
 }
 
-fragment LatestBlog on BlogPostEntity {
+fragment LatestBlogPostEntity on BlogPostEntity {
     id
     attributes {
       slug

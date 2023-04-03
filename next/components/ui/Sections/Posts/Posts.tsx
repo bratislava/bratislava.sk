@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { LatestBlogFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
+import { LatestBlogPostEntityFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { Iframe } from '@bratislava/ui-bratislava'
 import { LocalDate, Month, Period } from '@js-joda/core'
 import { getCategoryColorLocalStyle } from '@utils/colors'
@@ -29,12 +29,12 @@ export interface PostsProps {
   className?: string
   posts: TPostsTab[] | undefined
   // latestPost?: BlogPost[]
-  latestPost: LatestBlogFragment[] | null
+  latestPost: LatestBlogPostEntityFragment[] | null
   leftHighLight: NewsCardBlogFragment | null | undefined
   rightHighLight: NewsCardBlogFragment | null | undefined
   readMoreText?: string
   readMoreNewsText?: string
-  rozkoPosts: LatestBlogFragment[] | null
+  rozkoPosts: LatestBlogPostEntityFragment[] | null
 }
 
 export const Posts = ({
