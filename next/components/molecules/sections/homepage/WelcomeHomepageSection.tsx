@@ -1,8 +1,8 @@
-import { HomepageHeaderFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
-import WelcomeCard from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCard'
+import WelcomeCard from '@components/ui/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@utils/generalContext'
 import { generateImageSizes } from '@utils/generateImageSizes'
+import { useHomepageContext } from '@utils/homepageContext'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
@@ -11,13 +11,12 @@ import { useMemo, useState } from 'react'
 import { getParsedMenus } from '../../../organisms/NavBar/NavMenu/getParsedMenus'
 import HomePageSearch from '../../HomePageSearch'
 
-interface Props {
-  homepageHeader: HomepageHeaderFragment | null | undefined
-}
-
-export const WelcomeSection = ({ homepageHeader }: Props) => {
+export const WelcomeHomepageSection = () => {
   const { t } = useTranslation('common')
   const { menu } = useGeneralContext()
+  const { homepage } = useHomepageContext()
+
+  const homepageHeader = homepage?.attributes?.header
 
   const menus = useMemo(() => {
     return getParsedMenus(menu, t('NavMenu.more'))
@@ -52,7 +51,7 @@ export const WelcomeSection = ({ homepageHeader }: Props) => {
                 alt=""
                 priority
                 quality={100}
-                sizes={generateImageSizes({ sm: '647px', default: '721px' })}
+                sizes={generateImageSizes({ default: '100vw', sm: '647px' })}
               />
             </div>
           </div>
