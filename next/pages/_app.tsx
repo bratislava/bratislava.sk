@@ -3,11 +3,13 @@ import './index.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
+import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
 import { appWithTranslation } from 'next-i18next'
+import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
@@ -20,6 +22,8 @@ const inter = Inter({
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const isProd = isProductionDeployment()
+
   return (
     <>
       <Head>
@@ -51,17 +55,24 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           },
         }}
       >
-        <BAQueryClientProvider>
-          <QueryParamProvider adapter={NextAdapter}>
-            <SSRProvider>
-              <NavMenuContextProvider>
-                <div id="root" className={`${inter.variable} font-sans`}>
-                  <Component {...pageProps} />
-                </div>
-              </NavMenuContextProvider>
-            </SSRProvider>
-          </QueryParamProvider>
-        </BAQueryClientProvider>
+        <PlausibleProvider
+          domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
+          taggedEvents
+          // uncomment for local testing, needs to be run with `yarn build && yarn start`
+          // trackLocalhost
+        >
+          <BAQueryClientProvider>
+            <QueryParamProvider adapter={NextAdapter}>
+              <SSRProvider>
+                <NavMenuContextProvider>
+                  <div id="root" className={`${inter.variable} font-sans`}>
+                    <Component {...pageProps} />
+                  </div>
+                </NavMenuContextProvider>
+              </SSRProvider>
+            </QueryParamProvider>
+          </BAQueryClientProvider>
+        </PlausibleProvider>
       </UIContextProvider>
     </>
   )

@@ -1,9 +1,12 @@
 import cx from 'classnames'
-import Link from 'next/link'
+import NextLink from 'next/link'
+import { usePlausible } from 'next-plausible'
 import { ComponentProps, forwardRef, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export type LinkProps = Omit<ComponentProps<typeof Link>, 'as' | 'passHref'> & {
+export type LinkPlausibleProps = { id: string }
+
+export type LinkProps = Omit<ComponentProps<typeof NextLink>, 'as' | 'passHref'> & {
   children: ReactNode
   variant?: 'unstyled' | 'underlineOnHover' | 'navBarHeader' | 'breadcrumbs'
   /**
@@ -14,11 +17,15 @@ export type LinkProps = Omit<ComponentProps<typeof Link>, 'as' | 'passHref'> & {
   className?: string
   label?: string
   href?: string
+  plausibleProps?: LinkPlausibleProps
 }
 
 const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ href, label, children, className, variant = 'unstyled', stretched, ...rest }, ref) => {
-    const regEx = /^http/
+  (
+    { href, label, children, className, variant = 'unstyled', stretched, plausibleProps, ...rest },
+    ref,
+  ) => {
+    const plausible = usePlausible()
 
     const styles = twMerge(
       cx('underline-offset-2', {
@@ -32,16 +39,18 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
       className,
     )
 
-    return !regEx.test(href) ? (
-      <Link href={href} passHref ref={ref} {...rest} className={styles}>
+    return (
+      <NextLink
+        href={href}
+        passHref
+        ref={ref}
+        {...rest}
+        className={styles}
+        onClick={() => plausibleProps && plausible('Link click', { props: plausibleProps })}
+      >
         <span>{label}</span>
         {children}
-      </Link>
-    ) : (
-      <a ref={ref} {...rest} className={styles} href={href}>
-        <span>{label}</span>
-        {children}
-      </a>
+      </NextLink>
     )
   },
 )

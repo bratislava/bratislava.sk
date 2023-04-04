@@ -21,12 +21,6 @@ export const CookieConsent = ({ pageColor }: IProps) => {
       {/* don't use any of the analytics/tracking in staging/dev - change this if you need testing */}
       {isProductionDeployment() ? (
         <>
-          {/* no consent needed for plausible - always load it after page is interactive */}
-          <Script
-            strategy="afterInteractive"
-            data-domain="bratislava.sk"
-            src="https://plausible.io/js/plausible.js"
-          />
           {consents?.statistics ? (
             <Script
               id="hotjar"
@@ -48,7 +42,7 @@ export const CookieConsent = ({ pageColor }: IProps) => {
 
       {shouldShowBanner ? (
         <div className="fixed inset-x-0 bottom-6 z-50 px-6">
-          <div className="mx-auto max-w-[1110px] rounded-lg bg-white py-8 px-6 shadow md:px-10">
+          <div className="mx-auto max-w-[1110px] rounded-lg bg-white px-6 py-8 shadow md:px-10">
             <h6 className="text-20-semibold mb-4"> {t('cookie_consent_modal_content_title')} </h6>
             <p className="text-p2 mb-8">
               {' '}

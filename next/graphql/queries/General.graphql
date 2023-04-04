@@ -1,5 +1,7 @@
 fragment CommonLink on ComponentBlocksCommonLink {
   label
+  url
+  plausibleId
   page {
     data {
       id
@@ -18,7 +20,6 @@ fragment CommonLink on ComponentBlocksCommonLink {
       }
     }
   }
-  url
 }
 fragment Footer on Footer {
   address
@@ -104,11 +105,11 @@ fragment HeaderLink on ComponentGeneralHeaderLink {
 }
 
 fragment GeneralPageRelation on PageEntity {
-    id
-    attributes {
-      title
-      slug
-    }
+  id
+  attributes {
+    title
+    slug
+  }
 }
 
 fragment General on General {

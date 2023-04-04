@@ -8,6 +8,7 @@ fragment HomepageEntity on HomepageEntity {
     posts {
       title
       slug
+      plausibleId
       image {
         data {
           attributes {
