@@ -34,17 +34,7 @@ export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps)
     >
       <nav className="flex w-full items-center justify-between border-b border-gray-200">
         <SkipToContentButton />
-        <Brand
-          className="group"
-          url="/"
-          title={
-            <div className="text-p2 text-font group-hover:text-gray-600">
-              {i18n.language === 'en' && <span className="font-semibold">Bratislava </span>}
-              {t('capitalCity')}
-              {i18n.language !== 'en' && <span className="font-semibold"> Bratislava</span>}
-            </div>
-          }
-        />
+        <Brand className="group" url="/" withTitle />
 
         <div className="flex h-full items-center gap-x-6">
           {links
