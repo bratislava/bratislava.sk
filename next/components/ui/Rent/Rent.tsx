@@ -40,7 +40,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-[294px]">
         <h1 className="text-h4-normal mb-7 mt-5 h-16">{title}</h1>
 
-        <div className="line-clamp-3 w-full break-words text-center">
+        <div className="w-full break-words text-center">
           {/* TODO replace by Markdown component - not used now, because it breaks modal for some reason */}
           <ReactMarkdown skipHtml>{desc}</ReactMarkdown>
         </div>
