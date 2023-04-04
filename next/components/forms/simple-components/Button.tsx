@@ -6,7 +6,7 @@ import { forwardRef, ReactNode, RefObject } from 'react'
 import { AriaButtonProps, useButton } from 'react-aria'
 import { twMerge } from 'tailwind-merge'
 
-import MLink from './MLink'
+import MLink, { LinkPlausibleProps } from './MLink'
 
 type ButtonBase = {
   variant?:
@@ -36,11 +36,13 @@ export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps>
   ButtonBase & {
     href?: undefined
     label?: string
+    plausibleProps?: undefined
   }
 export type AnchorProps = AriaButtonProps<'a'> &
   ButtonBase & {
     href: string
     label: string
+    plausibleProps?: LinkPlausibleProps
     disabled?: false
   }
 
@@ -223,12 +225,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
     if (rest.href) {
       const buttonPropsFixed = { ...buttonProps, role: undefined }
+
       return (
         <MLink
           href={rest.href}
           label={rest.label}
           ref={ref as RefObject<HTMLAnchorElement>}
           className={style}
+          plausibleProps={rest.plausibleProps}
           {...buttonPropsFixed}
         >
           {!hrefIconHidden && isLinkVariant && (

@@ -1,4 +1,5 @@
 const { i18n } = require('./next-i18next.config')
+const { withPlausibleProxy } = require('next-plausible')
 
 /**
  * @type {import('next').NextConfig}
@@ -23,7 +24,7 @@ const nextConfig = {
           destination: `${process.env.STRAPI_URL}/uploads/:file`,
         },
         /**
-         * Rewrites to make the the translation of URL work. Based on an approached outlined here:
+         * Rewrites to make the translation of URL work. Based on an approached outlined here:
          * https://stackoverflow.com/questions/68723485/how-to-setup-i18n-translated-url-routes-in-next-js/68731057#68731057
          */
         {
@@ -2695,8 +2696,7 @@ const nextConfig = {
   },
 }
 
-// Make sure adding Sentry options is the last code to run before exporting, to
-// ensure that your source maps include changes from all other Webpack plugins
-module.exports = {
+// https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
+module.exports = withPlausibleProxy()({
   ...nextConfig,
-}
+})

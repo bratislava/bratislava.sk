@@ -1,5 +1,5 @@
-import { ArrowRight, ChevronRight } from '@assets/images'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { ArrowRightIcon } from '@assets/images'
+import MLink, { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -15,12 +15,12 @@ export interface BlogCardsProps {
         imageSrc?: string | null | undefined
         title?: string | null | undefined
         url?: string | null | undefined
+        plausibleId?: string | null | undefined
       }[]
     | undefined
 }
 
 export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps) => {
-  const { Link: UILink } = useUIContext()
   const { t } = useTranslation()
 
   return (
@@ -32,24 +32,28 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           items={posts.map((blogCard, index) => (
             <HorizontalCard
               className="h-full min-h-[350px] py-16"
+              // eslint-disable-next-line react/no-array-index-key
               key={index}
               imageSrc={blogCard.imageSrc ?? ''}
               imageSizes={generateImageSizes({ lg: '224px', default: '50vw' })}
             >
-              <p className="text-p2 lg:text-p1 text-left line-clamp-3">{blogCard.title}</p>
-              <UILink
-                className="group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 underline after:absolute after:inset-0 hover:text-category-600"
+              <h3 className="text-h5 lg:text-p1 line-clamp-3 text-left font-semibold">
+                {blogCard.title}
+              </h3>
+              <MLink
+                className="mt-3 flex space-x-2 text-[16px] font-semibold text-gray-700 underline hover:text-category-600"
                 href={blogCard?.url || ''}
                 target={blogCard?.url?.startsWith('http') ? '_blank' : undefined}
+                stretched
+                plausibleProps={
+                  blogCard.plausibleId
+                    ? ({ id: blogCard.plausibleId } as LinkPlausibleProps)
+                    : undefined
+                }
               >
-                <span className="text-p2-semibold">{t('readMore')}</span>
-                <span className="group-hover:hidden">
-                  <ChevronRight />
-                </span>
-                <span className="hidden group-hover:block">
-                  <ArrowRight />
-                </span>
-              </UILink>
+                {t('readMore')}
+                <ArrowRightIcon />
+              </MLink>
             </HorizontalCard>
           ))}
         />

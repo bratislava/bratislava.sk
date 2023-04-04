@@ -1,4 +1,5 @@
 import { CommonLinkFragment } from '@bratislava/strapi-sdk-homepage'
+import { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
 
 export const getCommonLinkProps = (link: CommonLinkFragment) => {
   let href = '#'
@@ -13,5 +14,9 @@ export const getCommonLinkProps = (link: CommonLinkFragment) => {
     target = '_blank'
   }
 
-  return { label: link.label, href, target }
+  const plausibleProps: LinkPlausibleProps | undefined = link.plausibleId
+    ? { id: link.plausibleId }
+    : undefined
+
+  return { label: link.label, href, target, plausibleProps }
 }

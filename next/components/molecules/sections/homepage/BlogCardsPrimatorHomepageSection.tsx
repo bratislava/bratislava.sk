@@ -1,7 +1,7 @@
 import { BlogCards, Posts, PrimatorCouncil, SectionContainer } from '@components/ui'
 import { useHomepageContext } from '@utils/homepageContext'
-import React, { useMemo } from 'react'
 import { useTranslation } from 'next-i18next'
+import React, { useMemo } from 'react'
 
 // TODO: Load from Strapi.
 const sk = {
@@ -82,6 +82,7 @@ const BlogCardsPrimatorHomepageSection = () => {
     title: post?.title,
     url: post?.slug,
     imageSrc: post?.image?.data?.attributes?.url,
+    plausibleId: post?.plausibleId,
   }))
 
   return (
