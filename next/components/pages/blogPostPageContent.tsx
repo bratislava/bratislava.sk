@@ -64,11 +64,11 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       <SectionContainer className="mb-8">
         <div className="mt-14 flex flex-col">
           <span className="text-h5">{t('share')}</span>
-          <div className="flex space-x-10 pt-5">
+          <div className="flex gap-x-10 pt-5">
             <SocialMediaButton
               getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}
             >
-              <FacebookIcon />
+              <FacebookIcon className="h-8 w-8" />
             </SocialMediaButton>
 
             <SocialMediaButton
@@ -76,11 +76,11 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
                 `https://www.linkedin.com/sharing/share-offsite/?url=${socialLink}`
               }
             >
-              <LinkedinIcon />
+              <LinkedinIcon className="h-8 w-8" />
             </SocialMediaButton>
 
             <SocialMediaButton getLink={() => 'https://www.instagram.com/bratislava.sk/'}>
-              <InstagramIcon />
+              <InstagramIcon className="h-8 w-8" />
             </SocialMediaButton>
 
             <SocialMediaButton
@@ -88,7 +88,7 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
                 `https://twitter.com/intent/tweet?url=${socialLink}&text=${blogPost.attributes?.title}`
               }
             >
-              <TwitterIcon />
+              <TwitterIcon className="h-8 w-8" />
             </SocialMediaButton>
           </div>
         </div>
