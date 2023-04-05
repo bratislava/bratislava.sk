@@ -9,8 +9,6 @@ import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
-import PageContextProvider from '../../components/layouts/PageContextProvider'
-
 interface PageProps {
   general: GeneralQuery
   blogPost: BlogPostEntityFragment
@@ -77,19 +75,17 @@ const Page = ({ general, blogPost }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider slug={slug ?? ''}>
-        <Head>
-          {/* TODO: Use translation. */}
-          {title && <title>{title} – Bratislava.sk</title>}
-          {excerpt && <meta name="description" content={excerpt} />}
-        </Head>
-        <GlobalCategoryColorProvider
-          color={blogPost?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
-        />
-        <PageLayout>
-          <BlogPostPageContent blogPost={blogPost} />
-        </PageLayout>
-      </PageContextProvider>
+      <Head>
+        {/* TODO: Use translation. */}
+        {title && <title>{title} – Bratislava.sk</title>}
+        {excerpt && <meta name="description" content={excerpt} />}
+      </Head>
+      <GlobalCategoryColorProvider
+        color={blogPost?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
+      />
+      <PageLayout>
+        <BlogPostPageContent blogPost={blogPost} />
+      </PageLayout>
     </GeneralContextProvider>
   )
 }

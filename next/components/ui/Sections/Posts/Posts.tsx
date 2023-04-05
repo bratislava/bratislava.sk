@@ -9,7 +9,6 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import { getLanguageKey } from '@utils/utils'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
-import { usePageContext } from 'components/layouts/PageContextProvider'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 import useSWR from 'swr'
@@ -47,7 +46,7 @@ export const Posts = ({
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const { locale } = usePageContext()
+  const { i18n } = useTranslation()
 
   const [activeTab, setActiveTab] = React.useState(0)
   // TODO refactor this
@@ -210,7 +209,7 @@ export const Posts = ({
               <div className="pb-8">
                 <Iframe
                   url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${getLanguageKey(
-                    locale,
+                    i18n.language,
                   )}`}
                   iframeWidth="container"
                   iframeHeight="620"

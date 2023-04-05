@@ -1,6 +1,7 @@
 import { GeneralQuery, PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import PageLayout from '@components/layouts/PageLayout'
 import GeneralPageContent from '@components/pages/generalPageContent'
+import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
@@ -9,8 +10,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
-
-import PageContextProvider from '../components/layouts/PageContextProvider'
 
 type PageProps = {
   general: GeneralQuery
@@ -72,22 +71,24 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page }: PageProps) => {
-  const localizations = page?.attributes?.localizations?.data
-    .filter(hasAttributes)
-    .map((locale) => {
-      return {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
-        locale: locale.attributes.locale!,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
-        slug: locale.attributes.slug!,
-      }
-    })
+  const { slug, title, metaDiscription, locale } = page?.attributes ?? {}
 
-  const { slug, title, metaDiscription } = page?.attributes ?? {}
+  const localizations = Object.fromEntries([
+    [locale, `/${slug}`] as const,
+    ...(page?.attributes?.localizations?.data.filter(hasAttributes).map(
+      (locale) =>
+        [
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
+          locale.attributes.locale!,
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
+          `/${locale.attributes.slug!}`,
+        ] as const,
+    ) ?? []),
+  ] as const)
 
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider slug={slug ?? ''} localizations={localizations}>
+      <LocalizationsProvider localizations={localizations}>
         <Head>
           {/* TODO: Use translation. */}
           {title && <title>{title} – Bratislava.sk</title>}
@@ -99,7 +100,7 @@ const Page = ({ general, page }: PageProps) => {
         <PageLayout>
           <GeneralPageContent page={page} />
         </PageLayout>
-      </PageContextProvider>
+      </LocalizationsProvider>
     </GeneralContextProvider>
   )
 }
