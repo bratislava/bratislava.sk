@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_blocks_footer_column",
+  "info": {
+    "displayName": "Footer Column"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.common-link"
+    }
+  }
+}
