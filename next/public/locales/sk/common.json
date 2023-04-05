@@ -137,5 +137,9 @@
       "goToPreviousPage": "Ísť na predchádzajúcu stranu",
       "goToNextPage": "Ísť na ďalšiu stranu"
     }
+  },
+  "Footer": {
+    "contactForMedia": "Kontakt pre médiá:",
+    "copyright": "© {{year}} Hlavné mesto SR Bratislava,<br>vytvorili <innovations>Inovácie mesta Bratislava</innovations>"
   }
 }
