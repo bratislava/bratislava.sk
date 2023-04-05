@@ -19,15 +19,15 @@ export type BreadcrumbsProps = {
 const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   return (
     <nav>
-      <ol className="flex gap-x-1 gap-y-1.5 items-center flex-wrap py-3 lg:py-6">
-        <MLink href="/" variant="breadcrumbs" className="shrink-0">
+      <ol className="flex flex-wrap items-center gap-x-1 gap-y-1.5 py-3 lg:py-6">
+        <MLink href="/" variant="underlined" className="shrink-0">
           <BreadcrumbsHomeIcon />
         </MLink>
         {breadcrumbs.map((breadcrumb, index) => (
           <li className="text-p3-medium flex gap-1" key={index}>
             <BreadcrumbsChevronIcon className="shrink-0" />
             {breadcrumb.path ? (
-              <MLink href={breadcrumb.path} variant="breadcrumbs">
+              <MLink href={breadcrumb.path} variant="underlined">
                 {breadcrumb.title}
               </MLink>
             ) : (

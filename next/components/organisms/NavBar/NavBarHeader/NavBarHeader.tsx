@@ -49,7 +49,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
                   <MLink
                     // eslint-disable-next-line react/no-array-index-key
                     key={linkIndex}
-                    variant="navBarHeader"
+                    variant="underlined-medium"
                     href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
                     target={link.url && isExternalLink(link.url) ? '_blank' : undefined}
                   >
