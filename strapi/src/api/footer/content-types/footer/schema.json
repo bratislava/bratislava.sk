@@ -37,7 +37,15 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "email"
+    },
+    "mediaEmail": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "email"
     },
     "copyright": {
       "pluginOptions": {
@@ -81,6 +89,16 @@
       },
       "component": "blocks.footer-section"
     },
+    "columns": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.footer-section"
+    },
     "accessibilityLink": {
       "type": "component",
       "repeatable": false,
@@ -90,6 +108,26 @@
         }
       },
       "component": "blocks.page-link"
+    },
+    "accessibilityPageLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.common-link"
+    },
+    "innovationsLink": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.common-link"
     }
   }
 }

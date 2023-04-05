@@ -354,6 +354,26 @@ input ComponentBlocksFileInput {
   title: String
 }
 
+type ComponentBlocksFooterColumn {
+  id: ID!
+  links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
+  title: String!
+}
+
+input ComponentBlocksFooterColumnFiltersInput {
+  and: [ComponentBlocksFooterColumnFiltersInput]
+  links: ComponentBlocksCommonLinkFiltersInput
+  not: ComponentBlocksFooterColumnFiltersInput
+  or: [ComponentBlocksFooterColumnFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlocksFooterColumnInput {
+  id: ID
+  links: [ComponentBlocksCommonLinkInput]
+  title: String
+}
+
 type ComponentBlocksFooterSection {
   id: ID!
   pageLinks(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
@@ -1911,15 +1931,19 @@ input FloatFilterInput {
 
 type Footer {
   accessibilityLink: ComponentBlocksPageLink
+  accessibilityPageLink: ComponentBlocksCommonLink
   address: String
+  columns(filters: ComponentBlocksFooterSectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterSection]
   copyright: String
   createdAt: DateTime
   email: String
   facebookUrl: String
   footerSections(filters: ComponentBlocksFooterSectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterSection]
+  innovationsLink: ComponentBlocksCommonLink
   instagramUrl: String
   locale: String
   localizations(publicationState: PublicationState = LIVE): FooterRelationResponseCollection
+  mediaEmail: String
   phone: String
   publishedAt: DateTime
   updatedAt: DateTime
@@ -1942,16 +1966,20 @@ type FooterEntityResponseCollection {
 
 input FooterFiltersInput {
   accessibilityLink: ComponentBlocksPageLinkFiltersInput
+  accessibilityPageLink: ComponentBlocksCommonLinkFiltersInput
   address: StringFilterInput
   and: [FooterFiltersInput]
+  columns: ComponentBlocksFooterSectionFiltersInput
   copyright: StringFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
   facebookUrl: StringFilterInput
   footerSections: ComponentBlocksFooterSectionFiltersInput
+  innovationsLink: ComponentBlocksCommonLinkFiltersInput
   instagramUrl: StringFilterInput
   locale: StringFilterInput
   localizations: FooterFiltersInput
+  mediaEmail: StringFilterInput
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   phone: StringFilterInput
@@ -1962,12 +1990,16 @@ input FooterFiltersInput {
 
 input FooterInput {
   accessibilityLink: ComponentBlocksPageLinkInput
+  accessibilityPageLink: ComponentBlocksCommonLinkInput
   address: String
+  columns: [ComponentBlocksFooterSectionInput]
   copyright: String
   email: String
   facebookUrl: String
   footerSections: [ComponentBlocksFooterSectionInput]
+  innovationsLink: ComponentBlocksCommonLinkInput
   instagramUrl: String
+  mediaEmail: String
   phone: String
   publishedAt: DateTime
   youtubeUrl: String
@@ -2033,7 +2065,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
