@@ -61,7 +61,7 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       {blogPost.attributes?.sections && <Sections sections={blogPost.attributes?.sections} />}
 
       {/* Page - Social media buttons for sharing */}
-      <SectionContainer>
+      <SectionContainer className="mb-8">
         <div className="mt-14 flex flex-col">
           <span className="text-h5">{t('share')}</span>
           <div className="flex space-x-10 pt-5">

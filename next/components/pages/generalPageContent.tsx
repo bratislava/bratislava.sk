@@ -88,7 +88,9 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
+      <div className="mb-8">
+        {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
+      </div>
 
       {shouldDisplayUkraineSupportChat && <DynamicChat />}
     </>
