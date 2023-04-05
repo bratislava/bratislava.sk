@@ -97,7 +97,7 @@
           "localized": true
         }
       },
-      "component": "blocks.footer-section"
+      "component": "blocks.footer-column"
     },
     "accessibilityLink": {
       "type": "component",
