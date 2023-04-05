@@ -1,7 +1,7 @@
 import { Icon } from '@components/atoms/icon/Icon'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
-import HorizontalDivider from '@components/organisms/NavBar/NavMenu/HorizontalDivider'
+import NavBarHorizontalDivider from '@components/organisms/NavBar/NavMenu/NavBarHorizontalDivider'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -63,7 +63,7 @@ const MobileNavMenu = () => {
 
           {accountLink && (
             <>
-              <HorizontalDivider />
+              <NavBarHorizontalDivider />
               <li className="my-1 flex justify-center md:justify-start">
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <Button
@@ -77,7 +77,7 @@ const MobileNavMenu = () => {
             </>
           )}
 
-          {linksOnMobile?.length && <HorizontalDivider />}
+          {linksOnMobile?.length && <NavBarHorizontalDivider />}
 
           {linksOnMobile?.map((link, linkIndex) => {
             // TODO better approach to links
@@ -92,7 +92,7 @@ const MobileNavMenu = () => {
                   <MLink
                     href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
                     target={link.url ? '_blank' : undefined}
-                    variant="navBarHeader"
+                    variant="underlined"
                     stretched
                   >
                     {link.label}

@@ -1,8 +1,11 @@
 import React from 'react'
 
-const HorizontalDivider = ({ categoryColor }: { categoryColor?: boolean }) => (
-  <li aria-hidden className="py-2">
+type HorizontalDividerProps = { categoryColor?: boolean }
+
+const HorizontalDivider = ({ categoryColor }: HorizontalDividerProps) => {
+  return (
     <div
+      role="separator"
       className="border-b-2"
       style={{
         borderColor: categoryColor
@@ -10,7 +13,7 @@ const HorizontalDivider = ({ categoryColor }: { categoryColor?: boolean }) => (
           : 'rgb(var(--color-gray-200))',
       }}
     />
-  </li>
-)
+  )
+}
 
 export default HorizontalDivider
