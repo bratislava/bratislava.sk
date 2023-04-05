@@ -61,9 +61,9 @@ yarn build
 
 ## Patches
 
-We use [pach-package](https://github.com/ds300/patch-package) to slightly change the behaviour of some packages. See the `patches` folder for more details.
+We use [patch-package](https://github.com/ds300/patch-package) to slightly change the behaviour of some packages. See the `patches` folder for more details.
 
-When updating these packages, please run also `pack-package`:
+When updating these packages, please run also `patch-package`:
 ```
 yarn patch-package @strapi/plugin-users-permissions
 ```
