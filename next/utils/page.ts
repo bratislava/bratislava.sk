@@ -1,15 +1,10 @@
 // @ts-strict-ignore
-import {
-  FileBlockFragment,
-  FooterFragment,
-  PageLinkBlockFragment,
-} from '@bratislava/strapi-sdk-homepage'
-import { FooterProps, TFile } from '@bratislava/ui-bratislava'
+import { FileBlockFragment, PageLinkBlockFragment } from '@bratislava/strapi-sdk-homepage'
+import { TFile } from '@bratislava/ui-bratislava'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
 import { getLocalDate } from './local-date'
-import { isPresent } from './utils'
 
 export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
@@ -72,24 +67,6 @@ export const groupByCategoryFileList = (fileList: FileBlockFragment[]) => {
     category: key === 'null' ? '' : key,
     files: formatFiles(grouped[key]),
   }))
-}
-
-// Page Footer
-export const parseFooter = (footer?: FooterFragment | null): FooterProps => {
-  return {
-    accessibilityLink: parsePageLink(footer?.accessibilityLink) ?? undefined,
-    address: footer?.address ?? undefined,
-    copyright: footer?.copyright ?? undefined,
-    email: footer?.email ?? undefined,
-    facebookLink: footer?.facebookUrl ?? undefined,
-    instagramLink: footer?.instagramUrl ?? undefined,
-    phone: footer?.phone ?? undefined,
-    youtubeLink: footer?.youtubeUrl ?? undefined,
-    sections: footer?.footerSections?.filter(isPresent).map((s) => ({
-      title: s.title ?? '',
-      pageLinks: s.pageLinks?.map((l) => parsePageLink(l)).filter(isPresent),
-    })),
-  }
 }
 
 // Page Accordion Items
