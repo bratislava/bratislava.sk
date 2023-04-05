@@ -21,22 +21,29 @@ fragment CommonLink on ComponentBlocksCommonLink {
     }
   }
 }
+
+fragment FooterColumnBlock on ComponentBlocksFooterColumn {
+  title
+  links {
+    ...CommonLink
+  }
+}
+
 fragment Footer on Footer {
   address
-  copyright
+  phone
   email
+  mediaEmail
   facebookUrl
   instagramUrl
-  phone
-  youtubeUrl
-  accessibilityLink {
-    ...PageLinkBlock
+  columns {
+    ...FooterColumnBlock
   }
-  footerSections {
-    title
-    pageLinks {
-      ...PageLinkBlock
-    }
+  accessibilityPageLink {
+    ...CommonLink
+  }
+  innovationsLink {
+    ...CommonLink
   }
 }
 
