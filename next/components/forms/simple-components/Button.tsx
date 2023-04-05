@@ -44,6 +44,7 @@ export type AnchorProps = AriaButtonProps<'a'> &
     label: string
     plausibleProps?: LinkPlausibleProps
     disabled?: false
+    stretched?: boolean
   }
 
 export type PolymorphicProps = ButtonProps | AnchorProps
@@ -219,6 +220,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
         // disabled
         'opacity-50': disabled,
+
+        // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
+        'after:absolute after:inset-0': 'stretched' in rest && rest.stretched,
       }),
       className,
     )
