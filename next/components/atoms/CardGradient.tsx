@@ -37,7 +37,9 @@ const CardGradient = ({ title, url, mainImage, className, description }: IProps)
             {title && (
               <p className="text-h5 p-6 pb-0 text-white lg:pb-6 lg:group-hover:pb-3">{title}</p>
             )}
-            {description && <p className="block lg:hidden lg:group-hover:block">{description}</p>}
+            {description && (
+              <div className="block lg:hidden lg:group-hover:block">{description}</div>
+            )}
           </div>
         </div>
       </div>

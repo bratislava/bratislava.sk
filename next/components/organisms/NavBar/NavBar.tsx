@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next'
 import * as React from 'react'
 
 import { usePageContext } from '../../layouts/PageContextProvider'
-import CookieConsent from '../CookieConsent'
 import MobileNavBar from './MobileNavBar'
 import NavBarHeader from './NavBarHeader/NavBarHeader'
 import NavMenu from './NavMenu/NavMenu'
@@ -25,8 +24,6 @@ const NavBar = () => {
 
   return (
     <>
-      <CookieConsent />
-
       <div className="fixed top-0 z-30 hidden w-full bg-white lg:block">
         <div className="w-full">
           {/* TODO mobile header, NavBarHeader (= new component) renders only on desktop */}
@@ -44,7 +41,6 @@ const NavBar = () => {
       </div>
       <div className="hidden h-[137px] lg:block" />
 
-      {/* TODO mobile header, BANavBar (= old component) renders only on mobile */}
       <MobileNavBar
         className="lg:hidden"
         onLanguageChange={handleLanguageChange}

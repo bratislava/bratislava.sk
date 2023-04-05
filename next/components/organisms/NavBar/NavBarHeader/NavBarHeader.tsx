@@ -18,7 +18,7 @@ const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
-export const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps) => {
+const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps) => {
   const { t, i18n } = useTranslation(['common'])
 
   const { general } = useGeneralContext()

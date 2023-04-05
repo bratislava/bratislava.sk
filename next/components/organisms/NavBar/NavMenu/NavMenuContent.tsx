@@ -49,7 +49,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
       style={colorStyle}
     >
       <div className="relative z-[29] bg-category-200">
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-noninteractive-element-interactions */}
         <ul
           className={cx('mx-auto grid w-full max-w-screen-lg gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
@@ -86,7 +86,8 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
         </ul>
       </div>
       <Waves
-        className="relative z-[28] drop-shadow-xl"
+        // padding-bottom is needed for drop-shadow to render properly on Safari
+        className="relative z-[28] pb-20 drop-shadow-xl"
         wavePosition="bottom"
         waveColor="rgb(var(--color-category-200))"
       />

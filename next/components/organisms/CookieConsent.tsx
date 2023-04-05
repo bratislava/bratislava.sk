@@ -1,17 +1,19 @@
-import Button from '@bratislava/ui-bratislava/Button/Button'
+import Button from '@components/forms/simple-components/Button'
+import MLink from '@components/forms/simple-components/MLink'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { isProductionDeployment } from '@utils/utils'
 import { useCookieConsent } from 'backend/utils/cookies'
-import NextLink from 'next/link'
 import Script from 'next/script'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-interface IProps {
-  pageColor?: string
+type CookieConsentProps = {
+  className?: string
 }
 
 // also takes care of loading all the consented 3rd parties - TODO consider better component name ?
-export const CookieConsent = ({ pageColor }: IProps) => {
+export const CookieConsent = ({ className }: CookieConsentProps) => {
   const { shouldShowBanner, setConsents, consents } = useCookieConsent()
   const { t } = useTranslation(['common'])
 
@@ -41,40 +43,35 @@ export const CookieConsent = ({ pageColor }: IProps) => {
       ) : null}
 
       {shouldShowBanner ? (
-        <div className="fixed inset-x-0 bottom-6 z-50 px-6">
+        <div
+          className={twMerge('fixed inset-x-0 bottom-6 px-6', className)}
+          style={getCategoryColorLocalStyle({ category: 'main' })}
+        >
           <div className="mx-auto max-w-[1110px] rounded-lg bg-white px-6 py-8 shadow md:px-10">
-            <h6 className="text-20-semibold mb-4"> {t('cookie_consent_modal_content_title')} </h6>
-            <p className="text-p2 mb-8">
-              {' '}
+            <h6 className="text-20-semibold mb-4">{t('cookie_consent_modal_content_title')}</h6>
+            <div className="text-p2 mb-8">
               {t('cookie_consent_body')}{' '}
-              <NextLink
+              <MLink
                 href={t('cookie_consent_privacy_policy_link')}
-                passHref
-                className="cursor-pointer font-semibold underline"
+                variant="navBarHeader"
+                className="font-semibold"
               >
-                {' '}
-                {t('cookie_consent_privacy_policy')}{' '}
-              </NextLink>
-            </p>
-            <div className="block sm:flex">
+                {t('cookie_consent_privacy_policy')}
+              </MLink>
+            </div>
+            <div className="flex flex-col gap-4 md:flex-row">
               <Button
-                className="text-16-medium mb-3 h-12 px-6 sm:my-0 sm:mr-6"
-                variant={
-                  pageColor === 'yellow' || pageColor === 'brown'
-                    ? 'tertiary-dark-text'
-                    : 'tertiary'
-                }
-                onClick={() => setConsents({ statistics: true })}
-              >
-                {t('cookie_consent_accept')}
-              </Button>
+                variant="category"
+                onPress={() => setConsents({ statistics: true })}
+                text={t('cookie_consent_accept')}
+                className="w-full md:w-fit"
+              />
               <Button
-                className="text-16-medium mt-0 h-12 px-6"
-                variant="secondary-dark-text"
-                onClick={() => setConsents({ statistics: false })}
-              >
-                {t('cookie_consent_reject')}
-              </Button>
+                variant="category-outline"
+                onPress={() => setConsents({ statistics: false })}
+                text={t('cookie_consent_reject')}
+                className="w-full md:w-fit"
+              />
             </div>
           </div>
         </div>
