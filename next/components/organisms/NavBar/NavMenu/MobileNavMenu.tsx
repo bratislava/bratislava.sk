@@ -1,6 +1,7 @@
 import { Icon } from '@components/atoms/icon/Icon'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
+import HorizontalDivider from '@components/organisms/NavBar/NavMenu/HorizontalDivider'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -11,7 +12,6 @@ import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
 
 import { getParsedMenus } from './getParsedMenus'
-import HorizontalDivider from './HorizontalDivider'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
@@ -23,6 +23,7 @@ const MobileNavMenu = () => {
   const { menu: generalMenu, general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
   const { links, accountLink } = header ?? {}
+  const linksOnMobile = links?.filter(isDefined).filter((link) => link.showOnMobile)
 
   const menus = useMemo(() => {
     return getParsedMenus(generalMenu, t('more'))
@@ -41,7 +42,7 @@ const MobileNavMenu = () => {
   return (
     <div
       className={cx(
-        'fixed top-14 left-0 z-[28] flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
+        'fixed left-0 top-14 z-[28] flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
         {
           'animate-fadeIn': isMobileMenuOpen,
           'animate-fadeOut': !isMobileMenuOpen,
@@ -60,48 +61,51 @@ const MobileNavMenu = () => {
             <MobileNavMenuItem key={index} menu={menu} />
           ))}
 
-          <HorizontalDivider />
-
-          {links
-            ?.filter(isDefined)
-            .filter((link) => link.showOnMobile)
-            .map((link) => {
-              // TODO better approach to links
-              const pageSlug = link.page?.data?.attributes?.slug
-              return (
-                <li className="relative flex items-center gap-2">
-                  <div aria-hidden>
-                    <Icon iconName={link.icon} />
-                  </div>
-                  <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-                    <MLink
-                      href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
-                      target={link.url ? '_blank' : undefined}
-                      variant="navBarHeader"
-                      stretched
-                    >
-                      {link.label}
-                    </MLink>
-                  </NavigationMenu.Link>
-                </li>
-              )
-            })}
-
           {accountLink && (
             <>
               <HorizontalDivider />
-              <li className="mt-2 flex justify-center">
+              <li className="my-1 flex justify-center md:justify-start">
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-                  <Button size="sm" variant="negative" {...getCommonLinkProps(accountLink)} />
+                  <Button
+                    size="sm"
+                    variant="category"
+                    className="w-full md:w-fit"
+                    {...getCommonLinkProps(accountLink)}
+                  />
                 </NavigationMenu.Link>
               </li>
             </>
           )}
+
+          {linksOnMobile?.length && <HorizontalDivider />}
+
+          {linksOnMobile?.map((link, linkIndex) => {
+            // TODO better approach to links
+            const pageSlug = link.page?.data?.attributes?.slug
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={linkIndex} className="relative flex items-center gap-2">
+                <div aria-hidden>
+                  <Icon iconName={link.icon} />
+                </div>
+                <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+                  <MLink
+                    href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
+                    target={link.url ? '_blank' : undefined}
+                    variant="navBarHeader"
+                    stretched
+                  >
+                    {link.label}
+                  </MLink>
+                </NavigationMenu.Link>
+              </li>
+            )
+          })}
         </NavigationMenu.List>
 
         {/* Viewport represents popup div with links that appears under menu button */}
         <NavigationMenu.Viewport
-          className="fixed top-14 left-0 z-[29] w-screen overflow-y-scroll data-[state=open]:animate-enterFromRight data-[state=closed]:animate-exitToRight"
+          className="fixed left-0 top-14 z-[29] w-screen overflow-y-scroll data-[state=closed]:animate-exitToRight data-[state=open]:animate-enterFromRight"
           style={{ height: `calc(${height}px - 14*4px)` }}
         />
       </NavigationMenu.Root>

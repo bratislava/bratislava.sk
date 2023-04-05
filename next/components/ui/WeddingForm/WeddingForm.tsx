@@ -1,8 +1,8 @@
+import Calendar from '@assets/images/calendar-form.svg'
 import { LocalDate } from '@js-joda/core'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import Calendar from '@assets/images/calendar-form.svg'
 import { Button } from '../Button/Button'
 import { CheckBox } from '../CheckBox/CheckBox'
 import { Field } from '../Field/Field'
@@ -142,7 +142,7 @@ export const WeddingForm = () => {
                   name="date"
                   type="date"
                   min={LocalDate.now().toJSON()}
-                  className="h-12.5 text-20 w-full text-font focus:outline-none"
+                  className="text-20 h-12 w-full text-font focus:outline-none"
                   // hasError={!!errors?.email}
                   value={reservationFormValues?.date}
                   onChange={(e) => handleChange({ date: e.target.value })}
@@ -159,7 +159,7 @@ export const WeddingForm = () => {
               <TextArea
                 id="notes"
                 name="notes"
-                className="text-20 pt-5 pb-3.5"
+                className="text-20 pb-3.5 pt-5"
                 rows={11}
                 // hasError={!!errors?.email}
                 value={reservationFormValues?.notes}

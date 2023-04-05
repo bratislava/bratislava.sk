@@ -4,6 +4,7 @@ import SearchIcon from '@assets/images/search-icon.svg'
 import { Brand } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { getLanguageKey } from '@utils/utils'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
@@ -22,7 +23,7 @@ interface MobileNavBarProps extends LanguageSelectProps {
   className?: string
 }
 
-export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) => {
+const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) => {
   const { t } = useTranslation(['common'])
   const router = useRouter()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
@@ -37,7 +38,7 @@ export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBar
   return (
     <>
       <FocusTrap active={isMobileMenuOpen}>
-        <div>
+        <div style={getCategoryColorLocalStyle({ category: 'main' })}>
           <div
             className={cx(
               'fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-gray-700 shadow-md',
@@ -45,7 +46,7 @@ export const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBar
             )}
           >
             <div className="flex items-center">
-              <Brand url="/" className="-ml-4 py-3 px-4" />
+              <Brand url="/" className="-ml-4 px-4 py-3" />
             </div>
             <div className="flex items-center">
               {otherLanguage && (

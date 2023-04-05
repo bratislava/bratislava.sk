@@ -29,14 +29,12 @@ const NavMenu = () => {
       value={menuValue}
       onValueChange={setMenuValue}
       aria-label={t('NavMenu.aria.navMenuLabel')}
-      // to re-enable pointer events when menu is open and whole page has pointer events disabled
-      className="pointer-events-auto"
     >
       <NavigationMenu.List className="relative z-30 shadow-md">
         <div className="m-auto grid w-full max-w-screen-lg grid-flow-col grid-cols-6">
-          {menus.map((menu, index) => (
+          {menus.map((menuItem, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <NavMenuItem key={index} menu={menu} />
+            <NavMenuItem key={index} menu={menuItem} />
           ))}
         </div>
       </NavigationMenu.List>
@@ -45,7 +43,7 @@ const NavMenu = () => {
       <NavigationMenu.Viewport
         // Together with onCLick in NavMenuContent, it closes the menu on click outside of container area
         onClick={() => setMenuValue('')}
-        className="absolute z-[29] w-full"
+        className="absolute z-[29] h-screen w-full"
       />
     </NavigationMenu.Root>
   )
