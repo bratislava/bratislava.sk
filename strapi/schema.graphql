@@ -1933,7 +1933,7 @@ type Footer {
   accessibilityLink: ComponentBlocksPageLink
   accessibilityPageLink: ComponentBlocksCommonLink
   address: String
-  columns(filters: ComponentBlocksFooterSectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterSection]
+  columns(filters: ComponentBlocksFooterColumnFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterColumn]
   copyright: String
   createdAt: DateTime
   email: String
@@ -1969,7 +1969,7 @@ input FooterFiltersInput {
   accessibilityPageLink: ComponentBlocksCommonLinkFiltersInput
   address: StringFilterInput
   and: [FooterFiltersInput]
-  columns: ComponentBlocksFooterSectionFiltersInput
+  columns: ComponentBlocksFooterColumnFiltersInput
   copyright: StringFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
@@ -1992,7 +1992,7 @@ input FooterInput {
   accessibilityLink: ComponentBlocksPageLinkInput
   accessibilityPageLink: ComponentBlocksCommonLinkInput
   address: String
-  columns: [ComponentBlocksFooterSectionInput]
+  columns: [ComponentBlocksFooterColumnInput]
   copyright: String
   email: String
   facebookUrl: String
