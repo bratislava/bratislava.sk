@@ -69,7 +69,7 @@ const MobileNavMenu = () => {
                   <Button
                     size="sm"
                     variant="category"
-                    className="w-full md:w-fit"
+                    fullWidthMobile
                     {...getCommonLinkProps(accountLink)}
                   />
                 </NavigationMenu.Link>

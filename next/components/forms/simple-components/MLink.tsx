@@ -1,28 +1,24 @@
 import cx from 'classnames'
 import NextLink from 'next/link'
 import { usePlausible } from 'next-plausible'
-import { ComponentProps, forwardRef, ReactNode } from 'react'
+import { ComponentProps, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export type LinkPlausibleProps = { id: string }
 
 export type LinkProps = Omit<ComponentProps<typeof NextLink>, 'as' | 'passHref'> & {
-  children: ReactNode
   variant?: 'unstyled' | 'underlineOnHover' | 'navBarHeader' | 'breadcrumbs'
+  plausibleProps?: LinkPlausibleProps
   /**
    * Similar to this:
    * https://getbootstrap.com/docs/4.3/utilities/stretched-link/
    */
   stretched?: boolean
-  className?: string
-  label?: string
-  href?: string
-  plausibleProps?: LinkPlausibleProps
 }
 
 const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    { href, label, children, className, variant = 'unstyled', stretched, plausibleProps, ...rest },
+    { href, children, className, variant = 'unstyled', stretched, plausibleProps, ...rest },
     ref,
   ) => {
     const plausible = usePlausible()
@@ -48,7 +44,6 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
         className={styles}
         onClick={() => plausibleProps && plausible('Link click', { props: plausibleProps })}
       >
-        <span>{label}</span>
         {children}
       </NextLink>
     )

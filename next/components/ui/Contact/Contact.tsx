@@ -1,11 +1,11 @@
 import Email from '@assets/images/email2.svg'
 import Phone from '@assets/images/phone.svg'
 import Markdown from '@components/atoms/Markdown'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 
 export interface ContactProps {
   className?: string
-  itemLinkVariant?: 'primary' | 'secondary'
   title?: string
   description?: string
   phone?: string
@@ -17,7 +17,6 @@ export interface ContactProps {
 
 export const Contact = ({
   className,
-  itemLinkVariant,
   title,
   description,
   phone,
@@ -73,7 +72,7 @@ export const Contact = ({
                     'md:w-1/2': items.length === 2,
                   })}
                 >
-                  <ContactItem {...item} linkVariant={itemLinkVariant} />
+                  <ContactItem {...item} />
                 </div>
               ))}
             </div>
@@ -89,16 +88,9 @@ interface ContactItemProps {
   value: string
   label?: string
   href?: string
-  linkVariant?: string
 }
 
-const ContactItem = ({
-  variant,
-  value,
-  label,
-  href,
-  linkVariant = 'primary',
-}: ContactItemProps) => {
+const ContactItem = ({ variant, value, label, href }: ContactItemProps) => {
   if (variant === 'address') {
     return <Markdown content={value} />
   }
@@ -108,12 +100,13 @@ const ContactItem = ({
   return (
     <div className="text-20 relative flex h-full flex-col items-center justify-start pb-20 leading-[30px]">
       <Icon className="h-24 w-24" />
-      {value.split(',').map((item, key) => {
+      {value.split(',').map((item, index) => {
         return (
-          <div key={key} className="text-center">
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index} className="text-center">
             <span
               className={cx('text-20-semibold w-full text-center', {
-                'mt-9': key === 0,
+                'mt-9': index === 0,
                 'whitespace-nowrap': variant === 'phone',
               })}
             >
@@ -123,19 +116,9 @@ const ContactItem = ({
         )
       })}
       {label && href && (
-        <a
-          href={href}
-          className={cx(
-            'text-20-medium absolute bottom-0 mt-8 whitespace-nowrap rounded-lg border-2 px-6 py-3 shadow-sm',
-            {
-              'border-category-600 bg-category-600': linkVariant === 'primary',
-              'border-category-200 bg-category-200 text-white': linkVariant === 'secondary',
-              'text-black': linkVariant === 'primary',
-            },
-          )}
-        >
+        <Button href={href} variant="category" className="mt-8">
           {label}
-        </a>
+        </Button>
       )}
     </div>
   )

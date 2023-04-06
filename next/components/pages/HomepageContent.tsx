@@ -1,12 +1,12 @@
+import BlogCardsPrimatorHomepageSection from '@components/molecules/sections/homepage/BlogCardsPrimatorHomepageSection'
 import BookmarksHomepageSection from '@components/molecules/sections/homepage/BookmarksHomepageSection'
 import GooutEventsHomepageSection from '@components/molecules/sections/homepage/GooutEventsHomepageSection'
+import InbaHomepageSection from '@components/molecules/sections/homepage/InbaHomepageSection'
+import TopNineHomepageSection from '@components/molecules/sections/homepage/TopNineHomepageSection'
 import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
 import { SectionContainer, Waves } from '@components/ui'
-import React from 'react'
-import TopNineHomepageSection from '@components/molecules/sections/homepage/TopNineHomepageSection'
 import { useTranslation } from 'next-i18next'
-import InbaHomepageSection from '@components/molecules/sections/homepage/InbaHomepageSection'
-import BlogCardsPrimatorHomepageSection from '@components/molecules/sections/homepage/BlogCardsPrimatorHomepageSection'
+import React from 'react'
 
 const HomepageContent = () => {
   const { t } = useTranslation('common')
@@ -16,11 +16,11 @@ const HomepageContent = () => {
       <BookmarksHomepageSection />
       <WelcomeHomepageSection />
 
-      <Waves waveColor="var(--background-color)" wavePosition="top" />
+      <Waves waveColor="rgb(var(--color-gray-50))" wavePosition="top" />
 
       <BlogCardsPrimatorHomepageSection />
 
-      <Waves wavePosition="bottom" waveColor="var(--background-color)" />
+      <Waves wavePosition="bottom" waveColor="rgb(var(--color-gray-50))" />
 
       {/* Replace with Toottoot, no need to extract. */}
       <SectionContainer>

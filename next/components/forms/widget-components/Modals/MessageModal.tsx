@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import CloseIcon from '../../icon-components/CloseIcon'
 import ErrorIcon from '../../icon-components/ErrorIcon'
@@ -81,7 +81,7 @@ const MessageModal = ({
           {!excludeButtons && (
             <div className="order-1 mt-6 flex flex-row items-center justify-end gap-6 p-0">
               <div
-                className="text-p2 flex cursor-pointer flex-row items-center justify-center gap-2 py-1 px-2 font-semibold not-italic"
+                className="text-p2 flex cursor-pointer flex-row items-center justify-center gap-2 px-2 py-1 font-semibold not-italic"
                 onClick={cancelHandler}
               >
                 {cancelLabel}
@@ -89,9 +89,10 @@ const MessageModal = ({
               <Button
                 onPress={submitHandler}
                 variant={type === 'error' ? 'negative' : 'black'}
-                text={confirmLabel}
                 size="sm"
-              />
+              >
+                {confirmLabel}
+              </Button>
             </div>
           )}
         </div>
