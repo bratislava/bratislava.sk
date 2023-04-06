@@ -43,7 +43,6 @@ export type AnchorProps = Omit<AriaButtonProps<'a'>, 'isDisabled'> &
     target?: '_blank' | '_self' | '_parent' | '_top'
     disabled?: undefined
     plausibleProps?: LinkPlausibleProps
-    disabled?: false
     stretched?: boolean
   }
 

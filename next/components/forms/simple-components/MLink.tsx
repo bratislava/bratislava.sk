@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import NextLink from 'next/link'
 import { usePlausible } from 'next-plausible'
-import { ComponentProps, forwardRef, ReactNode } from 'react'
+import { ComponentProps, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export type LinkPlausibleProps = { id: string }

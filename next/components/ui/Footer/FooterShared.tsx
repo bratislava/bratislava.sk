@@ -72,9 +72,7 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
             variant="underlined"
             // Must be there to satisfy Typescript.
             // eslint-disable-next-line react/no-children-prop
-            children={undefined}
             {...getCommonLinkProps(innovationsLink)}
-            label="" // TODO Remove
           />
         ),
       }}
