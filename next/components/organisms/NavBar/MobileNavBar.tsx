@@ -53,10 +53,11 @@ const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) 
                 <Button
                   size="sm"
                   className="p-4 underline underline-offset-2"
-                  variant="link-black"
+                  variant="black-link"
                   onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
-                  text={otherLanguage?.title}
-                />
+                >
+                  {otherLanguage?.title}
+                </Button>
               )}
               <Divider />
               <MLink href={t('searchLink')} className="p-4">

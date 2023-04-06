@@ -1,5 +1,4 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { ArrowRightIcon } from '@assets/images'
 import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject } from 'react'
@@ -82,7 +81,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isLinkVariant = variant.endsWith('-link')
     const isIconButton = Boolean(icon)
 
-    /* TODO:
+    /* TODO
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */
@@ -174,7 +173,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const ButtonChildren = () => {
       return (
         <>
-          {startIcon && (
+          {startIcon ? (
             <span
               className={cx('flex items-center justify-center', {
                 'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
@@ -190,7 +189,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             >
               {startIcon}
             </span>
-          )}
+          ) : null}
           {icon ? (
             <span
               className={cx('flex items-center justify-center', {
@@ -204,7 +203,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           ) : (
             children
           )}
-          {endIcon || rest.href ? (
+          {endIcon ? (
             <span
               className={cx('flex items-center justify-center', {
                 'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
@@ -218,7 +217,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 'ml-2': isLinkVariant && size === 'lg',
               })}
             >
-              {endIcon ?? <ArrowRightIcon />}
+              {endIcon}
             </span>
           ) : null}
         </>

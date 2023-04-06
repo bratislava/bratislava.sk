@@ -18,5 +18,5 @@ export const getCommonLinkProps = (link: CommonLinkFragment) => {
     ? { id: link.plausibleId }
     : undefined
 
-  return { label: link.label, href, target, plausibleProps }
+  return { children: link.label, href, target, plausibleProps }
 }

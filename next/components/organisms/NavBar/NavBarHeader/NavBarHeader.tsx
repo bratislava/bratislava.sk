@@ -75,10 +75,11 @@ const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps) => {
             <Button
               size="sm"
               className="underline underline-offset-4"
-              variant="link-black"
+              variant="black-link"
               onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
-              text={otherLanguage?.title}
-            />
+            >
+              {otherLanguage?.title}
+            </Button>
           )}
         </div>
       </nav>

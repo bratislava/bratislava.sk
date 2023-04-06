@@ -37,29 +37,33 @@ const SnackbarShowCase = () => {
     <Wrapper direction="column" title="Snackbar">
       <Stack>
         <Button
-          text="Success"
           onPress={() => {
             openSnackbarSuccess('Success')
           }}
-        />
+        >
+          Success
+        </Button>
         <Button
-          text="Error"
           onPress={() => {
             openSnackbarError('Error')
           }}
-        />
+        >
+          Error
+        </Button>
         <Button
-          text="Info"
           onPress={() => {
             openSnackbarInfo('Info')
           }}
-        />
+        >
+          Info
+        </Button>
         <Button
-          text="Warning"
           onPress={() => {
             openSnackbarWarning('Warning')
           }}
-        />
+        >
+          Warning
+        </Button>
       </Stack>
     </Wrapper>
   )

@@ -39,7 +39,7 @@ const ModalHeader = ({
   header,
   hasHeader,
 }: ModalHeaderBase) => {
-  const headerStyle = cx('flex py-4 px-6 gap-6 bg-white sm:rounded-t-lg justify-between', {
+  const headerStyle = cx('flex justify-between gap-6 bg-white px-6 py-4 sm:rounded-t-lg', {
     'border-b-solid border-b-form-input-default border-b-2': divider,
   })
   const headlineStyle = cx('text-20-semibold h-7', {
@@ -87,7 +87,7 @@ const ModalFooter = ({
   onSubmit,
 }: ModalFooterBase) => {
   const footerStyle = cx(
-    'w-592 flex h-18 bg-white items-center justify-between py-3 px-6 gap-6 rounded-b-lg',
+    'w-592 flex h-18 items-center justify-between gap-6 rounded-b-lg bg-white px-6 py-3',
     {
       'border-t-solid border-t-form-input-default border-t-2': divider,
     },
@@ -105,6 +105,8 @@ const ModalFooter = ({
         <span aria-hidden="true">{cancelLabel}</span>
       </button>
       <Button
+        variant="black"
+        size="sm"
         onPress={() => {
           if (currentScreenIndex < contentLength - 1) {
             setCurrentScreenIndex(currentScreenIndex + 1)
@@ -113,10 +115,9 @@ const ModalFooter = ({
             onSubmit({})
           }
         }}
-        variant="black"
-        text={currentScreenIndex >= contentLength - 1 ? confirmLabel : 'Next'}
-        size="sm"
-      />
+      >
+        {currentScreenIndex >= contentLength - 1 ? confirmLabel : 'Next'}
+      </Button>
     </div>
   )
 }
