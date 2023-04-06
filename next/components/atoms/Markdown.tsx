@@ -66,11 +66,13 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
         blockquote: ({ node, ...props }) => (
           <blockquote className="my-4 border-l-4 border-category-600 py-2 pl-8" {...props} />
         ),
-        ul: ({ node, depth, ...props }) => {
+        // `ordered` should not be passed to <ul>
+        ul: ({ node, depth, ordered, ...props }) => {
           return (
             <ul className={`inner-list ml-6 lg:ml-9 ${depth !== 0 ? 'mt-4' : ''}`} {...props} />
           )
         },
+        // `ordered` should not be passed to <ul>
         ol: ({ node, depth, ordered, ...props }) => {
           return <ol className={`ml-12 lg:ml-16 ${depth === 0 ? 'mb-8' : ''}`} {...props} />
         },
