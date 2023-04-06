@@ -72,7 +72,7 @@ export const PageHeader = ({
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
                     variant={index === 0 ? 'category' : 'category-outline'}
-                    className="w-full sm:w-fit"
+                    fullWidthMobile
                     {...getCommonLinkProps(button)}
                   />
                 ))}

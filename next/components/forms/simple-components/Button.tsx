@@ -10,38 +10,38 @@ import MLink, { LinkPlausibleProps } from './MLink'
 
 type ButtonBase = {
   variant?:
-    | 'black'
-    | 'negative'
-    | 'black-outline'
-    | 'plain-black'
-    | 'plain-negative'
-    | 'link-black'
+    | 'unstyled'
     | 'category'
     | 'category-outline'
-    | 'plain-category'
-    | 'link-category'
-  size?: 'lg' | 'sm'
+    | 'category-plain'
+    | 'black'
+    | 'black-outline'
+    | 'black-plain'
+    | 'negative'
+    | 'negative-plain'
+    | 'black-link'
+    | 'category-link'
+  size?: 'responsive' | 'lg' | 'sm'
   className?: string
-  disabled?: boolean
   icon?: ReactNode
-  text?: string
   startIcon?: ReactNode
   endIcon?: ReactNode
-  hrefIconHidden?: boolean
   fullWidth?: boolean
-  form?: string
+  fullWidthMobile?: boolean
 }
 
-export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps> &
+export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps | 'isDisabled'> &
   ButtonBase & {
     href?: undefined
-    label?: string
+    target?: undefined
+    disabled?: boolean
     plausibleProps?: undefined
   }
-export type AnchorProps = AriaButtonProps<'a'> &
+export type AnchorProps = Omit<AriaButtonProps<'a'>, 'isDisabled'> &
   ButtonBase & {
     href: string
-    label: string
+    target?: '_blank' | '_self' | '_parent' | '_top'
+    disabled?: undefined
     plausibleProps?: LinkPlausibleProps
     disabled?: false
     stretched?: boolean
@@ -57,17 +57,16 @@ type PolymorphicButton = {
 const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProps>(
   (
     {
+      children,
       className,
       disabled,
-      variant = 'black',
-      size = 'lg',
+      variant = 'unstyled',
+      size = 'responsive',
       icon,
-      text,
       startIcon,
       endIcon,
-      hrefIconHidden,
       fullWidth,
-      form,
+      fullWidthMobile,
       ...rest
     },
     ref,
@@ -81,142 +80,90 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       ref as RefObject<HTMLAnchorElement | HTMLButtonElement>,
     )
 
-    const isLinkVariant = variant === 'link-black' || variant === 'link-category'
-    const hasText = Boolean(text || rest.label)
+    const isPlainVariant = variant.endsWith('-plain')
+    const isLinkVariant = variant.endsWith('-link')
+    const isIconButton = Boolean(icon)
 
-    const style = twMerge(
-      'inline-flex items-center',
-      isLinkVariant
-        ? 'underline underline-offset-2'
-        : 'h-fit space-x-2 justify-center text-center align-middle rounded-lg',
+    /* TODO
+     *   - border should render inside button, not outside
+     *   - focus text color for 'culture' and 'social' category should be -800
+     */
+    const styles = twMerge(
+      'inline-flex items-center font-semibold text-btn rounded-lg outline-offset-4 h-auto',
       cx({
+        // NOTE: there are some style overrides for link variants below in "twMerge"
+
         'w-full': fullWidth,
-        'w-fit': !fullWidth,
-        // text for lg button
-        'text-16 font-semibold px-4 py-2.5':
-          size === 'lg' &&
-          !icon &&
-          hasText &&
-          (variant === 'black' ||
-            variant === 'negative' ||
-            variant === 'black-outline' ||
-            variant === 'category' ||
-            variant === 'category-outline'),
-        // text for sm button
-        'text-16 font-semibold px-4 py-1.5':
-          size === 'sm' &&
-          !icon &&
-          hasText &&
-          (variant === 'black' ||
-            variant === 'negative' ||
-            variant === 'black-outline' ||
-            variant === 'category' ||
-            variant === 'category-outline'),
-        // icon for lg button
-        'px-2.5 py-2.5':
-          size === 'lg' &&
-          icon &&
-          !hasText &&
-          (variant === 'black' ||
-            variant === 'negative' ||
-            variant === 'black-outline' ||
-            variant === 'category' ||
-            variant === 'category-outline'),
-        // icon for sm button
-        'px-2 py-2':
-          (size === 'sm' &&
-            icon &&
-            !hasText &&
-            (variant === 'black' ||
-              variant === 'negative' ||
-              variant === 'black-outline' ||
-              variant === 'category' ||
-              variant === 'category-outline')) ||
-          (size === 'lg' &&
-            icon &&
-            !hasText &&
-            (variant === 'plain-category' ||
-              variant === 'plain-black' ||
-              variant === 'plain-negative')),
+        'w-full md:w-fit': fullWidthMobile,
+        'w-fit': !fullWidth && !fullWidthMobile,
 
-        // icon for sm button plain variant
-        'px-1.5 py-1.5':
-          size === 'sm' &&
-          icon &&
-          !hasText &&
-          (variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+        // padding - filled and outlined variants
+        'px-4 py-2 lg:py-3': size === 'responsive' && !isIconButton && !isPlainVariant,
+        'px-4 py-2': size === 'sm' && !isIconButton && !isPlainVariant,
+        'px-4 py-3': size === 'lg' && !isIconButton && !isPlainVariant,
 
-        // text for lg button plain variant
-        'text-16-semibold px-3 py-2':
-          size === 'lg' &&
-          !icon &&
-          hasText &&
-          (variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+        // padding - filled and outlined variants with "icon"
+        'p-2.5 lg:p-3': size === 'responsive' && isIconButton && !isPlainVariant,
+        'p-2.5': size === 'sm' && isIconButton && !isPlainVariant,
+        'p-3': size === 'lg' && isIconButton && !isPlainVariant,
 
-        // text for sm button plain variant
-        'text-16-semibold px-2 py-1':
-          size === 'sm' &&
-          !icon &&
-          hasText &&
-          (variant === 'plain-category' ||
-            variant === 'plain-black' ||
-            variant === 'plain-negative'),
+        // padding - plain variants
+        'px-2 py-1 lg:px-3 lg:py-2': size === 'responsive' && !isIconButton && isPlainVariant,
+        'px-2 py-1': size === 'sm' && !isIconButton && isPlainVariant,
+        'px-3 py-2': size === 'lg' && !isIconButton && isPlainVariant,
 
-        // text for lg link button
-        'text-20-medium':
-          size === 'lg' && (variant === 'link-category' || variant === 'link-black'),
-        // text for sm link button
-        'text-16-medium':
-          size === 'sm' && (variant === 'link-category' || variant === 'link-black'),
+        // padding - plain variants with "icon"
+        'p-1.5 lg:p-2': size === 'responsive' && isIconButton && isPlainVariant,
+        'p-1.5': size === 'sm' && isIconButton && isPlainVariant,
+        'p-2': size === 'lg' && isIconButton && isPlainVariant,
+
+        // padding for link variants are set in the "twMerge" below
 
         'border-2':
           variant === 'black' ||
-          variant === 'negative' ||
           variant === 'black-outline' ||
+          variant === 'negative' ||
           variant === 'category' ||
           variant === 'category-outline',
 
-        // bg and border color
-        'border-gray-700 bg-gray-700 focus:bg-gray-800 focus:border-gray-800': variant === 'black',
-        'border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800':
-          variant === 'black-outline',
-        'border-negative-700 bg-negative-700 focus:bg-negative-800 focus:border-negative-800':
-          variant === 'negative',
-        'border-category-700 bg-category-700 focus:bg-category-800 focus:border-category-800':
+        // bg, border, text - idle & focus
+        'border-category-700 bg-category-700 text-font-contrast focus:bg-category-800 focus:border-category-800':
           variant === 'category',
         'border-category-700 bg-transparent text-gray-700 focus:border-category-800 focus:text-gray-800':
           variant === 'category-outline',
+        'border-gray-700 bg-gray-700 focus:bg-gray-800 text-white focus:border-gray-800':
+          variant === 'black',
+        'border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800':
+          variant === 'black-outline',
+        'border-negative-700 bg-negative-700 text-white focus:bg-negative-800 focus:border-negative-800':
+          variant === 'negative',
 
         'text-category-700 focus:bg-category-200 focus:text-category-800':
-          variant === 'plain-category',
-        'text-gray-700 focus:bg-gray-200 focus:text-gray-800': variant === 'plain-black',
+          variant === 'category-plain',
+        'text-gray-700 focus:bg-gray-200 focus:text-gray-800': variant === 'black-plain',
         'text-negative-700 focus:bg-negative-200 focus:text-negative-800':
-          variant === 'plain-negative',
+          variant === 'negative-plain',
 
-        'text-category-700 focus:text-category-800': variant === 'link-category',
-        'text-gray-700 focus:text-gray-800': variant === 'link-black',
+        'text-category-700 focus:text-category-800': variant === 'category-link',
+        'text-gray-700 focus:text-gray-800': variant === 'black-link',
 
-        // hover
+        // bg, border, text - hover
+        'hover:bg-category-600 hover:border-category-600': variant === 'category' && !disabled,
+        'hover:border-category-600 hover:text-gray-600':
+          variant === 'category-outline' && !disabled,
+        'hover:bg-category-100 hover:text-category-600': variant === 'category-plain' && !disabled,
+
         'hover:bg-gray-600 hover:border-gray-600': variant === 'black' && !disabled,
         'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
+        'hover:bg-gray-100 hover:text-gray-600': variant === 'black-plain' && !disabled,
+
         'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
+        'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain' && !disabled,
 
-        'hover:bg-category-600 hover:border-category-600': variant === 'category' && !disabled,
-        'hover:border-category-600 hover:text-category-600':
-          variant === 'category-outline' && !disabled,
-        'hover:bg-category-100 hover:text-category-600': variant === 'plain-category' && !disabled,
-        'hover:bg-gray-100 hover:text-gray-600': variant === 'plain-black' && !disabled,
-        'hover:bg-negative-100 hover:text-negative-600': variant === 'plain-negative' && !disabled,
+        'hover:text-category-600': variant === 'category-link' && !disabled,
+        'hover:text-gray-600': variant === 'black-link' && !disabled,
 
-        'hover:text-category-600': variant === 'link-category' && !disabled,
-        'hover:text-gray-600': variant === 'link-black' && !disabled,
-
-        // text color
-        'text-white': variant === 'negative' || variant === 'black' || variant === 'category',
+        underline: isLinkVariant,
 
         // disabled
         'opacity-50': disabled,
@@ -224,8 +171,52 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
         'after:absolute after:inset-0': 'stretched' in rest && rest.stretched,
       }),
+      // OVERRIDES for link variant, rounded-sm applies for outline
+      isLinkVariant ? 'p-0 lg:p-0 rounded-sm' : '',
       className,
     )
+
+    const startIconStyles = cx('flex items-center justify-center', {
+      'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
+      'h-5 w-5': size === 'sm',
+      'h-6 w-6': size === 'lg',
+      'mr-2.5 lg:mr-3': !isLinkVariant && size === 'responsive',
+      'mr-2.5': !isLinkVariant && size === 'sm',
+      'mr-3': !isLinkVariant && size === 'lg',
+      'mr-1 lg:mr-2': isLinkVariant && size === 'responsive',
+      'mr-1': isLinkVariant && size === 'sm',
+      'mr-2': isLinkVariant && size === 'lg',
+    })
+
+    const endIconStyles = cx('flex items-center justify-center', {
+      'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
+      'h-5 w-5': size === 'sm',
+      'h-6 w-6': size === 'lg',
+      'ml-2.5 lg:ml-3': !isLinkVariant && size === 'responsive',
+      'ml-2.5': !isLinkVariant && size === 'sm',
+      'ml-3': !isLinkVariant && size === 'lg',
+      'ml-1 lg:ml-2': isLinkVariant && size === 'responsive',
+      'ml-1': isLinkVariant && size === 'sm',
+      'ml-2': isLinkVariant && size === 'lg',
+    })
+
+    const iconStyles = cx('flex items-center justify-center', {
+      'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
+      'h-5 w-5': size === 'sm',
+      'h-6 w-6': size === 'lg',
+    })
+
+    const ButtonChildren = () => {
+      return (
+        <>
+          {startIcon ? <span className={startIconStyles}>{startIcon}</span> : null}
+          {icon ? <span className={iconStyles}>{icon}</span> : children}
+          {endIcon || isLinkVariant ? (
+            <span className={endIconStyles}>{endIcon ?? <ArrowRightIcon />}</span>
+          ) : null}
+        </>
+      )
+    }
 
     if (rest.href) {
       const buttonPropsFixed = { ...buttonProps, role: undefined }
@@ -233,22 +224,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       return (
         <MLink
           href={rest.href}
-          label={rest.label}
           ref={ref as RefObject<HTMLAnchorElement>}
-          className={style}
+          className={styles}
           plausibleProps={rest.plausibleProps}
           {...buttonPropsFixed}
         >
-          {!hrefIconHidden && isLinkVariant && (
-            <span
-              className={cx('flex items-center justify-center', {
-                'ml-2 h-6 w-6': size === 'lg',
-                'ml-1 h-5 w-5': size === 'sm',
-              })}
-            >
-              <ArrowRightIcon />
-            </span>
-          )}
+          <ButtonChildren />
         </MLink>
       )
     }
@@ -257,35 +238,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       <button
         type="button"
         ref={ref as RefObject<HTMLButtonElement>}
-        className={style}
-        form={form}
+        className={twMerge(styles, 'flex items-center justify-center')}
         {...buttonProps}
       >
-        <div className="flex items-center justify-center">
-          {startIcon && (
-            <span
-              className={cx({ 'mr-3 h-6 w-6': size === 'lg', 'mr-2.5 h-5 w-5': size === 'sm' })}
-            >
-              {startIcon}
-            </span>
-          )}
-          {text && !icon && text}
-          {!text && icon && (
-            <span className={cx({ 'h-6 w-6': size === 'lg', 'h-5 w-5': size === 'sm' })}>
-              {icon}
-            </span>
-          )}
-          {endIcon && (
-            <span
-              className={cx('flex items-center justify-center', {
-                'ml-3 h-6 w-6': size === 'lg',
-                'ml-2.5 h-5 w-5': size === 'sm',
-              })}
-            >
-              {endIcon}
-            </span>
-          )}
-        </div>
+        <ButtonChildren />
       </button>
     )
   },

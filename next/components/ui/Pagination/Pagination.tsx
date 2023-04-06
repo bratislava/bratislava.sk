@@ -55,9 +55,10 @@ export const Pagination = ({
                   onPress={onPress}
                   aria-current={ariaCurrent}
                   aria-label={t('aria.goToPage', { page })}
-                  text={`${page}`}
                   className="flex h-10 w-10 shrink-0 grow-0 items-center justify-center rounded-full lg:h-12 lg:w-12"
-                />
+                >
+                  {page}
+                </Button>
               )
             } else if (type === 'previous' || type === 'next') {
               let icon: ReactNode
@@ -73,7 +74,7 @@ export const Pagination = ({
 
               children = (
                 <Button
-                  variant="plain-category"
+                  variant="category-plain"
                   disabled={disabled}
                   onPress={onPress}
                   aria-label={ariaLabel}

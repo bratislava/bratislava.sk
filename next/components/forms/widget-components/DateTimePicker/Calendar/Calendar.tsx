@@ -54,9 +54,13 @@ const Calendar = ({ onSubmit, onReset, ...rest }: CalendarBase) => {
         </button>
       </div>
       <CalendarGrid state={state} />
-      <div className="flex items-center justify-between border-t-2 border-gray-700 py-3 px-4">
-        <Button onPress={onReset} text="Resetovať" variant="plain-black" size="sm" />
-        <Button onPress={onSubmit} text="Potvrdiť" variant="black" size="sm" />
+      <div className="flex items-center justify-between border-t-2 border-gray-700 px-4 py-3">
+        <Button onPress={onReset} variant="black-plain" size="sm">
+          Resetovať
+        </Button>
+        <Button onPress={onSubmit} variant="black" size="sm">
+          Potvrdiť
+        </Button>
       </div>
     </div>
   )

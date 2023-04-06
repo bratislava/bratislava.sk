@@ -63,15 +63,18 @@ export const CookieConsent = ({ className }: CookieConsentProps) => {
               <Button
                 variant="category"
                 onPress={() => setConsents({ statistics: true })}
-                text={t('cookie_consent_accept')}
-                className="w-full md:w-fit"
-              />
+                fullWidthMobile
+              >
+                {t('cookie_consent_accept')}
+              </Button>
+
               <Button
                 variant="category-outline"
                 onPress={() => setConsents({ statistics: false })}
-                text={t('cookie_consent_reject')}
-                className="w-full md:w-fit"
-              />
+                fullWidthMobile
+              >
+                {t('cookie_consent_reject')}
+              </Button>
             </div>
           </div>
         </div>
