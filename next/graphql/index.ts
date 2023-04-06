@@ -648,6 +648,21 @@ export type ComponentBlocksSubpage = {
   title?: Maybe<Scalars['String']>
 }
 
+export type ComponentBlocksTimelineItem = {
+  __typename?: 'ComponentBlocksTimelineItem'
+  content?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksTimelineItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksTimelineItemFiltersInput>>>
+  content?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksTimelineItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksTimelineItemFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+}
+
 export type ComponentBlocksTopServicesItem = {
   __typename?: 'ComponentBlocksTopServicesItem'
   icon: Enum_Componentblockstopservicesitem_Icon
@@ -1207,6 +1222,18 @@ export type ComponentSectionsTextWithImage = {
   imageSrc?: Maybe<UploadFileEntityResponse>
 }
 
+export type ComponentSectionsTimeline = {
+  __typename?: 'ComponentSectionsTimeline'
+  id: Scalars['ID']
+  timelineItems?: Maybe<Array<Maybe<ComponentBlocksTimelineItem>>>
+}
+
+export type ComponentSectionsTimelineTimelineItemsArgs = {
+  filters?: InputMaybe<ComponentBlocksTimelineItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export type ComponentSectionsTopServices = {
   __typename?: 'ComponentSectionsTopServices'
   id: Scalars['ID']
@@ -1706,6 +1733,7 @@ export type GenericMorph =
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksSpaceInfo
   | ComponentBlocksSubpage
+  | ComponentBlocksTimelineItem
   | ComponentBlocksTopServicesItem
   | ComponentBlocksVideo
   | ComponentGeneralHeader
@@ -1742,6 +1770,7 @@ export type GenericMorph =
   | ComponentSectionsSpace
   | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
+  | ComponentSectionsTimeline
   | ComponentSectionsTopServices
   | ComponentSectionsVideos
   | ComponentSectionsWaves
@@ -2571,6 +2600,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsSpace
   | ComponentSectionsTextWithImage
+  | ComponentSectionsTimeline
   | ComponentSectionsVideos
   | ComponentSectionsWaves
   | Error
@@ -5844,6 +5874,15 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
+              __typename: 'ComponentSectionsTimeline'
+              timelineItems?: Array<{
+                __typename?: 'ComponentBlocksTimelineItem'
+                id: string
+                content?: string | null
+                timelineItemTitle?: string | null
+              } | null> | null
+            }
+          | {
               __typename: 'ComponentSectionsVideos'
               id: string
               title?: string | null
@@ -6661,6 +6700,15 @@ export type PageEntityFragment = {
           } | null
         }
       | {
+          __typename: 'ComponentSectionsTimeline'
+          timelineItems?: Array<{
+            __typename?: 'ComponentBlocksTimelineItem'
+            id: string
+            content?: string | null
+            timelineItemTitle?: string | null
+          } | null> | null
+        }
+      | {
           __typename: 'ComponentSectionsVideos'
           id: string
           title?: string | null
@@ -7070,6 +7118,13 @@ export type GalleryItemBlockFragment = {
   } | null
 }
 
+export type TimelineItemBlockFragment = {
+  __typename?: 'ComponentBlocksTimelineItem'
+  id: string
+  content?: string | null
+  timelineItemTitle?: string | null
+}
+
 export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
@@ -7093,6 +7148,16 @@ export type GallerySectionFragment = {
         } | null
       } | null
     } | null
+  } | null> | null
+}
+
+export type TimelineSectionFragment = {
+  __typename?: 'ComponentSectionsTimeline'
+  timelineItems?: Array<{
+    __typename?: 'ComponentBlocksTimelineItem'
+    id: string
+    content?: string | null
+    timelineItemTitle?: string | null
   } | null> | null
 }
 
@@ -8061,6 +8126,16 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
   } | null
 }
 
+type Sections_ComponentSectionsTimeline_Fragment = {
+  __typename: 'ComponentSectionsTimeline'
+  timelineItems?: Array<{
+    __typename?: 'ComponentBlocksTimelineItem'
+    id: string
+    content?: string | null
+    timelineItemTitle?: string | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsVideos_Fragment = {
   __typename: 'ComponentSectionsVideos'
   id: string
@@ -8106,6 +8181,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsSpace_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
+  | Sections_ComponentSectionsTimeline_Fragment
   | Sections_ComponentSectionsVideos_Fragment
   | Sections_ComponentSectionsWaves_Fragment
   | Sections_Error_Fragment
@@ -9003,6 +9079,21 @@ export const BannerSectionFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
+export const TimelineItemBlockFragmentDoc = gql`
+  fragment TimelineItemBlock on ComponentBlocksTimelineItem {
+    id
+    timelineItemTitle: title
+    content
+  }
+`
+export const TimelineSectionFragmentDoc = gql`
+  fragment TimelineSection on ComponentSectionsTimeline {
+    timelineItems {
+      ...TimelineItemBlock
+    }
+  }
+  ${TimelineItemBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -9072,6 +9163,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsBanner {
       ...BannerSection
     }
+    ... on ComponentSectionsTimeline {
+      ...TimelineSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DocumentListSectionFragmentDoc}
@@ -9095,6 +9189,7 @@ export const SectionsFragmentDoc = gql`
   ${ProsAndConsSectionFragmentDoc}
   ${ComparisonSectionFragmentDoc}
   ${BannerSectionFragmentDoc}
+  ${TimelineSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {

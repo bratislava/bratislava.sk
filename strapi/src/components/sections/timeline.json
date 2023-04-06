@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_timelines",
+  "info": {
+    "displayName": "Timeline",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "timelineItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.timeline-item"
+    }
+  }
+}
