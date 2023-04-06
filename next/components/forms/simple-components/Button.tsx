@@ -1,4 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
+import { ArrowRightIcon } from '@assets/images'
 import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
 import { forwardRef, ReactNode, RefObject } from 'react'
@@ -85,7 +86,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */
-    const style = twMerge(
+    const styles = twMerge(
       'inline-flex items-center font-semibold text-btn rounded-lg outline-offset-4 h-auto',
       cx({
         // NOTE: there are some style overrides for link variants below in "twMerge"
@@ -170,55 +171,43 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       className,
     )
 
+    const startIconStyles = cx('flex items-center justify-center', {
+      'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
+      'h-5 w-5': size === 'sm',
+      'h-6 w-6': size === 'lg',
+      'mr-2.5 lg:mr-3': !isLinkVariant && size === 'responsive',
+      'mr-2.5': !isLinkVariant && size === 'sm',
+      'mr-3': !isLinkVariant && size === 'lg',
+      'mr-1 lg:mr-2': isLinkVariant && size === 'responsive',
+      'mr-1': isLinkVariant && size === 'sm',
+      'mr-2': isLinkVariant && size === 'lg',
+    })
+
+    const endIconStyles = cx('flex items-center justify-center', {
+      'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
+      'h-5 w-5': size === 'sm',
+      'h-6 w-6': size === 'lg',
+      'ml-2.5 lg:ml-3': !isLinkVariant && size === 'responsive',
+      'ml-2.5': !isLinkVariant && size === 'sm',
+      'ml-3': !isLinkVariant && size === 'lg',
+      'ml-1 lg:ml-2': isLinkVariant && size === 'responsive',
+      'ml-1': isLinkVariant && size === 'sm',
+      'ml-2': isLinkVariant && size === 'lg',
+    })
+
+    const iconStyles = cx('flex items-center justify-center', {
+      'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
+      'h-5 w-5': size === 'sm',
+      'h-6 w-6': size === 'lg',
+    })
+
     const ButtonChildren = () => {
       return (
         <>
-          {startIcon ? (
-            <span
-              className={cx('flex items-center justify-center', {
-                'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
-                'h-5 w-5': size === 'sm',
-                'h-6 w-6': size === 'lg',
-                'mr-2.5 lg:mr-3': !isLinkVariant && size === 'responsive',
-                'mr-2.5': !isLinkVariant && size === 'sm',
-                'mr-3': !isLinkVariant && size === 'lg',
-                'mr-1 lg:mr-2': isLinkVariant && size === 'responsive',
-                'mr-1': isLinkVariant && size === 'sm',
-                'mr-2': isLinkVariant && size === 'lg',
-              })}
-            >
-              {startIcon}
-            </span>
-          ) : null}
-          {icon ? (
-            <span
-              className={cx('flex items-center justify-center', {
-                'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
-                'h-5 w-5': size === 'sm',
-                'h-6 w-6': size === 'lg',
-              })}
-            >
-              {icon}
-            </span>
-          ) : (
-            children
-          )}
-          {endIcon ? (
-            <span
-              className={cx('flex items-center justify-center', {
-                'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
-                'h-5 w-5': size === 'sm',
-                'h-6 w-6': size === 'lg',
-                'ml-2.5 lg:ml-3': !isLinkVariant && size === 'responsive',
-                'ml-2.5': !isLinkVariant && size === 'sm',
-                'ml-3': !isLinkVariant && size === 'lg',
-                'ml-1 lg:ml-2': isLinkVariant && size === 'responsive',
-                'ml-1': isLinkVariant && size === 'sm',
-                'ml-2': isLinkVariant && size === 'lg',
-              })}
-            >
-              {endIcon}
-            </span>
+          {startIcon ? <span className={startIconStyles}>{startIcon}</span> : null}
+          {icon ? <span className={iconStyles}>{icon}</span> : children}
+          {endIcon || isLinkVariant ? (
+            <span className={endIconStyles}>{endIcon ?? <ArrowRightIcon />}</span>
           ) : null}
         </>
       )
@@ -231,7 +220,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         <MLink
           href={rest.href}
           ref={ref as RefObject<HTMLAnchorElement>}
-          className={style}
+          className={styles}
           plausibleProps={rest.plausibleProps}
           {...buttonPropsFixed}
         >
@@ -244,7 +233,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       <button
         type="button"
         ref={ref as RefObject<HTMLButtonElement>}
-        className={twMerge(style, 'flex items-center justify-center')}
+        className={twMerge(styles, 'flex items-center justify-center')}
         {...buttonProps}
       >
         <ButtonChildren />

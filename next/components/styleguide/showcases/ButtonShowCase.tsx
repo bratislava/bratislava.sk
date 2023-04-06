@@ -181,17 +181,11 @@ const ButtonStacks = ({ variant }: { variant: 'category' | 'black' | 'negative' 
 const ButtonShowCase = ({}: ButtonShowCaseProps) => {
   return (
     <Wrapper direction="column" title="Button">
+      <div>Note: `icon` should not be used with `startIcon`, `endIcon` or `children` props.</div>
       <ButtonStacks variant="category" />
       <ButtonStacks variant="black" />
       <ButtonStacks variant="negative" />
-
       <Stack>
-        <Button variant="category-link" href="#">
-          Link
-        </Button>
-        <Button variant="category-link" href="#" size="sm">
-          Link
-        </Button>
         <Button variant="category-link" href="#">
           Link
         </Button>
