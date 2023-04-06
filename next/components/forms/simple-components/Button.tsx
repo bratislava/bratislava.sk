@@ -91,7 +91,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         // NOTE: there are some style overrides for link variants below in "twMerge"
 
         'w-full': fullWidth,
-        'w-full md:w-fit': !fullWidthMobile,
+        'w-full md:w-fit': fullWidthMobile,
         'w-fit': !fullWidth && !fullWidthMobile,
 
         // padding - filled and outlined variants
