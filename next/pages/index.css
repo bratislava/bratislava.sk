@@ -9,13 +9,6 @@
 @import './typography.css';
 
 @layer components {
-  /* THESE SHOULD COVER ALL FONT VARIANTS ON PAGE */
-  /* if you feel a different variant is needed, please contact desing/product beforehand */
-  .base-button {
-    @apply inline-flex appearance-none items-center justify-center bg-category-600 text-center focus:outline-none;
-    @apply text-p-md font-medium text-white shadow-lg;
-  }
-
   .numerical-list ul {
     @apply flex flex-col;
   }

@@ -1,10 +1,10 @@
 :root {
   /*
-    These variables are used in different pages and component to override
-    colors of different things. They are defined as RGB values on purpose
-    so they can be used in `rgb(var(--color-main-600))` style or with transparency
-    as `rgba(var(--color-main-600), 0.25)`.
-  */
+      These variables are used in different pages and component to override
+      colors of different things. They are defined as RGB values on purpose
+      so they can be used in `rgb(var(--color-main-600))` style or with transparency
+      as `rgba(var(--color-main-600), 0.25)`.
+    */
 
   --color-main-800: 147, 37, 27; /*#93251B*/
   --color-main-700: 216, 55, 40; /*#D83728*/
@@ -101,7 +101,10 @@
   --color-warning-100: 252, 242, 230; /*#FCF2E6*/
   --color-warning-50: 253, 248, 242; /*#FDF8F2*/
 
-  /* These variables are overidden in pages to get custom colors for each category */
+  --font-color: var(--color-gray-700);
+  --error-color: var(--color-negative-700);
+
+  /* These variables are overridden in pages to get custom colors for each category */
   --color-category-800: var(--color-main-800);
   --color-category-700: var(--color-main-700);
   --color-category-600: var(--color-main-600);
@@ -110,15 +113,12 @@
   --color-category-300: var(--color-main-300);
   --color-category-200: var(--color-main-200);
   --color-category-100: var(--color-main-100);
-
-  --font-color: #333;
-  --error-color: #d00000;
-  --background-color: rgb(var(--color-gray-50));
+  --font-contrast-color: var(--font-color);
 }
 
 body {
   -webkit-font-smoothing: antialiased;
-  color: var(--font-color);
+  color: rgb(var(--font-color));
 }
 
 .base-input {
@@ -203,4 +203,5 @@ input[type='number']::-webkit-outer-spin-button {
     border-radius: 0;
   }
 }
+
 /* styles for chatbot END*/

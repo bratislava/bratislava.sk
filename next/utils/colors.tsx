@@ -41,9 +41,17 @@ export const transformIconToCategory = (icon: Enum_Componentmenumenuitem_Icon): 
 }
 
 const generateCssVariables = (category: ColorCategory) => {
-  return [100, 200, 300, 400, 500, 600, 700, 800].map(
-    (weight) => [`--color-category-${weight}`, `var(--color-${category}-${weight})`] as const,
-  )
+  const fontContrastColor =
+    category === 'social' || category === 'culture'
+      ? 'var(--color-gray-700)'
+      : 'var(--color-gray-0)'
+
+  return [
+    ...[100, 200, 300, 400, 500, 600, 700, 800].map(
+      (weight) => [`--color-category-${weight}`, `var(--color-${category}-${weight})`] as const,
+    ),
+    ['--font-contrast-color', fontContrastColor] as const,
+  ]
 }
 
 type Props =

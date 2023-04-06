@@ -38,6 +38,7 @@ module.exports = {
     },
 
     fontSize: {
+      btn: ['16px', '24px'],
       'btn-base': ['16px', '24px'],
       'btn-lg': ['20px', '32px'],
 
@@ -60,8 +61,11 @@ module.exports = {
         270: '270deg',
       },
       colors: {
-        error: 'var(--error-color)',
-        font: 'var(--font-color)',
+        error: 'rgb(var(--error-color))',
+        font: {
+          DEFAULT: 'rgb(var(--font-color))',
+          contrast: 'rgb(var(--font-contrast-color))',
+        },
         main: {
           100: 'rgb(var(--color-main-100))',
           200: 'rgb(var(--color-main-200))',
