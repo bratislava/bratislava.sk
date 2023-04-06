@@ -1,8 +1,8 @@
 import { useTranslation } from 'next-i18next'
 import { createContext, ReactNode, useContext } from 'react'
 
-type LanguageCode = 'en' | 'sk'
-type Localizations = Record<LanguageCode, string>
+export type LanguageCode = 'en' | 'sk'
+export type Localizations = Partial<Record<LanguageCode, string>>
 
 const LocalizationsContext = createContext<Localizations | null>(null)
 

@@ -1,11 +1,15 @@
 import { GeneralQuery, PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import PageLayout from '@components/layouts/PageLayout'
 import GeneralPageContent from '@components/pages/generalPageContent'
-import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
+import {
+  LanguageCode,
+  Localizations,
+  LocalizationsProvider,
+} from '@components/providers/LocalizationsProvider'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { hasAttributes } from '@utils/isDefined'
+import { hasAttributes, isDefined } from '@utils/isDefined'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -73,18 +77,18 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 const Page = ({ general, page }: PageProps) => {
   const { slug, title, metaDiscription, locale } = page?.attributes ?? {}
 
-  const localizations = Object.fromEntries([
-    [locale, `/${slug}`] as const,
-    ...(page?.attributes?.localizations?.data.filter(hasAttributes).map(
-      (locale) =>
-        [
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
-          locale.attributes.locale!,
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
-          `/${locale.attributes.slug!}`,
-        ] as const,
-    ) ?? []),
-  ] as const)
+  const localization = page?.attributes?.localizations?.data?.[0]
+  const localizations = Object.fromEntries(
+    [
+      [locale as LanguageCode, `/${slug}`] as const,
+      localization
+        ? ([
+            localization?.attributes?.locale as LanguageCode,
+            `/${localization?.attributes?.slug}`,
+          ] as const)
+        : null,
+    ].filter(isDefined),
+  ) as Localizations
 
   return (
     <GeneralContextProvider general={general}>
