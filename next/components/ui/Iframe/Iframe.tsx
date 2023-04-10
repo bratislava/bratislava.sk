@@ -10,6 +10,7 @@ export interface IframeProps {
   allowGeolocation?: boolean | null
   css?: string | null
 }
+
 export const Iframe = ({
   url,
   iframeWidth,
@@ -59,7 +60,7 @@ export const Iframe = ({
           height={height}
           allowFullScreen={allowFullscreen}
           allow={allowGeolocation ? 'geolocation *' : undefined}
-          scrolling="no"
+          sandbox="allow-scripts"
         />
       </div>
     </div>
