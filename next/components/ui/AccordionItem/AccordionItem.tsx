@@ -39,7 +39,7 @@ export const AccordionItem = ({
     <div className="mb-6 last:mb-0">
       <div
         className={cx(
-          'drop-shadow-[0 8 24 black] rounded-lg py-3 px-6 lg:py-4 lg:px-10',
+          'drop-shadow-[0 8 24 black] rounded-lg px-6 py-3 lg:px-10 lg:py-4',
           {
             'border-2 border-solid border-transparent bg-category-200 shadow-lg': active,
             'border-2 border-category-600 bg-transparent md:hover:bg-category-200 md:hover:stroke-current':
@@ -71,7 +71,7 @@ export const AccordionItem = ({
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',
-          'last:mb-0 lg:my-14': active && paddingVariant === 'normal',
+          'mt-7 last:mb-0 lg:mt-14': active && paddingVariant === 'normal',
         })}
       >
         {children}
