@@ -88,7 +88,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
      *   - focus text color for 'culture' and 'social' category should be -800
      */
     const styles = twMerge(
-      'inline-flex items-center font-semibold text-btn rounded-lg outline-offset-4 h-auto',
+      'inline-flex items-center justify-center font-semibold text-btn rounded-lg outline-offset-4 h-auto',
       cx({
         // NOTE: there are some style overrides for link variants below in "twMerge"
 
