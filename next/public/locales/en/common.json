@@ -141,5 +141,9 @@
   "Footer": {
     "contactForMedia": "Contact for media:",
     "copyright": "© {{year}} Hlavné mesto SR Bratislava"
+  },
+  "Breadcrumbs": {
+    "homepage": "Homepage",
+    "back": "Back"
   }
 }

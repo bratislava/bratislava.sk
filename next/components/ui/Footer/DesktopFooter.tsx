@@ -13,6 +13,9 @@ import { useGeneralContext } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
 import * as React from 'react'
 
+/**
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=7683-20624&t=bWqVCwkV1Gv1qULG-0
+ */
 const DesktopFooter = () => {
   const { footer } = useGeneralContext()
 
@@ -32,7 +35,7 @@ const DesktopFooter = () => {
               <div className="flex gap-2">
                 <FooterSocialLinks {...attributes} />
               </div>
-              <EULogo className="w-15" />
+              <EULogo />
             </div>
           </section>
           <section className="grid grid-cols-[488px_332px_332px] gap-8 py-12">

@@ -67,14 +67,7 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
       ns="common"
       i18nKey="Footer.copyright"
       components={{
-        innovations: (
-          <MLink
-            variant="underlined"
-            // Must be there to satisfy Typescript.
-            // eslint-disable-next-line react/no-children-prop
-            {...getCommonLinkProps(innovationsLink)}
-          />
-        ),
+        innovations: <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
       }}
       values={{ year: new Date().getFullYear() }}
     />

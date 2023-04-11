@@ -17,6 +17,40 @@ query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
+fragment PageParentPages on PageEntity {
+  attributes {
+    ...ParentPage
+    parentPage {
+      data {
+        attributes {
+          ...ParentPage
+          parentPage {
+            data {
+              attributes {
+                ...ParentPage
+                parentPage {
+                  data {
+                    attributes {
+                      ...ParentPage
+                      parentPage {
+                        data {
+                          attributes {
+                            ...ParentPage
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 fragment PageEntity on PageEntity {
   id
   attributes {
@@ -63,34 +97,6 @@ fragment PageEntity on PageEntity {
         }
       }
     }
-    parentPage {
-      data {
-        attributes {
-          ...ParentPage
-          parentPage {
-            data {
-              attributes {
-                ...ParentPage
-                parentPage {
-                  data {
-                    attributes {
-                      ...ParentPage
-                      parentPage {
-                        data {
-                          attributes {
-                            ...ParentPage
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
     pageCategory {
       data {
         id
@@ -101,6 +107,7 @@ fragment PageEntity on PageEntity {
       }
     }
   }
+  ...PageParentPages
 }
 
 fragment BlogSection on BlogPostEntityResponse {
