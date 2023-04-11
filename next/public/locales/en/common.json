@@ -140,6 +140,9 @@
   },
   "Footer": {
     "contactForMedia": "Contact for media:",
-    "copyright": "© {{year}} Hlavné mesto SR Bratislava"
+    "copyright": "© {year} Hlavné mesto SR Bratislava"
+  },
+  "Breadcrumbs": {
+    "back": "Back"
   }
 }
