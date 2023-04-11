@@ -84,11 +84,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isIconButton = Boolean(icon)
 
     /* TODO
+     *   - examine why `text-btn` is sometimes ignored
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */
     const styles = twMerge(
-      'inline-flex items-center justify-center font-semibold text-btn rounded-lg outline-offset-4 h-auto',
+      'inline-flex h-auto items-center justify-center rounded-lg text-btn font-semibold outline-offset-4',
       cx({
         // NOTE: there are some style overrides for link variants below in "twMerge"
 
@@ -171,7 +172,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'after:absolute after:inset-0': 'stretched' in rest && rest.stretched,
       }),
       // OVERRIDES for link variant, rounded-sm applies for outline
-      isLinkVariant ? 'p-0 lg:p-0 rounded-sm' : '',
+      isLinkVariant ? 'rounded-sm p-0 lg:p-0' : '',
       className,
     )
 

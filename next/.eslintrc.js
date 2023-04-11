@@ -33,7 +33,7 @@ module.exports = {
     /** Use official sorting */
     'tailwindcss/classnames-order': [
       'warn',
-      { callees: ['classnames', 'cx'], officialSorting: true },
+      { callees: ['classnames', 'cx', 'twMerge'], officialSorting: true },
     ],
     /** We specify default props in props decomposition */
     'react/require-default-props': 'off',
