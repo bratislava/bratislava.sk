@@ -124,6 +124,8 @@
   "menu.show_less": "Zobraziť menej",
   "menu.show_more": "Zobraziť viac",
   "skipNavigation": "Preskočiť navigáciu",
+  "title": "Bratislava.sk",
+  "titleWithChild": "{{childTitle}} – Bratislava.sk",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Navigačné menu",
