@@ -1,3 +1,4 @@
+import AccordionShowcase from '@components/styleguide/showcases/AccordionShowcase'
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
@@ -56,6 +57,7 @@ const Styleguide = () => {
       <BannerShowCase />
       <ServiceCardShowCase />
       <EventCardShowcase />
+      <AccordionShowcase />
 
       {/* <SnackbarShowCase /> */}
     </StyleGuideWrapper>
