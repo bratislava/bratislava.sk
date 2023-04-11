@@ -52,7 +52,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               })
 
               return (
-                <div className="flex flex-col space-y-4 lg:pl-10" key={i}>
+                <div className="flex flex-col space-y-4 px-5 lg:px-10" key={i}>
                   <NarrowText
                     contentStyle="my-8"
                     align={item.align}
@@ -72,7 +72,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
             title={parseCategory(text.category).title}
             secondaryTitle={parseCategory(text.category).secondaryTitle}
           >
-            <div className="grid grid-cols-1 gap-y-8 gap-x-7 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-7 gap-y-8 md:grid-cols-3">
               {text.items.filter(isPresent).map((file) => (
                 <Institution
                   key={file.title}
