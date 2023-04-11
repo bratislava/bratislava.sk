@@ -1,6 +1,5 @@
-import { ChevronRight } from '@assets/images'
 import { VideoBlockFragment, VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Button, HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
+import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import React from 'react'
@@ -58,20 +57,15 @@ const Video = ({
   )
 }
 
-export const Videos = ({ title, subtitle, videos, buttonContent }: VideosSectionFragment) => {
+export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
   if (!videos) {
     return null
   }
 
-  // Quickfix to show all videos
-  // TODO: add proper loadmore functionality, buttonContent is not fetched by graphql at the moment
-  const videosCount = 300
-  const shouldShowButtonContent = buttonContent ? false : videos.length > 3
-
   return (
     <div>
-      <h4 className="text-h4">{title}</h4>
-      <p className="md:text-p1 mt-5 mb-10">{subtitle}</p>
+      {title && <h2 className="text-h4">{title}</h2>}
+      {subtitle && <div className="md:text-p1 mb-10 mt-5">{subtitle}</div>}
 
       {/* Mobile */}
       <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
@@ -82,22 +76,9 @@ export const Videos = ({ title, subtitle, videos, buttonContent }: VideosSection
 
       {/* Desktop */}
       <div className="hidden gap-8 lg:grid lg:grid-cols-3">
-        {videos
-          .filter(isPresent)
-          .slice(0, videosCount)
-          .map((video) => (
-            <Video key={video.url} {...video} />
-          ))}
-        {shouldShowButtonContent && (
-          <Button
-            iconPosition="right"
-            variant="secondary-dark-text"
-            icon={<ChevronRight />}
-            className="text-20 py-2"
-          >
-            {buttonContent}
-          </Button>
-        )}
+        {videos.filter(isPresent).map((video) => (
+          <Video key={video.url} {...video} />
+        ))}
       </div>
     </div>
   )
