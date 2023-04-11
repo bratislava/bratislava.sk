@@ -27,44 +27,45 @@ const DesktopFooter = () => {
   return (
     <SectionContainer>
       <HorizontalDivider />
-      <footer className="flex flex-col">
-        <div className="flex flex-col">
-          <section className="flex justify-between pt-12">
-            <Brand className="group" url="/" withTitle />
-            <div className="flex items-center gap-16">
-              <div className="flex gap-2">
-                <FooterSocialLinks {...attributes} />
-              </div>
-              <EULogo />
+      <footer className="flex flex-col gap-6 py-6 lg:gap-8 lg:py-8">
+        <div className="flex justify-between py-2 lg:py-0">
+          <Brand className="group" url="/" withTitle />
+          <div className="flex items-center gap-16">
+            <div className="flex gap-2">
+              <FooterSocialLinks {...attributes} />
             </div>
-          </section>
-          <section className="grid grid-cols-[488px_332px_332px] gap-8 py-12">
-            <div className="flex flex-col gap-6">
-              <FooterContacts {...attributes} />
-            </div>
-            {attributes.columns?.filter(isDefined).map((column, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <div className="flex flex-col gap-4" key={index}>
-                <p className="text-h5 text-gray-800">{column.title}</p>
-                <div className="flex flex-col gap-3">
-                  <FooterColumnLinks {...column} />
-                </div>
-              </div>
-            ))}
-          </section>
+            <EULogo />
+          </div>
         </div>
         <HorizontalDivider />
-        <section className="grid grid-cols-3 pb-6 pt-12">
-          <div>
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-[488px_332px_332px] lg:gap-8">
+          <div className="col-span-2 flex flex-col gap-6 lg:col-span-1">
+            <FooterContacts {...attributes} />
+          </div>
+          <HorizontalDivider className="col-span-2 lg:hidden" />
+          {attributes.columns?.filter(isDefined).map((column, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div className="flex flex-col gap-3 lg:gap-4" key={index}>
+              <p className="text-h5 text-gray-800">{column.title}</p>
+              <div className="flex flex-col gap-3">
+                <FooterColumnLinks {...column} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <HorizontalDivider />
+        <div className="flex flex-col gap-y-6 lg:flex-row lg:justify-between">
+          <div className="flex justify-center gap-6 lg:justify-normal">
             <FooterAccessibilityLink {...attributes} />
           </div>
-          <div className="text-center text-p-base">
-            <FooterCopyright {...attributes} />
-          </div>
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-center gap-4 lg:justify-normal">
             <FooterLanguageSwitcher />
           </div>
-        </section>
+        </div>
+        <HorizontalDivider />
+        <div className="text-center text-p-base">
+          <FooterCopyright {...attributes} />
+        </div>
       </footer>
     </SectionContainer>
   )

@@ -5,10 +5,10 @@ import * as React from 'react'
 const Footer = () => {
   return (
     <>
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <DesktopFooter />
       </div>
-      <div className="lg:hidden">
+      <div className="md:hidden">
         <MobileFooter />
       </div>
     </>

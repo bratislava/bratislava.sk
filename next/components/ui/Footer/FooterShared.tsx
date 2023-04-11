@@ -13,12 +13,12 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
     <>
       {facebookUrl && (
         <MLink href={facebookUrl} target="_blank" rel="noreferrer" className="p-2">
-          <FacebookIcon />
+          <FacebookIcon className="h-5 w-5 md:h-6 md:w-6" />
         </MLink>
       )}
       {instagramUrl && (
         <MLink href={instagramUrl} target="_blank" rel="noreferrer" className="p-2">
-          <InstagramIcon />
+          <InstagramIcon className="h-5 w-5 md:h-6 md:w-6" />
         </MLink>
       )}
     </>
@@ -29,7 +29,7 @@ export const FooterContacts = ({ address, mediaEmail, email, phone }: FooterFrag
   const { t } = useTranslation(['common'], { keyPrefix: 'Footer' })
 
   return (
-    <>
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
       {address && <p className="whitespace-pre-wrap">{address}</p>}
       <div className="flex flex-col gap-y-3">
         {mediaEmail && (
@@ -51,7 +51,7 @@ export const FooterContacts = ({ address, mediaEmail, email, phone }: FooterFrag
           </MLink>
         )}
       </div>
-    </>
+    </div>
   )
 }
 

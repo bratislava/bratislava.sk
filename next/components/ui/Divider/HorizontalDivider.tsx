@@ -1,17 +1,17 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-type HorizontalDividerProps = { categoryColor?: boolean }
+type HorizontalDividerProps = { categoryColor?: boolean; className?: string }
 
-const HorizontalDivider = ({ categoryColor }: HorizontalDividerProps) => {
+const HorizontalDivider = ({ categoryColor, className }: HorizontalDividerProps) => {
   return (
     <div
       role="separator"
-      className="border-b-2"
-      style={{
-        borderColor: categoryColor
-          ? 'rgb(var(--color-category-600))'
-          : 'rgb(var(--color-gray-200))',
-      }}
+      className={twMerge(
+        'border-b-2',
+        categoryColor ? 'border-category-600' : 'border-gray-200',
+        className,
+      )}
     />
   )
 }
