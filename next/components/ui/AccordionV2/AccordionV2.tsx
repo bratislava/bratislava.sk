@@ -25,9 +25,14 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
   const isBoxed = isBoxedOrdinary || isBoxedWithShadow
   const boxedSize = isBoxed ? (last(variant.split('-')) as BoxedScreenSizes) : undefined
 
+  const animateHeightStyles = cx({
+    'rounded-xl shadow-accordion': isBoxedWithShadow, // shadows must be on <AnimateHeight />, because it has overflow: hidden
+  })
+
   const borderStyles = cx('group flex w-full flex-col', {
     'border-2 rounded-xl bg-white': isBoxed,
-    'border-gray-200 hover:border-gray-500 open:border-gray-700': isBoxedOrdinary,
+    'border-gray-200 hover:border-gray-500 open:border-gray-700 hover:open:border-gray-700':
+      isBoxedOrdinary,
     'shadow-accordion': isBoxedWithShadow,
   })
 
@@ -67,7 +72,7 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
   })
 
   return (
-    <AnimateHeight isVisible>
+    <AnimateHeight isVisible className={animateHeightStyles}>
       <details className={borderStyles}>
         <summary className={buttonStyles}>
           <span className={headingStyles}>{title}</span>
