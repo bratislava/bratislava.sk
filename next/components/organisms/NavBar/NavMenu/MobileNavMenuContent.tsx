@@ -3,7 +3,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useTranslation } from 'next-i18next'
 import React, { CSSProperties } from 'react'
 
-import HorizontalDivider from './HorizontalDivider'
+import NavBarHorizontalDivider from './NavBarHorizontalDivider'
 import { useNavMenuContext } from './navMenuContext'
 import NavMenuSection from './NavMenuSection'
 import { MenuItem } from './navMenuTypes'
@@ -40,7 +40,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
           </button>
         </li>
 
-        <HorizontalDivider categoryColor />
+        <NavBarHorizontalDivider categoryColor />
 
         {/* eslint-disable react/no-array-index-key */}
         {sections.map((section, index) => {

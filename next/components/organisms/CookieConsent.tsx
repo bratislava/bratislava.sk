@@ -53,7 +53,7 @@ export const CookieConsent = ({ className }: CookieConsentProps) => {
               {t('cookie_consent_body')}{' '}
               <MLink
                 href={t('cookie_consent_privacy_policy_link')}
-                variant="navBarHeader"
+                variant="underlined"
                 className="font-semibold"
               >
                 {t('cookie_consent_privacy_policy')}

@@ -1,6 +1,5 @@
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
-import PageContextProvider from 'components/layouts/PageContextProvider'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
 import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCase'
@@ -33,35 +32,33 @@ const Styleguide = () => {
    * Path to StyleGuide showcase components should be ./next/components/styleguide/showcases
    * */
   return (
-    <PageContextProvider>
-      <StyleGuideWrapper>
-        {/* HERE ADD SHOWCASES */}
-        <TagShowCase />
-        <TooltipShowCase />
-        <FieldHeaderShowCase />
-        <ButtonShowCase />
-        <DatePickerShowCase />
-        <InputFieldShowCase />
-        <SpinnerShowCase />
-        <TextAreaFieldShowCase />
-        <AlertShowCase />
-        <SearchFieldShowCase />
-        <ToggleShowCase />
-        <TimePickerShowCase />
-        <DropdownShowCase />
-        <SelectFieldShowCase />
-        <ProgressBarShowCase />
-        <SingleCheckboxShowCase />
-        <CheckboxGroupShowCase />
-        <RadioButtonShowCase />
-        <StepperShowCase />
-        <BannerShowCase />
-        <ServiceCardShowCase />
-        <EventCardShowcase />
+    <StyleGuideWrapper>
+      {/* HERE ADD SHOWCASES */}
+      <TagShowCase />
+      <TooltipShowCase />
+      <FieldHeaderShowCase />
+      <ButtonShowCase />
+      <DatePickerShowCase />
+      <InputFieldShowCase />
+      <SpinnerShowCase />
+      <TextAreaFieldShowCase />
+      <AlertShowCase />
+      <SearchFieldShowCase />
+      <ToggleShowCase />
+      <TimePickerShowCase />
+      <DropdownShowCase />
+      <SelectFieldShowCase />
+      <ProgressBarShowCase />
+      <SingleCheckboxShowCase />
+      <CheckboxGroupShowCase />
+      <RadioButtonShowCase />
+      <StepperShowCase />
+      <BannerShowCase />
+      <ServiceCardShowCase />
+      <EventCardShowcase />
 
-        {/* <SnackbarShowCase /> */}
-      </StyleGuideWrapper>
-    </PageContextProvider>
+      {/* <SnackbarShowCase /> */}
+    </StyleGuideWrapper>
   )
 }
 

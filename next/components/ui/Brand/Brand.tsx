@@ -13,8 +13,8 @@ export interface BrandProps {
 export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
   return (
     <div className={cx('flex', className)} aria-label="brand">
-      <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url} variant="unstyled">
-        <BALogo />
+      <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
+        <BALogo className="shrink-0" />
         {withTitle && (
           <span className="text-p2">
             <Trans

@@ -137,5 +137,9 @@
       "goToPreviousPage": "Go to previous page",
       "goToNextPage": "Go to next page"
     }
+  },
+  "Footer": {
+    "contactForMedia": "Contact for media:",
+    "copyright": "© {year} Hlavné mesto SR Bratislava"
   }
 }

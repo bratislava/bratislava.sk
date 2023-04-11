@@ -1,17 +1,16 @@
+import type { HomepageContext } from '@backend/fetchers/homepageContextFetcher'
+import { homepageContextFetcher } from '@backend/fetchers/homepageContextFetcher'
+import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import HomepageContent from '@components/pages/HomepageContent'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
+import { HomepageContextProvider } from '@utils/homepageContext'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
-import PageContextProvider from '../components/layouts/PageContextProvider'
 import PageLayout from '../components/layouts/PageLayout'
-import { GetStaticProps } from 'next'
-import HomepageContent from '@components/pages/HomepageContent'
-import { HomepageContextProvider } from '@utils/homepageContext'
-import type { HomepageContext } from '@backend/fetchers/homepageContextFetcher'
-import { homepageContextFetcher } from '@backend/fetchers/homepageContextFetcher'
-import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
 
 type PageProps = {
   homepageContext: HomepageContext
@@ -43,23 +42,21 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 const Homepage = ({ homepageContext, general }: PageProps) => {
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider>
-        <HomepageContextProvider homepageContext={homepageContext}>
-          <Head>
-            <title>{homepageContext.homepage?.attributes?.title}</title>
-            {homepageContext.homepage?.attributes?.metaDescription && (
-              <meta
-                name="description"
-                content={homepageContext.homepage?.attributes?.metaDescription ?? undefined}
-              />
-            )}
-          </Head>
+      <HomepageContextProvider homepageContext={homepageContext}>
+        <Head>
+          <title>{homepageContext.homepage?.attributes?.title}</title>
+          {homepageContext.homepage?.attributes?.metaDescription && (
+            <meta
+              name="description"
+              content={homepageContext.homepage?.attributes?.metaDescription ?? undefined}
+            />
+          )}
+        </Head>
 
-          <PageLayout>
-            <HomepageContent />
-          </PageLayout>
-        </HomepageContextProvider>
-      </PageContextProvider>
+        <PageLayout>
+          <HomepageContent />
+        </PageLayout>
+      </HomepageContextProvider>
     </GeneralContextProvider>
   )
 }

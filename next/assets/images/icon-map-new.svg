@@ -1,9 +1,0 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-	<title>02_Doprava a mapy_iconset-svg</title>
-	<style>
-		.s0 { fill: none;stroke: #333333;stroke-width: 1.9 } 
-	</style>
-	<path id="Layer" class="s0" d="m13.6 6.3v30.8"/>
-	<path id="Layer" class="s0" d="m25.8 33.7v-30.8"/>
-	<path id="Layer" class="s0" d="m1.3 33.7v-30.8l12.2 3.4 12.3-3.4 12.3 3.4v30.8l-12.3-3.4-12.2 3.4z"/>
-</svg>

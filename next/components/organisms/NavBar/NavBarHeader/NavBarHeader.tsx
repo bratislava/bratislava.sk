@@ -3,6 +3,7 @@ import { SectionContainer } from '@bratislava/ui-bratislava'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
+import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -12,20 +13,20 @@ import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-type NavBarProps = { className?: string } & LanguageSelectProps
+type NavBarProps = { className?: string }
 
 const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
-const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps) => {
-  const { t, i18n } = useTranslation(['common'])
+const NavBarHeader = ({ className }: NavBarProps) => {
+  const { t } = useTranslation(['common'])
 
   const { general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
   const { links, accountLink } = header ?? {}
 
-  const otherLanguage = languageSelectProps.languages?.find((l) => l.key !== i18n.language)
+  const { otherLanguage } = useLocalizations()
 
   return (
     <SectionContainer
@@ -48,7 +49,7 @@ const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps) => {
                   <MLink
                     // eslint-disable-next-line react/no-array-index-key
                     key={linkIndex}
-                    variant="navBarHeader"
+                    variant="underlined-medium"
                     href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
                     target={link.url && isExternalLink(link.url) ? '_blank' : undefined}
                   >
@@ -72,31 +73,14 @@ const NavBarHeader = ({ className, ...languageSelectProps }: NavBarProps) => {
           <Divider />
 
           {otherLanguage && (
-            <Button
-              size="sm"
-              className="underline underline-offset-4"
-              variant="black-link"
-              onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
-            >
-              {otherLanguage?.title}
-            </Button>
+            <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale}>
+              {otherLanguage.longName}
+            </MLink>
           )}
         </div>
       </nav>
     </SectionContainer>
   )
-}
-
-interface LanguageSelectProps {
-  className?: string
-  languages?: LanguageOption[]
-  currentLanguage?: string
-  onLanguageChange?: (language: LanguageOption) => void
-}
-
-interface LanguageOption {
-  key: string
-  title: string
 }
 
 export default NavBarHeader

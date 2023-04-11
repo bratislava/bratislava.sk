@@ -1,6 +1,6 @@
-import React from 'react'
 import { InBaCard, SectionContainer } from '@components/ui'
 import { useHomepageContext } from '@utils/homepageContext'
+import React from 'react'
 
 const InbaHomepageSection = () => {
   const { homepage } = useHomepageContext()
@@ -15,7 +15,7 @@ const InbaHomepageSection = () => {
   }
 
   return (
-    <SectionContainer>
+    <SectionContainer className="mb-8">
       <InBaCard className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28" {...inba} />
       <div className="hidden md:block md:h-20" />
     </SectionContainer>

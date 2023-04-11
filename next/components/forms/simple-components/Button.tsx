@@ -43,6 +43,7 @@ export type AnchorProps = Omit<AriaButtonProps<'a'>, 'isDisabled'> &
     target?: '_blank' | '_self' | '_parent' | '_top'
     disabled?: undefined
     plausibleProps?: LinkPlausibleProps
+    stretched?: boolean
   }
 
 export type PolymorphicProps = ButtonProps | AnchorProps
@@ -165,6 +166,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
         // disabled
         'opacity-50': disabled,
+
+        // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
+        'after:absolute after:inset-0': 'stretched' in rest && rest.stretched,
       }),
       // OVERRIDES for link variant, rounded-sm applies for outline
       isLinkVariant ? 'p-0 lg:p-0 rounded-sm' : '',

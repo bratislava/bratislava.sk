@@ -1,5 +1,6 @@
 import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
 import SearchPageContent from '@components/pages/searchPageContent'
+import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { GetStaticProps } from 'next'
@@ -8,7 +9,6 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
-import PageContextProvider from '../components/layouts/PageContextProvider'
 import PageLayout from '../components/layouts/PageLayout'
 
 type PageProps = {
@@ -37,13 +37,7 @@ const Page = ({ general }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <PageContextProvider
-        localizations={[
-          { locale: 'sk', slug: 'vyhladavanie' },
-          { locale: 'en', slug: 'search' },
-        ]}
-        slug="/vyhladavanie"
-      >
+      <LocalizationsProvider localizations={{ sk: '/vyhladavanie', en: '/search' }}>
         <Head>
           {/* TODO: Use translation. */}
           <title>{t('searching')} – Bratislava.sk</title>
@@ -51,7 +45,7 @@ const Page = ({ general }: PageProps) => {
         <PageLayout>
           <SearchPageContent />
         </PageLayout>
-      </PageContextProvider>
+      </LocalizationsProvider>
     </GeneralContextProvider>
   )
 }

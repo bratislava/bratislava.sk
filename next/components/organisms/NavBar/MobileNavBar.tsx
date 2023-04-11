@@ -2,10 +2,9 @@ import { CrossIcon } from '@assets/images'
 import Hamburger from '@assets/images/ba-hamburger.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { Brand } from '@bratislava/ui-bratislava'
-import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import { getCategoryColorLocalStyle } from '@utils/colors'
-import { getLanguageKey } from '@utils/utils'
+import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { useRouter } from 'next/router'
@@ -19,17 +18,15 @@ const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
-interface MobileNavBarProps extends LanguageSelectProps {
+interface MobileNavBarProps {
   className?: string
 }
 
-const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) => {
+const MobileNavBar = ({ className }: MobileNavBarProps) => {
   const { t } = useTranslation(['common'])
   const router = useRouter()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
-
-  const languageKey = getLanguageKey(languageSelectProps.currentLanguage)
-  const otherLanguage = languageSelectProps.languages?.find((l) => l.key !== languageKey)
+  const { otherLanguage } = useLocalizations()
 
   useEffect(() => {
     setMobileMenuOpen(false)
@@ -50,14 +47,14 @@ const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) 
             </div>
             <div className="flex items-center">
               {otherLanguage && (
-                <Button
-                  size="sm"
-                  className="p-4 underline underline-offset-2"
-                  variant="black-link"
-                  onPress={() => languageSelectProps.onLanguageChange?.(otherLanguage)}
+                <MLink
+                  className="p-4"
+                  variant="underlined"
+                  href={otherLanguage.path}
+                  locale={otherLanguage.locale}
                 >
-                  {otherLanguage?.title}
-                </Button>
+                  {otherLanguage.shortName}
+                </MLink>
               )}
               <Divider />
               <MLink href={t('searchLink')} className="p-4">
@@ -86,18 +83,6 @@ const MobileNavBar = ({ className, ...languageSelectProps }: MobileNavBarProps) 
       <div className={cx('h-14', className)} />
     </>
   )
-}
-
-interface LanguageSelectProps {
-  className?: string
-  languages?: LanguageOption[]
-  currentLanguage?: string
-  onLanguageChange?: (language: LanguageOption) => void
-}
-
-interface LanguageOption {
-  key: string
-  title: string
 }
 
 export default MobileNavBar

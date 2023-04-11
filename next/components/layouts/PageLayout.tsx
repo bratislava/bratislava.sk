@@ -1,7 +1,7 @@
+import Footer from '@bratislava/ui-bratislava/Footer/Footer'
 import CookieConsent from '@components/organisms/CookieConsent'
 import React, { PropsWithChildren } from 'react'
 
-import Footer from '../molecules/Footer'
 import NavBar from '../organisms/NavBar/NavBar'
 
 type PageLayoutProps = {
@@ -20,9 +20,7 @@ const PageLayout = ({ className, children }: PropsWithChildren<PageLayoutProps>)
 
       <main className="relative z-0">{children}</main>
 
-      <footer className="relative z-0">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   )
 }
