@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_videos",
   "info": {
-    "displayName": "Videos"
+    "displayName": "Videos",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,9 +10,6 @@
       "type": "string"
     },
     "subtitle": {
-      "type": "string"
-    },
-    "buttonContent": {
       "type": "string"
     },
     "videos": {

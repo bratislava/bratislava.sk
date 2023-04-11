@@ -1199,7 +1199,6 @@ export type ComponentSectionsTextWithImage = {
 
 export type ComponentSectionsVideos = {
   __typename?: 'ComponentSectionsVideos'
-  buttonContent?: Maybe<Scalars['String']>
   id: Scalars['ID']
   subtitle?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
@@ -3521,7 +3520,6 @@ export type BlogPostBySlugQuery = {
               id: string
               title?: string | null
               subtitle?: string | null
-              buttonContent?: string | null
               videos?: Array<{
                 __typename?: 'ComponentBlocksVideo'
                 id: string
@@ -3710,7 +3708,6 @@ export type LatestPostsByTagsQuery = {
               id: string
               title?: string | null
               subtitle?: string | null
-              buttonContent?: string | null
               videos?: Array<{
                 __typename?: 'ComponentBlocksVideo'
                 id: string
@@ -4049,7 +4046,6 @@ export type BlogPostEntityFragment = {
           id: string
           title?: string | null
           subtitle?: string | null
-          buttonContent?: string | null
           videos?: Array<{
             __typename?: 'ComponentBlocksVideo'
             id: string
@@ -5667,7 +5663,6 @@ export type PageBySlugQuery = {
               id: string
               title?: string | null
               subtitle?: string | null
-              buttonContent?: string | null
               videos?: Array<{
                 __typename?: 'ComponentBlocksVideo'
                 id: string
@@ -6427,7 +6422,6 @@ export type PageEntityFragment = {
           id: string
           title?: string | null
           subtitle?: string | null
-          buttonContent?: string | null
           videos?: Array<{
             __typename?: 'ComponentBlocksVideo'
             id: string
@@ -7180,7 +7174,6 @@ export type VideosSectionFragment = {
   id: string
   title?: string | null
   subtitle?: string | null
-  buttonContent?: string | null
   videos?: Array<{
     __typename?: 'ComponentBlocksVideo'
     id: string
@@ -7830,7 +7823,6 @@ type Sections_ComponentSectionsVideos_Fragment = {
   id: string
   title?: string | null
   subtitle?: string | null
-  buttonContent?: string | null
   videos?: Array<{
     __typename?: 'ComponentBlocksVideo'
     id: string
@@ -8630,7 +8622,6 @@ export const VideosSectionFragmentDoc = gql`
     videos {
       ...VideoBlock
     }
-    buttonContent
   }
   ${VideoBlockFragmentDoc}
 `
