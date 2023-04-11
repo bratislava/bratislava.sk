@@ -400,20 +400,6 @@ export type ComponentBlocksFooterSectionPageLinksArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
-export type ComponentBlocksFooterSectionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterSectionFiltersInput>>>
-  not?: InputMaybe<ComponentBlocksFooterSectionFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterSectionFiltersInput>>>
-  pageLinks?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksFooterSectionInput = {
-  id?: InputMaybe<Scalars['ID']>
-  pageLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
-  title?: InputMaybe<Scalars['String']>
-}
-
 export type ComponentBlocksGalleryItem = {
   __typename?: 'ComponentBlocksGalleryItem'
   id: Scalars['ID']
@@ -1537,15 +1523,12 @@ export type FloatFilterInput = {
 
 export type Footer = {
   __typename?: 'Footer'
-  accessibilityLink?: Maybe<ComponentBlocksPageLink>
   accessibilityPageLink?: Maybe<ComponentBlocksCommonLink>
   address?: Maybe<Scalars['String']>
   columns?: Maybe<Array<Maybe<ComponentBlocksFooterColumn>>>
-  copyright?: Maybe<Scalars['String']>
   createdAt?: Maybe<Scalars['DateTime']>
   email?: Maybe<Scalars['String']>
   facebookUrl?: Maybe<Scalars['String']>
-  footerSections?: Maybe<Array<Maybe<ComponentBlocksFooterSection>>>
   innovationsLink?: Maybe<ComponentBlocksCommonLink>
   instagramUrl?: Maybe<Scalars['String']>
   locale?: Maybe<Scalars['String']>
@@ -1554,17 +1537,10 @@ export type Footer = {
   phone?: Maybe<Scalars['String']>
   publishedAt?: Maybe<Scalars['DateTime']>
   updatedAt?: Maybe<Scalars['DateTime']>
-  youtubeUrl?: Maybe<Scalars['String']>
 }
 
 export type FooterColumnsArgs = {
   filters?: InputMaybe<ComponentBlocksFooterColumnFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export type FooterFooterSectionsArgs = {
-  filters?: InputMaybe<ComponentBlocksFooterSectionFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1585,20 +1561,16 @@ export type FooterEntityResponse = {
 }
 
 export type FooterInput = {
-  accessibilityLink?: InputMaybe<ComponentBlocksPageLinkInput>
   accessibilityPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   address?: InputMaybe<Scalars['String']>
   columns?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterColumnInput>>>
-  copyright?: InputMaybe<Scalars['String']>
   email?: InputMaybe<Scalars['String']>
   facebookUrl?: InputMaybe<Scalars['String']>
-  footerSections?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterSectionInput>>>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   instagramUrl?: InputMaybe<Scalars['String']>
   mediaEmail?: InputMaybe<Scalars['String']>
   phone?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
-  youtubeUrl?: InputMaybe<Scalars['String']>
 }
 
 export type FooterRelationResponseCollection = {

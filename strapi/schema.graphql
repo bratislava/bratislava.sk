@@ -1927,15 +1927,12 @@ input FloatFilterInput {
 }
 
 type Footer {
-  accessibilityLink: ComponentBlocksPageLink
   accessibilityPageLink: ComponentBlocksCommonLink
   address: String
   columns(filters: ComponentBlocksFooterColumnFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterColumn]
-  copyright: String
   createdAt: DateTime
   email: String
   facebookUrl: String
-  footerSections(filters: ComponentBlocksFooterSectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterSection]
   innovationsLink: ComponentBlocksCommonLink
   instagramUrl: String
   locale: String
@@ -1944,7 +1941,6 @@ type Footer {
   phone: String
   publishedAt: DateTime
   updatedAt: DateTime
-  youtubeUrl: String
 }
 
 type FooterEntity {
@@ -1962,16 +1958,13 @@ type FooterEntityResponseCollection {
 }
 
 input FooterFiltersInput {
-  accessibilityLink: ComponentBlocksPageLinkFiltersInput
   accessibilityPageLink: ComponentBlocksCommonLinkFiltersInput
   address: StringFilterInput
   and: [FooterFiltersInput]
   columns: ComponentBlocksFooterColumnFiltersInput
-  copyright: StringFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
   facebookUrl: StringFilterInput
-  footerSections: ComponentBlocksFooterSectionFiltersInput
   innovationsLink: ComponentBlocksCommonLinkFiltersInput
   instagramUrl: StringFilterInput
   locale: StringFilterInput
@@ -1982,24 +1975,19 @@ input FooterFiltersInput {
   phone: StringFilterInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
-  youtubeUrl: StringFilterInput
 }
 
 input FooterInput {
-  accessibilityLink: ComponentBlocksPageLinkInput
   accessibilityPageLink: ComponentBlocksCommonLinkInput
   address: String
   columns: [ComponentBlocksFooterColumnInput]
-  copyright: String
   email: String
   facebookUrl: String
-  footerSections: [ComponentBlocksFooterSectionInput]
   innovationsLink: ComponentBlocksCommonLinkInput
   instagramUrl: String
   mediaEmail: String
   phone: String
   publishedAt: DateTime
-  youtubeUrl: String
 }
 
 type FooterRelationResponseCollection {

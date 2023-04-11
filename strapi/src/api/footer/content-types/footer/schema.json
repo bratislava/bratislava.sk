@@ -4,7 +4,8 @@
   "info": {
     "singularName": "footer",
     "pluralName": "footers",
-    "displayName": "Footer"
+    "displayName": "Footer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -47,22 +48,6 @@
       },
       "type": "email"
     },
-    "copyright": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "youtubeUrl": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
     "facebookUrl": {
       "pluginOptions": {
         "i18n": {
@@ -79,16 +64,6 @@
       },
       "type": "string"
     },
-    "footerSections": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.footer-section"
-    },
     "columns": {
       "type": "component",
       "repeatable": true,
@@ -98,16 +73,6 @@
         }
       },
       "component": "blocks.footer-column"
-    },
-    "accessibilityLink": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.page-link"
     },
     "accessibilityPageLink": {
       "type": "component",
