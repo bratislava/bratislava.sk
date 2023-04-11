@@ -10,6 +10,7 @@ export interface IframeProps {
   allowGeolocation?: boolean | null
   css?: string | null
 }
+
 export const Iframe = ({
   url,
   iframeWidth,
@@ -59,7 +60,11 @@ export const Iframe = ({
           height={height}
           allowFullScreen={allowFullscreen}
           allow={allowGeolocation ? 'geolocation *' : undefined}
-          scrolling="no"
+          // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
+          // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
+          // But it seems to work for all of our iframes so far.
+          // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
+          sandbox="allow-scripts"
         />
       </div>
     </div>
