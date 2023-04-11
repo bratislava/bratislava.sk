@@ -319,7 +319,6 @@ fragment VideosSection on ComponentSectionsVideos {
   videos {
     ...VideoBlock
   }
-  buttonContent
 }
 
 fragment NumericalListItemBlock on ComponentBlocksNumericalListItem {

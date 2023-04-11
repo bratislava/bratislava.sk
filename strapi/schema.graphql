@@ -1560,7 +1560,6 @@ input ComponentSectionsTextWithImageInput {
 }
 
 type ComponentSectionsVideos {
-  buttonContent: String
   id: ID!
   subtitle: String
   title: String
@@ -1569,7 +1568,6 @@ type ComponentSectionsVideos {
 
 input ComponentSectionsVideosFiltersInput {
   and: [ComponentSectionsVideosFiltersInput]
-  buttonContent: StringFilterInput
   not: ComponentSectionsVideosFiltersInput
   or: [ComponentSectionsVideosFiltersInput]
   subtitle: StringFilterInput
@@ -1578,7 +1576,6 @@ input ComponentSectionsVideosFiltersInput {
 }
 
 input ComponentSectionsVideosInput {
-  buttonContent: String
   id: ID
   subtitle: String
   title: String
