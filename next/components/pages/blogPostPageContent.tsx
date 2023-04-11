@@ -2,10 +2,13 @@ import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/
 import { BlogPostEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
+import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
+import { useGeneralContext } from '@utils/generalContext'
 import { getNumericLocalDate } from '@utils/local-date'
+import { getPageBreadcrumbs } from '@utils/page'
 import { useTranslation } from 'next-i18next'
 import * as React from 'react'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useMemo } from 'react'
 
 import Sections from '../molecules/Sections'
 
@@ -38,13 +41,22 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
 
   const { t } = useTranslation()
 
+  const { general } = useGeneralContext()
+  const breadcrumbs = useMemo(() => {
+    return [
+      ...(general?.data?.attributes?.newsPage?.data
+        ? getPageBreadcrumbs(general.data.attributes.newsPage.data)
+        : []),
+      { title: blogPost.attributes?.title ?? '', path: null } as Breadcrumb,
+    ]
+  }, [blogPost, general?.data?.attributes?.newsPage])
+
   return (
     <>
       {/* Header */}
       <PageHeader
         title={blogPost.attributes?.title}
-        // TODO: Fix breadcrumbs after Navikronos.
-        breadcrumbs={[]}
+        breadcrumbs={breadcrumbs}
         subtext={
           blogPost &&
           getNumericLocalDate(

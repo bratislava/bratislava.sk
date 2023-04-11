@@ -1,7 +1,7 @@
 import { PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
-import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { isDefined } from '@utils/isDefined'
+import { getPageBreadcrumbs } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
@@ -17,37 +17,6 @@ const DynamicChat = dynamic(() => import('../molecules/chat'), {
   ssr: false,
 })
 
-// TODO: Replace with Navikronos.
-const getBreadcrumbs = (page: PageEntityFragment) => {
-  const current = page
-  if (!current) {
-    return [] as Breadcrumb[]
-  }
-  let parentPage = current?.attributes?.parentPage
-  const breadcrumbs: Breadcrumb[] = [
-    {
-      title: current?.attributes?.title ?? '',
-      path: null,
-    },
-  ]
-  while (parentPage?.data?.attributes) {
-    breadcrumbs.push({
-      title: parentPage?.data?.attributes?.title ?? '',
-      path: parentPage?.data?.attributes?.slug ?? null,
-    })
-    parentPage = parentPage?.data?.attributes?.parentPage
-  }
-
-  if (current?.attributes?.pageCategory?.data?.attributes?.title) {
-    breadcrumbs.push({
-      title: current?.attributes?.pageCategory?.data?.attributes?.title,
-      path: null,
-    })
-  }
-
-  return breadcrumbs.reverse()
-}
-
 export interface GeneralPageProps {
   page: PageEntityFragment
 }
@@ -58,7 +27,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const hasFeaturedBlogs = page.attributes?.pageHeaderSections
     ?.filter(isDefined)
     .some((section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts')
-  const breadcrumbs = useMemo(() => getBreadcrumbs(page), [page])
+  const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
 
   const isClient = useIsClient()
 

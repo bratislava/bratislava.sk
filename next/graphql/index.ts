@@ -4380,7 +4380,60 @@ export type GeneralFragment = {
     data?: {
       __typename?: 'PageEntity'
       id?: string | null
-      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      attributes?: {
+        __typename?: 'Page'
+        title?: string | null
+        slug?: string | null
+        locale?: string | null
+        parentPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              locale?: string | null
+              title?: string | null
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title?: string | null
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title?: string | null
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title?: string | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
     } | null
   } | null
   officialBoardPage?: {
@@ -4487,7 +4540,60 @@ export type GeneralQuery = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              title?: string | null
+              slug?: string | null
+              locale?: string | null
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title?: string | null
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title?: string | null
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title?: string | null
+                                parentPage?: {
+                                  __typename?: 'PageEntityResponse'
+                                  data?: {
+                                    __typename?: 'PageEntity'
+                                    attributes?: {
+                                      __typename?: 'Page'
+                                      slug?: string | null
+                                      locale?: string | null
+                                      title?: string | null
+                                    } | null
+                                  } | null
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
           } | null
         } | null
         officialBoardPage?: {
@@ -5841,6 +5947,18 @@ export type PageBySlugQuery = {
           | { __typename: 'Error' }
           | null
         > | null
+        pageCategory?: {
+          __typename?: 'PageCategoryEntityResponse'
+          data?: {
+            __typename?: 'PageCategoryEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'PageCategory'
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null
+        } | null
         parentPage?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -5889,20 +6007,66 @@ export type PageBySlugQuery = {
             } | null
           } | null
         } | null
-        pageCategory?: {
-          __typename?: 'PageCategoryEntityResponse'
-          data?: {
-            __typename?: 'PageCategoryEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'PageCategory'
-              title?: string | null
-              color?: Enum_Pagecategory_Color | null
+      } | null
+    }>
+  } | null
+}
+
+export type PageParentPagesFragment = {
+  __typename?: 'PageEntity'
+  attributes?: {
+    __typename?: 'Page'
+    slug?: string | null
+    locale?: string | null
+    title?: string | null
+    parentPage?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          locale?: string | null
+          title?: string | null
+          parentPage?: {
+            __typename?: 'PageEntityResponse'
+            data?: {
+              __typename?: 'PageEntity'
+              attributes?: {
+                __typename?: 'Page'
+                slug?: string | null
+                locale?: string | null
+                title?: string | null
+                parentPage?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      locale?: string | null
+                      title?: string | null
+                      parentPage?: {
+                        __typename?: 'PageEntityResponse'
+                        data?: {
+                          __typename?: 'PageEntity'
+                          attributes?: {
+                            __typename?: 'Page'
+                            slug?: string | null
+                            locale?: string | null
+                            title?: string | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
         } | null
       } | null
-    }>
+    } | null
   } | null
 }
 
@@ -6597,6 +6761,18 @@ export type PageEntityFragment = {
       | { __typename: 'Error' }
       | null
     > | null
+    pageCategory?: {
+      __typename?: 'PageCategoryEntityResponse'
+      data?: {
+        __typename?: 'PageCategoryEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'PageCategory'
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null
+    } | null
     parentPage?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -6642,18 +6818,6 @@ export type PageEntityFragment = {
               } | null
             } | null
           } | null
-        } | null
-      } | null
-    } | null
-    pageCategory?: {
-      __typename?: 'PageCategoryEntityResponse'
-      data?: {
-        __typename?: 'PageCategoryEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'PageCategory'
-          title?: string | null
-          color?: Enum_Pagecategory_Color | null
         } | null
       } | null
     } | null
@@ -9021,6 +9185,49 @@ export const GeneralPageRelationFragmentDoc = gql`
     }
   }
 `
+export const ParentPageFragmentDoc = gql`
+  fragment ParentPage on Page {
+    slug
+    locale
+    title
+  }
+`
+export const PageParentPagesFragmentDoc = gql`
+  fragment PageParentPages on PageEntity {
+    attributes {
+      ...ParentPage
+      parentPage {
+        data {
+          attributes {
+            ...ParentPage
+            parentPage {
+              data {
+                attributes {
+                  ...ParentPage
+                  parentPage {
+                    data {
+                      attributes {
+                        ...ParentPage
+                        parentPage {
+                          data {
+                            attributes {
+                              ...ParentPage
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ${ParentPageFragmentDoc}
+`
 export const GeneralFragmentDoc = gql`
   fragment General on General {
     header {
@@ -9034,6 +9241,7 @@ export const GeneralFragmentDoc = gql`
     newsPage {
       data {
         ...GeneralPageRelation
+        ...PageParentPages
       }
     }
     officialBoardPage {
@@ -9060,6 +9268,7 @@ export const GeneralFragmentDoc = gql`
   ${HeaderLinkFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${GeneralPageRelationFragmentDoc}
+  ${PageParentPagesFragmentDoc}
 `
 export const NewsCardBlogFragmentDoc = gql`
   fragment NewsCardBlog on BlogPostEntityResponse {
@@ -9230,13 +9439,6 @@ export const BlogSectionFragmentDoc = gql`
     }
   }
 `
-export const ParentPageFragmentDoc = gql`
-  fragment ParentPage on Page {
-    slug
-    locale
-    title
-  }
-`
 export const PageEntityFragmentDoc = gql`
   fragment PageEntity on PageEntity {
     id
@@ -9284,34 +9486,6 @@ export const PageEntityFragmentDoc = gql`
           }
         }
       }
-      parentPage {
-        data {
-          attributes {
-            ...ParentPage
-            parentPage {
-              data {
-                attributes {
-                  ...ParentPage
-                  parentPage {
-                    data {
-                      attributes {
-                        ...ParentPage
-                        parentPage {
-                          data {
-                            attributes {
-                              ...ParentPage
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
       pageCategory {
         data {
           id
@@ -9322,13 +9496,14 @@ export const PageEntityFragmentDoc = gql`
         }
       }
     }
+    ...PageParentPages
   }
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
   ${LocalizationFragmentDoc}
   ${PageLinkBlockFragmentDoc}
   ${BlogSectionFragmentDoc}
-  ${ParentPageFragmentDoc}
+  ${PageParentPagesFragmentDoc}
 `
 export const SubpageListPageHeaderSectionFragmentDoc = gql`
   fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {

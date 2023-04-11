@@ -131,6 +131,7 @@ fragment General on General {
   newsPage {
     data {
       ...GeneralPageRelation
+      ...PageParentPages
     }
   }
   officialBoardPage {

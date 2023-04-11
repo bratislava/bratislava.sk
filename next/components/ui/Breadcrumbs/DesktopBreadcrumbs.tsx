@@ -13,19 +13,23 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
       <MLink href="/" variant="underlined" className="shrink-0">
         <BreadcrumbsHomeIcon />
       </MLink>
-      {breadcrumbs.map((breadcrumb, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <li className="text-p3-medium flex gap-1" key={index}>
-          <BreadcrumbsChevronIcon className="shrink-0" />
-          {breadcrumb.path ? (
-            <MLink href={breadcrumb.path} variant="underlined">
-              {breadcrumb.title}
-            </MLink>
-          ) : (
-            breadcrumb.title
-          )}
-        </li>
-      ))}
+      {breadcrumbs.map((breadcrumb, index) => {
+        const isLast = index === breadcrumbs.length - 1
+
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <li className="text-p3-medium flex gap-1" key={index}>
+            <BreadcrumbsChevronIcon className="shrink-0" />
+            {breadcrumb.path && !isLast ? (
+              <MLink href={breadcrumb.path} variant="underlined">
+                {breadcrumb.title}
+              </MLink>
+            ) : (
+              breadcrumb.title
+            )}
+          </li>
+        )
+      })}
     </ol>
   )
 }

@@ -1,6 +1,10 @@
-// @ts-strict-ignore
-import { FileBlockFragment, PageLinkBlockFragment } from '@bratislava/strapi-sdk-homepage'
+import {
+  FileBlockFragment,
+  PageLinkBlockFragment,
+  PageParentPagesFragment,
+} from '@bratislava/strapi-sdk-homepage'
 import { TFile } from '@bratislava/ui-bratislava'
+import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
@@ -36,7 +40,7 @@ export const parsePageLink = (
   if (pageLink.url === '') pageLink.url = null
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug,
+    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
     anchor: pageLink.anchor ?? '',
   }
 }
@@ -77,7 +81,11 @@ export const groupByCategory = <Category extends string | null, T extends { cate
   const sorted = sortBy(grouped, (group) => items.indexOf(group[0]))
 
   return Object.keys(sorted).map((key) => ({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     category: sorted[key].length > 0 ? sorted[key][0]?.category : (key as Category),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     items: sorted[key] as T[],
   }))
 }
@@ -89,4 +97,28 @@ export const parseCategory = (category: string) => {
     return { title: match[1], secondaryTitle: match[2] }
   }
   return { title: category, secondaryTitle: '' }
+}
+
+// TODO: Replace with Navikronos.
+export const getPageBreadcrumbs = (page: PageParentPagesFragment) => {
+  const current = page
+  if (!current) {
+    return [] as Breadcrumb[]
+  }
+  let parentPage = current?.attributes?.parentPage
+  const breadcrumbs: Breadcrumb[] = [
+    {
+      title: current?.attributes?.title ?? '',
+      path: current?.attributes?.slug ? `/${current.attributes.slug}` : null,
+    },
+  ]
+  while (parentPage?.data?.attributes) {
+    breadcrumbs.push({
+      title: parentPage?.data?.attributes?.title ?? '',
+      path: parentPage?.data?.attributes?.slug ? `/${parentPage.data.attributes.slug}` : null,
+    })
+    parentPage = parentPage?.data?.attributes?.parentPage
+  }
+
+  return breadcrumbs.reverse()
 }
