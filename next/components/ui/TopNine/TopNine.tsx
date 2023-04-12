@@ -16,6 +16,7 @@ export const TopNine = ({ className, items }: IProps) => (
     )}
   >
     {items?.map((item, index) => (
+      // eslint-disable-next-line react/no-array-index-key
       <TopNineItem key={index} {...item} />
     ))}
   </HorizontalScrollWrapper>

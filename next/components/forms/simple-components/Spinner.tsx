@@ -7,7 +7,7 @@ type SpinnerBase = {
 
 const Spinner = ({ size = 'md', className }: SpinnerBase) => {
   const style = cx(
-    'rounded-[50%] animate-spin border-solid border-gray-700 border-t-gray-300',
+    'animate-spin rounded-[50%] border-solid border-gray-700 border-t-gray-300',
     className,
     {
       'w-5 h-5 border-2 border-t-2': size === 'sm',

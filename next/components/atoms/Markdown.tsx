@@ -69,7 +69,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
         // `ordered` should not be passed to <ul>
         ul: ({ node, depth, ordered, ...props }) => {
           return (
-            <ul className={`inner-list ml-6 lg:ml-9 ${depth !== 0 ? 'mt-4' : ''}`} {...props} />
+            <ul className={`inner-list ml-6 lg:ml-9 ${depth === 0 ? '' : 'mt-4'}`} {...props} />
           )
         },
         // `ordered` should not be passed to <ul>

@@ -1,6 +1,6 @@
+import ChevronRight from '@assets/images/chevron-right.svg'
 import cx from 'classnames'
 
-import ChevronRight from '@assets/images/chevron-right.svg'
 import { Card } from '../Card/Card'
 
 export interface BlogCardProps {
@@ -14,7 +14,7 @@ export interface BlogCardProps {
 export const BlogCard = ({ className, image, mobileImage, content, href }: BlogCardProps) => (
   <a href={href}>
     <div
-      className={cx(className, 'inline-flex cursor-pointer flex-col bg-white py-5 xl:pr-8 xl:pr-5')}
+      className={cx(className, 'inline-flex cursor-pointer flex-col bg-white py-5 xl:pr-5 xl:pr-8')}
     >
       <Card
         className={cx(

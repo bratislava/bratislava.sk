@@ -1,8 +1,8 @@
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
 import icon1 from './icons/elektronicke-sluzby.svg'
 import icon5 from './icons/kampane-a-projekty.svg'
 import icon8 from './icons/kontakty-a-uradne-hodiny.svg'

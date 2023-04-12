@@ -52,7 +52,7 @@ export const parseSchedules = (
     const startTime = schedule.startAt.slice(11, 16)
 
     const dateTimeString =
-      endDate !== startDate ? `${startDate} - ${endDate}` : `${startDate} ${startTime}`
+      endDate === startDate ? `${startDate} ${startTime}` : `${startDate} - ${endDate}`
 
     if (!event || !image) {
       return null

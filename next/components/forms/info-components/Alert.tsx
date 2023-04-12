@@ -51,7 +51,7 @@ const Alert = ({
     }
 
     const alertContainer = cx(
-      'flex justify-between max-w-[480px] w-full rounded-lg lg:px-5 px-3',
+      'flex w-full max-w-[480px] justify-between rounded-lg px-3 lg:px-5',
       className,
       {
         'text-gray-800 flex-col lg:py-4 py-3': variant === 'message',

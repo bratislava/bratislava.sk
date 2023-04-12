@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CSSProperties } from 'react'
 
 const UIContext = React.createContext<IComponents>({
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   Link: ({ ...props }) => <a {...props} />,
 })
 

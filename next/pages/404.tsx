@@ -22,6 +22,7 @@ const NotFoundPage = () => {
   const title = useTitle('404')
 
   return (
+
     <>
       <Head>
         <title>{title}</title>

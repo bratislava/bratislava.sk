@@ -35,7 +35,7 @@ export const Card = ({
           buttonPosition,
           'absolute bottom-0 translate-y-1/2 transform bg-category-200',
           { 'h-12 w-12': buttonVariant === 'circle' },
-          { 'py-2.5 px-6': buttonVariant === 'default' },
+          { 'px-6 py-2.5': buttonVariant === 'default' },
         )}
         shape={buttonVariant}
         variant="secondary-dark-text"

@@ -39,7 +39,7 @@ const Documents = ({
   if (data.hits.length > 0) {
     return (
       <div>
-        <div className="text-h4-medium pt-14 pb-5 lg:pb-6">{t('listOfDocuments')}</div>
+        <div className="text-h4-medium pb-5 pt-14 lg:pb-6">{t('listOfDocuments')}</div>
         <div className="modal-content-rent mb-6 flex flex-col gap-4 md:w-auto lg:gap-6">
           {data.hits.map((vzn) => {
             const category = DocumentListCategorysMap.get(vzn.category)

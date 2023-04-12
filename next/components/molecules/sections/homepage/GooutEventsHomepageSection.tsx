@@ -66,7 +66,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className=" text-p1 box-border rounded-lg border-2 border-category-600 py-3.5 px-6"
+          className=" text-p1 box-border rounded-lg border-2 border-category-600 px-6 py-3.5"
         >
           {linkTitle}
         </Link>

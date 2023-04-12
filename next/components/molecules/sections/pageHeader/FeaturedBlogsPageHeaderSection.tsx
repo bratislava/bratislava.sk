@@ -13,9 +13,9 @@ const FeaturedBlogsPageHeaderSection = ({ section }: FeaturedBlogsPageHeaderSect
 
   return (
     <div className="relative">
-      <div className="w-full h-14" />
+      <div className="h-14 w-full" />
       {/* Blogs move upwards on hover, therefore "-top-3 pt-3" makes a space to not be cut b overflow. */}
-      <div className="absolute z-10 w-screen overflow-hidden lg:w-full -top-3 pt-3">
+      <div className="absolute -top-3 z-10 w-screen overflow-hidden pt-3 lg:w-full">
         <FeaturedBlogs blogs={blogs} />
       </div>
     </div>

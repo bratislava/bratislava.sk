@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react'
 import { SectionContainer, TopNine } from '@components/ui'
 import { TopNineItemProps } from '@components/ui/TopNineItem/TopNineItem'
 import { useTranslation } from 'next-i18next'
+import React, { useMemo } from 'react'
 
 // TODO: Load from Strapi.
 const sk = {

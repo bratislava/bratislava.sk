@@ -1,6 +1,6 @@
+import { Download } from '@assets/images'
 import cx from 'classnames'
 
-import { Download } from '@assets/images'
 import { Panel } from '../Panel/Panel'
 
 export interface FileCardProps {
@@ -25,7 +25,7 @@ export const FileCard = ({
           <Download className="text-red-brick" />
         </div>
 
-        <div className="text-p2 my-5 md:mt-0 md:mb-5">
+        <div className="text-p2 my-5 md:mb-5 md:mt-0">
           {fileTitle}
           <div
             className={cx(

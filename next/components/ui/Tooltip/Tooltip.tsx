@@ -37,7 +37,7 @@ export const Tooltip = ({
       <div
         className={cx(
           className,
-          'text-p3 pointer-events-none absolute right-full z-10 mr-2 rounded-lg p-2 opacity-0 group-hover:opacity-100 md:right-auto md:bottom-full md:mb-2 md:mr-0',
+          'text-p3 pointer-events-none absolute right-full z-10 mr-2 rounded-lg p-2 opacity-0 group-hover:opacity-100 md:bottom-full md:right-auto md:mb-2 md:mr-0',
           {
             'w-56': size === 'small',
             'w-80': size === 'large',

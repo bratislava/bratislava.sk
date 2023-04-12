@@ -94,15 +94,15 @@ const OpenDataChart = ({
 
   return (
     <div className={cx(className, 'text-font')}>
-      <h2 className="text-h4 mt-8 mb-3 text-center leading-[40px]">{title}</h2>
+      <h2 className="text-h4 mb-3 mt-8 text-center leading-[40px]">{title}</h2>
 
       <ErrorBox error={error} />
 
       <div className="relative">
-        {loading && <LoadingSpinner size="small" className="absolute top-1/2 left-1/2" />}
+        {loading && <LoadingSpinner size="small" className="absolute left-1/2 top-1/2" />}
 
         <div
-          className={cx('rounded-2xl py-5 px-8 shadow-lg', {
+          className={cx('rounded-2xl px-8 py-5 shadow-lg', {
             'opacity-25': loading,
           })}
         >

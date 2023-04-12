@@ -45,7 +45,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
         {/* eslint-disable react/no-array-index-key */}
         {sections.map((section, index) => {
           return (
-            <NavMenuSection key={index} section={section} classNames={index !== 0 ? 'pt-8' : ''} />
+            <NavMenuSection key={index} section={section} classNames={index === 0 ? '' : 'pt-8'} />
           )
         })}
         {/* eslint-enable react/no-array-index-key */}

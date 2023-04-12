@@ -1,7 +1,6 @@
+import PrenajomImage from '@assets/images/PrenajomImage.png'
 import { HorizontalScrollWrapper, Rent, RentProps } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
-
-import PrenajomImage from '@assets/images/PrenajomImage.png'
 
 export interface IProps {
   className?: string

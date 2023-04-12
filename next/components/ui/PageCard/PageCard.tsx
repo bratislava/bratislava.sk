@@ -15,7 +15,7 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 
-import Panel from '../Panel/Panel'
+import { Panel } from '../Panel/Panel'
 
 const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
   const icons = {

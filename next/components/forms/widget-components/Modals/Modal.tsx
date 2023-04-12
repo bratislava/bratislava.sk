@@ -144,11 +144,11 @@ const ModalBody = ({
         'rounded-b-10': !hasFooter,
       })}
     >
-      {!hasHeader ? (
+      {hasHeader ? null : (
         <div className="ml-1 flex flex-row items-center justify-end">
           <CloseIcon className="cursor-pointer" type="info" onClick={onClose} />
         </div>
-      ) : null}
+      )}
       <div className="flex h-[calc(100%-80px)] w-full flex-col items-start rounded-lg p-2">
         {Array.isArray(content)
           ? content.length - 1 >= currentScreenIndex && content[currentScreenIndex]()

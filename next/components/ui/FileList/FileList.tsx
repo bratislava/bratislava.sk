@@ -103,7 +103,7 @@ export const FileList = ({
                         ))}
                       </div>
                       {shouldDisplayDividers && !isLastGroup && dividerStyle && (
-                        <Divider className="pt-18 pb-6" dividerStyle={dividerStyle} />
+                        <Divider className="pb-6 pt-18" dividerStyle={dividerStyle} />
                       )}
                     </div>
                   )
@@ -122,7 +122,7 @@ export const FileList = ({
             {!noScroll && (
               <div className="block lg:hidden">
                 <span className="text-h4-medium">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="-mx-8 gap-x-5 py-6 px-8">
+                <HorizontalScrollWrapper className="-mx-8 gap-x-5 px-8 py-6">
                   {fileSection?.files.map((file, sectionIndex) => (
                     <div key={sectionIndex}>
                       <DownloadCard

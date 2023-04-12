@@ -1,6 +1,6 @@
+import ChevronRight from '@assets/images/chevron-right.svg'
 import cx from 'classnames'
 
-import ChevronRight from '@assets/images/chevron-right.svg'
 import { Button, ButtonProps } from '../Button/Button'
 
 type VerticalCardButtonProps = ButtonProps & {

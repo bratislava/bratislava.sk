@@ -25,9 +25,10 @@ export const RelatedContent = ({
         visibleItems={visibleItems}
         shiftIndex={shiftIndex}
         fetchMoreItems={fetchMoreItems}
-        items={cards.map((card, i) => (
-          <div key={i} className="box-content flex py-16">
-            <NewsCard key={i} {...card} />
+        items={cards.map((card, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index} className="box-content flex py-16">
+            <NewsCard {...card} />
           </div>
         ))}
       />
@@ -35,6 +36,7 @@ export const RelatedContent = ({
 
     <HorizontalScrollWrapper className={cx(className, 'gap-x-4 py-10 pl-8 xl:hidden')}>
       {cards.map((card, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <NewsCard className="w-10/12 shrink-0" key={index} {...card} />
       ))}
     </HorizontalScrollWrapper>

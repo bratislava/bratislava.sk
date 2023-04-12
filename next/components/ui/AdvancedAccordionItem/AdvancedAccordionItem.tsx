@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import ChevronDown from '@assets/images/chevron-down-thin.svg'
+import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { usersFromDepartmentFetcher } from 'backend/utils/organisationalStructure'
 import cx from 'classnames'
 import { useState } from 'react'
 import useSWR from 'swr'
 
-import ChevronDown from '@assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { AccordionCard } from '../AccordionCard/AccordionCard'
 import {
   AdvancedAccordionDepartment,

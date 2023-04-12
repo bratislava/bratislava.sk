@@ -12,11 +12,6 @@ interface WavesProps {
   className?: string
 }
 
-export interface WavesSvgProps {
-  waveColor?: string
-  className?: string
-}
-
 export const Waves = ({
   className,
   backgroundColor = 'transparent',

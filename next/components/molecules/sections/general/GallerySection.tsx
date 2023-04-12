@@ -39,7 +39,7 @@ const GallerySection = ({
   }
 
   const isPrevAvailable = () => {
-    return currentIndex !== null ? currentIndex > 0 : false
+    return currentIndex === null ? false : currentIndex > 0
   }
 
   const isNextAvailable = () => {
@@ -111,7 +111,7 @@ const GallerySection = ({
         </HorizontalScrollWrapper>
       </div>
 
-      <div className="mt-14 mb-8 hidden w-full grid-cols-2 gap-8 sm:grid md:grid-cols-3">
+      <div className="mb-8 mt-14 hidden w-full grid-cols-2 gap-8 sm:grid md:grid-cols-3">
         {galleryItems?.filter(isPresent).map((image, index) => (
           <button
             key={index}

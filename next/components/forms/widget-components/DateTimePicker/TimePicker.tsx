@@ -138,7 +138,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     }
 
     const closeSuccessHandler = () => {
-      if (onChange && value) setPrevValue((prev) => (prev !== value ? value : prev))
+      if (onChange && value) setPrevValue((prev) => (prev === value ? prev : value))
       addZeroOnSuccess()
       state?.close()
     }

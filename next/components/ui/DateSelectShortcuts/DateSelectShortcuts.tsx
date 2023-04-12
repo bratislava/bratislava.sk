@@ -56,7 +56,7 @@ export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps
             >
               {title}
               {isActive && (
-                <div className="absolute top-1/2 left-1/2 mt-4 h-1 w-1 rounded-full bg-current" />
+                <div className="absolute left-1/2 top-1/2 mt-4 h-1 w-1 rounded-full bg-current" />
               )}
             </button>
           )

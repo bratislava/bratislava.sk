@@ -59,7 +59,7 @@ export const DocumentCard = ({
       <Panel className={className}>
         <div className="flex w-full flex-col gap-y-5 px-5 py-6 lg:px-10 lg:py-8">
           <div className="text-20-semibold -mb-3">{title}</div>
-          <div className="text-p3 text-font/75 flex flex-col gap-x-6 lg:flex-row">
+          <div className="text-p3 flex flex-col gap-x-6 text-font/75 lg:flex-row">
             {/* TODO: Fix local date */}
             <div>{new Date(createdAt).toLocaleDateString('sk')}</div>
 

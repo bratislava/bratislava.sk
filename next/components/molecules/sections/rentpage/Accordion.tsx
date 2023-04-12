@@ -1,10 +1,10 @@
 /* eslint-disable react/button-has-type */
+import ChevronDown from '@assets/images/chevron-down.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import { Accordion as AccordionBa } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
-import ChevronDown from '@assets/images/chevron-down.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
 import AccordionItem from '../../../atoms/AccordionItem'
 
 // interface IProps {
@@ -60,7 +60,7 @@ const Accordion = () => {
           <button
             onClick={() => setActiveSection?.(tab.key)}
             className={cx(
-              'text-h2-medium flex w-full items-center justify-between rounded-lg py-7 px-10 shadow',
+              'text-h2-medium flex w-full items-center justify-between rounded-lg px-10 py-7 shadow',
               { 'bg-category-200': tab.key === activeSection },
               { 'bg-white': tab.key !== activeSection },
             )}

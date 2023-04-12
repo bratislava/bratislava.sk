@@ -1,10 +1,9 @@
+import Close from '@assets/images/close.svg'
+import Message from '@assets/images/message.svg'
 import { DirectLine } from 'botframework-directlinejs'
 import ReactWebChat from 'botframework-webchat'
 import uniqueId from 'lodash/uniqueId'
 import React, { useRef, useState } from 'react'
-
-import Close from '@assets/images/close.svg'
-import Message from '@assets/images/message.svg'
 
 const token = 'bvhl_qg-4ho.2TlPRJ9vN5qxHn5KJ0OZLHY9Sd3D8LBQFjtR3wULFLM'
 
@@ -31,7 +30,7 @@ const Chat = () => {
   return (
     <>
       <div
-        className="bottom-6 fixed z-[9999] h-14 w-14 flex justify-center items-center bg-category-600 cursor-pointer rounded-[50%] left-6 text-white"
+        className="fixed bottom-6 left-6 z-[9999] flex h-14 w-14 cursor-pointer items-center justify-center rounded-[50%] bg-category-600 text-white"
         onClick={() => setShowChat((currentState) => !currentState)}
         onKeyDown={() => setShowChat((currentState) => !currentState)}
       >

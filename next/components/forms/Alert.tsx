@@ -48,7 +48,7 @@ const Alert = ({
       warning: <WarningIcon solid={solid} />,
     }
 
-    const alertContainer = cx('flex w-480 rounded-8 px-5', className, {
+    const alertContainer = cx('w-480 rounded-8 flex px-5', className, {
       'text-form-alert-textColor-default flex-col py-4': variant === 'message',
       'bg-form-alert-error-default-bg': type === 'error' && !solid,
       'bg-form-alert-success-default-bg': type === 'success' && !solid,
@@ -74,7 +74,7 @@ const Alert = ({
       'w-368': close,
     })
 
-    const extraButtonStyle = cx('underline font-medium text-base leading-6 not-italic', {
+    const extraButtonStyle = cx('text-base font-medium not-italic leading-6 underline', {
       'text-form-alert-error-default': type === 'error' && !solid,
       'text-form-alert-success-default': type === 'success' && !solid,
       'text-form-alert-info-default': type === 'info' && !solid,

@@ -13,7 +13,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
   const { t } = useTranslation()
   return (
     <div className="modal-content-rent max-h-[75vh] max-w-screen-md overflow-y-auto rounded-xl bg-gray-50">
-      <div className="py-8 px-12">
+      <div className="px-12 py-8">
         <div className="text-h4">{vzn?.title}</div>
         <div className="flex pt-3">
           {vzn?.mainDocument && (

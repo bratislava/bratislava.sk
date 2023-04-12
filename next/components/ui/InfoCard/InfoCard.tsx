@@ -38,7 +38,7 @@ export const InfoCard = ({
           </h1>
         }
       >
-        <span className="text-p1 mt-3 mb-8 text-font">{description}</span>
+        <span className="text-p1 mb-8 mt-3 text-font">{description}</span>
         {children}
       </ContentWrapper>
     </div>

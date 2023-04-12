@@ -17,7 +17,7 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, shorthand, onRemove
 
   // STYLES
   const classStyles = cx(
-    'tag align-items-center min-w-14 h-5 inline-block px-2 gap-2.5 text-center',
+    'tag align-items-center min-w-14 inline-block h-5 gap-2.5 px-2 text-center',
     {
       'text-16': size === 'large',
       'text-p3': size === 'small' || !size,
@@ -33,7 +33,7 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, shorthand, onRemove
     },
   )
 
-  const iconClassStyles = cx('tag cursor-pointer self-center inline-block mx-1', {
+  const iconClassStyles = cx('tag mx-1 inline-block cursor-pointer self-center', {
     'text-16 w-3 h-3': size === 'large',
     'text-p3 w-2.5 h-2.5': size === 'small' || !size,
   })

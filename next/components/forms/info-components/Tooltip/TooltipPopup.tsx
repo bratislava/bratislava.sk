@@ -19,7 +19,7 @@ type TooltipBase = {
 }
 
 const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: TooltipBase) => {
-  const tooltipPopupStyle = cx('w-fit absolute z-20', {
+  const tooltipPopupStyle = cx('absolute z-20 w-fit', {
     'bottom-8 -left-3.5 sm:bottom-9 sm:-left-3': position === 'top-right',
     'bottom-8 -right-3.5 sm:bottom-9 sm:-right-3': position === 'top-left',
     'top-8 -left-3.5 sm:top-9 sm:-left-3': position === 'bottom-right',
@@ -47,7 +47,7 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
     <div className={tooltipPopupStyle}>
       <div
         className={cx(
-          'text-p3 sm:text-p2 z-20 m-0 flex w-fit min-w-[118px] max-w-[230px] flex-row justify-center break-words rounded border-0 bg-gray-700 py-2 px-3 text-white sm:max-w-[280px] sm:py-3 sm:px-4',
+          'text-p3 sm:text-p2 z-20 m-0 flex w-fit min-w-[118px] max-w-[230px] flex-row justify-center break-words rounded border-0 bg-gray-700 px-3 py-2 text-white sm:max-w-[280px] sm:px-4 sm:py-3',
           className,
         )}
       >

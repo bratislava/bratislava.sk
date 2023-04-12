@@ -1,9 +1,9 @@
-import cx from 'classnames'
-import React from 'react'
-
 import ArrowRight from '@assets/images/arrow-right.svg'
 import ChevronRight from '@assets/images/chevron-right.svg'
 import Close from '@assets/images/close.svg'
+import cx from 'classnames'
+import React from 'react'
+
 import { Button } from '../Button/Button'
 
 export interface ModalProps {
@@ -49,7 +49,7 @@ export const Modal = ({
             {onClose && (
               <Button
                 style={{ backgroundColor: closeButtonColor }}
-                className="modal-close-mobile-right transofrm closebutton absolute -bottom-9 left-[50%] z-10 h-16 w-16 -translate-x-1/2 md:inset-y-0 md:left-auto md:-right-8 md:translate-x-0 lg:-top-8"
+                className="modal-close-mobile-right transofrm closebutton absolute -bottom-9 left-[50%] z-10 h-16 w-16 -translate-x-1/2 md:inset-y-0 md:-right-8 md:left-auto md:translate-x-0 lg:-top-8"
                 shape="circle"
                 iconPosition="center"
                 icon={<Close className="h-10 w-10" />}
@@ -59,7 +59,7 @@ export const Modal = ({
             {showPrevBtn && onPrev && (
               <Button
                 style={{ backgroundColor: arrowButtonsColor }}
-                className="modal-close-mobile-right closebutton absolute bottom-0 left-0 z-10 h-16 w-16 -translate-y-full -translate-x-8 rotate-180"
+                className="modal-close-mobile-right closebutton absolute bottom-0 left-0 z-10 h-16 w-16 -translate-x-8 -translate-y-full rotate-180"
                 shape="circle"
                 iconPosition="center"
                 icon={<ArrowRight />}

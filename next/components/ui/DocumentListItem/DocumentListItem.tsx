@@ -1,6 +1,6 @@
+import { ArrowRight, ChevronRight, Download } from '@assets/images'
 import { useTranslation } from 'next-i18next'
 
-import { ArrowRight, ChevronRight, Download } from '@assets/images'
 import Button from '../Button/Button'
 
 interface DocumentListItemProps {
@@ -27,7 +27,7 @@ export const DocumentListItem = ({
   return (
     <div className="min-w-66 mb-1 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">
       <div className="flex w-full flex-col md:flex-row md:items-center">
-        <div className="flex p-4 pb-0 md:justify-center lg:py-10 lg:px-12">
+        <div className="flex p-4 pb-0 md:justify-center lg:px-12 lg:py-10">
           <Icon />
         </div>
         <div className="flex flex-[4] flex-col justify-start px-4 py-3 lg:px-8 lg:py-10 lg:pl-0">
@@ -39,14 +39,14 @@ export const DocumentListItem = ({
               {moreDocuments.map((documentTitle, index) => (
                 <span>
                   {documentTitle}
-                  {index !== moreDocuments.length - 1 ? ', ' : ''}
+                  {index === moreDocuments.length - 1 ? '' : ', '}
                 </span>
               ))}
             </div>
           ) : null}
         </div>
       </div>
-      <div className="flex shrink-0 items-center justify-between bg-zinc-50 py-4 pl-5 md:grow-0 md:basis-[300px] md:justify-evenly md:py-11 md:px-2">
+      <div className="flex shrink-0 items-center justify-between bg-zinc-50 py-4 pl-5 md:grow-0 md:basis-[300px] md:justify-evenly md:px-2 md:py-11">
         <div>
           <Button
             className="text-p2-semibold lg:text-p1-semibold text-font underline"
