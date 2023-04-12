@@ -81,6 +81,16 @@
         }
       },
       "type": "text"
+    },
+    "topServices": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.top-services"
     }
   }
 }

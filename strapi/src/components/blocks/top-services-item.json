@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_blocks_top_services_items",
+  "info": {
+    "displayName": "top services item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "bratislavske_konto",
+        "dane_a_poplatky",
+        "verejne_priestory",
+        "nahlasenie_podnetov",
+        "kampane_a_projekty",
+        "som_turista",
+        "organizacna_struktura",
+        "uradne_hodiny",
+        "pracovne_prilezitosti"
+      ],
+      "required": true,
+      "default": "bratislavske_konto"
+    }
+  }
+}

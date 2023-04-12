@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_top_services",
+  "info": {
+    "displayName": "top services",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.top-services-item",
+      "required": true
+    }
+  }
+}

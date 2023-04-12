@@ -717,6 +717,29 @@ input ComponentBlocksSubpageInput {
   title: String
 }
 
+type ComponentBlocksTopServicesItem {
+  icon: ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON!
+  id: ID!
+  label: String!
+  page: PageEntityResponse
+}
+
+input ComponentBlocksTopServicesItemFiltersInput {
+  and: [ComponentBlocksTopServicesItemFiltersInput]
+  icon: StringFilterInput
+  label: StringFilterInput
+  not: ComponentBlocksTopServicesItemFiltersInput
+  or: [ComponentBlocksTopServicesItemFiltersInput]
+  page: PageFiltersInput
+}
+
+input ComponentBlocksTopServicesItemInput {
+  icon: ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON
+  id: ID
+  label: String
+  page: ID
+}
+
 type ComponentBlocksVideo {
   id: ID!
   speaker: String
@@ -1559,6 +1582,26 @@ input ComponentSectionsTextWithImageInput {
   imageSrc: ID
 }
 
+type ComponentSectionsTopServices {
+  id: ID!
+  services(filters: ComponentBlocksTopServicesItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksTopServicesItem]!
+  title: String!
+}
+
+input ComponentSectionsTopServicesFiltersInput {
+  and: [ComponentSectionsTopServicesFiltersInput]
+  not: ComponentSectionsTopServicesFiltersInput
+  or: [ComponentSectionsTopServicesFiltersInput]
+  services: ComponentBlocksTopServicesItemFiltersInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsTopServicesInput {
+  id: ID
+  services: [ComponentBlocksTopServicesItemInput]
+  title: String
+}
+
 type ComponentSectionsVideos {
   id: ID!
   subtitle: String
@@ -1678,6 +1721,18 @@ enum ENUM_COMPONENTBLOCKSLISTITEM_CIRCLEOPTION {
 enum ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION {
   left
   right
+}
+
+enum ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON {
+  bratislavske_konto
+  dane_a_poplatky
+  kampane_a_projekty
+  nahlasenie_podnetov
+  organizacna_struktura
+  pracovne_prilezitosti
+  som_turista
+  uradne_hodiny
+  verejne_priestory
 }
 
 enum ENUM_COMPONENTGENERALHEADERLINK_ICON {
@@ -2050,7 +2105,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
@@ -2065,6 +2120,7 @@ type Homepage {
   publishedAt: DateTime
   right_highlight: BlogPostEntityResponse
   title: String
+  topServices: ComponentSectionsTopServices
   updatedAt: DateTime
 }
 
@@ -2098,6 +2154,7 @@ input HomepageFiltersInput {
   publishedAt: DateTimeFilterInput
   right_highlight: BlogPostFiltersInput
   title: StringFilterInput
+  topServices: ComponentSectionsTopServicesFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2111,6 +2168,7 @@ input HomepageInput {
   publishedAt: DateTime
   right_highlight: ID
   title: String
+  topServices: ComponentSectionsTopServicesInput
 }
 
 type HomepageRelationResponseCollection {
