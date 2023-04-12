@@ -1,8 +1,8 @@
+import ArrowRight from '@assets/images/arrow-right.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
 import { Button } from '../Button/Button'
 import { Field } from '../Field/Field'
 

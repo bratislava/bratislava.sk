@@ -1,9 +1,9 @@
+import Checkbox from '@assets/images/checkbox.svg'
+import SearchIcon from '@assets/images/search-icon.svg'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
 
-import Checkbox from '@assets/images/checkbox.svg'
-import SearchIcon from '@assets/images/search-icon.svg'
 import { Button } from '../Button/Button'
 
 export interface AdvancedSearchProps {

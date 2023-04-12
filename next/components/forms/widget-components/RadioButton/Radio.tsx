@@ -27,7 +27,7 @@ const Radio = ({
   const ref = React.useRef(null)
   const { inputProps } = useRadio({ ...rest, isDisabled: isDisabled || error }, state, ref)
   const inputStyle = cx(
-    'focus-visible:outline-none focus:outline-none appearance-none bg-white m-0 w-6 h-6 min-w-[24px] min-h-[24px] grid place-content-center left-0 right-0 top-0 bottom-0 rounded-full border-2 border-solid',
+    'bottom-0 left-0 right-0 top-0 m-0 grid h-6 min-h-[24px] w-6 min-w-[24px] appearance-none place-content-center rounded-full border-2 border-solid bg-white focus:outline-none focus-visible:outline-none',
     {
       'border-gray-700': !error,
       'before:w-4 before:h-4 before:min-w-[16px] before:min-h-[16px] before:bg-gray-700 before:rounded-full':
@@ -44,7 +44,7 @@ const Radio = ({
   )
 
   const containerStyle = cx(
-    'group flex relative flex-row items-center justify-between rounded-lg gap-3 ',
+    'group relative flex flex-row items-center justify-between gap-3 rounded-lg ',
     className,
     {
       'p-0': variant === 'basic' && !error,

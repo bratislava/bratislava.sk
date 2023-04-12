@@ -1,4 +1,4 @@
-import { WavesSvgProps } from '@bratislava/ui-bratislava'
+import { WavesSvgProps } from '@components/ui/Waves/wavesTypes'
 
 const WaveBottomLarge = ({ className }: WavesSvgProps) => {
   return (

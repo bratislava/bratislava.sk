@@ -5,25 +5,25 @@ import padStart from 'lodash/padStart'
 const capitalize = (text: string) => text[0].toUpperCase() + text.slice(1)
 // "Marec 2021"
 export const getLocalDate = (dateString: string) =>
-  !dateString
-    ? ''
-    : capitalize(
+  dateString
+    ? capitalize(
         convert(ZonedDateTime.parse(dateString)).toDate().toLocaleDateString('sk', {
           month: 'long',
           year: 'numeric',
         }),
       )
+    : ''
 
 // "1.3.2021"
 export const getNumericLocalDate = (dateString: string) =>
-  !dateString
-    ? 'Invalid date'
-    : convert(ZonedDateTime.parse(dateString))
+  dateString
+    ? convert(ZonedDateTime.parse(dateString))
         .toDate()
         .toLocaleDateString('sk', {
           dateStyle: 'short',
         })
         .replace(/ /g, '')
+    : 'Invalid date'
 
 // "Február"
 export const getLocalMonthName = (month: number | string) => {

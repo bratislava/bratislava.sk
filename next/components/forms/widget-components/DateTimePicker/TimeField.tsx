@@ -72,7 +72,7 @@ const TimeField = ({
     ref as RefObject<HTMLInputElement>,
   )
   const timeFieldStyle = cx(
-    'sm:text-16 w-full max-w-xs flex rounded-lg bg-white border-2 px-3 sm:px-4 py-1.5 sm:py-2.5 focus:border-gray-700 focus-visible:outline-none placeholder:text-gray-500',
+    'sm:text-16 flex w-full max-w-xs rounded-lg border-2 bg-white px-3 py-1.5 placeholder:text-gray-500 focus:border-gray-700 focus-visible:outline-none sm:px-4 sm:py-2.5',
     {
       'hover:border-gray-400 border-gray-200': !disabled && !isOpen,
       'border-negative-700 focus:border-negative-700 focus-visible:outline-none hover:border-negative-700':

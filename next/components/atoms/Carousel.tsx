@@ -1,9 +1,9 @@
+import ChevronLeft from '@assets/images/arrow-long-left.svg'
+import ChevronRight from '@assets/images/arrow-long-right.svg'
 import { Button } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import React from 'react'
 
-import ChevronLeft from '@assets/images/arrow-long-left.svg'
-import ChevronRight from '@assets/images/arrow-long-right.svg'
 import Container from './Container'
 
 interface IProps {
@@ -46,7 +46,7 @@ const Carousel = ({ className, carouselItems }: IProps) => {
     <Button
       shape="circle"
       onClick={isLeft ? previousImage : nextImage}
-      className={cx('text-h1-normal absolute top-0 bottom-0 z-10 my-auto h-16 w-16', {
+      className={cx('text-h1-normal absolute bottom-0 top-0 z-10 my-auto h-16 w-16', {
         '-left-6': isLeft,
         '-right-6': !isLeft,
         hidden: isLeft && currentItem === 0,

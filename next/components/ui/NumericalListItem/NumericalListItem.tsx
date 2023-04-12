@@ -35,7 +35,7 @@ export const NumericalListItem = ({
     >
       {variant === 'roadmap' && index > 0 && (
         <DashedLine
-          className="top-0 -ml-2 -mt-8 -mb-10"
+          className="top-0 -mb-10 -ml-2 -mt-8"
           position={position}
           color="rgb(var(--color-category-600))"
         />

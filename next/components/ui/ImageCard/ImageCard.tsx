@@ -1,7 +1,7 @@
-import cx from 'classnames'
-
 import ArrowDoubleLong from '@assets/images/arrow-double-long.svg'
 import ArrowDoubleShort from '@assets/images/arrow-double-short.svg'
+import cx from 'classnames'
+
 import { ChairSpace } from '../ChairSpace/ChairSpace'
 
 interface IProps {

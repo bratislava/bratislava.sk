@@ -1,10 +1,10 @@
 // @ts-strict-ignore
-import cx from 'classnames'
-
 import Mail from '@assets/images/mail.svg'
 import Phone from '@assets/images/phone-small.svg'
 import TownHall from '@assets/images/town-hall.svg'
 import TownHallSmall from '@assets/images/town-hall-small.svg'
+import cx from 'classnames'
+
 import { Panel } from '../Panel/Panel'
 
 export interface AccordionCardProps {
@@ -37,9 +37,9 @@ export const AccordionCard = ({
     // TODO min-w-70 does not work anymore (worked fine on monorepo)
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
-      <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col py-8 px-6')} overflowVisible>
+      <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col px-6 py-8')} overflowVisible>
         <div className="text-h4 pb-2">{displayName}</div>
-        <div className="text-font/75 text-p3 lg:text-p2 pb-6">{jobTitle}</div>
+        <div className="text-p3 lg:text-p2 pb-6 text-font/75">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">

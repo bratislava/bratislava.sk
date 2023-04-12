@@ -68,7 +68,7 @@ export const TimeFromTo = ({
             <FieldErrorMessage errorMessage={TimeFromErrorMessage} />
           </div>
         </div>
-        <div className={cx('mt-auto mb-6 hidden h-0.5 bg-gray-300 lg:block lg:w-8')} />
+        <div className={cx('mb-6 mt-auto hidden h-0.5 bg-gray-300 lg:block lg:w-8')} />
         <div className={cx('flex w-[320px] flex-col')}>
           <TimePicker
             label={TimeToLabel}

@@ -1,11 +1,10 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
+import MinusIcon from '@assets/images/minus.svg'
+import PlusIcon from '@assets/images/plus.svg'
 import { Button, Input } from '@bratislava/ui-bratislava'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { FormEvent } from 'react'
-
-import MinusIcon from '@assets/images/minus.svg'
-import PlusIcon from '@assets/images/plus.svg'
 
 interface IProps {
   className?: string
@@ -65,7 +64,7 @@ const InputField = ({
             onChange(parseInt(e.target.value, 10))
           }
         }}
-        className="number-control-none text-20 box-border w-64 rounded-lg py-4 px-10 text-center"
+        className="number-control-none text-20 box-border w-64 rounded-lg px-10 py-4 text-center"
         required
         type="number"
         min={0}
@@ -162,7 +161,7 @@ const MinimumCalculator = ({
         />
 
         <Button
-          className="text-20-semibold mt-6 bg-category-600 py-3 px-5 text-font lg:py-4 lg:px-6"
+          className="text-20-semibold mt-6 bg-category-600 px-5 py-3 text-font lg:px-6 lg:py-4"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"

@@ -9,7 +9,7 @@ export interface GalleryProps {
 }
 
 export const Gallery = ({ className, title, images }: GalleryProps) => (
-  <div className={cx(className, 'mt-20 ml-5 flex flex-col xl:items-center')}>
+  <div className={cx(className, 'ml-5 mt-20 flex flex-col xl:items-center')}>
     <div className="text-h1 mb-7">{title}</div>
     <HorizontalScrollWrapper
       className={cx(

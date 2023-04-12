@@ -24,6 +24,7 @@ export const TabBarTab = ({
 }: TabBarTabProps) => {
   return (
     <button
+      type="button"
       className={cx(className, 'relative whitespace-nowrap py-2 lg:whitespace-normal', {
         'font-normal text-font': !isActive,
         'font-semibold': isActive,

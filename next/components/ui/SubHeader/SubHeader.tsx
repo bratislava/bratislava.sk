@@ -32,7 +32,7 @@ export const SubHeader = ({
 
   return (
     <div className={cx('z-10 flex flex-col', className)}>
-      <p className="mt-4 mb-8 pt-0.5 pb-2 md:mt-6 md:mb-16 md:pt-0">{topper}</p>
+      <p className="mb-8 mt-4 pb-2 pt-0.5 md:mb-16 md:mt-6 md:pt-0">{topper}</p>
       <span
         className={cx('text-h1 w-40 md:w-full md:max-w-lg', {
           'mb-8': !description,
@@ -41,7 +41,7 @@ export const SubHeader = ({
         {title}
       </span>
       {description && (
-        <span className="mt-3 mb-5 w-72 md:mb-10 md:w-full md:max-w-md">{description}</span>
+        <span className="mb-5 mt-3 w-72 md:mb-10 md:w-full md:max-w-md">{description}</span>
       )}
       {href && buttonTitle && (
         <Link href={href}>

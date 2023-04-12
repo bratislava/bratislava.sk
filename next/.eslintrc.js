@@ -51,6 +51,8 @@ module.exports = {
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
     // https://github.com/jsx-eslint/eslint-plugin-react/issues/2584#issuecomment-1191175244
     'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
+    'pii/no-phone-number': 'off',
+    'const-case/uppercase': 'off',
     // Solve warning "Promise-returning function provided to attribute where a void return was expected."
     // '@typescript-eslint/no-misused-promises': [
     //   2,

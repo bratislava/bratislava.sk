@@ -2,7 +2,7 @@
 import { BlogSectionFragment } from '@bratislava/strapi-sdk-homepage'
 
 import { BlogSearchCard } from '../BlogSearchCard/BlogSearchCard'
-import HorizontalScrollWrapper from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface FeaturedBlogsProps {
   blogs?: BlogSectionFragment[]
@@ -26,10 +26,11 @@ export const FeaturedBlogs = ({ blogs }: FeaturedBlogsProps) => {
           ))}
         </div>
       </div>
-      <HorizontalScrollWrapper className="gap-x-4 px-8 lg:hidden pr-8">
+      <HorizontalScrollWrapper className="gap-x-4 px-8 lg:hidden">
         {blogs.map((blog, index) => {
           return (
             <BlogSearchCard
+              // eslint-disable-next-line react/no-array-index-key
               key={index}
               className="w-74 h-60 shrink-0"
               imageClassName="w-[206px]"

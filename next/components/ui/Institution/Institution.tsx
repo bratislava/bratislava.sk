@@ -32,7 +32,7 @@ const InstitutionCard = ({
         {subtitle && <Markdown content={subtitle} />}
         {content && (
           <div className="row mt-6 flex w-full flex-row flex-wrap">
-            {[...Array.from({ length: 3 })].map((_, ix) => (
+            {Array.from({ length: 3 }, (_, ix) => (
               <div
                 key={ix}
                 className="col-12 md:col-4 fontSize-base mb-2 break-words last:mb-0 md:mb-0"

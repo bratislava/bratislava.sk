@@ -1,4 +1,4 @@
-import { WavesSvgProps } from '../Waves'
+import { WavesSvgProps } from '@components/ui/Waves/wavesTypes'
 
 const WaveBottom = ({ className }: WavesSvgProps) => (
   <svg

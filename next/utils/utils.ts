@@ -15,8 +15,7 @@ export const forceString = (input: unknown) => {
 }
 
 export const isPresent = <U>(a: U | null | undefined | void): a is U => {
-  if (a === null || a === undefined) return false
-  return true
+  return a !== undefined && a !== null
 }
 
 const isServer = () => typeof window === 'undefined'

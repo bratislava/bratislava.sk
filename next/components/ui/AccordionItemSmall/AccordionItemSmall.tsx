@@ -1,9 +1,9 @@
 // @ts-strict-ignore
+// import Chevron from '@assets/images/chevron.svg'
+import Chevron from '@assets/images/chevron-down-small.svg'
 import cx from 'classnames'
 import React from 'react'
 
-// import Chevron from '@assets/images/chevron.svg'
-import Chevron from '@assets/images/chevron-down-small.svg'
 import { SwitchToggle } from '../SwitchToggle/SwitchToggle'
 
 export interface AccordionItemSmallProps {
@@ -48,7 +48,7 @@ export const AccordionItemSmall = ({
     <>
       <div
         className={cx(
-          'drop-shadow-[0 8 24 black] rounded-lg py-3 px-4 md:py-4 md:px-6',
+          'drop-shadow-[0 8 24 black] rounded-lg px-4 py-3 md:px-6 md:py-4',
           {
             'border-2 border-solid border-category-600 bg-category-200 shadow-lg': active,
             'border-2 border-category-600 bg-transparent': !active,

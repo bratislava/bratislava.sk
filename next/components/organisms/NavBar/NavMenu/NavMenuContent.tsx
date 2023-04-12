@@ -70,7 +70,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
                     <NavMenuSection
                       key={sectionIndex}
                       section={section}
-                      classNames={sectionIndex !== 0 ? 'pt-8' : ''}
+                      classNames={sectionIndex === 0 ? '' : 'pt-8'}
                     />
                   ))}
                 </NavMenuContentCell>

@@ -47,7 +47,7 @@ export const NewsLetter = ({
         buttonContent={buttonLabel}
       >
         {/* Content */}
-        <div className="mt-32 mb-8 p-6 lg:my-0 lg:p-12">
+        <div className="mb-8 mt-32 p-6 lg:my-0 lg:p-12">
           <h2 className="text-h4">Newsletter</h2>
           <div className="text-p2 mt-5">{newsLetterContent}</div>
           <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
@@ -58,10 +58,10 @@ export const NewsLetter = ({
               onChange={(ev) => setEmail(ev.target.value)}
             />
           </div>
-          <div className="mt-8 mb-5 max-w-xs">
+          <div className="mb-5 mt-8 max-w-xs">
             <CheckBox
               id="newsletterCheckbox"
-              className="border-gray-700/50 border-opacity-50"
+              className="border-gray-700/50"
               variant="circle"
               content={
                 <p

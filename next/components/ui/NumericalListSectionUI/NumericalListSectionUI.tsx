@@ -1,10 +1,10 @@
 import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { Button } from '@bratislava/ui-bratislava/Button/Button'
+import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import cx from 'classnames'
 
-import Button from '../Button/Button'
 import { NumericalList } from '../NumericalList/NumericalList'
-import Waves from '../Waves/Waves'
 
 export interface NumericalListItemObject {
   text?: string | null

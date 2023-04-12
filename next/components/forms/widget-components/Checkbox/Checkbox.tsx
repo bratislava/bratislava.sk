@@ -32,7 +32,7 @@ const CheckboxGroupItem = ({
   const isSelected = state.isSelected(rest.value)
 
   const checkboxStyle = cx(
-    'flex items-center justify-center w-6 h-6 rounded border-2 border-solid border-gray-700',
+    'flex h-6 w-6 items-center justify-center rounded border-2 border-solid border-gray-700',
     {
       'bg-gray-700': (isSelected || isIndeterminate) && !error,
       'group-hover:border-gray-600':
@@ -64,7 +64,7 @@ const CheckboxGroupItem = ({
     'opacity-50 cursor-not-allowed': isDisabled,
   })
 
-  const labelStyle = cx('flex text-16 text-gray-700', {})
+  const labelStyle = cx('text-16 flex text-gray-700', {})
 
   return (
     <div>

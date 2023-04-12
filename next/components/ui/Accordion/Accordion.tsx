@@ -1,8 +1,8 @@
+import ChevronDown from '@assets/images/chevron-down.svg'
+import ChevronRight from '@assets/images/chevron-right.svg'
 import cx from 'classnames'
 import React from 'react'
 
-import ChevronDown from '@assets/images/chevron-down.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
 import { Button } from '../Button/Button'
 
 export type TAccordionTab = { key: string; title: string | React.ReactNode }

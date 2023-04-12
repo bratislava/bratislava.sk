@@ -72,7 +72,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
 
   // STYLES
   const selectClassName = cx(
-    'border-form-input-default flex flex-row bg-white rounded-lg border-2 items-center',
+    'border-form-input-default flex flex-row items-center rounded-lg border-2 bg-white',
     {
       'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
         !disabled,

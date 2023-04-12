@@ -55,7 +55,7 @@ AdvancedAccordionDepartmentProps) => {
     setCards(data)
   }
   return (
-    <div className="flex flex-col pt-1 pb-14 lg:pb-18">
+    <div className="flex flex-col pb-14 pt-1 lg:pb-18">
       {title && <AccordionItemHeading title={title} />}
       {/*       {departmentPhone && (
         <div className="flex items-center pl-9 pb-5 lg:pb-8 lg:pl-16 gap-x-8">

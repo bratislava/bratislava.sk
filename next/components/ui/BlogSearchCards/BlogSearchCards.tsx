@@ -42,7 +42,7 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
           </Button>
         )}
       </div>
-      <HorizontalScrollWrapper className="gap-x-4 pt-4 pb-6 lg:hidden">
+      <HorizontalScrollWrapper className="gap-x-4 pb-6 pt-4 lg:hidden">
         {blogs.map((blog) => {
           return (
             <BlogSearchCard key={blog.attributes.slug} item={blog} className="w-74 h-60 shrink-0" />

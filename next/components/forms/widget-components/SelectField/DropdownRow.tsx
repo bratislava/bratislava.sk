@@ -32,7 +32,7 @@ const DropdownRow = ({
 }: DropdownRowProps) => {
   // STYLES
   const rowClassName = cx(
-    'dropdown hover:bg-form-plain-black-hover flex flex-col w-full px-5 bg-white [&>div]:last:border-0 cursor-pointer',
+    'dropdown hover:bg-form-plain-black-hover flex w-full cursor-pointer flex-col bg-white px-5 [&>div]:last:border-0',
     {
       'h-14': !isBold,
       'h-full xs:h-[84px]': isBold,

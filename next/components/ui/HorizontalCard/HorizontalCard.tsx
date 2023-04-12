@@ -22,7 +22,7 @@ export const HorizontalCard = ({
       {imageSrc && (
         <>
           <div
-            className="lg:hidden overflow-hidden relative"
+            className="relative overflow-hidden lg:hidden"
             style={{
               paddingTop: '71.4%',
             }}
@@ -31,11 +31,11 @@ export const HorizontalCard = ({
               src={imageSrc}
               alt=""
               fill
-              className="object-cover w-full h-full"
+              className="h-full w-full object-cover"
               sizes={imageSizes}
             />
           </div>
-          <div className="flex-0 max-w hidden w-56 bg-cover lg:block relative">
+          <div className="flex-0 max-w relative hidden w-56 bg-cover lg:block">
             <Image src={imageSrc} alt="" fill className="object-cover" sizes={imageSizes} />
           </div>
         </>
@@ -45,7 +45,7 @@ export const HorizontalCard = ({
       </div>
     </Panel>
     {accessory && (
-      <div className={cx('absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 transform')}>
+      <div className={cx('absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 transform')}>
         {accessory}
       </div>
     )}

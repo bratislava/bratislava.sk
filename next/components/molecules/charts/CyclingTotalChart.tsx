@@ -50,7 +50,7 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
 
     return {
       name: year,
-      data: [...Array.from({ length: MONTHS })].map((_, ix) => [
+      data: Array.from({ length: MONTHS }, (_, ix) => [
         ix + 1,
         dataByYear.jsonData[ix + 1]?.total ?? 0,
       ]),
@@ -81,7 +81,7 @@ const CyclingTotalChart = ({ className, location, direction, ...rest }: IProps) 
       xAxisFormatter={getLocalMonthName}
     >
       <div className="flex justify-end">
-        <span className="text-p3-bold py-2 px-3">{direction}</span>
+        <span className="text-p3-bold px-3 py-2">{direction}</span>
       </div>
     </OpenDataChart>
   )

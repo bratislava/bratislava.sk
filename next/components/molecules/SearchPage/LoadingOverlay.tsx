@@ -19,7 +19,7 @@ const LoadingOverlay = ({ loading, children }: PropsWithChildren<LoadingOverlayP
     // 160px - height of spinner
     <div className={cx('relative', { 'min-h-[160]': loading })}>
       {loading ? (
-        <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center text-white/80">
+        <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center text-white/80">
           <ShrinkablePadding />
           {/* For some reason it displays behind aspect-w-* elements, so z-index is added. */}
           <LoadingSpinner className="z-10 shrink-0 text-white" />

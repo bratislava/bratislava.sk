@@ -67,7 +67,7 @@ const TextAreaField = ({
     ref,
   )
   const containerStyle = cx(
-    'text-p3 sm:text-16 flex flex-col bg-gray-0 border-2 border-gray-200 rounded-lg caret-gray-700 focus:outline-none focus:border-gray-700 resize-none overflow-hidden',
+    'text-p3 sm:text-16 flex resize-none flex-col overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-0 caret-gray-700 focus:border-gray-700 focus:outline-none',
     className,
     {
       'hover:border-gray-400': !disabled && !isFocused,
@@ -79,7 +79,7 @@ const TextAreaField = ({
   )
 
   const textareaStyle = cx(
-    'overflow-y-scroll px-3 py-2 sm:px-4 sm:py-3 bg-gray-0 rounded-lg caret-gray-700 focus:outline-none resize-none focus:placeholder:text-transparent h-full w-full',
+    'h-full w-full resize-none overflow-y-scroll rounded-lg bg-gray-0 px-3 py-2 caret-gray-700 focus:outline-none focus:placeholder:text-transparent sm:px-4 sm:py-3',
   )
   return (
     <div className="flex w-full flex-col">

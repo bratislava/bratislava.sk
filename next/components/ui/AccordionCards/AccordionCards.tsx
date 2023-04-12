@@ -9,12 +9,12 @@ export interface AccordionCardsProps {
 export const AccordionCards = ({ items }: AccordionCardsProps) => {
   return (
     <>
-      <HorizontalScrollWrapper className="-ml-8 flex w-screen gap-x-5 px-8 py-8 lg:hidden">
+      <HorizontalScrollWrapper className="-ml-8 flex w-screen gap-x-5 p-8 lg:hidden">
         {items.map((item) => (
           <AccordionCard key={item.id} {...item} />
         ))}
       </HorizontalScrollWrapper>
-      <div className="hidden w-full grid-cols-3 gap-y-8 gap-x-8 lg:grid">
+      <div className="hidden w-full grid-cols-3 gap-8 lg:grid">
         {items.map((item) => (
           <AccordionCard key={item.id} {...item} />
         ))}

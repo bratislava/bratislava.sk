@@ -42,8 +42,9 @@ export const ArticlesFilter = ({
       <div className="text-h2 text-center">{t('articleCategories')}</div>
       <HorizontalScrollWrapper className="-mx-8 mt-8 px-8 lg:mt-10">
         <div className="flex">
-          {!categoryExists
-            ? BratislavaCategories.map((tab) => (
+          {categoryExists
+            ? null
+            : BratislavaCategories.map((tab) => (
                 <TabBarTab
                   className="text-p1 mr-8"
                   key={tab}
@@ -55,8 +56,7 @@ export const ArticlesFilter = ({
                   handleSelect={categoryHandler}
                   isActive={tab === category}
                 />
-              ))
-            : null}
+              ))}
         </div>
       </HorizontalScrollWrapper>
       <div className="mt-6 lg:mt-11">
@@ -72,7 +72,7 @@ export const ArticlesFilter = ({
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="min-h-8 text-p2-medium mr-3 mb-3"
+              className="min-h-8 text-p2-medium mb-3 mr-3"
             />
           ))}
       </div>
