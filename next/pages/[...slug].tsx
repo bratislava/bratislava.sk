@@ -9,7 +9,8 @@ import {
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
-import { hasAttributes, isDefined } from '@utils/isDefined'
+import { isDefined } from '@utils/isDefined'
+import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -75,7 +76,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page }: PageProps) => {
-  const { slug, title, metaDiscription, locale } = page?.attributes ?? {}
+  const { slug, title: pageTitle, metaDiscription, locale } = page?.attributes ?? {}
 
   const localization = page?.attributes?.localizations?.data?.[0]
   const localizations = Object.fromEntries(
@@ -90,12 +91,13 @@ const Page = ({ general, page }: PageProps) => {
     ].filter(isDefined),
   ) as Localizations
 
+  const title = useTitle(pageTitle)
+
   return (
     <GeneralContextProvider general={general}>
       <LocalizationsProvider localizations={localizations}>
         <Head>
-          {/* TODO: Use translation. */}
-          {title && <title>{title} – Bratislava.sk</title>}
+          <title>{title}</title>
           {metaDiscription && <meta name="description" content={metaDiscription} />}
         </Head>
         <GlobalCategoryColorProvider

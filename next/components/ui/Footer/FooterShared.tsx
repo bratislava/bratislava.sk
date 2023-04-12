@@ -77,8 +77,9 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
 export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
   return (
     <>
-      {links?.filter(isDefined)?.map((link) => (
-        <MLink variant="underlined" {...getCommonLinkProps(link)} />
+      {links?.filter(isDefined)?.map((link, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <MLink variant="underlined" {...getCommonLinkProps(link)} key={index} />
       ))}
     </>
   )

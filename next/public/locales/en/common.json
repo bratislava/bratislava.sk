@@ -124,6 +124,8 @@
   "noPagesToShow": "No pages to show",
   "noUsersToShow": "No contacts to show",
   "skipNavigation": "Skip navigation",
+  "title": "Bratislava.sk",
+  "titleWithChild": "{{childTitle}} – Bratislava.sk",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Main menu",

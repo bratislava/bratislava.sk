@@ -3,6 +3,7 @@ import SearchPageContent from '@components/pages/searchPageContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
+import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useTranslation } from 'next-i18next'
@@ -34,13 +35,13 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
 
 const Page = ({ general }: PageProps) => {
   const { t } = useTranslation('common')
+  const title = useTitle(t('searching'))
 
   return (
     <GeneralContextProvider general={general}>
       <LocalizationsProvider localizations={{ sk: '/vyhladavanie', en: '/search' }}>
         <Head>
-          {/* TODO: Use translation. */}
-          <title>{t('searching')} – Bratislava.sk</title>
+          <title>{title}</title>
         </Head>
         <PageLayout>
           <SearchPageContent />
