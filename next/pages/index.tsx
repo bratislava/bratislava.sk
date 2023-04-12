@@ -5,6 +5,7 @@ import HomepageContent from '@components/pages/HomepageContent'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { HomepageContextProvider } from '@utils/homepageContext'
+import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -40,11 +41,13 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 }
 
 const Homepage = ({ homepageContext, general }: PageProps) => {
+  const title = useTitle()
+
   return (
     <GeneralContextProvider general={general}>
       <HomepageContextProvider homepageContext={homepageContext}>
         <Head>
-          <title>{homepageContext.homepage?.attributes?.title}</title>
+          <title>{title}</title>
           {homepageContext.homepage?.attributes?.metaDescription && (
             <meta
               name="description"

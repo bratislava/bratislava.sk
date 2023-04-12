@@ -4,6 +4,7 @@ import BlogPostPageContent from '@components/pages/blogPostPageContent'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
+import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -71,13 +72,14 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, blogPost }: PageProps) => {
-  const { title, excerpt, slug } = blogPost.attributes ?? {}
+  const { title: blogPostTitle, excerpt } = blogPost.attributes ?? {}
+
+  const title = useTitle(blogPostTitle)
 
   return (
     <GeneralContextProvider general={general}>
       <Head>
-        {/* TODO: Use translation. */}
-        {title && <title>{title} – Bratislava.sk</title>}
+        <title>{title}</title>
         {excerpt && <meta name="description" content={excerpt} />}
       </Head>
       <GlobalCategoryColorProvider
