@@ -43,6 +43,12 @@ fragment HomepageEntity on HomepageEntity {
       }
       variant
     }
+    topServices {
+      title
+      services {
+        ...TopServicesItem
+      }
+    }
     inba {
       title
       content
@@ -123,6 +129,19 @@ fragment NewsCardBlog on BlogPostEntityResponse {
             }
           }
         }
+      }
+    }
+  }
+}
+
+fragment TopServicesItem on ComponentBlocksTopServicesItem {
+  label
+  icon
+  page {
+    data {
+      id
+      attributes {
+        slug
       }
     }
   }

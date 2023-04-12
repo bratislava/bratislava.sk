@@ -648,6 +648,30 @@ export type ComponentBlocksSubpage = {
   title?: Maybe<Scalars['String']>
 }
 
+export type ComponentBlocksTopServicesItem = {
+  __typename?: 'ComponentBlocksTopServicesItem'
+  icon: Enum_Componentblockstopservicesitem_Icon
+  id: Scalars['ID']
+  label: Scalars['String']
+  page?: Maybe<PageEntityResponse>
+}
+
+export type ComponentBlocksTopServicesItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksTopServicesItemFiltersInput>>>
+  icon?: InputMaybe<StringFilterInput>
+  label?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksTopServicesItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksTopServicesItemFiltersInput>>>
+  page?: InputMaybe<PageFiltersInput>
+}
+
+export type ComponentBlocksTopServicesItemInput = {
+  icon?: InputMaybe<Enum_Componentblockstopservicesitem_Icon>
+  id?: InputMaybe<Scalars['ID']>
+  label?: InputMaybe<Scalars['String']>
+  page?: InputMaybe<Scalars['ID']>
+}
+
 export type ComponentBlocksVideo = {
   __typename?: 'ComponentBlocksVideo'
   id: Scalars['ID']
@@ -1183,6 +1207,25 @@ export type ComponentSectionsTextWithImage = {
   imageSrc?: Maybe<UploadFileEntityResponse>
 }
 
+export type ComponentSectionsTopServices = {
+  __typename?: 'ComponentSectionsTopServices'
+  id: Scalars['ID']
+  services: Array<Maybe<ComponentBlocksTopServicesItem>>
+  title: Scalars['String']
+}
+
+export type ComponentSectionsTopServicesServicesArgs = {
+  filters?: InputMaybe<ComponentBlocksTopServicesItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentSectionsTopServicesInput = {
+  id?: InputMaybe<Scalars['ID']>
+  services?: InputMaybe<Array<InputMaybe<ComponentBlocksTopServicesItemInput>>>
+  title?: InputMaybe<Scalars['String']>
+}
+
 export type ComponentSectionsVideos = {
   __typename?: 'ComponentSectionsVideos'
   id: Scalars['ID']
@@ -1272,6 +1315,18 @@ export enum Enum_Componentblockslistitem_Circleoption {
 export enum Enum_Componentblocksspaceinfo_Imageposition {
   Left = 'left',
   Right = 'right',
+}
+
+export enum Enum_Componentblockstopservicesitem_Icon {
+  BratislavskeKonto = 'bratislavske_konto',
+  DaneAPoplatky = 'dane_a_poplatky',
+  KampaneAProjekty = 'kampane_a_projekty',
+  NahlaseniePodnetov = 'nahlasenie_podnetov',
+  OrganizacnaStruktura = 'organizacna_struktura',
+  PracovnePrilezitosti = 'pracovne_prilezitosti',
+  SomTurista = 'som_turista',
+  UradneHodiny = 'uradne_hodiny',
+  VerejnePriestory = 'verejne_priestory',
 }
 
 export enum Enum_Componentgeneralheaderlink_Icon {
@@ -1651,6 +1706,7 @@ export type GenericMorph =
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksSpaceInfo
   | ComponentBlocksSubpage
+  | ComponentBlocksTopServicesItem
   | ComponentBlocksVideo
   | ComponentGeneralHeader
   | ComponentGeneralHeaderLink
@@ -1686,6 +1742,7 @@ export type GenericMorph =
   | ComponentSectionsSpace
   | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
+  | ComponentSectionsTopServices
   | ComponentSectionsVideos
   | ComponentSectionsWaves
   | Footer
@@ -1718,6 +1775,7 @@ export type Homepage = {
   publishedAt?: Maybe<Scalars['DateTime']>
   right_highlight?: Maybe<BlogPostEntityResponse>
   title?: Maybe<Scalars['String']>
+  topServices?: Maybe<ComponentSectionsTopServices>
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
@@ -1758,6 +1816,7 @@ export type HomepageInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>
   right_highlight?: InputMaybe<Scalars['ID']>
   title?: InputMaybe<Scalars['String']>
+  topServices?: InputMaybe<ComponentSectionsTopServicesInput>
 }
 
 export type HomepageRelationResponseCollection = {
@@ -4919,6 +4978,23 @@ export type HomepageEntityFragment = {
         } | null
       } | null
     } | null> | null
+    topServices?: {
+      __typename?: 'ComponentSectionsTopServices'
+      title: string
+      services: Array<{
+        __typename?: 'ComponentBlocksTopServicesItem'
+        label: string
+        icon: Enum_Componentblockstopservicesitem_Icon
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; slug?: string | null } | null
+          } | null
+        } | null
+      } | null>
+    } | null
     inba?: {
       __typename?: 'ComponentBlocksInBa'
       title?: string | null
@@ -5099,6 +5175,23 @@ export type HomepageQuery = {
             } | null
           } | null
         } | null> | null
+        topServices?: {
+          __typename?: 'ComponentSectionsTopServices'
+          title: string
+          services: Array<{
+            __typename?: 'ComponentBlocksTopServicesItem'
+            label: string
+            icon: Enum_Componentblockstopservicesitem_Icon
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: { __typename?: 'Page'; slug?: string | null } | null
+              } | null
+            } | null
+          } | null>
+        } | null
         inba?: {
           __typename?: 'ComponentBlocksInBa'
           title?: string | null
@@ -5189,6 +5282,20 @@ export type NewsCardBlogFragment = {
           } | null
         } | null
       } | null
+    } | null
+  } | null
+}
+
+export type TopServicesItemFragment = {
+  __typename?: 'ComponentBlocksTopServicesItem'
+  label: string
+  icon: Enum_Componentblockstopservicesitem_Icon
+  page?: {
+    __typename?: 'PageEntityResponse'
+    data?: {
+      __typename?: 'PageEntity'
+      id?: string | null
+      attributes?: { __typename?: 'Page'; slug?: string | null } | null
     } | null
   } | null
 }
@@ -9288,6 +9395,20 @@ export const HomepageHeaderFragmentDoc = gql`
     }
   }
 `
+export const TopServicesItemFragmentDoc = gql`
+  fragment TopServicesItem on ComponentBlocksTopServicesItem {
+    label
+    icon
+    page {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on HomepageEntity {
     id
@@ -9334,6 +9455,12 @@ export const HomepageEntityFragmentDoc = gql`
         }
         variant
       }
+      topServices {
+        title
+        services {
+          ...TopServicesItem
+        }
+      }
       inba {
         title
         content
@@ -9359,6 +9486,7 @@ export const HomepageEntityFragmentDoc = gql`
   }
   ${NewsCardBlogFragmentDoc}
   ${HomepageHeaderFragmentDoc}
+  ${TopServicesItemFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
