@@ -8,15 +8,7 @@ type TimelineSectionProps = {
 }
 
 const TimelineSection = ({ section }: TimelineSectionProps) => {
-  return (
-    <Timeline
-      timelineItems={
-        section?.timelineItems?.filter(isDefined).map((timelineItem) => {
-          return { title: timelineItem.timelineItemTitle, ...timelineItem }
-        }) ?? []
-      }
-    />
-  )
+  return <Timeline timelineItems={section?.timelineItems?.filter(isDefined) ?? []} />
 }
 
 export default TimelineSection

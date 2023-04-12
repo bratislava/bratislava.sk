@@ -5878,8 +5878,8 @@ export type PageBySlugQuery = {
               timelineItems?: Array<{
                 __typename?: 'ComponentBlocksTimelineItem'
                 id: string
+                title?: string | null
                 content?: string | null
-                timelineItemTitle?: string | null
               } | null> | null
             }
           | {
@@ -6704,8 +6704,8 @@ export type PageEntityFragment = {
           timelineItems?: Array<{
             __typename?: 'ComponentBlocksTimelineItem'
             id: string
+            title?: string | null
             content?: string | null
-            timelineItemTitle?: string | null
           } | null> | null
         }
       | {
@@ -7121,8 +7121,8 @@ export type GalleryItemBlockFragment = {
 export type TimelineItemBlockFragment = {
   __typename?: 'ComponentBlocksTimelineItem'
   id: string
+  title?: string | null
   content?: string | null
-  timelineItemTitle?: string | null
 }
 
 export type GallerySectionFragment = {
@@ -7156,8 +7156,8 @@ export type TimelineSectionFragment = {
   timelineItems?: Array<{
     __typename?: 'ComponentBlocksTimelineItem'
     id: string
+    title?: string | null
     content?: string | null
-    timelineItemTitle?: string | null
   } | null> | null
 }
 
@@ -8131,8 +8131,8 @@ type Sections_ComponentSectionsTimeline_Fragment = {
   timelineItems?: Array<{
     __typename?: 'ComponentBlocksTimelineItem'
     id: string
+    title?: string | null
     content?: string | null
-    timelineItemTitle?: string | null
   } | null> | null
 }
 
@@ -9082,7 +9082,7 @@ export const BannerSectionFragmentDoc = gql`
 export const TimelineItemBlockFragmentDoc = gql`
   fragment TimelineItemBlock on ComponentBlocksTimelineItem {
     id
-    timelineItemTitle: title
+    title
     content
   }
 `

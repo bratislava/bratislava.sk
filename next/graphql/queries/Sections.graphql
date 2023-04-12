@@ -95,7 +95,7 @@ fragment GalleryItemBlock on ComponentBlocksGalleryItem {
 
 fragment TimelineItemBlock on ComponentBlocksTimelineItem {
   id
-  timelineItemTitle: title
+  title
   content
 }
 
