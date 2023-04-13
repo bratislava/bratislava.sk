@@ -37,10 +37,10 @@ module.exports = {
       sans: ['var(--inter-font)', ...defaultTheme.fontFamily.sans],
     },
 
+    // TODO replace values by rem units
     fontSize: {
+      // TODO text-btn mixes with tmp-[color] classes
       btn: ['16px', '24px'],
-      'btn-base': ['16px', '24px'],
-      'btn-lg': ['20px', '32px'],
 
       'p-xs': ['12px', '18px'],
       'p-sm': ['14px', '20px'],

@@ -35,12 +35,12 @@ export const HorizontalCard = ({
               sizes={imageSizes}
             />
           </div>
-          <div className="flex-0 max-w relative hidden w-56 bg-cover lg:block">
+          <div className="relative hidden w-56 bg-cover lg:block">
             <Image src={imageSrc} alt="" fill className="object-cover" sizes={imageSizes} />
           </div>
         </>
       )}
-      <div className="text-p1 flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left">
+      <div className="text-p1 h-full flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left">
         {children}
       </div>
     </Panel>

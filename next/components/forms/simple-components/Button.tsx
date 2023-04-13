@@ -84,12 +84,13 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isIconButton = Boolean(icon)
 
     /* TODO
-     *   - examine why `text-btn` is sometimes ignored
+     *   - examine why `text-btn` interferes with `text-[color]` and therefore is sometimes ignored
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */
     const styles = twMerge(
-      'inline-flex h-auto items-center justify-center rounded-lg text-btn font-semibold outline-offset-4',
+      // TODO text-btn interferes with text-[color], as quickfix we set size and color here by arbitrary values
+      'inline-flex h-auto items-center justify-center rounded-lg text-[1rem] font-semibold leading-[1.5rem] outline-offset-4',
       cx({
         // NOTE: there are some style overrides for link variants below in "twMerge"
 

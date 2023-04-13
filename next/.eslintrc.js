@@ -31,10 +31,7 @@ module.exports = {
     /** Doesn't work without changing our ts config */
     'unicorn/prefer-spread': 'off',
     /** Use official sorting */
-    'tailwindcss/classnames-order': [
-      'warn',
-      { callees: ['classnames', 'cx', 'twMerge'], officialSorting: true },
-    ],
+    'tailwindcss/classnames-order': ['warn', { callees: ['classnames', 'cx', 'twMerge'] }],
     /** We specify default props in props decomposition */
     'react/require-default-props': 'off',
     /** Next Link does not need href in <a> tag */

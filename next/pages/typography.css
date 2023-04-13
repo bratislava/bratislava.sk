@@ -2,7 +2,6 @@
 
 @layer components {
   /* Figma template variables - start */
-
   /* headings */
   .text-h1-lg {
     @apply text-h-xl font-semibold lg:text-h-3xl;
@@ -36,12 +35,15 @@
   .text-p1 {
     @apply text-p-base font-normal lg:text-p-md;
   }
+
   .text-p1-medium {
     @apply text-p-base font-medium lg:text-p-md;
   }
+
   .text-p1-semibold {
     @apply text-p-base font-semibold lg:text-p-md;
   }
+
   .text-p1-underline {
     @apply text-p-base font-medium underline lg:text-p-md;
   }
@@ -49,12 +51,15 @@
   .text-p2 {
     @apply text-p-base font-normal;
   }
+
   .text-p2-medium {
     @apply text-p-base font-medium;
   }
+
   .text-p2-semibold {
     @apply text-p-base font-semibold;
   }
+
   .text-p2-underline {
     @apply text-p-base font-normal underline;
   }
@@ -62,38 +67,34 @@
   .text-p3 {
     @apply text-p-sm font-normal;
   }
+
   .text-p3-medium {
     @apply text-p-sm font-medium;
   }
+
   .text-p3-semibold {
     @apply text-p-sm font-semibold;
   }
+
   .text-p3-underline {
     @apply text-p-sm font-normal underline;
   }
 
-  /* buttons */
-  .text-btn-lg {
-    @apply text-btn-lg font-semibold;
-  }
-  .text-btn {
-    @apply text-btn-base font-semibold;
-  }
-
   /* Figma template variables - end */
-
   /* Other variables - all of these to be removed as the redesign progresses - start */
-
   /* heading */
   .text-h1-lg-light {
     @apply text-h-xl font-light lg:text-h-3xl;
   }
+
   .text-h1-lg-normal {
     @apply text-h-xl font-normal lg:text-h-3xl;
   }
+
   .text-h1-lg-medium {
     @apply text-h-xl font-medium lg:text-h-3xl;
   }
+
   .text-h1-lg-bold {
     @apply text-h-xl font-bold lg:text-h-3xl;
   }
@@ -101,12 +102,15 @@
   .text-h1-light {
     @apply text-h-lg font-light lg:text-h-2xl;
   }
+
   .text-h1-normal {
     @apply text-h-lg font-normal lg:text-h-2xl;
   }
+
   .text-h1-medium {
     @apply text-h-lg font-medium lg:text-h-2xl;
   }
+
   .text-h1-bold {
     @apply text-h-lg font-bold lg:text-h-2xl;
   }
@@ -114,12 +118,15 @@
   .text-h2-light {
     @apply text-h-md font-light lg:text-h-xl;
   }
+
   .text-h2-normal {
     @apply text-h-md font-normal lg:text-h-xl;
   }
+
   .text-h2-medium {
     @apply text-h-md font-medium lg:text-h-xl;
   }
+
   .text-h2-bold {
     @apply text-h-md font-bold lg:text-h-xl;
   }
@@ -127,12 +134,15 @@
   .text-h3-light {
     @apply text-h-base font-light lg:text-h-lg;
   }
+
   .text-h3-normal {
     @apply text-h-base font-normal lg:text-h-lg;
   }
+
   .text-h3-medium {
     @apply text-h-base font-medium lg:text-h-lg;
   }
+
   .text-h3-bold {
     @apply text-h-base font-bold lg:text-h-lg;
   }
@@ -140,12 +150,15 @@
   .text-h4-light {
     @apply text-h-sm font-light lg:text-h-md;
   }
+
   .text-h4-normal {
     @apply text-h-sm font-normal lg:text-h-md;
   }
+
   .text-h4-medium {
     @apply text-h-sm font-medium lg:text-h-md;
   }
+
   .text-h4-bold {
     @apply text-h-sm font-bold lg:text-h-md;
   }
@@ -153,12 +166,15 @@
   .text-h5-light {
     @apply text-h-xs font-light lg:text-h-base;
   }
+
   .text-h5-normal {
     @apply text-h-xs font-normal lg:text-h-base;
   }
+
   .text-h5-medium {
     @apply text-h-xs font-medium lg:text-h-base;
   }
+
   .text-h5-bold {
     @apply text-h-xs font-bold lg:text-h-base;
   }
@@ -166,12 +182,15 @@
   .text-h6-light {
     @apply text-h-xs font-light;
   }
+
   .text-h6-normal {
     @apply text-h-xs font-normal;
   }
+
   .text-h6-medium {
     @apply text-h-xs font-medium;
   }
+
   .text-h6-bold {
     @apply text-h-xs font-bold;
   }
@@ -210,7 +229,7 @@
   }
 
   .text-p3-medium {
-    @apply font-medium text-p-sm;
+    @apply text-p-sm font-medium;
   }
 
   .text-p3-bold {
@@ -224,58 +243,40 @@
   .text-p4-light {
     @apply text-p-xs font-light;
   }
+
   .text-p4 {
     @apply text-p-xs font-normal;
   }
+
   .text-p4-medium {
     @apply text-p-xs font-medium;
   }
+
   .text-p4-semibold {
     @apply text-p-xs font-semibold;
   }
+
   .text-p4-bold {
     @apply text-p-xs font-bold;
-  }
-  /* buttons */
-  .text-btn-lg-light {
-    @apply text-btn-lg font-light;
-  }
-  .text-btn-lg-normal {
-    @apply text-btn-lg font-normal;
-  }
-  .text-btn-lg-medium {
-    @apply text-btn-lg font-medium;
-  }
-  .text-btn-lg-bold {
-    @apply text-btn-lg font-bold;
-  }
-
-  .text-btn-light {
-    @apply text-btn-base font-light;
-  }
-  .text-btn-normal {
-    @apply text-btn-base font-normal;
-  }
-  .text-btn-medium {
-    @apply text-btn-base font-medium;
-  }
-  .text-btn-bold {
-    @apply text-btn-base font-bold;
   }
 
   /* other */
   .text-20-light {
     @apply text-p-md font-light;
   }
+
   .text-20 {
     @apply text-p-md font-normal;
   }
+
   .text-20-medium {
     @apply text-p-md font-medium;
   }
+
   .text-20-semibold {
     @apply text-p-md font-semibold;
   }
+
   .text-20-bold {
     @apply text-p-md font-bold;
   }
@@ -283,15 +284,19 @@
   .text-16-light {
     @apply text-p-base font-light;
   }
+
   .text-16 {
     @apply text-p-base font-normal;
   }
+
   .text-16-medium {
     @apply text-p-base font-medium;
   }
+
   .text-16-semibold {
     @apply text-p-base font-semibold;
   }
+
   .text-16-bold {
     @apply text-p-base font-bold;
   }
