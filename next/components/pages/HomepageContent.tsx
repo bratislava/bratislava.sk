@@ -2,7 +2,7 @@ import BlogCardsPrimatorHomepageSection from '@components/molecules/sections/hom
 import BookmarksHomepageSection from '@components/molecules/sections/homepage/BookmarksHomepageSection'
 import GooutEventsHomepageSection from '@components/molecules/sections/homepage/GooutEventsHomepageSection'
 import InbaHomepageSection from '@components/molecules/sections/homepage/InbaHomepageSection'
-import TopNineHomepageSection from '@components/molecules/sections/homepage/TopNineHomepageSection'
+import TopServicesHomepageSection from '@components/molecules/sections/homepage/TopServicesHomepageSection'
 import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
 import { SectionContainer, Waves } from '@components/ui'
 import { useTranslation } from 'next-i18next'
@@ -34,7 +34,7 @@ const HomepageContent = () => {
 
       <Waves waveColor="rgb(var(--color-category-200))" wavePosition="top" />
 
-      <TopNineHomepageSection />
+      <TopServicesHomepageSection />
 
       <Waves waveColor="rgb(var(--color-category-200))" wavePosition="bottom" />
 

@@ -4,19 +4,15 @@ import { getIcon, MenuIcon } from './IconService'
 
 interface Props {
   iconName: MenuIcon | undefined
+  className?: string
 }
 
-export const Icon: FC<Props> = ({ iconName }) => {
+export const Icon: FC<Props> = ({ iconName, className }) => {
   const iconCollection = useMemo(() => getIcon(iconName), [iconName])
 
-  if (!iconCollection) {
+  if (!iconCollection?.size_48) {
     return null
   }
 
-  return (
-    // TODO revisit icon sizing
-    <div className="scale-[83.33%]">
-      <iconCollection.size_48 width={48} height={48} />
-    </div>
-  )
+  return <iconCollection.size_48 className={className} />
 }
