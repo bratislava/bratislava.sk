@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_timeline_items",
+  "info": {
+    "displayName": "Timeline item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

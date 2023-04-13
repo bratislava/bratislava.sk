@@ -25,6 +25,7 @@ import OfficialBoardSection from './sections/general/OfficialBoardSection/Offici
 import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
 import ProsAndConsSection from './sections/general/ProsAndConsSection'
 import TextWithImageSection from './sections/general/TextWithImageSection'
+import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
 
@@ -95,6 +96,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsBanner':
       return <BannerSection section={section} />
+
+    case 'ComponentSectionsTimeline':
+      return <TimelineSection section={section} />
 
     default:
       return null

@@ -60,8 +60,8 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
           )
         },
         // TODO caption from Strapi, use <figure> and <figcaption> tags, see Marianum project
-        img: ({ node, src, alt, title }) => (
-          <div className="flex justify-center">{src && <img src={src} alt={alt} />}</div>
+        img: ({ node, src, alt, title, ...props }) => (
+          <div className="flex justify-center">{src && <img src={src} alt={alt} {...props} />}</div>
         ),
         blockquote: ({ node, ...props }) => (
           <blockquote className="my-4 border-l-4 border-category-600 py-2 pl-8" {...props} />
