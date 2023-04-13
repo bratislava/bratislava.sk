@@ -1,5 +1,5 @@
-import { ArrowRightIcon } from '@assets/images'
-import MLink, { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
+import Button from '@components/forms/simple-components/Button'
+import { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
@@ -31,29 +31,31 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
           className="flex"
           items={posts.map((blogCard, index) => (
             <HorizontalCard
-              className="h-full min-h-[350px] py-16"
+              // 324px includes padding
+              className="flex h-full min-h-[324px] flex-col py-16"
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               imageSrc={blogCard.imageSrc ?? ''}
               imageSizes={generateImageSizes({ lg: '224px', default: '50vw' })}
             >
-              <h3 className="text-h5 lg:text-p1 line-clamp-3 text-left font-semibold">
-                {blogCard.title}
-              </h3>
-              <MLink
-                className="mt-3 flex space-x-2 text-[16px] font-semibold text-gray-700 underline hover:text-category-600"
-                href={blogCard?.url || ''}
-                target={blogCard?.url?.startsWith('http') ? '_blank' : undefined}
-                stretched
-                plausibleProps={
-                  blogCard.plausibleId
-                    ? ({ id: blogCard.plausibleId } as LinkPlausibleProps)
-                    : undefined
-                }
-              >
-                {t('readMore')}
-                <ArrowRightIcon />
-              </MLink>
+              <div className="flex h-full flex-col justify-between">
+                <h3 className="text-h5 lg:text-p1 line-clamp-3 grow text-left font-semibold">
+                  {blogCard.title}
+                </h3>
+                <Button
+                  variant="black-link"
+                  href={blogCard?.url || '#'}
+                  target={blogCard?.url?.startsWith('http') ? '_blank' : undefined}
+                  stretched
+                  plausibleProps={
+                    blogCard.plausibleId
+                      ? ({ id: blogCard.plausibleId } as LinkPlausibleProps)
+                      : undefined
+                  }
+                >
+                  {t('readMore')}
+                </Button>
+              </div>
             </HorizontalCard>
           ))}
         />
