@@ -140,7 +140,8 @@
         "sections.official-board",
         "sections.pros-and-cons-section",
         "sections.comparison-section",
-        "sections.banner"
+        "sections.banner",
+        "sections.timeline"
       ]
     },
     "parentPage": {

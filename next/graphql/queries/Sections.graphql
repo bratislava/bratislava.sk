@@ -93,11 +93,23 @@ fragment GalleryItemBlock on ComponentBlocksGalleryItem {
   }
 }
 
+fragment TimelineItemBlock on ComponentBlocksTimelineItem {
+  id
+  title
+  content
+}
+
 fragment GallerySection on ComponentSectionsGallery {
   title
   subtitle
   galleryItems {
     ...GalleryItemBlock
+  }
+}
+
+fragment TimelineSection on ComponentSectionsTimeline {
+  timelineItems {
+    ...TimelineItemBlock
   }
 }
 
@@ -502,6 +514,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsBanner {
     ...BannerSection
+  }
+
+  ... on ComponentSectionsTimeline {
+    ...TimelineSection
   }
 }
 

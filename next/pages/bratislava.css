@@ -205,3 +205,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 /* styles for chatbot END*/
+
+/* styles for vertical timeline START */
+@media (max-width: 1170px) {
+  .vertical-timeline-element.vertical-timeline-element--with-image {
+    margin-top: 300px;
+  }
+}
+/* styles for vertical timeline END */
