@@ -90,6 +90,19 @@ import Trolleybus64pxIcon from '@assets/images/menu-icons/64px/trolleybus_64px.s
 import Phone48pxIcon from '@assets/images/phone-medium.svg'
 import TouristSign48pxIcon from '@assets/images/Tourist-icon.svg'
 
+import {
+  TopServices_BratislavskeKontoIcon,
+  TopServices_DaneAPoplatkyIcon,
+  TopServices_KampaneAProjektyIcon,
+  TopServices_NahlaseniePodnetov,
+  TopServices_OrganizacnaStruktura,
+  TopServices_ParkyAZahrady,
+  TopServices_PracovnePrilezitosti,
+  TopServices_PrenajomPriestorov,
+  TopServices_TuristomVHlavnomMeste,
+  TopServices_UradneHodinyIcon,
+} from '../../../assets/icons-top-services'
+
 export type MenuIcon = string
 
 // The type of any icon is fine.
@@ -152,10 +165,22 @@ export const ICON_URL_MAP: IconUrlMap = {
     sluzby_06: Stage48pxIcon,
     koncepcia_06: Culture48pxIcon,
     komunity_06: Community48pxIcon,
+    // Mobile menu links
     esluzby: EServices48pxIcon,
     kontakt: Phone48pxIcon,
     ukraina: SocialService48pxStrokeIcon,
     som_turista: TouristSign48pxIcon,
+    // Top Services
+    bratislavske_konto: TopServices_BratislavskeKontoIcon,
+    dane_a_poplatky: TopServices_DaneAPoplatkyIcon,
+    verejne_priestory: TopServices_ParkyAZahrady,
+    nahlasenie_podnetov: TopServices_NahlaseniePodnetov,
+    kampane_a_projekty: TopServices_KampaneAProjektyIcon,
+    organizacna_struktura: TopServices_OrganizacnaStruktura,
+    uradne_hodiny: TopServices_UradneHodinyIcon,
+    pracovne_prilezitosti: TopServices_PracovnePrilezitosti,
+    turistom_v_hlavnom_meste: TopServices_TuristomVHlavnomMeste,
+    prenajom_priestorov: TopServices_PrenajomPriestorov,
   },
   size_64: {
     mesto_01: Castle64pxStrokeIcon,
@@ -210,8 +235,8 @@ export function getIcon(iconName?: MenuIcon): undefined | IconCollection {
   if (!iconName) {
     return undefined
   }
-  const iconSize64 = ICON_URL_MAP.size_64?.[iconName]
-  const iconSize48 = ICON_URL_MAP.size_48?.[iconName]
+  const iconSize64 = ICON_URL_MAP.size_64[iconName]
+  const iconSize48 = ICON_URL_MAP.size_48[iconName]
 
   return {
     size_64: iconSize64,

@@ -1,0 +1,29 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_234_8928)">
+    <path d="M25.2002 31.7738H8.43018V16.9763H32.7752V20.5913" stroke="currentColor" stroke-width="1.5"
+          stroke-miterlimit="10"/>
+    <path
+      d="M33.9895 34.4885H36.127C37.0918 34.4945 38.0151 34.8819 38.6952 35.5662C39.3753 36.2506 39.757 37.1762 39.757 38.141V40.346H21.187V38.141C21.187 37.1723 21.5718 36.2433 22.2568 35.5583C22.9418 34.8733 23.8708 34.4885 24.8395 34.4885H27.007"
+      stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path
+      d="M31.0872 20.2839H29.8722C28.5341 20.3135 27.2623 20.8725 26.3357 21.8384C25.4092 22.8043 24.9035 24.0982 24.9297 25.4364V29.9814C24.9128 30.7271 25.0429 31.4687 25.3127 32.164C25.5825 32.8594 25.9866 33.4947 26.502 34.0338C27.0174 34.5729 27.634 35.0051 28.3165 35.3058C28.999 35.6066 29.7341 35.7699 30.4797 35.7864V35.7864C31.9797 35.7452 33.4025 35.1126 34.4379 34.0265C35.4734 32.9405 36.0374 31.4892 36.0072 29.9889V25.4364C36.0314 24.1026 35.5282 22.8131 34.6069 21.8483C33.6856 20.8835 32.4207 20.3213 31.0872 20.2839V20.2839Z"
+      stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M22.3423 10.4138L32.9698 16.8188" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M8.24268 16.8188L18.8702 10.4138" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path
+      d="M20.6024 11.8541C21.7622 11.8541 22.7024 10.9139 22.7024 9.75405C22.7024 8.59425 21.7622 7.65405 20.6024 7.65405C19.4426 7.65405 18.5024 8.59425 18.5024 9.75405C18.5024 10.9139 19.4426 11.8541 20.6024 11.8541Z"
+      stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M15.4354 20.6589H11.6929" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M21.952 20.6589H18.2095" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M15.4354 24.3787H11.6929" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M21.952 24.3787H18.2095" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M15.4354 28.0916H11.6929" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M21.952 28.0916H18.2095" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+    <path d="M24.9302 25.2263H36.0377" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_234_8928">
+      <rect width="48" height="48" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>

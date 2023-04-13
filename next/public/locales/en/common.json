@@ -147,5 +147,8 @@
   "Breadcrumbs": {
     "homepage": "Homepage",
     "back": "Back"
+  },
+  "TopServices": {
+    "learnMore": "Read more"
   }
 }
