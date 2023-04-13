@@ -1,6 +1,6 @@
 import { TopServicesItemFragment } from '@bratislava/strapi-sdk-homepage'
 import { HorizontalScrollWrapper } from '@components/ui'
-import { chunkifyArray } from '@utils/chunkifyArray'
+import chunk from 'lodash/chunk'
 
 import { TopServicesItem } from '../TopServicesItem/TopServicesItem'
 
@@ -12,10 +12,10 @@ export const TopServices = ({ items }: IProps) => (
   <>
     <HorizontalScrollWrapper className="-mx-8 gap-x-2 px-8 md:hidden">
       {items?.length
-        ? chunkifyArray(items, 3)?.map((chunk, chunkIndex) => (
+        ? chunk(items, 3)?.map((itemsChunk, chunkIndex) => (
             // eslint-disable-next-line react/no-array-index-key
             <div key={chunkIndex} className="flex w-full shrink-0 flex-col gap-2">
-              {chunk.map((item, itemIndex) => (
+              {itemsChunk.map((item, itemIndex) => (
                 // eslint-disable-next-line react/no-array-index-key
                 <TopServicesItem key={itemIndex} topServicesItem={item} />
               ))}
