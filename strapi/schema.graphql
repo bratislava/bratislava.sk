@@ -720,24 +720,21 @@ input ComponentBlocksSubpageInput {
 type ComponentBlocksTopServicesItem {
   icon: ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON!
   id: ID!
-  label: String!
-  page: PageEntityResponse
+  link: ComponentBlocksCommonLink!
 }
 
 input ComponentBlocksTopServicesItemFiltersInput {
   and: [ComponentBlocksTopServicesItemFiltersInput]
   icon: StringFilterInput
-  label: StringFilterInput
+  link: ComponentBlocksCommonLinkFiltersInput
   not: ComponentBlocksTopServicesItemFiltersInput
   or: [ComponentBlocksTopServicesItemFiltersInput]
-  page: PageFiltersInput
 }
 
 input ComponentBlocksTopServicesItemInput {
   icon: ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON
   id: ID
-  label: String
-  page: ID
+  link: ComponentBlocksCommonLinkInput
 }
 
 type ComponentBlocksVideo {
@@ -1730,7 +1727,8 @@ enum ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON {
   nahlasenie_podnetov
   organizacna_struktura
   pracovne_prilezitosti
-  som_turista
+  prenajom_priestorov
+  turistom_v_hlavnom_meste
   uradne_hodiny
   verejne_priestory
 }

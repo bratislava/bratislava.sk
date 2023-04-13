@@ -6,15 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "label": {
-      "type": "string",
-      "required": true
-    },
-    "page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
-    },
     "icon": {
       "type": "enumeration",
       "enum": [
@@ -23,13 +14,20 @@
         "verejne_priestory",
         "nahlasenie_podnetov",
         "kampane_a_projekty",
-        "som_turista",
+        "turistom_v_hlavnom_meste",
         "organizacna_struktura",
         "uradne_hodiny",
-        "pracovne_prilezitosti"
+        "pracovne_prilezitosti",
+        "prenajom_priestorov"
       ],
       "required": true,
       "default": "bratislavske_konto"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "blocks.common-link"
     }
   }
 }

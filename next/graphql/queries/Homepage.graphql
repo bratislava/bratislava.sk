@@ -135,14 +135,8 @@ fragment NewsCardBlog on BlogPostEntityResponse {
 }
 
 fragment TopServicesItem on ComponentBlocksTopServicesItem {
-  label
   icon
-  page {
-    data {
-      id
-      attributes {
-        slug
-      }
-    }
+  link {
+    ...CommonLink
   }
 }

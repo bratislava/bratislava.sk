@@ -652,24 +652,21 @@ export type ComponentBlocksTopServicesItem = {
   __typename?: 'ComponentBlocksTopServicesItem'
   icon: Enum_Componentblockstopservicesitem_Icon
   id: Scalars['ID']
-  label: Scalars['String']
-  page?: Maybe<PageEntityResponse>
+  link: ComponentBlocksCommonLink
 }
 
 export type ComponentBlocksTopServicesItemFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksTopServicesItemFiltersInput>>>
   icon?: InputMaybe<StringFilterInput>
-  label?: InputMaybe<StringFilterInput>
+  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentBlocksTopServicesItemFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksTopServicesItemFiltersInput>>>
-  page?: InputMaybe<PageFiltersInput>
 }
 
 export type ComponentBlocksTopServicesItemInput = {
   icon?: InputMaybe<Enum_Componentblockstopservicesitem_Icon>
   id?: InputMaybe<Scalars['ID']>
-  label?: InputMaybe<Scalars['String']>
-  page?: InputMaybe<Scalars['ID']>
+  link?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
 export type ComponentBlocksVideo = {
@@ -1324,7 +1321,8 @@ export enum Enum_Componentblockstopservicesitem_Icon {
   NahlaseniePodnetov = 'nahlasenie_podnetov',
   OrganizacnaStruktura = 'organizacna_struktura',
   PracovnePrilezitosti = 'pracovne_prilezitosti',
-  SomTurista = 'som_turista',
+  PrenajomPriestorov = 'prenajom_priestorov',
+  TuristomVHlavnomMeste = 'turistom_v_hlavnom_meste',
   UradneHodiny = 'uradne_hodiny',
   VerejnePriestory = 'verejne_priestory',
 }
@@ -4983,16 +4981,37 @@ export type HomepageEntityFragment = {
       title: string
       services: Array<{
         __typename?: 'ComponentBlocksTopServicesItem'
-        label: string
         icon: Enum_Componentblockstopservicesitem_Icon
-        page?: {
-          __typename?: 'PageEntityResponse'
-          data?: {
-            __typename?: 'PageEntity'
-            id?: string | null
-            attributes?: { __typename?: 'Page'; slug?: string | null } | null
+        link: {
+          __typename?: 'ComponentBlocksCommonLink'
+          label: string
+          url?: string | null
+          plausibleId?: string | null
+          page?: {
+            __typename?: 'PageEntityResponse'
+            data?: {
+              __typename?: 'PageEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'Page'
+                title?: string | null
+                slug?: string | null
+              } | null
+            } | null
           } | null
-        } | null
+          blogPost?: {
+            __typename?: 'BlogPostEntityResponse'
+            data?: {
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                title?: string | null
+                slug?: string | null
+              } | null
+            } | null
+          } | null
+        }
       } | null>
     } | null
     inba?: {
@@ -5180,16 +5199,37 @@ export type HomepageQuery = {
           title: string
           services: Array<{
             __typename?: 'ComponentBlocksTopServicesItem'
-            label: string
             icon: Enum_Componentblockstopservicesitem_Icon
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                id?: string | null
-                attributes?: { __typename?: 'Page'; slug?: string | null } | null
+            link: {
+              __typename?: 'ComponentBlocksCommonLink'
+              label: string
+              url?: string | null
+              plausibleId?: string | null
+              page?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Page'
+                    title?: string | null
+                    slug?: string | null
+                  } | null
+                } | null
               } | null
-            } | null
+              blogPost?: {
+                __typename?: 'BlogPostEntityResponse'
+                data?: {
+                  __typename?: 'BlogPostEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'BlogPost'
+                    title?: string | null
+                    slug?: string | null
+                  } | null
+                } | null
+              } | null
+            }
           } | null>
         } | null
         inba?: {
@@ -5288,16 +5328,29 @@ export type NewsCardBlogFragment = {
 
 export type TopServicesItemFragment = {
   __typename?: 'ComponentBlocksTopServicesItem'
-  label: string
   icon: Enum_Componentblockstopservicesitem_Icon
-  page?: {
-    __typename?: 'PageEntityResponse'
-    data?: {
-      __typename?: 'PageEntity'
-      id?: string | null
-      attributes?: { __typename?: 'Page'; slug?: string | null } | null
+  link: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
     } | null
-  } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  }
 }
 
 export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
@@ -9397,17 +9450,12 @@ export const HomepageHeaderFragmentDoc = gql`
 `
 export const TopServicesItemFragmentDoc = gql`
   fragment TopServicesItem on ComponentBlocksTopServicesItem {
-    label
     icon
-    page {
-      data {
-        id
-        attributes {
-          slug
-        }
-      }
+    link {
+      ...CommonLink
     }
   }
+  ${CommonLinkFragmentDoc}
 `
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on HomepageEntity {
