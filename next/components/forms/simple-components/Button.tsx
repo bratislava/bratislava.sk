@@ -207,6 +207,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       'h-6 w-6': size === 'lg',
     })
 
+    // FIXME: this didn't work for MLink on Firefox, quickfix by duplicating this code fragment directly
     const ButtonChildren = () => {
       return (
         <>
@@ -230,7 +231,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           plausibleProps={rest.plausibleProps}
           {...buttonPropsFixed}
         >
-          <ButtonChildren />
+          {startIcon ? <span className={startIconStyles}>{startIcon}</span> : null}
+          {icon ? <span className={iconStyles}>{icon}</span> : children}
+          {endIcon || isLinkVariant ? (
+            <span className={endIconStyles}>{endIcon ?? <ArrowRightIcon />}</span>
+          ) : null}
         </MLink>
       )
     }
@@ -242,7 +247,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         className={twMerge(styles, 'flex items-center justify-center')}
         {...buttonProps}
       >
-        <ButtonChildren />
+        {startIcon ? <span className={startIconStyles}>{startIcon}</span> : null}
+        {icon ? <span className={iconStyles}>{icon}</span> : children}
+        {endIcon || isLinkVariant ? (
+          <span className={endIconStyles}>{endIcon ?? <ArrowRightIcon />}</span>
+        ) : null}
       </button>
     )
   },
