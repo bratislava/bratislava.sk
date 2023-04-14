@@ -104,7 +104,7 @@ export const BlogSearchCard = ({
 
         <div className="flex flex-col gap-y-4 p-8">
           {tagTitle && <div className="w-fit rounded-lg bg-category-200 px-3 py-1">{tagTitle}</div>}
-          <div className="text-20 line-clamp-2 font-semibold">{title} </div>
+          <div className="text-large line-clamp-2 font-semibold">{title} </div>
           <div>{date}</div>
         </div>
       </Panel>
@@ -132,7 +132,7 @@ export const BlogSearchCard = ({
                 <div className="w-fit rounded-lg px-3 py-1 text-category-200">{tagTitle}</div>
               )}
               <div className="flex">
-                <div className="text-20 line-clamp-2 font-semibold text-white">{title}</div>
+                <div className="text-large line-clamp-2 font-semibold text-white">{title}</div>
                 <VerticalCardButton
                   className="invisible shrink-0 group-hover:lg:visible"
                   size="medium"

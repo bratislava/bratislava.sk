@@ -77,10 +77,10 @@ export const NewsCard = ({
         {tag?.data?.attributes?.title && <Tag title={tag?.data?.attributes?.title} />}
         <h3 className="text-h4 line-clamp-3">{title}</h3>
         {/* TODO this will rarely matter (only once we start showing previews of unpublished posts to admins), but below we should prefer createdAt before updatedAt */}
-        <span className="text-p4 font-medium">
+        <span className="text-small font-medium">
           {getNumericLocalDate(date_added || publishedAt || updatedAt)}
         </span>
-        <p className="text-p2 line-clamp-4">{excerpt}</p>
+        <p className="text-default line-clamp-4">{excerpt}</p>
         <div>
           {slug && (
             <UILink
@@ -89,7 +89,7 @@ export const NewsCard = ({
               )}
               href={`/blog/${slug}`}
             >
-              <span className="text-p2 font-semibold">{readMoreText}</span>
+              <span className="text-default font-semibold">{readMoreText}</span>
               <span className="group-hover:hidden">
                 <ChevronRight />
               </span>

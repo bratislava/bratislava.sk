@@ -53,7 +53,7 @@ export const ImageCard = ({
         {/* Bottom Component */}
         <p
           className={cx(
-            'text-p2 md:text-p1 absolute bottom-3 w-56 text-center md:w-64 lg:bottom-6',
+            'text-default md:text-large-respo absolute bottom-3 w-56 text-center md:w-64 lg:bottom-6',
             {
               'right-0': imagePosition === 'right',
             },
@@ -64,7 +64,7 @@ export const ImageCard = ({
         {/* Side Component */}
         <div
           className={cx(
-            'text-p2 md:text-p1 absolute top-6 flex w-20 flex-col gap-y-5 text-center lg:w-24',
+            'text-default md:text-large-respo absolute top-6 flex w-20 flex-col gap-y-5 text-center lg:w-24',
             {
               'right-0': imagePosition === 'left',
             },

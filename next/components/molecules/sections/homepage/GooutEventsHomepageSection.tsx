@@ -49,7 +49,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
               }}
               title={ev.title}
               description={
-                <div className="text-p1 flex flex-col p-6 font-semibold text-category-600">
+                <div className="text-large-respo flex flex-col p-6 font-semibold text-category-600">
                   <span>{ev.venue}</span>
                   <span>{ev.schedule}</span>
                 </div>
@@ -66,7 +66,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className=" text-p1 box-border rounded-lg border-2 border-category-600 px-6 py-3.5"
+          className=" text-large-respo box-border rounded-lg border-2 border-category-600 px-6 py-3.5"
         >
           {linkTitle}
         </Link>

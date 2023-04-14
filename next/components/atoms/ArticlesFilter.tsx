@@ -46,7 +46,7 @@ export const ArticlesFilter = ({
             ? null
             : BratislavaCategories.map((tab) => (
                 <TabBarTab
-                  className="text-p1 mr-8"
+                  className="text-large-respo mr-8"
                   key={tab}
                   tab={{
                     title: tab,
@@ -72,7 +72,7 @@ export const ArticlesFilter = ({
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="text-p2 mb-3 mr-3 font-medium"
+              className="text-default mb-3 mr-3 font-medium"
             />
           ))}
       </div>

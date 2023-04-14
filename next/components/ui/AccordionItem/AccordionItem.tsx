@@ -67,7 +67,7 @@ export const AccordionItem = ({
         </button>
       </div>
       <div
-        className={cx('text-fontBlack text-p2 overflow-hidden', {
+        className={cx('text-fontBlack text-default overflow-hidden', {
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',

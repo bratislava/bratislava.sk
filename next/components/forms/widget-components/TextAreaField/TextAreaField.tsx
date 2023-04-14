@@ -67,7 +67,7 @@ const TextAreaField = ({
     ref,
   )
   const containerStyle = cx(
-    'text-p3 sm:text-16 flex resize-none flex-col overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-0 caret-gray-700 focus:border-gray-700 focus:outline-none',
+    'text-default-respo flex resize-none flex-col overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-0 caret-gray-700 focus:border-gray-700 focus:outline-none',
     className,
     {
       'hover:border-gray-400': !disabled && !isFocused,

@@ -19,55 +19,63 @@
 
 @layer components {
   .text-h1-lg {
-    @apply text-h-xl lg:text-h-3xl;
+    @apply text-size-h1-hero-r lg:text-size-h1-hero;
   }
 
   .text-h1 {
-    @apply text-h-lg lg:text-h-2xl;
+    @apply text-size-h1-r lg:text-size-h1;
   }
 
   .text-h2 {
-    @apply text-h-md lg:text-h-xl;
+    @apply text-size-h2-r lg:text-size-h2;
   }
 
   .text-h3 {
-    @apply text-h-base lg:text-h-lg;
+    @apply text-size-h3-r lg:text-size-h3;
   }
 
   .text-h4 {
-    @apply text-h-sm lg:text-h-md;
+    @apply text-size-h4-r lg:text-size-h4;
   }
 
   .text-h5 {
-    @apply text-h-xs lg:text-h-base;
+    @apply text-size-h5-r lg:text-size-h5;
   }
 
   .text-h6 {
-    @apply text-h-xs;
+    @apply text-size-h6 lg:text-size-h6-r;
   }
 
-  .text-p1 {
-    @apply text-p-base lg:text-p-md;
+  .text-large-respo {
+    @apply text-size-p-default lg:text-size-p-large;
   }
 
-  .text-p2 {
-    @apply text-p-base;
+  .text-default-respo {
+    @apply text-size-p-small lg:text-size-p-default;
   }
 
-  .text-p3 {
-    @apply text-p-sm;
+  .text-large {
+    @apply text-size-p-large;
   }
 
-  .text-p4 {
-    @apply text-p-xs;
+  .text-default {
+    @apply text-size-p-default;
   }
 
-  .text-20 {
-    @apply text-p-md;
+  .text-small {
+    @apply text-size-p-small;
   }
 
-  .text-16 {
-    @apply text-p-base;
+  .text-large {
+    @apply text-size-p-large;
+  }
+
+  .text-default {
+    @apply text-size-p-default;
+  }
+
+  .text-button {
+    @apply text-size-button-default lg:text-size-button-large;
   }
 
   .modal-close-mobile-right {

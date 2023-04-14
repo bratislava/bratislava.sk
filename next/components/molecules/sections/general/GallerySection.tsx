@@ -74,13 +74,15 @@ const GallerySection = ({
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                           image.imgTitle && (
                             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                            <div className="text-p1 font-semibold text-white">{image.imgTitle}</div>
+                            <div className="text-large-respo font-semibold text-white">
+                              {image.imgTitle}
+                            </div>
                           )
                         }
                         {
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                           image.imgSubtitle && (
-                            <div className="text-p2 italic text-white opacity-75">
+                            <div className="text-default italic text-white opacity-75">
                               {image.imgSubtitle}
                             </div>
                           )
@@ -166,13 +168,15 @@ const GallerySection = ({
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     currentItem.imgTitle && (
                       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                      <div className="text-p1 font-semibold text-white">{currentItem.imgTitle}</div>
+                      <div className="text-large-respo font-semibold text-white">
+                        {currentItem.imgTitle}
+                      </div>
                     )
                   }
                   {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     currentItem.imgSubtitle && (
-                      <div className="text-p3 font-bold italic text-white opacity-75">
+                      <div className="text-small font-bold italic text-white opacity-75">
                         {
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                           currentItem.imgSubtitle
@@ -183,18 +187,18 @@ const GallerySection = ({
                   {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     currentItem.imgSubtext && (
-                      <div className="text-p2 mt-6 hidden text-white md:block">
+                      <div className="text-default mt-6 hidden text-white md:block">
                         {currentItem.imgSubtext}
                       </div>
                     )
                   }
                   {currentItem.imgSubtext && showModalDetails && (
-                    <div className="text-p2 mt-6 block text-white md:hidden">
+                    <div className="text-default mt-6 block text-white md:hidden">
                       {currentItem.imgSubtext}
                     </div>
                   )}
                   {currentItem.imgSubtext && (
-                    <div className="text-p3 m-auto mb-4 mt-5 block font-semibold text-white md:hidden">
+                    <div className="text-small m-auto mb-4 mt-5 block font-semibold text-white md:hidden">
                       <button
                         type="button"
                         className="underline underline-offset-2 "

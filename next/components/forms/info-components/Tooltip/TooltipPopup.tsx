@@ -47,7 +47,7 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
     <div className={tooltipPopupStyle}>
       <div
         className={cx(
-          'text-p3 sm:text-p2 z-20 m-0 flex w-fit min-w-[118px] max-w-[230px] flex-row justify-center break-words rounded border-0 bg-gray-700 px-3 py-2 text-white sm:max-w-[280px] sm:px-4 sm:py-3',
+          'text-small sm:text-default z-20 m-0 flex w-fit min-w-[118px] max-w-[230px] flex-row justify-center break-words rounded border-0 bg-gray-700 px-3 py-2 text-white sm:max-w-[280px] sm:px-4 sm:py-3',
           className,
         )}
       >

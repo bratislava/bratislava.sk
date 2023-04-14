@@ -45,11 +45,11 @@ export const SubHeader = ({
       )}
       {href && buttonTitle && (
         <Link href={href}>
-          <Button className="text-20 h-12 p-2">{buttonTitle}</Button>
+          <Button className="text-large h-12 p-2">{buttonTitle}</Button>
         </Link>
       )}
       {subHref && subButtonTitle && (
-        <Link href={subHref} className="text-20 h-12 p-2" variant="plain">
+        <Link href={subHref} className="text-large h-12 p-2" variant="plain">
           <div
             className="flex items-center gap-x-6 font-semibold"
             onMouseEnter={() => setSignInHover(true)}

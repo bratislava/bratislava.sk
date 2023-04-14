@@ -51,7 +51,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           <PageIcon />
         </div>
         <div className="flex w-full items-center justify-between px-14">
-          <span className="text-p1 font-semibold">{title}</span>
+          <span className="text-large-respo font-semibold">{title}</span>
           <ChevronRight />
         </div>
       </Panel>
@@ -65,7 +65,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           </div>
         </div>
 
-        <span className="text-p2 font-medium">{title}</span>
+        <span className="text-default font-medium">{title}</span>
       </Panel>
     </UILink>
   )

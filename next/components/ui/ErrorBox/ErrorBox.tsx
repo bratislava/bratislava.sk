@@ -13,7 +13,7 @@ export const ErrorBox = ({ className, error }: ErrorBoxProps) => {
     <div
       className={cx(className, 'rounded-r-lg border border-l-8 border-error bg-white px-6 py-4')}
     >
-      <p className="text-p2 text-error">{message}</p>
+      <p className="text-default text-error">{message}</p>
     </div>
   )
 }

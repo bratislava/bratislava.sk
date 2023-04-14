@@ -19,8 +19,8 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, shorthand, onRemove
   const classStyles = cx(
     'tag align-items-center min-w-14 inline-block h-5 gap-2.5 px-2 text-center',
     {
-      'text-16': size === 'large',
-      'text-p3': size === 'small' || !size,
+      'text-default': size === 'large',
+      'text-small': size === 'small' || !size,
       'py-0.5': size === 'large',
       'rounded-lg': size === 'large',
       rounded: size === 'small' || !size,
@@ -34,8 +34,8 @@ const Tag: FC<TagProps> = ({ text, removable, size, branded, shorthand, onRemove
   )
 
   const iconClassStyles = cx('tag mx-1 inline-block cursor-pointer self-center', {
-    'text-16 w-3 h-3': size === 'large',
-    'text-p3 w-2.5 h-2.5': size === 'small' || !size,
+    'text-default w-3 h-3': size === 'large',
+    'text-small w-2.5 h-2.5': size === 'small' || !size,
   })
 
   const MAX_TEXT_SIZE = 10

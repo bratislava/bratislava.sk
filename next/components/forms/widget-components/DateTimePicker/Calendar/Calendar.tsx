@@ -43,7 +43,7 @@ const Calendar = ({ onSubmit, onReset, ...rest }: CalendarBase) => {
         >
           <ChevronIconLeft />
         </button>
-        <span className="text-p2 font-semibold">
+        <span className="text-default font-semibold">
           {title.charAt(0).toUpperCase() + title.slice(1)}
         </span>
         <button

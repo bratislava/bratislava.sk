@@ -29,7 +29,7 @@ export const TabBarTab = ({
         'font-normal text-font': !isActive,
         'font-semibold': isActive,
         'text-h4': size === 'normal',
-        'text-p2': size === 'small',
+        'text-default': size === 'small',
       })}
       onClick={handleSelect ? () => handleSelect(tab.title) : onClick}
     >

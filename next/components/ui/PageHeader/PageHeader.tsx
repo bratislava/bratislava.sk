@@ -55,7 +55,7 @@ export const PageHeader = ({
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div className="mb-6 mt-3 flex flex-col gap-y-4 lg:mb-10 lg:mt-6 lg:gap-y-6">
             {tag && (
-              <span className="text-p2 inline-block self-start rounded bg-category-700 px-3 py-1 font-medium text-white">
+              <span className="text-default inline-block self-start rounded bg-category-700 px-3 py-1 font-medium text-white">
                 {tag}
               </span>
             )}

@@ -42,7 +42,7 @@ const EventCard = ({
           >
             {headline}
           </MLink>
-          <div className="text-p3 flex flex-col items-start font-medium">
+          <div className="text-small flex flex-col items-start font-medium">
             <span className="line-clamp-1">{address}</span>
             <span className="line-clamp-1">{dateTime}</span>
           </div>

@@ -42,7 +42,9 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
         h6: ({ node, level, ...props }) => (
           <h6 className="text-h5 scroll-mt-24 lg:scroll-mt-48" {...props} />
         ),
-        p: ({ node, ...props }) => <p className="text-p1 whitespace-pre-wrap" {...props} />,
+        p: ({ node, ...props }) => (
+          <p className="text-large-respo whitespace-pre-wrap" {...props} />
+        ),
         strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
         a: ({ node, href, title, children, ...props }) => {
           const isExternal = href?.startsWith('http')
@@ -78,7 +80,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
         },
         li: ({ node, index, ordered, children, ...props }) =>
           ordered ? (
-            <li className="text-p1 relative mt-8 lg:mt-10" {...props}>
+            <li className="text-large-respo relative mt-8 lg:mt-10" {...props}>
               {/* FIXME text-white on yellow and orange color */}
               <span
                 className={cx(
@@ -90,7 +92,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
               {children}
             </li>
           ) : (
-            <li className="text-p1 relative not-first:mt-4" {...props}>
+            <li className="text-large-respo relative not-first:mt-4" {...props}>
               <span
                 className={cx(
                   'absolute left-[-22px] mt-[7px] h-2.5 w-2.5 shrink-0 grow-0 rounded-full border-3 border-category-600 bg-category-600 lg:-left-8 lg:mt-2 lg:h-3 lg:w-3',
@@ -115,7 +117,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
         tbody: ({ node, children }) => <tbody>{children}</tbody>,
         thead: () => <thead />,
         td: ({ node, children }) => (
-          <td className="first:text-p1 text-p1 table-row font-semibold md:table-cell">
+          <td className="first:text-large-respo text-large-respo table-row font-semibold md:table-cell">
             <div className="mb-1 flex items-center px-4 text-left md:min-h-[96px] lg:mb-0">
               {children}
             </div>

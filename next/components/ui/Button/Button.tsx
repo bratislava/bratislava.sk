@@ -65,7 +65,7 @@ export const Button = ({
         'border-gray-500 bg-transparent text-gray-500':
           shape !== 'none' && variant === 'transparent-gray',
         'bg-category-800 text-font': shape !== 'none' && variant === 'tertiary-dark-text',
-        'text-20 border-2 border-category-600 bg-transparent text-font hover:text-category-600':
+        'text-large border-2 border-category-600 bg-transparent text-font hover:text-category-600':
           shape !== 'none' && variant === 'transparent',
 
         // transparent should be replaced with transparent-black

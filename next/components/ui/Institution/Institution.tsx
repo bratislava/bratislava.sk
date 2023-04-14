@@ -28,7 +28,7 @@ const InstitutionCard = ({
       )}
     >
       <div className="flex flex-col">
-        <h4 className="text-20 leading-[26px]">{title}</h4>
+        <h4 className="text-large leading-[26px]">{title}</h4>
         {subtitle && <Markdown content={subtitle} />}
         {content && (
           <div className="mt-6 flex w-full flex-row flex-wrap">
@@ -58,7 +58,7 @@ export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionPr
         <UILink href={url}>
           <InstitutionCard {...rest} className="group hover:border-category-600">
             {urlLabel && (
-              <div className="text-p2 mt-6 flex items-center font-semibold underline">
+              <div className="text-default mt-6 flex items-center font-semibold underline">
                 <span className="mr-5">{urlLabel}</span>
                 <ChevronRight className="block h-3 group-hover:hidden" />
                 <ArrowRight className="hidden h-3 group-hover:block" />

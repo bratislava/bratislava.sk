@@ -32,13 +32,13 @@ export const DownloadCard = ({
         )}
       >
         <div className=" flex items-end space-x-5 lg:space-x-8">
-          <span className="text-p2 max-h-24 w-[250px] overflow-hidden">{title}</span>
+          <span className="text-default max-h-24 w-[250px] overflow-hidden">{title}</span>
           <span className="flex h-[88px] items-end justify-end text-category-600">
             <Download />
           </span>
         </div>
 
-        <div className="text-p3 mt-5 flex justify-between opacity-50">
+        <div className="text-small mt-5 flex justify-between opacity-50">
           <span>{uploadDate}</span>
           <span>{downloadDetail}</span>
         </div>

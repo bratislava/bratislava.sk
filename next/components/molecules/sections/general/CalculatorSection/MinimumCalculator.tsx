@@ -46,7 +46,7 @@ const InputField = ({
     React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
     'onChange'
   >) => (
-  <label className="text-20 flex flex-col items-center text-center" htmlFor={id}>
+  <label className="text-large flex flex-col items-center text-center" htmlFor={id}>
     {label}
     <div className="relative mt-3 flex items-center">
       <Button
@@ -64,7 +64,7 @@ const InputField = ({
             onChange(parseInt(e.target.value, 10))
           }
         }}
-        className="number-control-none text-20 box-border w-64 rounded-lg px-10 py-4 text-center"
+        className="number-control-none text-large box-border w-64 rounded-lg px-10 py-4 text-center"
         required
         type="number"
         min={0}
@@ -111,9 +111,9 @@ const MinimumCalculator = ({
   return (
     <div className={cx('bg-category-200 text-center text-font', className)}>
       <p className="text-h3">{t('title')}</p>
-      <p className="text-20 m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
+      <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
       <form
-        className="text-20 mt-10 flex flex-col items-center gap-y-8 font-medium"
+        className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
         onSubmit={handleSubmit}
       >
         <InputField
@@ -161,7 +161,7 @@ const MinimumCalculator = ({
         />
 
         <Button
-          className="text-20 mt-6 bg-category-600 px-5 py-3 font-semibold text-font lg:px-6 lg:py-4"
+          className="text-large mt-6 bg-category-600 px-5 py-3 font-semibold text-font lg:px-6 lg:py-4"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"
@@ -173,7 +173,7 @@ const MinimumCalculator = ({
       {submitted && (
         <div className="mt-14">
           <p className="text-h4">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
-          <p className="text-p1 m-auto mt-5 w-9/12">
+          <p className="text-large-respo m-auto mt-5 w-9/12">
             {canAcommodate
               ? t('answerDescriptionYes')
               : t('answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}

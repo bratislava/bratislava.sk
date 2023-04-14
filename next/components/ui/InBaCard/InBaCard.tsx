@@ -62,12 +62,12 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
         )}
       >
         <h2 className="text-h4">{title}</h2>
-        <span className="text-p2">{content}</span>
+        <span className="text-default">{content}</span>
         <UILink
           className="group flex h-6 cursor-pointer items-center space-x-5 underline after:absolute after:inset-0 hover:text-main-600"
           href={link ?? '#'}
         >
-          <span className="text-p2 font-semibold">{t('readMore')}</span>
+          <span className="text-default font-semibold">{t('readMore')}</span>
           <span className="group-hover:hidden">
             <ChevronRight />
           </span>

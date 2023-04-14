@@ -39,7 +39,9 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
               imageSizes={generateImageSizes({ lg: '224px', default: '50vw' })}
             >
               <div className="flex h-full flex-col justify-between">
-                <h3 className="text-h5 lg:text-p1 line-clamp-3 grow text-left">{blogCard.title}</h3>
+                <h3 className="text-h5 lg:text-large-respo line-clamp-3 grow text-left">
+                  {blogCard.title}
+                </h3>
                 <Button
                   variant="black-link"
                   href={blogCard?.url || '#'}

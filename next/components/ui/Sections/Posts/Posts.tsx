@@ -163,7 +163,7 @@ export const Posts = ({
             <UILink href={t('allNewsLink')}>
               <Button
                 variant="transparent"
-                className="text-20 mt-0 px-6 py-2 font-medium shadow-none"
+                className="text-large mt-0 px-6 py-2 font-medium shadow-none"
                 icon={<ChevronRight />}
                 hoverIcon={<ArrowRight />}
               >
@@ -191,7 +191,7 @@ export const Posts = ({
             className="flex justify-center"
           >
             <Button
-              className="text-20 px-6 py-3 font-medium shadow-none hover:text-category-600"
+              className="text-large px-6 py-3 font-medium shadow-none hover:text-category-600"
               variant="transparent"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
@@ -222,7 +222,7 @@ export const Posts = ({
                   {/* TODO: change this button to custom button */}
                   <Button
                     variant="transparent"
-                    className="text-20 mt-0 px-6 py-2 font-medium shadow-none"
+                    className="text-large mt-0 px-6 py-2 font-medium shadow-none"
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
@@ -298,7 +298,7 @@ export const Posts = ({
                   {/* TODO: change this button to custom button */}
                   <Button
                     variant="transparent"
-                    className="text-20 mt-0 px-6 py-2 font-medium shadow-none"
+                    className="text-large mt-0 px-6 py-2 font-medium shadow-none"
                     icon={<ChevronRight />}
                     hoverIcon={<ArrowRight />}
                   >
@@ -342,7 +342,7 @@ export const Posts = ({
           <UILink href={t('allNewsLink')}>
             <Button
               variant="transparent"
-              className="text-20 mt-9 px-6 py-2 font-medium shadow-none"
+              className="text-large mt-9 px-6 py-2 font-medium shadow-none"
               icon={<ChevronRight />}
               hoverIcon={<ArrowRight />}
             >

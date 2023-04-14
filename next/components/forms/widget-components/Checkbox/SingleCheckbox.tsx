@@ -73,7 +73,7 @@ const SingleCheckBox = ({
     },
   )
 
-  const labelStyle = cx('text-16 flex select-none gap-3 text-gray-700', {
+  const labelStyle = cx('text-default flex select-none gap-3 text-gray-700', {
     'w-full': fullWidth,
   })
 
@@ -117,7 +117,7 @@ const SingleCheckBox = ({
         <div className={labelStyle}>
           <div
             className={cx('relative', {
-              'after:text-16 font-semibold after:absolute after:bottom-0.5 after:ml-0.5 after:text-main-700 after:content-["*"]':
+              'after:text-default-respo font-semibold after:absolute after:bottom-0.5 after:ml-0.5 after:text-main-700 after:content-["*"]':
                 required,
             })}
           >

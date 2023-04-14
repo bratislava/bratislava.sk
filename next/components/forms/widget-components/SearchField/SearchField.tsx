@@ -57,7 +57,7 @@ const SearchField = ({
   )
 
   const style = cx(
-    'sm:text-16 text-p3 w-full rounded-lg border-2 border-gray-200 px-12 py-2 caret-gray-700 focus:border-gray-700 focus:placeholder-transparent focus:outline-none sm:px-[52px] sm:py-2.5',
+    'text-default-respo w-full rounded-lg border-2 border-gray-200 px-12 py-2 caret-gray-700 focus:border-gray-700 focus:placeholder-transparent focus:outline-none sm:px-[52px] sm:py-2.5',
     className,
     {
       // hover

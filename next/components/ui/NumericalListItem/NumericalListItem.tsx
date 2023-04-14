@@ -59,7 +59,7 @@ export const NumericalListItem = ({
         </div>
         <div
           className={cx(
-            'text-p1 pl-5 lg:pl-11',
+            'text-large-respo pl-5 lg:pl-11',
             {
               'pt-0': variant === 'combined',
             },

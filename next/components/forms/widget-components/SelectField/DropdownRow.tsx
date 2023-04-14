@@ -39,8 +39,8 @@ const DropdownRow = ({
     },
   )
 
-  const optionClassName = cx('dropdown text-16 w-full', {
-    'text-16 font-semibold': isBold,
+  const optionClassName = cx('dropdown text-default w-full', {
+    'text-default font-semibold': isBold,
   })
 
   // EVENT HANDLERS
@@ -80,7 +80,7 @@ const DropdownRow = ({
             <div className="dropdown absolute inset-0 z-10" />
           </div>
         </div>
-        {option.description && <p className="dropdown text-p3">{option.description}</p>}
+        {option.description && <p className="dropdown text-small">{option.description}</p>}
       </div>
       {divider && <div className="dropdown border-form-input-default border-b-2" />}
     </div>

@@ -32,7 +32,7 @@ export const BlogCard = ({ className, image, mobileImage, content, href }: BlogC
           {image && <img src={image} alt="blog" width="225" height="200" />}
         </div>
         <div className="mx-6 flex h-48 w-52 items-center justify-center text-center xl:px-12 xl:text-left">
-          <span className="text-p1 font-medium">{content}</span>
+          <span className="text-large-respo font-medium">{content}</span>
         </div>
       </Card>
     </div>

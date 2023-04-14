@@ -28,8 +28,8 @@ const FieldHeader = (props: FieldHeaderProps) => {
   } = props
 
   // STYLES
-  const labelStyle = cx('text-p3 sm:text-16 relative font-semibold text-gray-800', {
-    'after:text-16 font-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+  const labelStyle = cx('text-default-respo relative font-semibold text-gray-800', {
+    'after:text-default-respo font-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
       required,
   })
 
@@ -49,7 +49,7 @@ const FieldHeader = (props: FieldHeaderProps) => {
           </label>
           {
             /* OPTIONAL */ !required && explicitOptional === 'left' && (
-              <p className="text-p3 sm:text-16 ml-2 flex items-center">(optional)</p>
+              <p className="text-small sm:text-default ml-2 flex items-center">(optional)</p>
             )
           }
           <div className="flex-column flex items-center">
@@ -70,14 +70,14 @@ const FieldHeader = (props: FieldHeaderProps) => {
         </div>
         {
           /* OPTIONAL */ !required && explicitOptional === 'right' && (
-            <p className="text-p3 sm:text-16 ml-2 flex items-center">(optional)</p>
+            <p className="text-small sm:text-default ml-2 flex items-center">(optional)</p>
           )
         }
       </div>
       {
         /* DESCRIPTION */
         helptext && (
-          <div {...descriptionProps} className="text-p3 sm:text-16 mb-1 text-gray-700">
+          <div {...descriptionProps} className="text-default-respo mb-1 text-gray-700">
             {helptextHandler()}
           </div>
         )

@@ -15,7 +15,7 @@ interface IProps {
 
 export const TooltipTarget = ({ variant }: IProps) => (
   <div
-    className={cx('text-p2 relative inline-block h-6 w-6 rounded-3xl', {
+    className={cx('text-default relative inline-block h-6 w-6 rounded-3xl', {
       'bg-category-200 text-category-600': variant === 'default',
       'bg-category-600 text-white': variant === 'primary',
     })}
@@ -37,7 +37,7 @@ export const Tooltip = ({
       <div
         className={cx(
           className,
-          'text-p3 pointer-events-none absolute right-full z-10 mr-2 rounded-lg p-2 opacity-0 group-hover:opacity-100 md:bottom-full md:right-auto md:mb-2 md:mr-0',
+          'text-small pointer-events-none absolute right-full z-10 mr-2 rounded-lg p-2 opacity-0 group-hover:opacity-100 md:bottom-full md:right-auto md:mb-2 md:mr-0',
           {
             'w-56': size === 'small',
             'w-80': size === 'large',

@@ -42,7 +42,7 @@ const ModalHeader = ({
   const headerStyle = cx('flex justify-between gap-6 bg-white px-6 py-4 sm:rounded-t-lg', {
     'border-b-solid border-b-form-input-default border-b-2': divider,
   })
-  const headlineStyle = cx('text-20 h-7 font-semibold', {
+  const headlineStyle = cx('text-large h-7 font-semibold', {
     'text-center ml-1': currentScreenIndex > 0,
   })
 
@@ -98,7 +98,7 @@ const ModalFooter = ({
   return (
     <div className={footerStyle}>
       <button
-        className="text-p2 flex cursor-pointer items-center font-semibold"
+        className="text-default flex cursor-pointer items-center font-semibold"
         onClick={onClose}
         type="button"
       >

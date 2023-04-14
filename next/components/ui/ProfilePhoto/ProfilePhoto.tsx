@@ -18,7 +18,7 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
 
   return (
     <div className={cx(className, 'flex flex-col md:flex-row md:gap-x-8')}>
-      <Field id="photo" title="Fotografia" className="text-20 max-w-md">
+      <Field id="photo" title="Fotografia" className="text-large max-w-md">
         {profileImage ? (
           <img className="h-48 w-40" alt="Not found" src={URL.createObjectURL(profileImage)} />
         ) : (
@@ -34,11 +34,11 @@ export const ProfilePhoto = ({ className, profileImage, setProfileImage }: Profi
         )}
       </Field>
       <Field className="flex max-w-xs flex-col gap-4 md:mt-16 md:pt-1">
-        <p className="text-p2">
+        <p className="text-default">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu maecenas risus facilisis
           viverra quis dui nisl.
         </p>
-        <p className="text-p2">{t('photoMaxSize')}</p>
+        <p className="text-default">{t('photoMaxSize')}</p>
         <Button
           type="button"
           className="relative w-44 lg:w-56"

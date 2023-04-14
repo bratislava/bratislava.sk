@@ -49,7 +49,7 @@ export const NewsLetter = ({
         {/* Content */}
         <div className="mb-8 mt-32 p-6 lg:my-0 lg:p-12">
           <h2 className="text-h4">Newsletter</h2>
-          <div className="text-p2 mt-5">{newsLetterContent}</div>
+          <div className="text-default mt-5">{newsLetterContent}</div>
           <div className="mt-8 w-full pr-1 lg:w-80 lg:pr-3">
             <input
               type="email"
@@ -66,7 +66,7 @@ export const NewsLetter = ({
               content={
                 <p
                   className={cx(
-                    'text-p2 -mt-1',
+                    'text-default -mt-1',
                     { 'text-font': isChecked },
                     { 'text-font/50': !isChecked },
                   )}

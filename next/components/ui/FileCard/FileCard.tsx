@@ -25,11 +25,11 @@ export const FileCard = ({
           <Download className="text-red-brick" />
         </div>
 
-        <div className="text-p2 my-5 md:mb-5 md:mt-0">
+        <div className="text-default my-5 md:mb-5 md:mt-0">
           {fileTitle}
           <div
             className={cx(
-              'text-p3 mt-4 flex flex-col space-y-1 opacity-50',
+              'text-small mt-4 flex flex-col space-y-1 opacity-50',
               'md:flex-row md:justify-between md:space-y-0',
             )}
           >

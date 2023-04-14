@@ -70,7 +70,7 @@ const Radio = ({
         {variant === 'card' ? (
           <div className="flex w-full flex-col items-start gap-3 p-0 ">
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className="text-16 break-words text-gray-700">
+            <div className="text-default break-words text-gray-700">
               {rest.children}
               {tooltip && (
                 <div className="relative mt-8 flex flex-row">
@@ -82,7 +82,9 @@ const Radio = ({
         ) : (
           <div className={cx('flex items-center gap-3', {})}>
             <input id={rest.value} {...inputProps} ref={ref} className={inputStyle} />
-            <div className={cx('text-16 flex break-words text-gray-700', {})}>{rest.children}</div>
+            <div className={cx('text-default flex break-words text-gray-700', {})}>
+              {rest.children}
+            </div>
           </div>
         )}
         {tooltip && variant !== 'card' && <Tooltip text={tooltip} />}

@@ -64,7 +64,7 @@ export const DateSelect = ({
 
         {/* Mobile */}
         {showMobileDate && (
-          <div className="text-20 pointer-events-none absolute w-full text-center sm:hidden">
+          <div className="text-large pointer-events-none absolute w-full text-center sm:hidden">
             {`${selectedDate.dayOfMonth()}.`} {t(MONTHS[selectedDate.monthValue() - 1])}
           </div>
         )}

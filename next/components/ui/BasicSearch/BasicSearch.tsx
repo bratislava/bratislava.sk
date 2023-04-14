@@ -43,7 +43,7 @@ export const BasicSearch = ({
         <input
           id="name"
           type="text"
-          className="text-p2 h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:w-[574px]"
+          className="text-default h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:w-[574px]"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}

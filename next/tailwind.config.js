@@ -7,6 +7,9 @@ const customVariants = plugin(function ({ addVariant }) {
   addVariant('not-first', '&:not(:first-child)')
 })
 
+const toRem = (px) => `${px / 16}rem`
+const getFontSize = (size) => [toRem(size[0]), toRem(size[1])]
+
 module.exports = {
   content: [
     join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'),
@@ -37,24 +40,30 @@ module.exports = {
       sans: ['var(--inter-font)', ...defaultTheme.fontFamily.sans],
     },
 
-    // TODO replace values by rem units
+    // DO NOT USE these classes directly, use classes from globals.css
     fontSize: {
-      // TODO text-btn mixes with tmp-[color] classes
-      btn: ['16px', '24px'],
+      // TODO text-button mixes with tmp-[color] classes
+      'size-button-large': getFontSize([20, 32]),
+      'size-button-default': getFontSize([16, 24]),
 
-      'p-xs': ['12px', '18px'],
-      'p-sm': ['14px', '20px'],
-      'p-base': ['16px', '24px'],
-      'p-md': ['20px', '28px'],
+      'size-p-large': getFontSize([20, 28]),
+      'size-p-default': getFontSize([16, 24]),
+      'size-p-small': getFontSize([14, 20]),
 
-      'h-xs': ['16px', '24px'],
-      'h-sm': ['18px', '26px'],
-      'h-base': ['20px', '28px'],
-      'h-md': ['24px', '32px'],
-      'h-lg': ['28px', '36px'],
-      'h-xl': ['32px', '40px'],
-      'h-2xl': ['40px', '48px'],
-      'h-3xl': ['56px', '64px'],
+      'size-h6': getFontSize([16, 24]),
+      'size-h6-r': getFontSize([16, 24]),
+      'size-h5': getFontSize([20, 28]),
+      'size-h5-r': getFontSize([16, 24]),
+      'size-h4': getFontSize([24, 32]),
+      'size-h4-r': getFontSize([18, 26]),
+      'size-h3': getFontSize([28, 36]),
+      'size-h3-r': getFontSize([20, 28]),
+      'size-h2': getFontSize([32, 40]),
+      'size-h2-r': getFontSize([24, 32]),
+      'size-h1': getFontSize([40, 48]),
+      'size-h1-r': getFontSize([28, 36]),
+      'size-h1-hero': getFontSize([56, 64]),
+      'size-h1-hero-r': getFontSize([32, 40]),
     },
     extend: {
       rotate: {
