@@ -1,6 +1,5 @@
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { ArrowRightIcon } from '@assets/images'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
@@ -19,8 +18,6 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
   const { t } = useTranslation('common')
 
   const [frontImage, rearImage] = images || []
-
-  const { Link: UILink } = useUIContext()
 
   return (
     <Panel
@@ -63,18 +60,15 @@ export const InBaCard = ({ className, images, title, content, link }: InBaCardPr
       >
         <h2 className="text-h4">{title}</h2>
         <span className="text-default">{content}</span>
-        <UILink
-          className="group flex h-6 cursor-pointer items-center space-x-5 underline after:absolute after:inset-0 hover:text-main-600"
+        <Button
+          variant="black-link"
+          className="group"
           href={link ?? '#'}
+          stretched
+          endIcon={<ArrowRightIcon />}
         >
-          <span className="text-default font-semibold">{t('readMore')}</span>
-          <span className="group-hover:hidden">
-            <ChevronRight />
-          </span>
-          <span className="hidden group-hover:block">
-            <ArrowRight />
-          </span>
-        </UILink>
+          {t('readMore')}
+        </Button>
       </div>
     </Panel>
   )

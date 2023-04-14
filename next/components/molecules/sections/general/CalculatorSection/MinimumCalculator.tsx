@@ -1,7 +1,8 @@
-import { ArrowRight, ChevronRight } from '@assets/images'
+import { ArrowRightIcon } from '@assets/images'
 import MinusIcon from '@assets/images/minus.svg'
 import PlusIcon from '@assets/images/plus.svg'
-import { Button, Input } from '@bratislava/ui-bratislava'
+import { Input } from '@bratislava/ui-bratislava'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React, { FormEvent } from 'react'
@@ -50,9 +51,9 @@ const InputField = ({
     {label}
     <div className="relative mt-3 flex items-center">
       <Button
-        className="absolute left-4 flex h-8 w-8 cursor-pointer items-center justify-center shadow-none"
-        onClick={() => onAddSub(value - 1)}
-        variant="full-transparent"
+        className="absolute left-2 h-10 w-10 p-0"
+        onPress={() => onAddSub(value - 1)}
+        variant="black-outline"
       >
         <MinusIcon />
       </Button>
@@ -71,9 +72,9 @@ const InputField = ({
         {...rest}
       />
       <Button
-        className="absolute right-4 flex h-8 w-8 cursor-pointer items-center justify-center shadow-none"
-        onClick={() => onAddSub(value + 1)}
-        variant="full-transparent"
+        className="absolute right-2 h-10 w-10 p-0"
+        onPress={() => onAddSub(value + 1)}
+        variant="black-outline"
       >
         <PlusIcon />
       </Button>
@@ -110,7 +111,7 @@ const MinimumCalculator = ({
 
   return (
     <div className={cx('bg-category-200 text-center text-font', className)}>
-      <p className="text-h3">{t('title')}</p>
+      <h2 className="text-h3">{t('title')}</h2>
       <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
       <form
         className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
@@ -160,12 +161,7 @@ const MinimumCalculator = ({
           }}
         />
 
-        <Button
-          className="text-large mt-6 bg-category-600 px-5 py-3 font-semibold text-font lg:px-6 lg:py-4"
-          icon={<ChevronRight />}
-          hoverIcon={<ArrowRight />}
-          type="submit"
-        >
+        <Button variant="category" type="submit" endIcon={<ArrowRightIcon />}>
           {t('buttonText')}
         </Button>
       </form>

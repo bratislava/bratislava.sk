@@ -67,7 +67,6 @@ export const Carousel = ({
     totalItems >= visibleItems ? (
       <VerticalCardButton
         onClick={isLeft ? previousImage : nextImage}
-        size="large"
         className={cx('absolute bottom-0 top-0 z-10 my-auto', {
           'left-0 -translate-x-1/2 transform': isLeft,
           'right-0 translate-x-1/2 transform': !isLeft,

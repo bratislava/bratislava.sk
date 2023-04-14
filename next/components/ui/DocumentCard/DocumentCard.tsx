@@ -1,11 +1,10 @@
 // @ts-strict-ignore
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronRight from '@assets/images/chevron-right-small.svg'
+import { ArrowRightIcon } from '@assets/images'
+import Button from '@components/forms/simple-components/Button'
 import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
 import { useState } from 'react'
 import useSWR from 'swr'
 
-import { Button } from '../Button/Button'
 import { FileList, TFile, TFileSection } from '../FileList/FileList'
 import { Modal } from '../Modal/Modal'
 import { Panel } from '../Panel/Panel'
@@ -68,21 +67,13 @@ export const DocumentCard = ({
           <div>{content}</div>
           <div className="flex flex-col items-start gap-x-6">
             <Button
-              variant="secondary-dark-text"
-              className="hover:color-white text-default w-fit px-6 py-4 font-medium shadow-none hover:bg-category-600 hover:text-white"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-              onClick={() => setIsOpen(true)}
+              variant="category-outline"
+              endIcon={<ArrowRightIcon />}
+              onPress={() => setIsOpen(true)}
             >
               {viewButtonText}
             </Button>
-            {/* <Button
-              variant="full-transparent"
-              className="px-6 py-4 text-default font-medium shadow-none"
-              icon={<Download />}
-            >
-              {downloadButtonText}
-            </Button> */}
+            {/* TODO  download button */}
           </div>
         </div>
         {/* <div className="flex lg:hidden h-[86px] -mt-[86px]" /> */}

@@ -1,7 +1,7 @@
 // @ts-strict-ignore
-import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import Button from '@components/forms/simple-components/Button'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { getNumericLocalDate } from '@utils/local-date'
 import cx from 'classnames'
@@ -83,20 +83,9 @@ export const NewsCard = ({
         <p className="text-default line-clamp-4">{excerpt}</p>
         <div>
           {slug && (
-            <UILink
-              className={cx(
-                'group mt-3 flex h-6 cursor-pointer items-center space-x-5 text-gray-700 underline after:absolute after:inset-0 hover:text-category-600',
-              )}
-              href={`/blog/${slug}`}
-            >
-              <span className="text-default font-semibold">{readMoreText}</span>
-              <span className="group-hover:hidden">
-                <ChevronRight />
-              </span>
-              <span className="hidden group-hover:block">
-                <ArrowRight />
-              </span>
-            </UILink>
+            <Button href={`/blog/${slug}`} variant="black-link" className="group mt-3">
+              {readMoreText}
+            </Button>
           )}
         </div>
       </div>

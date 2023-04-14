@@ -1,5 +1,5 @@
-import { ArrowRight, ChevronRight } from '@assets/images'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { ArrowRightIcon } from '@assets/images'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 
@@ -20,13 +20,12 @@ export const PrimatorCard = ({
   href,
   smImageAlign = 'left',
 }: PrimatorCardProps) => {
-  const { Link: UILink } = useUIContext()
   const { t } = useTranslation()
   const smRight = smImageAlign === 'right'
   return (
     <div
       className={cx(
-        'relative mt-24 w-full lg:mt-28',
+        'relative mt-16 w-full lg:mt-28',
         {
           'mt-12 lg:mt-28': smRight,
         },
@@ -39,24 +38,13 @@ export const PrimatorCard = ({
         )}
       >
         <div>
-          <UILink href={href}>
-            <img src={imageSrc} alt={title} className="absolute bottom-0 h-40 lg:h-56" />
-          </UILink>
+          <img src={imageSrc} alt={title} className="absolute bottom-0 h-40 lg:h-56" />
         </div>
         <div className="ml-0 flex flex-col items-end lg:ml-56 lg:items-start">
-          <div className="text-h4">{title}</div>
-          <UILink
-            className="group mt-1.5 flex h-6 items-center space-x-5 text-category-600 underline after:absolute after:inset-0 lg:mt-3"
-            href={href}
-          >
-            <span className="text-default font-semibold">{t('readMore')}</span>
-            <span className="group-hover:hidden">
-              <ChevronRight />
-            </span>
-            <span className="hidden group-hover:block">
-              <ArrowRight />
-            </span>
-          </UILink>
+          <div className="text-h4 mb-1.5 lg:mb-3">{title}</div>
+          <Button href={href} stretched variant="category-link" endIcon={<ArrowRightIcon />}>
+            {t('readMore')}
+          </Button>
         </div>
       </Panel>
     </div>

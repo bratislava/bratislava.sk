@@ -1,19 +1,13 @@
 import SearchIcon from '@assets/images/search-icon.svg'
-import { Button } from '@bratislava/ui-bratislava'
-import React, {
-  DetailedHTMLProps,
-  Dispatch,
-  InputHTMLAttributes,
-  MouseEventHandler,
-  SetStateAction,
-} from 'react'
+import Button from '@components/forms/simple-components/Button'
+import React, { DetailedHTMLProps, Dispatch, InputHTMLAttributes, SetStateAction } from 'react'
 
 type HomePageSearchFieldProps = {
   value: string
   setValue: Dispatch<SetStateAction<string>>
   placeholder?: string
   inputClassName?: string
-  onSearchPressed?: MouseEventHandler<HTMLButtonElement>
+  onSearchPressed?: () => void
   className?: string
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
@@ -40,9 +34,9 @@ const HomePageSearchField = ({
       {/* TODO: fix rounded corners even no class is added (discovered on iPhones) */}
       {/* quickfixed with negative left margin on button */}
       <Button
-        className="-ml-1 h-12 rounded-l-none pl-4 pr-5 hover:bg-main-700 lg:h-14"
-        variant="primary"
-        onClick={onSearchPressed}
+        className="-ml-1 h-12 rounded-l-none pl-4 pr-5 lg:h-14"
+        variant="category"
+        onPress={onSearchPressed}
       >
         <SearchIcon />
       </Button>

@@ -113,5 +113,5 @@
   --color-category-300: var(--color-main-300);
   --color-category-200: var(--color-main-200);
   --color-category-100: var(--color-main-100);
-  --font-contrast-color: var(--font-color);
+  --font-contrast-color: var(--color-gray-0);
 }
