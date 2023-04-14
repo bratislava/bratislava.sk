@@ -50,7 +50,7 @@ export const NumericalListItem = ({
       >
         <div
           className={cx(
-            'min-w-16 text-h4 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full',
+            'min-w-16 text-h4 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold',
             { 'bg-white text-font': variant !== 'roadmap' && hasBackground },
             { 'bg-category-600 text-white': variant === 'roadmap' || !hasBackground },
           )}
@@ -59,7 +59,7 @@ export const NumericalListItem = ({
         </div>
         <div
           className={cx(
-            'text-p1 listitem pl-5 lg:pl-11',
+            'text-p1 pl-5 lg:pl-11',
             {
               'pt-0': variant === 'combined',
             },
@@ -73,15 +73,7 @@ export const NumericalListItem = ({
         >
           {item && (
             <Markdown
-              // TODO investigate numericalList class and variant === 'combined'
-              // numericalList
-              // className={cx(
-              //   'flex',
-              //   { 'flex-col items-start gap-y-10': variant === 'combined' },
-              //   {
-              //     'numerical-list-hidden items-center': variant !== 'combined',
-              //   },
-              // )}
+              // TODO investigate former numericalList class and variant === 'combined'
               content={item.text}
             />
           )}

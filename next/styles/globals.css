@@ -70,24 +70,6 @@
     @apply text-p-base;
   }
 
-  .numerical-list ul {
-    @apply flex flex-col;
-  }
-
-  .numerical-list ul li::before {
-    @apply -ml-12 mr-6 h-4 w-4 rounded-full bg-category-600 lg:ml-6;
-    content: '';
-    min-width: 16px;
-  }
-
-  .numerical-list ul li {
-    @apply flex items-center py-4;
-  }
-
-  .numerical-list-hidden ul li {
-    @apply hidden;
-  }
-
   .modal-close-mobile-right {
     right: 45%;
   }
@@ -99,10 +81,6 @@
   .modal-content-rent {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-
-  .rent-shadow {
-    boxshadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
   }
 
   .modal-content-rent-markdown ul {
@@ -150,17 +128,8 @@
     font-size: 0.67rem;
   }
 
-  .box-none {
-    @apply shadow-none md:shadow-lg;
-  }
-
-  .org-structure-list-circle {
-    @apply h-6 w-6 rounded-full;
-    min-width: 24px;
-  }
-
-  .listitem .typography-regular {
-    @apply text-p-sm lg:text-p-base;
+  .modal-content-rent-markdown a {
+    @apply font-bold underline;
   }
 
   .text-title-center h1,
@@ -186,14 +155,6 @@
 
   .closebutton .ml-5 {
     margin-left: 0 !important;
-  }
-
-  .iconBackground .rounded-full {
-    @apply bg-white !important;
-  }
-
-  .modal-content-rent-markdown a {
-    @apply font-bold underline;
   }
 
   /* input type number control remove */
@@ -267,11 +228,6 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.w-fit-title::before {
-  @apply invisible block h-0 overflow-hidden font-bold;
-  content: attr(title);
-}
-
 /* Move safari key icon to the left for fields with type password */
 /*noinspection CssInvalidPseudoSelector*/
 input[type='password']::-webkit-credentials-auto-fill-button {
@@ -295,7 +251,7 @@ input[type='number']::-webkit-outer-spin-button {
   display: none;
 }
 
-/* styles for chatbot START */
+/* styles for chat-bot START */
 .webchat {
   position: fixed;
   height: 70%;
