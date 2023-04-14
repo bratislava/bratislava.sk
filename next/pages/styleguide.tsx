@@ -21,7 +21,6 @@ import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldS
 import ServiceCardShowCase from '../components/styleguide/showcases/ServiceCardShowCase'
 import SingleCheckboxShowCase from '../components/styleguide/showcases/SingleCheckboxShowCase'
 import SpinnerShowCase from '../components/styleguide/showcases/SpinnerShowCase'
-import StepperShowCase from '../components/styleguide/showcases/StepperShowCase'
 import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
@@ -53,7 +52,6 @@ const Styleguide = () => {
       <SingleCheckboxShowCase />
       <CheckboxGroupShowCase />
       <RadioButtonShowCase />
-      <StepperShowCase />
       <BannerShowCase />
       <ServiceCardShowCase />
       <EventCardShowcase />
