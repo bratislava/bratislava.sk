@@ -164,7 +164,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'hover:text-category-600': variant === 'category-link' && !disabled,
         'hover:text-gray-600': variant === 'black-link' && !disabled,
 
-        underline: isLinkVariant,
+        'font-medium underline': isLinkVariant,
 
         // disabled
         'opacity-50': disabled,
