@@ -23,12 +23,12 @@ export const TopServices = ({ items }: IProps) => (
           ))
         : null}
     </HorizontalScrollWrapper>
-    <div className="hidden md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 lg:grid-cols-3">
+    <ul className="hidden md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 lg:grid-cols-3">
       {items?.map((item, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <TopServicesItem key={index} topServicesItem={item} />
       ))}
-    </div>
+    </ul>
   </>
 )
 
