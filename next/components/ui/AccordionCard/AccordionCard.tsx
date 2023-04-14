@@ -46,12 +46,12 @@ export const AccordionCard = ({
               {!heading && <Phone className="hidden xl:flex" />}
               {businessPhones?.length > 0
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="text-red-brick text-p2-semibold flex items-center">
+                    <div key={phone} className="text-p2 flex items-center font-semibold">
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-red-brick text-p2-semibold flex items-center">
+                    <div className="text-red-brick text-p2 flex items-center font-semibold">
                       {mobilePhone}
                     </div>
                   )}
@@ -59,7 +59,7 @@ export const AccordionCard = ({
             <div className="flex flex-col">
               <div className="flex gap-x-4">
                 {!heading && <Mail className="hidden xl:flex" />}
-                <div className="text-red-brick text-p3-semibold lg:text-p2-semibold underline underline-offset-2">
+                <div className="text-red-brick text-p3 lg:text-p2 font-semibold underline underline-offset-2">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
                   <div className="hidden lg:flex">
                     {mailUserName?.length > mailBreakpoint
@@ -69,7 +69,7 @@ export const AccordionCard = ({
                 </div>
               </div>
               {mailUserName?.length > mailBreakpoint && (
-                <div className="text-red-brick text-p3-semibold lg:text-p2-semibold hidden underline underline-offset-2 lg:flex xl:pl-12">
+                <div className="text-red-brick text-p3 lg:text-p2 hidden font-semibold underline underline-offset-2 lg:flex xl:pl-12">
                   {mailOrganization}
                 </div>
               )}

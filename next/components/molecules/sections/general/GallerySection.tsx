@@ -74,7 +74,7 @@ const GallerySection = ({
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                           image.imgTitle && (
                             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                            <div className="text-p1-semibold text-white">{image.imgTitle}</div>
+                            <div className="text-p1 font-semibold text-white">{image.imgTitle}</div>
                           )
                         }
                         {
@@ -166,13 +166,13 @@ const GallerySection = ({
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     currentItem.imgTitle && (
                       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                      <div className="text-p1-semibold text-white">{currentItem.imgTitle}</div>
+                      <div className="text-p1 font-semibold text-white">{currentItem.imgTitle}</div>
                     )
                   }
                   {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                     currentItem.imgSubtitle && (
-                      <div className="text-p3-bold italic text-white opacity-75">
+                      <div className="text-p3 font-bold italic text-white opacity-75">
                         {
                           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                           currentItem.imgSubtitle
@@ -194,7 +194,7 @@ const GallerySection = ({
                     </div>
                   )}
                   {currentItem.imgSubtext && (
-                    <div className="text-p3-semibold m-auto mb-4 mt-5 block text-white md:hidden">
+                    <div className="text-p3 m-auto mb-4 mt-5 block font-semibold text-white md:hidden">
                       <button
                         type="button"
                         className="underline underline-offset-2 "

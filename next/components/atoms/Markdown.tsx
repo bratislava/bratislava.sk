@@ -37,7 +37,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
           <h4 className="text-h4 scroll-mt-24 lg:scroll-mt-48" {...props} />
         ),
         h5: ({ node, level, ...props }) => (
-          <h5 className="text-h4-medium scroll-mt-24 lg:scroll-mt-48" {...props} />
+          <h5 className="text-h4 scroll-mt-24 font-medium lg:scroll-mt-48" {...props} />
         ),
         h6: ({ node, level, ...props }) => (
           <h6 className="text-h5 scroll-mt-24 lg:scroll-mt-48" {...props} />
@@ -115,7 +115,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
         tbody: ({ node, children }) => <tbody>{children}</tbody>,
         thead: () => <thead />,
         td: ({ node, children }) => (
-          <td className="first:text-p1-semibold text-p1 table-row md:table-cell">
+          <td className="first:text-p1 text-p1 table-row font-semibold md:table-cell">
             <div className="mb-1 flex items-center px-4 text-left md:min-h-[96px] lg:mb-0">
               {children}
             </div>

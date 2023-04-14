@@ -27,7 +27,7 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
               shape="none"
             >
               <UILink href={pageLink.url ? isExternalLink(pageLink.url) : `#${pageLink.anchor}`}>
-                <div className="text-p2-semibold relative text-left underline decoration-2 underline-offset-4">
+                <div className="text-p2 relative text-left font-semibold underline decoration-2 underline-offset-4">
                   {pageLink?.title}
                 </div>
               </UILink>

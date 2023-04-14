@@ -53,7 +53,7 @@ export const AccordionItem = ({
           onClick={handleClick}
         >
           <div className="flex flex-row">
-            <p className="text-h4-medium text-left text-font">
+            <p className="text-h4 text-left font-medium text-font">
               {title}
               {secondaryTitle && (
                 <span className="text-left text-font ">&nbsp;{secondaryTitle}</span>

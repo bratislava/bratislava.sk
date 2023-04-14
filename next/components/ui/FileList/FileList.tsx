@@ -78,7 +78,7 @@ export const FileList = ({
             >
               <div className="space-y-6">
                 {fileSection.category && !hideCategory && (
-                  <span className="text-h4-medium">{fileSection.category}</span>
+                  <span className="text-h4 font-medium">{fileSection.category}</span>
                 )}
                 {Array.from({ length: numberOfGroupsSeparatedByDividers }, (_, i) => {
                   const start = i * NUM_ITEMS_PER_GROUP
@@ -121,7 +121,7 @@ export const FileList = ({
             </div>
             {!noScroll && (
               <div className="block lg:hidden">
-                <span className="text-h4-medium">{fileSection.category}</span>
+                <span className="text-h4 font-medium">{fileSection.category}</span>
                 <HorizontalScrollWrapper className="-mx-8 gap-x-5 px-8 py-6">
                   {fileSection?.files.map((file, sectionIndex) => (
                     <div key={sectionIndex}>

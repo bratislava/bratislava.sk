@@ -111,9 +111,9 @@ const MinimumCalculator = ({
   return (
     <div className={cx('bg-category-200 text-center text-font', className)}>
       <p className="text-h3">{t('title')}</p>
-      <p className="text-20-medium m-auto mt-6 w-10/12 pt-0.5">{t('description')}</p>
+      <p className="text-20 m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
       <form
-        className="text-20-medium mt-10 flex flex-col items-center gap-y-8"
+        className="text-20 mt-10 flex flex-col items-center gap-y-8 font-medium"
         onSubmit={handleSubmit}
       >
         <InputField
@@ -161,7 +161,7 @@ const MinimumCalculator = ({
         />
 
         <Button
-          className="text-20-semibold mt-6 bg-category-600 px-5 py-3 text-font lg:px-6 lg:py-4"
+          className="text-20 mt-6 bg-category-600 px-5 py-3 font-semibold text-font lg:px-6 lg:py-4"
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           type="submit"

@@ -36,7 +36,7 @@ export const Accordion = ({
         <div key={i} className={cx(sectionClassName, 'flex w-full flex-col items-center gap-5')}>
           {tabsVariant === 'default' ? (
             <Button
-              className={cx(tabClassName, 'text-h4-normal py-2', {
+              className={cx(tabClassName, 'text-h4 py-2', {
                 'text-font': !(tab.key === activeSection),
                 'text-category-600': tab.key === activeSection,
               })}

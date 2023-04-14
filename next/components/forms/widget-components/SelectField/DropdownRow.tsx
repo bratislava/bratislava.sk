@@ -40,7 +40,7 @@ const DropdownRow = ({
   )
 
   const optionClassName = cx('dropdown text-16 w-full', {
-    'text-16-semibold': isBold,
+    'text-16 font-semibold': isBold,
   })
 
   // EVENT HANDLERS

@@ -55,13 +55,13 @@ export const PageHeader = ({
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div className="mb-6 mt-3 flex flex-col gap-y-4 lg:mb-10 lg:mt-6 lg:gap-y-6">
             {tag && (
-              <span className="text-p2-medium inline-block self-start rounded bg-category-700 px-3 py-1 text-white">
+              <span className="text-p2 inline-block self-start rounded bg-category-700 px-3 py-1 font-medium text-white">
                 {tag}
               </span>
             )}
             {(title || subtext) && (
               <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
-                {title && <h1 className="text-h1">{title}</h1>}
+                {title && <h1 className="text-h1 ">{title}</h1>}
                 {subtext && <p>{subtext}</p>}
               </div>
             )}

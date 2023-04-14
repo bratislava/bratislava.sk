@@ -66,7 +66,7 @@ export const AdvancedSearch = ({
 
   return (
     <div className={cx('flex w-full flex-col', className)}>
-      <h1 className="text-h3-medium scroll-mt-24 pb-3 lg:scroll-mt-48">{title}</h1>
+      <h1 className="text-h3 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</h1>
       <div className="hidden pb-6 lg:flex">
         <input
           id="name"
@@ -81,7 +81,7 @@ export const AdvancedSearch = ({
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
           className={cx(
-            'text-20-medium hover:color-white h-14 rounded-l-none px-6 shadow-none hover:bg-category-600 hover:text-white',
+            'text-20 hover:color-white h-14 rounded-l-none px-6 font-medium shadow-none hover:bg-category-600 hover:text-white',
           )}
           variant="secondary-dark-text"
           onClick={handleSearch}
@@ -95,14 +95,14 @@ export const AdvancedSearch = ({
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
-          className="text-16-medium h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none"
+          className="text-16 h-14 w-full max-w-[574px] rounded-l-lg border-2 border-r-0 pl-6 font-medium text-font outline-none"
           placeholder={t('search')}
           onKeyDown={handleKeyDown}
         />
         <Button
           icon={<SearchIcon />}
           hoverIcon={<SearchIcon />}
-          className="hover:color-white text-20-medium h-14 rounded-l-none pr-6 shadow-none hover:bg-category-600 hover:text-white"
+          className="hover:color-white text-20 h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-category-600 hover:text-white"
           variant="secondary-dark-text"
           onClick={handleSearch}
         />

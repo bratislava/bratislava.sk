@@ -76,12 +76,12 @@ const Alert = ({
 
     const contentStyle = cx('w-full', {
       'text-16': variant === 'basic',
-      'text-16-semibold': variant === 'message',
+      'text-16 font-semibold': variant === 'message',
       'text-gray-0': solid,
       'text-gray-700': !solid,
     })
 
-    const extraButtonStyle = cx('text-16-medium underline underline-offset-4', {
+    const extraButtonStyle = cx('text-16 font-medium underline underline-offset-4', {
       'text-negative-700': type === 'error' && !solid,
       'text-success-700': type === 'success' && !solid,
       'text-gray-700': type === 'info' && !solid,

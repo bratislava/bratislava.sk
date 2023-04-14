@@ -34,7 +34,7 @@ const StepperViewRow = (props: StepperViewRowProps) => {
         <div className={iconClassName}>
           {isCurrent || !isFilled ? order : <SelectedIcon className="scale-125" />}
         </div>
-        <p className="text-p3-medium">{title}</p>
+        <p className="text-p3 font-medium">{title}</p>
       </div>
       {!isLast && (
         <div className="flex h-8 w-8 flex-row items-center justify-center">

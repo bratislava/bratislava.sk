@@ -75,7 +75,7 @@ export const Bookmark = ({
       ref={modelref}
     >
       <button
-        className={cx('text-20-semibold w-[70px]', {
+        className={cx('text-20 w-[70px] font-semibold', {
           'bg-[#66BDE3]': variant === 'blue',
           'bg-main-700': variant === 'red',
         })}
@@ -114,7 +114,7 @@ export const Bookmark = ({
           <h3 className="text-h4 leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
           <a href={link.href} className="group flex items-center font-semibold underline">
-            <span className="text-p2-semibold">{link.title}</span>
+            <span className="text-p2 font-semibold">{link.title}</span>
             {/* <ChevronRight className="ml-6" /> */}
             <span className="ml-4 group-hover:hidden">
               <ChevronRight />

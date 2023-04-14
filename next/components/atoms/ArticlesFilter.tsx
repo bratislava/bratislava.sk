@@ -72,7 +72,7 @@ export const ArticlesFilter = ({
               color={item.color}
               handleClick={filterHandler}
               alreadySelected={selectedTags.includes(item.title)}
-              className="min-h-8 text-p2-medium mb-3 mr-3"
+              className="text-p2 mb-3 mr-3 font-medium"
             />
           ))}
       </div>

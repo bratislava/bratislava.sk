@@ -28,8 +28,8 @@ const FieldHeader = (props: FieldHeaderProps) => {
   } = props
 
   // STYLES
-  const labelStyle = cx('text-p3-semibold sm:text-16-semibold relative text-gray-800', {
-    'after:text-16-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
+  const labelStyle = cx('text-p3 sm:text-16 relative font-semibold text-gray-800', {
+    'after:text-16 font-semibold after:content-["*"] after:ml-0.5 after:absolute after:bottom-0.5 after:text-main-700':
       required,
   })
 

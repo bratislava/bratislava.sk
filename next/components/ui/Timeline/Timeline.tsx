@@ -19,7 +19,7 @@ export const Timeline = ({ timelineItems }: TimelineProps) => {
             'vertical-timeline-element--with-image': index === 1 || index === 2,
           })}
           textClassName="shadow-md"
-          iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4-bold shadow-none"
+          iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4 font-bold shadow-none"
           icon={<>{index + 1}</>}
         >
           {(index === 1 || index === 2) && (

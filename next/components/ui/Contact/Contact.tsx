@@ -105,7 +105,7 @@ const ContactItem = ({ variant, value, label, href }: ContactItemProps) => {
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="text-center">
             <span
-              className={cx('text-20-semibold w-full text-center', {
+              className={cx('text-20 w-full text-center font-semibold', {
                 'mt-9': index === 0,
                 'whitespace-nowrap': variant === 'phone',
               })}

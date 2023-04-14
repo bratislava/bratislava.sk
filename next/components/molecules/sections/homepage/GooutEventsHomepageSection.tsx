@@ -31,7 +31,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
 
   return (
     <div className={className}>
-      <h2 className="text-h1 text-center">{title}</h2>
+      <h2 className="text-h1 text-center font-semibold">{title}</h2>
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
@@ -49,7 +49,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
               }}
               title={ev.title}
               description={
-                <div className="text-p1-semibold flex flex-col p-6 text-category-600">
+                <div className="text-p1 flex flex-col p-6 font-semibold text-category-600">
                   <span>{ev.venue}</span>
                   <span>{ev.schedule}</span>
                 </div>

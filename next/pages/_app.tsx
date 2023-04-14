@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/inline-script-id */
 import 'react-vertical-timeline-component/style.min.css'
-import './index.css'
+import '../styles/globals.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
