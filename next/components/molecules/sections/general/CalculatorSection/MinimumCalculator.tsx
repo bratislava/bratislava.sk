@@ -87,7 +87,7 @@ const MinimumCalculator = ({
   anotherAdultValue,
   childValue,
 }: IProps) => {
-  const { t } = useTranslation('minimum-calculator')
+  const { t } = useTranslation('common', { keyPrefix: 'MinimumCalculator' })
 
   const [adults, setAdults] = React.useState(1)
   const [children, setChildren] = React.useState(0)
