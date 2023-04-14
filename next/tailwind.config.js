@@ -19,8 +19,8 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  mode: 'jit',
   theme: {
+    screens,
     fontWeight: {
       light: '300',
       normal: '400',
@@ -28,7 +28,6 @@ module.exports = {
       semibold: '600',
       bold: '700',
     },
-    screens,
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
       md: '0px 8px 16px rgba(0, 0, 0, 0.12)',
@@ -40,7 +39,7 @@ module.exports = {
       sans: ['var(--inter-font)', ...defaultTheme.fontFamily.sans],
     },
 
-    // DO NOT USE these classes directly, use classes from globals.css
+    // DO NOT USE these font classes directly, use classes from globals.css
     fontSize: {
       // TODO text-button mixes with tmp-[color] classes
       'size-button-large': getFontSize([20, 32]),
@@ -65,6 +64,7 @@ module.exports = {
       'size-h1-hero': getFontSize([56, 64]),
       'size-h1-hero-r': getFontSize([32, 40]),
     },
+
     colors: {
       transparent: 'transparent',
       current: 'currentColor',

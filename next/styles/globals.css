@@ -7,6 +7,10 @@
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 
 @layer base {
+  body {
+    @apply text-font antialiased;
+  }
+
   h1,
   h2,
   h3,
@@ -175,88 +179,49 @@
   .number-control-none {
     -moz-appearance: textfield;
   }
-}
 
-/* width */
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  /* Track */
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
+  .base-input {
+    @apply box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
+    @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
   }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    @apply bg-transparent;
+  .base-input--with-error {
+    @apply border-error;
   }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    @apply rounded-2xl bg-transparent;
+  .base-input--disabled {
+    @apply bg-gray-100;
   }
-}
 
-@layer utilities {
-  @variants responsive {
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-    }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
-}
 
-body {
-  -webkit-font-smoothing: antialiased;
-  color: rgb(var(--font-color));
-}
+  /* Move safari key icon to the left for fields with type password */
+  /*noinspection CssInvalidPseudoSelector*/
+  input[type='password']::-webkit-credentials-auto-fill-button {
+    @apply mr-8;
+  }
 
-.base-input {
-  @apply box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
-  @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
-}
+  /* Move safari 'Strong password' to the left for fields with type password */
+  /*noinspection CssInvalidPseudoSelector*/
+  input[type='password']::-webkit-strong-password-auto-fill-button {
+    @apply mr-8 pb-2;
+  }
 
-.base-input--with-error {
-  @apply border-error;
-}
+  /* Remove arrows from input type='number' */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-.base-input--disabled {
-  @apply bg-gray-100;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
-/* Move safari key icon to the left for fields with type password */
-/*noinspection CssInvalidPseudoSelector*/
-input[type='password']::-webkit-credentials-auto-fill-button {
-  @apply mr-8;
-}
-
-/* Move safari 'Strong password' to the left for fields with type password */
-/*noinspection CssInvalidPseudoSelector*/
-input[type='password']::-webkit-strong-password-auto-fill-button {
-  @apply mr-8 pb-2;
-}
-
-/* Remove arrows from input type='number' */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.form-group label.control-label {
-  display: none;
+  .form-group label.control-label {
+    display: none;
+  }
 }
 
 /* styles for chat-bot START */
