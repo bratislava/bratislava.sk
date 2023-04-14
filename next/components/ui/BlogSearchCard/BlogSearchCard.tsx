@@ -1,12 +1,12 @@
 // @ts-strict-ignore
-import ArrowRightShort from '@assets/images/arrow-right-short.svg'
+import { ArrowRightIcon } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { VerticalCardButton } from '@components/ui'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'
 
 import { Panel } from '../Panel/Panel'
-import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
 export interface BlogImage {
   url: string
@@ -135,10 +135,9 @@ export const BlogSearchCard = ({
                 <div className="text-large line-clamp-2 font-semibold text-white">{title}</div>
                 <VerticalCardButton
                   className="invisible shrink-0 group-hover:lg:visible"
-                  size="medium"
-                >
-                  <ArrowRightShort className="scale-125" />
-                </VerticalCardButton>
+                  icon={<ArrowRightIcon />}
+                  variant="category"
+                />
               </div>
               <div className="text-white">{date}</div>
             </div>

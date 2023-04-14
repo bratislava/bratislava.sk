@@ -1,8 +1,9 @@
 // @ts-strict-ignore
-import { ArrowRight, ChevronRight } from '@assets/images'
+import { ArrowRightIcon } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { LatestBlogPostEntityFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { Iframe } from '@bratislava/ui-bratislava'
+import Button from '@components/forms/simple-components/Button'
 import { LocalDate, Month, Period } from '@js-joda/core'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
@@ -13,7 +14,6 @@ import { useTranslation } from 'next-i18next'
 import React from 'react'
 import useSWR from 'swr'
 
-import { Button } from '../../Button/Button'
 import { DocumentCard } from '../../DocumentCard/DocumentCard'
 import { HorizontalScrollWrapper } from '../../HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { NewsCard, NewsCardProps } from '../../NewsCard/NewsCard'
@@ -145,31 +145,21 @@ export const Posts = ({
               )}
               <div className="col-span-3 mt-14 hidden justify-center lg:flex">
                 {latestPost?.length > 0 && (
-                  <UILink href={t('allNewsLink')}>
-                    <Button
-                      variant="transparent"
-                      className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-category-600"
-                      icon={<ChevronRight />}
-                      hoverIcon={<ArrowRight />}
-                    >
-                      {readMoreNewsText}
-                    </Button>
-                  </UILink>
+                  <Button
+                    href={t('allNewsLink')}
+                    variant="category-outline"
+                    endIcon={<ArrowRightIcon />}
+                  >
+                    {readMoreNewsText}
+                  </Button>
                 )}
               </div>
             </div>
           </HorizontalScrollWrapper>
           <div className="flex justify-center lg:hidden">
-            <UILink href={t('allNewsLink')}>
-              <Button
-                variant="transparent"
-                className="text-large mt-0 px-6 py-2 font-medium shadow-none"
-                icon={<ChevronRight />}
-                hoverIcon={<ArrowRight />}
-              >
-                {t('allNews')}
-              </Button>
-            </UILink>
+            <Button href={t('allNewsLink')} variant="category-outline" endIcon={<ArrowRightIcon />}>
+              {t('allNews')}
+            </Button>
           </div>
         </div>
       )}
@@ -186,19 +176,14 @@ export const Posts = ({
               />
             ))}
           </div>
-          <UILink
+
+          <Button
             href="/mesto-bratislava/transparentne-mesto/uradna-tabula"
-            className="flex justify-center"
+            variant="category-outline"
+            endIcon={<ArrowRightIcon />}
           >
-            <Button
-              className="text-large px-6 py-3 font-medium shadow-none hover:text-category-600"
-              variant="transparent"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-            >
-              {t('toOfficialBoard')}
-            </Button>
-          </UILink>
+            {t('toOfficialBoard')}
+          </Button>
         </div>
       )}
       {activeTab === 2 && (
@@ -218,17 +203,13 @@ export const Posts = ({
                 />
               </div>
               <div className="flex justify-center">
-                <UILink href={roadClosuresAddressNew}>
-                  {/* TODO: change this button to custom button */}
-                  <Button
-                    variant="transparent"
-                    className="text-large mt-0 px-6 py-2 font-medium shadow-none"
-                    icon={<ChevronRight />}
-                    hoverIcon={<ArrowRight />}
-                  >
-                    {t('moreInfo')}
-                  </Button>
-                </UILink>
+                <Button
+                  href={roadClosuresAddressNew}
+                  variant="category-outline"
+                  endIcon={<ArrowRightIcon />}
+                >
+                  {t('moreInfo')}
+                </Button>
               </div>
             </>
           ) : (
@@ -277,34 +258,26 @@ export const Posts = ({
                     </div>
                   )}
                   <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                    {/* TODO: change this button to custom button */}
                     {rozkoPosts?.length > 0 && (
-                      <UILink href={roadClosuresAddress}>
-                        <Button
-                          variant="transparent"
-                          className="text-h4 px-6 py-3 font-medium text-font shadow-none hover:text-category-600"
-                          icon={<ChevronRight />}
-                          hoverIcon={<ArrowRight />}
-                        >
-                          {readMoreNewsText}
-                        </Button>
-                      </UILink>
+                      <Button
+                        href={roadClosuresAddress}
+                        variant="category-outline"
+                        endIcon={<ArrowRightIcon />}
+                      >
+                        {readMoreNewsText}
+                      </Button>
                     )}
                   </div>
                 </div>
               </HorizontalScrollWrapper>
               <div className="flex justify-center lg:hidden">
-                <UILink href={roadClosuresAddress}>
-                  {/* TODO: change this button to custom button */}
-                  <Button
-                    variant="transparent"
-                    className="text-large mt-0 px-6 py-2 font-medium shadow-none"
-                    icon={<ChevronRight />}
-                    hoverIcon={<ArrowRight />}
-                  >
-                    {t('allNews')}
-                  </Button>
-                </UILink>
+                <Button
+                  href={roadClosuresAddress}
+                  variant="category-outline"
+                  endIcon={<ArrowRightIcon />}
+                >
+                  {t('allNews')}
+                </Button>
               </div>
             </>
           )}
@@ -338,17 +311,9 @@ export const Posts = ({
           ))}
         </HorizontalScrollWrapper>
         <div className="flex justify-center">
-          {/* TODO: change this button to custom button */}
-          <UILink href={t('allNewsLink')}>
-            <Button
-              variant="transparent"
-              className="text-large mt-9 px-6 py-2 font-medium shadow-none"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-            >
-              {t('allNews')}
-            </Button>
-          </UILink>
+          <Button href={t('allNewsLink')} variant="category-outline" endIcon={<ArrowRightIcon />}>
+            {t('allNews')}
+          </Button>
         </div>
       </div>
     </div>

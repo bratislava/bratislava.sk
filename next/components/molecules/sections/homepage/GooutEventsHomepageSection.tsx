@@ -1,5 +1,6 @@
-import { ArrowRight, ChevronRight } from '@assets/images'
-import { Carousel, Link } from '@bratislava/ui-bratislava'
+import { ArrowRightIcon } from '@assets/images'
+import { Carousel } from '@bratislava/ui-bratislava'
+import Button from '@components/forms/simple-components/Button'
 import { FetchGooutEventsResult, GooutEventParsed } from '@utils/goout'
 import React from 'react'
 
@@ -60,16 +61,14 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
       </div>
 
       <div className="my-10 flex w-full justify-center text-center">
-        <Link
+        <Button
           href={linkUrl}
+          variant="category-outline"
           target="_blank"
-          icon={<ChevronRight />}
-          hoverIcon={<ArrowRight />}
-          iconPosition="right"
-          className=" text-large-respo box-border rounded-lg border-2 border-category-600 px-6 py-3.5"
+          endIcon={<ArrowRightIcon />}
         >
           {linkTitle}
-        </Link>
+        </Button>
       </div>
     </div>
   )

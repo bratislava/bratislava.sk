@@ -1,9 +1,8 @@
 import ChevronLeft from '@assets/images/arrow-long-left.svg'
 import ChevronRight from '@assets/images/arrow-long-right.svg'
+import { VerticalCardButton } from '@components/ui'
 import cx from 'classnames'
 import React, { useRef } from 'react'
-
-import { VerticalCardButton } from '../VerticalCardButton/VerticalCardButton'
 
 export interface CarouselProps {
   className?: string
@@ -66,8 +65,7 @@ export const Carousel = ({
   const sliderControl = (isLeft: boolean) =>
     totalItems >= visibleItems ? (
       <VerticalCardButton
-        onClick={isLeft ? previousImage : nextImage}
-        size="large"
+        onPress={isLeft ? previousImage : nextImage}
         className={cx('absolute bottom-0 top-0 z-10 my-auto', {
           'left-0 -translate-x-1/2 transform': isLeft,
           'right-0 translate-x-1/2 transform': !isLeft,

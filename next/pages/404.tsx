@@ -1,6 +1,6 @@
-import ChevronRight from '@assets/images/chevron-right.svg'
+import { ArrowRightIcon } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Button } from '@bratislava/ui-bratislava/Button/Button'
+import Button from '@components/forms/simple-components/Button'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -35,15 +35,10 @@ const NotFoundPage = () => {
             <div className="text-large-respo max-w-xs pb-10 text-center lg:text-left">
               {t('sorryNoResultsFound')}
             </div>
-            <Link href="/">
-              <Button
-                variant="transparent-black"
-                className="text-large-respo px-6 py-3"
-                icon={<ChevronRight className="scale-75" />}
-              >
-                {t('toTheMainPage')}
-              </Button>
-            </Link>
+
+            <Button variant="category-outline" href="/" endIcon={<ArrowRightIcon />}>
+              {t('toTheMainPage')}
+            </Button>
           </div>
         </div>
       </div>

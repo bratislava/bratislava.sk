@@ -1,9 +1,8 @@
-// @ts-strict-ignore
 import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava'
+import Button from '@components/forms/simple-components/Button'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
-import { Button } from '../Button/Button'
 import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface BlogSearchCardsProps {
@@ -23,20 +22,15 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
         <div className="flex flex-col gap-y-6">
           {blogsToShow.map((blog) => {
             return (
-              <BlogSearchCard
-                key={blog.attributes.slug}
-                item={blog}
-                className="h-50"
-                imageClassName="w-56 h-50"
-              />
+              <BlogSearchCard key={blog.attributes?.slug} item={blog} imageClassName="w-56 h-50" />
             )
           })}
         </div>
         {blogs.length > SHOW_LESS_COUNT && (
           <Button
-            variant="transparent"
-            className="text-large w-fit self-center px-6 py-2.5"
-            onClick={() => setIsOpen(!isOpen)}
+            variant="category-outline"
+            className="self-center"
+            onPress={() => setIsOpen(!isOpen)}
           >
             {isOpen ? t('showLess') : t('showMore')}
           </Button>
@@ -45,7 +39,7 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
       <HorizontalScrollWrapper className="gap-x-4 pb-6 pt-4 lg:hidden">
         {blogs.map((blog) => {
           return (
-            <BlogSearchCard key={blog.attributes.slug} item={blog} className="w-74 h-60 shrink-0" />
+            <BlogSearchCard key={blog.attributes?.slug} item={blog} className="h-60 shrink-0" />
           )
         })}
       </HorizontalScrollWrapper>

@@ -1,8 +1,8 @@
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
 
-import { Button } from '../Button/Button'
 import { Divider } from '../Divider/Divider'
 import { DownloadCard } from '../DownloadCard/DownloadCard'
 import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
@@ -70,7 +70,9 @@ export const FileList = ({
         const { length } = fileSection.files
         const numberOfGroupsSeparatedByDividers = Math.ceil(length / NUM_ITEMS_PER_GROUP)
         const shouldDisplayDividers = showMore && length >= MIN_ITEMS_TO_DISPLAY_DIVIDERS
+
         return (
+          // eslint-disable-next-line react/no-array-index-key
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
             <div
               className={cx('flex-col space-y-8 lg:flex', { hidden: !noScroll })}
@@ -110,11 +112,7 @@ export const FileList = ({
                 })}
               </div>
               {length > NUM_PREVIEW_ITEMS && (
-                <Button
-                  className="text-large self-center px-6 py-2.5"
-                  variant="secondary-dark-text"
-                  onClick={handleClick}
-                >
+                <Button variant="category-outline" onPress={handleClick} className="self-center">
                   {buttonText}
                 </Button>
               )}

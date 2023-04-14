@@ -1,8 +1,8 @@
-import { ArrowRight, ChevronRight } from '@assets/images'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Button } from '@bratislava/ui-bratislava/Button/Button'
+import { ArrowRightIcon } from '@assets/images'
 import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
+import React from 'react'
 
 import { NumericalList } from '../NumericalList/NumericalList'
 
@@ -27,7 +27,6 @@ export const NumericalListSectionUI = ({
   buttonLink,
   variant = 'basic',
 }: NumericalListSectionProps) => {
-  const { Link: UILink } = useUIContext()
   const href = buttonLink?.length ? buttonLink : '#'
   return (
     <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
@@ -54,16 +53,14 @@ export const NumericalListSectionUI = ({
           <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant !== 'roadmap' && buttonText && (
-          <UILink href={href} className="pt-10">
-            <Button
-              className="text-large-respo z-10 h-12 border-category-600 bg-category-600 px-6 lg:h-14"
-              variant="secondary-dark-text"
-              icon={<ChevronRight />}
-              hoverIcon={<ArrowRight />}
-            >
-              {buttonText}
-            </Button>
-          </UILink>
+          <Button
+            href={href}
+            className="pt-10"
+            variant="category-outline"
+            endIcon={<ArrowRightIcon />}
+          >
+            {buttonText}
+          </Button>
         )}
       </div>
 
