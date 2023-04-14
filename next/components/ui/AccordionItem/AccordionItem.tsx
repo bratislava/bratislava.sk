@@ -53,7 +53,7 @@ export const AccordionItem = ({
           onClick={handleClick}
         >
           <div className="flex flex-row">
-            <p className="text-h4-medium text-left text-font">
+            <p className="text-h4 text-left font-medium text-font">
               {title}
               {secondaryTitle && (
                 <span className="text-left text-font ">&nbsp;{secondaryTitle}</span>
@@ -67,7 +67,7 @@ export const AccordionItem = ({
         </button>
       </div>
       <div
-        className={cx('text-fontBlack text-p2 overflow-hidden', {
+        className={cx('text-fontBlack text-default overflow-hidden', {
           'h-auto': active,
           'h-0': !active,
           'p-6': active && paddingVariant === 'narrow',

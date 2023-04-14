@@ -51,11 +51,11 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           <PageIcon />
         </div>
         <div className="flex w-full items-center justify-between px-14">
-          <span className="text-p1-semibold">{title}</span>
+          <span className="text-large-respo font-semibold">{title}</span>
           <ChevronRight />
         </div>
       </Panel>
-      <Panel className="min-w-76 flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
+      <Panel className="flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
         <div className="flex items-center justify-between">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-category-200">
             <SmallPageIcon />
@@ -65,7 +65,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
           </div>
         </div>
 
-        <span className="text-p2-medium">{title}</span>
+        <span className="text-default font-medium">{title}</span>
       </Panel>
     </UILink>
   )

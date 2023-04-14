@@ -98,14 +98,14 @@ const ContactItem = ({ variant, value, label, href }: ContactItemProps) => {
   const Icon = variant === 'phone' ? Phone : Email
 
   return (
-    <div className="text-20 relative flex h-full flex-col items-center justify-start pb-20 leading-[30px]">
+    <div className="text-large relative flex h-full flex-col items-center justify-start pb-20 leading-[30px]">
       <Icon className="h-24 w-24" />
       {value.split(',').map((item, index) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="text-center">
             <span
-              className={cx('text-20-semibold w-full text-center', {
+              className={cx('text-large w-full text-center font-semibold', {
                 'mt-9': index === 0,
                 'whitespace-nowrap': variant === 'phone',
               })}

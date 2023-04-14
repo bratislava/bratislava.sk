@@ -135,7 +135,7 @@ const TimeSelector = ({
             </div>
           </div>
           <div className="flex items-center">
-            <span className="text-20 flex h-6 w-6 items-center justify-center">:</span>
+            <span className="text-large flex h-6 w-6 items-center justify-center">:</span>
           </div>
           <div className="flex flex-col items-center justify-start overflow-x-hidden">
             <div ref={minuteRef} className="flex flex-col overflow-y-auto scrollbar-hide">

@@ -16,7 +16,7 @@ export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
       <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
         <BALogo className="shrink-0" />
         {withTitle && (
-          <span className="text-p2">
+          <span className="text-default">
             <Trans
               i18nKey="capitalCity"
               ns="common"

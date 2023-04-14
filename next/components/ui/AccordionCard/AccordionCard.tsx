@@ -39,19 +39,19 @@ export const AccordionCard = ({
     displayName && jobTitle ? (
       <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col px-6 py-8')} overflowVisible>
         <div className="text-h4 pb-2">{displayName}</div>
-        <div className="text-p3 lg:text-p2 pb-6 text-font/75">{jobTitle}</div>
+        <div className="text-small lg:text-default pb-6 text-font/75">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">
               {!heading && <Phone className="hidden xl:flex" />}
               {businessPhones?.length > 0
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="text-red-brick text-p2-semibold flex items-center">
+                    <div key={phone} className="text-default flex items-center font-semibold">
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-red-brick text-p2-semibold flex items-center">
+                    <div className="text-red-brick text-default flex items-center font-semibold">
                       {mobilePhone}
                     </div>
                   )}
@@ -59,7 +59,7 @@ export const AccordionCard = ({
             <div className="flex flex-col">
               <div className="flex gap-x-4">
                 {!heading && <Mail className="hidden xl:flex" />}
-                <div className="text-red-brick text-p3-semibold lg:text-p2-semibold underline underline-offset-2">
+                <div className="text-red-brick text-small lg:text-default font-semibold underline underline-offset-2">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
                   <div className="hidden lg:flex">
                     {mailUserName?.length > mailBreakpoint
@@ -69,7 +69,7 @@ export const AccordionCard = ({
                 </div>
               </div>
               {mailUserName?.length > mailBreakpoint && (
-                <div className="text-red-brick text-p3-semibold lg:text-p2-semibold hidden underline underline-offset-2 lg:flex xl:pl-12">
+                <div className="text-red-brick text-small lg:text-default hidden font-semibold underline underline-offset-2 lg:flex xl:pl-12">
                   {mailOrganization}
                 </div>
               )}

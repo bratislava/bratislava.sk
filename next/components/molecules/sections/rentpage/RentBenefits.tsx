@@ -32,7 +32,7 @@ const RentBenefits = ({ rents = RENTS }: IProps) => {
   const { t } = useTranslation()
   return (
     <div className="mt-20 md:flex md:flex-col md:items-center">
-      <h1 className="text-h1 md:text-5xl ml-14 md:ml-0">{t('rentBenefits')}</h1>
+      <h1 className="text-h1 md:text-5xl ml-14  md:ml-0">{t('rentBenefits')}</h1>
       <HorizontalScrollWrapper className="my-14 md:grid-cols-3 md:gap-x-28 lg:gap-x-28 xl:gap-x-44">
         {rents.map((rent, index) => (
           <Rent key={index} {...rent} />

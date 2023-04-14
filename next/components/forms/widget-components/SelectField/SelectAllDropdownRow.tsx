@@ -23,7 +23,7 @@ const SelectAllDropdownRow = ({
     >
       <div className="dropdown flex h-full flex-col justify-center">
         <div className="dropdown flex flex-row justify-center">
-          <p className={` dropdown text-16-semibold w-full`}>
+          <p className={` dropdown text-default w-full font-semibold`}>
             {isEverythingSelected ? t('selectAll') : t('deselectAll')}
           </p>
         </div>

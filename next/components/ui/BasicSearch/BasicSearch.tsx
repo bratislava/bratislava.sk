@@ -38,12 +38,12 @@ export const BasicSearch = ({
 
   return (
     <div className={cx('flex w-full flex-col', className)}>
-      <div className="text-h4-medium scroll-mt-24 pb-3 lg:scroll-mt-48">{title}</div>
+      <div className="text-h4 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</div>
       <div className="flex pb-6">
         <input
           id="name"
           type="text"
-          className="text-p2 h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:w-[574px]"
+          className="text-default h-14 w-full rounded-l-lg border-2 border-r-0 pl-6 text-font outline-none lg:w-[574px]"
           placeholder={placeholder}
           value={input}
           onChange={(event) => setInput(event.target.value)}

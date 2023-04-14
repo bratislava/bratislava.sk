@@ -40,7 +40,7 @@ export const HorizontalCard = ({
           </div>
         </>
       )}
-      <div className="text-p1 h-full flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left">
+      <div className="text-large-respo h-full flex-1 p-6 text-center lg:self-center lg:px-12 lg:py-8 lg:text-left">
         {children}
       </div>
     </Panel>

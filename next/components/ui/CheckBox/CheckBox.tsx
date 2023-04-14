@@ -18,7 +18,10 @@ export const CheckBox = ({
   variant = 'default',
   ...rest
 }: ICheckBoxProps) => (
-  <label htmlFor={id} className={cx('text-20-medium inline-flex cursor-pointer gap-6', className)}>
+  <label
+    htmlFor={id}
+    className={cx('text-large inline-flex cursor-pointer gap-6 font-medium', className)}
+  >
     <input type="checkbox" id={id} className="hidden" {...rest} />
     <div
       className={cx(

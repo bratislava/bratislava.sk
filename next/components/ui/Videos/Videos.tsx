@@ -63,7 +63,7 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
   return (
     <div>
       {title && <h2 className="text-h4">{title}</h2>}
-      {subtitle && <div className="md:text-p1 mb-10 mt-5">{subtitle}</div>}
+      {subtitle && <div className="md:text-large-respo mb-10 mt-5">{subtitle}</div>}
 
       {/* Mobile */}
       <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">

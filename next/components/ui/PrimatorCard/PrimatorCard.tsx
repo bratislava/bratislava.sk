@@ -44,12 +44,12 @@ export const PrimatorCard = ({
           </UILink>
         </div>
         <div className="ml-0 flex flex-col items-end lg:ml-56 lg:items-start">
-          <div className="text-h4-normal">{title}</div>
+          <div className="text-h4">{title}</div>
           <UILink
             className="group mt-1.5 flex h-6 items-center space-x-5 text-category-600 underline after:absolute after:inset-0 lg:mt-3"
             href={href}
           >
-            <span className="text-p2-semibold">{t('readMore')}</span>
+            <span className="text-default font-semibold">{t('readMore')}</span>
             <span className="group-hover:hidden">
               <ChevronRight />
             </span>

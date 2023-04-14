@@ -87,7 +87,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input
         ref={filterRef}
-        className="text-16 max-w-[80px] border-0 outline-none xs:max-w-none"
+        className="text-default max-w-[80px] border-0 outline-none xs:max-w-none"
         type="text"
         size={getInputSize()}
         value={filter}

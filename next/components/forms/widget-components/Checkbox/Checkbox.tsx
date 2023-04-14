@@ -64,7 +64,7 @@ const CheckboxGroupItem = ({
     'opacity-50 cursor-not-allowed': isDisabled,
   })
 
-  const labelStyle = cx('text-16 flex text-gray-700', {})
+  const labelStyle = cx('text-default flex text-gray-700', {})
 
   return (
     <div>

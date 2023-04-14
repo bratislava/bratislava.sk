@@ -30,14 +30,14 @@ const NavMenu = () => {
       onValueChange={setMenuValue}
       aria-label={t('NavMenu.aria.navMenuLabel')}
     >
-      <NavigationMenu.List className="relative z-30 shadow-md">
-        <div className="m-auto grid w-full max-w-screen-lg grid-flow-col grid-cols-6">
+      <div className="relative z-30 shadow-md">
+        <NavigationMenu.List className="m-auto grid w-full max-w-screen-lg grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <NavMenuItem key={index} menu={menuItem} />
           ))}
-        </div>
-      </NavigationMenu.List>
+        </NavigationMenu.List>
+      </div>
 
       {/* Viewport represents popup div with links that appears under menu button */}
       <NavigationMenu.Viewport

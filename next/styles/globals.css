@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'colors.css';
+
+/* Docs: https://tailwindcss.com/docs/functions-and-directives */
+
+@layer base {
+  body {
+    @apply text-font antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .text-h1-lg {
+    @apply text-size-h1-hero-r lg:text-size-h1-hero;
+  }
+
+  .text-h1 {
+    @apply text-size-h1-r lg:text-size-h1;
+  }
+
+  .text-h2 {
+    @apply text-size-h2-r lg:text-size-h2;
+  }
+
+  .text-h3 {
+    @apply text-size-h3-r lg:text-size-h3;
+  }
+
+  .text-h4 {
+    @apply text-size-h4-r lg:text-size-h4;
+  }
+
+  .text-h5 {
+    @apply text-size-h5-r lg:text-size-h5;
+  }
+
+  .text-h6 {
+    @apply text-size-h6 lg:text-size-h6-r;
+  }
+
+  .text-large-respo {
+    @apply text-size-p-default lg:text-size-p-large;
+  }
+
+  .text-default-respo {
+    @apply text-size-p-small lg:text-size-p-default;
+  }
+
+  .text-large {
+    @apply text-size-p-large;
+  }
+
+  .text-default {
+    @apply text-size-p-default;
+  }
+
+  .text-small {
+    @apply text-size-p-small;
+  }
+
+  .text-large {
+    @apply text-size-p-large;
+  }
+
+  .text-default {
+    @apply text-size-p-default;
+  }
+
+  .text-button {
+    @apply text-size-button-default lg:text-size-button-large;
+  }
+
+  .modal-close-mobile-right {
+    right: 45%;
+  }
+
+  .modal-content-rent::-webkit-scrollbar {
+    display: none;
+  }
+
+  .modal-content-rent {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .modal-content-rent-markdown ul {
+    @apply my-6 list-disc pl-12;
+  }
+
+  .modal-content-rent-markdown ol {
+    @apply my-6 list-decimal pl-12;
+  }
+
+  .modal-content-rent-markdown p {
+    @apply mb-4;
+  }
+
+  .modal-content-rent-markdown h1,
+  .modal-content-rent-markdown h2,
+  .modal-content-rent-markdown h3,
+  .modal-content-rent-markdown h4,
+  .modal-content-rent-markdown h5,
+  .modal-content-rent-markdown h6 {
+    @apply my-6 font-bold;
+  }
+
+  .modal-content-rent-markdown h1 {
+    font-size: 2rem;
+  }
+
+  .modal-content-rent-markdown h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-content-rent-markdown h3 {
+    font-size: 1.17rem;
+  }
+
+  .modal-content-rent-markdown h4 {
+    font-size: 1rem;
+  }
+
+  .modal-content-rent-markdown h5 {
+    font-size: 0.83rem;
+  }
+
+  .modal-content-rent-markdown h6 {
+    font-size: 0.67rem;
+  }
+
+  .modal-content-rent-markdown a {
+    @apply font-bold underline;
+  }
+
+  .text-title-center h1,
+  .text-title-center h2,
+  .text-title-center h3,
+  .text-title-center h4,
+  .text-title-center h5,
+  .text-title-center h6 {
+    @apply mb-6 text-center;
+  }
+
+  .inner-list .inner-list .rounded-full {
+    @apply bg-transparent;
+  }
+
+  button[data-state='open'] > svg {
+    display: block;
+  }
+
+  button[data-state='closed'] > svg {
+    display: none;
+  }
+
+  .closebutton .ml-5 {
+    margin-left: 0 !important;
+  }
+
+  /* input type number control remove */
+  .number-control-none::-webkit-outer-spin-button,
+  .number-control-none::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .number-control-none {
+    -moz-appearance: textfield;
+  }
+
+  .base-input {
+    @apply box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
+    @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
+  }
+
+  .base-input--with-error {
+    @apply border-error;
+  }
+
+  .base-input--disabled {
+    @apply bg-gray-100;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  /* Move safari key icon to the left for fields with type password */
+  /*noinspection CssInvalidPseudoSelector*/
+  input[type='password']::-webkit-credentials-auto-fill-button {
+    @apply mr-8;
+  }
+
+  /* Move safari 'Strong password' to the left for fields with type password */
+  /*noinspection CssInvalidPseudoSelector*/
+  input[type='password']::-webkit-strong-password-auto-fill-button {
+    @apply mr-8 pb-2;
+  }
+
+  /* Remove arrows from input type='number' */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .form-group label.control-label {
+    display: none;
+  }
+}
+
+/* styles for chat-bot START */
+.webchat {
+  position: fixed;
+  height: 70%;
+  width: min(40%, 380px);
+  bottom: 96px;
+  left: 24px;
+  border-radius: 8px;
+  display: none;
+  overflow: hidden;
+  border: solid 2px RGB(51, 51, 51, 0.5);
+  z-index: 9999;
+}
+
+.webchat__imageAvatar__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.webchat__bubble__content {
+  border-radius: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .webchat {
+    width: 100%;
+    height: calc(100% - 88px);
+    left: 0;
+    border-radius: 0;
+  }
+}
+
+/* styles for chatbot END*/
+
+/* styles for vertical timeline START */
+@media (max-width: 1170px) {
+  .vertical-timeline-element.vertical-timeline-element--with-image {
+    margin-top: 300px;
+  }
+}
+
+/* styles for vertical timeline END */

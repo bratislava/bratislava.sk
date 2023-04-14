@@ -114,7 +114,6 @@
     "eslint-plugin-unicorn": "46.0.0",
     "eslint-plugin-xss": "^0.1.12",
     "postcss": "8.4.21",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "0.2.7",
     "tailwindcss": "3.3.1",

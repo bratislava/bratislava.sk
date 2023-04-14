@@ -46,7 +46,7 @@ const Carousel = ({ className, carouselItems }: IProps) => {
     <Button
       shape="circle"
       onClick={isLeft ? previousImage : nextImage}
-      className={cx('text-h1-normal absolute bottom-0 top-0 z-10 my-auto h-16 w-16', {
+      className={cx('text-h1 absolute bottom-0 top-0 z-10 my-auto h-16 w-16 font-semibold', {
         '-left-6': isLeft,
         '-right-6': !isLeft,
         hidden: isLeft && currentItem === 0,

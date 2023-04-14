@@ -33,11 +33,12 @@ export interface AdvancedAccordionDepartmentProps {
 interface AccordionItemHeadingProps {
   title: string
 }
+
 const AccordionItemHeading = ({ title }: AccordionItemHeadingProps) => {
   return (
     <div className="flex items-center gap-x-3 pb-8 lg:gap-x-6 lg:px-5">
       <div className="h-6 w-6 rounded-full border-4 border-category-600" />
-      <div className="text-p1">{title}</div>
+      <div className="text-large-respo">{title}</div>
     </div>
   )
 }
@@ -60,7 +61,7 @@ AdvancedAccordionDepartmentProps) => {
       {/*       {departmentPhone && (
         <div className="flex items-center pl-9 pb-5 lg:pb-8 lg:pl-16 gap-x-8">
           <Phone />
-          <div className="text-p1-semibold text-red-brick ">{departmentPhone}</div>
+          <div className="text-large-respo font-semibold text-red-brick ">{departmentPhone}</div>
         </div>
       )} */}
       {cards.length > 0 && <AccordionCards items={cards} />}
@@ -72,7 +73,7 @@ AdvancedAccordionDepartmentProps) => {
             </div>
           )} */}
         {/* {subitem.groupHeading && (
-            <div className="text-p1-semibold pt-8 lg:pt-10">
+            <div className="text-large-respo font-semibold pt-8 lg:pt-10">
               {subitem.groupHeading}
             </div>
           )} */}

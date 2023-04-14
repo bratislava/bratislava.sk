@@ -49,7 +49,7 @@ export const AdvancedAccordionSubitem = ({
         {isGroupTitle ? (
           <div className="text-h4 pt-8 lg:pt-10">{title}</div>
         ) : (
-          <div className="text-p1 pr-6">{title}</div>
+          <div className="text-large-respo pr-6">{title}</div>
         )}
         {isGroupTitle ?? (
           <div className={cx('ml-auto pt-2.5', { 'rotate-180': open })}>

@@ -22,7 +22,7 @@ export const PageLinkButton = ({ className, pageLink }: PageLinkButtonProps) => 
       >
         <div
           style={{ textDecorationThickness: 2, textUnderlineOffset: 3 }}
-          className="text-p1-semibold text-left text-font underline"
+          className="text-large-respo text-left font-semibold text-font underline"
         >
           {pageLink?.title}
         </div>

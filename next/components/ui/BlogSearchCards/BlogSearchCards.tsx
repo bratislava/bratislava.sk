@@ -35,7 +35,7 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
         {blogs.length > SHOW_LESS_COUNT && (
           <Button
             variant="transparent"
-            className="text-20 w-fit self-center px-6 py-2.5"
+            className="text-large w-fit self-center px-6 py-2.5"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? t('showLess') : t('showMore')}

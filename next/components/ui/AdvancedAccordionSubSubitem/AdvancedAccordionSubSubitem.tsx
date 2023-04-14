@@ -34,7 +34,7 @@ export const AdvancedAccordionSubSubitem = ({
         className={cx(className, 'ml-12 flex cursor-pointer items-start lg:items-center lg:px-5')}
         onClick={() => setOpen(!open)}
       >
-        <div className="text-p1 pr-6">{title}</div>
+        <div className="text-large-respo pr-6">{title}</div>
         <div className={cx('ml-auto pt-2.5', { 'rotate-180': open })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />

@@ -20,7 +20,7 @@ export const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
         <Icon iconName={icon} className="h-12 w-12 md:h-16 md:w-16" />
       </div>
       <div className="flex flex-col gap-1 lg:gap-2">
-        <h3 className="text-h5 font-semibold">{label}</h3>
+        <h3 className="text-h5">{label}</h3>
         <Button variant="black-link" stretched {...linkProps}>
           {t('learnMore')}
         </Button>

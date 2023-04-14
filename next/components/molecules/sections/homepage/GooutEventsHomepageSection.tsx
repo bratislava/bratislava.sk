@@ -31,7 +31,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
 
   return (
     <div className={className}>
-      <h2 className="text-h1 text-center">{title}</h2>
+      <h2 className="text-h1 text-center font-semibold">{title}</h2>
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
@@ -49,7 +49,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
               }}
               title={ev.title}
               description={
-                <div className="text-p1-semibold flex flex-col p-6 text-category-600">
+                <div className="text-large-respo flex flex-col p-6 font-semibold text-category-600">
                   <span>{ev.venue}</span>
                   <span>{ev.schedule}</span>
                 </div>
@@ -66,7 +66,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
           icon={<ChevronRight />}
           hoverIcon={<ArrowRight />}
           iconPosition="right"
-          className=" text-p1 box-border rounded-lg border-2 border-category-600 px-6 py-3.5"
+          className=" text-large-respo box-border rounded-lg border-2 border-category-600 px-6 py-3.5"
         >
           {linkTitle}
         </Link>

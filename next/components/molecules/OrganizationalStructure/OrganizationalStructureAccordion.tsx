@@ -34,7 +34,7 @@ export const OrganizationalStructureAccordion = ({
         onKeyDown={alwaysOpen ? null : setOpen}
       >
         <div
-          className={cx('org-structure-list-circle', {
+          className={cx('h-6 w-6 min-w-[24px] rounded-full', {
             'border-4 border-category-600': level === 1,
             'bg-category-200': level === 2,
             hidden: level > 2,

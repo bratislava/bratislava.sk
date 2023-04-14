@@ -18,7 +18,7 @@ export const LoadingSpinner = ({ className, size = 'default', text }: IProps) =>
         'h-40 w-40 border-8': size === 'default',
       })}
     />
-    {text && <p className="text-h3-medium w-52 text-category-600">{text}</p>}
+    {text && <p className="text-h3 w-52 font-medium text-category-600">{text}</p>}
   </div>
 )
 

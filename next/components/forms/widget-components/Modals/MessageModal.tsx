@@ -73,15 +73,15 @@ const MessageModal = ({
             </div>
             <div className="flex w-full flex-col items-end gap-6 p-0">
               <div className="flex flex-col items-start p-0">
-                <div className="flex h-14 items-center text-h-base font-semibold">{title}</div>
-                <div className="text-p2">{children}</div>
+                <div className="text-h6 flex h-14 items-center font-semibold">{title}</div>
+                <div className="text-default">{children}</div>
               </div>
             </div>
           </div>
           {!excludeButtons && (
             <div className="order-1 mt-6 flex flex-row items-center justify-end gap-6 p-0">
               <div
-                className="text-p2 flex cursor-pointer flex-row items-center justify-center gap-2 px-2 py-1 font-semibold not-italic"
+                className="text-default flex cursor-pointer flex-row items-center justify-center gap-2 px-2 py-1 font-semibold not-italic"
                 onClick={cancelHandler}
               >
                 {cancelLabel}

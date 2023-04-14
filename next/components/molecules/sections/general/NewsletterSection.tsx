@@ -3,7 +3,7 @@ import { NewsLetter } from '@bratislava/ui-bratislava'
 import { useTranslation } from 'next-i18next'
 
 const NewsletterSection = () => {
-  const { t } = useTranslation('newsletter')
+  const { t } = useTranslation('common', { keyPrefix: 'Newsletter' })
 
   return (
     <div className="flex w-full justify-center">

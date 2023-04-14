@@ -48,8 +48,8 @@ export const CookieConsent = ({ className }: CookieConsentProps) => {
           style={getCategoryColorLocalStyle({ category: 'main' })}
         >
           <div className="mx-auto max-w-[1110px] rounded-lg bg-white px-6 py-8 shadow md:px-10">
-            <h6 className="text-20-semibold mb-4">{t('cookie_consent_modal_content_title')}</h6>
-            <div className="text-p2 mb-8">
+            <h6 className="text-large mb-4 ">{t('cookie_consent_modal_content_title')}</h6>
+            <div className="text-default mb-8">
               {t('cookie_consent_body')}{' '}
               <MLink
                 href={t('cookie_consent_privacy_policy_link')}

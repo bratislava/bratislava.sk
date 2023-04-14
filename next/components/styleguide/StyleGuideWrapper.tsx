@@ -4,8 +4,8 @@ import {
   GlobalCategoryColorProvider,
 } from '@utils/colors'
 import cx from 'classnames'
-import { ReactNode, useState } from 'react'
 import * as React from 'react'
+import { ReactNode, useState } from 'react'
 
 type BrandCategoryString =
   | 'Mesto Bratislava'
@@ -63,7 +63,7 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
       <GlobalCategoryColorProvider category={activeBrandCategory} />
       <div className="min-h-screen bg-[#E5E5E5]">
         <div className="mx-auto max-w-screen-lg pb-64 md:px-12 md:pt-12">
-          <h1 className="text-h1 mb-10 text-center underline">Style Guide</h1>
+          <h1 className="text-h1 mb-10 text-center  underline">Style Guide</h1>
           <div className="mb-10">
             <h1 className="text-h2 ml-2">Change brand of Style Guide</h1>
             <p className="ml-2">

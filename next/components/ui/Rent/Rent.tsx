@@ -29,7 +29,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
     <div
       className={cx(
         className,
-        'rent-shadow max-h-sm min-w-60 mr-4 flex flex-1 flex-col items-center rounded-xl p-5 px-3 text-center md:mr-0 md:bg-transparent lg:min-w-0',
+        'max-h-sm min-w-60 mr-4 flex flex-1 flex-col items-center rounded-xl p-5 px-3 text-center md:mr-0 md:bg-transparent lg:min-w-0',
       )}
     >
       <div className="rounded-full bg-category-200">
@@ -38,9 +38,9 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
         )}
       </div>
       <div className="flex w-60 flex-col items-center text-center md:w-auto xl:w-[294px]">
-        <h1 className="text-h4-normal mb-7 mt-5 h-16">{title}</h1>
+        <h1 className="text-h4 mb-7 mt-5 h-16">{title}</h1>
 
-        <div className="w-full break-words text-center">
+        <div className="line-clamp-5 w-full break-words text-center">
           {/* TODO replace by Markdown component - not used now, because it breaks modal for some reason */}
           <ReactMarkdown skipHtml>{desc}</ReactMarkdown>
         </div>
@@ -73,7 +73,7 @@ export const Rent = ({ className, icon, title, desc, linkLabel }: RentProps) => 
               />
             )}
           </div>
-          <h1 className="text-h4-normal mb-8 text-left">{title}</h1>
+          <h1 className="text-h4 mb-8 text-left">{title}</h1>
           {/* TODO replace by Markdown component with proper styles, remove modal-content-rent-markdown class */}
           <ReactMarkdown
             remarkPlugins={[[remarkGfm]]}
