@@ -6,16 +6,7 @@ fragment HomepageEntity on HomepageEntity {
     title
     metaDescription
     posts {
-      title
-      slug
-      plausibleId
-      image {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
+      ...HomepagePostBlock
     }
     right_highlight {
       ...NewsCardBlog
@@ -93,6 +84,19 @@ fragment HomepageHeader on ComponentBlocksHomepageHeader {
     }
   }
   mobilePicture {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+}
+
+fragment HomepagePostBlock on ComponentBlocksHomepagePost{
+  title
+  slug
+  plausibleId
+  image {
     data {
       attributes {
         url
