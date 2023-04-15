@@ -1,20 +1,6 @@
-import ChevronRight from '@assets/images/chevron-right.svg'
 import Button, { ButtonProps } from '@components/forms/simple-components/Button'
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
-type VerticalCardButtonProps = ButtonProps & {
-  size?: 'default' | 'medium' | 'large' | 'custom'
-}
-
-export const VerticalCardButton = ({ className, children, ...rest }: VerticalCardButtonProps) => (
-  <Button
-    variant="category"
-    className={cx(
-      'h-14 w-14 transform rounded-full transition-transform hover:scale-110',
-      className,
-    )}
-    {...rest}
-  >
-    {children ?? <ChevronRight />}
-  </Button>
+export const VerticalCardButton = ({ className, children, ...rest }: ButtonProps) => (
+  <Button variant="category" className={twMerge('h-12 w-12 rounded-full', className)} {...rest} />
 )
