@@ -1,20 +1,22 @@
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
+
 import { createContext, ReactNode, useContext } from 'react'
+import MessageKeys from 'use-intl/dist/core/utils/MessageKeys'
 
 export type LanguageCode = 'en' | 'sk'
 export type Localizations = Partial<Record<LanguageCode, string>>
 
 const LocalizationsContext = createContext<Localizations | null>(null)
 
-const shortNameMap: Record<LanguageCode, string> = {
+const shortNameMap = {
   en: 'language_short.en',
   sk: 'language_short.sk',
-}
+} as const
 
-const longNameMap: Record<LanguageCode, string> = {
+const longNameMap = {
   en: 'language_long.en',
   sk: 'language_long.sk',
-}
+} as const
 
 export const LocalizationsProvider = ({
   children,
@@ -30,9 +32,10 @@ export const LocalizationsProvider = ({
 
 export const useLocalizations = () => {
   const context = useContext(LocalizationsContext)
-  const { i18n, t } = useTranslation('common')
+  const t = useTranslations();
+  const locale = useLocale();
 
-  const currentLanguageCode = i18n.language as LanguageCode
+  const currentLanguageCode = locale as LanguageCode
   const otherLanguageCode = ['sk', 'en'].find((l) => l !== currentLanguageCode) as
     | LanguageCode
     | undefined

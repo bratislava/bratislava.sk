@@ -1,6 +1,7 @@
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import React from 'react'
 
 import { Divider } from '../Divider/Divider'
@@ -47,7 +48,7 @@ export const FileList = ({
   hideCategory,
   noScroll,
 }: FileListProps) => {
-  const { t } = useTranslation()
+  const t = useTranslations();
 
   const [showMore, setShowMore] = React.useState(false)
   // done like this because of typescript inference for useState

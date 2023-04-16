@@ -1,7 +1,8 @@
 import Calendar from '@assets/images/calendar.svg'
 import { LocalDate } from '@js-joda/core'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import * as React from 'react'
 
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
@@ -23,7 +24,7 @@ export const DateSelect = ({
   showShorcuts,
   ...rest
 }: DateSelectProps) => {
-  const { t } = useTranslation()
+  const t = useTranslations();
 
   const selectedDate = LocalDate.parse(value)
   const MONTHS = [

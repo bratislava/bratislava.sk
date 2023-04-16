@@ -1,7 +1,8 @@
 import Checkbox from '@assets/images/checkbox.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
 
 import { Button } from '../Button/Button'
@@ -35,7 +36,7 @@ export const AdvancedSearch = ({
   setInput,
   setSearchQuery,
 }: AdvancedSearchProps) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations();
 
   const options = [
     { key: 'articles', value: t('articles') },

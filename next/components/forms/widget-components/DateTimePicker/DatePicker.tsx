@@ -2,7 +2,8 @@ import CalendarIcon from '@assets/images/forms/calendar-icon.svg'
 import { DateValue, parseDate } from '@internationalized/date'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
-import { useTranslation } from 'next-i18next'
+import { useLocale } from 'next-intl'
+
 import { forwardRef, ReactNode, RefObject, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -67,8 +68,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerBase>(
     },
     ref,
   ) => {
-    const { i18n } = useTranslation()
-    const locale = i18n.language
+    const locale = useLocale()
 
     const [valueState, setValueState] = useState<DateValue | null>(null)
     const [prevValue, setPrevValue] = useState<string>('')

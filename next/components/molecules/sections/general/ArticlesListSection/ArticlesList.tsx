@@ -2,7 +2,8 @@ import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
 import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { client } from '@utils/gql'
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
+
 import { useEffect, useState } from 'react'
 
 import { ArticlesFilter, Card } from '../../../../atoms/ArticlesFilter'
@@ -22,7 +23,7 @@ const ArticlesList = ({
   category,
   includesFiltering = false,
 }: ArticlesListProps) => {
-  const { i18n } = useTranslation()
+  const locale = useLocale()
   const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState<BlogPostEntity[]>([])
   const [totalArticles, setTotal] = useState<number>(0)
@@ -32,7 +33,7 @@ const ArticlesList = ({
   const [categoryExists] = useState(!!category)
   const [filteredTags, setFilteredTags] = useState<Card[]>([])
 
-  const { t } = useTranslation()
+  const t = useTranslations();
 
   const handleCategory = (innerCategory: string) => {
     setSelectedCategory(innerCategory)
@@ -63,7 +64,7 @@ const ArticlesList = ({
               : {},
           },
         },
-        locale: i18n.language,
+        locale: locale,
       })
       if (isMounted) return
       const blogData = (blogPosts?.data ?? []) as unknown as BlogPostEntity[]
@@ -101,7 +102,7 @@ const ArticlesList = ({
           },
         },
         limit: itemsPerPage,
-        locale: i18n.language,
+        locale: locale,
       })
 
       if (isMounted) return

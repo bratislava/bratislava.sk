@@ -1,4 +1,5 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 
 interface SelectAllDropdownRowProps {
   divider?: boolean
@@ -11,7 +12,7 @@ const SelectAllDropdownRow = ({
   isEverythingSelected,
   onSelectAll,
 }: SelectAllDropdownRowProps) => {
-  const { t } = useTranslation('forms')
+  const t = useTranslations()
   const handleOnClick = () => {
     onSelectAll(isEverythingSelected)
   }

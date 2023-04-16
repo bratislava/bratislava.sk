@@ -2,7 +2,8 @@ import { MSGraphFilteredGroupUser } from '@backend/services/ms-graph'
 import { userSearchFetcher } from '@backend/utils/organisationalStructure'
 import { LoadingSpinner } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import useSwr from 'swr'
 
 import { OrganizationalStructureAccordionCards } from '../OrganizationalStructure/OrganizationalStructureAccordionCards'
@@ -17,7 +18,7 @@ interface UsersResultsProps {
 }
 
 const Users = ({ data }: { data: MSGraphFilteredGroupUser[]; filters: UsersFilters }) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations();
 
   // TODO: Tmp fix - MSGraphFilteredGroupUser ignores '| null' in properties
   const filteredUsers = data.filter((user) => user.displayName && user.jobTitle)
@@ -29,7 +30,7 @@ const Users = ({ data }: { data: MSGraphFilteredGroupUser[]; filters: UsersFilte
 }
 
 const DataWrapper = ({ filters }: { filters: UsersFilters }) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations();
 
   const { data, error } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call

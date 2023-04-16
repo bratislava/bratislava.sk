@@ -3,7 +3,8 @@ import {
   homepageSearchFetcher,
 } from '@backend/meili/fetchers/homepageSearchFetcher'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
+
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'
@@ -21,7 +22,8 @@ interface HomePageSearchProps {
 
 const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const router = useRouter()
-  const { t, i18n } = useTranslation('common')
+  const t = useTranslations();
+  const locale = useLocale();
 
   const ref = useRef(null)
   useOnClickOutside(ref, () => setOpen(false))
@@ -40,8 +42,8 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const filters = { search: searchValue }
 
   const { data, error } = useSWR(
-    getHomepageSearchSwrKey(filters, i18n.language),
-    homepageSearchFetcher(filters, i18n.language),
+    getHomepageSearchSwrKey(filters, locale),
+    homepageSearchFetcher(filters, locale),
   )
 
   const { dataToDisplay, loadingAndNoDataToDisplay } = useGetSwrExtras({

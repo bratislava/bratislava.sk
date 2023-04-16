@@ -1,4 +1,5 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../../simple-components/Tag'
@@ -33,7 +34,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     onDeleteLastValue,
   } = props
 
-  const { t } = useTranslation('forms')
+  const t = useTranslations()
   const multipleOptionsTagText = value
     ? `${value.length} ${t(value.length < 5 ? 'options_few' : 'options_many').toLowerCase()}`
     : t('options_zero')

@@ -1,6 +1,7 @@
 import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import { useState } from 'react'
 
 import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
@@ -10,7 +11,7 @@ export interface BlogSearchCardsProps {
 }
 
 export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false)
   const SHOW_LESS_COUNT = 3
 

@@ -2,14 +2,15 @@ import { TopServicesItemFragment } from '@bratislava/strapi-sdk-homepage'
 import { Icon } from '@components/atoms/icon/Icon'
 import Button from '@components/forms/simple-components/Button'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 
 type TopNineItemProps = {
   topServicesItem: TopServicesItemFragment
 }
 
 export const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
-  const { t } = useTranslation('common', { keyPrefix: 'TopServices' })
+  const t = useTranslations("TopServices")
   const { icon, link } = topServicesItem
 
   const { children: label, ...linkProps } = getCommonLinkProps(link)
