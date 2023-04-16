@@ -13,6 +13,10 @@ type CarouselProps = {
   hideControls?: boolean
 }
 
+// Copied from mestskakniznica.sk project
+// TODO does not work properly on desktop, e.g. with 2 items visible
+// Used on mobile only
+
 const Carousel = ({
   className,
   listClassName,

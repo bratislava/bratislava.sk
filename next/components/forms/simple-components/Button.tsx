@@ -104,9 +104,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         'px-4 py-3': size === 'lg' && !isIconButton && !isPlainVariant,
 
         // padding - filled and outlined variants with "icon"
-        'p-2.5 lg:p-3': size === 'responsive' && isIconButton && !isPlainVariant,
-        'p-2.5': size === 'sm' && isIconButton && !isPlainVariant,
-        'p-3': size === 'lg' && isIconButton && !isPlainVariant,
+        'p-2.5 lg:p-3':
+          variant !== 'unstyled' && size === 'responsive' && isIconButton && !isPlainVariant,
+        'p-2.5': variant !== 'unstyled' && size === 'sm' && isIconButton && !isPlainVariant,
+        'p-3': variant !== 'unstyled' && size === 'lg' && isIconButton && !isPlainVariant,
 
         // padding - plain variants
         'px-2 py-1 lg:px-3 lg:py-2': size === 'responsive' && !isIconButton && isPlainVariant,

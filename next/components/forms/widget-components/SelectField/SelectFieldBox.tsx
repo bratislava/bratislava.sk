@@ -70,18 +70,18 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
         /* TAGS */
         value && value.length > 0 ? (
           value.length < 3 ? (
-            (multiple ? value : value.slice(0, 1)).map((option: SelectOption, key: number) => (
+            (multiple ? value : value.slice(0, 1)).map((option, index) => (
               <Tag
-                key={key}
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 text={option.title ?? String(option.const)}
                 size="small"
-                onRemove={() => onRemove(key)}
-                removable
+                onRemove={() => onRemove(index)}
                 shorthand
               />
             ))
           ) : (
-            <Tag text={multipleOptionsTagText} size="small" onRemove={onRemoveAll} removable />
+            <Tag text={multipleOptionsTagText} size="small" onRemove={onRemoveAll} />
           )
         ) : null
       }

@@ -4892,6 +4892,7 @@ export type HomepageEntityFragment = {
           excerpt?: string | null
           slug?: string | null
           updatedAt?: any | null
+          publishedAt?: any | null
           date_added?: any | null
           coverImage?: {
             __typename?: 'UploadFileEntityResponse'
@@ -4933,6 +4934,7 @@ export type HomepageEntityFragment = {
           excerpt?: string | null
           slug?: string | null
           updatedAt?: any | null
+          publishedAt?: any | null
           date_added?: any | null
           coverImage?: {
             __typename?: 'UploadFileEntityResponse'
@@ -5110,6 +5112,7 @@ export type HomepageQuery = {
               excerpt?: string | null
               slug?: string | null
               updatedAt?: any | null
+              publishedAt?: any | null
               date_added?: any | null
               coverImage?: {
                 __typename?: 'UploadFileEntityResponse'
@@ -5151,6 +5154,7 @@ export type HomepageQuery = {
               excerpt?: string | null
               slug?: string | null
               updatedAt?: any | null
+              publishedAt?: any | null
               date_added?: any | null
               coverImage?: {
                 __typename?: 'UploadFileEntityResponse'
@@ -5338,6 +5342,7 @@ export type NewsCardBlogFragment = {
       excerpt?: string | null
       slug?: string | null
       updatedAt?: any | null
+      publishedAt?: any | null
       date_added?: any | null
       coverImage?: {
         __typename?: 'UploadFileEntityResponse'
@@ -9524,6 +9529,7 @@ export const NewsCardBlogFragmentDoc = gql`
         excerpt
         slug
         updatedAt
+        publishedAt
         date_added
         coverImage {
           data {

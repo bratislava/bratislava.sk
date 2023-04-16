@@ -112,6 +112,7 @@ fragment NewsCardBlog on BlogPostEntityResponse {
       excerpt
       slug
       updatedAt
+      publishedAt
       date_added
       coverImage {
         data {

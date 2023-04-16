@@ -4,9 +4,12 @@ import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { LatestBlogPostEntityFragment, NewsCardBlogFragment } from '@bratislava/strapi-sdk-homepage'
 import { Iframe } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
+import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
+import Carousel from '@components/organisms/Carousel/Carousel'
 import { LocalDate, Month, Period } from '@js-joda/core'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
+import { getNumericLocalDate } from '@utils/local-date'
 import { getLanguageKey } from '@utils/utils'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
@@ -60,10 +63,6 @@ export const Posts = ({
   )
   const documents = officialBoardData || []
 
-  const largeCount = 2
-
-  const largeNews = activeNewsCards.slice(0, largeCount) // first and second
-
   const { Link: UILink } = useUIContext()
 
   const { t } = useTranslation('common')
@@ -93,75 +92,104 @@ export const Posts = ({
       </HorizontalScrollWrapper>
 
       {activeTab === 0 && (
-        <div className="mt-8 block lg:mt-14">
-          <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
-            <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
-              {!leftHighLight &&
-                largeNews.map((newsCard, i) => (
-                  <div key={i}>
-                    <NewsCard {...newsCard} coverImageSizes={imageSizes} />
-                  </div>
-                ))}
-              {leftHighLight && (
-                <NewsCard
-                  {...leftHighLight?.data?.attributes}
-                  readMoreText={readMoreText}
-                  coverImageSizes={imageSizes}
-                />
-              )}
-              {rightHighLight && (
-                <NewsCard
-                  {...rightHighLight?.data?.attributes}
-                  readMoreText={readMoreText}
-                  coverImageSizes={imageSizes}
-                />
-              )}
-
-              {latestPost?.length > 0 && (
-                <div className="hidden lg:block">
-                  {latestPost.map((newsCard, i) => {
-                    const card = newsCard.attributes
-                    const tag = card.tag.data?.attributes
-                    const colorStyle = getCategoryColorLocalStyle({
-                      color: card.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
-                    })
-
-                    return (
-                      <div key={i} className="relative" style={colorStyle}>
-                        {tag && (
-                          <div className="mb-5">
-                            <Tag title={tag?.title} />
-                          </div>
-                        )}
-                        <UILink href={`/blog/${card.slug}`}>
-                          <div className="mb-8 font-semibold text-font underline after:absolute after:inset-0 hover:text-category-600">
-                            {card.title}
-                          </div>
-                        </UILink>
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
-              <div className="col-span-3 mt-14 hidden justify-center lg:flex">
-                {latestPost?.length > 0 && (
-                  <Button
-                    href={t('allNewsLink')}
-                    variant="category-outline"
-                    endIcon={<ArrowRightIcon />}
-                  >
-                    {readMoreNewsText}
-                  </Button>
+        <>
+          {/* TODO carousel and new BlogPostCard is used only on mobile */}
+          <Carousel
+            className="-mx-8 lg:hidden"
+            itemClassName="w-[calc(100%-1rem)] md:w-[calc(50%-1rem)] py-8"
+            listClassName="px-8"
+            visibleCount={1}
+            hideControls
+            items={[leftHighLight, rightHighLight].map((post, i) => {
+              const { title, slug, coverImage, date_added, publishedAt, tag } =
+                post.data.attributes ?? {}
+              return {
+                key: `${i}`,
+                element: (
+                  <BlogPostCard
+                    style={getCategoryColorLocalStyle({
+                      color: tag.data.attributes.pageCategory.data.attributes.color,
+                    })}
+                    variant="shadow"
+                    date={getNumericLocalDate(date_added ?? publishedAt)}
+                    tag={tag.data.attributes.title}
+                    title={title}
+                    linkProps={{ children: readMoreText, href: `/blog/${slug}` }}
+                    imgSrc={coverImage?.data.attributes.url}
+                    imgSizes={imageSizes}
+                  />
+                ),
+              }
+            })}
+          />
+          <div className="mt-8 hidden lg:mt-14 lg:block">
+            <HorizontalScrollWrapper className="-mx-8 space-x-4 px-8 pb-8 lg:pb-0">
+              <div className="flex grid-cols-3 gap-x-5 lg:grid lg:gap-x-8">
+                {leftHighLight && (
+                  <NewsCard
+                    {...leftHighLight?.data?.attributes}
+                    readMoreText={readMoreText}
+                    coverImageSizes={imageSizes}
+                  />
                 )}
+                {rightHighLight && (
+                  <NewsCard
+                    {...rightHighLight?.data?.attributes}
+                    readMoreText={readMoreText}
+                    coverImageSizes={imageSizes}
+                  />
+                )}
+
+                {latestPost?.length > 0 && (
+                  <div className="hidden lg:block">
+                    {latestPost.map((newsCard, i) => {
+                      const card = newsCard.attributes
+                      const tag = card.tag.data?.attributes
+                      const colorStyle = getCategoryColorLocalStyle({
+                        color: card.tag?.data?.attributes?.pageCategory?.data?.attributes?.color,
+                      })
+
+                      return (
+                        <div key={i} className="relative" style={colorStyle}>
+                          {tag && (
+                            <div className="mb-5">
+                              <Tag title={tag?.title} />
+                            </div>
+                          )}
+                          <UILink href={`/blog/${card.slug}`}>
+                            <div className="mb-8 font-semibold text-font underline after:absolute after:inset-0 hover:text-category-600">
+                              {card.title}
+                            </div>
+                          </UILink>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+                <div className="col-span-3 mt-14 hidden justify-center lg:flex">
+                  {latestPost?.length > 0 && (
+                    <Button
+                      href={t('allNewsLink')}
+                      variant="category-outline"
+                      endIcon={<ArrowRightIcon />}
+                    >
+                      {readMoreNewsText}
+                    </Button>
+                  )}
+                </div>
               </div>
+            </HorizontalScrollWrapper>
+            <div className="flex justify-center lg:hidden">
+              <Button
+                href={t('allNewsLink')}
+                variant="category-outline"
+                endIcon={<ArrowRightIcon />}
+              >
+                {t('allNews')}
+              </Button>
             </div>
-          </HorizontalScrollWrapper>
-          <div className="flex justify-center lg:hidden">
-            <Button href={t('allNewsLink')} variant="category-outline" endIcon={<ArrowRightIcon />}>
-              {t('allNews')}
-            </Button>
           </div>
-        </div>
+        </>
       )}
       {activeTab === 1 && (
         <div className="mt-14 flex flex-col gap-y-10">
