@@ -30,8 +30,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
     import(`../messages/${locale}.json`),
   ])
 
-  console.log(messages)
-
   return {
     props: {
       homepageContext,
