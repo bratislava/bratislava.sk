@@ -4892,6 +4892,7 @@ export type HomepageEntityFragment = {
           excerpt?: string | null
           slug?: string | null
           updatedAt?: any | null
+          publishedAt?: any | null
           date_added?: any | null
           coverImage?: {
             __typename?: 'UploadFileEntityResponse'
@@ -4933,6 +4934,7 @@ export type HomepageEntityFragment = {
           excerpt?: string | null
           slug?: string | null
           updatedAt?: any | null
+          publishedAt?: any | null
           date_added?: any | null
           coverImage?: {
             __typename?: 'UploadFileEntityResponse'
@@ -5110,6 +5112,7 @@ export type HomepageQuery = {
               excerpt?: string | null
               slug?: string | null
               updatedAt?: any | null
+              publishedAt?: any | null
               date_added?: any | null
               coverImage?: {
                 __typename?: 'UploadFileEntityResponse'
@@ -5151,6 +5154,7 @@ export type HomepageQuery = {
               excerpt?: string | null
               slug?: string | null
               updatedAt?: any | null
+              publishedAt?: any | null
               date_added?: any | null
               coverImage?: {
                 __typename?: 'UploadFileEntityResponse'
@@ -5314,6 +5318,20 @@ export type HomepageHeaderFragment = {
   } | null
 }
 
+export type HomepagePostBlockFragment = {
+  __typename?: 'ComponentBlocksHomepagePost'
+  title?: string | null
+  slug?: string | null
+  plausibleId?: string | null
+  image?: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      attributes?: { __typename?: 'UploadFile'; url: string } | null
+    } | null
+  } | null
+}
+
 export type NewsCardBlogFragment = {
   __typename?: 'BlogPostEntityResponse'
   data?: {
@@ -5324,6 +5342,7 @@ export type NewsCardBlogFragment = {
       excerpt?: string | null
       slug?: string | null
       updatedAt?: any | null
+      publishedAt?: any | null
       date_added?: any | null
       coverImage?: {
         __typename?: 'UploadFileEntityResponse'
@@ -9488,6 +9507,20 @@ export const GeneralFragmentDoc = gql`
   ${GeneralPageRelationFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
+export const HomepagePostBlockFragmentDoc = gql`
+  fragment HomepagePostBlock on ComponentBlocksHomepagePost {
+    title
+    slug
+    plausibleId
+    image {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
+  }
+`
 export const NewsCardBlogFragmentDoc = gql`
   fragment NewsCardBlog on BlogPostEntityResponse {
     data {
@@ -9496,6 +9529,7 @@ export const NewsCardBlogFragmentDoc = gql`
         excerpt
         slug
         updatedAt
+        publishedAt
         date_added
         coverImage {
           data {
@@ -9561,16 +9595,7 @@ export const HomepageEntityFragmentDoc = gql`
       title
       metaDescription
       posts {
-        title
-        slug
-        plausibleId
-        image {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
+        ...HomepagePostBlock
       }
       right_highlight {
         ...NewsCardBlog
@@ -9627,6 +9652,7 @@ export const HomepageEntityFragmentDoc = gql`
       }
     }
   }
+  ${HomepagePostBlockFragmentDoc}
   ${NewsCardBlogFragmentDoc}
   ${HomepageHeaderFragmentDoc}
   ${TopServicesItemFragmentDoc}
