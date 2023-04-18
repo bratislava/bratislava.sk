@@ -67,7 +67,7 @@ export const Posts = ({
 
   const { Link: UILink } = useUIContext()
 
-  const t = useTranslations();
+  const t = useTranslations()
 
   const now = LocalDate.now()
   const deadline = LocalDate.of(2024, Month.MARCH, 14)
@@ -194,9 +194,7 @@ export const Posts = ({
             <>
               <div className="pb-8">
                 <Iframe
-                  url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${getLanguageKey(
-                    locale,
-                  )}`}
+                  url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${locale}`}
                   iframeWidth="container"
                   iframeHeight="620"
                   fullHeight={false}
