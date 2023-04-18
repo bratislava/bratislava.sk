@@ -47,7 +47,7 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
           'm-2 h-14 w-40 rounded-lg border border-category-700 p-2 shadow-lg transition',
           {
             'bg-category-700 text-white': active,
-            'bg-category-200 text-black': !active,
+            'text-black bg-category-200': !active,
           },
         )}
         style={colorStyle}

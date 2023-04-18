@@ -2,14 +2,14 @@ import BlogPostsResults from '@components/molecules/SearchPage/BlogPostsResults'
 import PagesResults from '@components/molecules/SearchPage/PagesResults'
 import UsersResults from '@components/molecules/SearchPage/UsersResults'
 import { AdvancedSearch, SectionContainer } from '@components/ui'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import React, { useEffect, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
 const SearchPageContent = () => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState<string>('')

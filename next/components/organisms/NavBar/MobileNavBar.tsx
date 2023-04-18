@@ -8,7 +8,7 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { useRouter } from 'next/router'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import React, { useEffect } from 'react'
 

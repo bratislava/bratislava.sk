@@ -1,7 +1,6 @@
 import PrenajomImage from '@assets/images/PrenajomImage.png'
 import { HorizontalScrollWrapper, Rent, RentProps } from '@bratislava/ui-bratislava'
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 export interface IProps {
   className?: string
@@ -30,7 +29,7 @@ const RENTS = [
 ]
 
 const RentBenefits = ({ rents = RENTS }: IProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
   return (
     <div className="mt-20 md:flex md:flex-col md:items-center">
       <h1 className="text-h1 md:text-5xl ml-14  md:ml-0">{t('rentBenefits')}</h1>

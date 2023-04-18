@@ -2,8 +2,7 @@ import { ChevronRightRounded } from '@assets/images'
 import { HomepageSearchData } from '@backend/meili/fetchers/homepageSearchFetcher'
 import { LoadingSpinner } from '@bratislava/ui-bratislava'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 type HomePageSearchResultsProps = {
   searchValue: string
@@ -12,7 +11,7 @@ type HomePageSearchResultsProps = {
 }
 
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   return isLoading ? (
     <div className="text-primary flex flex-col items-center justify-center p-10">

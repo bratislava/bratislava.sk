@@ -1,5 +1,4 @@
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 export const useTitle = (childTitle?: string | null) => {
   const t = useTranslations()

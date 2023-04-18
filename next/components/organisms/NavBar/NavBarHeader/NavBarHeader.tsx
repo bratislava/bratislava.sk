@@ -10,7 +10,7 @@ import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import React from 'react'
 

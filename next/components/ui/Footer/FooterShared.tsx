@@ -26,7 +26,7 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
 }
 
 export const FooterContacts = ({ address, mediaEmail, email, phone }: FooterFragment) => {
-  const t = useTranslations("Footer")
+  const t = useTranslations('Footer')
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
@@ -62,9 +62,18 @@ export const FooterAccessibilityLink = ({ accessibilityPageLink }: FooterFragmen
 }
 
 export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
-  return <>{t.rich('Footer.copyright', {innovations: (chunks) => <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />, year: new Date().getFullYear()})}</>
+  return (
+    <>
+      {t.rich('Footer.copyright', {
+        innovations: (chunks) => (
+          <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />
+        ),
+        year: new Date().getFullYear(),
+      })}
+    </>
+  )
 }
 
 export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {

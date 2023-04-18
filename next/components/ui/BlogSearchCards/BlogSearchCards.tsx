@@ -1,6 +1,6 @@
 import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import { useState } from 'react'
 
@@ -11,7 +11,7 @@ export interface BlogSearchCardsProps {
 }
 
 export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
   const [isOpen, setIsOpen] = useState(false)
   const SHOW_LESS_COUNT = 3
 

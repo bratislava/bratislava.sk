@@ -1,6 +1,6 @@
 import { vznDefaultFilters, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { BasicSearch } from '@bratislava/ui-bratislava'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import { useEffect, useState } from 'react'
 import { useQueryParam } from 'use-query-params'
@@ -9,7 +9,7 @@ import { useDebounce } from 'usehooks-ts'
 import DocumentListResults from './DocumentListResults'
 
 const DocumentListSection = () => {
-  const t = useTranslations();
+  const t = useTranslations()
   const [filters, setFilters] = useState<VznFilters>(vznDefaultFilters)
 
   const [routerQueryValue] = useQueryParam<string>('keyword')

@@ -32,8 +32,8 @@ export const LocalizationsProvider = ({
 
 export const useLocalizations = () => {
   const context = useContext(LocalizationsContext)
-  const t = useTranslations();
-  const locale = useLocale();
+  const t = useTranslations()
+  const locale = useLocale()
 
   const currentLanguageCode = locale as LanguageCode
   const otherLanguageCode = ['sk', 'en'].find((l) => l !== currentLanguageCode) as

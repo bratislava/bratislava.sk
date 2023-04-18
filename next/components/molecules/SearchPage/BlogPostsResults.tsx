@@ -17,7 +17,7 @@ interface BlogPostsResultsProps {
 }
 
 const BlogPosts = ({ data }: { data: SearchResponse<BlogItem>; filters: BlogPostsFilters }) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   if (data.hits.length > 0) {
     return <BlogSearchCards blogs={data.hits} />
@@ -33,8 +33,8 @@ const DataWrapper = ({
   filters: BlogPostsFilters
   onPageChange?: (page: number) => void
 }) => {
-    const t = useTranslations();
-  const locale = useLocale();
+  const t = useTranslations()
+  const locale = useLocale()
 
   const { data, error } = useSwr(
     getBlogPostsSwrKey(filters, locale),

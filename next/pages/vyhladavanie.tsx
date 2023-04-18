@@ -6,8 +6,7 @@ import { client } from '@utils/gql'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 import * as React from 'react'
 
@@ -22,7 +21,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
 
   const [general, messages] = await Promise.all([
     client.General({ locale }),
-    import(`../messages/${locale}.json`)
+    import(`../messages/${locale}.json`),
   ])
 
   return {
@@ -35,7 +34,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
 }
 
 const Page = ({ general }: PageProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
   const title = useTitle(t('searching'))
 
   return (

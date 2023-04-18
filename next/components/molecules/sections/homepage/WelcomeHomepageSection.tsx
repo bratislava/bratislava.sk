@@ -5,7 +5,7 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import { useHomepageContext } from '@utils/homepageContext'
 import cx from 'classnames'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import { useMemo, useState } from 'react'
 
@@ -13,7 +13,7 @@ import { getParsedMenus } from '../../../organisms/NavBar/NavMenu/getParsedMenus
 import HomePageSearch from '../../HomePageSearch'
 
 export const WelcomeHomepageSection = () => {
-  const t = useTranslations();
+  const t = useTranslations()
   const { menu } = useGeneralContext()
   const { homepage } = useHomepageContext()
 

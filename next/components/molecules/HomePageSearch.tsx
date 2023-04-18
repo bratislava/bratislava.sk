@@ -22,8 +22,8 @@ interface HomePageSearchProps {
 
 const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const router = useRouter()
-  const t = useTranslations();
-  const locale = useLocale();
+  const t = useTranslations()
+  const locale = useLocale()
 
   const ref = useRef(null)
   useOnClickOutside(ref, () => setOpen(false))

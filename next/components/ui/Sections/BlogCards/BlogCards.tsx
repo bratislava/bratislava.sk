@@ -2,8 +2,7 @@ import Button from '@components/forms/simple-components/Button'
 import { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 import { Carousel } from '../../Carousel/Carousel'
 import { HorizontalCard } from '../../HorizontalCard/HorizontalCard'
@@ -22,7 +21,7 @@ export interface BlogCardsProps {
 }
 
 export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <div className={cx(className)}>

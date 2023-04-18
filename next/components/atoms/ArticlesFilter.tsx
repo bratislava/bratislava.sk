@@ -1,7 +1,6 @@
 // @ts-strict-ignore
 import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratislava'
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 export interface Card {
   title: string | null | undefined
@@ -36,7 +35,7 @@ export const ArticlesFilter = ({
     'Kultúra \na komunity',
   ]
 
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <div>

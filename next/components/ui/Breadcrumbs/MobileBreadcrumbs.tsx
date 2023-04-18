@@ -2,7 +2,7 @@ import AccordionChevron from '@assets/images/accordion-chevron.svg'
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import React from 'react'
 
@@ -14,7 +14,7 @@ const goBack = () => {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=4316-6581&t=h4JAjB29v0Uizs8Y-0
  */
 const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
-  const t = useTranslations("Breadcrumbs")
+  const t = useTranslations('Breadcrumbs')
   const witHome = [{ title: t('homepage'), path: '/' }, ...breadcrumbs]
   const withHomeWithoutCurrent = witHome.slice(0, -1)
   const last = withHomeWithoutCurrent[withHomeWithoutCurrent.length - 1]

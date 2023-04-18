@@ -7,7 +7,6 @@ import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCa
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 
-
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
 import ButtonShowCase from '../components/styleguide/showcases/ButtonShowCase'
@@ -69,7 +68,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   return {
     props: {
-      messages: (await     import(`../messages/${locale}.json`)).default,
+      messages: (await import(`../messages/${locale}.json`)).default,
     },
   }
 }

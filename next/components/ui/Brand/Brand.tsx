@@ -11,7 +11,7 @@ export interface BrandProps {
 }
 
 export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <div className={cx('flex', className)} aria-label="brand">
@@ -19,7 +19,9 @@ export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
         <BALogo className="shrink-0" />
         {withTitle && (
           <span className="text-default">
-            {t.rich('capitalCity', {semibold: (chunks) => <span className="font-semibold">{chunks}</span>})}
+            {t.rich('capitalCity', {
+              semibold: (chunks) => <span className="font-semibold">{chunks}</span>,
+            })}
           </span>
         )}
       </MLink>

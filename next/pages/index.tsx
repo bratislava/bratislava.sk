@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   const [homepageContext, general, messages] = await Promise.all([
     homepageContextFetcher(locale),
     client.General({ locale }),
-    import(`../messages/${locale}.json`)
+    import(`../messages/${locale}.json`),
   ])
 
   console.log(messages)
@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
     props: {
       homepageContext,
       general,
-      messages: messages.default
+      messages: messages.default,
     },
     revalidate: 10,
   }

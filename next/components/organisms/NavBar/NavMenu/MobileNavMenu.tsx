@@ -7,7 +7,7 @@ import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
@@ -17,7 +17,7 @@ import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
 const MobileNavMenu = () => {
-  const t = useTranslations("NavMenu")
+  const t = useTranslations('NavMenu')
   const { height } = useWindowSize()
   const heightWithoutHeader = `calc(${height}px - 14*4px)`
 

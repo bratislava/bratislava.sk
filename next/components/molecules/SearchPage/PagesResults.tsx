@@ -15,7 +15,7 @@ interface PagesResultsProps {
 }
 
 const Pages = ({ data }: { data: SearchResponse<PageMeili>; filters: PagesFilters }) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   if (data.hits.length > 0) {
     return <PageCards pages={data.hits as PageCardProps[]} />
@@ -24,13 +24,10 @@ const Pages = ({ data }: { data: SearchResponse<PageMeili>; filters: PagesFilter
 }
 
 const DataWrapper = ({ filters }: { filters: PagesFilters }) => {
-    const t = useTranslations();
-  const locale = useLocale();
+  const t = useTranslations()
+  const locale = useLocale()
 
-  const { data, error } = useSwr(
-    getPagesSwrKey(filters, locale),
-    pagesFetcher(filters, locale),
-  )
+  const { data, error } = useSwr(getPagesSwrKey(filters, locale), pagesFetcher(filters, locale))
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
     data,

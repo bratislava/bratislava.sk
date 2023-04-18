@@ -66,8 +66,8 @@ const en = {
 }
 
 const BlogCardsPrimatorHomepageSection = () => {
-    const t = useTranslations();
-  const locale = useLocale();
+  const t = useTranslations()
+  const locale = useLocale()
   const { homepage, blogPosts, rozkopavkyBlogPosts } = useHomepageContext()
 
   const data = useMemo(() => {

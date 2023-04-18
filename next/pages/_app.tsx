@@ -38,44 +38,44 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         {/* look for CookieConsent component for 3rd party scripts you'd expect to find here */}
       </Head>
       <NextIntlProvider messages={pageProps.messages}>
-      <UIContextProvider
-        components={{
-          Link: ({ href, className, children, locale, target, rel, style }) => {
-            if (href === undefined || href === null) return null
-            return (
-              <Link
-                href={href}
-                locale={locale}
-                target={target}
-                rel={rel}
-                className={className}
-                style={style}
-              >
-                {children}
-              </Link>
-            )
-          },
-        }}
-      >
-        <PlausibleProvider
-          domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
-          taggedEvents
-          // uncomment for local testing, needs to be run with `yarn build && yarn start`
-          // trackLocalhost
+        <UIContextProvider
+          components={{
+            Link: ({ href, className, children, locale, target, rel, style }) => {
+              if (href === undefined || href === null) return null
+              return (
+                <Link
+                  href={href}
+                  locale={locale}
+                  target={target}
+                  rel={rel}
+                  className={className}
+                  style={style}
+                >
+                  {children}
+                </Link>
+              )
+            },
+          }}
         >
-          <BAQueryClientProvider>
-            <QueryParamProvider adapter={NextAdapter}>
-              <SSRProvider>
-                <NavMenuContextProvider>
-                  <div id="root" className={`${inter.variable} font-sans`}>
-                    <Component {...pageProps} />
-                  </div>
-                </NavMenuContextProvider>
-              </SSRProvider>
-            </QueryParamProvider>
-          </BAQueryClientProvider>
-        </PlausibleProvider>
-      </UIContextProvider>
+          <PlausibleProvider
+            domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
+            taggedEvents
+            // uncomment for local testing, needs to be run with `yarn build && yarn start`
+            // trackLocalhost
+          >
+            <BAQueryClientProvider>
+              <QueryParamProvider adapter={NextAdapter}>
+                <SSRProvider>
+                  <NavMenuContextProvider>
+                    <div id="root" className={`${inter.variable} font-sans`}>
+                      <Component {...pageProps} />
+                    </div>
+                  </NavMenuContextProvider>
+                </SSRProvider>
+              </QueryParamProvider>
+            </BAQueryClientProvider>
+          </PlausibleProvider>
+        </UIContextProvider>
       </NextIntlProvider>
     </>
   )
