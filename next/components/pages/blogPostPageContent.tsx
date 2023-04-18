@@ -6,7 +6,8 @@ import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useGeneralContext } from '@utils/generalContext'
 import { getNumericLocalDate } from '@utils/local-date'
 import { getPageBreadcrumbs } from '@utils/page'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import * as React from 'react'
 import { PropsWithChildren, useMemo } from 'react'
 
@@ -39,7 +40,7 @@ export type BlogPostPageContentProps = {
 const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
   const tag = blogPost.attributes?.tag?.data?.attributes
 
-  const { t } = useTranslation()
+  const t = useTranslations()
 
   const { general } = useGeneralContext()
   const breadcrumbs = useMemo(() => {

@@ -3,7 +3,8 @@ import TimeIcon from '@assets/images/forms/access-time-icon.svg'
 import cx from 'classnames'
 import FieldErrorMessage from 'components/forms/info-components/FieldErrorMessage'
 import padStart from 'lodash/padStart'
-import { useTranslation } from 'next-i18next'
+import { useLocale } from 'next-intl'
+
 import { forwardRef, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import { I18nProvider, OverlayProvider, useButton, useDatePicker } from 'react-aria'
 import { useDatePickerState } from 'react-stately'
@@ -78,8 +79,7 @@ const TimePicker = forwardRef<HTMLDivElement, TimePickerBase>(
     },
     ref,
   ) => {
-    const { i18n } = useTranslation()
-    const locale = i18n.language
+    const locale = useLocale()
 
     const [hour, setHour] = useState<string>('')
     const [minute, setMinute] = useState<string>('')

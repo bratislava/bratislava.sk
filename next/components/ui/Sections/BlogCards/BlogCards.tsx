@@ -3,7 +3,7 @@ import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import HomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
 import Carousel from '@components/organisms/Carousel/Carousel'
 import { isExternalLink } from '@utils/isExternalLink'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { Carousel as CarouselOld } from '../../Carousel/Carousel'
@@ -15,7 +15,7 @@ export interface BlogCardsProps {
 // TODO: Old carousel works better on desktop, new one on mobile. We should unify them.
 
 export const BlogCards = ({ posts }: BlogCardsProps) => {
-  const { t } = useTranslation()
+  const t = useTranslations()
 
   return (
     <div className="-mx-8 py-8 md:mx-0 md:py-0">

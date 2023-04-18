@@ -50,38 +50,38 @@ query LatestBlogsWithTags(
 }
 
 fragment LatestBlogPostEntity on BlogPostEntity {
-    id
-    attributes {
-      slug
-      title
-      excerpt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
+  id
+  attributes {
+    slug
+    title
+    excerpt
+    coverImage {
+      data {
+        attributes {
+          url
         }
       }
-      date_added
-      publishedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            publishedAt
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
+    }
+    date_added
+    publishedAt
+    updatedAt
+    tag {
+      data {
+        attributes {
+          title
+          publishedAt
+          pageCategory {
+            data {
+              attributes {
+                title
+                color
               }
             }
           }
         }
       }
     }
+  }
 }
 
 query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLocaleCode) {

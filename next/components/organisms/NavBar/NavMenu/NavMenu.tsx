@@ -1,7 +1,8 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import React, { useEffect, useMemo } from 'react'
 
 import { getParsedMenus } from './getParsedMenus'
@@ -9,7 +10,7 @@ import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
 
 const NavMenu = () => {
-  const { t } = useTranslation('common', { keyPrefix: 'NavMenu' })
+  const t = useTranslations('NavMenu')
   const router = useRouter()
 
   const { menu } = useGeneralContext()
@@ -28,7 +29,7 @@ const NavMenu = () => {
     <NavigationMenu.Root
       value={menuValue}
       onValueChange={setMenuValue}
-      aria-label={t('NavMenu.aria.navMenuLabel')}
+      aria-label={t('aria.navMenuLabel')}
     >
       <div className="relative z-30 shadow-md">
         <NavigationMenu.List className="m-auto grid w-full max-w-screen-lg grid-flow-col grid-cols-6">

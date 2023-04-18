@@ -9,8 +9,6 @@ import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCa
 import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import React from 'react'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
@@ -76,7 +74,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale)),
+      messages: (await import(`../messages/${locale}.json`)).default,
     },
   }
 }

@@ -1,8 +1,12 @@
 {
-  "language_short.sk": "SK",
-  "language_short.en": "EN",
-  "language_long.sk": "Slovensky",
-  "language_long.en": "English",
+  "language_short": {
+    "sk": "SK",
+    "en": "EN"
+  },
+  "language_long": {
+    "sk": "Slovensky",
+    "en": "English"
+  },
   "e_services": "E-služby",
   "signin": "Prihlásenie",
   "signup": "Registrácia",
@@ -65,12 +69,14 @@
   "showLess": "Zobraziť menej",
   "articleCategories": "Rozdelenie obsahu článkov",
   "gallery": "Galéria",
-  "vzn.validFrom": "Platnosť od",
-  "vzn.validUntil": "Platnosť do",
-  "vzn.mainDocument": "Hlavný dokument",
-  "vzn.consolidatedText": "Konsolidované znenie (zhrnutie)",
-  "vzn.amendments": "Dodatky",
-  "vzn.cancellationDocument": "Zrušujúce VZN",
+  "vzn": {
+    "validFrom": "Platnosť od",
+    "validUntil": "Platnosť do",
+    "mainDocument": "Hlavný dokument",
+    "consolidatedText": "Konsolidované znenie (zhrnutie)",
+    "amendments": "Dodatky",
+    "cancellationDocument": "Zrušujúce VZN"
+  },
   "share": "Zdieľať",
   "closeMenu": "Zavrieť menu",
   "showMore": "Zobraziť ďalšie",
@@ -121,28 +127,30 @@
   "noBlogPostsToShow": "Žiadne články na zobrazenie.",
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
   "noUsersToShow": "Žiadne kontakty na zobrazenie.",
-  "menu.show_less": "Zobraziť menej",
-  "menu.show_more": "Zobraziť viac",
+  "menu": {
+    "show_less": "Zobraziť menej",
+    "show_more": "Zobraziť viac"
+  },
   "skipNavigation": "Preskočiť navigáciu",
   "title": "Bratislava.sk",
-  "titleWithChild": "{{childTitle}} – Bratislava.sk",
+  "titleWithChild": "{childTitle} – Bratislava.sk",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Navigačné menu",
-      "backTo": "Späť na {{backTo}}"
+      "backTo": "Späť na {backTo}"
     },
     "more": "Ďalšie"
   },
   "Pagination": {
     "aria": {
-      "goToPage": "Ísť na stranu {{page}}",
+      "goToPage": "Ísť na stranu {page}",
       "goToPreviousPage": "Ísť na predchádzajúcu stranu",
       "goToNextPage": "Ísť na ďalšiu stranu"
     }
   },
   "Footer": {
     "contactForMedia": "Kontakt pre médiá:",
-    "copyright": "© {{year}} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>"
+    "copyright": "© {year} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>"
   },
   "Breadcrumbs": {
     "homepage": "Domov",

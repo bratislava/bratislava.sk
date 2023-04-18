@@ -8,7 +8,7 @@ import { HomepageContextProvider } from '@utils/homepageContext'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 import React from 'react'
 
 import PageLayout from '../components/layouts/PageLayout'
@@ -24,17 +24,19 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 
   if (!locale) return { notFound: true }
 
-  const [homepageContext, general, translations] = await Promise.all([
+  const [homepageContext, general, messages] = await Promise.all([
     homepageContextFetcher(locale),
     client.General({ locale }),
-    serverSideTranslations(locale, ['common']),
+    import(`../messages/${locale}.json`),
   ])
+
+  console.log(messages)
 
   return {
     props: {
       homepageContext,
       general,
-      ...translations,
+      messages: messages.default,
     },
     revalidate: 10,
   }

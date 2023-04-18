@@ -10,10 +10,10 @@ import { LocalDate, Month, Period } from '@js-joda/core'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getNumericLocalDate } from '@utils/local-date'
-import { getLanguageKey } from '@utils/utils'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
+
 import React from 'react'
 import useSWR from 'swr'
 
@@ -49,7 +49,7 @@ export const Posts = ({
   latestPost,
   rozkoPosts,
 }: PostsProps) => {
-  const { i18n } = useTranslation()
+  const locale = useLocale()
 
   const [activeTab, setActiveTab] = React.useState(0)
   // TODO refactor this
@@ -65,7 +65,7 @@ export const Posts = ({
 
   const { Link: UILink } = useUIContext()
 
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   const now = LocalDate.now()
   const deadline = LocalDate.of(2024, Month.MARCH, 14)
@@ -221,9 +221,7 @@ export const Posts = ({
             <>
               <div className="pb-8">
                 <Iframe
-                  url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${getLanguageKey(
-                    i18n.language,
-                  )}`}
+                  url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${locale}`}
                   iframeWidth="container"
                   iframeHeight="620"
                   fullHeight={false}

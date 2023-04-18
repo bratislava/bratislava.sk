@@ -3,7 +3,8 @@ import { PageMeili } from '@backend/meili/types'
 import { LoadingSpinner, PageCards } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
+
 import useSwr from 'swr'
 
 import { PageCardProps } from '../../ui/PageCard/PageCard'
@@ -14,7 +15,7 @@ interface PagesResultsProps {
 }
 
 const Pages = ({ data }: { data: SearchResponse<PageMeili>; filters: PagesFilters }) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   if (data.hits.length > 0) {
     return <PageCards pages={data.hits as PageCardProps[]} />
@@ -23,12 +24,10 @@ const Pages = ({ data }: { data: SearchResponse<PageMeili>; filters: PagesFilter
 }
 
 const DataWrapper = ({ filters }: { filters: PagesFilters }) => {
-  const { t, i18n } = useTranslation('common')
+  const t = useTranslations()
+  const locale = useLocale()
 
-  const { data, error } = useSwr(
-    getPagesSwrKey(filters, i18n.language),
-    pagesFetcher(filters, i18n.language),
-  )
+  const { data, error } = useSwr(getPagesSwrKey(filters, locale), pagesFetcher(filters, locale))
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
     data,

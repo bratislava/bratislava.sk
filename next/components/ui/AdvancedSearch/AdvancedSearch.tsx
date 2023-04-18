@@ -1,7 +1,8 @@
 import Checkbox from '@assets/images/checkbox.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
 
 import { Button } from '../Button/Button'
@@ -35,7 +36,7 @@ export const AdvancedSearch = ({
   setInput,
   setSearchQuery,
 }: AdvancedSearchProps) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   const options = [
     { key: 'articles', value: t('articles') },
@@ -121,7 +122,7 @@ export const AdvancedSearch = ({
               {checkedOptions?.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
-                <div className="mr-px h-6 w-6 rounded border-2 border-solid border-slate-300" />
+                <div className="border-slate-300 mr-px h-6 w-6 rounded border-2 border-solid" />
               )}
 
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}

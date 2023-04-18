@@ -1,6 +1,6 @@
 import { Download } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 interface DocumentListItemProps {
   categoryName: string
@@ -21,7 +21,7 @@ export const DocumentListItem = ({
   moreDocuments,
   mainDocumentHref,
 }: DocumentListItemProps) => {
-  const { t } = useTranslation()
+  const t = useTranslations()
 
   return (
     <div className="mb-1 flex w-full flex-col overflow-hidden rounded-lg bg-white shadow-md md:flex-row">

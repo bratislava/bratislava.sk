@@ -6,7 +6,8 @@ import {
 import { BlogItem, BlogSearchCards, LoadingSpinner } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
+
 import useSwr from 'swr'
 
 import LoadingOverlay from './LoadingOverlay'
@@ -16,7 +17,7 @@ interface BlogPostsResultsProps {
 }
 
 const BlogPosts = ({ data }: { data: SearchResponse<BlogItem>; filters: BlogPostsFilters }) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   if (data.hits.length > 0) {
     return <BlogSearchCards blogs={data.hits} />
@@ -32,11 +33,12 @@ const DataWrapper = ({
   filters: BlogPostsFilters
   onPageChange?: (page: number) => void
 }) => {
-  const { t, i18n } = useTranslation('common')
+  const t = useTranslations()
+  const locale = useLocale()
 
   const { data, error } = useSwr(
-    getBlogPostsSwrKey(filters, i18n.language),
-    blogPostsFetcher(filters, i18n.language),
+    getBlogPostsSwrKey(filters, locale),
+    blogPostsFetcher(filters, locale),
   )
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({

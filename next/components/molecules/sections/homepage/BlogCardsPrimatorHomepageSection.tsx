@@ -1,7 +1,7 @@
 import { BlogCards, Posts, PrimatorCouncil, SectionContainer } from '@components/ui'
 import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
-import { useTranslation } from 'next-i18next'
+import { useLocale, useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 
 // TODO: Load from Strapi.
@@ -66,18 +66,19 @@ const en = {
 }
 
 const BlogCardsPrimatorHomepageSection = () => {
-  const { t, i18n } = useTranslation('common')
+  const t = useTranslations()
+  const locale = useLocale()
   const { homepage, blogPosts, rozkopavkyBlogPosts } = useHomepageContext()
 
   const data = useMemo(() => {
-    if (i18n.language === 'sk') {
+    if (locale === 'sk') {
       return sk
     }
-    if (i18n.language === 'en') {
+    if (locale === 'en') {
       return en
     }
     return null
-  }, [i18n.language])
+  }, [locale])
 
   const homepagePosts = homepage?.attributes?.posts?.filter(isDefined) ?? []
 

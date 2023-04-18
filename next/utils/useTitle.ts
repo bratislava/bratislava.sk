@@ -1,7 +1,7 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 export const useTitle = (childTitle?: string | null) => {
-  const { t } = useTranslation(['common'])
+  const t = useTranslations()
 
   if (childTitle) {
     return t('titleWithChild', { childTitle })

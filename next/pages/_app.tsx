@@ -9,13 +9,13 @@ import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
-import { appWithTranslation } from 'next-i18next'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
+import { NextIntlProvider } from 'next-intl'
 
 const inter = Inter({
   variable: '--inter-font',
@@ -37,46 +37,48 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="theme-color" content="#ffffff" />
         {/* look for CookieConsent component for 3rd party scripts you'd expect to find here */}
       </Head>
-      <UIContextProvider
-        components={{
-          Link: ({ href, className, children, locale, target, rel, style }) => {
-            if (href === undefined || href === null) return null
-            return (
-              <Link
-                href={href}
-                locale={locale}
-                target={target}
-                rel={rel}
-                className={className}
-                style={style}
-              >
-                {children}
-              </Link>
-            )
-          },
-        }}
-      >
-        <PlausibleProvider
-          domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
-          taggedEvents
-          // uncomment for local testing, needs to be run with `yarn build && yarn start`
-          // trackLocalhost
+      <NextIntlProvider messages={pageProps.messages}>
+        <UIContextProvider
+          components={{
+            Link: ({ href, className, children, locale, target, rel, style }) => {
+              if (href === undefined || href === null) return null
+              return (
+                <Link
+                  href={href}
+                  locale={locale}
+                  target={target}
+                  rel={rel}
+                  className={className}
+                  style={style}
+                >
+                  {children}
+                </Link>
+              )
+            },
+          }}
         >
-          <BAQueryClientProvider>
-            <QueryParamProvider adapter={NextAdapter}>
-              <SSRProvider>
-                <NavMenuContextProvider>
-                  <div id="root" className={`${inter.variable} font-sans`}>
-                    <Component {...pageProps} />
-                  </div>
-                </NavMenuContextProvider>
-              </SSRProvider>
-            </QueryParamProvider>
-          </BAQueryClientProvider>
-        </PlausibleProvider>
-      </UIContextProvider>
+          <PlausibleProvider
+            domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
+            taggedEvents
+            // uncomment for local testing, needs to be run with `yarn build && yarn start`
+            // trackLocalhost
+          >
+            <BAQueryClientProvider>
+              <QueryParamProvider adapter={NextAdapter}>
+                <SSRProvider>
+                  <NavMenuContextProvider>
+                    <div id="root" className={`${inter.variable} font-sans`}>
+                      <Component {...pageProps} />
+                    </div>
+                  </NavMenuContextProvider>
+                </SSRProvider>
+              </QueryParamProvider>
+            </BAQueryClientProvider>
+          </PlausibleProvider>
+        </UIContextProvider>
+      </NextIntlProvider>
     </>
   )
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp

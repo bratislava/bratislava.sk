@@ -4,20 +4,19 @@ import Button from '@components/forms/simple-components/Button'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslations } from 'next-intl'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      messages: (await import(`../messages/${locale}.json`)).default,
     },
   }
 }
 
 const NotFoundPage = () => {
   const { Link } = useUIContext()
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   const title = useTitle('404')
 

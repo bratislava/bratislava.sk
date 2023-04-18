@@ -1,5 +1,6 @@
 import { structureFetcher } from 'backend/utils/organisationalStructure'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import useSWR from 'swr'
 
 import { OrganizationalStructureTopLevelAccordion } from './OrganizationalStructureTopLevelAccordion'
@@ -11,7 +12,7 @@ export interface OrganizationalStructureProps {
 // TODO add search
 export const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
   const { data } = useSWR('organizationalStructure', structureFetcher)
-  const { t } = useTranslation('common')
+  const t = useTranslations()
   return data ? (
     <div className="flex flex-col">
       <div className="text-h3 pb-4">{title}</div>

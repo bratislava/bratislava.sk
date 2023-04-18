@@ -5,7 +5,8 @@ import { HorizontalScrollWrapper, Modal } from '@bratislava/ui-bratislava'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Image from 'next/legacy/image'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import { useState } from 'react'
 
 export interface GallerySectionProps {
@@ -17,7 +18,7 @@ const GallerySection = ({
   section: { title, subtitle, galleryItems },
   className = '',
 }: GallerySectionProps) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   const [currentIndex, setCurrentIndex] = useState<number | null>(null)
   const [showModalDetails, setShowModalDetails] = useState(false)

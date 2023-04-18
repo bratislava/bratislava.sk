@@ -5,8 +5,8 @@ import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { FacebookIcon } from '@components/ui/images'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
-import { Trans, useTranslation } from 'next-i18next'
 import * as React from 'react'
+import { useTranslations } from 'next-intl'
 
 export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment) => {
   return (
@@ -26,7 +26,7 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
 }
 
 export const FooterContacts = ({ address, mediaEmail, email, phone }: FooterFragment) => {
-  const { t } = useTranslation(['common'], { keyPrefix: 'Footer' })
+  const t = useTranslations('Footer')
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
@@ -62,15 +62,17 @@ export const FooterAccessibilityLink = ({ accessibilityPageLink }: FooterFragmen
 }
 
 export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
+  const t = useTranslations()
+
   return (
-    <Trans
-      ns="common"
-      i18nKey="Footer.copyright"
-      components={{
-        innovations: <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
-      }}
-      values={{ year: new Date().getFullYear() }}
-    />
+    <>
+      {t.rich('Footer.copyright', {
+        innovations: (chunks) => (
+          <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />
+        ),
+        year: new Date().getFullYear(),
+      })}
+    </>
   )
 }
 

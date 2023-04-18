@@ -4,7 +4,8 @@ import PlusIcon from '@assets/images/plus.svg'
 import { Input } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import React, { FormEvent } from 'react'
 
 interface IProps {
@@ -88,7 +89,7 @@ const MinimumCalculator = ({
   anotherAdultValue,
   childValue,
 }: IProps) => {
-  const { t } = useTranslation('common', { keyPrefix: 'MinimumCalculator' })
+  const t = useTranslations('MinimumCalculator')
 
   const [adults, setAdults] = React.useState(1)
   const [children, setChildren] = React.useState(0)

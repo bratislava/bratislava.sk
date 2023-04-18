@@ -23,7 +23,3 @@ const isServer = () => typeof window === 'undefined'
 export const isBrowser = () => !isServer()
 
 export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
-
-export const getLanguageKey = (currentLanguage?: string) => {
-  return currentLanguage === 'sk' ? 'sk' : 'en'
-}

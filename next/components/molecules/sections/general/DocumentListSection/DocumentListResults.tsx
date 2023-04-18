@@ -11,7 +11,8 @@ import DocumentListCategorysMap from '@utils/documentListCategory'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { isPresent } from '@utils/utils'
 import { SearchResponse } from 'meilisearch'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSwr from 'swr'
 
@@ -28,7 +29,7 @@ const Documents = ({
   setOpen: Dispatch<SetStateAction<boolean>>
   setActiveData: Dispatch<SetStateAction<VznMeili | null>>
 }) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   const setOpenModal = (id: string) => {
     const vznClicked = data.hits.find((vzn) => vzn.id === id) ?? null

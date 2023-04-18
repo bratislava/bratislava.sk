@@ -1,7 +1,8 @@
 import Calendar from '@assets/images/calendar.svg'
 import { LocalDate } from '@js-joda/core'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import * as React from 'react'
 
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'
@@ -23,7 +24,7 @@ export const DateSelect = ({
   showShorcuts,
   ...rest
 }: DateSelectProps) => {
-  const { t } = useTranslation()
+  const t = useTranslations()
 
   const selectedDate = LocalDate.parse(value)
   const MONTHS = [
@@ -39,7 +40,7 @@ export const DateSelect = ({
     'oct',
     'nov',
     'dec',
-  ]
+  ] as const
 
   const showDate = selectedDate >= LocalDate.now().plusDays(5) || selectedDate < LocalDate.now()
 
@@ -65,6 +66,7 @@ export const DateSelect = ({
         {/* Mobile */}
         {showMobileDate && (
           <div className="text-large pointer-events-none absolute w-full text-center sm:hidden">
+            {/* Forms translations */}
             {`${selectedDate.dayOfMonth()}.`} {t(MONTHS[selectedDate.monthValue() - 1])}
           </div>
         )}

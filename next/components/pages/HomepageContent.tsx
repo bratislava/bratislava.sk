@@ -5,11 +5,12 @@ import InbaHomepageSection from '@components/molecules/sections/homepage/InbaHom
 import TopServicesHomepageSection from '@components/molecules/sections/homepage/TopServicesHomepageSection'
 import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
 import { SectionContainer, Waves } from '@components/ui'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import React from 'react'
 
 const HomepageContent = () => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
 
   return (
     <>

@@ -6,8 +6,8 @@ import { client } from '@utils/gql'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslations } from 'next-intl'
+
 import * as React from 'react'
 
 import PageLayout from '../components/layouts/PageLayout'
@@ -19,22 +19,22 @@ type PageProps = {
 export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const locale = ctx.locale ?? 'sk'
 
-  const [general, translations] = await Promise.all([
+  const [general, messages] = await Promise.all([
     client.General({ locale }),
-    serverSideTranslations(locale, ['common']),
+    import(`../messages/${locale}.json`),
   ])
 
   return {
     props: {
       general,
-      ...translations,
+      messages: messages.default,
     },
     revalidate: 10,
   }
 }
 
 const Page = ({ general }: PageProps) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations()
   const title = useTitle(t('searching'))
 
   return (

@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 import { Panel } from '../Panel/Panel'
 
@@ -20,7 +20,7 @@ export const PrimatorCard = ({
   href,
   smImageAlign = 'left',
 }: PrimatorCardProps) => {
-  const { t } = useTranslation()
+  const t = useTranslations()
   const smRight = smImageAlign === 'right'
   return (
     <div

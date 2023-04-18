@@ -10,7 +10,8 @@ import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
+
 import React from 'react'
 
 type NavBarProps = { className?: string }
@@ -20,7 +21,7 @@ const Divider = ({ className }: { className?: string }) => {
 }
 
 const NavBarHeader = ({ className }: NavBarProps) => {
-  const { t } = useTranslation(['common'])
+  const t = useTranslations()
 
   const { general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
