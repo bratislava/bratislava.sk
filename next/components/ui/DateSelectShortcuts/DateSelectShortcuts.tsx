@@ -1,7 +1,6 @@
 import { DayOfWeek, LocalDate } from '@js-joda/core'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl';
-
+import { useTranslations } from 'next-intl'
 
 const DOW = {
   [DayOfWeek.MONDAY.value()]: 'monday',
@@ -11,7 +10,7 @@ const DOW = {
   [DayOfWeek.FRIDAY.value()]: 'friday',
   [DayOfWeek.SATURDAY.value()]: 'saturday',
   [DayOfWeek.SUNDAY.value()]: 'sunday',
-}
+} as const
 
 export interface DateSelectShortcutsProps {
   value: string
@@ -20,7 +19,7 @@ export interface DateSelectShortcutsProps {
 
 export const DateSelectShortcuts = ({ value, onClick }: DateSelectShortcutsProps) => {
   const today = LocalDate.now()
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <>

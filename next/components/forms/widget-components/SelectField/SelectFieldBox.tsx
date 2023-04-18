@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
@@ -34,10 +34,11 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
     onDeleteLastValue,
   } = props
 
-  const t = useTranslations()
-  const multipleOptionsTagText = value
-    ? `${value.length} ${t(value.length < 5 ? 'options_few' : 'options_many').toLowerCase()}`
-    : t('options_zero')
+  // Forms translations
+  // const multipleOptionsTagText = value
+  //   ? `${value.length} ${t(value.length < 5 ? 'options_few' : 'options_many').toLowerCase()}`
+  //   : t('options_zero')
+  const multipleOptionsTagText = ''
   // HELPER FUNCTIONS
   const getInputSize = () => {
     return !value || value.length === 0

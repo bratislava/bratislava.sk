@@ -3,7 +3,7 @@ import { FileCard } from '@bratislava/ui-bratislava'
 import Markdown from '@components/atoms/Markdown'
 import { client } from '@utils/gql'
 import { isPresent } from '@utils/utils'
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 import useSWR from 'swr'
 
@@ -11,7 +11,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
   const vznId = vzn?.id
   const { data } = useSWR(['VznDetail', vznId], () => client.VznDetail({ id: vznId }))
 
-  const t = useTranslations();
+  const t = useTranslations()
   return (
     <div className="modal-content-rent max-h-[75vh] max-w-screen-md overflow-y-auto rounded-xl bg-gray-50">
       <div className="px-12 py-8">
