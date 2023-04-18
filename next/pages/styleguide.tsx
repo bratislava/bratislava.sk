@@ -1,5 +1,8 @@
 import AccordionShowcase from '@components/styleguide/showcases/AccordionShowcase'
+import BlogPostCardShowcase from '@components/styleguide/showcases/BlogPostCardShowcase'
+import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardShowcase'
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
+import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
@@ -7,6 +10,7 @@ import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCa
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import React from 'react'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
@@ -52,10 +56,13 @@ const Styleguide = () => {
       <SingleCheckboxShowCase />
       <CheckboxGroupShowCase />
       <RadioButtonShowCase />
+      <AccordionShowcase />
       <BannerShowCase />
       <ServiceCardShowCase />
       <EventCardShowcase />
-      <AccordionShowcase />
+      <CategoryCardShowcase />
+      <BlogPostCardShowcase />
+      <HomepageHorizontalCardShowcase />
 
       {/* <SnackbarShowCase /> */}
     </StyleGuideWrapper>

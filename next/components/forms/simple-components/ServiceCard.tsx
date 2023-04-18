@@ -32,7 +32,7 @@ const ServiceCard = ({
       <div className="rounded-lg border-2 border-gray-200 p-1.5 lg:p-2.5">{icon}</div>
       <div className="flex w-full flex-col items-start gap-3 text-left">
         <h5 className="text-h5  leading-5 group-hover:underline lg:leading-7">{title}</h5>
-        <div className="text-p-sm flex items-center font-normal">{description}</div>
+        <div className="text-small flex items-center font-normal">{description}</div>
       </div>
       <div className="flex h-full w-full items-end">
         <div className="flex h-max w-full items-center justify-between">

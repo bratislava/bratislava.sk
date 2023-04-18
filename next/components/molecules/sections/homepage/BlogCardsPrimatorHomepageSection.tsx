@@ -1,5 +1,6 @@
 import { BlogCards, Posts, PrimatorCouncil, SectionContainer } from '@components/ui'
 import { useHomepageContext } from '@utils/homepageContext'
+import { isDefined } from '@utils/isDefined'
 import { useTranslation } from 'next-i18next'
 import React, { useMemo } from 'react'
 
@@ -78,16 +79,11 @@ const BlogCardsPrimatorHomepageSection = () => {
     return null
   }, [i18n.language])
 
-  const homepagePosts = homepage?.attributes?.posts?.map((post) => ({
-    title: post?.title,
-    url: post?.slug,
-    imageSrc: post?.image?.data?.attributes?.url,
-    plausibleId: post?.plausibleId,
-  }))
+  const homepagePosts = homepage?.attributes?.posts?.filter(isDefined) ?? []
 
   return (
-    <SectionContainer className="bg-gray-50 pb-14">
-      <BlogCards className="mb-0 lg:mb-8" posts={homepagePosts} shiftIndex={1} />
+    <SectionContainer className="bg-gray-50 pb-14 md:px-8">
+      <BlogCards posts={homepagePosts} />
       {data && (
         <Posts
           readMoreText={t('readMore')}
