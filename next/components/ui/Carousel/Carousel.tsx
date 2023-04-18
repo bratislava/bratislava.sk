@@ -1,5 +1,4 @@
-import ChevronLeft from '@assets/images/arrow-long-left.svg'
-import ChevronRight from '@assets/images/arrow-long-right.svg'
+import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
 import { VerticalCardButton } from '@components/ui'
 import cx from 'classnames'
 import React, { useRef } from 'react'
@@ -75,10 +74,13 @@ export const Carousel = ({
           'ml-4': isLeft && spacing === 'default',
           'mr-4': !isLeft && spacing === 'default',
         })}
-      >
-        {isLeft ? <ChevronLeft /> : <ChevronRight />}
-      </VerticalCardButton>
+        icon={isLeft ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+      />
     ) : null
+
+  const isControlHidden = (isLeft: boolean) => {
+    return (isLeft && currentItem === 0) || (!isLeft && currentItem >= items.length - currentItem)
+  }
 
   return (
     <div
@@ -87,7 +89,7 @@ export const Carousel = ({
       })}
     >
       {/* Left button */}
-      <div className="hidden md:block">{sliderControl(true)}</div>
+      <div className="hidden md:block">{isControlHidden(true) ? null : sliderControl(true)}</div>
 
       <div
         className={cx(
@@ -120,7 +122,7 @@ export const Carousel = ({
       </div>
 
       {/* Right button */}
-      <div className="hidden md:block">{sliderControl(false)}</div>
+      <div className="hidden md:block">{isControlHidden(false) ? null : sliderControl(false)}</div>
     </div>
   )
 }

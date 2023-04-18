@@ -29,6 +29,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
       <div>
         <Carousel
           shiftIndex={shiftIndex}
+          visibleItems={2}
           className="flex"
           items={posts.map((blogCard, index) => (
             <HorizontalCard
@@ -37,7 +38,7 @@ export const BlogCards = ({ className, shiftIndex, posts = [] }: BlogCardsProps)
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               imageSrc={blogCard.imageSrc ?? ''}
-              imageSizes={generateImageSizes({ lg: '224px', default: '50vw' })}
+              imageSizes={generateImageSizes({ default: '90vw', lg: '224px' })}
             >
               <div className="flex h-full flex-col justify-between">
                 <h3 className="text-h5 lg:text-large-respo line-clamp-3 grow text-left">
