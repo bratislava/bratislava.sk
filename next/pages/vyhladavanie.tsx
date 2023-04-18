@@ -7,7 +7,6 @@ import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
-
 import * as React from 'react'
 
 import PageLayout from '../components/layouts/PageLayout'

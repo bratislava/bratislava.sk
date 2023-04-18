@@ -4,7 +4,6 @@ import {
 } from '@backend/meili/fetchers/homepageSearchFetcher'
 import { useRouter } from 'next/router'
 import { useLocale, useTranslations } from 'next-intl'
-
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'

@@ -7,7 +7,6 @@ import { BlogItem, BlogSearchCards, LoadingSpinner } from '@bratislava/ui-bratis
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'
 import { useLocale, useTranslations } from 'next-intl'
-
 import useSwr from 'swr'
 
 import LoadingOverlay from './LoadingOverlay'

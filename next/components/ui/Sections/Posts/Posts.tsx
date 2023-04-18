@@ -13,7 +13,6 @@ import { getNumericLocalDate } from '@utils/local-date'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import cx from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
-
 import React from 'react'
 import useSWR from 'swr'
 

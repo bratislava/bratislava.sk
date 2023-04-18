@@ -8,7 +8,6 @@ import { HomepageContextProvider } from '@utils/homepageContext'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-
 import React from 'react'
 
 import PageLayout from '../components/layouts/PageLayout'

@@ -1,7 +1,6 @@
 import { ChevronLeftLarge } from '@assets/images'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useTranslations } from 'next-intl'
-
 import React, { CSSProperties } from 'react'
 
 import NavBarHorizontalDivider from './NavBarHorizontalDivider'

@@ -1,7 +1,6 @@
 import type { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import { BasicSearchOld, DocumentCards, NoResultsFound } from '@bratislava/ui-bratislava'
 import { useTranslations } from 'next-intl'
-
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 

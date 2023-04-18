@@ -4,7 +4,6 @@ import Markdown from '@components/atoms/Markdown'
 import { client } from '@utils/gql'
 import { isPresent } from '@utils/utils'
 import { useTranslations } from 'next-intl'
-
 import useSWR from 'swr'
 
 const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {

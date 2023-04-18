@@ -3,7 +3,6 @@ import { userSearchFetcher } from '@backend/utils/organisationalStructure'
 import { LoadingSpinner } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { useTranslations } from 'next-intl'
-
 import useSwr from 'swr'
 
 import { OrganizationalStructureAccordionCards } from '../OrganizationalStructure/OrganizationalStructureAccordionCards'

@@ -3,7 +3,6 @@ import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { client } from '@utils/gql'
 import { useLocale, useTranslations } from 'next-intl'
-
 import { useEffect, useState } from 'react'
 
 import { ArticlesFilter, Card } from '../../../../atoms/ArticlesFilter'

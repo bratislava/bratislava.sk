@@ -2,7 +2,6 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
-
 import React, { useEffect, useMemo } from 'react'
 
 import { getParsedMenus } from './getParsedMenus'

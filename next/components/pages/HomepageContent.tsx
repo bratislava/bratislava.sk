@@ -6,7 +6,6 @@ import TopServicesHomepageSection from '@components/molecules/sections/homepage/
 import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
 import { SectionContainer, Waves } from '@components/ui'
 import { useTranslations } from 'next-intl'
-
 import React from 'react'
 
 const HomepageContent = () => {

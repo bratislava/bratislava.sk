@@ -8,7 +8,6 @@ import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
 

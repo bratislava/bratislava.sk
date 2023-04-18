@@ -2,7 +2,6 @@ import Checkbox from '@assets/images/checkbox.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
 
 import { Button } from '../Button/Button'

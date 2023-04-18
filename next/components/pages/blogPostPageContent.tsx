@@ -7,7 +7,6 @@ import { useGeneralContext } from '@utils/generalContext'
 import { getNumericLocalDate } from '@utils/local-date'
 import { getPageBreadcrumbs } from '@utils/page'
 import { useTranslations } from 'next-intl'
-
 import * as React from 'react'
 import { PropsWithChildren, useMemo } from 'react'
 

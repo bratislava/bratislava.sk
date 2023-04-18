@@ -9,13 +9,13 @@ import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
+import { NextIntlProvider } from 'next-intl'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
-import { NextIntlProvider } from 'next-intl'
 
 const inter = Inter({
   variable: '--inter-font',

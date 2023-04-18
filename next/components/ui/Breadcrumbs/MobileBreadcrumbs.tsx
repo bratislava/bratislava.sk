@@ -3,7 +3,6 @@ import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
-
 import React from 'react'
 
 const goBack = () => {

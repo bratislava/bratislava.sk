@@ -1,7 +1,6 @@
 import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
-
 import { useState } from 'react'
 
 import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'

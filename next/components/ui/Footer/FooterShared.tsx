@@ -5,8 +5,8 @@ import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { FacebookIcon } from '@components/ui/images'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
-import * as React from 'react'
 import { useTranslations } from 'next-intl'
+import * as React from 'react'
 
 export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment) => {
   return (

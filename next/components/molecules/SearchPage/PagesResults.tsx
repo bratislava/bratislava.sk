@@ -4,7 +4,6 @@ import { LoadingSpinner, PageCards } from '@bratislava/ui-bratislava'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'
 import { useLocale, useTranslations } from 'next-intl'
-
 import useSwr from 'swr'
 
 import { PageCardProps } from '../../ui/PageCard/PageCard'

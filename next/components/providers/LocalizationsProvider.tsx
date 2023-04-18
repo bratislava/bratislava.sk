@@ -1,5 +1,4 @@
 import { useLocale, useTranslations } from 'next-intl'
-
 import { createContext, ReactNode, useContext } from 'react'
 import MessageKeys from 'use-intl/dist/core/utils/MessageKeys'
 

@@ -12,7 +12,6 @@ import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { isPresent } from '@utils/utils'
 import { SearchResponse } from 'meilisearch'
 import { useTranslations } from 'next-intl'
-
 import { Dispatch, SetStateAction, useState } from 'react'
 import useSwr from 'swr'
 

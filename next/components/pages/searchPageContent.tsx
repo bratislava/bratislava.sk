@@ -3,7 +3,6 @@ import PagesResults from '@components/molecules/SearchPage/PagesResults'
 import UsersResults from '@components/molecules/SearchPage/UsersResults'
 import { AdvancedSearch, SectionContainer } from '@components/ui'
 import { useTranslations } from 'next-intl'
-
 import React, { useEffect, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'

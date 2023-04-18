@@ -2,7 +2,6 @@ import Calendar from '@assets/images/calendar.svg'
 import { LocalDate } from '@js-joda/core'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-
 import * as React from 'react'
 
 import { DateSelectShortcuts } from '../DateSelectShortcuts/DateSelectShortcuts'

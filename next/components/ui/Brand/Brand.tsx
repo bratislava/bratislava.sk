@@ -1,8 +1,8 @@
 import BALogo from '@assets/images/BALogo.svg'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
-import React from 'react'
 import { useTranslations } from 'next-intl'
+import React from 'react'
 
 export interface BrandProps {
   className?: string

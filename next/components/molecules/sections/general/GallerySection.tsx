@@ -6,7 +6,6 @@ import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import Image from 'next/legacy/image'
 import { useTranslations } from 'next-intl'
-
 import { useState } from 'react'
 
 export interface GallerySectionProps {

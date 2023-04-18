@@ -5,7 +5,6 @@ import { isProductionDeployment } from '@utils/utils'
 import { useCookieConsent } from 'backend/utils/cookies'
 import Script from 'next/script'
 import { useTranslations } from 'next-intl'
-
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 

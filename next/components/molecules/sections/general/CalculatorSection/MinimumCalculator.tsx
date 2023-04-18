@@ -5,7 +5,6 @@ import { Input } from '@bratislava/ui-bratislava'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-
 import React, { FormEvent } from 'react'
 
 interface IProps {

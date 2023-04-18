@@ -6,7 +6,6 @@ import { useHomepageContext } from '@utils/homepageContext'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-
 import { useMemo, useState } from 'react'
 
 import { getParsedMenus } from '../../../organisms/NavBar/NavMenu/getParsedMenus'
