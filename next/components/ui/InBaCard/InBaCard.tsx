@@ -2,7 +2,8 @@ import { ArrowRightIcon } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 
 import { Panel } from '../Panel/Panel'
 
@@ -15,7 +16,7 @@ export interface InBaCardProps {
 }
 
 export const InBaCard = ({ className, images, title, content, link }: InBaCardProps) => {
-  const { t } = useTranslation('common')
+  const t = useTranslations();
 
   const [frontImage, rearImage] = images || []
 

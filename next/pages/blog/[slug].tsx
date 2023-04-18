@@ -7,7 +7,6 @@ import { client } from '@utils/gql'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 interface PageProps {
@@ -48,13 +47,13 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ blogPosts }, general, translations] = await Promise.all([
+  const [{ blogPosts }, general, messages] = await Promise.all([
     client.BlogPostBySlug({
       slug,
       locale,
     }),
     client.General({ locale }),
-    serverSideTranslations(locale, ['common']),
+    import(`../../messages/${locale}.json`),
   ])
 
   const blogPost = blogPosts?.data[0]
@@ -65,7 +64,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
       general,
       slug,
       blogPost,
-      ...translations,
+      messages: messages.default,
     },
     revalidate: 10,
   }

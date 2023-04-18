@@ -2,7 +2,8 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
 import usePagination from '@components/ui/Pagination/usePagination'
 import cx from 'classnames'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import React, { ReactNode } from 'react'
 
 type PaginationProps = {
@@ -25,7 +26,7 @@ export const Pagination = ({
   totalCount,
   onPageChange = () => {},
 }: PaginationProps) => {
-  const { t } = useTranslation('common', { keyPrefix: 'Pagination' })
+  const t = useTranslations("Pagination")
 
   const { items } = usePagination({
     count: totalCount,

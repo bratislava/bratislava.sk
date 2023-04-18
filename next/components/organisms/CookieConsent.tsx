@@ -4,7 +4,8 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import { isProductionDeployment } from '@utils/utils'
 import { useCookieConsent } from 'backend/utils/cookies'
 import Script from 'next/script'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -15,7 +16,7 @@ type CookieConsentProps = {
 // also takes care of loading all the consented 3rd parties - TODO consider better component name ?
 export const CookieConsent = ({ className }: CookieConsentProps) => {
   const { shouldShowBanner, setConsents, consents } = useCookieConsent()
-  const { t } = useTranslation(['common'])
+  const t = useTranslations()
 
   return (
     <>

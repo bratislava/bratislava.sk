@@ -1,8 +1,12 @@
 {
-  "language_short.sk": "SK",
-  "language_short.en": "EN",
-  "language_long.sk": "Slovensky",
-  "language_long.en": "English",
+  "language_short": {
+    "sk": "SK",
+    "en": "EN",
+  },
+  "language_long": {
+    "sk": "Slovensky",
+    "en": "English",
+  },
   "e_services": "E-services",
   "signin": "SignIn",
   "signup": "SignUp",
@@ -65,15 +69,19 @@
   "showLess": "Show less",
   "articleCategories": "Article categories",
   "gallery": "Gallery",
-  "vzn.validFrom": "Valid from",
-  "vzn.validUntil": "Valid until",
-  "vzn.mainDocument": "Main document",
-  "vzn.consolidatedText": "Consolidated text",
-  "vzn.amendments": "Amendments",
-  "vzn.cancellationDocument": "Cancellation document",
+  "vzn": {
+    "validFrom": "Valid from",
+    "validUntil": "Valid until",
+    "mainDocument": "Main document",
+    "consolidatedText": "Consolidated text",
+    "amendments": "Amendments",
+    "cancellationDocument": "Cancellation document"
+  },
   "share": "Share",
-  "menu.show_less": "Show less",
-  "menu.show_more": "Show more",
+  "menu": {
+    "show_less": "Show less",
+    "show_more": "Show more"
+  },
   "closeMenu": "Close the menu",
   "showMore": "Show more",
   "writeEmail": "Write an e-mail",
@@ -125,24 +133,24 @@
   "noUsersToShow": "No contacts to show",
   "skipNavigation": "Skip navigation",
   "title": "Bratislava.sk",
-  "titleWithChild": "{{childTitle}} – Bratislava.sk",
+  "titleWithChild": "{childTitle} – Bratislava.sk",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Main menu",
-      "backTo": "Back to {{backTo}}"
+      "backTo": "Back to {backTo}"
     },
     "more": "More"
   },
   "Pagination": {
     "aria": {
-      "goToPage": "Go to page {{page}}",
+      "goToPage": "Go to page {page}",
       "goToPreviousPage": "Go to previous page",
       "goToNextPage": "Go to next page"
     }
   },
   "Footer": {
     "contactForMedia": "Contact for media:",
-    "copyright": "© {{year}} Hlavné mesto SR Bratislava"
+    "copyright": "© {year} Hlavné mesto SR Bratislava"
   },
   "Breadcrumbs": {
     "homepage": "Homepage",

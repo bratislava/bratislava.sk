@@ -1,8 +1,8 @@
 import BALogo from '@assets/images/BALogo.svg'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
-import { Trans } from 'next-i18next'
 import React from 'react'
+import { useTranslations } from 'next-intl'
 
 export interface BrandProps {
   className?: string
@@ -11,19 +11,15 @@ export interface BrandProps {
 }
 
 export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
+  const t = useTranslations();
+
   return (
     <div className={cx('flex', className)} aria-label="brand">
       <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
         <BALogo className="shrink-0" />
         {withTitle && (
           <span className="text-default">
-            <Trans
-              i18nKey="capitalCity"
-              ns="common"
-              components={{
-                semibold: <span className="font-semibold" />,
-              }}
-            />
+            {t.rich('capitalCity', {semibold: (chunks) => <span className="font-semibold">{chunks}</span>})}
           </span>
         )}
       </MLink>

@@ -13,7 +13,6 @@ import { isDefined } from '@utils/isDefined'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 type PageProps = {
@@ -53,13 +52,13 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ pages }, general, translations] = await Promise.all([
+  const [{ pages }, general, messages] = await Promise.all([
     client.PageBySlug({
       slug: slug.join('/'),
       locale,
     }),
     client.General({ locale }),
-    serverSideTranslations(locale, ['common', 'minimum-calculator', 'newsletter']),
+    import(`../messages/${locale}.json`),
   ])
 
   const page = pages?.data?.[0]
@@ -69,7 +68,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     props: {
       general,
       page,
-      ...translations,
+      messages: messages.default,
     },
     revalidate: 10,
   }

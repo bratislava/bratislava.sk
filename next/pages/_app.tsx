@@ -9,13 +9,13 @@ import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
-import { appWithTranslation } from 'next-i18next'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
+import { NextIntlProvider } from 'next-intl'
 
 const inter = Inter({
   variable: '--inter-font',
@@ -37,6 +37,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="theme-color" content="#ffffff" />
         {/* look for CookieConsent component for 3rd party scripts you'd expect to find here */}
       </Head>
+      <NextIntlProvider messages={pageProps.messages}>
       <UIContextProvider
         components={{
           Link: ({ href, className, children, locale, target, rel, style }) => {
@@ -75,8 +76,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           </BAQueryClientProvider>
         </PlausibleProvider>
       </UIContextProvider>
+      </NextIntlProvider>
     </>
   )
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp

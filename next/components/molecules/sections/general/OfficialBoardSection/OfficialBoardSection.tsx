@@ -1,13 +1,14 @@
 import type { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import { BasicSearchOld, DocumentCards, NoResultsFound } from '@bratislava/ui-bratislava'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl';
+
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 
 const OfficialBoardSection = () => {
   const [search, setSearch] = useState('')
 
-  const { t } = useTranslation('common')
+  const t = useTranslations();
 
   // TODO: Refactor, prefetch and extract fetcher.
   const { data } = useQuery({
