@@ -1,7 +1,7 @@
 import { IconTitleDescSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import RentBenefits from '@components/ui/Sections/RentBenefits/RentBenefits'
-import { isPresent } from '@utils/utils'
-import { useTranslations } from 'next-intl'
+import { IconTitleDescItem } from '@components/ui/IconTitleDescItem/IconTitleDescItem'
+import { isDefined } from '@utils/isDefined'
+import cx from 'classnames'
 import React from 'react'
 
 type IconTitleDescSectionProps = {
@@ -9,15 +9,37 @@ type IconTitleDescSectionProps = {
 }
 
 const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
-  const t = useTranslations()
+  const { title, list, hasBackground } = section
+
+  const isLongList = list?.length && list.length > 3
 
   return (
-    <RentBenefits
-      title={section.title}
-      list={section.list?.filter(isPresent)}
-      linkLabel={t('readMore')}
-      hasBackground={section.hasBackground ?? false}
-    />
+    <div className="flex flex-col items-center gap-6 lg:gap-12">
+      {title ? (
+        <div className="flex">
+          <div className="grow text-center">{title && <h2 className="text-h2">{title}</h2>}</div>
+          {/* TODO showMoreLink, subtext */}
+          {/* <div>button</div> */}
+        </div>
+      ) : null}
+      <ul
+        className={cx('grid grid-cols-1 gap-x-8 gap-y-12', {
+          'md:grid-cols-2 lg:grid-cols-4': isLongList,
+          'md:auto-cols-fr md:grid-flow-col': !isLongList,
+        })}
+      >
+        {list?.filter(isDefined).map((item, index) => (
+          <IconTitleDescItem
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            icon={item.icon?.data}
+            title={item.title}
+            text={item.desc}
+            hasBackground={hasBackground}
+          />
+        ))}
+      </ul>
+    </div>
   )
 }
 
