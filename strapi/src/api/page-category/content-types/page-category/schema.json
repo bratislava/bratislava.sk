@@ -64,30 +64,6 @@
         "kultura_06"
       ]
     },
-    "iconHover": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "mesto_color_01",
-        "doprava_mapy_color_02",
-        "zp_vystavba_color_03",
-        "socialna_pomoc_color_04",
-        "vzdelavanie_color_05",
-        "kultura_color_06"
-      ]
-    },
-    "priority": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "integer"
-    },
     "pages": {
       "type": "relation",
       "relation": "oneToMany",
