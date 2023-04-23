@@ -9,10 +9,14 @@ fragment HomepageEntity on HomepageEntity {
       ...HomepagePostBlock
     }
     right_highlight {
-      ...NewsCardBlog
+      data {
+        ...LatestBlogPostEntity
+      }
     }
     left_highlight {
-      ...NewsCardBlog
+      data {
+        ...LatestBlogPostEntity
+      }
     }
     header {
       ...HomepageHeader
@@ -100,40 +104,6 @@ fragment HomepagePostBlock on ComponentBlocksHomepagePost{
     data {
       attributes {
         url
-      }
-    }
-  }
-}
-
-fragment NewsCardBlog on BlogPostEntityResponse {
-  data {
-    attributes {
-      title
-      excerpt
-      slug
-      updatedAt
-      publishedAt
-      date_added
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  color
-                }
-              }
-            }
-          }
-        }
       }
     }
   }

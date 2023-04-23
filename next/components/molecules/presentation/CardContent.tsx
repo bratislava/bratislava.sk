@@ -6,7 +6,7 @@ type CardContentProps = {
 }
 
 const CardContent = ({ className, children }: PropsWithChildren<CardContentProps>) => {
-  return <div className={twMerge('flex flex-col p-4', className)}>{children}</div>
+  return <div className={twMerge('flex flex-col p-4 lg:p-5', className)}>{children}</div>
 }
 
 export default CardContent

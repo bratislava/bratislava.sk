@@ -90,8 +90,8 @@ const BlogCardsPrimatorHomepageSection = () => {
           readMoreText={t('readMore')}
           readMoreNewsText={t('seeAllNews')}
           className="lg:mt-10"
-          leftHighLight={homepage?.attributes?.left_highlight}
-          rightHighLight={homepage?.attributes?.right_highlight}
+          leftHighLight={homepage?.attributes?.left_highlight?.data}
+          rightHighLight={homepage?.attributes?.right_highlight?.data}
           posts={data.posts}
           latestPost={blogPosts}
           rozkoPosts={rozkopavkyBlogPosts}

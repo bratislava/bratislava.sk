@@ -23,7 +23,7 @@ const HomepageHorizontalCard = ({ imgSrc, imgSizes, title, linkProps, ...rest }:
           <ImagePlaceholder />
         )}
       </div>
-      <CardContent className="grow justify-between px-10 py-8">
+      <CardContent className="grow justify-between lg:px-10 lg:py-8">
         <div className="flex flex-col">
           <h3 className="text-h5 line-clamp-3 group-hover:underline">{title}</h3>
         </div>

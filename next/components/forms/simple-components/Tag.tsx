@@ -14,7 +14,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
   const isRemovable = !!onRemove
 
   // STYLES
-  const classStyles = cx('flex items-center justify-center gap-1 rounded text-center', {
+  const classStyles = cx('flex w-fit items-center justify-center gap-1 rounded text-center', {
     'text-small px-2 py-0': size === 'small',
     'text-default py-0.5 px-3': size === 'large',
     'bg-gray-100': isRemovable || !isColored,
