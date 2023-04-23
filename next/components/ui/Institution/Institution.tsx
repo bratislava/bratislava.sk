@@ -1,11 +1,8 @@
-import ArrowRight from '@assets/images/arrow-right2.svg'
-import ChevronRight from '@assets/images/chevron-right2.svg'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import Markdown from '@components/atoms/Markdown'
-import cx from 'classnames'
+import Button from '@components/forms/simple-components/Button'
+import { useId } from 'react'
 
 export interface InstitutionProps {
-  className?: string
   title?: string
   subtitle?: string
   content?: string[]
@@ -13,69 +10,32 @@ export interface InstitutionProps {
   urlLabel?: string
 }
 
-const InstitutionCard = ({
-  className,
-  title,
-  subtitle,
-  content,
-  children,
-}: InstitutionCardProps) => {
+export const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionProps) => {
+  const titleId = useId()
+
   return (
-    <div
-      className={cx(
-        className,
-        'h-full rounded-lg border-2 border-[rgba(51,51,51,0.25)] bg-white px-8 py-8',
-      )}
-    >
+    <div className="relative h-full rounded-lg border-2 border-[rgba(51,51,51,0.25)] bg-white p-8">
       <div className="flex flex-col">
-        <h4 className="text-large leading-[26px]">{title}</h4>
+        <h3 id={titleId} className="text-h5">
+          {title}
+        </h3>
         {subtitle && <Markdown content={subtitle} />}
-        {content && (
-          <div className="mt-6 flex w-full flex-row flex-wrap">
-            {Array.from({ length: 3 }, (_, ix) => (
-              <div
-                key={ix}
-                className="col-12 md:col-4 fontSize-base mb-2 break-words last:mb-0 md:mb-0"
-              >
-                {content[ix] && <Markdown content={content[ix]} />}
-              </div>
+        {content?.length && (
+          <div className="mt-6 grid w-full grid-cols-1 gap-8 md:auto-cols-fr md:grid-flow-col">
+            {content.map((contentCol, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Markdown key={index} content={contentCol} />
             ))}
           </div>
         )}
-
-        {children}
+        {urlLabel && url && (
+          <Button href={url} variant="black-link" className="mt-6" aria-labelledby={titleId}>
+            {urlLabel}
+          </Button>
+        )}
       </div>
     </div>
   )
-}
-
-export const Institution = ({ className, url, urlLabel, ...rest }: InstitutionProps) => {
-  const { Link: UILink } = useUIContext()
-
-  return (
-    <div className={cx(className, 'text-font')}>
-      {url ? (
-        <UILink href={url}>
-          <InstitutionCard {...rest} className="group hover:border-category-600">
-            {urlLabel && (
-              <div className="text-default mt-6 flex items-center font-semibold underline">
-                <span className="mr-5">{urlLabel}</span>
-                <ChevronRight className="block h-3 group-hover:hidden" />
-                <ArrowRight className="hidden h-3 group-hover:block" />
-              </div>
-            )}
-          </InstitutionCard>
-        </UILink>
-      ) : (
-        <InstitutionCard {...rest} />
-      )}
-    </div>
-  )
-}
-
-interface InstitutionCardProps
-  extends Pick<InstitutionProps, 'className' | 'title' | 'subtitle' | 'content'> {
-  children?: React.ReactNode
 }
 
 export default Institution

@@ -56,7 +56,7 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
   })
 
   const chevronStyles = cx('transform transition-transform group-open:rotate-180', {
-    'text-main-700': isBoxed,
+    'text-category-700': isBoxed,
     'w-10 h-10': isBoxed && boxedSize === 'h3',
     'w-8 h-8': isBoxed && boxedSize === 'h4',
     'w-6 h-6': isBoxed && (boxedSize === 'h5' || boxedSize === 'h6'),
