@@ -1,5 +1,6 @@
 import { AccordionSectionFragment } from '@bratislava/strapi-sdk-homepage'
 import { AccordionItem, Institution, NarrowText, PageLinkButton } from '@bratislava/ui-bratislava'
+import { isDefined } from '@utils/isDefined'
 import { groupByCategory, parseCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'
@@ -25,11 +26,9 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   key={i}
                   title={file.title ?? undefined}
                   subtitle={file.subtitle ?? undefined}
-                  content={[
-                    file.firstColumn ?? '',
-                    file.secondColumn ?? '',
-                    file.thirdColumn ?? '',
-                  ]}
+                  content={[file.firstColumn, file.secondColumn, file.thirdColumn]
+                    .filter(Boolean)
+                    .filter(isDefined)}
                   url={file.url ?? undefined}
                   urlLabel={file.urlLabel ?? undefined}
                 />
