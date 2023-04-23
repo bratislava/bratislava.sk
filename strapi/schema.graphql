@@ -1914,15 +1914,6 @@ enum ENUM_PAGECATEGORY_ICON {
   zp_vystavba_03
 }
 
-enum ENUM_PAGECATEGORY_ICONHOVER {
-  doprava_mapy_color_02
-  kultura_color_06
-  mesto_color_01
-  socialna_pomoc_color_04
-  vzdelavanie_color_05
-  zp_vystavba_color_03
-}
-
 enum ENUM_PAGESUBCATEGORY_ICON {
   aktivity_04
   byvanie_04
@@ -2416,7 +2407,8 @@ type Mutation {
   createPageLocalization(data: PageInput, id: ID, locale: I18NLocaleCode): PageEntityResponse
   createPageSubcategory(data: PageSubcategoryInput!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   createPageSubcategoryLocalization(data: PageSubcategoryInput, id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
-  createTag(data: TagInput!): TagEntityResponse
+  createTag(data: TagInput!, locale: I18NLocaleCode): TagEntityResponse
+  createTagLocalization(data: TagInput, id: ID, locale: I18NLocaleCode): TagEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -2434,7 +2426,7 @@ type Mutation {
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
   deletePageCategory(id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
   deletePageSubcategory(id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
-  deleteTag(id: ID!): TagEntityResponse
+  deleteTag(id: ID!, locale: I18NLocaleCode): TagEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -2470,7 +2462,7 @@ type Mutation {
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
   updatePageCategory(data: PageCategoryInput!, id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
   updatePageSubcategory(data: PageSubcategoryInput!, id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
-  updateTag(data: TagInput!, id: ID!): TagEntityResponse
+  updateTag(data: TagInput!, id: ID!, locale: I18NLocaleCode): TagEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -2496,7 +2488,7 @@ type Page {
   pageHeaderSections: [PagePageHeaderSectionsDynamicZone]
   parentPage: PageEntityResponse
   publishedAt: DateTime
-  relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
+  relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
   slug: String
   subtext: String
@@ -2508,11 +2500,9 @@ type PageCategory {
   color: ENUM_PAGECATEGORY_COLOR
   createdAt: DateTime
   icon: ENUM_PAGECATEGORY_ICON
-  iconHover: ENUM_PAGECATEGORY_ICONHOVER
   locale: String
   localizations(filters: PageCategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageCategoryRelationResponseCollection
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
-  priority: Int
   publishedAt: DateTime
   shortTitle: String
   subcategories(filters: PageSubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryRelationResponseCollection
@@ -2539,14 +2529,12 @@ input PageCategoryFiltersInput {
   color: StringFilterInput
   createdAt: DateTimeFilterInput
   icon: StringFilterInput
-  iconHover: StringFilterInput
   id: IDFilterInput
   locale: StringFilterInput
   localizations: PageCategoryFiltersInput
   not: PageCategoryFiltersInput
   or: [PageCategoryFiltersInput]
   pages: PageFiltersInput
-  priority: IntFilterInput
   publishedAt: DateTimeFilterInput
   shortTitle: StringFilterInput
   subcategories: PageSubcategoryFiltersInput
@@ -2557,9 +2545,7 @@ input PageCategoryFiltersInput {
 input PageCategoryInput {
   color: ENUM_PAGECATEGORY_COLOR
   icon: ENUM_PAGECATEGORY_ICON
-  iconHover: ENUM_PAGECATEGORY_ICONHOVER
   pages: [ID]
-  priority: Int
   publishedAt: DateTime
   shortTitle: String
   subcategories: [ID]
@@ -2642,7 +2628,6 @@ type PageSubcategory {
   localizations(filters: PageSubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryRelationResponseCollection
   moreLink: ComponentBlocksPageLink
   pages(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
-  priority: Int
   publishedAt: DateTime
   title: String
   updatedAt: DateTime
@@ -2673,7 +2658,6 @@ input PageSubcategoryFiltersInput {
   not: PageSubcategoryFiltersInput
   or: [PageSubcategoryFiltersInput]
   pages: ComponentBlocksPageLinkFiltersInput
-  priority: IntFilterInput
   publishedAt: DateTimeFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
@@ -2683,7 +2667,6 @@ input PageSubcategoryInput {
   icon: ENUM_PAGESUBCATEGORY_ICON
   moreLink: ComponentBlocksPageLinkInput
   pages: [ComponentBlocksPageLinkInput]
-  priority: Int
   publishedAt: DateTime
   title: String
 }
@@ -2727,8 +2710,8 @@ type Query {
   pageSubcategories(filters: PageSubcategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryEntityResponseCollection
   pageSubcategory(id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   pages(filters: PageFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageEntityResponseCollection
-  tag(id: ID): TagEntityResponse
-  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagEntityResponseCollection
+  tag(id: ID, locale: I18NLocaleCode): TagEntityResponse
+  tags(filters: TagFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, sort: [String] = []): TagEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -2770,10 +2753,10 @@ input StringFilterInput {
 }
 
 type Tag {
-  blogPosts(filters: BlogPostFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostRelationResponseCollection
   createdAt: DateTime
+  locale: String
+  localizations(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   pageCategory: PageCategoryEntityResponse
-  publishedAt: DateTime
   title: String
   updatedAt: DateTime
 }
@@ -2794,21 +2777,19 @@ type TagEntityResponseCollection {
 
 input TagFiltersInput {
   and: [TagFiltersInput]
-  blogPosts: BlogPostFiltersInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
+  locale: StringFilterInput
+  localizations: TagFiltersInput
   not: TagFiltersInput
   or: [TagFiltersInput]
   pageCategory: PageCategoryFiltersInput
-  publishedAt: DateTimeFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input TagInput {
-  blogPosts: [ID]
   pageCategory: ID
-  publishedAt: DateTime
   title: String
 }
 

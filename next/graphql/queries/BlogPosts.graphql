@@ -69,7 +69,6 @@ fragment LatestBlogPostEntity on BlogPostEntity {
       data {
         attributes {
           title
-          publishedAt
           pageCategory {
             data {
               attributes {

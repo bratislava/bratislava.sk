@@ -1498,15 +1498,6 @@ export enum Enum_Pagecategory_Icon {
   ZpVystavba_03 = 'zp_vystavba_03',
 }
 
-export enum Enum_Pagecategory_Iconhover {
-  DopravaMapyColor_02 = 'doprava_mapy_color_02',
-  KulturaColor_06 = 'kultura_color_06',
-  MestoColor_01 = 'mesto_color_01',
-  SocialnaPomocColor_04 = 'socialna_pomoc_color_04',
-  VzdelavanieColor_05 = 'vzdelavanie_color_05',
-  ZpVystavbaColor_03 = 'zp_vystavba_color_03',
-}
-
 export enum Enum_Pagesubcategory_Icon {
   Aktivity_04 = 'aktivity_04',
   Byvanie_04 = 'byvanie_04',
@@ -2035,6 +2026,7 @@ export type Mutation = {
   createPageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   createPageSubcategoryLocalization?: Maybe<PageSubcategoryEntityResponse>
   createTag?: Maybe<TagEntityResponse>
+  createTagLocalization?: Maybe<TagEntityResponse>
   createUploadFile?: Maybe<UploadFileEntityResponse>
   createUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Create a new role */
@@ -2165,6 +2157,13 @@ export type MutationCreatePageSubcategoryLocalizationArgs = {
 
 export type MutationCreateTagArgs = {
   data: TagInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationCreateTagLocalizationArgs = {
+  data?: InputMaybe<TagInput>
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type MutationCreateUploadFileArgs = {
@@ -2225,6 +2224,7 @@ export type MutationDeletePageSubcategoryArgs = {
 
 export type MutationDeleteTagArgs = {
   id: Scalars['ID']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type MutationDeleteUploadFileArgs = {
@@ -2332,6 +2332,7 @@ export type MutationUpdatePageSubcategoryArgs = {
 export type MutationUpdateTagArgs = {
   data: TagInput
   id: Scalars['ID']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type MutationUpdateUploadFileArgs = {
@@ -2412,7 +2413,6 @@ export type PageLocalizationsArgs = {
 export type PageRelatedContentsArgs = {
   filters?: InputMaybe<TagFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
@@ -2421,11 +2421,9 @@ export type PageCategory = {
   color?: Maybe<Enum_Pagecategory_Color>
   createdAt?: Maybe<Scalars['DateTime']>
   icon?: Maybe<Enum_Pagecategory_Icon>
-  iconHover?: Maybe<Enum_Pagecategory_Iconhover>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<PageCategoryRelationResponseCollection>
   pages?: Maybe<PageRelationResponseCollection>
-  priority?: Maybe<Scalars['Int']>
   publishedAt?: Maybe<Scalars['DateTime']>
   shortTitle?: Maybe<Scalars['String']>
   subcategories?: Maybe<PageSubcategoryRelationResponseCollection>
@@ -2476,14 +2474,12 @@ export type PageCategoryFiltersInput = {
   color?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   icon?: InputMaybe<StringFilterInput>
-  iconHover?: InputMaybe<StringFilterInput>
   id?: InputMaybe<IdFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<PageCategoryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageCategoryFiltersInput>>>
   pages?: InputMaybe<PageFiltersInput>
-  priority?: InputMaybe<IntFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   shortTitle?: InputMaybe<StringFilterInput>
   subcategories?: InputMaybe<PageSubcategoryFiltersInput>
@@ -2494,9 +2490,7 @@ export type PageCategoryFiltersInput = {
 export type PageCategoryInput = {
   color?: InputMaybe<Enum_Pagecategory_Color>
   icon?: InputMaybe<Enum_Pagecategory_Icon>
-  iconHover?: InputMaybe<Enum_Pagecategory_Iconhover>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  priority?: InputMaybe<Scalars['Int']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   shortTitle?: InputMaybe<Scalars['String']>
   subcategories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
@@ -2611,7 +2605,6 @@ export type PageSubcategory = {
   localizations?: Maybe<PageSubcategoryRelationResponseCollection>
   moreLink?: Maybe<ComponentBlocksPageLink>
   pages?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
-  priority?: Maybe<Scalars['Int']>
   publishedAt?: Maybe<Scalars['DateTime']>
   title?: Maybe<Scalars['String']>
   updatedAt?: Maybe<Scalars['DateTime']>
@@ -2658,7 +2651,6 @@ export type PageSubcategoryFiltersInput = {
   not?: InputMaybe<PageSubcategoryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageSubcategoryFiltersInput>>>
   pages?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  priority?: InputMaybe<IntFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -2668,7 +2660,6 @@ export type PageSubcategoryInput = {
   icon?: InputMaybe<Enum_Pagesubcategory_Icon>
   moreLink?: InputMaybe<ComponentBlocksPageLinkInput>
   pages?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
-  priority?: InputMaybe<Scalars['Int']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   title?: InputMaybe<Scalars['String']>
 }
@@ -2811,12 +2802,13 @@ export type QueryPagesArgs = {
 
 export type QueryTagArgs = {
   id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type QueryTagsArgs = {
   filters?: InputMaybe<TagFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
@@ -2902,18 +2894,17 @@ export type StringFilterInput = {
 
 export type Tag = {
   __typename?: 'Tag'
-  blogPosts?: Maybe<BlogPostRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']>
+  locale?: Maybe<Scalars['String']>
+  localizations?: Maybe<TagRelationResponseCollection>
   pageCategory?: Maybe<PageCategoryEntityResponse>
-  publishedAt?: Maybe<Scalars['DateTime']>
   title?: Maybe<Scalars['String']>
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
-export type TagBlogPostsArgs = {
-  filters?: InputMaybe<BlogPostFiltersInput>
+export type TagLocalizationsArgs = {
+  filters?: InputMaybe<TagFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
@@ -2936,21 +2927,19 @@ export type TagEntityResponseCollection = {
 
 export type TagFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>
-  blogPosts?: InputMaybe<BlogPostFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   id?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<TagFiltersInput>
   not?: InputMaybe<TagFiltersInput>
   or?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>
   pageCategory?: InputMaybe<PageCategoryFiltersInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
 export type TagInput = {
-  blogPosts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   pageCategory?: InputMaybe<Scalars['ID']>
-  publishedAt?: InputMaybe<Scalars['DateTime']>
   title?: InputMaybe<Scalars['String']>
 }
 
@@ -3834,7 +3823,6 @@ export type LatestBlogsWithTagsQuery = {
             attributes?: {
               __typename?: 'Tag'
               title?: string | null
-              publishedAt?: any | null
               pageCategory?: {
                 __typename?: 'PageCategoryEntityResponse'
                 data?: {
@@ -3879,7 +3867,6 @@ export type LatestBlogPostEntityFragment = {
         attributes?: {
           __typename?: 'Tag'
           title?: string | null
-          publishedAt?: any | null
           pageCategory?: {
             __typename?: 'PageCategoryEntityResponse'
             data?: {
@@ -4909,7 +4896,6 @@ export type HomepageEntityFragment = {
               attributes?: {
                 __typename?: 'Tag'
                 title?: string | null
-                publishedAt?: any | null
                 pageCategory?: {
                   __typename?: 'PageCategoryEntityResponse'
                   data?: {
@@ -4954,7 +4940,6 @@ export type HomepageEntityFragment = {
               attributes?: {
                 __typename?: 'Tag'
                 title?: string | null
-                publishedAt?: any | null
                 pageCategory?: {
                   __typename?: 'PageCategoryEntityResponse'
                   data?: {
@@ -5135,7 +5120,6 @@ export type HomepageQuery = {
                   attributes?: {
                     __typename?: 'Tag'
                     title?: string | null
-                    publishedAt?: any | null
                     pageCategory?: {
                       __typename?: 'PageCategoryEntityResponse'
                       data?: {
@@ -5180,7 +5164,6 @@ export type HomepageQuery = {
                   attributes?: {
                     __typename?: 'Tag'
                     title?: string | null
-                    publishedAt?: any | null
                     pageCategory?: {
                       __typename?: 'PageCategoryEntityResponse'
                       data?: {
@@ -9475,7 +9458,6 @@ export const LatestBlogPostEntityFragmentDoc = gql`
         data {
           attributes {
             title
-            publishedAt
             pageCategory {
               data {
                 attributes {

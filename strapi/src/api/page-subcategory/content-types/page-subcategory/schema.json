@@ -24,14 +24,6 @@
       },
       "type": "string"
     },
-    "priority": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "integer"
-    },
     "icon": {
       "pluginOptions": {
         "i18n": {
