@@ -2,6 +2,7 @@ import AccordionShowcase from '@components/styleguide/showcases/AccordionShowcas
 import BlogPostCardShowcase from '@components/styleguide/showcases/BlogPostCardShowcase'
 import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardShowcase'
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
+import FileCardShowcase from '@components/styleguide/showcases/FileCardShowcase'
 import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
 import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
@@ -36,6 +37,7 @@ const Styleguide = () => {
   return (
     <StyleGuideWrapper>
       {/* HERE ADD SHOWCASES */}
+      <FileCardShowcase />
       <TagShowCase />
       <TooltipShowCase />
       <FieldHeaderShowCase />

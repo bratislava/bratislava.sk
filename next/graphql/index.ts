@@ -4126,6 +4126,20 @@ export type ImageSrcEntityFragment = {
   attributes?: { __typename?: 'UploadFile'; url: string } | null
 }
 
+export type UploadFileEntityFragment = {
+  __typename?: 'UploadFileEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'UploadFile'
+    url: string
+    name: string
+    size: number
+    ext?: string | null
+    updatedAt?: any | null
+    createdAt?: any | null
+  } | null
+}
+
 export type CommonLinkFragment = {
   __typename?: 'ComponentBlocksCommonLink'
   label: string
@@ -9236,6 +9250,19 @@ export const BlogPostEntityFragmentDoc = gql`
   }
   ${BlogPostLinkFragmentDoc}
   ${SectionsFragmentDoc}
+`
+export const UploadFileEntityFragmentDoc = gql`
+  fragment UploadFileEntity on UploadFileEntity {
+    id
+    attributes {
+      url
+      name
+      size
+      ext
+      updatedAt
+      createdAt
+    }
+  }
 `
 export const FooterColumnBlockFragmentDoc = gql`
   fragment FooterColumnBlock on ComponentBlocksFooterColumn {

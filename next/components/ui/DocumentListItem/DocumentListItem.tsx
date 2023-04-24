@@ -1,4 +1,4 @@
-import { Download } from '@assets/images'
+import { DownloadFile } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 
@@ -55,7 +55,7 @@ export const DocumentListItem = ({
         {mainDocumentHref && (
           <div className="pr-6 text-category-600 md:pr-0 lg:text-font">
             <a href={mainDocumentHref} download>
-              <Download />
+              <DownloadFile />
             </a>
           </div>
         )}

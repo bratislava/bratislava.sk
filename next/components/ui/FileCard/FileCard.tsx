@@ -1,4 +1,4 @@
-import { Download } from '@assets/images'
+import { DownloadFile } from '@assets/images'
 import cx from 'classnames'
 
 import { Panel } from '../Panel/Panel'
@@ -22,7 +22,7 @@ export const FileCard = ({
     <a href={downloadLink} target="_blank" rel="noreferrer" download>
       <Panel className={cx(className, 'flex flex-row justify-between px-5 md:flex-col')} hoverable>
         <div className="mt-5 hidden justify-end text-category-600 md:flex">
-          <Download className="text-red-brick" />
+          <DownloadFile className="text-red-brick" />
         </div>
 
         <div className="text-default my-5 md:mb-5 md:mt-0">
@@ -39,7 +39,7 @@ export const FileCard = ({
         </div>
 
         <div className="mb-5 flex items-end text-category-600 md:hidden">
-          <Download className="text-red-brick" />
+          <DownloadFile className="text-red-brick" />
         </div>
       </Panel>
     </a>

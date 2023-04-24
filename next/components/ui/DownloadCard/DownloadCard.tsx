@@ -1,4 +1,4 @@
-import { Download } from '@assets/images'
+import { DownloadFile } from '@assets/images'
 import cx from 'classnames'
 
 import { Panel } from '../Panel/Panel'
@@ -34,7 +34,7 @@ export const DownloadCard = ({
         <div className=" flex items-end space-x-5 lg:space-x-8">
           <span className="text-default max-h-24 w-[250px] overflow-hidden">{title}</span>
           <span className="flex h-[88px] items-end justify-end text-category-600">
-            <Download />
+            <DownloadFile />
           </span>
         </div>
 

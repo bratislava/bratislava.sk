@@ -176,5 +176,11 @@
     "answerNo": "No",
     "answerDescriptionYes": "Your monthly income reaches the required amount and you are entitled to apply for temporary accommodation in our hostel.",
     "answerDescriptionNo": "To meet the subsistence level, you need to achieve an income of at least XY €. Therefore, you are not entitled to apply for temporary accommodation in our hostel."
+  },
+  "DownloadAriaLabel": {
+    "downloadFile": "Download file",
+    "downloadFileAriaLabel": "Download file {{title}}, format {{ext}}, {{size}}",
+    "unknownFormat": "unknown",
+    "size": "Size"
   }
 }

@@ -176,5 +176,11 @@
     "answerNo": "Nie",
     "answerDescriptionYes": "Vaše mesačné príjmy dosahujú potrebnú výšku a máte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni.",
     "answerDescriptionNo": "Na splnenie životného minima potrebujete dosiahnuť výšku príjmov aspoň XY €. Preto nemáte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni."
+  },
+  "DownloadAriaLabel": {
+    "downloadFile": "Stiahnuť súbor",
+    "downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{ext}}, {{size}}",
+    "unknownFormat": "neznámy",
+    "size": "Veľkosť"
   }
 }

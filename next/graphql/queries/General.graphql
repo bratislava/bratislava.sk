@@ -5,6 +5,18 @@ fragment ImageSrcEntity on UploadFileEntity {
   }
 }
 
+fragment UploadFileEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    name
+    size
+    ext
+    updatedAt
+    createdAt
+  }
+}
+
 fragment CommonLink on ComponentBlocksCommonLink {
   label
   url
