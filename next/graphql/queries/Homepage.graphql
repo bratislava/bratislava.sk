@@ -96,7 +96,7 @@ fragment HomepageHeader on ComponentBlocksHomepageHeader {
   }
 }
 
-fragment HomepagePostBlock on ComponentBlocksHomepagePost{
+fragment HomepagePostBlock on ComponentBlocksHomepagePost {
   title
   slug
   plausibleId
