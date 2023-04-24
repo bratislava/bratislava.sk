@@ -4120,6 +4120,12 @@ export type BlogPostLinkFragment = {
   } | null
 }
 
+export type ImageSrcEntityFragment = {
+  __typename?: 'UploadFileEntity'
+  id?: string | null
+  attributes?: { __typename?: 'UploadFile'; url: string } | null
+}
+
 export type CommonLinkFragment = {
   __typename?: 'ComponentBlocksCommonLink'
   label: string
@@ -7024,7 +7030,7 @@ export type LocalizationFragment = {
   }>
 }
 
-export type IconWithTitleAndDescriptionBlockFragment = {
+export type IconTitleDescriptionBlockFragment = {
   __typename?: 'ComponentBlocksIconWithTitleAndDescription'
   title?: string | null
   desc?: string | null
@@ -8591,29 +8597,35 @@ export const BlogPostLinkFragmentDoc = gql`
     url
   }
 `
-export const IconWithTitleAndDescriptionBlockFragmentDoc = gql`
-  fragment IconWithTitleAndDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
+export const ImageSrcEntityFragmentDoc = gql`
+  fragment ImageSrcEntity on UploadFileEntity {
+    id
+    attributes {
+      url
+    }
+  }
+`
+export const IconTitleDescriptionBlockFragmentDoc = gql`
+  fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
     title
     desc
     icon {
       data {
-        id
-        attributes {
-          url
-        }
+        ...ImageSrcEntity
       }
     }
   }
+  ${ImageSrcEntityFragmentDoc}
 `
 export const IconTitleDescSectionFragmentDoc = gql`
   fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
     title
     hasBackground
     list {
-      ...IconWithTitleAndDescriptionBlock
+      ...IconTitleDescriptionBlock
     }
   }
-  ${IconWithTitleAndDescriptionBlockFragmentDoc}
+  ${IconTitleDescriptionBlockFragmentDoc}
 `
 export const DocumentListSectionFragmentDoc = gql`
   fragment DocumentListSection on ComponentSectionsDocumentList {
