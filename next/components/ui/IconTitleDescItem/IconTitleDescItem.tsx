@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { ImageSrcEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -24,7 +23,7 @@ export const IconTitleDescItem = ({
           'bg-category-200': !hasBackground,
         })}
       >
-        {icon.attributes?.url && (
+        {icon?.attributes?.url && (
           <div className="relative h-18 w-18">
             <Image src={icon.attributes.url} fill alt="" />
           </div>
