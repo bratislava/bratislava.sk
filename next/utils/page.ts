@@ -3,8 +3,8 @@ import {
   PageLinkBlockFragment,
   PageParentPagesFragment,
 } from '@bratislava/strapi-sdk-homepage'
-import { TFile } from '@bratislava/ui-bratislava'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
+import { TFile } from '@components/ui/FileList/FileList'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 

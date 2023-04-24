@@ -1,6 +1,6 @@
 import { MSGraphFilteredGroupUser } from '@backend/services/ms-graph'
 import { userSearchFetcher } from '@backend/utils/organisationalStructure'
-import { LoadingSpinner } from '@bratislava/ui-bratislava'
+import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { useTranslations } from 'next-intl'
 import useSwr from 'swr'

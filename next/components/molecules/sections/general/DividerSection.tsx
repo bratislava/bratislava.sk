@@ -1,5 +1,5 @@
 import { DividerSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Divider } from '@bratislava/ui-bratislava'
+import { Divider } from '@bratislava/ui-bratislava/Divider/Divider'
 import React from 'react'
 
 type DividerSectionProps = {

@@ -1,6 +1,7 @@
 import { getPagesSwrKey, pagesFetcher, PagesFilters } from '@backend/meili/fetchers/pagesFetcher'
 import { PageMeili } from '@backend/meili/types'
-import { LoadingSpinner, PageCards } from '@bratislava/ui-bratislava'
+import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
+import { PageCards } from '@bratislava/ui-bratislava/PageCards/PageCards'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'
 import { useLocale, useTranslations } from 'next-intl'

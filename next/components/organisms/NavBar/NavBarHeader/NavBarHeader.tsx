@@ -1,6 +1,6 @@
 import SearchIcon from '@assets/images/search-icon.svg'
-import { SectionContainer } from '@bratislava/ui-bratislava'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
+import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'

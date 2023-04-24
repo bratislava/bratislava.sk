@@ -1,4 +1,4 @@
-import { Waves } from '@bratislava/ui-bratislava'
+import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import cx from 'classnames'
 import React, { CSSProperties, useMemo } from 'react'

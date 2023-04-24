@@ -1,5 +1,5 @@
 import { TextWithImageSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { TextWithImage } from '@bratislava/ui-bratislava'
+import { TextWithImage } from '@bratislava/ui-bratislava/TextWithImage/TextWithImage'
 import React from 'react'
 
 type TextWithImageSectionProps = {

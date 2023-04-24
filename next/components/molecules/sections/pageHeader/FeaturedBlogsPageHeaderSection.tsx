@@ -1,5 +1,5 @@
 import { FeaturedBlogPostsPageHeaderSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { FeaturedBlogs } from '@bratislava/ui-bratislava'
+import { FeaturedBlogs } from '@bratislava/ui-bratislava/FeaturedBlogs/FeaturedBlogs'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 

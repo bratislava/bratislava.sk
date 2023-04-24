@@ -1,5 +1,5 @@
 import { ListItemsSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { ListItems } from '@bratislava/ui-bratislava'
+import { ListItems } from '@bratislava/ui-bratislava/ListItems/ListItems'
 import { parsePageLink } from '@utils/page'
 import React from 'react'
 

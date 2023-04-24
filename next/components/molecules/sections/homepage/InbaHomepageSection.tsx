@@ -1,4 +1,5 @@
-import { InBaCard, SectionContainer } from '@components/ui'
+import { InBaCard } from '@components/ui/InBaCard/InBaCard'
+import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useHomepageContext } from '@utils/homepageContext'
 import React from 'react'
 

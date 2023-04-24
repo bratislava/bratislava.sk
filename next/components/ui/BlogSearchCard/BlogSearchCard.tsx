@@ -2,7 +2,7 @@
 import { ArrowRightIcon } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
-import { VerticalCardButton } from '@components/ui'
+import { VerticalCardButton } from '@components/ui/VerticalCardButton/VerticalCardButton'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'
 

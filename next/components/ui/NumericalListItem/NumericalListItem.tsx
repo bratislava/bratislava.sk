@@ -1,6 +1,6 @@
 // @ts-strict-ignore
-import { NumericalListItemObject } from '@bratislava/ui-bratislava'
 import Markdown from '@components/atoms/Markdown'
+import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 import cx from 'classnames'
 
 import { DashedLine } from '../DashedLine/DashedLine'

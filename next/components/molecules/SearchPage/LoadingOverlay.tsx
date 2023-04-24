@@ -1,7 +1,6 @@
+import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import cx from 'classnames'
 import React, { PropsWithChildren } from 'react'
-
-import { LoadingSpinner } from '../../ui'
 
 type LoadingOverlayProps = {
   loading: boolean

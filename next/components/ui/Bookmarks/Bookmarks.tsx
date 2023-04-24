@@ -1,6 +1,6 @@
 import SignpostIcon from '@assets/images/signpost-round.svg'
 import UaIcon from '@assets/images/ua-flag-round.svg'
-import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava'
+import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
 import cx from 'classnames'
 import isEmpty from 'lodash/isEmpty'
 

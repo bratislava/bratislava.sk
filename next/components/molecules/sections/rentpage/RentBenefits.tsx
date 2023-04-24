@@ -1,5 +1,6 @@
 import PrenajomImage from '@assets/images/PrenajomImage.png'
-import { HorizontalScrollWrapper, Rent, RentProps } from '@bratislava/ui-bratislava'
+import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { Rent, RentProps } from '@bratislava/ui-bratislava/Rent/Rent'
 import { useTranslations } from 'next-intl'
 
 export interface IProps {

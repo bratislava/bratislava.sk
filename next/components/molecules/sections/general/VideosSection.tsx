@@ -1,5 +1,5 @@
 import { VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Videos } from '@bratislava/ui-bratislava'
+import { Videos } from '@bratislava/ui-bratislava/Videos/Videos'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 

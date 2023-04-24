@@ -1,5 +1,7 @@
 // @ts-strict-ignore
-import { HorizontalScrollWrapper, TabBarTab, Tag } from '@bratislava/ui-bratislava'
+import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { TabBarTab } from '@bratislava/ui-bratislava/TabBarTab/TabBarTab'
+import { Tag } from '@bratislava/ui-bratislava/Tag/Tag'
 import { useTranslations } from 'next-intl'
 
 export interface Card {

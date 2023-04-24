@@ -1,5 +1,5 @@
 import { VznMeili } from '@backend/meili/types'
-import { FileCard } from '@bratislava/ui-bratislava'
+import { FileCard } from '@bratislava/ui-bratislava/FileCard/FileCard'
 import Markdown from '@components/atoms/Markdown'
 import { client } from '@utils/gql'
 import { isPresent } from '@utils/utils'

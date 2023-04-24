@@ -1,5 +1,5 @@
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
-import { SectionContainer } from '@bratislava/ui-bratislava'
+import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import cx from 'classnames'
 import * as React from 'react'
 

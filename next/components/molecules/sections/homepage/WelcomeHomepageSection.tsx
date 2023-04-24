@@ -1,4 +1,4 @@
-import { SectionContainer } from '@bratislava/ui-bratislava'
+import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import WelcomeCard from '@components/ui/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@utils/generalContext'
 import { generateImageSizes } from '@utils/generateImageSizes'

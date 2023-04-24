@@ -1,4 +1,4 @@
-import { SectionContainer } from '@bratislava/ui-bratislava'
+import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import * as React from 'react'
 
 import CyclingTotalChart from '../components/molecules/charts/CyclingTotalChart'

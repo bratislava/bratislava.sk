@@ -1,12 +1,10 @@
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
-import {
-  DocumentListItem,
-  LoadingSpinner,
-  Modal,
-  NoResultsFound,
-  Pagination,
-} from '@bratislava/ui-bratislava'
+import { DocumentListItem } from '@components/ui/DocumentListItem/DocumentListItem'
+import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
+import Modal from '@components/ui/Modal/Modal'
+import { NoResultsFound } from '@components/ui/NoResultsFound/NoResultsFound'
+import Pagination from '@components/ui/Pagination/Pagination'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { isPresent } from '@utils/utils'
