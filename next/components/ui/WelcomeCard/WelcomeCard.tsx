@@ -1,3 +1,5 @@
+'use client'
+
 import WelcomeCardIcon from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import MLink from '@components/forms/simple-components/MLink'
 import React, { useRef } from 'react'

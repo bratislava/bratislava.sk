@@ -1,3 +1,5 @@
+'use client'
+
 // @ts-strict-ignore
 import { ArrowRightIcon } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'

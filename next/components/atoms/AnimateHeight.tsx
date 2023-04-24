@@ -1,3 +1,5 @@
+'use client'
+
 import cx from 'classnames'
 import { motion, useReducedMotion, Variant } from 'framer-motion'
 import { ReactNode, useMemo, useRef } from 'react'

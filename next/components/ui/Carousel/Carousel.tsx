@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
 import { VerticalCardButton } from '@components/ui/VerticalCardButton/VerticalCardButton'
 import cx from 'classnames'

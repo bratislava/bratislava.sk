@@ -1,3 +1,5 @@
+'use client'
+
 import { InBaCard } from '@components/ui/InBaCard/InBaCard'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useHomepageContext } from '@utils/homepageContext'

@@ -88,19 +88,21 @@ export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
 }
 
 export const FooterLanguageSwitcher = () => {
-  const { otherLanguage, currentLanguage } = useLocalizations()
+  return null
 
-  return (
-    <>
-      {otherLanguage && (
-        <>
-          <MLink href={otherLanguage.path} variant="underlined" locale={otherLanguage.locale}>
-            {otherLanguage.longName}
-          </MLink>
-          <span>/</span>
-        </>
-      )}
-      <span className="font-semibold">{currentLanguage.longName}</span>
-    </>
-  )
+  // const { otherLanguage, currentLanguage } = useLocalizations()
+  //
+  // return (
+  //   <>
+  //     {otherLanguage && (
+  //       <>
+  //         <MLink href={otherLanguage.path} variant="underlined" locale={otherLanguage.locale}>
+  //           {otherLanguage.longName}
+  //         </MLink>
+  //         <span>/</span>
+  //       </>
+  //     )}
+  //     <span className="font-semibold">{currentLanguage.longName}</span>
+  //   </>
+  // )
 }

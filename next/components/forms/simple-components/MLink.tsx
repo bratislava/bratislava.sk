@@ -1,3 +1,5 @@
+'use client'
+
 import cx from 'classnames'
 import NextLink from 'next/link'
 import { usePlausible } from 'next-plausible'

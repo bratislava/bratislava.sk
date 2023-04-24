@@ -24,13 +24,13 @@ interface MobileNavBarProps {
 
 const MobileNavBar = ({ className }: MobileNavBarProps) => {
   const t = useTranslations()
-  const router = useRouter()
+  // const router = useRouter()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
   const { otherLanguage } = useLocalizations()
 
-  useEffect(() => {
-    setMobileMenuOpen(false)
-  }, [router.asPath, setMobileMenuOpen])
+  // useEffect(() => {
+  //   setMobileMenuOpen(false)
+  // }, [router.asPath, setMobileMenuOpen])
 
   return (
     <>

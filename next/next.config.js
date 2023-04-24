@@ -1,14 +1,15 @@
-const { i18n } = require('./next-i18next.config')
 const { withPlausibleProxy } = require('next-plausible')
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  i18n,
   reactStrictMode: true,
   images: {
     domains: ['localhost', 'cdn-api.bratislava.sk', 'goout.net'],
+  },
+  experimental: {
+    appDir: true,
   },
   async rewrites() {
     return {
@@ -2677,7 +2678,6 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      issuer: /\.[jt]sx?$/,
       use: {
         loader: '@svgr/webpack',
         options: {
@@ -2696,7 +2696,14 @@ const nextConfig = {
   },
 }
 
+const withNextIntl = require('next-intl/plugin')(
+  // This is the default (also the `src` folder is supported out of the box)
+  './i18n.ts',
+)
+
 // https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
-module.exports = withPlausibleProxy()({
-  ...nextConfig,
-})
+module.exports = withNextIntl(
+  withPlausibleProxy()({
+    ...nextConfig,
+  }),
+)

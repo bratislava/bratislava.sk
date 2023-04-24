@@ -1,3 +1,5 @@
+'use client'
+
 import { structureFetcher } from 'backend/utils/organisationalStructure'
 import { useTranslations } from 'next-intl'
 import useSWR from 'swr'

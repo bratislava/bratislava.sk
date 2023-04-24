@@ -1,3 +1,5 @@
+'use client'
+
 /* eslint-disable sonarjs/no-duplicate-string */
 import { ArrowRightIcon } from '@assets/images'
 import { LinkButtonProps } from '@react-types/button'

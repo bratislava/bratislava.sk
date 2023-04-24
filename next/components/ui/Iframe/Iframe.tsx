@@ -1,3 +1,5 @@
+'use client'
+
 // @ts-strict-ignore
 import { useEffect, useRef, useState } from 'react'
 

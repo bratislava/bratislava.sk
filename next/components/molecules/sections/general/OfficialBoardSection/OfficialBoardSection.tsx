@@ -1,3 +1,5 @@
+'use client'
+
 import type { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import { BasicSearchOld } from '@bratislava/ui-bratislava/BasicSearchOld/BasicSearchOld'
 import { DocumentCards } from '@bratislava/ui-bratislava/DocumentCards/DocumentCards'

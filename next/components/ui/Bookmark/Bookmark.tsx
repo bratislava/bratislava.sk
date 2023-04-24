@@ -1,3 +1,5 @@
+'use client'
+
 // @ts-strict-ignore
 import ChevronRight from '@assets/images/chevron-right.svg'
 import CloseOutline from '@assets/images/close-outline.svg'

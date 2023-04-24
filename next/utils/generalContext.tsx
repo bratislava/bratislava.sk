@@ -1,3 +1,5 @@
+'use client'
+
 import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
 import { createContext, ReactNode, useContext } from 'react'
 

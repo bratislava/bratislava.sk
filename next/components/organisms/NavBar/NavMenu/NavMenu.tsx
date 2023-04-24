@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useMemo } from 'react'
 
@@ -20,9 +20,9 @@ const NavMenu = () => {
 
   const { menuValue, setMenuValue } = useNavMenuContext()
 
-  useEffect(() => {
-    setMenuValue('')
-  }, [router.asPath, setMenuValue])
+  // useEffect(() => {
+  //   setMenuValue('')
+  // }, [router, setMenuValue])
 
   return (
     <NavigationMenu.Root

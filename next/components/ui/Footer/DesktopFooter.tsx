@@ -17,8 +17,8 @@ import * as React from 'react'
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=7683-20624&t=bWqVCwkV1Gv1qULG-0
  */
-const DesktopFooter = () => {
-  const { footer } = useGeneralContext()
+const DesktopFooter = ({ footer }: { footer: any }) => {
+  // const { footer } = useGeneralContext()
 
   const attributes = footer?.data?.attributes
   if (!attributes) {

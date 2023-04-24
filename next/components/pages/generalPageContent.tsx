@@ -27,7 +27,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const hasFeaturedBlogs = page.attributes?.pageHeaderSections
     ?.filter(isDefined)
     .some((section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts')
-  const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
+  const breadcrumbs = getPageBreadcrumbs(page)
 
   const isClient = useIsClient()
 

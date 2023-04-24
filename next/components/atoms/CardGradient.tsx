@@ -1,3 +1,5 @@
+'use client'
+
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'

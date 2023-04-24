@@ -1,13 +1,15 @@
 import { getSdk } from '@bratislava/strapi-sdk-homepage'
 import { GraphQLClient } from 'graphql-request'
-import getConfig from 'next/config'
+// import getConfig from 'next/config'
 
 type serverTypeConfig = {
   strapiUrl: string
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const { serverRuntimeConfig }: { serverRuntimeConfig: serverTypeConfig } = getConfig()
+// const { serverRuntimeConfig }: { serverRuntimeConfig: serverTypeConfig } = getConfig()
+
+const serverRuntimeConfig = { strapiUrl: process.env.STRAPI_URL }
 
 // URL becomes full url to strapi on server, but just /graphql (for proxy) on client
 
