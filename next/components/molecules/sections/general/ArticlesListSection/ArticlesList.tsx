@@ -1,5 +1,6 @@
 import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
-import { NewsCard, Pagination } from '@bratislava/ui-bratislava'
+import { NewsCard } from '@bratislava/ui-bratislava/NewsCard/NewsCard'
+import { Pagination } from '@bratislava/ui-bratislava/Pagination/Pagination'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { client } from '@utils/gql'
 import { useLocale, useTranslations } from 'next-intl'

@@ -1,5 +1,5 @@
 import { SubpageListPageHeaderSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { SubpageList } from '@bratislava/ui-bratislava'
+import { SubpageList } from '@bratislava/ui-bratislava/SubpageList/SubpageList'
 import { parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'

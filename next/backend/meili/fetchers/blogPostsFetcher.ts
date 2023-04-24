@@ -1,7 +1,7 @@
 import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { BlogItem } from '@components/ui/BlogSearchCard/BlogSearchCard'
 import { Key } from 'swr'
 
-import { BlogItem } from '../../../components/ui'
 import { meiliClient } from '../meiliClient'
 import { BlogPostMeili, SearchIndexWrapped } from '../types'
 import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'

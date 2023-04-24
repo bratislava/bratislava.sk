@@ -1,5 +1,5 @@
 import NewsLetterImage from '@assets/images/newsletter-image.png'
-import { NewsLetter } from '@bratislava/ui-bratislava'
+import { NewsLetter } from '@bratislava/ui-bratislava/NewsLetter/NewsLetter'
 import { useTranslations } from 'next-intl'
 
 const NewsletterSection = () => {

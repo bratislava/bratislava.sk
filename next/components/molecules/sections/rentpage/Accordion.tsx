@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import ChevronDown from '@assets/images/chevron-down.svg'
 import ChevronRight from '@assets/images/chevron-right.svg'
-import { Accordion as AccordionBa } from '@bratislava/ui-bratislava'
+import { Accordion as AccordionBa } from '@bratislava/ui-bratislava/Accordion/Accordion'
 import cx from 'classnames'
 import React from 'react'
 

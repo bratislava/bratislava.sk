@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ErrorBox, LoadingSpinner } from '@bratislava/ui-bratislava'
+import { ErrorBox } from '@bratislava/ui-bratislava/ErrorBox/ErrorBox'
+import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import cx from 'classnames'
 import merge from 'lodash/merge'
 import dynamic from 'next/dynamic'

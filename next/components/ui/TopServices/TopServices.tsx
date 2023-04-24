@@ -1,5 +1,5 @@
 import { TopServicesItemFragment } from '@bratislava/strapi-sdk-homepage'
-import { HorizontalScrollWrapper } from '@components/ui'
+import { HorizontalScrollWrapper } from '@components/ui/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import chunk from 'lodash/chunk'
 
 import { TopServicesItem } from '../TopServicesItem/TopServicesItem'

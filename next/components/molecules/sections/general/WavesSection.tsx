@@ -1,5 +1,5 @@
 import { WavesSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Waves } from '@bratislava/ui-bratislava'
+import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import cx from 'classnames'
 import React from 'react'
 

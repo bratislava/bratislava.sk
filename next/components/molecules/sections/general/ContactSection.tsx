@@ -1,5 +1,5 @@
 import { ContactSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Contact } from '@bratislava/ui-bratislava'
+import { Contact } from '@bratislava/ui-bratislava/Contact/Contact'
 import React from 'react'
 
 type ContactSectionProps = { section: ContactSectionFragment }

@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { ArrowRightIcon } from '@assets/images'
 import { LatestBlogPostEntityFragment } from '@bratislava/strapi-sdk-homepage'
-import { Iframe } from '@bratislava/ui-bratislava'
+import { Iframe } from '@bratislava/ui-bratislava/Iframe/Iframe'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'

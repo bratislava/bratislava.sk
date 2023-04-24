@@ -1,4 +1,7 @@
-import { BlogCards, Posts, PrimatorCouncil, SectionContainer } from '@components/ui'
+import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
+import BlogCards from '@components/ui/Sections/BlogCards/BlogCards'
+import Posts from '@components/ui/Sections/Posts/Posts'
+import PrimatorCouncil from '@components/ui/Sections/PrimatorCouncil/PrimatorCouncil'
 import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
 import { useLocale, useTranslations } from 'next-intl'

@@ -1,7 +1,7 @@
 import { CrossIcon } from '@assets/images'
 import Hamburger from '@assets/images/ba-hamburger.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
-import { Brand } from '@bratislava/ui-bratislava'
+import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@utils/colors'

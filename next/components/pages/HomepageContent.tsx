@@ -4,7 +4,8 @@ import GooutEventsHomepageSection from '@components/molecules/sections/homepage/
 import InbaHomepageSection from '@components/molecules/sections/homepage/InbaHomepageSection'
 import TopServicesHomepageSection from '@components/molecules/sections/homepage/TopServicesHomepageSection'
 import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
-import { SectionContainer, Waves } from '@components/ui'
+import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
+import { Waves } from '@components/ui/Waves/Waves'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 

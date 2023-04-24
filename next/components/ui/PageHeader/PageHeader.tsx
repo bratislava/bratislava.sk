@@ -1,6 +1,6 @@
 import { CommonLinkFragment } from '@bratislava/strapi-sdk-homepage'
-import { Waves } from '@bratislava/ui-bratislava'
 import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
+import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import Image from 'next/image'

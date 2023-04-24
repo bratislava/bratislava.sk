@@ -1,4 +1,4 @@
-import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava'
+import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava/BlogSearchCard/BlogSearchCard'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'

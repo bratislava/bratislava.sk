@@ -1,5 +1,5 @@
 import { TimelineSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Timeline } from '@bratislava/ui-bratislava'
+import { Timeline } from '@bratislava/ui-bratislava/Timeline/Timeline'
 import { isDefined } from '@utils/isDefined'
 import React from 'react'
 

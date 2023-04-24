@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from '@assets/images'
-import { Carousel } from '@bratislava/ui-bratislava'
+import { Carousel } from '@bratislava/ui-bratislava/Carousel/Carousel'
 import Button from '@components/forms/simple-components/Button'
 import { FetchGooutEventsResult, GooutEventParsed } from '@utils/goout'
 import React from 'react'

@@ -1,5 +1,5 @@
 import { IframeSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { Iframe } from '@bratislava/ui-bratislava'
+import { Iframe } from '@bratislava/ui-bratislava/Iframe/Iframe'
 import React from 'react'
 
 type IframeSectionProps = { section: IframeSectionFragment }

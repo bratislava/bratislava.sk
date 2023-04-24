@@ -1,5 +1,5 @@
 import { ColumnedTextSectionFragment } from '@bratislava/strapi-sdk-homepage'
-import { ColumnedText } from '@bratislava/ui-bratislava'
+import { ColumnedText } from '@bratislava/ui-bratislava/ColumnedText/ColumnedText'
 import React from 'react'
 
 type ColumnedTextSectionProps = { section: ColumnedTextSectionFragment }
