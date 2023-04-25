@@ -1,12 +1,9 @@
-fragment IconWithTitleAndDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
+fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
   title
   desc
   icon {
     data {
-      id
-      attributes {
-        url
-      }
+      ...ImageSrcEntity
     }
   }
 }
@@ -129,7 +126,7 @@ fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
   hasBackground
   list {
-    ...IconWithTitleAndDescriptionBlock
+    ...IconTitleDescriptionBlock
   }
 }
 
