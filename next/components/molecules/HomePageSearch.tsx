@@ -2,7 +2,7 @@ import {
   getHomepageSearchSwrKey,
   homepageSearchFetcher,
 } from '@backend/meili/fetchers/homepageSearchFetcher'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'

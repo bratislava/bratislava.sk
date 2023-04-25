@@ -7,7 +7,7 @@ import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import React, { useEffect } from 'react'
 
@@ -24,13 +24,13 @@ interface MobileNavBarProps {
 
 const MobileNavBar = ({ className }: MobileNavBarProps) => {
   const t = useTranslations()
-  const router = useRouter()
+  const pathname = usePathname()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
   const { otherLanguage } = useLocalizations()
 
   useEffect(() => {
     setMobileMenuOpen(false)
-  }, [router.asPath, setMobileMenuOpen])
+  }, [pathname, setMobileMenuOpen])
 
   return (
     <>
