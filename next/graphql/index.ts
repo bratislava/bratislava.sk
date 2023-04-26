@@ -360,6 +360,20 @@ export type ComponentBlocksFileFiltersInput = {
   title?: InputMaybe<StringFilterInput>
 }
 
+export type ComponentBlocksFileItem = {
+  __typename?: 'ComponentBlocksFileItem'
+  id: Scalars['ID']
+  media: UploadFileEntityResponse
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksFileItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksFileItemFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksFileItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksFileItemFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+}
+
 export type ComponentBlocksFooterColumn = {
   __typename?: 'ComponentBlocksFooterColumn'
   id: Scalars['ID']
@@ -1045,12 +1059,22 @@ export type ComponentSectionsFeaturedBlogPosts = {
 export type ComponentSectionsFileList = {
   __typename?: 'ComponentSectionsFileList'
   fileList?: Maybe<Array<Maybe<ComponentBlocksFile>>>
+  files?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
   hasBackground?: Maybe<Scalars['Boolean']>
   id: Scalars['ID']
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+  variant?: Maybe<Enum_Componentsectionsfilelist_Variant>
 }
 
 export type ComponentSectionsFileListFileListArgs = {
   filters?: InputMaybe<ComponentBlocksFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentSectionsFileListFilesArgs = {
+  filters?: InputMaybe<ComponentBlocksFileItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1441,6 +1465,11 @@ export enum Enum_Componentsectionsdivider_Style {
   Vzdelavanie = 'vzdelavanie',
 }
 
+export enum Enum_Componentsectionsfilelist_Variant {
+  Grid = 'grid',
+  Rows = 'rows',
+}
+
 export enum Enum_Componentsectionsiframe_Iframewidth {
   Container = 'container',
   Full = 'full',
@@ -1707,6 +1736,7 @@ export type GenericMorph =
   | ComponentBlocksComparisonItem
   | ComponentBlocksDocListExtensions
   | ComponentBlocksFile
+  | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksFooterSection
   | ComponentBlocksGalleryItem
