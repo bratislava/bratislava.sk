@@ -1,10 +1,25 @@
 {
   "collectionName": "components_sections_file_lists",
   "info": {
-    "displayName": "File List"
+    "displayName": "File List",
+    "description": ""
   },
   "options": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "grid",
+        "rows"
+      ],
+      "default": "grid"
+    },
     "fileList": {
       "type": "component",
       "repeatable": true,
@@ -12,6 +27,11 @@
     },
     "hasBackground": {
       "type": "boolean"
+    },
+    "files": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.file-item"
     }
   }
 }

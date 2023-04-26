@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_file_items",
+  "info": {
+    "displayName": "file item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}
