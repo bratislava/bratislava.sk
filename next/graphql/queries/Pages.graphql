@@ -59,6 +59,7 @@ fragment PageEntity on PageEntity {
     subtext
     pageColor
     metaDiscription
+    keywords
     pageBackgroundImage {
       data {
         attributes {
