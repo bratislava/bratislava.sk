@@ -2403,6 +2403,7 @@ export type Page = {
   childPages?: Maybe<PageRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']>
   headerLinks?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+  keywords?: Maybe<Scalars['String']>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<PageRelationResponseCollection>
   metaDiscription?: Maybe<Scalars['String']>
@@ -2555,6 +2556,7 @@ export type PageFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>
   headerLinks?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   id?: InputMaybe<IdFilterInput>
+  keywords?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<PageFiltersInput>
   metaDiscription?: InputMaybe<StringFilterInput>
@@ -2574,6 +2576,7 @@ export type PageFiltersInput = {
 export type PageInput = {
   childPages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
+  keywords?: InputMaybe<Scalars['String']>
   metaDiscription?: InputMaybe<Scalars['String']>
   pageBackgroundImage?: InputMaybe<Scalars['ID']>
   pageCategory?: InputMaybe<Scalars['ID']>
@@ -5423,6 +5426,7 @@ export type PageBySlugQuery = {
         subtext?: string | null
         pageColor?: Enum_Page_Pagecolor | null
         metaDiscription?: string | null
+        keywords?: string | null
         locale?: string | null
         pageBackgroundImage?: {
           __typename?: 'UploadFileEntityResponse'
@@ -6253,6 +6257,7 @@ export type PageEntityFragment = {
     subtext?: string | null
     pageColor?: Enum_Page_Pagecolor | null
     metaDiscription?: string | null
+    keywords?: string | null
     locale?: string | null
     pageBackgroundImage?: {
       __typename?: 'UploadFileEntityResponse'
@@ -9670,6 +9675,7 @@ export const PageEntityFragmentDoc = gql`
       subtext
       pageColor
       metaDiscription
+      keywords
       pageBackgroundImage {
         data {
           attributes {

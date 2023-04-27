@@ -2515,6 +2515,7 @@ type Page {
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
   headerLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
+  keywords: String
   locale: String
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   metaDiscription: String
@@ -2612,6 +2613,7 @@ input PageFiltersInput {
   createdAt: DateTimeFilterInput
   headerLinks: ComponentBlocksCommonLinkFiltersInput
   id: IDFilterInput
+  keywords: StringFilterInput
   locale: StringFilterInput
   localizations: PageFiltersInput
   metaDiscription: StringFilterInput
@@ -2631,6 +2633,7 @@ input PageFiltersInput {
 input PageInput {
   childPages: [ID]
   headerLinks: [ComponentBlocksCommonLinkInput]
+  keywords: String
   metaDiscription: String
   pageBackgroundImage: ID
   pageCategory: ID
