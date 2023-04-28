@@ -6,8 +6,8 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
 export interface HomepageMarkdownProps {
-  className?: string
   content: string | null | undefined
+  variant?: 'default' | 'small'
 }
 
 // TODO hasBackground behaviour
@@ -18,7 +18,7 @@ export interface HomepageMarkdownProps {
  * @param content
  * @constructor
  */
-const Markdown = ({ content }: HomepageMarkdownProps) => {
+const Markdown = ({ content, variant = 'default' }: HomepageMarkdownProps) => {
   return (
     <ReactMarkdown
       className="flex flex-col gap-4"
@@ -43,7 +43,13 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
           <h6 className="text-h5 scroll-mt-24 lg:scroll-mt-48" {...props} />
         ),
         p: ({ node, ...props }) => (
-          <p className="text-large-respo whitespace-pre-wrap" {...props} />
+          <p
+            className={cx('whitespace-pre-wrap', {
+              'text-large-respo': variant === 'default',
+              'text-default-respo': variant === 'small',
+            })}
+            {...props}
+          />
         ),
         strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
         a: ({ node, href, title, children, ...props }) => {
@@ -51,9 +57,9 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
 
           return (
             <MLink
+              variant="underlined-medium"
               href={href ?? '#'}
-              className="break-words font-semibold text-font underline hover:text-category-600"
-              target={href?.startsWith('http') ? '_blank' : undefined}
+              target={isExternal ? '_blank' : undefined}
             >
               {children[0]}
               {/* TODO add external indicator */}
@@ -74,7 +80,7 @@ const Markdown = ({ content }: HomepageMarkdownProps) => {
             <ul className={`inner-list ml-6 lg:ml-9 ${depth === 0 ? '' : 'mt-4'}`} {...props} />
           )
         },
-        // `ordered` should not be passed to <ul>
+        // `ordered` should not be passed to <ol>
         ol: ({ node, depth, ordered, ...props }) => {
           return <ol className={`ml-12 lg:ml-16 ${depth === 0 ? 'mb-8' : ''}`} {...props} />
         },

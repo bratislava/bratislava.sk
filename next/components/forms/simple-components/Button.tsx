@@ -88,95 +88,101 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */
-    const styles = twMerge(
-      // TODO text-button interferes with text-[color], as quickfix we set size and color here by arbitrary values
-      'inline-flex h-auto items-center justify-center rounded-lg text-[1rem] font-semibold leading-[1.5rem] outline-offset-4',
-      cx({
-        // NOTE: there are some style overrides for link variants below in "twMerge"
+    const styles =
+      variant === 'unstyled'
+        ? className
+        : twMerge(
+            // TODO text-button interferes with text-[color], as quickfix we set size and color here by arbitrary values
+            'inline-flex h-auto items-center justify-center rounded-lg text-[1rem] font-semibold leading-[1.5rem] outline-offset-4',
+            cx({
+              // NOTE: there are some style overrides for link variants below in "twMerge"
 
-        'w-full': fullWidth,
-        'w-full md:w-fit': fullWidthMobile,
-        'w-fit': !fullWidth && !fullWidthMobile,
+              'w-full': fullWidth,
+              'w-full md:w-fit': fullWidthMobile,
+              'w-fit': !fullWidth && !fullWidthMobile,
 
-        // padding - filled and outlined variants
-        'px-4 py-2 lg:py-3': size === 'responsive' && !isIconButton && !isPlainVariant,
-        'px-4 py-2': size === 'sm' && !isIconButton && !isPlainVariant,
-        'px-4 py-3': size === 'lg' && !isIconButton && !isPlainVariant,
+              // padding - filled and outlined variants
+              'px-4 py-2 lg:py-3': size === 'responsive' && !isIconButton && !isPlainVariant,
+              'px-4 py-2': size === 'sm' && !isIconButton && !isPlainVariant,
+              'px-4 py-3': size === 'lg' && !isIconButton && !isPlainVariant,
 
-        // padding - filled and outlined variants with "icon"
-        'p-2.5 lg:p-3':
-          variant !== 'unstyled' && size === 'responsive' && isIconButton && !isPlainVariant,
-        'p-2.5': variant !== 'unstyled' && size === 'sm' && isIconButton && !isPlainVariant,
-        'p-3': variant !== 'unstyled' && size === 'lg' && isIconButton && !isPlainVariant,
+              // padding - filled and outlined variants with "icon"
+              'p-2.5 lg:p-3': size === 'responsive' && isIconButton && !isPlainVariant,
+              'p-2.5': size === 'sm' && isIconButton && !isPlainVariant,
+              'p-3': size === 'lg' && isIconButton && !isPlainVariant,
 
-        // padding - plain variants
-        'px-2 py-1 lg:px-3 lg:py-2': size === 'responsive' && !isIconButton && isPlainVariant,
-        'px-2 py-1': size === 'sm' && !isIconButton && isPlainVariant,
-        'px-3 py-2': size === 'lg' && !isIconButton && isPlainVariant,
+              // padding - plain variants
+              'px-2 py-1 lg:px-3 lg:py-2': size === 'responsive' && !isIconButton && isPlainVariant,
+              'px-2 py-1': size === 'sm' && !isIconButton && isPlainVariant,
+              'px-3 py-2': size === 'lg' && !isIconButton && isPlainVariant,
 
-        // padding - plain variants with "icon"
-        'p-1.5 lg:p-2': size === 'responsive' && isIconButton && isPlainVariant,
-        'p-1.5': size === 'sm' && isIconButton && isPlainVariant,
-        'p-2': size === 'lg' && isIconButton && isPlainVariant,
+              // padding - plain variants with "icon"
+              'p-1.5 lg:p-2': size === 'responsive' && isIconButton && isPlainVariant,
+              'p-1.5': size === 'sm' && isIconButton && isPlainVariant,
+              'p-2': size === 'lg' && isIconButton && isPlainVariant,
 
-        // padding for link variants are set in the "twMerge" below
+              // padding for link variants are set in the "twMerge" below
 
-        'border-2':
-          variant === 'black' ||
-          variant === 'black-outline' ||
-          variant === 'negative' ||
-          variant === 'category' ||
-          variant === 'category-outline',
+              'border-2':
+                variant === 'black' ||
+                variant === 'black-outline' ||
+                variant === 'negative' ||
+                variant === 'category' ||
+                variant === 'category-outline',
 
-        // bg, border, text - idle & focus
-        'border-category-700 bg-category-700 text-font-contrast focus:bg-category-800 focus:border-category-800':
-          variant === 'category',
-        'border-category-700 bg-transparent text-gray-700 focus:border-category-800 focus:text-gray-800':
-          variant === 'category-outline',
-        'border-gray-700 bg-gray-700 focus:bg-gray-800 text-white focus:border-gray-800':
-          variant === 'black',
-        'border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800':
-          variant === 'black-outline',
-        'border-negative-700 bg-negative-700 text-white focus:bg-negative-800 focus:border-negative-800':
-          variant === 'negative',
+              // bg, border, text - idle & focus
+              'border-category-700 bg-category-700 text-font-contrast focus:bg-category-800 focus:border-category-800':
+                variant === 'category',
+              'border-category-700 bg-transparent text-gray-700 focus:border-category-800 focus:text-gray-800':
+                variant === 'category-outline',
+              'border-gray-700 bg-gray-700 focus:bg-gray-800 text-white focus:border-gray-800':
+                variant === 'black',
+              'border-gray-200 bg-transparent text-gray-700 focus:border-gray-300 focus:text-gray-800':
+                variant === 'black-outline',
+              'border-negative-700 bg-negative-700 text-white focus:bg-negative-800 focus:border-negative-800':
+                variant === 'negative',
 
-        'text-category-700 focus:bg-category-200 focus:text-category-800':
-          variant === 'category-plain',
-        'text-gray-700 focus:bg-gray-200 focus:text-gray-800': variant === 'black-plain',
-        'text-negative-700 focus:bg-negative-200 focus:text-negative-800':
-          variant === 'negative-plain',
+              'text-category-700 focus:bg-category-200 focus:text-category-800':
+                variant === 'category-plain',
+              'text-gray-700 focus:bg-gray-200 focus:text-gray-800': variant === 'black-plain',
+              'text-negative-700 focus:bg-negative-200 focus:text-negative-800':
+                variant === 'negative-plain',
 
-        'text-category-700 focus:text-category-800': variant === 'category-link',
-        'text-gray-700 focus:text-gray-800': variant === 'black-link',
+              'text-category-700 focus:text-category-800': variant === 'category-link',
+              'text-gray-700 focus:text-gray-800': variant === 'black-link',
 
-        // bg, border, text - hover
-        'hover:bg-category-600 hover:border-category-600': variant === 'category' && !disabled,
-        'hover:border-category-600 hover:text-gray-600':
-          variant === 'category-outline' && !disabled,
-        'hover:bg-category-100 hover:text-category-600': variant === 'category-plain' && !disabled,
+              // bg, border, text - hover
+              'hover:bg-category-600 hover:border-category-600':
+                variant === 'category' && !disabled,
+              'hover:border-category-600 hover:text-gray-600':
+                variant === 'category-outline' && !disabled,
+              'hover:bg-category-100 hover:text-category-600':
+                variant === 'category-plain' && !disabled,
 
-        'hover:bg-gray-600 hover:border-gray-600': variant === 'black' && !disabled,
-        'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
-        'hover:bg-gray-100 hover:text-gray-600': variant === 'black-plain' && !disabled,
+              'hover:bg-gray-600 hover:border-gray-600': variant === 'black' && !disabled,
+              'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline' && !disabled,
+              'hover:bg-gray-100 hover:text-gray-600': variant === 'black-plain' && !disabled,
 
-        'hover:bg-negative-600 hover:border-negative-600': variant === 'negative' && !disabled,
-        'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain' && !disabled,
+              'hover:bg-negative-600 hover:border-negative-600':
+                variant === 'negative' && !disabled,
+              'hover:bg-negative-100 hover:text-negative-600':
+                variant === 'negative-plain' && !disabled,
 
-        'hover:text-category-600': variant === 'category-link' && !disabled,
-        'hover:text-gray-600': variant === 'black-link' && !disabled,
+              'hover:text-category-600': variant === 'category-link' && !disabled,
+              'hover:text-gray-600': variant === 'black-link' && !disabled,
 
-        'font-medium underline': isLinkVariant,
+              'font-medium underline': isLinkVariant,
 
-        // disabled
-        'opacity-50': disabled,
+              // disabled
+              'opacity-50': disabled,
 
-        // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
-        'after:absolute after:inset-0': 'stretched' in rest && rest.stretched,
-      }),
-      // OVERRIDES for link variant, rounded-sm applies for outline
-      isLinkVariant ? 'rounded-sm p-0 lg:p-0' : '',
-      className,
-    )
+              // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345
+              'after:absolute after:inset-0': 'stretched' in rest && rest.stretched,
+            }),
+            // OVERRIDES for link variant, rounded-sm applies for outline
+            isLinkVariant ? 'rounded-sm p-0 lg:p-0' : '',
+            className,
+          )
 
     const startIconStyles = cx('flex items-center justify-center', {
       'h-5 w-5 lg:h-6 lg:w-6': size === 'responsive',
