@@ -10,22 +10,23 @@ import { useLocalStorage } from 'usehooks-ts'
 const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
   const { alert } = useGeneralContext()
   const { text, updatedAt } = alert?.data?.attributes ?? {}
-  const storageKey = `bratislava-sk-dismissible-alert-timestamp_${updatedAt}`
+  const storageKey = `bratislava-sk-dismissible-alert-timestamp`
 
   const [showAlert, setShowAlert] = useState(false)
-  const [wasShown, setWasShown] = useLocalStorage(storageKey, false)
+  const [storageTimestamp, setStorageTimestamp] = useLocalStorage(storageKey, null)
 
   useEffect(() => {
-    setShowAlert(!wasShown)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (storageTimestamp !== updatedAt) {
+      setShowAlert(true)
+    }
+  }, [storageTimestamp, updatedAt])
 
   if (!showAlert || !alert?.data?.attributes) {
     return null
   }
 
   const handleClose = () => {
-    setWasShown(true)
+    setStorageTimestamp(updatedAt)
     setShowAlert(false)
   }
 
