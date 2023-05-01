@@ -21,7 +21,7 @@
   "dependencies": {
     "@strapi/plugin-graphql": "4.9.0",
     "@strapi/plugin-i18n": "4.9.0",
-    "@strapi/plugin-users-permissions": "4.9.0",
+    "@strapi/plugin-users-permissions": "4.10.1",
     "@strapi/strapi": "4.9.0",
     "patch-package": "^6.5.1",
     "pg": "^8.10.0",
