@@ -72,7 +72,7 @@
     "@graphql-codegen/typescript": "3.0.0",
     "@graphql-codegen/typescript-graphql-request": "4.5.2",
     "@graphql-codegen/typescript-operations": "2.5.2",
-    "@svgr/webpack": "6.5.1",
+    "@svgr/webpack": "7.0.0",
     "@types/lodash": "4.14.191",
     "@types/node": "18.11.18",
     "@types/react": "18.0.28",
