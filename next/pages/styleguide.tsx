@@ -15,7 +15,6 @@ import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGr
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
-import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import ServiceCardShowCase from '../components/styleguide/showcases/ServiceCardShowCase'
@@ -49,7 +48,6 @@ const Styleguide = () => {
       <ProgressBarShowCase />
       <SingleCheckboxShowCase />
       <CheckboxGroupShowCase />
-      <RadioButtonShowCase />
       <AccordionShowcase />
       <BannerShowCase />
       <ServiceCardShowCase />

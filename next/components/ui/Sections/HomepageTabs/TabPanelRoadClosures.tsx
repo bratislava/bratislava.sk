@@ -20,8 +20,8 @@ const TabPanelRoadClosures = () => {
   const t = useTranslations('HomepageTabs')
   const locale = useLocale()
 
-  const roadClosuresAddress = 'doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
-  const roadClosuresAddressNew = 'doprava-a-mapy/sprava-a-udrzba-komunikacii'
+  const roadClosuresAddress = '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
+  const roadClosuresAddressNew = '/doprava-a-mapy/sprava-a-udrzba-komunikacii'
 
   const { rozkopavkyBlogPosts } = useHomepageContext()
   const postsFiltered = rozkopavkyBlogPosts?.filter(isDefined) ?? []
