@@ -19,7 +19,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
       client.Homepage({ locale }),
       getTootTootHomepageEvents().catch(() => null),
       client.LatestBlogsWithTags({
-        limit: 6,
+        limit: 7,
         sort: 'publishedAt:desc',
         locale,
       }),

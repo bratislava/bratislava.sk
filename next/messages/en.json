@@ -14,7 +14,6 @@
   "readMore": "Read more",
   "allEvents": "All events",
   "goOutNewsLink": "city-administration/transparent-city/news",
-  "seeAllNews": "See all news",
   "moreInfo": "More info",
   "allNewsLink": "/city-of-bratislava/transparent-city/news",
   "upComingEvents": "Upcoming events",
@@ -38,7 +37,6 @@
   "sorryNoResultsFound": "Sorry, we couldn't find what you are looking for.",
   "allResults": "All results",
   "toTheMainPage": "Return to the home page.",
-  "toOfficialBoard": "To the official board",
   "acceptAll": "Accept All",
   "denyAll": "Deny All",
   "saveChanges": "Save Settings",
@@ -101,7 +99,6 @@
   "nonbinding": "Non-binding reservation",
   "nonbindingConfirm": "Non-binding reservation confirm",
   "allNews": "All news",
-  "allInformationOnSite": "All news can be find on site",
   "nonbindingWedding": "Non-binding reservation",
   "nonbindingWeddingConfirm": "Non-binding reservation confirm",
   "jan": "Jan",
@@ -176,5 +173,21 @@
     "answerNo": "No",
     "answerDescriptionYes": "Your monthly income reaches the required amount and you are entitled to apply for temporary accommodation in our hostel.",
     "answerDescriptionNo": "To meet the subsistence level, you need to achieve an income of at least XY €. Therefore, you are not entitled to apply for temporary accommodation in our hostel."
+  },
+  "HomepageTabs": {
+    "tabs": {
+      "LatestNews": "Latest News",
+      "OfficialBoard": "Official noticeboard",
+      "RoadClosures": "Road closures",
+      "Disclosure": "Public information"
+    },
+    "readMore": "Read more",
+    "readMoreNewsText": "See all news",
+    "seeMoreRoadClosures": "See all road closures",
+    "allNewsLink": "/city-of-bratislava/transparent-city/news",
+    "files": "Files",
+    "toOfficialBoard": "To the official board",
+    "moreInfo": "More info",
+    "allInformationOnSite": "All news can be find on site"
   }
 }

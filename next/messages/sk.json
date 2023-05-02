@@ -14,7 +14,6 @@
   "readMore": "Čítať viac",
   "allEvents": "Všetky podujatia",
   "goOutNewsLink": "mesto-bratislava/transparentne-mesto/aktuality",
-  "seeAllNews": "Prejsť na všetky aktuality",
   "moreInfo": "Viac informacií",
   "allNewsLink": "/mesto-bratislava/transparentne-mesto/aktuality",
   "upComingEvents": "Najbližšie podujatia",
@@ -38,7 +37,6 @@
   "sorryNoResultsFound": "Ľutujeme, pre dané vyhľadávanie sa nenašli žiadne výsledky.",
   "allResults": "Všetky výsledky",
   "toTheMainPage": "Na hlavnú stránku",
-  "toOfficialBoard": "Prejsť na úradnú tabuľu",
   "acceptAll": "Prijať všetky",
   "denyAll": "Odmietnuť všetky",
   "saveChanges": "Uložiť nastavenia",
@@ -97,7 +95,6 @@
   "nonbinding": "Nezáväzná rezervácia",
   "nonbindingConfirm": "Nezáväzne rezervovať",
   "allNews": "Všetky aktuality",
-  "allInformationOnSite": "Všetky informácie nájdete na stránke",
   "nonbindingWedding": "Nezáväzná rezervácia",
   "nonbindingWeddingConfirm": "Nezáväzne rezervovať",
   "jan": "Jan",
@@ -176,5 +173,21 @@
     "answerNo": "Nie",
     "answerDescriptionYes": "Vaše mesačné príjmy dosahujú potrebnú výšku a máte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni.",
     "answerDescriptionNo": "Na splnenie životného minima potrebujete dosiahnuť výšku príjmov aspoň XY €. Preto nemáte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni."
+  },
+  "HomepageTabs": {
+    "tabs": {
+      "LatestNews": "Aktuality",
+      "OfficialBoard": "Úradná tabuľa",
+      "RoadClosures": "Rozkopávky",
+      "Disclosure": "Zverejňovanie"
+    },
+    "readMore": "Čítať viac",
+    "readMoreNewsText": "Prejsť na všetky aktuality",
+    "seeMoreRoadClosures": "Prejsť na všetky rozkopávky",
+    "allNewsLink": "/mesto-bratislava/transparentne-mesto/aktuality",
+    "files": "Súbory",
+    "toOfficialBoard": "Prejsť na úradnú tabuľu",
+    "moreInfo": "Viac informacií",
+    "allInformationOnSite": "Všetky informácie nájdete na stránke"
   }
 }

@@ -4,9 +4,7 @@ import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardS
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
-import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
-import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 
@@ -17,7 +15,6 @@ import CheckboxGroupShowCase from '../components/styleguide/showcases/CheckboxGr
 import DropdownShowCase from '../components/styleguide/showcases/DropdownShowCase'
 import FieldHeaderShowCase from '../components/styleguide/showcases/FieldHeaderShowCase'
 import ProgressBarShowCase from '../components/styleguide/showcases/ProgressBarShowCase'
-import RadioButtonShowCase from '../components/styleguide/showcases/RadioButtonShowCase'
 import SearchFieldShowCase from '../components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '../components/styleguide/showcases/SelectFieldShowCase'
 import ServiceCardShowCase from '../components/styleguide/showcases/ServiceCardShowCase'
@@ -40,20 +37,17 @@ const Styleguide = () => {
       <TooltipShowCase />
       <FieldHeaderShowCase />
       <ButtonShowCase />
-      <DatePickerShowCase />
       <InputFieldShowCase />
       <SpinnerShowCase />
       <TextAreaFieldShowCase />
       <AlertShowCase />
       <SearchFieldShowCase />
       <ToggleShowCase />
-      <TimePickerShowCase />
       <DropdownShowCase />
       <SelectFieldShowCase />
       <ProgressBarShowCase />
       <SingleCheckboxShowCase />
       <CheckboxGroupShowCase />
-      <RadioButtonShowCase />
       <AccordionShowcase />
       <BannerShowCase />
       <ServiceCardShowCase />
