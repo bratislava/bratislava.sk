@@ -4,9 +4,7 @@ import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardS
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
-import DatePickerShowCase from 'components/styleguide/showcases/DatePickerShowCase'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
-import TimePickerShowCase from 'components/styleguide/showcases/TimePickerShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSidePropsContext } from 'next'
 
@@ -40,14 +38,12 @@ const Styleguide = () => {
       <TooltipShowCase />
       <FieldHeaderShowCase />
       <ButtonShowCase />
-      <DatePickerShowCase />
       <InputFieldShowCase />
       <SpinnerShowCase />
       <TextAreaFieldShowCase />
       <AlertShowCase />
       <SearchFieldShowCase />
       <ToggleShowCase />
-      <TimePickerShowCase />
       <DropdownShowCase />
       <SelectFieldShowCase />
       <ProgressBarShowCase />
