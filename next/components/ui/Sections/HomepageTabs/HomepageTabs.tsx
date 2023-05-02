@@ -13,7 +13,6 @@ export interface HomepageTabsProps {
 }
 
 export const HomepageTabs = ({ className }: HomepageTabsProps) => {
-  const isClient = useIsClient()
   const t = useTranslations('HomepageTabs')
 
   const tabs = useMemo(() => {
@@ -27,46 +26,44 @@ export const HomepageTabs = ({ className }: HomepageTabsProps) => {
 
   return (
     <div className={cx(className)}>
-      {isClient && (
-        <Tabs>
-          {/* TODO translations */}
-          <TabList
-            aria-label="Novinky"
-            className="-mx-8 flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden px-8 scrollbar-hide md:mx-auto md:grid"
-          >
-            {tabs.map(({ id, label }) => (
-              <Tab
-                key={id}
-                id={id}
-                className={({ isSelected }) =>
-                  cx(
-                    'text-large-respo relative cursor-pointer whitespace-nowrap py-3 text-center md:py-5',
-                    {
-                      'font-semibold': isSelected,
-                    },
-                  )
-                }
-              >
-                {({ isSelected }) => (
-                  <>
-                    {label}
-                    {isSelected && (
-                      <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-category-600 md:w-6/12 md:border-b-4" />
-                    )}
-                  </>
-                )}
-              </Tab>
-            ))}
-          </TabList>
+      <Tabs>
+        {/* TODO translations */}
+        <TabList
+          aria-label="Novinky"
+          className="-mx-8 flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden px-8 scrollbar-hide md:mx-auto md:grid"
+        >
+          {tabs.map(({ id, label }) => (
+            <Tab
+              key={id}
+              id={id}
+              className={({ isSelected }) =>
+                cx(
+                  'text-large-respo relative cursor-pointer whitespace-nowrap py-3 text-center md:py-5',
+                  {
+                    'font-semibold': isSelected,
+                  },
+                )
+              }
+            >
+              {({ isSelected }) => (
+                <>
+                  {label}
+                  {isSelected && (
+                    <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-category-600 md:w-6/12 md:border-b-4" />
+                  )}
+                </>
+              )}
+            </Tab>
+          ))}
+        </TabList>
 
-          <TabPanels>
-            <TabPanelLatestNews />
-            <TabPanelOfficialBoard />
-            <TabPanelRoadClosures />
-            <TabPanelDisclosure />
-          </TabPanels>
-        </Tabs>
-      )}
+        <TabPanels>
+          <TabPanelLatestNews />
+          <TabPanelOfficialBoard />
+          <TabPanelRoadClosures />
+          <TabPanelDisclosure />
+        </TabPanels>
+      </Tabs>
     </div>
   )
 }
