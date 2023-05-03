@@ -189,5 +189,9 @@
     "toOfficialBoard": "Prejsť na úradnú tabuľu",
     "moreInfo": "Viac informacií",
     "allInformationOnSite": "Všetky informácie nájdete na stránke"
+  },
+  "RelatedBlogPostsSection": {
+    "relatedBlogPosts": "Súvisiace články",
+    "readMore": "Čítať viac"
   }
 }

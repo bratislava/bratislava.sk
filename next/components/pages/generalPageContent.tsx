@@ -1,5 +1,6 @@
 import { PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
+import RelatedBlogPostsSection from '@components/molecules/sections/RelatedBlogPostsSection'
 import { isDefined } from '@utils/isDefined'
 import { getPageBreadcrumbs } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'
@@ -59,7 +60,13 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       {/* Page - Common Sections */}
       <div className="mb-8">
         {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
+        <RelatedBlogPostsSection
+          tags={page.attributes?.relatedContents?.data.filter(isDefined)}
+          // The same as Section
+          className="pt-10 md:pt-18"
+        />
       </div>
+      <div className="mb-8" />
 
       {shouldDisplayUkraineSupportChat && <DynamicChat />}
     </>

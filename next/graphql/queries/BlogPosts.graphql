@@ -6,8 +6,9 @@ query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
-query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
+query LatestPostsByTags($locale: I18NLocaleCode!, $tags: [String]!, $limit: Int = -1, $start: Int = 0) {
   blogPosts(
+    locale: $locale
     filters: { tag: { title: { in: $tags } } }
     pagination: { limit: $limit, start: $start }
     sort: "publishedAt:desc"
@@ -167,4 +168,11 @@ fragment BlogPostLink on ComponentBlocksBlogPostLink {
   }
   title
   url
+}
+
+fragment TagEntity on TagEntity {
+  id
+  attributes {
+    title
+  }
 }

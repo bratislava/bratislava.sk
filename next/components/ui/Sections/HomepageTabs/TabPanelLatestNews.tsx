@@ -13,7 +13,7 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
-const imageSizes = generateImageSizes({ lg: '33vw', default: '50vw' })
+const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 
 const TabPanelLatestNews = () => {
   const t = useTranslations('HomepageTabs')

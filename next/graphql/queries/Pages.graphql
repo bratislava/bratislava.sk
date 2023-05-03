@@ -62,9 +62,7 @@ fragment PageEntity on PageEntity {
     keywords
     pageBackgroundImage {
       data {
-        attributes {
-          url
-        }
+        ...ImageSrcEntity
       }
     }
     headerLinks {
@@ -105,6 +103,11 @@ fragment PageEntity on PageEntity {
           title
           color
         }
+      }
+    }
+    relatedContents {
+      data {
+        ...TagEntity
       }
     }
   }
