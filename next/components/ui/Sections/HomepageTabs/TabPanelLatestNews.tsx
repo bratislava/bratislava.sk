@@ -21,7 +21,11 @@ const TabPanelLatestNews = () => {
   const { homepage, blogPosts } = useHomepageContext()
   const { left_highlight: leftHighlight, right_highlight: rightHighlight } =
     homepage?.attributes ?? {}
-  const latestPostsFiltered = blogPosts?.filter(isDefined).slice(0, 5) ?? []
+  const latestPostsFiltered =
+    blogPosts
+      ?.filter(isDefined)
+      .filter((post) => post.id !== leftHighlight?.data?.id && post.id !== rightHighlight?.data?.id)
+      .slice(0, 5) ?? []
 
   const allPosts =
     [leftHighlight?.data, rightHighlight?.data, ...latestPostsFiltered]
@@ -99,7 +103,12 @@ const TabPanelLatestNews = () => {
                       <Tag text={tag.data.attributes.title} size="small" isColored />
                     </div>
                   )}
-                  <MLink href={`/blog/${slug}`} stretched variant="underlineOnHover">
+                  <MLink
+                    href={`/blog/${slug}`}
+                    stretched
+                    variant="underlineOnHover"
+                    className="line-clamp-3"
+                  >
                     <h3 className="text-h5">{title}</h3>
                   </MLink>
                 </div>
