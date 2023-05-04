@@ -1,3 +1,4 @@
+export { default as AlertIcon } from './alert.svg'
 export { default as ArrowDoubleLong } from './arrow-double-long.svg'
 export { default as ArrowDoubleShort } from './arrow-double-short.svg'
 export { default as ArrowLeft } from './arrow-left.svg'

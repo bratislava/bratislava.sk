@@ -3,6 +3,7 @@ import Hamburger from '@assets/images/ba-hamburger.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import MLink from '@components/forms/simple-components/MLink'
+import AlertBanner from '@components/organisms/NavBar/AlertBanner'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'
@@ -33,15 +34,10 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
   }, [pathname, setMobileMenuOpen])
 
   return (
-    <>
+    <div className={className}>
       <FocusTrap active={isMobileMenuOpen}>
         <div style={getCategoryColorLocalStyle({ category: 'main' })}>
-          <div
-            className={cx(
-              'fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-gray-700 shadow-md',
-              className,
-            )}
-          >
+          <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-gray-700 shadow-md">
             <div className="flex items-center">
               <Brand url="/" className="-ml-4 px-4 py-3" />
             </div>
@@ -81,7 +77,9 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
       </FocusTrap>
       {/* Empty div under header */}
       <div className={cx('h-14', className)} />
-    </>
+
+      <AlertBanner />
+    </div>
   )
 }
 

@@ -212,6 +212,10 @@ module.exports = {
           from: { opacity: 1, transform: 'translateX(0)' },
           to: { opacity: 0, transform: 'translateX(-200px)' },
         },
+        enterFromTop: {
+          from: { opacity: 0, transform: 'translateY(-200px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
         scaleIn: {
           from: { opacity: 0, transform: 'rotateX(-10deg) scale(0.9)' },
           to: { opacity: 1, transform: 'rotateX(0deg) scale(1)' },
@@ -228,6 +232,10 @@ module.exports = {
           from: { opacity: 1 },
           to: { opacity: 0 },
         },
+        scaleY: {
+          from: { opacity: 0, transform: 'scaleY(0)' },
+          to: { opacity: 1, transform: 'scaleY(1)' },
+        },
       },
       animation: {
         scaleIn: 'scaleIn 200ms ease',
@@ -238,6 +246,8 @@ module.exports = {
         enterFromRight: 'enterFromRight 250ms ease',
         exitToLeft: 'exitToLeft 250ms ease',
         exitToRight: 'exitToRight 250ms ease',
+        enterFromTop: 'enterFromTop 250ms ease',
+        scaleY: 'scaleY 250ms ease',
       },
       borderWidth: {
         3: '3px',

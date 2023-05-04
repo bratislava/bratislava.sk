@@ -163,6 +163,11 @@ fragment General on General {
   }
 }
 
+fragment Alert on Alert {
+  updatedAt
+  text
+}
+
 query General($locale: I18NLocaleCode!) {
   general(locale: $locale) {
     data {
@@ -184,6 +189,13 @@ query General($locale: I18NLocaleCode!) {
     data {
       attributes {
         ...Footer
+      }
+    }
+  }
+  alert(locale: $locale) {
+    data {
+      attributes {
+        ...Alert
       }
     }
   }

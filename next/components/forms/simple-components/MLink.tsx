@@ -26,8 +26,8 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
     const styles = twMerge(
       cx('underline-offset-2', {
         'underline lg:no-underline lg:hover:underline': variant === 'underlineOnHover',
-        'underline hover:text-gray-600':
-          variant === 'underlined' || variant === 'underlined-medium',
+        // TODO solve hover color, currently we use opacity, so text can have any color, but it can cause some design or accessibility issues
+        'underline hover:opacity-80': variant === 'underlined' || variant === 'underlined-medium',
         'font-medium': variant === 'underlined-medium',
 
         // https://github.com/tailwindlabs/tailwindcss/issues/1041#issuecomment-957425345

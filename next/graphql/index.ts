@@ -24,6 +24,35 @@ export type Scalars = {
   Upload: any
 }
 
+export type Alert = {
+  __typename?: 'Alert'
+  createdAt?: Maybe<Scalars['DateTime']>
+  locale?: Maybe<Scalars['String']>
+  localizations?: Maybe<AlertRelationResponseCollection>
+  text: Scalars['String']
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+export type AlertEntity = {
+  __typename?: 'AlertEntity'
+  attributes?: Maybe<Alert>
+  id?: Maybe<Scalars['ID']>
+}
+
+export type AlertEntityResponse = {
+  __typename?: 'AlertEntityResponse'
+  data?: Maybe<AlertEntity>
+}
+
+export type AlertInput = {
+  text?: InputMaybe<Scalars['String']>
+}
+
+export type AlertRelationResponseCollection = {
+  __typename?: 'AlertRelationResponseCollection'
+  data: Array<AlertEntity>
+}
+
 export type BlogPost = {
   __typename?: 'BlogPost'
   author?: Maybe<UsersPermissionsUserEntityResponse>
@@ -1725,6 +1754,7 @@ export type GeneralRelationResponseCollection = {
 }
 
 export type GenericMorph =
+  | Alert
   | BlogPost
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
@@ -2043,6 +2073,7 @@ export type Mutation = {
   __typename?: 'Mutation'
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>
+  createAlertLocalization?: Maybe<AlertEntityResponse>
   createBlogPost?: Maybe<BlogPostEntityResponse>
   createBlogPostLocalization?: Maybe<BlogPostEntityResponse>
   createFooterLocalization?: Maybe<FooterEntityResponse>
@@ -2064,6 +2095,7 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
   createVzn?: Maybe<VznEntityResponse>
+  deleteAlert?: Maybe<AlertEntityResponse>
   deleteBlogPost?: Maybe<BlogPostEntityResponse>
   deleteFooter?: Maybe<FooterEntityResponse>
   deleteGeneral?: Maybe<GeneralEntityResponse>
@@ -2091,6 +2123,7 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
+  updateAlert?: Maybe<AlertEntityResponse>
   updateBlogPost?: Maybe<BlogPostEntityResponse>
   updateFileInfo: UploadFileEntityResponse
   updateFooter?: Maybe<FooterEntityResponse>
@@ -2115,6 +2148,12 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']
   password: Scalars['String']
   passwordConfirmation: Scalars['String']
+}
+
+export type MutationCreateAlertLocalizationArgs = {
+  data?: InputMaybe<AlertInput>
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type MutationCreateBlogPostArgs = {
@@ -2216,6 +2255,10 @@ export type MutationCreateVznArgs = {
   data: VznInput
 }
 
+export type MutationDeleteAlertArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
 export type MutationDeleteBlogPostArgs = {
   id: Scalars['ID']
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
@@ -2308,6 +2351,11 @@ export type MutationResetPasswordArgs = {
   code: Scalars['String']
   password: Scalars['String']
   passwordConfirmation: Scalars['String']
+}
+
+export type MutationUpdateAlertArgs = {
+  data: AlertInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type MutationUpdateBlogPostArgs = {
@@ -2724,6 +2772,7 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query'
+  alert?: Maybe<AlertEntityResponse>
   blogPost?: Maybe<BlogPostEntityResponse>
   blogPosts?: Maybe<BlogPostEntityResponseCollection>
   footer?: Maybe<FooterEntityResponse>
@@ -2751,6 +2800,10 @@ export type Query = {
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
   vzn?: Maybe<VznEntityResponse>
   vzns?: Maybe<VznEntityResponseCollection>
+}
+
+export type QueryAlertArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
 export type QueryBlogPostArgs = {
@@ -4558,6 +4611,8 @@ export type GeneralFragment = {
   } | null
 }
 
+export type AlertFragment = { __typename?: 'Alert'; updatedAt?: any | null; text: string }
+
 export type GeneralQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode']
 }>
@@ -4889,6 +4944,13 @@ export type GeneralQuery = {
           } | null
         } | null
       } | null
+    } | null
+  } | null
+  alert?: {
+    __typename?: 'AlertEntityResponse'
+    data?: {
+      __typename?: 'AlertEntity'
+      attributes?: { __typename?: 'Alert'; updatedAt?: any | null; text: string } | null
     } | null
   } | null
 }
@@ -9495,6 +9557,12 @@ export const GeneralFragmentDoc = gql`
   ${GeneralPageRelationFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
+export const AlertFragmentDoc = gql`
+  fragment Alert on Alert {
+    updatedAt
+    text
+  }
+`
 export const HomepagePostBlockFragmentDoc = gql`
   fragment HomepagePostBlock on ComponentBlocksHomepagePost {
     title
@@ -9928,10 +9996,18 @@ export const GeneralDocument = gql`
         }
       }
     }
+    alert(locale: $locale) {
+      data {
+        attributes {
+          ...Alert
+        }
+      }
+    }
   }
   ${GeneralFragmentDoc}
   ${MenuItemFragmentDoc}
   ${FooterFragmentDoc}
+  ${AlertFragmentDoc}
 `
 export const HomepageDocument = gql`
   query Homepage($locale: I18NLocaleCode!) {
