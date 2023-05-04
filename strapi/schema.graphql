@@ -6,7 +6,7 @@ type Alert {
   createdAt: DateTime
   locale: String
   localizations: AlertRelationResponseCollection
-  text: String!
+  text: String
   updatedAt: DateTime
 }
 

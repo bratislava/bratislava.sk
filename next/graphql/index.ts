@@ -29,7 +29,7 @@ export type Alert = {
   createdAt?: Maybe<Scalars['DateTime']>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<AlertRelationResponseCollection>
-  text: Scalars['String']
+  text?: Maybe<Scalars['String']>
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
@@ -4703,7 +4703,7 @@ export type GeneralFragment = {
   } | null
 }
 
-export type AlertFragment = { __typename?: 'Alert'; updatedAt?: any | null; text: string }
+export type AlertFragment = { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null }
 
 export type GeneralQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode']
@@ -5042,7 +5042,7 @@ export type GeneralQuery = {
     __typename?: 'AlertEntityResponse'
     data?: {
       __typename?: 'AlertEntity'
-      attributes?: { __typename?: 'Alert'; updatedAt?: any | null; text: string } | null
+      attributes?: { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null } | null
     } | null
   } | null
 }
