@@ -56,6 +56,47 @@
         }
       }
     },
+    "metaTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "welcomeHeadline": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "welcomeMedia": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "highlights": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.homepage-highlights"
+    },
     "inba": {
       "type": "component",
       "repeatable": false,
@@ -63,6 +104,19 @@
       "pluginOptions": {
         "i18n": {
           "localized": true
+        }
+      }
+    },
+    "inbaFrontImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
         }
       }
     },
@@ -74,13 +128,58 @@
       },
       "type": "text"
     },
+    "inbaRearImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "inbaUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": false
+    },
+    "tabs": {
+      "displayName": "homepage tabs",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.homepage-tabs"
+    },
+    "mayorAndCouncil": {
+      "displayName": "homepage mayor and council",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.homepage-mayor-and-council"
+    },
     "metaDescription": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "topServices": {
       "type": "component",

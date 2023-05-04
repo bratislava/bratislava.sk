@@ -531,6 +531,25 @@ input ComponentBlocksHomepageHeaderInput {
   picture: ID
 }
 
+type ComponentBlocksHomepageHighlightsItem {
+  id: ID!
+  image: UploadFileEntityResponse!
+  link(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
+}
+
+input ComponentBlocksHomepageHighlightsItemFiltersInput {
+  and: [ComponentBlocksHomepageHighlightsItemFiltersInput]
+  link: ComponentBlocksCommonLinkFiltersInput
+  not: ComponentBlocksHomepageHighlightsItemFiltersInput
+  or: [ComponentBlocksHomepageHighlightsItemFiltersInput]
+}
+
+input ComponentBlocksHomepageHighlightsItemInput {
+  id: ID
+  image: ID
+  link: [ComponentBlocksCommonLinkInput]
+}
+
 type ComponentBlocksHomepagePost {
   id: ID!
   image: UploadFileEntityResponse
@@ -1359,6 +1378,84 @@ input ComponentSectionsGalleryInput {
   id: ID
   subtitle: String
   title: String
+}
+
+type ComponentSectionsHomepageHighlights {
+  highlights: ComponentBlocksHomepageHighlightsItem
+  id: ID!
+  text: String
+  title: String
+}
+
+input ComponentSectionsHomepageHighlightsFiltersInput {
+  and: [ComponentSectionsHomepageHighlightsFiltersInput]
+  highlights: ComponentBlocksHomepageHighlightsItemFiltersInput
+  not: ComponentSectionsHomepageHighlightsFiltersInput
+  or: [ComponentSectionsHomepageHighlightsFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsHomepageHighlightsInput {
+  highlights: ComponentBlocksHomepageHighlightsItemInput
+  id: ID
+  text: String
+  title: String
+}
+
+type ComponentSectionsHomepageMayorAndCouncil {
+  councilCard: ComponentBlocksCommonLink
+  id: ID!
+  mayorCard: ComponentBlocksCommonLink
+  text: String
+  title: String
+}
+
+input ComponentSectionsHomepageMayorAndCouncilFiltersInput {
+  and: [ComponentSectionsHomepageMayorAndCouncilFiltersInput]
+  councilCard: ComponentBlocksCommonLinkFiltersInput
+  mayorCard: ComponentBlocksCommonLinkFiltersInput
+  not: ComponentSectionsHomepageMayorAndCouncilFiltersInput
+  or: [ComponentSectionsHomepageMayorAndCouncilFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsHomepageMayorAndCouncilInput {
+  councilCard: ComponentBlocksCommonLinkInput
+  id: ID
+  mayorCard: ComponentBlocksCommonLinkInput
+  text: String
+  title: String
+}
+
+type ComponentSectionsHomepageTabs {
+  id: ID!
+  leftNewsItem: BlogPostEntityResponse
+  newsPageLink: ComponentBlocksCommonLink
+  officialBoardPageLink: ComponentBlocksCommonLink
+  rightNewsItem: BlogPostEntityResponse
+  roadClosuresPageLink: ComponentBlocksCommonLink
+}
+
+input ComponentSectionsHomepageTabsFiltersInput {
+  and: [ComponentSectionsHomepageTabsFiltersInput]
+  leftNewsItem: BlogPostFiltersInput
+  newsPageLink: ComponentBlocksCommonLinkFiltersInput
+  not: ComponentSectionsHomepageTabsFiltersInput
+  officialBoardPageLink: ComponentBlocksCommonLinkFiltersInput
+  or: [ComponentSectionsHomepageTabsFiltersInput]
+  rightNewsItem: BlogPostFiltersInput
+  roadClosuresPageLink: ComponentBlocksCommonLinkFiltersInput
+}
+
+input ComponentSectionsHomepageTabsInput {
+  id: ID
+  leftNewsItem: ID
+  newsPageLink: ComponentBlocksCommonLinkInput
+  officialBoardPageLink: ComponentBlocksCommonLinkInput
+  rightNewsItem: ID
+  roadClosuresPageLink: ComponentBlocksCommonLinkInput
 }
 
 type ComponentSectionsIconTitleDesc {
@@ -2208,23 +2305,32 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepageHighlightsItem | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
   createdAt: DateTime
   header: ComponentBlocksHomepageHeader
+  highlights: ComponentSectionsHomepageHighlights
   inba: ComponentBlocksInBa
+  inbaFrontImage: UploadFileEntityResponse!
+  inbaRearImage: UploadFileEntityResponse!
+  inbaUrl: String
   left_highlight: BlogPostEntityResponse
   locale: String
   localizations(publicationState: PublicationState = LIVE): HomepageRelationResponseCollection
-  metaDescription: String
+  mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncil
+  metaDescription: String!
+  metaTitle: String!
   posts(filters: ComponentBlocksHomepagePostFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepagePost]
   publishedAt: DateTime
   right_highlight: BlogPostEntityResponse
+  tabs: ComponentSectionsHomepageTabs
   title: String
   topServices: ComponentSectionsTopServices
   updatedAt: DateTime
+  welcomeHeadline: String!
+  welcomeMedia: UploadFileEntityResponse!
 }
 
 type HomepageEntity {
@@ -2246,32 +2352,47 @@ input HomepageFiltersInput {
   cards: ComponentBlocksHomepageBookmarkFiltersInput
   createdAt: DateTimeFilterInput
   header: ComponentBlocksHomepageHeaderFiltersInput
+  highlights: ComponentSectionsHomepageHighlightsFiltersInput
   inba: ComponentBlocksInBaFiltersInput
+  inbaUrl: StringFilterInput
   left_highlight: BlogPostFiltersInput
   locale: StringFilterInput
   localizations: HomepageFiltersInput
+  mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilFiltersInput
   metaDescription: StringFilterInput
+  metaTitle: StringFilterInput
   not: HomepageFiltersInput
   or: [HomepageFiltersInput]
   posts: ComponentBlocksHomepagePostFiltersInput
   publishedAt: DateTimeFilterInput
   right_highlight: BlogPostFiltersInput
+  tabs: ComponentSectionsHomepageTabsFiltersInput
   title: StringFilterInput
   topServices: ComponentSectionsTopServicesFiltersInput
   updatedAt: DateTimeFilterInput
+  welcomeHeadline: StringFilterInput
 }
 
 input HomepageInput {
   cards: [ComponentBlocksHomepageBookmarkInput]
   header: ComponentBlocksHomepageHeaderInput
+  highlights: ComponentSectionsHomepageHighlightsInput
   inba: ComponentBlocksInBaInput
+  inbaFrontImage: ID
+  inbaRearImage: ID
+  inbaUrl: String
   left_highlight: ID
+  mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilInput
   metaDescription: String
+  metaTitle: String
   posts: [ComponentBlocksHomepagePostInput]
   publishedAt: DateTime
   right_highlight: ID
+  tabs: ComponentSectionsHomepageTabsInput
   title: String
   topServices: ComponentSectionsTopServicesInput
+  welcomeHeadline: String
+  welcomeMedia: ID
 }
 
 type HomepageRelationResponseCollection {

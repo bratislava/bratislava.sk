@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_homepage_highlights",
+  "info": {
+    "displayName": "homepage highlights",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "highlights": {
+      "displayName": "homepage highlights item",
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.homepage-highlights-item"
+    }
+  }
+}

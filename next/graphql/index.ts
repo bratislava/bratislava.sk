@@ -508,6 +508,25 @@ export type ComponentBlocksHomepageHeaderInput = {
   picture?: InputMaybe<Scalars['ID']>
 }
 
+export type ComponentBlocksHomepageHighlightsItem = {
+  __typename?: 'ComponentBlocksHomepageHighlightsItem'
+  id: Scalars['ID']
+  image: UploadFileEntityResponse
+  link?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+}
+
+export type ComponentBlocksHomepageHighlightsItemLinkArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentBlocksHomepageHighlightsItemInput = {
+  id?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<Scalars['ID']>
+  link?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
+}
+
 export type ComponentBlocksHomepagePost = {
   __typename?: 'ComponentBlocksHomepagePost'
   id: Scalars['ID']
@@ -1120,6 +1139,57 @@ export type ComponentSectionsGalleryGalleryItemsArgs = {
   filters?: InputMaybe<ComponentBlocksGalleryItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentSectionsHomepageHighlights = {
+  __typename?: 'ComponentSectionsHomepageHighlights'
+  highlights?: Maybe<ComponentBlocksHomepageHighlightsItem>
+  id: Scalars['ID']
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentSectionsHomepageHighlightsInput = {
+  highlights?: InputMaybe<ComponentBlocksHomepageHighlightsItemInput>
+  id?: InputMaybe<Scalars['ID']>
+  text?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type ComponentSectionsHomepageMayorAndCouncil = {
+  __typename?: 'ComponentSectionsHomepageMayorAndCouncil'
+  councilCard?: Maybe<ComponentBlocksCommonLink>
+  id: Scalars['ID']
+  mayorCard?: Maybe<ComponentBlocksCommonLink>
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentSectionsHomepageMayorAndCouncilInput = {
+  councilCard?: InputMaybe<ComponentBlocksCommonLinkInput>
+  id?: InputMaybe<Scalars['ID']>
+  mayorCard?: InputMaybe<ComponentBlocksCommonLinkInput>
+  text?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type ComponentSectionsHomepageTabs = {
+  __typename?: 'ComponentSectionsHomepageTabs'
+  id: Scalars['ID']
+  leftNewsItem?: Maybe<BlogPostEntityResponse>
+  newsPageLink?: Maybe<ComponentBlocksCommonLink>
+  officialBoardPageLink?: Maybe<ComponentBlocksCommonLink>
+  rightNewsItem?: Maybe<BlogPostEntityResponse>
+  roadClosuresPageLink?: Maybe<ComponentBlocksCommonLink>
+}
+
+export type ComponentSectionsHomepageTabsInput = {
+  id?: InputMaybe<Scalars['ID']>
+  leftNewsItem?: InputMaybe<Scalars['ID']>
+  newsPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+  officialBoardPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+  rightNewsItem?: InputMaybe<Scalars['ID']>
+  roadClosuresPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
 export type ComponentSectionsIconTitleDesc = {
@@ -1772,6 +1842,7 @@ export type GenericMorph =
   | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
   | ComponentBlocksHomepageHeader
+  | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksHomepagePost
   | ComponentBlocksIconWithTitleAndDescription
   | ComponentBlocksInBa
@@ -1806,6 +1877,9 @@ export type GenericMorph =
   | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
+  | ComponentSectionsHomepageHighlights
+  | ComponentSectionsHomepageMayorAndCouncil
+  | ComponentSectionsHomepageTabs
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsLinks
@@ -1844,17 +1918,26 @@ export type Homepage = {
   cards?: Maybe<Array<Maybe<ComponentBlocksHomepageBookmark>>>
   createdAt?: Maybe<Scalars['DateTime']>
   header?: Maybe<ComponentBlocksHomepageHeader>
+  highlights?: Maybe<ComponentSectionsHomepageHighlights>
   inba?: Maybe<ComponentBlocksInBa>
+  inbaFrontImage: UploadFileEntityResponse
+  inbaRearImage: UploadFileEntityResponse
+  inbaUrl?: Maybe<Scalars['String']>
   left_highlight?: Maybe<BlogPostEntityResponse>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<HomepageRelationResponseCollection>
-  metaDescription?: Maybe<Scalars['String']>
+  mayorAndCouncil?: Maybe<ComponentSectionsHomepageMayorAndCouncil>
+  metaDescription: Scalars['String']
+  metaTitle: Scalars['String']
   posts?: Maybe<Array<Maybe<ComponentBlocksHomepagePost>>>
   publishedAt?: Maybe<Scalars['DateTime']>
   right_highlight?: Maybe<BlogPostEntityResponse>
+  tabs?: Maybe<ComponentSectionsHomepageTabs>
   title?: Maybe<Scalars['String']>
   topServices?: Maybe<ComponentSectionsTopServices>
   updatedAt?: Maybe<Scalars['DateTime']>
+  welcomeHeadline: Scalars['String']
+  welcomeMedia: UploadFileEntityResponse
 }
 
 export type HomepageCardsArgs = {
@@ -1887,14 +1970,23 @@ export type HomepageEntityResponse = {
 export type HomepageInput = {
   cards?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageBookmarkInput>>>
   header?: InputMaybe<ComponentBlocksHomepageHeaderInput>
+  highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
+  inbaFrontImage?: InputMaybe<Scalars['ID']>
+  inbaRearImage?: InputMaybe<Scalars['ID']>
+  inbaUrl?: InputMaybe<Scalars['String']>
   left_highlight?: InputMaybe<Scalars['ID']>
+  mayorAndCouncil?: InputMaybe<ComponentSectionsHomepageMayorAndCouncilInput>
   metaDescription?: InputMaybe<Scalars['String']>
+  metaTitle?: InputMaybe<Scalars['String']>
   posts?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepagePostInput>>>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   right_highlight?: InputMaybe<Scalars['ID']>
+  tabs?: InputMaybe<ComponentSectionsHomepageTabsInput>
   title?: InputMaybe<Scalars['String']>
   topServices?: InputMaybe<ComponentSectionsTopServicesInput>
+  welcomeHeadline?: InputMaybe<Scalars['String']>
+  welcomeMedia?: InputMaybe<Scalars['ID']>
 }
 
 export type HomepageRelationResponseCollection = {
@@ -4963,7 +5055,10 @@ export type HomepageEntityFragment = {
     updatedAt?: any | null
     createdAt?: any | null
     title?: string | null
-    metaDescription?: string | null
+    metaTitle: string
+    metaDescription: string
+    welcomeHeadline: string
+    inbaUrl?: string | null
     posts?: Array<{
       __typename?: 'ComponentBlocksHomepagePost'
       title?: string | null
@@ -5088,25 +5183,286 @@ export type HomepageEntityFragment = {
         } | null
       } | null
     } | null
-    cards?: Array<{
-      __typename?: 'ComponentBlocksHomepageBookmark'
-      title?: string | null
-      headline?: string | null
-      text?: string | null
-      variant?: string | null
-      link?: {
-        __typename?: 'ComponentBlocksBookmarkLink'
-        title?: string | null
-        href?: string | null
+    welcomeMedia: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
       } | null
-      picture?: {
-        __typename?: 'UploadFileEntityResponse'
+    }
+    highlights?: {
+      __typename?: 'ComponentSectionsHomepageHighlights'
+      title?: string | null
+      text?: string | null
+      highlights?: {
+        __typename?: 'ComponentBlocksHomepageHighlightsItem'
+        link?: Array<{
+          __typename?: 'ComponentBlocksCommonLink'
+          label: string
+          url?: string | null
+          plausibleId?: string | null
+          page?: {
+            __typename?: 'PageEntityResponse'
+            data?: {
+              __typename?: 'PageEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'Page'
+                title?: string | null
+                slug?: string | null
+              } | null
+            } | null
+          } | null
+          blogPost?: {
+            __typename?: 'BlogPostEntityResponse'
+            data?: {
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                title?: string | null
+                slug?: string | null
+              } | null
+            } | null
+          } | null
+        } | null> | null
+        image: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        }
+      } | null
+    } | null
+    tabs?: {
+      __typename?: 'ComponentSectionsHomepageTabs'
+      leftNewsItem?: {
+        __typename?: 'BlogPostEntityResponse'
         data?: {
-          __typename?: 'UploadFileEntity'
-          attributes?: { __typename?: 'UploadFile'; url: string } | null
+          __typename?: 'BlogPostEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'BlogPost'
+            slug?: string | null
+            title?: string | null
+            excerpt?: string | null
+            date_added?: any | null
+            publishedAt?: any | null
+            updatedAt?: any | null
+            coverImage?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                attributes?: { __typename?: 'UploadFile'; url: string } | null
+              } | null
+            } | null
+            tag?: {
+              __typename?: 'TagEntityResponse'
+              data?: {
+                __typename?: 'TagEntity'
+                attributes?: {
+                  __typename?: 'Tag'
+                  title?: string | null
+                  pageCategory?: {
+                    __typename?: 'PageCategoryEntityResponse'
+                    data?: {
+                      __typename?: 'PageCategoryEntity'
+                      attributes?: {
+                        __typename?: 'PageCategory'
+                        title?: string | null
+                        color?: Enum_Pagecategory_Color | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
         } | null
       } | null
-    } | null> | null
+      rightNewsItem?: {
+        __typename?: 'BlogPostEntityResponse'
+        data?: {
+          __typename?: 'BlogPostEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'BlogPost'
+            slug?: string | null
+            title?: string | null
+            excerpt?: string | null
+            date_added?: any | null
+            publishedAt?: any | null
+            updatedAt?: any | null
+            coverImage?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                attributes?: { __typename?: 'UploadFile'; url: string } | null
+              } | null
+            } | null
+            tag?: {
+              __typename?: 'TagEntityResponse'
+              data?: {
+                __typename?: 'TagEntity'
+                attributes?: {
+                  __typename?: 'Tag'
+                  title?: string | null
+                  pageCategory?: {
+                    __typename?: 'PageCategoryEntityResponse'
+                    data?: {
+                      __typename?: 'PageCategoryEntity'
+                      attributes?: {
+                        __typename?: 'PageCategory'
+                        title?: string | null
+                        color?: Enum_Pagecategory_Color | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+      newsPageLink?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label: string
+        url?: string | null
+        plausibleId?: string | null
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        blogPost?: {
+          __typename?: 'BlogPostEntityResponse'
+          data?: {
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              title?: string | null
+              slug?: string | null
+            } | null
+          } | null
+        } | null
+      } | null
+      officialBoardPageLink?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label: string
+        url?: string | null
+        plausibleId?: string | null
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        blogPost?: {
+          __typename?: 'BlogPostEntityResponse'
+          data?: {
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              title?: string | null
+              slug?: string | null
+            } | null
+          } | null
+        } | null
+      } | null
+      roadClosuresPageLink?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label: string
+        url?: string | null
+        plausibleId?: string | null
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        blogPost?: {
+          __typename?: 'BlogPostEntityResponse'
+          data?: {
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              title?: string | null
+              slug?: string | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+    mayorAndCouncil?: {
+      __typename?: 'ComponentSectionsHomepageMayorAndCouncil'
+      title?: string | null
+      text?: string | null
+      mayorCard?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label: string
+        url?: string | null
+        plausibleId?: string | null
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        blogPost?: {
+          __typename?: 'BlogPostEntityResponse'
+          data?: {
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              title?: string | null
+              slug?: string | null
+            } | null
+          } | null
+        } | null
+      } | null
+      councilCard?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label: string
+        url?: string | null
+        plausibleId?: string | null
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        blogPost?: {
+          __typename?: 'BlogPostEntityResponse'
+          data?: {
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              title?: string | null
+              slug?: string | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
     topServices?: {
       __typename?: 'ComponentSectionsTopServices'
       title: string
@@ -5168,6 +5524,41 @@ export type HomepageEntityFragment = {
         } | null
       } | null
     } | null
+    inbaFrontImage: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    }
+    inbaRearImage: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    }
+    cards?: Array<{
+      __typename?: 'ComponentBlocksHomepageBookmark'
+      title?: string | null
+      headline?: string | null
+      text?: string | null
+      variant?: string | null
+      link?: {
+        __typename?: 'ComponentBlocksBookmarkLink'
+        title?: string | null
+        href?: string | null
+      } | null
+      picture?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          attributes?: { __typename?: 'UploadFile'; url: string } | null
+        } | null
+      } | null
+    } | null> | null
   } | null
 }
 
@@ -5187,7 +5578,10 @@ export type HomepageQuery = {
         updatedAt?: any | null
         createdAt?: any | null
         title?: string | null
-        metaDescription?: string | null
+        metaTitle: string
+        metaDescription: string
+        welcomeHeadline: string
+        inbaUrl?: string | null
         posts?: Array<{
           __typename?: 'ComponentBlocksHomepagePost'
           title?: string | null
@@ -5312,25 +5706,306 @@ export type HomepageQuery = {
             } | null
           } | null
         } | null
-        cards?: Array<{
-          __typename?: 'ComponentBlocksHomepageBookmark'
-          title?: string | null
-          headline?: string | null
-          text?: string | null
-          variant?: string | null
-          link?: {
-            __typename?: 'ComponentBlocksBookmarkLink'
-            title?: string | null
-            href?: string | null
+        welcomeMedia: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
-          picture?: {
-            __typename?: 'UploadFileEntityResponse'
+        }
+        highlights?: {
+          __typename?: 'ComponentSectionsHomepageHighlights'
+          title?: string | null
+          text?: string | null
+          highlights?: {
+            __typename?: 'ComponentBlocksHomepageHighlightsItem'
+            link?: Array<{
+              __typename?: 'ComponentBlocksCommonLink'
+              label: string
+              url?: string | null
+              plausibleId?: string | null
+              page?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Page'
+                    title?: string | null
+                    slug?: string | null
+                  } | null
+                } | null
+              } | null
+              blogPost?: {
+                __typename?: 'BlogPostEntityResponse'
+                data?: {
+                  __typename?: 'BlogPostEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'BlogPost'
+                    title?: string | null
+                    slug?: string | null
+                  } | null
+                } | null
+              } | null
+            } | null> | null
+            image: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: { __typename?: 'UploadFile'; url: string } | null
+              } | null
+            }
+          } | null
+        } | null
+        tabs?: {
+          __typename?: 'ComponentSectionsHomepageTabs'
+          leftNewsItem?: {
+            __typename?: 'BlogPostEntityResponse'
             data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: { __typename?: 'UploadFile'; url: string } | null
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                slug?: string | null
+                title?: string | null
+                excerpt?: string | null
+                date_added?: any | null
+                publishedAt?: any | null
+                updatedAt?: any | null
+                coverImage?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                  } | null
+                } | null
+                tag?: {
+                  __typename?: 'TagEntityResponse'
+                  data?: {
+                    __typename?: 'TagEntity'
+                    attributes?: {
+                      __typename?: 'Tag'
+                      title?: string | null
+                      pageCategory?: {
+                        __typename?: 'PageCategoryEntityResponse'
+                        data?: {
+                          __typename?: 'PageCategoryEntity'
+                          attributes?: {
+                            __typename?: 'PageCategory'
+                            title?: string | null
+                            color?: Enum_Pagecategory_Color | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
-        } | null> | null
+          rightNewsItem?: {
+            __typename?: 'BlogPostEntityResponse'
+            data?: {
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                slug?: string | null
+                title?: string | null
+                excerpt?: string | null
+                date_added?: any | null
+                publishedAt?: any | null
+                updatedAt?: any | null
+                coverImage?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                  } | null
+                } | null
+                tag?: {
+                  __typename?: 'TagEntityResponse'
+                  data?: {
+                    __typename?: 'TagEntity'
+                    attributes?: {
+                      __typename?: 'Tag'
+                      title?: string | null
+                      pageCategory?: {
+                        __typename?: 'PageCategoryEntityResponse'
+                        data?: {
+                          __typename?: 'PageCategoryEntity'
+                          attributes?: {
+                            __typename?: 'PageCategory'
+                            title?: string | null
+                            color?: Enum_Pagecategory_Color | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+          newsPageLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            plausibleId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            blogPost?: {
+              __typename?: 'BlogPostEntityResponse'
+              data?: {
+                __typename?: 'BlogPostEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'BlogPost'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+          officialBoardPageLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            plausibleId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            blogPost?: {
+              __typename?: 'BlogPostEntityResponse'
+              data?: {
+                __typename?: 'BlogPostEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'BlogPost'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+          roadClosuresPageLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            plausibleId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            blogPost?: {
+              __typename?: 'BlogPostEntityResponse'
+              data?: {
+                __typename?: 'BlogPostEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'BlogPost'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+        mayorAndCouncil?: {
+          __typename?: 'ComponentSectionsHomepageMayorAndCouncil'
+          title?: string | null
+          text?: string | null
+          mayorCard?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            plausibleId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            blogPost?: {
+              __typename?: 'BlogPostEntityResponse'
+              data?: {
+                __typename?: 'BlogPostEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'BlogPost'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+          councilCard?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            plausibleId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            blogPost?: {
+              __typename?: 'BlogPostEntityResponse'
+              data?: {
+                __typename?: 'BlogPostEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'BlogPost'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
         topServices?: {
           __typename?: 'ComponentSectionsTopServices'
           title: string
@@ -5392,6 +6067,41 @@ export type HomepageQuery = {
             } | null
           } | null
         } | null
+        inbaFrontImage: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        }
+        inbaRearImage: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        }
+        cards?: Array<{
+          __typename?: 'ComponentBlocksHomepageBookmark'
+          title?: string | null
+          headline?: string | null
+          text?: string | null
+          variant?: string | null
+          link?: {
+            __typename?: 'ComponentBlocksBookmarkLink'
+            title?: string | null
+            href?: string | null
+          } | null
+          picture?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          } | null
+        } | null> | null
       } | null
     } | null
   } | null
@@ -5435,6 +6145,248 @@ export type HomepagePostBlockFragment = {
   } | null
 }
 
+export type HomepageHighlightsItemFragment = {
+  __typename?: 'ComponentBlocksHomepageHighlightsItem'
+  link?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  } | null> | null
+  image: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: { __typename?: 'UploadFile'; url: string } | null
+    } | null
+  }
+}
+
+export type HomepageTabsFragment = {
+  __typename?: 'ComponentSectionsHomepageTabs'
+  leftNewsItem?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+  rightNewsItem?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+  newsPageLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  } | null
+  officialBoardPageLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  } | null
+  roadClosuresPageLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type HomepageMayorAndCouncilFragment = {
+  __typename?: 'ComponentSectionsHomepageMayorAndCouncil'
+  title?: string | null
+  text?: string | null
+  mayorCard?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  } | null
+  councilCard?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label: string
+    url?: string | null
+    plausibleId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+    blogPost?: {
+      __typename?: 'BlogPostEntityResponse'
+      data?: {
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
+      } | null
+    } | null
+  } | null
+}
+
 export type TopServicesItemFragment = {
   __typename?: 'ComponentBlocksTopServicesItem'
   icon: Enum_Componentblockstopservicesitem_Icon
@@ -5460,6 +6412,12 @@ export type TopServicesItemFragment = {
       } | null
     } | null
   }
+}
+
+export type HomepageInbaFragment = {
+  __typename?: 'ComponentBlocksInBa'
+  title?: string | null
+  content?: string | null
 }
 
 export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
@@ -9633,6 +10591,58 @@ export const HomepageHeaderFragmentDoc = gql`
     }
   }
 `
+export const HomepageHighlightsItemFragmentDoc = gql`
+  fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
+    link {
+      ...CommonLink
+    }
+    image {
+      data {
+        ...ImageSrcEntity
+      }
+    }
+  }
+  ${CommonLinkFragmentDoc}
+  ${ImageSrcEntityFragmentDoc}
+`
+export const HomepageTabsFragmentDoc = gql`
+  fragment HomepageTabs on ComponentSectionsHomepageTabs {
+    leftNewsItem {
+      data {
+        ...LatestBlogPostEntity
+      }
+    }
+    rightNewsItem {
+      data {
+        ...LatestBlogPostEntity
+      }
+    }
+    newsPageLink {
+      ...CommonLink
+    }
+    officialBoardPageLink {
+      ...CommonLink
+    }
+    roadClosuresPageLink {
+      ...CommonLink
+    }
+  }
+  ${LatestBlogPostEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
+`
+export const HomepageMayorAndCouncilFragmentDoc = gql`
+  fragment HomepageMayorAndCouncil on ComponentSectionsHomepageMayorAndCouncil {
+    title
+    text
+    mayorCard {
+      ...CommonLink
+    }
+    councilCard {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
 export const TopServicesItemFragmentDoc = gql`
   fragment TopServicesItem on ComponentBlocksTopServicesItem {
     icon
@@ -9642,6 +10652,12 @@ export const TopServicesItemFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
+export const HomepageInbaFragmentDoc = gql`
+  fragment HomepageInba on ComponentBlocksInBa {
+    title
+    content
+  }
+`
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on HomepageEntity {
     id
@@ -9649,6 +10665,7 @@ export const HomepageEntityFragmentDoc = gql`
       updatedAt
       createdAt
       title
+      metaTitle
       metaDescription
       posts {
         ...HomepagePostBlock
@@ -9666,6 +10683,45 @@ export const HomepageEntityFragmentDoc = gql`
       header {
         ...HomepageHeader
       }
+      welcomeHeadline
+      welcomeMedia {
+        data {
+          ...ImageSrcEntity
+        }
+      }
+      highlights {
+        title
+        text
+        highlights {
+          ...HomepageHighlightsItem
+        }
+      }
+      tabs {
+        ...HomepageTabs
+      }
+      mayorAndCouncil {
+        ...HomepageMayorAndCouncil
+      }
+      topServices {
+        title
+        services {
+          ...TopServicesItem
+        }
+      }
+      inba {
+        ...HomepageInba
+      }
+      inbaFrontImage {
+        data {
+          ...ImageSrcEntity
+        }
+      }
+      inbaRearImage {
+        data {
+          ...ImageSrcEntity
+        }
+      }
+      inbaUrl
       cards {
         title
         headline
@@ -9715,7 +10771,12 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepagePostBlockFragmentDoc}
   ${LatestBlogPostEntityFragmentDoc}
   ${HomepageHeaderFragmentDoc}
+  ${ImageSrcEntityFragmentDoc}
+  ${HomepageHighlightsItemFragmentDoc}
+  ${HomepageTabsFragmentDoc}
+  ${HomepageMayorAndCouncilFragmentDoc}
   ${TopServicesItemFragmentDoc}
+  ${HomepageInbaFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {

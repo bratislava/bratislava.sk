@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_homepage_highlights_items",
+  "info": {
+    "displayName": "homepage highlights item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.common-link"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
