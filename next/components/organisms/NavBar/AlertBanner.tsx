@@ -21,7 +21,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
     }
   }, [storageTimestamp, updatedAt])
 
-  if (!showAlert || !alert?.data?.attributes) {
+  if (!showAlert || !alert?.data?.attributes?.text?.length) {
     return null
   }
 
