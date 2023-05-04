@@ -2,9 +2,9 @@ import type { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import { BasicSearchOld } from '@bratislava/ui-bratislava/BasicSearchOld/BasicSearchOld'
 import { DocumentCards } from '@bratislava/ui-bratislava/DocumentCards/DocumentCards'
 import { NoResultsFound } from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
-import { useQuery } from 'react-query'
 
 const OfficialBoardSection = () => {
   const [search, setSearch] = useState('')

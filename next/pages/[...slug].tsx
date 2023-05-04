@@ -6,18 +6,21 @@ import {
   Localizations,
   LocalizationsProvider,
 } from '@components/providers/LocalizationsProvider'
+import { DehydratedState, Hydrate } from '@tanstack/react-query'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
+import { prefetchPageSections } from '@utils/prefetchPageSections'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import * as React from 'react'
+import React from 'react'
 
 type PageProps = {
   general: GeneralQuery
   page: PageEntityFragment
+  dehydratedState: DehydratedState
 }
 
 type StaticParams = {
@@ -64,17 +67,20 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   const page = pages?.data?.[0]
   if (!page) return { notFound: true }
 
+  const dehydratedState = await prefetchPageSections(page, locale)
+
   return {
     props: {
       general,
       page,
       messages: messages.default,
+      dehydratedState,
     },
     revalidate: 10,
   }
 }
 
-const Page = ({ general, page }: PageProps) => {
+const Page = ({ general, page, dehydratedState }: PageProps) => {
   const {
     slug,
     title: pageTitle,
@@ -100,21 +106,23 @@ const Page = ({ general, page }: PageProps) => {
   const title = useTitle(pageTitle)
 
   return (
-    <GeneralContextProvider general={general}>
-      <LocalizationsProvider localizations={localizations}>
-        <Head>
-          <title>{title}</title>
-          <meta name="description" content={metaDiscription ?? subtext ?? ''} />
-          <meta name="keywords" content={keywords ?? ''} />
-        </Head>
-        <GlobalCategoryColorProvider
-          color={page?.attributes?.pageCategory?.data?.attributes?.color}
-        />
-        <PageLayout>
-          <GeneralPageContent page={page} />
-        </PageLayout>
-      </LocalizationsProvider>
-    </GeneralContextProvider>
+    <Hydrate state={dehydratedState}>
+      <GeneralContextProvider general={general}>
+        <LocalizationsProvider localizations={localizations}>
+          <Head>
+            <title>{title}</title>
+            <meta name="description" content={metaDiscription ?? subtext ?? ''} />
+            <meta name="keywords" content={keywords ?? ''} />
+          </Head>
+          <GlobalCategoryColorProvider
+            color={page?.attributes?.pageCategory?.data?.attributes?.color}
+          />
+          <PageLayout>
+            <GeneralPageContent page={page} />
+          </PageLayout>
+        </LocalizationsProvider>
+      </GeneralContextProvider>
+    </Hydrate>
   )
 }
 

@@ -189,5 +189,9 @@
     "toOfficialBoard": "To the official board",
     "moreInfo": "More info",
     "allInformationOnSite": "All news can be find on site"
+  },
+  "RelatedBlogPostsSection": {
+    "relatedBlogPosts": "Related articles",
+    "readMore": "Read more"
   }
 }

@@ -3618,7 +3618,8 @@ export type BlogPostBySlugQuery = {
 }
 
 export type LatestPostsByTagsQueryVariables = Exact<{
-  tags?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>
+  locale: Scalars['I18NLocaleCode']
+  tags: Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>
   limit?: InputMaybe<Scalars['Int']>
   start?: InputMaybe<Scalars['Int']>
 }>
@@ -4151,6 +4152,12 @@ export type BlogPostLinkFragment = {
       attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
     } | null
   } | null
+}
+
+export type TagEntityFragment = {
+  __typename?: 'TagEntity'
+  id?: string | null
+  attributes?: { __typename?: 'Tag'; title?: string | null } | null
 }
 
 export type ImageSrcEntityFragment = {
@@ -5432,6 +5439,7 @@ export type PageBySlugQuery = {
           __typename?: 'UploadFileEntityResponse'
           data?: {
             __typename?: 'UploadFileEntity'
+            id?: string | null
             attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
         } | null
@@ -6136,6 +6144,14 @@ export type PageBySlugQuery = {
             } | null
           } | null
         } | null
+        relatedContents?: {
+          __typename?: 'TagRelationResponseCollection'
+          data: Array<{
+            __typename?: 'TagEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Tag'; title?: string | null } | null
+          }>
+        } | null
         parentPage?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -6263,6 +6279,7 @@ export type PageEntityFragment = {
       __typename?: 'UploadFileEntityResponse'
       data?: {
         __typename?: 'UploadFileEntity'
+        id?: string | null
         attributes?: { __typename?: 'UploadFile'; url: string } | null
       } | null
     } | null
@@ -6958,6 +6975,14 @@ export type PageEntityFragment = {
           color?: Enum_Pagecategory_Color | null
         } | null
       } | null
+    } | null
+    relatedContents?: {
+      __typename?: 'TagRelationResponseCollection'
+      data: Array<{
+        __typename?: 'TagEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Tag'; title?: string | null } | null
+      }>
     } | null
     parentPage?: {
       __typename?: 'PageEntityResponse'
@@ -9666,6 +9691,14 @@ export const BlogSectionFragmentDoc = gql`
     }
   }
 `
+export const TagEntityFragmentDoc = gql`
+  fragment TagEntity on TagEntity {
+    id
+    attributes {
+      title
+    }
+  }
+`
 export const PageEntityFragmentDoc = gql`
   fragment PageEntity on PageEntity {
     id
@@ -9678,9 +9711,7 @@ export const PageEntityFragmentDoc = gql`
       keywords
       pageBackgroundImage {
         data {
-          attributes {
-            url
-          }
+          ...ImageSrcEntity
         }
       }
       headerLinks {
@@ -9723,14 +9754,21 @@ export const PageEntityFragmentDoc = gql`
           }
         }
       }
+      relatedContents {
+        data {
+          ...TagEntity
+        }
+      }
     }
     ...PageParentPages
   }
+  ${ImageSrcEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
   ${LocalizationFragmentDoc}
   ${PageLinkBlockFragmentDoc}
   ${BlogSectionFragmentDoc}
+  ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
 export const SubpageListPageHeaderSectionFragmentDoc = gql`
@@ -9781,8 +9819,14 @@ export const BlogPostBySlugDocument = gql`
   ${BlogPostEntityFragmentDoc}
 `
 export const LatestPostsByTagsDocument = gql`
-  query LatestPostsByTags($tags: [String], $limit: Int, $start: Int) {
+  query LatestPostsByTags(
+    $locale: I18NLocaleCode!
+    $tags: [String]!
+    $limit: Int = -1
+    $start: Int = 0
+  ) {
     blogPosts(
+      locale: $locale
       filters: { tag: { title: { in: $tags } } }
       pagination: { limit: $limit, start: $start }
       sort: "publishedAt:desc"
@@ -9998,7 +10042,7 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
       )
     },
     LatestPostsByTags(
-      variables?: LatestPostsByTagsQueryVariables,
+      variables: LatestPostsByTagsQueryVariables,
       requestHeaders?: Dom.RequestInit['headers'],
     ): Promise<LatestPostsByTagsQuery> {
       return withWrapper(
