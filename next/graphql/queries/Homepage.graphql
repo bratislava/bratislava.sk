@@ -4,6 +4,7 @@ fragment HomepageEntity on HomepageEntity {
     updatedAt
     createdAt
     title
+    metaTitle
     metaDescription
     posts {
       ...HomepagePostBlock
@@ -21,6 +22,45 @@ fragment HomepageEntity on HomepageEntity {
     header {
       ...HomepageHeader
     }
+    welcomeHeadline
+    welcomeMedia {
+      data {
+        ...ImageSrcEntity
+      }
+    }
+    highlights {
+      title
+      text
+      highlights {
+        ...HomepageHighlightsItem
+      }
+    }
+    tabs {
+      ...HomepageTabs
+    }
+    mayorAndCouncil {
+      ...HomepageMayorAndCouncil
+    }
+    topServices {
+      title
+      services {
+        ...TopServicesItem
+      }
+    }
+    inba {
+      ...HomepageInba
+    }
+    inbaFrontImage {
+      data {
+        ...ImageSrcEntity
+      }
+    }
+    inbaRearImage {
+      data {
+        ...ImageSrcEntity
+      }
+    }
+    inbaUrl
     cards {
       title
       headline
@@ -96,6 +136,7 @@ fragment HomepageHeader on ComponentBlocksHomepageHeader {
   }
 }
 
+# remove
 fragment HomepagePostBlock on ComponentBlocksHomepagePost {
   title
   slug
@@ -109,9 +150,58 @@ fragment HomepagePostBlock on ComponentBlocksHomepagePost {
   }
 }
 
+fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
+  link {
+    ...CommonLink
+  }
+  image {
+    data {
+      ...ImageSrcEntity
+    }
+  }
+}
+
+fragment HomepageTabs on ComponentSectionsHomepageTabs {
+  leftNewsItem {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+  rightNewsItem {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+  newsPageLink {
+    ...CommonLink
+  }
+  officialBoardPageLink {
+    ...CommonLink
+  }
+  roadClosuresPageLink {
+    ...CommonLink
+  }
+}
+
+fragment HomepageMayorAndCouncil on ComponentSectionsHomepageMayorAndCouncil {
+  title
+  text
+  mayorCard {
+    ...CommonLink
+  }
+  councilCard {
+    ...CommonLink
+  }
+}
+
 fragment TopServicesItem on ComponentBlocksTopServicesItem {
   icon
   link {
     ...CommonLink
   }
+}
+
+fragment HomepageInba on ComponentBlocksInBa {
+  title
+  content
 }

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_homepage_mayor_and_councils",
+  "info": {
+    "displayName": "homepage mayor and council"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "mayorCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    },
+    "councilCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    }
+  }
+}

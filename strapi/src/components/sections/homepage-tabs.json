@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_homepage_tabs",
+  "info": {
+    "displayName": "homepage tabs",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "leftNewsItem": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-post.blog-post"
+    },
+    "rightNewsItem": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-post.blog-post"
+    },
+    "newsPageLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    },
+    "officialBoardPageLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    },
+    "roadClosuresPageLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    }
+  }
+}
