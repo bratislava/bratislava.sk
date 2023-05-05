@@ -512,19 +512,20 @@ export type ComponentBlocksHomepageHighlightsItem = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
   id: Scalars['ID']
   image: UploadFileEntityResponse
-  link?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+  link: ComponentBlocksCommonLink
 }
 
-export type ComponentBlocksHomepageHighlightsItemLinkArgs = {
-  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+export type ComponentBlocksHomepageHighlightsItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>>>
+  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>>>
 }
 
 export type ComponentBlocksHomepageHighlightsItemInput = {
   id?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<Scalars['ID']>
-  link?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
+  link?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
 export type ComponentBlocksHomepagePost = {
@@ -1143,14 +1144,20 @@ export type ComponentSectionsGalleryGalleryItemsArgs = {
 
 export type ComponentSectionsHomepageHighlights = {
   __typename?: 'ComponentSectionsHomepageHighlights'
-  highlights?: Maybe<ComponentBlocksHomepageHighlightsItem>
+  cards?: Maybe<Array<Maybe<ComponentBlocksHomepageHighlightsItem>>>
   id: Scalars['ID']
   text?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
 }
 
+export type ComponentSectionsHomepageHighlightsCardsArgs = {
+  filters?: InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export type ComponentSectionsHomepageHighlightsInput = {
-  highlights?: InputMaybe<ComponentBlocksHomepageHighlightsItemInput>
+  cards?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemInput>>>
   id?: InputMaybe<Scalars['ID']>
   text?: InputMaybe<Scalars['String']>
   title?: InputMaybe<Scalars['String']>
@@ -5195,9 +5202,9 @@ export type HomepageEntityFragment = {
       __typename?: 'ComponentSectionsHomepageHighlights'
       title?: string | null
       text?: string | null
-      highlights?: {
+      cards?: Array<{
         __typename?: 'ComponentBlocksHomepageHighlightsItem'
-        link?: Array<{
+        link: {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
           url?: string | null
@@ -5226,7 +5233,7 @@ export type HomepageEntityFragment = {
               } | null
             } | null
           } | null
-        } | null> | null
+        }
         image: {
           __typename?: 'UploadFileEntityResponse'
           data?: {
@@ -5235,7 +5242,7 @@ export type HomepageEntityFragment = {
             attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
         }
-      } | null
+      } | null> | null
     } | null
     tabs?: {
       __typename?: 'ComponentSectionsHomepageTabs'
@@ -5718,9 +5725,9 @@ export type HomepageQuery = {
           __typename?: 'ComponentSectionsHomepageHighlights'
           title?: string | null
           text?: string | null
-          highlights?: {
+          cards?: Array<{
             __typename?: 'ComponentBlocksHomepageHighlightsItem'
-            link?: Array<{
+            link: {
               __typename?: 'ComponentBlocksCommonLink'
               label: string
               url?: string | null
@@ -5749,7 +5756,7 @@ export type HomepageQuery = {
                   } | null
                 } | null
               } | null
-            } | null> | null
+            }
             image: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
@@ -5758,7 +5765,7 @@ export type HomepageQuery = {
                 attributes?: { __typename?: 'UploadFile'; url: string } | null
               } | null
             }
-          } | null
+          } | null> | null
         } | null
         tabs?: {
           __typename?: 'ComponentSectionsHomepageTabs'
@@ -6147,7 +6154,7 @@ export type HomepagePostBlockFragment = {
 
 export type HomepageHighlightsItemFragment = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
-  link?: Array<{
+  link: {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
@@ -6168,7 +6175,7 @@ export type HomepageHighlightsItemFragment = {
         attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
       } | null
     } | null
-  } | null> | null
+  }
   image: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -10692,7 +10699,7 @@ export const HomepageEntityFragmentDoc = gql`
       highlights {
         title
         text
-        highlights {
+        cards {
           ...HomepageHighlightsItem
         }
       }

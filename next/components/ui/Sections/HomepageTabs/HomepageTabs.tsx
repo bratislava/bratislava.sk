@@ -6,7 +6,6 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { Tab, TabList, TabPanels, Tabs } from 'react-aria-components'
-import { useIsClient } from 'usehooks-ts'
 
 export interface HomepageTabsProps {
   className?: string
@@ -27,9 +26,8 @@ export const HomepageTabs = ({ className }: HomepageTabsProps) => {
   return (
     <div className={cx(className)}>
       <Tabs>
-        {/* TODO translations */}
         <TabList
-          aria-label="Novinky"
+          aria-label={t('aria.tabListName')}
           className="-mx-8 flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden px-8 scrollbar-hide md:mx-auto md:grid"
         >
           {tabs.map(({ id, label }) => (

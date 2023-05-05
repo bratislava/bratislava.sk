@@ -534,7 +534,7 @@ input ComponentBlocksHomepageHeaderInput {
 type ComponentBlocksHomepageHighlightsItem {
   id: ID!
   image: UploadFileEntityResponse!
-  link(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
+  link: ComponentBlocksCommonLink!
 }
 
 input ComponentBlocksHomepageHighlightsItemFiltersInput {
@@ -547,7 +547,7 @@ input ComponentBlocksHomepageHighlightsItemFiltersInput {
 input ComponentBlocksHomepageHighlightsItemInput {
   id: ID
   image: ID
-  link: [ComponentBlocksCommonLinkInput]
+  link: ComponentBlocksCommonLinkInput
 }
 
 type ComponentBlocksHomepagePost {
@@ -1381,7 +1381,7 @@ input ComponentSectionsGalleryInput {
 }
 
 type ComponentSectionsHomepageHighlights {
-  highlights: ComponentBlocksHomepageHighlightsItem
+  cards(filters: ComponentBlocksHomepageHighlightsItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageHighlightsItem]
   id: ID!
   text: String
   title: String
@@ -1389,7 +1389,7 @@ type ComponentSectionsHomepageHighlights {
 
 input ComponentSectionsHomepageHighlightsFiltersInput {
   and: [ComponentSectionsHomepageHighlightsFiltersInput]
-  highlights: ComponentBlocksHomepageHighlightsItemFiltersInput
+  cards: ComponentBlocksHomepageHighlightsItemFiltersInput
   not: ComponentSectionsHomepageHighlightsFiltersInput
   or: [ComponentSectionsHomepageHighlightsFiltersInput]
   text: StringFilterInput
@@ -1397,7 +1397,7 @@ input ComponentSectionsHomepageHighlightsFiltersInput {
 }
 
 input ComponentSectionsHomepageHighlightsInput {
-  highlights: ComponentBlocksHomepageHighlightsItemInput
+  cards: [ComponentBlocksHomepageHighlightsItemInput]
   id: ID
   text: String
   title: String
