@@ -8,7 +8,8 @@
   "attributes": {
     "link": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
+      "required": true,
       "component": "blocks.common-link"
     },
     "image": {

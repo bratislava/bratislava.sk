@@ -2,6 +2,8 @@ import { ArrowRightIcon } from '@assets/images'
 import { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import Button from '@components/forms/simple-components/Button'
 import { DocumentCard } from '@components/ui/DocumentCard/DocumentCard'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
+import { useHomepageContext } from '@utils/homepageContext'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
@@ -9,6 +11,9 @@ import useSWR from 'swr'
 
 const TabPanelOfficialBoard = () => {
   const t = useTranslations('HomepageTabs')
+
+  const { homepage } = useHomepageContext()
+  const { tabs } = homepage?.attributes ?? {}
 
   // TODO handle loading and errors
   const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>(
@@ -33,15 +38,15 @@ const TabPanelOfficialBoard = () => {
           ))}
         </div>
 
-        <div className="flex justify-center">
-          <Button
-            href="/mesto-bratislava/transparentne-mesto/uradna-tabula"
-            variant="category-outline"
-            endIcon={<ArrowRightIcon />}
-          >
-            {t('toOfficialBoard')}
-          </Button>
-        </div>
+        {tabs?.officialBoardPageLink ? (
+          <div className="flex justify-center">
+            <Button
+              variant="category-outline"
+              endIcon={<ArrowRightIcon />}
+              {...getCommonLinkProps(tabs.officialBoardPageLink)}
+            />
+          </div>
+        ) : null}
       </div>
     </TabPanel>
   )

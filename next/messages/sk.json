@@ -181,12 +181,11 @@
       "RoadClosures": "Rozkopávky",
       "Disclosure": "Zverejňovanie"
     },
+    "aria": {
+      "tabListName": "Aktuálne informácie"
+    },
     "readMore": "Čítať viac",
-    "readMoreNewsText": "Prejsť na všetky aktuality",
-    "seeMoreRoadClosures": "Prejsť na všetky rozkopávky",
-    "allNewsLink": "/mesto-bratislava/transparentne-mesto/aktuality",
     "files": "Súbory",
-    "toOfficialBoard": "Prejsť na úradnú tabuľu",
     "moreInfo": "Viac informacií",
     "allInformationOnSite": "Všetky informácie nájdete na stránke"
   },

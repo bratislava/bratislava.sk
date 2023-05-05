@@ -6,6 +6,7 @@ import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import Carousel from '@components/organisms/Carousel/Carousel'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
@@ -19,8 +20,12 @@ const TabPanelLatestNews = () => {
   const t = useTranslations('HomepageTabs')
 
   const { homepage, blogPosts } = useHomepageContext()
-  const { left_highlight: leftHighlight, right_highlight: rightHighlight } =
-    homepage?.attributes ?? {}
+  // TODO replace by tabs.leftNewsItem and tabs.righNewsItem
+  const {
+    left_highlight: leftHighlight,
+    right_highlight: rightHighlight,
+    tabs,
+  } = homepage?.attributes ?? {}
   const latestPostsFiltered =
     blogPosts
       ?.filter(isDefined)
@@ -65,7 +70,7 @@ const TabPanelLatestNews = () => {
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
-          {[leftHighlight?.data, rightHighlight?.data].filter(isDefined).map((post) => {
+          {[leftHighlight?.data, rightHighlight?.data].filter(isDefined).map((post, index) => {
             const { title, slug, coverImage, date_added, publishedAt, tag, excerpt } =
               post.attributes ?? {}
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
@@ -73,6 +78,8 @@ const TabPanelLatestNews = () => {
 
             return (
               <BlogPostCard
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="shadow"
                 date={getNumericLocalDate(date_added ?? publishedAt)}
@@ -117,11 +124,15 @@ const TabPanelLatestNews = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">
-        <Button href={t('allNewsLink')} variant="category-outline" endIcon={<ArrowRightIcon />}>
-          {t('readMoreNewsText')}
-        </Button>
-      </div>
+      {tabs?.newsPageLink ? (
+        <div className="flex justify-center">
+          <Button
+            variant="category-outline"
+            endIcon={<ArrowRightIcon />}
+            {...getCommonLinkProps(tabs?.newsPageLink)}
+          />
+        </div>
+      ) : null}
     </TabPanel>
   )
 }

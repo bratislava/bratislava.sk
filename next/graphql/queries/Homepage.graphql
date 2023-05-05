@@ -31,7 +31,7 @@ fragment HomepageEntity on HomepageEntity {
     highlights {
       title
       text
-      highlights {
+      cards {
         ...HomepageHighlightsItem
       }
     }
