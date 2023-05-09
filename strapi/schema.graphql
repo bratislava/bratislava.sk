@@ -600,16 +600,12 @@ input ComponentBlocksIconWithTitleAndDescriptionInput {
 type ComponentBlocksInBa {
   content: String
   id: ID!
-  images: ComponentBlocksInBaPictures
-  link: String
   title: String
 }
 
 input ComponentBlocksInBaFiltersInput {
   and: [ComponentBlocksInBaFiltersInput]
   content: StringFilterInput
-  images: ComponentBlocksInBaPicturesFiltersInput
-  link: StringFilterInput
   not: ComponentBlocksInBaFiltersInput
   or: [ComponentBlocksInBaFiltersInput]
   title: StringFilterInput
@@ -618,8 +614,6 @@ input ComponentBlocksInBaFiltersInput {
 input ComponentBlocksInBaInput {
   content: String
   id: ID
-  images: ComponentBlocksInBaPicturesInput
-  link: String
   title: String
 }
 
@@ -2308,25 +2302,22 @@ type GeneralRelationResponseCollection {
 union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHeader | ComponentBlocksHomepageHighlightsItem | ComponentBlocksHomepagePost | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksInBaPictures | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
+  bookmarkTourists: ComponentBlocksHomepageBookmark
+  bookmarkUkraine: ComponentBlocksHomepageBookmark
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
   createdAt: DateTime
-  header: ComponentBlocksHomepageHeader
   highlights: ComponentSectionsHomepageHighlights
   inba: ComponentBlocksInBa
   inbaFrontImage: UploadFileEntityResponse!
   inbaRearImage: UploadFileEntityResponse!
   inbaUrl: String
-  left_highlight: BlogPostEntityResponse
   locale: String
   localizations(publicationState: PublicationState = LIVE): HomepageRelationResponseCollection
   mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncil
   metaDescription: String!
   metaTitle: String!
-  posts(filters: ComponentBlocksHomepagePostFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepagePost]
   publishedAt: DateTime
-  right_highlight: BlogPostEntityResponse
   tabs: ComponentSectionsHomepageTabs
-  title: String
   topServices: ComponentSectionsTopServices
   updatedAt: DateTime
   welcomeHeadline: String!
@@ -2349,13 +2340,13 @@ type HomepageEntityResponseCollection {
 
 input HomepageFiltersInput {
   and: [HomepageFiltersInput]
+  bookmarkTourists: ComponentBlocksHomepageBookmarkFiltersInput
+  bookmarkUkraine: ComponentBlocksHomepageBookmarkFiltersInput
   cards: ComponentBlocksHomepageBookmarkFiltersInput
   createdAt: DateTimeFilterInput
-  header: ComponentBlocksHomepageHeaderFiltersInput
   highlights: ComponentSectionsHomepageHighlightsFiltersInput
   inba: ComponentBlocksInBaFiltersInput
   inbaUrl: StringFilterInput
-  left_highlight: BlogPostFiltersInput
   locale: StringFilterInput
   localizations: HomepageFiltersInput
   mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilFiltersInput
@@ -2363,33 +2354,27 @@ input HomepageFiltersInput {
   metaTitle: StringFilterInput
   not: HomepageFiltersInput
   or: [HomepageFiltersInput]
-  posts: ComponentBlocksHomepagePostFiltersInput
   publishedAt: DateTimeFilterInput
-  right_highlight: BlogPostFiltersInput
   tabs: ComponentSectionsHomepageTabsFiltersInput
-  title: StringFilterInput
   topServices: ComponentSectionsTopServicesFiltersInput
   updatedAt: DateTimeFilterInput
   welcomeHeadline: StringFilterInput
 }
 
 input HomepageInput {
+  bookmarkTourists: ComponentBlocksHomepageBookmarkInput
+  bookmarkUkraine: ComponentBlocksHomepageBookmarkInput
   cards: [ComponentBlocksHomepageBookmarkInput]
-  header: ComponentBlocksHomepageHeaderInput
   highlights: ComponentSectionsHomepageHighlightsInput
   inba: ComponentBlocksInBaInput
   inbaFrontImage: ID
   inbaRearImage: ID
   inbaUrl: String
-  left_highlight: ID
   mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilInput
   metaDescription: String
   metaTitle: String
-  posts: [ComponentBlocksHomepagePostInput]
   publishedAt: DateTime
-  right_highlight: ID
   tabs: ComponentSectionsHomepageTabsInput
-  title: String
   topServices: ComponentSectionsTopServicesInput
   welcomeHeadline: String
   welcomeMedia: ID

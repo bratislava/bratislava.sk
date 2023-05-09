@@ -3,25 +3,8 @@ fragment HomepageEntity on HomepageEntity {
   attributes {
     updatedAt
     createdAt
-    title
     metaTitle
     metaDescription
-    posts {
-      ...HomepagePostBlock
-    }
-    right_highlight {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    left_highlight {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    header {
-      ...HomepageHeader
-    }
     welcomeHeadline
     welcomeMedia {
       data {
@@ -87,23 +70,6 @@ fragment HomepageEntity on HomepageEntity {
     inba {
       title
       content
-      images {
-        frontImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        rearImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-      }
-      link
     }
   }
 }

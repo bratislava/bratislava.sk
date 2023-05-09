@@ -6,12 +6,12 @@ import React from 'react'
 const InbaHomepageSection = () => {
   const { homepage } = useHomepageContext()
 
-  const frontImage = homepage?.attributes?.inba?.images?.frontImage?.data?.attributes?.url
-  const rearImage = homepage?.attributes?.inba?.images?.rearImage?.data?.attributes?.url
+  const frontImage = homepage?.attributes?.inbaFrontImage?.data?.attributes?.url
+  const rearImage = homepage?.attributes?.inbaRearImage?.data?.attributes?.url
   const inba = {
     title: homepage?.attributes?.inba?.title,
     content: homepage?.attributes?.inba?.content,
-    link: homepage?.attributes?.inba?.link,
+    link: homepage?.attributes?.inbaUrl,
     images: [frontImage, rearImage],
   }
 

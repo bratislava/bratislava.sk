@@ -2,7 +2,8 @@
   "collectionName": "components_blocks_in_bas",
   "info": {
     "displayName": "InBa",
-    "icon": "asterisk"
+    "icon": "asterisk",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,14 +11,6 @@
       "type": "string"
     },
     "content": {
-      "type": "string"
-    },
-    "images": {
-      "type": "component",
-      "repeatable": false,
-      "component": "blocks.in-ba-pictures"
-    },
-    "link": {
       "type": "string"
     }
   }
