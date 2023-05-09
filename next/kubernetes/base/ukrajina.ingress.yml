@@ -6,7 +6,7 @@ metadata:
   labels:
     service: redirect
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
     kubernetes.io/ingress.class: haproxy
     ingress.kubernetes.io/redirect-to: 'https://www.${HOSTNAME}/bratislava-pre-ukrajinu'
