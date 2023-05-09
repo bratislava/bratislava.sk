@@ -2734,7 +2734,7 @@ input PageInput {
   title: String
 }
 
-union PagePageHeaderSectionsDynamicZone = ComponentSectionsFeaturedBlogPosts | ComponentSectionsSubpageList | Error
+union PagePageHeaderSectionsDynamicZone = ComponentSectionsSubpageList | Error
 
 scalar PagePageHeaderSectionsDynamicZoneInput
 

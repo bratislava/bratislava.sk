@@ -76,16 +76,7 @@ fragment PageEntity on PageEntity {
       ...Localization
     }
     pageHeaderSections {
-      __typename
-      ... on ComponentSectionsSubpageList {
-        id
-        subpageList(pagination: { limit: 50 }) {
-          ...PageLinkBlock
-        }
-      }
-      ... on ComponentSectionsFeaturedBlogPosts {
-        ...FeaturedBlogPostsSection
-      }
+      ...PageHeaderSections
     }
     pageCategory {
       data {

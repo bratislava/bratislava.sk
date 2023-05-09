@@ -554,7 +554,4 @@ fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
   ... on ComponentSectionsSubpageList {
     ...SubpageListPageHeaderSection
   }
-  ... on ComponentSectionsFeaturedBlogPosts {
-    ...FeaturedBlogPostsSection
-  }
 }
