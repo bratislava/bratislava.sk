@@ -493,21 +493,6 @@ export type ComponentBlocksHomepageBookmarkInput = {
   variant?: InputMaybe<Scalars['String']>
 }
 
-export type ComponentBlocksHomepageHeader = {
-  __typename?: 'ComponentBlocksHomepageHeader'
-  headline: Scalars['String']
-  id: Scalars['ID']
-  mobilePicture?: Maybe<UploadFileEntityResponse>
-  picture?: Maybe<UploadFileEntityResponse>
-}
-
-export type ComponentBlocksHomepageHeaderInput = {
-  headline?: InputMaybe<Scalars['String']>
-  id?: InputMaybe<Scalars['ID']>
-  mobilePicture?: InputMaybe<Scalars['ID']>
-  picture?: InputMaybe<Scalars['ID']>
-}
-
 export type ComponentBlocksHomepageHighlightsItem = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
   id: Scalars['ID']
@@ -526,32 +511,6 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
   id?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<Scalars['ID']>
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
-}
-
-export type ComponentBlocksHomepagePost = {
-  __typename?: 'ComponentBlocksHomepagePost'
-  id: Scalars['ID']
-  image?: Maybe<UploadFileEntityResponse>
-  plausibleId?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
-}
-
-export type ComponentBlocksHomepagePostFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepagePostFiltersInput>>>
-  not?: InputMaybe<ComponentBlocksHomepagePostFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepagePostFiltersInput>>>
-  plausibleId?: InputMaybe<StringFilterInput>
-  slug?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksHomepagePostInput = {
-  id?: InputMaybe<Scalars['ID']>
-  image?: InputMaybe<Scalars['ID']>
-  plausibleId?: InputMaybe<Scalars['String']>
-  slug?: InputMaybe<Scalars['String']>
-  title?: InputMaybe<Scalars['String']>
 }
 
 export type ComponentBlocksIconWithTitleAndDescription = {
@@ -574,30 +533,13 @@ export type ComponentBlocksInBa = {
   __typename?: 'ComponentBlocksInBa'
   content?: Maybe<Scalars['String']>
   id: Scalars['ID']
-  images?: Maybe<ComponentBlocksInBaPictures>
-  link?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
 }
 
 export type ComponentBlocksInBaInput = {
   content?: InputMaybe<Scalars['String']>
   id?: InputMaybe<Scalars['ID']>
-  images?: InputMaybe<ComponentBlocksInBaPicturesInput>
-  link?: InputMaybe<Scalars['String']>
   title?: InputMaybe<Scalars['String']>
-}
-
-export type ComponentBlocksInBaPictures = {
-  __typename?: 'ComponentBlocksInBaPictures'
-  frontImage?: Maybe<UploadFileEntityResponse>
-  id: Scalars['ID']
-  rearImage?: Maybe<UploadFileEntityResponse>
-}
-
-export type ComponentBlocksInBaPicturesInput = {
-  frontImage?: InputMaybe<Scalars['ID']>
-  id?: InputMaybe<Scalars['ID']>
-  rearImage?: InputMaybe<Scalars['ID']>
 }
 
 export type ComponentBlocksListItem = {
@@ -1848,12 +1790,9 @@ export type GenericMorph =
   | ComponentBlocksFooterSection
   | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
-  | ComponentBlocksHomepageHeader
   | ComponentBlocksHomepageHighlightsItem
-  | ComponentBlocksHomepagePost
   | ComponentBlocksIconWithTitleAndDescription
   | ComponentBlocksInBa
-  | ComponentBlocksInBaPictures
   | ComponentBlocksListItem
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
@@ -1922,25 +1861,22 @@ export type GenericMorph =
 
 export type Homepage = {
   __typename?: 'Homepage'
+  bookmarkTourists?: Maybe<ComponentBlocksHomepageBookmark>
+  bookmarkUkraine?: Maybe<ComponentBlocksHomepageBookmark>
   cards?: Maybe<Array<Maybe<ComponentBlocksHomepageBookmark>>>
   createdAt?: Maybe<Scalars['DateTime']>
-  header?: Maybe<ComponentBlocksHomepageHeader>
   highlights?: Maybe<ComponentSectionsHomepageHighlights>
   inba?: Maybe<ComponentBlocksInBa>
   inbaFrontImage: UploadFileEntityResponse
   inbaRearImage: UploadFileEntityResponse
   inbaUrl?: Maybe<Scalars['String']>
-  left_highlight?: Maybe<BlogPostEntityResponse>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<HomepageRelationResponseCollection>
   mayorAndCouncil?: Maybe<ComponentSectionsHomepageMayorAndCouncil>
   metaDescription: Scalars['String']
   metaTitle: Scalars['String']
-  posts?: Maybe<Array<Maybe<ComponentBlocksHomepagePost>>>
   publishedAt?: Maybe<Scalars['DateTime']>
-  right_highlight?: Maybe<BlogPostEntityResponse>
   tabs?: Maybe<ComponentSectionsHomepageTabs>
-  title?: Maybe<Scalars['String']>
   topServices?: Maybe<ComponentSectionsTopServices>
   updatedAt?: Maybe<Scalars['DateTime']>
   welcomeHeadline: Scalars['String']
@@ -1957,12 +1893,6 @@ export type HomepageLocalizationsArgs = {
   publicationState?: InputMaybe<PublicationState>
 }
 
-export type HomepagePostsArgs = {
-  filters?: InputMaybe<ComponentBlocksHomepagePostFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
 export type HomepageEntity = {
   __typename?: 'HomepageEntity'
   attributes?: Maybe<Homepage>
@@ -1975,22 +1905,19 @@ export type HomepageEntityResponse = {
 }
 
 export type HomepageInput = {
+  bookmarkTourists?: InputMaybe<ComponentBlocksHomepageBookmarkInput>
+  bookmarkUkraine?: InputMaybe<ComponentBlocksHomepageBookmarkInput>
   cards?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageBookmarkInput>>>
-  header?: InputMaybe<ComponentBlocksHomepageHeaderInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
   inbaFrontImage?: InputMaybe<Scalars['ID']>
   inbaRearImage?: InputMaybe<Scalars['ID']>
   inbaUrl?: InputMaybe<Scalars['String']>
-  left_highlight?: InputMaybe<Scalars['ID']>
   mayorAndCouncil?: InputMaybe<ComponentSectionsHomepageMayorAndCouncilInput>
   metaDescription?: InputMaybe<Scalars['String']>
   metaTitle?: InputMaybe<Scalars['String']>
-  posts?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepagePostInput>>>
   publishedAt?: InputMaybe<Scalars['DateTime']>
-  right_highlight?: InputMaybe<Scalars['ID']>
   tabs?: InputMaybe<ComponentSectionsHomepageTabsInput>
-  title?: InputMaybe<Scalars['String']>
   topServices?: InputMaybe<ComponentSectionsTopServicesInput>
   welcomeHeadline?: InputMaybe<Scalars['String']>
   welcomeMedia?: InputMaybe<Scalars['ID']>
@@ -2738,10 +2665,7 @@ export type PageInput = {
   title?: InputMaybe<Scalars['String']>
 }
 
-export type PagePageHeaderSectionsDynamicZone =
-  | ComponentSectionsFeaturedBlogPosts
-  | ComponentSectionsSubpageList
-  | Error
+export type PagePageHeaderSectionsDynamicZone = ComponentSectionsSubpageList | Error
 
 export type PageRelationResponseCollection = {
   __typename?: 'PageRelationResponseCollection'
@@ -5062,135 +4986,10 @@ export type HomepageEntityFragment = {
     __typename?: 'Homepage'
     updatedAt?: any | null
     createdAt?: any | null
-    title?: string | null
     metaTitle: string
     metaDescription: string
     welcomeHeadline: string
     inbaUrl?: string | null
-    posts?: Array<{
-      __typename?: 'ComponentBlocksHomepagePost'
-      title?: string | null
-      slug?: string | null
-      plausibleId?: string | null
-      image?: {
-        __typename?: 'UploadFileEntityResponse'
-        data?: {
-          __typename?: 'UploadFileEntity'
-          attributes?: { __typename?: 'UploadFile'; url: string } | null
-        } | null
-      } | null
-    } | null> | null
-    right_highlight?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'BlogPost'
-          slug?: string | null
-          title?: string | null
-          excerpt?: string | null
-          date_added?: any | null
-          publishedAt?: any | null
-          updatedAt?: any | null
-          coverImage?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: { __typename?: 'UploadFile'; url: string } | null
-            } | null
-          } | null
-          tag?: {
-            __typename?: 'TagEntityResponse'
-            data?: {
-              __typename?: 'TagEntity'
-              attributes?: {
-                __typename?: 'Tag'
-                title?: string | null
-                pageCategory?: {
-                  __typename?: 'PageCategoryEntityResponse'
-                  data?: {
-                    __typename?: 'PageCategoryEntity'
-                    attributes?: {
-                      __typename?: 'PageCategory'
-                      title?: string | null
-                      color?: Enum_Pagecategory_Color | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-    left_highlight?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'BlogPost'
-          slug?: string | null
-          title?: string | null
-          excerpt?: string | null
-          date_added?: any | null
-          publishedAt?: any | null
-          updatedAt?: any | null
-          coverImage?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: { __typename?: 'UploadFile'; url: string } | null
-            } | null
-          } | null
-          tag?: {
-            __typename?: 'TagEntityResponse'
-            data?: {
-              __typename?: 'TagEntity'
-              attributes?: {
-                __typename?: 'Tag'
-                title?: string | null
-                pageCategory?: {
-                  __typename?: 'PageCategoryEntityResponse'
-                  data?: {
-                    __typename?: 'PageCategoryEntity'
-                    attributes?: {
-                      __typename?: 'PageCategory'
-                      title?: string | null
-                      color?: Enum_Pagecategory_Color | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-    header?: {
-      __typename?: 'ComponentBlocksHomepageHeader'
-      headline: string
-      picture?: {
-        __typename?: 'UploadFileEntityResponse'
-        data?: {
-          __typename?: 'UploadFileEntity'
-          attributes?: {
-            __typename?: 'UploadFile'
-            url: string
-            height?: number | null
-            width?: number | null
-          } | null
-        } | null
-      } | null
-      mobilePicture?: {
-        __typename?: 'UploadFileEntityResponse'
-        data?: {
-          __typename?: 'UploadFileEntity'
-          attributes?: { __typename?: 'UploadFile'; url: string } | null
-        } | null
-      } | null
-    } | null
     welcomeMedia: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -5513,24 +5312,6 @@ export type HomepageEntityFragment = {
       __typename?: 'ComponentBlocksInBa'
       title?: string | null
       content?: string | null
-      link?: string | null
-      images?: {
-        __typename?: 'ComponentBlocksInBaPictures'
-        frontImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        rearImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-      } | null
     } | null
     inbaFrontImage: {
       __typename?: 'UploadFileEntityResponse'
@@ -5567,6 +5348,44 @@ export type HomepageEntityFragment = {
         } | null
       } | null
     } | null> | null
+    bookmarkTourists?: {
+      __typename?: 'ComponentBlocksHomepageBookmark'
+      title?: string | null
+      headline?: string | null
+      text?: string | null
+      variant?: string | null
+      link?: {
+        __typename?: 'ComponentBlocksBookmarkLink'
+        title?: string | null
+        href?: string | null
+      } | null
+      picture?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          attributes?: { __typename?: 'UploadFile'; url: string } | null
+        } | null
+      } | null
+    } | null
+    bookmarkUkraine?: {
+      __typename?: 'ComponentBlocksHomepageBookmark'
+      title?: string | null
+      headline?: string | null
+      text?: string | null
+      variant?: string | null
+      link?: {
+        __typename?: 'ComponentBlocksBookmarkLink'
+        title?: string | null
+        href?: string | null
+      } | null
+      picture?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          attributes?: { __typename?: 'UploadFile'; url: string } | null
+        } | null
+      } | null
+    } | null
   } | null
 }
 
@@ -5585,135 +5404,10 @@ export type HomepageQuery = {
         __typename?: 'Homepage'
         updatedAt?: any | null
         createdAt?: any | null
-        title?: string | null
         metaTitle: string
         metaDescription: string
         welcomeHeadline: string
         inbaUrl?: string | null
-        posts?: Array<{
-          __typename?: 'ComponentBlocksHomepagePost'
-          title?: string | null
-          slug?: string | null
-          plausibleId?: string | null
-          image?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: { __typename?: 'UploadFile'; url: string } | null
-            } | null
-          } | null
-        } | null> | null
-        right_highlight?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'BlogPost'
-              slug?: string | null
-              title?: string | null
-              excerpt?: string | null
-              date_added?: any | null
-              publishedAt?: any | null
-              updatedAt?: any | null
-              coverImage?: {
-                __typename?: 'UploadFileEntityResponse'
-                data?: {
-                  __typename?: 'UploadFileEntity'
-                  attributes?: { __typename?: 'UploadFile'; url: string } | null
-                } | null
-              } | null
-              tag?: {
-                __typename?: 'TagEntityResponse'
-                data?: {
-                  __typename?: 'TagEntity'
-                  attributes?: {
-                    __typename?: 'Tag'
-                    title?: string | null
-                    pageCategory?: {
-                      __typename?: 'PageCategoryEntityResponse'
-                      data?: {
-                        __typename?: 'PageCategoryEntity'
-                        attributes?: {
-                          __typename?: 'PageCategory'
-                          title?: string | null
-                          color?: Enum_Pagecategory_Color | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-        left_highlight?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'BlogPost'
-              slug?: string | null
-              title?: string | null
-              excerpt?: string | null
-              date_added?: any | null
-              publishedAt?: any | null
-              updatedAt?: any | null
-              coverImage?: {
-                __typename?: 'UploadFileEntityResponse'
-                data?: {
-                  __typename?: 'UploadFileEntity'
-                  attributes?: { __typename?: 'UploadFile'; url: string } | null
-                } | null
-              } | null
-              tag?: {
-                __typename?: 'TagEntityResponse'
-                data?: {
-                  __typename?: 'TagEntity'
-                  attributes?: {
-                    __typename?: 'Tag'
-                    title?: string | null
-                    pageCategory?: {
-                      __typename?: 'PageCategoryEntityResponse'
-                      data?: {
-                        __typename?: 'PageCategoryEntity'
-                        attributes?: {
-                          __typename?: 'PageCategory'
-                          title?: string | null
-                          color?: Enum_Pagecategory_Color | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-        header?: {
-          __typename?: 'ComponentBlocksHomepageHeader'
-          headline: string
-          picture?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                height?: number | null
-                width?: number | null
-              } | null
-            } | null
-          } | null
-          mobilePicture?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: { __typename?: 'UploadFile'; url: string } | null
-            } | null
-          } | null
-        } | null
         welcomeMedia: {
           __typename?: 'UploadFileEntityResponse'
           data?: {
@@ -6056,24 +5750,6 @@ export type HomepageQuery = {
           __typename?: 'ComponentBlocksInBa'
           title?: string | null
           content?: string | null
-          link?: string | null
-          images?: {
-            __typename?: 'ComponentBlocksInBaPictures'
-            frontImage?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
-              } | null
-            } | null
-            rearImage?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
-              } | null
-            } | null
-          } | null
         } | null
         inbaFrontImage: {
           __typename?: 'UploadFileEntityResponse'
@@ -6110,41 +5786,61 @@ export type HomepageQuery = {
             } | null
           } | null
         } | null> | null
+        bookmarkTourists?: {
+          __typename?: 'ComponentBlocksHomepageBookmark'
+          title?: string | null
+          headline?: string | null
+          text?: string | null
+          variant?: string | null
+          link?: {
+            __typename?: 'ComponentBlocksBookmarkLink'
+            title?: string | null
+            href?: string | null
+          } | null
+          picture?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          } | null
+        } | null
+        bookmarkUkraine?: {
+          __typename?: 'ComponentBlocksHomepageBookmark'
+          title?: string | null
+          headline?: string | null
+          text?: string | null
+          variant?: string | null
+          link?: {
+            __typename?: 'ComponentBlocksBookmarkLink'
+            title?: string | null
+            href?: string | null
+          } | null
+          picture?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
 }
 
-export type HomepageHeaderFragment = {
-  __typename?: 'ComponentBlocksHomepageHeader'
-  headline: string
-  picture?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      attributes?: {
-        __typename?: 'UploadFile'
-        url: string
-        height?: number | null
-        width?: number | null
-      } | null
-    } | null
-  } | null
-  mobilePicture?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      attributes?: { __typename?: 'UploadFile'; url: string } | null
-    } | null
-  } | null
-}
-
-export type HomepagePostBlockFragment = {
-  __typename?: 'ComponentBlocksHomepagePost'
+export type HomepageBookmarkFragment = {
+  __typename?: 'ComponentBlocksHomepageBookmark'
   title?: string | null
-  slug?: string | null
-  plausibleId?: string | null
-  image?: {
+  headline?: string | null
+  text?: string | null
+  variant?: string | null
+  link?: {
+    __typename?: 'ComponentBlocksBookmarkLink'
+    title?: string | null
+    href?: string | null
+  } | null
+  picture?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
@@ -7151,142 +6847,6 @@ export type PageBySlugQuery = {
         } | null
         pageHeaderSections?: Array<
           | {
-              __typename: 'ComponentSectionsFeaturedBlogPosts'
-              id: string
-              first_blog?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'BlogPost'
-                    slug?: string | null
-                    title?: string | null
-                    excerpt?: string | null
-                    date_added?: any | null
-                    publishedAt?: any | null
-                    updatedAt?: any | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    tag?: {
-                      __typename?: 'TagEntityResponse'
-                      data?: {
-                        __typename?: 'TagEntity'
-                        attributes?: {
-                          __typename?: 'Tag'
-                          title?: string | null
-                          pageCategory?: {
-                            __typename?: 'PageCategoryEntityResponse'
-                            data?: {
-                              __typename?: 'PageCategoryEntity'
-                              attributes?: {
-                                __typename?: 'PageCategory'
-                                title?: string | null
-                                color?: Enum_Pagecategory_Color | null
-                              } | null
-                            } | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-              second_blog?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'BlogPost'
-                    slug?: string | null
-                    title?: string | null
-                    excerpt?: string | null
-                    date_added?: any | null
-                    publishedAt?: any | null
-                    updatedAt?: any | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    tag?: {
-                      __typename?: 'TagEntityResponse'
-                      data?: {
-                        __typename?: 'TagEntity'
-                        attributes?: {
-                          __typename?: 'Tag'
-                          title?: string | null
-                          pageCategory?: {
-                            __typename?: 'PageCategoryEntityResponse'
-                            data?: {
-                              __typename?: 'PageCategoryEntity'
-                              attributes?: {
-                                __typename?: 'PageCategory'
-                                title?: string | null
-                                color?: Enum_Pagecategory_Color | null
-                              } | null
-                            } | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-              third_blog?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'BlogPost'
-                    slug?: string | null
-                    title?: string | null
-                    excerpt?: string | null
-                    date_added?: any | null
-                    publishedAt?: any | null
-                    updatedAt?: any | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    tag?: {
-                      __typename?: 'TagEntityResponse'
-                      data?: {
-                        __typename?: 'TagEntity'
-                        attributes?: {
-                          __typename?: 'Tag'
-                          title?: string | null
-                          pageCategory?: {
-                            __typename?: 'PageCategoryEntityResponse'
-                            data?: {
-                              __typename?: 'PageCategoryEntity'
-                              attributes?: {
-                                __typename?: 'PageCategory'
-                                title?: string | null
-                                color?: Enum_Pagecategory_Color | null
-                              } | null
-                            } | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            }
-          | {
               __typename: 'ComponentSectionsSubpageList'
               id: string
               subpageList?: Array<{
@@ -8133,142 +7693,6 @@ export type PageEntityFragment = {
       }>
     } | null
     pageHeaderSections?: Array<
-      | {
-          __typename: 'ComponentSectionsFeaturedBlogPosts'
-          id: string
-          first_blog?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'BlogPost'
-                slug?: string | null
-                title?: string | null
-                excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
-                updatedAt?: any | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                tag?: {
-                  __typename?: 'TagEntityResponse'
-                  data?: {
-                    __typename?: 'TagEntity'
-                    attributes?: {
-                      __typename?: 'Tag'
-                      title?: string | null
-                      pageCategory?: {
-                        __typename?: 'PageCategoryEntityResponse'
-                        data?: {
-                          __typename?: 'PageCategoryEntity'
-                          attributes?: {
-                            __typename?: 'PageCategory'
-                            title?: string | null
-                            color?: Enum_Pagecategory_Color | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-          second_blog?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'BlogPost'
-                slug?: string | null
-                title?: string | null
-                excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
-                updatedAt?: any | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                tag?: {
-                  __typename?: 'TagEntityResponse'
-                  data?: {
-                    __typename?: 'TagEntity'
-                    attributes?: {
-                      __typename?: 'Tag'
-                      title?: string | null
-                      pageCategory?: {
-                        __typename?: 'PageCategoryEntityResponse'
-                        data?: {
-                          __typename?: 'PageCategoryEntity'
-                          attributes?: {
-                            __typename?: 'PageCategory'
-                            title?: string | null
-                            color?: Enum_Pagecategory_Color | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-          third_blog?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'BlogPost'
-                slug?: string | null
-                title?: string | null
-                excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
-                updatedAt?: any | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                tag?: {
-                  __typename?: 'TagEntityResponse'
-                  data?: {
-                    __typename?: 'TagEntity'
-                    attributes?: {
-                      __typename?: 'Tag'
-                      title?: string | null
-                      pageCategory?: {
-                        __typename?: 'PageCategoryEntityResponse'
-                        data?: {
-                          __typename?: 'PageCategoryEntity'
-                          attributes?: {
-                            __typename?: 'PageCategory'
-                            title?: string | null
-                            color?: Enum_Pagecategory_Color | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        }
       | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
@@ -9864,143 +9288,6 @@ export type SubpageListPageHeaderSectionFragment = {
   } | null> | null
 }
 
-type PageHeaderSections_ComponentSectionsFeaturedBlogPosts_Fragment = {
-  __typename: 'ComponentSectionsFeaturedBlogPosts'
-  id: string
-  first_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  second_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  third_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-}
-
 type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
   __typename: 'ComponentSectionsSubpageList'
   id: string
@@ -10027,7 +9314,6 @@ type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
 type PageHeaderSections_Error_Fragment = { __typename: 'Error' }
 
 export type PageHeaderSectionsFragment =
-  | PageHeaderSections_ComponentSectionsFeaturedBlogPosts_Fragment
   | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
@@ -11019,41 +10305,6 @@ export const AlertFragmentDoc = gql`
     text
   }
 `
-export const HomepagePostBlockFragmentDoc = gql`
-  fragment HomepagePostBlock on ComponentBlocksHomepagePost {
-    title
-    slug
-    plausibleId
-    image {
-      data {
-        attributes {
-          url
-        }
-      }
-    }
-  }
-`
-export const HomepageHeaderFragmentDoc = gql`
-  fragment HomepageHeader on ComponentBlocksHomepageHeader {
-    headline
-    picture {
-      data {
-        attributes {
-          url
-          height
-          width
-        }
-      }
-    }
-    mobilePicture {
-      data {
-        attributes {
-          url
-        }
-      }
-    }
-  }
-`
 export const HomepageHighlightsItemFragmentDoc = gql`
   fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
     link {
@@ -11121,31 +10372,33 @@ export const HomepageInbaFragmentDoc = gql`
     content
   }
 `
+export const HomepageBookmarkFragmentDoc = gql`
+  fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
+    title
+    headline
+    text
+    link {
+      title
+      href
+    }
+    picture {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
+    variant
+  }
+`
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on HomepageEntity {
     id
     attributes {
       updatedAt
       createdAt
-      title
       metaTitle
       metaDescription
-      posts {
-        ...HomepagePostBlock
-      }
-      right_highlight {
-        data {
-          ...LatestBlogPostEntity
-        }
-      }
-      left_highlight {
-        data {
-          ...LatestBlogPostEntity
-        }
-      }
-      header {
-        ...HomepageHeader
-      }
       welcomeHeadline
       welcomeMedia {
         data {
@@ -11186,60 +10439,23 @@ export const HomepageEntityFragmentDoc = gql`
       }
       inbaUrl
       cards {
-        title
-        headline
-        text
-        link {
-          title
-          href
-        }
-        picture {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        variant
+        ...HomepageBookmark
       }
-      topServices {
-        title
-        services {
-          ...TopServicesItem
-        }
+      bookmarkTourists {
+        ...HomepageBookmark
       }
-      inba {
-        title
-        content
-        images {
-          frontImage {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          rearImage {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-        link
+      bookmarkUkraine {
+        ...HomepageBookmark
       }
     }
   }
-  ${HomepagePostBlockFragmentDoc}
-  ${LatestBlogPostEntityFragmentDoc}
-  ${HomepageHeaderFragmentDoc}
   ${ImageSrcEntityFragmentDoc}
   ${HomepageHighlightsItemFragmentDoc}
   ${HomepageTabsFragmentDoc}
   ${HomepageMayorAndCouncilFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
+  ${HomepageBookmarkFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
@@ -11250,6 +10466,24 @@ export const LocalizationFragmentDoc = gql`
       }
     }
   }
+`
+export const SubpageListPageHeaderSectionFragmentDoc = gql`
+  fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
+    id
+    subpageList(pagination: { limit: -1 }) {
+      ...PageLinkBlock
+    }
+  }
+  ${PageLinkBlockFragmentDoc}
+`
+export const PageHeaderSectionsFragmentDoc = gql`
+  fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
+    __typename
+    ... on ComponentSectionsSubpageList {
+      ...SubpageListPageHeaderSection
+    }
+  }
+  ${SubpageListPageHeaderSectionFragmentDoc}
 `
 export const TagEntityFragmentDoc = gql`
   fragment TagEntity on TagEntity {
@@ -11285,16 +10519,7 @@ export const PageEntityFragmentDoc = gql`
         ...Localization
       }
       pageHeaderSections {
-        __typename
-        ... on ComponentSectionsSubpageList {
-          id
-          subpageList(pagination: { limit: 50 }) {
-            ...PageLinkBlock
-          }
-        }
-        ... on ComponentSectionsFeaturedBlogPosts {
-          ...FeaturedBlogPostsSection
-        }
+        ...PageHeaderSections
       }
       pageCategory {
         data {
@@ -11317,32 +10542,9 @@ export const PageEntityFragmentDoc = gql`
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
   ${LocalizationFragmentDoc}
-  ${PageLinkBlockFragmentDoc}
-  ${FeaturedBlogPostsSectionFragmentDoc}
+  ${PageHeaderSectionsFragmentDoc}
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
-`
-export const SubpageListPageHeaderSectionFragmentDoc = gql`
-  fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
-    id
-    subpageList(pagination: { limit: -1 }) {
-      ...PageLinkBlock
-    }
-  }
-  ${PageLinkBlockFragmentDoc}
-`
-export const PageHeaderSectionsFragmentDoc = gql`
-  fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
-    __typename
-    ... on ComponentSectionsSubpageList {
-      ...SubpageListPageHeaderSection
-    }
-    ... on ComponentSectionsFeaturedBlogPosts {
-      ...FeaturedBlogPostsSection
-    }
-  }
-  ${SubpageListPageHeaderSectionFragmentDoc}
-  ${FeaturedBlogPostsSectionFragmentDoc}
 `
 export const BlogPostBySlugDocument = gql`
   query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {

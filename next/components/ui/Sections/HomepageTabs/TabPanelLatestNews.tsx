@@ -21,19 +21,16 @@ const TabPanelLatestNews = () => {
 
   const { homepage, blogPosts } = useHomepageContext()
   // TODO replace by tabs.leftNewsItem and tabs.righNewsItem
-  const {
-    left_highlight: leftHighlight,
-    right_highlight: rightHighlight,
-    tabs,
-  } = homepage?.attributes ?? {}
+  const { tabs } = homepage?.attributes ?? {}
+  const { leftNewsItem, rightNewsItem } = tabs ?? {}
   const latestPostsFiltered =
     blogPosts
       ?.filter(isDefined)
-      .filter((post) => post.id !== leftHighlight?.data?.id && post.id !== rightHighlight?.data?.id)
+      .filter((post) => post.id !== leftNewsItem?.data?.id && post.id !== rightNewsItem?.data?.id)
       .slice(0, 5) ?? []
 
   const allPosts =
-    [leftHighlight?.data, rightHighlight?.data, ...latestPostsFiltered]
+    [leftNewsItem?.data, rightNewsItem?.data, ...latestPostsFiltered]
       .filter(isDefined)
       .slice(0, 7) ?? []
 
@@ -70,7 +67,7 @@ const TabPanelLatestNews = () => {
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
-          {[leftHighlight?.data, rightHighlight?.data].filter(isDefined).map((post, index) => {
+          {[leftNewsItem?.data, rightNewsItem?.data].filter(isDefined).map((post, index) => {
             const { title, slug, coverImage, date_added, publishedAt, tag, excerpt } =
               post.attributes ?? {}
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color

@@ -3,25 +3,8 @@ fragment HomepageEntity on HomepageEntity {
   attributes {
     updatedAt
     createdAt
-    title
     metaTitle
     metaDescription
-    posts {
-      ...HomepagePostBlock
-    }
-    right_highlight {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    left_highlight {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    header {
-      ...HomepageHeader
-    }
     welcomeHeadline
     welcomeMedia {
       data {
@@ -62,48 +45,13 @@ fragment HomepageEntity on HomepageEntity {
     }
     inbaUrl
     cards {
-      title
-      headline
-      text
-      link {
-        title
-        href
-      }
-      picture {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      variant
+      ...HomepageBookmark
     }
-    topServices {
-      title
-      services {
-        ...TopServicesItem
-      }
+    bookmarkTourists {
+      ...HomepageBookmark
     }
-    inba {
-      title
-      content
-      images {
-        frontImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        rearImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-      }
-      link
+    bookmarkUkraine {
+      ...HomepageBookmark
     }
   }
 }
@@ -116,38 +64,22 @@ query Homepage($locale: I18NLocaleCode!) {
   }
 }
 
-fragment HomepageHeader on ComponentBlocksHomepageHeader {
+fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
+  title
   headline
+  text
+  link {
+    title
+    href
+  }
   picture {
     data {
       attributes {
         url
-        height
-        width
       }
     }
   }
-  mobilePicture {
-    data {
-      attributes {
-        url
-      }
-    }
-  }
-}
-
-# remove
-fragment HomepagePostBlock on ComponentBlocksHomepagePost {
-  title
-  slug
-  plausibleId
-  image {
-    data {
-      attributes {
-        url
-      }
-    }
-  }
+  variant
 }
 
 fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {

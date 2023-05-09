@@ -112,7 +112,6 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.featured-blog-posts",
         "sections.subpage-list"
       ]
     },

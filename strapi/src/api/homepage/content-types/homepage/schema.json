@@ -16,46 +16,6 @@
     }
   },
   "attributes": {
-    "posts": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blocks.homepage-post",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "left_highlight": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::blog-post.blog-post"
-    },
-    "right_highlight": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::blog-post.blog-post"
-    },
-    "header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "blocks.homepage-header",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "cards": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blocks.homepage-bookmark",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "metaTitle": {
       "pluginOptions": {
         "i18n": {
@@ -63,6 +23,15 @@
         }
       },
       "type": "string",
+      "required": true
+    },
+    "metaDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
       "required": true
     },
     "welcomeHeadline": {
@@ -97,6 +66,38 @@
       },
       "component": "sections.homepage-highlights"
     },
+    "tabs": {
+      "displayName": "homepage tabs",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.homepage-tabs"
+    },
+    "mayorAndCouncil": {
+      "displayName": "homepage mayor and council",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.homepage-mayor-and-council"
+    },
+    "topServices": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.top-services"
+    },
     "inba": {
       "type": "component",
       "repeatable": false,
@@ -120,14 +121,6 @@
         }
       }
     },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "inbaRearImage": {
       "type": "media",
       "multiple": false,
@@ -150,8 +143,7 @@
       "type": "string",
       "required": false
     },
-    "tabs": {
-      "displayName": "homepage tabs",
+    "bookmarkTourists": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -159,10 +151,9 @@
           "localized": true
         }
       },
-      "component": "sections.homepage-tabs"
+      "component": "blocks.homepage-bookmark"
     },
-    "mayorAndCouncil": {
-      "displayName": "homepage mayor and council",
+    "bookmarkUkraine": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -170,26 +161,17 @@
           "localized": true
         }
       },
-      "component": "sections.homepage-mayor-and-council"
+      "component": "blocks.homepage-bookmark"
     },
-    "metaDescription": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text",
-      "required": true
-    },
-    "topServices": {
+    "cards": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
+      "component": "blocks.homepage-bookmark",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "component": "sections.top-services"
+      }
     }
   }
 }
