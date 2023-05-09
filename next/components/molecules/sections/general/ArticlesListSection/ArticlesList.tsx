@@ -1,8 +1,10 @@
 import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
-import { NewsCard } from '@bratislava/ui-bratislava/NewsCard/NewsCard'
 import { Pagination } from '@bratislava/ui-bratislava/Pagination/Pagination'
+import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { client } from '@utils/gql'
+import { getNumericLocalDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
@@ -165,22 +167,35 @@ const ArticlesList = ({
     <div>
       <div className="text-h2">{title}</div>
       <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3">
-        {data.map((article, index) => (
-          <NewsCard
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            coverImage={article?.attributes?.coverImage}
-            coverImageSizes={generateImageSizes({ sm: '50vw', lg: '33vw', default: '100vw' })}
-            title={article.attributes?.title}
-            tag={article?.attributes?.tag}
-            date_added={article.attributes?.date_added}
-            publishedAt={article.attributes?.publishedAt}
-            updatedAt={article.attributes?.updatedAt}
-            excerpt={article.attributes?.excerpt}
-            readMoreText={t('readMore')}
-            slug={article?.attributes?.slug}
-          />
-        ))}
+        {data.map((blogPost, index) => {
+          const {
+            title: blogPostTitle,
+            excerpt,
+            slug,
+            coverImage,
+            tag,
+            date_added,
+            publishedAt,
+          } = blogPost.attributes ?? {}
+          const tagTitle = tag?.data?.attributes?.title
+          const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
+
+          return (
+            <BlogPostCard
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              variant="shadow"
+              imgSrc={coverImage?.data?.attributes?.url}
+              imgSizes={generateImageSizes({ sm: '50vw', lg: '33vw', default: '100vw' })}
+              title={blogPostTitle ?? ''}
+              tag={tagTitle ?? undefined}
+              date={getNumericLocalDate(date_added ?? publishedAt)}
+              text={excerpt ?? undefined}
+              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+              style={getCategoryColorLocalStyle({ color: tagColor })}
+            />
+          )
+        })}
       </div>
       {totalArticles > itemsPerPage ? (
         <div className="mt-10 lg:mt-14">

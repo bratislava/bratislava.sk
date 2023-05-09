@@ -15,6 +15,7 @@ type Props = {
   tag?: string
 } & CardBaseProps
 
+// TODO this component was created as a quickfix for Featured Blog Posts, it should be revisited or removed
 const BlogPostHorizontalCard = ({
   imgSrc,
   imgSizes,
