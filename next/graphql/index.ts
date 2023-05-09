@@ -493,14 +493,6 @@ export type ComponentBlocksHomepageBookmarkInput = {
   variant?: InputMaybe<Scalars['String']>
 }
 
-export type ComponentBlocksHomepageHeader = {
-  __typename?: 'ComponentBlocksHomepageHeader'
-  headline: Scalars['String']
-  id: Scalars['ID']
-  mobilePicture?: Maybe<UploadFileEntityResponse>
-  picture?: Maybe<UploadFileEntityResponse>
-}
-
 export type ComponentBlocksHomepageHighlightsItem = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
   id: Scalars['ID']
@@ -519,15 +511,6 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
   id?: InputMaybe<Scalars['ID']>
   image?: InputMaybe<Scalars['ID']>
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
-}
-
-export type ComponentBlocksHomepagePost = {
-  __typename?: 'ComponentBlocksHomepagePost'
-  id: Scalars['ID']
-  image?: Maybe<UploadFileEntityResponse>
-  plausibleId?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
 }
 
 export type ComponentBlocksIconWithTitleAndDescription = {
@@ -557,13 +540,6 @@ export type ComponentBlocksInBaInput = {
   content?: InputMaybe<Scalars['String']>
   id?: InputMaybe<Scalars['ID']>
   title?: InputMaybe<Scalars['String']>
-}
-
-export type ComponentBlocksInBaPictures = {
-  __typename?: 'ComponentBlocksInBaPictures'
-  frontImage?: Maybe<UploadFileEntityResponse>
-  id: Scalars['ID']
-  rearImage?: Maybe<UploadFileEntityResponse>
 }
 
 export type ComponentBlocksListItem = {
@@ -1814,12 +1790,9 @@ export type GenericMorph =
   | ComponentBlocksFooterSection
   | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
-  | ComponentBlocksHomepageHeader
   | ComponentBlocksHomepageHighlightsItem
-  | ComponentBlocksHomepagePost
   | ComponentBlocksIconWithTitleAndDescription
   | ComponentBlocksInBa
-  | ComponentBlocksInBaPictures
   | ComponentBlocksListItem
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
@@ -5378,6 +5351,44 @@ export type HomepageEntityFragment = {
         } | null
       } | null
     } | null> | null
+    bookmarkTourists?: {
+      __typename?: 'ComponentBlocksHomepageBookmark'
+      title?: string | null
+      headline?: string | null
+      text?: string | null
+      variant?: string | null
+      link?: {
+        __typename?: 'ComponentBlocksBookmarkLink'
+        title?: string | null
+        href?: string | null
+      } | null
+      picture?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          attributes?: { __typename?: 'UploadFile'; url: string } | null
+        } | null
+      } | null
+    } | null
+    bookmarkUkraine?: {
+      __typename?: 'ComponentBlocksHomepageBookmark'
+      title?: string | null
+      headline?: string | null
+      text?: string | null
+      variant?: string | null
+      link?: {
+        __typename?: 'ComponentBlocksBookmarkLink'
+        title?: string | null
+        href?: string | null
+      } | null
+      picture?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          attributes?: { __typename?: 'UploadFile'; url: string } | null
+        } | null
+      } | null
+    } | null
   } | null
 }
 
@@ -5778,41 +5789,61 @@ export type HomepageQuery = {
             } | null
           } | null
         } | null> | null
+        bookmarkTourists?: {
+          __typename?: 'ComponentBlocksHomepageBookmark'
+          title?: string | null
+          headline?: string | null
+          text?: string | null
+          variant?: string | null
+          link?: {
+            __typename?: 'ComponentBlocksBookmarkLink'
+            title?: string | null
+            href?: string | null
+          } | null
+          picture?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          } | null
+        } | null
+        bookmarkUkraine?: {
+          __typename?: 'ComponentBlocksHomepageBookmark'
+          title?: string | null
+          headline?: string | null
+          text?: string | null
+          variant?: string | null
+          link?: {
+            __typename?: 'ComponentBlocksBookmarkLink'
+            title?: string | null
+            href?: string | null
+          } | null
+          picture?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
 }
 
-export type HomepageHeaderFragment = {
-  __typename?: 'ComponentBlocksHomepageHeader'
-  headline: string
-  picture?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      attributes?: {
-        __typename?: 'UploadFile'
-        url: string
-        height?: number | null
-        width?: number | null
-      } | null
-    } | null
-  } | null
-  mobilePicture?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      attributes?: { __typename?: 'UploadFile'; url: string } | null
-    } | null
-  } | null
-}
-
-export type HomepagePostBlockFragment = {
-  __typename?: 'ComponentBlocksHomepagePost'
+export type HomepageBookmarkFragment = {
+  __typename?: 'ComponentBlocksHomepageBookmark'
   title?: string | null
-  slug?: string | null
-  plausibleId?: string | null
-  image?: {
+  headline?: string | null
+  text?: string | null
+  variant?: string | null
+  link?: {
+    __typename?: 'ComponentBlocksBookmarkLink'
+    title?: string | null
+    href?: string | null
+  } | null
+  picture?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
@@ -10754,6 +10785,25 @@ export const HomepageInbaFragmentDoc = gql`
     content
   }
 `
+export const HomepageBookmarkFragmentDoc = gql`
+  fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
+    title
+    headline
+    text
+    link {
+      title
+      href
+    }
+    picture {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
+    variant
+  }
+`
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on HomepageEntity {
     id
@@ -10802,31 +10852,13 @@ export const HomepageEntityFragmentDoc = gql`
       }
       inbaUrl
       cards {
-        title
-        headline
-        text
-        link {
-          title
-          href
-        }
-        picture {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        variant
+        ...HomepageBookmark
       }
-      topServices {
-        title
-        services {
-          ...TopServicesItem
-        }
+      bookmarkTourists {
+        ...HomepageBookmark
       }
-      inba {
-        title
-        content
+      bookmarkUkraine {
+        ...HomepageBookmark
       }
     }
   }
@@ -10836,41 +10868,7 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepageMayorAndCouncilFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
-`
-export const HomepageHeaderFragmentDoc = gql`
-  fragment HomepageHeader on ComponentBlocksHomepageHeader {
-    headline
-    picture {
-      data {
-        attributes {
-          url
-          height
-          width
-        }
-      }
-    }
-    mobilePicture {
-      data {
-        attributes {
-          url
-        }
-      }
-    }
-  }
-`
-export const HomepagePostBlockFragmentDoc = gql`
-  fragment HomepagePostBlock on ComponentBlocksHomepagePost {
-    title
-    slug
-    plausibleId
-    image {
-      data {
-        attributes {
-          url
-        }
-      }
-    }
-  }
+  ${HomepageBookmarkFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
