@@ -16,7 +16,7 @@ type Props = {
 const HomepageHorizontalCard = ({ imgSrc, imgSizes, title, linkProps, ...rest }: Props) => {
   return (
     <CardBase className="h-[196px] flex-row rounded-lg" {...rest}>
-      <div className="relative aspect-[16_/_10] w-[240px] shrink-0">
+      <div className="relative aspect-16/10 w-[240px] shrink-0">
         {imgSrc ? (
           <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />
         ) : (

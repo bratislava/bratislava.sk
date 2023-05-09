@@ -84,16 +84,7 @@ fragment PageEntity on PageEntity {
         }
       }
       ... on ComponentSectionsFeaturedBlogPosts {
-        id
-        first_blog {
-          ...BlogSection
-        }
-        second_blog {
-          ...BlogSection
-        }
-        third_blog {
-          ...BlogSection
-        }
+        ...FeaturedBlogPostsSection
       }
     }
     pageCategory {
@@ -112,37 +103,6 @@ fragment PageEntity on PageEntity {
     }
   }
   ...PageParentPages
-}
-
-fragment BlogSection on BlogPostEntityResponse {
-  data {
-    attributes {
-      title
-      publishedAt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      tag {
-        data {
-          attributes {
-            pageCategory {
-              data {
-                attributes {
-                  color
-                  shortTitle
-                }
-              }
-            }
-          }
-        }
-      }
-      slug
-    }
-  }
 }
 
 fragment ParentPage on Page {

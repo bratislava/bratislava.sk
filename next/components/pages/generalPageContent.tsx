@@ -25,9 +25,6 @@ export interface GeneralPageProps {
 const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const pageId = page.id
 
-  const hasFeaturedBlogs = page.attributes?.pageHeaderSections
-    ?.filter(isDefined)
-    .some((section) => section.__typename === 'ComponentSectionsFeaturedBlogPosts')
   const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
 
   const isClient = useIsClient()
@@ -51,7 +48,6 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         subtext={page.attributes?.subtext}
         breadcrumbs={breadcrumbs}
         buttons={page.attributes?.headerLinks?.filter(isDefined)}
-        className={hasFeaturedBlogs ? 'mb-[110px] lg:mb-[266px]' : null}
         imageSrc={page.attributes?.pageBackgroundImage?.data?.attributes?.url}
       >
         <PageHeaderSections sections={page.attributes?.pageHeaderSections} />

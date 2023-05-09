@@ -270,6 +270,9 @@ module.exports = {
         104: '26rem', // 416px
         200: '50rem', // 800px
       },
+      aspectRatio: {
+        '16/10': '16 / 10',
+      },
     },
   },
 }
