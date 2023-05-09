@@ -16,7 +16,7 @@ export const WelcomeHomepageSection = () => {
   const { menu } = useGeneralContext()
   const { homepage } = useHomepageContext()
 
-  const homepageHeader = homepage?.attributes?.header
+  const { welcomeHeadline, welcomeMedia } = homepage?.attributes ?? {}
 
   const menus = useMemo(() => {
     return getParsedMenus(menu, t('NavMenu.more'))
@@ -31,7 +31,7 @@ export const WelcomeHomepageSection = () => {
           <div className="z-[1] flex grow flex-col gap-8 lg:absolute">
             {/* TODO change to font size from config */}
             <h1 className="text-h2 flex flex-col whitespace-pre-wrap font-bold text-category-600 sm:text-[40px] sm:leading-[52px]">
-              {homepageHeader?.headline}
+              {welcomeHeadline}
             </h1>
             <HomePageSearch isOpen={isSearchOpen} setOpen={setSearchOpen} />
           </div>
@@ -43,15 +43,15 @@ export const WelcomeHomepageSection = () => {
               },
             )}
           >
-            <div className="w-full max-w-[721px] sm:max-w-[647px]">
+            <div className="relative w-full max-w-[721px] sm:h-[378px] sm:w-[696px]">
               <Image
-                width={homepageHeader?.picture?.data?.attributes?.width ?? undefined}
-                height={homepageHeader?.picture?.data?.attributes?.height ?? undefined}
-                src={homepageHeader?.picture?.data?.attributes?.url ?? ''}
+                src={welcomeMedia?.data?.attributes?.url ?? ''}
                 alt=""
                 priority
                 quality={100}
                 sizes={generateImageSizes({ default: '100vw', sm: '647px' })}
+                fill
+                className="object-contain"
               />
             </div>
           </div>
@@ -59,6 +59,7 @@ export const WelcomeHomepageSection = () => {
         <div className="relative mb-5 w-full lg:mb-14">
           <div className="relative md:grid md:grid-cols-3 md:gap-x-4 lg:grid-cols-6 lg:gap-x-6">
             {menus?.map((item, index) => (
+              // eslint-disable-next-line react/no-array-index-key
               <WelcomeCard key={index} item={item} />
             ))}
           </div>

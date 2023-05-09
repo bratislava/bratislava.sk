@@ -12,10 +12,10 @@
     "text": {
       "type": "text"
     },
-    "highlights": {
+    "cards": {
       "displayName": "homepage highlights item",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "blocks.homepage-highlights-item"
     }
   }

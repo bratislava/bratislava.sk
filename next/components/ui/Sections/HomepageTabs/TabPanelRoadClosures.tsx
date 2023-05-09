@@ -7,6 +7,7 @@ import Carousel from '@components/organisms/Carousel/Carousel'
 import Iframe from '@components/ui/Iframe/Iframe'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
@@ -20,10 +21,8 @@ const TabPanelRoadClosures = () => {
   const t = useTranslations('HomepageTabs')
   const locale = useLocale()
 
-  const roadClosuresAddress = '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery'
-  const roadClosuresAddressNew = '/doprava-a-mapy/sprava-a-udrzba-komunikacii'
-
-  const { rozkopavkyBlogPosts } = useHomepageContext()
+  const { homepage, rozkopavkyBlogPosts } = useHomepageContext()
+  const { tabs } = homepage?.attributes ?? {}
   const postsFiltered = rozkopavkyBlogPosts?.filter(isDefined) ?? []
 
   return (
@@ -39,15 +38,15 @@ const TabPanelRoadClosures = () => {
             allowFullscreen={false}
           />
         </div>
-        <div className="flex justify-center">
-          <Button
-            href={roadClosuresAddressNew}
-            variant="category-outline"
-            endIcon={<ArrowRightIcon />}
-          >
-            {t('moreInfo')}
-          </Button>
-        </div>
+        {tabs?.roadClosuresPageLink ? (
+          <div className="flex justify-center">
+            <Button
+              variant="category-outline"
+              endIcon={<ArrowRightIcon />}
+              {...getCommonLinkProps(tabs.roadClosuresPageLink)}
+            />
+          </div>
+        ) : null}
       </div>
       {/* TODO to be removed */}
       <Carousel
@@ -80,7 +79,7 @@ const TabPanelRoadClosures = () => {
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
-          {postsFiltered.slice(0, 2).map((post) => {
+          {postsFiltered.slice(0, 2).map((post, index) => {
             const { title, slug, coverImage, date_added, publishedAt, tag, excerpt } =
               post.attributes ?? {}
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
@@ -88,6 +87,8 @@ const TabPanelRoadClosures = () => {
 
             return (
               <BlogPostCard
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="shadow"
                 date={getNumericLocalDate(date_added ?? publishedAt)}
@@ -125,11 +126,15 @@ const TabPanelRoadClosures = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">
-        <Button href={roadClosuresAddress} variant="category-outline" endIcon={<ArrowRightIcon />}>
-          {t('seeMoreRoadClosures')}
-        </Button>
-      </div>
+      {tabs?.roadClosuresPageLink ? (
+        <div className="flex justify-center">
+          <Button
+            variant="category-outline"
+            endIcon={<ArrowRightIcon />}
+            {...getCommonLinkProps(tabs.roadClosuresPageLink)}
+          />
+        </div>
+      ) : null}
     </TabPanel>
   )
 }

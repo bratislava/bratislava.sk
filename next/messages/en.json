@@ -181,12 +181,11 @@
       "RoadClosures": "Road closures",
       "Disclosure": "Public information"
     },
+    "aria": {
+      "tabListName": "Actual information"
+    },
     "readMore": "Read more",
-    "readMoreNewsText": "See all news",
-    "seeMoreRoadClosures": "See all road closures",
-    "allNewsLink": "/city-of-bratislava/transparent-city/news",
     "files": "Files",
-    "toOfficialBoard": "To the official board",
     "moreInfo": "More info",
     "allInformationOnSite": "All news can be find on site"
   },
