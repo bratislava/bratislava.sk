@@ -84,7 +84,7 @@ fragment PageEntity on PageEntity {
         }
       }
       ... on ComponentSectionsFeaturedBlogPosts {
-        ...FeaturedBlogPostsPageHeaderSection
+        ...FeaturedBlogPostsSection
       }
     }
     pageCategory {

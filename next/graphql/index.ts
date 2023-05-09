@@ -2758,6 +2758,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsContact
   | ComponentSectionsDivider
   | ComponentSectionsDocumentList
+  | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
   | ComponentSectionsIconTitleDesc
@@ -6791,6 +6792,142 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
+              __typename: 'ComponentSectionsFeaturedBlogPosts'
+              id: string
+              first_blog?: {
+                __typename?: 'BlogPostEntityResponse'
+                data?: {
+                  __typename?: 'BlogPostEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'BlogPost'
+                    slug?: string | null
+                    title?: string | null
+                    excerpt?: string | null
+                    date_added?: any | null
+                    publishedAt?: any | null
+                    updatedAt?: any | null
+                    coverImage?: {
+                      __typename?: 'UploadFileEntityResponse'
+                      data?: {
+                        __typename?: 'UploadFileEntity'
+                        attributes?: { __typename?: 'UploadFile'; url: string } | null
+                      } | null
+                    } | null
+                    tag?: {
+                      __typename?: 'TagEntityResponse'
+                      data?: {
+                        __typename?: 'TagEntity'
+                        attributes?: {
+                          __typename?: 'Tag'
+                          title?: string | null
+                          pageCategory?: {
+                            __typename?: 'PageCategoryEntityResponse'
+                            data?: {
+                              __typename?: 'PageCategoryEntity'
+                              attributes?: {
+                                __typename?: 'PageCategory'
+                                title?: string | null
+                                color?: Enum_Pagecategory_Color | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+              second_blog?: {
+                __typename?: 'BlogPostEntityResponse'
+                data?: {
+                  __typename?: 'BlogPostEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'BlogPost'
+                    slug?: string | null
+                    title?: string | null
+                    excerpt?: string | null
+                    date_added?: any | null
+                    publishedAt?: any | null
+                    updatedAt?: any | null
+                    coverImage?: {
+                      __typename?: 'UploadFileEntityResponse'
+                      data?: {
+                        __typename?: 'UploadFileEntity'
+                        attributes?: { __typename?: 'UploadFile'; url: string } | null
+                      } | null
+                    } | null
+                    tag?: {
+                      __typename?: 'TagEntityResponse'
+                      data?: {
+                        __typename?: 'TagEntity'
+                        attributes?: {
+                          __typename?: 'Tag'
+                          title?: string | null
+                          pageCategory?: {
+                            __typename?: 'PageCategoryEntityResponse'
+                            data?: {
+                              __typename?: 'PageCategoryEntity'
+                              attributes?: {
+                                __typename?: 'PageCategory'
+                                title?: string | null
+                                color?: Enum_Pagecategory_Color | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+              third_blog?: {
+                __typename?: 'BlogPostEntityResponse'
+                data?: {
+                  __typename?: 'BlogPostEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'BlogPost'
+                    slug?: string | null
+                    title?: string | null
+                    excerpt?: string | null
+                    date_added?: any | null
+                    publishedAt?: any | null
+                    updatedAt?: any | null
+                    coverImage?: {
+                      __typename?: 'UploadFileEntityResponse'
+                      data?: {
+                        __typename?: 'UploadFileEntity'
+                        attributes?: { __typename?: 'UploadFile'; url: string } | null
+                      } | null
+                    } | null
+                    tag?: {
+                      __typename?: 'TagEntityResponse'
+                      data?: {
+                        __typename?: 'TagEntity'
+                        attributes?: {
+                          __typename?: 'Tag'
+                          title?: string | null
+                          pageCategory?: {
+                            __typename?: 'PageCategoryEntityResponse'
+                            data?: {
+                              __typename?: 'PageCategoryEntity'
+                              attributes?: {
+                                __typename?: 'PageCategory'
+                                title?: string | null
+                                color?: Enum_Pagecategory_Color | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            }
+          | {
               __typename: 'ComponentSectionsFileList'
               hasBackground?: boolean | null
               fileList?: Array<{
@@ -7639,6 +7776,142 @@ export type PageEntityFragment = {
                 } | null
               } | null
             }>
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsFeaturedBlogPosts'
+          id: string
+          first_blog?: {
+            __typename?: 'BlogPostEntityResponse'
+            data?: {
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                slug?: string | null
+                title?: string | null
+                excerpt?: string | null
+                date_added?: any | null
+                publishedAt?: any | null
+                updatedAt?: any | null
+                coverImage?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                  } | null
+                } | null
+                tag?: {
+                  __typename?: 'TagEntityResponse'
+                  data?: {
+                    __typename?: 'TagEntity'
+                    attributes?: {
+                      __typename?: 'Tag'
+                      title?: string | null
+                      pageCategory?: {
+                        __typename?: 'PageCategoryEntityResponse'
+                        data?: {
+                          __typename?: 'PageCategoryEntity'
+                          attributes?: {
+                            __typename?: 'PageCategory'
+                            title?: string | null
+                            color?: Enum_Pagecategory_Color | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+          second_blog?: {
+            __typename?: 'BlogPostEntityResponse'
+            data?: {
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                slug?: string | null
+                title?: string | null
+                excerpt?: string | null
+                date_added?: any | null
+                publishedAt?: any | null
+                updatedAt?: any | null
+                coverImage?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                  } | null
+                } | null
+                tag?: {
+                  __typename?: 'TagEntityResponse'
+                  data?: {
+                    __typename?: 'TagEntity'
+                    attributes?: {
+                      __typename?: 'Tag'
+                      title?: string | null
+                      pageCategory?: {
+                        __typename?: 'PageCategoryEntityResponse'
+                        data?: {
+                          __typename?: 'PageCategoryEntity'
+                          attributes?: {
+                            __typename?: 'PageCategory'
+                            title?: string | null
+                            color?: Enum_Pagecategory_Color | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+          third_blog?: {
+            __typename?: 'BlogPostEntityResponse'
+            data?: {
+              __typename?: 'BlogPostEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'BlogPost'
+                slug?: string | null
+                title?: string | null
+                excerpt?: string | null
+                date_added?: any | null
+                publishedAt?: any | null
+                updatedAt?: any | null
+                coverImage?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                  } | null
+                } | null
+                tag?: {
+                  __typename?: 'TagEntityResponse'
+                  data?: {
+                    __typename?: 'TagEntity'
+                    attributes?: {
+                      __typename?: 'Tag'
+                      title?: string | null
+                      pageCategory?: {
+                        __typename?: 'PageCategoryEntityResponse'
+                        data?: {
+                          __typename?: 'PageCategoryEntity'
+                          attributes?: {
+                            __typename?: 'PageCategory'
+                            title?: string | null
+                            color?: Enum_Pagecategory_Color | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
           } | null
         }
       | {
@@ -8758,6 +9031,143 @@ export type BannerSectionFragment = {
   } | null
 }
 
+export type FeaturedBlogPostsSectionFragment = {
+  __typename?: 'ComponentSectionsFeaturedBlogPosts'
+  id: string
+  first_blog?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+  second_blog?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+  third_blog?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -9032,6 +9442,143 @@ type Sections_ComponentSectionsDocumentList_Fragment = {
   } | null
 }
 
+type Sections_ComponentSectionsFeaturedBlogPosts_Fragment = {
+  __typename: 'ComponentSectionsFeaturedBlogPosts'
+  id: string
+  first_blog?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+  second_blog?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+  third_blog?: {
+    __typename?: 'BlogPostEntityResponse'
+    data?: {
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        excerpt?: string | null
+        date_added?: any | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+}
+
 type Sections_ComponentSectionsFileList_Fragment = {
   __typename: 'ComponentSectionsFileList'
   hasBackground?: boolean | null
@@ -9274,6 +9821,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsContact_Fragment
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsDocumentList_Fragment
+  | Sections_ComponentSectionsFeaturedBlogPosts_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
   | Sections_ComponentSectionsIconTitleDesc_Fragment
@@ -9314,143 +9862,6 @@ export type SubpageListPageHeaderSectionFragment = {
       } | null
     } | null
   } | null> | null
-}
-
-export type FeaturedBlogPostsPageHeaderSectionFragment = {
-  __typename?: 'ComponentSectionsFeaturedBlogPosts'
-  id: string
-  first_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  second_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  third_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
 }
 
 type PageHeaderSections_ComponentSectionsFeaturedBlogPosts_Fragment = {
@@ -10201,6 +10612,62 @@ export const TimelineSectionFragmentDoc = gql`
   }
   ${TimelineItemBlockFragmentDoc}
 `
+export const LatestBlogPostEntityFragmentDoc = gql`
+  fragment LatestBlogPostEntity on BlogPostEntity {
+    id
+    attributes {
+      slug
+      title
+      excerpt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      date_added
+      publishedAt
+      updatedAt
+      tag {
+        data {
+          attributes {
+            title
+            pageCategory {
+              data {
+                attributes {
+                  title
+                  color
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+export const FeaturedBlogPostsSectionFragmentDoc = gql`
+  fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
+    id
+    first_blog {
+      data {
+        ...LatestBlogPostEntity
+      }
+    }
+    second_blog {
+      data {
+        ...LatestBlogPostEntity
+      }
+    }
+    third_blog {
+      data {
+        ...LatestBlogPostEntity
+      }
+    }
+  }
+  ${LatestBlogPostEntityFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -10273,6 +10740,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsTimeline {
       ...TimelineSection
     }
+    ... on ComponentSectionsFeaturedBlogPosts {
+      ...FeaturedBlogPostsSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DocumentListSectionFragmentDoc}
@@ -10297,6 +10767,7 @@ export const SectionsFragmentDoc = gql`
   ${ComparisonSectionFragmentDoc}
   ${BannerSectionFragmentDoc}
   ${TimelineSectionFragmentDoc}
+  ${FeaturedBlogPostsSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {
@@ -10562,41 +11033,6 @@ export const HomepagePostBlockFragmentDoc = gql`
     }
   }
 `
-export const LatestBlogPostEntityFragmentDoc = gql`
-  fragment LatestBlogPostEntity on BlogPostEntity {
-    id
-    attributes {
-      slug
-      title
-      excerpt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      date_added
-      publishedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
 export const HomepageHeaderFragmentDoc = gql`
   fragment HomepageHeader on ComponentBlocksHomepageHeader {
     headline
@@ -10815,27 +11251,6 @@ export const LocalizationFragmentDoc = gql`
     }
   }
 `
-export const FeaturedBlogPostsPageHeaderSectionFragmentDoc = gql`
-  fragment FeaturedBlogPostsPageHeaderSection on ComponentSectionsFeaturedBlogPosts {
-    id
-    first_blog {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    second_blog {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    third_blog {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-  }
-  ${LatestBlogPostEntityFragmentDoc}
-`
 export const TagEntityFragmentDoc = gql`
   fragment TagEntity on TagEntity {
     id
@@ -10878,7 +11293,7 @@ export const PageEntityFragmentDoc = gql`
           }
         }
         ... on ComponentSectionsFeaturedBlogPosts {
-          ...FeaturedBlogPostsPageHeaderSection
+          ...FeaturedBlogPostsSection
         }
       }
       pageCategory {
@@ -10903,7 +11318,7 @@ export const PageEntityFragmentDoc = gql`
   ${SectionsFragmentDoc}
   ${LocalizationFragmentDoc}
   ${PageLinkBlockFragmentDoc}
-  ${FeaturedBlogPostsPageHeaderSectionFragmentDoc}
+  ${FeaturedBlogPostsSectionFragmentDoc}
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
@@ -10923,11 +11338,11 @@ export const PageHeaderSectionsFragmentDoc = gql`
       ...SubpageListPageHeaderSection
     }
     ... on ComponentSectionsFeaturedBlogPosts {
-      ...FeaturedBlogPostsPageHeaderSection
+      ...FeaturedBlogPostsSection
     }
   }
   ${SubpageListPageHeaderSectionFragmentDoc}
-  ${FeaturedBlogPostsPageHeaderSectionFragmentDoc}
+  ${FeaturedBlogPostsSectionFragmentDoc}
 `
 export const BlogPostBySlugDocument = gql`
   query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {

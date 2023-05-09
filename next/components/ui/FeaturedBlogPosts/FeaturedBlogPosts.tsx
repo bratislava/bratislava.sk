@@ -9,11 +9,11 @@ import { getNumericLocalDate } from '@utils/local-date'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-export interface FeaturedBlogsProps {
+export interface FeaturedBlogPostsProps {
   blogPosts: LatestBlogPostEntityFragment[]
 }
 
-export const FeaturedBlogs = ({ blogPosts }: FeaturedBlogsProps) => {
+export const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
   const t = useTranslations()
 
   const majorBlog = blogPosts?.[0]

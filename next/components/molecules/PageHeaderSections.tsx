@@ -2,7 +2,7 @@ import { PageHeaderSectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
-import FeaturedBlogsPageHeaderSection from './sections/pageHeader/FeaturedBlogsPageHeaderSection'
+import FeaturedBlogPostsSection from './sections/pageHeader/FeaturedBlogPostsSection'
 import SubpageListPageHeaderSection from './sections/pageHeader/SubpageListPageHeaderSection'
 
 type PageHeaderSectionsProps = {
@@ -20,7 +20,7 @@ const PageHeaderSections = ({ sections }: PageHeaderSectionsProps) => {
             return <SubpageListPageHeaderSection key={index} section={section} />
 
           case 'ComponentSectionsFeaturedBlogPosts':
-            return <FeaturedBlogsPageHeaderSection key={index} section={section} />
+            return <FeaturedBlogPostsSection key={index} section={section} />
 
           default:
             return null

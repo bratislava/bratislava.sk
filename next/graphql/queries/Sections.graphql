@@ -421,6 +421,25 @@ fragment BannerSection on ComponentSectionsBanner {
   }
 }
 
+fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
+  id
+  first_blog {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+  second_blog {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+  third_blog {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -516,31 +535,16 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsTimeline {
     ...TimelineSection
   }
+
+  ... on ComponentSectionsFeaturedBlogPosts {
+    ...FeaturedBlogPostsSection
+  }
 }
 
 fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
   id
   subpageList(pagination: { limit: -1 }) {
     ...PageLinkBlock
-  }
-}
-
-fragment FeaturedBlogPostsPageHeaderSection on ComponentSectionsFeaturedBlogPosts {
-  id
-  first_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-  second_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-  third_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
   }
 }
 
@@ -551,6 +555,6 @@ fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
     ...SubpageListPageHeaderSection
   }
   ... on ComponentSectionsFeaturedBlogPosts {
-    ...FeaturedBlogPostsPageHeaderSection
+    ...FeaturedBlogPostsSection
   }
 }

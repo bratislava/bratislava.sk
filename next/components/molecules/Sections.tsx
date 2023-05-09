@@ -1,5 +1,6 @@
 import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import FeaturedBlogPostsSection from '@components/molecules/sections/pageHeader/FeaturedBlogPostsSection'
 import cx from 'classnames'
 import * as React from 'react'
 
@@ -99,6 +100,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsTimeline':
       return <TimelineSection section={section} />
+
+    case 'ComponentSectionsFeaturedBlogPosts':
+      return <FeaturedBlogPostsSection section={section} />
 
     default:
       return null
