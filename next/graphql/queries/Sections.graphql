@@ -528,13 +528,19 @@ fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
 fragment FeaturedBlogPostsPageHeaderSection on ComponentSectionsFeaturedBlogPosts {
   id
   first_blog {
-    ...BlogSection
+    data {
+      ...LatestBlogPostEntity
+    }
   }
   second_blog {
-    ...BlogSection
+    data {
+      ...LatestBlogPostEntity
+    }
   }
   third_blog {
-    ...BlogSection
+    data {
+      ...LatestBlogPostEntity
+    }
   }
 }
 
