@@ -1,7 +1,7 @@
 schema: http://localhost:1337/graphql
-documents: './graphql/queries/**/*.{gql,graphql}'
+documents: './backend/graphql/queries/**/*.{gql,graphql}'
 generates:
-  graphql/index.ts:
+  backend/graphql/index.ts:
     plugins:
       - typescript
       - typescript-operations
