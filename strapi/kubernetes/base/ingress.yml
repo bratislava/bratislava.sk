@@ -12,11 +12,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - ${HOSTNAME}
+        - ${BRATISKA_HOSTNAME}
         - ${BUILD_REPOSITORY_NAME}-meilisearch.${DEPLOYMENT_ENV}bratislava.sk
       secretName: ${BUILD_REPOSITORY_NAME}-tls
   rules:
-    - host: ${HOSTNAME}
+    - host: ${BRATISKA_HOSTNAME}
       http:
         paths:
           - path: /
