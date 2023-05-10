@@ -1,11 +1,10 @@
 // @ts-strict-ignore
+import { ArrowRightIcon } from '@assets/images'
 import ChevronRight from '@assets/images/chevron-right.svg'
 import CloseOutline from '@assets/images/close-outline.svg'
 import cx from 'classnames'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'
-
-import { ArrowRight } from '../images'
 
 const PADDING = 20 // py-5
 
@@ -120,7 +119,7 @@ export const Bookmark = ({
               <ChevronRight />
             </span>
             <span className="ml-4 hidden h-6 group-hover:block">
-              <ArrowRight />
+              <ArrowRightIcon />
             </span>
           </a>
         </div>
