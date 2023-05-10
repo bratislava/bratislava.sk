@@ -1,6 +1,4 @@
-import ArrowRight from '@assets/images/arrow-right.svg'
-import ChevronRight from '@assets/images/chevron-right.svg'
-import Close from '@assets/images/close.svg'
+import { ArrowRightIcon, ChevronRightIcon, CrossIcon } from '@assets/ui-icons'
 import cx from 'classnames'
 import React from 'react'
 
@@ -49,10 +47,10 @@ export const Modal = ({
             {onClose && (
               <Button
                 style={{ backgroundColor: closeButtonColor }}
-                className="modal-close-mobile-right transofrm closebutton absolute -bottom-9 left-[50%] z-10 h-16 w-16 -translate-x-1/2 md:inset-y-0 md:-right-8 md:left-auto md:translate-x-0 lg:-top-8"
+                className="modal-close-mobile-right closebutton absolute -bottom-9 left-[50%] z-10 h-16 w-16 -translate-x-1/2 md:inset-y-0 md:-right-8 md:left-auto md:translate-x-0 lg:-top-8"
                 shape="circle"
                 iconPosition="center"
-                icon={<Close className="h-10 w-10" />}
+                icon={<CrossIcon className="h-10 w-10" />}
                 onClick={onClose}
               />
             )}
@@ -62,7 +60,7 @@ export const Modal = ({
                 className="modal-close-mobile-right closebutton absolute bottom-0 left-0 z-10 h-16 w-16 -translate-x-8 -translate-y-full rotate-180"
                 shape="circle"
                 iconPosition="center"
-                icon={<ArrowRight />}
+                icon={<ArrowRightIcon />}
                 onClick={onPrev}
               />
             )}
@@ -75,15 +73,15 @@ export const Modal = ({
                 className="modal-close-mobile-right closebutton absolute bottom-0 right-0 z-10 h-16 w-16 -translate-y-full translate-x-8"
                 shape="circle"
                 iconPosition="center"
-                icon={<ArrowRight />}
+                icon={<ArrowRightIcon />}
                 onClick={onNext}
               />
             )}
             {actionButtonTitle && onActionButtonClick && (
               <div className="transofrm absolute inset-x-0 bottom-0 mx-auto flex translate-y-1/2 justify-center">
                 <Button
-                  icon={<ChevronRight />}
-                  hoverIcon={<ArrowRight />}
+                  icon={<ChevronRightIcon />}
+                  hoverIcon={<ArrowRightIcon />}
                   onClick={onActionButtonClick}
                 >
                   {actionButtonTitle}

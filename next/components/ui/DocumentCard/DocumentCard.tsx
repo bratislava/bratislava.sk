@@ -1,5 +1,5 @@
 // @ts-strict-ignore
-import { ArrowRightIcon } from '@assets/images'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
 import { useState } from 'react'

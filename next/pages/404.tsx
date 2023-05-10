@@ -1,5 +1,4 @@
-import { ArrowRightIcon } from '@assets/images'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
@@ -15,7 +14,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 }
 
 const NotFoundPage = () => {
-  const { Link } = useUIContext()
   const t = useTranslations()
 
   const title = useTitle('404')
