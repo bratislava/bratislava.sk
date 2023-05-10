@@ -12,7 +12,7 @@ import React from 'react'
 import {
   getRelatedBlogPostsQueryKey,
   relatedBlogPostsFetcher,
-} from '../../../graphql/fetchers/relatedBlogPosts.fetcher'
+} from '../../../../graphql/fetchers/relatedBlogPosts.fetcher'
 
 type Props = {
   tags: TagEntity[] | null | undefined

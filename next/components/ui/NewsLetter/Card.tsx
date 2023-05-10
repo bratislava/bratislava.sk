@@ -14,6 +14,7 @@ export interface CardProps {
   onButtonClick?: () => void
 }
 
+// TODO to be removed when NewsLetter is refactored
 export const Card = ({
   className,
   hasButton,

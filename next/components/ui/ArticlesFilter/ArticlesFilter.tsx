@@ -1,7 +1,7 @@
 // @ts-strict-ignore
-import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
-import { TabBarTab } from '@bratislava/ui-bratislava/TabBarTab/TabBarTab'
-import { Tag } from '@bratislava/ui-bratislava/Tag/Tag'
+import { TabBarTab } from '@components/ui/ArticlesFilter/TabBarTab'
+import { Tag } from '@components/ui/ArticlesFilter/Tag'
+import { HorizontalScrollWrapper } from '@components/ui/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { useTranslations } from 'next-intl'
 
 export interface Card {
@@ -20,6 +20,7 @@ export interface ArticlesFilterProps {
   selectedTags?: string[]
 }
 
+// TODO to be removed when redesigning ArticleList
 export const ArticlesFilter = ({
   data,
   filterHandler,

@@ -1,3 +1,4 @@
+import { Carousel as CarouselOld } from '@bratislava/ui-bratislava/Carousel/Carousel'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import HomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
 import Carousel from '@components/organisms/Carousel/Carousel'
@@ -6,8 +7,6 @@ import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-
-import { Carousel as CarouselOld } from '../../Carousel/Carousel'
 
 // TODO: Old carousel works better on desktop, new one on mobile. We should unify them.
 

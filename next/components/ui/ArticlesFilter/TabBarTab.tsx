@@ -14,6 +14,7 @@ interface TabBarTabProps {
   size?: 'small' | 'normal'
 }
 
+// TODO to be removed with ArticlesFilter
 export const TabBarTab = ({
   className,
   tab,

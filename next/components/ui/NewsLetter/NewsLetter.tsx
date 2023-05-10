@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import React from 'react'
 
-import { Card } from '../Card/Card'
-import { CheckBox } from '../CheckBox/CheckBox'
+import { Card } from './Card'
+import { CheckBox } from './CheckBox'
 
 export interface NewsletterProps {
   className?: string
@@ -12,6 +12,7 @@ export interface NewsletterProps {
   buttonLabel?: string
 }
 
+// TODO needs to be reimplemented
 export const NewsLetter = ({
   className,
   imageSrc,

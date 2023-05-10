@@ -11,6 +11,7 @@ type ICheckBoxProps = React.DetailedHTMLProps<
   variant?: 'default' | 'circle'
 }
 
+// TODO needs to be reimplemented with NewsLetter
 export const CheckBox = ({
   className,
   id,

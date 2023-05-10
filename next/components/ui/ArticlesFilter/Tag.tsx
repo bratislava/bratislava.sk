@@ -11,6 +11,7 @@ export interface TagProps {
   alreadySelected?: boolean
 }
 
+// TODO to be removed with ArticlesFilter
 export const Tag = ({
   className,
   title,
