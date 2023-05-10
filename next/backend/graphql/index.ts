@@ -3897,6 +3897,58 @@ export type BlogPostsStaticPathsQuery = {
   } | null
 }
 
+export type BlogPostsRssFeedQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']
+}>
+
+export type BlogPostsRssFeedQuery = {
+  __typename?: 'Query'
+  blogPosts?: {
+    __typename?: 'BlogPostEntityResponseCollection'
+    data: Array<{
+      __typename?: 'BlogPostEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'BlogPost'
+        slug?: string | null
+        title?: string | null
+        publishedAt?: any | null
+        date_added?: any | null
+        excerpt?: string | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              mime: string
+              size: number
+            } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
 export type LatestBlogsWithTagsQueryVariables = Exact<{
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>
   limit?: InputMaybe<Scalars['Int']>
@@ -10589,6 +10641,45 @@ export const BlogPostsStaticPathsDocument = gql`
     }
   }
 `
+export const BlogPostsRssFeedDocument = gql`
+  query BlogPostsRssFeed($locale: I18NLocaleCode!) {
+    blogPosts(locale: $locale, sort: "publishedAt:desc") {
+      data {
+        id
+        attributes {
+          slug
+          title
+          publishedAt
+          date_added
+          excerpt
+          tag {
+            data {
+              attributes {
+                title
+                pageCategory {
+                  data {
+                    attributes {
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          }
+          coverImage {
+            data {
+              attributes {
+                url
+                mime
+                size
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 export const LatestBlogsWithTagsDocument = gql`
   query LatestBlogsWithTags(
     $sort: [String]
@@ -10812,6 +10903,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'BlogPostsStaticPaths',
+        'query',
+      )
+    },
+    BlogPostsRssFeed(
+      variables: BlogPostsRssFeedQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<BlogPostsRssFeedQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<BlogPostsRssFeedQuery>(BlogPostsRssFeedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'BlogPostsRssFeed',
         'query',
       )
     },
