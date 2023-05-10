@@ -1,4 +1,4 @@
-import { SectionsFragment } from '@bratislava/strapi-sdk-homepage'
+import { SectionsFragment } from '@backend/graphql'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import FeaturedBlogPostsSection from '@components/molecules/sections/pageHeader/FeaturedBlogPostsSection'
 import cx from 'classnames'

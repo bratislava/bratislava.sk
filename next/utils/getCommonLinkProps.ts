@@ -1,4 +1,4 @@
-import { CommonLinkFragment } from '@bratislava/strapi-sdk-homepage'
+import { CommonLinkFragment } from '@backend/graphql'
 import { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
 import { ReactNode } from 'react'
 

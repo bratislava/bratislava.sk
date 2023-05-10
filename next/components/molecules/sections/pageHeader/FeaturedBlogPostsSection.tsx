@@ -1,4 +1,4 @@
-import { FeaturedBlogPostsSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { FeaturedBlogPostsSectionFragment } from '@backend/graphql'
 import { FeaturedBlogPosts } from '@components/ui/FeaturedBlogPosts/FeaturedBlogPosts'
 import { isDefined } from '@utils/isDefined'
 import React from 'react'

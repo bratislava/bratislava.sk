@@ -1,4 +1,4 @@
-import { VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { VideosSectionFragment } from '@backend/graphql'
 import { Videos } from '@bratislava/ui-bratislava/Videos/Videos'
 import { isPresent } from '@utils/utils'
 import React from 'react'

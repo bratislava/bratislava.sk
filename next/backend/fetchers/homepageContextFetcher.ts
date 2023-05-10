@@ -1,8 +1,5 @@
+import { HomepageEntityFragment, LatestBlogPostEntityFragment } from '@backend/graphql'
 import { getTootTootHomepageEvents, ToottootEvent } from '@backend/services/toottoot'
-import {
-  HomepageEntityFragment,
-  LatestBlogPostEntityFragment,
-} from '@bratislava/strapi-sdk-homepage'
 import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
 

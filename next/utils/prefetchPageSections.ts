@@ -1,11 +1,10 @@
-import { PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
-import { dehydrate, QueryClient } from '@tanstack/react-query'
-import { isDefined } from '@utils/isDefined'
-
+import { PageEntityFragment } from '@backend/graphql'
 import {
   getRelatedBlogPostsQueryKey,
   relatedBlogPostsFetcher,
-} from '../graphql/fetchers/relatedBlogPosts.fetcher'
+} from '@backend/graphql/fetchers/relatedBlogPosts.fetcher'
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { isDefined } from '@utils/isDefined'
 
 export const prefetchPageSections = async (page: PageEntityFragment, locale: string) => {
   const queryClient = new QueryClient()

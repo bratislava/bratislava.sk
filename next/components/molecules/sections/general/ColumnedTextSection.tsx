@@ -1,4 +1,4 @@
-import { ColumnedTextSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { ColumnedTextSectionFragment } from '@backend/graphql'
 import { ColumnedText } from '@bratislava/ui-bratislava/ColumnedText/ColumnedText'
 import React from 'react'
 

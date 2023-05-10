@@ -1,4 +1,4 @@
-import { DividerSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { DividerSectionFragment } from '@backend/graphql'
 import { Divider } from '@bratislava/ui-bratislava/Divider/Divider'
 import React from 'react'
 

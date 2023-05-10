@@ -1,8 +1,8 @@
-import ArrowLeft from '@assets/images/forms/arrow-left.svg'
+import { ArrowLeftIcon } from '@assets/ui-icons'
+import CloseIcon from '@components/forms/icon-components/CloseIcon'
 import cx from 'classnames'
 import { Dispatch, SetStateAction, useState } from 'react'
 
-import CloseIcon from '../../icon-components/CloseIcon'
 import Button from '../../simple-components/Button'
 
 type ModalBase = {
@@ -57,7 +57,7 @@ const ModalHeader = ({
             setCurrentScreenIndex(currentScreenIndex - 1)
           }}
         >
-          <ArrowLeft />
+          <ArrowLeftIcon />
         </div>
       ) : null}
       <div className={headlineStyle}>{header}</div>

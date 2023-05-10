@@ -1,6 +1,6 @@
-import { ArrowRightIcon } from '@assets/images'
 import MinusIcon from '@assets/images/minus.svg'
 import PlusIcon from '@assets/images/plus.svg'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import { Input } from '@bratislava/ui-bratislava/Input/Input'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'

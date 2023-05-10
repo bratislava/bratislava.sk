@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/images'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'

@@ -1,4 +1,4 @@
-import { LatestBlogPostEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import { LatestBlogPostEntityFragment } from '@backend/graphql'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import BlogPostHorizontalCard from '@components/molecules/presentation/BlogPostHorizontalCard'
 import BlogPostImageCard from '@components/molecules/presentation/BlogPostImageCard'

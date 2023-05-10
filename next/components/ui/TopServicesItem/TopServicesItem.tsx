@@ -1,4 +1,4 @@
-import { TopServicesItemFragment } from '@bratislava/strapi-sdk-homepage'
+import { TopServicesItemFragment } from '@backend/graphql'
 import { Icon } from '@components/atoms/icon/Icon'
 import Button from '@components/forms/simple-components/Button'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'

@@ -1,4 +1,4 @@
-import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
+import { Enum_Pagecategory_Color } from '@backend/graphql'
 import { BlogItem } from '@components/ui/BlogSearchCard/BlogSearchCard'
 import { Key } from 'swr'
 

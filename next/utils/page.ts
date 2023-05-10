@@ -1,8 +1,4 @@
-import {
-  FileBlockFragment,
-  PageLinkBlockFragment,
-  PageParentPagesFragment,
-} from '@bratislava/strapi-sdk-homepage'
+import { FileBlockFragment, PageLinkBlockFragment, PageParentPagesFragment } from '@backend/graphql'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { TFile } from '@components/ui/FileList/FileList'
 import groupBy from 'lodash/groupBy'

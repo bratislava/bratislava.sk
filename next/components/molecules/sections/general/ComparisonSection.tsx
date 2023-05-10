@@ -1,5 +1,5 @@
-import { InfoIcon } from '@assets/images'
-import { ComparisonSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { InfoIcon } from '@assets/ui-icons'
+import { ComparisonSectionFragment } from '@backend/graphql'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import Image from 'next/image'

@@ -1,4 +1,4 @@
-import { OrganizationalStructureSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { OrganizationalStructureSectionFragment } from '@backend/graphql'
 import React from 'react'
 
 import { OrganizationalStructure } from '../../OrganizationalStructure/OrganizationalStructure'

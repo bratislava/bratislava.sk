@@ -11,7 +11,7 @@
     "typecheck": "tsc && tsc-strict",
     "lint": "eslint components pages utils backend",
     "lint:fix": "yarn lint --fix",
-    "gen": "graphql-codegen && prettier --write ./graphql/index.ts",
+    "gen": "graphql-codegen && prettier --write backend/graphql/index.ts",
     "prettier": "prettier --write .",
     "fix-botframework": "yarn --cwd ./node_modules/p-defer-es5 postinstall && yarn --cwd ./node_modules/abort-controller-es5 postinstall && yarn --cwd ./node_modules/markdown-it-attrs-es5 postinstall",
     "postinstall": "yarn fix-botframework"

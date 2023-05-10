@@ -1,4 +1,4 @@
-import { AccordionSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { AccordionSectionFragment } from '@backend/graphql'
 import { AccordionItem } from '@bratislava/ui-bratislava/AccordionItem/AccordionItem'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'

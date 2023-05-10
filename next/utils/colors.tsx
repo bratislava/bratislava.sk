@@ -1,7 +1,4 @@
-import {
-  Enum_Componentmenumenuitem_Icon,
-  Enum_Pagecategory_Color,
-} from '@bratislava/strapi-sdk-homepage'
+import { Enum_Componentmenumenuitem_Icon, Enum_Pagecategory_Color } from '@backend/graphql'
 import React, { CSSProperties } from 'react'
 
 export type ColorCategory =

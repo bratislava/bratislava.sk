@@ -1,5 +1,5 @@
-import { CrossIcon, DoneIcon } from '@assets/images'
-import { ProsAndConsSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { CheckIcon, CrossIcon } from '@assets/ui-icons'
+import { ProsAndConsSectionFragment } from '@backend/graphql'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import React from 'react'
@@ -35,7 +35,7 @@ const ProsAndConsSection = ({ section }: ProsAndConsSectionProps) => {
         )}
         {pros && (
           <ComparisonCard
-            icon={<DoneIcon />}
+            icon={<CheckIcon />}
             color="green"
             title={pros.title}
             items={pros.items.filter(isDefined).map((item) => item.label)}

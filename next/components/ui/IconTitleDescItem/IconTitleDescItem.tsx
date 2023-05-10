@@ -1,4 +1,4 @@
-import { ImageSrcEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import { ImageSrcEntityFragment } from '@backend/graphql'
 import cx from 'classnames'
 import Image from 'next/image'
 

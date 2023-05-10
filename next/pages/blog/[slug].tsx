@@ -1,4 +1,4 @@
-import { BlogPostEntityFragment, GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntityFragment, GeneralQuery } from '@backend/graphql'
 import PageLayout from '@components/layouts/PageLayout'
 import BlogPostPageContent from '@components/pages/blogPostPageContent'
 import { GlobalCategoryColorProvider } from '@utils/colors'

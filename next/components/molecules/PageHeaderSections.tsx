@@ -1,4 +1,4 @@
-import { PageHeaderSectionsFragment } from '@bratislava/strapi-sdk-homepage'
+import { PageHeaderSectionsFragment } from '@backend/graphql'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 

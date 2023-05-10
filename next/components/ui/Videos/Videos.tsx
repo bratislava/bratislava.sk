@@ -1,4 +1,4 @@
-import { VideoBlockFragment, VideosSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { VideoBlockFragment, VideosSectionFragment } from '@backend/graphql'
 import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'

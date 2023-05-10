@@ -1,6 +1,6 @@
-import { PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import { PageEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import RelatedBlogPostsSection from '@components/molecules/sections/RelatedBlogPostsSection'
+import RelatedBlogPostsSection from '@components/molecules/sections/general/RelatedBlogPostsSection'
 import { isDefined } from '@utils/isDefined'
 import { getPageBreadcrumbs } from '@utils/page'
 import { isProductionDeployment } from '@utils/utils'

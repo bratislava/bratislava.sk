@@ -1,11 +1,9 @@
 // @ts-strict-ignore
-import ChevronRight from '@assets/images/chevron-right.svg'
-import CloseOutline from '@assets/images/close-outline.svg'
+import { CrossInCircleIcon } from '@assets/ui-icons'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'
-
-import { ArrowRight } from '../images'
 
 const PADDING = 20 // py-5
 
@@ -27,15 +25,13 @@ export interface BookmarkProps {
   IconComponent?: React.FunctionComponent<React.SVGAttributes<any>>
 }
 
-const VARIANT_COLOR_FALLBACK = 'red'
-
 export const Bookmark = ({
   className,
   bookmarkTitle,
   title,
   content,
   link,
-  variant = VARIANT_COLOR_FALLBACK,
+  variant = 'red',
   // IconComponent,
   icon,
 }: BookmarkProps) => {
@@ -113,22 +109,19 @@ export const Bookmark = ({
         <div className="flex w-80 flex-col justify-center">
           <h3 className="text-h4 leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
-          <a href={link.href} className="group flex items-center font-semibold underline">
-            <span className="text-default font-semibold">{link.title}</span>
-            {/* <ChevronRight className="ml-6" /> */}
-            <span className="ml-4 group-hover:hidden">
-              <ChevronRight />
-            </span>
-            <span className="ml-4 hidden h-6 group-hover:block">
-              <ArrowRight />
-            </span>
-          </a>
+          <Button
+            href={link.href}
+            variant="black-link"
+            className={
+              variant === 'red' ? 'text-white hover:text-white hover:opacity-70' : undefined
+            }
+          >
+            {link.title}
+          </Button>
         </div>
 
         <div className="flex w-[132px] items-start justify-end pr-5">
-          <button onClick={() => setIsOpen(false)}>
-            <CloseOutline />
-          </button>
+          <Button onPress={() => setIsOpen(false)} icon={<CrossInCircleIcon />} />
         </div>
       </div>
     </div>

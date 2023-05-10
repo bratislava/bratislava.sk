@@ -1,4 +1,5 @@
-import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntity } from '@backend/graphql'
+import { ArticlesFilter, Card } from '@bratislava/ui-bratislava/ArticlesFilter/ArticlesFilter'
 import { Pagination } from '@bratislava/ui-bratislava/Pagination/Pagination'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import { getCategoryColorLocalStyle } from '@utils/colors'
@@ -7,8 +8,6 @@ import { client } from '@utils/gql'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-
-import { ArticlesFilter, Card } from '../../../../atoms/ArticlesFilter'
 
 export interface ArticlesListProps {
   title: string

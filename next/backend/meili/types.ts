@@ -6,7 +6,7 @@ import {
   Tag,
   UploadFile,
   Vzn,
-} from '../../graphql'
+} from '../graphql'
 
 /**
  * A type that describes an entity wrapped in shared search index.

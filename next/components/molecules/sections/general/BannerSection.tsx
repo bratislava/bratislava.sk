@@ -1,4 +1,4 @@
-import { BannerSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { BannerSectionFragment } from '@backend/graphql'
 import Banner from '@components/ui/Banner/Banner'
 import React from 'react'
 

@@ -1,6 +1,6 @@
-import { ChevronDown } from '@assets/images'
 import IconEye from '@assets/images/icon-eye-white.svg'
-import { GallerySectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { ChevronDownIcon } from '@assets/ui-icons'
+import { GallerySectionFragment } from '@backend/graphql'
 import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { Modal } from '@bratislava/ui-bratislava/Modal/Modal'
 import { isPresent } from '@utils/utils'
@@ -207,7 +207,7 @@ const GallerySection = ({
                       >
                         {showModalDetails ? t('menu.show_less') : t('menu.show_more')}
                       </button>
-                      <ChevronDown
+                      <ChevronDownIcon
                         className={cx('ml-4 inline ', {
                           'rotate-180': showModalDetails,
                         })}

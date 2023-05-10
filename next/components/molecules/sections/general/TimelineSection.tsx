@@ -1,4 +1,4 @@
-import { TimelineSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { TimelineSectionFragment } from '@backend/graphql'
 import { Timeline } from '@bratislava/ui-bratislava/Timeline/Timeline'
 import { isDefined } from '@utils/isDefined'
 import React from 'react'
