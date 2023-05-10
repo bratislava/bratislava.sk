@@ -1,4 +1,4 @@
-import { BlogPostEntity } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntity } from '@backend/graphql'
 import { ArticlesFilter, Card } from '@bratislava/ui-bratislava/ArticlesFilter/ArticlesFilter'
 import { Pagination } from '@bratislava/ui-bratislava/Pagination/Pagination'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'

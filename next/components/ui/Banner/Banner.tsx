@@ -1,8 +1,5 @@
 import { ArrowRightIcon } from '@assets/images'
-import {
-  CommonLinkFragment,
-  Enum_Componentsectionsbanner_Variant,
-} from '@bratislava/strapi-sdk-homepage'
+import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import { generateImageSizes } from '@utils/generateImageSizes'

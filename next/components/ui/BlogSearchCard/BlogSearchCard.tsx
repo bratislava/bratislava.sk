@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import { ArrowRightIcon } from '@assets/images'
+import { Enum_Pagecategory_Color } from '@backend/graphql'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
-import { Enum_Pagecategory_Color } from '@bratislava/strapi-sdk-homepage'
 import { VerticalCardButton } from '@components/ui/VerticalCardButton/VerticalCardButton'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import cx from 'classnames'

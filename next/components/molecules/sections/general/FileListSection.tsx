@@ -1,4 +1,4 @@
-import { FileListSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { FileListSectionFragment } from '@backend/graphql'
 import { FileList } from '@bratislava/ui-bratislava/FileList/FileList'
 import { groupByCategoryFileList } from '@utils/page'
 import { isPresent } from '@utils/utils'

@@ -1,4 +1,4 @@
-import { ContactSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { ContactSectionFragment } from '@backend/graphql'
 import { Contact } from '@bratislava/ui-bratislava/Contact/Contact'
 import React from 'react'
 

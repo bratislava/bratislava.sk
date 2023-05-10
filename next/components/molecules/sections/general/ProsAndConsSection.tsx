@@ -1,5 +1,5 @@
 import { CrossIcon, DoneIcon } from '@assets/images'
-import { ProsAndConsSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { ProsAndConsSectionFragment } from '@backend/graphql'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import React from 'react'

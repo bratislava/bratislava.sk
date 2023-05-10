@@ -1,4 +1,4 @@
-import { GeneralQuery, PageEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery, PageEntityFragment } from '@backend/graphql'
 import PageLayout from '@components/layouts/PageLayout'
 import GeneralPageContent from '@components/pages/generalPageContent'
 import {

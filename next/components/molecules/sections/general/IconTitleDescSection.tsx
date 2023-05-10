@@ -1,4 +1,4 @@
-import { IconTitleDescSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { IconTitleDescSectionFragment } from '@backend/graphql'
 import { IconTitleDescItem } from '@components/ui/IconTitleDescItem/IconTitleDescItem'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'

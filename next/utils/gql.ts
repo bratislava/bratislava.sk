@@ -1,4 +1,4 @@
-import { getSdk } from '@bratislava/strapi-sdk-homepage'
+import { getSdk } from '@backend/graphql'
 import { GraphQLClient } from 'graphql-request'
 import getConfig from 'next/config'
 

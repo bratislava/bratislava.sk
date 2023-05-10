@@ -1,4 +1,8 @@
-import { TagEntity } from '@bratislava/strapi-sdk-homepage'
+import { TagEntity } from '@backend/graphql'
+import {
+  getRelatedBlogPostsQueryKey,
+  relatedBlogPostsFetcher,
+} from '@backend/graphql/fetchers/relatedBlogPosts.fetcher'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { useQuery } from '@tanstack/react-query'
@@ -8,11 +12,6 @@ import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
-
-import {
-  getRelatedBlogPostsQueryKey,
-  relatedBlogPostsFetcher,
-} from '../../../../graphql/fetchers/relatedBlogPosts.fetcher'
 
 type Props = {
   tags: TagEntity[] | null | undefined

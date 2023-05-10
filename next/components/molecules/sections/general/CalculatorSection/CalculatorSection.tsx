@@ -1,4 +1,4 @@
-import { CalculatorSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { CalculatorSectionFragment } from '@backend/graphql'
 import React from 'react'
 
 import MinimumCalculator from './MinimumCalculator'

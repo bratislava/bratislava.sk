@@ -1,7 +1,4 @@
-import {
-  CommonLinkFragment,
-  Enum_Componentsectionsbanner_Variant,
-} from '@bratislava/strapi-sdk-homepage'
+import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
 import Banner from '@components/ui/Banner/Banner'
 import React from 'react'
 

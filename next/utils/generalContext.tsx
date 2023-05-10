@@ -1,4 +1,4 @@
-import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery } from '@backend/graphql'
 import { createContext, ReactNode, useContext } from 'react'
 
 const GeneralContext = createContext<GeneralQuery | null>(null)

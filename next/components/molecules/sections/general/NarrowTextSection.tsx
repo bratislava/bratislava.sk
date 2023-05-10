@@ -1,4 +1,4 @@
-import { NarrowTextSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { NarrowTextSectionFragment } from '@backend/graphql'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import React from 'react'
 

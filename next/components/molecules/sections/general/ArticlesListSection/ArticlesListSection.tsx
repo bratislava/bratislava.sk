@@ -1,4 +1,4 @@
-import { ArticlesListSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { ArticlesListSectionFragment } from '@backend/graphql'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 

@@ -1,4 +1,4 @@
-import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery } from '@backend/graphql'
 import SearchPageContent from '@components/pages/searchPageContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GeneralContextProvider } from '@utils/generalContext'

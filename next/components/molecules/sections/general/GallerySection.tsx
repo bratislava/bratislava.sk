@@ -1,6 +1,6 @@
 import { ChevronDown } from '@assets/images'
 import IconEye from '@assets/images/icon-eye-white.svg'
-import { GallerySectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { GallerySectionFragment } from '@backend/graphql'
 import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { Modal } from '@bratislava/ui-bratislava/Modal/Modal'
 import { isPresent } from '@utils/utils'

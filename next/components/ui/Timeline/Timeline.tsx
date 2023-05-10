@@ -1,4 +1,4 @@
-import { TimelineItemBlockFragment } from '@bratislava/strapi-sdk-homepage'
+import { TimelineItemBlockFragment } from '@backend/graphql'
 import Markdown from '@components/atoms/Markdown'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'

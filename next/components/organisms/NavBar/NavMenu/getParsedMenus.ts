@@ -1,4 +1,4 @@
-import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery } from '@backend/graphql'
 import { isDefined } from '@utils/isDefined'
 
 import { MenuItem, MenuLink } from './navMenuTypes'

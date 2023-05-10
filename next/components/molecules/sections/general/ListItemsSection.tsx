@@ -1,4 +1,4 @@
-import { ListItemsSectionFragment } from '@bratislava/strapi-sdk-homepage'
+import { ListItemsSectionFragment } from '@backend/graphql'
 import { ListItems } from '@bratislava/ui-bratislava/ListItems/ListItems'
 import { parsePageLink } from '@utils/page'
 import React from 'react'

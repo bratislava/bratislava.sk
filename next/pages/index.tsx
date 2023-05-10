@@ -1,6 +1,6 @@
 import type { HomepageContext } from '@backend/fetchers/homepageContextFetcher'
 import { homepageContextFetcher } from '@backend/fetchers/homepageContextFetcher'
-import { GeneralQuery } from '@bratislava/strapi-sdk-homepage'
+import { GeneralQuery } from '@backend/graphql'
 import HomepageContent from '@components/pages/HomepageContent'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { client } from '@utils/gql'

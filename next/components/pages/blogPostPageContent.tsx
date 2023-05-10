@@ -1,5 +1,5 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
-import { BlogPostEntityFragment } from '@bratislava/strapi-sdk-homepage'
+import { BlogPostEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
