@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
+import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import usePagination from '@components/ui/Pagination/usePagination'
 import cx from 'classnames'

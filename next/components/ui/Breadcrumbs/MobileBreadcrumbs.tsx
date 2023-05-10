@@ -1,5 +1,5 @@
-import AccordionChevron from '@assets/images/accordion-chevron.svg'
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
+import { ChevronDownIcon } from '@assets/ui-icons'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
@@ -47,7 +47,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
       {showDetails && (
         <details className="group">
           <summary className="absolute right-0 top-0 -mr-4 block cursor-pointer p-4">
-            <AccordionChevron className="h-5 w-5 transition-transform group-open:rotate-180" />
+            <ChevronDownIcon className="h-5 w-5 transition-transform group-open:rotate-180" />
           </summary>
           <ol className="flex flex-col flex-wrap gap-1 py-2">
             {withHomeWithoutCurrent.map((breadcrumb, index) => (

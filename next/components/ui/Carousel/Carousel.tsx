@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
+import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
 import { VerticalCardButton } from '@components/ui/VerticalCardButton/VerticalCardButton'
 import cx from 'classnames'
 import React, { useRef } from 'react'
