@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@assets/ui-icons'
+import AccordionChevron from '@assets/images/accordion-chevron.svg'
 import { AnimateHeight } from '@components/atoms/AnimateHeight'
 import cx from 'classnames'
 import last from 'lodash/last'
@@ -77,7 +77,7 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
         <summary className={buttonStyles}>
           <span className={headingStyles}>{title}</span>
           <span className="shrink-0" aria-hidden>
-            <ChevronDownIcon className={chevronStyles} />
+            <AccordionChevron className={chevronStyles} />
           </span>
         </summary>
 

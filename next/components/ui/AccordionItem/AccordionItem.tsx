@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
-import { ChevronDownIcon, ChevronDownSmallIcon } from '@assets/ui-icons'
+import ChevronSmall from '@assets/images/chevron-down-thin-small.svg'
+import Chevron from '@assets/images/chevron-small.svg'
 import cx from 'classnames'
 import React from 'react'
 
@@ -60,10 +61,8 @@ export const AccordionItem = ({
             </p>
           </div>
           <div className="ml-5 grow-0">
-            <ChevronDownIcon className={cx('hidden h-3 w-6 lg:block', { 'rotate-180': active })} />
-            <ChevronDownSmallIcon
-              className={cx('h-2.5 w-[18px] lg:hidden', { 'rotate-180': active })}
-            />
+            <Chevron className={cx('hidden h-3 w-6 lg:block', { 'rotate-180': active })} />
+            <ChevronSmall className={cx('h-2.5 w-[18px] lg:hidden', { 'rotate-180': active })} />
           </div>
         </button>
       </div>

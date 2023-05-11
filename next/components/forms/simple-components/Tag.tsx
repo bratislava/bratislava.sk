@@ -1,4 +1,4 @@
-import { CrossIcon } from '@assets/ui-icons'
+import { CrossIcon } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 

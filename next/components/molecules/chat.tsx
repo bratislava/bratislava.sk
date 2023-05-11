@@ -1,5 +1,5 @@
+import Close from '@assets/images/close.svg'
 import Message from '@assets/images/message.svg'
-import { CrossIcon } from '@assets/ui-icons'
 import { DirectLine } from 'botframework-directlinejs'
 import ReactWebChat from 'botframework-webchat'
 import uniqueId from 'lodash/uniqueId'
@@ -34,7 +34,7 @@ const Chat = () => {
         onClick={() => setShowChat((currentState) => !currentState)}
         onKeyDown={() => setShowChat((currentState) => !currentState)}
       >
-        {showChat ? <CrossIcon /> : <Message />}
+        {showChat ? <Close /> : <Message />}
       </div>
       {dir?.current && (
         <div className="webchat" style={style}>

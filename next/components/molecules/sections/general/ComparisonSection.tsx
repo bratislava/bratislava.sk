@@ -1,4 +1,4 @@
-import { InfoIcon } from '@assets/ui-icons'
+import { InfoIcon } from '@assets/images'
 import { ComparisonSectionFragment } from '@backend/graphql'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'

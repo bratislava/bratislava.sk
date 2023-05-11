@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from '@assets/ui-icons'
+import { ChevronRightLarge } from '@assets/images'
 import { Icon } from '@components/atoms/icon/Icon'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { forwardRef } from 'react'
@@ -25,7 +25,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
             <Icon iconName={menuItem.icon} aria-hidden />
             <div>{menuItem.label}</div>
           </div>
-          <ChevronRightIcon aria-hidden className="shrink-0" />
+          <ChevronRightLarge aria-hidden className="shrink-0" />
         </div>
       </NavigationMenu.Trigger>
     )

@@ -1,6 +1,7 @@
 // @ts-strict-ignore
-import { CrossInCircleIcon } from '@assets/ui-icons'
-import Button from '@components/forms/simple-components/Button'
+import { ArrowRightIcon } from '@assets/images'
+import ChevronRight from '@assets/images/chevron-right.svg'
+import CloseOutline from '@assets/images/close-outline.svg'
 import cx from 'classnames'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'
@@ -25,13 +26,15 @@ export interface BookmarkProps {
   IconComponent?: React.FunctionComponent<React.SVGAttributes<any>>
 }
 
+const VARIANT_COLOR_FALLBACK = 'red'
+
 export const Bookmark = ({
   className,
   bookmarkTitle,
   title,
   content,
   link,
-  variant = 'red',
+  variant = VARIANT_COLOR_FALLBACK,
   // IconComponent,
   icon,
 }: BookmarkProps) => {
@@ -109,19 +112,22 @@ export const Bookmark = ({
         <div className="flex w-80 flex-col justify-center">
           <h3 className="text-h4 leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
-          <Button
-            href={link.href}
-            variant="black-link"
-            className={
-              variant === 'red' ? 'text-white hover:text-white hover:opacity-70' : undefined
-            }
-          >
-            {link.title}
-          </Button>
+          <a href={link.href} className="group flex items-center font-semibold underline">
+            <span className="text-default font-semibold">{link.title}</span>
+            {/* <ChevronRight className="ml-6" /> */}
+            <span className="ml-4 group-hover:hidden">
+              <ChevronRight />
+            </span>
+            <span className="ml-4 hidden h-6 group-hover:block">
+              <ArrowRightIcon />
+            </span>
+          </a>
         </div>
 
         <div className="flex w-[132px] items-start justify-end pr-5">
-          <Button onPress={() => setIsOpen(false)} icon={<CrossInCircleIcon />} />
+          <button onClick={() => setIsOpen(false)}>
+            <CloseOutline />
+          </button>
         </div>
       </div>
     </div>

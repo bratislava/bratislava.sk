@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
+import { ArrowRightIcon } from '@assets/images'
 import Button from '@components/forms/simple-components/Button'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'

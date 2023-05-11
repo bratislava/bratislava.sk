@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from '@assets/ui-icons'
+import { ChevronRightRounded } from '@assets/images'
 import { HomepageSearchData } from '@backend/meili/fetchers/homepageSearchFetcher'
 import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
   const t = useTranslations()
 
   return isLoading ? (
-    <div className="flex flex-col items-center justify-center p-10">
+    <div className="text-primary flex flex-col items-center justify-center p-10">
       <LoadingSpinner size="medium" />
     </div>
   ) : data && data.hits?.length > 0 ? (
@@ -29,7 +29,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
         >
           <div className="flex items-center justify-between">
             <div>{title}</div>
-            <ChevronRightIcon className="ml-4 shrink-0" />
+            <ChevronRightRounded className="ml-4 shrink-0 scale-[0.9]" />
           </div>
         </Link>
       ))}

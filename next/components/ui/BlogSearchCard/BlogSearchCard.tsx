@@ -1,5 +1,5 @@
 // @ts-strict-ignore
-import { ArrowRightIcon } from '@assets/ui-icons'
+import { ArrowRightIcon } from '@assets/images'
 import { Enum_Pagecategory_Color } from '@backend/graphql'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { VerticalCardButton } from '@components/ui/VerticalCardButton/VerticalCardButton'

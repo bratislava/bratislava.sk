@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
+import { ArrowLeftIcon, ArrowRightIcon } from '@assets/images'
 import { ButtonProps } from '@components/forms/simple-components/Button'
 import CarouselControlButton from '@components/organisms/Carousel/CarouselControlButton'
 import cx from 'classnames'

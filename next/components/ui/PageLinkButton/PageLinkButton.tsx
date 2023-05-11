@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ChevronRightIcon } from '@assets/ui-icons'
+import { ArrowRight, ChevronRight } from '@assets/images'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 
@@ -17,8 +17,8 @@ export const PageLinkButton = ({ className, pageLink }: PageLinkButtonProps) => 
         className="text-font"
         shape="none"
         variant="muted"
-        icon={<ChevronRightIcon />}
-        hoverIcon={<ArrowRightIcon />}
+        icon={<ChevronRight />}
+        hoverIcon={<ArrowRight />}
       >
         <div
           style={{ textDecorationThickness: 2, textUnderlineOffset: 3 }}

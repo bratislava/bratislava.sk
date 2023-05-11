@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
+import { ArrowRightIcon } from '@assets/images'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'

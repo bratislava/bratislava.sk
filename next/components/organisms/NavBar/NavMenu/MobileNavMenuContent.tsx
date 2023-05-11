@@ -1,4 +1,4 @@
-import { ChevronLeftIcon } from '@assets/ui-icons'
+import { ChevronLeftLarge } from '@assets/images'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useTranslations } from 'next-intl'
 import React, { CSSProperties } from 'react'
@@ -36,7 +36,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
             className="-my-2 flex w-full items-center gap-2 py-2"
             aria-label={t('aria.backTo', { backTo: parentLabel })}
           >
-            <ChevronLeftIcon aria-hidden /> {parentLabel}
+            <ChevronLeftLarge aria-hidden /> {parentLabel}
           </button>
         </li>
 
