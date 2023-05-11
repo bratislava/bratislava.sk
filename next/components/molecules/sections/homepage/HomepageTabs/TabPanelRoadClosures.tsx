@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/images'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'

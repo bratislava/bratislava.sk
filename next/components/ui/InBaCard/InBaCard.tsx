@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/images'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import Image from 'next/image'

@@ -1,4 +1,4 @@
-import { AlertIcon, CrossIcon } from '@assets/images'
+import { AlertIcon, CrossIcon } from '@assets/ui-icons'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'

@@ -1,4 +1,3 @@
-import ChevronRight from '@assets/images/chevron-right-large.svg'
 import PageBlueIcon from '@assets/images/page-blue-icon.svg'
 import PageBlueIconSmall from '@assets/images/page-blue-icon-small.svg'
 import PageBrownIcon from '@assets/images/page-brown-icon.svg'
@@ -11,6 +10,7 @@ import PageRedIcon from '@assets/images/page-red-icon.svg'
 import PageRedIconSmall from '@assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
+import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import { getCategoryColorLocalStyle } from '@utils/colors'
@@ -52,7 +52,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
         </div>
         <div className="flex w-full items-center justify-between px-14">
           <span className="text-large-respo font-semibold">{title}</span>
-          <ChevronRight />
+          <ChevronRightIcon />
         </div>
       </Panel>
       <Panel className="flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
@@ -61,7 +61,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
             <SmallPageIcon />
           </div>
           <div className="pr-8">
-            <ChevronRight />
+            <ChevronRightIcon />
           </div>
         </div>
 

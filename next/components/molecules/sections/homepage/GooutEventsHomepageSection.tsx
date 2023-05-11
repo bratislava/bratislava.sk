@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/images'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import { Carousel } from '@bratislava/ui-bratislava/Carousel/Carousel'
 import Button from '@components/forms/simple-components/Button'
 import { FetchGooutEventsResult, GooutEventParsed } from '@utils/goout'

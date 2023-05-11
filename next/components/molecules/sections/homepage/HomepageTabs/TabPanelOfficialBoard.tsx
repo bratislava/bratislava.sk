@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/images'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import Button from '@components/forms/simple-components/Button'
 import { DocumentCard } from '@components/ui/DocumentCard/DocumentCard'

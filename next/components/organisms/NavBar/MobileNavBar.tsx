@@ -1,6 +1,4 @@
-import { CrossIcon } from '@assets/images'
-import Hamburger from '@assets/images/ba-hamburger.svg'
-import SearchIcon from '@assets/images/search-icon.svg'
+import { CrossIcon, HamburgerIcon, SearchIcon } from '@assets/ui-icons'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import MLink from '@components/forms/simple-components/MLink'
 import AlertBanner from '@components/organisms/NavBar/AlertBanner'
@@ -57,6 +55,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 <SearchIcon />
               </MLink>
               <Divider />
+              {/* TODO use Button */}
               {isMobileMenuOpen ? (
                 <button
                   type="button"
@@ -67,7 +66,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 </button>
               ) : (
                 <button type="button" onClick={() => setMobileMenuOpen(true)} className="-mr-4 p-4">
-                  <Hamburger />
+                  <HamburgerIcon />
                 </button>
               )}
             </div>

@@ -1,4 +1,4 @@
-import { EditIcon, SearchIcon } from '@assets/images'
+import { EditIcon, SearchIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 
 import { Stack } from '../Stack'
