@@ -192,5 +192,10 @@
   "RelatedBlogPostsSection": {
     "relatedBlogPosts": "Súvisiace články",
     "readMore": "Čítať viac"
+  },
+  "Bookmark": {
+    "aria": {
+      "close": "Zavrieť"
+    }
   }
 }
