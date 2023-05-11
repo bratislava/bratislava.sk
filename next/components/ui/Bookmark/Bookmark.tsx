@@ -1,7 +1,7 @@
-// @ts-strict-ignore
-import { CrossInCircleIcon } from '@assets/ui-icons'
+import { CrossIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
+import { useTranslations } from 'next-intl'
 import React, { useRef } from 'react'
 import { useOutsideClick } from 'rooks'
 
@@ -12,8 +12,6 @@ export interface BookmarkLink {
   href: string | null | undefined
 }
 
-// TODO add imageSrc ???
-
 export interface BookmarkProps {
   className?: string
   bookmarkTitle: string | null | undefined
@@ -22,9 +20,9 @@ export interface BookmarkProps {
   link: BookmarkLink
   variant?: 'blue' | 'red' | string | null
   icon?: string | null
-  IconComponent?: React.FunctionComponent<React.SVGAttributes<any>>
 }
 
+// TODO: needs major refactoring
 export const Bookmark = ({
   className,
   bookmarkTitle,
@@ -32,16 +30,16 @@ export const Bookmark = ({
   content,
   link,
   variant = 'red',
-  // IconComponent,
   icon,
 }: BookmarkProps) => {
+  const t = useTranslations('Bookmark')
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef<HTMLSpanElement>(null)
   const [width, setWidth] = React.useState<number>()
   const [height, setHeight] = React.useState<number>()
 
-  const modelref = useRef()
+  const modelref = useRef(null)
   useOutsideClick(ref, () => setIsOpen(false))
 
   React.useEffect(() => {
@@ -109,19 +107,25 @@ export const Bookmark = ({
         <div className="flex w-80 flex-col justify-center">
           <h3 className="text-h4 leading-[36px]">{title}</h3>
           <p className="my-3">{content}</p>
-          <Button
-            href={link.href}
-            variant="black-link"
-            className={
-              variant === 'red' ? 'text-white hover:text-white hover:opacity-70' : undefined
-            }
-          >
-            {link.title}
-          </Button>
+          {link.href && link.title ? (
+            <Button
+              href={link.href}
+              variant="black-link"
+              className={
+                variant === 'red' ? 'text-white hover:text-white hover:opacity-70' : undefined
+              }
+            >
+              {link.title}
+            </Button>
+          ) : null}
         </div>
 
         <div className="flex w-[132px] items-start justify-end pr-5">
-          <Button onPress={() => setIsOpen(false)} icon={<CrossInCircleIcon />} />
+          <Button
+            onPress={() => setIsOpen(false)}
+            icon={<CrossIcon />}
+            aria-label={t('aria.close')}
+          />
         </div>
       </div>
     </div>
@@ -129,7 +133,3 @@ export const Bookmark = ({
 }
 
 export default Bookmark
-
-// TODO extract Circle as atom ???
-
-// TODO NextLink !!! (in story book)

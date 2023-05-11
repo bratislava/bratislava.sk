@@ -1,5 +1,3 @@
-import SignpostIcon from '@assets/images/signpost-round.svg'
-import UaIcon from '@assets/images/ua-flag-round.svg'
 import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
 import cx from 'classnames'
 import isEmpty from 'lodash/isEmpty'
@@ -17,16 +15,10 @@ export const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
     >
       {bookmarks?.map((bookmark, index) => (
         <Bookmark
+          // eslint-disable-next-line react/no-array-index-key
           key={index}
           {...bookmark}
           className="pointer-events-auto mb-2"
-          IconComponent={
-            bookmark.icon === 'ua'
-              ? UaIcon
-              : bookmark.icon === 'signpost'
-              ? SignpostIcon
-              : undefined
-          }
         />
       ))}
     </div>
