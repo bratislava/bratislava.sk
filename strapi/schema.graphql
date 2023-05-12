@@ -1310,6 +1310,29 @@ input ComponentSectionsGalleryInput {
   title: String
 }
 
+type ComponentSectionsHomepageEvents {
+  eventsPageLink: ComponentBlocksCommonLink
+  id: ID!
+  text: String
+  title: String
+}
+
+input ComponentSectionsHomepageEventsFiltersInput {
+  and: [ComponentSectionsHomepageEventsFiltersInput]
+  eventsPageLink: ComponentBlocksCommonLinkFiltersInput
+  not: ComponentSectionsHomepageEventsFiltersInput
+  or: [ComponentSectionsHomepageEventsFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsHomepageEventsInput {
+  eventsPageLink: ComponentBlocksCommonLinkInput
+  id: ID
+  text: String
+  title: String
+}
+
 type ComponentSectionsHomepageHighlights {
   cards(filters: ComponentBlocksHomepageHighlightsItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageHighlightsItem]
   id: ID!
@@ -2235,13 +2258,14 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksListItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsListItems | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
   bookmarkUkraine: ComponentBlocksHomepageBookmark
   cards(filters: ComponentBlocksHomepageBookmarkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksHomepageBookmark]
   createdAt: DateTime
+  eventsSection: ComponentSectionsHomepageEvents
   highlights: ComponentSectionsHomepageHighlights
   inba: ComponentBlocksInBa
   inbaFrontImage: UploadFileEntityResponse!
@@ -2280,6 +2304,7 @@ input HomepageFiltersInput {
   bookmarkUkraine: ComponentBlocksHomepageBookmarkFiltersInput
   cards: ComponentBlocksHomepageBookmarkFiltersInput
   createdAt: DateTimeFilterInput
+  eventsSection: ComponentSectionsHomepageEventsFiltersInput
   highlights: ComponentSectionsHomepageHighlightsFiltersInput
   inba: ComponentBlocksInBaFiltersInput
   inbaUrl: StringFilterInput
@@ -2301,6 +2326,7 @@ input HomepageInput {
   bookmarkTourists: ComponentBlocksHomepageBookmarkInput
   bookmarkUkraine: ComponentBlocksHomepageBookmarkInput
   cards: [ComponentBlocksHomepageBookmarkInput]
+  eventsSection: ComponentSectionsHomepageEventsInput
   highlights: ComponentSectionsHomepageHighlightsInput
   inba: ComponentBlocksInBaInput
   inbaFrontImage: ID

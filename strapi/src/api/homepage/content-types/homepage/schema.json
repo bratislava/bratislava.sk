@@ -172,6 +172,17 @@
           "localized": true
         }
       }
+    },
+    "eventsSection": {
+      "displayName": "homepage events",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.homepage-events"
     }
   }
 }
