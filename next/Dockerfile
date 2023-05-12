@@ -1,57 +1,46 @@
-FROM node:16 as build
+FROM node:16-alpine AS base
 
-ENV PORT 3000
+FROM base AS build-base
+WORKDIR /build
+COPY ./package.json ./yarn.lock ./
 
-WORKDIR /root/app
+FROM build-base AS install-prod
+ENV YARN_CACHE_FOLDER=/build/.cache/yarn
+RUN --mount=type=cache,target=/build/.cache/yarn \
+    yarn config set network-timeout 600000 -g \
+ && yarn install --production --frozen-lockfile
 
-COPY package*.json /root/app
-COPY yarn.lock /root/app
-
-RUN yarn config set network-timeout 600000 -g
-RUN yarn install
-
+FROM install-prod AS build
 COPY . ./
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN --mount=type=cache,target=/build/.cache/yarn \
+    yarn install --development --frozen-lockfile \
+ && yarn build
 
-RUN yarn build
-
-
-# FROM node:16 as dev
-
-# RUN mkdir -p /root/app
-# ENV PORT 3000
-
-# WORKDIR /root/app
-
-# COPY package*.json /root/app
-# COPY yarn.lock /root/app
-
-# RUN yarn config set network-timeout 600000 -g
-# RUN yarn install
-
-# COPY . ./
-
-# RUN yarn build
-
-# EXPOSE 3000
-# CMD [ "yarn", "develop" ]
-
-FROM node:16-alpine as prod
-
+FROM base AS app-base
+RUN apk add --no-cache tini
+RUN mkdir -p /home/node/app \
+ && chown node:node /home/node/app
 USER node
-ENV PORT 3000
-
-RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
-
 WORKDIR /home/node/app
-
-COPY --chown=node:node package*.json ./
-COPY --chown=node:node yarn.lock ./
-
-RUN yarn config set network-timeout 600000 -g
-RUN yarn install --production
-
-COPY . ./
-COPY --chown=node:node --from=build /root/app/.next ./.next
-
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 EXPOSE 3000
-CMD [ "yarn", "start" ]
+ARG GIT_COMMIT="undefined"
+ENV GIT_COMMIT=$GIT_COMMIT
+LABEL org.opencontainers.image.revision="${GIT_COMMIT}" \
+      org.opencontainers.image.source="https://github.com/bratislava/marianum.sk" \
+      org.opencontainers.image.licenses="EUPL-1.2"
+ENTRYPOINT [ "/sbin/tini", "--" ]
+
+FROM app-base AS dev
+ENV NODE_ENV=development
+COPY --chown=node:node --from=build /build/node_modules ./node_modules
+CMD [ "yarn", "develop" ]
+
+FROM app-base AS prod
+COPY --chown=node:node .env.*.local ./
+COPY --chown=node:node --from=build /build/.next/standalone ./
+COPY --chown=node:node --from=build /build/public ./public
+COPY --chown=node:node --from=build /build/.next/static ./.next/static
+CMD [ "node", "server.js" ]

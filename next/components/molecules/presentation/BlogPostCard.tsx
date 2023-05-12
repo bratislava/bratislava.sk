@@ -19,7 +19,7 @@ type Props = {
 
 const BlogPostCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...rest }: Props) => {
   return (
-    <CardBase className="h-full" {...rest}>
+    <CardBase {...rest}>
       <div className="relative aspect-16/10 shrink-0">
         {imgSrc ? (
           <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />

@@ -192,5 +192,10 @@
   "RelatedBlogPostsSection": {
     "relatedBlogPosts": "Related articles",
     "readMore": "Read more"
+  },
+  "Bookmark": {
+    "aria": {
+      "close": "Close"
+    }
   }
 }
