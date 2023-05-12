@@ -1,26 +1,26 @@
 .gitignore
+.git/
 .dockerignore
-Dockerfile
+*Dockerfile*
 dist
+node_modules
+npm.debug.log
 .env
-.env.example
-.env.test
 .env.local
 .env.development
 .env.production
-.env.deployment
-.env.deployment.local
 .env.development.local
-.env.bratiska-cli-build.dev
-.env.bratiska-cli-build.staging
-.env.bratiska-cli-build.prod
-node_modules
 misc
 .idea
 .nvmrc
 .tmp/
 .cache/
-.git/
 build/
 data/
-.next
+.next/
+# kustomize files
+kubernetes/
+# bratiska-cli manifest files
+manifest-*.y?ml
+# markdown files
+**/*.md
