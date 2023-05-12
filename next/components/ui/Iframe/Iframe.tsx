@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { useEffect, useRef, useState } from 'react'
 
 export interface IframeProps {
@@ -20,12 +19,14 @@ export const Iframe = ({
   allowGeolocation = false,
   css,
 }: IframeProps) => {
-  const ref = useRef<HTMLIFrameElement>()
+  const ref = useRef<HTMLIFrameElement>(null)
 
   const [height, setHeight] = useState(iframeHeight)
 
   useEffect(() => {
-    ref.current?.setAttribute('style', css)
+    if (css) {
+      ref.current?.setAttribute('style', css)
+    }
   }, [ref, css])
 
   useEffect(() => {

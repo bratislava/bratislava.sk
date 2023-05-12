@@ -1,8 +1,8 @@
-import { getTootTootHomepageEvents } from '@backend/services/toottoot'
+import { getTooTootHomepageEvents } from '@backend/services/tootoot'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  const events = await getTootTootHomepageEvents()
+  const events = await getTooTootHomepageEvents()
   return res.json(events)
 }
 

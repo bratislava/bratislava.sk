@@ -2,7 +2,7 @@
 
 const eventsCount = 10
 
-interface ToottootEventResponse {
+interface TootootEventResponse {
   ProfileName: string
   ProfilePicture: string
   ShareImage: string
@@ -88,7 +88,7 @@ interface Venue {
   HallGroupId?: null
 }
 
-export type ToottootEvent = {
+export type TootootEvent = {
   id: string
   title: string
   url: string
@@ -107,7 +107,7 @@ export type ToottootEvent = {
 /**
  * Documentation: https://github.com/bratislava/bratislava.sk/files/11027013/Tootoot.Lippu.API.documentation.Profile.pdf
  */
-const fetchTootTootHomepageEvents = async (profileIds: string[]) => {
+const fetchTooTootHomepageEvents = async (profileIds: string[]) => {
   const result = await fetch(
     `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=${eventsCount}&profileId=${profileIds.join(
       ',',
@@ -120,16 +120,16 @@ const fetchTootTootHomepageEvents = async (profileIds: string[]) => {
     },
   )
 
-  return result.json() as Promise<ToottootEventResponse[]>
+  return result.json() as Promise<TootootEventResponse[]>
 }
 
 /**
  * First, events from Bratislava profile are displayed, then events up to "eventsCount" are filled from other profiles (displayed
  * also here: https://www.bkis.sk/podujatia/).
  */
-export const getTootTootHomepageEvents = async () => {
-  const eventsBa = await fetchTootTootHomepageEvents(['63dabb7abacf0a031cd19693'])
-  const eventsOther = await fetchTootTootHomepageEvents([
+export const getTooTootHomepageEvents = async () => {
+  const eventsBa = await fetchTooTootHomepageEvents(['63dabb7abacf0a031cd19693'])
+  const eventsOther = await fetchTooTootHomepageEvents([
     '63d14613826c200250f25391', //	BKIS
     '638f33a8b96254062cbbc0ac', //	Divadlo P. O. Hviezdoslava
     '63ceeb9a408a9511ecea8f5e', //	Galéria mesta Bratislava
@@ -177,6 +177,6 @@ export const getTootTootHomepageEvents = async () => {
         beginDate: event.Begin,
         // If the event has no end date, it returns this:
         endDate: event.End === '9999-12-30T23:59:59Z' ? null : event.End,
-      } as ToottootEvent),
+      } as TootootEvent),
   )
 }
