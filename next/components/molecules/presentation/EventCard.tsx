@@ -1,14 +1,18 @@
+import FormatEventDateRange from '@components/atoms/FormatEventDateRange'
 import MLink from '@components/forms/simple-components/MLink'
+import CardBase from '@components/molecules/presentation/CardBase'
+import CardContent from '@components/molecules/presentation/CardContent'
 import Image from 'next/image'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type EventCardProps = {
-  headline: string
-  href: string | null
-  address: string
-  dateTime: string
-  imageUrl: string
+  title: string
+  linkHref: string
+  address?: string
+  dateFrom: string
+  dateTo: string | null
+  imageSrc: string
   imageSizes?: string
   className?: string
 }
@@ -17,38 +21,37 @@ type EventCardProps = {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=487-938&t=7RMKJATYwi0EYY9K-0
  */
 const EventCard = ({
-  headline,
-  href,
+  title,
+  linkHref,
   address,
-  dateTime,
-  imageUrl,
+  dateFrom,
+  dateTo,
+  imageSrc,
   imageSizes,
   className,
 }: EventCardProps) => {
   return (
-    <div
-      className={twMerge(
-        'group relative h-[232px] overflow-hidden rounded-lg text-white lg:h-[300px]',
-        className,
-      )}
+    <CardBase
+      variant="shadow"
+      className={twMerge('h-[232px] rounded-lg text-white lg:h-[300px]', className)}
     >
-      <Image src={imageUrl} alt="" fill className="absolute object-cover" sizes={imageSizes} />
-      <div className="relative inline-flex h-full w-full flex-col items-start justify-end text-clip bg-gradient-to-b from-[rgba(0,0,0,0)] to-[black]">
-        <div className="flex w-full flex-col items-start gap-4 self-stretch p-5">
-          <MLink
-            href={href ?? '#'}
-            className="text-h5 line-clamp-2 group-hover:underline"
-            stretched
-          >
-            {headline}
-          </MLink>
+      <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
+      <CardContent className="relative inline-flex h-full w-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
+        <div className="flex w-full flex-col items-start gap-4 self-stretch">
+          <h3 className="text-h5 line-clamp-2">
+            <MLink href={linkHref} target="_blank" stretched variant="underlineOnHover">
+              {title}
+            </MLink>
+          </h3>
           <div className="text-small flex flex-col items-start font-medium">
-            <span className="line-clamp-1">{address}</span>
-            <span className="line-clamp-1">{dateTime}</span>
+            {address && <span className="line-clamp-1">{address}</span>}
+            <span className="line-clamp-1">
+              <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
+            </span>
           </div>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </CardBase>
   )
 }
 
