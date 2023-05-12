@@ -1,6 +1,12 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import Button from '@components/forms/simple-components/Button'
-import React, { DetailedHTMLProps, Dispatch, InputHTMLAttributes, SetStateAction } from 'react'
+import React, {
+  DetailedHTMLProps,
+  Dispatch,
+  InputHTMLAttributes,
+  KeyboardEvent,
+  SetStateAction,
+} from 'react'
 
 type HomePageSearchFieldProps = {
   value: string
@@ -14,19 +20,30 @@ type HomePageSearchFieldProps = {
 const HomePageSearchField = ({
   value,
   setValue,
-  onSearchPressed,
+  onSearchPressed = () => {},
   className,
   inputClassName,
   ...rest
 }: HomePageSearchFieldProps) => {
+  const handleOnKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      onSearchPressed()
+    }
+    if (event.key === 'ArrowDown') {
+      document.querySelector<HTMLAnchorElement>('#homepage-first-search-result')?.focus()
+      event.preventDefault()
+    }
+  }
+
   return (
     // TODO use BasicSearch instead of duplicating, some functionality needs to be added to BasicSearch
     <div className="flex">
       <input
-        id="name"
+        id="homepage-search-field"
         type="text"
         className="h-12 w-full rounded-l-lg border-2 border-r-0 px-4 text-font outline-none focus:border-gray-700 lg:h-14"
         onChange={(e) => setValue(e.target.value)}
+        onKeyDown={handleOnKeyDown}
         value={value}
         autoComplete="off"
         {...rest}
