@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-const eventsCount = 10
+const eventsCount = 12
 
 interface TootootEventResponse {
   ProfileName: string
@@ -107,7 +107,7 @@ export type TootootEvent = {
 /**
  * Documentation: https://github.com/bratislava/bratislava.sk/files/11027013/Tootoot.Lippu.API.documentation.Profile.pdf
  */
-const fetchTooTootHomepageEvents = async (profileIds: string[]) => {
+const fetchTootootHomepageEvents = async (profileIds: string[]) => {
   const result = await fetch(
     `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=${eventsCount}&profileId=${profileIds.join(
       ',',
@@ -127,9 +127,9 @@ const fetchTooTootHomepageEvents = async (profileIds: string[]) => {
  * First, events from Bratislava profile are displayed, then events up to "eventsCount" are filled from other profiles (displayed
  * also here: https://www.bkis.sk/podujatia/).
  */
-export const getTooTootHomepageEvents = async () => {
-  const eventsBa = await fetchTooTootHomepageEvents(['63dabb7abacf0a031cd19693'])
-  const eventsOther = await fetchTooTootHomepageEvents([
+export const getTootootHomepageEvents = async () => {
+  const eventsBa = await fetchTootootHomepageEvents(['63dabb7abacf0a031cd19693'])
+  const eventsOther = await fetchTootootHomepageEvents([
     '63d14613826c200250f25391', //	BKIS
     '638f33a8b96254062cbbc0ac', //	Divadlo P. O. Hviezdoslava
     '63ceeb9a408a9511ecea8f5e', //	Galéria mesta Bratislava
@@ -145,6 +145,7 @@ export const getTooTootHomepageEvents = async () => {
     '63d06dc32cd37e0a0010d19c', //	Zoologická záhrada
     '63ee15be1ff4a0077c9e14ae', //	Bratislava Tourist Board
     '63ee18a5049c0b04802ae407', //	Archív mesta Bratislava
+    '6407c1d1caa5e70f74c9dc1f', //	OLO Bratislava
     '63d1574f826c200250fb59f4', //	Mestská časť Petržalka
     '63d25e04bacf0a0f6c8a1b58', //	Mestská časť Čuňovo
     '63d25fb7bacf0a0f6c8abf59', //	Mestská časť Devín
@@ -172,7 +173,7 @@ export const getTooTootHomepageEvents = async () => {
         title: event.ProfileName,
         url: `https://tootoot.fm/sk/events/${event._id}`,
         image: `https://api.tootoot.co/api/event/${event._id}/images/${event.ShareImage}/1200/1200/AUTO`,
-        // This is seems the best thing to display as address,
+        // This seems to be the best thing to display as address,
         address: event.Building?.ProfileName,
         beginDate: event.Begin,
         // If the event has no end date, it returns this:

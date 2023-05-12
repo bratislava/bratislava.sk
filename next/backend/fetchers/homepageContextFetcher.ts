@@ -1,5 +1,5 @@
 import { HomepageEntityFragment, LatestBlogPostEntityFragment } from '@backend/graphql'
-import { getTooTootHomepageEvents, TootootEvent } from '@backend/services/tootoot'
+import { getTootootHomepageEvents, TootootEvent } from '@backend/services/tootoot'
 import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
 
@@ -14,7 +14,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
   const [{ homepage }, tootootEvents, { blogPosts }, { blogPosts: rozkopavkyBlogPosts }] =
     await Promise.all([
       client.Homepage({ locale }),
-      getTooTootHomepageEvents().catch(() => null),
+      getTootootHomepageEvents().catch(() => null),
       client.LatestBlogsWithTags({
         limit: 7,
         sort: 'publishedAt:desc',
