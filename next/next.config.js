@@ -10,6 +10,7 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'cdn-api.bratislava.sk', 'goout.net'],
   },
+  output: 'standalone',
   async rewrites() {
     return {
       beforeFiles: [
