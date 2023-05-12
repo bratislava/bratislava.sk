@@ -31,6 +31,44 @@ query BlogPostsStaticPaths {
   }
 }
 
+query BlogPostsRssFeed($locale: I18NLocaleCode!) {
+  blogPosts(locale: $locale, sort: "publishedAt:desc") {
+    data {
+      id
+      attributes {
+        slug
+        title
+        publishedAt
+        date_added
+        excerpt
+        tag {
+          data {
+            attributes {
+              title
+              pageCategory {
+                data {
+                  attributes {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+        coverImage {
+          data {
+            attributes {
+              url
+              mime
+              size
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 query LatestBlogsWithTags(
   $sort: [String]
   $limit: Int
