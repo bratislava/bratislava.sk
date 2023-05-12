@@ -1,5 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
+const eventsCount = 10
+
 interface ToottootEventResponse {
   ProfileName: string
   ProfilePicture: string
@@ -107,7 +109,7 @@ export type ToottootEvent = {
  */
 const fetchTootTootHomepageEvents = async (profileIds: string[]) => {
   const result = await fetch(
-    `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=10&profileId=${profileIds.join(
+    `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=${eventsCount}&profileId=${profileIds.join(
       ',',
     )}`,
     {
@@ -122,7 +124,7 @@ const fetchTootTootHomepageEvents = async (profileIds: string[]) => {
 }
 
 /**
- * First, events from Bratislava profile are displayed, then events up to 10 are filled from other profiles (displayed
+ * First, events from Bratislava profile are displayed, then events up to "eventsCount" are filled from other profiles (displayed
  * also here: https://www.bkis.sk/podujatia/).
  */
 export const getTootTootHomepageEvents = async () => {
@@ -163,12 +165,12 @@ export const getTootTootHomepageEvents = async () => {
     '63dabb7abacf0a031cd19693', //	Mesto Bratislava
   ])
 
-  return [...eventsBa, ...eventsOther].slice(0, 10).map(
+  return [...eventsBa, ...eventsOther].slice(0, eventsCount).map(
     (event) =>
       ({
         id: event._id,
         title: event.ProfileName,
-        url: `https://tootoot.co/event/${event._id}`,
+        url: `https://tootoot.fm/sk/events/${event._id}`,
         image: `https://api.tootoot.co/api/event/${event._id}/images/${event.ShareImage}/1200/1200/AUTO`,
         // This is seems the best thing to display as address,
         address: event.Building?.ProfileName,
