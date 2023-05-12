@@ -24,6 +24,13 @@ fragment HomepageEntity on HomepageEntity {
     mayorAndCouncil {
       ...HomepageMayorAndCouncil
     }
+    eventsSection {
+      title
+      text
+      eventsPageLink {
+        ...CommonLink
+      }
+    }
     topServices {
       title
       services {

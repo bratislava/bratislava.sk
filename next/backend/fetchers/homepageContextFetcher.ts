@@ -1,20 +1,20 @@
 import { HomepageEntityFragment, LatestBlogPostEntityFragment } from '@backend/graphql'
-import { getTootTootHomepageEvents, ToottootEvent } from '@backend/services/toottoot'
+import { getTootootHomepageEvents, TootootEvent } from '@backend/services/tootoot'
 import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
 
 export type HomepageContext = {
   homepage: HomepageEntityFragment | null
-  toottootEvents: ToottootEvent[] | null
+  tootootEvents: TootootEvent[] | null
   blogPosts: LatestBlogPostEntityFragment[] | null
   rozkopavkyBlogPosts: LatestBlogPostEntityFragment[] | null
 }
 
 export const homepageContextFetcher = async (locale: string): Promise<HomepageContext> => {
-  const [{ homepage }, toottootEvents, { blogPosts }, { blogPosts: rozkopavkyBlogPosts }] =
+  const [{ homepage }, tootootEvents, { blogPosts }, { blogPosts: rozkopavkyBlogPosts }] =
     await Promise.all([
       client.Homepage({ locale }),
-      getTootTootHomepageEvents().catch(() => null),
+      getTootootHomepageEvents().catch(() => null),
       client.LatestBlogsWithTags({
         limit: 7,
         sort: 'publishedAt:desc',
@@ -36,7 +36,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
 
   return {
     homepage: homepage?.data ?? null,
-    toottootEvents,
+    tootootEvents,
     blogPosts: blogPosts?.data?.filter(isDefined) ?? null,
     rozkopavkyBlogPosts: rozkopavkyBlogPosts?.data?.filter(isDefined) ?? null,
   }

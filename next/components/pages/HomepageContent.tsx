@@ -23,7 +23,7 @@ const HomepageContent = () => {
 
       <Waves wavePosition="bottom" waveColor="rgb(var(--color-gray-50))" />
 
-      {/* Replace with Toottoot, no need to extract. */}
+      {/* Replace with Tootoot, no need to extract. */}
       <SectionContainer>
         <GooutEventsHomepageSection
           linkTitle={t('allEvents')}

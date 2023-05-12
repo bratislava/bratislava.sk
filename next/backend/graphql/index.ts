@@ -1084,6 +1084,21 @@ export type ComponentSectionsGalleryGalleryItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
+export type ComponentSectionsHomepageEvents = {
+  __typename?: 'ComponentSectionsHomepageEvents'
+  eventsPageLink?: Maybe<ComponentBlocksCommonLink>
+  id: Scalars['ID']
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentSectionsHomepageEventsInput = {
+  eventsPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+  id?: InputMaybe<Scalars['ID']>
+  text?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
+}
+
 export type ComponentSectionsHomepageHighlights = {
   __typename?: 'ComponentSectionsHomepageHighlights'
   cards?: Maybe<Array<Maybe<ComponentBlocksHomepageHighlightsItem>>>
@@ -1823,6 +1838,7 @@ export type GenericMorph =
   | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
+  | ComponentSectionsHomepageEvents
   | ComponentSectionsHomepageHighlights
   | ComponentSectionsHomepageMayorAndCouncil
   | ComponentSectionsHomepageTabs
@@ -1865,6 +1881,7 @@ export type Homepage = {
   bookmarkUkraine?: Maybe<ComponentBlocksHomepageBookmark>
   cards?: Maybe<Array<Maybe<ComponentBlocksHomepageBookmark>>>
   createdAt?: Maybe<Scalars['DateTime']>
+  eventsSection?: Maybe<ComponentSectionsHomepageEvents>
   highlights?: Maybe<ComponentSectionsHomepageHighlights>
   inba?: Maybe<ComponentBlocksInBa>
   inbaFrontImage: UploadFileEntityResponse
@@ -1908,6 +1925,7 @@ export type HomepageInput = {
   bookmarkTourists?: InputMaybe<ComponentBlocksHomepageBookmarkInput>
   bookmarkUkraine?: InputMaybe<ComponentBlocksHomepageBookmarkInput>
   cards?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageBookmarkInput>>>
+  eventsSection?: InputMaybe<ComponentSectionsHomepageEventsInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
   inbaFrontImage?: InputMaybe<Scalars['ID']>
@@ -5322,6 +5340,37 @@ export type HomepageEntityFragment = {
         } | null
       } | null
     } | null
+    eventsSection?: {
+      __typename?: 'ComponentSectionsHomepageEvents'
+      title?: string | null
+      text?: string | null
+      eventsPageLink?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label: string
+        url?: string | null
+        plausibleId?: string | null
+        page?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        blogPost?: {
+          __typename?: 'BlogPostEntityResponse'
+          data?: {
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              title?: string | null
+              slug?: string | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
     topServices?: {
       __typename?: 'ComponentSectionsTopServices'
       title: string
@@ -5730,6 +5779,41 @@ export type HomepageQuery = {
             } | null
           } | null
           councilCard?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            plausibleId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            blogPost?: {
+              __typename?: 'BlogPostEntityResponse'
+              data?: {
+                __typename?: 'BlogPostEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'BlogPost'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+        eventsSection?: {
+          __typename?: 'ComponentSectionsHomepageEvents'
+          title?: string | null
+          text?: string | null
+          eventsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
@@ -10470,6 +10554,13 @@ export const HomepageEntityFragmentDoc = gql`
       mayorAndCouncil {
         ...HomepageMayorAndCouncil
       }
+      eventsSection {
+        title
+        text
+        eventsPageLink {
+          ...CommonLink
+        }
+      }
       topServices {
         title
         services {
@@ -10505,6 +10596,7 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepageHighlightsItemFragmentDoc}
   ${HomepageTabsFragmentDoc}
   ${HomepageMayorAndCouncilFragmentDoc}
+  ${CommonLinkFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
   ${HomepageBookmarkFragmentDoc}

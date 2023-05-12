@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_homepage_events",
+  "info": {
+    "displayName": "homepage events"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "eventsPageLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    }
+  }
+}
