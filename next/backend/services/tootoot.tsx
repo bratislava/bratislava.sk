@@ -128,7 +128,7 @@ const fetchTootootHomepageEvents = async (profileIds: string[]) => {
  * also here: https://www.bkis.sk/podujatia/).
  */
 export const getTootootHomepageEvents = async () => {
-  const eventsBa = await fetchTootootHomepageEvents(['63dabb7abacf0a031cd19693'])
+  const eventsBa = await fetchTootootHomepageEvents(['63dabb7abacf0a031cd19693']) //	Mesto Bratislava
   const eventsOther = await fetchTootootHomepageEvents([
     '63d14613826c200250f25391', //	BKIS
     '638f33a8b96254062cbbc0ac', //	Divadlo P. O. Hviezdoslava
@@ -163,7 +163,6 @@ export const getTootootHomepageEvents = async () => {
     '63d29335bacf0a0f6cac04bc', //	Mestská časť Vajnory
     '63d293c5bacf0a0f6cac3b71', //	Mestská časť Vrakuňa
     '63d29495bacf0a0f6cac8d68', //	Mestská časť Záhorská Bytrica
-    '63dabb7abacf0a031cd19693', //	Mesto Bratislava
   ])
 
   return [...eventsBa, ...eventsOther].slice(0, eventsCount).map(

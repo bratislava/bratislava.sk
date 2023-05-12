@@ -103,11 +103,12 @@ export const Carousel = ({
 
           return (
             <div
+              // eslint-disable-next-line react/no-array-index-key
               key={index}
               className={cx('flex-shrink-0 transform transition-all duration-200', {
                 'px-4': spacing === 'default',
                 'w-1/2': visibleItems === 2,
-                'lg:w-1/3': visibleItems === 3,
+                'w-1/3': visibleItems === 3,
                 'w-1/4': visibleItems === 4,
                 'w-1/5': visibleItems === 5,
                 'w-1/6': visibleItems === 6,
