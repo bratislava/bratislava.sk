@@ -14,7 +14,7 @@ export const SectionContainer = ({
 }: React.HTMLAttributes<HTMLDivElement> & SectionContainerProps) => (
   <div
     className={twMerge(
-      cx('px-8', {
+      cx('relative px-8', {
         'bg-category-200': hasBackground === true,
       }),
       className,
