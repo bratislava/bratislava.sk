@@ -1,4 +1,4 @@
-import { TagEntity } from '@backend/graphql'
+import { PageEntityFragment } from '@backend/graphql'
 import {
   getRelatedBlogPostsQueryKey,
   relatedBlogPostsFetcher,
@@ -14,25 +14,23 @@ import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
 type Props = {
-  tags: TagEntity[] | null | undefined
+  page: PageEntityFragment
   className?: string
 }
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
-const RelatedBlogPostsSection = ({ tags, className }: Props) => {
+const RelatedBlogPostsSection = ({ page, className }: Props) => {
   const t = useTranslations('RelatedBlogPostsSection')
   const locale = useLocale()
 
-  const tagStrings = tags?.map((tag) => tag.attributes?.title).filter(isDefined) ?? []
-
   const { data } = useQuery({
-    queryKey: getRelatedBlogPostsQueryKey(tagStrings, locale),
-    queryFn: () => relatedBlogPostsFetcher(tagStrings, locale),
+    queryKey: getRelatedBlogPostsQueryKey(page, locale),
+    queryFn: () => relatedBlogPostsFetcher(page, locale),
     staleTime: Infinity,
   })
 
-  if (!tags?.length) {
+  if (!data?.blogPosts?.data?.length) {
     return null
   }
 
@@ -46,7 +44,7 @@ const RelatedBlogPostsSection = ({ tags, className }: Props) => {
         </div>
         {/* TODO fetch more posts and use Carousel, at least for mobile */}
         <ul className="grid grid-cols-1 gap-3 lg:grid-cols-3 lg:gap-8">
-          {data?.blogPosts?.data.filter(isDefined).map((card) => {
+          {data.blogPosts.data.filter(isDefined).map((card) => {
             if (!card.attributes) return null
 
             // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
@@ -56,6 +54,7 @@ const RelatedBlogPostsSection = ({ tags, className }: Props) => {
 
             return (
               <BlogPostCard
+                key={card.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="shadow"
                 date={getNumericLocalDate(date_added ?? publishedAt)}
