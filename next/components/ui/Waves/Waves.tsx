@@ -19,7 +19,11 @@ export const Waves = ({
   wavePosition,
 }: WavesProps) => {
   return (
-    <div style={{ backgroundColor, color: waveColor }} className={cx('overflow-hidden', className)}>
+    <div
+      aria-hidden
+      style={{ backgroundColor, color: waveColor }}
+      className={cx('overflow-hidden', className)}
+    >
       {wavePosition === 'top' && (
         <>
           <WaveTopLarge className="-mb-px hidden md:block" />

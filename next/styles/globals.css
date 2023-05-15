@@ -22,6 +22,10 @@
 }
 
 @layer components {
+  .negative-x-spacing {
+    @apply -mx-4 px-4
+  }
+
   .text-h1-lg {
     @apply text-size-h1-hero-r lg:text-size-h1-hero;
   }

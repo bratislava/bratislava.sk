@@ -18,7 +18,7 @@ const InbaHomepageSection = () => {
   return (
     <SectionContainer className="mb-8">
       <InBaCard className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28" {...inba} />
-      <div className="hidden md:block md:h-20" />
+      <div aria-hidden className="hidden md:block md:h-20" />
     </SectionContainer>
   )
 }

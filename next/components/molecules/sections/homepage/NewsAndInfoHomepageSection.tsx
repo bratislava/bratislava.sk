@@ -7,7 +7,7 @@ import React from 'react'
 
 const NewsAndInfoHomepageSection = () => {
   return (
-    <SectionContainer className="bg-gray-50 pb-14 md:px-8">
+    <SectionContainer className="bg-gray-50 pb-14">
       <HighlightsHomepageSection />
       <HomepageTabs className="lg:mt-10" />
       <HorizontalDivider className="mt-8 lg:mt-18" />

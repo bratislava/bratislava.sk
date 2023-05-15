@@ -24,11 +24,11 @@ export const HomepageTabs = ({ className }: HomepageTabsProps) => {
   }, [t])
 
   return (
-    <div className={cx(className)}>
+    <div className={className}>
       <Tabs>
         <TabList
           aria-label={t('aria.tabListName')}
-          className="-mx-8 flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden px-8 scrollbar-hide md:mx-auto md:grid"
+          className="negative-x-spacing flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden scrollbar-hide md:grid"
         >
           {tabs.map(({ id, label }) => (
             <Tab

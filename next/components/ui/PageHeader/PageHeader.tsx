@@ -50,8 +50,8 @@ export const PageHeader = ({
           />
         </div>
       )}
-      <div className="px-8">
-        <div className="relative mx-auto flex max-w-screen-lg flex-col">
+      <div className="mx-auto max-w-screen-xl px-4 lg:px-8">
+        <div className="flex flex-col">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div className="mb-6 mt-3 flex flex-col gap-y-4 lg:mb-10 lg:mt-6 lg:gap-y-6">
             {tag && (
