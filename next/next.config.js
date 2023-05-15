@@ -8,7 +8,7 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'cdn-api.bratislava.sk', 'goout.net', 'api.tootoot.co'],
+    domains: ['localhost', 'cdn-api.bratislava.sk', 'api.tootoot.co'],
   },
   output: 'standalone',
   async rewrites() {
