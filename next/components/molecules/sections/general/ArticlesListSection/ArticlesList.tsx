@@ -181,8 +181,7 @@ const ArticlesList = ({
 
           return (
             <BlogPostCard
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
+              key={blogPost.id}
               variant="shadow"
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={generateImageSizes({ sm: '50vw', lg: '33vw', default: '100vw' })}
