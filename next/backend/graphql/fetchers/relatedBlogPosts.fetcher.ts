@@ -1,11 +1,25 @@
+import { PageEntityFragment } from '@backend/graphql'
+import { isDefined } from '@utils/isDefined'
 import { client } from '@utils/gql'
 
-export const getRelatedBlogPostsQueryKey = (tags: string[], locale: string) => [
+const extractTags = (page: PageEntityFragment) => {
+  return page.attributes?.relatedContents?.data
+    .map((tag) => tag?.attributes?.title)
+    .filter(isDefined)
+}
+export const getRelatedBlogPostsQueryKey = (page: PageEntityFragment, locale: string) => [
   'relatedBlogPosts',
-  tags,
+  extractTags(page) ?? null,
   locale,
 ]
 
-export const relatedBlogPostsFetcher = (tags: string[], locale: string) =>
+export const relatedBlogPostsFetcher = (page: PageEntityFragment, locale: string) => {
+  const extractedTags = extractTags(page)
+
+  if (!extractedTags || extractedTags.length === 0) {
+    return Promise.resolve(null)
+  }
+
   // Change to limit: 9, when section with slider buttons is implemented
-  client.LatestPostsByTags({ locale, tags, limit: 3 })
+  return client.LatestPostsByTags({ locale, tags: extractedTags, limit: 3 })
+}

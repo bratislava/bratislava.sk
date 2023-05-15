@@ -57,7 +57,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       <div className="mb-8">
         {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
         <RelatedBlogPostsSection
-          tags={page.attributes?.relatedContents?.data.filter(isDefined)}
+          page={page}
           // The same as Section
           className="pt-10 md:pt-18"
         />
