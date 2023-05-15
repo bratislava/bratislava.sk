@@ -20,7 +20,6 @@ const TabPanelLatestNews = () => {
   const t = useTranslations('HomepageTabs')
 
   const { homepage, blogPosts } = useHomepageContext()
-  // TODO replace by tabs.leftNewsItem and tabs.righNewsItem
   const { tabs } = homepage?.attributes ?? {}
   const { leftNewsItem, rightNewsItem } = tabs ?? {}
   const latestPostsFiltered =
@@ -37,10 +36,11 @@ const TabPanelLatestNews = () => {
   return (
     <TabPanel id="LatestNews">
       {/* TODO carousel is used only on mobile */}
+      {/* TODO standardize negative scroll spacing and card width */}
       <Carousel
-        className="-mx-8 lg:hidden"
+        className="-mx-4 lg:hidden"
         itemClassName="w-[calc(100%-1rem)] md:w-[calc(50%-1rem)] py-8"
-        listClassName="px-8"
+        listClassName="px-4"
         visibleCount={1}
         hideControls
         items={allPosts.map((post, index) => {

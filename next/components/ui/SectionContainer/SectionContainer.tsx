@@ -1,27 +1,27 @@
 import cx from 'classnames'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-interface SectionContainerProps {
+type SectionContainerProps = {
   hasBackground?: boolean
-}
+} & HTMLAttributes<HTMLDivElement>
 
 export const SectionContainer = ({
+  hasBackground = false,
   className,
   children,
-  hasBackground = false,
   ...rest
-}: React.HTMLAttributes<HTMLDivElement> & SectionContainerProps) => (
+}: SectionContainerProps) => (
   <div
     className={twMerge(
-      cx('relative px-8', {
+      cx('relative', {
         'bg-category-200': hasBackground === true,
       }),
       className,
     )}
     {...rest}
   >
-    <div className="mx-auto w-full max-w-screen-lg">{children}</div>
+    <div className="mx-auto max-w-screen-xl px-4 lg:px-8">{children}</div>
   </div>
 )
 

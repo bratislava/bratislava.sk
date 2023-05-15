@@ -36,7 +36,7 @@ const GooutEventsHomepageSection = ({ title, linkTitle, linkUrl, className }: IP
 
       <div className="mt-6 gap-x-5 py-6 lg:mt-14 lg:gap-x-6">
         <Carousel
-          className="-mx-8"
+          className="-mx-4"
           shiftIndex={3}
           visibleItems={3}
           items={gooutEvents.map((ev, i) => (

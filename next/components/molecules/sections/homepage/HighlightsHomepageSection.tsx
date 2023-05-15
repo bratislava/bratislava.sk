@@ -20,18 +20,19 @@ export const HighlightsHomepageSection = () => {
   const filteredHighlights = cards?.filter(isDefined) ?? []
 
   return (
-    <div className="-mx-8 py-8 md:mx-0 md:py-0">
+    <div className="negative-x-spacing py-8 md:py-0">
       {title || text ? (
         <div className="flex flex-col gap-2 text-center lg:pt-18">
           {title && <h2 className="text-h2">{title}</h2>}
           {text && <div>{text}</div>}
         </div>
       ) : null}
+      {/* TODO standardize negative scroll spacing and card width */}
       <Carousel
-        className="md:hidden"
+        className="-mx-4 md:hidden"
         shiftIndex={1}
         visibleCount={1}
-        listClassName="gap-4 px-8 py-8"
+        listClassName="gap-4 py-8 px-4"
         itemClassName="w-[calc(100%-1rem)]"
         hideControls
         items={filteredHighlights.map((post, index) => {
