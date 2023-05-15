@@ -76,6 +76,7 @@ export const AdvancedSearch = ({
           value={input}
           onChange={(event) => setInput(event.target.value)}
           onKeyDown={handleKeyDown}
+          autoFocus
         />
         <Button
           icon={<SearchIcon />}
