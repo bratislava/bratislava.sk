@@ -1,5 +1,6 @@
 import { SectionsFragment } from '@backend/graphql'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
 import FeaturedBlogPostsSection from '@components/molecules/sections/pageHeader/FeaturedBlogPostsSection'
 import cx from 'classnames'
 import * as React from 'react'
@@ -72,6 +73,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsArticlesList':
       return <ArticlesListSection section={section} />
+
+    case 'ComponentSectionsBlogPostsList':
+      return <BlogPostsByTags section={section} />
 
     case 'ComponentSectionsOrganizationalStructure':
       return <OrganizationalStructureSection section={section} />
