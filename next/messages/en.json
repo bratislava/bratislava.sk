@@ -13,7 +13,6 @@
   "relatedContentTitle": "Related content",
   "readMore": "Read more",
   "allEvents": "All events",
-  "goOutNewsLink": "city-administration/transparent-city/news",
   "moreInfo": "More info",
   "allNewsLink": "/city-of-bratislava/transparent-city/news",
   "upComingEvents": "Upcoming events",
@@ -197,5 +196,8 @@
     "aria": {
       "close": "Close"
     }
+  },
+  "EventCard": {
+    "from": "from"
   }
 }

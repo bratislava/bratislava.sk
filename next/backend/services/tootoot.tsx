@@ -1,6 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 
-const eventsCount = 12
+import sortBy from 'lodash/sortBy'
+
+// This constant is bigger than shown events because of filtering, may be adjusted if needed
+const eventsCount = 24
 
 interface TootootEventResponse {
   ProfileName: string
@@ -102,6 +105,7 @@ export type TootootEvent = {
    * ISO 8601 date or null
    */
   endDate: string | null
+  isLongTerm: boolean
 }
 
 /**
@@ -128,7 +132,7 @@ const fetchTootootHomepageEvents = async (profileIds: string[]) => {
  * also here: https://www.bkis.sk/podujatia/).
  */
 export const getTootootHomepageEvents = async () => {
-  const eventsBa = await fetchTootootHomepageEvents(['63dabb7abacf0a031cd19693'])
+  const eventsBa = await fetchTootootHomepageEvents(['63dabb7abacf0a031cd19693']) //	Mesto Bratislava
   const eventsOther = await fetchTootootHomepageEvents([
     '63d14613826c200250f25391', //	BKIS
     '638f33a8b96254062cbbc0ac', //	Divadlo P. O. Hviezdoslava
@@ -163,21 +167,25 @@ export const getTootootHomepageEvents = async () => {
     '63d29335bacf0a0f6cac04bc', //	Mestská časť Vajnory
     '63d293c5bacf0a0f6cac3b71', //	Mestská časť Vrakuňa
     '63d29495bacf0a0f6cac8d68', //	Mestská časť Záhorská Bytrica
-    '63dabb7abacf0a031cd19693', //	Mesto Bratislava
   ])
 
-  return [...eventsBa, ...eventsOther].slice(0, eventsCount).map(
-    (event) =>
-      ({
+  // Hint from Tootoot: sorting events by endDate helps to prevent longer events to take space in first places for too long
+  return [...sortBy(eventsBa, ['End']), ...sortBy(eventsOther, ['End'])]
+    .slice(0, eventsCount)
+    .map((event) => {
+      // If the event is so called "long-term", it returns this:
+      const isLongTerm = event.End === '9999-12-30T23:59:59Z'
+
+      return {
         id: event._id,
         title: event.ProfileName,
         url: `https://tootoot.fm/sk/events/${event._id}`,
-        image: `https://api.tootoot.co/api/event/${event._id}/images/${event.ShareImage}/1200/1200/AUTO`,
+        image: `https://api.tootoot.co/api/event/${event._id}/images/${event.ShareImage}/768/600/AUTO`,
         // This seems to be the best thing to display as address,
         address: event.Building?.ProfileName,
         beginDate: event.Begin,
-        // If the event has no end date, it returns this:
-        endDate: event.End === '9999-12-30T23:59:59Z' ? null : event.End,
-      } as TootootEvent),
-  )
+        endDate: isLongTerm ? null : event.End,
+        isLongTerm,
+      } as TootootEvent
+    })
 }

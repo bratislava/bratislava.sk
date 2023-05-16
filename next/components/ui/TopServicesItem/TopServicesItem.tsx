@@ -15,7 +15,7 @@ export const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
   const { children: label, ...linkProps } = getCommonLinkProps(link)
 
   return (
-    <li className="relative flex gap-3 rounded-lg bg-white px-4 py-3 md:bg-transparent md:p-0 lg:gap-4">
+    <div className="relative flex gap-3 rounded-lg bg-white px-4 py-3 md:bg-transparent md:p-0 lg:gap-4">
       <div aria-hidden>
         <Icon iconName={icon} className="h-12 w-12 md:h-16 md:w-16" />
       </div>
@@ -25,7 +25,7 @@ export const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
           {t('learnMore')}
         </Button>
       </div>
-    </li>
+    </div>
   )
 }
 
