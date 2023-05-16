@@ -37,7 +37,15 @@ export const EventsHomepageSection = () => {
           hideControls
           items={
             tootootEvents?.map((event, index) => {
-              const { title: eventTitle, url, image: imageSrc, address, beginDate, endDate } = event
+              const {
+                title: eventTitle,
+                url,
+                image: imageSrc,
+                address,
+                beginDate,
+                endDate,
+                isLongTerm,
+              } = event
 
               return {
                 key: `${index}`,
@@ -51,6 +59,7 @@ export const EventsHomepageSection = () => {
                     address={address}
                     dateFrom={beginDate}
                     dateTo={endDate}
+                    isLongTerm={isLongTerm}
                     imageSizes={imageSizes}
                   />
                 ),
@@ -64,7 +73,15 @@ export const EventsHomepageSection = () => {
           visibleItems={3}
           scrollerClassName=""
           items={tootootEvents?.map((event, index) => {
-            const { title: eventTitle, url, image: imageSrc, address, beginDate, endDate } = event
+            const {
+              title: eventTitle,
+              url,
+              image: imageSrc,
+              address,
+              beginDate,
+              endDate,
+              isLongTerm,
+            } = event
             return (
               <div className="py-8">
                 <EventCard
@@ -76,6 +93,7 @@ export const EventsHomepageSection = () => {
                   address={address}
                   dateFrom={beginDate}
                   dateTo={endDate}
+                  isLongTerm={isLongTerm}
                   imageSizes={imageSizes}
                 />
               </div>

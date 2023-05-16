@@ -8,7 +8,21 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'cdn-api.bratislava.sk', 'api.tootoot.co'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-api.bratislava.sk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.tootoot.co',
+        pathname: '/api/event/*/images/*/*/*/(AUTO|WIDTH|HEIGHT|MINSIDE)',
+      },
+    ],
   },
   output: 'standalone',
   async rewrites() {

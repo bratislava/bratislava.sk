@@ -196,5 +196,8 @@
     "aria": {
       "close": "Close"
     }
+  },
+  "EventCard": {
+    "from": "from"
   }
 }

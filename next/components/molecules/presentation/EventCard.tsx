@@ -3,6 +3,7 @@ import MLink from '@components/forms/simple-components/MLink'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -12,6 +13,7 @@ type EventCardProps = {
   address?: string
   dateFrom: string
   dateTo: string | null
+  isLongTerm?: boolean
   imageSrc: string
   imageSizes?: string
   className?: string
@@ -26,10 +28,13 @@ const EventCard = ({
   address,
   dateFrom,
   dateTo,
+  isLongTerm,
   imageSrc,
   imageSizes,
   className,
 }: EventCardProps) => {
+  const t = useTranslations('EventCard')
+
   return (
     <CardBase
       variant="shadow"
@@ -46,6 +51,7 @@ const EventCard = ({
           <div className="text-small flex flex-col items-start font-medium">
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">
+              {isLongTerm && `${t('from')} `}
               <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
             </span>
           </div>

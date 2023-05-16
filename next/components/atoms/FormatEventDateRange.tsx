@@ -9,6 +9,10 @@ import { bratislavaTimezone } from '@utils/consts'
 import React from 'react'
 import { useDateFormatter } from 'react-aria'
 
+/**
+ * This component is copied from MKB project: https://github.com/bratislava/mestskakniznica.sk/blob/master/next/modules/formatting/FormatEventDateRange.tsx
+ */
+
 const hyphenCharacter = '–'
 
 type PartsProps = {
