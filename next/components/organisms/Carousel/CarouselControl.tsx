@@ -2,6 +2,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
 import { ButtonProps } from '@components/forms/simple-components/Button'
 import CarouselControlButton from '@components/organisms/Carousel/CarouselControlButton'
 import cx from 'classnames'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export type CarouselControlDirection = 'left' | 'right'
@@ -11,6 +12,8 @@ type CarouselControlProps = {
 } & Pick<ButtonProps, 'onPress'>
 
 const CarouselControl = ({ direction, onPress }: CarouselControlProps) => {
+  const t = useTranslations('Carousel')
+
   return (
     <CarouselControlButton
       onPress={onPress}
@@ -19,6 +22,7 @@ const CarouselControl = ({ direction, onPress }: CarouselControlProps) => {
         'right-0 translate-x-1/2 transform': direction === 'right',
       })}
       icon={direction === 'left' ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+      aria-label={direction === 'left' ? t('aria.previous') : t('aria.next')}
     />
   )
 }

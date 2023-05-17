@@ -199,5 +199,12 @@
   },
   "EventCard": {
     "from": "from"
+  },
+  "Carousel": {
+    "aria": {
+      "controlButtons": "Control buttons",
+      "previous": "Previous",
+      "next": "Next"
+    }
   }
 }
