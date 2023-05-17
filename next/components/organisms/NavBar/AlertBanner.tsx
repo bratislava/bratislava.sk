@@ -1,16 +1,22 @@
 import { AlertIcon, CrossIcon } from '@assets/ui-icons'
+import { client } from '@backend/graphql/gql'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
-import { useGeneralContext } from '@utils/generalContext'
+import { useQuery } from '@tanstack/react-query'
 import cx from 'classnames'
+import { useLocale } from 'next-intl'
 import React, { forwardRef, useEffect, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
-  const { alert } = useGeneralContext()
-  const { text, updatedAt } = alert?.data?.attributes ?? {}
+  const locale = useLocale()
+
   const storageKey = `bratislava-sk-dismissible-alert-timestamp`
+
+  const { data } = useQuery({ queryKey: ['AlertBanner'], queryFn: () => client.Alert({ locale }) })
+  const { alert } = data ?? {}
+  const { text, updatedAt } = alert?.data?.attributes ?? {}
 
   const [showAlert, setShowAlert] = useState(false)
   const [storageTimestamp, setStorageTimestamp] = useLocalStorage(storageKey, null)
@@ -21,7 +27,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
     }
   }, [storageTimestamp, updatedAt])
 
-  if (!showAlert || !alert?.data?.attributes?.text?.length) {
+  if (!showAlert || !text?.length) {
     return null
   }
 
