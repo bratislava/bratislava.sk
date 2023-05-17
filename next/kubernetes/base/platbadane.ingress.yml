@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
     kubernetes.io/ingress.class: haproxy
-    ingress.kubernetes.io/redirect-to: 'https://www.${HOSTNAME}/mesto-bratislava/dane-a-poplatky/dan-z-nehnutelnosti/digitalna-platba'
+    ingress.kubernetes.io/redirect-to: 'https://www.${BRATISKA_HOSTNAME}/mesto-bratislava/dane-a-poplatky/dan-z-nehnutelnosti/digitalna-platba'
 spec:
   tls:
     - hosts:
