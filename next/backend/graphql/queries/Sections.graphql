@@ -122,6 +122,16 @@ fragment ArticlesListSection on ComponentSectionsArticlesList {
   filtering
 }
 
+fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
+  title
+  text
+  tags {
+    data {
+      id
+    }
+  }
+}
+
 fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
   hasBackground
@@ -488,6 +498,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsArticlesList {
     ...ArticlesListSection
+  }
+
+  ... on ComponentSectionsBlogPostsList {
+    ...BlogPostsListSection
   }
 
   ... on ComponentSectionsOrganizationalStructure {

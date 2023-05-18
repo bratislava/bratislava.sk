@@ -35,6 +35,7 @@ const searchIndexSettings = {
     'type',
     // Page + Blog post
     'locale',
+    'blog-post.tag.id',
   ],
   sortableAttributes: [
     // Article
@@ -67,6 +68,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: 'all',
+      populate: ['tag.pageCategory', 'coverImage'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
