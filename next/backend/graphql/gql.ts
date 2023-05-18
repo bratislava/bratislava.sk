@@ -1,4 +1,4 @@
-import { getSdk } from '@backend/graphql'
+import { getSdk } from '@backend/graphql/index'
 import { GraphQLClient } from 'graphql-request'
 import getConfig from 'next/config'
 

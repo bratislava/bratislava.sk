@@ -1,6 +1,6 @@
 import { HomepageEntityFragment, LatestBlogPostEntityFragment } from '@backend/graphql'
+import { client } from '@backend/graphql/gql'
 import { getTootootHomepageEvents, TootootEvent } from '@backend/services/tootoot'
-import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
 
 export type HomepageContext = {

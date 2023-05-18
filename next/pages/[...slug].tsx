@@ -1,4 +1,5 @@
 import { GeneralQuery, PageEntityFragment } from '@backend/graphql'
+import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
 import GeneralPageContent from '@components/pages/generalPageContent'
 import {
@@ -9,7 +10,6 @@ import {
 import { DehydratedState, Hydrate } from '@tanstack/react-query'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
-import { client } from '@utils/gql'
 import { isDefined } from '@utils/isDefined'
 import { prefetchPageSections } from '@utils/prefetchPageSections'
 import { useTitle } from '@utils/useTitle'
