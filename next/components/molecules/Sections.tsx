@@ -18,7 +18,6 @@ import GallerySection from './sections/general/GallerySection'
 import IconTitleDescSection from './sections/general/IconTitleDescSection'
 import IframeSection from './sections/general/IframeSection'
 import LinksSection from './sections/general/LinksSection'
-import ListItemsSection from './sections/general/ListItemsSection'
 import NarrowTextSection from './sections/general/NarrowTextSection'
 import NewsletterSection from './sections/general/NewsletterSection'
 import NumericalListSection from './sections/general/NumericalListSection'
@@ -64,9 +63,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsCalculator':
       return <CalculatorSection section={section} />
-
-    case 'ComponentSectionsListItems':
-      return <ListItemsSection section={section} />
 
     case 'ComponentSectionsNewsletter':
       return <NewsletterSection />

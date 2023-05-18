@@ -542,27 +542,6 @@ export type ComponentBlocksInBaInput = {
   title?: InputMaybe<Scalars['String']>
 }
 
-export type ComponentBlocksListItem = {
-  __typename?: 'ComponentBlocksListItem'
-  circleOption?: Maybe<Enum_Componentblockslistitem_Circleoption>
-  content?: Maybe<Scalars['String']>
-  id: Scalars['ID']
-  moreLinkPage?: Maybe<PageEntityResponse>
-  moreLinkTitle?: Maybe<Scalars['String']>
-  moreLinkUrl?: Maybe<Scalars['String']>
-}
-
-export type ComponentBlocksListItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksListItemFiltersInput>>>
-  circleOption?: InputMaybe<StringFilterInput>
-  content?: InputMaybe<StringFilterInput>
-  moreLinkPage?: InputMaybe<PageFiltersInput>
-  moreLinkTitle?: InputMaybe<StringFilterInput>
-  moreLinkUrl?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksListItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksListItemFiltersInput>>>
-}
-
 export type ComponentBlocksNumericalListItem = {
   __typename?: 'ComponentBlocksNumericalListItem'
   id: Scalars['ID']
@@ -1196,20 +1175,6 @@ export type ComponentSectionsLinksPageLinksArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
-export type ComponentSectionsListItems = {
-  __typename?: 'ComponentSectionsListItems'
-  hasBackground?: Maybe<Scalars['Boolean']>
-  id: Scalars['ID']
-  listItems?: Maybe<Array<Maybe<ComponentBlocksListItem>>>
-  title?: Maybe<Scalars['String']>
-}
-
-export type ComponentSectionsListItemsListItemsArgs = {
-  filters?: InputMaybe<ComponentBlocksListItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
 export type ComponentSectionsNarrowText = {
   __typename?: 'ComponentSectionsNarrowText'
   align?: Maybe<Enum_Componentsectionsnarrowtext_Align>
@@ -1416,11 +1381,6 @@ export enum Enum_Componentaccordionitemsflattext_Width {
   Full = 'full',
   Narrow = 'narrow',
   Wide = 'wide',
-}
-
-export enum Enum_Componentblockslistitem_Circleoption {
-  Primary = 'primary',
-  Secondary = 'secondary',
 }
 
 export enum Enum_Componentblocksspaceinfo_Imageposition {
@@ -1808,7 +1768,6 @@ export type GenericMorph =
   | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksIconWithTitleAndDescription
   | ComponentBlocksInBa
-  | ComponentBlocksListItem
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksProsAndConsCard
@@ -1845,7 +1804,6 @@ export type GenericMorph =
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsLinks
-  | ComponentSectionsListItems
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
   | ComponentSectionsNumericalList
@@ -2706,7 +2664,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsLinks
-  | ComponentSectionsListItems
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
   | ComponentSectionsNumericalList
@@ -6858,30 +6815,6 @@ export type PageBySlugQuery = {
               } | null> | null
             }
           | {
-              __typename: 'ComponentSectionsListItems'
-              title?: string | null
-              hasBackground?: boolean | null
-              listItems?: Array<{
-                __typename?: 'ComponentBlocksListItem'
-                content?: string | null
-                moreLinkTitle?: string | null
-                moreLinkUrl?: string | null
-                circleOption?: Enum_Componentblockslistitem_Circleoption | null
-                moreLinkPage?: {
-                  __typename?: 'PageEntityResponse'
-                  data?: {
-                    __typename?: 'PageEntity'
-                    attributes?: {
-                      __typename?: 'Page'
-                      locale?: string | null
-                      slug?: string | null
-                      title?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
-            }
-          | {
               __typename: 'ComponentSectionsNarrowText'
               hasBackground?: boolean | null
               content?: string | null
@@ -7709,30 +7642,6 @@ export type PageEntityFragment = {
           } | null> | null
         }
       | {
-          __typename: 'ComponentSectionsListItems'
-          title?: string | null
-          hasBackground?: boolean | null
-          listItems?: Array<{
-            __typename?: 'ComponentBlocksListItem'
-            content?: string | null
-            moreLinkTitle?: string | null
-            moreLinkUrl?: string | null
-            circleOption?: Enum_Componentblockslistitem_Circleoption | null
-            moreLinkPage?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                attributes?: {
-                  __typename?: 'Page'
-                  locale?: string | null
-                  slug?: string | null
-                  title?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsNarrowText'
           hasBackground?: boolean | null
           content?: string | null
@@ -8382,31 +8291,6 @@ export type CalculatorSectionFragment = {
   single_adult_value?: number | null
   another_adult_value?: number | null
   child_value?: number | null
-}
-
-export type ListItemsSectionFragment = {
-  __typename?: 'ComponentSectionsListItems'
-  title?: string | null
-  hasBackground?: boolean | null
-  listItems?: Array<{
-    __typename?: 'ComponentBlocksListItem'
-    content?: string | null
-    moreLinkTitle?: string | null
-    moreLinkUrl?: string | null
-    circleOption?: Enum_Componentblockslistitem_Circleoption | null
-    moreLinkPage?: {
-      __typename?: 'PageEntityResponse'
-      data?: {
-        __typename?: 'PageEntity'
-        attributes?: {
-          __typename?: 'Page'
-          locale?: string | null
-          slug?: string | null
-          title?: string | null
-        } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 export type VideoBlockFragment = {
@@ -9242,31 +9126,6 @@ type Sections_ComponentSectionsLinks_Fragment = {
   } | null> | null
 }
 
-type Sections_ComponentSectionsListItems_Fragment = {
-  __typename: 'ComponentSectionsListItems'
-  title?: string | null
-  hasBackground?: boolean | null
-  listItems?: Array<{
-    __typename?: 'ComponentBlocksListItem'
-    content?: string | null
-    moreLinkTitle?: string | null
-    moreLinkUrl?: string | null
-    circleOption?: Enum_Componentblockslistitem_Circleoption | null
-    moreLinkPage?: {
-      __typename?: 'PageEntityResponse'
-      data?: {
-        __typename?: 'PageEntity'
-        attributes?: {
-          __typename?: 'Page'
-          locale?: string | null
-          slug?: string | null
-          title?: string | null
-        } | null
-      } | null
-    } | null
-  } | null> | null
-}
-
 type Sections_ComponentSectionsNarrowText_Fragment = {
   __typename: 'ComponentSectionsNarrowText'
   hasBackground?: boolean | null
@@ -9387,7 +9246,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsIconTitleDesc_Fragment
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsLinks_Fragment
-  | Sections_ComponentSectionsListItems_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
   | Sections_ComponentSectionsNewsletter_Fragment
   | Sections_ComponentSectionsNumericalList_Fragment
@@ -9844,27 +9702,6 @@ export const CalculatorSectionFragmentDoc = gql`
     child_value
   }
 `
-export const ListItemsSectionFragmentDoc = gql`
-  fragment ListItemsSection on ComponentSectionsListItems {
-    title
-    hasBackground
-    listItems {
-      content
-      moreLinkTitle
-      moreLinkUrl
-      moreLinkPage {
-        data {
-          attributes {
-            locale
-            slug
-            title
-          }
-        }
-      }
-      circleOption
-    }
-  }
-`
 export const VideoBlockFragmentDoc = gql`
   fragment VideoBlock on ComponentBlocksVideo {
     id
@@ -10135,9 +9972,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsCalculator {
       ...CalculatorSection
     }
-    ... on ComponentSectionsListItems {
-      ...ListItemsSection
-    }
     ... on ComponentSectionsVideos {
       ...VideosSection
     }
@@ -10180,7 +10014,6 @@ export const SectionsFragmentDoc = gql`
   ${ContactSectionFragmentDoc}
   ${AccordionSectionFragmentDoc}
   ${CalculatorSectionFragmentDoc}
-  ${ListItemsSectionFragmentDoc}
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
   ${ArticlesListSectionFragmentDoc}

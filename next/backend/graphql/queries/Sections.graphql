@@ -294,26 +294,6 @@ fragment CalculatorSection on ComponentSectionsCalculator {
   child_value
 }
 
-fragment ListItemsSection on ComponentSectionsListItems {
-  title
-  hasBackground
-  listItems {
-    content
-    moreLinkTitle
-    moreLinkUrl
-    moreLinkPage {
-      data {
-        attributes {
-          locale
-          slug
-          title
-        }
-      }
-    }
-    circleOption
-  }
-}
-
 fragment VideoBlock on ComponentBlocksVideo {
   id
   title
@@ -496,10 +476,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsCalculator {
     ...CalculatorSection
-  }
-
-  ... on ComponentSectionsListItems {
-    ...ListItemsSection
   }
 
   ... on ComponentSectionsVideos {
