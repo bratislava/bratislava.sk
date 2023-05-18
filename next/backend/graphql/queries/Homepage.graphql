@@ -90,6 +90,7 @@ fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
 }
 
 fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
+  id # keep for .map() key
   link {
     ...CommonLink
   }

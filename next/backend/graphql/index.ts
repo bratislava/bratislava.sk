@@ -5050,6 +5050,7 @@ export type HomepageEntityFragment = {
       text?: string | null
       cards?: Array<{
         __typename?: 'ComponentBlocksHomepageHighlightsItem'
+        id: string
         link: {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
@@ -5499,6 +5500,7 @@ export type HomepageQuery = {
           text?: string | null
           cards?: Array<{
             __typename?: 'ComponentBlocksHomepageHighlightsItem'
+            id: string
             link: {
               __typename?: 'ComponentBlocksCommonLink'
               label: string
@@ -5963,6 +5965,7 @@ export type HomepageBookmarkFragment = {
 
 export type HomepageHighlightsItemFragment = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
+  id: string
   link: {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
@@ -10349,6 +10352,7 @@ export const AlertFragmentDoc = gql`
 `
 export const HomepageHighlightsItemFragmentDoc = gql`
   fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
+    id
     link {
       ...CommonLink
     }
