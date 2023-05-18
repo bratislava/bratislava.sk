@@ -1,5 +1,5 @@
 import { VideoBlockFragment, VideosSectionFragment } from '@backend/graphql'
-import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
 import React from 'react'
@@ -66,11 +66,12 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
       {subtitle && <div className="md:text-large-respo mb-10 mt-5">{subtitle}</div>}
 
       {/* Mobile */}
-      <HorizontalScrollWrapper className="flex gap-x-5 lg:hidden">
-        {videos.filter(isPresent).map((video) => (
+      <ResponsiveCarousel
+        className="lg:hidden"
+        items={videos.filter(isPresent).map((video) => (
           <Video key={video.url} size="small" {...video} />
         ))}
-      </HorizontalScrollWrapper>
+      />
 
       {/* Desktop */}
       <div className="hidden gap-8 lg:grid lg:grid-cols-3">

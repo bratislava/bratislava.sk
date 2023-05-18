@@ -1,7 +1,6 @@
 import IconEye from '@assets/images/icon-eye-white.svg'
 import { ChevronDownIcon } from '@assets/ui-icons'
 import { GallerySectionFragment } from '@backend/graphql'
-import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { Modal } from '@bratislava/ui-bratislava/Modal/Modal'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
@@ -52,12 +51,17 @@ const GallerySection = ({
   return (
     <div className={cx('component-gallery sm:mb-6')}>
       {title && (
-        <div className="xs:text-default sm:text-title font-semibold sm:text-center">{title}</div>
+        <div className="text-default sm:text-title font-semibold sm:text-center">{title}</div>
       )}
       {subtitle && <div className="text-default mt-5 sm:mt-6 sm:text-center">{subtitle}</div>}
 
       <div className="relative mx-[-30px] block overflow-hidden sm:hidden">
-        <HorizontalScrollWrapper className={cx(className, 'flex overflow-visible')}>
+        <div
+          className={cx(
+            className,
+            'flex overflow-visible overflow-x-auto overflow-y-hidden scrollbar-hide lg:overflow-x-hidden',
+          )}
+        >
           <div className="mt-6 flex w-full snap-x snap-mandatory gap-3.5 overflow-visible overflow-x-scroll px-[30px] pb-7">
             {galleryItems?.filter(isPresent).map((image, index) => {
               return (
@@ -111,7 +115,7 @@ const GallerySection = ({
               )
             })}
           </div>
-        </HorizontalScrollWrapper>
+        </div>
       </div>
 
       <div className="mb-8 mt-14 hidden w-full grid-cols-2 gap-8 sm:grid md:grid-cols-3">
@@ -162,7 +166,7 @@ const GallerySection = ({
           className=" z-50 overflow-hidden rounded-2xl"
         >
           {currentItem && (
-            <div className="modal-content-rent overflow-y-auto xs:h-[calc(100vh-120px)] xs:w-[calc(100vw-100px)]  md:max-h-[951px] lg:w-[1000px] xl:w-[1110px]">
+            <div className="modal-content-rent xs:h-[calc(100vh-120px)] xs:w-[calc(100vw-100px)] overflow-y-auto  md:max-h-[951px] lg:w-[1000px] xl:w-[1110px]">
               <div className="from-galleryFrom absolute z-[9] flex h-full w-full overflow-hidden rounded-2xl bg-gradient-to-t via-transparent to-white">
                 <div className="absolute inset-x-0 bottom-0 mx-8 mb-10 text-center md:mx-24 md:text-left">
                   {

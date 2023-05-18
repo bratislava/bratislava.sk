@@ -12,10 +12,10 @@ import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import MLink from '@components/forms/simple-components/MLink'
+import CardBase from '@components/molecules/presentation/CardBase'
+import CardContent from '@components/molecules/presentation/CardContent'
 import { getCategoryColorLocalStyle } from '@utils/colors'
-
-import { Panel } from '../Panel/Panel'
 
 const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
   const icons = {
@@ -37,36 +37,26 @@ export interface PageCardProps {
 }
 
 export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
-  const { Link: UILink } = useUIContext()
-
   const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
+
   const { default: PageIcon, small: SmallPageIcon } = findIconByColor(
     pageColor as Enum_Pagecategory_Color,
   )
 
   return (
-    <UILink href={slug ? `/${slug}` : ''} style={colorStyle}>
-      <Panel className="hidden w-full lg:flex" hoverable>
-        <div className="bg-category-200 px-12 py-4">
-          <PageIcon />
-        </div>
-        <div className="flex w-full items-center justify-between px-14">
-          <span className="text-large-respo font-semibold">{title}</span>
-          <ChevronRightIcon />
-        </div>
-      </Panel>
-      <Panel className="flex flex-col gap-y-4 px-6 py-4 lg:hidden" hoverable>
-        <div className="flex items-center justify-between">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-category-200">
-            <SmallPageIcon />
-          </div>
-          <div className="pr-8">
-            <ChevronRightIcon />
-          </div>
-        </div>
-
-        <span className="text-default font-medium">{title}</span>
-      </Panel>
-    </UILink>
+    <CardBase variant="shadow" style={colorStyle} className="flex-row rounded-lg">
+      <div className="bg-category-200 p-4 md:px-12">
+        <PageIcon className="max-md:hidden" />
+        <SmallPageIcon className="md:hidden" />
+      </div>
+      <CardContent className="flex w-full flex-row items-center justify-between">
+        <h3 className="text-large-respo">
+          <MLink href={`/${slug}`} stretched variant="underlineOnHover">
+            {title}
+          </MLink>
+        </h3>
+        <ChevronRightIcon />
+      </CardContent>
+    </CardBase>
   )
 }

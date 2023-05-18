@@ -1,11 +1,11 @@
 import Button from '@components/forms/simple-components/Button'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { Divider } from '../Divider/Divider'
 import { DownloadCard } from '../DownloadCard/DownloadCard'
-import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export type TFile = {
   title?: string
@@ -120,23 +120,22 @@ export const FileList = ({
             {!noScroll && (
               <div className="block lg:hidden">
                 <span className="text-h4 font-medium">{fileSection.category}</span>
-                <HorizontalScrollWrapper className="-mx-8 gap-x-5 px-8 py-6">
-                  {fileSection?.files.map((file, sectionIndex) => (
-                    <div key={sectionIndex}>
-                      <DownloadCard
-                        className="min-w-66 max-w-72"
-                        title={file.title ?? ''}
-                        downloadLink={file.media?.url ?? ''}
-                        uploadDate={file.media?.created_at ?? ''}
-                        downloadDetail={
-                          file.media?.ext && file.media.size > 0
-                            ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                            : ''
-                        }
-                      />
-                    </div>
+                <ResponsiveCarousel
+                  items={fileSection?.files.map((file, sectionIndex) => (
+                    <DownloadCard
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={sectionIndex}
+                      title={file.title ?? ''}
+                      downloadLink={file.media?.url ?? ''}
+                      uploadDate={file.media?.created_at ?? ''}
+                      downloadDetail={
+                        file.media?.ext && file.media.size > 0
+                          ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
+                          : ''
+                      }
+                    />
                   ))}
-                </HorizontalScrollWrapper>
+                />
               </div>
             )}
           </div>

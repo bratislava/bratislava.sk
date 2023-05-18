@@ -118,7 +118,7 @@ const Carousel = ({
       )}
 
       {/* Inspired by https://inclusive-components.design/a-content-slider/#thebuttongroup */}
-      {!useOldStyledControls && (
+      {(!useOldStyledControls || !noControls) && (
         <ul
           aria-label={t('aria.controlButtons')}
           className={cx('flex gap-2', {
@@ -131,7 +131,6 @@ const Carousel = ({
               onPress={handleGoToPrevious}
               icon={<ArrowLeftIcon />}
               aria-label={t('aria.previous')}
-              className={noControls ? 'hidden' : undefined}
             />
           </li>
           <li>
@@ -140,7 +139,6 @@ const Carousel = ({
               onPress={handleGoToNext}
               icon={<ArrowRightIcon />}
               aria-label={t('aria.next')}
-              className={noControls ? 'hidden' : undefined}
             />
           </li>
         </ul>
