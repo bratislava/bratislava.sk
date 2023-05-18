@@ -26,7 +26,7 @@ export const EventsHomepageSection = () => {
         ) : null}
 
         <ResponsiveCarousel
-          shiftIndex="all"
+          shiftVariant="byPage"
           items={
             tootootEvents?.map((event) => {
               const {

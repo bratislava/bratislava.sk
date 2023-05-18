@@ -1,5 +1,5 @@
 import { TopServicesItemFragment } from '@backend/graphql'
-import Carousel from '@components/organisms/Carousel/CarouselNew'
+import Carousel from '@components/organisms/Carousel/Carousel'
 import chunk from 'lodash/chunk'
 
 import { TopServicesItem } from '../TopServicesItem/TopServicesItem'
