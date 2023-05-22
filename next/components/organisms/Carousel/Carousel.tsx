@@ -118,7 +118,7 @@ const Carousel = ({
       )}
 
       {/* Inspired by https://inclusive-components.design/a-content-slider/#thebuttongroup */}
-      {(!useOldStyledControls || !noControls) && (
+      {noControls || useOldStyledControls ? null : (
         <ul
           aria-label={t('aria.controlButtons')}
           className={cx('flex gap-2', {
