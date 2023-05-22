@@ -3,7 +3,8 @@
 import sortBy from 'lodash/sortBy'
 
 // This constant is bigger than shown events because of filtering, may be adjusted if needed
-const eventsCount = 24
+const eventsCountToFetch = 24
+const eventsCountToShow = 12
 
 interface TootootEventResponse {
   ProfileName: string
@@ -113,7 +114,7 @@ export type TootootEvent = {
  */
 const fetchTootootHomepageEvents = async (profileIds: string[]) => {
   const result = await fetch(
-    `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=${eventsCount}&profileId=${profileIds.join(
+    `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=${eventsCountToFetch}&profileId=${profileIds.join(
       ',',
     )}`,
     {
@@ -128,7 +129,7 @@ const fetchTootootHomepageEvents = async (profileIds: string[]) => {
 }
 
 /**
- * First, events from Bratislava profile are displayed, then events up to "eventsCount" are filled from other profiles (displayed
+ * First, events from Bratislava profile are displayed, then events up to "eventsCountToShow" are filled from other profiles (displayed
  * also here: https://www.bkis.sk/podujatia/).
  */
 export const getTootootHomepageEvents = async () => {
@@ -171,7 +172,7 @@ export const getTootootHomepageEvents = async () => {
 
   // Hint from Tootoot: sorting events by endDate helps to prevent longer events to take space in first places for too long
   return [...sortBy(eventsBa, ['End']), ...sortBy(eventsOther, ['End'])]
-    .slice(0, eventsCount)
+    .slice(0, eventsCountToShow)
     .map((event) => {
       // If the event is so called "long-term", it returns this:
       const isLongTerm = event.End === '9999-12-30T23:59:59Z'

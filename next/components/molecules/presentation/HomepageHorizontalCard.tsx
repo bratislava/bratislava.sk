@@ -5,6 +5,7 @@ import CardContent from '@components/molecules/presentation/CardContent'
 import { CommonLinkProps } from '@utils/getCommonLinkProps'
 import Image from 'next/image'
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   title: string
@@ -13,9 +14,16 @@ type Props = {
   imgSizes?: string
 } & CardBaseProps
 
-const HomepageHorizontalCard = ({ imgSrc, imgSizes, title, linkProps, ...rest }: Props) => {
+const HomepageHorizontalCard = ({
+  imgSrc,
+  imgSizes,
+  title,
+  linkProps,
+  className,
+  ...rest
+}: Props) => {
   return (
-    <CardBase className="h-[196px] flex-row rounded-lg" {...rest}>
+    <CardBase className={twMerge('flex h-[196px] flex-row rounded-lg', className)} {...rest}>
       <div className="relative aspect-16/10 w-[240px] shrink-0">
         {imgSrc ? (
           <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />

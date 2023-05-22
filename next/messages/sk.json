@@ -199,5 +199,12 @@
   },
   "EventCard": {
     "from": "od"
+  },
+  "Carousel": {
+    "aria": {
+      "controlButtons": "Ovládacie tlačidlá",
+      "previous": "Predchádzajúci",
+      "next": "Ďalší"
+    }
   }
 }

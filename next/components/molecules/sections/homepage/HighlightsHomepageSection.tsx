@@ -1,14 +1,11 @@
-import { Carousel as CarouselOld } from '@bratislava/ui-bratislava/Carousel/Carousel'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import HomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
-import Carousel from '@components/organisms/Carousel/Carousel'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-
-// TODO: Old carousel works better on desktop, new one on mobile. We should unify them.
 
 export const HighlightsHomepageSection = () => {
   const t = useTranslations()
@@ -27,53 +24,36 @@ export const HighlightsHomepageSection = () => {
           {text && <div>{text}</div>}
         </div>
       ) : null}
-      {/* TODO standardize negative scroll spacing and card width */}
-      <Carousel
-        className="-mx-4 md:hidden"
-        shiftIndex={1}
-        visibleCount={1}
-        listClassName="gap-4 py-8 px-4"
-        itemClassName="w-[calc(100%-1rem)]"
-        hideControls
-        items={filteredHighlights.map((post, index) => {
-          const { children: postTitle, ...linkProps } = getCommonLinkProps(post.link)
 
-          return {
-            key: `${index}`,
-            element: (
-              <BlogPostCard
-                variant="shadow"
-                title={postTitle ?? ''}
-                linkProps={{
-                  children: t('readMore'),
-                  ...linkProps,
-                }}
-                imgSrc={post.image?.data?.attributes?.url}
-              />
-            ),
-          }
-        })}
-      />
-      <CarouselOld
-        className="hidden md:flex"
-        shiftIndex={1}
-        visibleItems={2}
-        scrollerClassName=""
-        items={filteredHighlights.map((post, index) => {
-          const { children: postTitle, ...linkProps } = getCommonLinkProps(post.link)
+      <ResponsiveCarousel
+        useOldStyledControls
+        mobile={1}
+        tablet={2}
+        desktop={2}
+        items={filteredHighlights.map((highlight) => {
+          const { children: postTitle, ...linkProps } = getCommonLinkProps(highlight.link)
 
           return (
-            <div className="py-8">
-              <HomepageHorizontalCard
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
+            <div key={highlight.id}>
+              <BlogPostCard
+                className="lg:hidden"
                 variant="shadow"
                 title={postTitle ?? ''}
                 linkProps={{
                   children: t('readMore'),
                   ...linkProps,
                 }}
-                imgSrc={post.image?.data?.attributes?.url}
+                imgSrc={highlight.image?.data?.attributes?.url}
+              />
+              <HomepageHorizontalCard
+                className="max-lg:hidden"
+                variant="shadow"
+                title={postTitle ?? ''}
+                linkProps={{
+                  children: t('readMore'),
+                  ...linkProps,
+                }}
+                imgSrc={highlight.image?.data?.attributes?.url}
               />
             </div>
           )

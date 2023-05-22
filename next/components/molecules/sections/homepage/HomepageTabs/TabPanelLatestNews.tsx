@@ -3,7 +3,7 @@ import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import Carousel from '@components/organisms/Carousel/Carousel'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -35,48 +35,40 @@ const TabPanelLatestNews = () => {
 
   return (
     <TabPanel id="LatestNews">
-      {/* TODO carousel is used only on mobile */}
-      {/* TODO standardize negative scroll spacing and card width */}
-      <Carousel
-        className="-mx-4 lg:hidden"
-        itemClassName="w-[calc(100%-1rem)] md:w-[calc(50%-1rem)] py-8"
-        listClassName="px-4"
-        visibleCount={1}
-        hideControls
-        items={allPosts.map((post, index) => {
-          const { title, slug, coverImage, date_added, publishedAt, tag } = post.attributes ?? {}
+      <ResponsiveCarousel
+        className="lg:hidden"
+        items={allPosts.map((blogPost) => {
+          const { title, slug, coverImage, date_added, publishedAt, tag } =
+            blogPost.attributes ?? {}
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
-          return {
-            key: `${index}`,
-            element: (
-              <BlogPostCard
-                style={getCategoryColorLocalStyle({ color: tagColor })}
-                variant="shadow"
-                date={getNumericLocalDate(date_added ?? publishedAt)}
-                tag={tagTitle ?? undefined}
-                title={title ?? ''}
-                linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
-                imgSrc={coverImage?.data?.attributes?.url}
-                imgSizes={imageSizes}
-              />
-            ),
-          }
+          return (
+            <BlogPostCard
+              key={blogPost.id}
+              style={getCategoryColorLocalStyle({ color: tagColor })}
+              variant="shadow"
+              date={getNumericLocalDate(date_added ?? publishedAt)}
+              tag={tagTitle ?? undefined}
+              title={title ?? ''}
+              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+              imgSrc={coverImage?.data?.attributes?.url}
+              imgSizes={imageSizes}
+            />
+          )
         })}
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
-          {[leftNewsItem?.data, rightNewsItem?.data].filter(isDefined).map((post, index) => {
+          {[leftNewsItem?.data, rightNewsItem?.data].filter(isDefined).map((blogPost) => {
             const { title, slug, coverImage, date_added, publishedAt, tag, excerpt } =
-              post.attributes ?? {}
+              blogPost.attributes ?? {}
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
             const tagTitle = tag?.data?.attributes?.title
 
             return (
               <BlogPostCard
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
+                key={blogPost.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="shadow"
                 date={getNumericLocalDate(date_added ?? publishedAt)}
