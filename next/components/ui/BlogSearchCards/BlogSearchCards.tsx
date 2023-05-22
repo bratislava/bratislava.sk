@@ -1,9 +1,8 @@
 import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava/BlogSearchCard/BlogSearchCard'
 import Button from '@components/forms/simple-components/Button'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-
-import { HorizontalScrollWrapper } from '../HorizontalScrollWrapper/HorizontalScrollWrapper'
 
 export interface BlogSearchCardsProps {
   blogs: BlogItem[]
@@ -36,13 +35,14 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
           </Button>
         )}
       </div>
-      <HorizontalScrollWrapper className="gap-x-4 pb-6 pt-4 lg:hidden">
-        {blogs.map((blog) => {
+      <ResponsiveCarousel
+        className="lg:hidden"
+        items={blogs.map((blog) => {
           return (
             <BlogSearchCard key={blog.attributes?.slug} item={blog} className="h-60 shrink-0" />
           )
         })}
-      </HorizontalScrollWrapper>
+      />
     </div>
   )
 }

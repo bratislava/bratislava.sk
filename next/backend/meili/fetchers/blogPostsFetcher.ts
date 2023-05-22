@@ -1,4 +1,3 @@
-import { Enum_Pagecategory_Color } from '@backend/graphql'
 import { BlogItem } from '@components/ui/BlogSearchCard/BlogSearchCard'
 import { Key } from 'swr'
 
@@ -56,7 +55,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => a
                 pageCategory: {
                   data: {
                     attributes: {
-                      color: 'main' as Enum_Pagecategory_Color, // hardcoded, api does not return this attribute
+                      color: article.tag?.pageCategory?.color,
                       shortTitle: article.tag?.title,
                     },
                   },

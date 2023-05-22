@@ -1,7 +1,6 @@
 // @ts-strict-ignore
 import { TabBarTab } from '@components/ui/ArticlesFilter/TabBarTab'
 import { Tag } from '@components/ui/ArticlesFilter/Tag'
-import { HorizontalScrollWrapper } from '@components/ui/HorizontalScrollWrapper/HorizontalScrollWrapper'
 import { useTranslations } from 'next-intl'
 
 export interface Card {
@@ -43,7 +42,7 @@ export const ArticlesFilter = ({
   return (
     <div>
       <div className="text-h2 text-center">{t('articleCategories')}</div>
-      <HorizontalScrollWrapper className="-mx-8 mt-8 px-8 lg:mt-10">
+      <div className="-mx-8 mt-8 flex overflow-x-auto overflow-y-hidden px-8 scrollbar-hide lg:mt-10 lg:overflow-x-hidden">
         <div className="flex">
           {categoryExists
             ? null
@@ -61,7 +60,7 @@ export const ArticlesFilter = ({
                 />
               ))}
         </div>
-      </HorizontalScrollWrapper>
+      </div>
       <div className="mt-6 lg:mt-11">
         {data
           .filter((tag) => {

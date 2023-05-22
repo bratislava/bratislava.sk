@@ -1,4 +1,4 @@
-import { client } from '@utils/gql'
+import { client } from '@backend/graphql/gql'
 import { isDefined } from '@utils/isDefined'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Rss from 'rss'

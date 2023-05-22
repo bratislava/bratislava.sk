@@ -1,7 +1,7 @@
 import { SectionsFragment } from '@backend/graphql'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
-import FeaturedBlogPostsSection from '@components/molecules/sections/pageHeader/FeaturedBlogPostsSection'
+import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
 import cx from 'classnames'
 import * as React from 'react'
 

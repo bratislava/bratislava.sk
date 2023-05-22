@@ -1,6 +1,5 @@
-// @ts-strict-ignore
-import { AccordionCard } from '@bratislava/ui-bratislava/AccordionCard/AccordionCard'
-import { HorizontalScrollWrapper } from '@bratislava/ui-bratislava/HorizontalScrollWrapper/HorizontalScrollWrapper'
+import { OrganizationalStructureAccordionCard } from '@components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCard'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { MSGraphFilteredGroupUser } from 'backend/services/ms-graph'
 import { useMemo } from 'react'
 
@@ -14,13 +13,14 @@ export const OrganizationalStructureAccordionCards = ({
   const cards = useMemo(
     () =>
       users.map((user) => (
-        <AccordionCard
+        <OrganizationalStructureAccordionCard
+          className="h-full"
           key={user.id}
-          displayName={user.displayName}
-          jobTitle={user.jobTitle}
+          displayName={user.displayName ?? ''}
+          jobTitle={user.jobTitle ?? ''}
           businessPhones={user.businessPhones}
           // mobilePhone omitted on request - add to api response as well if needed
-          mail={user.mail}
+          mail={user.mail ?? ''}
           otherMails={user.otherMails}
         />
       )),
@@ -28,10 +28,8 @@ export const OrganizationalStructureAccordionCards = ({
   )
   return (
     <>
-      <HorizontalScrollWrapper className="my-8 -ml-8 flex w-screen gap-x-5 px-8 py-3 lg:hidden">
-        {cards}
-      </HorizontalScrollWrapper>
-      <div className="my-8 hidden w-full grid-cols-3 gap-8 lg:grid">{cards}</div>
+      <ResponsiveCarousel className="md:hidden" items={cards} />
+      <div className="my-8 hidden w-full gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">{cards}</div>
     </>
   )
 }

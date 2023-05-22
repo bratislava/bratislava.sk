@@ -1,7 +1,7 @@
+import { client } from '@backend/graphql/gql'
 import { VznMeili } from '@backend/meili/types'
 import { FileCard } from '@bratislava/ui-bratislava/FileCard/FileCard'
 import Markdown from '@components/atoms/Markdown'
-import { client } from '@utils/gql'
 import { isPresent } from '@utils/utils'
 import { useTranslations } from 'next-intl'
 import useSWR from 'swr'
