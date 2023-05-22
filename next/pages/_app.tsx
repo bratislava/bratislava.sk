@@ -4,6 +4,7 @@ import '../styles/globals.css'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
+import BAI18nProvider from '@components/providers/BAI18nProvider'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
@@ -66,11 +67,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <BAQueryClientProvider>
               <QueryParamProvider adapter={NextAdapter}>
                 <SSRProvider>
-                  <NavMenuContextProvider>
-                    <div id="root" className={`${inter.variable} font-sans`}>
-                      <Component {...pageProps} />
-                    </div>
-                  </NavMenuContextProvider>
+                  <BAI18nProvider>
+                    <NavMenuContextProvider>
+                      <div id="root" className={`${inter.variable} font-sans`}>
+                        <Component {...pageProps} />
+                      </div>
+                    </NavMenuContextProvider>
+                  </BAI18nProvider>
                 </SSRProvider>
               </QueryParamProvider>
             </BAQueryClientProvider>
