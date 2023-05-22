@@ -12,9 +12,7 @@
     "lint": "eslint components pages utils backend",
     "lint:fix": "yarn lint --fix",
     "gen": "graphql-codegen && prettier --write backend/graphql/index.ts",
-    "prettier": "prettier --write .",
-    "fix-botframework": "yarn --cwd ./node_modules/p-defer-es5 postinstall && yarn --cwd ./node_modules/abort-controller-es5 postinstall && yarn --cwd ./node_modules/markdown-it-attrs-es5 postinstall",
-    "postinstall": "yarn fix-botframework"
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
@@ -27,8 +25,6 @@
     "@types/uuid": "^9.0.0",
     "apexcharts": "3.35.3",
     "axios": "0.27.2",
-    "botframework-directlinejs": "^0.15.1",
-    "botframework-webchat": "^4.15.4",
     "classnames": "2.3.1",
     "eslint-plugin-prettier": "^4.2.1",
     "focus-trap-react": "^10.1.1",
