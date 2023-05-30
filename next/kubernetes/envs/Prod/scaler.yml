@@ -1,0 +1,24 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ${BUILD_REPOSITORY_NAME}-scaler
+  namespace: ${NAMESPACE}
+spec:
+  maxReplicaCount: 5
+  minReplicaCount: 1
+  scaleTargetRef:
+    kind: Deployment
+    name: ${BUILD_REPOSITORY_NAME}-app
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+        metricName: container_cpu_usage_percent
+        threshold: '85'
+        query: 100 * (sum(rate(container_cpu_usage_seconds_total{namespace="${NAMESPACE}", pod=~"${BUILD_REPOSITORY_NAME}-app.*", container=~".*"}[10m])) by (namespace, pod, container) / on (pod, container) group_left() kube_pod_container_resource_limits{namespace="${NAMESPACE}", pod=~"${BUILD_REPOSITORY_NAME}-app.*", container=~".*", resource="cpu"})
+    - type: prometheus
+      metadata:
+        serverAddress: http://kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+        metricName: container_memory_usage_percent
+        threshold: '85'
+        query: sum by (namespace, pod) (100 * (avg_over_time(container_memory_working_set_bytes{namespace="${NAMESPACE}", pod=~"${BUILD_REPOSITORY_NAME}-app.*", service="kube-prometheus-kubelet"}[10m]) / on (pod, container) group_left() kube_pod_container_resource_limits{resource="memory", namespace="${NAMESPACE}", pod=~"${BUILD_REPOSITORY_NAME}-app.*"}))

@@ -1,0 +1,59 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ${BUILD_REPOSITORY_NAME}-scaler
+  namespace: ${NAMESPACE}
+spec:
+  maxReplicaCount: 1
+  minReplicaCount: 0
+  scaleTargetRef:
+    kind: Deployment
+    name: ${BUILD_REPOSITORY_NAME}-app
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+        metricName: haproxy_backend_http_requests_total
+        activationThreshold: '0'
+        threshold: '1'
+        query: sum(increase(haproxy_backend_http_requests_total{namespace="${NAMESPACE}", app="${NEXT_APP_NAME}"}[7d]))
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ${BUILD_REPOSITORY_NAME}-db-scaler
+  namespace: ${NAMESPACE}
+spec:
+  maxReplicaCount: 1
+  minReplicaCount: 0
+  scaleTargetRef:
+    kind: StatefulSet
+    name: ${BUILD_REPOSITORY_NAME}-database
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+        metricName: haproxy_backend_http_requests_total
+        activationThreshold: '0'
+        threshold: '1'
+        query: sum(increase(haproxy_backend_http_requests_total{namespace="${NAMESPACE}", app="${NEXT_APP_NAME}"}[7d]))
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ${BUILD_REPOSITORY_NAME}-meilisearch-scaler
+  namespace: ${NAMESPACE}
+spec:
+  maxReplicaCount: 1
+  minReplicaCount: 0
+  scaleTargetRef:
+    kind: StatefulSet
+    name: ${BUILD_REPOSITORY_NAME}-meilisearch
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+        metricName: haproxy_backend_http_requests_total
+        activationThreshold: '0'
+        threshold: '1'
+        query: sum(increase(haproxy_backend_http_requests_total{namespace="${NAMESPACE}", app="${NEXT_APP_NAME}"}[7d]))

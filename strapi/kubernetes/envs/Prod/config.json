@@ -5,6 +5,7 @@
     "MEILI_CPU_REQUESTS": "10m",
     "MEILI_MEMORY_REQUESTS": "64Mi",
     "DB_CPU_REQUESTS": "100m",
-    "DB_MEMORY_REQUESTS": "128Mi"
+    "DB_MEMORY_REQUESTS": "128Mi",
+    "NEXT_APP_NAME": "bratislava-next-app"
   }
 }
