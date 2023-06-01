@@ -29,7 +29,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "focus-trap-react": "^10.1.1",
     "framer-motion": "^7.6.4",
-    "graphql": "16.5.0",
+    "graphql": "16.6.0",
     "graphql-request": "4.3.0",
     "graphql-tag": "2.12.6",
     "lodash": "4.17.21",
