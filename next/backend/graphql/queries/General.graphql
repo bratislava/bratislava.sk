@@ -1,7 +1,19 @@
-fragment ImageSrcEntity on UploadFileEntity {
+fragment UploadImageSrcEntity on UploadFileEntity {
   id
   attributes {
     url
+  }
+}
+
+fragment UploadImageEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    width
+    height
+    caption
+    alternativeText
+    name
   }
 }
 

@@ -62,7 +62,7 @@ fragment PageEntity on PageEntity {
     keywords
     pageBackgroundImage {
       data {
-        ...ImageSrcEntity
+        ...UploadImageSrcEntity
       }
     }
     headerLinks {

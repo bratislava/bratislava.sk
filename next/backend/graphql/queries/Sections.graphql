@@ -3,7 +3,7 @@ fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription
   desc
   icon {
     data {
-      ...ImageSrcEntity
+      ...UploadImageSrcEntity
     }
   }
 }
@@ -98,6 +98,12 @@ fragment TimelineItemBlock on ComponentBlocksTimelineItem {
 
 fragment GallerySection on ComponentSectionsGallery {
   title
+  text
+  medias(pagination: { limit: -1 }) {
+    data {
+      ...UploadImageEntity
+    }
+  }
   subtitle
   galleryItems {
     ...GalleryItemBlock

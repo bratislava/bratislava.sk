@@ -8,7 +8,7 @@ fragment HomepageEntity on HomepageEntity {
     welcomeHeadline
     welcomeMedia {
       data {
-        ...ImageSrcEntity
+        ...UploadImageSrcEntity
       }
     }
     highlights {
@@ -42,12 +42,12 @@ fragment HomepageEntity on HomepageEntity {
     }
     inbaFrontImage {
       data {
-        ...ImageSrcEntity
+        ...UploadImageSrcEntity
       }
     }
     inbaRearImage {
       data {
-        ...ImageSrcEntity
+        ...UploadImageSrcEntity
       }
     }
     inbaUrl
@@ -96,7 +96,7 @@ fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
   }
   image {
     data {
-      ...ImageSrcEntity
+      ...UploadImageSrcEntity
     }
   }
 }

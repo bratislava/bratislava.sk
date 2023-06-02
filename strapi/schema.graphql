@@ -1287,7 +1287,9 @@ input ComponentSectionsFileListInput {
 type ComponentSectionsGallery {
   galleryItems(filters: ComponentBlocksGalleryItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksGalleryItem]
   id: ID!
+  medias(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
   subtitle: String
+  text: String
   title: String
 }
 
@@ -1297,13 +1299,16 @@ input ComponentSectionsGalleryFiltersInput {
   not: ComponentSectionsGalleryFiltersInput
   or: [ComponentSectionsGalleryFiltersInput]
   subtitle: StringFilterInput
+  text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsGalleryInput {
   galleryItems: [ComponentBlocksGalleryItemInput]
   id: ID
+  medias: [ID]
   subtitle: String
+  text: String
   title: String
 }
 
