@@ -39,7 +39,7 @@ const TabPanelRoadClosures = () => {
       {today >= dateOfRelease ? (
         <div className="mt-8 pb-8 lg:mt-14">
           <Iframe
-            url={`https://cdn-api.bratislava.sk/static-pages/dev/closures-and-restrictions-map/index.html?lang=${locale}`}
+            url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${locale}`}
             iframeWidth="container"
             iframeHeight="620"
             fullHeight={false}
