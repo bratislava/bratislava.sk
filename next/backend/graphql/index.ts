@@ -5025,6 +5025,21 @@ export type GeneralQuery = {
   } | null
 }
 
+export type AlertQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']
+}>
+
+export type AlertQuery = {
+  __typename?: 'Query'
+  alert?: {
+    __typename?: 'AlertEntityResponse'
+    data?: {
+      __typename?: 'AlertEntity'
+      attributes?: { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null } | null
+    } | null
+  } | null
+}
+
 export type HomepageEntityFragment = {
   __typename?: 'HomepageEntity'
   id?: string | null
@@ -10772,6 +10787,18 @@ export const GeneralDocument = gql`
   ${FooterFragmentDoc}
   ${AlertFragmentDoc}
 `
+export const AlertDocument = gql`
+  query Alert($locale: I18NLocaleCode!) {
+    alert(locale: $locale) {
+      data {
+        attributes {
+          ...Alert
+        }
+      }
+    }
+  }
+  ${AlertFragmentDoc}
+`
 export const HomepageDocument = gql`
   query Homepage($locale: I18NLocaleCode!) {
     homepage(locale: $locale) {
@@ -10975,6 +11002,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'General',
+        'query',
+      )
+    },
+    Alert(
+      variables: AlertQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<AlertQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AlertQuery>(AlertDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'Alert',
         'query',
       )
     },

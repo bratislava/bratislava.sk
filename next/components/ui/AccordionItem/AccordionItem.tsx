@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import { ChevronDownIcon, ChevronDownSmallIcon } from '@assets/ui-icons'
+import { ChevronDownIcon } from '@assets/ui-icons'
 import cx from 'classnames'
 import React from 'react'
 
@@ -41,8 +41,7 @@ export const AccordionItem = ({
           'drop-shadow-[0 8 24 black] rounded-lg px-6 py-3 lg:px-10 lg:py-4',
           {
             'border-2 border-solid border-transparent bg-category-200 shadow-lg': active,
-            'border-2 border-category-600 bg-transparent md:hover:bg-category-200 md:hover:stroke-current':
-              !active,
+            'border-2 border-category-600 bg-transparent md:hover:bg-category-200': !active,
           },
           className,
         )}
@@ -60,10 +59,7 @@ export const AccordionItem = ({
             </p>
           </div>
           <div className="ml-5 grow-0">
-            <ChevronDownIcon className={cx('hidden h-3 w-6 lg:block', { 'rotate-180': active })} />
-            <ChevronDownSmallIcon
-              className={cx('h-2.5 w-[18px] lg:hidden', { 'rotate-180': active })}
-            />
+            <ChevronDownIcon className={cx('h-6 w-6 lg:h-8 lg:w-8', { 'rotate-180': active })} />
           </div>
         </button>
       </div>

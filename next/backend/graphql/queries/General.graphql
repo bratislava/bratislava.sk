@@ -200,3 +200,13 @@ query General($locale: I18NLocaleCode!) {
     }
   }
 }
+
+query Alert($locale: I18NLocaleCode!) {
+  alert(locale: $locale) {
+    data {
+      attributes {
+        ...Alert
+      }
+    }
+  }
+}
