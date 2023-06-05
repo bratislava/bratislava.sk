@@ -21,7 +21,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (
             <AccordionV2
-              variant="boxed-h3"
+              variant="boxed-h3-large-gap"
               // eslint-disable-next-line react/no-array-index-key
               key={`institution-${index}`}
               title={institution.category}
@@ -47,7 +47,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
         {groupByCategory(section.flatText?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <AccordionV2 variant="boxed-h3" key={`flatText-${index}`} title={text.category}>
+          <AccordionV2 variant="boxed-h3-large-gap" key={`flatText-${index}`} title={text.category}>
             {text.items.filter(isPresent).map((item, itemIndex) => {
               const link = parsePageLink({
                 title: item.moreLinkTitle,
@@ -59,7 +59,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4" key={itemIndex}>
                   <NarrowText align={item.align} width={item.width}>
-                    <Markdown content={item.content} />
+                    <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
                   {link?.url && link.title && <PageLinkButton pageLink={link} />}
                 </div>
@@ -70,7 +70,11 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
         {groupByCategory(section.institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <AccordionV2 variant="boxed-h3" key={`institutionsNarrow-${index}`} title={text.category}>
+          <AccordionV2
+            variant="boxed-h3-large-gap"
+            key={`institutionsNarrow-${index}`}
+            title={text.category}
+          >
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {text.items.filter(isPresent).map((file, fileIndex) => (
                 <Institution
