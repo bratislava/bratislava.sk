@@ -1,27 +1,18 @@
-import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
+import { PropsWithChildren } from 'react'
 
 export interface NarrowTextProps {
   className?: string
-  content?: string | null
-  contentStyle?: string
   width?: 'narrow' | 'default' | 'wide' | 'full' | null
   align?: 'left' | 'center' | 'right' | null
-  size?: 'small' | 'normal' | null
-  hasBackground?: boolean
 }
 
 export const NarrowText = ({
   className,
-  content,
-  hasBackground,
   width = 'default',
   align = 'center',
-  size = 'normal',
-  contentStyle,
-}: NarrowTextProps) => {
-  if (!content) return null
-
+  children,
+}: PropsWithChildren<NarrowTextProps>) => {
   return (
     <div
       className={cx(
@@ -42,8 +33,7 @@ export const NarrowText = ({
           'md:w-full': width === 'full',
         })}
       >
-        {/* TODO may need smaller/condensed styles for size === 'small' */}
-        <Markdown content={content} />
+        {children}
       </div>
     </div>
   )

@@ -86,15 +86,6 @@ export const groupByCategory = <Category extends string | null, T extends { cate
   }))
 }
 
-// Page Accordion Item - regex for secondary text
-export const parseCategory = (category: string) => {
-  const match = /(.*)(\(.*\))/.exec(category)
-  if (match) {
-    return { title: match[1], secondaryTitle: match[2] }
-  }
-  return { title: category, secondaryTitle: '' }
-}
-
 // TODO: Replace with Navikronos.
 export const getPageBreadcrumbs = (page: PageParentPagesFragment) => {
   const current = page
