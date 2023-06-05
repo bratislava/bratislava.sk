@@ -2,6 +2,7 @@ import { AccordionSectionFragment } from '@backend/graphql'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import { PageLinkButton } from '@bratislava/ui-bratislava/PageLinkButton/PageLinkButton'
+import Markdown from '@components/atoms/Markdown'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
 import { groupByCategory, parsePageLink } from '@utils/page'
@@ -57,12 +58,9 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4" key={itemIndex}>
-                  <NarrowText
-                    contentStyle="my-8"
-                    align={item.align}
-                    width={item.width}
-                    content={item.content}
-                  />
+                  <NarrowText align={item.align} width={item.width}>
+                    <Markdown content={item.content} />
+                  </NarrowText>
                   {link?.url && link.title && <PageLinkButton pageLink={link} />}
                 </div>
               )
