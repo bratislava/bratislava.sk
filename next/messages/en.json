@@ -206,5 +206,16 @@
       "previous": "Previous",
       "next": "Next"
     }
+  },
+  "Gallery": {
+    "aria": {
+      "openGallery": "Open image gallery",
+      "previousImage": "Previous image",
+      "nextImage": "Next image",
+      "imageLightBoxDescription": "Image gallery. Press left arrow key to go to previous image. Press right arrow key to go to next image. Press Escape key to close image gallery.",
+      "descriptionSlider": "Slider",
+      "closeGallery": "Close image gallery"
+    },
+    "morePhotos": "photos"
   }
 }

@@ -1,9 +1,9 @@
-import { ImageSrcEntityFragment } from '@backend/graphql'
+import { UploadImageSrcEntityFragment } from '@backend/graphql'
 import cx from 'classnames'
 import Image from 'next/image'
 
 type IconTitleDescProps = {
-  icon: ImageSrcEntityFragment | null | undefined
+  icon: UploadImageSrcEntityFragment | null | undefined
   title: string | null | undefined
   text: string | null | undefined
   hasBackground?: boolean | null | undefined

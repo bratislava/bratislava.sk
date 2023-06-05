@@ -1070,12 +1070,20 @@ export type ComponentSectionsGallery = {
   __typename?: 'ComponentSectionsGallery'
   galleryItems?: Maybe<Array<Maybe<ComponentBlocksGalleryItem>>>
   id: Scalars['ID']
+  medias: UploadFileRelationResponseCollection
   subtitle?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
 }
 
 export type ComponentSectionsGalleryGalleryItemsArgs = {
   filters?: InputMaybe<ComponentBlocksGalleryItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentSectionsGalleryMediasArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -3605,7 +3613,24 @@ export type BlogPostBySlugQuery = {
           | {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
+              text?: string | null
               subtitle?: string | null
+              medias: {
+                __typename?: 'UploadFileRelationResponseCollection'
+                data: Array<{
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                }>
+              }
               galleryItems?: Array<{
                 __typename?: 'ComponentBlocksGalleryItem'
                 imgTitle?: string | null
@@ -3794,7 +3819,24 @@ export type LatestPostsByTagsQuery = {
           | {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
+              text?: string | null
               subtitle?: string | null
+              medias: {
+                __typename?: 'UploadFileRelationResponseCollection'
+                data: Array<{
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                }>
+              }
               galleryItems?: Array<{
                 __typename?: 'ComponentBlocksGalleryItem'
                 imgTitle?: string | null
@@ -4182,7 +4224,24 @@ export type BlogPostEntityFragment = {
       | {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
+          text?: string | null
           subtitle?: string | null
+          medias: {
+            __typename?: 'UploadFileRelationResponseCollection'
+            data: Array<{
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            }>
+          }
           galleryItems?: Array<{
             __typename?: 'ComponentBlocksGalleryItem'
             imgTitle?: string | null
@@ -4283,10 +4342,24 @@ export type TagEntityFragment = {
   attributes?: { __typename?: 'Tag'; title?: string | null } | null
 }
 
-export type ImageSrcEntityFragment = {
+export type UploadImageSrcEntityFragment = {
   __typename?: 'UploadFileEntity'
   id?: string | null
   attributes?: { __typename?: 'UploadFile'; url: string } | null
+}
+
+export type UploadImageEntityFragment = {
+  __typename?: 'UploadFileEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'UploadFile'
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
 }
 
 export type CommonLinkFragment = {
@@ -6787,7 +6860,24 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
+              text?: string | null
               subtitle?: string | null
+              medias: {
+                __typename?: 'UploadFileRelationResponseCollection'
+                data: Array<{
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                }>
+              }
               galleryItems?: Array<{
                 __typename?: 'ComponentBlocksGalleryItem'
                 imgTitle?: string | null
@@ -7623,7 +7713,24 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
+          text?: string | null
           subtitle?: string | null
+          medias: {
+            __typename?: 'UploadFileRelationResponseCollection'
+            data: Array<{
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            }>
+          }
           galleryItems?: Array<{
             __typename?: 'ComponentBlocksGalleryItem'
             imgTitle?: string | null
@@ -8032,7 +8139,24 @@ export type TimelineItemBlockFragment = {
 export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
+  text?: string | null
   subtitle?: string | null
+  medias: {
+    __typename?: 'UploadFileRelationResponseCollection'
+    data: Array<{
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    }>
+  }
   galleryItems?: Array<{
     __typename?: 'ComponentBlocksGalleryItem'
     imgTitle?: string | null
@@ -9124,7 +9248,24 @@ type Sections_ComponentSectionsFileList_Fragment = {
 type Sections_ComponentSectionsGallery_Fragment = {
   __typename: 'ComponentSectionsGallery'
   title?: string | null
+  text?: string | null
   subtitle?: string | null
+  medias: {
+    __typename?: 'UploadFileRelationResponseCollection'
+    data: Array<{
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    }>
+  }
   galleryItems?: Array<{
     __typename?: 'ComponentBlocksGalleryItem'
     imgTitle?: string | null
@@ -9471,8 +9612,8 @@ export const BlogPostLinkFragmentDoc = gql`
     url
   }
 `
-export const ImageSrcEntityFragmentDoc = gql`
-  fragment ImageSrcEntity on UploadFileEntity {
+export const UploadImageSrcEntityFragmentDoc = gql`
+  fragment UploadImageSrcEntity on UploadFileEntity {
     id
     attributes {
       url
@@ -9485,11 +9626,11 @@ export const IconTitleDescriptionBlockFragmentDoc = gql`
     desc
     icon {
       data {
-        ...ImageSrcEntity
+        ...UploadImageSrcEntity
       }
     }
   }
-  ${ImageSrcEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
 `
 export const IconTitleDescSectionFragmentDoc = gql`
   fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
@@ -9602,6 +9743,19 @@ export const IframeSectionFragmentDoc = gql`
     allowGeolocation
   }
 `
+export const UploadImageEntityFragmentDoc = gql`
+  fragment UploadImageEntity on UploadFileEntity {
+    id
+    attributes {
+      url
+      width
+      height
+      caption
+      alternativeText
+      name
+    }
+  }
+`
 export const GalleryItemBlockFragmentDoc = gql`
   fragment GalleryItemBlock on ComponentBlocksGalleryItem {
     imgTitle
@@ -9623,11 +9777,18 @@ export const GalleryItemBlockFragmentDoc = gql`
 export const GallerySectionFragmentDoc = gql`
   fragment GallerySection on ComponentSectionsGallery {
     title
+    text
+    medias(pagination: { limit: -1 }) {
+      data {
+        ...UploadImageEntity
+      }
+    }
     subtitle
     galleryItems {
       ...GalleryItemBlock
     }
   }
+  ${UploadImageEntityFragmentDoc}
   ${GalleryItemBlockFragmentDoc}
 `
 export const FileBlockFragmentDoc = gql`
@@ -10373,12 +10534,12 @@ export const HomepageHighlightsItemFragmentDoc = gql`
     }
     image {
       data {
-        ...ImageSrcEntity
+        ...UploadImageSrcEntity
       }
     }
   }
   ${CommonLinkFragmentDoc}
-  ${ImageSrcEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
 `
 export const HomepageTabsFragmentDoc = gql`
   fragment HomepageTabs on ComponentSectionsHomepageTabs {
@@ -10463,7 +10624,7 @@ export const HomepageEntityFragmentDoc = gql`
       welcomeHeadline
       welcomeMedia {
         data {
-          ...ImageSrcEntity
+          ...UploadImageSrcEntity
         }
       }
       highlights {
@@ -10497,12 +10658,12 @@ export const HomepageEntityFragmentDoc = gql`
       }
       inbaFrontImage {
         data {
-          ...ImageSrcEntity
+          ...UploadImageSrcEntity
         }
       }
       inbaRearImage {
         data {
-          ...ImageSrcEntity
+          ...UploadImageSrcEntity
         }
       }
       inbaUrl
@@ -10517,7 +10678,7 @@ export const HomepageEntityFragmentDoc = gql`
       }
     }
   }
-  ${ImageSrcEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
   ${HomepageHighlightsItemFragmentDoc}
   ${HomepageTabsFragmentDoc}
   ${HomepageMayorAndCouncilFragmentDoc}
@@ -10574,7 +10735,7 @@ export const PageEntityFragmentDoc = gql`
       keywords
       pageBackgroundImage {
         data {
-          ...ImageSrcEntity
+          ...UploadImageSrcEntity
         }
       }
       headerLinks {
@@ -10607,7 +10768,7 @@ export const PageEntityFragmentDoc = gql`
     }
     ...PageParentPages
   }
-  ${ImageSrcEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
   ${LocalizationFragmentDoc}

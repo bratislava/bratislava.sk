@@ -62,8 +62,7 @@ const Markdown = ({ content, variant = 'default' }: HomepageMarkdownProps) => {
               target={isExternal ? '_blank' : undefined}
             >
               {children[0]}
-              {/* TODO add external indicator */}
-              {/* {isExternal && ' ↗'} */}
+              {isExternal && ' ↗'}
             </MLink>
           )
         },

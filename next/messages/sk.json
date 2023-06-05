@@ -206,5 +206,16 @@
       "previous": "Predchádzajúci",
       "next": "Ďalší"
     }
+  },
+  "Gallery": {
+    "aria": {
+      "openGallery": "Otvoriť galériu obrázkov",
+      "previousImage": "Predchádzajúci obrázok",
+      "nextImage": "Ďalší obrázok",
+      "imageLightBoxDescription": "Galéria obrázkov. Stlačte šípku vľavo pre zobrazenie predchádzajúceho obrázku. Stlačte šípku vpravo pre zobrazenie nasledujúceho obrázku. Zatvorte stlačením klávesu Escape.",
+      "descriptionSlider": "Posúvač",
+      "closeGallery": "Zavrieť galériu obrázkov"
+    },
+    "morePhotos": "{count, plural, one {fotografia} few {fotografie} other {fotografií}}"
   }
 }

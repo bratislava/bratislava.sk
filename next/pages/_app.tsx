@@ -13,7 +13,7 @@ import Link from 'next/link'
 import { NextIntlProvider } from 'next-intl'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
-import { SSRProvider } from 'react-aria'
+import { OverlayProvider, SSRProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
@@ -28,6 +28,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      {/* https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#apply-the-font-in-head */}
+      {/* eslint-disable-next-line react/no-unknown-property */}
+      <style jsx global>{`
+        body {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
       <Head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -68,11 +75,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <QueryParamProvider adapter={NextAdapter}>
                 <SSRProvider>
                   <BAI18nProvider>
-                    <NavMenuContextProvider>
-                      <div id="root" className={`${inter.variable} font-sans`}>
-                        <Component {...pageProps} />
-                      </div>
-                    </NavMenuContextProvider>
+                    <OverlayProvider>
+                      <NavMenuContextProvider>
+                        {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                        <div id="root">
+                          <Component {...pageProps} />
+                        </div>
+                      </NavMenuContextProvider>
+                    </OverlayProvider>
                   </BAI18nProvider>
                 </SSRProvider>
               </QueryParamProvider>
