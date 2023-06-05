@@ -1,10 +1,10 @@
 import { AccordionSectionFragment } from '@backend/graphql'
-import { AccordionItem } from '@bratislava/ui-bratislava/AccordionItem/AccordionItem'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import { PageLinkButton } from '@bratislava/ui-bratislava/PageLinkButton/PageLinkButton'
+import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
-import { groupByCategory, parseCategory, parsePageLink } from '@utils/page'
+import { groupByCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'
 
@@ -16,37 +16,38 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
   return (
     <>
       {section.title && <h1 className="text-h2 flex justify-center pb-14">{section.title}</h1>}
-      <div className="flex flex-col">
-        {groupByCategory(section.institutions?.filter(isPresent) ?? []).map((institution) => (
-          <AccordionItem
-            key={institution.category}
-            title={parseCategory(institution.category).title}
-            secondaryTitle={parseCategory(institution.category).secondaryTitle}
-          >
-            <div className="flex flex-col space-y-4">
-              {institution.items.filter(isPresent).map((file, i) => (
-                <Institution
-                  key={i}
-                  title={file.title ?? undefined}
-                  subtitle={file.subtitle ?? undefined}
-                  content={[file.firstColumn, file.secondColumn, file.thirdColumn]
-                    .filter(Boolean)
-                    .filter(isDefined)}
-                  url={file.url ?? undefined}
-                  urlLabel={file.urlLabel ?? undefined}
-                />
-              ))}
-            </div>
-          </AccordionItem>
-        ))}
+      <div className="flex flex-col gap-4">
+        {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
+          (institution, index) => (
+            <AccordionV2
+              variant="boxed-h3"
+              // eslint-disable-next-line react/no-array-index-key
+              key={`institution-${index}`}
+              title={institution.category}
+            >
+              <div className="flex flex-col gap-4">
+                {institution.items.filter(isPresent).map((file, itemIndex) => (
+                  <Institution
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={itemIndex}
+                    title={file.title ?? undefined}
+                    subtitle={file.subtitle ?? undefined}
+                    content={[file.firstColumn, file.secondColumn, file.thirdColumn]
+                      .filter(Boolean)
+                      .filter(isDefined)}
+                    url={file.url ?? undefined}
+                    urlLabel={file.urlLabel ?? undefined}
+                  />
+                ))}
+              </div>
+            </AccordionV2>
+          ),
+        )}
 
-        {groupByCategory(section.flatText?.filter(isPresent) ?? []).map((text) => (
-          <AccordionItem
-            key={text.category}
-            title={parseCategory(text.category).title}
-            secondaryTitle={parseCategory(text.category).secondaryTitle}
-          >
-            {text.items.filter(isPresent).map((item, i) => {
+        {groupByCategory(section.flatText?.filter(isPresent) ?? []).map((text, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <AccordionV2 variant="boxed-h3" key={`flatText-${index}`} title={text.category}>
+            {text.items.filter(isPresent).map((item, itemIndex) => {
               const link = parsePageLink({
                 title: item.moreLinkTitle,
                 url: item.moreLinkUrl,
@@ -54,7 +55,8 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               })
 
               return (
-                <div className="flex flex-col space-y-4 px-5 lg:px-10" key={i}>
+                // eslint-disable-next-line react/no-array-index-key
+                <div className="flex flex-col gap-4" key={itemIndex}>
                   <NarrowText
                     contentStyle="my-8"
                     align={item.align}
@@ -65,19 +67,17 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 </div>
               )
             })}
-          </AccordionItem>
+          </AccordionV2>
         ))}
 
-        {groupByCategory(section.institutionsNarrow?.filter(isPresent) ?? []).map((text) => (
-          <AccordionItem
-            key={text.category}
-            title={parseCategory(text.category).title}
-            secondaryTitle={parseCategory(text.category).secondaryTitle}
-          >
-            <div className="grid grid-cols-1 gap-x-7 gap-y-8 md:grid-cols-3">
-              {text.items.filter(isPresent).map((file) => (
+        {groupByCategory(section.institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <AccordionV2 variant="boxed-h3" key={`institutionsNarrow-${index}`} title={text.category}>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {text.items.filter(isPresent).map((file, fileIndex) => (
                 <Institution
-                  key={file.title}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={fileIndex}
                   title={file.title ?? undefined}
                   subtitle={file.subtitle ?? undefined}
                   url={file.url ?? undefined}
@@ -85,7 +85,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 />
               ))}
             </div>
-          </AccordionItem>
+          </AccordionV2>
         ))}
       </div>
     </>

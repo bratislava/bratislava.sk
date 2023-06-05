@@ -37,6 +37,7 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
   })
 
   const headingStyles = cx('min-w-0 grow', {
+    'font-semibold': isBoxed,
     'text-h3': isBoxed && boxedSize === 'h3',
     'text-h4': isBoxed && boxedSize === 'h4',
     'text-h5': (isBoxed && boxedSize === 'h5') || variant === 'footer',
@@ -66,7 +67,7 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
   const contentStyles = cx({
     'mx-6 lg:mx-10 mb-5 lg:mb-8': isBoxed && boxedSize === 'h3',
     'mx-4 lg:mx-8 mb-4 lg:mb-6': isBoxed && boxedSize === 'h4',
-    'mx-4 lg:mx-5 mb-4 lg:mb-5': isBoxed && boxedSize === 'h5',
+    'mx-4 lg:mx-5 mb-4 lg:mb-5 text-small': isBoxed && boxedSize === 'h5',
     'mx-3 lg:mx-4 mb-2 lg:mb-4': isBoxed && boxedSize === 'h6',
     'pb-6': variant === 'footer',
   })
