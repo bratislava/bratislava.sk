@@ -2,8 +2,8 @@ import { CrossIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-import React, { useRef } from 'react'
-import { useOutsideClick } from 'rooks'
+import React, { useRef, FocusEvent } from 'react'
+import { Button as AriaButton } from 'react-aria-components'
 
 const PADDING = 20 // py-5
 
@@ -39,8 +39,18 @@ export const Bookmark = ({
   const [width, setWidth] = React.useState<number>()
   const [height, setHeight] = React.useState<number>()
 
-  const modelref = useRef(null)
-  useOutsideClick(ref, () => setIsOpen(false))
+  const modelRef = useRef<HTMLDivElement>(null)
+
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    if (!modelRef.current) {
+      return
+    }
+
+    // https://stackoverflow.com/a/33325953
+    if (!event.relatedTarget || !modelRef.current.contains(event.relatedTarget)) {
+      setIsOpen(false)
+    }
+  }
 
   React.useEffect(() => {
     if (!ref.current) return
@@ -66,14 +76,15 @@ export const Bookmark = ({
       style={{
         minHeight: contentLoaded ? width + 2 * PADDING : undefined,
       }}
-      ref={modelref}
+      ref={modelRef}
+      onBlur={handleBlur}
     >
-      <button
+      <AriaButton
         className={cx('text-large w-[70px] font-semibold', {
           'bg-[#66BDE3]': variant === 'blue',
           'bg-main-700': variant === 'red',
         })}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onPress={() => setIsOpen((prev) => !prev)}
       >
         <span className="block w-[70px] origin-top-left translate-x-1/2 translate-y-1/2 -rotate-90 whitespace-nowrap">
           <span
@@ -83,9 +94,10 @@ export const Bookmark = ({
             {bookmarkTitle}
           </span>
         </span>
-      </button>
+      </AriaButton>
 
-      <div className="flex py-5">
+      {/* https://github.com/facebook/react/issues/17157#issuecomment-1572230721 */}
+      <div className="flex py-5" aria-hidden={!isOpen} {...(isOpen ? {} : { inert: '' })}>
         <div className="flex w-44 items-center justify-center">
           {icon ? (
             <div
