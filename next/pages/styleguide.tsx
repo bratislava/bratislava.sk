@@ -24,6 +24,7 @@ import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
+import ContactsShowcase from '@components/styleguide/showcases/ContactsShowcase'
 
 const Styleguide = () => {
   /**
@@ -55,6 +56,7 @@ const Styleguide = () => {
       <CategoryCardShowcase />
       <BlogPostCardShowcase />
       <HomepageHorizontalCardShowcase />
+      <ContactsShowcase />
 
       {/* <SnackbarShowCase /> */}
     </StyleGuideWrapper>
@@ -62,7 +64,7 @@ const Styleguide = () => {
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  if (isProductionDeployment()) return { notFound: true }
+  // if (isProductionDeployment()) return { notFound: true }
 
   const locale = ctx.locale ?? 'sk'
 
