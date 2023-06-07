@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_contacts_sections",
+  "info": {
+    "displayName": "Contacts section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    },
+    "contacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "required": true
+    }
+  }
+}

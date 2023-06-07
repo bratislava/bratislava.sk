@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blocks_contact_cards",
+  "info": {
+    "displayName": "Contact card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "address",
+        "email",
+        "website",
+        "phone"
+      ],
+      "required": true
+    },
+    "overrideLabel": {
+      "type": "string"
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
