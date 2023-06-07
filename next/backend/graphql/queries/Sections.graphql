@@ -436,6 +436,23 @@ fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
   }
 }
 
+fragment ContactCardBlock on ComponentBlocksContactCard {
+  type
+  overrideLabel
+  value
+}
+
+fragment ContactsSection on ComponentSectionsContactsSection {
+  id
+  title
+  description
+  hasBackground
+  contacts {
+      ...ContactCardBlock
+  }
+  type
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -534,6 +551,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFeaturedBlogPosts {
     ...FeaturedBlogPostsSection
+  }
+
+  ... on ComponentSectionsContactsSection {
+    ...ContactsSection
   }
 }
 

@@ -353,6 +353,23 @@ export type ComponentBlocksComparisonItemFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksComparisonItemFiltersInput>>>
 }
 
+export type ComponentBlocksContactCard = {
+  __typename?: 'ComponentBlocksContactCard'
+  id: Scalars['ID']
+  overrideLabel?: Maybe<Scalars['String']>
+  type: Enum_Componentblockscontactcard_Type
+  value: Scalars['String']
+}
+
+export type ComponentBlocksContactCardFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardFiltersInput>>>
+  overrideLabel?: InputMaybe<StringFilterInput>
+  type?: InputMaybe<StringFilterInput>
+  value?: InputMaybe<StringFilterInput>
+}
+
 export type ComponentBlocksDocListExtensions = {
   __typename?: 'ComponentBlocksDocListExtensions'
   document?: Maybe<UploadFileEntityResponse>
@@ -1015,6 +1032,22 @@ export type ComponentSectionsContact = {
   title?: Maybe<Scalars['String']>
 }
 
+export type ComponentSectionsContactsSection = {
+  __typename?: 'ComponentSectionsContactsSection'
+  contacts: Array<Maybe<ComponentBlocksContactCard>>
+  description?: Maybe<Scalars['String']>
+  hasBackground?: Maybe<Scalars['Boolean']>
+  id: Scalars['ID']
+  title?: Maybe<Scalars['String']>
+  type: Enum_Componentsectionscontactssection_Type
+}
+
+export type ComponentSectionsContactsSectionContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export type ComponentSectionsDivider = {
   __typename?: 'ComponentSectionsDivider'
   hasBackground?: Maybe<Scalars['Boolean']>
@@ -1408,6 +1441,13 @@ export enum Enum_Componentaccordionitemsflattext_Width {
   Wide = 'wide',
 }
 
+export enum Enum_Componentblockscontactcard_Type {
+  Address = 'address',
+  Email = 'email',
+  Phone = 'phone',
+  Website = 'website',
+}
+
 export enum Enum_Componentblocksspaceinfo_Imageposition {
   Left = 'left',
   Right = 'right',
@@ -1494,6 +1534,11 @@ export enum Enum_Componentsectionsbanner_Variant {
 export enum Enum_Componentsectionscomparisonsection_Textalign {
   Center = 'center',
   Left = 'left',
+}
+
+export enum Enum_Componentsectionscontactssection_Type {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
 }
 
 export enum Enum_Componentsectionsdivider_Style {
@@ -1783,6 +1828,7 @@ export type GenericMorph =
   | ComponentBlocksCommonLink
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
+  | ComponentBlocksContactCard
   | ComponentBlocksDocListExtensions
   | ComponentBlocksFile
   | ComponentBlocksFileItem
@@ -1818,6 +1864,7 @@ export type GenericMorph =
   | ComponentSectionsColumnedText
   | ComponentSectionsComparisonSection
   | ComponentSectionsContact
+  | ComponentSectionsContactsSection
   | ComponentSectionsDivider
   | ComponentSectionsDocumentList
   | ComponentSectionsFeaturedBlogPosts
@@ -2683,6 +2730,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsColumnedText
   | ComponentSectionsComparisonSection
   | ComponentSectionsContact
+  | ComponentSectionsContactsSection
   | ComponentSectionsDivider
   | ComponentSectionsDocumentList
   | ComponentSectionsFeaturedBlogPosts
@@ -6613,6 +6661,20 @@ export type PageBySlugQuery = {
               address?: string | null
             }
           | {
+              __typename: 'ComponentSectionsContactsSection'
+              id: string
+              title?: string | null
+              description?: string | null
+              hasBackground?: boolean | null
+              type: Enum_Componentsectionscontactssection_Type
+              contacts: Array<{
+                __typename?: 'ComponentBlocksContactCard'
+                type: Enum_Componentblockscontactcard_Type
+                overrideLabel?: string | null
+                value: string
+              } | null>
+            }
+          | {
               __typename: 'ComponentSectionsDivider'
               hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
@@ -7464,6 +7526,20 @@ export type PageEntityFragment = {
           email?: string | null
           emailLabel?: string | null
           address?: string | null
+        }
+      | {
+          __typename: 'ComponentSectionsContactsSection'
+          id: string
+          title?: string | null
+          description?: string | null
+          hasBackground?: boolean | null
+          type: Enum_Componentsectionscontactssection_Type
+          contacts: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            type: Enum_Componentblockscontactcard_Type
+            overrideLabel?: string | null
+            value: string
+          } | null>
         }
       | {
           __typename: 'ComponentSectionsDivider'
@@ -8801,6 +8877,28 @@ export type FeaturedBlogPostsSectionFragment = {
   } | null
 }
 
+export type ContactCardBlockFragment = {
+  __typename?: 'ComponentBlocksContactCard'
+  type: Enum_Componentblockscontactcard_Type
+  overrideLabel?: string | null
+  value: string
+}
+
+export type ContactsSectionFragment = {
+  __typename?: 'ComponentSectionsContactsSection'
+  id: string
+  title?: string | null
+  description?: string | null
+  hasBackground?: boolean | null
+  type: Enum_Componentsectionscontactssection_Type
+  contacts: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    type: Enum_Componentblockscontactcard_Type
+    overrideLabel?: string | null
+    value: string
+  } | null>
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -8994,6 +9092,21 @@ type Sections_ComponentSectionsContact_Fragment = {
   email?: string | null
   emailLabel?: string | null
   address?: string | null
+}
+
+type Sections_ComponentSectionsContactsSection_Fragment = {
+  __typename: 'ComponentSectionsContactsSection'
+  id: string
+  title?: string | null
+  description?: string | null
+  hasBackground?: boolean | null
+  type: Enum_Componentsectionscontactssection_Type
+  contacts: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    type: Enum_Componentblockscontactcard_Type
+    overrideLabel?: string | null
+    value: string
+  } | null>
 }
 
 type Sections_ComponentSectionsDivider_Fragment = {
@@ -9455,6 +9568,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContact_Fragment
+  | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsDocumentList_Fragment
   | Sections_ComponentSectionsFeaturedBlogPosts_Fragment
@@ -10175,6 +10289,26 @@ export const FeaturedBlogPostsSectionFragmentDoc = gql`
   }
   ${LatestBlogPostEntityFragmentDoc}
 `
+export const ContactCardBlockFragmentDoc = gql`
+  fragment ContactCardBlock on ComponentBlocksContactCard {
+    type
+    overrideLabel
+    value
+  }
+`
+export const ContactsSectionFragmentDoc = gql`
+  fragment ContactsSection on ComponentSectionsContactsSection {
+    id
+    title
+    description
+    hasBackground
+    contacts {
+      ...ContactCardBlock
+    }
+    type
+  }
+  ${ContactCardBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -10250,6 +10384,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsFeaturedBlogPosts {
       ...FeaturedBlogPostsSection
     }
+    ... on ComponentSectionsContactsSection {
+      ...ContactsSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DocumentListSectionFragmentDoc}
@@ -10275,6 +10412,7 @@ export const SectionsFragmentDoc = gql`
   ${BannerSectionFragmentDoc}
   ${TimelineSectionFragmentDoc}
   ${FeaturedBlogPostsSectionFragmentDoc}
+  ${ContactsSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {
