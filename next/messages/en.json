@@ -217,5 +217,11 @@
       "closeGallery": "Close image gallery"
     },
     "morePhotos": "photos"
+  },
+  "ContactCtaCard": {
+    "email": "Email",
+    "address": "Address",
+    "web": "Web",
+    "phone": "Phone"
   }
 }

@@ -217,5 +217,11 @@
       "closeGallery": "Zavrieť galériu obrázkov"
     },
     "morePhotos": "{count, plural, one {fotografia} few {fotografie} other {fotografií}}"
+  },
+  "ContactCtaCard": {
+    "email": "Email",
+    "address": "Adresa",
+    "web": "Web",
+    "phone": "Telefón"
   }
 }
