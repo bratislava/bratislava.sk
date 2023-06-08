@@ -58,7 +58,7 @@ module.exports = {
       'size-h3': getFontSize([28, 36]),
       'size-h3-r': getFontSize([20, 28]),
       'size-h2': getFontSize([32, 40]),
-      'size-h2-r': getFontSize([24, 32]),
+      'size-h2-r': getFontSize([24, 28]),
       'size-h1': getFontSize([40, 48]),
       'size-h1-r': getFontSize([28, 36]),
       'size-h1-hero': getFontSize([56, 64]),

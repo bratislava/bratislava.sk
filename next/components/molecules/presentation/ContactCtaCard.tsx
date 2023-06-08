@@ -83,7 +83,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
   return (
     <div
       className={twMerge(
-        'relative flex items-center gap-x-4 rounded-lg p-4 lg:p-6',
+        'relative flex flex-col gap-4 rounded-lg p-4 md:flex-row md:items-center lg:p-6',
         hasBackground ? 'bg-white' : 'bg-category-100',
         className,
       )}
@@ -96,7 +96,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
       >
         <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
       </div>
-      <div className="flex flex-col gap-y-1 truncate">
+      <div className="flex flex-col gap-y-1 overflow-hidden break-words">
         <p className="text-h6 font-semibold">{label}</p>
         {data.link ? (
           <MLink href={data.link} variant="underlined">
