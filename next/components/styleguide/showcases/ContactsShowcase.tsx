@@ -12,29 +12,30 @@ const data = {
   description:
     '**Lorem ipsum dolor sit amet consectetur.**\n In viverra elementum sem sed. Mi nunc eu gravida cursus purus turpis. Urna egestas aliquam ac suspendisse eleifend volutpat scelerisque. Et praesent adipiscing malesuada non lobortis magna duis.',
   hasBackground: true,
-  contacts: [
+  phoneContacts: [
     {
-      type: 'phone',
       overrideLabel: null,
       value: '+421 2 5950 5950',
     },
+  ],
+  emailContacts: [
     {
-      type: 'email',
       overrideLabel: null,
       value: 'sekretariat.gr@dpb.sk',
     },
+  ],
+  webContacts: [
     {
-      type: 'website',
       overrideLabel: null,
       value: 'https://dpb.sk',
     },
+  ],
+  addressContacts: [
     {
-      type: 'address',
       overrideLabel: null,
       value: 'Dopravný podnik Bratislava, a.s.\nOlejkárska 1\n814 52 Bratislava',
     },
     {
-      type: 'address',
       overrideLabel: 'Override label test very very very very very very very very  long',
       value: 'Verylonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong',
     },

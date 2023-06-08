@@ -1,14 +1,21 @@
 import { AddressIcon, EmailIcon, PhoneIcon, WebIcon } from '@assets/ui-icons'
-import { ContactCardBlockFragment, Enum_Componentblockscontactcard_Type } from '@backend/graphql'
+import { ContactCardBlockFragment } from '@backend/graphql'
 import MLink from '@components/forms/simple-components/MLink'
+import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
-import cx from 'classnames'
+
+export enum ContactCtaCardType {
+  Address,
+  Email,
+  Phone,
+  Web,
+}
 
 type ContactCtaCardProps = {
   className?: string
-  contact: ContactCardBlockFragment
+  contact: { type: ContactCtaCardType } & ContactCardBlockFragment
   hasBackground?: boolean
 }
 const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardProps) => {
@@ -19,15 +26,15 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
       return contact.overrideLabel
     }
     return {
-      [Enum_Componentblockscontactcard_Type.Email]: t('email'),
-      [Enum_Componentblockscontactcard_Type.Phone]: t('phone'),
-      [Enum_Componentblockscontactcard_Type.Address]: t('address'),
-      [Enum_Componentblockscontactcard_Type.Website]: t('web'),
+      [ContactCtaCardType.Email]: t('email'),
+      [ContactCtaCardType.Phone]: t('phone'),
+      [ContactCtaCardType.Address]: t('address'),
+      [ContactCtaCardType.Web]: t('web'),
     }[contact.type]
   }, [contact, t])
 
   const data = useMemo(() => {
-    if (contact.type === Enum_Componentblockscontactcard_Type.Phone) {
+    if (contact.type === ContactCtaCardType.Phone) {
       return {
         icon: PhoneIcon,
         displayValue: contact.value,
@@ -36,11 +43,11 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
       }
     }
 
-    if (contact.type === Enum_Componentblockscontactcard_Type.Email) {
+    if (contact.type === ContactCtaCardType.Email) {
       return { icon: EmailIcon, displayValue: contact.value, link: `mailto:${contact.value}` }
     }
 
-    if (contact.type === Enum_Componentblockscontactcard_Type.Website) {
+    if (contact.type === ContactCtaCardType.Web) {
       let displayValue = contact.value
       // Tries to parse the url and remove the protocol and trailing slash
       // https://www.bratislava.sk/ -> www.bratislava.sk
@@ -55,7 +62,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
       return { icon: WebIcon, displayValue, link: contact.value }
     }
 
-    if (contact.type === Enum_Componentblockscontactcard_Type.Address) {
+    if (contact.type === ContactCtaCardType.Address) {
       return { icon: AddressIcon, displayValue: contact.value }
     }
 

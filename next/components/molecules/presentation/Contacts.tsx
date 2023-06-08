@@ -1,9 +1,12 @@
 import {
+  ContactCardBlockFragment,
   ContactsSectionFragment,
   Enum_Componentsectionscontactssection_Type,
 } from '@backend/graphql'
 import Markdown from '@components/atoms/Markdown'
-import ContactCtaCard from '@components/molecules/presentation/ContactCtaCard'
+import ContactCtaCard, {
+  ContactCtaCardType,
+} from '@components/molecules/presentation/ContactCtaCard'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import React from 'react'
@@ -12,9 +15,20 @@ type ContactsProps = {
   section: ContactsSectionFragment
 }
 
+const mapSection = (
+  array: (ContactCardBlockFragment | null | undefined)[] | null | undefined,
+  type: ContactCtaCardType,
+) => array?.filter(isDefined).map((contact) => ({ type, ...contact })) ?? []
+
 const Contacts = ({ section }: ContactsProps) => {
   const isVertical = section.type === Enum_Componentsectionscontactssection_Type.Vertical
   const isHorizontal = section.type === Enum_Componentsectionscontactssection_Type.Horizontal
+  const contacts = [
+    ...mapSection(section.addressContacts, ContactCtaCardType.Address),
+    ...mapSection(section.emailContacts, ContactCtaCardType.Email),
+    ...mapSection(section.phoneContacts, ContactCtaCardType.Phone),
+    ...mapSection(section.webContacts, ContactCtaCardType.Web),
+  ]
 
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
@@ -39,7 +53,7 @@ const Contacts = ({ section }: ContactsProps) => {
           'md:col-span-6': isHorizontal,
         })}
       >
-        {section.contacts.filter(isDefined).map((contact) => (
+        {contacts.map((contact) => (
           <ContactCtaCard
             className={cx('col-span-1', {
               'md:col-span-1': isVertical,

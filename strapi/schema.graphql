@@ -357,7 +357,6 @@ input ComponentBlocksComparisonItemInput {
 type ComponentBlocksContactCard {
   id: ID!
   overrideLabel: String
-  type: ENUM_COMPONENTBLOCKSCONTACTCARD_TYPE!
   value: String!
 }
 
@@ -366,14 +365,12 @@ input ComponentBlocksContactCardFiltersInput {
   not: ComponentBlocksContactCardFiltersInput
   or: [ComponentBlocksContactCardFiltersInput]
   overrideLabel: StringFilterInput
-  type: StringFilterInput
   value: StringFilterInput
 }
 
 input ComponentBlocksContactCardInput {
   id: ID
   overrideLabel: String
-  type: ENUM_COMPONENTBLOCKSCONTACTCARD_TYPE
   value: String
 }
 
@@ -1216,32 +1213,41 @@ input ComponentSectionsContactInput {
 }
 
 type ComponentSectionsContactsSection {
-  contacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]!
+  addressContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   description: String
+  emailContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   hasBackground: Boolean
   id: ID!
+  phoneContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   title: String
   type: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TYPE!
+  webContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
 }
 
 input ComponentSectionsContactsSectionFiltersInput {
+  addressContacts: ComponentBlocksContactCardFiltersInput
   and: [ComponentSectionsContactsSectionFiltersInput]
-  contacts: ComponentBlocksContactCardFiltersInput
   description: StringFilterInput
+  emailContacts: ComponentBlocksContactCardFiltersInput
   hasBackground: BooleanFilterInput
   not: ComponentSectionsContactsSectionFiltersInput
   or: [ComponentSectionsContactsSectionFiltersInput]
+  phoneContacts: ComponentBlocksContactCardFiltersInput
   title: StringFilterInput
   type: StringFilterInput
+  webContacts: ComponentBlocksContactCardFiltersInput
 }
 
 input ComponentSectionsContactsSectionInput {
-  contacts: [ComponentBlocksContactCardInput]
+  addressContacts: [ComponentBlocksContactCardInput]
   description: String
+  emailContacts: [ComponentBlocksContactCardInput]
   hasBackground: Boolean
   id: ID
+  phoneContacts: [ComponentBlocksContactCardInput]
   title: String
   type: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TYPE
+  webContacts: [ComponentBlocksContactCardInput]
 }
 
 type ComponentSectionsDivider {
@@ -1898,13 +1904,6 @@ enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH {
   full
   narrow
   wide
-}
-
-enum ENUM_COMPONENTBLOCKSCONTACTCARD_TYPE {
-  address
-  email
-  phone
-  website
 }
 
 enum ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION {

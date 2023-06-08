@@ -15,11 +15,25 @@
     "hasBackground": {
       "type": "boolean"
     },
-    "contacts": {
+    "addressContacts": {
       "type": "component",
       "repeatable": true,
-      "component": "blocks.contact-card",
-      "required": true
+      "component": "blocks.contact-card"
+    },
+    "emailContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
+    "phoneContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
+    "webContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
     },
     "type": {
       "type": "enumeration",

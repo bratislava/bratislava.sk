@@ -437,7 +437,6 @@ fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
 }
 
 fragment ContactCardBlock on ComponentBlocksContactCard {
-  type
   overrideLabel
   value
 }
@@ -447,7 +446,16 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   title
   description
   hasBackground
-  contacts {
+  addressContacts {
+      ...ContactCardBlock
+  }
+  emailContacts {
+      ...ContactCardBlock
+  }
+  phoneContacts {
+      ...ContactCardBlock
+  }
+  webContacts {
       ...ContactCardBlock
   }
   type

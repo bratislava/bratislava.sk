@@ -6,16 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "address",
-        "email",
-        "website",
-        "phone"
-      ],
-      "required": true
-    },
     "overrideLabel": {
       "type": "string"
     },
