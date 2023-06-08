@@ -1,6 +1,7 @@
 import AccordionShowcase from '@components/styleguide/showcases/AccordionShowcase'
 import BlogPostCardShowcase from '@components/styleguide/showcases/BlogPostCardShowcase'
 import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardShowcase'
+import ContactsShowcase from '@components/styleguide/showcases/ContactsShowcase'
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
@@ -55,6 +56,7 @@ const Styleguide = () => {
       <CategoryCardShowcase />
       <BlogPostCardShowcase />
       <HomepageHorizontalCardShowcase />
+      <ContactsShowcase />
 
       {/* <SnackbarShowCase /> */}
     </StyleGuideWrapper>

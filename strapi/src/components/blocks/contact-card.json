@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blocks_contact_cards",
+  "info": {
+    "displayName": "Contact card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "overrideLabel": {
+      "type": "string"
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -9,7 +9,7 @@ import styles from './Markdown.module.scss'
 
 export interface MarkdownProps {
   content: string | null | undefined
-  variant?: 'default' | 'small' | 'accordion'
+  variant?: 'default' | 'small' | 'small-no-respo' | 'accordion'
 }
 
 // TODO hasBackground behaviour
@@ -29,6 +29,7 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
       className={cx(styles.markdown, {
         'text-large-respo': variant === 'default' || variant === 'accordion',
         'text-default-respo': variant === 'small',
+        'text-default': variant === 'small-no-respo',
       })}
       components={{
         // Standard components: a, blockquote, br, code, em, h1, h2, h3, h4, h5, h6, hr, img, li, ol, p, pre, strong, and ul

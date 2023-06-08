@@ -29,6 +29,7 @@ import TextWithImageSection from './sections/general/TextWithImageSection'
 import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
+import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
@@ -104,6 +105,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsFeaturedBlogPosts':
       return <FeaturedBlogPostsSection section={section} />
 
+    case 'ComponentSectionsContactsSection':
+      return <ContactsSection section={section} />
+
     default:
       return null
   }
@@ -118,14 +122,12 @@ const Section = ({ section }: { section: SectionsFragment | null }) => {
     return <NumericalListSection section={section} />
   }
 
-  // Not All sections has property hasBackground
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
-  const hasBackground = (section as any)?.hasBackground ?? false
+  const hasBackground = ('hasBackground' in section && section.hasBackground) ?? false
 
   return (
     <SectionContainer
       className={cx('pt-10 md:pt-18', {
-        'bg-category-200 pb-14 md:pb-18': hasBackground === true,
+        'bg-category-200 pb-14 md:pb-18': hasBackground,
       })}
       hasBackground={hasBackground}
     >
