@@ -2,9 +2,9 @@ import {
   ContactsSectionFragment,
   Enum_Componentsectionscontactssection_Type,
 } from '@backend/graphql'
-import Contacts from '@components/molecules/presentation/Contacts'
 import { Stack } from '@components/styleguide/Stack'
 import { Wrapper } from '@components/styleguide/Wrapper'
+import Contacts from '@components/ui/Contacts/Contacts'
 import React from 'react'
 
 const data = {

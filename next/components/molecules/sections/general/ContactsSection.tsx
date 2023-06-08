@@ -1,5 +1,5 @@
 import { ContactsSectionFragment } from '@backend/graphql'
-import Contacts from '@components/molecules/presentation/Contacts'
+import Contacts from '@components/ui/Contacts/Contacts'
 import React from 'react'
 
 type ContactsSectionProps = {
