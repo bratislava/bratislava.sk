@@ -1,4 +1,5 @@
-import { AddressIcon, EmailIcon, PhoneIcon, WebIcon } from '@assets/ui-icons'
+import { AddressIcon, EmailIcon, WebIcon } from '@assets/images'
+import { PhoneIcon } from '@assets/ui-icons'
 import { ContactCardBlockFragment } from '@backend/graphql'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
