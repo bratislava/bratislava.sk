@@ -1,6 +1,7 @@
 import AccordionShowcase from '@components/styleguide/showcases/AccordionShowcase'
 import BlogPostCardShowcase from '@components/styleguide/showcases/BlogPostCardShowcase'
 import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardShowcase'
+import ContactsShowcase from '@components/styleguide/showcases/ContactsShowcase'
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import { isProductionDeployment } from '@utils/utils'
@@ -24,7 +25,6 @@ import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
-import ContactsShowcase from '@components/styleguide/showcases/ContactsShowcase'
 
 const Styleguide = () => {
   /**
@@ -64,7 +64,7 @@ const Styleguide = () => {
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  // if (isProductionDeployment()) return { notFound: true }
+  if (isProductionDeployment()) return { notFound: true }
 
   const locale = ctx.locale ?? 'sk'
 
