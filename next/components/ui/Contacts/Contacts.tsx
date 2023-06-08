@@ -51,21 +51,23 @@ const Contacts = ({ section }: ContactsProps) => {
         })}
       />
       <div
-        className={cx('col-span-1 grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3', {
+        className={cx('col-span-1', {
           'md:col-span-12': isVertical,
           'md:col-span-6': isHorizontal,
         })}
       >
-        {contacts.map((contact) => (
-          <ContactCtaCard
-            className={cx('col-span-1', {
-              'md:col-span-1': isVertical,
-              'md:col-span-2': isHorizontal,
-            })}
-            contact={contact}
-            hasBackground={section.hasBackground ?? false}
-          />
-        ))}
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3">
+          {contacts.map((contact) => (
+            <ContactCtaCard
+              className={cx('col-span-1', {
+                'md:col-span-1': isVertical,
+                'md:col-span-2': isHorizontal,
+              })}
+              contact={contact}
+              hasBackground={section.hasBackground ?? false}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
