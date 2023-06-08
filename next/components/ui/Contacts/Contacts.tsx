@@ -42,7 +42,7 @@ const Contacts = ({ section }: ContactsProps) => {
         })}
       >
         <h2 className="text-h2">{section.title}</h2>
-        {section.description && <Markdown content={section.description} variant="small" />}
+        {section.description && <Markdown content={section.description} variant="small-no-respo" />}
       </div>
       <div
         className={cx('hidden md:block', {
