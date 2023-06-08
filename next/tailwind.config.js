@@ -50,7 +50,7 @@ module.exports = {
       'size-p-small': getFontSize([14, 20]),
 
       'size-h6': getFontSize([16, 24]),
-      'size-h6-r': getFontSize([16, 24]),
+      'size-h6-r': getFontSize([16, 20]),
       'size-h5': getFontSize([20, 28]),
       'size-h5-r': getFontSize([16, 24]),
       'size-h4': getFontSize([24, 32]),
