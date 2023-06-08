@@ -19,6 +19,10 @@ type ContactCtaCardProps = {
   contact: { type: ContactCtaCardType } & ContactCardBlockFragment
   hasBackground?: boolean
 }
+
+/**
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?type=design&node-id=8988-24516&t=ZrNmOvM307DSHwAu-0
+ */
 const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardProps) => {
   const t = useTranslations('ContactCtaCard')
 
