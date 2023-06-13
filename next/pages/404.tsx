@@ -10,6 +10,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       messages: (await import(`../messages/${locale}.json`)).default,
     },
+    revalidate: 10,
   }
 }
 
