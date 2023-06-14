@@ -44,8 +44,7 @@ const getUDEDocumentsList = async (search?: string): Promise<Array<ResponseGinis
             <Xrg
               xmlns="http://www.gordic.cz/xrg/ude/seznam-dokumentu/request/v_1.0.0.0">
               <Seznam-dokumentu>
-                ${search ? `<Nazev>${search}</Nazev>` : ''}
-                <Stav>vyveseno</Stav>
+                ${search ? `<Nazev>${search}</Nazev>` : '<Stav>vyveseno</Stav>'}
               </Seznam-dokumentu>
             </Xrg>
           </requestXml>
