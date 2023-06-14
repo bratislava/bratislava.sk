@@ -4,7 +4,7 @@ import { TFile } from '@components/ui/FileList/FileList'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
-import { getLocalDate } from './local-date'
+import { getNumericLocalDate } from './local-date'
 
 export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
@@ -50,7 +50,7 @@ export const formatFiles = (files: FileBlockFragment[]): TFile[] =>
       url: file.media?.data?.attributes?.url ?? '',
       size: file.media?.data?.attributes?.size ?? 0,
       created_at: file.media?.data?.attributes?.createdAt
-        ? getLocalDate(file.media?.data?.attributes?.createdAt)
+        ? getNumericLocalDate(file.media?.data?.attributes?.createdAt)
         : '',
       ext: file.media?.data?.attributes?.ext ?? undefined,
     },
