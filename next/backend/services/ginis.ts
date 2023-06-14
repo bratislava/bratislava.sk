@@ -46,7 +46,6 @@ const getUDEDocumentsList = async (search?: string): Promise<Array<ResponseGinis
               <Seznam-dokumentu>
                 ${search ? `<Nazev>${search}</Nazev>` : ''}
                 <Stav>vyveseno</Stav>
-                <Id-uredni-desky>MAG0AWO0A03L</Id-uredni-desky>
               </Seznam-dokumentu>
             </Xrg>
           </requestXml>
