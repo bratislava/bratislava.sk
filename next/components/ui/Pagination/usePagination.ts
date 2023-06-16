@@ -126,7 +126,7 @@ export default function usePagination(props: {
   const items = itemList.map((item) => {
     return typeof item === 'number'
       ? {
-          onPress: (event: PressEvent): void => {
+          onPress: (event: PressEvent) => {
             handlePress(event, item)
           },
           type: 'page',
@@ -136,7 +136,7 @@ export default function usePagination(props: {
           'aria-current': item === page ? ('true' as const) : undefined,
         }
       : {
-          onPress: (event: PressEvent): void => {
+          onPress: (event: PressEvent) => {
             handlePress(event, buttonPage(item))
           },
           type: item,
