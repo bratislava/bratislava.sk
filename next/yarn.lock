@@ -1232,7 +1232,7 @@
   dependencies:
     tslib "^2.1.0"
 
-"@formatjs/intl-localematcher@0.2.32":
+"@formatjs/intl-localematcher@0.2.32", "@formatjs/intl-localematcher@^0.2.32":
   version "0.2.32"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.32.tgz#00d4d307cd7d514b298e15a11a369b86c8933ec1"
   integrity sha512-k/MEBstff4sttohyEpXxCmC3MqbUn9VvHGlZ8fauLzkbwXmVrEeyzS+4uhrvAk9DWU9/7otYWxyDox4nT/KVLQ==
@@ -1879,62 +1879,62 @@
     hey-listen "^1.0.8"
     tslib "^2.3.1"
 
-"@next/env@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.1.tgz#57322da2630b6bb6d7204577b0a18f6f9324db0c"
-  integrity sha512-eD6WCBMFjLFooLM19SIhSkWBHtaFrZFfg2Cxnyl3vS3DAdFRfnx5TY2RxlkuKXdIRCC0ySbtK9JXXt8qLCqzZg==
+"@next/env@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.6.tgz#3f2041c7758660d7255707ae4cb9166519113dea"
+  integrity sha512-nqUxEtvDqFhmV1/awSg0K2XHNwkftNaiUqCYO9e6+MYmqNObpKVl7OgMkGaQ2SZnFx5YqF0t60ZJTlyJIDAijg==
 
-"@next/eslint-plugin-next@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-13.4.1.tgz#9c943ccd035f5f4b79da23911e08e18c24941bed"
-  integrity sha512-tVPS/2FKlA3ANCRCYZVT5jdbUKasBU8LG6bYqcNhyORDFTlDYa4cAWQJjZ7msIgLwMQIbL8CAsxrOL8maa/4Lg==
+"@next/eslint-plugin-next@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-13.4.6.tgz#6a291305226b3f762fdbc01e123efadeb63e5aaf"
+  integrity sha512-bPigeu0RI7bgy1ucBA2Yqcfg539y0Lzo38P2hIkrRB1GNvFSbYg6RTu8n6tGqPVrH3TTlPTNKLXG01wc+5NuwQ==
   dependencies:
     glob "7.1.7"
 
-"@next/swc-darwin-arm64@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.1.tgz#3748040d2dd0d89d3cdcc897f96aeda5130eed8f"
-  integrity sha512-eF8ARHtYfnoYtDa6xFHriUKA/Mfj/cCbmKb3NofeKhMccs65G6/loZ15a6wYCCx4rPAd6x4t1WmVYtri7EdeBg==
+"@next/swc-darwin-arm64@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.6.tgz#47485f3deaee6681b4a4036c74bb9c4b728d5ddd"
+  integrity sha512-ahi6VP98o4HV19rkOXPSUu+ovfHfUxbJQ7VVJ7gL2FnZRr7onEFC1oGQ6NQHpm8CxpIzSSBW79kumlFMOmZVjg==
 
-"@next/swc-darwin-x64@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-13.4.1.tgz#c59fc270005f17e04eb7eab4fd68793d0e3409a4"
-  integrity sha512-7cmDgF9tGWTgn5Gw+vP17miJbH4wcraMHDCOHTYWkO/VeKT73dUWG23TNRLfgtCNSPgH4V5B4uLHoZTanx9bAw==
+"@next/swc-darwin-x64@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-13.4.6.tgz#a6a5b232ec0f2079224fb8ed6bf11dc479af1acf"
+  integrity sha512-13cXxKFsPJIJKzUqrU5XB1mc0xbUgYsRcdH6/rB8c4NMEbWGdtD4QoK9ShN31TZdePpD4k416Ur7p+deMIxnnA==
 
-"@next/swc-linux-arm64-gnu@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-13.4.1.tgz#1aef371bcef5d832d7f7e3aec3e68cfb98282393"
-  integrity sha512-qwJqmCri2ie8aTtE5gjTSr8S6O8B67KCYgVZhv9gKH44yvc/zXbAY8u23QGULsYOyh1islWE5sWfQNLOj9iryg==
+"@next/swc-linux-arm64-gnu@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-13.4.6.tgz#2a67144e863d9c45fdbd13c7827370e7f2a28405"
+  integrity sha512-Ti+NMHEjTNktCVxNjeWbYgmZvA2AqMMI2AMlzkXsU7W4pXCMhrryAmAIoo+7YdJbsx01JQWYVxGe62G6DoCLaA==
 
-"@next/swc-linux-arm64-musl@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-13.4.1.tgz#2522927cb0af6918405a49f5a1d1687d6847f3ec"
-  integrity sha512-qcC54tWNGDv/VVIFkazxhqH1Bnagjfs4enzELVRlUOoJPD2BGJTPI7z08pQPbbgxLtRiu8gl2mXvpB8WlOkMeA==
+"@next/swc-linux-arm64-musl@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-13.4.6.tgz#5a191ac3575a70598e9e9c6e7264fc0b8a90b2db"
+  integrity sha512-OHoC6gO7XfjstgwR+z6UHKlvhqJfyMtNaJidjx3sEcfaDwS7R2lqR5AABi8PuilGgi0BO0O0sCXqLlpp3a0emQ==
 
-"@next/swc-linux-x64-gnu@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.4.1.tgz#5ec9418a35510048a5ceb79ed300463e1a9b312d"
-  integrity sha512-9TeWFlpLsBosZ+tsm/rWBaMwt5It9tPH8m3nawZqFUUrZyGRfGcI67js774vtx0k3rL9qbyY6+3pw9BCVpaYUA==
+"@next/swc-linux-x64-gnu@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.4.6.tgz#d38adf842a8b8f9de492454328fd32a2c53350f3"
+  integrity sha512-zHZxPGkUlpfNJCboUrFqwlwEX5vI9LSN70b8XEb0DYzzlrZyCyOi7hwDp/+3Urm9AB7YCAJkgR5Sp1XBVjHdfQ==
 
-"@next/swc-linux-x64-musl@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.4.1.tgz#3478b9c89b75c1d0e7def9f35a9a77cb15d1a115"
-  integrity sha512-sNDGaWmSqTS4QRUzw61wl4mVPeSqNIr1OOjLlQTRuyInxMxtqImRqdvzDvFTlDfdeUMU/DZhWGYoHrXLlZXe6A==
+"@next/swc-linux-x64-musl@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.4.6.tgz#74c745774358b78be7f958e7a8b7d93936cd6ebc"
+  integrity sha512-K/Y8lYGTwTpv5ME8PSJxwxLolaDRdVy+lOd9yMRMiQE0BLUhtxtCWC9ypV42uh9WpLjoaD0joOsB9Q6mbrSGJg==
 
-"@next/swc-win32-arm64-msvc@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-13.4.1.tgz#efe53d48ff51d2485eabb910ab7caee78425fc01"
-  integrity sha512-+CXZC7u1iXdLRudecoUYbhbsXpglYv8KFYsFxKBPn7kg+bk7eJo738wAA4jXIl8grTF2mPdmO93JOQym+BlYGA==
+"@next/swc-win32-arm64-msvc@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-13.4.6.tgz#1e1e02c175573e64808fc1a7e8650e3e217f1edc"
+  integrity sha512-U6LtxEUrjBL2tpW+Kr1nHCSJWNeIed7U7l5o7FiKGGwGgIlFi4UHDiLI6TQ2lxi20fAU33CsruV3U0GuzMlXIw==
 
-"@next/swc-win32-ia32-msvc@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-13.4.1.tgz#952cdf1c53df46a90d5151d99310195d2c384e55"
-  integrity sha512-vIoXVVc7UYO68VwVMDKwJC2+HqAZQtCYiVlApyKEeIPIQpz2gpufzGxk1z3/gwrJt/kJ5CDZjlhYDCzd3hdz+g==
+"@next/swc-win32-ia32-msvc@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-13.4.6.tgz#2b528ae3ec7f6e727f4f0d81a1015f63da55c7a6"
+  integrity sha512-eEBeAqpCfhdPSlCZCayjCiyIllVqy4tcqvm1xmg3BgJG0G5ITiMM4Cw2WVeRSgWDJqQGRyyb+q8Y2ltzhXOWsQ==
 
-"@next/swc-win32-x64-msvc@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.1.tgz#447b7dcee5f5d4824cdff331a4ec34b13d0b449d"
-  integrity sha512-n8V5ImLQZibKTu10UUdI3nIeTLkliEXe628qxqW9v8My3BAH2a7H0SaCqkV2OgqFnn8sG1wxKYw9/SNJ632kSA==
+"@next/swc-win32-x64-msvc@13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.6.tgz#38620bd68267ff13e50ecd432f1822eac51382a8"
+  integrity sha512-OrZs94AuO3ZS5tnqlyPRNgfWvboXaDQCi5aXGve3o3C+Sj0ctMUV9+Do+0zMvvLRumR8E0PTWKvtz9n5vzIsWw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -5173,12 +5173,12 @@ eslint-config-auto@0.7.3:
     read-pkg-up "7.0.1"
     rimraf "^3.0.2"
 
-eslint-config-next@13.4.1:
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-13.4.1.tgz#5f5e083fab9997752852ea40f5d233632d18f085"
-  integrity sha512-ajuxjCkW1hvirr0EQZb3/B/bFH52Z7CT89uCtTcICFL9l30i5c8hN4p0LXvTjdOXNPV5fEDcxBgGHgXdzTj1/A==
+eslint-config-next@13.4.6:
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-13.4.6.tgz#ccccf5dad45b23a56418d66caad5339116297308"
+  integrity sha512-nlv4FYish1RYYHILbQwM5/rD37cOvEqtMfDjtQCYbXdE2O3MggqHu2q6IDeLE2Z6u8ZJyNPgWOA6OimWcxj3qw==
   dependencies:
-    "@next/eslint-plugin-next" "13.4.1"
+    "@next/eslint-plugin-next" "13.4.6"
     "@rushstack/eslint-patch" "^1.1.3"
     "@typescript-eslint/parser" "^5.42.0"
     eslint-import-resolver-node "^0.3.6"
@@ -6018,6 +6018,11 @@ glob-parent@^6.0.2:
   dependencies:
     is-glob "^4.0.3"
 
+glob-to-regexp@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
+  integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
+
 glob@7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
@@ -6122,6 +6127,11 @@ gopd@^1.0.1:
   integrity sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==
   dependencies:
     get-intrinsic "^1.1.3"
+
+graceful-fs@^4.1.2:
+  version "4.2.11"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
+  integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
 graceful-fs@^4.2.4:
   version "4.2.10"
@@ -7910,19 +7920,19 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-negotiator@0.6.3:
+negotiator@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-next-intl@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-2.13.1.tgz#61d8d990da6387aac6e180491215e879c3934e4f"
-  integrity sha512-3XUZ7c123QHgQGcz5UUkTtakJdLETBlcHcdHop43iVToOpsezxvMZW6jxWwuHTRvkElfNPy1fhHwzBo/mhVVvQ==
+next-intl@2.14.6:
+  version "2.14.6"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-2.14.6.tgz#c636ba6fc9b8900fa659a6c9d00d6e2c94f41271"
+  integrity sha512-RZgQQMAUlGWmPx6gequHRCZf7NKD6ixCskyovRd1AMx0UeNqAZggbL7nFsGA8M7mZbE0twv3+4JLrPse8xbwsg==
   dependencies:
-    "@formatjs/intl-localematcher" "0.2.32"
-    negotiator "0.6.3"
-    use-intl "^2.13.1"
+    "@formatjs/intl-localematcher" "^0.2.32"
+    negotiator "^0.6.3"
+    use-intl "^2.14.6"
 
 next-plausible@^3.7.2:
   version "3.7.2"
@@ -7936,28 +7946,29 @@ next-query-params@^4.1.0:
   dependencies:
     tslib "^2.0.3"
 
-next@13.4.1:
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/next/-/next-13.4.1.tgz#8d23f94c81b3f9cc8b34165ad528457e5befd726"
-  integrity sha512-JBw2kAIyhKDpjhEWvNVoFeIzNp9xNxg8wrthDOtMctfn3EpqGCmW0FSviNyGgOSOSn6zDaX48pmvbdf6X2W9xA==
+next@13.4.6:
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/next/-/next-13.4.6.tgz#ebe52f5c74d60176d45b45e73f25a51103713ea4"
+  integrity sha512-sjVqjxU+U2aXZnYt4Ud6CTLNNwWjdSfMgemGpIQJcN3Z7Jni9xRWbR0ie5fQzCg87aLqQVhKA2ud2gPoqJ9lGw==
   dependencies:
-    "@next/env" "13.4.1"
+    "@next/env" "13.4.6"
     "@swc/helpers" "0.5.1"
     busboy "1.6.0"
     caniuse-lite "^1.0.30001406"
     postcss "8.4.14"
     styled-jsx "5.1.1"
+    watchpack "2.4.0"
     zod "3.21.4"
   optionalDependencies:
-    "@next/swc-darwin-arm64" "13.4.1"
-    "@next/swc-darwin-x64" "13.4.1"
-    "@next/swc-linux-arm64-gnu" "13.4.1"
-    "@next/swc-linux-arm64-musl" "13.4.1"
-    "@next/swc-linux-x64-gnu" "13.4.1"
-    "@next/swc-linux-x64-musl" "13.4.1"
-    "@next/swc-win32-arm64-msvc" "13.4.1"
-    "@next/swc-win32-ia32-msvc" "13.4.1"
-    "@next/swc-win32-x64-msvc" "13.4.1"
+    "@next/swc-darwin-arm64" "13.4.6"
+    "@next/swc-darwin-x64" "13.4.6"
+    "@next/swc-linux-arm64-gnu" "13.4.6"
+    "@next/swc-linux-arm64-musl" "13.4.6"
+    "@next/swc-linux-x64-gnu" "13.4.6"
+    "@next/swc-linux-x64-musl" "13.4.6"
+    "@next/swc-win32-arm64-msvc" "13.4.6"
+    "@next/swc-win32-ia32-msvc" "13.4.6"
+    "@next/swc-win32-x64-msvc" "13.4.6"
 
 no-case@^3.0.4:
   version "3.0.4"
@@ -9960,10 +9971,10 @@ typescript-strict-plugin@2.1.0:
     ora "^5.4.1"
     yargs "^16.2.0"
 
-typescript@5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
-  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
+typescript@5.1.3:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.3.tgz#8d84219244a6b40b6fb2b33cc1c062f715b9e826"
+  integrity sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==
 
 ua-parser-js@^0.7.30:
   version "0.7.33"
@@ -10124,10 +10135,10 @@ urlpattern-polyfill@^6.0.2:
   dependencies:
     braces "^3.0.2"
 
-use-intl@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-2.13.1.tgz#0a78b5da1698d1ad0398453338a83424f39435aa"
-  integrity sha512-za8vb9UtKyFuDWbc+Iceqnz1KOAGwm9cTaBjW5af6e7ZcAdwADUwsz9M/8M9VDl5gKKQ/o+3TJcKdi+ieOKhfQ==
+use-intl@^2.14.6:
+  version "2.14.6"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-2.14.6.tgz#8e2cc64a58e3a46df928f37e29a377e4844c1e04"
+  integrity sha512-ehkW7/CpJkJQUbQZvtUvB+NukmlOS2FEj5rSRBnyRvV+GsbC+CKKDFcMLecyWA12s9wnqcAbEMQMfp3m1jcwPA==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"
@@ -10254,6 +10265,14 @@ vscode-uri@^3.0.3:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-3.0.7.tgz#6d19fef387ee6b46c479e5fb00870e15e58c1eb8"
   integrity sha512-eOpPHogvorZRobNqJGhapa0JdwaxpjVvyBp0QIUMRMSf8ZAlqOdEquKuRmw9Qwu0qXtJIWqFtMkmvJjUZmMjVA==
+
+watchpack@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.0.tgz#fa33032374962c78113f93c7f2fb4c54c9862a5d"
+  integrity sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==
+  dependencies:
+    glob-to-regexp "^0.4.1"
+    graceful-fs "^4.1.2"
 
 wcwidth@^1.0.1:
   version "1.0.1"
