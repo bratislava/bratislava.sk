@@ -1,11 +1,11 @@
 import Button from '@components/forms/simple-components/Button'
+import FileCard from '@components/molecules/presentation/FileCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { Divider } from '../Divider/Divider'
-import { DownloadCard } from '../DownloadCard/DownloadCard'
 
 export type TFile = {
   title?: string
@@ -78,7 +78,7 @@ export const FileList = ({
               className={cx('flex-col space-y-8 lg:flex', { hidden: !noScroll })}
               key={fileSection.category ?? ''}
             >
-              <div className="space-y-6">
+              <div className="flex flex-col gap-y-6">
                 {fileSection.category && !hideCategory && (
                   <span className="text-h4 font-medium">{fileSection.category}</span>
                 )}
@@ -90,16 +90,18 @@ export const FileList = ({
                     <div key={i}>
                       <div className={cx('grid grid-cols-3 gap-x-7 gap-y-8')}>
                         {fileSection?.files.slice(start, end).map((file, sectionIndex) => (
+                          // eslint-disable-next-line react/no-array-index-key
                           <div key={sectionIndex} className="w-full">
-                            <DownloadCard
-                              title={file.title ?? ''}
-                              downloadLink={file.media?.url ?? ''}
-                              uploadDate={file.media?.created_at ?? ''}
-                              downloadDetail={
-                                file.media?.ext && file.media.size > 0
-                                  ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                                  : ''
+                            <FileCard
+                              title={file.title}
+                              downloadLink={file.media?.url}
+                              format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
+                              size={
+                                file.media && file.media.size > 0
+                                  ? `${file.media?.size.toString()} kB`
+                                  : undefined
                               }
+                              uploadDate={file.media?.created_at}
                             />
                           </div>
                         ))}
@@ -122,17 +124,18 @@ export const FileList = ({
                 <span className="text-h4 font-medium">{fileSection.category}</span>
                 <ResponsiveCarousel
                   items={fileSection?.files.map((file, sectionIndex) => (
-                    <DownloadCard
+                    <FileCard
                       // eslint-disable-next-line react/no-array-index-key
                       key={sectionIndex}
-                      title={file.title ?? ''}
-                      downloadLink={file.media?.url ?? ''}
-                      uploadDate={file.media?.created_at ?? ''}
-                      downloadDetail={
-                        file.media?.ext && file.media.size > 0
-                          ? `${file.media?.ext?.toUpperCase()}; ${file.media?.size.toString()} kB`
-                          : ''
+                      title={file.title}
+                      downloadLink={file.media?.url}
+                      format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
+                      size={
+                        file.media && file.media.size > 0
+                          ? `${file.media?.size.toString()} kB`
+                          : undefined
                       }
+                      uploadDate={file.media?.created_at}
                     />
                   ))}
                 />

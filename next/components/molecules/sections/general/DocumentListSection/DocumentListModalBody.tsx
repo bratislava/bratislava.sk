@@ -1,7 +1,7 @@
 import { client } from '@backend/graphql/gql'
 import { VznMeili } from '@backend/meili/types'
-import { FileCard } from '@bratislava/ui-bratislava/FileCard/FileCard'
 import Markdown from '@components/atoms/Markdown'
+import FileCard from '@components/molecules/presentation/FileCard'
 import { isPresent } from '@utils/utils'
 import { useTranslations } from 'next-intl'
 import useSWR from 'swr'
@@ -41,10 +41,10 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             <div className="pb-4 font-semibold">{t('vzn.mainDocument')}</div>
             <div>
               <FileCard
+                title={vzn?.title ?? vzn.mainDocument.name}
                 downloadLink={vzn.mainDocument?.url}
-                fileDetail={`${vzn.mainDocument?.ext?.toUpperCase()} ${vzn.mainDocument?.size} KB`}
-                fileTitle={vzn?.title ?? vzn.mainDocument.name}
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                format={vzn.mainDocument?.ext?.toUpperCase()}
+                size={`${vzn.mainDocument?.size} KB`}
                 uploadDate={new Date(vzn.mainDocument?.createdAt).toLocaleDateString()}
               />
             </div>
@@ -56,10 +56,9 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             <div>
               <FileCard
                 downloadLink={vzn.consolidatedText?.url}
-                fileDetail={`${vzn.consolidatedText?.ext?.toUpperCase()} ${
-                  vzn.consolidatedText?.size
-                } KB`}
-                fileTitle={vzn?.title ?? vzn.consolidatedText.name}
+                size={`${vzn.consolidatedText?.size} KB`}
+                format={vzn.consolidatedText?.ext ?? undefined}
+                title={vzn?.title ?? vzn.consolidatedText.name}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 uploadDate={new Date(vzn.consolidatedText?.createdAt).toLocaleDateString()}
               />
@@ -81,8 +80,9 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
                     key={amedmentDocument?.id}
                     className="w-80"
                     downloadLink={file?.url}
-                    fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
-                    fileTitle={title ?? undefined}
+                    size={`${file?.size} KB`}
+                    format={file?.ext?.toUpperCase()}
+                    title={title ?? undefined}
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />
@@ -106,8 +106,9 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
                     key={cancellationDocument?.id}
                     className="w-80"
                     downloadLink={file?.url}
-                    fileDetail={`${file?.ext?.toUpperCase()} ${file?.size} KB`}
-                    fileTitle={title ?? undefined}
+                    size={`${file?.size} KB`}
+                    format={file?.ext?.toUpperCase()}
+                    title={title ?? undefined}
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     uploadDate={new Date(file?.createdAt).toLocaleDateString()}
                   />
