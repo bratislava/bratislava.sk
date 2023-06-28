@@ -38,7 +38,6 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
           className="pt-10 md:pt-18"
         />
       </div>
-      <div className="mb-8" />
     </>
   )
 }
