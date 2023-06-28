@@ -1,8 +1,9 @@
 import Button from '@components/forms/simple-components/Button'
 import FileCard from '@components/molecules/presentation/FileCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
+import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
 import { Divider } from '../Divider/Divider'
@@ -48,6 +49,7 @@ export const FileList = ({
   noScroll,
 }: FileListProps) => {
   const t = useTranslations()
+  const locale = useLocale()
 
   const [showMore, setShowMore] = React.useState(false)
   // done like this because of typescript inference for useState
@@ -98,7 +100,7 @@ export const FileList = ({
                               format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
                               size={
                                 file.media && file.media.size > 0
-                                  ? `${file.media?.size.toString()} kB`
+                                  ? formatFileSize(file.media?.size, locale)
                                   : undefined
                               }
                               uploadDate={file.media?.created_at}
@@ -132,7 +134,7 @@ export const FileList = ({
                       format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
                       size={
                         file.media && file.media.size > 0
-                          ? `${file.media?.size.toString()} kB`
+                          ? formatFileSize(file.media?.size, locale)
                           : undefined
                       }
                       uploadDate={file.media?.created_at}
