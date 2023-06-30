@@ -1,7 +1,7 @@
 import type { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import { BasicSearchOld } from '@bratislava/ui-bratislava/BasicSearchOld/BasicSearchOld'
-import { DocumentCards } from '@bratislava/ui-bratislava/DocumentCards/DocumentCards'
 import { NoResultsFound } from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
+import { OfficialBoardCards } from '@components/ui/OfficialBoardCards/OfficialBoardCards'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
@@ -37,7 +37,7 @@ const OfficialBoardSection = () => {
         <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
       )}
       {data && data.length > 0 && (
-        <DocumentCards
+        <OfficialBoardCards
           query={search}
           title={t('recentlyAddedDocuments')}
           viewButtonText={t('viewTheDocument')}

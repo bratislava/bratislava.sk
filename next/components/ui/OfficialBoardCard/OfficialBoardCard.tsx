@@ -1,15 +1,15 @@
 // @ts-strict-ignore
 import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
+import ModalDialog from '@components/ui/ModalDialog/ModalDialog'
 import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
 import { useState } from 'react'
 import useSWR from 'swr'
 
 import { FileList, TFile, TFileSection } from '../FileList/FileList'
-import { Modal } from '../Modal/Modal'
 import { Panel } from '../Panel/Panel'
 
-export interface DocumentCardProps {
+export interface OfficialBoardCardProps {
   title: string
   id: string
   createdAt: string
@@ -19,14 +19,14 @@ export interface DocumentCardProps {
   downloadButtonText: string
 }
 
-export const DocumentCard = ({
+export const OfficialBoardCard = ({
   title,
   createdAt,
   id,
   content,
   className,
   viewButtonText,
-}: DocumentCardProps) => {
+}: OfficialBoardCardProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
@@ -78,12 +78,10 @@ export const DocumentCard = ({
         </div>
         {/* <div className="flex lg:hidden h-[86px] -mt-[86px]" /> */}
       </Panel>
-      <Modal closeButtonColor="#E46054" isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="rounded-2xl bg-gray-50 px-5 py-8">
-          {/* TODO handle loading/error */}
-          <FileList fileSections={fileSections} noScroll />
-        </div>
-      </Modal>
+      <ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} title={title}>
+        {/* TODO handle loading/error */}
+        <FileList fileSections={fileSections} noScroll hideCategory />
+      </ModalDialog>
     </>
   )
 }

@@ -12,7 +12,7 @@ interface DocumentListItemProps {
   moreDocuments: string[]
 }
 
-export const DocumentListItem = ({
+export const RegulationListItem = ({
   categoryName,
   title,
   Icon,
