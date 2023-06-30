@@ -25,6 +25,14 @@ export const getNumericLocalDate = (dateString: string) =>
         .replace(/ /g, '')
     : 'Invalid date'
 
+// TODO unify with getNumericLocalDate
+// "01. 03.2021"
+export const formatDate = (dateISOString: string | undefined | null) => {
+  if (!dateISOString) return ''
+  const date = new Date(dateISOString)
+  return date.toLocaleDateString('sk-SK', { month: '2-digit', day: '2-digit', year: 'numeric' })
+}
+
 // "Február"
 export const getLocalMonthName = (month: number | string) => {
   // TODO !!! get name directly as Month[ix - 1]

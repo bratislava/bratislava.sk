@@ -1,11 +1,11 @@
+import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
 import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import { useEffect, useState } from 'react'
 
 import Divider from '../Divider/Divider'
-import { DocumentCard } from '../DocumentCard/DocumentCard'
 import Pagination from '../Pagination/Pagination'
 
-export interface DocumentCardsProps {
+export interface OfficialBoardCardsProps {
   documents: ParsedOfficialBoardDocument[]
   dividerStyle?: string
   title: string
@@ -14,14 +14,14 @@ export interface DocumentCardsProps {
   query: string | string[]
 }
 
-export const DocumentCards = ({
+export const OfficialBoardCards = ({
   documents,
   dividerStyle,
   title,
   viewButtonText,
   downloadButtonText,
   query,
-}: DocumentCardsProps) => {
+}: OfficialBoardCardsProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPageDesktop = 14
   const itemsPerPageMobile = 10
@@ -47,7 +47,7 @@ export const DocumentCards = ({
             .map((doc, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
-                <DocumentCard
+                <OfficialBoardCard
                   {...doc}
                   viewButtonText={viewButtonText}
                   downloadButtonText={downloadButtonText}
@@ -73,7 +73,7 @@ export const DocumentCards = ({
             .map((doc, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
-                <DocumentCard
+                <OfficialBoardCard
                   {...doc}
                   viewButtonText={viewButtonText}
                   downloadButtonText={downloadButtonText}

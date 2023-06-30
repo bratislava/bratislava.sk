@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
 import { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import Button from '@components/forms/simple-components/Button'
-import { DocumentCard } from '@components/ui/DocumentCard/DocumentCard'
+import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { useTranslations } from 'next-intl'
@@ -27,7 +27,7 @@ const TabPanelOfficialBoard = () => {
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
         <div className="flex flex-col items-center gap-y-5">
           {documents.map((document, index) => (
-            <DocumentCard
+            <OfficialBoardCard
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               {...document}

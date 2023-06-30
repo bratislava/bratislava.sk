@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useQueryParam } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import DocumentListResults from './DocumentListResults'
+import RegulationsResults from './RegulationsResults'
 
 const DocumentListSection = () => {
   const t = useTranslations()
@@ -48,7 +48,7 @@ const DocumentListSection = () => {
         />
       </div>
 
-      <DocumentListResults filters={filters} onPageChange={handlePageChange} />
+      <RegulationsResults filters={filters} onPageChange={handlePageChange} />
     </div>
   )
 }
