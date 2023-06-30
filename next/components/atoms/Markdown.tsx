@@ -109,10 +109,8 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         tbody: ({ node, children }) => <tbody>{children}</tbody>,
         thead: () => <thead />,
         td: ({ node, children }) => (
-          <td className="first:text-large-respo text-large-respo table-row font-semibold md:table-cell">
-            <div className="mb-1 flex items-center px-4 text-left md:min-h-[96px] lg:mb-0">
-              {children}
-            </div>
+          <td className="text-large-respo table-row md:table-cell">
+            <div className="mb-1 flex items-center pr-4 text-left md:mb-0 md:py-1">{children}</div>
           </td>
         ),
         // th: ...

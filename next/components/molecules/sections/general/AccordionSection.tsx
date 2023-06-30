@@ -1,8 +1,8 @@
 import { AccordionSectionFragment } from '@backend/graphql'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
-import { PageLinkButton } from '@bratislava/ui-bratislava/PageLinkButton/PageLinkButton'
 import Markdown from '@components/atoms/Markdown'
+import Button from '@components/forms/simple-components/Button'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
 import { groupByCategory, parsePageLink } from '@utils/page'
@@ -16,7 +16,7 @@ type AccordionSectionProps = {
 const AccordionSection = ({ section }: AccordionSectionProps) => {
   return (
     <>
-      {section.title && <h1 className="text-h2 flex justify-center pb-14">{section.title}</h1>}
+      {section.title && <h2 className="text-h2 flex justify-center pb-14">{section.title}</h2>}
       <div className="flex flex-col gap-4">
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (
@@ -61,7 +61,11 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   <NarrowText align={item.align} width={item.width}>
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
-                  {link?.url && link.title && <PageLinkButton pageLink={link} />}
+                  {link?.url && link.title && (
+                    <Button href={link.url || '#'} variant="category-link">
+                      {link.title}
+                    </Button>
+                  )}
                 </div>
               )
             })}

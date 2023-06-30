@@ -82,7 +82,7 @@ export const FileList = ({
             >
               <div className="flex flex-col gap-y-6">
                 {fileSection.category && !hideCategory && (
-                  <span className="text-h4 font-medium">{fileSection.category}</span>
+                  <h2 className="text-h2">{fileSection.category}</h2>
                 )}
                 {Array.from({ length: numberOfGroupsSeparatedByDividers }, (_, i) => {
                   const start = i * NUM_ITEMS_PER_GROUP
