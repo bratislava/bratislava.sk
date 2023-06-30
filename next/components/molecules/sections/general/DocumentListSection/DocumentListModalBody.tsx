@@ -2,8 +2,9 @@ import { client } from '@backend/graphql/gql'
 import { VznMeili } from '@backend/meili/types'
 import Markdown from '@components/atoms/Markdown'
 import FileCard from '@components/molecules/presentation/FileCard'
+import { formatFileSize } from '@utils/formatFileSize'
 import { isPresent } from '@utils/utils'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import useSWR from 'swr'
 
 const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
@@ -11,6 +12,8 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
   const { data } = useSWR(['VznDetail', vznId], () => client.VznDetail({ id: vznId }))
 
   const t = useTranslations()
+  const locale = useLocale()
+
   return (
     <div className="modal-content-rent max-h-[75vh] max-w-screen-md overflow-y-auto rounded-xl bg-gray-50">
       <div className="px-12 py-8">
@@ -44,7 +47,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
                 title={vzn?.title ?? vzn.mainDocument.name}
                 downloadLink={vzn.mainDocument?.url}
                 format={vzn.mainDocument?.ext?.toUpperCase()}
-                size={`${vzn.mainDocument?.size} KB`}
+                size={formatFileSize(vzn.mainDocument?.size, locale)}
                 uploadDate={new Date(vzn.mainDocument?.createdAt).toLocaleDateString()}
               />
             </div>
@@ -56,7 +59,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
             <div>
               <FileCard
                 downloadLink={vzn.consolidatedText?.url}
-                size={`${vzn.consolidatedText?.size} KB`}
+                size={formatFileSize(vzn.consolidatedText?.size, locale)}
                 format={vzn.consolidatedText?.ext ?? undefined}
                 title={vzn?.title ?? vzn.consolidatedText.name}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -80,7 +83,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
                     key={amedmentDocument?.id}
                     className="w-80"
                     downloadLink={file?.url}
-                    size={`${file?.size} KB`}
+                    size={formatFileSize(file?.size, locale)}
                     format={file?.ext?.toUpperCase()}
                     title={title ?? undefined}
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -106,7 +109,7 @@ const DocumentListModalBody = ({ vzn }: { vzn: VznMeili }) => {
                     key={cancellationDocument?.id}
                     className="w-80"
                     downloadLink={file?.url}
-                    size={`${file?.size} KB`}
+                    size={formatFileSize(file?.size, locale)}
                     format={file?.ext?.toUpperCase()}
                     title={title ?? undefined}
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument

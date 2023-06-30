@@ -39,7 +39,8 @@ const DesktopFooter = () => {
           </div>
         </div>
         <HorizontalDivider />
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-[488px_332px_332px] lg:gap-8">
+        {/* there is no design in figma for middle screens, so this is chosen by devs */}
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-8 xl:grid-cols-[488px_332px_332px]">
           <div className="col-span-2 flex flex-col gap-6 lg:col-span-1">
             <FooterContacts {...attributes} />
           </div>

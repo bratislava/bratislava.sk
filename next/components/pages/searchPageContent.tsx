@@ -39,7 +39,7 @@ const SearchPageContent = () => {
   const usersFilters = { search: searchValue }
 
   return (
-    <SectionContainer>
+    <SectionContainer className="mb-8">
       <div className="flex w-full flex-col gap-y-14 pt-14 md:pt-18 lg:gap-y-20">
         <AdvancedSearch
           placeholder={t('enterKeyword')}
