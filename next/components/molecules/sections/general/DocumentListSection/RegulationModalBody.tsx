@@ -15,8 +15,12 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
   const t = useTranslations()
   const locale = useLocale()
 
+  const gridClassNames = 'grid grid-cols-1 md:grid-cols-2 gap-4'
+
   return (
     <>
+      {/* TODO tmp pr-10 to ovoid overlap with close button */}
+      <h2 className="text-h5 pb-5 pr-10">{vzn.title}</h2>
       <div className="flex">
         {vzn?.mainDocument && (
           <div className="flex flex-col">
@@ -39,9 +43,9 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
 
       {/*  Main Document  */}
       {vzn?.mainDocument && (
-        <div className="max-w-xs pt-5">
+        <div className="pt-5">
           <div className="pb-4 font-semibold">{t('vzn.mainDocument')}</div>
-          <div>
+          <div className={gridClassNames}>
             <FileCard
               title={vzn?.title ?? vzn.mainDocument.name}
               downloadLink={vzn.mainDocument?.url}
@@ -53,9 +57,9 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
         </div>
       )}
       {vzn?.consolidatedText && (
-        <div className="max-w-xs pt-5">
+        <div className="pt-5">
           <div className="pb-4 font-semibold">{t('vzn.consolidatedText')}</div>
-          <div>
+          <div className={gridClassNames}>
             <FileCard
               downloadLink={vzn.consolidatedText?.url}
               size={formatFileSize(vzn.consolidatedText?.size, locale)}
@@ -70,7 +74,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
       {!!vzn?.amedmentDocument?.length && (
         <div className="pt-5">
           <div className="pb-4 font-semibold">{t('vzn.amendments')}</div>
-          <div className="flex flex-row flex-wrap gap-5">
+          <div className={gridClassNames}>
             {vzn.amedmentDocument.map((amedmentDocument) => {
               const getDocument = data?.vzn?.data?.attributes?.amedmentDocument
                 ?.filter(isPresent)
@@ -80,13 +84,12 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
               return file ? (
                 <FileCard
                   key={amedmentDocument?.id}
-                  className="w-80"
                   downloadLink={file?.url}
                   size={formatFileSize(file?.size, locale)}
                   format={file?.ext?.toUpperCase()}
                   title={title ?? undefined}
                   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                  uploadDate={new Date(file?.createdAt).toLocaleDateString()}
+                  uploadDate={formatDate(file?.createdAt)}
                 />
               ) : null
             })}
@@ -96,7 +99,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
       {!!vzn?.cancellationDocument?.length && (
         <div className="pt-5">
           <div className="pb-4 font-semibold">{t('vzn.cancellationDocument')}</div>
-          <div className="flex flex-row flex-wrap gap-5">
+          <div className={gridClassNames}>
             {vzn.cancellationDocument.map((cancellationDocument) => {
               const getDocument = data?.vzn?.data?.attributes?.cancellationDocument
                 ?.filter(isPresent)
@@ -106,7 +109,6 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
               return file ? (
                 <FileCard
                   key={cancellationDocument?.id}
-                  className="w-80"
                   downloadLink={file?.url}
                   size={formatFileSize(file?.size, locale)}
                   format={file?.ext?.toUpperCase()}
