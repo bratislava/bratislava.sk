@@ -112,7 +112,11 @@ const RegulationsResults = ({ filters, onPageChange }: DocumentsResultsProps) =>
         )}
       </LoadingOverlay>
 
-      <ModalDialog isOpen={isOpen} onClose={() => setOpen(false)} title={activeVzn?.title ?? ''}>
+      <ModalDialog
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        aria-label={activeVzn?.title ?? ''}
+      >
         {activeVzn && <RegulationModalBody vzn={activeVzn} />}
       </ModalDialog>
     </>

@@ -29,7 +29,7 @@ const ModalDialog = ({
   width = 'fixed',
   overlayClassname,
   modalClassname,
-  isDismissable,
+  isDismissable = true,
   isKeyboardDismissDisabled,
   isOpen,
   defaultOpen,
@@ -55,15 +55,16 @@ const ModalDialog = ({
       onOpenChange={onOpenChange}
     >
       <Modal
+        isDismissable={isDismissable}
         className={twMerge(
-          cx('relative m-4 rounded-xl bg-white', {
+          cx('relative m-4 h-[80%] max-h-[var(--visual-viewport-height)] rounded-xl bg-white', {
             'w-full md:w-[592px]': width === 'fixed',
             'w-full': width === 'auto',
           }),
           modalClassname,
         )}
       >
-        <Dialog {...dialogProps}>
+        <Dialog {...dialogProps} className="h-full overflow-y-auto rounded-xl focus:outline-none">
           {({ close }) => (
             <>
               {title ? (
