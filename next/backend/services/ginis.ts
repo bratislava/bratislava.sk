@@ -65,9 +65,13 @@ const getUDEDocumentsList = async (search?: string): Promise<Array<ResponseGinis
     throw new Error('bad soap request to Ginis')
   }
   const response = await parseStringPromise(responseAxios.data, { explicitArray: false })
-  return response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg[
-    'Seznam-dokumentu'
-  ]
+  const documents =
+    response['s:Envelope']['s:Body']['Seznam-dokumentuResponse']['Seznam-dokumentuResult'].Xrg[
+      'Seznam-dokumentu'
+    ]
+  if (!documents) return []
+  if (!Array.isArray(documents)) return [documents]
+  return documents
 }
 
 export type ParsedOfficialBoardDocument = {
