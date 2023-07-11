@@ -30,7 +30,7 @@ const FileCard = ({ title, uploadDate, downloadLink, format, size, className }: 
       <div className="flex flex-col gap-1">
         <MLink
           href={downloadLink ?? '#'}
-          className="text-h5 line-clamp-1 font-bold lg:line-clamp-3"
+          className="text-h5 line-clamp-1 break-words font-bold lg:line-clamp-3"
           stretched
           variant="underlineOnHover"
           target="_blank"
