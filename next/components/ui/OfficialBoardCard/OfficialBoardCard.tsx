@@ -1,12 +1,16 @@
 // @ts-strict-ignore
 import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
+import FileCard from '@components/molecules/presentation/FileCard'
 import ModalDialog from '@components/ui/ModalDialog/ModalDialog'
+import { formatFileSize } from '@utils/formatFileSize'
+import { getNumericLocalDate } from '@utils/local-date'
 import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
-import { useState } from 'react'
+import { useLocale } from 'next-intl'
+import React, { useState } from 'react'
 import useSWR from 'swr'
 
-import { FileList, TFile, TFileSection } from '../FileList/FileList'
+import { TFile, TFileSection } from '../FileList/FileList'
 import { Panel } from '../Panel/Panel'
 
 export interface OfficialBoardCardProps {
@@ -27,6 +31,7 @@ export const OfficialBoardCard = ({
   className,
   viewButtonText,
 }: OfficialBoardCardProps) => {
+  const locale = useLocale()
   const [isOpen, setIsOpen] = useState(false)
 
   // if you need to develop this and can't connect to bratislava VPN, check out services/ginis.ts for mocks
@@ -80,7 +85,22 @@ export const OfficialBoardCard = ({
       </Panel>
       <ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} title={title}>
         {/* TODO handle loading/error */}
-        <FileList fileSections={fileSections} noScroll hideCategory />
+        {/* <FileList fileSections={fileSections} noScroll hideCategory /> */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {files.map((file) => (
+            <FileCard
+              title={file.title}
+              downloadLink={file.media?.url}
+              format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
+              size={
+                file.media && file.media.size > 0
+                  ? formatFileSize(file.media?.size, locale)
+                  : undefined
+              }
+              uploadDate={getNumericLocalDate(new Date(file.media?.created_at).toISOString())}
+            />
+          ))}
+        </div>
       </ModalDialog>
     </>
   )
