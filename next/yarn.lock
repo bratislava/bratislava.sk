@@ -1232,7 +1232,7 @@
   dependencies:
     tslib "^2.1.0"
 
-"@formatjs/intl-localematcher@0.2.32":
+"@formatjs/intl-localematcher@0.2.32", "@formatjs/intl-localematcher@^0.2.32":
   version "0.2.32"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.32.tgz#00d4d307cd7d514b298e15a11a369b86c8933ec1"
   integrity sha512-k/MEBstff4sttohyEpXxCmC3MqbUn9VvHGlZ8fauLzkbwXmVrEeyzS+4uhrvAk9DWU9/7otYWxyDox4nT/KVLQ==
@@ -7910,19 +7910,19 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-negotiator@0.6.3:
+negotiator@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-next-intl@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-2.13.1.tgz#61d8d990da6387aac6e180491215e879c3934e4f"
-  integrity sha512-3XUZ7c123QHgQGcz5UUkTtakJdLETBlcHcdHop43iVToOpsezxvMZW6jxWwuHTRvkElfNPy1fhHwzBo/mhVVvQ==
+next-intl@2.17.5:
+  version "2.17.5"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-2.17.5.tgz#1f53eef8ee986eb043d3c55959a004a1f85bf7f7"
+  integrity sha512-p/tit4/FN0eHLw6Mjwsx4ktiFZWq9VMcuY9hhkAlYWXCQgKq09PB0lZcMNw5xLvV9eor818BzXxdA+3bSvFMmw==
   dependencies:
-    "@formatjs/intl-localematcher" "0.2.32"
-    negotiator "0.6.3"
-    use-intl "^2.13.1"
+    "@formatjs/intl-localematcher" "^0.2.32"
+    negotiator "^0.6.3"
+    use-intl "^2.17.5"
 
 next-plausible@^3.7.2:
   version "3.7.2"
@@ -10129,10 +10129,10 @@ urlpattern-polyfill@^6.0.2:
   dependencies:
     braces "^3.0.2"
 
-use-intl@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-2.13.1.tgz#0a78b5da1698d1ad0398453338a83424f39435aa"
-  integrity sha512-za8vb9UtKyFuDWbc+Iceqnz1KOAGwm9cTaBjW5af6e7ZcAdwADUwsz9M/8M9VDl5gKKQ/o+3TJcKdi+ieOKhfQ==
+use-intl@^2.17.5:
+  version "2.17.5"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-2.17.5.tgz#99b5fb375de9b841dad668edb48914cfe00236a4"
+  integrity sha512-pkTRoGZsOyHImBFgV23z7g/Hzt1auap+cWvsiWzHpc70NK7Rm9R3LNI3wm3FnYEWNF8N3+CZKV+SCTrHwcNK1w==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"

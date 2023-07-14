@@ -27,9 +27,9 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
       params: {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
         slug: blogPost.attributes!.slug!,
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        locale: blogPost.attributes!.locale!,
       },
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+      locale: blogPost.attributes!.locale!,
     }))
 
   console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - BLOGS`)
