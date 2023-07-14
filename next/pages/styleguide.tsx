@@ -7,7 +7,7 @@ import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/Hom
 import { isProductionDeployment } from '@utils/utils'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
-import { GetServerSidePropsContext } from 'next'
+import { GetServerSideProps } from 'next'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
@@ -63,10 +63,10 @@ const Styleguide = () => {
   )
 }
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  if (isProductionDeployment()) return { notFound: true }
-
-  const locale = ctx.locale ?? 'sk'
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  if (!locale || isProductionDeployment()) {
+    return { notFound: true }
+  }
 
   return {
     props: {

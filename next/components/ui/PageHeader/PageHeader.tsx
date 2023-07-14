@@ -61,7 +61,7 @@ export const PageHeader = ({
             )}
             {(title || subtext) && (
               <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
-                {title && <h1 className="text-h1 ">{title}</h1>}
+                {title && <h1 className="text-h1">{title}</h1>}
                 {subtext && <p>{subtext}</p>}
               </div>
             )}
