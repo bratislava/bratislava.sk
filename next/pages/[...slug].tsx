@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   const slug = params?.slug
 
   // eslint-disable-next-line no-console
-  console.log(`Revalidating ${locale} page ${slug?.join('/')}`)
+  console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slug?.join('/')}`)
 
   if (!slug || !locale) return { notFound: true }
 

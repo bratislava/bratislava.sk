@@ -19,7 +19,7 @@ type PageProps = {
 
 export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   // eslint-disable-next-line no-console
-  console.log(`Revalidating homepage.`)
+  console.log(`Revalidating homepage ${locale}.`)
 
   if (!locale) return { notFound: true }
 

@@ -1,56 +1,39 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type strapiWebhookPayload = {
-  model: string
-  entry: {
-    slug: string
-    locale: string
-  }
-}
+type Response = { revalidated: boolean } | { message: string } | string
+type RequestPayload = { model: string; entry: { slug: string; locale: string } }
 
-function generateUrl(payload: strapiWebhookPayload, slug: string) {
-  let url = ``
-  if (payload?.entry?.locale === 'en') {
-    url += `/en`
-  }
-  if (slug === 'blog-post') {
-    url += `/blog/${payload?.entry?.slug}`
-  }
-  if (slug === 'page') {
-    url += `/${payload?.entry?.slug}`
-  }
-  return url
-}
-
-const handler = async function handler(req: NextApiRequest, res: NextApiResponse) {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.STRAPI_REVALIDATE_SECRET_TOKEN) {
-    return res.status(401).json({ message: 'Invalid tokenn' })
+    return res.status(401).json({ message: 'Invalid token' })
   }
 
   try {
-    // Check model
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const payload: strapiWebhookPayload = req.body
+    const payload = req.body as RequestPayload
 
-    switch (payload?.model) {
-      case 'blog-post':
-        const blogPostUrl = generateUrl(payload, payload?.model)
-        await res.revalidate(blogPostUrl)
-        break
+    const localePrefix = payload.entry.locale === 'en' ? '/en' : ''
 
-      case 'page':
-        const pageUrl = generateUrl(payload, payload?.model)
-        await res.revalidate(pageUrl)
-        break
-
-      default:
-        break
+    if (payload?.model === 'blog-post') {
+      const blogUrl = `${localePrefix}/blog/${payload?.entry?.slug}`
+      console.log('api/revalidate:', blogUrl)
+      await res.revalidate(blogUrl)
     }
+
+    if (payload?.model === 'page') {
+      const pageUrl = `${localePrefix}/${payload?.entry?.slug}`
+      console.log('api/revalidate:', pageUrl)
+      await res.revalidate(pageUrl)
+    }
+
+    /** Always revalidate index */
+    console.log('api/revalidate:', `${localePrefix}/`)
+    await res.revalidate(`${localePrefix}/`)
 
     return res.json({ revalidated: true })
   } catch (error) {
-    console.log('Error while revalidating ==>', error)
+    // eslint-disable-next-line no-console
+    console.log('api/revalidate: Error while revalidating ==>', error)
     return res.status(500).send('Error revalidating')
   }
 }
