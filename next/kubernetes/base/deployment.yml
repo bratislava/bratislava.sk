@@ -30,6 +30,8 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-ginis-secret
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-msal-secret
+            - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-revalidate-secret
             - configMapRef:
                 name: ${BUILD_REPOSITORY_NAME}-env
           readinessProbe:
