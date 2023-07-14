@@ -15,8 +15,11 @@ type PageProps = {
   general: GeneralQuery
 }
 
-export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
-  const locale = ctx.locale ?? 'sk'
+export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
+  // eslint-disable-next-line no-console
+  console.log(`Revalidating search ${locale}.`)
+
+  if (!locale) return { notFound: true }
 
   const [general, messages] = await Promise.all([
     client.General({ locale }),

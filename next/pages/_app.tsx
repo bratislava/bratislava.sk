@@ -10,7 +10,7 @@ import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
-import { NextIntlProvider } from 'next-intl'
+import { NextIntlClientProvider } from 'next-intl'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { OverlayProvider, SSRProvider } from 'react-aria'
@@ -45,7 +45,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="theme-color" content="#ffffff" />
         {/* look for CookieConsent component for 3rd party scripts you'd expect to find here */}
       </Head>
-      <NextIntlProvider messages={pageProps.messages}>
+
+      <NextIntlClientProvider messages={pageProps.messages}>
         <UIContextProvider
           components={{
             Link: ({ href, className, children, locale, target, rel, style }) => {
@@ -89,7 +90,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             </BAQueryClientProvider>
           </PlausibleProvider>
         </UIContextProvider>
-      </NextIntlProvider>
+      </NextIntlClientProvider>
     </>
   )
 }
