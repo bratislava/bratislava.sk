@@ -34,9 +34,9 @@ export const HighlightsHomepageSection = () => {
           const { children: postTitle, ...linkProps } = getCommonLinkProps(highlight.link)
 
           return (
-            <div key={highlight.id}>
+            <div key={highlight.id} className="h-full">
               <BlogPostCard
-                className="lg:hidden"
+                className="h-full lg:hidden"
                 variant="shadow"
                 title={postTitle ?? ''}
                 linkProps={{
