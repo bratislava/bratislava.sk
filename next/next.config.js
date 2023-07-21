@@ -9,7 +9,6 @@ const nextConfig = {
     locales: ['en', 'sk'],
     localeDetection: false,
   },
-  reloadOnPrerender: process.env.NODE_ENV === 'development',
   reactStrictMode: true,
   images: {
     remotePatterns: [

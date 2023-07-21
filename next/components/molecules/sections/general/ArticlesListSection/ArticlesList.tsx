@@ -165,8 +165,11 @@ const ArticlesList = ({
   return (
     <div>
       <div className="text-h2">{title}</div>
-      <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3">
-        {data.map((blogPost, index) => {
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-8">
+        {data.map((blogPost) => {
+          if (!blogPost.attributes) return null
+
+          // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
           const {
             title: blogPostTitle,
             excerpt,
@@ -175,22 +178,22 @@ const ArticlesList = ({
             tag,
             date_added,
             publishedAt,
-          } = blogPost.attributes ?? {}
+          } = blogPost.attributes
           const tagTitle = tag?.data?.attributes?.title
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
 
           return (
             <BlogPostCard
               key={blogPost.id}
+              style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="shadow"
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={generateImageSizes({ sm: '50vw', lg: '33vw', default: '100vw' })}
+              date={getNumericLocalDate(date_added ?? publishedAt)}
               title={blogPostTitle ?? ''}
               tag={tagTitle ?? undefined}
-              date={getNumericLocalDate(date_added ?? publishedAt)}
               text={excerpt ?? undefined}
               linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
-              style={getCategoryColorLocalStyle({ color: tagColor })}
             />
           )
         })}

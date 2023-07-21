@@ -4,6 +4,7 @@ import {
   relatedBlogPostsFetcher,
 } from '@backend/graphql/fetchers/relatedBlogPosts.fetcher'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
+import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { useQuery } from '@tanstack/react-query'
 import { getCategoryColorLocalStyle } from '@utils/colors'
@@ -36,15 +37,15 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
 
   return (
     <SectionContainer className={className}>
-      <div className="flex flex-col gap-6 lg:gap-12">
+      <div className="flex flex-col">
         <div className="flex">
           <div className="grow">
             <h2 className="text-h2">{t('relatedBlogPosts')}</h2>
           </div>
         </div>
-        {/* TODO fetch more posts and use Carousel, at least for mobile */}
-        <ul className="grid grid-cols-1 gap-3 lg:grid-cols-3 lg:gap-8">
-          {data.blogPosts.data.filter(isDefined).map((card) => {
+
+        <ResponsiveCarousel
+          items={data.blogPosts.data.filter(isDefined).map((card) => {
             if (!card.attributes) return null
 
             // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
@@ -57,16 +58,16 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
                 key={card.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="shadow"
-                date={getNumericLocalDate(date_added ?? publishedAt)}
-                tag={tagTitle ?? undefined}
-                title={title ?? ''}
-                linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
                 imgSrc={coverImage?.data?.attributes?.url}
                 imgSizes={imageSizes}
+                date={getNumericLocalDate(date_added ?? publishedAt)}
+                title={title ?? ''}
+                tag={tagTitle ?? undefined}
+                linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
               />
             )
           })}
-        </ul>
+        />
       </div>
     </SectionContainer>
   )
