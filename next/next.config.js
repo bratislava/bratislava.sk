@@ -260,7 +260,7 @@ const nextConfig = {
       },
       {
         source: '/filter/rozkopavky-a-uzavierky',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1401,7 +1401,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-most-snp',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1425,7 +1425,7 @@ const nextConfig = {
       {
         source:
           '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-karpatskej-ulice-podkolibskej-ulice-a-pionierskej-ulice',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1562,7 +1562,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-pribinova-culenova-a-kosicka',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1618,7 +1618,7 @@ const nextConfig = {
       {
         source:
           '/rozkopavka-alebo-uzavierka/uplne-uzavierky-spojene-s-podujatim-csob-bratislava-marathon-2019',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1655,7 +1655,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-mlynske-nivy-56',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1684,7 +1684,7 @@ const nextConfig = {
       },
       {
         source: '/rss/rozkopavky-a-uzavierky',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1726,7 +1726,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-prokopa-velkeho',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1756,7 +1756,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-bajkalska-8',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1792,7 +1792,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-7',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1812,7 +1812,7 @@ const nextConfig = {
       {
         source:
           '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-nabrezie-armadneho-generala-ludvika-svobodu-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1822,7 +1822,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-bajkalska-ulica-5',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1839,22 +1839,22 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-hodzovo-namestie-stefanikova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-matusova-a-lovinskeho',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uzavierka-landererovej-a-culenovej',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/uzavery-d4-r7-a-mlynske-nivy',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1879,12 +1879,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-brnianska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-slovnaftska-ulica-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1896,7 +1896,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-pristavna-5',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1926,7 +1926,7 @@ const nextConfig = {
       },
       {
         source: '/najnovsie-rozkopavky-a-uzavierky',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1970,7 +1970,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-spitalska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -1989,7 +1989,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-landererova-a-kosicka',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2016,7 +2016,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2050,7 +2050,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-namestie-snp',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2080,7 +2080,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-5',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2092,7 +2092,7 @@ const nextConfig = {
       },
       {
         source: '/situacia-v-bratislave-od-15-2-2019',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2118,7 +2118,7 @@ const nextConfig = {
       },
       {
         source: '/iframe/rozkopavky-a-uzavierky',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2135,7 +2135,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-lieskovska-cesta-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2145,12 +2145,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-4',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-namestie-1-maja-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2168,12 +2168,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-bosakova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-pristavna-6',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2185,17 +2185,17 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-namestie-1-maja',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-stara-vinarska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-biskupicka-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2212,42 +2212,42 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-bulharska-a-slovinska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-dostojevskeho-rad-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-drienova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-radlinskeho-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-parickova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-biskupicka',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-jelacicova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2272,12 +2272,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-panonska-cesta-5',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-radlinskeho-ulica-4',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2315,7 +2315,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-bocna',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2327,17 +2327,17 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-most-snp',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-prokopa-velkeho',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-hradska-4',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2354,12 +2354,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-hradska-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-pri-suchom-mlyne',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2371,22 +2371,22 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-6',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-samorinska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-edisonova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-hradska-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2397,7 +2397,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2427,12 +2427,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-svatoplukova-6',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-ucitelska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2444,12 +2444,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-a-g-l-svobodu',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/docasne-dopravne-obmedzenia-hranicna-gagarinova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2464,17 +2464,17 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-cesta-do-spalovne-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-dvojkrizna',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-parickova-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2522,12 +2522,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-kadnarova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-pristavna-3',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2543,17 +2543,17 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-bosakova-a-sustekova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-radnicna-ulica',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-mlynske-nivy-2',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2582,17 +2582,17 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kocankova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-kosicka-8',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-misikova',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2615,7 +2615,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-razusovo-nabrezie',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2645,12 +2645,12 @@ const nextConfig = {
       },
       {
         source: '/rozkopavky-a-uzavierky/d-77246/p1=11049948',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
         source: '/rozkopavka-alebo-uzavierka/ciastocna-uzavierka-zahorska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2672,7 +2672,7 @@ const nextConfig = {
       },
       {
         source: '/rozkopavka-alebo-uzavierka/uplna-uzavierka-bajkalska',
-        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
       {
@@ -2688,6 +2688,11 @@ const nextConfig = {
       {
         source: '/mesto-bratislava/projekty/kampane/sadni-si',
         destination: '/mesto-bratislava/projekty/sadni-si',
+        permanent: true,
+      },
+      {
+        source: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/rozkopavky-a-uzavery',
+        destination: '/doprava-a-mapy/sprava-a-udrzba-komunikacii/obmedzenia-a-poruchy',
         permanent: true,
       },
     ]
