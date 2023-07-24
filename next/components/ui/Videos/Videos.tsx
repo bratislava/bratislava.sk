@@ -35,7 +35,7 @@ const Video = ({
   }, [url])
 
   return (
-    <div className="w-66 xl:w-88">
+    <div className="mb-8 w-66 lg:mb-0 xl:w-88">
       <iframe
         className={cx('rounded-5 shadow-sm', {
           'animate-pulse bg-gray-300': !isLoaded,
@@ -62,12 +62,19 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
 
   return (
     <div>
-      {title && <h2 className="text-h4">{title}</h2>}
-      {subtitle && <div className="md:text-large-respo mb-10 mt-5">{subtitle}</div>}
+      <div className="py-8 md:pt-0">
+        {title || subtitle ? (
+          <div className="flex flex-col gap-2">
+            {title && <h2 className="text-h4">{title}</h2>}
+            {subtitle && <div>{subtitle}</div>}
+          </div>
+        ) : null}
+      </div>
 
       {/* Mobile */}
       <ResponsiveCarousel
         className="lg:hidden"
+        noYListSpacing
         items={videos.filter(isPresent).map((video) => (
           <Video key={video.url} size="small" {...video} />
         ))}
