@@ -20,6 +20,5 @@ export const relatedBlogPostsFetcher = (page: PageEntityFragment, locale: string
     return Promise.resolve(null)
   }
 
-  // Change to limit: 9, when section with slider buttons is implemented
-  return client.LatestPostsByTags({ locale, tags: extractedTags, limit: 3 })
+  return client.LatestPostsByTags({ locale, tags: extractedTags, limit: 9 })
 }
