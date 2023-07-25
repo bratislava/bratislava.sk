@@ -35,13 +35,13 @@ const Video = ({
   }, [url])
 
   return (
-    <div className="mb-8 w-66 lg:mb-0 xl:w-88">
+    <div className="mb-8 w-full lg:mb-0 xl:w-88">
       <iframe
-        className={cx('rounded-5 shadow-sm', {
+        className={cx('w-full rounded-5 shadow-sm', {
           'animate-pulse bg-gray-300': !isLoaded,
         })}
         title={title ?? undefined}
-        width={size === 'default' ? '350' : '280'}
+        //width={size === 'default' ? '350' : '280'}
         height={size === 'default' ? '196' : '157'}
         src={embedUrl}
         allowFullScreen
