@@ -53,37 +53,6 @@ const FileRowCard = ({
         </div>
       </div>
     </div>
-
-    // <div
-    //   className={twMerge(
-    //     'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-category-600 bg-white p-4 lg:h-48',
-    //     className,
-    //   )}
-    // >
-    //   <div className="flex flex-col gap-1">
-    //     <MLink
-    //       href={downloadLink ?? '#'}
-    //       className="text-h5 line-clamp-1 break-words font-bold lg:line-clamp-3"
-    //       stretched
-    //       variant="underlineOnHover"
-    //       target="_blank"
-    //       rel="noreferrer"
-    //     >
-    //       {title}
-    //     </MLink>
-    //     {(uploadDate || format || size) && (
-    //       <span className="text-small line-clamp-1 text-gray-700">
-    //         {[uploadDate, format, size].filter(isDefined).join(' • ')}
-    //       </span>
-    //     )}
-    //   </div>
-    //   <div className="flex items-center gap-2 lg:gap-3">
-    //     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-10 lg:w-10">
-    //       <DownloadIcon className="h-4 w-4" />
-    //     </div>
-    //     <div className="font-semibold text-gray-700">{t('download')}</div>
-    //   </div>
-    // </div>
   )
 }
 
