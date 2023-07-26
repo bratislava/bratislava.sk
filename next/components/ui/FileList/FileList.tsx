@@ -26,7 +26,7 @@ export interface FileListProps {
   fileSections?: TFileSection[]
   hideCategory?: boolean
   noScroll?: boolean
-  cardType?: 'default' | 'row' //TYCI pridane zatial
+  cardType?: 'grid' | 'row' //TYCI pridane zatial
 }
 
 export const FileList = ({
@@ -34,7 +34,7 @@ export const FileList = ({
   fileSections,
   hideCategory,
   noScroll,
-  cardType = 'default', //TYCI pridane zatial
+  cardType = 'grid', //TYCI pridane zatial
 }: FileListProps) => {
   const locale = useLocale()
 
@@ -44,17 +44,38 @@ export const FileList = ({
         return (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
-            {cardType === 'row' && (
-              <div className="flex-col space-y-8 lg:flex" key={fileSection.category ?? ''}>
-                <div className="flex flex-col gap-y-6">
-                  {fileSection.category && !hideCategory && (
-                    <h2 className="text-h2">{fileSection.category}</h2>
-                  )}
-                  <div className="flex flex-col">
+            <div className="flex-col gap-y-6 space-y-8" key={fileSection.category ?? ''}>
+              {fileSection.category && !hideCategory && (
+                <h2 className="text-h2">{fileSection.category}</h2>
+              )}
+              {/* TYCI az toto je FileRowCard specific */}
+              {cardType === 'row' && (
+                <div className="flex flex-col">
+                  {fileSection?.files.map((file, sectionIndex) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <div key={sectionIndex} className="w-full">
+                      <FileRowCard
+                        title={file.title}
+                        downloadLink={file.media?.url}
+                        format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
+                        size={
+                          file.media && file.media.size > 0
+                            ? formatFileSize(file.media?.size, locale)
+                            : undefined
+                        }
+                        uploadDate={file.media?.created_at}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+              {cardType === 'grid' && (
+                <div>
+                  <div className="hidden grid-cols-3 gap-8 lg:grid">
                     {fileSection?.files.map((file, sectionIndex) => (
                       // eslint-disable-next-line react/no-array-index-key
                       <div key={sectionIndex} className="w-full">
-                        <FileRowCard
+                        <FileCard
                           title={file.title}
                           downloadLink={file.media?.url}
                           format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
@@ -68,139 +89,30 @@ export const FileList = ({
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            )}
-            {cardType === 'default' && (
-              <div>
-                <div
-                  className={cx('flex-col space-y-8 lg:flex', { hidden: !noScroll })}
-                  key={fileSection.category ?? ''}
-                >
-                  <div className="flex flex-col gap-y-6">
-                    {fileSection.category && !hideCategory && (
-                      <h2 className="text-h2">{fileSection.category}</h2>
-                    )}
-                    <div className="grid grid-cols-3 gap-8">
-                      {fileSection?.files.map((file, sectionIndex) => (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <div key={sectionIndex} className="w-full">
-                          {cardType === 'default' && (
-                            <FileCard
-                              title={file.title}
-                              downloadLink={file.media?.url}
-                              format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                              size={
-                                file.media && file.media.size > 0
-                                  ? formatFileSize(file.media?.size, locale)
-                                  : undefined
-                              }
-                              uploadDate={file.media?.created_at}
-                            />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="block lg:hidden">
-                  <span className="text-h4 font-medium">{fileSection.category}</span>
-                  <ResponsiveCarousel
-                    items={fileSection?.files.map((file, sectionIndex) => (
-                      <FileCard
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={sectionIndex}
-                        title={file.title}
-                        downloadLink={file.media?.url}
-                        format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                        size={
-                          file.media && file.media.size > 0
-                            ? formatFileSize(file.media?.size, locale)
-                            : undefined
-                        }
-                        uploadDate={file.media?.created_at}
+                  {!noScroll && (
+                    <div className="block lg:hidden">
+                      <ResponsiveCarousel
+                        items={fileSection?.files.map((file, sectionIndex) => (
+                          <FileCard
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={sectionIndex}
+                            title={file.title}
+                            downloadLink={file.media?.url}
+                            format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
+                            size={
+                              file.media && file.media.size > 0
+                                ? formatFileSize(file.media?.size, locale)
+                                : undefined
+                            }
+                            uploadDate={file.media?.created_at}
+                          />
+                        ))}
                       />
-                    ))}
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* TYCI tento div sa skryje pri !noScroll a default karte aby sa mohol zobrazit ten ResponsiveCarousel */}
-            {/* <div
-              className={cx('flex-col space-y-8 lg:flex', {
-                hidden: !noScroll && cardType === 'default',
-              })}
-              key={fileSection.category ?? ''}
-            >
-              <div className="flex flex-col gap-y-6">
-                {fileSection.category && !hideCategory && (
-                  <h2 className="text-h2">{fileSection.category}</h2>
-                )}
-                <div
-                  className={cx({
-                    'grid grid-cols-3 gap-8': cardType === 'default',
-                    'flex flex-col': cardType === 'row',
-                  })}
-                >
-                  {fileSection?.files.map((file, sectionIndex) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <div key={sectionIndex} className="w-full">
-                      {cardType === 'row' && (
-                        <FileRowCard
-                          title={file.title}
-                          downloadLink={file.media?.url}
-                          format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                          size={
-                            file.media && file.media.size > 0
-                              ? formatFileSize(file.media?.size, locale)
-                              : undefined
-                          }
-                          uploadDate={file.media?.created_at}
-                        />
-                      )}
-                      {cardType === 'default' && (
-                        <FileCard
-                          title={file.title}
-                          downloadLink={file.media?.url}
-                          format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                          size={
-                            file.media && file.media.size > 0
-                              ? formatFileSize(file.media?.size, locale)
-                              : undefined
-                          }
-                          uploadDate={file.media?.created_at}
-                        />
-                      )}
                     </div>
-                  ))}
+                  )}
                 </div>
-              </div>
-            </div> */}
-            {/* TYCI tu sa zobrazi responsive carousel */}
-            {/* {!noScroll && (
-              <div className="block lg:hidden">
-                <span className="text-h4 font-medium">{fileSection.category}</span>
-                <ResponsiveCarousel
-                  items={fileSection?.files.map((file, sectionIndex) => (
-                    <FileCard
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={sectionIndex}
-                      title={file.title}
-                      downloadLink={file.media?.url}
-                      format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                      size={
-                        file.media && file.media.size > 0
-                          ? formatFileSize(file.media?.size, locale)
-                          : undefined
-                      }
-                      uploadDate={file.media?.created_at}
-                    />
-                  ))}
-                />
-              </div>
-            )} */}
+              )}
+            </div>
           </div>
         )
       })}
