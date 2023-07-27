@@ -25,7 +25,7 @@ export interface FileListProps {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
-  noScroll?: boolean
+  noScroll?: boolean //TYCI na co sluzi toto?
   cardType?: 'grid' | 'row' //TYCI pridane zatial
 }
 
@@ -34,7 +34,7 @@ export const FileList = ({
   fileSections,
   hideCategory,
   noScroll,
-  cardType = 'grid', //TYCI pridane zatial
+  cardType = 'row', //TYCI pridane zatial
 }: FileListProps) => {
   const locale = useLocale()
 
@@ -43,14 +43,14 @@ export const FileList = ({
       {fileSections?.map((fileSection, index) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
+          // TYCI tymto divom si nie som isty, je z minula
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
-            <div className="flex-col gap-y-6 space-y-8" key={fileSection.category ?? ''}>
+            <div className="flex-col" key={fileSection.category ?? ''}>
               {fileSection.category && !hideCategory && (
                 <h2 className="text-h2">{fileSection.category}</h2>
               )}
-              {/* TYCI az toto je FileRowCard specific */}
               {cardType === 'row' && (
-                <div className="flex flex-col">
+                <div className="mt-8 flex flex-col">
                   {fileSection?.files.map((file, sectionIndex) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={sectionIndex} className="w-full">
@@ -71,7 +71,7 @@ export const FileList = ({
               )}
               {cardType === 'grid' && (
                 <div>
-                  <div className="hidden grid-cols-3 gap-8 lg:grid">
+                  <div className="mt-8 hidden grid-cols-3 gap-8 lg:grid">
                     {fileSection?.files.map((file, sectionIndex) => (
                       // eslint-disable-next-line react/no-array-index-key
                       <div key={sectionIndex} className="w-full">
@@ -89,6 +89,7 @@ export const FileList = ({
                       </div>
                     ))}
                   </div>
+                  {/* TYCI otazka - co robi noScroll? */}
                   {!noScroll && (
                     <div className="block lg:hidden">
                       <ResponsiveCarousel
