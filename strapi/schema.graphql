@@ -597,7 +597,6 @@ input ComponentBlocksInBaInput {
 type ComponentBlocksNumericalListItem {
   id: ID!
   text: String
-  title: String
 }
 
 input ComponentBlocksNumericalListItemFiltersInput {

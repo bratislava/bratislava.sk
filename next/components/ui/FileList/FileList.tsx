@@ -36,7 +36,7 @@ export const FileList = ({
   className,
   fileSections,
   hideCategory,
-  cardType = 'row',
+  cardType = 'grid',
 }: FileListProps) => {
   const locale = useLocale()
 
