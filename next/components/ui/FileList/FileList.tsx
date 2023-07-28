@@ -1,4 +1,5 @@
-import FileCard from '@components/molecules/presentation/FileCard'
+import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
+import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
@@ -24,11 +25,33 @@ export interface FileListProps {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
-  noScroll?: boolean
+  cardType?: 'grid' | 'row'
 }
 
-export const FileList = ({ className, fileSections, hideCategory, noScroll }: FileListProps) => {
+/**
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7940-21473&mode=dev
+ */
+
+export const FileList = ({
+  className,
+  fileSections,
+  hideCategory,
+  cardType = 'row',
+}: FileListProps) => {
   const locale = useLocale()
+
+  function transformFileProps(file: TFile) {
+    const fileProps = {
+      title: file.title,
+      downloadLink: file.media?.url,
+      format: file.media?.ext?.replace(/^\./, '').toUpperCase(),
+      size:
+        file.media && file.media.size > 0 ? formatFileSize(file.media?.size, locale) : undefined,
+      uploadDate: file.media?.created_at,
+    } as FileCardProps
+
+    return fileProps
+  }
 
   return (
     <div className={className}>
@@ -36,54 +59,36 @@ export const FileList = ({ className, fileSections, hideCategory, noScroll }: Fi
         return (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
-            <div
-              className={cx('flex-col space-y-8 lg:flex', { hidden: !noScroll })}
-              key={fileSection.category ?? ''}
-            >
-              <div className="flex flex-col gap-y-6">
-                {fileSection.category && !hideCategory && (
-                  <h2 className="text-h2">{fileSection.category}</h2>
-                )}
-                <div className="grid grid-cols-3 gap-8">
+            {fileSection.category && !hideCategory && (
+              <h2 className="text-h2">{fileSection.category}</h2>
+            )}
+            {cardType === 'row' && (
+              <div className="mt-4 flex flex-col lg:mt-6">
+                {fileSection?.files.map((file, sectionIndex) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div key={sectionIndex} className="w-full">
+                    <FileRowCard {...transformFileProps(file)} />
+                  </div>
+                ))}
+              </div>
+            )}
+            {cardType === 'grid' && (
+              <div>
+                <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid">
                   {fileSection?.files.map((file, sectionIndex) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={sectionIndex} className="w-full">
-                      <FileCard
-                        title={file.title}
-                        downloadLink={file.media?.url}
-                        format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                        size={
-                          file.media && file.media.size > 0
-                            ? formatFileSize(file.media?.size, locale)
-                            : undefined
-                        }
-                        uploadDate={file.media?.created_at}
-                      />
+                      <FileCard {...transformFileProps(file)} />
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-            {!noScroll && (
-              <div className="block lg:hidden">
-                <span className="text-h4 font-medium">{fileSection.category}</span>
-                <ResponsiveCarousel
-                  items={fileSection?.files.map((file, sectionIndex) => (
-                    <FileCard
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={sectionIndex}
-                      title={file.title}
-                      downloadLink={file.media?.url}
-                      format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-                      size={
-                        file.media && file.media.size > 0
-                          ? formatFileSize(file.media?.size, locale)
-                          : undefined
-                      }
-                      uploadDate={file.media?.created_at}
-                    />
-                  ))}
-                />
+                <div className="block lg:hidden">
+                  <ResponsiveCarousel
+                    items={fileSection?.files.map((file, sectionIndex) => (
+                      <FileCard {...transformFileProps(file)} />
+                    ))}
+                  />
+                </div>
               </div>
             )}
           </div>

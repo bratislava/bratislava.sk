@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type FileCardProps = {
+export type FileCardProps = {
   title?: string
   uploadDate?: string
   downloadLink?: string
