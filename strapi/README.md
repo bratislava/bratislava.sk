@@ -19,7 +19,7 @@ While not recommended in this project, if you want to start from a clean slate, 
 
 ### Seeding the database
 
-It's recommended that you don't start from an empty database, but instead seed with staging or production data. Ask in the internal Bratislava team or [follow the docs](https://bratislava.github.io/docs/recipes/load-strapi-db-in-local-dev). If you are an open-source contributor, note you do not need this setup for many of frontend-related changes. See the next.js project README.
+It's recommended that you don't start from an empty database, but instead seed with staging or production data. Ask in the internal Bratislava team or [follow the docs](https://bratislava.github.io/strapi/load-strapi-db-in-local-dev). If you are an open-source contributor, note you do not need this setup for many of frontend-related changes. See the next.js project README.
 
 We may provide a db dump as part of the project in the future - for now please contact the BA Innovations Team if you need it.
 
@@ -64,6 +64,7 @@ yarn build
 We use [patch-package](https://github.com/ds300/patch-package) to slightly change the behaviour of some packages. See the `patches` folder for more details.
 
 When updating these packages, please run also `patch-package`:
+
 ```
 yarn patch-package @strapi/plugin-users-permissions
 ```
