@@ -4,6 +4,7 @@ import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarouse
 import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
 import { useLocale } from 'next-intl'
+import { useLocale } from 'next-intl'
 
 export type TFile = {
   title?: string
