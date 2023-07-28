@@ -4,7 +4,6 @@ import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarouse
 import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
 import { useLocale } from 'next-intl'
-import { useLocale } from 'next-intl'
 
 export type TFile = {
   title?: string
@@ -26,7 +25,7 @@ export interface FileListProps {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
-  cardType?: 'grid' | 'row' //TYCI pridane zatial
+  cardType?: 'grid' | 'row'
 }
 
 /**
@@ -37,7 +36,7 @@ export const FileList = ({
   className,
   fileSections,
   hideCategory,
-  cardType = 'row', //TYCI pridane zatial
+  cardType = 'row',
 }: FileListProps) => {
   const locale = useLocale()
 

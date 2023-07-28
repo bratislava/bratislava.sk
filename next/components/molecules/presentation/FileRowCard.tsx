@@ -36,7 +36,7 @@ const FileRowCard = ({
           </MLink>
           {(uploadDate || format || size) && (
             <span className="text-small line-clamp-1 text-gray-700">
-              {/* TYCI prevzate z FileCard – gap medzi prvkami je rieseny jednoduchsie (medzerou) nez konstantnou vzdialenostou */}
+              {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component.*/}
               {[uploadDate, format, size].filter(isDefined).join(' • ')}
             </span>
           )}
