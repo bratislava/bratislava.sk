@@ -20,6 +20,9 @@
     "plugins": [
       {
         "name": "typescript-strict-plugin"
+      },
+      {
+        "name": "next"
       }
     ],
     "baseUrl": "./",
@@ -32,8 +35,9 @@
       "@assets/images/*": ["./assets/images/*"],
       "@backend/*": ["./backend/*"],
       "@components/*": ["./components/*"]
-    }
+    },
+    "strictNullChecks": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
