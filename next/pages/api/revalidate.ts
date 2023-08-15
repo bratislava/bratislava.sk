@@ -1,3 +1,4 @@
+/* eslint-disable no-console,sonarjs/no-duplicate-string */
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Response = { revalidated: boolean } | { message: string } | string
@@ -13,6 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     const payload = req.body as RequestPayload
 
     const localePrefix = payload.entry.locale === 'en' ? '/en' : ''
+    const homepage = payload.entry.locale === 'en' ? '/en' : '/'
 
     if (payload?.model === 'blog-post') {
       const blogUrl = `${localePrefix}/blog/${payload?.entry?.slug}`
@@ -26,13 +28,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
       await res.revalidate(pageUrl)
     }
 
-    /** Always revalidate index */
-    console.log('api/revalidate:', `${localePrefix}/`)
-    await res.revalidate(`${localePrefix}/`)
+    /** Always revalidate homepage */
+    console.log('api/revalidate:', homepage)
+    await res.revalidate(homepage)
 
     return res.json({ revalidated: true })
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.log('api/revalidate: Error while revalidating ==>', error)
     return res.status(500).send('Error revalidating')
   }

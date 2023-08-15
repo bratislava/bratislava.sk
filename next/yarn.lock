@@ -7915,14 +7915,14 @@ negotiator@^0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-next-intl@2.17.5:
-  version "2.17.5"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-2.17.5.tgz#1f53eef8ee986eb043d3c55959a004a1f85bf7f7"
-  integrity sha512-p/tit4/FN0eHLw6Mjwsx4ktiFZWq9VMcuY9hhkAlYWXCQgKq09PB0lZcMNw5xLvV9eor818BzXxdA+3bSvFMmw==
+next-intl@2.19.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-2.19.1.tgz#4fd9bb8cc4bceff604a577352a84102f1764794a"
+  integrity sha512-fk+IGWXxA+UOk+3rIhQqSPYxka+Hk9qKaIpbeF3nNlf8dp1td0oT6srVrPw/uZl5Qoj8El3qQ2mVd3RTLA25cg==
   dependencies:
     "@formatjs/intl-localematcher" "^0.2.32"
     negotiator "^0.6.3"
-    use-intl "^2.17.5"
+    use-intl "^2.19.1"
 
 next-plausible@^3.7.2:
   version "3.7.2"
@@ -10129,10 +10129,10 @@ urlpattern-polyfill@^6.0.2:
   dependencies:
     braces "^3.0.2"
 
-use-intl@^2.17.5:
-  version "2.17.5"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-2.17.5.tgz#99b5fb375de9b841dad668edb48914cfe00236a4"
-  integrity sha512-pkTRoGZsOyHImBFgV23z7g/Hzt1auap+cWvsiWzHpc70NK7Rm9R3LNI3wm3FnYEWNF8N3+CZKV+SCTrHwcNK1w==
+use-intl@^2.19.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-2.19.1.tgz#4091a457342e3b90ca02aded0c0437766b6ccf9d"
+  integrity sha512-nPsXwwJeH+RuKe2ucN+xmRI7DdfjA7WezXYTJD0JZSPvyIyaledIBlVBbnkxanr+3fpIec3cVG6wvouGp9/lJQ==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"
