@@ -59,6 +59,12 @@ module.exports = {
     //     },
     //   },
     // ],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }
