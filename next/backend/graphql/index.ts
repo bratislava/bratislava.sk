@@ -4477,6 +4477,13 @@ export type CommonLinkFragment = {
   } | null
 }
 
+export type FooterContactItemFragment = {
+  __typename?: 'ComponentBlocksFooterContactItem'
+  label: string
+  phone?: string | null
+  mail?: string | null
+}
+
 export type FooterColumnBlockFragment = {
   __typename?: 'ComponentBlocksFooterColumn'
   title: string
@@ -4512,6 +4519,12 @@ export type FooterFragment = {
   mediaEmail?: string | null
   facebookUrl?: string | null
   instagramUrl?: string | null
+  contacts?: Array<{
+    __typename?: 'ComponentBlocksFooterContactItem'
+    label: string
+    phone?: string | null
+    mail?: string | null
+  } | null> | null
   columns?: Array<{
     __typename?: 'ComponentBlocksFooterColumn'
     title: string
@@ -5084,6 +5097,12 @@ export type GeneralQuery = {
         mediaEmail?: string | null
         facebookUrl?: string | null
         instagramUrl?: string | null
+        contacts?: Array<{
+          __typename?: 'ComponentBlocksFooterContactItem'
+          label: string
+          phone?: string | null
+          mail?: string | null
+        } | null> | null
         columns?: Array<{
           __typename?: 'ComponentBlocksFooterColumn'
           title: string
@@ -10567,6 +10586,13 @@ export const BlogPostEntityFragmentDoc = gql`
   ${BlogPostLinkFragmentDoc}
   ${SectionsFragmentDoc}
 `
+export const FooterContactItemFragmentDoc = gql`
+  fragment FooterContactItem on ComponentBlocksFooterContactItem {
+    label
+    phone
+    mail
+  }
+`
 export const FooterColumnBlockFragmentDoc = gql`
   fragment FooterColumnBlock on ComponentBlocksFooterColumn {
     title
@@ -10584,6 +10610,9 @@ export const FooterFragmentDoc = gql`
     mediaEmail
     facebookUrl
     instagramUrl
+    contacts {
+      ...FooterContactItem
+    }
     columns {
       ...FooterColumnBlock
     }
@@ -10594,6 +10623,7 @@ export const FooterFragmentDoc = gql`
       ...CommonLink
     }
   }
+  ${FooterContactItemFragmentDoc}
   ${FooterColumnBlockFragmentDoc}
   ${CommonLinkFragmentDoc}
 `

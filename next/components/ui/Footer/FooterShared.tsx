@@ -24,31 +24,26 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
   )
 }
 
-export const FooterContacts = ({ address, mediaEmail, email, phone }: FooterFragment) => {
-  const t = useTranslations('Footer')
-
+export const FooterContacts = ({ address, contacts }: FooterFragment) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
       {address && <p className="whitespace-pre-wrap">{address}</p>}
       <div className="flex flex-col gap-y-3">
-        {mediaEmail && (
-          <span>
-            {t('contactForMedia')}{' '}
-            <MLink href={`mailto:${mediaEmail}`} variant="underlined">
-              {mediaEmail}
-            </MLink>
-          </span>
-        )}
-        {email && (
-          <MLink className="block" href={`mailto:${email}`} variant="underlined">
-            {email}
-          </MLink>
-        )}
-        {phone && (
-          <MLink className="block" href={`tel:${phone?.replace(/ /g, '')}`} variant="underlined">
-            {phone}
-          </MLink>
-        )}
+        {contacts.map((contactItem) => (
+          <div>
+            <span>{contactItem.label}: </span>
+            {contactItem.phone && (
+              <MLink href={`tel:${contactItem.phone.replace(/ /g, '')}`} variant="underlined">
+                {contactItem.phone}
+              </MLink>
+            )}
+            {contactItem.mail && (
+              <MLink href={`mailto:${contactItem.mail}`} variant="underlined">
+                {contactItem.mail}
+              </MLink>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   )
