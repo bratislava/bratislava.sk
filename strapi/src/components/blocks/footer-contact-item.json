@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_blocks_footer_contact_items",
+  "info": {
+    "displayName": "footer contact item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "email"
+    }
+  }
+}

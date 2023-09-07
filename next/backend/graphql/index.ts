@@ -448,6 +448,30 @@ export type ComponentBlocksFooterColumnInput = {
   title?: InputMaybe<Scalars['String']>
 }
 
+export type ComponentBlocksFooterContactItem = {
+  __typename?: 'ComponentBlocksFooterContactItem'
+  id: Scalars['ID']
+  label: Scalars['String']
+  mail?: Maybe<Scalars['String']>
+  phone?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksFooterContactItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemFiltersInput>>>
+  label?: InputMaybe<StringFilterInput>
+  mail?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksFooterContactItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemFiltersInput>>>
+  phone?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksFooterContactItemInput = {
+  id?: InputMaybe<Scalars['ID']>
+  label?: InputMaybe<Scalars['String']>
+  mail?: InputMaybe<Scalars['String']>
+  phone?: InputMaybe<Scalars['String']>
+}
+
 export type ComponentBlocksFooterSection = {
   __typename?: 'ComponentBlocksFooterSection'
   id: Scalars['ID']
@@ -564,7 +588,6 @@ export type ComponentBlocksNumericalListItem = {
   __typename?: 'ComponentBlocksNumericalListItem'
   id: Scalars['ID']
   text?: Maybe<Scalars['String']>
-  title?: Maybe<Scalars['String']>
 }
 
 export type ComponentBlocksNumericalListItemFiltersInput = {
@@ -1731,6 +1754,7 @@ export type Footer = {
   accessibilityPageLink?: Maybe<ComponentBlocksCommonLink>
   address?: Maybe<Scalars['String']>
   columns?: Maybe<Array<Maybe<ComponentBlocksFooterColumn>>>
+  contacts?: Maybe<Array<Maybe<ComponentBlocksFooterContactItem>>>
   createdAt?: Maybe<Scalars['DateTime']>
   email?: Maybe<Scalars['String']>
   facebookUrl?: Maybe<Scalars['String']>
@@ -1746,6 +1770,12 @@ export type Footer = {
 
 export type FooterColumnsArgs = {
   filters?: InputMaybe<ComponentBlocksFooterColumnFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type FooterContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksFooterContactItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -1769,6 +1799,7 @@ export type FooterInput = {
   accessibilityPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   address?: InputMaybe<Scalars['String']>
   columns?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterColumnInput>>>
+  contacts?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemInput>>>
   email?: InputMaybe<Scalars['String']>
   facebookUrl?: InputMaybe<Scalars['String']>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkInput>
@@ -1845,6 +1876,7 @@ export type GenericMorph =
   | ComponentBlocksFile
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
+  | ComponentBlocksFooterContactItem
   | ComponentBlocksFooterSection
   | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
