@@ -1551,6 +1551,26 @@ input ComponentSectionsIframeInput {
   url: String
 }
 
+type ComponentSectionsInbaArticlesList {
+  id: ID!
+  text: String
+  title: String
+}
+
+input ComponentSectionsInbaArticlesListFiltersInput {
+  and: [ComponentSectionsInbaArticlesListFiltersInput]
+  not: ComponentSectionsInbaArticlesListFiltersInput
+  or: [ComponentSectionsInbaArticlesListFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsInbaArticlesListInput {
+  id: ID
+  text: String
+  title: String
+}
+
 type ComponentSectionsLinks {
   hasBackground: Boolean
   id: ID!
@@ -2320,7 +2340,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | InbaArticle | InbaTag | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2476,6 +2496,110 @@ input IDFilterInput {
   startsWith: ID
 }
 
+type InbaArticle {
+  coverImage: UploadFileEntityResponse
+  createdAt: DateTime
+  locale: String
+  localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
+  publishedAt: DateTime
+  sections: [InbaArticleSectionsDynamicZone]
+  slug: String!
+  tags(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaTagRelationResponseCollection
+  title: String!
+  updatedAt: DateTime
+}
+
+type InbaArticleEntity {
+  attributes: InbaArticle
+  id: ID
+}
+
+type InbaArticleEntityResponse {
+  data: InbaArticleEntity
+}
+
+type InbaArticleEntityResponseCollection {
+  data: [InbaArticleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input InbaArticleFiltersInput {
+  and: [InbaArticleFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  locale: StringFilterInput
+  localizations: InbaArticleFiltersInput
+  not: InbaArticleFiltersInput
+  or: [InbaArticleFiltersInput]
+  publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
+  tags: InbaTagFiltersInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input InbaArticleInput {
+  coverImage: ID
+  publishedAt: DateTime
+  sections: [InbaArticleSectionsDynamicZoneInput!]
+  slug: String
+  tags: [ID]
+  title: String
+}
+
+type InbaArticleRelationResponseCollection {
+  data: [InbaArticleEntity!]!
+}
+
+union InbaArticleSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsTextWithImage | ComponentSectionsVideos | Error
+
+scalar InbaArticleSectionsDynamicZoneInput
+
+type InbaTag {
+  articles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
+  createdAt: DateTime
+  locale: String
+  localizations(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaTagRelationResponseCollection
+  title: String!
+  updatedAt: DateTime
+}
+
+type InbaTagEntity {
+  attributes: InbaTag
+  id: ID
+}
+
+type InbaTagEntityResponse {
+  data: InbaTagEntity
+}
+
+type InbaTagEntityResponseCollection {
+  data: [InbaTagEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input InbaTagFiltersInput {
+  and: [InbaTagFiltersInput]
+  articles: InbaArticleFiltersInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  locale: StringFilterInput
+  localizations: InbaTagFiltersInput
+  not: InbaTagFiltersInput
+  or: [InbaTagFiltersInput]
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input InbaTagInput {
+  articles: [ID]
+  title: String
+}
+
+type InbaTagRelationResponseCollection {
+  data: [InbaTagEntity!]!
+}
+
 input IntFilterInput {
   and: [Int]
   between: [Int]
@@ -2608,6 +2732,10 @@ type Mutation {
   createFooterLocalization(data: FooterInput, id: ID, locale: I18NLocaleCode): FooterEntityResponse
   createGeneralLocalization(data: GeneralInput, id: ID, locale: I18NLocaleCode): GeneralEntityResponse
   createHomepageLocalization(data: HomepageInput, id: ID, locale: I18NLocaleCode): HomepageEntityResponse
+  createInbaArticle(data: InbaArticleInput!, locale: I18NLocaleCode): InbaArticleEntityResponse
+  createInbaArticleLocalization(data: InbaArticleInput, id: ID, locale: I18NLocaleCode): InbaArticleEntityResponse
+  createInbaTag(data: InbaTagInput!, locale: I18NLocaleCode): InbaTagEntityResponse
+  createInbaTagLocalization(data: InbaTagInput, id: ID, locale: I18NLocaleCode): InbaTagEntityResponse
   createMenuLocalization(data: MenuInput, id: ID, locale: I18NLocaleCode): MenuEntityResponse
   createPage(data: PageInput!, locale: I18NLocaleCode): PageEntityResponse
   createPageCategory(data: PageCategoryInput!, locale: I18NLocaleCode): PageCategoryEntityResponse
@@ -2631,6 +2759,8 @@ type Mutation {
   deleteFooter(locale: I18NLocaleCode): FooterEntityResponse
   deleteGeneral(locale: I18NLocaleCode): GeneralEntityResponse
   deleteHomepage(locale: I18NLocaleCode): HomepageEntityResponse
+  deleteInbaArticle(id: ID!, locale: I18NLocaleCode): InbaArticleEntityResponse
+  deleteInbaTag(id: ID!, locale: I18NLocaleCode): InbaTagEntityResponse
   deleteMenu(locale: I18NLocaleCode): MenuEntityResponse
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
   deletePageCategory(id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
@@ -2668,6 +2798,8 @@ type Mutation {
   updateFooter(data: FooterInput!, locale: I18NLocaleCode): FooterEntityResponse
   updateGeneral(data: GeneralInput!, locale: I18NLocaleCode): GeneralEntityResponse
   updateHomepage(data: HomepageInput!, locale: I18NLocaleCode): HomepageEntityResponse
+  updateInbaArticle(data: InbaArticleInput!, id: ID!, locale: I18NLocaleCode): InbaArticleEntityResponse
+  updateInbaTag(data: InbaTagInput!, id: ID!, locale: I18NLocaleCode): InbaTagEntityResponse
   updateMenu(data: MenuInput!, locale: I18NLocaleCode): MenuEntityResponse
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
   updatePageCategory(data: PageCategoryInput!, id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
@@ -2830,7 +2962,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 
@@ -2916,6 +3048,10 @@ type Query {
   homepage(locale: I18NLocaleCode, publicationState: PublicationState = LIVE): HomepageEntityResponse
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
+  inbaArticle(id: ID, locale: I18NLocaleCode): InbaArticleEntityResponse
+  inbaArticles(filters: InbaArticleFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleEntityResponseCollection
+  inbaTag(id: ID, locale: I18NLocaleCode): InbaTagEntityResponse
+  inbaTags(filters: InbaTagFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, sort: [String] = []): InbaTagEntityResponseCollection
   me: UsersPermissionsMe
   menu(locale: I18NLocaleCode): MenuEntityResponse
   page(id: ID, locale: I18NLocaleCode): PageEntityResponse

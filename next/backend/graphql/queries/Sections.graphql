@@ -138,6 +138,11 @@ fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
   }
 }
 
+fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
+  title
+  text
+}
+
 fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
   hasBackground
@@ -533,6 +538,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsBlogPostsList {
     ...BlogPostsListSection
+  }
+
+  ... on ComponentSectionsInbaArticlesList {
+    ...InbaArticlesListSection
   }
 
   ... on ComponentSectionsOrganizationalStructure {
