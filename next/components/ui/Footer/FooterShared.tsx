@@ -29,7 +29,7 @@ export const FooterContacts = ({ address, contacts }: FooterFragment) => {
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
       {address && <p className="whitespace-pre-wrap">{address}</p>}
       <div className="flex flex-col gap-y-3">
-        {contacts.map((contactItem) => (
+        {contacts?.filter(isDefined).map((contactItem) => (
           <div>
             <span>{contactItem.label}: </span>
             {contactItem.phone && (
