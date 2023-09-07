@@ -17,6 +17,7 @@ export type Scalars = {
   Date: any
   DateTime: any
   I18NLocaleCode: any
+  InbaArticleSectionsDynamicZoneInput: any
   JSON: any
   Long: any
   PagePageHeaderSectionsDynamicZoneInput: any
@@ -1261,6 +1262,13 @@ export type ComponentSectionsIframe = {
   url: Scalars['String']
 }
 
+export type ComponentSectionsInbaArticlesList = {
+  __typename?: 'ComponentSectionsInbaArticlesList'
+  id: Scalars['ID']
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
   hasBackground?: Maybe<Scalars['Boolean']>
@@ -1920,6 +1928,7 @@ export type GenericMorph =
   | ComponentSectionsHomepageTabs
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
+  | ComponentSectionsInbaArticlesList
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -1938,6 +1947,8 @@ export type GenericMorph =
   | General
   | Homepage
   | I18NLocale
+  | InbaArticle
+  | InbaTag
   | Menu
   | Page
   | PageCategory
@@ -2081,6 +2092,153 @@ export type IdFilterInput = {
   startsWith?: InputMaybe<Scalars['ID']>
 }
 
+export type InbaArticle = {
+  __typename?: 'InbaArticle'
+  coverImage?: Maybe<UploadFileEntityResponse>
+  createdAt?: Maybe<Scalars['DateTime']>
+  locale?: Maybe<Scalars['String']>
+  localizations?: Maybe<InbaArticleRelationResponseCollection>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  sections?: Maybe<Array<Maybe<InbaArticleSectionsDynamicZone>>>
+  slug: Scalars['String']
+  tags?: Maybe<InbaTagRelationResponseCollection>
+  title: Scalars['String']
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+export type InbaArticleLocalizationsArgs = {
+  filters?: InputMaybe<InbaArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type InbaArticleTagsArgs = {
+  filters?: InputMaybe<InbaTagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type InbaArticleEntity = {
+  __typename?: 'InbaArticleEntity'
+  attributes?: Maybe<InbaArticle>
+  id?: Maybe<Scalars['ID']>
+}
+
+export type InbaArticleEntityResponse = {
+  __typename?: 'InbaArticleEntityResponse'
+  data?: Maybe<InbaArticleEntity>
+}
+
+export type InbaArticleEntityResponseCollection = {
+  __typename?: 'InbaArticleEntityResponseCollection'
+  data: Array<InbaArticleEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type InbaArticleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<InbaArticleFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<InbaArticleFiltersInput>
+  not?: InputMaybe<InbaArticleFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<InbaArticleFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  tags?: InputMaybe<InbaTagFiltersInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type InbaArticleInput = {
+  coverImage?: InputMaybe<Scalars['ID']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  sections?: InputMaybe<Array<Scalars['InbaArticleSectionsDynamicZoneInput']>>
+  slug?: InputMaybe<Scalars['String']>
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type InbaArticleRelationResponseCollection = {
+  __typename?: 'InbaArticleRelationResponseCollection'
+  data: Array<InbaArticleEntity>
+}
+
+export type InbaArticleSectionsDynamicZone =
+  | ComponentSectionsColumnedText
+  | ComponentSectionsDivider
+  | ComponentSectionsFileList
+  | ComponentSectionsGallery
+  | ComponentSectionsNarrowText
+  | ComponentSectionsNumericalList
+  | ComponentSectionsTextWithImage
+  | ComponentSectionsVideos
+  | Error
+
+export type InbaTag = {
+  __typename?: 'InbaTag'
+  articles?: Maybe<InbaArticleRelationResponseCollection>
+  createdAt?: Maybe<Scalars['DateTime']>
+  locale?: Maybe<Scalars['String']>
+  localizations?: Maybe<InbaTagRelationResponseCollection>
+  title: Scalars['String']
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+export type InbaTagArticlesArgs = {
+  filters?: InputMaybe<InbaArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type InbaTagLocalizationsArgs = {
+  filters?: InputMaybe<InbaTagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type InbaTagEntity = {
+  __typename?: 'InbaTagEntity'
+  attributes?: Maybe<InbaTag>
+  id?: Maybe<Scalars['ID']>
+}
+
+export type InbaTagEntityResponse = {
+  __typename?: 'InbaTagEntityResponse'
+  data?: Maybe<InbaTagEntity>
+}
+
+export type InbaTagEntityResponseCollection = {
+  __typename?: 'InbaTagEntityResponseCollection'
+  data: Array<InbaTagEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type InbaTagFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<InbaTagFiltersInput>>>
+  articles?: InputMaybe<InbaArticleFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<InbaTagFiltersInput>
+  not?: InputMaybe<InbaTagFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<InbaTagFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type InbaTagInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type InbaTagRelationResponseCollection = {
+  __typename?: 'InbaTagRelationResponseCollection'
+  data: Array<InbaTagEntity>
+}
+
 export type IntFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
@@ -2198,6 +2356,10 @@ export type Mutation = {
   createFooterLocalization?: Maybe<FooterEntityResponse>
   createGeneralLocalization?: Maybe<GeneralEntityResponse>
   createHomepageLocalization?: Maybe<HomepageEntityResponse>
+  createInbaArticle?: Maybe<InbaArticleEntityResponse>
+  createInbaArticleLocalization?: Maybe<InbaArticleEntityResponse>
+  createInbaTag?: Maybe<InbaTagEntityResponse>
+  createInbaTagLocalization?: Maybe<InbaTagEntityResponse>
   createMenuLocalization?: Maybe<MenuEntityResponse>
   createPage?: Maybe<PageEntityResponse>
   createPageCategory?: Maybe<PageCategoryEntityResponse>
@@ -2219,6 +2381,8 @@ export type Mutation = {
   deleteFooter?: Maybe<FooterEntityResponse>
   deleteGeneral?: Maybe<GeneralEntityResponse>
   deleteHomepage?: Maybe<HomepageEntityResponse>
+  deleteInbaArticle?: Maybe<InbaArticleEntityResponse>
+  deleteInbaTag?: Maybe<InbaTagEntityResponse>
   deleteMenu?: Maybe<MenuEntityResponse>
   deletePage?: Maybe<PageEntityResponse>
   deletePageCategory?: Maybe<PageCategoryEntityResponse>
@@ -2248,6 +2412,8 @@ export type Mutation = {
   updateFooter?: Maybe<FooterEntityResponse>
   updateGeneral?: Maybe<GeneralEntityResponse>
   updateHomepage?: Maybe<HomepageEntityResponse>
+  updateInbaArticle?: Maybe<InbaArticleEntityResponse>
+  updateInbaTag?: Maybe<InbaTagEntityResponse>
   updateMenu?: Maybe<MenuEntityResponse>
   updatePage?: Maybe<PageEntityResponse>
   updatePageCategory?: Maybe<PageCategoryEntityResponse>
@@ -2300,6 +2466,28 @@ export type MutationCreateGeneralLocalizationArgs = {
 
 export type MutationCreateHomepageLocalizationArgs = {
   data?: InputMaybe<HomepageInput>
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationCreateInbaArticleArgs = {
+  data: InbaArticleInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationCreateInbaArticleLocalizationArgs = {
+  data?: InputMaybe<InbaArticleInput>
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationCreateInbaTagArgs = {
+  data: InbaTagInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationCreateInbaTagLocalizationArgs = {
+  data?: InputMaybe<InbaTagInput>
   id?: InputMaybe<Scalars['ID']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
@@ -2392,6 +2580,16 @@ export type MutationDeleteGeneralArgs = {
 }
 
 export type MutationDeleteHomepageArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationDeleteInbaArticleArgs = {
+  id: Scalars['ID']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationDeleteInbaTagArgs = {
+  id: Scalars['ID']
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
@@ -2500,6 +2698,18 @@ export type MutationUpdateGeneralArgs = {
 
 export type MutationUpdateHomepageArgs = {
   data: HomepageInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationUpdateInbaArticleArgs = {
+  data: InbaArticleInput
+  id: Scalars['ID']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationUpdateInbaTagArgs = {
+  data: InbaTagInput
+  id: Scalars['ID']
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
 }
 
@@ -2782,6 +2992,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsGallery
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
+  | ComponentSectionsInbaArticlesList
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -2898,6 +3109,10 @@ export type Query = {
   homepage?: Maybe<HomepageEntityResponse>
   i18NLocale?: Maybe<I18NLocaleEntityResponse>
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
+  inbaArticle?: Maybe<InbaArticleEntityResponse>
+  inbaArticles?: Maybe<InbaArticleEntityResponseCollection>
+  inbaTag?: Maybe<InbaTagEntityResponse>
+  inbaTags?: Maybe<InbaTagEntityResponseCollection>
   me?: Maybe<UsersPermissionsMe>
   menu?: Maybe<MenuEntityResponse>
   page?: Maybe<PageEntityResponse>
@@ -2957,6 +3172,31 @@ export type QueryI18NLocaleArgs = {
 
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type QueryInbaArticleArgs = {
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type QueryInbaArticlesArgs = {
+  filters?: InputMaybe<InbaArticleFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type QueryInbaTagArgs = {
+  id?: InputMaybe<Scalars['ID']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type QueryInbaTagsArgs = {
+  filters?: InputMaybe<InbaTagFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
@@ -7067,6 +7307,11 @@ export type PageBySlugQuery = {
               allowGeolocation?: boolean | null
             }
           | {
+              __typename: 'ComponentSectionsInbaArticlesList'
+              title?: string | null
+              text?: string | null
+            }
+          | {
               __typename: 'ComponentSectionsLinks'
               title?: string | null
               hasBackground?: boolean | null
@@ -7948,6 +8193,11 @@ export type PageEntityFragment = {
           allowGeolocation?: boolean | null
         }
       | {
+          __typename: 'ComponentSectionsInbaArticlesList'
+          title?: string | null
+          text?: string | null
+        }
+      | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
           hasBackground?: boolean | null
@@ -8377,6 +8627,12 @@ export type BlogPostsListSectionFragment = {
     __typename?: 'TagRelationResponseCollection'
     data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
   } | null
+}
+
+export type InbaArticlesListSectionFragment = {
+  __typename?: 'ComponentSectionsInbaArticlesList'
+  title?: string | null
+  text?: string | null
 }
 
 export type IconTitleDescSectionFragment = {
@@ -9549,6 +9805,12 @@ type Sections_ComponentSectionsIframe_Fragment = {
   allowGeolocation?: boolean | null
 }
 
+type Sections_ComponentSectionsInbaArticlesList_Fragment = {
+  __typename: 'ComponentSectionsInbaArticlesList'
+  title?: string | null
+  text?: string | null
+}
+
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
@@ -9694,6 +9956,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsGallery_Fragment
   | Sections_ComponentSectionsIconTitleDesc_Fragment
   | Sections_ComponentSectionsIframe_Fragment
+  | Sections_ComponentSectionsInbaArticlesList_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
   | Sections_ComponentSectionsNewsletter_Fragment
@@ -10233,6 +10496,12 @@ export const BlogPostsListSectionFragmentDoc = gql`
     }
   }
 `
+export const InbaArticlesListSectionFragmentDoc = gql`
+  fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
+    title
+    text
+  }
+`
 export const OrganizationalStructureSectionFragmentDoc = gql`
   fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
     title
@@ -10492,6 +10761,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsBlogPostsList {
       ...BlogPostsListSection
     }
+    ... on ComponentSectionsInbaArticlesList {
+      ...InbaArticlesListSection
+    }
     ... on ComponentSectionsOrganizationalStructure {
       ...OrganizationalStructureSection
     }
@@ -10532,6 +10804,7 @@ export const SectionsFragmentDoc = gql`
   ${NumericalListSectionFragmentDoc}
   ${ArticlesListSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
+  ${InbaArticlesListSectionFragmentDoc}
   ${OrganizationalStructureSectionFragmentDoc}
   ${ProsAndConsSectionFragmentDoc}
   ${ComparisonSectionFragmentDoc}

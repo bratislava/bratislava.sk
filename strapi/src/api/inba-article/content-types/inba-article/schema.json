@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inba_articles",
+  "info": {
+    "singularName": "inba-article",
+    "pluralName": "inba-articles",
+    "displayName": "in.ba články",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::inba-tag.inba-tag",
+      "inversedBy": "articles"
+    },
+    "sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.columned-text",
+        "sections.text-with-image",
+        "sections.file-list",
+        "sections.narrow-text",
+        "sections.divider",
+        "sections.videos",
+        "sections.numerical-list",
+        "sections.gallery"
+      ]
+    }
+  }
+}
