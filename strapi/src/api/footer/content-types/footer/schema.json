@@ -93,6 +93,16 @@
         }
       },
       "component": "blocks.common-link"
+    },
+    "contacts": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.footer-contact-item"
     }
   }
 }
