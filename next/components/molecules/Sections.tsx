@@ -1,6 +1,8 @@
 import { SectionsFragment } from '@backend/graphql'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
+import InbaArticlesByTags from '@components/molecules/sections/general/ArticlesListSection/InbaArticlesByTags'
+import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
 import cx from 'classnames'
 import * as React from 'react'
@@ -29,7 +31,6 @@ import TextWithImageSection from './sections/general/TextWithImageSection'
 import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
-import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
@@ -77,6 +78,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsBlogPostsList':
       return <BlogPostsByTags section={section} />
+
+    case 'ComponentSectionsInbaArticlesList':
+      return <InbaArticlesByTags section={section} />
 
     case 'ComponentSectionsOrganizationalStructure':
       return <OrganizationalStructureSection section={section} />

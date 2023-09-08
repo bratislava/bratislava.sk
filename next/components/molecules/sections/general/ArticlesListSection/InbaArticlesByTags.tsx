@@ -1,15 +1,13 @@
-import { BlogPostsListSectionFragment } from '@backend/graphql'
+import { InbaArticlesListSectionFragment } from '@backend/graphql'
 import {
-  blogPostsDefaultFilters,
-  blogPostsFetcher,
-  getBlogPostsQueryKey,
-} from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
+  getInbaArticlesQueryKey,
+  inbaArticlesDefaultFilters,
+  inbaArticlesFetcher,
+} from '@backend/meili/fetchers/inbaArticlesFetcher'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useQuery } from '@tanstack/react-query'
-import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
-import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useRoutePreservedState } from '@utils/useRoutePreservedState'
 import { useLocale, useTranslations } from 'next-intl'
@@ -18,26 +16,24 @@ import React from 'react'
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
-  section: BlogPostsListSectionFragment
+  section: InbaArticlesListSectionFragment
 }
 
-const BlogPostsByTags = ({ section }: Props) => {
+const InbaArticlesByTags = ({ section }: Props) => {
   const t = useTranslations()
   const locale = useLocale()
 
-  const { title, text, tags } = section
+  const { title, text } = section
 
-  const tagIds = tags?.data.map((tag) => tag.id).filter(isDefined) ?? []
+  // TODO filter by tags
+  // const tagIds = tags?.data.map((tag) => tag.id).filter(isDefined) ?? []
 
-  const [filters, setFilters] = useRoutePreservedState({
-    ...blogPostsDefaultFilters,
-    tagIds,
-  })
+  const [filters, setFilters] = useRoutePreservedState({ ...inbaArticlesDefaultFilters })
 
   // TODO prefetch section
   const { data } = useQuery({
-    queryKey: getBlogPostsQueryKey(filters, locale),
-    queryFn: () => blogPostsFetcher(filters, locale),
+    queryKey: getInbaArticlesQueryKey(filters, locale),
+    queryFn: () => inbaArticlesFetcher(filters, locale),
     keepPreviousData: true,
   })
 
@@ -58,26 +54,19 @@ const BlogPostsByTags = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const {
-            title: blogPostTitle,
-            slug,
-            coverImage,
-            tag,
-            date_added,
-            publishedAt,
-          } = card.attributes
-          const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
-          const tagTitle = tag?.data?.attributes?.title
+          const { title: blogPostTitle, slug, coverImage, publishedAt } = card.attributes
+          // const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
+          // const tagTitle = tag?.data?.attributes?.title
 
           return (
             <BlogPostCard
               key={slug}
-              style={getCategoryColorLocalStyle({ color: tagColor })}
+              // style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="shadow"
-              date={getNumericLocalDate(date_added ?? publishedAt)}
-              tag={tagTitle ?? undefined}
+              date={getNumericLocalDate(publishedAt)}
+              // tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
-              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+              linkProps={{ children: t('readMore'), href: `/inba/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
@@ -97,4 +86,4 @@ const BlogPostsByTags = ({ section }: Props) => {
   )
 }
 
-export default BlogPostsByTags
+export default InbaArticlesByTags

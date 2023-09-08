@@ -26,6 +26,7 @@ const searchIndexSettings = {
     'page.subtext',
     'page.metaDiscription', // yes, it's a typo in the field name
     'blog-post.title',
+    'inba-article.title',
     'vzn.title',
     'vzn.amedmentDocument.title', // yes, it's a typo in the field name
     'vzn.cancellationDocument.title',
@@ -33,18 +34,22 @@ const searchIndexSettings = {
   filterableAttributes: [
     // All
     'type',
-    // Page + Blog post
+    // Page + Blog post + Inba article
     'locale',
     'blog-post.tag.id',
+    'inba-article.tags.id',
   ],
   sortableAttributes: [
-    // Article
+    // Blog post
     'blog-post.title',
-    'blog-post.publishedAt',
+    'blog-post.publishedAt', // TODO is it needed?
     'blog-post.publishedAtTimestamp',
+    // Inba article
+    'inba-article.title',
+    'inba-article.publishedAtTimestamp',
     // Vzn
     'vzn.validFrom',
-    'vzn.publishedAt',
+    'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
   ],
   pagination: {
@@ -73,6 +78,21 @@ const config = {
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
       wrapSearchIndexEntry('blog-post', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+      }),
+  },
+  'inba-article': {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: 'all',
+      populate: ['tags', 'coverImage'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('inba-article', {
         ...entry,
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.

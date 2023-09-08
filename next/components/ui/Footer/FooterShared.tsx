@@ -29,8 +29,9 @@ export const FooterContacts = ({ address, contacts }: FooterFragment) => {
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
       {address && <p className="whitespace-pre-wrap">{address}</p>}
       <div className="flex flex-col gap-y-3">
-        {contacts?.filter(isDefined).map((contactItem) => (
-          <div>
+        {contacts?.filter(isDefined).map((contactItem, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>
             <span>{contactItem.label}: </span>
             {contactItem.phone && (
               <MLink href={`tel:${contactItem.phone.replace(/ /g, '')}`} variant="underlined">
