@@ -2278,12 +2278,12 @@ type FooterRelationResponseCollection {
 type General {
   createdAt: DateTime
   header: ComponentGeneralHeader
+  inbaPage: PageEntityResponse
   locale: String
   localizations: GeneralRelationResponseCollection
   newsPage: PageEntityResponse
   officialBoardPage: PageEntityResponse
   privacyPolicyPage: PageEntityResponse
-  showUaChatPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   updatedAt: DateTime
   vznPage: PageEntityResponse
 }
@@ -2306,6 +2306,7 @@ input GeneralFiltersInput {
   and: [GeneralFiltersInput]
   createdAt: DateTimeFilterInput
   header: ComponentGeneralHeaderFiltersInput
+  inbaPage: PageFiltersInput
   locale: StringFilterInput
   localizations: GeneralFiltersInput
   newsPage: PageFiltersInput
@@ -2313,17 +2314,16 @@ input GeneralFiltersInput {
   officialBoardPage: PageFiltersInput
   or: [GeneralFiltersInput]
   privacyPolicyPage: PageFiltersInput
-  showUaChatPages: PageFiltersInput
   updatedAt: DateTimeFilterInput
   vznPage: PageFiltersInput
 }
 
 input GeneralInput {
   header: ComponentGeneralHeaderInput
+  inbaPage: ID
   newsPage: ID
   officialBoardPage: ID
   privacyPolicyPage: ID
-  showUaChatPages: [ID]
   vznPage: ID
 }
 

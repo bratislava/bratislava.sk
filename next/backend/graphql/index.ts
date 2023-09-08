@@ -1819,21 +1819,14 @@ export type General = {
   __typename?: 'General'
   createdAt?: Maybe<Scalars['DateTime']>
   header?: Maybe<ComponentGeneralHeader>
+  inbaPage?: Maybe<PageEntityResponse>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<GeneralRelationResponseCollection>
   newsPage?: Maybe<PageEntityResponse>
   officialBoardPage?: Maybe<PageEntityResponse>
   privacyPolicyPage?: Maybe<PageEntityResponse>
-  showUaChatPages?: Maybe<PageRelationResponseCollection>
   updatedAt?: Maybe<Scalars['DateTime']>
   vznPage?: Maybe<PageEntityResponse>
-}
-
-export type GeneralShowUaChatPagesArgs = {
-  filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 export type GeneralEntity = {
@@ -1849,10 +1842,10 @@ export type GeneralEntityResponse = {
 
 export type GeneralInput = {
   header?: InputMaybe<ComponentGeneralHeaderInput>
+  inbaPage?: InputMaybe<Scalars['ID']>
   newsPage?: InputMaybe<Scalars['ID']>
   officialBoardPage?: InputMaybe<Scalars['ID']>
   privacyPolicyPage?: InputMaybe<Scalars['ID']>
-  showUaChatPages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   vznPage?: InputMaybe<Scalars['ID']>
 }
 
@@ -5072,13 +5065,13 @@ export type GeneralFragment = {
       attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
     } | null
   } | null
-  showUaChatPages?: {
-    __typename?: 'PageRelationResponseCollection'
-    data: Array<{
+  inbaPage?: {
+    __typename?: 'PageEntityResponse'
+    data?: {
       __typename?: 'PageEntity'
       id?: string | null
       attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
-    }>
+    } | null
   } | null
 }
 
@@ -5234,13 +5227,13 @@ export type GeneralQuery = {
             attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
           } | null
         } | null
-        showUaChatPages?: {
-          __typename?: 'PageRelationResponseCollection'
-          data: Array<{
+        inbaPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
             __typename?: 'PageEntity'
             id?: string | null
             attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
-          }>
+          } | null
         } | null
       } | null
     } | null
@@ -11159,7 +11152,7 @@ export const GeneralFragmentDoc = gql`
         ...GeneralPageRelation
       }
     }
-    showUaChatPages {
+    inbaPage {
       data {
         ...GeneralPageRelation
       }

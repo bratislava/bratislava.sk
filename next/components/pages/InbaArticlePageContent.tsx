@@ -26,15 +26,14 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
   const t = useTranslations()
 
   const { general } = useGeneralContext()
+  const inbaPage = general?.data?.attributes?.newsPage?.data
+
   const breadcrumbs = useMemo(() => {
-    // TODO change newsPage to inbaPage - inbaPage is not yet in Strapi
     return [
-      ...(general?.data?.attributes?.newsPage?.data
-        ? getPageBreadcrumbs(general.data.attributes.newsPage.data)
-        : []),
+      ...(inbaPage ? getPageBreadcrumbs(inbaPage) : []),
       { title: inbaArticle.attributes?.title ?? '', path: null } as Breadcrumb,
     ]
-  }, [inbaArticle, general?.data?.attributes?.newsPage])
+  }, [inbaArticle, inbaPage])
 
   return (
     <>

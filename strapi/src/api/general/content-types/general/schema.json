@@ -37,9 +37,9 @@
       "relation": "oneToOne",
       "target": "api::page.page"
     },
-    "showUaChatPages": {
+    "inbaPage": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::page.page"
     },
     "officialBoardPage": {
