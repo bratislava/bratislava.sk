@@ -1,0 +1,79 @@
+query InbaArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
+  inbaArticles(filters: { slug: { eq: $slug } }, locale: $locale) {
+    data {
+      ...InbaArticleEntity
+    }
+  }
+}
+
+query InbaArticlesStaticPaths {
+  inbaArticles(locale: "all", sort: "publishedAt:desc") {
+    data {
+      id
+      attributes {
+        slug
+        locale
+      }
+    }
+  }
+}
+
+query InbaArticlesRssFeed($locale: I18NLocaleCode!) {
+  inbaArticles(locale: $locale, sort: "publishedAt:desc") {
+    data {
+      id
+      attributes {
+        title
+        slug
+        perex
+        publishedAt
+        coverImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        tags {
+          data {
+            id
+            attributes {
+              title
+            }
+          }
+        }
+        content
+      }
+    }
+  }
+}
+
+fragment InbaArticleEntity on InbaArticleEntity {
+  id
+  attributes {
+    title
+    slug
+    perex
+    publishedAt
+    coverImage {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
+    tags {
+      data {
+        ...InbaTagEntity
+      }
+    }
+    content
+  }
+}
+
+fragment InbaTagEntity on InbaTagEntity {
+  id
+  attributes {
+    title
+  }
+}
