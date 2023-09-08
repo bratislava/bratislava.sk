@@ -223,5 +223,11 @@
     "address": "Address",
     "web": "Web",
     "phone": "Phone"
+  },
+  "FileList": {
+    "aria": {
+      "downloadFileAriaLabel": "Download file {title}, format {format}, {size}",
+      "downloadFile": "Download file"
+    }
   }
 }

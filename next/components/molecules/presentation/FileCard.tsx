@@ -12,12 +12,21 @@ export type FileCardProps = {
   format?: string
   size?: string
   className?: string
+  ariaLabel?: string
 }
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7367-17767&t=Km8W7qXXiWIDWSYw-0
  */
-const FileCard = ({ title, uploadDate, downloadLink, format, size, className }: FileCardProps) => {
+const FileCard = ({
+  title,
+  uploadDate,
+  downloadLink,
+  format,
+  size,
+  className,
+  ariaLabel,
+}: FileCardProps) => {
   const t = useTranslations()
 
   return (
@@ -35,6 +44,7 @@ const FileCard = ({ title, uploadDate, downloadLink, format, size, className }: 
           variant="underlineOnHover"
           target="_blank"
           rel="noreferrer"
+          aria-label={ariaLabel ?? ''}
         >
           {title}
         </MLink>
