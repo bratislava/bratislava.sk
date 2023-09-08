@@ -31,7 +31,9 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
         {!!vzn?.cancellationDocument?.length && (
           <div className="flex flex-col pl-5">
             <div>{t('vzn.validUntil')}:</div>
-            <div className="font-semibold">{vzn?.cancellationDocument[0]?.validFrom}</div>
+            <div className="font-semibold">
+              {formatDate(vzn?.cancellationDocument[0]?.validFrom)}
+            </div>
           </div>
         )}
       </div>
