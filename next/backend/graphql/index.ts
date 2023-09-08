@@ -1763,14 +1763,11 @@ export type Footer = {
   columns?: Maybe<Array<Maybe<ComponentBlocksFooterColumn>>>
   contacts?: Maybe<Array<Maybe<ComponentBlocksFooterContactItem>>>
   createdAt?: Maybe<Scalars['DateTime']>
-  email?: Maybe<Scalars['String']>
   facebookUrl?: Maybe<Scalars['String']>
   innovationsLink?: Maybe<ComponentBlocksCommonLink>
   instagramUrl?: Maybe<Scalars['String']>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<FooterRelationResponseCollection>
-  mediaEmail?: Maybe<Scalars['String']>
-  phone?: Maybe<Scalars['String']>
   publishedAt?: Maybe<Scalars['DateTime']>
   updatedAt?: Maybe<Scalars['DateTime']>
 }
@@ -1807,12 +1804,9 @@ export type FooterInput = {
   address?: InputMaybe<Scalars['String']>
   columns?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterColumnInput>>>
   contacts?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemInput>>>
-  email?: InputMaybe<Scalars['String']>
   facebookUrl?: InputMaybe<Scalars['String']>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   instagramUrl?: InputMaybe<Scalars['String']>
-  mediaEmail?: InputMaybe<Scalars['String']>
-  phone?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
 }
 
@@ -4746,9 +4740,6 @@ export type FooterColumnBlockFragment = {
 export type FooterFragment = {
   __typename?: 'Footer'
   address?: string | null
-  phone?: string | null
-  email?: string | null
-  mediaEmail?: string | null
   facebookUrl?: string | null
   instagramUrl?: string | null
   contacts?: Array<{
@@ -5324,9 +5315,6 @@ export type GeneralQuery = {
       attributes?: {
         __typename?: 'Footer'
         address?: string | null
-        phone?: string | null
-        email?: string | null
-        mediaEmail?: string | null
         facebookUrl?: string | null
         instagramUrl?: string | null
         contacts?: Array<{
@@ -10995,9 +10983,6 @@ export const FooterColumnBlockFragmentDoc = gql`
 export const FooterFragmentDoc = gql`
   fragment Footer on Footer {
     address
-    phone
-    email
-    mediaEmail
     facebookUrl
     instagramUrl
     contacts {

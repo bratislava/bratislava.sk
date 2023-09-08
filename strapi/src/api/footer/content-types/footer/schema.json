@@ -24,30 +24,6 @@
       },
       "type": "text"
     },
-    "phone": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "email": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "email"
-    },
-    "mediaEmail": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "email"
-    },
     "facebookUrl": {
       "pluginOptions": {
         "i18n": {
