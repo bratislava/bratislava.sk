@@ -25,11 +25,11 @@
       "type": "string",
       "required": true
     },
-    "articles": {
+    "inbaArticles": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::inba-article.inba-article",
-      "mappedBy": "tags"
+      "mappedBy": "inbaTag"
     }
   }
 }

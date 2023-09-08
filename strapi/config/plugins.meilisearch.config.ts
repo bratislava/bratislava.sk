@@ -37,7 +37,7 @@ const searchIndexSettings = {
     // Page + Blog post + Inba article
     'locale',
     'blog-post.tag.id',
-    'inba-article.tags.id',
+    'inba-article.inbaTag.id',
   ],
   sortableAttributes: [
     // Blog post
@@ -88,7 +88,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: 'all',
-      populate: ['tags', 'coverImage'],
+      populate: ['inbaTag', 'coverImage'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>

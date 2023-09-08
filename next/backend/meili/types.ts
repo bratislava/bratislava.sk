@@ -49,7 +49,7 @@ export type BlogPostMeili = Omit<BlogPost, '__typename' | 'author' | 'tag' | 'co
 
 export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverImage'> & {
   coverImage?: UploadFile
-  tags?: Pick<InbaTag, 'title'>[]
+  inbaTag?: Pick<InbaTag, 'title'>
 }
 
 // Beware of typo in amedmentDocument

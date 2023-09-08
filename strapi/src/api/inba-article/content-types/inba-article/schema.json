@@ -46,11 +46,11 @@
         }
       }
     },
-    "tags": {
+    "inbaTag": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::inba-tag.inba-tag",
-      "inversedBy": "articles"
+      "inversedBy": "inbaArticles"
     },
     "perex": {
       "pluginOptions": {

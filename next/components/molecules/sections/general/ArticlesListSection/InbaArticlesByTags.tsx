@@ -54,18 +54,22 @@ const InbaArticlesByTags = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const { title: blogPostTitle, slug, coverImage, publishedAt } = card.attributes
-          // const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
-          // const tagTitle = tag?.data?.attributes?.title
+          const {
+            title: inbaArticleTitle,
+            slug,
+            coverImage,
+            publishedAt,
+            inbaTag,
+          } = card.attributes
+          const tagTitleTitle = inbaTag?.data?.attributes?.title
 
           return (
             <BlogPostCard
               key={slug}
-              // style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="shadow"
               date={getNumericLocalDate(publishedAt)}
-              // tag={tagTitle ?? undefined}
-              title={blogPostTitle ?? ''}
+              tag={tagTitleTitle}
+              title={inbaArticleTitle}
               linkProps={{ children: t('readMore'), href: `/inba/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}

@@ -21,8 +21,6 @@ export type InbaArticlePageContentProps = {
 // TODO may need refactor, it was just copied from BlogPostPageContent that didn't undergo any refactoring
 
 const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) => {
-  // const tag = inbaArticle.attributes?.tags?.data?.attributes
-
   const t = useTranslations()
 
   const { general } = useGeneralContext()
@@ -35,6 +33,8 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
     ]
   }, [inbaArticle, inbaPage])
 
+  const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
+
   return (
     <>
       {/* Header */}
@@ -42,7 +42,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         title={inbaArticle.attributes?.title}
         breadcrumbs={breadcrumbs}
         subtext={inbaArticle && getNumericLocalDate(inbaArticle.attributes?.publishedAt)}
-        // tag={tag?.title}
+        tag={inbaTagTitle}
         imageSrc={inbaArticle.attributes?.coverImage?.data?.attributes?.url}
       />
 

@@ -2083,12 +2083,12 @@ export type InbaArticle = {
   content?: Maybe<Scalars['String']>
   coverImage?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']>
+  inbaTag?: Maybe<InbaTagEntityResponse>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<InbaArticleRelationResponseCollection>
   perex?: Maybe<Scalars['String']>
   publishedAt?: Maybe<Scalars['DateTime']>
   slug: Scalars['String']
-  tags?: Maybe<InbaTagRelationResponseCollection>
   title: Scalars['String']
   updatedAt?: Maybe<Scalars['DateTime']>
 }
@@ -2097,12 +2097,6 @@ export type InbaArticleLocalizationsArgs = {
   filters?: InputMaybe<InbaArticleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export type InbaArticleTagsArgs = {
-  filters?: InputMaybe<InbaTagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
@@ -2128,6 +2122,7 @@ export type InbaArticleFiltersInput = {
   content?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   id?: InputMaybe<IdFilterInput>
+  inbaTag?: InputMaybe<InbaTagFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<InbaArticleFiltersInput>
   not?: InputMaybe<InbaArticleFiltersInput>
@@ -2135,7 +2130,6 @@ export type InbaArticleFiltersInput = {
   perex?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
-  tags?: InputMaybe<InbaTagFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -2143,10 +2137,10 @@ export type InbaArticleFiltersInput = {
 export type InbaArticleInput = {
   content?: InputMaybe<Scalars['String']>
   coverImage?: InputMaybe<Scalars['ID']>
+  inbaTag?: InputMaybe<Scalars['ID']>
   perex?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   slug?: InputMaybe<Scalars['String']>
-  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   title?: InputMaybe<Scalars['String']>
 }
 
@@ -2157,15 +2151,15 @@ export type InbaArticleRelationResponseCollection = {
 
 export type InbaTag = {
   __typename?: 'InbaTag'
-  articles?: Maybe<InbaArticleRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']>
+  inbaArticles?: Maybe<InbaArticleRelationResponseCollection>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<InbaTagRelationResponseCollection>
   title: Scalars['String']
   updatedAt?: Maybe<Scalars['DateTime']>
 }
 
-export type InbaTagArticlesArgs = {
+export type InbaTagInbaArticlesArgs = {
   filters?: InputMaybe<InbaArticleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
@@ -2197,9 +2191,9 @@ export type InbaTagEntityResponseCollection = {
 
 export type InbaTagFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<InbaTagFiltersInput>>>
-  articles?: InputMaybe<InbaArticleFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   id?: InputMaybe<IdFilterInput>
+  inbaArticles?: InputMaybe<InbaArticleFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<InbaTagFiltersInput>
   not?: InputMaybe<InbaTagFiltersInput>
@@ -2209,7 +2203,7 @@ export type InbaTagFiltersInput = {
 }
 
 export type InbaTagInput = {
-  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  inbaArticles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   title?: InputMaybe<Scalars['String']>
 }
 
@@ -6677,13 +6671,13 @@ export type InbaArticleBySlugQuery = {
             attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
         } | null
-        tags?: {
-          __typename?: 'InbaTagRelationResponseCollection'
-          data: Array<{
+        inbaTag?: {
+          __typename?: 'InbaTagEntityResponse'
+          data?: {
             __typename?: 'InbaTagEntity'
             id?: string | null
             attributes?: { __typename?: 'InbaTag'; title: string } | null
-          }>
+          } | null
         } | null
       } | null
     }>
@@ -6729,13 +6723,13 @@ export type InbaArticlesRssFeedQuery = {
             attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
         } | null
-        tags?: {
-          __typename?: 'InbaTagRelationResponseCollection'
-          data: Array<{
+        inbaTag?: {
+          __typename?: 'InbaTagEntityResponse'
+          data?: {
             __typename?: 'InbaTagEntity'
             id?: string | null
             attributes?: { __typename?: 'InbaTag'; title: string } | null
-          }>
+          } | null
         } | null
       } | null
     }>
@@ -6759,13 +6753,13 @@ export type InbaArticleEntityFragment = {
         attributes?: { __typename?: 'UploadFile'; url: string } | null
       } | null
     } | null
-    tags?: {
-      __typename?: 'InbaTagRelationResponseCollection'
-      data: Array<{
+    inbaTag?: {
+      __typename?: 'InbaTagEntityResponse'
+      data?: {
         __typename?: 'InbaTagEntity'
         id?: string | null
         attributes?: { __typename?: 'InbaTag'; title: string } | null
-      }>
+      } | null
     } | null
   } | null
 }
@@ -11353,7 +11347,7 @@ export const InbaArticleEntityFragmentDoc = gql`
           }
         }
       }
-      tags {
+      inbaTag {
         data {
           ...InbaTagEntity
         }
@@ -11686,7 +11680,7 @@ export const InbaArticlesRssFeedDocument = gql`
               }
             }
           }
-          tags {
+          inbaTag {
             data {
               id
               attributes {
