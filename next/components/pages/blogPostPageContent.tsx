@@ -42,14 +42,14 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
   const t = useTranslations()
 
   const { general } = useGeneralContext()
+  const newsPage = general?.data?.attributes?.newsPage?.data
+
   const breadcrumbs = useMemo(() => {
     return [
-      ...(general?.data?.attributes?.newsPage?.data
-        ? getPageBreadcrumbs(general.data.attributes.newsPage.data)
-        : []),
+      ...(newsPage ? getPageBreadcrumbs(newsPage) : []),
       { title: blogPost.attributes?.title ?? '', path: null } as Breadcrumb,
     ]
-  }, [blogPost, general?.data?.attributes?.newsPage])
+  }, [blogPost.attributes?.title, newsPage])
 
   return (
     <>
