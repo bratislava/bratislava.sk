@@ -6670,6 +6670,131 @@ export type HomepageInbaFragment = {
   content?: string | null
 }
 
+export type InbaArticleBySlugQueryVariables = Exact<{
+  slug: Scalars['String']
+  locale: Scalars['I18NLocaleCode']
+}>
+
+export type InbaArticleBySlugQuery = {
+  __typename?: 'Query'
+  inbaArticles?: {
+    __typename?: 'InbaArticleEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaArticleEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'InbaArticle'
+        title: string
+        slug: string
+        perex?: string | null
+        publishedAt?: any | null
+        content?: string | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tags?: {
+          __typename?: 'InbaTagRelationResponseCollection'
+          data: Array<{
+            __typename?: 'InbaTagEntity'
+            id?: string | null
+            attributes?: { __typename?: 'InbaTag'; title: string } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
+
+export type InbaArticlesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+
+export type InbaArticlesStaticPathsQuery = {
+  __typename?: 'Query'
+  inbaArticles?: {
+    __typename?: 'InbaArticleEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaArticleEntity'
+      id?: string | null
+      attributes?: { __typename?: 'InbaArticle'; slug: string; locale?: string | null } | null
+    }>
+  } | null
+}
+
+export type InbaArticlesRssFeedQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']
+}>
+
+export type InbaArticlesRssFeedQuery = {
+  __typename?: 'Query'
+  inbaArticles?: {
+    __typename?: 'InbaArticleEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaArticleEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'InbaArticle'
+        title: string
+        slug: string
+        perex?: string | null
+        publishedAt?: any | null
+        content?: string | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        tags?: {
+          __typename?: 'InbaTagRelationResponseCollection'
+          data: Array<{
+            __typename?: 'InbaTagEntity'
+            id?: string | null
+            attributes?: { __typename?: 'InbaTag'; title: string } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
+
+export type InbaArticleEntityFragment = {
+  __typename?: 'InbaArticleEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'InbaArticle'
+    title: string
+    slug: string
+    perex?: string | null
+    publishedAt?: any | null
+    content?: string | null
+    coverImage?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+    tags?: {
+      __typename?: 'InbaTagRelationResponseCollection'
+      data: Array<{
+        __typename?: 'InbaTagEntity'
+        id?: string | null
+        attributes?: { __typename?: 'InbaTag'; title: string } | null
+      }>
+    } | null
+  } | null
+}
+
+export type InbaTagEntityFragment = {
+  __typename?: 'InbaTagEntity'
+  id?: string | null
+  attributes?: { __typename?: 'InbaTag'; title: string } | null
+}
+
 export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
 
 export type PagesStaticPathsQuery = {
@@ -11227,6 +11352,39 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepageInbaFragmentDoc}
   ${HomepageBookmarkFragmentDoc}
 `
+export const InbaTagEntityFragmentDoc = gql`
+  fragment InbaTagEntity on InbaTagEntity {
+    id
+    attributes {
+      title
+    }
+  }
+`
+export const InbaArticleEntityFragmentDoc = gql`
+  fragment InbaArticleEntity on InbaArticleEntity {
+    id
+    attributes {
+      title
+      slug
+      perex
+      publishedAt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      tags {
+        data {
+          ...InbaTagEntity
+        }
+      }
+      content
+    }
+  }
+  ${InbaTagEntityFragmentDoc}
+`
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
     data {
@@ -11510,6 +11668,60 @@ export const HomepageDocument = gql`
   }
   ${HomepageEntityFragmentDoc}
 `
+export const InbaArticleBySlugDocument = gql`
+  query InbaArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
+    inbaArticles(filters: { slug: { eq: $slug } }, locale: $locale) {
+      data {
+        ...InbaArticleEntity
+      }
+    }
+  }
+  ${InbaArticleEntityFragmentDoc}
+`
+export const InbaArticlesStaticPathsDocument = gql`
+  query InbaArticlesStaticPaths {
+    inbaArticles(locale: "all", sort: "publishedAt:desc") {
+      data {
+        id
+        attributes {
+          slug
+          locale
+        }
+      }
+    }
+  }
+`
+export const InbaArticlesRssFeedDocument = gql`
+  query InbaArticlesRssFeed($locale: I18NLocaleCode!) {
+    inbaArticles(locale: $locale, sort: "publishedAt:desc") {
+      data {
+        id
+        attributes {
+          title
+          slug
+          perex
+          publishedAt
+          coverImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          tags {
+            data {
+              id
+              attributes {
+                title
+              }
+            }
+          }
+          content
+        }
+      }
+    }
+  }
+`
 export const PagesStaticPathsDocument = gql`
   query PagesStaticPaths {
     pages(pagination: { limit: -1 }) {
@@ -11731,6 +11943,48 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'Homepage',
+        'query',
+      )
+    },
+    InbaArticleBySlug(
+      variables: InbaArticleBySlugQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaArticleBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaArticleBySlugQuery>(InbaArticleBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaArticleBySlug',
+        'query',
+      )
+    },
+    InbaArticlesStaticPaths(
+      variables?: InbaArticlesStaticPathsQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaArticlesStaticPathsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaArticlesStaticPathsQuery>(InbaArticlesStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaArticlesStaticPaths',
+        'query',
+      )
+    },
+    InbaArticlesRssFeed(
+      variables: InbaArticlesRssFeedQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaArticlesRssFeedQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaArticlesRssFeedQuery>(InbaArticlesRssFeedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaArticlesRssFeed',
         'query',
       )
     },
