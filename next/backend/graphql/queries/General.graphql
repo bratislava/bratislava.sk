@@ -56,9 +56,6 @@ fragment FooterColumnBlock on ComponentBlocksFooterColumn {
 
 fragment Footer on Footer {
   address
-  phone
-  email
-  mediaEmail
   facebookUrl
   instagramUrl
   contacts {
