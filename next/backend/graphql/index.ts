@@ -17,7 +17,6 @@ export type Scalars = {
   Date: any
   DateTime: any
   I18NLocaleCode: any
-  InbaArticleSectionsDynamicZoneInput: any
   JSON: any
   Long: any
   PagePageHeaderSectionsDynamicZoneInput: any
@@ -2094,12 +2093,13 @@ export type IdFilterInput = {
 
 export type InbaArticle = {
   __typename?: 'InbaArticle'
+  content?: Maybe<Scalars['String']>
   coverImage?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<InbaArticleRelationResponseCollection>
+  perex?: Maybe<Scalars['String']>
   publishedAt?: Maybe<Scalars['DateTime']>
-  sections?: Maybe<Array<Maybe<InbaArticleSectionsDynamicZone>>>
   slug: Scalars['String']
   tags?: Maybe<InbaTagRelationResponseCollection>
   title: Scalars['String']
@@ -2138,12 +2138,14 @@ export type InbaArticleEntityResponseCollection = {
 
 export type InbaArticleFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<InbaArticleFiltersInput>>>
+  content?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   id?: InputMaybe<IdFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<InbaArticleFiltersInput>
   not?: InputMaybe<InbaArticleFiltersInput>
   or?: InputMaybe<Array<InputMaybe<InbaArticleFiltersInput>>>
+  perex?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
   tags?: InputMaybe<InbaTagFiltersInput>
@@ -2152,9 +2154,10 @@ export type InbaArticleFiltersInput = {
 }
 
 export type InbaArticleInput = {
+  content?: InputMaybe<Scalars['String']>
   coverImage?: InputMaybe<Scalars['ID']>
+  perex?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
-  sections?: InputMaybe<Array<Scalars['InbaArticleSectionsDynamicZoneInput']>>
   slug?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   title?: InputMaybe<Scalars['String']>
@@ -2164,17 +2167,6 @@ export type InbaArticleRelationResponseCollection = {
   __typename?: 'InbaArticleRelationResponseCollection'
   data: Array<InbaArticleEntity>
 }
-
-export type InbaArticleSectionsDynamicZone =
-  | ComponentSectionsColumnedText
-  | ComponentSectionsDivider
-  | ComponentSectionsFileList
-  | ComponentSectionsGallery
-  | ComponentSectionsNarrowText
-  | ComponentSectionsNumericalList
-  | ComponentSectionsTextWithImage
-  | ComponentSectionsVideos
-  | Error
 
 export type InbaTag = {
   __typename?: 'InbaTag'
