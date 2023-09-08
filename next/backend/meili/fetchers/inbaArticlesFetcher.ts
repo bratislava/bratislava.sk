@@ -30,7 +30,7 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
       filter: [
         'type = "inba-article"',
         `locale = ${locale}`,
-        filters.tagIds.length > 0 ? `inba-article.tags.id IN [${filters.tagIds.join(',')}]` : '',
+        filters.tagIds.length > 0 ? `inba-article.inbaTag.id IN [${filters.tagIds.join(',')}]` : '',
       ],
       sort: ['inba-article.publishedAtTimestamp:desc'],
       attributesToRetrieve: [
@@ -40,7 +40,7 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
         'inba-article.perex',
         'inba-article.coverImage.url',
         'inba-article.publishedAt',
-        'inba-article.tags.title',
+        'inba-article.inbaTag.title',
       ],
     })
     .then(unwrapFromSearchIndex('inba-article'))
@@ -58,12 +58,12 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
                 },
               },
             },
-            tags: {
-              data: inbaArticle.tags?.map((tag) => ({
+            inbaTag: {
+              data: {
                 attributes: {
-                  title: tag.title, // TODO all tags
+                  title: inbaArticle.inbaTag?.title,
                 },
-              })),
+              },
             },
           },
         } as const

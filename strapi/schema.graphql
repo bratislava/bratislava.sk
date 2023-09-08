@@ -2491,12 +2491,12 @@ type InbaArticle {
   content: String
   coverImage: UploadFileEntityResponse
   createdAt: DateTime
+  inbaTag: InbaTagEntityResponse
   locale: String
   localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   perex: String
   publishedAt: DateTime
   slug: String!
-  tags(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaTagRelationResponseCollection
   title: String!
   updatedAt: DateTime
 }
@@ -2520,6 +2520,7 @@ input InbaArticleFiltersInput {
   content: StringFilterInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
+  inbaTag: InbaTagFiltersInput
   locale: StringFilterInput
   localizations: InbaArticleFiltersInput
   not: InbaArticleFiltersInput
@@ -2527,7 +2528,6 @@ input InbaArticleFiltersInput {
   perex: StringFilterInput
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
-  tags: InbaTagFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -2535,10 +2535,10 @@ input InbaArticleFiltersInput {
 input InbaArticleInput {
   content: String
   coverImage: ID
+  inbaTag: ID
   perex: String
   publishedAt: DateTime
   slug: String
-  tags: [ID]
   title: String
 }
 
@@ -2547,8 +2547,8 @@ type InbaArticleRelationResponseCollection {
 }
 
 type InbaTag {
-  articles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   createdAt: DateTime
+  inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   locale: String
   localizations(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaTagRelationResponseCollection
   title: String!
@@ -2571,9 +2571,9 @@ type InbaTagEntityResponseCollection {
 
 input InbaTagFiltersInput {
   and: [InbaTagFiltersInput]
-  articles: InbaArticleFiltersInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
+  inbaArticles: InbaArticleFiltersInput
   locale: StringFilterInput
   localizations: InbaTagFiltersInput
   not: InbaTagFiltersInput
@@ -2583,7 +2583,7 @@ input InbaTagFiltersInput {
 }
 
 input InbaTagInput {
-  articles: [ID]
+  inbaArticles: [ID]
   title: String
 }
 

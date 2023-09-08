@@ -34,7 +34,7 @@ query InbaArticlesRssFeed($locale: I18NLocaleCode!) {
             }
           }
         }
-        tags {
+        inbaTag {
           data {
             id
             attributes {
@@ -62,7 +62,7 @@ fragment InbaArticleEntity on InbaArticleEntity {
         }
       }
     }
-    tags {
+    inbaTag {
       data {
         ...InbaTagEntity
       }
