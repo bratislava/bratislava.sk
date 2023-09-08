@@ -1,6 +1,8 @@
 import {
   BlogPost,
   ComponentBlocksDocListExtensions,
+  InbaArticle,
+  InbaTag,
   Page,
   PageCategory,
   Tag,
@@ -27,7 +29,7 @@ export type SearchIndexWrapped<T extends string, K extends object> = {
 
 export type MixedResults =
   | SearchIndexWrapped<'page', PageMeili>
-  | SearchIndexWrapped<'blog-post', BlogPostMeili>
+  | SearchIndexWrapped<'blog-post', InbaArticleMeili>
   | SearchIndexWrapped<'vzn', VznMeili>
 
 export type PageMeili = Omit<
@@ -43,6 +45,11 @@ export type BlogPostMeili = Omit<BlogPost, '__typename' | 'author' | 'tag' | 'co
   tag?: Omit<Tag, '__typename' | 'pageCategory' | 'blogPosts'> & {
     pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
   }
+}
+
+export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverImage'> & {
+  coverImage?: UploadFile
+  tags?: Pick<InbaTag, 'title'>[]
 }
 
 // Beware of typo in amedmentDocument

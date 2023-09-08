@@ -52,23 +52,21 @@
       "target": "api::inba-tag.inba-tag",
       "inversedBy": "articles"
     },
-    "sections": {
+    "perex": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
-      "components": [
-        "sections.columned-text",
-        "sections.text-with-image",
-        "sections.file-list",
-        "sections.narrow-text",
-        "sections.divider",
-        "sections.videos",
-        "sections.numerical-list",
-        "sections.gallery"
-      ]
+      "type": "text"
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }

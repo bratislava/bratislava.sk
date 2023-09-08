@@ -84,7 +84,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => {
                 },
               },
             },
-          } as LatestBlogPostEntityFragment
+          } as Pick<LatestBlogPostEntityFragment, 'attributes'>
         })
         .sort((a, b) => {
           if (!a.attributes?.date_added || !b.attributes?.date_added) {

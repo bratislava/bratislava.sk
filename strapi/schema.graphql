@@ -2497,12 +2497,13 @@ input IDFilterInput {
 }
 
 type InbaArticle {
+  content: String
   coverImage: UploadFileEntityResponse
   createdAt: DateTime
   locale: String
   localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
+  perex: String
   publishedAt: DateTime
-  sections: [InbaArticleSectionsDynamicZone]
   slug: String!
   tags(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaTagRelationResponseCollection
   title: String!
@@ -2525,12 +2526,14 @@ type InbaArticleEntityResponseCollection {
 
 input InbaArticleFiltersInput {
   and: [InbaArticleFiltersInput]
+  content: StringFilterInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
   locale: StringFilterInput
   localizations: InbaArticleFiltersInput
   not: InbaArticleFiltersInput
   or: [InbaArticleFiltersInput]
+  perex: StringFilterInput
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
   tags: InbaTagFiltersInput
@@ -2539,9 +2542,10 @@ input InbaArticleFiltersInput {
 }
 
 input InbaArticleInput {
+  content: String
   coverImage: ID
+  perex: String
   publishedAt: DateTime
-  sections: [InbaArticleSectionsDynamicZoneInput!]
   slug: String
   tags: [ID]
   title: String
@@ -2550,10 +2554,6 @@ input InbaArticleInput {
 type InbaArticleRelationResponseCollection {
   data: [InbaArticleEntity!]!
 }
-
-union InbaArticleSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsTextWithImage | ComponentSectionsVideos | Error
-
-scalar InbaArticleSectionsDynamicZoneInput
 
 type InbaTag {
   articles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
