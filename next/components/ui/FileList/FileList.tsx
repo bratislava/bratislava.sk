@@ -4,6 +4,7 @@ import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarouse
 import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
 import { useLocale } from 'next-intl'
+import { useGetDownloadAriaLabel } from '@utils/useGetDownloadAriaLabel'
 
 export type TFile = {
   title?: string
@@ -39,6 +40,7 @@ export const FileList = ({
   cardType = 'grid',
 }: FileListProps) => {
   const locale = useLocale()
+  const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
 
   function transformFileProps(file: TFile) {
     const fileProps = {
@@ -48,6 +50,7 @@ export const FileList = ({
       size:
         file.media && file.media.size > 0 ? formatFileSize(file.media?.size, locale) : undefined,
       uploadDate: file.media?.created_at,
+      ariaLabel: getDownloadAriaLabel(file),
     } as FileCardProps
 
     return fileProps

@@ -17,6 +17,7 @@ const FileRowCard = ({
   format,
   size,
   className,
+  ariaLabel,
 }: FileCardProps) => {
   const t = useTranslations()
 
@@ -31,6 +32,7 @@ const FileRowCard = ({
             variant="underlineOnHover"
             target="_blank"
             rel="noreferrer"
+            aria-label={ariaLabel ?? ''}
           >
             {title}
           </MLink>

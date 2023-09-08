@@ -223,5 +223,11 @@
     "address": "Adresa",
     "web": "Web",
     "phone": "Telefón"
+  },
+  "FileList": {
+    "aria": {
+      "downloadFileAriaLabel": "Stiahnuť súbor {title}, formát {format}, {size}",
+      "downloadFile": "Stiahnuť súbor"
+    }
   }
 }
