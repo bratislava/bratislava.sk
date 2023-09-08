@@ -71,7 +71,7 @@ const BlogPostsByTags = ({ section }: Props) => {
 
           return (
             <BlogPostCard
-              key={card.id}
+              key={slug}
               style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="shadow"
               date={getNumericLocalDate(date_added ?? publishedAt)}
@@ -85,14 +85,14 @@ const BlogPostsByTags = ({ section }: Props) => {
         })}
       </div>
 
-      {data?.estimatedTotalHits && (
+      {data?.estimatedTotalHits ? (
         <Pagination
           key={filters.search}
           totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
           currentPage={filters.page}
           onPageChange={handlePageChange}
         />
-      )}
+      ) : null}
     </div>
   )
 }
