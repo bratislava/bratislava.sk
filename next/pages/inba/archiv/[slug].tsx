@@ -1,7 +1,7 @@
-import { GeneralQuery, InbaArticleEntityFragment } from '@backend/graphql'
+import { GeneralQuery, InbaReleaseEntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
-import InbaArticlePageContent from '@components/pages/InbaArticlePageContent'
+import InbaReleasePageContent from '@components/pages/InbaReleasePageContent'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -10,7 +10,7 @@ import * as React from 'react'
 
 interface PageProps {
   general: GeneralQuery
-  inbaArticle: InbaArticleEntityFragment
+  inbaRelease: InbaReleaseEntityFragment
 }
 
 type StaticParams = {
@@ -18,21 +18,19 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { inbaArticles } = await client.InbaArticlesStaticPaths()
+  const { inbaReleases } = await client.InbaReleasesStaticPaths()
 
-  const paths = (inbaArticles?.data ?? [])
-    .filter((inbaArticle) => inbaArticle?.attributes?.slug && inbaArticle?.attributes?.locale)
-    .map((inbaArticle) => ({
+  const paths = (inbaReleases?.data ?? [])
+    .filter((inbaRelease) => inbaRelease?.attributes?.slug)
+    .map((inbaRelease) => ({
       params: {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        slug: inbaArticle.attributes!.slug!,
+        slug: inbaRelease.attributes!.slug!,
       },
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-      locale: inbaArticle.attributes!.locale!,
     }))
 
   // eslint-disable-next-line no-console
-  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - INBA ARTICLES`)
+  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - INBA RELEASES`)
   return { paths, fallback: 'blocking' }
 }
 
@@ -43,37 +41,34 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   const slug = params?.slug
 
   // eslint-disable-next-line no-console
-  console.log(`Revalidating inba article ${locale === 'en' ? '/en' : ''}/inba/text/${slug}`)
+  console.log(`Revalidating inba article ${locale === 'en' ? '/en' : ''}/inba/archiv/${slug}`)
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ inbaArticles }, general, messages] = await Promise.all([
-    client.InbaArticleBySlug({
-      slug,
-      locale,
-    }),
+  const [{ inbaReleases }, general, messages] = await Promise.all([
+    client.InbaReleaseBySlug({ slug }),
     client.General({ locale }),
     import(`../../../messages/${locale}.json`),
   ])
 
-  const inbaArticle = inbaArticles?.data[0]
-  if (!inbaArticle) return { notFound: true }
+  const inbaRelease = inbaReleases?.data[0]
+  if (!inbaRelease) return { notFound: true }
 
   return {
     props: {
       general,
       slug,
-      inbaArticle,
+      inbaRelease,
       messages: messages.default,
     },
     revalidate: 10,
   }
 }
 
-const Page = ({ general, inbaArticle }: PageProps) => {
-  const { title: inbaArticleTitle, perex } = inbaArticle.attributes ?? {}
+const Page = ({ general, inbaRelease }: PageProps) => {
+  const { title: inbaReleaseTitle, perex } = inbaRelease.attributes ?? {}
 
-  const title = useTitle(inbaArticleTitle)
+  const title = useTitle(inbaReleaseTitle)
 
   return (
     <GeneralContextProvider general={general}>
@@ -82,7 +77,7 @@ const Page = ({ general, inbaArticle }: PageProps) => {
         {perex && <meta name="description" content={perex} />}
       </Head>
       <PageLayout>
-        <InbaArticlePageContent inbaArticle={inbaArticle} />
+        <InbaReleasePageContent inbaRelease={inbaRelease} />
       </PageLayout>
     </GeneralContextProvider>
   )
