@@ -50,6 +50,7 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
           attributes: {
             title: inbaArticle.title,
             slug: inbaArticle.slug,
+            perex: inbaArticle.perex,
             publishedAt: inbaArticle.publishedAt,
             coverImage: {
               data: {
