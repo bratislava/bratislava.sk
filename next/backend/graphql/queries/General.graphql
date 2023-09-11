@@ -17,6 +17,18 @@ fragment UploadImageEntity on UploadFileEntity {
   }
 }
 
+fragment UploadFileEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    name
+    ext
+    size
+    createdAt
+    updatedAt
+  }
+}
+
 fragment CommonLink on ComponentBlocksCommonLink {
   label
   url
@@ -175,6 +187,11 @@ fragment General on General {
     }
   }
   inbaPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  inbaReleasesPage {
     data {
       ...GeneralPageRelation
     }

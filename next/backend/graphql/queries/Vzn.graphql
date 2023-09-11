@@ -7,12 +7,7 @@ query VznDetail($id: ID!) {
         validFrom
         mainDocument {
           data {
-            attributes {
-              url
-              size
-              ext
-              createdAt
-            }
+            ...UploadFileEntity
           }
         }
         cancellationDocument {
@@ -20,12 +15,7 @@ query VznDetail($id: ID!) {
           title
           document {
             data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
         }
@@ -34,12 +24,7 @@ query VznDetail($id: ID!) {
           title
           document {
             data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
         }

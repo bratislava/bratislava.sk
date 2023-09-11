@@ -1,7 +1,6 @@
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
 import { BlogPostEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useGeneralContext } from '@utils/generalContext'
 import { getNumericLocalDate } from '@utils/local-date'
@@ -72,39 +71,7 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       {/* Page - Common Sections */}
       {blogPost.attributes?.sections && <Sections sections={blogPost.attributes?.sections} />}
 
-      {/* Page - Social media buttons for sharing */}
-      <SectionContainer className="mb-8">
-        <div className="mt-14 flex flex-col">
-          <span className="text-h5">{t('share')}</span>
-          <div className="flex gap-x-10 pt-5">
-            <SocialMediaButton
-              getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}
-            >
-              <FacebookIcon className="h-8 w-8" />
-            </SocialMediaButton>
-
-            <SocialMediaButton
-              getLink={(socialLink) =>
-                `https://www.linkedin.com/sharing/share-offsite/?url=${socialLink}`
-              }
-            >
-              <LinkedinIcon className="h-8 w-8" />
-            </SocialMediaButton>
-
-            <SocialMediaButton getLink={() => 'https://www.instagram.com/bratislava.sk/'}>
-              <InstagramIcon className="h-8 w-8" />
-            </SocialMediaButton>
-
-            <SocialMediaButton
-              getLink={(socialLink) =>
-                `https://twitter.com/intent/tweet?url=${socialLink}&text=${blogPost.attributes?.title}`
-              }
-            >
-              <TwitterIcon className="h-8 w-8" />
-            </SocialMediaButton>
-          </div>
-        </div>
-      </SectionContainer>
+      <ShareButtons twitterTitle={blogPost.attributes?.title} />
     </>
   )
 }

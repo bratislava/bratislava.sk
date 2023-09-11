@@ -4018,12 +4018,15 @@ export type BlogPostBySlugQuery = {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
                     __typename?: 'UploadFileEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'UploadFile'
                       url: string
-                      createdAt?: any | null
-                      size: number
+                      name: string
                       ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
                     } | null
                   } | null
                 } | null
@@ -4224,12 +4227,15 @@ export type LatestPostsByTagsQuery = {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
                     __typename?: 'UploadFileEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'UploadFile'
                       url: string
-                      createdAt?: any | null
-                      size: number
+                      name: string
                       ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
                     } | null
                   } | null
                 } | null
@@ -4629,12 +4635,15 @@ export type BlogPostEntityFragment = {
               __typename?: 'UploadFileEntityResponse'
               data?: {
                 __typename?: 'UploadFileEntity'
+                id?: string | null
                 attributes?: {
                   __typename?: 'UploadFile'
                   url: string
-                  createdAt?: any | null
-                  size: number
+                  name: string
                   ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
                 } | null
               } | null
             } | null
@@ -4778,6 +4787,20 @@ export type UploadImageEntityFragment = {
     caption?: string | null
     alternativeText?: string | null
     name: string
+  } | null
+}
+
+export type UploadFileEntityFragment = {
+  __typename?: 'UploadFileEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'UploadFile'
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
   } | null
 }
 
@@ -5181,6 +5204,14 @@ export type GeneralFragment = {
       attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
     } | null
   } | null
+  inbaReleasesPage?: {
+    __typename?: 'PageEntityResponse'
+    data?: {
+      __typename?: 'PageEntity'
+      id?: string | null
+      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+    } | null
+  } | null
 }
 
 export type AlertFragment = { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null }
@@ -5336,6 +5367,14 @@ export type GeneralQuery = {
           } | null
         } | null
         inbaPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          } | null
+        } | null
+        inbaReleasesPage?: {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
@@ -6884,6 +6923,185 @@ export type InbaTagEntityFragment = {
   attributes?: { __typename?: 'InbaTag'; title: string } | null
 }
 
+export type InbaReleaseBySlugQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+export type InbaReleaseBySlugQuery = {
+  __typename?: 'Query'
+  inbaReleases?: {
+    __typename?: 'InbaReleaseEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaReleaseEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'InbaRelease'
+        title: string
+        slug: string
+        perex?: string | null
+        releaseDate: any
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
+        } | null
+        rearImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFileItem'
+          title?: string | null
+          media: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null
+          }
+        } | null> | null
+      } | null
+    }>
+  } | null
+}
+
+export type InbaReleasesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+
+export type InbaReleasesStaticPathsQuery = {
+  __typename?: 'Query'
+  inbaReleases?: {
+    __typename?: 'InbaReleaseEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaReleaseEntity'
+      id?: string | null
+      attributes?: { __typename?: 'InbaRelease'; slug: string } | null
+    }>
+  } | null
+}
+
+export type InbaReleasesRssFeedQueryVariables = Exact<{ [key: string]: never }>
+
+export type InbaReleasesRssFeedQuery = {
+  __typename?: 'Query'
+  inbaReleases?: {
+    __typename?: 'InbaReleaseEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaReleaseEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'InbaRelease'
+        title: string
+        slug: string
+        perex?: string | null
+        publishedAt?: any | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
+export type InbaReleaseEntityFragment = {
+  __typename?: 'InbaReleaseEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'InbaRelease'
+    title: string
+    slug: string
+    perex?: string | null
+    releaseDate: any
+    coverImage?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    } | null
+    rearImage?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    } | null
+    files?: Array<{
+      __typename?: 'ComponentBlocksFileItem'
+      title?: string | null
+      media: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'UploadFile'
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null
+      }
+    } | null> | null
+  } | null
+}
+
 export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
 
 export type PagesStaticPathsQuery = {
@@ -7224,12 +7442,15 @@ export type PageBySlugQuery = {
                         __typename?: 'UploadFileEntityResponse'
                         data?: {
                           __typename?: 'UploadFileEntity'
+                          id?: string | null
                           attributes?: {
                             __typename?: 'UploadFile'
                             url: string
-                            size: number
+                            name: string
                             ext?: string | null
+                            size: number
                             createdAt?: any | null
+                            updatedAt?: any | null
                           } | null
                         } | null
                       } | null
@@ -7243,12 +7464,15 @@ export type PageBySlugQuery = {
                         __typename?: 'UploadFileEntityResponse'
                         data?: {
                           __typename?: 'UploadFileEntity'
+                          id?: string | null
                           attributes?: {
                             __typename?: 'UploadFile'
                             url: string
-                            size: number
+                            name: string
                             ext?: string | null
+                            size: number
                             createdAt?: any | null
+                            updatedAt?: any | null
                           } | null
                         } | null
                       } | null
@@ -7257,12 +7481,15 @@ export type PageBySlugQuery = {
                       __typename?: 'UploadFileEntityResponse'
                       data?: {
                         __typename?: 'UploadFileEntity'
+                        id?: string | null
                         attributes?: {
                           __typename?: 'UploadFile'
                           url: string
-                          size: number
+                          name: string
                           ext?: string | null
+                          size: number
                           createdAt?: any | null
+                          updatedAt?: any | null
                         } | null
                       } | null
                     } | null
@@ -7274,9 +7501,11 @@ export type PageBySlugQuery = {
                         attributes?: {
                           __typename?: 'UploadFile'
                           url: string
-                          size: number
+                          name: string
                           ext?: string | null
+                          size: number
                           createdAt?: any | null
+                          updatedAt?: any | null
                         } | null
                       } | null
                     } | null
@@ -7431,12 +7660,15 @@ export type PageBySlugQuery = {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
                     __typename?: 'UploadFileEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'UploadFile'
                       url: string
-                      createdAt?: any | null
-                      size: number
+                      name: string
                       ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
                     } | null
                   } | null
                 } | null
@@ -8110,12 +8342,15 @@ export type PageEntityFragment = {
                     __typename?: 'UploadFileEntityResponse'
                     data?: {
                       __typename?: 'UploadFileEntity'
+                      id?: string | null
                       attributes?: {
                         __typename?: 'UploadFile'
                         url: string
-                        size: number
+                        name: string
                         ext?: string | null
+                        size: number
                         createdAt?: any | null
+                        updatedAt?: any | null
                       } | null
                     } | null
                   } | null
@@ -8129,12 +8364,15 @@ export type PageEntityFragment = {
                     __typename?: 'UploadFileEntityResponse'
                     data?: {
                       __typename?: 'UploadFileEntity'
+                      id?: string | null
                       attributes?: {
                         __typename?: 'UploadFile'
                         url: string
-                        size: number
+                        name: string
                         ext?: string | null
+                        size: number
                         createdAt?: any | null
+                        updatedAt?: any | null
                       } | null
                     } | null
                   } | null
@@ -8143,12 +8381,15 @@ export type PageEntityFragment = {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
                     __typename?: 'UploadFileEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'UploadFile'
                       url: string
-                      size: number
+                      name: string
                       ext?: string | null
+                      size: number
                       createdAt?: any | null
+                      updatedAt?: any | null
                     } | null
                   } | null
                 } | null
@@ -8160,9 +8401,11 @@ export type PageEntityFragment = {
                     attributes?: {
                       __typename?: 'UploadFile'
                       url: string
-                      size: number
+                      name: string
                       ext?: string | null
+                      size: number
                       createdAt?: any | null
+                      updatedAt?: any | null
                     } | null
                   } | null
                 } | null
@@ -8317,12 +8560,15 @@ export type PageEntityFragment = {
               __typename?: 'UploadFileEntityResponse'
               data?: {
                 __typename?: 'UploadFileEntity'
+                id?: string | null
                 attributes?: {
                   __typename?: 'UploadFile'
                   url: string
-                  createdAt?: any | null
-                  size: number
+                  name: string
                   ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
                 } | null
               } | null
             } | null
@@ -8670,12 +8916,15 @@ export type DocumentListSectionFragment = {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                size: number
+                name: string
                 ext?: string | null
+                size: number
                 createdAt?: any | null
+                updatedAt?: any | null
               } | null
             } | null
           } | null
@@ -8689,12 +8938,15 @@ export type DocumentListSectionFragment = {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                size: number
+                name: string
                 ext?: string | null
+                size: number
                 createdAt?: any | null
+                updatedAt?: any | null
               } | null
             } | null
           } | null
@@ -8703,12 +8955,15 @@ export type DocumentListSectionFragment = {
           __typename?: 'UploadFileEntityResponse'
           data?: {
             __typename?: 'UploadFileEntity'
+            id?: string | null
             attributes?: {
               __typename?: 'UploadFile'
               url: string
-              size: number
+              name: string
               ext?: string | null
+              size: number
               createdAt?: any | null
+              updatedAt?: any | null
             } | null
           } | null
         } | null
@@ -8720,9 +8975,11 @@ export type DocumentListSectionFragment = {
             attributes?: {
               __typename?: 'UploadFile'
               url: string
-              size: number
+              name: string
               ext?: string | null
+              size: number
               createdAt?: any | null
+              updatedAt?: any | null
             } | null
           } | null
         } | null
@@ -8906,12 +9163,15 @@ export type FileBlockFragment = {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
+      id?: string | null
       attributes?: {
         __typename?: 'UploadFile'
         url: string
-        createdAt?: any | null
-        size: number
+        name: string
         ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
       } | null
     } | null
   } | null
@@ -8928,16 +9188,40 @@ export type FileListSectionFragment = {
       __typename?: 'UploadFileEntityResponse'
       data?: {
         __typename?: 'UploadFileEntity'
+        id?: string | null
         attributes?: {
           __typename?: 'UploadFile'
           url: string
-          createdAt?: any | null
-          size: number
+          name: string
           ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
         } | null
       } | null
     } | null
   } | null> | null
+}
+
+export type FileItemBlockFragment = {
+  __typename?: 'ComponentBlocksFileItem'
+  title?: string | null
+  media: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null
+    } | null
+  }
 }
 
 export type ColumnedTextSectionFragment = {
@@ -9717,12 +10001,15 @@ type Sections_ComponentSectionsDocumentList_Fragment = {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                size: number
+                name: string
                 ext?: string | null
+                size: number
                 createdAt?: any | null
+                updatedAt?: any | null
               } | null
             } | null
           } | null
@@ -9736,12 +10023,15 @@ type Sections_ComponentSectionsDocumentList_Fragment = {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                size: number
+                name: string
                 ext?: string | null
+                size: number
                 createdAt?: any | null
+                updatedAt?: any | null
               } | null
             } | null
           } | null
@@ -9750,12 +10040,15 @@ type Sections_ComponentSectionsDocumentList_Fragment = {
           __typename?: 'UploadFileEntityResponse'
           data?: {
             __typename?: 'UploadFileEntity'
+            id?: string | null
             attributes?: {
               __typename?: 'UploadFile'
               url: string
-              size: number
+              name: string
               ext?: string | null
+              size: number
               createdAt?: any | null
+              updatedAt?: any | null
             } | null
           } | null
         } | null
@@ -9767,9 +10060,11 @@ type Sections_ComponentSectionsDocumentList_Fragment = {
             attributes?: {
               __typename?: 'UploadFile'
               url: string
-              size: number
+              name: string
               ext?: string | null
+              size: number
               createdAt?: any | null
+              updatedAt?: any | null
             } | null
           } | null
         } | null
@@ -9926,12 +10221,15 @@ type Sections_ComponentSectionsFileList_Fragment = {
       __typename?: 'UploadFileEntityResponse'
       data?: {
         __typename?: 'UploadFileEntity'
+        id?: string | null
         attributes?: {
           __typename?: 'UploadFile'
           url: string
-          createdAt?: any | null
-          size: number
+          name: string
           ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
         } | null
       } | null
     } | null
@@ -10248,12 +10546,15 @@ export type VznDetailQuery = {
           __typename?: 'UploadFileEntityResponse'
           data?: {
             __typename?: 'UploadFileEntity'
+            id?: string | null
             attributes?: {
               __typename?: 'UploadFile'
               url: string
-              size: number
+              name: string
               ext?: string | null
+              size: number
               createdAt?: any | null
+              updatedAt?: any | null
             } | null
           } | null
         } | null
@@ -10265,12 +10566,15 @@ export type VznDetailQuery = {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                size: number
+                name: string
                 ext?: string | null
+                size: number
                 createdAt?: any | null
+                updatedAt?: any | null
               } | null
             } | null
           } | null
@@ -10283,12 +10587,15 @@ export type VznDetailQuery = {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                size: number
+                name: string
                 ext?: string | null
+                size: number
                 createdAt?: any | null
+                updatedAt?: any | null
               } | null
             } | null
           } | null
@@ -10343,6 +10650,19 @@ export const IconTitleDescSectionFragmentDoc = gql`
   }
   ${IconTitleDescriptionBlockFragmentDoc}
 `
+export const UploadFileEntityFragmentDoc = gql`
+  fragment UploadFileEntity on UploadFileEntity {
+    id
+    attributes {
+      url
+      name
+      ext
+      size
+      createdAt
+      updatedAt
+    }
+  }
+`
 export const DocumentListSectionFragmentDoc = gql`
   fragment DocumentListSection on ComponentSectionsDocumentList {
     vzns {
@@ -10357,12 +10677,7 @@ export const DocumentListSectionFragmentDoc = gql`
             validFrom
             document {
               data {
-                attributes {
-                  url
-                  size
-                  ext
-                  createdAt
-                }
+                ...UploadFileEntity
               }
             }
           }
@@ -10372,12 +10687,7 @@ export const DocumentListSectionFragmentDoc = gql`
             validFrom
             document {
               data {
-                attributes {
-                  url
-                  size
-                  ext
-                  createdAt
-                }
+                ...UploadFileEntity
               }
             }
           }
@@ -10385,29 +10695,19 @@ export const DocumentListSectionFragmentDoc = gql`
           validFrom
           mainDocument {
             data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
           consolidatedText {
             data {
-              id
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
         }
       }
     }
   }
+  ${UploadFileEntityFragmentDoc}
 `
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
@@ -10498,15 +10798,11 @@ export const FileBlockFragmentDoc = gql`
     category
     media {
       data {
-        attributes {
-          url
-          createdAt
-          size
-          ext
-        }
+        ...UploadFileEntity
       }
     }
   }
+  ${UploadFileEntityFragmentDoc}
 `
 export const FileListSectionFragmentDoc = gql`
   fragment FileListSection on ComponentSectionsFileList {
@@ -11265,6 +11561,11 @@ export const GeneralFragmentDoc = gql`
         ...GeneralPageRelation
       }
     }
+    inbaReleasesPage {
+      data {
+        ...GeneralPageRelation
+      }
+    }
   }
   ${HeaderLinkFragmentDoc}
   ${CommonLinkFragmentDoc}
@@ -11471,6 +11772,37 @@ export const InbaArticleEntityFragmentDoc = gql`
   }
   ${InbaTagEntityFragmentDoc}
 `
+export const InbaReleaseEntityFragmentDoc = gql`
+  fragment InbaReleaseEntity on InbaReleaseEntity {
+    id
+    attributes {
+      title
+      slug
+      perex
+      releaseDate
+      coverImage {
+        data {
+          ...UploadImageEntity
+        }
+      }
+      rearImage {
+        data {
+          ...UploadImageEntity
+        }
+      }
+      files {
+        title
+        media {
+          data {
+            ...UploadFileEntity
+          }
+        }
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+`
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
     data {
@@ -11559,6 +11891,17 @@ export const PageEntityFragmentDoc = gql`
   ${PageHeaderSectionsFragmentDoc}
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
+`
+export const FileItemBlockFragmentDoc = gql`
+  fragment FileItemBlock on ComponentBlocksFileItem {
+    title
+    media {
+      data {
+        ...UploadFileEntity
+      }
+    }
+  }
+  ${UploadFileEntityFragmentDoc}
 `
 export const BlogPostBySlugDocument = gql`
   query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
@@ -11808,6 +12151,50 @@ export const InbaArticlesRssFeedDocument = gql`
     }
   }
 `
+export const InbaReleaseBySlugDocument = gql`
+  query InbaReleaseBySlug($slug: String!) {
+    inbaReleases(filters: { slug: { eq: $slug } }) {
+      data {
+        ...InbaReleaseEntity
+      }
+    }
+  }
+  ${InbaReleaseEntityFragmentDoc}
+`
+export const InbaReleasesStaticPathsDocument = gql`
+  query InbaReleasesStaticPaths {
+    inbaReleases(sort: "releaseDate:desc") {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
+export const InbaReleasesRssFeedDocument = gql`
+  query InbaReleasesRssFeed {
+    inbaReleases(sort: "releaseDate:desc", pagination: { limit: -1 }) {
+      data {
+        id
+        attributes {
+          title
+          slug
+          perex
+          publishedAt
+          coverImage {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 export const PagesStaticPathsDocument = gql`
   query PagesStaticPaths {
     pages(pagination: { limit: -1 }) {
@@ -11840,12 +12227,7 @@ export const VznDetailDocument = gql`
           validFrom
           mainDocument {
             data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
           cancellationDocument {
@@ -11853,12 +12235,7 @@ export const VznDetailDocument = gql`
             title
             document {
               data {
-                attributes {
-                  url
-                  size
-                  ext
-                  createdAt
-                }
+                ...UploadFileEntity
               }
             }
           }
@@ -11867,12 +12244,7 @@ export const VznDetailDocument = gql`
             title
             document {
               data {
-                attributes {
-                  url
-                  size
-                  ext
-                  createdAt
-                }
+                ...UploadFileEntity
               }
             }
           }
@@ -11880,6 +12252,7 @@ export const VznDetailDocument = gql`
       }
     }
   }
+  ${UploadFileEntityFragmentDoc}
 `
 
 export type SdkFunctionWrapper = <T>(
@@ -12071,6 +12444,48 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'InbaArticlesRssFeed',
+        'query',
+      )
+    },
+    InbaReleaseBySlug(
+      variables: InbaReleaseBySlugQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaReleaseBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaReleaseBySlugQuery>(InbaReleaseBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaReleaseBySlug',
+        'query',
+      )
+    },
+    InbaReleasesStaticPaths(
+      variables?: InbaReleasesStaticPathsQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaReleasesStaticPathsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaReleasesStaticPathsQuery>(InbaReleasesStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaReleasesStaticPaths',
+        'query',
+      )
+    },
+    InbaReleasesRssFeed(
+      variables?: InbaReleasesRssFeedQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaReleasesRssFeedQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaReleasesRssFeedQuery>(InbaReleasesRssFeedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaReleasesRssFeed',
         'query',
       )
     },

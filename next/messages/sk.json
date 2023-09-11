@@ -229,5 +229,12 @@
       "downloadFileAriaLabel": "Stiahnuť súbor {title}, formát {format}, {size}",
       "downloadFile": "Stiahnuť súbor"
     }
+  },
+  "InbaRelease": {
+    "releasedOn": "Publikované {date}",
+    "inThisRelease": "V tomto čísle nájdete",
+    "aria": {
+      "toDownload": "Na stiahnutie"
+    }
   }
 }

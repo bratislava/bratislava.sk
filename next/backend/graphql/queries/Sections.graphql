@@ -21,12 +21,7 @@ fragment DocumentListSection on ComponentSectionsDocumentList {
           validFrom
           document {
             data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
         }
@@ -36,12 +31,7 @@ fragment DocumentListSection on ComponentSectionsDocumentList {
           validFrom
           document {
             data {
-              attributes {
-                url
-                size
-                ext
-                createdAt
-              }
+              ...UploadFileEntity
             }
           }
         }
@@ -49,23 +39,12 @@ fragment DocumentListSection on ComponentSectionsDocumentList {
         validFrom
         mainDocument {
           data {
-            attributes {
-              url
-              size
-              ext
-              createdAt
-            }
+            ...UploadFileEntity
           }
         }
         consolidatedText {
           data {
-            id
-            attributes {
-              url
-              size
-              ext
-              createdAt
-            }
+            ...UploadFileEntity
           }
         }
       }
@@ -188,12 +167,7 @@ fragment FileBlock on ComponentBlocksFile {
   category
   media {
     data {
-      attributes {
-        url
-        createdAt
-        size
-        ext
-      }
+      ...UploadFileEntity
     }
   }
 }
@@ -203,6 +177,15 @@ fragment FileListSection on ComponentSectionsFileList {
   # TODO consider limit -1
   fileList(pagination: { limit: 500 }) {
     ...FileBlock
+  }
+}
+
+fragment FileItemBlock on ComponentBlocksFileItem {
+  title
+  media {
+    data {
+      ...UploadFileEntity
+    }
   }
 }
 
