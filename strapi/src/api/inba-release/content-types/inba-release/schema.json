@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inba_releases",
+  "info": {
+    "singularName": "inba-release",
+    "pluralName": "inba-releases",
+    "displayName": "in.ba vydania",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "releaseDate": {
+      "required": true,
+      "type": "date"
+    },
+    "perex": {
+      "type": "text"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "rearImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "files": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.file-item",
+      "min": 1
+    },
+    "inbaArticles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inba-article.inba-article",
+      "mappedBy": "inbaRelease"
+    }
+  }
+}

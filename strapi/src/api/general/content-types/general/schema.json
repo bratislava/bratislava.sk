@@ -27,6 +27,16 @@
       },
       "component": "general.header"
     },
+    "privacyPolicyPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "officialBoardPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
     "newsPage": {
       "type": "relation",
       "relation": "oneToOne",
@@ -42,12 +52,7 @@
       "relation": "oneToOne",
       "target": "api::page.page"
     },
-    "officialBoardPage": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
-    },
-    "privacyPolicyPage": {
+    "inbaReleasesPage": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"

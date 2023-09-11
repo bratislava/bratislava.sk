@@ -421,6 +421,12 @@ export type ComponentBlocksFileItemFiltersInput = {
   title?: InputMaybe<StringFilterInput>
 }
 
+export type ComponentBlocksFileItemInput = {
+  id?: InputMaybe<Scalars['ID']>
+  media?: InputMaybe<Scalars['ID']>
+  title?: InputMaybe<Scalars['String']>
+}
+
 export type ComponentBlocksFooterColumn = {
   __typename?: 'ComponentBlocksFooterColumn'
   id: Scalars['ID']
@@ -1820,6 +1826,7 @@ export type General = {
   createdAt?: Maybe<Scalars['DateTime']>
   header?: Maybe<ComponentGeneralHeader>
   inbaPage?: Maybe<PageEntityResponse>
+  inbaReleasesPage?: Maybe<PageEntityResponse>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<GeneralRelationResponseCollection>
   newsPage?: Maybe<PageEntityResponse>
@@ -1843,6 +1850,7 @@ export type GeneralEntityResponse = {
 export type GeneralInput = {
   header?: InputMaybe<ComponentGeneralHeaderInput>
   inbaPage?: InputMaybe<Scalars['ID']>
+  inbaReleasesPage?: InputMaybe<Scalars['ID']>
   newsPage?: InputMaybe<Scalars['ID']>
   officialBoardPage?: InputMaybe<Scalars['ID']>
   privacyPolicyPage?: InputMaybe<Scalars['ID']>
@@ -1934,6 +1942,7 @@ export type GenericMorph =
   | Homepage
   | I18NLocale
   | InbaArticle
+  | InbaRelease
   | InbaTag
   | Menu
   | Page
@@ -2083,6 +2092,7 @@ export type InbaArticle = {
   content?: Maybe<Scalars['String']>
   coverImage?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']>
+  inbaRelease?: Maybe<InbaReleaseEntityResponse>
   inbaTag?: Maybe<InbaTagEntityResponse>
   locale?: Maybe<Scalars['String']>
   localizations?: Maybe<InbaArticleRelationResponseCollection>
@@ -2122,6 +2132,7 @@ export type InbaArticleFiltersInput = {
   content?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   id?: InputMaybe<IdFilterInput>
+  inbaRelease?: InputMaybe<InbaReleaseFiltersInput>
   inbaTag?: InputMaybe<InbaTagFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<InbaArticleFiltersInput>
@@ -2137,6 +2148,7 @@ export type InbaArticleFiltersInput = {
 export type InbaArticleInput = {
   content?: InputMaybe<Scalars['String']>
   coverImage?: InputMaybe<Scalars['ID']>
+  inbaRelease?: InputMaybe<Scalars['ID']>
   inbaTag?: InputMaybe<Scalars['ID']>
   perex?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
@@ -2147,6 +2159,79 @@ export type InbaArticleInput = {
 export type InbaArticleRelationResponseCollection = {
   __typename?: 'InbaArticleRelationResponseCollection'
   data: Array<InbaArticleEntity>
+}
+
+export type InbaRelease = {
+  __typename?: 'InbaRelease'
+  coverImage?: Maybe<UploadFileEntityResponse>
+  createdAt?: Maybe<Scalars['DateTime']>
+  files?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
+  inbaArticles?: Maybe<InbaArticleRelationResponseCollection>
+  perex?: Maybe<Scalars['String']>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  rearImage?: Maybe<UploadFileEntityResponse>
+  releaseDate: Scalars['Date']
+  slug: Scalars['String']
+  title: Scalars['String']
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+export type InbaReleaseFilesArgs = {
+  filters?: InputMaybe<ComponentBlocksFileItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type InbaReleaseInbaArticlesArgs = {
+  filters?: InputMaybe<InbaArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type InbaReleaseEntity = {
+  __typename?: 'InbaReleaseEntity'
+  attributes?: Maybe<InbaRelease>
+  id?: Maybe<Scalars['ID']>
+}
+
+export type InbaReleaseEntityResponse = {
+  __typename?: 'InbaReleaseEntityResponse'
+  data?: Maybe<InbaReleaseEntity>
+}
+
+export type InbaReleaseEntityResponseCollection = {
+  __typename?: 'InbaReleaseEntityResponseCollection'
+  data: Array<InbaReleaseEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type InbaReleaseFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<InbaReleaseFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  files?: InputMaybe<ComponentBlocksFileItemFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  inbaArticles?: InputMaybe<InbaArticleFiltersInput>
+  not?: InputMaybe<InbaReleaseFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<InbaReleaseFiltersInput>>>
+  perex?: InputMaybe<StringFilterInput>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  releaseDate?: InputMaybe<DateFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type InbaReleaseInput = {
+  coverImage?: InputMaybe<Scalars['ID']>
+  files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileItemInput>>>
+  inbaArticles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  perex?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  rearImage?: InputMaybe<Scalars['ID']>
+  releaseDate?: InputMaybe<Scalars['Date']>
+  slug?: InputMaybe<Scalars['String']>
+  title?: InputMaybe<Scalars['String']>
 }
 
 export type InbaTag = {
@@ -2331,6 +2416,7 @@ export type Mutation = {
   createHomepageLocalization?: Maybe<HomepageEntityResponse>
   createInbaArticle?: Maybe<InbaArticleEntityResponse>
   createInbaArticleLocalization?: Maybe<InbaArticleEntityResponse>
+  createInbaRelease?: Maybe<InbaReleaseEntityResponse>
   createInbaTag?: Maybe<InbaTagEntityResponse>
   createInbaTagLocalization?: Maybe<InbaTagEntityResponse>
   createMenuLocalization?: Maybe<MenuEntityResponse>
@@ -2355,6 +2441,7 @@ export type Mutation = {
   deleteGeneral?: Maybe<GeneralEntityResponse>
   deleteHomepage?: Maybe<HomepageEntityResponse>
   deleteInbaArticle?: Maybe<InbaArticleEntityResponse>
+  deleteInbaRelease?: Maybe<InbaReleaseEntityResponse>
   deleteInbaTag?: Maybe<InbaTagEntityResponse>
   deleteMenu?: Maybe<MenuEntityResponse>
   deletePage?: Maybe<PageEntityResponse>
@@ -2386,6 +2473,7 @@ export type Mutation = {
   updateGeneral?: Maybe<GeneralEntityResponse>
   updateHomepage?: Maybe<HomepageEntityResponse>
   updateInbaArticle?: Maybe<InbaArticleEntityResponse>
+  updateInbaRelease?: Maybe<InbaReleaseEntityResponse>
   updateInbaTag?: Maybe<InbaTagEntityResponse>
   updateMenu?: Maybe<MenuEntityResponse>
   updatePage?: Maybe<PageEntityResponse>
@@ -2452,6 +2540,10 @@ export type MutationCreateInbaArticleLocalizationArgs = {
   data?: InputMaybe<InbaArticleInput>
   id?: InputMaybe<Scalars['ID']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationCreateInbaReleaseArgs = {
+  data: InbaReleaseInput
 }
 
 export type MutationCreateInbaTagArgs = {
@@ -2559,6 +2651,10 @@ export type MutationDeleteHomepageArgs = {
 export type MutationDeleteInbaArticleArgs = {
   id: Scalars['ID']
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationDeleteInbaReleaseArgs = {
+  id: Scalars['ID']
 }
 
 export type MutationDeleteInbaTagArgs = {
@@ -2678,6 +2774,11 @@ export type MutationUpdateInbaArticleArgs = {
   data: InbaArticleInput
   id: Scalars['ID']
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}
+
+export type MutationUpdateInbaReleaseArgs = {
+  data: InbaReleaseInput
+  id: Scalars['ID']
 }
 
 export type MutationUpdateInbaTagArgs = {
@@ -3084,6 +3185,8 @@ export type Query = {
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>
   inbaArticle?: Maybe<InbaArticleEntityResponse>
   inbaArticles?: Maybe<InbaArticleEntityResponseCollection>
+  inbaRelease?: Maybe<InbaReleaseEntityResponse>
+  inbaReleases?: Maybe<InbaReleaseEntityResponseCollection>
   inbaTag?: Maybe<InbaTagEntityResponse>
   inbaTags?: Maybe<InbaTagEntityResponseCollection>
   me?: Maybe<UsersPermissionsMe>
@@ -3157,6 +3260,17 @@ export type QueryInbaArticleArgs = {
 export type QueryInbaArticlesArgs = {
   filters?: InputMaybe<InbaArticleFiltersInput>
   locale?: InputMaybe<Scalars['I18NLocaleCode']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type QueryInbaReleaseArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+export type QueryInbaReleasesArgs = {
+  filters?: InputMaybe<InbaReleaseFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
