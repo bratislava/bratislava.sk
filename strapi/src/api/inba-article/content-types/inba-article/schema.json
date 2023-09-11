@@ -39,7 +39,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -50,6 +52,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::inba-tag.inba-tag",
+      "inversedBy": "inbaArticles"
+    },
+    "inbaRelease": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::inba-release.inba-release",
       "inversedBy": "inbaArticles"
     },
     "perex": {

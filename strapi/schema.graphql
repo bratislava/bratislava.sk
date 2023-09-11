@@ -2279,6 +2279,7 @@ type General {
   createdAt: DateTime
   header: ComponentGeneralHeader
   inbaPage: PageEntityResponse
+  inbaReleasesPage: PageEntityResponse
   locale: String
   localizations: GeneralRelationResponseCollection
   newsPage: PageEntityResponse
@@ -2307,6 +2308,7 @@ input GeneralFiltersInput {
   createdAt: DateTimeFilterInput
   header: ComponentGeneralHeaderFiltersInput
   inbaPage: PageFiltersInput
+  inbaReleasesPage: PageFiltersInput
   locale: StringFilterInput
   localizations: GeneralFiltersInput
   newsPage: PageFiltersInput
@@ -2321,6 +2323,7 @@ input GeneralFiltersInput {
 input GeneralInput {
   header: ComponentGeneralHeaderInput
   inbaPage: ID
+  inbaReleasesPage: ID
   newsPage: ID
   officialBoardPage: ID
   privacyPolicyPage: ID
@@ -2331,7 +2334,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | InbaArticle | InbaTag | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsArticlesList | ComponentSectionsBanner | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContact | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2491,6 +2494,7 @@ type InbaArticle {
   content: String
   coverImage: UploadFileEntityResponse
   createdAt: DateTime
+  inbaRelease: InbaReleaseEntityResponse
   inbaTag: InbaTagEntityResponse
   locale: String
   localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
@@ -2520,6 +2524,7 @@ input InbaArticleFiltersInput {
   content: StringFilterInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
+  inbaRelease: InbaReleaseFiltersInput
   inbaTag: InbaTagFiltersInput
   locale: StringFilterInput
   localizations: InbaArticleFiltersInput
@@ -2535,6 +2540,7 @@ input InbaArticleFiltersInput {
 input InbaArticleInput {
   content: String
   coverImage: ID
+  inbaRelease: ID
   inbaTag: ID
   perex: String
   publishedAt: DateTime
@@ -2544,6 +2550,66 @@ input InbaArticleInput {
 
 type InbaArticleRelationResponseCollection {
   data: [InbaArticleEntity!]!
+}
+
+type InbaRelease {
+  coverImage: UploadFileEntityResponse
+  createdAt: DateTime
+  files(filters: ComponentBlocksFileItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFileItem]
+  inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
+  perex: String
+  publishedAt: DateTime
+  rearImage: UploadFileEntityResponse
+  releaseDate: Date!
+  slug: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+type InbaReleaseEntity {
+  attributes: InbaRelease
+  id: ID
+}
+
+type InbaReleaseEntityResponse {
+  data: InbaReleaseEntity
+}
+
+type InbaReleaseEntityResponseCollection {
+  data: [InbaReleaseEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input InbaReleaseFiltersInput {
+  and: [InbaReleaseFiltersInput]
+  createdAt: DateTimeFilterInput
+  files: ComponentBlocksFileItemFiltersInput
+  id: IDFilterInput
+  inbaArticles: InbaArticleFiltersInput
+  not: InbaReleaseFiltersInput
+  or: [InbaReleaseFiltersInput]
+  perex: StringFilterInput
+  publishedAt: DateTimeFilterInput
+  releaseDate: DateFilterInput
+  slug: StringFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input InbaReleaseInput {
+  coverImage: ID
+  files: [ComponentBlocksFileItemInput]
+  inbaArticles: [ID]
+  perex: String
+  publishedAt: DateTime
+  rearImage: ID
+  releaseDate: Date
+  slug: String
+  title: String
+}
+
+type InbaReleaseRelationResponseCollection {
+  data: [InbaReleaseEntity!]!
 }
 
 type InbaTag {
@@ -2725,6 +2791,7 @@ type Mutation {
   createHomepageLocalization(data: HomepageInput, id: ID, locale: I18NLocaleCode): HomepageEntityResponse
   createInbaArticle(data: InbaArticleInput!, locale: I18NLocaleCode): InbaArticleEntityResponse
   createInbaArticleLocalization(data: InbaArticleInput, id: ID, locale: I18NLocaleCode): InbaArticleEntityResponse
+  createInbaRelease(data: InbaReleaseInput!): InbaReleaseEntityResponse
   createInbaTag(data: InbaTagInput!, locale: I18NLocaleCode): InbaTagEntityResponse
   createInbaTagLocalization(data: InbaTagInput, id: ID, locale: I18NLocaleCode): InbaTagEntityResponse
   createMenuLocalization(data: MenuInput, id: ID, locale: I18NLocaleCode): MenuEntityResponse
@@ -2751,6 +2818,7 @@ type Mutation {
   deleteGeneral(locale: I18NLocaleCode): GeneralEntityResponse
   deleteHomepage(locale: I18NLocaleCode): HomepageEntityResponse
   deleteInbaArticle(id: ID!, locale: I18NLocaleCode): InbaArticleEntityResponse
+  deleteInbaRelease(id: ID!): InbaReleaseEntityResponse
   deleteInbaTag(id: ID!, locale: I18NLocaleCode): InbaTagEntityResponse
   deleteMenu(locale: I18NLocaleCode): MenuEntityResponse
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
@@ -2790,6 +2858,7 @@ type Mutation {
   updateGeneral(data: GeneralInput!, locale: I18NLocaleCode): GeneralEntityResponse
   updateHomepage(data: HomepageInput!, locale: I18NLocaleCode): HomepageEntityResponse
   updateInbaArticle(data: InbaArticleInput!, id: ID!, locale: I18NLocaleCode): InbaArticleEntityResponse
+  updateInbaRelease(data: InbaReleaseInput!, id: ID!): InbaReleaseEntityResponse
   updateInbaTag(data: InbaTagInput!, id: ID!, locale: I18NLocaleCode): InbaTagEntityResponse
   updateMenu(data: MenuInput!, locale: I18NLocaleCode): MenuEntityResponse
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
@@ -3041,6 +3110,8 @@ type Query {
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   inbaArticle(id: ID, locale: I18NLocaleCode): InbaArticleEntityResponse
   inbaArticles(filters: InbaArticleFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleEntityResponseCollection
+  inbaRelease(id: ID): InbaReleaseEntityResponse
+  inbaReleases(filters: InbaReleaseFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaReleaseEntityResponseCollection
   inbaTag(id: ID, locale: I18NLocaleCode): InbaTagEntityResponse
   inbaTags(filters: InbaTagFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, sort: [String] = []): InbaTagEntityResponseCollection
   me: UsersPermissionsMe
