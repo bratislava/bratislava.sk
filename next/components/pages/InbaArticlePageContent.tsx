@@ -24,7 +24,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
   const t = useTranslations()
 
   const { general } = useGeneralContext()
-  const inbaPage = general?.data?.attributes?.newsPage?.data
+  const inbaPage = general?.data?.attributes?.inbaPage?.data
 
   const breadcrumbs = useMemo(() => {
     return [
@@ -45,6 +45,16 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         tag={inbaTagTitle}
         imageSrc={inbaArticle.attributes?.coverImage?.data?.attributes?.url}
       />
+
+      {inbaArticle.attributes?.perex ? (
+        <SectionContainer className={cx('pt-10 md:pt-18')}>
+          <NarrowText align="left" width="wide">
+            {/* Perex comes as plain text from Strapi, so we manually add bold style and use Markdown to format it */}
+            {/* TODO it may want to be styled and implemented more nicely */}
+            <Markdown content={`**${inbaArticle.attributes.perex}**`} />
+          </NarrowText>
+        </SectionContainer>
+      ) : null}
 
       <SectionContainer className={cx('pt-10 md:pt-18')}>
         <NarrowText align="left" width="wide">

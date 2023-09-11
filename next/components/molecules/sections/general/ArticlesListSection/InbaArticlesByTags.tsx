@@ -60,17 +60,19 @@ const InbaArticlesByTags = ({ section }: Props) => {
             coverImage,
             publishedAt,
             inbaTag,
+            perex,
           } = card.attributes
-          const tagTitleTitle = inbaTag?.data?.attributes?.title
+          const tagTitle = inbaTag?.data?.attributes?.title
 
           return (
             <BlogPostCard
               key={slug}
               variant="shadow"
               date={getNumericLocalDate(publishedAt)}
-              tag={tagTitleTitle}
+              tag={tagTitle}
               title={inbaArticleTitle}
-              linkProps={{ children: t('readMore'), href: `/inba/blog/${slug}` }}
+              text={perex ?? undefined}
+              linkProps={{ children: t('readMore'), href: `/inba/text/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
