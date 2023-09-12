@@ -116,6 +116,7 @@ const RegulationsResults = ({ filters, onPageChange }: DocumentsResultsProps) =>
         isOpen={isOpen}
         onClose={() => setOpen(false)}
         aria-label={activeVzn?.title ?? ''}
+        modalClassname="md:w-[740px]"
       >
         {activeVzn && <RegulationModalBody vzn={activeVzn} />}
       </ModalDialog>

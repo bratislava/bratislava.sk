@@ -53,7 +53,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
               downloadLink={vzn.mainDocument?.url}
               format={vzn.mainDocument?.ext?.toUpperCase()}
               size={formatFileSize(vzn.mainDocument?.size, locale)}
-              uploadDate={new Date(vzn.mainDocument?.createdAt).toLocaleDateString()}
+              uploadDate={formatDate(vzn.mainDocument?.createdAt)}
             />
           </div>
         </div>
@@ -67,8 +67,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
               size={formatFileSize(vzn.consolidatedText?.size, locale)}
               format={vzn.consolidatedText?.ext ?? undefined}
               title={vzn?.title ?? vzn.consolidatedText.name}
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-              uploadDate={new Date(vzn.consolidatedText?.createdAt).toLocaleDateString()}
+              uploadDate={formatDate(vzn.consolidatedText?.createdAt)}
             />
           </div>
         </div>
@@ -90,7 +89,6 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
                   size={formatFileSize(file?.size, locale)}
                   format={file?.ext?.toUpperCase()}
                   title={title ?? undefined}
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                   uploadDate={formatDate(file?.createdAt)}
                 />
               ) : null
@@ -115,8 +113,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
                   size={formatFileSize(file?.size, locale)}
                   format={file?.ext?.toUpperCase()}
                   title={title ?? undefined}
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                  uploadDate={new Date(file?.createdAt).toLocaleDateString()}
+                  uploadDate={formatDate(file?.createdAt)}
                 />
               ) : null
             })}
