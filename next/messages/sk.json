@@ -233,8 +233,6 @@
   "InbaRelease": {
     "releasedOn": "Publikované {date}",
     "inThisRelease": "V tomto čísle nájdete",
-    "aria": {
-      "toDownload": "Na stiahnutie"
-    }
+    "toDownload": "Na stiahnutie"
   }
 }

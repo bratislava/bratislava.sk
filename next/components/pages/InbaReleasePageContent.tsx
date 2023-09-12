@@ -1,6 +1,7 @@
 import { InbaReleaseEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Markdown from '@components/atoms/Markdown'
 import StrapiImage from '@components/atoms/StrapiImage'
 import FileRowCard from '@components/molecules/presentation/FileRowCard'
@@ -28,6 +29,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
   const locale = useLocale()
 
   const { title, coverImage, perex, releaseDate, files } = inbaRelease.attributes ?? {}
+  const coverImageAttr = coverImage?.data?.attributes
 
   const { general } = useGeneralContext()
   const parentBreadcrumbPageEntity = general?.data?.attributes?.inbaReleasesPage?.data
@@ -48,26 +50,30 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         subtext={releaseDate && t('releasedOn', { date: formatDate(releaseDate) })}
       />
 
-      <SectionContainer className={cx('pt-10 md:pt-18')}>
-        <div className="flex gap-16 max-md:flex-col">
-          {coverImage?.data?.attributes ? (
-            <div>
-              <StrapiImage className="rounded-xl shadow-lg" image={coverImage.data.attributes} />
-            </div>
-          ) : null}
+      <SectionContainer className="pt-10 md:pt-18">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
+          <div
+            className={cx('overflow-hidden rounded-xl shadow-lg', {
+              'aspect-[1/1.33]': !coverImageAttr,
+            })}
+          >
+            {coverImageAttr ? <StrapiImage alt="" image={coverImageAttr} /> : <ImagePlaceholder />}
+          </div>
           <div className="flex w-full flex-col gap-8">
             {perex ? (
               <NarrowText align="left" width="full">
+                <h2 className="text-h3 pb-4">{t('inThisRelease')}</h2>
                 {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
                 <Markdown content={perex} />
               </NarrowText>
             ) : null}
 
-            {/* TODO add some title */}
             <div className="flex flex-col">
+              <h2 className="text-h3 pb-4">{t('toDownload')}</h2>
               {/* TODO refactor */}
               {files?.filter(isDefined).map((file) => (
                 <FileRowCard
+                  key={file.media.data?.id}
                   title={file.title ?? undefined}
                   downloadLink={file.media.data?.attributes?.url}
                   format={file.media.data?.attributes?.ext?.replace(/^\./, '').toUpperCase()}

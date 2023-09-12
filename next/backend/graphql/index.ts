@@ -1274,6 +1274,13 @@ export type ComponentSectionsInbaArticlesList = {
   title?: Maybe<Scalars['String']>
 }
 
+export type ComponentSectionsInbaReleases = {
+  __typename?: 'ComponentSectionsInbaReleases'
+  id: Scalars['ID']
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
   hasBackground?: Maybe<Scalars['Boolean']>
@@ -1923,6 +1930,7 @@ export type GenericMorph =
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
+  | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -3067,6 +3075,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
+  | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -7749,6 +7758,7 @@ export type PageBySlugQuery = {
               title?: string | null
               text?: string | null
             }
+          | { __typename: 'ComponentSectionsInbaReleases' }
           | {
               __typename: 'ComponentSectionsLinks'
               title?: string | null
@@ -8649,6 +8659,7 @@ export type PageEntityFragment = {
           title?: string | null
           text?: string | null
         }
+      | { __typename: 'ComponentSectionsInbaReleases' }
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
@@ -10315,6 +10326,10 @@ type Sections_ComponentSectionsInbaArticlesList_Fragment = {
   text?: string | null
 }
 
+type Sections_ComponentSectionsInbaReleases_Fragment = {
+  __typename: 'ComponentSectionsInbaReleases'
+}
+
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
@@ -10461,6 +10476,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsIconTitleDesc_Fragment
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsInbaArticlesList_Fragment
+  | Sections_ComponentSectionsInbaReleases_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
   | Sections_ComponentSectionsNewsletter_Fragment
