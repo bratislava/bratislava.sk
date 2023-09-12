@@ -15,10 +15,9 @@ export const Links = ({ className, title, pageLinks }: LinksProps) => {
       {title && <h2 className="text-h4">{title}</h2>}
       <ul className="flex flex-col space-y-4 pt-6">
         {pageLinks?.map((pageLink, index) => (
-          <li>
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={index}>
             <Button
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
               href={pageLink.url ? isExternalLink(pageLink.url) : `#${pageLink.anchor}`}
               variant="black-link"
             >

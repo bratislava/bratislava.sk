@@ -229,5 +229,10 @@
       "downloadFileAriaLabel": "Download file {title}, format {format}, {size}",
       "downloadFile": "Download file"
     }
+  },
+  "InbaRelease": {
+    "releasedOn": "Published on {date}",
+    "inThisRelease": "In this issue",
+    "toDownload": "Downloads"
   }
 }

@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_sections_inba_articles_lists",
+  "collectionName": "components_sections_inba_releases",
   "info": {
-    "displayName": "in.ba articles",
-    "description": ""
+    "displayName": "inba releases"
   },
   "options": {},
   "attributes": {

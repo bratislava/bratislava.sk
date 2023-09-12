@@ -8,7 +8,6 @@ import NarrowText from '@components/ui/NarrowText/NarrowText'
 import { useGeneralContext } from '@utils/generalContext'
 import { getNumericLocalDate } from '@utils/local-date'
 import { getPageBreadcrumbs } from '@utils/page'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
@@ -46,7 +45,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
       />
 
       {inbaArticle.attributes?.perex ? (
-        <SectionContainer className={cx('pt-10 md:pt-18')}>
+        <SectionContainer className="pt-10 md:pt-18">
           <NarrowText align="left" width="wide">
             {/* Perex comes as plain text from Strapi, so we manually add bold style and use Markdown to format it */}
             {/* TODO it may want to be styled and implemented more nicely */}
@@ -55,7 +54,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         </SectionContainer>
       ) : null}
 
-      <SectionContainer className={cx('pt-10 md:pt-18')}>
+      <SectionContainer className="pt-10 md:pt-18">
         <NarrowText align="left" width="wide">
           <Markdown content={inbaArticle.attributes?.content} />
         </NarrowText>
