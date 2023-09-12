@@ -122,6 +122,11 @@ fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
   text
 }
 
+fragment InbaReleasesSection on ComponentSectionsInbaReleases {
+  title
+  text
+}
+
 fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
   hasBackground
@@ -525,6 +530,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsInbaArticlesList {
     ...InbaArticlesListSection
+  }
+
+  ... on ComponentSectionsInbaReleases {
+    ...InbaReleasesSection
   }
 
   ... on ComponentSectionsOrganizationalStructure {

@@ -54,7 +54,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
           <div
             className={cx('overflow-hidden rounded-xl shadow-lg', {
-              'aspect-[1/1.33]': !coverImageAttr,
+              'aspect-inba': !coverImageAttr,
             })}
           >
             {coverImageAttr ? <StrapiImage alt="" image={coverImageAttr} /> : <ImagePlaceholder />}
@@ -70,7 +70,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
 
             <div className="flex flex-col">
               <h2 className="text-h3 pb-4">{t('toDownload')}</h2>
-              {/* TODO refactor */}
+              {/* TODO refactor, use FileList */}
               {files?.filter(isDefined).map((file) => (
                 <FileRowCard
                   key={file.media.data?.id}
