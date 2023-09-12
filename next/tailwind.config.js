@@ -272,6 +272,7 @@ module.exports = {
       },
       aspectRatio: {
         '16/10': '16 / 10',
+        inba: '1 / 1.4',
       },
     },
   },

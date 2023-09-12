@@ -7047,6 +7047,81 @@ export type InbaReleasesRssFeedQuery = {
   } | null
 }
 
+export type InbaReleasesPaginatedQueryVariables = Exact<{
+  page?: InputMaybe<Scalars['Int']>
+  pageSize?: InputMaybe<Scalars['Int']>
+}>
+
+export type InbaReleasesPaginatedQuery = {
+  __typename?: 'Query'
+  inbaReleases?: {
+    __typename?: 'InbaReleaseEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaReleaseEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'InbaRelease'
+        title: string
+        slug: string
+        perex?: string | null
+        releaseDate: any
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
+        } | null
+        rearImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFileItem'
+          title?: string | null
+          media: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null
+          }
+        } | null> | null
+      } | null
+    }>
+  } | null
+}
+
 export type InbaReleaseEntityFragment = {
   __typename?: 'InbaReleaseEntity'
   id?: string | null
@@ -7758,7 +7833,11 @@ export type PageBySlugQuery = {
               title?: string | null
               text?: string | null
             }
-          | { __typename: 'ComponentSectionsInbaReleases' }
+          | {
+              __typename: 'ComponentSectionsInbaReleases'
+              title?: string | null
+              text?: string | null
+            }
           | {
               __typename: 'ComponentSectionsLinks'
               title?: string | null
@@ -8659,7 +8738,7 @@ export type PageEntityFragment = {
           title?: string | null
           text?: string | null
         }
-      | { __typename: 'ComponentSectionsInbaReleases' }
+      | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
@@ -9105,6 +9184,12 @@ export type BlogPostsListSectionFragment = {
 
 export type InbaArticlesListSectionFragment = {
   __typename?: 'ComponentSectionsInbaArticlesList'
+  title?: string | null
+  text?: string | null
+}
+
+export type InbaReleasesSectionFragment = {
+  __typename?: 'ComponentSectionsInbaReleases'
   title?: string | null
   text?: string | null
 }
@@ -10328,6 +10413,8 @@ type Sections_ComponentSectionsInbaArticlesList_Fragment = {
 
 type Sections_ComponentSectionsInbaReleases_Fragment = {
   __typename: 'ComponentSectionsInbaReleases'
+  title?: string | null
+  text?: string | null
 }
 
 type Sections_ComponentSectionsLinks_Fragment = {
@@ -11020,6 +11107,12 @@ export const InbaArticlesListSectionFragmentDoc = gql`
     text
   }
 `
+export const InbaReleasesSectionFragmentDoc = gql`
+  fragment InbaReleasesSection on ComponentSectionsInbaReleases {
+    title
+    text
+  }
+`
 export const OrganizationalStructureSectionFragmentDoc = gql`
   fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
     title
@@ -11282,6 +11375,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsInbaArticlesList {
       ...InbaArticlesListSection
     }
+    ... on ComponentSectionsInbaReleases {
+      ...InbaReleasesSection
+    }
     ... on ComponentSectionsOrganizationalStructure {
       ...OrganizationalStructureSection
     }
@@ -11323,6 +11419,7 @@ export const SectionsFragmentDoc = gql`
   ${ArticlesListSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
   ${InbaArticlesListSectionFragmentDoc}
+  ${InbaReleasesSectionFragmentDoc}
   ${OrganizationalStructureSectionFragmentDoc}
   ${ProsAndConsSectionFragmentDoc}
   ${ComparisonSectionFragmentDoc}
@@ -12211,6 +12308,16 @@ export const InbaReleasesRssFeedDocument = gql`
     }
   }
 `
+export const InbaReleasesPaginatedDocument = gql`
+  query InbaReleasesPaginated($page: Int, $pageSize: Int) {
+    inbaReleases(sort: "releaseDate:desc", pagination: { page: $page, pageSize: $pageSize }) {
+      data {
+        ...InbaReleaseEntity
+      }
+    }
+  }
+  ${InbaReleaseEntityFragmentDoc}
+`
 export const PagesStaticPathsDocument = gql`
   query PagesStaticPaths {
     pages(pagination: { limit: -1 }) {
@@ -12502,6 +12609,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'InbaReleasesRssFeed',
+        'query',
+      )
+    },
+    InbaReleasesPaginated(
+      variables?: InbaReleasesPaginatedQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaReleasesPaginatedQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaReleasesPaginatedQuery>(InbaReleasesPaginatedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaReleasesPaginated',
         'query',
       )
     },

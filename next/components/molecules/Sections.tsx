@@ -4,6 +4,7 @@ import BlogPostsByTags from '@components/molecules/sections/general/ArticlesList
 import InbaArticlesByTags from '@components/molecules/sections/general/ArticlesListSection/InbaArticlesByTags'
 import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
+import InbaReleasesSection from '@components/molecules/sections/general/InbaReleasesSection'
 import cx from 'classnames'
 import * as React from 'react'
 
@@ -81,6 +82,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsInbaArticlesList':
       return <InbaArticlesByTags section={section} />
+
+    case 'ComponentSectionsInbaReleases':
+      return <InbaReleasesSection section={section} />
 
     case 'ComponentSectionsOrganizationalStructure':
       return <OrganizationalStructureSection section={section} />
