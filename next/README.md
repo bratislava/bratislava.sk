@@ -62,3 +62,7 @@ STRAPI_REVALIDATE_SECRET_TOKEN = <value>
 ```
 
 This token should be the same as we pass in webhook url as query param.
+
+## Resources
+
+There is one resource that needs to be available in https://bratislava.sk/Img/bratislava4.png, it is used in mails in signature as logo. Therefore please don't erase `public/Img/bratislava4.png`.
