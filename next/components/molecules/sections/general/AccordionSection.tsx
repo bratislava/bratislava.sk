@@ -1,16 +1,11 @@
-import {
-  AccordionSectionFragment,
-  Enum_Componentsectionsfilelist_Variant,
-  FileItemBlockFragment,
-} from '@backend/graphql'
-import FileList, { TFile } from '@bratislava/ui-bratislava/FileList/FileList'
+import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@backend/graphql'
+import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
-import { formatDate } from '@utils/local-date'
 import { groupByCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import { useTranslations } from 'next-intl'
@@ -18,21 +13,6 @@ import React from 'react'
 
 type AccordionSectionProps = {
   section: AccordionSectionFragment
-}
-
-// Transformation of props needed because FileList takes TFile as a nested prop
-const transformFileItemProps = (file: FileItemBlockFragment) => {
-  return {
-    title: file.title ?? file.media.data?.attributes?.name,
-    category: '',
-    media: {
-      url: file.media.data?.attributes?.url,
-      // TODO fix date and size formatting also according to locale
-      created_at: formatDate(file.media.data?.attributes?.createdAt),
-      size: file.media.data?.attributes?.size,
-      ext: file.media.data?.attributes?.ext,
-    },
-  } as TFile
 }
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
@@ -86,19 +66,10 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
                   {item.fileList?.length ? (
-                    <div>
-                      <FileList
-                        fileSections={[
-                          {
-                            category: t('documents'),
-                            files: item.fileList
-                              .filter(isDefined)
-                              .map((file) => transformFileItemProps(file)),
-                          },
-                        ]}
-                        variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
-                      />
-                    </div>
+                    <FileList
+                      fileSections={[{ files: item.fileList.filter(isDefined) }]}
+                      variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
+                    />
                   ) : null}
                   {link?.url && link.title && (
                     <Button href={link.url || '#'} variant="category-link">
@@ -115,6 +86,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           // eslint-disable-next-line react/no-array-index-key
           <AccordionV2
             variant="boxed-h3-large-gap"
+            // eslint-disable-next-line react/no-array-index-key
             key={`institutionsNarrow-${index}`}
             title={text.category}
           >

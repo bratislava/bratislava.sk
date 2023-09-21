@@ -19,7 +19,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
 
   return (
     <>
-      {/* TODO tmp pr-10 to ovoid overlap with close button */}
+      {/* TODO tmp pr-10 to avoid overlap with close button */}
       <h2 className="text-h5 pb-5 pr-10">{vzn.title}</h2>
       <div className="flex">
         {vzn?.mainDocument && (
@@ -88,7 +88,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
                   downloadLink={file?.url}
                   size={formatFileSize(file?.size, locale)}
                   format={file?.ext?.toUpperCase()}
-                  title={title ?? undefined}
+                  title={title ?? ''}
                   uploadDate={formatDate(file?.createdAt)}
                 />
               ) : null
@@ -112,7 +112,7 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
                   downloadLink={file?.url}
                   size={formatFileSize(file?.size, locale)}
                   format={file?.ext?.toUpperCase()}
-                  title={title ?? undefined}
+                  title={title ?? ''}
                   uploadDate={formatDate(file?.createdAt)}
                 />
               ) : null

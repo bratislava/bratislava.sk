@@ -1,16 +1,15 @@
 // @ts-strict-ignore
 import { ArrowRightIcon } from '@assets/ui-icons'
+import { FileItemBlockFragment } from '@backend/graphql'
 import Button from '@components/forms/simple-components/Button'
-import FileCard from '@components/molecules/presentation/FileCard'
+import FileCardWrapper from '@components/molecules/presentation/FileCardWrapper'
 import ModalDialog from '@components/ui/ModalDialog/ModalDialog'
-import { formatFileSize } from '@utils/formatFileSize'
-import { getNumericLocalDate } from '@utils/local-date'
 import { getDocumentDetailURL, getDocumentFileURL } from 'backend/services/ginis'
 import { useLocale } from 'next-intl'
 import React, { useState } from 'react'
 import useSWR from 'swr'
 
-import { TFile, TFileSection } from '../FileList/FileList'
+import { TFileSection } from '../FileList/FileList'
 import { Panel } from '../Panel/Panel'
 
 export interface OfficialBoardCardProps {
@@ -39,17 +38,26 @@ export const OfficialBoardCard = ({
     fetch(getDocumentDetailURL(id)).then((res) => res.json()),
   )
 
-  const files: TFile[] =
-    data?.['Soubory-dokumentu']?.map((file) => ({
-      title: file.Nazev,
-      media: {
-        url: getDocumentFileURL(file['Id-souboru']),
-        created_at: createdAt,
-        // TODO figure out size
-        size: 0,
-        // size: Number.parseInt(file['Velikost']),
-      },
-    })) ?? []
+  const files: FileItemBlockFragment[] =
+    data?.['Soubory-dokumentu']?.map(
+      (file): FileItemBlockFragment => ({
+        title: file.Nazev,
+        media: {
+          data: {
+            id: file['Id-souboru'],
+            attributes: {
+              name: file.Nazev,
+              url: getDocumentFileURL(file['Id-souboru']),
+              createdAt,
+              // TODO figure out size
+              size: 0,
+              // size: Number.parseInt(file['Velikost']),
+              ext: file.Pripona,
+            },
+          },
+        },
+      }),
+    ) ?? []
 
   const fileSections: TFileSection[] = [
     {
@@ -87,18 +95,8 @@ export const OfficialBoardCard = ({
         {/* TODO handle loading/error */}
         {/* <FileList fileSections={fileSections} noScroll hideCategory /> */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {files.map((file) => (
-            <FileCard
-              title={file.title}
-              downloadLink={file.media?.url}
-              format={file.media?.ext?.replace(/^\./, '').toUpperCase()}
-              size={
-                file.media && file.media.size > 0
-                  ? formatFileSize(file.media?.size, locale)
-                  : undefined
-              }
-              uploadDate={getNumericLocalDate(new Date(file.media?.created_at).toISOString())}
-            />
+          {files.map((fileItem) => (
+            <FileCardWrapper fileItem={fileItem} />
           ))}
         </div>
       </ModalDialog>

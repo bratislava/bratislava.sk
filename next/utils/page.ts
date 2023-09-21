@@ -1,10 +1,12 @@
-import { FileBlockFragment, PageLinkBlockFragment, PageParentPagesFragment } from '@backend/graphql'
+import {
+  FileBlockFragment,
+  FileItemBlockFragment,
+  PageLinkBlockFragment,
+  PageParentPagesFragment,
+} from '@backend/graphql'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
-import { TFile } from '@components/ui/FileList/FileList'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
-
-import { getNumericLocalDate } from './local-date'
 
 export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
@@ -42,17 +44,12 @@ export const parsePageLink = (
 }
 
 // Page FileList
-export const formatFiles = (files: FileBlockFragment[]): TFile[] =>
+export const formatOldFiles = (files: FileBlockFragment[]): FileItemBlockFragment[] =>
   files.map((file) => ({
-    title: file.title ?? undefined,
-    category: file.category ?? undefined,
+    __typename: 'ComponentBlocksFileItem',
+    title: file.title,
     media: {
-      url: file.media?.data?.attributes?.url ?? '',
-      size: file.media?.data?.attributes?.size ?? 0,
-      created_at: file.media?.data?.attributes?.createdAt
-        ? getNumericLocalDate(file.media?.data?.attributes?.createdAt)
-        : '',
-      ext: file.media?.data?.attributes?.ext ?? undefined,
+      ...file.media,
     },
   }))
 
@@ -65,7 +62,7 @@ export const groupByCategoryFileList = (fileList: FileBlockFragment[]) => {
   const grouped = groupBy(files, 'category')
   return Object.keys(grouped).map((key) => ({
     category: key === 'null' ? '' : key,
-    files: formatFiles(grouped[key]),
+    files: formatOldFiles(grouped[key]),
   }))
 }
 
