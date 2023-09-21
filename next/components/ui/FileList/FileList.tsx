@@ -1,11 +1,11 @@
+import { Enum_Componentsectionsfilelist_Variant } from '@backend/graphql'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { formatFileSize } from '@utils/formatFileSize'
+import { useGetDownloadAriaLabel } from '@utils/useGetDownloadAriaLabel'
 import cx from 'classnames'
 import { useLocale } from 'next-intl'
-import { useGetDownloadAriaLabel } from '@utils/useGetDownloadAriaLabel'
-import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@backend/graphql'
 
 export type TFile = {
   title?: string
@@ -44,7 +44,7 @@ export const FileList = ({
   const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
 
   function transformFileProps(file: TFile) {
-    const fileProps = {
+    return {
       title: file.title,
       downloadLink: file.media?.url,
       format: file.media?.ext?.replace(/^\./, '').toUpperCase(),
@@ -53,8 +53,6 @@ export const FileList = ({
       uploadDate: file.media?.created_at,
       ariaLabel: getDownloadAriaLabel(file),
     } as FileCardProps
-
-    return fileProps
   }
 
   return (

@@ -1,7 +1,7 @@
 import {
   AccordionSectionFragment,
-  ComponentBlocksFileItem,
   Enum_Componentsectionsfilelist_Variant,
+  FileItemBlockFragment,
 } from '@backend/graphql'
 import FileList, { TFile } from '@bratislava/ui-bratislava/FileList/FileList'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
@@ -18,6 +18,21 @@ import React from 'react'
 
 type AccordionSectionProps = {
   section: AccordionSectionFragment
+}
+
+// Transformation of props needed because FileList takes TFile as a nested prop
+const transformFileItemProps = (file: FileItemBlockFragment) => {
+  return {
+    title: file.title ?? file.media.data?.attributes?.name,
+    category: '',
+    media: {
+      url: file.media.data?.attributes?.url,
+      // TODO fix date and size formatting also according to locale
+      created_at: formatDate(file.media.data?.attributes?.createdAt),
+      size: file.media.data?.attributes?.size,
+      ext: file.media.data?.attributes?.ext,
+    },
+  } as TFile
 }
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
@@ -64,40 +79,27 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 page: item.moreLinkPage,
               })
 
-              // Transformation of props needed because FileList takes TFile as a nested prop
-              function transformFileItemProps(file: ComponentBlocksFileItem) {
-                return {
-                  title: file.title ?? file.media.data?.attributes?.name,
-                  category: '',
-                  media: {
-                    url: file.media.data?.attributes?.url,
-                    // TODO fix date and size formatting also according to locale
-                    created_at: formatDate(file.media.data?.attributes?.createdAt),
-                    size: file.media.data?.attributes?.size,
-                    ext: file.media.data?.attributes?.ext,
-                  },
-                } as TFile
-              }
-
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4" key={itemIndex}>
                   <NarrowText align={item.align} width={item.width}>
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
-                  {item.fileList.length > 0 && (
+                  {item.fileList?.length ? (
                     <div>
                       <FileList
                         fileSections={[
                           {
                             category: t('documents'),
-                            files: item.fileList.map((file) => transformFileItemProps(file)),
+                            files: item.fileList
+                              .filter(isDefined)
+                              .map((file) => transformFileItemProps(file)),
                           },
                         ]}
                         variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
                       />
                     </div>
-                  )}
+                  ) : null}
                   {link?.url && link.title && (
                     <Button href={link.url || '#'} variant="category-link">
                       {link.title}
