@@ -1,4 +1,4 @@
-import { FileListSectionFragment } from '@backend/graphql'
+import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@backend/graphql'
 import { FileList } from '@bratislava/ui-bratislava/FileList/FileList'
 import { groupByCategoryFileList } from '@utils/page'
 import { isPresent } from '@utils/utils'
@@ -10,7 +10,10 @@ type FileListSectionProps = {
 
 const FileListSection = ({ section }: FileListSectionProps) => {
   return (
-    <FileList fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])} />
+    <FileList
+      variantFileList={section.variantFileList ?? Enum_Componentsectionsfilelist_Variant.Grid}
+      fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])}
+    />
   )
 }
 

@@ -5,6 +5,7 @@ import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
 import { useLocale } from 'next-intl'
 import { useGetDownloadAriaLabel } from '@utils/useGetDownloadAriaLabel'
+import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@backend/graphql'
 
 export type TFile = {
   title?: string
@@ -26,7 +27,7 @@ export interface FileListProps {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
-  cardType?: 'grid' | 'row'
+  variantFileList?: Enum_Componentsectionsfilelist_Variant
 }
 
 /**
@@ -37,7 +38,7 @@ export const FileList = ({
   className,
   fileSections,
   hideCategory,
-  cardType = 'grid',
+  variantFileList,
 }: FileListProps) => {
   const locale = useLocale()
   const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
@@ -65,7 +66,7 @@ export const FileList = ({
             {fileSection.category && !hideCategory && (
               <h2 className="text-h2">{fileSection.category}</h2>
             )}
-            {cardType === 'row' && (
+            {variantFileList === 'rows' && (
               <div className="mt-4 flex flex-col lg:mt-6">
                 {fileSection?.files.map((file, sectionIndex) => (
                   // eslint-disable-next-line react/no-array-index-key
@@ -75,7 +76,7 @@ export const FileList = ({
                 ))}
               </div>
             )}
-            {cardType === 'grid' && (
+            {variantFileList === 'grid' && (
               <div>
                 <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid">
                   {fileSection?.files.map((file, sectionIndex) => (
