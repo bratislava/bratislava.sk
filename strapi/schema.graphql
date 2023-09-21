@@ -145,6 +145,7 @@ type ComponentAccordionItemsFlatText {
   align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
   category: String
   content: String
+  fileList(filters: ComponentBlocksFileItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFileItem]
   id: ID!
   moreLinkPage: PageEntityResponse
   moreLinkTitle: String
@@ -157,6 +158,7 @@ input ComponentAccordionItemsFlatTextFiltersInput {
   and: [ComponentAccordionItemsFlatTextFiltersInput]
   category: StringFilterInput
   content: StringFilterInput
+  fileList: ComponentBlocksFileItemFiltersInput
   moreLinkPage: PageFiltersInput
   moreLinkTitle: StringFilterInput
   moreLinkUrl: StringFilterInput
@@ -169,6 +171,7 @@ input ComponentAccordionItemsFlatTextInput {
   align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
   category: String
   content: String
+  fileList: [ComponentBlocksFileItemInput]
   id: ID
   moreLinkPage: ID
   moreLinkTitle: String

@@ -270,6 +270,9 @@ fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
       }
     }
   }
+  fileList {
+    ...FileItemBlock
+  }
 }
 
 fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitution {
