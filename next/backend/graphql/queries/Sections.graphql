@@ -179,6 +179,7 @@ fragment FileBlock on ComponentBlocksFile {
 
 fragment FileListSection on ComponentSectionsFileList {
   hasBackground
+  variantFileList: variant
   # TODO consider limit -1
   fileList(pagination: { limit: 500 }) {
     ...FileBlock
@@ -440,16 +441,16 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   description
   hasBackground
   addressContacts {
-      ...ContactCardBlock
+    ...ContactCardBlock
   }
   emailContacts {
-      ...ContactCardBlock
+    ...ContactCardBlock
   }
   phoneContacts {
-      ...ContactCardBlock
+    ...ContactCardBlock
   }
   webContacts {
-      ...ContactCardBlock
+    ...ContactCardBlock
   }
   type
 }

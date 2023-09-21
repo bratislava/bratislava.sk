@@ -4019,6 +4019,7 @@ export type BlogPostBySlugQuery = {
           | {
               __typename: 'ComponentSectionsFileList'
               hasBackground?: boolean | null
+              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
@@ -4228,6 +4229,7 @@ export type LatestPostsByTagsQuery = {
           | {
               __typename: 'ComponentSectionsFileList'
               hasBackground?: boolean | null
+              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
@@ -4636,6 +4638,7 @@ export type BlogPostEntityFragment = {
       | {
           __typename: 'ComponentSectionsFileList'
           hasBackground?: boolean | null
+          variantFileList?: Enum_Componentsectionsfilelist_Variant | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             title?: string | null
@@ -7736,6 +7739,7 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsFileList'
               hasBackground?: boolean | null
+              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
@@ -8641,6 +8645,7 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsFileList'
           hasBackground?: boolean | null
+          variantFileList?: Enum_Componentsectionsfilelist_Variant | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             title?: string | null
@@ -9276,6 +9281,7 @@ export type FileBlockFragment = {
 export type FileListSectionFragment = {
   __typename?: 'ComponentSectionsFileList'
   hasBackground?: boolean | null
+  variantFileList?: Enum_Componentsectionsfilelist_Variant | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     title?: string | null
@@ -10309,6 +10315,7 @@ type Sections_ComponentSectionsFeaturedBlogPosts_Fragment = {
 type Sections_ComponentSectionsFileList_Fragment = {
   __typename: 'ComponentSectionsFileList'
   hasBackground?: boolean | null
+  variantFileList?: Enum_Componentsectionsfilelist_Variant | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     title?: string | null
@@ -10910,6 +10917,7 @@ export const FileBlockFragmentDoc = gql`
 export const FileListSectionFragmentDoc = gql`
   fragment FileListSection on ComponentSectionsFileList {
     hasBackground
+    variantFileList: variant
     fileList(pagination: { limit: 500 }) {
       ...FileBlock
     }
