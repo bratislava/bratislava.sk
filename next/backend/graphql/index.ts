@@ -175,6 +175,7 @@ export type ComponentAccordionItemsFlatText = {
   align?: Maybe<Enum_Componentaccordionitemsflattext_Align>
   category?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
+  fileList?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
   id: Scalars['ID']
   moreLinkPage?: Maybe<PageEntityResponse>
   moreLinkTitle?: Maybe<Scalars['String']>
@@ -182,11 +183,18 @@ export type ComponentAccordionItemsFlatText = {
   width?: Maybe<Enum_Componentaccordionitemsflattext_Width>
 }
 
+export type ComponentAccordionItemsFlatTextFileListArgs = {
+  filters?: InputMaybe<ComponentBlocksFileItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export type ComponentAccordionItemsFlatTextFiltersInput = {
   align?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsFlatTextFiltersInput>>>
   category?: InputMaybe<StringFilterInput>
   content?: InputMaybe<StringFilterInput>
+  fileList?: InputMaybe<ComponentBlocksFileItemFiltersInput>
   moreLinkPage?: InputMaybe<PageFiltersInput>
   moreLinkTitle?: InputMaybe<StringFilterInput>
   moreLinkUrl?: InputMaybe<StringFilterInput>
@@ -7298,6 +7306,26 @@ export type PageBySlugQuery = {
                     } | null
                   } | null
                 } | null
+                fileList?: Array<{
+                  __typename?: 'ComponentBlocksFileItem'
+                  title?: string | null
+                  media: {
+                    __typename?: 'UploadFileEntityResponse'
+                    data?: {
+                      __typename?: 'UploadFileEntity'
+                      id?: string | null
+                      attributes?: {
+                        __typename?: 'UploadFile'
+                        url: string
+                        name: string
+                        ext?: string | null
+                        size: number
+                        createdAt?: any | null
+                        updatedAt?: any | null
+                      } | null
+                    } | null
+                  }
+                } | null> | null
               } | null> | null
               institutionsNarrow?: Array<{
                 __typename?: 'ComponentAccordionItemsInstitutionNarrow'
@@ -8204,6 +8232,26 @@ export type PageEntityFragment = {
                 } | null
               } | null
             } | null
+            fileList?: Array<{
+              __typename?: 'ComponentBlocksFileItem'
+              title?: string | null
+              media: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null
+              }
+            } | null> | null
           } | null> | null
           institutionsNarrow?: Array<{
             __typename?: 'ComponentAccordionItemsInstitutionNarrow'
@@ -9429,6 +9477,26 @@ export type ComponentAccordionItemsFlatTextFragment = {
       } | null
     } | null
   } | null
+  fileList?: Array<{
+    __typename?: 'ComponentBlocksFileItem'
+    title?: string | null
+    media: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null
+    }
+  } | null> | null
 }
 
 export type ComponentAccordionItemsInstitutionFragment = {
@@ -9478,6 +9546,26 @@ export type AccordionSectionFragment = {
         } | null
       } | null
     } | null
+    fileList?: Array<{
+      __typename?: 'ComponentBlocksFileItem'
+      title?: string | null
+      media: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'UploadFile'
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null
+      }
+    } | null> | null
   } | null> | null
   institutionsNarrow?: Array<{
     __typename?: 'ComponentAccordionItemsInstitutionNarrow'
@@ -9886,6 +9974,26 @@ type Sections_ComponentSectionsAccordion_Fragment = {
         } | null
       } | null
     } | null
+    fileList?: Array<{
+      __typename?: 'ComponentBlocksFileItem'
+      title?: string | null
+      media: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'UploadFile'
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null
+      }
+    } | null> | null
   } | null> | null
   institutionsNarrow?: Array<{
     __typename?: 'ComponentAccordionItemsInstitutionNarrow'
@@ -10993,6 +11101,17 @@ export const ComponentAccordionItemsInstitutionFragmentDoc = gql`
     urlLabel
   }
 `
+export const FileItemBlockFragmentDoc = gql`
+  fragment FileItemBlock on ComponentBlocksFileItem {
+    title
+    media {
+      data {
+        ...UploadFileEntity
+      }
+    }
+  }
+  ${UploadFileEntityFragmentDoc}
+`
 export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
   fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
     category
@@ -11010,7 +11129,11 @@ export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
         }
       }
     }
+    fileList {
+      ...FileItemBlock
+    }
   }
+  ${FileItemBlockFragmentDoc}
 `
 export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
   fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
@@ -12012,17 +12135,6 @@ export const PageEntityFragmentDoc = gql`
   ${PageHeaderSectionsFragmentDoc}
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
-`
-export const FileItemBlockFragmentDoc = gql`
-  fragment FileItemBlock on ComponentBlocksFileItem {
-    title
-    media {
-      data {
-        ...UploadFileEntity
-      }
-    }
-  }
-  ${UploadFileEntityFragmentDoc}
 `
 export const BlogPostBySlugDocument = gql`
   query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {

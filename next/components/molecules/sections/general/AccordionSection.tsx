@@ -1,4 +1,5 @@
-import { AccordionSectionFragment } from '@backend/graphql'
+import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@backend/graphql'
+import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import Markdown from '@components/atoms/Markdown'
@@ -7,6 +8,7 @@ import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
 import { groupByCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 type AccordionSectionProps = {
@@ -14,6 +16,8 @@ type AccordionSectionProps = {
 }
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
+  const t = useTranslations()
+
   return (
     <>
       {section.title && <h2 className="text-h2 flex justify-center pb-14">{section.title}</h2>}
@@ -61,6 +65,12 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   <NarrowText align={item.align} width={item.width}>
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
+                  {item.fileList?.length ? (
+                    <FileList
+                      fileSections={[{ files: item.fileList.filter(isDefined) }]}
+                      variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
+                    />
+                  ) : null}
                   {link?.url && link.title && (
                     <Button href={link.url || '#'} variant="category-link">
                       {link.title}
@@ -76,6 +86,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           // eslint-disable-next-line react/no-array-index-key
           <AccordionV2
             variant="boxed-h3-large-gap"
+            // eslint-disable-next-line react/no-array-index-key
             key={`institutionsNarrow-${index}`}
             title={text.category}
           >

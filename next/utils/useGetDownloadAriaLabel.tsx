@@ -1,21 +1,19 @@
-import { TFile } from '@bratislava/ui-bratislava/FileList/FileList'
-import { useTranslations } from 'next-intl'
-import { useLocale } from 'next-intl'
+import { FileItemBlockFragment } from '@backend/graphql'
 import { formatFileSize } from '@utils/formatFileSize'
+import { useLocale, useTranslations } from 'next-intl'
 
 export const useGetDownloadAriaLabel = () => {
   const t = useTranslations('FileList.aria')
   const locale = useLocale()
 
-  const getDownloadAriaLabel = (file: TFile): string => {
+  const getDownloadAriaLabel = (file: FileItemBlockFragment): string => {
     if (!file) return `${t('downloadFile')}`
-    // TODO return file name if file title not provided
 
-    const formattedFileFormat = file.media?.ext?.replace(/^\./, '').toUpperCase()
-    const formattedFileSize = formatFileSize(file.media?.size, locale)
+    const formattedFileFormat = file.media.data?.attributes?.ext?.replace(/^\./, '').toUpperCase()
+    const formattedFileSize = formatFileSize(file.media.data?.attributes?.size, locale)
 
     return `${t('downloadFileAriaLabel', {
-      title: file.title ?? '',
+      title: file.title ?? file.media.data?.attributes?.name,
       format: formattedFileFormat,
       size: formattedFileSize,
     })}`

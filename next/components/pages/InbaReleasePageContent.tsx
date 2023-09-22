@@ -74,7 +74,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
               {files?.filter(isDefined).map((file) => (
                 <FileRowCard
                   key={file.media.data?.id}
-                  title={file.title ?? undefined}
+                  title={file.title ?? file.media.data?.attributes?.name ?? ''}
                   downloadLink={file.media.data?.attributes?.url}
                   format={file.media.data?.attributes?.ext?.replace(/^\./, '').toUpperCase()}
                   size={

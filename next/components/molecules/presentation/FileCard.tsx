@@ -6,7 +6,7 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export type FileCardProps = {
-  title?: string
+  title: string
   uploadDate?: string
   downloadLink?: string
   format?: string

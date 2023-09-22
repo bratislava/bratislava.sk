@@ -1,26 +1,11 @@
-import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
-import FileRowCard from '@components/molecules/presentation/FileRowCard'
+import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@backend/graphql'
+import FileCardWrapper from '@components/molecules/presentation/FileCardWrapper'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
-import { formatFileSize } from '@utils/formatFileSize'
 import cx from 'classnames'
-import { useLocale } from 'next-intl'
-import { useGetDownloadAriaLabel } from '@utils/useGetDownloadAriaLabel'
-import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@backend/graphql'
-
-export type TFile = {
-  title?: string
-  category?: string
-  media?: {
-    url: string
-    created_at: string
-    size: number
-    ext?: string
-  }
-}
 
 export type TFileSection = {
-  category: string
-  files: TFile[]
+  category?: string
+  files: FileItemBlockFragment[]
 }
 
 export interface FileListProps {
@@ -40,23 +25,6 @@ export const FileList = ({
   hideCategory,
   variantFileList,
 }: FileListProps) => {
-  const locale = useLocale()
-  const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
-
-  function transformFileProps(file: TFile) {
-    const fileProps = {
-      title: file.title,
-      downloadLink: file.media?.url,
-      format: file.media?.ext?.replace(/^\./, '').toUpperCase(),
-      size:
-        file.media && file.media.size > 0 ? formatFileSize(file.media?.size, locale) : undefined,
-      uploadDate: file.media?.created_at,
-      ariaLabel: getDownloadAriaLabel(file),
-    } as FileCardProps
-
-    return fileProps
-  }
-
   return (
     <div className={className}>
       {fileSections?.map((fileSection, index) => {
@@ -68,10 +36,10 @@ export const FileList = ({
             )}
             {variantFileList === 'rows' && (
               <div className="mt-4 flex flex-col lg:mt-6">
-                {fileSection?.files.map((file, sectionIndex) => (
+                {fileSection?.files.map((file, fileIndex) => (
                   // eslint-disable-next-line react/no-array-index-key
-                  <div key={sectionIndex} className="w-full">
-                    <FileRowCard {...transformFileProps(file)} />
+                  <div key={fileIndex} className="w-full">
+                    <FileCardWrapper fileItem={file} variant={variantFileList} />
                   </div>
                 ))}
               </div>
@@ -79,17 +47,18 @@ export const FileList = ({
             {variantFileList === 'grid' && (
               <div>
                 <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid">
-                  {fileSection?.files.map((file, sectionIndex) => (
+                  {fileSection?.files.map((file, fileIndex) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <div key={sectionIndex} className="w-full">
-                      <FileCard {...transformFileProps(file)} />
+                    <div key={fileIndex} className="w-full">
+                      <FileCardWrapper fileItem={file} />
                     </div>
                   ))}
                 </div>
                 <div className="block lg:hidden">
                   <ResponsiveCarousel
-                    items={fileSection?.files.map((file, sectionIndex) => (
-                      <FileCard {...transformFileProps(file)} />
+                    items={fileSection?.files.map((file, fileIndex) => (
+                      // eslint-disable-next-line react/no-array-index-key
+                      <FileCardWrapper key={fileIndex} fileItem={file} />
                     ))}
                   />
                 </div>
