@@ -1,0 +1,36 @@
+name: "PR Labeler"
+on:
+  pull_request_review:
+    types: [submitted]
+  pull_request:
+    types: [review_requested]
+
+jobs:
+  created:
+    if: github.event.review.state != 'changes_requested' && github.event.review.state != 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add basic label
+        uses: andymckay/labeler@1.0.4
+        with:
+          add-labels: 'pr: needs review :pray:'
+
+  approved:
+    if: github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add approve labels
+        uses: andymckay/labeler@1.0.4
+        with:
+          add-labels: 'pr: fix & ship :ship:'
+          remove-labels: 'pr: needs review :pray:, pr: needs work :hammer_and_wrench:'
+
+  needs-work:
+    if: github.event.review.state == 'changes_requested'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add needs-work labels
+        uses: andymckay/labeler@1.0.4
+        with:
+          add-labels: 'pr: needs work :hammer_and_wrench:'
+          remove-labels: 'pr: fix & ship :ship:, pr: needs review :pray:'
