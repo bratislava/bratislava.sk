@@ -120,6 +120,11 @@ fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
 fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
   title
   text
+  featuredArts {
+    data {
+      ...InbaArticleEntity
+    }
+  }
 }
 
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
