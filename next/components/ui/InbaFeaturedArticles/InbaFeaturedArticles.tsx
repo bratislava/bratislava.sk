@@ -12,6 +12,7 @@ export type InbaFeaturedArticlesProps = {
   articles: InbaArticleEntityFragment[]
 }
 
+// This component is copied from FeaturedBlogPosts component and adjusted for inba articles
 export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
   const t = useTranslations()
 

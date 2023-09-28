@@ -7872,7 +7872,7 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsInbaArticlesList'
               title?: string | null
               text?: string | null
-              featuredArts?: {
+              featuredArticles?: {
                 __typename?: 'InbaArticleRelationResponseCollection'
                 data: Array<{
                   __typename?: 'InbaArticleEntity'
@@ -8828,7 +8828,7 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsInbaArticlesList'
           title?: string | null
           text?: string | null
-          featuredArts?: {
+          featuredArticles?: {
             __typename?: 'InbaArticleRelationResponseCollection'
             data: Array<{
               __typename?: 'InbaArticleEntity'
@@ -9307,7 +9307,7 @@ export type InbaArticlesListSectionFragment = {
   __typename?: 'ComponentSectionsInbaArticlesList'
   title?: string | null
   text?: string | null
-  featuredArts?: {
+  featuredArticles?: {
     __typename?: 'InbaArticleRelationResponseCollection'
     data: Array<{
       __typename?: 'InbaArticleEntity'
@@ -10622,7 +10622,7 @@ type Sections_ComponentSectionsInbaArticlesList_Fragment = {
   __typename: 'ComponentSectionsInbaArticlesList'
   title?: string | null
   text?: string | null
-  featuredArts?: {
+  featuredArticles?: {
     __typename?: 'InbaArticleRelationResponseCollection'
     data: Array<{
       __typename?: 'InbaArticleEntity'
@@ -11397,7 +11397,7 @@ export const InbaArticlesListSectionFragmentDoc = gql`
   fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
     title
     text
-    featuredArts {
+    featuredArticles: featuredArts {
       data {
         ...InbaArticleEntity
       }
