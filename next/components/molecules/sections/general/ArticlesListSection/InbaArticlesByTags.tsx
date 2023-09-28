@@ -44,7 +44,7 @@ const InbaArticlesByTags = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <InbaFeaturedArticlesSection articles={featuredArts.data} />
+      {featuredArts && <InbaFeaturedArticlesSection articles={featuredArts.data} />}
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <h2 className="text-h2">{title}</h2>}
