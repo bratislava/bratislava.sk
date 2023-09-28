@@ -6860,6 +6860,72 @@ export type InbaArticleBySlugQuery = {
             attributes?: { __typename?: 'InbaTag'; title: string } | null
           } | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaReleaseEntityResponse'
+          data?: {
+            __typename?: 'InbaReleaseEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'InbaRelease'
+              title: string
+              slug: string
+              perex?: string | null
+              releaseDate: any
+              coverImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              } | null
+              rearImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFileItem'
+                title?: string | null
+                media: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      name: string
+                      ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
+                    } | null
+                  } | null
+                }
+              } | null> | null
+            } | null
+          } | null
+        } | null
       } | null
     }>
   } | null
@@ -6941,6 +7007,139 @@ export type InbaArticleEntityFragment = {
         id?: string | null
         attributes?: { __typename?: 'InbaTag'; title: string } | null
       } | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaReleaseEntityResponse'
+      data?: {
+        __typename?: 'InbaReleaseEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'InbaRelease'
+          title: string
+          slug: string
+          perex?: string | null
+          releaseDate: any
+          coverImage?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
+          } | null
+          rearImage?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFileItem'
+            title?: string | null
+            media: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null
+            }
+          } | null> | null
+        } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type InbaReleaseEntityResponseFragment = {
+  __typename?: 'InbaReleaseEntityResponse'
+  data?: {
+    __typename?: 'InbaReleaseEntity'
+    id?: string | null
+    attributes?: {
+      __typename?: 'InbaRelease'
+      title: string
+      slug: string
+      perex?: string | null
+      releaseDate: any
+      coverImage?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'UploadFile'
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
+      } | null
+      rearImage?: {
+        __typename?: 'UploadFileEntityResponse'
+        data?: {
+          __typename?: 'UploadFileEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'UploadFile'
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFileItem'
+        title?: string | null
+        media: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null
+        }
+      } | null> | null
     } | null
   } | null
 }
@@ -7899,6 +8098,72 @@ export type PageBySlugQuery = {
                         attributes?: { __typename?: 'InbaTag'; title: string } | null
                       } | null
                     } | null
+                    inbaRelease?: {
+                      __typename?: 'InbaReleaseEntityResponse'
+                      data?: {
+                        __typename?: 'InbaReleaseEntity'
+                        id?: string | null
+                        attributes?: {
+                          __typename?: 'InbaRelease'
+                          title: string
+                          slug: string
+                          perex?: string | null
+                          releaseDate: any
+                          coverImage?: {
+                            __typename?: 'UploadFileEntityResponse'
+                            data?: {
+                              __typename?: 'UploadFileEntity'
+                              id?: string | null
+                              attributes?: {
+                                __typename?: 'UploadFile'
+                                url: string
+                                width?: number | null
+                                height?: number | null
+                                caption?: string | null
+                                alternativeText?: string | null
+                                name: string
+                              } | null
+                            } | null
+                          } | null
+                          rearImage?: {
+                            __typename?: 'UploadFileEntityResponse'
+                            data?: {
+                              __typename?: 'UploadFileEntity'
+                              id?: string | null
+                              attributes?: {
+                                __typename?: 'UploadFile'
+                                url: string
+                                width?: number | null
+                                height?: number | null
+                                caption?: string | null
+                                alternativeText?: string | null
+                                name: string
+                              } | null
+                            } | null
+                          } | null
+                          files?: Array<{
+                            __typename?: 'ComponentBlocksFileItem'
+                            title?: string | null
+                            media: {
+                              __typename?: 'UploadFileEntityResponse'
+                              data?: {
+                                __typename?: 'UploadFileEntity'
+                                id?: string | null
+                                attributes?: {
+                                  __typename?: 'UploadFile'
+                                  url: string
+                                  name: string
+                                  ext?: string | null
+                                  size: number
+                                  createdAt?: any | null
+                                  updatedAt?: any | null
+                                } | null
+                              } | null
+                            }
+                          } | null> | null
+                        } | null
+                      } | null
+                    } | null
                   } | null
                 }>
               } | null
@@ -8855,6 +9120,72 @@ export type PageEntityFragment = {
                     attributes?: { __typename?: 'InbaTag'; title: string } | null
                   } | null
                 } | null
+                inbaRelease?: {
+                  __typename?: 'InbaReleaseEntityResponse'
+                  data?: {
+                    __typename?: 'InbaReleaseEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'InbaRelease'
+                      title: string
+                      slug: string
+                      perex?: string | null
+                      releaseDate: any
+                      coverImage?: {
+                        __typename?: 'UploadFileEntityResponse'
+                        data?: {
+                          __typename?: 'UploadFileEntity'
+                          id?: string | null
+                          attributes?: {
+                            __typename?: 'UploadFile'
+                            url: string
+                            width?: number | null
+                            height?: number | null
+                            caption?: string | null
+                            alternativeText?: string | null
+                            name: string
+                          } | null
+                        } | null
+                      } | null
+                      rearImage?: {
+                        __typename?: 'UploadFileEntityResponse'
+                        data?: {
+                          __typename?: 'UploadFileEntity'
+                          id?: string | null
+                          attributes?: {
+                            __typename?: 'UploadFile'
+                            url: string
+                            width?: number | null
+                            height?: number | null
+                            caption?: string | null
+                            alternativeText?: string | null
+                            name: string
+                          } | null
+                        } | null
+                      } | null
+                      files?: Array<{
+                        __typename?: 'ComponentBlocksFileItem'
+                        title?: string | null
+                        media: {
+                          __typename?: 'UploadFileEntityResponse'
+                          data?: {
+                            __typename?: 'UploadFileEntity'
+                            id?: string | null
+                            attributes?: {
+                              __typename?: 'UploadFile'
+                              url: string
+                              name: string
+                              ext?: string | null
+                              size: number
+                              createdAt?: any | null
+                              updatedAt?: any | null
+                            } | null
+                          } | null
+                        }
+                      } | null> | null
+                    } | null
+                  } | null
+                } | null
               } | null
             }>
           } | null
@@ -9332,6 +9663,72 @@ export type InbaArticlesListSectionFragment = {
             __typename?: 'InbaTagEntity'
             id?: string | null
             attributes?: { __typename?: 'InbaTag'; title: string } | null
+          } | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaReleaseEntityResponse'
+          data?: {
+            __typename?: 'InbaReleaseEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'InbaRelease'
+              title: string
+              slug: string
+              perex?: string | null
+              releaseDate: any
+              coverImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              } | null
+              rearImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFileItem'
+                title?: string | null
+                media: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      name: string
+                      ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
+                    } | null
+                  } | null
+                }
+              } | null> | null
+            } | null
           } | null
         } | null
       } | null
@@ -10649,6 +11046,72 @@ type Sections_ComponentSectionsInbaArticlesList_Fragment = {
             attributes?: { __typename?: 'InbaTag'; title: string } | null
           } | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaReleaseEntityResponse'
+          data?: {
+            __typename?: 'InbaReleaseEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'InbaRelease'
+              title: string
+              slug: string
+              perex?: string | null
+              releaseDate: any
+              coverImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              } | null
+              rearImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFileItem'
+                title?: string | null
+                media: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      name: string
+                      ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
+                    } | null
+                  } | null
+                }
+              } | null> | null
+            } | null
+          } | null
+        } | null
       } | null
     }>
   } | null
@@ -11368,6 +11831,45 @@ export const InbaTagEntityFragmentDoc = gql`
     }
   }
 `
+export const InbaReleaseEntityFragmentDoc = gql`
+  fragment InbaReleaseEntity on InbaReleaseEntity {
+    id
+    attributes {
+      title
+      slug
+      perex
+      releaseDate
+      coverImage {
+        data {
+          ...UploadImageEntity
+        }
+      }
+      rearImage {
+        data {
+          ...UploadImageEntity
+        }
+      }
+      files {
+        title
+        media {
+          data {
+            ...UploadFileEntity
+          }
+        }
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+`
+export const InbaReleaseEntityResponseFragmentDoc = gql`
+  fragment InbaReleaseEntityResponse on InbaReleaseEntityResponse {
+    data {
+      ...InbaReleaseEntity
+    }
+  }
+  ${InbaReleaseEntityFragmentDoc}
+`
 export const InbaArticleEntityFragmentDoc = gql`
   fragment InbaArticleEntity on InbaArticleEntity {
     id
@@ -11389,9 +11891,13 @@ export const InbaArticleEntityFragmentDoc = gql`
         }
       }
       content
+      inbaRelease {
+        ...InbaReleaseEntityResponse
+      }
     }
   }
   ${InbaTagEntityFragmentDoc}
+  ${InbaReleaseEntityResponseFragmentDoc}
 `
 export const InbaArticlesListSectionFragmentDoc = gql`
   fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
@@ -12149,37 +12655,6 @@ export const HomepageEntityFragmentDoc = gql`
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
   ${HomepageBookmarkFragmentDoc}
-`
-export const InbaReleaseEntityFragmentDoc = gql`
-  fragment InbaReleaseEntity on InbaReleaseEntity {
-    id
-    attributes {
-      title
-      slug
-      perex
-      releaseDate
-      coverImage {
-        data {
-          ...UploadImageEntity
-        }
-      }
-      rearImage {
-        data {
-          ...UploadImageEntity
-        }
-      }
-      files {
-        title
-        media {
-          data {
-            ...UploadFileEntity
-          }
-        }
-      }
-    }
-  }
-  ${UploadImageEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {

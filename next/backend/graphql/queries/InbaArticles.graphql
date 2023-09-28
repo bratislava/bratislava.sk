@@ -68,6 +68,15 @@ fragment InbaArticleEntity on InbaArticleEntity {
       }
     }
     content
+    inbaRelease {
+      ...InbaReleaseEntityResponse
+    }
+  }
+}
+
+fragment InbaReleaseEntityResponse on InbaReleaseEntityResponse {
+  data {
+    ...InbaReleaseEntity
   }
 }
 
