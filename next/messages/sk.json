@@ -234,5 +234,8 @@
     "releasedOn": "Publikované {date}",
     "inThisRelease": "V tomto čísle nájdete",
     "toDownload": "Na stiahnutie"
+  },
+  "InbaArticle": {
+    "publishedInThisRelease": "Publikované v čísle {releaseTitle}, ktoré vyšlo {releaseDate}."
   }
 }

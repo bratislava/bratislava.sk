@@ -234,5 +234,8 @@
     "releasedOn": "Published on {date}",
     "inThisRelease": "In this issue",
     "toDownload": "Downloads"
+  },
+  "InbaArticle": {
+    "publishedInThisRelease": "This article was published in the issue {releaseTitle} on {releaseDate}."
   }
 }

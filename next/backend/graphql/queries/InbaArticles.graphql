@@ -68,6 +68,15 @@ fragment InbaArticleEntity on InbaArticleEntity {
       }
     }
     content
+    inbaRelease {
+      data {
+        attributes {
+          title
+          releaseDate
+          slug
+        }
+      }
+    }
   }
 }
 

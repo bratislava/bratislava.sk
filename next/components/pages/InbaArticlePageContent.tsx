@@ -2,11 +2,12 @@ import { InbaArticleEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import Markdown from '@components/atoms/Markdown'
+import MLink from '@components/forms/simple-components/MLink'
 import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import NarrowText from '@components/ui/NarrowText/NarrowText'
 import { useGeneralContext } from '@utils/generalContext'
-import { getNumericLocalDate } from '@utils/local-date'
+import { formatDate, getNumericLocalDate } from '@utils/local-date'
 import { getPageBreadcrumbs } from '@utils/page'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
@@ -33,6 +34,14 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
 
   const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
 
+  const {
+    title: inbaReleaseTitle,
+    releaseDate: inbaReleaseDate,
+    slug: inbaReleaseSlug,
+  } = inbaArticle.attributes?.inbaRelease?.data?.attributes ?? {}
+
+  const inbaReleaseLink = `/inba/archiv/${inbaReleaseSlug}`
+
   return (
     <>
       {/* Header */}
@@ -43,7 +52,6 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         tag={inbaTagTitle}
         imageSrc={inbaArticle.attributes?.coverImage?.data?.attributes?.url}
       />
-
       {inbaArticle.attributes?.perex ? (
         <SectionContainer className="pt-10 md:pt-18">
           <NarrowText align="left" width="wide">
@@ -53,13 +61,21 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
           </NarrowText>
         </SectionContainer>
       ) : null}
-
       <SectionContainer className="pt-10 md:pt-18">
         <NarrowText align="left" width="wide">
           <Markdown content={inbaArticle.attributes?.content} />
+          <div className="pt-4">
+            <MLink href={inbaReleaseLink} variant="underlined">
+              <Markdown
+                content={t('InbaArticle.publishedInThisRelease', {
+                  releaseTitle: inbaReleaseTitle,
+                  releaseDate: formatDate(inbaReleaseDate),
+                })}
+              />
+            </MLink>
+          </div>
         </NarrowText>
       </SectionContainer>
-
       <ShareButtons twitterTitle={inbaArticle.attributes?.title} />
     </>
   )

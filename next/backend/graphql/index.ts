@@ -6860,6 +6860,18 @@ export type InbaArticleBySlugQuery = {
             attributes?: { __typename?: 'InbaTag'; title: string } | null
           } | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaReleaseEntityResponse'
+          data?: {
+            __typename?: 'InbaReleaseEntity'
+            attributes?: {
+              __typename?: 'InbaRelease'
+              title: string
+              releaseDate: any
+              slug: string
+            } | null
+          } | null
+        } | null
       } | null
     }>
   } | null
@@ -6940,6 +6952,18 @@ export type InbaArticleEntityFragment = {
         __typename?: 'InbaTagEntity'
         id?: string | null
         attributes?: { __typename?: 'InbaTag'; title: string } | null
+      } | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaReleaseEntityResponse'
+      data?: {
+        __typename?: 'InbaReleaseEntity'
+        attributes?: {
+          __typename?: 'InbaRelease'
+          title: string
+          releaseDate: any
+          slug: string
+        } | null
       } | null
     } | null
   } | null
@@ -7899,6 +7923,18 @@ export type PageBySlugQuery = {
                         attributes?: { __typename?: 'InbaTag'; title: string } | null
                       } | null
                     } | null
+                    inbaRelease?: {
+                      __typename?: 'InbaReleaseEntityResponse'
+                      data?: {
+                        __typename?: 'InbaReleaseEntity'
+                        attributes?: {
+                          __typename?: 'InbaRelease'
+                          title: string
+                          releaseDate: any
+                          slug: string
+                        } | null
+                      } | null
+                    } | null
                   } | null
                 }>
               } | null
@@ -8855,6 +8891,18 @@ export type PageEntityFragment = {
                     attributes?: { __typename?: 'InbaTag'; title: string } | null
                   } | null
                 } | null
+                inbaRelease?: {
+                  __typename?: 'InbaReleaseEntityResponse'
+                  data?: {
+                    __typename?: 'InbaReleaseEntity'
+                    attributes?: {
+                      __typename?: 'InbaRelease'
+                      title: string
+                      releaseDate: any
+                      slug: string
+                    } | null
+                  } | null
+                } | null
               } | null
             }>
           } | null
@@ -9332,6 +9380,18 @@ export type InbaArticlesListSectionFragment = {
             __typename?: 'InbaTagEntity'
             id?: string | null
             attributes?: { __typename?: 'InbaTag'; title: string } | null
+          } | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaReleaseEntityResponse'
+          data?: {
+            __typename?: 'InbaReleaseEntity'
+            attributes?: {
+              __typename?: 'InbaRelease'
+              title: string
+              releaseDate: any
+              slug: string
+            } | null
           } | null
         } | null
       } | null
@@ -10649,6 +10709,18 @@ type Sections_ComponentSectionsInbaArticlesList_Fragment = {
             attributes?: { __typename?: 'InbaTag'; title: string } | null
           } | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaReleaseEntityResponse'
+          data?: {
+            __typename?: 'InbaReleaseEntity'
+            attributes?: {
+              __typename?: 'InbaRelease'
+              title: string
+              releaseDate: any
+              slug: string
+            } | null
+          } | null
+        } | null
       } | null
     }>
   } | null
@@ -11389,6 +11461,15 @@ export const InbaArticleEntityFragmentDoc = gql`
         }
       }
       content
+      inbaRelease {
+        data {
+          attributes {
+            title
+            releaseDate
+            slug
+          }
+        }
+      }
     }
   }
   ${InbaTagEntityFragmentDoc}
