@@ -13,6 +13,7 @@ export interface FeaturedBlogPostsProps {
   blogPosts: LatestBlogPostEntityFragment[]
 }
 
+// Component InbaFeaturedArticles is copied from this component
 export const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
   const t = useTranslations()
 

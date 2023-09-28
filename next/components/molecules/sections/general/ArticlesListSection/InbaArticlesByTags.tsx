@@ -5,6 +5,7 @@ import {
   inbaArticlesFetcher,
 } from '@backend/meili/fetchers/inbaArticlesFetcher'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
+import InbaFeaturedArticlesSection from '@components/molecules/sections/general/InbaFeaturedArticlesSection'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useQuery } from '@tanstack/react-query'
 import { generateImageSizes } from '@utils/generateImageSizes'
@@ -23,7 +24,7 @@ const InbaArticlesByTags = ({ section }: Props) => {
   const t = useTranslations()
   const locale = useLocale()
 
-  const { title, text } = section
+  const { title, text, featuredArticles } = section
 
   // TODO filter by tags
   // const tagIds = tags?.data.map((tag) => tag.id).filter(isDefined) ?? []
@@ -43,6 +44,7 @@ const InbaArticlesByTags = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
+      {featuredArticles && <InbaFeaturedArticlesSection articles={featuredArticles.data} />}
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <h2 className="text-h2">{title}</h2>}
