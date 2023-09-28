@@ -33,10 +33,14 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
   }, [inbaArticle, inbaPage])
 
   const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
-  const inbaReleaseTitle = inbaArticle.attributes?.inbaRelease?.data?.attributes?.title
-  const inbaReleaseDate = inbaArticle.attributes?.inbaRelease?.data?.attributes?.releaseDate
-  const inbaReleaseSlug = inbaArticle.attributes?.inbaRelease?.data?.attributes?.slug
-  const inbaReleaseLink = `../archiv/${inbaReleaseSlug}`
+
+  const {
+    title: inbaReleaseTitle,
+    releaseDate: inbaReleaseDate,
+    slug: inbaReleaseSlug,
+  } = inbaArticle.attributes?.inbaRelease?.data?.attributes ?? {}
+
+  const inbaReleaseLink = `/inba/archiv/${inbaReleaseSlug}`
 
   return (
     <>
