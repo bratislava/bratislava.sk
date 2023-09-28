@@ -69,14 +69,14 @@ fragment InbaArticleEntity on InbaArticleEntity {
     }
     content
     inbaRelease {
-      ...InbaReleaseEntityResponse
+      data {
+        attributes {
+          title
+          releaseDate
+          slug
+        }
+      }
     }
-  }
-}
-
-fragment InbaReleaseEntityResponse on InbaReleaseEntityResponse {
-  data {
-    ...InbaReleaseEntity
   }
 }
 

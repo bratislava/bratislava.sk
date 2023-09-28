@@ -60,13 +60,14 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
       <SectionContainer className="pt-10 md:pt-18">
         <NarrowText align="left" width="wide">
           <Markdown content={inbaArticle.attributes?.content} />
-          {/* TODO set padding-top according to styleguide */}
-          <div className="pt-1">
+          <div className="pt-4">
             <MLink href={inbaReleaseLink} variant="underlined">
-              {t('InbaArticle.publishedInThisRelease', {
-                releaseTitle: inbaReleaseTitle,
-                releaseDate: formatDate(inbaReleaseDate),
-              })}
+              <Markdown
+                content={t('InbaArticle.publishedInThisRelease', {
+                  releaseTitle: inbaReleaseTitle,
+                  releaseDate: formatDate(inbaReleaseDate),
+                })}
+              />
             </MLink>
           </div>
         </NarrowText>
