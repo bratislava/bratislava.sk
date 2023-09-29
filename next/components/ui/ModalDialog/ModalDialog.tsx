@@ -45,7 +45,7 @@ const ModalDialog = ({
      */
     <ModalOverlay
       className={twMerge(
-        'fixed left-0 top-0 z-50 flex h-[var(--visual-viewport-height)] w-screen items-center justify-center bg-[#1F1F1F]/[.48]',
+        'fixed left-0 top-0 z-50 flex h-[--visual-viewport-height] w-screen items-center justify-center bg-gray-800/[.48]',
         overlayClassname,
       )}
       isDismissable={isDismissable}
@@ -57,7 +57,7 @@ const ModalDialog = ({
       <Modal
         isDismissable={isDismissable}
         className={twMerge(
-          cx('relative m-4 h-[80%] max-h-[var(--visual-viewport-height)] rounded-xl bg-white', {
+          cx('relative m-4 h-[80%] max-h-[--visual-viewport-height] rounded-xl bg-white', {
             'w-full md:w-[592px]': width === 'fixed',
             'w-full': width === 'auto',
           }),
