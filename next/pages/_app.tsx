@@ -13,7 +13,7 @@ import Link from 'next/link'
 import { NextIntlClientProvider } from 'next-intl'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
-import { OverlayProvider, SSRProvider } from 'react-aria'
+import { OverlayProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
@@ -74,18 +74,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           >
             <BAQueryClientProvider>
               <QueryParamProvider adapter={NextAdapter}>
-                <SSRProvider>
-                  <BAI18nProvider>
-                    <OverlayProvider>
-                      <NavMenuContextProvider>
-                        {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                        <div id="root">
-                          <Component {...pageProps} />
-                        </div>
-                      </NavMenuContextProvider>
-                    </OverlayProvider>
-                  </BAI18nProvider>
-                </SSRProvider>
+                <BAI18nProvider>
+                  <OverlayProvider>
+                    <NavMenuContextProvider>
+                      {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                      <div id="root">
+                        <Component {...pageProps} />
+                      </div>
+                    </NavMenuContextProvider>
+                  </OverlayProvider>
+                </BAI18nProvider>
               </QueryParamProvider>
             </BAQueryClientProvider>
           </PlausibleProvider>

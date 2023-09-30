@@ -36,7 +36,7 @@ const Contacts = ({ section }: ContactsProps) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
       <div
-        className={cx(' col-span-1 flex flex-col gap-3', {
+        className={cx('col-span-1 flex flex-col gap-3', {
           'md:col-span-8': isVertical,
           'md:col-span-5': isHorizontal,
         })}
@@ -57,8 +57,10 @@ const Contacts = ({ section }: ContactsProps) => {
         })}
       >
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3">
-          {contacts.map((contact) => (
+          {contacts.map((contact, index) => (
             <ContactCtaCard
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               className={cx('col-span-1', {
                 'md:col-span-1': isVertical,
                 'md:col-span-2': isHorizontal,
