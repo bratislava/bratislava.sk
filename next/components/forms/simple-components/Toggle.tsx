@@ -2,7 +2,7 @@ import cx from 'classnames'
 import * as React from 'react'
 import { useId } from 'react'
 import { useFocusRing, useSwitch, VisuallyHidden } from 'react-aria'
-import { ToggleState, useToggleState } from 'react-stately'
+import { useToggleState } from 'react-stately'
 
 import CheckedIcon from '../icon-components/CheckedIcon'
 import UnCheckedIcon from '../icon-components/UnCheckedIcon'
@@ -20,7 +20,7 @@ type ToggleBase = {
 }
 
 const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
-  const state: ToggleState = useToggleState({ ...rest, isDisabled, children })
+  const state = useToggleState({ ...rest, isDisabled })
   const generatedId = useId()
   const generatedOrProvidedId = rest.id ?? generatedId
   const ref = React.useRef(null)
