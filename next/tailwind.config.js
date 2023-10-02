@@ -15,7 +15,12 @@ module.exports = {
     join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'),
     join(__dirname, 'components/**/*.{js,jsx,ts,tsx}'),
   ],
-  plugins: [customVariants, require('tailwind-scrollbar-hide')],
+  plugins: [
+    customVariants,
+    require('tailwind-scrollbar-hide'),
+    require('tailwindcss-react-aria-components'),
+    require('tailwindcss-animate'),
+  ],
   corePlugins: {
     container: false,
   },

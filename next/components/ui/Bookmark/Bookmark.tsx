@@ -2,8 +2,7 @@ import { CrossIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-import React, { useRef, FocusEvent } from 'react'
-import { Button as AriaButton } from 'react-aria-components'
+import React, { FocusEvent, useRef } from 'react'
 
 const PADDING = 20 // py-5
 
@@ -79,7 +78,7 @@ export const Bookmark = ({
       ref={modelRef}
       onBlur={handleBlur}
     >
-      <AriaButton
+      <Button
         className={cx('text-large w-[70px] font-semibold', {
           'bg-[#66BDE3]': variant === 'blue',
           'bg-main-700': variant === 'red',
@@ -94,7 +93,7 @@ export const Bookmark = ({
             {bookmarkTitle}
           </span>
         </span>
-      </AriaButton>
+      </Button>
 
       {/* https://github.com/facebook/react/issues/17157#issuecomment-1572230721 */}
       <div className="flex py-5" aria-hidden={!isOpen} {...(isOpen ? {} : { inert: '' })}>

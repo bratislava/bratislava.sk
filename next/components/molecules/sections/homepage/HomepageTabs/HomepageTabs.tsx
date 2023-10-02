@@ -2,10 +2,9 @@ import TabPanelDisclosure from '@components/molecules/sections/homepage/Homepage
 import TabPanelLatestNews from '@components/molecules/sections/homepage/HomepageTabs/TabPanelLatestNews'
 import TabPanelOfficialBoard from '@components/molecules/sections/homepage/HomepageTabs/TabPanelOfficialBoard'
 import TabPanelRoadClosures from '@components/molecules/sections/homepage/HomepageTabs/TabPanelRoadClosures'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
-import { Tab, TabList, TabPanels, Tabs } from 'react-aria-components'
+import { Tab, TabList, Tabs } from 'react-aria-components'
 
 export interface HomepageTabsProps {
   className?: string
@@ -34,14 +33,7 @@ export const HomepageTabs = ({ className }: HomepageTabsProps) => {
             <Tab
               key={id}
               id={id}
-              className={({ isSelected }) =>
-                cx(
-                  'text-large-respo relative cursor-pointer whitespace-nowrap py-3 text-center md:py-5',
-                  {
-                    'font-semibold': isSelected,
-                  },
-                )
-              }
+              className="text-large-respo relative cursor-pointer whitespace-nowrap py-3 text-center selected:font-semibold md:py-5"
             >
               {({ isSelected }) => (
                 <>
@@ -55,12 +47,10 @@ export const HomepageTabs = ({ className }: HomepageTabsProps) => {
           ))}
         </TabList>
 
-        <TabPanels>
-          <TabPanelLatestNews />
-          <TabPanelOfficialBoard />
-          <TabPanelRoadClosures />
-          <TabPanelDisclosure />
-        </TabPanels>
+        <TabPanelLatestNews />
+        <TabPanelOfficialBoard />
+        <TabPanelRoadClosures />
+        <TabPanelDisclosure />
       </Tabs>
     </div>
   )
