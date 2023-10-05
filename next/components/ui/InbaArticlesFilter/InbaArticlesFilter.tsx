@@ -56,10 +56,13 @@ const InbaArticlesFilter = ({
               return (
                 <Tag
                   className={({ isFocused, isSelected }) =>
-                    cx('flex h-8 shrink-0 items-center rounded-lg border px-4 py-[21px]', {
-                      'rounded-none': isFocused,
-                      'border-white bg-main-700 text-gray-0': isSelected,
-                    })
+                    cx(
+                      'flex items-center rounded-lg border px-4 py-1.5 text-size-p-small lg:py-2.5 lg:text-size-p-default',
+                      {
+                        'rounded-none': isFocused,
+                        'border-white bg-main-700 text-gray-0': isSelected,
+                      },
+                    )
                   }
                 >
                   {tagName}
@@ -77,13 +80,10 @@ const InbaArticlesFilter = ({
                 return (
                   <Tag
                     className={({ isFocused, isSelected }) =>
-                      cx(
-                        'flex h-8 shrink-0 items-center rounded-lg border px-3 py-2.5 text-size-p-small',
-                        {
-                          'rounded-none': isFocused,
-                          'bg-main-700 text-gray-0': isSelected,
-                        },
-                      )
+                      cx('flex items-center rounded-lg border px-3 text-size-p-small lg:py-1.5', {
+                        'rounded-none': isFocused,
+                        'bg-main-700 text-gray-0': isSelected,
+                      })
                     }
                   >
                     {subcategoryName}

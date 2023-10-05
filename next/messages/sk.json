@@ -239,7 +239,7 @@
     "publishedInThisRelease": "Publikované v čísle {releaseTitle}, ktoré vyšlo {releaseDate}."
   },
   "ArticleFilter": {
-    "articleFilter": "Kategórie článkov",
+    "articleFilter": "Filter článkov",
     "subcategories": "Podkategórie"
   }
 }

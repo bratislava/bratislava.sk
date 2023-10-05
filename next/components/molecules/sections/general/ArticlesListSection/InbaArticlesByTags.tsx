@@ -45,13 +45,10 @@ const InbaArticlesByTags = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      {/* {featuredArticles && featuredArticles?.data.length > 0 ? (
-        <InbaFeaturedArticlesSection articles={featuredArticles.data} />
-      ) : null} */}
       {featuredArticles?.data.length ? (
         <InbaFeaturedArticlesSection articles={featuredArticles.data} />
       ) : null}
-      <InbaArticlesFilter />
+      {/* <InbaArticlesFilter /> */}
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <h2 className="text-h2">{title}</h2>}
