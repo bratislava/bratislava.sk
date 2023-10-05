@@ -26,12 +26,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
               <Heading>
                 <h2 className="text-h5">{title}</h2>
               </Heading>
-              <Button
-                icon={<CrossIcon />}
-                variant="black-plain"
-                className="-m-2"
-                onPress={props.onClose ?? close}
-              />
+              <Button icon={<CrossIcon />} variant="black-plain" className="-m-2" onPress={close} />
             </div>
           ) : null}
 
@@ -46,7 +41,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
               className="absolute right-6 top-6 -m-2 bg-white hover:bg-gray-100"
               variant="black-outline"
               size="sm"
-              onPress={props.onClose ?? close}
+              onPress={close}
             />
           )}
         </>
