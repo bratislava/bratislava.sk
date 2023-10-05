@@ -19,8 +19,6 @@ const RegulationModalBody = ({ vzn }: { vzn: VznMeili }) => {
 
   return (
     <>
-      {/* TODO tmp pr-10 to avoid overlap with close button */}
-      <h2 className="text-h5 pb-5 pr-10">{vzn.title}</h2>
       <div className="flex">
         {vzn?.mainDocument && (
           <div className="flex flex-col">

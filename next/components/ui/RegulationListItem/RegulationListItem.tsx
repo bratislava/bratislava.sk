@@ -1,14 +1,18 @@
 import { Download } from '@assets/images'
-import Button from '@components/forms/simple-components/Button'
+import { VznMeili } from '@backend/meili/types'
+import RegulationModalBody from '@components/molecules/sections/general/DocumentListSection/RegulationModalBody'
+import Dialog from '@components/ui/ModalDialog/Dialog'
+import Modal from '@components/ui/ModalDialog/Modal'
 import { useTranslations } from 'next-intl'
+import React from 'react'
+import { Button as AriaButton, DialogTrigger } from 'react-aria-components'
 
-interface DocumentListItemProps {
+type RegulationListItemProps = {
   categoryName: string
   title: string
   Icon: string
-  onClick: Function
+  vznMeili: VznMeili
   mainDocumentHref?: string
-  id: string
   moreDocuments: string[]
 }
 
@@ -16,11 +20,10 @@ export const RegulationListItem = ({
   categoryName,
   title,
   Icon,
-  onClick,
-  id,
+  vznMeili,
   moreDocuments,
   mainDocumentHref,
-}: DocumentListItemProps) => {
+}: RegulationListItemProps) => {
   const t = useTranslations()
 
   return (
@@ -47,9 +50,18 @@ export const RegulationListItem = ({
       </div>
       <div className="flex shrink-0 items-center justify-between py-4 pl-5 md:grow-0 md:basis-[300px] md:justify-evenly md:px-2 md:py-11">
         <div>
-          <Button variant="black-link" onPress={() => onClick(id)}>
-            {t('show')}
-          </Button>
+          <DialogTrigger>
+            {/* TODO use our Button when it's updated to work with DialogTrigger */}
+            <AriaButton className="flex h-auto w-fit items-center justify-center rounded-lg border-2 border-category-700 bg-transparent px-4 py-2 text-[1rem] font-semibold leading-[1.5rem] text-gray-700 outline-offset-4 hover:border-category-600 hover:text-gray-600 focus:border-category-800 focus:text-gray-800 lg:py-3">
+              {t('show')}
+            </AriaButton>
+
+            <Modal modalClassname="md:w-[740px]">
+              <Dialog title={vznMeili.title ?? ''}>
+                <RegulationModalBody vzn={vznMeili} />
+              </Dialog>
+            </Modal>
+          </DialogTrigger>
         </div>
 
         {mainDocumentHref && (

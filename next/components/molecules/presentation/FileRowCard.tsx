@@ -32,13 +32,15 @@ const FileRowCard = ({
             variant="underlineOnHover"
             target="_blank"
             rel="noreferrer"
-            aria-label={ariaLabel ?? ''}
+            aria-label={
+              ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title, format, size })
+            }
           >
             {title}
           </MLink>
           {(uploadDate || format || size) && (
             <span className="text-small line-clamp-1 text-gray-700">
-              {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component.*/}
+              {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component. */}
               {[uploadDate, format, size].filter(isDefined).join(' • ')}
             </span>
           )}

@@ -44,7 +44,9 @@ const FileCard = ({
           variant="underlineOnHover"
           target="_blank"
           rel="noreferrer"
-          aria-label={ariaLabel ?? ''}
+          aria-label={
+            ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title, format, size })
+          }
         >
           {title}
         </MLink>
