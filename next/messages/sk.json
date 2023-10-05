@@ -237,5 +237,9 @@
   },
   "InbaArticle": {
     "publishedInThisRelease": "Publikované v čísle {releaseTitle}, ktoré vyšlo {releaseDate}."
+  },
+  "ArticleFilter": {
+    "articleFilter": "Kategórie článkov",
+    "subcategories": "Podkategórie"
   }
 }
