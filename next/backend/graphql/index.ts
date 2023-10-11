@@ -6929,6 +6929,20 @@ export type InbaArticlesRssFeedQuery = {
   } | null
 }
 
+export type InbaTagsQueryVariables = Exact<{ [key: string]: never }>
+
+export type InbaTagsQuery = {
+  __typename?: 'Query'
+  inbaTags?: {
+    __typename?: 'InbaTagEntityResponseCollection'
+    data: Array<{
+      __typename?: 'InbaTagEntity'
+      id?: string | null
+      attributes?: { __typename?: 'InbaTag'; title: string } | null
+    }>
+  } | null
+}
+
 export type InbaArticleEntityFragment = {
   __typename?: 'InbaArticleEntity'
   id?: string | null
@@ -12599,6 +12613,18 @@ export const InbaArticlesRssFeedDocument = gql`
     }
   }
 `
+export const InbaTagsDocument = gql`
+  query InbaTags {
+    inbaTags {
+      data {
+        id
+        attributes {
+          title
+        }
+      }
+    }
+  }
+`
 export const InbaReleaseBySlugDocument = gql`
   query InbaReleaseBySlug($slug: String!) {
     inbaReleases(filters: { slug: { eq: $slug } }) {
@@ -12902,6 +12928,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'InbaArticlesRssFeed',
+        'query',
+      )
+    },
+    InbaTags(
+      variables?: InbaTagsQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<InbaTagsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaTagsQuery>(InbaTagsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaTags',
         'query',
       )
     },

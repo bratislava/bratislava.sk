@@ -1,13 +1,16 @@
 // @ts-strict-ignore
+import { InbaTagEntity } from '@backend/graphql'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-import React from 'react'
-import { Tag, TagGroup, TagList } from 'react-aria-components'
+import React, { useEffect, useState } from 'react'
+import { Selection, Tag, TagGroup, TagList } from 'react-aria-components'
 
 export interface InbaArticlesFilterProps {
-  tagNames?: string[]
+  // tagNames?: (string | undefined)[]
+  tags?: InbaTagEntity[]
   subCategories?: string[]
   subtitle?: string
+  handleChange?: (tags: string[] | Set<unknown>) => void
 }
 
 /**
@@ -35,14 +38,22 @@ const temporaryTagNames = [
 ]
 
 const InbaArticlesFilter = ({
-  tagNames = temporaryTagNames,
-  subCategories = temporarySubcategories,
+  tags,
+  subCategories,
   subtitle,
+  handleChange,
 }: InbaArticlesFilterProps) => {
   const t = useTranslations('ArticleFilter')
+  const [myFilters, setMyfilters] = useState<Selection>(new Set<string>())
+
+  const handleChangeUpp = useEffect(() => {
+    handleChange(Array.from(myFilters))
+  }, [myFilters])
 
   return (
     <div className="m-auto flex w-full flex-col items-center gap-6 py-18 text-left lg:w-[800px] lg:gap-10 lg:py-18 lg:text-center">
+      {/* Vybrane */}
+      {/* <p className="font-bold text-success-500">Vybrane: {Array.from(myFilters)}</p> */}
       {/* Header */}
       <div className="flex w-full flex-col gap-2 ">
         <h3 className=" text-h2 lg:text-h3">{t('articleFilter')}</h3>
@@ -50,49 +61,56 @@ const InbaArticlesFilter = ({
       </div>
       {/* Categories */}
       <div>
-        <TagGroup selectionMode="multiple">
+        <TagGroup
+          selectionMode="multiple"
+          selectedKeys={myFilters}
+          onSelectionChange={setMyfilters}
+        >
           <TagList className="flex flex-wrap gap-3 lg:justify-center">
-            {tagNames.map((tagName) => {
+            {tags?.map((tag) => {
               return (
                 <Tag
-                  className={({ isFocused, isSelected }) =>
+                  className={({ isSelected }) =>
                     cx(
                       'flex items-center rounded-lg border px-4 py-1.5 text-size-p-small lg:py-2.5 lg:text-size-p-default',
                       {
-                        'rounded-none': isFocused,
                         'border-white bg-main-700 text-gray-0': isSelected,
                       },
                     )
                   }
+                  aria-label={tag.attributes.title}
+                  id={tag.id}
                 >
-                  {tagName}
+                  {`${tag.attributes.title} id:${tag.id}`}
                 </Tag>
               )
             })}
           </TagList>
         </TagGroup>
         {/* Subcategories */}
-        <div className="pt-8">
-          <h5 className="text-h5 pb-3">{t('subcategories')}</h5>
-          <TagGroup selectionMode="multiple">
-            <TagList className="flex flex-wrap gap-2 lg:justify-center">
-              {subCategories.map((subcategoryName) => {
-                return (
-                  <Tag
-                    className={({ isFocused, isSelected }) =>
-                      cx('flex items-center rounded-lg border px-3 text-size-p-small lg:py-1.5', {
-                        'rounded-none': isFocused,
-                        'bg-main-700 text-gray-0': isSelected,
-                      })
-                    }
-                  >
-                    {subcategoryName}
-                  </Tag>
-                )
-              })}
-            </TagList>
-          </TagGroup>
-        </div>
+        {subCategories?.length ? (
+          <div className="pt-8">
+            <h5 className="text-h5 pb-3">{t('subcategories')}</h5>
+            <TagGroup selectionMode="multiple">
+              <TagList className="flex flex-wrap gap-2 lg:justify-center">
+                {subCategories.map((subcategoryName) => {
+                  return (
+                    <Tag
+                      className={({ isSelected }) =>
+                        cx('flex items-center rounded-lg border px-3 text-size-p-small lg:py-1.5', {
+                          'bg-main-700 text-gray-0': isSelected,
+                        })
+                      }
+                      aria-label={subcategoryName}
+                    >
+                      {subcategoryName}
+                    </Tag>
+                  )
+                })}
+              </TagList>
+            </TagGroup>
+          </div>
+        ) : null}
       </div>
     </div>
   )

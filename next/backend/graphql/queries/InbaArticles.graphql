@@ -48,6 +48,17 @@ query InbaArticlesRssFeed($locale: I18NLocaleCode!) {
   }
 }
 
+query InbaTags {
+  inbaTags {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+
 fragment InbaArticleEntity on InbaArticleEntity {
   id
   attributes {
