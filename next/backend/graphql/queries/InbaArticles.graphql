@@ -48,8 +48,8 @@ query InbaArticlesRssFeed($locale: I18NLocaleCode!) {
   }
 }
 
-query InbaTags {
-  inbaTags {
+query InbaTags($locale: I18NLocaleCode!) {
+  inbaTags(locale: $locale) {
     data {
       id
       attributes {

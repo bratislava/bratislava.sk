@@ -28,16 +28,13 @@ const InbaArticlesByTags = ({ section }: Props) => {
 
   const { title, text, featuredArticles } = section
 
+  const [filters, setFilters] = useRoutePreservedState({ ...inbaArticlesDefaultFilters })
+
   const { data: tagData } = useQuery({
-    // queryKey: ['inbaTag'],
-    queryFn: () => client.InbaTags(),
+    queryKey: ['InbaTags', locale],
+    queryFn: () => client.InbaTags({ locale }),
     // staleTime: Infinity, // The data are static and don't need to be reloaded.
   })
-
-  // TODO filter by tags
-  // const tagIds = tags?.data.map((tag) => tag.id).filter(isDefined) ?? []
-
-  const [filters, setFilters] = useRoutePreservedState({ ...inbaArticlesDefaultFilters })
 
   // TODO prefetch section
   const { data } = useQuery({
@@ -59,52 +56,11 @@ const InbaArticlesByTags = ({ section }: Props) => {
       {featuredArticles?.data.length ? (
         <InbaFeaturedArticlesSection articles={featuredArticles.data} />
       ) : null}
-
-      {/* Tag checker */}
-      {/* <div>
-        <h1 className="text-h2">Tag checker</h1>
-        {JSON.stringify(tagData)}
-        {tagData?.inbaTags?.data.map((item) => (
-          <p>{item.attributes?.title}</p>
-        ))}
-      </div> */}
-      {/* Tag filter */}
       <InbaArticlesFilter
-        // tagNames={tagData?.inbaTags?.data.map((item) => item.attributes?.title)}
         tags={tagData?.inbaTags?.data}
         handleChange={handleTagFilterChange}
         subtitle=""
       />
-      {/* Tag manual changer */}
-      {/* <div className="flex gap-6">
-        <button
-          type="button"
-          className="border-4 px-4"
-          onClick={() => handleTagFilterChange(['1'])}
-        >
-          Tag: 1
-        </button>
-        <button
-          type="button"
-          className="border-4 px-4"
-          onClick={() => handleTagFilterChange(['2'])}
-        >
-          Tag: 2
-        </button>
-        <button
-          type="button"
-          className="border-4 px-4"
-          onClick={() => handleTagFilterChange(['3'])}
-        >
-          Tag: 3
-        </button>
-        <button type="button" className="border-4 px-4" onClick={() => handleTagFilterChange([])}>
-          alltags
-        </button>
-        <hr />
-        <p>{JSON.stringify(filters)}</p>
-      </div> */}
-      {/* ↑ Tag changer */}
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <h2 className="text-h2">{title}</h2>}

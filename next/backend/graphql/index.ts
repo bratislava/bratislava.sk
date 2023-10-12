@@ -6929,7 +6929,9 @@ export type InbaArticlesRssFeedQuery = {
   } | null
 }
 
-export type InbaTagsQueryVariables = Exact<{ [key: string]: never }>
+export type InbaTagsQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']
+}>
 
 export type InbaTagsQuery = {
   __typename?: 'Query'
@@ -12614,8 +12616,8 @@ export const InbaArticlesRssFeedDocument = gql`
   }
 `
 export const InbaTagsDocument = gql`
-  query InbaTags {
-    inbaTags {
+  query InbaTags($locale: I18NLocaleCode!) {
+    inbaTags(locale: $locale) {
       data {
         id
         attributes {
@@ -12932,7 +12934,7 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
       )
     },
     InbaTags(
-      variables?: InbaTagsQueryVariables,
+      variables: InbaTagsQueryVariables,
       requestHeaders?: Dom.RequestInit['headers'],
     ): Promise<InbaTagsQuery> {
       return withWrapper(
