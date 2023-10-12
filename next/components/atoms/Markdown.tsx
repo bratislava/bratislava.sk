@@ -4,6 +4,7 @@ import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import remarkUnwrapImages from 'remark-unwrap-images'
 
 import styles from './Markdown.module.scss'
 
@@ -117,7 +118,7 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         ),
         // th: ...
       }}
-      remarkPlugins={[remarkGfm]}
+      remarkPlugins={[remarkGfm, remarkUnwrapImages]}
       rehypePlugins={[rehypeRaw]}
     >
       {content ?? ''}
