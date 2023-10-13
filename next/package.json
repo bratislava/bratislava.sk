@@ -58,6 +58,7 @@
     "remark-directive": "^2.0.1",
     "remark-directive-rehype": "^0.4.2",
     "remark-gfm": "3.0.1",
+    "remark-unwrap-images": "^4.0.0",
     "rooks": "5.11.8",
     "rss": "^1.2.2",
     "smooth-scroll-into-view-if-needed": "^1.1.33",
