@@ -1,4 +1,5 @@
 import { InbaArticlesListSectionFragment } from '@backend/graphql'
+import { client } from '@backend/graphql/gql'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesDefaultFilters,
@@ -6,6 +7,7 @@ import {
 } from '@backend/meili/fetchers/inbaArticlesFetcher'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import InbaFeaturedArticlesSection from '@components/molecules/sections/general/InbaFeaturedArticlesSection'
+import InbaArticlesFilter from '@components/ui/InbaArticlesFilter/InbaArticlesFilter'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useQuery } from '@tanstack/react-query'
 import { generateImageSizes } from '@utils/generateImageSizes'
@@ -26,10 +28,13 @@ const InbaArticlesByTags = ({ section }: Props) => {
 
   const { title, text, featuredArticles } = section
 
-  // TODO filter by tags
-  // const tagIds = tags?.data.map((tag) => tag.id).filter(isDefined) ?? []
-
   const [filters, setFilters] = useRoutePreservedState({ ...inbaArticlesDefaultFilters })
+
+  const { data: tagData } = useQuery({
+    queryKey: ['InbaTags', locale],
+    queryFn: () => client.InbaTags({ locale }),
+    staleTime: Infinity,
+  })
 
   // TODO prefetch section
   const { data } = useQuery({
@@ -42,9 +47,16 @@ const InbaArticlesByTags = ({ section }: Props) => {
     setFilters({ ...filters, page })
   }
 
+  const handleTagFilterChange = (tags: string[]) => {
+    setFilters({ ...filters, tagIds: tags })
+  }
+
   return (
     <div className="flex flex-col gap-8">
-      {featuredArticles && <InbaFeaturedArticlesSection articles={featuredArticles.data} />}
+      {featuredArticles?.data.length ? (
+        <InbaFeaturedArticlesSection articles={featuredArticles.data} />
+      ) : null}
+      <InbaArticlesFilter tags={tagData?.inbaTags?.data || []} onChange={handleTagFilterChange} />
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <h2 className="text-h2">{title}</h2>}
