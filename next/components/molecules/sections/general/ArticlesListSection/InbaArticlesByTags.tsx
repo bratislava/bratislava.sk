@@ -33,7 +33,7 @@ const InbaArticlesByTags = ({ section }: Props) => {
   const { data: tagData } = useQuery({
     queryKey: ['InbaTags', locale],
     queryFn: () => client.InbaTags({ locale }),
-    // staleTime: Infinity, // The data are static and don't need to be reloaded.
+    staleTime: Infinity,
   })
 
   // TODO prefetch section
@@ -57,9 +57,9 @@ const InbaArticlesByTags = ({ section }: Props) => {
         <InbaFeaturedArticlesSection articles={featuredArticles.data} />
       ) : null}
       <InbaArticlesFilter
+        subtext=""
         tags={tagData?.inbaTags?.data}
-        handleChange={handleTagFilterChange}
-        subtitle=""
+        onChange={handleTagFilterChange}
       />
       {title || text ? (
         <div className="flex flex-col gap-2">

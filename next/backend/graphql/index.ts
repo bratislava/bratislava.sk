@@ -12619,13 +12619,11 @@ export const InbaTagsDocument = gql`
   query InbaTags($locale: I18NLocaleCode!) {
     inbaTags(locale: $locale) {
       data {
-        id
-        attributes {
-          title
-        }
+        ...InbaTagEntity
       }
     }
   }
+  ${InbaTagEntityFragmentDoc}
 `
 export const InbaReleaseBySlugDocument = gql`
   query InbaReleaseBySlug($slug: String!) {
