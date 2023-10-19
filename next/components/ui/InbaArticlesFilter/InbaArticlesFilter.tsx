@@ -1,9 +1,10 @@
 import { InbaTagEntityFragment } from '@backend/graphql'
 import Chip from '@components/forms/simple-components/Chip'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
-import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
+import { Label, Selection, Tag, TagGroup, TagList, Text } from 'react-aria-components'
 
 export interface InbaArticlesFilterProps {
   tags: InbaTagEntityFragment[]
@@ -48,7 +49,12 @@ const InbaArticlesFilter = ({
                   return null
                 }
                 return (
-                  <Chip variant="large" key={tag.id} id={tag.id}>
+                  <Chip
+                    variant="large"
+                    key={tag.id}
+                    id={tag.id}
+                    style={getCategoryColorLocalStyle({ category: 'main' })}
+                  >
                     {tag.attributes.title}
                   </Chip>
                 )
@@ -62,7 +68,9 @@ const InbaArticlesFilter = ({
             <TagGroup selectionMode="multiple">
               <TagList className="flex flex-wrap gap-2 lg:justify-center">
                 {subCategories.filter(isDefined).map((subcategoryName) => (
-                  <Chip variant="small">{subcategoryName}</Chip>
+                  <Chip variant="small" style={getCategoryColorLocalStyle({ category: 'main' })}>
+                    {subcategoryName}{' '}
+                  </Chip>
                 ))}
               </TagList>
             </TagGroup>
