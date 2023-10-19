@@ -56,11 +56,7 @@ const InbaArticlesByTags = ({ section }: Props) => {
       {featuredArticles?.data.length ? (
         <InbaFeaturedArticlesSection articles={featuredArticles.data} />
       ) : null}
-      <InbaArticlesFilter
-        subtext=""
-        tags={tagData?.inbaTags?.data}
-        onChange={handleTagFilterChange}
-      />
+      <InbaArticlesFilter tags={tagData?.inbaTags?.data || []} onChange={handleTagFilterChange} />
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <h2 className="text-h2">{title}</h2>}

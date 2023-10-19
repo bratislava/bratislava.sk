@@ -3,10 +3,10 @@ import Chip from '@components/forms/simple-components/Chip'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
-import { Label, Selection, Tag, TagGroup, TagList, Text } from 'react-aria-components'
+import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
 export interface InbaArticlesFilterProps {
-  tags?: InbaTagEntityFragment[]
+  tags: InbaTagEntityFragment[]
   subCategories?: string[]
   subtext?: string
   onChange: (tags: string[]) => void
@@ -23,11 +23,11 @@ const InbaArticlesFilter = ({
   onChange,
 }: InbaArticlesFilterProps) => {
   const t = useTranslations('ArticleFilter')
-  const [selectedFilters, setSelectedFilters] = useState<Selection>(new Set<string>())
+  const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
-  const updateArticleFilters = useEffect(() => {
-    onChange(Array.from(selectedFilters, (item) => item.toString()))
-  }, [selectedFilters])
+  useEffect(() => {
+    onChange(Array.from(selectedTags, (item) => item.toString()))
+  }, [selectedTags])
 
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px]  lg:gap-10 lg:py-18">
@@ -38,15 +38,22 @@ const InbaArticlesFilter = ({
       <div>
         <TagGroup
           selectionMode="multiple"
-          selectedKeys={selectedFilters}
-          onSelectionChange={setSelectedFilters}
+          selectedKeys={selectedTags}
+          onSelectionChange={setSelectedTags}
         >
           <TagList className="flex flex-wrap gap-3 lg:justify-center">
-            {tags?.filter(isDefined).map((tag) => (
-              <Chip variant="large" key={tag.id} id={tag.id || ''}>
-                {tag.attributes?.title}
-              </Chip>
-            ))}
+            {tags
+              .map((tag: InbaTagEntityFragment) => {
+                if (!tag.id || !tag.attributes) {
+                  return null
+                }
+                return (
+                  <Chip variant="large" key={tag.id} id={tag.id}>
+                    {tag.attributes.title}
+                  </Chip>
+                )
+              })
+              .filter(isDefined)}
           </TagList>
         </TagGroup>
         {subCategories?.length ? (
