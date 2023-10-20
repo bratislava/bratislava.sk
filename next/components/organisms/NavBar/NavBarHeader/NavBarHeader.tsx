@@ -10,12 +10,15 @@ import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
 type NavBarProps = { className?: string }
 
-const Divider = ({ className }: { className?: string }) => {
+const NavBarAuthHeader = dynamic(() => import('./NavBarAuthHeader'), { ssr: false })
+
+export const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
@@ -60,11 +63,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               return null
             })}
 
-          {accountLink ? (
-            <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
-          ) : (
-            <Divider />
-          )}
+          <NavBarAuthHeader />
 
           <MLink href={t('searchLink')} className="-mx-4 p-4">
             <SearchIcon />
