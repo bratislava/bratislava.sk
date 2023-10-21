@@ -65,10 +65,10 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   ])
 
   const page = pages?.data?.[0]
+
   if (!page) return { notFound: true }
 
   const dehydratedState = await prefetchPageSections(page, locale)
-
   return {
     props: {
       general,
@@ -81,6 +81,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
+  console.log(page, dehydratedState)
   const {
     slug,
     title: pageTitle,
@@ -104,6 +105,8 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
   ) as Localizations
 
   const title = useTitle(pageTitle)
+
+  console.log(page?.attributes?.pageCategory?.data?.attributes?.color)
 
   return (
     <Hydrate state={dehydratedState}>

@@ -11,8 +11,6 @@ const NavBarAuthHeader = () => {
   const { header } = general?.data?.attributes ?? {}
   const { accountLink } = header ?? {}
 
-  console.log(accountLink)
-
   const user = useUser()
 
   return user ? (
