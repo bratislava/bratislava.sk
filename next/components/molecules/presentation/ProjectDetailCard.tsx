@@ -18,8 +18,6 @@ interface Props {
 export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVote }: Props) => {
   const { isAuthenticated } = useServerSideAuth()
 
-  console.log(votesCount, voted)
-
   return (
     <CardBase variant={null} className="h-full w-96 bg-gray-50">
       <CardContent className="grow justify-between">

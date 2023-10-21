@@ -11,10 +11,10 @@ const NavBarAuthHeader = () => {
   const { header } = general?.data?.attributes ?? {}
   const { accountLink } = header ?? {}
 
-  const user = useUser()
+  const { user, signOut } = useUser()
 
   return user ? (
-    <UserProfilePhoto userData={user.attributes} />
+    <UserProfilePhoto signOut={signOut} userData={user.attributes} />
   ) : accountLink ? (
     <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
   ) : (

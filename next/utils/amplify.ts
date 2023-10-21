@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // @aws-amplify/auth & @aws-amplify/core are part of aws-amplify & safe enough to import here like this
 // this import fixes issues with Jest not being able to parse esm lib imported in the root of aws-amplify
+import { useServerSideAuth } from '@components/providers/ServerSideAuthProvider'
 import { Amplify, Auth } from 'aws-amplify'
 import { useEffect, useState } from 'react'
 
@@ -60,14 +61,23 @@ export const getCurrentAuthenticatedUser = async () => {
 export const useUser = () => {
   const [user, setUser] = useState(null)
 
+  const { userData } = useServerSideAuth()
+
   const getUser = async () => {
     const currentUser = await getCurrentAuthenticatedUser()
     setUser(currentUser)
   }
 
+  const signOut = async () => {
+    await Auth.signOut()
+    setUser(null)
+  }
+
   useEffect(() => {
-    getUser()
+    if (!userData) {
+      getUser()
+    }
   }, [])
 
-  return user
+  return { signOut, user: userData || user }
 }
