@@ -4,8 +4,7 @@
 import { Amplify, Auth } from 'aws-amplify'
 import { useEffect, useState } from 'react'
 
-// TODO once env handling is merged update not to use process.env directly
-Amplify.configure({
+export const awsConfig = {
   Auth: {
     // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
     identityPoolId: process.env.NEXT_PUBLIC_COGNITO_IDENTITY_POOL_ID,
@@ -27,7 +26,10 @@ Amplify.configure({
     signUpVerificationMethod: 'code',
   },
   ssr: true,
-})
+}
+
+// TODO once env handling is merged update not to use process.env directly
+Amplify.configure(awsConfig)
 
 // if anything happens when getting the token, does nothing - may swallow errors
 export const getAccessToken = async () => {

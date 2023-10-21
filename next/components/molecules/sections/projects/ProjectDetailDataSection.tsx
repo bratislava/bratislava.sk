@@ -7,7 +7,7 @@ const ProjectDetailDataSection = ({ data }) => {
 
       <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-2">
         {data.map((item) => (
-          <ProjectDetailDataCard label={item.label} value={item.value} />
+          <ProjectDetailDataCard key={item.label} label={item.label} value={item.value} />
         ))}
       </div>
     </>

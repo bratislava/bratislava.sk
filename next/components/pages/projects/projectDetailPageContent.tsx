@@ -1,9 +1,11 @@
 import { IProjectDetail } from '@backend/dtos/projectDto'
+import { downvoteProject, upvoteProject } from '@backend/utils/temporary'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { ProjectDetailCard } from '@components/molecules/presentation/ProjectDetailCard'
 import ProjectDetailDataSection from '@components/molecules/sections/projects/ProjectDetailDataSection'
 import ProjectDetailTimelineSection from '@components/molecules/sections/projects/ProjectDetailTimelineSection'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 
 const breadcrumbs = [
   {
@@ -23,8 +25,19 @@ const ProjectDetailPageContent = ({
   thumbnail,
   votesCount,
   category,
+  voted,
 }: IProjectDetail) => {
   const t = useTranslations()
+  const [voteData, setVoteData] = useState({ votesCount, voted })
+
+  const onVote = async () => {
+    console.log(voted)
+    const res = await (voted ? downvoteProject(id) : upvoteProject(id))
+    console.log(res)
+    if (res.data) {
+      setVoteData({ votesCount: res.data.votesCount, voted: res.data.voted })
+    }
+  }
 
   return (
     <>
@@ -50,11 +63,13 @@ const ProjectDetailPageContent = ({
 
             <ProjectDetailTimelineSection timeline={['Plant a tree', 'Do something else']} />
           </div>
+
           <ProjectDetailCard
-            id={id}
             dateMonth={dateMonth}
             dateYear={dateYear}
-            votesCount={votesCount}
+            votesCount={voteData.votesCount}
+            voted={voteData.voted}
+            onVote={onVote}
           />
         </div>
       </div>

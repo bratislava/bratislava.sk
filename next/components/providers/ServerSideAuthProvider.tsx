@@ -1,10 +1,11 @@
 // TODO remove eslint-disable when types are fixed in amplify-js v6 release
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { awsConfig } from '@utils/amplify'
 import { withSSRContext } from 'aws-amplify'
-import { UserData } from 'backend/dtos/userDto'
+import { AccountType, Tier, UserData } from 'backend/dtos/userDto'
 import { GetServerSidePropsContext } from 'next'
-import { ComponentType, createContext } from 'react'
+import { ComponentType, createContext, useContext } from 'react'
 
 export interface GetSSRCurrentAuth {
   userData: UserData | null
@@ -16,6 +17,7 @@ export const getSSRCurrentAuth = async (
   req: GetServerSidePropsContext['req'],
 ): Promise<GetSSRCurrentAuth> => {
   const SSR = withSSRContext({ req })
+  SSR.Auth.configure(awsConfig)
   let userData = null
   try {
     const currentUser = await SSR.Auth.currentAuthenticatedUser()
@@ -60,4 +62,27 @@ export const ServerSideAuthProviderHOC = <
       <Wrapped {...props} />
     </ServerSideAuthContext.Provider>
   )
+}
+
+export const useServerSideAuth = () => {
+  const serverSideAuthContext = useContext(ServerSideAuthContext)
+  const { userData } = serverSideAuthContext
+  const tier = userData?.['custom:tier']
+
+  return {
+    ...serverSideAuthContext,
+    isAuthenticated: !!userData,
+    accountType: userData?.['custom:account_type'],
+    // helper, since we usually determine what to display this way, slightly convoluted because of ts rules & undefined vs boolean
+    isLegalEntity: userData?.['custom:account_type']
+      ? [AccountType.FyzickaOsobaPodnikatel, AccountType.PravnickaOsoba].includes(
+          userData?.['custom:account_type'],
+        )
+      : false,
+    tierStatus: {
+      tier,
+      isIdentityVerified: tier === Tier.IDENTITY_CARD || tier === Tier.EID,
+      isIdentityVerificationNotYetAttempted: !tier || tier === Tier.NEW,
+    },
+  }
 }

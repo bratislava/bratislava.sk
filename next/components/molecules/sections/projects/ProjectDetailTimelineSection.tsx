@@ -17,7 +17,7 @@ const ProjectDetailTimelineSection = ({ timeline }) => {
     <>
       <h3 className="text-h4 mb-3 line-clamp-4">Časová os projektu</h3>
       {timeline.map((item, index) => (
-        <TimelineItem name={item} index={index} />
+        <TimelineItem key={item} name={item} index={index} />
       ))}
     </>
   )

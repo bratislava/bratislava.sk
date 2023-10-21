@@ -1,14 +1,17 @@
-import { error } from 'node:console'
-
 import { IProjectDetail } from '@backend/dtos/projectDto'
 import { Enum_Pagecategory_Color, GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import { fetchProject } from '@backend/utils/temporary'
 import ProjectDetailPageContent from '@components/pages/projects/projectDetailPageContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
+import {
+  GetSSRCurrentAuth,
+  getSSRCurrentAuth,
+  ServerSideAuthProviderHOC,
+} from '@components/providers/ServerSideAuthProvider'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
-import { GetServerSideProps } from 'next'
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
@@ -18,9 +21,10 @@ import PageLayout from '../../components/layouts/PageLayout'
 type PageProps = {
   general: GeneralQuery
   project: IProjectDetail
+  ssrCurrentAuthProps: GetSSRCurrentAuth
 }
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params, locale }) => {
+export const getServerSideProps = async ({ req, params, locale }: GetServerSidePropsContext) => {
   // eslint-disable-next-line no-console
   console.log(`Revalidating search ${locale}.`)
 
@@ -34,6 +38,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params
 
   return {
     props: {
+      ssrCurrentAuthProps: await getSSRCurrentAuth(req),
       general,
       project: projectQuery?.data,
       messages: messages.default,
@@ -41,7 +46,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params
   }
 }
 
-const Page = ({ general, project }: PageProps) => {
+const Page = ({ general, project }): GetServerSidePropsResult<PageProps> => {
   const t = useTranslations()
 
   return (
@@ -60,4 +65,4 @@ const Page = ({ general, project }: PageProps) => {
   )
 }
 
-export default Page
+export default ServerSideAuthProviderHOC<PageProps>(Page as React.ComponentType<PageProps>)

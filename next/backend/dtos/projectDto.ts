@@ -31,4 +31,5 @@ export interface IProjectDetail {
   votesCount: number
   description?: string
   category?: string
+  voted?: boolean
 }

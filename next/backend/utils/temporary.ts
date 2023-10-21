@@ -21,3 +21,31 @@ export const fetchProject = async (id: string) => {
 
   return axios.get(`${process.env.NEXT_PUBLIC_TEMPORARY_API}user/projects/${id}`, axiosConfig)
 }
+
+export const upvoteProject = async (id: number) => {
+  const axiosConfig: AxiosRequestConfig = {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  }
+
+  return axios.put(
+    `${process.env.NEXT_PUBLIC_TEMPORARY_API}user/projects/${id}/up`,
+    {},
+    axiosConfig,
+  )
+}
+
+export const downvoteProject = async (id: number) => {
+  const axiosConfig: AxiosRequestConfig = {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  }
+
+  return axios.put(
+    `${process.env.NEXT_PUBLIC_TEMPORARY_API}user/projects/${id}/down`,
+    {},
+    axiosConfig,
+  )
+}
