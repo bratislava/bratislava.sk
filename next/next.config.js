@@ -29,6 +29,10 @@ const nextConfig = {
         hostname: 'api.tootoot.co',
         pathname: '/api/event/*/images/*/*/*/(AUTO|WIDTH|HEIGHT|MINSIDE)',
       },
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
   output: 'standalone',

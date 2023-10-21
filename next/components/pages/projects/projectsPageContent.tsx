@@ -1,8 +1,15 @@
+import { IProjectsQueryData } from '@backend/dtos/projectDto'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import ProjectCard from '@components/molecules/presentation/ProjectCard'
 import SearchField from 'components/forms/widget-components/SearchField/SearchField'
+import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
+
+const itemsPerPageDesktop = 10
+interface Props {
+  data?: IProjectsQueryData
+}
 
 const breadcrumbs = [
   {
@@ -10,8 +17,18 @@ const breadcrumbs = [
     path: '/zivotne-prostredie-a-vystavba',
   },
 ]
-const ProjectsPageContent = () => {
+const ProjectsPageContent = ({ data }: Props) => {
   const t = useTranslations()
+  const router = useRouter()
+
+  const { total, currentPage } = data.paginationInfo
+
+  const onChangePage = async (page: number) => {
+    await router.push({
+      pathname: router.pathname,
+      query: { ...router.query, page },
+    })
+  }
 
   return (
     <>
@@ -21,20 +38,16 @@ const ProjectsPageContent = () => {
         <SearchField placeholder="Placeholder" />
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3 ">
-          <ProjectCard title="title" text="Textas da sd a" />
-          <ProjectCard title="title" />
-          <ProjectCard title="title" />
-          <ProjectCard title="title" />
+          {data?.projects?.map((project) => (
+            <ProjectCard key={project.id} {...project} />
+          ))}
         </div>
 
         <div className="mb-12 mt-8">
           <Pagination
-            // totalCount={Math.ceil(documents.length / itemsPerPageDesktop)}
-            totalCount={10}
-            // currentPage={currentPage}
-            currentPage={1}
-            // onPageChange={setCurrentPage}
-            onPageChange={() => {}}
+            totalCount={Math.ceil(total / itemsPerPageDesktop)}
+            currentPage={+currentPage}
+            onPageChange={onChangePage}
           />
         </div>
       </div>

@@ -1,4 +1,9 @@
-const TimelineItem = ({ name, index }) => (
+interface Props {
+  name: string
+  index: number
+}
+
+const TimelineItem = ({ name, index }: Props) => (
   <div className="mb-4 flex items-center gap-3 last-of-type:mb-0 ">
     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-700 p-2 font-bold text-gray-0">
       {index + 1}
