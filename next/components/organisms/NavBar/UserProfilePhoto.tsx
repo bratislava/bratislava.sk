@@ -1,7 +1,7 @@
 import { ChevronDownSmallIcon, HelpIcon, LogoutIcon, ProfileIcon } from '@assets/ui-icons'
 import MenuDropdown, {
   MenuItemBase,
-} from '@components/forms/simple-components/MenuDropdown/MenuDropDown'
+} from '@components/forms/simple-components/MenuDropdown/MenuDropdown'
 import { UserData } from 'backend/dtos/userDto'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'

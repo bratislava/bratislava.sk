@@ -1,7 +1,7 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import Link from 'next/link'
 
-import { MenuItemBase } from './MenuDropDown'
+import { MenuItemBase } from './MenuDropdown'
 
 const HeaderMenuItem = ({ title, icon, url, onPress }: MenuItemBase) => {
   return url ? (
