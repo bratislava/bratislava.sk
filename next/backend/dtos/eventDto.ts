@@ -6,7 +6,8 @@ export interface IEvent {
   program: string
   place: string
   phase: string
-  date: string
+  startDate: string
+  dateEnd: string
   latitude: number
   longitude: number
   thumbnail: string

@@ -15,8 +15,8 @@ const mockMenuObj: MenuSection = {
       url: '/zivotne-prostredie-a-vystavba/climathon/kviz',
     },
     {
-      label: 'Events',
-      url: '/eventy',
+      label: 'Udalosti',
+      url: '/udalosti',
     },
     {
       label: 'Projekty',
