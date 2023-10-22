@@ -32,12 +32,16 @@ const EventsPageContent = ({ data }: Props) => {
 
   return (
     <>
-      <PageHeader title="Udržateľné projekty v našom meste" breadcrumbs={breadcrumbs} />
+      <PageHeader title="Podujatia" breadcrumbs={breadcrumbs} />
 
       <div className="mx-auto mt-4 max-w-screen-xl px-4 md:mt-8 lg:px-8">
         <SearchField placeholder="Placeholder" />
 
-        <div className="m-4 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-3 md:gap-8 ">
+        <div className="mb-4 mt-8 flex items-center justify-between">
+          <h2 className="font-light text-gray-700">{t('eventsFound', { total })}</h2>
+        </div>
+
+        <div className="my-4 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-3 md:gap-8 ">
           {data?.events?.map((event) => (
             <EventCard key={event.id} {...event} />
           ))}

@@ -1,11 +1,9 @@
-import { IProjectDetail } from '@backend/dtos/projectDto'
-import { downvoteProject, upvoteProject } from '@backend/utils/temporary'
+import { IEventDetail } from '@backend/dtos/eventDto'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import { ProjectDetailCard } from '@components/molecules/presentation/ProjectDetailCard'
-import ProjectDetailDataSection from '@components/molecules/sections/projects/ProjectDetailDataSection'
-import ProjectDetailTimelineSection from '@components/molecules/sections/projects/ProjectDetailTimelineSection'
+import { EventDetailCard } from '@components/molecules/presentation/EventDetailCard'
+import { formatDate } from '@utils/local-date'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
 
 const breadcrumbs = [
   {
@@ -13,62 +11,51 @@ const breadcrumbs = [
     path: '/zivotne-prostredie-a-vystavba',
   },
 ]
-const ProjectDetailPageContent = ({
-  name,
+
+const Divider = () => <div className="my-8 h-1 w-full border-b  border-gray-200" />
+
+const EventDetailPageContent = ({
+  title,
   description,
-  id,
-  amount,
-  place,
-  phase,
-  dateMonth,
-  dateYear,
+  availableTickets,
+  startDate,
   thumbnail,
-  votesCount,
-  category,
-  voted,
-}: IProjectDetail) => {
+  program,
+  address,
+}: IEventDetail) => {
   const t = useTranslations()
-  const [voteData, setVoteData] = useState({ votesCount, voted })
 
-  const onVote = async () => {
-    const res = await (voted ? downvoteProject(id) : upvoteProject(id))
-
-    if (res.data) {
-      setVoteData({ votesCount: res.data.votesCount, voted: res.data.voted })
-    }
-  }
+  const onAdd = () => {}
 
   return (
     <>
-      <PageHeader title={name} breadcrumbs={breadcrumbs} imageSrc={thumbnail} />
+      <PageHeader breadcrumbs={breadcrumbs} />
 
       <div className="mx-auto mb-8 mt-12 max-w-screen-xl px-4 lg:px-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-28">
           <div className="flex-1">
-            <h3 className="text-h4 mb-3 line-clamp-4">Popis projektu</h3>
+            <div className="relative mb-8 h-66 w-full overflow-hidden rounded-xl">
+              <Image src={thumbnail} alt="" fill className="absolute object-cover" />
+            </div>
 
+            <p className="text-default mb-2 font-semibold">{formatDate(startDate)}</p>
+
+            <h1 className="text-h4 mb-8 line-clamp-4">{title}</h1>
+
+            <h3 className="text-h4 mb-4 line-clamp-4">Popis udalosti</h3>
             <p>{description}</p>
 
-            <div className="my-6 h-1 w-full border-b  border-gray-200" />
+            <Divider />
 
-            <ProjectDetailDataSection
-              data={[
-                { label: 'Hodnota projektu', value: amount },
-                { label: 'Stav projektu', value: phase },
-                { label: 'Kategória', value: category },
-                { label: 'Mestská časť', value: place },
-              ]}
-            />
-
-            <ProjectDetailTimelineSection timeline={['Plant a tree', 'Do something else']} />
+            <h3 className="text-h4 mb-4 line-clamp-4">Program</h3>
+            <p>{program}</p>
           </div>
 
-          <ProjectDetailCard
-            dateMonth={dateMonth}
-            dateYear={dateYear}
-            votesCount={voteData.votesCount}
-            voted={voteData.voted}
-            onVote={onVote}
+          <EventDetailCard
+            startDate={startDate}
+            address={address}
+            availableTickets={availableTickets}
+            onAdd={onAdd}
           />
         </div>
       </div>
@@ -76,4 +63,4 @@ const ProjectDetailPageContent = ({
   )
 }
 
-export default ProjectDetailPageContent
+export default EventDetailPageContent

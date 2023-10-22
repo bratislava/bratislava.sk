@@ -39,7 +39,7 @@ export interface IEventDetail {
   program: string
   place: string
   phase: string
-  date: string
+  startDate: string
   latitude: number
   longitude: number
   thumbnail: string

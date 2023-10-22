@@ -56,7 +56,7 @@ const Page = ({ general, event }): GetServerSidePropsResult<PageProps> => {
           <title>{event.name}</title>
         </Head>
 
-        <GlobalCategoryColorProvider color={Enum_Pagecategory_Color.Green} />
+        <GlobalCategoryColorProvider color={Enum_Pagecategory_Color.Yellow} />
         <PageLayout>
           <EventDetailPageContent {...event} />
         </PageLayout>

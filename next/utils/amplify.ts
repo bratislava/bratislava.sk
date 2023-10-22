@@ -65,7 +65,7 @@ export const useUser = () => {
 
   const getUser = async () => {
     const currentUser = await getCurrentAuthenticatedUser()
-    setUser(currentUser)
+    setUser(currentUser.attributes)
   }
 
   const signOut = async () => {

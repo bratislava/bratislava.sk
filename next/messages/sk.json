@@ -10,6 +10,7 @@
   "menu_profile_link": "Môj profil",
   "menu_help_link": "Pomoc",
   "menu_logout_link": "Odhlásiť sa",
+  "eventsFound": "Zobrazujeme {total} podujatí",
   "events": "Udalosti",
   "modal_close_aria": "Zavrieť",
   "e_services": "E-služby",
