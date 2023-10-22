@@ -2,7 +2,6 @@ import { ChevronDownSmallIcon, HelpIcon, LogoutIcon, ProfileIcon } from '@assets
 import MenuDropdown, {
   MenuItemBase,
 } from '@components/forms/simple-components/MenuDropdown/MenuDropDown'
-import { Auth } from 'aws-amplify'
 import { UserData } from 'backend/dtos/userDto'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'

@@ -1,6 +1,8 @@
 import { AddToPhotosIcon, ThumbsUpIcon } from '@assets/ui-icons'
+import RegistrationModal from '@components/forms/segments/RegistrationModal/RegistrationModal'
 import Button from '@components/forms/simple-components/Button'
 import { useServerSideAuth } from '@components/providers/ServerSideAuthProvider'
+import { useState } from 'react'
 
 import CardBase from './CardBase'
 import CardContent from './CardContent'
@@ -11,66 +13,58 @@ interface Props {
   dateMonth: string
   dateYear: number
   votesCount: number
-  onVote: () => void
+  onVote: () => Promise<void>
   voted?: boolean
 }
 
 export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVote }: Props) => {
   const { isAuthenticated } = useServerSideAuth()
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <CardBase variant={null} className="h-full w-96 bg-gray-50">
-      <CardContent className="grow justify-between">
-        <div className="flex flex-col">
-          <h4 className="text-default line-clamp-3 group-hover:underline">Aktuálny počet hlasov</h4>
-          <div className="mt-2 line-clamp-4 text-font">{votesCount}</div>
-        </div>
+    <>
+      <RegistrationModal isOpen={isOpen} onOpenChange={(value) => setIsOpen(!!value)} />
 
-        <Divider />
-
-        <div className="flex flex-col">
-          <h4 className="text-default line-clamp-3 group-hover:underline">
-            Dátum ukončenie hlasovania
-          </h4>
-          <div className="mt-2 line-clamp-4 text-font">
-            {dateMonth} {dateYear}
+      <CardBase variant={null} className="h-full bg-gray-50 lg:w-96">
+        <CardContent className="grow justify-between">
+          <div className="flex flex-col">
+            <h4 className="text-default line-clamp-3">Aktuálny počet hlasov</h4>
+            <div className="mt-2 line-clamp-4 text-font">{votesCount}</div>
           </div>
-        </div>
 
-        <Divider />
+          <Divider />
 
-        <h4 className="text-default line-clamp-3 group-hover:underline">Páči sa vám projekt?</h4>
+          <div className="flex flex-col">
+            <h4 className="text-default line-clamp-3">Dátum ukončenie hlasovania</h4>
+            <div className="mt-2 line-clamp-4 text-font">
+              {dateMonth} {dateYear}
+            </div>
+          </div>
 
-        {isAuthenticated ? (
+          <Divider />
+
+          <h4 className="text-default line-clamp-3">Páči sa vám projekt?</h4>
+
           <Button
             className="my-3 w-full"
             size="sm"
             variant="category"
             startIcon={<ThumbsUpIcon />}
-            onPress={onVote}
+            onPress={isAuthenticated ? onVote : () => setIsOpen(true)}
           >
             {voted ? 'Ďakujeme za váš hlas' : 'Podporiť projekt hlasom'}
           </Button>
-        ) : (
+
           <Button
-            className="my-3 w-full"
+            className="w-full"
             size="sm"
-            variant="category"
-            href="http://localhost:3001/prihlasenie"
-            startIcon={<ThumbsUpIcon />}
+            variant="category-outline"
+            startIcon={<AddToPhotosIcon />}
           >
-            Prihlaste sa a podporte projekt
+            Podporit projekt hlasom
           </Button>
-        )}
-        <Button
-          className="my-3 w-full"
-          size="sm"
-          variant="category-outline"
-          startIcon={<AddToPhotosIcon />}
-        >
-          Podporit projekt hlasom
-        </Button>
-      </CardContent>
-    </CardBase>
+        </CardContent>
+      </CardBase>
+    </>
   )
 }

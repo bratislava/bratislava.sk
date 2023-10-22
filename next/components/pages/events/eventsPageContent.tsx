@@ -1,14 +1,14 @@
-import { IProjectsQueryData } from '@backend/dtos/projectDto'
+import { IEventsQueryData } from '@backend/dtos/eventDto'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
-import ProjectCard from '@components/molecules/presentation/ProjectCard'
+import EventCard from '@components/molecules/presentation/EventsCard'
 import SearchField from 'components/forms/widget-components/SearchField/SearchField'
 import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
 
 const itemsPerPageDesktop = 10
 interface Props {
-  data?: IProjectsQueryData
+  data?: IEventsQueryData
 }
 
 const breadcrumbs = [
@@ -17,7 +17,7 @@ const breadcrumbs = [
     path: '/zivotne-prostredie-a-vystavba',
   },
 ]
-const ProjectsPageContent = ({ data }: Props) => {
+const EventsPageContent = ({ data }: Props) => {
   const t = useTranslations()
   const router = useRouter()
 
@@ -38,8 +38,8 @@ const ProjectsPageContent = ({ data }: Props) => {
         <SearchField placeholder="Placeholder" />
 
         <div className="m-4 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-3 md:gap-8 ">
-          {data?.projects?.map((project) => (
-            <ProjectCard key={project.id} {...project} />
+          {data?.events?.map((event) => (
+            <EventCard key={event.id} {...event} />
           ))}
         </div>
 
@@ -55,4 +55,4 @@ const ProjectsPageContent = ({ data }: Props) => {
   )
 }
 
-export default ProjectsPageContent
+export default EventsPageContent

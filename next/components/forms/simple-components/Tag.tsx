@@ -7,10 +7,18 @@ type TagProps = {
   size?: 'small' | 'large'
   isColored?: boolean
   shorthand?: boolean
+  className?: string
   onRemove?: () => void
 }
 
-const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: TagProps) => {
+const Tag = ({
+  text,
+  size = 'small',
+  isColored = false,
+  shorthand,
+  className,
+  onRemove,
+}: TagProps) => {
   const isRemovable = !!onRemove
 
   // STYLES
@@ -21,6 +29,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
     'text-gray-700': isRemovable || !isColored,
     'bg-category-100': !isRemovable && isColored,
     'text-category-700': !isRemovable && isColored,
+    className,
   })
 
   const iconClassStyles = cx({

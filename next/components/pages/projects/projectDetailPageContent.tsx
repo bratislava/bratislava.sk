@@ -31,9 +31,8 @@ const ProjectDetailPageContent = ({
   const [voteData, setVoteData] = useState({ votesCount, voted })
 
   const onVote = async () => {
-    console.log(voted)
     const res = await (voted ? downvoteProject(id) : upvoteProject(id))
-    console.log(res)
+
     if (res.data) {
       setVoteData({ votesCount: res.data.votesCount, voted: res.data.voted })
     }
@@ -44,7 +43,7 @@ const ProjectDetailPageContent = ({
       <PageHeader title={name} breadcrumbs={breadcrumbs} imageSrc={thumbnail} />
 
       <div className="mx-auto mb-8 mt-12 max-w-screen-xl px-4 lg:px-8">
-        <div className="flex gap-28">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-28">
           <div className="flex-1">
             <h3 className="text-h4 mb-3 line-clamp-4">Popis projektu</h3>
 
