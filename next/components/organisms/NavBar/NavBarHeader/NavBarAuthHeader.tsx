@@ -17,7 +17,7 @@ const NavBarAuthHeader = () => {
   })
 
   return user ? (
-    <UserProfilePhoto signOut={signOut} userData={user.attributes} />
+    <UserProfilePhoto signOut={signOut} userData={user} />
   ) : accountLink ? (
     <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
   ) : (

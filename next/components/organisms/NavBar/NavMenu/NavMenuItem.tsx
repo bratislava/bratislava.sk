@@ -8,15 +8,15 @@ import NavMenuTrigger from './NavMenuTrigger'
 import { MenuItem, MenuSection } from './navMenuTypes'
 
 const mockMenuObj: MenuSection = {
-  label: 'Our tools',
+  label: 'Udržateľnosť',
   items: [
     {
       label: 'Kviz',
       url: '/zivotne-prostredie-a-vystavba/climathon/kviz',
     },
     {
-      label: 'Events',
-      url: '/eventy',
+      label: 'Udalosti',
+      url: '/udalosti',
     },
     {
       label: 'Projekty',
