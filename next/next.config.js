@@ -22,16 +22,8 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'source.unsplash.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'api.tootoot.co',
         pathname: '/api/event/*/images/*/*/*/(AUTO|WIDTH|HEIGHT|MINSIDE)',
-      },
-      {
-        protocol: 'https',
-        hostname: '**',
       },
     ],
   },

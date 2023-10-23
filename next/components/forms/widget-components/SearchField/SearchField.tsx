@@ -9,7 +9,7 @@ import FieldHeader from '../../info-components/FieldHeader'
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
 interface InputBase {
-  label?: string
+  label: string
   placeholder: string
   errorMessage?: string[]
   helptext?: string
@@ -73,7 +73,7 @@ const SearchField = ({
   )
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full max-w-xs flex-col">
       <FieldHeader
         label={label}
         labelProps={labelProps}

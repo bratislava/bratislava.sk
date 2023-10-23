@@ -10,9 +10,6 @@
   "menu_profile_link": "Môj profil",
   "menu_help_link": "Pomoc",
   "menu_logout_link": "Odhlásiť sa",
-  "eventsFound": "Zobrazujeme {total} podujatí",
-  "events": "Udalosti",
-  "modal_close_aria": "Zavrieť",
   "e_services": "E-služby",
   "signin": "Prihlásenie",
   "signup": "Registrácia",
@@ -25,7 +22,6 @@
   "searchTheSite": "Vyhľadávanie na stránke",
   "search": "Hľadať",
   "searching": "Vyhľadávanie",
-  "projects": "Projekty",
   "articles": "Články",
   "pages": "Stránky",
   "documents": "Dokumenty",
@@ -248,13 +244,5 @@
   "ArticleFilter": {
     "articleFilter": "Filter článkov",
     "subcategories": "Podkategórie"
-  },
-  "RegistrationModal": {
-    "headerInitialTitle": "Projekt je možné podporiť až po prihlásení",
-    "headerInitialSubtitle": "Na to, aby ste formulár odoslali elektronicky, je potrebné vyplniť osobné údaje. Urobiť tak môžete cez mestské konto alebo použitím eID.",
-    "bodyTitle": "Vytvorte si mestské konto",
-    "bodyAction": "Vytvoriť mestské konto a podporiť projekt",
-    "bodyLoginDescription": "Máte už mestské konto?",
-    "bodyLoginLink": "Prihlásiť sa"
   }
 }
