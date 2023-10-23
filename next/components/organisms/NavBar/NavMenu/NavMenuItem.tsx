@@ -11,14 +11,6 @@ const mockMenuObj: MenuSection = {
   label: 'Udržateľnosť',
   items: [
     {
-      label: 'Kviz',
-      url: '/zivotne-prostredie-a-vystavba/climathon/kviz',
-    },
-    {
-      label: 'Udalosti',
-      url: '/udalosti',
-    },
-    {
       label: 'Projekty',
       url: '/udrzatelne-projekty',
     },

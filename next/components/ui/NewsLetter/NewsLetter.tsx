@@ -64,7 +64,17 @@ export const NewsLetter = ({
               id="newsletterCheckbox"
               className="border-gray-700/50"
               variant="circle"
-              content={checkBoxContent}
+              content={
+                <p
+                  className={cx(
+                    'text-default -mt-1',
+                    { 'text-font': isChecked },
+                    { 'text-font/50': !isChecked },
+                  )}
+                >
+                  {checkBoxContent}
+                </p>
+              }
               onChange={(ev) => setChecked?.(ev.target.checked)}
               checked={isChecked}
             />
