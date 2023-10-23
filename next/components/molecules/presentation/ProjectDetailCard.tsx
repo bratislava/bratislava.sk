@@ -2,6 +2,7 @@ import { AddToPhotosIcon, ThumbsUpIcon } from '@assets/ui-icons'
 import RegistrationModal from '@components/forms/segments/RegistrationModal/RegistrationModal'
 import Button from '@components/forms/simple-components/Button'
 import { useUser } from '@components/providers/ServerSideAuthStore'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import CardBase from './CardBase'
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVote }: Props) => {
+  const t = useTranslations()
   const { data: isAuthenticated } = useUser((state) => state.isAuthenticated)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,14 +30,14 @@ export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVo
       <CardBase variant={null} className="h-full bg-gray-50 lg:w-96">
         <CardContent className="grow justify-between">
           <div className="flex flex-col">
-            <h4 className="text-default line-clamp-3">Aktuálny počet hlasov</h4>
+            <h4 className="text-default line-clamp-3">{t('votesCount')}</h4>
             <div className="mt-2 line-clamp-4 text-font">{votesCount}</div>
           </div>
 
           <Divider />
 
           <div className="flex flex-col">
-            <h4 className="text-default line-clamp-3">Dátum ukončenie hlasovania</h4>
+            <h4 className="text-default line-clamp-3">{t('votingEndDate')}</h4>
             <div className="mt-2 line-clamp-4 text-font">
               {dateMonth} {dateYear}
             </div>
@@ -43,7 +45,7 @@ export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVo
 
           <Divider />
 
-          <h4 className="text-default line-clamp-3">Páči sa vám projekt?</h4>
+          <h4 className="text-default line-clamp-3">{t('doYouLikeThisProject')}</h4>
 
           <Button
             className="my-3 w-full"
@@ -52,7 +54,7 @@ export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVo
             startIcon={<ThumbsUpIcon />}
             onPress={isAuthenticated ? onVote : () => setIsOpen(true)}
           >
-            {voted ? 'Ďakujeme za váš hlas' : 'Podporiť projekt hlasom'}
+            {voted ? t('thanksForVote') : t('voteForProject')}
           </Button>
 
           <Button
@@ -61,7 +63,7 @@ export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVo
             variant="category-outline"
             startIcon={<AddToPhotosIcon />}
           >
-            Podporit projekt hlasom
+            {t('voteForProject')}
           </Button>
         </CardContent>
       </CardBase>

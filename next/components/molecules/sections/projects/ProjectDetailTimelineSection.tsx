@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 interface Props {
   name: string
   index: number
@@ -13,9 +15,11 @@ const TimelineItem = ({ name, index }: Props) => (
 )
 
 const ProjectDetailTimelineSection = ({ timeline }) => {
+  const t = useTranslations()
+
   return (
     <>
-      <h3 className="text-h4 mb-3 line-clamp-4">Časová os projektu</h3>
+      <h3 className="text-h4 mb-3 line-clamp-4">{t('projectTimeline')}</h3>
       {timeline.map((item, index) => (
         <TimelineItem key={item} name={item} index={index} />
       ))}

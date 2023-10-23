@@ -45,7 +45,7 @@ const ProjectDetailPageContent = ({
       <div className="mx-auto mb-8 mt-12 max-w-screen-xl px-4 lg:px-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-28">
           <div className="flex-1">
-            <h3 className="text-h4 mb-3 line-clamp-4">Popis projektu</h3>
+            <h3 className="text-h4 mb-3 line-clamp-4">{t('projectDescription')}</h3>
 
             <p>{description}</p>
 
@@ -53,10 +53,10 @@ const ProjectDetailPageContent = ({
 
             <ProjectDetailDataSection
               data={[
-                { label: 'Hodnota projektu', value: amount },
-                { label: 'Stav projektu', value: phase },
-                { label: 'Kategória', value: category },
-                { label: 'Mestská časť', value: place },
+                { label: t('projectValue'), value: amount },
+                { label: t('projectPhase'), value: phase },
+                { label: t('category'), value: category },
+                { label: t('cityPart'), value: place },
               ]}
             />
 

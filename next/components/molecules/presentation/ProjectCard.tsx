@@ -3,11 +3,14 @@ import { IProject } from '@backend/dtos/projectDto'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Button from '@components/forms/simple-components/Button'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import CardBase from './CardBase'
 import CardContent from './CardContent'
 
-const ProjectCard = ({ id, name, thumbnail, dateYear, phase, place, amount }: IProject) => {
+const ProjectCard = ({ id, name, thumbnail, dateYear, place, amount }: IProject) => {
+  const t = useTranslations()
+
   return (
     <CardBase variant={null} className="h-full bg-gray-50">
       <div className="relative aspect-16/10 shrink-0">
@@ -25,14 +28,14 @@ const ProjectCard = ({ id, name, thumbnail, dateYear, phase, place, amount }: IP
 
         <div className="mb-2 mt-4 flex items-center justify-between">
           <div className="text-default font-semibold leading-[1.5rem] text-font ">
-            Suma projektu
+            {t('projectPrice')}
           </div>
           <div className="text-default font-semibold leading-[1.5rem] text-font ">{amount} €</div>
         </div>
 
         <div className="flex items-center justify-between pb-4">
           <div className="text-default font-semibold leading-[1.5rem] text-font ">
-            Rok realizacie
+            {t('yearOfProject')}
           </div>
           <div className="text-default font-semibold leading-[1.5rem] text-font ">{dateYear}</div>
         </div>
@@ -46,7 +49,7 @@ const ProjectCard = ({ id, name, thumbnail, dateYear, phase, place, amount }: IP
           className="mt-3 no-underline lg:mt-5"
           endIcon={<ExportIcon />}
         >
-          Viac o projekte
+          {t('moreAboutProject')}
         </Button>
       </CardContent>
     </CardBase>
