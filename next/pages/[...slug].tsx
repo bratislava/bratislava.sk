@@ -81,7 +81,6 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  console.log(page, dehydratedState)
   const {
     slug,
     title: pageTitle,
@@ -105,8 +104,6 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
   ) as Localizations
 
   const title = useTitle(pageTitle)
-
-  console.log(page?.attributes?.pageCategory?.data?.attributes?.color)
 
   return (
     <Hydrate state={dehydratedState}>

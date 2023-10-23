@@ -7,8 +7,8 @@ import { LocalizationsProvider } from '@components/providers/LocalizationsProvid
 import {
   GetSSRCurrentAuth,
   getSSRCurrentAuth,
-  ServerSideAuthProviderHOC,
-} from '@components/providers/ServerSideAuthProvider'
+  ServerSideAuthStoreHOC,
+} from '@components/providers/ServerSideAuthStore'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
@@ -65,4 +65,4 @@ const Page = ({ general, project }): GetServerSidePropsResult<PageProps> => {
   )
 }
 
-export default ServerSideAuthProviderHOC<PageProps>(Page as React.ComponentType<PageProps>)
+export default ServerSideAuthStoreHOC<PageProps>(Page as React.ComponentType<PageProps>)

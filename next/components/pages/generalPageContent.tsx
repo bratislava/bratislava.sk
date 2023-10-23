@@ -15,7 +15,7 @@ export interface GeneralPageProps {
 
 const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
-  console.log(breadcrumbs)
+
   return (
     <>
       {/* Header */}

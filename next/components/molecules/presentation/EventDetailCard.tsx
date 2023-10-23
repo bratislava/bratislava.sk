@@ -1,7 +1,7 @@
 import { AddressIcon } from '@assets/images'
 import { ArrowRightIcon, CalendarIcon, ContactIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
-import { useServerSideAuth } from '@components/providers/ServerSideAuthProvider'
+import { useServerSideAuth } from '@components/providers/ServerSideAuthStore'
 import { formatDate } from '@utils/local-date'
 
 import CardBase from './CardBase'

@@ -1,7 +1,7 @@
 import { AddToPhotosIcon, ThumbsUpIcon } from '@assets/ui-icons'
 import RegistrationModal from '@components/forms/segments/RegistrationModal/RegistrationModal'
 import Button from '@components/forms/simple-components/Button'
-import { useUser } from '@components/providers/ServerSideAuthProvider'
+import { useUser } from '@components/providers/ServerSideAuthStore'
 import { useState } from 'react'
 
 import CardBase from './CardBase'
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export const ProjectDetailCard = ({ dateMonth, dateYear, votesCount, voted, onVote }: Props) => {
-  const { isAuthenticated } = useUser((state) => state.isAuthenticated)
+  const { data: isAuthenticated } = useUser((state) => state.isAuthenticated)
   const [isOpen, setIsOpen] = useState(false)
 
   return (

@@ -6,7 +6,7 @@ import { createStore } from '@utils/store'
 import { Auth, withSSRContext } from 'aws-amplify'
 import { AccountType, Tier, UserData } from 'backend/dtos/userDto'
 import { GetServerSidePropsContext } from 'next'
-import { ComponentType, createContext, useCallback, useEffect, useState } from 'react'
+import { ComponentType, useCallback, useEffect, useState } from 'react'
 
 export interface GetSSRCurrentAuth {
   userData: UserData | null
@@ -46,11 +46,19 @@ export const getSSRAccessToken = async (req: GetServerSidePropsContext['req']): 
   return ''
 }
 
-export const userStore = createStore({ userData: null })
+interface UserStoreProps {
+  userData: UserData | null
+  isAuthenticated?: boolean
+  accountType?: AccountType | null
+  isLegalEntity?: boolean
+  tierStatus?: {
+    tier: Tier | null
+    isIdentityVerified: boolean
+    isIdentityVerificationNotYetAttempted: boolean
+  }
+}
 
-export const ServerSideAuthContext = createContext<GetSSRCurrentAuth>({
-  userData: null,
-})
+export const userStore = createStore<UserStoreProps>({ userData: null })
 
 const setUserStore = (ssrCurrentAuthProps) => {
   const { userData } = ssrCurrentAuthProps || {}
@@ -78,10 +86,8 @@ const setUserStore = (ssrCurrentAuthProps) => {
   )
 }
 
-// only provides the data when given, does no further check on whether they are available. Thus, usable also for pages with optional auth
-export const ServerSideAuthProviderHOC = <
-  Props extends { ssrCurrentAuthProps?: GetSSRCurrentAuth },
->(
+// populates userStore with data from getSSRCurrentAuth when used with SSR pages otherwise it gets populated on useUser call
+export const ServerSideAuthStoreHOC = <Props extends { ssrCurrentAuthProps?: GetSSRCurrentAuth }>(
   Wrapped: ComponentType<Props>,
 ) => {
   // eslint-disable-next-line react/function-component-definition
@@ -93,6 +99,7 @@ export const ServerSideAuthProviderHOC = <
   }
 }
 
+// store function to select only needed values and subscribe to changes only to that information (IMPORTANT: it won't rerender on every change, only on selected values change)
 const useStoreSelector = (store, selector) => {
   const [state, setState] = useState(() => selector(store.getState()))
 
@@ -101,22 +108,23 @@ const useStoreSelector = (store, selector) => {
       setState(selector(store.getState()))
     })
 
-    console.log('storeChange', selector(store.getState()), store.getState())
     setState(selector(store.getState()))
     return unsubscribe
   }, [store, selector])
 
-  console.log('useStoreSelector', state)
   return state
 }
 
-export const useUser = (callback) => {
+// populates userStore with data from getCurrentAuthenticatedUser. When used pages with SSR pages query is skipped and data is populated from getSSRCurrentAuth.
+export const useUser = <T extends any>(
+  callback: (state: UserStoreProps) => T,
+): { data: T; signOut: () => Promise<void> } => {
   const userProps = useStoreSelector(userStore, useCallback(callback, []))
 
   const getUser = async () => {
     const currentUser = await getCurrentAuthenticatedUser()
 
-    setUserStore(currentUser)
+    setUserStore({ userData: currentUser.attributes })
   }
 
   const signOut = async () => {
@@ -125,12 +133,10 @@ export const useUser = (callback) => {
   }
 
   useEffect(() => {
-    if (!userProps?.userData) {
+    if (!userStore.getState()?.userData) {
       getUser()
     }
   }, [])
 
-  console.log('useUser', userProps)
-
-  return { signOut, ...userProps, user: userProps?.userData }
+  return { signOut, data: userProps }
 }
