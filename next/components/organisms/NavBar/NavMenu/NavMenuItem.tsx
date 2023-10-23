@@ -8,7 +8,7 @@ import NavMenuTrigger from './NavMenuTrigger'
 import { MenuItem, MenuSection } from './navMenuTypes'
 
 const mockMenuObj: MenuSection = {
-  label: 'Our tools',
+  label: 'Udržateľnosť',
   items: [
     {
       label: 'Kviz',

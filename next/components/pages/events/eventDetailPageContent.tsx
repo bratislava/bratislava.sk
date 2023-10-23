@@ -32,7 +32,7 @@ const EventDetailPageContent = ({
       <PageHeader breadcrumbs={breadcrumbs} />
 
       <div className="mx-auto mb-8 mt-12 max-w-screen-xl px-4 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:gap-28">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-44">
           <div className="flex-1">
             <div className="relative mb-8 h-66 w-full overflow-hidden rounded-xl">
               <Image src={thumbnail} alt="" fill className="absolute object-cover" />

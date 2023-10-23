@@ -8,7 +8,7 @@ export const fetchEvents = async (page: number) => {
   }
 
   return axios.get(
-    `${process.env.NEXT_PUBLIC_TEMPORARY_API}user/events?page=${page}&pageSize=9`,
+    `${process.env.NEXT_PUBLIC_TEMPORARY_API}user/events?page=${page}&pageSize=99`,
     axiosConfig,
   )
 }
@@ -30,7 +30,7 @@ export const fetchProjects = async (page: number) => {
   }
 
   return axios.get(
-    `${process.env.NEXT_PUBLIC_TEMPORARY_API}user/projects?page=${page}&pageSize=9`,
+    `${process.env.NEXT_PUBLIC_TEMPORARY_API}user/projects?page=${page}&pageSize=99`,
     axiosConfig,
   )
 }
