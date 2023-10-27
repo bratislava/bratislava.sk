@@ -9,7 +9,7 @@ export type ColorCategory =
   | 'education'
   | 'culture'
 
-const colorCategoryMap = {
+export const colorCategoryMap = {
   red: 'main',
   blue: 'transport',
   green: 'environment',
