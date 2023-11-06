@@ -13,6 +13,8 @@ import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
+import { NavBarHeaderAuth } from './NavBarHeaderAuth'
+
 type NavBarProps = { className?: string }
 
 const Divider = ({ className }: { className?: string }) => {
@@ -59,6 +61,8 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               }
               return null
             })}
+
+          <NavBarHeaderAuth />
 
           {accountLink ? (
             <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />

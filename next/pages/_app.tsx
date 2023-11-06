@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/inline-script-id */
 import 'react-vertical-timeline-component/style.min.css'
 import '../styles/globals.css'
+// configure Amplify
+import '@utils/amplify'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
