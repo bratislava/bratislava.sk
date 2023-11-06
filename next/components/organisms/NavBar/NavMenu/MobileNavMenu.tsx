@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
 
+import { NavBarHeaderAuth } from '../NavBarHeader/NavBarHeaderAuth'
 import { getParsedMenus } from './getParsedMenus'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
@@ -101,6 +102,7 @@ const MobileNavMenu = () => {
               </li>
             )
           })}
+          <NavBarHeaderAuth />
         </NavigationMenu.List>
 
         {/* Viewport represents popup div with links that appears under menu button */}
