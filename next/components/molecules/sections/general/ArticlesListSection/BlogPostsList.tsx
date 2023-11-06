@@ -3,17 +3,14 @@ import { client } from '@backend/graphql/gql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
-  blogPostsTagsFetcher,
   getBlogPostsQueryKey,
-  pageCategoriesFetcher,
 } from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
-import BlogPostsFilter from '@bratislava/ui-bratislava/ArticlesFilter/BlogPostsFilter'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
+import BlogPostsFilter from '@components/ui/BlogPostsFilter/BlogPostsFilter'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useQuery } from '@tanstack/react-query'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
-import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useRoutePreservedState } from '@utils/useRoutePreservedState'
 import { useLocale, useTranslations } from 'next-intl'
@@ -42,90 +39,32 @@ const BlogPostsByTags = ({ section }: Props) => {
     keepPreviousData: true,
   })
 
-  // GRAPHQL fetchers
-  const { data: pageCategoriesFromGraphqlData } = useQuery({
-    queryKey: ['pageCategoriesFromGraphQL', locale],
+  const { data: pageCategoriesData } = useQuery({
+    queryKey: ['pageCategories', locale],
     queryFn: () => client.pageCategories({ locale }),
     staleTime: Infinity,
   })
 
-  const { data: blogPostsTagsFromGraphqlData } = useQuery({
-    queryKey: ['BlogPostsTagsFromGraphQL', locale],
+  const { data: blogPostsTagsData } = useQuery({
+    queryKey: ['blogPostsTags', locale],
     queryFn: () => client.blogPostsTags({ locale }),
     staleTime: Infinity,
-  })
-
-  // MEILI fetchers
-  const { data: pageCategoriesData } = useQuery({
-    queryKey: ['PageCategories', locale],
-    queryFn: () => pageCategoriesFetcher(locale),
-  })
-
-  const { data: blogPostsTagsData } = useQuery({
-    queryKey: ['BlogPostsTags', locale],
-    queryFn: () => blogPostsTagsFetcher(locale),
   })
 
   const handlePageChange = (page: number) => {
     setFilters({ ...filters, page })
   }
 
-  const handleTagFilterChange = (tags: string[]) => {
+  const handleTagsChange = (tags: string[]) => {
     setFilters({ ...filters, tagIds: tags })
   }
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Debug Graphql ↓↓ */}
-      <div>
-        <div>
-          <p className="text-size-h5">PageCategories from GraphQL</p>
-          <div className="grid grid-cols-2">
-            {pageCategoriesFromGraphqlData?.pageCategories?.data.map((pageCategory, i) => (
-              <p className="py-2 text-size-p-small">
-                {i}: {JSON.stringify(pageCategory)}
-              </p>
-            ))}
-          </div>
-        </div>
-        <div>
-          <p className="text-size-h5">Blog Post tags from GraphQL</p>
-          <div className="grid grid-cols-3">
-            {blogPostsTagsFromGraphqlData?.tags?.data.map((tag, i) => (
-              <p className="py-1 text-[7pt]">
-                {i}: {JSON.stringify(tag)}
-              </p>
-            ))}
-          </div>
-        </div>
-      </div>
-      {/* Debug Graphql ↑↑ */}
-      {/* Debug Meili ↓↓ */}
-      {/* <div>
-        <p className="text-size-h5">PageCategories from Meilisearch</p>
-        <div className="grid grid-cols-2">
-          {pageCategoriesData?.map((pageCategory, i) => (
-            <p className="py-2 text-size-p-small">
-              {i}: {JSON.stringify(pageCategory)}
-            </p>
-          ))}
-        </div>
-      </div>
-      <div>
-        <p className="text-size-h5">Blog Post tags from Meilisearch</p>
-        <div className="grid grid-cols-2">
-          {blogPostsTagsData?.map((tag, i) => (
-            <p className="py-2 text-size-p-small">
-              {i}: {JSON.stringify(tag)}
-            </p>
-          ))}
-        </div>
-      </div> */}
-      {/* Debug Meili ↑↑ */}
       <BlogPostsFilter
-        tags={pageCategoriesFromGraphqlData?.pageCategories?.data ?? []}
-        subTags={blogPostsTagsFromGraphqlData?.tags?.data ?? []}
-        onSubTagChange={handleTagFilterChange}
+        pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
+        blogPostsTags={blogPostsTagsData?.tags?.data ?? []}
+        onTagChange={handleTagsChange}
       />
       {title || text ? (
         <div className="flex flex-col gap-2">

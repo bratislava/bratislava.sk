@@ -1,8 +1,4 @@
-import { Enum_Pagecategory_Color, LatestBlogPostEntityFragment } from '@backend/graphql'
-import {
-  BlogPostCategory,
-  BlogPostSubCategory,
-} from '@components/ui/ArticlesFilter/BlogPostsFilter'
+import { LatestBlogPostEntityFragment } from '@backend/graphql'
 
 import { meiliClient } from '../meiliClient'
 import { BlogPostMeili, SearchIndexWrapped } from '../types'
@@ -20,64 +16,6 @@ export const blogPostsDefaultFilters: BlogPostsFilters = {
   pageSize: 9,
   page: 1,
   tagIds: [],
-}
-
-export const pageCategoriesFetcher = (locale: string) => {
-  return meiliClient
-    .index('page-category')
-    .search('', {
-      // TODO: locale not working
-      // filter: [`locale = ${locale}`],
-      attributesToRetrieve: ['id', 'title', 'color'],
-    })
-    .then((response) => {
-      return response.hits.map((pageCategory) => {
-        return {
-          id: pageCategory.id,
-          title: pageCategory.title,
-          // TODO: overiť, či je tento type assertion ok
-          color: pageCategory.color as Enum_Pagecategory_Color,
-        } as BlogPostCategory
-      })
-    })
-}
-
-export const blogPostsTagsFetcher = (locale: string) => {
-  return meiliClient
-    .index('tag')
-    .search('', {
-      // TODO: locale not working
-      // filter: [`locale = ${locale}`],
-      attributesToRetrieve: ['id', 'title', 'pageCategory'],
-    })
-    .then((response) => {
-      return response.hits.map((tag) => {
-        return {
-          id: tag.id,
-          title: tag.title,
-          pageCategoryId: tag.pageCategory.id,
-          pageCategoryColor: tag.pageCategory.color,
-        } as BlogPostSubCategory
-      })
-    })
-}
-
-export const blogPostsTagsFetcherOriginal = (locale: string) => {
-  return meiliClient
-    .index('tag')
-    .search('', {
-      // TODO: locale not working
-      // filter: [`locale = ${locale}`],
-      attributesToRetrieve: ['id', 'title'],
-    })
-    .then((response) => {
-      return response.hits.map((pageCategory) => {
-        return {
-          id: pageCategory.id,
-          title: pageCategory.title,
-        } as BlogPostSubCategory
-      })
-    })
 }
 
 export const getBlogPostsQueryKey = (filters: BlogPostsFilters, locale: string) => [
