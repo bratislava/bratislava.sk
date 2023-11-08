@@ -6,7 +6,12 @@ query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
-query LatestPostsByTags($locale: I18NLocaleCode!, $tags: [String]!, $limit: Int = -1, $start: Int = 0) {
+query LatestPostsByTags(
+  $locale: I18NLocaleCode!
+  $tags: [String]!
+  $limit: Int = -1
+  $start: Int = 0
+) {
   blogPosts(
     locale: $locale
     filters: { tag: { title: { in: $tags } } }
@@ -208,9 +213,46 @@ fragment BlogPostLink on ComponentBlocksBlogPostLink {
   url
 }
 
+# fragment TagEntity on TagEntity {
+#   id
+#   attributes {
+#     title
+#   }
+# }
+
+query pageCategories($locale: I18NLocaleCode) {
+  pageCategories(pagination: { limit: -1 }, locale: $locale) {
+    data {
+      ...PageCategoryEntity
+    }
+  }
+}
+
+query blogPostsTags($locale: I18NLocaleCode) {
+  tags(pagination: { limit: -1 }, locale: $locale) {
+    __typename
+    data {
+      ...TagEntity
+    }
+  }
+}
+
 fragment TagEntity on TagEntity {
   id
   attributes {
     title
+    pageCategory {
+      data {
+        ...PageCategoryEntity
+      }
+    }
+  }
+}
+
+fragment PageCategoryEntity on PageCategoryEntity {
+  id
+  attributes {
+    title
+    color
   }
 }

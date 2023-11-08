@@ -4808,10 +4808,86 @@ export type BlogPostLinkFragment = {
   } | null
 }
 
+export type PageCategoriesQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}>
+
+export type PageCategoriesQuery = {
+  __typename?: 'Query'
+  pageCategories?: {
+    __typename?: 'PageCategoryEntityResponseCollection'
+    data: Array<{
+      __typename?: 'PageCategoryEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'PageCategory'
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    }>
+  } | null
+}
+
+export type BlogPostsTagsQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>
+}>
+
+export type BlogPostsTagsQuery = {
+  __typename?: 'Query'
+  tags?: {
+    __typename: 'TagEntityResponseCollection'
+    data: Array<{
+      __typename?: 'TagEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Tag'
+        title?: string | null
+        pageCategory?: {
+          __typename?: 'PageCategoryEntityResponse'
+          data?: {
+            __typename?: 'PageCategoryEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'PageCategory'
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
 export type TagEntityFragment = {
   __typename?: 'TagEntity'
   id?: string | null
-  attributes?: { __typename?: 'Tag'; title?: string | null } | null
+  attributes?: {
+    __typename?: 'Tag'
+    title?: string | null
+    pageCategory?: {
+      __typename?: 'PageCategoryEntityResponse'
+      data?: {
+        __typename?: 'PageCategoryEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'PageCategory'
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type PageCategoryEntityFragment = {
+  __typename?: 'PageCategoryEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'PageCategory'
+    title?: string | null
+    color?: Enum_Pagecategory_Color | null
+  } | null
 }
 
 export type UploadImageSrcEntityFragment = {
@@ -8151,7 +8227,22 @@ export type PageBySlugQuery = {
           data: Array<{
             __typename?: 'TagEntity'
             id?: string | null
-            attributes?: { __typename?: 'Tag'; title?: string | null } | null
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
           }>
         } | null
         parentPage?: {
@@ -9120,7 +9211,22 @@ export type PageEntityFragment = {
       data: Array<{
         __typename?: 'TagEntity'
         id?: string | null
-        attributes?: { __typename?: 'Tag'; title?: string | null } | null
+        attributes?: {
+          __typename?: 'Tag'
+          title?: string | null
+          pageCategory?: {
+            __typename?: 'PageCategoryEntityResponse'
+            data?: {
+              __typename?: 'PageCategoryEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'PageCategory'
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null
+        } | null
       }>
     } | null
     parentPage?: {
@@ -12376,13 +12482,28 @@ export const PageHeaderSectionsFragmentDoc = gql`
   }
   ${SubpageListPageHeaderSectionFragmentDoc}
 `
+export const PageCategoryEntityFragmentDoc = gql`
+  fragment PageCategoryEntity on PageCategoryEntity {
+    id
+    attributes {
+      title
+      color
+    }
+  }
+`
 export const TagEntityFragmentDoc = gql`
   fragment TagEntity on TagEntity {
     id
     attributes {
       title
+      pageCategory {
+        data {
+          ...PageCategoryEntity
+        }
+      }
     }
   }
+  ${PageCategoryEntityFragmentDoc}
 `
 export const PageEntityFragmentDoc = gql`
   fragment PageEntity on PageEntity {
@@ -12570,6 +12691,27 @@ export const RelatedTagsDocument = gql`
       }
     }
   }
+`
+export const PageCategoriesDocument = gql`
+  query pageCategories($locale: I18NLocaleCode) {
+    pageCategories(locale: $locale) {
+      data {
+        ...PageCategoryEntity
+      }
+    }
+  }
+  ${PageCategoryEntityFragmentDoc}
+`
+export const BlogPostsTagsDocument = gql`
+  query blogPostsTags($locale: I18NLocaleCode) {
+    tags(locale: $locale) {
+      __typename
+      data {
+        ...TagEntity
+      }
+    }
+  }
+  ${TagEntityFragmentDoc}
 `
 export const GeneralDocument = gql`
   query General($locale: I18NLocaleCode!) {
@@ -12914,6 +13056,34 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'RelatedTags',
+        'query',
+      )
+    },
+    pageCategories(
+      variables?: PageCategoriesQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<PageCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<PageCategoriesQuery>(PageCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'pageCategories',
+        'query',
+      )
+    },
+    blogPostsTags(
+      variables?: BlogPostsTagsQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers'],
+    ): Promise<BlogPostsTagsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<BlogPostsTagsQuery>(BlogPostsTagsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'blogPostsTags',
         'query',
       )
     },

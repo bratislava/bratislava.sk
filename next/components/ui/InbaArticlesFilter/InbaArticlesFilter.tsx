@@ -23,7 +23,7 @@ const InbaArticlesFilter = ({
   subtext,
   onChange,
 }: InbaArticlesFilterProps) => {
-  const t = useTranslations('ArticleFilter')
+  const t = useTranslations('BlogPostsFilter')
   const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
   useEffect(() => {
