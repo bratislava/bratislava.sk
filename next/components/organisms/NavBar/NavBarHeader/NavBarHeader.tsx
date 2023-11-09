@@ -1,32 +1,28 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
-import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useGeneralContext } from '@utils/generalContext'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-import { NavBarHeaderAuth } from './NavBarHeaderAuth'
-
-type NavBarProps = { className?: string }
+import NavBarHeaderAuth from './NavBarHeaderAuth'
 
 const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
-const NavBarHeader = ({ className }: NavBarProps) => {
+const NavBarHeader = () => {
   const t = useTranslations()
 
   const { general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
-  const { links, accountLink } = header ?? {}
+  const { links } = header ?? {}
 
   const { otherLanguage } = useLocalizations()
 
@@ -63,12 +59,6 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             })}
 
           <NavBarHeaderAuth />
-
-          {accountLink ? (
-            <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
-          ) : (
-            <Divider />
-          )}
 
           <MLink href={t('searchLink')} className="-mx-4 p-4">
             <SearchIcon />

@@ -1,17 +1,15 @@
 import { Icon } from '@components/atoms/icon/Icon'
-import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import NavBarHorizontalDivider from '@components/organisms/NavBar/NavMenu/NavBarHorizontalDivider'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
 
-import { NavBarHeaderAuth } from '../NavBarHeader/NavBarHeaderAuth'
+import NavBarHeaderAuthMobile from '../NavBarHeader/NavBarHeaderAuthMobile'
 import { getParsedMenus } from './getParsedMenus'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
@@ -23,7 +21,7 @@ const MobileNavMenu = () => {
 
   const { menu: generalMenu, general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
-  const { links, accountLink } = header ?? {}
+  const { links } = header ?? {}
   const linksOnMobile = links?.filter(isDefined).filter((link) => link.showOnMobile)
 
   const menus = useMemo(() => {
@@ -62,21 +60,7 @@ const MobileNavMenu = () => {
             <MobileNavMenuItem key={index} menu={menu} />
           ))}
 
-          {accountLink && (
-            <>
-              <NavBarHorizontalDivider />
-              <li className="my-1 flex justify-center md:justify-start">
-                <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-                  <Button
-                    size="sm"
-                    variant="category"
-                    fullWidthMobile
-                    {...getCommonLinkProps(accountLink)}
-                  />
-                </NavigationMenu.Link>
-              </li>
-            </>
-          )}
+          <NavBarHeaderAuthMobile onCloseMenu={() => setMobileMenuOpen(false)} />
 
           {linksOnMobile?.length && <NavBarHorizontalDivider />}
 
@@ -102,7 +86,6 @@ const MobileNavMenu = () => {
               </li>
             )
           })}
-          <NavBarHeaderAuth />
         </NavigationMenu.List>
 
         {/* Viewport represents popup div with links that appears under menu button */}

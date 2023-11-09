@@ -1,19 +1,25 @@
-'use client'
+import Divider from '@bratislava/ui-bratislava/Divider/Divider'
+import Button from '@components/forms/simple-components/Button'
+import { useGeneralContext } from '@utils/generalContext'
+import { getCommonLinkProps } from '@utils/getCommonLinkProps'
+import useCityAccount from '@utils/useCityAccount'
 
-import { getCurrentAuthenticatedUser } from '@utils/amplify'
-import { useEffect, useState } from 'react'
+import UserProfilePhoto from '../UserProfilePhoto'
 
-export const NavBarHeaderAuth = () => {
-  const [user, setUser] = useState(null)
+const NavBarAuthHeader = () => {
+  const { general } = useGeneralContext()
+  const { header } = general?.data?.attributes ?? {}
+  const { accountLink } = header ?? {}
 
-  const getUser = async () => {
-    const fetchedUser = await getCurrentAuthenticatedUser()
-    if (fetchedUser?.attributes) setUser(fetchedUser.attributes)
-  }
+  const { data, signOut } = useCityAccount()
 
-  useEffect(() => {
-    getUser()
-  }, [])
-
-  return user ? <p>logged in</p> : null
+  return data ? (
+    <UserProfilePhoto signOut={signOut} userData={data} />
+  ) : accountLink ? (
+    <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
+  ) : (
+    <Divider />
+  )
 }
+
+export default NavBarAuthHeader

@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/inline-script-id */
 import 'react-vertical-timeline-component/style.min.css'
 import '../styles/globals.css'
-// configure Amplify
-import '@utils/amplify'
 
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@components/providers/BAI18nProvider'
+import { CityAccountAccessTokenProvider } from '@utils/useCityAccount'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
@@ -76,16 +75,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           >
             <BAQueryClientProvider>
               <QueryParamProvider adapter={NextAdapter}>
-                <BAI18nProvider>
-                  <OverlayProvider>
-                    <NavMenuContextProvider>
-                      {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                      <div id="root">
-                        <Component {...pageProps} />
-                      </div>
-                    </NavMenuContextProvider>
-                  </OverlayProvider>
-                </BAI18nProvider>
+                <CityAccountAccessTokenProvider>
+                  <BAI18nProvider>
+                    <OverlayProvider>
+                      <NavMenuContextProvider>
+                        {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                        <div id="root">
+                          <Component {...pageProps} />
+                        </div>
+                      </NavMenuContextProvider>
+                    </OverlayProvider>
+                  </BAI18nProvider>
+                </CityAccountAccessTokenProvider>
               </QueryParamProvider>
             </BAQueryClientProvider>
           </PlausibleProvider>

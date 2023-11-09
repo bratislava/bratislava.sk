@@ -7,6 +7,9 @@
     "sk": "Slovensky",
     "en": "English"
   },
+  "menu_profile_link": "Môj profil",
+  "menu_help_link": "Pomoc",
+  "menu_logout_link": "Odhlásiť sa",
   "e_services": "E-služby",
   "signin": "Prihlásenie",
   "signup": "Registrácia",
