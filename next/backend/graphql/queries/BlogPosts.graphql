@@ -213,13 +213,6 @@ fragment BlogPostLink on ComponentBlocksBlogPostLink {
   url
 }
 
-# fragment TagEntity on TagEntity {
-#   id
-#   attributes {
-#     title
-#   }
-# }
-
 query pageCategories($locale: I18NLocaleCode) {
   pageCategories(pagination: { limit: -1 }, locale: $locale) {
     data {
@@ -230,7 +223,6 @@ query pageCategories($locale: I18NLocaleCode) {
 
 query blogPostsTags($locale: I18NLocaleCode) {
   tags(pagination: { limit: -1 }, locale: $locale) {
-    __typename
     data {
       ...TagEntity
     }
