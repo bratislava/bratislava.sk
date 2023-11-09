@@ -10,7 +10,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
-interface BlogPostsFilterProps {
+type BlogPostsFilterProps = {
   pageCategories: PageCategoryEntityFragment[]
   blogPostsTags?: TagEntityFragment[]
   subtext?: string
@@ -21,12 +21,14 @@ interface BlogPostsFilterProps {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=10282-28799&mode=design&t=nfRPipuoNXasJ4TV-0
  */
 
-const filterSubTagsByTag = (subtags: TagEntityFragment[], tag: Selection): string[] => {
+// React-aria-components library recommends Selection as a type for selection state, which should behave like a Set object. However, common set methods such as .size and .values don't work on Selection, so as a workaround we transform the Selection to an array
+
+const filterTagsByPageCategory = (tags: TagEntityFragment[], pageCategory: Selection): string[] => {
   return (
-    subtags
+    tags
       .filter(isDefined)
-      .filter((subtag) => {
-        return subtag.attributes?.pageCategory?.data?.id === Array.from(tag)[0]
+      .filter((tag) => {
+        return tag.attributes?.pageCategory?.data?.id === Array.from(pageCategory)[0]
       })
       .map((subTag) => subTag?.id ?? '') ?? []
   )
@@ -47,27 +49,29 @@ const BlogPostsFilter = ({
     color: Enum_Pagecategory_Color.Red,
   }
 
-  const [selectedTag, setSelectedTag] = useState<Selection>(new Set<string>(defaultChip.id))
-  const [selectedSubTags, setSelectedSubTags] = useState<Selection>(new Set<string>())
+  const [selectedPageCategory, setSelectedPageCategory] = useState<Selection>(
+    new Set<string>(defaultChip.id),
+  )
+  const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
   useEffect(() => {
-    onTagChange(Array.from(selectedSubTags, (item) => item.toString()))
-    if (Array.from(selectedSubTags).length === 0) {
-      onTagChange(filterSubTagsByTag(blogPostsTags ?? [], selectedTag))
+    onTagChange(Array.from(selectedTags, (item) => item.toString()))
+    if (Array.from(selectedTags).length === 0) {
+      onTagChange(filterTagsByPageCategory(blogPostsTags ?? [], selectedPageCategory))
     }
-  }, [selectedSubTags])
+  }, [selectedTags])
 
   useEffect(() => {
-    setSelectedSubTags(new Set<string>())
-    onTagChange(filterSubTagsByTag(blogPostsTags ?? [], selectedTag))
-    if (Array.from(selectedTag).length === 0) {
-      setSelectedTag(new Set(defaultChip.id))
+    setSelectedTags(new Set<string>())
+    onTagChange(filterTagsByPageCategory(blogPostsTags ?? [], selectedPageCategory))
+    if (Array.from(selectedPageCategory).length === 0) {
+      setSelectedPageCategory(new Set(defaultChip.id))
     }
-  }, [selectedTag])
+  }, [selectedPageCategory])
 
   useEffect(() => {
-    setSelectedTag(new Set(defaultChip.id))
-    setSelectedSubTags(new Set<string>())
+    setSelectedPageCategory(new Set(defaultChip.id))
+    setSelectedTags(new Set<string>())
   }, [locale])
 
   return (
@@ -79,9 +83,9 @@ const BlogPostsFilter = ({
       <div>
         <TagGroup
           selectionMode="single"
-          selectedKeys={selectedTag}
+          selectedKeys={selectedPageCategory}
           defaultSelectedKeys={defaultChip.id}
-          onSelectionChange={setSelectedTag}
+          onSelectionChange={setSelectedPageCategory}
         >
           <TagList className="flex flex-wrap gap-3 lg:justify-center">
             <Chip
@@ -111,23 +115,25 @@ const BlogPostsFilter = ({
               .filter(isDefined)}
           </TagList>
         </TagGroup>
-        {Array.from(selectedTag)[0] !== defaultChip.id &&
-        Array.from(selectedTag)?.length &&
+        {Array.from(selectedPageCategory)[0] !== defaultChip.id &&
+        Array.from(selectedPageCategory)?.length &&
         blogPostsTags?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
-            {Array.from(selectedTag).length > 0 ? (
+            {Array.from(selectedPageCategory).length > 0 ? (
               <Label className="text-h5 pb-3 font-semibold">{t('subcategories')}</Label>
             ) : null}
             <TagGroup
               selectionMode="multiple"
-              selectedKeys={selectedSubTags}
-              onSelectionChange={setSelectedSubTags}
+              selectedKeys={selectedTags}
+              onSelectionChange={setSelectedTags}
             >
               <TagList className="flex flex-wrap gap-2 lg:justify-center">
                 {blogPostsTags
                   .filter(isDefined)
                   .filter((tag) => {
-                    return tag.attributes?.pageCategory?.data?.id === Array.from(selectedTag)[0]
+                    return (
+                      tag.attributes?.pageCategory?.data?.id === Array.from(selectedPageCategory)[0]
+                    )
                   })
                   .map((tag) => {
                     if (!tag.id || !tag.attributes?.title) return null
