@@ -76,10 +76,6 @@ const BlogPostsFilter = ({
 
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px] lg:gap-10 lg:py-18">
-      <div>
-        <p>pageCategory: {selectedPageCategory}</p>
-        <p>tags: {selectedTags}</p>
-      </div>
       <div className="flex flex-col gap-2 lg:items-center ">
         <Label className="text-h3 font-semibold">{t('articleFilter')}</Label>
         {subtext && <Text>{subtext}</Text>}
