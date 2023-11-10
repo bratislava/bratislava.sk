@@ -39,15 +39,16 @@ const BlogPostsByTags = ({ section }: Props) => {
     staleTime: Infinity,
   })
 
+  const tagIds =
+    blogPostsTagsData?.tags?.data
+      .filter((tag) => {
+        return tag.attributes?.pageCategory?.data?.id === category?.data?.id
+      })
+      .map((tag) => tag.id ?? '')
+      .filter(isDefined) ?? []
+
   useEffect(() => {
-    const tagIds =
-      blogPostsTagsData?.tags?.data
-        .filter((tag) => {
-          return tag.attributes?.pageCategory?.data?.id === category?.data?.id
-        })
-        .map((tag) => tag.id ?? '')
-        .filter(isDefined) ?? []
-    handleTagsChange(tagIds)
+    setFilters({ ...filters, tagIds })
   }, [blogPostsTagsData])
 
   // TODO prefetch section
@@ -55,14 +56,11 @@ const BlogPostsByTags = ({ section }: Props) => {
     queryKey: getBlogPostsQueryKey(filters, locale),
     queryFn: () => blogPostsFetcher(filters, locale),
     keepPreviousData: true,
+    enabled: filters.tagIds.length > 0,
   })
 
   const handlePageChange = (page: number) => {
     setFilters({ ...filters, page })
-  }
-
-  const handleTagsChange = (tags: string[]) => {
-    setFilters({ ...filters, tagIds: tags })
   }
 
   return (
