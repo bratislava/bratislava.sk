@@ -122,6 +122,19 @@ fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {
   }
 }
 
+fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
+  title
+  text
+  category {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+
 fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
   title
   text
@@ -544,6 +557,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsBlogPostsByTags {
     ...BlogPostsByTagsSection
+  }
+
+  ... on ComponentSectionsBlogPostsByCategory {
+    ...BlogPostsByCategorySection
   }
 
   ... on ComponentSectionsInbaArticlesList {
