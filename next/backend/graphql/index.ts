@@ -1009,6 +1009,14 @@ export type ComponentSectionsBanner = {
   variant: Enum_Componentsectionsbanner_Variant
 }
 
+export type ComponentSectionsBlogPostsByCategory = {
+  __typename?: 'ComponentSectionsBlogPostsByCategory'
+  category?: Maybe<PageCategoryEntityResponse>
+  id: Scalars['ID']
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
 export type ComponentSectionsBlogPostsByTags = {
   __typename?: 'ComponentSectionsBlogPostsByTags'
   id: Scalars['ID']
@@ -1935,6 +1943,7 @@ export type GenericMorph =
   | ComponentSectionsAccordion
   | ComponentSectionsArticlesList
   | ComponentSectionsBanner
+  | ComponentSectionsBlogPostsByCategory
   | ComponentSectionsBlogPostsByTags
   | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
@@ -3085,6 +3094,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
   | ComponentSectionsArticlesList
   | ComponentSectionsBanner
+  | ComponentSectionsBlogPostsByCategory
   | ComponentSectionsBlogPostsByTags
   | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
@@ -7586,6 +7596,19 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
+              __typename: 'ComponentSectionsBlogPostsByCategory'
+              title?: string | null
+              text?: string | null
+              category?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  id?: string | null
+                  attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
+                } | null
+              } | null
+            }
+          | {
               __typename: 'ComponentSectionsBlogPostsByTags'
               title?: string | null
               text?: string | null
@@ -8574,6 +8597,19 @@ export type PageEntityFragment = {
           } | null
         }
       | {
+          __typename: 'ComponentSectionsBlogPostsByCategory'
+          title?: string | null
+          text?: string | null
+          category?: {
+            __typename?: 'PageCategoryEntityResponse'
+            data?: {
+              __typename?: 'PageCategoryEntity'
+              id?: string | null
+              attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
+            } | null
+          } | null
+        }
+      | {
           __typename: 'ComponentSectionsBlogPostsByTags'
           title?: string | null
           text?: string | null
@@ -9498,6 +9534,20 @@ export type BlogPostsByTagsSectionFragment = {
   } | null
 }
 
+export type BlogPostsByCategorySectionFragment = {
+  __typename?: 'ComponentSectionsBlogPostsByCategory'
+  title?: string | null
+  text?: string | null
+  category?: {
+    __typename?: 'PageCategoryEntityResponse'
+    data?: {
+      __typename?: 'PageCategoryEntity'
+      id?: string | null
+      attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
+    } | null
+  } | null
+}
+
 export type InbaArticlesListSectionFragment = {
   __typename?: 'ComponentSectionsInbaArticlesList'
   title?: string | null
@@ -10404,6 +10454,20 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
 }
 
+type Sections_ComponentSectionsBlogPostsByCategory_Fragment = {
+  __typename: 'ComponentSectionsBlogPostsByCategory'
+  title?: string | null
+  text?: string | null
+  category?: {
+    __typename?: 'PageCategoryEntityResponse'
+    data?: {
+      __typename?: 'PageCategoryEntity'
+      id?: string | null
+      attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
+    } | null
+  } | null
+}
+
 type Sections_ComponentSectionsBlogPostsByTags_Fragment = {
   __typename: 'ComponentSectionsBlogPostsByTags'
   title?: string | null
@@ -11017,6 +11081,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
   | Sections_ComponentSectionsArticlesList_Fragment
   | Sections_ComponentSectionsBanner_Fragment
+  | Sections_ComponentSectionsBlogPostsByCategory_Fragment
   | Sections_ComponentSectionsBlogPostsByTags_Fragment
   | Sections_ComponentSectionsBlogPostsList_Fragment
   | Sections_ComponentSectionsCalculator_Fragment
@@ -11592,6 +11657,20 @@ export const BlogPostsByTagsSectionFragmentDoc = gql`
     }
   }
 `
+export const BlogPostsByCategorySectionFragmentDoc = gql`
+  fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
+    title
+    text
+    category {
+      data {
+        id
+        attributes {
+          title
+        }
+      }
+    }
+  }
+`
 export const InbaTagEntityFragmentDoc = gql`
   fragment InbaTagEntity on InbaTagEntity {
     id
@@ -11914,6 +11993,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsBlogPostsByTags {
       ...BlogPostsByTagsSection
     }
+    ... on ComponentSectionsBlogPostsByCategory {
+      ...BlogPostsByCategorySection
+    }
     ... on ComponentSectionsInbaArticlesList {
       ...InbaArticlesListSection
     }
@@ -11961,6 +12043,7 @@ export const SectionsFragmentDoc = gql`
   ${ArticlesListSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
   ${BlogPostsByTagsSectionFragmentDoc}
+  ${BlogPostsByCategorySectionFragmentDoc}
   ${InbaArticlesListSectionFragmentDoc}
   ${InbaReleasesSectionFragmentDoc}
   ${OrganizationalStructureSectionFragmentDoc}
