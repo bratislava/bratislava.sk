@@ -42,6 +42,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => {
         // Only properties that are required to display listing are retrieved
         'blog-post.id',
         'blog-post.title',
+        'blog-post.excerpt',
         'blog-post.text',
         'blog-post.slug',
         'blog-post.coverImage.url',
@@ -59,6 +60,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => {
           return {
             attributes: {
               title: blogPost.title,
+              excerpt: blogPost.excerpt,
               slug: blogPost.slug,
               publishedAt: blogPost.publishedAt,
               date_added: blogPost.date_added,

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_blog_posts_lists",
   "info": {
-    "displayName": "Blog posts list"
+    "displayName": "Blog posts list",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,11 +11,6 @@
     },
     "text": {
       "type": "text"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
     }
   }
 }

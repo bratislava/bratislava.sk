@@ -1026,15 +1026,8 @@ export type ComponentSectionsBlogPostsByTagsTagsArgs = {
 export type ComponentSectionsBlogPostsList = {
   __typename?: 'ComponentSectionsBlogPostsList'
   id: Scalars['ID']
-  tags?: Maybe<TagRelationResponseCollection>
   text?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
-}
-
-export type ComponentSectionsBlogPostsListTagsArgs = {
-  filters?: InputMaybe<TagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 export type ComponentSectionsCalculator = {
@@ -4835,7 +4828,7 @@ export type BlogPostsTagsQueryVariables = Exact<{
 export type BlogPostsTagsQuery = {
   __typename?: 'Query'
   tags?: {
-    __typename: 'TagEntityResponseCollection'
+    __typename?: 'TagEntityResponseCollection'
     data: Array<{
       __typename?: 'TagEntity'
       id?: string | null
@@ -7605,10 +7598,6 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsBlogPostsList'
               title?: string | null
               text?: string | null
-              tags?: {
-                __typename?: 'TagRelationResponseCollection'
-                data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-              } | null
             }
           | {
               __typename: 'ComponentSectionsCalculator'
@@ -8597,10 +8586,6 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsBlogPostsList'
           title?: string | null
           text?: string | null
-          tags?: {
-            __typename?: 'TagRelationResponseCollection'
-            data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-          } | null
         }
       | {
           __typename: 'ComponentSectionsCalculator'
@@ -9501,10 +9486,6 @@ export type BlogPostsListSectionFragment = {
   __typename?: 'ComponentSectionsBlogPostsList'
   title?: string | null
   text?: string | null
-  tags?: {
-    __typename?: 'TagRelationResponseCollection'
-    data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-  } | null
 }
 
 export type BlogPostsByTagsSectionFragment = {
@@ -10437,10 +10418,6 @@ type Sections_ComponentSectionsBlogPostsList_Fragment = {
   __typename: 'ComponentSectionsBlogPostsList'
   title?: string | null
   text?: string | null
-  tags?: {
-    __typename?: 'TagRelationResponseCollection'
-    data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-  } | null
 }
 
 type Sections_ComponentSectionsCalculator_Fragment = {
@@ -11602,11 +11579,6 @@ export const BlogPostsListSectionFragmentDoc = gql`
   fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
     title
     text
-    tags {
-      data {
-        id
-      }
-    }
   }
 `
 export const BlogPostsByTagsSectionFragmentDoc = gql`
@@ -12694,7 +12666,7 @@ export const RelatedTagsDocument = gql`
 `
 export const PageCategoriesDocument = gql`
   query pageCategories($locale: I18NLocaleCode) {
-    pageCategories(locale: $locale) {
+    pageCategories(pagination: { limit: -1 }, locale: $locale) {
       data {
         ...PageCategoryEntity
       }
@@ -12704,8 +12676,7 @@ export const PageCategoriesDocument = gql`
 `
 export const BlogPostsTagsDocument = gql`
   query blogPostsTags($locale: I18NLocaleCode) {
-    tags(locale: $locale) {
-      __typename
+    tags(pagination: { limit: -1 }, locale: $locale) {
       data {
         ...TagEntity
       }
