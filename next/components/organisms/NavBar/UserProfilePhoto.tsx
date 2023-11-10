@@ -49,7 +49,7 @@ interface IProfileMenuProps {
 }
 
 const ProfileMenu = ({ userData, signOut }: IProfileMenuProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState()
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
   const menuItems = useProfileMenuItems({ signOut })
 

@@ -19,7 +19,7 @@ export const checkTokenValid = (token: string | null | undefined) => {
   return null
 }
 
-export const getAccount = async (accessToken: string) => {
+export const getAccount = async (accessToken: string | null) => {
   if (!accessToken) throw new Error('No access token provided')
   if (!checkTokenValid(accessToken)) throw new Error('Access token is invalid')
 
@@ -35,7 +35,7 @@ export const getAccount = async (accessToken: string) => {
 }
 
 export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
-  const res = await fetch(process.env.NEXT_PUBLIC_COGNITO_URL, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_COGNITO_URL}`, {
     headers: {
       'X-Amz-Target': 'AWSCognitoIdentityProviderService.InitiateAuth',
       'Content-Type': 'application/x-amz-json-1.1',
