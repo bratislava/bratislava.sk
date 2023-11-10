@@ -1,4 +1,4 @@
-import { HelpIcon, LogoutIcon, ProfileIcon } from '@assets/ui-icons'
+import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import Button from '@components/forms/simple-components/Button'
 import { MenuItemBase } from '@components/forms/simple-components/MenuDropdown/MenuDropdown'
 import MLink from '@components/forms/simple-components/MLink'
@@ -6,21 +6,15 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import useCityAccount from '@utils/useCityAccount'
-import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useProfileMenuItems } from '@utils/useProfileMenuItems'
 
 import NavBarHorizontalDivider from '../NavMenu/NavBarHorizontalDivider'
-import { ROUTES } from '../UserProfilePhoto'
 
 interface INavBarAuthHeaderMobileProps {
   onCloseMenu: () => void
 }
 
-export const handleOnKeyPress = (
-  event: React.KeyboardEvent,
-  callback?: () => void,
-  key = 'Enter',
-) => {
+const handleOnKeyPress = (event: React.KeyboardEvent, callback?: () => void, key = 'Enter') => {
   if (event.key === key) {
     callback?.()
   }
@@ -57,36 +51,16 @@ const Item = ({ icon, title, url, onPress, onCloseMenu }: IItemProps) => {
 }
 
 const NavBarAuthHeaderMobile = ({ onCloseMenu }: INavBarAuthHeaderMobileProps) => {
-  const t = useTranslations()
   const { general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
   const { accountLink } = header ?? {}
 
-  const { data, signOut } = useCityAccount()
+  const { data, loading, signOut } = useCityAccount()
+  const menuItems = useProfileMenuItems({ signOut, iconClassName: 'h-8 w-8' })
 
-  const menuItems: MenuItemBase[] = [
-    {
-      id: 1,
-      title: t('menu_profile_link'),
-      icon: <ProfileIcon className="h-8 w-8" />,
-      url: ROUTES.USER_PROFILE,
-    },
-    {
-      id: 2,
-      title: t('menu_help_link'),
-      icon: <HelpIcon className="h-8 w-8" />,
-      url: ROUTES.HELP,
-    },
-    {
-      id: 3,
-      title: t('menu_logout_link'),
-      icon: <LogoutIcon className="h-8 w-8 text-negative-700" />,
-      onPress: signOut,
-      itemClassName: 'bg-negative-50',
-    },
-  ]
-
-  return data || accountLink ? (
+  return loading ? (
+    <LoadingSpinner size="small" />
+  ) : data || accountLink ? (
     <>
       <NavBarHorizontalDivider />
 

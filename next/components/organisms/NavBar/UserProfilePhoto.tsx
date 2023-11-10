@@ -1,12 +1,10 @@
-import { ChevronDownSmallIcon, HelpIcon, LogoutIcon, ProfileIcon } from '@assets/ui-icons'
-import MenuDropdown, {
-  MenuItemBase,
-} from '@components/forms/simple-components/MenuDropdown/MenuDropdown'
+import { ChevronDownSmallIcon, ProfileIcon } from '@assets/ui-icons'
+import MenuDropdown from '@components/forms/simple-components/MenuDropdown/MenuDropdown'
+import { useProfileMenuItems } from '@utils/useProfileMenuItems'
 import { CityAccountUser } from 'backend/dtos/user.dto'
-import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-interface UserProfilePhotoProps {
+interface IUserProfilePhotoProps {
   userData: CityAccountUser
   isMenuOpen: boolean
 }
@@ -31,12 +29,7 @@ const Avatar = ({ userData }: { userData?: CityAccountUser | null }) => {
   )
 }
 
-export const ROUTES = {
-  USER_PROFILE: `${process.env.NEXT_PUBLIC_KONTO_URL}/moj-profil`,
-  HELP: `${process.env.NEXT_PUBLIC_KONTO_URL}/pomoc`,
-}
-
-const UserProfilePhoto = ({ userData, isMenuOpen }: UserProfilePhotoProps) => {
+const UserProfilePhoto = ({ userData, isMenuOpen }: IUserProfilePhotoProps) => {
   return (
     <div className="flex items-center font-semibold text-font/75">
       <Avatar userData={userData} />
@@ -50,36 +43,15 @@ const UserProfilePhoto = ({ userData, isMenuOpen }: UserProfilePhotoProps) => {
   )
 }
 
-interface Props {
+interface IProfileMenuProps {
   userData: CityAccountUser
   signOut: () => void
 }
 
-const ProfileMenu = ({ userData, signOut }: Props) => {
-  const t = useTranslations()
+const ProfileMenu = ({ userData, signOut }: IProfileMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState()
 
-  const menuItems: MenuItemBase[] = [
-    {
-      id: 1,
-      title: t('menu_profile_link'),
-      icon: <ProfileIcon className="h-5 w-5" />,
-      url: ROUTES.USER_PROFILE,
-    },
-    {
-      id: 2,
-      title: t('menu_help_link'),
-      icon: <HelpIcon className="h-5 w-5" />,
-      url: ROUTES.HELP,
-    },
-    {
-      id: 3,
-      title: t('menu_logout_link'),
-      icon: <LogoutIcon className="h-5 w-5 text-negative-700" />,
-      onPress: signOut,
-      itemClassName: 'bg-negative-50',
-    },
-  ]
+  const menuItems = useProfileMenuItems({ signOut })
 
   return (
     <>

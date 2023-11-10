@@ -5,7 +5,7 @@ import '../styles/globals.css'
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@components/providers/BAI18nProvider'
-import { CityAccountAccessTokenProvider } from '@utils/useCityAccount'
+import { CityAccountProvider } from '@utils/useCityAccount'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
@@ -75,7 +75,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           >
             <BAQueryClientProvider>
               <QueryParamProvider adapter={NextAdapter}>
-                <CityAccountAccessTokenProvider>
+                <CityAccountProvider>
                   <BAI18nProvider>
                     <OverlayProvider>
                       <NavMenuContextProvider>
@@ -86,7 +86,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       </NavMenuContextProvider>
                     </OverlayProvider>
                   </BAI18nProvider>
-                </CityAccountAccessTokenProvider>
+                </CityAccountProvider>
               </QueryParamProvider>
             </BAQueryClientProvider>
           </PlausibleProvider>

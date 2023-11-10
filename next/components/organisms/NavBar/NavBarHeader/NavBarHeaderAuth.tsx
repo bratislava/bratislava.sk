@@ -1,4 +1,5 @@
 import Divider from '@bratislava/ui-bratislava/Divider/Divider'
+import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import Button from '@components/forms/simple-components/Button'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -11,9 +12,11 @@ const NavBarAuthHeader = () => {
   const { header } = general?.data?.attributes ?? {}
   const { accountLink } = header ?? {}
 
-  const { data, signOut } = useCityAccount()
+  const { data, loading, signOut } = useCityAccount()
 
-  return data ? (
+  return loading ? (
+    <LoadingSpinner size="small" />
+  ) : data ? (
     <UserProfilePhoto signOut={signOut} userData={data} />
   ) : accountLink ? (
     <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />

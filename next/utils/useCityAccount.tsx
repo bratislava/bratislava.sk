@@ -6,31 +6,24 @@ import Cookies from 'universal-cookie'
 
 import { getAccessTokenFromRefreshToken, getAccount } from './accountHelpers'
 
-export type CityAccountAccessTokenAuthenticationStatus =
-  | 'initializing'
-  | 'authenticated'
-  | 'unauthenticated'
+export type CityAccountAuthenticationStatus = 'initializing' | 'authenticated' | 'unauthenticated'
 
-interface CityAccountAccessTokenState {
-  status: CityAccountAccessTokenAuthenticationStatus
+interface CityAccountState {
+  status: CityAccountAuthenticationStatus
   accessToken: string | null
   loading: boolean
   data?: CityAccountUser
   signOut: () => void
 }
 
-export const ACCESS_TOKEN_STORAGE_KEY = 'cognitoAccessToken'
-
-const CityAccountAccessTokenContext = React.createContext<CityAccountAccessTokenState>(
-  {} as CityAccountAccessTokenState,
-)
+const CityAccountContext = React.createContext<CityAccountState>({} as CityAccountState)
 
 const cookies = new Cookies()
 
 const ACCESS_TOKEN_COOKIE_KEY = 'accessToken'
 const REFRESH_TOKEN_COOKIE_KEY = 'refreshToken'
 
-export const CityAccountAccessTokenProvider = ({ children }: { children: React.ReactNode }) => {
+export const CityAccountProvider = ({ children }: { children: React.ReactNode }) => {
   const [initializationState, setInitializationState] = useState<
     'initializing' | 'ready' | 'refetched'
   >('initializing')
@@ -43,7 +36,7 @@ export const CityAccountAccessTokenProvider = ({ children }: { children: React.R
   try {
     jwtAccessToken = accessToken ? jwtDecode<JwtPayload>(accessToken) : null
   } catch (error) {}
-  let status: CityAccountAccessTokenAuthenticationStatus = 'initializing'
+  let status: CityAccountAuthenticationStatus = 'initializing'
   if (initializationState === 'ready') {
     status = jwtAccessToken ? 'authenticated' : 'unauthenticated'
   }
@@ -109,26 +102,24 @@ export const CityAccountAccessTokenProvider = ({ children }: { children: React.R
   }, [])
 
   return (
-    <CityAccountAccessTokenContext.Provider
+    <CityAccountContext.Provider
       value={{
         data: query.data as CityAccountUser,
-        loading: query.isLoading || status !== 'initializing',
+        loading: query.isLoading || status === 'initializing',
         accessToken,
         status,
         signOut,
       }}
     >
       {children}
-    </CityAccountAccessTokenContext.Provider>
+    </CityAccountContext.Provider>
   )
 }
 
 export default function useCityAccount() {
-  const context = React.useContext(CityAccountAccessTokenContext)
+  const context = React.useContext(CityAccountContext)
   if (context === undefined) {
-    throw new Error(
-      'useCityAccountAccessToken must be used within a CityAccountAccessTokenProvider',
-    )
+    throw new Error('useCityAccountAccessToken must be used within a CityAccountProvider')
   }
   return context
 }
