@@ -1129,7 +1129,6 @@ input ComponentSectionsBlogPostsByTagsInput {
 
 type ComponentSectionsBlogPostsList {
   id: ID!
-  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   text: String
   title: String
 }
@@ -1138,14 +1137,12 @@ input ComponentSectionsBlogPostsListFiltersInput {
   and: [ComponentSectionsBlogPostsListFiltersInput]
   not: ComponentSectionsBlogPostsListFiltersInput
   or: [ComponentSectionsBlogPostsListFiltersInput]
-  tags: TagFiltersInput
   text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsBlogPostsListInput {
   id: ID
-  tags: [ID]
   text: String
   title: String
 }

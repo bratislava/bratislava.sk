@@ -1,4 +1,4 @@
-import { BlogPostsByTagsSectionFragment, BlogPostsListSectionFragment } from '@backend/graphql'
+import { BlogPostsListSectionFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import {
   blogPostsDefaultFilters,
@@ -19,7 +19,7 @@ import React from 'react'
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
-  section: BlogPostsByTagsSectionFragment | BlogPostsListSectionFragment
+  section: BlogPostsListSectionFragment
 }
 
 const BlogPostsByTags = ({ section }: Props) => {
@@ -84,6 +84,7 @@ const BlogPostsByTags = ({ section }: Props) => {
             tag,
             date_added,
             publishedAt,
+            excerpt,
           } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
@@ -96,6 +97,7 @@ const BlogPostsByTags = ({ section }: Props) => {
               date={getNumericLocalDate(date_added ?? publishedAt)}
               tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
+              text={excerpt ?? undefined}
               linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}

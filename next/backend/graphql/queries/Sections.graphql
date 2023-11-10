@@ -110,11 +110,6 @@ fragment ArticlesListSection on ComponentSectionsArticlesList {
 fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
   title
   text
-  tags {
-    data {
-      id
-    }
-  }
 }
 
 fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {

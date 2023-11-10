@@ -1,4 +1,4 @@
-import { BlogPostsByTagsSectionFragment, BlogPostsListSectionFragment } from '@backend/graphql'
+import { BlogPostsByTagsSectionFragment } from '@backend/graphql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
@@ -18,7 +18,7 @@ import React from 'react'
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
-  section: BlogPostsByTagsSectionFragment | BlogPostsListSectionFragment
+  section: BlogPostsByTagsSectionFragment
 }
 
 const BlogPostsByTags = ({ section }: Props) => {
