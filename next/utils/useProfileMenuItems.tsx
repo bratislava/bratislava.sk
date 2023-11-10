@@ -4,8 +4,8 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 
 const ROUTES = {
-  USER_PROFILE: `${process.env.NEXT_PUBLIC_KONTO_URL}/moj-profil`,
-  HELP: `${process.env.NEXT_PUBLIC_KONTO_URL}/pomoc`,
+  USER_PROFILE: `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/moj-profil`,
+  HELP: `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/pomoc`,
 }
 
 interface IUseProfileMenuProps {
