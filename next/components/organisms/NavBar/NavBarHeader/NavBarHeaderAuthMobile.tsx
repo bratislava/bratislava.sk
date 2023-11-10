@@ -1,6 +1,7 @@
 import { HelpIcon, LogoutIcon, ProfileIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import { MenuItemBase } from '@components/forms/simple-components/MenuDropdown/MenuDropdown'
+import MLink from '@components/forms/simple-components/MLink'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useGeneralContext } from '@utils/generalContext'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -25,15 +26,17 @@ export const handleOnKeyPress = (
   }
 }
 
-const Item = ({
-  menuItem,
-  onClick,
-  onCloseMenu,
-}: {
-  menuItem: MenuItemBase
-  onClick: () => void
+interface IItemProps extends MenuItemBase {
   onCloseMenu: () => void
-}) => {
+  onPress?: () => void
+}
+
+const Item = ({ icon, title, url, onPress, onCloseMenu }: IItemProps) => {
+  const onClick = () => {
+    onPress?.()
+    onCloseMenu()
+  }
+
   return (
     <div
       role="button"
@@ -42,10 +45,12 @@ const Item = ({
       onKeyDown={(event) => handleOnKeyPress(event, onClick)}
       className="relative flex items-center gap-2"
     >
-      <div>{menuItem.icon}</div>
+      <div className="flex h-12 w-12 items-center justify-center">{icon}</div>
 
       <NavigationMenu.Link asChild onClick={onCloseMenu}>
-        <span>{menuItem?.title}</span>
+        <MLink href={url ?? '#'} target={url ? '_blank' : undefined} variant="underlined" stretched>
+          {title}
+        </MLink>
       </NavigationMenu.Link>
     </div>
   )
@@ -63,58 +68,44 @@ const NavBarAuthHeaderMobile = ({ onCloseMenu }: INavBarAuthHeaderMobileProps) =
     {
       id: 1,
       title: t('menu_profile_link'),
-      icon: <ProfileIcon className="h-5 w-5" />,
+      icon: <ProfileIcon className="h-8 w-8" />,
       url: ROUTES.USER_PROFILE,
     },
     {
       id: 2,
       title: t('menu_help_link'),
-      icon: <HelpIcon className="h-5 w-5" />,
+      icon: <HelpIcon className="h-8 w-8" />,
       url: ROUTES.HELP,
     },
     {
       id: 3,
       title: t('menu_logout_link'),
-      icon: <LogoutIcon className="h-5 w-5 text-negative-700" />,
+      icon: <LogoutIcon className="h-8 w-8 text-negative-700" />,
       onPress: signOut,
       itemClassName: 'bg-negative-50',
     },
   ]
 
-  return data ? (
-    menuItems.map((sectionItem) => {
-      // TODO clean up this logic & move menu items closer to where they are used
-      if (sectionItem.onPress) {
-        return (
-          <Item
-            key={sectionItem.id}
-            menuItem={sectionItem}
-            onClick={() => {
-              sectionItem.onPress()
-              onCloseMenu()
-            }}
-            onCloseMenu={onCloseMenu}
-          />
-        )
-      }
-      return sectionItem.url ? (
-        <Item menuItem={sectionItem} onClick={onCloseMenu} onCloseMenu={onCloseMenu} />
-      ) : null
-    })
-  ) : accountLink ? (
+  return data || accountLink ? (
     <>
       <NavBarHorizontalDivider />
 
-      <li className="my-1 flex justify-center md:justify-start">
-        <NavigationMenu.Link asChild onClick={onCloseMenu}>
-          <Button
-            size="sm"
-            variant="category"
-            fullWidthMobile
-            {...getCommonLinkProps(accountLink)}
-          />
-        </NavigationMenu.Link>
-      </li>
+      {data ? (
+        menuItems.map((sectionItem) => (
+          <Item key={sectionItem.id} {...sectionItem} onCloseMenu={onCloseMenu} />
+        ))
+      ) : (
+        <li className="my-1 flex justify-center md:justify-start">
+          <NavigationMenu.Link asChild onClick={onCloseMenu}>
+            <Button
+              size="sm"
+              variant="category"
+              fullWidthMobile
+              {...getCommonLinkProps(accountLink)}
+            />
+          </NavigationMenu.Link>
+        </li>
+      )}
     </>
   ) : null
 }
