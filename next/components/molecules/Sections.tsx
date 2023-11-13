@@ -80,6 +80,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsBlogPostsList':
       return <BlogPostsByTags section={section} />
 
+    case 'ComponentSectionsBlogPostsByTags':
+      return <BlogPostsByTags section={section} />
+
     case 'ComponentSectionsInbaArticlesList':
       return <InbaArticlesByTags section={section} />
 
