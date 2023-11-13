@@ -1,7 +1,9 @@
 import { SectionsFragment } from '@backend/graphql'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import BlogPostsByCategory from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByCategory'
 import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
-import InbaArticlesByTags from '@components/molecules/sections/general/ArticlesListSection/InbaArticlesByTags'
+import BlogPostsList from '@components/molecules/sections/general/ArticlesListSection/BlogPostsList'
+import InbaArticlesList from '@components/molecules/sections/general/ArticlesListSection/InbaArticlesList'
 import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
 import InbaReleasesSection from '@components/molecules/sections/general/InbaReleasesSection'
@@ -78,13 +80,16 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <ArticlesListSection section={section} />
 
     case 'ComponentSectionsBlogPostsList':
-      return <BlogPostsByTags section={section} />
+      return <BlogPostsList section={section} />
 
     case 'ComponentSectionsBlogPostsByTags':
       return <BlogPostsByTags section={section} />
 
+    case 'ComponentSectionsBlogPostsByCategory':
+      return <BlogPostsByCategory section={section} />
+
     case 'ComponentSectionsInbaArticlesList':
-      return <InbaArticlesByTags section={section} />
+      return <InbaArticlesList section={section} />
 
     case 'ComponentSectionsInbaReleases':
       return <InbaReleasesSection section={section} />
