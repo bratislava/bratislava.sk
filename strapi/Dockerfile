@@ -1,4 +1,4 @@
-FROM node:18.18.2-alpine AS base
+FROM node:18.17-alpine AS base
 
 FROM base AS build-base
 RUN apk update \
@@ -21,7 +21,7 @@ FROM build-base AS install-prod
 ENV YARN_CACHE_FOLDER=/build/.cache/yarn
 # https://forum.strapi.io/t/docker-strapi-node-18-16-alpine-sharp-node-gyp-problem-solved/32245
 # https://stackoverflow.com/questions/71966803/error-sh-node-gyp-build-command-not-found
-RUN yarn global add node-gyp
+# RUN yarn global add node-gyp
 RUN --mount=type=cache,target=/build/.cache/yarn \
     yarn config set network-timeout 600000 -g \
  && yarn install --production
