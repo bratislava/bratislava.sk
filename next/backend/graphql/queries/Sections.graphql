@@ -110,11 +110,6 @@ fragment ArticlesListSection on ComponentSectionsArticlesList {
 fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
   title
   text
-  tags {
-    data {
-      id
-    }
-  }
 }
 
 fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {
@@ -123,6 +118,19 @@ fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {
   tags {
     data {
       id
+    }
+  }
+}
+
+fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
+  title
+  text
+  category {
+    data {
+      id
+      attributes {
+        title
+      }
     }
   }
 }
@@ -549,6 +557,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsBlogPostsByTags {
     ...BlogPostsByTagsSection
+  }
+
+  ... on ComponentSectionsBlogPostsByCategory {
+    ...BlogPostsByCategorySection
   }
 
   ... on ComponentSectionsInbaArticlesList {

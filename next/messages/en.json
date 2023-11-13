@@ -241,8 +241,9 @@
   "InbaArticle": {
     "publishedInThisRelease": "This article was published in the issue {releaseTitle} on {releaseDate}."
   },
-  "ArticleFilter": {
+  "BlogPostsFilter": {
     "articleFilter": "Article filter",
+    "allArticles": "All articles",
     "subcategories": "Subcategories"
   }
 }

@@ -1,4 +1,5 @@
-import { BlogPostsByTagsSectionFragment } from '@backend/graphql'
+import { BlogPostsByCategorySectionFragment } from '@backend/graphql'
+import { client } from '@backend/graphql/gql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
@@ -12,33 +13,50 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useRoutePreservedState } from '@utils/useRoutePreservedState'
+import { filter } from 'lodash'
 import { useLocale, useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
-  section: BlogPostsByTagsSectionFragment
+  section: BlogPostsByCategorySectionFragment
 }
 
 const BlogPostsByTags = ({ section }: Props) => {
   const t = useTranslations()
   const locale = useLocale()
 
-  const { title, text, tags } = section
-
-  const tagIds = tags?.data.map((tag) => tag.id).filter(isDefined) ?? []
+  const { title, text, category } = section
 
   const [filters, setFilters] = useRoutePreservedState({
     ...blogPostsDefaultFilters,
-    tagIds,
   })
+
+  const { data: blogPostsTagsData } = useQuery({
+    queryKey: ['blogPostsTags', locale],
+    queryFn: () => client.blogPostsTags({ locale }),
+    staleTime: Infinity,
+  })
+
+  const tagIds =
+    blogPostsTagsData?.tags?.data
+      .filter((tag) => {
+        return tag.attributes?.pageCategory?.data?.id === category?.data?.id
+      })
+      .map((tag) => tag.id ?? '')
+      .filter(isDefined) ?? []
+
+  useEffect(() => {
+    setFilters({ ...filters, tagIds })
+  }, [blogPostsTagsData])
 
   // TODO prefetch section
   const { data } = useQuery({
     queryKey: getBlogPostsQueryKey(filters, locale),
     queryFn: () => blogPostsFetcher(filters, locale),
     keepPreviousData: true,
+    enabled: filters.tagIds.length > 0,
   })
 
   const handlePageChange = (page: number) => {
@@ -84,7 +102,6 @@ const BlogPostsByTags = ({ section }: Props) => {
           )
         })}
       </div>
-
       {data?.estimatedTotalHits ? (
         <Pagination
           key={filters.search}
