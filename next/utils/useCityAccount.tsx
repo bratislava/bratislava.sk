@@ -92,13 +92,9 @@ export const CityAccountProvider = ({ children }: { children: React.ReactNode })
   })
 
   const signOut = useCallback(() => {
-    cookies.remove(ACCESS_TOKEN_COOKIE_KEY, {
-      domain: process.env.NEXT_PUBLIC_COGNITO_COOKIE_STORAGE_DOMAIN,
-    })
-    cookies.remove(REFRESH_TOKEN_COOKIE_KEY, {
-      domain: process.env.NEXT_PUBLIC_COGNITO_COOKIE_STORAGE_DOMAIN,
-    })
-    setAccessToken(null)
+    const url = new URL(`http://localhost:3001/logout`)
+    url.searchParams.set('from', window.location.href)
+    window.location.href = url.toString()
   }, [])
 
   return (
