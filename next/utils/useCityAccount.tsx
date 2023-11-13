@@ -92,7 +92,7 @@ export const CityAccountProvider = ({ children }: { children: React.ReactNode })
   })
 
   const signOut = useCallback(() => {
-    const url = new URL(`http://localhost:3001/logout`)
+    const url = new URL(`${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/logout`)
     url.searchParams.set('from', window.location.href)
     window.location.href = url.toString()
   }, [])
