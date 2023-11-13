@@ -19,9 +19,6 @@ COPY ./package.json ./yarn.lock ./
 
 FROM build-base AS install-prod
 ENV YARN_CACHE_FOLDER=/build/.cache/yarn
-# https://forum.strapi.io/t/docker-strapi-node-18-16-alpine-sharp-node-gyp-problem-solved/32245
-# https://stackoverflow.com/questions/71966803/error-sh-node-gyp-build-command-not-found
-# RUN yarn global add node-gyp
 RUN --mount=type=cache,target=/build/.cache/yarn \
     yarn config set network-timeout 600000 -g \
  && yarn install --production
