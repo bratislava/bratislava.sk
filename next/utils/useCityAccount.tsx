@@ -13,7 +13,6 @@ interface CityAccountState {
   accessToken: string | null
   loading: boolean
   data?: CityAccountUser
-  signOut: () => void
 }
 
 const CityAccountContext = React.createContext<CityAccountState>({} as CityAccountState)
@@ -22,6 +21,12 @@ const cookies = new Cookies()
 
 const ACCESS_TOKEN_COOKIE_KEY = 'accessToken'
 const REFRESH_TOKEN_COOKIE_KEY = 'refreshToken'
+
+export const signOut = () => {
+  const url = new URL(`${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/logout`)
+  url.searchParams.set('from', window.location.href)
+  window.location.href = url.toString()
+}
 
 export const CityAccountProvider = ({ children }: { children: React.ReactNode }) => {
   const [initializationState, setInitializationState] = useState<
@@ -91,12 +96,6 @@ export const CityAccountProvider = ({ children }: { children: React.ReactNode })
     },
   })
 
-  const signOut = useCallback(() => {
-    const url = new URL(`${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/logout`)
-    url.searchParams.set('from', window.location.href)
-    window.location.href = url.toString()
-  }, [])
-
   return (
     <CityAccountContext.Provider
       value={{
@@ -104,7 +103,6 @@ export const CityAccountProvider = ({ children }: { children: React.ReactNode })
         loading: query.isLoading || status === 'initializing',
         accessToken,
         status,
-        signOut,
       }}
     >
       {children}

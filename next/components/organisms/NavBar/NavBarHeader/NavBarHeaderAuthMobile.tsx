@@ -55,8 +55,8 @@ const NavBarAuthHeaderMobile = ({ onCloseMenu }: INavBarAuthHeaderMobileProps) =
   const { header } = general?.data?.attributes ?? {}
   const { accountLink } = header ?? {}
 
-  const { data, loading, signOut } = useCityAccount()
-  const menuItems = useProfileMenuItems({ signOut, iconClassName: 'h-8 w-8' })
+  const { data, loading } = useCityAccount()
+  const menuItems = useProfileMenuItems('large')
 
   return loading ? (
     <LoadingSpinner size="small" />

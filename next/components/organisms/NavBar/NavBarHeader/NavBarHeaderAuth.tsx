@@ -12,12 +12,12 @@ const NavBarAuthHeader = () => {
   const { header } = general?.data?.attributes ?? {}
   const { accountLink } = header ?? {}
 
-  const { data, loading, signOut } = useCityAccount()
+  const { data, loading } = useCityAccount()
 
   return loading ? (
     <LoadingSpinner size="small" />
   ) : data ? (
-    <UserProfilePhoto signOut={signOut} userData={data} />
+    <UserProfilePhoto userData={data} />
   ) : accountLink ? (
     <Button size="sm" variant="category" {...getCommonLinkProps(accountLink)} />
   ) : (

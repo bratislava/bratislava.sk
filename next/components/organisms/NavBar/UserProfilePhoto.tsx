@@ -45,13 +45,12 @@ const UserProfilePhoto = ({ userData, isMenuOpen }: IUserProfilePhotoProps) => {
 
 interface IProfileMenuProps {
   userData: CityAccountUser
-  signOut: () => void
 }
 
-const ProfileMenu = ({ userData, signOut }: IProfileMenuProps) => {
+const ProfileMenu = ({ userData }: IProfileMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
-  const menuItems = useProfileMenuItems({ signOut })
+  const menuItems = useProfileMenuItems('small')
 
   return (
     <>

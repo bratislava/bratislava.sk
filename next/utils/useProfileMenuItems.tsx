@@ -3,21 +3,17 @@ import { MenuItemBase } from '@components/forms/simple-components/MenuDropdown/M
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 
+import { signOut } from './useCityAccount'
+
 const ROUTES = {
   USER_PROFILE: `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/moj-profil`,
   HELP: `${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/pomoc`,
 }
 
-interface IUseProfileMenuProps {
-  signOut: () => void
-  iconClassName?: string
-}
-
-export const useProfileMenuItems = ({
-  signOut,
-  iconClassName = 'h-5 w-5',
-}: IUseProfileMenuProps): MenuItemBase[] => {
+export const useProfileMenuItems = (size = 'small'): MenuItemBase[] => {
   const t = useTranslations()
+
+  const iconClassName = size === 'small' ? 'h-5 w-5' : 'h-8 w-8'
 
   const menuItems: MenuItemBase[] = [
     {
