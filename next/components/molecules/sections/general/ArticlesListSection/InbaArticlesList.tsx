@@ -22,7 +22,7 @@ type Props = {
   section: InbaArticlesListSectionFragment
 }
 
-const InbaArticlesByTags = ({ section }: Props) => {
+const InbaArticlesList = ({ section }: Props) => {
   const t = useTranslations()
   const locale = useLocale()
 
@@ -106,4 +106,4 @@ const InbaArticlesByTags = ({ section }: Props) => {
   )
 }
 
-export default InbaArticlesByTags
+export default InbaArticlesList
