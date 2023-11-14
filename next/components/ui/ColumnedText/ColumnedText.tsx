@@ -6,7 +6,7 @@ export interface ColumnedTextProps {
   className?: string
   content: string
   hasBackground?: boolean
-  contentAlignment: Enum_Componentsectionscolumnedtext_Contentalignment
+  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment
 }
 
 export const ColumnedText = ({ content, hasBackground, contentAlignment }: ColumnedTextProps) => {
