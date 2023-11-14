@@ -9,6 +9,7 @@ ENV YARN_CACHE_FOLDER=/build/.cache/yarn
 RUN --mount=type=cache,target=/build/.cache/yarn \
     yarn config set network-timeout 600000 -g \
  && yarn install --production --frozen-lockfile
+
 FROM install-prod AS build
 COPY . ./
 ENV NEXT_TELEMETRY_DISABLED=1
