@@ -80,7 +80,7 @@ export const CityAccountProvider = ({ children }: { children: React.ReactNode })
   }, [])
 
   const query = useQuery({
-    queryKey: ['userData', jwtAccessToken?.sub],
+    queryKey: ['userData', accessToken],
     queryFn: () => getAccount(accessToken),
     staleTime: Infinity,
     retry: false,

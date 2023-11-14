@@ -23,15 +23,19 @@ export const getAccount = async (accessToken: string | null) => {
   if (!accessToken) throw new Error('No access token provided')
   if (!checkTokenValid(accessToken)) throw new Error('Access token is invalid')
 
-  const result = await fetch(`${process.env.NEXT_PUBLIC_CITY_ACCOUNT_URL}/auth/user`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  })
-  if (!result.ok) {
-    throw result.status === 401 ? new Error('Unauthorized') : new Error('Error fetching account')
+  try {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_CITY_ACCOUNT_BACKEND_URL}/auth/user`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    if (!result.ok) {
+      throw result.status === 401 ? new Error('Unauthorized') : new Error('Error fetching account')
+    }
+    return result.json() as Partial<CityAccountUser>
+  } catch (error) {
+    throw new Error('Error fetching account')
   }
-  return result.json() as Partial<CityAccountUser>
 }
 
 export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
