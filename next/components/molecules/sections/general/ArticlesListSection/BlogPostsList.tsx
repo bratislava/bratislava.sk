@@ -32,7 +32,6 @@ const BlogPostsByTags = ({ section }: Props) => {
     ...blogPostsDefaultFilters,
   })
 
-  // TODO prefetch section
   const { data } = useQuery({
     queryKey: getBlogPostsQueryKey(filters, locale),
     queryFn: () => blogPostsFetcher(filters, locale),
