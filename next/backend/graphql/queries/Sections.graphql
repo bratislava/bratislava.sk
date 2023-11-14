@@ -221,6 +221,7 @@ fragment FileItemBlock on ComponentBlocksFileItem {
 fragment ColumnedTextSection on ComponentSectionsColumnedText {
   hasBackground
   content
+  contentAlignment
 }
 
 fragment NarrowTextSection on ComponentSectionsNarrowText {

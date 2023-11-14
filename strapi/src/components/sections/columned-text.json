@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_columned_texts",
   "info": {
-    "displayName": "Columned Text"
+    "displayName": "Columned Text",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,6 +11,14 @@
     },
     "hasBackground": {
       "type": "boolean"
+    },
+    "contentAlignment": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
     }
   }
 }

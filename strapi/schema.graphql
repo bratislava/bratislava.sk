@@ -1198,6 +1198,7 @@ input ComponentSectionsCalculatorInput {
 
 type ComponentSectionsColumnedText {
   content: String
+  contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
   hasBackground: Boolean
   id: ID!
 }
@@ -1205,6 +1206,7 @@ type ComponentSectionsColumnedText {
 input ComponentSectionsColumnedTextFiltersInput {
   and: [ComponentSectionsColumnedTextFiltersInput]
   content: StringFilterInput
+  contentAlignment: StringFilterInput
   hasBackground: BooleanFilterInput
   not: ComponentSectionsColumnedTextFiltersInput
   or: [ComponentSectionsColumnedTextFiltersInput]
@@ -1212,6 +1214,7 @@ input ComponentSectionsColumnedTextFiltersInput {
 
 input ComponentSectionsColumnedTextInput {
   content: String
+  contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
   hasBackground: Boolean
   id: ID
 }
@@ -2098,6 +2101,12 @@ enum ENUM_COMPONENTSECTIONSBANNER_VARIANT {
   color
   dark
   white_condensed
+}
+
+enum ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT {
+  center
+  left
+  right
 }
 
 enum ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN {
