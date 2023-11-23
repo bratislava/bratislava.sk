@@ -6,10 +6,14 @@ export interface ColumnedTextProps {
   className?: string
   content: string
   hasBackground?: boolean
-  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment
+  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
-export const ColumnedText = ({ content, hasBackground, contentAlignment }: ColumnedTextProps) => {
+export const ColumnedText = ({
+  content,
+  hasBackground,
+  contentAlignment = Enum_Componentsectionscolumnedtext_Contentalignment.Left,
+}: ColumnedTextProps) => {
   const breakWord = '<break>'
   const columns = content.split(breakWord)
   if (!content) return null

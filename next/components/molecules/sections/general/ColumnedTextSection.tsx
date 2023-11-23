@@ -12,9 +12,7 @@ const ColumnedTextSection = ({ section }: ColumnedTextSectionProps) => {
     <ColumnedText
       content={section.content ?? ''}
       hasBackground={section.hasBackground ?? false}
-      contentAlignment={
-        section.contentAlignment ?? Enum_Componentsectionscolumnedtext_Contentalignment.Left
-      }
+      contentAlignment={section.contentAlignment ?? undefined}
     />
   )
 }

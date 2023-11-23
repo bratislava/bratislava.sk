@@ -18,7 +18,9 @@
         "left",
         "center",
         "right"
-      ]
+      ],
+      "default": "left",
+      "required": false
     }
   }
 }
