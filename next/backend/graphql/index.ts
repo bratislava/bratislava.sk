@@ -1050,6 +1050,7 @@ export type ComponentSectionsCalculator = {
 export type ComponentSectionsColumnedText = {
   __typename?: 'ComponentSectionsColumnedText'
   content?: Maybe<Scalars['String']>
+  contentAlignment?: Maybe<Enum_Componentsectionscolumnedtext_Contentalignment>
   hasBackground?: Maybe<Scalars['Boolean']>
   id: Scalars['ID']
 }
@@ -1615,6 +1616,12 @@ export enum Enum_Componentsectionsbanner_Variant {
   Color = 'color',
   Dark = 'dark',
   WhiteCondensed = 'white_condensed',
+}
+
+export enum Enum_Componentsectionscolumnedtext_Contentalignment {
+  Center = 'center',
+  Left = 'left',
+  Right = 'right',
 }
 
 export enum Enum_Componentsectionscomparisonsection_Textalign {
@@ -4045,6 +4052,7 @@ export type BlogPostBySlugQuery = {
               __typename: 'ComponentSectionsColumnedText'
               hasBackground?: boolean | null
               content?: string | null
+              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsDivider'
@@ -4255,6 +4263,7 @@ export type LatestPostsByTagsQuery = {
               __typename: 'ComponentSectionsColumnedText'
               hasBackground?: boolean | null
               content?: string | null
+              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsDivider'
@@ -4664,6 +4673,7 @@ export type BlogPostEntityFragment = {
           __typename: 'ComponentSectionsColumnedText'
           hasBackground?: boolean | null
           content?: string | null
+          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
           __typename: 'ComponentSectionsDivider'
@@ -7633,6 +7643,7 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsColumnedText'
               hasBackground?: boolean | null
               content?: string | null
+              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsComparisonSection'
@@ -8634,6 +8645,7 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsColumnedText'
           hasBackground?: boolean | null
           content?: string | null
+          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
           __typename: 'ComponentSectionsComparisonSection'
@@ -9733,6 +9745,7 @@ export type ColumnedTextSectionFragment = {
   __typename?: 'ComponentSectionsColumnedText'
   hasBackground?: boolean | null
   content?: string | null
+  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 export type NarrowTextSectionFragment = {
@@ -10496,6 +10509,7 @@ type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
   hasBackground?: boolean | null
   content?: string | null
+  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 type Sections_ComponentSectionsComparisonSection_Fragment = {
@@ -11455,6 +11469,7 @@ export const ColumnedTextSectionFragmentDoc = gql`
   fragment ColumnedTextSection on ComponentSectionsColumnedText {
     hasBackground
     content
+    contentAlignment
   }
 `
 export const NarrowTextSectionFragmentDoc = gql`
