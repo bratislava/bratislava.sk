@@ -95,18 +95,6 @@ fragment TimelineSection on ComponentSectionsTimeline {
   }
 }
 
-fragment ArticlesListSection on ComponentSectionsArticlesList {
-  title
-  category {
-    data {
-      attributes {
-        title
-      }
-    }
-  }
-  filtering
-}
-
 fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
   title
   text
@@ -546,10 +534,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNumericalList {
     ...NumericalListSection
-  }
-
-  ... on ComponentSectionsArticlesList {
-    ...ArticlesListSection
   }
 
   ... on ComponentSectionsBlogPostsList {

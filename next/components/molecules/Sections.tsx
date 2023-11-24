@@ -11,7 +11,6 @@ import cx from 'classnames'
 import * as React from 'react'
 
 import AccordionSection from './sections/general/AccordionSection'
-import ArticlesListSection from './sections/general/ArticlesListSection/ArticlesListSection'
 import BannerSection from './sections/general/BannerSection'
 import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
 import ColumnedTextSection from './sections/general/ColumnedTextSection'
@@ -75,9 +74,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsVideos':
       return <VideosSection section={section} />
-
-    case 'ComponentSectionsArticlesList':
-      return <ArticlesListSection section={section} />
 
     case 'ComponentSectionsBlogPostsList':
       return <BlogPostsList section={section} />

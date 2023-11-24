@@ -13,7 +13,7 @@ export type BlogPostsFilters = {
 
 export const blogPostsDefaultFilters: BlogPostsFilters = {
   search: '',
-  pageSize: 9,
+  pageSize: 6,
   page: 1,
   tagIds: [],
 }
