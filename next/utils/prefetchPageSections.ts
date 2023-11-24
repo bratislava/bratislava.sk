@@ -3,6 +3,7 @@ import {
   getRelatedBlogPostsQueryKey,
   relatedBlogPostsFetcher,
 } from '@backend/graphql/fetchers/relatedBlogPosts.fetcher'
+import { client } from '@backend/graphql/gql'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 
 export const prefetchPageSections = async (page: PageEntityFragment, locale: string) => {
@@ -14,6 +15,19 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
   // if (sectionTypes.includes('ComponentSectionsPartners')) {
   //   await queryClient.prefetchQuery(getPartnersQueryKey(locale), () => partnersFetcher(locale))
   // }
+
+  if (sectionTypes.includes('ComponentSectionsBlogPostsList')) {
+    await queryClient.prefetchQuery(['blogPostsTags', locale], () =>
+      client.blogPostsTags({ locale }),
+    )
+    await queryClient.prefetchQuery(['pageCategories', locale], () =>
+      client.pageCategories({ locale }),
+    )
+  }
+
+  if (sectionTypes.includes('ComponentSectionsInbaArticlesList')) {
+    await queryClient.prefetchQuery(['InbaTags', locale], () => client.InbaTags({ locale }))
+  }
 
   await queryClient.prefetchQuery(getRelatedBlogPostsQueryKey(page, locale), () =>
     relatedBlogPostsFetcher(page, locale),
