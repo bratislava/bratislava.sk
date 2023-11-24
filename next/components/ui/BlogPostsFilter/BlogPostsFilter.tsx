@@ -3,12 +3,12 @@ import {
   PageCategoryEntityFragment,
   TagEntityFragment,
 } from '@backend/graphql'
+import { BaTagGroup, ChipTagType } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
-import { getCategoryColorLocalStyle } from '@utils/colors'
 import { isDefined } from '@utils/isDefined'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
-import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
+import { Label, Selection, Text } from 'react-aria-components'
 
 type BlogPostsFilterProps = {
   pageCategories: PageCategoryEntityFragment[]
@@ -74,6 +74,39 @@ const BlogPostsFilter = ({
     setSelectedTags(new Set<string>())
   }, [locale])
 
+  const formattedPageCategoryTags = pageCategories
+    .map((pagecategory) => {
+      if (!pagecategory.id || !pagecategory.attributes?.title) {
+        return null
+      }
+
+      return {
+        id: pagecategory.id,
+        key: pagecategory.id,
+        size: 'large',
+        label: pagecategory.attributes.title,
+        color: pagecategory.attributes.color,
+      }
+    })
+    .filter(isDefined)
+
+  const formattedBlogPostsTags = blogPostsTags
+    .filter(isDefined)
+    .filter((tag) => {
+      return tag.attributes?.pageCategory?.data?.id === Array.from(selectedPageCategory)[0]
+    })
+    .map((tag) => {
+      if (!tag.id || !tag.attributes?.title) return null
+
+      return {
+        id: tag.id,
+        key: tag.id,
+        size: 'small',
+        label: tag.attributes.title,
+        color: tag.attributes.pageCategory?.data?.attributes?.color ?? Enum_Pagecategory_Color.Red,
+      }
+    })
+
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px] lg:gap-10 lg:py-18">
       <div className="flex flex-col gap-2 lg:items-center ">
@@ -81,7 +114,24 @@ const BlogPostsFilter = ({
         {subtext && <Text>{subtext}</Text>}
       </div>
       <div>
-        <TagGroup
+        <BaTagGroup
+          setTags={setSelectedPageCategory}
+          selectedTags={selectedPageCategory}
+          selectionMode="single"
+          tagListClassName="flex flex-row flex-wrap gap-3 lg:justify-center"
+          tags={[
+            {
+              id: defaultChip.id,
+              key: defaultChip.id,
+              size: 'large',
+              label: defaultChip.title,
+              color: defaultChip.color,
+            },
+            ...(formattedPageCategoryTags as ChipTagType[]),
+          ]}
+        />
+
+        {/* <TagGroup
           selectionMode="single"
           selectedKeys={selectedPageCategory}
           defaultSelectedKeys={defaultChip.id}
@@ -114,7 +164,7 @@ const BlogPostsFilter = ({
               })
               .filter(isDefined)}
           </TagList>
-        </TagGroup>
+        </TagGroup> */}
         {Array.from(selectedPageCategory)[0] !== defaultChip.id &&
         Array.from(selectedPageCategory)?.length &&
         blogPostsTags?.length ? (
@@ -122,7 +172,14 @@ const BlogPostsFilter = ({
             {Array.from(selectedPageCategory).length > 0 ? (
               <Label className="text-h5 pb-3 font-semibold">{t('subcategories')}</Label>
             ) : null}
-            <TagGroup
+            <BaTagGroup
+              setTags={setSelectedTags}
+              selectedTags={selectedTags}
+              selectionMode="multiple"
+              tagListClassName="flex flex-wrap gap-2 lg:justify-center"
+              tags={formattedBlogPostsTags as ChipTagType[]}
+            />
+            {/* <TagGroup
               selectionMode="multiple"
               selectedKeys={selectedTags}
               onSelectionChange={setSelectedTags}
@@ -153,7 +210,7 @@ const BlogPostsFilter = ({
                     )
                   })}
               </TagList>
-            </TagGroup>
+            </TagGroup> */}
           </div>
         ) : null}
       </div>

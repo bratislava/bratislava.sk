@@ -180,7 +180,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   return (
     <section
       className={cx(
-        'relative flex w-full max-w-[200px] flex-col transition-all xs:max-w-[320px]',
+        'xs:max-w-[320px] relative flex w-full max-w-[200px] flex-col transition-all',
         className,
       )}
     >

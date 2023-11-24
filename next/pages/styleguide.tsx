@@ -25,6 +25,7 @@ import TagShowCase from '../components/styleguide/showcases/TagShowCase'
 import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFieldShowCase'
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
+import TagGroupShowCase from '@components/styleguide/showcases/TagGroupShowcase'
 
 const Styleguide = () => {
   /**
@@ -34,6 +35,7 @@ const Styleguide = () => {
   return (
     <StyleGuideWrapper>
       {/* HERE ADD SHOWCASES */}
+      <TagGroupShowCase />
       <TagShowCase />
       <TooltipShowCase />
       <FieldHeaderShowCase />

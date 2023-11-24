@@ -32,7 +32,7 @@ export const IconTitleDescItem = ({
       </div>
       <div className="flex w-full flex-col gap-2 text-center">
         <h3 className="text-h4">{title}</h3>
-        <Markdown content={text}/>
+        <Markdown content={text} />
       </div>
     </li>
   )
