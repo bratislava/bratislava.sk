@@ -1,5 +1,5 @@
 import InputField from 'components/forms/widget-components/InputField/InputField'
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
@@ -7,13 +7,20 @@ import { Wrapper } from '../Wrapper'
 interface InputFieldShowCaseBase {}
 
 const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
+  const ref = useRef<HTMLInputElement>(null)
   return (
     <Wrapper direction="column" title="Input Field">
       <Stack direction="column">
-        <InputField label="Label" placeholder="Placeholder" />
-        <InputField label="Label" placeholder="Placeholder" value="Value" />
-        <InputField label="Label" placeholder="Placeholder" errorMessage={['Error message']} />
+        <InputField ref={ref} label="Label" placeholder="Placeholder" />
+        <InputField ref={ref} label="Label" placeholder="Placeholder" value="Value" />
         <InputField
+          ref={ref}
+          label="Label"
+          placeholder="Placeholder"
+          errorMessage={['Error message']}
+        />
+        <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           errorMessage={['Error message']}
@@ -22,6 +29,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
       </Stack>
       <Stack direction="column">
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
@@ -29,6 +37,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           explicitOptional="right"
         />
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           value="Value"
@@ -37,6 +46,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           required
         />
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
@@ -45,6 +55,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           errorMessage={['Error message']}
         />
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
@@ -56,6 +67,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
       </Stack>
       <Stack direction="column">
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
@@ -64,6 +76,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           resetIcon
         />
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           value="Value"
@@ -73,6 +86,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           resetIcon
         />
         <InputField
+          ref={ref}
           label="Label"
           type="password"
           placeholder="Placeholder"
@@ -83,6 +97,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           errorMessage={['Error message']}
         />
         <InputField
+          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
