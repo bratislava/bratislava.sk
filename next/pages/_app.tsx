@@ -5,6 +5,7 @@ import '../styles/globals.css'
 import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@components/providers/BAI18nProvider'
+import { CityAccountProvider } from '@utils/useCityAccount'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
@@ -74,16 +75,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           >
             <BAQueryClientProvider>
               <QueryParamProvider adapter={NextAdapter}>
-                <BAI18nProvider>
-                  <OverlayProvider>
-                    <NavMenuContextProvider>
-                      {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                      <div id="root">
-                        <Component {...pageProps} />
-                      </div>
-                    </NavMenuContextProvider>
-                  </OverlayProvider>
-                </BAI18nProvider>
+                <CityAccountProvider>
+                  <BAI18nProvider>
+                    <OverlayProvider>
+                      <NavMenuContextProvider>
+                        {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                        <div id="root">
+                          <Component {...pageProps} />
+                        </div>
+                      </NavMenuContextProvider>
+                    </OverlayProvider>
+                  </BAI18nProvider>
+                </CityAccountProvider>
               </QueryParamProvider>
             </BAQueryClientProvider>
           </PlausibleProvider>

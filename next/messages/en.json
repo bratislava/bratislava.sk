@@ -7,6 +7,9 @@
     "sk": "Slovensky",
     "en": "English"
   },
+  "menu_profile_link": "My profile",
+  "menu_help_link": "Help",
+  "menu_logout_link": "Log out",
   "e_services": "E-services",
   "signin": "SignIn",
   "signup": "SignUp",
