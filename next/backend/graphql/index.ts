@@ -988,14 +988,6 @@ export type ComponentSectionsAccordionInstitutionsNarrowArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
-export type ComponentSectionsArticlesList = {
-  __typename?: 'ComponentSectionsArticlesList'
-  category?: Maybe<PageCategoryEntityResponse>
-  filtering?: Maybe<Scalars['Boolean']>
-  id: Scalars['ID']
-  title?: Maybe<Scalars['String']>
-}
-
 export type ComponentSectionsBanner = {
   __typename?: 'ComponentSectionsBanner'
   content?: Maybe<Scalars['String']>
@@ -1948,7 +1940,6 @@ export type GenericMorph =
   | ComponentOsItemsAdvancedAccordionSubItem
   | ComponentOsItemsAdvancedAccordionSubSubItem
   | ComponentSectionsAccordion
-  | ComponentSectionsArticlesList
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
   | ComponentSectionsBlogPostsByTags
@@ -3099,7 +3090,6 @@ export type PageRelationResponseCollection = {
 
 export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
-  | ComponentSectionsArticlesList
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
   | ComponentSectionsBlogPostsByTags
@@ -7490,18 +7480,6 @@ export type PageBySlugQuery = {
               } | null> | null
             }
           | {
-              __typename: 'ComponentSectionsArticlesList'
-              title?: string | null
-              filtering?: boolean | null
-              category?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-                } | null
-              } | null
-            }
-          | {
               __typename: 'ComponentSectionsBanner'
               content?: string | null
               contentPosition: Enum_Componentsectionsbanner_Contentposition
@@ -8490,18 +8468,6 @@ export type PageEntityFragment = {
             url?: string | null
             urlLabel?: string | null
           } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsArticlesList'
-          title?: string | null
-          filtering?: boolean | null
-          category?: {
-            __typename?: 'PageCategoryEntityResponse'
-            data?: {
-              __typename?: 'PageCategoryEntity'
-              attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-            } | null
-          } | null
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -9517,19 +9483,6 @@ export type TimelineSectionFragment = {
   } | null> | null
 }
 
-export type ArticlesListSectionFragment = {
-  __typename?: 'ComponentSectionsArticlesList'
-  title?: string | null
-  filtering?: boolean | null
-  category?: {
-    __typename?: 'PageCategoryEntityResponse'
-    data?: {
-      __typename?: 'PageCategoryEntity'
-      attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-    } | null
-  } | null
-}
-
 export type BlogPostsListSectionFragment = {
   __typename?: 'ComponentSectionsBlogPostsList'
   title?: string | null
@@ -10373,19 +10326,6 @@ type Sections_ComponentSectionsAccordion_Fragment = {
   } | null> | null
 }
 
-type Sections_ComponentSectionsArticlesList_Fragment = {
-  __typename: 'ComponentSectionsArticlesList'
-  title?: string | null
-  filtering?: boolean | null
-  category?: {
-    __typename?: 'PageCategoryEntityResponse'
-    data?: {
-      __typename?: 'PageCategoryEntity'
-      attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-    } | null
-  } | null
-}
-
 type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
   content?: string | null
@@ -11093,7 +11033,6 @@ type Sections_Error_Fragment = { __typename: 'Error' }
 
 export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
-  | Sections_ComponentSectionsArticlesList_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsBlogPostsByCategory_Fragment
   | Sections_ComponentSectionsBlogPostsByTags_Fragment
@@ -11642,19 +11581,6 @@ export const NumericalListSectionFragmentDoc = gql`
   }
   ${NumericalListItemBlockFragmentDoc}
 `
-export const ArticlesListSectionFragmentDoc = gql`
-  fragment ArticlesListSection on ComponentSectionsArticlesList {
-    title
-    category {
-      data {
-        attributes {
-          title
-        }
-      }
-    }
-    filtering
-  }
-`
 export const BlogPostsListSectionFragmentDoc = gql`
   fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
     title
@@ -11999,9 +11925,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsNumericalList {
       ...NumericalListSection
     }
-    ... on ComponentSectionsArticlesList {
-      ...ArticlesListSection
-    }
     ... on ComponentSectionsBlogPostsList {
       ...BlogPostsListSection
     }
@@ -12055,7 +11978,6 @@ export const SectionsFragmentDoc = gql`
   ${CalculatorSectionFragmentDoc}
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
-  ${ArticlesListSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
   ${BlogPostsByTagsSectionFragmentDoc}
   ${BlogPostsByCategorySectionFragmentDoc}
