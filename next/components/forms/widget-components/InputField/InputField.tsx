@@ -49,7 +49,7 @@ export type InputBase = {
   autoComplete?: string
 }
 
-const InputField = forwardRef<HTMLInputElement, InputBase>(
+const InputField = forwardRef<HTMLInputElement | undefined, InputBase>(
   (
     {
       label,
@@ -77,10 +77,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
     // eslint-disable-next-line sonarjs/cognitive-complexity
   ) => {
     const [valueState, setValueState] = useState<string>(value)
-    const inputRef = useRef<HTMLInputElement>()
-
+    const inputRef = useRef<HTMLInputElement>(null)
     // We are using useImperativeHandle here to expose inputRef but not necessarily force user to pass it if not needed from outside
-    useImperativeHandle(ref, () => inputRef.current)
+    useImperativeHandle(ref, () => inputRef?.current ?? undefined)
 
     useEffect(() => {
       setValueState(onChange ? value : valueState)

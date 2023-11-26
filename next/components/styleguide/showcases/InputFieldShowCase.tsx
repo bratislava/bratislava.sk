@@ -7,7 +7,7 @@ import { Wrapper } from '../Wrapper'
 const ERROR = 'Error message'
 
 const InputFieldShowCase = () => {
-  const myRef = useRef()
+  const myRef = useRef<HTMLInputElement>()
   return (
     <Wrapper direction="column" title="Input Field">
       <Stack direction="column">
