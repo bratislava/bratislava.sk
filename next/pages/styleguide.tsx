@@ -8,8 +8,6 @@ import { isProductionDeployment } from '@utils/utils'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSideProps } from 'next'
-import { useState } from 'react'
-import { Selection } from 'react-aria-components'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'

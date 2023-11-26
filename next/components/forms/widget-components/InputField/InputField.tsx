@@ -4,7 +4,7 @@ import LockIcon from '@assets/images/forms/lock.svg'
 import MailIcon from '@assets/images/forms/mail.svg'
 import PersonIcon from '@assets/images/forms/person.svg'
 import cx from 'classnames'
-import { forwardRef, ReactNode, RefObject, useEffect, useState } from 'react'
+import { forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
@@ -74,8 +74,13 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
       ...rest
     },
     ref,
+    // eslint-disable-next-line sonarjs/cognitive-complexity
   ) => {
     const [valueState, setValueState] = useState<string>(value)
+    const inputRef = useRef<HTMLInputElement>()
+
+    // We are using useImperativeHandle here to expose inputRef but not necessarily force user to pass it if not needed from outside
+    useImperativeHandle(ref, () => inputRef.current)
 
     useEffect(() => {
       setValueState(onChange ? value : valueState)
@@ -110,8 +115,9 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
         isDisabled: disabled,
         autoComplete,
       },
-      ref as RefObject<HTMLInputElement>,
+      inputRef,
     )
+
     const leftIconSwitcher = (icon: string): ReactNode | null => {
       switch (icon) {
         case 'person':
@@ -186,7 +192,7 @@ const InputField = forwardRef<HTMLInputElement, InputBase>(
               {leftIconSwitcher(leftIcon)}
             </i>
           )}
-          <input {...inputProps} ref={ref} name={inputProps.id} className={style} />
+          <input {...inputProps} ref={inputRef} name={inputProps.id} className={style} />
           {resetIcon && valueState && (
             <button
               type="button"

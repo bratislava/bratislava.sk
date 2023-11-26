@@ -4,32 +4,21 @@ import React, { useRef } from 'react'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface InputFieldShowCaseBase {}
+const ERROR = 'Error message'
 
-const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
-  const ref = useRef<HTMLInputElement>(null)
+const InputFieldShowCase = () => {
+  const myRef = useRef()
   return (
     <Wrapper direction="column" title="Input Field">
       <Stack direction="column">
-        <InputField ref={ref} label="Label" placeholder="Placeholder" />
-        <InputField ref={ref} label="Label" placeholder="Placeholder" value="Value" />
-        <InputField
-          ref={ref}
-          label="Label"
-          placeholder="Placeholder"
-          errorMessage={['Error message']}
-        />
-        <InputField
-          ref={ref}
-          label="Label"
-          placeholder="Placeholder"
-          errorMessage={['Error message']}
-          disabled
-        />
+        {/* It is possible to pass your own ref if you need to (eg. when using with react-hook-form), but it's not necessary */}
+        <InputField label="Label" placeholder="Placeholder" ref={myRef} />
+        <InputField label="Label" placeholder="Placeholder" value="Value" />
+        <InputField label="Label" placeholder="Placeholder" errorMessage={[ERROR]} />
+        <InputField label="Label" placeholder="Placeholder" errorMessage={[ERROR]} disabled />
       </Stack>
       <Stack direction="column">
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
@@ -37,7 +26,6 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           explicitOptional="right"
         />
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           value="Value"
@@ -46,28 +34,25 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           required
         />
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
           tooltip="InputField"
           required
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
         />
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
           tooltip="InputField"
           required
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
           disabled
         />
       </Stack>
       <Stack direction="column">
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
@@ -76,7 +61,6 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           resetIcon
         />
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           value="Value"
@@ -86,7 +70,6 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           resetIcon
         />
         <InputField
-          ref={ref}
           label="Label"
           type="password"
           placeholder="Placeholder"
@@ -94,17 +77,16 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           tooltip="InputField"
           leftIcon="lock"
           resetIcon
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
         />
         <InputField
-          ref={ref}
           label="Label"
           placeholder="Placeholder"
           helptext="Help text"
           tooltip="InputField"
           leftIcon="person"
           resetIcon
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
           disabled
         />
       </Stack>
