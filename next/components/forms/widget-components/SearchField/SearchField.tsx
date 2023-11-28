@@ -1,7 +1,7 @@
 import ResetIcon from '@assets/images/forms/circle-filled-reset.svg'
 import DarkSearchIcon from '@assets/images/forms/dark-search-icon.svg'
 import cx from 'classnames'
-import { RefObject, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
@@ -53,7 +53,7 @@ const SearchField = ({
       isRequired: required,
       isDisabled: disabled,
     },
-    ref as RefObject<HTMLInputElement>,
+    ref,
   )
 
   const style = cx(
