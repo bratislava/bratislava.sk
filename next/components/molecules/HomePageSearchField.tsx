@@ -52,7 +52,7 @@ const HomePageSearchField = ({
       {/* quickfixed with negative left margin on button */}
       <Button
         className="-ml-1 h-12 rounded-l-none pl-4 pr-5 lg:h-14"
-        variant="category"
+        variant="category-solid"
         onPress={onSearchPressed}
       >
         <SearchIcon />

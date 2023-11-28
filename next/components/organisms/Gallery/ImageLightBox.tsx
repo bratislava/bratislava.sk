@@ -61,7 +61,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
             {images.length > 1 && (
               <>
                 <Button
-                  variant="category"
+                  variant="category-solid"
                   className="pointer-events-auto rounded-full text-white"
                   aria-label={t('aria.previousImage')}
                   onPress={goToPrevious}
@@ -69,7 +69,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
                 />
 
                 <Button
-                  variant="category"
+                  variant="category-solid"
                   className="pointer-events-auto rounded-full"
                   aria-label={t('aria.nextImage')}
                   onPress={goToNext}

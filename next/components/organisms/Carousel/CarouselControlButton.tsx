@@ -13,7 +13,7 @@ const CarouselControlButton = ({ direction, onPress }: CarouselControlProps) => 
 
   return (
     <Button
-      variant="category"
+      variant="category-solid"
       excludeFromTabOrder
       onPress={onPress}
       className={cx('absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full', {

@@ -197,6 +197,16 @@
       "close": "Zavrieť"
     }
   },
+  "Dialog": {
+    "aria": {
+      "close": "Zavrieť"
+    }
+  },
+  "Tag": {
+    "aria": {
+      "removeTag": "Odstrániť tag {tag}"
+    }
+  },
   "EventCard": {
     "from": "od"
   },

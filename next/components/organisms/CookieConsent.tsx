@@ -61,7 +61,7 @@ export const CookieConsent = ({ className }: CookieConsentProps) => {
             </div>
             <div className="flex flex-col gap-4 md:flex-row">
               <Button
-                variant="category"
+                variant="category-solid"
                 onPress={() => setConsents({ statistics: true })}
                 fullWidthMobile
               >

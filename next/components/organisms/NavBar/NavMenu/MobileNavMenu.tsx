@@ -67,8 +67,8 @@ const MobileNavMenu = () => {
               <li className="my-1 flex justify-center md:justify-start">
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <Button
-                    size="sm"
-                    variant="category"
+                    size="small"
+                    variant="category-solid"
                     fullWidthMobile
                     {...getCommonLinkProps(accountLink)}
                   />

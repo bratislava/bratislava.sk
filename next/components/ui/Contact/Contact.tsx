@@ -116,7 +116,7 @@ const ContactItem = ({ variant, value, label, href }: ContactItemProps) => {
         )
       })}
       {label && href && (
-        <Button href={href} variant="category" className="mt-8">
+        <Button href={href} variant="category-solid" className="mt-8">
           {label}
         </Button>
       )}

@@ -88,8 +88,8 @@ const MessageModal = ({
               </div>
               <Button
                 onPress={submitHandler}
-                variant={type === 'error' ? 'negative' : 'black'}
-                size="sm"
+                variant={type === 'error' ? 'negative-solid' : 'black-solid'}
+                size="small"
               >
                 {confirmLabel}
               </Button>

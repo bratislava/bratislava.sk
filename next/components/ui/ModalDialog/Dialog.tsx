@@ -1,5 +1,6 @@
 import { CrossIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
+import { useTranslations } from 'next-intl'
 import React, { forwardRef, ReactNode } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps, Heading } from 'react-aria-components'
 
@@ -13,6 +14,8 @@ type Props = { children: ReactNode } & TitleProps & Omit<DialogProps, 'children'
  */
 
 const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, ref) => {
+  const t = useTranslations('Dialog')
+
   return (
     <ReactAriaDialog
       ref={ref}
@@ -26,7 +29,14 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
               <Heading>
                 <h2 className="text-h5">{title}</h2>
               </Heading>
-              <Button icon={<CrossIcon />} variant="black-plain" className="-m-2" onPress={close} />
+              {/* TODO translation */}
+              <Button
+                icon={<CrossIcon />}
+                aria-label={t('aria.close')}
+                variant="black-plain"
+                className="-m-2"
+                onPress={close}
+              />
             </div>
           ) : null}
 
@@ -38,9 +48,11 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
           {title ? null : (
             <Button
               icon={<CrossIcon />}
+              // TODO translation
+              aria-label="Close"
               className="absolute right-6 top-6 -m-2 bg-white hover:bg-gray-100"
               variant="black-outline"
-              size="sm"
+              size="small"
               onPress={close}
             />
           )}

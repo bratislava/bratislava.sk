@@ -105,8 +105,8 @@ const ModalFooter = ({
         <span aria-hidden="true">{cancelLabel}</span>
       </button>
       <Button
-        variant="black"
-        size="sm"
+        variant="black-solid"
+        size="small"
         onPress={() => {
           if (currentScreenIndex < contentLength - 1) {
             setCurrentScreenIndex(currentScreenIndex + 1)
