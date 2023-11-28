@@ -1,11 +1,11 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { ArrowRightIcon, ExportIcon } from '@assets/ui-icons'
-import { LinkButtonProps } from '@react-types/button'
 import cx from 'classnames'
 import Spinner from 'components/forms/simple-components/Spinner'
 import NextLink from 'next/link'
 import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, RefObject } from 'react'
-import { AriaButtonProps, mergeProps, useButton, useFocusRing, useHover } from 'react-aria'
+import { AriaButtonProps } from 'react-aria'
+import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-components'
 import { twMerge } from 'tailwind-merge'
 
 import MLink, { LinkPlausibleProps } from './MLink'
@@ -47,7 +47,7 @@ type ButtonBase = {
   isLoadingText?: string
 } & ButtonOrIconButton
 
-export type ButtonProps = Omit<AriaButtonProps<'button'>, keyof LinkButtonProps | 'children'> &
+export type ButtonProps = RACButtonProps &
   ButtonBase & {
     href?: never
     target?: never
@@ -87,17 +87,6 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
   ) => {
     const isLoadingOrDisabled = isLoading || isDisabled
 
-    const { buttonProps, isPressed } = useButton(
-      {
-        ...rest,
-        elementType: rest.href ? 'a' : 'button',
-        isDisabled: isLoadingOrDisabled,
-      },
-      rest.href ? (ref as RefObject<HTMLAnchorElement>) : (ref as RefObject<HTMLButtonElement>),
-    )
-    const { focusProps, isFocused, isFocusVisible } = useFocusRing()
-    const { hoverProps, isHovered } = useHover({ isDisabled: isLoadingOrDisabled })
-
     const isSolidVariant = variant.endsWith('-solid')
     const isOutlineVariant = variant.endsWith('-outline')
     const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
@@ -114,13 +103,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
      */
     const styles =
       variant === 'unstyled'
-        ? className
+        ? className ?? ''
         : twMerge(
             // TODO text-button interferes with text-[color], as quickfix we set size and color here by arbitrary values
             'inline-flex h-auto items-center justify-center gap-2 text-[1rem] font-semibold leading-[1.5rem] transition',
             cx(
               // we use isFocusVisible to show focus ring only on keyboard navigation
-              isFocused ? 'outline-2 outline-offset-4' : 'outline-none',
+              // it's recommended to remove default outline and use custom styling as ring: https://tailwindcss.com/docs/outline-style#removing-outlines
+              'outline-none ring-offset-2 focus-visible:ring',
               // we change rounded corners for link focus ring
               isLinkVariant ? 'rounded-sm max-lg:gap-1' : 'rounded-lg',
 
@@ -173,49 +163,42 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 'p-2': size === 'large' && isIconButton && isPlainVariant,
 
                 // colors - bg, border, text - idle & focus
-                'border-category-700 bg-category-700 text-font-contrast':
+                'border-category-700 bg-category-700 text-font-contrast pressed:border-category-800 pressed:bg-category-800':
                   variant === 'category-solid',
-                'border-category-800 bg-category-800': variant === 'category-solid' && isPressed,
 
-                'border-category-700 bg-transparent text-gray-700 data-pressed:border-category-800 data-pressed:text-gray-800':
+                'border-category-700 bg-transparent text-gray-700 pressed:border-category-800 pressed:text-gray-800':
                   variant === 'category-outline',
-                'border-gray-700 bg-gray-700 text-white data-pressed:border-gray-800 data-pressed:bg-gray-800':
+                'border-gray-700 bg-gray-700 text-white pressed:border-gray-800 pressed:bg-gray-800':
                   variant === 'black-solid',
-                'border-gray-200 bg-transparent text-gray-700 data-pressed:border-gray-300 data-pressed:text-gray-800':
+                'border-gray-200 bg-transparent text-gray-700 pressed:border-gray-300 pressed:text-gray-800':
                   variant === 'black-outline',
-                'border-negative-700 bg-negative-700 text-white data-pressed:border-negative-800 data-pressed:bg-negative-800':
+                'border-negative-700 bg-negative-700 text-white pressed:border-negative-800 pressed:bg-negative-800':
                   variant === 'negative-solid',
 
-                'text-category-700 data-pressed:bg-category-200 data-pressed:text-category-800':
+                'text-category-700 pressed:bg-category-200 pressed:text-category-800':
                   variant === 'category-plain',
-                'text-gray-700 data-pressed:bg-gray-200 data-pressed:text-gray-800':
+                'text-gray-700 pressed:bg-gray-200 pressed:text-gray-800':
                   variant === 'black-plain',
-                'text-negative-700 data-pressed:bg-negative-200 data-pressed:text-negative-800':
+                'text-negative-700 pressed:bg-negative-200 pressed:text-negative-800':
                   variant === 'negative-plain',
 
-                'text-category-700 data-pressed:text-category-800': variant === 'category-link',
-                'text-gray-700 data-pressed:text-gray-800': variant === 'black-link',
+                'text-category-700 pressed:text-category-800': variant === 'category-link',
+                'text-gray-700 pressed:text-gray-800': variant === 'black-link',
 
                 // colors:hover - bg, border, text
-                // using custom `data-hovered:` because `hover:` is not working with `disabled` state
-                'data-hovered:border-category-600 data-hovered:bg-category-600':
-                  variant === 'category-solid',
-                'text-gray-600 data-hovered:border-category-600': variant === 'category-outline',
-                'data-hovered:bg-category-100 data-hovered:text-category-600':
-                  variant === 'category-plain',
+                'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
+                'text-gray-600 hover:border-category-600': variant === 'category-outline',
+                'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
 
-                'data-hovered:border-gray-600 data-hovered:bg-gray-600': variant === 'black-solid',
-                'data-hovered:border-gray-200 data-hovered:text-gray-600':
-                  variant === 'black-outline',
-                'data-hovered:bg-gray-100 data-hovered:text-gray-600': variant === 'black-plain',
+                'hover:border-gray-600 hover:bg-gray-600': variant === 'black-solid',
+                'hover:border-gray-200 hover:text-gray-600': variant === 'black-outline',
+                'hover:bg-gray-100 hover:text-gray-600': variant === 'black-plain',
 
-                'data-hovered:border-negative-600 data-hovered:bg-negative-600':
-                  variant === 'negative-solid',
-                'data-hovered:bg-negative-100 data-hovered:text-negative-600':
-                  variant === 'negative-plain',
+                'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
+                'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
 
-                'data-hovered:text-category-600': variant === 'category-link',
-                'data-hovered:text-gray-600': variant === 'black-link',
+                'hover:text-category-600': variant === 'category-link',
+                'hover:text-gray-600': variant === 'black-link',
 
                 // svg icons
                 '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',
@@ -234,18 +217,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         <MLink
           href={rest.href}
           ref={ref as RefObject<HTMLAnchorElement>}
-          // following conventions from react-aria-components, slightly changed for easier styling of hovered state
-          data-pressed={isPressed || undefined}
-          data-hovered={(isHovered && !isPressed) || (isFocusVisible && !isPressed) || undefined}
-          data-focused={isFocused || undefined}
-          data-focus-visible={isFocusVisible || undefined}
           className={styles}
           plausibleProps={rest.plausibleProps}
-          {...mergeProps(
-            { ...buttonProps, role: undefined, target: isExternal ? '_blank' : undefined },
-            focusProps,
-            hoverProps,
-          )}
           {...rest}
         >
           {startIcon}
@@ -256,16 +229,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     }
 
     return (
-      <button
-        type="button"
+      <RACButton
         ref={ref as RefObject<HTMLButtonElement>}
-        // following conventions from react-aria-components, slightly changed for easier styling of hovered state
-        data-pressed={isPressed || undefined}
-        data-hovered={(isHovered && !isPressed) || (isFocusVisible && !isPressed) || undefined}
-        data-focused={isFocused || undefined}
-        data-focus-visible={isFocusVisible || undefined}
+        isDisabled={isLoadingOrDisabled}
         className={styles}
-        {...mergeProps(buttonProps, focusProps, hoverProps)}
         {...rest}
       >
         {!isLoading && startIcon}
@@ -278,7 +245,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           icon ?? children
         )}
         {!isLoading && endIcon}
-      </button>
+      </RACButton>
     )
   },
 )
