@@ -47,7 +47,7 @@ type ButtonBase = {
   isLoadingText?: string
 } & ButtonOrIconButton
 
-export type ButtonProps = RACButtonProps &
+export type ButtonProps = Omit<RACButtonProps, 'className' | 'style'> &
   ButtonBase & {
     href?: never
     target?: never
