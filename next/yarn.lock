@@ -9807,10 +9807,10 @@ tailwindcss-animate@^1.0.7:
   resolved "https://registry.yarnpkg.com/tailwindcss-animate/-/tailwindcss-animate-1.0.7.tgz#318b692c4c42676cc9e67b19b78775742388bef4"
   integrity sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==
 
-tailwindcss-react-aria-components@^1.0.0-beta.0:
-  version "1.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss-react-aria-components/-/tailwindcss-react-aria-components-1.0.0-beta.0.tgz#519a1725ee49c88bf107751a63d722863c3d4de3"
-  integrity sha512-cHkj1p9eX7OVYGW0k9Z5LhxVFnrmNz55MBdT91kqEsUE4OMZ/IC29NX6FA053vEw1ykIdmWOkSpwUPtXCQHBig==
+tailwindcss-react-aria-components@1.0.0-rc.0:
+  version "1.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-react-aria-components/-/tailwindcss-react-aria-components-1.0.0-rc.0.tgz#57bda3425d7a8e40f0bf0ce271fd805feb53edca"
+  integrity sha512-D97XoGI52QcFdENBuQE0I2g0XIkgAQUIzEWPMX9wOf2vRaO9AmNojTFdSMDCa7UKXBM5tg5vvlZMuJjORqdhUw==
 
 tailwindcss@3.3.2:
   version "3.3.2"
