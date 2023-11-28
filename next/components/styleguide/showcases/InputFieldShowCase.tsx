@@ -1,24 +1,21 @@
 import InputField from 'components/forms/widget-components/InputField/InputField'
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface InputFieldShowCaseBase {}
+const ERROR = 'Error message'
 
-const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
+const InputFieldShowCase = () => {
+  const myRef = useRef<HTMLInputElement>()
   return (
     <Wrapper direction="column" title="Input Field">
       <Stack direction="column">
-        <InputField label="Label" placeholder="Placeholder" />
+        {/* It is possible to pass your own ref if you need to (eg. when using with react-hook-form), but it's not necessary */}
+        <InputField label="Label" placeholder="Placeholder" ref={myRef} />
         <InputField label="Label" placeholder="Placeholder" value="Value" />
-        <InputField label="Label" placeholder="Placeholder" errorMessage={['Error message']} />
-        <InputField
-          label="Label"
-          placeholder="Placeholder"
-          errorMessage={['Error message']}
-          disabled
-        />
+        <InputField label="Label" placeholder="Placeholder" errorMessage={[ERROR]} />
+        <InputField label="Label" placeholder="Placeholder" errorMessage={[ERROR]} disabled />
       </Stack>
       <Stack direction="column">
         <InputField
@@ -42,7 +39,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           helptext="Help text"
           tooltip="InputField"
           required
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
         />
         <InputField
           label="Label"
@@ -50,7 +47,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           helptext="Help text"
           tooltip="InputField"
           required
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
           disabled
         />
       </Stack>
@@ -80,7 +77,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           tooltip="InputField"
           leftIcon="lock"
           resetIcon
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
         />
         <InputField
           label="Label"
@@ -89,7 +86,7 @@ const InputFieldShowCase = ({}: InputFieldShowCaseBase) => {
           tooltip="InputField"
           leftIcon="person"
           resetIcon
-          errorMessage={['Error message']}
+          errorMessage={[ERROR]}
           disabled
         />
       </Stack>
