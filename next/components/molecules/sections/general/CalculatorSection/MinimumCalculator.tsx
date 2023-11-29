@@ -161,7 +161,7 @@ const MinimumCalculator = ({
           }}
         />
 
-        <Button variant="category" type="submit" endIcon={<ArrowRightIcon />}>
+        <Button variant="category-solid" type="submit" endIcon={<ArrowRightIcon />}>
           {t('buttonText')}
         </Button>
       </form>

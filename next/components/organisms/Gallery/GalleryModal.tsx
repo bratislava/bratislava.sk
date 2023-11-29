@@ -78,7 +78,7 @@ const GalleryModal = (props: ModalProps) => {
                   >
                     {showCloseButton && (
                       <Button
-                        variant="category"
+                        variant="category-solid"
                         className="pointer-events-auto fixed right-6 top-6 z-30 rounded-full"
                         aria-label={t('aria.closeGallery')}
                         onPress={onClose}

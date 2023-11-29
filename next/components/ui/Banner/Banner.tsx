@@ -53,7 +53,7 @@ const Banner = ({
           {/* TODO styling of white buttons */}
           {/* TODO use only one responsive Button  */}
           {primaryLink && (
-            <Button variant="category" fullWidthMobile {...getCommonLinkProps(primaryLink)} />
+            <Button variant="category-solid" fullWidthMobile {...getCommonLinkProps(primaryLink)} />
           )}
           {secondaryLink && (
             <Button

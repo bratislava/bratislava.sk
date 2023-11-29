@@ -197,6 +197,16 @@
       "close": "Close"
     }
   },
+  "Dialog": {
+    "aria": {
+      "close": "Close"
+    }
+  },
+  "Tag": {
+    "aria": {
+      "removeTag": "Remove tag {tag}"
+    }
+  },
   "EventCard": {
     "from": "from"
   },

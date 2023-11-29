@@ -1,6 +1,7 @@
 import { CrossIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
+import { useTranslations } from 'next-intl'
 
 type TagProps = {
   text: string
@@ -11,6 +12,8 @@ type TagProps = {
 }
 
 const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: TagProps) => {
+  const t = useTranslations('Tag')
+
   const isRemovable = !!onRemove
 
   // STYLES
@@ -42,6 +45,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
         <Button
           onPress={onRemove}
           icon={<CrossIcon className={iconClassStyles} />}
+          aria-label={t('aria.removeTag', { tag: text })}
           className="p-0"
         />
       )}

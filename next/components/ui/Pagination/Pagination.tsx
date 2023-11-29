@@ -50,8 +50,8 @@ export const Pagination = ({
             } else if (type === 'page') {
               children = (
                 <Button
-                  variant={selected ? 'category' : 'category-outline'}
-                  disabled={disabled}
+                  variant={selected ? 'category-solid' : 'category-outline'}
+                  isDisabled={disabled}
                   onPress={onPress}
                   aria-current={ariaCurrent}
                   aria-label={t('aria.goToPage', { page })}
@@ -75,7 +75,7 @@ export const Pagination = ({
               children = (
                 <Button
                   variant="category-plain"
-                  disabled={disabled}
+                  isDisabled={disabled}
                   onPress={onPress}
                   aria-label={ariaLabel}
                   icon={icon}
