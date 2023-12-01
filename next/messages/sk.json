@@ -130,6 +130,7 @@
   "skipNavigation": "Preskočiť navigáciu",
   "title": "Bratislava.sk",
   "titleWithChild": "{childTitle} – Bratislava.sk",
+  "openTooltip": "Otvor popis",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Navigačné menu",

@@ -45,6 +45,8 @@ type ButtonBase = {
   fullWidthMobile?: boolean
   isLoading?: boolean
   isLoadingText?: string
+  onPointerEnter?: (event: React.PointerEvent) => void
+  onPointerLeaver?: (event: React.PointerEvent) => void
 } & ButtonOrIconButton
 
 export type ButtonProps = Omit<RACButtonProps, 'className' | 'style'> &

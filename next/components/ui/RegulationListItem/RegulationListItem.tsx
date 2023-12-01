@@ -1,5 +1,6 @@
 import { Download } from '@assets/images'
 import { VznMeili } from '@backend/meili/types'
+import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import RegulationModalBody from '@components/molecules/sections/general/DocumentListSection/RegulationModalBody'
 import Dialog from '@components/ui/ModalDialog/Dialog'
@@ -56,6 +57,8 @@ export const RegulationListItem = ({
             <AriaButton className="flex h-auto w-fit items-center justify-center rounded-lg border-2 border-category-700 bg-transparent px-4 py-2 text-[1rem] font-semibold leading-[1.5rem] text-gray-700 outline-offset-4 hover:border-category-600 hover:text-gray-600 focus:border-category-800 focus:text-gray-800 lg:py-3">
               {t('show')}
             </AriaButton>
+
+            <Button variant="category-outline">{t('show')}</Button>
 
             <Modal modalClassname="md:w-[740px]">
               <Dialog title={vznMeili.title ?? ''}>

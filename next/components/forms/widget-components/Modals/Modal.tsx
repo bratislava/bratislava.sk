@@ -104,6 +104,10 @@ const ModalFooter = ({
       >
         <span aria-hidden="true">{cancelLabel}</span>
       </button>
+      MODALITO??
+      <Button variant="black-solid" size="small" onPress={onClose}>
+        <span aria-hidden="true">{cancelLabel}</span>
+      </Button>
       <Button
         variant="black-solid"
         size="small"

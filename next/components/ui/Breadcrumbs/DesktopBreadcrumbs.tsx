@@ -1,9 +1,9 @@
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import BreadcrumbsHomeIcon from '@assets/images/breadcrumbs-home.svg'
+import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import React from 'react'
-
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=821-1994&t=pIPe0xK0FBdmOKH1-0
  */
@@ -21,9 +21,13 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           <li className="text-small flex gap-1 font-medium" key={index}>
             <BreadcrumbsChevronIcon className="shrink-0" />
             {breadcrumb.path && !isLast ? (
-              <MLink href={breadcrumb.path} variant="underlined">
-                {breadcrumb.title}
-              </MLink>
+              <Button
+                href={breadcrumb.path}
+                variant="unstyled"
+                className="w-full cursor-pointer outline-none"
+              >
+                {breadcrumb.title}{' '}
+              </Button>
             ) : (
               breadcrumb.title
             )}
