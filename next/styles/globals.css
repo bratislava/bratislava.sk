@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@bratislava/component-library/dist/assets/style.css';
 @import 'colors.css';
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */

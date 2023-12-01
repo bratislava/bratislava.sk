@@ -3,8 +3,7 @@ import {
   PageCategoryEntityFragment,
   TagEntityFragment,
 } from '@backend/graphql'
-import { BaTagGroup, ChipTagType } from '@bratislava/component-library'
-import Chip from '@components/forms/simple-components/Chip'
+import { BaTagGroup, ChipProps } from '@bratislava/component-library'
 import { isDefined } from '@utils/isDefined'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
@@ -127,44 +126,10 @@ const BlogPostsFilter = ({
               label: defaultChip.title,
               color: defaultChip.color,
             },
-            ...(formattedPageCategoryTags as ChipTagType[]),
+            ...(formattedPageCategoryTags as ChipProps[]),
           ]}
         />
 
-        {/* <TagGroup
-          selectionMode="single"
-          selectedKeys={selectedPageCategory}
-          defaultSelectedKeys={defaultChip.id}
-          onSelectionChange={setSelectedPageCategory}
-        >
-          <TagList className="flex flex-wrap gap-3 lg:justify-center">
-            <Chip
-              variant="large"
-              key={defaultChip.id}
-              id={defaultChip.id}
-              style={getCategoryColorLocalStyle({ color: defaultChip.color })}
-            >
-              {defaultChip.title}
-            </Chip>
-            {pageCategories
-              .map((pagecategory) => {
-                if (!pagecategory.id || !pagecategory.attributes?.title) {
-                  return null
-                }
-                return (
-                  <Chip
-                    variant="large"
-                    key={pagecategory.id}
-                    id={pagecategory.id}
-                    style={getCategoryColorLocalStyle({ color: pagecategory.attributes.color })}
-                  >
-                    {pagecategory.attributes.title}
-                  </Chip>
-                )
-              })
-              .filter(isDefined)}
-          </TagList>
-        </TagGroup> */}
         {Array.from(selectedPageCategory)[0] !== defaultChip.id &&
         Array.from(selectedPageCategory)?.length &&
         blogPostsTags?.length ? (
@@ -177,40 +142,8 @@ const BlogPostsFilter = ({
               selectedTags={selectedTags}
               selectionMode="multiple"
               tagListClassName="flex flex-wrap gap-2 lg:justify-center"
-              tags={formattedBlogPostsTags as ChipTagType[]}
+              tags={formattedBlogPostsTags as ChipProps[]}
             />
-            {/* <TagGroup
-              selectionMode="multiple"
-              selectedKeys={selectedTags}
-              onSelectionChange={setSelectedTags}
-            >
-              <TagList className="flex flex-wrap gap-2 lg:justify-center">
-                {blogPostsTags
-                  .filter(isDefined)
-                  .filter((tag) => {
-                    return (
-                      tag.attributes?.pageCategory?.data?.id === Array.from(selectedPageCategory)[0]
-                    )
-                  })
-                  .map((tag) => {
-                    if (!tag.id || !tag.attributes?.title) return null
-                    return (
-                      <Chip
-                        variant="small"
-                        style={getCategoryColorLocalStyle({
-                          color:
-                            tag.attributes.pageCategory?.data?.attributes?.color ??
-                            Enum_Pagecategory_Color.Red,
-                        })}
-                        key={tag.id}
-                        id={tag.id}
-                      >
-                        {tag.attributes.title}
-                      </Chip>
-                    )
-                  })}
-              </TagList>
-            </TagGroup> */}
           </div>
         ) : null}
       </div>
