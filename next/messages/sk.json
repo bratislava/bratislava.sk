@@ -155,11 +155,6 @@
   "TopServices": {
     "learnMore": "Zistiť viac"
   },
-  "Newsletter": {
-    "newsletterContent": "Dostávajte pravidelne novinky zo života Bratislavy",
-    "newsletterButtonContent": "Odoberať novinky",
-    "newsletterCheckboxContent": "Prihlásením sa na odber súhlasíte so zasielaním pravidelných e-mailov."
-  },
   "MinimumCalculator": {
     "title": "Kalkulačka na životné minimum",
     "description": "Overte si rýchlo a jednoducho, či príjmy Vašej domácnosti stačia na pokrytie životného minima. Bez toho vám nevieme poskytnúť miesto v našej ubytovni.",
