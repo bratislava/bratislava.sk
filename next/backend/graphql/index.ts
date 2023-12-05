@@ -1328,12 +1328,6 @@ export type ComponentSectionsNarrowText = {
   width?: Maybe<Enum_Componentsectionsnarrowtext_Width>
 }
 
-export type ComponentSectionsNewsletter = {
-  __typename?: 'ComponentSectionsNewsletter'
-  id: Scalars['ID']
-  title?: Maybe<Scalars['String']>
-}
-
 export type ComponentSectionsNumericalList = {
   __typename?: 'ComponentSectionsNumericalList'
   buttonLink?: Maybe<Scalars['String']>
@@ -1964,7 +1958,6 @@ export type GenericMorph =
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
-  | ComponentSectionsNewsletter
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
@@ -3110,7 +3103,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
-  | ComponentSectionsNewsletter
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
@@ -8092,7 +8084,6 @@ export type PageBySlugQuery = {
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
             }
-          | { __typename: 'ComponentSectionsNewsletter' }
           | {
               __typename: 'ComponentSectionsNumericalList'
               id: string
@@ -9078,7 +9069,6 @@ export type PageEntityFragment = {
           width?: Enum_Componentsectionsnarrowtext_Width | null
           align?: Enum_Componentsectionsnarrowtext_Align | null
         }
-      | { __typename: 'ComponentSectionsNewsletter' }
       | {
           __typename: 'ComponentSectionsNumericalList'
           id: string
@@ -10935,8 +10925,6 @@ type Sections_ComponentSectionsNarrowText_Fragment = {
   align?: Enum_Componentsectionsnarrowtext_Align | null
 }
 
-type Sections_ComponentSectionsNewsletter_Fragment = { __typename: 'ComponentSectionsNewsletter' }
-
 type Sections_ComponentSectionsNumericalList_Fragment = {
   __typename: 'ComponentSectionsNumericalList'
   id: string
@@ -11053,7 +11041,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsInbaReleases_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
-  | Sections_ComponentSectionsNewsletter_Fragment
   | Sections_ComponentSectionsNumericalList_Fragment
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
