@@ -1,6 +1,7 @@
 import { GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import SearchPageContent from '@components/pages/searchPageContent'
+import SearchPageContentNew from '@components/pages/searchPageContentNew'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { useTitle } from '@utils/useTitle'
@@ -46,7 +47,7 @@ const Page = ({ general }: PageProps) => {
           <title>{title}</title>
         </Head>
         <PageLayout>
-          <SearchPageContent />
+          <SearchPageContentNew />
         </PageLayout>
       </LocalizationsProvider>
     </GeneralContextProvider>
