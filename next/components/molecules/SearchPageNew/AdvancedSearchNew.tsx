@@ -5,34 +5,19 @@ import { Button } from '@components/ui/Button/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect, useState } from 'react'
-import {
-  Button as ButtonAria,
-  FieldError,
-  Input,
-  Label,
-  SearchField,
-  SelectContext,
-  Selection,
-  TagGroup,
-  TagList,
-  Text,
-} from 'react-aria-components'
+import { Input, SearchField, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
 export interface AdvancedSearchProps {
   className?: string
   placeholder?: string
   title?: string
-  options: SearchOptionProps[]
-  selectedOption: string
-  defaultOption: string
-  setselectedOption: (selectedOptions: string) => void
   input: string
   setInput: Dispatch<SetStateAction<string>>
   setSearchQuery: (query: string) => void
 }
 
 export interface SearchOptionProps {
-  key: string
+  key: number
   value: string
 }
 
@@ -41,10 +26,6 @@ export const AdvancedSearchNew = ({
   className,
   placeholder,
   title,
-  options,
-  selectedOption,
-  defaultOption,
-  setselectedOption,
   input,
   setInput,
   setSearchQuery,
@@ -53,18 +34,6 @@ export const AdvancedSearchNew = ({
 
   const handleSearch = () => {
     setSearchQuery(input)
-  }
-
-  useEffect (()=>{
-    if (Array.from(selectedOption).length === 0) {
-      setSelectedOption(defaultOption)
-    }
-  },[selectedOption])
-
-  // FIXME: asi tam ozaj treba dat Selection, lebo to echt nefunguje a state treba nastavovat cez .currentkey
-
-  const handleSelect = (selected) => {
-    setselectedOption(selected.currentKey)
   }
 
   const newSearch = (
@@ -84,36 +53,7 @@ export const AdvancedSearchNew = ({
           </Text>
           <Input type="search" className="w-full rounded-lg border-2 px-6 py-5 text-gray-700" />
         </SearchField>
-        <TagGroup
-          selectionMode="single"
-          selectedKey={selectedOption}
-          defaultSelectedKeys={defaultOption}
-          onSelectionChange={handleSelect}
-        >
-          <TagList className="lg:justify-left flex flex-wrap gap-2">
-            {options.map((option) => {
-              return (
-                <Chip
-                  className="selected:border-gray-700 selected:bg-gray-700 selected:text-gray-0 hover:selected:bg-gray-700"
-                  variant="small"
-                  key={option.key}
-                  id={option.key}
-                >
-                  {option.value}
-                </Chip>
-              )
-            })}
-          </TagList>
-        </TagGroup>
       </div>
-      {/* DEBUG */}
-      {true && (
-        <div>
-          <p className="ml-[-10px] font-semibold">from AdvancedSearchNew</p>
-          <p>selectedOption: {JSON.stringify(selectedOption)}</p>
-          <p>defaultOption: {JSON.stringify(defaultOption)}</p>
-        </div>
-      )}
     </div>
   )
 
