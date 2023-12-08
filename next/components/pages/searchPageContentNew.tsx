@@ -8,8 +8,8 @@ import PagesResultsNew from '@components/molecules/SearchPageNew/PagesResultsNew
 import UsersResultsNew from '@components/molecules/SearchPageNew/UsersResultsNew'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
-import React, { createContext, useEffect, useLayoutEffect, useState } from 'react'
-import { Input, SearchField, Selection, TagGroup, TagList, Text } from 'react-aria-components'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
+import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
@@ -42,8 +42,6 @@ const SearchPageContentNew = () => {
   const [selectedOption, setSelectedOption] = useState<Selection>(new Set([defaultOption]))
   const [showNewTheme, setShowNewTheme] = useState(true)
 
-  const ResultsThemeContext = createContext(null)
-
   useLayoutEffect(() => {
     if (Array.from(selectedOption).length === 0) {
       setSelectedOption(new Set([defaultOption]))
@@ -58,19 +56,18 @@ const SearchPageContentNew = () => {
     <SectionContainer className="mb-8">
       {/* FIXME: ↓ DEBUG */}
       {true && (
-        <div className="fixed left-0 bg-gray-50 py-6 text-size-p-small">
+        <div className="fixed left-0 bg-gray-50 p-3 text-size-p-small">
           <button
-            className="border-2 bg-white p-2"
+            className="mb-2 w-full rounded-full border-2 bg-white p-2 hover:font-semibold"
             type="button"
             onClick={() => {
               setShowNewTheme(!showNewTheme)
             }}
           >
-            Toggle Theme
+            {`New theme: ${showNewTheme.toString()}`}
           </button>
-          <p>showNewTheme: {`${showNewTheme}`}</p>
-          {/* <p>selectedOption: {selectedOption}</p>
-          <p>typeof selectedOption: {typeof selectedOption}</p>
+          <p>selectedOption: {selectedOption}</p>
+          {/* <p>typeof selectedOption: {typeof selectedOption}</p>
           <p>prototype of selectedOption: {Object.prototype.toString.call(selectedOption)}</p>
           <p>selectedOption JSON: {JSON.stringify(selectedOption)}</p>
           <p>Array.from selectedOption JSON: {JSON.stringify(Array.from(selectedOption))}</p> */}
@@ -110,11 +107,29 @@ const SearchPageContentNew = () => {
           </TagGroup>
           <p className="mt-8">Zobrazujeme XXXXXX výsledkov</p>
         </div>
-        {showNewTheme ? (
-          <div>
-            <PagesResultsNew filters={pagesFilters} />
-            <BlogPostsResultsNew filters={blogPostsFilters} />
-            <UsersResultsNew filters={usersFilters} />
+        {[...selectedOption][0] === defaultOption && showNewTheme ? (
+          <div className="flex flex-col gap-8">
+            <PagesResultsNew
+              title={t('websites')}
+              filters={pagesFilters}
+              handleShowMore={() => {
+                setSelectedOption(new Set(['pages']))
+              }}
+            />
+            <BlogPostsResultsNew
+              title={t('articles')}
+              filters={blogPostsFilters}
+              handleShowMore={() => {
+                setSelectedOption(new Set(['articles']))
+              }}
+            />
+            <UsersResultsNew
+              title={t('organisationalStructure')}
+              filters={usersFilters}
+              handleShowMore={() => {
+                setSelectedOption(new Set(['users']))
+              }}
+            />
           </div>
         ) : null}
         {[...selectedOption][0] === defaultOption ? (

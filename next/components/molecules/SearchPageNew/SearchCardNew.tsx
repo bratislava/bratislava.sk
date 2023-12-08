@@ -13,23 +13,50 @@ import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import MLink from '@components/forms/simple-components/MLink'
+import Tag from '@components/forms/simple-components/Tag'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 
 export interface SearchCardNewProps {
   title: string
-  url?: string
+  slug?: string
+  tag?: string
   metadata?: string[]
   pageColor?: Enum_Pagecategory_Color | Enum_Page_Pagecolor
 }
 
-export const SearchCardNew = ({ title, url, metadata }: SearchCardNewProps) => {
+export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCardNewProps) => {
+  const urlExcerpt = `www.bratislava.sk/${slug.slice(0, 15)}...`
+
   return (
-    <div className="border-2 p-2">
-      <p>{title}</p>
-      <p>{`${url ?? 'no URL given'} ${metadata?.toString() ?? 'no metadata given'}`}</p>
-    </div>
+    <MLink className="group flex flex-row gap-x-8 px-6 py-4" href={`/../${slug}`}>
+      <div className="flex flex-col gap-y-1.5">
+        <div className="flex flex-row items-center gap-x-3	">
+          <p className="text-size-h5 font-semibold group-hover:underline">{title}</p>
+          {tag ? (
+            <div>
+              <Tag text={tag} size="small" />
+            </div>
+          ) : null}
+        </div>
+        <div>{[urlExcerpt, ...metadata].join(' • ')}</div>
+      </div>
+      <div className="my-auto ml-auto text-main-700">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="m7.93 4.16 7.94 7.89-7.94 7.89L8.99 21 18 12.05 8.99 3.1 7.93 4.16Z"
+          />
+        </svg>
+      </div>
+    </MLink>
   )
 }
 
