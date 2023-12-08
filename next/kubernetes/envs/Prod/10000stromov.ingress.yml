@@ -1,0 +1,62 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 10000stromov-${BUILD_REPOSITORY_NAME}-ingress
+  namespace: ${NAMESPACE}
+  labels:
+    service: redirect
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-dns01
+    cert-manager.io/issue-temporary-certificate: 'true'
+    kubernetes.io/ingress.class: haproxy
+    ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/zivotne-prostredie-a-vystavba/zelen/10000-stromov
+spec:
+  tls:
+    - hosts:
+        - 10000stromov.sk
+        - www.10000stromov.sk
+        - 10tisicstromov.sk
+        - www.10tisicstromov.sk
+      secretName: 10000stromov-${BUILD_REPOSITORY_NAME}-tls
+  rules:
+    - host: 10000stromov.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.10000stromov.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: 10tisicstromov.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.10tisicstromov.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+
