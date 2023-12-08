@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import SearchIcon from '@assets/images/search-icon.svg'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
+import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
-
-import { Button } from '../Button/Button'
 
 export interface BasicSearchProps {
   className?: string
@@ -28,6 +28,8 @@ export const BasicSearch = ({
     setSearchQuery(input)
   }
 
+  const t = useTranslations()
+
   // TODO fix typing
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleKeyDown = (event: any) => {
@@ -50,20 +52,19 @@ export const BasicSearch = ({
           onKeyDown={handleKeyDown}
         />
         <Button
-          icon={<SearchIcon />}
-          hoverIcon={<SearchIcon />}
+          endIcon={<SearchIcon />}
           className="hidden h-14 rounded-l-none px-6 font-medium shadow-none hover:bg-category-600 hover:text-white lg:flex"
-          variant="secondary-dark-text"
-          onClick={handleSearch}
+          variant="category-solid"
+          onPress={() => handleSearch()}
         >
           {buttonText}
         </Button>
         <Button
           icon={<SearchIcon />}
-          hoverIcon={<SearchIcon />}
-          className="h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-category-600 hover:text-white lg:hidden"
-          variant="secondary-dark-text"
-          onClick={handleSearch}
+          aria-label={t('search')}
+          className="h-14 rounded-l-none p-5 font-medium shadow-none hover:bg-category-600 hover:text-white lg:hidden"
+          variant="category-solid"
+          onPress={() => handleSearch()}
         />
       </div>
     </div>

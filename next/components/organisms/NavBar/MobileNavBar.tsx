@@ -1,5 +1,6 @@
 import { CrossIcon, HamburgerIcon, SearchIcon } from '@assets/ui-icons'
 import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
+import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import AlertBanner from '@components/organisms/NavBar/AlertBanner'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
@@ -55,19 +56,20 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 <SearchIcon />
               </MLink>
               <Divider />
-              {/* TODO use Button */}
               {isMobileMenuOpen ? (
-                <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen(false)}
+                <Button
+                  onPress={() => setMobileMenuOpen(false)}
                   className="-mr-4 p-4"
-                >
-                  <CrossIcon />
-                </button>
+                  aria-label={t('menu.closeMenu')}
+                  icon={<CrossIcon />}
+                />
               ) : (
-                <button type="button" onClick={() => setMobileMenuOpen(true)} className="-mr-4 p-4">
-                  <HamburgerIcon />
-                </button>
+                <Button
+                  onPress={() => setMobileMenuOpen(true)}
+                  className="-mr-4 p-4"
+                  aria-label={t('menu.openMenu')}
+                  icon={<HamburgerIcon />}
+                />
               )}
             </div>
           </div>

@@ -1,5 +1,7 @@
 import HiddenIcon from '@assets/images/forms/hidden.svg'
+import Button from '@components/forms/simple-components/Button'
 import InputField from 'components/forms/widget-components/InputField/InputField'
+import { useTranslations } from 'next-intl'
 import { forwardRef, useState } from 'react'
 
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
@@ -40,6 +42,16 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
   ) => {
     const [type, setType] = useState<'password' | 'text'>('password')
 
+    const t = useTranslations()
+
+    const handlePointerDown = () => {
+      setType('text')
+    }
+
+    const handlePointerUp = () => {
+      setType('password')
+    }
+
     return (
       <InputField
         type={type}
@@ -57,15 +69,13 @@ const PasswordField = forwardRef<HTMLInputElement, Props>(
         ref={ref}
         autoComplete={autoComplete}
         endIcon={
-          <button
-            type="button"
-            tabIndex={0}
+          <Button
             className="absolute inset-y-1/2 right-3 flex h-6 w-6 -translate-y-2/4 cursor-pointer items-center justify-center sm:right-4"
-            onPointerUp={() => setType('password')}
-            onPointerDown={() => setType('text')}
-          >
-            <HiddenIcon />
-          </button>
+            aria-label={t('passwordReveal')}
+            icon={<HiddenIcon />}
+            onPressEnd={() => handlePointerUp()}
+            onPressStart={() => handlePointerDown()}
+          />
         }
         {...rest}
       />

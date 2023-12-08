@@ -7,7 +7,7 @@ import Modal from '@components/ui/ModalDialog/Modal'
 import OfficialBoardCardModalContent from '@components/ui/OfficialBoardCard/OfficialBoardCardModalContent'
 import { formatDate } from '@utils/local-date'
 import React from 'react'
-import { Button as AriaButton, DialogTrigger } from 'react-aria-components'
+import { DialogTrigger } from 'react-aria-components'
 
 import { Panel } from '../Panel/Panel'
 
@@ -46,15 +46,9 @@ export const OfficialBoardCard = ({
         <Typography type="p">{content}</Typography>
         <div className="flex flex-col items-start gap-x-6">
           <DialogTrigger>
-            {/* TODO: BUTTON TEST */}
             <Button variant="category-outline" endIcon={<ArrowRightIcon />}>
               {viewButtonText}
             </Button>
-
-            {/* TODO: DELETE AFTER TEST */}
-            <AriaButton className="flex h-auto w-fit items-center justify-center rounded-lg border-2 border-category-700 bg-transparent px-4 py-2 text-[1rem] font-semibold leading-[1.5rem] text-gray-700 outline-offset-4 hover:border-category-600 hover:text-gray-600 focus:border-category-800 focus:text-gray-800 lg:py-3">
-              {viewButtonText}
-            </AriaButton>
 
             <Modal>
               <Dialog title={title}>

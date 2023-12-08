@@ -1,6 +1,6 @@
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import { ChevronDownIcon } from '@assets/ui-icons'
-import MLink from '@components/forms/simple-components/MLink'
+import Button from '@components/forms/simple-components/Button'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -23,20 +23,24 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
     <div className="relative">
       <div className="flex justify-between">
         <div className="text-small -mx-4 flex items-center gap-2 font-medium">
-          {/* TODO: Convert to shared link/button component. Detect if user can actually go back. */}
-          <button
-            type="button"
-            className="flex items-center gap-1 py-3 pl-4 underline hover:text-gray-600"
-            onClick={goBack}
+          <Button
+            onPress={goBack}
+            variant="black-link"
+            className="text-small shrink-0 py-3"
+            startIcon={<BreadcrumbsChevronIcon className="shrink-0 rotate-180" />}
           >
-            <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
-            <span>{t('back')}</span>
-          </button>
+            {t('back')}
+          </Button>
           <div className="h-4 w-px bg-gray-300" />
           {last.path ? (
-            <MLink href={last.path} variant="underlined" aria-hidden className="truncate py-3 pr-4">
+            <Button
+              href={last.path}
+              aria-hidden
+              variant="black-link"
+              className="text-small truncate py-3 pr-4"
+            >
               {last.title}
-            </MLink>
+            </Button>
           ) : (
             <div className="truncate py-3 pr-4">{last.title}</div>
           )}
@@ -54,10 +58,10 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
               // eslint-disable-next-line react/no-array-index-key
               <li className="text-small font-medium" key={index}>
                 {breadcrumb.path ? (
-                  <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
+                  <Button href={breadcrumb.path} className="flex gap-1">
                     <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
                     {breadcrumb.title}
-                  </MLink>
+                  </Button>
                 ) : (
                   <div className="flex gap-1">
                     <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />

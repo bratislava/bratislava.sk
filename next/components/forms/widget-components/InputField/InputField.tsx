@@ -3,7 +3,9 @@ import ResetIcon from '@assets/images/forms/circle-filled-reset.svg'
 import LockIcon from '@assets/images/forms/lock.svg'
 import MailIcon from '@assets/images/forms/mail.svg'
 import PersonIcon from '@assets/images/forms/person.svg'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
+import { useTranslations } from 'next-intl'
 import { forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
 
@@ -80,6 +82,8 @@ const InputField = forwardRef<HTMLInputElement | undefined, InputBase>(
     const inputRef = useRef<HTMLInputElement>(null)
     // We are using useImperativeHandle here to expose inputRef but not necessarily force user to pass it if not needed from outside
     useImperativeHandle(ref, () => inputRef?.current ?? undefined)
+
+    const t = useTranslations()
 
     useEffect(() => {
       setValueState(onChange ? value : valueState)
@@ -193,14 +197,13 @@ const InputField = forwardRef<HTMLInputElement | undefined, InputBase>(
           )}
           <input {...inputProps} ref={inputRef} name={inputProps.id} className={style} />
           {resetIcon && valueState && (
-            <button
+            <Button
               type="button"
-              tabIndex={0}
-              onClick={resetIconHandler}
+              onPress={resetIconHandler}
+              aria-label={t('clearInput')}
               className="absolute inset-y-1/2 right-3 flex h-6 w-6 -translate-y-2/4 cursor-pointer items-center justify-center sm:right-4"
-            >
-              <ResetIcon />
-            </button>
+              icon={<ResetIcon />}
+            />
           )}
           {endIcon}
         </div>

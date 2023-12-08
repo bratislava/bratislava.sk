@@ -1,3 +1,4 @@
+import { ComponentLibraryEnvironmentContext } from '@bratislava/component-library'
 import AccordionShowcase from '@components/styleguide/showcases/AccordionShowcase'
 import BlogPostCardShowcase from '@components/styleguide/showcases/BlogPostCardShowcase'
 import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardShowcase'
@@ -8,6 +9,9 @@ import { isProductionDeployment } from '@utils/utils'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSideProps } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePlausible } from 'next-plausible'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'
@@ -26,40 +30,58 @@ import TextAreaFieldShowCase from '../components/styleguide/showcases/TextAreaFi
 import ToggleShowCase from '../components/styleguide/showcases/ToggleShowCase'
 import StyleGuideWrapper from '../components/styleguide/StyleGuideWrapper'
 
+const LinkWrapper = ({
+  href,
+  children,
+  className,
+}: {
+  href: string
+  children: React.ReactNode
+  className: string
+}) => {
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  )
+}
+
 const Styleguide = () => {
   /**
    * Always create new component for adding showcase in StyleGuide
    * Path to StyleGuide showcase components should be ./next/components/styleguide/showcases
    * */
   return (
-    <StyleGuideWrapper>
-      {/* HERE ADD SHOWCASES */}
-      <TagShowCase />
-      <TooltipShowCase />
-      <FieldHeaderShowCase />
-      <ButtonShowCase />
-      <InputFieldShowCase />
-      <SpinnerShowCase />
-      <TextAreaFieldShowCase />
-      <AlertShowCase />
-      <SearchFieldShowCase />
-      <ToggleShowCase />
-      <DropdownShowCase />
-      <SelectFieldShowCase />
-      <ProgressBarShowCase />
-      <SingleCheckboxShowCase />
-      <CheckboxGroupShowCase />
-      <AccordionShowcase />
-      <BannerShowCase />
-      <ServiceCardShowCase />
-      <EventCardShowcase />
-      <CategoryCardShowcase />
-      <BlogPostCardShowcase />
-      <HomepageHorizontalCardShowcase />
-      <ContactsShowcase />
+    <ComponentLibraryEnvironmentContext.Provider value={{ Link: LinkWrapper }}>
+      <StyleGuideWrapper>
+        {/* HERE ADD SHOWCASES */}
+        <TagShowCase />
+        <TooltipShowCase />
+        <FieldHeaderShowCase />
+        <ButtonShowCase />
+        <InputFieldShowCase />
+        <SpinnerShowCase />
+        <TextAreaFieldShowCase />
+        <AlertShowCase />
+        <SearchFieldShowCase />
+        <ToggleShowCase />
+        <DropdownShowCase />
+        <SelectFieldShowCase />
+        <ProgressBarShowCase />
+        <SingleCheckboxShowCase />
+        <CheckboxGroupShowCase />
+        <AccordionShowcase />
+        <BannerShowCase />
+        <ServiceCardShowCase />
+        <EventCardShowcase />
+        <CategoryCardShowcase />
+        <BlogPostCardShowcase />
+        <HomepageHorizontalCardShowcase />
+        <ContactsShowcase />
 
-      {/* <SnackbarShowCase /> */}
-    </StyleGuideWrapper>
+        {/* <SnackbarShowCase /> */}
+      </StyleGuideWrapper>
+    </ComponentLibraryEnvironmentContext.Provider>
   )
 }
 

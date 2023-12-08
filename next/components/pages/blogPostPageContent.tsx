@@ -1,5 +1,6 @@
 import { BlogPostEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
+import Button from '@components/forms/simple-components/Button'
 import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useGeneralContext } from '@utils/generalContext'
@@ -28,7 +29,7 @@ export const SocialMediaButton = ({
     )
   }
 
-  return <button onClick={openSharePage}>{children}</button>
+  return <Button onPress={openSharePage}>{children}</Button>
 }
 
 export type BlogPostPageContentProps = {

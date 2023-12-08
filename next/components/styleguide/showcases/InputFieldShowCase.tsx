@@ -1,3 +1,4 @@
+import PasswordField from '@components/forms/widget-components/PasswordField/PasswordField'
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import React, { useRef } from 'react'
 
@@ -89,6 +90,7 @@ const InputFieldShowCase = () => {
           errorMessage={[ERROR]}
           disabled
         />
+        <PasswordField label="Password" placeholder="Enter your password..." />
       </Stack>
     </Wrapper>
   )
