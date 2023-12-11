@@ -24,6 +24,46 @@ export interface SearchCardNewProps {
   tag?: string
   metadata?: string[]
   pageColor?: Enum_Pagecategory_Color | Enum_Page_Pagecolor
+  picture?: any
+}
+
+export const SearchCardWithPictureNew = ({
+  title,
+  slug = '',
+  tag = '',
+  metadata,
+  picture,
+}: SearchCardNewProps) => {
+  const urlExcerpt = `www.bratislava.sk/${slug.slice(0, 15)}...`
+
+  return (
+    <MLink className="group flex flex-row items-center rounded-lg border-2" href={`/../${slug}`}>
+      <img className="h-[150px] w-[150px]" src={picture} alt={title} />
+      <div className="flex flex-col gap-y-1.5 p-8">
+        {tag ? (
+          <div>
+            <Tag text={tag} size="small" />
+          </div>
+        ) : null}
+        <p className="text-size-h5 font-semibold group-hover:underline">{title}</p>
+        <div>{[urlExcerpt, ...(metadata ?? '')].join(' • ')}</div>
+      </div>
+      <div className="my-auto ml-auto pr-8 text-main-700">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="m7.93 4.16 7.94 7.89-7.94 7.89L8.99 21 18 12.05 8.99 3.1 7.93 4.16Z"
+          />
+        </svg>
+      </div>
+    </MLink>
+  )
 }
 
 export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCardNewProps) => {
@@ -40,7 +80,7 @@ export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCa
             </div>
           ) : null}
         </div>
-        <div>{[urlExcerpt, ...metadata].join(' • ')}</div>
+        <div>{[urlExcerpt, ...(metadata ?? '')].join(' • ')}</div>
       </div>
       <div className="my-auto ml-auto text-main-700">
         <svg

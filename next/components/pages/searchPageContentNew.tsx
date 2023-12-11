@@ -4,6 +4,8 @@ import PagesResults from '@components/molecules/SearchPage/PagesResults'
 import UsersResults from '@components/molecules/SearchPage/UsersResults'
 import { AdvancedSearchNew } from '@components/molecules/SearchPageNew/AdvancedSearchNew'
 import BlogPostsResultsNew from '@components/molecules/SearchPageNew/BlogPostsResultsNew'
+import OnlyBlogPostsResultsNew from '@components/molecules/SearchPageNew/OnlyBlogPostsResultsNew'
+import OnlyPagesResultsNew from '@components/molecules/SearchPageNew/OnlyPagesResultsNew'
 import PagesResultsNew from '@components/molecules/SearchPageNew/PagesResultsNew'
 import UsersResultsNew from '@components/molecules/SearchPageNew/UsersResultsNew'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
@@ -132,17 +134,17 @@ const SearchPageContentNew = () => {
             />
           </div>
         ) : null}
-        {[...selectedOption][0] === defaultOption ? (
+        {/* {[...selectedOption][0] === defaultOption ? (
           <>
             <PagesResults filters={pagesFilters} />
             <BlogPostsResults filters={blogPostsFilters} />
             <UsersResults filters={usersFilters} />
           </>
-        ) : null}
+        ) : null} */}
         {[...selectedOption][0] === 'articles' ? (
-          <BlogPostsResults filters={blogPostsFilters} />
+          <OnlyBlogPostsResultsNew filters={blogPostsFilters} />
         ) : null}
-        {[...selectedOption][0] === 'pages' ? <PagesResults filters={pagesFilters} /> : null}
+        {[...selectedOption][0] === 'pages' ? <OnlyPagesResultsNew filters={pagesFilters} /> : null}
         {[...selectedOption][0] === 'users' ? <UsersResults filters={usersFilters} /> : null}
       </div>
     </SectionContainer>
