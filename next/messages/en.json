@@ -19,13 +19,17 @@
   "searchTheSite": "Search the site",
   "search": "Search",
   "searching": "Search",
+  "article": "Article",
   "articles": "Articles",
+  "inbaArticle": "in.ba article",
+  "inbaArticles": "in.ba articles",
   "pages": "Pages",
   "documents": "Documents",
   "files": "Files",
   "enterKeyword": "Enter a keyword",
   "weDidntFindAnything": "We didn't find anything",
   "tryEnteringSomethingElse": "Try entering something else",
+  "website": "Website",
   "websites": "Websites",
   "searchLink": "/search",
   "officialBoard": "Official board",
@@ -247,5 +251,8 @@
     "articleFilter": "Article filter",
     "allArticles": "All articles",
     "subcategories": "Subcategories"
+  },
+  "SearchPage": {
+    "noResults": "No results found"
   }
 }

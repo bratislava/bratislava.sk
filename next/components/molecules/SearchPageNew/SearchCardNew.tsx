@@ -12,11 +12,12 @@ import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
+import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
-import CardBase from '@components/molecules/presentation/CardBase'
-import CardContent from '@components/molecules/presentation/CardContent'
 import { getCategoryColorLocalStyle } from '@utils/colors'
+import { isDefined } from '@utils/isDefined'
+import Image from 'next/image'
 
 export interface SearchCardNewProps {
   title: string
@@ -35,18 +36,29 @@ export const SearchCardWithPictureNew = ({
   picture,
 }: SearchCardNewProps) => {
   const urlExcerpt = `www.bratislava.sk/${slug.slice(0, 15)}...`
+  const cleanedMetadata = metadata?.filter(isDefined).filter((item) => item !== '') ?? []
 
   return (
-    <MLink className="group flex flex-row items-center rounded-lg border-2" href={`/../${slug}`}>
-      <img className="h-[150px] w-[150px]" src={picture} alt={title} />
-      <div className="flex flex-col gap-y-1.5 p-8">
+    <MLink
+      className="group flex flex-row items-center overflow-hidden rounded-lg border-2"
+      href={`/../${slug}`}
+    >
+      {/* FIXME: velkost dzivna */}
+      <div className="relative h-[150px] w-[150px] shrink-0 overflow-hidden">
+        {picture ? (
+          <Image className="object-cover" fill src={picture} alt="" />
+        ) : (
+          <ImagePlaceholder />
+        )}
+      </div>
+      <div className="flex w-full shrink flex-col gap-y-1.5 p-8">
         {tag ? (
           <div>
             <Tag text={tag} size="small" />
           </div>
         ) : null}
-        <p className="text-size-h5 font-semibold group-hover:underline">{title}</p>
-        <div>{[urlExcerpt, ...(metadata ?? '')].join(' • ')}</div>
+        <p className="line-clamp-1 text-size-h5 font-semibold group-hover:underline">{title}</p>
+        <div>{[urlExcerpt, ...cleanedMetadata].join(' • ')}</div>
       </div>
       <div className="my-auto ml-auto pr-8 text-main-700">
         <svg
@@ -68,19 +80,20 @@ export const SearchCardWithPictureNew = ({
 
 export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCardNewProps) => {
   const urlExcerpt = `www.bratislava.sk/${slug.slice(0, 15)}...`
+  const cleanedMetadata = metadata?.filter(isDefined).filter((item) => item !== '') ?? []
 
   return (
     <MLink className="group flex flex-row gap-x-8 px-6 py-4" href={`/../${slug}`}>
       <div className="flex flex-col gap-y-1.5">
         <div className="flex flex-row items-center gap-x-3	">
-          <p className="text-size-h5 font-semibold group-hover:underline">{title}</p>
+          <p className="line-clamp-1 text-size-h5 font-semibold group-hover:underline">{title}</p>
           {tag ? (
             <div>
               <Tag text={tag} size="small" />
             </div>
           ) : null}
         </div>
-        <div>{[urlExcerpt, ...(metadata ?? '')].join(' • ')}</div>
+        <div>{[urlExcerpt, ...cleanedMetadata].join(' • ')}</div>
       </div>
       <div className="my-auto ml-auto text-main-700">
         <svg

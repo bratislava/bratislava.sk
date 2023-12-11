@@ -1,29 +1,30 @@
 import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
+import { InbaArticlesFilters } from '@backend/meili/fetchers/inbaArticlesFetcher'
 import {
   SearchCardNew,
   SearchCardWithPictureNew,
 } from '@components/molecules/SearchPageNew/SearchCardNew'
-import { getSearchBlogPostsData } from '@components/molecules/SearchPageNew/searchDataFetchers'
+import { getSearchInbaArticlesData } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 
-interface BlogPostsResultsProps {
+interface InbaArticlesResultsProps {
   title?: string
-  filters: BlogPostsFilters
+  filters: InbaArticlesFilters
   variant: 'basic' | 'advanced'
   handleShowMore?: React.Dispatch<React.SetStateAction<Selection>>
 }
 
-const BlogPostsResultsNew = ({
+const InbaArticlesResultsNew = ({
   filters,
   title,
   handleShowMore,
   variant = 'basic',
-}: BlogPostsResultsProps) => {
+}: InbaArticlesResultsProps) => {
   const t = useTranslations()
 
-  const data = getSearchBlogPostsData(filters)
+  const data = getSearchInbaArticlesData(filters)
   const RESULTS_SHOWN = 5
 
   return (
@@ -43,7 +44,7 @@ const BlogPostsResultsNew = ({
                 return (
                   <SearchCardNew
                     title={`${item.title}`}
-                    tag={t('article')}
+                    tag={t('inbaArticle')}
                     slug={item.slug}
                     metadata={item.metadata}
                   />
@@ -55,7 +56,7 @@ const BlogPostsResultsNew = ({
                 return (
                   <SearchCardWithPictureNew
                     title={`${item.title}`}
-                    tag={t('article')}
+                    tag={t('inbaArticle')}
                     slug={item.slug}
                     metadata={item.metadata}
                     picture={item.picture}
@@ -71,4 +72,4 @@ const BlogPostsResultsNew = ({
   )
 }
 
-export default BlogPostsResultsNew
+export default InbaArticlesResultsNew

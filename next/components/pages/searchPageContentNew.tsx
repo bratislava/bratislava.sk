@@ -4,8 +4,7 @@ import PagesResults from '@components/molecules/SearchPage/PagesResults'
 import UsersResults from '@components/molecules/SearchPage/UsersResults'
 import { AdvancedSearchNew } from '@components/molecules/SearchPageNew/AdvancedSearchNew'
 import BlogPostsResultsNew from '@components/molecules/SearchPageNew/BlogPostsResultsNew'
-import OnlyBlogPostsResultsNew from '@components/molecules/SearchPageNew/OnlyBlogPostsResultsNew'
-import OnlyPagesResultsNew from '@components/molecules/SearchPageNew/OnlyPagesResultsNew'
+import InbaArticlesResultsNew from '@components/molecules/SearchPageNew/InbaArticlesResultsNew'
 import PagesResultsNew from '@components/molecules/SearchPageNew/PagesResultsNew'
 import UsersResultsNew from '@components/molecules/SearchPageNew/UsersResultsNew'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
@@ -37,6 +36,7 @@ const SearchPageContentNew = () => {
     { key: 'allResults', value: 'Všetky výsledky' },
     { key: 'pages', value: t('pages') },
     { key: 'articles', value: t('articles') },
+    { key: 'inbaArticles', value: t('inbaArticles') },
     { key: 'users', value: t('organisationalStructure') },
   ]
   const defaultOption = 'allResults'
@@ -52,12 +52,13 @@ const SearchPageContentNew = () => {
 
   const pagesFilters = { search: searchValue }
   const blogPostsFilters = { search: searchValue, page: 1, pageSize: 6 }
+  const inbaArticlesFilters = { search: searchValue, page: 1, pageSize: 6, tagIds: [] }
   const usersFilters = { search: searchValue }
 
   return (
     <SectionContainer className="mb-8">
       {/* FIXME: ↓ DEBUG */}
-      {true && (
+      {/* {true && (
         <div className="fixed left-0 bg-gray-50 p-3 text-size-p-small">
           <button
             className="mb-2 w-full rounded-full border-2 bg-white p-2 hover:font-semibold"
@@ -69,15 +70,10 @@ const SearchPageContentNew = () => {
             {`New theme: ${showNewTheme.toString()}`}
           </button>
           <p>selectedOption: {selectedOption}</p>
-          {/* <p>typeof selectedOption: {typeof selectedOption}</p>
-          <p>prototype of selectedOption: {Object.prototype.toString.call(selectedOption)}</p>
-          <p>selectedOption JSON: {JSON.stringify(selectedOption)}</p>
-          <p>Array.from selectedOption JSON: {JSON.stringify(Array.from(selectedOption))}</p> */}
         </div>
-      )}
+      )} */}
       {/* ↑ DEBUG */}
       <div className="flex w-full flex-col gap-y-8 md:pt-18">
-        {/* Vyhladavanie */}
         <div className="flex flex-col">
           <AdvancedSearchNew
             placeholder={t('enterKeyword')}
@@ -109,9 +105,10 @@ const SearchPageContentNew = () => {
           </TagGroup>
           <p className="mt-8">Zobrazujeme XXXXXX výsledkov</p>
         </div>
-        {[...selectedOption][0] === defaultOption && showNewTheme ? (
+        {[...selectedOption][0] === defaultOption ? (
           <div className="flex flex-col gap-8">
             <PagesResultsNew
+              variant="basic"
               title={t('websites')}
               filters={pagesFilters}
               handleShowMore={() => {
@@ -119,13 +116,23 @@ const SearchPageContentNew = () => {
               }}
             />
             <BlogPostsResultsNew
+              variant="basic"
               title={t('articles')}
               filters={blogPostsFilters}
               handleShowMore={() => {
                 setSelectedOption(new Set(['articles']))
               }}
             />
+            <InbaArticlesResultsNew
+              variant="basic"
+              title={t('inbaArticles')}
+              filters={inbaArticlesFilters}
+              handleShowMore={() => {
+                setSelectedOption(new Set(['inbaArticles']))
+              }}
+            />
             <UsersResultsNew
+              variant="basic"
               title={t('organisationalStructure')}
               filters={usersFilters}
               handleShowMore={() => {
@@ -134,18 +141,15 @@ const SearchPageContentNew = () => {
             />
           </div>
         ) : null}
-        {/* {[...selectedOption][0] === defaultOption ? (
-          <>
-            <PagesResults filters={pagesFilters} />
-            <BlogPostsResults filters={blogPostsFilters} />
-            <UsersResults filters={usersFilters} />
-          </>
-        ) : null} */}
         {[...selectedOption][0] === 'articles' ? (
-          <OnlyBlogPostsResultsNew filters={blogPostsFilters} />
+          <BlogPostsResultsNew variant="advanced" filters={blogPostsFilters} />
+        ) : [...selectedOption][0] === 'inbaArticles' ? (
+          <InbaArticlesResultsNew variant="advanced" filters={inbaArticlesFilters} />
+        ) : [...selectedOption][0] === 'pages' ? (
+          <PagesResultsNew variant="advanced" filters={pagesFilters} />
+        ) : [...selectedOption][0] === 'users' ? (
+          <UsersResultsNew variant="advanced" filters={usersFilters} />
         ) : null}
-        {[...selectedOption][0] === 'pages' ? <OnlyPagesResultsNew filters={pagesFilters} /> : null}
-        {[...selectedOption][0] === 'users' ? <UsersResults filters={usersFilters} /> : null}
       </div>
     </SectionContainer>
   )
