@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -38,9 +39,15 @@ const BlogPostHorizontalCard = ({
         <div className="flex flex-col gap-2">
           {tag && <Tag text={tag} isColored />}
           <MLink href={linkHref} stretched>
-            <h3 className="text-h5 line-clamp-3 group-hover:underline">{title}</h3>
+            <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+              {title}
+            </Typography>
           </MLink>
-          {date && <div className="mt-1 text-font">{date}</div>}
+          {date && (
+            <Typography type="p" className="mt-1">
+              {date}
+            </Typography>
+          )}
         </div>
       </CardContent>
     </CardBase>

@@ -1,4 +1,5 @@
 import { getDocumentDetailURL, getDocumentFileURL } from '@backend/services/ginis'
+import { Typography } from '@bratislava/component-library'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import { formatDate } from '@utils/local-date'
 import { useTranslations } from 'next-intl'
@@ -34,7 +35,9 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
 
   return (
     <>
-      <div className="pb-5 font-semibold">{t('documents')}</div>
+      <Typography type="p" fontWeight="semibold" className="pb-5">
+        {t('documents')}
+      </Typography>
       <div className="grid grid-cols-1 gap-4">
         {files.map((fileItem) => (
           <FileCard {...fileItem} />

@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Button from '@components/forms/simple-components/Button'
 import CardBase, { CardBaseProps } from '@components/molecules/presentation/CardBase'
@@ -33,7 +34,9 @@ const HomepageHorizontalCard = ({
       </div>
       <CardContent className="grow justify-between lg:px-10 lg:py-8">
         <div className="flex flex-col">
-          <h3 className="text-h5 line-clamp-3 group-hover:underline">{title}</h3>
+          <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+            {title}
+          </Typography>
         </div>
         <Button variant="black-link" stretched {...linkProps} className="mt-6" />
       </CardContent>

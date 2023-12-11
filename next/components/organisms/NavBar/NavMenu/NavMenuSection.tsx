@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import { Icon } from '@components/atoms/icon/Icon'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -19,7 +20,11 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
         </div>
       )}
       <div className="w-full">
-        {section.label && <h3 className="text-h5 mt-1.5">{section.label}</h3>}
+        {section.label && (
+          <Typography type="h3" size="h5" className="mt-1.5">
+            {section.label}
+          </Typography>
+        )}
 
         <ul className="mt-1.5 flex flex-col">
           {/* eslint-disable react/no-array-index-key */}

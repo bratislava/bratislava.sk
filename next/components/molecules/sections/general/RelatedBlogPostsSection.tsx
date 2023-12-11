@@ -3,6 +3,7 @@ import {
   getRelatedBlogPostsQueryKey,
   relatedBlogPostsFetcher,
 } from '@backend/graphql/fetchers/relatedBlogPosts.fetcher'
+import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
@@ -40,7 +41,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
       <div className="flex flex-col">
         <div className="flex">
           <div className="grow">
-            <h2 className="text-h2">{t('relatedBlogPosts')}</h2>
+            <Typography type="h2">{t('relatedBlogPosts')}</Typography>
           </div>
         </div>
 

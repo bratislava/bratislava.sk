@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import EventCard from '@components/molecules/presentation/EventCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
@@ -20,8 +21,8 @@ export const EventsHomepageSection = () => {
       <div className="py-8 md:pt-0">
         {title || text ? (
           <div className="flex flex-col gap-2 text-center lg:pt-18">
-            {title && <h2 className="text-h2">{title}</h2>}
-            {text && <div>{text}</div>}
+            {title && <Typography type="h2">{title}</Typography>}
+            {text && <Typography type="p">{text}</Typography>}
           </div>
         ) : null}
 

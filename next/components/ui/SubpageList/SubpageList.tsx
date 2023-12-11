@@ -31,6 +31,7 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
             {index + 1}
           </div>
           <div className="text-large font-medium leading-6 tracking-wide group-hover:underline">
+            {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
             <UILink
               href={subpage.url ? isExternalLink(subpage.url) : `#${subpage.anchor}`}
               target={subpage.url?.startsWith('http') ? '_blank' : undefined}

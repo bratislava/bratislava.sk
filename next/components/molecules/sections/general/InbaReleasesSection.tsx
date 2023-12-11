@@ -4,6 +4,7 @@ import {
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
 } from '@backend/graphql/fetchers/inbaReleases.fetcher'
+import { Typography } from '@bratislava/component-library'
 import InbaReleaseHorizontalCard from '@components/molecules/presentation/InbaReleaseHorizontalCard'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useQuery } from '@tanstack/react-query'
@@ -35,8 +36,8 @@ const InbaReleasesSection = ({ section }: Props) => {
     <div className="flex flex-col gap-8">
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title && <h2 className="text-h2">{title}</h2>}
-          {text && <div>{text}</div>}
+          {title && <Typography type="h2">{title}</Typography>}
+          {text && <Typography type="p">{text}</Typography>}
         </div>
       ) : null}
 

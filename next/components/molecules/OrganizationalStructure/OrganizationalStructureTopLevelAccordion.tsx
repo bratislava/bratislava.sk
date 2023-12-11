@@ -23,6 +23,7 @@ export const OrganizationalStructureTopLevelAccordion = ({
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>
         <div className="flex items-center lg:px-5">
           <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-category-600 lg:h-8 lg:w-8" />
+          {/* FIXME Typography. Convert to use Typography. Issue: Header size for not header element */}
           <div className="text-h3">{group.displayName}</div>
           <div className={cx('ml-auto', { 'rotate-180': open })}>
             <ChevronDown className="hidden lg:flex" />

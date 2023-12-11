@@ -1,4 +1,5 @@
 import { CrossIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import React, { forwardRef, ReactNode } from 'react'
@@ -27,7 +28,9 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
           {title ? (
             <div className="flex shrink-0 items-start justify-between gap-4 border-b-2 px-6 py-4">
               <Heading>
-                <h2 className="text-h5">{title}</h2>
+                <Typography type="h2" size="h5">
+                  {title}
+                </Typography>
               </Heading>
               {/* TODO translation */}
               <Button

@@ -23,6 +23,7 @@ export const Wrapper = ({ title, children, direction = 'row', noBorder }: Wrappe
 
   return (
     <div className={wrapperClassNames}>
+      {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
       {title && <h2 className="text-h2 pb-2">{title}</h2>}
       <div className={childrenClassNames}>{children}</div>
     </div>

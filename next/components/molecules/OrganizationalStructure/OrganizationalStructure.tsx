@@ -14,6 +14,7 @@ export const OrganizationalStructure = ({ title }: OrganizationalStructureProps)
   const t = useTranslations()
   return data ? (
     <div className="flex flex-col">
+      {/* FIXME Typography. Convert to use Typography. Issue: Header size for not header element */}
       <div className="text-h3 pb-4">{title}</div>
       {data.groups.map((group) => (
         <div key={group.id}>

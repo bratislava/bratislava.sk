@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -113,7 +114,9 @@ const TabPanelRoadClosures = () => {
                         </div>
                       )}
                       <MLink href={`/blog/${slug}`} stretched variant="underlineOnHover">
-                        <h3 className="text-h5">{title}</h3>
+                        <Typography type="h3" size="h5">
+                          {title}
+                        </Typography>
                       </MLink>
                     </div>
                   )

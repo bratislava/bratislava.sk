@@ -66,6 +66,7 @@ export const AdvancedSearch = ({
 
   return (
     <div className={cx('flex w-full flex-col', className)}>
+      {/* FIXME Typography. Convert to use Typography. Issue: Different font weight */}
       <h1 className="text-h3 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</h1>
       <div className="hidden pb-6 lg:flex">
         <input

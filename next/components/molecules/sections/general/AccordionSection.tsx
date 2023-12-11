@@ -1,4 +1,5 @@
 import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
 import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
@@ -20,7 +21,11 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
   return (
     <>
-      {section.title && <h2 className="text-h2 flex justify-center pb-14">{section.title}</h2>}
+      {section.title && (
+        <Typography type="h2" className="flex justify-center pb-14">
+          {section.title}
+        </Typography>
+      )}
       <div className="flex flex-col gap-4">
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (

@@ -1,6 +1,7 @@
 import MinusIcon from '@assets/images/minus.svg'
 import PlusIcon from '@assets/images/plus.svg'
 import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import { Input } from '@bratislava/ui-bratislava/Input/Input'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
@@ -111,7 +112,11 @@ const MinimumCalculator = ({
 
   return (
     <div className={cx('bg-category-200 text-center text-font', className)}>
-      <h2 className="text-h3">{t('title')}</h2>
+      <Typography type="h2" size="h3">
+        {t('title')}
+      </Typography>
+
+      {/* FIXME Typography. Convert to use Typography. Issue: responsive size of Figma large <p> is different */}
       <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
       <form
         className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
@@ -168,12 +173,13 @@ const MinimumCalculator = ({
 
       {submitted && (
         <div className="mt-14">
+          {/* FIXME Typography. Convert to use Typography. Issue: Figma <p> different font size */}
           <p className="text-h4">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
-          <p className="text-large-respo m-auto mt-5 w-9/12">
+          <Typography type="p" size="p-large" className="text-large-respo m-auto mt-5 w-9/12">
             {canAcommodate
               ? t('answerDescriptionYes')
               : t('answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
-          </p>
+          </Typography>
         </div>
       )}
     </div>

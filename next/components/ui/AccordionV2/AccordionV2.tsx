@@ -79,6 +79,7 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
     <AnimateHeight isVisible className={animateHeightStyles}>
       <details className={borderStyles}>
         <summary className={buttonStyles}>
+          {/* FIXME Typograhpy. Convert to use Typograpy. Issue: Usage of conditional size, optional font weight. */}
           {/* TODO accordions often have no parent title, so they should act as h2 */}
           <h3 className={headingStyles}>{title}</h3>
           <span className="shrink-0" aria-hidden>

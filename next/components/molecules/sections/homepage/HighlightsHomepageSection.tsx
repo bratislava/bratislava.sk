@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import HomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
@@ -20,8 +21,8 @@ export const HighlightsHomepageSection = () => {
     <div className="negative-x-spacing py-8 md:py-0">
       {title || text ? (
         <div className="flex flex-col gap-2 text-center lg:pt-18">
-          {title && <h2 className="text-h2">{title}</h2>}
-          {text && <div>{text}</div>}
+          {title && <Typography type="h2">{title}</Typography>}
+          {text && <Typography type="p">{text}</Typography>}
         </div>
       ) : null}
 

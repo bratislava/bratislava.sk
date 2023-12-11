@@ -58,6 +58,7 @@ const DataWrapper = ({
 
   return (
     <LoadingOverlay loading={delayedLoading}>
+      {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
       <h2 className="text-h5 pb-6">{t('articles')}</h2>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
       <BlogPosts data={dataToDisplay!} filters={filters} />

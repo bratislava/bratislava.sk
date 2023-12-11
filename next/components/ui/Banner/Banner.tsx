@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import { generateImageSizes } from '@utils/generateImageSizes'
@@ -46,7 +47,10 @@ const Banner = ({
         })}
       >
         <div className="flex flex-col items-start gap-3">
-          <h2 className={`${variant === 'white_condensed' ? 'text-h4' : 'text-h2'}`}>{title}</h2>
+          <Typography type="h2" size={variant === 'white_condensed' ? 'h4' : 'h2'}>
+            {title}
+          </Typography>
+
           {content && <Markdown content={content} />}
         </div>
         <div className="flex flex-col items-center gap-2 empty:hidden lg:flex-row lg:gap-4">

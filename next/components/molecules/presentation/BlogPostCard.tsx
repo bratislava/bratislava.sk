@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Button from '@components/forms/simple-components/Button'
 import Tag from '@components/forms/simple-components/Tag'
@@ -32,12 +33,22 @@ const BlogPostCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...
           {(date || tag) && (
             <div className="flex items-center justify-between pb-2">
               {/* If no date, leaving empty div to push tag to the right */}
-              <div className="text-small leading-[1.5rem] text-font">{date}</div>
+              <Typography type="p" size="p-small">
+                {date}
+              </Typography>
+
               {tag && <Tag text={tag} size="small" isColored />}
             </div>
           )}
-          <h3 className="text-h5 line-clamp-3 group-hover:underline">{title}</h3>
-          {text && <div className="mt-1 line-clamp-4 text-font">{text}</div>}
+          <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+            {title}
+          </Typography>
+
+          {text && (
+            <Typography type="p" className="mt-1 line-clamp-4">
+              {text}
+            </Typography>
+          )}
         </div>
         <Button variant="black-link" stretched {...linkProps} className="mt-4 lg:mt-5" />
       </CardContent>
