@@ -1,4 +1,5 @@
 import { VideoBlockFragment, VideosSectionFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
@@ -41,16 +42,20 @@ const Video = ({
           'animate-pulse bg-gray-300': !isLoaded,
         })}
         title={title ?? undefined}
-        //width={size === 'default' ? '350' : '280'}
+        // width={size === 'default' ? '350' : '280'}
         height={size === 'default' ? '196' : '157'}
         src={embedUrl}
         allowFullScreen
         onLoad={() => setLoaded(true)}
       />
       <a href={url ?? undefined} target="_blank" rel="noreferrer">
-        <h5 className="md:text-h5 mt-8 cursor-pointer hover:underline">{title}</h5>
+        <Typography type="h5" className="mt-8 cursor-pointer hover:underline">
+          {title}
+        </Typography>
       </a>
-      <p className="mt-5">{speaker}</p>
+      <Typography type="p" className="mt-5">
+        {speaker}
+      </Typography>
     </div>
   )
 }
@@ -65,8 +70,12 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
       <div className="py-8 md:pt-0">
         {title || subtitle ? (
           <div className="flex flex-col gap-2">
-            {title && <h2 className="text-h4">{title}</h2>}
-            {subtitle && <div>{subtitle}</div>}
+            {title && (
+              <Typography type="h2" size="h4">
+                {title}
+              </Typography>
+            )}
+            {subtitle && <Typography type="p">{subtitle}</Typography>}
           </div>
         ) : null}
       </div>

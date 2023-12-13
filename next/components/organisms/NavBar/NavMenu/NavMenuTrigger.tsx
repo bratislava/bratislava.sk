@@ -17,8 +17,9 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerMove={(event) => event.preventDefault()}
         onPointerLeave={(event) => event.preventDefault()}
         style={colorStyle}
-        className="group flex h-full w-full flex-col items-center whitespace-pre-wrap py-4 hover:font-semibold data-[state=open]:font-semibold"
+        className="group flex h-full w-full flex-col items-center whitespace-pre-wrap py-4 data-[state=open]:font-semibold hover:font-semibold"
       >
+        {/* FIXME Typography: Convert to use Typography. */}
         {label}
         <StickyMenuTopper className="group:data-[state=open]:opacity-100 absolute bottom-[-7px] text-category-600 opacity-100 transition group-hover:opacity-100" />
       </NavigationMenu.Trigger>

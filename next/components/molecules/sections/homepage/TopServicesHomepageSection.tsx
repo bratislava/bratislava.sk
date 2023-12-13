@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { TopServices } from '@components/ui/TopServices/TopServices'
 import { useHomepageContext } from '@utils/homepageContext'
@@ -16,7 +17,9 @@ const TopServicesHomepageSection = () => {
 
   return (
     <SectionContainer className="bg-main-200 py-6 lg:py-18">
-      <h2 className="text-h2 pb-6 text-center lg:pb-12">{topServices.title}</h2>
+      <Typography type="h2" className="pb-6 text-center lg:pb-12">
+        {topServices.title}
+      </Typography>
       <TopServices items={topServicesFiltered} />
     </SectionContainer>
   )

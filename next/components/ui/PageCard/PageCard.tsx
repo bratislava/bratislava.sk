@@ -50,6 +50,7 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
         <SmallPageIcon className="md:hidden" />
       </div>
       <CardContent className="flex w-full flex-row items-center justify-between">
+        {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing. */}
         <h3 className="text-large-respo">
           <MLink href={`/${slug}`} stretched variant="underlineOnHover">
             {title}

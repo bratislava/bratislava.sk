@@ -1,4 +1,5 @@
 import BALogo from '@assets/images/BALogo.svg'
+import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
@@ -20,7 +21,7 @@ export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
         {withTitle && (
           <span className="text-default">
             {t.rich('capitalCity', {
-              semibold: (chunks) => <span className="font-semibold">{chunks}</span>,
+              semibold: (chunks) => <Typography type="span">{chunks}</Typography>,
             })}
           </span>
         )}

@@ -1,8 +1,52 @@
 import Email from '@assets/images/email2.svg'
 import Phone from '@assets/images/phone.svg'
+import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
+
+interface ContactItemProps {
+  variant: 'phone' | 'email' | 'address'
+  value: string
+  label?: string
+  href?: string
+}
+
+const ContactItem = ({ variant, value, label, href }: ContactItemProps) => {
+  if (variant === 'address') {
+    return <Markdown content={value} />
+  }
+
+  const Icon = variant === 'phone' ? Phone : Email
+
+  return (
+    <div className="text-large relative flex h-full flex-col items-center justify-start pb-20 leading-[30px]">
+      <Icon className="h-24 w-24" />
+      {value.split(',').map((item, index) => {
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index} className="text-center">
+            <Typography
+              type="span"
+              size="span-large"
+              className={cx('w-full text-center', {
+                'mt-9': index === 0,
+                'whitespace-nowrap': variant === 'phone',
+              })}
+            >
+              {item}
+            </Typography>
+          </div>
+        )
+      })}
+      {label && href && (
+        <Button href={href} variant="category-solid" className="mt-8">
+          {label}
+        </Button>
+      )}
+    </div>
+  )
+}
 
 export interface ContactProps {
   className?: string
@@ -44,7 +88,11 @@ export const Contact = ({
 
   return (
     <>
-      {title && <h4 className="text-h4 mb-6 leading-[36px]">{title}</h4>}
+      {title && (
+        <Typography type="h4" className=" mb-6 leading-[36px]">
+          {title}
+        </Typography>
+      )}
       <div className={cx(className, 'flex flex-col items-center gap-3 text-font md:flex-row')}>
         {description && (
           <div
@@ -80,47 +128,6 @@ export const Contact = ({
         )}
       </div>
     </>
-  )
-}
-
-interface ContactItemProps {
-  variant: 'phone' | 'email' | 'address'
-  value: string
-  label?: string
-  href?: string
-}
-
-const ContactItem = ({ variant, value, label, href }: ContactItemProps) => {
-  if (variant === 'address') {
-    return <Markdown content={value} />
-  }
-
-  const Icon = variant === 'phone' ? Phone : Email
-
-  return (
-    <div className="text-large relative flex h-full flex-col items-center justify-start pb-20 leading-[30px]">
-      <Icon className="h-24 w-24" />
-      {value.split(',').map((item, index) => {
-        return (
-          // eslint-disable-next-line react/no-array-index-key
-          <div key={index} className="text-center">
-            <span
-              className={cx('text-large w-full text-center font-semibold', {
-                'mt-9': index === 0,
-                'whitespace-nowrap': variant === 'phone',
-              })}
-            >
-              {item}
-            </span>
-          </div>
-        )
-      })}
-      {label && href && (
-        <Button href={href} variant="category-solid" className="mt-8">
-          {label}
-        </Button>
-      )}
-    </div>
   )
 }
 

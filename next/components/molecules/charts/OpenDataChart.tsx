@@ -95,6 +95,7 @@ const OpenDataChart = ({
 
   return (
     <div className={cx(className, 'text-font')}>
+      {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
       <h2 className="text-h4 mb-3 mt-8 text-center leading-[40px]">{title}</h2>
 
       <ErrorBox error={error} />

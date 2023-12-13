@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import WelcomeCardIcon from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import MLink from '@components/forms/simple-components/MLink'
 import React, { useRef } from 'react'
@@ -24,7 +25,9 @@ export const WelcomeCard = ({ item }: WelcomeCardProps) => {
           href={item.linkHref}
           className="underline after:absolute after:inset-0 group-hover:underline lg:no-underline"
         >
-          {item.label}
+          <Typography type="p" fontWeight="medium">
+            {item.label}
+          </Typography>
         </MLink>
       </div>
     </div>

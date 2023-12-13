@@ -102,6 +102,8 @@ export const BlogSearchCard = ({
 
         <CardContent className="gap-y-4">
           {tagTitle && <Tag text={tagTitle} isColored />}
+
+          {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
           <h3 className="text-large line-clamp-3">
             <MLink href={`/blog/${slug}`} stretched variant="underlineOnHover">
               {title}

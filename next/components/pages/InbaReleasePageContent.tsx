@@ -1,4 +1,5 @@
 import { InbaReleaseEntityFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
@@ -62,14 +63,19 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
           <div className="flex w-full flex-col gap-8">
             {perex ? (
               <NarrowText align="left" width="full">
-                <h2 className="text-h3 pb-4">{t('inThisRelease')}</h2>
+                <Typography type="h2" size="h3" className="pb-4">
+                  {t('inThisRelease')}
+                </Typography>
                 {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
                 <Markdown content={perex} />
               </NarrowText>
             ) : null}
 
             <div className="flex flex-col">
-              <h2 className="text-h3 pb-4">{t('toDownload')}</h2>
+              <Typography type="h2" size="h3" className="pb-4">
+                {t('toDownload')}
+              </Typography>
+
               {/* TODO refactor, use FileList */}
               {files?.filter(isDefined).map((file) => (
                 <FileRowCard

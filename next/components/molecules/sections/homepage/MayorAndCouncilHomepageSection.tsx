@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import MayorAndCouncilCard from '@components/molecules/presentation/MayorAndCouncilCard'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
@@ -23,8 +24,8 @@ export const MayorAndCouncilHomepageSection = ({ className }: Props) => {
     <div className={twMerge('flex flex-col gap-6', className)}>
       {title || text ? (
         <div className="flex flex-col gap-2 text-center">
-          {title && <h2 className="text-h2">{title}</h2>}
-          {text && <div>{text}</div>}
+          {title && <Typography type="h2">{title}</Typography>}
+          {text && <Typography type="p">{text}</Typography>}
         </div>
       ) : null}
       <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-8">

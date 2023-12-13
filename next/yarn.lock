@@ -1102,6 +1102,14 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@bratislava/component-library@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@bratislava/component-library/-/component-library-0.1.2.tgz#380096649381a2d953f39442b750817756caa97b"
+  integrity sha512-mQfocOYbvSQE64ebZ4whg/pGXfUW9JgMeOE+ZzTz0bM67I0OUPgjewW3dx1qwc4owW24n0G3X7pbOomMUxbivQ==
+  dependencies:
+    react-aria "^3.29.0"
+    react-aria-components "^1.0.0-beta.2"
+
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
@@ -8713,7 +8721,7 @@ react-apexcharts@1.4.0:
   dependencies:
     prop-types "^15.5.7"
 
-react-aria-components@1.0.0-rc.0:
+react-aria-components@1.0.0-rc.0, react-aria-components@^1.0.0-beta.2:
   version "1.0.0-rc.0"
   resolved "https://registry.yarnpkg.com/react-aria-components/-/react-aria-components-1.0.0-rc.0.tgz#6c2a2bf57bfb0c2d86125d32feb947b06241028e"
   integrity sha512-N8fE1iMd8dBxKOmN3XEk+RloHGOcOMEJyeabZCJRDY2F4M2GWYpZ4vCYad1jDD+UByumGW4JZInnDh1FlXdDZw==
@@ -8733,7 +8741,7 @@ react-aria-components@1.0.0-rc.0:
     react-stately "^3.28.0"
     use-sync-external-store "^1.2.0"
 
-react-aria@3.30.0, react-aria@^3.30.0:
+react-aria@3.30.0, react-aria@^3.29.0, react-aria@^3.30.0:
   version "3.30.0"
   resolved "https://registry.yarnpkg.com/react-aria/-/react-aria-3.30.0.tgz#dd53d2103050e7279ec8f3faacce5ae8521f61ce"
   integrity sha512-ULMlmH68/jXzkDaMjuM9O8dKCxnAYviW4E5sywfLX4J6mC6eGsQzoqtwWeQgr1M9SJqLfgKaVoDP1dLvb4XzEA==

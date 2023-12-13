@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import { Typography } from '@bratislava/component-library'
 
 export interface NoResultsFoundProps {
   title: string
@@ -9,7 +9,10 @@ export interface NoResultsFoundProps {
 export const NoResultsFound = ({ title, message, messageClassName }: NoResultsFoundProps) => (
   <div className="mt-6 flex flex-col items-center">
     <img src="/NoResults-Found_300px.png" alt="" />
+    {/* FIXME Typography. Convert to use Typography. Issue: Header size for not header element */}
     <span className="text-h3 pb-4">{title}</span>
-    <span className={cx(messageClassName, 'text-default lg:text-large-respo')}>{message}</span>
+    <Typography type="p" size="p-large" className={messageClassName}>
+      {message}
+    </Typography>
   </div>
 )

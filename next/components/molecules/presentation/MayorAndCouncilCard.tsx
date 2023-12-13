@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
@@ -25,7 +26,9 @@ const MayorAndCouncilCard = ({ title, imageSrc, linkProps }: Props) => {
       </div>
 
       <CardContent className="flex w-full flex-col pl-32 lg:pl-72">
-        <h3 className="text-h4 mb-1.5 lg:mb-3">{title}</h3>
+        <Typography type="h3" size="h4" className="mb-1.5 lg:mb-3">
+          {title}
+        </Typography>
         <Button stretched variant="category-link" endIcon={<ArrowRightIcon />} {...linkProps} />
       </CardContent>
     </CardBase>

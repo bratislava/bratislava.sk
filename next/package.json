@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@azure/msal-node": "^1.12.0",
+    "@bratislava/component-library": "^0.1.2",
     "@internationalized/date": "3.5.0",
     "@js-joda/core": "5.2.0",
     "@radix-ui/react-navigation-menu": "^1.1.2",

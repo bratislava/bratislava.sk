@@ -1,4 +1,5 @@
 import { CommonLinkFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import { generateImageSizes } from '@utils/generateImageSizes'
@@ -61,8 +62,8 @@ export const PageHeader = ({
             )}
             {(title || subtext) && (
               <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
-                {title && <h1 className="text-h1">{title}</h1>}
-                {subtext && <p>{subtext}</p>}
+                {title && <Typography type="h1">{title}</Typography>}
+                {subtext && <Typography type="p">{subtext}</Typography>}
               </div>
             )}
             {buttons && buttons.length > 0 && (

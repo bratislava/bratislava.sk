@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import WelcomeCard from '@components/ui/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@utils/generalContext'
@@ -28,10 +29,10 @@ export const WelcomeHomepageSection = () => {
     <SectionContainer className="bg-white">
       <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-0">
         <div className="z-[1] flex grow flex-col gap-8 lg:absolute">
-          {/* TODO change to font size from config */}
-          <h1 className="text-h2 flex flex-col whitespace-pre-wrap font-bold text-category-600 sm:text-[40px] sm:leading-[52px]">
+          <Typography type="h1" className="whitespace-pre-wrap text-category-600">
             {welcomeHeadline}
-          </h1>
+          </Typography>
+
           <HomePageSearch isOpen={isSearchOpen} setOpen={setSearchOpen} />
         </div>
         <div

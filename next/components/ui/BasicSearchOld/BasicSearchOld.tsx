@@ -2,6 +2,7 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import SearchIconSmallBlack from '@assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '@assets/images/search-icon-small-white.svg'
+import { Typography } from '@bratislava/component-library'
 // import { useUIContext } from '@bratislava/common-frontend-ui-context'
 import cx from 'classnames'
 import { useState } from 'react'
@@ -37,7 +38,10 @@ export const BasicSearchOld = ({
           onSubmit?.(input)
         }}
       >
-        <div className="text-large-respo pb-2 font-medium lg:pb-3">{title}</div>
+        <Typography type="p" size="p-large" fontWeight="medium" className="pb-2 lg:pb-3">
+          {title}
+        </Typography>
+
         <div className={cx('lg:flex', { hidden: !collapse }, { flex: collapse })}>
           <input
             id="name"

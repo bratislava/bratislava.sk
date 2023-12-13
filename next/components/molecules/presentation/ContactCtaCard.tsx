@@ -1,6 +1,7 @@
 import { AddressIcon, EmailIcon, WebIcon } from '@assets/images'
 import { PhoneIcon } from '@assets/ui-icons'
 import { ContactCardBlockFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
@@ -97,13 +98,16 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
         <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
       </div>
       <div className="flex flex-col gap-y-1 overflow-hidden break-words">
+        {/* FIXME Typography. Convert to use Typograhpy component. Different font weight than Figma <p> */}
         <p className="text-h6 font-semibold">{label}</p>
         {data.link ? (
           <MLink href={data.link} variant="underlined">
             {data.displayValue}
           </MLink>
         ) : (
-          <span className="whitespace-pre-wrap">{data.displayValue}</span>
+          <Typography type="p" className="whitespace-pre-wrap">
+            {data.displayValue}
+          </Typography>
         )}
       </div>
     </div>

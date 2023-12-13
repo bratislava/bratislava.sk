@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
@@ -29,10 +30,11 @@ const NotFoundPage = () => {
           <img src="/404_350px.png" alt="" />
           <div className="flex flex-col items-center lg:items-start">
             {/* text-5xl font-extrabold does not work */}
+            {/* FIXME Typography. Convert to use Typography */}
             <div className="pb-4 text-[48px] font-[800] lg:text-[64px]">404</div>
-            <div className="text-large-respo max-w-xs pb-10 text-center lg:text-left">
+            <Typography type="p" size="p-large" className="max-w-xs pb-10 text-center lg:text-left">
               {t('sorryNoResultsFound')}
-            </div>
+            </Typography>
 
             <Button variant="category-outline" href="/" endIcon={<ArrowRightIcon />}>
               {t('toTheMainPage')}

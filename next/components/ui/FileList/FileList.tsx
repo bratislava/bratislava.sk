@@ -1,4 +1,5 @@
 import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import FileCardWrapper from '@components/molecules/presentation/FileCardWrapper'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import cx from 'classnames'
@@ -32,7 +33,7 @@ export const FileList = ({
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
             {fileSection.category && !hideCategory && (
-              <h2 className="text-h2">{fileSection.category}</h2>
+              <Typography type="h2">{fileSection.category}</Typography>
             )}
             {variantFileList === 'rows' && (
               <div className="mt-4 flex flex-col lg:mt-6">

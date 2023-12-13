@@ -36,6 +36,7 @@ export const OrganizationalStructureAccordionCard = ({
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
       <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col px-6 py-8')} overflowVisible>
+        {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
         <h4 className="text-h4 pb-2">{displayName}</h4>
         <div className="text-small lg:text-default pb-6 text-font/75">{jobTitle}</div>
         <div className="flex justify-between">
