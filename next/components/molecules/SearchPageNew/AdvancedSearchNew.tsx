@@ -1,11 +1,7 @@
-import Checkbox from '@assets/images/checkbox.svg'
-import SearchIcon from '@assets/images/search-icon.svg'
-import Chip from '@components/forms/simple-components/Chip'
-import { Button } from '@components/ui/Button/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect, useState } from 'react'
-import { Input, SearchField, Selection, TagGroup, TagList, Text } from 'react-aria-components'
+import { Dispatch, SetStateAction } from 'react'
+import { Input, SearchField, Text } from 'react-aria-components'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -49,7 +45,7 @@ export const AdvancedSearchNew = ({
           onSubmit={handleSearch}
         >
           <Text slot="description" className="mb-1 font-semibold">
-            Čo hľadáte?
+            {t('SearchPage.whatAreYouLookingFor')}
           </Text>
           <Input type="search" className="w-full rounded-lg border-2 px-6 py-5 text-gray-700" />
         </SearchField>

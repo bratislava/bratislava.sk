@@ -1,8 +1,10 @@
+import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
+import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
 import {
+  blogPostsDefaultFilters,
   blogPostsFetcher,
-  BlogPostsFilters,
-  getBlogPostsSwrKey,
-} from '@backend/meili/fetchers/blogPostsFetcher'
+  getBlogPostsQueryKey,
+} from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesFetcher,
@@ -27,6 +29,7 @@ export type GeneralSearchResult = {
   slug: string
   metadata: string[]
   picture?: any
+  pageColor?: Enum_Pagecategory_Color | Enum_Page_Pagecolor
 }
 
 export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[] => {
@@ -35,6 +38,13 @@ export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[]
 
   const { data } = useSwr(getPagesSwrKey(filters, locale), pagesFetcher(filters, locale))
 
+  // TODO: change to useQuery
+  // const { status, data } = useQuery({
+  //   queryKey: getPagesQueryKey(filters, locale),
+  //   queryFn: () => pagesFetcher(filters, locale),
+  //   keepPreviousData: true,
+  // })
+
   const formattedData =
     data?.hits.map((page: PageMeili) => {
       return {
@@ -42,7 +52,8 @@ export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[]
         slug: page.slug ?? '',
         metadata: [page.pageCategory?.title ?? '', formatDate(page.publishedAt)] ?? [],
         picture: page.pageBackgroundImage,
-      }
+        pageColor: page.pageColor,
+      } as GeneralSearchResult
     }) ?? []
 
   return formattedData ?? []
@@ -51,7 +62,22 @@ export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[]
 export const getSearchUsersData = (filters: UsersFilters): GeneralSearchResult[] => {
   const t = useTranslations()
 
-  const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
+  // const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
+
+  const { data, status } = useQuery({
+    queryKey: ['user', filters.search],
+    queryFn: () => userSearchFetcher(filters.search),
+    keepPreviousData: true,
+  })
+
+  if (status !== 'success')
+    return [
+      {
+        title: `status: ${status}`,
+        slug: '',
+        metadata: [],
+      },
+    ]
 
   const formattedData =
     data?.hits?.map((userData: MSGraphFilteredGroupUser) => {
@@ -69,7 +95,11 @@ export const getSearchBlogPostsData = (filters: BlogPostsFilters): GeneralSearch
   const t = useTranslations()
   const locale = useLocale()
 
-  const { data } = useSwr(getBlogPostsSwrKey(filters, locale), blogPostsFetcher(filters, locale))
+  const { data } = useQuery({
+    queryKey: getBlogPostsQueryKey(filters, locale),
+    queryFn: () => blogPostsFetcher(filters, locale),
+    keepPreviousData: true,
+  })
 
   const formattedData =
     data?.hits?.map((blogPostData: BlogItem) => {
@@ -87,6 +117,19 @@ export const getSearchBlogPostsData = (filters: BlogPostsFilters): GeneralSearch
     }) ?? []
 
   return formattedData ?? []
+}
+
+export const getSearchBlogPostsTotalHits = (filters: BlogPostsFilters): number => {
+  const t = useTranslations()
+  const locale = useLocale()
+
+  const { data } = useQuery({
+    queryKey: getBlogPostsQueryKey(filters, locale),
+    queryFn: () => blogPostsFetcher(filters, locale),
+    keepPreviousData: true,
+  })
+
+  return data?.estimatedTotalHits ?? 0
 }
 
 export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): GeneralSearchResult[] => {
@@ -115,4 +158,17 @@ export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): General
     }) ?? []
 
   return formattedData ?? []
+}
+
+export const getSearchInbaArticlesTotalHits = (filters: InbaArticlesFilters): number => {
+  const t = useTranslations()
+  const locale = useLocale()
+
+  const { data } = useQuery({
+    queryKey: getInbaArticlesQueryKey(filters, locale),
+    queryFn: () => inbaArticlesFetcher(filters, locale),
+    keepPreviousData: true,
+  })
+
+  return data?.estimatedTotalHits ?? 0
 }

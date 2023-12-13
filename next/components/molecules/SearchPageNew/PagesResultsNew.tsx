@@ -1,4 +1,5 @@
 import { PagesFilters } from '@backend/meili/fetchers/pagesFetcher'
+import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import {
   SearchCardNew,
   SearchCardWithPictureNew,
@@ -13,21 +14,33 @@ interface PagesResultsProps {
   filters: PagesFilters
   variant: 'basic' | 'advanced'
   handleShowMore?: React.Dispatch<React.SetStateAction<Selection>>
+  handlePageChange?: any
 }
 
 const PagesResultsNew = ({
   filters,
   title,
   handleShowMore,
+  handlePageChange,
   variant = 'basic',
 }: PagesResultsProps) => {
   const t = useTranslations()
 
   const data = getSearchPagesData(filters)
+  const totalResultsCount = 999
   const RESULTS_SHOWN = 5
 
   return (
-    <div>
+    <>
+      {variant === 'advanced' ? (
+        <Pagination
+          currentPage={filters.page}
+          totalCount={Math.ceil(totalResultsCount / filters.pageSize)}
+          onPageChange={(pageNumber) => {
+            handlePageChange(pageNumber)
+          }}
+        />
+      ) : null}
       {variant === 'basic' ? (
         <SearchResultsHeader title={title ?? ''} handleShowMore={handleShowMore} />
       ) : null}
@@ -46,6 +59,7 @@ const PagesResultsNew = ({
                     tag={t('website')}
                     slug={item.slug}
                     metadata={item.metadata}
+                    key={`item-${item.title}`}
                   />
                 )
               })
@@ -59,6 +73,8 @@ const PagesResultsNew = ({
                     slug={item.slug}
                     metadata={item.metadata}
                     picture={item.picture}
+                    pageColor={item.pageColor}
+                    key={`item-${item.title}`}
                   />
                 )
               })
@@ -67,7 +83,16 @@ const PagesResultsNew = ({
       ) : (
         <p>{t('SearchPage.noResults')}</p>
       )}
-    </div>
+      {variant === 'advanced' ? (
+        <Pagination
+          currentPage={filters.page}
+          totalCount={Math.ceil(totalResultsCount / filters.pageSize)}
+          onPageChange={(pageNumber) => {
+            handlePageChange(pageNumber)
+          }}
+        />
+      ) : null}
+    </>
   )
 }
 

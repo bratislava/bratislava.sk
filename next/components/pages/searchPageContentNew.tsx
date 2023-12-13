@@ -1,7 +1,4 @@
 import Chip from '@components/forms/simple-components/Chip'
-import BlogPostsResults from '@components/molecules/SearchPage/BlogPostsResults'
-import PagesResults from '@components/molecules/SearchPage/PagesResults'
-import UsersResults from '@components/molecules/SearchPage/UsersResults'
 import { AdvancedSearchNew } from '@components/molecules/SearchPageNew/AdvancedSearchNew'
 import BlogPostsResultsNew from '@components/molecules/SearchPageNew/BlogPostsResultsNew'
 import InbaArticlesResultsNew from '@components/molecules/SearchPageNew/InbaArticlesResultsNew'
@@ -33,7 +30,7 @@ const SearchPageContentNew = () => {
   }, [debouncedInput])
 
   const options = [
-    { key: 'allResults', value: 'Všetky výsledky' },
+    { key: 'allResults', value: t('SearchPage.allResults') },
     { key: 'pages', value: t('pages') },
     { key: 'articles', value: t('articles') },
     { key: 'inbaArticles', value: t('inbaArticles') },
@@ -42,7 +39,7 @@ const SearchPageContentNew = () => {
   const defaultOption = 'allResults'
 
   const [selectedOption, setSelectedOption] = useState<Selection>(new Set([defaultOption]))
-  const [showNewTheme, setShowNewTheme] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useLayoutEffect(() => {
     if (Array.from(selectedOption).length === 0) {
@@ -50,30 +47,18 @@ const SearchPageContentNew = () => {
     }
   }, [selectedOption])
 
-  const pagesFilters = { search: searchValue }
-  const blogPostsFilters = { search: searchValue, page: 1, pageSize: 6 }
-  const inbaArticlesFilters = { search: searchValue, page: 1, pageSize: 6, tagIds: [] }
+  useLayoutEffect(() => {
+    setCurrentPage(1)
+  }, [searchValue, selectedOption])
+
+  const pagesFilters = { search: searchValue, page: currentPage, pageSize: 10 }
+  const blogPostsFilters = { search: searchValue, page: currentPage, pageSize: 10, tagIds: [] }
+  const inbaArticlesFilters = { search: searchValue, page: currentPage, pageSize: 3, tagIds: [] }
   const usersFilters = { search: searchValue }
 
   return (
     <SectionContainer className="mb-8">
-      {/* FIXME: ↓ DEBUG */}
-      {/* {true && (
-        <div className="fixed left-0 bg-gray-50 p-3 text-size-p-small">
-          <button
-            className="mb-2 w-full rounded-full border-2 bg-white p-2 hover:font-semibold"
-            type="button"
-            onClick={() => {
-              setShowNewTheme(!showNewTheme)
-            }}
-          >
-            {`New theme: ${showNewTheme.toString()}`}
-          </button>
-          <p>selectedOption: {selectedOption}</p>
-        </div>
-      )} */}
-      {/* ↑ DEBUG */}
-      <div className="flex w-full flex-col gap-y-8 md:pt-18">
+      <div className="flex w-full flex-col gap-y-8 pt-10 md:pt-18">
         <div className="flex flex-col">
           <AdvancedSearchNew
             placeholder={t('enterKeyword')}
@@ -92,7 +77,7 @@ const SearchPageContentNew = () => {
               {options.map((option) => {
                 return (
                   <Chip
-                    className="selected:border-gray-700 selected:bg-gray-700 selected:text-gray-0 hover:selected:bg-gray-700"
+                    className="selected:border-gray-700 selected:bg-gray-700 hover:selected:bg-gray-700"
                     variant="small"
                     key={option.key}
                     id={option.key}
@@ -103,7 +88,9 @@ const SearchPageContentNew = () => {
               })}
             </TagList>
           </TagGroup>
-          <p className="mt-8">Zobrazujeme XXXXXX výsledkov</p>
+          <p className="mt-8">
+            {t('SearchPage.showingResults', { resultsCount: 'XXXX (value hardcoded)' })}
+          </p>
         </div>
         {[...selectedOption][0] === defaultOption ? (
           <div className="flex flex-col gap-8">
@@ -142,11 +129,23 @@ const SearchPageContentNew = () => {
           </div>
         ) : null}
         {[...selectedOption][0] === 'articles' ? (
-          <BlogPostsResultsNew variant="advanced" filters={blogPostsFilters} />
+          <BlogPostsResultsNew
+            variant="advanced"
+            filters={blogPostsFilters}
+            handlePageChange={setCurrentPage}
+          />
         ) : [...selectedOption][0] === 'inbaArticles' ? (
-          <InbaArticlesResultsNew variant="advanced" filters={inbaArticlesFilters} />
+          <InbaArticlesResultsNew
+            variant="advanced"
+            filters={inbaArticlesFilters}
+            handlePageChange={setCurrentPage}
+          />
         ) : [...selectedOption][0] === 'pages' ? (
-          <PagesResultsNew variant="advanced" filters={pagesFilters} />
+          <PagesResultsNew
+            variant="advanced"
+            filters={pagesFilters}
+            handlePageChange={setCurrentPage}
+          />
         ) : [...selectedOption][0] === 'users' ? (
           <UsersResultsNew variant="advanced" filters={usersFilters} />
         ) : null}

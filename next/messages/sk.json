@@ -253,6 +253,10 @@
     "subcategories": "Podkategórie"
   },
   "SearchPage": {
+    "whatAreYouLookingFor": "Čo hľadáte?",
+    "showingResults": "Zobrazujeme {resultsCount} výsledkov",
+    "allResults": "Všetky výsledky",
+    "moreResults": "Viac výsledkov",
     "noResults": "Žiadne výsledky"
   }
 }

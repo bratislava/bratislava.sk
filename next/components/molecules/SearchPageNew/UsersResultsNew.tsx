@@ -27,7 +27,7 @@ const UsersResultsNew = ({ filters, title, variant, handleShowMore }: UsersResul
     <div>
       {variant === 'basic' ? (
         <SearchResultsHeader title={title ?? ''} handleShowMore={handleShowMore} />
-      ) : null}{' '}
+      ) : null}
       {data?.length > 0 ? (
         <div
           className={cx({
@@ -43,6 +43,7 @@ const UsersResultsNew = ({ filters, title, variant, handleShowMore }: UsersResul
                     tag={t('article')}
                     slug={item.slug}
                     metadata={item.metadata}
+                    key={`item-${item.title}`}
                   />
                 )
               })
@@ -56,6 +57,7 @@ const UsersResultsNew = ({ filters, title, variant, handleShowMore }: UsersResul
                     slug={item.slug}
                     metadata={item.metadata}
                     picture={item.picture}
+                    key={`item-${item.title}`}
                   />
                 )
               })

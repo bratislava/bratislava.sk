@@ -1,10 +1,14 @@
 import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
 import { InbaArticlesFilters } from '@backend/meili/fetchers/inbaArticlesFetcher'
+import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import {
   SearchCardNew,
   SearchCardWithPictureNew,
 } from '@components/molecules/SearchPageNew/SearchCardNew'
-import { getSearchInbaArticlesData } from '@components/molecules/SearchPageNew/searchDataFetchers'
+import {
+  getSearchInbaArticlesData,
+  getSearchInbaArticlesTotalHits,
+} from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
@@ -14,24 +18,36 @@ interface InbaArticlesResultsProps {
   filters: InbaArticlesFilters
   variant: 'basic' | 'advanced'
   handleShowMore?: React.Dispatch<React.SetStateAction<Selection>>
+  handlePageChange?: any
 }
 
 const InbaArticlesResultsNew = ({
   filters,
   title,
   handleShowMore,
+  handlePageChange,
   variant = 'basic',
 }: InbaArticlesResultsProps) => {
   const t = useTranslations()
 
   const data = getSearchInbaArticlesData(filters)
+  const totalResultsCount = getSearchInbaArticlesTotalHits(filters)
   const RESULTS_SHOWN = 5
 
   return (
-    <div>
+    <>
+      {variant === 'advanced' ? (
+        <Pagination
+          currentPage={filters.page}
+          totalCount={Math.ceil(totalResultsCount / filters.pageSize)}
+          onPageChange={(pageNumber) => {
+            handlePageChange(pageNumber)
+          }}
+        />
+      ) : null}
       {variant === 'basic' ? (
         <SearchResultsHeader title={title ?? ''} handleShowMore={handleShowMore} />
-      ) : null}{' '}
+      ) : null}
       {data?.length > 0 ? (
         <div
           className={cx({
@@ -47,6 +63,7 @@ const InbaArticlesResultsNew = ({
                     tag={t('inbaArticle')}
                     slug={item.slug}
                     metadata={item.metadata}
+                    key={`item-${item.title}`}
                   />
                 )
               })
@@ -60,6 +77,7 @@ const InbaArticlesResultsNew = ({
                     slug={item.slug}
                     metadata={item.metadata}
                     picture={item.picture}
+                    key={`item-${item.title}`}
                   />
                 )
               })
@@ -68,7 +86,16 @@ const InbaArticlesResultsNew = ({
       ) : (
         <p>{t('SearchPage.noResults')}</p>
       )}
-    </div>
+      {variant === 'advanced' ? (
+        <Pagination
+          currentPage={filters.page}
+          totalCount={Math.ceil(totalResultsCount / filters.pageSize)}
+          onPageChange={(pageNumber) => {
+            handlePageChange(pageNumber)
+          }}
+        />
+      ) : null}
+    </>
   )
 }
 

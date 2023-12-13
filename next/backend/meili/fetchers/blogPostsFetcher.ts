@@ -9,12 +9,14 @@ export type BlogPostsFilters = {
   search: string
   pageSize: number
   page: number
+  tagIds: string[]
 }
 
 export const blogPostsDefaultFilters: BlogPostsFilters = {
   search: '',
   pageSize: 10,
   page: 1,
+  tagIds: [],
 }
 
 export const getBlogPostsSwrKey = (filters: BlogPostsFilters, locale: string) =>

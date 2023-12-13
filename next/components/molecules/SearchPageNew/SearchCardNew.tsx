@@ -18,6 +18,7 @@ import Tag from '@components/forms/simple-components/Tag'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { isDefined } from '@utils/isDefined'
 import Image from 'next/image'
+import { twMerge } from 'tailwind-merge'
 
 export interface SearchCardNewProps {
   title: string
@@ -33,46 +34,56 @@ export const SearchCardWithPictureNew = ({
   slug = '',
   tag = '',
   metadata,
+  pageColor,
   picture,
 }: SearchCardNewProps) => {
   const urlExcerpt = `www.bratislava.sk/${slug.slice(0, 15)}...`
   const cleanedMetadata = metadata?.filter(isDefined).filter((item) => item !== '') ?? []
 
+  const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
+  const { default: PageIcon, small: SmallPageIcon } = findIconByPageColor(
+    pageColor as Enum_Pagecategory_Color,
+  )
+
   return (
-    <MLink
-      className="group flex flex-row items-center overflow-hidden rounded-lg border-2"
-      href={`/../${slug}`}
-    >
-      {/* FIXME: velkost dzivna */}
-      <div className="relative h-[150px] w-[150px] shrink-0 overflow-hidden">
-        {picture ? (
-          <Image className="object-cover" fill src={picture} alt="" />
-        ) : (
-          <ImagePlaceholder />
+    <MLink className="group flex flex-row overflow-hidden rounded-lg border-2" href={`/../${slug}`}>
+      {/* PICTURE */}
+      <div className="hidden sm:block">
+        {/* FIXME: velkost dzivna */}
+        {picture && (
+          <div className="relative h-[150px] w-[150px] shrink-0 overflow-hidden">
+            {picture ? (
+              <Image className="object-cover" fill src={picture} alt="" />
+            ) : (
+              <ImagePlaceholder />
+            )}
+          </div>
+        )}
+        {pageColor && (
+          <div
+            style={colorStyle}
+            className="relative flex h-[150px] w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200"
+          >
+            <PageIcon className="max-md:hidden" />
+            <SmallPageIcon className="md:hidden" />
+          </div>
         )}
       </div>
-      <div className="flex w-full shrink flex-col gap-y-1.5 p-8">
-        {tag ? (
-          <div>
-            <Tag text={tag} size="small" />
-          </div>
-        ) : null}
-        <p className="line-clamp-1 text-size-h5 font-semibold group-hover:underline">{title}</p>
-        <div>{[urlExcerpt, ...cleanedMetadata].join(' • ')}</div>
-      </div>
-      <div className="my-auto ml-auto pr-8 text-main-700">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="currentColor"
-            d="m7.93 4.16 7.94 7.89-7.94 7.89L8.99 21 18 12.05 8.99 3.1 7.93 4.16Z"
-          />
-        </svg>
+      <div className="flex w-full gap-6 p-6">
+        {/* INFO */}
+        <div className="flex w-full flex-col flex-wrap gap-y-3  sm:flex-nowrap">
+          {tag ? (
+            <div>
+              <Tag text={tag} size="small" />
+            </div>
+          ) : null}
+          <p className="line-clamp-3 break-words text-size-h5 font-semibold group-hover:underline md:line-clamp-1">
+            {title}
+          </p>
+          <div>{cleanedMetadata.join(' • ')}</div>
+        </div>
+        {/* SIPKA */}
+        <ChevronRight />
       </div>
     </MLink>
   )
@@ -83,76 +94,44 @@ export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCa
   const cleanedMetadata = metadata?.filter(isDefined).filter((item) => item !== '') ?? []
 
   return (
-    <MLink className="group flex flex-row gap-x-8 px-6 py-4" href={`/../${slug}`}>
-      <div className="flex flex-col gap-y-1.5">
-        <div className="flex flex-row items-center gap-x-3	">
-          <p className="line-clamp-1 text-size-h5 font-semibold group-hover:underline">{title}</p>
+    <MLink className="group flex flex-row items-center gap-6 px-6 py-4" href={`/../${slug}`}>
+      {/* INFO */}
+      <div className="flex w-full flex-col gap-y-1.5">
+        <div className="flex flex-row flex-wrap items-center gap-x-3 sm:flex-nowrap">
+          <p className="line-clamp-3 break-words text-size-h5 font-semibold group-hover:underline md:line-clamp-1">
+            {title}
+          </p>
           {tag ? (
             <div>
               <Tag text={tag} size="small" />
             </div>
           ) : null}
         </div>
-        <div>{[urlExcerpt, ...cleanedMetadata].join(' • ')}</div>
+        <div>{cleanedMetadata.join(' • ')}</div>
       </div>
-      <div className="my-auto ml-auto text-main-700">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="currentColor"
-            d="m7.93 4.16 7.94 7.89-7.94 7.89L8.99 21 18 12.05 8.99 3.1 7.93 4.16Z"
-          />
-        </svg>
-      </div>
+      {/* SIPKA */}
+      <ChevronRight />
     </MLink>
   )
 }
 
-// const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
-//   const icons = {
-//     red: { default: PageRedIcon, small: PageRedIconSmall },
-//     blue: { default: PageBlueIcon, small: PageBlueIconSmall },
-//     green: { default: PageGreenIcon, small: PageGreenIconSmall },
-//     yellow: { default: PageYellowIcon, small: PageYellowIconSmall },
-//     purple: { default: PagePurpleIcon, small: PagePurpleIconSmall },
-//     brown: { default: PageBrownIcon, small: PageBrownIconSmall },
-//   }
+const ChevronRight = () => {
+  return (
+    <div className={twMerge('my-auto self-end text-main-700')}>
+      <ChevronRightIcon />
+    </div>
+  )
+}
 
-//   return icons[pageColor] ?? icons.red
-// }
+const findIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
+  const icons = {
+    red: { default: PageRedIcon, small: PageRedIconSmall },
+    blue: { default: PageBlueIcon, small: PageBlueIconSmall },
+    green: { default: PageGreenIcon, small: PageGreenIconSmall },
+    yellow: { default: PageYellowIcon, small: PageYellowIconSmall },
+    purple: { default: PagePurpleIcon, small: PagePurpleIconSmall },
+    brown: { default: PageBrownIcon, small: PageBrownIconSmall },
+  }
 
-// export interface SearchCardNewProps {
-//   pageColor: Enum_Pagecategory_Color | Enum_Page_Pagecolor
-//   title: string
-//   slug: string
-// }
-
-// export const SearchCardNew = ({ pageColor, title, slug }: SearchCardNewProps) => {
-//   const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
-
-//   const { default: PageIcon, small: SmallPageIcon } = findIconByColor(
-//     pageColor as Enum_Pagecategory_Color,
-//   )
-
-//   return (
-//     <CardBase variant="shadow" style={colorStyle} className="flex-row rounded-lg">
-//       <div className="bg-category-200 p-4 md:px-12">
-//         <PageIcon className="max-md:hidden" />
-//         <SmallPageIcon className="md:hidden" />
-//       </div>
-//       <CardContent className="flex w-full flex-row items-center justify-between">
-//         <h3 className="text-large-respo">
-//           <MLink href={`/${slug}`} stretched variant="underlineOnHover">
-//             {title}
-//           </MLink>
-//         </h3>
-//         <ChevronRightIcon />
-//       </CardContent>
-//     </CardBase>
-//   )
-// }
+  return icons[pageColor] ?? icons.red
+}

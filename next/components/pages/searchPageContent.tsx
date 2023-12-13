@@ -34,8 +34,8 @@ const SearchPageContent = () => {
   const pagesSelected = checkedOptions.some(({ key }) => key === 'pages')
   const usersSelected = checkedOptions.some(({ key }) => key === 'users')
 
-  const pagesFilters = { search: searchValue }
-  const blogPostsFilters = { search: searchValue, page: 1, pageSize: 6 }
+  const pagesFilters = { search: searchValue, page: 1, pageSize: 6 }
+  const blogPostsFilters = { search: searchValue, page: 1, pageSize: 6, tagIds: [] }
   const usersFilters = { search: searchValue }
 
   return (

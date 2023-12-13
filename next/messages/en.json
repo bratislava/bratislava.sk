@@ -253,6 +253,10 @@
     "subcategories": "Subcategories"
   },
   "SearchPage": {
+    "whatAreYouLookingFor": "What are you looking for?",
+    "showingResults": "Showing {resultsCount} results",
+    "allResults": "All results",
+    "moreResults": "More results",
     "noResults": "No results found"
   }
 }
