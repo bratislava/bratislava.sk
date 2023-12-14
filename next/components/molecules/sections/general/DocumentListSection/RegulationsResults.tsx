@@ -42,6 +42,7 @@ const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilte
       </div>
     )
   }
+
   return (
     <div>
       <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
@@ -65,7 +66,7 @@ const RegulationsResults = ({ filters, onPageChange }: DocumentsResultsProps) =>
     return <LoadingSpinner />
   }
 
-  // TODO replace by proper error
+  /** TODO replace by proper error */
   if (error) {
     return <div className="whitespace-pre">Error: {JSON.stringify(error, null, 2)}</div>
   }

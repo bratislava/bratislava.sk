@@ -1,4 +1,4 @@
-import { useUIContext } from '@bratislava/common-frontend-ui-context'
+import MLink from '@components/forms/simple-components/MLink'
 import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 
@@ -8,8 +8,6 @@ export interface SubpageListProps {
 }
 
 export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
-  const { Link: UILink } = useUIContext()
-
   if (!subpageList || subpageList.length === 0) {
     return null
   }
@@ -32,13 +30,14 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
           </div>
           <div className="text-large font-medium leading-6 tracking-wide group-hover:underline">
             {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
-            <UILink
+            <MLink
               href={subpage.url ? isExternalLink(subpage.url) : `#${subpage.anchor}`}
               target={subpage.url?.startsWith('http') ? '_blank' : undefined}
-              className="after:absolute after:inset-0"
+              variant="underlineOnHover"
+              stretched
             >
               {subpage.title}
-            </UILink>
+            </MLink>
           </div>
         </div>
       ))}

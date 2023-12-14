@@ -1,5 +1,6 @@
 import { VideoBlockFragment, VideosSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
+import MLink from '@components/forms/simple-components/MLink'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { isPresent } from '@utils/utils'
 import cx from 'classnames'
@@ -48,11 +49,11 @@ const Video = ({
         allowFullScreen
         onLoad={() => setLoaded(true)}
       />
-      <a href={url ?? undefined} target="_blank" rel="noreferrer">
+      <MLink href={url ?? '#'} variant="underlineOnHover" target="_blank" rel="noreferrer">
         <Typography type="h5" className="mt-8 cursor-pointer hover:underline">
           {title}
         </Typography>
-      </a>
+      </MLink>
       <Typography type="p" className="mt-5">
         {speaker}
       </Typography>
