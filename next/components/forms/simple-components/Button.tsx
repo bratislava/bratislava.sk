@@ -117,7 +117,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               {
                 // NOTE: there are some style overrides for link variants below in "twMerge"
 
-                'font-medium underline': isLinkVariant,
+                'font-medium underline underline-offset-2': isLinkVariant,
 
                 // disabled or loading
                 'opacity-50': isLoadingOrDisabled,

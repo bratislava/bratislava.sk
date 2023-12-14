@@ -32,7 +32,6 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
                   {title}
                 </Typography>
               </Heading>
-              {/* TODO translation */}
               <Button
                 icon={<CrossIcon />}
                 aria-label={t('aria.close')}
@@ -51,8 +50,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
           {title ? null : (
             <Button
               icon={<CrossIcon />}
-              // TODO translation
-              aria-label="Close"
+              aria-label={t('aria.close')}
               className="absolute right-6 top-6 -m-2 bg-white hover:bg-gray-100"
               variant="black-outline"
               size="small"

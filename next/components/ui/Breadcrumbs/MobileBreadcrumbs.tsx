@@ -1,5 +1,6 @@
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import { ChevronDownIcon } from '@assets/ui-icons'
+import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
@@ -23,15 +24,14 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
     <div className="relative">
       <div className="flex justify-between">
         <div className="text-small -mx-4 flex items-center gap-2 font-medium">
-          {/* TODO: Convert to shared link/button component. Detect if user can actually go back. */}
-          <button
-            type="button"
-            className="flex items-center gap-1 py-3 pl-4 underline hover:text-gray-600"
-            onClick={goBack}
+          <Button
+            onPress={goBack}
+            variant="black-link"
+            className="shrink-0 py-3 text-[14px]"
+            startIcon={<BreadcrumbsChevronIcon className="shrink-0 rotate-180" />}
           >
-            <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
-            <span>{t('back')}</span>
-          </button>
+            {t('back')}
+          </Button>
           <div className="h-4 w-px bg-gray-300" />
           {last.path ? (
             <MLink href={last.path} variant="underlined" aria-hidden className="truncate py-3 pr-4">

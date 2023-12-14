@@ -77,9 +77,10 @@
   "share": "Share",
   "menu": {
     "show_less": "Show less",
-    "show_more": "Show more"
+    "show_more": "Show more",
+    "openMenu": "Open menu",
+    "closeMenu": "Close the menu"
   },
-  "closeMenu": "Close the menu",
   "showMore": "Show more",
   "writeEmail": "Write an e-mail",
   "today": "Today",
@@ -130,6 +131,10 @@
   "skipNavigation": "Skip navigation",
   "title": "Bratislava.sk",
   "titleWithChild": "{childTitle} – Bratislava.sk",
+  "openTooltip": "Open tooltip",
+  "passwordReveal": "Show or hide password",
+  "clearInput": "Erase field",
+  "copyToClipboard": "Copy to clipboard",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Main menu",
@@ -194,7 +199,7 @@
   },
   "Dialog": {
     "aria": {
-      "close": "Close"
+      "close": "Close dialog"
     }
   },
   "Tag": {

@@ -75,7 +75,6 @@
     "cancellationDocument": "Zrušujúce VZN"
   },
   "share": "Zdieľať",
-  "closeMenu": "Zavrieť menu",
   "showMore": "Zobraziť ďalšie",
   "writeEmail": "Napísať e-mail",
   "today": "Dnes",
@@ -125,11 +124,17 @@
   "noUsersToShow": "Žiadne kontakty na zobrazenie.",
   "menu": {
     "show_less": "Zobraziť menej",
-    "show_more": "Zobraziť viac"
+    "show_more": "Zobraziť viac",
+    "openMenu": "Otvor menu",
+    "closeMenu": "Zavrieť menu"
   },
   "skipNavigation": "Preskočiť navigáciu",
   "title": "Bratislava.sk",
   "titleWithChild": "{childTitle} – Bratislava.sk",
+  "openTooltip": "Otvor popis",
+  "passwordReveal": "Zobraz alebo skry heslo",
+  "clearInput": "Zmazať pole",
+  "copyToClipboard": "Kopírovať obsah",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Navigačné menu",
@@ -194,7 +199,7 @@
   },
   "Dialog": {
     "aria": {
-      "close": "Zavrieť"
+      "close": "Zavrieť vyskakovacie okno"
     }
   },
   "Tag": {
