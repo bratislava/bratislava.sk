@@ -16,12 +16,33 @@ You need postgres running locally (with correct credentials & databse available)
 ### Starting from empty database
 
 While not recommended in this project, if you want to start from a clean slate, read (TODO - writing in progress on the doc site).
+You can easily start database with `docker-compose up` which should be run from parent folder where is compose file located. Databes from `docker-compose` can be found on url address `postgres:5432`.
 
-### Seeding the database
+### .env setitngs for docker database
+
+To setup `strapi` with docker postgres, please use this `.env` variables:
+
+```
+DATABASE_HOST=postgres
+DATABASE_PORT=5432
+DATABASE_NAME=strapi
+DATABASE_USERNAME=strapi
+DATABASE_PASSWORD=password
+DATABASE_SCHEMA=public
+```
+
+### Seeding the database running on docker
 
 It's recommended that you don't start from an empty database, but instead seed with staging or production data. Ask in the internal Bratislava team or [follow the docs](https://bratislava.github.io/strapi/load-strapi-db-in-local-dev). If you are an open-source contributor, note you do not need this setup for many of frontend-related changes. See the next.js project README.
 
 We may provide a db dump as part of the project in the future - for now please contact the BA Innovations Team if you need it.
+
+Commands needed to seed db on docker container:
+
+1. Copy dump: 
+`docker cp strapi-backup.sql bratislavask-postgres-1:/strapi-backup.sql`
+2. Seed db:
+`docker exec bratislavask-postgres-1 sh -c "psql -U strapi strapi < strapi-backup.sql"`
 
 ### Meilisearch
 
