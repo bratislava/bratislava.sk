@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 const ClipboardCopy = ({ copyText }: { copyText: string }) => {
-  // eslint-disable-next-line no-unused-vars
   const [, copy] = useCopyToClipboard()
   const t = useTranslations()
   return (

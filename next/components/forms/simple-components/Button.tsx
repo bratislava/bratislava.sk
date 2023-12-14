@@ -117,7 +117,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               {
                 // NOTE: there are some style overrides for link variants below in "twMerge"
 
-                'font-medium underline': isLinkVariant,
+                'font-medium underline underline-offset-2': isLinkVariant,
 
                 // disabled or loading
                 'opacity-50': isLoadingOrDisabled,
@@ -182,9 +182,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 'text-negative-700 pressed:bg-negative-200 pressed:text-negative-800':
                   variant === 'negative-plain',
 
-                'underline-offset-2 text-category-700 pressed:text-category-800':
-                  variant === 'category-link',
-                'underline-offset-2 text-gray-700 pressed:text-gray-800': variant === 'black-link',
+                'text-category-700 pressed:text-category-800': variant === 'category-link',
+                'text-gray-700 pressed:text-gray-800': variant === 'black-link',
 
                 // colors:hover - bg, border, text
                 'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
