@@ -1,5 +1,6 @@
 import { Download } from '@assets/images'
 import { VznMeili } from '@backend/meili/types'
+import MLink from '@components/forms/simple-components/MLink'
 import RegulationModalBody from '@components/molecules/sections/general/DocumentListSection/RegulationModalBody'
 import Dialog from '@components/ui/ModalDialog/Dialog'
 import Modal from '@components/ui/ModalDialog/Modal'
@@ -66,9 +67,9 @@ export const RegulationListItem = ({
 
         {mainDocumentHref && (
           <div className="pr-6 text-category-600 md:pr-0 lg:text-font">
-            <a href={mainDocumentHref} download>
+            <MLink href={mainDocumentHref} download>
               <Download />
-            </a>
+            </MLink>
           </div>
         )}
       </div>

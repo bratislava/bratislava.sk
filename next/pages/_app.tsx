@@ -2,14 +2,12 @@
 import 'react-vertical-timeline-component/style.min.css'
 import '../styles/globals.css'
 
-import { UIContextProvider } from '@bratislava/common-frontend-ui-context'
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@components/providers/BAI18nProvider'
 import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
-import Link from 'next/link'
 import { NextIntlClientProvider } from 'next-intl'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
@@ -47,47 +45,27 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <NextIntlClientProvider messages={pageProps.messages}>
-        <UIContextProvider
-          components={{
-            Link: ({ href, className, children, locale, target, rel, style }) => {
-              if (href === undefined || href === null) return null
-              return (
-                <Link
-                  href={href}
-                  locale={locale}
-                  target={target}
-                  rel={rel}
-                  className={className}
-                  style={style}
-                >
-                  {children}
-                </Link>
-              )
-            },
-          }}
+        <PlausibleProvider
+          domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
+          taggedEvents
+          // uncomment for local testing, needs to be run with `yarn build && yarn start`
+          // trackLocalhost
         >
-          <PlausibleProvider
-            domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
-            taggedEvents
-            // uncomment for local testing, needs to be run with `yarn build && yarn start`
-            // trackLocalhost
-          >
-            <BAQueryClientProvider>
-              <QueryParamProvider adapter={NextAdapter}>
-                <BAI18nProvider>
-                  <OverlayProvider>
-                    <NavMenuContextProvider>
-                      {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                      <div id="root">
-                        <Component {...pageProps} />
-                      </div>
-                    </NavMenuContextProvider>
-                  </OverlayProvider>
-                </BAI18nProvider>
-              </QueryParamProvider>
-            </BAQueryClientProvider>
-          </PlausibleProvider>
-        </UIContextProvider>
+          <BAQueryClientProvider>
+            <QueryParamProvider adapter={NextAdapter}>
+              <BAI18nProvider>
+                <OverlayProvider>
+                  <NavMenuContextProvider>
+                    {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                    <div id="root">
+                      <Component {...pageProps} />
+                    </div>
+                  </NavMenuContextProvider>
+                </OverlayProvider>
+              </BAI18nProvider>
+            </QueryParamProvider>
+          </BAQueryClientProvider>
+        </PlausibleProvider>
       </NextIntlClientProvider>
     </>
   )
