@@ -1,10 +1,10 @@
 import { PagesFilters } from '@backend/meili/fetchers/pagesFetcher'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
+import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
-  SearchCardNew,
-  SearchCardWithPictureNew,
-} from '@components/molecules/SearchPageNew/SearchCardNew'
-import { getSearchPagesData } from '@components/molecules/SearchPageNew/searchDataFetchers'
+  getSearchPagesData,
+  getSearchPagesTotalHits,
+} from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
@@ -27,7 +27,7 @@ const PagesResultsNew = ({
   const t = useTranslations()
 
   const data = getSearchPagesData(filters)
-  const totalResultsCount = 999
+  const totalResultsCount = getSearchPagesTotalHits(filters)
   const RESULTS_SHOWN = 5
 
   return (
@@ -54,28 +54,14 @@ const PagesResultsNew = ({
           {variant === 'basic'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
-                  <SearchCardNew
-                    title={`${item.title}`}
-                    tag={t('website')}
-                    slug={item.slug}
-                    metadata={item.metadata}
-                    key={`item-${item.title}`}
-                  />
+                  <SearchCardComposed data={{ ...item, tag: t('website') }} variant="default" />
                 )
               })
             : null}
           {variant === 'advanced'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
-                  <SearchCardWithPictureNew
-                    title={`${item.title}`}
-                    tag={t('website')}
-                    slug={item.slug}
-                    metadata={item.metadata}
-                    picture={item.picture}
-                    pageColor={item.pageColor}
-                    key={`item-${item.title}`}
-                  />
+                  <SearchCardComposed data={{ ...item, tag: t('website') }} variant="withPicture" />
                 )
               })
             : null}

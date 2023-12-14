@@ -1,6 +1,7 @@
 import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
 import { InbaArticlesFilters } from '@backend/meili/fetchers/inbaArticlesFetcher'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
+import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
   SearchCardNew,
   SearchCardWithPictureNew,
@@ -58,26 +59,16 @@ const InbaArticlesResultsNew = ({
           {variant === 'basic'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
-                  <SearchCardNew
-                    title={`${item.title}`}
-                    tag={t('inbaArticle')}
-                    slug={item.slug}
-                    metadata={item.metadata}
-                    key={`item-${item.title}`}
-                  />
+                  <SearchCardComposed data={{ ...item, tag: t('inbaArticle') }} variant="default" />
                 )
               })
             : null}
           {variant === 'advanced'
             ? data.slice(0, filters.pageSize).map((item) => {
                 return (
-                  <SearchCardWithPictureNew
-                    title={`${item.title}`}
-                    tag={t('inbaArticle')}
-                    slug={item.slug}
-                    metadata={item.metadata}
-                    picture={item.picture}
-                    key={`item-${item.title}`}
+                  <SearchCardComposed
+                    data={{ ...item, tag: t('inbaArticle') }}
+                    variant="withPicture"
                   />
                 )
               })

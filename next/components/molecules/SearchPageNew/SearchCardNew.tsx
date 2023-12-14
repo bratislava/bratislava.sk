@@ -16,6 +16,7 @@ import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
 import { getCategoryColorLocalStyle } from '@utils/colors'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
@@ -53,7 +54,13 @@ export const SearchCardWithPictureNew = ({
         {picture && (
           <div className="relative h-[150px] w-[150px] shrink-0 overflow-hidden">
             {picture ? (
-              <Image className="object-cover" fill src={picture} alt="" />
+              <Image
+                className="object-cover"
+                fill
+                src={picture}
+                // sizes={generateImageSizes({ lg: '150px', default: '150px' })}
+                alt=""
+              />
             ) : (
               <ImagePlaceholder />
             )}
@@ -77,9 +84,8 @@ export const SearchCardWithPictureNew = ({
               <Tag text={tag} size="small" />
             </div>
           ) : null}
-          <p className="line-clamp-3 break-words text-size-h5 font-semibold group-hover:underline md:line-clamp-1">
-            {title}
-          </p>
+          line-clamp-3 break-words text-size-h5 font-semibold group-hover:underline md:line-clamp-1
+          <p className="">{title}</p>
           <div>{cleanedMetadata.join(' • ')}</div>
         </div>
         {/* SIPKA */}
@@ -90,7 +96,6 @@ export const SearchCardWithPictureNew = ({
 }
 
 export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCardNewProps) => {
-  const urlExcerpt = `www.bratislava.sk/${slug.slice(0, 15)}...`
   const cleanedMetadata = metadata?.filter(isDefined).filter((item) => item !== '') ?? []
 
   return (
@@ -117,7 +122,7 @@ export const SearchCardNew = ({ title, slug = '', tag = '', metadata }: SearchCa
 
 const ChevronRight = () => {
   return (
-    <div className={twMerge('my-auto self-end text-main-700')}>
+    <div className="my-auto self-end text-main-700">
       <ChevronRightIcon />
     </div>
   )

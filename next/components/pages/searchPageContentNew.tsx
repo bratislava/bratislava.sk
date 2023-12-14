@@ -92,6 +92,8 @@ const SearchPageContentNew = () => {
             {t('SearchPage.showingResults', { resultsCount: 'XXXX (value hardcoded)' })}
           </p>
         </div>
+        {/* FIXME: Remove this */}
+        {/* <SearchCardTest /> */}
         {[...selectedOption][0] === defaultOption ? (
           <div className="flex flex-col gap-8">
             <PagesResultsNew

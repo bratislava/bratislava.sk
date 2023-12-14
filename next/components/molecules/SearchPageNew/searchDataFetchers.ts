@@ -1,4 +1,8 @@
-import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
+import {
+  Enum_Page_Pagecolor,
+  Enum_Pagecategory_Color,
+  LatestBlogPostEntityFragment,
+} from '@backend/graphql'
 import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
 import {
   blogPostsDefaultFilters,
@@ -10,7 +14,12 @@ import {
   inbaArticlesFetcher,
   InbaArticlesFilters,
 } from '@backend/meili/fetchers/inbaArticlesFetcher'
-import { getPagesSwrKey, pagesFetcher, PagesFilters } from '@backend/meili/fetchers/pagesFetcher'
+import {
+  getPagesSwrKey,
+  pagesFetcher,
+  pagesFetcherUseQuery,
+  PagesFilters,
+} from '@backend/meili/fetchers/pagesFetcher'
 import { PageMeili } from '@backend/meili/types'
 import { MSGraphFilteredGroupUser } from '@backend/services/ms-graph'
 import { userSearchFetcher } from '@backend/utils/organisationalStructure'
@@ -24,26 +33,41 @@ export type UsersFilters = {
   search: string
 }
 
+// TODO: split to separate types
 export type GeneralSearchResult = {
-  title: string
-  slug: string
-  metadata: string[]
+  title?: string
+  slug?: string
+  tag?: string
+  metadata?: string[]
   picture?: any
   pageColor?: Enum_Pagecategory_Color | Enum_Page_Pagecolor
+}
+
+export const getSearchPagesTotalHits = (filters: PagesFilters): number => {
+  const t = useTranslations()
+  const locale = useLocale()
+
+  const { data } = useQuery({
+    // FIXME: get query key and fix fetcher name
+    queryKey: ['hii', filters, locale],
+    queryFn: () => pagesFetcherUseQuery(filters, locale),
+    keepPreviousData: true,
+  })
+
+  return data?.estimatedTotalHits ?? 0
 }
 
 export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[] => {
   const t = useTranslations()
   const locale = useLocale()
 
-  const { data } = useSwr(getPagesSwrKey(filters, locale), pagesFetcher(filters, locale))
-
-  // TODO: change to useQuery
-  // const { status, data } = useQuery({
-  //   queryKey: getPagesQueryKey(filters, locale),
-  //   queryFn: () => pagesFetcher(filters, locale),
-  //   keepPreviousData: true,
-  // })
+  // TODO: estimate total hits
+  const { status, data } = useQuery({
+    // FIXME: get query key
+    queryKey: ['hii', filters, locale],
+    queryFn: () => pagesFetcherUseQuery(filters, locale),
+    keepPreviousData: true,
+  })
 
   const formattedData =
     data?.hits.map((page: PageMeili) => {
@@ -62,22 +86,22 @@ export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[]
 export const getSearchUsersData = (filters: UsersFilters): GeneralSearchResult[] => {
   const t = useTranslations()
 
-  // const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
+  const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
 
-  const { data, status } = useQuery({
-    queryKey: ['user', filters.search],
-    queryFn: () => userSearchFetcher(filters.search),
-    keepPreviousData: true,
-  })
+  // const { data, status } = useQuery({
+  //   queryKey: ['user', filters.search],
+  //   queryFn: () => userSearchFetcher(filters.search),
+  //   keepPreviousData: true,
+  // })
 
-  if (status !== 'success')
-    return [
-      {
-        title: `status: ${status}`,
-        slug: '',
-        metadata: [],
-      },
-    ]
+  // if (status !== 'success')
+  //   return [
+  //     {
+  //       title: `status: ${status}`,
+  //       slug: '',
+  //       metadata: [],
+  //     },
+  //   ]
 
   const formattedData =
     data?.hits?.map((userData: MSGraphFilteredGroupUser) => {
@@ -102,14 +126,14 @@ export const getSearchBlogPostsData = (filters: BlogPostsFilters): GeneralSearch
   })
 
   const formattedData =
-    data?.hits?.map((blogPostData: BlogItem) => {
+    data?.hits?.map((blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>) => {
       return {
         title: blogPostData.attributes?.title ?? '',
         slug: `blog/${blogPostData.attributes?.slug}` ?? '',
         metadata:
           [
-            blogPostData.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes
-              ?.shortTitle ?? '',
+            blogPostData.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.title ??
+              '',
             formatDate(blogPostData.attributes?.publishedAt),
           ] ?? [],
         picture: blogPostData.attributes?.coverImage?.data?.attributes?.url,

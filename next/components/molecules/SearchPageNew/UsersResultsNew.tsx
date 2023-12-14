@@ -1,3 +1,4 @@
+import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
   SearchCardNew,
   SearchCardWithPictureNew,
@@ -38,12 +39,9 @@ const UsersResultsNew = ({ filters, title, variant, handleShowMore }: UsersResul
           {variant === 'basic'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
-                  <SearchCardNew
-                    title={`${item.title}`}
-                    tag={t('article')}
-                    slug={item.slug}
-                    metadata={item.metadata}
-                    key={`item-${item.title}`}
+                  <SearchCardComposed
+                    data={{ ...item, tag: 'tag unspecified (hardcoded)' }}
+                    variant="default"
                   />
                 )
               })
@@ -51,13 +49,9 @@ const UsersResultsNew = ({ filters, title, variant, handleShowMore }: UsersResul
           {variant === 'advanced'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
-                  <SearchCardWithPictureNew
-                    title={`${item.title}`}
-                    tag={t('article')}
-                    slug={item.slug}
-                    metadata={item.metadata}
-                    picture={item.picture}
-                    key={`item-${item.title}`}
+                  <SearchCardComposed
+                    data={{ ...item, tag: 'tag unspecified (hardcoded)' }}
+                    variant="withPicture"
                   />
                 )
               })
