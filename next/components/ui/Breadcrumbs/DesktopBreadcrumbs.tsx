@@ -1,6 +1,7 @@
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import BreadcrumbsHomeIcon from '@assets/images/breadcrumbs-home.svg'
 import Button from '@components/forms/simple-components/Button'
+import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -11,13 +12,14 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   const t = useTranslations()
   return (
     <ol className="flex flex-wrap items-center gap-x-1 gap-y-1.5 py-3 lg:py-6">
-      <Button
+      <MLink
         href="/"
-        aria-label={t('Breadcrumbs.homepage')}
-        variant="unstyled"
+        variant="underlined"
         className="shrink-0"
-        icon={<BreadcrumbsHomeIcon />}
-      />
+        aria-label={t('Breadcrumbs.homepage')}
+      >
+        <BreadcrumbsHomeIcon />
+      </MLink>
       {breadcrumbs.map((breadcrumb, index) => {
         const isLast = index === breadcrumbs.length - 1
 
@@ -26,13 +28,9 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           <li className="text-small flex gap-1 font-medium" key={index}>
             <BreadcrumbsChevronIcon className="shrink-0" />
             {breadcrumb.path && !isLast ? (
-              <Button
-                href={breadcrumb.path}
-                variant="unstyled"
-                className="w-full cursor-pointer outline-none"
-              >
-                {breadcrumb.title}{' '}
-              </Button>
+              <MLink href={breadcrumb.path} variant="underlined">
+                {breadcrumb.title}
+              </MLink>
             ) : (
               breadcrumb.title
             )}

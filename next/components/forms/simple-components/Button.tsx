@@ -45,8 +45,6 @@ type ButtonBase = {
   fullWidthMobile?: boolean
   isLoading?: boolean
   isLoadingText?: string
-  onPointerEnter?: (event: React.PointerEvent) => void
-  onPointerLeaver?: (event: React.PointerEvent) => void
 } & ButtonOrIconButton
 
 export type ButtonProps = Omit<RACButtonProps, 'className' | 'style'> &
@@ -184,8 +182,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 'text-negative-700 pressed:bg-negative-200 pressed:text-negative-800':
                   variant === 'negative-plain',
 
-                'text-category-700 pressed:text-category-800': variant === 'category-link',
-                'text-gray-700 pressed:text-gray-800': variant === 'black-link',
+                'underline-offset-2 text-category-700 pressed:text-category-800':
+                  variant === 'category-link',
+                'underline-offset-2 text-gray-700 pressed:text-gray-800': variant === 'black-link',
 
                 // colors:hover - bg, border, text
                 'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',

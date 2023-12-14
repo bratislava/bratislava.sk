@@ -24,7 +24,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
     const plausible = usePlausible()
 
     const styles = twMerge(
-      cx({
+      cx('underline-offset-2', {
         'underline lg:no-underline lg:hover:underline': variant === 'underlineOnHover',
         // TODO solve hover color, currently we use opacity, so text can have any color, but it can cause some design or accessibility issues
         'underline hover:opacity-80': variant === 'underlined' || variant === 'underlined-medium',

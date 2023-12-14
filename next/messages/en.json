@@ -134,6 +134,7 @@
   "openTooltip": "Open tooltip",
   "passwordReveal": "Show or hide password",
   "clearInput": "Erase field",
+  "copyToClipboard": "Copy to clipboard",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Main menu",

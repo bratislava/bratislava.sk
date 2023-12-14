@@ -134,6 +134,7 @@
   "openTooltip": "Otvor popis",
   "passwordReveal": "Zobraz alebo skry heslo",
   "clearInput": "Zmazať pole",
+  "copyToClipboard": "Kopírovať obsah",
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Navigačné menu",

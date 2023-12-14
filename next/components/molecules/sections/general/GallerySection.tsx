@@ -8,6 +8,7 @@ export interface GallerySectionProps {
 }
 
 const GallerySection = ({ section: { title, text, medias } }: GallerySectionProps) => {
+  console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< GALLERY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   return (
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (

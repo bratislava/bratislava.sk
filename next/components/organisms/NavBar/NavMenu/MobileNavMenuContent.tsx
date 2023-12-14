@@ -35,8 +35,9 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
             onPress={() => setMenuValue('')}
             className="-my-2 flex w-full items-center gap-2 py-2"
             aria-label={t('aria.backTo', { backTo: parentLabel })}
+            startIcon={<ChevronLeftIcon />}
           >
-            <ChevronLeftIcon aria-hidden /> {parentLabel}
+            {parentLabel}
           </Button>
         </li>
 

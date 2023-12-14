@@ -1,6 +1,7 @@
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import { ChevronDownIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
+import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -26,21 +27,16 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           <Button
             onPress={goBack}
             variant="black-link"
-            className="text-small shrink-0 py-3"
+            className="shrink-0 py-3 text-[14px]"
             startIcon={<BreadcrumbsChevronIcon className="shrink-0 rotate-180" />}
           >
             {t('back')}
           </Button>
           <div className="h-4 w-px bg-gray-300" />
           {last.path ? (
-            <Button
-              href={last.path}
-              aria-hidden
-              variant="black-link"
-              className="text-small truncate py-3 pr-4"
-            >
+            <MLink href={last.path} variant="underlined" aria-hidden className="truncate py-3 pr-4">
               {last.title}
-            </Button>
+            </MLink>
           ) : (
             <div className="truncate py-3 pr-4">{last.title}</div>
           )}
@@ -58,10 +54,10 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
               // eslint-disable-next-line react/no-array-index-key
               <li className="text-small font-medium" key={index}>
                 {breadcrumb.path ? (
-                  <Button href={breadcrumb.path} className="flex gap-1">
+                  <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
                     <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
                     {breadcrumb.title}
-                  </Button>
+                  </MLink>
                 ) : (
                   <div className="flex gap-1">
                     <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
