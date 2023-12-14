@@ -226,6 +226,14 @@
   .form-group label.control-label {
     display: none;
   }
+
+  /* Remove native Safari arrows in accordions  */
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 /* styles for vertical timeline START */
