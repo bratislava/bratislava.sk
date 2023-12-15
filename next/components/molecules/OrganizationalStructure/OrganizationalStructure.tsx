@@ -1,4 +1,4 @@
-import { structureFetcher } from 'backend/utils/organisationalStructure'
+import { structureFetcher } from '@backend/ms-graph/fetchers/msGraphStructureFetcher'
 import { useTranslations } from 'next-intl'
 import useSWR from 'swr'
 
