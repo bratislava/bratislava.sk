@@ -8,3 +8,13 @@ export const forceString = (input: unknown) => {
   if (Array.isArray(input)) return input.join(', ')
   return ''
 }
+
+// GINIS is accessible only from internal network
+// if developing from internal network, change here
+export const shouldMockGinis = () => {
+  return (
+    process.env.NODE_ENV === 'development' ||
+    process.env.NODE_ENV === 'test' ||
+    process.env.CI === 'true'
+  )
+}

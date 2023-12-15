@@ -1,6 +1,6 @@
-import { MS_GRAPH_GROUP_ID } from '@backend/ms-graph/constants'
-import { getMsalToken } from '@backend/ms-graph/getMsalToken'
-import { getGroupMembersRecursive } from '@backend/ms-graph/ms-graph'
+import { MS_GRAPH_GROUP_ID } from '@backend/ms-graph/server/constants'
+import { getGroupMembersRecursive } from '@backend/ms-graph/server/getGroupMembers'
+import { getMsalToken } from '@backend/ms-graph/server/getMsalToken'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

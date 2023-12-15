@@ -1,7 +1,7 @@
 import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
-} from '@backend/ms-graph/fetchers/msGraphSearchFetcher'
+} from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
 import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
 import { Typography } from '@bratislava/component-library'
 import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'

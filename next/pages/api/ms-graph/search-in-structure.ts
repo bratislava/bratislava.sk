@@ -1,7 +1,7 @@
-import { MS_GRAPH_GROUP_ID } from '@backend/ms-graph/constants'
-import { getMsalToken } from '@backend/ms-graph/getMsalToken'
+import { MS_GRAPH_GROUP_ID } from '@backend/ms-graph/server/constants'
+import { getMsalToken } from '@backend/ms-graph/server/getMsalToken'
 import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
-import { forceString } from '@backend/ms-graph/utils'
+import { forceString } from '@utils/forceString'
 import pick from 'lodash/pick'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -18,7 +18,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFilteredGroupUser[]>) => {
   const { query } = req.query
-  const sanitizedQuery = forceString(query).trim()
+  const sanitizedQuery = forceString(query, ' ').trim()
 
   if (!sanitizedQuery) {
     // 204 No Content
@@ -53,7 +53,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFiltered
     })
 
     if (!response.ok) {
-      console.log(response)
+      // TODO type
+      // @ts-ignore
+      res.status(500).json({ error: 'Response not ok' })
 
       return
     }

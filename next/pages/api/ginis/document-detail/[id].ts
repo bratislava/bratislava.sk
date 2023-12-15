@@ -1,6 +1,6 @@
 // @ts-strict-ignore
+import { ResponseGinisBodyDocumentDetail } from '@backend/ginis/server/api-data.dto'
 import axios, { AxiosRequestConfig } from 'axios'
-import { ResponseGinisBodyDocumentDetail } from 'backend/dtos/ginis/api-data.dto'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { parseString } from 'xml2js'
 

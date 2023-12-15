@@ -1,4 +1,4 @@
-import { msalClient } from '@backend/ms-graph/msalClient'
+import { msalClient } from '@backend/ms-graph/server/msalClient'
 
 /**
  * Get a token by msal library.

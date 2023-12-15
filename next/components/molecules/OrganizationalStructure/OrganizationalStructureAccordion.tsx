@@ -1,7 +1,7 @@
 // @ts-strict-ignore
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
-import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/ms-graph'
+import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/server/getGroupMembers'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
