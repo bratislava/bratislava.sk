@@ -61,7 +61,12 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             })}
 
           {accountLink ? (
-            <Button size="small" variant="category-solid" {...getCommonLinkProps(accountLink)} />
+            <Button
+              size="small"
+              variant="category-solid"
+              hasLinkIcon={false}
+              {...getCommonLinkProps(accountLink)}
+            />
           ) : (
             <Divider />
           )}

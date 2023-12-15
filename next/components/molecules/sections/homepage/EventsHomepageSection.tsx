@@ -57,11 +57,7 @@ export const EventsHomepageSection = () => {
         />
         {eventsPageLink && (
           <div className="flex justify-center">
-            <Button
-              variant="category-outline"
-              {...getCommonLinkProps(eventsPageLink)}
-              hasLinkIcon
-            />
+            <Button variant="category-outline" {...getCommonLinkProps(eventsPageLink)} />
           </div>
         )}
       </div>

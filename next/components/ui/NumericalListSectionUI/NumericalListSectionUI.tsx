@@ -52,7 +52,7 @@ export const NumericalListSectionUI = ({
           <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant !== 'roadmap' && buttonText && (
-          <Button href={href} className="pt-10" variant="category-outline" hasLinkIcon>
+          <Button href={href} className="pt-10" variant="category-outline">
             {buttonText}
           </Button>
         )}

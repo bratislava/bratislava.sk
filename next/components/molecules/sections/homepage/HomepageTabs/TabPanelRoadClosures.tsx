@@ -27,11 +27,7 @@ const TabPanelRoadClosures = () => {
 
       {tabs?.roadClosuresPageLink ? (
         <div className="flex justify-center">
-          <Button
-            variant="category-outline"
-            hasLinkIcon
-            {...getCommonLinkProps(tabs.roadClosuresPageLink)}
-          />
+          <Button variant="category-outline" {...getCommonLinkProps(tabs.roadClosuresPageLink)} />
         </div>
       ) : null}
     </TabPanel>
