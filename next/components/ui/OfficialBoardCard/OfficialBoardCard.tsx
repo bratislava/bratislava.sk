@@ -1,5 +1,5 @@
 // @ts-strict-ignore
-import { ArrowRightIcon } from '@assets/ui-icons'
+import { EyeIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import Dialog from '@components/ui/ModalDialog/Dialog'
@@ -46,7 +46,7 @@ export const OfficialBoardCard = ({
         <Typography type="p">{content}</Typography>
         <div className="flex flex-col items-start gap-x-6">
           <DialogTrigger>
-            <Button variant="category-outline" endIcon={<ArrowRightIcon />}>
+            <Button variant="category-outline" endIcon={<EyeIcon />}>
               {viewButtonText}
             </Button>
 
