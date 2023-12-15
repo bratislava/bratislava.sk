@@ -2,17 +2,12 @@ import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
-  SearchCardNew,
-  SearchCardWithPictureNew,
-} from '@components/molecules/SearchPageNew/SearchCardNew'
-import {
   getSearchBlogPostsData,
   getSearchBlogPostsTotalHits,
 } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
 
 interface BlogPostsResultsProps {
   title?: string

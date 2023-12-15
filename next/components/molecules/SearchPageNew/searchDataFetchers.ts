@@ -114,6 +114,13 @@ export const getSearchUsersData = (filters: UsersFilters): GeneralSearchResult[]
 
   return formattedData ?? []
 }
+export const getSearchUsersTotalHits = (filters: UsersFilters): number => {
+  const t = useTranslations()
+
+  const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
+
+  return data?.estimatedTotalHits ?? 0
+}
 
 export const getSearchBlogPostsData = (filters: BlogPostsFilters): GeneralSearchResult[] => {
   const t = useTranslations()
