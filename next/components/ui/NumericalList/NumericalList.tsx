@@ -1,5 +1,3 @@
-// @ts-strict-ignore
-
 import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'

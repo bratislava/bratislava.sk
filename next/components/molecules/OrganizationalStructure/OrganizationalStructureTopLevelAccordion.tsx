@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
@@ -17,7 +16,14 @@ export const OrganizationalStructureTopLevelAccordion = ({
 }: OrganizationalStructureTopLevelAccordionProps) => {
   const [open, setOpen] = useToggle()
 
-  const orderedGroups = group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName))
+  const orderedGroups = group.groups?.sort((a, b) => {
+    /** Due to displayName being possibly undefined, we first check if there is displayName and if not use empty string */
+    const displayNameA = a.displayName || ''
+    const displayNameB = b.displayName || ''
+
+    return displayNameA.localeCompare(displayNameB)
+  })
+
   return (
     <div className="flex flex-col">
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>

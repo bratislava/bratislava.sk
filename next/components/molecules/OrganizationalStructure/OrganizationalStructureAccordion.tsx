@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from 'backend/services/ms-graph'
@@ -26,12 +25,14 @@ export const OrganizationalStructureAccordion = ({
   return (
     <div className="flex flex-col">
       <div
+        role="button"
+        tabIndex={alwaysOpen ? -1 : 0}
         className={cx('lg-gap-x-6 flex items-start gap-x-3 lg:items-center', {
           'cursor-pointer': !alwaysOpen,
           'pb-8': !alwaysOpen && !open,
         })}
-        onClick={alwaysOpen ? null : setOpen}
-        onKeyDown={alwaysOpen ? null : setOpen}
+        onClick={alwaysOpen ? () => {} : setOpen}
+        onKeyDown={alwaysOpen ? () => {} : setOpen}
       >
         <div
           className={cx('h-6 w-6 min-w-[24px] rounded-full', {

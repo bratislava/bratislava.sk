@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import Markdown from '@components/atoms/Markdown'
 import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 import cx from 'classnames'
@@ -8,8 +7,8 @@ import { DashedLine } from '../DashedLine/DashedLine'
 export interface NumericalListItemProps {
   index: number
   item?: NumericalListItemObject
-  variant: 'basic' | 'combined' | 'roadmap'
-  hasBackground: boolean
+  variant?: 'basic' | 'combined' | 'roadmap'
+  hasBackground?: boolean | null
   children?: React.ReactNode
   className?: string
 }
@@ -23,6 +22,7 @@ export const NumericalListItem = ({
   className,
 }: NumericalListItemProps) => {
   const position = index % 2 === 0 ? 'left' : 'right'
+
   return (
     <div
       key={index}

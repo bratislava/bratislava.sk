@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import cx from 'classnames'
 import React, { useEffect, useState } from 'react'
 
@@ -47,6 +46,24 @@ import TheaterNarrowWidth from './dividers/theater-narrow-width.svg'
 import TreesFullWidth from './dividers/trees-full-width.svg'
 import TreesMobileWidth from './dividers/trees-mobile-width.svg'
 import TreesNarrowWidth from './dividers/trees-narrow-width.svg'
+
+type Key = 'display' | 'mobile' | 'tablet'
+type DividerType =
+  | 'bicykel'
+  | 'budovy'
+  | 'byvanie'
+  | 'divadlo'
+  | 'doprava'
+  | 'hrad'
+  | 'lod'
+  | 'mesto'
+  | 'park'
+  | 'parkovanie'
+  | 'skola'
+  | 'stromy'
+  | 'vystavba'
+  | 'vzdelavanie'
+  | undefined
 
 const DIVIDER = {
   mesto: {
@@ -132,11 +149,11 @@ interface DividerProps {
 }
 
 export const getDivider = (dividerStyle?: string) => {
-  if (!dividerStyle)
-    return function () {
-      return null
-    }
-  let key = 'display'
+  if (!dividerStyle) {
+    return null
+  }
+
+  let key = 'display' as Key
   if (typeof window !== 'undefined') {
     // Client-side-only code
     const { innerWidth } = window
@@ -147,24 +164,18 @@ export const getDivider = (dividerStyle?: string) => {
     }
   }
 
-  const dividerType = dividerStyle.split('_')[0]
+  const dividerType = dividerStyle?.split('_')[0] as DividerType
 
-  let Comp = DIVIDER[dividerType][key]
-
-  if (!Comp) {
-    Comp = DIVIDER.hrad[key]
-  }
-
-  return Comp
+  return dividerType ? DIVIDER[dividerType][key] : DIVIDER.hrad[key]
 }
 
 export const Divider = ({ className, dividerStyle }: DividerProps) => {
-  const [Component, setComponent] = useState(null)
+  const [Component, setComponent] = useState<JSX.Element | null>(null)
 
   useEffect(() => {
     const DividerComponent = getDivider(dividerStyle)
     setComponent(DividerComponent)
-  }, [])
+  }, [dividerStyle])
 
   return <div className={cx('flex justify-center', className)}>{Component}</div>
 }

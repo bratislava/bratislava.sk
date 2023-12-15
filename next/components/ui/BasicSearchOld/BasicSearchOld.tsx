@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import SearchIcon from '@assets/images/search-icon.svg'
 import SearchIconSmallBlack from '@assets/images/search-icon-small-black.svg'
 import SearchIconSmallWhite from '@assets/images/search-icon-small-white.svg'
@@ -28,6 +27,7 @@ export const BasicSearchOld = ({
   initialValue,
 }: BasicSearchOldProps) => {
   const [input, setInput] = useState(initialValue || '')
+
   return (
     <div className={cx('flex w-full max-w-[730px] flex-col', className)}>
       <form
@@ -54,7 +54,7 @@ export const BasicSearchOld = ({
             hoverIcon={<SearchIcon className="scale-75" />}
             className="hover:color-white text-large h-14 rounded-l-none px-6 font-medium capitalize shadow-none hover:bg-category-600 hover:text-white"
             variant="secondary-dark-text"
-            onClick={() => onSubmit(input)}
+            onClick={() => onSubmit?.(input)}
           >
             {buttonText}
           </Button>
@@ -75,7 +75,7 @@ export const BasicSearchOld = ({
             hoverIcon={<SearchIconSmallWhite />}
             className="hover:color-white text-default h-11 px-12 font-medium capitalize shadow-none hover:bg-category-600 hover:text-white lg:h-14"
             variant="secondary-dark-text"
-            onClick={() => onSubmit(input)}
+            onClick={() => onSubmit?.(input)}
           >
             {buttonText}
           </Button>
