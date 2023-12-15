@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { ParsedOfficialBoardDocument } from '@backend/services/ginis'
 import Button from '@components/forms/simple-components/Button'
 import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
@@ -42,7 +41,7 @@ const TabPanelOfficialBoard = () => {
           <div className="flex justify-center">
             <Button
               variant="category-outline"
-              endIcon={<ArrowRightIcon />}
+              hasLinkIcon
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
             />
           </div>

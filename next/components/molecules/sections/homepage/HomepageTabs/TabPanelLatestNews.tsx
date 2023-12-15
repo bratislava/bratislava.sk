@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
@@ -120,7 +119,7 @@ const TabPanelLatestNews = () => {
         <div className="flex justify-center">
           <Button
             variant="category-outline"
-            endIcon={<ArrowRightIcon />}
+            hasLinkIcon
             {...getCommonLinkProps(tabs?.newsPageLink)}
           />
         </div>

@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import CardBase from '@components/molecules/presentation/CardBase'
@@ -56,7 +55,7 @@ export const InBaCard = ({
           {title}
         </Typography>
         <Typography type="p">{content}</Typography>
-        <Button variant="black-link" {...linkProps} stretched endIcon={<ArrowRightIcon />} />
+        <Button variant="black-link" {...linkProps} stretched hasLinkIcon />
       </div>
     </CardBase>
   )

@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
@@ -75,7 +74,7 @@ const Banner = ({
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="category-link"
-              endIcon={<ArrowRightIcon />}
+              hasLinkIcon
               {...getCommonLinkProps(tertiaryLink)}
             />
           )}

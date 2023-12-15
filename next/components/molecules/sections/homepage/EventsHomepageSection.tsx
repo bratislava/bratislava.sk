@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import EventCard from '@components/molecules/presentation/EventCard'
@@ -61,7 +60,7 @@ export const EventsHomepageSection = () => {
             <Button
               variant="category-outline"
               {...getCommonLinkProps(eventsPageLink)}
-              endIcon={<ArrowRightIcon />}
+              hasLinkIcon
             />
           </div>
         )}

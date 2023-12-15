@@ -1,6 +1,5 @@
 import MinusIcon from '@assets/images/minus.svg'
 import PlusIcon from '@assets/images/plus.svg'
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import { Input } from '@bratislava/ui-bratislava/Input/Input'
 import Button from '@components/forms/simple-components/Button'
@@ -166,7 +165,7 @@ const MinimumCalculator = ({
           }}
         />
 
-        <Button variant="category-solid" type="submit" endIcon={<ArrowRightIcon />}>
+        <Button variant="category-solid" type="submit">
           {t('buttonText')}
         </Button>
       </form>

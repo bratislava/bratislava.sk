@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { useTitle } from '@utils/useTitle'
@@ -36,7 +35,7 @@ const NotFoundPage = () => {
               {t('sorryNoResultsFound')}
             </Typography>
 
-            <Button variant="category-outline" href="/" endIcon={<ArrowRightIcon />}>
+            <Button variant="category-outline" href="/" hasLinkIcon>
               {t('toTheMainPage')}
             </Button>
           </div>
