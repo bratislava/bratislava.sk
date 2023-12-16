@@ -28,7 +28,7 @@ export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
           <div className="text-h3 flex h-12 w-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-category-600 font-semibold text-white sm:h-16 sm:w-16 sm:basis-16">
             {index + 1}
           </div>
-          <div className="text-large font-medium leading-6 tracking-wide group-hover:underline">
+          <div className="text-large font-medium leading-6 tracking-wide">
             {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
             <MLink
               href={subpage.url ? isExternalLink(subpage.url) : `#${subpage.anchor}`}

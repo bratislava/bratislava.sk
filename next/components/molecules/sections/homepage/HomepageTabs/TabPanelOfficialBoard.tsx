@@ -46,7 +46,6 @@ const TabPanelOfficialBoard = () => {
           <div className="flex justify-center">
             <Button
               variant="category-outline"
-              hasLinkIcon
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
             />
           </div>

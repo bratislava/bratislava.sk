@@ -50,13 +50,7 @@ const BlogPostCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...
             </Typography>
           )}
         </div>
-        <Button
-          variant="black-link"
-          stretched
-          hasLinkIcon
-          {...linkProps}
-          className="mt-4 lg:mt-5"
-        />
+        <Button variant="black-link" stretched {...linkProps} className="mt-4 lg:mt-5" />
       </CardContent>
     </CardBase>
   )

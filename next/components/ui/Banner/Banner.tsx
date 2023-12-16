@@ -74,7 +74,6 @@ const Banner = ({
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="category-link"
-              hasLinkIcon
               {...getCommonLinkProps(tertiaryLink)}
             />
           )}

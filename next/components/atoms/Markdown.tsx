@@ -64,9 +64,10 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
               target={isExternal ? '_blank' : undefined}
             >
               {children[0]}
+              {/* add nbsp and arrow to indicate external link */}
               {/* \u{0000FE0E} is Unicode variation selector that prevents symbols to be rendered as emojis on iOS
                https://stackoverflow.com/questions/8335724/unicode-characters-being-drawn-differently-in-ios5 */}
-              {isExternal && ' ↗\u{0000FE0E}'}
+              {isExternal && `${String.fromCodePoint(160)}↗\u{0000FE0E}`}
             </MLink>
           )
         },

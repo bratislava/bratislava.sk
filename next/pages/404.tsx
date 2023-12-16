@@ -35,7 +35,7 @@ const NotFoundPage = () => {
               {t('sorryNoResultsFound')}
             </Typography>
 
-            <Button variant="category-outline" href="/" hasLinkIcon>
+            <Button variant="category-outline" href="/">
               {t('toTheMainPage')}
             </Button>
           </div>
