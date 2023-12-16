@@ -1,4 +1,4 @@
-import { getDocumentDetailURL, getDocumentFileURL } from '@backend/services/ginis'
+import { getDocumentDetailURL, getDocumentFileURL } from '@backend/ginis/server/ginisOfficialBoard'
 import { Typography } from '@bratislava/component-library'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import { formatDate } from '@utils/local-date'

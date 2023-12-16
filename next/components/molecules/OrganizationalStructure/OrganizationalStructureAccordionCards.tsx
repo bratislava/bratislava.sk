@@ -1,6 +1,6 @@
+import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
 import { OrganizationalStructureAccordionCard } from '@components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
-import { MSGraphFilteredGroupUser } from 'backend/services/ms-graph'
 import { useMemo } from 'react'
 
 export interface OrganizationalStructureAccordionCardsProps {

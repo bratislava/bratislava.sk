@@ -25,7 +25,6 @@
     "baseUrl": "./",
     "paths": {
       "@bratislava/ui-bratislava/*": ["./components/ui/*"],
-      "@bratislava/common-frontend-ui-context": ["utils/ui-context.tsx"],
       "@utils/*": ["./utils/*"],
       "@assets/images": ["./assets/images/index.ts"],
       "@assets/ui-icons": ["./assets/ui-icons/index.ts"],

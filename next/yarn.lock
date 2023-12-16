@@ -45,17 +45,17 @@
   dependencies:
     node-fetch "^2.6.1"
 
-"@azure/msal-common@^9.0.2":
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/@azure/msal-common/-/msal-common-9.1.1.tgz#906d27905c956fe91bd8f31855fc624359098d83"
-  integrity sha512-we9xR8lvu47fF0h+J8KyXoRy9+G/fPzm3QEa2TrdR3jaVS3LKAyE2qyMuUkNdbVkvzl8Zr9f7l+IUSP22HeqXw==
+"@azure/msal-common@14.5.0":
+  version "14.5.0"
+  resolved "https://registry.yarnpkg.com/@azure/msal-common/-/msal-common-14.5.0.tgz#5a891e5f8eaf23f598bdb4e285e938fb606cd716"
+  integrity sha512-Gx5rZbiZV/HiZ2nEKfjfAF/qDdZ4/QWxMvMo2jhIFVz528dVKtaZyFAOtsX2Ak8+TQvRsGCaEfuwJFuXB6tu1A==
 
-"@azure/msal-node@^1.12.0":
-  version "1.14.6"
-  resolved "https://registry.yarnpkg.com/@azure/msal-node/-/msal-node-1.14.6.tgz#db1d64249e38afa4831aaed818d17cf48e53c349"
-  integrity sha512-em/qqFL5tLMxMPl9vormAs13OgZpmQoJbiQ/GlWr+BA77eCLoL+Ehr5xRHowYo+LFe5b+p+PJVkRvT+mLvOkwA==
+"@azure/msal-node@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@azure/msal-node/-/msal-node-2.6.0.tgz#44bad20a1523c92d79de24fb225da86abaeedb6c"
+  integrity sha512-RWAWCYYrSldIYC47oWtofIun41e6SB9TBYgGYsezq6ednagwo9ZRFyRsvl1NabmdTkdDDXRAABIdveeN2Gtd8w==
   dependencies:
-    "@azure/msal-common" "^9.0.2"
+    "@azure/msal-common" "14.5.0"
     jsonwebtoken "^9.0.0"
     uuid "^8.3.0"
 
@@ -3513,6 +3513,13 @@
   version "8.5.4"
   resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.4.tgz#bb10e36116d6e570dd943735f86c933c1587b8a5"
   integrity sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==
+  dependencies:
+    "@types/node" "*"
+
+"@types/xml2js@^0.4.14":
+  version "0.4.14"
+  resolved "https://registry.yarnpkg.com/@types/xml2js/-/xml2js-0.4.14.tgz#5d462a2a7330345e2309c6b549a183a376de8f9a"
+  integrity sha512-4YnrRemBShWRO2QjvUin8ESA41rH+9nQGLUGZV/1IDhi3SL9OhdpNC/MrulTWuptXKwhx/aDxE7toV0f/ypIXQ==
   dependencies:
     "@types/node" "*"
 
@@ -10531,10 +10538,10 @@ xml2js@^0.4.15:
     sax ">=0.6.0"
     xmlbuilder "~11.0.0"
 
-xml2js@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.5.0.tgz#d9440631fbb2ed800203fad106f2724f62c493b7"
-  integrity sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==
+xml2js@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.6.2.tgz#dd0b630083aa09c161e25a4d0901e2b2a929b499"
+  integrity sha512-T4rieHaC1EXcES0Kxxj4JWgaUQHDk+qwHcYOCFHfiwKz7tOVPLq7Hjq9dM1WCMhylqMEfP7hMcOIChvotiZegA==
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~11.0.0"

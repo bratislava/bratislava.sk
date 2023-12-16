@@ -16,7 +16,7 @@
     "update-react-aria": "yarn add @internationalized/date@latest @react-stately/utils@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components -E"
   },
   "dependencies": {
-    "@azure/msal-node": "^1.12.0",
+    "@azure/msal-node": "^2.6.0",
     "@bratislava/component-library": "^0.1.2",
     "@internationalized/date": "3.5.0",
     "@js-joda/core": "5.2.0",
@@ -71,7 +71,7 @@
     "tailwindcss-react-aria-components": "1.0.0-rc.0",
     "use-query-params": "^2.2.0",
     "usehooks-ts": "^2.9.1",
-    "xml2js": "^0.5.0"
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.9.0",
@@ -84,6 +84,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/rss": "^0.0.30",
+    "@types/xml2js": "^0.4.14",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "10.4.13",

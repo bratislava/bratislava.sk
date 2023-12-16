@@ -2,8 +2,11 @@ import Mail from '@assets/images/mail.svg'
 import Phone from '@assets/images/phone-small.svg'
 import TownHall from '@assets/images/town-hall.svg'
 import TownHallSmall from '@assets/images/town-hall-small.svg'
+import { Typography } from '@bratislava/component-library'
 import { Panel } from '@bratislava/ui-bratislava/Panel/Panel'
 import cx from 'classnames'
+
+// TODO do not refactor, but rewrite from scratch
 
 export interface OrganizationalStructureAccordionCardProps {
   displayName: string
@@ -32,12 +35,12 @@ export const OrganizationalStructureAccordionCard = ({
   const mailBreakpoint = 16
 
   return (
-    // TODO min-w-70 does not work anymore (worked fine on monorepo)
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
       <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col px-6 py-8')} overflowVisible>
-        {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
-        <h4 className="text-h4 pb-2">{displayName}</h4>
+        <Typography type="h4" className="pb-2">
+          {displayName}
+        </Typography>
         <div className="text-small lg:text-default pb-6 text-font/75">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
