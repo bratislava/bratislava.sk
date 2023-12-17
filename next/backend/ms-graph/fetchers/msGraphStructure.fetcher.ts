@@ -1,4 +1,4 @@
-import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/server/getGroupMembers'
+import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
 import axios from 'axios'
 
 export const getMsGraphStructureQueryKey = () => ['msGraphStructure']

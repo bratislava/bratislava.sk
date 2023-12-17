@@ -1,13 +1,9 @@
-import { MSGraphFilteredGroupUser, MSGraphGroupResponse } from '@backend/ms-graph/types'
+import {
+  MSGraphFilteredGroup,
+  MSGraphFilteredGroupUser,
+  MSGraphGroupResponse,
+} from '@backend/ms-graph/types'
 import groupBy from 'lodash/groupBy'
-import pick from 'lodash/pick'
-
-// TODO revisit the whole file
-
-type GetGroupMembersByGroupIdParams = {
-  token: string
-  id: string
-}
 
 /**
  * Returns an ordering score for a role, higher score means higher priority
@@ -43,72 +39,81 @@ export const roleOrderingScore = (role: string | null | undefined) => {
   return score
 }
 
-export const getGroupMembersByGroupId = async ({
-  token,
-  id,
-}: GetGroupMembersByGroupIdParams): Promise<{ value: MSGraphGroupResponse }> => {
+/**
+ * Selected params to pick from MS Graph API endpoint.
+ * Keep in sync with ts types.
+ *
+ * legacy params, keeping for reference: id,businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,preferredLanguage,surname,userPrincipalName,otherMails
+ */
+const paramsToPick = ['id', 'displayName', 'mail', 'businessPhones', 'jobTitle', 'otherMails']
+
+/**
+ * Returns direct members (users and groups) of a group.
+ *
+ * Docs: https://learn.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http
+ *
+ * @param groupId
+ * @param accessToken
+ */
+export const getGroupMembersByGroupId = async (groupId: string, accessToken: string) => {
   const response = await fetch(
-    // sry no link for documentation, this is as close as documentation gets https://learn.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http
-    `https://graph.microsoft.com/v1.0/groups/${id}/members?$select=id,businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,preferredLanguage,surname,userPrincipalName,otherMails`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
+    `https://graph.microsoft.com/v1.0/groups/${groupId}/members?$select=${paramsToPick.join(',')}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } },
   )
-  return response.json()
+
+  return response.json() as Promise<{ value: MSGraphGroupResponse }>
 }
 
-export type GetGroupMembersRecursiveResult = {
+type GetGroupMembersRecursiveResult = {
   id: string
-  displayName?: string
+  displayName: string | null
   users: MSGraphFilteredGroupUser[]
   groups: GetGroupMembersRecursiveResult[]
 }
 
+/**
+ * Get all group's members and recursively visit each nested group.
+ * Return whole structure as a tree, where users are sorted by role and alphabetically.
+ *
+ * @param accessToken
+ * @param groupId
+ * @param groupDisplayName
+ */
 export const getGroupMembersRecursive = async (
   accessToken: string,
   groupId: string,
   groupDisplayName: string | null,
-): Promise<any> => {
-  const { value } = await getGroupMembersByGroupId({ token: accessToken, id: groupId })
-  const groupedResult = groupBy(value, '@odata.type')
+): Promise<GetGroupMembersRecursiveResult> => {
+  const responseData = await getGroupMembersByGroupId(groupId, accessToken)
+
+  const groupedResult = groupBy(responseData.value, '@odata.type')
+
+  const groupUsers =
+    // There can be no users in a group so the "?? []" is needed even though typescript doesn't complain
+    (groupedResult['#microsoft.graph.user'] ?? [])
+      // Filter out users without displayName, then safely cast to MSGraphFilteredGroupUser
+      .filter((user) => user.displayName)
+      .map((user) => user as MSGraphFilteredGroupUser)
+      // Show leading roles first, clerks second, both sorted alphabetically
+      .sort((a, b) => a.displayName.localeCompare(b.displayName))
+      .sort((a, b) => roleOrderingScore(b.jobTitle) - roleOrderingScore(a.jobTitle))
+
+  const nestedGroupsPromises =
+    // There can be no nested groups in a group so the "?? []" is needed even though typescript doesn't complain
+    (groupedResult['#microsoft.graph.group'] ?? [])
+      // Filter out groups without displayName, then safely cast to MSGraphFilteredGroup
+      .filter((nestedGroup) => nestedGroup.displayName)
+      .map((nestedGroup) => nestedGroup as MSGraphFilteredGroup)
+      .sort((a, b) => a.displayName.localeCompare(b.displayName))
+      .map((nestedGroup) =>
+        getGroupMembersRecursive(accessToken, nestedGroup.id, nestedGroup.displayName),
+      )
+  const nestedGroups = await Promise.all(nestedGroupsPromises)
 
   return {
     id: groupId,
     displayName: groupDisplayName,
-    users: (
-      groupedResult['#microsoft.graph.user']?.map(
-        (user) =>
-          pick(user, [
-            '@odata.type',
-            'id',
-            'displayName',
-            'mail',
-            'businessPhones',
-            'jobTitle',
-            'otherMails',
-          ]) as MSGraphFilteredGroupUser,
-      ) || []
-    )
-      .filter((user) => user.displayName)
-      .sort((a, b) => {
-        const aScore = roleOrderingScore(a.jobTitle)
-        const bScore = roleOrderingScore(b.jobTitle)
-        const difference = bScore - aScore
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        return difference === 0 ? a.displayName!.localeCompare(b.displayName!) : difference
-      }),
-    groups: groupedResult['#microsoft.graph.group']
-      ? (
-          await Promise.all(
-            groupedResult['#microsoft.graph.group'].map((group) =>
-              getGroupMembersRecursive(accessToken, group.id, group.displayName),
-            ),
-          )
-        )
-          // eslint-disable-next-line unicorn/no-await-expression-member
-          .sort((a, b) => a.displayName.localeCompare(b.displayName))
-      : [],
+    users: groupUsers,
+    groups: nestedGroups,
   }
 }

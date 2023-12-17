@@ -13,21 +13,12 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     /** It's annoying to refactor from one style to another */
     'arrow-body-style': 'off',
-    /** This are exceptions that we use with "__" */
+    /** These are exceptions that we use with "__" */
     'no-underscore-dangle': [
       2,
       { allow: ['__NEXT_DATA__', '__NEXT_LOADED_PAGES__', '__typename'] },
     ],
-    /** Links get confused for secrets */
-    'no-secrets/no-secrets': [
-      'error',
-      {
-        ignoreContent: [
-          // https://stackoverflow.com/a/3809435
-          /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm,
-        ],
-      },
-    ],
+    'no-secrets/no-secrets': 'off',
     /** Doesn't work without changing our ts config */
     'unicorn/prefer-spread': 'off',
     /** Use official sorting */

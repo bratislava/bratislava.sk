@@ -27,7 +27,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           <Button
             onPress={goBack}
             variant="black-link"
-            className="shrink-0 py-3 text-[14px]"
+            className="shrink-0 py-3 pl-4 text-[14px]"
             startIcon={<BreadcrumbsChevronIcon className="shrink-0 rotate-180" />}
           >
             {t('back')}
