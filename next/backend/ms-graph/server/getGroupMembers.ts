@@ -1,4 +1,6 @@
+import { PARAMS_FROM_MS_GRAPH_API } from '@backend/ms-graph/server/constants'
 import {
+  GetGroupMembersRecursiveResult,
   MSGraphFilteredGroup,
   MSGraphFilteredGroupUser,
   MSGraphGroupResponse,
@@ -40,14 +42,6 @@ export const roleOrderingScore = (role: string | null | undefined) => {
 }
 
 /**
- * Selected params to pick from MS Graph API endpoint.
- * Keep in sync with ts types.
- *
- * legacy params, keeping for reference: id,businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,preferredLanguage,surname,userPrincipalName,otherMails
- */
-const paramsToPick = ['id', 'displayName', 'mail', 'businessPhones', 'jobTitle', 'otherMails']
-
-/**
  * Returns direct members (users and groups) of a group.
  *
  * Docs: https://learn.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http
@@ -57,18 +51,13 @@ const paramsToPick = ['id', 'displayName', 'mail', 'businessPhones', 'jobTitle',
  */
 export const getGroupMembersByGroupId = async (groupId: string, accessToken: string) => {
   const response = await fetch(
-    `https://graph.microsoft.com/v1.0/groups/${groupId}/members?$select=${paramsToPick.join(',')}`,
+    `https://graph.microsoft.com/v1.0/groups/${groupId}/members?$select=${PARAMS_FROM_MS_GRAPH_API.join(
+      ',',
+    )}`,
     { headers: { Authorization: `Bearer ${accessToken}` } },
   )
 
   return response.json() as Promise<{ value: MSGraphGroupResponse }>
-}
-
-type GetGroupMembersRecursiveResult = {
-  id: string
-  displayName: string | null
-  users: MSGraphFilteredGroupUser[]
-  groups: GetGroupMembersRecursiveResult[]
 }
 
 /**

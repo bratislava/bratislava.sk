@@ -1,8 +1,6 @@
-import { MS_GRAPH_GROUP_ID } from '@backend/ms-graph/server/constants'
 import { getMsalToken } from '@backend/ms-graph/server/getMsalToken'
+import { searchInOrgStructure } from '@backend/ms-graph/server/searchInOrgStructure'
 import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
-import { forceString } from '@utils/forceString'
-import pick from 'lodash/pick'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // TODO error types
@@ -17,57 +15,22 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  * @param res
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFilteredGroupUser[]>) => {
-  const { query } = req.query
-  const sanitizedQuery = forceString(query, ' ').trim()
+  const { query: queryParam } = req.query
 
-  if (!sanitizedQuery) {
-    // 204 No Content
-    res.status(204).json([])
+  const query = typeof queryParam === 'string' ? queryParam.trim() : null
+
+  if (!query) {
+    res.status(200).json([])
     return
   }
 
   try {
     const { accessToken } = (await getMsalToken()) ?? {}
 
-    if (!accessToken) {
-      // TODO type
-      // @ts-ignore
-      res.status(500).json({ error: 'No access token' })
-
-      return
-    }
-
-    const paramsToPick = ['id', 'displayName', 'mail', 'businessPhones', 'jobTitle', 'otherMails']
-    const url = `https://graph.microsoft.com/v1.0/groups/${MS_GRAPH_GROUP_ID}/transitiveMembers?${[
-      `$select=${paramsToPick.join(',')}`,
-      `$search="displayName:${sanitizedQuery}" OR "jobTitle:${sanitizedQuery}" OR "mail:${sanitizedQuery}"`,
-      // TODO add support for searching in businessPhones and mobilePhone
-      // `$filter=businessPhones/any(p:startsWith(p, '+421-'))`,
-    ].join('&')}`
-
-    const response = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        ConsistencyLevel: 'eventual',
-      },
-    })
-
-    if (!response.ok) {
-      // TODO type
-      // @ts-ignore
-      res.status(500).json({ error: 'Response not ok' })
-
-      return
-    }
-
-    const resultData = await response.json()
-
-    const users: MSGraphFilteredGroupUser[] =
-      resultData?.value?.map((user: any) => pick(user, paramsToPick)) ?? []
+    const users = await searchInOrgStructure(query, accessToken ?? '')
 
     res.status(200).json(users)
   } catch (error) {
-    console.error(error)
     // TODO type
     // @ts-ignore
     res.status(500).json({ error: error.message })
