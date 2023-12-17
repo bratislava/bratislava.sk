@@ -1,5 +1,3 @@
-// @ts-strict-ignore
-
 import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
@@ -10,7 +8,7 @@ export interface NumericalListProps {
   variant?: 'basic' | 'combined' | 'roadmap'
 }
 
-export const NumericalList = ({ items, hasBackground, variant }: NumericalListProps) => {
+export const NumericalList = ({ items, hasBackground, variant = 'basic' }: NumericalListProps) => {
   return (
     <>
       {items?.map((item, index) => (
@@ -20,7 +18,7 @@ export const NumericalList = ({ items, hasBackground, variant }: NumericalListPr
           index={index}
           item={item}
           variant={variant}
-          hasBackground={hasBackground}
+          hasBackground={hasBackground ?? undefined}
         />
       ))}
     </>

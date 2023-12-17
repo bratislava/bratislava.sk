@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import Markdown from '@components/atoms/Markdown'
 import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 import cx from 'classnames'
@@ -9,7 +8,7 @@ export interface NumericalListItemProps {
   index: number
   item?: NumericalListItemObject
   variant: 'basic' | 'combined' | 'roadmap'
-  hasBackground: boolean
+  hasBackground?: boolean
   children?: React.ReactNode
   className?: string
 }

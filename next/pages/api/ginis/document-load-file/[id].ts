@@ -1,8 +1,9 @@
-// @ts-strict-ignore
 import { ResponseGinisBodyLoadFile } from '@backend/ginis/server/api-data.dto'
 import axios, { AxiosRequestConfig } from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { parseString } from 'xml2js'
+
+// TODO refactor to json endpoint, use @bratislava/ginis-sdk library
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   let result: ResponseGinisBodyLoadFile
@@ -47,9 +48,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
         </s:Body>
       </s:Envelope>
     `
-    let response = {}
+    let response: any = {}
     const responseAxios = await axios
-      .post(process.env.GINIS_URL, xml, axiosConfig)
+      // TODO environment
+      .post(process.env.GINIS_URL ?? '', xml, axiosConfig)
       .then((res) => {
         return res
       })
@@ -78,6 +80,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     console.log(error)
   }
 
+  // @ts-ignore
   res.send(buffer)
 }
 
