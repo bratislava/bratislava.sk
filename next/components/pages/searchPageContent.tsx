@@ -27,6 +27,7 @@ const SearchPageContent = () => {
   const defaultOptions = [
     { key: 'articles', value: t('articles') },
     { key: 'pages', value: t('pages') },
+    { key: 'users', value: t('organisationalStructure') },
   ]
   const [checkedOptions, setCheckedOptions] = useState(defaultOptions)
 
